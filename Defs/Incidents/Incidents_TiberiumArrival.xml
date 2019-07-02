@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- 
+	<TiberiumRim.MissionIncidentDef>
+		<defName>MISSION_TiberiumSighted</defName>
+		<label>Tiberium Sight</label>
+		<workerClass>TiberiumRim.IncidentWorker_MissionStart</workerClass>
+		<targetTypes>
+			<li>MapPlayerHome</li>
+		</targetTypes>
+		<baseChance>2.0</baseChance>
+		<minThreatPoints>0</minThreatPoints>
+		<anyJobNeeded>
+			<li>Skygaze</li>
+			<li>UseTelescope</li>
+		</anyJobNeeded>
+		<missionUnlocks>	
+			<li>Mission1_Discovery</li>
+		</missionUnlocks>
+	</TiberiumRim.MissionIncidentDef>	
+	
+	
+	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
+		<defName>Init</defName>
+		<label></label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>TiberiumRim.IncidentWorker_TiberiumArrival</workerClass>
+		<baseChance>2.0</baseChance>
+		<letterLabel>Green Tiberium Asteroid</letterLabel>
+		<letterText>An unusual meteorite has crashed nearby and made a crater.\n\nThere seems to be some strange crystals poking out of it, and a few have broken off and scattered around the site.\n\nBe careful, the substance could be dangerous!</letterText>
+		<letterDef>NegativeEvent</letterDef>
+		<minRefireDays>175</minRefireDays>
+		<category>ThreatBig</category>
+		<producerDef>TiberiumCraterGreen</producerDef>
+		<skyfallerDef>GreenTiberiumMeteorIncoming</skyfallerDef>
+	</IncidentDef>
+	-->
+
+	
+</Defs>

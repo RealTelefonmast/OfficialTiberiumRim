@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <HarvesterContainer.label>저장고</HarvesterContainer.label>
+  <HarvesterCockpit.label>조종석</HarvesterCockpit.label>
+  <Harvester_Collector.label>수확기</Harvester_Collector.label>
+  <Harvester_CollectorArm.label>수확팔</Harvester_CollectorArm.label>
+  <Harvester_Track.label>궤도</Harvester_Track.label>
+  <Harvester_Wheel.label>바퀴</Harvester_Wheel.label>
+
+
+</LanguageData>

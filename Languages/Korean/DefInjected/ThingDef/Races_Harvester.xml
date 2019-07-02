@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Harvester_TBI.label>하베스터</Harvester_TBI.label>
+  <Harvester_TBI.description>표준형 하베스터입니다. 특별한 명령이 없는 한 가장 가까운 타이베리움을 찾아 채취합니다.</Harvester_TBI.description>
+  <Harvester_TBI.tools.0.label>조종석</Harvester_TBI.tools.0.label>
+  <Harvester_TBI.tools.1.label>좌측 수확팔</Harvester_TBI.tools.1.label>
+  <Harvester_TBI.tools.2.label>우측 수확팔</Harvester_TBI.tools.2.label>
+  <!-- Flesh Type: Mechanoid -->
+  <Harvester_TBI_Corpse.label>하베스터 잔해</Harvester_TBI_Corpse.label>
+  <Harvester_TBI_Corpse.description>하베스터 잔해입니다.</Harvester_TBI_Corpse.description>
+
+  <HarvesterHusk_Common.label>하베스터 잔해</HarvesterHusk_Common.label>
+  <HarvesterHusk_Common.description>비교적 형태가 온전한 하베스터의 잔해입니다.</HarvesterHusk_Common.description>
+
+
+</LanguageData>

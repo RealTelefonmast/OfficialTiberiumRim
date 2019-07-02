@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TRThingDef Name="TibRockBase" ParentName="BuildingNaturalBase_TR" Abstract="True" >
+		<thingClass>Mineable</thingClass>
+		<graphicData>
+			<texPath>Buildings/Natural/TibRock_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Rock</li>
+				<li>MapEdge</li>
+			</linkFlags>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>1</fillPercent>
+		<coversFloor>true</coversFloor>
+		<neverMultiSelect>true</neverMultiSelect>
+		<rotatable>false</rotatable>
+		<saveCompressible>true</saveCompressible>
+		<holdsRoof>true</holdsRoof>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<blockLight>true</blockLight>
+		<mineable>true</mineable>
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<building>
+			<isInert>true</isInert>
+			<isNaturalRock>false</isNaturalRock>
+			<canBuildNonEdificesUnder>false</canBuildNonEdificesUnder>
+			<isResourceRock>false</isResourceRock>
+		</building>
+	</TiberiumRim.TRThingDef>
+
+	<TiberiumRim.TRThingDef ParentName="TibRockBase">
+		<defName>GreenTiberiumRock_TBI</defName>
+		<label>green tiberium rock</label>
+		<description>Rocks infested with green Tiberium.</description>
+		<graphicData>
+			<color>(90,230,95)</color>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>4</glowRadius>
+				<glowColor>(90,230,95,155)</glowColor>
+			</li>
+		</comps>
+		<building>
+			<leaveTerrain>TiberiumStoneGreen</leaveTerrain>
+		</building>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<killedLeavings>
+			<TiberiumGreen>1</TiberiumGreen>
+		</killedLeavings>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="TibRockBase">
+		<defName>BlueTiberiumRock_TBI</defName>
+		<label>blue tiberium rock</label>
+		<description>Rocks infested with blue Tiberium.</description>
+		<graphicData>
+			<color>(90,105,230)</color>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>450</MaxHitPoints>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>4</glowRadius>
+				<glowColor>(90,105,230,155)</glowColor>
+			</li>
+		</comps>
+		<building>
+			<leaveTerrain>TiberiumStoneBlue</leaveTerrain>
+		</building>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<killedLeavings>
+			<TiberiumBlue>1</TiberiumBlue>
+		</killedLeavings>
+		<filthLeaving>FilthTiberiumBlue</filthLeaving>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="TibRockBase">
+		<defName>RedTiberiumRock_TBI</defName>
+		<label>red tiberium rock</label>
+		<description>Rocks infested with red Tiberium.</description>
+		<graphicData>
+			<color>(230,75,75)</color>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>600</MaxHitPoints>
+		</statBases>		
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>4</glowRadius>
+				<glowColor>(230,75,75,155)</glowColor>
+			</li>
+		</comps>
+		<building>
+			<leaveTerrain>TiberiumSoilRed</leaveTerrain>
+		</building>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<killedLeavings>
+			<TiberiumRed>1</TiberiumRed>
+		</killedLeavings>
+		<filthLeaving>FilthTiberiumRed</filthLeaving>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="TibRockBase">
+		<defName>VeinTiberiumRock_TBI</defName>
+		<label>veiny rock</label>
+		<description>These rocks have moving veins growing all over and inside of them.</description>
+		<graphicData>
+			<texPath>Buildings/Natural/VeinRock</texPath>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+		</statBases>
+		<building>
+			<leaveTerrain>TiberiumSoilVeinDead</leaveTerrain>
+		</building>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>Filth_Blood</filthLeaving>
+	</TiberiumRim.TRThingDef>
+	
+	<!--Natural formations-->
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>TiberiumTower_TBI</defName>
+		<description>A massive crystalline tower, created via multiple Tiberium crystals merging into one bigger crystal. However, this structure does not seem to spread more Tiberium.</description>
+		<label>tiberium tower</label>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<altitudeLayer>Building</altitudeLayer>
+		<tickerType>Rare</tickerType>
+		<graphicData>
+			<texPath>Buildings/Natural/TiberiumTower</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(2,6)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>1500</MaxHitPoints>
+			<Beauty>360</Beauty>
+		</statBases>
+		<rotatable>false</rotatable>
+		<blockPlants>true</blockPlants>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+				<radius>8</radius>
+				<intensity>0.2</intensity>
+				<damage>
+					<min>0</min>
+					<max>8</max>
+				</damage>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>6</glowRadius>
+				<glowColor>(80,175,90,0)</glowColor>
+			</li>
+		</comps>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>TiberiumGeyser</defName>
+		<label>tiberium geyser</label>
+		<thingClass>TiberiumRim.TiberiumGeyser</thingClass>
+		<graphicData>
+			<texPath>Buildings/Natural/TibGeyser/TibGeyser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<extraGraphicData>
+			<texPath>Buildings/Natural/TibGeyser/Crack</texPath>
+			<graphicClass>TiberiumRim.Graphic_RandomSelection</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(2,2)</drawSize>
+		</extraGraphicData>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX">
+				<effecters>
+					<li>
+						<burstInterval>1000~3500</burstInterval>
+						<burstRange>500~750</burstRange>
+						<moteDef>Mote_TiberiumGeyser</moteDef>
+						<rotationRate>-240~240</rotationRate>
+						<rotation>0</rotation>
+						<angle>-45~45</angle>
+						<speed>0.85~1</speed>
+					</li>
+				</effecters>
+			</li>
+		</comps>
+		<altitudeLayer>Floor</altitudeLayer>
+		<rotatable>false</rotatable>
+		<destroyable>false</destroyable>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Normal</tickerType>
+		<selectable>true</selectable>
+		<description>This tiberium infested geyser has a massive tiberium gas deposit beneath it, however, the surrounding ground has been destabilized and will occasionally create toxic gas clouds.\nIt may be useful for a Tiberium Spike!</description>
+		<size>(2,2)</size>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<building>
+			<isEdifice>false</isEdifice>
+		</building>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>VisceralPod</defName>
+		<label>visceral pod</label>
+		<thingClass>TiberiumRim.VisceralPod</thingClass>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+			<texPath>Buildings/Natural/VisceralPod/Base</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Beauty>-130</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/VisceralPod/Overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>Transparent</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</data>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/VisceralPod/FX</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</data>
+						<mode>Pulse</mode>
+					</li>
+				</overlays>
+			</li>
+		</comps>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>false</rotatable>
+		<size>(1,1)</size>
+		<blockPlants>true</blockPlants>
+	</TiberiumRim.TRThingDef>	
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>VeinHub</defName>
+		<label>vein hub</label>
+		<thingClass>TiberiumRim.VeinHub</thingClass>
+		<tickerType>Rare</tickerType>
+		<graphicData>
+			<texPath>Buildings/Natural/Veinhole/VeinHub/Hub</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.5,1.5)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>170</MaxHitPoints>
+			<Beauty>-130</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/Veinhole/VeinHub/Overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>Transparent</shaderType>
+							<drawSize>(1.5,1.5)</drawSize>
+						</data>
+						<mode>Pulse</mode>
+					</li>
+				</overlays>
+			</li>
+		</comps>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>false</rotatable>
+		<size>(1,1)</size>
+		<blockPlants>true</blockPlants>
+	</TiberiumRim.TRThingDef>	
+	
+</Defs>

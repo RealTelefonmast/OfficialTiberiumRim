@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<ThingDef ParentName="ApparelMakeableBase_TR">
+		<defName>TiberiumSuit</defName>
+		<description>With this suit you can savely traverse any Tiberium infested terrain. It shields the wearer from getting infected by Tiberium and also any possible radiation.  A suit to protect from Tiberium.\n\n Also protects from toxic fallout.</description>
+		<label>Tiberium protection suit</label>
+		<recipeMaker>
+			<researchPrerequisite>TiberiumKnowledge</researchPrerequisite>
+		</recipeMaker>
+		<graphicData>
+		<texPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuit</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<Plasteel>5</Plasteel>
+			<Steel>75</Steel>
+			<Cloth>120</Cloth>
+		</costList>
+		<thingCategories>
+			<li>Apparel</li>
+		</thingCategories>
+		<statBases>
+			<MarketValue>1250</MarketValue>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToMake>10000</WorkToMake>
+			<Mass>2.5</Mass>
+			<ArmorRating_Blunt>0</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+			<ArmorRating_Heat>0.2</ArmorRating_Heat>
+			<Insulation_Cold>-20</Insulation_Cold>
+			<Insulation_Heat>45</Insulation_Heat>
+			<TiberiumResistance>1</TiberiumResistance>
+			<TiberiumRadiationResistance>0.75</TiberiumRadiationResistance>
+		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.02</MoveSpeed>
+			<ToxicSensitivity>-0.25</ToxicSensitivity>
+			<TiberiumResistance>1</TiberiumResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+				<li>Hands</li>
+				<li>Feet</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuit</wornGraphicPath>
+			<layers>
+			    <li>OnSkin</li>
+			</layers>
+			<defaultOutfitTags>
+				<li>Worker</li>
+			</defaultOutfitTags>
+		</apparel>
+	</ThingDef>
+    
+</Defs>

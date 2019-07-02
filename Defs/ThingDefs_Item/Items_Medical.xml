@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="MakeableDrugPillBase">
+		<defName>TiberAdd</defName>
+		<label>Tiberadd</label>
+		<description>This tiberium based drug helps anyone with a tiberium dependancy. After consumption their mood will improve and their need will stop falling. However, any being that is not dependant on Tiberium may experience severe side effects.</description>
+		<graphicData>
+			<texPath>Items/Consumable/TiberAdd</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>1000</WorkToMake>
+			<MarketValue>300</MarketValue>
+			<Mass>0.02</Mass>
+		</statBases>
+		<techLevel>Industrial</techLevel>
+		<ingestible>
+			<drugCategory>Medical</drugCategory>
+			<outcomeDoers>
+				<li Class="TiberiumRim.IngestionOutcomeDoer_GiveHediffWithSideEffect">
+					<hediffDef>TiberAddHediff</hediffDef>
+					<severity>1.0</severity>
+					<needs>
+						<li>TiberiumNeed</li>
+					</needs>
+					
+					<sideEffects>
+						<li>TiberAddSide</li>
+					</sideEffects>
+				</li>
+			</outcomeDoers>
+		</ingestible>
+		<costList>
+			<TiberiumPlantGrass>3</TiberiumPlantGrass>
+			<TiberiumPlantShroom>1</TiberiumPlantShroom>
+			<Neutroamine>5</Neutroamine>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Drug">
+			<listOrder>1074</listOrder>
+				<overdoseSeverityOffset>
+					<min>0.08</min>
+					<max>0.14</max>
+				</overdoseSeverityOffset>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="MakeableDrugPillBase">
+		<defName>Tiberblock</defName>
+		<label>tiberblock</label>
+		<description>A drug that can cure Tiberium infections./n/nWARNING: This drug only cures Tiberium Poisoning, Tiberium Assmilation or Tiberum Infection!</description>
+		<graphicData>
+			<texPath>Items/Consumable/Tiberblock</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>1200</WorkToMake>
+			<MarketValue>500</MarketValue>
+			<Mass>0.01</Mass>
+		</statBases>
+		<techLevel>Industrial</techLevel>
+		<ingestible>
+			<drugCategory>Medical</drugCategory>
+			<outcomeDoers>
+				<li Class="TiberiumRim.IngestionOutcomeDoer_GiveHediffWithSideEffect">
+					<hediffDef>TiberBlockHediff</hediffDef>
+					<severity>1.0</severity>
+					<hediffs>
+						<li>TiberiumCrystallization</li>
+					</hediffs>
+					<sideEffects>
+						<li>TiberBlockSide</li>
+					</sideEffects>
+					<needsNeeded>false</needsNeeded>
+					<hediffsNeeded>true</hediffsNeeded>
+				</li>
+			</outcomeDoers>
+		</ingestible>
+		<costList>
+			<Neutroamine>2</Neutroamine>
+			<MedicineIndustrial>1</MedicineIndustrial>
+			<TiberiumPlantTree>2</TiberiumPlantTree>
+			<TiberiumPlantBerry>2</TiberiumPlantBerry>
+			<TiberiumPlantGrass>2</TiberiumPlantGrass>
+			<TiberiumPlantShroom>2</TiberiumPlantShroom>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Drug">
+			<listOrder>1075</listOrder>
+				<overdoseSeverityOffset>
+					<min>0</min>
+					<max>0</max>
+				</overdoseSeverityOffset>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="MakeableDrugPillBase">
+		<defName>TiberOS</defName>
+		<label>tiberOs</label>
+		<description>A yummy meal!</description>
+		<graphicData>
+			<texPath>TiberOS/tiberos</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>9999</WorkToMake>
+			<MarketValue>99999</MarketValue>
+			<Mass>1000</Mass>
+		</statBases>
+		<techLevel>Spacer</techLevel>
+		<ingestible>
+			<drugCategory>Medical</drugCategory>
+		</ingestible>
+		<costList>
+			<Neutroamine>2</Neutroamine>
+			<MedicineIndustrial>1</MedicineIndustrial>
+			<TiberiumPlantTree>2</TiberiumPlantTree>
+			<TiberiumPlantBerry>2</TiberiumPlantBerry>
+			<TiberiumPlantGrass>2</TiberiumPlantGrass>
+			<TiberiumPlantShroom>2</TiberiumPlantShroom>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Drug">
+			<listOrder>1075</listOrder>
+				<overdoseSeverityOffset>
+					<min>0</min>
+					<max>0</max>
+				</overdoseSeverityOffset>
+			</li>
+		</comps>
+	</ThingDef>
+	
+</Defs>

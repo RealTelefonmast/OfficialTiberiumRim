@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumGasTank.label>타이베리움 가스 저장고</TiberiumGasTank.label>
+  <TiberiumGasTank.description>Stores Tiberium and distributes it to other Tiberium structures when necessary.</TiberiumGasTank.description>
+
+  <TiberiumSilo.label>타이베리움 사일로</TiberiumSilo.label>
+  <TiberiumSilo.description>Stores Tiberium and distributes it to other Tiberium structures when necessary.</TiberiumSilo.description>
+
+  <TiberiumSpike.label>타이베리움 고정기</TiberiumSpike.label>
+  <TiberiumSpike.description>.</TiberiumSpike.description>
+
+
+</LanguageData>

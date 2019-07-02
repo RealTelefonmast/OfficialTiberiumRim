@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>PortableContainer</defName>
+		<label>tiberium storage cell</label>
+		<description>This container may be used at a silo to fill it with the remaining value.</description>
+		<thingClass>TiberiumRim.PortableContainer</thingClass>
+		<graphicData>
+			<texPath>Items/Resource/TSC/TSC</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Items/Resource/TSC/Overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(1,1)</drawSize>
+						</data>
+					</li>
+				</overlays>
+			</li>
+		</comps>
+		<tickerType>Normal</tickerType>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<techLevel>Industrial</techLevel>
+		<stackLimit>1</stackLimit>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<MarketValue>0</MarketValue>
+			<Mass>2</Mass>
+			<Flammability>0</Flammability>
+			<DeteriorationRate>0.25</DeteriorationRate>
+		</statBases>
+		<smeltable>true</smeltable>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>
+	
+</Defs>

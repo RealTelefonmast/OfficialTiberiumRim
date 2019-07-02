@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <NodConcreteTile.label>Nod Concrete Tile</NodConcreteTile.label>
+  <NodConcreteTile.description>Nod concrete tiles.</NodConcreteTile.description>
+
+  <NodConcreteFloor.label>Nod Concrete Floor</NodConcreteFloor.label>
+  <NodConcreteFloor.description>Nod concrete tiles.</NodConcreteFloor.description>
+
+  <NodDangerTile.label>Nod Striped Tile</NodDangerTile.label>
+  <NodDangerTile.description>Nod danger tiles.</NodDangerTile.description>
+
+  <NodCarbonTile.label>Nod Carbon Tile</NodCarbonTile.label>
+  <NodCarbonTile.description>Nod carbon tiles. Beautiful, and clean.</NodCarbonTile.description>
+
+
+  <!-- GDI -->
+
+  <GDIConcreteTile.label>GDI Concrete Tile</GDIConcreteTile.label>
+  <GDIConcreteTile.description>GDI concrete tiles.</GDIConcreteTile.description>
+
+  <GDIConcreteFloor.label>GDI Concrete Floor</GDIConcreteFloor.label>
+  <GDIConcreteFloor.description>GDI concrete tiles.</GDIConcreteFloor.description>
+
+  <GDIDangerTile.label>GDI Striped Tile</GDIDangerTile.label>
+  <GDIDangerTile.description>GDI striped tiles.</GDIDangerTile.description>
+
+  <GDIReinforcedTile.label>GDI Reinforced Tile</GDIReinforcedTile.label>
+  <GDIReinforcedTile.description>GDI reinforced tiles. Beautiful, and clean.</GDIReinforcedTile.description>
+
+  <ScrinFloor.label>Scrin landing sites</ScrinFloor.label>
+  <ScrinFloor.description>---</ScrinFloor.description>
+
+
+</LanguageData>

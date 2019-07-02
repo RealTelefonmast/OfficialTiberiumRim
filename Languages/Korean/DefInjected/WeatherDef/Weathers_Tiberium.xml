@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <IonStormWeather.label>이온 폭풍</IonStormWeather.label>
+  <IonStormWeather.description>이온 폭풍은 타이베리움 침식이 발생한 곳에만 발생하는 파괴적인 자연재해입니다.</IonStormWeather.description>
+
+  <TiberiumClear.label>녹색 하늘</TiberiumClear.label>
+  <TiberiumClear.description>모든 것이 녹색인 이곳에서는 평범한 날씨입니다.</TiberiumClear.description>
+
+
+</LanguageData>

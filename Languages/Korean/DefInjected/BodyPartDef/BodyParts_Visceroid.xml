@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <VisceroidBody.label>몸통</VisceroidBody.label>
+  <VisceroidVeins.label>혈관</VisceroidVeins.label>
+  <VisceroidDigester.label>소화기</VisceroidDigester.label>
+  <VisceroidBreather.label>호흡기</VisceroidBreather.label>
+  <VisceroidOrifice.label>입</VisceroidOrifice.label>
+  <VisceroidOrifice2.label>주둥이</VisceroidOrifice2.label>
+  <VisceroidOrifice3.label>아가리</VisceroidOrifice3.label>
+  <LeftTentacle.label>왼쪽 촉수</LeftTentacle.label>
+  <RightTentacle.label>오른쪽 촉수</RightTentacle.label>
+  <MiddleTentacle.label>가운데 촉수</MiddleTentacle.label>
+  <VeinmonsterMouth.label>주둥이</VeinmonsterMouth.label>
+  <MiddleEye.label>눈알</MiddleEye.label>
+  <VeinmonsterBody.label>몸통</VeinmonsterBody.label>
+
+
+</LanguageData>

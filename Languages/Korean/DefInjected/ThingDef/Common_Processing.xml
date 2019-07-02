@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumNetworkController.label>타이베리움 시설망 제어기</TiberiumNetworkController.label>
+  <TiberiumNetworkController.description>타이베리움 시설망의 중추가 되는 건물입니다. 모든 타이베리움 관련 시설은 시설망 제어기와 연결된 상태여야만 정상적으로 작동합니다.</TiberiumNetworkController.description>
+  <TiberiumNetworkController_Blueprint.label>타이베리움 시설망 제어기 (청사진)</TiberiumNetworkController_Blueprint.label>
+  <TiberiumNetworkController_Frame.label>타이베리움 시설망 제어기 (설치 중)</TiberiumNetworkController_Frame.label>
+  <TiberiumNetworkController_Frame.description>타이베리움 시설망의 중추가 되는 건물입니다. 모든 타이베리움 관련 시설은 시설망 제어기와 연결된 상태여야만 정상적으로 작동합니다.</TiberiumNetworkController_Frame.description>
+
+  <TiberiumPipe.label>타이베리움 공급관</TiberiumPipe.label>
+  <TiberiumPipe.description>서로 다른 타이베리움 관련 시설들을 연결해주는 장치입니다.</TiberiumPipe.description>
+  <TiberiumPipe_Blueprint.label>타이베리움 공급관 (청사진)</TiberiumPipe_Blueprint.label>
+  <TiberiumPipe_Frame.label>타이베리움 공급관 (설치 중)</TiberiumPipe_Frame.label>
+  <TiberiumPipe_Frame.description>서로 다른 타이베리움 관련 시설들을 연결해주는 장치입니다.</TiberiumPipe_Frame.description>
+
+  <RefineryCell.label>공급지점</RefineryCell.label>
+
+
+</LanguageData>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <HarvesterBody.label>하베스터</HarvesterBody.label>
+  <HarvesterBody.corePart.parts.0.parts.0.parts.0.customLabel>왼쪽 수확팔</HarvesterBody.corePart.parts.0.parts.0.parts.0.customLabel>
+  <HarvesterBody.corePart.parts.0.parts.0.parts.1.customLabel>오른쪽 수확팔</HarvesterBody.corePart.parts.0.parts.0.parts.1.customLabel>
+  <HarvesterBody.corePart.parts.0.parts.2.customLabel>좌측 시각 센서</HarvesterBody.corePart.parts.0.parts.2.customLabel>
+  <HarvesterBody.corePart.parts.0.parts.3.customLabel>우측 시각 센서</HarvesterBody.corePart.parts.0.parts.3.customLabel>
+  <HarvesterBody.corePart.parts.0.parts.4.customLabel>청각 센서</HarvesterBody.corePart.parts.0.parts.4.customLabel>
+  <HarvesterBody.corePart.parts.1.customLabel>좌측 궤도</HarvesterBody.corePart.parts.1.customLabel>
+  <HarvesterBody.corePart.parts.1.parts.0.customLabel>좌측 1번 보기륜</HarvesterBody.corePart.parts.1.parts.0.customLabel>
+  <HarvesterBody.corePart.parts.1.parts.1.customLabel>좌측 2번 보기륜</HarvesterBody.corePart.parts.1.parts.1.customLabel>
+  <HarvesterBody.corePart.parts.1.parts.2.customLabel>좌측 3번 보기륜</HarvesterBody.corePart.parts.1.parts.2.customLabel>
+  <HarvesterBody.corePart.parts.1.parts.3.customLabel>좌측 4번 보기륜</HarvesterBody.corePart.parts.1.parts.3.customLabel>
+  <HarvesterBody.corePart.parts.2.customLabel>우측 궤도</HarvesterBody.corePart.parts.2.customLabel>
+  <HarvesterBody.corePart.parts.2.parts.0.customLabel>우측 1번 보기륜</HarvesterBody.corePart.parts.2.parts.0.customLabel>
+  <HarvesterBody.corePart.parts.2.parts.1.customLabel>우측 2번 보기륜</HarvesterBody.corePart.parts.2.parts.1.customLabel>
+  <HarvesterBody.corePart.parts.2.parts.2.customLabel>우측 3번 보기륜</HarvesterBody.corePart.parts.2.parts.2.customLabel>
+  <HarvesterBody.corePart.parts.2.parts.3.customLabel>우측 4번 보기륜</HarvesterBody.corePart.parts.2.parts.3.customLabel>
+
+
+</LanguageData>

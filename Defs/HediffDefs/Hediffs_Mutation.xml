@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<HediffDef ParentName="HediffBase_TR">
+		<defName>TiberiumMutation</defName>
+		<hediffClass>TiberiumRim.Hediff_Mutation</hediffClass>
+		<label>tiberium mutation</label>
+		<defaultLabelColor>(175, 255, 0)</defaultLabelColor>
+		<initialSeverity>1</initialSeverity>
+		<stages>
+			<li>
+				<painFactor>2</painFactor>
+				<painOffset>0.2</painOffset>
+			</li>
+		</stages>
+		<isBad>false</isBad>
+		<everCurableByItem>false</everCurableByItem>
+	</HediffDef>
+
+	<!-- Mutation -->
+	<HediffDef>
+		<defName>VisceralPart</defName>
+		<label>Visceral</label>
+		<hediffClass>TiberiumRim.Hediff_MutationPart</hediffClass>
+		<defaultLabelColor>(155, 160, 75)</defaultLabelColor>
+		<stages>
+			<li>
+				<becomeVisible>false</becomeVisible>
+				<painFactor>1.1</painFactor>
+				<partEfficiencyOffset>-0.15</partEfficiencyOffset>
+			</li>
+		</stages>
+		<isBad>true</isBad>
+	</HediffDef>
+	
+	<HediffDef>
+		<defName>SymbioticPart</defName>
+		<label>Symbiotic</label>
+		<hediffClass>TiberiumRim.Hediff_MutationPart</hediffClass>
+		<defaultLabelColor>(138, 229, 226)</defaultLabelColor>
+		<stages>
+			<li>
+				<becomeVisible>false</becomeVisible>
+				<partEfficiencyOffset>+0.1</partEfficiencyOffset>
+			</li>
+		</stages>
+		<isBad>false</isBad>
+	</HediffDef>
+	
+	<HediffDef>
+		<defName>SymbioticCore</defName>
+		<hediffClass>HediffWithComps</hediffClass>
+		<label>tiberium immunity</label>
+		<labelNoun>a crystalline netwoek</labelNoun>
+		<defaultLabelColor>(0, 255, 255)</defaultLabelColor>
+		<isBad>false</isBad>
+	</HediffDef>
+	
+	<!-- Any Part -->
+	<!-- Inside -->
+	<HediffDef ParentName="HediffImplant_TR">
+		<defName>ViscousPart</defName>
+		<label>Viscous {0}</label>
+		<hediffClass>TiberiumRim.Hediff_LabelledPart</hediffClass>
+		<defaultLabelColor>(155, 160, 75)</defaultLabelColor>
+		<stages>
+			<li>
+				<painFactor>1.05</painFactor>
+				<partEfficiencyOffset>-0.75</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<!-- Outside -->
+	<HediffDef>
+		<defName>VisceralBlister</defName>
+		<label>blistered part</label>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(155, 160, 75)</defaultLabelColor>
+		<initialSeverity>1</initialSeverity>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<tendable>true</tendable>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<baseTendDurationHours>12</baseTendDurationHours>
+				<severityPerDayTended>-0.025</severityPerDayTended>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<painFactor>1.145</painFactor>
+				<partEfficiencyOffset>-0.07</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+	
+</Defs>

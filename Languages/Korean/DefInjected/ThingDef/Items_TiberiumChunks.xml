@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GreenTiberiumChunk.label>녹색 타이배리움 덩어리</GreenTiberiumChunk.label>
+  <GreenTiberiumChunk.description>녹색 타이배리움 덩어리</GreenTiberiumChunk.description>
+
+  <BlueTiberiumChunk.label>청색 타이베리움 덩어리</BlueTiberiumChunk.label>
+  <BlueTiberiumChunk.description>청색 타이베리움 덩어리</BlueTiberiumChunk.description>
+
+  <RedTiberiumChunk.label>적색 타이베리움 덩어리</RedTiberiumChunk.label>
+  <RedTiberiumChunk.description>적색 타이베리움 덩어리</RedTiberiumChunk.description>
+
+
+</LanguageData>

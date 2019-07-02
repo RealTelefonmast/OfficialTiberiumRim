@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.HediffMutationGroup>
+		<defName>Crystallized</defName>
+		<arms>CrystalBlade</arms>
+		<hands>HandSpikes</hands>
+	</TiberiumRim.HediffMutationGroup>
+
+	<TiberiumRim.HediffMutationGroup>
+		<defName>Visceral</defName>
+		<arms>VisceralArm</arms>
+		<legs>VisceralLeg</legs>
+	</TiberiumRim.HediffMutationGroup>
+
+	<TiberiumRim.HediffMutationGroup>
+		<defName>Enhanced</defName>
+		<arms>TiberiumEnhancedArm</arms>
+		<legs>TiberiumEnhancedLeg</legs>
+	</TiberiumRim.HediffMutationGroup>
+	
+</Defs>

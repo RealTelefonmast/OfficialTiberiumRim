@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Introduction -->
+
+  <M1_Research.label>Looking Ahead</M1_Research.label>
+  <M1_Research.description>We are not quite sure what it is yet and need to investigate further.\nA telescope would be useful.</M1_Research.description>
+
+  <M1_Construct.label>Construct the telescope</M1_Construct.label>
+  <M1_Construct.description>Having acquired the new blueprint, we can construct the telescope!\nThis should reveal more about the strange object.</M1_Construct.description>
+
+  <M1_ObserveMeteor.label>Observation</M1_ObserveMeteor.label>
+  <M1_ObserveMeteor.description>...</M1_ObserveMeteor.description>
+
+  <M1_ObserveCrater.label>Inspection</M1_ObserveCrater.label>
+  <M1_ObserveCrater.description>The meteor crashed onto our map and formed a crater, however we noticed that it is radiating a strange warmth and killed almost all plants in close proximity.\nWe should advance with caution and observe from a distance or we could end up like the plants as well...</M1_ObserveCrater.description>
+
+  <M1_ConstructCrater.label>Isolation</M1_ConstructCrater.label>
+  <M1_ConstructCrater.description>...</M1_ConstructCrater.description>
+
+
+  <!-- Tiberium Knowledge -->
+
+  <M2_KnowledgeResearch.label>What is it?</M2_KnowledgeResearch.label>
+  <M2_KnowledgeResearch.description>...</M2_KnowledgeResearch.description>
+
+  <M2_TiberiumNetwork.label>Setting up the network...</M2_TiberiumNetwork.label>
+
+
+</LanguageData>

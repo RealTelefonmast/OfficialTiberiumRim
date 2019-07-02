@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GDI_ReinforcedPlate.label>강화합금</GDI_ReinforcedPlate.label>
+  <GDI_ReinforcedPlate.description>군사적으로 매우 각광받는 신소재입니다. 강철보다 훨씬 견고하지만, 제련하기 위해서는 GDI만의 고유 기술이 필요합니다.</GDI_ReinforcedPlate.description>
+
+
+  <!-- <ThingDef ParentName="ResourceBase">
+		<defName>GDI_SonicCore</defName>
+		<label>Sonic Energy Core (explosive)</label>
+		<description>Sonic technology is extremly experimental and needs special measures to be handled. This component serves as a core part in most sonic weaponry.</description>
+		<graphicData>
+			<texPath>Items/Core_Sonic</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>25</stackLimit>
+		<statBases>
+			<MaxHitPoints>175</MaxHitPoints>
+			<MarketValue>2500</MarketValue>
+			<Mass>0.4</Mass>
+			<Flammability>0.75</Flammability>
+			<DeteriorationRate>0.90</DeteriorationRate>
+		</statBases>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>2</explosiveRadius>
+				<explosiveDamageType>TRSound</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.1</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.05</startWickHitPointsPercent>
+				<wickTicks>
+					<min>5</min>
+					<max>5</max>
+				</wickTicks>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="MakeableDrugPillBase">
+		<defName>Tiberblock</defName>
+		<label>Tiberblock</label>
+		<description>A drug that can cure Tiberium infections./n/nWARNING: This drug only cures Tiberium Poisoning, Tiberium Assmilation or Tiberum Infection!</description>
+		<graphicData>
+			<texPath>Items/Tiberblock</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>750</WorkToMake>
+			<MarketValue>500</MarketValue>
+			<Mass>0.01</Mass>
+		</statBases>
+		<techLevel>Industrial</techLevel>
+		<ingestible>
+			<drugCategory>Social</drugCategory>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>TiberBlockHediff</hediffDef>
+					<severity>1.0</severity>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>TiberiumInfusionImmunityNPC</hediffDef>
+					<severity>1.0</severity>
+				</li>
+			</outcomeDoers>
+		</ingestible>
+		<recipeMaker>
+			<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+			<workSkill>Intellectual</workSkill>
+			<recipeUsers>
+				<li>GDI_Factory</li>
+			</recipeUsers>
+			<researchPrerequisite>GDIResearch_TiberiumDrugs</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<costList>
+			<Neutroamine>2</Neutroamine>
+			<MedicineIndustrial>1</MedicineIndustrial>
+			<TiberiumPlantTree>2</TiberiumPlantTree>
+			<TiberiumPlantBerry>2</TiberiumPlantBerry>
+			<TiberiumPlantGrass>2</TiberiumPlantGrass>
+			<TiberiumPlantShroom>2</TiberiumPlantShroom>
+		</costList>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef> -->
+
+  <TRBattleChip.label>전투 제어 회로</TRBattleChip.label>
+  <TRBattleChip.description>첨단 장비 및 방어탑을 제어하기 위해 반드시 필요한 부품입니다. 노획하거나 상거래로 획득할 수 있습니다.</TRBattleChip.description>
+
+
+</LanguageData>

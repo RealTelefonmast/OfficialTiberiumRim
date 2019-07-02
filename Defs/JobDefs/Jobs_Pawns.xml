@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<JobDef>
+		<defName>FormAmalgamation</defName>
+		<driverClass>TiberiumRim.JobDriver_Amalgamation</driverClass>
+		<reportString>forming Amalgamation.</reportString>
+	</JobDef>
+	
+	<JobDef>
+		<defName>TiberiumBath</defName>
+		<driverClass>TiberiumRim.JobDriver_TiberiumBath</driverClass>
+	</JobDef>
+  
+</Defs>

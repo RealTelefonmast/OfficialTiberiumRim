@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="BuildingBase_TR" Abstract="True">
+		<category>Building</category>
+		<thingClass>TiberiumRim.FXBuilding</thingClass>
+		<soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
+		<statBases>
+			<SellPriceFactor>0.70</SellPriceFactor>
+		</statBases>
+	</ThingDef>
+	
+	<ThingDef Name="BenchBase_TR" ParentName="StationBase_TR" Abstract="True">
+		<canOverlapZones>false</canOverlapZones>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<thingCategories>
+			<li>BuildingsProduction</li>
+		</thingCategories>
+		<statBases>
+			<Mass>20</Mass>
+		</statBases>
+		<building>
+			<workSpeedPenaltyOutdoors>true</workSpeedPenaltyOutdoors>
+			<workSpeedPenaltyTemperature>true</workSpeedPenaltyTemperature>
+		</building>
+		<interactionCellIcon>DiningChair</interactionCellIcon>
+		<comps>
+			<li>
+				<compClass>CompReportWorkSpeed</compClass>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ReportWorkSpeedPenalties</li>
+		</placeWorkers>
+	</ThingDef>
+	
+	<TiberiumRim.TRThingDef Name="StationBase_TR" ParentName="BuildingBase_TR" Abstract="True">
+		<factionDesignation>Common</factionDesignation>		
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<surfaceType>Item</surfaceType>
+		<statBases>
+			<Mass>1000</Mass>
+		</statBases>
+		<filthLeaving>Filth_RubbleBuilding</filthLeaving>		
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef Name="RefineryBase_TR" ParentName="StationBase_TR" Abstract="True" Class="TiberiumRim.RefineryDef">
+		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
+		<thingClass>Building</thingClass>
+		<altitudeLayer>DoorMoveable</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>2500</WorkToBuild>
+			<Flammability>0.85</Flammability>
+		</statBases>
+		<size>(5,5)</size>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>250</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<tickerType>Normal</tickerType>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>		
+		<graphicData>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(5.15,5.15)</drawSize>
+		</graphicData>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<hasInteractionCell>false</hasInteractionCell>	
+	</TiberiumRim.TRThingDef>
+	
+	<!-- Natural -->
+	
+	<TiberiumRim.TRThingDef Abstract="True" Name="BuildingNaturalBase_TR" ParentName="BuildingBase_TR">
+		<passability>Impassable</passability>
+		<factionDesignation>Tiberium</factionDesignation>
+		<TRCategory>Misc</TRCategory>
+		<devObject>true</devObject>
+		<building>
+			<claimable>false</claimable>
+			<deconstructible>false</deconstructible>
+			<allowAutoroof>false</allowAutoroof>
+		</building>
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TiberiumProducerDef Abstract="True" Name="TiberiumProducerBase" ParentName="BuildingNaturalBase_TR">
+		<thingClass>TiberiumRim.TiberiumProducer</thingClass>
+		<TRCategory>Producers</TRCategory>
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawRotated>false</drawRotated>
+			<shaderType>Transparent</shaderType>
+		</graphicData>
+		<building>
+			<isEdifice>false</isEdifice>
+		</building>
+		<comps>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>30</heatPerSecond>
+				<heatPushMaxTemperature>120</heatPushMaxTemperature>
+			</li>
+		</comps>
+		<plantsByDistance>
+			<li>
+				<plants>
+					<li>TiberiumGrass,1</li>
+				</plants>
+				<chance>0</chance>
+			</li>
+			<li>
+				<plants>
+					<li>TiberiumBush,1.5</li>
+				</plants>
+				<chance>0.25</chance>
+			</li>
+			<li>
+				<plants>
+					<li>TiberiumShroom_Yellow,3</li>
+					<li>TiberiumShroom_Blue,3</li>
+				</plants>
+				<chance>0.45</chance>
+			</li>
+			<li>
+				<plants>
+					<li>TiberiumTree,4</li>
+				</plants>
+				<chance>0.65</chance>
+			</li>
+			<li>
+				<plants>
+					<li>SmallBlossom,10</li>
+				</plants>
+				<chance>0.7</chance>
+			</li>
+			<li>
+				<plants>
+					<li>AlocasiaBlossom,8</li>
+				</plants>
+				<chance>0.8</chance>
+			</li>
+		</plantsByDistance>
+		<tickerType>Normal</tickerType>
+		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<blockPlants>true</blockPlants>	
+		<drawDamagedOverlay>false</drawDamagedOverlay>
+	</TiberiumRim.TiberiumProducerDef>
+	
+</Defs>

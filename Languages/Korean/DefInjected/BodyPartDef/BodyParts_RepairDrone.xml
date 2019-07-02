@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <DroneGrid.label>프레임</DroneGrid.label>
+  <DroneCircuit.label>회로</DroneCircuit.label>
+  <DroneTools.label>기계팔</DroneTools.label>
+  <DroneWelder.label>용접기</DroneWelder.label>
+  <DroneCutter.label>절단기</DroneCutter.label>
+  <Drone_LeftTurbine.label>왼쪽 추진기</Drone_LeftTurbine.label>
+  <Drone_RightTurbine.label>오른쪽 추진기</Drone_RightTurbine.label>
+
+
+</LanguageData>

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- <ThingDef ParentName="ResourceBase">
+		<defName>TempleShell_Explosive</defName>
+		<label>tactical nuclear shell</label>
+		<description>A tactical nuclear missile to be fired by a Nod temple, these shells will big chain explode on contact.</description>
+		<graphicData>
+			<texPath>Items/Temple_Shell</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>1</stackLimit>
+		<tickerType>Normal</tickerType>
+		<techLevel>Industrial</techLevel>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>6</explosiveRadius>
+				<damageAmountBase>500</damageAmountBase>
+				<explosiveDamageType>TRNuke</explosiveDamageType>
+				<postExplosionSpawnThingDef>Gas_Tiberium</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
+				<explosionEffect>GiantExplosion</explosionEffect>
+				<wickTicks>
+					<min>10</min>
+					<max>30</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<statBases>
+			<MarketValue>15000</MarketValue>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Mass>25</Mass>
+			<Beauty>-50</Beauty>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<projectileWhenLoaded>Bullet_TempleBomb</projectileWhenLoaded>
+		<recipeMaker> 
+			<workSpeedStat>SmithingSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<workAmount>30000</workAmount>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>Nod_Factory</li>
+			</recipeUsers>
+			<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+			<researchPrerequisite>NodResearch_Temple</researchPrerequisite>
+		</recipeMaker>
+		<costList>
+			<Shell_HighExplosive>5</Shell_HighExplosive>
+			<Nod_LQTiberiumCore>3</Nod_LQTiberiumCore>
+			<Uranium>5</Uranium>
+		</costList>
+		<thingCategories>
+			<li>TempleShells</li>
+		</thingCategories>		
+	</ThingDef> -->
+
+  <TempleShells.label>핵탄두</TempleShells.label>
+
+
+</LanguageData>

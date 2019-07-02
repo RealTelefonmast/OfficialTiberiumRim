@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<HediffDef Name="HediffBase_TR" Abstract="True">
+		<hediffClass>HediffWithComps</hediffClass>
+		<makesAlert>false</makesAlert>
+		<initialSeverity>0.001</initialSeverity>
+		<makesSickThought>true</makesSickThought>
+		<everCurableByItem>false</everCurableByItem>
+		<defaultLabelColor>(165,240,130)</defaultLabelColor>
+	</HediffDef>
+	
+	<HediffDef Name="HediffInjury_TR" Abstract="True">
+		<hediffClass>Hediff_Injury</hediffClass>
+		<makesAlert>false</makesAlert>
+		<tendable>true</tendable>
+		<makesSickThought>false</makesSickThought>
+		<everCurableByItem>true</everCurableByItem>
+		<defaultLabelColor>(90,240,80)</defaultLabelColor>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<baseTendDurationHours>6</baseTendDurationHours>
+				<tendOverlapHours>2</tendOverlapHours>
+				<tendAllAtOnce>false</tendAllAtOnce>
+				<disappearsAtTotalTendQuality>1</disappearsAtTotalTendQuality>
+				<severityPerDayTended>-0.1</severityPerDayTended>
+			</li>
+		</comps>
+	</HediffDef>
+	
+	<HediffDef Name="HediffImplant_TR" Abstract="True">
+		<hediffClass>TiberiumRim.Hediff_TiberiumPart</hediffClass>
+		<defaultLabelColor>(130, 220, 135)</defaultLabelColor>
+		<isBad>false</isBad>
+	</HediffDef>
+
+</Defs>

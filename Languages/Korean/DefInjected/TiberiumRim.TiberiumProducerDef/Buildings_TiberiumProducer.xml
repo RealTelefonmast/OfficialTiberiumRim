@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumCraterGreen.label>녹색 타이베리움 운석구</TiberiumCraterGreen.label>
+  <TiberiumCraterGreen.description>타이베리움 운석이 낙하한 지점입니다. 내부로부터 광채와 뜨거운 증기를 방출하고 있으며, 천천히 성장하는 것처럼 보입니다.</TiberiumCraterGreen.description>
+
+  <TiberiumCraterHybrid.label>복합질 타이베리움 운석구</TiberiumCraterHybrid.label>
+  <TiberiumCraterHybrid.description>타이베리움 운석이 낙하한 지점입니다. 내부로부터 광채와 뜨거운 증기를 방출하고 있으며, 천천히 성장하는 것처럼 보입니다.</TiberiumCraterHybrid.description>
+
+  <TiberiumCraterBlue.label>청색 타이베리움 운석구</TiberiumCraterBlue.label>
+  <TiberiumCraterBlue.description>타이베리움 운석이 낙하한 지점입니다. 내부로부터 광채와 뜨거운 증기를 방출하고 있으며, 천천히 성장하는 것처럼 보입니다.</TiberiumCraterBlue.description>
+
+  <BlossomTree.label>녹색 포자 식물</BlossomTree.label>
+  <BlossomTree.description>괴상하게 생긴 식물입니다. 때때로 원시적인 녹색 결정을 퍼뜨리는 것 같습니다.</BlossomTree.description>
+
+  <BlueBlossomTree.label>청색 포자 식물</BlueBlossomTree.label>
+  <BlueBlossomTree.description>괴상하게 생긴 식물입니다. 때때로 원시적인 녹색 결정을 퍼뜨리는 것 같습니다.</BlueBlossomTree.description>
+
+  <TiberiumCruentus.label>타이베리움 크루엔투스</TiberiumCruentus.label>
+  <TiberiumCruentus.description>이 거대한 타이베리움 결정기둥은 단시간 내에 성장한 뒤 대폭발을 일으켜 주변 전체를 오염시킵니다.</TiberiumCruentus.description>
+
+  <TiberiumMonolith.label>타이베리움 모놀리스</TiberiumMonolith.label>
+  <TiberiumMonolith.description>청색 타이베리움의 성장체인 모놀리스는 주기적으로 폭발하여 주변에 미세한 청색 타이베리움 파편을 퍼뜨립니다.</TiberiumMonolith.description>
+
+  <RedTiberiumShard.label>타이베리움 샤드</RedTiberiumShard.label>
+  <RedTiberiumShard.description>아주 드물게 관찰되는 외계 기원의 결정 기둥으로, 진귀한 적색 타이베리움을 퍼뜨립니다.</RedTiberiumShard.description>
+
+
+</LanguageData>

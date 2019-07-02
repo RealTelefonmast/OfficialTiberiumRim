@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<TiberiumRim.TRThingDef ParentName="BuildingBase">
+		<defName>ObeliskOfLight</defName>
+		<label>obelisk of light</label>
+		<description>pew pew</description>
+		<thingClass>TiberiumRim.Building_Obelisk</thingClass>
+		<factionDesignation>Nod</factionDesignation>
+		<TRCategory>Defense</TRCategory>
+		<size>(3,3)</size>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Obelisk/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(6,6)</drawSize>
+		</graphicData>
+		<extraData>
+			<rotateDrawSize>true</rotateDrawSize>
+			<alignToBottom>true</alignToBottom>
+			<drawOffset>(0,0,0.25)</drawOffset>
+		</extraData>
+		<costList>			
+			<Nod_CarbonPlate>100</Nod_CarbonPlate>
+			<ComponentIndustrial>12</ComponentIndustrial>
+		</costList>
+		<uiIconPath>Buildings/Nod/Defense/Obelisk/Icon</uiIconPath>
+		<uiIconScale>0.90</uiIconScale>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<thingCategories>
+			<li>BuildingsSecurity</li>
+		</thingCategories>
+		<statBases>
+			<MaxHitPoints>460</MaxHitPoints>
+			<Flammability>0.40</Flammability>
+			<WorkToBuild>12000</WorkToBuild>
+			<Mass>1000</Mass>
+			<Beauty>5</Beauty>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Defense/Obelisk/PowerOn</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(6,6)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Defense/Obelisk/Charge</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(6,6)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+					</li>
+				</overlays>
+			</li>		
+			<li Class="CompProperties_Explosive">
+			<explosiveRadius>3.9</explosiveRadius>
+			<explosiveDamageType>Bomb</explosiveDamageType>
+			<chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<drawOffscreen>true</drawOffscreen>
+		<passability>Impassable</passability>
+		<fillPercent>0.4</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<specialDisplayRadius>39.9</specialDisplayRadius>
+		<constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+			<turretGunDef>Gun_NodObelisk</turretGunDef>
+			<turretBurstWarmupTime>2.35</turretBurstWarmupTime>
+			<turretBurstCooldownTime>2</turretBurstCooldownTime>
+			<turretTopDrawSize>2</turretTopDrawSize>
+			<turretTopGraphicPath>Buildings/Nod/Defense/Obelisk/ObeliskGun</turretTopGraphicPath>
+		</building>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_OnlyOutside</li>
+			<li>PlaceWorker_TurretTop</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+
+	<ThingDef ParentName="BaseHumanGun">
+		<defName>Gun_NodObelisk</defName>
+		<label>obelisk gun</label>
+		<description>pew pew</description>
+		<graphicData>
+			<texPath>Building/Nod/Defense/Obelisk/ObeliskGun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<menuHidden>true</menuHidden>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_ObeliskGun</defaultProjectile>
+				<requireLineOfSight>false</requireLineOfSight>
+				<warmupTime>2.5</warmupTime>
+				<minRange>3.89</minRange>
+				<range>39.9</range>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<soundAiming>Shot_Nod_ObeliskTail</soundAiming>
+				<soundCast>Shot_Nod_Obelisk</soundCast>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<TiberiumRim.FXThingDef ParentName="BaseBullet">
+		<defName>Bullet_ObeliskGun</defName>
+		<label>obelisk laser bullet</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_ObeliskBeam</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<extraData>
+			<drawOffset>(0,0,4.65)</drawOffset>
+		</extraData>
+		<projectile>
+			<damageDef>Burn</damageDef>
+			<damageAmountBase>100</damageAmountBase>
+			<explosionRadius>0.025</explosionRadius>
+			<speed>666</speed>
+			<flyOverhead>true</flyOverhead>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+		</projectile>
+		<thingClass>TiberiumRim.Projectile_Beam</thingClass>
+		<!--
+		<cycleThroughFiringPositions>true</cycleThroughFiringPositions>
+		<preFiringInitialIntensity>0</preFiringInitialIntensity>
+		<preFiringFinalIntensity>3</preFiringFinalIntensity>
+		<postFiringInitialIntensity>3</postFiringInitialIntensity>
+		<postFiringFinalIntensity>0</postFiringFinalIntensity>
+		<preFiringDuration>5</preFiringDuration>
+		<postFiringDuration>65</postFiringDuration>
+		<StartFireChance>0.1</StartFireChance>	
+		<createsExplosion>true</createsExplosion>
+		-->
+		<drawOffscreen>true</drawOffscreen>
+	</TiberiumRim.FXThingDef>
+
+<!--
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_MiniTurret</defName>
+    <label>mini-turret bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseHumanGun">
+    <defName>Gun_MiniTurret</defName>
+    <label>mini-turret gun</label>
+    <description>A simple automatic gun made to be mounted on a turret.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/ChargeRifle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <menuHidden>true</menuHidden>
+    <destroyOnDrop>true</destroyOnDrop>
+    <tradeability>None</tradeability>
+    <useHitPoints>false</useHitPoints>
+    <statBases>
+      <AccuracyTouch>0.70</AccuracyTouch>
+      <AccuracyShort>0.64</AccuracyShort>
+      <AccuracyMedium>0.41</AccuracyMedium>
+      <AccuracyLong>0.22</AccuracyLong>
+      <RangedWeapon_Cooldown>4.8</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <weaponTags Inherit="false">
+      <li>TurretGun</li>
+    </weaponTags>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_MiniTurret</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <range>24.9</range>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+        <burstShotCount>3</burstShotCount>
+        <soundCast>GunShotA</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+	-->
+</Defs>

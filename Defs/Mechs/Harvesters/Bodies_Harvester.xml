@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<BodyDef>
+		<defName>HarvesterBody</defName>
+		<label>harvester corpus</label>
+		<corePart>
+			<def>HarvesterContainer</def>
+			<height>Middle</height>
+			<depth>Outside</depth>
+			<parts>
+				<li>
+					<def>HarvesterCockpit</def>
+					<coverage>0.2</coverage>
+					<height>Top</height>
+					<groups>
+						<li>HeadAttackTool</li>
+					</groups>
+					<parts>
+						<li>
+							<def>Harvester_Collector</def>
+							<coverage>0.10</coverage>
+							<height>Top</height>
+							<parts>
+								<li>
+									<def>Harvester_CollectorArm</def>
+									<customLabel>left collector arm</customLabel>
+									<coverage>0.045</coverage>
+									<groups>
+										<li>LeftHand</li>
+									</groups>
+								</li>
+								<li>
+									<def>Harvester_CollectorArm</def>
+									<customLabel>right collector arm</customLabel>
+									<coverage>0.045</coverage>
+									<groups>
+										<li>RightHand</li>
+									</groups>
+								</li>
+							</parts>
+						</li>
+						<li>
+							<def>ArtificialBrain</def>
+							<coverage>0.05</coverage>
+							<depth>Inside</depth>
+						</li>
+						<li>
+							<def>SightSensor</def>
+							<customLabel>left sight sensor</customLabel>
+							<coverage>0.08</coverage>
+						</li>
+						<li>
+							<def>SightSensor</def>
+							<customLabel>right sight sensor</customLabel>
+							<coverage>0.08</coverage>
+						</li>
+						<li>
+							<def>HearingSensor</def>
+							<customLabel>hearing sensor</customLabel>
+							<coverage>0.16</coverage>
+						</li>
+						<li>
+							<def>SmellSensor</def>
+							<coverage>0.08</coverage>
+						</li>
+					</parts>
+				</li>					
+				<li>
+					<def>Harvester_Track</def>
+					<customLabel>left track</customLabel>
+					<coverage>0.30</coverage>
+					<parts>
+						<li>
+							<def>Harvester_Wheel</def>
+							<customLabel>left first wheel</customLabel>
+							<coverage>0.075</coverage>
+						</li>
+						<li>
+							<def>Harvester_Wheel</def>
+							<customLabel>left second wheel</customLabel>
+							<coverage>0.075</coverage>
+						</li>
+						<li>
+							<def>Harvester_Wheel</def>
+							<customLabel>left third wheel</customLabel>
+							<coverage>0.075</coverage>
+						</li>
+						<li>
+							<def>Harvester_Wheel</def>
+							<customLabel>left fourth wheel</customLabel>
+							<coverage>0.075</coverage>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>Harvester_Track</def>
+					<customLabel>right track</customLabel>
+					<coverage>0.30</coverage>
+					<parts>
+						<li>
+							<def>Harvester_Wheel</def>
+							<customLabel>right first wheel</customLabel>
+							<coverage>0.075</coverage>
+						</li>
+						<li>
+							<def>Harvester_Wheel</def>
+							<customLabel>right second wheel</customLabel>
+							<coverage>0.075</coverage>
+						</li>
+						<li>
+							<def>Harvester_Wheel</def>
+							<customLabel>right third wheel</customLabel>
+							<coverage>0.075</coverage>
+						</li>
+						<li>
+							<def>Harvester_Wheel</def>
+							<customLabel>right fourth wheel</customLabel>
+							<coverage>0.075</coverage>
+						</li>
+					</parts>
+				</li>
+			</parts>
+		</corePart>
+	</BodyDef>
+
+</Defs>

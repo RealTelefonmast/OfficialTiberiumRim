@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<TiberiumRim.TRThingDef ParentName="BuildingBase">
+		<defName>TiberiumCannon</defName>
+		<label>tib cannon</label>
+		<description>ree</description>
+		<thingClass>Building_TurretGun</thingClass>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Defense</TRCategory>
+		<graphicData>
+			<texPath>Buildings/Common/Defense/TibCannon/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.5,2.5)</drawSize>
+		</graphicData>
+		<costList>
+			<Steel>40</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<uiIconPath>Buildings/Common/Defense/TibCannon/Icon</uiIconPath>
+		<uiIconScale>0.90</uiIconScale>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<thingCategories>
+			<li>BuildingsSecurity</li>
+		</thingCategories>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<Flammability>0.7</Flammability>
+			<WorkToBuild>3500</WorkToBuild>
+			<Mass>500</Mass>
+			<Beauty>-20</Beauty>
+			<ShootingAccuracyTurret>0.9</ShootingAccuracyTurret>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TNW">
+				<compClass>TiberiumRim.CompTNW_SludgeCannon</compClass>
+				<maxStorage>150</maxStorage>
+				<supportedTypes>
+					<li>Sludge</li>
+				</supportedTypes>
+				<tnwbMode>Consumer</tnwbMode>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Defense/TibCannon/Overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,2.25)</drawSize>							
+						</data>
+						<mode>Dynamic</mode>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Defense/TibCannon/Connection2</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(2.5,2.5)</drawSize>
+						</data>
+						<altitude>Floor</altitude>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Defense/TibCannon/ConnectionOverlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.5,2.5)</drawSize>							
+						</data>
+						<altitude>FloorEmplacement</altitude>
+						<mode>Dynamic</mode>
+					</li>
+				</overlays>
+			</li>		
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>80</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<fillPercent>0.4</fillPercent>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<specialDisplayRadius>12.89</specialDisplayRadius>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+			<turretGunDef>SludgeCannon</turretGunDef>
+			<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
+			<turretBurstCooldownTime>0</turretBurstCooldownTime>
+			<turretTopDrawSize>2.5</turretTopDrawSize>
+			<turretTopGraphicPath>Buildings/Common/Defense/TibCannon/Turret</turretTopGraphicPath>
+		</building>
+		<placeWorkers>
+			<li>PlaceWorker_TurretTop</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Sludge</defName>
+		<label>sludge blob</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Gas/Gas_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>TiberiumBurn</damageDef>
+			<damageAmountBase>2</damageAmountBase>
+			<speed>15</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseHumanGun">
+		<defName>SludgeCannon</defName>
+		<label>sludge cannon</label>
+		<description>.</description>
+		<graphicData>
+			<texPath>Buildings/Common/Defense/TibCannon/Turret</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<menuHidden>true</menuHidden>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<tiberiumCostPerShot>
+					<costs>
+						<li>Sludge</li>
+					</costs>
+					<cost>6</cost>
+				</tiberiumCostPerShot>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Sludge</defaultProjectile>
+				<warmupTime>3</warmupTime>
+				<range>12.89</range>
+				<forcedMissRadius>0.5</forcedMissRadius>
+				<burstShotCount>20</burstShotCount>
+				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>3</muzzleFlashScale>
+				<consumeFuelPerShot>0.2</consumeFuelPerShot>
+			</li>
+			<!--
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<tiberiumCost>
+					<costs>
+						<li>Sludge</li>
+					</costs>
+					<cost>12</cost>
+				</tiberiumCost>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Sludge</defaultProjectile>
+				<warmupTime>2</warmupTime>
+				<range>14.9</range>
+				<forcedMissRadius>0.5</forcedMissRadius>
+				<burstShotCount>15</burstShotCount>
+				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+				<muzzleFlashScale>15</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+			</li>
+			-->
+		</verbs>
+	</ThingDef>
+	
+</Defs>

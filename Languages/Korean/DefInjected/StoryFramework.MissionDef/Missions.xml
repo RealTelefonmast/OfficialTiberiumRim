@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumArrival.label>Green Amongst The Blue</TiberiumArrival.label>
+  <TiberiumArrival.description>One of your colonists spotted something in the skies.</TiberiumArrival.description>
+
+  <TiberiumKnowledge.label>타이베... 뭐?</TiberiumKnowledge.label>
+  <TiberiumKnowledge.description>...</TiberiumKnowledge.description>
+
+  <TiberiumProcessing.label>Researching Technologies</TiberiumProcessing.label>
+  <TiberiumProcessing.description>...</TiberiumProcessing.description>
+
+
+</LanguageData>

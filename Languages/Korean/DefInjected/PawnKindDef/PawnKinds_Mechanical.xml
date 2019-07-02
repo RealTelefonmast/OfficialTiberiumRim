@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Harvester_Common.label>하베스터</Harvester_Common.label>
+  <Harvester_Common.labelPlural>하베스터 부대</Harvester_Common.labelPlural>
+
+  <RepairDrone_Common.label>수리 드론</RepairDrone_Common.label>
+  <RepairDrone_Common.labelPlural>수리 드론 무리</RepairDrone_Common.labelPlural>
+
+
+</LanguageData>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Crawler Egg -->
+
+  <EggCrawelerUnfertilized.label>크롤러 무정란</EggCrawelerUnfertilized.label>
+  <EggCrawelerUnfertilized.description>수정되지 않은 크롤러 알입니다. 이것은 날로 먹거나 요리할 수 있습니다.</EggCrawelerUnfertilized.description>
+
+  <EggCrawlerFertilized.label>크롤러 유정란</EggCrawlerFertilized.label>
+  <EggCrawlerFertilized.description>수정된 크롤러 알입니다. 이것은 날로 먹거나 요리할 수 있으며, 온도가 계속 적당하게 유지된다면 새끼 크롤러가 부화합니다.</EggCrawlerFertilized.description>
+
+
+</LanguageData>

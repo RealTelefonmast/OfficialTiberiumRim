@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RepairDronePlatform.label>수리 드론 격납고</RepairDronePlatform.label>
+  <RepairDronePlatform.description>수리 드론들이 격납되는 시설입니다. 주변의 손상받은 기계 유닛을 자동으로 수리합니다.</RepairDronePlatform.description>
+  <RepairDronePlatform_Blueprint.label>수리 드론 격납고 (청사진)</RepairDronePlatform_Blueprint.label>
+  <RepairDronePlatform_Frame.label>수리 드론 격납고 (건설 중)</RepairDronePlatform_Frame.label>
+  <RepairDronePlatform_Frame.description>수리 드론들이 격납되는 시설입니다. 주변의 손상받은 기계 유닛을 자동으로 수리합니다.</RepairDronePlatform_Frame.description>
+
+  <GroundFreezer.label>심층 냉동기</GroundFreezer.label>
+  <GroundFreezer.description>주변의 땅덩이를 완전히 얼려버림으로써 타이베리움 생장을 효과적으로 억제합니다.</GroundFreezer.description>
+  <GroundFreezer_Blueprint.label>심층 냉동기 (청사진)</GroundFreezer_Blueprint.label>
+  <GroundFreezer_Blueprint_Install.label>심층 냉동기 (청사진)</GroundFreezer_Blueprint_Install.label>
+  <GroundFreezer_Frame.label>심층 냉동기 (건설 중)</GroundFreezer_Frame.label>
+  <GroundFreezer_Frame.description>주변의 땅덩이를 완전히 얼려버림으로써 타이베리움 생장을 효과적으로 억제합니다.</GroundFreezer_Frame.description>
+
+  <GroundFreezerTribal.label>지표 냉각기</GroundFreezerTribal.label>
+  <GroundFreezerTribal.description>주변의 기온을 낮춰 타이베리움 생장을 지연시킵니다.</GroundFreezerTribal.description>
+  <GroundFreezerTribal_Blueprint.label>지표 냉각기 (청사진)</GroundFreezerTribal_Blueprint.label>
+  <GroundFreezerTribal_Blueprint_Install.label>지표 냉각기 (청사진)</GroundFreezerTribal_Blueprint_Install.label>
+  <GroundFreezerTribal_Frame.label>지표 냉각기 (건설 중)</GroundFreezerTribal_Frame.label>
+  <GroundFreezerTribal_Frame.description>주변의 기온을 낮춰 타이베리움 생장을 지연시킵니다.</GroundFreezerTribal_Frame.description>
+
+
+</LanguageData>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Thrimbo_TBI.label>오염보</Thrimbo_TBI.label>
+  <Thrimbo_TBI.description>신체의 여러 부분이 타이베리움에 오염된 트럼보입니다. 대면할 때는 주의하십시오. 고통에 휩싸인 생물은 쉽게 사나워지는 법입니다.</Thrimbo_TBI.description>
+  <Thrimbo_TBI_Leather.label>오염보 모피</Thrimbo_TBI_Leather.label>
+  <Thrimbo_TBI_Leather.description>오염보 모피</Thrimbo_TBI_Leather.description>
+  <Thrimbo_TBI_Leather.stuffProps.stuffAdjective>오염보 모피</Thrimbo_TBI_Leather.stuffProps.stuffAdjective>
+  <Thrimbo_TBI_Meat.label>녹색 야수 고기</Thrimbo_TBI_Meat.label>
+  <Thrimbo_TBI_Meat.description>녹색 야수 고기</Thrimbo_TBI_Meat.description>
+  <Thrimbo_TBI_Corpse.label>오염보 시체</Thrimbo_TBI_Corpse.label>
+  <Thrimbo_TBI_Corpse.description>오염보 시체</Thrimbo_TBI_Corpse.description>
+
+  <TiberiumTerror_TBI.label>타이베리움 괴수</TiberiumTerror_TBI.label>
+  <TiberiumTerror_TBI.description>트럼보와 비슷하지만 검은색과 파란색으로 이뤄진 이 거대한 동물은 한눈에 봐도 매우 위험해 보입니다.</TiberiumTerror_TBI.description>
+  <TiberiumTerror_TBI_Leather.label>괴수 모피</TiberiumTerror_TBI_Leather.label>
+  <TiberiumTerror_TBI_Leather.description>괴수 모피</TiberiumTerror_TBI_Leather.description>
+  <TiberiumTerror_TBI_Leather.stuffProps.stuffAdjective>괴수 모피</TiberiumTerror_TBI_Leather.stuffProps.stuffAdjective>
+  <TiberiumTerror_TBI_Meat.label>푸른색 야수 고기</TiberiumTerror_TBI_Meat.label>
+  <TiberiumTerror_TBI_Meat.description>푸른색 고기</TiberiumTerror_TBI_Meat.description>
+  <TiberiumTerror_TBI_Corpse.label>타이베리움 야수 시체</TiberiumTerror_TBI_Corpse.label>
+  <TiberiumTerror_TBI_Corpse.description>타이베리움 괴수 시체</TiberiumTerror_TBI_Corpse.description>
+
+  <Tibscarab_TBI.label>티브스캐럽</Tibscarab_TBI.label>
+  <Tibscarab_TBI.description>메카노이드 침입에 대항하기 위해 설계된 인조 곤충들의 노동계급은 혹독한 타이베리움 환경조차도 극복하고 살아남았습니다. 상위 계급의 곤충들은 자취를 감췄지만, 이들의 덩치와 날카로운 껍질은 여전히 위협적입니다.</Tibscarab_TBI.description>
+  <!-- Leather Amount: 0 -->
+  <!-- Use Meat From: Visceroid_TBI -->
+  <Tibscarab_TBI_Corpse.label>티브스캐럽 시체</Tibscarab_TBI_Corpse.label>
+  <Tibscarab_TBI_Corpse.description>티브스캐럽 시체</Tibscarab_TBI_Corpse.description>
+
+  <TiberiumFiend_TBI.label>타이베리움 야수</TiberiumFiend_TBI.label>
+  <TiberiumFiend_TBI.description>타이베리움 환경에 적응한 포유류 중 가장 표준적인 형태입니다. 무리를 짓는 경우가 많고 지능적이며, 모피와 발톱은 대부분 결정화되어 있습니다.</TiberiumFiend_TBI.description>
+  <TiberiumFiend_TBI_Leather.label>야수 모피</TiberiumFiend_TBI_Leather.label>
+  <TiberiumFiend_TBI_Leather.description>야수 모피</TiberiumFiend_TBI_Leather.description>
+  <TiberiumFiend_TBI_Leather.stuffProps.stuffAdjective>야수 모피</TiberiumFiend_TBI_Leather.stuffProps.stuffAdjective>
+  <!-- Use Meat From: Thrimbo_TBI -->
+  <TiberiumFiend_TBI_Corpse.label>타이베리움 야수 시체</TiberiumFiend_TBI_Corpse.label>
+  <TiberiumFiend_TBI_Corpse.description>타이베리움 야수 시체</TiberiumFiend_TBI_Corpse.description>
+
+  <BigTiberiumFiend_TBI.label>타이베리움 야수</BigTiberiumFiend_TBI.label>
+  <BigTiberiumFiend_TBI.description>타이베리움 환경에 적응한 대형 잡식성 포유류입니다. 단독으로 움직이지만 매우 강인하며, 모피와 발톱은 대부분 결정화되어 있습니다.\n\n평소에는 얌전한 먹이를 선호하지만, 굶주리게 되면 적극적으로 사냥에 나설 것입니다.</BigTiberiumFiend_TBI.description>
+  <!-- Use Leather From: TiberiumFiend_TBI -->
+  <!-- Use Meat From: Thrimbo_TBI -->
+  <BigTiberiumFiend_TBI_Corpse.label>타이베리움 야수 시체</BigTiberiumFiend_TBI_Corpse.label>
+  <BigTiberiumFiend_TBI_Corpse.description>타이베리움 야수 시체</BigTiberiumFiend_TBI_Corpse.description>
+
+  <SmallTiberiumFiend_TBI.label>타이베리움 야수</SmallTiberiumFiend_TBI.label>
+  <SmallTiberiumFiend_TBI.description>타이베리움 환경에 적응한 육식성 포유류입니다. 덩치는 작지만 아주 사납습니다.</SmallTiberiumFiend_TBI.description>
+  <!-- Use Leather From: TiberiumFiend_TBI -->
+  <!-- Use Meat From: Thrimbo_TBI -->
+  <SmallTiberiumFiend_TBI_Corpse.label>타이베리움 야수 시체</SmallTiberiumFiend_TBI_Corpse.label>
+  <SmallTiberiumFiend_TBI_Corpse.description>타이베리움 야수 시체</SmallTiberiumFiend_TBI_Corpse.description>
+
+  <Crawler_TBI.label>크롤러</Crawler_TBI.label>
+  <Crawler_TBI.description>타이베리움 환경에 적응한 커다란 뱀입니다. 2060년대에 사용된 무기들과는 아무런 관련도 없습니다.</Crawler_TBI.description>
+  <!-- Use Leather From: TiberiumFiend_TBI -->
+  <!-- Use Meat From: TiberiumTerror_TBI -->
+  <Crawler_TBI_Corpse.label>크롤러 시체</Crawler_TBI_Corpse.label>
+  <Crawler_TBI_Corpse.description>크롤러 시체</Crawler_TBI_Corpse.description>
+
+  <Boomfiend_TBI.label>폭탄마</Boomfiend_TBI.label>
+  <Boomfiend_TBI.description>폭탄마는 타이베리움 환경에 적합한 유전자를 가진 폭탄쥐의 변종입니다.</Boomfiend_TBI.description>
+  <!-- Use Leather From: Visceroid_TBI -->
+  <!-- Use Meat From: Visceroid_TBI -->
+  <Boomfiend_TBI_Corpse.label>폭탄마 잔해</Boomfiend_TBI_Corpse.label>
+  <Boomfiend_TBI_Corpse.description>폭탄마 잔해</Boomfiend_TBI_Corpse.description>
+
+  <Spiner_TBI.label>스피너</Spiner_TBI.label>
+  <Spiner_TBI.description>돼지처럼 생긴 사나운 돌연변이 생물입니다. 척추 전체가 타이베리움으로 강화되어 있습니다.</Spiner_TBI.description>
+  <!-- Use Leather From: TiberiumFiend_TBI -->
+  <!-- Use Meat From: Thrimbo_TBI -->
+  <Spiner_TBI_Corpse.label>스피너 시체</Spiner_TBI_Corpse.label>
+  <Spiner_TBI_Corpse.description>스피너 시체</Spiner_TBI_Corpse.description>
+
+  <Tiffalo_TBI.label>티팔로</Tiffalo_TBI.label>
+  <Tiffalo_TBI.description>이 생물은 결정질 모피 때문에 푹신함을 잃어버렸습니다. 그리고 약간 사납습니다.</Tiffalo_TBI.description>
+  <!-- Use Leather From: TiberiumFiend_TBI -->
+  <!-- Use Meat From: TiberiumTerror_TBI -->
+  <Tiffalo_TBI_Corpse.label>티팔로 시체</Tiffalo_TBI_Corpse.label>
+  <Tiffalo_TBI_Corpse.description>티팔로 시체</Tiffalo_TBI_Corpse.description>
+
+
+  <!--<BigTiberiumFiend_TBI_Leather.label>오염된 곰 모피</BigTiberiumFiend_TBI_Leather.label>-->
+  <!--<BigTiberiumFiend_TBI_Leather.description>오염된 곰 모피</BigTiberiumFiend_TBI_Leather.description>-->
+  <!--<BigTiberiumFiend_TBI_Leather.stuffProps.stuffAdjective>오염된 곰 모피</BigTiberiumFiend_TBI_Leather.stuffProps.stuffAdjective>-->
+  <!--<BigTiberiumFiend_TBI_Meat.label>오염된 곰 고기</BigTiberiumFiend_TBI_Meat.label>-->
+  <!--<BigTiberiumFiend_TBI_Meat.description>오염된 곰 고기</BigTiberiumFiend_TBI_Meat.description>-->
+  <!-- Use Meat From: Megaspider -->
+  <!--<TiberiumFiend_TBI_Meat.label>오염된 늑대 고기</TiberiumFiend_TBI_Meat.label>-->
+  <!--<TiberiumFiend_TBI_Meat.description>오염된 늑대 고기</TiberiumFiend_TBI_Meat.description>-->
+  <!--<SmallTiberiumFiend_TBI_Leather.label>오염된 여우 모피</SmallTiberiumFiend_TBI_Leather.label>-->
+  <!--<SmallTiberiumFiend_TBI_Leather.description>오염된 여우 모피</SmallTiberiumFiend_TBI_Leather.description>-->
+  <!--<SmallTiberiumFiend_TBI_Leather.stuffProps.stuffAdjective>오염된 여우 모피</SmallTiberiumFiend_TBI_Leather.stuffProps.stuffAdjective>-->
+  <!-- Use Meat From: FoxFennec -->
+  <!--<Crawler_TBI_Leather.label>크롤러 가죽</Crawler_TBI_Leather.label>-->
+  <!--<Crawler_TBI_Leather.description>크롤러 가죽</Crawler_TBI_Leather.description>-->
+  <!--<Crawler_TBI_Leather.stuffProps.stuffAdjective>크롤러 가죽</Crawler_TBI_Leather.stuffProps.stuffAdjective>-->
+  <!--<Crawler_TBI_Meat.label>크롤러 내장</Crawler_TBI_Meat.label>-->
+  <!--<Crawler_TBI_Meat.description>크롤러 내장</Crawler_TBI_Meat.description>-->
+  <!--<Boomfiend_TBI_Leather.label>폭탄마 껍질</Boomfiend_TBI_Leather.label>-->
+  <!--<Boomfiend_TBI_Leather.description>폭탄마 껍질</Boomfiend_TBI_Leather.description>-->
+  <!--<Boomfiend_TBI_Leather.stuffProps.stuffAdjective>폭탄마 껍질</Boomfiend_TBI_Leather.stuffProps.stuffAdjective>-->
+  <!--<Boomfiend_TBI_Meat.label>폭탄마 조직</Boomfiend_TBI_Meat.label>-->
+  <!--<Boomfiend_TBI_Meat.description>폭탄마 조직</Boomfiend_TBI_Meat.description>-->
+  <!--<Spiner_TBI_Leather.label>스피너 가죽</Spiner_TBI_Leather.label>-->
+  <!--<Spiner_TBI_Leather.description>스피너 가죽</Spiner_TBI_Leather.description>-->
+  <!--<Spiner_TBI_Leather.stuffProps.stuffAdjective>스피너 가죽</Spiner_TBI_Leather.stuffProps.stuffAdjective>-->
+  <!--<Spiner_TBI_Meat.label>스피너 내장</Spiner_TBI_Meat.label>-->
+  <!--<Spiner_TBI_Meat.description>스피너 내장</Spiner_TBI_Meat.description>-->
+  <!--<Tiffalo_TBI_Leather.label>티팔로 모피</Tiffalo_TBI_Leather.label>-->
+  <!--<Tiffalo_TBI_Leather.description>티팔로 모피</Tiffalo_TBI_Leather.description>-->
+  <!--<Tiffalo_TBI_Leather.stuffProps.stuffAdjective>티팔로 모피</Tiffalo_TBI_Leather.stuffProps.stuffAdjective>-->
+  <!--<Tiffalo_TBI_Meat.label>티팔로 고기</Tiffalo_TBI_Meat.label>-->
+  <!--<Tiffalo_TBI_Meat.description>티팔로 고기</Tiffalo_TBI_Meat.description>-->
+
+</LanguageData>

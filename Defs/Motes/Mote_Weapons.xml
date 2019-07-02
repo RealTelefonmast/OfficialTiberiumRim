@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--===============  ==============-->
+	<ThingDef ParentName="MoteBase">
+		<defName>BeamMote</defName>
+		<thingClass>TiberiumRim.Mote_Beam</thingClass>
+		<graphicData>
+			<texPath>Things/Mote/PowerBeam</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>0.25</fadeInTime>
+			<solidTime>0.25</solidTime>
+			<fadeOutTime>0.85</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>ObeliskGlow</defName>
+		<graphicData>
+			<texPath>Motes/Fog/ObeliskGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>0.1</fadeInTime>
+			<solidTime>0.1</solidTime>
+			<fadeOutTime>1</fadeOutTime>
+		</mote>
+	</ThingDef>
+
+</Defs>
