@@ -26,7 +26,6 @@
 		<workType>Crafting</workType>
 		<priorityInType>97</priorityInType>
 		<fixedBillGiverDefs>
-			<li>TiberiumResearchCraftingBench</li>
 			<li>TiberiumWorkbench</li>
 		</fixedBillGiverDefs>
 		<verb>make Tiberium item at</verb>

@@ -19,7 +19,7 @@ namespace TiberiumRim
 
         public List<Color> colorSpectrum = new List<Color>();
         public List<TerrainSupport> terrainSupport = new List<TerrainSupport>();
-        public List<TiberiumPlantRecord> plantSupport = new List<TiberiumPlantRecord>();
+        public List<ThingProbability> plantSupport = new List<ThingProbability>();
 
         public TerrainSupport TerrainSupportFor(TerrainDef def)
         {
@@ -28,30 +28,30 @@ namespace TiberiumRim
 
         public bool SupportsPlant(ThingDef plant)
         {
-            return plantSupport.Any(p => p.plant == plant);
+            return plantSupport.Any(p => p.thing == plant);
         }
 
         public ThingDef TiberiumPlantFor()
         {
             foreach (var ps in plantSupport)
             {
-                if (TRUtils.Chance(ps.chance))
-                    return ps.plant;
+                if (TRUtils.Chance(ps.probability))
+                    return ps.thing;
             }
             return null;
         }
     }
 
-    public class TiberiumPlantRecord
+    public class ThingProbability
     {
-        public ThingDef plant;
-        public float chance;
+        public ThingDef thing;
+        public float probability;
 
         public void LoadDataFromXmlCustom(XmlNode xmlRoot)
         {
             string[] parts = Regex.Replace(xmlRoot.FirstChild.Value, @"\s", "").Split(',');
-            DirectXmlCrossRefLoader.RegisterObjectWantsCrossRef(this, "plant", parts[0]);
-            chance = ParseHelper.ParseFloat(parts[1]);
+            DirectXmlCrossRefLoader.RegisterObjectWantsCrossRef(this, "thing", parts[0]);
+            probability = ParseHelper.ParseFloat(parts[1]);
         }
     }
 }

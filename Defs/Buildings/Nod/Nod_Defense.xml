@@ -28,9 +28,6 @@
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<stealable>false</stealable>
 		<rotatable>false</rotatable>
-		<thingCategories>
-			<li>BuildingsSecurity</li>
-		</thingCategories>
 		<statBases>
 			<MaxHitPoints>460</MaxHitPoints>
 			<Flammability>0.40</Flammability>
@@ -102,7 +99,7 @@
 		<label>obelisk gun</label>
 		<description>pew pew</description>
 		<graphicData>
-			<texPath>Building/Nod/Defense/Obelisk/ObeliskGun</texPath>
+			<texPath>Buildings/Nod/Defense/Obelisk/ObeliskGun</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<menuHidden>true</menuHidden>

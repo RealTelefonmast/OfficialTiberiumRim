@@ -81,24 +81,41 @@
 		</recipes>
 	</ThingDef>
 	
-	<ThingDef ParentName="BasePawn_TR" Name="AnimalThingBase_TR" Abstract="True">
+		<ThingDef Name="AnimalBase_TR" ParentName="BasePawn_TR" Abstract="True" >
 		<statBases>
+			<Flammability>0.5</Flammability>
+			<ToxicSensitivity>0</ToxicSensitivity>
+			<PainShockThreshold>1</PainShockThreshold>
 			<LeatherAmount>30</LeatherAmount>
+			<MeatAmount>50</MeatAmount>
+			<ComfyTemperatureMin>-25</ComfyTemperatureMin>
+			<ComfyTemperatureMax>75</ComfyTemperatureMax>
+			<ArmorRating_Blunt>0</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0</ArmorRating_Sharp>
+			<ArmorRating_Heat>0</ArmorRating_Heat>
 		</statBases>
 		<race>
+			<herdAnimal>true</herdAnimal>
+			<packAnimal>true</packAnimal>
 			<thinkTreeMain>Animal</thinkTreeMain>
 			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+			<hasGenders>true</hasGenders>
 			<nameGenerator>NamerAnimalGenericMale</nameGenerator>
 			<nameGeneratorFemale>NamerAnimalGenericFemale</nameGeneratorFemale>
-			<manhunterOnDamageChance>0.10</manhunterOnDamageChance>
+			<manhunterOnDamageChance>1</manhunterOnDamageChance>
 			<manhunterOnTameFailChance>0.15</manhunterOnTameFailChance>
+			<predator>true</predator>
+			<fleshType>Mutated</fleshType>
+			<bloodDef>FilthTibBloodG</bloodDef>
 			<nameOnNuzzleChance>0.5</nameOnNuzzleChance>
 			<trainability>Intermediate</trainability>
-			<meatColor>(173,217,130)</meatColor>
 			<hediffGiverSets>
-				<li>OrganicStandard</li>
+			<li>OrganicStandard</li>
 			</hediffGiverSets>
 		</race>
+		<tradeTags>
+			<li>BadassAnimal</li>
+		</tradeTags>
 		<recipes>
 			<li>ExciseCarcinoma</li>
 			<li>AdministerMechSerumHealer</li>

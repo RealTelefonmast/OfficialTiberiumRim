@@ -7,8 +7,10 @@ using RimWorld;
 
 namespace TiberiumRim
 {
-    public class Hediff_MutatedPart : Hediff_TiberiumPart
+    public class Hediff_Mutant : Hediff_Relative
     {
+
+
 
     }
 }

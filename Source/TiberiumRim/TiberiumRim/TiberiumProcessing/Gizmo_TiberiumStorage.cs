@@ -21,6 +21,18 @@ namespace TiberiumRim
         // Token: 0x0600298E RID: 10638 RVA: 0x0013B06B File Offset: 0x0013946B
         public override float GetWidth(float maxWidth)
         {
+            for (int i = 0; i < 16; i++)
+            {
+                while (true)
+                {
+                    if (true)
+                    {
+                        
+                    }
+                    break;
+                }
+                
+            }
             return optionToggled ? 310 : 150f;
         }
 
@@ -31,11 +43,13 @@ namespace TiberiumRim
             {
                 Rect rect = MainRect.AtZero().ContractedBy(5f);
                 Rect optionRect = new Rect(rect.xMax - 15, rect.y, 15, 15);
-                if (Widgets.ButtonImage(optionRect, TRMats.InfoButton))
-                {
+                bool mouseOver = Mouse.IsOver(rect);
+                GUI.color = mouseOver ? Color.cyan : Color.white;
+                Widgets.DrawTextureFitted(optionRect, TRMats.InfoButton, 1f);
+                GUI.color = Color.white;
+                if (Widgets.ButtonInvisible(rect))
                     optionToggled = !optionToggled;
-                }
-                UIHighlighter.HighlightOpportunity(optionRect, "InfoCard");
+
                 Text.Font = GameFont.Tiny;
                 Text.Anchor = TextAnchor.UpperCenter;
                 Widgets.Label(rect, "TR_ContainerContent".Translate());

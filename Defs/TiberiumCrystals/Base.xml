@@ -99,12 +99,6 @@
 			<ai_chillDestination>false</ai_chillDestination>
 			<allowAutoroof>false</allowAutoroof>
 		</building>
-		<friendlyTo>
-			<li>TiberiumGrass</li>
-			<li>TiberiumBush</li>
-			<li>TiberiumShroom</li>
-			<li>TiberiumTree</li>
-		</friendlyTo>
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<TiberiumRim.TiberiumCrystalDef Name="TiberiumForWater" ParentName="TiberiumCrystalBase" Abstract="True">

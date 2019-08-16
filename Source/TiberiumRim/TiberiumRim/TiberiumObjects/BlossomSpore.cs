@@ -19,7 +19,10 @@ namespace TiberiumRim
 
         public override void FinishAction()
         {
-            GenSpawn.Spawn(blossom, Position, map);
+            if (Position.SupportsTiberiumTerrain(map))
+                GenSpawn.Spawn(blossom, Position, map);
+
+            DeSpawn();
         }
     }
 }

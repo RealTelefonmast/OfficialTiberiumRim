@@ -106,9 +106,50 @@
 		<tiberiumTypes>
 			<li>TiberiumPodBlue</li>
 		</tiberiumTypes>
+		<plantsByDistance Inherit="False">
+			<li>
+				<plants>
+					<li>TiberiumGrass,0.25</li>
+					<li>TiberiumGrass_Blue,1</li>
+				</plants>
+				<chance>0</chance>
+			</li>
+			<li>
+				<plants>
+					<li>TiberiumBush,1</li>
+				</plants>
+				<chance>0.15</chance>
+			</li>
+			<li>
+				<plants>
+					<li>TiberiumShroom_Purple,2</li>
+					<li>TiberiumShroom_Blue,1.75</li>
+				</plants>
+				<chance>0.45</chance>
+			</li>
+			<li>
+				<plants>
+					<li>TiberiumTree,2</li>
+				</plants>
+				<chance>0.65</chance>
+			</li>
+			<li>
+				<plants>
+					<li>SmallBlossom,3</li>
+				</plants>
+				<chance>0.7</chance>
+			</li>
+			<li>
+				<plants>
+					<li>AlocasiaBlossom,4</li>
+				</plants>
+				<chance>0.8</chance>
+			</li>
+		</plantsByDistance>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef Name="SmallBlossomBase" ParentName="BlossomTreeBase" Abstract="True">
+		<thingClass>TiberiumRim.TiberiumBlossom</thingClass>
 		<statBases>
 			<MaxHitPoints>400</MaxHitPoints>
 		</statBases>
@@ -131,7 +172,7 @@
 	<TiberiumRim.TiberiumProducerDef ParentName="SmallBlossomBase">
 		<defName>AlocasiaBlossom</defName>
 		<label>alocasia candentis</label>
-		<description>This small mutated plant is part of Tiberium's terraforming abilities, acting as a biological Tiberium producer, spreading toxic spores through the air.\n While extremely toxic, the wide leafs and dark blue colors make it quite a sight to find. </description>
+		<description>This small mutated plant is part of Tiberium's terraforming abilities, acting as a biological Tiberium producer, spreading toxic spores through the air.\n While extremely toxic, the wide leafs and dark blue colors make it quite a sight to find.</description>
 		<statBases>
 			<MaxHitPoints>360</MaxHitPoints>
 		</statBases>
@@ -154,23 +195,31 @@
 				</effecters>
 			</li>
 		</comps>
-		<plantsByDistance>
+		<plantsByDistance Inherit="False">
 			<li>
 				<plants>
 					<li>TiberiumGrass,1</li>
-					<li>TiberiumGrass_Blue,1</li>
+					<li>TiberiumGrass_Blue,0.75</li>
 				</plants>
-				<chance>0.4</chance>
+				<chance>0</chance>
 			</li>
 			<li>
 				<plants>
-					<li>SmallBlossom,5</li>
+					<li>TiberiumShroom_Yellow,1.5</li>
+					<li>TiberiumShroom_Blue,1.5</li>
+					<li>TiberiumShroom_Purple,1</li>
 				</plants>
-				<chance>0.8</chance>
+				<chance>0.35</chance>
 			</li>
 			<li>
 				<plants>
-					<li>AlocasiaBlossom,3</li>
+					<li>SmallBlossom,2</li>
+				</plants>
+				<chance>0.65</chance>
+			</li>
+			<li>
+				<plants>
+					<li>AlocasiaBlossom,1.25</li>
 				</plants>
 				<chance>0.85</chance>
 			</li>
@@ -201,7 +250,7 @@
 			<rotateDrawSize>true</rotateDrawSize>
 			<alignToBottom>true</alignToBottom>
 		</extraData>
-		<plantsByDistance>
+		<plantsByDistance Inherit="False">
 			<li>
 				<plants>
 					<li>TiberiumGrass,1</li>

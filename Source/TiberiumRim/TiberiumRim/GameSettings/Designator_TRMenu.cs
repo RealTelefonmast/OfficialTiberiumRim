@@ -17,6 +17,8 @@ namespace TiberiumRim
         private Dictionary<FactionDesignationDef,DesignationTexturePack> TexturePacks = new Dictionary<FactionDesignationDef, DesignationTexturePack>();
         private Vector2 scroller = Vector2.zero;
         private static Designator_BuildFixed mouseOverGizmo;
+        private static ThingDef inactiveDef;
+        private Rect currentRect;
         private string SearchText = "";
 
         private static Vector2 MenuSize = new Vector2(370, 526);
@@ -44,11 +46,23 @@ namespace TiberiumRim
             {
                 mouseOverGizmo.DrawPanelReadout(ref curY, width);
             }
+
+            if (inactiveDef != null)
+            {
+                GUI.color = Color.red;
+                Text.Font = GameFont.Medium;
+                string locked = "Currently Locked";
+                Vector2 lockedSize = Text.CalcSize(locked);
+                Rect lockedRect = new Rect(new Vector2(0,curY - lockedSize.y), lockedSize);
+                Widgets.Label(lockedRect, locked);
+                Text.Font = GameFont.Small;
+                GUI.color = Color.white;
+            }
         }     
 
         public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth)
         {
-            Rect windowRect = new Rect(200f, UI.screenHeight - (560f + searchBarSize.y), MenuSize.x, MenuSize.y + searchBarSize.y);
+            Rect windowRect = currentRect = new Rect(200f, UI.screenHeight - (560f + searchBarSize.y), MenuSize.x, MenuSize.y + searchBarSize.y);
             Find.WindowStack.ImmediateWindow(231674, windowRect, WindowLayer.GameUI, delegate
             {
                 Rect searchBar = new Rect(new Vector2(MenuSize.x - searchBarSize.x, 0f), searchBarSize);
@@ -59,34 +73,37 @@ namespace TiberiumRim
                 //Reduce Content Rect
                 menuRect = new Rect(sideMargin, menuRect.y + topBotMargin, menuRect.width - sideMargin , menuRect.height - (topBotMargin * 2));
                 GUI.BeginGroup(menuRect);
-                SelectFaction(3);
-                Rect DesignatorRect = new Rect(iconSize + sideMargin, 0f, menuRect.width - (iconSize + sideMargin), menuRect.height);
-                GUI.BeginGroup(DesignatorRect);
-                var cats = SelectedFaction.subCategories;
-                Vector2 curXY = Vector2.zero;
-                for(int i = 0; i < cats.Count; i++)
-                {
-                    TRThingCategoryDef cat = cats[i];
-                    Rect tabRect = new Rect(curXY, tabSize);
-                    Rect clickRect = new Rect(tabRect.x + 5, tabRect.y, tabRect.width - (10), tabRect.height);
-                    Texture2D tex = cat == SelectedCategory || Mouse.IsOver(clickRect) ? TexturePacks[SelectedFaction].TabSelected : TexturePacks[SelectedFaction].Tab;
-                    Widgets.DrawTextureFitted(tabRect, tex, 1f);
+                    SelectFaction(3);
+                    Rect DesignatorRect = new Rect(iconSize + sideMargin, 0f, menuRect.width - (iconSize + sideMargin), menuRect.height);
+                    GUI.BeginGroup(DesignatorRect);
+                        var cats = SelectedFaction.subCategories;
+                        Vector2 curXY = Vector2.zero;
+                        for(int i = 0; i < cats.Count; i++)
+                        {
+                            TRThingCategoryDef cat = cats[i];
+                            Rect tabRect = new Rect(curXY, tabSize);
+                            Rect clickRect = new Rect(tabRect.x + 5, tabRect.y, tabRect.width - (10), tabRect.height);
+                            Texture2D tex = cat == SelectedCategory || Mouse.IsOver(clickRect) ? TexturePacks[SelectedFaction].TabSelected : TexturePacks[SelectedFaction].Tab;
+                            Widgets.DrawTextureFitted(tabRect, tex, 1f);
 
-                    Text.Anchor = TextAnchor.MiddleCenter;
-                    Text.Font = GameFont.Small;
-                    string catLabel = ("TRCat_" + cat.defName).Translate();
-                    if (Text.CalcSize(catLabel).y > tabRect.width)
-                    { Text.Font = GameFont.Tiny; }
-                    Widgets.Label(tabRect, catLabel);
-                    Text.Font = GameFont.Tiny;
-                    Text.Anchor = 0;
+                            Text.Anchor = TextAnchor.MiddleCenter;
+                            Text.Font = GameFont.Small;
+                            string catLabel = ("TRCat_" + cat.defName).Translate();
+                            if (Text.CalcSize(catLabel).y > tabRect.width)
+                            { Text.Font = GameFont.Tiny; }
+                            Widgets.Label(tabRect, catLabel);
+                            Text.Font = GameFont.Tiny;
+                            Text.Anchor = 0;
 
-                    AdjustXY(ref curXY, tabSize.x-10f, tabSize.y, tabSize.x * 3);
-                    if (Widgets.ButtonInvisible(clickRect))
-                    { SetSelectedCat(cat); }
-                }
-                DrawFactionCat(new Rect(0f, curXY.y, DesignatorRect.width, DesignatorRect.height - curXY.y), SelectedFaction, SelectedCategory);
-                GUI.EndGroup();                
+                            AdjustXY(ref curXY, tabSize.x-10f, tabSize.y, tabSize.x * 3);
+                            if (Widgets.ButtonInvisible(clickRect))
+                            {
+                                SearchText = "";
+                                SetSelectedCat(cat);
+                            }
+                        }
+                        DrawFactionCat(new Rect(0f, curXY.y, DesignatorRect.width, DesignatorRect.height - curXY.y), SelectedFaction, SelectedCategory);
+                    GUI.EndGroup();                
                 GUI.EndGroup();
             }, false, false, 0f);
             return new GizmoResult(GizmoState.Mouseover);
@@ -96,7 +113,8 @@ namespace TiberiumRim
         {
             Text.Font = GameFont.Small;
             Text.Anchor = TextAnchor.MiddleLeft;
-            if (SearchText == "")
+
+            if (SearchText.NullOrEmpty())
             {
                 GUI.color = new Color(1, 1, 1, 0.75f);
                 Widgets.Label(textArea.ContractedBy(2), "Search..");
@@ -111,22 +129,23 @@ namespace TiberiumRim
             if (faction != null && category != null)
             {             
                 GUI.BeginGroup(main);
-                Vector2 size = new Vector2(80, 80);
-                Vector2 curXY = new Vector2(5f, 5f);
-                List<TRThingDef> things = SearchText.NullOrEmpty() ? TRThingDefList.Categorized[faction][category] : TRThingDefList.Categorized.SelectMany(d => d.Value.SelectMany(d2 => d2.Value.Where(t => t.label.ToLower().Contains(SearchText.ToLower())))).ToList();
-                Rect viewRect = new Rect(0f, 0f, main.width, 10 + ((float)(Math.Round((decimal)(things.Count / 4), 0, MidpointRounding.AwayFromZero) + 1) * size.x));
-                Rect scrollerRect = new Rect(0f, 0f, main.width, main.height+5);
-                Widgets.BeginScrollView(scrollerRect, ref scroller, viewRect, false);
-                mouseOverGizmo = null;
-                for (int i = 0; i < things.Count; i++)
-                {
-                    TRThingDef def = things[i];
-                    if (IsVisible(def))
+                    Vector2 size = new Vector2(80, 80);
+                    Vector2 curXY = new Vector2(5f, 5f);
+                    List<TRThingDef> things = SearchText.NullOrEmpty() ? TRThingDefList.Categorized[faction][category] : TRThingDefList.Categorized.SelectMany(d => d.Value.SelectMany(d2 => d2.Value.Where(t => t.label.ToLower().Contains(SearchText.ToLower())))).ToList();
+                    Rect viewRect = new Rect(0f, 0f, main.width, 10 + ((float)(Math.Round((decimal)(things.Count / 4), 0, MidpointRounding.AwayFromZero) + 1) * size.x));
+                    Rect scrollerRect = new Rect(0f, 0f, main.width, main.height+5);
+                    Widgets.BeginScrollView(scrollerRect, ref scroller, viewRect, false);
+                    mouseOverGizmo = null;
+                    inactiveDef = null;
+                    for (int i = 0; i < things.Count; i++)
                     {
-                        Designator(def, main, size, ref curXY);
+                        TRThingDef def = things[i];
+                        if (IsVisible(def))
+                            Designator(def, main, size, ref curXY);
+                        else
+                            InactiveDesignator(def, main, size, ref curXY);
                     }
-                }
-                Widgets.EndScrollView();
+                    Widgets.EndScrollView();
                 GUI.EndGroup();
             }
         }
@@ -152,6 +171,36 @@ namespace TiberiumRim
             if (Widgets.ButtonInvisible(rect))
             { mouseOverGizmo.ProcessInput(null); }
             AdjustXY(ref XY, size.x, size.x, main.width, 5);
+        }
+
+        private void InactiveDesignator(TRThingDef def, Rect main, Vector2 size, ref Vector2 XY)
+        {
+            Rect rect = new Rect(new Vector2(XY.x, XY.y), size);
+            GUI.color = Color.grey;
+            bool mouseOver = Mouse.IsOver(rect);
+            Texture2D tex = mouseOver ? TexturePacks[SelectedFaction].DesignatorSelected : TexturePacks[SelectedFaction].Designator;
+            Widgets.DrawTextureFitted(rect, tex, 1f);
+            Widgets.DrawTextureFitted(rect.ContractedBy(2), def.uiIcon, 1);
+            GUI.color = Color.white;
+            if (Mouse.IsOver(rect))
+                inactiveDef = def;
+
+            AdjustXY(ref XY, size.x, size.x, main.width, 5);
+        }
+
+        private Texture2D GrayscaleFrom(Texture2D tex)
+        {
+            var pix = tex.GetPixels32();
+            for (int x = 0; x < tex.width; x++)
+            {
+                for (int y = 0; y < tex.height; y++)
+                {
+                    Color col = pix[x + y * tex.width];
+                    var g = col.grayscale;
+                    //tex.SetPixel(x,y,  new Color(g,g,g));
+                }
+            }
+            return tex;
         }
 
         private void SetSelectedCat(TRThingCategoryDef def)
@@ -185,6 +234,7 @@ namespace TiberiumRim
                 GUI.color = Color.white;
                 if (Widgets.ButtonInvisible(partRect))
                 {
+                    SearchText = "";
                     SelectedFaction = des;
                 }
             }
@@ -237,7 +287,6 @@ namespace TiberiumRim
 
         public override void ProcessInput(Event ev)
         {
-            return;
         }
 
         private bool CanSelect(FactionDesignationDef faction)

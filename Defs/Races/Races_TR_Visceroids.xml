@@ -428,7 +428,7 @@
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
-					<texPath>Pawns/WildLife/VeinRock/VeinRock</texPath>
+					<texPath>Items/Misc/VeinRock/VeinRock</texPath>
 					<drawSize>1</drawSize>
 				</bodyGraphicData>
 			</li>

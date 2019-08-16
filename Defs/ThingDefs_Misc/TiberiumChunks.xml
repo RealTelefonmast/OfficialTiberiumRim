@@ -134,7 +134,8 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="TiberiumChunkBase">
-		<defName>VeinyTiberiumChunk</defName>
+		<defName>VeinTiberiumChunk</defName>
+		<thingClass>TiberiumRim.TiberiumObject</thingClass>
 		<label>veiny chunk</label>
 		<description>A vein infested chunk, I swear I saw it moving.</description>
 		<statBases>
@@ -143,7 +144,7 @@
 		<comps Inherit="False">
 		</comps>
 		<graphicData>
-			<texPath>Pawns/WildLife/VeinRock</texPath>
+			<texPath>Items/Misc/VeinRock</texPath>
 		</graphicData>
 	</ThingDef>
 	

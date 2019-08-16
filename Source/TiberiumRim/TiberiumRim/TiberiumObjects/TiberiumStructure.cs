@@ -21,6 +21,7 @@ namespace TiberiumRim
             }
         }
 
+        public WorldComponent_Tiberium WorldTiberiumComp => Find.World.GetComponent<WorldComponent_Tiberium>();
         public MapComponent_Tiberium TiberiumComp => Map.GetComponent<MapComponent_Tiberium>();
     }
 }

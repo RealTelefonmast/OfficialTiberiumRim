@@ -15,26 +15,17 @@ namespace TiberiumRim
         public List<TiberiumCrystalDef> tiberiumTypes = new List<TiberiumCrystalDef>();
         public List<PlantGroupChance> plantsByDistance;
         public List<PotentialEvolution> evolutions;
+        public SporeProperties spore;
         public SpawnProperties spawner = new SpawnProperties();
         public float daysToMature = 0f;
         public bool forResearch = true;
         public bool growsFlora = true;
         public bool leaveTiberium = true;
 
-        public ThingDef SelectPlantByDistance(float distance, float maxDistance)
+        public ThingDef SelectPlantByDistance(float distance, float maxDistance, TiberiumTerrainDef terrain)
         {
             var list = new List<ThingDef>();
-            return plantsByDistance.Where(p => distance >= maxDistance * p.chance).SelectMany(p => p.plants).InRandomOrder().RandomElementByWeight(p => p.weight).plant;
-            /*
-            foreach (var pgc in plantsByDistance)
-            {
-                if (distance < maxDistance * pgc.chance) continue;
-                foreach(var wp in pgc.plants)
-                    if(TRUtils.Chance(wp.weight))
-                        list.Add(wp.plant);
-            }
-            return list.RandomElement();
-            */
+            return plantsByDistance.Where(p => (distance >= maxDistance * p.chance)).SelectMany(p => p.plants).Where(p => terrain.SupportsPlant(p.thing)).InRandomOrder().RandomElementByWeight(p => p.weight).thing;
         }
     }
 

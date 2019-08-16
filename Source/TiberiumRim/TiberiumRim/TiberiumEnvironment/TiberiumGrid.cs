@@ -43,16 +43,15 @@ namespace TiberiumRim
 
         public void UpdateDirties()
         {
-            if (dirtyGrid)
+            if (!dirtyGrid) return;
+
+            for (int i = dirtyCells.Count -1; i > 0; i--)
             {
-                for (int i = dirtyCells.Count -1; i > 0; i--)
-                {
-                    IntVec3 cell = dirtyCells[i];
-                    SetGrowBool(cell);
-                    dirtyCells.Remove(cell);
-                }
-                dirtyGrid = false;
+                IntVec3 cell = dirtyCells[i];
+                SetGrowBool(cell);
+                dirtyCells.Remove(cell);
             }
+            dirtyGrid = false;
         }
 
         public bool CanGrowFrom(IntVec3 cell)

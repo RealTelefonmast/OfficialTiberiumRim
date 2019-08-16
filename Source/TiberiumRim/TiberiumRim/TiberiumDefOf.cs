@@ -31,6 +31,7 @@ namespace TiberiumRim
         public static ThingDef TiberiumBush;
         public static ThingDef TiberiumShroom_Blue;
         public static ThingDef TiberiumShroom_Yellow;
+        public static ThingDef TiberiumShroom_Purple;
         public static ThingDef TiberiumTree;
 
         // Producers
@@ -58,6 +59,7 @@ namespace TiberiumRim
         public static PawnKindDef VeinTiberiumChunk;
 
         //Buildings
+        public static ThingDef TiberiumResearchCrane;
         public static ThingDef TiberiumPipe;
 
         //Particles

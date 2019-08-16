@@ -92,8 +92,8 @@ namespace TiberiumRim
         {
             if (!leaking)
             {
-                float chance = 0.15f;
-                chance *= Mathf.Lerp(1f, 0f, 1f * dinfo.ArmorPenetrationInt);
+                float probability = 0.15f;
+                probability *= Mathf.Lerp(1f, 0f, 1f * dinfo.ArmorPenetrationInt);
                 if (HitPoints < ((float)MaxHitPoints * 0.75f) && TRUtils.Chance(0.15f))
                 {
                     leaking = true;
@@ -458,8 +458,8 @@ namespace TiberiumRim
 
         public override void PostApplyDamage(DamageInfo dinfo, float totalDamageDealt)
         {
-            float chance = 0.15f;
-            chance *= Mathf.Lerp(1f, 0f, 1f * dinfo.ArmorPenetrationInt);
+            float probability = 0.15f;
+            probability *= Mathf.Lerp(1f, 0f, 1f * dinfo.ArmorPenetrationInt);
             if(HitPoints < ((float)MaxHitPoints *0.75f) && TRUtils.Chance(0.15f))
             {
                 leaking = true;

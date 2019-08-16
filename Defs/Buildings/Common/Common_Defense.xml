@@ -161,7 +161,6 @@
 				<defaultProjectile>Bullet_Sludge</defaultProjectile>
 				<warmupTime>3</warmupTime>
 				<range>12.89</range>
-				<forcedMissRadius>0.5</forcedMissRadius>
 				<burstShotCount>20</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<soundCastTail>GunTail_Heavy</soundCastTail>

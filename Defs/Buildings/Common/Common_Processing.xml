@@ -625,7 +625,7 @@
 		<label>tiberium resource refinery</label>
 		<description>A specialized chemical refining plant. Used to refine lethal Tiberium into useful resources.</description>
 		<thingClass>Building_WorkTable</thingClass>
-		<thingCategories Inherit="false" />
+		
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<TRCategory>Processing</TRCategory>

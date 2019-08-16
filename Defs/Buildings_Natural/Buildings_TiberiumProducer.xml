@@ -57,6 +57,14 @@
 		<daysToMature>7</daysToMature>
 		<leaveTiberium>true</leaveTiberium>
 		<killedVersion>DeadGreenCrater</killedVersion>
+		<spore>
+			<canBeGroundZero>true</canBeGroundZero>
+			<blossoms>
+				<li>SmallBlossom,0.75</li>
+				<li>AlocasiaBlossom,0.75</li>
+				<li>BlossomTree,0.5</li>
+			</blossoms>
+		</spore>
 		<evolutions>
 			<TiberiumCraterHybrid>0.3</TiberiumCraterHybrid>
 			<TiberiumCruentus>0.01</TiberiumCruentus>
@@ -154,6 +162,15 @@
 		<daysToMature>12</daysToMature>
 		<leaveTiberium>true</leaveTiberium>
 		<killedVersion>DeadGreenCrater</killedVersion>
+		<spore>
+			<canBeGroundZero>true</canBeGroundZero>
+			<blossoms>
+				<li>SmallBlossom,0.5</li>
+				<li>AlocasiaBlossom,0.5</li>
+				<li>BlossomTree,0.25</li>
+				<li>BlueBlossomTree,0.25</li>
+			</blossoms>
+		</spore>
 		<evolutions>
 			<TiberiumCraterHybrid>0.3</TiberiumCraterHybrid>
 			<TiberiumCruentus>0.01</TiberiumCruentus>
@@ -172,6 +189,47 @@
 			<spawnMode>Direct</spawnMode>
 			<growRadius>7.6</growRadius>
 		</spawner>
+		<plantsByDistance Inherit="False">
+			<li>
+				<plants>
+					<li>TiberiumGrass,1.25</li>
+					<li>TiberiumGrass_Blue,0.5</li>
+				</plants>
+				<chance>0</chance>
+			</li>
+			<li>
+				<plants>
+					<li>TiberiumBush,1.5</li>
+				</plants>
+				<chance>0.25</chance>
+			</li>
+			<li>
+				<plants>
+					<li>TiberiumShroom_Yellow,2.25</li>
+					<li>TiberiumShroom_Purple,2.25</li>
+					<li>TiberiumShroom_Blue,2</li>
+				</plants>
+				<chance>0.45</chance>
+			</li>
+			<li>
+				<plants>
+					<li>TiberiumTree,4</li>
+				</plants>
+				<chance>0.65</chance>
+			</li>
+			<li>
+				<plants>
+					<li>SmallBlossom,8</li>
+				</plants>
+				<chance>0.7</chance>
+			</li>
+			<li>
+				<plants>
+					<li>AlocasiaBlossom,7.5</li>
+				</plants>
+				<chance>0.8</chance>
+			</li>
+		</plantsByDistance>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
@@ -270,6 +328,15 @@
 		<daysToMature>15</daysToMature>
 		<leaveTiberium>true</leaveTiberium>
 		<killedVersion>DeadBlueCrater</killedVersion>
+		<spore>
+			<canBeGroundZero>true</canBeGroundZero>
+			<blossoms>
+				<li>SmallBlossom,0.5</li>
+				<li>AlocasiaBlossom,0.75</li>
+				<li>BlossomTree,0.25</li>
+				<li>BlueBlossomTree,0.5</li>
+			</blossoms>
+		</spore>
 		<evolutions>
 			<TiberiumCruentus>0.3</TiberiumCruentus>
 			<RedTiberiumShard>0.01</RedTiberiumShard>
@@ -553,6 +620,15 @@
 				</damage>
 			</li>
 		</comps>
+		<spore>
+			<canBeGroundZero>true</canBeGroundZero>
+			<blossoms>
+				<li>SmallBlossom,0.25</li>
+				<li>AlocasiaBlossom,0.5</li>
+				<li>BlossomTree,1</li>
+				<li>BlueBlossomTree,0.75</li>
+			</blossoms>
+		</spore>
 		<daysToMature>12</daysToMature>
 		<leaveTiberium>false</leaveTiberium>
 		<tiberiumTypes>

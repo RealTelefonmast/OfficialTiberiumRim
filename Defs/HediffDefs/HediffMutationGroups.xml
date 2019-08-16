@@ -19,4 +19,10 @@
 		<legs>TiberiumEnhancedLeg</legs>
 	</TiberiumRim.HediffMutationGroup>
 	
+	<TiberiumRim.HediffMutationGroup>
+		<defName>Animal</defName>
+		<arms>TiberiumEnhancedArm</arms>
+		<legs>TiberiumEnhancedLeg</legs>
+	</TiberiumRim.HediffMutationGroup>
+	
 </Defs>

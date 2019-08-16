@@ -19,9 +19,6 @@ namespace TiberiumRim
         public TerrainDef dead;
         public List<TerrainSupport> supportsTerrain = new List<TerrainSupport>();
 
-        //Types
-        public List<ThingDef> friendlyTo = new List<ThingDef>();
-
         public TiberiumCrystalDef() : base()
         {
         }

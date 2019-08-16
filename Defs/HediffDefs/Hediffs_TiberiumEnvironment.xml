@@ -139,8 +139,8 @@
 			<li>
 				<minSeverity>0.5</minSeverity>
 				<label>crystallizing</label>
-				<painFactor>1.6</painFactor>
-				<hungerRateFactor>1.75</hungerRateFactor>
+				<painFactor>1.5</painFactor>
+				<hungerRateFactor>1.15</hungerRateFactor>
 				<lifeThreatening>true</lifeThreatening>
 			</li>
 			<li>
@@ -148,7 +148,7 @@
 				<label>crystallized</label>
 				<painFactor>0</painFactor>
 				<partEfficiencyOffset>-1</partEfficiencyOffset>
-				<hungerRateFactor>2</hungerRateFactor>
+				<hungerRateFactor>1.2</hungerRateFactor>
 				<lifeThreatening>true</lifeThreatening>
 			</li>
 		</stages>

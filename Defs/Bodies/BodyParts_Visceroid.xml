@@ -123,7 +123,7 @@
 		<hitPoints>550</hitPoints>
 		<frostbiteVulnerability>0</frostbiteVulnerability>
 		<skinCovered>false</skinCovered>
-		<bleedRate>0.2</bleedRate>
+		<bleedRate>0</bleedRate>
 		<solid>true</solid>
 		<tags>
 			<li>MovingLimbCore</li>

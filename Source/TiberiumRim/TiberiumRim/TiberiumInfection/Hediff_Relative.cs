@@ -35,7 +35,7 @@ namespace TiberiumRim
             base.Tick();
             if (pawn.IsHashIntervalTick(def.capacityInterval))
             {
-                pawn.health.hediffSet.DirtyCache();
+                pawn.health.Notify_HediffChanged(this);
             }
         }
 
@@ -47,30 +47,30 @@ namespace TiberiumRim
                 var s = Severity;
                 return new HediffStage
                 {
-                    becomeVisible = cur.becomeVisible,
-                    deathMtbDays = cur.deathMtbDays,
-                    destroyPart = cur.destroyPart,
+                    becomeVisible              = cur.becomeVisible,
+                    deathMtbDays               = cur.deathMtbDays,
+                    destroyPart                = cur.destroyPart,
                     forgetMemoryThoughtMtbDays = cur.forgetMemoryThoughtMtbDays,
-                    hediffGivers = cur.hediffGivers,
-                    hungerRateFactor = cur.hungerRateFactor,
-                    hungerRateFactorOffset = cur.hungerRateFactorOffset,
-                    label = cur.label,
-                    lifeThreatening = cur.lifeThreatening,
-                    makeImmuneTo = cur.makeImmuneTo,
-                    mentalBreakMtbDays = cur.mentalBreakMtbDays,
-                    mentalStateGivers = cur.mentalStateGivers,
-                    minSeverity = cur.minSeverity,
-                    opinionOfOthersFactor = cur.opinionOfOthersFactor,
-                    painOffset = cur.painOffset,
-                    partIgnoreMissingHP = cur.partIgnoreMissingHP,
+                    hediffGivers               = cur.hediffGivers,
+                    hungerRateFactor           = cur.hungerRateFactor,
+                    hungerRateFactorOffset     = cur.hungerRateFactorOffset,
+                    label                           = cur.label,
+                    lifeThreatening                 = cur.lifeThreatening,
+                    makeImmuneTo                    = cur.makeImmuneTo,
+                    mentalBreakMtbDays              = cur.mentalBreakMtbDays,
+                    mentalStateGivers               = cur.mentalStateGivers,
+                    minSeverity                     = cur.minSeverity,
+                    opinionOfOthersFactor           = cur.opinionOfOthersFactor,
+                    painOffset                      = cur.painOffset,
+                    partIgnoreMissingHP             = cur.partIgnoreMissingHP,
                     pctConditionalThoughtsNullified = cur.pctConditionalThoughtsNullified,
-                    restFallFactor = cur.restFallFactor,
-                    restFallFactorOffset = cur.restFallFactorOffset,
-                    socialFightChanceFactor = cur.socialFightChanceFactor,
-                    statOffsets = cur.statOffsets,
-                    tale = cur.tale,
-                    untranslatedLabel = cur.untranslatedLabel,
-                    vomitMtbDays = cur.vomitMtbDays,
+                    restFallFactor                  = cur.restFallFactor,
+                    restFallFactorOffset            = cur.restFallFactorOffset,
+                    socialFightChanceFactor         = cur.socialFightChanceFactor,
+                    statOffsets                     = cur.statOffsets,
+                    tale                            = cur.tale,
+                    untranslatedLabel               = cur.untranslatedLabel,
+                    vomitMtbDays                    = cur.vomitMtbDays,
                     //Relative
                     painFactor = cur.painFactor * RelativeModifier,
                     partEfficiencyOffset = def.relativePartEfficiency * RelativeModifier,

@@ -4,7 +4,7 @@
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>SuppressionTower</defName>
 		<label>suppression tower</label>
-		<description> N/A </description>
+		<description>The suppression tower will inhibit Tiberium growth. Any Tiberium within the area of effect will stop growing while the suppression tower is powered, but Tiberium will not be damaged or destroyed.</description>
 		<thingClass>Building</thingClass>
 		<factionDesignation>Common</factionDesignation>
 		<TRCategory>Defense</TRCategory>

@@ -49,7 +49,7 @@ namespace TiberiumRim
 
         public void LoadDataFromXmlCustom(XmlNode xmlRoot)
         {
-            DirectXmlCrossRefLoader.RegisterObjectWantsCrossRef(this, "evolvedDef", xmlRoot.Name);
+            DirectXmlCrossRefLoader.RegisterObjectWantsCrossRef(this, "thing", xmlRoot.Name);
             string[] parts = Regex.Replace(xmlRoot.FirstChild.Value, @"\s", "").Split(',');
             chance = ParseHelper.FromString<float>(parts[0]);
         }
@@ -57,19 +57,19 @@ namespace TiberiumRim
 
     public class PlantGroupChance
     {
-        public List<WeightedPlant> plants = new List<WeightedPlant>();
+        public List<WeightedThing> plants = new List<WeightedThing>();
         public float chance = 1f;
     }
 
-    public class WeightedPlant
+    public class WeightedThing
     {
-        public ThingDef plant;
+        public ThingDef thing;
         public float weight = 1;
 
         public void LoadDataFromXmlCustom(XmlNode xmlRoot)
         {
             string[] parts = Regex.Replace(xmlRoot.FirstChild.Value, @"\s", "").Split(',');
-            DirectXmlCrossRefLoader.RegisterObjectWantsCrossRef(this, "plant", parts[0]);
+            DirectXmlCrossRefLoader.RegisterObjectWantsCrossRef(this, "thing", parts[0]);
             if(parts.Length > 1)
                 weight = ParseHelper.FromString<float>(parts[1]);
         }

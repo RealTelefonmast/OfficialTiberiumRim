@@ -13,13 +13,14 @@ namespace TiberiumRim
     public class TiberiumProducer : TiberiumStructure
     {
         public new TiberiumProducerDef def;
-        public HashSet<TiberiumCrystal> boundCrystals = new HashSet<TiberiumCrystal>();
+        public List<TiberiumCrystal> boundCrystals = new List<TiberiumCrystal>();
         public HashSet<IntVec3> FieldCells = new HashSet<IntVec3>();
 
         private bool isGroundZero = false;
 
         //Ticker
         private int ticksToSpawn = 0;
+        private int ticksToSpore = 0;
         private int ticksToMature = 0;
         private int ticksToEvolution = 0;
 
@@ -28,6 +29,10 @@ namespace TiberiumRim
         private float floodRadius = 0;
         private bool isEvolved = false;
         private TiberiumProducerDef evolvesTo;
+
+        //Ground Zero Story
+        public Building researchCrane;
+        public bool researchDone = false;
 
         //Debug
         public bool NoSpread = false;
@@ -48,8 +53,11 @@ namespace TiberiumRim
         {
             base.ExposeData();
             Scribe_Values.Look(ref ticksToSpawn, "ticksToSpawn");
+            Scribe_Values.Look(ref ticksToSpore, "ticksToSpore");
             Scribe_Values.Look(ref ticksToMature, "ticksToMature");
             Scribe_Values.Look(ref ticksToEvolution, "ticksToEvolution");
+            Scribe_Values.Look(ref isGroundZero, "isGroundZero");
+            Scribe_Values.Look(ref researchDone, "researchDone");
             Scribe_Values.Look(ref floodRadius, "floodRadius");
             Scribe_Collections.Look(ref InitialCells, "InitCells");
             Scribe_Defs.Look(ref evolvesTo, "evolvesTo");
@@ -62,8 +70,10 @@ namespace TiberiumRim
             if (!respawningAfterLoad)
             {
                 ResetTiberiumCounter();
+                if(def.spore != null)
+                    ResetSporeCounter();
                 SetEvolution();
-                Manager.TiberiumProducers.Add(this);
+                WorldTiberiumComp.SetupGroundZero(this, Map, ref isGroundZero);
                 if (isEvolved)
                     return;
 
@@ -117,16 +127,23 @@ namespace TiberiumRim
                     }
                 }
             }
-
-            Manager.TiberiumProducers.Remove(this);
             base.DeSpawn();
         }
 
         public override void Tick()
         {
             base.Tick();
-            if (!Spawned || ResearchBound)
+            if (!Spawned)
                 return;
+
+            if (ResearchBound)
+            {
+
+                if (!researchDone)
+                    return;
+                if (TRUtils.Chance(0.1f))
+                    researchCrane.TakeDamage(new DamageInfo(DamageDefOf.Mining, 1));
+            }
 
             if (fastGrow)
                 Find.CameraDriver.StartCoroutine(FastGrow());
@@ -135,15 +152,28 @@ namespace TiberiumRim
             {
                 if (!IsMature)
                     SpreadTerrain();
-                if (ShouldSpawn && CanSpawn)
+                if (ShouldSpawnSpore)
+                {
+                    SpawnBlossomSpore();
+                    ResetSporeCounter();
+                }
+                if (ShouldSpawn)
+                {
                     SpawnTiberium();
+                    ResetTiberiumCounter();
+                }
                 if (ShouldEvolve)
                     SpawnEvolved(evolvesTo);
             }
 
             if (ticksToMature > 0)
+            {
                 ticksToMature--;
-            if (ticksToSpawn > 0 && IsMature)
+                return;
+            }
+            if (ticksToSpore > 0)
+                ticksToSpore--;
+            if (ticksToSpawn > 0)
                 ticksToSpawn--;
         }
 
@@ -164,17 +194,12 @@ namespace TiberiumRim
                 if (!def.tiberiumTerrain.NullOrEmpty())
                 {
                     newTerr = GenTiberium.TerrainFrom(terrain, Terrain);
-                    if (newTerr == null)
-                        continue;
-                    Map.terrainGrid.SetTerrain(cell, newTerr);
+                    if(newTerr != null)
+                        Map.terrainGrid.SetTerrain(cell, newTerr);
                 }
                 else
-                {
                     newTerr = GenTiberium.SetTiberiumTerrain(cell, Map, TiberiumCrystal);
-                    if (newTerr == null)
-                        continue;
-                }
-                if (def.growsFlora)
+                if (newTerr != null && def.growsFlora && cell.Standable(Map) && cell.GetFirstBuilding(Map) == null)
                     TrySpreadFlora(cell, newTerr);
             }
         }
@@ -185,38 +210,15 @@ namespace TiberiumRim
             float chance = 1f - Mathf.InverseLerp(0f, floodRadius, distance);;
             if (TRUtils.Chance(chance * terrain.plantChanceFactor))
             {
-                ThingDef flora = SelectedFloraAt(distance);
-                if (flora != null && terrain.SupportsPlant(flora))
+                ThingDef flora = SelectedFloraAt(distance, terrain);
+                if (flora != null)
                     GenSpawn.Spawn(flora, pos, Map);
             }
         }
 
-        private ThingDef SelectedFloraAt(float distance)
+        private ThingDef SelectedFloraAt(float distance, TiberiumTerrainDef terrain)
         {
-            return def.SelectPlantByDistance(distance, floodRadius);
-
-            /*
-            if (distance >= floodRadius * 0.77f)
-                list.Add(TiberiumDefOf.AlocasiaBlossom);
-            if (distance >= floodRadius * 0.70f)
-                list.Add(TiberiumDefOf.SmallBlossom);
-            if (distance >= floodRadius * 0.55f)
-            {
-                list.Add(TiberiumDefOf.TiberiumTree);
-                if (distance >= floodRadius * 0.8f)
-                    return list.RandomElement();
-            }
-            if (distance >= floodRadius * 0.5f)
-            {
-                list.Add(TiberiumDefOf.TiberiumShroom_Yellow);
-                list.Add(TiberiumDefOf.TiberiumShroom_Blue);
-            }
-            if (distance >= floodRadius * 0.25f)
-                list.Add(TiberiumDefOf.TiberiumBush);
-
-            list.Add(TiberiumDefOf.TiberiumGrass);
-            return list.RandomElement();
-            */
+            return def.SelectPlantByDistance(distance, floodRadius, terrain);
         }
 
         public IEnumerator FastGrow()
@@ -225,7 +227,6 @@ namespace TiberiumRim
             {
                 crystal.TickLong();
             }
-
             yield return null;
         }
 
@@ -237,6 +238,7 @@ namespace TiberiumRim
         {
             get
             {
+                
                 if (def.tiberiumTypes.NullOrEmpty())
                     return null;
                 return def.tiberiumTypes.RandomElement();
@@ -245,13 +247,33 @@ namespace TiberiumRim
 
         public float WokePercent => 1f - (float)ticksToMature / (def.daysToMature * (float)GenDate.TicksPerDay);
 
-        public bool ShouldSpawn => ticksToSpawn <= 0;
+        public bool ShouldSpawnSpore => isGroundZero && ticksToSpore <= 0 && MatureEnough;
+        public bool ShouldSpawn => researchDone && def.tiberiumTypes.Any() && ticksToSpawn <= 0 && MatureEnough;
         public bool ShouldEvolve => evolvesTo != null && ticksToEvolution <= 0;
-        public bool CanSpawn => !def.tiberiumTypes.NullOrEmpty() && ( IsMature || ticksToMature < def.spawner.minDaysToSpread * GenDate.TicksPerDay);
-        public bool IsMature => ticksToMature <= 0 && InitialCells.NullOrEmpty();
-        public bool ResearchBound => TRUtils.ThingExistsAt(Map, Position, DefDatabase<ThingDef>.GetNamed("TiberiumResearchCrane_TBNS", false));
+        private bool MatureEnough => (IsMature || ticksToMature < def.spawner.minDaysToSpread * GenDate.TicksPerDay);
+        public bool IsMature => ticksToMature <= 0 && !InitialCells.Any();
 
-        public void SpawnTiberium()
+        public bool ResearchBound
+        {
+            get
+            {
+                if (researchCrane == null)
+                {
+                    researchCrane = (Building)Map.thingGrid.ThingAt(Position, TiberiumDefOf.TiberiumResearchCrane);
+                }
+                return !researchCrane.DestroyedOrNull();
+            }
+        }
+        
+
+        private void SpawnBlossomSpore()
+        {
+            var dest = TiberiumComp.StructureInfo.GetBlossomDestination();
+            if (dest.IsValid)
+                GenTiberium.SpawnBlossomSpore(Position, dest, Map, def.spore.Blossom(), this);
+        }
+
+        private void SpawnTiberium()
         {
             int spores;
             List<IntVec3> cells;
@@ -326,7 +348,7 @@ namespace TiberiumRim
         private void SpawnEvolved(ThingDef def)
         {
             TiberiumProducer newProd = (TiberiumProducer)ThingMaker.MakeThing(def);
-            isEvolved = true;
+            newProd.isEvolved = true;
             var map = Map;
             var pos = Position;
             this.DeSpawn(DestroyMode.Vanish, true);
@@ -351,6 +373,12 @@ namespace TiberiumRim
             ticksToSpawn = TRUtils.Range(def.spawner.spawnInterval);
         }
 
+        private void ResetSporeCounter()
+        {
+            ticksToSpore = TRUtils.Range(def.spore.tickRange);
+        }
+
+
         public override void Draw()
         {
             base.Draw();
@@ -360,8 +388,8 @@ namespace TiberiumRim
             }
             if (showAffect)
             {
-                MapComponent_Tiberium tib = Map.GetComponent<MapComponent_Tiberium>();
-                GenDraw.DrawFieldEdges(tib.PawnCells.ToList(), Color.green);
+                //MapComponent_Tiberium tib = Map.GetComponent<MapComponent_Tiberium>();
+                //GenDraw.DrawFieldEdges(tib.PawnCells.ToList(), Color.green);
             }
             if (showTileIterator)
             {
@@ -383,7 +411,6 @@ namespace TiberiumRim
             if (DebugSettings.godMode)
             {
                 sb.AppendLine("DEBUG:");
-                sb.AppendLine("Can Spawn: " + CanSpawn);
                 sb.AppendLine("Stop glow: " + turnOffLight);
                 sb.AppendLine("Stop growth: " + stopGrowth);
                 sb.AppendLine("Speedy growth: " + fastGrow);
@@ -443,6 +470,17 @@ namespace TiberiumRim
                         this.ResetTiberiumCounter();
                     }
                 };
+
+                yield return new Command_Action
+                {
+                    defaultLabel = "DEBUG: Spawn Blossom Spore",
+                    action = delegate
+                    {
+                        SpawnBlossomSpore();
+                        ResetSporeCounter();
+                    }
+                };
+
 
                 yield return new Command_Action
                 {

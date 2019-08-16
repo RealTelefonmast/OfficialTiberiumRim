@@ -13,8 +13,9 @@ namespace TiberiumRim
         private bool wandered = false;
         private bool removedSample = false;
         private int ticksLeftCrystallized = 3000;
-        private int minMutationTicks = 4500;
-        private float pointOfNewReturn = 0;
+        private bool triedToMutate = false;
+        private float pointOfNewReturnMax = 0;
+        private float pointOfNewReturnMin = 0;
 
         public enum CrystallizingStage
         {
@@ -31,24 +32,20 @@ namespace TiberiumRim
             Scribe_Values.Look(ref removedSample, "removedSample");
             Scribe_Values.Look(ref wandered, "wandered");
             Scribe_Values.Look(ref ticksLeftCrystallized, "ticksLeftCrystallized");
-            Scribe_Values.Look(ref minMutationTicks, "minMutationTicks");
-            Scribe_Values.Look(ref pointOfNewReturn, "pointOfNewReturn");
+            Scribe_Values.Look(ref triedToMutate, "triedToMutate");
+            Scribe_Values.Look(ref pointOfNewReturnMax, "pointOfNewReturnMax");
+            Scribe_Values.Look(ref pointOfNewReturnMin, "pointOfNewReturnMin");
             base.ExposeData();
         }
 
         public override void PostMake()
         {
             base.PostMake();
-            pointOfNewReturn = Mathf.Lerp(0.7f, 0.9f, 1f - pawn.Health());
+            pointOfNewReturnMax = Mathf.Lerp(0.7f, 0.9f, 1f - pawn.Health());
+            pointOfNewReturnMin = Mathf.Pow(pointOfNewReturnMax, 2);
         }
 
-        public override float SummaryHealthPercentImpact
-        {
-            get
-            {
-                return (float)base.Part?.def.hitPoints / (75f * this.pawn.HealthScale);
-            }
-        }
+        public override float SummaryHealthPercentImpact => (float)Part.def.hitPoints / (75f * this.pawn.HealthScale);
 
         public override float Severity
         {
@@ -62,8 +59,6 @@ namespace TiberiumRim
             {
                 float value = 1f * Severity;
                 value /= Mathf.Clamp(Part.parts.Count(p => pawn.health.hediffSet.hediffs.Any(h => h.def == this.def)), 1, float.MaxValue);
-                if (CurrentStage == CrystallizingStage.Reversing)
-                    value = -value;
 
                 return value;
             }
@@ -80,13 +75,16 @@ namespace TiberiumRim
         public override void Tick()
         {
             base.Tick();
-            if (!wandered && !Halted && pawn.IsHashIntervalTick(750))
+            if (!wandered && pawn.IsHashIntervalTick(750))
             {
                 if (Halted)              
                     return;
-                
+
                 if (CurrentStage == CrystallizingStage.Mutation)
+                {
                     TryMutate();
+                    triedToMutate = true;
+                }
 
                 if (CurrentStage == CrystallizingStage.Crystallized && !Part.IsCorePart && !HasCrystallizingParent(out BodyPartRecord part))
                 {
@@ -95,10 +93,10 @@ namespace TiberiumRim
                         ticksLeftCrystallized -= 750;
                         return;
                     }
-                    Hediff hediff = HediffMaker.MakeHediff(this.def, pawn);
-                    hediff.Severity = InitSeverity;
-                    pawn.health.AddHediff(hediff, Part.parent);
+
+                    HediffUtils.TryInfect(pawn, Part.parent, InitSeverity);
                     wandered = true;
+                    Log.Message("Wandered from " + Part.LabelCap + " to " + Part.parent.LabelCap);
                     return;
                 }
                 /* TODO: Add Pawn ground-fusion effect and rescue jobd
@@ -108,33 +106,30 @@ namespace TiberiumRim
                 }
                 */
                 if (TRUtils.Chance(BloodInfectionChance()))
-                {
                     AffectOrganViaBlood();
-                }
-                if (CurrentStage != CrystallizingStage.Mutation)
-                    Severity += SeverityRate;
-                else
-                    minMutationTicks -= 750;
+                Severity += SeverityRate;
+                pawn.health.Notify_HediffChanged(this);
             }
+
+            if (CurrentStage == CrystallizingStage.Reversing)
+                Severity -= SeverityRate * 2;
         }
 
-        private bool TryMutate()
+        private void TryMutate()
         {
             var chance = MutationChance;
-            Log.Message("Trying to mutate" + chance);
+            Log.Message("Trying to mutate " + chance);
             if (TRUtils.Chance(chance))
             {
                 Log.Message("Mutation Start");
                 pawn.health.AddHediff(TRHediffDefOf.TiberiumMutation);
-                return true;
             }
-            return false;
         }
 
         private void AffectOrganViaBlood()
         {
             BodyPartRecord organ = pawn.AllVitalOrgans().Where(p => !pawn.health.hediffSet.PartIsCrystallizing(p)).RandomElement();
-            pawn.health.AddHediff(TRHediffDefOf.TiberiumCrystallization, organ);
+            HediffUtils.TryInfect(pawn, organ, 0.01f);
         }
 
         public void RemoveSample()
@@ -149,7 +144,7 @@ namespace TiberiumRim
             get
             {
                 var stage = CrystallizingStage.Crystallizing;
-                if (Severity == 1f)
+                if (Severity >= 1f)
                     stage = CrystallizingStage.Crystallized;
                 else if (Reversing)
                     stage = CrystallizingStage.Reversing;
@@ -157,14 +152,14 @@ namespace TiberiumRim
                     stage = CrystallizingStage.Halted;
                 else if (Severity <= 0.1f)
                     stage = CrystallizingStage.Fusing;
-                else if (Part.IsCorePart && Severity < pointOfNewReturn && Severity > Mathf.Pow(pointOfNewReturn,2) && minMutationTicks >= 0)
+                else if (Part.IsCorePart && Severity < pointOfNewReturnMax && Severity > pointOfNewReturnMin  && !triedToMutate)
                     stage = CrystallizingStage.Mutation;
                 return stage;
             }
         }
 
         public override bool ShouldRemove => Severity <= 0f;
-        public bool Reversing => pawn.health.hediffSet.HasHediff(TRHediffDefOf.SymbioticCore) || pawn.health.hediffSet.HasHediff(TRHediffDefOf.TiberBlockHediff);
+        public bool Reversing => pawn.health.hediffSet.HasHediff(TRHediffDefOf.TiberiumImmunity) || pawn.health.hediffSet.HasHediff(TRHediffDefOf.TiberBlockHediff);
         public bool Halted => pawn.health.hediffSet.hediffs.Any(h => h is Hediff_Mutation);
         public bool HasAvailableSample => !removedSample;
 
@@ -255,6 +250,9 @@ namespace TiberiumRim
         {
             get
             {
+                if (pawn.Faction == null)
+                    return 2;
+
                 switch (pawn.Faction.def.techLevel)
                 {
                     case TechLevel.Animal:
@@ -263,8 +261,9 @@ namespace TiberiumRim
                         return 3;
                     case TechLevel.Medieval:
                         return 1.5f;
+                    default:
+                        return 1;
                 }
-                return 1;
             }
         }
 

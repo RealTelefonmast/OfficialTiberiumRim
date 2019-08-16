@@ -7,21 +7,23 @@ using RimWorld;
 
 namespace TiberiumRim
 {
-    public class Hediff_TiberiumPart : Hediff_AddedPart
+    public class Hediff_TiberiumPart : Hediff_ReplacedPart
     {
         public bool addedManually = false;
+        public bool mutated = false;
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Values.Look(ref addedManually, "addedManually");
+            Scribe_Values.Look(ref mutated, "mutated");
         }
 
         public override string LabelInBrackets
         {
             get
             {
-                if (!IsMutation)
+                if (IsRisky)
                     return "Risk".Translate() + " " + Risk.ToStringPercent();
                 return base.LabelInBrackets;
             }
@@ -30,22 +32,20 @@ namespace TiberiumRim
         public override void Tick()
         {
             base.Tick();
-            if (!IsMutation && pawn.IsHashIntervalTick(6000))
+            if (!IsRisky) return;
+            if (pawn.IsHashIntervalTick(6000))
             {
                 var risk = Risk;
-                if (TRUtils.Chance(risk))
-                {
-                    pawn.health.RemoveHediff(this);
-                    BodyPartRecord part = Part.GetDirectChildParts().RandomElement();
-                    pawn.health.RestorePart(Part);
-                    HediffUtils.TryInfect(pawn, part, 0.1f * risk);
-                }
+                if (!TRUtils.Chance(risk)) return;
+
+                pawn.health.RemoveHediff(this);
+                BodyPartRecord part = Part.GetDirectChildParts().RandomElement();
+                pawn.health.RestorePart(Part);
+                HediffUtils.TryInfect(pawn, part, 0.1f * risk);
             }
         }
 
-        public bool IsMutation => !addedManually && PawnIsMutant;
-
-        private bool PawnIsMutant => pawn.health.hediffSet.HasHediff(TRHediffDefOf.SymbioticCore);
+        public bool IsRisky => addedManually && !mutated;
 
         private float Risk
         {

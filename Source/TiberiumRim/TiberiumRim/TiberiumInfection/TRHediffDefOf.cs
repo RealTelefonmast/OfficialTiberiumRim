@@ -10,6 +10,11 @@ namespace TiberiumRim
     [DefOf]
     public static class TRHediffDefOf
     {
+        //Mutations
+        public static AnimalMutationDef TiberiumFiendMutations;
+
+        public static HediffDef MissingBodyPartInvisible;
+
         //Tiberium Meds
         public static HediffDef TiberBlockHediff;
         public static HediffDef TiberAddHediff;
@@ -18,7 +23,6 @@ namespace TiberiumRim
         //Tiberium Affect
         public static HediffRelativeDef TiberiumExposure;
         public static HediffDef TiberiumCrystallization;
-        public static HediffDef TiberiumGroundLock;
         public static HediffDef TiberiumBurn;
         public static HediffDef CrystallizedPart;
 
@@ -29,21 +33,25 @@ namespace TiberiumRim
         public static HediffMutationGroup Crystallized;
         public static HediffMutationGroup Visceral;
         public static HediffMutationGroup Enhanced;
+        public static HediffMutationGroup Animal;
 
         public static HediffDef TiberiumMutation;
-        public static HediffDef TiberiumMutationPart;
         public static HediffDef SymbioticPart;
         public static HediffDef VisceralPart;
 
+        //Symbiotic Parts
+        public static HediffDef TiberiumEnhancedArm;
+        public static HediffDef TiberiumEnhancedLeg;
+
+        //Visceral Parts
+        public static HediffDef VisceralArm;
         public static HediffDef VisceralBlister;
         public static HediffDef ViscousPart;
 
-        public static HediffDef TiberianArm;
-        public static HediffDef TiberianLeg;
-        public static HediffDef VisceralArm;
-
-        public static HediffDef SymbioticCore;
+        public static HediffDef TiberiumImmunity;
 
         public static NeedDef TiberiumNeed;
+
+        public static TraitDef TiberiumTrait;
     }
 }

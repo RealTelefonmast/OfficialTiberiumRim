@@ -123,6 +123,7 @@
 	
 	<StoryFramework.ObjectiveDef>
 		<defName>M2_KnowledgeResearch</defName>
+		<customClass>TiberiumRim.Objective_ActivateGZ</customClass>
 		<label>Close Inspection</label>
 		<description>With the research crane we can safely inspect Tiberium and interact with it, supposedly touching it with your bare hands could be lethal, so let's avoid that.\nLet's see what we can learn of this mineral.</description>
 		<type>Research</type>

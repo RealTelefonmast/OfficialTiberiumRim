@@ -9,8 +9,7 @@
 		<initialSeverity>1</initialSeverity>
 		<stages>
 			<li>
-				<painFactor>2</painFactor>
-				<painOffset>0.2</painOffset>
+				<painFactor>1.75</painFactor>
 			</li>
 		</stages>
 		<isBad>false</isBad>
@@ -26,11 +25,10 @@
 		<stages>
 			<li>
 				<becomeVisible>false</becomeVisible>
-				<painFactor>1.1</painFactor>
-				<partEfficiencyOffset>-0.15</partEfficiencyOffset>
+				<partEfficiencyOffset>-0.075</partEfficiencyOffset>
 			</li>
 		</stages>
-		<isBad>true</isBad>
+		<isBad>false</isBad>
 	</HediffDef>
 	
 	<HediffDef>
@@ -41,24 +39,24 @@
 		<stages>
 			<li>
 				<becomeVisible>false</becomeVisible>
-				<partEfficiencyOffset>+0.1</partEfficiencyOffset>
+				<partEfficiencyOffset>0.075</partEfficiencyOffset>
 			</li>
 		</stages>
 		<isBad>false</isBad>
 	</HediffDef>
 	
 	<HediffDef>
-		<defName>SymbioticCore</defName>
+		<defName>TiberiumImmunity</defName>
 		<hediffClass>HediffWithComps</hediffClass>
 		<label>tiberium immunity</label>
-		<labelNoun>a crystalline netwoek</labelNoun>
+		<labelNoun>tiberium affect immunity</labelNoun>
 		<defaultLabelColor>(0, 255, 255)</defaultLabelColor>
 		<isBad>false</isBad>
 	</HediffDef>
 	
 	<!-- Any Part -->
 	<!-- Inside -->
-	<HediffDef ParentName="HediffImplant_TR">
+	<HediffDef>
 		<defName>ViscousPart</defName>
 		<label>Viscous {0}</label>
 		<hediffClass>TiberiumRim.Hediff_LabelledPart</hediffClass>

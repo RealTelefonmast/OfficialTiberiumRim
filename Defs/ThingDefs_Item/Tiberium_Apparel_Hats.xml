@@ -5,9 +5,6 @@
 		<defName>TiberiumSuitMask</defName>
 		<label>Tiberium protection mask</label>
 		<description>This mask is a necessity for anyone attempting to traverse Tiberium infested lands. It shields the head from radiation and filters the toxic Tiberium gases and even particles from a Toxic Fallout.</description>
-		<recipeMaker>
-			<researchPrerequisite>TiberiumKnowledge</researchPrerequisite>
-		</recipeMaker>
 		<graphicData>
 			<texPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuitMask</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -46,4 +43,42 @@
 		</apparel>
 	</ThingDef>
   
+  	<ThingDef ParentName="HatBase_TR">
+		<defName>RevarksMask</defName>
+		<label>abandoned mask</label>
+		<description>This mask was found on a long dessicated corpse. The origin is unknown, but looking around the chamber we have found various writing and leftovers of meal packages. Whoever this belonged to, tried his very best to survive.</description>
+		<graphicData>
+			<texPath>Items/Apparel/TiberiumProtectionSuit/Rev/RevarksMask</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>0.5</Mass>
+			<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+			<Insulation_Heat>15</Insulation_Heat>
+			<Insulation_Cold>50</Insulation_Cold>
+			<TiberiumResistance>1</TiberiumResistance>
+			<TiberiumRadiationResistance>0.25</TiberiumRadiationResistance>
+		</statBases>
+		<techLevel>Medieval</techLevel>
+		<tradeability>None</tradeability>
+		<equippedStatOffsets>
+			<SocialImpact>0.75</SocialImpact>
+			<ToxicSensitivity>-1</ToxicSensitivity>
+			<TibGasFiltering>1</TibGasFiltering>
+		</equippedStatOffsets>
+		<apparel>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+				<wornGraphicPath>Items/Apparel/TiberiumProtectionSuit/Rev/RevarksMask</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<defaultOutfitTags>
+				<li>Worker</li>
+			</defaultOutfitTags>
+		</apparel>
+	</ThingDef>
 </Defs>

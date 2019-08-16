@@ -11,7 +11,7 @@ namespace TiberiumRim
     public class Hediff_Mutation : HediffWithComps
     {
         private Texture2D icon;
-        private static IntRange wanderRange = new IntRange(12000, 30000);
+        private static IntRange wanderRange = new IntRange(100, 750);//TODO: Change Back To Higher
         private int ticksLeft;
 
         public override TextureAndColor StateIcon
@@ -24,7 +24,7 @@ namespace TiberiumRim
             }
         }
 
-        public override string LabelInBrackets => "" + VisceralRisk.ToStringPercent();
+        public override string LabelInBrackets => VisceralRisk.ToStringPercent();
         public override float PainFactor => base.PainFactor + (VisceralCoverage * 2);
 
         public override void PostMake()
@@ -77,13 +77,25 @@ namespace TiberiumRim
         {
             if (pawn.RaceProps.Animal)
             {
-
+                var mutations = TRHediffDefOf.TiberiumFiendMutations;
+                var kind = mutations.TiberiumFiendFor(pawn.kindDef);
+                if (kind != null)
+                {
+                    PawnGenerationRequest request = new PawnGenerationRequest(kind);
+                    Pawn newPawn = PawnGenerator.GeneratePawn(request);
+                    newPawn.ageTracker = pawn.ageTracker;
+                    newPawn.health = pawn.health;
+                    GenSpawn.Spawn(newPawn, pawn.Position, pawn.Map);
+                    pawn.DeSpawn();
+                    return;
+                }
             }
+            pawn.health.AddHediff(TRHediffDefOf.TiberiumImmunity);
         }
         
         private bool CanFinalize => VisceralCoverage + SymbioticCoverage >= 1f;
 
-        //Pawn's health determines how likely and well the mutation goes
+        //Pawn's health determines how well the mutation goes
         //Tib Mutation is naturally aggressive and bad though
         private float VisceralRisk
         {
@@ -91,16 +103,16 @@ namespace TiberiumRim
             {
                 //Naturally mutation is aggressive
                 float num = 1f;
-                //Pawn's health may add to bad mutation chance
+                //Pawn's health may add to bad mutation probability
                 num += 1f - pawn.Health();
-                //Crystallizing parts make up 1/4 of the mutation chance
-                var hediffs = pawn.health.hediffSet.GetHediffs<Hediff_Crystallizing>();
+                //Crystallizing parts make up 1/3 of the mutation probability
+                var hediffs = pawn.health.hediffSet.GetHediffs<Hediff_Crystallizing>().ToArray();
                 if (hediffs.Any())
                     num += hediffs.Sum(h => h.Severity) / hediffs.Count();
-                //Being in Tiberium worsens the chance
+                //Being in Tiberium worsens the probability
                 if (pawn.Position.GetTiberium(pawn.Map) != null)
                     num += 0.75f;
-                return num / 4f;
+                return num / 3f;
             }
         }
 

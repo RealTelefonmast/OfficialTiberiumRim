@@ -57,6 +57,8 @@ namespace TiberiumRim
             if (typeof(MechanicalPawn).IsAssignableFrom(def.race.thingClass)) __result = false;
         }
 
+        //Render Patches
+
         public static bool BackgroundOnGUIPatch()
         {
             if (TiberiumRimSettings.settings.CustomBackground)
@@ -132,6 +134,31 @@ namespace TiberiumRim
             }
         }
 
+        [HarmonyPatch(typeof(PawnRenderer))]
+        [HarmonyPatch("RenderPawnInternal")]
+        [HarmonyPatch(new Type[]
+        {
+            typeof(Vector3), typeof(float), typeof(bool), typeof(Rot4), typeof(Rot4), typeof(RotDrawMode), typeof(bool),
+            typeof(bool)
+        })]
+
+        public static class PawnRenderPatch
+        {
+            [HarmonyPostfix]
+            public static void Fix(PawnRenderer __instance, Vector3 rootLoc, float angle, bool renderBody,
+                Rot4 bodyFacing, Rot4 headFacing, RotDrawMode bodyDrawType, bool portrait, bool headStump)
+            {
+                if (!renderBody || bodyDrawType == RotDrawMode.Dessicated)
+                    return;
+
+                Pawn pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
+                var renderComp = pawn.GetComp<Comp_CrystalDrawer>();
+                Vector3 drawLoc = rootLoc;
+                drawLoc.y += 0.01953125f;
+                Quaternion quaternion = Quaternion.AngleAxis(angle, Vector3.up);
+                renderComp.Drawer.RenderOverlay(pawn, drawLoc, headFacing, quaternion, portrait);
+            }
+        }
 
         [HarmonyPatch(typeof(DamageWorker_AddInjury))]
         [HarmonyPatch("PlayWoundedVoiceSound")]

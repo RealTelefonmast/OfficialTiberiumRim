@@ -12,6 +12,49 @@ namespace TiberiumRim
 {
     public static class TRUtils
     {
+        public static void GetTiberiumMutant(Pawn pawn, out Graphic Head, out Graphic Body)
+        {
+            Head = null;
+            Body = null;
+            if (pawn.def.defName != "Human")
+            {
+                PawnGraphicSet graphicSet = pawn.Drawer.renderer.graphics;
+                string headPath = graphicSet.headGraphic.path + "_TibHead";
+                string bodyPath = graphicSet.nakedGraphic.path + "_TibBody";
+                Head = GraphicDatabase.Get(typeof(Graphic_Multi), headPath, ShaderDatabase.Cutout, Vector2.one, Color.white, Color.white);
+                Body = GraphicDatabase.Get(typeof(Graphic_Multi), bodyPath, ShaderDatabase.Cutout, Vector2.one, Color.white, Color.white);
+            }
+            else
+            {
+                CrownType head = pawn.story.crownType;
+                string headPath = pawn.story.HeadGraphicPath;
+                string headResolved;
+                BodyTypeDef body = pawn.story.bodyType;
+                string bodyResolved;
+                Gender gender = pawn.gender;
+
+                string appendix = "";
+                if (headPath.Contains("_Wide"))
+                {
+                    appendix = "_Wide";
+                }
+                if (headPath.Contains("_Normal"))
+                {
+                    appendix = "_Normal";
+                }
+                if (headPath.Contains("_Pointy"))
+                {
+                    appendix = "_Pointy";
+                }
+                headResolved = "Pawns/TiberiumMutant/Heads/" + gender + "_" + head + appendix;
+                //Head = GraphicDatabase.Get(typeof(Graphic_Multi), headResolved, ShaderDatabase.MoteGlow, Vector2.one, Color.white, Color.white);
+                Head = GraphicDatabase.Get(typeof(Graphic_Multi), "Pawns/TiberiumMutant/Heads/Mutant_head", ShaderDatabase.Cutout, Vector2.one, Color.white, Color.white);
+                bodyResolved = "Pawns/TiberiumMutant/Bodies/" + body.defName;
+                Body = GraphicDatabase.Get(typeof(Graphic_Multi), bodyResolved, ShaderDatabase.Cutout, Vector2.one, Color.white, Color.white);
+            }
+            
+        }
+
         public static T RandomWeightedElement<T>(this IEnumerable<T> elements, Func<T, float> weightSelector)
         {
             var totalWeight = elements.Sum(weightSelector);
@@ -162,24 +205,23 @@ namespace TiberiumRim
         public static List<IntVec3> RemoveCorners(this CellRect rect, int[] range)
         {
             List<IntVec3> cells = rect.Cells.ToList();
-            for (int i = 0; i < range.Count(); i++)
+            for (var i = 0; i < range.Count(); i++)
             {
                 var j = range[i];
-                if (j == 1)
+                switch (j)
                 {
-                    cells.RemoveAll(c => c.x == rect.minX && c.z == rect.maxZ);
-                }
-                else if (j == 2)
-                {
-                    cells.RemoveAll(c => c.x == rect.maxX && c.z == rect.maxZ);
-                }
-                else if (j == 3)
-                {
-                    cells.RemoveAll(c => c.x == rect.maxX && c.z == rect.minZ);
-                }
-                else
-                {
-                    cells.RemoveAll(c => c.x == rect.minX && c.z == rect.minZ);
+                    case 1:
+                        cells.RemoveAll(c => c.x == rect.minX && c.z == rect.maxZ);
+                        break;
+                    case 2:
+                        cells.RemoveAll(c => c.x == rect.maxX && c.z == rect.maxZ);
+                        break;
+                    case 3:
+                        cells.RemoveAll(c => c.x == rect.maxX && c.z == rect.minZ);
+                        break;
+                    default:
+                        cells.RemoveAll(c => c.x == rect.minX && c.z == rect.minZ);
+                        break;
                 }
             }
             return cells;
@@ -231,26 +273,6 @@ namespace TiberiumRim
             }
         }
 
-        public static void ThrowTiberiumContainerFog(Vector3 loc, Thing parent)
-        {
-            MoteThrown mote = (MoteThrown)ThingMaker.MakeThing(TiberiumDefOf.TiberiumContainerFog, null);
-            mote.rotationRate = TRUtils.Range(-30f, 30f);
-            GenSpawn.Spawn(mote, loc.ToIntVec3(), parent.Map);
-        }
-
-        public static void ThrowTiberiumSmoke(Vector3 loc, Thing parent)
-        {
-            MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(TiberiumDefOf.TiberiumSmokeMote, null);
-            moteThrown.Scale = TRUtils.Range(1.5f, 2.5f) * moteThrown.def.graphic.drawSize.x;
-            moteThrown.rotationRate = TRUtils.Range(-30f, 30f);
-            moteThrown.exactPosition = loc;
-            float wspd = (parent.GetRoom()?.PsychologicallyOutdoors ?? true) ? parent.Map.windManager.WindSpeed : 0f;
-            float spd = wspd > 0.5f ? (wspd > 1f ? 1f : wspd) : 0.5f;
-            int angle = (int)Mathf.Lerp(0, 80, Mathf.InverseLerp(0f, 2f, spd));
-            moteThrown.SetVelocity(angle, spd);
-            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), parent.Map);
-        }
-
         public static ThingDef MakeNewBluePrint(ThingDef def, bool isInstallBlueprint, ThingDef normalBlueprint = null)
         {
             Type type = typeof(ThingDefGenerator_Buildings);
@@ -269,21 +291,13 @@ namespace TiberiumRim
         {
             angle = GenMath.PositiveMod(angle, 360f);
             if (angle <= 45f)
-            {
                 return Rot4.North;
-            }
             if (angle <= 135f)
-            {
                 return Rot4.East;
-            }
             if (angle < 225f)
-            {
                 return Rot4.South;
-            }
             if (angle <= 315f)
-            {
                 return Rot4.West;
-            }
             return Rot4.North;
         }
 

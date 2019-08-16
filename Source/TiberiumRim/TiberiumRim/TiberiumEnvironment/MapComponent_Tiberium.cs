@@ -9,7 +9,6 @@ namespace TiberiumRim
 {
     public class MapComponent_Tiberium : MapComponent
     {
-        public HashSet<TiberiumProducer> TiberiumProducers = new HashSet<TiberiumProducer>();
         public TiberiumMapInfo TiberiumInfo;
         public TiberiumStructureInfo StructureInfo;
 
@@ -44,7 +43,6 @@ namespace TiberiumRim
         public override void ExposeData()
         {
             Scribe_Values.Look(ref TiberiumArrivalTick, "arrivalTick");
-            Scribe_Collections.Look(ref TiberiumProducers, "TiberiumProducers", LookMode.Reference);
             base.ExposeData();
         }
 
@@ -53,14 +51,14 @@ namespace TiberiumRim
             base.MapComponentUpdate();
             if (TiberiumRimSettings.settings.ShowNetworkValues)
             {
-                /*
+                
                 TiberiumInfo.TiberiumGrid.drawer.RegenerateMesh();
                 TiberiumInfo.TiberiumGrid.drawer.MarkForDraw();
                 TiberiumInfo.TiberiumGrid.drawer.CellBoolDrawerUpdate();
-                */
-                Suppression.SuppressionGrid.drawer.RegenerateMesh();
-                Suppression.SuppressionGrid.drawer.MarkForDraw();
-                Suppression.SuppressionGrid.drawer.CellBoolDrawerUpdate();
+                
+                //Suppression.SuppressionGrid.drawer.RegenerateMesh();
+                //Suppression.SuppressionGrid.drawer.MarkForDraw();
+                //Suppression.SuppressionGrid.drawer.CellBoolDrawerUpdate();
             }
         }
 
@@ -68,11 +66,9 @@ namespace TiberiumRim
         {
             base.MapComponentTick();
             IterateThroughTiles();
-            if (Find.TickManager.TicksGame % 144 == 0)
+            if (Find.TickManager.TicksGame % 750 == 0)
             {
                 TiberiumInfo.TiberiumGrid.UpdateDirties();
-                AffectPawns();
-                //IterateThroughRegions();
             }
         }
 
@@ -114,13 +110,10 @@ namespace TiberiumRim
             return things.Select(t => t as Thing);;
         }
 
-        public TiberiumProducer ClosestProducer(Pawn seeker)
-        {
-            return TiberiumProducers.MinBy(x => x.Position.DistanceTo(seeker.Position));
-        }
-
         public void IterateThroughTiles()
         {
+            if (!IteratorTiles.Any())
+                return;
             //Setup Iterator
             if(TileIterator == null || ShouldUpdate)
             {
@@ -144,6 +137,8 @@ namespace TiberiumRim
         public void AffectPawns()
         {
             //Affect Pawns
+            return;
+
             HashSet<IntVec3> tempSet = new HashSet<IntVec3>(PawnCells);
             foreach (IntVec3 cell in tempSet)
             {
@@ -222,9 +217,6 @@ namespace TiberiumRim
             {
                 return false;
             }
-            if (thing is Pawn)
-                return true;
-
             return thing.GetStatValue(TiberiumDefOf.TiberiumResistance) < 1;
         }
 

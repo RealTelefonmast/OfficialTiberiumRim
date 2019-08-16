@@ -14,37 +14,21 @@ namespace TiberiumRim
             base.PostAdd(dinfo);
             if (Part == null)
             {
+                Log.Message("Bodypart is null for mutation part on " + pawn.LabelShort);
                 pawn.health.RemoveHediff(this);
                 return;
             }
-
             CreatePotentialMutation();
         }
 
         private void CreatePotentialMutation()
         {
-            if (TRUtils.Chance(HediffCoverageFor(Part, TRHediffDefOf.TiberiumCrystallization)))
+            if (TRUtils.Chance(HediffUtils.HediffCoverageFor(pawn, Part, TRHediffDefOf.TiberiumCrystallization)))
                 HediffUtils.MutatePart(pawn, Part, TRHediffDefOf.Crystallized);
-            else if (TRUtils.Chance(HediffCoverageFor(Part, TRHediffDefOf.SymbioticPart)))
+            else if (TRUtils.Chance(HediffUtils.HediffCoverageFor(pawn, Part, TRHediffDefOf.SymbioticPart)))
                 HediffUtils.MutatePart(pawn, Part, TRHediffDefOf.Enhanced);
             else
                 HediffUtils.MutatePart(pawn, Part, TRHediffDefOf.Visceral);
-        }
-
-        private float HediffCoverageFor(BodyPartRecord part, HediffDef coverageOf)
-        {
-            float num = 1;
-            float parts = part.parts.Count + 1;
-            IEnumerable<Hediff> hediffs = pawn.health.hediffSet.hediffs.Where(h => h.def == coverageOf);
-            if (!part.parts.NullOrEmpty())
-                foreach (BodyPartRecord potPart in part.parts)
-                {
-                    if (hediffs.Any(h => h.Part == potPart))
-                    {
-                        num++;
-                    }
-                }
-            return num / parts;
         }
     }
 }

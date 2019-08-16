@@ -716,7 +716,7 @@ namespace TiberiumRim
                                 {
                                     if (maxMeshCount != 25)
                                     {
-                                        Log.Error(this.def + " must have plant.MaxMeshCount that is a perfect square.", false);
+                                        Log.Error(this.def + " must have thing.MaxMeshCount that is a perfect square.", false);
                                     }
                                     else
                                     {

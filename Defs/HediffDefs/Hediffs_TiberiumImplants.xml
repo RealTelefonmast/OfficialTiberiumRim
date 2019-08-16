@@ -1,6 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+	<HediffDef>
+		<hediffClass>TiberiumRim.Hediff_MissingPartInvisible</hediffClass>
+		<defName>MissingBodyPartInvisible</defName>
+		<label>missing body part</label>
+		<labelNoun>a missing body part</labelNoun>
+		<labelNounPretty>missing a {1}</labelNounPretty>
+		<defaultLabelColor>(0.5, 0.5, 0.5, 1)</defaultLabelColor>
+		<tendable>true</tendable>
+		<injuryProps>
+			<bleedRate>0.12</bleedRate>
+			<painPerSeverity>0.0125</painPerSeverity>
+		</injuryProps>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+			<showTendQuality>false</showTendQuality>
+			</li>
+		</comps>
+	</HediffDef>
+
 	<!-- Hand -->
 	<HediffDef ParentName="HediffImplant_TR">
 		<defName>HandSpikes</defName>
@@ -56,7 +75,6 @@
 	</HediffDef>
 	
 	<HediffDef Abstract="True" Name="VisceralLimb" ParentName="HediffImplant_TR">
-		<hediffClass>HediffWithComps</hediffClass>
 		<defaultLabelColor>(155, 160, 75)</defaultLabelColor>
 		<comps>
 			<li Class="HediffCompProperties_VerbGiver">
@@ -74,17 +92,6 @@
 				</tools>
 			</li>
 		</comps>
-		<stages>
-			<li>
-				<painOffset>0.1</painOffset>
-				<capMods>
-					<li>
-						<capacity>Eating</capacity>
-						<offset>-0.22</offset>
-					</li>
-				</capMods>
-			</li>
-		</stages>
 		<addedPartProps>
 			<solid>false</solid>
 			<isGoodWeapon>true</isGoodWeapon>

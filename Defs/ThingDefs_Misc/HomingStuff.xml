@@ -4,6 +4,7 @@
 	<TiberiumRim.HomingThingDef>
 		<defName>VeinGasCloud</defName>
 		<thingClass>TiberiumRim.VeinGasCloud</thingClass>
+		<label>gas cloud</label>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
 			<texPath>Motes/TiberiumGas</texPath>

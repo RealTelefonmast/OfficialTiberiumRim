@@ -22,7 +22,7 @@ namespace TiberiumRim
             MapComponent_TNWManager tnwManager = Find.CurrentMap.GetComponent<MapComponent_TNWManager>();
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Current Particles: " + particles.SavedParticles.Count);
-            sb.AppendLine("Total Producers: " + tiberium.TiberiumProducers.Count);
+            sb.AppendLine("Total Producers: " + tiberium.StructureInfo.Producers.Count);
             int TibCount = tiberium.TiberiumInfo.TotalCount;
             sb.AppendLine("Total Tiberium: " + TibCount);
             int AffectedCount = 0;

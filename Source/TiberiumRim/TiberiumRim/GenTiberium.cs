@@ -188,11 +188,11 @@ namespace TiberiumRim
 
         public static TiberiumCrystal GetTiberium(this IntVec3 c, Map map)
         {
-            if (map != null && c.InBounds(map))
-            {
-                return map.GetComponent<MapComponent_Tiberium>().TiberiumInfo.TiberiumGrid.TiberiumCrystals[map.cellIndices.CellToIndex(c)];
-            }
-            return null;
+            if (map == null || !c.InBounds(map))
+                return null;
+
+            return map.GetComponent<MapComponent_Tiberium>().TiberiumInfo.TiberiumGrid
+                    .TiberiumCrystals[map.cellIndices.CellToIndex(c)];
         }
 
         public static bool CanSpreadTo(this TiberiumCrystalDef def, IntVec3 c, Map map, out TerrainSupport support, out IntVec3 hiddenTerrain)

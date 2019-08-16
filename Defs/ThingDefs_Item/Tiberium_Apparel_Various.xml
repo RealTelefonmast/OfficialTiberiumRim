@@ -5,12 +5,9 @@
 		<defName>TiberiumSuit</defName>
 		<description>With this suit you can savely traverse any Tiberium infested terrain. It shields the wearer from getting infected by Tiberium and also any possible radiation.  A suit to protect from Tiberium.\n\n Also protects from toxic fallout.</description>
 		<label>Tiberium protection suit</label>
-		<recipeMaker>
-			<researchPrerequisite>TiberiumKnowledge</researchPrerequisite>
-		</recipeMaker>
 		<graphicData>
-		<texPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuit</texPath>
-		<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<costList>
 			<Plasteel>5</Plasteel>
