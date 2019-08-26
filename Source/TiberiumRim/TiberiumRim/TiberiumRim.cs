@@ -58,6 +58,19 @@ namespace TiberiumRim
             TiberiumContent.AlphaShaderMaterial = (Material)assetBundle.LoadAsset("ShaderMaterial");
         }
 
+        public void PatchPawnDefs()
+        {
+            foreach (var def in DefDatabase<ThingDef>.AllDefs)
+            {
+                var thingClass = def.thingClass;
+                if (thingClass.IsSubclassOf(typeof(Pawn)) || thingClass == typeof(Pawn))
+                {
+                    def.comps.Add(new CompProperties_TiberiumCheck());
+                    def.comps.Add(new CompProperties_CrystalDrawer());
+                }
+            }
+        }
+
         /*
         [HarmonyPatch(typeof(ModContentLoader<Texture2D>))]
         [HarmonyPatch("LoadPNG")]

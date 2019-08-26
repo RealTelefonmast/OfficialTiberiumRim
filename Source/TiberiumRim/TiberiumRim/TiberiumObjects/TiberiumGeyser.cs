@@ -8,7 +8,7 @@ using RimWorld;
 
 namespace TiberiumRim
 {
-    public class TiberiumGeyser : TiberiumStructure
+    public class TiberiumGeyser : TRBuilding
     {
         public TNW_TiberiumSpike tiberiumSpike;
         public Dictionary<IntVec3, Graphic> CurrentCracks = new Dictionary<IntVec3, Graphic>();

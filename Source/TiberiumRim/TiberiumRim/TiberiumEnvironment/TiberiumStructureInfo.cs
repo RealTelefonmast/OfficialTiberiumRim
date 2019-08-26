@@ -46,7 +46,7 @@ namespace TiberiumRim
             return Producers.MinBy(x => x.Position.DistanceTo(seeker.Position));
         }
 
-        public void TryRegister(TiberiumStructure tibobj)
+        public void TryRegister(TRBuilding tibobj)
         {
             if (tibobj is TiberiumProducer p)
                 Producers.Add(p);

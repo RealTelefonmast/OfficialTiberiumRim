@@ -10,7 +10,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class TiberiumProducer : TiberiumStructure
+    public class TiberiumProducer : TRBuilding
     {
         public new TiberiumProducerDef def;
         public List<TiberiumCrystal> boundCrystals = new List<TiberiumCrystal>();

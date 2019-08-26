@@ -25,11 +25,7 @@ namespace TiberiumRim
         {
             Log.Message("Constructing TiberiumRimPatches");
             HarmonyInstance Tiberium = TiberiumRimMod.Tiberium;
-            //BackgroundPatch
-            MethodInfo bgmi = typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI");
-            HarmonyMethod bgpf = new HarmonyMethod(typeof(TiberiumRimPatches), "BackgroundOnGUIPatch");
-            Tiberium.Patch(bgmi, bgpf);
-
+            Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI"),new HarmonyMethod(typeof(TiberiumRimPatches), "BackgroundOnGUIPatch"));
             Tiberium.Patch(
             typeof(SymbolResolver_RandomMechanoidGroup).GetMethods(BindingFlags.NonPublic | BindingFlags.Static)
             .First(mi => mi.HasAttribute<CompilerGeneratedAttribute>() && mi.ReturnType == typeof(bool) &&
@@ -45,6 +41,7 @@ namespace TiberiumRim
                           mi.GetParameters()[0].ParameterType == typeof(PawnKindDef)), null, new HarmonyMethod(
                     typeof(TiberiumRimPatches), nameof(TiberiumRimPatches.MechanoidsFixer)));
             TiberiumRimMod.mod.LoadAssetBundles();
+            TiberiumRimMod.mod.PatchPawnDefs();
         }
 
         public static void MechanoidsFixerAncient(ref bool __result, PawnKindDef kind)
@@ -58,33 +55,26 @@ namespace TiberiumRim
         }
 
         //Render Patches
-
         public static bool BackgroundOnGUIPatch()
         {
-            if (TiberiumRimSettings.settings.CustomBackground)
+            if (!TiberiumRimSettings.settings.CustomBackground) return true;
+            bool flag = !((float) UI.screenWidth > (float) UI.screenHeight * (2048f / 1280f));
+            Rect position;
+            if (flag)
             {
-                bool flag = true;
-                if ((float)UI.screenWidth > (float)UI.screenHeight * (2048f / 1280f))
-                {
-                    flag = false;
-                }
-                Rect position;
-                if (flag)
-                {
-                    float height = (float)UI.screenHeight;
-                    float num = (float)UI.screenHeight * (2048f / 1280f);
-                    position = new Rect((float)(UI.screenWidth / 2) - num / 2f, 0f, num, height);
-                }
-                else
-                {
-                    float width = (float)UI.screenWidth;
-                    float num2 = (float)UI.screenWidth * (1280f / 2048f);
-                    position = new Rect(0f, (float)(UI.screenHeight / 2) - num2 / 2f, width, num2);
-                }
-                GUI.DrawTexture(position, TiberiumContent.BGPlanet, ScaleMode.ScaleToFit);
-                return false;
+                float height = (float) UI.screenHeight;
+                float num = (float) UI.screenHeight * (2048f / 1280f);
+                position = new Rect((float) (UI.screenWidth / 2) - num / 2f, 0f, num, height);
             }
-            return true;
+            else
+            {
+                float width = (float) UI.screenWidth;
+                float num2 = (float) UI.screenWidth * (1280f / 2048f);
+                position = new Rect(0f, (float) (UI.screenHeight / 2) - num2 / 2f, width, num2);
+            }
+
+            GUI.DrawTexture(position, TiberiumContent.BGPlanet, ScaleMode.ScaleToFit);
+            return false;
         }
 
         [HarmonyPatch(typeof(HealthCardUtility))]
@@ -362,7 +352,7 @@ namespace TiberiumRim
         {
             public static void Postfix(Selector __instance)
             {
-                if (__instance.SingleSelectedThing is MechanicalPawn mech)
+                if (__instance.SingleSelectedThing.IsPlayerControlledMech())
                 {
                     if (Event.current.type == EventType.MouseDown)
                     {

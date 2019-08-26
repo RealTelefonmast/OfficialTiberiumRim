@@ -213,7 +213,7 @@ namespace TiberiumRim
 
         public bool CanBeAffected(Thing thing)
         {
-            if(thing is TiberiumObject || thing is TiberiumPawn || thing is TiberiumStructure)
+            if(thing is TiberiumObject || thing is TiberiumPawn)
             {
                 return false;
             }

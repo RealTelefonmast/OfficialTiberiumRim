@@ -69,7 +69,7 @@ namespace TiberiumRim
             pawn.DeSpawn(DestroyMode.Vanish);
             InnerContainer.TryAdd(pawn);
             ticksLeft = TRUtils.Range(100000, 120000);
-            if (TRUtils.Chance(0.44f))
+            if (TRUtils.Chance(0.46f))
                 prematureHatch = true;
         }
 
@@ -106,7 +106,7 @@ namespace TiberiumRim
         public override void Tick()
         {
             base.Tick();
-            if (hatched || InnerContainer == null)
+            if (hatched || InnerContainer.NullOrEmpty())
                 return;
 
             switch (VisceralStage)
@@ -293,7 +293,11 @@ namespace TiberiumRim
             StringBuilder sb = new StringBuilder();
             if (!hatched)
             {
-                string append = "";
+                if (InnerContainer.NullOrEmpty())
+                {
+                    return "Empty Container although not hatched - Something is wrong.";
+                }
+                var append = "";
                 append += "TR_VisceralState".Translate() + ": ";
                 switch (VisceralStage)
                 {
@@ -332,7 +336,7 @@ namespace TiberiumRim
                     {
                         InnerContainer = new ThingOwner<Thing>(this, false);
                         var pawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist);
-                        InnerContainer.TryAdd(pawn);
+                        VisceralSetup(pawn);
                         //Open();
                     }
                 };

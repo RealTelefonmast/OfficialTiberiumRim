@@ -42,7 +42,7 @@ namespace TiberiumRim
                 {
                     drawSize = drawSize.Rotated();
                 }
-                flipUV = g.ShouldDrawRotated ? false : (rot == Rot4.West && g.WestFlipped) || (rot == Rot4.East && g.EastFlipped);
+                flipUV = !g.ShouldDrawRotated && ((rot == Rot4.West && g.WestFlipped) || (rot == Rot4.East && g.EastFlipped));
             }
             drawMesh = flipUV ? MeshPool.GridPlaneFlip(drawSize) : MeshPool.GridPlane(drawSize);
             rotation = AngleFromRotFor(g, rot);

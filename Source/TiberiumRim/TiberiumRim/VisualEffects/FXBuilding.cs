@@ -10,14 +10,6 @@ namespace TiberiumRim
 {
     public class FXBuilding : Building, IFXObject
     {
-        public new TRThingDef def;
-
-        public override void SpawnSetup(Map map, bool respawningAfterLoad)
-        {
-            base.SpawnSetup(map, respawningAfterLoad);
-            def = base.def as TRThingDef;
-        }
-
         public ExtendedGraphicData ExtraData => (base.def as FXThingDef).extraData;
         public CompFX FXComp => this.GetComp<CompFX>();
 

@@ -7,7 +7,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class VeinEgg : TiberiumStructure
+    public class VeinEgg : TRBuilding
     {
         public Veinhole parent;
         private int ticksToHatch = TRUtils.Range(GenDate.TicksPerDay, GenDate.TicksPerDay * 3);

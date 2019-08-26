@@ -12,6 +12,17 @@ namespace TiberiumRim
 {
     public static class TRUtils
     {
+
+        public static void DrawTargeter(IntVec3 pos, Material mat, float size)
+        {
+            Vector3 vector = pos.ToVector3ShiftedWithAltitude(AltitudeLayer.MetaOverlays);
+            Graphics.DrawMesh(MeshMakerPlanes.NewPlaneMesh(size), vector, Quaternion.identity, mat, 0);
+        }
+
+        public static bool IsPlayerControlledMech(this Thing thing)
+        {
+            return thing is MechanicalPawn p && p.Faction.IsPlayer;
+        }
         public static void GetTiberiumMutant(Pawn pawn, out Graphic Head, out Graphic Body)
         {
             Head = null;

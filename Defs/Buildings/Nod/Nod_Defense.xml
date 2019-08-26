@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
-	<TiberiumRim.TRThingDef ParentName="BuildingBase">
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>ObeliskOfLight</defName>
 		<label>obelisk of light</label>
 		<description>pew pew</description>

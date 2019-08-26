@@ -36,11 +36,5 @@ namespace TiberiumRim
         public static readonly Texture2D MenuSmall = ContentFinder<Texture2D>.Get("UI/Menu/Menu_Interface");
         public static readonly Texture2D MenuBig = ContentFinder<Texture2D>.Get("UI/Menu/Menu_Interface_Big");
         public static readonly Texture2D InfoButton = ContentFinder<Texture2D>.Get("UI/Buttons/InfoButton", true);
-
-        //Factions
-        public static readonly Texture2D GDI = ContentFinder<Texture2D>.Get("UI/Icons/Factions/GDI");
-        public static readonly Texture2D NOD = ContentFinder<Texture2D>.Get("UI/Icons/Factions/Nod");
-        public static readonly Texture2D Forgotten = ContentFinder<Texture2D>.Get("UI/Icons/Factions/Forgotten");
-        public static readonly Texture2D Scrin = ContentFinder<Texture2D>.Get("UI/Icons/Factions/Nod");
     }
 }

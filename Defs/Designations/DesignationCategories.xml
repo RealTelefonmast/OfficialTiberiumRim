@@ -10,6 +10,17 @@
 		</specialDesignatorClasses>
 	</DesignationCategoryDef>
 
+	<DesignationCategoryDef>
+		<defName>TargeterTest</defName>
+		<label>targeters</label>
+		<order>22</order>
+		<specialDesignatorClasses>
+		  <li>TiberiumRim.Designator_ScrinLanding</li>
+		  <li>TiberiumRim.Designator_IonCannonTargeter</li>
+		  <li>TiberiumRim.Designator_NodNukeTargeter</li>
+		</specialDesignatorClasses>
+	</DesignationCategoryDef>
+
 	<TiberiumRim.FactionDesignationDef Abstract="True" Name="FactionDesignationBase">
 		<subCategories>
 			<li>Structure</li>

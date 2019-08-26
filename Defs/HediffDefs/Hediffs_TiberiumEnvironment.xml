@@ -42,19 +42,19 @@
 		<relativeCapMods>
 			<li>
 				<capacity>Metabolism</capacity>
-				<offset>-1</offset>
+				<offset>-0.9</offset>
 			</li>
 			<li>
 				<capacity>Breathing</capacity>
-				<offset>-0.90</offset>
+				<offset>-0.8</offset>
 			</li>
 			<li>
 				<capacity>Consciousness</capacity>
-				<offset>-0.75</offset>
+				<offset>-0.60</offset>
 			</li>
 			<li>
 				<capacity>Moving</capacity>
-				<offset>-0.80</offset>
+				<offset>-0.75</offset>
 			</li>
 		</relativeCapMods>
 		<stages>
@@ -79,7 +79,7 @@
 				<vomitMtbDays>1</vomitMtbDays>
 			</li>
 			<li>
-				<minSeverity>0.75</minSeverity>
+				<minSeverity>0.70</minSeverity>
 				<label>dangerous</label>
 				<painFactor>1.5</painFactor>
 				<hungerRateFactor>0.5</hungerRateFactor>
@@ -88,7 +88,7 @@
 				<lifeThreatening>true</lifeThreatening>
 			</li>
 			<li>
-				<minSeverity>1</minSeverity>
+				<minSeverity>0.80</minSeverity>
 				<label>lethal</label>
 				<painFactor>2</painFactor>
 				<hungerRateFactor>0.1</hungerRateFactor>

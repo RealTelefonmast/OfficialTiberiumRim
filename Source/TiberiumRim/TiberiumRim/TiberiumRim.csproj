@@ -58,12 +58,16 @@
     <Compile Include="Alert_Debug.cs" />
     <Compile Include="Alert_DebugReservations.cs" />
     <Compile Include="EventExtension.cs" />
+    <Compile Include="GameSettings\Designator_Target.cs" />
     <Compile Include="GameSettings\Dialog_DifficultyPreset.cs" />
     <Compile Include="GameSettings\Dialog_SubSetting.cs" />
     <Compile Include="GameSettings\Dialog_TiberiumRimSettings.cs" />
     <Compile Include="HomingThing.cs" />
     <Compile Include="MechanicalPawns\Mech_Gunned.cs" />
+    <Compile Include="Scrin\DronePlatform.cs" />
+    <Compile Include="Scrin\ScrinWorkerDrone.cs" />
     <Compile Include="Story\Objective_ActivateGZ.cs" />
+    <Compile Include="Story\ScenPart_ScrinArrival.cs" />
     <Compile Include="TiberiumEnvironment\SuppressionGrid.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumProducerGrid.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumStructureInfo.cs" />
@@ -117,6 +121,8 @@
     <Compile Include="VeinholeParts\VeinMonster.cs" />
     <Compile Include="VisualEffects\Graphic_RandomSelection.cs" />
     <Compile Include="VisualEffects\Mote_Beam.cs" />
+    <Compile Include="VisualEffects\MoverProperties.cs" />
+    <Compile Include="VisualEffects\PulseProperties.cs" />
     <Compile Include="Weaponry\AttackProperties.cs" />
     <Compile Include="Weaponry\Building_Obelisk.cs" />
     <Compile Include="Weaponry\Building_TRTurret.cs" />
@@ -211,7 +217,6 @@
     <Compile Include="TiberiumProcessing\TRThingDef.cs" />
     <Compile Include="TiberiumProcessing\TRThingDefList.cs" />
     <Compile Include="TiberiumProcessing\WorldComponent_EVA.cs" />
-    <Compile Include="TiberiumObjects\TiberiumStructure.cs" />
     <Compile Include="TiberiumChunk.cs" />
     <Compile Include="TiberiumControlDef.cs" />
     <Compile Include="TiberiumObjects\TiberiumCrystal.cs" />

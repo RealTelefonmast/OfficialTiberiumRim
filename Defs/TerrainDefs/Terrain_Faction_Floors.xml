@@ -135,7 +135,7 @@
 	
 	<TerrainDef>
 		<defName>ScrinFloor</defName>
-		<label>Scrin landing sites</label>
+		<label>scrin construction ground</label>
 		<renderPrecedence>240</renderPrecedence>
 		<description>---</description>
 		<texturePath>Terrain/Scrin/ScrinFloor</texturePath>

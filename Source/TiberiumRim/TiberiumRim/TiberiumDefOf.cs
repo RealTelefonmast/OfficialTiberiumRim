@@ -59,6 +59,7 @@ namespace TiberiumRim
         public static PawnKindDef VeinTiberiumChunk;
 
         //Buildings
+        public static ThingDef DronePlatform;
         public static ThingDef TiberiumResearchCrane;
         public static ThingDef TiberiumPipe;
 
@@ -93,8 +94,10 @@ namespace TiberiumRim
         public static StatDef TiberiumRadiationResistance;
 
         // Skyfallers
-        //public static ThingDef SkyfallerTibGreen;
-        //public static ThingDef SkyfallerTibBlue;
-        //public static ThingDef SkyfallerTibRed;
+        public static ThingDef GreenTiberiumMeteorIncoming;
+        public static ThingDef BlueTiberiumMeteorIncoming;
+        public static ThingDef RedTiberiumShardIncoming;
+        public static ThingDef TiberiumMeteorIncoming;
+        public static ThingDef ScrinDronePlatformIncoming;
     }
 }

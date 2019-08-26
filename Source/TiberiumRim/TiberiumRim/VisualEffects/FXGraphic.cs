@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using UnityEngine;
@@ -33,19 +34,13 @@ namespace TiberiumRim
         public void Tick()
         {
             if (ticksToBlink > 0 && blinkDuration == 0)
-            {
                 ticksToBlink--;
-            }
             else
             {
                 if (blinkDuration > 0)
-                {
                     blinkDuration--;
-                }
                 else
-                {
                     ResetBlink();
-                }
             }
         }
 
@@ -62,6 +57,7 @@ namespace TiberiumRim
                 Color color = parent.ColorOverride(index);              
                 color = color == Color.white ? data.data.color : color;
                 color.a = parent.OpacityFloat(index);
+                var size = data.data.drawSize;
                 if (graphicInt == null)
                 {
                     if(parent.parent.Graphic is Graphic_Random random)
@@ -89,12 +85,24 @@ namespace TiberiumRim
                 }
                 if (data.mode == FXMode.Pulse)
                 {
-                    color.a = TRUtils.Cosine2(data.pulseValue.min, data.pulseValue.max, data.pulseDuration, parent.tickOffset, Find.TickManager.TicksGame);
+                    var pulse = data.pulse;
+                    var tick = Find.TickManager.TicksGame;
+                    var opaVal = TRUtils.Cosine2(pulse.opacityRange.min, pulse.opacityRange.max, pulse.opacityDuration,
+                        parent.tickOffset + pulse.opacityOffset, tick);
+                    var sizeVal = TRUtils.Cosine2(pulse.sizeRange.min, pulse.sizeRange.max, pulse.sizeDuration,
+                        parent.tickOffset + pulse.sizeOffset, tick);
+                    if (pulse.mode == PulseMode.Opacity)
+                        color.a = opaVal;
+                    else if (pulse.mode == PulseMode.Size)
+                        graphicInt.drawSize = size * sizeVal; 
+                    else if (pulse.mode == PulseMode.OpaSize)
+                    {
+                        color.a = opaVal;
+                        graphicInt.drawSize = size * sizeVal;
+                    }
                 }       
                 if(color != graphicInt.Color)
-                {
                     graphicInt = graphicInt.GetColoredVersion(graphicInt.Shader, color, data.data.colorTwo);
-                }
                 return graphicInt;
             }
         }

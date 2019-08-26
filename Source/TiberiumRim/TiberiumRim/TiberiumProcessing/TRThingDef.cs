@@ -14,6 +14,7 @@ namespace TiberiumRim
         public TRThingCategoryDef TRCategory;
         public GraphicData extraGraphicData;
         public TurretProperties turret;
+        public TerrainDef makesTerrain;
         public bool hidden = false;
         public bool devObject = false;
         public bool destroyTiberium = false;

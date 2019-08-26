@@ -20,11 +20,14 @@ namespace TiberiumRim
         public static readonly Texture2D DownArrow = ContentFinder<Texture2D>.Get("UI/Icons/DownArrow", true);
 
         public static readonly Texture2D BGPlanet = ContentFinder<Texture2D>.Get("UI/Menu/Background", true);
+        //Faction Icons
         public static readonly Texture2D CommonIcon = ContentFinder<Texture2D>.Get("UI/Icons/Factions/Common", true);
         public static readonly Texture2D ForgottenIcon = ContentFinder<Texture2D>.Get("UI/Icons/Factions/Forgotten", true);
         public static readonly Texture2D GDIIcon = ContentFinder<Texture2D>.Get("UI/Icons/Factions/GDI", true);
         public static readonly Texture2D NodIcon = ContentFinder<Texture2D>.Get("UI/Icons/Factions/Nod", true);
         public static readonly Texture2D ScrinIcon = ContentFinder<Texture2D>.Get("UI/Icons/Factions/Scrin", true);
+        public static readonly Texture2D BlackMarketIcon = ContentFinder<Texture2D>.Get("UI/Icons/Factions/BlackMarket", true);
+        //Misc Icons
         public static readonly Texture2D TiberiumIcon = ContentFinder<Texture2D>.Get("UI/Icons/ThingCategories/TiberiumCategory", true);
 
         public static readonly Texture2D GeneralBG = ContentFinder<Texture2D>.Get("UI/Menu/Tapestry", true);
@@ -36,6 +39,11 @@ namespace TiberiumRim
         public static readonly Texture2D HarvesterValue = ContentFinder<Texture2D>.Get("UI/Icons/Network/Harvester/Value", true);
         public static readonly Texture2D HarvesterNearest = ContentFinder<Texture2D>.Get("UI/Icons/Network/Harvester/Nearest", true);
         public static readonly Texture2D HarvesterMoss = ContentFinder<Texture2D>.Get("UI/Icons/Network/Harvester/Moss", true);
+
+        //Targeter Mats
+        public static readonly Material IonCannonTargeter = MaterialPool.MatFrom("UI/Targeters/Target_IonCannon", ShaderDatabase.Transparent);
+        public static readonly Material NodNukeTargeter = MaterialPool.MatFrom("UI/Targeters/Target_Nuke", ShaderDatabase.Transparent);
+        public static readonly Material ScrinLandingTargeter = MaterialPool.MatFrom("UI/Targeters/Target_IonCannon", ShaderDatabase.Transparent);
 
         //Imported
         public static Shader AlphaShader;

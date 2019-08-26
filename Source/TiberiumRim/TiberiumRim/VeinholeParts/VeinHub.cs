@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace TiberiumRim
 {
-    public class VeinHub : TiberiumStructure
+    public class VeinHub : TRBuilding
     {
         public Veinhole parent;
         public List<IntVec3> AffectedCells = new List<IntVec3>();

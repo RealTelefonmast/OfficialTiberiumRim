@@ -669,8 +669,10 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3.5,3.5)</drawSize>
 						</data>
-						<pulseDuration>240</pulseDuration>
 						<mode>Pulse</mode>
+						<pulse>
+							<opacityDuration>240</opacityDuration>
+						</pulse>
 					</li>
 				</overlays>
 				<effecters>
