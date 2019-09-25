@@ -13,8 +13,6 @@ namespace TiberiumRim
         //Mutations
         public static AnimalMutationDef TiberiumFiendMutations;
 
-        public static HediffDef MissingBodyPartInvisible;
-
         //Tiberium Meds
         public static HediffDef TiberBlockHediff;
         public static HediffDef TiberAddHediff;

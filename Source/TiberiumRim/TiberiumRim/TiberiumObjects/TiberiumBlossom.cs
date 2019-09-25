@@ -14,7 +14,6 @@ namespace TiberiumRim
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            Log.Message(TiberiumComp.StructureInfo.Blossoms + " blossoms. ");
             if (TiberiumComp.StructureInfo.Blossoms.Any() && TiberiumComp.StructureInfo.Blossoms.Any(b => b != this && b.Position.DistanceTo(Position) <= 3))
                 this.DeSpawn();
         }

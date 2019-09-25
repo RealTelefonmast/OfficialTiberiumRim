@@ -15,6 +15,7 @@ using UnityEngine;
 using System.Collections;
 using System.Threading;
 using System.IO;
+using Verse.Sound;
 
 namespace TiberiumRim
 {
@@ -76,6 +77,92 @@ namespace TiberiumRim
             GUI.DrawTexture(position, TiberiumContent.BGPlanet, ScaleMode.ScaleToFit);
             return false;
         }
+
+
+        [HarmonyPatch(typeof(Thing))]
+        [HarmonyPatch("Kill")]
+        static class KillThingPatch
+        {
+            public static void Postfix(Thing __instance, DamageInfo? dinfo)
+            {
+                if (!__instance.Spawned) return;
+                if (__instance.Faction == null) return;
+                if (!__instance.Faction.IsPlayer) return;
+                if (__instance is Building)
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.BuildingLost);
+                if (__instance is Pawn)
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.UnitLost);
+
+            }
+        }
+
+        [HarmonyPatch(typeof(SampleOneShotManager))]
+        [HarmonyPatch("TryAddPlayingOneShot")]
+        static class TryAddPlayingOneShotDebugs
+        {
+            public static bool Prefix(SampleOneShot newSample)
+            {
+                //Log.Message("Adding One Shot: " + newSample.subDef.name + " from " + newSample.subDef.parentDef.defName);
+                return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(Thing))]
+        [HarmonyPatch("TakeDamage")]
+        static class TakeDamagePatch
+        {
+            public static void Postfix(Thing __instance, DamageInfo dinfo)
+            {
+                if (!__instance.Spawned) return;
+                if (__instance.Faction == null) return;
+                if (!__instance.Faction.IsPlayer) return;
+
+                if (__instance is Building _)
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.BaseUnderAttack);
+                if (__instance is Pawn _) GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.UnitUnderAttack);
+            }
+        }
+
+        [HarmonyPatch(typeof(Command_Toggle))]
+        [HarmonyPatch("ProcessInput")]
+        static class ToggleInputPatch
+        {
+            public static void Postfix(Command_Toggle __instance)
+            {
+                var blueprint = (Thing)Find.Selector.SelectedObjects.Find(b => b is Blueprint || b is Frame);
+                var forbid = blueprint?.TryGetComp<CompForbiddable>();
+                if(blueprint == null || forbid == null) return;
+                if (blueprint.Faction.IsPlayer && forbid.Forbidden)
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.OnHold);
+            }
+    }
+
+        [HarmonyPatch(typeof(Designator))]
+        [HarmonyPatch("FinalizeDesignationSucceeded")]
+        static class Designator_Build_FinalizeSuccPatch
+        {
+            public static void Postfix(Designator __instance)
+            {
+                if (__instance is Designator_Cancel)
+                {
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.Canceled);
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(Designator))]
+        [HarmonyPatch("FinalizeDesignationFailed")]
+        static class Designator_Build_FinalizeFailPatch
+        {
+            public static void Postfix(Designator __instance)
+            {
+                if (__instance is Designator_Build)
+                {
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.CantDeploy);
+                }
+            }
+        }
+        
 
         [HarmonyPatch(typeof(HealthCardUtility))]
         [HarmonyPatch("DrawHediffRow")]
@@ -149,6 +236,19 @@ namespace TiberiumRim
                 renderComp.Drawer.RenderOverlay(pawn, drawLoc, headFacing, quaternion, portrait);
             }
         }
+
+        [HarmonyPatch(typeof(DesignatorManager))]
+        [HarmonyPatch("Deselect")]
+        public static class DeselectPatch
+        {
+            public static bool Prefix(DesignatorManager __instance)
+            {
+                if (__instance.SelectedDesignator is Designator_Extended d && d.MustStaySelected)
+                    return false;
+                return true;
+            }
+        }
+
 
         [HarmonyPatch(typeof(DamageWorker_AddInjury))]
         [HarmonyPatch("PlayWoundedVoiceSound")]
@@ -455,6 +555,30 @@ namespace TiberiumRim
             }
         }
 
+        [HarmonyPatch(typeof(WorldSelector))]
+        [HarmonyPatch("HandleWorldClicks")]
+        public static class HandleWorldClicksPatch
+        {
+            public static bool Prefix(WorldSelector __instance)
+            {
+                if (Event.current.type == EventType.MouseDown)
+                {
+                    Log.Message("1. Patching World Selector with " + __instance.NumSelectedObjects);
+                    if (Event.current.button == 1 && __instance.NumSelectedObjects > 0)
+                    {
+                        Log.Message("2. Button 1 down");
+                        WorldObject obj = __instance.FirstSelectedObject;
+                        if (obj is AttackSatellite asat)
+                        {
+                            asat.SetDestination(GenWorld.MouseTile(false));
+                            Event.current.Use();
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+        }
 
 
         #region RegionPatch

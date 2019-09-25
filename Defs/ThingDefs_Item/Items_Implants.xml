@@ -57,4 +57,14 @@
 		</techHediffsTags>
 	</ThingDef>
 	
+	<ThingDef ParentName="EnhancedBodyPart">
+		<defName>TiberiumSkinSample</defName>
+		<label>tiberium tissue sample</label>
+		<description>A sample of skin from a Tiberium mutant, this could be applied to any body part, though it brings a risk.</description>
+		<techLevel>Industrial</techLevel>
+		<techHediffsTags>
+			<li>TiberiumBodyPart</li>
+		</techHediffsTags>
+	</ThingDef>
+	
 </Defs>

@@ -79,13 +79,13 @@ namespace TiberiumRim
             }
         }
 
-        public float RelativeModifier => Severity;
+        protected  virtual float RelativeModifier => Severity;
 
         public List<PawnCapacityModifier> RelativeCapMods
         {
             get
             {
-                List<PawnCapacityModifier> mods = new List<PawnCapacityModifier>();
+                var mods = new List<PawnCapacityModifier>();
                 foreach (var cap in def.relativeCapMods)
                 {
                     mods.Add(new PawnCapacityModifier()
@@ -93,7 +93,7 @@ namespace TiberiumRim
                         capacity = cap.capacity,
                         offset = cap.offset * Severity,
                         postFactor = cap.postFactor,
-                        setMax = cap.setMax,
+                        setMax = cap.setMax
                     });
                 }
                 return mods;

@@ -98,6 +98,7 @@ namespace TiberiumRim
         public void MakeMote(Vector3 exactPos, Map map)
         {
             IntVec3 spawnPos = exactPos.ToIntVec3();
+            if (!spawnPos.InBounds(map)) return;
             int rand = TRUtils.Range(Info.burstCount);
             for (int i = 0; i < rand; i++)
             {

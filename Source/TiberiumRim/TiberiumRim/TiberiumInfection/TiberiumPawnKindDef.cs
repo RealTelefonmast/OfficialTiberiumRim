@@ -12,4 +12,9 @@ namespace TiberiumRim
         public bool dependsOnProducer = false;
         public bool canLeaveProducer = true;
     }
+
+    public class ExtraRaceProperties
+    {
+
+    }
 }

@@ -27,7 +27,7 @@ namespace TiberiumRim
         {
             if (stopBlossom) return IntVec3.Invalid;
 
-            Predicate<IntVec3> pred = c => Blossoms.All(b => b.Position.DistanceTo(c) >= b.radius) && !c.Roofed(map) && c.Standable(map) && c.SupportsTiberiumTerrain(map);
+            Predicate<IntVec3> pred = c => Blossoms.All(b => b.Position.DistanceTo(c) >= b.radius) && c.SupportsBlossom(map);
             if (!CellFinderLoose.TryGetRandomCellWith(pred, map, 999, out IntVec3 dest))
             {
                 stopBlossom = true;

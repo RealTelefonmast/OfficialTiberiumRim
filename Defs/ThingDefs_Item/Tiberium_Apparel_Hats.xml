@@ -21,13 +21,14 @@
 			<ArmorRating_Blunt>0.03</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.03</ArmorRating_Sharp>
 			<Insulation_Heat>30</Insulation_Heat>
-			<TiberiumResistance>1</TiberiumResistance>
-			<TiberiumRadiationResistance>0.25</TiberiumRadiationResistance>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+		
 		</statBases>
 		<equippedStatOffsets>
 			<SocialImpact>-0.15</SocialImpact>
 			<ToxicSensitivity>-0.75</ToxicSensitivity>
-			<TibGasFiltering>1</TibGasFiltering>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
+			<TiberiumRadiationResistance>0.25</TiberiumRadiationResistance>
 		</equippedStatOffsets>
 		<apparel>
 			<bodyPartGroups>
@@ -44,11 +45,11 @@
 	</ThingDef>
   
   	<ThingDef ParentName="HatBase_TR">
-		<defName>RevarksMask</defName>
+		<defName>RavensMask</defName>
 		<label>abandoned mask</label>
 		<description>This mask was found on a long dessicated corpse. The origin is unknown, but looking around the chamber we have found various writing and leftovers of meal packages. Whoever this belonged to, tried his very best to survive.</description>
 		<graphicData>
-			<texPath>Items/Apparel/TiberiumProtectionSuit/Rev/RevarksMask</texPath>
+			<texPath>Items/Apparel/TiberiumProtectionSuit/Rev/RavensMask</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 		</graphicData>
 		<statBases>
@@ -58,21 +59,23 @@
 			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
 			<Insulation_Heat>15</Insulation_Heat>
 			<Insulation_Cold>50</Insulation_Cold>
-			<TiberiumResistance>1</TiberiumResistance>
-			<TiberiumRadiationResistance>0.25</TiberiumRadiationResistance>
+			<TiberiumDamageResistance>1</TiberiumDamageResistance>
 		</statBases>
 		<techLevel>Medieval</techLevel>
 		<tradeability>None</tradeability>
+		<generateAllowChance>0</generateAllowChance>
+		<generateCommonality>0</generateCommonality>
 		<equippedStatOffsets>
 			<SocialImpact>0.75</SocialImpact>
 			<ToxicSensitivity>-1</ToxicSensitivity>
-			<TibGasFiltering>1</TibGasFiltering>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
+			<TiberiumRadiationResistance>0.25</TiberiumRadiationResistance>
 		</equippedStatOffsets>
 		<apparel>
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
-				<wornGraphicPath>Items/Apparel/TiberiumProtectionSuit/Rev/RevarksMask</wornGraphicPath>
+			<wornGraphicPath>Items/Apparel/TiberiumProtectionSuit/Rev/RavensMask</wornGraphicPath>
 			<layers>
 				<li>Overhead</li>
 			</layers>

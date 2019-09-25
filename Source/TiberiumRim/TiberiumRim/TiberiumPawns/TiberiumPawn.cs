@@ -36,5 +36,12 @@ namespace TiberiumRim
         {
             base.Tick();
         }
+
+        public override IEnumerable<Thing> ButcherProducts(Pawn butcher, float efficiency)
+        {
+            var stuff = base.ButcherProducts(butcher, efficiency);
+
+            return stuff;
+        }
     }
 }

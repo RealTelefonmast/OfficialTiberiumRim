@@ -82,21 +82,25 @@ namespace TiberiumRim
         {
             if (dinfo.HasValue)
             {
-                if(dinfo.Value.Def == DamageDefOf.Flame)
+                if (dinfo.Value.Def == DamageDefOf.Flame)
                 {
-                    Destroy(DestroyMode.KillFinalize, true);
+                    this.Destroy(DestroyMode.KillFinalize, true);
                     return;
                 }
             }
             base.Kill(dinfo, exactCulprit);
         }
 
+        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+        {
+            Destroy(mode, false);
+        }
+
         private void Destroy(DestroyMode mode, bool byFire)
         {
             if (!byFire && !hatched)
             {
-                hatched = true;
-                HitPoints *= 7/8;
+                HitPoints = MaxHitPoints/6;
                 Open();
                 return;
             }
@@ -256,7 +260,7 @@ namespace TiberiumRim
                         return VisceralStage.Fresh;
                     }
                     //Not so fresh Pawn
-                    if (HeldThing is Corpse && RottenPercent <= 1f)
+                    if (HeldThing is Corpse && RottenPercent < 1f)
                     {
                         return VisceralStage.Corpse;
                     }
@@ -276,9 +280,10 @@ namespace TiberiumRim
         {
             get
             {
-                if(InnerContainer[0] is Corpse c && c!= null)
+                if(InnerContainer[0] is Corpse c)
                 {
-                    return c.GetComp<CompRottable>().RotProgressPct;
+                    var rot = c.GetComp<CompRottable>();
+                    return rot.RotProgress / (rot.PropsRot.TicksToDessicated + rot.PropsRot.TicksToRotStart);
                 }
                 return 0f;
             }

@@ -38,7 +38,7 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<WorkToBuild>3000</WorkToBuild>
 			<Flammability>0.5</Flammability>
-			<TiberiumResistance>1</TiberiumResistance>
+			<TiberiumDamageResistance>1</TiberiumDamageResistance>
 			<ResearchSpeedFactor>1.0</ResearchSpeedFactor>
 		</statBases>
 		<comps>

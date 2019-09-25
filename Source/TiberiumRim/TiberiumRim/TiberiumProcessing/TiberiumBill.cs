@@ -20,7 +20,7 @@ namespace TiberiumRim
 
         public TiberiumBill() : base() { }
 
-        private CompTNW_Crafter CompTNW => (billStack.billGiver as Building).GetComp<CompTNW_Crafter>();
+        private CompTNW_Crafter CompTNW => ((Building) billStack.billGiver).GetComp<CompTNW_Crafter>();
         private TiberiumNetwork Network => CompTNW.Network;
 
         public override void ExposeData()

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef ParentName="ResourceBase">
+	<ThingDef ParentName="ResourceBase_TR">
 		<defName>GDI_ReinforcedPlate</defName>
 		<label>Reinforced Plate</label>
 		<description>GDI's engineers have focused on resistance and endurance, this alloy is quite heavy..</description>
@@ -118,7 +118,7 @@
 	</ThingDef>
 	-->
 	
-	<ThingDef ParentName="ResourceBase">
+	<ThingDef ParentName="ResourceBase_TR">
 		<defName>TRBattleChip</defName>
 		<label>battle control circuit</label>
 		<description>Our advanced weaponry, including mechanical units and high-tech turrets, require this circuit to operate.</description>

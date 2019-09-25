@@ -44,9 +44,6 @@
 			<li>ITab_Pawn_Gear</li>
 			<li>ITab_Pawn_Log</li>
 		</inspectorTabs>
-		<tradeTags>
-			<li>TiberiumAnimal</li>
-		</tradeTags>
 		<comps>
 			<li>
 				<compClass>CompAttachBase</compClass>
@@ -55,15 +52,18 @@
 		<drawGUIOverlay>true</drawGUIOverlay>
 	</ThingDef>
   
-	<ThingDef ParentName="BasePawn_TR" Name="VisceralThingBase" Abstract="True">
+	<ThingDef Name="VisceralPawnBase" ParentName="AnimalBase_TR" Abstract="True">
 		<statBases>
 			<Flammability>0.15</Flammability>
 			<LeatherAmount>15</LeatherAmount>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
 		</statBases>
 		<race>
+			<hasGenders>false</hasGenders>
 			<gestationPeriodDays>0</gestationPeriodDays>
 			<mateMtbHours>0</mateMtbHours>
-			<hasGenders>false</hasGenders>
 			<needsRest>false</needsRest>
 			<lifeExpectancy>999</lifeExpectancy>
 			<manhunterOnDamageChance>0.40</manhunterOnDamageChance>
@@ -71,17 +71,12 @@
 			<trainability>None</trainability>
 			<baseHungerRate>2</baseHungerRate>
 			<foodType>OmnivoreAnimal, AnimalProduct</foodType>
-			<meatLabel>visceral meat</meatLabel>
-			<meatColor>(206,217,130)</meatColor>
+			<leatherDef>Leather_Visceral</leatherDef>
 		</race>
-		<recipes>
-			<li>ExciseCarcinoma</li>
-			<li>Euthanize</li>
-			<li>Anesthetize</li>
-		</recipes>
 	</ThingDef>
 	
-		<ThingDef Name="AnimalBase_TR" ParentName="BasePawn_TR" Abstract="True" >
+	<ThingDef Name="AnimalBase_TR" ParentName="BasePawn_TR" Abstract="True" >
+		<thingClass>TiberiumRim.TiberiumPawn</thingClass>
 		<statBases>
 			<Flammability>0.5</Flammability>
 			<ToxicSensitivity>0</ToxicSensitivity>
@@ -93,28 +88,44 @@
 			<ArmorRating_Blunt>0</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0</ArmorRating_Sharp>
 			<ArmorRating_Heat>0</ArmorRating_Heat>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
 		</statBases>
 		<race>
-			<herdAnimal>true</herdAnimal>
-			<packAnimal>true</packAnimal>
+			<intelligence>Animal</intelligence>
+			<!-- <fleshType></fleshType>
+			<bloodDef></bloodDef>
+			<hediffGiverSets></hediffGiverSets>
+			<deathActionWorkerClass></deathActionWorkerClass>
+			<herdAnimal></herdAnimal>
+			<packAnimal></packAnimal>
+			-->
+			<fleshType>Normal</fleshType>
+			<bloodDef>FilthTibBloodG</bloodDef>
+			<wildness>0.99</wildness>
+			<hasGenders>true</hasGenders>
+			<needsRest>true</needsRest>
 			<thinkTreeMain>Animal</thinkTreeMain>
 			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
-			<hasGenders>true</hasGenders>
+			<nameCategory>NoName</nameCategory>
+			<foodType>OmnivoreRoughAnimal</foodType>
 			<nameGenerator>NamerAnimalGenericMale</nameGenerator>
 			<nameGeneratorFemale>NamerAnimalGenericFemale</nameGeneratorFemale>
-			<manhunterOnDamageChance>1</manhunterOnDamageChance>
+			<manhunterOnDamageChance>0.95</manhunterOnDamageChance>
 			<manhunterOnTameFailChance>0.15</manhunterOnTameFailChance>
-			<predator>true</predator>
-			<fleshType>Mutated</fleshType>
-			<bloodDef>FilthTibBloodG</bloodDef>
 			<nameOnNuzzleChance>0.5</nameOnNuzzleChance>
+			<baseHungerRate>0.75</baseHungerRate>
+			<predator>true</predator>
+			<canBePredatorPrey>false</canBePredatorPrey>
+			<herdMigrationAllowed>false</herdMigrationAllowed>
 			<trainability>Intermediate</trainability>
 			<hediffGiverSets>
-			<li>OrganicStandard</li>
+				<li>OrganicStandard</li>
 			</hediffGiverSets>
 		</race>
 		<tradeTags>
-			<li>BadassAnimal</li>
+			<li>TiberiumAnimal</li>
 		</tradeTags>
 		<recipes>
 			<li>ExciseCarcinoma</li>
@@ -123,6 +134,15 @@
 			<li>Euthanize</li>
 			<li>Anesthetize</li>
 		</recipes>
+	</ThingDef>
+  
+	<ThingDef Name="FiendBase" ParentName="AnimalBase_TR" Abstract="True" >
+		<race>
+			<leatherDef>Leather_BlackTib</leatherDef>
+			<meatLabel>tiberianMeat</meatLabel>
+			<meatColor>(26,5,5)</meatColor>
+			<meatMarketValue>3</meatMarketValue>
+		</race>
 	</ThingDef>
   
   	<TiberiumRim.TiberiumKindDef Name="VisceralKindBase" Abstract="True">

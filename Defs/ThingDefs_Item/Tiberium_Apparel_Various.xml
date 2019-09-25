@@ -27,13 +27,13 @@
 			<ArmorRating_Heat>0.2</ArmorRating_Heat>
 			<Insulation_Cold>-20</Insulation_Cold>
 			<Insulation_Heat>45</Insulation_Heat>
-			<TiberiumResistance>1</TiberiumResistance>
-			<TiberiumRadiationResistance>0.75</TiberiumRadiationResistance>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
 		</statBases>
 		<equippedStatOffsets>
 			<MoveSpeed>-0.02</MoveSpeed>
 			<ToxicSensitivity>-0.25</ToxicSensitivity>
-			<TiberiumResistance>1</TiberiumResistance>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.75</TiberiumRadiationResistance>
 		</equippedStatOffsets>
 		<apparel>
 			<bodyPartGroups>

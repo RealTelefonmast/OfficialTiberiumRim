@@ -75,44 +75,39 @@ namespace TiberiumRim
         public override void Tick()
         {
             base.Tick();
-            if (!wandered && pawn.IsHashIntervalTick(750))
+            if (CurrentStage == CrystallizingStage.Reversing)
+                Severity -= SeverityRate * 2;
+            if (wandered || Halted || !pawn.IsHashIntervalTick(750)) return;
+
+            if (CurrentStage == CrystallizingStage.Mutation)
             {
-                if (Halted)              
-                    return;
+                TryMutate();
+                triedToMutate = true;
+            }
 
-                if (CurrentStage == CrystallizingStage.Mutation)
+            if (CurrentStage == CrystallizingStage.Crystallized && !Part.IsCorePart && !HasCrystallizingParent(out BodyPartRecord part))
+            {
+                if (ticksLeftCrystallized > 0)
                 {
-                    TryMutate();
-                    triedToMutate = true;
-                }
-
-                if (CurrentStage == CrystallizingStage.Crystallized && !Part.IsCorePart && !HasCrystallizingParent(out BodyPartRecord part))
-                {
-                    if (ticksLeftCrystallized > 0)
-                    {
-                        ticksLeftCrystallized -= 750;
-                        return;
-                    }
-
-                    HediffUtils.TryInfect(pawn, Part.parent, InitSeverity);
-                    wandered = true;
-                    Log.Message("Wandered from " + Part.LabelCap + " to " + Part.parent.LabelCap);
+                    ticksLeftCrystallized -= 750;
                     return;
                 }
-                /* TODO: Add Pawn ground-fusion effect and rescue jobd
+
+                HediffUtils.TryInfect(pawn, Part.parent, InitSeverity);
+                wandered = true;
+                Log.Message("Wandered from " + Part.LabelCap + " to " + Part.parent.LabelCap);
+                return;
+            }
+            /* TODO: Add Pawn ground-fusion effect and rescue jobd
                 if(pawn.GetPosture() == PawnPosture.Standing && Part.height == BodyPartHeight.Bottom && TRUtils.Chance(GroundFusionChance()))
                 {
 
                 }
                 */
-                if (TRUtils.Chance(BloodInfectionChance()))
-                    AffectOrganViaBlood();
-                Severity += SeverityRate;
-                pawn.health.Notify_HediffChanged(this);
-            }
-
-            if (CurrentStage == CrystallizingStage.Reversing)
-                Severity -= SeverityRate * 2;
+            if (TRUtils.Chance(BloodInfectionChance()))
+                AffectOrganViaBlood();
+            Severity += SeverityRate;
+            pawn.health.Notify_HediffChanged(this);
         }
 
         private void TryMutate()

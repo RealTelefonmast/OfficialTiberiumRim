@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+	<!--
 	<HediffDef>
 		<hediffClass>TiberiumRim.Hediff_MissingPartInvisible</hediffClass>
 		<defName>MissingBodyPartInvisible</defName>
@@ -19,6 +20,7 @@
 			</li>
 		</comps>
 	</HediffDef>
+	-->
 
 	<!-- Hand -->
 	<HediffDef ParentName="HediffImplant_TR">

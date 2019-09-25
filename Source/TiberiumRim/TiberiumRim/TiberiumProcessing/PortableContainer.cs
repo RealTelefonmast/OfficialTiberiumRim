@@ -17,8 +17,8 @@ namespace TiberiumRim
             Container = container.MakeCopy();
         }
 
-        public override float[] OpacityFloats => new float[1] { Container.StoredPercent };
-        public override Color[] ColorOverrides => new Color[1] { Container.Color };
+        public override float[] OpacityFloats => new float[1] { Container?.StoredPercent ?? 0f };
+        public override Color[] ColorOverrides => new Color[1] { Container?.Color ?? Color.white };
         public override bool[] DrawBools => new bool[1] { true };
 
         public override void DrawGUIOverlay()

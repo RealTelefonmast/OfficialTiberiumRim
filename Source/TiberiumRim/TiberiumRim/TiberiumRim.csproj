@@ -39,6 +39,8 @@
       <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="StoryFramework">
       <HintPath>Resources\StoryFramework.dll</HintPath>
       <Private>False</Private>
@@ -53,28 +55,49 @@
       <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\ThinkNode_ConditionalColonistOrMech.cs" />
     <Compile Include="Alert_Debug.cs" />
     <Compile Include="Alert_DebugReservations.cs" />
     <Compile Include="EventExtension.cs" />
-    <Compile Include="GameSettings\Designator_Target.cs" />
-    <Compile Include="GameSettings\Dialog_DifficultyPreset.cs" />
-    <Compile Include="GameSettings\Dialog_SubSetting.cs" />
-    <Compile Include="GameSettings\Dialog_TiberiumRimSettings.cs" />
+    <Compile Include="GameParts\ASATNetwork.cs" />
+    <Compile Include="GameParts\Designator_Extended.cs" />
+    <Compile Include="GameParts\Designator_Target.cs" />
+    <Compile Include="GameParts\Dialog_DifficultyPreset.cs" />
+    <Compile Include="GameParts\Dialog_SubSetting.cs" />
+    <Compile Include="GameParts\Dialog_TiberiumRimSettings.cs" />
+    <Compile Include="GameParts\GameComponent_TR.cs" />
+    <Compile Include="GameParts\ITab_ContainedPawn_Health.cs" />
+    <Compile Include="GameParts\MapComps\WorldComponent_TR.cs" />
+    <Compile Include="GameParts\SuperWeaponInfo.cs" />
+    <Compile Include="Sound\ActionComposition.cs" />
+    <Compile Include="Sound\TRSoundDef.cs" />
+    <Compile Include="Sound\TRSubSoundDef.cs" />
+    <Compile Include="Sound\GameComponent_ActionCompManager.cs" />
     <Compile Include="HomingThing.cs" />
     <Compile Include="MechanicalPawns\Mech_Gunned.cs" />
     <Compile Include="Scrin\DronePlatform.cs" />
+    <Compile Include="Scrin\GenPortal.cs" />
+    <Compile Include="Scrin\Page_ConfigureScrinInvasion.cs" />
+    <Compile Include="Scrin\ScenPart_ConfigPage_ScrinInvasion.cs" />
+    <Compile Include="Scrin\ScrinGameData.cs" />
+    <Compile Include="Scrin\ScrinPortal.cs" />
     <Compile Include="Scrin\ScrinWorkerDrone.cs" />
+    <Compile Include="Sound\SampleManager.cs" />
+    <Compile Include="Sound\SoundSample.cs" />
+    <Compile Include="Sound\SounPart.cs" />
+    <Compile Include="Story\Incident_TiberiumMeteor.cs" />
     <Compile Include="Story\Objective_ActivateGZ.cs" />
     <Compile Include="Story\ScenPart_ScrinArrival.cs" />
     <Compile Include="TiberiumEnvironment\SuppressionGrid.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumProducerGrid.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumStructureInfo.cs" />
-    <Compile Include="TiberiumEnvironment\MapComponent_Suppression.cs" />
-    <Compile Include="TiberiumEnvironment\MapComponent_Terrain.cs" />
+    <Compile Include="GameParts\MapComps\MapComponent_Suppression.cs" />
+    <Compile Include="GameParts\MapComps\MapComponent_Terrain.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumConsistency.cs" />
-    <Compile Include="TiberiumInfection\AnimalMutationDef.cs" />
+    <Compile Include="TiberiumPawns\AnimalMutationDef.cs" />
     <Compile Include="TiberiumInfection\Comp_CrystalDrawer.cs" />
     <Compile Include="TiberiumInfection\HediffMutationGroup.cs" />
     <Compile Include="TiberiumInfection\Hediff_Mutant.cs" />
@@ -85,6 +108,7 @@
     <Compile Include="TiberiumInfection\MutantDrawer.cs" />
     <Compile Include="TiberiumInfection\Need_Tiberium.cs" />
     <Compile Include="TiberiumInfection\PawnCrystalDrawer.cs" />
+    <Compile Include="TiberiumInfection\StatWorker_Tiberium.cs" />
     <Compile Include="TiberiumObjects\BlossomSpore.cs" />
     <Compile Include="TiberiumObjects\GroundZero.cs" />
     <Compile Include="TiberiumObjects\PlantMutationProperties.cs" />
@@ -93,6 +117,7 @@
     <Compile Include="TiberiumObjects\SporeProperties.cs" />
     <Compile Include="TiberiumObjects\TiberiumBlossom.cs" />
     <Compile Include="TiberiumObjects\TiberiumProducerStage.cs" />
+    <Compile Include="TiberiumPawns\GenTiberiumFiends.cs" />
     <Compile Include="TiberiumPawns\JobGiver_WanderInField.cs" />
     <Compile Include="TiberiumEnvironment\Zone_Tiberium.cs" />
     <Compile Include="TiberiumInfection\HediffComp_Icon.cs" />
@@ -112,6 +137,7 @@
     <Compile Include="TiberiumProcessing\Building_SuppressionTower.cs" />
     <Compile Include="TiberiumProcessing\PlaceWorker_OnlyOutside.cs" />
     <Compile Include="TiberiumProcessing\WorkGiver_HarvestTiberium.cs" />
+    <Compile Include="Utilities\SoundUtility.cs" />
     <Compile Include="VeinholeParts\TiberiumVein.cs" />
     <Compile Include="VeinholeParts\VeinChunk.cs" />
     <Compile Include="VeinholeParts\VeinEgg.cs" />
@@ -127,8 +153,15 @@
     <Compile Include="Weaponry\Building_Obelisk.cs" />
     <Compile Include="Weaponry\Building_TRTurret.cs" />
     <Compile Include="Weaponry\Comp_ExtraTurret.cs" />
+    <Compile Include="Weaponry\SuperWeapon\AttackSatellite.cs" />
+    <Compile Include="Weaponry\SuperWeapon\AttackSatellite_Ion.cs" />
+    <Compile Include="Weaponry\SuperWeapon\Building_IonCannon.cs" />
+    <Compile Include="Weaponry\SuperWeapon\IonBeam.cs" />
+    <Compile Include="Weaponry\SuperWeapon\IonCannon_Strike.cs" />
+    <Compile Include="Weaponry\SuperWeapon\Mote_IonBeamBurn.cs" />
     <Compile Include="Weaponry\Projectile_Beam.cs" />
     <Compile Include="Weaponry\Projectile_Homing.cs" />
+    <Compile Include="Weaponry\SuperWeapon\Nuke_Strike.cs" />
     <Compile Include="Weaponry\TurretGun.cs" />
     <Compile Include="Weaponry\TurretProperties.cs" />
     <Compile Include="TiberiumProcessing\CompTNW_WorkBench.cs" />
@@ -161,14 +194,14 @@
     <Compile Include="TiberiumProcessing\DesignationExtension.cs" />
     <Compile Include="TiberiumProcessing\Designator_PlacePipe.cs" />
     <Compile Include="TiberiumProcessing\Designator_RemoveTiberiumPipe.cs" />
-    <Compile Include="GameSettings\Designator_TRMenu.cs" />
+    <Compile Include="GameParts\Designator_TRMenu.cs" />
     <Compile Include="TiberiumProcessing\Graphic_LinkedTNW.cs" />
     <Compile Include="TiberiumProcessing\Graphic_LinkedTNWOverlay.cs" />
     <Compile Include="TiberiumProcessing\HarvesterReservationManager.cs" />
     <Compile Include="TiberiumProcessing\JobGiver_HarvestTiberium.cs" />
     <Compile Include="TiberiumProcessing\JobGiver_IdleAtRefinery.cs" />
     <Compile Include="TiberiumProcessing\JobGiver_UnloadAtRefinery.cs" />
-    <Compile Include="TiberiumProcessing\MapComponent_TNWManager.cs" />
+    <Compile Include="GameParts\MapComps\MapComponent_TNWManager.cs" />
     <Compile Include="TiberiumProcessing\Objective_TResearch.cs" />
     <Compile Include="TiberiumProcessing\RecipeDef_Tiberium.cs" />
     <Compile Include="TiberiumProcessing\TiberiumBill.cs" />
@@ -194,7 +227,7 @@
     <Compile Include="VisualEffects\Graphic_SingleExtended.cs" />
     <Compile Include="VisualEffects\IFXObject.cs" />
     <Compile Include="Graphic_Particle.cs" />
-    <Compile Include="TiberiumEnvironment\MapComponent_UndergroundTiberium.cs" />
+    <Compile Include="GameParts\MapComps\MapComponent_UndergroundTiberium.cs" />
     <Compile Include="MechanicalPawns\MechanicalPawn.cs" />
     <Compile Include="MechanicalPawns\MechanicalPawnKindDef.cs" />
     <Compile Include="VisualEffects\MoteThrower.cs" />
@@ -205,10 +238,10 @@
     <Compile Include="GraphicsManager.cs" />
     <Compile Include="GraphicsSettings.cs" />
     <Compile Include="TiberiumEnvironment\IncidentWorker_TiberiumArrival.cs" />
-    <Compile Include="VisualEffects\MapComponent_Particles.cs" />
-    <Compile Include="TiberiumEnvironment\MapComponent_Pollution.cs" />
-    <Compile Include="TiberiumEnvironment\MapComponent_Tiberium.cs" />
-    <Compile Include="TiberiumEnvironment\MapComponent_TiberiumWater.cs" />
+    <Compile Include="GameParts\MapComps\MapComponent_Particles.cs" />
+    <Compile Include="GameParts\MapComps\MapComponent_Pollution.cs" />
+    <Compile Include="GameParts\MapComps\MapComponent_Tiberium.cs" />
+    <Compile Include="GameParts\MapComps\MapComponent_TiberiumWater.cs" />
     <Compile Include="VisualEffects\Particle.cs" />
     <Compile Include="TiberiumEnvironment\PollutionGrid.cs" />
     <Compile Include="ThingComp_PlantExplode.cs" />
@@ -216,7 +249,7 @@
     <Compile Include="TiberiumEnvironment\ThingComp_TiberiumRadiation.cs" />
     <Compile Include="TiberiumProcessing\TRThingDef.cs" />
     <Compile Include="TiberiumProcessing\TRThingDefList.cs" />
-    <Compile Include="TiberiumProcessing\WorldComponent_EVA.cs" />
+    <Compile Include="GameParts\GameComponent_EVA.cs" />
     <Compile Include="TiberiumChunk.cs" />
     <Compile Include="TiberiumControlDef.cs" />
     <Compile Include="TiberiumObjects\TiberiumCrystal.cs" />
@@ -238,7 +271,7 @@
     <Compile Include="TiberiumObjects\TiberiumProducerResidue.cs" />
     <Compile Include="TiberiumRim.cs" />
     <Compile Include="TiberiumRimPatches.cs" />
-    <Compile Include="GameSettings\TiberiumSettings.cs" />
+    <Compile Include="GameParts\TiberiumSettings.cs" />
     <Compile Include="TiberiumObjects\TiberiumSpawnMode.cs" />
     <Compile Include="TiberiumProcessing\TNW_TiberiumSpike.cs" />
     <Compile Include="TiberiumObjects\TiberiumSpore.cs" />
@@ -246,10 +279,12 @@
     <Compile Include="TiberiumTerrainDefOf.cs" />
     <Compile Include="TiberiumObjects\TiberiumTraitProperties.cs" />
     <Compile Include="TiberiumObjects\TiberiumValueType.cs" />
-    <Compile Include="TiberiumUtils.cs" />
+    <Compile Include="Utilities\TiberiumUtils.cs" />
     <Compile Include="VeinholeParts\Veinhole.cs" />
     <Compile Include="VisualEffects\TRMats.cs" />
     <Compile Include="TiberiumEnvironment\WorldComponent_Tiberium.cs" />
+    <Compile Include="Weather\GameCondition_TiberiumBiome.cs" />
+    <Compile Include="Weather\WeatherEvent_IonStrike.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

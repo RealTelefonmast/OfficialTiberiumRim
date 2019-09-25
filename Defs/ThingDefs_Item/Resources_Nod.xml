@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef ParentName="ResourceBase">
+	<ThingDef ParentName="ResourceBase_TR">
 		<defName>Nod_CarbonPlate</defName>
 		<label>Carbon Plate</label>
 		<description>Nod's engineers have been trying to figure out a material that is strong enough to sustain any direct attack but light enough to allow quick construction. After years of development this new carbon based material was born.</description>

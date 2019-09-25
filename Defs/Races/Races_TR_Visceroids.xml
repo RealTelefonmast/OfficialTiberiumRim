@@ -2,7 +2,7 @@
 <Defs>
 
 	<!-- Visceral Horror | HumanLike -->
-	<ThingDef ParentName="VisceralThingBase">
+	<ThingDef ParentName="VisceralPawnBase">
 		<defName>VisceralHorror_Human</defName>
 		<label>visceral human</label>
 		<thingClass>TiberiumRim.Pawn_Visceral</thingClass>
@@ -37,7 +37,6 @@
 			</li>
 		</tools>
 		<race>
-			<hasGenders>false</hasGenders>
 			<body>VisceralBody</body>
 			<thinkTreeMain>Animal</thinkTreeMain>
 			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
@@ -45,6 +44,7 @@
 			<baseBodySize>1.2</baseBodySize>
 			<baseHungerRate>0.4</baseHungerRate>
 			<baseHealthScale>2</baseHealthScale>
+			<useMeatFrom>Visceroid</useMeatFrom>
 			<lifeStageAges>
 					<li>
 						<def>VisceralFormed</def>
@@ -82,7 +82,7 @@
 	
 	
 	<!-- Visceral Horror | AnimalLike -->
-	<ThingDef ParentName="VisceralThingBase">
+	<ThingDef ParentName="VisceralPawnBase">
 		<defName>VisceralHorror_Animal</defName>
 		<label>visceral animal</label>
 		<thingClass>TiberiumRim.Pawn_Visceral</thingClass>
@@ -106,7 +106,6 @@
 			</li>
 		</tools>
 		<race>
-			<hasGenders>false</hasGenders>
 			<body>QuadrupedAnimalWithPaws</body>
 			<thinkTreeMain>Animal</thinkTreeMain>
 			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
@@ -114,6 +113,7 @@
 			<baseBodySize>1.2</baseBodySize>
 			<baseHungerRate>0.4</baseHungerRate>
 			<baseHealthScale>2</baseHealthScale>
+			<useMeatFrom>Visceroid</useMeatFrom>
 			<lifeStageAges>
 					<li>
 						<def>VisceralFormed</def>
@@ -150,7 +150,7 @@
 	</TiberiumRim.TiberiumKindDef>
 	
 	<!-- Visceral Beast -->
-	<ThingDef ParentName="VisceralThingBase">
+	<ThingDef ParentName="VisceralPawnBase">
 		<defName>VisceralBeast</defName>
 		<label>visceral beast</label>
 		<thingClass>TiberiumRim.Pawn_Visceral</thingClass>
@@ -174,7 +174,6 @@
 			</li>
 		</tools>
 		<race>
-			<hasGenders>false</hasGenders>
 			<body>QuadrupedAnimalWithPaws</body>
 			<thinkTreeMain>Animal</thinkTreeMain>
 			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
@@ -182,6 +181,7 @@
 			<baseBodySize>6</baseBodySize>
 			<baseHungerRate>0.66</baseHungerRate>
 			<baseHealthScale>4</baseHealthScale>
+			<useMeatFrom>Visceroid</useMeatFrom>
 			<lifeStageAges>
 					<li>
 						<def>VisceralFormed</def>
@@ -219,7 +219,7 @@
 	
 	
 	<!-- Visceroid -->
-	<ThingDef ParentName="VisceralThingBase">
+	<ThingDef ParentName="VisceralPawnBase">
 		<defName>Visceroid</defName>
 		<label>visceroid</label>
 		<thingClass>TiberiumRim.Visceroid</thingClass>
@@ -254,7 +254,6 @@
 			</li>
 		</tools>
 		<race>
-			<hasGenders>false</hasGenders>
 			<body>Visceroid</body>
 			<thinkTreeMain>Animal</thinkTreeMain>
 			<thinkTreeConstant>Visceroid_Constant</thinkTreeConstant>
@@ -262,15 +261,17 @@
 			<baseBodySize>1.2</baseBodySize>
 			<baseHungerRate>0.4</baseHungerRate>
 			<baseHealthScale>1</baseHealthScale>
+			<meatLabel>visceral meat</meatLabel>
+			<meatColor>(200,225,20)</meatColor>
 			<lifeStageAges>
-					<li>
-						<def>VisceralFormed</def>
-						<minAge>0</minAge>
-						<soundWounded>Pawn_Cobra_Wounded</soundWounded>
-						<soundDeath>Pawn_Cobra_Death</soundDeath>
-						<soundCall>Pawn_Cobra_Call</soundCall>
-						<soundAngry>Pawn_Cobra_Angry</soundAngry>
-					</li>
+				<li>
+					<def>VisceralFormed</def>
+					<minAge>0</minAge>
+					<soundWounded>Pawn_Cobra_Wounded</soundWounded>
+					<soundDeath>Pawn_Cobra_Death</soundDeath>
+					<soundCall>Pawn_Cobra_Call</soundCall>
+					<soundAngry>Pawn_Cobra_Angry</soundAngry>
+				</li>
 			</lifeStageAges>
 			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
 			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
@@ -300,7 +301,7 @@
 	<!-- Amalgamation -->
 	
 	<!-- Veinmonster -->
-	<ThingDef ParentName="VisceralThingBase">
+	<ThingDef ParentName="VisceralPawnBase">
 		<defName>Veinmonster</defName>
 		<label>veinmonster</label>
 		<thingClass>TiberiumRim.VeinMonster</thingClass>
@@ -376,8 +377,8 @@
 	</TiberiumRim.TiberiumKindDef>
 	
 	<!-- Vein Rock -->	
-	<ThingDef ParentName="VisceralThingBase">
-		<defName>VeinRock</defName>
+	<ThingDef ParentName="VisceralPawnBase">
+		<defName>VeinChunk</defName>
 		<label>veiny chunk</label>
 		<thingClass>TiberiumRim.VeinChunk</thingClass>
 		<description>A vein infested chunk.</description>
@@ -407,7 +408,7 @@
 			<predator>false</predator>
 			<canBePredatorPrey>false</canBePredatorPrey>
 			<baseHungerRate>0</baseHungerRate>		
-			<baseHealthScale>3</baseHealthScale>
+			<baseHealthScale>4</baseHealthScale>
 			<lifeStageAges>
 					<li>
 						<def>VisceralFormed</def>
@@ -421,9 +422,9 @@
 	</ThingDef>
 	
 	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
-		<defName>VeinRock</defName>
-		<label>veiny rock</label>
-		<race>VeinRock</race>
+		<defName>VeinChunk</defName>
+		<label>veiny chunk</label>
+		<race>VeinChunk</race>
 		<combatPower>25</combatPower>
 		<lifeStages>
 			<li>

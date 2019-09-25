@@ -27,7 +27,7 @@
 		</statBases>
 	</ThingDef>
 	
-  <TiberiumRim.FXThingDef ParentName="BuildingBase_TR">
+	<TiberiumRim.FXThingDef ParentName="BuildingBase_TR">
 		<defName>HarvesterHusk_Common</defName>
 		<label>Harvester husk</label>
 		<description>The remains of a destroyed harvester.</description>

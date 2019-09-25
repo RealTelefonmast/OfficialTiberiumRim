@@ -19,10 +19,12 @@ namespace TiberiumRim
 
         public override void FinishAction()
         {
-            if (Position.SupportsTiberiumTerrain(map))
+            Log.Message("Spore arrived at: " + Position + " ... Finishing");
+            if (Position.SupportsBlossom(map))
+            {
                 GenSpawn.Spawn(blossom, Position, map);
-
-            DeSpawn();
+            }
+            Log.Message("Spawned Blossom thing");
         }
     }
 }

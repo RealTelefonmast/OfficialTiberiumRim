@@ -65,7 +65,7 @@ namespace TiberiumRim
                     if (pawn != null)
                     {
                         GenSpawn.Spawn(ThingDef.Named("Mote_TiberiumGeyser"), pos, Map);
-                        HediffUtils.TryAffectPawn(pawn, true);
+                        HediffUtils.TryAffectPawn(pawn, true, 1);
                         depositValue -= Mathf.Clamp(TRUtils.Range(1, 4), 0, depositValue);
                     }
                 }

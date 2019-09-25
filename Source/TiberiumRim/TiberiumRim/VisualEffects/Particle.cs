@@ -88,6 +88,7 @@ namespace TiberiumRim
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
         {
             map.GetComponent<MapComponent_Particles>().DeregisterParticle(this);
+            Log.Message("Should be destroyed now.");
         }
 
         public virtual void ExposeData()
@@ -118,6 +119,7 @@ namespace TiberiumRim
             {
                 FinishAction();
                 DeSpawn();
+                return;
             }
             int tick = Find.TickManager.TicksGame + tickOffset;
             float sizeRange = sizeMin;

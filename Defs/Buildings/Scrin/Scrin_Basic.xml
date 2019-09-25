@@ -29,6 +29,26 @@
 			<Mass>1000</Mass>
 			<Beauty>5</Beauty>
 		</statBases>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					
+					<li>
+						<data>
+							<texPath>Buildings/Scrin/DronePlatform/overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(4.5,9)</drawSize>
+						</data>
+						<mode>Pulse</mode>
+					    <pulse>
+							<mode>Opacity</mode>
+							<opacityRange>0.55~0.9</opacityRange>
+						</pulse>
+					</li>
+				</overlays>
+			</li>
+		</comps>
 		<tickerType>Normal</tickerType>
 		<drawOffscreen>false</drawOffscreen>
 		<passability>Impassable</passability>
@@ -49,10 +69,13 @@
 		<defName>ScrinPortal</defName>
 		<label>portal</label>
 		<description>oh lawd they comin</description>
-		<thingClass>Building</thingClass>
+		<thingClass>TiberiumRim.ScrinPortal</thingClass>
 		<tickerType>Normal</tickerType>
 		<factionDesignation>Scrin</factionDesignation>
 		<TRCategory>Structure</TRCategory>
+		<rotatable>false</rotatable>
+		<destroyable>false</destroyable>
+		<useHitPoints>false</useHitPoints>
 		<size>(3,3)</size>
 		<graphicData>
 			<texPath>Blank</texPath>
@@ -95,7 +118,7 @@
 			</li>
 		</comps>
 		<statBases>
-			<Mass>50</Mass>
+			<Mass>0</Mass>
 			<Flammability>0</Flammability>
 		</statBases>
 	</TiberiumRim.TRThingDef>

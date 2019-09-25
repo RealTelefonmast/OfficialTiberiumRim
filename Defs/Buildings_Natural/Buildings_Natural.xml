@@ -224,6 +224,9 @@
 			<graphicClass>Graphic_Random</graphicClass>
 			<drawSize>(3,3)</drawSize>
 		</graphicData>
+		<inspectorTabs>
+			<li>TiberiumRim.ITab_ContainedPawn_Health</li>
+		</inspectorTabs>
 		<statBases>
 			<MaxHitPoints>300</MaxHitPoints>
 			<Beauty>-130</Beauty>

@@ -10,7 +10,7 @@ using RimWorld;
 namespace TiberiumRim
 {
 
-    public class HomingThingDef : ThingDef
+    public class HomingThingDef : TRThingDef
     {
         public FloatRange speed;
         public bool destroyOnArrival = false;

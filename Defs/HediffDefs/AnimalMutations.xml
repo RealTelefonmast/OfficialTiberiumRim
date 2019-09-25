@@ -13,23 +13,23 @@
 			<li>
 				<turnsInto>BigTiberiumFiend</turnsInto>
 				<pawnKinds>
-					<li>GrizzlyBear</li>
-					<li>GrizzlyBear</li>
+					<li>Bear_Grizzly</li>
+					<li>Bear_Polar</li>
 				</pawnKinds>
 			</li>
 			<li>
 				<turnsInto>TiberiumFiend</turnsInto>
 				<pawnKinds>
-					<li>WolfTimber</li>
-					<li>WolfArctic</li>
+					<li>Wolf_Timber</li>
+					<li>Wolf_Arctic</li>
 				</pawnKinds>
 			</li>
 			<li>
 				<turnsInto>SmallTiberiumFiend</turnsInto>
 				<pawnKinds>
-					<li>FoxFennec</li>
-					<li>FoxRed</li>
-					<li>FoxArctic</li>
+					<li>Fox_Fennec</li>
+					<li>Fox_Red</li>
+					<li>Fox_Arctic</li>
 				</pawnKinds>
 			</li>
 			<li>
@@ -45,7 +45,7 @@
 				</pawnKinds>
 			</li>
 			<li>
-				<turnsInto>Boomfiend</turnsInto>
+				<turnsInto>BoomFiend</turnsInto>
 				<pawnKinds>
 					<li>Boomrat</li>
 				</pawnKinds>
@@ -57,7 +57,7 @@
 				</pawnKinds>
 			</li>
 			<li>
-				<turnsInto>Tibscarab</turnsInto>
+				<turnsInto>TibScarab</turnsInto>
 				<pawnKinds>
 					<li>Megascarab</li>
 				</pawnKinds>

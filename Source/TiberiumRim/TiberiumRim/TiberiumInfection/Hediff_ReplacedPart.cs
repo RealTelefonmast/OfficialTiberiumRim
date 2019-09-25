@@ -10,12 +10,12 @@ namespace TiberiumRim
         public override void PostAdd(DamageInfo? dinfo)
         {
             this.pawn.health.RestorePart(base.Part, this, false);
-            for (int i = 0; i < base.Part.parts.Count; i++)
+            foreach (var part in base.Part.parts)
             {
                 Hediff_MissingPart hediff_MissingPart = (Hediff_MissingPart)HediffMaker.MakeHediff(HediffDefOf.MissingBodyPart, this.pawn, null);
                 hediff_MissingPart.IsFresh = false;
                 hediff_MissingPart.lastInjury = HediffDefOf.SurgicalCut;
-                hediff_MissingPart.Part = base.Part.parts[i];
+                hediff_MissingPart.Part = part;
                 this.pawn.health.hediffSet.AddDirect(hediff_MissingPart, null, null);
             }
         }

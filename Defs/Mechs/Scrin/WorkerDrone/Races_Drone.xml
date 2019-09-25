@@ -5,9 +5,9 @@
 		<defName>ScrinDrone</defName>
 		<label>scrin worker drone</label>	
 		<description>wörk wörk</description>
+		<thingClass>TiberiumRim.ScrinWorkerDrone</thingClass>
 		<race>
-			<thinkTreeMain>Humanlike</thinkTreeMain>
-			<thinkTreeConstant>HumanlikeConstant</thinkTreeConstant>
+			<intelligence>ToolUser</intelligence>
 			<body>ScrinDrone_Body</body>
 			<baseBodySize>1</baseBodySize>
 			<baseHealthScale>1</baseHealthScale>

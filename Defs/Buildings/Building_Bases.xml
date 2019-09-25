@@ -93,6 +93,9 @@
 			<deconstructible>false</deconstructible>
 			<allowAutoroof>false</allowAutoroof>
 		</building>
+		<statBases>
+			<TiberiumDamageResistance>1</TiberiumDamageResistance>
+		</statBases>
 		<scatterableOnMapGen>false</scatterableOnMapGen>
 	</TiberiumRim.TRThingDef>
 	

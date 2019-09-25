@@ -32,5 +32,37 @@
 			<fadeOutTime>1</fadeOutTime>
 		</mote>
 	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase">
+		<defName>IonBeamBurn</defName>
+		<graphicData>
+			<texPath>Things/Mote/PowerBeam</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>0</fadeInTime>
+			<solidTime>1</solidTime>
+			<fadeOutTime>0.25</fadeOutTime>
+			<growthRate>-6</growthRate>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase">
+		<defName>IonBubble</defName>
+		<graphicData>
+			<texPath>Things/Mote/PowerBeam</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>5.25</solidTime>
+			<fadeOutTime>0.1</fadeOutTime>
+			<growthRate>25</growthRate>
+		</mote>
+	</ThingDef>
 
 </Defs>

@@ -25,11 +25,8 @@
       <parts>
 
         <!-- Config pages -->
-       
-        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
-          <def>ConfigPage_ConfigureStartingPawns</def>
-          <pawnCount>0</pawnCount>
-          <pawnChoiceCount>0</pawnChoiceCount>
+        <li Class="TiberiumRim.ScenPart_ConfigPage_ScrinInvasion">
+          <def>ConfigPage_ConfigureScrinStart</def>
         </li>
 
         <!-- Player starting stuff spawn method-->

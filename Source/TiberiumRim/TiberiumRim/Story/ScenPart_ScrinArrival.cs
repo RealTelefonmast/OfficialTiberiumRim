@@ -32,7 +32,7 @@ namespace TiberiumRim
             diaOption.clickSound = null;
             diaNode.options.Add(diaOption);
             Dialog_NodeTree dialog_NodeTree = new Dialog_NodeTree(diaNode, false, false, null);
-            dialog_NodeTree.soundClose = SoundDefOf.GameStartSting;
+            dialog_NodeTree.soundAppear = SoundDef.Named("Aeva_EstablishB");
             dialog_NodeTree.closeAction = delegate ()
             {
                 Find.MusicManagerPlay.ForceSilenceFor(7f);
@@ -40,9 +40,9 @@ namespace TiberiumRim
                 Find.WindowStack.Notify_GameStartDialogClosed();
                 Find.TickManager.CurTimeSpeed = TimeSpeed.Normal;
                 TutorSystem.Notify_Event("GameStartDialogClosed");
+                Find.DesignatorManager.Select(new Designator_ScrinLanding());
             };
             Find.WindowStack.Add(dialog_NodeTree);
-            Find.DesignatorManager.Select(new Designator_ScrinLanding());
         }
     }
 }

@@ -31,6 +31,11 @@ namespace TiberiumRim
                     crystal.Map.terrainGrid.SetTerrain(hiddenTerrain, support.TerrainOutcome);
         }
 
+        public static bool SupportsBlossom(this IntVec3 c, Map map)
+        {
+            return c.InBounds(map) && !c.Fogged(map) && !c.Roofed(map) && c.Standable(map) && TiberiumDefOf.Soils.SupportsDef(c.GetTerrain(map));
+        }
+
         public static bool SupportsTiberiumTerrain(this IntVec3 c, Map map)
         {
             return c.InBounds(map) && c.GetTerrain(map) is TerrainDef terrain && !terrain.HasTag("Water") && !GenTiberium.IsStone(terrain.defName.ToLower());
@@ -106,6 +111,7 @@ namespace TiberiumRim
 
         public static TiberiumTerrainDef SetTiberiumTerrain(IntVec3 cell, Map map, TiberiumCrystalDef tiberium, float plantChance = 1f)
         {
+            if (tiberium == null) return null;
             TiberiumTerrainDef terrain = null;
             if (AnyCorruptedOutcomes(tiberium, cell.GetTerrain(map), out TerrainSupport support))
             {

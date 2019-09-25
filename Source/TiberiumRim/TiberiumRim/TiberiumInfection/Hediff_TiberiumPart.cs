@@ -9,14 +9,14 @@ namespace TiberiumRim
 {
     public class Hediff_TiberiumPart : Hediff_ReplacedPart
     {
-        public bool addedManually = false;
-        public bool mutated = false;
+        public bool addedManually = true;
+
+        //TODO: Make visceral parts break down
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Values.Look(ref addedManually, "addedManually");
-            Scribe_Values.Look(ref mutated, "mutated");
         }
 
         public override string LabelInBrackets
@@ -33,19 +33,20 @@ namespace TiberiumRim
         {
             base.Tick();
             if (!IsRisky) return;
-            if (pawn.IsHashIntervalTick(6000))
+            if (!pawn.IsHashIntervalTick(6000)) return;
+            var risk = Risk;
+            if (!TRUtils.Chance(risk))
             {
-                var risk = Risk;
-                if (!TRUtils.Chance(risk)) return;
-
-                pawn.health.RemoveHediff(this);
-                BodyPartRecord part = Part.GetDirectChildParts().RandomElement();
-                pawn.health.RestorePart(Part);
-                HediffUtils.TryInfect(pawn, part, 0.1f * risk);
+                addedManually = false;
+                return;
             }
+            pawn.health.RemoveHediff(this);
+            BodyPartRecord part = Part.GetDirectChildParts().RandomElement();
+            pawn.health.RestorePart(Part);
+            HediffUtils.TryInfect(pawn, part, 0.1f * risk);
         }
 
-        public bool IsRisky => addedManually && !mutated;
+        public bool IsRisky => addedManually;
 
         private float Risk
         {

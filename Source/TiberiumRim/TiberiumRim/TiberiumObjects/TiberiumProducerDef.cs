@@ -14,6 +14,7 @@ namespace TiberiumRim
         public List<TiberiumTerrainDef> tiberiumTerrain = new List<TiberiumTerrainDef>();
         public List<TiberiumCrystalDef> tiberiumTypes = new List<TiberiumCrystalDef>();
         public List<PlantGroupChance> plantsByDistance;
+        public List<TerrainSupport> customTerrain;
         public List<PotentialEvolution> evolutions;
         public SporeProperties spore;
         public SpawnProperties spawner = new SpawnProperties();

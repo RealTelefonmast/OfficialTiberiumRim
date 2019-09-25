@@ -23,7 +23,7 @@
 	<DamageDef>
 		<defName>TiberiumGas</defName>
 		<label>tiberium gas</label>
-		<externalViolence>true</externalViolence>
+		<externalViolence>false</externalViolence>
 		<hasForcefulImpact>false</hasForcefulImpact>
 		<makesBlood>false</makesBlood>
 		<makesAnimalsFlee>true</makesAnimalsFlee>

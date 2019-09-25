@@ -55,8 +55,8 @@ namespace TiberiumRim
         public static ThingDef GreenTiberiumChunk;
         public static ThingDef BlueTiberiumChunk;
         public static ThingDef RedTiberiumChunk;
-        public static ThingDef VeinyTiberiumChunk;
-        public static PawnKindDef VeinTiberiumChunk;
+        public static ThingDef VeinTiberiumChunk;
+        public static TiberiumKindDef VeinChunk;
 
         //Buildings
         public static ThingDef DronePlatform;
@@ -89,9 +89,10 @@ namespace TiberiumRim
         public static ThingDef BeamMote;
 
         //StatDefs
-        public static StatDef TiberiumResistance;
-        public static StatDef TibGasFiltering;
+        public static StatDef TiberiumInfectionResistance;
+        public static StatDef TiberiumGasResistance;
         public static StatDef TiberiumRadiationResistance;
+        public static StatDef TiberiumDamageResistance;
 
         // Skyfallers
         public static ThingDef GreenTiberiumMeteorIncoming;
@@ -99,5 +100,14 @@ namespace TiberiumRim
         public static ThingDef RedTiberiumShardIncoming;
         public static ThingDef TiberiumMeteorIncoming;
         public static ThingDef ScrinDronePlatformIncoming;
+
+        //TerrainTags
+        public static TerrainTagDef Soils;
+        public static TerrainTagDef Mosses;
+        public static TerrainTagDef Sands;
+        public static TerrainTagDef Stones;
+        public static TerrainTagDef Water;
+        public static TerrainTagDef WaterMoving;
+        public static TerrainTagDef WaterDeep;
     }
 }

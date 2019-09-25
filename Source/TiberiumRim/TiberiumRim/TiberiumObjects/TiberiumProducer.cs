@@ -63,6 +63,16 @@ namespace TiberiumRim
             Scribe_Defs.Look(ref evolvesTo, "evolvesTo");
         }
 
+        public override string Label
+        {
+            get
+            {
+                if(isGroundZero)
+                    return base.Label + " " + "(GZ)";
+                return base.Label;
+            }
+        }
+
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
@@ -197,7 +207,11 @@ namespace TiberiumRim
                     if(newTerr != null)
                         Map.terrainGrid.SetTerrain(cell, newTerr);
                 }
-                else
+                if (newTerr == null && !def.customTerrain.NullOrEmpty())
+                {
+                    newTerr = def.customTerrain.Find(s => s.TerrainTag.SupportsDef(terrain)).TerrainOutcome;
+                }
+                if (newTerr == null)
                     newTerr = GenTiberium.SetTiberiumTerrain(cell, Map, TiberiumCrystal);
                 if (newTerr != null && def.growsFlora && cell.Standable(Map) && cell.GetFirstBuilding(Map) == null)
                     TrySpreadFlora(cell, newTerr);
@@ -206,13 +220,19 @@ namespace TiberiumRim
 
         public void TrySpreadFlora(IntVec3 pos, TiberiumTerrainDef terrain)
         {
+            if (pos.GetPlant(Map) is TiberiumPlant) return;
             float distance = Position.DistanceTo(pos);
             float chance = 1f - Mathf.InverseLerp(0f, floodRadius, distance);;
             if (TRUtils.Chance(chance * terrain.plantChanceFactor))
             {
                 ThingDef flora = SelectedFloraAt(distance, terrain);
                 if (flora != null)
-                    GenSpawn.Spawn(flora, pos, Map);
+                {
+                    Thing plant = ThingMaker.MakeThing(flora);
+                    if(plant is Plant p)
+                        p.Growth = TRUtils.Range(0.1f, 0.55f);
+                    GenSpawn.Spawn(plant, pos, Map);
+                }
             }
         }
 

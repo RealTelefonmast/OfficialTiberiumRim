@@ -17,7 +17,7 @@ namespace TiberiumRim
             {
                 var pawn = intVec3.GetFirstPawn(Map);
                 if(pawn != null) 
-                    HediffUtils.TryAffectPawn(pawn, true);
+                    HediffUtils.TryAffectPawn(pawn, true, 1);
             }
         }
     }

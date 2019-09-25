@@ -109,13 +109,11 @@ namespace TiberiumRim
         {
             public static void Postfix()
             {
-                Log.Message("Patching " + DefDatabase<TRThingDef>.AllDefs.Count() + " items");
+                //Log.Message("Patching " + DefDatabase<TRThingDef>.AllDefs.Count() + " items");
                 foreach (TRThingDef def in DefDatabase<TRThingDef>.AllDefs)
                 {
-                    if (def.factionDesignation != null && def.TRCategory != null)
-                    {
-                        TRThingDefList.Add(def);
-                    }
+                    if (def.factionDesignation == null) continue;
+                    TRThingDefList.Add(def);
                     ThingDef blueprint = null;
                     blueprint = TRUtils.MakeNewBluePrint(def, false, null);
                     TRUtils.MakeNewFrame(def);

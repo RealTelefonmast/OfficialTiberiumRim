@@ -40,10 +40,16 @@ namespace TiberiumRim
         public static readonly Texture2D HarvesterNearest = ContentFinder<Texture2D>.Get("UI/Icons/Network/Harvester/Nearest", true);
         public static readonly Texture2D HarvesterMoss = ContentFinder<Texture2D>.Get("UI/Icons/Network/Harvester/Moss", true);
 
+        //TargetIcons
+        public static readonly Texture2D NodNukeIcon = ContentFinder<Texture2D>.Get("UI/Targeters/Launch_Nuke", true);
+        public static readonly Texture2D IonCannonIcon = ContentFinder<Texture2D>.Get("UI/Targeters/Launch_IonCannon", true);
+
         //Targeter Mats
         public static readonly Material IonCannonTargeter = MaterialPool.MatFrom("UI/Targeters/Target_IonCannon", ShaderDatabase.Transparent);
         public static readonly Material NodNukeTargeter = MaterialPool.MatFrom("UI/Targeters/Target_Nuke", ShaderDatabase.Transparent);
         public static readonly Material ScrinLandingTargeter = MaterialPool.MatFrom("UI/Targeters/Target_IonCannon", ShaderDatabase.Transparent);
+
+        public static readonly Material IonLightningMat = MaterialPool.MatFrom("Motes/LightningBoltIon",  ShaderDatabase.MoteGlow);
 
         //Imported
         public static Shader AlphaShader;
