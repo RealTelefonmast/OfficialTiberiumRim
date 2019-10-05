@@ -13,6 +13,11 @@ namespace TiberiumRim
         public static readonly Color skyColor = new ColorInt().ToColor;
         private MapComponent_Tiberium tiberium;
 
+        public override void PostMake()
+        {
+
+        }
+
         public override SkyTarget? SkyTarget(Map map)
         {
             return new SkyTarget

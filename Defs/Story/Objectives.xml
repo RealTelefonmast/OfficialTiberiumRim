@@ -154,4 +154,22 @@
 		</targetSettings>
 	</StoryFramework.ObjectiveDef>	
 	
+	<!-- Misc -->
+	
+	<StoryFramework.ObjectiveDef>
+		<defName>GeyserInspection</defName>
+		<label>Geyser Inspection</label>
+		<description>...</description>
+		<type>Research</type>
+		<skillRequirements>
+		<Intellectual>5</Intellectual>
+		</skillRequirements>
+		<targetSettings>
+			<targets>
+				<li>TiberiumGeyser</li>
+			</targets>
+		</targetSettings>
+		<workAmount>1000</workAmount>
+	</StoryFramework.ObjectiveDef>	
+	
 </Defs>

@@ -61,5 +61,19 @@
 			<li>M3_TiberiumNetwork</li>
 		</objectives>
 	</StoryFramework.MissionDef>
+	
+	<StoryFramework.MissionDef>
+		<defName>TiberiumGasProcessing</defName>
+		<label>Tiberium Gas</label>
+		<description>Tiberium gas usually forms around crystals in the air, but dissapates too quickly to be collected or used, instead merely posing a lethal threat. However, underground deposits may contain large amounts of concentrated Tiberium gas.</description>
+		<requisites>
+			<missions>
+				<li>TiberiumKnowledge</li>
+			</missions>
+		</requisites>
+		<objectives>
+			<li>GeyserInspection</li>
+		</objectives>
+	</StoryFramework.MissionDef>
   
 </Defs>

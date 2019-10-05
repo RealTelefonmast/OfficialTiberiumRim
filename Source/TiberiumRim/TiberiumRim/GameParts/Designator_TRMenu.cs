@@ -17,7 +17,7 @@ namespace TiberiumRim
         private Dictionary<FactionDesignationDef,DesignationTexturePack> TexturePacks = new Dictionary<FactionDesignationDef, DesignationTexturePack>();
         private Vector2 scroller = Vector2.zero;
         private static Designator_BuildFixed mouseOverGizmo;
-        private static ThingDef inactiveDef;
+        private static TRThingDef inactiveDef;
         private Rect currentRect;
         private string SearchText = "";
 
@@ -37,8 +37,8 @@ namespace TiberiumRim
             }
         }
 
-        public override string LabelCap => mouseOverGizmo?.LabelCap;
-        public override string Desc => mouseOverGizmo?.Desc;
+        public override string LabelCap => CurrentDesignator?.LabelCap;
+        public override string Desc => CurrentDesignator?.Desc;
 
         public override void DrawPanelReadout(ref float curY, float width)
         {
@@ -52,17 +52,14 @@ namespace TiberiumRim
                 Widgets.Label(lockedRect, locked);
                 Text.Font = GameFont.Small;
                 GUI.color = Color.white;
+                string reason = "";
+                IsActive(inactiveDef, out reason);
+                Vector2 reasonSize = Text.CalcSize(reason);
+                Rect reasonRect = new Rect(new Vector2(0, curY), reasonSize);
+                Widgets.Label(reasonRect, reason);
                 return;
             }
-            if (mouseOverGizmo != null)
-            {
-                mouseOverGizmo.DrawPanelReadout(ref curY, width);
-                return;
-            }
-            if (Find.DesignatorManager.SelectedDesignator is Designator_Build b)
-            {
-                b.DrawPanelReadout(ref curY, width);
-            }
+            CurrentDesignator?.DrawPanelReadout(ref curY, width);
         }     
 
         public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth)
@@ -135,7 +132,7 @@ namespace TiberiumRim
                 GUI.BeginGroup(main);
                     Vector2 size = new Vector2(80, 80);
                     Vector2 curXY = new Vector2(5f, 5f);
-                    List<TRThingDef> things = SearchText.NullOrEmpty() ? TRThingDefList.Categorized[faction][category] : TRThingDefList.Categorized.SelectMany(d => d.Value.SelectMany(d2 => d2.Value.Where(t => t.label.ToLower().Contains(SearchText.ToLower())))).ToList();
+                    List<TRThingDef> things = SearchText.NullOrEmpty() ? TRThingDefList.Categorized[faction][category] : ItemsBySearch(SearchText);
                     Rect viewRect = new Rect(0f, 0f, main.width, 10 + ((float)(Math.Round((decimal)(things.Count / 4), 0, MidpointRounding.AwayFromZero) + 1) * size.x));
                     Rect scrollerRect = new Rect(0f, 0f, main.width, main.height+5);
                     Widgets.BeginScrollView(scrollerRect, ref scroller, viewRect, false);
@@ -143,7 +140,7 @@ namespace TiberiumRim
                     inactiveDef = null;
                     foreach (var def in things)
                     {
-                        if (IsActive(def))
+                        if (IsActive(def, out string s))
                             Designator(def, main, size, ref curXY);
                         else
                             InactiveDesignator(def, main, size, ref curXY);
@@ -243,8 +240,12 @@ namespace TiberiumRim
             }
         }
 
-        public bool IsActive(TRThingDef def)
+        public bool IsActive(TRThingDef def, out string reason)
         {
+            reason = "";
+            bool b = true;
+            var sb = new StringBuilder();
+            sb.AppendLine("Locked due to:\n");
             if (DebugSettings.godMode)
             {
                 return true;
@@ -254,33 +255,55 @@ namespace TiberiumRim
                 return DebugSettings.godMode;
             }
             if (def.minTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel < def.minTechLevelToBuild)
-            {
-                return false;
+            { 
+                b = false;
+                sb.AppendLine("- Need min tech level: " + def.minTechLevelToBuild);
             }
             if (def.maxTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel > def.maxTechLevelToBuild)
             {
-                return false;
+                b = false;
+                sb.AppendLine("- Need max tech level: " + def.maxTechLevelToBuild);
             }
             if (!def.IsResearchFinished)
             {
-                return false;
+                b = false;
+                string research = "";
+                foreach (var res in def.researchPrerequisites)
+                {
+                    research += "   - " + res.LabelCap;
+                }
+                sb.AppendLine("- Need research:\n" + research);
             }
             if (def.HasStoryExtension())
             {
                 bool r = false;
-                return StoryPatches.CanBeMade(def, ref r);
+                b = b && StoryPatches.CanBeMade(def, ref r);
+                if (!b)
+                {
+                    var story = def.GetModExtension<StoryThingDefExtension>();
+                    string objectives = "";
+                    foreach (var obj in story.objectiveRequisites)
+                    {
+                        objectives += "   - " + obj.LabelCap;
+                    }
+                    sb.AppendLine("- Need Objectives:\n" + objectives);
+                }
             }
             if (def.buildingPrerequisites != null)
             {
-                for (int i = 0; i < def.buildingPrerequisites.Count; i++)
+                b = b && def.buildingPrerequisites.All(t => base.Map.listerBuildings.ColonistsHaveBuilding(t));
+                if (!b)
                 {
-                    if (!base.Map.listerBuildings.ColonistsHaveBuilding(def.buildingPrerequisites[i]))
+                    string buildings = "";
+                    foreach (var build in def.buildingPrerequisites)
                     {
-                        return false;
+                        buildings += "   - " + build.LabelCap;
                     }
+                    sb.AppendLine("- Need constructed buildings:\n" + buildings);
                 }
             }
-            return true;
+            reason = sb.ToString().TrimEndNewlines();
+            return b;
         }
 
         public override AcceptanceReport CanDesignateCell(IntVec3 loc)
@@ -303,6 +326,8 @@ namespace TiberiumRim
         {
             return true;
         }
+
+        private Designator_BuildFixed CurrentDesignator => mouseOverGizmo ?? Find.DesignatorManager.SelectedDesignator as Designator_BuildFixed;
 
         private Texture2D IconForIndex(int i)
         {
@@ -339,6 +364,11 @@ namespace TiberiumRim
                 return TiberiumContent.TiberiumIcon;
             }
             return BaseContent.BadTex;
+        }
+
+        private List<TRThingDef> ItemsBySearch(string searchText)
+        { 
+            return TRThingDefList.AllDefs.Where(d => IsActive(d, out string s) && d.label.ToLower().Contains(SearchText.ToLower())).ToList();
         }
     }
 }

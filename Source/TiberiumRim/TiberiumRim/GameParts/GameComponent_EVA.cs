@@ -35,7 +35,6 @@ namespace TiberiumRim
 
         public GameComponent_EVA(Game game)
         {
-
         }
 
         public static GameComponent_EVA EVAComp()
@@ -79,9 +78,7 @@ namespace TiberiumRim
                 seconds = 10;
             ActionComposition composition = new ActionComposition();
             for (int i = 1; i <= seconds; i++)
-            {
                 composition.AddPart(SoundDef.Named(EVAPrefix + "Count" + i), SoundInfo.OnCamera(), i);
-            }
             composition.Init();
         }
 

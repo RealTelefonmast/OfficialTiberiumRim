@@ -114,8 +114,7 @@ namespace TiberiumRim
                 {
                     if (def.factionDesignation == null) continue;
                     TRThingDefList.Add(def);
-                    ThingDef blueprint = null;
-                    blueprint = TRUtils.MakeNewBluePrint(def, false, null);
+                    ThingDef blueprint = TRUtils.MakeNewBluePrint(def, false, null);
                     TRUtils.MakeNewFrame(def);
                     if (def.Minifiable)
                     {

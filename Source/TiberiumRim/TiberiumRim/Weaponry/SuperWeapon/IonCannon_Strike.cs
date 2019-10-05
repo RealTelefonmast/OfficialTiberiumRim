@@ -42,6 +42,23 @@ namespace TiberiumRim
             base.ExposeData();
         }
 
+        //TODO: Test Vanilla Sound System
+        private void IonCannonSoundTest()
+        {
+            var posInfo = new TargetInfo(Position, Map);
+            ActionComposition composition = new ActionComposition();
+            composition.AddPart(SoundDef.Named("IonCannon_StartUp"), SoundInfo.OnCamera(), 0f, 3f);
+            composition.AddPart(SoundDef.Named("IonCannon_InitialCharge"), SoundInfo.InMap(posInfo), 5f, 5f);
+            composition.AddPart(SoundDef.Named("IonCannon_PreClimaxPause"), SoundInfo.InMap(posInfo), 10f);
+            composition.AddPart(SoundDef.Named("IonCannon_ClimaxChargeUp"), SoundInfo.InMap(posInfo), 15f);// 10.25f);
+            composition.AddPart(SoundDef.Named("IonCannon_Climax"), SoundInfo.InMap(posInfo), 20f);
+            composition.AddPart(delegate
+            {
+                this.Destroy();
+            }, 13f);
+            composition.Init();
+        }
+
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
@@ -113,11 +130,6 @@ namespace TiberiumRim
                 z = (float) (origin.z + curRadius * Math.Sin(d));
                 beamPositions.Add(new IntVec3((int)x, 0, (int)z));
             }
-        }
-
-        public override void Tick()
-        {
-            base.Tick();
         }
 
         private void DoSetup(int tick)

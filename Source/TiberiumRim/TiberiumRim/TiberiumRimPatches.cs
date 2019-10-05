@@ -279,38 +279,35 @@ namespace TiberiumRim
         {
             public static bool Prefix(IntVec3 center, Rot4 rot, ThingDef thingDef, Graphic baseGraphic, Color ghostCol, AltitudeLayer drawAltitude)
             {
-                if (thingDef is FXThingDef fx)
+                if (!(thingDef is FXThingDef fx)) return true;
+                //Log.Message("Drawing Ghost - " + thingDef);
+                if (baseGraphic == null)
                 {
-                    //Log.Message("Drawing Ghost - " + thingDef);
-                    if (baseGraphic == null)
-                    {
-                        baseGraphic = thingDef.graphic;
-                    }
-                    Graphic graphic = GhostUtility.GhostGraphicFor(baseGraphic, thingDef, ghostCol);
-                    Vector3 loc = GenThing.TrueCenter(center, rot, thingDef.Size, drawAltitude.AltitudeFor());
-                    var extraData = fx.extraData;
-                    GraphicDrawInfo info = new GraphicDrawInfo(graphic, null, fx, loc, rot);
-                    if (extraData?.alignToBottom ?? false)
-                    {
-                        loc.z += TRUtils.AlignToBottomOffset(thingDef, baseGraphic.data);
-                    }
-                    loc += extraData?.drawOffset ?? Vector3.zero;
-                    TRUtils.Draw(graphic, loc, rot, null, null, fx);
-                    //graphic.DrawFromDef(loc, rot, thingDef, 0f);
-                    for (int i = 0; i < thingDef.comps.Count; i++)
-                    {
-                        thingDef.comps[i].DrawGhost(center, rot, thingDef, ghostCol, drawAltitude);
-                    }
-                    if (thingDef.PlaceWorkers != null)
-                    {
-                        for (int j = 0; j < thingDef.PlaceWorkers.Count; j++)
-                        {
-                            thingDef.PlaceWorkers[j].DrawGhost(thingDef, center, rot, ghostCol);
-                        }
-                    }
-                    return false;
+                    baseGraphic = thingDef.graphic;
                 }
-                return true;
+                Graphic graphic = GhostUtility.GhostGraphicFor(baseGraphic, thingDef, ghostCol);
+                Vector3 loc = GenThing.TrueCenter(center, rot, thingDef.Size, drawAltitude.AltitudeFor());
+                var extraData = fx.extraData;
+                GraphicDrawInfo info = new GraphicDrawInfo(graphic, null, fx, loc, rot);
+                if (extraData?.alignToBottom ?? false)
+                {
+                    loc.z += TRUtils.AlignToBottomOffset(thingDef, baseGraphic.data);
+                }
+                loc += extraData?.drawOffset ?? Vector3.zero;
+                TRUtils.Draw(graphic, loc, rot, null, null, fx);
+                //graphic.DrawFromDef(loc, rot, thingDef, 0f);
+                foreach (var t in thingDef.comps)
+                {
+                    t.DrawGhost(center, rot, thingDef, ghostCol, drawAltitude);
+                }
+                if (thingDef.PlaceWorkers != null)
+                {
+                    foreach (var p in thingDef.PlaceWorkers)
+                    {
+                        p.DrawGhost(thingDef, center, rot, ghostCol);
+                    }
+                }
+                return false;
             }
         }
 

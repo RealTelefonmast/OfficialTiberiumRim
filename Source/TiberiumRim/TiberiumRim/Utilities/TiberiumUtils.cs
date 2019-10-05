@@ -31,6 +31,7 @@ namespace TiberiumRim
         {
             return thing is MechanicalPawn p && (p.Faction?.IsPlayer ?? false);
         }
+
         public static void GetTiberiumMutant(Pawn pawn, out Graphic Head, out Graphic Body)
         {
             Head = null;
@@ -115,7 +116,6 @@ namespace TiberiumRim
                 while (angle2 > 360)
                     angle2 -= 360;
             }
-
             return angle2;
         }
 
@@ -130,8 +130,7 @@ namespace TiberiumRim
             {
                 IntVec3 cell = GenRadial.RadialPattern[i] + center;
                 float cellAngle = AngNom(center.ToVector3().AngleToFlat(cell.ToVector3()) + 90);
-                if (map != null &&
-                    (!cell.InBounds(map) || cell.Roofed(map) && !GenSight.LineOfSight(center, cell, map)))
+                if (map != null && (!cell.InBounds(map) || cell.Roofed(map) && !GenSight.LineOfSight(center, cell, map)))
                     continue;
                 if (min > max && (cellAngle >= min || cellAngle <= max))
                     cells.Add(cell);

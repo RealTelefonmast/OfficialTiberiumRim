@@ -11,15 +11,16 @@ namespace TiberiumRim
     {
         public static Dictionary<FactionDesignationDef, Dictionary<TRThingCategoryDef, List<TRThingDef>>> Categorized = new Dictionary<FactionDesignationDef, Dictionary<TRThingCategoryDef, List<TRThingDef>>>();
         public static List<FactionDesignationDef> FactionDesignations = new List<FactionDesignationDef>();
+        public static List<TRThingDef> AllDefs = new List<TRThingDef>();
 
         static TRThingDefList()
         {
             var list1 = DefDatabase<FactionDesignationDef>.AllDefs;
+            var list2 = DefDatabase<TRThingCategoryDef>.AllDefs;
             for (int i = 0; i < list1.Count(); i++)
             {
                 FactionDesignationDef des = list1.ElementAt(i);
                 var dict = new Dictionary<TRThingCategoryDef, List<TRThingDef>>();
-                var list2 = DefDatabase<TRThingCategoryDef>.AllDefs;
                 for (int j = 0; j < list2.Count(); j++)
                 {
                     TRThingCategoryDef cat = list2.ElementAt(j);
@@ -40,12 +41,11 @@ namespace TiberiumRim
 
         public static void Add(TRThingDef def)
         {
-            if (!def.hidden)
+            if (def.hidden) return;
+            AllDefs.Add(def);
+            if (!Categorized[def.factionDesignation][def.TRCategory].Contains(def))
             {
-                if (!Categorized[def.factionDesignation][def.TRCategory].Contains(def))
-                {
-                    Categorized[def.factionDesignation][def.TRCategory].Add(def);
-                }
+                Categorized[def.factionDesignation][def.TRCategory].Add(def);
             }
         }
     }

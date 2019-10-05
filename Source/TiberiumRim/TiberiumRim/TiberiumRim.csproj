@@ -168,7 +168,7 @@
     <Compile Include="Weaponry\FXBuilding_Turret.cs" />
     <Compile Include="Weaponry\CompTNW_SludgeCannon.cs" />
     <Compile Include="Weaponry\CompTNW_Turret.cs" />
-    <Compile Include="TiberiumProcessing\Designator_BuildFixed.cs" />
+    <Compile Include="GameParts\Designator_BuildFixed.cs" />
     <Compile Include="TiberiumProcessing\Gizmo_TiberiumStorage.cs" />
     <Compile Include="TiberiumProcessing\TRBuilding.cs" />
     <Compile Include="Weaponry\Verb_TR.cs" />
@@ -191,9 +191,9 @@
     <Compile Include="TiberiumProcessing\CompTNW_Refinery.cs" />
     <Compile Include="TiberiumProcessing\CompTNW_Silo.cs" />
     <Compile Include="TiberiumProcessing\CompTNW_TNC.cs" />
-    <Compile Include="TiberiumProcessing\DesignationExtension.cs" />
-    <Compile Include="TiberiumProcessing\Designator_PlacePipe.cs" />
-    <Compile Include="TiberiumProcessing\Designator_RemoveTiberiumPipe.cs" />
+    <Compile Include="GameParts\DesignationExtension.cs" />
+    <Compile Include="GameParts\Designator_PlacePipe.cs" />
+    <Compile Include="GameParts\Designator_RemoveTiberiumPipe.cs" />
     <Compile Include="GameParts\Designator_TRMenu.cs" />
     <Compile Include="TiberiumProcessing\Graphic_LinkedTNW.cs" />
     <Compile Include="TiberiumProcessing\Graphic_LinkedTNWOverlay.cs" />
@@ -284,6 +284,7 @@
     <Compile Include="VisualEffects\TRMats.cs" />
     <Compile Include="TiberiumEnvironment\WorldComponent_Tiberium.cs" />
     <Compile Include="Weather\GameCondition_TiberiumBiome.cs" />
+    <Compile Include="Weather\MapComponent_TiberiumBiome.cs" />
     <Compile Include="Weather\WeatherEvent_IonStrike.cs" />
   </ItemGroup>
   <ItemGroup />
