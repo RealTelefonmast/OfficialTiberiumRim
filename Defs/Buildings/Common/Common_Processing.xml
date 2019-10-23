@@ -205,6 +205,14 @@
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
+		<modExtensions>
+			<li Class="StoryFramework.StoryThingDefExtension">
+				<objectiveRequisites>
+					<li>GeyserInspection</li>
+				</objectiveRequisites>
+				<OnStart>false</OnStart>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
@@ -439,6 +447,14 @@
 			<li>TiberiumRim.PlaceWorker_OnTiberiumGeyser</li>
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
+		<modExtensions>
+			<li Class="StoryFramework.StoryThingDefExtension">
+				<objectiveRequisites>
+					<li>GeyserInspection</li>
+				</objectiveRequisites>
+				<OnStart>false</OnStart>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
@@ -534,6 +550,14 @@
 			</li>
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
+		<modExtensions>
+			<li Class="StoryFramework.StoryThingDefExtension">
+				<objectiveRequisites>
+					<li>M3_TiberiumPower</li>
+				</objectiveRequisites>
+				<OnStart>true</OnStart>
+			</li>
+		</modExtensions>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
@@ -625,7 +649,6 @@
 		<label>tiberium resource refinery</label>
 		<description>A specialized chemical refining plant. Used to refine lethal Tiberium into useful resources.</description>
 		<thingClass>Building_WorkTable</thingClass>
-		
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<TRCategory>Processing</TRCategory>

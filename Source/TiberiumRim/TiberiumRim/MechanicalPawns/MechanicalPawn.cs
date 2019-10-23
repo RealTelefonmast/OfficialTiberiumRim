@@ -44,5 +44,16 @@ namespace TiberiumRim
                 return Map.GetComponent<MapComponent_Tiberium>();
             }
         }
+
+        public bool IsDamaged()
+        {
+            return Damage().Any();
+        }
+
+        public IEnumerable<Hediff> Damage()
+        {
+            return from x in health?.hediffSet?.GetHediffs<Hediff>() where x is Hediff_Injury || x is Hediff_MissingPart select x;
+        }
+     
     }
 }

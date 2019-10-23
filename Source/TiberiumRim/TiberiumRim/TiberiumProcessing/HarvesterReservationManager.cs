@@ -85,57 +85,36 @@ namespace TiberiumRim
             }
         }
 
-        /*
         public void TryUpdate()
         {
-            if (NeedsUpdate)
-            {
-                var harvestors = new List<Harvester>(Reservations.Keys);
-                foreach (Harvester h in harvestors)
-                {
-                    Reservations[h] = FindSingleRoot(h);
-                }
-            }
-        }
+            if (!NeedsUpdate) return;
 
-        public TiberiumCrystal FindSingleRoot(Harvester harvester)
-        {
-            TiberiumCrystal crystal = (TiberiumCrystal)GenClosest.ClosestThing_Global_Reachable(harvester.Position, map, TiberiumManager.TiberiumSetForHarvester(harvester), PathEndMode.ClosestTouch, TraverseParms.For(TraverseMode.PassDoors));
-            return crystal;
-        }
-        */
-
-        public void TryUpdate()
-        {
-            if (NeedsUpdate)
+            int potentialPasses = Reservations.Keys.Count - Mathf.Clamp(Reservations.Keys.Count - TiberiumManager.TiberiumInfo.TotalCount, 0, int.MaxValue);
+            Finished = false;
+            Current = 0;
+            Predicate<IntVec3> passCheck = x => x.IsValid && x.Standable(map) && !Finished;
+            Action<IntVec3> processor = delegate (IntVec3 c)
             {
-                int potentialPasses = Reservations.Keys.Count - Mathf.Clamp(Reservations.Keys.Count - TiberiumManager.TiberiumInfo.TotalCount, 0, int.MaxValue);
-                Finished = false;
-                Current = 0;
-                Predicate<IntVec3> passCheck = x => x.IsValid && x.Standable(map) && !Finished;
-                Action<IntVec3> processor = delegate (IntVec3 c)
+                RETRY:
+                if (Current < potentialPasses)
                 {
-                    RETRY:
-                    if (Current < potentialPasses)
+                    CurrentPair = Reservations.ElementAt(Current);
+
+                    if (CurPairValid || !CurHarvester.ShouldHarvest) { Current++; goto RETRY; }
+                    TiberiumCrystal crystal = c.TryGetTiberiumFor(CurHarvester);
+                    if (crystal != null && CurHarvester.CanReserve(crystal) && CurHarvester.CanReach(c, PathEndMode.Touch, Danger.Deadly, false, TraverseMode.PassDoors))
                     {
-                        CurrentPair = Reservations.ElementAt(Current);
-
-                        if (CurPairValid || !CurHarvester.ShouldHarvest) { Current++; goto RETRY; }
-                        TiberiumCrystal crystal = c.TryGetTiberiumFor(CurHarvester);
-                        if (crystal != null && CurHarvester.CanReserve(crystal) && CurHarvester.CanReach(c, PathEndMode.Touch, Danger.Deadly, false, TraverseMode.PassDoors))
-                        {
-                            Reserve(crystal, CurHarvester);
-                            Current++;
-                        }
+                        Reserve(crystal, CurHarvester);
+                        Current++;
                     }
-                    else { Finished = true; }
-                };
-                map.floodFiller.FloodFill(Reservations.First().Key.Position, passCheck, processor, int.MaxValue, true, Reservations.Keys.Select(h => h.Position));
-                foreach (var harvi in Reservations.Keys)
-                {
-                    if (Reservations[harvi] == null)
-                        harvi.SetToWait();
                 }
+                else { Finished = true; }
+            };
+            map.floodFiller.FloodFill(Reservations.First().Key.Position, passCheck, processor, int.MaxValue, true, Reservations.Keys.Select(h => h.Position));
+            foreach (var harvi in Reservations.Keys)
+            {
+                if (Reservations[harvi] == null)
+                    harvi.SetToWait();
             }
         }        
     }

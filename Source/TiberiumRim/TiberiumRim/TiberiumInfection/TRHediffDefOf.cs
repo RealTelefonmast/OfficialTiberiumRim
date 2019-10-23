@@ -19,7 +19,7 @@ namespace TiberiumRim
         public static HediffDef TiberAddSide;
 
         //Tiberium Affect
-        public static HediffRelativeDef TiberiumExposure;
+        public static HediffDef TiberiumExposure;
         public static HediffDef TiberiumCrystallization;
         public static HediffDef TiberiumBurn;
         public static HediffDef CrystallizedPart;

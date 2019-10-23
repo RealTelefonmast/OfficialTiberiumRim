@@ -11,9 +11,11 @@
 			<li>M1_Construct</li>
 			<li>M1_ObserveMeteor</li>
 		</objectives>
+		<!-- Removing temporarily
 		<timer>
 			<days>30</days>
 		</timer>
+		-->
 	</StoryFramework.MissionDef>
 
 	<StoryFramework.MissionDef>
@@ -50,8 +52,8 @@
 	
 	<StoryFramework.MissionDef>
 		<defName>TiberiumProcessing</defName>
-		<label>Lethal Resources</label>
-		<description>...</description>
+		<label>Tiberium Refining</label>
+		<description>We have learned that Tiberium may be refined into resources.</description>
 		<requisites>
 			<missions>
 				<li>TiberiumKnowledge</li>
@@ -59,12 +61,27 @@
 		</requisites>
 		<objectives>
 			<li>M3_TiberiumNetwork</li>
+			<li>M3_TiberiumPower</li>
+		</objectives>
+	</StoryFramework.MissionDef>
+	
+	<StoryFramework.MissionDef>
+		<defName>TiberiumDefense</defName>
+		<label>Tiberium Defense</label>
+		<description>...</description>
+		<requisites>
+			<objectives>
+				<li>M3_TiberiumNetwork</li>
+			</objectives>
+		</requisites>
+		<objectives>
+			<li>M4_TiberiumSuppression</li>
 		</objectives>
 	</StoryFramework.MissionDef>
 	
 	<StoryFramework.MissionDef>
 		<defName>TiberiumGasProcessing</defName>
-		<label>Tiberium Gas</label>
+		<label>Tiberium Gas Extraction</label>
 		<description>Tiberium gas usually forms around crystals in the air, but dissapates too quickly to be collected or used, instead merely posing a lethal threat. However, underground deposits may contain large amounts of concentrated Tiberium gas.</description>
 		<requisites>
 			<missions>

@@ -35,6 +35,7 @@ namespace TiberiumRim
             base.Tick();
             if (pawn.IsHashIntervalTick(def.capacityInterval))
             {
+                Log.Message("Updating hediffs");
                 pawn.health.Notify_HediffChanged(this);
             }
         }
@@ -79,9 +80,9 @@ namespace TiberiumRim
             }
         }
 
-        protected  virtual float RelativeModifier => Severity;
+        protected virtual float RelativeModifier => Severity;
 
-        public List<PawnCapacityModifier> RelativeCapMods
+        public virtual List<PawnCapacityModifier> RelativeCapMods
         {
             get
             {

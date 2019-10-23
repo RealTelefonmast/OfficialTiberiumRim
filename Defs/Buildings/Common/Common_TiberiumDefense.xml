@@ -29,7 +29,7 @@
 		<drawPlaceWorkersWhileSelected>false</drawPlaceWorkersWhileSelected>
 		<fillPercent>0.5</fillPercent>
 		<costList>
-			<Steel>500</Steel>
+			<Steel>350</Steel>
 			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>
 		<comps>
@@ -47,6 +47,14 @@
 			<li>TiberiumRim.PlaceWorker_Gap</li>
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
+		<modExtensions>
+			<li Class="StoryFramework.StoryThingDefExtension">
+				<objectiveRequisites>
+					<li>M4_TiberiumSuppression</li>
+				</objectiveRequisites>
+				<OnStart>false</OnStart>
+			</li>
+		</modExtensions>
 		<tickerType>Never</tickerType>
 		<rotatable>true</rotatable>
 	</TiberiumRim.TRThingDef>

@@ -23,6 +23,21 @@
 	</SoundDef>
 	
 	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_TiberExposDet</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>    
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/TiberExposDet</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
 		<defName>Aeva_SilosNeeded</defName>  
 		<subSounds>
 			<li>

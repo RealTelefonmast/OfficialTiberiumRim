@@ -44,7 +44,16 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+					<li>
+						<data>
+							<texPath>Buildings/GDI/Defense/IonCannon/CenterLight</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,7)</drawSize>
+						</data>
+						<needsPower>false</needsPower>
+					</li>
+					</overlays>
 			</li>		
 			<li Class="CompProperties_Forbiddable"/>
 			<li Class="CompProperties_Power">

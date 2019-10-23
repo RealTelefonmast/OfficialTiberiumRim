@@ -14,8 +14,8 @@
 			<drawSize>(2.5,2.5)</drawSize>
 		</graphicData>
 		<costList>
-			<Steel>40</Steel>
-			<ComponentIndustrial>3</ComponentIndustrial>
+			<Steel>100</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>
 		<uiIconPath>Buildings/Common/Defense/TibCannon/Icon</uiIconPath>
 		<uiIconScale>0.90</uiIconScale>
@@ -107,7 +107,6 @@
 		</placeWorkers>
 	</TiberiumRim.TRThingDef>
 
-
 	<ThingDef ParentName="BaseBullet">
 		<defName>Bullet_Sludge</defName>
 		<label>sludge blob</label>
@@ -192,5 +191,111 @@
 			-->
 		</verbs>
 	</ThingDef>
+	
+	<TiberiumRim.TRThingDef Abstract="True" Name="DronePlatform" ParentName="BuildingBase_TR">
+		<description>.</description>
+		<thingClass>Building</thingClass>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Misc</TRCategory>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>100</pathCost>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<fillPercent>0.25</fillPercent>
+		<tickerType>Normal</tickerType>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>800</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<size>(4,4)</size>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>150</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<constructEffect>ConstructMetal</constructEffect>
+		<canOverlapZones>false</canOverlapZones>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="DronePlatform">
+		<defName>RepairDronePlatform</defName>
+		<label>repair drone platform</label>
+		<graphicData>
+			<texPath>Buildings/Common/Misc/DronePlatform</texPath>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<size>(4,4)</size>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>800</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<costList>
+			<Steel>75</Steel>
+			<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_RepairDrone">
+				<droneAmount>4</droneAmount>
+				<radius>12</radius>
+				<droneSize>1.3</droneSize>
+				<dronePositions>
+					<li>(0,0,1)</li>
+					<li>(1.1,0,0)</li>
+					<li>(0,0,-1)</li>
+					<li>(-1.1,0,0)</li>
+				</dronePositions>
+				<droneDef>RepairDrone_Common</droneDef>
+			</li>
+		</comps>
+	</TiberiumRim.TRThingDef>	
+	
+	<TiberiumRim.TRThingDef ParentName="DronePlatform">
+		<defName>RepairDronePlatformSmall</defName>
+		<label>repair drone platform (small)</label>
+		<graphicData>
+			<texPath>Buildings/Common/Misc/DronePlatform_Small</texPath>
+			<drawSize>(1.75,1.75)</drawSize>
+		</graphicData>
+		<size>(1,1)</size>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>800</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<costList>
+			<Steel>75</Steel>
+			<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_RepairDrone">
+				<droneAmount>1</droneAmount>
+				<radius>4</radius>
+				<droneDef>RepairDrone_Common</droneDef>
+			</li>
+		</comps>
+	</TiberiumRim.TRThingDef>	
 	
 </Defs>

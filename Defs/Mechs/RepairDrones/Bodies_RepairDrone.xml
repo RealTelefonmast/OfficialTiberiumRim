@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<BodyDef>
+		<defName>RepairDroneBody</defName>
+		<label>drone corpus</label>
+		<corePart>
+			<def>DroneGrid</def>
+			<height>Middle</height>
+			<depth>Outside</depth>
+			<parts>
+				<li>
+					<def>DroneTools</def>
+					<coverage>0.10</coverage>
+					<height>Bottom</height>
+					<parts>
+						<li>
+							<def>DroneWelder</def>
+							<coverage>0.045</coverage>
+							<groups>
+								<li>LeftHand</li>
+							</groups>
+						</li>
+						<li>
+							<def>DroneCutter</def>
+							<coverage>0.045</coverage>
+							<groups>
+								<li>RightHand</li>
+							</groups>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>DroneCircuit</def>
+					<coverage>0.20</coverage>
+					<height>Top</height>
+					<groups>
+						<li>HeadAttackTool</li>
+					</groups>
+					<parts>
+						<li>
+							<def>ArtificialBrain</def>
+							<coverage>0.06</coverage>
+							<depth>Inside</depth>
+						</li>
+						<li>
+							<def>SightSensor</def>
+							<coverage>0.02</coverage>
+						</li>
+						<li>
+							<def>HearingSensor</def>
+							<coverage>0.02</coverage>
+						</li>
+						<li>
+							<def>SmellSensor</def>
+							<coverage>0.02</coverage>
+						</li>
+					</parts>					
+				</li>				
+				<li>
+					<def>Drone_Turbine</def>
+					<coverage>0.30</coverage>
+				</li>
+				<li>
+					<def>Drone_Turbine</def>
+					<coverage>0.30</coverage>
+				</li>
+			</parts>
+		</corePart>
+	</BodyDef>
+
+</Defs>

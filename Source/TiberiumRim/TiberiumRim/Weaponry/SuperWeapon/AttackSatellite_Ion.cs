@@ -17,6 +17,8 @@ namespace TiberiumRim
             base.Draw();
         }
 
+        //TODO: Add Ion Cannon Beacon to target cell
+        //Otherwise use comm satallite and console with pawn to use targeter
         public void SetAttackDest(Map map, IntVec3 cell)
         {
             target = new GlobalTargetInfo(cell, map);

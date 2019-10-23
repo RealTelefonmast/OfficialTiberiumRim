@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<PawnKindDef Class="TiberiumRim.HarvesterKindDef">
+	<TiberiumRim.HarvesterKindDef>
 		<defName>Harvester_Common</defName>
 		<label>harvester</label>
 		<combatPower>125</combatPower>
 		<defaultFactionType>PlayerColony</defaultFactionType>
 		<isFighter>false</isFighter>
 		<aiAvoidCover>false</aiAvoidCover>
-		<race>Harvester_TBI</race>
+		<race>Harvester_Common</race>
 		<maxStorage>125</maxStorage>
 		<wreckDef>HarvesterHusk_Common</wreckDef>		
 		<lifeStages>
@@ -23,6 +23,6 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-	</PawnKindDef>
+	</TiberiumRim.HarvesterKindDef>
 
 </Defs>

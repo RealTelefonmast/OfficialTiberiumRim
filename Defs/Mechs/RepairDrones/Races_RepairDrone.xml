@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<ThingDef ParentName="RepairDroneBase">
+		<defName>RepairDrone_Common</defName>
+		<label>repair drone</label>	
+		<description>.</description>
+		<statBases>
+			<MoveSpeed>1.33</MoveSpeed>
+			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
+		</statBases>
+	</ThingDef>
+
+</Defs>

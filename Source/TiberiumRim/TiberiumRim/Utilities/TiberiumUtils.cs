@@ -12,6 +12,18 @@ namespace TiberiumRim
 {
     public static class TRUtils
     {
+        public static bool IsWall(this ThingDef def)
+        {
+            return (def.graphicData.linkFlags & LinkFlags.Wall) != LinkFlags.None &&
+                   def.graphicData.linkType == LinkDrawerType.CornerFiller &&
+                   def.fillPercent >= 1f &&
+                   def.blockWind         &&
+                   def.coversFloor       &&
+                   def.castEdgeShadows   &&
+                   def.holdsRoof         &&
+                   def.blockLight;
+        }
+
         public static Material GetColoredVersion(this Material mat, Color color)
         {
             Material material = new Material(mat);

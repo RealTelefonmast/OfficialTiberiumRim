@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<TiberiumRim.TRThingDef Abstract="True" Name="WallLampBase" ParentName="BuildingBase_TR">
+		<thingClass>Building</thingClass>
+		<TRCategory>Decoration</TRCategory>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<passability>Standable</passability>
+		<selectable>true</selectable>
+		<fillPercent>0.20</fillPercent>
+		<pathCost>0</pathCost>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<rotatable>true</rotatable>
+		<clearBuildingArea>false</clearBuildingArea>
+		<uiIconOffset>(0, 0.03)</uiIconOffset>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<WorkToBuild>300</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Mass>3</Mass>
+		</statBases>
+		<building>
+			<isEdifice>false</isEdifice>
+		</building>
+		<costList>
+			<Steel>20</Steel>
+		</costList>
+		<thingCategories>
+			<li>BuildingsFurniture</li>
+		</thingCategories>
+		<graphicData>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shadowData>
+				<volume>(0.3, 0.6, 0.3)</volume>
+				<offset>(0,0,-0.1)</offset>
+			</shadowData>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>30</basePowerConsumption>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>Electricity</li>
+		</researchPrerequisites>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_WallLight</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+  
+	<TiberiumRim.TRThingDef ParentName="WallLampBase">
+		<defName>GDIWallLight</defName>
+		<label>wall light</label>
+		<description>An electrical wall lamp that lights an area. People need light to move and work at full speed.</description>
+		<factionDesignation>GDI</factionDesignation>
+		 <graphicData>
+			<texPath>Buildings/GDI/Misc/Light/Wall/light</texPath>
+			<drawSize>(1.5, 1.5)</drawSize>
+		</graphicData>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_GlowerOffset">
+				<offset>(0,0,1)</offset>
+				<glower>
+					<glowRadius>12</glowRadius>
+					<glowColor>(217,217,208,0)</glowColor>
+				</glower>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/GDI/Misc/Light/Wall/overlay</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(1.5, 1.5)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>	
+		</comps>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="EtherealThingBase">
+		<defName>GlowerSource</defName>
+		<thingClass>TiberiumRim.GlowerSource</thingClass>
+		<tickerType>Never</tickerType>
+		<drawerType>MapMeshOnly</drawerType>
+		<drawOffscreen>true</drawOffscreen>
+		<seeThroughFog>false</seeThroughFog>
+	</TiberiumRim.TRThingDef>
+
+</Defs>

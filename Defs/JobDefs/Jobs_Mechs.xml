@@ -3,7 +3,12 @@
 
 	<JobDef>
 		<defName>RepairMechanicalPawn</defName>
-		<driverClass>TiberiumRim.JobDriver_RapairAnyMechWithinRange</driverClass>
+		<driverClass>TiberiumRim.JobDriver_RepairDroneRepair</driverClass>
+	</JobDef>
+	
+	<JobDef>
+		<defName>ReturnFromRepair</defName>
+		<driverClass>TiberiumRim.JobDriver_RepairDroneReturn</driverClass>
 	</JobDef>
 	
 	<JobDef>
@@ -27,5 +32,5 @@
 		<driverClass>TiberiumRim.JobDriver_IdleAtRefinery</driverClass>
 		<reportString>idling at refinery.</reportString>
 	</JobDef>
-	
+
 </Defs>

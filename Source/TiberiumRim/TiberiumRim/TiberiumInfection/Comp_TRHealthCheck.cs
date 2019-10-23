@@ -7,10 +7,11 @@ using RimWorld;
 
 namespace TiberiumRim
 {
-    public class ThingComp_TiberiumCheck : ThingComp
+    public class Comp_TRHealthCheck : ThingComp
     {
         public List<BodyPartRecord> partsForInfection = new List<BodyPartRecord>();
         public List<BodyPartRecord> partsForGas = new List<BodyPartRecord>();
+        public List<BodyPartRecord> partsForMutation = new List<BodyPartRecord>();
 
         private int ticker = 0;
         private Pawn Pawn => parent as Pawn;
@@ -47,6 +48,7 @@ namespace TiberiumRim
         {
             partsForGas = Pawn.health.hediffSet.GetNotMissingParts().Where(p => p.def.tags.Any(t => t == BodyPartTagDefOf.BreathingPathway || t == BodyPartTagDefOf.BreathingSource)).ToList();
             partsForInfection = Pawn.health.hediffSet.GetNotMissingParts().Where(p => p.height == BodyPartHeight.Bottom && p.depth == BodyPartDepth.Outside).ToList(); ;
+            //partsForMutation = Pawn.health.hediffSet.GetWanderParts(Pawn.health.hediffSet.GetHediffs<Hediff_Mutation>().First()).ToList();
         }
     }
 
@@ -54,7 +56,7 @@ namespace TiberiumRim
     {
         public CompProperties_TiberiumCheck()
         {
-            this.compClass = typeof(ThingComp_TiberiumCheck);
+            this.compClass = typeof(Comp_TRHealthCheck);
         }
     }
 }

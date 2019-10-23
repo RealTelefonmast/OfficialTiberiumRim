@@ -40,32 +40,30 @@ namespace TiberiumRim
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-            if (!spawnedOnce)
+            if (spawnedOnce) return;
+            if(Props.moteData?.thrower != null)
             {
-                if(Props.moteData?.thrower != null)
+                MainThrower = new MoteThrower(Props.moteData.thrower, parent);
+            }
+            if (!Props.effecters.NullOrEmpty())
+            {
+                foreach (MoteThrowerInfo info in Props.effecters)
                 {
-                    MainThrower = new MoteThrower(Props.moteData.thrower, parent);
+                    moteThrowers.Add(new MoteThrower(info, parent));
                 }
-                if (!Props.effecters.NullOrEmpty())
+            }
+            if (!Props.overlays.NullOrEmpty())
+            {
+                for (int i = 0; i < Props.overlays.Count; i++)
                 {
-                    foreach (MoteThrowerInfo info in Props.effecters)
-                    {
-                        moteThrowers.Add(new MoteThrower(info, parent));
-                    }
+                    Graphics.Add(new FXGraphic(this, Props.overlays[i], i));
                 }
-                if (!Props.overlays.NullOrEmpty())
-                {
-                    for (int i = 0; i < Props.overlays.Count; i++)
-                    {
-                        Graphics.Add(new FXGraphic(this, Props.overlays[i], i));
-                    }
-                }
-                spawnedOnce = true;
-                if (!respawningAfterLoad)
-                {
-                    startTick = Find.TickManager.TicksGame;
-                    tickOffset = TRUtils.Range(Props.tickOffset);
-                }
+            }
+            spawnedOnce = true;
+            if (!respawningAfterLoad)
+            {
+                startTick = Find.TickManager.TicksGame;
+                tickOffset = TRUtils.Range(Props.tickOffset);
             }
         }
 
@@ -121,21 +119,9 @@ namespace TiberiumRim
             }
         }
 
-        public CompProperties_FX Props
-        {
-            get
-            {
-                return base.props as CompProperties_FX;
-            }
-        }
+        public CompProperties_FX Props => base.props as CompProperties_FX;
 
-        public CompPowerTrader CompPower
-        {
-            get
-            {
-                return parent.TryGetComp<CompPowerTrader>();
-            }
-        }
+        public CompPowerTrader CompPower => parent.TryGetComp<CompPowerTrader>();
 
         public IFXObject IParent
         {
@@ -181,14 +167,14 @@ namespace TiberiumRim
                     }
                     moteTicker--;
                 }
-                for (int i = 0; i < moteThrowers.Count; i++)
+                foreach (var t in moteThrowers)
                 {
-                    moteThrowers[i].ThrowerTick(parent.DrawPos, parent.Map);
+                    t.ThrowerTick(parent.DrawPos, parent.Map);
                 }
             }
-            for (int i = 0; i < Graphics.Count; i++)
+            foreach (var g in Graphics)
             {
-                Graphics[i].Tick();
+                g.Tick();
             }
         }
 
@@ -221,7 +207,6 @@ namespace TiberiumRim
         {
             if (signal == "PowerTurnedOn" || signal == "PowerTurnedOff" || signal == "FlickedOn" || signal == "FlickedOff" || signal == "Refueled" || signal == "RanOutOfFuel" || signal == "ScheduledOn" || signal == "ScheduledOff")
             {
-                parent.Map.mapDrawer.MapMeshDirty(parent.Position, MapMeshFlag.Buildings);
                 parent.Map.mapDrawer.MapMeshDirty(parent.Position, MapMeshFlag.Things);
             }
         }
@@ -284,17 +269,7 @@ namespace TiberiumRim
             return IParent.DrawPositions[index];
         }
 
-        public bool ShouldDoEffecters
-        {
-            get
-            {
-                if (IParent != null)
-                {
-                    return IParent.ShouldDoEffecters;
-                }
-                return true;
-             }
-        }
+        public bool ShouldDoEffecters => IParent == null || IParent.ShouldDoEffecters;
 
         public override void PostDraw()
         {

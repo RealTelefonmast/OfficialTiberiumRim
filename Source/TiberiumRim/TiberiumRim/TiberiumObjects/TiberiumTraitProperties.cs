@@ -166,6 +166,7 @@ namespace TiberiumRim
 
         private void HarvestTimeAdd(float value)
         {
+            Math.Ceiling(4d);
             harvestTime += value;
             harvestYield += value * 0.66f;
         }

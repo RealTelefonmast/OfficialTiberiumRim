@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Verse;
-using RimWorld;
 
 namespace TiberiumRim
 {
-    public class Hediff_Mutant : Hediff_Relative
+    public interface IUpgradable
     {
-
-
-
     }
 }

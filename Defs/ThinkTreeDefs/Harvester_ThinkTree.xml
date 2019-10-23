@@ -1,79 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<!--
+
 	<ThinkTreeDef>
-		<defName>RepairDrone</defName>
+		<defName>HarvesterMain</defName>
 		<thinkRoot Class="ThinkNode_Priority">
 			<subNodes>
 				<li Class="ThinkNode_Subtree">
 					<treeDef>Downed</treeDef>
 				</li>
-				
+
 				<li Class="ThinkNode_Subtree">
 					<treeDef>BurningResponse</treeDef>
 				</li>
-				
-				<li Class="ThinkNode_QueuedJob" />
-				
-				<li Class="ThinkNode_Tagger">
-					<tagToGive>Idle</tagToGive>
-					<subNodes>
-						<li Class="TiberiumRim.JobGiver_WanderAtParent"/>
-					</subNodes>
-				</li>		
-			</subNodes>
-		</thinkRoot>
-	</ThinkTreeDef>
 
-	<ThinkTreeDef>
-		<defName>RepairDroneConstant</defName>
-			<thinkRoot Class="ThinkNode_Priority">
-			<subNodes>
-				<li Class="ThinkNode_ConditionalCanDoConstantThinkTreeJobNow">
-					<subNodes>
-						<li Class="JobGiver_ReactToCloseMeleeThreat"/>		
-						<li Class="JobGiver_FleePotentialExplosion" />
-						<li Class="JobGiver_FleeImmediateDanger" />
-											
-						<li Class="TiberiumRim.JobGiver_RepairAnyMechWithinRange"/>
-					</subNodes>
-				</li>
-			</subNodes>
-		</thinkRoot>
-	</ThinkTreeDef>
-	-->
+				<!-- React to close melee threat -->
+				<li Class="JobGiver_ReactToCloseMeleeThreat" />
 
-	<ThinkTreeDef>
-		<defName>Harvester</defName>
-		<thinkRoot Class="ThinkNode_Priority">
-			<subNodes>
-				<!-- Downed -->
-				<li Class="ThinkNode_Subtree">
-					<treeDef>Downed</treeDef>
-				</li>
-				<!--4
-				<li Class="ThinkNode_Tagger">
-					<tagToGive>DraftedOrder</tagToGive>
-					<subNodes>
-						<li Class="JobGiver_MoveToStandable" />
-						<li Class="JobGiver_Orders" />
-					</subNodes>
-				</li>
-				-->
-				<li Class="ThinkNode_Subtree">
-					<treeDef>BurningResponse</treeDef>
-				</li>
-				
 				<!-- Do a queued job -->
 				<li Class="ThinkNode_QueuedJob" />
-				
+
+				<!-- Wait if drafted -->
+				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+					<subNodes>
+						<li Class="ThinkNode_Tagger">
+							<tagToGive>DraftedOrder</tagToGive>
+							<subNodes>
+								<li Class="JobGiver_MoveToStandable" />
+								<li Class="JobGiver_Orders" />
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+
 				<!-- Idle -->
 				<li Class="ThinkNode_Tagger">
 					<tagToGive>Idle</tagToGive>
 					<subNodes>
 						<li Class="TiberiumRim.JobGiver_IdleAtRefinery"/>
 					</subNodes>
-				</li>		
+				</li>
 			</subNodes>
 		</thinkRoot>
 	</ThinkTreeDef>

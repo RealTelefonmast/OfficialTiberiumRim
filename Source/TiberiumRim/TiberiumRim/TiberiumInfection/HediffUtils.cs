@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Documents;
 using UnityEngine;
 using Verse;
 using RimWorld;
@@ -15,7 +16,7 @@ namespace TiberiumRim
             float num = 0;
             float parts = part.parts.Count + 1;
             var hediffs = pawn.health.hediffSet.hediffs.Where(h => h.def == coverageOf).ToArray();
-            var records = part.ChildParts();
+            var records = part.ChildParts(true);
             if (records.Count > 1)
             {
                 foreach (BodyPartRecord potPart in records)
@@ -51,12 +52,16 @@ namespace TiberiumRim
 
         public static bool IsTiberiumPart(this Hediff hediff)
         {
-            return hediff is Hediff_Crystallizing || hediff is Hediff_Mutation || hediff is Hediff_MutationPart || hediff is Hediff_TiberiumPart tp;
+            return hediff is Hediff_Crystallizing || hediff is Hediff_Mutation || hediff is Hediff_TiberiumPart tp;
         }
 
-        public static IEnumerable<BodyPartRecord> GetWanderParts(this HediffSet set)
+        public static IEnumerable<BodyPartRecord> GetWanderParts(this HediffSet set, Hediff_Mutation mutation)
         {
-            List<BodyPartRecord> allPartsList = set.pawn.def.race.body.AllParts;
+            return from x in set.pawn.def.race.body.AllParts where !set.hediffs.Any(h => h.Part == x && (h.IsTiberiumPart() || h is Hediff_MissingPart)) select x;
+
+            //Obsolete 
+            /*
+            List < BodyPartRecord > allPartsList = set.pawn.def.race.body.AllParts;
             for (int i = 0; i < allPartsList.Count; i++)
             {
                 BodyPartRecord part = allPartsList[i];
@@ -64,6 +69,7 @@ namespace TiberiumRim
                     yield return part;
             }
             yield break;
+            */
         }
 
         public static IEnumerable<BodyPartRecord> GetMutatableParts(this HediffSet set)
@@ -154,12 +160,14 @@ namespace TiberiumRim
             });
         }
 
-        public static List<BodyPartRecord> ChildParts(this BodyPartRecord record)
+        public static List<BodyPartRecord> ChildParts(this BodyPartRecord record, bool withParent)
         {
+            Log.Message("Parent part: " + record);
             var parts = new List<BodyPartRecord>();
-            parts.Add(record);
+            if (record == null) return null;
+            if(withParent) parts.Add(record);
             foreach (var part in record.parts)
-                parts.AddRange(part.ChildParts());
+                parts.AddRange(part.ChildParts(true));
             return parts;
         }
 
@@ -239,77 +247,42 @@ namespace TiberiumRim
             Log.Message("Trying to affect " + pawn);
             float numCryst = 0.001f;
             float numRad = 0.00013f * perTicks;
-            ThingComp_TiberiumCheck tibCheck = pawn.GetComp<ThingComp_TiberiumCheck>();
+            Comp_TRHealthCheck tibCheck = pawn.GetComp<Comp_TRHealthCheck>();
             List<BodyPartRecord> PossibleBodyParts = new List<BodyPartRecord>();
             BodyPartRecord selectedPart = null;
             if (isGas)
             {
-                PossibleBodyParts = tibCheck.partsForGas; //pawn.health.hediffSet.GetNotMissingParts().Where(p => p.def.tags.Any(t => t == BodyPartTagDefOf.BreathingPathway || t == BodyPartTagDefOf.BreathingSource)).ToList();
+                PossibleBodyParts = tibCheck.partsForGas;
                 numCryst *= 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumGasResistance);
-                /*
-                foreach (Apparel apparel in apparelSet)
-                {
-                    if (apparel.def.apparel.bodyPartGroups.Contains(BodyPartGroupDefOf.FullHead))
-                    {
-                        numCryst *= (1 - Mathf.Clamp(apparel.GetStatValue(StatDefOf.ToxicSensitivity), 0f, 1f)) * 0.25f;
-                        numCryst *= 1 - apparel.GetStatValue(TiberiumDefOf.TiberiumGasResistance);
-                    }
-                }
-                */
             }
             else
             {
-                PossibleBodyParts = tibCheck.partsForInfection; //pawn.health.hediffSet.GetNotMissingParts().Where(p => p.height == BodyPartHeight.Bottom && p.depth == BodyPartDepth.Outside).ToList();
+                PossibleBodyParts = tibCheck.partsForInfection;
                 numCryst *= 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumInfectionResistance);
-                /*
-                foreach (Apparel apparel in apparelSet)
-                {
-                    if (apparel.def.apparel.bodyPartGroups.Contains(BodyPartGroupDefOf.FullHead))
-                    {
-                        numCryst *= (1 - Mathf.Clamp(apparel.GetStatValue(StatDefOf.ToxicSensitivity), 0f, 1f)) * 0.25f;
-                        numCryst *= 1 - apparel.GetStatValue(TiberiumDefOf.TiberiumGasResistance);
-
-                        numRad *= 1 - Mathf.Clamp(apparel.GetStatValue(StatDefOf.Insulation_Heat), 0f, 0.5f);
-                        if (apparel.def.defName.Contains("_TBP"))
-                        {
-                            numRad -= 0.005f;
-                        }
-                    }
-                    if (apparel.def.apparel.bodyPartGroups.Any(b => b == BodyPartGroupDefOf.Legs && b == BodyPartGroupDefOf.Torso))
-                    {
-                        numCryst *= 1 - Mathf.Clamp01(apparel.GetStatValue(StatDefOf.ArmorRating_Sharp));
-                        numRad *= 1 - Mathf.Clamp(apparel.GetStatValue(StatDefOf.Insulation_Heat), 0f, 0.5f);
-                        if (apparel.def.defName.Contains("_TBP"))
-                        {
-                            numRad -= 0.005f;
-                            numCryst *= 0;
-                        }
-                    }
-                }
-                */
             }
             numRad *= 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumRadiationResistance);
             Log.Message("Infection Value: " + numCryst + " Radiation Value: " + numRad);
+            if (PossibleBodyParts.NullOrEmpty()) return;
             selectedPart = PossibleBodyParts.RandomElement();
+            //GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.TiberiumExposure);
+
             TryIrradiate(pawn, numRad);
             if (TryFormVisceralPod(pawn, numCryst)) return;
-            if (TRUtils.Chance(InfectionChance(pawn, isGas)) && TouchedCrystal(pawn, selectedPart))
+            if (numCryst > 0 && TRUtils.Chance(InfectionChance(pawn, isGas)) && TouchedCrystal(pawn, selectedPart))
                 TryInfect(pawn, selectedPart, numCryst);
         }
 
         public static bool TryInfect(Pawn pawn, BodyPartRecord part, float severity)
         {
-            if (severity > 0)
+            if (!(severity > 0)) return false;
+            if (!pawn.health.hediffSet.PartIsCrystallizing(part))
             {
-                if (!pawn.health.hediffSet.PartIsCrystallizing(part))
-                {
-                    Hediff hediff2 = HediffMaker.MakeHediff(TRHediffDefOf.TiberiumCrystallization, pawn);
-                    hediff2.Severity = severity;
-                    pawn.health.AddHediff(hediff2, part);
-                    return true;
-                }
-                pawn.apparel?.WornApparel?.RandomElement().TakeDamage(new DamageInfo(TRDamageDefOf.TiberiumBurn, 3));
+                Hediff hediff2 = HediffMaker.MakeHediff(TRHediffDefOf.TiberiumCrystallization, pawn);
+                hediff2.Severity = severity;
+                pawn.health.AddHediff(hediff2, part);
+                return true;
             }
+            pawn.apparel?.WornApparel?.RandomElement().TakeDamage(new DamageInfo(TRDamageDefOf.TiberiumBurn, 3));
             return false;
         }
 
@@ -327,16 +300,13 @@ namespace TiberiumRim
             chance *= 0.05f;
             chance *= num;
             Log.Message("Visceral Pod Chance: " + chance);
-            if (TRUtils.Chance(chance))
-            {
-                IntVec3 loc = pawn.Position;
-                Map map = pawn.Map;
-                VisceralPod pod = (VisceralPod)ThingMaker.MakeThing(TiberiumDefOf.VisceralPod);
-                pod.VisceralSetup(pawn);
-                GenPlace.TryPlaceThing(pod, loc, map, ThingPlaceMode.Near);
-                return true;
-            }
-            return false;
+            if (!TRUtils.Chance(chance)) return false;
+            IntVec3 loc = pawn.Position;
+            Map map = pawn.Map;
+            VisceralPod pod = (VisceralPod)ThingMaker.MakeThing(TiberiumDefOf.VisceralPod);
+            pod.VisceralSetup(pawn);
+            GenPlace.TryPlaceThing(pod, loc, map, ThingPlaceMode.Near);
+            return true;
         }
 
         private static float InfectionChance(Pawn pawn, bool isGas)
@@ -366,17 +336,16 @@ namespace TiberiumRim
 
         public static bool TryIrradiate(Pawn pawn, float rads)
         {
-            if (rads > 0)
+            if (!(rads > 0)) return false;
+
+            Hediff radiation = pawn.health.hediffSet.GetFirstHediffOfDef(TRHediffDefOf.TiberiumExposure);
+            if (radiation != null)
+            { radiation.Severity += rads; }
+            else
             {
-                Hediff radiation = pawn.health.hediffSet.GetFirstHediffOfDef(TRHediffDefOf.TiberiumExposure);
-                if (radiation != null)
-                { radiation.Severity += rads; }
-                else
-                {
-                    Hediff hediff = HediffMaker.MakeHediff(TRHediffDefOf.TiberiumExposure, pawn);
-                    hediff.Severity = rads;
-                    pawn.health.AddHediff(hediff);
-                }
+                Hediff hediff = HediffMaker.MakeHediff(TRHediffDefOf.TiberiumExposure, pawn);
+                hediff.Severity = rads;
+                pawn.health.AddHediff(hediff);
             }
             return false;
         }

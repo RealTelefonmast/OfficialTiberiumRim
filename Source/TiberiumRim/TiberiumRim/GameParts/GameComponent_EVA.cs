@@ -65,6 +65,11 @@ namespace TiberiumRim
             }
         }
 
+        public bool ShouldPlay
+        {
+            get { return ticksUntilSound <= 0 && TiberiumRimSettings.settings.EVASystem; }
+        }
+
         public override void GameComponentTick()
         {
             base.GameComponentTick();
@@ -85,7 +90,7 @@ namespace TiberiumRim
         public void ReceiveSignal(EVASignal signal)
         {
             Log.Message("Received EVA signal: " + signal);
-            if (ticksUntilSound > 0) return;
+            if (!ShouldPlay) return;
 
             SoundDef soundToPlay = null;
             switch (signal)
@@ -162,6 +167,9 @@ namespace TiberiumRim
                     break;
                 case EVASignal.NewMission:
                     break;
+                case EVASignal.TiberiumExposure:
+                    soundToPlay = SoundDef.Named(EVAPrefix + "TiberExposDet");
+                    break;
                 case EVASignal.CountD10:
                     soundToPlay = SoundDef.Named(EVAPrefix + "Count10");
                     break;
@@ -225,6 +233,8 @@ namespace TiberiumRim
         NewObjective,
         ObjectiveComplete,
         NewMission,
+
+        TiberiumExposure,
 
         IonCannonReady,
         IonCannonActivated,

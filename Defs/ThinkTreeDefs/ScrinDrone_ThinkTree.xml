@@ -3,7 +3,6 @@
 
 	<ThinkTreeDef Abstract="True" Name="ScrinDrone_Base">
 		<thinkRoot Class="ThinkNode_Priority">
-		
 			<!-- Drafted -->
 			<li Class="ThinkNode_ConditionalColonist">
 					<subNodes>
@@ -16,7 +15,6 @@
 						</li>
 					</subNodes>
 				</li>
-				
 		</thinkRoot>
 	</ThinkTreeDef>
   

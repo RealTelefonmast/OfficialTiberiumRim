@@ -30,6 +30,7 @@ namespace TiberiumRim
 
         //PlaySettings
         public bool ShowNetworkValues = false;
+        public bool EVASystem = true;
 
         
         //Debug

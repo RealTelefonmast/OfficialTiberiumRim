@@ -58,11 +58,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\IPawnWithParent.cs" />
+    <Compile Include="AI\JobGiver_TryGetRepaired.cs" />
+    <Compile Include="AI\JobGiver_WanderAtParent.cs" />
+    <Compile Include="AI\JobWithExtras.cs" />
     <Compile Include="AI\ThinkNode_ConditionalColonistOrMech.cs" />
     <Compile Include="Alert_Debug.cs" />
     <Compile Include="Alert_DebugReservations.cs" />
+    <Compile Include="Comps\Comp_Upgradable.cs" />
+    <Compile Include="Comps\Comp_WanderProps.cs" />
     <Compile Include="EventExtension.cs" />
     <Compile Include="GameParts\ASATNetwork.cs" />
+    <Compile Include="Comps\CompGlowerOffset.cs" />
     <Compile Include="GameParts\Designator_Extended.cs" />
     <Compile Include="GameParts\Designator_Target.cs" />
     <Compile Include="GameParts\Dialog_DifficultyPreset.cs" />
@@ -70,8 +77,13 @@
     <Compile Include="GameParts\Dialog_TiberiumRimSettings.cs" />
     <Compile Include="GameParts\GameComponent_TR.cs" />
     <Compile Include="GameParts\ITab_ContainedPawn_Health.cs" />
+    <Compile Include="GameParts\IUpgradable.cs" />
     <Compile Include="GameParts\MapComps\WorldComponent_TR.cs" />
+    <Compile Include="GameParts\PlaceWorker_WallLight.cs" />
     <Compile Include="GameParts\SuperWeaponInfo.cs" />
+    <Compile Include="AI\JobDriver_RepairDroneRepair.cs" />
+    <Compile Include="AI\JobDriver_RepairDroneReturn.cs" />
+    <Compile Include="MechanicalPawns\RepairDrone.cs" />
     <Compile Include="Sound\ActionComposition.cs" />
     <Compile Include="Sound\TRSoundDef.cs" />
     <Compile Include="Sound\TRSubSoundDef.cs" />
@@ -100,9 +112,8 @@
     <Compile Include="TiberiumPawns\AnimalMutationDef.cs" />
     <Compile Include="TiberiumInfection\Comp_CrystalDrawer.cs" />
     <Compile Include="TiberiumInfection\HediffMutationGroup.cs" />
-    <Compile Include="TiberiumInfection\Hediff_Mutant.cs" />
     <Compile Include="TiberiumInfection\Hediff_Mutation.cs" />
-    <Compile Include="TiberiumInfection\Hediff_MutationPart.cs" />
+    <Compile Include="TiberiumInfection\TiberiumMutation.cs" />
     <Compile Include="TiberiumInfection\Hediff_ReplacedPart.cs" />
     <Compile Include="TiberiumInfection\IngestionOutcomeDoer_GiveHediffWithSideEffect.cs" />
     <Compile Include="TiberiumInfection\MutantDrawer.cs" />
@@ -113,7 +124,7 @@
     <Compile Include="TiberiumObjects\GroundZero.cs" />
     <Compile Include="TiberiumObjects\PlantMutationProperties.cs" />
     <Compile Include="TiberiumObjects\PotentialEvolution.cs" />
-    <Compile Include="TiberiumInfection\ThingComp_TiberiumCheck.cs" />
+    <Compile Include="TiberiumInfection\Comp_TRHealthCheck.cs" />
     <Compile Include="TiberiumObjects\SporeProperties.cs" />
     <Compile Include="TiberiumObjects\TiberiumBlossom.cs" />
     <Compile Include="TiberiumObjects\TiberiumProducerStage.cs" />
@@ -153,6 +164,7 @@
     <Compile Include="Weaponry\Building_Obelisk.cs" />
     <Compile Include="Weaponry\Building_TRTurret.cs" />
     <Compile Include="Weaponry\Comp_ExtraTurret.cs" />
+    <Compile Include="Comps\Comp_RepairDrone.cs" />
     <Compile Include="Weaponry\SuperWeapon\AttackSatellite.cs" />
     <Compile Include="Weaponry\SuperWeapon\AttackSatellite_Ion.cs" />
     <Compile Include="Weaponry\SuperWeapon\Building_IonCannon.cs" />
@@ -198,9 +210,9 @@
     <Compile Include="TiberiumProcessing\Graphic_LinkedTNW.cs" />
     <Compile Include="TiberiumProcessing\Graphic_LinkedTNWOverlay.cs" />
     <Compile Include="TiberiumProcessing\HarvesterReservationManager.cs" />
-    <Compile Include="TiberiumProcessing\JobGiver_HarvestTiberium.cs" />
-    <Compile Include="TiberiumProcessing\JobGiver_IdleAtRefinery.cs" />
-    <Compile Include="TiberiumProcessing\JobGiver_UnloadAtRefinery.cs" />
+    <Compile Include="AI\JobGiver_HarvestTiberium.cs" />
+    <Compile Include="AI\JobGiver_IdleAtRefinery.cs" />
+    <Compile Include="AI\JobGiver_UnloadAtRefinery.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_TNWManager.cs" />
     <Compile Include="TiberiumProcessing\Objective_TResearch.cs" />
     <Compile Include="TiberiumProcessing\RecipeDef_Tiberium.cs" />

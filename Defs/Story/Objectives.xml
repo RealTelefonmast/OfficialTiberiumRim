@@ -154,6 +154,38 @@
 		</targetSettings>
 	</StoryFramework.ObjectiveDef>	
 	
+	<StoryFramework.ObjectiveDef>
+		<defName>M3_TiberiumPower</defName>
+		<label>Powering Up</label>
+		<description>...</description>
+		<type>ConstructOrCraft</type>
+		<targetSettings>
+			<targets>
+				<li>TiberiumPowerPlant</li>
+			</targets>
+		</targetSettings>
+	</StoryFramework.ObjectiveDef>	
+	
+	<!--Should be done by pawn in gear, in tiberium, testing vulnerabilities-->
+	<StoryFramework.ObjectiveDef>
+		<defName>M4_TiberiumSuppression</defName>
+		<label>Suppress The Growth</label>
+		<description>...</description>
+		<type>Research</type>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>5</Intellectual>
+		</skillRequirements>
+		<targetSettings>
+			<any>true</any>
+			<targets>
+				<li>SimpleResearchBench</li>
+				<li>HiTechResearchBench</li>
+			</targets>
+		</targetSettings>
+		<workAmount>750</workAmount>
+	</StoryFramework.ObjectiveDef>	
+	
 	<!-- Misc -->
 	
 	<StoryFramework.ObjectiveDef>
@@ -162,7 +194,7 @@
 		<description>...</description>
 		<type>Research</type>
 		<skillRequirements>
-		<Intellectual>5</Intellectual>
+			<Intellectual>5</Intellectual>
 		</skillRequirements>
 		<targetSettings>
 			<targets>

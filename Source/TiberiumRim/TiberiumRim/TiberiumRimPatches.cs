@@ -113,13 +113,15 @@ namespace TiberiumRim
         {
             public static void Postfix(Thing __instance, DamageInfo dinfo)
             {
+                //EVA Patch
                 if (!__instance.Spawned) return;
                 if (__instance.Faction == null) return;
                 if (!__instance.Faction.IsPlayer) return;
 
                 if (__instance is Building _)
                     GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.BaseUnderAttack);
-                if (__instance is Pawn _) GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.UnitUnderAttack);
+                if (__instance is Pawn _)
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.UnitUnderAttack);
             }
         }
 
@@ -177,8 +179,8 @@ namespace TiberiumRim
                 Hediff_Mutation worker = (Hediff_Mutation)diffs.ToList().Find(h => h is Hediff_Mutation);
                 if (worker != null)
                 {
-                    float viscNum = worker.VisceralCoverage;
-                    float symbNum = worker.SymbioticCoverage;
+                    float viscNum = 0.5f;
+                    float symbNum = 0.5f;
                     float rev = 1f - viscNum;
 
                     string s2 = viscNum == symbNum ? " = " : (viscNum > symbNum ? " > " : " < ");
@@ -533,7 +535,7 @@ namespace TiberiumRim
             {
                 if (!worldView)
                 {
-                    row.ToggleableIcon(ref TiberiumRimSettings.settings.ShowNetworkValues, ContentFinder<Texture2D>.Get("UI/Icons/TiberiumNetIcon"), "TiberiumNetworkValues".Translate(), SoundDefOf.Mouseover_ButtonToggle);
+                    row.ToggleableIcon(ref TiberiumRimSettings.settings.EVASystem, ContentFinder<Texture2D>.Get("UI/Icons/EVA"), "Enable or disable the EVA", SoundDefOf.Mouseover_ButtonToggle);
                 }
             }
         }

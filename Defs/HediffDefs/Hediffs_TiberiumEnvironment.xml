@@ -5,7 +5,7 @@
 		<defName>TiberiumBurn</defName>
 		<label>tiberium burn</label>
 		<labelNoun>a tiberium burn</labelNoun>
-		<defaultLabelColor>(255, 255, 100)</defaultLabelColor>
+		<defaultLabelColor>(1, 1, 0.39)</defaultLabelColor>
 		<comps>
 			<li Class="HediffCompProperties_GetsPermanent">
 				<permanentLabel>crystal scar</permanentLabel>
@@ -13,109 +13,160 @@
 		</comps>
 		<injuryProps>
 			<painPerSeverity>0.02</painPerSeverity>
-			 <averagePainPerSeverityPermanent>0.08</averagePainPerSeverityPermanent>
+			<averagePainPerSeverityPermanent>0.08</averagePainPerSeverityPermanent>
 			<bleedRate>0</bleedRate>
 			<canMerge>true</canMerge>
-			<destroyedLabel>Destroyed</destroyedLabel>
-			<destroyedOutLabel>Burned out</destroyedOutLabel>
+			<destroyedLabel>destroyed</destroyedLabel>
+			<destroyedOutLabel>burned out</destroyedOutLabel>
 		</injuryProps>
 	</HediffDef>
 
-	<TiberiumRim.HediffRelativeDef ParentName="HediffBase_TR">
+	<HediffDef>
 		<defName>TiberiumExposure</defName>
-		<hediffClass>TiberiumRim.Hediff_Relative</hediffClass>
-		<label>tiberium exposure</label>
-		<defaultLabelColor>(255, 100, 100)</defaultLabelColor>
-		<initialSeverity>0.2</initialSeverity>
+		<label>tiberium exposure radiation</label>
+		<initialSeverity>0.01</initialSeverity>
+		<lethalSeverity>1</lethalSeverity>
+		<minSeverity>0</minSeverity>
 		<maxSeverity>1</maxSeverity>
+		<tendable>false</tendable>
 		<makesSickThought>true</makesSickThought>
+		<isBad>true</isBad>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<cureAllAtOnceIfCuredByItem>false</cureAllAtOnceIfCuredByItem>
 		<everCurableByItem>false</everCurableByItem>
-		<makesAlert>false</makesAlert>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(1, 0.39, 0.39)</defaultLabelColor>
 		<comps>
 			<li Class="HediffCompProperties_Immunizable">
-				<severityPerDayNotImmune>-0.05</severityPerDayNotImmune>
+				<severityPerDayNotImmune>-0.08</severityPerDayNotImmune>
 			</li>
 			<li Class="TiberiumRim.HediffCompProperties_Icon">
 				<iconPath>UI/Icons/TiberiumImmune</iconPath>
 			</li>
 		</comps>
-		<relativeCapMods>
-			<li>
-				<capacity>Metabolism</capacity>
-				<offset>-0.9</offset>
-			</li>
-			<li>
-				<capacity>Breathing</capacity>
-				<offset>-0.8</offset>
-			</li>
-			<li>
-				<capacity>Consciousness</capacity>
-				<offset>-0.60</offset>
-			</li>
-			<li>
-				<capacity>Moving</capacity>
-				<offset>-0.75</offset>
-			</li>
-		</relativeCapMods>
 		<stages>
 			<li>
-				<minSeverity>0</minSeverity>
-				<label>buildup</label>
-				<painFactor>1.05</painFactor>
-				<hungerRateFactor>1.2</hungerRateFactor>
+				<label>initial-hidden</label>
 				<becomeVisible>false</becomeVisible>
 			</li>
 			<li>
+				<minSeverity>0.05</minSeverity>
+				<label>initial</label>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.05</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
 				<minSeverity>0.15</minSeverity>
-				<label>slight</label>
-				<painFactor>1.2</painFactor>
-				<hungerRateFactor>1.5</hungerRateFactor>
+				<label>minor</label>
+				<painOffset>0.1</painOffset>
+				<capMods>
+					<li>
+						<capacity>Metabolism</capacity>
+						<offset>-0.1</offset>
+					</li>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>-0.1</offset>
+					</li>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.1</offset>
+					</li>
+				</capMods>
 			</li>		
 			<li>
-				<minSeverity>0.45</minSeverity>
+				<minSeverity>0.35</minSeverity>
 				<label>moderate</label>
-				<painFactor>1.3</painFactor>
-				<hungerRateFactor>2</hungerRateFactor>
-				<vomitMtbDays>1</vomitMtbDays>
+				<painOffset>0.15</painOffset>
+				<capMods>
+					<li>
+						<capacity>Metabolism</capacity>
+						<offset>-0.2</offset>
+					</li>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>-0.2</offset>
+					</li>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.15</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>-0.1</offset>
+					</li>
+					<li>
+						<capacity>Manipulation</capacity>
+						<offset>-0.2</offset>
+					</li>
+				</capMods>
 			</li>
 			<li>
 				<minSeverity>0.70</minSeverity>
-				<label>dangerous</label>
-				<painFactor>1.5</painFactor>
-				<hungerRateFactor>0.5</hungerRateFactor>
-				<vomitMtbDays>0.75</vomitMtbDays>
-				<deathMtbDays>5</deathMtbDays>
+				<label>serious</label>
+				<painOffset>0.2</painOffset>
+				<vomitMtbDays>0.01</vomitMtbDays>
+				<deathMtbDays>4</deathMtbDays>
 				<lifeThreatening>true</lifeThreatening>
+				<capMods>
+					<li>
+						<capacity>Metabolism</capacity>
+						<offset>-0.3</offset>
+					</li>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>-0.3</offset>
+					</li>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.30</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>-0.2</offset>
+					</li>
+					<li>
+						<capacity>Manipulation</capacity>
+						<offset>-0.3</offset>
+					</li>
+				</capMods>
 			</li>
 			<li>
 				<minSeverity>0.80</minSeverity>
 				<label>lethal</label>
-				<painFactor>2</painFactor>
-				<hungerRateFactor>0.1</hungerRateFactor>
-				<vomitMtbDays>0.5</vomitMtbDays>
+				<painOffset>0.3</painOffset>
+				<vomitMtbDays>0.02</vomitMtbDays>
 				<deathMtbDays>1.5</deathMtbDays>
 				<lifeThreatening>true</lifeThreatening>
+				<capMods>
+					<li>
+						<capacity>Metabolism</capacity>
+						<offset>-0.4</offset>
+					</li>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>-0.6</offset>
+					</li>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.6</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>-0.4</offset>
+					</li>
+					<li>
+						<capacity>Manipulation</capacity>
+						<offset>-0.6</offset>
+					</li>
+				</capMods>
 			</li>
 		</stages>
-	</TiberiumRim.HediffRelativeDef>
-	
-	<TiberiumRim.HediffRelativeDef ParentName="HediffBase_TR">
-		<defName>PartEfficiencyKiller</defName>
-		<label>TEST efficiency killer</label>
-		<hediffClass>TiberiumRim.Hediff_Relative</hediffClass>
-		<initialSeverity>1</initialSeverity>
-		<minSeverity>1</minSeverity>
-		<maxSeverity>1</maxSeverity>
-		<relativePartEfficiency>-1</relativePartEfficiency>
-		<everCurableByItem>false</everCurableByItem>
-		<makesAlert>false</makesAlert>
-		<stages>
-			<li>
-				<minSeverity>0</minSeverity>
-				<label>no efficiency</label>
-			</li>
-		</stages>
-	</TiberiumRim.HediffRelativeDef>
+	</HediffDef>
 	
 	<HediffDef ParentName="HediffBase_TR">
 		<defName>TiberiumCrystallization</defName>
@@ -134,21 +185,18 @@
 			<li>
 				<minSeverity>0.01</minSeverity>
 				<label>crystallizing</label>
-				<painFactor>1.15</painFactor>
+				<painOffset>0.75</painOffset>
 			</li>
 			<li>
 				<minSeverity>0.5</minSeverity>
 				<label>crystallizing</label>
-				<painFactor>1.5</painFactor>
-				<hungerRateFactor>1.15</hungerRateFactor>
+				<painOffset>0.25</painOffset>
 				<lifeThreatening>true</lifeThreatening>
 			</li>
 			<li>
 				<minSeverity>1</minSeverity>
 				<label>crystallized</label>
-				<painFactor>0</painFactor>
 				<partEfficiencyOffset>-1</partEfficiencyOffset>
-				<hungerRateFactor>1.2</hungerRateFactor>
 				<lifeThreatening>true</lifeThreatening>
 			</li>
 		</stages>

@@ -2,7 +2,7 @@
 <Defs>
 	
 	<ThingDef ParentName="HarvesterBase">
-		<defName>Harvester_TBI</defName>
+		<defName>Harvester_Common</defName>
 		<label>Harvester</label>	
 		<description>A standart Tiberium harvester, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
 		<comps>
@@ -41,6 +41,7 @@
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
 			<Beauty>-26</Beauty>
+			<TiberiumDamageResistance>1</TiberiumDamageResistance>
 		</statBases>
 		<costList>
 			<Steel>75</Steel>

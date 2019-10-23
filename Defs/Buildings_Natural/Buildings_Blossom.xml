@@ -90,6 +90,28 @@
 			<texPath>Buildings/Natural/BlossomTree/BlossomTree</texPath>
 		</graphicData>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX">
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/BlossomTree/BlossomTree_overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</data>
+						<altitude>Item</altitude>
+						<mode>Pulse</mode>
+					    <pulse>
+							<mode>Opacity</mode>
+							<opacityRange>0.3~0.8</opacityRange>
+							<opacityDuration>120</opacityDuration>
+						</pulse>
+					</li>
+				</overlays>
+			</li>
+		</comps>
 		<tiberiumTypes>
 			<li>TiberiumPod</li>
 		</tiberiumTypes>
@@ -103,6 +125,28 @@
 			<texPath>Buildings/Natural/BlossomTree/BlossomTreeBlue</texPath>
 		</graphicData>
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
+			<comps>
+			<li Class="TiberiumRim.CompProperties_FX">
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/BlossomTree/BlossomTreeBlue_overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</data>
+						<altitude>Item</altitude>
+						<mode>Pulse</mode>
+					    <pulse>
+							<mode>Opacity</mode>
+							<opacityRange>0.3~0.8</opacityRange>
+							<opacityDuration>120</opacityDuration>
+						</pulse>
+					</li>
+				</overlays>
+			</li>
+		</comps>
 		<tiberiumTypes>
 			<li>TiberiumPodBlue</li>
 		</tiberiumTypes>

@@ -6,6 +6,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 using StoryFramework;
+using Rect = UnityEngine.Rect;
 
 namespace TiberiumRim
 {
@@ -75,7 +76,11 @@ namespace TiberiumRim
                 //Reduce Content Rect
                 menuRect = new Rect(sideMargin, menuRect.y + topBotMargin, menuRect.width - sideMargin , menuRect.height - (topBotMargin * 2));
                 GUI.BeginGroup(menuRect);
-                    SelectFaction(3);
+                    FactionSideBar(3);
+                    Rect extraDes = new Rect(2, menuRect.height - 75, iconSize, iconSize);
+                    DrawDesignator(extraDes, new Designator_Deconstruct());
+                    extraDes.y = extraDes.yMax + 5;
+                    DrawDesignator(extraDes, new Designator_Cancel());
                     Rect DesignatorRect = new Rect(iconSize + sideMargin, 0f, menuRect.width - (iconSize + sideMargin), menuRect.height);
                     GUI.BeginGroup(DesignatorRect);
                         var cats = SelectedFaction.subCategories;
@@ -221,7 +226,15 @@ namespace TiberiumRim
             }
         }
 
-        private void SelectFaction(float yPos)
+        private void DrawDesignator(Rect rect, Designator designator)
+        {
+            if (Widgets.ButtonImage(rect, designator.icon))
+            {
+                designator.ProcessInput(null);
+            }
+        }
+
+        private void FactionSideBar(float yPos)
         {
             List<FactionDesignationDef> list = TRThingDefList.FactionDesignations.Where(CanSelect).ToList();
             for (int i = 0; i < list.Count; i++)

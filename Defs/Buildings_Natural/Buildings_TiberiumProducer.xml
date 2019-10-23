@@ -18,6 +18,23 @@
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_FX">
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/BigTiberiumCraterGreen/main_overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<altitude>Item</altitude>
+						<mode>Pulse</mode>
+					    <pulse>
+							<mode>Opacity</mode>
+							<opacityRange>0.2~0.6</opacityRange>
+						</pulse>
+					</li>
+				</overlays>
 				<effecters>
 					<li>
 						<burstCount>1~2</burstCount>
@@ -99,6 +116,38 @@
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_FX">
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/BigTiberiumCraterGreen/green_overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<altitude>Item</altitude>
+						<mode>Pulse</mode>
+					    <pulse>
+							<mode>Opacity</mode>
+							<opacityRange>0.2~0.6</opacityRange>
+						</pulse>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/BigTiberiumCraterGreen/blue_overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<altitude>Item</altitude>
+						<mode>Pulse</mode>
+					    <pulse>
+							<mode>Opacity</mode>
+							<opacityRange>0.3~0.65</opacityRange>
+						</pulse>
+					</li>
+				</overlays>
 				<effecters>
 					<li>
 						<burstCount>1~2</burstCount>
@@ -281,6 +330,24 @@
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_FX">
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/BigTiberiumCraterBlue/main_overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<altitude>Item</altitude>
+						<mode>Pulse</mode>
+					    <pulse>
+							<mode>Opacity</mode>
+							<opacityRange>0.2~0.6</opacityRange>
+							<opacityDuration>100</opacityDuration>
+						</pulse>
+					</li>
+				</overlays>
 				<effecters>
 					<li>
 						<burstCount>2~3</burstCount>
@@ -454,6 +521,21 @@
 						</data>				
 						<altitude>BuildingOnTop</altitude>
 					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/TiberiumCruentus/Cruentus_Overglow2</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<altitude>Item</altitude>
+						<mode>Pulse</mode>
+					    <pulse>
+							<mode>Opacity</mode>
+							<opacityRange>0.2~0.6</opacityRange>
+						</pulse>
+					</li>
 				</overlays>
 				<effecters>
 					<li>
@@ -603,6 +685,36 @@
 							<drawSize>(5,5)</drawSize>
 						</data>				
 						<altitude>BuildingOnTop</altitude>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/RedTiberiumShard/base_overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<altitude>Item</altitude>
+						<mode>Pulse</mode>
+					    <pulse>
+							<mode>Opacity</mode>
+							<opacityRange>0.2~0.6</opacityRange>
+						</pulse>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/RedTiberiumShard/top_overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<altitude>Item</altitude>
+						<mode>Pulse</mode>
+					    <pulse>
+							<mode>Opacity</mode>
+							<opacityRange>0.3~0.65</opacityRange>
+						</pulse>
 					</li>
 				</overlays>
 			</li>

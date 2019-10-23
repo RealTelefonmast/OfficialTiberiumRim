@@ -8,7 +8,7 @@ using RimWorld;
 
 namespace TiberiumRim
 {
-    public class TiberiumPawn : FXPawn
+    public class TiberiumPawn : FXPawn, IPawnWithParent
     {
         public new TiberiumKindDef kindDef;
         public TiberiumProducer boundProducer;
@@ -43,5 +43,9 @@ namespace TiberiumRim
 
             return stuff;
         }
+
+        public List<IntVec3> Field { get; }
+        public ThingWithComps Parent { get; }
+        public bool CanWander { get; }
     }
 }

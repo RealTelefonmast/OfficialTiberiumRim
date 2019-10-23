@@ -106,17 +106,11 @@ namespace TiberiumRim
         {
             base.Tick();
             if (this.Downed)
-            {
                 this.Kill(null);
-            }
             if (waitingTicks > 0)
-            {
                 waitingTicks--;
-            }
             if (MainRefineryLost)
-            {
                 UpdateRefineries();
-            }
         }
 
         public override Color[] ColorOverrides => new Color[] { Container.Color };
@@ -231,19 +225,16 @@ namespace TiberiumRim
         {
             get
             {
-                if (!Drafted)
+                if (Drafted) return HarvesterPriority.None;
+                if (!IsWating && !ForcedReturn && !Unloading && !Container.CapacityFull && TiberiumForModeAvailable)
                 {
-                    if (!IsWating && !ForcedReturn && !Unloading && !Container.CapacityFull && TiberiumForModeAvailable)
-                    {
-                        return HarvesterPriority.Harvest;
-                    }
-                    if (Container.StoredPercent > 0 && CanUnload)
-                    {
-                        return HarvesterPriority.Unload;
-                    }
-                    return HarvesterPriority.Idle;
+                    return HarvesterPriority.Harvest;
                 }
-                return HarvesterPriority.None;
+                if (Container.StoredPercent > 0 && CanUnload)
+                {
+                    return HarvesterPriority.Unload;
+                }
+                return HarvesterPriority.Idle;
             }
         }
 
