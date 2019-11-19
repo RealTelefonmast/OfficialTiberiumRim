@@ -162,7 +162,6 @@ namespace TiberiumRim
 
         public static List<BodyPartRecord> ChildParts(this BodyPartRecord record, bool withParent)
         {
-            Log.Message("Parent part: " + record);
             var parts = new List<BodyPartRecord>();
             if (record == null) return null;
             if(withParent) parts.Add(record);
@@ -242,33 +241,28 @@ namespace TiberiumRim
             return damageFactor > 0f;
         }
 
-        public static void TryAffectPawn(Pawn pawn, bool isGas, int perTicks)
+        public static void TryAffectPawn(Pawn pawn, TiberiumCrystal crystal, bool isGas, int perTicks)
         {
             Log.Message("Trying to affect " + pawn);
+            //Getting the initial infection value
             float numCryst = 0.001f;
+            numCryst *= isGas ? 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumGasResistance) : 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumInfectionResistance);
+
             float numRad = 0.00013f * perTicks;
-            Comp_TRHealthCheck tibCheck = pawn.GetComp<Comp_TRHealthCheck>();
-            List<BodyPartRecord> PossibleBodyParts = new List<BodyPartRecord>();
-            BodyPartRecord selectedPart = null;
-            if (isGas)
-            {
-                PossibleBodyParts = tibCheck.partsForGas;
-                numCryst *= 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumGasResistance);
-            }
-            else
-            {
-                PossibleBodyParts = tibCheck.partsForInfection;
-                numCryst *= 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumInfectionResistance);
-            }
             numRad *= 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumRadiationResistance);
             Log.Message("Infection Value: " + numCryst + " Radiation Value: " + numRad);
-            if (PossibleBodyParts.NullOrEmpty()) return;
-            selectedPart = PossibleBodyParts.RandomElement();
-            //GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.TiberiumExposure);
+            if (crystal.def.tiberium.radiates)
+                TryIrradiate(pawn, numRad);
 
-            TryIrradiate(pawn, numRad);
+            bool shouldInfect = (crystal?.def.IsInfective ?? false || isGas) && numCryst > 0;
+            if (!shouldInfect || !TRUtils.Chance(InfectionChance(pawn, isGas))) return;
+            Comp_TRHealthCheck tibCheck = pawn.GetComp<Comp_TRHealthCheck>();
+            List<BodyPartRecord> PossibleBodyParts = isGas ? PossibleBodyParts = tibCheck.partsForGas : PossibleBodyParts = tibCheck.partsForInfection;
+            BodyPartRecord selectedPart = PossibleBodyParts.RandomElement();
+
+            //GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.TiberiumExposure);
             if (TryFormVisceralPod(pawn, numCryst)) return;
-            if (numCryst > 0 && TRUtils.Chance(InfectionChance(pawn, isGas)) && TouchedCrystal(pawn, selectedPart))
+            if (TouchedCrystal(pawn, selectedPart))
                 TryInfect(pawn, selectedPart, numCryst);
         }
 
@@ -296,7 +290,7 @@ namespace TiberiumRim
 
             chance += 0.125f * pawn.CellsAdjacent8WayAndInside().Count(c => c.InBounds(pawn.Map) && c.GetTiberium(pawn.Map) != null);
             chance = Mathf.Clamp01(chance);
-            chance *= pawn.health.hediffSet.GetFirstHediffOfDef(TRHediffDefOf.TiberiumExposure).Severity;
+            chance *= pawn.health.hediffSet.GetFirstHediffOfDef(TRHediffDefOf.TiberiumExposure)?.Severity ?? 0f;
             chance *= 0.05f;
             chance *= num;
             Log.Message("Visceral Pod Chance: " + chance);

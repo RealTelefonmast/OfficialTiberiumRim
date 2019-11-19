@@ -18,6 +18,9 @@
 				<li>HiTechResearchBench</li>
 			</targets>
 		</targetSettings>
+		<images>
+			<li>Story/Mission1/M1_Research</li>
+		</images>
 		<workAmount>750</workAmount>
 	</StoryFramework.ObjectiveDef>
 	
@@ -31,6 +34,9 @@
 				<li>Telescope_TR</li>
 			</targets>
 		</targetSettings>
+		<images>
+			<li>Story/Mission1/M1_Construct</li>
+		</images>
 	</StoryFramework.ObjectiveDef>
 	
 	<StoryFramework.ObjectiveDef>
@@ -47,30 +53,12 @@
 			</targets>
 		</targetSettings>
 		<result>				
-			<letterLabel>Meteor crashed!</letterLabel>
-			<letterDesc>The strange object has crashed directly onto our map, we might want to investigate it closer...</letterDesc>
-			<type>Skyfaller</type>
-			<positionFilter>
-				<terrainToAvoid>
-					<li>WaterDeep</li>
-					<li>WaterOceanDeep</li>
-					<li>WaterMovingChestDeep</li>
-					<li>WaterShallow</li>
-					<li>WaterOceanShallow</li>
-					<li>WaterMovingShallow</li>
-					<li>Marsh</li>
-				</terrainToAvoid>
-			</positionFilter>
-			<spawnSettings>
-				<mode>Scatter</mode>
-				<singleChance>true</singleChance>
-				<skyfallers>
-					<GreenTiberiumMeteorIncoming>TiberiumCraterGreen,1,0.66</GreenTiberiumMeteorIncoming>
-					<GreenTiberiumMeteorIncoming>TiberiumCraterHybrid,1,0.33</GreenTiberiumMeteorIncoming>
-					<RedTiberiumShardIncoming>RedTiberiumShard,1,0.01</RedTiberiumShardIncoming>
-				</skyfallers>
-			</spawnSettings>
+			<type>CustomWorker</type>
+			<workerClass>TiberiumRim.IncidentWorker_TiberiumArrival</workerClass>
 		</result>
+		<images>
+			<li>Story/Mission1/M1_Observe</li>
+		</images>
 		<workAmount>1150</workAmount>
 	</StoryFramework.ObjectiveDef>
 	
@@ -90,6 +78,9 @@
 				<li>RedTiberiumShard,10</li>
 			</targets>
 		</targetSettings>
+		<images>
+			<li>Story/Mission2/M2_Observe</li>
+		</images>
 		<workAmount>450</workAmount>
 	</StoryFramework.ObjectiveDef>
 	
@@ -106,6 +97,9 @@
 				<li>CommsConsole</li>
 			</targets>
 		</targetSettings>
+		<images>
+			<li>Story/Mission2/M2_Comm</li>
+		</images>
 		<workAmount>1000</workAmount>
 	</StoryFramework.ObjectiveDef>
 	
@@ -119,6 +113,9 @@
 				<li>TiberiumResearchCrane</li>
 			</targets>
 		</targetSettings>
+		<images>
+			<li>Story/Mission2/M2_Isolation</li>
+		</images>
 	</StoryFramework.ObjectiveDef>
 	
 	<StoryFramework.ObjectiveDef>

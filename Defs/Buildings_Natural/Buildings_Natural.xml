@@ -132,6 +132,26 @@
 	
 	<!--Natural formations-->
 	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>GenesisPit</defName>
+		<label>genesis pit</label>
+		<description>Let there be glow.</description>
+		<statBases>
+			<MaxHitPoints>20000</MaxHitPoints>
+			<Beauty>999</Beauty>
+		</statBases>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawRotated>false</drawRotated>
+			<shaderType>Transparent</shaderType>
+			<texPath>Buildings/Natural/GenesisPit</texPath>
+			<drawSize>(12,12)</drawSize>
+		</graphicData>
+		<altitudeLayer>Floor</altitudeLayer>
+		<size>(8,8)</size>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>TiberiumTower_TBI</defName>
 		<description>A massive crystalline tower, created via multiple Tiberium crystals merging into one bigger crystal. However, this structure does not seem to spread more Tiberium.</description>
 		<label>tiberium tower</label>

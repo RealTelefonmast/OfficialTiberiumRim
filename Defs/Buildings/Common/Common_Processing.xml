@@ -24,7 +24,7 @@
 		</statBases>
 		<size>(4,4)</size>
 		<costList>
-			<Steel>500</Steel>
+			<Steel>300</Steel>
 			<ComponentIndustrial>15</ComponentIndustrial>
 		</costList>
 		<comps>
@@ -74,6 +74,80 @@
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_Once</li>
 		</placeWorkers>
+		<modExtensions>
+			<li Class="StoryFramework.StoryThingDefExtension">
+				<objectiveRequisites>
+					<li>M2_KnowledgeResearch</li>
+				</objectiveRequisites>
+				<OnStart>false</OnStart>
+			</li>
+		</modExtensions>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>NetworkNode</defName>
+		<label>Node</label>
+		<description>.</description>
+		<thingClass>Building</thingClass>
+		<thingCategories Inherit="false" />
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Processing</TRCategory>
+		<graphicData>
+			<texPath>Buildings/Common/Network/Node/Node</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.25,4.5)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToBuild>1000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-5</Beauty>
+		</statBases>
+		<size>(2,4)</size>
+		<costList>
+			<Steel>100</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TNW">
+				<compClass>TiberiumRim.CompTNW_Node</compClass>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Network/Node/Overlay1</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,4.5)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+						<needsPower>false</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Network/Node/Overlay2</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,4.5)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>100</basePowerConsumption>
+			</li>
+		</comps>
+		<rotatable>true</rotatable>
+		<tickerType>Never</tickerType>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>	
+		<fillPercent>1</fillPercent>			
+		<surfaceType>Item</surfaceType>
 		<modExtensions>
 			<li Class="StoryFramework.StoryThingDefExtension">
 				<objectiveRequisites>
@@ -135,6 +209,7 @@
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<surfaceType>Item</surfaceType>
 		<clearBuildingArea>false</clearBuildingArea>
+		<needsBlueprint>true</needsBlueprint>
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_Pipe</li>
 		</placeWorkers>
@@ -149,7 +224,7 @@
 		<description>Stores Tiberium and distributes it to other Tiberium structures when necessary.</description>
 		<size>(4,4)</size>
 		<costList>
-			<Steel>500</Steel>
+			<Steel>150</Steel>
 		</costList>
 		<graphicData>
 			<texPath>Buildings/Common/Network/GasTank/GasTank</texPath>
@@ -223,7 +298,7 @@
 		<TRCategory>Processing</TRCategory>
 		<size>(3,3)</size>
 		<costList>
-			<Steel>250</Steel>
+			<Steel>100</Steel>
 		</costList>
 		<graphicData>
 			<texPath>Buildings/Common/Network/Silo/Silo</texPath>
@@ -299,15 +374,18 @@
 		</statBases>
 		<costList>
 			<Steel>200</Steel>
-			<Plasteel>10</Plasteel>
-			<Uranium>25</Uranium>
-			<ComponentIndustrial>4</ComponentIndustrial>
+			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>
 		<comps>
 			<li Class="TiberiumRim.RefineryProperties">
 				<harvester>Harvester_Common</harvester>
 				<maxStorage>1000</maxStorage>
 				<tnwbMode>Producer</tnwbMode>
+			</li>
+			<li Class="TiberiumRim.CompProperties_MechStation">
+				<mechRecipes>
+					<li>MakeHarvesterCommon</li>
+				</mechRecipes>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -330,6 +408,9 @@
 				</overlays>
 			</li>
 		</comps>
+		<inspectorTabs>
+			<li>TiberiumRim.ITab_MechConstruction</li>
+		</inspectorTabs>
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_Gap</li>
 		</placeWorkers>
@@ -394,7 +475,7 @@
 		<tickerType>Normal</tickerType>
 		<size>(2,2)</size>
 		<costList>
-			<Steel>500</Steel>
+			<Steel>400</Steel>
 			<Plasteel>100</Plasteel>
 			<ComponentIndustrial>30</ComponentIndustrial>
 		</costList>
@@ -482,7 +563,7 @@
 		<tickerType>Normal</tickerType>
 		<size>(4,4)</size>
 		<costList>
-			<Steel>500</Steel>
+			<Steel>250</Steel>
 			<Uranium>50</Uranium>
 			<Plasteel>25</Plasteel>
 			<ComponentIndustrial>5</ComponentIndustrial>
@@ -581,7 +662,7 @@
 		</statBases>
 		<size>(4,3)</size>
 		<costList>
-			<Steel>250</Steel>
+			<Steel>150</Steel>
 			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>
 		<castEdgeShadows>false</castEdgeShadows>
@@ -664,9 +745,8 @@
 		</statBases>
 		<size>(3,3)</size>
 		<costList>
-			<Uranium>10</Uranium>
-			<Plasteel>10</Plasteel>
-			<Steel>200</Steel>
+			<Plasteel>25</Plasteel>
+			<Steel>150</Steel>
 			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>
 		<comps>

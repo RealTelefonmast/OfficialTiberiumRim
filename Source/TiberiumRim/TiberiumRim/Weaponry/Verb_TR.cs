@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Verse;
 using RimWorld;
+using UnityEngine;
 
 namespace TiberiumRim
 {
@@ -13,7 +14,7 @@ namespace TiberiumRim
 
         public VerbProperties_TR Props => (VerbProperties_TR)base.verbProps;
 
-        public bool IsLaser => Props.defaultProjectile.thingClass == typeof(Projectile_Beam);
+        public bool IsBeam => Props.laser != null;
 
         protected override int ShotsPerBurst => this.verbProps.burstShotCount;
 
@@ -31,7 +32,15 @@ namespace TiberiumRim
             {
                 return Props.tiberiumCostPerShot.CanPay(TiberiumComp.Container);
             }
-            return base.Available();
+            if (base.CasterIsPawn)
+            {
+                Pawn casterPawn = base.CasterPawn;
+                if (casterPawn.Faction != Faction.OfPlayer && casterPawn.mindState.MeleeThreatStillThreat && casterPawn.mindState.meleeThreat.Position.AdjacentTo8WayOrInside(casterPawn.Position))
+                {
+                    return false;
+                }
+            }
+            return IsBeam ? true : this.Projectile != null;
         }
 
         public override void WarmupComplete()
@@ -45,6 +54,10 @@ namespace TiberiumRim
 
         protected override bool TryCastShot()
         {
+            if (IsBeam)
+            {
+                return TryCastBeam();
+            }
             bool flag = base.TryCastShot();
             if(flag && Props.tiberiumCostPerShot != null)
             {
@@ -60,9 +73,15 @@ namespace TiberiumRim
             return flag;
         }
 
-        public bool TryCastLaser()
+        public bool TryCastProjectile()
         {
-            return true;
+            return base.TryCastShot();
+        }
+
+        public virtual bool TryCastBeam()
+        {
+            Log.Error("Trying to cast beam without using Verb_Beam");
+            return false;
         }
 
         public bool TryCastTiberium()
@@ -74,9 +93,11 @@ namespace TiberiumRim
 
     public class VerbProperties_TR : VerbProperties
     {
+        public List<Vector3> originOffsets;
         public TiberiumCost tiberiumCostPerBurst;
         public TiberiumCost tiberiumCostPerShot;
-        public ThingDef beamMote = TiberiumDefOf.BeamMote;
         public float powerConsumption = 0;
+
+        public LaserProperties laser;
     }
 }

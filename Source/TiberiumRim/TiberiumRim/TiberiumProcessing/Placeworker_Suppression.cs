@@ -15,7 +15,11 @@ namespace TiberiumRim
             var props = def.GetCompProperties<CompProperties_Suppression>();
             if(props == null)
                 return;
-            GenDraw.DrawFieldEdges(TRUtils.SectorCells(center, Find.CurrentMap, props.radius, props.angle, rot.AsAngle), Color.cyan);
+            Map map = Find.CurrentMap;
+            GenDraw.DrawFieldEdges(TRUtils.SectorCells(center, map, props.radius, props.angle, rot.AsAngle), Color.cyan);
+            var otherCells = map.GetComponent<MapComponent_Suppression>().Suppressors.SelectMany(s => s.Key.Cells).ToList();
+            GenDraw.DrawFieldEdges(otherCells, Color.gray);
+
         }
     }
 }

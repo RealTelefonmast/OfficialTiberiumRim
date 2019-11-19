@@ -11,6 +11,11 @@ namespace TiberiumRim
     {
         public Objective_ActivateGZ() { }
 
+        public Objective_ActivateGZ(Mission mission) : base(mission)
+        {
+        }
+
+
         public override void OnFinish()
         {
             Find.World.GetComponent<WorldComponent_Tiberium>().GroundZero.producer.researchDone = true;

@@ -85,8 +85,8 @@ namespace TiberiumRim
 
         //Motes
         public static ThingDef TiberiumSmokeMote;
-        public static ThingDef TiberiumContainerFog;
-        public static ThingDef BeamMote;
+        public static ThingDef TiberiumGas;
+        public static ThingDef LaserBeam;
 
         //StatDefs
         public static StatDef TiberiumInfectionResistance;

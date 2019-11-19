@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--===============  ==============-->
+	<DamageDef Name="ProjectileBase_TR" Abstract="True">
+		<workerClass>DamageWorker_AddInjury</workerClass>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} has been shot to death.</deathMessage>
+		<hediff>Gunshot</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Bullet</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+		<overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
+		<isRanged>true</isRanged>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+	</DamageDef>
+
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRRailgun</defName>
+		<label>Railgun Bullet</label>
+		<isExplosive>false</isExplosive>
+		<hediff>Shredded</hediff>
+		<makesBlood>true</makesBlood>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<minDamageToFragment>0</minDamageToFragment>
+		<defaultDamage>0</defaultDamage>
+		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
+		<explosionCellMote>TiberiumGas</explosionCellMote>
+		<explosionColorCenter>(0.75, 0.75, 0.75)</explosionColorCenter>
+		<explosionColorEdge>(0.25, 0.25, 0.25)</explosionColorEdge>
+		<soundExplosion>Blast_Rail</soundExplosion>
+		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
+	</DamageDef>
+  
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRLaser</defName>
+		<label>Laser beam</label>
+		<isExplosive>false</isExplosive>
+		<hediff>Burn</hediff>
+		<makesBlood>true</makesBlood>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<armorCategory>Heat</armorCategory>
+		<minDamageToFragment>0</minDamageToFragment>
+		<defaultDamage>0</defaultDamage>
+		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
+		<explosionCellMote>TiberiumGas</explosionCellMote>
+		<explosionColorCenter>(1, 0.25, 0.25)</explosionColorCenter>
+		<explosionColorEdge>(0.75, 0.1, 0.1)</explosionColorEdge>
+		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
+		<soundExplosion>Blast_Rail</soundExplosion>
+		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
+	</DamageDef>
+	
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRSonic</defName>
+		<label>sonic explosion</label>
+		<isExplosive>false</isExplosive>
+		<deathMessage>{0} has ripped apart by a sonic blast.</deathMessage>
+		<hediff>Crush</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<armorCategory>Blunt</armorCategory>
+		<minDamageToFragment>0</minDamageToFragment>
+		<defaultDamage>0</defaultDamage>
+		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
+		<explosionCellMote>Mote_BlastSound</explosionCellMote>
+		<explosionColorCenter>(0.4, 0.4, 0.4)</explosionColorCenter>
+		<explosionColorEdge>(0.1, 0.1, 0.1)</explosionColorEdge>
+		<combatLogRules>Damage_Bomb</combatLogRules>
+		<soundExplosion>Shot_GDI_Sonic</soundExplosion>
+		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TRTiberiumBomb</defName>
+		<label>Tiberium Bomb</label>
+		<externalViolence>true</externalViolence>
+		<isExplosive>true</isExplosive>
+		<deathMessage>{0} has died in the tiberium gas.</deathMessage>
+		<workerClass>DamageWorker_Flame</workerClass>
+		<hediff>Burn</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+		<minDamageToFragment>1</minDamageToFragment>
+		<defaultDamage>10</defaultDamage>
+		<defaultArmorPenetration>1.5</defaultArmorPenetration>
+		<defaultStoppingPower>2.0</defaultStoppingPower>
+		<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+		<explosionCellMote>Mote_Nuke</explosionCellMote>
+		<explosionColorCenter>(0.25, 1, 0.25)</explosionColorCenter>
+		<explosionColorEdge>(0.1, 0.5, 0.1)</explosionColorEdge>
+		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
+		<combatLogRules>Damage_Bomb</combatLogRules>
+		<soundExplosion>Shot_Nod_ChemBomb</soundExplosion>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+	</DamageDef>
+
+</Defs>

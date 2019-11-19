@@ -26,7 +26,7 @@
 		<defName>MutationBuff</defName>
 		<label>Symbiotic PLACEHOLDER</label>
 		<hediffClass>HediffWithComps</hediffClass>
-		<defaultLabelColor>(140, 156, 50)</defaultLabelColor>
+		<defaultLabelColor>(138, 229, 226)</defaultLabelColor>
 		<stages>
 		  <li>
 			  <capMods>
@@ -52,7 +52,7 @@
 		<defName>MutationDebuff</defName>
 		<label>Visceral PLACEHOLDER</label>
 		<hediffClass>HediffWithComps</hediffClass>
-		<defaultLabelColor>(138, 229, 226)</defaultLabelColor>
+		<defaultLabelColor>(140, 156, 50)</defaultLabelColor>
 		<stages>
 		  <li>
 			  <capMods>

@@ -24,7 +24,7 @@ namespace TiberiumRim
         {
             get
             {
-                ThingOwner owner = (SelThing as IThingHolder).GetDirectlyHeldThings();
+                ThingOwner owner = ((IThingHolder) SelThing).GetDirectlyHeldThings();
                 if (owner.NullOrEmpty()) return null;
                 return owner.First() as Pawn;
 

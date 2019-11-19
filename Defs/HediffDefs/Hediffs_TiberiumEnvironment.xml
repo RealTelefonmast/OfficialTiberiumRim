@@ -188,9 +188,22 @@
 				<painOffset>0.75</painOffset>
 			</li>
 			<li>
-				<minSeverity>0.5</minSeverity>
+				<minSeverity>0.25</minSeverity>
+				<label>crystallizing</label>
+				<partEfficiencyOffset>-0.25</partEfficiencyOffset>
+				<painOffset>0.5</painOffset>
+			</li>
+			<li>
+				<minSeverity>0.55</minSeverity>
+				<label>crystallizing</label>
+				<partEfficiencyOffset>-0.5</partEfficiencyOffset>
+				<painOffset>0.4</painOffset>
+			</li>
+			<li>
+				<minSeverity>0.75</minSeverity>
 				<label>crystallizing</label>
 				<painOffset>0.25</painOffset>
+				<partEfficiencyOffset>-0.75</partEfficiencyOffset>
 				<lifeThreatening>true</lifeThreatening>
 			</li>
 			<li>

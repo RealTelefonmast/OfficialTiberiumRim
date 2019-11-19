@@ -48,21 +48,20 @@
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 	</ThingDef>
 	
-	<!-- 
-	<ThingDef ParentName="ResourceBase">
+	<ThingDef ParentName="ResourceBase_TR">
 		<defName>GDI_SonicCore</defName>
-		<label>Sonic Energy Core (explosive)</label>
+		<label>Sonic Energy Core</label>
 		<description>Sonic technology is extremly experimental and needs special measures to be handled. This component serves as a core part in most sonic weaponry.</description>
 		<graphicData>
-			<texPath>Items/Core_Sonic</texPath>
+			<texPath>Items/Resource/Core_Sonic</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<soundInteract>Metal_Drop</soundInteract>
 		<soundDrop>Standard_Drop</soundDrop>
 		<stackLimit>25</stackLimit>
 		<statBases>
-			<MaxHitPoints>175</MaxHitPoints>
-			<MarketValue>2500</MarketValue>
+			<MaxHitPoints>150</MaxHitPoints>
+			<MarketValue>350</MarketValue>
 			<Mass>0.4</Mass>
 			<Flammability>0.75</Flammability>
 			<DeteriorationRate>0.90</DeteriorationRate>
@@ -75,7 +74,7 @@
 		<comps>
 			<li Class="CompProperties_Explosive">
 				<explosiveRadius>2</explosiveRadius>
-				<explosiveDamageType>TRSound</explosiveDamageType>
+				<explosiveDamageType>TRSonic</explosiveDamageType>
 				<explosiveExpandPerStackcount>0.1</explosiveExpandPerStackcount>
 				<startWickHitPointsPercent>0.05</startWickHitPointsPercent>
 				<wickTicks>
@@ -86,6 +85,7 @@
 		</comps>
 	</ThingDef>
 	
+	<!--
 	<ThingDef ParentName="MakeableDrugPillBase">
 		<defName>Tiberblock</defName>
 		<label>Tiberblock</label>
@@ -137,36 +137,7 @@
 			<li>Manufactured</li>
 		</thingCategories>
 	</ThingDef>
-	-->
-	
-	<ThingDef ParentName="ResourceBase_TR">
-		<defName>TRBattleChip</defName>
-		<label>battle control circuit</label>
-		<description>Our advanced weaponry, including mechanical units and high-tech turrets, require this circuit to operate.</description>
-		<graphicData>
-			<texPath>Items/Resource/BattleChip</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<soundInteract>Metal_Drop</soundInteract>
-		<soundDrop>Standard_Drop</soundDrop>
-		<stackLimit>25</stackLimit>
-		<statBases>
-			<MaxHitPoints>50</MaxHitPoints>
-			<MarketValue>250</MarketValue>
-			<Mass>0.25</Mass>
-			<Flammability>1</Flammability>
-			<DeteriorationRate>1.25</DeteriorationRate>
-		</statBases>
-		<tradeability>Sellable</tradeability>
-		<tradeTags>
-			<li>Exotic</li>
-		</tradeTags>
-		<thingCategories>
-			<li>Manufactured</li>
-		</thingCategories>
-	</ThingDef>
-	
-	<!-- 
+
 	<ThingDef ParentName="ResourceBase">
 		<defName>JuggernautShell_Explosive</defName>
 		<label>Juggernaut shells (explosive)</label>
@@ -226,13 +197,6 @@
 			<li>JuggernautShells</li>
 		</thingCategories>		
 	</ThingDef>
-	
 	-->
-	<ThingCategoryDef>
-		<defName>JuggernautShells</defName>
-		<label>juggernaut shells</label>
-		<parent>Manufactured</parent>
-		<iconPath>UI/Icons/ThingCategories/MortarShells</iconPath>
-	</ThingCategoryDef>
 	
 </Defs>

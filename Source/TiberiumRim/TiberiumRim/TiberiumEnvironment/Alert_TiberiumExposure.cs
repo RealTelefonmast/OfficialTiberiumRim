@@ -8,7 +8,11 @@ using RimWorld;
 
 namespace TiberiumRim
 {
-    public class Alert_TiberiumExposure
+    public class Alert_TiberiumExposure : Alert
     {
+        public override AlertReport GetReport()
+        {
+            return false;
+        }
     }
 }

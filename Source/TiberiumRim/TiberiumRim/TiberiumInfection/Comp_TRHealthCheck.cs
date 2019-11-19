@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Verse;
 using RimWorld;
+using UnityEngine;
 
 namespace TiberiumRim
 {
@@ -30,11 +31,31 @@ namespace TiberiumRim
             if (ticker <= 0)
             {
                 var tib = Pawn.Position.GetTiberium(Pawn.Map);
-                if (tib?.def.IsInfective ?? false)
-                    HediffUtils.TryAffectPawn(Pawn, false, 250);
+                if(tib != null)
+                    HediffUtils.TryAffectPawn(Pawn, tib, false, 250);
                 ticker = 250;
             }
             ticker--;
+        }
+
+        public override void CompTickRare()
+        {
+            base.CompTickRare();
+            if (Pawn.ParentHolder is Corpse corpse)
+            {
+                var tib = corpse.Position.GetTiberium(corpse.Map);
+                if (tib != null && tib is TiberiumVein vein)
+                    WrapCorpse(corpse, vein);
+            }
+        }
+
+        private VeinholeFood WrapCorpse(Corpse pawn, TiberiumVein vein)
+        {
+            ThingDef veinCorpse = pawn.InnerPawn.VeinCorpseDef();
+            VeinholeFood corpse = (VeinholeFood) ThingMaker.MakeThing(veinCorpse, null); 
+            GenSpawn.Spawn(corpse, pawn.Position, pawn.Map);
+            corpse.AddCorpse(pawn, vein.Parent as Veinhole);
+            return corpse;
         }
 
         public override void PostPostApplyDamage(DamageInfo dinfo, float totalDamageDealt)

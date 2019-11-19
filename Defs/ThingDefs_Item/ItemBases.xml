@@ -86,17 +86,17 @@
 		</comps>
 	</ThingDef>
 
-	<ThingDef Name="ApparelMakeableBase_TR" ParentName="ApparelBase_TR" Abstract="True">
+	<ThingDef Name="CommonApparel_TR" ParentName="ApparelBase_TR" Abstract="True">
 		<recipeMaker>
 			<workSpeedStat>TailoringSpeed</workSpeedStat>
 			<workSkill>Crafting</workSkill>
 			<effectWorking>Tailor</effectWorking>
 			<soundWorking>Recipe_Tailor</soundWorking>
+			<unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
 			<recipeUsers>
 				<li>ElectricTailoringBench</li>
 				<li>HandTailoringBench</li>
 			</recipeUsers>
-			<unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
 			<defaultIngredientFilter>
 				<categories>
 					<li>Root</li>
@@ -118,7 +118,7 @@
 		</thingCategories>
 	</ThingDef>
 
-	<ThingDef Name="HatMakeableBase_TR" ParentName="ApparelMakeableBase_TR" Abstract="True">
+	<ThingDef Name="HatMakeableBase_TR" ParentName="CommonApparel_TR" Abstract="True">
 		<thingCategories>
 			<li>Headgear</li>
 		</thingCategories>

@@ -62,12 +62,13 @@ namespace TiberiumRim
         {
             foreach (var def in DefDatabase<ThingDef>.AllDefs)
             {
-                var thingClass = def.thingClass;
-                if (thingClass.IsSubclassOf(typeof(Pawn)) || thingClass == typeof(Pawn))
-                {
-                    def.comps.Add(new CompProperties_TiberiumCheck());
-                    def.comps.Add(new CompProperties_CrystalDrawer());
-                }
+                if(def?.thingClass == null) continue;
+                Type thingClass = def.thingClass;
+                if (!thingClass.IsSubclassOf(typeof(Pawn)) && thingClass != typeof(Pawn)) continue;
+                if(def.comps == null)
+                    def.comps = new List<CompProperties>();
+                def.comps.Add(new CompProperties_TiberiumCheck());
+                def.comps.Add(new CompProperties_CrystalDrawer());
             }
         }
 
@@ -112,14 +113,17 @@ namespace TiberiumRim
                 //Log.Message("Patching " + DefDatabase<TRThingDef>.AllDefs.Count() + " items");
                 foreach (TRThingDef def in DefDatabase<TRThingDef>.AllDefs)
                 {
-                    if (def.factionDesignation == null) continue;
+                    if (def.factionDesignation == null && !def.needsBlueprint) continue;
                     TRThingDefList.Add(def);
                     ThingDef blueprint = TRUtils.MakeNewBluePrint(def, false, null);
-                    TRUtils.MakeNewFrame(def);
+                    ThingDef frame = TRUtils.MakeNewFrame(def);
+                    DefGenerator.AddImpliedDef<ThingDef>(blueprint);
+                    DefGenerator.AddImpliedDef<ThingDef>(frame);
                     if (def.Minifiable)
                     {
-                        TRUtils.MakeNewBluePrint(def, true, blueprint);
+                        ThingDef mini = TRUtils.MakeNewBluePrint(def, true, blueprint);
                     }
+                    DirectXmlCrossRefLoader.ResolveAllWantedCrossReferences(FailMode.Silent);
                 }
                 Log.Message("TRThingDefList - Faction Cats: " + TRThingDefList.Categorized.Keys.Count + " | TRThings: " + TRThingDefList.TotalCount);
             }

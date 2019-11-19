@@ -294,12 +294,20 @@ namespace TiberiumRim
                 {
                     sb.AppendLine("Waiting: " + waitingTicks.TicksToSeconds());
                 }
+
+                sb.AppendLine("Drafted: " + Drafted);
+                sb.AppendLine("Is Waiting: " + IsWating);
+                sb.AppendLine("Forced Return: " + ForcedReturn);
+                sb.AppendLine("Unloading: " + Unloading);
+                sb.AppendLine("Capacity Full: " + Container.CapacityFull);
+                sb.AppendLine("Tiberium f/mode Available: " + TiberiumForModeAvailable);
+                sb.AppendLine("Can Unload: " + CanUnload);
+
                 sb.AppendLine("Exact Storage: " + Container.TotalStorage);
                 sb.AppendLine("Should Harvest: " + ShouldHarvest);
                 sb.AppendLine("Should Unload: " + ShouldUnload);
                 sb.AppendLine("Should Idle: " + ShouldIdle);
                 sb.AppendLine("Mode: " + harvestMode);
-                sb.AppendLine("Tiberium f/mode Available: " + TiberiumForModeAvailable);
                 sb.AppendLine("Current Harvest Target: " + CurrentHarvestTarget);               
                 sb.AppendLine("Valid: " + TNWManager.ReservationManager.TargetValidFor(this) + " CanBeHarvested: " + CurrentHarvestTarget?.CanBeHarvestedBy(this) + " Spawned: " + CurrentHarvestTarget?.Spawned + " Destroyed: " + CurrentHarvestTarget?.Destroyed);
             }
@@ -313,69 +321,67 @@ namespace TiberiumRim
                 yield return g;
             }
 
-            if (this.Faction == Faction.OfPlayer)
+            if (this.Faction != Faction.OfPlayer) yield break;
+
+            if (DebugSettings.godMode)
             {
-                foreach (Gizmo g in Container.GetGizmos())
-                {
-                    yield return g;
-                }
 
-                yield return new Command_Action
-                {
-                    defaultLabel = "TR_HarvesterMode".Translate(),
-                    defaultDesc = "TR_HarvesterModeDesc".Translate(),
-                    icon = TextureForMode,
-                    action = delegate
-                    {
-                        List<FloatMenuOption> list = new List<FloatMenuOption>();
-                        list.Add(new FloatMenuOption("TRHMode_Nearest".Translate(), delegate ()
-                        {
-                            harvestMode = HarvestMode.Nearest;
-                        }));
-                        list.Add(new FloatMenuOption("TRHMode_Valuable".Translate(), delegate ()
-                        {
-                            harvestMode = HarvestMode.Value;
-                        }));
-                        list.Add(new FloatMenuOption("TRHMode_Moss".Translate(), delegate ()
-                        {
-                            harvestMode = HarvestMode.Moss;
-                        }));
-                        FloatMenu menu = new FloatMenu(list);
-                        menu.vanishIfMouseDistant = true;
-                        Find.WindowStack.Add(menu);
-                    },
-                };
-
-                yield return new Command_Action
-                {
-                    defaultLabel = forceReturn ? "TR_HarvesterHarvest".Translate() : "TR_HarvesterReturn".Translate(),
-                    defaultDesc = "TR_Harvester_ReturnDesc".Translate(),
-                    icon = forceReturn ? TiberiumContent.HarvesterHarvest : TiberiumContent.HarvesterReturn,
-                    action = delegate
-                    {
-                        forceReturn = !forceReturn;
-                        this.jobs.EndCurrentJob(JobCondition.InterruptForced);
-                    },
-                };
-
-                yield return new Command_Target
-                {
-                    defaultLabel = "TR_HarvesterRefinery".Translate(),
-                    defaultDesc = "TR_HarvesterRefineryDesc".Translate(),
-                    icon = TiberiumContent.HarvesterRefinery,
-                    targetingParams = RefineryTargetInfo.ForHarvester(),
-                    action = delegate (Thing thing)
-                    {
-                        if(thing != null)
-                        {
-                            if (thing is Building b && thing.TryGetComp<CompTNW_Refinery>() != null)
-                            {
-                                UpdateRefineries(b);                             
-                            }
-                        }
-                    },
-                };
             }
+
+            foreach (Gizmo g in Container.GetGizmos())
+            {
+                yield return g;
+            }
+
+            yield return new Command_Action
+            {
+                defaultLabel = "TR_HarvesterMode".Translate(),
+                defaultDesc = "TR_HarvesterModeDesc".Translate(),
+                icon = TextureForMode,
+                action = delegate
+                {
+                    List<FloatMenuOption> list = new List<FloatMenuOption>();
+                    list.Add(new FloatMenuOption("TRHMode_Nearest".Translate(),
+                        delegate() { harvestMode = HarvestMode.Nearest; }));
+                    list.Add(new FloatMenuOption("TRHMode_Valuable".Translate(),
+                        delegate() { harvestMode = HarvestMode.Value; }));
+                    list.Add(new FloatMenuOption("TRHMode_Moss".Translate(),
+                        delegate() { harvestMode = HarvestMode.Moss; }));
+                    FloatMenu menu = new FloatMenu(list);
+                    menu.vanishIfMouseDistant = true;
+                    Find.WindowStack.Add(menu);
+                },
+            };
+
+            yield return new Command_Action
+            {
+                defaultLabel = forceReturn ? "TR_HarvesterHarvest".Translate() : "TR_HarvesterReturn".Translate(),
+                defaultDesc = "TR_Harvester_ReturnDesc".Translate(),
+                icon = forceReturn ? TiberiumContent.HarvesterHarvest : TiberiumContent.HarvesterReturn,
+                action = delegate
+                {
+                    forceReturn = !forceReturn;
+                    this.jobs.EndCurrentJob(JobCondition.InterruptForced);
+                },
+            };
+
+            yield return new Command_Target
+            {
+                defaultLabel = "TR_HarvesterRefinery".Translate(),
+                defaultDesc = "TR_HarvesterRefineryDesc".Translate(),
+                icon = TiberiumContent.HarvesterRefinery,
+                targetingParams = RefineryTargetInfo.ForHarvester(),
+                action = delegate(Thing thing)
+                {
+                    if (thing != null)
+                    {
+                        if (thing is Building b && thing.TryGetComp<CompTNW_Refinery>() != null)
+                        {
+                            UpdateRefineries(b);
+                        }
+                    }
+                },
+            };
         }
     }
 }

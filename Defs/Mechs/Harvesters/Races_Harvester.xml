@@ -27,13 +27,39 @@
 		</statBases>
 	</ThingDef>
 	
+	<ThingDef ParentName="HarvesterBase">
+		<defName>Harvester_GDI</defName>
+		<label>GDI harvester</label>	
+		<description>A standart Tiberium harvester, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 		
+				<overlays>
+					<li>
+						<data>
+							<texPath>Pawns/GDI/Harvester/OL</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+					</li>
+				</overlays>			
+			</li>
+		</comps>
+		<statBases>
+			<MoveSpeed>1.33</MoveSpeed>
+			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
+		</statBases>
+	</ThingDef>
+	
 	<TiberiumRim.FXThingDef ParentName="BuildingBase_TR">
 		<defName>HarvesterHusk_Common</defName>
 		<label>Harvester husk</label>
 		<description>The remains of a destroyed harvester.</description>
 		<altitudeLayer>Building</altitudeLayer>
 		<graphicData>
-			<texPath>Pawns/Common/Harvester/HarvesterCommon_Destroyed</texPath>
+			<texPath>Pawns/Common/Harvester/Harvester_Destroyed</texPath>
 			<drawRotated>false</drawRotated>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(3,3)</drawSize>

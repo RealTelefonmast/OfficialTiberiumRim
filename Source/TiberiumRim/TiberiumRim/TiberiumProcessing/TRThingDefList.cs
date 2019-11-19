@@ -43,6 +43,13 @@ namespace TiberiumRim
         {
             if (def.hidden) return;
             AllDefs.Add(def);
+            if (def.factionDesignation == null || def.TRCategory == null)
+            {
+                Log.Error("REEE YOU FORGOT DESIGNATION AT " + def.defName);
+                def.factionDesignation = FactionDesignationDefOf.Tiberium;
+                def.TRCategory = TRCategoryDefOf.Invalid;
+                return;
+            }
             if (!Categorized[def.factionDesignation][def.TRCategory].Contains(def))
             {
                 Categorized[def.factionDesignation][def.TRCategory].Add(def);
@@ -74,6 +81,7 @@ namespace TiberiumRim
         public static TRThingCategoryDef Misc;
         public static TRThingCategoryDef Producers;
         public static TRThingCategoryDef Crystals;
+        public static TRThingCategoryDef Invalid;
 
     }
 }

@@ -98,18 +98,19 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="MoteBase_TR">
-		<defName>TiberiumContainerFog</defName>
+		<defName>TiberiumGas</defName>
+		<drawOffscreen>true</drawOffscreen>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<graphicData>
 			<texPath>Motes/TiberiumGas</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>(1.5,1.5)</drawSize>
 		</graphicData>
-		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<mote>
-			<fadeInTime>5</fadeInTime>
-			<solidTime>15</solidTime>
-			<fadeOutTime>10</fadeOutTime>
-			<growthRate>0.01</growthRate>
+			<fadeInTime>0.5</fadeInTime>
+			<solidTime>0.25</solidTime>
+			<fadeOutTime>0.5</fadeOutTime>
+			<growthRate>1.75</growthRate>
 		</mote>
 	</ThingDef>
 	

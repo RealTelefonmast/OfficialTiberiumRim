@@ -64,7 +64,7 @@ namespace TiberiumRim
             {
                 if ((mode == DestroyMode.Deconstruct || mode == DestroyMode.Refund) && Props.dropsContents)
                 {
-                    PortableContainer container = ThingMaker.MakeThing(TiberiumDefOf.PortableContainer) as PortableContainer;
+                    PortableContainer container = (PortableContainer)ThingMaker.MakeThing(TiberiumDefOf.PortableContainer);
                     container.PostSetup(Container);
                     GenSpawn.Spawn(container, parent.Position, previousMap);
                 }
@@ -110,20 +110,18 @@ namespace TiberiumRim
         public override void CompTick()
         {
             base.CompTick();
-            if (CompPower?.PowerOn ?? true && Network.IsWorking)
+            if (!(CompPower?.PowerOn ?? true && Network.IsWorking)) return;
+            switch (NetworkMode)
             {
-                switch (NetworkMode)
-                {
-                    case TNWMode.Storage:
-                        ShareTick();
-                        break;
-                    case TNWMode.Consumer:
-                        ConsumeTick();
-                        break;
-                    case TNWMode.Producer:
-                        ProduceTick();
-                        break;
-                }
+                case TNWMode.Storage:
+                    ShareTick();
+                    break;
+                case TNWMode.Consumer:
+                    ConsumeTick();
+                    break;
+                case TNWMode.Producer:
+                    ProduceTick();
+                    break;
             }
         }
 
@@ -169,6 +167,7 @@ namespace TiberiumRim
             }
         }
 
+        public bool ShouldLeak => false;
         public bool HasConnection => StructureSet.Pipes.Any();
         public TNWMode NetworkMode => Props.tnwbMode;
         public CompProperties_TNW Props => (CompProperties_TNW)props;

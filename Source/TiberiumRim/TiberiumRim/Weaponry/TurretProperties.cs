@@ -10,7 +10,7 @@ namespace TiberiumRim
 {
     public class TurretProperties
     {
-        public List<ThingDef> turrets = new List<ThingDef>();
+        public List<TRThingDef> turrets = new List<TRThingDef>();
         public Vector3 drawOffset;
         public Vector3 barrelOffset;
 

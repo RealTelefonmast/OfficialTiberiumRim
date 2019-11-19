@@ -14,7 +14,7 @@
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
-					<texPath>Pawns/Common/Harvester/HarvesterCommon</texPath>
+					<texPath>Pawns/Common/Harvester/Harvester</texPath>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>3</drawSize>
 					<shadowData>
@@ -24,5 +24,30 @@
 			</li>
 		</lifeStages>
 	</TiberiumRim.HarvesterKindDef>
+
+	<TiberiumRim.HarvesterKindDef>
+		<defName>Harvester_GDI</defName>
+		<label>GDI harvester</label>
+		<combatPower>125</combatPower>
+		<defaultFactionType>PlayerColony</defaultFactionType>
+		<isFighter>false</isFighter>
+		<aiAvoidCover>false</aiAvoidCover>
+		<race>Harvester_GDI</race>
+		<maxStorage>200</maxStorage>
+		<wreckDef>HarvesterHusk_Common</wreckDef>		
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/GDI/Harvester/Harvester</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>3</drawSize>
+					<shadowData>
+						<volume>(0.4, 0.8, 0.4)</volume>
+					</shadowData>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.HarvesterKindDef>
+
 
 </Defs>

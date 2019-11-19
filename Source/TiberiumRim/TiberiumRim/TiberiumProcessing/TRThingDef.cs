@@ -10,12 +10,14 @@ namespace TiberiumRim
 {
     public class TRThingDef : FXThingDef
     {
-        public FactionDesignationDef factionDesignation;
-        public TRThingCategoryDef TRCategory;
+        public FactionDesignationDef factionDesignation = FactionDesignationDefOf.Tiberium;
+        public TRThingCategoryDef TRCategory = TRCategoryDefOf.Invalid;
         public GraphicData extraGraphicData;
         public TurretProperties turret;
+        public ProjectileProperties_Extended projectileExtended;
         public SuperWeaponProperties superWeapon;
         public TerrainDef makesTerrain;
+        public bool needsBlueprint = false;
         public bool hidden = false;
         public bool devObject = false;
         public bool destroyTiberium = false;

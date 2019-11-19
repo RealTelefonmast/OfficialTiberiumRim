@@ -7,11 +7,13 @@ using Verse;
 using RimWorld;
 
 namespace TiberiumRim
-{
+{ 
     public class TiberiumGeyser : TRBuilding
     {
         public TNW_TiberiumSpike tiberiumSpike;
         public Dictionary<IntVec3, Graphic> CurrentCracks = new Dictionary<IntVec3, Graphic>();
+        [Unsaved]
+        private List<IntVec3> positions = new List<IntVec3>();
 
         private int maxDepositValue = 0;
         private float depositValue = 0f;
@@ -29,21 +31,30 @@ namespace TiberiumRim
 
         private void SetupCracks()
         {
-            List<IntVec3> cells = GenRadial.RadialCellsAround(Position, 9.9f, false).ToList();
-            int i = 0;
-            while (CurrentCracks.Count < 12)
+            if (!positions.Any())
             {
-                IntVec3 cell = cells.RandomElement();
+                var cells = GenRadial.RadialCellsAround(Position, 9.9f, false);
+                for(int i = 0; i < 22; i++)
+                    positions.Add(cells.RandomElement());
+            }
+            for(int k = 0; k < positions.Count; k++)
+            {
+                var cell = positions[k];
                 if (!CurrentCracks.ContainsKey(cell) && !this.OccupiedRect().Contains(cell))
-                    CurrentCracks.Add(cell, (def.extraGraphicData.Graphic as Graphic_RandomSelection).GraphicAt(i)); i++;
+                {
+                    CurrentCracks.Add(cell, (def.extraGraphicData.Graphic as Graphic_RandomSelection).GraphicAt(k));
+                }
             }
         }
 
         public override void ExposeData()
         {
+            Log.Message("Exposing");
             base.ExposeData();
+            Scribe_Collections.Look(ref positions, "positions");
             Scribe_Values.Look(ref maxDepositValue, "maxDeposit");
             Scribe_Values.Look(ref depositValue, "depositValue");
+            Log.Message("Finished saving and loading");
         }
 
         public override void Tick()
@@ -58,14 +69,13 @@ namespace TiberiumRim
                         depositValue -= 1f - excess;
                     }
                 }
-
                 foreach (IntVec3 pos in CurrentCracks.Keys)
                 {
                     var pawn = pos.GetFirstPawn(Map);
                     if (pawn != null)
                     {
                         GenSpawn.Spawn(ThingDef.Named("Mote_TiberiumGeyser"), pos, Map);
-                        HediffUtils.TryAffectPawn(pawn, true, 1);
+                        HediffUtils.TryAffectPawn(pawn, null, true, 1);
                         depositValue -= Mathf.Clamp(TRUtils.Range(1, 4), 0, depositValue);
                     }
                 }

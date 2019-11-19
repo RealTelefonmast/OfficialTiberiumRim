@@ -40,7 +40,7 @@ namespace TiberiumRim
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-            GlowerSource source = (GlowerSource)GenSpawn.Spawn(ThingDef.Named("GlowerSource"), parent.Position + IntVec3.North, parent.Map);
+            GlowerSource source = (GlowerSource)GenSpawn.Spawn(ThingDef.Named("GlowerSource"), parent.Position + parent.Rotation.FacingCell, parent.Map);
             source.InitGlower(Props.glower);
         }
 

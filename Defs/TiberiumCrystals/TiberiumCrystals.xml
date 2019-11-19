@@ -390,6 +390,7 @@
 		<tiberium>
 			<type>Green</type>
 			<consistence>Plantlike</consistence>
+			<radiates>false</radiates>
 			<entityDamage>
 				<min>0</min>
 				<max>6</max>
@@ -441,6 +442,7 @@
 		<tiberium>
 			<type>Blue</type>
 			<consistence>Plantlike</consistence>
+			<radiates>false</radiates>
 			<entityDamage>
 				<min>0</min>
 				<max>6</max>
@@ -489,6 +491,7 @@
 		<tiberium>
 			<type>Sludge</type>
 			<consistence>Plantlike</consistence>
+			<infects>false</infects>
 			<entityDamage>
 				<min>2</min>
 				<max>5</max>
@@ -537,6 +540,7 @@
 		<tiberium>
 			<type>Sludge</type>
 			<consistence>Plantlike</consistence>
+			<infects>false</infects>
 			<entityDamage>
 				<min>3</min>
 				<max>7</max>
@@ -672,6 +676,8 @@
 		<tiberium>
 			<type>Gas</type>
 			<consistence>Fleshy</consistence>
+			<infects>false</infects>
+			<radiates>false</radiates>
 			<entityDamage>
 				<min>3</min>
 				<max>9</max>

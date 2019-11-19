@@ -1,6 +1,134 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+	<ThinkTreeDef Name="MechWorkerMain">
+		<defName>MechWorkerMain</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+
+				<li Class="ThinkNode_Subtree">
+					<treeDef>Downed</treeDef>
+				</li>
+				<li Class="ThinkNode_Subtree">
+					<treeDef>BurningResponse</treeDef>
+				</li>
+
+				<!-- React to close melee threat -->
+				<li Class="JobGiver_ReactToCloseMeleeThreat" />
+
+				<!-- Insertion hook for modders 
+				<li Class="ThinkNode_SubtreesByTag">
+					<insertTag>Humanlike_PostMentalState</insertTag>
+				</li>
+				-->
+				
+				<!-- Do a queued job -->
+				<li Class="ThinkNode_QueuedJob" />
+
+				<!-- Wait if drafted -->
+				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+					<subNodes>
+						<li Class="ThinkNode_Tagger">
+							<tagToGive>DraftedOrder</tagToGive>
+							<subNodes>
+								<li Class="JobGiver_MoveToStandable" />
+								<li Class="JobGiver_Orders" />
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+
+				<!-- Lord directives (high priority) -->
+				<li Class="ThinkNode_JoinVoluntarilyJoinableLord">
+					<dutyHook>HighPriority</dutyHook>
+						<subNodes>
+						<li Class="ThinkNode_Subtree">
+							<treeDef>LordDuty</treeDef>
+						</li>
+					</subNodes>
+				</li>
+
+				<!-- Insertion hook for modders
+				<li Class="ThinkNode_SubtreesByTag">
+					<insertTag>Humanlike_PostDuty</insertTag>
+				</li>
+				-->
+
+				<!-- If on colonist team, do forced and emergency work -->
+				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+					<subNodes>
+					<!-- Seek allowed area -->
+					<li Class="JobGiver_SeekAllowedArea" />
+
+					<!-- Seek safe temperatures -->
+					<li Class="JobGiver_SeekSafeTemperature" />
+
+					<!-- Drop unnused inventory -->
+					<li Class="JobGiver_DropUnusedInventory" />
+
+					<!-- Emergency work -->
+					<li Class="JobGiver_Work">
+						<leaveJoinableLordIfIssuesJob>true</leaveJoinableLordIfIssuesJob>
+						<emergency>true</emergency>
+					</li>
+
+					<!-- Lord directives (medium priority) -->
+					<li Class="ThinkNode_JoinVoluntarilyJoinableLord">
+						<dutyHook>MediumPriority</dutyHook>
+						<subNodes>
+							<li Class="ThinkNode_Subtree">
+								<treeDef>LordDuty</treeDef>
+							</li>
+						</subNodes>
+					</li>
+					</subNodes>
+				</li>
+
+				<!-- Behavior from traits 
+				<li Class="ThinkNode_TraitBehaviors" />
+				-->
+				
+				<!-- Insertion hook for modders 
+				<li Class="ThinkNode_SubtreesByTag">
+					<insertTag>Humanlike_PreMain</insertTag>
+				</li>
+				-->
+				
+				<!-- Main colonist behavior core -->
+				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+					<subNodes>
+						<li Class="ThinkNode_Subtree">
+							<treeDef>MainMechBehaviour</treeDef>
+							<leaveJoinableLordIfIssuesJob>true</leaveJoinableLordIfIssuesJob>
+						</li>
+					</subNodes>
+				</li>
+				
+
+				<!-- Insertion hook for modders
+				<li Class="ThinkNode_SubtreesByTag">
+				<insertTag>Humanlike_PostMain</insertTag>
+				</li>
+				-->
+
+				<!-- Idle colonist -->
+				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+					<subNodes>
+						<li Class="ThinkNode_Tagger">
+							<tagToGive>Idle</tagToGive>
+							<subNodes>
+								<!-- Wander -->
+								<li Class="JobGiver_WanderColony">
+									<maxDanger>None</maxDanger>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+
 	<ThinkTreeDef Name="MechMain">
 		<defName>MechMain</defName>
 		<thinkRoot Class="ThinkNode_Priority">

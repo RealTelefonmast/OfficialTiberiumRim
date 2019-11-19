@@ -2,8 +2,8 @@
 <Defs>
 
   <!--===============  ==============-->
-	<ThingDef ParentName="MoteBase">
-		<defName>BeamMote</defName>
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>LaserBeam</defName>
 		<thingClass>TiberiumRim.Mote_Beam</thingClass>
 		<graphicData>
 			<texPath>Things/Mote/PowerBeam</texPath>
@@ -33,7 +33,40 @@
 		</mote>
 	</ThingDef>
 	
-	<ThingDef ParentName="MoteBase">
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_BlastSound</defName>
+		<graphicData>
+			<texPath>Motes/SoundMote</texPath> 
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.15</fadeInTime>
+			<solidTime>0.15</solidTime>
+			<fadeOutTime>0.5</fadeOutTime>
+			<growthRate>2</growthRate>
+		</mote>
+		<drawOffscreen>true</drawOffscreen>
+	</ThingDef>
+
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_BlastWave</defName>
+		<graphicData>
+			<texPath>Motes/SoundMote</texPath> 
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.15</fadeInTime>
+			<solidTime>0.75</solidTime>
+			<fadeOutTime>1.5</fadeOutTime>
+			<growthRate>0.75</growthRate>
+		</mote>
+		<drawOffscreen>true</drawOffscreen>
+	</ThingDef>
+	
+	
+	<ThingDef ParentName="MoteBase_TR">
 		<defName>IonBeamBurn</defName>
 		<graphicData>
 			<texPath>Things/Mote/PowerBeam</texPath>
@@ -49,7 +82,7 @@
 		</mote>
 	</ThingDef>
 	
-	<ThingDef ParentName="MoteBase">
+	<ThingDef ParentName="MoteBase_TR">
 		<defName>IonBubble</defName>
 		<graphicData>
 			<texPath>Things/Mote/PowerBeam</texPath>

@@ -5,15 +5,45 @@ using System.Text;
 using UnityEngine;
 using Verse;
 using RimWorld;
+using Verse.AI;
 
 namespace TiberiumRim
 {
-    public class Building_TRTurret : Building_Turret
+    public class Building_TRTurret : Building_Turret, IFXObject
     {
+        public static Material ForcedTargetLineMat = MaterialPool.MatFrom(GenDraw.LineTexPath, ShaderDatabase.Transparent, new Color(1f, 0.5f, 0.5f));
         public new TRThingDef def;
-        public int warmUpTicks = 0;
-        public int coolDownTicks = 0;
+
+        protected int burstCooldownTicksLeft;
+        protected int burstWarmupTicksLeft;
+        protected LocalTargetInfo currentTargetInt = LocalTargetInfo.Invalid;
+        private bool holdFire;
+        public Thing gun;
+        protected TurretTop top;
+        protected CompPowerTrader powerComp;
+        protected CompMannable mannableComp;
+        private const int TryStartShootSomethingIntervalTicks = 10;
+
         public List<TurretGun> Turrets = new List<TurretGun>();
+
+        public virtual Vector3[] DrawPositions => new Vector3[1] { base.DrawPos };
+        public virtual Color[] ColorOverrides => new Color[1] { Color.white };
+        public virtual float[] OpacityFloats => new float[1] { 1f };
+        public virtual float?[] RotationOverrides => new float?[1] { null };
+        public virtual bool[] DrawBools => new bool[1] { true };
+        public virtual bool ShouldDoEffecters => true;
+        public ExtendedGraphicData ExtraData => (base.def as FXThingDef).extraData;
+        public override LocalTargetInfo CurrentTarget => currentTargetInt;
+        public override Verb AttackVerb => throw new NotImplementedException();
+       
+        public override void PostMake()
+        {
+            base.PostMake();
+            foreach (ThingDef turret in def.turret.turrets)
+            {
+                Turrets.Add((TurretGun)ThingMaker.MakeThing(turret, this.Stuff));
+            }
+        }
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -21,12 +51,12 @@ namespace TiberiumRim
             this.def = (TRThingDef)base.def;
         }
 
-        public override void PostMake()
+        public override void Tick()
         {
-            base.PostMake();
-            foreach(ThingDef turret in def.turret.turrets)
+            base.Tick();
+            foreach (TurretGun turret in Turrets)
             {
-                Turrets.Add((TurretGun)ThingMaker.MakeThing(turret, this.Stuff));
+                turret.TurretGunTick();
             }
         }
 
@@ -44,24 +74,6 @@ namespace TiberiumRim
             {
                 return false;
             }
-        }
-
-        public override Verb AttackVerb => throw new NotImplementedException();
-
-        public override LocalTargetInfo CurrentTarget => throw new NotImplementedException();
-
-        public override void Tick()
-        {
-            base.Tick();
-            foreach(TurretGun turret in Turrets)
-            {
-                turret.TurretGunTick();
-            }
-        }
-
-        public virtual bool TryStartBurst()
-        {
-            return false;
         }
 
         public override void OrderAttack(LocalTargetInfo targ)

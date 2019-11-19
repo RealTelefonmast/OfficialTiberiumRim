@@ -13,7 +13,7 @@
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
-					<texPath>Pawns/Common/RepairDrones/RepairDrone_Common</texPath>
+					<texPath>Pawns/Common/RepairDrone/RepairDrone</texPath>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>

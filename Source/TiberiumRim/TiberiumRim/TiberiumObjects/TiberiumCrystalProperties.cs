@@ -24,6 +24,7 @@ namespace TiberiumRim
         public bool dependsOnProducer = false;
         public bool canBeInhibited = true;
         public bool infects = true;
+        public bool radiates = true;
 
         public int MeshCount = 1;
     }

@@ -15,7 +15,7 @@ namespace TiberiumRim
         public new TiberiumProducerDef def;
         public List<TiberiumCrystal> boundCrystals = new List<TiberiumCrystal>();
         public HashSet<IntVec3> FieldCells = new HashSet<IntVec3>();
-
+        private int lastFieldCells = 0;
         private bool isGroundZero = false;
 
         //Ticker
@@ -52,6 +52,7 @@ namespace TiberiumRim
         public override void ExposeData()
         {
             base.ExposeData();
+            Scribe_Values.Look(ref lastFieldCells, "lastFieldCells");
             Scribe_Values.Look(ref ticksToSpawn, "ticksToSpawn");
             Scribe_Values.Look(ref ticksToSpore, "ticksToSpore");
             Scribe_Values.Look(ref ticksToMature, "ticksToMature");
@@ -77,38 +78,55 @@ namespace TiberiumRim
         {
             base.SpawnSetup(map, respawningAfterLoad);
             def = base.def as TiberiumProducerDef;
-            if (!respawningAfterLoad)
-            {
-                ResetTiberiumCounter();
-                if(def.spore != null)
-                    ResetSporeCounter();
-                SetEvolution();
-                WorldTiberiumComp.SetupGroundZero(this, Map, ref isGroundZero);
-                if (isEvolved)
-                    return;
 
-                ticksToMature = (int) (GenDate.TicksPerDay * def.daysToMature);
-                SetInitialCells();
-                foreach (IntVec3 cell in this.OccupiedRect())
+            SetPotentialFieldCells();
+
+            if (respawningAfterLoad) return;
+            ResetTiberiumCounter();
+            if(def.spore != null)
+                ResetSporeCounter();
+            SetEvolution();
+            WorldTiberiumComp.SetupGroundZero(this, Map, ref isGroundZero);
+            if (isEvolved)
+                return;
+
+            ticksToMature = (int) (GenDate.TicksPerDay * def.daysToMature);
+            SetInitialCells();
+            foreach (IntVec3 cell in this.OccupiedRect())
+            {
+                if (!def.tiberiumTerrain.NullOrEmpty())
                 {
-                    if (!def.tiberiumTerrain.NullOrEmpty())
-                    {
-                        var terrain = cell.GetTerrain(Map);
-                        var terr = def.tiberiumTerrain.Find(t => t.TerrainSupportFor(terrain) != null);
-                        var newTerr = GenTiberium.TerrainFrom(terrain, terr);
-                        if(newTerr == null)
-                            continue;
-                        Map.terrainGrid.SetTerrain(cell, newTerr);
-                    }
-                    else
-                        GenTiberium.SetTiberiumTerrain(cell, Map, TiberiumCrystal);
+                    var terrain = cell.GetTerrain(Map);
+                    var terr = def.tiberiumTerrain.Find(t => t.TerrainSupportFor(terrain) != null);
+                    var newTerr = GenTiberium.TerrainFrom(terrain, terr);
+                    if(newTerr == null)
+                        continue;
+                    Map.terrainGrid.SetTerrain(cell, newTerr);
                 }
+                else
+                    GenTiberium.SetTiberiumTerrain(cell, Map, TiberiumCrystal);
             }
+        }
+
+        private void SetPotentialFieldCells()
+        {
+            if (def.spawner.growRadius <= 0) return;
+            FloodFiller floodFill = new FloodFiller(Map);
+            float max = def.spawner.growRadius;
+            Predicate<IntVec3> predicate = x => x.GetTerrain(Map) is TiberiumTerrainDef && x.DistanceTo(Position) <= max;
+            Action<IntVec3> action = delegate(IntVec3 c)
+            {
+                FieldCells.Add(c);
+            };
+            var num = lastFieldCells > 0 ? lastFieldCells : 2147483647;
+            floodFill.FloodFill(Position, predicate, action, num);
         }
 
         private void SetInitialCells()
         {
-            int num = GenRadial.NumCellsInRadius(def.spawner.growRadius);
+            var growRad = def.spawner.growRadius;
+            growRad *= isGroundZero ? 2.5f : 1;
+            int num = GenRadial.NumCellsInRadius(growRad);
             bool Valid(IntVec3 c) => c.SupportsTiberiumTerrain(Map);
             TiberiumFloodInfo flood = new TiberiumFloodInfo(Map, num, Valid, null);
             if (flood.TryMakeFlood(out List<IntVec3> cells, this.OccupiedRect(), true, num))
@@ -148,11 +166,9 @@ namespace TiberiumRim
 
             if (ResearchBound)
             {
-
-                if (!researchDone)
-                    return;
+                if (!researchDone) return;
                 if (TRUtils.Chance(0.1f))
-                    researchCrane.TakeDamage(new DamageInfo(DamageDefOf.Mining, 1));
+                    researchCrane.TakeDamage(new DamageInfo(DamageDefOf.Mining, 5, 1, -1, this));
             }
 
             if (fastGrow)
@@ -198,6 +214,7 @@ namespace TiberiumRim
                 TerrainDef terrain = cell.GetTerrain(Map);
                 if (FieldCells.Contains(cell)) continue;
                 FieldCells.Add(cell);
+                lastFieldCells++;
                 if (terrain.IsTiberiumTerrain()) continue;
 
                 TiberiumTerrainDef newTerr = null;
@@ -268,7 +285,7 @@ namespace TiberiumRim
         public float WokePercent => 1f - (float)ticksToMature / (def.daysToMature * (float)GenDate.TicksPerDay);
 
         public bool ShouldSpawnSpore => isGroundZero && ticksToSpore <= 0 && MatureEnough;
-        public bool ShouldSpawn => researchDone && def.tiberiumTypes.Any() && ticksToSpawn <= 0 && MatureEnough;
+        public bool ShouldSpawn => (!def.forResearch || researchDone) && def.tiberiumTypes.Any() && ticksToSpawn <= 0 && MatureEnough;
         public bool ShouldEvolve => evolvesTo != null && ticksToEvolution <= 0;
         private bool MatureEnough => (IsMature || ticksToMature < def.spawner.minDaysToSpread * GenDate.TicksPerDay);
         public bool IsMature => ticksToMature <= 0 && !InitialCells.Any();
@@ -277,20 +294,20 @@ namespace TiberiumRim
         {
             get
             {
-                if (researchCrane == null)
+                if (!researchDone && researchCrane == null)
                 {
                     researchCrane = (Building)Map.thingGrid.ThingAt(Position, TiberiumDefOf.TiberiumResearchCrane);
                 }
                 return !researchCrane.DestroyedOrNull();
             }
         }
-        
 
         private void SpawnBlossomSpore()
         {
             var dest = TiberiumComp.StructureInfo.GetBlossomDestination();
-            if (dest.IsValid)
-                GenTiberium.SpawnBlossomSpore(Position, dest, Map, def.spore.Blossom(), this);
+            if (!dest.IsValid) return;
+            var spore = GenTiberium.SpawnBlossomSpore(Position, dest, Map, def.spore.Blossom(), this);
+            LetterMaker.MakeLetter("Blossom Spore", "A blossom spore has appeared, and will fly to this position.", LetterDefOf.NeutralEvent, new LookTargets(spore.endCell, Map));
         }
 
         private void SpawnTiberium()
@@ -379,13 +396,17 @@ namespace TiberiumRim
         {
             boundCrystals.Add(crystal);
             FieldCells.Add(crystal.Position);
+            lastFieldCells++;
         }
 
         public void RemoveBoundCrystal(TiberiumCrystal crystal)
         {
             boundCrystals.Remove(crystal);
             if (crystal.def.dead != null)
+            {
                 FieldCells.Remove(crystal.Position);
+                lastFieldCells--;
+            }
         }
 
         private void ResetTiberiumCounter()

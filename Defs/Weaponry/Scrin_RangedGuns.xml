@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BaseGun">
+		<defName>Scrin_MechapedeLance</defName>
+		<label>swarm charge cannon</label>
+		<description>A huge alien laser weapon.</description>
+		<graphicData>
+			<texPath>Items/Weapons/Scrin/Turret_Scrin_Mechapede</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>3</drawSize>
+		</graphicData>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<MaxHitPoints>250</MaxHitPoints>
+			<Mass>50</Mass>
+			<AccuracyTouch>0.15</AccuracyTouch>
+			<AccuracyShort>0.55</AccuracyShort>
+			<AccuracyMedium>0.65</AccuracyMedium>
+			<AccuracyLong>0.75</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+		</statBases>
+		<tradeability>None</tradeability>
+		<techLevel>Spacer</techLevel>
+		<menuHidden>False</menuHidden>
+		<destroyOnDrop>False</destroyOnDrop>
+		<weaponTags>
+			<li>MechapedeGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+				<laser>
+					<beamPath>Items/Weapons/Projectile/Bullet_BeamScrinMiddle</beamPath>
+				</laser>
+				<originOffsets>	
+					<li>(0.45,-1,-0.1)</li>
+					<li>(-0.5,-1,-0.6)</li>
+					<li>(0.45,-1,-1.1)</li>
+					<li>(-0.45,-1,-0.1)</li>
+					<li>(0.5,-1,-0.6)</li>
+					<li>(-0.45,-1,-1.1)</li>
+				</originOffsets>
+				<hasStandardCommand>true</hasStandardCommand>
+				<warmupTime>2.5</warmupTime>
+				<range>19.9</range>
+				<minRange>1.5</minRange>
+				<ticksBetweenBurstShots>25</ticksBetweenBurstShots>
+				<burstShotCount>6</burstShotCount>
+				<soundCast>Shot_Scrin_Devourer</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>10</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+	</ThingDef>
+
+</Defs>

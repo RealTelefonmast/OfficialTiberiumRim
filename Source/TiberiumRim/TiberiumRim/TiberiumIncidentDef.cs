@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RimWorld;
+using StoryFramework;
 using Verse;
 
 namespace TiberiumRim
 {
     public class TiberiumIncidentDef : IncidentDef
     {
-        public ThingDef skyfallerDef;
-        public ThingDef producerDef;
+        public List<ThingSkyfaller> skyfallers;
+        public PositionFilter positions;
 
     }
 }

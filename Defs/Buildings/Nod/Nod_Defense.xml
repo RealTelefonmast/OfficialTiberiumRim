@@ -122,13 +122,24 @@
 		</weaponTags>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>Verb_Shoot</verbClass>
+				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+				<laser>
+					<beamPath>Items/Weapons/Projectile/Bullet_ObeliskBeam</beamPath>
+					<glow>
+						<glowMote>ObeliskGlow</glowMote>
+						<scale>3.5</scale>
+						<rotation>0</rotation>
+						<rotationRate>0</rotationRate>
+					</glow>
+				</laser>
+				<originOffsets>	
+					<li>(0,0,4.5)</li>
+				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Bullet_ObeliskGun</defaultProjectile>
 				<requireLineOfSight>false</requireLineOfSight>
-				<warmupTime>2.5</warmupTime>
-				<minRange>3.89</minRange>
-				<range>39.9</range>
+				<warmupTime>3</warmupTime>
+				<minRange>3</minRange>
+				<range>40</range>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<soundAiming>Shot_Nod_ObeliskTail</soundAiming>
@@ -137,6 +148,7 @@
 		</verbs>
 	</ThingDef>
 
+	<!--
 	<TiberiumRim.FXThingDef ParentName="BaseBullet">
 		<defName>Bullet_ObeliskGun</defName>
 		<label>obelisk laser bullet</label>
@@ -156,7 +168,7 @@
 			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
 		</projectile>
 		<thingClass>TiberiumRim.Projectile_Beam</thingClass>
-		<!--
+		
 		<cycleThroughFiringPositions>true</cycleThroughFiringPositions>
 		<preFiringInitialIntensity>0</preFiringInitialIntensity>
 		<preFiringFinalIntensity>3</preFiringFinalIntensity>
@@ -166,9 +178,10 @@
 		<postFiringDuration>65</postFiringDuration>
 		<StartFireChance>0.1</StartFireChance>	
 		<createsExplosion>true</createsExplosion>
-		-->
+		
 		<drawOffscreen>true</drawOffscreen>
 	</TiberiumRim.FXThingDef>
+	-->
 
 <!--
   <ThingDef ParentName="BaseBullet">

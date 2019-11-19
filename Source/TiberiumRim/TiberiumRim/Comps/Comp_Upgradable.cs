@@ -27,7 +27,6 @@ namespace TiberiumRim
                     return;
                 }
             }
-            base.CompTick();
         }
 
         public override void CompTickRare()

@@ -19,10 +19,19 @@ namespace TiberiumRim
             if (skills == null)
             {
                 skills = new Pawn_SkillTracker(this);
+                foreach (var skill in skills.skills)
+                {
+                    skill.levelInt = 20;
+                    skill.passion = Passion.Major;
+                }
+                
             }
             if (story == null)
             {
                 story = new Pawn_StoryTracker(this);
+                story.title = "yes";
+                story.traits = new TraitSet(this);
+                
             }
             if (guest == null)
             {
@@ -40,7 +49,12 @@ namespace TiberiumRim
                 {
                     workSettings.SetPriority(workTypeDef, 1);
                 }
+                workSettings.Notify_UseWorkPrioritiesChanged();
             }
+
+            Name = new NameSingle("Drone");
         }
+
+        
     }
 }

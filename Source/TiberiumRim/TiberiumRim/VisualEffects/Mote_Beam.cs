@@ -28,6 +28,7 @@ namespace TiberiumRim
                 return;
             }
             float alpha = this.Alpha;
+            Vector3 diff = end - start;
             if (alpha <= 0f)
             {return;}
             Color color = instanceColor;
@@ -36,11 +37,11 @@ namespace TiberiumRim
             {
                 drawMat = MaterialPool.MatFrom((Texture2D)drawMat.mainTexture, ShaderDatabase.MoteGlow, color);
             }
-            float z = (start - end).MagnitudeHorizontal();
+            float z = (diff).MagnitudeHorizontal();
             Vector3 pos = (start + end) / 2f;
             pos.y = AltitudeLayer.MoteOverhead.AltitudeFor();
             Vector3 scale = new Vector3(1f, 1f, z);
-            Quaternion quat = Quaternion.LookRotation(start - end);
+            Quaternion quat = Quaternion.LookRotation(diff);
             Matrix4x4 matrix = default(Matrix4x4);
             matrix.SetTRS(pos, quat, scale);
             Graphics.DrawMesh(MeshPool.plane10, matrix, drawMat, 0);

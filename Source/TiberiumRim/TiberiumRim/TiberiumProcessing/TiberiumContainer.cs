@@ -22,6 +22,11 @@ namespace TiberiumRim
         //
         public TiberiumContainer() { }
 
+        public TiberiumContainer(Thing parent)
+        {
+            this.parent = parent;
+        }
+
         public TiberiumContainer(float capacity, List<TiberiumValueType> types, object parent = null)
         {
             this.parent = parent;
@@ -30,9 +35,9 @@ namespace TiberiumRim
                 AcceptedTypes = types;
         }
 
-        public TiberiumContainer MakeCopy()
+        public TiberiumContainer MakeCopy(Thing thing)
         {
-            TiberiumContainer newContainer = new TiberiumContainer();
+            TiberiumContainer newContainer = new TiberiumContainer(thing);
             newContainer.capacity = capacity;
             newContainer.AcceptedTypes = new List<TiberiumValueType>(AcceptedTypes);
             newContainer.TypeFilter = TypeFilter.Copy();

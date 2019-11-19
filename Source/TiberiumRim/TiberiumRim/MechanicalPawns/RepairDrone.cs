@@ -17,7 +17,6 @@ namespace TiberiumRim
     {
         public new RepairDroneKindDef KindKindDef;
         public Comp_RepairDrone parentComp;
-        public Building parent;
 
         public override void ExposeData()
         {

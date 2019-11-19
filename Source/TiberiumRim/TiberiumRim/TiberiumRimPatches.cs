@@ -344,10 +344,10 @@ namespace TiberiumRim
             {
                 Map map = Traverse.Create(__instance).Field("map").GetValue<Map>();
                 var suppression = map.GetComponent<MapComponent_Suppression>();
-                if (suppression.IsInSuppressorField(c, out List<ThingWithComps> sups))
+                if (suppression.IsInSuppressorField(c, out List<Comp_Suppression> sups))
                 {
                     Log.Message("Updating " + sups.Count + " suppressors.");
-                    sups.ForEach(s => s.GetComp<Comp_Suppression>().UpdateCells(false));
+                    sups.ForEach(s => s.UpdateCells(false));
                 }
             }
         }
@@ -361,10 +361,10 @@ namespace TiberiumRim
                 if (__instance is Building b && !b.CanBeSeenOver())
                 {
                     var suppression = b.Map.GetComponent<MapComponent_Suppression>();
-                    if (suppression.IsInSuppressorField(b.Position, out List<ThingWithComps> sups))
+                    if (suppression.IsInSuppressorField(b.Position, out List<Comp_Suppression> sups))
                     {
                         Log.Message("Updating " + sups.Count + " suppressors.");
-                        sups.ForEach(s => s.GetComp<Comp_Suppression>().UpdateCells(false));
+                        sups.ForEach(s => s.UpdateCells(false));
                     }
                 }
             }
@@ -379,10 +379,10 @@ namespace TiberiumRim
                 if (__instance is Building b && !b.CanBeSeenOver())
                 {
                     var suppression = b.Map.GetComponent<MapComponent_Suppression>();
-                    if (suppression.IsInSuppressorField(b.Position, out List<ThingWithComps> sups))
+                    if (suppression.IsInSuppressorField(b.Position, out List<Comp_Suppression> sups))
                     {
                         Log.Message("Updating " + sups.Count + " suppressors.");
-                        sups.ForEach(s => s.GetComp<Comp_Suppression>().UpdateCells(false));
+                        sups.ForEach(s => s.UpdateCells(false));
                     }
                 }
                 return true;
@@ -508,22 +508,19 @@ namespace TiberiumRim
         {
             public static bool Prefix(CompGlower __instance, Map map)
             {
-                if(__instance.parent is FXThing)
+                if (!(__instance.parent is FXThing)) return true;
+                //!GraphicsManager.Manager.CanGlow
+                if (__instance.parent is TiberiumCrystal crystal && crystal.Parent != null && crystal.Parent.turnOffLight || !__instance.parent.Spawned)
                 {
-                    //!GraphicsManager.Manager.CanGlow
-                    if (__instance.parent is TiberiumCrystal crystal && crystal.Parent != null && crystal.Parent.turnOffLight || !__instance.parent.Spawned)
-                    {
-                        map.mapDrawer.MapMeshDirty(__instance.parent.Position, MapMeshFlag.Things);
-                        map.glowGrid.DeRegisterGlower(__instance);
-                    }
-                    else
-                    {
-                        map.mapDrawer.MapMeshDirty(__instance.parent.Position, MapMeshFlag.Things);
-                        map.glowGrid.RegisterGlower(__instance);
-                    }
-                    return false;
+                    map.mapDrawer.MapMeshDirty(__instance.parent.Position, MapMeshFlag.Things);
+                    map.glowGrid.DeRegisterGlower(__instance);
                 }
-                return true;
+                else
+                {
+                    map.mapDrawer.MapMeshDirty(__instance.parent.Position, MapMeshFlag.Things);
+                    map.glowGrid.RegisterGlower(__instance);
+                }
+                return false;
             }
         }
 
@@ -576,6 +573,23 @@ namespace TiberiumRim
                     }
                 }
                 return true;
+            }
+        }
+
+
+        [HarmonyPatch(typeof(StatWorker))]
+        [HarmonyPatch("GetValueUnfinalized")]
+        public static class GetValueUnfinalizedPatch
+        {
+            public static void Postfix(ref float __result, StatWorker __instance, StatRequest req)
+            {
+                Pawn pawn = req.Thing as Pawn;
+                
+                //Patching Mechs
+                if (pawn is MechanicalPawn mech)
+                {
+
+                }
             }
         }
 

@@ -9,6 +9,8 @@ namespace TiberiumRim
 {
     public class MechanicalPawn : FXPawn
     {
+        public Building parent;
+
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);

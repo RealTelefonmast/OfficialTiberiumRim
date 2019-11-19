@@ -126,9 +126,7 @@ namespace TiberiumRim
                 AffectPotentialObject(currentDebugCell, affecter);
             }
             if (!TileIterator.MoveNext())
-            {
                 dirtyIterator = true;
-            }
         }
 
         private void AffectPotentialObject(IntVec3 cell, TiberiumCrystal affecter)
@@ -137,29 +135,23 @@ namespace TiberiumRim
             ThingDef newThing = null;
             float damageFactor = 1;
             var haulable = cell.GetFirstHaulable(map);
-            if (haulable != null && haulable.CanBeAffected(out damageFactor))
+            if (haulable != null && affecter.def.tiberium.entityDamage.Average > 0 && haulable.CanBeAffected(out damageFactor))
             {
                 if (haulable.def.IsNutritionGivingIngestible)
-                {
                     damageFactor += 0.33f;
-                }
                 if (haulable.IsCorruptableChunk())
-                {
                     newThing = affecter.def.chunk;
-                }
-                haulable.TakeDamage(new DamageInfo(DamageDefOf.Deterioration, TRUtils.Range(affecter.def.tiberium.entityDamage) * damageFactor));
+                haulable.TakeDamage(new DamageInfo(DamageDefOf.Deterioration, damageFactor * TRUtils.Range(affecter.def.tiberium.entityDamage)));
                 if (newThing != null && TRUtils.Chance(MainTCD.Main.ChunkCorruptionChance))
                 {
                     GenSpawn.Spawn(newThing, haulable.Position, map);
                     if (!haulable.DestroyedOrNull())
-                    {
                         haulable.DeSpawn();
-                    }
                 }
                 return;
             }
             Building building = cell.GetFirstBuilding(map);
-            if (building != null && building.CanBeAffected(out damageFactor))
+            if (building != null && affecter.def.tiberium.buildingDamage.Average > 0 && building.CanBeAffected(out damageFactor))
             {
                 float chance = 1f;
                 if (building is Building_SteamGeyser)
@@ -172,19 +164,17 @@ namespace TiberiumRim
                     newThing = affecter.def.rock;
                     chance *= MainTCD.Main.RockCorruptionChance;
                 }
-                if (building.def.defName.Contains("Wall"))
+                if (building.def.IsWall())
                 {
                     newThing = affecter.def.wall;
                     chance *= MainTCD.Main.WallCorruptionChance;
                 }
-                building.TakeDamage(new DamageInfo(DamageDefOf.Deterioration, TRUtils.Range(affecter.def.tiberium.buildingDamage)));
+                building.TakeDamage(new DamageInfo(DamageDefOf.Deterioration, damageFactor * TRUtils.Range(affecter.def.tiberium.buildingDamage)));
                 if (newThing != null && TRUtils.Chance(chance))
                 {
                     GenSpawn.Spawn(newThing, building.Position, map);
                     if (!building.DestroyedOrNull())
-                    {
                         building.DeSpawn();
-                    }
                 }
             }
         }     
@@ -225,13 +215,9 @@ namespace TiberiumRim
                 IntVec3 cell = cells[i];
                 if (!cell.InBounds(map)) continue;
                 if (cell.GetTiberium(map) == null)
-                {
                     IteratorTiles.Add(cell);
-                }
                 else
-                {
                     IteratorTiles.Remove(cell);
-                }
 
                 if (AffectedCells.Contains(cell)) continue;
                 AffectedCells.Add(cell);
@@ -254,9 +240,7 @@ namespace TiberiumRim
                     IntVec3 cell2 = rect.Cells.ElementAt(ii);
                     TiberiumCrystal crystal2 = cell2.GetTiberium(map);
                     if (crystal2 != null && crystal2 != crystal)
-                    {
                         flag = false;
-                    }
                 }
 
                 if (!flag) continue;

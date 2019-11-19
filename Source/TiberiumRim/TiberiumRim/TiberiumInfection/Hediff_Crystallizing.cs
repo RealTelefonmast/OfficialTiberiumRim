@@ -93,6 +93,7 @@ namespace TiberiumRim
                 */
 
                 var initSeverity = Hediffs.Where(h => Part.parent.parts.Contains(h.Part)).Sum(h => Severity) / Part.parent.parts.Count;
+                Log.Message("Init Severity: " + initSeverity);
                 HediffUtils.TryInfect(pawn, Part.parent, initSeverity);
                 wandered = true;
                 Log.Message("Wandered from " + Part.LabelCap + " to " + Part.parent.LabelCap);
@@ -155,6 +156,7 @@ namespace TiberiumRim
             float severity = 0;
             int parts = 0;
             var childParts = Part.ChildParts(false);
+            Log.Message("Child parts: " + childParts.Count);
             if (childParts.NullOrEmpty()) return;
             foreach (var hediff in Hediffs)
             {
@@ -163,7 +165,8 @@ namespace TiberiumRim
                 parts++;
                 pawn.health.RemoveHediff(hediff);
             }
-            Severity += severity / ((float)parts / childParts.Count);
+            var middle = (float)parts / childParts.Count;
+            Severity += severity * (middle > 0 ? middle : 1);
         }
 
         public override Color LabelColor

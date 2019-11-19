@@ -2,7 +2,7 @@
 <Defs>
 
   <SoundDef>
-    <defName>Shot_Nod_ObeliskTail</defName>
+    <defName>Obelisk_Chargup</defName>
     <context>MapOnly</context>
     <eventNames />
     <maxVoices>2</maxVoices>

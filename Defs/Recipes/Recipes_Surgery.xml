@@ -91,9 +91,9 @@
 		<description>Remove a tiberium skin sample.</description>
 		<workerClass>TiberiumRim.Recipe_RemoveTiberiumSample</workerClass>
 		<jobString>Removing a tiberium skin sample.</jobString>
-		<workAmount>7500</workAmount>
+		<workAmount>5000</workAmount>
 		<skillRequirements>
-			<Medicine>10</Medicine>
+			<Medicine>5</Medicine>
 		</skillRequirements>
 		<ingredients>
 			<li>

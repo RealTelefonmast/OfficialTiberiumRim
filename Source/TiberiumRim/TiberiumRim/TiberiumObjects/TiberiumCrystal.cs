@@ -166,7 +166,7 @@ namespace TiberiumRim
 
         public bool Dormant
         {
-            get => forcedDormant || parent.DestroyedOrNull() || !ShouldSpread || !InGrowRange || Suppressed;
+            get => forcedDormant || parent.DestroyedOrNull() || !ShouldSpread || Suppressed || !InGrowRange;
             set => forcedDormant = value;
         }
 

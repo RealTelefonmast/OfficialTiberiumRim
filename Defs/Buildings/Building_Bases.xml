@@ -11,6 +11,8 @@
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Impassable</passability>
 		<statBases>
 			<SellPriceFactor>0.70</SellPriceFactor>
 		</statBases>
@@ -20,6 +22,7 @@
 		<canOverlapZones>false</canOverlapZones>
 		<minifiedDef>MinifiedThing</minifiedDef>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<passability>PassThroughOnly</passability>
 		<thingCategories>
 			<li>BuildingsProduction</li>
 		</thingCategories>
@@ -55,7 +58,6 @@
 		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
 		<thingClass>Building</thingClass>
 		<altitudeLayer>DoorMoveable</altitudeLayer>
-		<passability>PassThroughOnly</passability>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToBuild>2500</WorkToBuild>
@@ -164,5 +166,9 @@
 		<blockPlants>true</blockPlants>	
 		<drawDamagedOverlay>false</drawDamagedOverlay>
 	</TiberiumRim.TiberiumProducerDef>
+	
+	<TiberiumRim.TRThingDef Abstract="True" Name="TurretBase_TR" ParentName="BuildingBase_TR">
+		
+	</TiberiumRim.TRThingDef>
 	
 </Defs>

@@ -13,6 +13,8 @@ namespace TiberiumRim
         private int ticksToHub = 0;
         private int ticksToEgg = 0;
 
+        private int nutrients = 0;
+
         private List<Thing> boundHubs = new List<Thing>();
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
@@ -32,15 +34,21 @@ namespace TiberiumRim
         public override void Tick()
         {
             base.Tick();
+            
             if (ticksToHub == 0)
             {
                 SpawnHub();
-                
+
             }
             if (ticksToEgg == 0)
             {
                 SpawnEgg();
             }
+        }
+
+        private void TryConsume(Pawn pawn)
+        {
+
         }
 
         private void SpawnHub()
@@ -49,7 +57,7 @@ namespace TiberiumRim
             {
                 if(c.SupportsTiberiumTerrain(Map))
                     Map.terrainGrid.SetTerrain(c, TiberiumCrystal.supportsTerrain.RandomElement().TerrainOutcome);
-           };
+            };
             TiberiumFloodInfo flood = new TiberiumFloodInfo(Map,0,null, action);
             IntVec3 end = GenRadial.RadialCellsAround(Position, 56, false).RandomElement();
             flood.TryMakeConnection(out List<IntVec3> cells, Position, end);

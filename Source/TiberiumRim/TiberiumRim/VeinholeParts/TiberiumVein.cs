@@ -12,6 +12,7 @@ namespace TiberiumRim
         public override void TickLong()
         {
             base.TickLong();
+            /*
             foreach (var intVec3 in Position.CellsAdjacent8Way())
             {
                 var chunk = intVec3.GetFirstHaulable(Map);
@@ -26,6 +27,8 @@ namespace TiberiumRim
                     else
                         chunk.TakeDamage(new DamageInfo(DamageDefOf.Blunt, 4, 2));
             }
+            */
         }
+
     }
 }

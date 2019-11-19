@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
-	<TiberiumRim.TRThingDef ParentName="BuildingBase">
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>TiberiumCannon</defName>
 		<label>tib cannon</label>
 		<description>ree</description>
@@ -37,7 +37,7 @@
 		<tickerType>Normal</tickerType>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TNW">
-				<compClass>TiberiumRim.CompTNW_SludgeCannon</compClass>
+				<compClass>TiberiumRim.CompTNW_Turret</compClass>
 				<maxStorage>150</maxStorage>
 				<supportedTypes>
 					<li>Sludge</li>
@@ -222,6 +222,10 @@
 			<Beauty>-18</Beauty>
 		</statBases>
 		<size>(4,4)</size>
+		<inspectorTabs>
+			<li>TiberiumRim.ITab_MechConstruction</li>
+			<li>TiberiumRim.ITab_MechUpgrade</li>
+		</inspectorTabs>
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -255,8 +259,13 @@
 			<ComponentIndustrial>6</ComponentIndustrial>
 		</costList>
 		<comps>
+			<li Class="TiberiumRim.CompProperties_MechStation">
+				<mechRecipes>
+					<li>MakeRepairDroneCommon</li>
+				</mechRecipes>
+				<maxStored>4</maxStored>
+			</li>
 			<li Class="TiberiumRim.CompProperties_RepairDrone">
-				<droneAmount>4</droneAmount>
 				<radius>12</radius>
 				<droneSize>1.3</droneSize>
 				<dronePositions>
@@ -290,8 +299,13 @@
 			<ComponentIndustrial>6</ComponentIndustrial>
 		</costList>
 		<comps>
+			<li Class="TiberiumRim.CompProperties_MechStation">
+				<mechRecipes>
+					<li>MakeRepairDroneCommon</li>
+				</mechRecipes>
+				<maxStored>1</maxStored>
+			</li>
 			<li Class="TiberiumRim.CompProperties_RepairDrone">
-				<droneAmount>1</droneAmount>
 				<radius>4</radius>
 				<droneDef>RepairDrone_Common</droneDef>
 			</li>

@@ -11,7 +11,7 @@ namespace TiberiumRim
 {
     public class MapComponent_Suppression : MapComponent
     {
-        public Dictionary<ThingWithComps, HashSet<IntVec3>> Suppressors = new Dictionary<ThingWithComps, HashSet<IntVec3>>();
+        public Dictionary<Comp_Suppression, HashSet<IntVec3>> Suppressors = new Dictionary<Comp_Suppression, HashSet<IntVec3>>();
 
         public SuppressionGrid SuppressionGrid;
 
@@ -25,13 +25,13 @@ namespace TiberiumRim
             return SuppressionGrid.GetCellBool(map.cellIndices.CellToIndex(cell));
         }
 
-        public bool IsInSuppressorField(IntVec3 cell, out List<ThingWithComps> suppressors)
+        public bool IsInSuppressorField(IntVec3 cell, out List<Comp_Suppression> suppressors)
         {
             suppressors = Suppressors.Where(k => k.Value.Contains(cell)).Select(k => k.Key).ToList();
             return !suppressors.NullOrEmpty();
         }
 
-        public void RegisterOrUpdateSuppressor(ThingWithComps suppressor, List<IntVec3> cells)
+        public void RegisterOrUpdateSuppressor(Comp_Suppression suppressor, List<IntVec3> cells)
         {
             if (Suppressors.ContainsKey(suppressor))
             {
@@ -63,16 +63,14 @@ namespace TiberiumRim
             }
         }
 
-        public void DeregisterSuppressor(ThingWithComps suppressor)
+        public void DeregisterSuppressor(Comp_Suppression suppressor)
         {
-            if (Suppressors.ContainsKey(suppressor))
+            if (!Suppressors.ContainsKey(suppressor)) return;
+            foreach (var v in Suppressors[suppressor])
             {
-                foreach (var v in Suppressors[suppressor])
-                {
-                    SuppressionGrid.Set(v, false);
-                }
-                Suppressors.Remove(suppressor);
+                SuppressionGrid.Set(v, false);
             }
+            Suppressors.Remove(suppressor);
         }
     }
 }

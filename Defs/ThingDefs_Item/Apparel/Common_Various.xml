@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<ThingDef ParentName="ApparelMakeableBase_TR">
+		<defName>TiberiumSuit</defName>
+		<description>With this suit you can savely traverse any Tiberium infested terrain. It shields the wearer from getting infected by Tiberium and also any possible radiation.  A suit to protect from Tiberium.\n\n Also protects from toxic fallout.</description>
+		<label>Tiberium protection suit</label>
+		<graphicData>
+			<texPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<Plasteel>5</Plasteel>
+			<Steel>75</Steel>
+			<Cloth>120</Cloth>
+		</costList>
+		<recipeMaker>
+			<recipeUsers Inherit="false">
+				<li>TiberiumWorkbench</li>
+			</recipeUsers>
+		</recipeMaker>
+		<thingCategories>
+			<li>Apparel</li>
+		</thingCategories>
+		<statBases>
+			<MarketValue>1250</MarketValue>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToMake>10000</WorkToMake>
+			<Mass>2.5</Mass>
+			<ArmorRating_Blunt>0</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+			<ArmorRating_Heat>0.2</ArmorRating_Heat>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.02</MoveSpeed>
+			<ToxicSensitivity>-0.25</ToxicSensitivity>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.75</TiberiumRadiationResistance>
+			<Insulation_Cold>-20</Insulation_Cold>
+			<Insulation_Heat>45</Insulation_Heat>
+		</equippedStatOffsets>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+				<li>Hands</li>
+				<li>Feet</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuit</wornGraphicPath>
+			<layers>
+			    <li>OnSkin</li>
+			</layers>
+			<defaultOutfitTags>
+				<li>Worker</li>
+			</defaultOutfitTags>
+		</apparel>
+	</ThingDef>
+	
+	<ThingDef ParentName="ApparelMakeableBase_TR">
+		<defName>Jumpsuit</defName>
+		<description>A simple jumpsuit to improve comfort while wearing heavy armor.</description>
+		<label>jumpsuit</label>
+		<graphicData>
+		<texPath>Items/Apparel/Common_Jumpsuit/JS</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<Steel>10</Steel>
+			<Cloth>100</Cloth>
+		</costList>
+		<recipeMaker Inherit="False">
+			<workAmount>1000</workAmount>
+			<workSpeedStat></workSpeedStat>
+			<efficiencyStat></efficiencyStat>
+			<workSkill></workSkill>
+			<effectWorking>Tailor</effectWorking>
+			<soundWorking>Recipe_Tailor</soundWorking>
+			<recipeUsers>
+				<li>TiberiumWorkbench</li>
+			</recipeUsers>
+			<defaultIngredientFilter>
+				<categories>
+					<li>Root</li>
+				</categories>
+				<disallowedThingDefs>
+					<li>Gold</li>
+					<li>Silver</li>
+					<li>Plasteel</li>
+					<li>Jade</li>
+					<li>Uranium</li>
+				</disallowedThingDefs>
+			</defaultIngredientFilter>
+		</recipeMaker>
+		<thingCategories>
+			<li>Apparel</li>
+		</thingCategories>
+		<statBases>
+			<MarketValue>200</MarketValue>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToMake>5000</WorkToMake>
+			<Mass>1</Mass>
+			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+			<ArmorRating_Heat>0.1</ArmorRating_Heat>
+			<Insulation_Cold>25</Insulation_Cold>
+			<Insulation_Heat>25</Insulation_Heat>
+			<Flammability>0.25</Flammability>
+			<EquipDelay>10</EquipDelay>
+		</statBases>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/Common_Jumpsuit/JS</wornGraphicPath>
+			<layers>
+			    <li>OnSkin</li>
+			</layers>
+			<tags>
+				<li>FactionInnerSet</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>FactionInnerSet</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+	</ThingDef>
+    
+</Defs>

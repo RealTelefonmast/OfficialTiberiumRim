@@ -27,13 +27,13 @@
 		</thingCategories>
 	</ThingDef>
 	
-	<!-- custom tiberium spawner explosion 
-	<ThingDef ParentName="ResourceBase">
+	<!-- custom tiberium spawner explosion -->
+	<ThingDef ParentName="ResourceBase_TR">
 		<defName>Nod_LiquidTiberium</defName>
-		<label>Liquid Tiberium (explosive)</label>
+		<label>liquid tiberium cell</label>
 		<description>Liquid Tiberium in its purest form. WARNING - Beware of deterioration, this item is very unstable!</description>
 		<graphicData>
-			<texPath>Items/Resource_TiberiumLQ</texPath>
+			<texPath>Items/Resource/Resource_TiberiumLQ</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<soundInteract>Metal_Drop</soundInteract>
@@ -65,12 +65,12 @@
 		<tickerType>Normal</tickerType>
 	</ThingDef>
 	
-	<ThingDef ParentName="ResourceBase">
+	<ThingDef ParentName="ResourceBase_TR">
 		<defName>Nod_LQTiberiumCore</defName>
-		<label>Liquid Tiberium Core (explosive)</label>
+		<label>Liquid Tiberium Core</label>
 		<description>Due to it's unstable nature, liquid Tiberium cannot be handled directly and needs to be stabilized. This component manages to do so.</description>
 		<graphicData>
-			<texPath>Items/Core_TiberiumLQ</texPath>
+			<texPath>Items/Resource/Core_TiberiumLQ</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<soundInteract>Metal_Drop</soundInteract>
@@ -102,6 +102,7 @@
 		</comps>
 	</ThingDef>
 	
+		<!-- custom tiberium spawner explosion 
 	<ThingDef ParentName="MakeableDrugPillBase">
 		<defName>TiberiumInfusion</defName>
 		<label>Tiberium Infusion</label>

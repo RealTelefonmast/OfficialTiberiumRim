@@ -14,7 +14,7 @@ namespace TiberiumRim
 
         public void PostSetup(TiberiumContainer container)
         {
-            Container = container.MakeCopy();
+            Container = container.MakeCopy(this);
         }
 
         public override float[] OpacityFloats => new float[1] { Container?.StoredPercent ?? 0f };
@@ -24,7 +24,7 @@ namespace TiberiumRim
         public override void DrawGUIOverlay()
         {
             base.DrawGUIOverlay();
-            if (Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest && TiberiumRimSettings.settings.ShowNetworkValues)
+            if (Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest)
             {
                 Vector3 v = GenMapUI.LabelDrawPosFor(Position);
                 GenMapUI.DrawThingLabel(v, Container.StoredPercent.ToStringPercent(), Color.white);
@@ -37,6 +37,18 @@ namespace TiberiumRim
             sb.AppendFormat(base.GetInspectString());
             sb.AppendLine("TR_PortableContainer".Translate() + ": " + Container.TotalStorage + "/" + Container.capacity);
             return sb.ToString().TrimEndNewlines();
+        }
+
+        public override IEnumerable<Gizmo> GetGizmos()
+        {
+            foreach(Gizmo g in base.GetGizmos())
+            {
+                yield return g;
+            }
+            foreach (Gizmo g in Container.GetGizmos())
+            {
+                yield return g;
+            }
         }
     }
 }
