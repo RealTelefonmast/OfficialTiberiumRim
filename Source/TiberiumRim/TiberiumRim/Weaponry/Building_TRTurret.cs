@@ -9,140 +9,200 @@ using Verse.AI;
 
 namespace TiberiumRim
 {
-    public class Building_TRTurret : Building_Turret, IFXObject
+    public interface ITurretHolder
     {
-        public static Material ForcedTargetLineMat = MaterialPool.MatFrom(GenDraw.LineTexPath, ShaderDatabase.Transparent, new Color(1f, 0.5f, 0.5f));
-        public new TRThingDef def;
+        List<LocalTargetInfo> CurrentTargets { get; }
+        LocalTargetInfo FocusedTarget { get; }
 
-        protected int burstCooldownTicksLeft;
-        protected int burstWarmupTicksLeft;
-        protected LocalTargetInfo currentTargetInt = LocalTargetInfo.Invalid;
+        bool PlayerControlled { get; }
+        bool CanSetForcedTarget { get; }
+
+        bool CanToggleHoldFire { get; }
+        bool HoldingFire { get; }
+
+        bool HasTarget(Thing target);
+        void AddTarget(LocalTargetInfo target);
+        void RemoveTargets();
+    }
+
+    public class Building_TRTurret : Building_Turret, IFXObject, ITurretHolder
+    {
+        public TRThingDef def;
+        public List<TurretGun> turrets = new List<TurretGun>();
+        private List<LocalTargetInfo> targets = new List<LocalTargetInfo>();
+        private LocalTargetInfo focusedTarget = LocalTargetInfo.Invalid;
+
+        private CompMannable mannableComp;
         private bool holdFire;
-        public Thing gun;
-        protected TurretTop top;
-        protected CompPowerTrader powerComp;
-        protected CompMannable mannableComp;
-        private const int TryStartShootSomethingIntervalTicks = 10;
 
-        public List<TurretGun> Turrets = new List<TurretGun>();
-
-        public virtual Vector3[] DrawPositions => new Vector3[1] { base.DrawPos };
-        public virtual Color[] ColorOverrides => new Color[1] { Color.white };
-        public virtual float[] OpacityFloats => new float[1] { 1f };
-        public virtual float?[] RotationOverrides => new float?[1] { null };
-        public virtual bool[] DrawBools => new bool[1] { true };
-        public virtual bool ShouldDoEffecters => true;
-        public ExtendedGraphicData ExtraData => (base.def as FXThingDef).extraData;
-        public override LocalTargetInfo CurrentTarget => currentTargetInt;
-        public override Verb AttackVerb => throw new NotImplementedException();
-       
-        public override void PostMake()
-        {
-            base.PostMake();
-            foreach (ThingDef turret in def.turret.turrets)
-            {
-                Turrets.Add((TurretGun)ThingMaker.MakeThing(turret, this.Stuff));
-            }
-        }
+        public override LocalTargetInfo CurrentTarget => null;
+        public LocalTargetInfo FocusedTarget => focusedTarget;
+        public List<LocalTargetInfo> CurrentTargets => targets;
+        public override Verb AttackVerb => null;
+        public TurretGun MainGun => turrets.First();
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            this.def = (TRThingDef)base.def;
+            def = (TRThingDef)base.def;
+            foreach (TurretProperties props in def.turret.turrets)
+            {
+                var turret = new TurretGun(props, this);
+                turrets.Add(turret);
+                turret.Setup();
+            }
         }
 
         public override void Tick()
         {
             base.Tick();
-            foreach (TurretGun turret in Turrets)
+            foreach (TurretGun gun in turrets)
             {
-                turret.TurretGunTick();
-            }
-        }
-
-        public bool CanForceTarget
-        {
-            get
-            {
-                return true;
-            }
-        }
-
-        public bool HoldingFire
-        {
-            get
-            {
-                return false;
+                gun.TurretTick();
             }
         }
 
         public override void OrderAttack(LocalTargetInfo targ)
         {
-            throw new NotImplementedException();
+            
         }
 
-        public void ResetTargets()
+        public void CommandHoldFire()
         {
-            Turrets.ForEach(t => t.ResetTarget());
+            holdFire = !holdFire;
+            if (holdFire)
+            {
+                foreach (TurretGun gun in turrets)
+                {
+                    gun.ResetForcedTarget();
+                }
+            }
         }
 
         public override void Draw()
         {
             base.Draw();
+            foreach(TurretGun gun in turrets)
+            {
+                gun.Draw();
+            }
         }
 
-        public void DrawMarkedForDeath(LocalTargetInfo target)
+        public bool HasTarget(Thing target)
         {
-            Material mat = MaterialPool.MatFrom(TRMats.MarkedForDeath, ShaderDatabase.MetaOverlay, Color.white);
-            float num = (Time.realtimeSinceStartup + 397f * (float)(target.Thing.thingIDNumber % 571)) * 4f;
-            float num2 = ((float)Math.Sin((double)num) + 1f) * 0.5f;
-            num2 = 0.3f + num2 * 0.7f;
-            Material material = FadedMaterialPool.FadedVersionOf(mat, num2);
-            var c = target.CenterVector3 + new Vector3(0, 0, 1.15f);
-            Graphics.DrawMesh(MeshPool.plane08, new Vector3(c.x, AltitudeLayer.MetaOverlays.AltitudeFor(), c.z), Quaternion.identity, material, 0);
+           return targets.Contains(target);
         }
+
+        public void AddTarget(LocalTargetInfo target)
+        {
+            if (target.IsValid)
+            {
+                targets.Add(target);
+            }
+        }
+        public void RemoveTargets()
+        {
+            foreach(LocalTargetInfo target in targets)
+            {
+                if (!target.IsValid)
+                    targets.Remove(target);
+            }
+        }
+
+        public bool MannedByColonist
+        {
+            get
+            {
+                return this.mannableComp != null && this.mannableComp.ManningPawn != null && this.mannableComp.ManningPawn.Faction == Faction.OfPlayer;
+            }
+        }
+        private bool MannedByNonColonist
+        {
+            get
+            {
+                return this.mannableComp != null && this.mannableComp.ManningPawn != null && this.mannableComp.ManningPawn.Faction != Faction.OfPlayer;
+            }
+        }
+        public bool PlayerControlled
+        {
+            get
+            {
+                return (this.Faction == Faction.OfPlayer || this.MannedByColonist) && !this.MannedByNonColonist;
+            }
+        }
+
+        public bool HoldingFire => holdFire;
+        public bool CanSetForcedTarget => PlayerControlled && (def.turret.canForceTarget || mannableComp != null);
+        public bool CanToggleHoldFire => this.PlayerControlled;
+
+        public virtual ExtendedGraphicData ExtraData => def.extraData;
+        // Base connection, base glow, turret glow
+        public virtual Vector3[] DrawPositions => new Vector3[3] { base.DrawPos, base.DrawPos, base.DrawPos };
+        public virtual Color[] ColorOverrides => new Color[3] { Color.white, Color.white, Color.white };
+        public virtual float[] OpacityFloats => new float[3] { 1f ,1f, 1f};
+        public virtual float?[] RotationOverrides => new float?[3] { null, null, MainGun.TurretRotation };
+        public virtual bool[] DrawBools => new bool[3] { true, true, true };
+        public virtual bool ShouldDoEffecters => true;
 
         public override IEnumerable<Gizmo> GetGizmos()
         {
-            foreach (Gizmo g in base.GetGizmos())
+            foreach (Gizmo gizmo in base.GetGizmos())
             {
-                yield return g;
+                yield return gizmo;
             }
-
-            if (CanForceTarget)
+            /*
+            IEnumerator<Gizmo> enumerator = null;
+            CompChangeableProjectile compChangeableProjectile = this.gun.TryGetComp<CompChangeableProjectile>();
+            if (compChangeableProjectile != null)
             {
-                Command_VerbTarget attack = new Command_VerbTarget();
-                attack.defaultLabel = "CommandSetForceAttackTarget".Translate();
-                attack.defaultDesc = "CommandSetForceAttackTargetDesc".Translate();
-                attack.icon = ContentFinder<Texture2D>.Get("UI/Commands/Attack", true);
-                attack.verb = this.AttackVerb;
-                attack.hotKey = KeyBindingDefOf.Misc4;
-                /*
-                if (base.Spawned && this.IsMortarOrProjectileFliesOverhead && base.Position.Roofed(base.Map))
+                Command_Action command_Action = new Command_Action();
+                command_Action.defaultLabel = "CommandExtractShell".Translate();
+                command_Action.defaultDesc = "CommandExtractShellDesc".Translate();
+                command_Action.icon = ContentFinder<Texture2D>.Get("Rimatomics/Things/Resources/sabot/sabot_c", true);
+                command_Action.alsoClickIfOtherInGroupClicked = false;
+                command_Action.action = new Action(this.dumpShells);
+                if (compChangeableProjectile.Projectile == null)
                 {
-                    attack.Disable("CannotFire".Translate() + ": " + "Roofed".Translate().CapitalizeFirst());
+                    command_Action.Disable("NoSabotToExtract".Translate());
                 }
-                */
-                yield return attack;
+                yield return command_Action;
             }
-            if (CurrentTarget.IsValid)
+            */
+            if (CanSetForcedTarget)
             {
-                Command_Action stop = new Command_Action();
-                stop.defaultLabel = "CommandStopForceAttack".Translate();
-                stop.defaultDesc = "CommandStopForceAttackDesc".Translate();
-                stop.icon = ContentFinder<Texture2D>.Get("UI/Commands/Halt", true);
-                stop.action = delegate ()
+                yield return new Command_Target
                 {
-                //this.ResetForcedTarget();
-                   // SoundDefOf.Tick_Low.PlayOneShotOnCamera(null);
+                    defaultLabel = "CommandSetForceAttackTarget".Translate(),
+                    defaultDesc = "CommandSetForceAttackTargetDesc".Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Commands/Attack", true),
+                    targetingParams = TargetingParameters.ForAttackAny(),
+                    action = delegate (Thing thing)
+                    {
+                        Targeter targeter = Find.Targeter;
+                        foreach (TurretGun turret in turrets)
+                        {
+                            turret.SetForcedTarget(thing);
+                        }
+                    }
                 };
-                if (!this.forcedTarget.IsValid)
-                {
-                    stop.Disable("CommandStopAttackFailNotForceAttacking".Translate());
-                }
-                stop.hotKey = KeyBindingDefOf.Misc5;
-                yield return stop;
             }
+            if (this.CanToggleHoldFire)
+            {
+                yield return new Command_Toggle
+                {
+                    defaultLabel = "CommandHoldFire".Translate(),
+                    defaultDesc = "CommandHoldFireDesc".Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Commands/HoldFire", true),
+                    hotKey = KeyBindingDefOf.Misc6,
+                    toggleAction = new Action(CommandHoldFire),
+                    isActive = (() => holdFire)
+                };
+            }
+            if (DebugSettings.godMode)
+            {
+
+            }
+            yield break;
         }
     }
 }

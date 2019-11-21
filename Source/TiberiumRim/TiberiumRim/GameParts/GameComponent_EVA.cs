@@ -1,12 +1,8 @@
-﻿using System;
+﻿using RimWorld.Planet;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
 using Verse;
 using Verse.Sound;
-using RimWorld;
-using RimWorld.Planet;
 
 namespace TiberiumRim
 {
@@ -17,15 +13,39 @@ namespace TiberiumRim
         GDI,
         Scrin
     }
+
+    public class EVASettings : Def
+    {
+        public List<EVATime> times;
+
+        public int TimeFor(EVASignal signal)
+        {
+            return times.Find(t => t.signal == signal).ticks;
+        }
+    }
+
+    public class EVATime
+    {
+        public EVASignal signal;
+        public int ticks = 500;
+    }
+
     public class GameComponent_EVA : GameComponent
     {
-        private int ticksUntilSound;
+        private int tickSinceStart;
 
         private EVA evaInt = EVA.Scrin;
 
         public Map Map => Find.CurrentMap;
 
         public World World => Find.World;
+
+        public GlobalTargetInfo EVATarget;
+
+        public List<LocalTargetInfo> KnownTargets = new List<LocalTargetInfo>();
+
+        public EVASettings settings;
+        public Dictionary<EVASignal, int> LastPlayed = new Dictionary<EVASignal, int>();
 
         public EVA SelectedEVA
         {
@@ -40,6 +60,16 @@ namespace TiberiumRim
         public static GameComponent_EVA EVAComp()
         {
             return Current.Game.GetComponent<GameComponent_EVA>();
+        }
+
+        public override void FinalizeInit()
+        {
+            base.FinalizeInit();
+            settings = DefDatabase<EVASettings>.GetNamed("EVASettings");
+            foreach(EVASignal signal in Enum.GetValues(typeof(EVASignal)))
+            {
+                LastPlayed.Add(signal, 0);
+            }
         }
 
         public string EVAPrefix
@@ -65,16 +95,21 @@ namespace TiberiumRim
             }
         }
 
-        public bool ShouldPlay
+        public bool CanPlay
         {
-            get { return ticksUntilSound <= 0 && TiberiumRimSettings.settings.EVASystem; }
+            get { return TiberiumRimSettings.settings.EVASystem; }
         }
 
         public override void GameComponentTick()
         {
             base.GameComponentTick();
-            if (ticksUntilSound > 0)
-                ticksUntilSound--;
+        }
+
+        public override void GameComponentUpdate()
+        {
+            base.GameComponentUpdate();
+            tickSinceStart++;
+            //Log.Message("TicksGame: " + Find.TickManager.TicksGame + " | " + GenTicks.TicksGame+ "TicksAbs: " + Find.TickManager.TicksAbs + " | " + GenTicks.TicksAbs);
         }
 
         public void PlayCountDown(int seconds)
@@ -87,10 +122,20 @@ namespace TiberiumRim
             composition.Init();
         }
 
+        public void RegisterTarget(Thing thing)
+        {
+            KnownTargets.Add(new LocalTargetInfo(thing));
+        }
+
+        private void UpdateTargets()
+        {
+            KnownTargets.RemoveAll(t => !t.IsValid);
+        }
+
         public void ReceiveSignal(EVASignal signal)
         {
             Log.Message("Received EVA signal: " + signal);
-            if (!ShouldPlay) return;
+            if (!CanPlay) return;
 
             SoundDef soundToPlay = null;
             switch (signal)
@@ -105,7 +150,7 @@ namespace TiberiumRim
                     soundToPlay = SoundDef.Named(EVAPrefix + "BuildingOff");
                     break;
                 case EVASignal.BuildingLost:
-                    soundToPlay = SoundDef.Named(EVAPrefix + "BuildingLost");
+                    soundToPlay =SoundDef.Named(EVAPrefix + "BuildingLost");
                     break;
                 case EVASignal.LowPower:
                     soundToPlay = SoundDef.Named(EVAPrefix + "LowPower");
@@ -201,12 +246,18 @@ namespace TiberiumRim
                     soundToPlay = SoundDef.Named(EVAPrefix + "Count01");
                     break;
             }
-            soundToPlay?.PlayOneShotOnCamera(Map);
-            ticksUntilSound = 100;
+            if (tickSinceStart - LastPlayed[signal] >= settings.TimeFor(signal))
+            {
+                soundToPlay?.PlayOneShotOnCamera(Map);
+                LastPlayed[signal] = tickSinceStart;
+                UpdateTargets();
+                return;
+            }
+            Log.Message("Can't be played - wait " + (settings.TimeFor(signal) - (tickSinceStart - LastPlayed[signal])) + " ticks");
         }
     }
 
-    public enum EVASignal
+    public enum EVASignal : int
     {
         SILOSNEEDED,
         PowerOn,

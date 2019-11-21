@@ -74,7 +74,7 @@
 		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="ProjectileBase_TR">
 		<defName>TRTiberiumBomb</defName>
 		<label>Tiberium Bomb</label>
 		<externalViolence>true</externalViolence>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
+	<!-- Obelisk Of Light -->
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>ObeliskOfLight</defName>
 		<label>obelisk of light</label>
@@ -36,6 +37,22 @@
 			<Beauty>5</Beauty>
 		</statBases>
 		<tickerType>Normal</tickerType>
+		<turret>
+			<canForceTarget>true</canForceTarget>
+			<turrets>
+				<li>
+					<graphic>
+						<texPath>Buildings/Nod/Defense/Obelisk/ObeliskGun</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+						<drawSize>(3,3)</drawSize>
+					</graphic>
+					<hasTurret>false</hasTurret>
+					<turretGunDef>Gun_NodObelisk</turretGunDef>
+					<turretBurstWarmupTime>2.35</turretBurstWarmupTime>
+					<turretBurstCooldownTime>2</turretBurstCooldownTime>
+				</li>
+			</turrets>
+		</turret>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -82,163 +99,151 @@
 		<constructionSkillPrerequisite>9</constructionSkillPrerequisite>
 		<building>
 			<ai_combatDangerous>true</ai_combatDangerous>
-			<turretGunDef>Gun_NodObelisk</turretGunDef>
-			<turretBurstWarmupTime>2.35</turretBurstWarmupTime>
-			<turretBurstCooldownTime>2</turretBurstCooldownTime>
-			<turretTopDrawSize>2</turretTopDrawSize>
-			<turretTopGraphicPath>Buildings/Nod/Defense/Obelisk/ObeliskGun</turretTopGraphicPath>
 		</building>
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_OnlyOutside</li>
-			<li>PlaceWorker_TurretTop</li>
 		</placeWorkers>
 	</TiberiumRim.TRThingDef>
 
-	<ThingDef ParentName="BaseHumanGun">
-		<defName>Gun_NodObelisk</defName>
-		<label>obelisk gun</label>
-		<description>pew pew</description>
+	<!-- Shredder Turret -->
+	<TiberiumRim.TRThingDef ParentName="TurretBase_TR">
+		<defName>Nod_ShredderTurret</defName>
+		<label>shredder turret</label>
+		<description>A Nod shredder turret, useful to control masses.\n\nVulnerable by railgun attack.</description>
+		<factionDesignation>Nod</factionDesignation>
+		<TRCategory>Defense</TRCategory>
+		<thingClass>TiberiumRim.Building_TRTurret</thingClass>
+		<size>(2,2)</size>
 		<graphicData>
-			<texPath>Buildings/Nod/Defense/Obelisk/ObeliskGun</texPath>
+			<texPath>Buildings/Nod/Defense/Turrets/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
 		</graphicData>
-		<menuHidden>true</menuHidden>
-		<soundInteract>Interact_Rifle</soundInteract>
-		<destroyOnDrop>true</destroyOnDrop>
-		<tradeability>None</tradeability>
-		<useHitPoints>false</useHitPoints>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconPath>Buildings/Nod/Defense/Turrets/Shredder</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
 		<statBases>
-			<AccuracyTouch>1</AccuracyTouch>
-			<AccuracyShort>1</AccuracyShort>
-			<AccuracyMedium>1</AccuracyMedium>
-			<AccuracyLong>1</AccuracyLong>
-			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
-			<DeteriorationRate>0</DeteriorationRate>
-			<Mass>50</Mass>
-			<Flammability>0</Flammability>
+			<MarketValue>5000</MarketValue>
+			<MaxHitPoints>350</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>5000</WorkToBuild>
+			<Mass>5000</Mass>
+			<Beauty>-25</Beauty>
+			<ShootingAccuracyTurret>0.93</ShootingAccuracyTurret>
 		</statBases>
-		<weaponTags Inherit="false">
-			<li>TurretGun</li>
-		</weaponTags>
-		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_Beam</verbClass>
-				<laser>
-					<beamPath>Items/Weapons/Projectile/Bullet_ObeliskBeam</beamPath>
-					<glow>
-						<glowMote>ObeliskGlow</glowMote>
-						<scale>3.5</scale>
-						<rotation>0</rotation>
-						<rotationRate>0</rotationRate>
-					</glow>
-				</laser>
-				<originOffsets>	
-					<li>(0,0,4.5)</li>
-				</originOffsets>
-				<hasStandardCommand>true</hasStandardCommand>
-				<requireLineOfSight>false</requireLineOfSight>
-				<warmupTime>3</warmupTime>
-				<minRange>3</minRange>
-				<range>40</range>
-				<burstShotCount>1</burstShotCount>
-				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
-				<soundAiming>Shot_Nod_ObeliskTail</soundAiming>
-				<soundCast>Shot_Nod_Obelisk</soundCast>
+		<tickerType>Normal</tickerType>
+		<turret>
+			<canForceTarget>true</canForceTarget>
+			<turrets>
+				<li>
+					<graphic>
+						<texPath>Buildings/Nod/Defense/Turrets/Shredder_Base</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+						<drawSize>(2, 2)</drawSize>
+					</graphic>
+					<speed>200</speed>
+					<turretGunDef>Gun_ShredderTurret</turretGunDef>
+					<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
+					<turretBurstCooldownTime>1.5</turretBurstCooldownTime>
+					<barrelOffset>(0,0,1.5)</barrelOffset>
+				</li>
+			</turrets>
+		</turret>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Defense/Turrets/Lights</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2,2)</drawSize>							
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<skip>true</skip>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Defense/Turrets/Shredder_Glow</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2,2)</drawSize>							
+						</data>
+						<altitude>Item</altitude>
+						<mode>Dynamic</mode>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>	
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>1.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<chanceNeverExplodeFromDamage>0.35</chanceNeverExplodeFromDamage>
 			</li>
-		</verbs>
-	</ThingDef>
-
-	<!--
-	<TiberiumRim.FXThingDef ParentName="BaseBullet">
-		<defName>Bullet_ObeliskGun</defName>
-		<label>obelisk laser bullet</label>
-		<graphicData>
-			<texPath>Items/Weapons/Projectile/Bullet_ObeliskBeam</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<extraData>
-			<drawOffset>(0,0,4.65)</drawOffset>
-		</extraData>
-		<projectile>
-			<damageDef>Burn</damageDef>
-			<damageAmountBase>100</damageAmountBase>
-			<explosionRadius>0.025</explosionRadius>
-			<speed>666</speed>
-			<flyOverhead>true</flyOverhead>
-			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
-		</projectile>
-		<thingClass>TiberiumRim.Projectile_Beam</thingClass>
-		
-		<cycleThroughFiringPositions>true</cycleThroughFiringPositions>
-		<preFiringInitialIntensity>0</preFiringInitialIntensity>
-		<preFiringFinalIntensity>3</preFiringFinalIntensity>
-		<postFiringInitialIntensity>3</postFiringInitialIntensity>
-		<postFiringFinalIntensity>0</postFiringFinalIntensity>
-		<preFiringDuration>5</preFiringDuration>
-		<postFiringDuration>65</postFiringDuration>
-		<StartFireChance>0.1</StartFireChance>	
-		<createsExplosion>true</createsExplosion>
-		
-		<drawOffscreen>true</drawOffscreen>
-	</TiberiumRim.FXThingDef>
-	-->
-
-<!--
-  <ThingDef ParentName="BaseBullet">
-    <defName>Bullet_MiniTurret</defName>
-    <label>mini-turret bullet</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <projectile>
-      <damageDef>Bullet</damageDef>
-      <damageAmountBase>10</damageAmountBase>
-      <speed>70</speed>
-    </projectile>
-  </ThingDef>
-
-  <ThingDef ParentName="BaseHumanGun">
-    <defName>Gun_MiniTurret</defName>
-    <label>mini-turret gun</label>
-    <description>A simple automatic gun made to be mounted on a turret.</description>
-    <graphicData>
-      <texPath>Things/Item/Equipment/WeaponRanged/ChargeRifle</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <soundInteract>Interact_Rifle</soundInteract>
-    <menuHidden>true</menuHidden>
-    <destroyOnDrop>true</destroyOnDrop>
-    <tradeability>None</tradeability>
-    <useHitPoints>false</useHitPoints>
-    <statBases>
-      <AccuracyTouch>0.70</AccuracyTouch>
-      <AccuracyShort>0.64</AccuracyShort>
-      <AccuracyMedium>0.41</AccuracyMedium>
-      <AccuracyLong>0.22</AccuracyLong>
-      <RangedWeapon_Cooldown>4.8</RangedWeapon_Cooldown>
-      <DeteriorationRate>0</DeteriorationRate>
-      <Mass>5</Mass>
-      <Flammability>0</Flammability>
-    </statBases>
-    <weaponTags Inherit="false">
-      <li>TurretGun</li>
-    </weaponTags>
-    <verbs>
-      <li>
-        <verbClass>Verb_Shoot</verbClass>
-        <hasStandardCommand>true</hasStandardCommand>
-        <defaultProjectile>Bullet_MiniTurret</defaultProjectile>
-        <warmupTime>0</warmupTime>
-        <range>24.9</range>
-        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
-        <burstShotCount>3</burstShotCount>
-        <soundCast>GunShotA</soundCast>
-        <soundCastTail>GunTail_Light</soundCastTail>
-        <muzzleFlashScale>9</muzzleFlashScale>
-        <consumeFuelPerShot>1</consumeFuelPerShot>
-      </li>
-    </verbs>
-  </ThingDef>
-	-->
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>150</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Shells capacity</fuelLabel>
+				<fuelGizmoLabel>Shells capacity</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>Nod_CarbonPlate</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>100</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.25</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>10</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot shoot: Needs shells charge</outOfFuelMessage>
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<fillPercent>0.3</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<costList>
+			<Nod_CarbonPlate>50</Nod_CarbonPlate>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<specialDisplayRadius>17.9</specialDisplayRadius>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+		</building>
+		<filthLeaving>Filth_Ash</filthLeaving>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_TurretGunTop</li>
+		</placeWorkers>
+		<damageMultipliers>
+			<li>
+				<damageDef>TRRailgun</damageDef>
+				<multiplier>1.5</multiplier>
+			</li>
+		</damageMultipliers>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>
+	
 </Defs>

@@ -10,7 +10,7 @@ namespace TiberiumRim
     public class TiberiumProducerDef : TRThingDef
     {
         public ThingDef killedVersion;
-        public ThingDef skyfaller;
+        public EffecterDefTR effecter;
         public List<TiberiumTerrainDef> tiberiumTerrain = new List<TiberiumTerrainDef>();
         public List<TiberiumCrystalDef> tiberiumTypes = new List<TiberiumCrystalDef>();
         public List<PlantGroupChance> plantsByDistance;

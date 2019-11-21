@@ -78,11 +78,13 @@
     <Compile Include="GameParts\Dialog_SubSetting.cs" />
     <Compile Include="GameParts\Dialog_TiberiumRimSettings.cs" />
     <Compile Include="GameParts\GameComponent_TR.cs" />
+    <Compile Include="GameParts\Interfaces\IContainerHolder.cs" />
     <Compile Include="GameParts\ITab_ContainedPawn_Health.cs" />
     <Compile Include="GameParts\ITab_MechConstruction.cs" />
     <Compile Include="GameParts\IUpgradable.cs" />
     <Compile Include="GameParts\MapComps\WorldComponent_TR.cs" />
     <Compile Include="GameParts\PlaceWorker_DoorFrame.cs" />
+    <Compile Include="GameParts\PlaceWorker_TurretGunTop.cs" />
     <Compile Include="GameParts\PlaceWorker_WallLight.cs" />
     <Compile Include="GameParts\SuperWeaponInfo.cs" />
     <Compile Include="AI\JobDriver_RepairDroneRepair.cs" />
@@ -166,6 +168,8 @@
     <Compile Include="VeinholeParts\VeinholeTunnel.cs" />
     <Compile Include="VeinholeParts\VeinHub.cs" />
     <Compile Include="VeinholeParts\VeinMonster.cs" />
+    <Compile Include="VisualEffects\EffecterDefTR.cs" />
+    <Compile Include="VisualEffects\Effecter_MoteMaker.cs" />
     <Compile Include="VisualEffects\Graphic_RandomSelection.cs" />
     <Compile Include="VisualEffects\Mote_Beam.cs" />
     <Compile Include="VisualEffects\MoverProperties.cs" />
@@ -173,6 +177,7 @@
     <Compile Include="Weaponry\AttackProperties.cs" />
     <Compile Include="Weaponry\Building_GrowthSuppressor.cs" />
     <Compile Include="Weaponry\Building_Obelisk.cs" />
+    <Compile Include="Weaponry\Building_SonicEmitter.cs" />
     <Compile Include="Weaponry\Building_TRTurret.cs" />
     <Compile Include="Weaponry\Comp_ExtraTurret.cs" />
     <Compile Include="Comps\Comp_RepairDrone.cs" />
@@ -188,7 +193,6 @@
     <Compile Include="Weaponry\TurretGun.cs" />
     <Compile Include="Weaponry\TurretProperties.cs" />
     <Compile Include="TiberiumProcessing\CompTNW_WorkBench.cs" />
-    <Compile Include="Weaponry\FXBuilding_Turret.cs" />
     <Compile Include="Weaponry\CompTNW_Turret.cs" />
     <Compile Include="GameParts\Designators\Designator_BuildFixed.cs" />
     <Compile Include="TiberiumProcessing\Gizmo_TiberiumStorage.cs" />

@@ -17,19 +17,17 @@ namespace TiberiumRim
         public float rotation = 0;
         public bool flipUV = false;
 
-        public GraphicDrawInfo(Graphic g, Thing thing, ThingDef def, Vector3 rootPos, Rot4 rot)
+        public GraphicDrawInfo(Graphic g, Vector3 rootPos, Rot4 rot, ExtendedGraphicData exData, ThingDef def = null)
         {
-            FXThingDef fx = def as FXThingDef;
-            ExtendedGraphicData extraData = fx?.extraData;
-            drawMat = g.MatAt(rot, thing);
+            drawMat = g.MatAt(rot);
             //DrawPos
             drawPos = rootPos;
-            if ((extraData?.alignToBottom ?? false) && thing != null)
+            if ((exData?.alignToBottom ?? false) && def != null)
             {
                 drawPos.z += TRUtils.AlignToBottomOffset(def, g.data);
             }
 
-            drawPos += extraData?.drawOffset ?? Vector3.zero;
+            drawPos += exData?.drawOffset ?? Vector3.zero;
             //DrawSize
             drawSize = g.drawSize;
             if (g.ShouldDrawRotated)
@@ -38,7 +36,7 @@ namespace TiberiumRim
             }
             else
             {
-                if (rot.IsHorizontal && (extraData?.rotateDrawSize ?? true))
+                if (rot.IsHorizontal && (exData?.rotateDrawSize ?? true))
                 {
                     drawSize = drawSize.Rotated();
                 }

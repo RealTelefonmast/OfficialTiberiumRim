@@ -77,10 +77,10 @@
 			<li>TurretGun</li>
 		</weaponTags>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>GDI_StandardBullet</defaultProjectile>
+				<defaultProjectile>Bullet_GDIStandard</defaultProjectile>
 				<warmupTime>2.5</warmupTime>
 				<range>24.9</range>
 				<burstShotCount>8</burstShotCount>
@@ -120,8 +120,8 @@
 			<li>TurretGun</li>
 		</weaponTags>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Guardian</defaultProjectile>
 				<warmupTime>2.5</warmupTime>
@@ -164,6 +164,23 @@
 			<li>TurretGun</li>
 		</weaponTags>
 		<verbs>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Emitter</defaultProjectile>
+				<requireLineOfSight>true</requireLineOfSight>
+				<warmupTime>0</warmupTime>
+				<minRange>2.49</minRange>
+				<range>40</range>
+				<forcedMissRadius>0.5</forcedMissRadius>
+				<burstShotCount>1</burstShotCount>
+				<soundCast>Shot_GDI_Sonic</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>0</muzzleFlashScale>
+				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+				<consumeFuelPerShot>1</consumeFuelPerShot>
+			</li>
+			<!--
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
@@ -181,6 +198,7 @@
 				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
 				<consumeFuelPerShot>0.25</consumeFuelPerShot>
 			</li>
+			-->
 		</verbs>
 	</ThingDef>
 

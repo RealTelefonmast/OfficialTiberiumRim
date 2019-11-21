@@ -189,6 +189,9 @@
 				<laser>
 					<beamPath>Items/Weapons/Projectile/Bullet_Railshot</beamPath>
 				</laser>
+				<originOffsets>	
+					<li>(0, 0, 0.7)</li>
+				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<requireLineOfSight>false</requireLineOfSight>
 				<warmupTime>2</warmupTime>

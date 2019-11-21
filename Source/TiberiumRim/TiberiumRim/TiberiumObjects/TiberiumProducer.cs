@@ -18,6 +18,9 @@ namespace TiberiumRim
         private int lastFieldCells = 0;
         private bool isGroundZero = false;
 
+        private Effecter_MoteMaker effectMaker;
+        private IEnumerator<IntVec3> effecterCells;
+
         //Ticker
         private int ticksToSpawn = 0;
         private int ticksToSpore = 0;
@@ -80,6 +83,9 @@ namespace TiberiumRim
             def = base.def as TiberiumProducerDef;
 
             SetPotentialFieldCells();
+            if (def.effecter != null)
+                effectMaker = new Effecter_MoteMaker(def.effecter);
+            
 
             if (respawningAfterLoad) return;
             ResetTiberiumCounter();
@@ -163,6 +169,15 @@ namespace TiberiumRim
             base.Tick();
             if (!Spawned)
                 return;
+
+            if(effectMaker != null && GenTicks.TicksGame % 750 == 0)
+            {
+                foreach (IntVec3 cell in FieldCells)
+                {
+                    var effectPos = new TargetInfo(cell, Map);
+                    effectMaker.Tick(effectPos, effectPos);
+                }
+            }
 
             if (ResearchBound)
             {

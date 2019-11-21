@@ -83,6 +83,10 @@
 		<hasInteractionCell>false</hasInteractionCell>	
 	</TiberiumRim.TRThingDef>
 	
+	<TiberiumRim.TRThingDef Abstract="True" Name="TurretBase_TR" ParentName="BuildingBase_TR">
+		
+	</TiberiumRim.TRThingDef>
+	
 	<!-- Natural -->
 	
 	<TiberiumRim.TRThingDef Abstract="True" Name="BuildingNaturalBase_TR" ParentName="BuildingBase_TR">
@@ -166,9 +170,5 @@
 		<blockPlants>true</blockPlants>	
 		<drawDamagedOverlay>false</drawDamagedOverlay>
 	</TiberiumRim.TiberiumProducerDef>
-	
-	<TiberiumRim.TRThingDef Abstract="True" Name="TurretBase_TR" ParentName="BuildingBase_TR">
-		
-	</TiberiumRim.TRThingDef>
 	
 </Defs>

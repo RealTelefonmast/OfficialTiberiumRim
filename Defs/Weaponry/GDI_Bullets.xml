@@ -73,7 +73,7 @@
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Bullet_Jugg</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>0.85</drawSize>
+			<drawSize>1.5</drawSize>
 		</graphicData>
 		<projectile>
 			<damageDef>Bullet</damageDef>
@@ -88,18 +88,17 @@
 		<defName>Bullet_Emitter</defName>
 		<label>sonic wave</label>
 		<graphicData>
-			<texPath>Items/Weapons/Projectile/Sonic</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
-			<shaderType>TransparentPostLight</shaderType>
-			<drawSize>1.5</drawSize>
+			<texPath>Items/Weapons/Gun_Blank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1</drawSize>
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
 			<damageDef>TRSonic</damageDef>
-			<damageAmountBase>8</damageAmountBase>
+			<damageAmountBase>12</damageAmountBase>
 			<explosionRadius>1.1</explosionRadius>
 			<stoppingPower>0.5</stoppingPower>
-			<speed>35</speed>
+			<speed>25</speed>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
 	</ThingDef>

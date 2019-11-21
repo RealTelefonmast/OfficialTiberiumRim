@@ -16,7 +16,7 @@ namespace TiberiumRim
         public override Color[] ColorOverrides => new Color[1] { Color.white };
         public override float[] OpacityFloats => new float[1] { 1f };
         public override float?[] RotationOverrides => new float?[1] { null };
-        public override bool[] DrawBools => new bool[4] { true , bools[0], bools[1], bools[2] };
+        public override bool[] DrawBools => new bool[4] { true , bools[0], bools[1], true };
         public override bool ShouldDoEffecters => true;
 
         public override void Tick()
@@ -46,14 +46,6 @@ namespace TiberiumRim
         {
             foreach (var g in base.GetGizmos())
                 yield return g;
-
-            yield return new Command_Action{
-                defaultLabel = "center glow",
-                action = delegate
-                {
-                    bools[2] = !bools[2];
-                }
-            };
         }
     }
 }

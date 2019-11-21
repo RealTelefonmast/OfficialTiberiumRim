@@ -11,6 +11,7 @@ namespace TiberiumRim
     public class TiberiumContainer : IExposable
     {
         public object parent;
+        public IContainerHolder holder;
         public float capacity;
         public IntRange pressure = new IntRange(0, 100);
 
@@ -27,9 +28,16 @@ namespace TiberiumRim
             this.parent = parent;
         }
 
-        public TiberiumContainer(float capacity, List<TiberiumValueType> types, object parent = null)
+        public TiberiumContainer(Thing parent, IContainerHolder holder)
         {
             this.parent = parent;
+            this.holder = holder;
+        }
+
+        public TiberiumContainer(float capacity, List<TiberiumValueType> types, object parent = null, IContainerHolder holder = null)
+        {
+            this.parent = parent;
+            this.holder = holder;
             this.capacity = capacity;
             if (!types.NullOrEmpty())
                 AcceptedTypes = types;
@@ -53,6 +61,11 @@ namespace TiberiumRim
             Scribe_Collections.Look(ref StoredTiberium, "StoredTiberium");
             Scribe_Collections.Look(ref AcceptedTypes, "types");
             Scribe_Values.Look(ref capacity, "capacity");
+        }
+
+        public void Notify_Full()
+        {
+            holder?.Notify_ContainerFull();
         }
 
         public void Clear()
@@ -87,7 +100,10 @@ namespace TiberiumRim
             excessValue = Mathf.Clamp(potentialTotal - capacity, 0, float.PositiveInfinity);
             var actualValue = wantedValue;
             if (CapacityFull || !AcceptsType(valueType))
+            {
+                Notify_Full();
                 return false;
+            }
 
             if (excessValue > 0)
                 actualValue = wantedValue - excessValue;
@@ -97,6 +113,8 @@ namespace TiberiumRim
             else
                 StoredTiberium.Add(valueType, actualValue);
 
+            if(CapacityFull)
+                Notify_Full();
             return true;
         }
 

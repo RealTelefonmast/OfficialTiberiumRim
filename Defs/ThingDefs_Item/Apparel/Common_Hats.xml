@@ -54,7 +54,7 @@
 		<label>abandoned mask</label>
 		<description>This mask was found on a long dessicated corpse. The origin is unknown, but looking around the chamber we have found various writing and leftovers of meal packages. Whoever this belonged to, tried his very best to survive.</description>
 		<graphicData>
-			<texPath>Items/Apparel/TiberiumProtectionSuit/Rev/RavensMask</texPath>
+			<texPath>Items/Apparel/TiberiumProtectionSuit/Extra/RavensMask</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 		</graphicData>
 		<statBases>

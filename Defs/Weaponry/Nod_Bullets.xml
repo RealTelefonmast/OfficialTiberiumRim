@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Turrets -->
+	
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Shredder</defName>
+		<label>shredder burst</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Shredder</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.75</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<stoppingPower>0.5</stoppingPower>
+			<speed>45</speed>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_NodStandard</defName>
+		<label>bullet</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Base_Nod</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.1</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<stoppingPower>0.25</stoppingPower>
+			<speed>65</speed>
+		</projectile>
+	</ThingDef>
+
+</Defs>

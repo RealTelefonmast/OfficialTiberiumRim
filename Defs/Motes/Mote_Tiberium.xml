@@ -73,6 +73,7 @@
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 	</ThingDef>
 	
+	<!-- Tiberium Fog Center -->
 	<ThingDef ParentName="TiberiumFog">
 		<defName>TiberiumFogG</defName>
 		<graphicData>
@@ -95,6 +96,33 @@
 			<color>(255,15,115,75)</color>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
+	</ThingDef>
+	
+	<!-- Tiberium Field Fog-->
+	<ThingDef ParentName="TiberiumFog">
+		<defName>TiberiumFieldFogG</defName>
+		<graphicData>
+			<color>(15,255,55,45)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>5</fadeInTime>
+			<solidTime>30</solidTime>
+			<fadeOutTime>5</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumFog">
+		<defName>TiberiumFieldFogB</defName>
+		<graphicData>
+			<color>(15,125,255,45)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>5</fadeInTime>
+			<solidTime>30</solidTime>
+			<fadeOutTime>5</fadeOutTime>
+		</mote>
 	</ThingDef>
 	
 	<ThingDef ParentName="MoteBase_TR">

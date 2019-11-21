@@ -13,7 +13,7 @@ namespace TiberiumRim
         public FactionDesignationDef factionDesignation = FactionDesignationDefOf.Tiberium;
         public TRThingCategoryDef TRCategory = TRCategoryDefOf.Invalid;
         public GraphicData extraGraphicData;
-        public TurretProperties turret;
+        public TurretHolderProps turret;
         public ProjectileProperties_Extended projectileExtended;
         public SuperWeaponProperties superWeapon;
         public TerrainDef makesTerrain;

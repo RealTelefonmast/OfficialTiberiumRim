@@ -191,6 +191,14 @@
 					</li>
 					<li>
 						<data>
+							<texPath>Buildings/GDI/Production/Refinery/Grid</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(5.5,5.5)</drawSize>
+						</data>
+						<directAltitudeOffset>0.25</directAltitudeOffset>
+					</li>
+					<li>
+						<data>
 							<texPath>Buildings/GDI/Production/Refinery/RefConnector</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(5.5,5.5)</drawSize>

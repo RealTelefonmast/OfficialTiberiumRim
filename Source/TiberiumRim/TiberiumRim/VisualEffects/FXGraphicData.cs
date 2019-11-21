@@ -12,9 +12,11 @@ namespace TiberiumRim
     {
         public GraphicData data;
         public PulseProperties pulse = new PulseProperties();
+        public float? directAltitudeOffset = null;
         public AltitudeLayer? altitude = null;
         public FXMode mode = FXMode.Static;
         public bool needsPower = false;
+        public bool skip = false;
         public int startOffset = 0;
         public int endOffset = 5;
         public int moveSpeed = 1;

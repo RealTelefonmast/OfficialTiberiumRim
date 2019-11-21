@@ -21,5 +21,10 @@ namespace TiberiumRim
                 return cells;
             }
         }
+
+        public override void Notify_ContainerFull()
+        {
+            GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.SILOSNEEDED);
+        }
     }
 }

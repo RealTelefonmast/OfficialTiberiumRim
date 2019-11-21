@@ -65,6 +65,21 @@
 		<drawOffscreen>true</drawOffscreen>
 	</ThingDef>
 	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_Nuke</defName>
+		<graphicData>
+			<texPath>Motes/TiberiumGas</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>4</fadeInTime>
+			<solidTime>0</solidTime>
+			<fadeOutTime>8</fadeOutTime>
+			<growthRate>0.8</growthRate>
+		</mote>
+		<drawOffscreen>true</drawOffscreen>
+	</ThingDef>
 	
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>IonBeamBurn</defName>

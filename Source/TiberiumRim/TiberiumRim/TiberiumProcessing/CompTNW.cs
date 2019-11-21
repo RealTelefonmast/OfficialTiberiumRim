@@ -16,7 +16,7 @@ namespace TiberiumRim
         Producer
     }
 
-    public class CompTNW : ThingComp, IFXObject
+    public class CompTNW : ThingComp, IFXObject, IContainerHolder
     {
         public CompPowerTrader CompPower;
         public CompFlickable CompFlick;
@@ -37,7 +37,7 @@ namespace TiberiumRim
 
         public override void PostExposeData()
         {
-            Scribe_Deep.Look(ref container, "container", new object[] { this.parent });
+            Scribe_Deep.Look(ref container, "container", new object[] { this.parent, this });
             base.PostExposeData();
         }
 
@@ -46,7 +46,7 @@ namespace TiberiumRim
             base.PostSpawnSetup(respawningAfterLoad);
             if (!respawningAfterLoad)
             {
-                Container = new TiberiumContainer(Props.maxStorage, Props.supportedTypes, this.parent);
+                Container = new TiberiumContainer(Props.maxStorage, Props.supportedTypes, this.parent, this);
             }
             CompPower = parent.TryGetComp<CompPowerTrader>();
             CompFlick = parent.TryGetComp<CompFlickable>();
@@ -152,6 +152,10 @@ namespace TiberiumRim
                     }
                 }
             }
+        }
+
+        public virtual void Notify_ContainerFull()
+        {
         }
 
         public TiberiumNetwork Network

@@ -19,20 +19,32 @@ namespace TiberiumRim
         public int blinkDuration = 0;
         public int index = 0;
 
+        private bool unused;
         private Material ShaderMaterial;
+        
 
         public FXGraphic(CompFX parent, FXGraphicData data, int index)
         {
-            Log.Message(index + " '" + data.data.texPath + "'");
+            Log.Message(index + " '" + data.data?.texPath + "'");
             this.parent = parent;
             this.data = data;
             this.index = index;
-            this.altitude = data.altitude.HasValue ? data.altitude.Value.AltitudeFor() : (parent.parent.def.altitudeLayer.AltitudeFor() + (0.125f * (index + 1)));
+            if (data.skip)
+            {
+                unused = true;
+                return;
+            }
+            if (data.directAltitudeOffset.HasValue)
+                this.altitude = parent.parent.def.altitudeLayer.AltitudeFor() + data.directAltitudeOffset.Value;
+            else
+                this.altitude = data.altitude.HasValue ? data.altitude.Value.AltitudeFor() : (parent.parent.def.altitudeLayer.AltitudeFor() + (0.125f * (index + 1)));
             ShaderMaterial = new Material(TiberiumContent.AlphaShaderMaterial);
         }
 
         public void Tick()
         {
+            if (unused)
+                return;
             if (ticksToBlink > 0 && blinkDuration == 0)
                 ticksToBlink--;
             else
@@ -56,7 +68,6 @@ namespace TiberiumRim
             {
                 Color color = parent.ColorOverride(index);              
                 color = color == Color.white ? data.data.color : color;
-                color.a = parent.OpacityFloat(index);
                 var size = data.data.drawSize;
                 if (graphicInt == null)
                 {
@@ -100,8 +111,9 @@ namespace TiberiumRim
                         color.a = opaVal;
                         graphicInt.drawSize = size * sizeVal;
                     }
-                }       
-                if(color != graphicInt.Color)
+                }
+                color.a *= parent.OpacityFloat(index);
+                if (color != graphicInt.Color)
                     graphicInt = graphicInt.GetColoredVersion(graphicInt.Shader, color, data.data.colorTwo);
                 return graphicInt;
             }
@@ -109,7 +121,7 @@ namespace TiberiumRim
 
         public void Draw(Vector3 drawPos, Rot4 rot, float? rotation, int index)
         {
-            GraphicDrawInfo info = new GraphicDrawInfo(Graphic, parent.parent, parent.parent.def, drawPos, rot);
+            GraphicDrawInfo info = new GraphicDrawInfo(Graphic, drawPos, rot, ((FXThingDef)parent.parent.def).extraData, parent.parent.def);
             Material mat = info.drawMat;
             int renderqueue = mat.renderQueue;
             if (data.mode == FXMode.Mover)
@@ -126,7 +138,7 @@ namespace TiberiumRim
 
         public void Print(SectionLayer layer, Vector3 drawPos, Rot4 rot, float? rotation, Thing parent)
         {
-            var info = new GraphicDrawInfo(Graphic, parent, parent.def, drawPos, rot);
+            var info = new GraphicDrawInfo(Graphic, drawPos, rot, ((FXThingDef)parent.def).extraData, parent.def);
             Printer_Plane.PrintPlane(layer, new Vector3(info.drawPos.x, altitude, info.drawPos.z), info.drawSize, info.drawMat, rotation ?? info.rotation, info.flipUV);
         }
     }

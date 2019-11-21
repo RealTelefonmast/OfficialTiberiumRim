@@ -214,13 +214,11 @@ namespace TiberiumRim
         private bool CanDraw(int index)
         {
             if (!DrawBool(index) || OpacityFloat(index) <= 0)
-            {
                 return false;
-            }
+            if (Graphics[index].data.skip)
+                return false;
             if (Graphics[index].data.needsPower && !(CompPower?.PowerOn ?? false))
-            {
                 return false;
-            }
             return true;
         }
 

@@ -349,22 +349,22 @@ namespace TiberiumRim
             return diff / 2;
         }
 
-        public static void Draw(Graphic graphic, Vector3 drawPos, Rot4 rot, float? rotation, ThingWithComps thing, FXThingDef fxDef)
+        public static void Draw(Graphic graphic, Vector3 drawPos, Rot4 rot, float? rotation, FXThingDef fxDef)
         {
-            GraphicDrawInfo info = new GraphicDrawInfo(graphic, thing, fxDef, drawPos, rot);
-            Log.Message("DrawSize: " + info.drawSize + " Rotation: " + info.rotation);
-            Graphics.DrawMesh(info.drawMesh, info.drawPos, info.rotation.ToQuat(), info.drawMat,0);
+            GraphicDrawInfo info = new GraphicDrawInfo(graphic, drawPos, rot, fxDef?.extraData, fxDef);
+            Log.Message("DrawSize: " + info.drawSize + " Rotation: " + (rotation?.ToQuat() ?? info.rotation.ToQuat()));
+            Graphics.DrawMesh(info.drawMesh, info.drawPos, rotation?.ToQuat() ?? info.rotation.ToQuat(), info.drawMat,0);
             //Graphics.DrawMesh(graphic.MeshAt(rot), new Vector3(info.drawPos.x, fxDef.altitudeLayer.AltitudeFor(), info.drawPos.z), rotation?.ToQuat() ?? info.rotation.ToQuat(), mat, 0);
         }
 
-        public static void Print(SectionLayer layer, Graphic graphic, ThingWithComps thing, ThingDef fxDef)
+        public static void Print(SectionLayer layer, Graphic graphic, ThingWithComps thing, FXThingDef fxDef)
         {
             if (graphic is Graphic_Linked || graphic is Graphic_Appearances)
             {
                 graphic.Print(layer, thing);
                 return;
             }
-            GraphicDrawInfo info = new GraphicDrawInfo(graphic, thing, fxDef, thing.DrawPos, thing.Rotation);
+            GraphicDrawInfo info = new GraphicDrawInfo(graphic, thing.DrawPos, thing.Rotation, fxDef.extraData, fxDef);
             Printer_Plane.PrintPlane(layer, info.drawPos, info.drawSize, info.drawMat, info.rotation, info.flipUV, null, null, 0.01f, 0f);
             if (graphic.ShadowGraphic != null && thing != null)
             {

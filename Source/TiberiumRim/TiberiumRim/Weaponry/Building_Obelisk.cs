@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace TiberiumRim
 {
-    public class Building_Obelisk : Building_TurretGun, IFXObject
+    public class Building_Obelisk : Building_TRTurret
     {
         private float chargeAmount = 0;
 
@@ -16,16 +16,17 @@ namespace TiberiumRim
         {
             get
             {
-
-                float ticks = def.building.turretBurstWarmupTime.SecondsToTicks();
+                float ticks = MainGun.props.turretBurstWarmupTime.SecondsToTicks();
                 return Mathf.InverseLerp(0, ticks, chargeAmount);
             }
         }
 
+        public override LocalTargetInfo CurrentTarget => MainGun.CurrentTarget;
+
         public override void Tick()
         {
             base.Tick();
-            if (burstCooldownTicksLeft <= 0 && CurrentTarget.IsValid && !CurrentTarget.ThingDestroyed && chargeAmount < def.building.turretBurstWarmupTime.SecondsToTicks())
+            if (MainGun.burstWarmupTicksLeft > 0 && CurrentTarget.IsValid && !CurrentTarget.ThingDestroyed && chargeAmount < MainGun.props.turretBurstWarmupTime.SecondsToTicks())
             {
                 chargeAmount++;
             }
@@ -35,19 +36,19 @@ namespace TiberiumRim
             }
         }
 
-        public ExtendedGraphicData ExtraData => (def as FXThingDef).extraData;
+        public override ExtendedGraphicData ExtraData => (def as FXThingDef).extraData;
 
-        public virtual Vector3[] DrawPositions => new Vector3[] { base.DrawPos, base.DrawPos };
-        public virtual Color[] ColorOverrides => new Color[] { Color.white, Color.white };
-        public virtual float[] OpacityFloats => new float[] { 1f, ObeliskCharge };
-        public virtual float?[] RotationOverrides => new float?[] { null , null};
-        public virtual bool[] DrawBools => new bool[] { true, chargeAmount > 0 };
-        public virtual bool ShouldDoEffecters => true;
+        public override Vector3[] DrawPositions => new Vector3[] { base.DrawPos, base.DrawPos };
+        public override Color[] ColorOverrides => new Color[] { Color.white, Color.white };
+        public override float[] OpacityFloats => new float[] { 1f, ObeliskCharge };
+        public override float?[] RotationOverrides => new float?[] { null , null};
+        public override bool[] DrawBools => new bool[] { true, chargeAmount > 0 };
+        public override bool ShouldDoEffecters => true;
 
         public override void Draw()
         {
             base.Draw();
-            if (CurrentTarget.Thing is Pawn p)
+            if (CurrentTarget.IsValid && CurrentTarget.Thing is Pawn p)
             {
                 DrawMarkedForDeath(p);
             }
