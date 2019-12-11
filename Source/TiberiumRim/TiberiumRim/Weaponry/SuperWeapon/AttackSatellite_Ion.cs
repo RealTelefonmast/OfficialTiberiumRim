@@ -32,6 +32,7 @@ namespace TiberiumRim
             composition.CacheMap(target);
             composition.AddPart(delegate
             {
+                GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.IonCannonActivated);
                 composition.target.Map.weatherManager.TransitionTo(WeatherDef.Named("Rain"));
             },0);
             composition.AddPart(delegate
@@ -40,7 +41,7 @@ namespace TiberiumRim
                 IonCannon_Strike strike = (IonCannon_Strike)ThingMaker.MakeThing(ThingDef.Named("IonCannonStrike"));
                 strike.satellite = this;
                 GenSpawn.Spawn(strike, composition.target.Cell, composition.target.Map);
-            }, 10);
+            }, 2);
             composition.AddPart(delegate
             {
                 composition.target.Map.weatherManager.TransitionTo(WeatherDef.Named("Fog"));

@@ -67,7 +67,6 @@
 		<defName>GDI_Hangar</defName>
 		<label>GDI hangar</label>
 		<description>This hangar is used for mechanical unit construction.</description>
-		<thingClass>Building</thingClass>
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Processing</TRCategory>
 		<size>(5,5)</size>
@@ -134,13 +133,13 @@
 		<castEdgeShadows>true</castEdgeShadows>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<fillPercent>1</fillPercent>
-		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="RefineryBase_TR">
-		<defName>TiberiumRefineryGDI</defName>
+		<defName>GDI_TiberiumRefinery</defName>
 		<label>tiberium refinery (GDI)</label>
 		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
 		<size>(5,5)</size>
@@ -163,7 +162,7 @@
 		<comps>
 			<li Class="TiberiumRim.RefineryProperties">
 				<harvester>Harvester_GDI</harvester>
-				<maxStorage>2000</maxStorage>
+				<maxStorage>4000</maxStorage>
 				<tnwbMode>Producer</tnwbMode>
 			</li>
 			<li Class="TiberiumRim.CompProperties_MechStation">
@@ -270,6 +269,9 @@
 						<mode>Dynamic</mode>
 					</li>
 					<li>
+						<skip>true</skip>
+					</li>
+					<li>
 						<data>
 							<texPath>Buildings/GDI/Production/PowerPlant/Core</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
@@ -288,6 +290,22 @@
 						<needsPower>true</needsPower>
 					</li>
 				</overlays>
+				<moteData>
+					<northVec>
+						<li>(0,0,0.75)</li>
+					</northVec>
+					<thrower>
+						<moteDef>TiberiumSmokeMote</moteDef>
+						<speed>1.75</speed>
+						<scale>3~4</scale>
+						<rotation>0~90</rotation>
+						<rotationRate>0.1</rotationRate>
+						<angle>0~50</angle>
+						<burstCount>1</burstCount>
+						<affectedByWind>true</affectedByWind>
+						<moteInterval>25~50</moteInterval>
+					</thrower>
+				</moteData>
 			</li>
 			<li Class="TiberiumRim.PowerProperties">
 				<compClass>TiberiumRim.CompTNW_Power</compClass>
@@ -301,24 +319,6 @@
 				<consumeAmt>1000</consumeAmt>
 				<daysPerLoad>7</daysPerLoad>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
-				<moteData>
-					<northVec>
-						<li>(0,0,0.5)</li>
-					</northVec>
-					<thrower>
-						<moteDef>TiberiumSmokeMote</moteDef>
-						<speed>1.5</speed>
-						<scale>2</scale>
-						<rotation>0~90</rotation>
-						<rotationRate>0.1</rotationRate>
-						<angle>0~50</angle>
-						<burstCount>1</burstCount>
-						<affectedByWind>true</affectedByWind>
-						<moteInterval>25~50</moteInterval>
-					</thrower>
-				</moteData>
-			</li>
 			<li Class="CompProperties_Flickable" />	
 			<li Class="CompProperties_Breakdownable"/>
 			<li Class="CompProperties_HeatPusher">
@@ -327,7 +327,7 @@
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>TiberiumRim.CompPower_Tiberium</compClass>
-				<basePowerConsumption>-3500</basePowerConsumption>
+				<basePowerConsumption>-4000</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
 			</li>
 		</comps>

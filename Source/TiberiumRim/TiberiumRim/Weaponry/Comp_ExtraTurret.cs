@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using RimWorld;
 using Verse;
 
 namespace TiberiumRim
@@ -11,12 +12,19 @@ namespace TiberiumRim
         public List<TurretGun> turrets = new List<TurretGun>();
 
         public List<LocalTargetInfo> CurrentTargets => throw new NotImplementedException();
-        public LocalTargetInfo FocusedTarget => throw new NotImplementedException();
+        public LocalTargetInfo CurrentTarget => throw new NotImplementedException();
         public bool PlayerControlled => throw new NotImplementedException();
         public bool CanSetForcedTarget => throw new NotImplementedException();
         public bool CanToggleHoldFire => throw new NotImplementedException();
         public bool HoldingFire => throw new NotImplementedException();
+        public bool MannedByColonist => false;
 
+        public CompRefuelable RefuelComp => throw new NotImplementedException();
+        public CompPowerTrader PowerComp => throw new NotImplementedException();
+        public CompMannable MannableComp => null;
+        public StunHandler Stunner => throw new NotImplementedException();
+
+        public bool IsReady => throw new NotImplementedException();
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
@@ -34,7 +42,7 @@ namespace TiberiumRim
             base.CompTick();
             foreach (TurretGun turret in turrets)
             {
-                turret.TurretTick();
+                turret.TurretTick(false);
             }
         }
 

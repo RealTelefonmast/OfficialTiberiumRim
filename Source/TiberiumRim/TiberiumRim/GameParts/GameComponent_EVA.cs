@@ -253,7 +253,7 @@ namespace TiberiumRim
                 UpdateTargets();
                 return;
             }
-            Log.Message("Can't be played - wait " + (settings.TimeFor(signal) - (tickSinceStart - LastPlayed[signal])) + " ticks");
+            //Log.Message("Can't be played - wait " + (settings.TimeFor(signal) - (tickSinceStart - LastPlayed[signal])) + " ticks");
         }
     }
 

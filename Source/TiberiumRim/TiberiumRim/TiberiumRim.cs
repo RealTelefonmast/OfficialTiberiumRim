@@ -117,8 +117,8 @@ namespace TiberiumRim
                     TRThingDefList.Add(def);
                     ThingDef blueprint = TRUtils.MakeNewBluePrint(def, false, null);
                     ThingDef frame = TRUtils.MakeNewFrame(def);
-                    DefGenerator.AddImpliedDef<ThingDef>(blueprint);
-                    DefGenerator.AddImpliedDef<ThingDef>(frame);
+                    DefGenerator.AddImpliedDef(blueprint);
+                    DefGenerator.AddImpliedDef(frame);
                     if (def.Minifiable)
                     {
                         ThingDef mini = TRUtils.MakeNewBluePrint(def, true, blueprint);

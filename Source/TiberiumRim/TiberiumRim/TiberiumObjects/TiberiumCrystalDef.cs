@@ -10,13 +10,16 @@ namespace TiberiumRim
     public class TiberiumCrystalDef : TRThingDef
     {
         public TiberiumCrystalProperties tiberium;
+
         //Corruptions
         public ThingDef monolith;
         public ThingDef rock;
         public ThingDef wall;
         public ThingDef chunk;
+
         //Terrain
         public TerrainDef dead;
+        public TiberiumTerrainDef plantTerrain;
         public List<TerrainSupport> supportsTerrain = new List<TerrainSupport>();
 
         public TiberiumCrystalDef() : base()

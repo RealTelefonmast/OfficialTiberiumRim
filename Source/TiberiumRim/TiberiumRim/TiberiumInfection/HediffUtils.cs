@@ -50,14 +50,14 @@ namespace TiberiumRim
             return def.lethalFlesh || def.lethalMechanoids;
         }
 
-        public static bool IsTiberiumPart(this Hediff hediff)
+        public static bool IsTiberiumHediff(this Hediff hediff)
         {
             return hediff is Hediff_Crystallizing || hediff is Hediff_Mutation || hediff is Hediff_TiberiumPart tp;
         }
 
         public static IEnumerable<BodyPartRecord> GetWanderParts(this HediffSet set, Hediff_Mutation mutation)
         {
-            return from x in set.pawn.def.race.body.AllParts where !set.hediffs.Any(h => h.Part == x && (h.IsTiberiumPart() || h is Hediff_MissingPart)) select x;
+            return from x in set.pawn.def.race.body.AllParts where !set.hediffs.Any(h => h.Part == x && (h.IsTiberiumHediff() || h is Hediff_MissingPart)) select x;
 
             //Obsolete 
             /*
@@ -241,6 +241,7 @@ namespace TiberiumRim
             return damageFactor > 0f;
         }
 
+        //TODO: 
         public static void TryAffectPawn(Pawn pawn, TiberiumCrystal crystal, bool isGas, int perTicks)
         {
             Log.Message("Trying to affect " + pawn);
@@ -250,7 +251,7 @@ namespace TiberiumRim
 
             float numRad = 0.00013f * perTicks;
             numRad *= 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumRadiationResistance);
-            Log.Message("Infection Value: " + numCryst + " Radiation Value: " + numRad);
+            //Log.Message("Infection Value: " + numCryst + " Radiation Value: " + numRad);
             if (crystal.def.tiberium.radiates)
                 TryIrradiate(pawn, numRad);
 
@@ -260,7 +261,7 @@ namespace TiberiumRim
             List<BodyPartRecord> PossibleBodyParts = isGas ? PossibleBodyParts = tibCheck.partsForGas : PossibleBodyParts = tibCheck.partsForInfection;
             BodyPartRecord selectedPart = PossibleBodyParts.RandomElement();
 
-            //GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.TiberiumExposure);
+            GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.TiberiumExposure);
             if (TryFormVisceralPod(pawn, numCryst)) return;
             if (TouchedCrystal(pawn, selectedPart))
                 TryInfect(pawn, selectedPart, numCryst);
@@ -293,7 +294,7 @@ namespace TiberiumRim
             chance *= pawn.health.hediffSet.GetFirstHediffOfDef(TRHediffDefOf.TiberiumExposure)?.Severity ?? 0f;
             chance *= 0.05f;
             chance *= num;
-            Log.Message("Visceral Pod Chance: " + chance);
+            //Log.Message("Visceral Pod Chance: " + chance);
             if (!TRUtils.Chance(chance)) return false;
             IntVec3 loc = pawn.Position;
             Map map = pawn.Map;
@@ -346,9 +347,9 @@ namespace TiberiumRim
 
         public static bool TouchedCrystal(Pawn pawn, BodyPartRecord part)
         {
-            float chance = TRUtils.Value;
+            float chance = TRUtils.RandValue;
             chance += pawn.GetStatValue(StatDefOf.MeleeDodgeChance) * 0.5f;
-            Log.Message("Dodge Chance: " + chance);
+            //Log.Message("Dodge Chance: " + chance);
             if (part.CanBeHit() && TRUtils.Chance(chance))
             {
                 var dinfo = new DamageInfo(TRDamageDefOf.TiberiumBurn, chance * 6f, 0, -1, null, part);

@@ -28,8 +28,13 @@
 			<li>TurretGun</li>
 		</weaponTags>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>	
+					<li>(-0.45,0,1)</li>
+					<li>( 0.00,0,1)</li>
+					<li>( 0.45,0,1)</li>
+				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Juggernaut</defaultProjectile>
 				<warmupTime>0</warmupTime>
@@ -165,7 +170,7 @@
 		</weaponTags>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>Verb_Shoot</verbClass>
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Emitter</defaultProjectile>
 				<requireLineOfSight>true</requireLineOfSight>
@@ -180,25 +185,6 @@
 				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
 				<consumeFuelPerShot>1</consumeFuelPerShot>
 			</li>
-			<!--
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
-				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Bullet_Emitter</defaultProjectile>
-				<requireLineOfSight>true</requireLineOfSight>
-				<warmupTime>2.5</warmupTime>
-				<minRange>4.9</minRange>
-				<range>24.9</range>
-				<forcedMissRadius>0.5</forcedMissRadius>
-				<burstShotCount>8</burstShotCount>
-				<ticksBetweenBurstShots>2.5</ticksBetweenBurstShots>
-				<soundCast>Shot_GDI_Sonic</soundCast>
-				<soundCastTail>GunTail_Heavy</soundCastTail>
-				<muzzleFlashScale>10</muzzleFlashScale>
-				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
-				<consumeFuelPerShot>0.25</consumeFuelPerShot>
-			</li>
-			-->
 		</verbs>
 	</ThingDef>
 

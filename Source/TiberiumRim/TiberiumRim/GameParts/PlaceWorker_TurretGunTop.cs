@@ -15,7 +15,7 @@ namespace TiberiumRim
             TRThingDef trDef = def as TRThingDef;
             foreach(TurretProperties turret in trDef.turret.turrets)
             {
-                Graphic graphic = GhostUtility.GhostGraphicFor(turret.graphic.Graphic, def, ghostCol);
+                Graphic graphic = GhostUtility.GhostGraphicFor(turret.turretTop.turret.Graphic, def, ghostCol);
                 graphic.DrawFromDef(GenThing.TrueCenter(loc, rot, def.Size, AltitudeLayer.MetaOverlays.AltitudeFor()) + turret.drawOffset, rot, def, 0f);
             }
         }

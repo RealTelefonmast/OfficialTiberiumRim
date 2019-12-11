@@ -9,7 +9,7 @@
 		<description>This advanced GDI defensive structure fires a 3 shot burst of shells. The juggernaut has been known as one of the most devastating walkers in the early Tiberium wars, destroying base after base with ease. This version is less mobile but just as devastating.\n\nOnly one can be built./n/n(currently only shoots one shell, which has increased damage and explosion radius)</description>
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Defense</TRCategory>
-		<thingClass>Building_TurretGun</thingClass>
+		<thingClass>TiberiumRim.Building_TRTurret</thingClass>
 		<size>(3,3)</size>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/Juggernaut/Base</texPath>
@@ -36,6 +36,54 @@
 			<ShootingAccuracyTurret>1</ShootingAccuracyTurret>
 		</statBases>
 		<tickerType>Normal</tickerType>
+		<turret>
+			<canForceTarget>true</canForceTarget>
+			<turrets>
+				<li>
+					<turretTop>
+						<turret>
+							<texPath>Buildings/GDI/Defense/Juggernaut/Turret_Base</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(4,4)</drawSize>
+						</turret>
+						<barrels>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Juggernaut/Barrel_b1</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(4,4)</drawSize>
+								</graphic>
+								<altitudeOffset>0.5</altitudeOffset>
+								<recoilOffset>(0,0,-0.5)</recoilOffset>
+							</li>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Juggernaut/Barrel_b2</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(4,4)</drawSize>
+								</graphic>
+								<altitudeOffset>0.5</altitudeOffset>
+								<recoilOffset>(0,0,-0.5)</recoilOffset>
+							</li>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Juggernaut/Barrel_b3</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(4,4)</drawSize>
+								</graphic>
+								<altitudeOffset>0.5</altitudeOffset>
+								<recoilOffset>(0,0,-0.5)</recoilOffset>
+							</li>
+						</barrels>
+						<speed>65</speed>
+						<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
+					</turretTop>
+					<turretGunDef>Gun_Juggernaut</turretGunDef>
+					<turretBurstWarmupTime>5</turretBurstWarmupTime>
+					<turretBurstCooldownTime>25</turretBurstCooldownTime>
+				</li>
+			</turrets>
+		</turret>
 		<comps>
 			<li Class="CompProperties_Explosive">
 				<explosiveRadius>4.9</explosiveRadius>
@@ -91,20 +139,14 @@
 		<specialDisplayRadius>14.9</specialDisplayRadius>
 		<building>
 			<ai_combatDangerous>true</ai_combatDangerous>
-			<turretGunDef>Gun_Juggernaut</turretGunDef>
-			<turretBurstWarmupTime>5.0</turretBurstWarmupTime>
-			<turretBurstCooldownTime>25.0</turretBurstCooldownTime>
-			<turretTopGraphicPath>Buildings/GDI/Defense/Juggernaut/Turret</turretTopGraphicPath>
-			<turretTopDrawSize>4</turretTopDrawSize>
-			<turretTopOffset>(0, 0.05)</turretTopOffset>
 		</building>
 		<placeWorkers>
-			<li>PlaceWorker_TurretTop</li>
+			<li>TiberiumRim.PlaceWorker_TurretGunTop</li>
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
 		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
 		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 	</TiberiumRim.TRThingDef>
 	
 	<!---->
@@ -142,16 +184,40 @@
 			<canForceTarget>true</canForceTarget>
 			<turrets>
 				<li>
-					<graphic>
-						<texPath>Buildings/GDI/Defense/Turrets/WatchTower</texPath>
-						<graphicClass>Graphic_Single</graphicClass>
-						<drawSize>(3, 3)</drawSize>
-					</graphic>
-					<speed>80</speed>
+					<turretTop>
+						<turret>
+							<texPath>Buildings/GDI/Defense/Turrets/WatchTower_Base</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(3,3)</drawSize>
+						</turret>
+						<barrels>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Turrets/WatchTower_Barrel1</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(3,3)</drawSize>
+								</graphic>
+								<altitudeOffset>-0.1</altitudeOffset>
+								<recoilOffset>(0,0,-0.25)</recoilOffset>
+							</li>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Turrets/WatchTower_Barrel2</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(3,3)</drawSize>
+								</graphic>
+								<altitudeOffset>-0.1</altitudeOffset>
+								<recoilOffset>(0,0,-0.25)</recoilOffset>
+							</li>
+						</barrels>
+						<speed>80</speed>
+						<resetSpeed>100</resetSpeed>
+						<recoilSpeed>200</recoilSpeed>
+						<barrelMuzzleOffset>(0,0,1.5)</barrelMuzzleOffset>
+					</turretTop>
 					<turretGunDef>Gun_WatchTower</turretGunDef>
 					<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
 					<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
-					<barrelOffset>(0,0,1.5)</barrelOffset>
 				</li>
 			</turrets>
 		</turret>
@@ -255,16 +321,28 @@
 			<canForceTarget>true</canForceTarget>
 			<turrets>
 				<li>
-					<graphic>
-						<texPath>Buildings/GDI/Defense/Turrets/Guardian</texPath>
-						<graphicClass>Graphic_Single</graphicClass>
-						<drawSize>(3, 3)</drawSize>
-					</graphic>
-					<speed>60</speed>
+					<turretTop>
+						<turret>
+							<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(3.5,3.5)</drawSize>
+						</turret>
+						<barrels>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Standard</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(3.5,3.5)</drawSize>
+								</graphic>
+								<altitudeOffset>-0.1</altitudeOffset>
+								<recoilOffset>(0,0,-0.25)</recoilOffset>
+							</li>
+						</barrels>
+						<speed>60</speed>
+					</turretTop>
 					<turretGunDef>Gun_Guardian</turretGunDef>
 					<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
 					<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
-					<barrelOffset>(0,0,1.5)</barrelOffset>
 				</li>
 			</turrets>
 		</turret>
@@ -369,14 +447,17 @@
 			<canForceTarget>true</canForceTarget>
 			<turrets>
 				<li>
-					<graphic>
-						<texPath>Buildings/GDI/Defense/SonicEmitter/Turret</texPath>
-						<graphicClass>Graphic_Single</graphicClass>
-						<drawSize>(3,3)</drawSize>
-					</graphic>
+					<turretTop>
+						<turret>
+							<texPath>Buildings/GDI/Defense/SonicEmitter/Turret</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(3,3)</drawSize>
+						</turret>
+						<speed>40</speed>
+					</turretTop>
+					<avoidFriendlyFire>true</avoidFriendlyFire>
 					<burstMode>ToTarget</burstMode>
 					<burstToRange>40</burstToRange>
-					<speed>40</speed>
 					<turretGunDef>Gun_SonicEmitter</turretGunDef>
 					<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
 					<turretBurstCooldownTime>5</turretBurstCooldownTime>
@@ -416,8 +497,8 @@
 				<glowColor>(200,200,255)</glowColor>
 			</li>
 			<li Class="CompProperties_Refuelable">
-				<fuelLabel>Shots until stabilizer change</fuelLabel>
-				<fuelGizmoLabel>Stabilizer durability</fuelGizmoLabel>
+				<fuelLabel>sonic core charge left</fuelLabel>
+				<fuelGizmoLabel>sonic core charge</fuelGizmoLabel>
 				<fuelFilter>
 					<thingDefs>
 						<li>GDI_SonicCore</li>
@@ -448,6 +529,7 @@
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<building>
 			<ai_combatDangerous>true</ai_combatDangerous>
+			<ai_chillDestination>false</ai_chillDestination>
 			<!--
 			<turretGunDef>Gun_SonicEmitter</turretGunDef>
 			<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
@@ -506,30 +588,56 @@
 			<canForceTarget>true</canForceTarget>
 			<turrets>
 				<li>
-					<graphic>
-						<texPath>Buildings/GDI/Defense/Turrets/Guardian</texPath>
-						<graphicClass>Graphic_Single</graphicClass>
-						<drawSize>(3, 3)</drawSize>
-					</graphic>
-					<speed>60</speed>
+					<turretTop>
+						<turret>
+							<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(3,3)</drawSize>
+						</turret>
+						<barrels>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Barrel</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(3,3)</drawSize>
+								</graphic>
+								<altitudeOffset>-0.1</altitudeOffset>
+								<recoilOffset>(0,0,-0.25)</recoilOffset>
+							</li>
+						</barrels>
+						<speed>60</speed>
+						<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
+					</turretTop>
+					<drawOffset>(-2.5,0,0)</drawOffset>
 					<turretGunDef>Gun_Guardian</turretGunDef>
 					<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
 					<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
-					<barrelOffset>(0,0,2.5)</barrelOffset>
-					<drawOffset>(-2.5,0,0)</drawOffset>
 				</li>
 				<li>
-					<graphic>
-						<texPath>Buildings/GDI/Defense/Turrets/Guardian</texPath>
-						<graphicClass>Graphic_Single</graphicClass>
-						<drawSize>(3, 3)</drawSize>
-					</graphic>
-					<speed>60</speed>
+					<turretTop>
+						<turret>
+							<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(3,3)</drawSize>
+						</turret>
+						<barrels>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Barrel</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(3,3)</drawSize>
+								</graphic>
+								<altitudeOffset>-0.1</altitudeOffset>
+								<recoilOffset>(0,0,-0.25)</recoilOffset>
+							</li>
+						</barrels>
+						<speed>60</speed>
+						<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
+					</turretTop>
+					<drawOffset>(2.5,0,0)</drawOffset>
 					<turretGunDef>Gun_Guardian</turretGunDef>
 					<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
 					<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
-					<barrelOffset>(0,0,2.5)</barrelOffset>
-					<drawOffset>(2.5,0,0)</drawOffset>
 				</li>
 			</turrets>
 		</turret>

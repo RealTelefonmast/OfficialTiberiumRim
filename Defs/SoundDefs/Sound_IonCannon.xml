@@ -1,112 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	
-	<SoundDef>
+	<SoundDef Abstract="True" Name="IonCannonBase">
+		<context>MapOnly</context>
+		<eventNames />  
+		<maxVoices>1</maxVoices>
+		<maxSimultaneous>1</maxSimultaneous>
+	</SoundDef>
+	
+	<SoundDef ParentName="IonCannonBase">
 		<defName>IonCannon_StartUp</defName>  
-		<context>MapOnly</context>
-		<eventNames />  
-		<maxSimultaneous>1</maxSimultaneous> 
-		<priorityMode>PrioritizeNearest</priorityMode>
 		<subSounds>
-			<li>
-				<name>StartUp</name>
-				<onCamera>false</onCamera>
-				<repeatMode>NeverTwice</repeatMode>
-				<sustainLoop>false</sustainLoop>
-				<grains>
-					<li Class="AudioGrain_Folder">
-						<clipFolderPath>SuperWeapons/IonCannon/StartUp</clipFolderPath>
-					</li>
-				</grains>
-			</li>
+			<li><grains><li Class="AudioGrain_Folder">
+				<clipFolderPath>SuperWeapons/IonCannon/StartUp</clipFolderPath>
+			</li></grains></li>
 		</subSounds>
 	</SoundDef>
-
-	<SoundDef>
+	
+	<SoundDef ParentName="IonCannonBase">
 		<defName>IonCannon_InitialCharge</defName>  
-		<context>MapOnly</context>
-		<eventNames />  
-		<maxSimultaneous>1</maxSimultaneous>  
-		<priorityMode>PrioritizeNearest</priorityMode>
 		<subSounds>
-			<li>
-				<name>InitialCharge</name>
-				<onCamera>false</onCamera>
-				<repeatMode>NeverTwice</repeatMode>
-				<sustainLoop>false</sustainLoop>
-				<grains>
-					<li Class="AudioGrain_Folder">
-						<clipFolderPath>SuperWeapons/IonCannon/InitialCharge</clipFolderPath>
-					</li>
-				</grains>
-			</li>
+			<li><grains><li Class="AudioGrain_Folder">
+				<clipFolderPath>SuperWeapons/IonCannon/InitialCharge</clipFolderPath>
+			</li></grains></li>
 		</subSounds>
 	</SoundDef>
 	
-	<SoundDef>
+	<SoundDef ParentName="IonCannonBase">
 		<defName>IonCannon_ClimaxChargeUp</defName>  
-		<context>MapOnly</context>
-		<eventNames />  
-		<maxSimultaneous>1</maxSimultaneous>  
-		<priorityMode>PrioritizeNearest</priorityMode>
 		<subSounds>
-			<li>
-				<name>ClimaxChargeUp</name>
-				<onCamera>false</onCamera>
-				<repeatMode>NeverTwice</repeatMode>
-				<sustainLoop>false</sustainLoop>
-				<grains>
-					<li Class="AudioGrain_Folder">
-						<clipFolderPath>SuperWeapons/IonCannon/ClimaxChargeUp</clipFolderPath>
-					</li>
-				</grains>
-			</li>
+			<li><grains><li Class="AudioGrain_Folder">
+				<clipFolderPath>SuperWeapons/IonCannon/ClimaxChargeUp</clipFolderPath>
+			</li></grains></li>
 		</subSounds>
 	</SoundDef>
 
-	<SoundDef>
+	<SoundDef ParentName="IonCannonBase">
 		<defName>IonCannon_PreClimaxPause</defName>  
-		<context>MapOnly</context>
-		<eventNames />  
-		<maxSimultaneous>1</maxSimultaneous>  
-		<priorityMode>PrioritizeNearest</priorityMode>
 		<subSounds>
-			<li>
-				<name>PreClimaxPause</name>
-				<onCamera>false</onCamera>
-				<repeatMode>NeverTwice</repeatMode>
-				<sustainLoop>false</sustainLoop>
-				<grains>
-					<li Class="AudioGrain_Folder">
-						<clipFolderPath>SuperWeapons/IonCannon/PreClimaxPause</clipFolderPath>
-					</li>
-				</grains>
-			</li>
+			<li><grains><li Class="AudioGrain_Folder">
+				<clipFolderPath>SuperWeapons/IonCannon/PreClimaxPause</clipFolderPath>
+			</li></grains></li>
 		</subSounds>
 	</SoundDef>
-
-	<SoundDef>
-		<defName>IonCannon_Climax</defName>  
-		<context>MapOnly</context>
-		<eventNames />  
-		<maxSimultaneous>1</maxSimultaneous>  
-		<priorityMode>PrioritizeNearest</priorityMode>
-		<subSounds>
-			<li>
-				<name>Climax</name>
-				<onCamera>false</onCamera>
-				<repeatMode>NeverTwice</repeatMode>
-				<sustainLoop>false</sustainLoop>
-				<grains>
-					<li Class="AudioGrain_Folder">
-						<clipFolderPath>SuperWeapons/IonCannon/Climax</clipFolderPath>
-					</li>
-				</grains>
-			</li>
-		</subSounds>
-	</SoundDef>
-
 	
+	<SoundDef ParentName="IonCannonBase">
+		<defName>IonCannon_Climax</defName>  
+		<subSounds>
+			<li><grains><li Class="AudioGrain_Folder">
+				<clipFolderPath>SuperWeapons/IonCannon/Climax</clipFolderPath>
+			</li></grains></li>
+		</subSounds>
+	</SoundDef>
+
+
 	<SoundDef>
 		<defName>IonCannon_Laser1</defName>
 		<context>MapOnly</context>

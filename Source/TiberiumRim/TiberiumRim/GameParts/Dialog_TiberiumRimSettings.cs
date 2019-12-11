@@ -21,7 +21,7 @@ namespace TiberiumRim
 
         public override void DoWindowContents(Rect inRect)
         {
-            Widgets.DrawTextureFitted(inRect, TRMats.MenuSmall, 1f);
+            Widgets.DrawTextureFitted(inRect, TiberiumContent.MainMenu, 1f);
             if (Widgets.CloseButtonFor(inRect))
             {
                 this.Close(true);

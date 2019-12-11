@@ -7,7 +7,8 @@ namespace TiberiumRim
     public static class TiberiumTerrainDefOf
     {
         public static TiberiumTerrainDef TiberiumSoilGreen;
-        public static TiberiumTerrainDef TiberiumSoilPod;
+        public static TiberiumTerrainDef TiberiumPodSoil;
+        public static TiberiumTerrainDef TiberiumPodSoilBlue;
         public static TiberiumTerrainDef TiberiumSoilBlue;
         public static TiberiumTerrainDef TiberiumSoilRed;
         public static TiberiumTerrainDef TiberiumSoilVein;

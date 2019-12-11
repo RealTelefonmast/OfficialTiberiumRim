@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <MainButtonDef>
+    <defName>TiberiumTab</defName>
+    <label>Tiberium</label>
+    <description>Check out Tiberium research.</description>
+    <tabWindowClass>TiberiumRim.MainTabWindow_TibResearch</tabWindowClass>
+    <order>61</order>
+  </MainButtonDef>
+
+</Defs>

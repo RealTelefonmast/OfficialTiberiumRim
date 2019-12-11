@@ -31,6 +31,8 @@ namespace TiberiumRim
         private float lifeDistance;
         //Ticking And Life
         //private static ref int ticksGame = FieldRefAccess<TickManager, int>(Find.TickManager, "ticksGameInt");
+        private sbyte mapIndexOrState = -1;
+
         private int tickOffset = 0;
         private int lifeTicks = 0;
         private int ticksRemaining = 0;
@@ -68,6 +70,7 @@ namespace TiberiumRim
             fadeinTicks = GenTicks.SecondsToTicks(def.fadeInTime);
             lifeTicks = fadeinTicks + solidTicks + fadoutTicks;
             Vector3 vel = new Vector3(def.direction.x, 0, def.direction.y);
+            mapIndexOrState = (sbyte)Find.Maps.IndexOf(map);
             if (endCell.IsValid)
             {
                 int x = endCell.x - startCell.x;
@@ -88,6 +91,7 @@ namespace TiberiumRim
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
         {
             map.GetComponent<MapComponent_Particles>().DeregisterParticle(this);
+            mapIndexOrState = -3;
             Log.Message("Should be destroyed now.");
         }
 
@@ -113,6 +117,7 @@ namespace TiberiumRim
 
         public override void Tick()
         {
+            if (Destroyed) return;
             if (!Position.InBounds(map))
                 DeSpawn();
             if (ShouldDestroy)
@@ -146,7 +151,9 @@ namespace TiberiumRim
         public override string Label => "";
         public override string LabelCap => "";
         public virtual void FinishAction()
-        {}
+        {
+            mapIndexOrState = -3;
+        }
 
         public virtual bool ShouldDestroy
         {
@@ -159,6 +166,14 @@ namespace TiberiumRim
                 if (endCell.IsValid && Position == endCell)
                     return true;
                 return false;
+            }
+        }
+
+        public bool Destroyed
+        {
+            get
+            {
+                return (int)this.mapIndexOrState == -2 || (int)this.mapIndexOrState == -3;
             }
         }
 

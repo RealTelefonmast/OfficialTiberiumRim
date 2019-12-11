@@ -99,6 +99,12 @@
 			<ai_chillDestination>false</ai_chillDestination>
 			<allowAutoroof>false</allowAutoroof>
 		</building>
+		<damageMultipliers>
+			<li>
+				<damageDef>TRSonic</damageDef>
+				<multiplier>7.5</multiplier>
+			</li>
+		</damageMultipliers>
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<TiberiumRim.TiberiumCrystalDef Name="TiberiumForWater" ParentName="TiberiumCrystalBase" Abstract="True">

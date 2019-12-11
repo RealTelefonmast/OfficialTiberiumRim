@@ -121,7 +121,8 @@ namespace TiberiumRim
 
         public CompProperties_FX Props => base.props as CompProperties_FX;
 
-        public CompPowerTrader CompPower => parent.TryGetComp<CompPowerTrader>();
+        public CompPowerTrader CompPower => IParent == null ? parent.TryGetComp<CompPowerTrader>() : (IParent.ForcedPowerComp == null ? parent.TryGetComp<CompPowerTrader>() : (CompPowerTrader)IParent.ForcedPowerComp );
+        public CompPowerPlant CompPowerPlant => parent.TryGetComp<CompPowerPlant>();
 
         public IFXObject IParent
         {
@@ -205,6 +206,7 @@ namespace TiberiumRim
 
         public override void ReceiveCompSignal(string signal)
         {
+            if (!parent.Spawned) return;
             if (signal == "PowerTurnedOn" || signal == "PowerTurnedOff" || signal == "FlickedOn" || signal == "FlickedOff" || signal == "Refueled" || signal == "RanOutOfFuel" || signal == "ScheduledOn" || signal == "ScheduledOff")
             {
                 parent.Map.mapDrawer.MapMeshDirty(parent.Position, MapMeshFlag.Things);
@@ -217,8 +219,21 @@ namespace TiberiumRim
                 return false;
             if (Graphics[index].data.skip)
                 return false;
-            if (Graphics[index].data.needsPower && !(CompPower?.PowerOn ?? false))
+            if (!HasPower(index))
                 return false;
+            return true;
+        }
+
+        private bool HasPower(int index)
+        {
+            if (Graphics[index].data.needsPower)
+            {
+                if (CompPowerPlant != null)
+                    return CompPowerPlant.PowerOutput > 0;
+                else
+                if (CompPower != null)
+                    return CompPower.PowerOn;
+            }
             return true;
         }
 
@@ -240,7 +255,7 @@ namespace TiberiumRim
             return IParent.OpacityFloats[index];
         }
 
-        public float? RotationOverrides(int index)
+        public float? RotationOverride(int index)
         {
             if (IParent == null || IParent.RotationOverrides.Count() < (index + 1))
             {
@@ -267,6 +282,19 @@ namespace TiberiumRim
             return IParent.DrawPositions[index];
         }
 
+        public Action<FXGraphic> Action(int index)
+        {
+            if(IParent == null || IParent.Actions == null || IParent.Actions.Count() < (index + 1))
+            {
+                return null;
+            }
+            return IParent.Actions[index];
+        }
+
+        public Vector2 TextureOffset => (bool)IParent?.TextureOffset.HasValue ? IParent.TextureOffset.Value : Vector2.zero;
+
+        public  Vector2 TextureScale => (bool)IParent?.TextureScale.HasValue ? IParent.TextureScale.Value : new Vector2(1, 1);
+
         public bool ShouldDoEffecters => IParent == null || IParent.ShouldDoEffecters;
 
         public override void PostDraw()
@@ -277,7 +305,7 @@ namespace TiberiumRim
                 FXGraphic graphic = Graphics[i];
                 if (CanDraw(i) && graphic.data.mode != FXMode.Static)
                 {
-                    graphic.Draw(DrawPosition(i), parent.Rotation, RotationOverrides(i), i);
+                    graphic.Draw(DrawPosition(i), parent.Rotation, RotationOverride(i), Action(i), i);
                 }
             }
         }
@@ -290,7 +318,7 @@ namespace TiberiumRim
                 FXGraphic graphic = Graphics[i];
                 if (CanDraw(i) && graphic.data.mode == FXMode.Static)
                 {
-                    graphic.Print(layer, DrawPosition(i), parent.Rotation, RotationOverrides(i), parent);
+                    graphic.Print(layer, DrawPosition(i), parent.Rotation, RotationOverride(i), parent);
                 }
             }
         }

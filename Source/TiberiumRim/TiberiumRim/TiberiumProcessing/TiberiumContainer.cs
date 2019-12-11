@@ -123,11 +123,11 @@ namespace TiberiumRim
             leftover = wantedValue;
             if (StoredTiberium.TryGetValue(valueType, out float value) && value > 0)
             {
-                leftover = Math.Abs(Mathf.Clamp(value - wantedValue, float.NegativeInfinity, 0));
+                leftover = wantedValue - value; 
                 if (leftover > 0)
-                    StoredTiberium[valueType] -= wantedValue;
+                    StoredTiberium[valueType] -= value;
                 else
-                    StoredTiberium[valueType] -= (wantedValue - leftover);
+                    StoredTiberium[valueType] -= wantedValue;
             }
             return leftover != wantedValue;
         }
@@ -151,7 +151,7 @@ namespace TiberiumRim
                 {
                     if (value > 0f && TryRemoveValue(type, value, out float leftOver))
                     {
-                        value -= (value - leftOver);
+                        value = leftOver;
                     }
                 }
                 return true;

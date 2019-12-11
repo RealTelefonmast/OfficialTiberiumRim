@@ -34,8 +34,8 @@ namespace TiberiumRim
         public static HediffMutationGroup Animal;
 
         public static HediffDef TiberiumMutation;
-        public static HediffDef SymbioticPart;
-        public static HediffDef VisceralPart;
+            //public static HediffDef SymbioticPart;
+            //public static HediffDef VisceralPart;
 
         //Symbiotic Parts
         public static HediffDef TiberiumEnhancedArm;

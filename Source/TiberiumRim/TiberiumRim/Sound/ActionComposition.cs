@@ -42,7 +42,7 @@ namespace TiberiumRim
             Current.Game.GetComponent<GameComponent_ActionCompManager>().InitComposition(this);
         }
 
-        private void Finalize()
+        public void FinalizeComposition()
         {
             Current.Game.GetComponent<GameComponent_ActionCompManager>().RemoveComposition(this);
         }
@@ -50,7 +50,7 @@ namespace TiberiumRim
         public void Tick()
         {
             if (curTick == lastTick)
-                Finalize();
+                FinalizeComposition();
             Log.Message("Main Tick: " + curTick + " Relative Tick: " + relativeTick);
 
             foreach (var action in actions)

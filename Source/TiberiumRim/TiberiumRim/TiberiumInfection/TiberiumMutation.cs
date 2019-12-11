@@ -42,10 +42,10 @@ namespace TiberiumRim
         {
             if (TRUtils.Chance(HediffUtils.HediffCoverageFor(Pawn, part, TRHediffDefOf.TiberiumCrystallization)))
                 HediffUtils.MutatePart(Pawn, part, TRHediffDefOf.Crystallized);
-            else if (TRUtils.Chance(HediffUtils.HediffCoverageFor(Pawn, part, TRHediffDefOf.SymbioticPart)))
-                HediffUtils.MutatePart(Pawn, part, TRHediffDefOf.Enhanced);
-            else
-                HediffUtils.MutatePart(Pawn, part, TRHediffDefOf.Visceral);
+            //else if (TRUtils.Chance(HediffUtils.HediffCoverageFor(Pawn, part, TRHediffDefOf.SymbioticPart)))
+                //HediffUtils.MutatePart(Pawn, part, TRHediffDefOf.Enhanced);
+            //else
+                //HediffUtils.MutatePart(Pawn, part, TRHediffDefOf.Visceral);
         }
     }
 }

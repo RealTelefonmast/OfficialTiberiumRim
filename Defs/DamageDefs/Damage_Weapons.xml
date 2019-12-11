@@ -97,7 +97,7 @@
 		<explosionColorEdge>(0.1, 0.5, 0.1)</explosionColorEdge>
 		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
 		<combatLogRules>Damage_Bomb</combatLogRules>
-		<soundExplosion>Shot_Nod_ChemBomb</soundExplosion>
+		<soundExplosion>Nod_ChemBomb</soundExplosion>
 		<makesAnimalsFlee>true</makesAnimalsFlee>
 	</DamageDef>
 

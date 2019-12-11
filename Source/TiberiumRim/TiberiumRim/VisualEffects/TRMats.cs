@@ -31,10 +31,5 @@ namespace TiberiumRim
         public static readonly Texture2D green = SolidColorMaterials.NewSolidColorTexture(new ColorInt(41, 180, 115).ToColor);
         public static readonly Texture2D white = SolidColorMaterials.NewSolidColorTexture(new ColorInt(255, 255, 255).ToColor);
         public static readonly Texture2D black = SolidColorMaterials.NewSolidColorTexture(new ColorInt(15, 11, 12).ToColor);
-
-        //GUI
-        public static readonly Texture2D MenuSmall = ContentFinder<Texture2D>.Get("UI/Menu/Menu_Interface");
-        public static readonly Texture2D MenuBig = ContentFinder<Texture2D>.Get("UI/Menu/Menu_Interface_Big");
-        public static readonly Texture2D InfoButton = ContentFinder<Texture2D>.Get("UI/Buttons/InfoButton", true);
     }
 }

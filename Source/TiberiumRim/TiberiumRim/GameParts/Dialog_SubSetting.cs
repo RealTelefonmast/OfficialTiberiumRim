@@ -26,7 +26,7 @@ namespace TiberiumRim
 
         public override void DoWindowContents(Rect inRect)
         {
-            Widgets.DrawTextureFitted(inRect, TRMats.MenuBig, 1f);
+            Widgets.DrawTextureFitted(inRect, TiberiumContent.MenuWindow, 1f);
         }
     }
 }

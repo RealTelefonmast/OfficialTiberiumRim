@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TResearchDef>
+		<defName>GDIResearch</defName>
+		<label>Research 1</label>		
+	</TiberiumRim.TResearchDef>
+
+	<TiberiumRim.TResearchDef>
+		<defName>GDIResearch2</defName>
+		<label>Research 2</label>		
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIResearch</li>
+			</tiberiumResearch>
+		</requisites>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchDef>
+		<defName>GDIResearch3</defName>
+		<label>Research 3</label>		
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIResearch2</li>
+			</tiberiumResearch>
+		</requisites>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchDef>
+		<defName>GDIResearch4</defName>
+		<label>Research 4</label>		
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIResearch2</li>
+			</tiberiumResearch>
+		</requisites>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchDef>
+		<defName>GDIResearch5</defName>
+		<label>Research 5</label>
+	</TiberiumRim.TResearchDef>
+
+	<TiberiumRim.TResearchDef>
+		<defName>GDIResearch6</defName>
+		<label>Research 6</label>		
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIResearch5</li>
+			</tiberiumResearch>
+		</requisites>
+	</TiberiumRim.TResearchDef>
+	
+</Defs>

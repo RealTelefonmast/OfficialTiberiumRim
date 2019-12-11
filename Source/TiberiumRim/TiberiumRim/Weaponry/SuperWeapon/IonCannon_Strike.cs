@@ -100,7 +100,7 @@ namespace TiberiumRim
                 composition.AddPart(delegate
                 {
                     //TODO: Notify Satellite
-                }, 12.10f);
+                }, 12f);
                 composition.AddPart(delegate
                 {
                     IonBeam beam = (IonBeam) ThingMaker.MakeThing(ThingDef.Named("IonBeam"));
@@ -109,10 +109,11 @@ namespace TiberiumRim
                     beam.width = 4;
                     GenSpawn.Spawn(beam, Position, this.Map);
                     //GenExplosion.DoExplosion(Position, Map, radius, DamageDefOf.Bomb, this, TRUtils.Range(1000, 9999));
-                }, SoundDef.Named("IonCannon_Climax"), SoundInfo.InMap(posInfo), 12.10f);
+                }, SoundDef.Named("IonCannon_Climax"), SoundInfo.InMap(posInfo), 12f);
                 composition.AddPart(delegate
                 {
                     this.Destroy();
+                    composition.FinalizeComposition();
                 }, 13f);
                 composition.Init();
             }

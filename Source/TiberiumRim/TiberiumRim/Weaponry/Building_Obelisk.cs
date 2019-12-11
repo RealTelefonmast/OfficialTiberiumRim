@@ -28,6 +28,7 @@ namespace TiberiumRim
             base.Tick();
             if (MainGun.burstWarmupTicksLeft > 0 && CurrentTarget.IsValid && !CurrentTarget.ThingDestroyed && chargeAmount < MainGun.props.turretBurstWarmupTime.SecondsToTicks())
             {
+
                 chargeAmount++;
             }
             else if(chargeAmount > 0)

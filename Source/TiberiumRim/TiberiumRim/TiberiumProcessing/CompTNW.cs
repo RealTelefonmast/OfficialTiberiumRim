@@ -32,8 +32,27 @@ namespace TiberiumRim
         public List<IntVec3> pipeExtensionCells = new List<IntVec3>();
         private List<IntVec3> cardinalCells = new List<IntVec3>();
 
+        public bool ShouldLeak => false;
+        public bool HasConnection => StructureSet.Pipes.Any();
+        public TNWMode NetworkMode => Props.tnwbMode;
+        public CompProperties_TNW Props => (CompProperties_TNW)props;
+        public TiberiumContainer Container { get => container; set => container = value; }
+
         //Debug
         private static bool DebugConnectionCells = false;
+
+        //FX Set
+        public ExtendedGraphicData ExtraData => (parent as IFXObject)?.ExtraData ?? new ExtendedGraphicData();
+        public virtual Vector3[] DrawPositions => new Vector3[] { parent.DrawPos, parent.DrawPos, parent.DrawPos };
+        public virtual Color[] ColorOverrides => new Color[] { Container.Color, Color.white, Color.white };
+        public virtual float[] OpacityFloats => new float[] { Container.StoredPercent, 1f, 1f };
+        public virtual float?[] RotationOverrides => new float?[] { null, null, null };
+        public virtual bool[] DrawBools => new bool[] { true, StructureSet.Pipes.Any(), true };
+        public virtual Action<FXGraphic>[] Actions => null;
+        public virtual Vector2? TextureOffset => null;
+        public virtual Vector2? TextureScale => null;
+        public virtual bool ShouldDoEffecters => true;
+        public virtual CompPower ForcedPowerComp => null;
 
         public override void PostExposeData()
         {
@@ -171,12 +190,6 @@ namespace TiberiumRim
             }
         }
 
-        public bool ShouldLeak => false;
-        public bool HasConnection => StructureSet.Pipes.Any();
-        public TNWMode NetworkMode => Props.tnwbMode;
-        public CompProperties_TNW Props => (CompProperties_TNW)props;
-        public TiberiumContainer Container { get => container; set => container = value; }
-
         public virtual IEnumerable<IntVec3> InnerConnectionCells => parent.OccupiedRect().Cells;
         public virtual IEnumerable<IntVec3> CardinalConnectionCells
         {
@@ -214,7 +227,7 @@ namespace TiberiumRim
         public override void PostDraw()
         {
             base.PostDraw();
-            if(!Network.ValidFor(Props.tnwbMode, out string reason))
+            if (!Network.ValidFor(Props.tnwbMode, out string reason))
             {
                 Material mat = MaterialPool.MatFrom(TRMats.EmptyContainer, ShaderDatabase.MetaOverlay, Color.white);
                 float num = (Time.realtimeSinceStartup + 397f * (float)(parent.thingIDNumber % 571)) * 4f;
@@ -222,7 +235,7 @@ namespace TiberiumRim
                 num2 = 0.3f + num2 * 0.7f;
                 Material material = FadedMaterialPool.FadedVersionOf(mat, num2);
                 var c = parent.TrueCenter();
-                Graphics.DrawMesh(MeshPool.plane08, new Vector3(c.x,AltitudeLayer.MetaOverlays.AltitudeFor(),c.z), Quaternion.identity, material, 0);
+                Graphics.DrawMesh(MeshPool.plane08, new Vector3(c.x, AltitudeLayer.MetaOverlays.AltitudeFor(), c.z), Quaternion.identity, material, 0);
             }
             if (DebugConnectionCells && Find.Selector.IsSelected(parent))
             {
@@ -235,13 +248,13 @@ namespace TiberiumRim
         public override void PostPrintOnto(SectionLayer layer)
         {
             base.PostPrintOnto(layer);
-            TiberiumContent.TiberiumNetworkPipes.Print(layer, parent);
+            //TiberiumContent.TiberiumNetworkPipes.Print(layer, parent);
         }
 
         public override string CompInspectStringExtra()
         {
             StringBuilder sb = new StringBuilder();
-            if(!Network.ValidFor(Props.tnwbMode, out string reason))
+            if (!Network.ValidFor(Props.tnwbMode, out string reason))
             {
                 sb.AppendLine("TR_MissingConnection".Translate() + ":");
                 if (!reason.NullOrEmpty())
@@ -256,15 +269,6 @@ namespace TiberiumRim
             }
             return sb.ToString().TrimStart().TrimEndNewlines();
         }
-
-        //FX Set
-        public ExtendedGraphicData ExtraData => (parent as IFXObject)?.ExtraData ?? new ExtendedGraphicData();
-        public virtual Vector3[] DrawPositions => new Vector3[] { parent.DrawPos, parent.DrawPos, parent.DrawPos };
-        public virtual Color[] ColorOverrides => new Color[] { Container.Color, Color.white, Color.white };
-        public virtual float[] OpacityFloats => new float[] { Container.StoredPercent, 1f, 1f };
-        public virtual float?[] RotationOverrides => new float?[] { null, null, null };
-        public virtual bool[] DrawBools => new bool[] { true, StructureSet.Pipes.Any(), true };
-        public virtual bool ShouldDoEffecters => true;
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {

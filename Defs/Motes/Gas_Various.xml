@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="Gas_TR" Abstract="True">
+		<thingClass>Gas</thingClass>
+		<label>gas</label>
+		<category>Gas</category>
+		<altitudeLayer>Gas</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+			<graphicClass>Graphic_Gas</graphicClass>
+			<shaderType>Transparent</shaderType>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="Gas_TR">
+		<defName>TiberiumGas</defName>
+		<label>tiberium gas</label>
+		<graphicData>
+			<texPath>Motes/TiberiumGas</texPath>
+			<drawSize>2.2</drawSize>
+			<color>(1.0,1.0,1.0,0.4)</color>
+		</graphicData>
+		<gas>
+			<expireSeconds>
+				<min>36</min>
+				<max>36</max>
+			</expireSeconds>
+			<blockTurretTracking>true</blockTurretTracking>
+			<accuracyPenalty>0.7</accuracyPenalty>
+			<rotationSpeed>12</rotationSpeed>
+		</gas>
+	</ThingDef>
+
+</Defs>

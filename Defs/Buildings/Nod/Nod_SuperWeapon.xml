@@ -1,6 +1,111 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
+  	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+		<defName>TemplePrime</defName>
+		<label>Temple Prime</label>
+		<description>uwu</description>
+		<thingClass>TiberiumRim.Building_Temple</thingClass>
+		<factionDesignation>Nod</factionDesignation>
+		<TRCategory>Defense</TRCategory>
+		<size>(6,7)</size>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Temple/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(7,8)</drawSize>
+		</graphicData>
+		<uiIconPath>Buildings/Nod/Defense/Temple/Icon</uiIconPath>
+		<costList>			
+			<ComponentIndustrial>12</ComponentIndustrial>
+		</costList>
+		<superWeapon>
+			<designator>TiberiumRim.Designator_NodNukeTargeter</designator>
+		</superWeapon>
+		<uiIconScale>0.90</uiIconScale>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<tickerType>Normal</tickerType>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MaxHitPoints>1000</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>100000</WorkToBuild>
+			<Mass>1000</Mass>
+			<Beauty>100</Beauty>
+		</statBases>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Defense/Temple/Main</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(7,8)</drawSize>
+						</data>
+						<altitude>BuildingOnTop</altitude>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Defense/Temple/Entrance</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,8)</drawSize>
+						</data>
+						<altitude>Item</altitude>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Defense/Temple/PowerLights</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,8)</drawSize>
+						</data>
+						<altitude>Item</altitude>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Defense/Temple/Blades</texPath>
+							<graphicClass>TiberiumRim.Graphic_NumberedCollection</graphicClass>
+							<shaderType>Transparent</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</data>
+						<altitude>Building</altitude>
+						<mode>Dynamic</mode>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Defense/Temple/Nuke/NukeBase</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(2,6)</drawSize>
+						</data>
+						<altitude>MapDataOverlay</altitude>
+						<mode>Dynamic</mode>
+					</li>
+				</overlays>
+			</li>		
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+		</comps>
+		<drawOffscreen>false</drawOffscreen>
+		<passability>Impassable</passability>
+		<fillPercent>0.4</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<specialDisplayRadius>39.9</specialDisplayRadius>
+		<constructionSkillPrerequisite>15</constructionSkillPrerequisite>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_OnlyOutside</li>
+			<li>TiberiumRim.PlaceWorker_Once</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+  
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>Nod_TiberiumSuppressor</defName>
 		<label>Tiberium-Growth Suppressor</label>

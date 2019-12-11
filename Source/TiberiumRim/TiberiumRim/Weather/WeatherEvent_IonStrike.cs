@@ -9,13 +9,13 @@ using Verse.Sound;
 
 namespace TiberiumRim
 {
-    [StaticConstructorOnStartup]
     public class WeatherEvent_IonStrike : WeatherEvent
     {
         //RGB (250,250,80)
         //private static readonly SkyColorSet LightningFlashColors = new SkyColorSet(new Color(0.980392156f‬, 0.980392156f‬, 0.012254901f), new Color(0.784313738f, 0.8235294f, 0.847058833f), new Color(0.9f, 0.95f, 1f), 1.15f);
-        private static readonly SkyColorSet LightningFlashColors =
-            new SkyColorSet(new ColorInt(250, 250, 80).ToColor, new Color(0.784313738f, 0.8235294f, 0.847058833f), new Color(0.9f, 0.95f, 1f), 0.8f);
+        private static readonly SkyColorSet LightningFlashColors = new SkyColorSet(new ColorInt(250, 250, 80).ToColor, 
+                                                                                   new Color(0.784313738f, 0.8235294f, 0.847058833f), 
+                                                                                   new Color(0.9f, 0.95f, 1f), 0.8f);
         private static readonly SkyTarget Target = new SkyTarget(1, LightningFlashColors, 1, 1);
 
         private const int FlashFadeInTicks = 3;

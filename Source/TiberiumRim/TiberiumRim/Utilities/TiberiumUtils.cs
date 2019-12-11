@@ -166,7 +166,7 @@ namespace TiberiumRim
         public static T RandomWeightedElement<T>(this IEnumerable<T> elements, Func<T, float> weightSelector)
         {
             var totalWeight = elements.Sum(weightSelector);
-            var randWeight = TRUtils.Value * totalWeight;
+            var randWeight = TRUtils.RandValue * totalWeight;
             var curWeight = 0f;
             foreach (var e in elements)
             {
@@ -196,7 +196,7 @@ namespace TiberiumRim
             return Vector3.Dot(AV, AB) / Vector3.Dot(AB, AB);
         }
 
-        public static float AngNom(float angle)
+        public static float AngNom(this float angle)
         {
             float angle2 = angle;
             if (angle2 == 360)
@@ -281,7 +281,7 @@ namespace TiberiumRim
             return result;
         }
 
-        public static float Value
+        public static float RandValue
         {
             get
             {
@@ -341,18 +341,9 @@ namespace TiberiumRim
             return cells;
         }
 
-        public static float AlignToBottomOffset(ThingDef def, GraphicData data)
-        {
-            float height = data.drawSize.y;
-            float selectHeight = def.size.z;
-            float diff = height - selectHeight;
-            return diff / 2;
-        }
-
         public static void Draw(Graphic graphic, Vector3 drawPos, Rot4 rot, float? rotation, FXThingDef fxDef)
         {
             GraphicDrawInfo info = new GraphicDrawInfo(graphic, drawPos, rot, fxDef?.extraData, fxDef);
-            Log.Message("DrawSize: " + info.drawSize + " Rotation: " + (rotation?.ToQuat() ?? info.rotation.ToQuat()));
             Graphics.DrawMesh(info.drawMesh, info.drawPos, rotation?.ToQuat() ?? info.rotation.ToQuat(), info.drawMat,0);
             //Graphics.DrawMesh(graphic.MeshAt(rot), new Vector3(info.drawPos.x, fxDef.altitudeLayer.AltitudeFor(), info.drawPos.z), rotation?.ToQuat() ?? info.rotation.ToQuat(), mat, 0);
         }
@@ -364,7 +355,10 @@ namespace TiberiumRim
                 graphic.Print(layer, thing);
                 return;
             }
+            if (graphic is Graphic_Random rand)
+                graphic = rand.SubGraphicFor(thing);
             GraphicDrawInfo info = new GraphicDrawInfo(graphic, thing.DrawPos, thing.Rotation, fxDef.extraData, fxDef);
+            //Log.Message("Printing: " + thing + " with drawsize: " + info.drawSize + " rotation: " + info.rotation + " flipUV: " + info.flipUV);
             Printer_Plane.PrintPlane(layer, info.drawPos, info.drawSize, info.drawMat, info.rotation, info.flipUV, null, null, 0.01f, 0f);
             if (graphic.ShadowGraphic != null && thing != null)
             {

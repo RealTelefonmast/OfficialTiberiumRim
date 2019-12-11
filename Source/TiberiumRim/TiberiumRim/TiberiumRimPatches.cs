@@ -289,15 +289,8 @@ namespace TiberiumRim
                 }
                 Graphic graphic = GhostUtility.GhostGraphicFor(baseGraphic, thingDef, ghostCol);
                 Vector3 loc = GenThing.TrueCenter(center, rot, thingDef.Size, drawAltitude.AltitudeFor());
-                var extraData = fx.extraData;
-                GraphicDrawInfo info = new GraphicDrawInfo(graphic, loc, rot, fx.extraData, null);
-                if (extraData?.alignToBottom ?? false)
-                {
-                    loc.z += TRUtils.AlignToBottomOffset(thingDef, baseGraphic.data);
-                }
-                loc += extraData?.drawOffset ?? Vector3.zero;
-                TRUtils.Draw(graphic, loc, rot, null, null);
-                //graphic.DrawFromDef(loc, rot, thingDef, 0f);
+                TRUtils.Draw(graphic, loc, rot, null, fx);
+
                 foreach (var t in thingDef.comps)
                 {
                     t.DrawGhost(center, rot, thingDef, ghostCol, drawAltitude);

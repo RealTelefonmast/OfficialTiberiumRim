@@ -91,7 +91,7 @@
 		</tiberiumTypes>
 		<tiberiumTerrain>
 			<li>TiberiumSoilGreen</li>
-			<li>TiberiumSoilPod</li>
+			<li>TiberiumPodSoil</li>
 		</tiberiumTerrain>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
@@ -230,9 +230,9 @@
 		</tiberiumTypes>
 		<tiberiumTerrain>
 			<li>TiberiumSoilGreen</li>
-			<li>TiberiumSoilPod</li>
+			<li>TiberiumPodSoil</li>
 			<li>TiberiumSoilBlue</li>
-			<li>TiberiumSoilPodBlue</li>
+			<li>TiberiumPodSoilBlue</li>
 		</tiberiumTerrain>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
@@ -413,7 +413,7 @@
 		</tiberiumTypes>
 		<tiberiumTerrain>
 			<li>TiberiumSoilBlue</li>
-			<li>TiberiumSoilPodBlue</li>
+			<li>TiberiumPodSoilBlue</li>
 		</tiberiumTerrain>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
@@ -580,8 +580,8 @@
 			<li>TiberiumAboreus</li>
 		</tiberiumTypes>
 		<tiberiumTerrain>
-			<li>TiberiumSoilPod</li>
-			<li>TiberiumSoilPodBlue</li>
+			<li>TiberiumPodSoil</li>
+			<li>TiberiumPodSoilBlue</li>
 		</tiberiumTerrain>
 		<spawner>
 			<spawnMode>SporeExplosion</spawnMode>

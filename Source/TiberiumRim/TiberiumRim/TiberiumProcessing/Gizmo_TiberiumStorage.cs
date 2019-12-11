@@ -45,7 +45,7 @@ namespace TiberiumRim
                 Rect optionRect = new Rect(rect.xMax - 15, rect.y, 15, 15);
                 bool mouseOver = Mouse.IsOver(rect);
                 GUI.color = mouseOver ? Color.cyan : Color.white;
-                Widgets.DrawTextureFitted(optionRect, TRMats.InfoButton, 1f);
+                Widgets.DrawTextureFitted(optionRect, TiberiumContent.InfoButton, 1f);
                 GUI.color = Color.white;
                 if (Widgets.ButtonInvisible(rect))
                     optionToggled = !optionToggled;

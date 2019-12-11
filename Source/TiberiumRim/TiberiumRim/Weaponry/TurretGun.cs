@@ -12,15 +12,15 @@ namespace TiberiumRim
 {
     public class TurretGun : IAttackTarget, IAttackTargetSearcher
     {
-        public static Material ForcedTargetLineMat = MaterialPool.MatFrom(GenDraw.LineTexPath, ShaderDatabase.Transparent, new Color(1f, 0.5f, 0.5f));
         public ThingWithComps parent;
-        private CompPowerTrader powerComp;
-        private CompMannable mannableComp;
         private Thing gun;
 
         public TurretProperties props;
-        private TurretGunTop top;
+        public TurretGunTop top;
+        private int lastShotIndex = 0;
+        private int curShotIndex = -1;
         private int lastAttackTargetTick;
+        private int maxShotRotations = 1;
         private LocalTargetInfo lastAttackedTarget;
         private LocalTargetInfo forcedTarget = LocalTargetInfo.Invalid;
         private LocalTargetInfo currentTargetInt = LocalTargetInfo.Invalid;
@@ -28,7 +28,41 @@ namespace TiberiumRim
         public int burstWarmupTicksLeft;
         public int burstCooldownTicksLeft;
 
+        public LocalTargetInfo LastAttackedTarget => lastAttackedTarget;
+        public LocalTargetInfo CurrentTarget => currentTargetInt;
+        public LocalTargetInfo TargetCurrentlyAimingAt
+        {
+            get => CurrentTarget;
+        }
         public ITurretHolder ParentHolder => parent as ITurretHolder;
+        protected CompRefuelable RefuelComp => ParentHolder.RefuelComp;
+        protected CompPowerTrader PowerComp => ParentHolder.PowerComp;
+        protected CompMannable MannableComp => ParentHolder.MannableComp;
+        public CompEquippable GunCompEq => gun.TryGetComp<CompEquippable>();
+        public Thing Gun => gun;
+        public Thing Thing => parent;
+
+        public Verb_TR AttackVerb => (Verb_TR)GunCompEq.PrimaryVerb;
+        public Verb CurrentEffectiveVerb => AttackVerb;
+        public float TurretRotation => top.CurRotation;
+        public int LastAttackTargetTick => lastAttackTargetTick;
+        public int ShotIndex => curShotIndex;
+
+        public bool HasTurret => props.turretTop != null;
+        public bool IsMortar => AttackVerb.IsMortar;
+        public bool NeedsRoof => IsMortar;
+        private bool WarmingUp => burstWarmupTicksLeft > 0;
+
+        private bool CanExtractShell
+        {
+            get
+            {
+                if (!ParentHolder.PlayerControlled)
+                    return false;
+                CompChangeableProjectile compChangeableProjectile = gun.TryGetComp<CompChangeableProjectile>();
+                return compChangeableProjectile != null && compChangeableProjectile.Loaded;
+            }
+        }
 
         public TurretGun(TurretProperties props, ThingWithComps parent)
         {
@@ -38,13 +72,19 @@ namespace TiberiumRim
 
         public void Setup()
         {
-            if(props.hasTurret)
-                top = new TurretGunTop(this);
-
-            powerComp = parent.GetComp<CompPowerTrader>();
-            mannableComp = parent.GetComp<CompMannable>();
             gun = ThingMaker.MakeThing(props.turretGunDef, null);
             UpdateGunVerbs();
+            if (HasTurret)
+            {
+                top = new TurretGunTop(this);
+                int max1 = 1,
+                    max2 = 1;
+                if (props.turretTop.barrels != null)
+                    max1 = props.turretTop.barrels.Count;
+                if (AttackVerb.Props.originOffsets != null)
+                    max2 = AttackVerb.Props.originOffsets.Count;
+                maxShotRotations = Math.Max(max1, max2);
+            }
         }
 
         private void UpdateGunVerbs()
@@ -62,199 +102,194 @@ namespace TiberiumRim
             }
         }
 
-        public void TurretTick()
+        public void TurretTick(bool isReady)
         {
-            /*
-            if (this.CanExtractShell && this.MannedByColonist)
+            if(HasTurret)
+                top.BarrelTick();
+            if (!isReady)
+            {
+                ResetCurrentTarget();
+                return;
+            }
+            if (CanExtractShell && ParentHolder.MannedByColonist)
             {
                 CompChangeableProjectile compChangeableProjectile = this.gun.TryGetComp<CompChangeableProjectile>();
                 if (!compChangeableProjectile.allowedShellsSettings.AllowedToAccept(compChangeableProjectile.LoadedShell))
-                {
-                    this.ExtractShell();
-                }
+                    ExtractShell();
             }
-            */
-            if (forcedTarget.IsValid && !ParentHolder.CanSetForcedTarget)
+
+            if (forcedTarget.ThingDestroyed || (forcedTarget.IsValid && !ParentHolder.CanSetForcedTarget))
             {
                 ResetForcedTarget();
             }
-            if (this.forcedTarget.ThingDestroyed)
+            GunCompEq.verbTracker.VerbsTick();
+            if (!ParentHolder.Stunner.Stunned && AttackVerb.state != VerbState.Bursting)
             {
-                this.ResetForcedTarget();
-            }
-            bool flag = (this.powerComp == null || this.powerComp.PowerOn) && (this.mannableComp == null || this.mannableComp.MannedNow);
-            if (flag && parent.Spawned)
-            {
-                this.GunCompEq.verbTracker.VerbsTick();
-                if (this.AttackVerb.state != VerbState.Bursting)
+                if (WarmingUp)
                 {
-                    if (this.WarmingUp)
-                    {
-                        this.burstWarmupTicksLeft--;
-                        if (this.burstWarmupTicksLeft == 0)
-                        {
-                            BeginBurst();
-                        }
-                    }
-                    else
-                    {
-                        if (this.burstCooldownTicksLeft > 0)
-                        {
-                            this.burstCooldownTicksLeft--;
-                        }
-                        if (this.burstCooldownTicksLeft <= 0 && parent.IsHashIntervalTick(10))
-                        {
-                            this.TryStartShootSomething(true);
-                        }
-                    }
-                    top?.TurretTopTick();
+                    burstWarmupTicksLeft--;
+                    if (burstWarmupTicksLeft == 0)
+                        BeginBurst();
                 }
-            }
-            else
-            {
-                this.ResetCurrentTarget();
+                else
+                {
+                    if (burstCooldownTicksLeft > 0)
+                    {
+                        burstCooldownTicksLeft--;
+                    }
+                    if (burstCooldownTicksLeft <= 0 && parent.IsHashIntervalTick(10))
+                    {
+                        TryStartShootSomething(true);
+                    }
+                }
+                top?.TurretTopTick();
             }
         }
 
         protected void TryStartShootSomething(bool canBeginBurstImmediately)
         {
-            if (!parent.Spawned || (ParentHolder.HoldingFire && ParentHolder.CanToggleHoldFire) || (this.AttackVerb.ProjectileFliesOverhead() && parent.Map.roofGrid.Roofed(parent.Position)) || !this.AttackVerb.Available())
+            if (!parent.Spawned || (ParentHolder.HoldingFire && ParentHolder.CanToggleHoldFire) || NeedsRoof && parent.Map.roofGrid.Roofed(parent.Position) || !AttackVerb.Available())
             {
-                this.ResetCurrentTarget();
+                ResetCurrentTarget();
                 return;
             }
-            bool isValid = this.currentTargetInt.IsValid;
-            if (this.forcedTarget.IsValid)
-            {
-                this.currentTargetInt = this.forcedTarget;
-            }
+
+            if (forcedTarget.IsValid)
+                currentTargetInt = forcedTarget;
             else
+                currentTargetInt = TryFindNewTarget();
+
+            if (CurrentTarget.IsValid)
             {
-                this.currentTargetInt = this.TryFindNewTarget();
-                ParentHolder.AddTarget(currentTargetInt);
-            }
-            if (this.currentTargetInt.IsValid && (top?.OnTarget ?? true))
-            {
+                if (!top?.OnTarget ?? false) return;
                 SoundDefOf.TurretAcquireTarget.PlayOneShot(new TargetInfo(parent.Position, parent.Map, false));
                 if (props.turretBurstWarmupTime > 0f)
                 {
-                    this.burstWarmupTicksLeft = props.turretBurstWarmupTime.SecondsToTicks();
+                    burstWarmupTicksLeft = props.turretBurstWarmupTime.SecondsToTicks();
+                    if (AttackVerb.Props.chargeSound != null)
+                    {
+                        AttackVerb.Props.chargeSound.PlayOneShot(SoundInfo.InMap(new TargetInfo(parent), MaintenanceType.None));
+                        return;
+                    }
                 }
                 else if (canBeginBurstImmediately)
-                {
-                    this.BeginBurst();
-                }
+                    BeginBurst();
                 else
-                {
-                    this.burstWarmupTicksLeft = 1;
-                }
+                    burstWarmupTicksLeft = 1;
             }
             else
+                ResetCurrentTarget();
+        }
+        protected LocalTargetInfo TryFindNewTarget()
+        {
+            IAttackTargetSearcher attackTargetSearcher = TargSearcher();
+            Faction faction = attackTargetSearcher.Thing.Faction;
+            float range = AttackVerb.verbProps.range;
+            Building t;
+            if (TRUtils.RandValue < 0.5f && NeedsRoof && faction.HostileTo(Faction.OfPlayer) && parent.Map.listerBuildings.allBuildingsColonist.Where(delegate (Building x)
             {
-                this.ResetCurrentTarget();
+                float num = AttackVerb.verbProps.EffectiveMinRange(x, parent);
+                float num2 = x.Position.DistanceToSquared(parent.Position);
+                return num2 > num * num && num2 < range * range;
+            }).TryRandomElement(out t))
+            {
+                return t;
             }
+            TargetScanFlags targetScanFlags = TargetScanFlags.NeedThreat;
+            if (!NeedsRoof)
+            {
+                targetScanFlags |= TargetScanFlags.NeedLOSToAll;
+                targetScanFlags |= TargetScanFlags.LOSBlockableByGas;
+            }
+            if (AttackVerb.IsIncendiary())
+            {
+                targetScanFlags |= TargetScanFlags.NeedNonBurning;
+            }
+            return (Thing)AttackTargetFinder.BestShootTargetFromCurrentPosition(attackTargetSearcher, targetScanFlags, new Predicate<Thing>(IsValidTarget), 0f, 9999f);
         }
 
         protected void BeginBurst()
         {
             if (props.burstMode == TurretBurstMode.Normal)
             {
-                this.AttackVerb.TryStartCastOn(this.CurrentTarget, false, true);
-                OnAttackedTarget(this.CurrentTarget);
+                AttackVerb.TryStartCastOn(CurrentTarget, false, true);
             }
             else if (props.burstMode == TurretBurstMode.ToTarget)
             {
-                DoLineToTarget();
-            }
-        }
-
-        private void DoLineToTarget()
-        {
-            var from = DrawPos.ToIntVec3();
-            var to = CurrentTarget.Cell;
-            var distance = from.DistanceTo(to);
-            if(distance < props.burstToRange)
-            {
-                var normed = (to - from).ToVector3().normalized;
-                normed *= props.burstToRange;
-                IntVec3 newTo = from + normed.ToIntVec3();
-                to = newTo;
-            }
-            var line = new ShootLine(from, to);
-            foreach (IntVec3 cell in line.Points())
-            {
-                AttackVerb.TryStartCastOn(cell, false);
+                var from = DrawPos.ToIntVec3();
+                var to = CurrentTarget.Cell;
+                var distance = from.DistanceTo(to);
+                if (distance < props.burstToRange)
+                {
+                    var normed = (to - from).ToVector3().normalized;
+                    normed *= props.burstToRange;
+                    IntVec3 newTo = from + normed.ToIntVec3();
+                    to = newTo;
+                }
+                var line = new ShootLine(from, to);
+                foreach (IntVec3 cell in line.Points())
+                {
+                    AttackVerb.TryStartCastOn(cell, false);
+                }
             }
             OnAttackedTarget(CurrentTarget);
         }
 
         public void OrderAttack(LocalTargetInfo targ)
         {
-            if (!targ.IsValid)
+            if (forcedTarget != targ)
             {
-                if (this.forcedTarget.IsValid)
-                {
-                    this.ResetForcedTarget();
-                }
-                return;
+                forcedTarget = targ;
+                if (burstCooldownTicksLeft <= 0)
+                    TryStartShootSomething(false);
             }
-            if ((targ.Cell - parent.Position).LengthHorizontal < this.AttackVerb.verbProps.EffectiveMinRange(targ, parent))
-            {
-                Messages.Message("MessageTargetBelowMinimumRange".Translate(), parent, MessageTypeDefOf.RejectInput, false);
-                return;
-            }
-            if ((targ.Cell - parent.Position).LengthHorizontal > this.AttackVerb.verbProps.range)
-            {
-                Messages.Message("MessageTargetBeyondMaximumRange".Translate(), parent, MessageTypeDefOf.RejectInput, false);
-                return;
-            }
-            if (this.forcedTarget != targ)
-            {
-                this.forcedTarget = targ;
-                if (this.burstCooldownTicksLeft <= 0)
-                {
-                    this.TryStartShootSomething(false);
-                }
-            }
-            if (ParentHolder.HoldingFire)
-            {
-                Messages.Message("MessageTurretWontFireBecauseHoldFire".Translate(parent.def.label), parent, MessageTypeDefOf.RejectInput, false);
-            }
+        }
+
+        private void ExtractShell()
+        {
+            GenPlace.TryPlaceThing(this.gun.TryGetComp<CompChangeableProjectile>().RemoveShell(), parent.Position, parent.Map, ThingPlaceMode.Near, null, null);
         }
 
         public void ResetForcedTarget()
         {
-            this.forcedTarget = LocalTargetInfo.Invalid;
-            this.burstWarmupTicksLeft = 0;
-            if (this.burstCooldownTicksLeft <= 0)
-            {
-                this.TryStartShootSomething(false);
-            }
-        }
-
-        public void SetForcedTarget(LocalTargetInfo target)
-        {
-            forcedTarget = target;
+            forcedTarget = LocalTargetInfo.Invalid;
+            burstWarmupTicksLeft = 0;
+            if (burstCooldownTicksLeft <= 0)
+                TryStartShootSomething(false);
         }
 
         public void ResetCurrentTarget()
         {
-            this.currentTargetInt = LocalTargetInfo.Invalid;
-            this.burstWarmupTicksLeft = 0;
+            currentTargetInt = LocalTargetInfo.Invalid;
+            burstWarmupTicksLeft = 0;
+        }
+
+        public void Notify_FiredSingleProjectile()
+        {
+            RotateNextShotIndex();
+            top.Shoot(curShotIndex);
+        }
+
+        private void RotateNextShotIndex()
+        {
+            lastShotIndex = curShotIndex;
+            curShotIndex++;
+            if(curShotIndex > (maxShotRotations - 1))
+                curShotIndex = 0;
         }
 
         private void OnAttackedTarget(LocalTargetInfo target)
         {
-            this.lastAttackTargetTick = Find.TickManager.TicksGame;
-            this.lastAttackedTarget = target;
+            lastAttackTargetTick = Find.TickManager.TicksGame;
+            lastAttackedTarget = target;
         }
 
         private void BurstComplete()
         {
-            this.burstCooldownTicksLeft = this.BurstCooldownTime().SecondsToTicks();
+            burstCooldownTicksLeft = BurstCooldownTime().SecondsToTicks();
         }
 
-        private float BurstCooldownTime()
+        public float BurstCooldownTime()
         {
             if (props.turretBurstCooldownTime >= 0f)
             {
@@ -263,105 +298,65 @@ namespace TiberiumRim
             return AttackVerb.verbProps.defaultCooldownTime;
         }
 
-        protected LocalTargetInfo TryFindNewTarget()
-        {
-            IAttackTargetSearcher attackTargetSearcher = this.TargSearcher();
-            Faction faction = attackTargetSearcher.Thing.Faction;
-            float range = this.AttackVerb.verbProps.range;
-            Building t;
-            if (Rand.Value < 0.5f && this.AttackVerb.ProjectileFliesOverhead() && faction.HostileTo(Faction.OfPlayer) && parent.Map.listerBuildings.allBuildingsColonist.Where(delegate (Building x)
-            {
-                float num = this.AttackVerb.verbProps.EffectiveMinRange(x, parent);
-                float num2 = (float)x.Position.DistanceToSquared(parent.Position);
-                return num2 > num * num && num2 < range * range;
-            }).TryRandomElement(out t))
-            {
-                return t;
-            }
-            TargetScanFlags targetScanFlags = TargetScanFlags.NeedThreat;
-            if (!this.AttackVerb.ProjectileFliesOverhead())
-            {
-                targetScanFlags |= TargetScanFlags.NeedLOSToAll;
-                targetScanFlags |= TargetScanFlags.LOSBlockableByGas;
-            }
-            if (this.AttackVerb.IsIncendiary())
-            {
-                targetScanFlags |= TargetScanFlags.NeedNonBurning;
-            }
-            return (Thing)AttackTargetFinder.BestShootTargetFromCurrentPosition(attackTargetSearcher, targetScanFlags, new Predicate<Thing>(this.IsValidTarget), 0f, 9999f);
-        }
-
         private IAttackTargetSearcher TargSearcher()
         {
-            if (this.mannableComp != null && this.mannableComp.MannedNow)
-            {
-                return this.mannableComp.ManningPawn;
-            }
+            if (MannableComp != null && MannableComp.MannedNow)
+                return MannableComp.ManningPawn;
             return this;
         }
 
         private bool IsValidTarget(Thing t)
         {
-            Pawn pawn = t as Pawn;
-            if (pawn != null)
+            if (!(t is Pawn pawn)) return true;
+            if(props.burstMode == TurretBurstMode.ToTarget && props.avoidFriendlyFire)
             {
-                if (this.AttackVerb.ProjectileFliesOverhead())
-                {
-                    RoofDef roofDef = parent.Map.roofGrid.RoofAt(t.Position);
-                    if (roofDef != null && roofDef.isThickRoof)
-                    {
-                        return false;
-                    }
-                }
-                if (this.mannableComp == null)
-                {
-                    return !GenAI.MachinesLike(parent.Faction, pawn);
-                }
-                if (ParentHolder.FocusedTarget != null && ParentHolder.FocusedTarget.Thing != t)
-                    return false;
-                if(ParentHolder.HasTarget(t))
-                if (pawn.RaceProps.Animal && pawn.Faction == Faction.OfPlayer)
+                ShootLine line = new ShootLine(parent.Position, pawn.Position);
+                if(line.Points().Any(P => P.GetFirstBuilding(parent.Map) is Building b && b != parent && b.Faction.IsPlayer))
                 {
                     return false;
                 }
+            }
+            if (NeedsRoof)
+            {
+                RoofDef roofDef = parent.Map.roofGrid.RoofAt(t.Position);
+                if (roofDef != null && roofDef.isThickRoof)
+                {
+                    return false;
+                }
+            }
+            if (MannableComp == null)
+            {
+                return !GenAI.MachinesLike(parent.Faction, pawn);
+            }
+            /*
+            if (ParentHolder.CurrentTarget != null && ParentHolder.CurrentTarget.Thing != t)
+                return false;
+            if(ParentHolder.HasTarget(t))
+            */
+            if (pawn.RaceProps.Animal && pawn.Faction == Faction.OfPlayer)
+            {
+                return false;
             }
             return true;
         }
 
-        public CompEquippable GunCompEq => gun.TryGetComp<CompEquippable>();
-        public Thing Thing => parent;
-        public LocalTargetInfo LastAttackedTarget => lastAttackedTarget;
-        public LocalTargetInfo CurrentTarget => currentTargetInt;
-        public LocalTargetInfo TargetCurrentlyAimingAt
+        public bool ThreatDisabled(IAttackTargetSearcher disabledFor)
         {
-            get => forcedTarget;
-            set => forcedTarget = value;
+            CompPowerTrader comp = PowerComp;
+            if (comp != null && !comp.PowerOn)
+            {
+                return true;
+            }
+            CompMannable comp2 = MannableComp;
+            return comp2 != null && !comp2.MannedNow;
         }
 
-        public Verb AttackVerb => GunCompEq.PrimaryVerb;
-        public Verb CurrentEffectiveVerb => this.AttackVerb;
-        public float TurretRotation => top.CurRotation;
-        public int LastAttackTargetTick => this.lastAttackTargetTick;
-        private bool WarmingUp => this.burstWarmupTicksLeft > 0;
-
-        public Graphic Graphic
-        {
-            get
-            {
-                return props.graphic.Graphic;
-            }
-        }
-        public Vector3 DrawPos
-        {
-            get
-            {
-                return parent.DrawPos + props.drawOffset;
-            }
-        }
+        public Graphic TurretGraphic => props.turretTop.turret.Graphic;
+        public Vector3 DrawPos => parent.DrawPos + props.drawOffset;
 
         public void Draw()
         {
-            if(props.hasTurret)
+            if(HasTurret)
                 top.DrawTurret();
             if (Find.Selector.IsSelected(parent))
                 DrawSelectionOverlays();
@@ -369,37 +364,30 @@ namespace TiberiumRim
 
         private void DrawSelectionOverlays()
         {
-            float range = this.AttackVerb.verbProps.range;
+            if (forcedTarget.IsValid && (!forcedTarget.HasThing || forcedTarget.Thing.Spawned))
+            {
+                Vector3 b = forcedTarget.HasThing ? forcedTarget.Thing.TrueCenter() : forcedTarget.CenterVector3;
+                Vector3 a = DrawPos;
+                b.y = AltitudeLayer.MetaOverlays.AltitudeFor();
+                a.y = b.y;
+                GenDraw.DrawLineBetween(a, b, TiberiumContent.ForcedTargetLineMat);
+            }
+            float range = AttackVerb.verbProps.range;
             if (range < 90f)
             {
                 GenDraw.DrawRadiusRing(parent.Position, range);
             }
-            float num = this.AttackVerb.verbProps.EffectiveMinRange(true);
+            float num = AttackVerb.verbProps.EffectiveMinRange(true);
             if (num < 90f && num > 0.1f)
             {
                 GenDraw.DrawRadiusRing(parent.Position, num);
             }
-            if (this.WarmingUp)
+
+            if (HasTurret && WarmingUp)
             {
                 int degreesWide = (int)((float)this.burstWarmupTicksLeft * 0.5f);
-                GenDraw.DrawAimPieRaw(DrawPos + new Vector3(0f, props.barrelOffset.magnitude, 0f), TurretRotation, degreesWide);
+                GenDraw.DrawAimPieRaw(DrawPos + new Vector3(0f, top.props.barrelMuzzleOffset.magnitude, 0f), TurretRotation, degreesWide);
                 //GenDraw.DrawAimPie(parent, this.CurrentTarget, degreesWide, (float)this.parent.def.size.x * 0.5f);
-            }
-            if (this.forcedTarget.IsValid && (!this.forcedTarget.HasThing || this.forcedTarget.Thing.Spawned))
-            {
-                Vector3 b;
-                if (this.forcedTarget.HasThing)
-                {
-                    b = this.forcedTarget.Thing.TrueCenter();
-                }
-                else
-                {
-                    b = this.forcedTarget.Cell.ToVector3Shifted();
-                }
-                Vector3 a = DrawPos;
-                b.y = AltitudeLayer.MetaOverlays.AltitudeFor();
-                a.y = b.y;
-                GenDraw.DrawLineBetween(a, b, Building_TurretGun.ForcedTargetLineMat);
             }
         }
 
@@ -407,25 +395,16 @@ namespace TiberiumRim
         {
             return parent.ThingID + "_TurretGun";
         }
-
-        public bool ThreatDisabled(IAttackTargetSearcher disabledFor)
-        {
-            CompPowerTrader comp = parent.GetComp<CompPowerTrader>();
-            if (comp != null && !comp.PowerOn)
-            {
-                return true;
-            }
-            CompMannable comp2 = parent.GetComp<CompMannable>();
-            return comp2 != null && !comp2.MannedNow;
-        }
     }
 
     public class TurretGunTop
     {
         public TurretGun parent;
+        public TurretTopProperties props;
+        public List<TurretBarrel> barrels = new List<TurretBarrel>();
         private float rotation;
         private float targetRot = 20;
-        private float speed;
+        public float speed;
         private bool clockWise = true;
         private int ticksUntilTurn;
         private int turnTicks;
@@ -433,6 +412,14 @@ namespace TiberiumRim
         public TurretGunTop(TurretGun parent)
         {
             this.parent = parent;
+            props = parent.props.turretTop;
+            if(props.barrels != null)
+            {
+                foreach(var barrel in props.barrels)
+                {
+                    barrels.Add(new TurretBarrel(this, barrel));
+                }
+            }
         }
 
         //Turret rotation inspired by Rimatomics
@@ -444,7 +431,7 @@ namespace TiberiumRim
                 {
                     targetRot = (parent.CurrentTarget.CenterVector3 - parent.DrawPos).AngleFlat();
                 }
-                return Quaternion.Angle(rotation.ToQuat(), targetRot.ToQuat()) < parent.props.aimAngle;
+                return Quaternion.Angle(rotation.ToQuat(), targetRot.ToQuat()) < props.aimAngle;
             }
         }
 
@@ -465,6 +452,22 @@ namespace TiberiumRim
             }
         }
 
+        public void Shoot(int index)
+        {
+            if (!barrels.NullOrEmpty() && barrels.Count > index)
+            {
+                barrels[index].Shoot();
+            }
+        }
+
+        public void BarrelTick()
+        {
+            foreach(TurretBarrel barrel in barrels)
+            {
+                barrel.BarrelTick();
+            }
+        }
+
         public void TurretTopTick()
         {
             LocalTargetInfo currentTarget = this.parent.CurrentTarget;
@@ -472,11 +475,6 @@ namespace TiberiumRim
             {
                 targetRot = (parent.CurrentTarget.CenterVector3 - parent.DrawPos).AngleFlat();
                 turnTicks = 0;
-                /*
-                float curRotation = (currentTarget.Cell.ToVector3Shifted() - this.parent.DrawPos).AngleFlat();
-                this.CurRotation = curRotation;
-                this.ticksUntilTurn = Rand.RangeInclusive(150, 350);
-                */
             }
             else if(ticksUntilTurn > 0)
             {
@@ -484,7 +482,7 @@ namespace TiberiumRim
                 if(ticksUntilTurn == 0)
                 {
                     clockWise = Rand.Value > 0.5 ? false : true;
-                    turnTicks = TRUtils.Range(parent.props.idleDuration);
+                    turnTicks = TRUtils.Range(props.idleDuration);
                 }
             }
             else 
@@ -492,16 +490,67 @@ namespace TiberiumRim
                 targetRot += clockWise ? 0.26f : -0.26f;
                 turnTicks--;
                 if(turnTicks <= 0)
-                    ticksUntilTurn = TRUtils.Range(parent.props.idleInterval);
+                    ticksUntilTurn = TRUtils.Range(props.idleInterval);
             }
-            rotation = Mathf.SmoothDampAngle(rotation, targetRot, ref speed, 0.01f, parent.props.speed, 0.01666f);
+            rotation = Mathf.SmoothDampAngle(rotation, targetRot, ref speed, 0.01f, props.speed, 0.01666f);
         }
+
+        public Vector3 DrawPos => new Vector3(parent.DrawPos.x, AltitudeLayer.BuildingOnTop.AltitudeFor(), parent.DrawPos.z);
 
         public void DrawTurret()
         {
-            GraphicDrawInfo info = new GraphicDrawInfo(parent.Graphic, parent.DrawPos, parent.parent.Rotation, null, null);
-            var drawPos = new Vector3(info.drawPos.x, AltitudeLayer.BuildingOnTop.AltitudeFor(), info.drawPos.z);
-            Graphics.DrawMesh(info.drawMesh, drawPos, CurRotation.ToQuat(), info.drawMat, 0);
+            TRUtils.Draw(parent.TurretGraphic, DrawPos, Rot4.North, CurRotation, null);
+            barrels.ForEach(b => b.Draw());
+        }
+    }
+
+    public class TurretBarrel
+    {
+        private Graphic graphic;
+        private TurretGunTop parent;
+        private TurretBarrelProperties props;
+        private float currentRecoil = 0;
+        private float wantedRecoil = 0;
+        public float currentVelocity = 0;
+        private float speed = 100;
+
+
+        private static float smoothTime = 0.01f;
+        private static float deltaTime = 0.01666f;
+
+        public TurretBarrel(TurretGunTop parent, TurretBarrelProperties props)
+        {
+            this.parent = parent;
+            this.props = props;
+            this.graphic = props.graphic.Graphic;
+        }
+
+        public void Shoot()
+        {
+            wantedRecoil = 1;
+            speed = parent.props.recoilSpeed;
+        }
+
+        public void BarrelTick()
+        {
+            currentRecoil = Mathf.SmoothDamp(currentRecoil, wantedRecoil, ref currentVelocity, smoothTime, speed, deltaTime);
+            //Log.Message("Current Recoil: " + currentRecoil + " currentVelocity: " + currentVelocity + " curSpeed: " + speed, true);
+            if(wantedRecoil > 0 && ((wantedRecoil - currentRecoil) <= 0.01))
+            {
+                wantedRecoil = 0;
+                speed = parent.props.resetSpeed;
+            }
+        }
+
+        public Vector3 DrawPos => parent.DrawPos + props.barrelOffset;
+
+        public void Draw()
+        {
+            var mesh = graphic.MeshAt(Rot4.North);
+            var drawPos = DrawPos;
+            drawPos += Quaternion.Euler(0, parent.CurRotation, 0) * props.recoilOffset * currentRecoil;
+            drawPos.y = AltitudeLayer.BuildingOnTop.AltitudeFor() + props.altitudeOffset;
+            Graphics.DrawMesh(mesh, drawPos, parent.CurRotation.ToQuat(), graphic.MatSingle, 0);
         }
     }
 }

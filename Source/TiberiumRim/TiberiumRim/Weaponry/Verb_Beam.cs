@@ -9,7 +9,7 @@ using Verse;
 namespace TiberiumRim
 {
     public class Verb_Beam : Verb_TR
-    { 
+    {
         public ThingDef GunDef
         {
             get
@@ -43,12 +43,7 @@ namespace TiberiumRim
                 MoteMaker.ThrowMicroSparks(loc, caster.Map);
             }
             var Laser = Props.laser;
-            Vector3 offset = !Props.originOffsets.NullOrEmpty() ? Props.originOffsets.RandomElement() : Vector3.zero;
-            if (castingGun != null)
-            {
-                offset = castingGun.props.barrelOffset;
-            }
-            Vector3 start = this.caster.TrueCenter() + offset.RotatedBy(GunRotation);
+            Vector3 start = ShotOrigin();
             Mote_Beam beam = (Mote_Beam)ThingMaker.MakeThing(TiberiumDefOf.LaserBeam);
             Material mat = MaterialPool.MatFrom(Laser.beamPath, ShaderDatabase.MoteGlow);
             beam.SetConnections(start, currentTarget.CenterVector3, mat, Color.white);

@@ -42,7 +42,7 @@ namespace TiberiumRim
             pos.y = AltitudeLayer.MoteOverhead.AltitudeFor();
             Vector3 scale = new Vector3(1f, 1f, z);
             Quaternion quat = Quaternion.LookRotation(diff);
-            Matrix4x4 matrix = default(Matrix4x4);
+            Matrix4x4 matrix = default;
             matrix.SetTRS(pos, quat, scale);
             Graphics.DrawMesh(MeshPool.plane10, matrix, drawMat, 0);
         }

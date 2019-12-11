@@ -14,12 +14,13 @@ namespace TiberiumRim
     {
         public new TiberiumProducerDef def;
         public List<TiberiumCrystal> boundCrystals = new List<TiberiumCrystal>();
+        public List<TiberiumCrystal> growingCrystals = new List<TiberiumCrystal>();
         public HashSet<IntVec3> FieldCells = new HashSet<IntVec3>();
+        public List<IntVec3> pathCells = new List<IntVec3>();
         private int lastFieldCells = 0;
         private bool isGroundZero = false;
 
         private Effecter_MoteMaker effectMaker;
-        private IEnumerator<IntVec3> effecterCells;
 
         //Ticker
         private int ticksToSpawn = 0;
@@ -98,6 +99,14 @@ namespace TiberiumRim
 
             ticksToMature = (int) (GenDate.TicksPerDay * def.daysToMature);
             SetInitialCells();
+
+            var cells = GenAdj.CellsAdjacent8Way(this).ToList();
+            for (int i = 0; i < cells.Count - 1; i++)
+            {
+                if (i % 3 == 0)
+                    MakePath(this, cells[i], ref pathCells);
+            }
+
             foreach (IntVec3 cell in this.OccupiedRect())
             {
                 if (!def.tiberiumTerrain.NullOrEmpty())
@@ -114,11 +123,39 @@ namespace TiberiumRim
             }
         }
 
+        private void MakePath(TiberiumProducer producer, IntVec3 start, ref List<IntVec3> pathCells)
+        {
+            float radius = producer.GrowRadius;
+            float newDist = 0;
+            IntVec3 center = producer.Position;
+            IntVec3 curCell = start;
+            IntVec3 lastCell = start;
+
+            while (true)
+            {
+                if (curCell.DistanceTo(center) >= radius)
+                    return;
+                float dist = curCell.DistanceTo(center);
+                if (dist >= newDist && curCell.GetFirstBuilding(Map) == null && !pathCells.Contains(curCell))
+                {
+                    pathCells.Add(curCell);
+                    lastCell = curCell;
+                    newDist = dist;
+                }
+                else
+                {
+                    curCell = lastCell.RandomAdjacentCell8Way();
+                    continue;
+                }
+                curCell = curCell.RandomAdjacentCell8Way();
+            }
+        }
+
         private void SetPotentialFieldCells()
         {
-            if (def.spawner.growRadius <= 0) return;
+            if (GrowRadius <= 0) return;
             FloodFiller floodFill = new FloodFiller(Map);
-            float max = def.spawner.growRadius;
+            float max = GrowRadius;
             Predicate<IntVec3> predicate = x => x.GetTerrain(Map) is TiberiumTerrainDef && x.DistanceTo(Position) <= max;
             Action<IntVec3> action = delegate(IntVec3 c)
             {
@@ -130,12 +167,10 @@ namespace TiberiumRim
 
         private void SetInitialCells()
         {
-            var growRad = def.spawner.growRadius;
-            growRad *= isGroundZero ? 2.5f : 1;
-            int num = GenRadial.NumCellsInRadius(growRad);
+            int num = GenRadial.NumCellsInRadius(GrowRadius);
             bool Valid(IntVec3 c) => c.SupportsTiberiumTerrain(Map);
             TiberiumFloodInfo flood = new TiberiumFloodInfo(Map, num, Valid, null);
-            if (flood.TryMakeFlood(out List<IntVec3> cells, this.OccupiedRect(), true, num))
+            if (flood.TryMakeFlood(out List<IntVec3> cells, this.OccupiedRect(), false, num))
             {
                 InitialCells.AddRange(cells);
                 floodRadius = cells.Max(c => c.DistanceTo(Position));
@@ -187,7 +222,13 @@ namespace TiberiumRim
             }
 
             if (fastGrow)
-                Find.CameraDriver.StartCoroutine(FastGrow());
+            {
+                //FastGrow();
+                for (int i = growingCrystals.Count - 1; i >= 0; i--)
+                {
+                    growingCrystals[i].TiberiumTick();
+                }
+            }
 
             if (Find.TickManager.TicksGame % GenTicks.TickRareInterval == 0)
             {
@@ -227,7 +268,14 @@ namespace TiberiumRim
                 var cell = cells.ElementAt(i);
                 InitialCells.Remove(cell);
                 TerrainDef terrain = cell.GetTerrain(Map);
-                if (FieldCells.Contains(cell)) continue;
+                
+                /*
+                if (FieldCells.Contains(cell))
+                {
+                    Log.Message(this + " Contains existing cell");
+                }
+                */
+                
                 FieldCells.Add(cell);
                 lastFieldCells++;
                 if (terrain.IsTiberiumTerrain()) continue;
@@ -245,6 +293,7 @@ namespace TiberiumRim
                 }
                 if (newTerr == null)
                     newTerr = GenTiberium.SetTiberiumTerrain(cell, Map, TiberiumCrystal);
+
                 if (newTerr != null && def.growsFlora && cell.Standable(Map) && cell.GetFirstBuilding(Map) == null)
                     TrySpreadFlora(cell, newTerr);
             }
@@ -273,15 +322,6 @@ namespace TiberiumRim
             return def.SelectPlantByDistance(distance, floodRadius, terrain);
         }
 
-        public IEnumerator FastGrow()
-        {
-            foreach (TiberiumCrystal crystal in boundCrystals)
-            {
-                crystal.TickLong();
-            }
-            yield return null;
-        }
-
         public TiberiumTerrainDef Terrain => def.tiberiumTerrain.RandomElement();
 
         public MapComponent_Tiberium Manager => Map.GetComponent<MapComponent_Tiberium>();
@@ -290,12 +330,13 @@ namespace TiberiumRim
         {
             get
             {
-                
                 if (def.tiberiumTypes.NullOrEmpty())
                     return null;
                 return def.tiberiumTypes.RandomElement();
             }
         }
+
+        public float GrowRadius => isGroundZero ? def.spawner.growRadius * 2.5f : def.spawner.growRadius;
 
         public float WokePercent => 1f - (float)ticksToMature / (def.daysToMature * (float)GenDate.TicksPerDay);
 
@@ -333,7 +374,7 @@ namespace TiberiumRim
             {
                 case TiberiumSpawnMode.Direct:
                     cells = this.CellsAdjacent8WayAndInside().Where(c =>
-                        c.InBounds(Map) && c.GetTiberium(Map) == null && c.GetFirstBuilding(Map) == null && c.GetPlant(Map) == null).ToList();
+                        c.InBounds(Map) && c.GetTiberium(Map) == null && c.GetFirstBuilding(Map) == null).ToList();
                     if (cells.Any())
                         TrySpawnTiberiumAt(cells.RandomElement());
                     break;
@@ -358,16 +399,26 @@ namespace TiberiumRim
             }
         }
 
+        public bool InsideGrowPath(IntVec3 cell)
+        {
+            return pathCells.Contains(cell);
+        }
+
         private bool TrySpawnTiberiumAt(IntVec3 cell)
         {
+            Plant p = cell.GetPlant(Map);
+            if(p != null)
+                p.DeSpawn();
             if (!cell.Standable(Map))
                 return false;
 
-            if (GenTiberium.AnyCorruptedOutcomes(TiberiumCrystal, cell.GetTerrain(Map), out TerrainSupport support))
+            var terrain = cell.GetTerrain(Map);
+            if (GenTiberium.AnyCorruptedOutcomes(TiberiumCrystal, terrain, out TerrainSupport support))
             {
-                if(!cell.GetTerrain(Map).IsTiberiumTerrain())
+                if(!terrain.IsTiberiumTerrain())
                     Map.terrainGrid.SetTerrain(cell, support.TerrainOutcome);
                 var tib = GenTiberium.Spawn(support.CrystalOutcome, this, cell, Map);
+                return true;
             }
             return false;
         }
@@ -409,6 +460,8 @@ namespace TiberiumRim
 
         public void AddBoundCrystal(TiberiumCrystal crystal)
         {
+            growingCrystals.Add(crystal);
+
             boundCrystals.Add(crystal);
             FieldCells.Add(crystal.Position);
             lastFieldCells++;
@@ -416,7 +469,17 @@ namespace TiberiumRim
 
         public void RemoveBoundCrystal(TiberiumCrystal crystal)
         {
+            growingCrystals.Remove(crystal);
             boundCrystals.Remove(crystal);
+
+            foreach (var vec in crystal.Position.CellsAdjacent8Way())
+            {
+                TiberiumCrystal cryst = null;
+                if (vec.InBounds(Map) && (cryst = vec.GetTiberium(Map)) != null)
+                {
+                    growingCrystals.Add(cryst);
+                }
+            }
             if (crystal.def.dead != null)
             {
                 FieldCells.Remove(crystal.Position);
@@ -434,7 +497,6 @@ namespace TiberiumRim
             ticksToSpore = TRUtils.Range(def.spore.tickRange);
         }
 
-
         public override void Draw()
         {
             base.Draw();
@@ -444,6 +506,7 @@ namespace TiberiumRim
             }
             if (showAffect)
             {
+                GenDraw.DrawFieldEdges(pathCells, Color.blue);
                 //MapComponent_Tiberium tib = Map.GetComponent<MapComponent_Tiberium>();
                 //GenDraw.DrawFieldEdges(tib.PawnCells.ToList(), Color.green);
             }
@@ -471,6 +534,7 @@ namespace TiberiumRim
                 sb.AppendLine("Stop growth: " + stopGrowth);
                 sb.AppendLine("Speedy growth: " + fastGrow);
                 sb.AppendLine("Tiberium crystals: " + boundCrystals.Count);
+                sb.AppendLine("Active crystals: " + growingCrystals.Count);
                 sb.AppendLine("Field size: " + FieldCells.Count);
                 sb.AppendLine("Show Iterator: " + showTileIterator);
             }
@@ -505,6 +569,7 @@ namespace TiberiumRim
                         {
                             t.DeSpawn();                           
                         }
+                        growingCrystals.Clear();
                     }
                 };
 

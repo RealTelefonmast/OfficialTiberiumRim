@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	
-	<ThingDef ParentName="HarvesterBase">
+	<TiberiumRim.TRThingDef ParentName="HarvesterBase">
 		<defName>Harvester_Common</defName>
 		<label>Harvester</label>	
 		<description>A standart Tiberium harvester, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
@@ -25,9 +25,9 @@
 			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
 		</statBases>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="HarvesterBase">
+	<TiberiumRim.TRThingDef ParentName="HarvesterBase">
 		<defName>Harvester_GDI</defName>
 		<label>GDI harvester</label>	
 		<description>A standart Tiberium harvester, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
@@ -51,7 +51,47 @@
 			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
 		</statBases>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="HarvesterBase">
+		<defName>Harvester_Nod</defName>
+		<label>Nod harvester</label>	
+		<description>A standart Tiberium harvester, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 		
+				<overlays>
+					<li>
+						<data>
+							<texPath>Pawns/Nod/Harvester/OL</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+					</li>
+					<li>
+						<data>
+							<texPath>Pawns/Nod/Harvester/Eye</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</data>
+						<mode>Pulse</mode>
+					    <pulse>
+							<mode>Opacity</mode>
+							<opacityRange>0.6~1</opacityRange>
+						</pulse>
+					</li>
+				</overlays>			
+			</li>
+		</comps>
+		<statBases>
+			<MoveSpeed>1.33</MoveSpeed>
+			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
+		</statBases>
+	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.FXThingDef ParentName="BuildingBase_TR">
 		<defName>HarvesterHusk_Common</defName>

@@ -9,6 +9,17 @@
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Defense</TRCategory>
 		<size>(6,6)</size>
+		<drawOffscreen>false</drawOffscreen>
+		<passability>Impassable</passability>
+		<fillPercent>0.8</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<constructionSkillPrerequisite>15</constructionSkillPrerequisite>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<tickerType>Normal</tickerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/IonCannon/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -20,10 +31,6 @@
 		<superWeapon>
 			<designator>TiberiumRim.Designator_IonCannonTargeter</designator>
 		</superWeapon>
-		<uiIconScale>0.90</uiIconScale>
-		<altitudeLayer>BuildingOnTop</altitudeLayer>
-		<stealable>false</stealable>
-		<rotatable>false</rotatable>
 		<statBases>
 			<MaxHitPoints>460</MaxHitPoints>
 			<Flammability>0.40</Flammability>
@@ -31,7 +38,6 @@
 			<Mass>1000</Mass>
 			<Beauty>5</Beauty>
 		</statBases>
-		<tickerType>Normal</tickerType>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -62,13 +68,6 @@
 				<transmitsPower>true</transmitsPower>
 			</li>
 		</comps>
-		<drawOffscreen>false</drawOffscreen>
-		<passability>Impassable</passability>
-		<fillPercent>0.4</fillPercent>
-		<hasTooltip>true</hasTooltip>
-		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<specialDisplayRadius>39.9</specialDisplayRadius>
-		<constructionSkillPrerequisite>15</constructionSkillPrerequisite>
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_OnlyOutside</li>
 			<li>TiberiumRim.PlaceWorker_Once</li>

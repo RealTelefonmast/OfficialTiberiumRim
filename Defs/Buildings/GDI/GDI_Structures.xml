@@ -29,9 +29,8 @@
 		<graphicData>
 			<texPath>Buildings/GDI/Structure/Pillbox_GDI</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<linkType>Basic</linkType>
-			<linkFlags>
-				<li>Custom10</li>
+			<linkFlags Inherit="False">
+				<li>65536</li>
 			</linkFlags>
 		</graphicData>
 		<uiIconPath>Buildings/GDI/Structure/Pillbox_GDI_icon</uiIconPath>
@@ -41,8 +40,9 @@
 		<coversFloor>true</coversFloor>
 		<holdsRoof>false</holdsRoof>
 		<castEdgeShadows>false</castEdgeShadows>
-		<fillPercent>0.6</fillPercent>
 		<canOverlapZones>false</canOverlapZones>
+		<staticSunShadowHeight>0.1</staticSunShadowHeight>
+		<fillPercent>0.70</fillPercent>
 		<statBases>
 			<MaxHitPoints>300</MaxHitPoints>
 			<Beauty>0</Beauty>

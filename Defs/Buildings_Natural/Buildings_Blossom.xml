@@ -11,7 +11,8 @@
 			<drawSize>(3,3)</drawSize>
 		</graphicData>
 		<extraData>
-			<rotateDrawSize>true</rotateDrawSize>
+			<drawRotated>false</drawRotated>
+			<rotateDrawSize>false</rotateDrawSize>
 			<alignToBottom>true</alignToBottom>
 			<drawOffset>(0,0,-0.25)</drawOffset>
 		</extraData>
@@ -202,6 +203,11 @@
 		<graphicData>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>	
+		<extraData Inherit="False">
+			<drawRotated>false</drawRotated>
+			<rotateDrawSize>false</rotateDrawSize>
+			<alignToBottom>true</alignToBottom>
+		</extraData>
 		<comps Inherit="False"/>
 		<forResearch>false</forResearch>
 		<daysToMature>1.5</daysToMature>		
@@ -276,7 +282,6 @@
 			<li>TiberiumPodBlue</li>
 		</tiberiumTypes>	
 		<extraData Inherit="False">
-			<rotateDrawSize>true</rotateDrawSize>
 			<alignToBottom>false</alignToBottom>
 		</extraData>
 		<effecter>TiberiumClouds_GB</effecter>
@@ -290,14 +295,10 @@
 			<MaxHitPoints>450</MaxHitPoints>
 		</statBases>
 		<graphicData>
-			<graphicClass>Graphic_Random</graphicClass>
 			<texPath>Buildings/Natural/BlossomTree/Blossoms/B</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
 			<drawSize>(2.5,2.5)</drawSize>
 		</graphicData>
-		<extraData Inherit="False">
-			<rotateDrawSize>true</rotateDrawSize>
-			<alignToBottom>true</alignToBottom>
-		</extraData>
 		<plantsByDistance Inherit="False">
 			<li>
 				<plants>
@@ -321,7 +322,7 @@
 			</li>
 		</plantsByDistance>
 		<tiberiumTerrain>
-			<li>TiberiumSoilPod</li>
+			<li>TiberiumPodSoil</li>
 		</tiberiumTerrain>
 		<spawner>
 			<growRadius>5.79</growRadius>

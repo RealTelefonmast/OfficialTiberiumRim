@@ -64,7 +64,6 @@
 			<li>Producers</li>
 			<li>Crystals</li>
 			<li>Misc</li>
-			<li>Invalid</li>
 		</subCategories>
 	</TiberiumRim.FactionDesignationDef>  
   
@@ -100,10 +99,6 @@
 	
 	<TiberiumRim.TRThingCategoryDef>
 		<defName>Crystals</defName>
-	</TiberiumRim.TRThingCategoryDef>  
-	
-	<TiberiumRim.TRThingCategoryDef>
-		<defName>Invalid</defName>
 	</TiberiumRim.TRThingCategoryDef>  
 	
 </Defs>

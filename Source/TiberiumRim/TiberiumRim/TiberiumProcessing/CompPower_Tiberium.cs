@@ -7,13 +7,16 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class CompPower_Tiberium : CompPowerTrader 
+    public class CompPower_Tiberium : CompPowerPlant
     {
         private CompTNW CompTNW;
-        private CompBreakdownable CompBreakdownable;
         private int powerProductionTicks = 0;
 
         public PowerProperties TNWProps => (PowerProperties)CompTNW.Props;
+        public bool GeneratesPowerNow => powerProductionTicks > 0;
+
+        protected override float DesiredPowerOutput => GeneratesPowerNow ? base.DesiredPowerOutput : 0f;
+
 
         public override void PostExposeData()
         {
@@ -25,14 +28,12 @@ namespace TiberiumRim
         {
             base.PostSpawnSetup(respawningAfterLoad);
             CompTNW = parent.GetComp<CompTNW>();
-            CompBreakdownable = parent.GetComp<CompBreakdownable>();
         }
 
         public override void CompTick()
         {
             base.CompTick();
             PowerTick();
-            UpdateOutput();
         }
 
         private void PowerTick()
@@ -40,40 +41,16 @@ namespace TiberiumRim
             if (powerProductionTicks <= 0)
             {
                 if (CompTNW.Container.TryConsume(TNWProps.consumeAmt))
-                {
                     powerProductionTicks = (int)(GenDate.TicksPerDay * TNWProps.daysPerLoad);
-                }
             }
             else
-            {
                 powerProductionTicks--;
-            }
-        }
-
-        public bool GeneratesPowerNow
-        {
-            get
-            {
-                return powerProductionTicks > 0;
-            }
-        }
-
-        private void UpdateOutput()
-        {
-            if((CompBreakdownable?.BrokenDown ?? false) || (!flickableComp?.SwitchIsOn ?? false) || !GeneratesPowerNow || !PowerOn)
-            {
-                PowerOutput = 0f;
-            }
-            else
-            {
-                PowerOutput = -Props.basePowerConsumption;
-            }
         }
 
         public override string CompInspectStringExtra()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(base.CompInspectStringExtra().TrimStart().TrimEndNewlines());
+            sb.AppendLine(base.CompInspectStringExtra());
             sb.AppendLine("Power left for: " +  GenDate.ToStringTicksToPeriod(powerProductionTicks));
             return sb.ToString().TrimEndNewlines();
         }

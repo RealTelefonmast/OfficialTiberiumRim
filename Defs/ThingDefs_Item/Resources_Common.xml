@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef ParentName="ResourceBase_TR">
+	<TiberiumRim.FXThingDef ParentName="ResourceBase_TR">
 		<defName>PortableContainer</defName>
 		<label>tiberium storage cell</label>
 		<description>This container appears after deconstruction of any structure with a tiberium storage. It contains the exact amount as was left remaining in that structure. You can use this at any structure which stores a type from this container.</description>
@@ -43,7 +43,7 @@
 		<thingCategories>
 			<li>Manufactured</li>
 		</thingCategories>
-	</ThingDef>
+	</TiberiumRim.FXThingDef>
 	
 	<ThingDef ParentName="ResourceBase_TR">
 		<defName>TRBattleChip</defName>

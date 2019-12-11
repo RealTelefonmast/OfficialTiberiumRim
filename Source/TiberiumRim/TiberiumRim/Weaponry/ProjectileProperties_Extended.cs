@@ -15,7 +15,6 @@ namespace TiberiumRim
     public class LaserProperties
     {
         public string beamPath;
-        public ShaderTypeDef shader = DefDatabase<ShaderTypeDef>.GetNamed("MoteGlow");
         public LaserSourceGlow glow;
         public List<ThingDef> impactMotes;
     }

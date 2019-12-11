@@ -188,6 +188,8 @@
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 	</TiberiumRim.TRThingDef>
 	
+	<!-- Tiberium Geyser -->
+	
 	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>TiberiumGeyser</defName>
 		<label>tiberium geyser</label>
@@ -204,21 +206,6 @@
 			<shaderType>Transparent</shaderType>
 			<drawSize>(2,2)</drawSize>
 		</extraGraphicData>
-		<comps>
-			<li Class="TiberiumRim.CompProperties_FX">
-				<effecters>
-					<li>
-						<burstInterval>1000~3500</burstInterval>
-						<burstRange>500~750</burstRange>
-						<moteDef>Mote_TiberiumGeyser</moteDef>
-						<rotationRate>-240~240</rotationRate>
-						<rotation>0</rotation>
-						<angle>-45~45</angle>
-						<speed>0.85~1</speed>
-					</li>
-				</effecters>
-			</li>
-		</comps>
 		<altitudeLayer>Floor</altitudeLayer>
 		<rotatable>false</rotatable>
 		<destroyable>false</destroyable>
@@ -233,6 +220,60 @@
 			<isEdifice>false</isEdifice>
 		</building>
 	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="EtherealThingBase_TR">
+		<defName>TiberiumGeyserCrack</defName>
+		<label>geyser crack</label>
+		<thingClass>TiberiumRim.TiberiumGeyserCrack</thingClass>
+		<tickerType>Never</tickerType>
+		<altitudeLayer>Floor</altitudeLayer>
+		<drawerType>MapMeshOnly</drawerType>
+		<size>(2,2)</size>
+		<blockPlants>true</blockPlants>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<selectable>false</selectable>
+		<graphicData>
+			<texPath>Buildings/Natural/TibGeyser/Crack</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>	
+		<building>
+			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>false</deconstructible>
+		</building>
+	</TiberiumRim.TRThingDef>
+	
+	<!--
+	<TiberiumRim.TRThingDef>
+		<defName>TiberiumCrack</defName>
+		<thingClass>TiberiumRim.Building_GasCrack</thingClass>
+		<label>Tiberium Crack</label>
+		<graphicData>
+			<texPath>Building/Natural/TibGeyser/Crack</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>		
+		<altitudeLayer>Floor</altitudeLayer>
+		<rotatable>false</rotatable>
+		<destroyable>false</destroyable>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Rare</tickerType>
+		<selectable>false</selectable>
+		<size>(1,1)</size>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<building>
+			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>false</deconstructible>
+		</building>
+	</TiberiumRim.TRThingDef>
+	-->
+	
+	<!-- Visceral Stuff -->
 	
 	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>VisceralPod</defName>

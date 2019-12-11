@@ -27,10 +27,7 @@ namespace TiberiumRim
             var comp = parent.TryGetComp<CompTNW>();
             if(comp != null)
             {
-                if (comp is CompTNW_Pipe)
-                {
-                    base.Print(layer, parent);
-                }
+                base.Print(layer, parent);
                 for(int i = 0; i < comp.pipeExtensionCells.Count; i++)
                 {
                     IntVec3 pos = comp.pipeExtensionCells[i];

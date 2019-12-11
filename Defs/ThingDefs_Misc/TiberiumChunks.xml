@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef Name="TiberiumChunkBase" ParentName="ChunkBase" Abstract="True">
+	<TiberiumRim.TRThingDef Name="TiberiumChunkBase" ParentName="ChunkBase" Abstract="True">
 		<thingClass>TiberiumRim.TiberiumChunk</thingClass>
 		<description>A Tiberium chunk, it will slowly deteriorate into Tiberium crystals.</description>
 		<statBases>
@@ -52,9 +52,9 @@
 			</li>
 		</comps>
 		<tickerType>Rare</tickerType>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
   
-	<ThingDef ParentName="TiberiumChunkBase">
+	<TiberiumRim.TRThingDef ParentName="TiberiumChunkBase">
 		<defName>GreenTiberiumChunk</defName>
 		<label>green tiberium chunk</label>
 		<statBases>
@@ -78,9 +78,9 @@
 			</li>
 		</comps>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="TiberiumChunkBase">
+	<TiberiumRim.TRThingDef ParentName="TiberiumChunkBase">
 		<defName>BlueTiberiumChunk</defName>
 		<label>blue tiberium chunk</label>
 		<statBases>
@@ -104,9 +104,9 @@
 			</li>
 		</comps>
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="TiberiumChunkBase">
+	<TiberiumRim.TRThingDef ParentName="TiberiumChunkBase">
 		<defName>RedTiberiumChunk</defName>
 		<label>red tiberium chunk</label>
 		<thingClass>ThingWithComps</thingClass>
@@ -131,11 +131,11 @@
 			</li>
 		</comps>
 		<filthLeaving>FilthTiberiumRed</filthLeaving>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="TiberiumChunkBase">
+	<TiberiumRim.TRThingDef ParentName="TiberiumChunkBase">
 		<defName>VeinTiberiumChunk</defName>
-		<thingClass>TiberiumRim.TiberiumObject</thingClass>
+		<thingClass>TiberiumRim.TiberiumThing</thingClass>
 		<label>veiny chunk</label>
 		<description>A vein infested chunk, I swear I saw it moving.</description>
 		<statBases>
@@ -146,6 +146,6 @@
 		<graphicData>
 			<texPath>Items/Misc/VeinRock</texPath>
 		</graphicData>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 </Defs>

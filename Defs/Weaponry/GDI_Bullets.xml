@@ -71,16 +71,16 @@
 		<defName>Bullet_Guardian</defName>
 		<label>armor piercing shell</label>
 		<graphicData>
-			<texPath>Items/Weapons/Projectile/Bullet_Jugg</texPath>
+			<texPath>Items/Weapons/Projectile/Bullet_Guardian</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>1.5</drawSize>
+			<drawSize>2</drawSize>
 		</graphicData>
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<damageAmountBase>45</damageAmountBase>
 			<stoppingPower>1</stoppingPower>
 			<explosionRadius>0.025</explosionRadius>
-			<speed>200</speed>
+			<speed>80</speed>
 		</projectile>
 	</ThingDef>
 	

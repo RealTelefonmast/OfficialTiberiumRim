@@ -15,14 +15,18 @@ namespace TiberiumRim
         public HashSet<IntVec3> AffectedCells = new HashSet<IntVec3>();
         public HashSet<IntVec3> IteratorTiles = new HashSet<IntVec3>();
 
-        public HashSet<IntVec3> InhibitedCells = new HashSet<IntVec3>();
+        private int TiberiumArrivalTick = 0;
+
+        //Affected Objects Iterator
         private IEnumerator<IntVec3> TileIterator;
         private bool dirtyIterator = false;
-        private int TiberiumArrivalTick = 0;
 
         //Debug
         public Region currentDebugRegion;
         public IntVec3 currentDebugCell;
+
+        public MapComponent_Suppression Suppression => map.GetComponent<MapComponent_Suppression>();
+        public MapComponent_TNWManager TNWManager => map.GetComponent<MapComponent_TNWManager>();
 
         public MapComponent_Tiberium(Map map) : base(map)
         {
@@ -33,6 +37,7 @@ namespace TiberiumRim
         public override void FinalizeInit()
         {
             base.FinalizeInit();
+
         }
 
         public override void MapGenerated()
@@ -46,16 +51,22 @@ namespace TiberiumRim
             base.ExposeData();
         }
 
+        [TweakValue("MapComponent_TibDrawBool", 0f, 100f)]
+        public static bool DrawBool = false;
+
         public override void MapComponentUpdate()
         {
             base.MapComponentUpdate();
-            if (TiberiumRimSettings.settings.ShowNetworkValues)
+            if (DrawBool)
             {
                 
                 TiberiumInfo.TiberiumGrid.drawer.RegenerateMesh();
                 TiberiumInfo.TiberiumGrid.drawer.MarkForDraw();
                 TiberiumInfo.TiberiumGrid.drawer.CellBoolDrawerUpdate();
-                
+
+                TiberiumInfo.FloraGrid.drawer.RegenerateMesh();
+                TiberiumInfo.FloraGrid.drawer.MarkForDraw();
+                TiberiumInfo.FloraGrid.drawer.CellBoolDrawerUpdate();
                 //Suppression.SuppressionGrid.drawer.RegenerateMesh();
                 //Suppression.SuppressionGrid.drawer.MarkForDraw();
                 //Suppression.SuppressionGrid.drawer.CellBoolDrawerUpdate();
@@ -66,13 +77,11 @@ namespace TiberiumRim
         {
             base.MapComponentTick();
             IterateThroughTiles();
-            if (Find.TickManager.TicksGame % 750 == 0)
+            if (Find.TickManager.TicksGame %  150 == 0)
+            {
                 TiberiumInfo.TiberiumGrid.UpdateDirties();
+            }
         }
-
-        public MapComponent_Suppression Suppression => map.GetComponent<MapComponent_Suppression>();
-
-        public MapComponent_TNWManager TNWManager => map.GetComponent<MapComponent_TNWManager>();
 
         public bool TiberiumAvailable
         {
@@ -177,22 +186,16 @@ namespace TiberiumRim
                         building.DeSpawn();
                 }
             }
-        }     
-
-        public IEnumerable<IntVec3> PawnCells
-        {
-            get
-            {
-                return map.mapPawns.AllPawnsSpawned.SelectMany(p => p.CellsAdjacent8WayAndInside().Where(c => AffectedCells.Contains(c)));
-            }
         }
-        
-        public IEnumerable<Region> PawnRegions
+
+        public void AddTiberiumPlant(TiberiumPlant plant, bool respawn)
         {
-            get
-            {
-                return map.mapPawns.AllPawnsSpawned.Select(p => p.GetRegion()).Where(r => AffectedCells.Contains(r.Cells.RandomElement()));
-            }
+            TiberiumInfo.RegisterTiberiumPlant(plant);
+        }
+
+        public void RemoveTiberiumPlant(TiberiumPlant plant)
+        {
+            TiberiumInfo.DeregisterTiberiumPlant(plant);
         }
 
         public void AddTiberium(TiberiumCrystal crystal, bool respawn)

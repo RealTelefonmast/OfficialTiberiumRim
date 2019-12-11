@@ -18,6 +18,12 @@ namespace TiberiumRim
         public virtual float[] OpacityFloats => new float[1] { 1f };
         public virtual float?[] RotationOverrides => new float?[1] { null };
         public virtual bool[] DrawBools => new bool[1] { true };
+        public Action<FXGraphic>[] Actions => null;
+
+        public virtual Vector2? TextureOffset => null;
+        public virtual Vector2? TextureScale => null;
         public virtual bool ShouldDoEffecters => true;
+
+        public virtual CompPower ForcedPowerComp => null;
     }
 }

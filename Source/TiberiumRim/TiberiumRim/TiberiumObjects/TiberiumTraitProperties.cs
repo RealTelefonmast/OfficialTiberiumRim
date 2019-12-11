@@ -50,7 +50,7 @@ namespace TiberiumRim
             {
                 float offset = totalPoints > 0f ? general : 0f;
                 totalPoints -= offset;
-                if (TRUtils.Value > 0.4646469f)
+                if (TRUtils.RandValue > 0.4646469f)
                 {
                     offset = -offset;
                 }

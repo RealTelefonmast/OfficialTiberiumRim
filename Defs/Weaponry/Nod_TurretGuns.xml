@@ -44,13 +44,13 @@
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<requireLineOfSight>false</requireLineOfSight>
-				<warmupTime>3</warmupTime>
+				<warmupTime>3.5</warmupTime>
 				<minRange>2.9</minRange>
-				<range>40</range>
+				<range>45</range>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
-				<soundAiming>Shot_Nod_ObeliskTail</soundAiming>
-				<soundCast>Shot_Nod_Obelisk</soundCast>
+				<chargeSound>Obelisk_Chargup</chargeSound>
+				<soundCast>Obelisk_Shot</soundCast>
 			</li>
 		</verbs>
 	</ThingDef>
@@ -88,7 +88,6 @@
 					<li>(0.25,0,0.85)</li>
 					<li>(-0.25,0,0.85)</li>
 				</originOffsets>
-				<forceOffsets>true</forceOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Shredder</defaultProjectile>
 				<warmupTime>1.5</warmupTime>

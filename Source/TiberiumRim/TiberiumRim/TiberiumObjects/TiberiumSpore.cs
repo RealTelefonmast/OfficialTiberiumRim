@@ -28,6 +28,7 @@ namespace TiberiumRim
 
         public override void FinishAction()
         {
+            base.FinishAction();
             if (crystalDef != null && !map.roofGrid.Roofed(Position))
             {
                 if (endCell.GetTiberium(map) == null && crystalDef.CanSpreadTo(endCell, map, out TerrainSupport support, out IntVec3 hidden))

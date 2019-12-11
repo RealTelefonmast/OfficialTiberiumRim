@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Verse;
-using RimWorld;
-using StoryFramework;
 
 namespace TiberiumRim
 {
+    public interface IUpgradable
+    {
+        string[] Upgrades { get; }
+
+        void ReceiveUpgrade(string upgrade);
+        bool HasUpgrade(string upgrade);
+    }
+
     public class Comp_Upgradable : ThingComp
     {
+        
+
         public CompProperties_Upgrade Props
         {
             get
@@ -22,10 +27,7 @@ namespace TiberiumRim
         {
             if (Props.requisites != null)
             {
-                if (!Props.requisites.IsFulfilled())
-                {
-                    return;
-                }
+
             }
         }
 
@@ -33,10 +35,7 @@ namespace TiberiumRim
         {
             if (Props.requisites != null)
             {
-                if (!Props.requisites.IsFulfilled())
-                {
-                    return;
-                }
+
             }
             base.CompTickRare();
         }
@@ -45,5 +44,6 @@ namespace TiberiumRim
     public class CompProperties_Upgrade : CompProperties
     {
         public Requisites requisites;
+        public List<string> upgrades;
     }
 }

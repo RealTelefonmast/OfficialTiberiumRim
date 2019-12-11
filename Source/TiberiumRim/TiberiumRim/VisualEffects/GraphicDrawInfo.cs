@@ -20,14 +20,16 @@ namespace TiberiumRim
         public GraphicDrawInfo(Graphic g, Vector3 rootPos, Rot4 rot, ExtendedGraphicData exData, ThingDef def = null)
         {
             drawMat = g.MatAt(rot);
+
             //DrawPos
             drawPos = rootPos;
             if ((exData?.alignToBottom ?? false) && def != null)
             {
-                drawPos.z += TRUtils.AlignToBottomOffset(def, g.data);
+                drawPos.z += AlignToBottomOffset(def, g.drawSize);
             }
 
             drawPos += exData?.drawOffset ?? Vector3.zero;
+
             //DrawSize
             drawSize = g.drawSize;
             if (g.ShouldDrawRotated)
@@ -40,25 +42,31 @@ namespace TiberiumRim
                 {
                     drawSize = drawSize.Rotated();
                 }
-                flipUV = !g.ShouldDrawRotated && ((rot == Rot4.West && g.WestFlipped) || (rot == Rot4.East && g.EastFlipped));
+                flipUV = /*!g.ShouldDrawRotated &&*/ ((rot == Rot4.West && g.WestFlipped) || (rot == Rot4.East && g.EastFlipped));
             }
             drawMesh = flipUV ? MeshPool.GridPlaneFlip(drawSize) : MeshPool.GridPlane(drawSize);
-            rotation = AngleFromRotFor(g, rot);
+            rotation = AngleFromRotFor(g, rot, exData?.drawRotated ?? true);
         }
 
-        private float AngleFromRotFor(Graphic g, Rot4 rot)
+        private float AngleFromRotFor(Graphic g, Rot4 rot, bool drawRotated)
         {
-            if (g.ShouldDrawRotated)
+            if (!drawRotated || !g.ShouldDrawRotated) return 0f;
+
+            float num = rot.AsAngle;
+            num += g.DrawRotatedExtraAngleOffset;
+            if ((rot == Rot4.West && g.WestFlipped) || (rot == Rot4.East && g.EastFlipped))
             {
-                float num = rot.AsAngle;
-                num += g.DrawRotatedExtraAngleOffset;
-                if ((rot == Rot4.West && g.WestFlipped) || (rot == Rot4.East && g.EastFlipped))
-                {
-                    num += 180f;
-                }
-                return num;
+                num += 180f;
             }
-            return 0f;
+            return num;
+        }
+
+        private float AlignToBottomOffset(ThingDef def, Vector2 drawSize)
+        {
+            float height = drawSize.y;
+            float selectHeight = def.size.z;
+            float diff = height - selectHeight;
+            return diff / 2;
         }
     }
 }

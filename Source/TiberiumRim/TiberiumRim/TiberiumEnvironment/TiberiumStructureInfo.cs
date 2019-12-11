@@ -55,5 +55,15 @@ namespace TiberiumRim
             if (tibobj is TiberiumGeyser g)
                 Geysers.Add(g);
         }
+
+        public void Deregister(TRBuilding tibobj)
+        {
+            if (tibobj is TiberiumProducer p)
+                Producers.Remove(p);
+            if (tibobj is TiberiumBlossom b)
+                Blossoms.Remove(b);
+            if (tibobj is TiberiumGeyser g)
+                Geysers.Remove(g);
+        }
     }
 }

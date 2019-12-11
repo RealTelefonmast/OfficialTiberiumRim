@@ -2,6 +2,13 @@
 <Defs>
 
 	<TiberiumRim.TerrainTagDef>
+		<defName>Tiberium</defName>
+		<tags>		
+			<li>Tiberium</li>
+		</tags>
+	</TiberiumRim.TerrainTagDef>
+
+	<TiberiumRim.TerrainTagDef>
 		<defName>Soils</defName>
 		<tags>		
 			<li>soil</li>
@@ -32,6 +39,7 @@
 		<defName>Stones</defName>
 		<tags>
 			<li>stone</li>
+			<li>rock</li>
 			<li>slate</li>
 			<li>marble</li>
 			<li>granite</li>

@@ -15,6 +15,7 @@ namespace TiberiumRim
             power = parent.GetComp<CompPower_Tiberium>();
         }
 
-        public override bool ShouldDoEffecters => power?.GeneratesPowerNow ?? false;
+        public override bool[] DrawBools => new bool[] { true, StructureSet.Pipes.Any(), power.GeneratesPowerNow, power.GeneratesPowerNow };
+        public override bool ShouldDoEffecters => power.GeneratesPowerNow;
     }
 }

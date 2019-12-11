@@ -119,10 +119,18 @@ namespace TiberiumRim
             }
         }
 
-        public void Draw(Vector3 drawPos, Rot4 rot, float? rotation, int index)
+        public void Draw(Vector3 drawPos, Rot4 rot, float? rotation, Action<FXGraphic> action, int index)
         {
+            if(action != null)
+            {
+                action.Invoke(this);
+                return;
+            }
+
             GraphicDrawInfo info = new GraphicDrawInfo(Graphic, drawPos, rot, ((FXThingDef)parent.parent.def).extraData, parent.parent.def);
             Material mat = info.drawMat;
+            mat.SetTextureOffset("_MainTex", parent.TextureOffset);
+            mat.SetTextureScale("_MainTex", parent.TextureScale);
             int renderqueue = mat.renderQueue;
             if (data.mode == FXMode.Mover)
             {

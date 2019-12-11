@@ -11,10 +11,10 @@ namespace TiberiumRim
     public class Verb_TR : Verb
     {
         public TurretGun castingGun;
-
         public CompTNW_Turret TiberiumComp => caster.TryGetComp<CompTNW_Turret>();
-
         public VerbProperties_TR Props => (VerbProperties_TR)base.verbProps;
+
+        private int OffsetIndex => castingGun.ShotIndex;
 
         public ThingDef Projectile
         {
@@ -43,6 +43,26 @@ namespace TiberiumRim
                 return caster.DrawPos;
             }
         }
+
+        protected Vector3 NextOffset()
+        {
+            if (!Props.originOffsets.NullOrEmpty())
+                return Props.originOffsets[OffsetIndex];
+            return Vector3.zero;
+        }
+
+        protected Vector3 ShotOrigin()
+        {
+            Vector3 offset = Vector3.zero;
+            if (castingGun != null && castingGun.top.props.barrelMuzzleOffset != Vector3.zero)
+            {
+                offset = castingGun.top.props.barrelMuzzleOffset;
+            }
+            offset += NextOffset();
+            return DrawPos + offset.RotatedBy(GunRotation);
+        }
+
+        public bool IsMortar => !IsBeam && Props.defaultProjectile.projectile.flyOverhead;
 
         public bool IsBeam => Props.laser != null;
 
@@ -73,7 +93,8 @@ namespace TiberiumRim
                         return num;
                     }
                 }
-                return castingGun == null ? 0f : castingGun.TurretRotation; 
+                Log.Message("Gun: " + (castingGun != null) + " " + (castingGun?.props != null));
+                return castingGun != null ? (castingGun.HasTurret ? castingGun.TurretRotation : 0f) : 0f; 
             }
         }
 
@@ -149,6 +170,7 @@ namespace TiberiumRim
             if (this.verbProps.stopBurstWithoutLos && !flag)
                 return false;
 
+            castingGun.Notify_FiredSingleProjectile();
             if (base.EquipmentSource != null)
             {
                 CompChangeableProjectile comp = base.EquipmentSource.GetComp<CompChangeableProjectile>();
@@ -165,12 +187,8 @@ namespace TiberiumRim
                 launcher = compMannable.ManningPawn;
                 equipment = this.caster;
             }
-            Vector3 offset = !Props.originOffsets.NullOrEmpty() ? Props.originOffsets.RandomElement() : Vector3.zero;
-            if (!Props.forceOffsets && castingGun != null)
-            {
-                offset = castingGun.props.barrelOffset;
-            }
-            Vector3 drawPos = DrawPos + offset.RotatedBy(GunRotation);
+            Vector3 drawPos = ShotOrigin();
+            Log.Message("Base DrawPos: " + DrawPos + " offset: " + drawPos);
             Projectile projectile2 = (Projectile)GenSpawn.Spawn(projectile, shootLine.Source, this.caster.Map, WipeMode.Vanish);
             if (this.verbProps.forcedMissRadius > 0.5f)
             {
@@ -269,8 +287,8 @@ namespace TiberiumRim
         public List<Vector3> originOffsets;
         public TiberiumCost tiberiumCostPerBurst;
         public TiberiumCost tiberiumCostPerShot;
+        public SoundDef chargeSound;
         public float powerConsumption = 0;
-        public bool forceOffsets = false;
 
         public LaserProperties laser;
     }

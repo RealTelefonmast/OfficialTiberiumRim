@@ -16,6 +16,7 @@
 		</affordances>
 		<tags>
 			<li>Tiberium</li>
+			<li>Soil</li>
 		</tags>
 		<generatedFilth>Filth_Dirt</generatedFilth>
 		<fertility>0</fertility>
@@ -61,6 +62,7 @@
 		</affordances>
 		<tags>
 			<li>Tiberium</li>
+			<li>Stone</li>
 		</tags>
 		<scatterType>Rocky</scatterType>
 		<generatedFilth>Filth_Dirt</generatedFilth>
@@ -328,9 +330,9 @@
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
-		<defName>TiberiumSoilPod</defName>
+		<defName>TiberiumPodSoil</defName>
 		<label>green tiberium pod soil</label>
-		<texturePath>Terrain/Natural/TiberiumSoilPod</texturePath>
+		<texturePath>Terrain/Natural/TiberiumPodSoil</texturePath>
 		<renderPrecedence>340</renderPrecedence>
 		<pathCost>9</pathCost>
 		<tags>
@@ -345,15 +347,15 @@
 			<li>Diggable</li>
 		</affordances>
 		<terrainSupport>
-			<Soils>TiberiumSoilPod, TiberiumPod</Soils>
-			<Mosses>TiberiumSoilPod, TiberiumPod</Mosses>
+			<Soils>TiberiumPodSoil, TiberiumPod</Soils>
+			<Mosses>TiberiumPodSoil, TiberiumPod</Mosses>
 		</terrainSupport>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
-		<defName>TiberiumSoilPodBlue</defName>
+		<defName>TiberiumPodSoilBlue</defName>
 		<label>blue tiberium pod soil</label>
-		<texturePath>Terrain/Natural/TiberiumSoilPodBlue</texturePath>
+		<texturePath>Terrain/Natural/TiberiumPodSoilBlue</texturePath>
 		<renderPrecedence>340</renderPrecedence>
 		<pathCost>9</pathCost>
 		<tags>
@@ -372,8 +374,32 @@
 			<li>TiberiumGrass_Blue,0.4</li>
 		</plantSupport>
 		<terrainSupport>
-			<Soils>TiberiumSoilPodBlue, TiberiumPodBlue</Soils>
-			<Mosses>TiberiumSoilPodBlue, TiberiumPodBlue</Mosses>
+			<Soils>TiberiumPodSoilBlue, TiberiumPodBlue</Soils>
+			<Mosses>TiberiumPodSoilBlue, TiberiumPodBlue</Mosses>
+		</terrainSupport>
+	</TiberiumRim.TiberiumTerrainDef>
+	
+	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
+		<defName>TiberiumSoilAboreus</defName>
+		<label>aboreus soil</label>
+		<texturePath>Terrain/Natural/AboreusSoil</texturePath>
+		<pathCost>7</pathCost>
+		<tags>
+			<li>TiberiumSoil</li>
+		</tags>
+		<statBases>
+			<Beauty>-10</Beauty>
+			<Cleanliness>-100</Cleanliness>
+		</statBases>
+		<affordances>
+			<li>Light</li>
+			<li>Diggable</li>
+		</affordances>
+		<terrainSupport>
+			<Soils>TiberiumSoilGreen, TiberiumGreen</Soils>
+			<Sands>TiberiumSandGreen, TiberiumShardsGreen</Sands>
+			<Mosses>TiberiumMossyTerrainGreen, TiberiumMossGreen</Mosses>
+			<Stones>TiberiumStoneGreen, TiberiumMossGreen</Stones>
 		</terrainSupport>
 	</TiberiumRim.TiberiumTerrainDef>
 	

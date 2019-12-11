@@ -126,23 +126,6 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="MoteBase_TR">
-		<defName>TiberiumGas</defName>
-		<drawOffscreen>true</drawOffscreen>
-		<altitudeLayer>MoteOverhead</altitudeLayer>
-		<graphicData>
-			<texPath>Motes/TiberiumGas</texPath>
-			<shaderType>MoteGlow</shaderType>
-			<drawSize>(1.5,1.5)</drawSize>
-		</graphicData>
-		<mote>
-			<fadeInTime>0.5</fadeInTime>
-			<solidTime>0.25</solidTime>
-			<fadeOutTime>0.5</fadeOutTime>
-			<growthRate>1.75</growthRate>
-		</mote>
-	</ThingDef>
-	
-	<ThingDef ParentName="MoteBase_TR">
 		<defName>VeinholeSmoke</defName>
 		<graphicData>
 			<texPath>Motes/TiberiumGasDark</texPath>

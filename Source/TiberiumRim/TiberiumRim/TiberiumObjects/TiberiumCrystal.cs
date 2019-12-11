@@ -14,11 +14,11 @@ namespace TiberiumRim
     {
         Growing,
         ProducingTerrain,
-        Mature,
+        Spreading,
         Evolving
     }
 
-    public class TiberiumCrystal : FXThing
+    public class TiberiumCrystal : TiberiumThing
     {
         public new TiberiumCrystalDef def;
         public int generation = 0;
@@ -27,9 +27,13 @@ namespace TiberiumRim
         private float growthInt = 0.001f;
         private float growthPerTick = 0;
         private float inRange = -1;
-        private bool forcedDormant = true;
-        private bool updatedTerrain = false;
 
+        private bool forcedDormant = true;
+        private bool updatedTerrain;
+        private bool ignoreFlora = false;
+        private bool rootNode = false;
+
+        private int spreadTimes = 0;
         private int meshDirtyTicks = 0;
 
         public override void ExposeData()
@@ -38,8 +42,17 @@ namespace TiberiumRim
             Scribe_References.Look(ref parent, "parent");
             Scribe_Values.Look(ref growthInt, "growth");
             Scribe_Values.Look(ref growthPerTick, "growthTick");
+            Scribe_Values.Look(ref inRange, "inRange");
+
             Scribe_Values.Look(ref forcedDormant, "dormant");
+            Scribe_Values.Look(ref updatedTerrain, "updatedTerrain");
+            Scribe_Values.Look(ref ignoreFlora, "ignoreFlora");
+            Scribe_Values.Look(ref rootNode, "rootNode");
+
+            Scribe_Values.Look(ref spreadTimes, "spreadTimes");
         }
+
+        public TiberiumProducer Parent => parent;
 
         public void PreSpawnSetup(TiberiumProducer parent, bool dormant = true, int gen = 0)
         {
@@ -48,14 +61,18 @@ namespace TiberiumRim
             this.generation = gen;
         }
 
+        //If Tiberium spawns within the flora area of a producer, it ignores flora while spreading, killing and replacing it.
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
             this.def = base.def as TiberiumCrystalDef;
-            Manager.AddTiberium(this, respawningAfterLoad);
+            TiberiumComp.AddTiberium(this, respawningAfterLoad);
             if (HasParent)
             {
                 parent.AddBoundCrystal(this);
+                if (Position.DistanceTo(parent.Position) <= parent.GrowRadius)
+                    ignoreFlora = true;
+                rootNode = TRUtils.Chance(0.03f);
                 if (!respawningAfterLoad)
                 {
                     growthPerTick = 1f / ((GenDate.TicksPerDay * def.tiberium.growDays) / GenTicks.TickLongInterval);
@@ -66,7 +83,7 @@ namespace TiberiumRim
 
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
         {
-            Manager.RemoveTiberium(this);
+            TiberiumComp.RemoveTiberium(this);
             if (def.dead != null)
                 Map.terrainGrid.SetTerrain(Position, def.dead);
             if (HasParent)
@@ -79,13 +96,15 @@ namespace TiberiumRim
             base.PostApplyDamage(dinfo, totalDamageDealt);
         }
 
+        //TODO: Tiberium spawned at a producer needs to "root out" towards the border of the initial 
         public override void TickLong()
         {
+            if (HasParent && parent.fastGrow) return;
             if (CanTick)
             {
                 TiberiumTick();
             }
-            else if(def.tiberium.dependsOnProducer)
+            else if (def.tiberium.dependsOnProducer)
             {
                 var info = new DamageInfo(DamageDefOf.Rotting, TRUtils.Range(1, 15));
                 this.TakeDamage(info);
@@ -94,39 +113,58 @@ namespace TiberiumRim
 
         public void TiberiumTick()
         {
-            if ((!parent?.NoSpread ?? true) && !Dormant)
-            {
-                if (Growth > 0.75f)
-                {
-                    if (Rand.MTBEventOccurs(def.tiberium.reproduceDays, GenDate.TicksPerDay, GenTicks.TickLongInterval))
-                    {
-                        GenTiberium.SpreadTiberium(this);
-                    }
-                }
-            }
-            if ((!parent?.NoTerrain ?? true) && !updatedTerrain && LifeStage == TiberiumLifeStage.ProducingTerrain)
+            if (!CanTick) return;
+            StateTick();
+            if (Dormant) return;
+            GrowthTick();
+            if (!ShouldSpread) return;
+            SpreadTick();
+        }
+
+        public void StateTick()
+        {
+            if (spreadTimes > 0)
+                parent.growingCrystals.Remove(this);
+        }
+
+        public void GrowthTick()
+        {
+            if ((parent?.NoGrowth ?? false) || (Growth >= 1f)) return;
+            Growth += GrowthPerTick;
+
+            //Set Terrain
+            if (updatedTerrain) return;
+            if ((!parent?.NoTerrain ?? true) && LifeStage == TiberiumLifeStage.ProducingTerrain)
             {
                 TerrainDef terrain = Position.GetTerrain(Map);
                 if (!(terrain is TiberiumTerrainDef))
                 {
                     if (GenTiberium.AnyCorruptedOutcomes(def, terrain, out TerrainSupport support))
-                    {
                         Map.terrainGrid.SetTerrain(this.Position, support.TerrainOutcome);
-                    }
+                    
                 }
                 updatedTerrain = true;
             }
-            if ((!parent?.NoGrowth ?? true) && Growth < 1f)
-            {
-                if (!Suppressed)
+
+            /*
+                if ((!parent?.NoReprint ?? true) && meshDirtyTicks == 0)
                 {
-                    Growth += GrowthPerTick;
-                    if ((!parent?.NoReprint ?? true) && meshDirtyTicks == 0)
-                    {
-                        Map.mapDrawer.MapMeshDirty(base.Position, MapMeshFlag.Things);
-                        meshDirtyTicks = 50;
-                    }
-                    meshDirtyTicks--;
+                    Map.mapDrawer.MapMeshDirty(base.Position, MapMeshFlag.Things);
+                    meshDirtyTicks = 50;
+                }
+            */
+        }
+
+        public void SpreadTick()
+        {
+            if (LifeStage < TiberiumLifeStage.Spreading || spreadTimes > 1) return;
+
+            if (Rand.MTBEventOccurs(def.tiberium.reproduceDays, GenDate.TicksPerDay, GenTicks.TickLongInterval))
+            {
+                if (GenTiberium.TrySpreadTiberium(this, ignoreFlora))
+                {
+                    if(!rootNode)
+                        spreadTimes++;
                 }
             }
         }
@@ -141,32 +179,23 @@ namespace TiberiumRim
                 case HarvestMode.Nearest:
                     return !def.IsMoss;
                 case HarvestMode.Value:
-                    return def == Manager.TiberiumInfo.MostValuableType;
+                    return def == TiberiumComp.TiberiumInfo.MostValuableType;
                 case HarvestMode.Moss:
                     return def.IsMoss;
             }
             return false;
         }
 
-        public MapComponent_Tiberium Manager
-        {
-            get
-            {
-                return Map.GetComponent<MapComponent_Tiberium>();
-            }
-        }
+        public bool CanTick => (HasParent && !parent.stopGrowth);
 
-        public bool CanTick => (HasParent && !Parent.stopGrowth);
-        public bool ShouldGrow => LifeStage < TiberiumLifeStage.Mature;
-        public bool ShouldSpread => Manager.TiberiumInfo.TiberiumGrid.growBools[Position];
+        public bool ShouldSpread => TiberiumComp.TiberiumInfo.TiberiumGrid.growBools[Position];
         public bool HasParent => !parent.DestroyedOrNull();
-        public bool Suppressed =>  Manager.Suppression.IsInSuppressorField(Position);
+        public bool Suppressed => TiberiumComp.Suppression.IsInSuppressorField(Position);
         public bool HarvestableNow => LifeStage != TiberiumLifeStage.Growing && def.tiberium.harvestValue > 0f;
-        public TiberiumProducer Parent => parent;
 
         public bool Dormant
         {
-            get => forcedDormant || parent.DestroyedOrNull() || !ShouldSpread || Suppressed || !InGrowRange;
+            get => forcedDormant || !HasParent || Suppressed || !InGrowRange;
             set => forcedDormant = value;
         }
 
@@ -190,9 +219,9 @@ namespace TiberiumRim
                 {
                     return TiberiumLifeStage.Evolving;
                 }
-                if (Growth > 0.66f)
+                if (Growth > 0.85f)
                 {
-                    return TiberiumLifeStage.Mature;
+                    return TiberiumLifeStage.Spreading;
                 }
                 if (Growth > 0.26f)
                 {
@@ -215,14 +244,8 @@ namespace TiberiumRim
 
         public float Growth
         {
-            get
-            {
-                return growthInt;
-            }
-            set
-            {
-                growthInt = Mathf.Clamp01(value);
-            }
+            get => growthInt;
+            set => growthInt = Mathf.Clamp01(value);
         }
 
         protected float GrowthPerTick => growthPerTick * this.GrowthRate;
@@ -356,6 +379,8 @@ namespace TiberiumRim
             }
             if (DebugSettings.godMode)
             {
+                sb.AppendLine("Is Root Node: " + rootNode);
+                sb.AppendLine("ShouldSpread: " + ShouldSpread);
                 sb.AppendLine("Exact Value: " + HarvestValue);
                 sb.AppendLine("Tiberium Type: " + def.HarvestType);
                 sb.AppendLine("Generation: " + generation);

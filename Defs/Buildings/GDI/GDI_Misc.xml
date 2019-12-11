@@ -171,6 +171,7 @@
 	
 	<TiberiumRim.TRThingDef ParentName="EtherealThingBase">
 		<defName>GlowerSource</defName>
+		<label>wall light glow</label>
 		<thingClass>TiberiumRim.GlowerSource</thingClass>
 		<tickerType>Never</tickerType>
 		<drawerType>MapMeshOnly</drawerType>

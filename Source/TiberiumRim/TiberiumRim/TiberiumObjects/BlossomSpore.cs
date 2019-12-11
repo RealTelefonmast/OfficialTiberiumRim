@@ -19,6 +19,7 @@ namespace TiberiumRim
 
         public override void FinishAction()
         {
+            base.FinishAction();
             Log.Message("Spore arrived at: " + Position + " ... Finishing");
             if (Position.SupportsBlossom(map))
             {

@@ -17,7 +17,7 @@ namespace TiberiumRim
         Visceroid
     }
 
-    public class VisceralPod : TiberiumObject, IThingHolder
+    public class VisceralPod : TiberiumThing, IThingHolder
     {
         private ThingOwner InnerContainer;
         private string pawnName;

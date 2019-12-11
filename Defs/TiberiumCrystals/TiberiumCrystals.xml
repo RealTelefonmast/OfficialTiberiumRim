@@ -94,14 +94,15 @@
 			<plantMutationChance>0.39</plantMutationChance>
 			<harvestValue>12</harvestValue>
 			<harvestTime>8</harvestTime>
-			<growDays>3</growDays>
-			<spreadRadius>3</spreadRadius>
+			<growDays>1.25</growDays>
+			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.35</reproduceDays>
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<monolith>TiberiumTower_TBI</monolith>
 		<rock>GreenTiberiumRock_TBI</rock>
 		<chunk>GreenTiberiumChunk</chunk>
+		<plantTerrain>TiberiumPodSoil</plantTerrain>
 		<supportsTerrain>
 			<Soils>TiberiumSoilGreen, TiberiumGreen</Soils>
 			<Sands>TiberiumSandGreen, TiberiumShardsGreen</Sands>
@@ -138,7 +139,7 @@
 			<harvestValue>18</harvestValue>
 			<harvestTime>20</harvestTime>
 			<growDays>3</growDays>
-			<spreadRadius>3</spreadRadius>
+			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.35</reproduceDays>
 			<MeshCount>4</MeshCount>
 		</tiberium>
@@ -157,6 +158,7 @@
 		<rock>BlueTiberiumRock_TBI</rock>
 		<chunk>BlueTiberiumChunk</chunk>
 		<monolith>TiberiumMonolith</monolith>
+		<plantTerrain>TiberiumPodSoilBlue</plantTerrain>
 		<supportsTerrain>
 			<Soils>TiberiumSoilBlue, TiberiumBlue</Soils>
 			<Sands>TiberiumSandBlue, TiberiumShardsBlue</Sands>
@@ -252,8 +254,8 @@
 			<plantMutationChance>0.3</plantMutationChance>
 			<harvestValue>6</harvestValue>
 			<harvestTime>6</harvestTime>
-			<growDays>5</growDays>
-			<spreadRadius>3</spreadRadius>
+			<growDays>3</growDays>
+			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.6</reproduceDays>
 			<MeshCount>4</MeshCount>
 		</tiberium>
@@ -304,7 +306,7 @@
 			<harvestValue>10</harvestValue>
 			<harvestTime>8</harvestTime>
 			<growDays>5</growDays>
-			<spreadRadius>3</spreadRadius>
+			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.6</reproduceDays>
 			<MeshCount>4</MeshCount>
 		</tiberium>
@@ -354,8 +356,8 @@
 			<plantMutationChance>0.1</plantMutationChance>
 			<harvestValue>15</harvestValue>
 			<harvestTime>12</harvestTime>
-			<growDays>3</growDays>
-			<spreadRadius>2</spreadRadius>
+			<growDays>15</growDays>
+			<spreadRadius>1</spreadRadius>
 			<reproduceDays>1</reproduceDays>
 			<MeshCount>4</MeshCount>
 		</tiberium>
@@ -402,15 +404,15 @@
 			<plantMutationChance>0.7</plantMutationChance>
 			<harvestValue>8</harvestValue>
 			<harvestTime>22</harvestTime>
-			<growDays>3.5</growDays>
-			<spreadRadius>2</spreadRadius>
+			<growDays>2</growDays>
+			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.4</reproduceDays>
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<chunk>GreenTiberiumChunk</chunk>
 		<supportsTerrain>
-			<Soils>TiberiumSoilPod, TiberiumPod</Soils>
-			<Mosses>TiberiumSoilPod, TiberiumPod</Mosses>
+			<Soils>TiberiumPodSoil, TiberiumPod</Soils>
+			<Mosses>TiberiumPodSoil, TiberiumPod</Mosses>
 		</supportsTerrain>
 	</TiberiumRim.TiberiumCrystalDef>	
 	
@@ -454,15 +456,15 @@
 			<plantMutationChance>0.5</plantMutationChance>
 			<harvestValue>8</harvestValue>
 			<harvestTime>22</harvestTime>
-			<growDays>3.5</growDays>
-			<spreadRadius>2</spreadRadius>
+			<growDays>2.5</growDays>
+			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.4</reproduceDays>
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<chunk>BlueTiberiumChunk</chunk>
 		<supportsTerrain>
-			<Soils>TiberiumSoilPodBlue, TiberiumPodBlue</Soils>
-			<Mosses>TiberiumSoilPodBlue, TiberiumPodBlue</Mosses>
+			<Soils>TiberiumPodSoilBlue, TiberiumPodBlue</Soils>
+			<Mosses>TiberiumPodSoilBlue, TiberiumPodBlue</Mosses>
 		</supportsTerrain>
 	</TiberiumRim.TiberiumCrystalDef>
 
@@ -503,8 +505,8 @@
 			<plantMutationChance>0.35</plantMutationChance>
 			<harvestValue>8</harvestValue>
 			<harvestTime>10</harvestTime>
-			<growDays>4</growDays>
-			<spreadRadius>3</spreadRadius>
+			<growDays>3</growDays>
+			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.6</reproduceDays>
 			<MeshCount>4</MeshCount>
 		</tiberium>
@@ -552,8 +554,8 @@
 			<plantMutationChance>0.2</plantMutationChance>
 			<harvestValue>12</harvestValue>
 			<harvestTime>10</harvestTime>
-			<growDays>4</growDays>
-			<spreadRadius>3</spreadRadius>
+			<growDays>3.5</growDays>
+			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.6</reproduceDays>
 			<MeshCount>4</MeshCount>
 		</tiberium>
@@ -606,8 +608,8 @@
 			<plantMutationChance>0.35</plantMutationChance>
 			<harvestValue>25</harvestValue>
 			<harvestTime>12</harvestTime>
-			<growDays>4.5</growDays>
-			<spreadRadius>3.25</spreadRadius>
+			<growDays>4</growDays>
+			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.35</reproduceDays>
 			<MeshCount>4</MeshCount>
 		</tiberium>
@@ -615,7 +617,7 @@
 		<rock>GreenTiberiumRock_TBI</rock>
 		<chunk>GreenTiberiumChunk</chunk>	
 		<supportsTerrain>
-			<Soils>TiberiumSoilGreen, TiberiumAboreus</Soils>
+			<Soils>TiberiumSoilAboreus, TiberiumAboreus</Soils>
 		</supportsTerrain>
 	</TiberiumRim.TiberiumCrystalDef>	
 	
@@ -650,8 +652,8 @@
 				<max>5</max>
 			</buildingDamage>
 			<plantMutationChance>0</plantMutationChance>
-			<growDays>5</growDays>
-			<spreadRadius>3</spreadRadius>
+			<growDays>4</growDays>
+			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.5</reproduceDays>
 			<MeshCount>4</MeshCount>
 		</tiberium>
@@ -690,8 +692,8 @@
 			<dependsOnProducer>true</dependsOnProducer>
 			<harvestValue>12</harvestValue>
 			<harvestTime>20</harvestTime>
-			<growDays>3</growDays>
-			<spreadRadius>3</spreadRadius>
+			<growDays>2</growDays>
+			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.35</reproduceDays>
 			<MeshCount>4</MeshCount>
 		</tiberium>

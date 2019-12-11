@@ -63,4 +63,72 @@ namespace TiberiumRim
             SavedParticles.Remove(particle);
         }
     }
+
+    public class ParticleList
+    {
+        private List<Particle> particlesToRegister = new List<Particle>();
+        private List<Particle> particlesToDeregister = new List<Particle>();
+        private List<List<Particle>> particleLists = new List<List<Particle>>();
+
+        public ParticleList()
+        {
+            particleLists.Add(new List<Particle>());
+        }
+
+        public void Tick()
+        {
+            for (int i = 0; i < particlesToRegister.Count; i++)
+            {
+                particleLists[0].Add(particlesToRegister[i]);
+            }
+            particlesToRegister.Clear();
+            for (int i = 0; i < particlesToDeregister.Count; i++)
+            {
+                particleLists[0].Remove(particlesToDeregister[i]);
+            }
+            particlesToDeregister.Clear();
+
+            List<Particle> list2 = particleLists[0];
+            for (int m = 0; m < list2.Count; m++)
+            {
+                if (list2[m].Destroyed) continue;
+
+            }
+        }
+
+        public void RegisterThing(Particle p)
+        {
+            particlesToRegister.Add(p);
+        }
+
+        public void DeregisterThing(Particle p)
+        {
+            particlesToDeregister.Add(p);
+        }
+
+        public void Reset()
+        {
+            for (int i = 0; i < particleLists.Count; i++)
+            {
+                particleLists[i].Clear();
+            }
+            particlesToRegister.Clear();
+            particlesToDeregister.Clear();
+        }
+
+        public void RemoveWhere(Predicate<Particle> predicate)
+        {
+            for (int i = 0; i < particleLists.Count; i++)
+            {
+                particleLists[i].RemoveAll(predicate);
+            }
+            particlesToRegister.RemoveAll(predicate);
+            particlesToDeregister.RemoveAll(predicate);
+        }
+
+        private List<Particle> BucketOf(Particle p)
+        {
+            return particleLists[0];
+        }
+    }
 }

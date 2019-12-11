@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Abstract="True" Name="EtherealThingBase_TR">
+		<category>Ethereal</category>
+		<useHitPoints>false</useHitPoints>
+		<drawerType>None</drawerType>
+	</ThingDef>
+
+	<ThingDef ParentName="EtherealThingBase_TR">
+		<defName>IonCannonStrike</defName>
+		<label>ion cannon strike</label>
+		<thingClass>TiberiumRim.IonCannon_Strike</thingClass>
+		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
+		<drawOffscreen>true</drawOffscreen>
+		<seeThroughFog>true</seeThroughFog>
+		<comps>
+			<li Class="CompProperties_AffectsSky">
+				<skyColors>
+					<sky>(255, 230, 200)</sky>
+					<shadow>(225, 220, 185)</shadow>
+					<overlay>(255, 255, 255)</overlay>
+					<saturation>1.3</saturation>
+				</skyColors>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="EtherealThingBase_TR">
+		<defName>IonBeam</defName>
+		<label>ion beam</label>
+		<thingClass>TiberiumRim.IonBeam</thingClass>
+		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
+		<drawOffscreen>true</drawOffscreen>
+		<seeThroughFog>true</seeThroughFog>
+	</ThingDef>
+
+</Defs>

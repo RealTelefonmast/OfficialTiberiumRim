@@ -49,6 +49,8 @@ namespace TiberiumRim
 
 
         public static ThingDef TiberiumGeyser;
+        public static ThingDef TiberiumGeyserCrack;
+
         public static ThingDef VisceralPod;
 
         //Chunks
