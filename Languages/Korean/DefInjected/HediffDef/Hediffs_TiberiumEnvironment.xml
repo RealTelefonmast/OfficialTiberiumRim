@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumBurn.label>tiberium burn</TiberiumBurn.label>
+  <TiberiumBurn.injuryProps.destroyedLabel>destroyed</TiberiumBurn.injuryProps.destroyedLabel>
+  <TiberiumBurn.injuryProps.destroyedOutLabel>burned out</TiberiumBurn.injuryProps.destroyedOutLabel>
+  <TiberiumBurn.labelNoun>a tiberium burn</TiberiumBurn.labelNoun>
+
+  <TiberiumExposure.label>tiberium exposure radiation</TiberiumExposure.label>
+  <TiberiumExposure.stages.0.label>initial-hidden</TiberiumExposure.stages.0.label>
+  <TiberiumExposure.stages.1.label>initial</TiberiumExposure.stages.1.label>
+  <TiberiumExposure.stages.2.label>minor</TiberiumExposure.stages.2.label>
+  <TiberiumExposure.stages.3.label>moderate</TiberiumExposure.stages.3.label>
+  <TiberiumExposure.stages.4.label>serious</TiberiumExposure.stages.4.label>
+  <TiberiumExposure.stages.5.label>lethal</TiberiumExposure.stages.5.label>
+
+  <TiberiumCrystallization.label>tiberium infection</TiberiumCrystallization.label>
+  <TiberiumCrystallization.stages.0.label>fusing</TiberiumCrystallization.stages.0.label>
+  <TiberiumCrystallization.stages.1.label>crystallizing</TiberiumCrystallization.stages.1.label>
+  <TiberiumCrystallization.stages.2.label>crystallizing</TiberiumCrystallization.stages.2.label>
+  <TiberiumCrystallization.stages.3.label>crystallizing</TiberiumCrystallization.stages.3.label>
+  <TiberiumCrystallization.stages.4.label>crystallizing</TiberiumCrystallization.stages.4.label>
+  <TiberiumCrystallization.stages.5.label>crystallized</TiberiumCrystallization.stages.5.label>
+
+  <CrystallizedPart.label>crystallized part</CrystallizedPart.label>
+  <CrystallizedPart.labelNoun>a crystallized part</CrystallizedPart.labelNoun>
+
+
+</LanguageData>

@@ -3,8 +3,26 @@
 
   <!-- These are Mote ThingDefs. Remain the same, DO NOT translate them. -->
 
+  <IonLighting.label>Mote</IonLighting.label>
+  <IonCloud.label>Mote</IonCloud.label>
+  <TiberiumFogG.label>Mote</TiberiumFogG.label>
+  <TiberiumFogB.label>Mote</TiberiumFogB.label>
+  <TiberiumFogR.label>Mote</TiberiumFogR.label>
+  <TiberiumFieldFogG.label>Mote</TiberiumFieldFogG.label>
+  <TiberiumFieldFogB.label>Mote</TiberiumFieldFogB.label>
+  <VeinholeSmoke.label>Mote</VeinholeSmoke.label>
+  <TiberiumSmokeMote.label>Mote</TiberiumSmokeMote.label>
+  <BlossomSmoke.label>Mote</BlossomSmoke.label>
+  <Mote_GlowerParticle.label>Mote</Mote_GlowerParticle.label>
   <Mote_TiberiumGeyser.label>Mote</Mote_TiberiumGeyser.label>
   <Mote_TiberiumLeak.label>Mote</Mote_TiberiumLeak.label>
-
-
+  <LaserBeam.label>Mote</LaserBeam.label>
+  <ObeliskGlow.label>Mote</ObeliskGlow.label>
+  <Mote_BlastSound.label>Mote</Mote_BlastSound.label>
+  <Mote_BlastWave.label>Mote</Mote_BlastWave.label>
+  <Mote_Nuke.label>Mote</Mote_Nuke.label>
+  <IonBeamBurn.label>Mote</IonBeamBurn.label>
+  <IonBubble.label>Mote</IonBubble.label>
+  <TiberiumGas.label>Mote</TiberiumGas.label>
+  
 </LanguageData>

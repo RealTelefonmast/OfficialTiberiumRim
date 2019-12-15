@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <!-- <ThingDef ParentName="ResourceBase">
+  <!--<ThingDef ParentName="ResourceBase">
 		<defName>TempleShell_Explosive</defName>
 		<label>tactical nuclear shell</label>
 		<description>A tactical nuclear missile to be fired by a Nod temple, these shells will big chain explode on contact.</description>
@@ -38,7 +38,7 @@
 			<DeteriorationRate>1.5</DeteriorationRate>
 		</statBases>
 		<projectileWhenLoaded>Bullet_TempleBomb</projectileWhenLoaded>
-		<recipeMaker> 
+		<recipeMaker>
 			<workSpeedStat>SmithingSpeed</workSpeedStat>
 			<effectWorking>Cook</effectWorking>
 			<soundWorking>Recipe_Machining</soundWorking>
@@ -61,7 +61,7 @@
 		<thingCategories>
 			<li>TempleShells</li>
 		</thingCategories>		
-	</ThingDef> -->
+	</ThingDef>-->
 
   <TempleShells.label>핵탄두</TempleShells.label>
 

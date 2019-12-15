@@ -37,7 +37,7 @@ namespace TiberiumRim
         public WorldComponent_Tiberium WorldTiberiumComp => Find.World.GetComponent<WorldComponent_Tiberium>();
         public MapComponent_Tiberium TiberiumComp => Map.GetComponent<MapComponent_Tiberium>();
 
-        public bool CannotHaveDuplicates => def.placeWorkers.Any(p => p is PlaceWorker_Once);
+        public bool CannotHaveDuplicates => def.placeWorkers.Any(p => p == typeof(PlaceWorker_Once));
 
         public override IEnumerable<Gizmo> GetGizmos()
         {
@@ -45,8 +45,10 @@ namespace TiberiumRim
             {
                 yield return g;
             }
+            if(!def.devObject)
+                yield return new Designator_BuildFixed(def);
 
-            if(def.superWeapon?.ResolvedDesignator != null)
+            if (def.superWeapon?.ResolvedDesignator != null)
                 yield return def.superWeapon.ResolvedDesignator;
         }
     }

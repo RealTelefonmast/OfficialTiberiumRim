@@ -114,13 +114,13 @@ namespace TiberiumRim
             public static void Postfix(Thing __instance, DamageInfo dinfo)
             {
                 //EVA Patch
-                if (!__instance.Spawned) return;
+                if (__instance.Destroyed || !__instance.Spawned) return;
                 if (__instance.Faction == null) return;
                 if (!__instance.Faction.IsPlayer) return;
 
-                if (__instance is Building _)
+                if (__instance is Building)
                     GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.BaseUnderAttack);
-                if (__instance is Pawn _)
+                if (__instance is Pawn)
                     GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.UnitUnderAttack);
             }
         }
@@ -344,7 +344,8 @@ namespace TiberiumRim
                 }
             }
         }
-
+        
+        //Core Thing Addons
         [HarmonyPatch(typeof(Thing))]
         [HarmonyPatch("SpawnSetup")]
         public static class SpawnSetupPatch
@@ -381,7 +382,6 @@ namespace TiberiumRim
                 return true;
             }
         }
-
 
         [HarmonyPatch(typeof(GenConstruct))]
         [HarmonyPatch("CanPlaceBlueprintOver")]

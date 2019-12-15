@@ -3,7 +3,7 @@
 
 	<BodyPartDef Abstract= "True" Name="ScrinDronePart">
 		<hitPoints>5</hitPoints>
-		<frostbiteVulnerability>0</frostbiteVulnerability>
+		<frostbiteVulnerability>2</frostbiteVulnerability>
 		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
 		<bleedRate>0</bleedRate>
 		<skinCovered>false</skinCovered>

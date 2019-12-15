@@ -4,7 +4,6 @@
 	<TiberiumRim.TRThingDef ParentName="WallBase_TR" Name="GDIWall">
 		<defName>GDIWall</defName>
 		<label>GDI wall</label>
-		<thingClass>Building</thingClass>
 		<description>An impassable wall, reinforced by GDI engineers.</description>
 		<factionDesignation>GDI</factionDesignation>
 		<graphicData>

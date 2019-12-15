@@ -5,7 +5,6 @@
 		<defName>NetworkController</defName>
 		<label>Tiberium Network Controller</label>
 		<description>This structure is the main part of any Tiberium network, it is a necessary component to connect refineries to storage and production structures.</description>
-		<thingClass>Building</thingClass>
 		<thingCategories Inherit="false" />
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
@@ -88,7 +87,6 @@
 		<defName>NetworkNode</defName>
 		<label>Node</label>
 		<description>.</description>
-		<thingClass>Building</thingClass>
 		<thingCategories Inherit="false" />
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
@@ -218,7 +216,6 @@
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>TiberiumGasTank</defName>
 		<label>tiberium gas tank</label>
-		<thingClass>Building</thingClass>
 		<factionDesignation>Common</factionDesignation>
 		<TRCategory>Processing</TRCategory>
 		<description>Stores Tiberium and distributes it to other Tiberium structures when necessary.</description>
@@ -293,7 +290,6 @@
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>TiberiumSilo</defName>
 		<label>tiberium silo</label>
-		<thingClass>Building</thingClass>
 		<description>Stores Tiberium and distributes it to other Tiberium structures when necessary.</description>
 		<TRCategory>Processing</TRCategory>
 		<size>(3,3)</size>
@@ -540,7 +536,6 @@
 	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>TiberiumPowerPlant</defName>
-		<thingClass>Building</thingClass>
 		<label>Tiberium power plant</label>
 		<description>This power plant needs to be connected to a Tiberium network before it can properly operate, it will automatically consume Tiberium from the network to sustain itself.</description>
 		<graphicData>

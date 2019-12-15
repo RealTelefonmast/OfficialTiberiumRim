@@ -62,7 +62,17 @@
 									<parts>
 										<li>
 											<def>ScrinDrone_ManiTool</def>
-											<coverage>0.1</coverage>
+											<coverage>0.05</coverage>
+											<groups>
+												<li>LeftArm</li>
+											</groups>
+										</li>
+										<li>
+											<def>ScrinDrone_ManiTool</def>
+											<coverage>0.05</coverage>
+											<groups>
+												<li>RightArm</li>
+											</groups>
 										</li>
 									</parts>
 								</li>

@@ -7,6 +7,8 @@ namespace TiberiumRim
     {
         string[] Upgrades { get; }
 
+        void Notify_ReceivedUpgrade();
+
         void ReceiveUpgrade(string upgrade);
         bool HasUpgrade(string upgrade);
     }

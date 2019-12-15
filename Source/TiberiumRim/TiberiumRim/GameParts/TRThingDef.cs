@@ -10,8 +10,8 @@ namespace TiberiumRim
 {
     public class TRThingDef : FXThingDef
     {
-        public FactionDesignationDef factionDesignation = FactionDesignationDefOf.Tiberium;
-        public TRThingCategoryDef TRCategory = TRCategoryDefOf.Misc;
+        public FactionDesignationDef factionDesignation = null;
+        public TRThingCategoryDef TRCategory = null;
         public GraphicData extraGraphicData;
         public TurretHolderProps turret;
         public BeamHubProperties beamHub; 
@@ -22,6 +22,18 @@ namespace TiberiumRim
         public bool hidden = false;
         public bool devObject = false;
         public bool destroyTiberium = false;
+
+        public override IEnumerable<string> ConfigErrors()
+        {
+            List<string> strings = new List<string>();
+            strings.AddRange(base.ConfigErrors());
+            /*
+            if(factionDesignation != FactionDesignationDefOf.None && thingClass.IsAssignableFrom(typeof(Building)) && !thingClass.IsAssignableFrom(typeof(TRBuilding)))
+                strings.Add(this.defName + " won't have a build designator.");
+            */
+            return strings;
+
+        }
 
         public override void ResolveReferences()
         {

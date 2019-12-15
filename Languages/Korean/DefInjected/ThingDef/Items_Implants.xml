@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumEnhancedArm.label>tiberium enhanced arm</TiberiumEnhancedArm.label>
+  <TiberiumEnhancedArm.description>This arm was removed from a Tiberium mutant, it is kept alive by the Tiberium inside. For some reason it is not completely crystallizing. It might be possible to transplant it to someone else.</TiberiumEnhancedArm.description>
+
+  <TiberiumEnhancedLeg.label>tiberium enhanced leg</TiberiumEnhancedLeg.label>
+  <TiberiumEnhancedLeg.description>This leg was removed from a Tiberium mutant, it is kept alive by the Tiberium inside. For some reason it is not fully crystallizing. It might be possible to transplant it to someone else.</TiberiumEnhancedLeg.description>
+
+  <TiberiumSkinSample.label>tiberium tissue sample</TiberiumSkinSample.label>
+  <TiberiumSkinSample.description>A sample of skin from a Tiberium mutant, this could be applied to any body part, though it brings a risk.</TiberiumSkinSample.description>
+
+
+</LanguageData>

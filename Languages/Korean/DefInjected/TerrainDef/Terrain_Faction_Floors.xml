@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <NodConcreteTile.label>Nod Concrete Tile</NodConcreteTile.label>
-  <NodConcreteTile.description>Nod concrete tiles.</NodConcreteTile.description>
+  <NodConcreteTile.label>노드 콘크리트 타일</NodConcreteTile.label>
+  <NodConcreteTile.description>노드 콘크리트 타일입니다.</NodConcreteTile.description>
 
-  <NodConcreteFloor.label>Nod Concrete Floor</NodConcreteFloor.label>
-  <NodConcreteFloor.description>Nod concrete tiles.</NodConcreteFloor.description>
+  <NodConcreteFloor.label>노드 콘크리트 바닥</NodConcreteFloor.label>
+  <NodConcreteFloor.description>노드 콘크리트 바닥입니다.</NodConcreteFloor.description>
 
-  <NodDangerTile.label>Nod Striped Tile</NodDangerTile.label>
-  <NodDangerTile.description>Nod danger tiles.</NodDangerTile.description>
+  <NodDangerTile.label>노드 경고패턴</NodDangerTile.label>
+  <NodDangerTile.description>노드 특유의 경고패턴입니다. 채색에 돈이 많이 들어갑니다.</NodDangerTile.description>
 
-  <NodCarbonTile.label>Nod Carbon Tile</NodCarbonTile.label>
-  <NodCarbonTile.description>Nod carbon tiles. Beautiful, and clean.</NodCarbonTile.description>
+  <NodCarbonTile.label>노드 탄소합금 발판</NodCarbonTile.label>
+  <NodCarbonTile.description>노드 탄소합금 발판입니다. 가장 부유한 노드 거점만이 이 비싼 발판을 사용할 수 있습니다.</NodCarbonTile.description>
 
 
   <!-- GDI -->
 
-  <GDIConcreteTile.label>GDI Concrete Tile</GDIConcreteTile.label>
-  <GDIConcreteTile.description>GDI concrete tiles.</GDIConcreteTile.description>
+  <GDIConcreteTile.label>GDI 콘크리트 타일</GDIConcreteTile.label>
+  <GDIConcreteTile.description>GDI 콘크리트 타일입니다.</GDIConcreteTile.description>
 
-  <GDIConcreteFloor.label>GDI Concrete Floor</GDIConcreteFloor.label>
-  <GDIConcreteFloor.description>GDI concrete tiles.</GDIConcreteFloor.description>
+  <GDIConcreteFloor.label>GDI 콘크리트 바닥</GDIConcreteFloor.label>
+  <GDIConcreteFloor.description>GDI 콘크리트 바닥입니다.</GDIConcreteFloor.description>
 
-  <GDIDangerTile.label>GDI Striped Tile</GDIDangerTile.label>
-  <GDIDangerTile.description>GDI striped tiles.</GDIDangerTile.description>
+  <GDIDangerTile.label>GDI 경고패턴</GDIDangerTile.label>
+  <GDIDangerTile.description>GDI 특유의 경고패턴입니다. 채색에 돈이 많이 들어갑니다.</GDIDangerTile.description>
 
-  <GDIReinforcedTile.label>GDI Reinforced Tile</GDIReinforcedTile.label>
-  <GDIReinforcedTile.description>GDI reinforced tiles. Beautiful, and clean.</GDIReinforcedTile.description>
+  <GDIReinforcedTile.label>GDI 강화합금 발판</GDIReinforcedTile.label>
+  <GDIReinforcedTile.description>GDI 강화합금 발판입니다. 가장 부유한 GDI 기지만이 이 비싼 발판을 사용할 수 있습니다.</GDIReinforcedTile.description>
 
-  <ScrinFloor.label>Scrin landing sites</ScrinFloor.label>
-  <ScrinFloor.description>---</ScrinFloor.description>
+  <ScrinFloor.label>스크린 테라폼</ScrinFloor.label>
+  <ScrinFloor.description>스크린 구조물 주변에서만 발견되는 특수한 지형입니다.</ScrinFloor.description>
 
 
 </LanguageData>

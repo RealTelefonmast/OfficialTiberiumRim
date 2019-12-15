@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Visceral Horror | HumanLike -->
+
+  <VisceralHorror_Human.label>뒤틀린 인간</VisceralHorror_Human.label>
+  <VisceralHorror_Human.description>This poor soul has been half molten inside a visceral pod. Whatever is left of them is now unrecognizable. These visceral horrors are extremely hostile, and should be avoided.</VisceralHorror_Human.description>
+  <VisceralHorror_Human.tools.0.label>mouth</VisceralHorror_Human.tools.0.label>
+  <VisceralHorror_Human.tools.1.label>tentacle</VisceralHorror_Human.tools.1.label>
+  <VisceralHorror_Human_Leather.label>visceral human leather</VisceralHorror_Human_Leather.label>
+  <VisceralHorror_Human_Leather.description>visceral human leather</VisceralHorror_Human_Leather.description>
+  <VisceralHorror_Human_Leather.stuffProps.stuffAdjective>visceral human leather</VisceralHorror_Human_Leather.stuffProps.stuffAdjective>
+  <!-- Use Meat From: Visceroid -->
+  <VisceralHorror_Human_Corpse.label>visceral human corpse</VisceralHorror_Human_Corpse.label>
+  <VisceralHorror_Human_Corpse.description>visceral human corpse</VisceralHorror_Human_Corpse.description>
+
+
+  <!-- Visceral Horror | AnimalLike -->
+
+  <VisceralHorror_Animal.label>뒤틀린 동물</VisceralHorror_Animal.label>
+  <VisceralHorror_Animal.description>This animal, or whatever is left of it, has suffered inside a visceral pod. These visceral horrors are extremely hostile, and should be avoided.</VisceralHorror_Animal.description>
+  <VisceralHorror_Animal.tools.0.label>mouth</VisceralHorror_Animal.tools.0.label>
+  <VisceralHorror_Animal_Leather.label>visceral animal leather</VisceralHorror_Animal_Leather.label>
+  <VisceralHorror_Animal_Leather.description>visceral animal leather</VisceralHorror_Animal_Leather.description>
+  <VisceralHorror_Animal_Leather.stuffProps.stuffAdjective>visceral animal leather</VisceralHorror_Animal_Leather.stuffProps.stuffAdjective>
+  <!-- Use Meat From: Visceroid -->
+  <VisceralHorror_Animal_Corpse.label>visceral animal corpse</VisceralHorror_Animal_Corpse.label>
+  <VisceralHorror_Animal_Corpse.description>visceral animal corpse</VisceralHorror_Animal_Corpse.description>
+
+
+  <!-- Visceral Beast -->
+
+  <VisceralBeast.label>뒤틀린 야수</VisceralBeast.label>
+  <VisceralBeast.description>This horrific being hatched from a Visceral Pod. Seems like a creature of enough biomass</VisceralBeast.description>
+  <VisceralBeast.tools.0.label>mouth</VisceralBeast.tools.0.label>
+  <VisceralBeast_Leather.label>visceral beast leather</VisceralBeast_Leather.label>
+  <VisceralBeast_Leather.description>visceral beast leather</VisceralBeast_Leather.description>
+  <VisceralBeast_Leather.stuffProps.stuffAdjective>visceral beast leather</VisceralBeast_Leather.stuffProps.stuffAdjective>
+  <!-- Use Meat From: Visceroid -->
+  <VisceralBeast_Corpse.label>visceral beast corpse</VisceralBeast_Corpse.label>
+  <VisceralBeast_Corpse.description>visceral beast corpse</VisceralBeast_Corpse.description>
+
+
+  <!-- Visceroid -->
+
+  <Visceroid.label>비세로이드</Visceroid.label>
+  <Visceroid.description>불안정하고 흉측한 생명체입니다. 타이베리움에 심하게 오염된 동물의 신체로부터 흔히 나타납니다. 인간도 예외는 아닙니다.</Visceroid.description>
+  <Visceroid.tools.0.label>아가리</Visceroid.tools.0.label>
+  <Visceroid.tools.1.label>촉수</Visceroid.tools.1.label>
+  <Visceroid_Leather.label>비세로이드 껍질</Visceroid_Leather.label>
+  <Visceroid_Leather.description>비세로이드 껍질</Visceroid_Leather.description>
+  <Visceroid_Leather.stuffProps.stuffAdjective>비세로이드 껍질</Visceroid_Leather.stuffProps.stuffAdjective>
+  <Visceroid_Meat.label>비세로이드 살점</Visceroid_Meat.label>
+  <Visceroid_Meat.description>비세로이드 살점</Visceroid_Meat.description>
+  <Visceroid_Corpse.label>비세로이드 잔해</Visceroid_Corpse.label>
+  <Visceroid_Corpse.description>비세로이드 잔해</Visceroid_Corpse.description>
+
+
+  <!-- Veinmonster -->
+
+  <Veinmonster.label>덩굴귀</Veinmonster.label>
+  <Veinmonster.description>비세로이드와 유사한 생명체인 덩굴귀는 침식 덩굴로부터 자라납니다. 작고 약하지만 무리를 지으면 사나워집니다.</Veinmonster.description>
+  <Veinmonster.tools.0.label>아가리</Veinmonster.tools.0.label>
+  <Veinmonster.tools.1.label>촉수</Veinmonster.tools.1.label>
+  <Veinmonster_Leather.label>덩굴귀 껍질</Veinmonster_Leather.label>
+  <Veinmonster_Leather.description>덩굴귀 껍질</Veinmonster_Leather.description>
+  <Veinmonster_Leather.stuffProps.stuffAdjective>덩굴귀 껍질</Veinmonster_Leather.stuffProps.stuffAdjective>
+  <Veinmonster_Meat.label>덩굴귀 살점</Veinmonster_Meat.label>
+  <Veinmonster_Meat.description>덩굴귀 살점</Veinmonster_Meat.description>
+  <Veinmonster_Corpse.label>덩굴귀 잔해</Veinmonster_Corpse.label>
+  <Veinmonster_Corpse.description>덩굴귀 잔해</Veinmonster_Corpse.description>
+
+
+  <!-- Vein Rock -->
+
+  <VeinChunk.label>덩굴바위</VeinChunk.label>
+  <VeinChunk.description>생체조직에 지나치게 침식당한 바위덩어리입니다.</VeinChunk.description>
+  <VeinChunk.tools.0.label>돌조각</VeinChunk.tools.0.label>
+  <VeinChunk_Leather.label>덩굴바위 껍질</VeinChunk_Leather.label>
+  <VeinChunk_Leather.description>덩굴바위 껍질</VeinChunk_Leather.description>
+  <VeinChunk_Leather.stuffProps.stuffAdjective>덩굴바위 껍질</VeinChunk_Leather.stuffProps.stuffAdjective>
+  <VeinChunk_Meat.label>덩굴바위 살점</VeinChunk_Meat.label>
+  <VeinChunk_Meat.description>덩굴바위 살점</VeinChunk_Meat.description>
+  <VeinChunk_Corpse.label>덩굴바위 잔해</VeinChunk_Corpse.label>
+  <VeinChunk_Corpse.description>덩굴바위 잔해</VeinChunk_Corpse.description>
+
+
+  <!--<Amalgamation_TBI.label>융합체</Amalgamation_TBI.label>-->
+  <!--<Amalgamation_TBI.description>여러 개체의 신체가 융합되어 거대화된 비세로이드입니다.</Amalgamation_TBI.description>-->
+
+</LanguageData>

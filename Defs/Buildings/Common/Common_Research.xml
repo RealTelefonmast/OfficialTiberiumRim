@@ -5,7 +5,6 @@
 		<defName>TiberiumResearchCrane</defName>
 		<label>tiberium research crane</label>
 		<description>This research crane can be placed on any Tiberium source and will allow you to learn more about the alien substance. It is immune to Tiberium itself and will inhibit the producer from spawning more Tiberium.\n\nOnly one research crane can be placed on a map.</description>
-		<thingClass>TiberiumRim.TRBuilding</thingClass>
 		<size>(5,5)</size>
 		<minifiedDef />
 		<thingCategories Inherit="false" />
@@ -73,7 +72,6 @@
 		<defName>TiberiumResearchStation</defName>
 		<label>research station</label>
 		<description>...</description>
-		<thingClass>TiberiumRim.FXBuilding</thingClass>
 		<size>(7,4)</size>
 		<minifiedDef Inherit="false"/>
 		<thingCategories Inherit="false" />

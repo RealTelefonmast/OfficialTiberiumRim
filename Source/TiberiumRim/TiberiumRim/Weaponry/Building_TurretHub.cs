@@ -17,7 +17,6 @@ namespace TiberiumRim
 
         }
 
-
         public void AddHubTurret(Building_HubTurret t)
         {
             if (!hubTurrets.Contains(t))
@@ -39,6 +38,16 @@ namespace TiberiumRim
         public override void Print(SectionLayer layer)
         {
             base.Print(layer);
+        }
+
+        public override IEnumerable<Gizmo> GetGizmos()
+        {
+            foreach (Gizmo g in base.GetGizmos())
+            {
+                yield return g;
+            }
+            yield return new Designator_BuildFixed(def);
+
         }
     }
 }

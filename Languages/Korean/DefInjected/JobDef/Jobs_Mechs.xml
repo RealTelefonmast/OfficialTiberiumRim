@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <RepairMechanicalPawn.reportString>수리하는 중.</RepairMechanicalPawn.reportString>
-  <WanderAtParent.reportString>수리 대상을 찾는 중.</WanderAtParent.reportString>
-  <HarvestTiberium.reportString>수확하는 중.</HarvestTiberium.reportString>
-  <UnloadAtRefinery.reportString>하역하는 중.</UnloadAtRefinery.reportString>
-  <IdleAtRefinery.reportString>정제소에서 대기 중.</IdleAtRefinery.reportString>
+  <RepairMechanicalPawn.reportString>수리 중.</RepairMechanicalPawn.reportString>
+  <ReturnFromRepair.reportString>귀환 중.</ReturnFromRepair.reportString>
+  <WanderAtParent.reportString>대기 중.</WanderAtParent.reportString>
+  <HarvestTiberium.reportString>수확 중.</HarvestTiberium.reportString>
+  <UnloadAtRefinery.reportString>하역 중.</UnloadAtRefinery.reportString>
+  <IdleAtRefinery.reportString>대기 중.</IdleAtRefinery.reportString>
 
 
 </LanguageData>

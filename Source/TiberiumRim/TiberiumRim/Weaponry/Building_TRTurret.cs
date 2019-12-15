@@ -210,14 +210,13 @@ namespace TiberiumRim
                 sb.AppendLine(inspectString);
             }
             sb.AppendLine("Active turrets: " + turrets.Count);
+            if (!turrets.Any()) return sb.ToString().TrimEndNewlines();
+
             sb.AppendLine("-- Main Turret --");
             if (AttackVerb.verbProps.minRange > 0f)
             {
                 sb.AppendLine("MinimumRange".Translate() + ": " + AttackVerb.verbProps.minRange.ToString("F0"));
             }
-            sb.AppendLine("Spawned: " + Spawned + "\n" +
-                            "NeedsRoof: " + MainGun.NeedsRoof + "\n" +
-                            "Roofed: " + Position.Roofed(Map));
             if (Spawned && MainGun.NeedsRoof && Position.Roofed(Map))
             {
                 sb.AppendLine("CannotFire".Translate() + ": " + "Roofed".Translate().CapitalizeFirst());

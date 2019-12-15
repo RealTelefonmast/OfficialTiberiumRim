@@ -33,8 +33,8 @@
 		<isFighter>false</isFighter>
 		<aiAvoidCover>false</aiAvoidCover>
 		<race>Harvester_GDI</race>
-		<maxStorage>200</maxStorage>
-		<wreckDef>HarvesterHusk_Common</wreckDef>		
+		<maxStorage>300</maxStorage>
+		<wreckDef>HarvesterHusk_GDI</wreckDef>		
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
@@ -58,7 +58,7 @@
 		<aiAvoidCover>false</aiAvoidCover>
 		<race>Harvester_Nod</race>
 		<maxStorage>200</maxStorage>
-		<wreckDef>HarvesterHusk_Common</wreckDef>		
+		<wreckDef>HarvesterHusk_Nod</wreckDef>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>

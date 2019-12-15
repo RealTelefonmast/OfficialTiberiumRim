@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!--<GDI_ReinforcedPlate.label>강화합금</GDI_ReinforcedPlate.label>-->
+  <!--<GDI_ReinforcedPlate.description>군사적으로 매우 각광받는 신소재입니다. 강철보다 훨씬 견고하지만, 제련하기 위해서는 GDI만의 고유 기술이 필요합니다.</GDI_ReinforcedPlate.description>-->
+
+  <!--<Nod_CarbonPlate.label>탄소합금</Nod_CarbonPlate.label>-->
+  <!--<Nod_CarbonPlate.description>노드 기술자들은 총격에 버틸 수 있는 강한 소재를 찾기 위해 수 세기 동안 계속 노력했습니다. 그중 가장 성공적인 물질은 탄소합금이었습니다.</Nod_CarbonPlate.description>-->
+
+
+  <!--<ThingDef ParentName="ResourceBase">
+		<defName>Nod_LiquidTiberium</defName>
+		<label>Liquid Tiberium (explosive)</label>
+		<description>Liquid Tiberium in its purest form. WARNING - Beware of deterioration, this item is very unstable!</description>
+		<graphicData>
+			<texPath>Items/Resource_TiberiumLQ</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>5</stackLimit>
+		<statBases>
+			<MaxHitPoints>10</MaxHitPoints>
+			<MarketValue>175</MarketValue>
+			<Mass>1</Mass>
+			<Flammability>1</Flammability>
+			<DeteriorationRate>2</DeteriorationRate>
+		</statBases>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3</explosiveRadius>
+				<explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.5</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+				<wickTicks>
+					<min>5</min>
+					<max>5</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<tickerType>Normal</tickerType>
+		<killedLeavings>
+            <TiberiumGreen>6</TiberiumGreen>
+			<TiberiumRed>3</TiberiumRed>
+        </killedLeavings>
+		<researchPrerequisite>NodResearch_LiquidTechnology</researchPrerequisite>
+	</ThingDef>-->
+
+  <!--<Nod_LQTiberiumCore.label>액체 타이베리움 축전핵</Nod_LQTiberiumCore.label>-->
+  <!--<Nod_LQTiberiumCore.description>변경의 기술력으로는 액체 타이베리움의 잠재력을 온전히 끌어내기 어렵습니다. 오직 축전핵만이 그것을 가능케 합니다.</Nod_LQTiberiumCore.description>-->
+
+  <!--<GDI_SonicCore.label>음파 공명핵</GDI_SonicCore.label>-->
+  <!--<GDI_SonicCore.description>변경의 기술력으로는 정밀한 음파 공명 기술을 완전히 제어하기 어렵습니다. 오직 공명핵만이 그것을 가능케 합니다.</GDI_SonicCore.description>-->
+
+
+  <!--<ThingDef ParentName="MakeableDrugPillBase">
+		<defName>Tiberblock</defName>
+		<label>Tiberblock</label>
+		<description>A drug that can cure Tiberium infections./n/nWARNING: This drug only cures Tiberium Poisoning, Tiberium Assmilation or Tiberum Infection!</description>
+		<graphicData>
+			<texPath>Items/Tiberblock</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>750</WorkToMake>
+			<MarketValue>500</MarketValue>
+			<Mass>0.01</Mass>
+		</statBases>
+		<techLevel>Industrial</techLevel>
+		<ingestible>
+			<drugCategory>Social</drugCategory>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>TiberBlockHediff</hediffDef>
+					<severity>1.0</severity>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>TiberiumInfusionImmunityNPC</hediffDef>
+					<severity>1.0</severity>
+				</li>
+			</outcomeDoers>
+		</ingestible>
+		<recipeMaker>
+			<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+			<workSkill>Intellectual</workSkill>
+			<recipeUsers>
+				<li>GDI_Factory</li>
+			</recipeUsers>
+			<researchPrerequisite>GDIResearch_TiberiumDrugs</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<costList>
+			<Neutroamine>2</Neutroamine>
+			<MedicineIndustrial>1</MedicineIndustrial>
+			<TiberiumPlantTree>2</TiberiumPlantTree>
+			<TiberiumPlantBerry>2</TiberiumPlantBerry>
+			<TiberiumPlantGrass>2</TiberiumPlantGrass>
+			<TiberiumPlantShroom>2</TiberiumPlantShroom>
+		</costList>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>
+	
+	<ThingDef ParentName="MakeableDrugPillBase">
+		<defName>TiberiumInfusion</defName>
+		<label>Tiberium Infusion</label>
+		<description>This infusion will cure most Tiberium sickness and add a permanent Tiberium Immunity to the consumer.</description>
+		<graphicData>
+			<texPath>Items/Tibinfusion</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>750</WorkToMake>
+			<MarketValue>2500</MarketValue>
+			<Mass>0.25</Mass>
+		</statBases>
+		<techLevel>Industrial</techLevel>
+		<ingestible>
+			<drugCategory>Medical</drugCategory>
+			<outcomeDoers>
+			<li Class="IngestionOutcomeDoer_GiveHediff">
+			  <hediffDef>TiberiumInfusionImmunity</hediffDef>
+			  <severity>1.0</severity>
+			</li>
+		  </outcomeDoers>
+		</ingestible>
+		<recipeMaker>
+			<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+			<workSkill>Intellectual</workSkill>
+			<recipeUsers>
+				<li>Nod_Factory</li>
+			</recipeUsers>
+			<researchPrerequisite>NodResearch_TiberiumDrugs</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<costList>
+			<Neutroamine>10</Neutroamine>
+			<MedicineIndustrial>1</MedicineIndustrial>
+			<TiberiumPlantTree>10</TiberiumPlantTree>
+			<TiberiumPlantBerry>10</TiberiumPlantBerry>
+			<TiberiumPlantGrass>10</TiberiumPlantGrass>
+			<TiberiumPlantShroom>10</TiberiumPlantShroom>
+		</costList>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>-->
+
+  <!--<TRBattleChip.label>자율회로</TRBattleChip.label>-->
+  <!--<TRBattleChip.description>첨단 장비와 방어탑 건설에 반드시 필요한 부품입니다. 오직 전투를 통해서만 획득할 수 있습니다.</TRBattleChip.description>-->
+
+  <!--<JuggernautShell_Explosive.label>저거넛 포탄</JuggernautShell_Explosive.label>-->
+  <!--<JuggernautShell_Explosive.description>저거넛 포탑에서 사용하는 포탄입니다. 큰 폭발을 일으킵니다.</JuggernautShell_Explosive.description>-->
+
+  <!--<TempleShell_Explosive.label>전술 핵탄두</TempleShell_Explosive.label>-->
+  <!--<TempleShell_Explosive.description>노드 사원에서 발사된 전술 핵탄두는 착탄점 주변의 모든 것을 날려버릴 것입니다. 또한 유폭할 경우에도 작은 핵폭발을 일으킵니다.</TempleShell_Explosive.description>-->
+
+  <!--<Nuclear_SubExplosive.label>tactical nuclear shell</Nuclear_SubExplosive.label>-->
+  <!--<Nuclear_SubExplosive.description>A tactical nuclear missile to be fired by a Nod temple, these shells will big chain explode on contact.</Nuclear_SubExplosive.description>-->
+
+
+  <!--<Nod_LiquidTiberium.label>액체 타이베리움</Nod_LiquidTiberium.label>-->
+  <!--<Nod_LiquidTiberium.description>액체 타이베리움은 타이베리움의 가장 순수한 형태입니다. 매우 귀중하지만 매우 불안정하며, 짧은 반감기를 지닙니다. 취급에 주의하십시오.</Nod_LiquidTiberium.description>-->
+  <!--<Tiberblock.label>타이블록</Tiberblock.label>-->
+  <!--<Tiberblock.description>타이베리움 중독증 및 각종 합병증을 치료할 수 있는 약품입니다. 약간의 부작용을 야기할 수 있습니다. GDI 보건국 주도로 개발됐습니다.</Tiberblock.description>-->
+  <!--<Tiberblock.ingestible.ingestCommandString>{0} 복용</Tiberblock.ingestible.ingestCommandString>-->
+  <!--<Tiberblock.ingestible.ingestReportString>{0} 복용 중.</Tiberblock.ingestible.ingestReportString>-->
+  <!--<TiberiumInfusion.label>타이베리움 항체</TiberiumInfusion.label>-->
+  <!--<TiberiumInfusion.description>노드 교도들이 혹독한 타이베리움 환경에 적응하기 위해 사용하는 약품입니다. 케인의 선물이라는 별명으로도 불립니다.</TiberiumInfusion.description>-->
+  <!--<TiberiumInfusion.ingestible.ingestCommandString>{0} 복용</TiberiumInfusion.ingestible.ingestCommandString>-->
+  <!--<TiberiumInfusion.ingestible.ingestReportString>{0} 복용 중.</TiberiumInfusion.ingestible.ingestReportString>-->
+
+</LanguageData>

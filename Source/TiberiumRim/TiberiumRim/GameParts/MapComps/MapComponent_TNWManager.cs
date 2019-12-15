@@ -30,12 +30,15 @@ namespace TiberiumRim
             tnwGrid = new bool[map.cellIndices.NumGridCells];
         }
 
+        [TweakValue("MapComponent_TNW", 0f, 100f)]
+        public static bool DrawBool = false;
+
         public override void MapComponentUpdate()
         {
             base.MapComponentUpdate();
             int i = 0;
 
-            if (TiberiumRimSettings.settings.ShowNetworkValues)
+            if (DrawBool || TiberiumRimSettings.settings.ShowNetworkValues)
             {
                 DrawTNWNetGrid();
             }
@@ -121,6 +124,13 @@ namespace TiberiumRim
 
         public void DrawTNWNetGrid()
         {
+            for (var i = 0; i < tnwGrid.Length; i++)
+            {
+                var cell = tnwGrid[i];
+                if (cell)
+                    CellRenderer.RenderCell(map.cellIndices.IndexToCell(i), 0.75f);
+            }
+            /*
             Rand.PushState();
             foreach(TiberiumNetwork net in Networks)
             {
@@ -132,6 +142,7 @@ namespace TiberiumRim
                 }
             }
             Rand.PopState();
+            */
         }
 
         private TiberiumNetwork NetworkAt(IntVec3 cell)

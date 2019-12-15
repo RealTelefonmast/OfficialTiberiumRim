@@ -2,7 +2,6 @@
 <Defs>
   
   	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR" Name="InhibitorBase" Abstract="True">
-		<thingClass>Building</thingClass>
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Defense</TRCategory>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>

@@ -155,7 +155,6 @@
 		<defName>TiberiumTower_TBI</defName>
 		<description>A massive crystalline tower, created via multiple Tiberium crystals merging into one bigger crystal. However, this structure does not seem to spread more Tiberium.</description>
 		<label>tiberium tower</label>
-		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
 		<altitudeLayer>Building</altitudeLayer>
 		<tickerType>Rare</tickerType>

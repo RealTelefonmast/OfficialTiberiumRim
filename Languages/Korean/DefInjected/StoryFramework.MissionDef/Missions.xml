@@ -1,14 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <TiberiumArrival.label>Green Amongst The Blue</TiberiumArrival.label>
-  <TiberiumArrival.description>One of your colonists spotted something in the skies.</TiberiumArrival.description>
+  <TiberiumArrival.label>다가오는 녹색 유성</TiberiumArrival.label>
+  <TiberiumArrival.description>언제부턴가, 밤하늘에 신비한 녹색빛을 발하는 유성들이 보이기 시작했습니다.</TiberiumArrival.description>
 
-  <TiberiumKnowledge.label>타이베... 뭐?</TiberiumKnowledge.label>
-  <TiberiumKnowledge.description>...</TiberiumKnowledge.description>
+  <TiberiumArrival_Miss.label>유성 관찰 실패</TiberiumArrival_Miss.label>
+  <TiberiumArrival_Miss.description>우리는 끝내 유성의 정체를 확인하지 못했습니다. 그것들은 지평선 너머로 추락하며 완전히 자취를 감췄습니다.</TiberiumArrival_Miss.description>
 
-  <TiberiumProcessing.label>Researching Technologies</TiberiumProcessing.label>
-  <TiberiumProcessing.description>...</TiberiumProcessing.description>
+  <TiberiumKnowledge.label>타이베리움 기초연구</TiberiumKnowledge.label>
+  <TiberiumKnowledge.description>신비한 녹색 유성들 중 하나가 주변에 추락했습니다. 이제 그것에 대해 좀 더 자세히 조사할 수 있을 겁니다. 하지만 뭔가 불길합니다.</TiberiumKnowledge.description>
+
+  <TiberiumProcessing.label>타이베리움 처리기술</TiberiumProcessing.label>
+  <TiberiumProcessing.description>채취한 타이베리움을 유용한 자원으로 변환할 수만 있다면, 우리의 정착지는 안전해질 뿐더러 더욱 발전할 것입니다.</TiberiumProcessing.description>
+
+  <TiberiumDefense.label>Tiberium Defense</TiberiumDefense.label>
+  <TiberiumDefense.description>...</TiberiumDefense.description>
+
+  <TiberiumGasProcessing.label>타이베리움 가스 추출</TiberiumGasProcessing.label>
+  <TiberiumGasProcessing.description>Tiberium gas usually forms around crystals in the air, but dissapates too quickly to be collected or used, instead merely posing a lethal threat. However, underground deposits may contain large amounts of concentrated Tiberium gas.</TiberiumGasProcessing.description>
 
 
 </LanguageData>

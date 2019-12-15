@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AI\IPawnWithParent.cs" />
+    <Compile Include="AI\JobGiver_InstallUpgrade.cs" />
     <Compile Include="AI\JobGiver_TryGetRepaired.cs" />
     <Compile Include="AI\JobGiver_WanderAtParent.cs" />
     <Compile Include="AI\JobWithExtras.cs" />
@@ -224,6 +225,7 @@
     <Compile Include="TiberiumProcessing\Gizmo_TiberiumStorage.cs" />
     <Compile Include="GameParts\TRBuilding.cs" />
     <Compile Include="Weaponry\Verb_Beam.cs" />
+    <Compile Include="Weaponry\Verb_BurstToTarget.cs" />
     <Compile Include="Weaponry\Verb_TR.cs" />
     <Compile Include="VisualEffects\FXGraphic.cs" />
     <Compile Include="VisualEffects\FXGraphicData.cs" />

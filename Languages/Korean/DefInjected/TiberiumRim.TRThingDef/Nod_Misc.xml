@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Nod_PowerConduit.label>레이저 펄스 케이블</Nod_PowerConduit.label>
+  <Nod_PowerConduit.description>노드 표준 전선. 벽이나 건물 아래에도 설치할 수 있습니다. 불에 타지 않습니다.</Nod_PowerConduit.description>
+
+  <Light_Nod.label>노드의 빛</Light_Nod.label>
+  <Light_Nod.description>노드 추종자들은 시뻘건 조명을 선호합니다. 멋지긴 하지만 눈건강에는 좋지 않을 것이 틀림없습니다.</Light_Nod.description>
+
+  <NodWallLight.label>노드의 빛</NodWallLight.label>
+  <NodWallLight.description>노드 추종자들은 시뻘건 조명을 선호합니다. 멋지긴 하지만 눈건강에는 좋지 않을 것이 틀림없습니다.</NodWallLight.description>
+
+
+  <!--<Nod_PowerConduit_Blueprint.label>레이저 펄스 케이블 (청사진)</Nod_PowerConduit_Blueprint.label>-->
+  <!--<Nod_PowerConduit_Frame.label>레이저 펄스 케이블 (설치 중)</Nod_PowerConduit_Frame.label>-->
+  <!--<Nod_PowerConduit_Frame.description>노드 표준 전선. 벽이나 건물 아래에도 설치할 수 있습니다. 불에 타지 않습니다.</Nod_PowerConduit_Frame.description>-->
+  <!--<Light_Nod_Blueprint.label>노드의 빛 (청사진)</Light_Nod_Blueprint.label>-->
+  <!--<Light_Nod_Blueprint_Install.label>노드의 빛 (청사진)</Light_Nod_Blueprint_Install.label>-->
+  <!--<Light_Nod_Frame.label>노드의 빛 (설치 중)</Light_Nod_Frame.label>-->
+  <!--<Light_Nod_Frame.description>노드 추종자들은 시뻘건 조명을 선호합니다. 멋지긴 하지만 눈건강에는 좋지 않을 것이 틀림없습니다.</Light_Nod_Frame.description>-->
+  <!--<NodWallLight_Blueprint.label>노드의 빛 (청사진)</NodWallLight_Blueprint.label>-->
+  <!--<NodWallLight_Blueprint_Install.label>노드의 빛 (청사진)</NodWallLight_Blueprint_Install.label>-->
+  <!--<NodWallLight_Frame.label>노드의 빛 (설치 중)</NodWallLight_Frame.label>-->
+  <!--<NodWallLight_Frame.description>노드 추종자들은 시뻘건 조명을 선호합니다. 멋지긴 하지만 눈건강에는 좋지 않을 것이 틀림없습니다.</NodWallLight_Frame.description>-->
+  <!--
+  <TiberiumPot.label>타이베리움 화병</TiberiumPot.label>
+  <TiberiumPot.description>타이베리움 억제 기술을 적용한 화병입니다. 주변의 좁은 땅에서 타이베리움 성분을 빨아들여, 세공된 타이베리움 결정체를 형성합니다. 단순 장식용으로도 쓸만합니다.</TiberiumPot.description>
+  <TiberiumPot_Blueprint.label>타이베리움 화병 (청사진)</TiberiumPot_Blueprint.label>
+  <TiberiumPot_Blueprint_Install.label>타이베리움 화병 (청사진)</TiberiumPot_Blueprint_Install.label>
+  <TiberiumPot_Frame.label>타이베리움 화병 (설치 중)</TiberiumPot_Frame.label>
+  <TiberiumPot_Frame.description>타이베리움 억제 기술을 적용한 화병입니다. 세공된 타이베리움 결정체를 안전하게 보관할 수 있습니다.</TiberiumPot_Frame.description>
+
+  <NodSculptureLarge.label>노드 성상</NodSculptureLarge.label>
+  <NodSculptureLarge.description>이 정교한 조각상은 노드의 힘과 이상을 표현하고 있습니다.</NodSculptureLarge.description>
+  <NodSculptureLarge_Blueprint_Install.label>노드 성상 (청사진)</NodSculptureLarge_Blueprint_Install.label>
+-->
+
+</LanguageData>

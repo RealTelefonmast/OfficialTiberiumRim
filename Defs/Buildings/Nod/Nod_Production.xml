@@ -149,10 +149,11 @@
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Processing</TRCategory>
 		<graphicData>
-			<texPath>Buildings/Nod/Production/Refinery/RefNod</texPath>
+			<texPath>Buildings/Nod/Production/Refinery/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(5.5,5.5)</drawSize>
 		</graphicData>
-		<uiIconPath>Buildings/Nod/Production/Refinery/RefNod_north</uiIconPath>
+		<uiIconPath>Buildings/Nod/Production/Refinery/Icon</uiIconPath>
 		<statBases>
 			<MaxHitPoints>450</MaxHitPoints>
 			<WorkToBuild>3000</WorkToBuild>
@@ -177,8 +178,8 @@
 				<overlays>
 					<li>
 						<data>
-							<texPath>Buildings/Nod/Production/Refinery/RefOL</texPath>
-							<graphicClass>Graphic_Multi</graphicClass>
+							<texPath>Buildings/Nod/Production/Refinery/ContainerOverlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5.5,5.5)</drawSize>
 						</data>
@@ -186,8 +187,15 @@
 					</li>
 					<li>
 						<data>
-							<texPath>Buildings/Nod/Production/Refinery/Con</texPath>
+							<texPath>Buildings/Nod/Production/Refinery/Connector</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
+							<drawSize>(5.5,5.5)</drawSize>
+						</data>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Production/Refinery/RefConnector</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(5.5,5.5)</drawSize>
 						</data>
 					</li>

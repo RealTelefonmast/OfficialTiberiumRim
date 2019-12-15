@@ -3,28 +3,49 @@
 
   <!-- Introduction -->
 
-  <M1_Research.label>Looking Ahead</M1_Research.label>
-  <M1_Research.description>We are not quite sure what it is yet and need to investigate further.\nA telescope would be useful.</M1_Research.description>
+  <M1_Research.label>관측수단 구상하기</M1_Research.label>
+  <M1_Research.description>밤마다 우리 머리 위를 지나는 유성의 정체에 대해 조사할 필요가 있습니다. 망원경을 만들 방법을 찾기 위하여 똑똑한 친구와 연구 벤치를 준비하십시오.\n목표 세부 사항은 우측의 'I' 아이콘을 눌러 자세히 확인할 수 있습니다.</M1_Research.description>
 
-  <M1_Construct.label>Construct the telescope</M1_Construct.label>
-  <M1_Construct.description>Having acquired the new blueprint, we can construct the telescope!\nThis should reveal more about the strange object.</M1_Construct.description>
+  <M1_Construct.label>관측수단 제작하기</M1_Construct.label>
+  <M1_Construct.description>서두른 것 치고는 일이 잘 풀렸습니다. 이제 우리 정착지는 망원경을 만들 수 있습니다. 이것을 이용하면 이상한 운석에 대해 더 자세히 알 수 있을 겁니다.\n타이베리움 건설 탭에서 망원경을 찾아 설치하십시오.</M1_Construct.description>
 
-  <M1_ObserveMeteor.label>Observation</M1_ObserveMeteor.label>
-  <M1_ObserveMeteor.description>...</M1_ObserveMeteor.description>
-
-  <M1_ObserveCrater.label>Inspection</M1_ObserveCrater.label>
-  <M1_ObserveCrater.description>The meteor crashed onto our map and formed a crater, however we noticed that it is radiating a strange warmth and killed almost all plants in close proximity.\nWe should advance with caution and observe from a distance or we could end up like the plants as well...</M1_ObserveCrater.description>
-
-  <M1_ConstructCrater.label>Isolation</M1_ConstructCrater.label>
-  <M1_ConstructCrater.description>...</M1_ConstructCrater.description>
+  <M1_ObserveMeteor.label>유성 관측하기</M1_ObserveMeteor.label>
+  <M1_ObserveMeteor.description>관찰이란, 겉보기보다 더욱 많은 인내심이 요구되는 작업입니다.</M1_ObserveMeteor.description>
 
 
   <!-- Tiberium Knowledge -->
 
-  <M2_KnowledgeResearch.label>What is it?</M2_KnowledgeResearch.label>
-  <M2_KnowledgeResearch.description>...</M2_KnowledgeResearch.description>
+  <M2_ObserveCrater.label>유성 낙하지점 정찰하기</M2_ObserveCrater.label>
+  <M2_ObserveCrater.description>낙하지점 주변에서 괴이한 광채를 내뿜는 결정질 파편과 징그럽게 뒤틀린 식물들이 잇따라 발견됨에 따라, 이것이 평범한 사건은 아니라는 것이 명백해졌습니다.\n어떤 위협이 도사리고 있을지 알 수 없습니다. 주의깊게 접근해야 합니다.</M2_ObserveCrater.description>
 
-  <M2_TiberiumNetwork.label>Setting up the network...</M2_TiberiumNetwork.label>
+  <M2_CheckDataBase.label>정보 수집하기</M2_CheckDataBase.label>
+  <M2_CheckDataBase.description>정착민 한 명이 어린 시절 고향에서 이번 사건과 비슷한 소문을 접한 적이 있다고 합니다. 어쩌면 주변 정착지나 지나가는 우주선으로부터 귀중한 정보를 얻을 수 있을지도 모릅니다.</M2_CheckDataBase.description>
 
+  <M2_ConstructCrater.label>연구 준비하기</M2_ConstructCrater.label>
+  <M2_ConstructCrater.description>이제 우리는 유성의 정체가 '타이베리움'임을 알게 되었습니다. 동시에 그와 관련된 끔찍한 사건과 어두운 역사들까지도 말입니다. 이 모든 것이 사실이라면 우리는 필요한 모든 수단을 동원하여 최대한 빨리 그것을 격리해야 합니다. 다행히, 이번 사태에서 유용하게 사용할 수 있는 몇 점의 청사진을 입수했습니다.</M2_ConstructCrater.description>
+
+  <M2_KnowledgeResearch.label>타이베리움 취급법 연구하기</M2_KnowledgeResearch.label>
+  <M2_KnowledgeResearch.description>타이베리움을 다루기 위해서는, 먼저 그 치명적인 독성을 회피할 방법을 찾아야만 합니다.</M2_KnowledgeResearch.description>
+
+  <M3_TiberiumNetwork.label>타이베리움 정제법 연구하기</M3_TiberiumNetwork.label>
+  <M3_TiberiumNetwork.description>타이베리움을 정제하여 유용한 자원들을 추출하려면 여태 생각할 수조차 없던 큰 규모의 시설이 필요합니다.</M3_TiberiumNetwork.description>
+
+  <M3_TiberiumPower.label>Powering Up</M3_TiberiumPower.label>
+  <M3_TiberiumPower.description>...</M3_TiberiumPower.description>
+
+
+  <!-- Should be done by pawn in gear, in tiberium, testing vulnerabilities -->
+
+  <M4_TiberiumSuppression.label>Suppress The Growth</M4_TiberiumSuppression.label>
+  <M4_TiberiumSuppression.description>...</M4_TiberiumSuppression.description>
+
+
+  <!-- Misc -->
+
+  <GeyserInspection.label>Geyser Inspection</GeyserInspection.label>
+  <GeyserInspection.description>...</GeyserInspection.description>
+
+
+  <!--<M1_ObserveMeteor.result.letterLabel>유성이 낙하합니다!</M1_ObserveMeteor.result.letterLabel>-->
 
 </LanguageData>

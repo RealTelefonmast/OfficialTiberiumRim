@@ -18,7 +18,7 @@ namespace TiberiumRim
         public TurretProperties props;
         public TurretGunTop top;
         private int lastShotIndex = 0;
-        private int curShotIndex = -1;
+        private int curShotIndex = 0;
         private int lastAttackTargetTick;
         private int maxShotRotations = 1;
         private LocalTargetInfo lastAttackedTarget;
@@ -154,10 +154,7 @@ namespace TiberiumRim
                 return;
             }
 
-            if (forcedTarget.IsValid)
-                currentTargetInt = forcedTarget;
-            else
-                currentTargetInt = TryFindNewTarget();
+            currentTargetInt = forcedTarget.IsValid ? forcedTarget : TryFindNewTarget();
 
             if (CurrentTarget.IsValid)
             {
@@ -166,11 +163,8 @@ namespace TiberiumRim
                 if (props.turretBurstWarmupTime > 0f)
                 {
                     burstWarmupTicksLeft = props.turretBurstWarmupTime.SecondsToTicks();
-                    if (AttackVerb.Props.chargeSound != null)
-                    {
-                        AttackVerb.Props.chargeSound.PlayOneShot(SoundInfo.InMap(new TargetInfo(parent), MaintenanceType.None));
-                        return;
-                    }
+                    //If charge sound available, play it
+                    AttackVerb.Props.chargeSound?.PlayOneShot(SoundInfo.InMap(new TargetInfo(parent), MaintenanceType.None));
                 }
                 else if (canBeginBurstImmediately)
                     BeginBurst();
@@ -210,6 +204,7 @@ namespace TiberiumRim
 
         protected void BeginBurst()
         {
+            /*
             if (props.burstMode == TurretBurstMode.Normal)
             {
                 AttackVerb.TryStartCastOn(CurrentTarget, false, true);
@@ -232,6 +227,8 @@ namespace TiberiumRim
                     AttackVerb.TryStartCastOn(cell, false);
                 }
             }
+            */
+            AttackVerb.TryStartCastOn(CurrentTarget, false, true);
             OnAttackedTarget(CurrentTarget);
         }
 
@@ -266,8 +263,8 @@ namespace TiberiumRim
 
         public void Notify_FiredSingleProjectile()
         {
+            top?.Shoot(curShotIndex);
             RotateNextShotIndex();
-            top.Shoot(curShotIndex);
         }
 
         private void RotateNextShotIndex()
@@ -308,6 +305,7 @@ namespace TiberiumRim
         private bool IsValidTarget(Thing t)
         {
             if (!(t is Pawn pawn)) return true;
+            /*
             if(props.burstMode == TurretBurstMode.ToTarget && props.avoidFriendlyFire)
             {
                 ShootLine line = new ShootLine(parent.Position, pawn.Position);
@@ -316,6 +314,7 @@ namespace TiberiumRim
                     return false;
                 }
             }
+            */
             if (NeedsRoof)
             {
                 RoofDef roofDef = parent.Map.roofGrid.RoofAt(t.Position);

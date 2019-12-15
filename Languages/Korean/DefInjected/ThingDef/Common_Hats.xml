@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumSuitMask.label>타이베리움 방독면</TiberiumSuitMask.label>
+  <TiberiumSuitMask.description>방독면은 타이베리움 오염 지역을 지나기 위한 필수품입니다. 외부 환경을 완전히 차단하며, 독성 가스와 미세 분진을 여과하여 착용자의 호흡기를 지켜줍니다.</TiberiumSuitMask.description>
+
+  <RavensMask.label>버려진 마스크</RavensMask.label>
+  <RavensMask.description>This mask was found on a long dessicated corpse. The origin is unknown, but looking around the chamber we have found various writing and leftovers of meal packages. Whoever this belonged to, tried his very best to survive.</RavensMask.description>
+
+
+</LanguageData>

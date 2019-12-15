@@ -4,7 +4,6 @@
 	<TiberiumRim.TRThingDef ParentName="WallBase_TR" Name="NodWall">
 		<defName>NodWall</defName>
 		<label>nod wall</label>
-		<thingClass>Building</thingClass>
 		<description>An impassable wall, specifically designed for the Brotherhood.</description>
 		<factionDesignation>Nod</factionDesignation>
 		<graphicData>
@@ -27,7 +26,6 @@
 		<description>It is a arch frame to decorate the Nod door.</description>
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Decoration</TRCategory>
-		<thingClass>Building</thingClass>
 		<altitudeLayer>PawnUnused</altitudeLayer>
 		<statBases>
 			<MaxHitPoints>150</MaxHitPoints>

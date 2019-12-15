@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GDI_Factory.label>GDI 생산설비</GDI_Factory.label>
+  <GDI_Factory.description>다양한 무기와 방어구, 아이템을 생산할 수 있는 장치입니다.</GDI_Factory.description>
+
+  <GDI_Hangar.label>GDI 격납고</GDI_Hangar.label>
+  <GDI_Hangar.description>중장비 유닛을 생산하기 위한 시설입니다.</GDI_Hangar.description>
+
+  <GDI_TiberiumRefinery.label>GDI 정제기</GDI_TiberiumRefinery.label>
+  <GDI_TiberiumRefinery.description>표준형 GDI 타이베리움 정제기입니다. 치명적인 타이베리움을 유용한 자원으로 변환합니다.</GDI_TiberiumRefinery.description>
+
+  <GDIPowerPlant.label>GDI 발전기</GDIPowerPlant.label>
+  <GDIPowerPlant.description>표준형 GDI 타이베리움 발전기입니다. 타이베리움 연료를 소모합니다.</GDIPowerPlant.description>
+
+
+</LanguageData>

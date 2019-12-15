@@ -2,6 +2,39 @@
 <Defs>
 
 	<!-- Turrets -->
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_GDIStandard</defName>
+		<label>bullet</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Base_GDI</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.1</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<stoppingPower>0.25</stoppingPower>
+			<speed>65</speed>
+		</projectile>
+	</ThingDef>
+	
+	<!-- Guardian Shell Shot - Railgun version requires no projectile -->
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Guardian</defName>
+		<label>armor piercing shell</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Guardian</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>45</damageAmountBase>
+			<stoppingPower>1</stoppingPower>
+			<explosionRadius>0.025</explosionRadius>
+			<speed>80</speed>
+		</projectile>
+	</ThingDef>
 	
 	<ThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_Juggernaut</defName>
@@ -38,49 +71,16 @@
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
-			<damageDef>Bomb</damageDef>
+			<damageDef>Flame</damageDef>
 			<damageAmountBase>100</damageAmountBase>
 			<speed>45</speed>
-			<explosionRadius>5.9</explosionRadius>
+			<explosionRadius>7.9</explosionRadius>
 			<flyOverhead>true</flyOverhead>
 			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
 			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
 			<soundAmbient>MortarRound_Ambient</soundAmbient>
 			<explosionEffect>GiantExplosion</explosionEffect>
 			<soundExplode>Explosion_GiantBomb</soundExplode>
-		</projectile>
-	</ThingDef>
-	
-	<ThingDef ParentName="BaseBullet_TR">
-		<defName>Bullet_GDIStandard</defName>
-		<label>bullet</label>
-		<graphicData>
-			<texPath>Items/Weapons/Projectile/Bullet_Base_GDI</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>1.1</drawSize>
-		</graphicData>
-		<projectile>
-			<damageDef>Bullet</damageDef>
-			<damageAmountBase>6</damageAmountBase>
-			<stoppingPower>0.25</stoppingPower>
-			<speed>65</speed>
-		</projectile>
-	</ThingDef>
-	
-	<ThingDef ParentName="BaseBullet_TR">
-		<defName>Bullet_Guardian</defName>
-		<label>armor piercing shell</label>
-		<graphicData>
-			<texPath>Items/Weapons/Projectile/Bullet_Guardian</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>2</drawSize>
-		</graphicData>
-		<projectile>
-			<damageDef>Bullet</damageDef>
-			<damageAmountBase>45</damageAmountBase>
-			<stoppingPower>1</stoppingPower>
-			<explosionRadius>0.025</explosionRadius>
-			<speed>80</speed>
 		</projectile>
 	</ThingDef>
 	
@@ -100,6 +100,23 @@
 			<stoppingPower>0.5</stoppingPower>
 			<speed>25</speed>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
+		</projectile>
+	</ThingDef>
+	
+	<!-- Held Gun -->
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_GDIRifle</defName>
+		<label>bullet</label>
+		<description>bullet</description>
+		<graphicData>
+		<texPath>Items/Weapons/Projectile/Bullet_Base_GDI</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>3</damageAmountBase>
+			<stoppingPower>0.25</stoppingPower>
+			<speed>75</speed>
 		</projectile>
 	</ThingDef>
 	
@@ -124,40 +141,68 @@
 		</projectile>
 	</ThingDef>
 	
-	
-	<!--
-	<ThingDef Class="JecsTools.ThingDef_LaserProjectile" ParentName="BaseBullet">
-		<defName>Bullet_Guardian</defName>
-		<label>railgun bolt</label>
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Shatterer</defName>
+		<label>personal sonic wave</label>
+		<description>sonic wave</description>
 		<graphicData>
-			<texPath>Equipments/Weapons/Projectile/Bullet_RailshotHeavy</texPath>
+			<texPath>Items/Weapons/Gun_Blank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1</drawSize>
 		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
-			<damageDef>TRRailgun</damageDef>
-			<damageAmountBase>25</damageAmountBase>
-			<stoppingPower>1</stoppingPower>
-			<explosionRadius>0.025</explosionRadius>
-			<speed>200</speed>
+			<damageDef>TRSonic</damageDef>
+			<damageAmountBase>4</damageAmountBase>
+			<explosionRadius>1.1</explosionRadius>
+			<stoppingPower>0.25</stoppingPower>
+			<speed>25</speed>
+			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
-		<graphicSettings>
-		  <li>
-		    <offset>(0,-1,0)</offset>
-		  </li>
-		</graphicSettings>		
-		<thingClass>JecsTools.Projectile_Laser</thingClass>
-		<cycleThroughFiringPositions>false</cycleThroughFiringPositions>
-		<preFiringInitialIntensity>0</preFiringInitialIntensity>
-		<preFiringFinalIntensity>2</preFiringFinalIntensity>
-		<postFiringInitialIntensity>2</postFiringInitialIntensity>
-		<postFiringFinalIntensity>0</postFiringFinalIntensity>
-		<preFiringDuration>2</preFiringDuration>
-		<postFiringDuration>75</postFiringDuration>
-		<StartFireChance>0</StartFireChance>
-		<createsExplosion>true</createsExplosion>
-		<drawOffscreen>true</drawOffscreen>
 	</ThingDef>
-	-->
 
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Mortar</defName>
+		<label>mortar shell</label>
+		<description>mortar shell</description>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Mortar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>35</damageAmountBase>
+			<explosionRadius>2.5</explosionRadius>
+			<speed>35</speed>
+			<flyOverhead>true</flyOverhead>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Mine</defName>
+		<label>shockwave shell</label>
+		<description>shockwave shell</description>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Mortar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>TRSiege</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<explosionRadius>5</explosionRadius>
+			<speed>30</speed>
+			<flyOverhead>true</flyOverhead>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>Shot_GDI_Sonic</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+	
 </Defs>

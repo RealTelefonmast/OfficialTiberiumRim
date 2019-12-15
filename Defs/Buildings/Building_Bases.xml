@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef Name="BuildingBase_TR" Abstract="True">
+	<TiberiumRim.TRThingDef Name="BuildingBase_TR" Abstract="True">
 		<category>Building</category>
-		<thingClass>TiberiumRim.FXBuilding</thingClass>
+		<thingClass>TiberiumRim.TRBuilding</thingClass>
 		<soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
 		<selectable>true</selectable>
 		<drawerType>MapMeshAndRealTime</drawerType>
@@ -16,9 +16,9 @@
 		<statBases>
 			<SellPriceFactor>0.70</SellPriceFactor>
 		</statBases>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef Name="BenchBase_TR" ParentName="StationBase_TR" Abstract="True">
+	<TiberiumRim.TRThingDef Name="BenchBase_TR" ParentName="StationBase_TR" Abstract="True">
 		<canOverlapZones>false</canOverlapZones>
 		<minifiedDef>MinifiedThing</minifiedDef>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
@@ -42,7 +42,7 @@
 		<placeWorkers>
 			<li>PlaceWorker_ReportWorkSpeedPenalties</li>
 		</placeWorkers>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef Name="StationBase_TR" ParentName="BuildingBase_TR" Abstract="True">
 		<factionDesignation>Common</factionDesignation>		
@@ -56,7 +56,6 @@
 	
 	<TiberiumRim.TRThingDef Name="RefineryBase_TR" ParentName="StationBase_TR" Abstract="True" Class="TiberiumRim.RefineryDef">
 		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
-		<thingClass>Building</thingClass>
 		<altitudeLayer>DoorMoveable</altitudeLayer>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>

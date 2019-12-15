@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<!-- Apparel -->
-	
+
+	<!-- Apparel Bases-->
 	<ThingDef Name="ApparelBase_TR" Abstract="True">
 		<thingClass>Apparel</thingClass>
 		<category>Item</category>
@@ -40,8 +40,7 @@
 			<effectWorking>Tailor</effectWorking>
 			<soundWorking>Recipe_Tailor</soundWorking>
 			<recipeUsers>
-				<li>ElectricTailoringBench</li>
-				<li>HandTailoringBench</li>
+				<li>TiberiumWorkbench</li>
 			</recipeUsers>
 			<unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
 			<defaultIngredientFilter>
@@ -66,8 +65,7 @@
 			<effectWorking>Smith</effectWorking>
 			<soundWorking>Recipe_Smith</soundWorking>
 			<recipeUsers>
-				<li>ElectricSmithy</li>
-				<li>FueledSmithy</li>
+				<li>TiberiumWorkbench</li>
 			</recipeUsers>
 			<defaultIngredientFilter>
 				<categories>
@@ -91,7 +89,7 @@
 			<effectWorking>Smith</effectWorking>
 			<soundWorking>Recipe_Machining</soundWorking>
 			<recipeUsers>
-				<li>TableMachining</li>
+				<li>TiberiumWorkbench</li>
 			</recipeUsers>
 			<unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
 			<defaultIngredientFilter>

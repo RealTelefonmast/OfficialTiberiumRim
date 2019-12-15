@@ -248,7 +248,7 @@ namespace TiberiumRim
         public override void PostPrintOnto(SectionLayer layer)
         {
             base.PostPrintOnto(layer);
-            //TiberiumContent.TiberiumNetworkPipes.Print(layer, parent);
+            TiberiumContent.TiberiumNetworkPipes.Print(layer, parent);
         }
 
         public override string CompInspectStringExtra()

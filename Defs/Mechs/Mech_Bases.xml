@@ -63,6 +63,28 @@
 			<soundMeleeHitBuilding>Pawn_Melee_MechanoidBash_HitBuilding</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_MechanoidBash_Miss</soundMeleeMiss>
 		</race>
+		<tools>
+			<li>
+				<label>collector arm</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>2.5</cooldownTime>
+				<linkedBodyPartsGroup>LeftArm</linkedBodyPartsGroup>
+				<chanceFactor>0.4</chanceFactor>
+			</li>
+			<li>
+				<label>collector arm</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>2.5</cooldownTime>
+				<linkedBodyPartsGroup>RightArm</linkedBodyPartsGroup>
+				<chanceFactor>0.4</chanceFactor>
+			</li>
+		</tools>
 	</ThingDef>
 	
 	<ThingDef Name="HarvesterBase" ParentName="BaseMechanoidTR" Abstract="True">
@@ -72,54 +94,13 @@
 			<TiberiumGasResistance>1</TiberiumGasResistance>
 			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
 		</statBases>
-		<verbs>
-			<li>
-				<verbClass>Verb_MeleeAttackDamage</verbClass>
-				<defaultCooldownTime>1.45</defaultCooldownTime>
-				<meleeDamageBaseAmount>1</meleeDamageBaseAmount>
-				<meleeDamageDef>Blunt</meleeDamageDef>
-				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-			</li>
-		</verbs>
 		<race>
 			<thinkTreeMain>HarvesterMain</thinkTreeMain>
 			<thinkTreeConstant>HarvesterConstant</thinkTreeConstant>
-			<body>HarvesterBody</body>
 			<baseBodySize>4</baseBodySize>
 			<baseHealthScale>1</baseHealthScale>
 		</race>
-		<tools>
-			<li>
-				<label>cockpit</label>
-				<capacities>
-					<li>Blunt</li>
-				</capacities>
-				<power>3</power>
-				<cooldownTime>2.5</cooldownTime>
-				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-				<chanceFactor>0.2</chanceFactor>
-			</li>
-			<li>
-				<label>left collector arm</label>
-				<capacities>
-				<li>Cut</li>
-				</capacities>
-				<power>4</power>
-				<cooldownTime>1.7</cooldownTime>
-				<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
-				<chanceFactor>1.0</chanceFactor>
-			</li>
-			<li>
-				<label>right collector arm</label>
-				<capacities>
-				<li>Cut</li>
-				</capacities>
-				<power>4</power>
-				<cooldownTime>1.7</cooldownTime>
-				<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
-				<chanceFactor>0.8</chanceFactor>
-			</li>
-		</tools>
+
 	</ThingDef>
 	
 	<ThingDef Name="RepairDroneBase" ParentName="BaseMechanoidTR" Abstract="True">
@@ -130,7 +111,7 @@
 				<defaultCooldownTime>1.45</defaultCooldownTime>
 				<meleeDamageBaseAmount>1</meleeDamageBaseAmount>
 				<meleeDamageDef>Blunt</meleeDamageDef>
-				<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+				<linkedBodyPartsGroup>LeftArm</linkedBodyPartsGroup>
 			</li>
 		</verbs>
 		<race>
@@ -148,7 +129,7 @@
 				</capacities>
 				<power>1</power>
 				<cooldownTime>1.7</cooldownTime>
-				<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+				<linkedBodyPartsGroup>LeftArm</linkedBodyPartsGroup>
 				<chanceFactor>0.5</chanceFactor>
 			</li>
 			<li>
@@ -158,20 +139,25 @@
 				</capacities>
 				<power>1</power>
 				<cooldownTime>1.7</cooldownTime>
-				<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+				<linkedBodyPartsGroup>RightArm</linkedBodyPartsGroup>
 				<chanceFactor>1.0</chanceFactor>
-			</li>
-			<li>
-				<label>front plate</label>
-				<capacities>
-				<li>Blunt</li>
-				</capacities>
-				<power>1</power>
-				<cooldownTime>2.5</cooldownTime>
-				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-				<chanceFactor>0.2</chanceFactor>
 			</li>
 		</tools>
 	</ThingDef>
+	
+	<BodyPartGroupDef>
+		<defName>RightArm</defName>
+		<label>right arm</label>
+	</BodyPartGroupDef>
+	
+	<BodyPartGroupDef>
+		<defName>LeftArm</defName>
+		<label>left arm</label>
+	</BodyPartGroupDef>
+	
+	<BodyPartGroupDef>
+		<defName>HeadButt</defName>
+		<label>dozer</label>
+	</BodyPartGroupDef>
 
 </Defs>

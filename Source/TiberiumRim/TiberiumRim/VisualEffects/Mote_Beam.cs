@@ -11,14 +11,25 @@ namespace TiberiumRim
     {
         private Vector3 start;
         private Vector3 end;
+        //private Vector3 finalEnd;
         private Material drawMat;
+
+        //private bool shouldMove;
 
         public void SetConnections(Vector3 start, Vector3 end, Material mat, Color color)
         {
             this.start = start;
             this.end = end;
+            //this.finalEnd = finalEnd;
+            //shouldMove = end != finalEnd;
             this.drawMat = mat;
             this.instanceColor = color;
+        }
+
+        public override void Tick()
+        {
+            base.Tick();
+
         }
 
         public override void Draw()
@@ -27,10 +38,13 @@ namespace TiberiumRim
             {
                 return;
             }
-            float alpha = this.Alpha;
+
+            float alpha = Alpha;
+            /*if (shouldMove && AgeSecs >= def.mote.fadeInTime)
+                end2 = Vector3.Lerp(end, finalEnd, alpha);
+            */
             Vector3 diff = end - start;
-            if (alpha <= 0f)
-            {return;}
+            if (alpha <= 0f) return;
             Color color = instanceColor;
             color.a *= alpha;
             if(color != drawMat.color)

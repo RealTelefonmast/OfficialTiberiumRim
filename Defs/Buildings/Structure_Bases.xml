@@ -2,7 +2,6 @@
 <Defs>
 
 	<TiberiumRim.TRThingDef Abstract="True" Name="LampBase_TR" ParentName="BuildingBase_TR">
-		<thingClass>Building</thingClass>
 		<category>Building</category>
 		<TRCategory>Decoration</TRCategory>
 		<minifiedDef>MinifiedThing</minifiedDef>
@@ -46,7 +45,6 @@
 	</TiberiumRim.TRThingDef>
 
 	<TiberiumRim.TRThingDef Abstract="True" Name="WallLampBase" ParentName="LampBase_TR">
-		<thingClass>Building</thingClass>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<passability>Standable</passability>
 		<pathCost>0</pathCost>
@@ -174,7 +172,6 @@
 	
 	<ThingDef ParentName="BuildingBase_TR" Name="PowerConduitBase_TR" Abstract="True">
 		<description>A bundle of electrical cables for moving power around. Can be placed under walls and other buildings.</description>
-		<thingClass>Building</thingClass>
 		<category>Building</category>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>

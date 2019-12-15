@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!--<Bullet_ShockDisc.label>원반</Bullet_ShockDisc.label>-->
+  <!--<Bullet_ShockDisc.description>원반</Bullet_ShockDisc.description>-->
+
+  <!--<Scrin_ShockDiscLauncher.label>스크린 원반 발사기</Scrin_ShockDiscLauncher.label>-->
+  <!--<Scrin_ShockDiscLauncher.description>스크린 원반 발사기</Scrin_ShockDiscLauncher.description>-->
+
+  <!--<Bullet_Disint.label>빔</Bullet_Disint.label>-->
+  <!--<Bullet_Disint.description>빔</Bullet_Disint.description>-->
+
+  <!--<Scrin_Disint.label>분쇄기</Scrin_Disint.label>-->
+  <!--<Scrin_Disint.description>d분쇄기</Scrin_Disint.description>-->
+
+  <!--<Bullet_MechapedeLance.label>광선</Bullet_MechapedeLance.label>-->
+  <!--<Bullet_MechapedeLance.description>광선</Bullet_MechapedeLance.description>-->
+
+  <!--<Scrin_MechapedeLance.label>레이저 절단기</Scrin_MechapedeLance.label>-->
+  <!--<Scrin_MechapedeLance.description>우수한 파괴력과 연사력을 갖춘 레이저 발사기입니다. 사실은 병기가 아니라 타이베리움 채취를 위한 농기구인 것으로 추정됩니다.</Scrin_MechapedeLance.description>-->
+
+  <!--<Bullet_ShockLance.label>광창</Bullet_ShockLance.label>-->
+  <!--<Bullet_ShockLance.description>광창</Bullet_ShockLance.description>-->
+
+  <!--<Scrin_ShockLanceLauncher.label>스크린 광창 발사기</Scrin_ShockLanceLauncher.label>-->
+  <!--<Scrin_ShockLanceLauncher.description>어마어마한 파괴력과 정밀도를 갖춘 레이저 병기입니다. 유일한 단점은 당장 부서져도 이상하지 않을 정도로 내구력이 약하다는 것입니다.</Scrin_ShockLanceLauncher.description>-->
+  <!--<Scrin_ShockLanceLauncher.tools.0.label>가시</Scrin_ShockLanceLauncher.tools.0.label>-->
+
+
+</LanguageData>

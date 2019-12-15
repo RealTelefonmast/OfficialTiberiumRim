@@ -77,7 +77,6 @@
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>FirestormCenter</defName>
 		<label>Firestorm Operations Center</label>
-		<thingClass>Building</thingClass>
 		<description>This specialized facility registers all Firestorm-Segments placed by this Faction. When enough power is available the Firestorm-System can be activated anytime and will last for a day, completely cutting off any intruders.\n\nOnly one can be built.</description>
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Defense</TRCategory>
@@ -158,7 +157,6 @@
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>FirestormWall</defName>
 		<label>firestorm wall segment</label>
-		<thingClass>Building</thingClass>
 		<category>Building</category>
 		<description>A segment of the Firestorm system.</description>
 		<factionDesignation>GDI</factionDesignation>

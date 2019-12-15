@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!--<Mechapede_TBI.label>메카피드</Mechapede_TBI.label>-->
+  <!--<Mechapede_TBI.description>메카피드는 3차 타이베리움 전쟁 무렵 처음 발견된 스크린의 거대 다족 보행 유닛입니다. 원래는 길쭉했지만 최근에는 어째선지 짧고 뚱뚱하게 진화했습니다.</Mechapede_TBI.description>-->
+  <!--<Mechapede_TBI.tools.0.label>앞다리</Mechapede_TBI.tools.0.label>-->
+  <!-- Flesh Type: Mechanoid -->
+  <!--<Mechapede_TBI_Corpse.label>메카피드 잔해</Mechapede_TBI_Corpse.label>-->
+  <!--<Mechapede_TBI_Corpse.description>메카피드의 잔해. 기계 작업대에서 분해하여 자원으로 사용할 수 있습니다.</Mechapede_TBI_Corpse.description>-->
+
+  <!--<Shocktrooper_TBI.label>쇼크트루퍼</Shocktrooper_TBI.label>-->
+  <!--<Shocktrooper_TBI.description>쇼크트루퍼는 크고, 둥글고, 벌레와 기계가 혼합된 것처럼 생긴 괴물입니다. 스크린의 상위 병종으로 알려져 있습니다.</Shocktrooper_TBI.description>-->
+  <!--<Shocktrooper_TBI.tools.0.label>앞다리</Shocktrooper_TBI.tools.0.label>-->
+  <!-- Flesh Type: Mechanoid -->
+  <!--<Shocktrooper_TBI_Corpse.label>쇼크트루퍼 잔패</Shocktrooper_TBI_Corpse.label>-->
+  <!--<Shocktrooper_TBI_Corpse.description>쇼크트루퍼의 잔해. 기계 작업대에서 분해하여 자원으로 사용할 수 있습니다.</Shocktrooper_TBI_Corpse.description>-->
+
+  <!--<Disintegrator_TBI.label>분쇄기</Disintegrator_TBI.label>-->
+  <!--<Disintegrator_TBI.description>인류가 제일 먼저 접한 스크린의 첫 종류는 말 크기에 가까운 걸어다니는 금속 생명체였습니다. 커다란 레이저 절단기를 달고 있어 분쇄기라는 이름이 붙었습니다.</Disintegrator_TBI.description>-->
+  <!--<Disintegrator_TBI.tools.0.label>앞다리</Disintegrator_TBI.tools.0.label>-->
+  <!-- Flesh Type: Mechanoid -->
+  <!--<Disintegrator_TBI_Corpse.label>분쇄기 잔해</Disintegrator_TBI_Corpse.label>-->
+  <!--<Disintegrator_TBI_Corpse.description>분쇄기의 잔해. 기계 작업대에서 분해하여 자원으로 사용할 수 있습니다.</Disintegrator_TBI_Corpse.description>-->
+
+  <!--<Buzzer_TBI.label>부저</Buzzer_TBI.label>-->
+  <!--<Buzzer_TBI.description>부저는 스크린 병종 중 가장 흔하면서도 가장 이해하기 어려운 정류입니다. 각각의 부저는 느리게 부유하는 작은 금속 조각에 불과합니다. 하지만 단독으로 움직이는 일은 없으며, 반드시 수만 마리 단위의 군체만이 전장에 나타납니다. 부저의 습격을 받은 사람의 최후가 어떨지는 쉽게 예상할 수 있습니다.</Buzzer_TBI.description>-->
+  <!--<Buzzer_TBI.tools.0.label>칼날 구름</Buzzer_TBI.tools.0.label>-->
+  <!-- Flesh Type: Mechanoid -->
+  <!--<Buzzer_TBI_Corpse.label>부저 잔해</Buzzer_TBI_Corpse.label>-->
+  <!--<Buzzer_TBI_Corpse.description>부저의 잔해. 기계 작업대에서 분해하여 자원으로 사용할 수 있습니다.</Buzzer_TBI_Corpse.description>-->
+
+
+  <!-- No Leather: Butcher Products -->
+  <!-- Meat Amount: 0 -->
+
+</LanguageData>

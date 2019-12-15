@@ -455,9 +455,6 @@
 						</turret>
 						<speed>40</speed>
 					</turretTop>
-					<avoidFriendlyFire>true</avoidFriendlyFire>
-					<burstMode>ToTarget</burstMode>
-					<burstToRange>40</burstToRange>
 					<turretGunDef>Gun_SonicEmitter</turretGunDef>
 					<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
 					<turretBurstCooldownTime>5</turretBurstCooldownTime>

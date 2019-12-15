@@ -52,7 +52,7 @@
 	
 	<ThingDef Abstract="True" Name="TiberiumFog" ParentName="MoteBase_TR">
 		<graphicData>
-			<texPath>Motes/TiberiumFogC</texPath>
+			<texPath>Motes/TiberiumFog</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -77,7 +77,7 @@
 	<ThingDef ParentName="TiberiumFog">
 		<defName>TiberiumFogG</defName>
 		<graphicData>
-			<color>(15,255,55,75)</color>
+			<color>(15,255,55,125)</color>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 	</ThingDef>
@@ -85,7 +85,7 @@
 	<ThingDef ParentName="TiberiumFog">
 		<defName>TiberiumFogB</defName>
 		<graphicData>
-			<color>(15,125,255,75)</color>
+			<color>(15,125,255,125)</color>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 	</ThingDef>
@@ -93,7 +93,7 @@
 	<ThingDef ParentName="TiberiumFog">
 		<defName>TiberiumFogR</defName>
 		<graphicData>
-			<color>(255,15,115,75)</color>
+			<color>(255,15,115,125)</color>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 	</ThingDef>
@@ -102,7 +102,7 @@
 	<ThingDef ParentName="TiberiumFog">
 		<defName>TiberiumFieldFogG</defName>
 		<graphicData>
-			<color>(15,255,55,45)</color>
+			<color>(15,255,55,100)</color>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<mote>
@@ -115,7 +115,7 @@
 	<ThingDef ParentName="TiberiumFog">
 		<defName>TiberiumFieldFogB</defName>
 		<graphicData>
-			<color>(15,125,255,45)</color>
+			<color>(15,125,255,100)</color>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<mote>

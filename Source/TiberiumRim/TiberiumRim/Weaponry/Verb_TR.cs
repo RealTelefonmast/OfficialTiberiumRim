@@ -2,46 +2,58 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Verse;
 using RimWorld;
+using Verse;
+using Verse.Sound;
+using Verse.AI;
 using UnityEngine;
 
 namespace TiberiumRim
 {
     public class Verb_TR : Verb
     {
+        //This custom verb replaces and reworks most of the base Verb, often doing redundant things to avoid complicated specific patches.
+
+        //Shot Index
+        private int lastOffsetIndex = 0;
+        private int offsetIndex = 0;
+        private int maxOffsetCount = 1;
+
         public TurretGun castingGun;
         public CompTNW_Turret TiberiumComp => caster.TryGetComp<CompTNW_Turret>();
-        public VerbProperties_TR Props => (VerbProperties_TR)base.verbProps;
+        public VerbProperties_TR Props => (VerbProperties_TR)verbProps;
 
-        private int OffsetIndex => castingGun.ShotIndex;
+        private int OffsetIndex => castingGun?.ShotIndex ?? offsetIndex;
 
         public ThingDef Projectile
         {
             get
             {
-                if (EquipmentSource != null)
+                CompChangeableProjectile comp = EquipmentSource?.GetComp<CompChangeableProjectile>();
+                if (comp != null && comp.Loaded)
                 {
-                    CompChangeableProjectile comp = base.EquipmentSource.GetComp<CompChangeableProjectile>();
-                    if (comp != null && comp.Loaded)
-                    {
-                        return comp.Projectile;
-                    }
+                    return comp.Projectile;
                 }
                 return verbProps.defaultProjectile;
             }
         }
 
-        public Vector3 DrawPos
+        public Vector3 DrawPos => castingGun?.DrawPos ?? caster.DrawPos;
+
+        private void Notify_SingleShot()
         {
-            get
-            {
-                if(castingGun != null)
-                {
-                    return castingGun.DrawPos;
-                }
-                return caster.DrawPos;
-            }
+            if(castingGun != null)
+                castingGun.Notify_FiredSingleProjectile();
+            else
+                RotateNextShotIndex();
+        }
+
+        private void RotateNextShotIndex()
+        {
+            lastOffsetIndex = offsetIndex;
+            offsetIndex++;
+            if (offsetIndex > (maxOffsetCount - 1))
+                offsetIndex = 0;
         }
 
         protected Vector3 NextOffset()
@@ -54,7 +66,7 @@ namespace TiberiumRim
         protected Vector3 ShotOrigin()
         {
             Vector3 offset = Vector3.zero;
-            if (castingGun != null && castingGun.top.props.barrelMuzzleOffset != Vector3.zero)
+            if (castingGun?.top != null && castingGun.top.props.barrelMuzzleOffset != Vector3.zero)
             {
                 offset = castingGun.top.props.barrelMuzzleOffset;
             }
@@ -68,8 +80,9 @@ namespace TiberiumRim
 
         protected override int ShotsPerBurst => this.verbProps.burstShotCount;
 
-        protected float GunRotation { 
-            get 
+        protected float GunRotation
+        {
+            get
             {
                 if (CasterIsPawn)
                 {
@@ -86,17 +99,76 @@ namespace TiberiumRim
                         {
                             a = stance.focusTarg.Cell.ToVector3Shifted();
                         }
+
                         if ((a - CasterPawn.DrawPos).MagnitudeHorizontalSquared() > 0.001f)
                         {
                             num = (a - CasterPawn.DrawPos).AngleFlat();
                         }
+
                         return num;
                     }
                 }
-                Log.Message("Gun: " + (castingGun != null) + " " + (castingGun?.props != null));
-                return castingGun != null ? (castingGun.HasTurret ? castingGun.TurretRotation : 0f) : 0f; 
+                return castingGun != null ? (castingGun.HasTurret ? castingGun.TurretRotation : 0f) : 0f;
             }
         }
+
+        public override bool IsUsableOn(Thing target)
+        {
+            return true;
+        }
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
+            maxOffsetCount = Props.originOffsets?.Count ?? 0;
+        }
+
+        public override void WarmupComplete()
+        {
+            burstShotsLeft = ShotsPerBurst;
+            state = VerbState.Bursting;
+            TryCastNextBurstShot();
+            if (CasterIsPawn && currentTarget.HasThing)
+            {
+                Pawn pawn = currentTarget.Thing as Pawn;
+                if (pawn != null && pawn.IsColonistPlayerControlled)
+                {
+                    CasterPawn.records.AccumulateStoryEvent(StoryEventDefOf.AttackedPlayer);
+                }
+            }
+            if (Props.tiberiumCostPerBurst != null)
+            {
+                Props.tiberiumCostPerBurst.Pay(TiberiumComp.Container);
+            }
+        }
+
+        protected override bool TryCastShot()
+        {
+            bool flag;
+            flag = IsBeam ? TryCastBeam() : TryCastProjectile();
+
+            if (flag)
+                Notify_SingleShot();
+
+            if (flag && Props.tiberiumCostPerShot != null)
+            {
+                if (Props.tiberiumCostPerShot.CanPay(TiberiumComp.Container))
+                    Props.tiberiumCostPerShot.Pay(TiberiumComp.Container);
+                else
+                    return false;
+            }
+            if (flag && base.CasterIsPawn)
+            {
+                base.CasterPawn.records.Increment(RecordDefOf.ShotsFired);
+            }
+            return flag;
+        }
+
 
         public override bool Available()
         {
@@ -117,99 +189,70 @@ namespace TiberiumRim
             }
             if (CasterIsPawn)
             {
-                Pawn casterPawn = base.CasterPawn;
+                Pawn casterPawn = CasterPawn;
                 if (casterPawn.Faction != Faction.OfPlayer && casterPawn.mindState.MeleeThreatStillThreat && casterPawn.mindState.meleeThreat.Position.AdjacentTo8WayOrInside(casterPawn.Position))
                 {
                     return false;
                 }
             }
-            return IsBeam ? true : Projectile != null;
+            return IsBeam || Projectile != null;
         }
 
-        public override void WarmupComplete()
+        public void CastProjectile(IntVec3 origin, Thing caster, LocalTargetInfo usedTarget, LocalTargetInfo intendedTarget, ProjectileHitFlags flags)
         {
-            base.WarmupComplete();
-            if (Props.tiberiumCostPerBurst != null)
-            {
-                Props.tiberiumCostPerBurst.Pay(TiberiumComp.Container);
-            }
-        }     
-
-        protected override bool TryCastShot()
-        {
-            if (IsBeam)
-            {
-                return TryCastBeam();
-            }
-            bool flag = TryCastProjectile();
-            if(flag && Props.tiberiumCostPerShot != null)
-            {
-                if (Props.tiberiumCostPerShot.CanPay(TiberiumComp.Container))
-                    Props.tiberiumCostPerShot.Pay(TiberiumComp.Container);
-                else
-                    return false;
-            }
-            if (flag && base.CasterIsPawn)
-            {
-                base.CasterPawn.records.Increment(RecordDefOf.ShotsFired);
-            }
-            return flag;
+            Projectile projectile = (Projectile)GenSpawn.Spawn(Projectile, origin, caster.Map, WipeMode.Vanish);
+            projectile.Launch(caster, usedTarget, intendedTarget, flags);
         }
 
         public bool TryCastProjectile()
         {
-            if (this.currentTarget.HasThing && this.currentTarget.Thing.Map != this.caster.Map)
+            if (currentTarget.HasThing && currentTarget.Thing.Map != caster.Map)
                 return false;
 
-            ThingDef projectile = this.Projectile;
+            ThingDef projectile = Projectile;
             if (projectile == null)
                 return false;
 
             ShootLine shootLine;
-            bool flag = base.TryFindShootLineFromTo(this.caster.Position, this.currentTarget, out shootLine);
-            if (this.verbProps.stopBurstWithoutLos && !flag)
+            bool flag = TryFindShootLineFromTo(caster.Position, currentTarget, out shootLine);
+            if (verbProps.stopBurstWithoutLos && !flag)
                 return false;
 
-            castingGun.Notify_FiredSingleProjectile();
-            if (base.EquipmentSource != null)
+            if (EquipmentSource != null)
             {
-                CompChangeableProjectile comp = base.EquipmentSource.GetComp<CompChangeableProjectile>();
-                if (comp != null)
-                {
-                    comp.Notify_ProjectileLaunched();
-                }
+                CompChangeableProjectile comp = EquipmentSource.GetComp<CompChangeableProjectile>();
+                comp?.Notify_ProjectileLaunched();
             }
-            Thing launcher = this.caster;
-            Thing equipment = base.EquipmentSource;
-            CompMannable compMannable = this.caster.TryGetComp<CompMannable>();
+            Thing launcher = caster;
+            Thing equipment = EquipmentSource;
+            CompMannable compMannable = caster.TryGetComp<CompMannable>();
             if (compMannable != null && compMannable.ManningPawn != null)
             {
                 launcher = compMannable.ManningPawn;
-                equipment = this.caster;
+                equipment = caster;
             }
             Vector3 drawPos = ShotOrigin();
-            Log.Message("Base DrawPos: " + DrawPos + " offset: " + drawPos);
-            Projectile projectile2 = (Projectile)GenSpawn.Spawn(projectile, shootLine.Source, this.caster.Map, WipeMode.Vanish);
-            if (this.verbProps.forcedMissRadius > 0.5f)
+            Projectile projectile2 = (Projectile)GenSpawn.Spawn(projectile, shootLine.Source, caster.Map, WipeMode.Vanish);
+            if (verbProps.forcedMissRadius > 0.5f)
             {
-                float num = VerbUtility.CalculateAdjustedForcedMiss(this.verbProps.forcedMissRadius, this.currentTarget.Cell - this.caster.Position);
+                float num = VerbUtility.CalculateAdjustedForcedMiss(verbProps.forcedMissRadius, currentTarget.Cell - caster.Position);
                 if (num > 0.5f)
                 {
                     int max = GenRadial.NumCellsInRadius(num);
                     int num2 = Rand.Range(0, max);
                     if (num2 > 0)
                     {
-                        IntVec3 c = this.currentTarget.Cell + GenRadial.RadialPattern[num2];
+                        IntVec3 c = currentTarget.Cell + GenRadial.RadialPattern[num2];
                         ProjectileHitFlags projectileHitFlags = ProjectileHitFlags.NonTargetWorld;
                         if (Rand.Chance(0.5f))
                         {
                             projectileHitFlags = ProjectileHitFlags.All;
                         }
-                        if (!this.canHitNonTargetPawnsNow)
+                        if (!canHitNonTargetPawnsNow)
                         {
                             projectileHitFlags &= ~ProjectileHitFlags.NonTargetPawns;
                         }
-                        projectile2.Launch(launcher, drawPos, c, this.currentTarget, projectileHitFlags, equipment, null);
+                        projectile2.Launch(launcher, drawPos, c, currentTarget, projectileHitFlags, equipment, null);
                         return true;
                     }
                 }
@@ -228,7 +271,7 @@ namespace TiberiumRim
                 projectile2.Launch(launcher, drawPos, shootLine.Dest, this.currentTarget, projectileHitFlags2, equipment, targetCoverDef);
                 return true;
             }
-            if (this.currentTarget.Thing != null && this.currentTarget.Thing.def.category == ThingCategory.Pawn && !Rand.Chance(shotReport.PassCoverChance))
+            if (currentTarget.Thing != null && currentTarget.Thing.def.category == ThingCategory.Pawn && !Rand.Chance(shotReport.PassCoverChance))
             {
                 ProjectileHitFlags projectileHitFlags3 = ProjectileHitFlags.NonTargetWorld;
                 if (this.canHitNonTargetPawnsNow)
@@ -269,6 +312,52 @@ namespace TiberiumRim
             return true;
         }
 
+        public LocalTargetInfo AdjustedTarget(LocalTargetInfo intended, ref ShootLine shootLine, out ProjectileHitFlags flags)
+        {
+            flags = ProjectileHitFlags.NonTargetWorld;
+            if (verbProps.forcedMissRadius > 0.5f)
+            {
+                float num = VerbUtility.CalculateAdjustedForcedMiss(verbProps.forcedMissRadius, intended.Cell - caster.Position);
+                if (num > 0.5f)
+                {
+                    if (Rand.Chance(0.5f))
+                        flags = ProjectileHitFlags.All;
+                    if (!canHitNonTargetPawnsNow)
+                        flags &= ~ProjectileHitFlags.NonTargetPawns;
+                    
+                    int max = GenRadial.NumCellsInRadius(num);
+                    int num2 = Rand.Range(0, max);
+                    if (num2 > 0)
+                    {
+                        return GetTargetFromPos((intended.Cell + GenRadial.RadialPattern[num2]), caster.Map);
+                    }
+                }
+            }
+            ShotReport shotReport = ShotReport.HitReportFor(caster, this, intended);
+            Thing cover = shotReport.GetRandomCoverToMissInto();
+            if (!Rand.Chance(shotReport.AimOnTargetChance_IgnoringPosture))
+            {
+                if (Rand.Chance(0.5f) && canHitNonTargetPawnsNow)
+                    flags |= ProjectileHitFlags.NonTargetPawns;
+                shootLine.ChangeDestToMissWild(shotReport.AimOnTargetChance_StandardTarget);
+                return GetTargetFromPos(shootLine.Dest, caster.Map);
+            }
+            if (intended.Thing != null && intended.Thing.def.category == ThingCategory.Pawn && !Rand.Chance(shotReport.PassCoverChance))
+            {
+                if (canHitNonTargetPawnsNow)
+                    flags |= ProjectileHitFlags.NonTargetPawns;
+                return cover;
+            }
+            return intended;
+        }
+
+        private LocalTargetInfo GetTargetFromPos(IntVec3 pos, Map map)
+        {
+            var things = pos.GetThingList(map);
+            if (things.NullOrEmpty()) return pos;
+            return things.MaxBy(t => t.def.altitudeLayer);
+        }
+
         public override float HighlightFieldRadiusAroundTarget(out bool needLOSToCenter)
         {
             needLOSToCenter = true;
@@ -279,11 +368,17 @@ namespace TiberiumRim
             }
             return projectile.projectile.explosionRadius;
         }
+    }
 
+    public enum VerbBurstMode
+    {
+        Normal,
+        ToTarget
     }
 
     public class VerbProperties_TR : VerbProperties
     {
+        public VerbBurstMode mode = VerbBurstMode.Normal;
         public List<Vector3> originOffsets;
         public TiberiumCost tiberiumCostPerBurst;
         public TiberiumCost tiberiumCostPerShot;

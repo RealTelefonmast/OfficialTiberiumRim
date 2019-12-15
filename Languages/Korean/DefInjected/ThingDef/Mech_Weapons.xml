@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Nod Avatar weapons -->
+
+  <!--<Bullet_AvatarLaser.label>레이저</Bullet_AvatarLaser.label>-->
+  <!--<Nod_AvatarLaser.label>아바타 레이저</Nod_AvatarLaser.label>-->
+
+
+  <!-- Nod Purifier weapons -->
+
+  <!--<Bullet_AvatarFlamethrower.label>화염</Bullet_AvatarFlamethrower.label>-->
+  <!--<Nod_AvatarFlamethrower.label>퓨리파이어 화염방사기</Nod_AvatarFlamethrower.label>-->
+
+
+  <!-- Nod Flametank weapons -->
+
+  <!--<Bullet_TwinFlamethrower.label>화염</Bullet_TwinFlamethrower.label>-->
+  <!--<Nod_TwinFlamethrower.label>2연장 화염방사기</Nod_TwinFlamethrower.label>-->
+
+
+  <!-- Gun weapons -->
+
+  <!--<Bullet_Buggy.label>탄환</Bullet_Buggy.label>-->
+  <!--<Nod_BuggyGun.label>기관포</Nod_BuggyGun.label>-->
+
+
+  <!-- GDI Wolverine weapons -->
+
+  <!--<Bullet_Wolverine.label>탄환</Bullet_Wolverine.label>-->
+  <!--<GDI_WolverineGun.label>기관포</GDI_WolverineGun.label>-->
+
+
+  <!-- GDI Mommoth weapons -->
+
+  <!--<Bullet_MomRailgun.label>레일건 포탄</Bullet_MomRailgun.label>-->
+  <!--<GDI_MomRailgun.label>2연장 매머드 레일건</GDI_MomRailgun.label>-->
+
+
+  <!-- GDI Disruptor weapons -->
+
+  <!--<Bullet_Disruptor.label>붕괴파</Bullet_Disruptor.label>-->
+  <!--<GDI_DisruptorCannon.label>붕괴파 발생기</GDI_DisruptorCannon.label>-->
+
+
+  <!-- Forgotten Ironback weapons -->
+
+  <!--<Bullet_Bash.label>기계팔</Bullet_Bash.label>-->
+
+  <!--<Forg_Bash.label>기계팔</Forg_Bash.label>-->
+  <!--<Forg_Bash.description>기계팔</Forg_Bash.description>-->
+
+
+</LanguageData>

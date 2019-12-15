@@ -25,14 +25,11 @@ namespace TiberiumRim
         public override void Print(SectionLayer layer, Thing parent)
         {
             var comp = parent.TryGetComp<CompTNW>();
-            if(comp != null)
+            if (comp == null) return;
+            foreach (var t in comp.pipeExtensionCells)
             {
-                base.Print(layer, parent);
-                for(int i = 0; i < comp.pipeExtensionCells.Count; i++)
-                {
-                    IntVec3 pos = comp.pipeExtensionCells[i];
-                    Printer_Plane.PrintPlane(layer, pos.ToVector3ShiftedWithAltitude(parent.def.Altitude + (comp is CompTNW_Pipe ? 0 : -1)), Vector2.one, LinkedDrawMatFrom(parent, pos));
-                }
+                IntVec3 pos = t;
+                Printer_Plane.PrintPlane(layer, pos.ToVector3ShiftedWithAltitude(AltitudeLayer.FloorEmplacement), Vector2.one, LinkedDrawMatFrom(parent, pos));
             }
         }
     }

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Nod_Shrine.label>shrine</Nod_Shrine.label>
+  <Nod_Shrine.description>Nod's advanced research facility. The shrine of the brotherhood.</Nod_Shrine.description>
+
+
+  <!--<Nod_Grave.label>성소</Nod_Grave.label>-->
+  <!--<Nod_Grave.description>노드의 고급 연구시설입니다.타이베리움 연구 벤치 근처에 건설해야만 후속 연구를 진행할 수 있습니다.\n\n또한 여러 명의 유골을 안치할 수 있습니다. 쓰러진 형제들에게 경의를.</Nod_Grave.description>-->
+  <!--<Nod_Grave_Blueprint.label>성소 (청사진)</Nod_Grave_Blueprint.label>-->
+  <!--<Nod_Grave_Frame.label>성소 (건설 중)</Nod_Grave_Frame.label>-->
+  <!--<Nod_Grave_Frame.description>노드의 고급 연구시설입니다. 타이베리움 연구 벤치 근처에 건설해야만 후속 연구를 진행할 수 있습니다.\n\n또한 여러 명의 유골을 안치할 수 있습니다. 쓰러진 형제들에게 경의를.</Nod_Grave_Frame.description>-->
+
+</LanguageData>

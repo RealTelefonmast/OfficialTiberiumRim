@@ -194,7 +194,6 @@
 	
 	<TiberiumRim.TRThingDef Abstract="True" Name="DronePlatform" ParentName="BuildingBase_TR">
 		<description>.</description>
-		<thingClass>Building</thingClass>
 		<factionDesignation>Common</factionDesignation>
 		<TRCategory>Misc</TRCategory>
 		<graphicData>

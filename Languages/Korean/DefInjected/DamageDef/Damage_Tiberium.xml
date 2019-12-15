@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumBurn.label>타이베리움 접촉 화상</TiberiumBurn.label>
+  <TiberiumBurn.deathMessage>{0}(은)는 과도한 타이베리움 접촉에 의해 사망했습니다.</TiberiumBurn.deathMessage>
+
+  <TiberiumGas.label>타이베리움 가스 흡입</TiberiumGas.label>
+  <TiberiumGas.deathMessage>{0}(은)는 과도하게 타이베리움 가스를 흡입해 사망했습니다.</TiberiumGas.deathMessage>
+
+
+</LanguageData>

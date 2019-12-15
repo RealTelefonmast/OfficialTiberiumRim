@@ -8,19 +8,11 @@ using UnityEngine;
 
 namespace TiberiumRim
 {
-    public enum TurretBurstMode
-    {
-        Normal,
-        ToTarget
-    }
-
     public class TurretProperties
     {
         public TurretTopProperties turretTop;
         public ThingDef turretGunDef;
         public Vector3 drawOffset;
-
-        public bool avoidFriendlyFire = false;
 
         public float turretBurstWarmupTime;
         public float turretBurstCooldownTime = -1f;
@@ -29,7 +21,7 @@ namespace TiberiumRim
         public float minRange = 10;
         public int damage;
 
-        public TurretBurstMode burstMode = TurretBurstMode.Normal;
+        //public TurretBurstMode burstMode = TurretBurstMode.Normal;
     }
 
     public class TurretHolderProps

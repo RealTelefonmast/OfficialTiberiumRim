@@ -1,17 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <DoBillsTibRefinery.label>정제하기</DoBillsTibRefinery.label>
-  <DoBillsTibRefinery.verb>정제</DoBillsTibRefinery.verb>
-  <DoBillsTibRefinery.gerund>정제하기</DoBillsTibRefinery.gerund>
+  <DoBillsTibCrafter.label>추출하기</DoBillsTibCrafter.label>
+  <DoBillsTibCrafter.verb>추출</DoBillsTibCrafter.verb>
+  <DoBillsTibCrafter.gerund>추출하기</DoBillsTibCrafter.gerund>
 
   <DoBillsTibResearch.label>작업하기</DoBillsTibResearch.label>
   <DoBillsTibResearch.verb>작업</DoBillsTibResearch.verb>
   <DoBillsTibResearch.gerund>작업하기</DoBillsTibResearch.gerund>
-
-  <DoMissionObjective.label>목표 수행하기</DoMissionObjective.label>
-  <DoMissionObjective.verb>목표 수행</DoMissionObjective.verb>
-  <DoMissionObjective.gerund>목표 수행하기</DoMissionObjective.gerund>
 
 
 </LanguageData>

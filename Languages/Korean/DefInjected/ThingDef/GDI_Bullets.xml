@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Turrets -->
+
+  <Bullet_Juggernaut.label>저거넛 고폭탄</Bullet_Juggernaut.label>
+  <Bullet_JuggernautIncendiary.label>저거넛 소이탄</Bullet_JuggernautIncendiary.label>
+  <Bullet_GDIStandard.label>탄환</Bullet_GDIStandard.label>
+  <Bullet_Guardian.label>철갑탄</Bullet_Guardian.label>
+  <Bullet_Emitter.label>음파</Bullet_Emitter.label>
+
+  <Projectile_StunGrenade.label>섬광탄</Projectile_StunGrenade.label>
+  <Projectile_StunGrenade.description>섬광탄</Projectile_StunGrenade.description>
+
+
+</LanguageData>

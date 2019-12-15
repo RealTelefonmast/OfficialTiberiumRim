@@ -5,4 +5,13 @@
   <Nod_CarbonPlate.description>노드 기술자들은 총격에 버틸 수 있는 강한 소재를 찾기 위해 수 세기 동안 계속 노력했습니다. 그중 가장 성공적인 물질은 탄소합금이었습니다.</Nod_CarbonPlate.description>
 
 
+  <!-- custom tiberium spawner explosion -->
+
+  <Nod_LiquidTiberium.label>liquid tiberium cell</Nod_LiquidTiberium.label>
+  <Nod_LiquidTiberium.description>Liquid Tiberium in its purest form. WARNING - Beware of deterioration, this item is very unstable!</Nod_LiquidTiberium.description>
+
+  <Nod_LQTiberiumCore.label>Liquid Tiberium Core</Nod_LQTiberiumCore.label>
+  <Nod_LQTiberiumCore.description>Due to it's unstable nature, liquid Tiberium cannot be handled directly and needs to be stabilized. This component manages to do so.</Nod_LQTiberiumCore.description>
+
+
 </LanguageData>

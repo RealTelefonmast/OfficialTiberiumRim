@@ -236,10 +236,10 @@
 					<li>Scratch</li>
 					<li>Cut</li>
 				</capacities>
-				<power>16</power>
-				<cooldownTime>1.6</cooldownTime>
+				<power>20</power>
+				<cooldownTime>5</cooldownTime>
 				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
-				<chanceFactor>0.5</chanceFactor>
+				<chanceFactor>0.3</chanceFactor>
 			</li>
 			<li>
 				<label>tentacle</label>
@@ -247,17 +247,19 @@
 					<li>Blunt</li>
 					<li>Stab</li>
 				</capacities>
-				<power>12</power>
+				<power>10</power>
 				<cooldownTime>2.5</cooldownTime>
 				<linkedBodyPartsGroup>Visceral_Tentacles</linkedBodyPartsGroup>
-				<chanceFactor>0.5</chanceFactor>
+				<chanceFactor>0.7</chanceFactor>
 			</li>
 		</tools>
 		<race>
 			<body>Visceroid</body>
 			<thinkTreeMain>Animal</thinkTreeMain>
 			<thinkTreeConstant>Visceroid_Constant</thinkTreeConstant>
-			<maxPreyBodySize>1.5</maxPreyBodySize>
+			<herdAnimal>true</herdAnimal>
+			<predator>true</predator>
+			<maxPreyBodySize>2.0</maxPreyBodySize>
 			<baseBodySize>1.2</baseBodySize>
 			<baseHungerRate>0.4</baseHungerRate>
 			<baseHealthScale>1</baseHealthScale>
@@ -299,6 +301,91 @@
 	</TiberiumRim.TiberiumKindDef>
 	
 	<!-- Amalgamation -->
+	<ThingDef ParentName="VisceralPawnBase">
+		<defName>Amalgamation</defName>
+		<label>Amalgamation</label>
+		<thingClass>TiberiumRim.Visceroid</thingClass>
+		<description>A great irregular lifeform. Formed after the death of a creature by Tiberium.</description>
+		<statBases>
+			<MoveSpeed>2</MoveSpeed>
+			<MarketValue>5000</MarketValue>
+			<LeatherAmount>50</LeatherAmount>
+			<MeatAmount>50</MeatAmount>
+			<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0</ArmorRating_Sharp>
+			<ArmorRating_Heat>0.5</ArmorRating_Heat>
+		</statBases>
+		<tools>
+			<li>
+				<label>mouth</label>
+				<capacities>
+					<li>Bite</li>
+					<li>Scratch</li>
+					<li>Cut</li>
+				</capacities>
+				<power>40</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<chanceFactor>0.3</chanceFactor>
+			</li>
+			<li>
+				<label>tentacle</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Stab</li>
+				</capacities>
+				<power>30</power>
+				<cooldownTime>1.5</cooldownTime>
+				<linkedBodyPartsGroup>Visceral_Tentacles</linkedBodyPartsGroup>
+				<chanceFactor>0.7</chanceFactor>
+			</li>
+		</tools>
+		<race>
+			<body>Visceroid</body>
+			<thinkTreeMain>Animal</thinkTreeMain>
+			<thinkTreeConstant>Visceroid_Constant</thinkTreeConstant>
+			<herdAnimal>true</herdAnimal>
+			<predator>true</predator>
+			<maxPreyBodySize>2.0</maxPreyBodySize>
+			<baseBodySize>5</baseBodySize>
+			<baseHungerRate>5</baseHungerRate>
+			<baseHealthScale>15</baseHealthScale>
+			<meatLabel>visceral meat</meatLabel>
+			<meatColor>(200,225,20)</meatColor>
+			<lifeStageAges>
+				<li>
+					<def>VisceralFormed</def>
+					<minAge>0</minAge>
+					<soundWounded>Pawn_Elephant_Injured</soundWounded>
+					<soundDeath>Pawn_Elephant_Dead</soundDeath>
+					<soundCall>Pawn_Elephant_Call</soundCall>
+					<soundAngry>Pawn_Elephant_Angry</soundAngry>
+				</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+	
+	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+		<defName>Amalgamation</defName>
+		<label>Amalgamation</label>
+		<race>Amalgamation</race>
+		<combatPower>500</combatPower>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Visceroid/Amalgamation</texPath>
+					<drawSize>4</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Pawns/WildLife/Visceroid/AmalgamationD</texPath>
+					<drawSize>4</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.TiberiumKindDef>
 	
 	<!-- Veinmonster -->
 	<ThingDef ParentName="VisceralPawnBase">
@@ -318,8 +405,8 @@
 					<li>Scratch</li>
 					<li>Cut</li>
 				</capacities>
-				<power>7.6</power>
-				<cooldownTime>1.6</cooldownTime>
+				<power>5</power>
+				<cooldownTime>2.5</cooldownTime>
 				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
 				<chanceFactor>0.5</chanceFactor>
 			</li>
@@ -328,19 +415,24 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>10</power>
-				<cooldownTime>3</cooldownTime>
+				<power>3</power>
+				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 				<chanceFactor>0.5</chanceFactor>
 			</li>
 		</tools>
 		<race>
+			<herdAnimal>true</herdAnimal>
+			<predator>true</predator>
+			<maxPreyBodySize>1.0</maxPreyBodySize>
+			<baseBodySize>1.0</baseBodySize>
+			<baseHungerRate>0.5</baseHungerRate>
+			<baseHealthScale>1</baseHealthScale>
 			<thinkTreeMain>Veinmonster</thinkTreeMain>
 			<thinkTreeConstant>Veinmonster_Constant</thinkTreeConstant>
 			<meatLabel>veiny meat</meatLabel>
 			<meatColor>(217,130,157)</meatColor>
-			<body>Veinmonster</body>
-			<baseHungerRate>0.01</baseHungerRate>		
+			<body>Veinmonster</body>	
 			<lifeStageAges>
 					<li>
 						<def>VisceralFormed</def>
@@ -361,7 +453,7 @@
 		<defName>Veinmonster</defName>
 		<label>Veinmonster</label>
 		<race>Veinmonster</race>
-		<combatPower>12</combatPower>
+		<combatPower>30</combatPower>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
@@ -407,6 +499,10 @@
 			<body>VeinRock</body>
 			<predator>false</predator>
 			<canBePredatorPrey>false</canBePredatorPrey>
+			<manhunterOnDamageChance>0.1</manhunterOnDamageChance>
+			<manhunterOnTameFailChance>0</manhunterOnTameFailChance>
+			<meatLabel>veiny meat</meatLabel>
+			<meatColor>(217,130,157)</meatColor>
 			<baseHungerRate>0</baseHungerRate>		
 			<baseHealthScale>4</baseHealthScale>
 			<lifeStageAges>

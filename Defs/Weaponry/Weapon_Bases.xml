@@ -67,14 +67,14 @@
 			<effectWorking>Smith</effectWorking>
 			<soundWorking>Recipe_Smith</soundWorking>
 			<recipeUsers>
-				<li>TableMachining</li>
+				<li>TiberiumWorkbench</li>
 			</recipeUsers>
 			<unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
 			<researchPrerequisite>Gunsmithing</researchPrerequisite>
 		</recipeMaker>
 	</ThingDef>
 
-  
+	<!-- Bullet -->
 	<ThingDef Name="BaseBullet_TR" Abstract="True">
 		<category>Projectile</category>
 		<tickerType>Normal</tickerType>
@@ -84,7 +84,7 @@
 		<useHitPoints>False</useHitPoints>
 		<neverMultiSelect>True</neverMultiSelect>
 		<graphicData>
-			<shaderType>Transparent</shaderType>
+			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
 	</ThingDef>
 

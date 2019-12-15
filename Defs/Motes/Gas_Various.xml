@@ -18,9 +18,9 @@
 		<defName>TiberiumGas</defName>
 		<label>tiberium gas</label>
 		<graphicData>
-			<texPath>Motes/TiberiumGas</texPath>
+			<texPath>Motes/Gas</texPath>
 			<drawSize>2.2</drawSize>
-			<color>(1.0,1.0,1.0,0.4)</color>
+			<color>(15,255,55,90)</color>
 		</graphicData>
 		<gas>
 			<expireSeconds>

@@ -1,27 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <!-- <TiberiumRim.MissionIncidentDef>
-		<defName>MISSION_TiberiumSighted</defName>
-		<label>Tiberium Sight</label>
-		<workerClass>TiberiumRim.IncidentWorker_MissionStart</workerClass>
-		<targetTypes>
-			<li>MapPlayerHome</li>
-		</targetTypes>
-		<baseChance>2.0</baseChance>
-		<minThreatPoints>0</minThreatPoints>
-		<anyJobNeeded>
-			<li>Skygaze</li>
-			<li>UseTelescope</li>
-		</anyJobNeeded>
-		<missionUnlocks>	
-			<li>Mission1_Discovery</li>
-		</missionUnlocks>
-	</TiberiumRim.MissionIncidentDef> -->
-
-  <AsteroidGreen.label>green tiberium asteroid</AsteroidGreen.label>
-  <AsteroidGreen.letterText>An unusual meteorite has crashed nearby and made a crater.\n\nThere seems to be some strange crystals poking out of it, and a few have broken off and scattered around the site.\n\nBe careful, the substance could be dangerous!</AsteroidGreen.letterText>
-  <AsteroidGreen.letterLabel>Green Tiberium Asteroid</AsteroidGreen.letterLabel>
+  <TiberiumArrival.label>일어나선 안될 일</TiberiumArrival.label>
+  <TiberiumArrival.letterText>낯선 운석이 근처에 추락했습니다. 조사가 필요합니다.</TiberiumArrival.letterText>
+  <TiberiumArrival.letterLabel>운석 낙하!</TiberiumArrival.letterLabel>
 
 
 </LanguageData>

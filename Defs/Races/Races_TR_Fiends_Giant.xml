@@ -7,7 +7,7 @@
 		<label>thrimbo</label>
 		<description>A gigantic creature of unknown origin. The Thrumbo, but this one seems to have an Tiberium infection. Be careful, it might be easily enraged.</description>
 		<statBases>
-			<MoveSpeed>5.5</MoveSpeed>
+			<MoveSpeed>5.25</MoveSpeed>
 			<MarketValue>6000</MarketValue>
 			<ComfyTemperatureMin>-65</ComfyTemperatureMin>
 			<ComfyTemperatureMax>50</ComfyTemperatureMax>
@@ -23,43 +23,46 @@
 					<li>Scratch</li>
 					<li>Stab</li>
 				</capacities>
-				<power>23</power>
-				<cooldownTime>2</cooldownTime>
+				<power>35</power>
+				<cooldownTime>3</cooldownTime>
 				<linkedBodyPartsGroup>HornAttackTool</linkedBodyPartsGroup>
+				<chanceFactor>0.2</chanceFactor>
 			</li>
 			<li>
 				<capacities>
 					<li>Bite</li>
 				</capacities>
-				<power>28</power>
-				<cooldownTime>2.6</cooldownTime>
+				<power>30</power>
+				<cooldownTime>2.5</cooldownTime>
 				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
-				<chanceFactor>0.7</chanceFactor>
+				<chanceFactor>0.2</chanceFactor>
 			</li>
 			<li>
 				<label>left foot</label>
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>19</power>
+				<power>20</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>FrontLeftLeg</linkedBodyPartsGroup>
+				<chanceFactor>0.2</chanceFactor>
 			</li>
 			<li>
 				<label>right foot</label>
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>19</power>
+				<power>20</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>FrontRightLeg</linkedBodyPartsGroup>
+				<chanceFactor>0.2</chanceFactor>
 			</li>
 			<li>
 				<label>head</label>
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>17</power>
+				<power>15</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
@@ -73,7 +76,6 @@
 			<baseBodySize>3.5</baseBodySize>
 			<baseHungerRate>2</baseHungerRate>
 			<baseHealthScale>15.0</baseHealthScale>
-			<foodType>CarnivoreAnimalStrict</foodType>
 			<leatherDef>Leather_GreenTib</leatherDef>
 			<trainability>Advanced</trainability>
 			<gestationPeriodDays>60</gestationPeriodDays>
@@ -87,11 +89,11 @@
 				</li>
 				<li>
 					<def>AnimalJuvenile</def>
-					<minAge>4.0</minAge>
+					<minAge>6.0</minAge>
 				</li>
 				<li>
 					<def>AnimalAdult</def>
-					<minAge>9.0</minAge>
+					<minAge>25.0</minAge>
 					<soundCall>Pawn_Thrumbo_Call</soundCall>
 					<soundAngry>Pawn_Thrumbo_Angry</soundAngry>
 					<soundWounded>Pawn_Thrumbo_Pain</soundWounded>
@@ -164,14 +166,17 @@
 	
 	<!-- Bears -->
 	
-	<ThingDef ParentName="AnimalBase_TR">
+	<ThingDef ParentName="FiendBase">
 		<defName>BigTiberiumFiend</defName>
 		<label>tiberian bear</label>
-		<description>A huge omnivorous mammal adapted for cold climates. Bears' thick blubber and fur keeps them warm in winter.\n\nWhile their usual diet consists of fish, berries, honey, and scavenged meat, the grizzly is capable of using its massive strength and deadly claws to kill live prey. They are startlingly quick for such lumbering creatures.</description>
+		<description>Huge omnivorous mammals adapted for Tiberium. Their skin and fur has been crystalized.\n\nWhile their usual diet consists of fish, berries, honey, and scavenged meat, this Fiend is capable of using its massive strength and deadly claws to kill live prey. They are startlingly quick for such lumbering creatures.</description>
 		<statBases>
-			<MoveSpeed>4.6</MoveSpeed>
+			<MoveSpeed>4.5</MoveSpeed>
 			<ComfyTemperatureMin>-40</ComfyTemperatureMin>
-			<MarketValue>700</MarketValue>
+			<MarketValue>1500</MarketValue>
+			<Mass>500</Mass>
+			<MeatAmount>50</MeatAmount>
+			<PainShockThreshold>1</PainShockThreshold>
 		</statBases>
 		<tools>
 			<li>
@@ -179,8 +184,8 @@
 				<capacities>
 				<li>Scratch</li>
 				</capacities>
-				<power>17</power>
-				<cooldownTime>2</cooldownTime>
+				<power>25</power>
+				<cooldownTime>2.5</cooldownTime>
 				<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
 				<surpriseAttack>
 				<extraMeleeDamages>
@@ -190,14 +195,15 @@
 				</li>
 				</extraMeleeDamages>
 				</surpriseAttack>
+				<chanceFactor>0.3</chanceFactor>
 			</li>
 			<li>
 				<label>right claw</label>
 				<capacities>
 				<li>Scratch</li>
 				</capacities>
-				<power>17</power>
-				<cooldownTime>2</cooldownTime>
+				<power>25</power>
+				<cooldownTime>2.5</cooldownTime>
 				<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
 				<surpriseAttack>
 				<extraMeleeDamages>
@@ -207,15 +213,15 @@
 				</li>
 				</extraMeleeDamages>
 				</surpriseAttack>
+				<chanceFactor>0.3</chanceFactor>
 			</li>
 			<li>
 				<capacities>
 				<li>Bite</li>
 				</capacities>
-				<power>23.6</power>
-				<cooldownTime>2.6</cooldownTime>
+				<power>25</power>
+				<cooldownTime>2.5</cooldownTime>
 				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
-				<chanceFactor>0.5</chanceFactor>
 				<surpriseAttack>
 				<extraMeleeDamages>
 				<li>
@@ -224,13 +230,14 @@
 				</li>
 				</extraMeleeDamages>
 				</surpriseAttack>
+				<chanceFactor>0.5</chanceFactor>
 			</li>
 			<li>
 				<label>head</label>
 				<capacities>
 				<li>Blunt</li>
 				</capacities>
-				<power>11</power>
+				<power>15</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
@@ -281,12 +288,14 @@
 		<defName>BigTiberiumFiend</defName>
 		<label>tiberian bear</label>
 		<race>BigTiberiumFiend</race>
-		<combatPower>200</combatPower>
+		<combatPower>150</combatPower>
 		<lifeStages>
 			<li>
+				<label>Fiend puppy</label>
+				<labelPlural>Fiend puppies</labelPlural>
 				<bodyGraphicData>
 					<texPath>Pawns/WildLife/BigFiend/BigTiberiumFiend</texPath>
-					<drawSize>2</drawSize>
+					<drawSize>1.5</drawSize>
 					<shadowData>
 						<volume>(0.4, 0.3, 0.3)</volume>
 						<offset>(0,0,-0.2)</offset>
@@ -294,13 +303,13 @@
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Bear/Dessicated_Bear</texPath>
-					<drawSize>2</drawSize>
+					<drawSize>1.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawns/WildLife/BigFiend/BigTiberiumFiend</texPath>
-					<drawSize>2.75</drawSize>
+					<drawSize>2</drawSize>
 					<shadowData>
 						<volume>(0.6, 0.45, 0.45)</volume>
 						<offset>(0,0,-0.25)</offset>
@@ -308,13 +317,13 @@
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Bear/Dessicated_Bear</texPath>
-					<drawSize>2.75</drawSize>
+					<drawSize>2</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawns/WildLife/BigFiend/BigTiberiumFiend</texPath>
-					<drawSize>3.5</drawSize>
+					<drawSize>3</drawSize>
 					<shadowData>
 						<volume>(0.8, 0.6, 0.6)</volume>
 						<offset>(0,0,-0.3)</offset>
@@ -322,7 +331,7 @@
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Bear/Dessicated_Bear</texPath>
-					<drawSize>3.5</drawSize>
+					<drawSize>3</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
@@ -333,12 +342,15 @@
 	<ThingDef ParentName="AnimalBase_TR">
 		<defName>Tiffalo</defName>
 		<label>tiffalo</label>
-		<description>A large herding herbivore descended from buffalo and adapted for both cold and warm environments. While enraged muffalo are deadly, tamed muffalo are quite docile and can be used as pack animals.\n\nNobody is quite sure why they're blue - it might even be some early genetic modification test that just never got changed.</description>
+		<description>These creatures have lost all their fluffiness to a crystaline structure, they also seem less friendly.</description>
 		<statBases>
-			<MoveSpeed>4.5</MoveSpeed>
-			<MarketValue>300</MarketValue>
-			<ComfyTemperatureMin>-55</ComfyTemperatureMin>
+			<MoveSpeed>4</MoveSpeed>
+			<MarketValue>700</MarketValue>
+			<ComfyTemperatureMin>-75</ComfyTemperatureMin>
 			<ComfyTemperatureMax>45</ComfyTemperatureMax>
+			<Mass>200</Mass>
+			<MeatAmount>50</MeatAmount>
+			<PainShockThreshold>1</PainShockThreshold>
 		</statBases>
 		<tools>
 			<li>
@@ -346,8 +358,8 @@
 				<capacities>
 				<li>Blunt</li>
 				</capacities>
-				<power>13</power>
-				<cooldownTime>2.6</cooldownTime>
+				<power>15</power>
+				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
 			</li>
@@ -358,7 +370,7 @@
 				<li>Poke</li>
 				</capacities>
 				<power>10</power>
-				<cooldownTime>2</cooldownTime>
+				<cooldownTime>1.65</cooldownTime>
 				<linkedBodyPartsGroup>FrontLeftLeg</linkedBodyPartsGroup>
 			</li>
 			<li>
@@ -368,42 +380,27 @@
 					<li>Poke</li>
 				</capacities>
 				<power>10</power>
-				<cooldownTime>2</cooldownTime>
+				<cooldownTime>1.65</cooldownTime>
 				<linkedBodyPartsGroup>FrontRightLeg</linkedBodyPartsGroup>
-			</li>
-			<li>
-				<capacities>
-					<li>Bite</li>
-				</capacities>
-				<power>10</power>
-				<cooldownTime>2</cooldownTime>
-				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
-				<chanceFactor>0.5</chanceFactor>
 			</li>
 		</tools>
 		<comps>
 			<li Class="CompProperties_Milkable">
 				<milkDef>Milk</milkDef>
 				<milkIntervalDays>2</milkIntervalDays>
-				<milkAmount>12</milkAmount>
-			</li>
-			<li Class="CompProperties_Shearable">
-				<woolDef>WoolMuffalo</woolDef>
-				<shearIntervalDays>25</shearIntervalDays>
-				<woolAmount>100</woolAmount>
+				<milkAmount>10</milkAmount>
 			</li>
 		</comps>
 		<race>
 			<herdAnimal>true</herdAnimal>
 			<packAnimal>true</packAnimal>
-			<predator>false</predator>
+			<predator>true</predator>
 			<body>QuadrupedAnimalWithHooves</body>
 			<baseBodySize>2.1</baseBodySize>
-			<baseHealthScale>1.75</baseHealthScale>
-			<baseHungerRate>0.85</baseHungerRate>
-			<foodType>VegetarianRoughAnimal</foodType>
-			<leatherDef>Leather_BlackTib</leatherDef>
+			<baseHealthScale>2</baseHealthScale>
+			<baseHungerRate>0.6</baseHungerRate>
 			<gestationPeriodDays>28</gestationPeriodDays>
+			<foodType>OmnivoreAnimal, VegetarianRoughAnimal</foodType>
 			<wildness>0.6</wildness>
 			<trainability>Simple</trainability>
 			<lifeExpectancy>21</lifeExpectancy>

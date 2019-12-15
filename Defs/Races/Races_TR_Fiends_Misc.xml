@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef ParentName="AnimalBase_TR">
+	<ThingDef ParentName="VisceralPawnBase">
 		<defName>TibScarab</defName>
 		<label>tiberium scarab</label>
-		<description>A large, genetically-engineered beetle. Once the worker caste of an artifical ecosystem of insectoids designed to fight mechanoid invasions, it is now often seen without its deadlier insectoid cousins. Still, its size and hard shell make it dangerous when it attacks. A eusocial creature, it cannot reproduce individually.</description>
+		<description>A large, genetically-engineered beetle that has come in contact with Tiberium.</description>
 		<statBases>
-			<MoveSpeed>3.75</MoveSpeed>
-			<ArmorRating_Blunt>0.18</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.72</ArmorRating_Sharp>
-			<ComfyTemperatureMin>0</ComfyTemperatureMin>
-			<MarketValue>100</MarketValue>
+			<MoveSpeed>5</MoveSpeed>
+			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.6</ArmorRating_Sharp>
+			<ComfyTemperatureMin>-25</ComfyTemperatureMin>
+			<MarketValue>235</MarketValue>
 			<LeatherAmount>0</LeatherAmount>
+			<Mass>25</Mass>
 		</statBases>
 		<tools>
 			<li>
@@ -19,8 +20,8 @@
 				<capacities>
 					<li>Bite</li>
 				</capacities>
-				<power>5</power>
-				<cooldownTime>2</cooldownTime>
+				<power>7</power>
+				<cooldownTime>1.85</cooldownTime>
 				<linkedBodyPartsGroup>Mouth</linkedBodyPartsGroup>
 			</li>
 			<li>
@@ -32,17 +33,16 @@
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-				<chanceFactor>0.1</chanceFactor>
 			</li>
 		</tools>
 		<race>
 			<body>BeetleLike</body>
 			<baseBodySize>0.2</baseBodySize>
 			<baseHungerRate>0.10</baseHungerRate>
-			<baseHealthScale>0.4</baseHealthScale>
+			<baseHealthScale>0.5</baseHealthScale>
 			<useMeatFrom>Megaspider</useMeatFrom>
 			<wildness>0.95</wildness>
-			<lifeExpectancy>10</lifeExpectancy>
+			<lifeExpectancy>18</lifeExpectancy>
 			<lifeStageAges>
 				<li>
 					<def>EusocialInsectLarva</def>
@@ -73,32 +73,31 @@
 		<race>TibScarab</race>
 		<combatPower>40</combatPower>
 		<canArriveManhunter>false</canArriveManhunter>
-		<ecoSystemWeight>0.15</ecoSystemWeight>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawns/WildLife/Tibscarab/TibScarab</texPath>
-					<drawSize>1.25</drawSize>
+					<drawSize>0.75</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Megascarab/Dessicated_Megascarab</texPath>
-					<drawSize>1.25</drawSize>
+					<drawSize>0.75</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Tibscarab/TibScarab</texPath>
+					<drawSize>1</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Megascarab/Dessicated_Megascarab</texPath>
+					<drawSize>1</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawns/WildLife/Tibscarab/TibScarab</texPath>
 					<drawSize>1.5</drawSize>
-				</bodyGraphicData>
-				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Megascarab/Dessicated_Megascarab</texPath>
-					<drawSize>1.5</drawSize>
-				</dessicatedBodyGraphicData>
-			</li>
-			<li>
-				<bodyGraphicData>
-					<texPath>Pawns/WildLife/Tibscarab/TibScarab</texPath>
-					<drawSize>1.75</drawSize>
 					<shadowData>
 						<volume>(0.2, 0.3, 0.2)</volume>
 						<offset>(0,0,0)</offset>
@@ -106,7 +105,7 @@
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Megascarab/Dessicated_Megascarab</texPath>
-					<drawSize>1.75</drawSize>
+					<drawSize>1.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
@@ -115,12 +114,15 @@
 	<ThingDef ParentName="AnimalBase_TR">
 		<defName>Crawler</defName>
 		<label>crawler</label>
-		<description>A large predatory snake. Cobras can be highly aggressive if provoked, and their bite injects toxic venom into the victim.</description>
+		<description>A huge snake. This one seems to be infected with Tiberium.</description>
 		<statBases>
-			<MoveSpeed>3.5</MoveSpeed>
-			<MarketValue>150</MarketValue>
-			<ComfyTemperatureMin>0</ComfyTemperatureMin>
+			<MoveSpeed>4.85</MoveSpeed>
+			<MarketValue>1200</MarketValue>
+			<ComfyTemperatureMin>-5</ComfyTemperatureMin>
 			<ComfyTemperatureMax>60</ComfyTemperatureMax>
+			<Mass>100</Mass>
+			<MeatAmount>50</MeatAmount>
+			<PainShockThreshold>1</PainShockThreshold>
 		</statBases>
 		<tools>
 			<li>
@@ -128,14 +130,14 @@
 				<capacities>
 					<li>ToxicBite</li>
 				</capacities>
-				<power>12</power>
-				<cooldownTime>2</cooldownTime>
+				<power>25</power>
+				<cooldownTime>4</cooldownTime>
 				<linkedBodyPartsGroup>Mouth</linkedBodyPartsGroup>
 				<surpriseAttack>
 					<extraMeleeDamages>
 						<li>
 							<def>Stun</def>
-							<amount>14</amount>
+							<amount>100</amount>
 						</li>
 					</extraMeleeDamages>
 				</surpriseAttack>
@@ -145,18 +147,17 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>3</power>
+				<power>10</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-				<chanceFactor>0.2</chanceFactor>
 			</li>
 		</tools>
 		<comps>
 			<li Class="CompProperties_EggLayer">
 				<eggFertilizedDef>EggCobraFertilized</eggFertilizedDef>
 				<eggFertilizationCountMax>1</eggFertilizationCountMax>
-				<eggLayIntervalDays>20.0</eggLayIntervalDays>
+				<eggLayIntervalDays>7.5</eggLayIntervalDays>
 				<eggProgressUnfertilizedMax>0.5</eggProgressUnfertilizedMax>
 				<eggCountRange>
 				<min>1</min>
@@ -167,17 +168,14 @@
 		<race>
 			<body>Snake</body>
 			<predator>true</predator>
-			<maxPreyBodySize>0.35</maxPreyBodySize>
-			<baseBodySize>0.25</baseBodySize>
-			<baseHungerRate>0.07</baseHungerRate>
-			<baseHealthScale>0.5</baseHealthScale>
-			<foodType>CarnivoreAnimal, OvivoreAnimal</foodType>
-			<leatherDef>Leather_BlackTib</leatherDef>
-			<meatLabel>cobraflesh</meatLabel>
-			<wildness>0.75</wildness>
-			<petness>0.05</petness>
-			<manhunterOnTameFailChance>0.10</manhunterOnTameFailChance>
-			<manhunterOnDamageChance>0.10</manhunterOnDamageChance>
+			<maxPreyBodySize>1.5</maxPreyBodySize>
+			<baseBodySize>1</baseBodySize>
+			<baseHungerRate>0.25</baseHungerRate>
+			<baseHealthScale>2</baseHealthScale>
+			<foodType>CarnivoreAnimalStrict</foodType>
+			<wildness>0.9</wildness>
+			<manhunterOnTameFailChance>1</manhunterOnTameFailChance>
+			<manhunterOnDamageChance>1</manhunterOnDamageChance>
 			<nameOnTameChance>1</nameOnTameChance>
 			<lifeExpectancy>20</lifeExpectancy>
 			<lifeStageAges>
@@ -208,16 +206,26 @@
 		<defName>Crawler</defName>
 		<label>crawler</label>
 		<race>Crawler</race>
-		<combatPower>65</combatPower>
+		<combatPower>120</combatPower>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
 				<texPath>Pawns/WildLife/Crawler/Crawler</texPath>
-				<drawSize>1.25</drawSize>
+				<drawSize>1</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 				<texPath>Things/Pawn/Animal/Cobra/Dessicated_Cobra</texPath>
-				<drawSize>1.25</drawSize>
+				<drawSize>1</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+				<texPath>Pawns/WildLife/Crawler/Crawler</texPath>
+				<drawSize>1.5</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+				<texPath>Things/Pawn/Animal/Cobra/Dessicated_Cobra</texPath>
+				<drawSize>1.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
@@ -228,29 +236,21 @@
 				<dessicatedBodyGraphicData>
 				<texPath>Things/Pawn/Animal/Cobra/Dessicated_Cobra</texPath>
 				<drawSize>2</drawSize>
-				</dessicatedBodyGraphicData>
-			</li>
-			<li>
-				<bodyGraphicData>
-				<texPath>Pawns/WildLife/Crawler/Crawler</texPath>
-				<drawSize>3</drawSize>
-				</bodyGraphicData>
-				<dessicatedBodyGraphicData>
-				<texPath>Things/Pawn/Animal/Cobra/Dessicated_Cobra</texPath>
-				<drawSize>3</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
 	</PawnKindDef>
   
-	<ThingDef ParentName="AnimalBase_TR">
+	<ThingDef ParentName="VisceralPawnBase">
 		<defName>BoomFiend</defName>
 		<label>tiberian bloater</label>
-		<description>Either by deliberate genetic weaponization, or as an unusual defense mechanism, these rodent-like creatures create a powerful fire-starting explosion when killed.</description>
+		<description>EWhen boomrats come into contact with Tiberium, beware of these creatures.</description>
 		<statBases>
-			<MoveSpeed>4.6</MoveSpeed>
-			<MarketValue>100</MarketValue>
-			<ComfyTemperatureMin>-15</ComfyTemperatureMin>
+			<MoveSpeed>6</MoveSpeed>
+			<MarketValue>230</MarketValue>
+			<ComfyTemperatureMin>-40</ComfyTemperatureMin>
+			<Mass>50</Mass>
+			<MeatAmount>25</MeatAmount>
 		</statBases>
 		<tools>
 			<li>
@@ -258,8 +258,8 @@
 				<capacities>
 					<li>Scratch</li>
 				</capacities>
-				<power>5.4</power>
-				<cooldownTime>1.5</cooldownTime>
+				<power>3</power>
+				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
 			</li>
 			<li>
@@ -267,15 +267,15 @@
 				<capacities>
 					<li>Scratch</li>
 				</capacities>
-				<power>5.4</power>
-				<cooldownTime>1.5</cooldownTime>
+				<power>3</power>
+				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
 			</li>
 			<li>
 				<capacities>
 					<li>Bite</li>
 				</capacities>
-				<power>4.9</power>
+				<power>4</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
 				<chanceFactor>0.7</chanceFactor>
@@ -294,15 +294,13 @@
 		</tools>
 		<race>
 			<body>QuadrupedAnimalWithPaws</body>
-			<deathActionWorkerClass>DeathActionWorker_SmallExplosion</deathActionWorkerClass>
+			<deathActionWorkerClass>DeathActionWorker_BigExplosion</deathActionWorkerClass>
 			<baseBodySize>0.2</baseBodySize>
 			<baseHungerRate>0.35</baseHungerRate>
-			<baseHealthScale>0.4</baseHealthScale>
-			<foodType>OmnivoreRoughAnimal</foodType>
-			<leatherDef>Leather_BlackTib</leatherDef>
+			<baseHealthScale>0.75</baseHealthScale>
+			<foodType>OmnivoreRoughAnimal, AnimalProduct</foodType>
 			<executionRange>4</executionRange>
 			<wildness>0.75</wildness>
-			<petness>0.20</petness>
 			<mateMtbHours>8</mateMtbHours>
 			<nuzzleMtbHours>120</nuzzleMtbHours>
 			<canBePredatorPrey>false</canBePredatorPrey>
@@ -311,8 +309,8 @@
 				<points>
 					<li>(0.5, 0)</li>
 					<li>(1, 1)</li>
-					<li>(2.5, 1)</li>
-					<li>(3, 0)</li>
+					<li>(5, 1)</li>
+					<li>(5.5, 0)</li>
 				</points>
 			</litterSizeCurve>
 			<lifeExpectancy>8</lifeExpectancy>
@@ -349,12 +347,12 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Things/Pawn/Animal/Boomrat/Boomrat</texPath>
-					<drawSize>0.80</drawSize>
+					<drawSize>0.75</drawSize>
 					<shaderType>CutoutComplex</shaderType>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Boomrat/Dessicated_Boomrat</texPath>
-					<drawSize>0.8</drawSize>
+					<drawSize>0.75</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
@@ -371,7 +369,7 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Things/Pawn/Animal/Boomrat/Boomrat</texPath>
-					<drawSize>1.15</drawSize>
+					<drawSize>1.25</drawSize>
 					<shaderType>CutoutComplex</shaderType>
 					<shadowData>
 						<volume>(0.25, 0.3, 0.25)</volume>
@@ -380,7 +378,7 @@
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Boomrat/Dessicated_Boomrat</texPath>
-					<drawSize>1.15</drawSize>
+					<drawSize>1.25</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>

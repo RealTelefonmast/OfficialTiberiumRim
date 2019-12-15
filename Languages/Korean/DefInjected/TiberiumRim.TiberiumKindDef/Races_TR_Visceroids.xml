@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Visceral Horror | HumanLike -->
+
+  <VisceralHorror_Human.label>변이한 인간</VisceralHorror_Human.label>
+
+
+  <!-- Visceral Horror | AnimalLike -->
+
+  <VisceralHorror_Animal.label>변이한 동물</VisceralHorror_Animal.label>
+
+
+  <!-- Visceral Beast -->
+
+  <VisceralBeast.label>변이한 야수</VisceralBeast.label>
+
+
+  <!-- Visceroid -->
+
+  <Visceroid.label>변이체</Visceroid.label>
+
+
+  <!-- Veinmonster -->
+
+  <Veinmonster.label>덩굴귀</Veinmonster.label>
+
+
+  <!-- Vein Rock -->
+
+  <VeinChunk.label>침식된 덩어리</VeinChunk.label>
+
+
+</LanguageData>

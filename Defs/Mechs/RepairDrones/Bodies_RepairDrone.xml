@@ -18,14 +18,14 @@
 							<def>DroneWelder</def>
 							<coverage>0.045</coverage>
 							<groups>
-								<li>LeftHand</li>
+								<li>LeftArm</li>
 							</groups>
 						</li>
 						<li>
 							<def>DroneCutter</def>
 							<coverage>0.045</coverage>
 							<groups>
-								<li>RightHand</li>
+								<li>RightArm</li>
 							</groups>
 						</li>
 					</parts>
@@ -34,25 +34,14 @@
 					<def>DroneCircuit</def>
 					<coverage>0.20</coverage>
 					<height>Top</height>
-					<groups>
-						<li>HeadAttackTool</li>
-					</groups>
 					<parts>
 						<li>
-							<def>ArtificialBrain</def>
+							<def>DroneBrain</def>
 							<coverage>0.06</coverage>
 							<depth>Inside</depth>
 						</li>
 						<li>
-							<def>SightSensor</def>
-							<coverage>0.02</coverage>
-						</li>
-						<li>
-							<def>HearingSensor</def>
-							<coverage>0.02</coverage>
-						</li>
-						<li>
-							<def>SmellSensor</def>
+							<def>DroneEye</def>
 							<coverage>0.02</coverage>
 						</li>
 					</parts>					

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TRRailgun.label>레일건 탄환</TRRailgun.label>
+  <TRRailgun.deathMessage>{0}(이)가 관통당해 죽었습니다.</TRRailgun.deathMessage>
+
+  <TRLaser.label>레이저 빔</TRLaser.label>
+  <TRLaser.deathMessage>{0}(이)가 고열에 융해되어 죽었습니다.</TRLaser.deathMessage>
+
+  <TRScrin.label>광선 절단</TRScrin.label>
+  <TRScrin.deathMessage>{0}(이)가 광선에 절단되어 죽었습니다.</TRScrin.deathMessage>
+
+  <TRSound.label>음파</TRSound.label>
+  <TRSound.deathMessage>{0}(이)가 음파 공명에 휘말려 죽었습니다.</TRSound.deathMessage>
+
+  <TRTiberiumBomb.label>타이베리움 폭발</TRTiberiumBomb.label>
+  <TRTiberiumBomb.deathMessage>{0}(이)가 타이베리움 연쇄작용에 휘말려 죽었습니다.</TRTiberiumBomb.deathMessage>
+
+  <TRTiberiumshotGreen.label>타이베리움 가스</TRTiberiumshotGreen.label>
+  <TRTiberiumshotGreen.deathMessage>{0}(이)가 타이베리움 가스에 질식해 죽었습니다.</TRTiberiumshotGreen.deathMessage>
+
+  <TRTiberiumShotBlue.label>타이베리움 가스</TRTiberiumShotBlue.label>
+  <TRTiberiumShotBlue.deathMessage>{0}(이)가 타이베리움 가스에 질식해 죽었습니다.</TRTiberiumShotBlue.deathMessage>
+
+  <TRNuke.label>핵</TRNuke.label>
+  <TRNuke.deathMessage>{0}(이)가 핵폭발에 휘말려 죽었습니다.</TRNuke.deathMessage>
+
+  <TRNukePost.label>핵</TRNukePost.label>
+  <TRNukePost.deathMessage>{0}(이)가 핵폭발에 휘말려 죽었습니다.</TRNukePost.deathMessage>
+
+  <TRShock.label>쇼크</TRShock.label>
+  <TRShock.deathMessage>{0}(이)가 전기 충격에 의해 죽었습니다.</TRShock.deathMessage>
+
+  <TRSiege.label>지진파</TRSiege.label>
+  <TRSiege.deathMessage>{0}(이)가 격렬한 진동에 휘말려 죽었습니다.</TRSiege.deathMessage>
+
+
+</LanguageData>

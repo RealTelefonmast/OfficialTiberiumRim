@@ -170,19 +170,23 @@
 		</weaponTags>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<verbClass>TiberiumRim.Verb_BurstToTarget</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Emitter</defaultProjectile>
 				<requireLineOfSight>true</requireLineOfSight>
-				<warmupTime>0</warmupTime>
-				<minRange>2.49</minRange>
-				<range>40</range>
-				<forcedMissRadius>0.5</forcedMissRadius>
+				<warmupTime>2.25</warmupTime>
+				<range>39.9</range>
+				<minRange>2.9</minRange>
 				<burstShotCount>1</burstShotCount>
+				<forcedMissRadius>1</forcedMissRadius>
 				<soundCast>Shot_GDI_Sonic</soundCast>
-				<soundCastTail>GunTail_Heavy</soundCastTail>
-				<muzzleFlashScale>0</muzzleFlashScale>
+				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<muzzleFlashScale>15</muzzleFlashScale>
 				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
 				<consumeFuelPerShot>1</consumeFuelPerShot>
 			</li>
 		</verbs>

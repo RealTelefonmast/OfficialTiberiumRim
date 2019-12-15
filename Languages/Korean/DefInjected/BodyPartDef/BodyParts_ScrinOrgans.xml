@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Scrin_Brain.label>뇌회로</Scrin_Brain.label>
+  <Scrin_Eye.label>시각회로</Scrin_Eye.label>
+  <Scrin_SonsorArray.label>감각회로</Scrin_SonsorArray.label>
+  <Scrin_AtmosphericFilter.label>공기여과기</Scrin_AtmosphericFilter.label>
+
+
+</LanguageData>

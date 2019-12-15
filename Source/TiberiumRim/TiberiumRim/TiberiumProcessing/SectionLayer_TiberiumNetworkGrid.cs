@@ -17,20 +17,17 @@ namespace TiberiumRim
 
         public override void DrawLayer()
         {
-            Designator_PlaceThing designatorPipe = (Find.DesignatorManager.SelectedDesignator as Designator_PlaceThing);
-            if(designatorPipe != null)
+            if(Find.DesignatorManager.SelectedDesignator is Designator_PlaceThing designatorPipe)
             {
                 base.DrawLayer();
                 return;
             }
-            Designator_Build designator = (Find.DesignatorManager.SelectedDesignator as Designator_Build);
-            if (designator != null && ((designator.PlacingDef as ThingDef)?.comps.Any(c => c is CompProperties_TNW) ?? false))
+            if (Find.DesignatorManager.SelectedDesignator is Designator_Build designator && ((designator.PlacingDef as ThingDef)?.comps.Any(c => c is CompProperties_TNW) ?? false))
             {
                 base.DrawLayer();
                 return;
             }
-            Designator_RemoveTiberiumPipe designator2 = (Find.DesignatorManager.SelectedDesignator as Designator_RemoveTiberiumPipe);
-            if (designator2 != null)
+            if (Find.DesignatorManager.SelectedDesignator is Designator_RemoveTiberiumPipe designator2)
             {
                 base.DrawLayer();
             }
@@ -39,10 +36,7 @@ namespace TiberiumRim
         protected override void TakePrintFrom(Thing t)
         {
             var comp = t.TryGetComp<CompTNW>();
-            if (comp != null)
-            {
-                comp.PrintForGrid(this);
-            }
+            comp?.PrintForGrid(this);
         }
     }
 }

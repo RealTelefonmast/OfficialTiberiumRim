@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TODO: Can be replaced by gamestart dialgue class -->
+
+  <ScrinStart.label>스크린 침공</ScrinStart.label>
+  <ScrinStart.description>임무는 간단합니다. 행성의 모든 토착 생명체를 없애고 타이베리움을 수확하십시오. 감독관.</ScrinStart.description>
+  <ScrinStart.scenario.name>스크린 침공</ScrinStart.scenario.name>
+  <ScrinStart.scenario.summary>행성을 통째로 수확하기 위한 준비 작업입니다.</ScrinStart.scenario.summary>
+  <ScrinStart.scenario.description>임무는 간단합니다. 행성의 모든 토착 생명체를 없애고 타이베리움을 수확하십시오. 감독관.</ScrinStart.scenario.description>
+
+  <!--[Core]<LostTribe.label>길 잃은 부족</LostTribe.label>-->
+  <!--[Core]<LostTribe.description>신들께서 보내신 거대한 피의 기계들이 당신의 부족을 파괴했고, 다섯 명의 당신 일행만 도망칠 수 있었습니다. 이제 새로운 보금자리를 마련할 시간입니다.\n\n주의: 가난하게 시작하고 연구 속도가 매우 느리기 때문에 어렵습니다.</LostTribe.description>-->
+  <!--[Core]<LostTribe.scenario.name>길 잃은 부족</LostTribe.scenario.name>-->
+  <!--[Core]<LostTribe.scenario.summary>다섯 부족원이 재건을 꿈꿉니다. 고난이도 시나리오입니다.</LostTribe.scenario.summary>-->
+  <!--[Core]<LostTribe.scenario.description>신들께서 보내신 거대한 피의 기계들이 당신의 부족을 파괴했고, 다섯 명의 당신 일행만 도망칠 수 있었습니다. 이제 새로운 보금자리를 마련할 시간입니다.\n\n주의: 가난하게 시작하고 연구 속도가 매우 느리기 때문에 어렵습니다.</LostTribe.scenario.description>-->
+  <!--[Core]<LostTribe.scenario.parts.14.text>The gods were very angry. The blood machines came at night. They swept through your village, cutting and burning your people with their blades and devil-fire.\n\nOnly a few of you escaped. Now, after a harrowing journey on foot, with no close friends to turn to, you must build a new home in the wilderness, like your ancestors did.</LostTribe.scenario.parts.14.text>-->
+
+  <!--[Core]<TheRichExplorer.label>부유한 탐험가</TheRichExplorer.label>-->
+  <!--[Core]<TheRichExplorer.description>사람들은 당신의 모험을 미친 짓이라고 말합니다. 편안한 번화계 행성을 떠나는 일을요. 그러나 당신은 언제나 신경시뮬레이터 밖의 진짜 별들 사이를 여행하고 싶었습니다. 이제 동면에서 깨어나 긴 여행을 끝마치고, 어딘지 모를 이 변방계가 어떤 곳인지 알아볼 시간입니다.\n\n주의: 시작 캐릭터의 일부 기술이 부족할 수 있어 초반에 매우 어려울 수 있습니다.</TheRichExplorer.description>-->
+  <!--[Core]<TheRichExplorer.scenario.name>부유한 탐험가</TheRichExplorer.scenario.name>-->
+  <!--[Core]<TheRichExplorer.scenario.summary>우주를 경험하러 나선 한 명의 부유한 탐험가입니다.</TheRichExplorer.scenario.summary>-->
+  <!--[Core]<TheRichExplorer.scenario.description>사람들은 당신의 모험을 미친 짓이라고 말합니다. 편안한 번화계 행성을 떠나는 일을요. 그러나 당신은 언제나 신경시뮬레이터 밖의 진짜 별들 사이를 여행하고 싶었습니다. 이제 동면에서 깨어나 긴 여행을 끝마치고, 어딘지 모를 이 변방계가 어떤 곳인지 알아볼 시간입니다.\n\n주의: 시작 캐릭터의 일부 기술이 부족할 수 있어 초반에 매우 어려울 수 있습니다.</TheRichExplorer.scenario.description>-->
+  <!--[Core]<TheRichExplorer.scenario.parts.12.text>The neurosimulations, holo-games, and free-orgies were never enough for you. You wanted more - the grit and consequence of real life, like they talk about in the history books. You wanted to know what real challenge and consequence feel like.\n\nNow, after a journey of decades in cryptosleep, you're landing on this unknown rimworld. Real consequences await you.</TheRichExplorer.scenario.parts.12.text>-->
+
+  <!--[Core]<NakedBrutality.label>알몸으로 내던져짐</NakedBrutality.label>-->
+  <!--[Core]<NakedBrutality.description>당신은 사소한 시술을 받기 위해 마취된 상태였습니다. 하지만 이제는 변방 행성에 충돌하는 탈출 포드 안에 있습니다. 당신은 벌거벗었고, 전혀 살아남을 준비가 되어있지 않습니다. 살아남을 수 있겠습니까?\n\n주의: 이것은 매우 어려운 시나리오입니다.</NakedBrutality.description>-->
+  <!--[Core]<NakedBrutality.scenario.name>알몸으로 내던져짐</NakedBrutality.scenario.name>-->
+  <!--[Core]<NakedBrutality.scenario.summary>당신은 무방비상태에서 알몸으로 내던져졌습니다.</NakedBrutality.scenario.summary>-->
+  <!--[Core]<NakedBrutality.scenario.description>당신은 사소한 시술을 받기 위해 마취된 상태였습니다. 하지만 이제는 변방 행성에 충돌하는 탈출 포드 안에 있습니다. 당신은 벌거벗었고, 전혀 살아남을 준비가 되어있지 않습니다. 살아남을 수 있겠습니까?\n\n주의: 이것은 매우 어려운 시나리오입니다.</NakedBrutality.scenario.description>-->
+  <!--[Core]<NakedBrutality.scenario.parts.3.text>It was supposed to be a minor surgery. Just an hour under anesthetic. You felt totally safe.\n\nNow you've awoken inside a drop pod punching through the atmosphere of a distant rim world.\n\nAside from a slick of mysterious goo all over your body, you are totally naked. With no preparation, no supplies, and no tools, can you survive?</NakedBrutality.scenario.parts.3.text>-->
+
+
+</LanguageData>

@@ -20,19 +20,88 @@
 		<canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
 	</DamageDef>
 	
-	<DamageDef>
+	<DamageDef ParentName="TiberiumDamage">
 		<defName>TiberiumGas</defName>
 		<label>tiberium gas</label>
-		<externalViolence>false</externalViolence>
-		<hasForcefulImpact>false</hasForcefulImpact>
-		<makesBlood>false</makesBlood>
+		<deathMessage>{0} inhaled Tiberium gas.</deathMessage>
+	</DamageDef>
+	
+	
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRTiberiumBomb</defName>
+		<label>tiberium bomb</label>
+		<externalViolence>true</externalViolence>
+		<isExplosive>true</isExplosive>
+		<deathMessage>{0} has died in the tiberium gas.</deathMessage>
+		<workerClass>DamageWorker_Flame</workerClass>
+		<hediff>Burn</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+		<minDamageToFragment>1</minDamageToFragment>
+		<defaultDamage>10</defaultDamage>
+		<defaultArmorPenetration>1.5</defaultArmorPenetration>
+		<defaultStoppingPower>2.0</defaultStoppingPower>
+		<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+		<explosionCellMote>Mote_Nuke</explosionCellMote>
+		<explosionColorCenter>(0.25, 1, 0.25)</explosionColorCenter>
+		<explosionColorEdge>(0.1, 0.5, 0.1)</explosionColorEdge>
+		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
+		<combatLogRules>Damage_Bomb</combatLogRules>
+		<soundExplosion>Nod_ChemBomb</soundExplosion>
 		<makesAnimalsFlee>true</makesAnimalsFlee>
-		<canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
-		<deathMessage></deathMessage>
-		<defaultStoppingPower>1</defaultStoppingPower>
-		<defaultDamage>3</defaultDamage>
-		<defaultArmorPenetration>0</defaultArmorPenetration>
-		<hediffSkin>TiberiumBurn</hediffSkin>
+	</DamageDef>
+
+	<DamageDef ParentName="TiberiumDamage_Impact">
+		<defName>TRTiberiumShotGreen</defName>
+		<label>tiberium shot</label>
+		<externalViolence>true</externalViolence>
+		<isExplosive>false</isExplosive>
+		<deathMessage>{0} has died in the tiberium gas.</deathMessage>
+		<workerClass>DamageWorker_Flame</workerClass>
+		<hediff>Burn</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+		<minDamageToFragment>1</minDamageToFragment>
+		<defaultDamage>5</defaultDamage>
+		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+		<explosionCellMote>Mote_TiberiumGas</explosionCellMote>
+		<explosionColorCenter>(0.1, 0.25, 0.1)</explosionColorCenter>
+		<explosionColorEdge>(0, 0.15, 0.05)</explosionColorEdge>
+		<combatLogRules>Damage_Bomb</combatLogRules>
+		<soundExplosion>Shot_Nod_ChemBomb</soundExplosion>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
+	</DamageDef>
+  
+	<DamageDef ParentName="TiberiumDamage_Impact">
+		<defName>TRTiberiumShotBlue</defName>
+		<label>blue tiberium shot</label>
+		<externalViolence>true</externalViolence>
+		<isExplosive>false</isExplosive>
+		<deathMessage>{0} has died in the tiberium gas.</deathMessage>
+		<workerClass>DamageWorker_Flame</workerClass>
+		<hediff>Burn</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+		<minDamageToFragment>1</minDamageToFragment>
+		<defaultDamage>5</defaultDamage>
+		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+		<explosionCellMote>Mote_TiberiumGas</explosionCellMote>
+		<explosionColorCenter>(0.1, 0.1, 0.5)</explosionColorCenter>
+		<explosionColorEdge>(0, 0.25, 0.25)</explosionColorEdge>
+		<combatLogRules>Damage_Bomb</combatLogRules>
+		<soundExplosion>Shot_Nod_ChemBomb</soundExplosion>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
 	</DamageDef>
 
 </Defs>

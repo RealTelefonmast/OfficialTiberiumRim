@@ -4,11 +4,11 @@
 	<ThingDef ParentName="RepairDroneBase">
 		<defName>RepairDrone_Common</defName>
 		<label>repair drone</label>	
-		<description>.</description>
+		<description>A simple repair drone, it will repair any damaged mech in reach as long as it has resources.</description>
 		<statBases>
-			<MoveSpeed>1.33</MoveSpeed>
-			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
+			<MoveSpeed>1.5</MoveSpeed>
+			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
 		</statBases>
 	</ThingDef>
 

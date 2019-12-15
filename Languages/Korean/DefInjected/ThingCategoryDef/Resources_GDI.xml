@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <!-- <ThingDef ParentName="ResourceBase">
+  <!--<ThingDef ParentName="ResourceBase">
 		<defName>JuggernautShell_Explosive</defName>
 		<label>Juggernaut shells (explosive)</label>
 		<description>A pack of shells to be fired by a Juggernaut Turret, these three shells will explode on contact.</description>
@@ -59,7 +59,7 @@
 		<thingCategories>
 			<li>JuggernautShells</li>
 		</thingCategories>		
-	</ThingDef> -->
+	</ThingDef>-->
 
   <JuggernautShells.label>저거넛 포탄</JuggernautShells.label>
 

@@ -20,13 +20,6 @@
 		<weaponTags>
 			<li>GDI_Gun</li>
 		</weaponTags>
-		<!--
-		<comps>
-		  <li>
-		    <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
-		  </li>
-		</comps>
-		-->
 	</ThingDef>	
 
 	<ThingDef ParentName="GDI_Gun">
@@ -55,7 +48,7 @@
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Bullet_GDIStandard</defaultProjectile>
+				<defaultProjectile>Bullet_GDIRifle</defaultProjectile>
 				<warmupTime>1</warmupTime>
 				<range>24.9</range>
 				<minRange>1.5</minRange>
@@ -227,6 +220,201 @@
 		<weaponTags>
 			<li>GDIRailgun</li>
 		</weaponTags>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef ParentName="GDI_Gun">
+		<defName>GDI_Shatterer</defName>
+		<label>GDI sonic shatterer</label>
+		<description>This gun uses GDI's sonic technology. Extremly unstable.</description>
+		<graphicData>
+			<texPath>Items/Weapons/GDI/GDI_Shatterer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>70000</WorkToMake>
+			<MarketValue>3750</MarketValue>
+			<Mass>10.0</Mass>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>0.75</AccuracyMedium>
+			<AccuracyLong>0.55</AccuracyLong>
+			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<GDI_ReinforcedPlate>25</GDI_ReinforcedPlate>
+			<ComponentIndustrial>10</ComponentIndustrial>
+			<GDI_SonicCore>1</GDI_SonicCore>
+			<TRBattleChip>2</TRBattleChip>
+		</costList>
+		<verbs>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_BurstToTarget</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Shatterer</defaultProjectile>
+				<requireLineOfSight>true</requireLineOfSight>
+				<warmupTime>2.25</warmupTime>
+				<range>25</range>
+				<minRange>1.9</minRange>
+				<burstShotCount>1</burstShotCount>
+				<forcedMissRadius>1</forcedMissRadius>
+				<soundCast>Shot_GDI_Sonic</soundCast>
+				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<muzzleFlashScale>15</muzzleFlashScale>
+				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+		<tools>
+		  <li>
+			<label>stock</label>
+			<capacities>
+			  <li>Blunt</li>
+			</capacities>
+			<power>7</power>
+			<cooldownTime>1.8</cooldownTime>
+		  </li>
+		  <li>
+			<label>barrel</label>
+			<capacities>
+			  <li>Blunt</li>
+			  <li>Poke</li>
+			</capacities>
+			<power>7.7</power>
+			<cooldownTime>1.9</cooldownTime>
+		  </li>
+		</tools>
+		<weaponTags>
+			<li>GDIShatterer</li>
+		</weaponTags>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef ParentName="GDI_Gun">
+		<defName>GDI_Mortar</defName>
+		<label>GDI mobile mortar</label>
+		<description>This is a expermintal weapon used by GDI for long distance fights.\n\nUpgradable to GDI shockweaver.</description>
+		<graphicData>
+			<texPath>Items/Weapons/GDI/MobileMortar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>50000</WorkToMake>
+			<MarketValue>5000</MarketValue>
+			<Mass>10.0</Mass>
+			<AccuracyTouch>0.3</AccuracyTouch>
+			<AccuracyShort>0.4</AccuracyShort>
+			<AccuracyMedium>0.5</AccuracyMedium>
+			<AccuracyLong>0.6</AccuracyLong>
+			<RangedWeapon_Cooldown>6</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<GDI_ReinforcedPlate>35</GDI_ReinforcedPlate>
+			<ComponentIndustrial>15</ComponentIndustrial>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_LaunchProjectile</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Mortar</defaultProjectile>
+				<warmupTime>5</warmupTime>
+				<requireLineOfSight>false</requireLineOfSight>
+				<range>49.9</range>
+				<minRange>25</minRange>
+				<forcedMissRadius>5</forcedMissRadius>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<soundCast>Mortar_LaunchA</soundCast>
+				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
+				<muzzleFlashScale>13</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				<ai_AvoidFriendlyFireRadius>5</ai_AvoidFriendlyFireRadius>
+			</li>
+		</verbs>
+		<weaponTags>
+			<li>GDIMobileMortar</li>
+		</weaponTags>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.15</MoveSpeed>
+		</equippedStatOffsets>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+	</ThingDef>
+
+	<ThingDef ParentName="GDI_Gun">
+		<defName>GDI_Shockweaver</defName>
+		<label>GDI shockweaver</label>
+		<description>This is a siege weapon that uses shockwave warheads. Only effective for structures.</description>
+		<graphicData>
+			<texPath>Items/Weapons/GDI/Shockweaver</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>20000</WorkToMake>
+			<MarketValue>5000</MarketValue>
+			<Mass>10.0</Mass>
+			<AccuracyTouch>0.3</AccuracyTouch>
+			<AccuracyShort>0.4</AccuracyShort>
+			<AccuracyMedium>0.5</AccuracyMedium>
+			<AccuracyLong>0.6</AccuracyLong>
+			<RangedWeapon_Cooldown>6</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<GDI_Mortar>1</GDI_Mortar>
+			<GDI_SonicCore>1</GDI_SonicCore>
+			<TRBattleChip>2</TRBattleChip>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_LaunchProjectile</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Mine</defaultProjectile>
+				<requireLineOfSight>false</requireLineOfSight>
+				<warmupTime>5</warmupTime>
+				<range>49.9</range>
+				<minRange>25</minRange>
+				<forcedMissRadius>5</forcedMissRadius>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<soundCast>Mortar_LaunchA</soundCast>
+				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
+				<muzzleFlashScale>13</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				<ai_AvoidFriendlyFireRadius>5</ai_AvoidFriendlyFireRadius>
+			</li>
+		</verbs>
+		<weaponTags>
+			<li>GDIMobileMortar</li>
+		</weaponTags>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.15</MoveSpeed>
+		</equippedStatOffsets>
 		<recipeMaker>
 			<skillRequirements>
 				<Crafting>10</Crafting>

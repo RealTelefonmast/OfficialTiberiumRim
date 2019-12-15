@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <ScrinDrone.label>스크린 작업 드론</ScrinDrone.label>
+  <ScrinDrone.description>"일한다."</ScrinDrone.description>
+  <!-- Flesh Type: Mechanoid -->
+  <ScrinDrone_Corpse.label>스크린 작업 드론 잔해</ScrinDrone_Corpse.label>
+  <ScrinDrone_Corpse.description>스크린 작업 드론 잔해</ScrinDrone_Corpse.description>
+
+
+</LanguageData>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <SonicFenceSegment.label>음파 가이드라인</SonicFenceSegment.label>
+  <SonicFenceSegment.description>함부로 지나다니면 안전사고의 원인이 됩니다.</SonicFenceSegment.description>
+
+  <SonicFenceWall.label>음파 격벽</SonicFenceWall.label>
+
+
+</LanguageData>

@@ -103,7 +103,7 @@
 	<TiberiumRim.TRThingDef ParentName="TurretBase_TR">
 		<defName>Nod_TurretHub</defName>
 		<label>turret hub</label>
-		<description>.</description>
+		<description>Allows you to construct multiple connected turrets.</description>
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Defense</TRCategory>
 		<thingClass>TiberiumRim.Building_TurretHub</thingClass>
@@ -427,7 +427,7 @@
 		<size>(1,1)</size>
 		<fillPercent>0.0</fillPercent>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<altitudeLayer>Floor</altitudeLayer>
+		<altitudeLayer>SmallWire</altitudeLayer>
 		<passability>Standable</passability>
 		<tickerType>Normal</tickerType>
 		<selectable>true</selectable>

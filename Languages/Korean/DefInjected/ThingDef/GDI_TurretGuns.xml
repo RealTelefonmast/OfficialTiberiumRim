@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Gun_Juggernaut.label>juggernaut gun</Gun_Juggernaut.label>
+  <Gun_Juggernaut.description>Advanced artillery. Lobs bombs over walls. Very inaccurate but long-ranged.</Gun_Juggernaut.description>
+
+  <Gun_WatchTower.label>watchtower gun</Gun_WatchTower.label>
+  <Gun_WatchTower.description>pew pew</Gun_WatchTower.description>
+
+  <Gun_Guardian.label>guardian cannon</Gun_Guardian.label>
+  <Gun_Guardian.description>pew pew</Gun_Guardian.description>
+
+  <Gun_SonicEmitter.label>sonic emitter gun</Gun_SonicEmitter.label>
+  <Gun_SonicEmitter.description>pew pew</Gun_SonicEmitter.description>
+
+
+</LanguageData>

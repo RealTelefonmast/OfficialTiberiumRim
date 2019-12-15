@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
+	<!-- Turrets -->
+	
 	<ThingDef ParentName="BaseHumanGun">
 		<defName>Gun_NodObelisk</defName>
 		<label>obelisk gun</label>
@@ -101,5 +102,7 @@
 			</li>
 		</verbs>
 	</ThingDef>
+	
+	
 
 </Defs>

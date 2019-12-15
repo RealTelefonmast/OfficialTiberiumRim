@@ -2,8 +2,7 @@
 <Defs>
 
 	<!-- Turrets -->
-	
-	<ThingDef ParentName="BaseBullet">
+	<ThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_Shredder</defName>
 		<label>shredder burst</label>
 		<graphicData>
@@ -19,6 +18,7 @@
 		</projectile>
 	</ThingDef>
 	
+	<!-- Pesonal -->
 	<ThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_NodStandard</defName>
 		<label>bullet</label>
@@ -32,6 +32,127 @@
 			<damageAmountBase>6</damageAmountBase>
 			<stoppingPower>0.25</stoppingPower>
 			<speed>65</speed>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Nod_TwinFlechetteGun</defName>
+		<label>tiberium flechette</label>
+		<graphicData>
+		<texPath>Items/Weapons/Projectile/Bullet_Nod_Tiberium</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>3</damageAmountBase>
+			<speed>35</speed>
+			<preExplosionSpawnThingDef>FilthTiberiumGreen</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.1</preExplosionSpawnChance>
+			<soundExplode>BulletImpact_Flesh</soundExplode>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Flamethrower</defName>
+		<label>flame</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/FlameSmall</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1.1</drawSize>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<ai_IsIncendiary>true</ai_IsIncendiary>
+			<damageDef>Flame</damageDef>
+			<damageAmountBase>3</damageAmountBase>
+			<!--<explosionRadius>0.025</explosionRadius>-->
+			<speed>15</speed>
+			<soundExplode>Shot_Nod_FlameTail</soundExplode>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_TiberiumGas</defName>
+		<label>tiberium gas cloud</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Gas</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>TiberiumGas</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<explosionRadius>0.045</explosionRadius>
+			<preExplosionSpawnThingDef>TiberiumGas</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.8</preExplosionSpawnChance>
+			<speed>15</speed>
+			<!--
+			<postExplosionSpawnThingDef>FilthTibLiquidGreen</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>0.45</postExplosionSpawnChance>
+			<soundExplode>Shot_Nod_FlameTail</soundExplode>
+			-->
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_NodRocket</defName>
+		<label>rocket</label>
+		<description>rocket</description>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Nod_Rocket</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>20</damageAmountBase>
+			<explosionRadius>2.5</explosionRadius>
+			<speed>30</speed>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Nod_Grenade</defName>
+		<label>grenade</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Nod_Grenade</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>35</damageAmountBase>
+			<explosionRadius>3</explosionRadius>
+			<explosionDelay>65</explosionDelay>
+			<speed>15</speed>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Sbomb</defName>
+		<label>Suicide bomb</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Nod_Sbomb</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>TRTiberiumBomb</damageDef>
+			<damageAmountBase>75</damageAmountBase>
+			<explosionRadius>6</explosionRadius>
+			<speed>25</speed>
+			<explosionDelay>150</explosionDelay>
+			<preExplosionSpawnThingDef>TiberiumGas</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>
+			<soundExplode>Shot_Nod_ChemBomb</soundExplode>
+			<explosionEffect>GiantExplosion</explosionEffect>
 		</projectile>
 	</ThingDef>
 

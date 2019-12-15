@@ -5,7 +5,7 @@
   <GDI_ReinforcedPlate.description>군사적으로 매우 각광받는 신소재입니다. 강철보다 훨씬 견고하지만, 제련하기 위해서는 GDI만의 고유 기술이 필요합니다.</GDI_ReinforcedPlate.description>
 
 
-  <!-- <ThingDef ParentName="ResourceBase">
+  <!--<ThingDef ParentName="ResourceBase">
 		<defName>GDI_SonicCore</defName>
 		<label>Sonic Energy Core (explosive)</label>
 		<description>Sonic technology is extremly experimental and needs special measures to be handled. This component serves as a core part in most sonic weaponry.</description>
@@ -92,7 +92,7 @@
 		<thingCategories>
 			<li>Manufactured</li>
 		</thingCategories>
-	</ThingDef> -->
+	</ThingDef>-->
 
   <TRBattleChip.label>전투 제어 회로</TRBattleChip.label>
   <TRBattleChip.description>첨단 장비 및 방어탑을 제어하기 위해 반드시 필요한 부품입니다. 노획하거나 상거래로 획득할 수 있습니다.</TRBattleChip.description>

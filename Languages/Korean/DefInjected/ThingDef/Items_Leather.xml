@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Leather_BlueTib.label>blue tiberian fur</Leather_BlueTib.label>
+  <Leather_BlueTib.description>Tanned, dried, scraped skin. A good traditional material for making clothes and bags.</Leather_BlueTib.description>
+  <Leather_BlueTib.stuffProps.stuffAdjective>blue tiberian fur</Leather_BlueTib.stuffProps.stuffAdjective>
+
+  <Leather_GreenTib.label>green tiberian fur</Leather_GreenTib.label>
+  <Leather_GreenTib.description>Tanned, dried, scraped skin. A good traditional material for making clothes and bags.</Leather_GreenTib.description>
+  <Leather_GreenTib.stuffProps.stuffAdjective>green tiberian fur</Leather_GreenTib.stuffProps.stuffAdjective>
+
+  <Leather_BlackTib.label>black tiberian leather</Leather_BlackTib.label>
+  <Leather_BlackTib.description>Tanned, dried, scraped skin. A good traditional material for making clothes and bags.</Leather_BlackTib.description>
+  <Leather_BlackTib.stuffProps.stuffAdjective>black tiberian leather</Leather_BlackTib.stuffProps.stuffAdjective>
+
+  <Leather_Visceral.label>visceral leather</Leather_Visceral.label>
+  <Leather_Visceral.description>Tanned, dried, scraped skin. A good traditional material for making clothes and bags.</Leather_Visceral.description>
+  <Leather_Visceral.stuffProps.stuffAdjective>visceral leather</Leather_Visceral.stuffProps.stuffAdjective>
+
+
+</LanguageData>
