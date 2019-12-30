@@ -22,6 +22,7 @@ namespace TiberiumRim
         public float reproduceDays = 1f;
         public float growDays = 1f;
         public bool dependsOnProducer = false;
+        public bool smoothSpread = false;
         public bool canBeInhibited = true;
         public bool infects = true;
         public bool radiates = true;

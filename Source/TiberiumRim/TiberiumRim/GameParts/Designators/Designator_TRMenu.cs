@@ -55,7 +55,7 @@ namespace TiberiumRim
                 Text.Font = GameFont.Small;
                 GUI.color = Color.white;
                 string reason = "";
-                IsActive(inactiveDef, out reason);
+                inactiveDef.IsActive(out reason);
                 Vector2 reasonSize = Text.CalcSize(reason);
                 Rect reasonRect = new Rect(new Vector2(0, curY), reasonSize);
                 Widgets.Label(reasonRect, reason);
@@ -92,6 +92,11 @@ namespace TiberiumRim
                             Rect clickRect = new Rect(tabRect.x + 5, tabRect.y, tabRect.width - (10), tabRect.height);
                             Texture2D tex = cat == SelectedCategory || Mouse.IsOver(clickRect) ? TexturePacks[SelectedFaction].TabSelected : TexturePacks[SelectedFaction].Tab;
                             Widgets.DrawTextureFitted(tabRect, tex, 1f);
+                            if (TRThingDefList.HasUnDiscovered(SelectedFaction, cat))
+                            {
+                                DrawUndiscovered(tabRect, new Vector2(-6, 3));
+                                //Widgets.DrawTextureFitted(tabRect, TiberiumContent.Tab_Undisc, 1f);
+                            }
 
                             Text.Anchor = TextAnchor.MiddleCenter;
                             Text.Font = GameFont.Small;
@@ -146,8 +151,10 @@ namespace TiberiumRim
                     inactiveDef = null;
                     foreach (var def in things)
                     {
-                        if (IsActive(def, out string s))
+                        if (def.IsActive(out string reason))
+                        {
                             Designator(def, main, size, ref curXY);
+                        }
                         else
                             InactiveDesignator(def, main, size, ref curXY);
                     }
@@ -166,8 +173,16 @@ namespace TiberiumRim
             GUI.color = mouseOver ? new Color(1, 1, 1, 0.45f) : Color.white;
             Widgets.DrawTextureFitted(rect.ContractedBy(2), def.uiIcon, 1);
             GUI.color = Color.white;
-            if (Mouse.IsOver(rect))
+            if (!def.Discovered)
             {
+                DrawUndiscovered(rect, new Vector2(-5, 5));
+                //Widgets.DrawTextureFitted(rect, TiberiumContent.Des_Undisc, 1f);
+            }
+
+            if (mouseOver)
+            {
+                if (!def.Discovered)
+                    def.Discovered = true;
                 mouseOverGizmo = new Designator_BuildFixed(def);
                 Text.Anchor = TextAnchor.UpperCenter;
                 Widgets.Label(rect, def.LabelCap);
@@ -246,6 +261,11 @@ namespace TiberiumRim
                 GUI.color = sel ? Color.white : new Color(1f, 1f, 1f, 0.4f);
                 Widgets.DrawTextureFitted(partRect, IconForFaction(des), 1f);
                 GUI.color = Color.white;
+                if (TRThingDefList.HasUnDiscovered(des))
+                {
+                    DrawUndiscovered(partRect);
+                }
+
                 if (Widgets.ButtonInvisible(partRect))
                 {
                     SearchText = "";
@@ -254,70 +274,11 @@ namespace TiberiumRim
             }
         }
 
-        public bool IsActive(TRThingDef def, out string reason)
+        private void DrawUndiscovered(Rect rect, Vector2 offset = default)
         {
-            reason = "";
-            bool b = true;
-            var sb = new StringBuilder();
-            sb.AppendLine("Locked due to:\n");
-            if (DebugSettings.godMode)
-            {
-                return true;
-            }
-            if (def.devObject)
-            {
-                return DebugSettings.godMode;
-            }
-            if (def.minTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel < def.minTechLevelToBuild)
-            { 
-                b = false;
-                sb.AppendLine("- Need min tech level: " + def.minTechLevelToBuild);
-            }
-            if (def.maxTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel > def.maxTechLevelToBuild)
-            {
-                b = false;
-                sb.AppendLine("- Need max tech level: " + def.maxTechLevelToBuild);
-            }
-            if (!def.IsResearchFinished)
-            {
-                b = false;
-                string research = "";
-                foreach (var res in def.researchPrerequisites)
-                {
-                    research += "   - " + res.LabelCap;
-                }
-                sb.AppendLine("- Need research:\n" + research);
-            }
-            if (def.HasStoryExtension())
-            {
-                bool r = false;
-                b = b && StoryPatches.CanBeMade(def, ref r);
-                if (!b)
-                {
-                    var story = def.GetModExtension<StoryThingDefExtension>();
-                    string objectives = "";
-                    foreach (var obj in story.objectiveRequisites)
-                    {
-                        objectives += "   - " + obj.LabelCap;
-                    }
-                    sb.AppendLine("- Need Objectives:\n" + objectives);
-                }
-            }
-            if (def.buildingPrerequisites != null)
-            {
-                b = b && def.buildingPrerequisites.All(t => base.Map.listerBuildings.ColonistsHaveBuilding(t));
-                if (!b)
-                {
-                    string buildings = "";
-                    foreach (var build in def.buildingPrerequisites)
-                    {
-                        buildings += "   - " + build.LabelCap;
-                    }
-                    sb.AppendLine("- Need constructed buildings:\n" + buildings);
-                }
-            }
-            reason = sb.ToString().TrimEndNewlines();
-            return b;
+            float size = 7f;
+            Rect topRight = new Rect(new Vector2(rect.xMax-size, rect.y) + offset, new Vector2(size, size));
+            Widgets.DrawTextureFitted(topRight, TiberiumContent.Undiscovered, 1);
         }
 
         public override AcceptanceReport CanDesignateCell(IntVec3 loc)
@@ -347,6 +308,7 @@ namespace TiberiumRim
         {
             switch (i)
             {
+                //TODO: Add whatever belongs here
             }
             return BaseContent.BadTex;
         }
@@ -382,7 +344,7 @@ namespace TiberiumRim
 
         private List<TRThingDef> ItemsBySearch(string searchText)
         { 
-            return TRThingDefList.AllDefs.Where(d => IsActive(d, out string s) && d.label.ToLower().Contains(SearchText.ToLower())).ToList();
+            return TRThingDefList.AllDefs.Where(d => d.IsActive(out string s) && d.label.ToLower().Contains(SearchText.ToLower())).ToList();
         }
     }
 }

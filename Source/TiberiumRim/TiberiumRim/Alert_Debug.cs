@@ -29,6 +29,10 @@ namespace TiberiumRim
             sb.AppendLine("Active percent: " + tiberium.TiberiumInfo.Coverage.ToStringPercent());
             sb.AppendLine("Networks: " + tnwManager.Networks.Count);
             sb.AppendLine("MapInfo:\n Valuables: " + mapinfo.TiberiumCrystals[HarvestType.Valuable].Count + " - " + mapinfo.TiberiumCrystalTypes[HarvestType.Valuable].Count + " types"+ "\n Unvaluables: " + mapinfo.TiberiumCrystals[HarvestType.Unvaluable].Count + " - " + mapinfo.TiberiumCrystalTypes[HarvestType.Unvaluable].Count + " types");
+            sb.AppendLine("Cur Time:" + MapComponent_Tiberium.CURBIGGESTTIME);
+            sb.AppendLine("Max Producer Time: " + TiberiumProducer.BIGGESTTIME);
+            sb.AppendLine("Max MapComp Time: " + MapComponent_Tiberium.BIGGESTTIME);
+            sb.AppendLine("Max Total Time: " + MapComponent_Tiberium.LASTBIGGESTTIME + " after " + MapComponent_Tiberium.TICKSSINCELASTTIME);
             return sb.ToString();
         }
 

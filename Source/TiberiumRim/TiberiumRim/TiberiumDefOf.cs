@@ -82,6 +82,8 @@ namespace TiberiumRim
         public static JobDef HarvestTiberium;
         public static JobDef UnloadAtRefinery;
 
+        public static JobDef TiberiumResearch;
+
         //
         public static ThingDef PortableContainer;
 

@@ -24,7 +24,7 @@
 	
 	<ThingDef Name="EnhancedBodyPart" ParentName="ImplantBase_TR" Abstract="True">
 		<graphicData>
-			<texPath>Items/Resource/HealthItemTiberium</texPath>
+			<texPath>Items/Resource/BodyPart_Tiberium</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>0.80</drawSize>
 		</graphicData>

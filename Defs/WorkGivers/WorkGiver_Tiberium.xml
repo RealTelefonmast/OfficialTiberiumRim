@@ -3,16 +3,15 @@
 	
 	<WorkGiverDef>
 		<defName>DoBillsTibCrafter</defName>
-		<label>work at Tiberium refinery</label>
+		<label>works at Tiberium refinery</label>
 		<giverClass>WorkGiver_DoBill</giverClass>
 		<workType>Crafting</workType>
 		<priorityInType>100</priorityInType>
 		<fixedBillGiverDefs>
 			<li>TiberiumCrafter</li>
-			<li>FueledStove</li>
 		</fixedBillGiverDefs>
 		<verb>refine Tiberium</verb>
-		<gerund>refining at</gerund>
+		<gerund>refining Tiberium</gerund>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
@@ -21,15 +20,33 @@
 		
 	<WorkGiverDef>
 		<defName>DoBillsTibResearch</defName>
-		<label>works at Tiberium research bench</label>
+		<label>does research</label>
 		<giverClass>WorkGiver_DoBill</giverClass>
-		<workType>Crafting</workType>
+		<workType>Research</workType>
 		<priorityInType>97</priorityInType>
 		<fixedBillGiverDefs>
 			<li>TiberiumWorkbench</li>
 		</fixedBillGiverDefs>
-		<verb>make Tiberium item at</verb>
-		<gerund>making Tiberium item at</gerund>
+		<verb>research at</verb>
+		<gerund>researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+	
+	<WorkGiverDef>
+		<defName>Factions_DoBillsFactory</defName>
+		<label>works at factory</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Smithing</workType>
+		<priorityInType>97</priorityInType>
+		<fixedBillGiverDefs>
+			<li>GDI_Factory</li>
+			<li>Nod_Factory</li>
+		</fixedBillGiverDefs>
+		<verb>work at factory</verb>
+		<gerund>working at factory</gerund>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>

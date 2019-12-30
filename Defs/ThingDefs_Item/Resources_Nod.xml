@@ -27,50 +27,12 @@
 		</thingCategories>
 	</ThingDef>
 	
-	<!-- custom tiberium spawner explosion -->
-	<ThingDef ParentName="ResourceBase_TR">
-		<defName>Nod_LiquidTiberium</defName>
-		<label>liquid tiberium cell</label>
-		<description>Liquid Tiberium in its purest form. WARNING - Beware of deterioration, this item is very unstable!</description>
-		<graphicData>
-			<texPath>Items/Resource/Resource_TiberiumLQ</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<soundInteract>Metal_Drop</soundInteract>
-		<soundDrop>Standard_Drop</soundDrop>
-		<stackLimit>5</stackLimit>
-		<statBases>
-			<MaxHitPoints>10</MaxHitPoints>
-			<MarketValue>175</MarketValue>
-			<Mass>1</Mass>
-			<Flammability>1</Flammability>
-			<DeteriorationRate>2</DeteriorationRate>
-		</statBases>
-		<intricate>true</intricate>
-		<thingCategories>
-			<li>Manufactured</li>
-		</thingCategories>
-		<comps>
-			<li Class="CompProperties_Explosive">
-				<explosiveRadius>3</explosiveRadius>
-				<explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
-				<explosiveExpandPerStackcount>0.5</explosiveExpandPerStackcount>
-				<startWickHitPointsPercent>0.2</startWickHitPointsPercent>
-				<wickTicks>
-					<min>5</min>
-					<max>5</max>
-				</wickTicks>
-			</li>
-		</comps>
-		<tickerType>Normal</tickerType>
-	</ThingDef>
-	
 	<ThingDef ParentName="ResourceBase_TR">
 		<defName>Nod_LQTiberiumCore</defName>
 		<label>Liquid Tiberium Core</label>
-		<description>Due to it's unstable nature, liquid Tiberium cannot be handled directly and needs to be stabilized. This component manages to do so.</description>
+		<description>A stabilized liquid Tiberium container, making sure the liquid may be handled without much risk.</description>
 		<graphicData>
-			<texPath>Items/Resource/Core_TiberiumLQ</texPath>
+			<texPath>Items/Resource/LiquidTiberiumCore</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<soundInteract>Metal_Drop</soundInteract>
@@ -217,11 +179,5 @@
 	</ThingDef>
 	
 	-->
-	<ThingCategoryDef>
-		<defName>TempleShells</defName>
-		<label>nuclear shells</label>
-		<parent>Manufactured</parent>
-		<iconPath>UI/Icons/ThingCategories/MortarShells</iconPath>
-	</ThingCategoryDef>
 	
 </Defs>

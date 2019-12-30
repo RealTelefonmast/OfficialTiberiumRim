@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 using Verse;
@@ -54,12 +55,22 @@ namespace TiberiumRim
         [TweakValue("MapComponent_TibDrawBool", 0f, 100f)]
         public static bool DrawBool = false;
 
+        /*
+        [TweakValue("MapComponent_QuadTreePoints", 0, 100)]
+        public static int QuadTreePoints = 1;
+
+        [TweakValue("MapComponent_QuadDrawBool", 0f, 100f)]
+        public static bool QuadDrawReset = false;
+
+        //TEST QuadTree
+        public QuadTree TestTree;
+        */
+
         public override void MapComponentUpdate()
         {
             base.MapComponentUpdate();
             if (DrawBool)
             {
-                
                 TiberiumInfo.TiberiumGrid.drawer.RegenerateMesh();
                 TiberiumInfo.TiberiumGrid.drawer.MarkForDraw();
                 TiberiumInfo.TiberiumGrid.drawer.CellBoolDrawerUpdate();
@@ -73,31 +84,29 @@ namespace TiberiumRim
             }
         }
 
+        public static double CURBIGGESTTIME = 0;
+        public static double LASTBIGGESTTIME = 0;
+        public static int TICKSSINCELASTTIME = 0;
+
+        public static double BIGGESTTIME = 0;
         public override void MapComponentTick()
         {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
             base.MapComponentTick();
             IterateThroughTiles();
-            if (Find.TickManager.TicksGame %  150 == 0)
+            if (Find.TickManager.TicksGame %  250 == 0)
             {
                 TiberiumInfo.TiberiumGrid.UpdateDirties();
             }
+            watch.Stop();
+            if (watch.ElapsedMilliseconds > BIGGESTTIME)
+                BIGGESTTIME = watch.ElapsedMilliseconds;
         }
 
-        public bool TiberiumAvailable
-        {
-            get
-            {
-                return TiberiumInfo.TiberiumCrystals[HarvestType.Valuable].Count > TNWManager.ReservationManager.ReservedTypes[HarvestType.Valuable];
-            }
-        }
+        public bool TiberiumAvailable => TiberiumInfo.TiberiumCrystals[HarvestType.Valuable].Count > TNWManager.ReservationManager.ReservedTypes[HarvestType.Valuable];
 
-        public bool MossAvailable
-        {
-            get
-            {
-                return TiberiumInfo.TiberiumCrystals[HarvestType.Unvaluable].Count > TNWManager.ReservationManager.ReservedTypes[HarvestType.Unvaluable];
-            }
-        }
+        public bool MossAvailable => TiberiumInfo.TiberiumCrystals[HarvestType.Unvaluable].Count > TNWManager.ReservationManager.ReservedTypes[HarvestType.Unvaluable];
 
         public IEnumerable<Thing> TiberiumSetForHarvester(Harvester harvester)
         {

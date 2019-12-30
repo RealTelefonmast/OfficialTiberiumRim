@@ -13,6 +13,7 @@ using Verse;
 using Verse.AI.Group;
 using UnityEngine;
 using System.Collections;
+using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using Verse.Sound;
@@ -78,6 +79,146 @@ namespace TiberiumRim
             return false;
         }
 
+        [HarmonyPatch(typeof(ThingWithComps))]
+        [HarmonyPatch("Print")]
+        public static class PrintPatch
+        {
+            public static bool Prefix(ThingWithComps __instance, SectionLayer layer)
+            {
+                ThingDef def = __instance.def;
+                if (__instance is Blueprint b)
+                {
+                    if (b.def.entityDefToBuild is TerrainDef)
+                        return true;
+
+                    def = (ThingDef)b.def.entityDefToBuild;
+                }
+                if (def is FXThingDef fx)
+                {
+                    TRUtils.Print(layer, __instance.Graphic, __instance, fx);
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(HealthCardUtility))]
+        [HarmonyPatch("DrawHediffRow")]
+        public static class HediffDrawerPatch
+        {
+            [TweakValue("Hediff_MutationHelper_Bar_contracter", -50f, 50f)]
+            private static float contracted = 3f;
+
+            [HarmonyPostfix]
+            public static void Fix(Rect rect, Pawn pawn, IEnumerable<Hediff> diffs, ref float curY)
+            {
+                Hediff_Mutation worker = (Hediff_Mutation)diffs.ToList().Find(h => h is Hediff_Mutation);
+                if (worker != null)
+                {
+                    float viscNum = 0.5f;
+                    float symbNum = 0.5f;
+                    float rev = 1f - viscNum;
+
+                    string s2 = viscNum == symbNum ? " = " : (viscNum > symbNum ? " > " : " < ");
+                    Vector2 vec = Text.CalcSize(s2);
+                    string visc = "◀ " + "TR_Visceral".Translate() + " " + viscNum.ToStringPercent();
+                    Vector2 vec1 = Text.CalcSize(visc);
+                    string symb = symbNum.ToStringPercent() + " " + "TR_Symbiotic".Translate() + " ▶";
+                    Vector2 vec2 = Text.CalcSize(symb);
+
+                    Rect rectSide = new Rect((rect.width / 2f) - (vec.x / 2f), curY, vec.x, vec.y);
+                    Rect rect1 = new Rect((rect.width / 2f) - vec1.x - rectSide.width / 2f, curY, vec1.x, vec1.y);
+                    Rect rect2 = new Rect((rect.width / 2f) + rectSide.width / 2f, curY, vec2.x, vec2.y);
+                    curY += rect1.height;
+
+                    Rect fillRectTotal = new Rect(0f, curY, rect.width, 18f).ContractedBy(contracted);
+                    Rect visceral = fillRectTotal.LeftHalf();
+                    Rect symbiotic = fillRectTotal.RightHalf();
+                    curY += fillRectTotal.ExpandedBy(contracted).height;
+
+                    GUI.color = new ColorInt(155, 160, 75).ToColor;
+                    Widgets.Label(rect1, visc);
+                    GUI.color = Color.white;
+                    Widgets.Label(rectSide, s2);
+                    GUI.color = new ColorInt(138, 229, 226).ToColor;
+                    Widgets.Label(rect2, symb);
+                    GUI.color = Color.white;
+                    Widgets.FillableBar(visceral, rev, TRMats.grey, TRMats.mutationVisceral, false);
+                    Widgets.FillableBar(symbiotic, symbNum, TRMats.mutationBlue, TRMats.grey, false);
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(PawnRenderer))]
+        [HarmonyPatch("RenderPawnInternal")]
+        [HarmonyPatch(new Type[]
+        {
+            typeof(Vector3), typeof(float), typeof(bool), typeof(Rot4), typeof(Rot4), typeof(RotDrawMode), typeof(bool),
+            typeof(bool)
+        })]
+        public static class PawnRenderPatch
+        {
+            [HarmonyPostfix]
+            public static void Fix(PawnRenderer __instance, Vector3 rootLoc, float angle, bool renderBody,
+                Rot4 bodyFacing, Rot4 headFacing, RotDrawMode bodyDrawType, bool portrait, bool headStump)
+            {
+                if (!renderBody || bodyDrawType == RotDrawMode.Dessicated)
+                    return;
+
+                Pawn pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
+                var renderComp = pawn.GetComp<Comp_CrystalDrawer>();
+                Vector3 drawLoc = rootLoc;
+                drawLoc.y += 0.01953125f;
+                Quaternion quaternion = Quaternion.AngleAxis(angle, Vector3.up);
+                renderComp.Drawer.RenderOverlay(pawn, drawLoc, headFacing, quaternion, portrait);
+            }
+        }
+
+        [HarmonyPatch(typeof(GhostDrawer))]
+        [HarmonyPatch("DrawGhostThing")]
+        public static class DrawGhostThingPatch
+        {
+            public static bool Prefix(IntVec3 center, Rot4 rot, ThingDef thingDef, Graphic baseGraphic, Color ghostCol, AltitudeLayer drawAltitude)
+            {
+                if (!(thingDef is FXThingDef fx)) return true;
+                //Log.Message("Drawing Ghost - " + thingDef);
+                if (baseGraphic == null)
+                {
+                    baseGraphic = thingDef.graphic;
+                }
+                Graphic graphic = GhostUtility.GhostGraphicFor(baseGraphic, thingDef, ghostCol);
+                Vector3 loc = GenThing.TrueCenter(center, rot, thingDef.Size, drawAltitude.AltitudeFor());
+                TRUtils.Draw(graphic, loc, rot, null, fx);
+
+                foreach (var t in thingDef.comps)
+                {
+                    t.DrawGhost(center, rot, thingDef, ghostCol, drawAltitude);
+                }
+                if (thingDef.PlaceWorkers != null)
+                {
+                    foreach (var p in thingDef.PlaceWorkers)
+                    {
+                        p.DrawGhost(thingDef, center, rot, ghostCol);
+                    }
+                }
+                return false;
+            }
+        }
+
+        [HarmonyPatch(typeof(PawnRenderer))]
+        [HarmonyPatch("DrawEquipmentAiming")]
+        public static class DrawEquipmentAimingPatch
+        {
+            public static bool Prefix(Thing eq, Vector3 drawLoc, float aimAngle)
+            {
+                if (eq is FXThing thing)
+                {
+                    
+                    return true;
+                }
+                return true;
+            }
+        }
 
         [HarmonyPatch(typeof(Thing))]
         [HarmonyPatch("Kill")]
@@ -164,80 +305,6 @@ namespace TiberiumRim
                 }
             }
         }
-        
-
-        [HarmonyPatch(typeof(HealthCardUtility))]
-        [HarmonyPatch("DrawHediffRow")]
-        public static class HediffDrawerPatch
-        {
-            [TweakValue("Hediff_MutationHelper_Bar_contracter", -50f, 50f)]
-            private static float contracted = 3f;
-
-            [HarmonyPostfix]
-            public static void Fix(Rect rect, Pawn pawn, IEnumerable<Hediff> diffs, ref float curY)
-            {
-                Hediff_Mutation worker = (Hediff_Mutation)diffs.ToList().Find(h => h is Hediff_Mutation);
-                if (worker != null)
-                {
-                    float viscNum = 0.5f;
-                    float symbNum = 0.5f;
-                    float rev = 1f - viscNum;
-
-                    string s2 = viscNum == symbNum ? " = " : (viscNum > symbNum ? " > " : " < ");
-                    Vector2 vec = Text.CalcSize(s2);
-                    string visc = "◀ " + "TR_Visceral".Translate() + " " + viscNum.ToStringPercent();
-                    Vector2 vec1 = Text.CalcSize(visc);
-                    string symb = symbNum.ToStringPercent() + " " + "TR_Symbiotic".Translate() + " ▶";
-                    Vector2 vec2 = Text.CalcSize(symb);
-
-                    Rect rectSide = new Rect((rect.width / 2f) - (vec.x / 2f), curY, vec.x, vec.y);
-                    Rect rect1 = new Rect((rect.width / 2f) - vec1.x - rectSide.width / 2f, curY, vec1.x, vec1.y);
-                    Rect rect2 = new Rect((rect.width / 2f) + rectSide.width / 2f, curY, vec2.x, vec2.y);
-                    curY += rect1.height;
-
-                    Rect fillRectTotal = new Rect(0f, curY, rect.width, 18f).ContractedBy(contracted);
-                    Rect visceral = fillRectTotal.LeftHalf();
-                    Rect symbiotic = fillRectTotal.RightHalf();
-                    curY += fillRectTotal.ExpandedBy(contracted).height;
-
-                    GUI.color = new ColorInt(155, 160, 75).ToColor;
-                    Widgets.Label(rect1, visc);
-                    GUI.color = Color.white;
-                    Widgets.Label(rectSide, s2);
-                    GUI.color = new ColorInt(138, 229, 226).ToColor;
-                    Widgets.Label(rect2, symb);
-                    GUI.color = Color.white;
-                    Widgets.FillableBar(visceral, rev, TRMats.grey, TRMats.mutationVisceral, false);
-                    Widgets.FillableBar(symbiotic, symbNum, TRMats.mutationBlue, TRMats.grey, false);
-                }
-            }
-        }
-
-        [HarmonyPatch(typeof(PawnRenderer))]
-        [HarmonyPatch("RenderPawnInternal")]
-        [HarmonyPatch(new Type[]
-        {
-            typeof(Vector3), typeof(float), typeof(bool), typeof(Rot4), typeof(Rot4), typeof(RotDrawMode), typeof(bool),
-            typeof(bool)
-        })]
-
-        public static class PawnRenderPatch
-        {
-            [HarmonyPostfix]
-            public static void Fix(PawnRenderer __instance, Vector3 rootLoc, float angle, bool renderBody,
-                Rot4 bodyFacing, Rot4 headFacing, RotDrawMode bodyDrawType, bool portrait, bool headStump)
-            {
-                if (!renderBody || bodyDrawType == RotDrawMode.Dessicated)
-                    return;
-
-                Pawn pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
-                var renderComp = pawn.GetComp<Comp_CrystalDrawer>();
-                Vector3 drawLoc = rootLoc;
-                drawLoc.y += 0.01953125f;
-                Quaternion quaternion = Quaternion.AngleAxis(angle, Vector3.up);
-                renderComp.Drawer.RenderOverlay(pawn, drawLoc, headFacing, quaternion, portrait);
-            }
-        }
 
         [HarmonyPatch(typeof(DesignatorManager))]
         [HarmonyPatch("Deselect")]
@@ -272,60 +339,6 @@ namespace TiberiumRim
                 {
                     __result = relative.RelativeCapMods;
                 }
-            }
-        }       
-
-        [HarmonyPatch(typeof(GhostDrawer))]
-        [HarmonyPatch("DrawGhostThing")]
-        public static class DrawGhostThingPatch
-        {
-            public static bool Prefix(IntVec3 center, Rot4 rot, ThingDef thingDef, Graphic baseGraphic, Color ghostCol, AltitudeLayer drawAltitude)
-            {
-                if (!(thingDef is FXThingDef fx)) return true;
-                //Log.Message("Drawing Ghost - " + thingDef);
-                if (baseGraphic == null)
-                {
-                    baseGraphic = thingDef.graphic;
-                }
-                Graphic graphic = GhostUtility.GhostGraphicFor(baseGraphic, thingDef, ghostCol);
-                Vector3 loc = GenThing.TrueCenter(center, rot, thingDef.Size, drawAltitude.AltitudeFor());
-                TRUtils.Draw(graphic, loc, rot, null, fx);
-
-                foreach (var t in thingDef.comps)
-                {
-                    t.DrawGhost(center, rot, thingDef, ghostCol, drawAltitude);
-                }
-                if (thingDef.PlaceWorkers != null)
-                {
-                    foreach (var p in thingDef.PlaceWorkers)
-                    {
-                        p.DrawGhost(thingDef, center, rot, ghostCol);
-                    }
-                }
-                return false;
-            }
-        }
-
-        [HarmonyPatch(typeof(ThingWithComps))]
-        [HarmonyPatch("Print")]
-        public static class PrintPatch
-        {
-            public static bool Prefix(ThingWithComps __instance, SectionLayer layer)
-            {
-                ThingDef def = __instance.def;
-                if (__instance is Blueprint b)
-                {
-                    if (b.def.entityDefToBuild is TerrainDef)
-                        return true;
-
-                    def = (ThingDef)b.def.entityDefToBuild;
-                }
-                if (def is FXThingDef fx)
-                {
-                    TRUtils.Print(layer, __instance.Graphic, __instance, fx);
-                    return false;
-                }
-                return true;
             }
         }
 
@@ -472,10 +485,23 @@ namespace TiberiumRim
             }
         }
 
+        [TweakValue("Patches_MSThreshold", 0, 100)]
+        public static int MSThreshold = 25;
+
+        //Custom Tick Injection
         [HarmonyPatch(typeof(TickManager))]
         [HarmonyPatch("TickManagerUpdate")]
         public static class TickManagerUpdatePatch
         {
+            public static Stopwatch watch = new Stopwatch();
+            public static int TICKER = 0;
+
+            public static bool Prefix()
+            {
+                watch.Start();
+                TICKER++;
+                return true;
+            }
             public static void Postfix(TickManager __instance)
             {
                 if (!__instance.Paused)
@@ -492,6 +518,17 @@ namespace TiberiumRim
                         }
                     }
                 }
+                watch.Stop();
+                
+                MapComponent_Tiberium.CURBIGGESTTIME = watch.ElapsedMilliseconds;
+                if (watch.ElapsedMilliseconds > MSThreshold)
+                {
+                    MapComponent_Tiberium.TICKSSINCELASTTIME = TICKER;
+                    MapComponent_Tiberium.LASTBIGGESTTIME = watch.ElapsedMilliseconds;
+                    TICKER = 0;
+                }
+                
+                watch.Reset();
             }
         }
 

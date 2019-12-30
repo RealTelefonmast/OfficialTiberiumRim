@@ -11,6 +11,8 @@ namespace TiberiumRim
     {
         public new TRThingDef def;
 
+        public TiberiumGarden parentGarden;
+
         public WorldComponent_TR TiberiumRimComp = Find.World.GetComponent<WorldComponent_TR>();
         public WorldComponent_Tiberium WorldTiberiumComp => Find.World.GetComponent<WorldComponent_Tiberium>();
         public MapComponent_Tiberium TiberiumComp => Map.GetComponent<MapComponent_Tiberium>();

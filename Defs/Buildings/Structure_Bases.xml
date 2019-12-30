@@ -123,7 +123,7 @@
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR" Name="DoorBase_TR" Abstract="True">
+	<TiberiumRim.TRThingDef Name="DoorBase_TR" ParentName="BuildingBase_TR" Abstract="True">
 		<thingClass>Building_Door</thingClass>
 		<category>Building</category>
 		<TRCategory>Structure</TRCategory>
@@ -158,7 +158,7 @@
 			<soundDoorCloseManual>Door_CloseManual</soundDoorCloseManual>
 			<blueprintClass>Blueprint_Door</blueprintClass>
 			<blueprintGraphicData>
-			<texPath>Things/Building/Door/Door_Blueprint</texPath>
+				<texPath>Things/Building/Door/Door_Blueprint</texPath>
 			</blueprintGraphicData>
 			<ai_chillDestination>false</ai_chillDestination>
 		</building>

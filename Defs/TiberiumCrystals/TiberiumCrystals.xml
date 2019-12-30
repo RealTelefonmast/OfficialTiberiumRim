@@ -651,6 +651,7 @@
 				<min>5</min>
 				<max>5</max>
 			</buildingDamage>
+			<smoothSpread>true</smoothSpread>
 			<plantMutationChance>0</plantMutationChance>
 			<growDays>4</growDays>
 			<spreadRadius>1</spreadRadius>

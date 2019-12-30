@@ -94,7 +94,7 @@
 		</recipeMaker>
 	</ThingDef>
 	
-		<ThingDef ParentName="Nod_Gun">
+	<ThingDef ParentName="Nod_Gun">
 		<defName>Nod_TwinTiberiumFlechetteGun</defName>
 		<label>Nod twin flechette gun</label>
 		<description>The Tiberium Flechette gun fires Tiberium crystals rapidly at enemies.</description>

@@ -102,26 +102,26 @@
 	<ThingDef ParentName="TiberiumFog">
 		<defName>TiberiumFieldFogG</defName>
 		<graphicData>
-			<color>(15,255,55,100)</color>
+			<color>(15,255,55,50)</color>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<mote>
-			<fadeInTime>5</fadeInTime>
+			<fadeInTime>15</fadeInTime>
 			<solidTime>30</solidTime>
-			<fadeOutTime>5</fadeOutTime>
+			<fadeOutTime>15</fadeOutTime>
 		</mote>
 	</ThingDef>
 	
 	<ThingDef ParentName="TiberiumFog">
 		<defName>TiberiumFieldFogB</defName>
 		<graphicData>
-			<color>(15,125,255,100)</color>
+			<color>(15,125,255,50)</color>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<mote>
-			<fadeInTime>5</fadeInTime>
+			<fadeInTime>15</fadeInTime>
 			<solidTime>30</solidTime>
-			<fadeOutTime>5</fadeOutTime>
+			<fadeOutTime>15</fadeOutTime>
 		</mote>
 	</ThingDef>
 	

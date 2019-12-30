@@ -25,7 +25,7 @@
 		<defName>TiberiumExposure</defName>
 		<label>tiberium exposure radiation</label>
 		<initialSeverity>0.01</initialSeverity>
-		<lethalSeverity>1</lethalSeverity>
+		<lethalSeverity>-1</lethalSeverity>
 		<minSeverity>0</minSeverity>
 		<maxSeverity>1</maxSeverity>
 		<tendable>false</tendable>
@@ -138,7 +138,7 @@
 			<li>
 				<minSeverity>0.80</minSeverity>
 				<label>lethal</label>
-				<painOffset>0.3</painOffset>
+				<painOffset>0.5</painOffset>
 				<vomitMtbDays>0.02</vomitMtbDays>
 				<deathMtbDays>1.5</deathMtbDays>
 				<lifeThreatening>true</lifeThreatening>
@@ -149,11 +149,11 @@
 					</li>
 					<li>
 						<capacity>Breathing</capacity>
-						<offset>-0.6</offset>
+						<offset>-0.4</offset>
 					</li>
 					<li>
 						<capacity>Consciousness</capacity>
-						<offset>-0.6</offset>
+						<offset>-0.45</offset>
 					</li>
 					<li>
 						<capacity>Moving</capacity>
@@ -161,7 +161,7 @@
 					</li>
 					<li>
 						<capacity>Manipulation</capacity>
-						<offset>-0.6</offset>
+						<offset>-0.4</offset>
 					</li>
 				</capMods>
 			</li>

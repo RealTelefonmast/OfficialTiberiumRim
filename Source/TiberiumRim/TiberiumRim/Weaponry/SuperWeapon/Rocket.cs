@@ -11,8 +11,6 @@ namespace TiberiumRim
     {
         public TRBuilding parent;
 
-
-
         public IRocketSilo Parent => (IRocketSilo)parent;
 
         public void Launch()
@@ -23,6 +21,11 @@ namespace TiberiumRim
         public override void Tick()
         {
             base.Tick();
+        }
+
+        public virtual void Arrive()
+        {
+
         }
 
         private float RocketOffsetY => 1;

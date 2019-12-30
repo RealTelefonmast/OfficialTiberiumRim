@@ -44,7 +44,7 @@
 		</skillRequirements>
 	</RecipeDef>
 	
-	<RecipeDef>
+	<TiberiumRim.RecipeDef_Tiberium>
 		<defName>MakeGDISonicCore</defName>
 		<label>make a Sonic Core</label>
 		<description>This core is a necessary component in most GDI sonic technology.</description>
@@ -54,25 +54,13 @@
 		<workAmount>5500</workAmount>
 		<workSpeedStat>SmithingSpeed</workSpeedStat>
 		<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+		<tiberiumCost>
+			<costs>
+				<Blue>60</Blue>
+				<Blue>15</Blue>
+			</costs>
+		</tiberiumCost>
 		<ingredients>
-		<!--
-			<li>
-				<filter>
-					<thingDefs>
-					<li>BlueTiberiumRaw</li>
-					</thingDefs>
-				</filter>
-				<count>60</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-					<li>RedTiberiumRaw</li>
-					</thingDefs>
-				</filter>
-				<count>15</count>
-			</li>
-		-->
 			<li>
 				<filter>
 				<thingDefs>
@@ -102,7 +90,7 @@
 			<Crafting>10</Crafting>
 		</skillRequirements>
 		<workSkill>Crafting</workSkill>
-	</RecipeDef>
+	</TiberiumRim.RecipeDef_Tiberium>
 	
 	<!-- Nod -->
 	  

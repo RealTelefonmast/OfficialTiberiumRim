@@ -14,17 +14,15 @@ namespace TiberiumRim
         protected override Job TryGiveJob(Pawn pawn)
         {
             Harvester harvester = pawn as Harvester;
-            if (harvester.ShouldUnload)
+            if (!harvester.ShouldUnload) return null;
+
+            CompTNW_Refinery refinery = harvester.CurrentRefinery;
+            if (refinery == null) return null;
+
+            if(harvester.CanReserveAndReach(refinery.parent, PathEndMode.InteractionCell, Danger.Deadly))
             {
-                CompTNW_Refinery refinery = harvester.CurrentRefinery;
-                if (refinery != null)
-                {
-                    if(harvester.CanReserveAndReach(refinery.parent, PathEndMode.InteractionCell, Danger.Deadly))
-                    {
-                        JobDef job = DefDatabase<JobDef>.GetNamed("UnloadAtRefinery");
-                        return new Job(job, refinery.parent);
-                    }
-                }
+                JobDef job = DefDatabase<JobDef>.GetNamed("UnloadAtRefinery");
+                return new Job(job, refinery.parent);
             }
             return null;
         }
@@ -32,29 +30,13 @@ namespace TiberiumRim
 
     public class JobDriver_UnloadAtRefinery : JobDriver
     {
-        private CompTNW Refinery
-        {
-            get
-            {
-                return Harvester.CurrentRefinery;
-            }
-        }
+        private CompTNW Refinery => Harvester.CurrentRefinery;
 
-        private Harvester Harvester
-        {
-            get
-            {
-                return (Harvester)pawn;
-            }
-        }
+        private Harvester Harvester => (Harvester)pawn;
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            if (pawn.CanReserve(TargetA))
-            {
-                return pawn.Reserve(TargetA, job);
-            }
-            return false;
+            return pawn.CanReserve(TargetA) && pawn.Reserve(TargetA, job);
         }
 
         protected override IEnumerable<Toil> MakeNewToils()

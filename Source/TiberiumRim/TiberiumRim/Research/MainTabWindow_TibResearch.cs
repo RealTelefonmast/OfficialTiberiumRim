@@ -5,22 +5,23 @@ using System.Text;
 using Verse;
 using RimWorld;
 using UnityEngine;
+using Verse.Sound;
 
 namespace TiberiumRim
 {
 
     public class ResearchNode
     {
-        public TResearchDef def;
-        private List<TResearchDef> next;
+        public TResearchDef nodeDef;
+        private List<TResearchDef> next = new List<TResearchDef>();
 
 
-        public List<TResearchDef> Previous => def.requisites.tiberiumResearch;
+        public List<TResearchDef> Previous => nodeDef.requisites?.tiberiumResearch;
         public List<TResearchDef> Next => next;
 
         public ResearchNode(TResearchDef research)
         {
-            def = research;
+            nodeDef = research;
             foreach(TResearchDef def in DefDatabase<TResearchDef>.AllDefs.Where(t => t.requisites != null && t.requisites.tiberiumResearch.Contains(research)))
             {
                 next.Add(def);
@@ -45,12 +46,13 @@ namespace TiberiumRim
         public List<ResearchNode> Nodes = new List<ResearchNode>();
 
         //Research Selection
+        private ResearchNode selectedNode;
+        private ResearchNode currentProject;
         private static readonly Vector2 selSize = new Vector2(150, 50);
 
-        public override void PreOpen()
+        public MainTabWindow_TibResearch()
         {
-            base.PreOpen();
-            foreach(TResearchDef def in DefDatabase<TResearchDef>.AllDefs)
+            foreach (TResearchDef def in DefDatabase<TResearchDef>.AllDefs)
             {
                 ResearchNode node = new ResearchNode(def);
                 Nodes.Add(node);
@@ -59,8 +61,14 @@ namespace TiberiumRim
                     ResearchRoots.Add(node);
                 }
             }
+            selectedNode = ResearchRoots[0];
             Log.Message("Research Nodes: " + Nodes.Count);
             Log.Message("Research Roots: " + ResearchRoots.Count);
+        }
+
+        public override void PreOpen()
+        {
+            base.PreOpen();
         }
 
         public override void PostOpen()
@@ -97,12 +105,12 @@ namespace TiberiumRim
         private void DrawResearch(Rect rect)
         {
             GUI.BeginGroup(rect.ContractedBy(10f));
-            Vector2 lastPos = new Vector2(rect.x, rect.y);
+            Vector2 lastPos = new Vector2(0, 0);
             //Log.Message("Drawing - LastPos: " + lastPos);
             foreach (ResearchNode root in ResearchRoots)
             {
                 DrawResearchOption(new Rect(lastPos, selSize), root, ref lastPos);
-                lastPos.x = rect.x;
+                lastPos.x = 0;
             }
             GUI.EndGroup();
         }
@@ -119,11 +127,52 @@ namespace TiberiumRim
                 nextPos.x += 0;
                 nextPos.y += selSize.y;
             }
-            Widgets.DrawWindowBackground(rect);
-            Widgets.Label(rect, def.label);
+            ColorsFor(rect, node, out Color bgColor, out Color borderColor, out Color textColor);
+            if (Widgets.CustomButtonText(ref rect, node.nodeDef.LabelCap, bgColor, textColor, borderColor, false, 1, true, true))
+            {
+                SoundDefOf.Click.PlayOneShotOnCamera();
+                selectedNode = node;
+            }
+
             foreach(TResearchDef unlock in node.Next)
             {
-                DrawResearchOption(new Rect(nextPos, selSize), Nodes.Find(n => n.def == unlock), ref nextPos);
+                DrawResearchOption(new Rect(nextPos, selSize), Nodes.Find(n => n.nodeDef == unlock), ref nextPos);
+            }
+        }
+
+        private void ColorsFor(Rect rect, ResearchNode node, out Color bgColor, out Color borderColor, out Color textColor)
+        {
+            bgColor = TexUI.LockedResearchColor;
+            borderColor = TexUI.DefaultBorderResearchColor;
+            textColor = Widgets.NormalOptionColor;
+
+            if (TRUtils.ResearchManager().currentProj == node.nodeDef)
+            {
+                bgColor = TexUI.ActiveResearchColor;
+            }
+            else if (node.nodeDef.IsFinished)
+            {
+                bgColor = TexUI.FinishedResearchColor;
+            }
+            else if (node.nodeDef.CanStartNow)
+            {
+                bgColor = TexUI.AvailResearchColor;
+            }
+
+            if (!node.nodeDef.RequisitesComplete)
+            {
+                bgColor = TexUI.LockedResearchColor;
+                textColor = Color.gray;
+            }
+
+            if (selectedNode == node)
+            {
+                bgColor += TexUI.HighlightBgResearchColor;
+                borderColor = TexUI.HighlightBorderResearchColor;
+            }
+            if (Mouse.IsOver(rect))
+            {
+
             }
         }
 

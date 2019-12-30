@@ -11,7 +11,6 @@ namespace TiberiumRim
     {
         public bool alignToBottom = false;
         public bool rotateDrawSize = true;
-        public bool drawRotated = true;
         public Vector3 drawOffset = Vector3.zero;
         public List<string> linkStrings;
     }

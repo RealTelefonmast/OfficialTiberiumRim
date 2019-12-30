@@ -22,19 +22,11 @@ namespace TiberiumRim
         {
             base.TickRare();
             deterioration += DeteriorationRate;
-            if (Deterioration == 1f)
-            {
-                this.DeSpawn();
-            }
+            if (Deterioration >= 1f)
+                DeSpawn();
         }
 
-        public float Deterioration
-        {
-            get
-            {
-                return Mathf.Clamp01(deterioration);
-            }
-        }
+        public float Deterioration => Mathf.Clamp01(deterioration);
 
         public float DeteriorationRate
         {
@@ -43,7 +35,7 @@ namespace TiberiumRim
                 float rate = 1f;
                 rate += Map.weatherManager.curWeather.rainRate;
 
-                return rate * 0.00001f;
+                return rate * 0.0001f;
             }
         }
 

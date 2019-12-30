@@ -68,7 +68,7 @@
 		<label>Nuke</label>
 		<externalViolence>true</externalViolence>
 		<isExplosive>true</isExplosive>
-		<deathMessage>{0} has died in the nuclear explosion.</deathMessage>
+		<deathMessage>{0} has died in a nuclear explosion.</deathMessage>
 		<workerClass>DamageWorker_Flame</workerClass>
 		<hediff>Burn</hediff>
 		<hediffSolid>Crack</hediffSolid>
@@ -96,7 +96,7 @@
 		<label>Nuke</label>
 		<externalViolence>true</externalViolence>
 		<isExplosive>true</isExplosive>
-		<deathMessage>{0} has died in the nuclear explosion.</deathMessage>
+		<deathMessage>{0} has died in a nuclear explosion.</deathMessage>
 		<workerClass>DamageWorker_Flame</workerClass>
 		<hediff>Burn</hediff>
 		<hediffSolid>Crack</hediffSolid>
@@ -124,7 +124,7 @@
 		<label>Shock</label>
 		<externalViolence>true</externalViolence>
 		<isExplosive>true</isExplosive>
-		<deathMessage>{0} has died in the electric shock.</deathMessage>
+		<deathMessage>{0} has died due to electric shock.</deathMessage>
 		<hediff>Crush</hediff>
 		<hediffSolid>Crack</hediffSolid>
 		<harmsHealth>true</harmsHealth>
@@ -150,7 +150,7 @@
 		<label>cutting beam</label>
 		<externalViolence>true</externalViolence>
 		<isExplosive>false</isExplosive>
-		<deathMessage>{0} has been beam cut to death.</deathMessage>
+		<deathMessage>{0} has been hit by a lethal beam.</deathMessage>
 		<hediff>Cut</hediff>
 		<makesBlood>true</makesBlood>
 		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
@@ -171,7 +171,7 @@
   
 	<!--only specialized siege attack-->
 	<DamageDef ParentName="ProjectileBase_TR">
-		<defName>TRSiege</defName>
+		<defName>TRShockWave</defName>
 		<label>Seismic Wave</label>
 		<externalViolence>true</externalViolence>
 		<isExplosive>true</isExplosive>

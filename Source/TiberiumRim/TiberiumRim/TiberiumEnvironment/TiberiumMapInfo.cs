@@ -91,6 +91,7 @@ namespace TiberiumRim
         public void RegisterTiberiumPlant(TiberiumPlant plant)
         {
             TiberiumGrid.SetPlant(plant.Position, true);
+            FloraGrid.Notify_PlantSpawned(plant);
         }
 
         public void DeregisterTiberiumPlant(TiberiumPlant plant)

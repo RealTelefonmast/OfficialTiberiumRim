@@ -53,4 +53,12 @@
 		</stuffProps>
 	</ThingDef>
 	
+	<ThingDef ParentName="ResourceBase_TR" Name="ShellBase" Abstract="True">
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>24</stackLimit>
+		<tickerType>Normal</tickerType>
+		<techLevel>Industrial</techLevel>
+	</ThingDef>
+	
 </Defs>

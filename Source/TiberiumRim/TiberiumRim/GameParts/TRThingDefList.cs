@@ -31,6 +31,16 @@ namespace TiberiumRim
             }
         }
 
+        public static bool HasUnDiscovered(FactionDesignationDef faction)
+        {
+            return Categorized[faction].Any(d => HasUnDiscovered(faction, d.Key));
+        }
+
+        public static bool HasUnDiscovered(FactionDesignationDef faction, TRThingCategoryDef category)
+        {
+            return Categorized[faction][category].Any(d => !d.Discovered && d.IsActive(out string s));
+        }
+
         public static int TotalCount
         {
             get

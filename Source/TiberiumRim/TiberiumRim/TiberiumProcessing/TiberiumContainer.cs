@@ -73,70 +73,78 @@ namespace TiberiumRim
             StoredTiberium.RemoveAll(s => s.Value > 0);
         }
 
-        public bool AcceptsType(TiberiumValueType valueType)
-        {
-            return AcceptedTypes.Contains(valueType);
-        }
-
-        public bool CanEvenOutWith(TiberiumContainer other, float value)
-        {
-            float totalCapacity = capacity + other.capacity;
-            float totalValue = TotalStorage + other.TotalStorage;
-            return totalValue + Mathf.Abs(value) <= totalCapacity;
-        }
-
         public void FillWith(float wantedValue)
         {
             float val = wantedValue / AcceptedTypes.Count;
-            foreach(TiberiumValueType type in AcceptedTypes)
+            foreach (TiberiumValueType type in AcceptedTypes)
             {
                 TryAddValue(type, val, out float e);
             }
         }
 
-        public bool TryAddValue(TiberiumValueType valueType, float wantedValue, out float excessValue)
+        public bool AcceptsType(TiberiumValueType valueType)
         {
-            var potentialTotal = TotalStorage + wantedValue;
-            excessValue = Mathf.Clamp(potentialTotal - capacity, 0, float.PositiveInfinity);
-            var actualValue = wantedValue;
-            if (CapacityFull || !AcceptsType(valueType))
+            return AcceptedTypes.Contains(valueType);
+        }
+
+        public bool CanFullyTransferTo(TiberiumContainer other, float value)
+        {
+            return other.TotalStorage + value <= other.capacity;
+        }
+
+
+        // Value Functions
+        public bool TryAddValue(TiberiumValueType valueType, float wantedValue, out float actualValue)
+        {
+            //If we add more than we can contain, we have an excess value
+            var excessValue = Mathf.Clamp((TotalStorage + wantedValue) - capacity, 0, float.MaxValue);
+            //The actual added value is the wanted value minus the excess
+            actualValue = wantedValue - excessValue; 
+
+            //If the container is full, or doesnt accept the type, we dont add anything
+            bool capFull = CapacityFull;
+            if (capFull || !AcceptsType(valueType))
             {
-                Notify_Full();
+                if(capFull)
+                    Notify_Full();
                 return false;
             }
 
-            if (excessValue > 0)
-                actualValue = wantedValue - excessValue;
-
+            //If the value type is already stored, add to it, if not, make a new entry
             if (StoredTiberium.TryGetValue(valueType, out float value))
                 StoredTiberium[valueType] += actualValue;
             else
                 StoredTiberium.Add(valueType, actualValue);
-
-            if(CapacityFull)
-                Notify_Full();
             return true;
         }
 
-        public bool TryRemoveValue(TiberiumValueType valueType, float wantedValue, out float leftover)
+        public bool TryRemoveValue(TiberiumValueType valueType, float wantedValue, out float actualValue)
         {
-            leftover = wantedValue;
+            //Attempt to remove a certain value from the container
+            actualValue = wantedValue;
             if (StoredTiberium.TryGetValue(valueType, out float value) && value > 0)
             {
-                leftover = wantedValue - value; 
-                if (leftover > 0)
-                    StoredTiberium[valueType] -= value;
-                else
+                if (value >= wantedValue)
+                    //If we have stored more than we need to pay, remove the wanted value
                     StoredTiberium[valueType] -= wantedValue;
+                else if (value > 0)
+                {
+                    //If not enough stored to "pay" the wanted value, remove the existing value and set actual removed value to removed value 
+                    StoredTiberium[valueType] = 0;
+                    actualValue = value;
+                }
             }
-            return leftover != wantedValue;
+            return actualValue == wantedValue;
         }
 
         public bool TryTransferTo(TiberiumContainer other, TiberiumValueType valueType, float value)
         {
-            if (StoredTiberium.TryGetValue(valueType) > 0 && CanEvenOutWith(other, value) && other.TryAddValue(valueType, value, out float excess))
+            //Attempt to transfer a value to another container
+            //Check if anything of that type is stored, check if transfer of value is possible without loss, try remove the value from this container
+            if (StoredTiberium.TryGetValue(valueType) >= value && CanFullyTransferTo(other, value) && TryRemoveValue(valueType, value, out float actualValue))
             {
-                TryRemoveValue(valueType, value - excess, out float leftOver);              
+                //If passed, try to add the actual value removed from this container, to the other.
+                other.TryAddValue(valueType, actualValue, out float actualAddedValue);
                 return true;
             }
             return false;
@@ -168,9 +176,6 @@ namespace TiberiumRim
             return false;
         }
 
-        public float TotalStorage => StoredTiberium.Sum(t => t.Value);
-        public float StoredPercent => TotalStorage/capacity;
-
         public Color Color
         {
             get
@@ -195,13 +200,7 @@ namespace TiberiumRim
             }
         }
 
-        public List<TiberiumValueType> AllStoredTypes
-        {
-            get
-            {
-                return StoredTiberium.Keys.ToList();
-            }
-        }
+        public List<TiberiumValueType> AllStoredTypes => StoredTiberium.Keys.ToList();
 
         public List<TiberiumCrystal> PotentialCrystals()
         {
@@ -274,9 +273,12 @@ namespace TiberiumRim
             return val >= capacity;
         }
 
-        public bool HasStorage => StoredPercent > 0;
-        public bool Empty => !StoredTiberium.Any() || TotalStorage == 0;
-        public bool CapacityFull => TotalStorage == capacity;
+        public float TotalStorage => StoredTiberium.Sum(t => t.Value);
+        public float StoredPercent => TotalStorage / capacity;
+
+        public bool HasStorage => TotalStorage > 0;
+        public bool Empty => !StoredTiberium.Any() || TotalStorage <= 0;
+        public bool CapacityFull => TotalStorage >= capacity;
         public bool ContainsForbiddenType => AllStoredTypes.Any(t => !AcceptsType(t));
 
         public IEnumerable<Gizmo> GetGizmos()

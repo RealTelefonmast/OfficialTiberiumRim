@@ -58,7 +58,7 @@ namespace TiberiumRim
                 if(c.SupportsTiberiumTerrain(Map))
                     Map.terrainGrid.SetTerrain(c, TiberiumCrystal.supportsTerrain.RandomElement().TerrainOutcome);
             };
-            TiberiumFloodInfo flood = new TiberiumFloodInfo(Map,0,null, action);
+            TiberiumFloodInfo flood = new TiberiumFloodInfo(Map,null, action);
             IntVec3 end = GenRadial.RadialCellsAround(Position, 56, false).RandomElement();
             flood.TryMakeConnection(out List<IntVec3> cells, Position, end);
 
@@ -75,7 +75,7 @@ namespace TiberiumRim
 
         private void SpawnEgg()
         {
-            var cell = FieldCells.RandomElement();
+            var cell = fieldCells.RandomElement();
 
             GenSpawn.Spawn(ThingDef.Named("VeinEgg"), cell, Map);
             ResetEggTimer();

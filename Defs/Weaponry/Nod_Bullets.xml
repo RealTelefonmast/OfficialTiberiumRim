@@ -39,8 +39,8 @@
 		<defName>Bullet_Nod_TwinFlechetteGun</defName>
 		<label>tiberium flechette</label>
 		<graphicData>
-		<texPath>Items/Weapons/Projectile/Bullet_Nod_Tiberium</texPath>
-		<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Items/Weapons/Projectile/Bullet_Nod_Tiberium</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>

@@ -13,7 +13,7 @@ namespace TiberiumRim
         protected override Job TryGiveJob(Pawn pawn)
         {
             Harvester harvester = pawn as Harvester;
-            if (harvester.ShouldHarvest && !(harvester.CurJob?.def == TiberiumDefOf.HarvestTiberium))
+            if (harvester.ShouldHarvest && harvester.CurJob?.def != TiberiumDefOf.HarvestTiberium)
             {
                 TiberiumCrystal crystal = harvester.HarvestTarget;
                 if (crystal != null)
@@ -44,29 +44,11 @@ namespace TiberiumRim
             Scribe_Values.Look(ref ticksPassed, "ticksPassed");
         }
 
-        private TiberiumCrystal TiberiumCrystal
-        {
-            get
-            {
-                return TargetA.Thing as TiberiumCrystal;
-            }
-        }
+        private TiberiumCrystal TiberiumCrystal => TargetA.Thing as TiberiumCrystal;
 
-        private Harvester Harvester
-        {
-            get
-            {
-                return pawn as Harvester;
-            }
-        }
+        private Harvester Harvester => pawn as Harvester;
 
-        private bool FailOn
-        {
-            get
-            {
-                return Harvester.ShouldIdle || (TiberiumCrystal.def.IsMoss ? Harvester.harvestMode != HarvestMode.Moss : Harvester.harvestMode == HarvestMode.Moss);
-            }
-        }
+        private bool FailOn => Harvester.ShouldIdle || (TiberiumCrystal.def.IsMoss ? Harvester.harvestMode != HarvestMode.Moss : Harvester.harvestMode == HarvestMode.Moss);
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -75,8 +57,7 @@ namespace TiberiumRim
 
         public override string GetReport()
         {
-            string report = TiberiumCrystal.def.IsMoss ? "EradicateMoss".Translate() : "HarvestingReport".Translate(this.TargetA.Thing.def.LabelCap);
-            return "HarvestingReport".Translate(this.TargetA.Thing.def.LabelCap);
+            return "TR_HarvestingReport".Translate(this.TargetA.Thing.def.LabelCap);
         }
 
         protected override IEnumerable<Toil> MakeNewToils()
@@ -85,40 +66,43 @@ namespace TiberiumRim
             gotoToil.FailOn(() => FailOn);
             yield return gotoToil;
 
-            Toil harvest = new Toil();
-            harvest.initAction = delegate
+            Toil harvest = new Toil
             {
-                ticksToHarvest += TiberiumCrystal.HarvestTime;
-                ticksPerValue = (int)(ticksToHarvest / TiberiumCrystal.HarvestValue);
-                growthPerValue = (TiberiumCrystal.Growth / (float)ticksToHarvest) * ticksPerValue;
-            };
-            harvest.tickAction = delegate
-            {
-                if (!Harvester.Container.CapacityFull)
+                initAction = delegate
                 {
-                    if (ticksPassed < ticksToHarvest)
+                    ticksToHarvest += TiberiumCrystal.HarvestTime;
+                    ticksPerValue = (int) (ticksToHarvest / TiberiumCrystal.HarvestValue);
+                    growthPerValue = (TiberiumCrystal.Growth / (float) ticksToHarvest) * ticksPerValue;
+                },
+                tickAction = delegate
+                {
+                    if (!Harvester.Container.CapacityFull)
                     {
-                        if (ticksPassed % ticksPerValue == 0)
+                        if (ticksPassed < ticksToHarvest)
                         {
-                            if (Harvester.Container.TryAddValue(TiberiumCrystal.def.TiberiumValueType, 1, out float excess))
+                            if (ticksPassed % ticksPerValue == 0)
                             {
-                                TiberiumCrystal.Growth -= growthPerValue - (excess / TiberiumCrystal.def.tiberium.harvestValue);
+                                if (Harvester.Container.TryAddValue(TiberiumCrystal.def.TiberiumValueType, 1, out float actualValue))
+                                {
+                                    TiberiumCrystal.Harvest(growthPerValue * (actualValue / 1));
+                                }
                             }
                         }
+                        else
+                        {
+                            if (TiberiumCrystal.Growth <= 0.01f)
+                            {
+                                TiberiumCrystal.DeSpawn();
+                            }
+
+                            EndJobWith(JobCondition.Succeeded);
+                        }
+                        ticksPassed++;
                     }
                     else
                     {
-                        if (TiberiumCrystal.Growth <= 0.01f)
-                        {
-                            TiberiumCrystal.DeSpawn();
-                        }
                         EndJobWith(JobCondition.Succeeded);
                     }
-                    ticksPassed++;
-                }
-                else
-                {                  
-                    EndJobWith(JobCondition.Succeeded);
                 }
             };
             harvest.AddFinishAction(() => Harvester.TNWManager.ReservationManager.UnreserveFor(TiberiumCrystal, Harvester));
@@ -128,6 +112,5 @@ namespace TiberiumRim
             harvest.defaultCompleteMode = ToilCompleteMode.Never;
             yield return harvest;          
         }
-
     }
 }

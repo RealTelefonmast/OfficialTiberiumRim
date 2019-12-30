@@ -85,7 +85,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Bullet_GDIStandard</defaultProjectile>
+				<defaultProjectile>Bullet_GDIHighVelocity</defaultProjectile>
 				<warmupTime>2.5</warmupTime>
 				<range>24.9</range>
 				<burstShotCount>8</burstShotCount>
@@ -172,7 +172,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_BurstToTarget</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Bullet_Emitter</defaultProjectile>
+				<defaultProjectile>Bullet_SonicWave</defaultProjectile>
 				<requireLineOfSight>true</requireLineOfSight>
 				<warmupTime>2.25</warmupTime>
 				<range>39.9</range>

@@ -65,6 +65,7 @@
     <Compile Include="AI\JobGiver_TryGetRepaired.cs" />
     <Compile Include="AI\JobGiver_WanderAtParent.cs" />
     <Compile Include="AI\JobWithExtras.cs" />
+    <Compile Include="AI\ThinkNode_ConditionalMechHasParent.cs" />
     <Compile Include="AI\ThinkNode_ConditionalColonistOrMech.cs" />
     <Compile Include="Alert_Debug.cs" />
     <Compile Include="Alert_DebugReservations.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Comps\Comp_Upgradable.cs" />
     <Compile Include="Comps\Comp_WanderProps.cs" />
     <Compile Include="EventExtension.cs" />
+    <Compile Include="GameParts\AreaGrid.cs" />
     <Compile Include="GameParts\ASATNetwork.cs" />
     <Compile Include="Comps\CompGlowerOffset.cs" />
     <Compile Include="GameParts\CellArea.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="GameParts\Interfaces\IContainerHolder.cs" />
     <Compile Include="GameParts\ITab_ContainedPawn_Health.cs" />
     <Compile Include="GameParts\ITab_MechConstruction.cs" />
+    <Compile Include="GameParts\MapComps\MapComponent_TiberiumTickManager.cs" />
     <Compile Include="GameParts\MapComps\WorldComponent_TR.cs" />
     <Compile Include="GameParts\PlaceWorker_DoorFrame.cs" />
     <Compile Include="GameParts\PlaceWorker_TurretGunTop.cs" />
@@ -91,6 +94,8 @@
     <Compile Include="GameParts\SuperWeaponInfo.cs" />
     <Compile Include="AI\JobDriver_RepairDroneRepair.cs" />
     <Compile Include="AI\JobDriver_RepairDroneReturn.cs" />
+    <Compile Include="MechanicalPawns\Designator_ZoneAdd_MechParking.cs" />
+    <Compile Include="MechanicalPawns\Zone_MechParking.cs" />
     <Compile Include="MechanicalPawns\HediffComp_ModuleColors.cs" />
     <Compile Include="GameParts\ITab_MechUpgrade.cs" />
     <Compile Include="MechanicalPawns\RepairDrone.cs" />
@@ -100,9 +105,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Research\EventDef.cs" />
+    <Compile Include="Research\JobDriver_TResearch.cs" />
     <Compile Include="Research\MainTabWindow_TibResearch.cs" />
     <Compile Include="Research\Requisites.cs" />
     <Compile Include="Research\TResearchDef.cs" />
+    <Compile Include="Research\TResearchManager.cs" />
+    <Compile Include="Research\WorkGiver_TResearch.cs" />
     <Compile Include="Sound\ActionComposition.cs" />
     <Compile Include="Sound\TRSoundDef.cs" />
     <Compile Include="Sound\TRSubSoundDef.cs" />
@@ -125,6 +133,8 @@
     <Compile Include="TiberiumEnvironment\Grid_Suppression.cs" />
     <Compile Include="TiberiumEnvironment\Grid_Flora.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumFloraManager.cs" />
+    <Compile Include="TiberiumEnvironment\TiberiumGarden.cs" />
+    <Compile Include="TiberiumEnvironment\TiberiumPond.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumProducerGrid.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumStructureInfo.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_Suppression.cs" />
@@ -190,7 +200,10 @@
     <Compile Include="VisualEffects\Graphic_RandomSelection.cs" />
     <Compile Include="VisualEffects\Mote_Beam.cs" />
     <Compile Include="VisualEffects\MoverProperties.cs" />
+    <Compile Include="VisualEffects\ParticleEmitter.cs" />
     <Compile Include="VisualEffects\PulseProperties.cs" />
+    <Compile Include="VisualEffects\QuadTree.cs" />
+    <Compile Include="VisualEffects\SimpleParticle.cs" />
     <Compile Include="Weaponry\AttackProperties.cs" />
     <Compile Include="Weaponry\BeamHubProperties.cs" />
     <Compile Include="Weaponry\Building_BeamHub.cs" />
@@ -204,8 +217,10 @@
     <Compile Include="Weaponry\Command_TurretTarget.cs" />
     <Compile Include="Weaponry\Comp_ExtraTurret.cs" />
     <Compile Include="Comps\Comp_RepairDrone.cs" />
+    <Compile Include="Weaponry\DamageWorker_SoftExplosion.cs" />
     <Compile Include="Weaponry\PlaceWorker_TurretHub.cs" />
     <Compile Include="Weaponry\ProjectileProperties_Extended.cs" />
+    <Compile Include="Weaponry\Projectile_TR.cs" />
     <Compile Include="Weaponry\SuperWeapon\AttackSatellite.cs" />
     <Compile Include="Weaponry\SuperWeapon\AttackSatellite_Ion.cs" />
     <Compile Include="Weaponry\SuperWeapon\Rocket.cs" />
@@ -342,6 +357,9 @@
     <Compile Include="Weather\WeatherEvent_IonStrike.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

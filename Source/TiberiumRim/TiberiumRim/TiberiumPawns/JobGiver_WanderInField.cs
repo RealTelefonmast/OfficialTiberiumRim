@@ -25,7 +25,7 @@ namespace TiberiumRim
         protected override IntVec3 GetExactWanderDest(Pawn pawn)
         {
             if (pawn is TiberiumPawn pawn2 && pawn2.ProducerAvailable && !pawn2.kindDef.canLeaveProducer)
-                return pawn2.boundProducer.FieldCells.RandomElement();
+                return pawn2.boundProducer.fieldCells.RandomElement();
 
             return base.GetExactWanderDest(pawn);
         }

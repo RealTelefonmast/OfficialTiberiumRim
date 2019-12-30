@@ -17,35 +17,42 @@ namespace TiberiumRim
     {
         
 
-        public CompProperties_Upgrade Props
-        {
-            get
-            {
-                return this.props as CompProperties_Upgrade;
-            }
-        }
+        public CompProperties_Upgrade Props => this.props as CompProperties_Upgrade;
+
+        public IUpgradable IParent => parent as IUpgradable;
 
         public override void CompTick()
         {
-            if (Props.requisites != null)
-            {
-
-            }
+            base.CompTick();
         }
 
         public override void CompTickRare()
         {
-            if (Props.requisites != null)
-            {
-
-            }
             base.CompTickRare();
+        }
+
+        public virtual void ApplyUpgrade()
+        {
+
+        }
+
+        public override IEnumerable<Gizmo> CompGetGizmosExtra()
+        {
+            foreach (var gizmo in base.CompGetGizmosExtra())
+            {
+                yield return gizmo;
+            }
+
+            yield return new Command_Action
+            {
+                defaultLabel = "DEBUG: Apply Upgrades",
+                action = ApplyUpgrade
+            };
         }
     }
 
     public class CompProperties_Upgrade : CompProperties
     {
-        public Requisites requisites;
         public List<string> upgrades;
     }
 }

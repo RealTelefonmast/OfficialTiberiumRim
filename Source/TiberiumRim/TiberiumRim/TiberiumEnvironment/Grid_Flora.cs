@@ -50,21 +50,27 @@ namespace TiberiumRim
                 {
                     if (growBools[cell]) continue;
                     TerrainDef terrain = cell.GetTerrain(map);
-                    if(NeedsFlora(terrain))
+                    if(IsGarden(terrain))
                     {
-                        TiberiumGarden garden = new TiberiumGarden(map.areaManager);
+                        TiberiumGarden garden = new TiberiumGarden(this);
                         filler.FloodFill(cell, ((IntVec3 c) => c.GetTerrain(map) == terrain), delegate (IntVec3 cell) {
                             Set(cell, true);
-                            garden[cell] = true;
+                            garden.AddCell(cell);
                         });
+
                     }
                 }
             }, "SettingFloraBools", false, null);
         }
 
-        private bool NeedsFlora(TerrainDef def)
+        private bool IsGarden(TerrainDef def)
         {
             return def.IsMoss() || (def.IsSoil() && (def.fertility >= 1.2f));
+        }
+
+        private bool IsPond(TerrainDef def)
+        {
+            return def.IsWater && !def.IsRiver;
         }
 
         public bool GetCellBool(int index)
@@ -86,6 +92,11 @@ namespace TiberiumRim
         public void Set(IntVec3 c, bool value)
         {
             growBools.Set(c, true);
+        }
+
+        public void Notify_PlantSpawned(TiberiumPlant plant)
+        {
+            floraManager.Notify_PlantSpawnedFromOutside(plant);
         }
     }
 }

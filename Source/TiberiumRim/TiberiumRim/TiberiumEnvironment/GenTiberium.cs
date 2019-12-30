@@ -19,34 +19,31 @@ namespace TiberiumRim
         {
             TerrainSupport support = null;
             IntVec3 hiddenTerrainPos = IntVec3.Invalid;
-            Predicate<IntVec3> pred = c => crystal.def.CanSpreadTo(c, crystal.Map, out support, out hiddenTerrainPos, insideProducer, crystal.Parent);
-            CellFinder.TryFindRandomCellNear(crystal.Position, crystal.Map, (int)crystal.def.tiberium.spreadRadius, pred, out IntVec3 pos, 8);
-            if (support == null) return false;
-            if(pos.IsValid)
+
+            bool Predicate(IntVec3 c) => crystal.def.CanSpreadTo(c, crystal.Map, out support, out hiddenTerrainPos, insideProducer, crystal.Parent);
+            var AdjCells = crystal.Position.CellsAdjacent8Way();
+            if(CellFinder.TryFindRandomCellNear(crystal.Position, crystal.Map, (int)crystal.def.tiberium.spreadRadius, Predicate, out IntVec3 pos, 8))
             {
+                if (support == null) return false;
+
                 Plant plant = pos.GetPlant(crystal.Map);
                 if (plant != null)
                 {
                     if (insideProducer)
-                        plant.DeSpawn();
-
-                    else if (crystal.TiberiumComp.TiberiumInfo.FloraGrid.growBools[pos] || TRUtils.Chance(crystal.def.tiberium.plantMutationChance))
                     {
-                        var defName = plant != null ? plant.def.defName : "Grass";
+                        Log.Message("Inside producer and on plant - despawning " + plant);
+                        plant.DeSpawn();
+                    }
+
+                    else if ((crystal.TiberiumComp.TiberiumInfo.FloraGrid.growBools[pos] || TRUtils.Chance(crystal.def.tiberium.plantMutationChance)))
+                    {
+                        var defName = plant.def.defName;
                         var newPlant = GetTiberiumPlant(defName, out bool bloss);
                         Log.Message("Plant: " + newPlant);
                         if (crystal.def.plantTerrain != null)
                             crystal.Map.terrainGrid.SetTerrain(pos, crystal.def.plantTerrain);
                         GenSpawn.Spawn(newPlant, pos, crystal.Map);
                         return false;
-                    }
-                }
-                if (insideProducer)
-                {
-                    foreach (var c in pos.CellsAdjacent8Way())
-                    {
-                        if (crystal.Parent.InsideGrowPath(c))
-                            c.GetPlant(crystal.Map)?.DeSpawn();
                     }
                 }
                 Spawn(support.CrystalOutcome, crystal.Parent, pos, crystal.Map);
@@ -330,7 +327,8 @@ namespace TiberiumRim
             support = null;
             hiddenTerrain = IntVec3.Invalid;
 
-            if (!c.IsValid || !c.InBounds(map) || !c.Standable(map))
+            bool inPath = producer?.InsideGrowPath(c) ?? true;
+            if (!c.IsValid || !c.InBounds(map) || !c.Standable(map) || (insideProducer && !inPath))
                 return false;
 
             var list = c.GetThingList(map);
@@ -340,7 +338,7 @@ namespace TiberiumRim
                 return false;
             }
 
-            if (list.Any(t => t.def.IsEdifice() || t is Building || t is TiberiumCrystal || (t is TiberiumPlant && insideProducer && !producer.InsideGrowPath(c))))
+            if (list.Any(t => t.def.IsEdifice() || t is Building || t is TiberiumCrystal || (t is TiberiumPlant && !inPath)))
                 return false;
 
             TerrainDef terrain = c.GetTerrain(map);

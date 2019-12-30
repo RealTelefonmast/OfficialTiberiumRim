@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RimWorld;
+using StoryFramework;
 using UnityEngine;
 using Verse;
 
@@ -23,6 +24,8 @@ namespace TiberiumRim
         public bool devObject = false;
         public bool destroyTiberium = false;
 
+        private bool discovered = false;
+
         public override IEnumerable<string> ConfigErrors()
         {
             List<string> strings = new List<string>();
@@ -33,6 +36,78 @@ namespace TiberiumRim
             */
             return strings;
 
+        }
+
+        public bool Discovered
+        {
+            get => discovered || devObject;
+            set => discovered = value;
+        }
+
+        public bool IsActive(out string reason)
+        {
+            reason = "";
+            bool b = true;
+            var sb = new StringBuilder();
+            sb.AppendLine("Locked due to:\n");
+            if (DebugSettings.godMode)
+            {
+                return true;
+            }
+            if (this.devObject)
+            {
+                return DebugSettings.godMode;
+            }
+            if (this.minTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel < this.minTechLevelToBuild)
+            {
+                b = false;
+                sb.AppendLine("- Need min tech level: " + this.minTechLevelToBuild);
+            }
+            if (this.maxTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel > this.maxTechLevelToBuild)
+            {
+                b = false;
+                sb.AppendLine("- Need max tech level: " + this.maxTechLevelToBuild);
+            }
+            if (!this.IsResearchFinished)
+            {
+                b = false;
+                string research = "";
+                foreach (var res in this.researchPrerequisites)
+                {
+                    research += "   - " + res.LabelCap;
+                }
+                sb.AppendLine("- Need research:\n" + research);
+            }
+            if (this.HasStoryExtension())
+            {
+                bool r = false;
+                b = b && StoryPatches.CanBeMade(this, ref r);
+                if (!b)
+                {
+                    var story = this.GetModExtension<StoryThingDefExtension>();
+                    string objectives = "";
+                    foreach (var obj in story.objectiveRequisites)
+                    {
+                        objectives += "   - " + obj.LabelCap;
+                    }
+                    sb.AppendLine("- Need Objectives:\n" + objectives);
+                }
+            }
+            if (this.buildingPrerequisites != null)
+            {
+                b = b && this.buildingPrerequisites.All(t => Find.CurrentMap.listerBuildings.ColonistsHaveBuilding(t));
+                if (!b)
+                {
+                    string buildings = "";
+                    foreach (var build in this.buildingPrerequisites)
+                    {
+                        buildings += "   - " + build.LabelCap;
+                    }
+                    sb.AppendLine("- Need constructed buildings:\n" + buildings);
+                }
+            }
+            reason = sb.ToString().TrimEndNewlines();
+            return b;
         }
 
         public override void ResolveReferences()

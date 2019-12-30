@@ -12,7 +12,6 @@
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
 		<altitudeLayer>Building</altitudeLayer>
-		<passability>Impassable</passability>
 		<statBases>
 			<SellPriceFactor>0.70</SellPriceFactor>
 		</statBases>

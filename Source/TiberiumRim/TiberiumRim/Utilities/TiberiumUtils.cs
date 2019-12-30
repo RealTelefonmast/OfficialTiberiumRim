@@ -12,6 +12,16 @@ namespace TiberiumRim
 {
     public static class TRUtils
     {
+        public static TResearchManager ResearchManager()
+        {
+            return Find.World.GetComponent<TResearchManager>();
+        }
+
+        public static MapComponent_Tiberium Tiberium(this Map map)
+        {
+            return map.GetComponent<MapComponent_Tiberium>();
+        }
+
         public static ThingDef VeinCorpseDef(this Pawn pawn)
         {
             ThingDef raceDef = pawn.def;
@@ -188,7 +198,6 @@ namespace TiberiumRim
         }
 
         //Fucking Math
-
         public static float InverseLerp(Vector3 a, Vector3 b, Vector3 value)
         {
             Vector3 AB = b - a;
@@ -357,7 +366,7 @@ namespace TiberiumRim
             }
             if (graphic is Graphic_Random rand)
                 graphic = rand.SubGraphicFor(thing);
-            GraphicDrawInfo info = new GraphicDrawInfo(graphic, thing.DrawPos, thing.Rotation, fxDef.extraData, fxDef);
+            GraphicDrawInfo info = new GraphicDrawInfo(graphic, thing.DrawPos, thing.Rotation, fxDef.extraData, fxDef, thing);
             //Log.Message("Printing: " + thing + " with drawsize: " + info.drawSize + " rotation: " + info.rotation + " flipUV: " + info.flipUV);
             Printer_Plane.PrintPlane(layer, info.drawPos, info.drawSize, info.drawMat, info.rotation, info.flipUV, null, null, 0.01f, 0f);
             if (graphic.ShadowGraphic != null && thing != null)

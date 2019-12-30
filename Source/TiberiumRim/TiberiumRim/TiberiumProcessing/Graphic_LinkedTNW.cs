@@ -26,9 +26,10 @@ namespace TiberiumRim
         {
             var comp = parent.TryGetComp<CompTNW>();
             if (comp == null) return;
-            foreach (var t in comp.pipeExtensionCells)
+            IntVec3 parentPos = parent.Position;
+            Printer_Plane.PrintPlane(layer, parentPos.ToVector3ShiftedWithAltitude(AltitudeLayer.FloorEmplacement), Vector2.one, LinkedDrawMatFrom(parent, parentPos));
+            foreach (var pos in comp.pipeExtensionCells)
             {
-                IntVec3 pos = t;
                 Printer_Plane.PrintPlane(layer, pos.ToVector3ShiftedWithAltitude(AltitudeLayer.FloorEmplacement), Vector2.one, LinkedDrawMatFrom(parent, pos));
             }
         }

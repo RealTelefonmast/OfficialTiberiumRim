@@ -12,11 +12,11 @@ namespace TiberiumRim
     {
         protected override Job TryGiveJob(Pawn pawn)
         {
+            //If Harvester has refinery, idle at refiner
+            //If Refinery lost, and none available to change to, wait for a refinery to appear, or orders
             Harvester harvester = pawn as Harvester;
             if (harvester.ShouldIdle)
-            {
                 return new Job(TiberiumDefOf.IdleAtRefinery, harvester.IdlePos);
-            }
             return null;
         }
     }
@@ -28,13 +28,12 @@ namespace TiberiumRim
             return true;
         }
 
-        private Harvester Harvester
+        public override string GetReport()
         {
-            get
-            {
-                return pawn as Harvester;
-            }
+            return Harvester.MainRefineryLost ? "" : "";
         }
+
+        private Harvester Harvester => pawn as Harvester;
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
@@ -44,12 +43,10 @@ namespace TiberiumRim
             {
                 Harvester actor = idle.actor as Harvester;
                 actor.pather.StopDead();
-                actor.Rotation = actor.Refinery?.Rotation.Opposite ?? Rot4.Random;
+                actor.Rotation = actor.ParentBuilding?.Rotation.Opposite ?? Rot4.Random;
             };
-            idle.tickAction = delegate
-            {
-            };
-            idle.FailOn(() => !Harvester.ShouldIdle || Harvester.MainRefineryLost);
+            idle.tickAction = delegate { };
+            idle.FailOn(() => !Harvester.ShouldIdle);
             idle.FailOnDespawnedOrNull(TargetIndex.A);
             idle.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
             idle.defaultCompleteMode = ToilCompleteMode.Never;

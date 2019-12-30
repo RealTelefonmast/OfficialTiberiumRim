@@ -47,7 +47,7 @@ namespace TiberiumRim
         public virtual Color[] ColorOverrides => new Color[] { Container.Color, Color.white, Color.white };
         public virtual float[] OpacityFloats => new float[] { Container.StoredPercent, 1f, 1f };
         public virtual float?[] RotationOverrides => new float?[] { null, null, null };
-        public virtual bool[] DrawBools => new bool[] { true, StructureSet.Pipes.Any(), true };
+        public virtual bool[] DrawBools => new bool[] { true, HasConnection, true };
         public virtual Action<FXGraphic>[] Actions => null;
         public virtual Vector2? TextureOffset => null;
         public virtual Vector2? TextureScale => null;
@@ -102,8 +102,8 @@ namespace TiberiumRim
                         }
                         i++;
                     };
-                    TiberiumFloodInfo flood = new TiberiumFloodInfo(previousMap, crystals.Count, pred, action);
-                    flood.TryMakeFlood(out List<IntVec3> floodedCells, parent.OccupiedRect());
+                    TiberiumFloodInfo flood = new TiberiumFloodInfo(previousMap, pred, action);
+                    flood.TryMakeFlood(out List<IntVec3> floodedCells, parent.OccupiedRect(), crystals.Count);
                 }
             }
             base.PostDestroy(mode, previousMap);
@@ -266,6 +266,8 @@ namespace TiberiumRim
             {
                 sb.AppendLine("Storage Mode: " + Container.AcceptedTypes.ToStringSafeEnumerable());
                 sb.AppendLine("NetworkID: " + Network.NetworkID + " || " + "NetworkMode: " + Network.NetworkMode);
+                sb.AppendLine("Has Connection: " + HasConnection);
+                sb.AppendLine("Container Pct: " + Container.StoredPercent);
             }
             return sb.ToString().TrimStart().TrimEndNewlines();
         }

@@ -72,9 +72,9 @@ namespace TiberiumRim
 
             if (!tiberiumSpike.DestroyedOrNull() && tiberiumSpike.CompTNW.CompPower.PowerOn)
             {
-                if (tiberiumSpike.CompTNW.Container.TryAddValue(TiberiumValueType.Gas, 0.25f, out float excess))
+                if (tiberiumSpike.CompTNW.Container.TryAddValue(TiberiumValueType.Gas, 0.25f, out float actualValue))
                 {
-                    depositValue -= 1f - excess;
+                    depositValue -= actualValue;
                 }
             }
 

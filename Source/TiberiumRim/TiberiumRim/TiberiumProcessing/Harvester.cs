@@ -42,9 +42,7 @@ namespace TiberiumRim
         public bool forceReturn = false;
 
         private int waitingTicks = -1;
-        private Building refineryBuilding;
         private CompTNW_Refinery mainRefinery;
-        private IntVec3 homePos = IntVec3.Invalid;
 
         //SearchSettings
         public HarvestMode harvestMode = HarvestMode.Nearest;
@@ -58,14 +56,12 @@ namespace TiberiumRim
         public override void ExposeData()
         {
             base.ExposeData();             
-            Scribe_References.Look(ref refineryBuilding, "mainRefineryParent");
             Scribe_Values.Look(ref forceReturn, "forceReturn");
-            Scribe_Values.Look(ref homePos, "homePosition");
             Scribe_Values.Look(ref harvestMode, "harvestMode");
             Scribe_Deep.Look(ref Container, "TiberiumContainer", new object[] { this });
             if(Scribe.mode == LoadSaveMode.PostLoadInit)
             {
-                mainRefinery = refineryBuilding.GetComp<CompTNW_Refinery>();
+                mainRefinery = ParentBuilding.GetComp<CompTNW_Refinery>();
             }
         }
 
@@ -77,7 +73,7 @@ namespace TiberiumRim
             if (!respawningAfterLoad)
             {
                 Container = new TiberiumContainer(kindDef.maxStorage, kindDef.acceptedTypes, this);
-                if (refineryBuilding == null)
+                if (ParentBuilding == null)
                 { UpdateRefineries(); }
             }
         }
@@ -131,19 +127,12 @@ namespace TiberiumRim
 
         public void SetMainRefinery(Building building)
         {
-            if (refineryBuilding == building)
-            { return; }
-
-            if (mainRefinery != null)
-            { mainRefinery.harvesters.Remove(this); }
-
-            refineryBuilding = building;
+            if (ParentBuilding == building) return;
+            mainRefinery?.RemoveHarvester(this);
+            ParentBuilding = building;
             mainRefinery = building.TryGetComp<CompTNW_Refinery>();
-            if (!mainRefinery.harvesters.Contains(this))
-            { mainRefinery.harvesters.Add(this); }
-
-            homePos = building.InteractionCell;
-            Messages.Message("TR_HarvesterNewRefinery".Translate(this.def.LabelCap), building, MessageTypeDefOf.NeutralEvent);
+            mainRefinery.AddHarvester(this);
+            Messages.Message("TR_HarvesterNewRefinery".Translate(this.def.LabelCap), new LookTargets(building, this), MessageTypeDefOf.NeutralEvent);
         }
 
         public void SetToWait()
@@ -151,19 +140,7 @@ namespace TiberiumRim
             waitingTicks = GenTicks.SecondsToTicks(15);
         }
 
-        public Building Refinery => refineryBuilding;
-
-        public CompTNW_Refinery CurrentRefinery
-        {
-            get
-            {
-                if (mainRefinery.CanBeRefinedAt)
-                {
-                    return mainRefinery;
-                }
-                return AvailableRefinery;
-            }
-        }
+        public CompTNW_Refinery CurrentRefinery => mainRefinery.CanBeRefinedAt ? mainRefinery : AvailableRefinery;
 
         private CompTNW_Refinery AvailableRefinery
         {
@@ -189,44 +166,18 @@ namespace TiberiumRim
             }
         }
 
-        public TiberiumCrystal CurrentHarvestTarget
-        {
-            get
-            {
-                return TNWManager.ReservationManager.Reservations[this];
-            }
-        }
+        public TiberiumCrystal CurrentHarvestTarget => TNWManager.ReservationManager.Reservations[this];
 
-        public IntVec3 IdlePos
-        {
-            get
-            {
-                if(this.CanReach(homePos, PathEndMode.OnCell, Danger.Deadly))
-                {
-                    return homePos;
-                }
-                return Position;
-            }
-        }
+        public IntVec3 IdlePos => ParentBuilding != null ? mainRefinery.PositionFor(this) : Position;
 
-        private bool TiberiumForModeAvailable
-        {
-            get
-            {
-                if (harvestMode == HarvestMode.Moss)
-                {
-                    return TiberiumManager.MossAvailable;
-                }
-                return TiberiumManager.TiberiumAvailable;
-            }
-        }
+        private bool TiberiumForModeAvailable => harvestMode == HarvestMode.Moss ? TiberiumManager.MossAvailable : TiberiumManager.TiberiumAvailable;
 
         public HarvesterPriority CurrentPriority
         {
             get
             {
                 if (Drafted) return HarvesterPriority.None;
-                if (!IsWating && !ForcedReturn && !Unloading && !Container.CapacityFull && TiberiumForModeAvailable)
+                if (!IsWaiting && !ForcedReturn && !Unloading && !Container.CapacityFull && TiberiumForModeAvailable)
                 {
                     return HarvesterPriority.Harvest;
                 }
@@ -255,10 +206,10 @@ namespace TiberiumRim
             }
         }
 
-        public bool IsWating => waitingTicks > 0;
+        public bool IsWaiting => waitingTicks > 0;
         public bool ForcedReturn => forceReturn || mainRefinery.recallHarvesters;
-        public bool CanUnload => CurrentRefinery != null ? this.CanReserve(CurrentRefinery.parent) : false;
-        public bool MainRefineryLost => refineryBuilding.DestroyedOrNull() || mainRefinery == null;
+        public bool CanUnload => CurrentRefinery != null && this.CanReserve(CurrentRefinery.parent);
+        public bool MainRefineryLost => ParentBuilding.DestroyedOrNull() || mainRefinery == null;
         public bool Unloading => this.CurJobDef == TiberiumDefOf.UnloadAtRefinery;
 
         public bool ShouldIdle => CurrentPriority == HarvesterPriority.Idle;
@@ -290,13 +241,13 @@ namespace TiberiumRim
             if (DebugSettings.godMode)
             {
                 sb.AppendLine("##Debug##");
-                if (IsWating)
+                if (IsWaiting)
                 {
                     sb.AppendLine("Waiting: " + waitingTicks.TicksToSeconds());
                 }
 
                 sb.AppendLine("Drafted: " + Drafted);
-                sb.AppendLine("Is Waiting: " + IsWating);
+                sb.AppendLine("Is Waiting: " + IsWaiting);
                 sb.AppendLine("Forced Return: " + ForcedReturn);
                 sb.AppendLine("Unloading: " + Unloading);
                 sb.AppendLine("Capacity Full: " + Container.CapacityFull);

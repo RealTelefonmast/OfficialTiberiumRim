@@ -17,7 +17,7 @@ namespace TiberiumRim
         public float rotation = 0;
         public bool flipUV = false;
 
-        public GraphicDrawInfo(Graphic g, Vector3 rootPos, Rot4 rot, ExtendedGraphicData exData, ThingDef def = null)
+        public GraphicDrawInfo(Graphic g, Vector3 rootPos, Rot4 rot, ExtendedGraphicData exData, ThingDef def = null, Thing parent = null)
         {
             drawMat = g.MatAt(rot);
 
@@ -32,7 +32,8 @@ namespace TiberiumRim
 
             //DrawSize
             drawSize = g.drawSize;
-            if (g.ShouldDrawRotated)
+            bool drawRotated = parent?.def.graphicData.Graphic.ShouldDrawRotated ?? g.ShouldDrawRotated;
+            if (drawRotated)
             {
                 flipUV = false;
             }
@@ -45,12 +46,12 @@ namespace TiberiumRim
                 flipUV = /*!g.ShouldDrawRotated &&*/ ((rot == Rot4.West && g.WestFlipped) || (rot == Rot4.East && g.EastFlipped));
             }
             drawMesh = flipUV ? MeshPool.GridPlaneFlip(drawSize) : MeshPool.GridPlane(drawSize);
-            rotation = AngleFromRotFor(g, rot, exData?.drawRotated ?? true);
+            rotation = AngleFromRotFor(g, rot, drawRotated);
         }
 
         private float AngleFromRotFor(Graphic g, Rot4 rot, bool drawRotated)
         {
-            if (!drawRotated || !g.ShouldDrawRotated) return 0f;
+            if (!drawRotated) return 0f;
 
             float num = rot.AsAngle;
             num += g.DrawRotatedExtraAngleOffset;

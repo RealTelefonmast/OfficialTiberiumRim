@@ -19,6 +19,7 @@
 			<li>TiberiumMisc</li>
 		</thingCategories>
 		<comps>
+			<!--
 			<li Class="TiberiumRim.CompProperties_FX">
 				<effecters>
 					<li>
@@ -42,6 +43,7 @@
 					</li>
 				</effecters>
 			</li>
+			-->
 			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
 				<radius>4</radius>
 				<intensity>0.35</intensity>

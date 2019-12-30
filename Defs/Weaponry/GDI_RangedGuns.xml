@@ -48,7 +48,7 @@
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Bullet_GDIRifle</defaultProjectile>
+				<defaultProjectile>Bullet_GDIStandard</defaultProjectile>
 				<warmupTime>1</warmupTime>
 				<range>24.9</range>
 				<minRange>1.5</minRange>
@@ -257,7 +257,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_BurstToTarget</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Bullet_Shatterer</defaultProjectile>
+				<defaultProjectile>Bullet_SonicWave</defaultProjectile>
 				<requireLineOfSight>true</requireLineOfSight>
 				<warmupTime>2.25</warmupTime>
 				<range>25</range>
@@ -391,7 +391,7 @@
 			<li>
 				<verbClass>Verb_LaunchProjectile</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Bullet_Mine</defaultProjectile>
+				<defaultProjectile>Bullet_ShockShell</defaultProjectile>
 				<requireLineOfSight>false</requireLineOfSight>
 				<warmupTime>5</warmupTime>
 				<range>49.9</range>

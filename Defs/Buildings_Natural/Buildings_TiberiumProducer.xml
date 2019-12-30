@@ -268,13 +268,13 @@
 			</li>
 			<li>
 				<plants>
-					<li>SmallBlossom,8</li>
+					<li>SmallBlossom,12</li>
 				</plants>
 				<chance>0.7</chance>
 			</li>
 			<li>
 				<plants>
-					<li>AlocasiaBlossom,7.5</li>
+					<li>AlocasiaBlossom,10</li>
 				</plants>
 				<chance>0.8</chance>
 			</li>
@@ -448,13 +448,13 @@
 			</li>
 			<li>
 				<plants>
-					<li>SmallBlossom,8</li>
+					<li>SmallBlossom,12</li>
 				</plants>
 				<chance>0.7</chance>
 			</li>
 			<li>
 				<plants>
-					<li>AlocasiaBlossom,7.5</li>
+					<li>AlocasiaBlossom,10</li>
 				</plants>
 				<chance>0.8</chance>
 			</li>

@@ -61,6 +61,8 @@ namespace TiberiumRim
                     dirtyCells.Add(v);
             }
             dirtyGrid = true;
+
+            UpdateDirties();
         }
 
         public void UpdateDirties()

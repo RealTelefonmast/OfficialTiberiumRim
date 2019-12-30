@@ -30,7 +30,7 @@
 	<JobDef>
 		<defName>IdleAtRefinery</defName>
 		<driverClass>TiberiumRim.JobDriver_IdleAtRefinery</driverClass>
-		<reportString>idling at refinery.</reportString>
+		<reportString>idling.</reportString>
 	</JobDef>
 
 </Defs>

@@ -14,7 +14,7 @@
 	
 	<ThingDef Name="GDI_Armor" ParentName="ArmorMachineableBase_TR" Abstract="True">
 		<recipeMaker>
-			<recipeUsers>
+			<recipeUsers Inherit="False">
 				<li>GDI_Factory</li>
 			</recipeUsers>
 		</recipeMaker>
@@ -30,7 +30,7 @@
 	
 	<ThingDef Name="Nod_Armor" ParentName="ArmorMachineableBase_TR" Abstract="True">
 		<recipeMaker>
-			<recipeUsers>
+			<recipeUsers Inherit="False">
 				<li>Nod_Factory</li>
 			</recipeUsers>
 		</recipeMaker>

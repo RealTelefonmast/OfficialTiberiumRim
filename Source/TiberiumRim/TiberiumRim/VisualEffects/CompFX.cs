@@ -82,7 +82,7 @@ namespace TiberiumRim
                         for (int i = 0; i < Props.moteData.northVec.Count; i++)
                         {
                             Vector3 v2 = center + Props.moteData.northVec[i];
-                            newVec = new Vector3(v2.x, Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead), v2.z);
+                            newVec = new Vector3(v2.x, AltitudeLayer.MoteOverhead.AltitudeFor(), v2.z);
                             positions.Add(newVec);
                         }
                     }
@@ -91,7 +91,7 @@ namespace TiberiumRim
                         for (int i = 0; i < Props.moteData.eastVec.Count; i++)
                         {
                             Vector3 v2 = center + Props.moteData.eastVec[i];
-                            newVec = new Vector3(v2.x, Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead), v2.z);
+                            newVec = new Vector3(v2.x, AltitudeLayer.MoteOverhead.AltitudeFor(), v2.z);
                             positions.Add(newVec);
                         }
                     }
@@ -128,16 +128,13 @@ namespace TiberiumRim
         {
             get
             {
-                if (iParent == null)
+                if (iParent != null) return iParent;
+                if (parent.AllComps.Any(c => c is IFXObject))
                 {
-                    if (parent is IFXObject fxObject)
-                    {
-                        iParent = fxObject;
-                        return iParent;
-                    }
-                    iParent = parent.AllComps.Find(x => x is IFXObject) as IFXObject;
+                    iParent = parent.AllComps.First(x => x is IFXObject) as IFXObject;
+                    return iParent;
                 }
-                return iParent;
+                return parent as IFXObject;
             }
         }
 
@@ -284,7 +281,7 @@ namespace TiberiumRim
 
         public Action<FXGraphic> Action(int index)
         {
-            if(IParent == null || IParent.Actions == null || IParent.Actions.Count() < (index + 1))
+            if(IParent?.Actions == null || IParent.Actions.Count() < (index + 1))
             {
                 return null;
             }
@@ -303,7 +300,7 @@ namespace TiberiumRim
             for (int i = 0; i < Graphics.Count; i++)
             {
                 FXGraphic graphic = Graphics[i];
-                if (CanDraw(i) && graphic.data.mode != FXMode.Static)
+                if (graphic.data.mode != FXMode.Static && CanDraw(i))
                 {
                     graphic.Draw(DrawPosition(i), parent.Rotation, RotationOverride(i), Action(i), i);
                 }
@@ -316,7 +313,7 @@ namespace TiberiumRim
             for (int i = 0; i < Graphics.Count; i++)
             {
                 FXGraphic graphic = Graphics[i];
-                if (CanDraw(i) && graphic.data.mode == FXMode.Static)
+                if (graphic.data.mode == FXMode.Static && CanDraw(i))
                 {
                     graphic.Print(layer, DrawPosition(i), parent.Rotation, RotationOverride(i), parent);
                 }

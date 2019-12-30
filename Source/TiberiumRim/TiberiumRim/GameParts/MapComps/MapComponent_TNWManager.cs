@@ -182,7 +182,7 @@ namespace TiberiumRim
         public void DeregisterHarvester(Harvester harvester)
         {
             ReservationManager.DeregisterHarvester(harvester);
-            MainStructureSet.Refineries.ForEach(r => r.harvesters.Remove(harvester));
+            MainStructureSet.Refineries.ForEach(r => r.RemoveHarvester(harvester));
         }
     }
 }

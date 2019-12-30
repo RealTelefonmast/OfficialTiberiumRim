@@ -375,6 +375,7 @@
 		<comps>
 			<li Class="TiberiumRim.RefineryProperties">
 				<harvester>Harvester_Common</harvester>
+				<flowAmount>0.125</flowAmount>
 				<maxStorage>1000</maxStorage>
 				<tnwbMode>Producer</tnwbMode>
 			</li>

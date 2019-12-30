@@ -9,7 +9,7 @@ namespace TiberiumRim
 {
     public class MechanicalPawn : FXPawn
     {
-        public Building parent;
+        protected Building parent;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -31,21 +31,15 @@ namespace TiberiumRim
             }
         }
 
-        public MapComponent_TNWManager TNWManager
+        public virtual Building ParentBuilding
         {
-            get
-            {
-                return Map.GetComponent<MapComponent_TNWManager>();
-            }
+            get => parent;
+            set => parent = value;
         }
 
-        public MapComponent_Tiberium TiberiumManager
-        {
-            get
-            {
-                return Map.GetComponent<MapComponent_Tiberium>();
-            }
-        }
+        public MapComponent_TNWManager TNWManager => Map.GetComponent<MapComponent_TNWManager>();
+
+        public MapComponent_Tiberium TiberiumManager => Map.GetComponent<MapComponent_Tiberium>();
 
         public bool IsDamaged()
         {

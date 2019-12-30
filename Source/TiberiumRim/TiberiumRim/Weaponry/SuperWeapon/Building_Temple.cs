@@ -7,7 +7,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class Building_Temple : TRBuilding
+    public class Building_Temple : TRBuilding, IRocketSilo
     {
         private int tick = 1000;
         private int maxTick = 1000;
@@ -22,6 +22,9 @@ namespace TiberiumRim
         public override float[] OpacityFloats => new float[] { 1f, 1f };
         public override float?[] RotationOverrides => new float?[] { null, null };
         public override bool[] DrawBools => new bool[] { bools[0], bools[1], bools[2], true};
+
+        public Vector3 RocketBaseOffset { get; }
+        public AltitudeLayer Altitude { get; }
 
         [TweakValue("NodNukeOffY", 0f, 1f)]
         public static float NodNukeOffY = 0.37f;

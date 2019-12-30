@@ -126,7 +126,6 @@ namespace TiberiumRim
                 action.Invoke(this);
                 return;
             }
-
             GraphicDrawInfo info = new GraphicDrawInfo(Graphic, drawPos, rot, ((FXThingDef)parent.parent.def).extraData, parent.parent.def);
             Material mat = info.drawMat;
             mat.SetTextureOffset("_MainTex", parent.TextureOffset);

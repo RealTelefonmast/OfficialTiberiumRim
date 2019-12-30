@@ -496,6 +496,30 @@
 		<driesTo>TiberiumSoilGreen</driesTo>
 		<renderPrecedence>395</renderPrecedence>
 	</TiberiumRim.TiberiumTerrainDef>
+
+	<TiberiumRim.TiberiumTerrainDef ParentName="WaterBase">
+		<defName>BlueTiberiumWater</defName>
+		<label>ionized water</label>
+		<texturePath>Terrain/Natural/ShallowBlueTib</texturePath>
+		<waterDepthShader>Map/WaterDepth</waterDepthShader>
+		<avoidWander>true</avoidWander>
+		<extraDeteriorationFactor>5</extraDeteriorationFactor>
+		<traversedThought>TiberiumWaterBath</traversedThought>
+		<pathCost>30</pathCost>
+		<tags>
+			<li>Bridgeable</li>
+			<li>ShallowWater</li>
+			<li>Tiberium</li>
+			<li>TiberiumWater</li>
+		</tags>
+		<statBases>
+			<Beauty>-10</Beauty>
+			<Cleanliness>-100</Cleanliness>
+		</statBases>
+		<changeable>true</changeable>
+		<driesTo>TiberiumSoilBlue</driesTo>
+		<renderPrecedence>395</renderPrecedence>
+	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="WaterBase">
 		<defName>TiberiumShallowMovingWater</defName>

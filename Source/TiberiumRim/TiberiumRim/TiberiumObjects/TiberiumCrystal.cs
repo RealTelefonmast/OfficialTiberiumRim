@@ -30,7 +30,7 @@ namespace TiberiumRim
 
         private bool forcedDormant = true;
         private bool updatedTerrain;
-        private bool ignoreFlora = false;
+        private bool insideProducer = false;
         private bool rootNode = false;
 
         private int spreadTimes = 0;
@@ -46,7 +46,7 @@ namespace TiberiumRim
 
             Scribe_Values.Look(ref forcedDormant, "dormant");
             Scribe_Values.Look(ref updatedTerrain, "updatedTerrain");
-            Scribe_Values.Look(ref ignoreFlora, "ignoreFlora");
+            Scribe_Values.Look(ref insideProducer, "insideProducer");
             Scribe_Values.Look(ref rootNode, "rootNode");
 
             Scribe_Values.Look(ref spreadTimes, "spreadTimes");
@@ -61,7 +61,7 @@ namespace TiberiumRim
             this.generation = gen;
         }
 
-        //If Tiberium spawns within the flora area of a producer, it ignores flora while spreading, killing and replacing it.
+        //If Tiberium spawns within the flora area of a producer, it grows within the pre-set paths inside the producer area
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
@@ -71,8 +71,16 @@ namespace TiberiumRim
             {
                 parent.AddBoundCrystal(this);
                 if (Position.DistanceTo(parent.Position) <= parent.GrowRadius)
-                    ignoreFlora = true;
-                rootNode = TRUtils.Chance(0.03f);
+                    insideProducer = true;
+                rootNode = def.tiberium.smoothSpread || insideProducer || TRUtils.Chance(0.03f);
+                if (insideProducer)
+                {
+                    foreach (var cell in Position.CellsAdjacent8Way())
+                    {
+                        if (cell.InBounds(Map) &&Parent.InsideGrowPath(cell))
+                            cell.GetPlant(Map)?.DeSpawn();
+                    }
+                }
                 if (!respawningAfterLoad)
                 {
                     growthPerTick = 1f / ((GenDate.TicksPerDay * def.tiberium.growDays) / GenTicks.TickLongInterval);
@@ -111,6 +119,12 @@ namespace TiberiumRim
             }
         }
 
+        public void Harvest(float value)
+        {
+            if (value > 0)
+                growthInt -= value;
+        }
+
         public void TiberiumTick()
         {
             if (!CanTick) return;
@@ -130,7 +144,7 @@ namespace TiberiumRim
         public void GrowthTick()
         {
             if ((parent?.NoGrowth ?? false) || (Growth >= 1f)) return;
-            Growth += GrowthPerTick;
+            growthInt += GrowthPerTick;
 
             //Set Terrain
             if (updatedTerrain) return;
@@ -161,7 +175,7 @@ namespace TiberiumRim
 
             if (Rand.MTBEventOccurs(def.tiberium.reproduceDays, GenDate.TicksPerDay, GenTicks.TickLongInterval))
             {
-                if (GenTiberium.TrySpreadTiberium(this, ignoreFlora))
+                if (GenTiberium.TrySpreadTiberium(this, insideProducer))
                 {
                     if(!rootNode)
                         spreadTimes++;
@@ -242,11 +256,7 @@ namespace TiberiumRim
             }
         }
 
-        public float Growth
-        {
-            get => growthInt;
-            set => growthInt = Mathf.Clamp01(value);
-        }
+        public float Growth => growthInt;
 
         protected float GrowthPerTick => growthPerTick * this.GrowthRate;
 

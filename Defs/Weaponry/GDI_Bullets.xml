@@ -12,9 +12,25 @@
 		</graphicData>
 		<projectile>
 			<damageDef>Bullet</damageDef>
-			<damageAmountBase>6</damageAmountBase>
-			<stoppingPower>0.25</stoppingPower>
-			<speed>65</speed>
+			<damageAmountBase>4</damageAmountBase>
+			<stoppingPower>0.10</stoppingPower>
+			<speed>100</speed>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_GDIHighVelocity</defName>
+		<label>bullet</label>
+		<description>bullet</description>
+		<graphicData>
+		<texPath>Items/Weapons/Projectile/Bullet_Base_GDI</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>5</damageAmountBase>
+			<stoppingPower>0.30</stoppingPower>
+			<speed>70</speed>
 		</projectile>
 	</ThingDef>
 	
@@ -85,7 +101,7 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="BaseBullet_TR">
-		<defName>Bullet_Emitter</defName>
+		<defName>Bullet_SonicWave</defName>
 		<label>sonic wave</label>
 		<graphicData>
 			<texPath>Items/Weapons/Gun_Blank</texPath>
@@ -95,7 +111,7 @@
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
 			<damageDef>TRSonic</damageDef>
-			<damageAmountBase>12</damageAmountBase>
+			<damageAmountBase>10</damageAmountBase>
 			<explosionRadius>1.1</explosionRadius>
 			<stoppingPower>0.5</stoppingPower>
 			<speed>25</speed>
@@ -104,21 +120,6 @@
 	</ThingDef>
 	
 	<!-- Held Gun -->
-	<ThingDef ParentName="BaseBullet_TR">
-		<defName>Bullet_GDIRifle</defName>
-		<label>bullet</label>
-		<description>bullet</description>
-		<graphicData>
-		<texPath>Items/Weapons/Projectile/Bullet_Base_GDI</texPath>
-		<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<projectile>
-			<damageDef>Bullet</damageDef>
-			<damageAmountBase>3</damageAmountBase>
-			<stoppingPower>0.25</stoppingPower>
-			<speed>75</speed>
-		</projectile>
-	</ThingDef>
 	
 	<ThingDef ParentName="BaseBullet_TR">
 		<defName>Projectile_StunGrenade</defName>
@@ -138,26 +139,6 @@
 			<explosionDelay>60</explosionDelay>
 			<soundExplode>Blast_Rail</soundExplode>
 			<soundAmbient>MortarRound_Ambient</soundAmbient>
-		</projectile>
-	</ThingDef>
-	
-	<ThingDef ParentName="BaseBullet_TR">
-		<defName>Bullet_Shatterer</defName>
-		<label>personal sonic wave</label>
-		<description>sonic wave</description>
-		<graphicData>
-			<texPath>Items/Weapons/Gun_Blank</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>1</drawSize>
-		</graphicData>
-		<thingClass>Projectile_Explosive</thingClass>
-		<projectile>
-			<damageDef>TRSonic</damageDef>
-			<damageAmountBase>4</damageAmountBase>
-			<explosionRadius>1.1</explosionRadius>
-			<stoppingPower>0.25</stoppingPower>
-			<speed>25</speed>
-			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
 	</ThingDef>
 
@@ -184,7 +165,7 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="BaseBullet_TR">
-		<defName>Bullet_Mine</defName>
+		<defName>Bullet_ShockShell</defName>
 		<label>shockwave shell</label>
 		<description>shockwave shell</description>
 		<graphicData>
@@ -193,7 +174,7 @@
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
-			<damageDef>TRSiege</damageDef>
+			<damageDef>TRShockWave</damageDef>
 			<damageAmountBase>10</damageAmountBase>
 			<explosionRadius>5</explosionRadius>
 			<speed>30</speed>

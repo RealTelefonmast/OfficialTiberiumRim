@@ -214,17 +214,12 @@
 	</TiberiumRim.TRThingDef>
 
 
-	<!-- Shredder Turret -->
-	<TiberiumRim.TRThingDef ParentName="TurretBase_TR">
-		<defName>Nod_ShredderTurret</defName>
-		<label>shredder turret</label>
-		<description>A Nod shredder turret, useful to control masses.\n\nVulnerable by railgun attack.</description>
+	<TiberiumRim.TRThingDef Name="NodHubTurret" ParentName="TurretBase_TR" Abstract="True">
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Defense</TRCategory>
 		<thingClass>TiberiumRim.Building_HubTurret</thingClass>
 		<size>(2,2)</size>
 		<graphicData>
-			<texPath>Buildings/Nod/Defense/Turrets/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,2)</drawSize>
 			<damageData>
@@ -232,7 +227,6 @@
 			</damageData>
 		</graphicData>
 		<castEdgeShadows>false</castEdgeShadows>
-		<uiIconPath>Buildings/Nod/Defense/Turrets/Shredder</uiIconPath>
 		<uiIconScale>1</uiIconScale>
 		<altitudeLayer>Building</altitudeLayer>
 		<stealable>false</stealable>
@@ -247,6 +241,52 @@
 			<ShootingAccuracyTurret>0.93</ShootingAccuracyTurret>
 		</statBases>
 		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>1.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<chanceNeverExplodeFromDamage>0.35</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<fillPercent>0.3</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<costList>
+			<Nod_CarbonPlate>50</Nod_CarbonPlate>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<specialDisplayRadius>17.9</specialDisplayRadius>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+		</building>
+		<filthLeaving>Filth_Ash</filthLeaving>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_TurretGunTop</li>
+		</placeWorkers>
+		<damageMultipliers>
+			<li>
+				<damageDef>TRRailgun</damageDef>
+				<multiplier>1.5</multiplier>
+			</li>
+		</damageMultipliers>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>
+
+	<!-- Shredder Turret -->
+	<TiberiumRim.TRThingDef ParentName="NodHubTurret">
+		<defName>Nod_ShredderTurret</defName>
+		<label>shredder turret</label>
+		<description>Nod's shredder turret, extremely effective towards unarmored infantry.</description>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Turrets/Base</texPath>
+		</graphicData>
+		<uiIconPath>Buildings/Nod/Defense/Turrets/Shredder</uiIconPath>
 		<turret>
 			<canForceTarget>true</canForceTarget>
 			<hub>
@@ -298,41 +338,72 @@
 					</li>
 				</overlays>
 			</li>	
-			<li Class="CompProperties_Explosive">
-				<explosiveRadius>1.9</explosiveRadius>
-				<explosiveDamageType>Bomb</explosiveDamageType>
-				<chanceNeverExplodeFromDamage>0.35</chanceNeverExplodeFromDamage>
-			</li>
-			<li Class="CompProperties_Glower">
-				<glowRadius>3</glowRadius>
-				<glowColor>(255,150,150)</glowColor>
-			</li>
 		</comps>
-		<passability>PassThroughOnly</passability>
-		<pathCost>70</pathCost>
-		<fillPercent>0.3</fillPercent>
-		<hasTooltip>true</hasTooltip>
-		<costList>
-			<Nod_CarbonPlate>50</Nod_CarbonPlate>
-			<ComponentIndustrial>5</ComponentIndustrial>
-		</costList>
-		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-		<specialDisplayRadius>17.9</specialDisplayRadius>
-		<building>
-			<ai_combatDangerous>true</ai_combatDangerous>
-		</building>
-		<filthLeaving>Filth_Ash</filthLeaving>
-		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_TurretGunTop</li>
-		</placeWorkers>
-		<damageMultipliers>
-			<li>
-				<damageDef>TRRailgun</damageDef>
-				<multiplier>1.5</multiplier>
-			</li>
-		</damageMultipliers>
-		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
 	</TiberiumRim.TRThingDef>
+	
+	<!-- Flame Turret -->
+	<TiberiumRim.TRThingDef ParentName="NodHubTurret">
+		<defName>Nod_FlameTurret</defName>
+		<label>flame turret</label>
+		<description>Nod's flame turret.</description>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Turrets/Base</texPath>
+		</graphicData>
+		<uiIconPath>Buildings/Nod/Defense/Turrets/Flamer</uiIconPath>
+		<turret>
+			<canForceTarget>true</canForceTarget>
+			<hub>
+				<isHub>false</isHub>
+				<hubDef>Nod_TurretHub</hubDef>
+				<maxTurrets>4</maxTurrets>
+			</hub>
+			<turrets>
+				<li>
+					<turretTop>
+						<turret>
+							<texPath>Buildings/Nod/Defense/Turrets/Flame_Base</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(2,2)</drawSize>
+						</turret>
+						<speed>200</speed>
+					</turretTop>
+					<turretGunDef>Gun_FlameTurret</turretGunDef>
+					<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
+					<turretBurstCooldownTime>1.5</turretBurstCooldownTime>
+				</li>
+			</turrets>
+		</turret>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Defense/Turrets/Lights</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2,2)</drawSize>							
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<skip>true</skip>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Defense/Turrets/Flame_Glow</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2,2)</drawSize>							
+						</data>
+						<altitude>Item</altitude>
+						<mode>Dynamic</mode>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>	
+		</comps>
+	</TiberiumRim.TRThingDef>
+	
 	
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>Nod_LaserFence</defName>

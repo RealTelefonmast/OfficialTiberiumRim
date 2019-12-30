@@ -10,17 +10,28 @@ namespace TiberiumRim
 {
     public class ProjectileProperties_Extended
     {
-        
+        public ExplosionProperties explosion;
     }
 
     public class ExplosionProperties
     {
         public float explosionRadius;
-        public float preSpawnChance;
-        public float postSpawnChance;
-        public DamageDef damageDef;
-        public ThingDef postSpawnDef;
+        public int explosionDelay;
+
         public ThingDef preSpawnDef;
+        public ThingDef postSpawnDef;
+        public float preSpawnChance  = 1f;
+        public float postSpawnChance = 1f;
+        public int preSpawnCount     = 1;
+        public int postSpawnCount    = 1;
+        public float shakeFactor     = 1f;
+        public float fireChance;
+        public bool explosionDamageFalloff;
+        public EffecterDef explosionEffect;
+        public DamageDef damageDef;
+
+        public SoundDef soundExplode;
+
     }
 
     public class LaserProperties

@@ -10,9 +10,9 @@ namespace TiberiumRim
 {
     public class IngestionOutcomeDoer_GiveHediffWithSideEffect : IngestionOutcomeDoer_GiveHediff
     {
-        public HediffDef hediffDef;
-        public ChemicalDef toleranceChemical;
-        public float severity = -1f;
+        public new HediffDef hediffDef;
+        public new ChemicalDef toleranceChemical;
+        public new float severity = -1f;
 
         public List<NeedDef> needs = new List<NeedDef>();
         public List<HediffDef> hediffs = new List<HediffDef>();

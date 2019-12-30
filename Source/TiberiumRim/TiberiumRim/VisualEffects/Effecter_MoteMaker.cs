@@ -8,7 +8,7 @@ namespace TiberiumRim
 {
     public class Effecter_MoteMaker : Effecter
     {
-        public EffecterDefTR def;
+        public new EffecterDefTR def;
 
         public Effecter_MoteMaker(EffecterDef def) : base(def)
         {

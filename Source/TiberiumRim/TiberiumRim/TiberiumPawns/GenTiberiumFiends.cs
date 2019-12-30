@@ -12,7 +12,7 @@ namespace TiberiumRim
         public static List<TiberiumPawn> TrySpawnFiendsNear(TiberiumBlossom blossom)
         {
             List<TiberiumPawn> pawns = new List<TiberiumPawn>();
-            int count = blossom.FieldCells.Count / 5;
+            int count = blossom.fieldCells.Count / 5;
             for (int i = 0; i < count; i++)
             {
 
