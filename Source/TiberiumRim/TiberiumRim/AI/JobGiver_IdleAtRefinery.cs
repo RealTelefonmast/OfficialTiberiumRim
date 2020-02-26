@@ -16,7 +16,7 @@ namespace TiberiumRim
             //If Refinery lost, and none available to change to, wait for a refinery to appear, or orders
             Harvester harvester = pawn as Harvester;
             if (harvester.ShouldIdle)
-                return new Job(TiberiumDefOf.IdleAtRefinery, harvester.IdlePos);
+                return JobMaker.MakeJob(TiberiumDefOf.IdleAtRefinery, harvester.IdlePos);
             return null;
         }
     }

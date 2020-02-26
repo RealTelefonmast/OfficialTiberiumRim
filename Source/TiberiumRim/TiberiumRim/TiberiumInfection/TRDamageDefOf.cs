@@ -11,5 +11,6 @@ namespace TiberiumRim
     public static class TRDamageDefOf
     {
         public static DamageDef TiberiumBurn;
+        public static DamageDef TRSonic;
     }
 }

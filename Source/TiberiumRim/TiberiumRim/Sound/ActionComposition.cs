@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using RimWorld.Planet;
+using UnityEngine;
 using Verse;
 using Verse.Sound;
 
@@ -11,24 +12,18 @@ namespace TiberiumRim
 {
     public class ActionComposition
     {
-        private List<ActionPart> actions = new List<ActionPart>();
+        private List<ActionPart> actionParts = new List<ActionPart>();
+        private Action FinishAction;
         public GlobalTargetInfo target;
-        public int curTick = 0;
-        public int relativeTick = 0;
-        private int lastTick = 0;
-        public void AddPart(Action action, float time, float playTime = 0)
-        {
-            actions.Add(new ActionPart(action, time, playTime));
-        }
+        private int curTick = 0;
+        private int startTick = 0;
+        private int endTick;
 
-        public void AddPart(Action action, SoundDef sound, SoundInfo info, float time, float playTime = 0)
-        {
-            actions.Add(new ActionPart(action, sound, info, time, playTime));
-        }
+        private readonly string compositionName;
 
-        public void AddPart(SoundDef sound, SoundInfo info, float time, float playTime = 0)
+        public ActionComposition(string name)
         {
-            actions.Add(new ActionPart(sound, info, time, playTime));
+            compositionName = name;
         }
 
         public void CacheMap(GlobalTargetInfo target)
@@ -36,88 +31,161 @@ namespace TiberiumRim
             this.target = target;
         }
 
+        public void AddFinishAction(Action action)
+        {
+            FinishAction = action;
+        }
+
+        public void AddPart(Action<ActionPart> action, float time, float playTime = 0)
+        {
+            actionParts.Add(new ActionPart(this, action, time, playTime));
+            Log.Message("[" + compositionName + "]Adding Action Part at " + time + " for " + playTime + "s");
+        }
+
+        public void AddPart(Action<ActionPart> action, SoundDef sound, SoundInfo info, float time, float playTime = 0)
+        {
+            actionParts.Add(new ActionPart(this, action, sound, info, time, playTime));
+            Log.Message("[" + compositionName + "]Adding Action/Sound Part at " + time + " for " + playTime + "s");
+        }
+
+        public void AddPart(SoundDef sound, SoundInfo info, float time, float playTime = 0)
+        {
+            actionParts.Add(new ActionPart(this, sound, info, time, playTime));
+            Log.Message("[" + compositionName + "]Adding Sound Part at " + time + " for " + playTime + "s");
+        }
+
+        public int CurrentTick => curTick;
+        public int ActionCount => actionParts.Count;
+
         public void Init()
         {
-            lastTick = Math.Max(actions.Max(a => a.playTick), actions.Max(a => a.endTick));
+            //TODO: Handle Exceptions (simultaneous actions etc) 
+            if(actionParts.GroupBy(a => a.startTick).Any())
+                Log.Error("Action Composition has simultaneous actions!");
+            startTick = actionParts.First().startTick;
+            endTick = actionParts.Last().endTick;
+
+            Log.Message("Initializing ActionComposition starttick: " + startTick + " endTick: " + endTick);
             Current.Game.GetComponent<GameComponent_ActionCompManager>().InitComposition(this);
         }
 
         public void FinalizeComposition()
         {
+            FinishAction?.Invoke();
             Current.Game.GetComponent<GameComponent_ActionCompManager>().RemoveComposition(this);
         }
 
         public void Tick()
         {
-            if (curTick == lastTick)
-                FinalizeComposition();
-            Log.Message("Main Tick: " + curTick + " Relative Tick: " + relativeTick);
-
-            foreach (var action in actions)
+            if (actionParts.All(a => a.Completed))
             {
-                if (action.Completed) continue;
-                if (action.TryDoAction(curTick, actions.IndexOf(action), out int tick))
-                    relativeTick = tick;
+                FinalizeComposition();
+                return;
             }
+            for (var i = 0; i < actionParts.Count; i++)
+            {
+                var part = actionParts[i];
+                part.Tick(curTick, i);
+            }
+
             curTick++;
+        }
+
+        public override string ToString()
+        {
+            return "ActionComp '" + compositionName + "'";
         }
     }
 
     public class ActionPart
     {
-        public Action action;
+        public int startTick = 0;
+        public int endTick = 0;
+        public int playTime = 0;
+
+        private int curTick = 0;
+        public Action<ActionPart> action;
         public SoundPart sound;
-        public int playTick;
-        public int endTick;
 
-        public ActionPart(Action action, float time, float playTime = 0)
+        private readonly ActionComposition parentComposition;
+        private bool completed = false;
+
+        public ActionPart(ActionComposition parent)
         {
+            this.parentComposition = parent;
+        }
+
+        public ActionPart(ActionComposition parent, Action<ActionPart> action, float time, float playTime = 0f)
+        {
+            parentComposition = parent;
             this.action = action;
-            this.playTick = time.SecondsToTicks();
-            endTick = playTick + playTime.SecondsToTicks();
-            Log.Message("Making action Part: " + action + " playTick: " + playTick + " endTick: " + endTick);
+            this.startTick = time.SecondsToTicks();
+            this.endTick = startTick + playTime.SecondsToTicks();
+            this.playTime = playTime.SecondsToTicks();
+            Log.Message("Part is Instant: " + Instant);
         }
 
-        public ActionPart(Action action, SoundDef def, SoundInfo info, float time, float playTime = 0)
+        public ActionPart(ActionComposition parent, SoundDef sound, SoundInfo info, float time, float playTime = 0f)
         {
+            parentComposition = parent;
+            this.sound = new SoundPart(sound, info);
+            this.startTick = time.SecondsToTicks();
+            this.endTick = startTick + playTime.SecondsToTicks();
+            this.playTime = playTime.SecondsToTicks();
+            Log.Message("Part is Instant: " + Instant);
+        }
+
+        public ActionPart(ActionComposition parent, Action<ActionPart> action, SoundDef sound, SoundInfo info, float time, float playTime = 0f)
+        {
+            parentComposition = parent;
             this.action = action;
-            this.sound = new SoundPart(def, info, time);
-            this.playTick = time.SecondsToTicks();
-            endTick = playTick + playTime.SecondsToTicks();
-            Log.Message("Making actionsound Part: " + action + " sound: " + def.defName + " playTick: " + playTick + " endTick: " + endTick);
+            this.sound = new SoundPart(sound, info);
+            this.startTick = time.SecondsToTicks();
+            this.endTick = startTick + playTime.SecondsToTicks();
+            this.playTime = playTime.SecondsToTicks();
+            Log.Message("Part is Instant: " + Instant);
         }
 
-        public ActionPart(SoundDef def, SoundInfo info, float time, float playTime = 0)
+        public int CurrentTick => curTick;
+
+        public bool Instant => startTick == endTick;
+
+        public bool Completed { get => completed;  set => completed = value; }
+
+        public bool CanBeDoneNow(int compositionTick)
         {
-            this.sound = new SoundPart(def, info, time);
-            this.playTick = time.SecondsToTicks();
-            endTick = playTick + playTime.SecondsToTicks();
-            Log.Message("Making sound Part: " + " sound: " + def.defName + " playTick: " + playTick + " endTick: " + endTick);
+            return startTick <= compositionTick && compositionTick <= endTick;
         }
 
-        public bool TryDoAction(int curTick, int num, out int tick)
+        private int actionCounter = 0;
+
+        public void Tick(int compositionTick, int partIndex = 0)
         {
-            tick = curTick - playTick;
-            if(curTick == playTick)
-                sound?.PlaySound(curTick);
-            if (!CanDoNow(curTick)) return false;
-            action?.Invoke();
-            TryComplete(curTick, num);
-            return true;
+            //Log.Message("[Part " + (partIndex + 1) + "] Ticking At: " + compositionTick + " with relative tick: " + relativeTick);
+            if (Completed || !CanBeDoneNow(compositionTick)) return;
+            //Play Sound Once - Always
+            if (CurrentTick == 0)
+            {
+                Log.Message("Should play sound now: " + sound?.def);
+                sound?.PlaySound(compositionTick);
+            }
+
+            action?.Invoke(this);
+            actionCounter++;
+
+            TryComplete(compositionTick, partIndex);
+            curTick++;
         }
 
-        public bool CanDoNow(int tick)
+        private bool TryComplete(int compositionTick, int index = 0)
         {
-            return tick >= playTick && tick <= endTick;
+            if (Instant || compositionTick == endTick)
+            {
+                Log.Message("Completing Part: " + (index+1) + "/" + parentComposition.ActionCount + " for " + parentComposition + " with " + actionCounter + " actions");
+                Completed = true;
+                return true;
+            }
+            return false;
         }
-
-        public void TryComplete(int tick, int num)
-        {
-            Completed = endTick == playTick ? tick == playTick : tick == endTick;
-            if(Completed)
-                Log.Message("Completing Part: " + num);
-        }
-
-        public bool Completed { get; private set; } = false;
     }
 }

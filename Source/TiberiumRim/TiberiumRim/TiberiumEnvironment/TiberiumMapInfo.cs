@@ -20,8 +20,8 @@ namespace TiberiumRim
         public List<TiberiumCrystal> TickList = new List<TiberiumCrystal>();
 
         public Dictionary<HarvestType, List<TiberiumCrystal>> TiberiumCrystals = new Dictionary<HarvestType, List<TiberiumCrystal>>();
-        public Dictionary<TiberiumCrystalDef, List<TiberiumCrystal>> TiberiumCrystalsPerType = new Dictionary<TiberiumCrystalDef, List<TiberiumCrystal>>();
         public Dictionary<HarvestType, List<TiberiumCrystalDef>> TiberiumCrystalTypes = new Dictionary<HarvestType, List<TiberiumCrystalDef>>();
+        public Dictionary<TiberiumCrystalDef, List<TiberiumCrystal>> TiberiumCrystalsByDef = new Dictionary<TiberiumCrystalDef, List<TiberiumCrystal>>();
         public Dictionary<Region, List<TiberiumCrystal>> TiberiumByRegion = new Dictionary<Region, List<TiberiumCrystal>>();
 
         public TiberiumGrid TiberiumGrid;
@@ -63,13 +63,13 @@ namespace TiberiumRim
                 {
                     TiberiumCrystalTypes[type].Add(crystal.def);
                 }
-                if (TiberiumCrystalsPerType.ContainsKey(crystal.def))
+                if (TiberiumCrystalsByDef.ContainsKey(crystal.def))
                 {
-                    TiberiumCrystalsPerType[crystal.def].Add(crystal);
+                    TiberiumCrystalsByDef[crystal.def].Add(crystal);
                 }
                 else
                 {
-                    TiberiumCrystalsPerType.Add(crystal.def, new List<TiberiumCrystal> { crystal });
+                    TiberiumCrystalsByDef.Add(crystal.def, new List<TiberiumCrystal> { crystal });
                 }
             }
         }
@@ -80,7 +80,7 @@ namespace TiberiumRim
             AllTiberiumCrystals.Remove(crystal);
             TiberiumGrid.SetCrystal(crystal.Position, false, null);
             TiberiumCrystals[def.HarvestType].Remove(crystal);
-            TiberiumCrystalsPerType[def].Remove(crystal);
+            TiberiumCrystalsByDef[def].Remove(crystal);
             TotalCount--;
             if (!TiberiumCrystalTypes.TryGetValue(crystal.def.HarvestType).Any(c => c == crystal.def))
             {

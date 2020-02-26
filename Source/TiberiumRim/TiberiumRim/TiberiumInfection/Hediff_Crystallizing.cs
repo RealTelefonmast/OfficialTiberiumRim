@@ -94,7 +94,7 @@ namespace TiberiumRim
 
                 var initSeverity = Hediffs.Where(h => Part.parent.parts.Contains(h.Part)).Sum(h => Severity) / Part.parent.parts.Count;
                 Log.Message("Init Severity: " + initSeverity);
-                HediffUtils.TryInfect(pawn, Part.parent, initSeverity);
+                HediffUtils.InfectPart(pawn, Part.parent, initSeverity);
                 wandered = true;
                 Log.Message("Wandered from " + Part.LabelCap + " to " + Part.parent.LabelCap);
                 return;
@@ -117,7 +117,7 @@ namespace TiberiumRim
         private void AffectOrganViaBlood()
         {
             BodyPartRecord organ = pawn.AllVitalOrgans().Where(p => !pawn.health.hediffSet.PartIsCrystallizing(p)).RandomElement();
-            HediffUtils.TryInfect(pawn, organ, 0.01f);
+            HediffUtils.InfectPart(pawn, organ, 0.01f);
         }
 
         public void RemoveSample()

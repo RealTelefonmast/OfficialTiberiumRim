@@ -34,6 +34,7 @@
 			<Mass>10</Mass>
 			<Beauty>25</Beauty>
 		</statBases>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Structure/DoorFrameNod/DoorFrameNod</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>

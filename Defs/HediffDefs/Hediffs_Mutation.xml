@@ -9,7 +9,6 @@
 		<initialSeverity>1</initialSeverity>
 		<chanceToCauseNoPain>0.25</chanceToCauseNoPain>
 		<makesSickThought>true</makesSickThought>
-		<isBad>false</isBad>
 		<scenarioCanAdd>false</scenarioCanAdd>
 		<cureAllAtOnceIfCuredByItem>false</cureAllAtOnceIfCuredByItem>
 		<everCurableByItem>false</everCurableByItem>
@@ -22,10 +21,9 @@
 	</HediffDef>
 
 	<!-- Mutation -->
-	<HediffDef>
+	<HediffDef ParentName="HediffBase_TR">
 		<defName>MutationBuff</defName>
 		<label>Symbiotic PLACEHOLDER</label>
-		<hediffClass>HediffWithComps</hediffClass>
 		<defaultLabelColor>(138, 229, 226)</defaultLabelColor>
 		<stages>
 		  <li>
@@ -45,13 +43,11 @@
 			  </capMods>
 		  </li>
 	    </stages>
-		<isBad>false</isBad>
 	</HediffDef>
 	
-	<HediffDef>
+	<HediffDef ParentName="HediffBase_TR">
 		<defName>MutationDebuff</defName>
 		<label>Visceral PLACEHOLDER</label>
-		<hediffClass>HediffWithComps</hediffClass>
 		<defaultLabelColor>(140, 156, 50)</defaultLabelColor>
 		<stages>
 		  <li>
@@ -83,24 +79,23 @@
 			  </capMods>
 		  </li>
 		</stages>
-		<isBad>false</isBad>
 	</HediffDef>
 	
-	<HediffDef>
+	<HediffDef ParentName="HediffBase_TR">
 		<defName>TiberiumImmunity</defName>
 		<hediffClass>HediffWithComps</hediffClass>
 		<label>tiberium immunity</label>
 		<labelNoun>tiberium affect immunity</labelNoun>
 		<defaultLabelColor>(0, 255, 255)</defaultLabelColor>
-		<isBad>false</isBad>
 	</HediffDef>
 	
 	<!-- Any Part -->
 	<!-- Inside -->
-	<HediffDef>
+	<HediffDef ParentName="HediffBase_TR">
 		<defName>ViscousPart</defName>
 		<label>Viscous {0}</label>
 		<hediffClass>TiberiumRim.Hediff_LabelledPart</hediffClass>
+		<isBad>true</isBad>
 		<defaultLabelColor>(155, 160, 75)</defaultLabelColor>
 		<stages>
 			<li>
@@ -111,7 +106,7 @@
 	</HediffDef>
 	
 	<!-- Outside -->
-	<HediffDef>
+	<HediffDef ParentName="HediffBase_TR">
 		<defName>VisceralBlister</defName>
 		<label>blistered part</label>
 		<hediffClass>HediffWithComps</hediffClass>
@@ -119,6 +114,7 @@
 		<initialSeverity>1</initialSeverity>
 		<scenarioCanAdd>false</scenarioCanAdd>
 		<tendable>true</tendable>
+		<isBad>true</isBad>
 		<comps>
 			<li Class="HediffCompProperties_TendDuration">
 				<baseTendDurationHours>12</baseTendDurationHours>

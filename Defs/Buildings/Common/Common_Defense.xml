@@ -8,6 +8,7 @@
 		<thingClass>Building_TurretGun</thingClass>
 		<factionDesignation>Common</factionDesignation>
 		<TRCategory>Defense</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Defense/TibCannon/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -100,7 +101,6 @@
 			<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
 			<turretBurstCooldownTime>0</turretBurstCooldownTime>
 			<turretTopDrawSize>2.5</turretTopDrawSize>
-			<turretTopGraphicPath>Buildings/Common/Defense/TibCannon/Turret</turretTopGraphicPath>
 		</building>
 		<placeWorkers>
 			<li>PlaceWorker_TurretTop</li>
@@ -121,7 +121,7 @@
 		</projectile>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseHumanGun">
+	<ThingDef ParentName="BaseWeapon_TR">
 		<defName>SludgeCannon</defName>
 		<label>sludge cannon</label>
 		<description>.</description>
@@ -196,6 +196,7 @@
 		<description>.</description>
 		<factionDesignation>Common</factionDesignation>
 		<TRCategory>Misc</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
 			<damageData>

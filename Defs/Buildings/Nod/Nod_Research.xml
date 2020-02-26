@@ -7,6 +7,7 @@
 		<description>Nod's advanced research facility. The shrine of the brotherhood.</description>
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Misc</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Misc/Shrine/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

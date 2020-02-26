@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<!---->
+	<TR_TaskSillReq>Required Skill: {0} - {1}</TR_TaskSillReq>
+	<TR_StartResearch>Start Project</TR_StartResearch>
+	<TR_StopResearch>Stop Project</TR_StopResearch>
+	<TR_StartedProject>Started new research project: {0}</TR_StartedProject>
+	<TR_CurTask>Current Task: {0}</TR_CurTask>
+	<TR_TaskTargets>Main Targets:</TR_TaskTargets>
+	<TR_TaskWorkType>Required Work Type: {0}</TR_TaskWorkType>
+	<TR_TaskSkillReq>Required Skills:</TR_TaskSkillReq>
+	
+</LanguageData>

@@ -28,7 +28,7 @@ namespace TiberiumRim
         {
             base.Tick();
             if (!ShouldAttack) return;
-            ActionComposition composition = new ActionComposition();
+            ActionComposition composition = new ActionComposition("Ion Cannon Satellite Action");
             composition.CacheMap(target);
             composition.AddPart(delegate
             {
@@ -37,15 +37,17 @@ namespace TiberiumRim
             },0);
             composition.AddPart(delegate
             {
-                //TODO: yes but actually no
+                //TODO: Reset cooldown, notify ion cannon center
                 IonCannon_Strike strike = (IonCannon_Strike)ThingMaker.MakeThing(ThingDef.Named("IonCannonStrike"));
                 strike.satellite = this;
                 GenSpawn.Spawn(strike, composition.target.Cell, composition.target.Map);
             }, 2);
+            /*
             composition.AddPart(delegate
             {
                 composition.target.Map.weatherManager.TransitionTo(WeatherDef.Named("Fog"));
             },22);
+            */
             composition.Init();
             target = GlobalTargetInfo.Invalid;
         }

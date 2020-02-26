@@ -17,7 +17,7 @@ namespace TiberiumRim
             if (!GenSight.LineOfSight(wanderComp.IPawn.Parent.Position, gotoIdle, wanderComp.parent.Map)) return null;
             if (!wanderComp.IPawn.CanWander) return null;
             JobDef job = DefDatabase<JobDef>.GetNamed("WanderAtParent");
-            return new Job(job, gotoIdle);
+            return JobMaker.MakeJob(job, gotoIdle);
         }
     }
 
@@ -29,7 +29,7 @@ namespace TiberiumRim
             IntVec3 gotoIdle = drone.parent.Position + GenRadial.RadialPattern[Rand.Range(0, drone.radialCells)];
             if (!GenSight.LineOfSight(drone.parent.Position, gotoIdle, pawn.Map)) return null;
             if (!(pawn as IPawnWithParent).CanWander) return null;
-            return new Job(DefDatabase<JobDef>.GetNamed("WanderAtParent"), gotoIdle);
+            return JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("WanderAtParent"), gotoIdle);
         }
     }
 

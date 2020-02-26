@@ -12,6 +12,10 @@ namespace TiberiumRim
 {
     public static class TRUtils
     {
+        public static EventManager EventManager()
+        {
+            return Find.World.GetComponent<EventManager>();
+        }
         public static TResearchManager ResearchManager()
         {
             return Find.World.GetComponent<TResearchManager>();
@@ -242,7 +246,6 @@ namespace TiberiumRim
                 else if (cellAngle >= min && cellAngle <= max)
                     cells.Add(cell);
             }
-
             return cells;
         }
 
@@ -447,6 +450,14 @@ namespace TiberiumRim
         }
 
         //
+        public static bool IsPowered(this ThingWithComps thing, out bool usesPower)
+        {
+            var comp = thing.GetComp<CompPowerTrader>();
+            usesPower = comp != null;
+            if (!usesPower)
+                return false;
+            return usesPower ? comp.PowerOn : false;
+        }
 
         public static bool ThingExistsAt(Map map, IntVec3 pos, ThingDef def)
         {
@@ -455,19 +466,14 @@ namespace TiberiumRim
 
         public static Thing GetAnyThingIn<T>(this CellRect cells, Map map)
         {
-            CellRect.CellRectIterator iterator = cells.GetIterator();
-            while (!iterator.Done())
+            foreach (var c in cells)
             {
-                IntVec3 c = iterator.Current;
-                if (c.InBounds(map))
+                if (!c.InBounds(map)) continue;
+                var t = c.GetThingList(map).Find(x => x is T);
+                if(t != null)
                 {
-                    var t = c.GetThingList(map).Find(x => x is T);
-                    if(t != null)
-                    {
-                        return t;
-                    }
+                    return t;
                 }
-                iterator.MoveNext();
             }
             return null;
         }
@@ -606,6 +612,19 @@ namespace TiberiumRim
                 case TiberiumValueType.Gas: isGas = true; return crystalDef;
                 default: return crystalDef;
             }
+        }
+
+
+        public static bool ThingFitsAt(this ThingDef thing, Map map, IntVec3 cell)
+        {
+            foreach (var c in GenAdj.OccupiedRect(cell, Rot4.North, thing.size))
+            {
+                if (!c.InBounds(map) || c.Fogged(map) || !c.Standable(map) || (c.Roofed(map) && c.GetRoof(map).isThickRoof))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public static CellRect ToCellRect(this List<IntVec3> cells)

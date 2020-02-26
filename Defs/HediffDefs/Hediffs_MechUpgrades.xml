@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+	<!-- TODO: Implant application for upgrades needing a mech station -->
 	<HediffDef Name="MechUpgradeBase" Abstract="True">
-		<hediffClass>HediffWithComps</hediffClass>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<description>A mech upgrade.</description>
 		<defaultLabelColor>(255, 102, 255)</defaultLabelColor>
-		<isBad>false</isBad>
-		<makesAlert>false</makesAlert>
+		<initialSeverity>0</initialSeverity>
+		<lethalSeverity>-1</lethalSeverity>
 		<minSeverity>0</minSeverity>
 		<maxSeverity>1</maxSeverity>
-		<initialSeverity>0</initialSeverity>
+		<tendable>false</tendable>
+		<isBad>false</isBad>
+		<makesAlert>false</makesAlert>
 		<everCurableByItem>false</everCurableByItem>
+		<!-- Mech Upgrade Thing
+		<spawnThingOnRemoved>UpgradeThingDef</spawnThingOnRemoved>
+			Maintanence need?
+		<causesNeed>
+		-->
 	</HediffDef>
 	
-	<HediffDef>
+	<HediffDef ParentName="MechUpgradeBase">
 		<defName>MechUpgrade_GeneralArmor</defName>
 		<label>general armor module</label>
 		<stages>
@@ -67,7 +76,7 @@
 		</stages>
 	</HediffDef>
 	
-	<HediffDef>
+	<HediffDef ParentName="MechUpgradeBase">
 		<defName>MechUpgrade_PartEfficiency</defName>
 		<label>efficiency module</label>
 		<stages>

@@ -29,6 +29,7 @@ namespace TiberiumRim
         bool HasTarget(Thing target);
         void AddTarget(LocalTargetInfo target);
         void RemoveTargets();
+        void Notify_ProjectileFired();
     }
 
     public class Building_TRTurret : Building_Turret, IFXObject, ITurretHolder
@@ -37,7 +38,7 @@ namespace TiberiumRim
         public List<TurretGun> turrets = new List<TurretGun>();
 
         private bool holdFire;
-
+        
         //Main Target
         protected List<LocalTargetInfo> targets = new List<LocalTargetInfo>();
         public override LocalTargetInfo CurrentTarget => forcedTarget;
@@ -46,7 +47,7 @@ namespace TiberiumRim
         public TurretGun MainGun => turrets.Any() ? turrets.First() : null;
 
         public virtual CompRefuelable RefuelComp => GetComp<CompRefuelable>();
-        public virtual new CompPowerTrader PowerComp => GetComp<CompPowerTrader>();
+        public new virtual CompPowerTrader PowerComp => GetComp<CompPowerTrader>();
         public virtual CompMannable MannableComp => GetComp<CompMannable>();
         public virtual StunHandler Stunner => stunner;
 
@@ -59,7 +60,7 @@ namespace TiberiumRim
 
         public virtual void SetupTurrets()
         {
-            if (def.turret == null || def.turret.turrets == null) return;
+            if (def.turret?.turrets == null) return;
             foreach (TurretProperties props in def.turret.turrets)
             {
                 AddTurret(props);
@@ -68,9 +69,9 @@ namespace TiberiumRim
 
         protected void AddTurret(TurretProperties props)
         {
-            var turret = new TurretGun(props, this);
+            var turret = (TurretGun)Activator.CreateInstance(props.turretGunClass);
             turrets.Add(turret);
-            turret.Setup();
+            turret.Setup(props, this);
         }
 
         public override void Tick()
@@ -112,7 +113,7 @@ namespace TiberiumRim
             }
         }
 
-        private void ResetForcedTarget()
+        protected virtual void ResetForcedTarget()
         {
             forcedTarget = LocalTargetInfo.Invalid;
             turrets.ForEach(t => t.ResetForcedTarget());
@@ -123,10 +124,7 @@ namespace TiberiumRim
             holdFire = !holdFire;
             if (holdFire)
             {
-                foreach (TurretGun gun in turrets)
-                {
-                    gun.ResetForcedTarget();
-                }
+                ResetForcedTarget();
             }
         }
 
@@ -158,6 +156,11 @@ namespace TiberiumRim
                 if (!target.IsValid)
                     targets.Remove(target);
             }
+        }
+
+        public virtual void Notify_ProjectileFired()
+        {
+
         }
 
         public bool MannedByColonist

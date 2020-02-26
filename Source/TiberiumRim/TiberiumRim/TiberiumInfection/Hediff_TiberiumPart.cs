@@ -43,7 +43,7 @@ namespace TiberiumRim
             pawn.health.RemoveHediff(this);
             BodyPartRecord part = Part.GetDirectChildParts().RandomElement();
             pawn.health.RestorePart(Part);
-            HediffUtils.TryInfect(pawn, part, 0.1f * risk);
+            HediffUtils.InfectPart(pawn, part, 0.1f * risk);
         }
 
         public bool IsRisky => addedManually;

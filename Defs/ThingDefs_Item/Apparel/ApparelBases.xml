@@ -60,7 +60,7 @@
 	
 	<ThingDef Name="ArmorSmithableBase_TR" ParentName="ApparelBase_TR" Abstract="True">
 		<recipeMaker>
-			<workSpeedStat>SmithingSpeed</workSpeedStat>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 			<workSkill>Crafting</workSkill>
 			<effectWorking>Smith</effectWorking>
 			<soundWorking>Recipe_Smith</soundWorking>
@@ -84,7 +84,7 @@
 
 	<ThingDef Name="ArmorMachineableBase_TR" ParentName="ApparelBase_TR" Abstract="True">
 		<recipeMaker>
-			<workSpeedStat>SmithingSpeed</workSpeedStat>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 			<workSkill>Crafting</workSkill>
 			<effectWorking>Smith</effectWorking>
 			<soundWorking>Recipe_Machining</soundWorking>

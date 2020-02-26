@@ -1,9 +1,51 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+
+	<!-- Research -->
+	<WorkGiverDef>
+		<defName>DoTiberiumResearch</defName>
+		<label>do tiberium research</label>
+		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<workType>Research</workType>
+		<priorityInType>99</priorityInType>
+		<verb>(TR)research</verb>
+		<gerund>(TR)researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	
+	<!--
+	<WorkGiverDef>
+		<defName>DoTiberiumResearchCrafting</defName>
+		<label>do tiberium research</label>
+		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>99</priorityInType>
+		<verb>(Tiberium Research)craft</verb>
+		<gerund>(TR)researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	
+	<WorkGiverDef>
+		<defName>DoTiberiumResearchConstruction</defName>
+		<label>do tiberium research</label>
+		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<workType>Construction</workType>
+		<priorityInType>99</priorityInType>
+		<verb>(Tiberium Research)construct</verb>
+		<gerund>(TR)researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	-->
 	
 	<WorkGiverDef>
 		<defName>DoBillsTibCrafter</defName>
-		<label>works at Tiberium refinery</label>
+		<label>work at Tiberium refinery</label>
 		<giverClass>WorkGiver_DoBill</giverClass>
 		<workType>Crafting</workType>
 		<priorityInType>100</priorityInType>
@@ -17,27 +59,10 @@
 		</requiredCapacities>
 		<prioritizeSustains>true</prioritizeSustains>
 	</WorkGiverDef>
-		
-	<WorkGiverDef>
-		<defName>DoBillsTibResearch</defName>
-		<label>does research</label>
-		<giverClass>WorkGiver_DoBill</giverClass>
-		<workType>Research</workType>
-		<priorityInType>97</priorityInType>
-		<fixedBillGiverDefs>
-			<li>TiberiumWorkbench</li>
-		</fixedBillGiverDefs>
-		<verb>research at</verb>
-		<gerund>researching at</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-		<prioritizeSustains>true</prioritizeSustains>
-	</WorkGiverDef>
 	
 	<WorkGiverDef>
 		<defName>Factions_DoBillsFactory</defName>
-		<label>works at factory</label>
+		<label>work at factory</label>
 		<giverClass>WorkGiver_DoBill</giverClass>
 		<workType>Smithing</workType>
 		<priorityInType>97</priorityInType>

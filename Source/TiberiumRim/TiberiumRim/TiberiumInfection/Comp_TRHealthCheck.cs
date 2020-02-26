@@ -15,8 +15,13 @@ namespace TiberiumRim
         public List<BodyPartRecord> partsForMutation = new List<BodyPartRecord>();
 
         private int ticker = 0;
+        private bool canBeAffected = true;
+
         private Pawn Pawn => parent as Pawn;
 
+        public bool IsTiberiumImmune => false;
+
+        //TODO: reduce calls
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
@@ -26,13 +31,16 @@ namespace TiberiumRim
         public override void CompTick()
         {
             base.CompTick();
-            if (!Pawn.Spawned)
+            if (!Pawn.Spawned || !canBeAffected)
                 return;
             if (ticker <= 0)
             {
                 var tib = Pawn.Position.GetTiberium(Pawn.Map);
-                if(tib != null)
-                    HediffUtils.TryAffectPawn(Pawn, tib, false, 250);
+                if (tib != null)
+                {
+                    HediffUtils.TryIrradiatePawn(Pawn, tib, 250);
+                    HediffUtils.TryInfectPawn(Pawn, tib, false, 250);
+                }
                 ticker = 250;
             }
             ticker--;

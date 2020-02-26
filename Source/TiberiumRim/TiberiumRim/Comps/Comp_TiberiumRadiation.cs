@@ -100,8 +100,8 @@ namespace TiberiumRim
                 Pawn pawn = cell.GetFirstPawn(parent.Map);
                 if (pawn != null)
                 {
-                    //TODO: Add Tiberium Radiation
-                    //pawn.health.AddHediff()
+                    //TODO: Finish radiaion
+                    HediffUtils.TryIrradiatePawn(pawn, null, 1);
                 }
             }
         }

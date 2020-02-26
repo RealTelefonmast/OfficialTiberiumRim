@@ -5,8 +5,6 @@ using System.Text;
 using RimWorld;
 using UnityEngine;
 using Verse;
-using StoryFramework;
-using Rect = UnityEngine.Rect;
 
 namespace TiberiumRim
 {
@@ -54,8 +52,7 @@ namespace TiberiumRim
                 Widgets.Label(lockedRect, locked);
                 Text.Font = GameFont.Small;
                 GUI.color = Color.white;
-                string reason = "";
-                inactiveDef.IsActive(out reason);
+                inactiveDef.IsActive(out var reason);
                 Vector2 reasonSize = Text.CalcSize(reason);
                 Rect reasonRect = new Rect(new Vector2(0, curY), reasonSize);
                 Widgets.Label(reasonRect, reason);

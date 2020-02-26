@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	
+	<!--
 	<StoryFramework.MissionDef>
 		<defName>TiberiumArrival</defName>
 		<label>Green Amongst The Blue</label>
@@ -11,11 +11,6 @@
 			<li>M1_Construct</li>
 			<li>M1_ObserveMeteor</li>
 		</objectives>
-		<!-- Removing temporarily
-		<timer>
-			<days>30</days>
-		</timer>
-		-->
 	</StoryFramework.MissionDef>
 
 	<StoryFramework.MissionDef>
@@ -92,5 +87,5 @@
 			<li>GeyserInspection</li>
 		</objectives>
 	</StoryFramework.MissionDef>
-  
+  -->
 </Defs>

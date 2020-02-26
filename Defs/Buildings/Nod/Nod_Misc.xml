@@ -38,6 +38,7 @@
 		<label>Nod Lamp</label>
 		<description>Fill your colony with the ever so beautiful glow of Nod's red light.</description>
 		<factionDesignation>Nod</factionDesignation>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Misc/Light/Floor/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -80,6 +81,7 @@
 		<label>wall light</label>
 		<description>An electrical wall lamp that lights an area. People need light to move and work at full speed.</description>
 		<factionDesignation>Nod</factionDesignation>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		 <graphicData>
 			<texPath>Buildings/Nod/Misc/Light/Wall/Base</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>

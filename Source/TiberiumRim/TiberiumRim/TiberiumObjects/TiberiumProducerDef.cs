@@ -10,7 +10,6 @@ namespace TiberiumRim
     public class TiberiumProducerDef : TRThingDef
     {
         public ThingDef killedVersion;
-        public EffecterDefTR effecter;
         public List<TiberiumTerrainDef> tiberiumTerrain = new List<TiberiumTerrainDef>();
         public List<TiberiumCrystalDef> tiberiumTypes = new List<TiberiumCrystalDef>();
         public List<PlantGroupChance> plantsByDistance;
@@ -19,9 +18,9 @@ namespace TiberiumRim
         public SporeProperties spore;
         public SpawnProperties spawner = new SpawnProperties();
         public float daysToMature = 0f;
-        public bool forResearch = true;
         public bool growsFlora = true;
         public bool leaveTiberium = true;
+        public bool forResearch = true;
 
         public ThingDef SelectPlantByDistance(float distance, float maxDistance, TiberiumTerrainDef terrain)
         {

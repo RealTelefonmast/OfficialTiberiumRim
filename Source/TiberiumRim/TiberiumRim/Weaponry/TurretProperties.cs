@@ -10,6 +10,7 @@ namespace TiberiumRim
 {
     public class TurretProperties
     {
+        public Type turretGunClass = typeof(TurretGun);
         public TurretTopProperties turretTop;
         public ThingDef turretGunDef;
         public Vector3 drawOffset;
@@ -20,6 +21,7 @@ namespace TiberiumRim
         public float range = 10;
         public float minRange = 10;
         public int damage;
+        public bool continuous = false;
 
         //public TurretBurstMode burstMode = TurretBurstMode.Normal;
     }

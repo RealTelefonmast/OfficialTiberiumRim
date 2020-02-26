@@ -16,6 +16,9 @@ namespace TiberiumRim
         public BoolGrid tiberiumBools; 
         public BoolGrid growBools;
         public BoolGrid affectedCells;
+
+        public BoolGrid[] fieldColorGrids;
+
         public TiberiumCrystal[] TiberiumCrystals;
 
         //Flora
@@ -34,6 +37,8 @@ namespace TiberiumRim
             growBools = new BoolGrid(map);
             floraBools = new BoolGrid(map);
             affectedCells = new BoolGrid(map);
+
+            fieldColorGrids = new BoolGrid[] { new BoolGrid(map), new BoolGrid(map), new BoolGrid(map) };
 
             drawer = new CellBoolDrawer(this, map.Size.x, map.Size.z, 0.35f);
             TiberiumCrystals = new TiberiumCrystal[map.cellIndices.NumGridCells];
@@ -117,6 +122,24 @@ namespace TiberiumRim
             TiberiumCrystals[map.cellIndices.CellToIndex(c)] = crystal;
             tiberiumBools.Set(c, value);
             MarkDirty(c);
+        }
+
+        public void SetFieldColor(IntVec3 c, bool value, TiberiumValueType type)
+        {
+            switch (type)
+            {
+                case TiberiumValueType.Green:
+                    fieldColorGrids[0][c] = value;
+                    break;
+                case TiberiumValueType.Blue:
+                    fieldColorGrids[1][c] = value;
+                    break;
+                case TiberiumValueType.Red:
+                    fieldColorGrids[2][c] = value;
+                    break;
+                default:
+                    return;
+            }
         }
 
         private void SetFloraBool(IntVec3 c)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 using UnityEngine;
 using Verse.Sound;
@@ -36,7 +37,6 @@ namespace TiberiumRim
         public float curDegree = 0;
 
         //Stage Three -- Climax
-
         public override void ExposeData()
         {
             base.ExposeData();
@@ -46,16 +46,16 @@ namespace TiberiumRim
         private void IonCannonSoundTest()
         {
             var posInfo = new TargetInfo(Position, Map);
-            ActionComposition composition = new ActionComposition();
+            ActionComposition composition = new ActionComposition("IonCannon Strike SoundTest");
             composition.AddPart(SoundDef.Named("IonCannon_StartUp"), SoundInfo.OnCamera(), 0f, 3f);
             composition.AddPart(SoundDef.Named("IonCannon_InitialCharge"), SoundInfo.InMap(posInfo), 5f, 5f);
             composition.AddPart(SoundDef.Named("IonCannon_PreClimaxPause"), SoundInfo.InMap(posInfo), 10f);
             composition.AddPart(SoundDef.Named("IonCannon_ClimaxChargeUp"), SoundInfo.InMap(posInfo), 15f);// 10.25f);
             composition.AddPart(SoundDef.Named("IonCannon_Climax"), SoundInfo.InMap(posInfo), 20f);
-            composition.AddPart(delegate
+            composition.AddFinishAction(delegate
             {
                 this.Destroy();
-            }, 13f);
+            });
             composition.Init();
         }
 
@@ -83,40 +83,122 @@ namespace TiberiumRim
 
                 var posInfo = new TargetInfo(Position, map);
 
-                ActionComposition composition = new ActionComposition();
-                composition.AddPart(delegate { DoSetup(composition.curTick); }, SoundDef.Named("IonCannon_StartUp"), SoundInfo.OnCamera(), 0f, 3f);
-                composition.AddPart(delegate { DoSpiral(composition.curTick); }, SoundDef.Named("IonCannon_InitialCharge"), SoundInfo.InMap(posInfo), 3f, 5f);
+                ActionComposition composition = new ActionComposition("Ion Cannon Strike");
+                composition.AddPart(delegate { StartDustEffecter(Position, radius, 12); }, 0);
+                composition.AddPart(delegate { DoSetup(composition.CurrentTick); }, SoundDef.Named("IonCannon_StartUp"),
+                    SoundInfo.InMap(posInfo, MaintenanceType.PerFrame), 0f, 3f);
+                composition.AddPart(delegate { DoSpiral(composition.CurrentTick); },
+                    SoundDef.Named("IonCannon_InitialCharge"), SoundInfo.InMap(posInfo, MaintenanceType.PerFrame), 3f,
+                    5f);
                 composition.AddPart(delegate
                 {
-                    Mote mote = (Mote) ThingMaker.MakeThing(ThingDef.Named("IonBubble"), null);
-                    mote.exactPosition = DrawPos;
-                    mote.Scale = 20;
-                    mote.rotationRate = 1.2f;
-                    mote.instanceColor = new ColorInt(70, 90, 175).ToColor;
-                    GenSpawn.Spawn(mote, Position, Map, WipeMode.Vanish);
-                }, 6.75f);
-                composition.AddPart(SoundDef.Named("IonCannon_PreClimaxPause"), SoundInfo.InMap(posInfo), 8f);
-                composition.AddPart(SoundDef.Named("IonCannon_ClimaxChargeUp"), SoundInfo.InMap(posInfo), 10f);// 10.25f);
+                    MakeIonBubble(5, radius, new ColorInt(70, 90, 175).ToColor, ThingDef.Named("IonDistortionBubble"));
+                    MakeIonBubble(5, radius * 0.4f, new ColorInt(100, 120, 175).ToColor,
+                        ThingDef.Named("IonCenterDistortionBubble"));
+
+                }, 7f); // 5 second alive time for bubble
+                composition.AddPart(SoundDef.Named("IonCannon_PreClimaxPause"),
+                    SoundInfo.InMap(posInfo, MaintenanceType.PerFrame), 8f);
+                composition.AddPart(SoundDef.Named("IonCannon_ClimaxChargeUp"),
+                    SoundInfo.InMap(posInfo, MaintenanceType.PerFrame), 10f); // 10.25f);
                 composition.AddPart(delegate
                 {
-                    //TODO: Notify Satellite
-                }, 12f);
+                    //TODO: Notify Satellite; Draw laser on world uwu
+
+                }, 11f);
                 composition.AddPart(delegate
                 {
                     IonBeam beam = (IonBeam) ThingMaker.MakeThing(ThingDef.Named("IonBeam"));
                     beam.realPos = DrawPos;
                     beam.durationTicks = 100;
-                    beam.width = 4;
+                    beam.width = 8;
                     GenSpawn.Spawn(beam, Position, this.Map);
                     //GenExplosion.DoExplosion(Position, Map, radius, DamageDefOf.Bomb, this, TRUtils.Range(1000, 9999));
-                }, SoundDef.Named("IonCannon_Climax"), SoundInfo.InMap(posInfo), 12f);
-                composition.AddPart(delegate
+                    foreach (var intVec3 in GenRadial.RadialCellsAround(Position, radius, true))
+                    {
+                        var list = intVec3.GetThingList(Map);
+                        for (var i = 0; i < list.Count; i++)
+                        {
+                            var thing = list[i];
+
+                            var dinfo = new DamageInfo(DamageDefOf.Burn,
+                                Mathf.Lerp(3000, 100, Position.DistanceTo(intVec3) / radius), 4);
+                            thing?.TakeDamage(dinfo);
+                        }
+                    }
+                    Mote mote = (Mote) ThingMaker.MakeThing(ThingDef.Named("IonBurnMark"));
+                    mote.exactPosition = DrawPos;
+                    mote.Scale = radius * 6f;
+                    mote.rotationRate = 1.2f;
+                    GenSpawn.Spawn(mote, Position, Map);
+
+                    MoteMaker.MakeStaticMote(Position, Map, ThingDef.Named("IonExplosionShockwave"), radius);
+
+                }, SoundDef.Named("IonCannon_Climax"), SoundInfo.InMap(posInfo, MaintenanceType.PerFrame), 12f);
+                composition.AddFinishAction(delegate
                 {
+                    Log.Message("Ion Cannon Should Be Destroyed Now");
                     this.Destroy();
-                    composition.FinalizeComposition();
-                }, 13f);
+                });
                 composition.Init();
             }
+        }
+
+        private void MakeIonBubble(float time, float bubbleRadius, Color color, ThingDef ionDistortion)
+        {
+            ActionComposition composition = new ActionComposition("Ion Bübble " + ionDistortion);
+            Mote mote = (Mote)ThingMaker.MakeThing(ThingDef.Named("IonBubble"));
+            Mote distortion = (Mote)ThingMaker.MakeThing(ionDistortion);
+            composition.AddPart(delegate
+            {
+                mote.exactPosition = distortion.exactPosition = DrawPos;
+                mote.Scale = bubbleRadius;
+                mote.rotationRate = distortion.rotationRate = 1.2f;
+                mote.instanceColor = color;
+                GenSpawn.Spawn(mote, Position, Map);
+                GenSpawn.Spawn(distortion, Position, Map);
+            }, 0);
+            composition.AddPart(delegate(ActionPart part)
+            {
+                distortion.Scale = mote.Scale = bubbleRadius * (part.CurrentTick / (float)part.playTime);
+            }, 0, time);
+            composition.Init();
+        }
+
+        private void StartDustEffecter(IntVec3 around, float radius, float duration)
+        {
+            IEnumerator<IntVec3> cachedCells = null;
+            Color color = new ColorInt(15, 15, 55).ToColor;
+            ActionComposition composition = new ActionComposition("Dust Effecter");
+            composition.AddPart(delegate
+            {
+                Log.Message("## Starting dust puffing");
+                cachedCells = GenRadial.RadialCellsAround(around, radius, true).InRandomOrder().GetEnumerator();
+            },0);
+            composition.AddPart(delegate (ActionPart part)
+            {
+                if (part.CurrentTick % 4 == 0)
+                {
+                    MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDefOf.Mote_DustPuffThick, null);
+                    moteThrown.Scale = 1.9f * TRUtils.Range(2f, 5f);
+                    moteThrown.rotationRate = (float)Rand.Range(-60, 60);
+                    moteThrown.exactPosition = cachedCells.Current.ToVector3Shifted();
+                    moteThrown.instanceColor = color;
+                    moteThrown.SetVelocity((float)Rand.Range(0, 360), TRUtils.Range(0.6f, 0.75f));
+                    GenSpawn.Spawn(moteThrown, cachedCells.Current, Map);
+                    if (!cachedCells.MoveNext())
+                    {
+                        cachedCells.Reset();
+                    }
+                }
+
+            }, 0, duration);
+            composition.AddFinishAction(delegate
+            {
+                Log.Message("## Ending dust puffing...");
+                cachedCells.Dispose();
+            });
+            composition.Init();
         }
 
         private void SetupPositions()

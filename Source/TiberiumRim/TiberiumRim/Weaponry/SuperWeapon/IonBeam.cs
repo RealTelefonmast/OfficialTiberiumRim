@@ -61,7 +61,12 @@ namespace TiberiumRim
         {
             float damage = TRUtils.Range(1, 15);
             DamageInfo dInfo = new DamageInfo(DamageDefOf.Burn, damage, 5, 0, this);
-            cell.GetThingList(Map).ForEach(t => t?.TakeDamage(dInfo));
+            var list = cell.GetThingList(Map);
+            for (var i = 0; i < list.Count; i++)
+            {
+                var thing = list[i];
+                thing.TakeDamage(dInfo);
+            }
             if (FireUtility.TryStartFireIn(cell, Map, TRUtils.Range(0f, 0.2f)))
             {
                 MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDefOf.Mote_Smoke, null);
@@ -80,7 +85,6 @@ namespace TiberiumRim
 
         public override void Draw()
         {
-
             Vector3 drawPos = DrawPos;
             float beamHeight = ((float)Map.Size.z - drawPos.z) * 1.41421354f;
             Vector3 angle = Vector3Utility.FromAngleFlat(-90f);

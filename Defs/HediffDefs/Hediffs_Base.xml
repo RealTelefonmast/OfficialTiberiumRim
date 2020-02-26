@@ -3,20 +3,59 @@
 
 	<HediffDef Name="HediffBase_TR" Abstract="True">
 		<hediffClass>HediffWithComps</hediffClass>
+		<description>A health effect.</description>
+		<initialSeverity>0</initialSeverity>
+		<lethalSeverity>-1</lethalSeverity>
+		<tendable>false</tendable>
+		<isBad>false</isBad>
 		<makesAlert>false</makesAlert>
-		<initialSeverity>0.001</initialSeverity>
-		<makesSickThought>true</makesSickThought>
+		<makesSickThought>false</makesSickThought>
 		<everCurableByItem>false</everCurableByItem>
 		<defaultLabelColor>(165,240,130)</defaultLabelColor>
 	</HediffDef>
 	
+	<HediffDef Name="BadHediffBase_TR" ParentName="HediffBase_TR">
+		<makesAlert>true</makesAlert>
+		<tendable>true</tendable>
+		<isBad>true</isBad>
+		<everCurableByItem>true</everCurableByItem>
+		<minSeverity>0</minSeverity>
+		<maxSeverity>1</maxSeverity>
+	</HediffDef>
+	
+	<HediffDef Name="HediffMedical">
+		<hediffClass>HediffWithComps</hediffClass>
+		<description>A medication effect.</description>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<maxSeverity>1.0</maxSeverity>
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-0.18</severityPerDay>
+			</li>
+		</comps>
+		<!-- Example For Immunities
+		<stages>
+			<li>
+				<makeImmuneTo>
+					<li>Malaria</li>
+					<li>SleepingSickness</li>
+					<li>Plague</li>
+				</makeImmuneTo>
+			</li>
+		</stages>
+		-->
+	</HediffDef>
+	
 	<HediffDef Name="HediffInjury_TR" Abstract="True">
 		<hediffClass>Hediff_Injury</hediffClass>
+		<description>An injury.</description>
+		<defaultLabelColor>(90,240,80)</defaultLabelColor>
 		<makesAlert>false</makesAlert>
 		<tendable>true</tendable>
 		<makesSickThought>false</makesSickThought>
 		<everCurableByItem>true</everCurableByItem>
-		<defaultLabelColor>(90,240,80)</defaultLabelColor>
 		<comps>
 			<li Class="HediffCompProperties_TendDuration">
 				<baseTendDurationHours>6</baseTendDurationHours>
@@ -30,6 +69,7 @@
 	
 	<HediffDef Name="HediffImplant_TR" Abstract="True">
 		<hediffClass>TiberiumRim.Hediff_TiberiumPart</hediffClass>
+		<description>A body implant.</description>
 		<defaultLabelColor>(130, 220, 135)</defaultLabelColor>
 		<isBad>false</isBad>
 	</HediffDef>

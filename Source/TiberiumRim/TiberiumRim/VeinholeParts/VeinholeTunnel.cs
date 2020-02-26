@@ -45,13 +45,13 @@ namespace TiberiumRim
                 {
                     if (TRUtils.Chance(0.39f))
                         if (TRUtils.Chance(0.25f))
-                            FilthMaker.MakeFilth(cell, Map, ThingDefOf.Filth_RubbleRock);
+                            FilthMaker.TryMakeFilth(cell, Map, ThingDefOf.Filth_RubbleRock);
                         else
-                            FilthMaker.MakeFilth(cell, Map, ThingDefOf.Filth_Dirt);
+                            FilthMaker.TryMakeFilth(cell, Map, ThingDefOf.Filth_Dirt);
 
-                   MoteMaker.ThrowDustPuffThick(cell.ToVector3ShiftedWithAltitude(AltitudeLayer.MoteOverhead), Map, TRUtils.Range(1.5f, 3.5f), new Color(1f, 1f, 1f, 0.55f));
+                    MoteMaker.ThrowDustPuffThick(cell.ToVector3ShiftedWithAltitude(AltitudeLayer.MoteOverhead), Map,
+                        TRUtils.Range(1.5f, 3.5f), new Color(1f, 1f, 1f, 0.55f));
                 }
-
             if (ticksToSpawn <= Find.TickManager.TicksGame)
             {
                 GenSpawn.Spawn(TiberiumDefOf.Veinhole, this.Position, Map);

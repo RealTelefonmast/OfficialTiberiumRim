@@ -176,30 +176,6 @@ namespace TiberiumRim
             return false;
         }
 
-        public Color Color
-        {
-            get
-            {
-                Color color = new Color();
-                if(StoredTiberium.Count > 0)
-                {
-                    foreach(TiberiumValueType type in StoredTiberium.Keys)
-                    {
-                        color += TRUtils.ColorForType(type) * (StoredTiberium[type] / capacity);
-                    }
-                }
-                return color;
-            }
-        }     
-
-        public TiberiumValueType MainValueType
-        {
-            get
-            {
-                return StoredTiberium.MaxBy(x => x.Value).Key;
-            }
-        }
-
         public List<TiberiumValueType> AllStoredTypes => StoredTiberium.Keys.ToList();
 
         public List<TiberiumCrystal> PotentialCrystals()
@@ -271,6 +247,30 @@ namespace TiberiumRim
                 overfilled = true;
             }
             return val >= capacity;
+        }
+
+        public Color Color
+        {
+            get
+            {
+                Color color = new Color();
+                if (StoredTiberium.Count > 0)
+                {
+                    foreach (TiberiumValueType type in StoredTiberium.Keys)
+                    {
+                        color += TRUtils.ColorForType(type) * (StoredTiberium[type] / capacity);
+                    }
+                }
+                return color;
+            }
+        }
+
+        public TiberiumValueType MainValueType
+        {
+            get
+            {
+                return StoredTiberium.MaxBy(x => x.Value).Key;
+            }
         }
 
         public float TotalStorage => StoredTiberium.Sum(t => t.Value);

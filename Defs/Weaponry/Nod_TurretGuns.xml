@@ -2,7 +2,7 @@
 <Defs>
 	<!-- Turrets -->
 	
-	<ThingDef ParentName="BaseHumanGun">
+	<ThingDef ParentName="BaseWeapon_TR">
 		<defName>Gun_NodObelisk</defName>
 		<label>obelisk gun</label>
 		<description>pew pew</description>
@@ -131,18 +131,18 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<originOffsets>	
-					<li>(0,0,1)</li>
+					<li>(0,0,1.15)</li>
 				</originOffsets>
+				<shotIntervalTicks>5</shotIntervalTicks>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>
-				<warmupTime>2.5</warmupTime>
+				<warmupTime>0</warmupTime>
 				<range>17.9</range>
-				<forcedMissRadius>0.5</forcedMissRadius>
-				<burstShotCount>10</burstShotCount>
-				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_Flame</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
-				<muzzleFlashScale>15</muzzleFlashScale>
+				<muzzleFlashScale>0</muzzleFlashScale>
 				<consumeFuelPerShot>0.2</consumeFuelPerShot>
 			</li>
 		</verbs>

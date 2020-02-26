@@ -25,7 +25,7 @@ namespace TiberiumRim
         {
             var jobDef = DefDatabase<JobDef>.GetNamed("ReturnFromRepair");
             var drone = pawn as RepairDrone;
-            var job = new Job(jobDef, drone.ParentBuilding);
+            var job = JobMaker.MakeJob(jobDef, drone.ParentBuilding);
             return job;
         }
     }

@@ -279,6 +279,7 @@
 		<label>visceral pod</label>
 		<thingClass>TiberiumRim.VisceralPod</thingClass>
 		<tickerType>Normal</tickerType>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Natural/VisceralPod/Base</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -326,6 +327,7 @@
 		<label>vein hub</label>
 		<thingClass>TiberiumRim.VeinHub</thingClass>
 		<tickerType>Rare</tickerType>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Natural/Veinhole/VeinHub/Hub</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

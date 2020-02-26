@@ -1,54 +1,102 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TResearchDef>
-		<defName>GDIResearch</defName>
-		<label>Research 1</label>		
-	</TiberiumRim.TResearchDef>
-
-	<TiberiumRim.TResearchDef>
-		<defName>GDIResearch2</defName>
-		<label>Research 2</label>		
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIResearch</li>
-			</tiberiumResearch>
-		</requisites>
-	</TiberiumRim.TResearchDef>
+	<TiberiumRim.TResearchGroupDef>
+		<defName>MainGroup</defName>
+		<label>Main Research</label>		
+		<researchProjects>
+			<li>Main1</li>
+			<li>Main2</li>
+		</researchProjects>
+	</TiberiumRim.TResearchGroupDef>
+	
+	<TiberiumRim.TResearchGroupDef>
+		<defName>GDIGroup</defName>
+		<label>GDI Research</label>		
+	</TiberiumRim.TResearchGroupDef>
+	
+	<TiberiumRim.TResearchGroupDef>
+		<defName>NodGroup</defName>
+		<label>Nod Research</label>		
+	</TiberiumRim.TResearchGroupDef>
 	
 	<TiberiumRim.TResearchDef>
-		<defName>GDIResearch3</defName>
-		<label>Research 3</label>		
+		<defName>Main1</defName>
+		<label>Green Sky</label>	
+		<researchType>observation</researchType>
+		<description>We are not quite sure what it is yet and need to investigate further.\nA telescope would be useful, but we don't know how to build one yet, maybe one of our researchers can figure it out!</description>
 		<requisites>
-			<tiberiumResearch>
-				<li>GDIResearch2</li>
-			</tiberiumResearch>
+			<events>
+				<li>EventTiberiumArrival</li>
+			</events>
 		</requisites>
+		<mainTarget>
+			<targetType>Building_ResearchBench</targetType>
+		</mainTarget>
+		<tasks>
+			<li>Main1Task1</li>
+			<li>Main1Task2</li>
+			<li>Main1Task3</li>
+			<li>Main1Task4</li>
+		</tasks>
 	</TiberiumRim.TResearchDef>
 	
-	<TiberiumRim.TResearchDef>
-		<defName>GDIResearch4</defName>
-		<label>Research 4</label>		
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIResearch2</li>
-			</tiberiumResearch>
-		</requisites>
-	</TiberiumRim.TResearchDef>
+	<TiberiumRim.TResearchTaskDef>
+		<defName>Main1Task1</defName>
+		<label>Research Components</label>		
+		<descriptionShort>Figure out basic telescope technology.</descriptionShort>
+		<skillRequirements>
+			<Intellectual>5</Intellectual>
+		</skillRequirements>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<workAmount>800</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>Main1Task2</defName>
+		<label>Craft Parts</label>		
+		<descriptionShort></descriptionShort>
+		<workType>Crafting</workType>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>Main1Task3</defName>
+		<label>Construct Telescope</label>		
+		<descriptionShort>Place down the telescope.</descriptionShort>
+		<workType>Construction</workType>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>Main1Task4</defName>
+		<label>Observation Research</label>		
+		<descriptionShort>Observe the sky.</descriptionShort>
+		<workType>Research</workType>
+	</TiberiumRim.TResearchTaskDef>
+	
 	
 	<TiberiumRim.TResearchDef>
-		<defName>GDIResearch5</defName>
-		<label>Research 5</label>
-	</TiberiumRim.TResearchDef>
-
-	<TiberiumRim.TResearchDef>
-		<defName>GDIResearch6</defName>
-		<label>Research 6</label>		
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIResearch5</li>
-			</tiberiumResearch>
-		</requisites>
+		<defName>Main2</defName>
+		<label>Tiberium Analysis</label>	
+		<researchType>observation</researchType>
+		<description></description>
+		<mainTarget>
+			<targetType>Building_ResearchBench</targetType>
+		</mainTarget>
+		<tasks>
+			<li>Main2Task1</li>
+		</tasks>
 	</TiberiumRim.TResearchDef>
 	
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>Main2Task1</defName>
+		<label>Research Components</label>		
+		<descriptionShort>Figure out basic telescope technology.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<workAmount>800</workAmount>
+	</TiberiumRim.TResearchTaskDef>
 </Defs>

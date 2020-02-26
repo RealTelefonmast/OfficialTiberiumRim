@@ -20,7 +20,7 @@ namespace TiberiumRim
                 {
                     if (harvester.CanReserveAndReach(crystal, PathEndMode.Touch, Danger.Deadly))
                     {
-                        return new Job(TiberiumDefOf.HarvestTiberium, crystal);
+                        return JobMaker.MakeJob(TiberiumDefOf.HarvestTiberium, crystal);
                     }
                 }
             }

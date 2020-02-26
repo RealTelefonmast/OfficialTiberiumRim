@@ -33,9 +33,9 @@ namespace TiberiumRim
 
         public CompProperties_Suppression Props => (CompProperties_Suppression)base.props;
 
-        public MapComponent_Tiberium Tiberium => tiberium ?? (tiberium = parent.Map.GetComponent<MapComponent_Tiberium>());
+        public MapComponent_Tiberium Tiberium => tiberium ??= parent.Map.GetComponent<MapComponent_Tiberium>();
 
-        public MapComponent_Suppression Suppression => suppression ?? (suppression = parent.Map.GetComponent<MapComponent_Suppression>());
+        public MapComponent_Suppression Suppression => suppression ??= parent.Map.GetComponent<MapComponent_Suppression>();
 
         public List<IntVec3> Cells
         {

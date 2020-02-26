@@ -6,6 +6,7 @@
     <defName>TibInEyes</defName>
     <label>tiberium dust</label>
     <labelNoun>tiberium dust</labelNoun>
+	<description>Oh that must hurt, someone kicked tiberium dust into this pawn's eyes!</description>
     <battleStateLabel>blind</battleStateLabel>
     <maxSeverity>1</maxSeverity>
     <stages>

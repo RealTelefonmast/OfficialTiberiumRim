@@ -61,8 +61,8 @@ namespace TiberiumRim
 
         public override void DesignateSingleCell(IntVec3 c)
         {
-            Skyfaller skyfaller = SkyfallerMaker.MakeSkyfaller(TiberiumDefOf.ScrinDronePlatformIncoming, TiberiumDefOf.DronePlatform);
-            DronePlatform platform = (DronePlatform) ThingMaker.MakeThing(TiberiumDefOf.DronePlatform);
+            Skyfaller skyfaller = SkyfallerMaker.MakeSkyfaller(TiberiumDefOf.ScrinDronePlatformIncoming, TiberiumDefOf.ScrinDronePlatform);
+            DronePlatform platform = (DronePlatform) ThingMaker.MakeThing(TiberiumDefOf.ScrinDronePlatform);
             platform.SetFactionDirect(Faction.OfPlayer);
             SkyfallerMaker.SpawnSkyfaller(TiberiumDefOf.ScrinDronePlatformIncoming, platform, c, Map);
             activated = true;
@@ -163,7 +163,41 @@ namespace TiberiumRim
 
         public override AcceptanceReport CanDesignateCell(IntVec3 loc)
         {
-            return base.CanDesignateCell(loc).Accepted;
+            return true;
+        }
+
+
+        [TweakValue("IonBubbleScale", 1f, 20f)]
+        public static float IonScale = 20;
+
+        [TweakValue("IonBubbleRotRate", 0f, 5f)]
+        public static float RotRate = 1.5f;
+
+        public override void DesignateSingleCell(IntVec3 loc)
+        {
+            ActionComposition composition = new ActionComposition("Designator Bubble Test");
+            Mote mote = (Mote)ThingMaker.MakeThing(ThingDef.Named("IonBubble"), null);
+            Mote distortion = (Mote)ThingMaker.MakeThing(ThingDef.Named("IonDistortionBubble"));
+            composition.AddPart(delegate (ActionPart part)
+            {
+                mote.exactPosition = loc.ToVector3Shifted();
+                mote.Scale = 20;
+                mote.rotationRate = 1.2f;
+                mote.instanceColor = new ColorInt(70, 90, 175).ToColor;
+                GenSpawn.Spawn(mote, loc, Map, WipeMode.Vanish);
+                distortion.exactPosition = loc.ToVector3Shifted();
+                float scaleVal = 20 * (part.CurrentTick / (float)part.playTime);
+                distortion.Scale = scaleVal;
+                distortion.rotationRate = RotRate;
+                GenSpawn.Spawn(distortion, loc, Map);
+            },0);
+            composition.AddPart(delegate (ActionPart part)
+            {
+                float scaleVal = 20 * (part.CurrentTick / (float)part.playTime);
+                distortion.Scale = scaleVal;
+                mote.Scale = scaleVal * 8;
+            }, 0, 20);
+            composition.Init();
         }
     }
 

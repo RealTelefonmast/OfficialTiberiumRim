@@ -237,14 +237,14 @@ namespace TiberiumRim
             {
                 for(int i =0; i < 5; i++)
                 {
-                    FilthMaker.MakeFilth(cells.RandomElement(), Map, ThingDefOf.Filth_Slime);
+                    FilthMaker.TryMakeFilth(cells.RandomElement(), Map, ThingDefOf.Filth_Slime);
                 }
             }
             float filthCount = 12f * Mathf.Clamp01(RottenPercent);
             for (int i = 0; i < filthCount; i++)
             {
                 ThingDef filth = Rand.Element(ThingDefOf.Filth_CorpseBile, ThingDefOf.Filth_Vomit, ThingDefOf.Filth_Blood);
-                FilthMaker.MakeFilth(cells.RandomElement(), Map, filth);
+                FilthMaker.TryMakeFilth(cells.RandomElement(), Map, filth);
             }
         }
 

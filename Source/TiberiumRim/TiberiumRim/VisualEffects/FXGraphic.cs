@@ -22,7 +22,6 @@ namespace TiberiumRim
         private bool unused;
         private Material ShaderMaterial;
         
-
         public FXGraphic(CompFX parent, FXGraphicData data, int index)
         {
             Log.Message(index + " '" + data.data?.texPath + "'");
@@ -62,6 +61,7 @@ namespace TiberiumRim
             blinkDuration = data.blinkDuration;
         }
 
+        //TODO: Reduce creation of new Graphic instances, go low level unity rendering.
         public Graphic Graphic
         {
             get
@@ -86,38 +86,55 @@ namespace TiberiumRim
                         graphicInt = data.data.Graphic;
                     }
                 }
-                if (data.mode == FXMode.Blink)
-                {
-                    color.a = 0f;
-                    if (blinkDuration > 0)
-                    {
-                        color.a = 1f;
-                    }
-                }
-                if (data.mode == FXMode.Pulse)
-                {
-                    var pulse = data.pulse;
-                    var tick = Find.TickManager.TicksGame;
-                    var opaVal = TRUtils.Cosine2(pulse.opacityRange.min, pulse.opacityRange.max, pulse.opacityDuration,
-                        parent.tickOffset + pulse.opacityOffset, tick);
-                    var sizeVal = TRUtils.Cosine2(pulse.sizeRange.min, pulse.sizeRange.max, pulse.sizeDuration,
-                        parent.tickOffset + pulse.sizeOffset, tick);
-                    if (pulse.mode == PulseMode.Opacity)
-                        color.a = opaVal;
-                    else if (pulse.mode == PulseMode.Size)
-                        graphicInt.drawSize = size * sizeVal; 
-                    else if (pulse.mode == PulseMode.OpaSize)
-                    {
-                        color.a = opaVal;
-                        graphicInt.drawSize = size * sizeVal;
-                    }
-                }
-                color.a *= parent.OpacityFloat(index);
                 if (color != graphicInt.Color)
                     graphicInt = graphicInt.GetColoredVersion(graphicInt.Shader, color, data.data.colorTwo);
                 return graphicInt;
             }
         }
+
+        
+        /*private Material ProcessMaterial(ref Material mat)
+        {
+            Color color = parent.ColorOverride(index);
+            color = color == Color.white ? data.data.color : color;
+            if (data.mode == FXMode.Blink)
+            {
+                color.a = 0f;
+                if (blinkDuration > 0)
+                {
+                    color.a = 1f;
+                }
+            }
+            if (data.mode == FXMode.Pulse)
+            {
+                var pulse = data.pulse;
+                var tick = Find.TickManager.TicksGame;
+                var opaVal = TRUtils.Cosine2(pulse.opacityRange.min, pulse.opacityRange.max, pulse.opacityDuration,
+                    parent.tickOffset + pulse.opacityOffset, tick);
+                var sizeVal = TRUtils.Cosine2(pulse.sizeRange.min, pulse.sizeRange.max, pulse.sizeDuration,
+                    parent.tickOffset + pulse.sizeOffset, tick);
+                if (pulse.mode == PulseMode.Opacity)
+                    color.a = opaVal;
+                else if (pulse.mode == PulseMode.Size)
+                    graphicInt.drawSize = size * sizeVal;
+                else if (pulse.mode == PulseMode.OpaSize)
+                {
+                    color.a = opaVal;
+                    graphicInt.drawSize = size * sizeVal;
+                }
+            }
+            color.a *= parent.OpacityFloat(index);
+
+            mat.SetColor("_Color", color);
+            return mat;
+        }*/
+
+        //TODO: Improve low level rendering by abstracting from Graphic, applying changes directly to the rendering call
+        //TODO: Matrix transformation a'lá 
+        // Matrix4x4 matrix4x = default(Matrix4x4);
+        // var pos = new Vector3(DrawPos.x, graphic.altitude, DrawPos.z + 2.55f);
+        // pos.z += NodNukePosZ;
+        // matrix4x.SetTRS(pos, Quaternion.Euler(Vector3.up), new Vector3(2f, 1f, 6f));
 
         public void Draw(Vector3 drawPos, Rot4 rot, float? rotation, Action<FXGraphic> action, int index)
         {
@@ -130,13 +147,11 @@ namespace TiberiumRim
             Material mat = info.drawMat;
             mat.SetTextureOffset("_MainTex", parent.TextureOffset);
             mat.SetTextureScale("_MainTex", parent.TextureScale);
-            int renderqueue = mat.renderQueue;
             if (data.mode == FXMode.Mover)
             {
                 ShaderMaterial.SetTexture("_MainTex", mat.mainTexture);
                 ShaderMaterial.SetTexture("_MaskTex", ContentFinder<Texture2D>.Get(Graphic.path + "_s"));
                 mat = ShaderMaterial;
-                mat.renderQueue = renderqueue;
                 Vector2 offset = new Vector2(0, TRUtils.Cosine(data.startOffset, data.endOffset, data.MoverSpeed, Find.TickManager.TicksGame));
                 mat.mainTextureOffset = offset;               
             }

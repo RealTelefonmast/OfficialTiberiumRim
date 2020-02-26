@@ -13,6 +13,11 @@ namespace TiberiumRim
         public ExtendedGraphicData ExtraData => (base.def as FXThingDef).extraData;
         public CompFX FXComp => this.GetComp<CompFX>();
 
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+        }
+
         public virtual Vector3[] DrawPositions => new Vector3[1] { base.DrawPos };
         public virtual Color[] ColorOverrides => new Color[1] { Color.white };
         public virtual float[] OpacityFloats => new float[1] { 1f };

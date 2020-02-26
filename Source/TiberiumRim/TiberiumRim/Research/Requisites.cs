@@ -14,11 +14,36 @@ namespace TiberiumRim
 
         public bool Completed => ResearchComplete && TResearchComplete && EventsHappened;
 
-        private bool ResearchComplete => research.Any() && research.All(s => s.IsFinished);
-        private bool TResearchComplete => tiberiumResearch.Any() && tiberiumResearch.All(s => s.IsFinished);
+        private bool ResearchComplete => research.NullOrEmpty() || research.All(s => s.IsFinished);
+        private bool TResearchComplete => tiberiumResearch.NullOrEmpty() || tiberiumResearch.All(s => s.IsFinished);
         
         //TODO: Add events
-        private bool EventsHappened => true;
+        private bool EventsHappened => events.All(e => e.HasBeenTriggered);
 
+        public override string ToString()
+        {
+            string req = "";
+            //Research
+            req += "Vanilla Research: ";
+            foreach (var res in research)
+            {
+                req += res.ToString() + "\n";
+            }
+            //TResearch
+            req += "Tiberium Research:";
+            foreach (var tres in tiberiumResearch)
+            {
+
+                req += tres.ToString() + "\n";
+            }
+            //Events
+            req += "Events:";
+            foreach (var ev in events)
+            {
+
+                req += ev.ToString() + "\n";
+            }
+            return req;
+        }
     }
 }

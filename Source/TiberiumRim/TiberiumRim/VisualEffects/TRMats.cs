@@ -10,6 +10,8 @@ namespace TiberiumRim
     [StaticConstructorOnStartup]
     public class TRMats
     {
+        public static readonly Color GapLineColor = new Color(0.35f, 0.35f, 0.35f);
+
         public static readonly Texture2D DarkGreyBG = SolidColorMaterials.NewSolidColorTexture(new Color(0.15f, 0.15f, 0.15f));
         public static readonly Texture2D GreenType = SolidColorMaterials.NewSolidColorTexture(MainTCD.Main.GreenColor);
         public static readonly Texture2D BlueType = SolidColorMaterials.NewSolidColorTexture(MainTCD.Main.BlueColor);

@@ -25,13 +25,178 @@ namespace TiberiumRim
         }
     }
 
+    public class TNW_PipeDynamic : FXBuilding, IContainerHolder
+    {
+        public TiberiumContainer Container;
+
+        public List<TNW_PipeDynamic> Neighbors =  new List<TNW_PipeDynamic>() { null, null, null, null };
+
+        public float transferVal = 0.125f;
+
+        //private double containedValue = 0;
+        //private double maxValue = 100;
+
+        private float cachedPercent = 0;
+        private bool debugProduce = false;
+
+        private float smallest = 999;
+        private float biggest = 0;
+
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            Container = new TiberiumContainer(1, new List<TiberiumValueType>() {TiberiumValueType.Green}, this, this);
+            ConnectToNeighbors();
+        }
+
+        private void ConnectToNeighbors()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if(!Neighbors[i].DestroyedOrNull()) continue;
+                var b = (GenAdj.CardinalDirections[i] + Position).GetFirstBuilding(Map);
+                if (b is TNW_PipeDynamic t)
+                {
+                    Neighbors[i] = t;
+                    t.ConnectToNeighbors();
+                }
+            }
+        }
+
+
+        public override void Tick()
+        {
+            base.Tick();
+            if (debugProduce)
+            {
+                Container.TryAddValue(TiberiumValueType.Green, 1, out float actualValue);
+                cachedPercent = Container.StoredPercent;
+                /*
+                containedValue += 100;
+                if (containedValue > maxValue)
+                    containedValue = maxValue;
+                cachedPercent = containedValue / maxValue;
+                */
+            }
+
+            if (Container.TotalStorage >= 0.25f)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    var neighbor = Neighbors[i];
+                    if (neighbor != null && neighbor.WantsFrom(this))
+                    {
+                        Give(ThroughPut(neighbor), neighbor);
+                    }
+                }
+            }
+        }
+
+        private float ThroughPut(TNW_PipeDynamic other)
+        {
+            var value = (Container.TotalStorage - other.Container.TotalStorage) / 2f;
+            if (value < smallest)
+                smallest = value;
+            if (value > biggest)
+                biggest = value;
+            return value >= transferVal ? value : 0;
+            /*
+            var wantingNeighbors = Neighbors.Where(n => n != null && n.WantsFrom(this));
+            if (!wantingNeighbors.Any()) return 0f;
+
+            var half = containedValue / 2;
+            var 
+            var value = containedValue - wantingNeighbors.
+
+            var value = (Container.TotalStorage - wantingNeighbors.Sum(n => n.Container.TotalStorage)) / (float)(Math.Pow(2, wantingNeighbors.Count()));
+
+            if (value < smallest)
+                smallest = value;
+            if (value > biggest)
+                biggest = value;
+
+            return value;
+            */
+        }
+
+        public void Give(float value, TNW_PipeDynamic to)
+        {
+            to.Receive(value, this);
+            cachedPercent = Container.StoredPercent;
+        }
+
+        public void Receive(float value, TNW_PipeDynamic from)
+        {
+            
+            from.Container.TryTransferTo(this.Container, TiberiumValueType.Green, value);
+            cachedPercent = Container.StoredPercent;
+        }
+
+        private bool WantsFrom(TNW_PipeDynamic other)
+        {
+            return cachedPercent < other.cachedPercent;
+        }
+
+        public override string GetInspectString()
+        {
+            string str = "Smallest ThroughPut: " + smallest + "\n" + "Biggest Throughput: " + biggest;
+            return str;
+            return base.GetInspectString();
+        }
+
+        public override void DrawGUIOverlay()
+        {
+            base.DrawGUIOverlay();
+            if (Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest)
+            {
+                Vector3 v = GenMapUI.LabelDrawPosFor(Position);
+                Vector3 v2 = v + new Vector3(0, 15f, 0);
+                Vector3 v3 = v - new Vector3(0, 15f, 0);
+                GenMapUI.DrawThingLabel(v3, Container.TotalStorage.ToString(), Color.green);
+                GenMapUI.DrawThingLabel(v, cachedPercent.ToStringPercent(), Color.white);
+                GenMapUI.DrawThingLabel(v2, Container.StoredPercent.ToString() + "p", Color.yellow);
+            }
+        }
+
+        public override void Draw()
+        {
+            Color color = Container.Color;
+            TiberiumContent.TiberiumNetworkPipesGlow.ColoredVersion(ShaderDatabase.MoteGlow, color, color).Draw(DrawPos + Altitudes.AltIncVect, Rotation, this);
+        }
+
+        public override IEnumerable<Gizmo> GetGizmos()
+        {
+            foreach (Gizmo g in base.GetGizmos())
+            {
+                yield return g;
+            }
+
+            if (DebugSettings.godMode)
+            {
+                yield return new Command_Action
+                {
+                    defaultLabel = "Switch Produce",
+                    action = delegate
+                    {
+                        debugProduce = !debugProduce;
+                    }
+                };
+            }
+        }
+
+        public void Notify_ContainerFull()
+        { }
+    }
+
     /*
-    public class TNW_Pipe2 : TiberiumNetworkBuilding
+    public class TNW_Pipe2 : FXBuilding, IContainerHolder
     {
         public TiberiumNetworkBuilding DirectParent;
         public IntVec3 ParentCell = IntVec3.Invalid;
         public int transferAmount = 6;
         public PipeMode pipeMode = PipeMode.Flow;
+
+        public TiberiumContainer Container;
 
         //public FluidBox FluidBox;
 
@@ -423,6 +588,7 @@ namespace TiberiumRim
         }
     }
     */
+
     /*
     public class TNW_Pipe2 : TiberiumNetworkBuilding
     {

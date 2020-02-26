@@ -20,10 +20,35 @@
 			<destroyedOutLabel>burned out</destroyedOutLabel>
 		</injuryProps>
 	</HediffDef>
+	
+	<HediffDef>
+		<defName>TiberiumToxemia</defName>
+		<label>tiberium toxemia</label>
+		<description>This pawn has come in contact with, or been exposed to, Tiberium. Depending on the severity of this effect the pawn may experience crystallizing body parts and arbitrary mutations.</description>
+		<initialSeverity>0.01</initialSeverity>
+		<lethalSeverity>-1</lethalSeverity>
+		<minSeverity>0</minSeverity>
+		<maxSeverity>1</maxSeverity>
+		<tendable>false</tendable>
+		<makesSickThought>true</makesSickThought>
+		<isBad>true</isBad>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<cureAllAtOnceIfCuredByItem>false</cureAllAtOnceIfCuredByItem>
+		<everCurableByItem>false</everCurableByItem>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(1, 0.39, 0.39)</defaultLabelColor>
+		<comps>
+			<li Class="HediffCompProperties_Immunizable">
+				<severityPerDayNotImmune>-0.08</severityPerDayNotImmune>
+			</li>
+
+		</comps>
+	</HediffDef>
 
 	<HediffDef>
 		<defName>TiberiumExposure</defName>
 		<label>tiberium exposure radiation</label>
+		<description>Tiberium exposure, while not lethal on its own, can cause severe mutations depending on severity and concentration of the effect.</description>
 		<initialSeverity>0.01</initialSeverity>
 		<lethalSeverity>-1</lethalSeverity>
 		<minSeverity>0</minSeverity>
@@ -171,10 +196,12 @@
 	<HediffDef ParentName="HediffBase_TR">
 		<defName>TiberiumCrystallization</defName>
 		<label>tiberium infection</label>
+		<description>Tiberium crystallization, the most lethal effect of Tiberium. The affected body part will slowly crystallize until it becomes unusable. After full crystallization, neighbouring parts get affected as well, slowly growing over the whole body, until the pawn either dies due to losing a vital body part (Torso) or mutation kicks in.</description>
 		<hediffClass>TiberiumRim.Hediff_Crystallizing</hediffClass>
 		<minSeverity>0.001</minSeverity>
 		<maxSeverity>1</maxSeverity>
 		<everCurableByItem>false</everCurableByItem>
+		<isBad>true</isBad>
 		<makesAlert>false</makesAlert>
 		<stages>
 			<li>
@@ -219,6 +246,7 @@
 		<defName>CrystallizedPart</defName>
 		<label>crystallized part</label>
 		<labelNoun>a crystallized part</labelNoun>
+		<description>A crystallized body part.</description>
 		<hediffClass>Hediff_MissingPart</hediffClass>
 		<defaultLabelColor>(77, 128, 77)</defaultLabelColor>
 		<injuryProps>

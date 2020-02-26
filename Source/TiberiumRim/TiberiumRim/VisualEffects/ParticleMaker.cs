@@ -33,7 +33,6 @@ namespace TiberiumRim
             particle.endCell = end;
             return SpawnParticle(map, start, particle);
         }
-
         public static Particle MakeParticle(ParticleDef def)
         {
             Particle particle = (Particle)Activator.CreateInstance(def.particleClass);

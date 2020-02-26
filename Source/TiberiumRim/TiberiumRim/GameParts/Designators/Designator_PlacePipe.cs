@@ -5,8 +5,6 @@ using System.Text;
 using UnityEngine;
 using Verse;
 using RimWorld;
-using Harmony;
-
 namespace TiberiumRim
 {
     public class Designator_PlaceThing : Designator_Build

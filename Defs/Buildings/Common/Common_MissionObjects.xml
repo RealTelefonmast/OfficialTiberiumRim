@@ -41,19 +41,6 @@
       <Mass>9</Mass>
       <JoyGainFactor>1.6</JoyGainFactor>
     </statBases>
-	<comps>
-		<li Class="CompProperties_RoomIdentifier">
-			<roomStat>Impressiveness</roomStat>
-		</li>
-	</comps>
-	<modExtensions>
-        <li Class="StoryFramework.StoryThingDefExtension">
-            <objectiveRequisites>
-                <li>M1_Research</li>
-            </objectiveRequisites>
-            <OnStart>false</OnStart>
-        </li>
-    </modExtensions>
   </TiberiumRim.TRThingDef>
 	
 </Defs>

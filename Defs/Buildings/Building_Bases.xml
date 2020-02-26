@@ -6,7 +6,7 @@
 		<thingClass>TiberiumRim.TRBuilding</thingClass>
 		<soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
 		<selectable>true</selectable>
-		<drawerType>MapMeshAndRealTime</drawerType>
+		<drawerType>MapMeshOnly</drawerType>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
@@ -28,10 +28,6 @@
 		<statBases>
 			<Mass>20</Mass>
 		</statBases>
-		<building>
-			<workSpeedPenaltyOutdoors>true</workSpeedPenaltyOutdoors>
-			<workSpeedPenaltyTemperature>true</workSpeedPenaltyTemperature>
-		</building>
 		<interactionCellIcon>DiningChair</interactionCellIcon>
 		<comps>
 			<li>
@@ -109,6 +105,7 @@
 		<statBases>
 			<Flammability>0</Flammability>
 		</statBases>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawRotated>false</drawRotated>

@@ -117,16 +117,14 @@ namespace TiberiumRim
         public List<IntVec3> CurrentPath => pathCells;
     }
 
-    public class TiberiumProducer : TRBuilding
+    public class TiberiumProducer : TRBuilding, IResearchTarget
     {
         public new TiberiumProducerDef def;
         public List<TiberiumCrystal> boundCrystals = new List<TiberiumCrystal>();
         public List<TiberiumCrystal> growingCrystals = new List<TiberiumCrystal>();
         //TODO: Replace cell lists with areas 
         //TODO: Make custom area class
-        public HashSet<IntVec3> fieldCells = new HashSet<IntVec3>();
-
-        private Effecter_MoteMaker effectMaker;
+        private HashSet<IntVec3> fieldCellsList = new HashSet<IntVec3>();
 
         //Ticker
         private int ticksToSpawn = 100;
@@ -143,9 +141,8 @@ namespace TiberiumRim
         private bool isEvolved = false;
         private TiberiumProducerDef evolvesTo;
 
-        //Ground Zero Story
+        //Ground Zero
         public Building researchCrane;
-        public bool researchDone = false;
         private bool isGroundZero = false;
 
         //Debug
@@ -162,6 +159,8 @@ namespace TiberiumRim
         private bool showAffect = false;
         private bool showTileIterator = false;
         private bool showPotentialField = false;
+
+        protected int foo = 1234;
 
         public override string Label
         {
@@ -181,10 +180,9 @@ namespace TiberiumRim
             Scribe_Values.Look(ref ticksToMature, "ticksToMature");
             Scribe_Values.Look(ref ticksToEvolution, "ticksToEvolution");
             Scribe_Values.Look(ref isGroundZero, "isGroundZero");
-            Scribe_Values.Look(ref researchDone, "researchDone");
             Scribe_Values.Look(ref floodRadius, "floodRadius");
             Scribe_Collections.Look(ref InitialCells, "InitCells");
-            Scribe_Collections.Look(ref fieldCells, "fieldCells");
+            Scribe_Collections.Look(ref fieldCellsList, "fieldCells");
             Scribe_Defs.Look(ref evolvesTo, "evolvesTo");
         }
 
@@ -193,8 +191,6 @@ namespace TiberiumRim
             base.SpawnSetup(map, respawningAfterLoad);
             //Basic set-up of non-saved components
             def = base.def as TiberiumProducerDef;
-            if (def.effecter != null)
-                effectMaker = new Effecter_MoteMaker(def.effecter);
 
             if (respawningAfterLoad)
             {
@@ -302,43 +298,24 @@ namespace TiberiumRim
             base.DeSpawn();
         }
 
-        public static double BIGGESTTIME = 0;
+        private int tickLeft = 750;
 
         public override void Tick()
         {
-            Stopwatch watch = new Stopwatch();
-            watch.Start();
-
             base.Tick();
             if (!Spawned)
                 return;
 
-            if(effectMaker != null && GenTicks.TicksGame % 750 == 0)
-            {
-                foreach (IntVec3 cell in fieldCells)
-                {
-                    var effectPos = new TargetInfo(cell, Map);
-                    effectMaker.Tick(effectPos, effectPos);
-                }
-            }
-
-            if (ResearchBound)
-            {
-                if (!researchDone) return;
-                if (TRUtils.Chance(0.1f))
-                    researchCrane.TakeDamage(new DamageInfo(DamageDefOf.Mining, 5, 1, -1, this));
-            }
-
             if (fastGrow)
             {
-                //FastGrow();
                 for (int i = growingCrystals.Count - 1; i >= 0; i--)
                 {
                     growingCrystals[i].TiberiumTick();
                 }
+
             }
 
-            if (Find.TickManager.TicksGame % GenTicks.TickRareInterval == 0)
+            if (tickLeft <= 0)
             {
                 if (!IsMature)
                 {
@@ -351,28 +328,78 @@ namespace TiberiumRim
                     SpawnBlossomSpore();
                     ResetSporeCounter();
                 }
+
                 if (ShouldSpawn)
                 {
                     SpawnTiberium();
                     ResetSpawnTicks();
                 }
+
                 if (ShouldEvolve)
                     SpawnEvolved(evolvesTo);
+
+                tickLeft = 750;
             }
-            
+            tickLeft--;
+
             if (ticksToMature > 0)
             {
                 ticksToMature--;
                 return;
             }
+
             if (ticksToSpore > 0)
                 ticksToSpore--;
+
             if (ticksToSpawn > 0)
                 ticksToSpawn--;
+        }
 
-            watch.Stop();
-            if (watch.ElapsedMilliseconds > BIGGESTTIME)
-                BIGGESTTIME = watch.ElapsedMilliseconds;
+        public override void TickRare()
+        {
+            base.TickRare();
+            if (!Spawned)
+                return;
+
+            if (fastGrow)
+            {
+                for (int j = 0; j < 150; j++)
+                {
+                    for (int i = growingCrystals.Count - 1; i >= 0; i--)
+                    {
+                        growingCrystals[i].TiberiumTick();
+                    }
+                }
+            }
+            
+            if (!IsMature)
+            {
+                SpreadTerrain();
+                GrowCellPaths();
+            }
+
+            if (ShouldSpawnSpore)
+            {
+                SpawnBlossomSpore();
+                ResetSporeCounter();
+            }
+            if (ShouldSpawn)
+            {
+                SpawnTiberium();
+                ResetSpawnTicks();
+            }
+            if (ShouldEvolve)
+                SpawnEvolved(evolvesTo);
+
+            if (ticksToMature > 0)
+            {
+                ticksToMature -= GenTicks.TickRareInterval;
+                return;
+            }
+            if (ticksToSpore > 0)
+                ticksToSpore -= GenTicks.TickRareInterval;
+            if (ticksToSpawn > 0)
+                ticksToSpawn -= GenTicks.TickRareInterval;
         }
 
         private void SpreadTerrain()
@@ -388,15 +415,15 @@ namespace TiberiumRim
 
                 InitialCells.Remove(cell);
                 TerrainDef terrain = cell.GetTerrain(Map);
-                
+
                 /*
                 if (FieldCells.Contains(cell))
                 {
                     Log.Message(this + " Contains existing cell");
                 }
                 */
-                
-                fieldCells.Add(cell);
+
+                AddFieldCell(cell);
                 //lastFieldCellCount++;
                 if (terrain.IsTiberiumTerrain()) continue;
 
@@ -464,12 +491,34 @@ namespace TiberiumRim
             }
         }
 
+        public void AddFieldCell(IntVec3 cell)
+        {
+            fieldCellsList.Add(cell);
+            foreach (var def in def.tiberiumTypes)
+                TiberiumComp.TiberiumInfo.TiberiumGrid.SetFieldColor(cell, true, def.TiberiumValueType);
+        }
+
+        public void RemoveFieldCell(IntVec3 cell)
+        {
+            fieldCellsList.Remove(cell);
+            foreach (var def in def.tiberiumTypes)
+                TiberiumComp.TiberiumInfo.TiberiumGrid.SetFieldColor(cell, false, def.TiberiumValueType);
+        }
+
+        public HashSet<IntVec3> FieldCells
+        {
+            get
+            {
+                return fieldCellsList;
+            }
+        }
+
         public float GrowRadius => isGroundZero ? def.spawner.growRadius * 2.5f : def.spawner.growRadius;
 
         public float WokePercent => 1f - (float)ticksToMature / (def.daysToMature * (float)GenDate.TicksPerDay);
 
         public bool ShouldSpawnSpore => isGroundZero && ticksToSpore <= 0 && MatureEnough;
-        public bool ShouldSpawn => (!def.forResearch || researchDone) && def.tiberiumTypes.Any() && ticksToSpawn <= 0 && MatureEnough;
+        public bool ShouldSpawn => def.tiberiumTypes.Any() && ticksToSpawn <= 0 && MatureEnough;
         public bool ShouldEvolve => evolvesTo != null && ticksToEvolution <= 0;
         private bool MatureEnough => (IsMature || ticksToMature < def.spawner.minDaysToSpread * GenDate.TicksPerDay);
         public bool IsMature => ticksToMature <= 0 && !InitialCells.Any();
@@ -478,7 +527,7 @@ namespace TiberiumRim
         {
             get
             {
-                if (!researchDone && researchCrane == null)
+                if (researchCrane == null)
                 {
                     researchCrane = (Building)Map.thingGrid.ThingAt(Position, TiberiumDefOf.TiberiumResearchCrane);
                 }
@@ -507,7 +556,7 @@ namespace TiberiumRim
                         TrySpawnTiberiumAt(cells.RandomElement());
                     break;
                 case TiberiumSpawnMode.Spore:
-                    cells = fieldCells.Where(c =>
+                    cells = FieldCells.Where(c =>
                         c.InBounds(Map) && c.GetTiberium(Map) == null && c.GetFirstBuilding(Map) == null && c.GetPlant(Map) == null &&
                         !c.Roofed(Map)).ToList();
                     if (cells.Any())
@@ -591,7 +640,7 @@ namespace TiberiumRim
             growingCrystals.Add(crystal);
 
             boundCrystals.Add(crystal);
-            fieldCells.Add(crystal.Position);
+            AddFieldCell(crystal.Position);
             //lastFieldCellCount++;
         }
 
@@ -610,7 +659,7 @@ namespace TiberiumRim
             }
             if (crystal.def.dead != null)
             {
-                fieldCells.Remove(crystal.Position);
+                RemoveFieldCell(crystal.Position);
                 //lastFieldCellCount--;
             }
         }
@@ -630,7 +679,7 @@ namespace TiberiumRim
             base.Draw();
             if (showField)
             {
-                GenDraw.DrawFieldEdges(fieldCells.ToList(), Color.red);
+                GenDraw.DrawFieldEdges(FieldCells.ToList(), Color.red);
             }
             if (showAffect)
             {
@@ -652,23 +701,22 @@ namespace TiberiumRim
             }
         }
 
+
+        private string inspectString = "";
         public override string GetInspectString()
         {
-            StringBuilder sb = new StringBuilder();
-            if (DebugSettings.godMode)
-            {
-                sb.AppendLine("DEBUG:");
-                sb.AppendLine("Radiuses - growRad " + GrowRadius + " - floodRad " + floodRadius);
-                sb.AppendLine("Paths: " + cellPaths.Count + " cells: " + pathCells.Count);
-                sb.AppendLine("Stop glow: " + turnOffLight);
-                sb.AppendLine("Stop growth: " + stopGrowth);
-                sb.AppendLine("Speedy growth: " + fastGrow);
-                sb.AppendLine("Tiberium crystals: " + boundCrystals.Count);
-                sb.AppendLine("Active crystals: " + growingCrystals.Count);
-                sb.AppendLine("Field size: " + fieldCells.Count);
-                sb.AppendLine("Show Iterator: " + showTileIterator);
-            }
-            return sb.ToString().TrimEndNewlines();
+            inspectString = "";
+            inspectString += "DEBUG:" + "\n";
+            inspectString += "Radiuses - growRad " + GrowRadius + " - floodRad " + floodRadius + "\n";
+            inspectString += "Paths: " + cellPaths.Count + " cells: " + pathCells.Count + "\n";
+            inspectString += "Stop glow: " + turnOffLight + "\n";
+            inspectString += "Stop growth: " + stopGrowth + "\n";
+            inspectString += "Speedy growth: " + fastGrow + "\n";
+            inspectString += "Tiberium crystals: " + boundCrystals.Count + "\n";
+            inspectString += "Active crystals: " + growingCrystals.Count + "\n";
+            inspectString += "Field size: " + FieldCells.Count + "\n";
+            inspectString += "Show Iterator: " + showTileIterator;
+            return inspectString;
         }
 
         public override IEnumerable<Gizmo> GetGizmos()
@@ -788,7 +836,7 @@ namespace TiberiumRim
                     action = delegate
                     {
                         for (int i = 0; i < count; i++)
-                            ParticleMaker.SpawnParticleWithPath(fieldCells.RandomElement(), fieldCells.RandomElement(), Map, DefDatabase<ParticleDef>.GetNamed("TiberiumParticle"));
+                            ParticleMaker.SpawnParticleWithPath(FieldCells.RandomElement(), FieldCells.RandomElement(), Map, DefDatabase<ParticleDef>.GetNamed("TiberiumParticle"));
                     }
                 };
 

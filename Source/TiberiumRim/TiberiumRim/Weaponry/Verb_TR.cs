@@ -80,6 +80,8 @@ namespace TiberiumRim
 
         protected override int ShotsPerBurst => this.verbProps.burstShotCount;
 
+        
+
         protected float GunRotation
         {
             get
@@ -122,6 +124,10 @@ namespace TiberiumRim
             base.ExposeData();
         }
 
+        public virtual void CustomTick()
+        {
+        }
+
         public override void Reset()
         {
             base.Reset();
@@ -149,8 +155,7 @@ namespace TiberiumRim
 
         protected override bool TryCastShot()
         {
-            bool flag;
-            flag = IsBeam ? TryCastBeam() : TryCastProjectile();
+            var flag = IsBeam ? TryCastBeam() : TryCastProjectile();
 
             if (flag)
                 Notify_SingleShot();
@@ -384,6 +389,7 @@ namespace TiberiumRim
         public TiberiumCost tiberiumCostPerShot;
         public SoundDef chargeSound;
         public float powerConsumption = 0;
+        public int shotIntervalTicks = 10;
 
         public LaserProperties laser;
     }

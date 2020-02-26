@@ -56,19 +56,19 @@
 	<ThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_Flamethrower</defName>
 		<label>flame</label>
+		<thingClass>TiberiumRim.Bullet_Sprite</thingClass>
 		<graphicData>
-			<texPath>Items/Weapons/Projectile/FlameSmall</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
+			<texPath>Sprites/FlameSprite</texPath>
+			<graphicClass>TiberiumRim.Graphic_Sprite</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
-			<drawSize>1.1</drawSize>
+			<drawSize>2</drawSize>
 		</graphicData>
-		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
 			<ai_IsIncendiary>true</ai_IsIncendiary>
 			<damageDef>Flame</damageDef>
 			<damageAmountBase>3</damageAmountBase>
 			<!--<explosionRadius>0.025</explosionRadius>-->
-			<speed>15</speed>
+			<speed>12</speed>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
 		</projectile>
 	</ThingDef>

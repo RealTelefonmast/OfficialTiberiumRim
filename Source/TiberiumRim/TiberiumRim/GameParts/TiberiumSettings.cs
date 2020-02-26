@@ -1,16 +1,5 @@
-﻿using Harmony;
-using System.Reflection;
-using UnityEngine;
-using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using RimWorld;
-using RimWorld.Planet;
-using RimWorld.BaseGen;
-using Verse;
-using Verse.AI.Group;
-using Verse.Sound;
+﻿using Verse;
+
 
 namespace TiberiumRim
 {
@@ -34,7 +23,6 @@ namespace TiberiumRim
 
         
         //Debug
-        public bool ShowMapCompAlert = true;
 
         public bool startedOnce = false;
 

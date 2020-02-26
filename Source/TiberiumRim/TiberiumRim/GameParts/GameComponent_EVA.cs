@@ -116,7 +116,7 @@ namespace TiberiumRim
         {
             if (seconds > 10)
                 seconds = 10;
-            ActionComposition composition = new ActionComposition();
+            ActionComposition composition = new ActionComposition("EVACountDown");
             for (int i = 1; i <= seconds; i++)
                 composition.AddPart(SoundDef.Named(EVAPrefix + "Count" + i), SoundInfo.OnCamera(), i);
             composition.Init();

@@ -25,7 +25,7 @@ namespace TiberiumRim
         public override string GetExplanationUnfinalized(StatRequest req, ToStringNumberSense numberSense)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            float baseValueFor = this.GetBaseValueFor(req.Def);
+            float baseValueFor = this.GetBaseValueFor(req);
             if (baseValueFor != 0f)
             {
                 stringBuilder.AppendLine("StatsReport_BaseValue".Translate() + ": " + this.stat.ValueToString(baseValueFor, numberSense));

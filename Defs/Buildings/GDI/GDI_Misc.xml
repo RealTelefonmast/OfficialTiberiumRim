@@ -98,6 +98,7 @@
 		<label>Ion Lamp</label>
 		<description>GDI uses the ionizing feature of Tiberium to power this lamp.</description>
 		<factionDesignation>GDI</factionDesignation>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Misc/Light/Floor/Light</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -140,6 +141,7 @@
 		<label>wall light</label>
 		<description>An electrical wall lamp that lights an area. People need light to move and work at full speed.</description>
 		<factionDesignation>GDI</factionDesignation>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		 <graphicData>
 			<texPath>Buildings/GDI/Misc/Light/Wall/light</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>

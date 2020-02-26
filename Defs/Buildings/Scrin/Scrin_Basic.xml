@@ -2,13 +2,14 @@
 <Defs>
   
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
-		<defName>DronePlatform</defName>
+		<defName>ScrinDronePlatform</defName>
 		<label>scrin drone platform</label>
 		<description>We have arrived.</description>
 		<thingClass>TiberiumRim.DronePlatform</thingClass>
 		<factionDesignation>Scrin</factionDesignation>
 		<TRCategory>Structure</TRCategory>
 		<size>(3,3)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Scrin/DronePlatform/platform</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -77,6 +78,7 @@
 		<destroyable>false</destroyable>
 		<useHitPoints>false</useHitPoints>
 		<size>(3,3)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Blank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

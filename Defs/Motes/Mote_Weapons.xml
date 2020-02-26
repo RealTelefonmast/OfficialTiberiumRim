@@ -33,6 +33,43 @@
 		</mote>
 	</ThingDef>
 	
+	<ThingDef Abstract = "True" Name="DistortionShockwaveBase" ParentName="MoteBase_TR">
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<mote>
+			<fadeInTime>0.05</fadeInTime>
+			<fadeOutTime>1</fadeOutTime>
+			<solidTime>0.5</solidTime>
+			<growthRate>2</growthRate>
+		</mote>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderType>MoteGlowDistortBackground</shaderType>
+			<shaderParameters>
+				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
+				<_distortionIntensity>0.05</_distortionIntensity>
+				<_brightnessMultiplier>1.15</_brightnessMultiplier>
+			</shaderParameters>
+			<drawSize>2</drawSize>
+		</graphicData>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>SonicEmitterWave</defName>
+		<graphicData>
+			<texPath>Things/Mote/PowerBeam</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>4.8</solidTime>
+			<fadeOutTime>0.1</fadeOutTime>
+			<growthRate>25</growthRate>
+		</mote>
+	</ThingDef>
+	
+	
 	<!-- Ion Cannon -->
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>IonBeamBurn</defName>
@@ -50,19 +87,101 @@
 		</mote>
 	</ThingDef>
 	
+	
+	<!-- Ion Bubble is 5 seconds alive -->
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>IonDistortionBubble</defName>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>4</solidTime>
+			<fadeOutTime>0.25</fadeOutTime>
+			<growthRate>0</growthRate>
+		</mote>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderType>MoteGlowDistortBackground</shaderType>
+			<shaderParameters>
+				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
+				<_distortionIntensity>0.1</_distortionIntensity>
+				<_brightnessMultiplier>1.15</_brightnessMultiplier>
+			</shaderParameters>
+			<drawSize>2</drawSize>
+		</graphicData>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>IonCenterDistortionBubble</defName>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>4</solidTime>
+			<fadeOutTime>0.25</fadeOutTime>
+			<growthRate>0</growthRate>
+		</mote>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderType>MoteGlowDistortBackground</shaderType>
+			<shaderParameters>
+				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
+				<_distortionIntensity>1</_distortionIntensity>
+				<_brightnessMultiplier>2</_brightnessMultiplier>
+			</shaderParameters>
+			<drawSize>2</drawSize>
+		</graphicData>
+	</ThingDef>
+	
+	
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>IonBubble</defName>
 		<graphicData>
 			<texPath>Things/Mote/PowerBeam</texPath>
 			<shaderType>MoteGlow</shaderType>
+			<drawSize>6</drawSize>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<drawOffscreen>true</drawOffscreen>
 		<mote>
 			<fadeInTime>1</fadeInTime>
-			<solidTime>4.8</solidTime>
-			<fadeOutTime>0.1</fadeOutTime>
-			<growthRate>25</growthRate>
+			<solidTime>4</solidTime>
+			<fadeOutTime>0.25</fadeOutTime>
+			<growthRate>0</growthRate>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="DistortionShockwaveBase">
+		<defName>IonExplosionShockwave</defName>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<mote>
+			<fadeInTime>0</fadeInTime>
+			<solidTime>0.5</solidTime>
+			<fadeOutTime>1</fadeOutTime>
+			<growthRate>2</growthRate>
+		</mote>
+		<graphicData>
+			<shaderParameters>
+				<_distortionIntensity>0.5</_distortionIntensity>
+				<_brightnessMultiplier>2</_brightnessMultiplier>
+			</shaderParameters>
+			<drawSize>3</drawSize>
+		</graphicData>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>IonBurnMark</defName>
+		<graphicData>
+			<texPath>Things/Mote/PowerBeam</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<color>(255,240,200.200)</color>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>2</solidTime>
+			<fadeOutTime>10</fadeOutTime>
+			<growthRate>0</growthRate>
 		</mote>
 	</ThingDef>
 	

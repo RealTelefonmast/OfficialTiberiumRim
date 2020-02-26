@@ -7,6 +7,9 @@ namespace TiberiumRim
     [DefOf]
     public static class TiberiumDefOf
     {
+        //MainButton
+        public static MainButtonDef TiberiumTab;
+
         // TiberiumCrystals
         //Green
         public static TiberiumCrystalDef TiberiumGreen;
@@ -61,7 +64,7 @@ namespace TiberiumRim
         public static TiberiumKindDef VeinChunk;
 
         //Buildings
-        public static ThingDef DronePlatform;
+        public static ThingDef ScrinDronePlatform;
         public static ThingDef TiberiumResearchCrane;
         public static ThingDef TiberiumPipe;
 

@@ -2,6 +2,33 @@
 <Defs>
 	
 	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
+		<defName>TiberiumEncroachment</defName>
+		<label>Tiberium Arrival (Initial)</label>
+		<workerClass>TiberiumRim.IncidentWorker_CauseEvents</workerClass>
+		<category>ThreatSmall</category>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<baseChance>0.75</baseChance>
+		<earliestDay>20</earliestDay>
+		<minPopulation>3</minPopulation>
+		<minRefireDays>0</minRefireDays>
+		<!--<tale>TiberiumArrival</tale>-->
+		<letterLabel>Meteor Sighting</letterLabel>
+		<letterText>A meteor has been sighted in the skies, we are not sure where it's heading.</letterText>
+		<letterDef>ThreatSmall</letterDef>
+		<eventsToTrigger>
+			<li>EventTiberiumArrival</li>
+		</eventsToTrigger>
+		<minRefireDays>0</minRefireDays>
+		<category>ThreatSmall</category>
+	</IncidentDef>
+
+	<TiberiumRim.EventDef>
+		<defName>EventTiberiumArrival</defName>
+	</TiberiumRim.EventDef>
+
+	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
 		<defName>TiberiumArrival</defName>
 		<label>should never happen on its own</label>
 		<targetTags>

@@ -27,7 +27,7 @@ namespace TiberiumRim
         public AltitudeLayer Altitude { get; }
 
         [TweakValue("NodNukeOffY", 0f, 1f)]
-        public static float NodNukeOffY = 0.37f;
+        public static float NodNukeOffY = 0;
 
         [TweakValue("NodNukePosZ", 0f, 15f)]
         public static float NodNukePosZ = 0f;

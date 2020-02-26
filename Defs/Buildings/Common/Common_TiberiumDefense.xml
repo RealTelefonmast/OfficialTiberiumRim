@@ -8,6 +8,7 @@
 		<factionDesignation>Common</factionDesignation>
 		<TRCategory>Defense</TRCategory>
 		<size>(1,1)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Defense/Suppressor/s</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -24,7 +25,6 @@
 			<Flammability>0.75</Flammability>
 			<Beauty>-15</Beauty>
 		</statBases>
-		<drawerType>MapMeshAndRealTime</drawerType>
 		<drawPlaceWorkersWhileSelected>false</drawPlaceWorkersWhileSelected>
 		<fillPercent>0.5</fillPercent>
 		<costList>
@@ -46,14 +46,6 @@
 			<li>TiberiumRim.PlaceWorker_Gap</li>
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
-		<modExtensions>
-			<li Class="StoryFramework.StoryThingDefExtension">
-				<objectiveRequisites>
-					<li>M4_TiberiumSuppression</li>
-				</objectiveRequisites>
-				<OnStart>false</OnStart>
-			</li>
-		</modExtensions>
 		<tickerType>Never</tickerType>
 		<rotatable>true</rotatable>
 	</TiberiumRim.TRThingDef>

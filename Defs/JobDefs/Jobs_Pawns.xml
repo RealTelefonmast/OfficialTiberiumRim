@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+
+	<JobDef>
+		<defName>TiberiumResearch</defName>
+		<driverClass>TiberiumRim.JobDriver_TResearch</driverClass>
+		<reportString>doing tiberium research.</reportString>
+		<casualInterruptible>false</casualInterruptible>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
 	
 	<JobDef>
 		<defName>FormAmalgamation</defName>

@@ -48,6 +48,7 @@ namespace TiberiumRim
         public int LastAttackTargetTick => lastAttackTargetTick;
         public int ShotIndex => curShotIndex;
 
+        public bool Continuous => props.continuous;
         public bool HasTurret => props.turretTop != null;
         public bool IsMortar => AttackVerb.IsMortar;
         public bool NeedsRoof => IsMortar;
@@ -64,14 +65,13 @@ namespace TiberiumRim
             }
         }
 
-        public TurretGun(TurretProperties props, ThingWithComps parent)
+        public TurretGun()
+        { }
+
+        public void Setup(TurretProperties props, ThingWithComps parent)
         {
             this.props = props;
             this.parent = parent;
-        }
-
-        public void Setup()
-        {
             gun = ThingMaker.MakeThing(props.turretGunDef, null);
             UpdateGunVerbs();
             if (HasTurret)
@@ -90,9 +90,8 @@ namespace TiberiumRim
         private void UpdateGunVerbs()
         {
             List<Verb> allVerbs = gun.TryGetComp<CompEquippable>().AllVerbs;
-            for (int i = 0; i < allVerbs.Count; i++)
+            foreach (var verb in allVerbs)
             {
-                Verb verb = allVerbs[i];
                 verb.caster = parent;
                 verb.castCompleteCallback = new Action(BurstComplete);
                 if(verb is Verb_TR vt)
@@ -137,12 +136,26 @@ namespace TiberiumRim
                     {
                         burstCooldownTicksLeft--;
                     }
-                    if (burstCooldownTicksLeft <= 0 && parent.IsHashIntervalTick(10))
+                    if (burstCooldownTicksLeft <= 0 && parent.IsHashIntervalTick(AttackVerb.Props.shotIntervalTicks))
                     {
                         TryStartShootSomething(true);
                     }
                 }
                 top?.TurretTopTick();
+            }
+        }
+
+        private void StartShooting()
+        {
+            if (Continuous)
+            {
+                //Continuous Shot
+
+            }
+            else
+            {
+                //Burst Shot
+
             }
         }
 
@@ -174,6 +187,7 @@ namespace TiberiumRim
             else
                 ResetCurrentTarget();
         }
+
         protected LocalTargetInfo TryFindNewTarget()
         {
             IAttackTargetSearcher attackTargetSearcher = TargSearcher();
@@ -204,30 +218,6 @@ namespace TiberiumRim
 
         protected void BeginBurst()
         {
-            /*
-            if (props.burstMode == TurretBurstMode.Normal)
-            {
-                AttackVerb.TryStartCastOn(CurrentTarget, false, true);
-            }
-            else if (props.burstMode == TurretBurstMode.ToTarget)
-            {
-                var from = DrawPos.ToIntVec3();
-                var to = CurrentTarget.Cell;
-                var distance = from.DistanceTo(to);
-                if (distance < props.burstToRange)
-                {
-                    var normed = (to - from).ToVector3().normalized;
-                    normed *= props.burstToRange;
-                    IntVec3 newTo = from + normed.ToIntVec3();
-                    to = newTo;
-                }
-                var line = new ShootLine(from, to);
-                foreach (IntVec3 cell in line.Points())
-                {
-                    AttackVerb.TryStartCastOn(cell, false);
-                }
-            }
-            */
             AttackVerb.TryStartCastOn(CurrentTarget, false, true);
             OnAttackedTarget(CurrentTarget);
         }
@@ -265,6 +255,7 @@ namespace TiberiumRim
         {
             top?.Shoot(curShotIndex);
             RotateNextShotIndex();
+            ParentHolder.Notify_ProjectileFired();
         }
 
         private void RotateNextShotIndex()
@@ -352,6 +343,8 @@ namespace TiberiumRim
 
         public Graphic TurretGraphic => props.turretTop.turret.Graphic;
         public Vector3 DrawPos => parent.DrawPos + props.drawOffset;
+
+        public float TargetPriorityFactor => 1f;
 
         public void Draw()
         {
@@ -480,7 +473,7 @@ namespace TiberiumRim
                 ticksUntilTurn--;
                 if(ticksUntilTurn == 0)
                 {
-                    clockWise = Rand.Value > 0.5 ? false : true;
+                    clockWise = !(Rand.Value > 0.5);
                     turnTicks = TRUtils.Range(props.idleDuration);
                 }
             }

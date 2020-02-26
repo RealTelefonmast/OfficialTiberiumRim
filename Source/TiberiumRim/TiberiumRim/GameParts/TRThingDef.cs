@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RimWorld;
-using StoryFramework;
 using UnityEngine;
 using Verse;
 
@@ -19,6 +18,7 @@ namespace TiberiumRim
         public ProjectileProperties_Extended projectileExtended;
         public SuperWeaponProperties superWeapon;
         public TerrainDef makesTerrain;
+        public List<TResearchDef> requiredResearch;
         public bool needsBlueprint = false;
         public bool hidden = false;
         public bool devObject = false;
@@ -38,6 +38,14 @@ namespace TiberiumRim
 
         }
 
+        public bool TResearchFinished 
+        {
+            get
+            {
+                return researchPrerequisites == null || requiredResearch.All(research => research.IsFinished);
+            }
+        }
+
         public bool Discovered
         {
             get => discovered || devObject;
@@ -47,37 +55,50 @@ namespace TiberiumRim
         public bool IsActive(out string reason)
         {
             reason = "";
-            bool b = true;
+            string research = "";
+            bool flag = true;
             var sb = new StringBuilder();
             sb.AppendLine("Locked due to:\n");
             if (DebugSettings.godMode)
             {
                 return true;
             }
-            if (this.devObject)
+            if (devObject)
             {
                 return DebugSettings.godMode;
             }
-            if (this.minTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel < this.minTechLevelToBuild)
+            if (minTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel < minTechLevelToBuild)
             {
-                b = false;
-                sb.AppendLine("- Need min tech level: " + this.minTechLevelToBuild);
+                flag = false;
+                sb.AppendLine("- Need min tech level: " + minTechLevelToBuild);
             }
-            if (this.maxTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel > this.maxTechLevelToBuild)
+            if (maxTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel > maxTechLevelToBuild)
             {
-                b = false;
-                sb.AppendLine("- Need max tech level: " + this.maxTechLevelToBuild);
+                flag = false;
+                sb.AppendLine("- Need max tech level: " + maxTechLevelToBuild);
             }
-            if (!this.IsResearchFinished)
+            if (!IsResearchFinished)
             {
-                b = false;
-                string research = "";
-                foreach (var res in this.researchPrerequisites)
+                flag = false;
+                foreach (var res in researchPrerequisites)
                 {
                     research += "   - " + res.LabelCap;
                 }
                 sb.AppendLine("- Need research:\n" + research);
+                research = "";
             }
+
+            if (!TResearchFinished)
+            {
+                flag = false;
+                foreach (var res in requiredResearch)
+                {
+                    research += "   - " + res.LabelCap;
+                }
+                sb.AppendLine("- Need tiberium research:\n" + research);
+                research = "";
+            }
+            /*
             if (this.HasStoryExtension())
             {
                 bool r = false;
@@ -93,10 +114,11 @@ namespace TiberiumRim
                     sb.AppendLine("- Need Objectives:\n" + objectives);
                 }
             }
-            if (this.buildingPrerequisites != null)
+            */
+            if (buildingPrerequisites != null)
             {
-                b = b && this.buildingPrerequisites.All(t => Find.CurrentMap.listerBuildings.ColonistsHaveBuilding(t));
-                if (!b)
+                flag = flag && buildingPrerequisites.All(t => Find.CurrentMap.listerBuildings.ColonistsHaveBuilding(t));
+                if (!flag)
                 {
                     string buildings = "";
                     foreach (var build in this.buildingPrerequisites)
@@ -107,7 +129,7 @@ namespace TiberiumRim
                 }
             }
             reason = sb.ToString().TrimEndNewlines();
-            return b;
+            return flag;
         }
 
         public override void ResolveReferences()

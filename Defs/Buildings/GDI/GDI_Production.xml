@@ -11,6 +11,7 @@
 		<size>(3,2)</size>
 		<minifiedDef />
 		<thingCategories Inherit="false" />
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Production/Factory_GDI</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -70,6 +71,7 @@
 		<size>(5,5)</size>
 		<minifiedDef />
 		<thingCategories Inherit="false" />
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Production/Hangar/Base</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -143,6 +145,7 @@
 		<size>(5,5)</size>
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Processing</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Production/Refinery/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -216,14 +219,6 @@
 		<hasInteractionCell>true</hasInteractionCell>
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<interactionCellIcon>RefineryCell</interactionCellIcon>
-		<modExtensions>
-			<li Class="StoryFramework.StoryThingDefExtension">
-				<objectiveRequisites>
-					<li>M2_KnowledgeResearch</li>
-				</objectiveRequisites>
-				<OnStart>false</OnStart>
-			</li>
-		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
@@ -233,6 +228,7 @@
 		<description>.</description>
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Processing</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Production/PowerPlant/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -332,14 +328,6 @@
 				<transmitsPower>true</transmitsPower>
 			</li>
 		</comps>
-		<modExtensions>
-			<li Class="StoryFramework.StoryThingDefExtension">
-				<objectiveRequisites>
-					<li>M3_TiberiumPower</li>
-				</objectiveRequisites>
-				<OnStart>true</OnStart>
-			</li>
-		</modExtensions>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>

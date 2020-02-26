@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System.Reflection;
 using UnityEngine;
 using System;
@@ -27,27 +27,17 @@ namespace TiberiumRim
         public TiberiumSettings settings;
         public static TiberiumRimMod mod;
         public static AssetBundle assetBundle;
-        private static HarmonyInstance tiberium;
+        private static Harmony tiberium;
 
-        public static HarmonyInstance Tiberium
-        {
-            get
-            {
-                if(tiberium == null)
-                {
-                    tiberium = HarmonyInstance.Create("com.tiberiumrim.rimworld.mod");
-                }
-                return tiberium;
-            }
-        }
+        public static Harmony Tiberium => tiberium ??= new Harmony("com.tiberiumrim.rimworld.mod");
 
         public TiberiumRimMod(ModContentPack content) : base(content)
         {
-            Log.Message("TiberiumRim - Loaded");
             settings = GetSettings<TiberiumSettings>();
             TiberiumRimSettings.settings = settings;
             Tiberium.PatchAll(Assembly.GetExecutingAssembly());
             mod = this;
+            Log.Message("TiberiumRim - Loaded");
         }
 
         public void LoadAssetBundles()
@@ -113,6 +103,8 @@ namespace TiberiumRim
                 //Log.Message("Patching " + DefDatabase<TRThingDef>.AllDefs.Count() + " items");
                 foreach (TRThingDef def in DefDatabase<TRThingDef>.AllDefs)
                 {
+                    if (def.drawerType == DrawerType.MapMeshOnly && def.comps.Any(c => c is CompProperties_FX fx && fx.overlays.Any(o => o.mode != FXMode.Static)))
+                        Log.Warning(def + " has dynamic overlays but is MapMeshOnly");
                     if (def.factionDesignation == null && !def.needsBlueprint) continue;
                     TRThingDefList.Add(def);
                     ThingDef blueprint = TRUtils.MakeNewBluePrint(def, false, null);

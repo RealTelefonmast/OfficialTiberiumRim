@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Harmony;
-using static Harmony.AccessTools;
 using Verse;
 using Verse.Noise;
 using RimWorld;

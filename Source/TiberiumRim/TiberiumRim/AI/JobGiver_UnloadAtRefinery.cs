@@ -22,7 +22,7 @@ namespace TiberiumRim
             if(harvester.CanReserveAndReach(refinery.parent, PathEndMode.InteractionCell, Danger.Deadly))
             {
                 JobDef job = DefDatabase<JobDef>.GetNamed("UnloadAtRefinery");
-                return new Job(job, refinery.parent);
+                return JobMaker.MakeJob(job, refinery.parent);
             }
             return null;
         }

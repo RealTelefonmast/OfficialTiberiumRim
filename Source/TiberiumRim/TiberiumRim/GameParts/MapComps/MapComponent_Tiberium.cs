@@ -8,10 +8,11 @@ using RimWorld;
 
 namespace TiberiumRim
 {
-    public class MapComponent_Tiberium : MapComponent
+    public class MapComponent_Tiberium : MapComponentWithDraw
     {
         public TiberiumMapInfo TiberiumInfo;
         public TiberiumStructureInfo StructureInfo;
+        public TiberiumInfectionInfo InfectionInfo;
 
         public HashSet<IntVec3> AffectedCells = new HashSet<IntVec3>();
         public HashSet<IntVec3> IteratorTiles = new HashSet<IntVec3>();
@@ -33,6 +34,7 @@ namespace TiberiumRim
         {
             TiberiumInfo = new TiberiumMapInfo(map);
             StructureInfo = new TiberiumStructureInfo(map);
+            InfectionInfo = new TiberiumInfectionInfo(map);
         }
 
         public override void FinalizeInit()
@@ -84,24 +86,19 @@ namespace TiberiumRim
             }
         }
 
-        public static double CURBIGGESTTIME = 0;
-        public static double LASTBIGGESTTIME = 0;
-        public static int TICKSSINCELASTTIME = 0;
-
-        public static double BIGGESTTIME = 0;
         public override void MapComponentTick()
         {
-            Stopwatch watch = new Stopwatch();
-            watch.Start();
             base.MapComponentTick();
             IterateThroughTiles();
             if (Find.TickManager.TicksGame %  250 == 0)
             {
                 TiberiumInfo.TiberiumGrid.UpdateDirties();
             }
-            watch.Stop();
-            if (watch.ElapsedMilliseconds > BIGGESTTIME)
-                BIGGESTTIME = watch.ElapsedMilliseconds;
+        }
+
+        public override void MapComponentDraw()
+        {
+
         }
 
         public bool TiberiumAvailable => TiberiumInfo.TiberiumCrystals[HarvestType.Valuable].Count > TNWManager.ReservationManager.ReservedTypes[HarvestType.Valuable];
@@ -153,7 +150,7 @@ namespace TiberiumRim
             ThingDef newThing = null;
             float damageFactor = 1;
             var haulable = cell.GetFirstHaulable(map);
-            if (haulable != null && affecter.def.tiberium.entityDamage.Average > 0 && haulable.CanBeAffected(out damageFactor))
+            if (haulable != null && affecter.def.tiberium.entityDamage.Average > 0 && haulable.CanBeDamagedByTib(out damageFactor))
             {
                 if (haulable.def.IsNutritionGivingIngestible)
                     damageFactor += 0.33f;
@@ -168,8 +165,9 @@ namespace TiberiumRim
                 }
                 return;
             }
+
             Building building = cell.GetFirstBuilding(map);
-            if (building != null && affecter.def.tiberium.buildingDamage.Average > 0 && building.CanBeAffected(out damageFactor))
+            if (building != null && affecter.def.tiberium.buildingDamage.Average > 0 && building.CanBeDamagedByTib(out damageFactor))
             {
                 float chance = 1f;
                 if (building is Building_SteamGeyser)

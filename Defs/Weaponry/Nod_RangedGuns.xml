@@ -4,7 +4,7 @@
 	<ThingDef Name="Nod_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
 		<soundInteract>Interact_Rifle</soundInteract>
 		<recipeMaker>
-			<workSpeedStat>SmithingSpeed</workSpeedStat>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 			<workSkill>Crafting</workSkill>
 			<effectWorking>Smith</effectWorking>
 			<soundWorking>Recipe_Smith</soundWorking>

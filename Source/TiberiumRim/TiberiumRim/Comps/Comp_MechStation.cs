@@ -57,7 +57,7 @@ namespace TiberiumRim
             {
                 d.jobs.ClearQueuedJobs();
                 d.jobs.EndCurrentJob(JobCondition.InterruptForced);
-                d.jobs.StartJob(new Job(DefDatabase<JobDef>.GetNamed("RepairMechanicalPawn"), parent.Position));
+                d.jobs.StartJob(JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("RepairMechanicalPawn"), parent.Position));
             });
         }
 

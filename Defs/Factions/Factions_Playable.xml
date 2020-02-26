@@ -13,8 +13,8 @@
     <backstoryCategories>
       <li>Civil</li>
     </backstoryCategories>
-	<homeIconPath>World/WorldObjects/DefaultSettlement</homeIconPath>
-	<expandingIconTexture>World/WorldObjects/Expanding/Town</expandingIconTexture>
+	<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+	<factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>
     <playerInitialSettlementNameMaker>NamerInitialSettlementColony</playerInitialSettlementNameMaker>
 		<factionNameMaker>NamerFactionOutlander</factionNameMaker>
     <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>

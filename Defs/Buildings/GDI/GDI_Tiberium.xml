@@ -11,6 +11,7 @@
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<rotatable>false</rotatable>
+		<tickerType>Rare</tickerType>
 		<comps>
 			<li Class="CompProperties_Glower">
 				<glowRadius>3</glowRadius>
@@ -25,7 +26,6 @@
 			</li>
 			-->
 		</comps>
-		<tickerType>Normal</tickerType>
 		<!--
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_TiberiumInhibitorAll</li>
@@ -65,6 +65,9 @@
 				<basePowerConsumption>450</basePowerConsumption>
 				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
+			<li Class="TiberiumRim.CompProperties_SonicInhibitor">
+				<radius>6</radius>
+			</li>
 			<!--
 			<li Class="TiberiumRimFactions.CompProperties_SonicInhibition">
 				<compClass>TiberiumRimFactions.ThingComp_SonicInhibition</compClass>
@@ -103,6 +106,9 @@
 				<basePowerConsumption>950</basePowerConsumption>
 				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
+			<li Class="TiberiumRim.CompProperties_SonicInhibitor">
+				<radius>12</radius>
+			</li>
 			<!--
 			<li Class="TiberiumRimFactions.CompProperties_SonicInhibition">
 				<compClass>TiberiumRimFactions.ThingComp_SonicInhibition</compClass>
@@ -120,6 +126,7 @@
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Defense</TRCategory>
 		<size>(1,1)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/SonicInhibition/Decrystallizer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

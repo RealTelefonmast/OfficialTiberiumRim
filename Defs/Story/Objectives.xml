@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<!-- Introduction -->
+	<!-- Introduction 
 	<StoryFramework.ObjectiveDef>
 		<defName>M1_Research</defName>
 		<label>Looking Ahead</label>
@@ -62,7 +62,6 @@
 		<workAmount>1150</workAmount>
 	</StoryFramework.ObjectiveDef>
 	
-	<!--Tiberium Knowledge-->
 	<StoryFramework.ObjectiveDef>
 		<defName>M2_ObserveCrater</defName>
 		<label>Inspection</label>
@@ -163,7 +162,7 @@
 		</targetSettings>
 	</StoryFramework.ObjectiveDef>	
 	
-	<!--Should be done by pawn in gear, in tiberium, testing vulnerabilities-->
+
 	<StoryFramework.ObjectiveDef>
 		<defName>M4_TiberiumSuppression</defName>
 		<label>Suppress The Growth</label>
@@ -183,7 +182,7 @@
 		<workAmount>750</workAmount>
 	</StoryFramework.ObjectiveDef>	
 	
-	<!-- Misc -->
+
 	
 	<StoryFramework.ObjectiveDef>
 		<defName>GeyserInspection</defName>
@@ -200,5 +199,6 @@
 		</targetSettings>
 		<workAmount>1000</workAmount>
 	</StoryFramework.ObjectiveDef>	
+	-->
 	
 </Defs>

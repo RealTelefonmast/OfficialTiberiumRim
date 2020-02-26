@@ -28,7 +28,7 @@ namespace TiberiumRim
         public int tickOffset = 0;
         public int startTick = 0;
         private int moteTicker = -1;
-        private bool spawnedOnce = false;       
+        private bool spawnedOnce = false;
 
         public override void PostExposeData()
         {
@@ -294,15 +294,15 @@ namespace TiberiumRim
 
         public bool ShouldDoEffecters => IParent == null || IParent.ShouldDoEffecters;
 
+        //TODO: Replace motes finally - Add advanced way of rendering effects instead of using "Thing Motes" which need to be spawned
         public override void PostDraw()
         {
             base.PostDraw();
             for (int i = 0; i < Graphics.Count; i++)
             {
-                FXGraphic graphic = Graphics[i];
-                if (graphic.data.mode != FXMode.Static && CanDraw(i))
+                if (Graphics[i].data.mode != FXMode.Static && CanDraw(i))
                 {
-                    graphic.Draw(DrawPosition(i), parent.Rotation, RotationOverride(i), Action(i), i);
+                    Graphics[i].Draw(DrawPosition(i), parent.Rotation, RotationOverride(i), Action(i), i);
                 }
             }
         }
@@ -312,10 +312,9 @@ namespace TiberiumRim
             base.PostPrintOnto(layer);
             for (int i = 0; i < Graphics.Count; i++)
             {
-                FXGraphic graphic = Graphics[i];
-                if (graphic.data.mode == FXMode.Static && CanDraw(i))
+                if (Graphics[i].data.mode == FXMode.Static && CanDraw(i))
                 {
-                    graphic.Print(layer, DrawPosition(i), parent.Rotation, RotationOverride(i), parent);
+                    Graphics[i].Print(layer, DrawPosition(i), parent.Rotation, RotationOverride(i), parent);
                 }
             }
         }

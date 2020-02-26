@@ -153,7 +153,7 @@
 		</comps>
 		<projectileWhenLoaded>Bullet_JuggernautBomb</projectileWhenLoaded>
 		<recipeMaker>
-			<workSpeedStat>SmithingSpeed</workSpeedStat>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 			<effectWorking>Cook</effectWorking>
 			<soundWorking>Recipe_Machining</soundWorking>
 			<workAmount>800</workAmount>

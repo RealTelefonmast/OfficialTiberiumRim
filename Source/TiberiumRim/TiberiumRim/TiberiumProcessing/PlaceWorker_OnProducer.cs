@@ -11,7 +11,7 @@ namespace TiberiumRim
     {
         private static TiberiumProducer producer;
 
-        public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 loc, Rot4 rot, Map map, Thing thingToIgnore = null)
+        public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 loc, Rot4 rot, Map map, Thing thingToIgnore = null, Thing thing = null)
         {
 
             if(producer != null)
@@ -24,7 +24,7 @@ namespace TiberiumRim
             thingRect = new CellRect();
             checkingRect = new CellRect(loc.x - 1, loc.z - 1, 3, 3);
             thing = (TiberiumProducer)checkingRect.GetAnyThingIn<TiberiumProducer>(map);
-            if (thing != null && thing.def.forResearch)
+            if (thing != null)
             {
                 thingRect = thing.OccupiedRect();
                 if (thingRect.Height <= 2)
@@ -42,7 +42,7 @@ namespace TiberiumRim
             producer = null;
         }
 
-        public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol)
+        public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol, Thing thing = null)
         {
             //GenDraw.DrawFieldEdges(new List<IntVec3>() { center }, Color.red);
             GetRects(def, center, Find.CurrentMap, out CellRect checkingRect, out CellRect thingRect, out TiberiumProducer prod);
@@ -55,7 +55,7 @@ namespace TiberiumRim
 
         public override bool ForceAllowPlaceOver(BuildableDef other)
         {
-            return other == producer?.def;
+            return (other == producer?.def) && (bool)producer?.def.forResearch;
         }
     }
 }

@@ -115,7 +115,6 @@
 		<tiberiumTypes>
 			<li>TiberiumPod</li>
 		</tiberiumTypes>
-		<effecter>TiberiumClouds_Green</effecter>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="BlossomTreeBase">
@@ -191,7 +190,6 @@
 				<chance>0.8</chance>
 			</li>
 		</plantsByDistance>
-		<effecter>TiberiumClouds_Blue</effecter>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef Name="SmallBlossomBase" ParentName="BlossomTreeBase" Abstract="True">
@@ -217,7 +215,6 @@
 			<sporeOffset>(0,0,1)</sporeOffset>
 		</spawner>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
-		<effecter>TiberiumClouds_Green</effecter>
 	</TiberiumRim.TiberiumProducerDef>
 		
 	<TiberiumRim.TiberiumProducerDef ParentName="SmallBlossomBase">
@@ -282,7 +279,6 @@
 		<extraData Inherit="False">
 			<alignToBottom>false</alignToBottom>
 		</extraData>
-		<effecter>TiberiumClouds_GB</effecter>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="SmallBlossomBase">

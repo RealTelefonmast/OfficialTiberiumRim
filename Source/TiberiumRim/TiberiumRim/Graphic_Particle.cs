@@ -36,7 +36,7 @@ namespace TiberiumRim
             Material material = MatSingle;
 
             propertyBlock.SetColor(ShaderPropertyIDs.Color, color);
-            Graphics.DrawMesh(MeshPool.plane10, matrix, material, layer, null, 0, propertyBlock);
+            Graphics.DrawMesh(MeshPool.plane10, matrix, MatSingle, layer, null, 0, propertyBlock);
         }
 
         public override void Init(GraphicRequest req)
@@ -65,44 +65,14 @@ namespace TiberiumRim
             return GraphicDatabase.Get<Graphic_Particle>(this.path, newShader, this.drawSize, newColor, newColorTwo, this.data);
         }
 
-        public override Material MatSingle
-        {
-            get
-            {
-                return this.mat;
-            }
-        }
+        public override Material MatSingle => this.mat;
 
-        public override Material MatWest
-        {
-            get
-            {
-                return this.mat;
-            }
-        }
+        public override Material MatWest => this.mat;
 
-        public override Material MatSouth
-        {
-            get
-            {
-                return this.mat;
-            }
-        }
+        public override Material MatSouth => this.mat;
 
-        public override Material MatEast
-        {
-            get
-            {
-                return this.mat;
-            }
-        }
+        public override Material MatEast => this.mat;
 
-        public override Material MatNorth
-        {
-            get
-            {
-                return this.mat;
-            }
-        }
+        public override Material MatNorth => this.mat;
     }
 }

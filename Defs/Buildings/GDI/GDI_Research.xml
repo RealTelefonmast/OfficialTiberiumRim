@@ -7,6 +7,7 @@
 		<description>GDI's advanced research facility.</description>
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Research</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Misc/Armory/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

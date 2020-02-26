@@ -43,7 +43,7 @@
 	
 	<DamageDef ParentName="ProjectileBase_TR">
 		<defName>TRSonic</defName>
-		<label>sonic explosion</label>
+		<label>sonic wave</label>
 		<isExplosive>false</isExplosive>
 		<deathMessage>{0} has been ripped apart by a sonic blast.</deathMessage>
 		<hediff>Crush</hediff>

@@ -30,7 +30,7 @@ namespace TiberiumRim
             var crystal = t as TiberiumCrystal;
 
             if((crystal?.CanBeHarvestedBy(harvester) ?? false) && harvester.CanReserveAndReach(crystal, PathEndMode.ClosestTouch, Danger.Deadly))
-                return new Job(TiberiumDefOf.HarvestTiberium, crystal);
+                return JobMaker.MakeJob(TiberiumDefOf.HarvestTiberium, crystal);
             return null;
         }
     }

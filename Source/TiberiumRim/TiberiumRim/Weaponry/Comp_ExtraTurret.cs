@@ -31,9 +31,9 @@ namespace TiberiumRim
             base.PostSpawnSetup(respawningAfterLoad);
             foreach(TurretProperties props in (props as CompProperties_ExtraTurret).turrets)
             {
-                var turret = new TurretGun(props, parent);
+                var turret = (TurretGun)Activator.CreateInstance(props.turretGunClass);
                 turrets.Add(turret);
-                turret.Setup();
+                turret.Setup(props, parent);
             }
         }
 
@@ -66,6 +66,11 @@ namespace TiberiumRim
         }
 
         public void RemoveTargets()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Notify_ProjectileFired()
         {
             throw new NotImplementedException();
         }

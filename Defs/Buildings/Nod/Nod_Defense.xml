@@ -10,6 +10,7 @@
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Defense</TRCategory>
 		<size>(3,3)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Defense/Obelisk/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -108,6 +109,7 @@
 		<TRCategory>Defense</TRCategory>
 		<thingClass>TiberiumRim.Building_TurretHub</thingClass>
 		<size>(2,2)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Defense/Turrets/Hub_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -213,12 +215,12 @@
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
 	</TiberiumRim.TRThingDef>
 
-
 	<TiberiumRim.TRThingDef Name="NodHubTurret" ParentName="TurretBase_TR" Abstract="True">
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Defense</TRCategory>
 		<thingClass>TiberiumRim.Building_HubTurret</thingClass>
 		<size>(2,2)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,2)</drawSize>
@@ -346,6 +348,7 @@
 		<defName>Nod_FlameTurret</defName>
 		<label>flame turret</label>
 		<description>Nod's flame turret.</description>
+		<thingClass>TiberiumRim.Building_FlameTurret</thingClass>
 		<graphicData>
 			<texPath>Buildings/Nod/Defense/Turrets/Base</texPath>
 		</graphicData>
@@ -368,8 +371,9 @@
 						<speed>200</speed>
 					</turretTop>
 					<turretGunDef>Gun_FlameTurret</turretGunDef>
-					<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
-					<turretBurstCooldownTime>1.5</turretBurstCooldownTime>
+					<turretBurstWarmupTime>0</turretBurstWarmupTime>
+					<turretBurstCooldownTime>0</turretBurstCooldownTime>
+					<continuous>true</continuous>
 				</li>
 			</turrets>
 		</turret>
@@ -398,6 +402,16 @@
 						<altitude>Item</altitude>
 						<mode>Dynamic</mode>
 						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Defense/Turrets/Flame_Flash</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2,2)</drawSize>							
+						</data>
+						<altitude>Item</altitude>
+						<mode>Dynamic</mode>
 					</li>
 				</overlays>
 			</li>	

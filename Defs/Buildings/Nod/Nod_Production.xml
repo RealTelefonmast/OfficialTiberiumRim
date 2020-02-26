@@ -14,6 +14,7 @@
 		<size>(3,2)</size>
 		<minifiedDef />
 		<thingCategories Inherit="false" />
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Production/Factory/Base</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -81,6 +82,7 @@
 		<fillPercent>1</fillPercent>
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Production/Hangar/Base</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -148,6 +150,7 @@
 		<size>(5,5)</size>
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Processing</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Production/Refinery/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -213,14 +216,6 @@
 		<hasInteractionCell>true</hasInteractionCell>
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<interactionCellIcon>RefineryCell</interactionCellIcon>
-		<modExtensions>
-			<li Class="StoryFramework.StoryThingDefExtension">
-				<objectiveRequisites>
-					<li>M2_KnowledgeResearch</li>
-				</objectiveRequisites>
-				<OnStart>false</OnStart>
-			</li>
-		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
@@ -238,6 +233,7 @@
 		<rotatable>false</rotatable>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
 		<size>(2,2)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Production/Crane/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -302,6 +298,7 @@
 		<description>.</description>
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Processing</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Production/PowerPlant/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -385,14 +382,6 @@
 				<transmitsPower>true</transmitsPower>
 			</li>
 		</comps>
-		<modExtensions>
-			<li Class="StoryFramework.StoryThingDefExtension">
-				<objectiveRequisites>
-					<li>M3_TiberiumPower</li>
-				</objectiveRequisites>
-				<OnStart>true</OnStart>
-			</li>
-		</modExtensions>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>

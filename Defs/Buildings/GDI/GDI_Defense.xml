@@ -11,6 +11,7 @@
 		<TRCategory>Defense</TRCategory>
 		<thingClass>TiberiumRim.Building_TRTurret</thingClass>
 		<size>(3,3)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/Juggernaut/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -54,7 +55,7 @@
 									<drawSize>(4,4)</drawSize>
 								</graphic>
 								<altitudeOffset>0.5</altitudeOffset>
-								<recoilOffset>(0,0,-0.5)</recoilOffset>
+								<recoilOffset>(0,0,-0.6)</recoilOffset>
 							</li>
 							<li>
 								<graphic>
@@ -63,7 +64,7 @@
 									<drawSize>(4,4)</drawSize>
 								</graphic>
 								<altitudeOffset>0.5</altitudeOffset>
-								<recoilOffset>(0,0,-0.5)</recoilOffset>
+								<recoilOffset>(0,0,-0.6)</recoilOffset>
 							</li>
 							<li>
 								<graphic>
@@ -72,7 +73,7 @@
 									<drawSize>(4,4)</drawSize>
 								</graphic>
 								<altitudeOffset>0.5</altitudeOffset>
-								<recoilOffset>(0,0,-0.5)</recoilOffset>
+								<recoilOffset>(0,0,-0.6)</recoilOffset>
 							</li>
 						</barrels>
 						<speed>65</speed>
@@ -159,6 +160,7 @@
 		<TRCategory>Defense</TRCategory>
 		<thingClass>TiberiumRim.Building_TRTurret</thingClass>
 		<size>(2,2)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/Turrets/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -293,6 +295,7 @@
 		<TRCategory>Defense</TRCategory>
 		<thingClass>TiberiumRim.Building_TRTurret</thingClass>
 		<size>(2,2)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/Turrets/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -418,6 +421,7 @@
 		<TRCategory>Defense</TRCategory>
 		<thingClass>TiberiumRim.Building_SonicEmitter</thingClass>
 		<size>(3,3)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/SonicEmitter/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -557,6 +561,7 @@
 		<TRCategory>Defense</TRCategory>
 		<thingClass>TiberiumRim.Building_TRTurret</thingClass>
 		<size>(8,4)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/Turrets/RigBase</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

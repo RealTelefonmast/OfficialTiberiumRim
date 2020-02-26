@@ -1,5 +1,4 @@
-﻿using Harmony;
-using System;
+﻿using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -11,11 +10,12 @@ using RimWorld.Planet;
 using RimWorld.BaseGen;
 using Verse;
 using Verse.AI.Group;
-using UnityEngine;
 using System.Collections;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
+using HarmonyLib;
+using UnityEngine;
 using Verse.Sound;
 
 namespace TiberiumRim
@@ -25,35 +25,27 @@ namespace TiberiumRim
     {
         static TiberiumRimPatches()
         {
-            Log.Message("Constructing TiberiumRimPatches");
-            HarmonyInstance Tiberium = TiberiumRimMod.Tiberium;
-            Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI"),new HarmonyMethod(typeof(TiberiumRimPatches), "BackgroundOnGUIPatch"));
-            Tiberium.Patch(
+            Log.Message("Applying TiberiumRim-Patches");
+            //TiberiumRimMod.Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI"),new HarmonyMethod(typeof(TiberiumRimPatches), "BackgroundOnGUIPatch"));
+            
+            /*
+            TiberiumRimMod.Tiberium.Patch(
             typeof(SymbolResolver_RandomMechanoidGroup).GetMethods(BindingFlags.NonPublic | BindingFlags.Static)
             .First(mi => mi.HasAttribute<CompilerGeneratedAttribute>() && mi.ReturnType == typeof(bool) &&
                      mi.GetParameters().Count() == 1 &&
                      mi.GetParameters()[0].ParameterType == typeof(PawnKindDef)),
             null, new HarmonyMethod(typeof(TiberiumRimPatches),
             nameof(TiberiumRimPatches.MechanoidsFixerAncient)));
+            */
 
-            Tiberium.Patch(
-                typeof(CompSpawnerMechanoidsOnDamaged).GetMethods(BindingFlags.NonPublic | BindingFlags.Instance).First(
-                    mi => mi.HasAttribute<CompilerGeneratedAttribute>() && mi.ReturnType == typeof(bool) &&
-                          mi.GetParameters().Count() == 1 &&
-                          mi.GetParameters()[0].ParameterType == typeof(PawnKindDef)), null, new HarmonyMethod(
-                    typeof(TiberiumRimPatches), nameof(TiberiumRimPatches.MechanoidsFixer)));
             TiberiumRimMod.mod.LoadAssetBundles();
             TiberiumRimMod.mod.PatchPawnDefs();
+            Log.Message("Finished Applying TiberiumRim-Patches");
         }
 
         public static void MechanoidsFixerAncient(ref bool __result, PawnKindDef kind)
         {
             if (typeof(MechanicalPawn).IsAssignableFrom(kind.race.thingClass)) __result = false;
-        }
-
-        public static void MechanoidsFixer(ref bool __result, PawnKindDef def)
-        {
-            if (typeof(MechanicalPawn).IsAssignableFrom(def.race.thingClass)) __result = false;
         }
 
         //Render Patches
@@ -149,13 +141,8 @@ namespace TiberiumRim
             }
         }
 
-        [HarmonyPatch(typeof(PawnRenderer))]
-        [HarmonyPatch("RenderPawnInternal")]
-        [HarmonyPatch(new Type[]
-        {
-            typeof(Vector3), typeof(float), typeof(bool), typeof(Rot4), typeof(Rot4), typeof(RotDrawMode), typeof(bool),
-            typeof(bool)
-        })]
+        [HarmonyPatch(typeof(PawnRenderer), "RenderPawnInternal")]
+        [HarmonyPatch(new Type[] { typeof(Vector3), typeof(float), typeof(bool), typeof(Rot4), typeof(Rot4), typeof(RotDrawMode), typeof(bool), typeof(bool), typeof(bool) })]
         public static class PawnRenderPatch
         {
             [HarmonyPostfix]
@@ -365,6 +352,7 @@ namespace TiberiumRim
         {
             public static void Postfix(Thing __instance)
             {
+                //Suppressor Logic
                 if (__instance is Building b && !b.CanBeSeenOver())
                 {
                     var suppression = b.Map.GetComponent<MapComponent_Suppression>();
@@ -374,6 +362,8 @@ namespace TiberiumRim
                         sups.ForEach(s => s.UpdateCells(false));
                     }
                 }
+                //Research
+                ResearchTargetTable.RegisterNewTarget(__instance);
             }
         }
 
@@ -392,6 +382,8 @@ namespace TiberiumRim
                         sups.ForEach(s => s.UpdateCells(false));
                     }
                 }
+                //Research
+                ResearchTargetTable.DeregisterTarget(__instance);
                 return true;
             }
         }
@@ -493,13 +485,8 @@ namespace TiberiumRim
         [HarmonyPatch("TickManagerUpdate")]
         public static class TickManagerUpdatePatch
         {
-            public static Stopwatch watch = new Stopwatch();
-            public static int TICKER = 0;
-
             public static bool Prefix()
             {
-                watch.Start();
-                TICKER++;
                 return true;
             }
             public static void Postfix(TickManager __instance)
@@ -518,17 +505,6 @@ namespace TiberiumRim
                         }
                     }
                 }
-                watch.Stop();
-                
-                MapComponent_Tiberium.CURBIGGESTTIME = watch.ElapsedMilliseconds;
-                if (watch.ElapsedMilliseconds > MSThreshold)
-                {
-                    MapComponent_Tiberium.TICKSSINCELASTTIME = TICKER;
-                    MapComponent_Tiberium.LASTBIGGESTTIME = watch.ElapsedMilliseconds;
-                    TICKER = 0;
-                }
-                
-                watch.Reset();
             }
         }
 

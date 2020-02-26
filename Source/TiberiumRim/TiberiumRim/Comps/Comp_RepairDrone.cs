@@ -41,18 +41,20 @@ namespace TiberiumRim
         {
             var mechs = MechsAvailableForRepair().ToList();
             if (!mechs.Any()) return;
-            for (int i = 0; i < storedMechs.Count; i++)
+            foreach (var drone in storedMechs)
             {
-                var drone = storedMechs[i];
                 if (!DroneContainer.Contains(drone)) continue;
                 foreach (var mech in mechs)
                 {
-                    if(parent.Map.physicalInteractionReservationManager.IsReserved(mech)) continue;
+                    if (parent.Map.physicalInteractionReservationManager.IsReserved(mech)) continue;
                     var closestPos = GenAdjFast.AdjacentCells8Way(parent).MinBy(c => c.DistanceTo(mech.Position));
                     DroneContainer.TryDrop(drone, closestPos, parent.Map, ThingPlaceMode.Direct, out Thing last);
-                    var job = new JobWithExtras(DefDatabase<JobDef>.GetNamed("RepairMechanicalPawn"), mech);
+                    var job = new JobWithExtras(DefDatabase<JobDef>.GetNamed("RepairMechanicalPawn"), mech)
+                    {
+                        loadID = Find.UniqueIDsManager.GetNextJobID(),
+                        hediffs = mech.Damage().ToList()
+                    };
                     parent.Map.physicalInteractionReservationManager.Reserve(drone, job, mech);
-                    job.hediffs = mech.Damage().ToList();
                     drone.jobs.StartJob(job);
                     parent.Map.mapDrawer.MapMeshDirty(parent.Position, MapMeshFlag.Things);
                 }

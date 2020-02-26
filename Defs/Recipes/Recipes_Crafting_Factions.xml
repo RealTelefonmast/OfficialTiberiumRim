@@ -52,7 +52,7 @@
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
 		<workAmount>5500</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 		<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
 		<tiberiumCost>
 			<costs>

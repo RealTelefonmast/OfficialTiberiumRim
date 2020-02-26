@@ -14,6 +14,7 @@
 			<Steel>300</Steel>
 			<ComponentIndustrial>4</ComponentIndustrial>
 		</costList>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Research/ResearchCrane</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -29,10 +30,6 @@
 		<pathCost>70</pathCost>
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
-		<building>
-			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
-			<workSpeedPenaltyTemperature>false</workSpeedPenaltyTemperature>
-		</building>
 		<statBases>
 			<MaxHitPoints>300</MaxHitPoints>
 			<WorkToBuild>3000</WorkToBuild>
@@ -58,14 +55,6 @@
 			<li>TiberiumRim.PlaceWorker_OnProducer</li>
 			<li>TiberiumRim.PlaceWorker_Once</li>
 		</placeWorkers>
-		<modExtensions>
-			<li Class="StoryFramework.StoryThingDefExtension">
-				<objectiveRequisites>
-					<li>M2_CheckDataBase</li>
-				</objectiveRequisites>
-				<OnStart>false</OnStart>
-			</li>
-		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="BenchBase_TR">
@@ -81,6 +70,7 @@
 			<Plasteel>50</Plasteel>
 			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Research/ResearchStation/TibResearchStation</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -154,6 +144,7 @@
 		</costList>
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Research/ResearchCrafter/TibResearchCrafter</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>

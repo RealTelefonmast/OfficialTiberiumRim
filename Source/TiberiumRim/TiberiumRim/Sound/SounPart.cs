@@ -12,7 +12,7 @@ namespace TiberiumRim
         public SoundDef def;
         public SoundInfo info;
 
-        public SoundPart(SoundDef def, SoundInfo info, float second)
+        public SoundPart(SoundDef def, SoundInfo info)
         {
             this.def = def;
             this.info = info;
@@ -20,8 +20,10 @@ namespace TiberiumRim
 
         public void PlaySound(int tick)
         {
-            Log.Message("Playing Sound: " + def.defName + " at tick " + tick);
-            def.PlayOneShot(info);
+            Log.Message("Playing Sound: " + def.defName + " at tick " + tick + " with info " + info.Maker);
+            Log.Message("Current playing oneshots: " + Find.SoundRoot.oneShotManager.PlayingOneShots.ToStringSafeEnumerable());
+            if(Find.SoundRoot.oneShotManager.CanAddPlayingOneShot(def, info))
+                def.PlayOneShot(info);
         }
     }
 }

@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<HediffDef>
+	<HediffDef ParentName="HediffMedical">
 		<defName>TiberAddHediff</defName>
-		<hediffClass>HediffWithComps</hediffClass>
-		<defaultLabelColor>(255, 102, 255)</defaultLabelColor>
 		<label>tiberadd effect</label>
-		<isBad>false</isBad>
-		<comps>
-			<li Class="HediffCompProperties_Disappears">
-				<disappearsAfterTicks>
-					<min>30000</min>
-					<max>45000</max>
-				</disappearsAfterTicks>
-			</li>
-		</comps>
+		<description>TiberAdd makes sure that your pawn has a steady supply of Tiberium need, without risking to wander the deadly fields of green.</description>
+		<defaultLabelColor>(255, 102, 255)</defaultLabelColor>
 		<stages>
 			<li>
 				<statOffsets>
@@ -26,9 +17,10 @@
 	
 	<HediffDef>
 		<defName>TiberAddSide</defName>
+		<label>tiberadd side effect</label>
+		<description>n/a</description>
 		<hediffClass>HediffWithComps</hediffClass>
 		<defaultLabelColor>(215, 0, 65)</defaultLabelColor>
-		<label>tiberadd side effect</label>
 		<isBad>true</isBad>
 		<makesSickThought>true</makesSickThought>
 		<comps>
@@ -50,27 +42,19 @@
 		</stages>
 	</HediffDef>
 	
-	<HediffDef>
+	<HediffDef ParentName="HediffMedical">
 		<defName>TiberBlockHediff</defName>
-		<hediffClass>HediffWithComps</hediffClass>
-		<defaultLabelColor>(204, 255, 255)</defaultLabelColor>
 		<label>tiberblock effect</label>
-		<isBad>false</isBad>
-		<comps>
-			<li Class="HediffCompProperties_Disappears">
-				<disappearsAfterTicks>
-					<min>30000</min>
-					<max>42500</max>
-				</disappearsAfterTicks>
-			</li>
-		</comps>
+		<description>TiberBlock makes sure to immunize your pawn from any Tiberium effects temporarily. It will help recover from crystallization, as long as the part isnt fully crystallized.</description>
+		<defaultLabelColor>(204, 255, 255)</defaultLabelColor>
 	</HediffDef>
 	
 	<HediffDef>
 		<defName>TiberBlockSide</defName>
+		<label>tiberblock side effect</label>
+		<description>n/a</description>
 		<hediffClass>HediffWithComps</hediffClass>
 		<defaultLabelColor>(215, 0, 65)</defaultLabelColor>
-		<label>tiberblock side effect</label>
 		<isBad>true</isBad>
 		<makesSickThought>true</makesSickThought>
 		<comps>

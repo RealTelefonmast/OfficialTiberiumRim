@@ -5,6 +5,9 @@
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>340</renderPrecedence>
 		<pathCost>30</pathCost>
+		<filthAcceptanceMask>
+			<li>Unnatural</li>
+		</filthAcceptanceMask>
 		<statBases>
 			<Beauty>-6</Beauty>
 			<Cleanliness>-3</Cleanliness>
@@ -51,6 +54,9 @@
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>220</renderPrecedence>
 		<pathCost>30</pathCost>
+		<filthAcceptanceMask>
+			<li>Unnatural</li>
+		</filthAcceptanceMask>
 		<statBases>
 			<Beauty>-9</Beauty>
 			<Cleanliness>-3</Cleanliness>
@@ -65,7 +71,6 @@
 			<li>Stone</li>
 		</tags>
 		<scatterType>Rocky</scatterType>
-		<generatedFilth>Filth_Dirt</generatedFilth>
 		<fertility>0</fertility>
 		<takeFootprints>False</takeFootprints>
 		<avoidWander>True</avoidWander>
@@ -600,6 +605,9 @@
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>340</renderPrecedence>
 		<pathCost>5</pathCost>
+		<filthAcceptanceMask>
+			<li>Unnatural</li>
+		</filthAcceptanceMask>
 		<statBases>
 			<Beauty>-2</Beauty>
 			<Cleanliness>-1.5</Cleanliness>
@@ -624,6 +632,9 @@
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>340</renderPrecedence>
 		<pathCost>12</pathCost>
+		<filthAcceptanceMask>
+			<li>Unnatural</li>
+		</filthAcceptanceMask>
 		<statBases>
 			<Beauty>-2</Beauty>
 			<Cleanliness>-1.5</Cleanliness>

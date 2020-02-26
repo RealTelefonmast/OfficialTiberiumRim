@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TiberiumRim</RootNamespace>
     <AssemblyName>TiberiumRim</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
@@ -22,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>8.0</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +33,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>8.0</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -41,23 +44,37 @@
       <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="StoryFramework">
-      <HintPath>Resources\StoryFramework.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="WindowsBase" />
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AI\IPawnWithParent.cs" />
@@ -68,11 +85,9 @@
     <Compile Include="AI\ThinkNode_ConditionalMechHasParent.cs" />
     <Compile Include="AI\ThinkNode_ConditionalColonistOrMech.cs" />
     <Compile Include="Alert_Debug.cs" />
-    <Compile Include="Alert_DebugReservations.cs" />
     <Compile Include="Comps\Comp_MechStation.cs" />
     <Compile Include="Comps\Comp_Upgradable.cs" />
     <Compile Include="Comps\Comp_WanderProps.cs" />
-    <Compile Include="EventExtension.cs" />
     <Compile Include="GameParts\AreaGrid.cs" />
     <Compile Include="GameParts\ASATNetwork.cs" />
     <Compile Include="Comps\CompGlowerOffset.cs" />
@@ -86,7 +101,21 @@
     <Compile Include="GameParts\Interfaces\IContainerHolder.cs" />
     <Compile Include="GameParts\ITab_ContainedPawn_Health.cs" />
     <Compile Include="GameParts\ITab_MechConstruction.cs" />
+    <Compile Include="GameParts\MapComps\MapComponentWithDraw.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_TiberiumTickManager.cs" />
+    <Compile Include="GameParts\PositionFilter.cs" />
+    <Compile Include="GameParts\TerrainFloat.cs" />
+    <Compile Include="GameParts\ThingSkyfaller.cs" />
+    <Compile Include="GameParts\ThingValue.cs" />
+    <Compile Include="GDI\Comp_SonicInhibitor.cs" />
+    <Compile Include="Research\ActiveEvent.cs" />
+    <Compile Include="Research\EventCompositionDef.cs" />
+    <Compile Include="Research\EventManager.cs" />
+    <Compile Include="Research\EventWorker.cs" />
+    <Compile Include="Research\IncidentWorker_CauseEvents.cs" />
+    <Compile Include="Research\IncidentWorker_TiberiumSighting.cs" />
+    <Compile Include="Research\ResearchTargetTable.cs" />
+    <Compile Include="TiberiumInfection\TiberiumInfectionInfo.cs" />
     <Compile Include="GameParts\MapComps\WorldComponent_TR.cs" />
     <Compile Include="GameParts\PlaceWorker_DoorFrame.cs" />
     <Compile Include="GameParts\PlaceWorker_TurretGunTop.cs" />
@@ -105,9 +134,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Research\EventDef.cs" />
+    <Compile Include="Research\IResearchTarget.cs" />
     <Compile Include="Research\JobDriver_TResearch.cs" />
     <Compile Include="Research\MainTabWindow_TibResearch.cs" />
+    <Compile Include="Research\RaidSettings.cs" />
     <Compile Include="Research\Requisites.cs" />
+    <Compile Include="Research\ResearchTracker.cs" />
     <Compile Include="Research\TResearchDef.cs" />
     <Compile Include="Research\TResearchManager.cs" />
     <Compile Include="Research\WorkGiver_TResearch.cs" />
@@ -128,12 +160,12 @@
     <Compile Include="Sound\SoundSample.cs" />
     <Compile Include="Sound\SounPart.cs" />
     <Compile Include="Story\IncidentWorker_Skyfaller.cs" />
-    <Compile Include="Story\Objective_ActivateGZ.cs" />
     <Compile Include="Story\ScenPart_ScrinArrival.cs" />
     <Compile Include="TiberiumEnvironment\Grid_Suppression.cs" />
     <Compile Include="TiberiumEnvironment\Grid_Flora.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumFloraManager.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumGarden.cs" />
+    <Compile Include="TiberiumEnvironment\TiberiumMapRenderer.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumPond.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumProducerGrid.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumStructureInfo.cs" />
@@ -183,6 +215,7 @@
     <Compile Include="TiberiumProcessing\Building_SuppressionTower.cs" />
     <Compile Include="TiberiumProcessing\PlaceWorker_OnlyOutside.cs" />
     <Compile Include="TiberiumProcessing\WorkGiver_HarvestTiberium.cs" />
+    <Compile Include="Utilities\DrawUtils.cs" />
     <Compile Include="Utilities\SoundUtility.cs" />
     <Compile Include="VeinholeParts\TiberiumVein.cs" />
     <Compile Include="VeinholeParts\VeinChunk.cs" />
@@ -192,12 +225,14 @@
     <Compile Include="VeinholeParts\VeinholeTunnel.cs" />
     <Compile Include="VeinholeParts\VeinHub.cs" />
     <Compile Include="VeinholeParts\VeinMonster.cs" />
+    <Compile Include="VisualEffects\CachedWindow.cs" />
     <Compile Include="VisualEffects\EffecterDefTR.cs" />
     <Compile Include="VisualEffects\Effecter_MoteMaker.cs" />
     <Compile Include="VisualEffects\ExtendedGraphicData.cs" />
     <Compile Include="VisualEffects\Graphic_LinkedWithSame.cs" />
     <Compile Include="VisualEffects\Graphic_NumberedCollection.cs" />
     <Compile Include="VisualEffects\Graphic_RandomSelection.cs" />
+    <Compile Include="VisualEffects\Graphic_Sprite.cs" />
     <Compile Include="VisualEffects\Mote_Beam.cs" />
     <Compile Include="VisualEffects\MoverProperties.cs" />
     <Compile Include="VisualEffects\ParticleEmitter.cs" />
@@ -208,12 +243,14 @@
     <Compile Include="Weaponry\BeamHubProperties.cs" />
     <Compile Include="Weaponry\Building_BeamHub.cs" />
     <Compile Include="Weaponry\Building_BeamSegment.cs" />
+    <Compile Include="Weaponry\Building_FlameTurret.cs" />
     <Compile Include="Weaponry\Building_GrowthSuppressor.cs" />
     <Compile Include="Weaponry\Building_HubTurret.cs" />
     <Compile Include="Weaponry\Building_Obelisk.cs" />
     <Compile Include="Weaponry\Building_SonicEmitter.cs" />
     <Compile Include="Weaponry\Building_TRTurret.cs" />
     <Compile Include="Weaponry\Building_TurretHub.cs" />
+    <Compile Include="Weaponry\Bullet_Sprite.cs" />
     <Compile Include="Weaponry\Command_TurretTarget.cs" />
     <Compile Include="Weaponry\Comp_ExtraTurret.cs" />
     <Compile Include="Comps\Comp_RepairDrone.cs" />
@@ -241,6 +278,7 @@
     <Compile Include="GameParts\TRBuilding.cs" />
     <Compile Include="Weaponry\Verb_Beam.cs" />
     <Compile Include="Weaponry\Verb_BurstToTarget.cs" />
+    <Compile Include="Weaponry\Verb_Sprayer.cs" />
     <Compile Include="Weaponry\Verb_TR.cs" />
     <Compile Include="VisualEffects\FXGraphic.cs" />
     <Compile Include="VisualEffects\FXGraphicData.cs" />
@@ -272,7 +310,6 @@
     <Compile Include="AI\JobGiver_IdleAtRefinery.cs" />
     <Compile Include="AI\JobGiver_UnloadAtRefinery.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_TNWManager.cs" />
-    <Compile Include="TiberiumProcessing\Objective_TResearch.cs" />
     <Compile Include="TiberiumProcessing\RecipeDef_Tiberium.cs" />
     <Compile Include="TiberiumProcessing\TiberiumBill.cs" />
     <Compile Include="TiberiumProcessing\TiberiumNetwork.cs" />
@@ -307,7 +344,7 @@
     <Compile Include="TiberiumEnvironment\GenTiberium.cs" />
     <Compile Include="GraphicsManager.cs" />
     <Compile Include="GraphicsSettings.cs" />
-    <Compile Include="TiberiumEnvironment\IncidentWorker_TiberiumArrival.cs" />
+    <Compile Include="Research\IncidentWorker_TiberiumArrival.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_Particles.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_Pollution.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_Tiberium.cs" />
@@ -329,7 +366,7 @@
     <Compile Include="TiberiumDefOf.cs" />
     <Compile Include="TiberiumFloodInfo.cs" />
     <Compile Include="TiberiumObjects\TiberiumGeyser.cs" />
-    <Compile Include="TiberiumIncidentDef.cs" />
+    <Compile Include="Research\TiberiumIncidentDef.cs" />
     <Compile Include="TiberiumPawns\TiberiumPawn.cs" />
     <Compile Include="TiberiumObjects\TiberiumPlant_Expeller.cs" />
     <Compile Include="TiberiumPosIndices.cs" />
@@ -357,10 +394,6 @@
     <Compile Include="Weather\WeatherEvent_IonStrike.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </None>
-    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -10,7 +10,7 @@ namespace TiberiumRim
 {
     public class PlaceWorker_Suppression : PlaceWorker
     {
-        public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol)
+        public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol, Thing thing = null)
         {
             var props = def.GetCompProperties<CompProperties_Suppression>();
             if(props == null)

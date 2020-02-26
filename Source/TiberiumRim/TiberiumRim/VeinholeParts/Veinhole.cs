@@ -75,7 +75,7 @@ namespace TiberiumRim
 
         private void SpawnEgg()
         {
-            var cell = fieldCells.RandomElement();
+            var cell = FieldCells.RandomElement();
 
             GenSpawn.Spawn(ThingDef.Named("VeinEgg"), cell, Map);
             ResetEggTimer();

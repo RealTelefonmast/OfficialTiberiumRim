@@ -20,6 +20,7 @@
 		<stealable>false</stealable>
 		<rotatable>false</rotatable>
 		<tickerType>Normal</tickerType>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/IonCannon/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -80,6 +81,7 @@
 		<description>This specialized facility registers all Firestorm-Segments placed by this Faction. When enough power is available the Firestorm-System can be activated anytime and will last for a day, completely cutting off any intruders.\n\nOnly one can be built.</description>
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Defense</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/Firestorm/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -139,7 +141,6 @@
 			<Flammability>1.0</Flammability>
 			<Beauty>0</Beauty>
 		</statBases>
-		<drawerType>MapMeshAndRealTime</drawerType>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<fillPercent>0.40</fillPercent>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
@@ -161,6 +162,7 @@
 		<description>A segment of the Firestorm system.</description>
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Defense</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/Firestorm/Wall/Base</texPath>
 			<graphicClass>Graphic_single</graphicClass>

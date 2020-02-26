@@ -12,7 +12,6 @@
 		</graphicData>
 		<filth>
 			<cleaningWorkToReduceThickness>65</cleaningWorkToReduceThickness>
-			<terrainSourced>false</terrainSourced>
 			<canFilthAttach>true</canFilthAttach>
 			<rainWashes>true</rainWashes>
 			<maxThickness>80</maxThickness>

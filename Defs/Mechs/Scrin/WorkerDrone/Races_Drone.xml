@@ -18,6 +18,10 @@
 			<MoveSpeed>1.33</MoveSpeed>
 			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
+			<!-- -->
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
 		</statBases>
 	</ThingDef>
 

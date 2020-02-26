@@ -78,6 +78,7 @@
 			<Mass>10</Mass>
 			<Beauty>25</Beauty>
 		</statBases>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Structure/DoorFrame/DoorFrameGDI</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>

@@ -9,6 +9,7 @@
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Defense</TRCategory>
 		<size>(6,7)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Defense/Temple/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -23,7 +24,6 @@
 		</superWeapon>
 		<uiIconScale>0.90</uiIconScale>
 		<altitudeLayer>FloorEmplacement</altitudeLayer>
-		<drawerType>MapMeshAndRealTime</drawerType>
 		<tickerType>Normal</tickerType>
 		<stealable>false</stealable>
 		<rotatable>false</rotatable>
@@ -114,6 +114,7 @@
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Defense</TRCategory>
 		<size>(7,7)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Defense/Suppressor/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -198,7 +199,6 @@
 			<Flammability>1.0</Flammability>
 			<Beauty>25</Beauty>
 		</statBases>
-		<drawerType>MapMeshAndRealTime</drawerType>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<placeWorkers>
 			<li>PlaceWorker_NotUnderRoof</li>

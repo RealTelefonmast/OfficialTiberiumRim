@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+	<!--
 	<Def Class="StoryFramework.StoryControlDef">
 		<defName>TiberiumMissionControlDef</defName>
 		<label>Tiberium Rim</label>
@@ -8,5 +9,5 @@
 		<borderColor>(0,0,0)</borderColor>
 		<backGroundPath>UI/Menu/WorkBanner</backGroundPath>
 	</Def>
-  
+  -->
 </Defs>
