@@ -17,6 +17,11 @@ namespace TiberiumRim
         public static readonly Graphic_LinkedTNWOverlay TiberiumNetworkPipesGlow = new Graphic_LinkedTNWOverlay(GraphicDatabase.Get<Graphic_Single>("Buildings/Common/Network/TNW_PipeOverlayAtlas", ShaderDatabase.MoteGlow, Vector2.one, Color.white));
         public static readonly Graphic_LinkedTNW TiberiumNetworkPipes = new Graphic_LinkedTNW(GraphicDatabase.Get<Graphic_Single>("Buildings/Common/Network/TNW_PipeAtlas", ShaderDatabase.Transparent, Vector2.one, Color.white));
 
+        //Icons
+        public static readonly Texture2D MissingConnection = ContentFinder<Texture2D>.Get("UI/Icons/TiberiumNetwork/ConnectionMissing", false);
+        public static readonly Texture2D MarkedForDeath = ContentFinder<Texture2D>.Get("UI/Icons/Marked", false);
+        public static readonly Texture2D Icon_EVA = ContentFinder<Texture2D>.Get("UI/Icons/EVA", false);
+
         //Turrets
         public static readonly Material TurretCable = MaterialPool.MatFrom("Buildings/Nod/Defense/Turrets/TurretCable");
 
@@ -46,8 +51,8 @@ namespace TiberiumRim
         //----SuperWeapon
         public static readonly Texture2D NodNukeIcon = ContentFinder<Texture2D>.Get("UI/Icons/Controls/SuperWep/Launch_Nuke", true);
         public static readonly Texture2D IonCannonIcon = ContentFinder<Texture2D>.Get("UI/Icons/Controls/SuperWep/Launch_IonCannon", true);
-        public static readonly Texture2D FireStorm_On = ContentFinder<Texture2D>.Get("UI/Icons/Controls/SuperWep/FireStorm_On", true);
-        public static readonly Texture2D FireStorm_Off = ContentFinder<Texture2D>.Get("UI/Icons/Controls/SuperWep/FireStorm_Off", true);
+        public static readonly Texture2D FireStorm_On = ContentFinder<Texture2D>.Get("UI/Icons/Controls/SuperWep/Firestorm_On", true);
+        public static readonly Texture2D FireStorm_Off = ContentFinder<Texture2D>.Get("UI/Icons/Controls/SuperWep/Firestorm_Off", true);
 
         //----Tib Container
         public static readonly Texture2D ContainMode_Sludge = ContentFinder<Texture2D>.Get("UI/Icons/Controls/TibContainer/ContainMode_Sludge", true);

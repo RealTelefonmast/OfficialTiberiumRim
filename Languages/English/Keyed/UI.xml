@@ -11,4 +11,14 @@
 	<TR_TaskWorkType>Required Work Type: {0}</TR_TaskWorkType>
 	<TR_TaskSkillReq>Required Skills:</TR_TaskSkillReq>
 	
+	<TR_OpenTab>Open Tiberium Tab</TR_OpenTab>
+	
+	<TR_MainTabResearch>Research</TR_MainTabResearch>
+	<TR_MainTabEvents>Events</TR_MainTabEvents>
+	
+	<TR_EventResearchUnlocks>New Research Projects:\n{0}</TR_EventResearchUnlocks>
+	
+	<TR_ResearchInactiveWorkType>Missing work type: {0}</TR_ResearchInactiveWorkType>
+	<TR_ResearchMissingSkill>Missing skill:\n{0}</TR_ResearchMissingSkill>
+	
 </LanguageData>

@@ -117,7 +117,7 @@ namespace TiberiumRim
         public List<IntVec3> CurrentPath => pathCells;
     }
 
-    public class TiberiumProducer : TRBuilding, IResearchTarget
+    public class TiberiumProducer : TRBuilding
     {
         public new TiberiumProducerDef def;
         public List<TiberiumCrystal> boundCrystals = new List<TiberiumCrystal>();

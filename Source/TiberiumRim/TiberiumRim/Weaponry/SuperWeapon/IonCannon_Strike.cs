@@ -93,8 +93,7 @@ namespace TiberiumRim
                 composition.AddPart(delegate
                 {
                     MakeIonBubble(5, radius, new ColorInt(70, 90, 175).ToColor, ThingDef.Named("IonDistortionBubble"));
-                    MakeIonBubble(5, radius * 0.4f, new ColorInt(100, 120, 175).ToColor,
-                        ThingDef.Named("IonCenterDistortionBubble"));
+                    MakeIonBubble(5, radius * 0.4f, new ColorInt(100, 120, 175).ToColor, ThingDef.Named("IonCenterDistortionBubble"));
 
                 }, 7f); // 5 second alive time for bubble
                 composition.AddPart(SoundDef.Named("IonCannon_PreClimaxPause"),
@@ -110,8 +109,9 @@ namespace TiberiumRim
                 {
                     IonBeam beam = (IonBeam) ThingMaker.MakeThing(ThingDef.Named("IonBeam"));
                     beam.realPos = DrawPos;
-                    beam.durationTicks = 100;
+                    beam.durationTicks = 60;
                     beam.width = 8;
+                    beam.continuousBurn = false;
                     GenSpawn.Spawn(beam, Position, this.Map);
                     //GenExplosion.DoExplosion(Position, Map, radius, DamageDefOf.Bomb, this, TRUtils.Range(1000, 9999));
                     foreach (var intVec3 in GenRadial.RadialCellsAround(Position, radius, true))
@@ -128,11 +128,27 @@ namespace TiberiumRim
                     }
                     Mote mote = (Mote) ThingMaker.MakeThing(ThingDef.Named("IonBurnMark"));
                     mote.exactPosition = DrawPos;
-                    mote.Scale = radius * 6f;
+                    mote.Scale = radius * 6.5f;
                     mote.rotationRate = 1.2f;
                     GenSpawn.Spawn(mote, Position, Map);
+                    //MakeIonBubble(2, 8, new ColorInt(120, 140, 225).ToColor, ThingDef.Named("IonCenterDistortionBubble"));
+                    //MoteMaker.MakeStaticMote(Position, Map, ThingDef.Named("IonExplosionShockwave"), radius);
 
-                    MoteMaker.MakeStaticMote(Position, Map, ThingDef.Named("IonExplosionShockwave"), radius);
+                    ActionComposition ionExpComp = new ActionComposition("Ion Last Exp ");
+                    Mote distortion = (Mote)ThingMaker.MakeThing(ThingDef.Named("IonExplosionShockwave"));
+                    ionExpComp.AddPart(delegate
+                    {
+                        distortion.exactPosition = DrawPos;
+                        distortion.rotationRate = 1.2f;
+                        GenSpawn.Spawn(distortion, Position, Map);
+                    }, 0);
+                    ionExpComp.AddPart(delegate (ActionPart part)
+                    {
+                        distortion.Scale = radius * (part.CurrentTick / (float)part.playTime);
+                    }, 0, 0.75f);
+                    ionExpComp.Init();
+
+
 
                 }, SoundDef.Named("IonCannon_Climax"), SoundInfo.InMap(posInfo, MaintenanceType.PerFrame), 12f);
                 composition.AddFinishAction(delegate
@@ -143,6 +159,11 @@ namespace TiberiumRim
                 composition.Init();
             }
         }
+
+        //TODO: Make new Mote class, control fade-in and fade-out times directly, instead over mote properties 
+        //TODO: Make new mote overridable, no more static mote props.
+        //
+        //
 
         private void MakeIonBubble(float time, float bubbleRadius, Color color, ThingDef ionDistortion)
         {

@@ -9,7 +9,7 @@ namespace TiberiumRim
 {
     public class TiberiumIncidentDef : IncidentDef
     {
-        public List<ThingSkyfaller> skyfallers;
+        public List<SkyfallerProperties> skyfallers;
         public PositionFilter positions;
         public List<EventDef> eventsToTrigger;
 

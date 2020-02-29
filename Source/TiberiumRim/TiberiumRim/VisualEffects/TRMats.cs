@@ -18,8 +18,6 @@ namespace TiberiumRim
         public static readonly Texture2D RedType = SolidColorMaterials.NewSolidColorTexture(MainTCD.Main.RedColor);
         public static readonly Texture2D GasType = SolidColorMaterials.NewSolidColorTexture(MainTCD.Main.GasColor);
         public static readonly Texture2D SludgeType = SolidColorMaterials.NewSolidColorTexture(MainTCD.Main.SludgeColor);
-        public static readonly Texture2D EmptyContainer = ContentFinder<Texture2D>.Get("UI/Icons/ConnectionMissing", false);
-        public static readonly Texture2D MarkedForDeath = ContentFinder<Texture2D>.Get("UI/Icons/Marked", false);
 
         public static readonly Texture2D mutationVisceral = SolidColorMaterials.NewSolidColorTexture(new ColorInt(155, 160, 75).ToColor);
         public static readonly Texture2D mutationGreen = SolidColorMaterials.NewSolidColorTexture(new ColorInt(175, 255, 0).ToColor);

@@ -35,8 +35,6 @@ namespace TiberiumRim
         }
 
         public List<TResearchGroupDef> Groups => researchGroupData.Keys.ToList();
-        public List<TResearchDef> AllProjects => DefDatabase<TResearchDef>.AllDefsListForReading;
-        public List<TResearchTaskDef> AllTasks => DefDatabase<TResearchTaskDef>.AllDefsListForReading;
 
         public override void ExposeData()
         {
@@ -104,21 +102,24 @@ namespace TiberiumRim
                     return false;
             }
             Complete(research);
+            research.TriggerEvents();
+            research.FinishAction();
             currentProject = null;
             DoCompletionDialog(research);
             CheckGroup(research.ParentGroup);
             return true;
         }
 
-        private bool CheckTask(TResearchTaskDef task)
+        public bool CheckTask(TResearchTaskDef task)
         {
             if (IsCompleted(task))
                 return true;
-            if (task.workAmount > 0 && GetProgress(task) < task.workAmount)
+            if (task.ProgressToDo > 0 && task.ProgressReal < task.ProgressToDo)
                 return false;
             if (!task.PlayerTaskCompleted())
                 return false;
             SetCompleted(task, true);
+            task.TriggerEvents();
             task.FinishAction();
             CheckResearch(task.ParentProject);
             return true;
@@ -199,9 +200,14 @@ namespace TiberiumRim
             researcher?.records.AddTo(RecordDefOf.ResearchPointsResearched, value);
             if (task != null)
             {
-                float progress = GetProgress(task);
-                SetProgress(task, Mathf.Min(progress + value, task.workAmount));
+                AddProgress(task, value);
             }
+        }
+
+        public void AddProgress(TResearchTaskDef task, float value)
+        {
+            float progress = GetProgress(task);
+            SetProgress(task, Mathf.Min(progress + value, task.ProgressToDo));
         }
 
         public void SetProgress(TResearchTaskDef task, float f)

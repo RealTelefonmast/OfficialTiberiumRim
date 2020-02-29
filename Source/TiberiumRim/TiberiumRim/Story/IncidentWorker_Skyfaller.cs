@@ -16,7 +16,7 @@ namespace TiberiumRim
 
         protected void Prepare(Map map)
         {
-            ThingSkyfaller pair = Def.skyfallers.RandomWeightedElement(s => s.chance);
+            SkyfallerProperties pair = Def.skyfallers.RandomWeightedElement(s => s.chance);
             for (int i = 0; i < pair.amount; i++)
             {
                 skyfallers.Add(SkyfallerMaker.MakeSkyfaller(pair.skyfallerDef, pair.innerThing));

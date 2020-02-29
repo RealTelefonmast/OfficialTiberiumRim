@@ -154,6 +154,12 @@ namespace TiberiumRim
 
                 Pawn pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
                 var renderComp = pawn.GetComp<Comp_CrystalDrawer>();
+                if (renderComp == null)
+                {
+                    Log.ErrorOnce("Comp_CrystalDrawer Not Applied!", 87348728);
+                    return;
+                }
+
                 Vector3 drawLoc = rootLoc;
                 drawLoc.y += 0.01953125f;
                 Quaternion quaternion = Quaternion.AngleAxis(angle, Vector3.up);
@@ -335,6 +341,7 @@ namespace TiberiumRim
         {
             public static void Postfix(RoofGrid __instance, IntVec3 c)
             {
+                //Suppression Field Logic
                 Map map = Traverse.Create(__instance).Field("map").GetValue<Map>();
                 var suppression = map.GetComponent<MapComponent_Suppression>();
                 if (suppression.IsInSuppressorField(c, out List<Comp_Suppression> sups))
@@ -344,8 +351,22 @@ namespace TiberiumRim
                 }
             }
         }
-        
+
         //Core Thing Addons
+        [HarmonyPatch(typeof(Frame))]
+        [HarmonyPatch("CompleteConstruction")]
+        static class BuildPatch
+        {
+            public static void Postfix(Frame __instance)
+            {
+                //Construction Task Logic
+                if (__instance != null && (__instance.def.entityDefToBuild as TerrainDef) == null)
+                {
+                    ResearchCreationTable.TryTrackCreated((ThingDef)__instance.def.entityDefToBuild);
+                }
+            }
+        }
+
         [HarmonyPatch(typeof(Thing))]
         [HarmonyPatch("SpawnSetup")]
         public static class SpawnSetupPatch
@@ -538,7 +559,7 @@ namespace TiberiumRim
             {
                 if (!worldView)
                 {
-                    row.ToggleableIcon(ref TiberiumRimSettings.settings.EVASystem, ContentFinder<Texture2D>.Get("UI/Icons/EVA"), "Enable or disable the EVA", SoundDefOf.Mouseover_ButtonToggle);
+                    row.ToggleableIcon(ref TiberiumRimSettings.settings.EVASystem, TiberiumContent.Icon_EVA, "Enable or disable the EVA", SoundDefOf.Mouseover_ButtonToggle);
                 }
             }
         }

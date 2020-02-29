@@ -229,7 +229,7 @@ namespace TiberiumRim
             base.PostDraw();
             if (!Network.ValidFor(Props.tnwbMode, out string reason))
             {
-                Material mat = MaterialPool.MatFrom(TRMats.EmptyContainer, ShaderDatabase.MetaOverlay, Color.white);
+                Material mat = MaterialPool.MatFrom(TiberiumContent.MissingConnection, ShaderDatabase.MetaOverlay, Color.white);
                 float num = (Time.realtimeSinceStartup + 397f * (float)(parent.thingIDNumber % 571)) * 4f;
                 float num2 = ((float)Math.Sin((double)num) + 1f) * 0.5f;
                 num2 = 0.3f + num2 * 0.7f;

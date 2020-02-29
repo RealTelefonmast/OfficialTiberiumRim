@@ -12,8 +12,9 @@ namespace TiberiumRim
     public class IonBeam : ThingWithComps
     {
         private int startTick;
-        public float width = 1.5f;
         public int durationTicks;
+        public float width = 1.5f;
+        public bool continuousBurn = true;
         public Vector3 realPos;
         private Vector3 lastRealPos = Vector3.zero;
 
@@ -34,16 +35,18 @@ namespace TiberiumRim
         public override void Tick()
         {
             base.Tick();
-            if (durationTicks <= 0)
+            if (TicksPassed >= durationTicks)
             {
                 Destroy();
                 return;
             }
-            TryDamageOrBurn(CurrentPosition);
-            BeamBurn(CurrentPosition, Map);
 
+            if (continuousBurn || TicksPassed <= 2)
+            {
+                TryDamageOrBurn(CurrentPosition);
+                BeamBurn(CurrentPosition, Map);
+            }
             lastRealPos = realPos;
-            durationTicks--;
         }
 
         public void BeamBurn(IntVec3 cell, Map map)
@@ -67,7 +70,7 @@ namespace TiberiumRim
                 var thing = list[i];
                 thing.TakeDamage(dInfo);
             }
-            if (FireUtility.TryStartFireIn(cell, Map, TRUtils.Range(0f, 0.2f)))
+            if (FireUtility.TryStartFireIn(cell, Map, TRUtils.Range(0.1f, 0.5f)))
             {
                 MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDefOf.Mote_Smoke, null);
                 moteThrown.Scale = TRUtils.Range(3f, 5.5f);
@@ -85,22 +88,25 @@ namespace TiberiumRim
 
         public override void Draw()
         {
-            Vector3 drawPos = DrawPos;
-            float beamHeight = ((float)Map.Size.z - drawPos.z) * 1.41421354f;
+            float beamHeight = ((float)Map.Size.z - DrawPos.z) * 1.41421354f;
+
             Vector3 angle = Vector3Utility.FromAngleFlat(-90f);
-            Vector3 angle2 = drawPos + angle * beamHeight * 0.5f;
+            Vector3 angle2 = DrawPos + angle * beamHeight * 0.5f;
             angle2.y = AltitudeLayer.MetaOverlays.AltitudeFor();
+
             float initialPct = Mathf.Min((float)this.TicksPassed / 10f, 1f);
             Vector3 initalHeight = angle * ((1f - initialPct) * beamHeight);
+
             float opacity = 0.975f + Mathf.Sin((float)this.TicksPassed * 0.3f) * 0.025f;
             Color color = new ColorInt(70, 90, 175).ToColor;
             color.a *= (opacity *2);
+
             MatPropertyBlock.SetColor(ShaderPropertyIDs.Color, color);
             Matrix4x4 matrix = default(Matrix4x4);
             matrix.SetTRS(angle2 + angle * (width / 2f) * 0.5f + initalHeight, Quaternion.Euler(0f, 0, 0f), new Vector3(width, 1f, beamHeight));
             Graphics.DrawMesh(MeshPool.plane10, matrix, BeamMat, 0, null, 0, MatPropertyBlock);
 
-            Vector3 pos = drawPos + initalHeight;
+            Vector3 pos = DrawPos + initalHeight;
             pos.y = AltitudeLayer.MetaOverlays.AltitudeFor();
             Matrix4x4 matrix2 = default(Matrix4x4);
             matrix2.SetTRS(pos, Quaternion.Euler(0f, 0, 0f), new Vector3(this.width, 1f, width*0.5f));

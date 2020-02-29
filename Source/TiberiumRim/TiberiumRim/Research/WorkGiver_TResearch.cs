@@ -31,6 +31,8 @@ namespace TiberiumRim
             return ResearchTargetTable.GetTargetsFor(Manager.currentProject.CurrentTask);
         }
 
+        public override bool Prioritized => true;
+
         private TResearchManager Manager => TRUtils.ResearchManager();
         private TResearchTaskDef CurrentTask => Manager.currentProject?.CurrentTask;
 
@@ -42,7 +44,7 @@ namespace TiberiumRim
 
             if (!PawnCapable(pawn, out string reason))
             {
-                JobFailReason.Is("TR_ResearchPawnIncapable".Translate(reason), null);
+                JobFailReason.Is("\n" +  reason, null);
                 return false;
             }
             return pawn.CanReserve(t, 1, -1, null, forced);
@@ -55,16 +57,20 @@ namespace TiberiumRim
             bool canDoWork = pawn.workSettings.WorkIsActive(CurrentTask.WorkType);
             if (!canDoWork)
             {
-                reason += "TR_ResearchMissingWorkType".Translate(CurrentTask.WorkType) + "\n";
+                reason += "TR_ResearchInactiveWorkType".Translate(CurrentTask.WorkType.labelShort) + "\n";
             }
 
             if (!CurrentTask.SkillRequirements.NullOrEmpty())
             {
+                string missingSkills = "";
                 foreach (var skillReq in CurrentTask.SkillRequirements)
                 {
                     if (!skillReq.PawnSatisfies(pawn))
-                        reason += "TR_ResearchMissingSkill".Translate(skillReq.skill, skillReq.minLevel) + "\n";
+                        missingSkills += "  - " + skillReq.skill.skillLabel + " ("+ skillReq.minLevel + ")\n";
                 }
+
+                if (!missingSkills.NullOrEmpty())
+                    reason += "TR_ResearchMissingSkill".Translate(missingSkills) + "\n";
             }
 
             return reason.TrimEndNewlines().NullOrEmpty();
@@ -77,7 +83,7 @@ namespace TiberiumRim
 
         public override float GetPriority(Pawn pawn, TargetInfo t)
         {
-            return t.Thing.GetStatValue(CurrentTask.RelevantPawnStat, true);
+            return t.Thing.GetStatValue(CurrentTask.RelevantPawnStat ?? StatDefOf.ResearchSpeedFactor, true);
         }
     }
 }

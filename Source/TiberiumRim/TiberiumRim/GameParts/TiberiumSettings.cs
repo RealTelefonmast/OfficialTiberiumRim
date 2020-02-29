@@ -7,7 +7,7 @@ namespace TiberiumRim
     {
         public bool CustomBackground = true;
 
-        //Tiberium Settings
+        //Tiberium Events
         public float InfectionMltp = 1f;
         public float BuildingDamageMltp = 1f;
         public float ItemDamageMltp = 1f;

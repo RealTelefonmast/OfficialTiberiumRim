@@ -18,7 +18,7 @@ namespace TiberiumRim
         private bool TResearchComplete => tiberiumResearch.NullOrEmpty() || tiberiumResearch.All(s => s.IsFinished);
         
         //TODO: Add events
-        private bool EventsHappened => events.All(e => e.HasBeenTriggered);
+        private bool EventsHappened => events.All(e => e.HasBeenFinished);
 
         public override string ToString()
         {

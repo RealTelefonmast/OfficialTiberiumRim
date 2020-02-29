@@ -57,7 +57,7 @@ namespace TiberiumRim
 
         private void DrawMarkedForDeath(Pawn target)
         {
-            Material mat = MaterialPool.MatFrom(TRMats.MarkedForDeath, ShaderDatabase.MetaOverlay, Color.white);
+            Material mat = MaterialPool.MatFrom(TiberiumContent.MarkedForDeath, ShaderDatabase.MetaOverlay, Color.white);
             float num = (Time.realtimeSinceStartup + 397f * (float)(target.thingIDNumber % 571)) * 4f;
             float num2 = ((float)Math.Sin((double)num) + 1f) * 0.5f;
             num2 = 0.3f + num2 * 0.7f;

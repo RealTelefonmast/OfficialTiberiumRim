@@ -290,11 +290,16 @@ namespace TiberiumRim
             if (!shouldInfect || !TRUtils.Chance(InfectionChance(pawn, isGas))) return;
             //
             Comp_TRHealthCheck tibCheck = pawn.GetComp<Comp_TRHealthCheck>();
+            if (tibCheck == null)
+            {
+                Log.ErrorOnce("TibCheck missing on " + pawn, 4554666);
+                return;
+            }
             List<BodyPartRecord> PossibleBodyParts = isGas ? tibCheck.partsForGas : tibCheck.partsForInfection;
             BodyPartRecord selectedPart = PossibleBodyParts.RandomElement();
 
             //Player's pawns should cause a notification
-            if(pawn.Faction.IsPlayer)
+            if(pawn.Faction?.IsPlayer ?? false)
                 GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.TiberiumExposure);
 
             if (TouchedCrystal(pawn, selectedPart))
@@ -328,6 +333,7 @@ namespace TiberiumRim
             chance *= 0.05f;
 
             //Visceral chance check
+            Log.Message("Visceral Chance: " + chance);
             if (!TRUtils.Chance(chance)) return false;
 
             //If successful, spawn pod with pawn inside

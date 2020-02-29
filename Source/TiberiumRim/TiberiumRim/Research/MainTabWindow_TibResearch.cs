@@ -14,13 +14,12 @@ namespace TiberiumRim
     public enum ResearchTabOption
     {
         Projects,
-        Settings
+        Events
     }
 
     public class MainTabWindow_TibResearch : MainTabWindow
     {
         //
-        private ResearchTabOption selectedTab = ResearchTabOption.Projects;
 
         //Dimensions
         private static float leftWidth = 250; //Original: 200
@@ -62,8 +61,6 @@ namespace TiberiumRim
             bannerHeight = TiberiumContent.Banner.height * pct;
         }
 
-       
-
         public override void PreOpen()
         {
             base.PreOpen();
@@ -81,6 +78,7 @@ namespace TiberiumRim
 
         public TResearchManager Manager => Find.World.GetComponent<TResearchManager>();
 
+        public static ResearchTabOption SelTab { get; set; } = ResearchTabOption.Projects;
         public static TResearchDef SelProject { get; set; }
 
         public TResearchTaskDef CurTask => SelProject.CurrentTask;
@@ -112,17 +110,17 @@ namespace TiberiumRim
 
             //Draw Tabs
             var tabs = new List<TabRecord>();
-            tabs.Add(new TabRecord("Projects", delegate { selectedTab = ResearchTabOption.Projects; }, selectedTab == ResearchTabOption.Projects));
-            tabs.Add(new TabRecord("Settings", delegate { selectedTab = ResearchTabOption.Settings; }, selectedTab == ResearchTabOption.Settings));
+            tabs.Add(new TabRecord("TR_MainTabResearch".Translate(), delegate { SelTab = ResearchTabOption.Projects; }, SelTab == ResearchTabOption.Projects));
+            tabs.Add(new TabRecord("TR_MainTabEvents".Translate(), delegate { SelTab = ResearchTabOption.Events; }, SelTab == ResearchTabOption.Events));
             TabDrawer.DrawTabs(tabRect, tabs);
 
-            switch (selectedTab)
+            switch (SelTab)
             {
                 case ResearchTabOption.Projects:
                     DrawProjects(menuRect.ContractedBy(5f));
                     break;
-                case ResearchTabOption.Settings:
-                    DrawSettings(menuRect.ContractedBy(5f));
+                case ResearchTabOption.Events:
+                    DrawEvents(menuRect.ContractedBy(5f));
                     break;
             }
             GUI.EndGroup();
@@ -142,7 +140,6 @@ namespace TiberiumRim
         {
             Rect bannerRect = new Rect(rect.x - 4, rect.y - 5, rect.width + 8, bannerHeight);
             Widgets.DrawTextureFitted(bannerRect, TiberiumContent.Banner, 1f);
-            Widgets.DrawHighlight(bannerRect);
 
             GUI.BeginGroup(rect);
             Rect outRect = new Rect(0, 0, rect.width, rect.height - bannerHeight);
@@ -156,11 +153,6 @@ namespace TiberiumRim
             }
             Widgets.EndScrollView();
             GUI.EndGroup();
-        }
-
-        private void DrawSettings(Rect rect)
-        {
-
         }
 
         private bool ShouldShow(TResearchGroupDef group)
@@ -212,6 +204,29 @@ namespace TiberiumRim
             curY += 5f;
             Text.Anchor = default;
             //curY += height;
+        }
+
+        private void DrawEvents(Rect rect)
+        {
+            GUI.BeginGroup(rect);
+            Rect outRect = new Rect(0, 0, rect.width, rect.height - bannerHeight);
+            Rect viewRect = new Rect(0, 0, outRect.width, outRect.height);
+            Widgets.BeginScrollView(outRect, ref projectScrollPos, viewRect, true);
+            float curY = 0; //new Vector2(rect.width, 0); //Width and yPos
+            foreach (var TRevent in TRUtils.EventManager().allEvents)
+            {
+                DrawEvent(TRevent, new Rect(0, curY, researchGroupSize.x, researchGroupSize.y ));
+                curY += researchGroupSize.y;
+            }
+            Widgets.EndScrollView();
+            GUI.EndGroup();
+        }
+
+        public void DrawEvent(BaseEvent baseEvent, Rect rect)
+        {
+            //BaseEvent activeEvent = TRUtils.EventManager().activeEvents.First(e => e != null && e.def == def);
+            Widgets.DrawMenuSection(rect);
+            Widgets.Label(rect, baseEvent.def.LabelCap + " " + baseEvent.TimeReadOut);
         }
 
         private Texture2D ProjectStatusTexture(ResearchState state)
@@ -383,12 +398,26 @@ namespace TiberiumRim
 
             if (Widgets.ButtonText(finButton, "fin"))
             {
-                Manager.SetProgress(task, task.workAmount);
+                if (task.creationTasks != null)
+                {
+                    foreach (var option in task.creationTasks.thingsToCreate)
+                    {
+                        ResearchCreationTable.taskCreations[task].AddProgress(option, option.amount);
+                    }
+                }
+                Manager.SetProgress(task, task.ProgressToDo);
             }
             if (Widgets.ButtonText(resetButt, "rst"))
             {
                 Manager.SetProgress(task, 0);
                 Manager.SetCompleted(task, false);
+                if (task.creationTasks != null)
+                {
+                    foreach (var option in task.creationTasks.thingsToCreate)
+                    {
+                        ResearchCreationTable.taskCreations[task].AddProgress(option, -option.amount);
+                    }
+                }
             }
 
             ResearchState state = task.State;

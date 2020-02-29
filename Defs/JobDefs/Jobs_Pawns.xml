@@ -5,7 +5,6 @@
 		<defName>TiberiumResearch</defName>
 		<driverClass>TiberiumRim.JobDriver_TResearch</driverClass>
 		<reportString>doing tiberium research.</reportString>
-		<casualInterruptible>false</casualInterruptible>
 		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
 	</JobDef>
 	

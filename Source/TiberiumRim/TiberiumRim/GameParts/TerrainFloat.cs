@@ -9,9 +9,7 @@ namespace TiberiumRim
         public TerrainDef terrainDef;
         public float value = 1f;
 
-        public TerrainFloat()
-        {
-        }
+        public TerrainFloat() {}
 
         public TerrainFloat(TerrainDef terrainDef, float value)
         {

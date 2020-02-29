@@ -28,6 +28,7 @@ namespace TiberiumRim
     {
         public Type targetType;
         public List<ThingDef> targetDefs;
+        public int distanceFromTarget;
         public string groupLabel;
 
         public Thing FindStation(Map map)
@@ -64,6 +65,23 @@ namespace TiberiumRim
         public List<TResearchTaskDef> tasks;
         public List<EventDef> events;
         public string researchType = "missing";
+
+        public override void ResolveReferences()
+        {
+            base.ResolveReferences();
+            workType = DefDatabase<WorkTypeDef>.GetNamed("Research");
+            relevantPawnStat = StatDefOf.ResearchSpeed;
+            relevantTargetStat = StatDefOf.ResearchSpeedFactor;
+        }
+
+        public void TriggerEvents()
+        {
+            if (events.NullOrEmpty()) return;
+            foreach (var @event in events)
+            {
+                TRUtils.EventManager().StartEvent(@event);
+            }
+        }
 
         public virtual void FinishAction()
         {
@@ -114,11 +132,14 @@ namespace TiberiumRim
         private string cachedTaskInfo;
 
         //Local Requisites
+        public CreationProperties creationTasks;
         public ResearchTarget taskTarget;
         public WorkTypeDef workType;
         public List<SkillRequirement> skillRequirements;
         public StatDef relevantPawnStat;
         public StatDef relevantTargetStat;
+
+        public List<EventDef> events;
 
         public List<string> images;
         public List<ThingDef> requiredFacilities;
@@ -153,6 +174,7 @@ namespace TiberiumRim
         {
             get
             {
+                if (ResearchTarget == null) return null;
                 if (mainTargets == null)
                 {
                     if (ResearchTarget.targetType == null)
@@ -175,15 +197,32 @@ namespace TiberiumRim
             return true;
         }
 
+        public bool CheckConstructed()
+        {
+            return true;
+        }
+
+        public void TriggerEvents()
+        {
+            if (events.NullOrEmpty()) return;
+            foreach (var @event in events)
+            {
+                TRUtils.EventManager().StartEvent(@event);
+            }
+        }
+
         public virtual void FinishAction()
         {
         }
 
-        public float ProgressPct => ProgressReal / workAmount;
-        public float ProgressReal => TRUtils.ResearchManager().GetProgress(this);
+        public virtual float ProgressReal => creationTasks != null ? ResearchCreationTable.TaskCompletion(this) : TRUtils.ResearchManager().GetProgress(this);
+        public virtual float ProgressToDo => creationTasks?.TotalCountToMake ?? workAmount;
+
+        public float ProgressPct => ProgressReal / ProgressToDo;
+
         public bool IsFinished => TRUtils.ResearchManager().IsCompleted(this);
 
-        public string WorkLabel => (int)ProgressReal + "/" + workAmount;
+        public string WorkLabel => (int)ProgressReal + "/" + ProgressToDo;
 
         public string TaskInfo
         {
@@ -192,9 +231,8 @@ namespace TiberiumRim
                 if (cachedTaskInfo == null)
                 {
                     //Targets
-                    cachedTaskInfo = "TR_TaskTargets".Translate();
-                    if (ResearchTarget.groupLabel != null)
-                        cachedTaskInfo += "\n " + ResearchTarget.groupLabel;
+                    if (ResearchTarget?.groupLabel != null)
+                        cachedTaskInfo += "TR_TaskTargets".Translate() + "\n " + ResearchTarget.groupLabel;
                     else if(PossibleMainTargets != null)
                     {
                         foreach (var target in PossibleMainTargets)

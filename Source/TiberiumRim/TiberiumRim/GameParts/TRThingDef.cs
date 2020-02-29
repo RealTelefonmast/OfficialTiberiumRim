@@ -42,7 +42,11 @@ namespace TiberiumRim
         {
             get
             {
-                return researchPrerequisites == null || requiredResearch.All(research => research.IsFinished);
+                if (!researchPrerequisites.NullOrEmpty() && researchPrerequisites.Any(r => !r.IsFinished))
+                    return false;
+                if (!requiredResearch.NullOrEmpty() && requiredResearch.Any(r => !r.IsFinished))
+                    return false;
+                return true;
             }
         }
 
@@ -115,7 +119,7 @@ namespace TiberiumRim
                 }
             }
             */
-            if (buildingPrerequisites != null)
+            if (!buildingPrerequisites.NullOrEmpty())
             {
                 flag = flag && buildingPrerequisites.All(t => Find.CurrentMap.listerBuildings.ColonistsHaveBuilding(t));
                 if (!flag)

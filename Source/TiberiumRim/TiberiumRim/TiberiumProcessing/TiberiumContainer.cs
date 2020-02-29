@@ -298,7 +298,7 @@ namespace TiberiumRim
                     yield return new Command_Action
                     {
                         defaultLabel = "ContainerMode_TR".Translate(),
-                        icon = ContentFinder<Texture2D>.Get("UI/Icons/Network/ContainMode_Storage"),
+                        icon = TiberiumContent.ContainMode_TripleSwitch,
                         action = delegate
                         {
                             List<FloatMenuOption> list = new List<FloatMenuOption>();
@@ -323,7 +323,7 @@ namespace TiberiumRim
                     yield return new Command_Action
                     {
                         defaultLabel = "DEBUG: Container Options",
-                        icon = ContentFinder<Texture2D>.Get("UI/Icons/Network/ContainMode_Storage"),
+                        icon = TiberiumContent.ContainMode_TripleSwitch,
                         action = delegate
                         {
                             List<FloatMenuOption> list = new List<FloatMenuOption>();

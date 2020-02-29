@@ -21,7 +21,7 @@ namespace TiberiumRim
             get
             {
                 if (icon == null)
-                    icon = ContentFinder<Texture2D>.Get("UI/Icons/Mutation", true);
+                    icon = TiberiumContent.Hediff_Mutation;
                 return icon;
             }
         }

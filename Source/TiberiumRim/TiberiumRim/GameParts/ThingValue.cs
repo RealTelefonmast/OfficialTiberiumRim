@@ -9,20 +9,29 @@ namespace TiberiumRim
 {
     public sealed class ThingValue : Editable, IExposable
     {
-        public ThingDef Stuff;
-        public QualityCategory QualityCategory = QualityCategory.Normal;
+        /* The ThingValue
+         * It allows a detailed description of an object group in a single line
+        */
+
+        //TODO: Organize ThingValue - Peer Review 
+        public QualityCategory QualityCategory = QualityCategory.Awful;
         public string defName = null;
         public int value = 1;
         public float chance = 1f;
-        public bool CustomQuality = false;
+
+        private PawnKindDef pawnKind;
+        private ThingDef thingDef;
+        private ThingDef stuffDef;
 
         public ThingValue()
         {
         }
 
-        public ThingValue(ThingDef thingDef, ThingDef stuffDef = null, QualityCategory quality = QualityCategory.Normal)
+        public ThingValue(ThingDef thingDef, ThingDef stuffDef = null, QualityCategory quality = QualityCategory.Awful)
         {
-
+             this.thingDef = thingDef;
+             this.stuffDef = stuffDef;
+             QualityCategory = quality;
         }
 
         public ThingValue(PawnKindDef pawnKind)
@@ -39,12 +48,10 @@ namespace TiberiumRim
 
         public void ExposeData()
         {
-            Scribe_Defs.Look(ref Stuff, "Stuff");
             Scribe_Values.Look(ref QualityCategory, "qc");
             Scribe_Values.Look(ref defName, "defName");
             Scribe_Values.Look(ref value, "value");
             Scribe_Values.Look(ref chance, "chance");
-            Scribe_Values.Look(ref CustomQuality, "cq");
         }
 
         public bool IsPawnKindDef => DefDatabase<PawnKindDef>.GetNamedSilentFail(defName) != null;
@@ -55,9 +62,9 @@ namespace TiberiumRim
             {
                 if (ThingDef?.MadeFromStuff ?? false)
                 {
-                    return Stuff ?? GenStuff.DefaultStuffFor(ThingDef);
+                    stuffDef ??= GenStuff.DefaultStuffFor(ThingDef);
                 }
-                return null;
+                return stuffDef;
             }
         }
 
@@ -69,9 +76,7 @@ namespace TiberiumRim
                 if (def == null)
                 {
                     if (PawnKindDef != null)
-                    {
                         def = DefDatabase<ThingDef>.GetNamedSilentFail(PawnKindDef.race.defName);
-                    }
                 }
                 return def;
             }
@@ -83,100 +88,46 @@ namespace TiberiumRim
 
         public bool ThingFits(Thing thing)
         {
-            if (Stuff != null && thing.Stuff != Stuff)
+            if (stuffDef != null && thing.Stuff != stuffDef)
             {
                 return false;
             }
-            if (CustomQuality && !(thing.TryGetQuality(out QualityCategory qc) && qc == QualityCategory))
+
+            if (!(thing.TryGetQuality(out QualityCategory qc) && qc < QualityCategory))
             {
                 return false;
             }
             return true;
         }
 
+        //Notation - <defName>value, chance, quality, stuff</defName>
         public void LoadDataFromXmlCustom(XmlNode xmlRoot)
-        {
-            string Child = Regex.Replace(xmlRoot.FirstChild.Value, @"\s+", "");
-            string ThingValueString = AdjustString(Child, out string ThingConditionString);
-            if (ThingConditionString.NullOrEmpty())
-            {
-                if (ThingValueString.Contains(','))
-                {
-                    string[] array = ThingValueString.Split(',');
-                    defName = array[0];
-                    value = (int)ParseHelper.FromString(array[1], typeof(int));
-                    if (array.Count() == 3)
-                    {
-                        chance = (float)ParseHelper.FromString(array[2], typeof(float));
-                    }
-                    return;
-                }
-                defName = ThingValueString;
-            }
-            else
-            {
-                ReadThingCondition(ThingConditionString, out defName);
-                if (!ThingValueString.NullOrEmpty())
-                {
-                    if (ThingValueString.Contains(','))
-                    {
-                        string[] array = ThingValueString.Split(',');
-                        value = (int)ParseHelper.FromString(array[0], typeof(int));
-                        chance = (float)ParseHelper.FromString(array[1], typeof(float));
-                        return;
-                    }
-                    value = (int)ParseHelper.FromString(ThingValueString, typeof(int));
-                }
-            }
+        { 
+            defName = xmlRoot.Name;
+            string[] values = Regex.Replace(xmlRoot.Value, @"\s+", "").Split(',');
+
+            int count = values.Length;
+            value  = (int)ParseHelper.FromString(values[0], typeof(int));
+            if(count > 1)
+                chance = (float)ParseHelper.FromString(values[1], typeof(float));
+            if (count > 2)
+                QualityCategory = (QualityCategory)ParseHelper.FromString(values[3], typeof(QualityCategory));
+            if(count > 3)
+                DirectXmlCrossRefLoader.RegisterObjectWantsCrossRef(this, "stuffDef", values[3]);
         }
 
-        private string AdjustString(string s, out string condition)
-        {
-            condition = "";
-            if (s.Contains('('))
-            {
-                int from = s.IndexOf('(') + 1;
-                int to = s.IndexOf(')');
-                condition = s.Substring(from, to - from);
-                if (s.Length > to + 2)
-                {
-                    s = s.Substring(to + 2);
-                }
-                return "";
-            }
-            return s;
-        }
-
-        private void ReadThingCondition(string s, out string defName)
-        {
-            defName = null;
-            if (s.Contains(","))
-            {
-                string[] array = s.Split(',');
-                defName = array[0];
-                QualityCategory = (QualityCategory)ParseHelper.FromString(array[1], typeof(QualityCategory));
-                CustomQuality = true;
-                if (s.Count(c => c == ',') == 2)
-                {
-                    DirectXmlCrossRefLoader.RegisterObjectWantsCrossRef(this, "Stuff", array[2]);
-                }
-                return;
-            }
-            defName = s;
-        }
-
-        public string Summary => defName + QualityCategory + Stuff + value + chance;
+        public string Summary => defName + QualityCategory + stuffDef + value + chance;
 
         public override string ToString()
         {
             string defName = this.defName;
             string quality = QualityCategory.ToString();
-            string stuff = Stuff?.defName;
+            string stuff = stuffDef?.defName;
             if (quality.NullOrEmpty() && stuff.NullOrEmpty())
             {
                 return defName + "," + value + "," + chance;
             }
-            return "(" + defName + "," + QualityCategory + "," + Stuff + ")," + value + "," + chance;
+            return "(" + defName + "," + QualityCategory + "," + stuff + ")," + value + "," + chance;
         }
 
         public override int GetHashCode()

@@ -105,15 +105,21 @@
     <Compile Include="GameParts\MapComps\MapComponent_TiberiumTickManager.cs" />
     <Compile Include="GameParts\PositionFilter.cs" />
     <Compile Include="GameParts\TerrainFloat.cs" />
-    <Compile Include="GameParts\ThingSkyfaller.cs" />
+    <Compile Include="GameParts\SkyfallerProperties.cs" />
     <Compile Include="GameParts\ThingValue.cs" />
     <Compile Include="GDI\Comp_SonicInhibitor.cs" />
-    <Compile Include="Research\ActiveEvent.cs" />
-    <Compile Include="Research\EventCompositionDef.cs" />
-    <Compile Include="Research\EventManager.cs" />
-    <Compile Include="Research\EventWorker.cs" />
+    <Compile Include="Research\CreationProperties.cs" />
+    <Compile Include="Research\Events\EventCompositionDef.cs" />
+    <Compile Include="Research\Events\EventLetter.cs" />
+    <Compile Include="Research\Events\EventManager.cs" />
+    <Compile Include="Research\Events\BaseEvent.cs" />
+    <Compile Include="Research\Events\IncidentParmsProperties.cs" />
+    <Compile Include="Research\Events\IncidentProperties.cs" />
+    <Compile Include="Research\Events\PawnGroupProperties.cs" />
+    <Compile Include="Research\Events\SpawnSettings.cs" />
     <Compile Include="Research\IncidentWorker_CauseEvents.cs" />
     <Compile Include="Research\IncidentWorker_TiberiumSighting.cs" />
+    <Compile Include="Research\ResearchCreationTable.cs" />
     <Compile Include="Research\ResearchTargetTable.cs" />
     <Compile Include="TiberiumInfection\TiberiumInfectionInfo.cs" />
     <Compile Include="GameParts\MapComps\WorldComponent_TR.cs" />
@@ -133,13 +139,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Research\EventDef.cs" />
-    <Compile Include="Research\IResearchTarget.cs" />
+    <Compile Include="Research\Events\EventDef.cs" />
     <Compile Include="Research\JobDriver_TResearch.cs" />
     <Compile Include="Research\MainTabWindow_TibResearch.cs" />
-    <Compile Include="Research\RaidSettings.cs" />
+    <Compile Include="Research\Events\RaidSettings.cs" />
     <Compile Include="Research\Requisites.cs" />
-    <Compile Include="Research\ResearchTracker.cs" />
     <Compile Include="Research\TResearchDef.cs" />
     <Compile Include="Research\TResearchManager.cs" />
     <Compile Include="Research\WorkGiver_TResearch.cs" />
