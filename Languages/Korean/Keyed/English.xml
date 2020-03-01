@@ -15,7 +15,7 @@
   <Halted>정지됨.</Halted>
   <Decryst>정화되는 중.</Decryst>
   <Status>상태</Status>
-  <!--[Core]<Dead>사망</Dead>-->
+  <Dead>Dead</Dead>
   <Dying>녹는 중.</Dying>
   <Transmuting>변이 중.</Transmuting>
   <Burnt>타버림.</Burnt>
@@ -134,6 +134,5 @@
   <TiberiumArrivalTitle>뜻밖의 조우</TiberiumArrivalTitle>
   <TiberiumArrivalDesc>설명하기 어려울 정도로 괴상하게 생긴 정체불명의 물체가 정착지에 나타났습니다. 접촉에 주의하십시오.</TiberiumArrivalDesc>
 
-  <!--[Core]<Dead>사망</Dead>-->
 
 </LanguageData>

@@ -50,6 +50,7 @@
   <!-- Shallow -->
 
   <TiberiumShallowWater.label>결정화된 오염수 (얕음)</TiberiumShallowWater.label>
+  <BlueTiberiumWater.label>이온화된 오염수</BlueTiberiumWater.label>
   <TiberiumShallowMovingWater.label>결정화된 오염수 (얕음)</TiberiumShallowMovingWater.label>
 
 

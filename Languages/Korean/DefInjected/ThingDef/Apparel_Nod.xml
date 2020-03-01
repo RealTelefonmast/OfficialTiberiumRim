@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Militia -->
+
+  <Apparel_NodMilitiaMask.label>민병 두건</Apparel_NodMilitiaMask.label>
+  <Apparel_NodMilitiaMask.description>노드 민병 두건입니다. 필터가 낡아서 숨이 막힙니다.</Apparel_NodMilitiaMask.description>
+
+  <Apparel_NodMilitiaSuit.label>민병 판초</Apparel_NodMilitiaSuit.label>
+  <Apparel_NodMilitiaSuit.description>노드 민병들에게 지급되는 조악한 복장입니다.</Apparel_NodMilitiaSuit.description>
+
+
+  <!-- Officer -->
+
+  <Apparel_NodOfficerHelmet.label>장교모</Apparel_NodOfficerHelmet.label>
+  <Apparel_NodOfficerHelmet.description>모든 노드 장교들이 평상복으로 선호하는 복장입니다. 멋쟁이!</Apparel_NodOfficerHelmet.description>
+
+  <Apparel_NodOfficerSuit.label>장교복</Apparel_NodOfficerSuit.label>
+  <Apparel_NodOfficerSuit.description>모든 노드 장교들이 평상복으로 선호하는 복장입니다.</Apparel_NodOfficerSuit.description>
+
+
+  <!-- Blackhand -->
+
+  <Apparel_NodBlackHandHelmet.label>블랙핸드 투구</Apparel_NodBlackHandHelmet.label>
+  <Apparel_NodBlackHandHelmet.description>이 두꺼운 투구는 블랙핸드 표준 무장인 화염방사기의 열기에 버텨낼 수 있도록 설계되었습니다.</Apparel_NodBlackHandHelmet.description>
+
+  <Apparel_NodBlackHand.label>블랙핸드 갑주</Apparel_NodBlackHand.label>
+  <Apparel_NodBlackHand.description>이 두꺼운 갑주는 블랙핸드 표준 무장인 화염방사기의 열기에 버텨낼 수 있도록 설계되었습니다.</Apparel_NodBlackHand.description>
+
+
+</LanguageData>

@@ -39,18 +39,17 @@
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
-			<MarketValue>750</MarketValue>
 			<WorkToMake>30000</WorkToMake>
-			<Mass>2</Mass>
+			<Mass>3.5</Mass>
 			<AccuracyTouch>0.75</AccuracyTouch>
-			<AccuracyShort>0.65</AccuracyShort>
-			<AccuracyMedium>0.55</AccuracyMedium>
-			<AccuracyLong>0.45</AccuracyLong>
+			<AccuracyShort>0.75</AccuracyShort>
+			<AccuracyMedium>0.65</AccuracyMedium>
+			<AccuracyLong>0.55</AccuracyLong>
 			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
 			<Steel>150</Steel>
-			<ComponentIndustrial>5</ComponentIndustrial>
+			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>
 		<verbs>
 			<li>
@@ -59,7 +58,6 @@
 				<defaultProjectile>Bullet_NodStandard</defaultProjectile>
 				<warmupTime>1</warmupTime>
 				<range>24.9</range>
-				<minRange>1.5</minRange>
 				<burstShotCount>4</burstShotCount>
 				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
 				<soundCast>Shot_HeavySMG</soundCast>
@@ -73,8 +71,8 @@
 			<capacities>
 			  <li>Blunt</li>
 			</capacities>
-			<power>7</power>
-			<cooldownTime>1.8</cooldownTime>
+			<power>9</power>
+			<cooldownTime>2</cooldownTime>
 		  </li>
 		  <li>
 			<label>barrel</label>
@@ -82,8 +80,8 @@
 			  <li>Blunt</li>
 			  <li>Poke</li>
 			</capacities>
-			<power>7.7</power>
-			<cooldownTime>1.9</cooldownTime>
+			<power>9</power>
+			<cooldownTime>2</cooldownTime>
 		  </li>
 		</tools>
 		<weaponTags>
@@ -104,8 +102,7 @@
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
-			<WorkToMake>45000</WorkToMake>
-			<MarketValue>1200</MarketValue>
+			<WorkToMake>35000</WorkToMake>
 			<Mass>2.0</Mass>
 			<AccuracyTouch>0.70</AccuracyTouch>
 			<AccuracyShort>0.87</AccuracyShort>
@@ -175,7 +172,6 @@
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
 			<WorkToMake>20000</WorkToMake>
-			<MarketValue>1850</MarketValue>
 			<Mass>4.0</Mass>
 			<AccuracyTouch>0.70</AccuracyTouch>
 			<AccuracyShort>0.87</AccuracyShort>
@@ -198,8 +194,7 @@
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>1</warmupTime>
-				<range>19.9</range>
-				<minRange>1.5</minRange>
+				<range>24.9</range>
 				<burstShotCount>3</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_Laser</soundCast>
@@ -250,7 +245,6 @@
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
 			<WorkToMake>20000</WorkToMake>
-			<MarketValue>2750</MarketValue>
 			<Mass>5.0</Mass>
 			<AccuracyTouch>0.70</AccuracyTouch>
 			<AccuracyShort>0.87</AccuracyShort>
@@ -275,7 +269,6 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>1.75</warmupTime>
 				<range>29.9</range>
-				<minRange>1.5</minRange>
 				<burstShotCount>4</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_LaserLarge</soundCast>
@@ -400,7 +393,6 @@
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
 			<WorkToMake>20000</WorkToMake>
-			<MarketValue>4000</MarketValue>
 			<Mass>5.0</Mass>
 			<AccuracyTouch>0.5</AccuracyTouch>
 			<AccuracyShort>0.5</AccuracyShort>
@@ -472,8 +464,7 @@
 			<drawSize>1.5</drawSize>
 		</graphicData>
 		<statBases>
-			<WorkToMake>55000</WorkToMake>
-			<MarketValue>3000</MarketValue>
+			<WorkToMake>45000</WorkToMake>
 			<Mass>10</Mass>
 			<AccuracyTouch>0.2</AccuracyTouch>
 			<AccuracyShort>0.3</AccuracyShort>
@@ -534,7 +525,6 @@
 		<statBases>
 			<MaxHitPoints>50</MaxHitPoints>
 			<WorkToMake>25000</WorkToMake>
-			<MarketValue>1200</MarketValue>
 			<Mass>3</Mass>
 			<AccuracyTouch>0.5</AccuracyTouch>
 			<AccuracyShort>0.5</AccuracyShort>
@@ -600,7 +590,6 @@
 		<statBases>
 			<MaxHitPoints>25</MaxHitPoints>
 			<WorkToMake>50000</WorkToMake>
-			<MarketValue>1500</MarketValue>
 			<Mass>15</Mass>
 			<AccuracyTouch>1</AccuracyTouch>
 			<AccuracyShort>1</AccuracyShort>

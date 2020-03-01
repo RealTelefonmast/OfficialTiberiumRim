@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <TiberiumEnhancedArm.label>tiberium enhanced arm</TiberiumEnhancedArm.label>
-  <TiberiumEnhancedArm.description>This arm was removed from a Tiberium mutant, it is kept alive by the Tiberium inside. For some reason it is not completely crystallizing. It might be possible to transplant it to someone else.</TiberiumEnhancedArm.description>
+  <TiberiumEnhancedArm.label>타이베리움 강화팔</TiberiumEnhancedArm.label>
+  <TiberiumEnhancedArm.description>이 팔은 타이베리움 돌연변이로부터 떼어낸 신체의 일부입니다. 내부에 타이베리움 성분이 가득함에도 알 수 없는 이유로 결정화되지 않고 있습니다. 심지어 다른 사람에게 이식할 수도 있습니다.</TiberiumEnhancedArm.description>
 
-  <TiberiumEnhancedLeg.label>tiberium enhanced leg</TiberiumEnhancedLeg.label>
-  <TiberiumEnhancedLeg.description>This leg was removed from a Tiberium mutant, it is kept alive by the Tiberium inside. For some reason it is not fully crystallizing. It might be possible to transplant it to someone else.</TiberiumEnhancedLeg.description>
+  <TiberiumEnhancedLeg.label>타이베리움 강화다리</TiberiumEnhancedLeg.label>
+  <TiberiumEnhancedLeg.description>이 다리는 타이베리움 돌연변이로부터 떼어낸 신체의 일부입니다. 내부에 타이베리움 성분이 가득함에도 알 수 없는 이유로 결정화되지 않고 있습니다. 심지어 다른 사람에게 이식할 수도 있습니다.</TiberiumEnhancedLeg.description>
 
-  <TiberiumSkinSample.label>tiberium tissue sample</TiberiumSkinSample.label>
-  <TiberiumSkinSample.description>A sample of skin from a Tiberium mutant, this could be applied to any body part, though it brings a risk.</TiberiumSkinSample.description>
+  <TiberiumSkinSample.label>타이베리움 피부</TiberiumSkinSample.label>
+  <TiberiumSkinSample.description>타이베리움 돌연변이에게서 채취한 피부 샘플입니다. 손상된 신체 부위를 대체할 수 있지만 위험을 초래할 수 있습니다.</TiberiumSkinSample.description>
 
 
 </LanguageData>

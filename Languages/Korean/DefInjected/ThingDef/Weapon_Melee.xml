@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GDI_Wrench.label>작업용 렌치</GDI_Wrench.label>
+  <GDI_Wrench.description>기술자의 상징이나 마찬가지인 간단한 공구입니다. 작업 속도를 개선해 줍니다.</GDI_Wrench.description>
+  <GDI_Wrench.tools.0.label>렌치</GDI_Wrench.tools.0.label>
+  <GDI_Wrench.tools.1.label>렌치</GDI_Wrench.tools.1.label>
+
+
+</LanguageData>

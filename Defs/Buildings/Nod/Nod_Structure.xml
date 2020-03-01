@@ -10,7 +10,7 @@
 			<texPath>Buildings/Nod/Structure/Wall</texPath>
 		</graphicData>
 		<costList>
-			<Nod_CarbonPlate>5</Nod_CarbonPlate>
+			<Nod_CarbonPlate>2</Nod_CarbonPlate>
 		</costList>
 		<uiIconPath>Buildings/Nod/Structure/Wall_Icon</uiIconPath>
 		<statBases>
@@ -26,7 +26,7 @@
 		<description>It is a arch frame to decorate the Nod door.</description>
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Decoration</TRCategory>
-		<altitudeLayer>PawnUnused</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<statBases>
 			<MaxHitPoints>150</MaxHitPoints>
 			<WorkToBuild>1000</WorkToBuild>
@@ -87,7 +87,7 @@
 			</damageData>
 		</graphicData>
 		<costList>
-			<Nod_CarbonPlate>4</Nod_CarbonPlate>
+			<Nod_CarbonPlate>2</Nod_CarbonPlate>
 		</costList>
 		<stuffCategories Inherit="False"/>
 		<uiIconPath>Buildings/Nod/Structure/Door_Icon</uiIconPath>
@@ -113,8 +113,8 @@
 		</graphicData>
 		<uiIconPath>Buildings/Nod/Structure/AD_Icon</uiIconPath>
 		<costList>
-			<Nod_CarbonPlate>4</Nod_CarbonPlate>
-			<ComponentIndustrial>2</ComponentIndustrial>
+			<Nod_CarbonPlate>2</Nod_CarbonPlate>
+			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<stuffCategories Inherit="False"/>
 		<comps>

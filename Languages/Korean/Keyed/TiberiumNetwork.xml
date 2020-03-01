@@ -10,9 +10,9 @@
   <TR_HarvesterInside>수확기와 정제소는 실외에서만 작동합니다.</TR_HarvesterInside>
   <TR_HarvesterMode>수확 모드</TR_HarvesterMode>
   <TR_HarvesterModeDesc>수확기의 행동 방식을 설정합니다.</TR_HarvesterModeDesc>
-  <TRHMode_Nearest>가장 가까운 타이베리움을 수확합니다.</TRHMode_Nearest>
-  <TRHMode_Valuable>가장 희귀한 타이베리움을 수확합니다.</TRHMode_Valuable>
-  <TRHMode_Moss>폐기물를 청소하고 폐기물를 채취합니다.</TRHMode_Moss>
+  <TRHMode_Nearest>가까운 타이베리움 수확</TRHMode_Nearest>
+  <TRHMode_Valuable>희귀한 타이베리움 수확</TRHMode_Valuable>
+  <TRHMode_Moss>타이베리움 슬러지 수확</TRHMode_Moss>
   <TR_HarvesterHarvest>수확</TR_HarvesterHarvest>
   <TR_HarvesterReturn>정제소로 귀환</TR_HarvesterReturn>
   <TR_HarvesterRefinery>작업할 정제소 선택</TR_HarvesterRefinery>

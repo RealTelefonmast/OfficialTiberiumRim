@@ -18,8 +18,6 @@
   <Spiner.description>돼지처럼 생긴 사나운 돌연변이 생물입니다. 척추 전체가 타이베리움으로 강화되어 있습니다.</Spiner.description>
   <Spiner.tools.0.label>왼쪽 발톱</Spiner.tools.0.label>
   <Spiner.tools.1.label>오른쪽 발톱</Spiner.tools.1.label>
-  <Spiner.tools.2.label>어금니</Spiner.tools.2.label>
-  <Spiner.tools.3.label>머리</Spiner.tools.3.label>
   <Spiner_Leather.label>스피너 가죽</Spiner_Leather.label>
   <Spiner_Leather.description>스피너 가죽</Spiner_Leather.description>
   <Spiner_Leather.stuffProps.stuffAdjective>스피너 가죽</Spiner_Leather.stuffProps.stuffAdjective>
@@ -32,7 +30,6 @@
   <SmallTiberiumFiend.description>타이베리움 환경에 적응한 육식성 포유류입니다. 덩치는 작지만 아주 사납습니다.</SmallTiberiumFiend.description>
   <SmallTiberiumFiend.tools.0.label>왼쪽 발톱</SmallTiberiumFiend.tools.0.label>
   <SmallTiberiumFiend.tools.1.label>오른쪽 발톱</SmallTiberiumFiend.tools.1.label>
-  <SmallTiberiumFiend.tools.3.label>머리</SmallTiberiumFiend.tools.3.label>
   <SmallTiberiumFiend_Leather.label>타이베리움 여우 가죽</SmallTiberiumFiend_Leather.label>
   <SmallTiberiumFiend_Leather.description>타이베리움 여우 가죽</SmallTiberiumFiend_Leather.description>
   <SmallTiberiumFiend_Leather.stuffProps.stuffAdjective>타이베리움 여우 가죽</SmallTiberiumFiend_Leather.stuffProps.stuffAdjective>

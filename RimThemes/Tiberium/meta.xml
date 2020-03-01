@@ -6,13 +6,6 @@
   <customFontSizeTinyDefault>12</customFontSizeTinyDefault>			<!-- [2019R3 min] Set the default font size of tiny text -->
   <customFontSizeSmallDefault>14</customFontSizeSmallDefault>		<!-- [2019R3 min] Set the default font size of small text -->
   <customFontSizeMediumDefault>18</customFontSizeMediumDefault>     <!-- [2019R3 min] Set the default font size of medium text -->
-  
-  <customFontTinyKorean>JejuGothic</customFontTinyKorean>
-  <customFontSmallKorean>JejuGothic</customFontSmallKorean>
-  <customFontMediumKorean>JejuGothic</customFontMediumKorean>
-  <customFontSizeTinyKorean>14</customFontSizeTinyKorean>
-  <customFontSizeSmallKorean>16</customFontSizeSmallKorean>
-  <customFontSizeMediumKorean>20</customFontSizeMediumKorean>
 
   <tapestryScaleMode>ScaleAndCrop</tapestryScaleMode>				<!-- [2019R3 min] : Mode used to draw tapestry textures, can be (StretchToFill (by default),ScaleAndCrop,ScaleToFit) see https://docs.unity3d.com/ScriptReference/ScaleMode.ScaleToFit.html to have more information about each -->
   

@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <TiberAdd.label>Tiberadd</TiberAdd.label>
+  <!-- Drug Bases -->
+
+  <TiberAdd.label>티버애드</TiberAdd.label>
   <TiberAdd.description>This tiberium based drug helps anyone with a tiberium dependancy. After consumption their mood will improve and their need will stop falling. However, any being that is not dependant on Tiberium may experience severe side effects.</TiberAdd.description>
   <TiberAdd.ingestible.ingestCommandString>{0} 복용</TiberAdd.ingestible.ingestCommandString>
   <TiberAdd.ingestible.ingestReportString>{0} 복용 중.</TiberAdd.ingestible.ingestReportString>
 
-  <Tiberblock.label>tiberblock</Tiberblock.label>
+  <Tiberblock.label>타이블록</Tiberblock.label>
   <Tiberblock.description>A drug that can cure Tiberium infections./n/nWARNING: This drug only cures Tiberium Poisoning, Tiberium Assmilation or Tiberum Infection!</Tiberblock.description>
   <Tiberblock.ingestible.ingestCommandString>{0} 복용</Tiberblock.ingestible.ingestCommandString>
   <Tiberblock.ingestible.ingestReportString>{0} 복용 중.</Tiberblock.ingestible.ingestReportString>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Soldier -->
+
+  <Apparel_GDISoldierHelmet.label>전투모</Apparel_GDISoldierHelmet.label>
+  <Apparel_GDISoldierHelmet.description>대부분의 교전상황에서 유용한 방탄 헬멧입니다.</Apparel_GDISoldierHelmet.description>
+
+  <Apparel_GDISoldierSuit.label>전투복</Apparel_GDISoldierSuit.label>
+  <Apparel_GDISoldierSuit.description>대부분의 교전상황에서 유용한 방탄복입니다.</Apparel_GDISoldierSuit.description>
+
+
+  <!-- Officer -->
+
+  <Apparel_GDIOfficerHelmet.label>장교모</Apparel_GDIOfficerHelmet.label>
+  <Apparel_GDIOfficerHelmet.description>모든 GDI 장교들이 평상복으로 선호하는 복장입니다. 멋쟁이!</Apparel_GDIOfficerHelmet.description>
+
+  <Apparel_GDIOfficerSuit.label>장교복</Apparel_GDIOfficerSuit.label>
+  <Apparel_GDIOfficerSuit.description>모든 GDI 장교들이 평상복으로 선호하는 복장입니다.</Apparel_GDIOfficerSuit.description>
+
+
+  <!-- Engineer -->
+
+  <Apparel_GDIEngineerMask.label>기술모</Apparel_GDIEngineerMask.label>
+  <Apparel_GDIEngineerMask.description>진짜 기술자를 위한 맞춤 보호모. 연구속도를 증가시킵니다. 그러나 증오의 기계를 조심하십시오!</Apparel_GDIEngineerMask.description>
+
+  <Apparel_GDIEngineerSuit.label>기술복</Apparel_GDIEngineerSuit.label>
+  <Apparel_GDIEngineerSuit.description>기술복은 어떤 작업을 수행하더라도 최적의 효율을 발휘할 수 있게 합니다. 그러나 모든 종류의 공격에 매우 취약해집니다.</Apparel_GDIEngineerSuit.description>
+
+
+  <!-- GDI Zone Trooper -->
+
+  <Apparel_GDIZoneHelmet.label>지역제압복 헬멧</Apparel_GDIZoneHelmet.label>
+  <Apparel_GDIZoneHelmet.description>GDI가 자랑하는 최정예 지역제압병단의 기본 방어구입니다. 대 타이베리움 대책도 완벽합니다.\n\n타이베리움 면역 장비.</Apparel_GDIZoneHelmet.description>
+
+  <Apparel_GDIZoneSuit.label>지역제압복</Apparel_GDIZoneSuit.label>
+  <Apparel_GDIZoneSuit.description>GDI가 자랑하는 최정예 지역제압병단의 기본 방어구입니다. 대 타이베리움 대책도 완벽합니다.\n\n타이베리움 면역 장비.</Apparel_GDIZoneSuit.description>
+
+
+</LanguageData>

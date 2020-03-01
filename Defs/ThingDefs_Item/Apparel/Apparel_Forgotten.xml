@@ -17,13 +17,12 @@
 			<MaxHitPoints>125</MaxHitPoints>
 			<MarketValue>400</MarketValue>
 			<WorkToMake>5000</WorkToMake>
-			<Mass>1</Mass>
+			<Mass>2</Mass>
 			<ArmorRating_Blunt>0.35</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
 			<ArmorRating_Heat>0.25</ArmorRating_Heat>
 			<Insulation_Cold>5</Insulation_Cold>
 			<Insulation_Heat>15</Insulation_Heat>
-			<Flammability>0.6</Flammability>
 			<EquipDelay>2</EquipDelay>
 		</statBases>
 		<equippedStatOffsets>
@@ -69,14 +68,13 @@
 			<MarketValue>800</MarketValue>
 			<MaxHitPoints>260</MaxHitPoints>
 			<WorkToMake>7500</WorkToMake>
-			<Mass>4</Mass>
+			<Mass>10</Mass>
 			<ArmorRating_Blunt>0.35</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
 			<ArmorRating_Heat>0.25</ArmorRating_Heat>
 			<Insulation_Cold>5</Insulation_Cold>
 			<Insulation_Heat>0</Insulation_Heat>
-			<Flammability>0.6</Flammability>
-			<EquipDelay>3</EquipDelay>
+			<EquipDelay>5</EquipDelay>
 		</statBases>
 		<equippedStatOffsets>
 			<MoveSpeed>-0.1</MoveSpeed>
@@ -84,7 +82,6 @@
 		<apparel>
 			<bodyPartGroups>
 				<li>Torso</li>
-				<li>Neck</li>
 				<li>Shoulders</li>
 				<li>Legs</li>
 			</bodyPartGroups>
@@ -121,12 +118,11 @@
 			<MarketValue>400</MarketValue>
 			<MaxHitPoints>120</MaxHitPoints>
 			<WorkToMake>5000</WorkToMake>
-			<Mass>3</Mass>
+			<Mass>5</Mass>
 			<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
 			<Insulation_Cold>15</Insulation_Cold>
 			<Insulation_Heat>10</Insulation_Heat>
-			<Flammability>0.8</Flammability>
 			<EquipDelay>5</EquipDelay>
 		</statBases>
 		<equippedStatOffsets>
@@ -135,6 +131,7 @@
 		<apparel>
 			<bodyPartGroups>
 				<li>Torso</li>
+				<li>Neck</li>
 				<li>Shoulders</li>
 				<li>Arms</li>
 				<li>Legs</li>

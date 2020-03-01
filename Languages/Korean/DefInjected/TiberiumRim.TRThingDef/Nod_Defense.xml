@@ -15,20 +15,14 @@
   <Nod_ShredderTurret.label>슈레더 포탑</Nod_ShredderTurret.label>
   <Nod_ShredderTurret.description>군중 학살에 특화된 기본적인 방어포탑입니다. 대못 뭉치를 발사합니다.</Nod_ShredderTurret.description>
 
+
+  <!-- Flame Turret -->
+
+  <Nod_FlameTurret.label>화염 포탑</Nod_FlameTurret.label>
+  <Nod_FlameTurret.description>고온의 불길로 다수의 적을 공격할 수 있는 고급 방어포탑입니다.\n\n파괴되면 큰 폭발을 일으킵니다.</Nod_FlameTurret.description>
+
   <Nod_LaserFence.label>레이저 격벽</Nod_LaserFence.label>
   <Nod_LaserFence.description>총알은 통과하지만 사람은 통과할 수 없는 편리한 장치입니다. 인접한 유닛에게 엄폐율을 부여합니다.</Nod_LaserFence.description>
 
-
-  <!--<Nod_ShredderTurret_Blueprint.label>슈레더 포탑 (청사진)</Nod_ShredderTurret_Blueprint.label>-->
-  <!--<Nod_ShredderTurret_Frame.label>슈레더 포탑 (설치 중)</Nod_ShredderTurret_Frame.label>-->
-  <!--<Nod_ShredderTurret_Frame.description>군중 학살에 특화된 기본적인 방어포탑입니다. 대못 뭉치를 발사합니다.</Nod_ShredderTurret_Frame.description>-->
-  <!--
-  <NodSecurity_FlameTurret.label>화염 포탑</NodSecurity_FlameTurret.label>
-  <NodSecurity_FlameTurret.description>고온의 불길로 다수의 적을 공격할 수 있는 고급 방어포탑입니다.\n\n파괴되면 큰 폭발을 일으킵니다.</NodSecurity_FlameTurret.description>
-  <NodSecurity_FlameTurret_Blueprint.label>화염 포탑 (청사진)</NodSecurity_FlameTurret_Blueprint.label>
-  <NodSecurity_FlameTurret_Frame.label>화염 포탑 (설치 중)</NodSecurity_FlameTurret_Frame.label>
-  <NodSecurity_FlameTurret_Frame.description>고온의 불길로 다수의 적을 공격할 수 있는 고급 방어포탑입니다.\n\n파괴되면 큰 폭발을 일으킵니다.</NodSecurity_FlameTurret_Frame.description>
-
--->
 
 </LanguageData>

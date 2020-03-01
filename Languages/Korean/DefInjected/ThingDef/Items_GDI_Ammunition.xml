@@ -2,10 +2,10 @@
 <LanguageData>
 
   <JuggernautShell_Explosive.label>저거넛 고폭탄</JuggernautShell_Explosive.label>
-  <JuggernautShell_Explosive.description>저거넛 포탑에서 사용하는 포탄입니다. 큰 폭발을 일으킵니다.</JuggernautShell_Explosive.description>
+  <JuggernautShell_Explosive.description>저거넛 포탑에서 사용하는 포탄 팩입니다. 큰 폭발을 일으킵니다.</JuggernautShell_Explosive.description>
 
   <JuggernautShell_Incendiary.label>저거넛 소이탄</JuggernautShell_Incendiary.label>
-  <JuggernautShell_Incendiary.description>A pack of shells to be fired by a Juggernaut Turret, these three shells will explode on contact.</JuggernautShell_Incendiary.description>
+  <JuggernautShell_Incendiary.description>저거넛 포탑에서 사용하는 포탄 팩입니다. 큰 화염을 일으킵니다.</JuggernautShell_Incendiary.description>
 
 
 </LanguageData>

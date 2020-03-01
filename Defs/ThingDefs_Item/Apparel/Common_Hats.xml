@@ -10,8 +10,9 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 		</graphicData>
 		<costList>
-			<Steel>30</Steel>
-			<Cloth>60</Cloth>
+			<Plasteel>5</Plasteel>
+			<Cloth>25</Cloth>
+			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<recipeMaker>
 			<recipeUsers Inherit="false">
@@ -19,18 +20,16 @@
 			</recipeUsers>
 		</recipeMaker>
 		<statBases>
-			<MarketValue>650</MarketValue>
-			<MaxHitPoints>50</MaxHitPoints>
-			<WorkToMake>4500</WorkToMake>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToMake>2500</WorkToMake>
 			<Mass>0.5</Mass>
-			<ArmorRating_Blunt>0.03</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.03</ArmorRating_Sharp>
-			<Insulation_Heat>30</Insulation_Heat>
-			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
-		
+			<StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor>
+			<StuffEffectMultiplierInsulation_Cold>0.25</StuffEffectMultiplierInsulation_Cold>
+			<StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat>
+			<TiberiumDamageResistance>0.75</TiberiumDamageResistance>
 		</statBases>
 		<equippedStatOffsets>
-			<SocialImpact>-0.15</SocialImpact>
+			<SocialImpact>-0.1</SocialImpact>
 			<ToxicSensitivity>-0.75</ToxicSensitivity>
 			<TiberiumGasResistance>1</TiberiumGasResistance>
 			<TiberiumRadiationResistance>0.25</TiberiumRadiationResistance>
@@ -48,7 +47,8 @@
 			</defaultOutfitTags>
 		</apparel>
 	</ThingDef>
-  
+	
+  <!--
   	<ThingDef ParentName="HatBase_TR">
 		<defName>RavensMask</defName>
 		<label>abandoned mask</label>
@@ -60,11 +60,10 @@
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Mass>0.5</Mass>
-			<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
-			<Insulation_Heat>15</Insulation_Heat>
-			<Insulation_Cold>50</Insulation_Cold>
-			<TiberiumDamageResistance>1</TiberiumDamageResistance>
+			<StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor>
+			<StuffEffectMultiplierInsulation_Cold>0.25</StuffEffectMultiplierInsulation_Cold>
+			<StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat>
+			<TiberiumDamageResistance>0.5</TiberiumDamageResistance>
 		</statBases>
 		<techLevel>Medieval</techLevel>
 		<tradeability>None</tradeability>
@@ -89,4 +88,6 @@
 			</defaultOutfitTags>
 		</apparel>
 	</ThingDef>
+	-->
+	
 </Defs>

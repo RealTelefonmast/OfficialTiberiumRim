@@ -135,8 +135,8 @@
 			<damageAmountBase>8</damageAmountBase>
 			<stoppingPower>2.5</stoppingPower>
 			<explosionRadius>1.75</explosionRadius>
-			<speed>35</speed>
-			<explosionDelay>60</explosionDelay>
+			<speed>40</speed>
+			<explosionDelay>30</explosionDelay>
 			<soundExplode>Blast_Rail</soundExplode>
 			<soundAmbient>MortarRound_Ambient</soundAmbient>
 		</projectile>

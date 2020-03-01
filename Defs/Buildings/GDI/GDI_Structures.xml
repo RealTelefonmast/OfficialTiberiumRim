@@ -10,7 +10,7 @@
 			<texPath>Buildings/GDI/Structure/Wall_GDI</texPath>
 		</graphicData>
 		<costList>
-			<GDI_ReinforcedPlate>5</GDI_ReinforcedPlate>
+			<GDI_ReinforcedPlate>2</GDI_ReinforcedPlate>
 		</costList>
 		<uiIconPath>Buildings/GDI/Structure/Wall_GDI_Icon</uiIconPath>
 		<statBases>
@@ -70,7 +70,7 @@
 		<description>A metal frame to decorate doorways with.</description>
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Decoration</TRCategory>
-		<altitudeLayer>PawnUnused</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<statBases>
 			<MaxHitPoints>150</MaxHitPoints>
 			<WorkToBuild>500</WorkToBuild>
@@ -130,7 +130,7 @@
 			</damageData>
 		</graphicData>
 		<costList>
-			<GDI_ReinforcedPlate>4</GDI_ReinforcedPlate>
+			<GDI_ReinforcedPlate>2</GDI_ReinforcedPlate>
 		</costList>
 		<stuffCategories Inherit="False"/>
 		<uiIconPath>Buildings/GDI/Structure/Door_GDI_icon</uiIconPath>
@@ -156,8 +156,8 @@
 		</graphicData>
 		<uiIconPath>Buildings/GDI/Structure/AutoDoor_GDI_icon</uiIconPath>
 		<costList>
-			<GDI_ReinforcedPlate>4</GDI_ReinforcedPlate>
-			<ComponentIndustrial>2</ComponentIndustrial>
+			<GDI_ReinforcedPlate>2</GDI_ReinforcedPlate>
+			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<stuffCategories Inherit="False"/>
 		<comps>

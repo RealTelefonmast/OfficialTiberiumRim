@@ -10,9 +10,9 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<costList>
-			<Plasteel>5</Plasteel>
-			<Steel>75</Steel>
-			<Cloth>120</Cloth>
+			<Plasteel>10</Plasteel>
+			<Cloth>50</Cloth>
+			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<recipeMaker>
 			<recipeUsers Inherit="false">
@@ -23,14 +23,13 @@
 			<li>Apparel</li>
 		</thingCategories>
 		<statBases>
-			<MarketValue>1250</MarketValue>
 			<MaxHitPoints>75</MaxHitPoints>
-			<WorkToMake>10000</WorkToMake>
+			<WorkToMake>5000</WorkToMake>
 			<Mass>2.5</Mass>
-			<ArmorRating_Blunt>0</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.05</ArmorRating_Sharp>
-			<ArmorRating_Heat>0.2</ArmorRating_Heat>
-			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor>
+			<StuffEffectMultiplierInsulation_Cold>0.25</StuffEffectMultiplierInsulation_Cold>
+			<StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat>
+			<TiberiumInfectionResistance>0.75</TiberiumInfectionResistance>
 		</statBases>
 		<equippedStatOffsets>
 			<MoveSpeed>-0.02</MoveSpeed>
@@ -68,46 +67,25 @@
 		<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<costList>
-			<Steel>10</Steel>
-			<Cloth>100</Cloth>
+			<Steel>75</Steel>
+			<Cloth>50</Cloth>
+			<ComponentIndustrial>3</ComponentIndustrial>
 		</costList>
-		<recipeMaker Inherit="False">
-			<workAmount>1000</workAmount>
-			<workSpeedStat></workSpeedStat>
-			<efficiencyStat></efficiencyStat>
-			<workSkill></workSkill>
-			<effectWorking>Tailor</effectWorking>
-			<soundWorking>Recipe_Tailor</soundWorking>
-			<recipeUsers>
+		<recipeMaker>
+			<recipeUsers Inherit="false">
 				<li>TiberiumWorkbench</li>
 			</recipeUsers>
-			<defaultIngredientFilter>
-				<categories>
-					<li>Root</li>
-				</categories>
-				<disallowedThingDefs>
-					<li>Gold</li>
-					<li>Silver</li>
-					<li>Plasteel</li>
-					<li>Jade</li>
-					<li>Uranium</li>
-				</disallowedThingDefs>
-			</defaultIngredientFilter>
 		</recipeMaker>
 		<thingCategories>
 			<li>Apparel</li>
 		</thingCategories>
 		<statBases>
-			<MarketValue>200</MarketValue>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToMake>5000</WorkToMake>
 			<Mass>1</Mass>
-			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
-			<ArmorRating_Heat>0.1</ArmorRating_Heat>
-			<Insulation_Cold>25</Insulation_Cold>
-			<Insulation_Heat>25</Insulation_Heat>
-			<Flammability>0.25</Flammability>
+			<StuffEffectMultiplierArmor>0.25</StuffEffectMultiplierArmor>
+			<Insulation_Cold>15</Insulation_Cold>
+			<Insulation_Heat>15</Insulation_Heat>
 			<EquipDelay>10</EquipDelay>
 		</statBases>
 		<apparel>
@@ -115,7 +93,10 @@
 				<li>Torso</li>
 				<li>Neck</li>
 				<li>Shoulders</li>
+				<li>Arms</li>
 				<li>Legs</li>
+				<li>Hands</li>
+				<li>Feet</li>
 			</bodyPartGroups>
 			<wornGraphicPath>Items/Apparel/Common_Jumpsuit/JS</wornGraphicPath>
 			<layers>
