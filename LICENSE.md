@@ -1,3 +1,7 @@
+Command & Conquer™ is a registered trademark of Electronic Arts, all rights reserved.
+http://www.commandandconquer.com
+
+
 --- License ---
 
 This mod may not be distributed by anyone else but the direct OWNER of this mod. All redirecting and mirroring has to be done via direct written permission by the OWNER. Any attempt at monetary gain (selling, ad links, etc.) from redistributing this mod is strictly forbidden.
