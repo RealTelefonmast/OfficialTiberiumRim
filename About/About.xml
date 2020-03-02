@@ -2,7 +2,6 @@
 <ModMetaData>
    <name>TiberiumRim</name>
    <author>Telefonmast, Nephlite</author>
-   <targetVersion>1.1</targetVersion>
    <supportedVersions>
       <li>1.1</li>
    </supportedVersions>

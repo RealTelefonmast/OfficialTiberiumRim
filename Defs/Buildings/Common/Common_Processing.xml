@@ -27,6 +27,11 @@
 			<Steel>300</Steel>
 			<ComponentIndustrial>15</ComponentIndustrial>
 		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumSuppressionBasic_T3</li>
+			</tiberiumResearchTasks>
+		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TNW">
 				<compClass>TiberiumRim.CompTNW_TNC</compClass>
@@ -298,6 +303,11 @@
 			<Flammability>1.0</Flammability>
 			<Beauty>-25</Beauty>
 		</statBases>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T2</li>
+			</tiberiumResearchTasks>
+		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TNW">
 				<compClass>TiberiumRim.CompTNW_Silo</compClass>
@@ -350,6 +360,11 @@
 			<Steel>200</Steel>
 			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T4</li>
+			</tiberiumResearchTasks>
+		</requisites>
 		<comps>
 			<li Class="TiberiumRim.RefineryProperties">
 				<harvester>Harvester_Common</harvester>
@@ -443,7 +458,7 @@
 			<Plasteel>100</Plasteel>
 			<ComponentIndustrial>30</ComponentIndustrial>
 		</costList>
-				<building>
+		<building>
 			<ai_chillDestination>false</ai_chillDestination>
 		</building>
 		<comps>
@@ -496,7 +511,7 @@
 	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>TiberiumPowerPlant</defName>
-		<label>Tiberium power plant</label>
+		<label>Tiberium powerplant</label>
 		<description>This power plant needs to be connected to a Tiberium network before it can properly operate, it will automatically consume Tiberium from the network to sustain itself.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -525,6 +540,11 @@
 			<ComponentIndustrial>5</ComponentIndustrial>
 			<!--<BookRiparius>1</BookRiparius>-->
 		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumPower_T2</li>
+			</tiberiumResearchTasks>
+		</requisites>
 		<comps>
 			<li Class="TiberiumRim.PowerProperties">
 				<compClass>TiberiumRim.CompTNW_Power</compClass>
@@ -640,6 +660,11 @@
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<surfaceType>Item</surfaceType>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>MineralAnalysis_T4</li>
+			</tiberiumResearchTasks>
+		</requisites>
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -699,8 +724,13 @@
 			<Steel>150</Steel>
 			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T7</li>
+			</tiberiumResearchTasks>
+		</requisites>
 		<comps>
-		<li Class="TiberiumRim.CompProperties_TNW">
+			<li Class="TiberiumRim.CompProperties_TNW">
 				<compClass>TiberiumRim.CompTNW_Crafter</compClass>
 				<tnwbMode>Consumer</tnwbMode>
 			</li>

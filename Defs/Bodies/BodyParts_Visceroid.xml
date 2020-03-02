@@ -34,8 +34,8 @@
 	</BodyPartDef>
   
 	<BodyPartDef ParentName="BodyPartBase_TR">
-		<defName>Tentacle_Mover</defName>
-		<label>tentacle (movement)</label>
+		<defName>Tentacle_Leg</defName>
+		<label>tentacle leg</label>
 		<hitPoints>50</hitPoints>
 		<tags>
 			<li>MovingLimbSegment</li>
@@ -43,8 +43,8 @@
 	</BodyPartDef>
 	
 	<BodyPartDef ParentName="BodyPartBase_TR">
-		<defName>Tentacle_Grabber</defName>
-		<label>tentacle (manipulation)</label>
+		<defName>Tentacle_Arm</defName>
+		<label>tentacle arm</label>
 		<hitPoints>50</hitPoints>
 		<tags>
 			<li>ManipulationLimbSegment</li>

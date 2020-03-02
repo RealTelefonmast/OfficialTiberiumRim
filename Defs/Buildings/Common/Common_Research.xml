@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
-  	<TiberiumRim.TRThingDef ParentName="BenchBase_TR">
+  	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>TiberiumResearchCrane</defName>
 		<label>tiberium research crane</label>
 		<description>This research crane can be placed on any Tiberium source and will allow you to learn more about the alien substance. It is immune to Tiberium itself and will inhibit the producer from spawning more Tiberium.\n\nOnly one research crane can be placed on a map.</description>
@@ -35,7 +35,7 @@
 			<WorkToBuild>3000</WorkToBuild>
 			<Flammability>0.5</Flammability>
 			<TiberiumDamageResistance>1</TiberiumDamageResistance>
-			<ResearchSpeedFactor>1.0</ResearchSpeedFactor>
+			<!--<ResearchSpeedFactor>1.0</ResearchSpeedFactor>-->
 		</statBases>
 		<comps>
 			<li Class="CompProperties_Power">
@@ -51,6 +51,11 @@
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<surfaceType>Item</surfaceType>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>MineralAnalysis_T3</li>
+			</tiberiumResearchTasks>
+		</requisites>
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_OnProducer</li>
 			<li>TiberiumRim.PlaceWorker_Once</li>

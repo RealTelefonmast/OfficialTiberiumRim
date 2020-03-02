@@ -87,7 +87,7 @@
 		<explosionInteriorMote></explosionInteriorMote>
 		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
 		<combatLogRules>Damage_Bomb</combatLogRules>
-		<soundExplosion>Shot_Nod_Nuke</soundExplosion>
+		<soundExplosion>Nod_Nuke_Explosion</soundExplosion>
 		<makesAnimalsFlee>true</makesAnimalsFlee>
 	</DamageDef>
 

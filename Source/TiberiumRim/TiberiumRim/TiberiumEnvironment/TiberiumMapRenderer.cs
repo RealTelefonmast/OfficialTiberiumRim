@@ -34,6 +34,7 @@ namespace TiberiumRim
         }
     }
 
+    [StaticConstructorOnStartup]
     public class TiberiumFieldFogLayer
     {
         public Color mainColor;

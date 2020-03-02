@@ -15,10 +15,5 @@
 		<defName>Harvester_Tracks</defName>
 		<label>tracks</label>
 	</BodyPartGroupDef>
-	
-	<BodyPartGroupDef>
-		<defName>Visceral_Tentacles</defName>
-		<label>tentacles</label>
-	</BodyPartGroupDef>
 
 </Defs>

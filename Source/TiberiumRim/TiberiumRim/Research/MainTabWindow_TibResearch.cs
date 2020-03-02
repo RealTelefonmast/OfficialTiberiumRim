@@ -72,9 +72,9 @@ namespace TiberiumRim
             //esearchRoots.AddRange(DefDatabase<TResearchDef>.AllDefs.Where(t => t.requisites?.tiberiumResearch.NullOrEmpty() ?? false));
         }
 
-        protected override float Margin => 5f;
+        protected override float Margin => 0f;
 
-        public override Vector2 RequestedTabSize => new Vector2(1281f, 721f); //new Vector2(UI.screenWidth, UI.screenHeight * 0.6f);
+        public override Vector2 RequestedTabSize => new Vector2(1280f, 720f); //new Vector2(UI.screenWidth, UI.screenHeight * 0.6f);
 
         public TResearchManager Manager => Find.World.GetComponent<TResearchManager>();
 
@@ -91,12 +91,29 @@ namespace TiberiumRim
         //
         public override void DoWindowContents(Rect inRect)
         {
-            Rect LeftRect = new Rect(0, 0, leftWidth, inRect.height);
-            Rect RightRect = new Rect(LeftRect.xMax, 0, inRect.width - LeftRect.width, inRect.height);
+            //Draw BackGround Image Here
+
+            Rect rect = inRect.ContractedBy(5f);
+            GUI.BeginGroup(rect);
+
+            Rect LeftRect = new Rect(0, 0, leftWidth, rect.height);
+            Rect RightRect = new Rect(LeftRect.xMax, 0, rect.width - LeftRect.width, rect.height);
 
             DrawLeftPart(LeftRect.ContractedBy(10f));
             if (SelProject != null)
                 DrawRightPart(RightRect.ContractedBy(10f));
+
+            GUI.EndGroup();
+
+            //TODO: REMOVE FROM
+            if (!DebugSettings.godMode) return;
+            Text.Anchor = TextAnchor.UpperLeft;
+            Widgets.DrawHighlightIfMouseover(inRect);
+            GUI.color = Color.red;
+            Widgets.Label(inRect, inRect.size.ToString());
+            Text.Anchor = default;
+            GUI.color = Color.white;
+            //TODO: REMOVE TO
         }
 
         private void DrawLeftPart(Rect rect)
@@ -124,6 +141,16 @@ namespace TiberiumRim
                     break;
             }
             GUI.EndGroup();
+
+            //TODO: REMOVE FROM
+            if (!DebugSettings.godMode) return;
+            Text.Anchor = TextAnchor.LowerLeft;
+            Widgets.DrawHighlightIfMouseover(rect);
+            GUI.color = Color.red;
+            Widgets.Label(rect, rect.size.ToString());
+            Text.Anchor = default;
+            GUI.color = Color.white;
+            //TODO: REMOVE TO
         }
 
         /*
@@ -153,6 +180,16 @@ namespace TiberiumRim
             }
             Widgets.EndScrollView();
             GUI.EndGroup();
+
+            //TODO: REMOVE FROM
+            if (!DebugSettings.godMode) return;
+            Text.Anchor = TextAnchor.UpperLeft;
+            Widgets.DrawHighlightIfMouseover(rect);
+            GUI.color = Color.red;
+            Widgets.Label(rect, rect.size.ToString());
+            Text.Anchor = default;
+            GUI.color = Color.white;
+            //TODO: REMOVE TO
         }
 
         private bool ShouldShow(TResearchGroupDef group)
@@ -226,7 +263,7 @@ namespace TiberiumRim
         {
             //BaseEvent activeEvent = TRUtils.EventManager().activeEvents.First(e => e != null && e.def == def);
             Widgets.DrawMenuSection(rect);
-            Widgets.Label(rect, baseEvent.def.LabelCap + " " + baseEvent.TimeReadOut);
+            Widgets.Label(rect, baseEvent.def.LabelCap + " " + baseEvent.TimeReadOut + " " + baseEvent.def.IsFinished);
         }
 
         private Texture2D ProjectStatusTexture(ResearchState state)
@@ -248,6 +285,8 @@ namespace TiberiumRim
         private void DrawRightPart(Rect rect)
         {
             Rect menuRect = new Rect(rect.x, rect.y + tabHeight, rect.width, rect.height - tabHeight);
+            //TODO: remove back
+            Rect menuBack = new Rect(rect.x, rect.y + tabHeight, rect.width, rect.height - tabHeight);
             Widgets.DrawMenuSection(menuRect);
 
             menuRect = menuRect.ContractedBy(5f);
@@ -312,8 +351,17 @@ namespace TiberiumRim
             Rect TaskRect = RightPart.BottomHalf().ContractedBy(5f);
             if (SelProject != null && !SelProject.tasks.NullOrEmpty())
                 DrawTasks(TaskRect);
-
             GUI.EndGroup();
+
+            //TODO: REMOVE FROM
+            if (!DebugSettings.godMode) return;
+            Text.Anchor = TextAnchor.UpperCenter;
+            Widgets.DrawHighlightIfMouseover(menuBack);
+            GUI.color = Color.red;
+            Widgets.Label(menuBack, menuBack.size.ToString());
+            Text.Anchor = default;
+            GUI.color = Color.white;
+            //TODO: REMOVE TO
         }
 
         private void AddGapLine(Rect rect, float gapSize, out float newY)
@@ -339,20 +387,34 @@ namespace TiberiumRim
             if (CurTask == null) return;
             Widgets.DrawMenuSection(rect);
 
-            rect = rect.ContractedBy(5);
+            GUI.BeginGroup(rect.ContractedBy(5f));
+
+            Rect newRect = rect.AtZero();
             string taskInfoTitle = "TR_CurTask".Translate(CurTask.LabelCap);
             Vector2 titleSize = Text.CalcSize(taskInfoTitle);
-            Rect TitlePart = rect.TopPartPixels(titleSize.y);
+            Rect TitlePart = newRect.TopPartPixels(titleSize.y);
             Widgets.Label(TitlePart, taskInfoTitle);
-            rect = rect.BottomPartPixels(rect.height - titleSize.y);
+            newRect = newRect.BottomPartPixels(newRect.height - titleSize.y);
 
-            Widgets.DrawBoxSolid(rect, taskInfoBG);
-            AddGapLine(rect, 0, out float newY);
+            Widgets.DrawBoxSolid(newRect, taskInfoBG);
+            AddGapLine(newRect, 0, out float newY);
 
             //TaskInfo
-            float taskInfoStringHeight = Text.CalcHeight(CurTask.TaskInfo, rect.width);
-            Rect targetStringRect = new Rect(rect.x, newY + 5, rect.width, taskInfoStringHeight);
+            float taskInfoStringHeight = Text.CalcHeight(CurTask.TaskInfo, newRect.width);
+            Rect targetStringRect = new Rect(newRect.x, newY + 5, newRect.width, taskInfoStringHeight);
             Widgets.TextArea(targetStringRect, CurTask.TaskInfo, true);
+
+            GUI.EndGroup();
+
+            //TODO: REMOVE FROM
+            if (!DebugSettings.godMode) return;
+            Text.Anchor = TextAnchor.LowerLeft;
+            Widgets.DrawHighlightIfMouseover(rect);
+            GUI.color = Color.red;
+            Widgets.Label(rect, rect.size.ToString());
+            Text.Anchor = default;
+            GUI.color = Color.white;
+            //TODO: REMOVE TO
         }
 
         private void DrawTasks(Rect rect)
@@ -361,7 +423,7 @@ namespace TiberiumRim
             Rect outRect = rect.AtZero();
             DrawUtils.DrawColoredBox(outRect, taskBG, ColorWhite50P, 1);
             Rect viewRect = new Rect(0, 0, outRect.width, taskCurrentHeight * SelProject.tasks.Count);
-            Widgets.BeginScrollView(outRect, ref taskScrollPos, viewRect, true);
+            Widgets.BeginScrollView(outRect, ref taskScrollPos, viewRect, false);
 
             float curY = 0f;
             for (var i = 0; i < SelProject.tasks.Count; i++)
@@ -373,6 +435,16 @@ namespace TiberiumRim
             }
             Widgets.EndScrollView();
             GUI.EndGroup();
+
+            //TODO: REMOVE FROM
+            if (!DebugSettings.godMode) return;
+            Text.Anchor = TextAnchor.LowerLeft;
+            Widgets.DrawHighlightIfMouseover(rect);
+            GUI.color = Color.red;
+            Widgets.Label(rect, rect.size.ToString());
+            Text.Anchor = default;
+            GUI.color = Color.white;
+            //TODO: REMOVE TO
         }
 
         //Draw Task - Design depends on status: current | to do | finished
@@ -402,7 +474,7 @@ namespace TiberiumRim
                 {
                     foreach (var option in task.creationTasks.thingsToCreate)
                     {
-                        ResearchCreationTable.taskCreations[task].AddProgress(option, option.amount);
+                        TRUtils.ResearchManager().CreationTable.taskCreations[task].AddProgress(option, option.amount);
                     }
                 }
                 Manager.SetProgress(task, task.ProgressToDo);
@@ -415,7 +487,7 @@ namespace TiberiumRim
                 {
                     foreach (var option in task.creationTasks.thingsToCreate)
                     {
-                        ResearchCreationTable.taskCreations[task].AddProgress(option, -option.amount);
+                        TRUtils.ResearchManager().CreationTable.taskCreations[task].AddProgress(option, -option.amount);
                     }
                 }
             }

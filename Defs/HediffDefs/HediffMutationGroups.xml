@@ -25,4 +25,9 @@
 		<legs>TiberiumEnhancedLeg</legs>
 	</TiberiumRim.HediffMutationGroup>
 	
+	<!--
+	TODO: IDEAS: Multiple tentacle arms
+	Volatile tiberium organs: make pawn explode on death
+	-->
+	
 </Defs>

@@ -198,7 +198,8 @@
 		<label>tiberium infection</label>
 		<description>Tiberium crystallization, the most lethal effect of Tiberium. The affected body part will slowly crystallize until it becomes unusable. After full crystallization, neighbouring parts get affected as well, slowly growing over the whole body, until the pawn either dies due to losing a vital body part (Torso) or mutation kicks in.</description>
 		<hediffClass>TiberiumRim.Hediff_Crystallizing</hediffClass>
-		<minSeverity>0.001</minSeverity>
+		<minSeverity>0</minSeverity>
+		<initialSeverity>0.001</initialSeverity>
 		<maxSeverity>1</maxSeverity>
 		<everCurableByItem>false</everCurableByItem>
 		<isBad>true</isBad>

@@ -31,6 +31,11 @@
 			<Steel>350</Steel>
 			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T5</li>
+			</tiberiumResearchTasks>
+		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_Suppression">
 				<angle>79</angle>

@@ -11,7 +11,7 @@ namespace TiberiumRim
     public class EventManager : WorldComponent
     {
         public List<BaseEvent> allEvents = new List<BaseEvent>();
-        public Dictionary<EventDef, bool> finishedEvents = new Dictionary<EventDef, bool>();
+        public Dictionary<EventDef, bool> currentEvents = new Dictionary<EventDef, bool>();
 
         public EventManager(World world) : base(world)
         {
@@ -21,7 +21,7 @@ namespace TiberiumRim
         {
             base.ExposeData();
             Scribe_Collections.Look(ref allEvents, "allEvents");
-            Scribe_Collections.Look(ref finishedEvents, "finishedEvents");
+            Scribe_Collections.Look(ref currentEvents, "currentEvents");
         }
 
         public override void WorldComponentTick()
@@ -30,32 +30,37 @@ namespace TiberiumRim
             for (int i = allEvents.Count - 1; i >= 0; i--)
             {
                 var @event = allEvents[i];
-                if (!finishedEvents[@event.def])
+                if (!currentEvents[@event.def])
                 {
                     @event.EventTick();
                 }
             }
         }
 
+        //TODO: Implement event scanner
+        //TODO: Trigger Events when certain things spawn/happen
+
         public void StartEvent(EventDef def)
         {
             BaseEvent baseEvent = (BaseEvent) Activator.CreateInstance(def.eventClass);
             baseEvent.StartEvent(def);
             allEvents.Add(baseEvent);
-            finishedEvents.Add(baseEvent.def, false);
-            
-            Log.Message("Starting new event! " + def);
+            currentEvents.Add(baseEvent.def, false);
         }
 
         public void Notify_EventFinished(BaseEvent baseEvent)
         {
-            finishedEvents[baseEvent.def] = true;
-            Log.Message("Finishing new event! " + baseEvent.def);
+            currentEvents[baseEvent.def] = true;
         }
 
-        public bool HasBeenFinished(EventDef def)
+        public bool IsActive(EventDef def)
         {
-            return finishedEvents.TryGetValue(def, out bool value) && value;
+            return currentEvents.TryGetValue(def, out bool value) && !value;
+        }
+
+        public bool IsFinished(EventDef def)
+        {
+            return currentEvents.TryGetValue(def, out bool value) && value;
         }
     }
 }

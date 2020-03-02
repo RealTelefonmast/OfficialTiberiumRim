@@ -8,16 +8,14 @@ using Verse;
 
 namespace TiberiumRim
 {
-    [StaticConstructorOnStartup]
-    public static class ResearchCreationTable
+    public class ResearchCreationTable
     {
         //public static Dictionary<TResearchTaskDef, List<ThingDef>> taskCreationThingDefs = new Dictionary<TResearchTaskDef, List<ThingDef>>();
-        public static Dictionary<TResearchTaskDef, CreationGroupTracker> taskCreations = new Dictionary<TResearchTaskDef, CreationGroupTracker>();
-        private static readonly Dictionary<ThingDef, List<TResearchTaskDef>> tasksForThings = new Dictionary<ThingDef, List<TResearchTaskDef>>();
+        public Dictionary<TResearchTaskDef, CreationGroupTracker> taskCreations = new Dictionary<TResearchTaskDef, CreationGroupTracker>();
+        private readonly Dictionary<ThingDef, List<TResearchTaskDef>> tasksForThings = new Dictionary<ThingDef, List<TResearchTaskDef>>();
 
-        static ResearchCreationTable()
+        public ResearchCreationTable()
         {
-            Log.Message("Setting up Task Creation Look-Up table");
             foreach (var task in DefDatabase<TResearchTaskDef>.AllDefs)
             {
                 //taskCreationThingDefs.Add(task, new List<ThingDef>());
@@ -32,24 +30,19 @@ namespace TiberiumRim
                         tasksForThings.Add(creationOption.def, new List<TResearchTaskDef>() {task});
                 }
             }
-            Log.Message("Finished Task Creation Look-Up table" + " with " + tasksForThings.Keys.Count + " things");
-            foreach (var tasksForThing in tasksForThings)
-            {
-                Log.Message(tasksForThing.Key + " " + taskCreations.Sum(t => tasksForThing.Value.Sum(tt => taskCreations[tt].TotalCountLeft)));
-            }
         }
 
-        public static int TaskCompletion(TResearchTaskDef task)
+        public int TaskCompletion(TResearchTaskDef task)
         {
             return taskCreations[task].DoneCount;
         }
 
-        public static bool TaskComplete(TResearchTaskDef task)
+        public bool TaskComplete(TResearchTaskDef task)
         {
             return taskCreations[task].Completed;
         }
 
-        public static void TryTrackCreated(Thing thing)
+        public void TryTrackCreated(Thing thing)
         {
             foreach (var task in tasksForThings[thing.def])
             {
@@ -58,7 +51,7 @@ namespace TiberiumRim
             }
         }
 
-        public static void TryTrackCreated(ThingDef thingDef)
+        public void TryTrackCreated(ThingDef thingDef)
         {
             foreach (var task in tasksForThings[thingDef])
             {

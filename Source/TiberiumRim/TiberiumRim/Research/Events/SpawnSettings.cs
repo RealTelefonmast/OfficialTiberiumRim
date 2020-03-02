@@ -19,6 +19,6 @@ namespace TiberiumRim
         public SpawnMode mode = SpawnMode.Stockpile;
         public bool singleChance = false;
         public List<ThingValue> spawnList = new List<ThingValue>();
-        public List<SkyfallerProperties> skyfallers = new List<SkyfallerProperties>();
+        public List<SkyfallerValue> skyfallers = new List<SkyfallerValue>();
     }
 }

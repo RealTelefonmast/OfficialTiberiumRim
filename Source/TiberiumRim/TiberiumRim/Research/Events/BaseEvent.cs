@@ -30,24 +30,29 @@ namespace TiberiumRim
         public void EventTick()
         {
             int tick = Find.TickManager.TicksGame;
-            if (tick > endTick)
+            if (CanDoEventAction(tick))
             {
-                FinishEvent();
-                return;
+                EventAction();
             }
+            if (ShouldFinishNow(tick))
+                FinishEvent();
+        }
 
-            if (CanDoEventAction(tick)) EventAction();
+        public bool ShouldFinishNow(int curTick)
+        {
+            return startTick == endTick || curTick >= endTick;
         }
 
         public virtual void EventAction()
         {
-
         }
 
         public virtual bool CanDoEventAction(int curTick)
         {
-            return curTick == endTick;
+            return ShouldFinishNow(curTick);
         }
+
+        public Map MapForEvent => Find.Maps.Where(m => m.IsPlayerHome).RandomElementByWeight(StorytellerUtility.DefaultThreatPointsNow);
 
         public string[] DescArguments => null;
 

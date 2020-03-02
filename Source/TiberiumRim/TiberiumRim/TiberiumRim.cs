@@ -37,7 +37,7 @@ namespace TiberiumRim
             TiberiumRimSettings.settings = settings;
             Tiberium.PatchAll(Assembly.GetExecutingAssembly());
             mod = this;
-            Log.Message("TiberiumRim - Loaded");
+            Log.Message("[TiberiumRim] Loaded");
         }
 
         public void LoadAssetBundles()

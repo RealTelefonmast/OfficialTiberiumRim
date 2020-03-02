@@ -74,7 +74,7 @@
 		<explosionColorCenter>(0.1, 0.25, 0.1)</explosionColorCenter>
 		<explosionColorEdge>(0, 0.15, 0.05)</explosionColorEdge>
 		<combatLogRules>Damage_Bomb</combatLogRules>
-		<soundExplosion>Shot_Nod_ChemBomb</soundExplosion>
+		<soundExplosion>Nod_ChemBomb</soundExplosion>
 		<makesAnimalsFlee>true</makesAnimalsFlee>
 		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
 	</DamageDef>
@@ -99,7 +99,7 @@
 		<explosionColorCenter>(0.1, 0.1, 0.5)</explosionColorCenter>
 		<explosionColorEdge>(0, 0.25, 0.25)</explosionColorEdge>
 		<combatLogRules>Damage_Bomb</combatLogRules>
-		<soundExplosion>Shot_Nod_ChemBomb</soundExplosion>
+		<soundExplosion>Nod_ChemBomb</soundExplosion>
 		<makesAnimalsFlee>true</makesAnimalsFlee>
 		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
 	</DamageDef>

@@ -18,7 +18,7 @@ namespace TiberiumRim
         public ProjectileProperties_Extended projectileExtended;
         public SuperWeaponProperties superWeapon;
         public TerrainDef makesTerrain;
-        public List<TResearchDef> requiredResearch;
+        public Requisites requisites;
         public bool needsBlueprint = false;
         public bool hidden = false;
         public bool devObject = false;
@@ -38,17 +38,7 @@ namespace TiberiumRim
 
         }
 
-        public bool TResearchFinished 
-        {
-            get
-            {
-                if (!researchPrerequisites.NullOrEmpty() && researchPrerequisites.Any(r => !r.IsFinished))
-                    return false;
-                if (!requiredResearch.NullOrEmpty() && requiredResearch.Any(r => !r.IsFinished))
-                    return false;
-                return true;
-            }
-        }
+        public bool RequisitesFulfilled => requisites == null || requisites.FulFilled();
 
         public bool Discovered
         {
@@ -91,17 +81,12 @@ namespace TiberiumRim
                 sb.AppendLine("- Need research:\n" + research);
                 research = "";
             }
-
-            if (!TResearchFinished)
+            if (!RequisitesFulfilled)
             {
                 flag = false;
-                foreach (var res in requiredResearch)
-                {
-                    research += "   - " + res.LabelCap;
-                }
-                sb.AppendLine("- Need tiberium research:\n" + research);
-                research = "";
+                sb.AppendLine(requisites.MissingString());
             }
+
             /*
             if (this.HasStoryExtension())
             {

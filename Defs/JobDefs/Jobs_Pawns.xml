@@ -8,15 +8,16 @@
 		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
 	</JobDef>
 	
+	
 	<JobDef>
 		<defName>FormAmalgamation</defName>
-		<driverClass>TiberiumRim.JobDriver_Amalgamation</driverClass>
+		<driverClass>TiberiumRim.JobDriver_FormAmalgamation</driverClass>
 		<reportString>forming Amalgamation.</reportString>
 	</JobDef>
 	
 	<JobDef>
 		<defName>TiberiumBath</defName>
-		<driverClass>TiberiumRim.JobDriver_TiberiumBath</driverClass>
+		<driverClass>TiberiumRim.JobDriver_SatisfyTiberiumNeed</driverClass>
 	</JobDef>
-  
+	
 </Defs>

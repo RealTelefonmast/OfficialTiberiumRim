@@ -78,6 +78,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AI\IPawnWithParent.cs" />
+    <Compile Include="AI\JobDriver_FormAmalgamation.cs" />
+    <Compile Include="AI\JobDriver_SatisfyTiberiumNeed.cs" />
     <Compile Include="AI\JobGiver_InstallUpgrade.cs" />
     <Compile Include="AI\JobGiver_TryGetRepaired.cs" />
     <Compile Include="AI\JobGiver_WanderAtParent.cs" />
@@ -101,11 +103,12 @@
     <Compile Include="GameParts\Interfaces\IContainerHolder.cs" />
     <Compile Include="GameParts\ITab_ContainedPawn_Health.cs" />
     <Compile Include="GameParts\ITab_MechConstruction.cs" />
+    <Compile Include="GameParts\ITab_TiberiumRefinerySettings.cs" />
     <Compile Include="GameParts\MapComps\MapComponentWithDraw.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_TiberiumTickManager.cs" />
     <Compile Include="GameParts\PositionFilter.cs" />
     <Compile Include="GameParts\TerrainFloat.cs" />
-    <Compile Include="GameParts\SkyfallerProperties.cs" />
+    <Compile Include="GameParts\SkyfallerValue.cs" />
     <Compile Include="GameParts\ThingValue.cs" />
     <Compile Include="GDI\Comp_SonicInhibitor.cs" />
     <Compile Include="Research\CreationProperties.cs" />
@@ -113,6 +116,8 @@
     <Compile Include="Research\Events\EventLetter.cs" />
     <Compile Include="Research\Events\EventManager.cs" />
     <Compile Include="Research\Events\BaseEvent.cs" />
+    <Compile Include="Research\Events\EventScannerTable.cs" />
+    <Compile Include="Research\Events\Event_TiberiumArrival.cs" />
     <Compile Include="Research\Events\IncidentParmsProperties.cs" />
     <Compile Include="Research\Events\IncidentProperties.cs" />
     <Compile Include="Research\Events\PawnGroupProperties.cs" />
@@ -121,6 +126,7 @@
     <Compile Include="Research\IncidentWorker_TiberiumSighting.cs" />
     <Compile Include="Research\ResearchCreationTable.cs" />
     <Compile Include="Research\ResearchTargetTable.cs" />
+    <Compile Include="Research\TargetProperties.cs" />
     <Compile Include="TiberiumInfection\TiberiumInfectionInfo.cs" />
     <Compile Include="GameParts\MapComps\WorldComponent_TR.cs" />
     <Compile Include="GameParts\PlaceWorker_DoorFrame.cs" />

@@ -25,7 +25,6 @@ namespace TiberiumRim
     {
         static TiberiumRimPatches()
         {
-            Log.Message("Applying TiberiumRim-Patches");
             //TiberiumRimMod.Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI"),new HarmonyMethod(typeof(TiberiumRimPatches), "BackgroundOnGUIPatch"));
             
             /*
@@ -40,7 +39,7 @@ namespace TiberiumRim
 
             TiberiumRimMod.mod.LoadAssetBundles();
             TiberiumRimMod.mod.PatchPawnDefs();
-            Log.Message("Finished Applying TiberiumRim-Patches");
+            Log.Message("[TiberiumRim] Patches Done");
         }
 
         public static void MechanoidsFixerAncient(ref bool __result, PawnKindDef kind)
@@ -362,7 +361,7 @@ namespace TiberiumRim
                 //Construction Task Logic
                 if (__instance != null && (__instance.def.entityDefToBuild as TerrainDef) == null)
                 {
-                    ResearchCreationTable.TryTrackCreated((ThingDef)__instance.def.entityDefToBuild);
+                    TRUtils.ResearchManager().CreationTable.TryTrackCreated((ThingDef)__instance.def.entityDefToBuild);
                 }
             }
         }
@@ -618,6 +617,20 @@ namespace TiberiumRim
 
                 }
             }
+        }
+
+        //Scenario Chooser Patch
+        [HarmonyPatch(typeof(Page_SelectScenario))]
+        [HarmonyPatch("DoScenarioListEntry")]
+        public static class DoScenarioListEntryPatch
+        {
+            //TODO: Transpiler to replace background method with custom background method
+            public static bool Prefix(Page_SelectScenario __instance, Rect rect, Scenario scen)
+            {
+                return true;
+            }
+
+
         }
 
 

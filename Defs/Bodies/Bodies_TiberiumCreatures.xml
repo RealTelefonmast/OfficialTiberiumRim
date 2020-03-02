@@ -2,6 +2,8 @@
 <Defs>
 
 	<!-- Visceral Horror | Humanlike -->
+	
+	
 	<BodyDef>
 		<defName>VisceralBody</defName>
 		<label>viscose human</label>
@@ -13,39 +15,6 @@
 				<li>Torso</li>
 			</groups>
 			<parts>
-				<li>
-					<def>Ribcage</def>
-					<coverage>0.030</coverage>
-					<depth>Inside</depth>
-					<groups>
-						<li>Torso</li>
-					</groups>
-				</li>
-				<li>
-					<def>Sternum</def>
-					<coverage>0.015</coverage>
-					<depth>Inside</depth>
-					<groups>
-						<li>Torso</li>
-					</groups>
-				</li>
-				<li>
-					<def>Pelvis</def>
-					<coverage>0.020</coverage>
-					<height>Bottom</height>
-					<depth>Inside</depth>
-					<groups>
-						<li>Torso</li>
-					</groups>
-				</li>
-				<li>
-					<def>Spine</def>
-					<coverage>0.020</coverage>
-					<depth>Inside</depth>
-					<groups>
-						<li>Torso</li>
-					</groups>
-				</li>
 				<li>
 					<def>Stomach</def>
 					<coverage>0.020</coverage>
@@ -100,10 +69,11 @@
 				</li>
 				<li>
 					<def>Liver</def>
+					<customLabel>wasted liver</customLabel>
 					<coverage>0.025</coverage>
 					<depth>Inside</depth>
 					<groups>
-					<li>Torso</li>
+						<li>Torso</li>
 					</groups>
 				</li>
 				<li>
@@ -111,109 +81,105 @@
 					<coverage>0.05</coverage>
 					<height>Top</height>
 					<groups>
-					<li>Neck</li>
+						<li>Neck</li>
 					</groups>
 					<parts>
-					<li>
-					<def>Head</def>
-					<coverage>0.80</coverage>
-					<groups>
-					<li>UpperHead</li>
-					<li>FullHead</li>
-							<li>HeadAttackTool</li>
-					</groups>
-					<parts>
-					<li>
-					<def>Skull</def>
-					<coverage>0.18</coverage>
-					<depth>Inside</depth>
-					<groups>
-					<li>UpperHead</li>
-					<li>FullHead</li>
-					</groups>
-					<parts>
-					<li>
-					<def>Brain</def>
-					<coverage>0.8</coverage>
-					<groups>
-					<li>UpperHead</li>
-					<li>FullHead</li>
-					</groups>
-					</li>
-					</parts>
-					</li>
-					<li>
-					<def>Eye</def>
-					<customLabel>left eye</customLabel>
-					<coverage>0.07</coverage>
-					<groups>
-					<li>FullHead</li>
-					<li>Eyes</li>
-					</groups>
-					</li>
-					<li>
-					<def>Eye</def>
-					<customLabel>right eye</customLabel>
-					<coverage>0.07</coverage>
-					<groups>
-					<li>FullHead</li>
-					<li>Eyes</li>
-					</groups>
-					</li>
-					<li>
-					<def>Ear</def>
-					<customLabel>left ear</customLabel>
-					<coverage>0.07</coverage>
-					<groups>
-					<li>UpperHead</li>
-					<li>FullHead</li>
-					</groups>
-					</li>
-					<li>
-					<def>Ear</def>
-					<customLabel>right ear</customLabel>
-					<coverage>0.07</coverage>
-					<groups>
-					<li>UpperHead</li>
-					<li>FullHead</li>
-					</groups>
-					</li>
-					<li>
-					<def>Nose</def>
-					<coverage>0.10</coverage>
-					<groups>
-					<li>FullHead</li>
-					</groups>
-					</li>
-					<li>
-					<def>Jaw</def>
-					<coverage>0.15</coverage>
-					<groups>
-					<li>Teeth</li>
-					<li>FullHead</li>
-					</groups>
-					</li>
-					</parts>
-					</li>
+						<li>
+							<def>Head</def>
+							<coverage>0.80</coverage>
+							<groups>
+								<li>UpperHead</li>
+								<li>FullHead</li>
+								<li>HeadAttackTool</li>
+							</groups>
+							<parts>
+								<li>
+									<def>Skull</def>
+									<coverage>0.18</coverage>
+									<depth>Inside</depth>
+									<groups>
+										<li>UpperHead</li>
+										<li>FullHead</li>
+									</groups>
+									<parts>
+										<li>
+											<def>Brain</def>
+											<customLabel>brain remnants</customLabel>
+											<coverage>0.8</coverage>
+											<groups>
+												<li>UpperHead</li>
+												<li>FullHead</li>
+											</groups>
+										</li>
+									</parts>
+								</li>
+								<li>
+									<def>Eye</def>
+									<customLabel>left eye</customLabel>
+									<coverage>0.07</coverage>
+									<groups>
+										<li>FullHead</li>
+										<li>Eyes</li>
+									</groups>
+								</li>
+								<li>
+									<def>Eye</def>
+									<customLabel>right eye</customLabel>
+									<coverage>0.07</coverage>
+									<groups>
+										<li>FullHead</li>
+										<li>Eyes</li>
+									</groups>
+								</li>
+								<li>
+									<def>Jaw</def>
+									<coverage>0.15</coverage>
+									<groups>
+										<li>Teeth</li>
+										<li>FullHead</li>
+									</groups>
+								</li>
+							</parts>
+						</li>
 					</parts>
 				</li>
 				<li>
-					<def>Tentacle_Grabber</def>
-					<customLabel>left tentacle arm</customLabel>
-					<coverage>0.77</coverage>
-					<height>Middle</height>
+					<def>Shoulder</def>
+					<customLabel>left shoulder</customLabel>
+					<coverage>0.12</coverage>
 					<groups>
-						<li>Visceral_Tentacles</li>
+						<li>Shoulders</li>
 					</groups>
+					<parts>
+						<li>
+							<def>Tentacle_Arm</def>
+							<customLabel>left tentacle arm</customLabel>
+							<coverage>0.77</coverage>
+							<height>Middle</height>
+							<groups>
+								<li>Arms</li>
+							</groups>
+						</li>
+					</parts>
 				</li>
 				<li>
-					<def>Tentacle_Grabber</def>
-					<customLabel>right tentacle arm</customLabel>
-					<coverage>0.77</coverage>
-					<height>Middle</height>
+					<def>Shoulder</def>
+					<customLabel>right shoulder</customLabel>
+					<coverage>0.12</coverage>
 					<groups>
-						<li>Visceral_Tentacles</li>
+						<li>Shoulders</li>
 					</groups>
+					<parts>
+						<li>
+							<def>Tentacle_Arm</def>
+							<customLabel>right tentacle arm</customLabel>
+							<coverage>0.77</coverage>
+							<height>Middle</height>
+							<groups>
+								<li>Arms</li>
+							</groups>
+						</li>
+					</parts>
 				</li>
 				<li>
 					<def>Waist</def>
@@ -224,28 +190,31 @@
 					</groups>
 				</li>
 				<li>
-					<def>Tentacle_Mover</def>
+					<def>Tentacle_Leg</def>
 					<customLabel>right front tentacle leg</customLabel>
 					<coverage>0.07</coverage>
 					<height>Bottom</height>
+					<groups>
+						<li>Legs</li>
+					</groups>
 				</li>
 				<li>
-					<def>Tentacle_Mover</def>
+					<def>Tentacle_Leg</def>
 					<customLabel>left front tentacle leg</customLabel>
 					<coverage>0.07</coverage>
 					<height>Bottom</height>
+					<groups>
+						<li>Legs</li>
+					</groups>
 				</li>
 				<li>
-					<def>Tentacle_Mover</def>
+					<def>Tentacle_Leg</def>
 					<customLabel>right back tentacle leg</customLabel>
 					<coverage>0.07</coverage>
 					<height>Bottom</height>
-				</li>
-				<li>
-					<def>Tentacle_Mover</def>
-					<customLabel>left back tentacle leg</customLabel>
-					<coverage>0.07</coverage>
-					<height>Bottom</height>
+					<groups>
+						<li>Legs</li>
+					</groups>
 				</li>
 			</parts>
 		</corePart>
@@ -344,57 +313,53 @@
 					</groups>
 				</li>
 				<li>
-					<def>Tentacle_Grabber</def>
+					<def>Tentacle_Arm</def>
 					<customLabel>left grabber</customLabel>
 					<coverage>0.1</coverage>
 					<height>Top</height>
 					<groups>
-						<li>Visceral_Tentacles</li>
+						<li>Arms</li>
 					</groups>
 				</li>
 				<li>
-					<def>Tentacle_Grabber</def>
+					<def>Tentacle_Arm</def>
 					<customLabel>right grabber</customLabel>
 					<coverage>0.1</coverage>
 					<height>Top</height>
 					<groups>
-						<li>Visceral_Tentacles</li>
+						<li>Arms</li>
 					</groups>
 				</li>
 				<li>
-					<def>Tentacle_Mover</def>
-					<customLabel>tentacle</customLabel>
+					<def>Tentacle_Leg</def>
 					<coverage>0.1</coverage>
 					<height>Bottom</height>
 					<groups>
-						<li>Visceral_Tentacles</li>
+						<li>Legs</li>
 					</groups>
 				</li>
 				<li>
-					<def>Tentacle_Mover</def>
-					<customLabel>tentacle</customLabel>
+					<def>Tentacle_Leg</def>
 					<coverage>0.1</coverage>
 					<height>Bottom</height>
 					<groups>
-						<li>Visceral_Tentacles</li>
+						<li>Legs</li>
 					</groups>
 				</li>
 				<li>
-					<def>Tentacle_Mover</def>
-					<customLabel>tentacle</customLabel>
+					<def>Tentacle_Leg</def>
 					<coverage>0.1</coverage>
 					<height>Bottom</height>
 					<groups>
-						<li>Visceral_Tentacles</li>
+						<li>Legs</li>
 					</groups>
 				</li>
 				<li>
-					<def>Tentacle_Mover</def>
-					<customLabel>tentacle</customLabel>
+					<def>Tentacle_Leg</def>
 					<coverage>0.1</coverage>
 					<height>Bottom</height>
 					<groups>
-						<li>Visceral_Tentacles</li>
+						<li>Legs</li>
 					</groups>
 				</li>
 			</parts>

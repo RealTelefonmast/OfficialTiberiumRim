@@ -19,30 +19,9 @@
 		<letterText>A meteor has been sighted in the skies, we are not sure where it's heading.</letterText>
 		<letterDef>EventLetter</letterDef>
 		<eventsToTrigger>
-			<li>TiberiumSighting</li>
-			<li>TimedEvent</li>
+			<li>TiberiumMeteorSighting</li>
 		</eventsToTrigger>
 	</IncidentDef>
-
-	<TiberiumRim.EventDef>
-		<defName>TiberiumSighting</defName>
-		<label>Meteor Sighting</label>
-		<description>A strange meteor has been sighted in the skies, we estimate</description>
-		<activeDays>0</activeDays>
-	</TiberiumRim.EventDef>
-
-	<TiberiumRim.EventDef>
-		<defName>TimedEvent</defName>
-		<label>Timed Event</label>
-		<description>N/A</description>
-		<activeDays>7</activeDays>
-	</TiberiumRim.EventDef>
-
-	<TiberiumRim.EventDef>
-		<defName>TiberiumArrival</defName>
-		<label>Meteor Crash</label>
-		<description>Oh no it crashed</description>
-	</TiberiumRim.EventDef>
 
 	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
 		<defName>TiberiumArrival</defName>

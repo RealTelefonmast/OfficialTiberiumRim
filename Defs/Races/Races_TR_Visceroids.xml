@@ -32,7 +32,7 @@
 				</capacities>
 				<power>20</power>
 				<cooldownTime>2.5</cooldownTime>
-				<linkedBodyPartsGroup>Visceral_Tentacles</linkedBodyPartsGroup>
+				<linkedBodyPartsGroup>Arms</linkedBodyPartsGroup>
 				<chanceFactor>0.5</chanceFactor>
 			</li>
 		</tools>
@@ -104,6 +104,19 @@
 				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
 				<chanceFactor>0.5</chanceFactor>
 			</li>
+			<!--
+			<li>
+				<label>back tentacle</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Stab</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>1.5</cooldownTime>
+				<linkedBodyPartsGroup>Arms</linkedBodyPartsGroup>
+				<chanceFactor>0.7</chanceFactor>
+			</li>
+			-->
 		</tools>
 		<race>
 			<body>QuadrupedAnimalWithPaws</body>
@@ -249,7 +262,7 @@
 				</capacities>
 				<power>10</power>
 				<cooldownTime>2.5</cooldownTime>
-				<linkedBodyPartsGroup>Visceral_Tentacles</linkedBodyPartsGroup>
+				<linkedBodyPartsGroup>Arms</linkedBodyPartsGroup>
 				<chanceFactor>0.7</chanceFactor>
 			</li>
 		</tools>
@@ -336,7 +349,7 @@
 				</capacities>
 				<power>30</power>
 				<cooldownTime>1.5</cooldownTime>
-				<linkedBodyPartsGroup>Visceral_Tentacles</linkedBodyPartsGroup>
+				<linkedBodyPartsGroup>Arms</linkedBodyPartsGroup>
 				<chanceFactor>0.7</chanceFactor>
 			</li>
 		</tools>

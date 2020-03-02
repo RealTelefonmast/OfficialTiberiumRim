@@ -339,7 +339,7 @@
 				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>				
 				<warmupTime>2</warmupTime>
 				<range>14.9</range>
-				<forcedMissRadius>0.25</forcedMissRadius>
+				<forcedMissRadius>0</forcedMissRadius>
 				<burstShotCount>15</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_Flame</soundCast>
@@ -491,7 +491,7 @@
 				<minRange>5</minRange>
 				<burstShotCount>2</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
-				<soundCast>Shot_Nod_Rocket</soundCast>
+				<soundCast>Nod_Rocket</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
 				<onlyManualCast>true</onlyManualCast>
 				<stopBurstWithoutLos>false</stopBurstWithoutLos>

@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<LanguageData>
-
-  <TiberiumRefinery.label>타이베리움 정제소</TiberiumRefinery.label>
-  <TiberiumRefinery.description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</TiberiumRefinery.description>
-
-
-</LanguageData>

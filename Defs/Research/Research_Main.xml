@@ -3,10 +3,16 @@
 
 	<TiberiumRim.TResearchGroupDef>
 		<defName>MainGroup</defName>
-		<label>Main Research</label>		
+		<label>Main Research</label>	
 		<researchProjects>
-			<li>Main1</li>
-			<li>Main2</li>
+			<li>GreenSky</li>
+			<li>MineralAnalysis</li>
+			<li>TiberiumRefining</li>
+			<li>TiberiumSuppressionBasic</li>
+			<li>TiberiumPower</li>
+			<li>TiberiumForaging</li>
+			<li>TiberiumProtection</li>
+			<li>TiberiumGasRefining</li>
 		</researchProjects>
 	</TiberiumRim.TResearchGroupDef>
 	
@@ -23,29 +29,31 @@
 	
 	<!---->
 	<TiberiumRim.TResearchDef>
-		<defName>Main1</defName>
+		<defName>GreenSky</defName>
 		<label>Green Sky</label>	
 		<researchType>observation</researchType>
 		<description>We are not quite sure what it is yet and need to investigate further.\nA telescope would be useful, but we don't know how to build one yet, maybe one of our researchers can figure it out!</description>
+		<!-- TODO: Re-add on release
 		<requisites>
 			<events>
-				<li>TiberiumSighting</li>
+				<li>TiberiumMeteorSighting</li>
 			</events>
 		</requisites>
+		-->
 		<events>
-			<li>TiberiumArrival</li>
+			<li>TiberiumMeteorCrash</li>
 		</events>
 		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<tasks>
-			<li>Main1Task1</li>
-			<li>Main1Task2</li>
-			<li>Main1Task3</li>
+			<li>GreenSky_T1</li>
+			<li>GreenSky_T2</li>
+			<li>GreenSky_T3</li>
 		</tasks>
 	</TiberiumRim.TResearchDef>
 	
 	<TiberiumRim.TResearchTaskDef>
-		<defName>Main1Task1</defName>
+		<defName>GreenSky_T1</defName>
 		<label>Research Components</label>		
 		<descriptionShort>Figure out basic telescope technology.</descriptionShort>
 		<skillRequirements>
@@ -59,7 +67,7 @@
 	</TiberiumRim.TResearchTaskDef>
 	
 	<TiberiumRim.TResearchTaskDef>
-		<defName>Main1Task2</defName>
+		<defName>GreenSky_T2</defName>
 		<label>Construct Telescope</label>		
 		<descriptionShort>Place down the telescope.</descriptionShort>
 		<creationTasks>
@@ -71,7 +79,7 @@
 	</TiberiumRim.TResearchTaskDef>
 	
 	<TiberiumRim.TResearchTaskDef>
-		<defName>Main1Task3</defName>
+		<defName>GreenSky_T3</defName>
 		<label>Observation Research</label>		
 		<descriptionShort>Observe the sky.</descriptionShort>
 		<skillRequirements>
@@ -86,25 +94,419 @@
 	
 	<!---->
 	<TiberiumRim.TResearchDef>
-		<defName>Main2</defName>
-		<label>Tiberium Analysis</label>	
-		<researchType>observation</researchType>
-		<description></description>
-		<mainTarget>
-			<targetType>Building_ResearchBench</targetType>
-		</mainTarget>
+		<defName>MineralAnalysis</defName>
+		<label>Mineral Analysis</label>	
+		<researchType>analysis</researchType>
+		<description>N/A</description>
+		<requisites>
+			<events>
+				<li>TiberiumMeteorCrash</li>
+			</events>
+		</requisites>
 		<tasks>
-			<li>Main2Task1</li>
+			<li>MineralAnalysis_T1</li>
+			<li>MineralAnalysis_T2</li>
+			<li>MineralAnalysis_T3</li>
+			<li>MineralAnalysis_T4</li>
 		</tasks>
 	</TiberiumRim.TResearchDef>
 	
 	<TiberiumRim.TResearchTaskDef>
-		<defName>Main2Task1</defName>
-		<label></label>		
-		<descriptionShort>Figure out basic telescope technology.</descriptionShort>
+		<defName>MineralAnalysis_T1</defName>
+		<label>Crash Site Inspection</label>		
+		<descriptionShort>Inspect the impact crater.</descriptionShort>
 		<workType>Research</workType>
 		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
-		<workAmount>800</workAmount>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumCraterGreen</li>
+				<li>TiberiumCraterBlue</li>
+				<li>TiberiumCraterHybrid</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>500</workAmount>
 	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>MineralAnalysis_T2</defName>
+		<label>Establishing Communications</label>		
+		<descriptionShort>Construct a comms console.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<CommsConsole>1</CommsConsole>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>MineralAnalysis_T3</defName>
+		<label>Valuable Information</label>		
+		<descriptionShort>Figure out what this mineral is.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>CommsConsole</li>
+			</targetDefs>
+		</taskTarget>
+		<events>
+			<li>TiberiumToxemiaDiscovery</li>
+		</events>
+		<workAmount>500</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>MineralAnalysis_T4</defName>
+		<label>Constructing Boundaries</label>		
+		<descriptionShort>Construct the research crane.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<TiberiumResearchCrane>1</TiberiumResearchCrane>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>TiberiumRefining</defName>
+		<label>Tiberium Refining</label>	
+		<researchType>analysis</researchType>
+		<description>N/A</description>
+		<requisites>
+			<tiberiumResearch>
+				<li>MineralAnalysis</li>
+			</tiberiumResearch>
+		</requisites>
+		<tasks>
+			<li>TiberiumRefining_T1</li>
+			<li>TiberiumRefining_T2</li>
+			<li>TiberiumRefining_T3</li>
+			<li>TiberiumRefining_T4</li>
+			<li>TiberiumRefining_T5</li>
+			<li>TiberiumRefining_T6</li>
+			<li>TiberiumRefining_T7</li>
+			<li>TiberiumRefining_T8</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T1</defName>
+		<label>Preparing Tools</label>		
+		<descriptionShort>Construct the workbench.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<TiberiumWorkbench>1</TiberiumWorkbench>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T2</defName>
+		<label>Containment Procedures</label>		
+		<descriptionShort>Develop a way to store Tiberium.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumWorkbench</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>500</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T3</defName>
+		<label>Refinement Concepts</label>		
+		<descriptionShort>Develop a way to refine Tiberium.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumWorkbench</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>500</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T4</defName>
+		<label>Automation Protocol</label>		
+		<descriptionShort>Develop an automatic harvesting mech.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumWorkbench</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>750</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T5</defName>
+		<label>Network Planning</label>		
+		<descriptionShort>Develop a network concept for the refining system.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumWorkbench</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>500</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<!--TODO: Should have test for connectivity before finishing-->
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T6</defName>
+		<label>Network Setup</label>		
+		<descriptionShort>Construct a simple tiberium network.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<NetworkController>1</NetworkController>
+				<TiberiumSilo>1</TiberiumSilo>
+				<TiberiumRefinery>1</TiberiumRefinery>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T7</defName>
+		<label>Valuable Reactions</label>		
+		<descriptionShort>Run tests on the refinery.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumRefinery</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>600</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T8</defName>
+		<label>Resource Catalyst</label>		
+		<descriptionShort>Construct a tiberium resource refinery.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<TiberiumCrafter>1</TiberiumCrafter>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>TiberiumSuppressionBasic</defName>
+		<label>Tiberium Suppression [Basic]</label>	
+		<researchType>component research</researchType>
+		<description>N/A</description>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>MineralAnalysis_T3</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<tasks>
+			<li>TiberiumSuppressionBasic_T1</li>
+			<li>TiberiumSuppressionBasic_T2</li>
+			<li>TiberiumSuppressionBasic_T3</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumSuppressionBasic_T1</defName>
+		<label>Crystalline Weakness</label>		
+		<descriptionShort>Learn about the stolen tiberium suppression technology.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>CommsConsole</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>250</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumSuppressionBasic_T2</defName>
+		<label>Blueprint Evaluation</label>		
+		<descriptionShort>Evaluate the acquired blueprints.</descriptionShort>
+		<workType>Crafting</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumWorkbench</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>250</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumSuppressionBasic_T3</defName>
+		<label>Suppression Tower Prototype</label>		
+		<descriptionShort>Construct a suppression tower.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<SuppressionTower>1</SuppressionTower>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>TiberiumPower</defName>
+		<label>Tiberium Power</label>	
+		<researchType>energy research</researchType>
+		<description>N/A</description>
+		<requisites>
+			<tiberiumResearch>
+				<li>TiberiumRefining</li>
+			</tiberiumResearch>
+		</requisites>
+		<tasks>
+			<li>TiberiumPower_T1</li>
+			<li>TiberiumPower_T2</li>
+			<li>TiberiumPower_T3</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumPower_T1</defName>
+		<label>Glowing Energy</label>		
+		<descriptionShort>Observe tiberium reactions.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumCrafter</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>400</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumPower_T2</defName>
+		<label>Energy Containment</label>		
+		<descriptionShort>Evaluate observation results.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumWorkbench</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>300</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumPower_T3</defName>
+		<label>Powerplant Prototype</label>		
+		<descriptionShort>Construct a tiberium powerplant.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<TiberiumPowerPlant>1</TiberiumPowerPlant>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>TiberiumProtection</defName>
+		<label>Tiberium Protection</label>	
+		<researchType>tech research</researchType>
+		<description>N/A</description>
+		<requisites>
+			<events>
+				<li>TiberiumToxemiaDiscovery</li>
+			</events>
+		</requisites>
+		<tasks>
+			<li>TiberiumProtection_T1</li>
+			<li>TiberiumProtection_T2</li>
+			<li>TiberiumProtection_T3</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumProtection_T1</defName>
+		<label>Hardening Plates</label>		
+		<descriptionShort>Research a protective material.</descriptionShort>
+		<workType>Crafting</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumCrafter</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>500</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumProtection_T2</defName>
+		<label>Comfort Layers</label>		
+		<descriptionShort>Provide a jumpsuit.</descriptionShort>
+		<creationTasks>
+			<thingsToCreate>
+				<Jumpsuit>1</Jumpsuit>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumProtection_T3</defName>
+		<label>Suit Up</label>		
+		<descriptionShort>Provide gear for a pawn.</descriptionShort>
+		<creationTasks>
+			<thingsToCreate>
+				<TiberiumSuitMask>1</TiberiumSuitMask>
+				<TiberiumSuit>1</TiberiumSuit>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>TiberiumForaging</defName>
+		<label>Tiberium Foraging</label>	
+		<researchType>foraging</researchType>
+		<description>N/A</description>
+		<requisites>
+			<events>
+				<li>TiberiumFloraDiscovery</li>
+			</events>
+		</requisites>
+	</TiberiumRim.TResearchDef>
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>TiberiumGasRefining</defName>
+		<label>Tiberium Gas Refining</label>	
+		<researchType>foraging</researchType>
+		<description>N/A</description>
+		<requisites>
+			<events>
+				<li>TiberiumGeyserDiscovery</li>
+			</events>
+		</requisites>
+	</TiberiumRim.TResearchDef>
+	
 </Defs>

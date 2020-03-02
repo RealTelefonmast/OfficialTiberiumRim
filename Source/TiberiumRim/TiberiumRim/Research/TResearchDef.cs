@@ -24,31 +24,6 @@ namespace TiberiumRim
         public bool IsFinished => researchProjects.NullOrEmpty() || researchProjects.All(r => r.IsFinished);
     }
 
-    public class ResearchTarget
-    {
-        public Type targetType;
-        public List<ThingDef> targetDefs;
-        public int distanceFromTarget;
-        public string groupLabel;
-
-        public Thing FindStation(Map map)
-        {
-            Thing thing = null;
-
-            void Action(IntVec3 c)
-            {
-                var list = c.GetThingList(map);
-                thing = list.First(t => t.GetType() == targetType || (targetDefs != null && targetDefs.Contains(t.def)));
-            }
-
-            bool Predicate(IntVec3 c) => c.IsValid && thing == null;
-            var pawns = map.mapPawns.FreeColonistsSpawned;
-            map.floodFiller.FloodFill(pawns.FirstOrDefault().Position, Predicate, Action, default, false,
-                pawns.Select(p => p.Position));
-            return thing;
-        }
-    }
-
     public class TResearchDef : Def
     {
         [Unsaved()]
@@ -56,7 +31,7 @@ namespace TiberiumRim
 
         public Requisites requisites;
 
-        public ResearchTarget mainTarget;
+        public TargetProperties mainTarget;
         public WorkTypeDef workType;
         public List<SkillRequirement> skillRequirements;
         public StatDef relevantPawnStat;
@@ -87,7 +62,7 @@ namespace TiberiumRim
         {
         }
 
-        public virtual bool RequisitesComplete => requisites?.Completed ?? true;
+        public virtual bool RequisitesComplete => requisites?.FulFilled() ?? true;
         public virtual bool CanStartNow => !IsFinished && RequisitesComplete;
         public bool IsFinished => TRUtils.ResearchManager().IsCompleted(this);
 
@@ -133,7 +108,7 @@ namespace TiberiumRim
 
         //Local Requisites
         public CreationProperties creationTasks;
-        public ResearchTarget taskTarget;
+        public TargetProperties taskTarget;
         public WorkTypeDef workType;
         public List<SkillRequirement> skillRequirements;
         public StatDef relevantPawnStat;
@@ -169,18 +144,18 @@ namespace TiberiumRim
 
         public bool HasSingleTarget => PossibleMainTargets.Count == 1;
         public ThingDef MainTarget => PossibleMainTargets.FirstOrDefault();
-        public ResearchTarget ResearchTarget => taskTarget ?? ParentProject.mainTarget;
+        public TargetProperties TargetProperties => taskTarget ?? ParentProject.mainTarget;
         public List<ThingDef> PossibleMainTargets
         {
             get
             {
-                if (ResearchTarget == null) return null;
+                if (TargetProperties == null) return null;
                 if (mainTargets == null)
                 {
-                    if (ResearchTarget.targetType == null)
-                        return ResearchTarget.targetDefs;
+                    if (TargetProperties.targetType == null)
+                        return TargetProperties.targetDefs;
                     mainTargets = DefDatabase<ThingDef>.AllDefsListForReading.FindAll(t =>
-                        t.thingClass == ResearchTarget.targetType);
+                        t.thingClass == TargetProperties.targetType);
                 }
                 return mainTargets;
             }
@@ -215,7 +190,7 @@ namespace TiberiumRim
         {
         }
 
-        public virtual float ProgressReal => creationTasks != null ? ResearchCreationTable.TaskCompletion(this) : TRUtils.ResearchManager().GetProgress(this);
+        public virtual float ProgressReal => creationTasks != null ? TRUtils.ResearchManager().CreationTable.TaskCompletion(this) : TRUtils.ResearchManager().GetProgress(this);
         public virtual float ProgressToDo => creationTasks?.TotalCountToMake ?? workAmount;
 
         public float ProgressPct => ProgressReal / ProgressToDo;
@@ -228,32 +203,31 @@ namespace TiberiumRim
         {
             get
             {
-                if (cachedTaskInfo == null)
+                if (cachedTaskInfo != null) return cachedTaskInfo;
+                //Targets
+                if (TargetProperties != null)
                 {
-                    //Targets
-                    if (ResearchTarget?.groupLabel != null)
-                        cachedTaskInfo += "TR_TaskTargets".Translate() + "\n " + ResearchTarget.groupLabel;
-                    else if(PossibleMainTargets != null)
+                    cachedTaskInfo += "TR_TaskTargets".Translate();
+                    if (!TargetProperties.groupLabel.NullOrEmpty())
+                        cachedTaskInfo += "\n " + TargetProperties.groupLabel;
+                    foreach (var target in PossibleMainTargets)
                     {
-                        foreach (var target in PossibleMainTargets)
-                        {
-                            cachedTaskInfo += "\n   -" + target.LabelCap;
-                            if(RelevantTargetStat != null)
-                                cachedTaskInfo += " (" + target.GetStatValueAbstract(RelevantTargetStat) + ")";
-                        }
+                        cachedTaskInfo += "\n   -" + target.LabelCap;
+                        if (RelevantTargetStat != null)
+                            cachedTaskInfo += " (" + target.GetStatValueAbstract(RelevantTargetStat) + ")";
                     }
+                }
 
-                    //WorkType
-                    cachedTaskInfo += "\n\n" + "TR_TaskWorkType".Translate(WorkType.labelShort);
+                //WorkType
+                cachedTaskInfo += "\n\n" + "TR_TaskWorkType".Translate(WorkType.labelShort);
 
-                    //Skills
-                    if (!SkillRequirements.NullOrEmpty())
+                //Skills
+                if (!SkillRequirements.NullOrEmpty())
+                {
+                    cachedTaskInfo += "\n\n" + "TR_TaskSkillReq".Translate();
+                    foreach (var skill in SkillRequirements)
                     {
-                        cachedTaskInfo += "\n\n" + "TR_TaskSkillReq".Translate();
-                        foreach (var skill in SkillRequirements)
-                        {
-                            cachedTaskInfo += "\n   -" + skill.skill.LabelCap + " (" + skill.minLevel + ")";
-                        }
+                        cachedTaskInfo += "\n   -" + skill.skill.LabelCap + " (" + skill.minLevel + ")";
                     }
                 }
                 return cachedTaskInfo;

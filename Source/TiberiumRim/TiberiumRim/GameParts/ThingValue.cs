@@ -104,7 +104,7 @@ namespace TiberiumRim
         public void LoadDataFromXmlCustom(XmlNode xmlRoot)
         { 
             defName = xmlRoot.Name;
-            string[] values = Regex.Replace(xmlRoot.Value, @"\s+", "").Split(',');
+            string[] values = Regex.Replace(xmlRoot.FirstChild.Value, @"\s+", "").Split(',');
 
             int count = values.Length;
             value  = (int)ParseHelper.FromString(values[0], typeof(int));

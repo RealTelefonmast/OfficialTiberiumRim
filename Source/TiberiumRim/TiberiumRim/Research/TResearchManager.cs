@@ -18,7 +18,7 @@ namespace TiberiumRim
         public Dictionary<TResearchDef, bool> ResearchCompleted = new Dictionary<TResearchDef, bool>();
         public static float researchFactor = 0.01f;
 
-        //Date for the existing groups - [open in tab] [finished]
+        public ResearchCreationTable CreationTable;
 
         //Research Window
         private readonly Dictionary<TResearchGroupDef, bool[]> researchGroupData = new Dictionary<TResearchGroupDef, bool[]>();
@@ -32,6 +32,7 @@ namespace TiberiumRim
             {
                 researchGroupData.Add(group, new bool[2] {false, false});
             }
+            CreationTable = new ResearchCreationTable();
         }
 
         public List<TResearchGroupDef> Groups => researchGroupData.Keys.ToList();

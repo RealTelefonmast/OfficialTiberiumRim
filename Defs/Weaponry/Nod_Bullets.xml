@@ -151,7 +151,7 @@
 			<explosionDelay>150</explosionDelay>
 			<preExplosionSpawnThingDef>TiberiumGas</preExplosionSpawnThingDef>
 			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>
-			<soundExplode>Shot_Nod_ChemBomb</soundExplode>
+			<soundExplode>Nod_ChemBomb</soundExplode>
 			<explosionEffect>GiantExplosion</explosionEffect>
 		</projectile>
 	</ThingDef>

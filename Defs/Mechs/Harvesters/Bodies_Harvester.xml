@@ -11,7 +11,7 @@
 			<parts>
 				<li>
 					<def>HarvesterCockpit</def>
-					<coverage>0.3</coverage>
+					<coverage>0.2</coverage>
 					<height>Middle</height>
 					<parts>
 						<li>
@@ -117,7 +117,7 @@
 			<parts>
 				<li>
 					<def>HarvesterCockpit</def>
-					<coverage>0.3</coverage>
+					<coverage>0.2</coverage>
 					<height>Middle</height>
 					<parts>
 						<li>
@@ -189,7 +189,7 @@
 				<li>
 					<def>HarvesterDrivingPart</def>
 					<customLabel>wheel axel</customLabel>
-					<coverage>0.3</coverage>
+					<coverage>0.2</coverage>
 					<height>Bottom</height>
 					<parts>
 						<li>
@@ -207,32 +207,32 @@
 						<li>
 							<def>Harvester_ReinforcedWheel</def>
 							<customLabel>wheel R1</customLabel>
-							<coverage>0.15</coverage>
+							<coverage>0.10</coverage>
 						</li>
 						<li>
 							<def>Harvester_ReinforcedWheel</def>
 							<customLabel>wheel R2</customLabel>
-							<coverage>0.15</coverage>
+							<coverage>0.10</coverage>
 						</li>
 						<li>
 							<def>Harvester_ReinforcedWheel</def>
 							<customLabel>wheel R3</customLabel>
-							<coverage>0.15</coverage>
+							<coverage>0.10</coverage>
 						</li>
 						<li>
 							<def>Harvester_ReinforcedWheel</def>
 							<customLabel>wheel L1</customLabel>
-							<coverage>0.15</coverage>
+							<coverage>0.10</coverage>
 						</li>
 						<li>
 							<def>Harvester_ReinforcedWheel</def>
 							<customLabel>wheel L2</customLabel>
-							<coverage>0.15</coverage>
+							<coverage>0.10</coverage>
 						</li>
 						<li>
 							<def>Harvester_ReinforcedWheel</def>
 							<customLabel>wheel L3</customLabel>
-							<coverage>0.15</coverage>
+							<coverage>0.10</coverage>
 						</li>
 					</parts>
 				</li>
@@ -250,7 +250,7 @@
 			<parts>
 				<li>
 					<def>HarvesterCockpit</def>
-					<coverage>0.15</coverage>
+					<coverage>0.2</coverage>
 					<height>Middle</height>
 					<parts>
 						<li>
@@ -277,7 +277,7 @@
 				</li>
 				<li>						
 					<def>Harvester_Collector</def>
-					<coverage>0.4</coverage>
+					<coverage>0.2</coverage>
 					<height>Bottom</height>
 					<parts>
 						<li>
@@ -330,7 +330,7 @@
 				<li>
 					<def>HarvesterDrivingPart</def>
 					<customLabel>wheel axel</customLabel>
-					<coverage>0.3</coverage>
+					<coverage>0.2</coverage>
 					<height>Bottom</height>
 					<parts>
 						<li>
@@ -348,32 +348,32 @@
 						<li>
 							<def>Harvester_CarbonWheel</def>
 							<customLabel>wheel L1</customLabel>
-							<coverage>0.15</coverage>
+							<coverage>0.1</coverage>
 						</li>
 						<li>
 							<def>Harvester_CarbonWheel</def>
 							<customLabel>wheel L2</customLabel>
-							<coverage>0.15</coverage>
+							<coverage>0.1</coverage>
 						</li>
 						<li>
 							<def>Harvester_CarbonWheel</def>
 							<customLabel>wheel L3</customLabel>
-							<coverage>0.15</coverage>
+							<coverage>0.1</coverage>
 						</li>
 						<li>
 							<def>Harvester_CarbonWheel</def>
 							<customLabel>wheel R1</customLabel>
-							<coverage>0.15</coverage>
+							<coverage>0.1</coverage>
 						</li>
 						<li>
 							<def>Harvester_CarbonWheel</def>
 							<customLabel>wheel R2</customLabel>
-							<coverage>0.15</coverage>
+							<coverage>0.1</coverage>
 						</li>
 						<li>
 							<def>Harvester_CarbonWheel</def>
 							<customLabel>wheel R3</customLabel>
-							<coverage>0.15</coverage>
+							<coverage>0.1</coverage>
 						</li>
 					</parts>
 				</li>

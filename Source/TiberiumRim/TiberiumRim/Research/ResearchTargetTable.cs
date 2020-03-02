@@ -12,17 +12,13 @@ namespace TiberiumRim
     public static class ResearchTargetTable
     {
         public static Dictionary<TResearchTaskDef, List<Thing>> targets = new Dictionary<TResearchTaskDef, List<Thing>>();
-        public static Dictionary<TResearchTaskDef, Thing> bestTarget = new Dictionary<TResearchTaskDef, Thing>();
         private static readonly Dictionary<ThingDef, List<TResearchTaskDef>> tasksForThings = new Dictionary<ThingDef, List<TResearchTaskDef>>();
         
         static ResearchTargetTable()
         {
-            Log.Message("Setting up Task Look-Up table");
-            Log.Message("For " + DefDatabase<TResearchTaskDef>.AllDefs.Count() + " tasks");
             foreach (var task in DefDatabase<TResearchTaskDef>.AllDefs)
             {
                 targets.Add(task, new List<Thing>());
-                bestTarget.Add(task, null);
                 if(task.PossibleMainTargets.NullOrEmpty())continue;
                 foreach (var thingDef in task.PossibleMainTargets)
                 {
@@ -32,7 +28,6 @@ namespace TiberiumRim
                         tasksForThings.Add(thingDef, new List<TResearchTaskDef>(){task});
                 }
             }
-            Log.Message("Created Task Look-Up table with " + tasksForThings.Count + " things");
         }
 
         public static List<Thing> GetTargetsFor(TResearchTaskDef task)

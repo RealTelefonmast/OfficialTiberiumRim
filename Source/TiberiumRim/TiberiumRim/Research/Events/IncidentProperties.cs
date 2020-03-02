@@ -85,10 +85,10 @@ namespace TiberiumRim
 
         }
 
-        private IncidentParms IncidentParams(Map map, TargetInfo target)
+        private IncidentParms BasicIncidentParms(IIncidentTarget target)
         {
-            IncidentParms parms = new IncidentParms();
-            parms.points = points >= 0 ? points : ResolveParamsPoints();
+            IncidentParms parms = StorytellerUtility.DefaultParmsNow(category, target);
+            parms.points = points >= 0 ? points : parms.points;
             parms.points *= pointMultiplier;
             parms.forced = true;
 
@@ -99,11 +99,24 @@ namespace TiberiumRim
             return parms;
         }
 
-        private int ResolveParamsPoints()
+        private IncidentParms RaidParms(IIncidentTarget target)
         {
-            int pointers = 0;
+            IncidentParms parms = BasicIncidentParms(target);
+            parms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;
+            parms.raidNeverFleeIndividual = false;
+            parms.raidForceOneIncap = false;
 
-            return pointers;
+            //Arrival
+            parms.raidArrivalMode = PawnsArrivalModeDefOf.EdgeWalkIn;
+            parms.raidArrivalModeForQuickMilitaryAid = false;
+            parms.podOpenDelay = 140;
+            /*
+            parms.biocodeWeaponsChance;
+            parms.dontUseSingleUseRocketLaunchers;
+            parms.generateFightersOnly;
+            parms.
+                */
+            return parms;
         }
     }
 
