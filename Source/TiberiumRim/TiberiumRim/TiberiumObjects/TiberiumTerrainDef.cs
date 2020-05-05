@@ -16,14 +16,37 @@ namespace TiberiumRim
         public float plantChanceFactor = 1f;
         public float daysToNaturalCleanse = 20f;
         public TerrainDef decrystallized;
+        public TiberiumCrystalDef mainType;
 
         public List<Color> colorSpectrum = new List<Color>();
-        public List<TerrainSupport> terrainSupport = new List<TerrainSupport>();
+        //public List<TerrainSupport> terrainSupport = new List<TerrainSupport>();
+        public List<TerrainFilterDef> allowedTerrain;
         public List<ThingProbability> plantSupport = new List<ThingProbability>();
 
-        public TerrainSupport TerrainSupportFor(TerrainDef def)
+
+        //TODO: Re-Add AllowedTerrain filter to directly spawn terrain instead of using spreadoutcome
+        public bool TryCreateOn(IntVec3 pos, Map map, out TiberiumTerrainDef outTerrain)
         {
-            return terrainSupport.Find(s => s.TerrainTag.SupportsDef(def));
+            mainType.SpreadOutcomesAt(pos, map, out TerrainDef topTerrain, out TerrainDef underTerrain, out TiberiumCrystalDef crystal);
+            outTerrain = (TiberiumTerrainDef)topTerrain;
+            if (!(topTerrain != null || underTerrain != null)) return false;
+            GenTiberium.SetTerrain(pos, map, topTerrain, underTerrain);
+            return true;
+        }
+
+        public bool AllowedOn(TerrainDef terrain)
+        {
+            return allowedTerrain.Any(t => t.AllowsTerrainDef(terrain));
+        }
+
+        public bool SupportsTerrain(TerrainDef terrain)
+        {
+            return mainType.HasOutcomesFor(terrain);
+        }
+
+        public bool SupportsTerrainAt(IntVec3 pos, Map map)
+        {
+            return mainType.HasOutcomesAt(pos, map);
         }
 
         public bool SupportsPlant(ThingDef plant)

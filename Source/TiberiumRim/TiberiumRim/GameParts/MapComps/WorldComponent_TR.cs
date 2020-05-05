@@ -12,9 +12,13 @@ namespace TiberiumRim
         public ASATNetwork AttackSatelliteNetwork;
         public List<SuperWeaponInfo> SuperWeapons = new List<SuperWeaponInfo>();
 
+        //Discovery
+        public DiscoveryTable DiscoveryTable;
+
         public WorldComponent_TR(World world) : base(world)
         {
             AttackSatelliteNetwork = new ASATNetwork();
+            DiscoveryTable = new DiscoveryTable();
         }
 
         public void TryRegisterSuperweapon(TRBuilding building)

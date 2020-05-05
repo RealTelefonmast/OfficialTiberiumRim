@@ -10,6 +10,6 @@ namespace TiberiumRim
 {
     public class Mech_Gunned : MechanicalPawn
     {
-        public Thing MountedGun;
+        
     }
 }

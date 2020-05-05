@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Verse;
 using RimWorld;
+using UnityEngine.Windows.WebCam;
 
 namespace TiberiumRim
 {
@@ -19,16 +20,43 @@ namespace TiberiumRim
 
         //Terrain
         public TerrainDef dead;
-        public TiberiumTerrainDef plantTerrain;
-        public List<TerrainSupport> supportsTerrain = new List<TerrainSupport>();
+        public TiberiumConversionRulesetDef conversionRuleset;
 
         public TiberiumCrystalDef() : base()
         {
         }
 
-        public TerrainSupport TerrainSupportFor(TerrainDef def)
+        public TerrainDef TerrainFrom(TerrainDef terrain)
         {
-            return supportsTerrain.Find(s => s.TerrainTag.SupportsDef(def));
+            return conversionRuleset.ConversionFor(terrain)?.toTerrainDef;
+        }
+
+        public bool HasOutcomesFor(TerrainDef terrain)
+        {
+            return TerrainFrom(terrain) != null;
+        }
+
+        public bool HasOutcomesAt(IntVec3 pos, Map map)
+        {
+            conversionRuleset.GetOutcomes(pos, map, out TerrainDef topTerrain, out TerrainDef underTerrain, out TiberiumCrystalDef crystalDef);
+            return (topTerrain != null || underTerrain != null);
+        }
+
+        public void SpreadOutcomesAt(IntVec3 pos, Map map, out TerrainDef topTerrain, out TerrainDef underTerrain, out TiberiumCrystalDef crystalDef)
+        {
+            conversionRuleset.GetOutcomes(pos, map, out topTerrain, out underTerrain, out crystalDef);
+        }
+
+        public bool FloraOutcomesFor(ThingDef plantDef, out TRThingDef toPlant, out TerrainDef plantTerrain)
+        {
+            toPlant = null;
+            plantTerrain = null;
+            if (conversionRuleset.floraConversions.NullOrEmpty()) return false;
+            var conversion = conversionRuleset.floraConversions.Find(f => f.PlantContained(plantDef));
+            if (conversion == null) return false;
+            toPlant = (TRThingDef)conversion.toPlantOption.SelectRandomOptionByWeight();
+            plantTerrain = conversion.toTerrainOption.SelectRandomOptionByChance();
+            return true;
         }
 
         public TiberiumValueType TiberiumValueType => tiberium.type;
@@ -37,15 +65,12 @@ namespace TiberiumRim
         {
             get
             {
-                if (TiberiumValueType == TiberiumValueType.Unharvestable)
+                return TiberiumValueType switch
                 {
-                    return HarvestType.Unharvestable;
-                }
-                if (TiberiumValueType == TiberiumValueType.Sludge)
-                {
-                    return HarvestType.Unvaluable;
-                }
-                return HarvestType.Valuable;
+                    TiberiumValueType.Unharvestable => HarvestType.Unharvestable,
+                    TiberiumValueType.Sludge => HarvestType.Unvaluable,
+                    _ => HarvestType.Valuable
+                };
             }
         }
 

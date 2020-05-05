@@ -43,6 +43,7 @@
 		<factionDesignation>Common</factionDesignation>		
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<surfaceType>Item</surfaceType>
+		<menuHidden>true</menuHidden>
 		<statBases>
 			<Mass>1000</Mass>
 		</statBases>
@@ -78,16 +79,17 @@
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef Abstract="True" Name="TurretBase_TR" ParentName="BuildingBase_TR">
-		
+		<TRCategory>Defense</TRCategory>
+		<menuHidden>true</menuHidden>
 	</TiberiumRim.TRThingDef>
 	
 	<!-- Natural -->
-	
 	<TiberiumRim.TRThingDef Abstract="True" Name="BuildingNaturalBase_TR" ParentName="BuildingBase_TR">
 		<passability>Impassable</passability>
 		<factionDesignation>Tiberium</factionDesignation>
 		<TRCategory>Misc</TRCategory>
 		<devObject>true</devObject>
+		<menuHidden>true</menuHidden>
 		<building>
 			<claimable>false</claimable>
 			<deconstructible>false</deconstructible>
@@ -114,51 +116,6 @@
 		<building>
 			<isEdifice>false</isEdifice>
 		</building>
-		<comps>
-			<li Class="CompProperties_HeatPusher">
-				<heatPerSecond>30</heatPerSecond>
-				<heatPushMaxTemperature>120</heatPushMaxTemperature>
-			</li>
-		</comps>
-		<plantsByDistance>
-			<li>
-				<plants>
-					<li>TiberiumGrass,1</li>
-				</plants>
-				<chance>0</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumBush,1.5</li>
-				</plants>
-				<chance>0.25</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumShroom_Yellow,3</li>
-					<li>TiberiumShroom_Blue,3</li>
-				</plants>
-				<chance>0.45</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumTree,4</li>
-				</plants>
-				<chance>0.65</chance>
-			</li>
-			<li>
-				<plants>
-					<li>SmallBlossom,10</li>
-				</plants>
-				<chance>0.7</chance>
-			</li>
-			<li>
-				<plants>
-					<li>AlocasiaBlossom,8</li>
-				</plants>
-				<chance>0.8</chance>
-			</li>
-		</plantsByDistance>
 		<tickerType>Normal</tickerType>
 		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
 		<neverOverlapFloors>true</neverOverlapFloors>

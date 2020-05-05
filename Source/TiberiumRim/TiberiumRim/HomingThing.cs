@@ -31,7 +31,7 @@ namespace TiberiumRim
             def = (HomingThingDef)base.def;
             speed = TRUtils.Range(def.speed);
             exactPos = Position.ToVector3();
-            ticksToLive = GenTicks.SecondsToTicks(def.liveTime);
+            ticksToLive = def.liveTime.SecondsToTicks();
             base.SpawnSetup(map, respawningAfterLoad);
         }
 

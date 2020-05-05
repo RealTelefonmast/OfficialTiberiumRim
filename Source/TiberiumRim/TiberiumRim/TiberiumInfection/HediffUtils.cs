@@ -321,9 +321,9 @@ namespace TiberiumRim
         }
 
         //Pawns can be turned into visceroids on short-term high tiberium exposure
-        private static bool TryFormVisceralPod(Pawn pawn) 
+        private static bool TryFormVisceralPod(Pawn pawn, float radiation) 
         { 
-            float chance = 0f;
+            float chance = radiation;
             if(pawn.DestroyedOrNull() || pawn.Downed)
                 return false;
 
@@ -405,7 +405,7 @@ namespace TiberiumRim
                 pawn.health.AddHediff(hediff);
             }
 
-            TryFormVisceralPod(pawn);
+            TryFormVisceralPod(pawn, rads);
             return true;
         }
 

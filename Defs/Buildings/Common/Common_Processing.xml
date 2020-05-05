@@ -199,7 +199,6 @@
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<surfaceType>Item</surfaceType>
 		<clearBuildingArea>false</clearBuildingArea>
-		<needsBlueprint>true</needsBlueprint>
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_Pipe</li>
 		</placeWorkers>
@@ -797,6 +796,7 @@
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<inspectorTabs>
 			<li>ITab_Bills</li>
+			<li>TiberiumRim.ITab_TiberiumRefinerySettings</li>
 		</inspectorTabs>
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>

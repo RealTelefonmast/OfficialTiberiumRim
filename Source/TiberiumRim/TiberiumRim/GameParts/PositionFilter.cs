@@ -50,7 +50,7 @@ namespace TiberiumRim
             }
             if (!terrainToPrefer.NullOrEmpty())
             {
-                AllCells.RemoveAll(v => !Rand.Chance(terrainToPrefer.Find(t => t.terrainDef == v.GetTerrain(map)).value));
+                AllCells.RemoveAll(v => !TRUtils.Chance(terrainToPrefer.Find(t => t.terrainDef == v.GetTerrain(map)).value));
             }
             if (!spawnAt.NullOrEmpty())
             {

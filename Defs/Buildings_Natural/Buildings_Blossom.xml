@@ -112,9 +112,61 @@
 				</overlays>
 			</li>
 		</comps>
-		<tiberiumTypes>
-			<li>TiberiumPod</li>
-		</tiberiumTypes>
+		<tiberiumFieldRules>
+			<floraOptions>
+				<li>
+					<plants>
+						<li>TiberiumGrass,2</li>
+					</plants>
+					<chance>0</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumShroom_Yellow,0.25</li>
+					</plants>
+					<chance>0.2</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumBush,1.5</li>
+					</plants>
+					<chance>0.3</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumShroom_Yellow,3</li>
+						<li>TiberiumShroom_Blue,3</li>
+					</plants>
+					<chance>0.45</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumTree,4</li>
+					</plants>
+					<chance>0.65</chance>
+				</li>
+				<!--
+				<li>
+					<plants>
+						<li>SmallBlossom,10</li>
+					</plants>
+					<chance>0.7</chance>
+				</li>
+				<li>
+					<plants>
+						<li>AlocasiaBlossom,8</li>
+					</plants>
+					<chance>0.8</chance>
+				</li>
+				-->
+			</floraOptions>
+			<terrainOptions>
+				<li>TiberiumPodSoil</li>
+			</terrainOptions>
+			<crystalOptions>
+				<li>TiberiumPod</li>
+			</crystalOptions>
+		</tiberiumFieldRules>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="BlossomTreeBase">
@@ -147,49 +199,54 @@
 				</overlays>
 			</li>
 		</comps>
-		<tiberiumTypes>
-			<li>TiberiumPodBlue</li>
-		</tiberiumTypes>
-		<plantsByDistance Inherit="False">
-			<li>
-				<plants>
-					<li>TiberiumGrass,0.25</li>
-					<li>TiberiumGrass_Blue,1</li>
-				</plants>
-				<chance>0</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumBush,1</li>
-				</plants>
-				<chance>0.15</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumShroom_Purple,2</li>
-					<li>TiberiumShroom_Blue,1.75</li>
-				</plants>
-				<chance>0.45</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumTree,2</li>
-				</plants>
-				<chance>0.65</chance>
-			</li>
-			<li>
-				<plants>
-					<li>SmallBlossom,3</li>
-				</plants>
-				<chance>0.7</chance>
-			</li>
-			<li>
-				<plants>
-					<li>AlocasiaBlossom,4</li>
-				</plants>
-				<chance>0.8</chance>
-			</li>
-		</plantsByDistance>
+		<tiberiumFieldRules>
+			<floraOptions>
+				<li>
+					<plants>
+						<li>TiberiumGrass,0.25</li>
+						<li>TiberiumGrass_Blue,1</li>
+					</plants>
+					<chance>0</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumBush,1</li>
+					</plants>
+					<chance>0.15</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumShroom_Purple,2</li>
+						<li>TiberiumShroom_Blue,1.75</li>
+					</plants>
+					<chance>0.45</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumTree,2</li>
+					</plants>
+					<chance>0.65</chance>
+				</li>
+				<li>
+					<plants>
+						<li>SmallBlossom,3</li>
+					</plants>
+					<chance>0.7</chance>
+				</li>
+				<li>
+					<plants>
+						<li>AlocasiaBlossom,4</li>
+					</plants>
+					<chance>0.8</chance>
+				</li>
+			</floraOptions>
+			<terrainOptions>
+				<li>TiberiumPodSoilBlue</li>
+			</terrainOptions>
+			<crystalOptions>
+				<li>TiberiumPodBlue</li>
+			</crystalOptions>
+		</tiberiumFieldRules>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef Name="SmallBlossomBase" ParentName="BlossomTreeBase" Abstract="True">
@@ -228,6 +285,9 @@
 			<texPath>Buildings/Natural/BlossomTree/Blossoms/Alocasia</texPath>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>
+		<extraData Inherit="False">
+			<alignToBottom>false</alignToBottom>
+		</extraData>
 		<comps Inherit="False">
 			<li Class="TiberiumRim.CompProperties_FX">
 				<effecters>
@@ -243,42 +303,45 @@
 				</effecters>
 			</li>
 		</comps>
-		<plantsByDistance Inherit="False">
-			<li>
-				<plants>
-					<li>TiberiumGrass,1</li>
-					<li>TiberiumGrass_Blue,0.75</li>
-				</plants>
-				<chance>0</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumShroom_Yellow,1.5</li>
-					<li>TiberiumShroom_Blue,1.5</li>
-					<li>TiberiumShroom_Purple,1</li>
-				</plants>
-				<chance>0.35</chance>
-			</li>
-			<li>
-				<plants>
-					<li>SmallBlossom,2</li>
-				</plants>
-				<chance>0.65</chance>
-			</li>
-			<li>
-				<plants>
-					<li>AlocasiaBlossom,1.25</li>
-				</plants>
-				<chance>0.85</chance>
-			</li>
-		</plantsByDistance>
-		<tiberiumTypes>
-			<li>TiberiumPod</li>
-			<li>TiberiumPodBlue</li>
-		</tiberiumTypes>	
-		<extraData Inherit="False">
-			<alignToBottom>false</alignToBottom>
-		</extraData>
+		<tiberiumFieldRules>
+			<floraOptions>
+				<li>
+					<plants>
+						<li>TiberiumGrass,1</li>
+						<li>TiberiumGrass_Blue,0.75</li>
+					</plants>
+					<chance>0</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumShroom_Yellow,1.5</li>
+						<li>TiberiumShroom_Blue,1.5</li>
+						<li>TiberiumShroom_Purple,1</li>
+					</plants>
+					<chance>0.35</chance>
+				</li>
+				<li>
+					<plants>
+						<li>SmallBlossom,2</li>
+					</plants>
+					<chance>0.65</chance>
+				</li>
+				<li>
+					<plants>
+						<li>AlocasiaBlossom,1.25</li>
+					</plants>
+					<chance>0.85</chance>
+				</li>
+			</floraOptions>
+			<terrainOptions>
+				<li>TiberiumPodSoil</li>
+				<li>TiberiumPodSoilBlue</li>
+			</terrainOptions>
+			<crystalOptions>
+				<li>TiberiumPodBlue</li>
+				<li>TiberiumPod</li>
+			</crystalOptions>
+		</tiberiumFieldRules>		
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="SmallBlossomBase">
@@ -293,36 +356,38 @@
 			<graphicClass>Graphic_Random</graphicClass>
 			<drawSize>(2.5,2.5)</drawSize>
 		</graphicData>
-		<plantsByDistance Inherit="False">
-			<li>
-				<plants>
-					<li>TiberiumGrass,1</li>
-					<li>TiberiumBush,1</li>
-				</plants>
-				<chance>0</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumShroom_Yellow,1.5</li>
-					<li>TiberiumShroom_Blue,1.5</li>
-				</plants>
-				<chance>0.55</chance>
-			</li>
-			<li>
-				<plants>
-					<li>AlocasiaBlossom,5</li>
-				</plants>
-				<chance>0.8</chance>
-			</li>
-		</plantsByDistance>
-		<tiberiumTerrain>
-			<li>TiberiumPodSoil</li>
-		</tiberiumTerrain>
 		<spawner>
 			<growRadius>5.79</growRadius>
 			<spreadRange>2~4.5</spreadRange>
 			<spawnInterval>0</spawnInterval>
 		</spawner>
+		<tiberiumFieldRules>
+			<floraOptions>
+				<li>
+					<plants>
+						<li>TiberiumGrass,1</li>
+						<li>TiberiumBush,1</li>
+					</plants>
+					<chance>0</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumShroom_Yellow,1.5</li>
+						<li>TiberiumShroom_Blue,1.5</li>
+					</plants>
+					<chance>0.55</chance>
+				</li>
+				<li>
+					<plants>
+						<li>AlocasiaBlossom,5</li>
+					</plants>
+					<chance>0.8</chance>
+				</li>
+			</floraOptions>
+			<terrainOptions>
+				<li>TiberiumPodSoil</li>
+			</terrainOptions>
+		</tiberiumFieldRules>	
 	</TiberiumRim.TiberiumProducerDef>
 	
 </Defs>

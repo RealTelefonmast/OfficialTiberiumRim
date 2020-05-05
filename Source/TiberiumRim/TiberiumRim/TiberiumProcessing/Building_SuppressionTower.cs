@@ -15,10 +15,7 @@ namespace TiberiumRim
 
         private void SendWave()
         {
-            foreach (var c in Comp.Cells)
-            {
-                
-            }
+            
         }
     }
 

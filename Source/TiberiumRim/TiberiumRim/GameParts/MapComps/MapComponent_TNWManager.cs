@@ -13,7 +13,7 @@ namespace TiberiumRim
         public List<TiberiumNetwork> Networks = new List<TiberiumNetwork>();
         public Dictionary<TiberiumNetwork, List<IntVec3>> networkCells = new Dictionary<TiberiumNetwork, List<IntVec3>>();
         public StructureSet MainStructureSet = new StructureSet();
-        public List<Harvester> AllHarvesters = new List<Harvester>();
+
         public HarvesterReservationManager ReservationManager;
         public int MasterID = -1;
 

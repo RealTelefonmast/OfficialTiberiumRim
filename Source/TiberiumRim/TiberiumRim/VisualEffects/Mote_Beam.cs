@@ -21,7 +21,7 @@ namespace TiberiumRim
             this.start = start;
             this.end = end;
             //this.finalEnd = finalEnd;
-            //shouldMove = end != finalEnd;
+            //shouldMove = puller != finalEnd;
             this.drawMat = mat;
             this.instanceColor = color;
         }
@@ -41,7 +41,7 @@ namespace TiberiumRim
 
             float alpha = Alpha;
             /*if (shouldMove && AgeSecs >= def.mote.fadeInTime)
-                end2 = Vector3.Lerp(end, finalEnd, alpha);
+                end2 = Vector3.Lerp(puller, finalEnd, alpha);
             */
             Vector3 diff = end - start;
             if (alpha <= 0f) return;

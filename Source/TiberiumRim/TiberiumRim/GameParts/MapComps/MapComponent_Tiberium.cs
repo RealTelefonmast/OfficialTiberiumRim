@@ -8,16 +8,26 @@ using RimWorld;
 
 namespace TiberiumRim
 {
+    /* Tiberium Map Component
+     * Description:
+     * In this component all the major Tiberium-related mechanics get managed
+     * Tiberium Information - Main Info on tiberium positions, and cell-states
+     *
+     */
+
     public class MapComponent_Tiberium : MapComponentWithDraw
     {
         public TiberiumMapInfo TiberiumInfo;
+        public TiberiumFloraMapInfo FloraInfo;
+
+        public TiberiumAffecter TiberiumAffecter;
+        public TiberiumSpreader TiberiumSpreader;
+
         public TiberiumStructureInfo StructureInfo;
         public TiberiumInfectionInfo InfectionInfo;
 
         public HashSet<IntVec3> AffectedCells = new HashSet<IntVec3>();
         public HashSet<IntVec3> IteratorTiles = new HashSet<IntVec3>();
-
-        private int TiberiumArrivalTick = 0;
 
         //Affected Objects Iterator
         private IEnumerator<IntVec3> TileIterator;
@@ -32,7 +42,8 @@ namespace TiberiumRim
 
         public MapComponent_Tiberium(Map map) : base(map)
         {
-            TiberiumInfo = new TiberiumMapInfo(map);
+            TiberiumInfo  = new TiberiumMapInfo(map);
+            FloraInfo     = new TiberiumFloraMapInfo(map);
             StructureInfo = new TiberiumStructureInfo(map);
             InfectionInfo = new TiberiumInfectionInfo(map);
         }
@@ -40,7 +51,6 @@ namespace TiberiumRim
         public override void FinalizeInit()
         {
             base.FinalizeInit();
-
         }
 
         public override void MapGenerated()
@@ -50,7 +60,6 @@ namespace TiberiumRim
 
         public override void ExposeData()
         {
-            Scribe_Values.Look(ref TiberiumArrivalTick, "arrivalTick");
             base.ExposeData();
         }
 
@@ -73,13 +82,9 @@ namespace TiberiumRim
             base.MapComponentUpdate();
             if (DrawBool)
             {
-                TiberiumInfo.TiberiumGrid.drawer.RegenerateMesh();
-                TiberiumInfo.TiberiumGrid.drawer.MarkForDraw();
-                TiberiumInfo.TiberiumGrid.drawer.CellBoolDrawerUpdate();
+                TiberiumInfo.Update();
 
-                TiberiumInfo.FloraGrid.drawer.RegenerateMesh();
-                TiberiumInfo.FloraGrid.drawer.MarkForDraw();
-                TiberiumInfo.FloraGrid.drawer.CellBoolDrawerUpdate();
+
                 //Suppression.SuppressionGrid.drawer.RegenerateMesh();
                 //Suppression.SuppressionGrid.drawer.MarkForDraw();
                 //Suppression.SuppressionGrid.drawer.CellBoolDrawerUpdate();
@@ -90,10 +95,7 @@ namespace TiberiumRim
         {
             base.MapComponentTick();
             IterateThroughTiles();
-            if (Find.TickManager.TicksGame %  250 == 0)
-            {
-                TiberiumInfo.TiberiumGrid.UpdateDirties();
-            }
+            TiberiumInfo.Tick();
         }
 
         public override void MapComponentDraw()
@@ -104,6 +106,36 @@ namespace TiberiumRim
         public bool TiberiumAvailable => TiberiumInfo.TiberiumCrystals[HarvestType.Valuable].Count > TNWManager.ReservationManager.ReservedTypes[HarvestType.Valuable];
 
         public bool MossAvailable => TiberiumInfo.TiberiumCrystals[HarvestType.Unvaluable].Count > TNWManager.ReservationManager.ReservedTypes[HarvestType.Unvaluable];
+
+        public void RegisterTiberiumThing(Thing thing)
+        {
+        }
+
+        public void DeregisterTiberiumThing(Thing thing)
+        {
+        }
+
+        public void RegisterTiberiumCrystal(TiberiumCrystal crystal)
+        {
+            TiberiumInfo.RegisterTiberium(crystal);
+            AddCells(crystal);
+        }
+
+        public void DeregisterTiberiumCrystal(TiberiumCrystal crystal)
+        {
+            TiberiumInfo.DeregisterTiberium(crystal);
+            RemoveCells(crystal);
+        }
+
+        public void RegisterTiberiumPlant(TiberiumPlant plant)
+        {
+            FloraInfo.RegisterTiberiumPlant(plant);
+        }
+
+        public void DeregisterTiberiumPlant(TiberiumPlant plant)
+        {
+            FloraInfo.DeregisterTiberiumPlant(plant);
+        }
 
         public IEnumerable<Thing> TiberiumSetForHarvester(Harvester harvester)
         {
@@ -195,17 +227,18 @@ namespace TiberiumRim
             }
         }
 
-        public void AddTiberiumPlant(TiberiumPlant plant, bool respawn)
+        /*
+        public void AddTiberiumPlant(TiberiumPlant plant)
         {
-            TiberiumInfo.RegisterTiberiumPlant(plant);
+            FloraInfo.RegisterTiberiumPlant(plant);
         }
 
         public void RemoveTiberiumPlant(TiberiumPlant plant)
         {
-            TiberiumInfo.DeregisterTiberiumPlant(plant);
+            FloraInfo.DeregisterTiberiumPlant(plant);
         }
 
-        public void AddTiberium(TiberiumCrystal crystal, bool respawn)
+        public void AddTiberium(TiberiumCrystal crystal)
         {
             TiberiumInfo.RegisterTiberium(crystal);
             AddCells(crystal);
@@ -216,6 +249,7 @@ namespace TiberiumRim
             TiberiumInfo.DeregisterTiberium(crystal);
             RemoveCells(crystal);
         }
+        */
 
         private void AddCells(TiberiumCrystal crystal)
         {

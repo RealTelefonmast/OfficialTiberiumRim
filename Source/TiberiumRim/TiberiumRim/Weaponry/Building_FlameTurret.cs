@@ -97,7 +97,7 @@ namespace TiberiumRim
             base.Draw();
             if (settingFireWall)
             {
-                GenDraw.DrawFieldEdges(TRUtils.SectorCells(Position, Map, MainGun.AttackVerb.Props.range, 90f, (DrawPos.AngleToFlat(UI.MouseMapPosition()) + 90).AngNom()));
+                GenDraw.DrawFieldEdges(TRUtils.SectorCells(Position, Map, MainGun.AttackVerb.Props.range, 90f, (DrawPos.AngleToFlat(UI.MouseMapPosition()) + 90).AngleWrapped(), false).ToList());
             }
             GenDraw.DrawTargetHighlight(fireWallPos);
             GenDraw.DrawLineBetween(DrawPos, target.ToVector3Shifted());

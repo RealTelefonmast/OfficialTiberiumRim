@@ -63,6 +63,7 @@
 		<thingClass>TiberiumRim.TiberiumCrystal</thingClass>
 		<factionDesignation>Tiberium</factionDesignation>
 		<TRCategory>Crystals</TRCategory>
+		<menuHidden>true</menuHidden>
 		<devObject>true</devObject>
 		<category>Building</category>
 		<tickerType>Long</tickerType>
@@ -108,12 +109,7 @@
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<TiberiumRim.TiberiumCrystalDef Name="TiberiumForWater" ParentName="TiberiumCrystalBase" Abstract="True">
-		<supportsTerrain>
-			<Water>TiberiumShallowWater, TiberiumGlacier</Water>
-			<!-- <WaterMoving>TiberiumShallowMovingWater, TiberiumGlacier</WaterMoving> -->
-			<WaterMoving>TiberiumWaterMovingChestDeep, TiberiumGlacier</WaterMoving>
-			<WaterDeep>TiberiumDeepWater, TiberiumGlacier</WaterDeep>	
-		</supportsTerrain>
+		<conversionRuleset>GlacierConversion</conversionRuleset>
 	</TiberiumRim.TiberiumCrystalDef>
 
 </Defs>

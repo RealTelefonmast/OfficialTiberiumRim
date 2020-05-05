@@ -9,8 +9,7 @@ namespace TiberiumRim
 {
     public class SporeProperties
     {
-        public bool canBeGroundZero = false;
-        public IntRange tickRange = new IntRange(20000, 45000);
+        public IntRange spawnInterval = new IntRange(20000, 45000);
         public List<WeightedThing> blossoms;
 
         public TiberiumProducerDef Blossom()

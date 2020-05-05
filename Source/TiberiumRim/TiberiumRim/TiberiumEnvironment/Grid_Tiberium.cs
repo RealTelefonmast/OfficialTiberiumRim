@@ -8,35 +8,43 @@ using RimWorld;
 
 namespace TiberiumRim
 {
+    /* Tiberium Grid, keeps track of all cells related to Tiberium
+     * Determines growth, inhibition, patterns
+     */
+
     public class TiberiumGrid : ICellBoolGiver
     {
         public Map map;
 
-        //Tiberium
-        public BoolGrid tiberiumBools; 
-        public BoolGrid growBools;
+        //Tiberium Exists At These Cells
+        public BoolGrid tiberiumGrid; 
+        //Tiberium May Grow From These Cells
+        public BoolGrid growFromGrid;
+        //Tiberium May Grow To These Cells
+        public BoolGrid growToGrid;
+
+        //Tiberium Affects These Cells
         public BoolGrid affectedCells;
+        //Tiberium Grows Indefinitely On These Cells
+        public BoolGrid forceGrow;
 
         public BoolGrid[] fieldColorGrids;
 
         public TiberiumCrystal[] TiberiumCrystals;
 
-        //Flora
-        public BoolGrid floraBools;
-
-
-        public CellBoolDrawer   drawer;
+        public CellBoolDrawer drawer;
 
         private bool dirtyGrid = false;
-        private List<IntVec3> dirtyCells = new List<IntVec3>();
+        private readonly List<IntVec3> dirtyCells = new List<IntVec3>();
 
         public TiberiumGrid(Map map)
         {
             this.map = map;
-            tiberiumBools = new BoolGrid(map);
-            growBools = new BoolGrid(map);
-            floraBools = new BoolGrid(map);
+            tiberiumGrid = new BoolGrid(map);
+            growFromGrid  = new BoolGrid(map);
+            growToGrid    = new BoolGrid(map);
             affectedCells = new BoolGrid(map);
+            forceGrow     = new BoolGrid(map);
 
             fieldColorGrids = new BoolGrid[] { new BoolGrid(map), new BoolGrid(map), new BoolGrid(map) };
 
@@ -47,16 +55,10 @@ namespace TiberiumRim
         //CellBoolGiver
         public bool GetCellBool(int index)
         {
-            return tiberiumBools[index] || floraBools[index] || affectedCells[index];
+            return tiberiumGrid[index] || affectedCells[index];
         }
 
-        public Color Color
-        {
-            get
-            {
-                return Color.white;
-            }
-        }
+        public Color Color => Color.white;
 
         public void MarkDirty(IntVec3 c)
         {
@@ -66,8 +68,15 @@ namespace TiberiumRim
                     dirtyCells.Add(v);
             }
             dirtyGrid = true;
-
             UpdateDirties();
+        }
+
+        public void Reset()
+        { 
+            foreach (var cell in map.AllCells)
+            {
+                    
+            }
         }
 
         public void UpdateDirties()
@@ -76,17 +85,12 @@ namespace TiberiumRim
             for (int i = dirtyCells.Count - 1; i > 0; i--)
             {
                 IntVec3 cell = dirtyCells[i];
-                SetGrowBool(cell);
                 SetAffectedBool(cell);
-                SetFloraBool(cell);
+                SetGrowToBool(cell);
+                SetGrowFromBool(cell);
                 dirtyCells.Remove(cell);
             }
             dirtyGrid = false;
-        }
-
-        public bool CanGrowFrom(IntVec3 cell)
-        {          
-            return growBools[cell];
         }
 
         public Color GetCellExtraColor(int index)
@@ -95,32 +99,21 @@ namespace TiberiumRim
             {
                 return Color.yellow;
             }
-            if (floraBools[index])
-            {
-                return Color.cyan;
-            }
-
             if (affectedCells[index])
             {
                 return Color.magenta;
             }
-            if (growBools[index])
+            if (growFromGrid[index])
             {
                 return Color.green;
             }
             return Color.red;
         }
 
-        public void SetPlant(IntVec3 c, bool value)
-        {
-            floraBools.Set(c, value);
-            MarkDirty(c);
-        }
-
         public void SetCrystal(IntVec3 c, bool value, TiberiumCrystal crystal)
         {
             TiberiumCrystals[map.cellIndices.CellToIndex(c)] = crystal;
-            tiberiumBools.Set(c, value);
+            tiberiumGrid.Set(c, value);
             MarkDirty(c);
         }
 
@@ -142,20 +135,28 @@ namespace TiberiumRim
             }
         }
 
-        private void SetFloraBool(IntVec3 c)
+        private void SetGrowFromBool(IntVec3 c)
         {
-
+            if (!tiberiumGrid[c])
+            {
+                growFromGrid[c] = false;
+                return;
+            }
+            bool surrounded = c.CellsAdjacent8Way().All(v => v.InBounds(map) && (tiberiumGrid[v] || map.Tiberium().FloraInfo.HasFloraAt(v) || !growToGrid[v])); //!c.CellsAdjacent8Way().Any(v => v.InBounds(map) && (!tiberiumBools[v] && !map.Tiberium().FloraInfo.HasFloraAt(v)));
+            growFromGrid[c] = !surrounded;
         }
 
-        private void SetGrowBool(IntVec3 c)
+        private void SetGrowToBool(IntVec3 c)
         {
-            bool surrounded = !c.CellsAdjacent8Way().Any(c => c.InBounds(map) && (!tiberiumBools[c] && !floraBools[c]));
-            growBools[c] = !surrounded;
+            //Main Ruleset For Tiberium Spread
+            growToGrid[c] = (forceGrow[c] || !GenTiberium.HasFloraAt(c, map)) && affectedCells[c];
         }
 
         private void SetAffectedBool(IntVec3 c)
         {
-            affectedCells[c] = !tiberiumBools[c] && c.CellsAdjacent8Way().Any(v => v.InBounds(map) && tiberiumBools[v]);
+            affectedCells[c] = !tiberiumGrid[c] && c.CellsAdjacent8Way().Any(v => v.InBounds(map) && tiberiumGrid[v]);
+            //if(affectedCells[c])
+                //map.Tiberium().cell
         }
     }
 }

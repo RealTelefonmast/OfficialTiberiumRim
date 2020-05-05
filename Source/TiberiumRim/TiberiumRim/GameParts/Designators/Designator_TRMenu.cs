@@ -170,7 +170,7 @@ namespace TiberiumRim
             GUI.color = mouseOver ? new Color(1, 1, 1, 0.45f) : Color.white;
             Widgets.DrawTextureFitted(rect.ContractedBy(2), def.uiIcon, 1);
             GUI.color = Color.white;
-            if (!def.Discovered)
+            if (!def.ConstructionOptionDiscovered)
             {
                 DrawUndiscovered(rect, new Vector2(-5, 5));
                 //Widgets.DrawTextureFitted(rect, TiberiumContent.Des_Undisc, 1f);
@@ -178,8 +178,8 @@ namespace TiberiumRim
 
             if (mouseOver)
             {
-                if (!def.Discovered)
-                    def.Discovered = true;
+                if (!def.ConstructionOptionDiscovered)
+                    def.ConstructionOptionDiscovered = true;
                 mouseOverGizmo = new Designator_BuildFixed(def);
                 Text.Anchor = TextAnchor.UpperCenter;
                 Widgets.Label(rect, def.LabelCap);

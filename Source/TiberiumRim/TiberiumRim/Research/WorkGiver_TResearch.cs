@@ -22,7 +22,7 @@ namespace TiberiumRim
 
         public override bool ShouldSkip(Pawn pawn, bool forced = false)
         {
-            return Manager.currentProject == null;
+            return Manager.currentProject == null || !Manager.currentProject.CurrentTask.HasAnyTarget;
         }
 
         public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)

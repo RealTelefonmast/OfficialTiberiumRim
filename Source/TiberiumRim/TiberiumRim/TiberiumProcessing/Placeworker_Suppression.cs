@@ -16,8 +16,9 @@ namespace TiberiumRim
             if(props == null)
                 return;
             Map map = Find.CurrentMap;
-            GenDraw.DrawFieldEdges(TRUtils.SectorCells(center, map, props.radius, props.angle, rot.AsAngle), Color.cyan);
-            var otherCells = map.GetComponent<MapComponent_Suppression>().Suppressors.SelectMany(s => s.Key.Cells).ToList();
+            Predicate<IntVec3> pred = cell => !cell.Roofed(map) && GenSight.LineOfSight(center, cell, map);
+            GenDraw.DrawFieldEdges(TRUtils.SectorCells(center, map, props.radius, props.angle, rot.AsAngle,false, pred).ToList(), Color.cyan);
+            var otherCells = map.GetComponent<MapComponent_Suppression>().ActiveCells.ToList();
             GenDraw.DrawFieldEdges(otherCells, Color.gray);
 
         }

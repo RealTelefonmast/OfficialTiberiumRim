@@ -10,21 +10,37 @@ namespace TiberiumRim
 {
     public class TRThingDef : FXThingDef
     {
+        //Designation
         public FactionDesignationDef factionDesignation = null;
         public TRThingCategoryDef TRCategory = null;
+        public Requisites requisites;
+
+        //Graphics
         public GraphicData extraGraphicData;
-        public TurretHolderProps turret;
+
+        //Properties
+        public TurretHolderProperties turret;
         public BeamHubProperties beamHub; 
         public ProjectileProperties_Extended projectileExtended;
         public SuperWeaponProperties superWeapon;
+
+        //Creation Events
         public TerrainDef makesTerrain;
-        public Requisites requisites;
-        public bool needsBlueprint = false;
+        public TRThingDef leavesThing;
+
         public bool hidden = false;
         public bool devObject = false;
-        public bool destroyTiberium = false;
+        public bool clearTiberium = false;
 
-        private bool discovered = false;
+        public string discoverTag;
+        public string unknownLabel;
+        public string unknownDescription;
+        public string extraDescription;
+
+        [Unsaved(false)]
+        private TaggedString cachedUnknownLabelCap = null;
+
+        private bool optionDiscovered = false;
 
         public override IEnumerable<string> ConfigErrors()
         {
@@ -38,12 +54,22 @@ namespace TiberiumRim
 
         }
 
+        public string UnknownLabelCap
+        {
+            get
+            {
+                if (cachedUnknownLabelCap.NullOrEmpty())
+                    cachedUnknownLabelCap = unknownLabel.CapitalizeFirst();
+                return cachedUnknownLabelCap;
+            }
+        }
+
         public bool RequisitesFulfilled => requisites == null || requisites.FulFilled();
 
-        public bool Discovered
+        public bool ConstructionOptionDiscovered
         {
-            get => discovered || devObject;
-            set => discovered = value;
+            get => optionDiscovered || devObject;
+            set => optionDiscovered = value;
         }
 
         public bool IsActive(out string reason)
@@ -119,11 +145,6 @@ namespace TiberiumRim
             }
             reason = sb.ToString().TrimEndNewlines();
             return flag;
-        }
-
-        public override void ResolveReferences()
-        {
-            base.ResolveReferences();
         }
     }
 

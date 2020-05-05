@@ -17,7 +17,10 @@ namespace TiberiumRim
         public float plantMutationChance = 0.5f;
         public float minTemperature = -30f;
         public float harvestValue = 0f;
+
+        [Obsolete]
         public float harvestTime = 10f;
+
         public float spreadRadius = 1f;
         public float reproduceDays = 1f;
         public float growDays = 1f;

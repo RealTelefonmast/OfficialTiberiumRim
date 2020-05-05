@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using RimWorld;
+using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -12,6 +13,11 @@ namespace TiberiumRim
 {
     public static class TRUtils
     {
+        public static DiscoveryTable DiscoveryTable()
+        {
+            return Tiberium(Find.World).DiscoveryTable;
+        }
+
         public static EventManager EventManager()
         {
             return Find.World.GetComponent<EventManager>();
@@ -24,6 +30,11 @@ namespace TiberiumRim
         public static MapComponent_Tiberium Tiberium(this Map map)
         {
             return map.GetComponent<MapComponent_Tiberium>();
+        }
+
+        public static WorldComponent_TR Tiberium(this World world)
+        {
+            return world.GetComponent<WorldComponent_TR>();
         }
 
         public static ThingDef VeinCorpseDef(this Pawn pawn)
@@ -209,29 +220,43 @@ namespace TiberiumRim
             return Vector3.Dot(AV, AB) / Vector3.Dot(AB, AB);
         }
 
-        public static float AngNom(this float angle)
+        public static float AngleWrapped(this float angle)
         {
-            float angle2 = angle;
-            if (angle2 == 360)
-                return 0;
-            if (angle2 < 0)
+            while (angle > 360)
             {
-                while (angle2 < 0)
-                    angle2 += 360;
+                angle -= 360;
             }
-
-            if (angle > 360)
+            while (angle < 0)
             {
-                while (angle2 > 360)
-                    angle2 -= 360;
+                angle += 360;
             }
-            return angle2;
+            return angle == 360 ? 0f : angle;
         }
 
+        //
+        public static IEnumerable<IntVec3> SectorCells(IntVec3 center, Map map, float radius, float angle, float rotation, bool useCenter = false, Predicate<IntVec3> validator = null)
+        {
+            int cellCount = GenRadial.NumCellsInRadius(radius);
+            int startCell = useCenter ? 0 : 1;
+            var angleMin = AngleWrapped(rotation - angle * 0.5f);
+            var angleMax = AngleWrapped(angleMin + angle);
+            for (int i = startCell; i < cellCount; i++)
+            {
+                IntVec3 cell = GenRadial.RadialPattern[i] + center;
+                float curAngle = (cell.ToVector3Shifted() - center.ToVector3Shifted()).AngleFlat();
+                var invert = angleMin > angleMax;
+                var flag = invert ? (curAngle >= angleMin || curAngle <= angleMax) : (curAngle >= angleMin && curAngle <= angleMax);
+                if (!cell.InBounds(map) || !flag || (validator != null && !validator(cell)))
+                    continue;
+                yield return cell;
+            }
+        }
+
+        /*
         public static List<IntVec3> SectorCells(IntVec3 center, Map map, float radius, float angle, float rotation)
         {
             var cells = new List<IntVec3>();
-            var min = AngNom(rotation - angle * 0.5f);
+            var min = AngleWrapped(rotation - angle * 0.5f);
             var max = AngNom(min + angle);
             var numCells = GenRadial.NumCellsInRadius(radius);
 
@@ -248,6 +273,7 @@ namespace TiberiumRim
             }
             return cells;
         }
+        */
 
         //Randomizers
         public static float Range(FloatRange range)

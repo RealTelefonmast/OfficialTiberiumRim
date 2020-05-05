@@ -90,6 +90,10 @@ namespace TiberiumRim
         //
         public static ThingDef PortableContainer;
 
+        //Letter
+        public static LetterDef EventLetter;
+        public static LetterDef DiscoveryLetter;
+
         //Motes
         public static ThingDef TiberiumSmokeMote;
         public static ThingDef TiberiumGas;
@@ -109,12 +113,10 @@ namespace TiberiumRim
         public static ThingDef ScrinDronePlatformIncoming;
 
         //TerrainTags
-        public static TerrainTagDef Soils;
-        public static TerrainTagDef Mosses;
-        public static TerrainTagDef Sands;
-        public static TerrainTagDef Stones;
-        public static TerrainTagDef Water;
-        public static TerrainTagDef WaterMoving;
-        public static TerrainTagDef WaterDeep;
+        public static TerrainFilterDef TerrainFilter_Soil;
+        public static TerrainFilterDef TerrainFilter_Sand;
+        public static TerrainFilterDef TerrainFilter_Moss;
+        //public static TerrainFilterDef TerrainFilter_Water;
+        public static TerrainFilterDef TerrainFilter_Stone;
     }
 }

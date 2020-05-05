@@ -31,7 +31,6 @@ namespace TiberiumRim
 
         public override void Tick()
         {
-            base.Tick();
         }
 
         public override void Draw()

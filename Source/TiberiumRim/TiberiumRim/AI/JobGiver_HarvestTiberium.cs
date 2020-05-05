@@ -15,13 +15,16 @@ namespace TiberiumRim
             Harvester harvester = pawn as Harvester;
             if (harvester.ShouldHarvest && harvester.CurJob?.def != TiberiumDefOf.HarvestTiberium)
             {
-                TiberiumCrystal crystal = harvester.HarvestTarget;
-                if (crystal != null)
+                if (!harvester.HarvestQueue.NullOrEmpty())
                 {
-                    if (harvester.CanReserveAndReach(crystal, PathEndMode.Touch, Danger.Deadly))
+                    var queue = harvester.HarvestQueue;
+                    Job job = JobMaker.MakeJob(TiberiumDefOf.HarvestTiberium, queue[0]);
+                    job.targetQueueA = new List<LocalTargetInfo>();
+                    foreach (var t in queue)
                     {
-                        return JobMaker.MakeJob(TiberiumDefOf.HarvestTiberium, crystal);
+                        job.targetQueueA.Add(t);
                     }
+                    return job;
                 }
             }
             return null;
@@ -50,67 +53,76 @@ namespace TiberiumRim
 
         private bool FailOn => Harvester.ShouldIdle || (TiberiumCrystal.def.IsMoss ? Harvester.harvestMode != HarvestMode.Moss : Harvester.harvestMode == HarvestMode.Moss);
 
-        public override bool TryMakePreToilReservations(bool errorOnFailed)
-        {
-            return Harvester.Reserve(TargetA, job);
-        }
-
         public override string GetReport()
         {
             return "TR_HarvestingReport".Translate(this.TargetA.Thing.def.LabelCap);
         }
 
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
+        {
+            LocalTargetInfo target = job.GetTarget(TargetIndex.A);
+            if (target.IsValid && !pawn.Reserve(target, job, 1, -1, null, errorOnFailed))
+            {
+                return false;
+            }
+            pawn.ReserveAsManyAsPossible(job.GetTargetQueue(TargetIndex.A), job);
+            return true;
+        }
+
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            Toil gotoToil = Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
-            gotoToil.FailOn(() => FailOn);
-            yield return gotoToil;
+            yield return Toils_JobTransforms.MoveCurrentTargetIntoQueue(TargetIndex.A);
+            var extractTarget = Toils_JobTransforms.ClearDespawnedNullOrForbiddenQueuedTargets(TargetIndex.A);
+            yield return extractTarget;
+            yield return Toils_JobTransforms.SucceedOnNoTargetInQueue(TargetIndex.A);
+            yield return Toils_JobTransforms.ExtractNextTargetFromQueue(TargetIndex.A);
+
+            yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch).JumpIfDespawnedOrNullOrForbidden(TargetIndex.A, extractTarget);
 
             Toil harvest = new Toil
             {
                 initAction = delegate
                 {
-                    ticksToHarvest += TiberiumCrystal.HarvestTime;
+                    //Time based on each value per Tick 
+                    ticksToHarvest =  (int)Math.Round((TiberiumCrystal.HarvestValue / Harvester.kindDef.harvestValue), MidpointRounding.AwayFromZero);
+                    //Ticks Needed to get 1 single value stored
                     ticksPerValue = (int) (ticksToHarvest / TiberiumCrystal.HarvestValue);
+                    //Growth removed whenever value is added
                     growthPerValue = (TiberiumCrystal.Growth / (float) ticksToHarvest) * ticksPerValue;
+
                 },
                 tickAction = delegate
                 {
-                    if (!Harvester.Container.CapacityFull)
+                    if (Harvester.Container.CapacityFull)
                     {
-                        if (ticksPassed < ticksToHarvest)
-                        {
-                            if (ticksPassed % ticksPerValue == 0)
-                            {
-                                if (Harvester.Container.TryAddValue(TiberiumCrystal.def.TiberiumValueType, 1, out float actualValue))
-                                {
-                                    TiberiumCrystal.Harvest(growthPerValue * (actualValue / 1));
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (TiberiumCrystal.Growth <= 0.01f)
-                            {
-                                TiberiumCrystal.DeSpawn();
-                            }
-
-                            EndJobWith(JobCondition.Succeeded);
-                        }
-                        ticksPassed++;
+                        EndJobWith(JobCondition.InterruptForced);
+                        return;
                     }
-                    else
+
+                    ticksPassed++;
+                    if (ticksPassed > ticksToHarvest)
                     {
-                        EndJobWith(JobCondition.Succeeded);
+                        TiberiumCrystal.Harvested();
+                        ticksPassed = 0;
+                        ReadyForNextToil();
+                        return;
+                    }
+
+                    if (ticksPassed % ticksPerValue == 0)
+                    {
+                        TiberiumCrystal.Harvest(Harvester, growthPerValue);
                     }
                 }
             };
-            harvest.AddFinishAction(() => Harvester.TNWManager.ReservationManager.UnreserveFor(TiberiumCrystal, Harvester));
+            harvest.AddFinishAction(() => Harvester.TNWManager.ReservationManager.Dequeue(TiberiumCrystal, Harvester));
             harvest.FailOnDespawnedNullOrForbidden(TargetIndex.A);
             harvest.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
             harvest.FailOn(() => FailOn);
+            harvest.WithEffect(EffecterDefOf.Harvest, TargetIndex.A);
             harvest.defaultCompleteMode = ToilCompleteMode.Never;
-            yield return harvest;          
+            yield return harvest;
+            yield return Toils_Jump.Jump(extractTarget);
+            yield break;
         }
     }
 }

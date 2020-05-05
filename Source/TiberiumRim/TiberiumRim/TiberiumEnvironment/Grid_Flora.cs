@@ -14,7 +14,7 @@ namespace TiberiumRim
 
     public class TerrainData
     {
-        //Full Info for a terrain's use
+        //Full Info for a terrainOptions's use
         public TerrainDef terrain;
         public bool supportsFlora = false;
 
@@ -28,51 +28,31 @@ namespace TiberiumRim
     public class TiberiumFloraGrid : ICellBoolGiver
     {
         public Map map;
-        public TiberiumFloraManager floraManager;
+
+        public BoolGrid floraBools;
         public BoolGrid growBools;
         public CellBoolDrawer drawer;
 
         public TiberiumFloraGrid(Map map)
         {
             this.map = map;
-            floraManager = new TiberiumFloraManager(map);
+            floraBools = new BoolGrid(map);
             growBools = new BoolGrid(map);
             drawer = new CellBoolDrawer(this, map.Size.x, map.Size.z, 0.35f);
-            Init();
         }
 
-        public void Init()
+        //
+        public void SetFlora(IntVec3 c, bool value)
         {
-            LongEventHandler.QueueLongEvent(delegate ()
-            {
-                FloodFiller filler = map.floodFiller;
-                foreach (IntVec3 cell in map.AllCells)
-                {
-                    if (growBools[cell]) continue;
-                    TerrainDef terrain = cell.GetTerrain(map);
-                    if(IsGarden(terrain))
-                    {
-                        TiberiumGarden garden = new TiberiumGarden(this);
-                        filler.FloodFill(cell, ((IntVec3 c) => c.GetTerrain(map) == terrain), delegate (IntVec3 cell) {
-                            Set(cell, true);
-                            garden.AddCell(cell);
-                        });
-
-                    }
-                }
-            }, "SettingFloraBools", false, null);
+            floraBools.Set(c, value);
         }
 
-        private bool IsGarden(TerrainDef def)
+        public void SetGrow(IntVec3 c, bool value)
         {
-            return def.IsMoss() || (def.IsSoil() && (def.fertility >= 1.2f));
+            growBools.Set(c, true);
         }
 
-        private bool IsPond(TerrainDef def)
-        {
-            return def.IsWater && !def.IsRiver;
-        }
-
+        //Bool Getters
         public bool GetCellBool(int index)
         {
             return growBools[index];
@@ -89,14 +69,9 @@ namespace TiberiumRim
             return Color.red;
         }
 
-        public void Set(IntVec3 c, bool value)
-        {
-            growBools.Set(c, true);
-        }
 
         public void Notify_PlantSpawned(TiberiumPlant plant)
         {
-            floraManager.Notify_PlantSpawnedFromOutside(plant);
         }
     }
 }

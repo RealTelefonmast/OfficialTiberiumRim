@@ -97,10 +97,39 @@ namespace TiberiumRim
         }
     }
 
+    public class TiberiumTypeCost2
+    {
+        public TiberiumValueType valueType;
+        public float cost;
+
+        public TiberiumTypeCost2() { }
+
+        public TiberiumTypeCost2(TiberiumValueType type, float cost)
+        {
+            this.valueType = type;
+            this.cost = cost;
+        }
+
+        public void LoadDataFromXmlCustom(XmlNode xmlRoot)
+        {
+
+        }
+    }
+
     public class TiberiumTypeCost
     {
         public TiberiumValueType TiberiumValueType = TiberiumValueType.None;
         public float cost;
+
+        public TiberiumTypeCost()
+        {
+        }
+
+        public TiberiumTypeCost(TiberiumValueType type, float cost)
+        {
+            this.TiberiumValueType = type;
+            this.cost = cost;
+        }
 
         public void LoadDataFromXmlCustom(XmlNode xmlRoot)
         {

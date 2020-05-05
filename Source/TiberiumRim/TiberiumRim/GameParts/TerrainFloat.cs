@@ -20,12 +20,10 @@ namespace TiberiumRim
         public void LoadDataFromXmlCustom(XmlNode xmlRoot)
         {
             string s = Regex.Replace(xmlRoot.FirstChild.Value, @"\s+", "");
-            string[] array = s.Split(new char[]
-            {
-                ','
-            });
-            this.terrainDef = DefDatabase<TerrainDef>.GetNamed(array[0]);
-            this.value = (float)ParseHelper.FromString(array[1], typeof(float));
+            string[] array = s.Split(',');
+            DirectXmlCrossRefLoader.RegisterObjectWantsCrossRef(this, "terrainDef", array[0], null, null);
+            if(array.Length > 1)
+                this.value = (float)ParseHelper.FromString(array[1], typeof(float));
         }
     }
 }

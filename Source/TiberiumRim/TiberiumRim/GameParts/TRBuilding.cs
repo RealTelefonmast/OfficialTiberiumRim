@@ -7,9 +7,23 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class TRBuilding : FXBuilding
+    public class TRBuilding : FXBuilding, IDiscoverable
     {
         public new TRThingDef def;
+
+        public override string Label => Discovered ? DiscoveredLabel : UnknownLabel;
+
+        public override string DescriptionFlavor => Discovered ? DiscoveredDescription : UnknownDescription;
+
+        public string DiscoverTag => def.discoverTag;
+        public string DiscoveredLabel => base.Label;
+        public string UnknownLabel => def.UnknownLabelCap;
+        public string DiscoveredDescription => def.description;
+        public string UnknownDescription => def.unknownDescription;
+        public string DescriptionExtra => def.extraDescription;
+
+        public bool Discovered => !IsDiscoverable || TRUtils.DiscoveryTable().IsDiscovered(this);
+        public bool IsDiscoverable => DiscoverTag != null;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -20,7 +34,7 @@ namespace TiberiumRim
             foreach (IntVec3 c in this.OccupiedRect())
             {
                 c.GetPlant(Map)?.DeSpawn();
-                if (def.destroyTiberium) 
+                if (def.clearTiberium) 
                     c.GetTiberium(Map)?.DeSpawn();
                 if(def.makesTerrain != null)
                     map.terrainGrid.SetTerrain(c, def.makesTerrain);
@@ -30,6 +44,10 @@ namespace TiberiumRim
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
         {
             TiberiumComp.StructureInfo.Deregister(this);
+            var thingToLeave = def.leavesThing;
+            if (thingToLeave != null)
+                GenSpawn.Spawn(thingToLeave, this.Position, Map);
+
             base.DeSpawn(mode);
         }
 
@@ -39,12 +57,31 @@ namespace TiberiumRim
 
         public bool CannotHaveDuplicates => def.placeWorkers.Any(p => p == typeof(PlaceWorker_Once));
 
+        public override string GetInspectString()
+        {
+            string str = base.GetInspectString();
+            if (IsDiscoverable)
+                str += "\n"+"TR_NotDiscovered".Translate();
+
+            return str;
+        }
+
         public override IEnumerable<Gizmo> GetGizmos()
         {
             foreach (var g in base.GetGizmos())
             {
                 yield return g;
             }
+
+            if (IsDiscoverable && !Discovered)
+            {
+                yield return new Command_Action()
+                {
+                    defaultLabel = "Discover",
+                    action = delegate { TRUtils.DiscoveryTable().Discover(DiscoverTag); }
+                };
+            }
+
             if(!def.devObject)
                 yield return new Designator_BuildFixed(def);
 

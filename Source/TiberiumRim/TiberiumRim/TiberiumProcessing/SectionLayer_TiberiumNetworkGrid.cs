@@ -17,7 +17,7 @@ namespace TiberiumRim
 
         public override void DrawLayer()
         {
-            if(Find.DesignatorManager.SelectedDesignator is Designator_PlaceThing designatorPipe)
+            if(Find.DesignatorManager.SelectedDesignator is Designator_PlaceThing)
             {
                 base.DrawLayer();
                 return;
@@ -27,10 +27,11 @@ namespace TiberiumRim
                 base.DrawLayer();
                 return;
             }
-            if (Find.DesignatorManager.SelectedDesignator is Designator_RemoveTiberiumPipe designator2)
+            if (Find.DesignatorManager.SelectedDesignator is Designator_RemoveTiberiumPipe)
             {
                 base.DrawLayer();
             }
+
         }
 
         protected override void TakePrintFrom(Thing t)

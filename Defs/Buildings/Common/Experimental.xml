@@ -59,10 +59,59 @@
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<surfaceType>Item</surfaceType>
 		<clearBuildingArea>false</clearBuildingArea>
-		<needsBlueprint>true</needsBlueprint>
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_Pipe</li>
 		</placeWorkers>
 	</TiberiumRim.TRThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>AngleTester</defName>
+		<label>Angle Tester</label>
+		<description>AAAAAAAAA</description>
+		<thingClass>TiberiumRim.Building_ANGLETEST</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Misc/MoisturePump</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shadowData>
+			<volume>(0.58, 0.35, 0.25)</volume>
+			<offset>(0,0,-0.1)</offset>
+			</shadowData>
+			<damageData>
+			<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<comps>
+		<li Class="CompProperties_Forbiddable"/>
+		<li Class="CompProperties_Power">
+		<compClass>CompPowerTrader</compClass>
+		<basePowerConsumption>150</basePowerConsumption>
+		</li>
+		<li Class="CompProperties_TerrainPumpDry">
+		<radius>6.9</radius>
+		<daysToRadius>60</daysToRadius>
+		</li>
+		</comps>
+		<tickerType>Never</tickerType>
+		<altitudeLayer>Building</altitudeLayer>
+		<statBases>
+		<MaxHitPoints>50</MaxHitPoints>
+		<WorkToBuild>1500</WorkToBuild>
+		<Flammability>1.0</Flammability>
+		<Beauty>-8</Beauty>
+		</statBases>
+		<fillPercent>0.15</fillPercent>
+		<building>
+		<ai_chillDestination>false</ai_chillDestination>
+		</building>
+		<costList>
+		<Steel>75</Steel>
+		<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<specialDisplayRadius>6.9</specialDisplayRadius>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<pathCost>25</pathCost>
+		<designationCategory>Misc</designationCategory>
+	</ThingDef>
+	
 	
 </Defs>

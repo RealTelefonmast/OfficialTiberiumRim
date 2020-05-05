@@ -9,4 +9,12 @@
 	<flashInterval>90</flashInterval>
   </LetterDef>
 
+  <LetterDef>
+    <defName>DiscoveryLetter</defName>
+    <letterClass>StandardLetter</letterClass>
+	<color>(0,255,190)</color>
+	<flashColor>(0,100,130)</flashColor>
+	<flashInterval>100</flashInterval>
+  </LetterDef>
+
 </Defs>

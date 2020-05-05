@@ -31,13 +31,7 @@ namespace TiberiumRim
             base.FinishAction();
             if (crystalDef != null && !map.roofGrid.Roofed(Position))
             {
-                if (endCell.GetTiberium(map) == null && crystalDef.CanSpreadTo(endCell, map, out TerrainSupport support, out IntVec3 hidden))
-                {
-                    if (support != null && support.CrystalOutcome != null)
-                    {
-                        GenTiberium.Spawn(support.CrystalOutcome, parent, endCell, map);
-                    }
-                }
+                GenTiberium.TrySpawnTiberium(endCell, map, crystalDef, parent);
             }
         }
 

@@ -5,6 +5,9 @@
 		<defName>TiberiumCraterGreen</defName>
 		<label>green tiberium crater</label>
 		<description>The asteroid left a glowing crater full of green crystals, it's radiating a dangerous amount of warmth if you come close. It seems like there are new crystals growing at the edge?</description>
+		<discoverTag>TiberiumProducerCrater</discoverTag>
+		<unknownLabel>strange crater</unknownLabel>
+		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
 			<MaxHitPoints>5000</MaxHitPoints>
 			<Beauty>175</Beauty>
@@ -73,9 +76,68 @@
 		</comps>
 		<daysToMature>7</daysToMature>
 		<leaveTiberium>true</leaveTiberium>
-		<killedVersion>DeadGreenCrater</killedVersion>
+		<leavesThing>DeadGreenCrater</leavesThing>
+		<canBeGroundZero>true</canBeGroundZero>
+		<tiberiumFieldRules>
+			<floraOptions>
+				<li>
+					<plants>
+						<li>TiberiumGrass,2</li>
+					</plants>
+					<chance>0</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumShroom_Yellow,0.25</li>
+					</plants>
+					<chance>0.2</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumBush,1.5</li>
+					</plants>
+					<chance>0.3</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumShroom_Yellow,3</li>
+						<li>TiberiumShroom_Blue,3</li>
+					</plants>
+					<chance>0.45</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumTree,4</li>
+					</plants>
+					<chance>0.65</chance>
+				</li>
+				<!--
+				<li>
+					<plants>
+						<li>SmallBlossom,10</li>
+					</plants>
+					<chance>0.7</chance>
+				</li>
+				<li>
+					<plants>
+						<li>AlocasiaBlossom,8</li>
+					</plants>
+					<chance>0.8</chance>
+				</li>
+				-->
+			</floraOptions>
+			<terrainOptions>
+				<li>TiberiumSoilGreen,0.60</li>
+				<li>TiberiumPodSoil,0.40</li>
+			</terrainOptions>
+			<crystalOptions>
+				<li>TiberiumGreen</li>
+			</crystalOptions>
+		</tiberiumFieldRules>
+		<!--
 		<spore>
 			<canBeGroundZero>true</canBeGroundZero>
+		
 			<blossoms>
 				<li>SmallBlossom,0.75</li>
 				<li>AlocasiaBlossom,0.75</li>
@@ -86,16 +148,11 @@
 			<TiberiumCraterHybrid>0.3</TiberiumCraterHybrid>
 			<TiberiumCruentus>0.01</TiberiumCruentus>
 		</evolutions>
-		<tiberiumTypes>
-			<li>TiberiumGreen</li>
-		</tiberiumTypes>
-		<tiberiumTerrain>
-			<li>TiberiumSoilGreen</li>
-			<li>TiberiumPodSoil</li>
-		</tiberiumTerrain>
+		-->
 		<spawner>
 			<spawnMode>Direct</spawnMode>
 			<growRadius>5.75</growRadius>
+			<spawnInterval>30000~90000</spawnInterval>
 		</spawner>
 	</TiberiumRim.TiberiumProducerDef>
 	
@@ -103,6 +160,9 @@
 		<defName>TiberiumCraterHybrid</defName>
 		<label>hybrid tiberium crater</label>
 		<description>The asteroid left a strange crater full of green and blue crystals, observing it shows that that over time both types slowly spread at the edge.</description>
+		<discoverTag>TiberiumProducerCrater</discoverTag>
+		<unknownLabel>strange crater</unknownLabel>
+		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
 			<MaxHitPoints>7500</MaxHitPoints>
 			<Beauty>200</Beauty>
@@ -210,7 +270,8 @@
 		</comps>
 		<daysToMature>12</daysToMature>
 		<leaveTiberium>true</leaveTiberium>
-		<killedVersion>DeadGreenCrater</killedVersion>
+		<leavesThing>DeadGreenCrater</leavesThing>
+		<!--
 		<spore>
 			<canBeGroundZero>true</canBeGroundZero>
 			<blossoms>
@@ -224,61 +285,65 @@
 			<TiberiumCraterHybrid>0.3</TiberiumCraterHybrid>
 			<TiberiumCruentus>0.01</TiberiumCruentus>
 		</evolutions>
-		<tiberiumTypes>
-			<li>TiberiumGreen</li>
-			<li>TiberiumBlue</li>
-		</tiberiumTypes>
-		<tiberiumTerrain>
-			<li>TiberiumSoilGreen</li>
-			<li>TiberiumPodSoil</li>
-			<li>TiberiumSoilBlue</li>
-			<li>TiberiumPodSoilBlue</li>
-		</tiberiumTerrain>
+		-->
+		<canBeGroundZero>true</canBeGroundZero>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
 			<growRadius>7.6</growRadius>
 		</spawner>
-		<plantsByDistance Inherit="False">
-			<li>
-				<plants>
-					<li>TiberiumGrass,1.25</li>
-					<li>TiberiumGrass_Blue,0.5</li>
-				</plants>
-				<chance>0</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumBush,1.5</li>
-				</plants>
-				<chance>0.25</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumShroom_Yellow,2.25</li>
-					<li>TiberiumShroom_Purple,2.25</li>
-					<li>TiberiumShroom_Blue,2</li>
-				</plants>
-				<chance>0.45</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumTree,4</li>
-				</plants>
-				<chance>0.65</chance>
-			</li>
-			<li>
-				<plants>
-					<li>SmallBlossom,12</li>
-				</plants>
-				<chance>0.7</chance>
-			</li>
-			<li>
-				<plants>
-					<li>AlocasiaBlossom,10</li>
-				</plants>
-				<chance>0.8</chance>
-			</li>
-		</plantsByDistance>
+		<tiberiumFieldRules>
+			<floraOptions>
+				<li>
+					<plants>
+						<li>TiberiumGrass,1.25</li>
+						<li>TiberiumGrass_Blue,0.5</li>
+					</plants>
+					<chance>0</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumBush,1.5</li>
+					</plants>
+					<chance>0.25</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumShroom_Yellow,2.25</li>
+						<li>TiberiumShroom_Purple,2.25</li>
+						<li>TiberiumShroom_Blue,2</li>
+					</plants>
+					<chance>0.45</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumTree,4</li>
+					</plants>
+					<chance>0.65</chance>
+				</li>
+				<li>
+					<plants>
+						<li>SmallBlossom,12</li>
+					</plants>
+					<chance>0.7</chance>
+				</li>
+				<li>
+					<plants>
+						<li>AlocasiaBlossom,10</li>
+					</plants>
+					<chance>0.8</chance>
+				</li>
+			</floraOptions>
+			<terrainOptions>
+				<li>TiberiumSoilGreen</li>
+				<li>TiberiumPodSoil</li>
+				<li>TiberiumSoilBlue</li>
+				<li>TiberiumPodSoilBlue</li>
+			</terrainOptions>
+			<crystalOptions>
+				<li>TiberiumGreen</li>
+				<li>TiberiumBlue</li>
+			</crystalOptions>
+		</tiberiumFieldRules>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
@@ -317,6 +382,9 @@
 		<defName>TiberiumCraterBlue</defName>
 		<label>blue tiberium crater</label>
 		<description>The asteroid left this glowing crater full of blue crystals, the blue glow is nice to look at. It seems like there are new crystals growing at the edges?</description>
+		<discoverTag>TiberiumProducerCrater</discoverTag>
+		<unknownLabel>strange crater</unknownLabel>
+		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
 			<MaxHitPoints>5000</MaxHitPoints>
 			<Beauty>175</Beauty>
@@ -394,7 +462,8 @@
 		</comps>
 		<daysToMature>15</daysToMature>
 		<leaveTiberium>true</leaveTiberium>
-		<killedVersion>DeadBlueCrater</killedVersion>
+		<leavesThing>DeadBlueCrater</leavesThing>
+		<!--
 		<spore>
 			<canBeGroundZero>true</canBeGroundZero>
 			<blossoms>
@@ -408,57 +477,61 @@
 			<TiberiumCruentus>0.3</TiberiumCruentus>
 			<RedTiberiumShard>0.01</RedTiberiumShard>
 		</evolutions>
-		<tiberiumTypes>
-			<li>TiberiumBlue</li>
-		</tiberiumTypes>
-		<tiberiumTerrain>
-			<li>TiberiumSoilBlue</li>
-			<li>TiberiumPodSoilBlue</li>
-		</tiberiumTerrain>
+		-->
+		<canBeGroundZero>true</canBeGroundZero>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
 			<growRadius>9</growRadius>
 		</spawner>
-		<plantsByDistance Inherit="False">
-			<li>
-				<plants>
-					<li>TiberiumGrass,0.35</li>
-					<li>TiberiumGrass_Blue,1.75</li>
-				</plants>
-				<chance>0</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumBush,1.5</li>
-				</plants>
-				<chance>0.25</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumShroom_Purple,2.5</li>
-					<li>TiberiumShroom_Blue,3.5</li>
-				</plants>
-				<chance>0.45</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumTree,4</li>
-				</plants>
-				<chance>0.65</chance>
-			</li>
-			<li>
-				<plants>
-					<li>SmallBlossom,12</li>
-				</plants>
-				<chance>0.7</chance>
-			</li>
-			<li>
-				<plants>
-					<li>AlocasiaBlossom,10</li>
-				</plants>
-				<chance>0.8</chance>
-			</li>
-		</plantsByDistance>
+		<tiberiumFieldRules>
+			<floraOptions>
+				<li>
+					<plants>
+						<li>TiberiumGrass,0.35</li>
+						<li>TiberiumGrass_Blue,1.75</li>
+					</plants>
+					<chance>0</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumBush,1.5</li>
+					</plants>
+					<chance>0.25</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumShroom_Purple,2.5</li>
+						<li>TiberiumShroom_Blue,3.5</li>
+					</plants>
+					<chance>0.45</chance>
+				</li>
+				<li>
+					<plants>
+						<li>TiberiumTree,4</li>
+					</plants>
+					<chance>0.65</chance>
+				</li>
+				<li>
+					<plants>
+						<li>SmallBlossom,12</li>
+					</plants>
+					<chance>0.7</chance>
+				</li>
+				<li>
+					<plants>
+						<li>AlocasiaBlossom,10</li>
+					</plants>
+					<chance>0.8</chance>
+				</li>
+			</floraOptions>
+			<terrainOptions>
+				<li>TiberiumSoilBlue</li>
+				<li>TiberiumPodSoilBlue</li>
+			</terrainOptions>
+			<crystalOptions>
+				<li>TiberiumBlue</li>
+			</crystalOptions>
+		</tiberiumFieldRules>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
@@ -493,10 +566,14 @@
 		<tickerType>Rare</tickerType>
 	</TiberiumRim.TRThingDef>
 	
+	
 	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumCruentus</defName>
 		<label>tiberium cruentus</label>
 		<description>This massive crystalline tower will slowly mature over the period of 7 days and detonate into an explosion of tiberium spores, easily covering the landscape with tiberium.</description>
+		<discoverTag>TiberiumProducerCrater</discoverTag>
+		<unknownLabel>strange formation</unknownLabel>
+		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<altitudeLayer>Floor</altitudeLayer>
 		<statBases>
 			<MaxHitPoints>2200</MaxHitPoints>
@@ -576,25 +653,30 @@
 		</comps>
 		<daysToMature>0</daysToMature>
 		<leaveTiberium>false</leaveTiberium>
-		<tiberiumTypes>
-			<li>TiberiumAboreus</li>
-		</tiberiumTypes>
-		<tiberiumTerrain>
-			<li>TiberiumPodSoil</li>
-			<li>TiberiumPodSoilBlue</li>
-		</tiberiumTerrain>
 		<spawner>
 			<spawnMode>SporeExplosion</spawnMode>
 			<explosionRange>10~25</explosionRange>
 			<sporeExplosionRadius>65</sporeExplosionRadius>
 			<growRadius>0</growRadius>
 		</spawner>
+		<tiberiumFieldRules>
+			<terrainOptions>
+				<li>TiberiumPodSoil</li>
+				<li>TiberiumPodSoilBlue</li>
+			</terrainOptions>
+			<crystalOptions>
+				<li>TiberiumAboreus</li>
+			</crystalOptions>
+		</tiberiumFieldRules>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumMonolith</defName>
-		<description>A blue monolith. These monoliths form from patches of blue Tiberium, and usually spread via tiny tiberium particles created by an explosion.</description>
 		<label>blue tiberium monolith</label>
+		<description>A blue monolith. These monoliths form from patches of blue Tiberium, and usually spread via tiny tiberium particles created by an explosion.</description>
+		<discoverTag>TiberiumProducerCrater</discoverTag>
+		<unknownLabel>strange monolith</unknownLabel>
+		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<size>(1,1)</size>
@@ -623,22 +705,27 @@
 		</comps>
 		<daysToMature>7</daysToMature>
 		<leaveTiberium>false</leaveTiberium>
-		<tiberiumTypes>
-			<li>TiberiumBlue</li>
-		</tiberiumTypes>
-		<tiberiumTerrain>
-			<li>TiberiumSoilBlue</li>
-		</tiberiumTerrain>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
 			<growRadius>5</growRadius>
 		</spawner>
+		<tiberiumFieldRules>
+			<terrainOptions>
+				<li>TiberiumSoilBlue</li>
+			</terrainOptions>
+			<crystalOptions>
+				<li>TiberiumBlue</li>
+			</crystalOptions>
+		</tiberiumFieldRules>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
 		<defName>RedTiberiumShard</defName>
-		<label>red tiberium shard</label>
-		<description>This massive red shard is of extraterrestrial origin. It has a very uneasy feeling to it and should be met with caution. The ground around it seems to very slowly grow red crystals similar to the shard.</description>
+		<label>red tiberium spire</label>
+		<description>This massive red spire is of extraterrestrial origin. It has a very uneasy feeling to it and should be met with caution. The ground around it seems to very slowly grow red crystals similar to the shard.</description>
+		<discoverTag>TiberiumProducerCrater</discoverTag>
+		<unknownLabel>strange spire</unknownLabel>
+		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
 			<MaxHitPoints>4500</MaxHitPoints>
 			<Beauty>150</Beauty>
@@ -733,7 +820,6 @@
 			</li>
 		</comps>
 		<spore>
-			<canBeGroundZero>true</canBeGroundZero>
 			<blossoms>
 				<li>SmallBlossom,0.25</li>
 				<li>AlocasiaBlossom,0.5</li>
@@ -741,18 +827,21 @@
 				<li>BlueBlossomTree,0.75</li>
 			</blossoms>
 		</spore>
+		<canBeGroundZero>true</canBeGroundZero>
 		<daysToMature>12</daysToMature>
 		<leaveTiberium>false</leaveTiberium>
-		<tiberiumTypes>
-			<li>TiberiumRed</li>
-		</tiberiumTypes>
-		<tiberiumTerrain>
-			<li>TiberiumSoilRed</li>
-		</tiberiumTerrain>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
 			<growRadius>3</growRadius>
 		</spawner>
+		<tiberiumFieldRules>
+			<terrainOptions>
+				<li>TiberiumSoilRed</li>
+			</terrainOptions>
+			<crystalOptions>
+				<li>TiberiumRed</li>
+			</crystalOptions>
+		</tiberiumFieldRules>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
@@ -760,6 +849,9 @@
 		<thingClass>TiberiumRim.Veinhole</thingClass>
 		<label>veinhole</label>
 		<description>The Veinhole is a type for itself, it is the producer of Tiberium Veins, spawns Veinmonsters and also creates Vein Hubs which are structures that will attack any living being inside their area of effect with veiny tentacles coming out of the ground.\n\nKilling the Veinhole kills all connected Veins and spawned Vein Hubs. The Veinhole has a chance to eat any pawn that comes too close.\n\nComing too close to the center might cause infection by poisonous gases.</description>
+		<discoverTag>VeinholeEncounter</discoverTag>
+		<unknownLabel>strange creature</unknownLabel>
+		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
 			<MaxHitPoints>4500</MaxHitPoints>
 			<Beauty>-160</Beauty>
@@ -809,17 +901,21 @@
 		</comps>
 		<rotatable>false</rotatable>
 		<randomizeRotationOnSpawn>false</randomizeRotationOnSpawn>
-		<growsFlora>false</growsFlora>
 		<daysToMature>12</daysToMature>
 		<leaveTiberium>false</leaveTiberium>
-		<killedVersion>DeadVeinhole</killedVersion>
-		<tiberiumTypes>
-			<li>TiberiumVein</li>
-		</tiberiumTypes>
+		<leavesThing>DeadVeinhole</leavesThing>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
 			<growRadius>3.75</growRadius>
 		</spawner>
+		<tiberiumFieldRules>
+			<terrainOptions>
+				<li>TiberiumSoilVein</li>
+			</terrainOptions>
+			<crystalOptions>
+				<li>TiberiumVein</li>
+			</crystalOptions>
+		</tiberiumFieldRules>
 		<filthLeaving>FilthTibBloodG</filthLeaving>
 	</TiberiumRim.TiberiumProducerDef>
 	

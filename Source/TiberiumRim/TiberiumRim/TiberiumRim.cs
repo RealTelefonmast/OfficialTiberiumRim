@@ -61,7 +61,7 @@ namespace TiberiumRim
                 def.comps.Add(new CompProperties_CrystalDrawer());
             }
         }
-
+        
         /*
         [HarmonyPatch(typeof(ModContentLoader<Texture2D>))]
         [HarmonyPatch("LoadPNG")]
@@ -105,7 +105,7 @@ namespace TiberiumRim
                 {
                     if (def.drawerType == DrawerType.MapMeshOnly && def.comps.Any(c => c is CompProperties_FX fx && fx.overlays.Any(o => o.mode != FXMode.Static)))
                         Log.Warning(def + " has dynamic overlays but is MapMeshOnly");
-                    if (def.factionDesignation == null && !def.needsBlueprint) continue;
+                    if (def.factionDesignation == null) continue;
                     TRThingDefList.Add(def);
                     ThingDef blueprint = TRUtils.MakeNewBluePrint(def, false, null);
                     ThingDef frame = TRUtils.MakeNewFrame(def);

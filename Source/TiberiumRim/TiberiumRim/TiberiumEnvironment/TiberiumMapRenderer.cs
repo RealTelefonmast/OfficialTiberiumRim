@@ -17,7 +17,7 @@ namespace TiberiumRim
         {
             this.map = map;
             MapComponent_Tiberium tiberium = map.Tiberium();
-            var grids = tiberium.TiberiumInfo.TiberiumGrid;
+            var grids = tiberium.TiberiumInfo.GetGrid();
             fogLayers = new TiberiumFieldFogLayer[3] {
             new TiberiumFieldFogLayer(MainTCD.Main.GreenColor, grids.fieldColorGrids[0]),
             new TiberiumFieldFogLayer(MainTCD.Main.BlueColor, grids.fieldColorGrids[1]),

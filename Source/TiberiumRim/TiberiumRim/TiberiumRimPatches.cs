@@ -345,8 +345,7 @@ namespace TiberiumRim
                 var suppression = map.GetComponent<MapComponent_Suppression>();
                 if (suppression.IsInSuppressorField(c, out List<Comp_Suppression> sups))
                 {
-                    Log.Message("Updating " + sups.Count + " suppressors.");
-                    sups.ForEach(s => s.UpdateCells(false));
+                    suppression.MarkDirty(sups);
                 }
             }
         }
@@ -378,8 +377,7 @@ namespace TiberiumRim
                     var suppression = b.Map.GetComponent<MapComponent_Suppression>();
                     if (suppression.IsInSuppressorField(b.Position, out List<Comp_Suppression> sups))
                     {
-                        Log.Message("Updating " + sups.Count + " suppressors.");
-                        sups.ForEach(s => s.UpdateCells(false));
+                        suppression.MarkDirty(sups);
                     }
                 }
                 //Research
@@ -391,20 +389,29 @@ namespace TiberiumRim
         [HarmonyPatch("DeSpawn")]
         public static class DeSpawnPatch
         {
+            private static IntVec3 instancePos;
+            private static Map instanceMap;
+            private static bool updateSuppressionGrid;
+
             public static bool Prefix(Thing __instance)
             {
-                if (__instance is Building b && !b.CanBeSeenOver())
-                {
-                    var suppression = b.Map.GetComponent<MapComponent_Suppression>();
-                    if (suppression.IsInSuppressorField(b.Position, out List<Comp_Suppression> sups))
-                    {
-                        Log.Message("Updating " + sups.Count + " suppressors.");
-                        sups.ForEach(s => s.UpdateCells(false));
-                    }
-                }
+                instancePos = __instance.Position;
+                instanceMap = __instance.Map;
+                updateSuppressionGrid = __instance is Building b && !b.CanBeSeenOver();
+
                 //Research
                 ResearchTargetTable.DeregisterTarget(__instance);
                 return true;
+            }
+
+            public static void Postfix()
+            {
+                if (updateSuppressionGrid)
+                {
+                    var suppression = instanceMap.GetComponent<MapComponent_Suppression>();
+                    if (!suppression.IsInSuppressorField(instancePos, out List<Comp_Suppression> sups)) return;
+                    suppression.MarkDirty(sups);
+                }
             }
         }
 
@@ -412,16 +419,11 @@ namespace TiberiumRim
         [HarmonyPatch("CanPlaceBlueprintOver")]
         public static class CanPlaceBlueprintOverPatch
         {
+            //This Patch allows certain structures to be placed over Tiberium
             public static void Postfix(ref bool __result, BuildableDef newDef, ThingDef oldDef)
             {
-                if(oldDef is TiberiumCrystalDef)
-                {
-                    if(newDef is TRThingDef tdef)
-                    {
-                        __result = tdef.destroyTiberium;
-                    }
-                    __result = false;
-                }
+                if (oldDef is TiberiumCrystalDef)
+                    __result = oldDef is TRThingDef tDef && tDef.clearTiberium;
             }
         }
 
@@ -431,6 +433,7 @@ namespace TiberiumRim
         {
             public static void Postfix(Thing t, bool roofed, bool roomUsesOutdoorTemperature, bool protectedByEdifice, TerrainDef terrain, ref float __result, List<string> reasons)
             {
+                if (!t.Spawned) return;
                 if (t.def.CanEverDeteriorate && t.Position.GetTiberium(t.Map) != null)
                 {
                     reasons?.Add("TR_Deterioration".Translate());

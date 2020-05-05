@@ -45,8 +45,10 @@
 			<li>TiberiumShroom_Yellow,0.1</li>
 			<li>TiberiumShroom_Blue,0.1</li>
 			<li>TiberiumTree,0.2</li>
+			<!--
 			<li>AlocasiaBlossom,0</li>
 			<li>SmallBlossom,0</li>
+			-->
 		</plantSupport>
 	</TiberiumRim.TiberiumTerrainDef>
 	
@@ -107,12 +109,7 @@
 			<li>Light</li>
 			<li>Diggable</li>
 		</affordances>
-		<terrainSupport>
-			<Soils>TiberiumSoilGreen, TiberiumGreen</Soils>
-			<Sands>TiberiumSandGreen, TiberiumShardsGreen</Sands>
-			<Mosses>TiberiumMossyTerrainGreen, TiberiumMossGreen</Mosses>
-			<Stones>TiberiumStoneGreen, TiberiumMossGreen</Stones>
-		</terrainSupport>
+		<mainType>TiberiumGreen</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
@@ -136,12 +133,7 @@
 			<li>TiberiumShroom_Purple,0.1</li>
 			<li>TiberiumGrass_Blue,0.4</li>
 		</plantSupport>
-		<terrainSupport>
-			<Soils>TiberiumSoilBlue, TiberiumBlue</Soils>
-			<Sands>TiberiumSandBlue, TiberiumShardsBlue</Sands>
-			<Mosses>TiberiumMossyTerrainBlue, TiberiumMossBlue</Mosses>
-			<Stones>TiberiumStoneBlue, TiberiumMossBlue</Stones>
-		</terrainSupport>
+		<mainType>TiberiumBlue</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
@@ -160,10 +152,7 @@
 			<li>Light</li>
 			<li>Diggable</li>
 		</affordances>
-		<terrainSupport>
-			<Soils>TiberiumSoilRed, TiberiumRed</Soils>
-			<Sands>TiberiumSandRed, TiberiumShardsRed</Sands>
-		</terrainSupport>
+		<mainType>TiberiumRed</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumStoneTerrain">
@@ -184,10 +173,7 @@
 			<li>Heavy</li>
 		</affordances>
 		<plantChanceFactor>0</plantChanceFactor>
-		<terrainSupport>
-			<Mosses>TiberiumMossyTerrainGreen, TiberiumMossGreen</Mosses>
-			<Stones>TiberiumStoneGreen, TiberiumMossGreen</Stones>
-		</terrainSupport>
+		<mainType>TiberiumMossGreen</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumStoneTerrain">
@@ -208,10 +194,7 @@
 			<li>Heavy</li>
 		</affordances>
 		<plantChanceFactor>0</plantChanceFactor>
-		<terrainSupport>
-			<Mosses>TiberiumMossyTerrainBlue, TiberiumMossBlue</Mosses>
-			<Stones>TiberiumStoneBlue, TiberiumMossBlue</Stones>
-		</terrainSupport>
+		<mainType>TiberiumMossBlue</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
@@ -230,9 +213,7 @@
 			<li>Light</li>
 			<li>Diggable</li>
 		</affordances>
-		<terrainSupport>
-			<Mosses>TiberiumMossyTerrainGreen, TiberiumMossGreen</Mosses>
-		</terrainSupport>
+		<mainType>TiberiumMossGreen</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
@@ -254,9 +235,7 @@
 		<plantSupport>
 			<li>TiberiumShroom_Purple,0.1</li>
 		</plantSupport>
-		<terrainSupport>
-			<Mosses>TiberiumMossyTerrainBlue, TiberiumMossBlue</Mosses>
-		</terrainSupport>
+		<mainType>TiberiumMossBlue</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSandTerrain">
@@ -279,9 +258,7 @@
 		</affordances>
 		<generatedFilth>Filth_Sand</generatedFilth>
 		<plantChanceFactor>0.1</plantChanceFactor>
-		<terrainSupport>
-			<Sands>TiberiumSandGreen, TiberiumShardsGreen</Sands>
-		</terrainSupport>
+		<mainType>TiberiumShardsGreen</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSandTerrain">
@@ -304,9 +281,7 @@
 		</affordances>
 		<generatedFilth>Filth_Sand</generatedFilth>
 		<plantChanceFactor>0.05</plantChanceFactor>
-		<terrainSupport>
-			<Sands>TiberiumSandBlue, TiberiumShardsBlue</Sands>
-		</terrainSupport>
+		<mainType>TiberiumShardsBlue</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSandTerrain">
@@ -329,9 +304,7 @@
 		</affordances>
 		<generatedFilth>Filth_Sand</generatedFilth>
 		<plantChanceFactor>0.01</plantChanceFactor>
-		<terrainSupport>
-			<Sands>TiberiumSandRed, TiberiumShardsRed</Sands>
-		</terrainSupport>
+		<mainType>TiberiumShardsRed</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
@@ -351,10 +324,7 @@
 			<li>Light</li>
 			<li>Diggable</li>
 		</affordances>
-		<terrainSupport>
-			<Soils>TiberiumPodSoil, TiberiumPod</Soils>
-			<Mosses>TiberiumPodSoil, TiberiumPod</Mosses>
-		</terrainSupport>
+		<mainType>TiberiumPod</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
@@ -378,10 +348,7 @@
 			<li>TiberiumShroom_Purple,0.1</li>
 			<li>TiberiumGrass_Blue,0.4</li>
 		</plantSupport>
-		<terrainSupport>
-			<Soils>TiberiumPodSoilBlue, TiberiumPodBlue</Soils>
-			<Mosses>TiberiumPodSoilBlue, TiberiumPodBlue</Mosses>
-		</terrainSupport>
+		<mainType>TiberiumPodBlue</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
@@ -400,12 +367,7 @@
 			<li>Light</li>
 			<li>Diggable</li>
 		</affordances>
-		<terrainSupport>
-			<Soils>TiberiumSoilGreen, TiberiumGreen</Soils>
-			<Sands>TiberiumSandGreen, TiberiumShardsGreen</Sands>
-			<Mosses>TiberiumMossyTerrainGreen, TiberiumMossGreen</Mosses>
-			<Stones>TiberiumStoneGreen, TiberiumMossGreen</Stones>
-		</terrainSupport>
+		<mainType>TiberiumAboreus</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
@@ -426,12 +388,7 @@
 			<li>Diggable</li>
 		</affordances>
 		<plantChanceFactor>0</plantChanceFactor>
-		<terrainSupport>
-			<Soils>TiberiumSoilVein, TiberiumVein</Soils>
-			<Sands>TiberiumSandRed, TiberiumVein</Sands>
-			<Mosses>TiberiumSoilVein, TiberiumVein</Mosses>
-			<Stones>TiberiumSoilVeinFlesh, TiberiumVein</Stones>
-		</terrainSupport>
+		<mainType>TiberiumVein</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
@@ -447,12 +404,6 @@
 			<Cleanliness>-100</Cleanliness>
 		</statBases>
 		<plantChanceFactor>0</plantChanceFactor>
-		<terrainSupport>
-			<Soils>TiberiumSoilVein, TiberiumVein</Soils>
-			<Sands>TiberiumSandRed, TiberiumVein</Sands>
-			<Mosses>TiberiumSoilVein, TiberiumVein</Mosses>
-			<Stones>TiberiumSoilVeinFlesh, TiberiumVein</Stones>
-		</terrainSupport>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
@@ -474,6 +425,46 @@
 			<li>Diggable</li>
 		</affordances>
 	</TiberiumRim.TiberiumTerrainDef>
+	
+	<TerrainDef Name="FloorBase_TR" Abstract="True">
+		<layerable>true</layerable>
+		<affordances>
+			<li>Light</li>
+			<li>Medium</li>
+			<li>Heavy</li>
+		</affordances>
+		<tags>
+			<li>Floor</li>
+		</tags>
+		<designationCategory>Floors</designationCategory>
+		<fertility>0</fertility>
+		<constructEffect>ConstructDirt</constructEffect>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+	</TerrainDef>
+	
+	<TerrainDef>
+		<defName>InfestedConcrete</defName>
+		<label>infested concrete</label>
+		<description>.</description>
+		<texturePath>Terrain/Natural/InfestedConcrete</texturePath>
+		<edgeType>Hard</edgeType>
+		<renderPrecedence>70</renderPrecedence>
+		<layerable>true</layerable>
+		<fertility>0</fertility>
+		<affordances>
+			<li>Light</li>
+			<li>Medium</li>
+			<li>Heavy</li>
+		</affordances>
+		<statBases>
+			<Beauty>-1</Beauty>
+			<WorkToBuild>100</WorkToBuild>
+		</statBases>
+		<costList>
+			<Steel>1</Steel>
+		</costList>
+	</TerrainDef>
+	
 	
 	<!-- Shallow -->
 	

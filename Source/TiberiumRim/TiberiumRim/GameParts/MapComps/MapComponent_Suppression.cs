@@ -11,66 +11,94 @@ namespace TiberiumRim
 {
     public class MapComponent_Suppression : MapComponent
     {
-        public Dictionary<Comp_Suppression, HashSet<IntVec3>> Suppressors = new Dictionary<Comp_Suppression, HashSet<IntVec3>>();
-
-        public SuppressionGrid SuppressionGrid;
+        //public Dictionary<Comp_Suppression, List<IntVec3>> Suppressors = new Dictionary<Comp_Suppression, List<IntVec3>>();
+        public List<Comp_Suppression> Suppressors = new List<Comp_Suppression>();
+        private readonly SuppressionGrid grid;
+        private readonly List<Comp_Suppression> dirtySuppressors = new List<Comp_Suppression>();
 
         public MapComponent_Suppression(Map map) : base(map)
         {
-            SuppressionGrid = new SuppressionGrid(map);
+            grid = new SuppressionGrid(map);
         }
+
+        public override void MapComponentTick()
+        {
+            base.MapComponentTick();
+            UpdateDirties();
+        }
+
+        public IEnumerable<IntVec3> ActiveCells => grid.suppressionBools.ActiveCells;
 
         public bool IsInSuppressorField(IntVec3 cell)
         {
-            return SuppressionGrid.GetCellBool(map.cellIndices.CellToIndex(cell));
+            return grid.suppressionBools[cell]; //.GetCellBool(map.cellIndices.CellToIndex(cell));
         }
 
         public bool IsInSuppressorField(IntVec3 cell, out List<Comp_Suppression> suppressors)
         {
-            suppressors = Suppressors.Where(k => k.Value.Contains(cell)).Select(k => k.Key).ToList();
-            return !suppressors.NullOrEmpty();
+            suppressors = Suppressors.Where(s => s.SuppressionCells.Contains(cell)).ToList();
+            return suppressors.Count > 0;
         }
 
-        public void RegisterOrUpdateSuppressor(Comp_Suppression suppressor, List<IntVec3> cells)
+        public void UpdateSuppressors()
         {
-            if (Suppressors.ContainsKey(suppressor))
+            foreach (var suppressor in Suppressors)
             {
-                var list = Suppressors[suppressor];
-                for (var i = list.Count - 1; i >= 0; i--)
-                {
-                    var v = list.ElementAt(i);
-                    if (cells.Contains(v))
-                        cells.Remove(v);
-                    else
-                    {
-                        list.Remove(v);
-                        SuppressionGrid.Set(v, false);
-                    }
-                }
-                foreach (var v in cells)
-                {
-                    list.Add(v);
-                    SuppressionGrid.Set(v, true);
-                }
+                UpdateGrid(suppressor);
             }
-            else
-            {
-                Suppressors.Add(suppressor, new HashSet<IntVec3>(cells));
-                foreach (var v in cells)
-                {
-                    SuppressionGrid.Set(v, true);
-                }
-            }
+        }
+
+        public void UpdateGrid(Comp_Suppression suppressor)
+        {
+            RemoveFromGrid(suppressor.SuppressionCells);
+            suppressor.UpdateSuppressionCells();
+            AddToGrid(suppressor.SuppressionCells);
+        }
+
+        public void RegisterSuppressor(Comp_Suppression suppressor)
+        {
+            Suppressors.Add(suppressor);
         }
 
         public void DeregisterSuppressor(Comp_Suppression suppressor)
         {
-            if (!Suppressors.ContainsKey(suppressor)) return;
-            foreach (var v in Suppressors[suppressor])
-            {
-                SuppressionGrid.Set(v, false);
-            }
             Suppressors.Remove(suppressor);
+        }
+
+        public void RemoveFromGrid(List<IntVec3> cells)
+        {
+            foreach (var cell in cells)
+            {
+                grid.Set(cell, false);
+            }
+        }
+
+        public void AddToGrid(List<IntVec3> cells)
+        {
+            foreach (var cell in cells)
+            {
+                grid.Set(cell, true);
+            }
+        }
+
+        public void MarkDirty(List<Comp_Suppression> suppressors)
+        {
+            dirtySuppressors.AddRange(suppressors);
+        }
+
+        public void MarkDirty(Comp_Suppression suppresor)
+        {
+            dirtySuppressors.Add(suppresor);
+        }
+
+        public void UpdateDirties()
+        {
+            for (var index = dirtySuppressors.Count - 1; index >= 0; index--)
+            {
+                var suppressor = dirtySuppressors[index];
+                UpdateGrid(suppressor);
+                dirtySuppressors.Remove(suppressor);
+            }
         }
     }
 }

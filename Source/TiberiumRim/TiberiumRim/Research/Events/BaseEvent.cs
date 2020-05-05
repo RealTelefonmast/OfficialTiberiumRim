@@ -9,11 +9,18 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class BaseEvent
+    public class BaseEvent : IExposable
     {
         public EventDef def;
         private int startTick = 0;
         private int endTick = 0;
+
+        public void ExposeData()
+        {
+            Scribe_Defs.Look(ref def, "def");
+            Scribe_Values.Look(ref startTick, "startTick");
+            Scribe_Values.Look(ref endTick, "endTick");
+        }
 
         public void StartEvent(EventDef def)
         {

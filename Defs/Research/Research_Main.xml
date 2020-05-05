@@ -118,6 +118,7 @@
 		<workType>Research</workType>
 		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<distanceFromTarget>10</distanceFromTarget>
 		<taskTarget>
 			<targetDefs>
 				<li>TiberiumCraterGreen</li>

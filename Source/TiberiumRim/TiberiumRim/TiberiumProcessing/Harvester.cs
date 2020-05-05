@@ -28,6 +28,7 @@ namespace TiberiumRim
     public class HarvesterKindDef : MechanicalPawnKindDef
     {
         public float unloadValue = 0.125f;
+        public float harvestValue = 0.125f;
         public int maxStorage;
         public float explosionRadius = 7;
         public ThingDef wreckDef;
@@ -46,8 +47,8 @@ namespace TiberiumRim
 
         //SearchSettings
         public HarvestMode harvestMode = HarvestMode.Nearest;
-        public TiberiumProducer producerToFocus;
-        public TiberiumCrystalDef preferredType;
+        public TiberiumProducer preferedField;
+        public TiberiumCrystalDef preferedType;
 
         // ProgressBar
         private static readonly Material UnfilledMat = SolidColorMaterials.NewSolidColorMaterial(new Color(0.3f, 0.3f, 0.3f, 0.65f), ShaderDatabase.MetaOverlay);
@@ -95,7 +96,7 @@ namespace TiberiumRim
                 GenExplosion.DoExplosion(Position, Map,radius, DamageDefOf.Bomb, this, damage, 5, null, null, null, null, spawnDef, 0.18f);
             }
             GenSpawn.Spawn(kindDef.wreckDef, Position, Map);
-            base.DeSpawn(DestroyMode.KillFinalize);
+            DeSpawn(DestroyMode.KillFinalize);
         }
 
         public override void Tick()
@@ -113,15 +114,15 @@ namespace TiberiumRim
         public override float[] OpacityFloats => new float[] { Container.StoredPercent };
         public override bool[] DrawBools => new bool[] { true };
 
-        public TiberiumCrystal HarvestTarget
+        public List<TiberiumCrystal> HarvestQueue
         {
             get
             {
                 if(!TNWManager.ReservationManager.TargetValidFor(this))
                 {
-                    TNWManager.ReservationManager.TryUpdate();
+                    TNWManager.ReservationManager.FillQueuesForExistingHarvesters();
                 }
-                return TNWManager.ReservationManager.Reservations[this];
+                return TNWManager.ReservationManager.ReservedQueues[this];
             }
         }
 
@@ -166,18 +167,16 @@ namespace TiberiumRim
             }
         }
 
-        public TiberiumCrystal CurrentHarvestTarget => TNWManager.ReservationManager.Reservations[this];
-
         public IntVec3 IdlePos => ParentBuilding != null ? mainRefinery.PositionFor(this) : Position;
 
-        private bool TiberiumForModeAvailable => harvestMode == HarvestMode.Moss ? TiberiumManager.MossAvailable : TiberiumManager.TiberiumAvailable;
+        private bool HasAvailableTiberium => harvestMode == HarvestMode.Moss ? TiberiumManager.MossAvailable : TiberiumManager.TiberiumAvailable;
 
         public HarvesterPriority CurrentPriority
         {
             get
             {
                 if (Drafted) return HarvesterPriority.None;
-                if (!IsWaiting && !ForcedReturn && !Unloading && !Container.CapacityFull && TiberiumForModeAvailable)
+                if (!IsWaiting && !ForcedReturn && !Unloading && !Container.CapacityFull && HasAvailableTiberium)
                 {
                     return HarvesterPriority.Harvest;
                 }
@@ -251,7 +250,7 @@ namespace TiberiumRim
                 sb.AppendLine("Forced Return: " + ForcedReturn);
                 sb.AppendLine("Unloading: " + Unloading);
                 sb.AppendLine("Capacity Full: " + Container.CapacityFull);
-                sb.AppendLine("Tiberium f/mode Available: " + TiberiumForModeAvailable);
+                sb.AppendLine("Tiberium f/mode Available: " + HasAvailableTiberium);
                 sb.AppendLine("Can Unload: " + CanUnload);
 
                 sb.AppendLine("Exact Storage: " + Container.TotalStorage);
@@ -259,8 +258,9 @@ namespace TiberiumRim
                 sb.AppendLine("Should Unload: " + ShouldUnload);
                 sb.AppendLine("Should Idle: " + ShouldIdle);
                 sb.AppendLine("Mode: " + harvestMode);
-                sb.AppendLine("Current Harvest Target: " + CurrentHarvestTarget);               
-                sb.AppendLine("Valid: " + TNWManager.ReservationManager.TargetValidFor(this) + " CanBeHarvested: " + CurrentHarvestTarget?.CanBeHarvestedBy(this) + " Spawned: " + CurrentHarvestTarget?.Spawned + " Destroyed: " + CurrentHarvestTarget?.Destroyed);
+                sb.AppendLine("HarvesterQueue: " + HarvestQueue.Count);
+                //sb.AppendLine("Current Harvest Target: " + CurrentHarvestTarget);               
+                //sb.AppendLine("Valid: " + TNWManager.ReservationManager.TargetValidFor(this) + " CanBeHarvested: " + CurrentHarvestTarget?.CanBeHarvestedBy(this) + " Spawned: " + CurrentHarvestTarget?.Spawned + " Destroyed: " + CurrentHarvestTarget?.Destroyed);
             }
             return sb.ToString().TrimEndNewlines();
         }

@@ -26,7 +26,7 @@ namespace TiberiumRim
         //public TurretBurstMode burstMode = TurretBurstMode.Normal;
     }
 
-    public class TurretHolderProps
+    public class TurretHolderProperties
     {
         public TurretHubProperties hub;
         public List<TurretProperties> turrets;

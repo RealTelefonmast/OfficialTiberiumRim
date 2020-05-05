@@ -27,7 +27,7 @@ namespace TiberiumRim
         private static float bannerHeight = 50;
 
         private static float tabMargin = 10f;
-        private static float mainRectLeftPct = 0.35f;
+        private static float mainRectLeftPct = 0.40f;
 
         private Vector2 projectScrollPos = Vector2.zero;
         private Vector2 taskScrollPos = Vector2.zero;
@@ -106,13 +106,13 @@ namespace TiberiumRim
             GUI.EndGroup();
 
             //TODO: REMOVE FROM
-            if (!DebugSettings.godMode) return;
-            Text.Anchor = TextAnchor.UpperLeft;
-            Widgets.DrawHighlightIfMouseover(inRect);
-            GUI.color = Color.red;
-            Widgets.Label(inRect, inRect.size.ToString());
-            Text.Anchor = default;
-            GUI.color = Color.white;
+            // if (!DebugSettings.godMode) return;
+            // Text.Anchor = TextAnchor.UpperLeft;
+            // Widgets.DrawHighlightIfMouseover(inRect);
+            // GUI.color = Color.red;
+            // Widgets.Label(inRect, inRect.size.ToString());
+            // Text.Anchor = default;
+            // GUI.color = Color.white;
             //TODO: REMOVE TO
         }
 
@@ -141,16 +141,6 @@ namespace TiberiumRim
                     break;
             }
             GUI.EndGroup();
-
-            //TODO: REMOVE FROM
-            if (!DebugSettings.godMode) return;
-            Text.Anchor = TextAnchor.LowerLeft;
-            Widgets.DrawHighlightIfMouseover(rect);
-            GUI.color = Color.red;
-            Widgets.Label(rect, rect.size.ToString());
-            Text.Anchor = default;
-            GUI.color = Color.white;
-            //TODO: REMOVE TO
         }
 
         /*
@@ -180,16 +170,6 @@ namespace TiberiumRim
             }
             Widgets.EndScrollView();
             GUI.EndGroup();
-
-            //TODO: REMOVE FROM
-            if (!DebugSettings.godMode) return;
-            Text.Anchor = TextAnchor.UpperLeft;
-            Widgets.DrawHighlightIfMouseover(rect);
-            GUI.color = Color.red;
-            Widgets.Label(rect, rect.size.ToString());
-            Text.Anchor = default;
-            GUI.color = Color.white;
-            //TODO: REMOVE TO
         }
 
         private bool ShouldShow(TResearchGroupDef group)
@@ -285,8 +265,6 @@ namespace TiberiumRim
         private void DrawRightPart(Rect rect)
         {
             Rect menuRect = new Rect(rect.x, rect.y + tabHeight, rect.width, rect.height - tabHeight);
-            //TODO: remove back
-            Rect menuBack = new Rect(rect.x, rect.y + tabHeight, rect.width, rect.height - tabHeight);
             Widgets.DrawMenuSection(menuRect);
 
             menuRect = menuRect.ContractedBy(5f);
@@ -295,7 +273,8 @@ namespace TiberiumRim
 
             Rect LeftPart = menuRect.LeftPart(mainRectLeftPct);
             Rect RightPart = menuRect.RightPart(1f - mainRectLeftPct);//(new Rect(LeftThird.width, 0, menuRect.width - LeftThird.width, menuRect.height));
-
+            Log.Message("Widths - " + LeftPart.width + " | " + RightPart.width);
+            
             //LeftPart
             //Desc
 
@@ -352,20 +331,11 @@ namespace TiberiumRim
             if (SelProject != null && !SelProject.tasks.NullOrEmpty())
                 DrawTasks(TaskRect);
             GUI.EndGroup();
-
-            //TODO: REMOVE FROM
-            if (!DebugSettings.godMode) return;
-            Text.Anchor = TextAnchor.UpperCenter;
-            Widgets.DrawHighlightIfMouseover(menuBack);
-            GUI.color = Color.red;
-            Widgets.Label(menuBack, menuBack.size.ToString());
-            Text.Anchor = default;
-            GUI.color = Color.white;
-            //TODO: REMOVE TO
         }
 
         private void AddGapLine(Rect rect, float gapSize, out float newY)
         {
+            //Adds 
             GUI.color = TRMats.GapLineColor;
             Widgets.DrawLineHorizontal(rect.x, rect.y + (gapSize / 2), rect.width);
             newY = rect.y + gapSize;
@@ -386,35 +356,32 @@ namespace TiberiumRim
         {
             if (CurTask == null) return;
             Widgets.DrawMenuSection(rect);
-
-            GUI.BeginGroup(rect.ContractedBy(5f));
+            rect = rect.ContractedBy(5f);
+            GUI.BeginGroup(rect);
 
             Rect newRect = rect.AtZero();
+
+
             string taskInfoTitle = "TR_CurTask".Translate(CurTask.LabelCap);
             Vector2 titleSize = Text.CalcSize(taskInfoTitle);
-            Rect TitlePart = newRect.TopPartPixels(titleSize.y);
-            Widgets.Label(TitlePart, taskInfoTitle);
-            newRect = newRect.BottomPartPixels(newRect.height - titleSize.y);
+            Rect titleRect = newRect.TopPartPixels(titleSize.y);
+            Widgets.Label(titleRect, taskInfoTitle);
+            Rect BGRect = newRect.BottomPartPixels(newRect.height - titleSize.y);
 
-            Widgets.DrawBoxSolid(newRect, taskInfoBG);
-            AddGapLine(newRect, 0, out float newY);
+            Widgets.DrawBoxSolid(BGRect, taskInfoBG);
+            AddGapLine(BGRect, 0, out float newY);
 
             //TaskInfo
-            float taskInfoStringHeight = Text.CalcHeight(CurTask.TaskInfo, newRect.width);
-            Rect targetStringRect = new Rect(newRect.x, newY + 5, newRect.width, taskInfoStringHeight);
-            Widgets.TextArea(targetStringRect, CurTask.TaskInfo, true);
+            float taskInfoStringHeight = Text.CalcHeight(CurTask.TaskInfo, BGRect.width);
+            Rect textRect = new Rect(BGRect.x, newY + 5, BGRect.width, taskInfoStringHeight - 20);
+            Widgets.TextArea(textRect, CurTask.TaskInfo, true);
+
+            //Task Functions
+            Rect funcRect = BGRect.BottomPartPixels(20);
+            AddGapLine(funcRect, 0, out float newY2);
+
 
             GUI.EndGroup();
-
-            //TODO: REMOVE FROM
-            if (!DebugSettings.godMode) return;
-            Text.Anchor = TextAnchor.LowerLeft;
-            Widgets.DrawHighlightIfMouseover(rect);
-            GUI.color = Color.red;
-            Widgets.Label(rect, rect.size.ToString());
-            Text.Anchor = default;
-            GUI.color = Color.white;
-            //TODO: REMOVE TO
         }
 
         private void DrawTasks(Rect rect)
@@ -435,16 +402,6 @@ namespace TiberiumRim
             }
             Widgets.EndScrollView();
             GUI.EndGroup();
-
-            //TODO: REMOVE FROM
-            if (!DebugSettings.godMode) return;
-            Text.Anchor = TextAnchor.LowerLeft;
-            Widgets.DrawHighlightIfMouseover(rect);
-            GUI.color = Color.red;
-            Widgets.Label(rect, rect.size.ToString());
-            Text.Anchor = default;
-            GUI.color = Color.white;
-            //TODO: REMOVE TO
         }
 
         //Draw Task - Design depends on status: current | to do | finished

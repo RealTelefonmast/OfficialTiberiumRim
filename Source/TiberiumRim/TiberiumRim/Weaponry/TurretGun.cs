@@ -13,7 +13,6 @@ namespace TiberiumRim
     public class TurretGun : IAttackTarget, IAttackTargetSearcher
     {
         public ThingWithComps parent;
-        private Thing gun;
 
         public TurretProperties props;
         public TurretGunTop top;
@@ -38,8 +37,9 @@ namespace TiberiumRim
         protected CompRefuelable RefuelComp => ParentHolder.RefuelComp;
         protected CompPowerTrader PowerComp => ParentHolder.PowerComp;
         protected CompMannable MannableComp => ParentHolder.MannableComp;
-        public CompEquippable GunCompEq => gun.TryGetComp<CompEquippable>();
-        public Thing Gun => gun;
+        public CompEquippable GunCompEq => Gun.TryGetComp<CompEquippable>();
+        public Thing Gun { get; private set; }
+
         public Thing Thing => parent;
 
         public Verb_TR AttackVerb => (Verb_TR)GunCompEq.PrimaryVerb;
@@ -60,7 +60,7 @@ namespace TiberiumRim
             {
                 if (!ParentHolder.PlayerControlled)
                     return false;
-                CompChangeableProjectile compChangeableProjectile = gun.TryGetComp<CompChangeableProjectile>();
+                CompChangeableProjectile compChangeableProjectile = Gun.TryGetComp<CompChangeableProjectile>();
                 return compChangeableProjectile != null && compChangeableProjectile.Loaded;
             }
         }
@@ -72,7 +72,7 @@ namespace TiberiumRim
         {
             this.props = props;
             this.parent = parent;
-            gun = ThingMaker.MakeThing(props.turretGunDef, null);
+            Gun = ThingMaker.MakeThing(props.turretGunDef, null);
             UpdateGunVerbs();
             if (HasTurret)
             {
@@ -89,7 +89,7 @@ namespace TiberiumRim
 
         private void UpdateGunVerbs()
         {
-            List<Verb> allVerbs = gun.TryGetComp<CompEquippable>().AllVerbs;
+            List<Verb> allVerbs = Gun.TryGetComp<CompEquippable>().AllVerbs;
             foreach (var verb in allVerbs)
             {
                 verb.caster = parent;
@@ -112,7 +112,7 @@ namespace TiberiumRim
             }
             if (CanExtractShell && ParentHolder.MannedByColonist)
             {
-                CompChangeableProjectile compChangeableProjectile = this.gun.TryGetComp<CompChangeableProjectile>();
+                CompChangeableProjectile compChangeableProjectile = this.Gun.TryGetComp<CompChangeableProjectile>();
                 if (!compChangeableProjectile.allowedShellsSettings.AllowedToAccept(compChangeableProjectile.LoadedShell))
                     ExtractShell();
             }
@@ -234,7 +234,7 @@ namespace TiberiumRim
 
         private void ExtractShell()
         {
-            GenPlace.TryPlaceThing(this.gun.TryGetComp<CompChangeableProjectile>().RemoveShell(), parent.Position, parent.Map, ThingPlaceMode.Near, null, null);
+            GenPlace.TryPlaceThing(this.Gun.TryGetComp<CompChangeableProjectile>().RemoveShell(), parent.Position, parent.Map, ThingPlaceMode.Near, null, null);
         }
 
         public void ResetForcedTarget()

@@ -19,20 +19,20 @@ namespace TiberiumRim
         public HashSet<Thing> AllTiberiumCrystals = new HashSet<Thing>();
         public List<TiberiumCrystal> TickList = new List<TiberiumCrystal>();
 
+        //Tiberium Access Lists
         public Dictionary<HarvestType, List<TiberiumCrystal>> TiberiumCrystals = new Dictionary<HarvestType, List<TiberiumCrystal>>();
         public Dictionary<HarvestType, List<TiberiumCrystalDef>> TiberiumCrystalTypes = new Dictionary<HarvestType, List<TiberiumCrystalDef>>();
         public Dictionary<TiberiumCrystalDef, List<TiberiumCrystal>> TiberiumCrystalsByDef = new Dictionary<TiberiumCrystalDef, List<TiberiumCrystal>>();
         public Dictionary<Region, List<TiberiumCrystal>> TiberiumByRegion = new Dictionary<Region, List<TiberiumCrystal>>();
 
-        public TiberiumGrid TiberiumGrid;
-        public TiberiumFloraGrid FloraGrid;
+        //Grids
+        private readonly TiberiumGrid TiberiumGrid;
         public int TotalCount;
 
         public TiberiumMapInfo(Map map)
         {
             this.map = map;
             TiberiumGrid = new TiberiumGrid(map);
-            FloraGrid = new TiberiumFloraGrid(map);
             for (int i = 0; i < 3; i++)
             {
                 HarvestType type = (HarvestType)i;
@@ -43,11 +43,66 @@ namespace TiberiumRim
 
         public TiberiumCrystalDef MostValuableType => TiberiumCrystalTypes[HarvestType.Valuable].MaxBy(t => t.tiberium.harvestValue);
 
-        public float Coverage => TotalCount / (float) map.cellIndices.NumGridCells;
+        public float Coverage => TotalCount / (float) map.Area;
 
-        public void TickTiberium()
+        public void Tick()
         {
-            
+            if (Find.TickManager.TicksGame % 250 == 0)
+            {
+                TiberiumGrid.UpdateDirties();
+            }
+        }
+
+        public void Update()
+        {
+            TiberiumGrid.drawer.RegenerateMesh();
+            TiberiumGrid.drawer.MarkForDraw();
+            TiberiumGrid.drawer.CellBoolDrawerUpdate();
+        }
+
+        public TiberiumGrid GetGrid()
+        {
+            return TiberiumGrid;
+        }
+
+        public TiberiumCrystal TiberiumAt(IntVec3 cell)
+        {
+            return TiberiumGrid.TiberiumCrystals[map.cellIndices.CellToIndex(cell)];
+        }
+
+        public bool HasTiberiumAt(IntVec3 cell)
+        {
+            return TiberiumGrid.tiberiumGrid[cell];
+        }
+
+        public bool CanGrowFrom(IntVec3 cell)
+        {
+            return TiberiumGrid.growFromGrid[cell];
+        }
+
+        public bool CanGrowTo(IntVec3 cell)
+        {
+            return TiberiumGrid.growToGrid[cell] || TiberiumGrid.forceGrow[cell];
+        }
+
+        public bool IsAffectedCell(IntVec3 cell)
+        {
+            return TiberiumGrid.affectedCells[cell];
+        }
+
+        public bool ForceGrowAt(IntVec3 cell)
+        {
+            return TiberiumGrid.forceGrow[cell];
+        }
+
+        public void SetForceGrowBool(IntVec3 c, bool val)
+        {
+            TiberiumGrid.forceGrow[c] = val;
+        }
+
+        public void SetFieldColor(IntVec3 cell, bool value, TiberiumValueType type)
+        {
+            TiberiumGrid.SetFieldColor(cell, value, type);
         }
 
         public void RegisterTiberium(TiberiumCrystal crystal)
@@ -86,17 +141,6 @@ namespace TiberiumRim
             {
                 TiberiumCrystalTypes[def.HarvestType].Remove(crystal.def);
             }
-        }
-
-        public void RegisterTiberiumPlant(TiberiumPlant plant)
-        {
-            TiberiumGrid.SetPlant(plant.Position, true);
-            FloraGrid.Notify_PlantSpawned(plant);
-        }
-
-        public void DeregisterTiberiumPlant(TiberiumPlant plant)
-        {
-            TiberiumGrid.SetPlant(plant.Position, false);
         }
     }
 }

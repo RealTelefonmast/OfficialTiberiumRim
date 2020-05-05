@@ -25,7 +25,7 @@ namespace TiberiumRim
             if (TutorSystem.TutorialMode && !TutorSystem.AllowAction(new EventPack(base.TutorTagDesignate, c)))
                 return;
 
-            if (DebugSettings.godMode || this.entDef.GetStatValueAbstract(StatDefOf.WorkToBuild, stuffDef) == 0f)
+            if (DebugSettings.godMode || entDef.GetStatValueAbstract(StatDefOf.WorkToBuild, stuffDef).Equals(0f))
             {
                 if (this.entDef is TerrainDef)            
                     base.Map.terrainGrid.SetTerrain(c, (TerrainDef)this.entDef);         

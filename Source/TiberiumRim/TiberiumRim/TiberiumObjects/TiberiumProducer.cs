@@ -10,114 +10,326 @@ using Verse;
 
 namespace TiberiumRim
 {
-
-    public class CellPath : IExposable
-    {
-        public Map map;
-        public IntVec3 start;
-        public IntVec3 end;
-
-        public IntVec3 pusher;
-        public float growRadius;
-
-
-        private readonly List<IntVec3> pathCells = new List<IntVec3>();
-        private readonly Action<IntVec3> processor;
-        private readonly Predicate<IntVec3> predicate;
-
-        private IntVec3 nextCell;
-        private IntVec3 lastCell;
-        private float lastDist;
-        private int attempts = 0;
-        private bool finished = false;
-
-        public CellPath() { }
-
-        public CellPath(Map map, IntVec3 start, IntVec3 end, IntVec3 pusher, float growRadius, Predicate<IntVec3> endCondition, Action<IntVec3> processor = null)
-        {
-            this.map = map;
-            this.start = start;
-            this.end = end;
-            this.pusher = pusher;
-            this.growRadius = growRadius;
-            this.predicate = endCondition;
-            this.processor = processor;
-
-            if (pusher.IsValid)
-                lastDist = pusher.DistanceTo(start);
-
-            nextCell = start;
-        }
-
-        public void ExposeData()
-        {
-            
-        }
-
-        public void Grow(float radius, ref List<IntVec3> cells)
-        {
-            for (;;)
-            {
-                if (lastDist >= radius || attempts > 8) break;
-                Grow(ref cells);
-            }
-        }
-
-        public void Grow(int amount, ref List<IntVec3> cells)
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                Grow(ref cells);
-            }
-        }
-
-        public void Grow(ref List<IntVec3> cells)
-        {
-            if (pusher.IsValid)
-            {
-                IntVec3 cell = GrowAway();
-                if (cell.IsValid)
-                {
-                    cells.Add(cell);
-                    pathCells.Add(cell);
-                }
-            }
-            else if (end.IsValid)
-            {
-                GrowTo();
-            }
-        }
-
-        private IntVec3 GrowAway()
-        {
-            float dist = pusher.DistanceTo(nextCell);
-            var curDist = lastDist;
-            lastDist = dist;
-
-            if ((predicate != null && predicate(nextCell)) || dist >= growRadius)
-                return IntVec3.Invalid;
-
-            if (dist >= curDist && nextCell.InBounds(map) && nextCell.Standable(map) && !pathCells.Contains(nextCell))
-            {
-                lastCell = nextCell;
-                nextCell = nextCell.RandomAdjacentCell8Way();
-                attempts = 0;
-                return lastCell;
-            }
-            nextCell = lastCell.RandomAdjacentCell8Way();
-            attempts++;
-            return IntVec3.Invalid;
-        }
-
-        private void GrowTo()
-        {
-
-        }
-
-        public List<IntVec3> CurrentPath => pathCells;
-    }
+    /* TIBERIUM PRODUCER
+     * The Tiberium Producer is the main source of Tiberium
+     * Functionality:
+     * Upon First Spawn:
+     * Creates area of initial mutation area
+     * Creates Cell-Paths for tiberium growth -> Instant on spawn, instead of procedural via tick
+     * Sets time until full maturity
+     * Resets all counters
+     * 
+     * Phases:
+     * Maturing - The inital mutation area slowly grows from center to outmost cell. (CellMutator Class?)
+     * Spawning Blossoms
+     * Spawning Tiberium Lattice
+     * 
+     * */
 
     public class TiberiumProducer : TRBuilding
+    {
+        public new TiberiumProducerDef def;
+
+        private AreaMutator areaMutator;
+        private TiberiumField tiberiumField;
+
+        private List<CellPath> cellPaths = new List<CellPath>();
+
+        //Values
+        private int ticksUntilTiberium;
+        private int ticksUntilSpore;
+
+        //DebugSettings
+        public bool fastGrow = false;
+        public bool turnOffLight = false;
+        private bool showField = false;
+        private bool showAffect = false;
+        private bool showTileIterator = false;
+        private bool showPotentialField = false;
+
+        public override string LabelCap => IsGroundZero ? base.LabelCap + " (GZ)" : base.LabelCap;
+
+        public bool IsGroundZero { get; set; }
+        public bool ShouldSpawnSpore => def.spore != null && IsGroundZero && ticksUntilSpore <= 0 && MatureEnough;
+        public bool ShouldSpawnTiberium => TiberiumTypes.Any() && ticksUntilTiberium <= 0 && MatureEnough;
+        //public bool ShouldEvolve => evolvesTo != null && ticksToEvolution <= 0;
+        private bool MatureEnough => (IsFullyMature || areaMutator.ProgressPct >= def.spawner.minDaysToSpread / def.daysToMature);
+        public bool IsFullyMature => areaMutator.Finished;
+        public float GrowthRadius => IsGroundZero ? def.spawner.growRadius * 2.5f : def.spawner.growRadius;
+        public float GroundZeroFactor => IsGroundZero ? 2.7f : 1f;
+
+        public TiberiumFieldRuleset Ruleset => def?.tiberiumFieldRules;
+        
+        public IEnumerable<TiberiumCrystalDef> TiberiumTypes => Ruleset.crystalOptions.Select(t => t.thing as TiberiumCrystalDef);
+        public List<IntVec3> FieldCells => tiberiumField.FieldCells;
+
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            def = base.def as TiberiumProducerDef;
+
+            if (respawningAfterLoad) return;
+            //Init of saved components - Done Once
+            //Try Set GroundZero
+            WorldTiberiumComp.SetGroundZero(this);
+
+            //Init Tiberium Field
+            tiberiumField = new TiberiumField(this);
+
+            //Init Tickers
+            ResetTiberiumCounter();
+            ResetSporeCounter();
+
+            //AreaMutator, sets and processes the initial corruption Area
+            int mutationTicks = (int)(GenDate.TicksPerDay * (def.daysToMature * GroundZeroFactor));
+            areaMutator = new AreaMutator(Position, map, GrowthRadius, def.tiberiumFieldRules, mutationTicks, 1f, tiberiumField);
+
+            //Init CellPaths for Tiberium growth
+            bool Validator(IntVec3 c) => c.InBounds(map) && c.Standable(map);
+            bool EndCon(IntVec3 c) => Position.DistanceTo(c) > GrowthRadius;
+
+            void Processor(IntVec3 c)
+            {
+                TiberiumComp.TiberiumInfo.SetForceGrowBool(c, true);
+            }
+            List<IntVec3> cells = new List<IntVec3>();
+            var AdjacentCells = GenAdj.CellsAdjacent8Way(this).ToList();
+            for (int i = 0; i < AdjacentCells.Count - 1; i++)
+            {
+                if (i % 3 == 0)
+                {
+                    CellPath path = new CellPath(map, AdjacentCells[i], IntVec3.Invalid, Position, GrowthRadius, Validator, EndCon, Processor);
+                    cellPaths.Add(path);
+                    path.CreatePath();
+                    //path.Grow(GrowthRadius, ref cells);
+                }
+            }
+        }
+
+        public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
+        {
+            base.DeSpawn(mode);
+        }
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Deep.Look(ref areaMutator, "areaMutator");
+            Scribe_Deep.Look(ref tiberiumField, "areaMutator");
+            Scribe_Values.Look(ref ticksUntilTiberium, "ticksUntilTiberium");
+            Scribe_Values.Look(ref ticksUntilSpore, "ticksUntilSpore");
+        }
+
+        public override void Tick()
+        {
+            base.Tick();
+            if (!Spawned) return;
+
+            SpawningTick();
+
+            areaMutator?.Tick();
+            tiberiumField?.Tick();
+        }
+
+        private void SpawningTick()
+        {
+            if (ShouldSpawnSpore)
+            {
+                SpawnBlossomSpore();
+                ResetSporeCounter();
+            }
+
+            if (ShouldSpawnTiberium)
+            {
+                SpawnTiberium();
+                ResetTiberiumCounter();
+            }
+
+            if (ticksUntilTiberium > 0)
+                ticksUntilTiberium--;
+            if (ticksUntilSpore > 0)
+                ticksUntilSpore--;
+        }
+
+        public void AddBoundCrystal(TiberiumCrystal crystal)
+        {
+            tiberiumField.AddTiberium(crystal);
+            tiberiumField.AddFieldCell(crystal.Position);
+        }
+
+        public void RemoveBoundCrystal(TiberiumCrystal crystal)
+        {
+            tiberiumField.RemoveTiberium(crystal);
+            tiberiumField.RemoveFieldCell(crystal.Position);
+        }
+
+        private void SpawnTiberium()
+        {
+            int spores;
+            List<IntVec3> cells;
+            switch (def.spawner.spawnMode)
+            {
+                case TiberiumSpawnMode.Direct:
+                    cells = this.CellsAdjacent8WayAndInside().Where(c => c.InBounds(Map) && c.GetTiberium(Map) == null && c.GetFirstBuilding(Map) == null).ToList();
+                    if (cells.Any())
+                        GenTiberium.TrySpawnTiberium(cells.RandomElement(), Map, TiberiumTypes.RandomElement(), this);
+                    break;
+                case TiberiumSpawnMode.Spore:
+                    cells = FieldCells.Where(c => c.InBounds(Map) && c.GetTiberium(Map) == null && 
+                                            c.GetFirstBuilding(Map) == null && c.GetPlant(Map) == null && !c.Roofed(Map)).ToList();
+                    if (cells.Any())
+                        GenTiberium.SpawnSpore(this.OccupiedRect(), cells.RandomElement(), Map, TiberiumTypes.RandomElement(), this);
+                    break;
+                case TiberiumSpawnMode.SporeBurst:
+                    spores = TRUtils.Range(def.spawner.explosionRange);
+                    GenTiberium.SpawnSpore(this.OccupiedRect(), def.spawner.sporeExplosionRadius, Map, TiberiumTypes.RandomElement(), this, spores, true);
+                    break;
+                case TiberiumSpawnMode.SporeExplosion:
+                    spores = TRUtils.Range(def.spawner.explosionRange);
+                    GenTiberium.SpawnSpore(this.OccupiedRect(), def.spawner.sporeExplosionRadius, Map, TiberiumTypes.RandomElement(), this, spores, true);
+                    GenExplosion.DoExplosion(this.Position, Map, 6.76f, DamageDefOf.Bomb, this);
+                    break;
+            }
+        }
+
+        private void SpawnBlossomSpore()
+        {
+            //TODO: Fix Spores /def.spore missing
+            Log.Message("Spawning Spore From " + this);
+            ResetSporeCounter();
+            return;
+            var dest = TiberiumComp.StructureInfo.GetBlossomDestination();
+            if (!dest.IsValid) return;
+            var spore = GenTiberium.SpawnBlossomSpore(Position, dest, Map, def.spore.Blossom(), this);
+            //TODO: Make basic tiberium letter
+            LetterMaker.MakeLetter("Blossom Spore", "A blossom spore has appeared, and will fly to this position.", LetterDefOf.NeutralEvent, new LookTargets(spore.endCell, Map));
+        }
+
+        private void ResetTiberiumCounter()
+        {
+            if (def.spawner != null)
+                ticksUntilTiberium = TRUtils.Range(def.spawner.spawnInterval);
+        }
+
+        private void ResetSporeCounter()
+        {
+            if(def.spore != null)
+                ticksUntilSpore = TRUtils.Range(def.spore.spawnInterval);
+        }
+
+        private bool showForceGrow;
+        private bool showGrowFrom;
+        private bool showGrowTo;
+        private bool showAffected;
+        private bool showTiberium;
+        public override void Draw()
+        {
+            base.Draw();
+            areaMutator.DrawArea();
+            tiberiumField.DrawField();
+
+            //DebugDraw
+            TiberiumGrid grid = TiberiumComp.TiberiumInfo.GetGrid();
+            //Draw Tiberium Cells
+            if(showTiberium)
+                GenDraw.DrawFieldEdges(grid.tiberiumGrid.ActiveCells.ToList(), Color.red);
+            //Draw CellPaths
+            if(showForceGrow)
+                GenDraw.DrawFieldEdges(grid.forceGrow.ActiveCells.ToList(), Color.blue);
+            //Draw From
+            if (showGrowFrom)
+                GenDraw.DrawFieldEdges(grid.growFromGrid.ActiveCells.ToList(), Color.green);
+            //Draw To
+            if (showGrowTo)
+                GenDraw.DrawFieldEdges(grid.growToGrid.ActiveCells.ToList(), Color.cyan);
+            //Draw Affected Cells
+            if (showAffected)
+                GenDraw.DrawFieldEdges(grid.affectedCells.ActiveCells.ToList(), Color.magenta);
+        }
+
+        public override void Print(SectionLayer layer)
+        {
+            base.Print(layer);
+        }
+
+        public override string GetInspectString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(base.GetInspectString());
+            if(IsGroundZero)
+                sb.AppendLine("TR_GZProducer".Translate());
+            sb.AppendLine(areaMutator.InspectString());
+            sb.AppendLine(tiberiumField.InspectString());
+            return sb.ToString().TrimStart().TrimEndNewlines();
+        }
+
+        public override IEnumerable<Gizmo> GetGizmos()
+        {
+            foreach (var gizmo in base.GetGizmos())
+            {
+                yield return gizmo;
+            }
+
+            foreach (var gizmo in areaMutator.Gizmos())
+            {
+                yield return gizmo;
+            }
+
+            foreach (var gizmo in tiberiumField.Gizmos())
+            {
+                yield return gizmo;
+            }
+
+            yield return new Command_Action
+            {
+                defaultLabel = "DEBUG: Spawn " + TiberiumTypes?.RandomElement().label,
+                action = delegate
+                {
+                    SpawnTiberium();
+                    ResetTiberiumCounter();
+                }
+            };
+
+            yield return new Command_Action
+            {
+                defaultLabel = "DEBUG: Speed Up Growth ",
+                action = delegate
+                {
+                    tiberiumField.DEBUGFastGrowth();
+                    fastGrow = !fastGrow;
+                }
+            };
+
+            yield return new Command_Action
+            {
+                defaultLabel = "DEBUG: Show Tiberium",
+                action = delegate { showTiberium = !showTiberium; }
+            };
+            yield return new Command_Action
+            {
+                defaultLabel = "DEBUG: Show ForceGrow",
+                action = delegate { showForceGrow = !showForceGrow; }
+            };
+            yield return new Command_Action
+            {
+                defaultLabel = "DEBUG: Show GrowFrom",
+                action = delegate { showGrowFrom = !showGrowFrom; }
+            };
+            yield return new Command_Action
+            {
+                defaultLabel = "DEBUG: Show GrowTo",
+                action = delegate { showGrowTo = !showGrowTo; }
+            };
+            yield return new Command_Action
+            {
+                defaultLabel = "DEBUG: Show Affected",
+                action = delegate { showAffected = !showAffected; }
+            };
+        }
+    }
+
+    /*
+    public class TiberiumProducer3 : TRBuilding
     {
         public new TiberiumProducerDef def;
         public List<TiberiumCrystal> boundCrystals = new List<TiberiumCrystal>();
@@ -159,8 +371,6 @@ namespace TiberiumRim
         private bool showAffect = false;
         private bool showTileIterator = false;
         private bool showPotentialField = false;
-
-        protected int foo = 1234;
 
         public override string Label
         {
@@ -259,7 +469,7 @@ namespace TiberiumRim
             var potentialCellCount = lastFieldCellCount > 0 ? lastFieldCellCount : int.MaxValue;
             floodFill.FloodFill(Position, Predicate, Action, potentialCellCount);
         }
-        */
+        
 
         private void SetInitialCells()
         {
@@ -416,12 +626,12 @@ namespace TiberiumRim
                 InitialCells.Remove(cell);
                 TerrainDef terrain = cell.GetTerrain(Map);
 
-                /*
+                
                 if (FieldCells.Contains(cell))
                 {
                     Log.Message(this + " Contains existing cell");
                 }
-                */
+                
 
                 AddFieldCell(cell);
                 //lastFieldCellCount++;
@@ -495,14 +705,14 @@ namespace TiberiumRim
         {
             fieldCellsList.Add(cell);
             foreach (var def in def.tiberiumTypes)
-                TiberiumComp.TiberiumInfo.TiberiumGrid.SetFieldColor(cell, true, def.TiberiumValueType);
+                TiberiumMapComp.TiberiumInfo.TiberiumGrid.SetFieldColor(cell, true, def.TiberiumValueType);
         }
 
         public void RemoveFieldCell(IntVec3 cell)
         {
             fieldCellsList.Remove(cell);
             foreach (var def in def.tiberiumTypes)
-                TiberiumComp.TiberiumInfo.TiberiumGrid.SetFieldColor(cell, false, def.TiberiumValueType);
+                TiberiumMapComp.TiberiumInfo.TiberiumGrid.SetFieldColor(cell, false, def.TiberiumValueType);
         }
 
         public HashSet<IntVec3> FieldCells
@@ -537,7 +747,7 @@ namespace TiberiumRim
 
         private void SpawnBlossomSpore()
         {
-            var dest = TiberiumComp.StructureInfo.GetBlossomDestination();
+            var dest = TiberiumMapComp.StructureInfo.GetBlossomDestination();
             if (!dest.IsValid) return;
             var spore = GenTiberium.SpawnBlossomSpore(Position, dest, Map, def.spore.Blossom(), this);
             LetterMaker.MakeLetter("Blossom Spore", "A blossom spore has appeared, and will fly to this position.", LetterDefOf.NeutralEvent, new LookTargets(spore.endCell, Map));
@@ -673,6 +883,7 @@ namespace TiberiumRim
         {
             ticksToSpore = TRUtils.Range(def.spore.tickRange);
         }
+
 
         public override void Draw()
         {
@@ -903,4 +1114,5 @@ namespace TiberiumRim
             }
         }
     }
+    */
 }

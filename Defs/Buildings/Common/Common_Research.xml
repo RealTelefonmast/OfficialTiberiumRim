@@ -9,7 +9,7 @@
 		<minifiedDef />
 		<thingCategories Inherit="false" />
 		<TRCategory>Research</TRCategory>
-		<destroyTiberium>true</destroyTiberium>
+		<clearTiberium>true</clearTiberium>
 		<costList>
 			<Steel>300</Steel>
 			<ComponentIndustrial>4</ComponentIndustrial>

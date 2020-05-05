@@ -5,3 +5,4 @@ C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\T
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Assemblies\TiberiumRim.dll
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Assemblies\TiberiumRim.pdb
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Release\TiberiumRim.csprojAssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Release\TiberiumRim.csproj.CoreCompileInputs.cache

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace TiberiumRim
 {
-    public static class EventScannerTable
+    public class EventScannerTable
     {
-        
-        static EventScannerTable()
+        public EventScannerTable()
         {
 
         }

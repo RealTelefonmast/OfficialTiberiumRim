@@ -61,10 +61,13 @@
 	
 	<!-- Main Types (Lattice)-->
 	
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumForWater">
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumGreen</defName>
 		<label>green tiberium crystal</label>
 		<description>A glowy green crystal. Looks strangely appealing.</description>
+		<discoverTag>TiberiumCrystalLattice</discoverTag>
+		<unknownLabel>strange green crystal</unknownLabel>
+		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>
 			<Beauty>50</Beauty>	
@@ -102,19 +105,16 @@
 		<monolith>TiberiumTower_TBI</monolith>
 		<rock>GreenTiberiumRock_TBI</rock>
 		<chunk>GreenTiberiumChunk</chunk>
-		<plantTerrain>TiberiumPodSoil</plantTerrain>
-		<supportsTerrain>
-			<Soils>TiberiumSoilGreen, TiberiumGreen</Soils>
-			<Sands>TiberiumSandGreen, TiberiumShardsGreen</Sands>
-			<Mosses>TiberiumMossyTerrainGreen, TiberiumMossGreen</Mosses>
-			<Stones>TiberiumStoneGreen, TiberiumMossGreen</Stones>
-		</supportsTerrain>
+		<conversionRuleset>GreenConversion</conversionRuleset>
 	</TiberiumRim.TiberiumCrystalDef>
 
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumBlue</defName>
 		<label>blue tiberium</label>
 		<description>A glowy blue crystal. Beautiful to the eye but of unknown properties.</description>
+		<discoverTag>TiberiumCrystalLattice</discoverTag>
+		<unknownLabel>strange blue crystal</unknownLabel>
+		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>
 			<Beauty>60</Beauty>	
@@ -158,19 +158,16 @@
 		<rock>BlueTiberiumRock_TBI</rock>
 		<chunk>BlueTiberiumChunk</chunk>
 		<monolith>TiberiumMonolith</monolith>
-		<plantTerrain>TiberiumPodSoilBlue</plantTerrain>
-		<supportsTerrain>
-			<Soils>TiberiumSoilBlue, TiberiumBlue</Soils>
-			<Sands>TiberiumSandBlue, TiberiumShardsBlue</Sands>
-			<Mosses>TiberiumMossyTerrainBlue, TiberiumMossBlue</Mosses>
-			<Stones>TiberiumStoneBlue, TiberiumMossBlue</Stones>
-		</supportsTerrain>
+		<conversionRuleset>BlueConversion</conversionRuleset>
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumRed</defName>
 		<label>red tiberium</label>
 		<description>A glowy red crystal. Beautiful to the eye but of unknown properties. It seems strange.</description>
+		<discoverTag>TiberiumCrystalLattice</discoverTag>
+		<unknownLabel>strange red crystal</unknownLabel>
+		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Beauty>75</Beauty>	
@@ -213,10 +210,7 @@
 		</comps>
 		<rock>RedTiberiumRock_TBI</rock>
 		<chunk>RedTiberiumChunk</chunk>
-		<supportsTerrain>
-			<Soils>TiberiumSoilRed, TiberiumRed</Soils>
-			<Sands>TiberiumSandRed, TiberiumShardsRed</Sands>
-		</supportsTerrain>
+		<conversionRuleset>RedConversion</conversionRuleset>
 	</TiberiumRim.TiberiumCrystalDef>	
 
 	<!-- Shards -->
@@ -261,9 +255,7 @@
 		</tiberium>
 		<rock>GreenTiberiumRock_TBI</rock>
 		<chunk>GreenTiberiumChunk</chunk>
-		<supportsTerrain>
-			<Sands>TiberiumSandGreen, TiberiumShardsGreen</Sands>
-		</supportsTerrain>
+		<conversionRuleset>GreenConversion</conversionRuleset>
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
@@ -312,9 +304,7 @@
 		</tiberium>
 		<rock>BlueTiberiumRock_TBI</rock>
 		<chunk>BlueTiberiumChunk</chunk>
-		<supportsTerrain>
-			<Sands>TiberiumSandBlue, TiberiumShardsBlue</Sands>
-		</supportsTerrain>
+		<conversionRuleset>BlueConversion</conversionRuleset>
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
@@ -363,13 +353,10 @@
 		</tiberium>
 		<rock>RedTiberiumRock_TBI</rock>
 		<chunk>RedTiberiumChunk</chunk>
-		<supportsTerrain>
-			<Sands>TiberiumSandRed, TiberiumShardsRed</Sands>
-		</supportsTerrain>
+		<conversionRuleset>RedConversion</conversionRuleset>
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<!-- Pods -->
-
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumPod</defName>
 		<label>tiberium pod</label>
@@ -410,10 +397,7 @@
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<chunk>GreenTiberiumChunk</chunk>
-		<supportsTerrain>
-			<Soils>TiberiumPodSoil, TiberiumPod</Soils>
-			<Mosses>TiberiumPodSoil, TiberiumPod</Mosses>
-		</supportsTerrain>
+		<conversionRuleset>GreenPodConversion</conversionRuleset>
 	</TiberiumRim.TiberiumCrystalDef>	
 	
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
@@ -462,14 +446,10 @@
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<chunk>BlueTiberiumChunk</chunk>
-		<supportsTerrain>
-			<Soils>TiberiumPodSoilBlue, TiberiumPodBlue</Soils>
-			<Mosses>TiberiumPodSoilBlue, TiberiumPodBlue</Mosses>
-		</supportsTerrain>
+		<conversionRuleset>BluePodConversion</conversionRuleset>
 	</TiberiumRim.TiberiumCrystalDef>
 
 	<!-- Moss -->
-
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumMossGreen</defName>
 		<label>green tiberium moss</label>
@@ -513,10 +493,7 @@
 		<rock>GreenTiberiumRock_TBI</rock>
 		<chunk>GreenTiberiumChunk</chunk>
 		<monolith>TiberiumTower_TBI</monolith>
-		<supportsTerrain>
-			<Mosses>TiberiumMossyTerrainGreen, TiberiumMossGreen</Mosses>
-			<Stones>TiberiumStoneGreen, TiberiumMossGreen</Stones>
-		</supportsTerrain>
+		<conversionRuleset>GreenMossConversion</conversionRuleset>
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
@@ -561,10 +538,7 @@
 		</tiberium>
 		<rock>BlueTiberiumRock_TBI</rock>
 		<chunk>BlueTiberiumChunk</chunk>
-		<supportsTerrain>
-			<Mosses>TiberiumMossyTerrainBlue, TiberiumMossBlue</Mosses>
-			<Stones>TiberiumStoneBlue, TiberiumMossBlue</Stones>
-		</supportsTerrain>
+		<conversionRuleset>BlueMossConversion</conversionRuleset>
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<!-- Misc -->
@@ -616,9 +590,7 @@
 		<monolith>TiberiumCruentus</monolith>
 		<rock>GreenTiberiumRock_TBI</rock>
 		<chunk>GreenTiberiumChunk</chunk>	
-		<supportsTerrain>
-			<Soils>TiberiumSoilAboreus, TiberiumAboreus</Soils>
-		</supportsTerrain>
+		<conversionRuleset>AboreusConversion</conversionRuleset>
 	</TiberiumRim.TiberiumCrystalDef>	
 	
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumForWater">
@@ -700,12 +672,7 @@
 		</tiberium>
 		<dead>TiberiumSoilVeinDead</dead>
 		<rock>VeinTiberiumRock_TBI</rock>
-		<supportsTerrain>
-			<Soils>TiberiumSoilVein, TiberiumVein</Soils>
-			<Sands>TiberiumSandRed, TiberiumVein</Sands>
-			<Mosses>TiberiumSoilVein, TiberiumVein</Mosses>
-			<Stones>TiberiumSoilVeinFlesh, TiberiumVein</Stones>
-		</supportsTerrain>
+		<conversionRuleset>VeinConversion</conversionRuleset>
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<!-- Decorative -->

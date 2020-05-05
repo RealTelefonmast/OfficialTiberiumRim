@@ -94,6 +94,12 @@ namespace TiberiumRim
 
         }
 
+        public bool TryMakeFlood(out List<IntVec3> floodedCells, IntVec3 root, int maxTries = 9999)
+        {
+            floodedCells = Flood(root, maxTries);
+            return true;
+        }
+
         public bool TryMakeFlood(out List<IntVec3> floodedCells, CellRect rect, int maxTries = 9999)
         {
             floodedCells = Flood(rect, maxTries);
@@ -117,6 +123,11 @@ namespace TiberiumRim
         }
 
         private readonly Queue<IntVec3> openSet = new Queue<IntVec3>();
+
+        private List<IntVec3> Flood(IntVec3 root, int maxTries = 9999)
+        {
+            return Flood(new CellRect(root.x, root.z, 1, 1), maxTries);
+        }
 
         private List<IntVec3> Flood(CellRect rect, int maxTries = 9999)
         {

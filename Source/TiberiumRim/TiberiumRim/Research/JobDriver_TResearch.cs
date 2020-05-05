@@ -11,6 +11,10 @@ namespace TiberiumRim
 {
     public class JobDriver_TResearch : JobDriver
     {
+        [Unsaved]
+        private IntVec3 targetPos = IntVec3.Invalid;
+
+
         private TResearchManager Manager => TRUtils.ResearchManager();
 
         private TResearchDef Project => Manager.currentProject;
@@ -35,7 +39,7 @@ namespace TiberiumRim
             }
         }
 
-        private PathEndMode PathMode
+        private PathEndMode PathEndMode
         {
             get
             {
@@ -45,26 +49,36 @@ namespace TiberiumRim
             }
         }
 
-        private IntVec3 TargetPosition
+        private IntVec3 TargetPos
         {
             get
             {
+                Log.Message("Getting position for TResearch Job");
+                if (targetPos.IsValid) return targetPos;
+
                 var distance = Project.CurrentTask.distanceFromTarget;
                 var atTarget = distance <= 0;
                 if (atTarget)
                 {
-                    if (TargetA.Thing.def.hasInteractionCell)
-                        return TargetA.Thing.InteractionCell;
-                    return TargetA.Thing.RandomAdjacentCell8Way();
+                    Log.Message("Getting position AtTarget");
+                    targetPos = TargetA.Thing.RandomAdjacentCell8Way();
                 }
-
-                bool Predicate(IntVec3 x)
+                else
                 {
-                    float dist = TargetA.Cell.DistanceTo(x);
-                    return dist >= distance && dist <= distance;
+                    Log.Message("Getting distanced position with distance: " + distance);
+                    bool Predicate(IntVec3 x)
+                    {
+                        if (!x.Standable(Map))
+                            return false;
+                        if (TargetA.Cell.DistanceTo(x) is float d && (d > distance || d < distance))
+                            return false;
+                        return GenSight.LineOfSight(TargetA.Cell, x, Map);
+                    }
+                    CellFinder.TryFindRandomCellNear(TargetA.Cell, Map, Mathf.CeilToInt(distance), Predicate, out targetPos);
+                    //targetPos = CellFinder.TryFindRandomReachableCellNear(TargetA.Cell, Map, Mathf.CeilToInt(distance), TraverseParms.For(TraverseMode.ByPawn, Danger.Some,false), Predicate));
                 }
-
-                return CellFinder.RandomClosewalkCellNear(TargetA.Cell, Map, Mathf.CeilToInt(distance), Predicate);
+                Log.Message("Got position for TResearch Job: " + targetPos);
+                return targetPos;
             }
         }
 
@@ -72,7 +86,7 @@ namespace TiberiumRim
         {
             this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
             yield return Toils_Reserve.Reserve(TargetIndex.A, 1, -1, null);
-            yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.InteractionCell);
+            yield return PathEndMode == PathEndMode.InteractionCell ? Toils_Goto.GotoCell(TargetIndex.A, PathEndMode) : Toils_Goto.GotoCell(TargetPos, PathEndMode);
 
             TResearchTaskDef task = Project.CurrentTask;
             Toil research = new Toil();
@@ -91,7 +105,6 @@ namespace TiberiumRim
                 }
                 pawn.GainComfortFromCellIfPossible();
             };
-            research.FailOnCannotTouch(TargetIndex.A, PathMode);
             research.FailOn(() => Project == null || task.WorkType != Project.CurrentTask.WorkType);
             if(HasEffect)
                 research.WithEffect(Effect, TargetIndex.A);

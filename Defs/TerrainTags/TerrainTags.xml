@@ -75,6 +75,13 @@
 	</TiberiumRim.TerrainTagDef>
 	
 	<TiberiumRim.TerrainTagDef>
+		<defName>Concretes</defName>
+		<tags>
+			<li>concrete</li>
+		</tags>
+	</TiberiumRim.TerrainTagDef>
+	
+	<TiberiumRim.TerrainTagDef>
 		<defName>Water</defName>
 		<tags>
 			<li>water</li>

@@ -9,24 +9,17 @@ namespace TiberiumRim
 {
     public class TiberiumProducerDef : TRThingDef
     {
-        public ThingDef killedVersion;
-        public List<TiberiumTerrainDef> tiberiumTerrain = new List<TiberiumTerrainDef>();
-        public List<TiberiumCrystalDef> tiberiumTypes = new List<TiberiumCrystalDef>();
-        public List<PlantGroupChance> plantsByDistance;
-        public List<TerrainSupport> customTerrain;
-        public List<PotentialEvolution> evolutions;
+        //Tiberium Properties
+        public TiberiumFieldRuleset tiberiumFieldRules;
+
+        //public List<PotentialEvolution> evolutions;
         public SporeProperties spore;
-        public SpawnProperties spawner = new SpawnProperties();
+        public SpawnProperties spawner;
         public float daysToMature = 0f;
-        public bool growsFlora = true;
+        public bool canBeGroundZero = false;
         public bool leaveTiberium = true;
         public bool forResearch = true;
 
-        public ThingDef SelectPlantByDistance(float distance, float maxDistance, TiberiumTerrainDef terrain)
-        {
-            var list = new List<ThingDef>();
-            return plantsByDistance.Where(p => (distance >= maxDistance * p.chance)).SelectMany(p => p.plants).Where(p => terrain.SupportsPlant(p.thing)).InRandomOrder().RandomElementByWeight(p => p.weight).thing;
-        }
     }
 
     public class SpawnProperties
@@ -46,6 +39,5 @@ namespace TiberiumRim
         public IntRange sizeRange = new IntRange(5,10);
         public int minFieldSize = 1000;
 
-        public List<PlantChance> plants = new List<PlantChance>();
     }
 }

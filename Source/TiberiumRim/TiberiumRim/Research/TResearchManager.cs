@@ -107,6 +107,7 @@ namespace TiberiumRim
             research.FinishAction();
             currentProject = null;
             DoCompletionDialog(research);
+            Messages.Message("TR_ResearchProjectDone".Translate(research.LabelCap), MessageTypeDefOf.TaskCompletion, true);
             CheckGroup(research.ParentGroup);
             return true;
         }
@@ -122,6 +123,7 @@ namespace TiberiumRim
             SetCompleted(task, true);
             task.TriggerEvents();
             task.FinishAction();
+            Messages.Message("TR_ResearchTaskDone".Translate(task.LabelCap), MessageTypeDefOf.TaskCompletion, false);
             CheckResearch(task.ParentProject);
             return true;
         }

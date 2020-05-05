@@ -117,6 +117,7 @@ namespace TiberiumRim
         public List<EventDef> events;
 
         public List<string> images;
+        //TODO: Look at base.Map.listerBuildings.ColonistsHaveBuilding for building requisites
         public List<ThingDef> requiredFacilities;
         public List<ThingDef> requiredThings = new List<ThingDef>();
         public List<TRThingDef> unlocks = new List<TRThingDef>();
@@ -124,6 +125,7 @@ namespace TiberiumRim
 
         //settings
         public float distanceFromTarget = -1;
+        public FloatRange distanceRange = FloatRange.One;
         public PawnPosture posture = PawnPosture.Standing;
 
         public float workAmount = 750;
@@ -141,7 +143,7 @@ namespace TiberiumRim
             }
         }
 
-
+        public bool HasAnyTarget => !PossibleMainTargets.NullOrEmpty();
         public bool HasSingleTarget => PossibleMainTargets.Count == 1;
         public ThingDef MainTarget => PossibleMainTargets.FirstOrDefault();
         public TargetProperties TargetProperties => taskTarget ?? ParentProject.mainTarget;

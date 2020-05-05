@@ -38,7 +38,7 @@ namespace TiberiumRim
 
         public static bool HasUnDiscovered(FactionDesignationDef faction, TRThingCategoryDef category)
         {
-            return Categorized[faction][category].Any(d => !d.Discovered && d.IsActive(out string s));
+            return Categorized[faction][category].Any(d => !d.ConstructionOptionDiscovered && d.IsActive(out string s));
         }
 
         public static int TotalCount
@@ -64,6 +64,8 @@ namespace TiberiumRim
             {
                 Categorized[def.factionDesignation][def.TRCategory].Add(def);
             }
+            //if (!def.menuHidden)
+                //Log.Error(def +  " should have menuHidden");
         }
     }
     

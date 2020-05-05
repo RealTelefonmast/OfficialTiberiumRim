@@ -12,10 +12,12 @@ namespace TiberiumRim
     public class HarvesterReservationManager
     {
         public Map map;
-        public Dictionary<Harvester, TiberiumCrystal> Reservations = new Dictionary<Harvester, TiberiumCrystal>();
+        public List<Harvester> AllHarvesters = new List<Harvester>();
+        public Dictionary<Harvester, List<TiberiumCrystal>> ReservedQueues = new Dictionary<Harvester, List<TiberiumCrystal>>();
         public Dictionary<HarvestType, int> ReservedTypes = new Dictionary<HarvestType, int>();
-        public KeyValuePair<Harvester, TiberiumCrystal> CurrentPair;
+
         public int ReservedTotal = 0;
+        private int PossiblePasses = 0;
         private int Current = 0;
         private bool Finished = true;
 
@@ -39,52 +41,89 @@ namespace TiberiumRim
         private MapComponent_Tiberium TiberiumManager => map.GetComponent<MapComponent_Tiberium>();
         private MapComponent_TNWManager TNWManager => map.GetComponent<MapComponent_TNWManager>();
 
-        private Harvester CurHarvester => CurrentPair.Key;
-        private bool CurPairValid => TargetValidFor(CurrentPair.Key);
-        public bool NeedsUpdate => Reservations.Keys.Any(k => !TargetValidFor(k));
+        private Harvester CurHarvester => AllHarvesters[Current];
+
+        public bool IsQueued(TiberiumCrystal crystal)
+        {
+            return ReservedQueues.Values.Any(c => c.Contains(crystal));
+        }
 
         public bool TargetValidFor(Harvester harvester)
-        {           
-            if (Reservations.TryGetValue(harvester, out TiberiumCrystal value))
-            {
-                return !value.DestroyedOrNull() && value.Spawned && value.CanBeHarvestedBy(harvester);
-            }
-            return false;
+        {
+            ReservedQueues[harvester].RemoveAll(t => t == null);
+            return !ReservedQueues[harvester].NullOrEmpty() && ReservedQueues[harvester].Any();
         }
 
         public void RegisterHarvester(Harvester harvester)
         {
-            if (!Reservations.Keys.Contains(harvester))
+            if (!AllHarvesters.Contains(harvester))
             {
-                Reservations.Add(harvester, null);
+                AllHarvesters.Add(harvester);
+                ReservedQueues.Add(harvester, new List<TiberiumCrystal>());
             }
         }
 
         public void DeregisterHarvester(Harvester harvester)
         {
-            if (Reservations.Keys.Contains(harvester))
+            if (AllHarvesters.Contains(harvester))
             {
-                Reservations.Remove(harvester);
+                AllHarvesters.Remove(harvester);
+                ReservedQueues.Remove(harvester);
             }
         }
 
-        private void Reserve(TiberiumCrystal tib, Harvester harvester)
+        private bool QueueFull(Harvester harvester)
         {
-            Reservations[harvester] = tib;
+            float value = ReservedQueues[harvester].Sum(t => t.HarvestValue) + harvester.Container.TotalStorage;
+            return value >= harvester.Container.capacity;
+        }
+
+        private void Enqueue(TiberiumCrystal tib, Harvester harvester)
+        {
+            ReservedQueues[harvester].Add(tib);
             ReservedTypes[tib.def.HarvestType]++;
             ReservedTotal++;
         }
 
-        public void UnreserveFor(TiberiumCrystal tib, Harvester harvester)
+        public void Dequeue(TiberiumCrystal tib, Harvester harvester)
         {
-            if (tib != null)
-            {
-                Reservations[harvester] = null;
-                ReservedTypes[tib.def.HarvestType]--;
-                ReservedTotal--;
-            }
+            if (tib == null) return;
+            if (!ReservedQueues[harvester].NullOrEmpty())
+                ReservedQueues[harvester].Remove(tib);
+
+            ReservedTypes[tib.def.HarvestType]--;
+            ReservedTotal--;
         }
 
+        public void FillQueuesForExistingHarvesters()
+        { 
+            PossiblePasses = AllHarvesters.Count - Mathf.Clamp(AllHarvesters.Count - TiberiumManager.TiberiumInfo.TotalCount, 0, int.MaxValue);
+
+            Finished = false;
+            Current = 0;
+            bool PassCheck(IntVec3 x) => x.IsValid && x.Standable(map) && !Finished;
+            void Processor(IntVec3 c)
+            {
+                RETRY:
+                if (Current >= PossiblePasses)
+                {
+                    Finished = true;
+                    return;
+                }
+
+                if (QueueFull(CurHarvester) || !CurHarvester.ShouldHarvest) { Current++; goto RETRY; }
+
+                TiberiumCrystal crystal = c.TryGetTiberiumFor(CurHarvester);
+                if (crystal != null && !IsQueued(crystal) && CurHarvester.CanReach(c, PathEndMode.Touch, Danger.Deadly, false, TraverseMode.PassDoors))
+                {
+                    Enqueue(crystal, CurHarvester);
+                }
+            }
+            
+            map.floodFiller.FloodFill(CurHarvester.Position, PassCheck, Processor, int.MaxValue, true, AllHarvesters.Select(h => h.Position));
+        }
+
+        /*
         public void TryUpdate()
         {
             if (!NeedsUpdate) return;
@@ -116,6 +155,8 @@ namespace TiberiumRim
                 if (Reservations[harvi] == null)
                     harvi.SetToWait();
             }
-        }        
+        }     
+        */
+
     }
 }

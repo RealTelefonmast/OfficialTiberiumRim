@@ -87,7 +87,7 @@ namespace TiberiumRim
             }
             yield return new Command_Action
             {
-                defaultLabel = "start animation",
+                defaultLabel = "origin animation",
                 action = delegate
                 {
                     tick = 0;

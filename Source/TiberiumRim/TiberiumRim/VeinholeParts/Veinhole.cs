@@ -33,8 +33,6 @@ namespace TiberiumRim
 
         public override void Tick()
         {
-            base.Tick();
-            
             if (ticksToHub == 0)
             {
                 SpawnHub();
@@ -53,12 +51,12 @@ namespace TiberiumRim
 
         private void SpawnHub()
         {
-            Action<IntVec3> action = delegate(IntVec3 c)
+            void Action(IntVec3 c)
             {
-                if(c.SupportsTiberiumTerrain(Map))
-                    Map.terrainGrid.SetTerrain(c, TiberiumCrystal.supportsTerrain.RandomElement().TerrainOutcome);
-            };
-            TiberiumFloodInfo flood = new TiberiumFloodInfo(Map,null, action);
+                if (c.SupportsTiberiumTerrain(Map)) Map.terrainGrid.SetTerrain(c, Ruleset.RandomTerrain());
+            }
+
+            TiberiumFloodInfo flood = new TiberiumFloodInfo(Map,null, Action);
             IntVec3 end = GenRadial.RadialCellsAround(Position, 56, false).RandomElement();
             flood.TryMakeConnection(out List<IntVec3> cells, Position, end);
 
