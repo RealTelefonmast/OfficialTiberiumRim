@@ -6,7 +6,7 @@
 		<filter>
 			<thingDefs>
 				<li>Plant_TreeCocoa</li>
-				<li>Plant_TreeDrago</Plant_TreeDrago>
+				<li>Plant_TreeDrago</li>
 				<li>Plant_TreeWillow</li>
 				<li>Plant_TreeCypress</li>
 				<li>Plant_TreeMaple</li>
@@ -18,6 +18,32 @@
 				<li>Plant_TreeCecropia</li>
 				<li>Plant_TreePalm</li>
 				<li>Plant_TreeBamboo</li>
+			</thingDefs>
+		</filter>
+	</TiberiumRim.ThingFilterDef>
+	
+	<TiberiumRim.ThingFilterDef>
+		<defName>PlantFilter_Grass</defName>
+		<filter>
+			<thingDefs>
+				<li>Plant_Grass</li>
+				<li>Plant_TallGrass</li>
+			</thingDefs>
+		</filter>
+	</TiberiumRim.ThingFilterDef>
+	
+	<TiberiumRim.ThingFilterDef>
+		<defName>PlantFilter_FarmPlants</defName>
+		<filter>
+			<thingDefs>
+				<li>Plant_Rice</li>
+				<li>Plant_Potato</li>
+				<li>Plant_Corn</li>
+				<li>Plant_Strawberry</li>
+				<li>Plant_Haygrass</li>
+				<li>Plant_Cotton</li>
+				<li>Plant_Devilstrand</li>
+				<li>Plant_Hops</li>
 			</thingDefs>
 		</filter>
 	</TiberiumRim.ThingFilterDef>

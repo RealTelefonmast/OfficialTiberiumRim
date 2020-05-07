@@ -12,7 +12,8 @@
 			<li>Concrete, 			 InfestedConcrete,      TiberiumShardsGreen</li>
 		</conversions>
 		<floraConversions>
-			<li>PlantFilter_Trees, FloraOptions_Trees, TerrainOption_Flora</li>
+			<li>PlantFilter_Trees, 	FloraOptions_Trees, 	TerrainOption_Flora</li>
+			<li>PlantFilter_Grass, 	TiberiumFloraOptions, 	TerrainOption_Flora</li>
 		</floraConversions>
 	</TiberiumRim.TiberiumConversionRulesetDef>
 	

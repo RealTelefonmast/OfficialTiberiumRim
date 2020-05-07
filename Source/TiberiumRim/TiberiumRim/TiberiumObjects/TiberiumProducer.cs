@@ -115,7 +115,7 @@ namespace TiberiumRim
         {
             base.ExposeData();
             Scribe_Deep.Look(ref areaMutator, "areaMutator");
-            Scribe_Deep.Look(ref tiberiumField, "areaMutator");
+            Scribe_Deep.Look(ref tiberiumField, "tiberiumField");
             Scribe_Values.Look(ref ticksUntilTiberium, "ticksUntilTiberium");
             Scribe_Values.Look(ref ticksUntilSpore, "ticksUntilSpore");
         }

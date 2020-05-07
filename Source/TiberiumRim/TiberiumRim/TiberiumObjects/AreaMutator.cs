@@ -233,8 +233,17 @@ namespace TiberiumRim
         {
             yield return new Command_Action()
             {
-                defaultLabel = "Remaining Cells",
+                defaultLabel = "Show Remaining Cells",
                 action = delegate { drawCells = !drawCells; }
+            };
+
+            yield return new Command_Action()
+            {
+                defaultLabel = "Finish Area Mutation",
+                action = delegate
+                {
+                    Find.TickManager.DebugSetTicksGame(Find.TickManager.TicksGame + ((mutationTicks - (GenTicks.TicksGame - startTick))));
+                }
             };
         }
     }
