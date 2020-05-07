@@ -2,12 +2,6 @@
 <Manifest>
     <identifier>TiberiumRim</identifier>
     <version>2.0.0.0</version>
-    <dependencies>
-        <li>StoryFramework</li>
-    </dependencies>
-    <loadAfter>
-        <li>StoryFramework</li>
-    </loadAfter>
     <manifestUri></manifestUri>
     <downloadUri></downloadUri>
 </Manifest>
