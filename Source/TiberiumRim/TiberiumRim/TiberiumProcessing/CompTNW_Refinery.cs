@@ -54,6 +54,9 @@ namespace TiberiumRim
 
         public IntVec3 PositionFor(Harvester harvester)
         {
+            if (parkingZone == null)
+                return parent.InteractionCell;
+
             IntVec3 slot = parkingZone.SlotFor(harvester);
             if(!slot.IsValid || parkingZone == null)
                 return parent.InteractionCell;
@@ -75,13 +78,13 @@ namespace TiberiumRim
         {
             if (harvesters.Contains(harvester)) return;
             harvesters.Add(harvester);
-            parkingZone.AssignNextSlot(harvester);
+            parkingZone?.AssignNextSlot(harvester);
         }
 
         public void RemoveHarvester(Harvester harvester)
         {
             harvesters.Remove(harvester);
-            parkingZone.DismissSlot(harvester);
+            parkingZone?.DismissSlot(harvester);
         }
 
         public override IEnumerable<IntVec3> InnerConnectionCells

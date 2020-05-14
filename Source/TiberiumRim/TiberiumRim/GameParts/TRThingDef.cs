@@ -40,8 +40,6 @@ namespace TiberiumRim
         [Unsaved(false)]
         private TaggedString cachedUnknownLabelCap = null;
 
-        private bool optionDiscovered = false;
-
         public override IEnumerable<string> ConfigErrors()
         {
             List<string> strings = new List<string>();
@@ -68,8 +66,12 @@ namespace TiberiumRim
 
         public bool ConstructionOptionDiscovered
         {
-            get => optionDiscovered || devObject;
-            set => optionDiscovered = value;
+            get => Find.World.Tiberium().DiscoveryTable.IsMenuDiscovered(this) || devObject;
+            set
+            {
+                if (value)
+                    Find.World.Tiberium().DiscoveryTable.DiscoverMenu(this);
+            }
         }
 
         public bool IsActive(out string reason)

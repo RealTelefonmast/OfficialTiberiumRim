@@ -8,17 +8,16 @@ using Verse;
 
 namespace TiberiumRim
 {
-    [StaticConstructorOnStartup]
-    public static class ResearchTargetTable
+    public class ResearchTargetTable : IExposable
     {
-        public static Dictionary<TResearchTaskDef, List<Thing>> targets = new Dictionary<TResearchTaskDef, List<Thing>>();
-        private static readonly Dictionary<ThingDef, List<TResearchTaskDef>> tasksForThings = new Dictionary<ThingDef, List<TResearchTaskDef>>();
+        public Dictionary<TResearchTaskDef, ScribeList<Thing>> targets = new Dictionary<TResearchTaskDef, ScribeList<Thing>>();
+        private readonly Dictionary<ThingDef, List<TResearchTaskDef>> tasksForThings = new Dictionary<ThingDef, List<TResearchTaskDef>>();
         
-        static ResearchTargetTable()
+        public ResearchTargetTable()
         {
             foreach (var task in DefDatabase<TResearchTaskDef>.AllDefs)
             {
-                targets.Add(task, new List<Thing>());
+                targets.Add(task, new ScribeList<Thing>(new List<Thing>(), LookMode.Reference));
                 if(task.PossibleMainTargets.NullOrEmpty())continue;
                 foreach (var thingDef in task.PossibleMainTargets)
                 {
@@ -30,16 +29,22 @@ namespace TiberiumRim
             }
         }
 
-        public static List<Thing> GetTargetsFor(TResearchTaskDef task)
+        public void ExposeData()
+        {
+            Scribe_Collections.Look(ref targets, "researchTargets", LookMode.Def, LookMode.Deep);
+        }
+
+        public List<Thing> GetTargetsFor(TResearchTaskDef task)
         {
             return targets[task].Where(Available).ToList();
         }
 
-        public static void RegisterNewTarget(Thing thing)
+        public void RegisterNewTarget(Thing thing)
         {
             if (!tasksForThings.ContainsKey(thing.def)) return;
             foreach (var task in tasksForThings[thing.def])
             {
+                if (targets[task].Contains(thing)) return;
                 Log.Message("Registering Task target " + thing + " for " + task.LabelCap);
                 targets[task].Add(thing);
                 if(task.RelevantTargetStat != null)
@@ -47,7 +52,7 @@ namespace TiberiumRim
             }
         }
 
-        public static void DeregisterTarget(Thing thing)
+        public void DeregisterTarget(Thing thing)
         {
             if (!tasksForThings.ContainsKey(thing.def)) return;
             foreach (var task in tasksForThings[thing.def])

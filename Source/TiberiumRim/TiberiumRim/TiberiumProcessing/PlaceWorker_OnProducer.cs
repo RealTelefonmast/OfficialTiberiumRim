@@ -11,51 +11,45 @@ namespace TiberiumRim
     {
         private static TiberiumProducer producer;
 
+        private IEnumerable<TiberiumProducer> AllProducers => Find.CurrentMap.Tiberium().StructureInfo.Producers;
+
+        private bool OnProducer()
+        {
+            return AllProducers.Any(p => !p.OccupiedRect().Except(CurrentCellRect).Any());
+        }
+
+        public CellRect CurrentCellRect { get; private set; }
+
         public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 loc, Rot4 rot, Map map, Thing thingToIgnore = null, Thing thing = null)
         {
-
-            if(producer != null)
+            //if(loc.GetFirstBuilding(map) is TiberiumProducer producer && !producer.OccupiedRect().Except(CurrentCellRect).Any())
+            UpdateRect(loc, loc.CellsAdjacent8Way().Select(t => t.GetFirstBuilding(map) as TiberiumProducer).First());
+            if (OnProducer())
                 return true;
             return "OnTiberiumProducer".Translate();
         }
 
-        public void GetRects(BuildableDef checkDef, IntVec3 loc, Map map, out CellRect checkingRect, out CellRect thingRect, out TiberiumProducer thing)
+        private void UpdateRect(IntVec3 loc, TiberiumProducer producer = null)
         {
-            thingRect = new CellRect();
-            checkingRect = new CellRect(loc.x - 1, loc.z - 1, 3, 3);
-            thing = (TiberiumProducer)checkingRect.GetAnyThingIn<TiberiumProducer>(map);
-            if (thing != null)
+            int height = 3;
+            if (producer != null)
             {
-                thingRect = thing.OccupiedRect();
-                if (thingRect.Height <= 2)
-                {
-                    checkingRect.maxZ -= 1;
-                    if (thingRect.Height <= 1)
-                        checkingRect.maxZ -= 1;
-                }
-                if (thingRect.Cells.ToList().All(checkingRect.Cells.ToList().Contains))
-                {
-                    producer = thing;
-                    return;
-                }
+                height = producer.OccupiedRect().Height;
             }
-            producer = null;
+
+            CurrentCellRect = new CellRect(loc.x - 1, loc.z - 1, 3, height);
         }
 
         public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol, Thing thing = null)
         {
-            //GenDraw.DrawFieldEdges(new List<IntVec3>() { center }, Color.red);
-            GetRects(def, center, Find.CurrentMap, out CellRect checkingRect, out CellRect thingRect, out TiberiumProducer prod);
-            if (prod != null)
-            {
-                GenDraw.DrawFieldEdges(thingRect.Cells.ToList(), Color.green);
-            }
-            GenDraw.DrawFieldEdges(checkingRect.Cells.ToList());
+            var cellRect = new CellRect(center.x - 1, center.z - 1, 3, 3);
+            GenDraw.DrawFieldEdges(cellRect.ToList());
+            GenDraw.DrawFieldEdges(AllProducers.SelectMany(p => p.OccupiedRect()).ToList(), Color.green);
         }
 
         public override bool ForceAllowPlaceOver(BuildableDef other)
         {
-            return (other == producer?.def) && (bool)producer?.def.forResearch;
+            return other is TiberiumProducerDef def && def.forResearch;
         }
     }
 }

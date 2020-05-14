@@ -11,10 +11,22 @@ namespace TiberiumRim
     public class DiscoveryTable : IExposable
     {
         public Dictionary<string, bool> Discovered = new Dictionary<string, bool>();
+        public Dictionary<TRThingDef, bool> TRMenuDiscovered = new Dictionary<TRThingDef, bool>();
 
         public void ExposeData()
         {
             Scribe_Collections.Look(ref Discovered, "discovered");
+            Scribe_Collections.Look(ref TRMenuDiscovered, "menuDiscovered");
+        }
+
+        public bool IsMenuDiscovered(TRThingDef def)
+        {
+            return TRMenuDiscovered.TryGetValue(def, out bool value) && value;
+        }
+
+        public void DiscoverMenu(TRThingDef def)
+        {
+            TRMenuDiscovered.Add(def, true);
         }
 
         public bool IsDiscovered(string discoverTag)

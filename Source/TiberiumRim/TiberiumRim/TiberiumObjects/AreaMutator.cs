@@ -10,87 +10,54 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class TiberiumFieldRuleset
-    {
-        public List<ThingGroupChance> floraOptions;
-        public List<TerrainFloat> terrainOptions;
-        public List<WeightedThing> crystalOptions;
-        public bool allowFlora = true;
-
-        [Unsaved]
-        private float maxWeight;
-
-        public TiberiumCrystalDef RandomTiberiumType()
-        {
-            return (TiberiumCrystalDef) crystalOptions.RandomElementByWeight(t => t.weight).thing;
-        }
-
-        public TRThingDef RandomPlant()
-        {
-            return (TRThingDef)floraOptions.SelectMany(o => o.plants).RandomElementByWeight(p => p.weight).thing;
-        }
-
-        public TRThingDef PlantAt(float distance, float maxDistance)
-        {
-            //"Chance" in this case is "DistancePercent"
-            return (TRThingDef)floraOptions.Where(p => distance >= maxDistance * p.chance).SelectMany(p => p.plants).RandomElementByWeight(p => p.weight).thing;
-        }
-
-        public float MaxFloraWeight
-        {
-            get
-            {
-                if (maxWeight == 0)
-                    maxWeight = floraOptions.Max(t => t.plants.Max(p => p.weight));
-                return maxWeight;
-            }
-        }
-
-        public float ChanceFor(TRThingDef plant, float atDistance, float maxDistance)
-        { 
-            float distanceChance = 1f - Mathf.InverseLerp(0f, maxDistance, atDistance);
-            WeightedThing thing = floraOptions.SelectMany(f => f.plants).First(w => w.thing == plant);
-            var weightChance = Mathf.InverseLerp(0f, MaxFloraWeight, thing.weight);
-            var lerpedChance = Mathf.Lerp(distanceChance, 1f, Mathf.Clamp01(weightChance - (1f - distanceChance)));
-            return lerpedChance; //Mathf.Lerp(distanceChance, 1f, Mathf.InverseLerp(0f, MaxFloraWeight, thing?.weight  ?? 0));
-        }
-
-        public IEnumerable<TerrainFloat> TerrainOptionsFor(TerrainDef terrain)
-        {
-            return terrainOptions.Where(t => ((TiberiumTerrainDef)t.terrainDef).SupportsTerrain(terrain));
-        }
-
-        public TerrainDef RandomTerrain()
-        {
-            return terrainOptions.RandomElementByWeight(t => t.value).terrainDef;
-        }
-    }
-
     public class AreaMutator : IExposable
     {
-        private readonly float radius;
-        private float maxRadius = 0;
-        private float speed = 1;
+        private readonly TiberiumField tibField;
+
         private Map map;
         private IntVec3 center;
-        private List<IntVec3> remainingCells;
-        private TiberiumField tibField;
 
-        private readonly int mutationTicks;
-        private readonly int startTick;
+        private CellArea remaining;
+
+        private float maxRadius = 0;
+
+        private float radius;
+        private float speed = 1;
+        private int mutationTicks;
+        private int startTick;
         private bool finished;
 
         public TiberiumFieldRuleset ruleset;
 
-        //Reload Values after load
-        public AreaMutator(IntVec3 center, Map map, TiberiumFieldRuleset ruleset, int mutationTicks, float speed = 1, TiberiumField field = null)
+        public void ExposeData()
         {
+            //Save Values
+            Scribe_References.Look(ref map, "map");
+            Scribe_Deep.Look(ref remaining, "remaining");
+            Scribe_Values.Look(ref center, "center");
+            Scribe_Values.Look(ref finished, "finished");
+            Scribe_Values.Look(ref startTick, "startTick");
+            Scribe_Values.Look(ref mutationTicks, "mutationTicks");
+            Scribe_Values.Look(ref speed, "speed");
+            Scribe_Values.Look(ref radius, "radius");
+            Scribe_Values.Look(ref maxRadius, "maxRadius");
+        }
 
+        //Reload Values after load
+        public AreaMutator()
+        {
+        }
+
+        public AreaMutator(TiberiumFieldRuleset ruleset, TiberiumField field = null)
+        {
+            this.ruleset = ruleset;
+            tibField = field;
         }
 
         public AreaMutator(List<IntVec3> cells, IntVec3 center, Map map, TiberiumFieldRuleset ruleset, int mutationTicks, float speed = 1, TiberiumField field = null)
         {
-            remainingCells = cells;
+            remaining = new CellArea(map);
+            remaining.AddRange(cells);
             this.map = map;
             this.center = center;
             this.ruleset = ruleset;
@@ -98,11 +65,12 @@ namespace TiberiumRim
             this.mutationTicks = mutationTicks;
             startTick = GenTicks.TicksGame;
             tibField = field;
-            SetValuesFor(remainingCells);
+            SetValuesFor(remaining.Cells);
         }
 
         public AreaMutator(IntVec3 center, Map map, float radius, TiberiumFieldRuleset ruleset, int mutationTicks, float speed = 1, TiberiumField field = null)
         {
+            remaining = new CellArea(map);
             this.map = map;
             this.center = center;
             this.radius = radius;
@@ -118,31 +86,25 @@ namespace TiberiumRim
         public float ProgressPct => ((GenTicks.TicksGame - startTick) * speed)/(float)mutationTicks;
         public float CurrentRadius => maxRadius * ProgressPct;
 
-        public void ExposeData()
-        {
-            //Save Values
-            Scribe_Values.Look(ref finished, "finished");
-        }
-
         public void Tick()
         {
             if (finished) return;
-            if (remainingCells.NullOrEmpty() )
+            if (remaining.Empty())
             {
                 Finish();
                 return;
             }
             //Iterate Over Remaining Cells
-            for (int i = remainingCells.Count - 1; i >= 0; i--)
+            for (int i = remaining.Count - 1; i >= 0; i--)
             {
-                IntVec3 cell = remainingCells[i];
+                IntVec3 cell = remaining[i];
                 if (center.DistanceTo(cell) > CurrentRadius) continue;
 
-                remainingCells.Remove(cell);
+                remaining.Remove(cell);
 
                 //Process Cell
                 if (MutateCell(cell))
-                    tibField?.AddFieldCell(cell);
+                    tibField?.AddFieldCell(cell, map);
             }
         }
 
@@ -156,7 +118,8 @@ namespace TiberiumRim
                     maxRadius = curDist;
             }
             TiberiumFloodInfo flooder = new TiberiumFloodInfo(map, Predicate, Action);
-            flooder.TryMakeFlood(out remainingCells, center, GenRadial.NumCellsInRadius(radius));
+            flooder.TryMakeFlood(out List<IntVec3> temp, center, GenRadial.NumCellsInRadius(radius));
+            remaining.AddRange(temp);
         }
 
         private void SetValuesFor(List<IntVec3> cells)
@@ -217,7 +180,7 @@ namespace TiberiumRim
             if (finished) return "Fully Mutated";
             string fieldString = "Area Mutation:";//"TR_TibMutatorLabel".Translate(((TiberiumCrystalDef) ruleset.crystalOptions.First().thing).TiberiumValueType.ToString());
             fieldString += "\nProgress: " + ProgressPct.ToStringPercent();
-            fieldString += "\nRemaining Cells: " + remainingCells.Count;
+            fieldString += "\nRemaining Cells: " + remaining.Count;
             fieldString += "\n" + (mutationTicks - (GenTicks.TicksGame - startTick)) + " Ticks Remaining";
             return fieldString;
         }
@@ -226,7 +189,7 @@ namespace TiberiumRim
         public void DrawArea()
         {
             if(drawCells)
-                GenDraw.DrawFieldEdges(remainingCells, Color.blue);
+                GenDraw.DrawFieldEdges(remaining.Cells, Color.blue);
         }
 
         public IEnumerable<Gizmo> Gizmos()

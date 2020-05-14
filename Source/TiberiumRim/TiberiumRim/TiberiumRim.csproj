@@ -91,6 +91,7 @@
     <Compile Include="Comps\Comp_MechStation.cs" />
     <Compile Include="Comps\Comp_Upgradable.cs" />
     <Compile Include="Comps\Comp_WanderProps.cs" />
+    <Compile Include="DebugInfo_HUD.cs" />
     <Compile Include="GameParts\AreaGrid.cs" />
     <Compile Include="GameParts\ASATNetwork.cs" />
     <Compile Include="Comps\CompGlowerOffset.cs" />
@@ -108,14 +109,16 @@
     <Compile Include="GameParts\Interfaces\IContainerHolder.cs" />
     <Compile Include="GameParts\ITab_ContainedPawn_Health.cs" />
     <Compile Include="GameParts\ITab_MechConstruction.cs" />
-    <Compile Include="GameParts\ITab_TiberiumRefinerySettings.cs" />
+    <Compile Include="GameParts\ITab_CustomRefineryBills.cs" />
     <Compile Include="GameParts\MapComps\MapComponentWithDraw.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_TiberiumTickManager.cs" />
     <Compile Include="GameParts\PositionFilter.cs" />
+    <Compile Include="GameParts\ScribeList.cs" />
     <Compile Include="GameParts\TerrainFloat.cs" />
     <Compile Include="GameParts\SkyfallerValue.cs" />
     <Compile Include="GameParts\ThingValue.cs" />
     <Compile Include="GameParts\TiberiumConversionRulesetDef.cs" />
+    <Compile Include="GameParts\TiberiumFieldRuleset.cs" />
     <Compile Include="GameParts\TiberiumResourceValueTable.cs" />
     <Compile Include="GDI\Comp_SonicInhibitor.cs" />
     <Compile Include="Research\CreationProperties.cs" />
@@ -409,7 +412,7 @@
     <Compile Include="Utilities\TiberiumUtils.cs" />
     <Compile Include="VeinholeParts\Veinhole.cs" />
     <Compile Include="VisualEffects\TRMats.cs" />
-    <Compile Include="TiberiumEnvironment\WorldComponent_Tiberium.cs" />
+    <Compile Include="GameParts\MapComps\WorldComponent_Tiberium.cs" />
     <Compile Include="Weather\GameCondition_TiberiumBiome.cs" />
     <Compile Include="Weather\MapComponent_TiberiumBiome.cs" />
     <Compile Include="Weather\WeatherEvent_IonStrike.cs" />

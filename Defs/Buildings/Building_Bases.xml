@@ -116,6 +116,7 @@
 		<building>
 			<isEdifice>false</isEdifice>
 		</building>
+		<forResearch>true</forResearch>
 		<tickerType>Normal</tickerType>
 		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
 		<neverOverlapFloors>true</neverOverlapFloors>

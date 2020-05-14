@@ -34,9 +34,12 @@ namespace TiberiumRim
                 return;
             }
             if (data.directAltitudeOffset.HasValue)
-                this.altitude = parent.parent.def.altitudeLayer.AltitudeFor() + data.directAltitudeOffset.Value;
+                altitude = parent.parent.def.altitudeLayer.AltitudeFor() + data.directAltitudeOffset.Value;
+            else if (data.altitude.HasValue)
+                altitude = data.altitude.Value.AltitudeFor();
             else
-                this.altitude = data.altitude.HasValue ? data.altitude.Value.AltitudeFor() : (parent.parent.def.altitudeLayer.AltitudeFor() + (0.125f * (index + 1)));
+                altitude = parent.parent.def.altitudeLayer.AltitudeFor() + (0.125f * (index + 1));
+            altitude += data.extraAltitude;
             ShaderMaterial = new Material(TiberiumContent.AlphaShaderMaterial);
         }
 

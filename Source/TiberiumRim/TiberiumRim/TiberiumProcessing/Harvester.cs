@@ -206,7 +206,7 @@ namespace TiberiumRim
         }
 
         public bool IsWaiting => waitingTicks > 0;
-        public bool ForcedReturn => forceReturn || mainRefinery.recallHarvesters;
+        public bool ForcedReturn => forceReturn || (mainRefinery?.recallHarvesters ?? true);
         public bool CanUnload => CurrentRefinery != null && this.CanReserve(CurrentRefinery.parent);
         public bool MainRefineryLost => ParentBuilding.DestroyedOrNull() || mainRefinery == null;
         public bool Unloading => this.CurJobDef == TiberiumDefOf.UnloadAtRefinery;

@@ -192,7 +192,7 @@ namespace TiberiumRim
         {
         }
 
-        public virtual float ProgressReal => creationTasks != null ? TRUtils.ResearchManager().CreationTable.TaskCompletion(this) : TRUtils.ResearchManager().GetProgress(this);
+        public virtual float ProgressReal => creationTasks != null ? TRUtils.ResearchCreationTable().TaskCompletion(this) : TRUtils.ResearchManager().GetProgress(this);
         public virtual float ProgressToDo => creationTasks?.TotalCountToMake ?? workAmount;
 
         public float ProgressPct => ProgressReal / ProgressToDo;

@@ -12,7 +12,7 @@ namespace TiberiumRim
      * Determines growth, inhibition, patterns
      */
 
-    public class TiberiumGrid : ICellBoolGiver
+    public class TiberiumGrid : ICellBoolGiver, IExposable
     {
         public Map map;
 
@@ -37,6 +37,8 @@ namespace TiberiumRim
         private bool dirtyGrid = false;
         private readonly List<IntVec3> dirtyCells = new List<IntVec3>();
 
+        public TiberiumGrid(){}
+
         public TiberiumGrid(Map map)
         {
             this.map = map;
@@ -50,6 +52,11 @@ namespace TiberiumRim
 
             drawer = new CellBoolDrawer(this, map.Size.x, map.Size.z, 0.35f);
             TiberiumCrystals = new TiberiumCrystal[map.cellIndices.NumGridCells];
+        }
+
+        public void ExposeData()
+        {
+            Scribe_Deep.Look(ref forceGrow, "forceGrowGrid");
         }
 
         //CellBoolGiver

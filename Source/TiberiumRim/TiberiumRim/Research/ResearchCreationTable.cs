@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 namespace TiberiumRim
 {
-    public class ResearchCreationTable
+    /*  This Table Keeps track of Research Tasks and their "creation" goal
+     *  For example creating a certain amount of a thing
+     *
+     */
+    public class ResearchCreationTable : IExposable
     {
         //public static Dictionary<TResearchTaskDef, List<ThingDef>> taskCreationThingDefs = new Dictionary<TResearchTaskDef, List<ThingDef>>();
         public Dictionary<TResearchTaskDef, CreationGroupTracker> taskCreations = new Dictionary<TResearchTaskDef, CreationGroupTracker>();
@@ -20,7 +25,7 @@ namespace TiberiumRim
             {
                 //taskCreationThingDefs.Add(task, new List<ThingDef>());
                 if (task.creationTasks == null) continue;
-                taskCreations.Add(task, new CreationGroupTracker(task.creationTasks));
+                taskCreations.Add(task, new CreationGroupTracker(task));
                 foreach (var creationOption in task.creationTasks.thingsToCreate)
                 {
                     //taskCreationThingDefs[task].Add(creationOption.def);
@@ -30,6 +35,12 @@ namespace TiberiumRim
                         tasksForThings.Add(creationOption.def, new List<TResearchTaskDef>() {task});
                 }
             }
+        }
+
+        public void ExposeData()
+        {
+
+            Scribe_Collections.Look(ref taskCreations, "TrackedCreations", LookMode.Def, LookMode.Deep);
         }
 
         public int TaskCompletion(TResearchTaskDef task)
@@ -62,21 +73,55 @@ namespace TiberiumRim
         }
     }
 
-    public class CreationGroupTracker
+    /*  Each Task has a creation group tracker, to track the groups of things it should create
+     *
+     */
+
+    public class CreationGroupTracker : IExposable
     {
-        private readonly Dictionary<ThingDef, List<CreationOption>> creationOptionMap = new Dictionary<ThingDef, List<CreationOption>>();
-        private readonly Dictionary<CreationOption, int> thingsToCreate = new Dictionary<CreationOption, int>();
+        private TResearchTaskDef taskDef;
+        private readonly Dictionary<ThingDef, List<CreationOptionProperties>> creationOptionMap = new Dictionary<ThingDef, List<CreationOptionProperties>>();
 
-        public CreationGroupTracker(CreationProperties properties)
+        private Dictionary<CreationOptionProperties, int> thingsToCreate = new Dictionary<CreationOptionProperties, int>();
+
+        private List<int> intValues;
+
+        public CreationGroupTracker()
         {
-            foreach (var creationOption in properties.thingsToCreate)
-            {
-                thingsToCreate.Add(creationOption, creationOption.amount);
+        }
 
+        public CreationGroupTracker(TResearchTaskDef task)
+        {
+            taskDef = task;
+            Setup(taskDef);
+        }
+
+        private void Setup(TResearchTaskDef task, List<int> values = null)
+        {
+            int i = 0;
+            foreach (var creationOption in task.creationTasks.thingsToCreate)
+            {
+                thingsToCreate.Add(creationOption, values?[i] ?? creationOption.amount);
                 if (creationOptionMap.ContainsKey(creationOption.def))
                     creationOptionMap[creationOption.def].Add(creationOption);
                 else
-                    creationOptionMap.Add(creationOption.def, new List<CreationOption>() {creationOption});
+                    creationOptionMap.Add(creationOption.def, new List<CreationOptionProperties>() { creationOption });
+
+                i++;
+            }
+        }
+
+        public void ExposeData()
+        {
+            Scribe_Defs.Look(ref taskDef, "taskDef");
+            if (Scribe.mode == LoadSaveMode.Saving)
+            {
+                intValues = thingsToCreate.Values.ToList();
+            }
+            Scribe_Collections.Look(ref intValues, "values");
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                Setup(taskDef, intValues);
             }
         }
 
@@ -87,7 +132,7 @@ namespace TiberiumRim
 
         public void AddSingleCreation(ThingDef thingDef)
         {
-            if (Completed || !creationOptionMap.TryGetValue(thingDef, out List<CreationOption> options)) return;
+            if (Completed || !creationOptionMap.TryGetValue(thingDef, out List<CreationOptionProperties> options)) return;
             foreach (var option in options)
             {
                 AddProgress(option, 1);
@@ -96,17 +141,17 @@ namespace TiberiumRim
 
         public void AddCreation(Thing thing)
         {
-            if (Completed || !creationOptionMap.TryGetValue(thing.def, out List<CreationOption> options)) return;
+            if (Completed || !creationOptionMap.TryGetValue(thing.def, out List<CreationOptionProperties> options)) return;
             foreach (var option in options)
             {
-                if (option.quality == null || thing.TryGetQuality(out QualityCategory qc) && qc == option.quality)
+                if (option.Accepts(thing))
                     AddProgress(option, thing.stackCount);
             }
         }
 
-        public void AddProgress(CreationOption option, int progress)
+        public void AddProgress(CreationOptionProperties optionProperties, int progress)
         {
-            thingsToCreate[option] = Math.Min(Math.Max(thingsToCreate[option] - progress, 0), option.amount);
+            thingsToCreate[optionProperties] = Math.Min(Math.Max(thingsToCreate[optionProperties] - progress, 0), optionProperties.amount);
         }
     }
 }

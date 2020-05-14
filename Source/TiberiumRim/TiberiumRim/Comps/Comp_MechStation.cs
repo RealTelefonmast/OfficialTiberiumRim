@@ -10,7 +10,7 @@ namespace TiberiumRim
     public class Comp_MechStation : Comp_Upgradable, IMechSpawner, IThingHolder
     {
         private CurrentMech mech;
-        protected ThingOwner container;
+        protected ThingOwner<MechanicalPawn> container;
         protected List<MechanicalPawn> storedMechs = new List<MechanicalPawn>();
 
         public bool HasMechInProgress => mech != null;
@@ -28,12 +28,14 @@ namespace TiberiumRim
         {
             base.PostExposeData();
             Scribe_Collections.Look(ref storedMechs, "storedMechs", LookMode.Reference);
-            Scribe_Deep.Look(ref container, "container", new object[]
+
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
-                this,
-                false,
-                LookMode.Deep
-            });
+                foreach (var mech in storedMechs)
+                {
+                    container.TryAdd(mech);
+                }
+            }
         }
 
         public override void PostDestroy(DestroyMode mode, Map previousMap)
@@ -42,9 +44,10 @@ namespace TiberiumRim
             base.PostDestroy(mode, previousMap);
         }
 
-        public void RemoveMechs()
+        public void AddMech(MechanicalPawn mech)
         {
-            storedMechs.ForEach(m => RemoveMech(m));
+            storedMechs.Add(mech);
+            container.TryAdd(mech);
         }
 
         public void RemoveMech(MechanicalPawn mech)
@@ -61,6 +64,11 @@ namespace TiberiumRim
             });
         }
 
+        public void RemoveMechs()
+        {
+            storedMechs.ForEach(m => RemoveMech(m));
+        }
+
         protected MechanicalPawn MakeMech(MechanicalPawnKindDef mechDef)
         {
             if (storedMechs.Count >= Props.maxStored) return null;
@@ -70,9 +78,6 @@ namespace TiberiumRim
             mech.Rotation = Rot4.Random;
             mech.ParentBuilding = this.parent as Building;
             mech.Drawer.renderer.graphics.ResolveAllGraphics();
-
-            storedMechs.Add(mech);
-            container.TryAdd(mech);
             return mech;
         }
 

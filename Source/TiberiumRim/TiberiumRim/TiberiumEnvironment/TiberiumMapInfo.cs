@@ -12,9 +12,9 @@ namespace TiberiumRim
         Unharvestable
     }
 
-    public class TiberiumMapInfo
+    public class TiberiumMapInfo : IExposable
     {
-        public Map map;
+        private Map map;
         //Saved as Thing to be compatible with Thing Enumerators
         public HashSet<Thing> AllTiberiumCrystals = new HashSet<Thing>();
         public List<TiberiumCrystal> TickList = new List<TiberiumCrystal>();
@@ -26,7 +26,7 @@ namespace TiberiumRim
         public Dictionary<Region, List<TiberiumCrystal>> TiberiumByRegion = new Dictionary<Region, List<TiberiumCrystal>>();
 
         //Grids
-        private readonly TiberiumGrid TiberiumGrid;
+        private TiberiumGrid TiberiumGrid;
         public int TotalCount;
 
         public TiberiumMapInfo(Map map)
@@ -39,6 +39,11 @@ namespace TiberiumRim
                 TiberiumCrystals.Add(type, new List<TiberiumCrystal>());
                 TiberiumCrystalTypes.Add(type, new List<TiberiumCrystalDef>());
             }
+        }
+
+        public void ExposeData()
+        {
+            Scribe_Deep.Look(ref TiberiumGrid, "tiberiumGrid", map);
         }
 
         public TiberiumCrystalDef MostValuableType => TiberiumCrystalTypes[HarvestType.Valuable].MaxBy(t => t.tiberium.harvestValue);

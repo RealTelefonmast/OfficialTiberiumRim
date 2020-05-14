@@ -31,6 +31,12 @@ namespace TiberiumRim
             }
         }
 
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_References.Look(ref parent, "parent");
+        }
+
         public virtual Building ParentBuilding
         {
             get => parent;

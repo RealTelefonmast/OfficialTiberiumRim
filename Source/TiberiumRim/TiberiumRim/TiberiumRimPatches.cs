@@ -360,7 +360,7 @@ namespace TiberiumRim
                 //Construction Task Logic
                 if (__instance != null && (__instance.def.entityDefToBuild as TerrainDef) == null)
                 {
-                    TRUtils.ResearchManager().CreationTable.TryTrackCreated((ThingDef)__instance.def.entityDefToBuild);
+                    TRUtils.ResearchCreationTable().TryTrackCreated((ThingDef)__instance.def.entityDefToBuild);
                 }
             }
         }
@@ -381,7 +381,7 @@ namespace TiberiumRim
                     }
                 }
                 //Research
-                ResearchTargetTable.RegisterNewTarget(__instance);
+                TRUtils.ResearchTargetTable().RegisterNewTarget(__instance);
             }
         }
 
@@ -400,7 +400,7 @@ namespace TiberiumRim
                 updateSuppressionGrid = __instance is Building b && !b.CanBeSeenOver();
 
                 //Research
-                ResearchTargetTable.DeregisterTarget(__instance);
+                TRUtils.ResearchTargetTable().DeregisterTarget(__instance);
                 return true;
             }
 

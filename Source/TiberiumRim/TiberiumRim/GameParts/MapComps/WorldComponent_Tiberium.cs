@@ -19,6 +19,17 @@ namespace TiberiumRim
 
         }
 
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_TargetInfo.Look(ref GroundZero, "groundZero");
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                if(GroundZero.IsValid)
+                    ((TiberiumProducer) GroundZero.Thing).IsGroundZero = true;
+            }
+        }
+
         public void SetGroundZero(TiberiumProducer producer)
         {
             Log.Message("Setting GZ");

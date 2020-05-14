@@ -18,7 +18,9 @@ namespace TiberiumRim
         public Dictionary<TResearchDef, bool> ResearchCompleted = new Dictionary<TResearchDef, bool>();
         public static float researchFactor = 0.01f;
 
-        public ResearchCreationTable CreationTable;
+        public ResearchCreationTable creationTable;
+
+        public ResearchTargetTable researchTargets;
 
         //Research Window
         private readonly Dictionary<TResearchGroupDef, bool[]> researchGroupData = new Dictionary<TResearchGroupDef, bool[]>();
@@ -32,7 +34,8 @@ namespace TiberiumRim
             {
                 researchGroupData.Add(group, new bool[2] {false, false});
             }
-            CreationTable = new ResearchCreationTable();
+            researchTargets = new ResearchTargetTable();
+            creationTable = new ResearchCreationTable();
         }
 
         public List<TResearchGroupDef> Groups => researchGroupData.Keys.ToList();
@@ -43,6 +46,8 @@ namespace TiberiumRim
             Scribe_Collections.Look(ref TaskProgress, "TaskProgress", LookMode.Def, LookMode.Value);
             Scribe_Collections.Look(ref TasksCompleted, "TasksCompleted", LookMode.Def, LookMode.Value);
             Scribe_Collections.Look(ref ResearchCompleted, "ResearchCompleted", LookMode.Def, LookMode.Value);
+            Scribe_Deep.Look(ref researchTargets, "researchTargets");
+            Scribe_Deep.Look(ref creationTable, "creationTable");
         }
 
         private static int checkTick = 2000;

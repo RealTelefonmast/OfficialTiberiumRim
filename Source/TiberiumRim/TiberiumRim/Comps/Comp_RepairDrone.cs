@@ -123,7 +123,7 @@ namespace TiberiumRim
                 defaultLabel = "Add Drone",
                 action = delegate
                 {
-                    MakeMech(Props.droneDef);
+                    AddMech(MakeMech(Props.droneDef));
                     parent.Map.mapDrawer.MapMeshDirty(parent.Position, MapMeshFlag.Things);
                 }
                 

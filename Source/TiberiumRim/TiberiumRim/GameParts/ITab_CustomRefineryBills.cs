@@ -9,13 +9,13 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class ITab_TiberiumRefinerySettings : ITab
+    public class ITab_CustomRefineryBills : ITab
     {
         public Dictionary<ThingDef, int> MetalAmount = new Dictionary<ThingDef, int>();
-
+        public string[] textBuffers;
         private readonly float marketPriceTiberiumFactor = 1.9f;
 
-        public ITab_TiberiumRefinerySettings()
+        public ITab_CustomRefineryBills()
         {
             this.size = new Vector2(800f, 400f);
             this.labelKey = "TR_TibResourceRefiner";
@@ -24,7 +24,9 @@ namespace TiberiumRim
         public override void OnOpen()
         {
             base.OnOpen();
-            foreach (var resource in DefDatabase<ThingDef>.AllDefs.Where(t => t.IsMetal))
+            var metals = DefDatabase<ThingDef>.AllDefs.Where(t => t.IsMetal);
+            textBuffers = new string[metals.Count()];
+            foreach (var resource in metals)
             {
                 MetalAmount.Add(resource, 0);
             }
@@ -54,21 +56,23 @@ namespace TiberiumRim
             Rect rightPart = mainRect.RightHalf();
 
             float curY = 0;
-            foreach (var metal in Metals)
+            for (int i = 0; i < Metals.Count(); i++)
             {
-                ResourceRow(new Rect(0, curY, leftPart.width, 40f), metal);
+                ResourceRow(new Rect(0, curY, leftPart.width, 40f), Metals.ElementAt(i), i);
                 curY += 42f;
             }
-
             Widgets.Label(rightPart, "Current Cost: " + TotalCost);
         }
 
-        private void ResourceRow(Rect rect, ThingDef resource)
+        private void ResourceRow(Rect rect, ThingDef resource, int index)
         {
             Rect iconRect = rect.LeftPartPixels(40);
-            Rect sliderRect = new Rect(iconRect.xMax, rect.y, rect.width - 40, 40);
+
             Widgets.ThingIcon(iconRect, resource);
-            MetalAmount[resource] = (int)Widgets.HorizontalSlider(sliderRect, MetalAmount[resource], 0, 100, false, default, default, default, 1);
+            Rect fieldRect = new Rect(iconRect.xMax, rect.y, 100, 30);
+            var temp = MetalAmount[resource];
+            Widgets.TextFieldNumeric<int>(fieldRect, ref temp, ref textBuffers[index]); //(int)Widgets.HorizontalSlider(sliderRect, MetalAmount[resource], 0, 100, false, default, default, default, 1);
+            MetalAmount[resource] = temp;
         }
     }
 }

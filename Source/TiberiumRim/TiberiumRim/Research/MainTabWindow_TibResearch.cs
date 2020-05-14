@@ -431,7 +431,7 @@ namespace TiberiumRim
                 {
                     foreach (var option in task.creationTasks.thingsToCreate)
                     {
-                        TRUtils.ResearchManager().CreationTable.taskCreations[task].AddProgress(option, option.amount);
+                        TRUtils.ResearchCreationTable().taskCreations[task].AddProgress(option, option.amount);
                     }
                 }
                 Manager.SetProgress(task, task.ProgressToDo);
@@ -444,7 +444,7 @@ namespace TiberiumRim
                 {
                     foreach (var option in task.creationTasks.thingsToCreate)
                     {
-                        TRUtils.ResearchManager().CreationTable.taskCreations[task].AddProgress(option, -option.amount);
+                        TRUtils.ResearchCreationTable().taskCreations[task].AddProgress(option, -option.amount);
                     }
                 }
             }

@@ -61,6 +61,7 @@ namespace TiberiumRim
         public override void ExposeData()
         {
             base.ExposeData();
+            Scribe_Deep.Look(ref TiberiumInfo, "tiberiumMapInfo", map);
         }
 
         [TweakValue("MapComponent_TibDrawBool", 0f, 100f)]

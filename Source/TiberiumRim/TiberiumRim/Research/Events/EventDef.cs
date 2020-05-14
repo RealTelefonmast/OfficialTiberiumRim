@@ -20,7 +20,7 @@ namespace TiberiumRim
 
         public Type eventClass = typeof(BaseEvent);
         public float activeDays = 0;
-        public DiscoveryProperties discoverWith;
+        public DiscoveryProperties discovery;
 
         //TODO: Implement full use of incidentproperties
         public List<IncidentProperties> incidents;

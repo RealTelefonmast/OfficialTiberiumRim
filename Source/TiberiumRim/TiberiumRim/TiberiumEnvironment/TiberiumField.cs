@@ -22,6 +22,10 @@ namespace TiberiumRim
 
         private IEnumerator<TiberiumCrystal> tiberiumEnumerator;
 
+        public TiberiumField()
+        {
+        }
+
         public TiberiumField(TiberiumProducer producer)
         {
             this.producer = producer;
@@ -56,21 +60,21 @@ namespace TiberiumRim
             }
         }
 
-        public void AddFieldCell(IntVec3 cell)
+        public void AddFieldCell(IntVec3 cell, Map map)
         {
             fieldCells.Add(cell);
             foreach (var type in producer.TiberiumTypes)
             {
-                producer.Map.Tiberium().TiberiumInfo.SetFieldColor(cell, true, type.TiberiumValueType);
+                map.Tiberium().TiberiumInfo.SetFieldColor(cell, true, type.TiberiumValueType);
             }
         }
 
-        public void RemoveFieldCell(IntVec3 cell)
+        public void RemoveFieldCell(IntVec3 cell, Map map)
         {
             fieldCells.Remove(cell);
             foreach (var type in producer.TiberiumTypes)
             {
-                producer.Map.Tiberium().TiberiumInfo.SetFieldColor(cell, false, type.TiberiumValueType);
+                map.Tiberium().TiberiumInfo.SetFieldColor(cell, false, type.TiberiumValueType);
             }
         }
 

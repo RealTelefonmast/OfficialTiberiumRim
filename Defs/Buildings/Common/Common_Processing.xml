@@ -796,7 +796,7 @@
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<inspectorTabs>
 			<li>ITab_Bills</li>
-			<li>TiberiumRim.ITab_TiberiumRefinerySettings</li>
+			<li>TiberiumRim.ITab_CustomRefineryBills</li>
 		</inspectorTabs>
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>

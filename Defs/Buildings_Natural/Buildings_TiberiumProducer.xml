@@ -30,7 +30,6 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<altitude>Item</altitude>
 						<mode>Pulse</mode>
 					    <pulse>
 							<mode>Opacity</mode>
@@ -185,7 +184,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<altitude>Item</altitude>
+						<directAltitudeOffset>0.125</directAltitudeOffset>
 						<mode>Pulse</mode>
 					    <pulse>
 							<mode>Opacity</mode>
@@ -200,7 +199,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<altitude>Item</altitude>
+						<directAltitudeOffset>0.125</directAltitudeOffset>
 						<mode>Pulse</mode>
 					    <pulse>
 							<mode>Opacity</mode>
@@ -407,7 +406,6 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<altitude>Item</altitude>
 						<mode>Pulse</mode>
 					    <pulse>
 							<mode>Opacity</mode>
@@ -606,7 +604,8 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<altitude>Item</altitude>
+						<extraAltitude>0.125</extraAltitude>
+						<altitude>BuildingOnTop</altitude>
 						<mode>Pulse</mode>
 					    <pulse>
 							<mode>Opacity</mode>
@@ -781,7 +780,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<altitude>Item</altitude>
+						<extraAltitude>0.125</extraAltitude>
 						<mode>Pulse</mode>
 					    <pulse>
 							<mode>Opacity</mode>
@@ -796,7 +795,8 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<altitude>Item</altitude>
+						<extraAltitude>0.125</extraAltitude>
+						<altitude>BuildingOnTop</altitude>
 						<mode>Pulse</mode>
 					    <pulse>
 							<mode>Opacity</mode>

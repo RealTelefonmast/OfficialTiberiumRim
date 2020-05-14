@@ -22,6 +22,17 @@ namespace TiberiumRim
         {
             return Find.World.GetComponent<EventManager>();
         }
+
+        public static ResearchCreationTable ResearchCreationTable()
+        {
+            return Find.World.GetComponent<TResearchManager>().creationTable;
+        }
+
+        public static ResearchTargetTable ResearchTargetTable()
+        {
+            return Find.World.GetComponent<TResearchManager>().researchTargets;
+        }
+
         public static TResearchManager ResearchManager()
         {
             return Find.World.GetComponent<TResearchManager>();

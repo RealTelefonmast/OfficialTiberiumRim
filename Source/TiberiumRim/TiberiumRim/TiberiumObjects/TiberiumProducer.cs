@@ -33,7 +33,7 @@ namespace TiberiumRim
         private AreaMutator areaMutator;
         private TiberiumField tiberiumField;
 
-        private List<CellPath> cellPaths = new List<CellPath>();
+        //private List<CellPath> cellPaths = new List<CellPath>();
 
         //Values
         private int ticksUntilTiberium;
@@ -98,10 +98,7 @@ namespace TiberiumRim
             {
                 if (i % 3 == 0)
                 {
-                    CellPath path = new CellPath(map, AdjacentCells[i], IntVec3.Invalid, Position, GrowthRadius, Validator, EndCon, Processor);
-                    cellPaths.Add(path);
-                    path.CreatePath();
-                    //path.Grow(GrowthRadius, ref cells);
+                    new CellPath(map, AdjacentCells[i], IntVec3.Invalid, Position, GrowthRadius, Validator, EndCon, Processor).CreatePath();
                 }
             }
         }
@@ -114,10 +111,11 @@ namespace TiberiumRim
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Deep.Look(ref areaMutator, "areaMutator");
-            Scribe_Deep.Look(ref tiberiumField, "tiberiumField");
+            Scribe_Defs.Look(ref def, "def");
             Scribe_Values.Look(ref ticksUntilTiberium, "ticksUntilTiberium");
             Scribe_Values.Look(ref ticksUntilSpore, "ticksUntilSpore");
+            Scribe_Deep.Look(ref tiberiumField, "tiberiumField", this);
+            Scribe_Deep.Look(ref areaMutator, "areaMutator", def.tiberiumFieldRules, tiberiumField);
         }
 
         public override void Tick()
@@ -154,13 +152,13 @@ namespace TiberiumRim
         public void AddBoundCrystal(TiberiumCrystal crystal)
         {
             tiberiumField.AddTiberium(crystal);
-            tiberiumField.AddFieldCell(crystal.Position);
+            tiberiumField.AddFieldCell(crystal.Position, crystal.Map);
         }
 
         public void RemoveBoundCrystal(TiberiumCrystal crystal)
         {
             tiberiumField.RemoveTiberium(crystal);
-            tiberiumField.RemoveFieldCell(crystal.Position);
+            tiberiumField.RemoveFieldCell(crystal.Position, crystal.Map);
         }
 
         private void SpawnTiberium()
