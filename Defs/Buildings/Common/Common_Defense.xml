@@ -259,13 +259,11 @@
 			<ComponentIndustrial>6</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_MechStation">
+			<li Class="TiberiumRim.CompProperties_RepairDrone">
 				<mechRecipes>
 					<li>MakeRepairDroneCommon</li>
 				</mechRecipes>
 				<maxStored>4</maxStored>
-			</li>
-			<li Class="TiberiumRim.CompProperties_RepairDrone">
 				<radius>12</radius>
 				<droneSize>1.3</droneSize>
 				<dronePositions>
@@ -299,13 +297,11 @@
 			<ComponentIndustrial>6</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_MechStation">
+			<li Class="TiberiumRim.CompProperties_RepairDrone">
 				<mechRecipes>
 					<li>MakeRepairDroneCommon</li>
 				</mechRecipes>
 				<maxStored>1</maxStored>
-			</li>
-			<li Class="TiberiumRim.CompProperties_RepairDrone">
 				<radius>4</radius>
 				<droneDef>RepairDrone_Common</droneDef>
 			</li>

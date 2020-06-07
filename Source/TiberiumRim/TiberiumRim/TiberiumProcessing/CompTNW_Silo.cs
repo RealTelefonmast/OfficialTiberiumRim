@@ -22,6 +22,32 @@ namespace TiberiumRim
             }
         }
 
+        public override void CompTick()
+        {
+            base.CompTick();
+
+        }
+
+        public override void DistributeValues()
+        {
+            base.DistributeValues();
+            if (!Container.ContainsForbiddenType) return;
+            var forbiddenTypes = Container.AllStoredTypes.Where(t => !Container.AcceptsType(t));
+            foreach (TiberiumValueType type in forbiddenTypes)
+            {
+                var siloOther = SiloForType(type);
+                if (siloOther != null)
+                {
+                    Container.TryTransferTo(siloOther.Container, type, 5f);
+                }
+            }
+        }
+
+        public CompTNW_Silo SiloForType(TiberiumValueType valueType)
+        {
+            return Network.NetworkSet.Silos.Find(s => !s.Container.CapacityFull && s.Container.AcceptsType(valueType));
+        }
+
         public override void Notify_ContainerFull()
         {
             GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.SILOSNEEDED);

@@ -17,6 +17,7 @@ namespace TiberiumRim
         public List<CompTNW> FullList = new List<CompTNW>();
         public List<CompTNW> Storages = new List<CompTNW>();
         public List<CompTNW> Consumers = new List<CompTNW>();
+        public List<CompTNW> Producers = new List<CompTNW>();
 
         public StructureSet() {}
 
@@ -42,14 +43,20 @@ namespace TiberiumRim
                     Refineries.Add(refinery);
                 }
                 FullList.Add(tnwb);
-                if (tnwb.NetworkMode == TNWMode.Storage)
+                switch (tnwb.NetworkMode)
                 {
-                    Storages.Add(tnwb);
-                }
-                else if (tnwb.NetworkMode == TNWMode.Consumer)
-                {
-                    Storages.Add(tnwb);
-                    Consumers.Add(tnwb);
+                    case TNWMode.None:
+                        break;
+                    case TNWMode.Storage:
+                        Storages.Add(tnwb);
+                        break;
+                    case TNWMode.Consumer:
+                        Storages.Add(tnwb);
+                        Consumers.Add(tnwb);
+                        break;
+                    case TNWMode.Producer:
+                        Producers.Add(tnwb);
+                        break;
                 }
             }
         }

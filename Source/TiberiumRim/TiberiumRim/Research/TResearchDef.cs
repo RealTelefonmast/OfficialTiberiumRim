@@ -192,6 +192,31 @@ namespace TiberiumRim
         {
         }
 
+        public void Debug_Finish()
+        {
+            if (this.creationTasks != null)
+            {
+                foreach (var option in this.creationTasks.thingsToCreate)
+                {
+                    TRUtils.ResearchCreationTable().taskCreations[this].AddProgress(option, option.amount);
+                }
+            }
+            TRUtils.ResearchManager().SetProgress(this, this.ProgressToDo);
+        }
+
+        public void Debug_Reset()
+        {
+            TRUtils.ResearchManager().SetProgress(this, 0);
+            TRUtils.ResearchManager().SetCompleted(this, false);
+            if (this.creationTasks != null)
+            {
+                foreach (var option in this.creationTasks.thingsToCreate)
+                {
+                    TRUtils.ResearchCreationTable().taskCreations[this].AddProgress(option, -option.amount);
+                }
+            }
+        }
+
         public virtual float ProgressReal => creationTasks != null ? TRUtils.ResearchCreationTable().TaskCompletion(this) : TRUtils.ResearchManager().GetProgress(this);
         public virtual float ProgressToDo => creationTasks?.TotalCountToMake ?? workAmount;
 

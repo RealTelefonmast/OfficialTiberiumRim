@@ -21,9 +21,9 @@ namespace TiberiumRim
 
         public CompTNW CompTNW => this.TryGetComp<CompTNW>();
 
-        public override float[] OpacityFloats => new float[] { 1f, 1f, 1f };
-        public override bool[] DrawBools => new bool[] { CompTNW.HasConnection, CompTNW.HasConnection && CompTNW.CompPower.PowerOn, true };
-        public override Color[] ColorOverrides => new Color[] { Color.white, Color.white, Color.white };
+        public override float[] OpacityFloats => new float[] { 1f, 1f};
+        public override bool[] DrawBools => new bool[] { CompTNW.HasConnection, CompTNW.HasConnection && CompTNW.CompPower.PowerOn};
+        public override Color[] ColorOverrides => new Color[] { Color.white, Color.white};
 
         public override IEnumerable<InspectTabBase> GetInspectTabs()
         {

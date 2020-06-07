@@ -141,6 +141,7 @@ namespace TiberiumRim
         {
             //Attempt to transfer a value to another container
             //Check if anything of that type is stored, check if transfer of value is possible without loss, try remove the value from this container
+            if (!other.AcceptsType(valueType)) return false;
             if (StoredTiberium.TryGetValue(valueType) >= value && CanFullyTransferTo(other, value) && TryRemoveValue(valueType, value, out float actualValue))
             {
                 //If passed, try to add the actual value removed from this container, to the other.

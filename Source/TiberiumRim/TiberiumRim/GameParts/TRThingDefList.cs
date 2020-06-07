@@ -51,7 +51,6 @@ namespace TiberiumRim
 
         public static void Add(TRThingDef def)
         {
-            if (def.hidden) return;
             AllDefs.Add(def);
             if (def.factionDesignation == null || def.TRCategory == null)
             {

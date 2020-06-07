@@ -21,21 +21,14 @@ namespace TiberiumRim
 
         public Comp_MechStation()
         {
-            container = new ThingOwner<MechanicalPawn>(this, true);
+            container = new ThingOwner<MechanicalPawn>(this, false, LookMode.Reference);
         }
 
         public override void PostExposeData()
         {
             base.PostExposeData();
             Scribe_Collections.Look(ref storedMechs, "storedMechs", LookMode.Reference);
-
-            if (Scribe.mode == LoadSaveMode.PostLoadInit)
-            {
-                foreach (var mech in storedMechs)
-                {
-                    container.TryAdd(mech);
-                }
-            }
+            Scribe_Deep.Look(ref container, "mechThingOwner");
         }
 
         public override void PostDestroy(DestroyMode mode, Map previousMap)

@@ -143,6 +143,56 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>Gun_Guardian_Railgun</defName>
+		<label>guardian railgun cannon</label>
+		<description>pew pew</description>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Turrets/Guardian</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<menuHidden>true</menuHidden>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+				<laser>
+					<beamPath>Items/Weapons/Projectile/Bullet_RailshotHeavy</beamPath>
+				</laser>
+				<originOffsets>	
+					<li>(0,0,0)</li>
+				</originOffsets>
+				<hasStandardCommand>true</hasStandardCommand>
+				<requireLineOfSight>true</requireLineOfSight>
+				<warmupTime>2.5</warmupTime>
+				<range>29.9</range>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<soundCast>Shot_GDI_RailgunHeavy</soundCast>
+				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
+				<muzzleFlashScale>15</muzzleFlashScale>
+				<consumeFuelPerShot>2</consumeFuelPerShot>
+			</li>
+		</verbs>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseWeapon_TR">
 		<defName>Gun_SonicEmitter</defName>
 		<label>sonic emitter gun</label>
 		<description>pew pew</description>

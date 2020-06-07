@@ -299,6 +299,18 @@ namespace TiberiumRim
 
             Widgets.TextArea(DescRect, SelProject.description, true);
 
+
+            //Debug
+            Rect debug_Res = new Rect(StartButtonRect.x-20,StartButtonRect.y,20,20);
+            Rect debug_Fin = new Rect(debug_Res.x - 20, debug_Res.y, 20, 20);
+            if (Widgets.ButtonText(debug_Fin, "fin"))
+            {
+                SelProject.tasks.ForEach(t => t.Debug_Finish());
+            }
+            if (Widgets.ButtonText(debug_Res, "rst"))
+            {
+                SelProject.tasks.ForEach(t => t.Debug_Reset());
+            }
             if (SelProject.IsFinished)
             {
                 Text.Anchor = TextAnchor.MiddleCenter;
@@ -427,26 +439,11 @@ namespace TiberiumRim
 
             if (Widgets.ButtonText(finButton, "fin"))
             {
-                if (task.creationTasks != null)
-                {
-                    foreach (var option in task.creationTasks.thingsToCreate)
-                    {
-                        TRUtils.ResearchCreationTable().taskCreations[task].AddProgress(option, option.amount);
-                    }
-                }
-                Manager.SetProgress(task, task.ProgressToDo);
+                task.Debug_Finish();
             }
             if (Widgets.ButtonText(resetButt, "rst"))
             {
-                Manager.SetProgress(task, 0);
-                Manager.SetCompleted(task, false);
-                if (task.creationTasks != null)
-                {
-                    foreach (var option in task.creationTasks.thingsToCreate)
-                    {
-                        TRUtils.ResearchCreationTable().taskCreations[task].AddProgress(option, -option.amount);
-                    }
-                }
+                task.Debug_Reset();
             }
 
             ResearchState state = task.State;

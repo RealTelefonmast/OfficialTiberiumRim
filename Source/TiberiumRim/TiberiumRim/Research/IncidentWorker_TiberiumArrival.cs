@@ -43,9 +43,10 @@ namespace TiberiumRim
                         if (crystal != null) return false;
 
                         TerrainDef terrain = x.GetTerrain(map);
-                        if (terrain?.affordances.Contains(DefDatabase<TerrainAffordanceDef>.GetNamed("Bridgeable")) ?? false) 
+                        if (terrain == null) return false;
+                        if (terrain.IsStone()) return false;
+                        if (terrain.affordances.Contains(DefDatabase<TerrainAffordanceDef>.GetNamed("Bridgeable"))) 
                             return false;
-
                         bool tryRiver = !map.TileInfo.Rivers.NullOrEmpty();
                         MapComponent_TiberiumWater river = map.GetComponent<MapComponent_TiberiumWater>();
                         if (tryRiver && (!river.RiverCells.Any(c => c.InHorDistOf(x, 10f)) || river.RiverCells.Any(c => c.DistanceTo(x) < 5f)))

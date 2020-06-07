@@ -8,5 +8,8 @@ namespace TiberiumRim
     public interface IContainerHolder
     {
         void Notify_ContainerFull();
+
+        bool ShouldNotifyEVA { get; }
+        TiberiumContainer Container { get; }
     }
 }

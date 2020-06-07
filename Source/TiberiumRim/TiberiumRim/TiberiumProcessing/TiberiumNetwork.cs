@@ -20,11 +20,32 @@ namespace TiberiumRim
     public class TiberiumNetwork
     {
         public MapComponent_TNWManager Manager;
-        public StructureSet NetworkSet = new StructureSet(); 
+        public StructureSet NetworkSet = new StructureSet();
 
         public int NetworkID = -1;
         public NetworkMode NetworkMode = NetworkMode.Alpha;
         public bool networkDirty = false;
+
+        public CompTNW_TNC NetworkController => Manager.NetworkController;
+
+        public bool IsWorking => NetworkController?.CompPower?.PowerOn ?? false;
+        public Color GeneralColor
+        {
+            get
+            {
+                Color color = new Color(0, 0, 0, 0);
+                if (!NetworkSet.Silos.NullOrEmpty())
+                {
+                    int count = NetworkSet.Silos.Count;
+                    for (int i = 0; i < count; i++)
+                    {
+                        color += NetworkSet.Silos[i].Container.Color;
+                    }
+                    color /= count;
+                }
+                return color;
+            }
+        }
 
         public TiberiumNetwork(MapComponent_TNWManager Manager)
         {
@@ -40,57 +61,6 @@ namespace TiberiumRim
 
         public void Tick()
         {
-            SiloTick();
-        }
-
-        private void SiloTick()
-        {
-            foreach(CompTNW_Silo silo in NetworkSet.Silos)
-            {
-                if (silo.Container.ContainsForbiddenType)
-                {
-                    var forbiddenTypes = silo.Container.AllStoredTypes.Where(t => !silo.Container.AcceptsType(t));
-                    foreach(TiberiumValueType type in forbiddenTypes)
-                    {
-                        var siloOther = SiloForType(type);
-                        if (siloOther != null)
-                        {
-                            silo.Container.TryTransferTo(siloOther.Container, type, 5f);
-                        }
-                    }
-                }
-            }
-        }
-
-        public CompTNW_Silo SiloForType(TiberiumValueType valueType)
-        {
-            return NetworkSet.Silos.Find(s => !s.Container.CapacityFull && s.Container.AcceptsType(valueType));
-        }
-
-        public CompTNW_TNC NetworkController
-        {
-            get
-            {
-                return Manager.NetworkController;
-            }
-        }
-
-        public Color GeneralColor
-        {
-            get
-            {
-                Color color = new Color(0, 0, 0, 0);
-                if (!NetworkSet.Silos.NullOrEmpty())
-                {
-                    int count = NetworkSet.Silos.Count;
-                    for(int i = 0; i < count; i++)
-                    {
-                        color += NetworkSet.Silos[i].Container.Color;
-                    }
-                    color /= count;
-                }
-                return color;
-            }
         }
 
         public bool ValidFor(TNWMode mode, out string reason)
@@ -107,8 +77,6 @@ namespace TiberiumRim
             }
             return true;
         }
-
-        public bool IsWorking => NetworkController?.CompPower?.PowerOn ?? false;
 
 
         public float NetworkValueFor(TiberiumValueType valueType)

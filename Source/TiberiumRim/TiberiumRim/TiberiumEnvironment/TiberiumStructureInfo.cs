@@ -16,29 +16,9 @@ namespace TiberiumRim
         public HashSet<TiberiumBlossom> Blossoms = new HashSet<TiberiumBlossom>();
         //public TiberiumProducerGrid ProducerGrid;
 
-        public bool stopBlossom = false;
-
         public TiberiumStructureInfo(Map map)
         {
             this.map = map;
-        }
-
-        public IntVec3 GetBlossomDestination()
-        {
-            if (stopBlossom) return IntVec3.Invalid;
-
-            Predicate<IntVec3> pred = c => Blossoms.All(b => b.Position.DistanceTo(c) >= b.radius) && c.SupportsBlossom(map);
-            if (!CellFinderLoose.TryGetRandomCellWith(pred, map, 999, out IntVec3 dest))
-            {
-                stopBlossom = true;
-                return IntVec3.Invalid;
-            }
-            return dest;
-        }
-
-        public void Notify_BlossomGone()
-        {
-            stopBlossom = false;
         }
 
         public TiberiumProducer ClosestProducer(Pawn seeker)

@@ -139,6 +139,7 @@
     <Compile Include="Research\TargetProperties.cs" />
     <Compile Include="TiberiumEnvironment\GenTiberiumPatterns.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumAffecter.cs" />
+    <Compile Include="TiberiumEnvironment\TiberiumBlossomInfo.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumField.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumSpreader.cs" />
     <Compile Include="TiberiumInfection\TiberiumInfectionInfo.cs" />
@@ -259,10 +260,10 @@
     <Compile Include="VisualEffects\Graphic_Sprite.cs" />
     <Compile Include="VisualEffects\Mote_Beam.cs" />
     <Compile Include="VisualEffects\MoverProperties.cs" />
-    <Compile Include="VisualEffects\ParticleEmitter.cs" />
+    <Compile Include="VisualEffects\Particles\ParticleEmitter.cs" />
     <Compile Include="VisualEffects\PulseProperties.cs" />
     <Compile Include="VisualEffects\QuadTree.cs" />
-    <Compile Include="VisualEffects\SimpleParticle.cs" />
+    <Compile Include="VisualEffects\Particles\SimpleParticle.cs" />
     <Compile Include="Weaponry\AttackProperties.cs" />
     <Compile Include="Weaponry\BeamHubProperties.cs" />
     <Compile Include="Weaponry\Building_BeamHub.cs" />
@@ -362,9 +363,9 @@
     <Compile Include="MechanicalPawns\MechanicalPawn.cs" />
     <Compile Include="MechanicalPawns\MechanicalPawnKindDef.cs" />
     <Compile Include="VisualEffects\MoteThrower.cs" />
-    <Compile Include="VisualEffects\ParticleDef.cs" />
-    <Compile Include="VisualEffects\ParticleGraphicData.cs" />
-    <Compile Include="VisualEffects\ParticleMaker.cs" />
+    <Compile Include="VisualEffects\Particles\ParticleDef.cs" />
+    <Compile Include="VisualEffects\Particles\ParticleGraphicData.cs" />
+    <Compile Include="VisualEffects\Particles\ParticleMaker.cs" />
     <Compile Include="TiberiumEnvironment\GenTiberium.cs" />
     <Compile Include="GraphicsManager.cs" />
     <Compile Include="GraphicsSettings.cs" />
@@ -373,7 +374,7 @@
     <Compile Include="GameParts\MapComps\MapComponent_Pollution.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_Tiberium.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_TiberiumWater.cs" />
-    <Compile Include="VisualEffects\Particle.cs" />
+    <Compile Include="VisualEffects\Particles\Particle.cs" />
     <Compile Include="TiberiumEnvironment\Grid_Pollution.cs" />
     <Compile Include="ThingComp_PlantExplode.cs" />
     <Compile Include="Comps\Comp_TiberiumExplosive.cs" />

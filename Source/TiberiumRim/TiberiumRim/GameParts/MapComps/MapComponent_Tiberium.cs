@@ -19,6 +19,7 @@ namespace TiberiumRim
     {
         public TiberiumMapInfo TiberiumInfo;
         public TiberiumFloraMapInfo FloraInfo;
+        public TiberiumBlossomInfo BlossomInfo;
 
         public TiberiumAffecter TiberiumAffecter;
         public TiberiumSpreader TiberiumSpreader;
@@ -44,6 +45,7 @@ namespace TiberiumRim
         {
             TiberiumInfo  = new TiberiumMapInfo(map);
             FloraInfo     = new TiberiumFloraMapInfo(map);
+            BlossomInfo   = new TiberiumBlossomInfo(map);
             StructureInfo = new TiberiumStructureInfo(map);
             InfectionInfo = new TiberiumInfectionInfo(map);
         }

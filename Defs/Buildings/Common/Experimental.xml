@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
+	<!--
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>TiberiumPipeDynamic</defName>
 		<label>dynamic tiberium pipe</label>
@@ -63,6 +63,7 @@
 			<li>TiberiumRim.PlaceWorker_Pipe</li>
 		</placeWorkers>
 	</TiberiumRim.TRThingDef>
+	-->
 	
 	<ThingDef ParentName="BuildingBase">
 		<defName>AngleTester</defName>

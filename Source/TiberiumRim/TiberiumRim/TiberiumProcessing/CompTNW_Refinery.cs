@@ -10,7 +10,7 @@ namespace TiberiumRim
 {
     public class CompTNW_Refinery : CompTNW
     {
-        private readonly List<Harvester> harvesters = new List<Harvester>();
+        private readonly List<Harvester> harvesters = new List<Harvester>(); 
         private Zone_MechParking parkingZone;
         public bool recallHarvesters = false;
 
@@ -29,8 +29,8 @@ namespace TiberiumRim
             base.PostSpawnSetup(respawningAfterLoad);
             if (!respawningAfterLoad)
             {
-                parkingZone = new Zone_MechParking(parent.Map.zoneManager, Props.harvester);
-                parkingZone.AddCell(parent.InteractionCell);
+                //parkingZone = new Zone_MechParking(parent.Map.zoneManager, Props.harvester);
+                //parkingZone.AddCell(parent.InteractionCell);
                 AddHarvester(SpawnNewHarvester());
             }
         }
@@ -120,9 +120,12 @@ namespace TiberiumRim
                 yield return gizmo;
             }
 
-            foreach (var gizmo in parkingZone.GetZoneAddGizmos())
+            if (parkingZone != null)
             {
-                yield return gizmo;
+                foreach (var gizmo in parkingZone.GetZoneAddGizmos())
+                {
+                    yield return gizmo;
+                }
             }
 
             yield return new Command_Action

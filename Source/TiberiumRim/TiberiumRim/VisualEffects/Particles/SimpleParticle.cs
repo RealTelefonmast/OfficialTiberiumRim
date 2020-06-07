@@ -8,7 +8,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class SimpleParticle
+    public class SimpleParticle : IExposable
     {
         public ParticleDef def;
 
@@ -28,6 +28,11 @@ namespace TiberiumRim
         public SimpleParticle(ParticleDef def)
         {
             this.def = def;
+        }
+
+        public void ExposeData()
+        {
+
         }
 
         public void SpawnSetup()

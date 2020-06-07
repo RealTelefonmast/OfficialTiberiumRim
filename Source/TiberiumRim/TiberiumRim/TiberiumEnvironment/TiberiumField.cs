@@ -63,6 +63,7 @@ namespace TiberiumRim
         public void AddFieldCell(IntVec3 cell, Map map)
         {
             fieldCells.Add(cell);
+            if (producer.TiberiumTypes.EnumerableNullOrEmpty()) return;
             foreach (var type in producer.TiberiumTypes)
             {
                 map.Tiberium().TiberiumInfo.SetFieldColor(cell, true, type.TiberiumValueType);

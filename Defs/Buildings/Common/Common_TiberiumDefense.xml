@@ -33,7 +33,7 @@
 		</costList>
 		<requisites>
 			<tiberiumResearchTasks>
-				<li>TiberiumRefining_T5</li>
+				<li>TiberiumSuppressionBasic_T2</li>
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>

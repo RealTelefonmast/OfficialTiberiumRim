@@ -81,8 +81,7 @@ namespace TiberiumRim
     {
         private TResearchTaskDef taskDef;
         private readonly Dictionary<ThingDef, List<CreationOptionProperties>> creationOptionMap = new Dictionary<ThingDef, List<CreationOptionProperties>>();
-
-        private Dictionary<CreationOptionProperties, int> thingsToCreate = new Dictionary<CreationOptionProperties, int>();
+        private readonly Dictionary<CreationOptionProperties, int> thingsToCreate = new Dictionary<CreationOptionProperties, int>();
 
         private List<int> intValues;
 

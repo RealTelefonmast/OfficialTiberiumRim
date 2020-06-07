@@ -51,7 +51,7 @@ namespace TiberiumRim
 
         public bool IsGroundZero { get; set; }
         public bool ShouldSpawnSpore => def.spore != null && IsGroundZero && ticksUntilSpore <= 0 && MatureEnough;
-        public bool ShouldSpawnTiberium => TiberiumTypes.Any() && ticksUntilTiberium <= 0 && MatureEnough;
+        public bool ShouldSpawnTiberium => !TiberiumTypes.EnumerableNullOrEmpty() && ticksUntilTiberium <= 0 && MatureEnough;
         //public bool ShouldEvolve => evolvesTo != null && ticksToEvolution <= 0;
         private bool MatureEnough => (IsFullyMature || areaMutator.ProgressPct >= def.spawner.minDaysToSpread / def.daysToMature);
         public bool IsFullyMature => areaMutator.Finished;
@@ -60,7 +60,7 @@ namespace TiberiumRim
 
         public TiberiumFieldRuleset Ruleset => def?.tiberiumFieldRules;
         
-        public IEnumerable<TiberiumCrystalDef> TiberiumTypes => Ruleset.crystalOptions.Select(t => t.thing as TiberiumCrystalDef);
+        public IEnumerable<TiberiumCrystalDef> TiberiumTypes => Ruleset.crystalOptions.NullOrEmpty() ? null : Ruleset.crystalOptions.Select(t => t.thing as TiberiumCrystalDef);
         public List<IntVec3> FieldCells => tiberiumField.FieldCells;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
@@ -133,8 +133,8 @@ namespace TiberiumRim
         {
             if (ShouldSpawnSpore)
             {
-                SpawnBlossomSpore();
-                ResetSporeCounter();
+                if(TrySpawnBlossomSpore()) 
+                    ResetSporeCounter();
             }
 
             if (ShouldSpawnTiberium)
@@ -190,17 +190,17 @@ namespace TiberiumRim
             }
         }
 
-        private void SpawnBlossomSpore()
+        private bool TrySpawnBlossomSpore()
         {
             //TODO: Fix Spores /def.spore missing
-            Log.Message("Spawning Spore From " + this);
-            ResetSporeCounter();
-            return;
-            var dest = TiberiumComp.StructureInfo.GetBlossomDestination();
-            if (!dest.IsValid) return;
-            var spore = GenTiberium.SpawnBlossomSpore(Position, dest, Map, def.spore.Blossom(), this);
-            //TODO: Make basic tiberium letter
-            LetterMaker.MakeLetter("Blossom Spore", "A blossom spore has appeared, and will fly to this position.", LetterDefOf.NeutralEvent, new LookTargets(spore.endCell, Map));
+            return false;
+            // Log.Message("Spawning Spore From " + this);
+            // var dest = TiberiumComp.StructureInfo.GetBlossomDestination();
+            // if (!dest.IsValid) return false;
+            // var spore = GenTiberium.SpawnBlossomSpore(Position, dest, Map, def.spore.Blossom(), this);
+            // //TODO: Make basic tiberium letter
+            // LetterMaker.MakeLetter("Blossom Spore", "A blossom spore has appeared, and will fly to this position.", LetterDefOf.NeutralEvent, new LookTargets(spore.endCell, Map));
+            // return true;
         }
 
         private void ResetTiberiumCounter()
@@ -278,15 +278,18 @@ namespace TiberiumRim
                 yield return gizmo;
             }
 
-            yield return new Command_Action
+            if (!TiberiumTypes.EnumerableNullOrEmpty())
             {
-                defaultLabel = "DEBUG: Spawn " + TiberiumTypes?.RandomElement().label,
-                action = delegate
+                yield return new Command_Action
                 {
-                    SpawnTiberium();
-                    ResetTiberiumCounter();
-                }
-            };
+                    defaultLabel = "DEBUG: Spawn " + TiberiumTypes?.RandomElement().label,
+                    action = delegate
+                    {
+                        SpawnTiberium();
+                        ResetTiberiumCounter();
+                    }
+                };
+            }
 
             yield return new Command_Action
             {

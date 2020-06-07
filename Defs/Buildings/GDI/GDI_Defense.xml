@@ -594,24 +594,24 @@
 						<turret>
 							<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
-							<drawSize>(3,3)</drawSize>
+							<drawSize>(5,5)</drawSize>
 						</turret>
 						<barrels>
 							<li>
 								<graphic>
-									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Barrel</texPath>
+									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Railgun</texPath>
 									<graphicClass>Graphic_Single</graphicClass>
-									<drawSize>(3,3)</drawSize>
+									<drawSize>(5,5)</drawSize>
 								</graphic>
 								<altitudeOffset>-0.1</altitudeOffset>
-								<recoilOffset>(0,0,-0.25)</recoilOffset>
+								<recoilOffset>(0,0,-0.5)</recoilOffset>
 							</li>
 						</barrels>
 						<speed>60</speed>
 						<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
 					</turretTop>
-					<drawOffset>(-2.5,0,0)</drawOffset>
-					<turretGunDef>Gun_Guardian</turretGunDef>
+					<drawOffset>(-2.75,0,0)</drawOffset>
+					<turretGunDef>Gun_Guardian_Railgun</turretGunDef>
 					<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
 					<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
 				</li>
@@ -620,17 +620,17 @@
 						<turret>
 							<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
-							<drawSize>(3,3)</drawSize>
+							<drawSize>(5,5)</drawSize>
 						</turret>
 						<barrels>
 							<li>
 								<graphic>
-									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Barrel</texPath>
+									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Standard</texPath>
 									<graphicClass>Graphic_Single</graphicClass>
-									<drawSize>(3,3)</drawSize>
+									<drawSize>(5,5)</drawSize>
 								</graphic>
 								<altitudeOffset>-0.1</altitudeOffset>
-								<recoilOffset>(0,0,-0.25)</recoilOffset>
+								<recoilOffset>(0,0,-0.5)</recoilOffset>
 							</li>
 						</barrels>
 						<speed>60</speed>
@@ -644,10 +644,6 @@
 			</turrets>
 		</turret>
 		<comps>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>300</basePowerConsumption>
-			</li>
 			<li Class="CompProperties_Refuelable">
 				<fuelLabel>Shells capacity</fuelLabel>
 				<fuelGizmoLabel>Shells capacity</fuelGizmoLabel>

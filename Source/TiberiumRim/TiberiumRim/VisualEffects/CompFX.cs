@@ -40,6 +40,7 @@ namespace TiberiumRim
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
+
             if (spawnedOnce) return;
             if(Props.moteData?.thrower != null)
             {
@@ -129,7 +130,7 @@ namespace TiberiumRim
             get
             {
                 if (iParent != null) return iParent;
-                if (parent.AllComps.Any(c => c is IFXObject))
+                if (!Props.useParentClass && parent.AllComps.Any(c => c is IFXObject))
                 {
                     iParent = parent.AllComps.First(x => x is IFXObject) as IFXObject;
                     return iParent;
@@ -326,6 +327,7 @@ namespace TiberiumRim
         {
             this.compClass = typeof(CompFX);
         }
+        public bool useParentClass = false;
         public IntRange tickOffset = new IntRange(0, 333);
         public FXMode mode = FXMode.Static;
         public MoteThrowerData moteData;

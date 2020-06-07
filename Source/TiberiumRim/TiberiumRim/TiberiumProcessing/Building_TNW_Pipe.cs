@@ -25,6 +25,7 @@ namespace TiberiumRim
         }
     }
 
+    /*
     public class TNW_PipeDynamic : FXBuilding, IContainerHolder
     {
         public TiberiumContainer Container;
@@ -71,12 +72,12 @@ namespace TiberiumRim
             {
                 Container.TryAddValue(TiberiumValueType.Green, 1, out float actualValue);
                 cachedPercent = Container.StoredPercent;
-                /*
+                
                 containedValue += 100;
                 if (containedValue > maxValue)
                     containedValue = maxValue;
                 cachedPercent = containedValue / maxValue;
-                */
+                
             }
 
             if (Container.TotalStorage >= 0.25f)
@@ -100,7 +101,7 @@ namespace TiberiumRim
             if (value > biggest)
                 biggest = value;
             return value >= transferVal ? value : 0;
-            /*
+            
             var wantingNeighbors = Neighbors.Where(n => n != null && n.WantsFrom(this));
             if (!wantingNeighbors.Any()) return 0f;
 
@@ -116,7 +117,7 @@ namespace TiberiumRim
                 biggest = value;
 
             return value;
-            */
+            
         }
 
         public void Give(float value, TNW_PipeDynamic to)
@@ -187,7 +188,7 @@ namespace TiberiumRim
         public void Notify_ContainerFull()
         { }
     }
-
+    */
     /*
     public class TNW_Pipe2 : FXBuilding, IContainerHolder
     {

@@ -51,7 +51,7 @@
 				<overlays>
 					<li>
 						<data>
-							<texPath>Pawns/GDI/Harvester/HG</texPath>
+							<texPath>Pawns/GDI/Harvester/FX/HG</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
@@ -138,7 +138,7 @@
 		</tools>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.FXThingDef ParentName="BuildingBase_TR">
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>HarvesterHusk_Common</defName>
 		<label>Harvester husk</label>
 		<description>The remains of a destroyed harvester.</description>
@@ -158,11 +158,12 @@
 			<Steel>75</Steel>
 			<ComponentIndustrial>2</ComponentIndustrial>
 		</costList>
+		<uiIconScale>0.3</uiIconScale>
 		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
 		<rotatable>true</rotatable>
 		<destroyable>true</destroyable>
 		<useHitPoints>true</useHitPoints>
-		<tickerType>Normal</tickerType>
+		<tickerType>Never</tickerType>
 		<selectable>true</selectable>
 		<size>(1,1)</size>
 		<neverOverlapFloors>false</neverOverlapFloors>
@@ -172,9 +173,9 @@
 			<claimable>false</claimable>
 			<deconstructible>true</deconstructible>
 		</building>
-	</TiberiumRim.FXThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.FXThingDef ParentName="BuildingBase_TR">
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>HarvesterHusk_GDI</defName>
 		<label>Harvester husk</label>
 		<description>The remains of a destroyed harvester.</description>
@@ -194,11 +195,12 @@
 			<GDI_ReinforcedPlate>10</GDI_ReinforcedPlate>
 			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>
+		<uiIconScale>0.3</uiIconScale>
 		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
 		<rotatable>true</rotatable>
 		<destroyable>true</destroyable>
 		<useHitPoints>true</useHitPoints>
-		<tickerType>Normal</tickerType>
+		<tickerType>Never</tickerType>
 		<selectable>true</selectable>
 		<size>(1,1)</size>
 		<neverOverlapFloors>false</neverOverlapFloors>
@@ -208,9 +210,9 @@
 			<claimable>false</claimable>
 			<deconstructible>true</deconstructible>
 		</building>
-	</TiberiumRim.FXThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.FXThingDef ParentName="BuildingBase_TR">
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>HarvesterHusk_Nod</defName>
 		<label>Harvester husk</label>
 		<description>The remains of a destroyed harvester.</description>
@@ -230,11 +232,12 @@
 			<Nod_CarbonPlate>10</Nod_CarbonPlate>
 			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>
+		<uiIconScale>0.3</uiIconScale>
 		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
 		<rotatable>true</rotatable>
 		<destroyable>true</destroyable>
 		<useHitPoints>true</useHitPoints>
-		<tickerType>Normal</tickerType>
+		<tickerType>Never</tickerType>
 		<selectable>true</selectable>
 		<size>(1,1)</size>
 		<neverOverlapFloors>false</neverOverlapFloors>
@@ -244,6 +247,6 @@
 			<claimable>false</claimable>
 			<deconstructible>true</deconstructible>
 		</building>
-	</TiberiumRim.FXThingDef>
+	</TiberiumRim.TRThingDef>
 
 </Defs>

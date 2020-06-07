@@ -34,6 +34,8 @@ namespace TiberiumRim
 
         public bool ShouldLeak => false;
         public bool HasConnection => StructureSet.Pipes.Any();
+        public virtual bool ShouldNotifyEVA => false;
+
         public TNWMode NetworkMode => Props.tnwbMode;
         public CompProperties_TNW Props => (CompProperties_TNW)props;
         public TiberiumContainer Container { get => container; set => container = value; }
@@ -133,42 +135,39 @@ namespace TiberiumRim
             switch (NetworkMode)
             {
                 case TNWMode.Storage:
-                    ShareTick();
+                    DistributeValues();
                     break;
                 case TNWMode.Consumer:
-                    ConsumeTick();
+                    
                     break;
                 case TNWMode.Producer:
-                    ProduceTick();
+                    StoreValues();
                     break;
             }
         }
 
-        public virtual void ProduceTick()
+        public virtual void StoreValues()
         {
-            foreach (CompTNW storage in Network.NetworkSet.Storages)
+            if (!Container.HasStorage) return;
+            foreach (var storage in Network.NetworkSet.Storages)
             {
-                foreach (TiberiumValueType type in Container.AllStoredTypes)
+                if (storage.Container.CapacityFull) break;
+                foreach (var tibType in Container.AllStoredTypes)
                 {
-                    Container.TryTransferTo(storage.Container, type, 1);
+                    Container.TryTransferTo(storage.Container, tibType, 1);
                 }
             }
         }
 
-        public virtual void ConsumeTick()
+        public virtual void DistributeValues()
         {
-        }
-
-        public virtual void ShareTick()
-        {
-            foreach (CompTNW storage in Network.NetworkSet.Storages)
+            if (!Container.HasStorage) return;
+            foreach (var storage in Network.NetworkSet.Consumers)
             {
-                if (Container.StoredPercent > storage.Container.StoredPercent || storage.NetworkMode == TNWMode.Consumer)
+                if (storage.Container.CapacityFull) break;
+                foreach (var tibType in Container.AllStoredTypes)
                 {
-                    foreach (TiberiumValueType type in Container.AllStoredTypes)
-                    {
-                        Container.TryTransferTo(storage.Container, type, 1);
-                    }
+                    Container.TryTransferTo(storage.Container, tibType, 1);
                 }
             }
         }
@@ -278,12 +277,13 @@ namespace TiberiumRim
             {
                 yield return g;
             }
-            yield return new Designator_BuildFixed(parent.def);
 
             foreach (Gizmo g in Container.GetGizmos())
             {
                 yield return g;
             }
+            yield return new Designator_BuildFixed(parent.def);
+            yield return new Designator_BuildFixed(TiberiumDefOf.TiberiumPipe);
 
             if (DebugSettings.godMode)
             {

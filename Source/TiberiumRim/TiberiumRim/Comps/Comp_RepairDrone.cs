@@ -106,6 +106,7 @@ namespace TiberiumRim
 
         private void PrintIdleDrones(SectionLayer layer)
         {
+            Log.Message("Printing " + DroneContainer.Count + " drones.");
             for(int i = 0; i < DroneContainer.Count; i++)
             {
                 Vector3 drawPos = parent.DrawPos + new Vector3(0, AltitudeLayer.BuildingOnTop.AltitudeFor(), 0) + Props.dronePositions[i];
@@ -114,6 +115,14 @@ namespace TiberiumRim
                 Material mat = droneGraphic.MatNorth;
                 Printer_Plane.PrintPlane(layer, drawPos, new Vector2(Props.droneSize, Props.droneSize), mat, 0, false);
             }
+        }
+
+        public override string CompInspectStringExtra()
+        {
+            StringBuilder sb = new StringBuilder();
+            //sb.Append(base.CompInspectStringExtra().TrimEndNewlines());
+            sb.Append("Current Drones: " + DroneContainer?.Count);
+            return sb.ToString().TrimEndNewlines();
         }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
@@ -126,7 +135,6 @@ namespace TiberiumRim
                     AddMech(MakeMech(Props.droneDef));
                     parent.Map.mapDrawer.MapMeshDirty(parent.Position, MapMeshFlag.Things);
                 }
-                
             };
         }
     }

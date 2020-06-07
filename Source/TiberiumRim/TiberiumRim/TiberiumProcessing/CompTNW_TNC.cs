@@ -49,7 +49,6 @@ namespace TiberiumRim
             {
                 yield return g;
             }
-            yield return new Designator_BuildFixed(TiberiumDefOf.TiberiumPipe);
         }
     }
 }

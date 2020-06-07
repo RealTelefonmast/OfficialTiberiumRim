@@ -29,7 +29,7 @@
 		</costList>
 		<requisites>
 			<tiberiumResearchTasks>
-				<li>TiberiumSuppressionBasic_T3</li>
+				<li>TiberiumRefining_T5</li>
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
@@ -107,6 +107,11 @@
 			<Steel>100</Steel>
 			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T2</li>
+			</tiberiumResearchTasks>
+		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TNW">
 				<compClass>TiberiumRim.CompTNW_Node</compClass>
@@ -152,6 +157,8 @@
 		<label>tiberium pipe</label>
 		<description>This structure connects Tiberium processing structures on the Tiberium Network.</description>
 		<thingClass>TiberiumRim.TNW_Pipe</thingClass>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Processing</TRCategory>
 		<hidden>true</hidden>
 		<costList>
 			<Steel>5</Steel>
@@ -235,6 +242,11 @@
 			<Flammability>1.0</Flammability>
 			<Beauty>-25</Beauty>
 		</statBases>
+		<requisites>
+			<tiberiumResearch>
+				<li>TiberiumGasRefining</li>
+			</tiberiumResearch>
+		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TNW">
 				<compClass>TiberiumRim.CompTNW_Silo</compClass>
@@ -460,6 +472,11 @@
 		<building>
 			<ai_chillDestination>false</ai_chillDestination>
 		</building>
+		<requisites>
+			<tiberiumResearch>
+				<li>TiberiumGasRefining</li>
+			</tiberiumResearch>
+		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TNW">
 				<compClass>TiberiumRim.CompTNW</compClass>
@@ -470,6 +487,7 @@
 				<tnwbMode>Producer</tnwbMode>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
+				<useParentClass>true</useParentClass>
 				<overlays>
 					<li>
 						<data>

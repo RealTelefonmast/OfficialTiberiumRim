@@ -148,6 +148,7 @@ namespace TiberiumRim
                     inactiveDef = null;
                     foreach (var def in things)
                     {
+                        if (def.hidden && !DebugSettings.godMode) continue;
                         if (def.IsActive(out string reason))
                         {
                             Designator(def, main, size, ref curXY);

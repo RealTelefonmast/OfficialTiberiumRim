@@ -24,7 +24,7 @@ namespace TiberiumRim
         
         public FXGraphic(CompFX parent, FXGraphicData data, int index)
         {
-            Log.Message(index + " '" + data.data?.texPath + "'");
+            Log.Message(index + " '" + data.data?.texPath + "'" + " which is " + data.mode);
             this.parent = parent;
             this.data = data;
             this.index = index;
@@ -45,8 +45,8 @@ namespace TiberiumRim
 
         public void Tick()
         {
-            if (unused)
-                return;
+            if (unused) return;
+
             if (ticksToBlink > 0 && blinkDuration == 0)
                 ticksToBlink--;
             else
@@ -69,9 +69,6 @@ namespace TiberiumRim
         {
             get
             {
-                Color color = parent.ColorOverride(index);              
-                color = color == Color.white ? data.data.color : color;
-                var size = data.data.drawSize;
                 if (graphicInt == null)
                 {
                     if(parent.parent.Graphic is Graphic_Random random)
@@ -89,48 +86,10 @@ namespace TiberiumRim
                         graphicInt = data.data.Graphic;
                     }
                 }
-                if (color != graphicInt.Color)
-                    graphicInt = graphicInt.GetColoredVersion(graphicInt.Shader, color, data.data.colorTwo);
                 return graphicInt;
             }
         }
 
-        
-        /*private Material ProcessMaterial(ref Material mat)
-        {
-            Color color = parent.ColorOverride(index);
-            color = color == Color.white ? data.data.color : color;
-            if (data.mode == FXMode.Blink)
-            {
-                color.a = 0f;
-                if (blinkDuration > 0)
-                {
-                    color.a = 1f;
-                }
-            }
-            if (data.mode == FXMode.Pulse)
-            {
-                var pulse = data.pulse;
-                var tick = Find.TickManager.TicksGame;
-                var opaVal = TRUtils.Cosine2(pulse.opacityRange.min, pulse.opacityRange.max, pulse.opacityDuration,
-                    parent.tickOffset + pulse.opacityOffset, tick);
-                var sizeVal = TRUtils.Cosine2(pulse.sizeRange.min, pulse.sizeRange.max, pulse.sizeDuration,
-                    parent.tickOffset + pulse.sizeOffset, tick);
-                if (pulse.mode == PulseMode.Opacity)
-                    color.a = opaVal;
-                else if (pulse.mode == PulseMode.Size)
-                    graphicInt.drawSize = size * sizeVal;
-                else if (pulse.mode == PulseMode.OpaSize)
-                {
-                    color.a = opaVal;
-                    graphicInt.drawSize = size * sizeVal;
-                }
-            }
-            color.a *= parent.OpacityFloat(index);
-
-            mat.SetColor("_Color", color);
-            return mat;
-        }*/
 
         //TODO: Improve low level rendering by abstracting from Graphic, applying changes directly to the rendering call
         //TODO: Matrix transformation a'lá 
@@ -148,16 +107,52 @@ namespace TiberiumRim
             }
             GraphicDrawInfo info = new GraphicDrawInfo(Graphic, drawPos, rot, ((FXThingDef)parent.parent.def).extraData, parent.parent.def);
             Material mat = info.drawMat;
+
+            Color color = data.data.color;
+            if (parent.ColorOverride(index) != Color.white)
+                color = parent.ColorOverride(index);
+
             mat.SetTextureOffset("_MainTex", parent.TextureOffset);
             mat.SetTextureScale("_MainTex", parent.TextureScale);
-            if (data.mode == FXMode.Mover)
+
+            switch (data.mode)
             {
-                ShaderMaterial.SetTexture("_MainTex", mat.mainTexture);
-                ShaderMaterial.SetTexture("_MaskTex", ContentFinder<Texture2D>.Get(Graphic.path + "_s"));
-                mat = ShaderMaterial;
-                Vector2 offset = new Vector2(0, TRUtils.Cosine(data.startOffset, data.endOffset, data.MoverSpeed, Find.TickManager.TicksGame));
-                mat.mainTextureOffset = offset;               
+                case FXMode.Dynamic:
+                    break;
+                case FXMode.Mover:
+                    ShaderMaterial.SetTexture("_MainTex", mat.mainTexture);
+                    ShaderMaterial.SetTexture("_MaskTex", ContentFinder<Texture2D>.Get(Graphic.path + "_s"));
+                    mat = ShaderMaterial;
+                    Vector2 offset = new Vector2(0, TRUtils.Cosine(data.startOffset, data.endOffset, data.MoverSpeed, Find.TickManager.TicksGame));
+                    mat.mainTextureOffset = offset;
+                    break;
+                case FXMode.Blink:
+                    color.a = 0;
+                    if (blinkDuration > 0)
+                        color.a = 1;
+                    break;
+                case FXMode.Pulse:
+                    var pulse = data.pulse;
+                    var tick = Find.TickManager.TicksGame;
+                    var opaVal = TRUtils.Cosine2(pulse.opacityRange.min, pulse.opacityRange.max, pulse.opacityDuration,
+                        parent.tickOffset + pulse.opacityOffset, tick);
+                    var sizeVal = TRUtils.Cosine2(pulse.sizeRange.min, pulse.sizeRange.max, pulse.sizeDuration,
+                        parent.tickOffset + pulse.sizeOffset, tick);
+                    if (pulse.mode == PulseMode.Opacity)
+                        color *= opaVal;
+                    else if (pulse.mode == PulseMode.Size)
+                        graphicInt.drawSize = info.drawSize * sizeVal;
+                    else if (pulse.mode == PulseMode.OpaSize)
+                    {
+                        color *= opaVal;
+                        graphicInt.drawSize = info.drawSize * sizeVal;
+                    }
+                    break;
+                default:
+                    return;
             }
+            mat.SetColor(ShaderPropertyIDs.Color, color);
+
             Graphics.DrawMesh(info.drawMesh, new Vector3(info.drawPos.x, altitude, info.drawPos.z), rotation?.ToQuat() ?? info.rotation.ToQuat(), mat, 0);
         }
 

@@ -160,7 +160,6 @@ namespace TiberiumRim
 
             //if (!TRUtils.Chance(ruleset.ChanceFor() * terrain.plantChanceFactor)) return;
             TRThingDef flora = ruleset.PlantAt(distance, maxRadius);
-            Log.Message("TerrainChance: " + terrain + " " + terrain.plantChanceFactor);
             if (!TRUtils.Chance(ruleset.ChanceFor(flora, distance, maxRadius) * terrain.plantChanceFactor)) return;
 
             if (flora == null) return;

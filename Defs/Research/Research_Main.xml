@@ -501,7 +501,7 @@
 	<TiberiumRim.TResearchDef>
 		<defName>TiberiumGasRefining</defName>
 		<label>Tiberium Gas Refining</label>	
-		<researchType>foraging</researchType>
+		<researchType>observation</researchType>
 		<description>N/A</description>
 		<requisites>
 			<events>
