@@ -19,8 +19,6 @@ namespace TiberiumRim
 
     public class MainTabWindow_TibResearch : MainTabWindow
     {
-        //
-
         //Dimensions
         private static float leftWidth = 250; //Original: 200
         private static float tabHeight = 32;
@@ -32,12 +30,18 @@ namespace TiberiumRim
         private Vector2 projectScrollPos = Vector2.zero;
         private Vector2 taskScrollPos = Vector2.zero;
         //Sizes
-        private static Vector2 researchGroupSize = new Vector2(220, 20);
-        private static Vector2 researchOptionSize = new Vector2(200, 30);
-        private static Vector2 startButtonSize = new Vector2(120, 40);
-        private static Vector2 iconSize = new Vector2(20, 20);
-        private static float taskCurrentHeight = 50;
-        private static float taskOtherHeight = 30;
+        //Research Group
+        private static readonly Vector2 researchGroupSize = new Vector2(220, 30);
+
+        //Research Option
+        private static readonly Vector2 researchOptionSize = new Vector2(200, 30);
+        private static readonly float researchOptionXOffset = (researchGroupSize.x - researchOptionSize.x) / 2;
+        private static readonly float researchOptionIconSize = 24;
+
+        private static readonly Vector2 startButtonSize = new Vector2(120, 40);
+        private static readonly Vector2 iconSize = new Vector2(20, 20);
+        private static readonly float taskCurrentHeight = 50;
+        private static readonly float taskOtherHeight = 30;
         //private static Vector2 tabOptionSize = new Vector2(80, 20);
 
         //Colors
@@ -52,6 +56,10 @@ namespace TiberiumRim
 
         private static string startProjLabel = "TR_StartResearch".Translate(),
                                stopProjLabel = "TR_StopResearch".Translate();
+
+        //Images
+        private int currentImage = 0;
+        private Dictionary<TResearchTaskDef, List<Texture2D>> cachedImages = new Dictionary<TResearchTaskDef, List<Texture2D>>();
 
         public MainTabWindow_TibResearch()
         {
@@ -159,67 +167,55 @@ namespace TiberiumRim
             Widgets.DrawTextureFitted(bannerRect, TiberiumContent.Banner, 1f);
 
             GUI.BeginGroup(rect);
-            Rect outRect = new Rect(0, 0, rect.width, rect.height - bannerHeight);
-            Rect viewRect = new Rect(0, 0, outRect.width, outRect.height);
+            var outRect  = new Rect(0, 0, rect.width, rect.height - bannerHeight);
+            var viewRect = new Rect(0, 0, outRect.width, outRect.height);
+            var curY= bannerRect.height + 5; 
             Widgets.BeginScrollView(outRect, ref projectScrollPos, viewRect, true);
-            float curY = bannerRect.height + 5; //new Vector2(rect.width, 0); //Width and yPos
-            foreach (var researchGroup in TRUtils.ResearchManager().Groups)
+            foreach (var researchGroup in Manager.Groups)
             {
-                if (ShouldShow(researchGroup))
+                if(researchGroup.IsVisible)
                     DrawResearchGroup(ref curY, researchGroup);
             }
             Widgets.EndScrollView();
             GUI.EndGroup();
         }
 
-        private bool ShouldShow(TResearchGroupDef group)
-        {
-            return !group.IsFinished && !group.ActiveProjects.NullOrEmpty() || (group.IsFinished && !TResearchManager.hideGroups);
-        }
-
         private void DrawResearchGroup(ref float curY, TResearchGroupDef group)
         {
-            if (group.ActiveProjects.NullOrEmpty())
-                return;
-            float height = group.ActiveProjects.Count() * researchOptionSize.y;
-            float textHeight = Text.CalcHeight(group.LabelCap, researchGroupSize.x);
-            Rect groupOptionRect = new Rect(0, curY, researchGroupSize.x, researchGroupSize.y + textHeight);
-            Widgets.DrawMenuSection(groupOptionRect);
+            if (group.ActiveProjects.NullOrEmpty()) return;
 
-            Text.Anchor = TextAnchor.MiddleCenter;
-            Widgets.Label(groupOptionRect, group.LabelCap);
-
+            var height     = group.ActiveProjects.Count() * researchOptionSize.y;
+            var textHeight = Text.CalcHeight(group.LabelCap, researchGroupSize.x);
+            var groupOptionRect = new Rect(0, curY, researchGroupSize.x, researchGroupSize.y + textHeight);
             curY += groupOptionRect.height;
-            if (Widgets.ButtonInvisible(groupOptionRect))
+
+            if (TRWidgets.ButtonColoredHighlight(groupOptionRect, group.LabelCap, TRMats.MenuSectionBGFillColor, TRMats.MenuSectionBGBorderColor))
             {
                 Manager.OpenClose(group);
             }
             if (Manager.IsOpen(group))
             {
-                float xOff = (researchGroupSize.x - researchOptionSize.x) / 2;
-                Rect groupOptionSelection = new Rect(xOff, curY, researchOptionSize.x, height);
+                var groupOptionSelection = new Rect(researchOptionXOffset, curY, researchOptionSize.x, height);
                 Widgets.DrawMenuSection(groupOptionSelection);
                 foreach (var project in group.ActiveProjects)
                 {
-                    Rect ProjectOptionRect = new Rect(xOff, curY, researchOptionSize.x, researchOptionSize.y);
-                    Rect IconRect = ProjectOptionRect.LeftPartPixels(iconSize.x);
-                    Rect TextRect = ProjectOptionRect.RightPartPixels(ProjectOptionRect.width - 30);
+                    float margin = (researchOptionSize.y - 24f) / 2;
+                    WidgetRow row = new WidgetRow(researchOptionXOffset + margin, curY + margin, UIDirection.RightThenDown);
+                    row.Icon(ProjectStatusTexture(project.State));
+                    row.Label(project.LabelCap);
+                    
+                    var projectOptionRect = new Rect(researchOptionXOffset, curY, researchOptionSize.x, researchOptionSize.y);
+                    if (Mouse.IsOver(projectOptionRect) || project == SelProject)
+                        Widgets.DrawHighlight(projectOptionRect);
 
-                    Widgets.DrawTextureFitted(IconRect, ProjectStatusTexture(project.State), 1);
-                    Text.Anchor = TextAnchor.MiddleLeft;
-                    Widgets.Label(TextRect, project.LabelCap);
-
-                    if (Mouse.IsOver(ProjectOptionRect) || project == SelProject)
-                        Widgets.DrawHighlight(ProjectOptionRect);
-
-                    if (Widgets.ButtonInvisible(ProjectOptionRect))
+                    if (Widgets.ButtonInvisible(projectOptionRect))
                         SelProject = project;
 
-                    curY += ProjectOptionRect.height;
+                    curY += projectOptionRect.height;
                 }
             }
-            curY += 5f;
-            Text.Anchor = default;
+            curY += + 5f;
+            //Text.Anchor = default;
             //curY += height;
         }
 
@@ -273,11 +269,9 @@ namespace TiberiumRim
 
             Rect LeftPart = menuRect.LeftPart(mainRectLeftPct);
             Rect RightPart = menuRect.RightPart(1f - mainRectLeftPct);//(new Rect(LeftThird.width, 0, menuRect.width - LeftThird.width, menuRect.height));
-            Log.Message("Widths - " + LeftPart.width + " | " + RightPart.width);
-            
+
             //LeftPart
             //Desc
-
             Rect TopHalfRect = LeftPart.TopHalf().ContractedBy(5);
             Rect BottomHalfRect = LeftPart.BottomHalf().ContractedBy(5);
 
@@ -296,21 +290,20 @@ namespace TiberiumRim
             Rect DescRect = new Rect(0, fullTitleHeight, TopHalfRect.width, TopHalfRect.height - fullTitleHeight - startButtonSize.y);
             Rect StartButtonRect = new Rect(TopHalfRect.xMax - (startButtonSize.x + 10), DescRect.yMax, startButtonSize.x, startButtonSize.y);
 
-
             Widgets.TextArea(DescRect, SelProject.description, true);
 
-
             //Debug
-            Rect debug_Res = new Rect(StartButtonRect.x-20,StartButtonRect.y,20,20);
-            Rect debug_Fin = new Rect(debug_Res.x - 20, debug_Res.y, 20, 20);
-            if (Widgets.ButtonText(debug_Fin, "fin"))
+            if (DebugSettings.godMode)
             {
-                SelProject.tasks.ForEach(t => t.Debug_Finish());
+                Rect debug_Res = new Rect(StartButtonRect.x - 20, StartButtonRect.y, 20, 20);
+                Rect debug_Fin = new Rect(debug_Res.x - 20, debug_Res.y, 20, 20);
+                if (Widgets.ButtonText(debug_Fin, "fin"))
+                    SelProject.tasks.ForEach(t => t.Debug_Finish());
+                if (Widgets.ButtonText(debug_Res, "rst"))
+                    SelProject.tasks.ForEach(t => t.Debug_Reset());
             }
-            if (Widgets.ButtonText(debug_Res, "rst"))
-            {
-                SelProject.tasks.ForEach(t => t.Debug_Reset());
-            }
+
+
             if (SelProject.IsFinished)
             {
                 Text.Anchor = TextAnchor.MiddleCenter;
@@ -336,7 +329,8 @@ namespace TiberiumRim
             //RightPart
             //Image 
             Rect ImageRect = RightPart.TopHalf().ContractedBy(5f);
-            DrawImage(ImageRect);
+            if(CurTask?.Images != null)
+                DrawImage(ImageRect);
 
             //Tasks
             Rect TaskRect = RightPart.BottomHalf().ContractedBy(5f);
@@ -373,7 +367,6 @@ namespace TiberiumRim
 
             Rect newRect = rect.AtZero();
 
-
             string taskInfoTitle = "TR_CurTask".Translate(CurTask.LabelCap);
             Vector2 titleSize = Text.CalcSize(taskInfoTitle);
             Rect titleRect = newRect.TopPartPixels(titleSize.y);
@@ -385,13 +378,12 @@ namespace TiberiumRim
 
             //TaskInfo
             float taskInfoStringHeight = Text.CalcHeight(CurTask.TaskInfo, BGRect.width);
-            Rect textRect = new Rect(BGRect.x, newY + 5, BGRect.width, taskInfoStringHeight - 20);
+            Rect textRect = new Rect(BGRect.x, newY + 5, BGRect.width, taskInfoStringHeight);
             Widgets.TextArea(textRect, CurTask.TaskInfo, true);
 
             //Task Functions
             Rect funcRect = BGRect.BottomPartPixels(20);
             AddGapLine(funcRect, 0, out float newY2);
-
 
             GUI.EndGroup();
         }
@@ -400,7 +392,7 @@ namespace TiberiumRim
         {
             GUI.BeginGroup(rect);
             Rect outRect = rect.AtZero();
-            DrawUtils.DrawColoredBox(outRect, taskBG, ColorWhite50P, 1);
+            TRWidgets.DrawColoredBox(outRect, taskBG, ColorWhite50P, 1);
             Rect viewRect = new Rect(0, 0, outRect.width, taskCurrentHeight * SelProject.tasks.Count);
             Widgets.BeginScrollView(outRect, ref taskScrollPos, viewRect, false);
 
@@ -436,14 +428,15 @@ namespace TiberiumRim
             Rect resetButt = new Rect(debugRect.x + 20, debugRect.y, 20, 15);
 
             Widgets.DrawTextureFitted(IconRect, ProjectStatusTexture(task.State), 1);
+            
+            //Debug
+            if (DebugSettings.godMode)
+            {
+                if (Widgets.ButtonText(finButton, "fin"))
+                    task.Debug_Finish();
 
-            if (Widgets.ButtonText(finButton, "fin"))
-            {
-                task.Debug_Finish();
-            }
-            if (Widgets.ButtonText(resetButt, "rst"))
-            {
-                task.Debug_Reset();
+                if (Widgets.ButtonText(resetButt, "rst"))
+                    task.Debug_Reset();
             }
 
             ResearchState state = task.State;
@@ -460,7 +453,7 @@ namespace TiberiumRim
 
             }
             if (task == CurTask)
-                DrawUtils.DrawBox(rect, 0.5f, 1);
+                TRWidgets.DrawBox(rect, 0.5f, 1);
 
             Widgets.FillableBar(ProgressBarRect, task.ProgressPct, TRMats.blue, TRMats.black, true);
             Text.Anchor = TextAnchor.MiddleCenter;
@@ -474,7 +467,7 @@ namespace TiberiumRim
 
             if (Mouse.IsOver(rect) && DebugSettings.godMode)
             {
-                DrawUtils.DrawBox(rect, 0.5f, 1);
+                TRWidgets.DrawBox(rect, 0.5f, 1);
             }
 
         }

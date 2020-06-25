@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
-	<ThingDef ParentName="ApparelMakeableBase_TR">
+	<TiberiumRim.TRThingDef ParentName="ApparelMakeableBase_TR">
 		<defName>TiberiumSuit</defName>
 		<description>With this suit you can savely traverse any Tiberium infested terrain. It shields the wearer from getting infected by Tiberium and also any possible radiation.  A suit to protect from Tiberium.\n\n Also protects from toxic fallout.</description>
 		<label>Tiberium protection suit</label>
@@ -9,6 +9,11 @@
 			<texPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuit</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumProtection_T1</li>
+			</tiberiumResearchTasks>
+		</requisites>
 		<costList>
 			<Plasteel>10</Plasteel>
 			<Cloth>50</Cloth>
@@ -56,20 +61,27 @@
 				<li>Worker</li>
 			</defaultOutfitTags>
 		</apparel>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="ApparelMakeableBase_TR">
+	<TiberiumRim.TRThingDef ParentName="ApparelMakeableBase_TR">
 		<defName>Jumpsuit</defName>
 		<description>A simple jumpsuit to improve comfort while wearing heavy armor.</description>
 		<label>jumpsuit</label>
 		<graphicData>
-		<texPath>Items/Apparel/Common_Jumpsuit/JS</texPath>
-		<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Items/Apparel/Common_Jumpsuit/JS</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumProtection_T1</li>
+			</tiberiumResearchTasks>
+		</requisites>
 		<costList>
 			<Steel>75</Steel>
 			<Cloth>50</Cloth>
+			<!-- Industrial components dont really fit in a simple jumpsuit 
 			<ComponentIndustrial>3</ComponentIndustrial>
+			-->
 		</costList>
 		<recipeMaker>
 			<recipeUsers Inherit="false">
@@ -110,6 +122,6 @@
 			</defaultOutfitTags>
 			<useDeflectMetalEffect>true</useDeflectMetalEffect>
 		</apparel>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
     
 </Defs>

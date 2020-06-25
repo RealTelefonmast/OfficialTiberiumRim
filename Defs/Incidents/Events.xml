@@ -19,6 +19,11 @@
 		<defName>TiberiumMeteorCrash</defName>
 		<label>Meteor Crash</label>
 		<eventClass>TiberiumRim.Event_TiberiumArrival</eventClass>
+		<letter>
+			<letterLabel>Meteor crashed!</letterLabel>
+			<letterText>The strange object has crashed directly onto our map, we might want to investigate it closer...</letterText>
+			<letterDef>NegativeEvent</letterDef>
+		</letter>
 		<description>Oh no it crashed</description>
 	</TiberiumRim.EventDef>
 	

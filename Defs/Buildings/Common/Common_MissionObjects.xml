@@ -16,6 +16,11 @@
 		<offset>(-0.03,0,-0.35)</offset>
       </shadowData>
     </graphicData>
+	<requisites>
+		<tiberiumResearchTasks>
+			<li>GreenSky_T1</li>
+		</tiberiumResearchTasks>
+	</requisites>
     <fillPercent>0.15</fillPercent>
     <altitudeLayer>Building</altitudeLayer>
     <hasInteractionCell>true</hasInteractionCell>
@@ -31,8 +36,8 @@
 		<joyKind>Telescope</joyKind>
 	</building>
     <costList>
-      <Steel>75</Steel>
-      <ComponentIndustrial>2</ComponentIndustrial>
+      <Steel>50</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
     </costList>
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>

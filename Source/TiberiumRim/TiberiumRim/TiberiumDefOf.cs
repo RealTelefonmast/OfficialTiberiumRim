@@ -94,6 +94,10 @@ namespace TiberiumRim
         public static LetterDef EventLetter;
         public static LetterDef DiscoveryLetter;
 
+        //FleshTypes
+        public static FleshTypeDef Mechanical;
+        public static FleshTypeDef TiberiumFlesh;
+
         //Motes
         public static ThingDef TiberiumSmokeMote;
         public static ThingDef TiberiumGas;

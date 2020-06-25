@@ -9,19 +9,11 @@ namespace TiberiumRim
 {
     public class PulseProperties
     {
-        public PulseMode mode = PulseMode.Opacity;
         public int opacityDuration = 60;
         public int sizeDuration = 60;
-        public FloatRange opacityRange = new FloatRange(0f, 1f);
-        public FloatRange sizeRange = new FloatRange(0.5f, 1f);
+        public FloatRange opacityRange = FloatRange.Zero;
+        public FloatRange sizeRange = FloatRange.Zero;
         public int opacityOffset;
         public int sizeOffset;
-    }
-
-    public enum PulseMode
-    {
-        Opacity,
-        Size,
-        OpaSize
     }
 }

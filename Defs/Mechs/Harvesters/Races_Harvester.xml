@@ -109,7 +109,6 @@
 						</data>
 						<mode>Pulse</mode>
 					    <pulse>
-							<mode>Opacity</mode>
 							<opacityRange>0.6~1</opacityRange>
 						</pulse>
 					</li>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef Name="GDI_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
+	<TiberiumRim.TRThingDef Name="GDI_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
 		<soundInteract>Interact_Rifle</soundInteract>
 		<recipeMaker>
 			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
@@ -20,9 +20,9 @@
 		<weaponTags>
 			<li>GDI_Gun</li>
 		</weaponTags>
-	</ThingDef>	
+	</TiberiumRim.TRThingDef>	
 
-	<ThingDef ParentName="GDI_Gun">
+	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_StandardRifle</defName>
 		<label>GDI rifle</label>
 		<description>A general-purpose military weapon for field or urban combat.\n\nUpgradable to GDI railgun.</description>
@@ -30,13 +30,18 @@
 			<texPath>Items/Weapons/GDI/Rifle</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>BasicArsenal_T1</li>
+			</tiberiumResearchTasks>
+		</requisites>
 		<statBases>
 			<WorkToMake>30000</WorkToMake>
 			<Mass>3.5</Mass>
-			<AccuracyTouch>0.75</AccuracyTouch>
-			<AccuracyShort>0.75</AccuracyShort>
-			<AccuracyMedium>0.65</AccuracyMedium>
-			<AccuracyLong>0.55</AccuracyLong>
+			<AccuracyTouch>0.1</AccuracyTouch>
+			<AccuracyShort>0.5</AccuracyShort>
+			<AccuracyMedium>0.75</AccuracyMedium>
+			<AccuracyLong>0.95</AccuracyLong>
 			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
@@ -44,15 +49,16 @@
 			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_GDIStandard</defaultProjectile>
-				<warmupTime>1</warmupTime>
-				<range>24.9</range>
-				<burstShotCount>8</burstShotCount>
-				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
-				<soundCast>Shot_HeavySMG</soundCast>
+				<secondaryProjectile>Bullet_Guardian</secondaryProjectile>
+				<warmupTime>1.25</warmupTime>
+				<range>34.9</range>
+				<burstShotCount>6</burstShotCount>
+				<ticksBetweenBurstShots>12</ticksBetweenBurstShots>
+				<soundCast>Shot_AssaultRifle</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -79,7 +85,7 @@
 		<weaponTags>
 			<li>GDIRifle</li>
 		</weaponTags>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 	<!-- Allow multi ammo type -->
 	<ThingDef ParentName="GDI_Gun">

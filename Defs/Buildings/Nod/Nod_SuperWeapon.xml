@@ -175,7 +175,6 @@
 						<altitude>Item</altitude>
 						<mode>Pulse</mode>
 					    <pulse>
-							<mode>Opacity</mode>
 							<opacityRange>0.25~1</opacityRange>
 							<opacityDuration>100</opacityDuration>
 						</pulse>

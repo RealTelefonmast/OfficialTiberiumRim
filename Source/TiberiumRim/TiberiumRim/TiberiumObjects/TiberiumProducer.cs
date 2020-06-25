@@ -30,6 +30,8 @@ namespace TiberiumRim
     {
         public new TiberiumProducerDef def;
 
+        private Building researchCrane;
+
         private AreaMutator areaMutator;
         private TiberiumField tiberiumField;
 
@@ -50,11 +52,21 @@ namespace TiberiumRim
         public override string LabelCap => IsGroundZero ? base.LabelCap + " (GZ)" : base.LabelCap;
 
         public bool IsGroundZero { get; set; }
-        public bool ShouldSpawnSpore => def.spore != null && IsGroundZero && ticksUntilSpore <= 0 && MatureEnough;
-        public bool ShouldSpawnTiberium => !TiberiumTypes.EnumerableNullOrEmpty() && ticksUntilTiberium <= 0 && MatureEnough;
+        public bool ShouldSpawnSpore => !ResearchBound && def.spore != null && IsGroundZero && MatureEnough;
+        public bool ShouldSpawnTiberium => !ResearchBound && !TiberiumTypes.EnumerableNullOrEmpty() && MatureEnough;
+
         //public bool ShouldEvolve => evolvesTo != null && ticksToEvolution <= 0;
-        private bool MatureEnough => (IsFullyMature || areaMutator.ProgressPct >= def.spawner.minDaysToSpread / def.daysToMature);
-        public bool IsFullyMature => areaMutator.Finished;
+
+        private bool ResearchBound
+        {
+            get
+            {
+                return (researchCrane ??= (Building)Position.GetFirstThing(Map, TiberiumDefOf.TiberiumResearchCrane)) != null;
+            }
+        }
+
+        private bool MatureEnough => IsFullyMature || areaMutator.ProgressPct >= def.spawner.minProgressToSpread;
+        public bool IsFullyMature => areaMutator?.Finished ?? true;
         public float GrowthRadius => IsGroundZero ? def.spawner.growRadius * 2.5f : def.spawner.growRadius;
         public float GroundZeroFactor => IsGroundZero ? 2.7f : 1f;
 
@@ -116,6 +128,13 @@ namespace TiberiumRim
             Scribe_Values.Look(ref ticksUntilSpore, "ticksUntilSpore");
             Scribe_Deep.Look(ref tiberiumField, "tiberiumField", this);
             Scribe_Deep.Look(ref areaMutator, "areaMutator", def.tiberiumFieldRules, tiberiumField);
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                if (areaMutator != null)
+                    Log.Message("AreaMutator for " + this + " loaded!");
+                if (tiberiumField != null)
+                    Log.Message("TiberiumField for " + this + " loaded!");
+            }
         }
 
         public override void Tick()
@@ -131,22 +150,22 @@ namespace TiberiumRim
 
         private void SpawningTick()
         {
-            if (ShouldSpawnSpore)
+            if (ticksUntilSpore <= 0 && ShouldSpawnSpore)
             {
                 if(TrySpawnBlossomSpore()) 
                     ResetSporeCounter();
             }
 
-            if (ShouldSpawnTiberium)
+            if (ticksUntilTiberium <= 0 && ShouldSpawnTiberium)
             {
                 SpawnTiberium();
                 ResetTiberiumCounter();
             }
 
-            if (ticksUntilTiberium > 0)
-                ticksUntilTiberium--;
             if (ticksUntilSpore > 0)
                 ticksUntilSpore--;
+            if (ticksUntilTiberium > 0)
+                ticksUntilTiberium--;
         }
 
         public void AddBoundCrystal(TiberiumCrystal crystal)
@@ -194,11 +213,11 @@ namespace TiberiumRim
         {
             //TODO: Fix Spores /def.spore missing
             return false;
-            // Log.Message("Spawning Spore From " + this);
-            // var dest = TiberiumComp.StructureInfo.GetBlossomDestination();
-            // if (!dest.IsValid) return false;
-            // var spore = GenTiberium.SpawnBlossomSpore(Position, dest, Map, def.spore.Blossom(), this);
-            // //TODO: Make basic tiberium letter
+             Log.Message("Spawning Spore From " + this);
+             //var dest = TiberiumComp.StructureInfo.GetBlossomDestination();
+             //if (!dest.IsValid) return false;
+             //var spore = GenTiberium.SpawnBlossomSpore(Position, dest, Map, def.spore.Blossom(), this);
+            ///TODO: Make basic tiberium letter
             // LetterMaker.MakeLetter("Blossom Spore", "A blossom spore has appeared, and will fly to this position.", LetterDefOf.NeutralEvent, new LookTargets(spore.endCell, Map));
             // return true;
         }
@@ -215,6 +234,11 @@ namespace TiberiumRim
                 ticksUntilSpore = TRUtils.Range(def.spore.spawnInterval);
         }
 
+        public void SetCrane(Building building)
+        {
+            researchCrane = building;
+        }
+
         private bool showForceGrow;
         private bool showGrowFrom;
         private bool showGrowTo;
@@ -223,8 +247,8 @@ namespace TiberiumRim
         public override void Draw()
         {
             base.Draw();
-            areaMutator.DrawArea();
-            tiberiumField.DrawField();
+            areaMutator?.DrawArea();
+            tiberiumField?.DrawField();
 
             //DebugDraw
             TiberiumGrid grid = TiberiumComp.TiberiumInfo.GetGrid();
@@ -256,8 +280,12 @@ namespace TiberiumRim
             sb.AppendLine(base.GetInspectString());
             if(IsGroundZero)
                 sb.AppendLine("TR_GZProducer".Translate());
-            sb.AppendLine(areaMutator.InspectString());
-            sb.AppendLine(tiberiumField.InspectString());
+            if (ResearchBound)
+                sb.AppendLine("TR_ResearchBound".Translate());
+            if (areaMutator != null)
+                sb.AppendLine(areaMutator.InspectString());
+            if(tiberiumField != null)
+                sb.AppendLine(tiberiumField.InspectString());
             return sb.ToString().TrimStart().TrimEndNewlines();
         }
 
@@ -277,6 +305,8 @@ namespace TiberiumRim
             {
                 yield return gizmo;
             }
+
+            if (!DebugSettings.godMode) yield break;
 
             if (!TiberiumTypes.EnumerableNullOrEmpty())
             {

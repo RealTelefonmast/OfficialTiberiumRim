@@ -126,6 +126,8 @@ namespace TiberiumRim
 
         public static bool IsWall(this ThingDef def)
         {
+            if (def.category != ThingCategory.Building) return false;
+            if (!def.graphicData?.Linked ?? true) return false;
             return (def.graphicData.linkFlags & LinkFlags.Wall) != LinkFlags.None &&
                    def.graphicData.linkType == LinkDrawerType.CornerFiller &&
                    def.fillPercent >= 1f &&
@@ -394,7 +396,6 @@ namespace TiberiumRim
         {
             GraphicDrawInfo info = new GraphicDrawInfo(graphic, drawPos, rot, fxDef?.extraData, fxDef);
             Graphics.DrawMesh(info.drawMesh, info.drawPos, rotation?.ToQuat() ?? info.rotation.ToQuat(), info.drawMat,0);
-            //Graphics.DrawMesh(graphic.MeshAt(rot), new Vector3(info.drawPos.x, fxDef.altitudeLayer.AltitudeFor(), info.drawPos.z), rotation?.ToQuat() ?? info.rotation.ToQuat(), mat, 0);
         }
 
         public static void Print(SectionLayer layer, Graphic graphic, ThingWithComps thing, FXThingDef fxDef)
@@ -407,7 +408,6 @@ namespace TiberiumRim
             if (graphic is Graphic_Random rand)
                 graphic = rand.SubGraphicFor(thing);
             GraphicDrawInfo info = new GraphicDrawInfo(graphic, thing.DrawPos, thing.Rotation, fxDef.extraData, fxDef, thing);
-            //Log.Message("Printing: " + thing + " with drawsize: " + info.drawSize + " rotation: " + info.rotation + " flipUV: " + info.flipUV);
             Printer_Plane.PrintPlane(layer, info.drawPos, info.drawSize, info.drawMat, info.rotation, info.flipUV, null, null, 0.01f, 0f);
             if (graphic.ShadowGraphic != null && thing != null)
             {
@@ -563,6 +563,13 @@ namespace TiberiumRim
                     break;
             }
             return tex;
+        }
+
+        public static float PulseVal(float minVal, float maxVal, float duration, int currentTick)
+        {
+            //This since function makes the value oscilate between 0 and 1, with a multiplier to set the duration between 0 and 1
+            float sineVal = Mathf.Sin(((float)currentTick + (float)duration/2f)/(float)duration * Mathf.PI) / 2 + 0.5f;
+            return Mathf.Lerp(minVal, maxVal, sineVal);
         }
 
         public static float Cosine2(float yMin = 0f, float yMax = 1f, float xMax = 1f , float xOff = 0f, float curX = 0f)

@@ -20,7 +20,7 @@
 		</extraData>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<statBases>
-			<MaxHitPoints>750</MaxHitPoints>
+			<MaxHitPoints>300</MaxHitPoints>
 			<WorkToBuild>5000</WorkToBuild>
 			<Flammability>0.75</Flammability>
 			<Beauty>-15</Beauty>
@@ -28,8 +28,8 @@
 		<drawPlaceWorkersWhileSelected>false</drawPlaceWorkersWhileSelected>
 		<fillPercent>0.5</fillPercent>
 		<costList>
-			<Steel>350</Steel>
-			<ComponentIndustrial>10</ComponentIndustrial>
+			<Steel>150</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>
 		<requisites>
 			<tiberiumResearchTasks>

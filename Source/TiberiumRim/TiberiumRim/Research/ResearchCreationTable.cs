@@ -55,7 +55,8 @@ namespace TiberiumRim
 
         public void TryTrackCreated(Thing thing)
         {
-            foreach (var task in tasksForThings[thing.def])
+            if (!tasksForThings.TryGetValue(thing.def, out List<TResearchTaskDef> outList)) return;
+            foreach (var task in outList)
             {
                 taskCreations[task].AddCreation(thing);
                 TRUtils.ResearchManager().CheckTask(task);

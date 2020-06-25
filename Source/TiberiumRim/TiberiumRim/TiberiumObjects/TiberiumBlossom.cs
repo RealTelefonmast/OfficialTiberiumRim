@@ -9,8 +9,6 @@ namespace TiberiumRim
 {
     public class TiberiumBlossom : TiberiumProducer
     {
-        public float radius = 30f;
-
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);

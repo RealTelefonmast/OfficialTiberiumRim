@@ -43,9 +43,28 @@
 	</WorkGiverDef>
 	-->
 	
+	<!-- Crafting -->
+
+	<WorkGiverDef>
+		<defName>DoBillsTibWorkbench</defName>
+		<label>make things at workbench</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>100</priorityInType>
+		<fixedBillGiverDefs>
+			<li>TiberiumWorkbench</li>
+		</fixedBillGiverDefs>
+		<verb>craft</verb>
+		<gerund>crafting at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+	
 	<WorkGiverDef>
 		<defName>DoBillsTibCrafter</defName>
-		<label>work at Tiberium refinery</label>
+		<label>refine resources from tiberium</label>
 		<giverClass>WorkGiver_DoBill</giverClass>
 		<workType>Crafting</workType>
 		<priorityInType>100</priorityInType>
@@ -53,7 +72,7 @@
 			<li>TiberiumCrafter</li>
 		</fixedBillGiverDefs>
 		<verb>refine Tiberium</verb>
-		<gerund>refining Tiberium</gerund>
+		<gerund>refining Tiberium at</gerund>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
@@ -62,7 +81,7 @@
 	
 	<WorkGiverDef>
 		<defName>Factions_DoBillsFactory</defName>
-		<label>work at factory</label>
+		<label>make things at factory</label>
 		<giverClass>WorkGiver_DoBill</giverClass>
 		<workType>Smithing</workType>
 		<priorityInType>97</priorityInType>

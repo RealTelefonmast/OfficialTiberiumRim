@@ -32,6 +32,34 @@ namespace TiberiumRim
         public void ExposeData()
         {
             Scribe_Collections.Look(ref targets, "researchTargets", LookMode.Def, LookMode.Deep);
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                foreach (var task in DefDatabase<TResearchTaskDef>.AllDefs)
+                {
+                    if (!targets.ContainsKey(task))
+                    {
+                        targets.Add(task, new ScribeList<Thing>(new List<Thing>(), LookMode.Reference));
+                        foreach (var thingDef in task.PossibleMainTargets)
+                        {
+                            if (tasksForThings.ContainsKey(thingDef))
+                                tasksForThings[thingDef].Add(task);
+                            else
+                                tasksForThings.Add(thingDef, new List<TResearchTaskDef>() { task });
+                        }
+                    }
+
+                }
+
+                foreach (var target in targets)
+                {
+                    for (var index = target.Value.Count - 1; index >= 0; index--)
+                    {
+                        var thing = target.Value[index];
+                        if (thing == null)
+                            target.Value.Remove(thing);
+                    }
+                }
+            }
         }
 
         public List<Thing> GetTargetsFor(TResearchTaskDef task)
@@ -41,14 +69,19 @@ namespace TiberiumRim
 
         public void RegisterNewTarget(Thing thing)
         {
-            if (!tasksForThings.ContainsKey(thing.def)) return;
-            foreach (var task in tasksForThings[thing.def])
+            if (!tasksForThings.TryGetValue(thing.def, out List<TResearchTaskDef> tasks)) return;
+            //if (!tasksForThings.ContainsKey(thing.def)) return;
+            foreach (var task in tasks)
             {
+                if (!targets.ContainsKey(task))
+                {
+                    Log.Error("No target list for " + task);
+                    continue;
+                }
                 if (targets[task].Contains(thing)) return;
-                Log.Message("Registering Task target " + thing + " for " + task.LabelCap);
                 targets[task].Add(thing);
                 if(task.RelevantTargetStat != null)
-                    targets[task].SortBy(t => t.GetStatValue(task.RelevantTargetStat));
+                    targets[task].SortBy(t => t?.GetStatValue(task.RelevantTargetStat) ?? 0);
             }
         }
 
@@ -57,7 +90,6 @@ namespace TiberiumRim
             if (!tasksForThings.ContainsKey(thing.def)) return;
             foreach (var task in tasksForThings[thing.def])
             {
-                Log.Message("Removing Task target " + thing + " for " + task.LabelCap);
                 targets[task].Remove(thing);
             }
         }

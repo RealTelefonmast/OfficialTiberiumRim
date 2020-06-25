@@ -48,6 +48,7 @@ namespace TiberiumRim
             def = (TiberiumCrystalDef)base.def;
             growthPerTick = 1f / ((GenDate.TicksPerDay * def.tiberium.growDays) / GenTicks.TickLongInterval);
 
+            TiberiumMapComp.RegisterTiberiumCrystal(this);
             if (!HasParent) return;
             if (!respawningAfterLoad)
             {
@@ -68,7 +69,6 @@ namespace TiberiumRim
                         cell.GetPlant(Map)?.DeSpawn();
                 }
             }
-            TiberiumMapComp.RegisterTiberiumCrystal(this);
         }
 
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)

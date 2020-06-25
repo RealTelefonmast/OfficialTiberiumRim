@@ -32,7 +32,6 @@
 						</data>
 						<mode>Pulse</mode>
 					    <pulse>
-							<mode>Opacity</mode>
 							<opacityRange>0.2~0.6</opacityRange>
 						</pulse>
 					</li>
@@ -187,7 +186,6 @@
 						<directAltitudeOffset>0.125</directAltitudeOffset>
 						<mode>Pulse</mode>
 					    <pulse>
-							<mode>Opacity</mode>
 							<opacityRange>0.2~0.6</opacityRange>
 						</pulse>
 					</li>
@@ -202,7 +200,6 @@
 						<directAltitudeOffset>0.125</directAltitudeOffset>
 						<mode>Pulse</mode>
 					    <pulse>
-							<mode>Opacity</mode>
 							<opacityRange>0.3~0.65</opacityRange>
 						</pulse>
 					</li>
@@ -408,7 +405,6 @@
 						</data>
 						<mode>Pulse</mode>
 					    <pulse>
-							<mode>Opacity</mode>
 							<opacityRange>0.2~0.6</opacityRange>
 							<opacityDuration>100</opacityDuration>
 						</pulse>
@@ -608,7 +604,6 @@
 						<altitude>BuildingOnTop</altitude>
 						<mode>Pulse</mode>
 					    <pulse>
-							<mode>Opacity</mode>
 							<opacityRange>0.2~0.6</opacityRange>
 						</pulse>
 					</li>
@@ -783,7 +778,6 @@
 						<extraAltitude>0.125</extraAltitude>
 						<mode>Pulse</mode>
 					    <pulse>
-							<mode>Opacity</mode>
 							<opacityRange>0.2~0.6</opacityRange>
 						</pulse>
 					</li>
@@ -799,7 +793,6 @@
 						<altitude>BuildingOnTop</altitude>
 						<mode>Pulse</mode>
 					    <pulse>
-							<mode>Opacity</mode>
 							<opacityRange>0.3~0.65</opacityRange>
 						</pulse>
 					</li>
@@ -875,7 +868,8 @@
 						</data>
 						<mode>Pulse</mode>
 						<pulse>
-							<opacityDuration>240</opacityDuration>
+							<opacityRange>0~0.75</opacityRange>
+							<opacityDuration>450</opacityDuration>
 						</pulse>
 					</li>
 				</overlays>

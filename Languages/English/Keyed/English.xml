@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	
+	<TR_NotDiscovered>This object can be discoverd.</TR_NotDiscovered>
+	
 	<!--TR Categories-->
 	<TRCat_Structure>Structures</TRCat_Structure>
 	<TRCat_Decoration>Decoration</TRCat_Decoration>

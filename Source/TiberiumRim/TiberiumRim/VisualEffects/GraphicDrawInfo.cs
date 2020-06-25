@@ -27,7 +27,6 @@ namespace TiberiumRim
             {
                 drawPos.z += AlignToBottomOffset(def, g.drawSize);
             }
-
             drawPos += exData?.drawOffset ?? Vector3.zero;
 
             //DrawSize

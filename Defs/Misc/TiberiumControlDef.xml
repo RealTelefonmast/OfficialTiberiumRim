@@ -23,6 +23,12 @@
 		<SludgeColor>(160,255,0)</SludgeColor>
 		<GasColor>(215,255,165)</GasColor>
 		<AlertColor>(50, 100, 50)</AlertColor>
+		
+		<spreadFilter>
+			<li>SteamGeyser</li>
+			<li>TiberiumGeyser</li>
+			<li>Grave</li>
+		</spreadFilter>
 	</Def>
   
 </Defs>

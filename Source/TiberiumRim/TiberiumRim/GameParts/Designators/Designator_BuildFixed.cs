@@ -38,7 +38,6 @@ namespace TiberiumRim
             }
             else
             {
-                Log.Message("Blueprint: " + entDef.blueprintDef);
                 GenSpawn.WipeExistingThings(c, this.placingRot, this.entDef.blueprintDef, base.Map, DestroyMode.Deconstruct);
                 GenConstruct.PlaceBlueprintForBuild(this.entDef, c, base.Map, this.placingRot, Faction.OfPlayer, this.stuffDef);
             }

@@ -25,6 +25,8 @@ namespace TiberiumRim
 
         private int OffsetIndex => castingGun?.ShotIndex ?? offsetIndex;
 
+        private ThingDef currentProjectile;
+
         public ThingDef Projectile
         {
             get
@@ -34,8 +36,11 @@ namespace TiberiumRim
                 {
                     return comp.Projectile;
                 }
-                return verbProps.defaultProjectile;
+                if (currentProjectile == null)
+                    currentProjectile = Props.defaultProjectile;
+                return currentProjectile; 
             }
+            set => currentProjectile = value;
         }
 
         public Vector3 DrawPos => castingGun?.DrawPos ?? caster.DrawPos;
@@ -147,10 +152,7 @@ namespace TiberiumRim
                     CasterPawn.records.AccumulateStoryEvent(StoryEventDefOf.AttackedPlayer);
                 }
             }
-            if (Props.tiberiumCostPerBurst != null)
-            {
-                Props.tiberiumCostPerBurst.Pay(TiberiumComp.Container);
-            }
+            Props.tiberiumCostPerBurst?.Pay(TiberiumComp.Container);
         }
 
         protected override bool TryCastShot()
@@ -306,6 +308,21 @@ namespace TiberiumRim
             return true;
         }
 
+        public void SwitchProjectile()
+        {
+            if (Projectile == Props.defaultProjectile)
+            {
+                Projectile = Props.secondaryProjectile;
+                return;
+            }
+
+            if (Projectile == Props.secondaryProjectile)
+            {
+                Projectile = Props.defaultProjectile;
+                return;
+            }
+        }
+
         public virtual bool TryCastBeam()
         {
             Log.Error("Trying to cast beam without using Verb_Beam");
@@ -384,6 +401,8 @@ namespace TiberiumRim
     public class VerbProperties_TR : VerbProperties
     {
         public VerbBurstMode mode = VerbBurstMode.Normal;
+        public ThingDef secondaryProjectile;
+
         public List<Vector3> originOffsets;
         public TiberiumCost tiberiumCostPerBurst;
         public TiberiumCost tiberiumCostPerShot;

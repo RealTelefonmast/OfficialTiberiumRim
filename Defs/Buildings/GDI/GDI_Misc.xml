@@ -102,6 +102,7 @@
 		<graphicData>
 			<texPath>Buildings/GDI/Misc/Light/Floor/Light</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
 		</graphicData>
 		<statBases>
 			<Beauty>5</Beauty>
@@ -142,18 +143,14 @@
 		<description>An electrical wall lamp that lights an area. People need light to move and work at full speed.</description>
 		<factionDesignation>GDI</factionDesignation>
 		<drawerType>MapMeshAndRealTime</drawerType>
-		 <graphicData>
+		<graphicData>
 			<texPath>Buildings/GDI/Misc/Light/Wall/light</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(1.5, 1.5)</drawSize>
 		</graphicData>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_GlowerOffset">
-				<offset>(0,0,1)</offset>
-				<glower>
-					<glowRadius>12</glowRadius>
-					<glowColor>(217,217,208,0)</glowColor>
-				</glower>
+				<glowerDef>GlowSource_GDI_IonBlue</glowerDef>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -171,14 +168,14 @@
 		</comps>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="EtherealThingBase">
-		<defName>GlowerSource</defName>
-		<label>wall light glow</label>
-		<thingClass>TiberiumRim.GlowerSource</thingClass>
-		<tickerType>Never</tickerType>
-		<drawerType>MapMeshOnly</drawerType>
-		<drawOffscreen>true</drawOffscreen>
-		<seeThroughFog>false</seeThroughFog>
+	<TiberiumRim.TRThingDef ParentName="GlowSourceBase">
+		<defName>GlowSource_GDI_IonBlue</defName>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+		</comps>
 	</TiberiumRim.TRThingDef>
 
 </Defs>

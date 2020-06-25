@@ -101,7 +101,7 @@ namespace TiberiumRim
 
             Finished = false;
             Current = 0;
-            bool PassCheck(IntVec3 x) => x.IsValid && x.Standable(map) && !Finished;
+            bool PassCheck(IntVec3 x) => x.IsValid && map.pathGrid.Walkable(x) && !Finished;
             void Processor(IntVec3 c)
             {
                 RETRY:

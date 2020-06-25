@@ -25,7 +25,7 @@ namespace TiberiumRim
     {
         static TiberiumRimPatches()
         {
-            //TiberiumRimMod.Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI"),new HarmonyMethod(typeof(TiberiumRimPatches), "BackgroundOnGUIPatch"));
+            TiberiumRimMod.Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI"),new HarmonyMethod(typeof(TiberiumRimPatches), "BackgroundOnGUIPatch"));
             
             /*
             TiberiumRimMod.Tiberium.Patch(
@@ -45,6 +45,33 @@ namespace TiberiumRim
         public static void MechanoidsFixerAncient(ref bool __result, PawnKindDef kind)
         {
             if (typeof(MechanicalPawn).IsAssignableFrom(kind.race.thingClass)) __result = false;
+        }
+
+        //Mech Patches
+        [HarmonyPatch(typeof(RaceProperties))]
+        [HarmonyPatch("IsFlesh", MethodType.Getter)]
+        public static class IsFleshPatch
+        {
+            public static void Postfix(RaceProperties __instance, ref bool __result)
+            {
+                if (__instance.FleshType == TiberiumDefOf.Mechanical)
+                    __result = false;
+            }
+        }
+
+        [HarmonyPatch(typeof(TransferableUtility))]
+        [HarmonyPatch("CanStack")]
+        public static class CanStackPatch
+        {
+            public static bool Prefix(Thing thing, ref bool __result)
+            {
+                if (thing is MechanicalPawn pawn)
+                {
+                    __result = false;
+                    return false;
+                }
+                return true;
+            }
         }
 
         //Render Patches
@@ -173,7 +200,6 @@ namespace TiberiumRim
             public static bool Prefix(IntVec3 center, Rot4 rot, ThingDef thingDef, Graphic baseGraphic, Color ghostCol, AltitudeLayer drawAltitude)
             {
                 if (!(thingDef is FXThingDef fx)) return true;
-                //Log.Message("Drawing Ghost - " + thingDef);
                 if (baseGraphic == null)
                 {
                     baseGraphic = thingDef.graphic;
@@ -194,6 +220,36 @@ namespace TiberiumRim
                     }
                 }
                 return false;
+            }
+        }
+
+        [HarmonyPatch(typeof(VerbTracker))]
+        [HarmonyPatch("GetVerbsCommands")]
+        public static class GetVerbsCommandsPatch
+        {
+            public static IEnumerable<Command> Postfix(IEnumerable<Command> values, VerbTracker __instance)
+            {
+                foreach (var command in values)
+                {
+                    yield return command;
+                }
+                foreach (var verb  in __instance.AllVerbs)
+                {
+                    if (verb is Verb_TR verbTR)
+                    {
+                        if (verbTR.Props.secondaryProjectile != null)
+                        {
+                            yield return new Command_Action
+                            {
+                                defaultLabel = "Switch Projectile",
+                                defaultDesc = "Current projectile: " +  verbTR.Projectile.defName,
+                                action = delegate() { verbTR.SwitchProjectile(); },
+                                icon = ContentFinder<Texture2D>.Get("UI/Icons/Controls/Weapon_SwitchAmmo")
+                            };
+                        }
+                    }
+                }
+                yield break;
             }
         }
 
@@ -353,7 +409,7 @@ namespace TiberiumRim
         //Core Thing Addons
         [HarmonyPatch(typeof(Frame))]
         [HarmonyPatch("CompleteConstruction")]
-        static class BuildPatch
+        static class CompleteConstructionPatch
         {
             public static void Postfix(Frame __instance)
             {
@@ -362,6 +418,31 @@ namespace TiberiumRim
                 {
                     TRUtils.ResearchCreationTable().TryTrackCreated((ThingDef)__instance.def.entityDefToBuild);
                 }
+            }
+        }
+
+        [HarmonyPatch(typeof(RecordsUtility))]
+        [HarmonyPatch("Notify_BillDone")]
+        static class BillDonePatch
+        {
+            public static void Postfix(Pawn billDoer, List<Thing> products)
+            {
+                //Construction Task Logic
+                foreach (var product in products)
+                {
+                    TRUtils.ResearchCreationTable().TryTrackCreated(product);
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(RecipeDef))]
+        [HarmonyPatch("AvailableNow", MethodType.Getter)]
+        internal static class RecipeDef_AvailableNowPatch
+        {
+            public static void Postfix(RecipeDef __instance, ref bool __result)
+            {
+                bool TRRequisiteDone = __instance.products.All(t => (t.thingDef as TRThingDef)?.requisites?.FulFilled() ?? true);
+                __result = __result && TRRequisiteDone;
             }
         }
 
@@ -382,6 +463,16 @@ namespace TiberiumRim
                 }
                 //Research
                 TRUtils.ResearchTargetTable().RegisterNewTarget(__instance);
+
+                Building building = __instance as Building;
+                if (building?.def.IsEdifice() ?? false)
+                {
+                    foreach (var cell in __instance.OccupiedRect())
+                    {
+                        var tib = cell.GetTiberium(__instance.Map);
+                        tib?.Destroy();
+                    }
+                }
             }
         }
 
@@ -588,10 +679,8 @@ namespace TiberiumRim
             {
                 if (Event.current.type == EventType.MouseDown)
                 {
-                    Log.Message("1. Patching World Selector with " + __instance.NumSelectedObjects);
                     if (Event.current.button == 1 && __instance.NumSelectedObjects > 0)
                     {
-                        Log.Message("2. Button 1 down");
                         WorldObject obj = __instance.FirstSelectedObject;
                         if (obj is AttackSatellite asat)
                         {

@@ -31,8 +31,7 @@ namespace TiberiumRim
         public override void CompTick()
         {
             base.CompTick();
-            if (!Pawn.Spawned || !canBeAffected)
-                return;
+            if (!Pawn.Spawned || !canBeAffected) return;
             if (ticker <= 0)
             {
                 var tib = Pawn.Position.GetTiberium(Pawn.Map);
@@ -49,6 +48,7 @@ namespace TiberiumRim
         public override void CompTickRare()
         {
             base.CompTickRare();
+            if (!Pawn.Spawned || !canBeAffected) return;
             if (Pawn.ParentHolder is Corpse corpse)
             {
                 var tib = corpse.Position.GetTiberium(corpse.Map);

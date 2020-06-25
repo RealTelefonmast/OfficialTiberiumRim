@@ -22,6 +22,15 @@ namespace TiberiumRim
         private bool unused;
         private Material ShaderMaterial;
         
+        //Unsaved data
+        private GraphicDrawInfo drawInfo;
+        private Material drawMat;
+        private Color drawColor;
+        private float opacityFloat;
+        private float sizeFloat;
+        private Matrix4x4 matrix = default(Matrix4x4);
+        private readonly MaterialPropertyBlock materialProperties = new MaterialPropertyBlock();
+
         public FXGraphic(CompFX parent, FXGraphicData data, int index)
         {
             Log.Message(index + " '" + data.data?.texPath + "'" + " which is " + data.mode);
@@ -90,14 +99,6 @@ namespace TiberiumRim
             }
         }
 
-
-        //TODO: Improve low level rendering by abstracting from Graphic, applying changes directly to the rendering call
-        //TODO: Matrix transformation a'lá 
-        // Matrix4x4 matrix4x = default(Matrix4x4);
-        // var pos = new Vector3(DrawPos.x, graphic.altitude, DrawPos.z + 2.55f);
-        // pos.z += NodNukePosZ;
-        // matrix4x.SetTRS(pos, Quaternion.Euler(Vector3.up), new Vector3(2f, 1f, 6f));
-
         public void Draw(Vector3 drawPos, Rot4 rot, float? rotation, Action<FXGraphic> action, int index)
         {
             if(action != null)
@@ -105,55 +106,49 @@ namespace TiberiumRim
                 action.Invoke(this);
                 return;
             }
-            GraphicDrawInfo info = new GraphicDrawInfo(Graphic, drawPos, rot, ((FXThingDef)parent.parent.def).extraData, parent.parent.def);
-            Material mat = info.drawMat;
+            drawInfo = new GraphicDrawInfo(Graphic, drawPos, rot, ((FXThingDef)parent.parent.def).extraData, parent.parent.def); 
+            drawMat = drawInfo.drawMat;
 
-            Color color = data.data.color;
+            drawColor = Color.white;
+            drawColor *= data.data.color;
             if (parent.ColorOverride(index) != Color.white)
-                color = parent.ColorOverride(index);
+                drawColor *= parent.ColorOverride(index);
 
-            mat.SetTextureOffset("_MainTex", parent.TextureOffset);
-            mat.SetTextureScale("_MainTex", parent.TextureScale);
-
+            drawMat.SetTextureOffset("_MainTex", parent.TextureOffset);
+            drawMat.SetTextureScale("_MainTex", parent.TextureScale);
+            Vector2 drawSize =  Vector2.one;
             switch (data.mode)
             {
                 case FXMode.Dynamic:
                     break;
                 case FXMode.Mover:
-                    ShaderMaterial.SetTexture("_MainTex", mat.mainTexture);
+                    ShaderMaterial.SetTexture("_MainTex", drawMat.mainTexture);
                     ShaderMaterial.SetTexture("_MaskTex", ContentFinder<Texture2D>.Get(Graphic.path + "_s"));
-                    mat = ShaderMaterial;
+                    drawMat = ShaderMaterial;
                     Vector2 offset = new Vector2(0, TRUtils.Cosine(data.startOffset, data.endOffset, data.MoverSpeed, Find.TickManager.TicksGame));
-                    mat.mainTextureOffset = offset;
+                    drawMat.mainTextureOffset = offset;
                     break;
                 case FXMode.Blink:
-                    color.a = 0;
+                    drawColor.a = 0;
                     if (blinkDuration > 0)
-                        color.a = 1;
+                        drawColor.a = 1;
                     break;
                 case FXMode.Pulse:
                     var pulse = data.pulse;
                     var tick = Find.TickManager.TicksGame;
-                    var opaVal = TRUtils.Cosine2(pulse.opacityRange.min, pulse.opacityRange.max, pulse.opacityDuration,
-                        parent.tickOffset + pulse.opacityOffset, tick);
-                    var sizeVal = TRUtils.Cosine2(pulse.sizeRange.min, pulse.sizeRange.max, pulse.sizeDuration,
-                        parent.tickOffset + pulse.sizeOffset, tick);
-                    if (pulse.mode == PulseMode.Opacity)
-                        color *= opaVal;
-                    else if (pulse.mode == PulseMode.Size)
-                        graphicInt.drawSize = info.drawSize * sizeVal;
-                    else if (pulse.mode == PulseMode.OpaSize)
-                    {
-                        color *= opaVal;
-                        graphicInt.drawSize = info.drawSize * sizeVal;
-                    }
+                    var opaVal = TRUtils.PulseVal(pulse.opacityRange.min, pulse.opacityRange.max, pulse.opacityDuration, tick + parent.tickOffset);
+                    var sizeVal = TRUtils.PulseVal(pulse.sizeRange.min, pulse.sizeRange.max, pulse.sizeDuration, tick + parent.tickOffset);
+                    if(pulse.opacityRange != FloatRange.Zero)
+                        drawColor.a = opaVal;
+                    if (pulse.sizeRange != FloatRange.Zero)
+                        drawSize = drawInfo.drawSize * sizeVal;
                     break;
                 default:
                     return;
             }
-            mat.SetColor(ShaderPropertyIDs.Color, color);
-
-            Graphics.DrawMesh(info.drawMesh, new Vector3(info.drawPos.x, altitude, info.drawPos.z), rotation?.ToQuat() ?? info.rotation.ToQuat(), mat, 0);
+            materialProperties.SetColor(ShaderPropertyIDs.Color, drawColor);
+            matrix.SetTRS(new Vector3(drawInfo.drawPos.x, altitude, drawInfo.drawPos.z), rotation?.ToQuat() ?? drawInfo.rotation.ToQuat(), new Vector3(drawSize.x, 1f, drawSize.y));
+            Graphics.DrawMesh(drawInfo.drawMesh, matrix, drawMat, 0, null, 0, materialProperties);
         }
 
         public void Print(SectionLayer layer, Vector3 drawPos, Rot4 rot, float? rotation, Thing parent)

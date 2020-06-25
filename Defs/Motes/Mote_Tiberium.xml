@@ -255,5 +255,23 @@
 		<speedRange>0.5~0</speedRange>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 	</TiberiumRim.ParticleDef>
+	
+	<!-- TEST -->
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>PortalParticle</defName>
+		<graphicData>
+			<texPath>Motes/Fog/BlossomSmoke</texPath>
+			<color>(0,0,0,1)</color>
+			<shaderType>MetaOverlay</shaderType>
+		</graphicData>
+		<altitudeLayer>Gas</altitudeLayer>
+		<mote>
+			<fadeInTime>0.5</fadeInTime>
+			<solidTime>0.5</solidTime>
+			<fadeOutTime>2</fadeOutTime>
+			<growthRate>-0.1</growthRate>
+		</mote>
+	</ThingDef>
 
 </Defs>

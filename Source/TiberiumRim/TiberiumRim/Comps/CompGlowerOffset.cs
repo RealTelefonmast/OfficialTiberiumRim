@@ -8,28 +8,12 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class GlowerSource : ThingWithComps
-    {
-        private CompGlower glower;
-
-        public void InitGlower(CompProperties props)
-        {
-            if (glower != null) return;
-            glower = (CompGlower) Activator.CreateInstance(typeof(CompGlower));
-            glower.parent = this;
-            Traverse.Create(this).Field("comps").GetValue<List<ThingComp>>().Add(glower);
-            glower.Initialize(props);
-        }
-
-        public void UpdateGlower(CompProperties newProps)
-        {
-
-        }
-    } 
-
     public class CompGlowerOffset : ThingComp
     {
-        public GlowerSource glower;
+        public ThingWithComps glower;
+
+        private CompFlickable Flickable;
+
         public CompProperties_GlowerOffset Props => (CompProperties_GlowerOffset) base.props;
 
         public override void PostExposeData()
@@ -40,26 +24,37 @@ namespace TiberiumRim
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-            GlowerSource source = (GlowerSource)GenSpawn.Spawn(ThingDef.Named("GlowerSource"), parent.Position + parent.Rotation.FacingCell, parent.Map);
-            source.InitGlower(Props.glower);
+            glower = (ThingWithComps)GenSpawn.Spawn(Props.glowerDef, parent.Position + parent.Rotation.FacingCell, parent.Map);
+            Flickable = glower.GetComp<CompFlickable>();
+            ToggleLight(false, true);
         }
 
         public override void PostDeSpawn(Map map)
         {
             base.PostDeSpawn(map);
+            glower.DeSpawn();
 
+        }
+
+        private void ToggleLight(bool turnOn, bool turnOff)
+        {
+           if(Flickable.SwitchIsOn && turnOff)
+               Flickable.DoFlick(); 
+           if(!Flickable.SwitchIsOn && turnOn)
+               Flickable.DoFlick();
         }
 
         public override void ReceiveCompSignal(string signal)
         {
-            glower.BroadcastCompSignal(signal);
+            bool turnOn = signal == "PowerTurnedOn" || signal == "FlickedOn" || signal == "Refueled" || signal == "ScheduledOn";
+            bool turnOff = signal == "PowerTurnedOff" || signal == "FlickedOff" || signal == "RanOutOfFuel" || signal == "ScheduledOff";
+            ToggleLight(turnOn, turnOff);
         }
     }
 
     public class CompProperties_GlowerOffset : CompProperties
     {
-        public IntVec3 offset = IntVec3.Zero;
-        public CompProperties_Glower glower;
+        public ThingDef glowerDef;
 
         public CompProperties_GlowerOffset()
         {

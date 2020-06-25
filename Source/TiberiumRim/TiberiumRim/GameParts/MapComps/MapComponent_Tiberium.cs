@@ -45,7 +45,6 @@ namespace TiberiumRim
         {
             TiberiumInfo  = new TiberiumMapInfo(map);
             FloraInfo     = new TiberiumFloraMapInfo(map);
-            BlossomInfo   = new TiberiumBlossomInfo(map);
             StructureInfo = new TiberiumStructureInfo(map);
             InfectionInfo = new TiberiumInfectionInfo(map);
         }
@@ -58,6 +57,7 @@ namespace TiberiumRim
         public override void MapGenerated()
         {
             base.MapGenerated();
+            BlossomInfo = new TiberiumBlossomInfo(map);
         }
 
         public override void ExposeData()
@@ -87,7 +87,9 @@ namespace TiberiumRim
             {
                 TiberiumInfo.Update();
 
-
+                BlossomInfo.drawer.RegenerateMesh();
+                BlossomInfo.drawer.MarkForDraw();
+                BlossomInfo.drawer.CellBoolDrawerUpdate();
                 //Suppression.SuppressionGrid.drawer.RegenerateMesh();
                 //Suppression.SuppressionGrid.drawer.MarkForDraw();
                 //Suppression.SuppressionGrid.drawer.CellBoolDrawerUpdate();
@@ -104,6 +106,11 @@ namespace TiberiumRim
         public override void MapComponentDraw()
         {
 
+        }
+
+        public bool HarvestTypeAvailable(HarvestType type)
+        {
+            return TiberiumInfo.TiberiumCrystals[type].Count > TNWManager.ReservationManager.ReservedTypes[type];
         }
 
         public bool TiberiumAvailable => TiberiumInfo.TiberiumCrystals[HarvestType.Valuable].Count > TNWManager.ReservationManager.ReservedTypes[HarvestType.Valuable];

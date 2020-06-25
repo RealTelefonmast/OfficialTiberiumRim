@@ -25,8 +25,8 @@ namespace TiberiumRim
 
         public override string GetInspectString()
         {
-            string str = (IsDiscoverable && !Discovered) ? "TR_NotDiscovered".Translate().ToString() : "";
-            str += "\n" + base.GetInspectString();
+            string str = (IsDiscoverable && !Discovered) ? "TR_NotDiscovered".Translate().ToString() + "\n" : "";
+            str += base.GetInspectString();
             return str;
         }
 

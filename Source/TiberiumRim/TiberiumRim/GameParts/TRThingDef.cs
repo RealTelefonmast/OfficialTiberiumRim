@@ -80,7 +80,7 @@ namespace TiberiumRim
             string research = "";
             bool flag = true;
             var sb = new StringBuilder();
-            sb.AppendLine("Locked due to:\n");
+            sb.AppendLine("TR_LockedReason".Translate());
             if (DebugSettings.godMode)
             {
                 return true;
@@ -92,12 +92,12 @@ namespace TiberiumRim
             if (minTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel < minTechLevelToBuild)
             {
                 flag = false;
-                sb.AppendLine("- Need min tech level: " + minTechLevelToBuild);
+                sb.AppendLine("TR_LockedDueMinTech".Translate(minTechLevelToBuild));
             }
-            if (maxTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel > maxTechLevelToBuild)
+            if ( maxTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel > maxTechLevelToBuild)
             {
                 flag = false;
-                sb.AppendLine("- Need max tech level: " + maxTechLevelToBuild);
+                sb.AppendLine("TR_LockedDueMaxTech".Translate(maxTechLevelToBuild));
             }
             if (!IsResearchFinished)
             {
@@ -106,7 +106,7 @@ namespace TiberiumRim
                 {
                     research += "   - " + res.LabelCap;
                 }
-                sb.AppendLine("- Need research:\n" + research);
+                sb.AppendLine("TR_LockedDueMissingResearch".Translate(research));
                 research = "";
             }
             if (!RequisitesFulfilled)

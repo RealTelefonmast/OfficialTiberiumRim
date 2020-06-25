@@ -29,7 +29,7 @@ namespace TiberiumRim
         public IntRange explosionRange = new IntRange(10, 100);
         public FloatRange spreadRange = new FloatRange(-1, -1);
         public IntVec3 sporeOffset = new IntVec3(0, 0, 0);
-        public float minDaysToSpread = 0f;
+        public float minProgressToSpread = 0.65f;
         public float sporeExplosionRadius = 20f;
         public float growRadius = 5f;
     }

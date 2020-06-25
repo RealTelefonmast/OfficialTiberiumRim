@@ -11,14 +11,17 @@ namespace TiberiumRim
     public class Designator_TRMenu : Designator
     {
         //TODO: Add customizable tab for favorites
+        //Static Data
+        private static Designator_BuildFixed mouseOverGizmo;
+        private static TRThingDef inactiveDef;
+
+        //Settings
         private FactionDesignationDef SelectedFaction = FactionDesignationDefOf.Common;
         private TRThingCategoryDef SelectedCategory => cachedSelection[SelectedFaction];
         private Dictionary<FactionDesignationDef, TRThingCategoryDef> cachedSelection = new Dictionary<FactionDesignationDef, TRThingCategoryDef>();
         private Dictionary<FactionDesignationDef,DesignationTexturePack> TexturePacks = new Dictionary<FactionDesignationDef, DesignationTexturePack>();
+
         private Vector2 scroller = Vector2.zero;
-        private static Designator_BuildFixed mouseOverGizmo;
-        private static TRThingDef inactiveDef;
-        private Rect currentRect;
         private string SearchText = "";
 
         private static Vector2 MenuSize = new Vector2(370, 526);
@@ -42,19 +45,20 @@ namespace TiberiumRim
 
         public override void DrawPanelReadout(ref float curY, float width)
         {
-            if (inactiveDef != null)
+            if (CurrentDesignator == null && inactiveDef != null)
             {
-                GUI.color = Color.red;
-                Text.Font = GameFont.Medium;
-                string locked = "Currently Locked";
-                Vector2 lockedSize = Text.CalcSize(locked);
-                Rect lockedRect = new Rect(new Vector2(0, curY - lockedSize.y), lockedSize);
-                Widgets.Label(lockedRect, locked);
-                Text.Font = GameFont.Small;
-                GUI.color = Color.white;
+                float height = 0;
+                Vector2 bannerSize = TRWidgets.FittedSizeFor(TiberiumContent.LockedBanner, width + 12f);
+                Find.WindowStack.ImmediateWindow(324576, new Rect(1, UI.screenHeight - (560f), bannerSize.x, bannerSize.y), WindowLayer.GameUI, delegate
+                {
+                    Widgets.DrawTextureFitted(new Rect(0, 0, bannerSize.x, bannerSize.y), TiberiumContent.LockedBanner, 1f);
+                }, false, false, 0);
+
+                curY += height;
+
                 inactiveDef.IsActive(out var reason);
-                Vector2 reasonSize = Text.CalcSize(reason);
-                Rect reasonRect = new Rect(new Vector2(0, curY), reasonSize);
+                Rect reasonRect = new Rect(new Vector2(0, curY), new Vector2(width, Text.CalcHeight(reason, width)));
+                //Widgets.LongLabel(reasonRect.x, width, reason, ref curY);
                 Widgets.Label(reasonRect, reason);
                 return;
             }
@@ -63,7 +67,7 @@ namespace TiberiumRim
 
         public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth)
         {
-            Rect windowRect = currentRect = new Rect(200f, UI.screenHeight - (560f + searchBarSize.y), MenuSize.x, MenuSize.y + searchBarSize.y);
+            Rect windowRect = new Rect(200f, UI.screenHeight - (560f + searchBarSize.y), MenuSize.x, MenuSize.y + searchBarSize.y);
             Find.WindowStack.ImmediateWindow(231674, windowRect, WindowLayer.GameUI, delegate
             {
                 Rect searchBar = new Rect(new Vector2(MenuSize.x - searchBarSize.x, 0f), searchBarSize);
@@ -148,7 +152,7 @@ namespace TiberiumRim
                     inactiveDef = null;
                     foreach (var def in things)
                     {
-                        if (def.hidden && !DebugSettings.godMode) continue;
+                        if(!DebugSettings.godMode && def.hidden) continue;
                         if (def.IsActive(out string reason))
                         {
                             Designator(def, main, size, ref curXY);
@@ -171,6 +175,15 @@ namespace TiberiumRim
             GUI.color = mouseOver ? new Color(1, 1, 1, 0.45f) : Color.white;
             Widgets.DrawTextureFitted(rect.ContractedBy(2), def.uiIcon, 1);
             GUI.color = Color.white;
+            if (def.hidden)
+            {
+                Text.Font = GameFont.Medium;
+                Text.Anchor = TextAnchor.MiddleCenter;
+                Widgets.Label(rect, "DEV");
+                Text.Anchor = default;
+                Text.Font = GameFont.Small;
+            }
+
             if (!def.ConstructionOptionDiscovered)
             {
                 DrawUndiscovered(rect, new Vector2(-5, 5));

@@ -10,6 +10,7 @@
 		</specialDesignatorClasses>
 	</DesignationCategoryDef>
 
+	<!--
 	<DesignationCategoryDef>
 		<defName>TargeterTest</defName>
 		<label>targeters</label>
@@ -20,6 +21,7 @@
 		  <li>TiberiumRim.Designator_NodNukeTargeter</li>
 		</specialDesignatorClasses>
 	</DesignationCategoryDef>
+	-->
 
 	<TiberiumRim.FactionDesignationDef Abstract="True" Name="FactionDesignationBase">
 		<subCategories>

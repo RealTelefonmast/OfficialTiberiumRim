@@ -29,6 +29,11 @@ namespace TiberiumRim
             this.endTick = startTick + def.ActiveTimeTicks;
         }
 
+        public void SendLetter(IncidentParms parms, LookTargets targets)
+        {
+            def.letter?.SendLetter(parms, targets);
+        }
+
         public void FinishEvent()
         {
             TRUtils.EventManager().Notify_EventFinished(this);
@@ -40,6 +45,8 @@ namespace TiberiumRim
             if (CanDoEventAction(tick))
             {
                 EventAction();
+                def.discoveries?.Discover();
+                SendLetter(null, EventTargets);
             }
             if (ShouldFinishNow(tick))
                 FinishEvent();
@@ -58,6 +65,8 @@ namespace TiberiumRim
         {
             return ShouldFinishNow(curTick);
         }
+
+        public LookTargets EventTargets { get; set; }
 
         public Map MapForEvent => Find.Maps.Where(m => m.IsPlayerHome).RandomElementByWeight(StorytellerUtility.DefaultThreatPointsNow);
 

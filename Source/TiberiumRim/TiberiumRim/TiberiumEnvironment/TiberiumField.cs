@@ -136,6 +136,8 @@ namespace TiberiumRim
 
         public IEnumerable<Gizmo> Gizmos()
         {
+            if (!DebugSettings.godMode) yield break;
+
             yield return new Command_Action()
             {
                 defaultLabel = "Show Field",

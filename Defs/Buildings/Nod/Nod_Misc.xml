@@ -89,11 +89,7 @@
 		</graphicData>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_GlowerOffset">
-				<offset>(0,0,1)</offset>
-				<glower>
-					<glowRadius>12</glowRadius>
-					<glowColor>(217,217,208,0)</glowColor>
-				</glower>
+				<glowerDef>GlowSource_Nod_Red</glowerDef>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -108,6 +104,16 @@
 					</li>
 				</overlays>
 			</li>	
+		</comps>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="GlowSourceBase">
+		<defName>GlowSource_Nod_Red</defName>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
 		</comps>
 	</TiberiumRim.TRThingDef>
 

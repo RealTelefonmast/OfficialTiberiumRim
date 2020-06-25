@@ -125,6 +125,7 @@
 		<description>Very slowly removes Tiberium from infected ground, converting any Tiberium ground into decrystallized soil that can be used again. Does not affect contaminated water. Requires power.</description>
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Defense</TRCategory>
+		<hidden>true</hidden>
 		<size>(1,1)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>

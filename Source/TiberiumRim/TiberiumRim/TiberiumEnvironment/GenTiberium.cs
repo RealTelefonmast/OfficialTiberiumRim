@@ -13,7 +13,6 @@ namespace TiberiumRim
     {
         public static bool TrySpreadTiberium(TiberiumCrystal crystal)
         {
-            //TODO: Predetermine grow-to cells, with canspreadto, select all adjacent growto cells, select random weighted cell, with weight away from the producer
             Predicate<IntVec3> predicate = c => TrySpawnTiberium(c, crystal.Map, crystal.def, crystal.Parent);
             if (CellFinder.TryFindRandomCellNear(crystal.Position, crystal.Map, (int) crystal.def.tiberium.spreadRadius, predicate, out IntVec3 result))
             {
@@ -49,10 +48,15 @@ namespace TiberiumRim
 
             //Object Check
             var thingList = pos.GetThingList(map);
-            if (thingList.Any(t => t.def.designateHaulable))
+            foreach (var thing in thingList)
             {
-                hiddenTerrainPos = pos;
-                return false;
+                if (MainTCD.Main.spreadFilter.Contains(thing.def))
+                    return false;
+                if (thing.def.designateHaulable)
+                {
+                    hiddenTerrainPos = pos;
+                    return false;
+                }
             }
 
             if (thingList.Any(t => t is TiberiumCrystal || (t is TiberiumPlant && !ForceGrowAt(pos, map)))) return false;

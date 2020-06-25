@@ -106,7 +106,6 @@ namespace TiberiumRim
 
         private void PrintIdleDrones(SectionLayer layer)
         {
-            Log.Message("Printing " + DroneContainer.Count + " drones.");
             for(int i = 0; i < DroneContainer.Count; i++)
             {
                 Vector3 drawPos = parent.DrawPos + new Vector3(0, AltitudeLayer.BuildingOnTop.AltitudeFor(), 0) + Props.dronePositions[i];
@@ -121,7 +120,6 @@ namespace TiberiumRim
         {
             StringBuilder sb = new StringBuilder();
             //sb.Append(base.CompInspectStringExtra().TrimEndNewlines());
-            sb.Append("Current Drones: " + DroneContainer?.Count);
             return sb.ToString().TrimEndNewlines();
         }
 

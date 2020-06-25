@@ -21,6 +21,8 @@ namespace TiberiumRim
         public float WallCorruptionChance;
         public float ChunkCorruptionChance;
 
+        public List<ThingDef> spreadFilter;
+
         public Color AlertColor;
         public Color GreenColor;
         public Color BlueColor;

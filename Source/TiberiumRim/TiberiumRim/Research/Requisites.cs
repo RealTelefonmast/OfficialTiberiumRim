@@ -28,23 +28,34 @@ namespace TiberiumRim
 
         public string MissingString()
         {
-            string missing = "TR_MissingRequisite".Translate();
+            string missing = ""; //"TR_MissingRequisite".Translate();
             //Research
-            string vanResearch = research.Where(res => !res.IsFinished).Aggregate("", (current, res) => current + ("\n" + res));
+            string vanResearch = research.Where(res => !res.IsFinished).Aggregate("", (current, res) => current + ("\n- " + res.LabelCap));
             if (!vanResearch.NullOrEmpty())
-                missing += "\n" + vanResearch;
+            {
+                missing += "TR_RequisitesMissingVanillaResearch".Translate(vanResearch);
+            }
+
             //TResearch
-            string tibResearch = tiberiumResearch.Where(res => !res.IsFinished).Aggregate("", (current, res) => current + ("\n" + res));
+            string tibResearch = tiberiumResearch.Where(res => !res.IsFinished).Aggregate("", (current, res) => current + ("\n- " + res.LabelCap));
             if (!tibResearch.NullOrEmpty())
-                missing += "\n" + tibResearch;
+            {
+                missing += "TR_RequisitesMissingTiberiumResearch".Translate(tibResearch);
+            }
+
             //TResearchTask
-            string tasks = tiberiumResearchTasks.Where(task => !task.IsFinished).Aggregate("", (current, task) => current + ("\n" + task));
+            string tasks = tiberiumResearchTasks.Where(task => !task.IsFinished).Aggregate("", (current, task) => current + ("\n- " + task.LabelCap));
             if (!tasks.NullOrEmpty())
-                missing += "\n" + tasks;
+            {
+                missing += "TR_RequisitesMissingTiberiumTask".Translate(tasks);
+            }
+
             //Events
-            string eventsString = events.Where(@event => !@event.IsFinished).Aggregate("", (current, @event) => current + ("\n" + @event));
+            string eventsString = events.Where(@event => !@event.IsFinished).Aggregate("", (current, @event) => current + ("\n- " + @event.LabelCap));
             if (!eventsString.NullOrEmpty())
-                missing += "\n" + eventsString;
+            {
+                missing += "TR_RequisitesMissingEvents".Translate(eventsString);
+            }
 
             return missing;
         }

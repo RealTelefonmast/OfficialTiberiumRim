@@ -41,10 +41,10 @@
 		<statBases>
 			<WorkToMake>30000</WorkToMake>
 			<Mass>3.5</Mass>
-			<AccuracyTouch>0.75</AccuracyTouch>
-			<AccuracyShort>0.75</AccuracyShort>
-			<AccuracyMedium>0.65</AccuracyMedium>
-			<AccuracyLong>0.55</AccuracyLong>
+			<AccuracyTouch>0.95</AccuracyTouch>
+			<AccuracyShort>0.8</AccuracyShort>
+			<AccuracyMedium>0.5</AccuracyMedium>
+			<AccuracyLong>0.2</AccuracyLong>
 			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
@@ -56,13 +56,13 @@
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_NodStandard</defaultProjectile>
-				<warmupTime>1</warmupTime>
-				<range>24.9</range>
-				<burstShotCount>4</burstShotCount>
+				<warmupTime>0.5</warmupTime>
+				<range>28.9</range>
+				<burstShotCount>8</burstShotCount>
 				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
-				<soundCast>Shot_HeavySMG</soundCast>
+				<soundCast>Shot_AssaultRifle</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
-				<muzzleFlashScale>9</muzzleFlashScale>
+				<muzzleFlashScale>6</muzzleFlashScale>
 			</li>
 		</verbs>
 		<tools>

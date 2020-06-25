@@ -3,8 +3,8 @@
 
 	<ThingDef ParentName="ResourceBase_TR">
 		<defName>IonCannonBeacon</defName>
-		<label>ion cannon beacon</label>
-		<description>This beacon can be placed to call in a Ion Cannon strike.</description>
+		<label>GS-2 beacon</label>
+		<description>The GS-2 Godsend is used to designate an Ion Cannon-strike target, it will be placed and starts a timer, allowing your pawns to reach a safe distance.</description>
 		<graphicData>
 			<texPath>Items/Weapons/IonCannon_Beacon</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

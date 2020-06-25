@@ -65,6 +65,7 @@
 	</TiberiumRim.TRThingDef>
 	-->
 	
+	<!--
 	<ThingDef ParentName="BuildingBase">
 		<defName>AngleTester</defName>
 		<label>Angle Tester</label>
@@ -113,6 +114,6 @@
 		<pathCost>25</pathCost>
 		<designationCategory>Misc</designationCategory>
 	</ThingDef>
-	
+	-->
 	
 </Defs>

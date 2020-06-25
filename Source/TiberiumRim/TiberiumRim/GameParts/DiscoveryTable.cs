@@ -42,7 +42,6 @@ namespace TiberiumRim
         public void Discover(string discoverTag)
         {
             Discovered.Add(discoverTag, true);
-            //Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter(TiberiumDefOf.DiscoveryLetter));
             Find.LetterStack.ReceiveLetter("TR_NewDiscovery".Translate(), "TR_NewDiscoveryDesc".Translate(), TiberiumDefOf.DiscoveryLetter);
         }
     }

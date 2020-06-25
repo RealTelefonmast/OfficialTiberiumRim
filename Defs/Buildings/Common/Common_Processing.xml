@@ -4,7 +4,7 @@
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>NetworkController</defName>
 		<label>Tiberium Network Controller</label>
-		<description>This structure is the main part of any Tiberium network, it is a necessary component to connect refineries to storage and production structures.</description>
+		<description>This structure is the main part of any Tiberium network, it acts as a pump for the entire networks and ensures flow while powered.</description>
 		<thingCategories Inherit="false" />
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
@@ -24,7 +24,7 @@
 		</statBases>
 		<size>(4,4)</size>
 		<costList>
-			<Steel>300</Steel>
+			<Steel>250</Steel>
 			<ComponentIndustrial>15</ComponentIndustrial>
 		</costList>
 		<requisites>
@@ -90,6 +90,7 @@
 		<passability>PassThroughOnly</passability>
 		<factionDesignation>Common</factionDesignation>
 		<TRCategory>Processing</TRCategory>
+		<hidden>true</hidden>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Network/Node/Node</texPath>
@@ -236,7 +237,7 @@
 		<fillPercent>1</fillPercent>
 		<tickerType>Normal</tickerType>
 		<statBases>
-			<MaxHitPoints>250</MaxHitPoints>
+			<MaxHitPoints>400</MaxHitPoints>
 			<WorkToBuild>2500</WorkToBuild>
 			<Mass>20</Mass>
 			<Flammability>1.0</Flammability>
@@ -308,7 +309,7 @@
 		<fillPercent>1</fillPercent>
 		<tickerType>Normal</tickerType>
 		<statBases>
-			<MaxHitPoints>250</MaxHitPoints>
+			<MaxHitPoints>350</MaxHitPoints>
 			<WorkToBuild>2500</WorkToBuild>
 			<Mass>20</Mass>
 			<Flammability>1.0</Flammability>
@@ -363,7 +364,7 @@
 			<drawSize>(4.15,4.15)</drawSize>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>450</MaxHitPoints>
+			<MaxHitPoints>500</MaxHitPoints>
 			<WorkToBuild>3000</WorkToBuild>
 			<Flammability>0.85</Flammability>
 		</statBases>

@@ -17,17 +17,6 @@
 	</TiberiumRim.TResearchGroupDef>
 	
 	<!---->
-	<TiberiumRim.TResearchGroupDef>
-		<defName>GDIGroup</defName>
-		<label>GDI Research</label>		
-	</TiberiumRim.TResearchGroupDef>
-	
-	<TiberiumRim.TResearchGroupDef>
-		<defName>NodGroup</defName>
-		<label>Nod Research</label>		
-	</TiberiumRim.TResearchGroupDef>
-	
-	<!---->
 	<TiberiumRim.TResearchDef>
 		<defName>GreenSky</defName>
 		<label>Green Sky</label>	
@@ -153,6 +142,12 @@
 				<li>CommsConsole</li>
 			</targetDefs>
 		</taskTarget>
+		<discoveries>
+			<thingsToDiscover>
+				<li>TiberiumProducerCrater</li>
+				<li>TiberiumCrystalLattice</li>
+			</thingsToDiscover>
+		</discoveries>
 		<events>
 			<li>TiberiumToxemiaDiscovery</li>
 		</events>

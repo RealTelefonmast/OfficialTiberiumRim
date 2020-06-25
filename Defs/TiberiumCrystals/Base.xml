@@ -78,7 +78,7 @@
 		<passability>Standable</passability>
 		<blockWind>false</blockWind>
 		<castEdgeShadows>false</castEdgeShadows>
-		<fillPercent>0</fillPercent>
+		<fillPercent>0.5</fillPercent>
 		<coversFloor>true</coversFloor>
 		<holdsRoof>false</holdsRoof>
 		<staticSunShadowHeight>0</staticSunShadowHeight>

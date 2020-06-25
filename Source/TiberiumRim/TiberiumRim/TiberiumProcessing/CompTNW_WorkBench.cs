@@ -6,7 +6,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class CompTNW_WorkBench :CompTNW
+    public class CompTNW_WorkBench : CompTNW
     {
         public override IEnumerable<IntVec3> InnerConnectionCells
         {

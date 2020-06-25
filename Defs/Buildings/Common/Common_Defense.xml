@@ -8,6 +8,7 @@
 		<thingClass>Building_TurretGun</thingClass>
 		<factionDesignation>Common</factionDesignation>
 		<TRCategory>Defense</TRCategory>
+		<hidden>true</hidden>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Defense/TibCannon/Base</texPath>

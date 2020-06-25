@@ -349,6 +349,7 @@
 		<label>flame turret</label>
 		<description>Nod's flame turret.</description>
 		<thingClass>TiberiumRim.Building_FlameTurret</thingClass>
+		<hidden>true</hidden>
 		<graphicData>
 			<texPath>Buildings/Nod/Defense/Turrets/Base</texPath>
 		</graphicData>

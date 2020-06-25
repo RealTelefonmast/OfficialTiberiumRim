@@ -83,8 +83,9 @@ namespace TiberiumRim
 
         public bool AllowsTerrainDef(TerrainDef def)
         {
-            string defName = def.defName.ToLower();
-            if (!acceptedTags.NullOrEmpty() && !acceptedTags.Any(t => defName.Contains(t)))
+            if (def == null) return false;
+            var name = def.defName.ToLower();
+            if (!acceptedTags.NullOrEmpty() && !acceptedTags.Any(t => name.Contains(t)))
                 return false;
             if (!acceptedTerrain.NullOrEmpty() && !acceptedTerrain.Contains(def))
                 return false;

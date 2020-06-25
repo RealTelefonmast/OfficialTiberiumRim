@@ -42,6 +42,7 @@ namespace TiberiumRim
             GenSpawn.Spawn(beam, caster.Position, caster.Map, WipeMode.Vanish);
             if (Laser.glow != null)
             {
+                //TODO: Replace motes with more fine-tuned settings (eg. fade-in and -out time)
                 MoteThrown glow = (MoteThrown)ThingMaker.MakeThing(Laser.glow.glowMote /*DefDatabase<ThingDef>.GetNamed("ObeliskGlow")*/);
                 glow.exactPosition = start;
                 glow.Scale = Laser.glow.scale;

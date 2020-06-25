@@ -44,7 +44,7 @@
 			<thinkTreeConstant>MechMainConstant</thinkTreeConstant>
 			<needsRest>false</needsRest>
 			<hasGenders>false</hasGenders>
-			<fleshType>Mechanoid</fleshType>
+			<fleshType>Mechanical</fleshType>
 			<foodType>None</foodType>
 			<intelligence>ToolUser</intelligence>
 			<makesFootprints>false</makesFootprints>

@@ -41,7 +41,7 @@ namespace TiberiumRim
         {
             TResearchDef currentProj = TRUtils.ResearchManager().currentProject;
             if (currentProj == null) return false;
-
+            if (!(t as ThingWithComps).IsPowered(out bool usesPower) && usesPower) return false;
             if (!PawnCapable(pawn, out string reason))
             {
                 JobFailReason.Is("\n" +  reason, null);

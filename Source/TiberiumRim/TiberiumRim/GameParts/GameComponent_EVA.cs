@@ -109,7 +109,6 @@ namespace TiberiumRim
         {
             base.GameComponentUpdate();
             tickSinceStart++;
-            //Log.Message("TicksGame: " + Find.TickManager.TicksGame + " | " + GenTicks.TicksGame+ "TicksAbs: " + Find.TickManager.TicksAbs + " | " + GenTicks.TicksAbs);
         }
 
         public void PlayCountDown(int seconds)
@@ -253,7 +252,6 @@ namespace TiberiumRim
                 UpdateTargets();
                 return;
             }
-            //Log.Message("Can't be played - wait " + (settings.TimeFor(signal) - (tickSinceStart - LastPlayed[signal])) + " ticks");
         }
     }
 

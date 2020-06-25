@@ -53,19 +53,16 @@ namespace TiberiumRim
         {
             get
             {
-                Log.Message("Getting position for TResearch Job");
                 if (targetPos.IsValid) return targetPos;
 
                 var distance = Project.CurrentTask.distanceFromTarget;
                 var atTarget = distance <= 0;
                 if (atTarget)
                 {
-                    Log.Message("Getting position AtTarget");
                     targetPos = TargetA.Thing.RandomAdjacentCell8Way();
                 }
                 else
                 {
-                    Log.Message("Getting distanced position with distance: " + distance);
                     bool Predicate(IntVec3 x)
                     {
                         if (!x.Standable(Map))
@@ -77,7 +74,6 @@ namespace TiberiumRim
                     CellFinder.TryFindRandomCellNear(TargetA.Cell, Map, Mathf.CeilToInt(distance), Predicate, out targetPos);
                     //targetPos = CellFinder.TryFindRandomReachableCellNear(TargetA.Cell, Map, Mathf.CeilToInt(distance), TraverseParms.For(TraverseMode.ByPawn, Danger.Some,false), Predicate));
                 }
-                Log.Message("Got position for TResearch Job: " + targetPos);
                 return targetPos;
             }
         }

@@ -73,6 +73,14 @@ namespace TiberiumRim
                 yield return g;
             }
 
+            if(!def.devObject)
+                yield return new Designator_BuildFixed(def);
+
+            if (def.superWeapon?.ResolvedDesignator != null)
+                yield return def.superWeapon.ResolvedDesignator;
+
+            if(!DebugSettings.godMode) yield break;
+
             if (IsDiscoverable && !Discovered)
             {
                 yield return new Command_Action()
@@ -82,11 +90,6 @@ namespace TiberiumRim
                 };
             }
 
-            if(!def.devObject)
-                yield return new Designator_BuildFixed(def);
-
-            if (def.superWeapon?.ResolvedDesignator != null)
-                yield return def.superWeapon.ResolvedDesignator;
         }
     }
 }

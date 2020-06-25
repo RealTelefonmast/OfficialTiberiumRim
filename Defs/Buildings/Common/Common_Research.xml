@@ -11,8 +11,8 @@
 		<TRCategory>Research</TRCategory>
 		<clearTiberium>true</clearTiberium>
 		<costList>
-			<Steel>300</Steel>
-			<ComponentIndustrial>4</ComponentIndustrial>
+			<Steel>200</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -31,7 +31,7 @@
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<statBases>
-			<MaxHitPoints>300</MaxHitPoints>
+			<MaxHitPoints>350</MaxHitPoints>
 			<WorkToBuild>3000</WorkToBuild>
 			<Flammability>0.5</Flammability>
 			<TiberiumDamageResistance>1</TiberiumDamageResistance>
@@ -70,8 +70,9 @@
 		<minifiedDef Inherit="false"/>
 		<thingCategories Inherit="false" />
 		<TRCategory>Research</TRCategory>
+		<hidden>true</hidden>
 		<costList>
-			<Steel>500</Steel>
+			<Steel>400</Steel>
 			<Plasteel>50</Plasteel>
 			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>
@@ -87,7 +88,7 @@
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<statBases>
-			<MaxHitPoints>1000</MaxHitPoints>
+			<MaxHitPoints>900</MaxHitPoints>
 			<WorkToBuild>10000</WorkToBuild>
 			<Flammability>1.0</Flammability>
 			<ResearchSpeedFactor>1.5</ResearchSpeedFactor>
@@ -135,6 +136,7 @@
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<TRCategory>Research</TRCategory>
+		<hidden>true</hidden>
 		<pathCost>70</pathCost>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>

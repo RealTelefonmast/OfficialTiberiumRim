@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Verse;
 using RimWorld;
+using UnityEngine;
 
 namespace TiberiumRim
 {
@@ -17,10 +18,12 @@ namespace TiberiumRim
 
     public class TResearchGroupDef : Def
     {
+        public int priority = 0;
         public List<TResearchDef> researchProjects;
 
         public List<TResearchDef> ActiveProjects => researchProjects.NullOrEmpty() ? null : researchProjects.Where(t => t.RequisitesComplete).ToList();
 
+        public bool IsVisible => !IsFinished && !ActiveProjects.NullOrEmpty() || (IsFinished && !TResearchManager.hideGroups);
         public bool IsFinished => researchProjects.NullOrEmpty() || researchProjects.All(r => r.IsFinished);
     }
 
@@ -40,6 +43,7 @@ namespace TiberiumRim
         public List<TResearchTaskDef> tasks;
         public List<EventDef> events;
         public string researchType = "missing";
+        public string projectDescription;
 
         public override void ResolveReferences()
         {
@@ -63,7 +67,7 @@ namespace TiberiumRim
         }
 
         public virtual bool RequisitesComplete => requisites?.FulFilled() ?? true;
-        public virtual bool CanStartNow => !IsFinished && RequisitesComplete;
+        public virtual bool CanStartNow => RequisitesComplete;
         public bool IsFinished => TRUtils.ResearchManager().IsCompleted(this);
 
         public TResearchGroupDef ParentGroup
@@ -86,12 +90,12 @@ namespace TiberiumRim
         {
             get
             {
+                if (Equals(TRUtils.ResearchManager().currentProject))
+                    return ResearchState.InProgress;
                 if (IsFinished)
                     return ResearchState.Finished;
                 if (CanStartNow)
                     return ResearchState.Available;
-                if (Equals(TRUtils.ResearchManager().currentProject))
-                    return ResearchState.InProgress;
                 return ResearchState.Hidden;
             }
         }
@@ -105,10 +109,13 @@ namespace TiberiumRim
         private List<ThingDef> mainTargets;
         [Unsaved]
         private string cachedTaskInfo;
+        [Unsaved]
+        private List<Texture2D> cachedImages;
 
         //Local Requisites
         public CreationProperties creationTasks;
         public TargetProperties taskTarget;
+        public DiscoveryProperties discoveries;
         public WorkTypeDef workType;
         public List<SkillRequirement> skillRequirements;
         public StatDef relevantPawnStat;
@@ -129,6 +136,8 @@ namespace TiberiumRim
         public PawnPosture posture = PawnPosture.Standing;
 
         public float workAmount = 750;
+        public bool showTargetList = true;
+        //
         public string descriptionShort;
 
         public TResearchTaskDef()
@@ -163,6 +172,21 @@ namespace TiberiumRim
             }
         }
 
+        public List<Texture2D> Images
+        {
+            get
+            {
+                if (images.NullOrEmpty()) return null;
+                if (cachedImages == null)
+                {
+                    cachedImages = new List<Texture2D>(images.Count);
+                    foreach(var image in images)
+                        cachedImages.Add(ContentFinder<Texture2D>.Get(image));
+                }
+                return cachedImages;
+            }
+        }
+
         public WorkTypeDef WorkType => workType ?? ParentProject.workType;
         public List<SkillRequirement> SkillRequirements => skillRequirements ?? ParentProject.skillRequirements;
         public StatDef RelevantPawnStat => relevantPawnStat ?? ParentProject.relevantPawnStat;
@@ -188,6 +212,11 @@ namespace TiberiumRim
             }
         }
 
+        public void DoDiscoveries()
+        {
+            discoveries?.Discover();
+        }
+
         public virtual void FinishAction()
         {
         }
@@ -208,6 +237,7 @@ namespace TiberiumRim
         {
             TRUtils.ResearchManager().SetProgress(this, 0);
             TRUtils.ResearchManager().SetCompleted(this, false);
+            TRUtils.ResearchManager().ResearchCompleted.Remove(this.ParentProject);
             if (this.creationTasks != null)
             {
                 foreach (var option in this.creationTasks.thingsToCreate)
@@ -234,27 +264,49 @@ namespace TiberiumRim
                 //Targets
                 if (TargetProperties != null)
                 {
-                    cachedTaskInfo += "TR_TaskTargets".Translate();
+                    cachedTaskInfo += "TR_TaskTargets".Translate() + "\n";
                     if (!TargetProperties.groupLabel.NullOrEmpty())
-                        cachedTaskInfo += "\n " + TargetProperties.groupLabel;
-                    foreach (var target in PossibleMainTargets)
+                        cachedTaskInfo += TargetProperties.groupLabel + "\n";
+                    if(showTargetList)
                     {
-                        cachedTaskInfo += "\n   -" + target.LabelCap;
-                        if (RelevantTargetStat != null)
-                            cachedTaskInfo += " (" + target.GetStatValueAbstract(RelevantTargetStat) + ")";
+                        foreach (var target in PossibleMainTargets)
+                        {
+                            cachedTaskInfo += "   -" + target.LabelCap;
+                            if (RelevantTargetStat != null)
+                                cachedTaskInfo += " (" + RelevantTargetStat.LabelCap + ": " + target.GetStatValueAbstract(RelevantTargetStat) + ")";
+                            cachedTaskInfo += "\n";
+                        }
                     }
+                    cachedTaskInfo += "\n";
+                }
+                //Crafting & Construction
+                if (creationTasks != null)
+                {
+                    cachedTaskInfo += creationTasks.TargetLabel() + "\n";
+                    foreach (var option in creationTasks.thingsToCreate)
+                    {
+                        cachedTaskInfo += "    -";
+                        if (option.amount > 1)
+                            cachedTaskInfo += option.amount + "x ";
+                        cachedTaskInfo += option.def.LabelCap;
+                        if(option.stuffDef != null)
+                            cachedTaskInfo += "(" + option.stuffDef.LabelAsStuff + ")";
+                        cachedTaskInfo += "\n";
+                    }
+
+                    cachedTaskInfo += "\n";
                 }
 
                 //WorkType
-                cachedTaskInfo += "\n\n" + "TR_TaskWorkType".Translate(WorkType.labelShort);
+                cachedTaskInfo += "TR_TaskWorkType".Translate(WorkType.labelShort) + "\n\n";
 
                 //Skills
                 if (!SkillRequirements.NullOrEmpty())
                 {
-                    cachedTaskInfo += "\n\n" + "TR_TaskSkillReq".Translate();
+                    cachedTaskInfo += "TR_TaskSkillReq".Translate() + "\n";
                     foreach (var skill in SkillRequirements)
                     {
-                        cachedTaskInfo += "\n   -" + skill.skill.LabelCap + " (" + skill.minLevel + ")";
+                        cachedTaskInfo += "    -" + skill.skill.LabelCap + " (" + skill.minLevel + ")\n";
                     }
                 }
                 return cachedTaskInfo;
@@ -265,10 +317,10 @@ namespace TiberiumRim
         {
             get
             {
-                if (IsFinished)
-                    return ResearchState.Finished;
                 if (Equals(ParentProject.CurrentTask))
                     return ResearchState.InProgress;
+                if (IsFinished)
+                    return ResearchState.Finished;
                 return ResearchState.Available;
             }
         }

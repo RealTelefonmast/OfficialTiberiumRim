@@ -117,7 +117,6 @@ namespace TiberiumRim
                     }
                     DirectXmlCrossRefLoader.ResolveAllWantedCrossReferences(FailMode.Silent);
                 }
-                Log.Message("TRThingDefList - Faction Cats: " + TRThingDefList.Categorized.Keys.Count + " | TRThings: " + TRThingDefList.TotalCount);
             }
         }
     }

@@ -33,15 +33,9 @@ namespace TiberiumRim
 
         public override void Tick()
         {
-            if (ticksToHub == 0)
-            {
-                SpawnHub();
-
-            }
-            if (ticksToEgg == 0)
-            {
-                SpawnEgg();
-            }
+            base.Tick();
+            TrySpawnHub();
+            TrySpawnEgg();
         }
 
         private void TryConsume(Pawn pawn)
@@ -49,19 +43,23 @@ namespace TiberiumRim
 
         }
 
-        private void SpawnHub()
+        private void TrySpawnHub()
         {
-            void Action(IntVec3 c)
-            {
-                if (c.SupportsTiberiumTerrain(Map)) Map.terrainGrid.SetTerrain(c, Ruleset.RandomTerrain());
-            }
+            if (ticksToHub != 0) return;
 
-            TiberiumFloodInfo flood = new TiberiumFloodInfo(Map,null, Action);
+            Action<IntVec3> Processor = delegate(IntVec3 c)
+            {
+                if (c.SupportsTiberiumTerrain(Map))
+                    Map.terrainGrid.SetTerrain(c, Ruleset.RandomTerrain());
+            };
+
+            TiberiumFloodInfo flood = new TiberiumFloodInfo(Map,null, Processor);
             IntVec3 end = GenRadial.RadialCellsAround(Position, 56, false).RandomElement();
             flood.TryMakeConnection(out List<IntVec3> cells, Position, end);
 
             var hub = GenSpawn.Spawn(ThingDef.Named("VeinHub"), end, Map);
             boundHubs.Add(hub);
+
             ResetHubTimer();
         }
 
@@ -71,11 +69,13 @@ namespace TiberiumRim
                 boundHubs.Remove(hub);
         }
 
-        private void SpawnEgg()
+        private void TrySpawnEgg()
         {
-            var cell = FieldCells.RandomElement();
+            if (ticksToEgg != 0) return;
 
+            var cell = FieldCells.RandomElement();
             GenSpawn.Spawn(ThingDef.Named("VeinEgg"), cell, Map);
+
             ResetEggTimer();
         }
 
@@ -100,10 +100,7 @@ namespace TiberiumRim
             
             yield return new Command_Action{
                 defaultLabel= "Spawn Hub",
-                action = delegate
-                {
-                    SpawnHub();
-                }
+                action = TrySpawnHub
             };
 
         }

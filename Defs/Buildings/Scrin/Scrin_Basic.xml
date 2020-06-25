@@ -43,7 +43,6 @@
 						</data>
 						<mode>Pulse</mode>
 					    <pulse>
-							<mode>Opacity</mode>
 							<opacityRange>0.55~0.9</opacityRange>
 						</pulse>
 					</li>
@@ -92,30 +91,82 @@
 							<texPath>Buildings/Scrin/ScrinPortal</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
-							<drawSize>(4.5,4.5)</drawSize>
+							<drawSize>(2.5,2.5)</drawSize>
 						</data>
 						<mode>Pulse</mode>
 					    <pulse>
-							<mode>OpaSize</mode>
-							<opacityRange>0.6~1</opacityRange>
-							<sizeRange>0.9~1</sizeRange>
+							<opacityRange>0.35~0.65</opacityRange>
+							<sizeRange>0.4~1.05</sizeRange>
 						</pulse>
 					</li>
-					
+					<!--
 					<li>
 						<data>
 							<texPath>Buildings/Scrin/ScrinPortal</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
-							<drawSize>(4.5,4.5)</drawSize>
+							<drawSize>(2.5,2.5)</drawSize>
 						</data>
 						<mode>Pulse</mode>
-						 <pulse>
-							<mode>OpaSize</mode>
-							<opacityRange>1~0</opacityRange>
-							<sizeRange>0.65~1.4</sizeRange>
+						<pulse>
+							<opacityRange>0.9~0.2</opacityRange>
+							<sizeRange>1~0.2</sizeRange>
 						</pulse>
 					</li>
+					-->
+					<li>
+						<data>
+							<texPath>Things/Mote/Black</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlowDistortBackground</shaderType>
+							<shaderParameters>
+								<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
+								<_distortionIntensity>0.12</_distortionIntensity>
+								<_brightnessMultiplier>1.1</_brightnessMultiplier>
+							</shaderParameters>
+							<drawSize>(5.5,5.5)</drawSize>
+						</data>
+					</li>
+					<!--
+					<li>
+					<data>
+							<texPath>Buildings/Scrin/ScrinPortal</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.5,2.5)</drawSize>
+						</data>
+						<mode>Pulse</mode>
+					    <pulse>
+							<opacityRange>0.0~0.85</opacityRange>
+							<sizeRange>0.9~1</sizeRange>
+						</pulse>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Scrin/ScrinPortal</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.5,2.5)</drawSize>
+						</data>
+						<mode>Pulse</mode>
+						<pulse>
+							<opacityRange>0.8~0</opacityRange>
+							<sizeRange>0.65~1.25</sizeRange>
+						</pulse>
+					</li>
+					<li>
+						<data>
+							<texPath>Things/Mote/Black</texPath>
+							<shaderType>MoteGlowDistortBackground</shaderType>
+							<shaderParameters>
+								<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
+								<_distortionIntensity>0.1</_distortionIntensity>
+								<_brightnessMultiplier>1.15</_brightnessMultiplier>
+							</shaderParameters>
+							<drawSize>2.5</drawSize>
+						</data>
+					</li>
+					-->
 				</overlays>
 			</li>
 		</comps>

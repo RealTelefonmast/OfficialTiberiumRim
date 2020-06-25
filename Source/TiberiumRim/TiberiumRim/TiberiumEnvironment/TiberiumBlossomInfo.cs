@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -10,32 +11,37 @@ namespace TiberiumRim
 {
     public class TiberiumBlossomInfo : ICellBoolGiver, IExposable
     {
+        public CellBoolDrawer drawer;
         public BoolGrid blossomGrid;
         private Map map;
 
         private float mapRadius;
 
+        private  static BoolGrid positionGrid;
+        private static List<IntVec3> positions;
+        private static bool shouldSpawn = true;
+
         //Different Sizes Get Different Rules
         //1: Small; 2: Medium; 3: Large
-        private IntVec3[][] availablePositionsBySize;
-        private int[] counters;
-        private float[] radiusBySize;
-        private bool shouldSpawn = true;
-        
+        //private List<IntVec3>[] positionsBySize;
+        //private IntVec3[][] availablePositionsBySize;
+        //private float[] radiusBySize;
 
-        public TiberiumBlossomInfo(Map map)
+       public TiberiumBlossomInfo(Map map)
         {
             this.map = map;
+            drawer = new CellBoolDrawer(this, map.Size.x, map.Size.z, 0.4f);
             mapRadius = map.Center.DistanceToEdge(map);
 
             blossomGrid = new BoolGrid(map);
 
-            availablePositionsBySize = new IntVec3[3][];
-            counters = new int[3];
-            radiusBySize = new float[3] {15f, 20f, 30f};
+            positionGrid = new BoolGrid(map);
+            positions = new List<IntVec3>();
 
-            //SetPotentialPositions();
-            //Debug_TryFillPositions();
+            //positionsBySize = new List<IntVec3>[3] {new List<IntVec3>(), new List<IntVec3>(), new List<IntVec3>()};
+            //radiusBySize = new float[3] {15f, 20f, 30f};
+
+            GetPositions();
         }
 
         public void ExposeData()
@@ -47,23 +53,29 @@ namespace TiberiumRim
 
         public bool GetCellBool(int index)
         {
-            throw new NotImplementedException();
+            return positionGrid[index];
         }
 
         public Color GetCellExtraColor(int index)
         {
-            throw new NotImplementedException();
+            if (positionGrid[index])
+                return Color.red;
+            return Color.white;
         }
 
-        public Color Color { get; }
+        public Color Color => Color.white;
 
-        public void RegisterBlossom()
+        public void RegisterBlossom(TiberiumBlossom blossom)
         {
+            blossomGrid.Set(blossom.Position, true);
+
 
         }
 
-        public void DeregisterBlossom()
+        public void DeregisterBlossom(TiberiumBlossom blossom)
         {
+            blossomGrid.Set(blossom.Position, false);
+
 
         }
 
@@ -72,99 +84,43 @@ namespace TiberiumRim
 
         }
 
-        private void Debug_TryFillPositions()
+        private void GetPositions()
         {
-            for (int i = 2; i >= 0; i--)
-            {
-                for(int k = 0; k < counters[i]; k++)
-                {
-                    if (i == 2)
-                    {
-                        var tree = TRUtils.Chance(0.6f) ? TiberiumDefOf.BlossomTree : TiberiumDefOf.BlueBlossomTree;
-                        GenSpawn.Spawn(tree, availablePositionsBySize[i][k], map);
-                    }
-                    if(i == 1)
-                    {
-                        GenSpawn.Spawn(TiberiumDefOf.SmallBlossom, availablePositionsBySize[i][k], map);
-                    }
-                    if (i == 0)
-                    {
-                        GenSpawn.Spawn(TiberiumDefOf.AlocasiaBlossom, availablePositionsBySize[i][k], map);
-                    }
-                }
-            }
-        }
-
-        private void SetPotentialPositions()
-        {
-            int currentSize = 0;
-
-            Predicate<IntVec3> BlossomValidator = cell =>
-                cell.DistanceToEdge(map) >= EdgeRangeForSize(currentSize);
-            Predicate<IntVec3> Predicate = c => c.IsValid;
+            Predicate<IntVec3> Predicate = c => c.InBounds(map);
             Action<IntVec3> Processor = delegate(IntVec3 c)
             {
-                for (int i = 0; i < 3; i++)
+                var originalTerrain = c.GetTerrain(map);
+               // map.terrainGrid.SetTerrain(c, TiberiumTerrainDefOf.TiberiumSoilGreen);
+                if (!c.Standable(map) || c.Fogged(map) || c.Roofed(map)) return;
+               // map.terrainGrid.SetTerrain(c, TiberiumTerrainDefOf.TiberiumSoilBlue);
+                if (c.DistanceToEdge(map) <= 15) return;
+               // map.terrainGrid.SetTerrain(c, TiberiumTerrainDefOf.TiberiumSoilRed);
+                if (!TiberiumDefOf.TerrainFilter_Soil.AllowsTerrainDef(originalTerrain)) return;
+                //map.terrainGrid.SetTerrain(c, TiberiumTerrainDefOf.TiberiumPodSoilBlue);
+                if (!HasConflict(-1, c))
                 {
-                    if (!HasConflict(i, c) && InRangeForSize(i, c) && TRUtils.Chance(ChanceForSizeAt(i, c)))
-                    {
-                        availablePositionsBySize[i][counters[i]] = c;
-                        counters[i]++;
-                    }
+                    //map.terrainGrid.SetTerrain(c, TiberiumTerrainDefOf.TiberiumIce);
+                    positions.Add(c);
+                    positionGrid.Set(c, true);
                 }
             };
-            map.floodFiller.FloodFill(map.cellIndices.IndexToCell(0), Predicate, Processor);   
-        }
+            map.floodFiller.FloodFill(map.Center, Predicate, Processor);
 
-        private int EdgeRangeForSize(int size)
-        {
-            switch (size)
+            int trueCount = 0;
+            for (var i = positions.Count - 1; i >= 0; i--)
             {
-                case 0:
-                    return TRUtils.Range(10, 15);
-                case 1:
-                    return TRUtils.Range(15, 20);
-                case 2:
-                    return TRUtils.Range(20,25);
-                default: 
-                    return 9999;
+                if (Rand.Chance(0.5f))
+                {
+                    trueCount++;
+                    positionGrid.Set(positions[i], false);
+                    positions.RemoveAt(i);
+                }
             }
-        }
-
-        //The Usage Of The Map From the Center To Edge
-        private float RangeForSize(int size)
-        {
-            switch (size)
-            {
-                case 0:
-                    return 0.75f;
-                case 1:
-                    return 0.45f;
-                case 2:
-                    return 0f;
-                default:
-                    return 2;
-            }
-        }
-
-        //Determine The Chance For A Specific Blossom Size To Spawn At The Designated Position
-        private float ChanceForSizeAt(int size, IntVec3 pos)
-        {
-            //The further away it is from the max radius, the less likely it will be
-            float distanceChance = 1f - PercentileAt(pos);
-            return distanceChance;
-
-        }
-
-        private bool InRangeForSize(int size, IntVec3 pos)
-        {
-            float pct = PercentileAt(pos);
-            return pct >= RangeForSize(size);
         }
 
         private bool HasConflict(int size, IntVec3 pos)
         {
-            return availablePositionsBySize[size].Any(c => c.DistanceTo(pos) < radiusBySize[size]);
+            return positions.Any(c => pos.DistanceTo(c) < 35f); //positionsBySize[size].Any(c => c.DistanceTo(pos) < radiusBySize[size]);
         }
 
         //Get The Percentual Value Of The Position Based On The Distance From Center To Edge

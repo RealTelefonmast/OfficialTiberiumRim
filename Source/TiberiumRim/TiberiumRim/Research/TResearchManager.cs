@@ -12,25 +12,28 @@ namespace TiberiumRim
 {
     public class TResearchManager : WorldComponent, IExposable
     {
-
+        //Research Progress Data
         public Dictionary<TResearchTaskDef, float> TaskProgress = new Dictionary<TResearchTaskDef, float>();
         public Dictionary<TResearchTaskDef, bool> TasksCompleted = new Dictionary<TResearchTaskDef, bool>();
         public Dictionary<TResearchDef, bool> ResearchCompleted = new Dictionary<TResearchDef, bool>();
-        public static float researchFactor = 0.01f;
 
         public ResearchCreationTable creationTable;
-
         public ResearchTargetTable researchTargets;
 
-        //Research Window
+        //Research Menu
         private readonly Dictionary<TResearchGroupDef, bool[]> researchGroupData = new Dictionary<TResearchGroupDef, bool[]>();
-        public static bool hideGroups, hideMissions;
 
         public TResearchDef currentProject;
 
+        //Static data
+        public static float researchFactor = 0.01f;
+        public static bool hideGroups, hideMissions;
+
         public TResearchManager(World world) : base(world)
         {
-            foreach (var group in DefDatabase<TResearchGroupDef>.AllDefs)
+            var sorted = DefDatabase<TResearchGroupDef>.AllDefs.ToList();
+            sorted.SortBy(t => t.priority);
+            foreach (var group in sorted)
             {
                 researchGroupData.Add(group, new bool[2] {false, false});
             }
@@ -73,7 +76,7 @@ namespace TiberiumRim
         public void DoCompletionDialog(TResearchDef proj)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append("TiberiumRimResearchCompletion".Translate(proj.LabelCap, proj.description));
+            stringBuilder.Append(proj.projectDescription);
             DiaNode diaNode = new DiaNode(stringBuilder.ToString());
             diaNode.options.Add(DiaOption.DefaultOK);
             DiaOption diaOption = new DiaOption("TR_OpenTab".Translate());
@@ -83,7 +86,7 @@ namespace TiberiumRim
             };
             diaOption.resolveTree = true;
             diaNode.options.Add(diaOption);
-            Find.WindowStack.Add(new Dialog_NodeTree(diaNode, true, false, "ResearchComplete".Translate()));
+            Find.WindowStack.Add(new Dialog_NodeTree(diaNode, true, false, "TR_ResearchProjectDone".Translate(proj.LabelCap)));
         }
 
         private void CheckGroup(TResearchGroupDef group)
@@ -112,7 +115,6 @@ namespace TiberiumRim
             research.FinishAction();
             currentProject = null;
             DoCompletionDialog(research);
-            Messages.Message("TR_ResearchProjectDone".Translate(research.LabelCap), MessageTypeDefOf.TaskCompletion, true);
             CheckGroup(research.ParentGroup);
             return true;
         }
@@ -126,6 +128,7 @@ namespace TiberiumRim
             if (!task.PlayerTaskCompleted())
                 return false;
             SetCompleted(task, true);
+            task.DoDiscoveries();
             task.TriggerEvents();
             task.FinishAction();
             Messages.Message("TR_ResearchTaskDone".Translate(task.LabelCap), MessageTypeDefOf.TaskCompletion, false);

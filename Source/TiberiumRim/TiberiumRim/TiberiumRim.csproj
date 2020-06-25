@@ -121,6 +121,7 @@
     <Compile Include="GameParts\TiberiumFieldRuleset.cs" />
     <Compile Include="GameParts\TiberiumResourceValueTable.cs" />
     <Compile Include="GDI\Comp_SonicInhibitor.cs" />
+    <Compile Include="Research\Alert_NewResearch.cs" />
     <Compile Include="Research\CreationProperties.cs" />
     <Compile Include="Research\Events\EventCompositionDef.cs" />
     <Compile Include="Research\Events\EventLetter.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Research\Events\SpawnSettings.cs" />
     <Compile Include="Research\IncidentWorker_CauseEvents.cs" />
     <Compile Include="Research\IncidentWorker_TiberiumSighting.cs" />
+    <Compile Include="Research\LetterProperties.cs" />
     <Compile Include="Research\ResearchCreationTable.cs" />
     <Compile Include="Research\ResearchTargetTable.cs" />
     <Compile Include="Research\TargetProperties.cs" />
@@ -240,7 +242,7 @@
     <Compile Include="TiberiumProcessing\Building_SuppressionTower.cs" />
     <Compile Include="TiberiumProcessing\PlaceWorker_OnlyOutside.cs" />
     <Compile Include="TiberiumProcessing\WorkGiver_HarvestTiberium.cs" />
-    <Compile Include="Utilities\DrawUtils.cs" />
+    <Compile Include="Utilities\TRWidgets.cs" />
     <Compile Include="Utilities\SoundUtility.cs" />
     <Compile Include="VeinholeParts\TiberiumVein.cs" />
     <Compile Include="VeinholeParts\VeinChunk.cs" />

@@ -14,6 +14,11 @@ namespace TiberiumRim
         public int distanceFromTarget;
         public string groupLabel;
 
+        public bool Accepts(Thing thing, Thing from = null)
+        {
+            return thing.def.thingClass == targetType || targetDefs.Contains(thing.def) && from != null ? from.Position.DistanceTo(thing.Position) <= distanceFromTarget : true;
+        }
+
         public Thing FindStation(Map map)
         {
             Thing thing = null;

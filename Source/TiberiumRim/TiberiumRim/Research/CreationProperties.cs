@@ -15,6 +15,17 @@ namespace TiberiumRim
 
         public int TotalCountToMake => thingsToCreate.Sum(t => t.amount);
 
+        public string TargetLabel()
+        {
+            if (thingsToCreate.All(t => t.def.category == ThingCategory.Building))
+                return "TR_TaskCreationsBuild".Translate();
+
+            if (thingsToCreate.All(t => t.def.category == ThingCategory.Item))
+                return "TR_TaskCreationsCraft".Translate();
+
+            return "TR_TaskCreationsBoth".Translate();
+        }
+
     }
 
     public class CreationOptionProperties

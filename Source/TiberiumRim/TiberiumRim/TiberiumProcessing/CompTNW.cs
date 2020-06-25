@@ -109,7 +109,7 @@ namespace TiberiumRim
                 }
             }
             base.PostDestroy(mode, previousMap);
-            Network.NotifyPotentialSplit(this);
+            Network?.NotifyPotentialSplit(this);
         }
 
         public virtual void StructureSetOnAdd(CompTNW tnw, IntVec3 cell)
@@ -131,7 +131,8 @@ namespace TiberiumRim
         public override void CompTick()
         {
             base.CompTick();
-            if (!(CompPower?.PowerOn ?? true && Network.IsWorking)) return;
+            if (!Network.IsWorking || !(CompPower?.PowerOn ?? false)) return;
+
             switch (NetworkMode)
             {
                 case TNWMode.Storage:
@@ -215,7 +216,13 @@ namespace TiberiumRim
 
         private bool CompatibleWith(CompTNW other)
         {
-            return /*other.Container.CanConnectTo(Container) && */ other.Network.NetworkMode == Network.NetworkMode;
+            if (other.Network == null)
+            {
+                Log.Error(other.parent + " has missing Tiberium network even though it should have one.");
+                return false;
+            }
+
+            return other.Network.NetworkMode == Network.NetworkMode;
         }
 
         public void PrintForGrid(SectionLayer layer)
@@ -226,7 +233,7 @@ namespace TiberiumRim
         public override void PostDraw()
         {
             base.PostDraw();
-            if (!Network.ValidFor(Props.tnwbMode, out string reason))
+            if (!Network?.ValidFor(Props.tnwbMode, out string reason) ?? false)
             {
                 Material mat = MaterialPool.MatFrom(TiberiumContent.MissingConnection, ShaderDatabase.MetaOverlay, Color.white);
                 float num = (Time.realtimeSinceStartup + 397f * (float)(parent.thingIDNumber % 571)) * 4f;

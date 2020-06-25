@@ -7,11 +7,27 @@ using RimWorld;
 
 namespace TiberiumRim
 {
+    //TODO: Add ability to discover things on even trigger
+    //TODO: Add new events to according tasks
+
+    //TODO: Expand EventScannerTable
     public class DiscoveryProperties
+    {
+        public List<string> thingsToDiscover;
+
+        public void Discover()
+        {
+            thingsToDiscover.ForEach(d => TRUtils.DiscoveryTable().Discover(d));
+        }
+
+    }
+
+    public class EventTrigger
     {
         public TargetProperties targets;
         public List<HediffDef> hediffs;
     }
+
 
     public class EventDef : Def
     {
@@ -19,8 +35,11 @@ namespace TiberiumRim
         public List<TResearchDef> unlocksResearch = new List<TResearchDef>();
 
         public Type eventClass = typeof(BaseEvent);
+        public EventTrigger trigger;
+        public DiscoveryProperties discoveries;
+        public LetterProperties letter;
+
         public float activeDays = 0;
-        public DiscoveryProperties discovery;
 
         //TODO: Implement full use of incidentproperties
         public List<IncidentProperties> incidents;

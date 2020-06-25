@@ -68,6 +68,22 @@
 		</placeWorkers>
 	</TiberiumRim.TRThingDef>
 	
+	<TiberiumRim.TRThingDef Abstract="True" Name="GlowSourceBase" ParentName="EtherealThingBase">
+		<label>wall light glow</label>
+		<thingClass>ThingWithComps</thingClass>
+		<graphicData>
+			<texPath>Blank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<tickerType>Never</tickerType>
+		<drawerType>MapMeshOnly</drawerType>
+		<drawOffscreen>true</drawOffscreen>
+		<seeThroughFog>false</seeThroughFog>
+	</TiberiumRim.TRThingDef>
+	
 	<TiberiumRim.TRThingDef Name="WallBase_TR" ParentName="BuildingBase_TR" Abstract="True">
 		<TRCategory>Structure</TRCategory>
 		<menuHidden>true</menuHidden>

@@ -32,12 +32,9 @@ namespace TiberiumRim
 
         public void SetGroundZero(TiberiumProducer producer)
         {
-            Log.Message("Setting GZ");
-            Log.Message("GZ Already Valid: " + GroundZero.IsValid + " Producer Invalid: " + !producer.def.canBeGroundZero);
             if (GroundZero.IsValid || !producer.def.canBeGroundZero) return;
             GroundZero = new GlobalTargetInfo(producer);
             producer.IsGroundZero = true;
-            Log.Message("Made new GZ and set it to " + producer);
         }
 
         public void SetGroundZero(Map map)

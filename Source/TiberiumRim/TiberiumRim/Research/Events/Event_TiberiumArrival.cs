@@ -15,11 +15,10 @@ namespace TiberiumRim
             base.EventAction();
             SkyfallerValue skyfaller = TiberiumCraterDef();
             Map map = MapForEvent;
-            Log.Message("Should spawn Meteor Now!" + skyfaller.innerThing);
             if (LandingSiteFor(skyfaller, map, out IntVec3 cell))
             {
-                var faller = SkyfallerMaker.MakeSkyfaller(skyfaller.skyfallerDef, skyfaller.innerThing);
-                GenSpawn.Spawn(faller, cell, map);
+                EventTargets = ThingMaker.MakeThing(skyfaller.innerThing);
+                SkyfallerMaker.SpawnSkyfaller(skyfaller.skyfallerDef, EventTargets.PrimaryTarget.Thing, cell, map);
             }
         }
 
@@ -57,7 +56,6 @@ namespace TiberiumRim
                 if (min < 46f) return false;
 
                 return true;
-
             });
         }
     }

@@ -12,18 +12,7 @@
 		</degreeDatas>
 	</TraitDef>
   
-	<!-- TODO: Expand this part 
-  	<TraitDef>
-		<defName>TiberianCuriosity</defName>
-		<commonality>0</commonality>
-		<degreeDatas>
-			<li>
-				<label>Tiberium </label>
-				<description>[PAWN_nameDef] survived inside a Visceral Pod, however the time they were inside left them horribly deformed and made them permanently unattractive.</description>
-			</li>
-		</degreeDatas>
-	</TraitDef>
-  
+    <!--
 	<TraitDef>
 		<defName>VisceralDeformity</defName>
 		<commonality>0</commonality>

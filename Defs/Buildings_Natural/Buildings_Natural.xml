@@ -312,6 +312,10 @@
 							<drawSize>(3,3)</drawSize>
 						</data>
 						<mode>Pulse</mode>
+						<pulse>
+							<opacityRange>0.2~0.8</opacityRange>
+							<opacityDuration>90</opacityDuration>
+						</pulse>
 					</li>
 				</overlays>
 			</li>
