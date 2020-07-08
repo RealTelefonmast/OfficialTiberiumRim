@@ -93,6 +93,46 @@
 	</TiberiumRim.RecipeDef_Tiberium>
 	
 	<!-- Nod -->
-	  
+	<RecipeDef>
+		<defName>MakeCarbonPlate</defName>
+		<label>produce carbon plate</label>
+		<description>produces 10 carbon plates.</description>
+		<jobString>making carbon plates.</jobString>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workAmount>1500</workAmount>
+		<workSpeedStat>SmeltingSpeed</workSpeedStat>
+		<ingredients>
+			<li>
+				<filter>
+				<thingDefs>
+					<li>Steel</li>
+				</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+					<li>Plasteel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Plasteel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Nod_CarbonPlate>10</Nod_CarbonPlate>
+		</products>
+		<workSkill>Crafting</workSkill>	
+		<skillRequirements>
+			<Crafting>5</Crafting>
+		</skillRequirements>
+	</RecipeDef>
 	
 </Defs>

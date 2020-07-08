@@ -69,17 +69,6 @@ namespace TiberiumRim
         [TweakValue("MapComponent_TibDrawBool", 0f, 100f)]
         public static bool DrawBool = false;
 
-        /*
-        [TweakValue("MapComponent_QuadTreePoints", 0, 100)]
-        public static int QuadTreePoints = 1;
-
-        [TweakValue("MapComponent_QuadDrawBool", 0f, 100f)]
-        public static bool QuadDrawReset = false;
-
-        //TEST QuadTree
-        public QuadTree TestTree;
-        */
-
         public override void MapComponentUpdate()
         {
             base.MapComponentUpdate();

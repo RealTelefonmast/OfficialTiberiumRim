@@ -97,6 +97,7 @@
     <Compile Include="Comps\CompGlowerOffset.cs" />
     <Compile Include="GameParts\CellArea.cs" />
     <Compile Include="GameParts\CellPath.cs" />
+    <Compile Include="GameParts\ConditionalStatModifier.cs" />
     <Compile Include="GameParts\Designators\Designator_Extended.cs" />
     <Compile Include="GameParts\Designators\Designator_Target.cs" />
     <Compile Include="GameParts\Dialog_DifficultyPreset.cs" />
@@ -262,6 +263,7 @@
     <Compile Include="VisualEffects\Graphic_Sprite.cs" />
     <Compile Include="VisualEffects\Mote_Beam.cs" />
     <Compile Include="VisualEffects\MoverProperties.cs" />
+    <Compile Include="VisualEffects\Particles\IParticle.cs" />
     <Compile Include="VisualEffects\Particles\ParticleEmitter.cs" />
     <Compile Include="VisualEffects\PulseProperties.cs" />
     <Compile Include="VisualEffects\QuadTree.cs" />
@@ -372,7 +374,7 @@
     <Compile Include="GraphicsManager.cs" />
     <Compile Include="GraphicsSettings.cs" />
     <Compile Include="Research\IncidentWorker_TiberiumArrival.cs" />
-    <Compile Include="GameParts\MapComps\MapComponent_Particles.cs" />
+    <Compile Include="VisualEffects\Particles\MapComponent_Particles.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_Pollution.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_Tiberium.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_TiberiumWater.cs" />

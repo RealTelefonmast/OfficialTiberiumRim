@@ -19,7 +19,7 @@ namespace TiberiumRim
         public bool canBeGroundZero = false;
         public bool leaveTiberium = true;
         public bool forResearch = true;
-
+        public bool growsBlossomTree = false;
     }
 
     public class SpawnProperties

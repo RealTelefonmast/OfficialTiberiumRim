@@ -32,9 +32,7 @@ namespace TiberiumRim
             if (!immunity && !hasTrait)
                 return;
 
-            Log.Message("Should Draw Crystals", true);
-            if (crystal == null)
-                crystal = new CrystalOverlay(pawn, immunity);
+            crystal ??= new CrystalOverlay(pawn, immunity);
             crystal.DrawCrystal(drawLoc, quat, pawn.Rotation, headRot, forPortrait, hasTrait);
         }
     }

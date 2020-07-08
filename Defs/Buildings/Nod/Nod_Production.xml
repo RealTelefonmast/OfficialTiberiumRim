@@ -38,12 +38,9 @@
 		<inspectorTabs>
 			<li>ITab_Bills</li>
 		</inspectorTabs>
-		<!--
 		<recipes>
-			<li>MakeReinforcedPlate</li>
-			<li>MakeGDISonicCore</li>
+			<li>MakeCarbonPlate</li>
 		</recipes>
-		-->
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<fillPercent>0.5</fillPercent>

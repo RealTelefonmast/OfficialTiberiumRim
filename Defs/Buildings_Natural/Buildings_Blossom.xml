@@ -145,20 +145,12 @@
 					</plants>
 					<chance>0.65</chance>
 				</li>
-				<!--
 				<li>
 					<plants>
-						<li>SmallBlossom,10</li>
+						<li>SmallBlossom,6</li>
 					</plants>
 					<chance>0.7</chance>
 				</li>
-				<li>
-					<plants>
-						<li>AlocasiaBlossom,8</li>
-					</plants>
-					<chance>0.8</chance>
-				</li>
-				-->
 			</floraOptions>
 			<terrainOptions>
 				<li>TiberiumPodSoil</li>
@@ -167,6 +159,13 @@
 				<li>TiberiumPod</li>
 			</crystalOptions>
 		</tiberiumFieldRules>
+		<spore>
+			<spawnInterval>30000~90000</spawnInterval>
+			<blossoms>
+				<li>SmallBlossom,0.75</li>
+				<li>AlocasiaBlossom,0.75</li>
+			</blossoms>
+		</spore>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="BlossomTreeBase">
@@ -246,6 +245,13 @@
 				<li>TiberiumPodBlue</li>
 			</crystalOptions>
 		</tiberiumFieldRules>
+		<spore>
+			<spawnInterval>30000~90000</spawnInterval>
+			<blossoms>
+				<li>SmallBlossom,0.65</li>
+				<li>AlocasiaBlossom,0.85</li>
+			</blossoms>
+		</spore>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef Name="SmallBlossomBase" ParentName="BlossomTreeBase" Abstract="True">

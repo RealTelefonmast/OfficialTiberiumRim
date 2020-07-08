@@ -9,11 +9,29 @@ namespace TiberiumRim
 {
     public class EventLetter : StandardLetter
     {
-        private List<EventDef> events;
+        private List<EventDef> events = new List<EventDef>();
+
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Collections.Look(ref events, "events");
+        }
+
+
+        public override void Received()
+        {
+            base.Received();
+        }
 
         public void AddEvents(List<EventDef> events)
         {
-            this.events = events;
+            this.events.AddRange(events);
+        }
+
+        public void AddEvent(EventDef eventDef)
+        {
+            events.Add(eventDef);
         }
 
         public override IEnumerable<DiaOption> Choices

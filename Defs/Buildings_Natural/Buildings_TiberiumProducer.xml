@@ -76,6 +76,7 @@
 		<leaveTiberium>true</leaveTiberium>
 		<leavesThing>DeadGreenCrater</leavesThing>
 		<canBeGroundZero>true</canBeGroundZero>
+		<growsBlossomTree>true</growsBlossomTree>
 		<tiberiumFieldRules>
 			<floraOptions>
 				<li>
@@ -109,20 +110,6 @@
 					</plants>
 					<chance>0.65</chance>
 				</li>
-				<!--
-				<li>
-					<plants>
-						<li>SmallBlossom,10</li>
-					</plants>
-					<chance>0.7</chance>
-				</li>
-				<li>
-					<plants>
-						<li>AlocasiaBlossom,8</li>
-					</plants>
-					<chance>0.8</chance>
-				</li>
-				-->
 			</floraOptions>
 			<terrainOptions>
 				<li>TiberiumSoilGreen,0.60</li>
@@ -133,15 +120,6 @@
 			</crystalOptions>
 		</tiberiumFieldRules>
 		<!--
-		<spore>
-			<canBeGroundZero>true</canBeGroundZero>
-		
-			<blossoms>
-				<li>SmallBlossom,0.75</li>
-				<li>AlocasiaBlossom,0.75</li>
-				<li>BlossomTree,0.5</li>
-			</blossoms>
-		</spore>
 		<evolutions>
 			<TiberiumCraterHybrid>0.3</TiberiumCraterHybrid>
 			<TiberiumCruentus>0.01</TiberiumCruentus>
@@ -268,20 +246,12 @@
 		<leaveTiberium>true</leaveTiberium>
 		<leavesThing>DeadGreenCrater</leavesThing>
 		<!--
-		<spore>
-			<canBeGroundZero>true</canBeGroundZero>
-			<blossoms>
-				<li>SmallBlossom,0.5</li>
-				<li>AlocasiaBlossom,0.5</li>
-				<li>BlossomTree,0.25</li>
-				<li>BlueBlossomTree,0.25</li>
-			</blossoms>
-		</spore>
 		<evolutions>
 			<TiberiumCraterHybrid>0.3</TiberiumCraterHybrid>
 			<TiberiumCruentus>0.01</TiberiumCruentus>
 		</evolutions>
 		-->
+		<growsBlossomTree>true</growsBlossomTree>
 		<canBeGroundZero>true</canBeGroundZero>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
@@ -315,18 +285,6 @@
 						<li>TiberiumTree,4</li>
 					</plants>
 					<chance>0.65</chance>
-				</li>
-				<li>
-					<plants>
-						<li>SmallBlossom,12</li>
-					</plants>
-					<chance>0.7</chance>
-				</li>
-				<li>
-					<plants>
-						<li>AlocasiaBlossom,10</li>
-					</plants>
-					<chance>0.8</chance>
 				</li>
 			</floraOptions>
 			<terrainOptions>
@@ -457,6 +415,14 @@
 		<daysToMature>15</daysToMature>
 		<leaveTiberium>true</leaveTiberium>
 		<leavesThing>DeadBlueCrater</leavesThing>
+		<spore>
+			<blossoms>
+				<li>SmallBlossom,0.5</li>
+				<li>AlocasiaBlossom,0.75</li>
+				<li>BlossomTree,0.25</li>
+				<li>BlueBlossomTree,0.5</li>
+			</blossoms>
+		</spore>
 		<!--
 		<spore>
 			<canBeGroundZero>true</canBeGroundZero>
@@ -472,6 +438,7 @@
 			<RedTiberiumShard>0.01</RedTiberiumShard>
 		</evolutions>
 		-->
+		<growsBlossomTree>true</growsBlossomTree>
 		<canBeGroundZero>true</canBeGroundZero>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
@@ -504,18 +471,6 @@
 						<li>TiberiumTree,4</li>
 					</plants>
 					<chance>0.65</chance>
-				</li>
-				<li>
-					<plants>
-						<li>SmallBlossom,12</li>
-					</plants>
-					<chance>0.7</chance>
-				</li>
-				<li>
-					<plants>
-						<li>AlocasiaBlossom,10</li>
-					</plants>
-					<chance>0.8</chance>
 				</li>
 			</floraOptions>
 			<terrainOptions>
@@ -688,6 +643,20 @@
 			<drawOffset>(0,0,-0.25)</drawOffset>
 		</extraData>
 		<comps>
+			<li Class="TiberiumRim.CompProperties_FX">
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/TiberiumMonolith/Underlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawRotated>false</drawRotated>
+							<drawSize>(8,8)</drawSize>
+						</data>				
+						<altitude>Floor</altitude>
+					</li>
+				</overlays>
+			</li>
 			<li Class="CompProperties_HeatPusher">
 				<heatPerSecond>20</heatPerSecond>
 				<heatPushMaxTemperature>207</heatPushMaxTemperature>
@@ -733,7 +702,7 @@
 		<size>(3,2)</size>
 		<filthLeaving>FilthTiberiumRed</filthLeaving>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX">
+			<li Class="TiberiumRim.CompProperties_FX"> 
 				<effecters>
 					<li>
 						<burstCount>2~3</burstCount>
@@ -755,8 +724,6 @@
 						<speed>0</speed>
 					</li>
 				</effecters>
-			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>

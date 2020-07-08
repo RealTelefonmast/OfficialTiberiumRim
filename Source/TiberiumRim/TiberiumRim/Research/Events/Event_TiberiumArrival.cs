@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using RimWorld;
@@ -10,6 +12,14 @@ namespace TiberiumRim
 {
     public class Event_TiberiumArrival : BaseEvent
     {
+        protected override float WeightForMap(Map map)
+        {
+            var baseVal = base.WeightForMap(map);
+            if (map.TileInfo.Rivers != null)
+                return baseVal * 10;
+            return baseVal;
+        }
+
         public override void EventAction()
         {
             base.EventAction();
@@ -38,15 +48,27 @@ namespace TiberiumRim
         {
             return CellFinderLoose.TryFindSkyfallerCell(skyfaller.skyfallerDef, map, out foundCell, 20, default(IntVec3), -1, true, true, false, true, false, true, delegate (IntVec3 x)
             {
-                //if (x.GetTiberium(map) != null) return false;
-                TerrainDef terrain = x.GetTerrain(map);
-                if (terrain.driesTo != null)
-                    return false;
+                if (x.Fogged(map)) return false;
+                if (x.InNoBuildEdgeArea(map)) return false;
+                //if (!x.Standable(map)) return false;
 
+                //Check acceptable terrain
+                TerrainDef terrain = x.GetTerrain(map);
+                if (terrain.driesTo != null) return false;
+                if (terrain.IsStone()) return false;
+                if (terrain.affordances.Contains(DefDatabase<TerrainAffordanceDef>.GetNamed("Bridgeable"))) return false;
+
+                //Check blocking things
+                var thingList = x.GetThingList(map);
+                if (thingList.Any(t => t.def.IsEdifice() || t is TiberiumCrystal)) return false;
+
+                //Try prefer river cells
                 bool tryRiver = !map.TileInfo.Rivers.NullOrEmpty();
-                MapComponent_TiberiumWater river = map.GetComponent<MapComponent_TiberiumWater>();
-                if (tryRiver && river.LandableCells.Contains(x))
-                    return false;
+                if (tryRiver)
+                {
+                    MapComponent_TiberiumWater river = map.GetComponent<MapComponent_TiberiumWater>();
+                    if (!river.landableCells[x]) return false;
+                }
 
                 //Min Distance From Other Craters
                 List<Thing> things = map.listerThings.ThingsOfDef(skyfaller.innerThing);
@@ -54,8 +76,8 @@ namespace TiberiumRim
                 if (!things.NullOrEmpty())
                     min = things.Min(d => d.Position.DistanceTo(x));
                 if (min < 46f) return false;
-
-                return true;
+                
+                return GenAdj.CellsOccupiedBy(x, Rot4.North, new IntVec2(4, 4)).All(c => c.Standable(map));
             });
         }
     }

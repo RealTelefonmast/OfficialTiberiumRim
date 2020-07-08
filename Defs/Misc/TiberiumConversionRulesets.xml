@@ -10,6 +10,10 @@
 			<li>TerrainFilter_Sand,	 TiberiumSandGreen,		TiberiumShardsGreen</li>
 			<li>TerrainFilter_Stone, TiberiumStoneGreen,	TiberiumMossGreen</li>
 			<li>Concrete, 			 InfestedConcrete,      TiberiumShardsGreen</li>
+			
+			<li>TerrainFilter_WaterDeep,    TiberiumDeepWater,   		  TiberiumGlacier</li>
+			<li>TerrainFilter_WaterShallow, TiberiumShallowWater,		  TiberiumGlacier</li>
+			<li>TerrainFilter_WaterMoving,  TiberiumWaterMovingChestDeep, TiberiumGlacier</li>
 		</conversions>
 		<floraConversions>
 			<li>PlantFilter_Trees, 	FloraOptions_Trees, 	TerrainOption_Flora</li>
@@ -25,6 +29,10 @@
 			<li>SoilRich, 			 TiberiumPodSoilBlue,	TiberiumPodBlue</li>
 			<li>TerrainFilter_Sand,	 TiberiumSandBlue,		TiberiumShardsBlue</li>
 			<li>TerrainFilter_Stone, TiberiumStoneBlue,		TiberiumMossBlue</li>
+			
+			<li>TerrainFilter_WaterDeep,    TiberiumDeepWater,   		  TiberiumGlacier</li>
+			<li>TerrainFilter_WaterShallow, TiberiumShallowWater,		  TiberiumGlacier</li>
+			<li>TerrainFilter_WaterMoving,  TiberiumWaterMovingChestDeep, TiberiumGlacier</li>
 		</conversions>
 	</TiberiumRim.TiberiumConversionRulesetDef>
 	

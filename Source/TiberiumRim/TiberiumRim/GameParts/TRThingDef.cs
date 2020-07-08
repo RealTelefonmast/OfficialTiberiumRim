@@ -28,6 +28,9 @@ namespace TiberiumRim
         public TerrainDef makesTerrain;
         public TRThingDef leavesThing;
 
+        //
+        public List<ConditionalStatModifier> conditionalStatOffsets;
+
         public bool hidden = false;
         public bool devObject = false;
         public bool clearTiberium = false;

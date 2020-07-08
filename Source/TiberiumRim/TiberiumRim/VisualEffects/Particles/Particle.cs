@@ -10,6 +10,69 @@ using System.Collections;
 
 namespace TiberiumRim
 {
+    public class Particle2 : IParticle, IExposable
+    {
+        public readonly ParticleDef def;
+        protected readonly Vector3 exactPos;
+        protected Graphic graphicInt;
+
+        public bool ShouldMove { get; }
+        public bool ShouldFinalize { get; }
+        public Vector3 ExactPos => throw new NotImplementedException();
+        public IntVec3 CellPos => throw new NotImplementedException();
+        public Vector3 DirectionVector { get; set; }
+
+        public Particle2(ParticleDef def)
+        {
+            this.def = def;
+        }
+
+        public void ExposeData()
+        {
+
+        }
+
+        public Graphic Graphic => def.graphicData.Graphic;
+
+        public virtual void PreSpawn(Map map, IntVec3 cell)
+        {
+
+        }
+
+        public virtual void Spawn(Map map)
+        {
+
+        }
+
+        public virtual void Despawn()
+        {
+
+        }
+
+        public void DoInitEvent()
+        {
+        }
+
+        public void DoFinalEvent()
+        {
+        }
+
+        public virtual void Update()
+        {
+
+        }
+
+        public virtual void Tick()
+        {
+
+        }
+
+        public virtual void Draw()
+        {
+
+        }
+    }
+
     public class Particle : Entity, IExposable
     {
         public ParticleDef def;

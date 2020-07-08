@@ -84,7 +84,8 @@ namespace TiberiumRim
 
         public bool Finished => Math.Abs(ProgressPct - 1) <= 0;
         public float ProgressPct => ((GenTicks.TicksGame - startTick) * speed)/(float)mutationTicks;
-        public float CurrentRadius => maxRadius * ProgressPct;
+        public float MaxRadius => maxRadius;
+        public float CurrentRadius => MaxRadius * ProgressPct;
 
         public void Tick()
         {
@@ -114,7 +115,7 @@ namespace TiberiumRim
             void Action(IntVec3 c)
             {
                 float curDist = center.DistanceTo(c);
-                if (curDist > maxRadius)
+                if (curDist > MaxRadius)
                     maxRadius = curDist;
             }
             TiberiumFloodInfo flooder = new TiberiumFloodInfo(map, Predicate, Action);
@@ -159,8 +160,8 @@ namespace TiberiumRim
             //float chance = 1f - Mathf.InverseLerp(0f, maxRadius, distance);
 
             //if (!TRUtils.Chance(ruleset.ChanceFor() * terrain.plantChanceFactor)) return;
-            TRThingDef flora = ruleset.PlantAt(distance, maxRadius);
-            if (!TRUtils.Chance(ruleset.ChanceFor(flora, distance, maxRadius) * terrain.plantChanceFactor)) return;
+            TRThingDef flora = ruleset.PlantAt(distance, MaxRadius);
+            if (!TRUtils.Chance(ruleset.ChanceFor(flora, distance, MaxRadius) * terrain.plantChanceFactor)) return;
 
             if (flora == null) return;
             Thing plant = ThingMaker.MakeThing(flora);

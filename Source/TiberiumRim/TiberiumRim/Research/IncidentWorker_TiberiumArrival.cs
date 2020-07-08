@@ -49,7 +49,7 @@ namespace TiberiumRim
                             return false;
                         bool tryRiver = !map.TileInfo.Rivers.NullOrEmpty();
                         MapComponent_TiberiumWater river = map.GetComponent<MapComponent_TiberiumWater>();
-                        if (tryRiver && (!river.RiverCells.Any(c => c.InHorDistOf(x, 10f)) || river.RiverCells.Any(c => c.DistanceTo(x) < 5f)))
+                        if (tryRiver && (!river.riverCells.ActiveCells.Any(c => c.InHorDistOf(x, 10f)) || river.riverCells.ActiveCells.Any(c => c.DistanceTo(x) < 5f)))
                             return false;
                         List<Thing> things = map.listerThings.ThingsOfDef(innerThing);
                         float min = 99;

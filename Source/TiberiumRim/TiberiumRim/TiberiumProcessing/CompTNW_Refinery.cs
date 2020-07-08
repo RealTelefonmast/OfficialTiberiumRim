@@ -113,6 +113,15 @@ namespace TiberiumRim
             }
         }
 
+        public override string CompInspectStringExtra()
+        {
+            string str = base.CompInspectStringExtra();
+            str += "\n Valuable Crystals: " + TiberiumManager.TiberiumInfo.TiberiumCrystals[HarvestType.Valuable].Count;
+            str += "\n Unvalubale Crystals: " + TiberiumManager.TiberiumInfo.TiberiumCrystals[HarvestType.Unvaluable].Count;
+            str += "\n Unharvestable Crystals: " + TiberiumManager.TiberiumInfo.TiberiumCrystals[HarvestType.Unharvestable].Count;
+            return str; //base.CompInspectStringExtra();
+        }
+
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
             foreach (Gizmo gizmo in base.CompGetGizmosExtra())

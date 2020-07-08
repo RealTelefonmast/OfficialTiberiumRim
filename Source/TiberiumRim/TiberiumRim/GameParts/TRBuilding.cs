@@ -60,7 +60,7 @@ namespace TiberiumRim
         public override string GetInspectString()
         {
             string str = base.GetInspectString();
-            if (IsDiscoverable)
+            if (IsDiscoverable && !Discovered)
                 str += "\n"+"TR_NotDiscovered".Translate();
 
             return str;

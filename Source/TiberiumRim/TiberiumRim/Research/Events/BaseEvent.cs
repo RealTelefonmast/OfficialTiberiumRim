@@ -15,6 +15,11 @@ namespace TiberiumRim
         private int startTick = 0;
         private int endTick = 0;
 
+        public LookTargets EventTargets { get; set; }
+
+        protected virtual Map MapForEvent => Find.Maps.Where(m => m.IsPlayerHome).RandomElementByWeight(WeightForMap);
+
+
         public void ExposeData()
         {
             Scribe_Defs.Look(ref def, "def");
@@ -66,9 +71,10 @@ namespace TiberiumRim
             return ShouldFinishNow(curTick);
         }
 
-        public LookTargets EventTargets { get; set; }
-
-        public Map MapForEvent => Find.Maps.Where(m => m.IsPlayerHome).RandomElementByWeight(StorytellerUtility.DefaultThreatPointsNow);
+        protected virtual float WeightForMap(Map map)
+        {
+            return StorytellerUtility.DefaultThreatPointsNow(map);
+        }
 
         public string[] DescArguments => null;
 
