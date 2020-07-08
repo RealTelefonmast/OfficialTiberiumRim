@@ -22,10 +22,12 @@ namespace TiberiumRim
 
     }
 
-    public class EventTrigger
+    public class EventTriggerDef : Def
     {
         public TargetProperties targets;
         public List<HediffDef> hediffs;
+
+        public List<EventDef> eventsToTrigger;
     }
 
 
@@ -35,7 +37,6 @@ namespace TiberiumRim
         public List<TResearchDef> unlocksResearch = new List<TResearchDef>();
 
         public Type eventClass = typeof(BaseEvent);
-        public EventTrigger trigger;
         public DiscoveryProperties discoveries;
         public LetterProperties letter;
 

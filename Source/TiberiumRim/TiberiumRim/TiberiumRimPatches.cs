@@ -11,6 +11,7 @@ using RimWorld.BaseGen;
 using Verse;
 using Verse.AI.Group;
 using System.Collections;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
@@ -247,6 +248,89 @@ namespace TiberiumRim
                                 icon = ContentFinder<Texture2D>.Get("UI/Icons/Controls/Weapon_SwitchAmmo")
                             };
                         }
+                    }
+                }
+                yield break;
+            }
+        }
+
+        //Adding Conditional Stats
+        [HarmonyPatch(typeof(StatWorker))]
+        [HarmonyPatch("StatOffsetFromGear")]
+        public static class StatOffsetFromGearPatch
+        {
+            public static float Postfix(float value, Thing gear, StatDef stat)
+            {
+                if (!(gear.def is TRThingDef trDef)) return value;
+                if (trDef.conditionalStatOffsets.NullOrEmpty()) return value;
+                if (!trDef.conditionalStatOffsets.Any(s => s.AffectsStat(stat))) return value;
+                Pawn pawn = null;
+                if (gear is Apparel ap)
+                    pawn = ap.Wearer;
+
+                var compEquip = gear.TryGetComp<CompEquippable>();
+                if (compEquip != null)
+                    pawn = compEquip.PrimaryVerb.CasterPawn;
+                
+                if (pawn == null) return value;
+                return value + trDef.conditionalStatOffsets.GetStatOffsetFromList(stat, pawn);
+            }
+        }
+
+        [HarmonyPatch(typeof(StatWorker))]
+        [HarmonyPatch("GearAffectsStat")]
+        public static class GearAffectsStatPatch
+        {
+            public static bool Postfix(bool value, ThingDef gearDef, StatDef stat)
+            {
+                if (gearDef is TRThingDef trDef)
+                {
+                    if (trDef.conditionalStatOffsets.NullOrEmpty()) return value;
+                    return value || trDef.conditionalStatOffsets.Any(c => c.AffectsStat(stat));
+                }
+                return value;
+            }
+        }
+
+        [HarmonyPatch(typeof(Pawn_ApparelTracker))]
+        [HarmonyPatch("Notify_ApparelAdded")]
+        public static class Notify_ApparelAddedPatch
+        {
+            public static void Postfix(Apparel apparel, Pawn_ApparelTracker __instance)
+            {
+               if(apparel.def is TRThingDef trDef && !trDef.conditionalStatOffsets.NullOrEmpty())
+                   __instance.pawn.health.capacities.Notify_CapacityLevelsDirty();
+            }
+        }
+
+        [HarmonyPatch(typeof(Pawn_ApparelTracker))]
+        [HarmonyPatch("Notify_ApparelRemoved")]
+        public static class Notify_ApparelRemovedPatch
+        {
+            public static void Postfix(Apparel apparel, Pawn_ApparelTracker __instance)
+            {
+                if (apparel.def is TRThingDef trDef && !trDef.conditionalStatOffsets.NullOrEmpty())
+                    __instance.pawn.health.capacities.Notify_CapacityLevelsDirty();
+            }
+        }
+
+        [HarmonyPatch(typeof(ThingDef))]
+        [HarmonyPatch("SpecialDisplayStats")]
+        public static class SpecialDisplayStatsPatch
+        {
+            public static IEnumerable<StatDrawEntry> Postfix(IEnumerable<StatDrawEntry> values, ThingDef __instance)
+            {
+                foreach (var entry in values)
+                {
+                    yield return entry;
+                }
+
+                if (__instance is TRThingDef trDef)
+                {
+                    if (trDef.Verbs.Any(verb => verb is VerbProperties_TR))
+                    {
+                        VerbProperties_TR verb = (VerbProperties_TR)__instance.Verbs.First(x => x.isPrimary);
+
                     }
                 }
                 yield break;

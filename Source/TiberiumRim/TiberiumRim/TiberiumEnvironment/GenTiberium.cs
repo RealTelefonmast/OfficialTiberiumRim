@@ -78,6 +78,7 @@ namespace TiberiumRim
             return true;
         }
 
+        //Used when attempting to spawn tiberium at a random position
         public static bool TrySpawnTiberium(IntVec3 pos, Map map, TiberiumCrystalDef def, TiberiumProducer parent = null)
         {
             if (!pos.IsValid || !pos.InBounds(map)) return false;
@@ -99,7 +100,7 @@ namespace TiberiumRim
                 return false;
             }
             var plant = pos.GetPlant(map);
-            if (plant != null && TryMutatePlant(plant, def)) return false;
+            if (plant != null && !plant.IsTiberiumPlant() && TryMutatePlant(plant, def)) return false;
 
             SetTerrain(pos, map, topTerrain, underTerrain);
             Spawn(pos, map, crystalDef, parent);
@@ -138,7 +139,17 @@ namespace TiberiumRim
             return plant;
         }
 
+        //Used when the position is known and valid
+        public static TiberiumCrystal SpawnTiberium(IntVec3 pos, Map map, TiberiumCrystalDef def, TiberiumProducer parent = null)
+        {
+            def.SpreadOutcomesAt(pos, map, out TerrainDef topTerrain, out TerrainDef underTerrain, out TiberiumCrystalDef crystalDef);
+            SetTerrain(pos, map, topTerrain, underTerrain);
+            var plant = pos.GetPlant(map);
+            if (plant != null && !plant.IsTiberiumPlant() && TryMutatePlant(plant, def)) return null;
+            return Spawn(pos, map, crystalDef, parent);
+        }
 
+        //Spawns Tiberium directly at the position
         public static TiberiumCrystal Spawn(IntVec3 pos, Map map, TiberiumCrystalDef def, TiberiumProducer parent = null)
         {
             TiberiumCrystal newCrystal = (TiberiumCrystal)ThingMaker.MakeThing(def);
@@ -234,19 +245,17 @@ namespace TiberiumRim
         //Static Bools n' Checks
         public static bool CanBeHarvestedBy(this TiberiumCrystal crystal, Harvester harvester)
         {
-            //TODO: Multiple reservations
             if (!crystal.Map.reservationManager.CanReserve(harvester, crystal))
                 return false;
 
-            var def = crystal.def;
-            if (def.HarvestType == HarvestType.Unharvestable)
+            if (crystal.def.HarvestType == HarvestType.Unharvestable)
                 return false;
 
             return harvester.harvestMode switch
             {
-                HarvestMode.Nearest => !def.IsMoss,
-                HarvestMode.Value => (def == crystal.TiberiumMapComp.TiberiumInfo.MostValuableType),
-                HarvestMode.Moss => def.IsMoss,
+                HarvestMode.Nearest => !crystal.def.IsMoss,
+                HarvestMode.Value => (crystal.def == crystal.TiberiumMapComp.TiberiumInfo.MostValuableType),
+                HarvestMode.Moss => crystal.def.IsMoss,
                 _ => false
             };
         }
@@ -257,6 +266,11 @@ namespace TiberiumRim
         }
 
         //Support Bools
+        public static bool SupportsTiberium(this IntVec3 c, Map map)
+        {
+            return GenTiberium.CanGrowTo(c, map);
+        }
+
         public static bool SupportsTiberiumTerrain(this IntVec3 c, Map map)
         {
             return c.InBounds(map) && c.GetTerrain(map) is TerrainDef terrain && !terrain.HasTag("Water") && !terrain.IsStone();
@@ -265,6 +279,11 @@ namespace TiberiumRim
         public static bool SupportsBlossom(this IntVec3 c, Map map)
         {
             return c.InBounds(map) && !c.Fogged(map) && !c.Roofed(map) && c.Standable(map) && TiberiumDefOf.TerrainFilter_Soil.AllowsTerrainDef(c.GetTerrain(map));
+        }
+
+        public static bool CanSendSporeTo(this IntVec3 c, Map map, TiberiumCrystalDef def)
+        {
+            return !c.InBounds(map) && !c.Roofed(map) && !c.Fogged(map) && def.CanSpreadTo(c, map, out _, out _);
         }
 
         //Grid Bools
@@ -329,91 +348,5 @@ namespace TiberiumRim
         {
             return TiberiumDefOf.TerrainFilter_Stone.AllowsTerrainDef(def);
         }
-    }
-
-    public static class GenTiberium2
-    {
-        //TODO: Tiberium Pods ignore flora and tiberium garden
-        //TODO: Make BlossomTrees to TiberiumGardens by default
-                
-        /*Main Tiberium Spread
-        public static bool TrySpreadTiberium(TiberiumCrystal crystal, bool insideProducer = false)
-        {
-            TerrainSupport support = null;
-            IntVec3 hiddenTerrainPos = IntVec3.Invalid;
-
-            bool Predicate(IntVec3 c) => crystal.def.CanSpreadTo(c, crystal.Map, out support, out hiddenTerrainPos, insideProducer, crystal.Parent);
-            if(CellFinder.TryFindRandomCellNear(crystal.Position, crystal.Map, (int)crystal.def.tiberium.spreadRadius, Predicate, out IntVec3 pos, 8))
-            {
-                if (support == null) return false;
-                Plant plant = pos.GetPlant(crystal.Map);
-                if (plant != null)
-                {
-                    if (insideProducer)
-                    {
-                        plant.DeSpawn();
-                    }
-                    else if ((crystal.TiberiumMapComp.TiberiumInfo.FloraGrid.growBools[pos] || TRUtils.Chance(crystal.def.tiberium.plantMutationChance)))
-                    {
-                        var defName = plant.def.defName;
-                        var newPlant = GetTiberiumPlant(defName, out bool bloss);
-                        if (crystal.def.plantTerrain != null)
-                            crystal.Map.terrainGrid.SetTerrain(pos, crystal.def.plantTerrain);
-                        GenSpawn.Spawn(newPlant, pos, crystal.Map);
-                        return false;
-                    }
-                }
-                Spawn(support.CrystalOutcome, crystal.Parent, pos, crystal.Map);
-
-                return true;
-            }
-            if (hiddenTerrainPos.IsValid && support != null)
-            {
-                crystal.Map.terrainGrid.SetTerrain(hiddenTerrainPos, support.TerrainOutcome);
-            }
-            return false;
-        }
-        */
-
-
-        public static bool CellInRange(IntVec3 origin, float radius, Predicate<IntVec3> pred, out IntVec3 pos)
-        {
-            pos = IntVec3.Invalid;
-            int square = (int)radius * (int)radius;
-            int i = 0;
-            while(i < square && !pred(pos))
-            {
-                pos = RandCellRange(origin, radius);
-                i++;
-            }
-            return pos.IsValid;
-        }
-
-        public static IntVec3 RandCellRange(IntVec3 origin, float radius)
-        {
-            int off = Mathf.CeilToInt(TRUtils.Range(1, radius));
-            float rad = TRUtils.Range(0, 360);
-            Vector3 offset = new Vector3(off, 0, 0);
-            Vector3 pos = origin.ToVector3();
-            pos += Quaternion.Euler(0, rad, 0) * offset;
-            return pos.ToIntVec3();
-        }
-
-        //Blossoms
-        public static TiberiumProducerDef RandomSmallBlossom()
-        {
-            return TRUtils.Chance(0.75f) ? TiberiumDefOf.SmallBlossom : TiberiumDefOf.AlocasiaBlossom;
-        }
-
-        public static TiberiumProducerDef RandomBlossom()
-        {
-            if (TRUtils.Chance(0.05f))
-                return TRUtils.Chance(0.45f) ? TiberiumDefOf.BlueBlossomTree : TiberiumDefOf.BlossomTree;
-            return TRUtils.Chance(0.5f) ? TiberiumDefOf.AlocasiaBlossom : TiberiumDefOf.SmallBlossom;
-        }
-
-
-
-
     }
 }

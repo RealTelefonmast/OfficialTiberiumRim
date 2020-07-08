@@ -39,11 +39,11 @@ namespace TiberiumRim
 
         //TODO: Implement event scanner
         //TODO: Trigger Events when certain things spawn/happen
-
-        public BaseEvent StartEvent(EventDef def)
+        public BaseEvent StartEvent(EventDef def, LookTargets targets = null)
         {
             BaseEvent baseEvent = (BaseEvent) Activator.CreateInstance(def.eventClass);
             baseEvent.StartEvent(def);
+            baseEvent.EventTargets = targets;
             allEvents.Add(baseEvent);
             currentEvents.Add(baseEvent.def, false);
             return baseEvent;

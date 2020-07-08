@@ -30,11 +30,11 @@ namespace TiberiumRim
 
         private bool isRootNode;
         private bool inParentRange;
-        private bool inSpreadRange;
+        private bool inSpreadRange = true;
         private bool dormantInt = false;
         private int generation;
 
-        private float spreadRange = -1;
+        private float parentSpreadRange = -1;
 
         public void PreSpawnSetup(TiberiumProducer parent, int gen = 0)
         {
@@ -49,17 +49,21 @@ namespace TiberiumRim
             growthPerTick = 1f / ((GenDate.TicksPerDay * def.tiberium.growDays) / GenTicks.TickLongInterval);
 
             TiberiumMapComp.RegisterTiberiumCrystal(this);
+            if (!respawningAfterLoad)
+            {
+                isRootNode = def.tiberium.smoothSpread || TRUtils.Chance(0.03f);
+            }
             if (!HasParent) return;
             if (!respawningAfterLoad)
             {
-                spreadRange = TRUtils.Range(parent.def.spawner.spreadRange);
+                parentSpreadRange = TRUtils.Range(parent.def.spawner.spreadRange);
             }
             parent.AddBoundCrystal(this);
 
             var distance = Position.DistanceTo(parent.Position);
             inParentRange = distance <= parent.GrowthRadius;
-            inSpreadRange = spreadRange < 0 || distance <= spreadRange;
-            isRootNode = def.tiberium.smoothSpread || inParentRange || TRUtils.Chance(0.03f);
+            inSpreadRange = parentSpreadRange < 0 || distance <= parentSpreadRange;
+            isRootNode |= inParentRange;
 
             if (inParentRange)
             {
@@ -85,23 +89,29 @@ namespace TiberiumRim
         {
             base.ExposeData();
             Scribe_Values.Look(ref growth, "growth");
-            Scribe_Values.Look(ref spreadRange, "spreadRange");
+            Scribe_Values.Look(ref parentSpreadRange, "spreadRange");
             Scribe_Values.Look(ref generation, "generation");
+            Scribe_Values.Look(ref isRootNode, "isRootNode");
+            Scribe_Values.Look(ref hasSpread, "hasSpread");
+            Scribe_Values.Look(ref dormantInt, "dormantInt");
             Scribe_References.Look(ref parent, "parent");
         }
 
         public TiberiumProducer Parent => parent;
 
+        //We track if the crystal already spread once
         public bool HasSpread => !isRootNode && hasSpread;
 
+        public bool IsSelfSufficient => !def.tiberium.needsParent || HasParent;
         public bool HasParent => !parent.DestroyedOrNull();
         public bool HarvestableNow => LifeStage != TiberiumLifeStage.Growing && def.tiberium.harvestValue > 0f;
         private bool NeedsTerrain => !Position.GetTerrain(Map).IsTiberiumTerrain();
         private bool ShouldSpread => !HasSpread && TiberiumMapComp.TiberiumInfo.CanGrowFrom(Position);
         private bool Suppressed => TiberiumMapComp.Suppression.IsInSuppressorField(Position);
+
         public bool Dormant
         {
-            get => dormantInt || !HasParent || Suppressed || !inSpreadRange;
+            get => dormantInt || !IsSelfSufficient || Suppressed || !inSpreadRange;
             set => dormantInt = value;
         }
 
@@ -115,12 +125,16 @@ namespace TiberiumRim
 
         public float GrowthPerTick => growthPerTick * GrowthRate;
 
+        [TweakValue("CrystalGrowth", 0f, 100f)]
+        public static int CrystalGrowthVal = 1;
+
         public virtual float GrowthRate
         {
             get
             {
                 float rate = 1f;
                 rate *= TiberiumRimSettings.settings.GrowthRate;
+                rate *= CrystalGrowthVal;
                 //rate *= Mathf.InverseLerp(def.tiberium.minTemperature, 2000, Map.mapTemperature.OutdoorTemp);
                 return rate;
             }

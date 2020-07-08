@@ -47,8 +47,8 @@ namespace TiberiumRim
 
         //SearchSettings
         public HarvestMode harvestMode = HarvestMode.Nearest;
-        public TiberiumProducer preferedField;
-        public TiberiumCrystalDef preferedType;
+        public TiberiumProducer preferredField;
+        public TiberiumCrystalDef preferredType;
 
         // ProgressBar
         private static readonly Material UnfilledMat = SolidColorMaterials.NewSolidColorMaterial(new Color(0.3f, 0.3f, 0.3f, 0.65f), ShaderDatabase.MetaOverlay);

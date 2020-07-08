@@ -18,16 +18,9 @@ namespace TiberiumRim
         private float mapRadius;
 
         private  static BoolGrid positionGrid;
-        private static List<IntVec3> positions;
-        private static bool shouldSpawn = true;
+        //private static List<IntVec3> positions;
 
-        //Different Sizes Get Different Rules
-        //1: Small; 2: Medium; 3: Large
-        //private List<IntVec3>[] positionsBySize;
-        //private IntVec3[][] availablePositionsBySize;
-        //private float[] radiusBySize;
-
-       public TiberiumBlossomInfo(Map map)
+        public TiberiumBlossomInfo(Map map)
         {
             this.map = map;
             drawer = new CellBoolDrawer(this, map.Size.x, map.Size.z, 0.4f);
@@ -36,10 +29,7 @@ namespace TiberiumRim
             blossomGrid = new BoolGrid(map);
 
             positionGrid = new BoolGrid(map);
-            positions = new List<IntVec3>();
-
-            //positionsBySize = new List<IntVec3>[3] {new List<IntVec3>(), new List<IntVec3>(), new List<IntVec3>()};
-            //radiusBySize = new float[3] {15f, 20f, 30f};
+            //positions = new List<IntVec3>();
 
             GetPositions();
         }
@@ -49,7 +39,21 @@ namespace TiberiumRim
             throw new NotImplementedException();
         }
 
-        public bool ShouldTrySpawn => shouldSpawn;
+        public bool ShouldTrySpawn { get; set; } = true;
+
+        public bool TryGetNewBlossom(out IntVec3 pos)
+        {
+            pos = IntVec3.Invalid;
+            if (!ShouldTrySpawn) return false;
+            if (positionGrid.TrueCount == 0)
+            {
+                ShouldTrySpawn = false;
+                return false;
+            }
+            pos = positionGrid.ActiveCells.RandomElement();
+            positionGrid.Set(pos, false);
+            return true;
+        }
 
         public bool GetCellBool(int index)
         {
@@ -67,15 +71,18 @@ namespace TiberiumRim
 
         public void RegisterBlossom(TiberiumBlossom blossom)
         {
-            blossomGrid.Set(blossom.Position, true);
-
+            if (!blossomGrid[blossom.Position])
+                blossomGrid.Set(blossom.Position, true);
+            //positionGrid.Set(blossom.Position, false);
 
         }
 
         public void DeregisterBlossom(TiberiumBlossom blossom)
         {
-            blossomGrid.Set(blossom.Position, false);
-
+            if(blossomGrid[blossom.Position])
+                blossomGrid.Set(blossom.Position, false);
+            if (!positionGrid[blossom.Position])
+                positionGrid.Set(blossom.Position, true);
 
         }
 
@@ -86,41 +93,35 @@ namespace TiberiumRim
 
         private void GetPositions()
         {
+            Predicate<IntVec3> BlossomCheck = delegate(IntVec3 c)
+            {
+                if (!c.Standable(map) || c.Fogged(map) || c.Roofed(map)) return false;
+                if (c.DistanceToEdge(map) <= 10) return false;
+                if (!TiberiumDefOf.TerrainFilter_Soil.AllowsTerrainDef(c.GetTerrain(map))) return false;
+                return true;
+            };
             Predicate<IntVec3> Predicate = c => c.InBounds(map);
             Action<IntVec3> Processor = delegate(IntVec3 c)
             {
-                var originalTerrain = c.GetTerrain(map);
-               // map.terrainGrid.SetTerrain(c, TiberiumTerrainDefOf.TiberiumSoilGreen);
-                if (!c.Standable(map) || c.Fogged(map) || c.Roofed(map)) return;
-               // map.terrainGrid.SetTerrain(c, TiberiumTerrainDefOf.TiberiumSoilBlue);
-                if (c.DistanceToEdge(map) <= 15) return;
-               // map.terrainGrid.SetTerrain(c, TiberiumTerrainDefOf.TiberiumSoilRed);
-                if (!TiberiumDefOf.TerrainFilter_Soil.AllowsTerrainDef(originalTerrain)) return;
-                //map.terrainGrid.SetTerrain(c, TiberiumTerrainDefOf.TiberiumPodSoilBlue);
-                if (!HasConflict(-1, c))
-                {
-                    //map.terrainGrid.SetTerrain(c, TiberiumTerrainDefOf.TiberiumIce);
-                    positions.Add(c);
+                if (!HasConflict(c))
                     positionGrid.Set(c, true);
-                }
             };
             map.floodFiller.FloodFill(map.Center, Predicate, Processor);
-
-            int trueCount = 0;
-            for (var i = positions.Count - 1; i >= 0; i--)
+            var cachedList = positionGrid.ActiveCells.ToList();
+            foreach (var cell in cachedList)
             {
-                if (Rand.Chance(0.5f))
-                {
-                    trueCount++;
-                    positionGrid.Set(positions[i], false);
-                    positions.RemoveAt(i);
-                }
+                positionGrid.Set(cell, false);
+                if (Rand.Chance(0.5f)) continue;
+                var cells = GenRadial.RadialCellsAround(cell, 15, 20).Where(c => BlossomCheck(c)).ToList();
+                if (cells.NullOrEmpty()) continue;
+                var rand = cells.RandomElement();
+                positionGrid.Set(rand, true);
             }
         }
 
-        private bool HasConflict(int size, IntVec3 pos)
+        private bool HasConflict(IntVec3 pos)
         {
-            return positions.Any(c => pos.DistanceTo(c) < 35f); //positionsBySize[size].Any(c => c.DistanceTo(pos) < radiusBySize[size]);
+            return positionGrid.ActiveCells.Any(c => pos.DistanceTo(c) < 30f); //positionsBySize[size].Any(c => c.DistanceTo(pos) < radiusBySize[size]);
         }
 
         //Get The Percentual Value Of The Position Based On The Distance From Center To Edge

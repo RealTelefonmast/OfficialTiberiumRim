@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -13,7 +14,7 @@ namespace TiberiumRim
     {
         private readonly TiberiumProducer producer;
         private List<TiberiumCrystal> tiberium = new List<TiberiumCrystal>();
-        private readonly List<IntVec3> fieldCells       = new List<IntVec3>();
+        private CellArea fieldCellArea;
 
         //FastGrowth
         private readonly List<TiberiumCrystal> crystalsToGrow = new List<TiberiumCrystal>();
@@ -29,20 +30,23 @@ namespace TiberiumRim
         public TiberiumField(TiberiumProducer producer)
         {
             this.producer = producer;
+            fieldCellArea = new CellArea(producer.Map);
         }
 
         public TiberiumField(TiberiumProducer producer, List<TiberiumCrystal> crystals)
         {
             this.producer = producer;
             this.tiberium = crystals;
+            fieldCellArea = new CellArea(producer.Map);
         }
 
         public void ExposeData()
         {
             Scribe_Collections.Look(ref tiberium, "tiberiumList", LookMode.Reference);
+            Scribe_Deep.Look(ref fieldCellArea, "fieldCells");
         }
 
-        public List<IntVec3> FieldCells => fieldCells;
+        public List<IntVec3> FieldCells => fieldCellArea.Cells;
 
         private int iterationTicks = 0;
 
@@ -62,7 +66,7 @@ namespace TiberiumRim
 
         public void AddFieldCell(IntVec3 cell, Map map)
         {
-            fieldCells.Add(cell);
+            fieldCellArea.Add(cell);
             if (producer.TiberiumTypes.EnumerableNullOrEmpty()) return;
             foreach (var type in producer.TiberiumTypes)
             {
@@ -72,7 +76,7 @@ namespace TiberiumRim
 
         public void RemoveFieldCell(IntVec3 cell, Map map)
         {
-            fieldCells.Remove(cell);
+            fieldCellArea.Remove(cell);
             foreach (var type in producer.TiberiumTypes)
             {
                 map.Tiberium().TiberiumInfo.SetFieldColor(cell, false, type.TiberiumValueType);
@@ -117,7 +121,7 @@ namespace TiberiumRim
         public string InspectString()
         {
             string fieldString = "Tiberium Field:";
-            fieldString += "\nField Size: " + fieldCells.Count;
+            fieldString += "\nField Size: " + fieldCellArea.Count;
             fieldString += "\nTiberium Crystals: " + tiberium.Count;
             fieldString += "\nGrowing Crystals: " + crystalsToGrow.Count;
             fieldString += "\nFast Growth Enabled: " + fastGrowth;
@@ -131,7 +135,7 @@ namespace TiberiumRim
         public void DrawField()
         {
             if(drawField)
-                GenDraw.DrawFieldEdges(fieldCells, Color.green);
+                GenDraw.DrawFieldEdges(FieldCells, Color.green);
         }
 
         public IEnumerable<Gizmo> Gizmos()

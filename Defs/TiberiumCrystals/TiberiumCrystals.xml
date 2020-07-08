@@ -623,6 +623,7 @@
 				<min>5</min>
 				<max>5</max>
 			</buildingDamage>
+			<needsParent>false</needsParent>
 			<smoothSpread>true</smoothSpread>
 			<plantMutationChance>0</plantMutationChance>
 			<growDays>4</growDays>

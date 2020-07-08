@@ -12,10 +12,12 @@ namespace TiberiumRim
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
+            TiberiumComp.BlossomInfo.RegisterBlossom(this);
         }
 
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
         {
+            TiberiumComp.BlossomInfo.DeregisterBlossom(this);
             base.DeSpawn(mode);
         }
 

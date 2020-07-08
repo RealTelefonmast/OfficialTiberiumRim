@@ -48,6 +48,14 @@ namespace TiberiumRim
             return world.GetComponent<WorldComponent_TR>();
         }
 
+        public static EventLetter SendEventLetter(this LetterStack stack, TaggedString eventLabel, TaggedString eventDesc, EventDef eventDef, LookTargets targets = null)
+        {
+            EventLetter letter = (EventLetter)LetterMaker.MakeLetter(eventLabel, eventDesc, TiberiumDefOf.EventLetter, targets);
+            letter.AddEvent(eventDef);
+            stack.ReceiveLetter(letter);
+            return letter;
+        }
+
         public static ThingDef VeinCorpseDef(this Pawn pawn)
         {
             ThingDef raceDef = pawn.def;
@@ -156,6 +164,13 @@ namespace TiberiumRim
         public static bool IsPlayerControlledMech(this Thing thing)
         {
             return thing is MechanicalPawn p && (p.Faction?.IsPlayer ?? false);
+        }
+
+        public static float GetStatOffsetFromList(this List<ConditionalStatModifier> list, StatDef stat, Pawn pawn)
+        {
+            if (list == null) return 0;
+            Log.Message("Cond List not empty, getting values");
+            return list.Select(t => t.StatOffsetForStat(stat, pawn)).Sum();
         }
 
         public static void GetTiberiumMutant(Pawn pawn, out Graphic Head, out Graphic Body)

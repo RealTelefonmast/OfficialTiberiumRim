@@ -153,7 +153,7 @@
 		</weaponTags>
 	</ThingDef>
 
-	<ThingDef ParentName="GDI_Gun">
+	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Railgun</defName>
 		<label>GDI railgun</label>
 		<description>This railgun fires precise high velocity bolts.</description>
@@ -172,6 +172,16 @@
 			<AccuracyLong>0.75</AccuracyLong>
 			<RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
 		</statBases>
+		<conditionalStatOffsets>
+			<li>
+				<unequippedOffsets>
+					<MoveSpeed>-40</MoveSpeed>
+				</unequippedOffsets>
+				<requiredEquip>
+					<li>Apparel_GDIZoneSuit</li>
+				</requiredEquip>
+			</li>
+		</conditionalStatOffsets>
 		<costList>
 			<GDI_StandardRifle>1</GDI_StandardRifle>
 			<ComponentIndustrial>15</ComponentIndustrial>
@@ -225,7 +235,7 @@
 				<Crafting>10</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 	<ThingDef ParentName="GDI_Gun">
 		<defName>GDI_Shatterer</defName>

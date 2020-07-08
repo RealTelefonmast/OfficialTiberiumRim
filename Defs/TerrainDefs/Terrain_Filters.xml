@@ -9,6 +9,9 @@
 			<li>MarshyTerrain</li>
 			<li>Gravel</li>
 		</acceptedTerrain>
+		<acceptedTags>
+			<li>soil</li>
+		</acceptedTags>
 	</TiberiumRim.TerrainFilterDef>
 
 	<TiberiumRim.TerrainFilterDef>

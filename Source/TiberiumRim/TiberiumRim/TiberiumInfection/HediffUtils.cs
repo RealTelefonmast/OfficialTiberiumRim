@@ -276,7 +276,6 @@ namespace TiberiumRim
 
         public static void TryInfectPawn(Pawn pawn, TiberiumCrystal crystal, bool isGas, int perTicks)
         {
-            Log.Message("Trying to infect " + pawn);
             if(pawn.DestroyedOrNull())
                 Log.Error("Trying to infect null Pawn");
 
@@ -333,7 +332,6 @@ namespace TiberiumRim
             chance *= 0.05f;
 
             //Visceral chance check
-            Log.Message("Visceral Chance: " + chance);
             if (!TRUtils.Chance(chance)) return false;
 
             //If successful, spawn pod with pawn inside
@@ -381,7 +379,6 @@ namespace TiberiumRim
 
         public static bool TryIrradiatePawn(Pawn pawn, TiberiumCrystal crystal, int perTicks)
         {
-            Log.Message("Trying to irradiate " + pawn);
             if (pawn.DestroyedOrNull())
                 Log.Error("Trying to irradiate null Pawn");
 
