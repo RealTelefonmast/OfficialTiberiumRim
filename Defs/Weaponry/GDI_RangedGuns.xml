@@ -36,28 +36,28 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<statBases>
-			<WorkToMake>30000</WorkToMake>
-			<Mass>3.5</Mass>
-			<AccuracyTouch>0.1</AccuracyTouch>
-			<AccuracyShort>0.5</AccuracyShort>
-			<AccuracyMedium>0.75</AccuracyMedium>
-			<AccuracyLong>0.95</AccuracyLong>
+			<WorkToMake>35000</WorkToMake>
+			<Mass>5.5</Mass>
+			<AccuracyTouch>0.3</AccuracyTouch>
+			<AccuracyShort>0.65</AccuracyShort>
+			<AccuracyMedium>0.7</AccuracyMedium>
+			<AccuracyLong>0.75</AccuracyLong>
 			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
-			<Steel>150</Steel>
-			<ComponentIndustrial>10</ComponentIndustrial>
+			<Steel>120</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_GDIStandard</defaultProjectile>
-				<secondaryProjectile>Bullet_Guardian</secondaryProjectile>
-				<warmupTime>1.25</warmupTime>
-				<range>34.9</range>
-				<burstShotCount>6</burstShotCount>
-				<ticksBetweenBurstShots>12</ticksBetweenBurstShots>
+				<secondaryProjectile>Bullet_GDIHighVelocity</secondaryProjectile>
+				<warmupTime>1.5</warmupTime>
+				<range>36.9</range>
+				<burstShotCount>4</burstShotCount>
+				<ticksBetweenBurstShots>16</ticksBetweenBurstShots>
 				<soundCast>Shot_AssaultRifle</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
@@ -69,8 +69,8 @@
 			<capacities>
 			  <li>Blunt</li>
 			</capacities>
-			<power>9</power>
-			<cooldownTime>2</cooldownTime>
+			<power>16</power>
+			<cooldownTime>2.5</cooldownTime>
 		  </li>
 		  <li>
 			<label>barrel</label>
@@ -156,7 +156,7 @@
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Railgun</defName>
 		<label>GDI railgun</label>
-		<description>This railgun fires precise high velocity bolts.</description>
+		<description>This railgun fires accurate supersonic sabots. Made to be used in conjunction with the GDI Zone Trooper armor.</description>
 		<graphicData>
 			<texPath>Items/Weapons/GDI/Railgun</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -164,18 +164,18 @@
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
-			<WorkToMake>30000</WorkToMake>
-			<Mass>5</Mass>
-			<AccuracyTouch>0.55</AccuracyTouch>
+			<WorkToMake>52000</WorkToMake>
+			<Mass>15.5</Mass>
+			<AccuracyTouch>0.25</AccuracyTouch>
 			<AccuracyShort>0.65</AccuracyShort>
-			<AccuracyMedium>1</AccuracyMedium>
-			<AccuracyLong>0.75</AccuracyLong>
+			<AccuracyMedium>0.9</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
 			<RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
 		</statBases>
 		<conditionalStatOffsets>
 			<li>
 				<unequippedOffsets>
-					<MoveSpeed>-40</MoveSpeed>
+					<MoveSpeed>-0.40</MoveSpeed>
 				</unequippedOffsets>
 				<requiredEquip>
 					<li>Apparel_GDIZoneSuit</li>
@@ -197,9 +197,9 @@
 					<li>(0, 0, 0.7)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
-				<requireLineOfSight>false</requireLineOfSight>
+				<requireLineOfSight>true</requireLineOfSight>
 				<warmupTime>2</warmupTime>
-				<range>34.9</range>
+				<range>48.9</range>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<soundCast>Shot_GDI_Railgun</soundCast>
@@ -237,10 +237,10 @@
 		</recipeMaker>
 	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="GDI_Gun">
+	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Shatterer</defName>
 		<label>GDI sonic shatterer</label>
-		<description>This gun uses GDI's sonic technology. Extremly unstable.</description>
+		<description>This weapon uses GDI's sonic technology. Extremely unstable.</description>
 		<graphicData>
 			<texPath>Items/Weapons/GDI/GDI_Shatterer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -250,12 +250,22 @@
 		<statBases>
 			<WorkToMake>70000</WorkToMake>
 			<Mass>10.0</Mass>
-			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyTouch>0.85</AccuracyTouch>
 			<AccuracyShort>1</AccuracyShort>
-			<AccuracyMedium>0.75</AccuracyMedium>
-			<AccuracyLong>0.55</AccuracyLong>
+			<AccuracyMedium>0.80</AccuracyMedium>
+			<AccuracyLong>0.6</AccuracyLong>
 			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
 		</statBases>
+		<conditionalStatOffsets>
+			<li>
+				<unequippedOffsets>
+					<MoveSpeed>-0.40</MoveSpeed>
+				</unequippedOffsets>
+				<requiredEquip>
+					<li>Apparel_GDIZoneSuit</li>
+				</requiredEquip>
+			</li>
+		</conditionalStatOffsets>
 		<costList>
 			<GDI_ReinforcedPlate>25</GDI_ReinforcedPlate>
 			<ComponentIndustrial>10</ComponentIndustrial>
@@ -268,10 +278,10 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_SonicWave</defaultProjectile>
 				<requireLineOfSight>true</requireLineOfSight>
-				<warmupTime>2.25</warmupTime>
+				<warmupTime>3</warmupTime>
 				<range>25</range>
 				<minRange>1.9</minRange>
-				<burstShotCount>1</burstShotCount>
+				<burstShotCount>2</burstShotCount>
 				<forcedMissRadius>1</forcedMissRadius>
 				<soundCast>Shot_GDI_Sonic</soundCast>
 				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
@@ -310,12 +320,12 @@
 				<Crafting>10</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 	<ThingDef ParentName="GDI_Gun">
 		<defName>GDI_Mortar</defName>
 		<label>GDI mobile mortar</label>
-		<description>This is a expermintal weapon used by GDI for long distance fights.\n\nUpgradable to GDI shockweaver.</description>
+		<description>This is a experimental weapon used by GDI for long distance engagements.\n\nUpgradable to GDI shockweaver.</description>
 		<graphicData>
 			<texPath>Items/Weapons/GDI/MobileMortar</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
