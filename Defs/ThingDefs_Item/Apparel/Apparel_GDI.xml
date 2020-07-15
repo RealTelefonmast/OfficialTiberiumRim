@@ -306,10 +306,9 @@
 		</statBases>
 		<equippedStatOffsets>
 			<WorkSpeedGlobal>0.25</WorkSpeedGlobal>
-			<ConstructionSpeed>1</ConstructionSpeed>
-			<ConstructSuccessChance>1</ConstructSuccessChance>
-			<MiningSpeed>1</MiningSpeed>
-			<ShootingAccuracyPawn>-0.75</ShootingAccuracyPawn>
+			<ConstructionSpeed>0.25</ConstructionSpeed>
+			<ConstructSuccessChance>0.3</ConstructSuccessChance>
+			<MiningSpeed>0.3</MiningSpeed>
 		</equippedStatOffsets>
 		<apparel>
 			<bodyPartGroups>
@@ -357,20 +356,22 @@
 			<TRBattleChip>1</TRBattleChip>
 		</costList>
 		<statBases>
-			<WorkToMake>15000</WorkToMake>
-			<MaxHitPoints>300</MaxHitPoints>
+			<WorkToMake>25000</WorkToMake>
+			<MaxHitPoints>350</MaxHitPoints>
 			<Mass>5</Mass>
 			<Flammability>0.1</Flammability>
 			<ArmorRating_Sharp>1.5</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.6</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.6</ArmorRating_Heat>
-			<Insulation_Cold>50</Insulation_Cold>
-			<Insulation_Heat>50</Insulation_Heat>
+			<Insulation_Cold>40</Insulation_Cold>
+			<Insulation_Heat>40</Insulation_Heat>
 			<EquipDelay>10</EquipDelay>
 		</statBases>
 		<equippedStatOffsets>
-			<ShootingAccuracyPawn>0.1</ShootingAccuracyPawn>
+			<ShootingAccuracyPawn>0.15</ShootingAccuracyPawn>
 			<ToxicSensitivity>-1</ToxicSensitivity>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
+			<TiberiumRadiationResistance>0.25</TiberiumRadiationResistance>
 		</equippedStatOffsets>
 		<apparel>
 			<bodyPartGroups>
@@ -417,7 +418,7 @@
 		<statBases>
 			<WorkToMake>50000</WorkToMake>
 			<MaxHitPoints>600</MaxHitPoints>
-			<Mass>20</Mass>
+			<Mass>40</Mass>
 			<Flammability>0.1</Flammability>
 			<ArmorRating_Sharp>1.5</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.6</ArmorRating_Blunt>
@@ -428,8 +429,11 @@
 		</statBases>
 		<equippedStatOffsets>
 			<MoveSpeed>0.25</MoveSpeed>
-			<PainShockThreshold>0.1</PainShockThreshold>
+			<ExtraCarryWeight>60</ExtraCarryWeight>
+			<PainShockThreshold>0.3</PainShockThreshold>
 			<ToxicSensitivity>-1</ToxicSensitivity>
+			<TiberiumRadiationResistance>0.75</TiberiumRadiationResistance>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
 		</equippedStatOffsets>
 		<thingCategories>
 			<li>Apparel</li>

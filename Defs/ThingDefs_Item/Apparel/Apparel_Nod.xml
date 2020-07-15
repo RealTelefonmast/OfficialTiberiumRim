@@ -19,8 +19,8 @@
 			<WorkToMake>6000</WorkToMake>
 			<MaxHitPoints>125</MaxHitPoints>
 			<Mass>1</Mass>
-			<ArmorRating_Sharp>0.75</ArmorRating_Sharp>
-			<ArmorRating_Blunt>0.5</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.4</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.25</ArmorRating_Heat>
 			<Insulation_Cold>10</Insulation_Cold>
 			<Insulation_Heat>5</Insulation_Heat>
@@ -76,10 +76,10 @@
 			<WorkToMake>15000</WorkToMake>
 			<MaxHitPoints>200</MaxHitPoints>
 			<Mass>5</Mass>
-			<ArmorRating_Sharp>0.75</ArmorRating_Sharp>
-			<ArmorRating_Blunt>0.5</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.55</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.25</ArmorRating_Heat>
-			<Insulation_Cold>30</Insulation_Cold>
+			<Insulation_Cold>10</Insulation_Cold>
 			<Insulation_Heat>10</Insulation_Heat>
 			<EquipDelay>2</EquipDelay>
 		</statBases>
@@ -194,7 +194,7 @@
 			<EquipDelay>3</EquipDelay>
 		</statBases>
 		<equippedStatOffsets>
-			<SocialImpact>0.15</SocialImpact>
+			<SocialImpact>0.25</SocialImpact>
 		</equippedStatOffsets>
 		<apparel>
 			<bodyPartGroups>
@@ -247,13 +247,15 @@
 			<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.5</ArmorRating_Blunt>
 			<ArmorRating_Heat>1.5</ArmorRating_Heat>
-			<Insulation_Cold>50</Insulation_Cold>
-			<Insulation_Heat>500</Insulation_Heat>
+			<Insulation_Cold>30</Insulation_Cold>
+			<Insulation_Heat>80</Insulation_Heat>
 			<EquipDelay>5</EquipDelay>
 		</statBases>
 		<equippedStatOffsets>
-			<PainShockThreshold>0.1</PainShockThreshold>
+			<ShootingAccuracyPawn>0.1</ShootingAccuracyPawn>
 			<ToxicSensitivity>-1</ToxicSensitivity>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
+			<TiberiumRadiationResistance>0.25</TiberiumRadiationResistance>
 		</equippedStatOffsets>
 		<apparel>
 			<bodyPartGroups>
@@ -286,7 +288,7 @@
 	<ThingDef ParentName="Nod_Armor">
 		<defName>Apparel_NodBlackHand</defName>
 		<label>black Hand suit</label>
-		<description>This is a specialized heat-resistant suit to fit the Black Hand's needs.</description>
+		<description>The Black Hand's own Powered Armor, meant for Elite personnel in extreme, and fiery, environments.</description>
 		<techLevel>Spacer</techLevel>
 		<graphicData>
 			<texPath>Items/Apparel/Nod_Blackhand/BHSuit</texPath>
@@ -298,24 +300,28 @@
 		<costList>
 			<Apparel_NodMilitiaSuit>1</Apparel_NodMilitiaSuit>
 			<ComponentSpacer>3</ComponentSpacer>
-			<Nod_CarbonPlate>60</Nod_CarbonPlate>
+			<Nod_CarbonPlate>75</Nod_CarbonPlate>
 			<TRBattleChip>2</TRBattleChip>
 		</costList>
 		<statBases>
-			<WorkToMake>45000</WorkToMake>
+			<WorkToMake>50000</WorkToMake>
 			<MaxHitPoints>500</MaxHitPoints>
 			<Mass>10</Mass>
-			<Flammability>0.1</Flammability>
-			<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+			<Flammability>0</Flammability>
+			<ArmorRating_Sharp>0.9</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.5</ArmorRating_Blunt>
 			<ArmorRating_Heat>1.5</ArmorRating_Heat>
-			<Insulation_Cold>50</Insulation_Cold>
-			<Insulation_Heat>500</Insulation_Heat>
+			<Insulation_Cold>30</Insulation_Cold>
+			<Insulation_Heat>80</Insulation_Heat>
 			<EquipDelay>15</EquipDelay>
 		</statBases>
 		<equippedStatOffsets>
-			<PainShockThreshold>0.25</PainShockThreshold>
+			<MoveSpeed>0.25</MoveSpeed>
+			<ExtraCarryWeight>40</ExtraCarryWeight>
+			<PainShockThreshold>0.4</PainShockThreshold>
 			<ToxicSensitivity>-1</ToxicSensitivity>
+			<TiberiumRadiationResistance>0.75</TiberiumRadiationResistance>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
 		</equippedStatOffsets>
 		<apparel>
 			<bodyPartGroups>
