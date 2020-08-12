@@ -12,9 +12,10 @@
 		</graphicData>
 		<projectile>
 			<damageDef>Bullet</damageDef>
-			<damageAmountBase>10</damageAmountBase>
-			<stoppingPower>0.20</stoppingPower>
-			<speed>90</speed>
+			<damageAmountBase>13</damageAmountBase>
+			<stoppingPower>0.75</stoppingPower>
+			<speed>100</speed>
+			<armorPenetrationBase>0.45</armorPenetrationBase>
 		</projectile>
 	</ThingDef>
 	
@@ -25,12 +26,14 @@
 		<graphicData>
 		<texPath>Items/Weapons/Projectile/Bullet_Base_GDI</texPath>
 		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>0.7</drawSize>
 		</graphicData>
 		<projectile>
 			<damageDef>Bullet</damageDef>
-			<damageAmountBase>6</damageAmountBase>
-			<stoppingPower>0.25</stoppingPower>
+			<damageAmountBase>9</damageAmountBase>
+			<stoppingPower>0.45</stoppingPower>
 			<speed>180</speed>
+			<armorPenetrationBase>0.75</armorPenetrationBase>
 		</projectile>
 	</ThingDef>
 	
@@ -111,7 +114,7 @@
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
 			<damageDef>TRSonic</damageDef>
-			<damageAmountBase>10</damageAmountBase>
+			<damageAmountBase>12</damageAmountBase>
 			<explosionRadius>1.1</explosionRadius>
 			<stoppingPower>0.5</stoppingPower>
 			<speed>25</speed>

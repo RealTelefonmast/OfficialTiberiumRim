@@ -32,7 +32,7 @@
 	<ThingDef ParentName="Nod_Gun">
 		<defName>Nod_StandardRifle</defName>
 		<label>Nod rifle</label>
-		<description>A general-purpose military weapon for field or urban combat. Specialized by Nod technology.\n\nUpgradable to Nod laser rifle.\n\nUpgradable to Nod flamethrower.</description>
+		<description>A general-purpose military weapon for field or urban combat. Made specifically for urban combat by Nod.\n\nUpgradable to Nod laser rifle.\n\nUpgradable to Nod flamethrower.</description>
 		<graphicData>
 			<texPath>Items/Weapons/Nod/Rifle</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -41,28 +41,32 @@
 		<statBases>
 			<WorkToMake>30000</WorkToMake>
 			<Mass>3.5</Mass>
-			<AccuracyTouch>0.95</AccuracyTouch>
+			<AccuracyTouch>0.75</AccuracyTouch>
 			<AccuracyShort>0.8</AccuracyShort>
-			<AccuracyMedium>0.5</AccuracyMedium>
-			<AccuracyLong>0.2</AccuracyLong>
+			<AccuracyMedium>0.65</AccuracyMedium>
+			<AccuracyLong>0.55</AccuracyLong>
 			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
 		</statBases>
+		<equippedStatOffsets>
+					<MoveSpeed>0.05</MoveSpeed>
+		</equippedStatOffsets>
 		<costList>
 			<Steel>150</Steel>
 			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_NodStandard</defaultProjectile>
-				<warmupTime>0.5</warmupTime>
+				<secondaryProjectile>Bullet_NodAntiPersonnel</secondaryProjectile>
+				<warmupTime>1</warmupTime>
 				<range>28.9</range>
-				<burstShotCount>8</burstShotCount>
-				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
-				<soundCast>Shot_AssaultRifle</soundCast>
+				<burstShotCount>5</burstShotCount>
+				<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+				<soundCast>Shot_HeavySMG</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
-				<muzzleFlashScale>6</muzzleFlashScale>
+				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
 		</verbs>
 		<tools>
@@ -95,7 +99,7 @@
 	<ThingDef ParentName="Nod_Gun">
 		<defName>Nod_TwinTiberiumFlechetteGun</defName>
 		<label>Nod twin flechette gun</label>
-		<description>The Tiberium Flechette gun fires Tiberium crystals rapidly at enemies.</description>
+		<description>The Tiberium Flechette gun fires Tiberium shards rapidly at enemies.</description>
 		<graphicData>
 			<texPath>Items/Weapons/Nod/TwinFlechetteGun</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -110,7 +114,10 @@
 			<AccuracyLong>0.24</AccuracyLong>
 			<RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
 		</statBases>
-		<costList>
+		<equippedStatOffsets>
+					<MoveSpeed>0.15</MoveSpeed>
+		</equippedStatOffsets>
+		<costList>			<!-- Add custom recipe component; Tiberium; maybe upgradable using blue tiberium -->
 			<Steel>75</Steel>
 			<Uranium>1</Uranium>
 			<ComponentIndustrial>5</ComponentIndustrial>
@@ -171,7 +178,7 @@
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
-			<WorkToMake>20000</WorkToMake>
+			<WorkToMake>35000</WorkToMake>
 			<Mass>4.0</Mass>
 			<AccuracyTouch>0.70</AccuracyTouch>
 			<AccuracyShort>0.87</AccuracyShort>
@@ -194,7 +201,7 @@
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>1</warmupTime>
-				<range>24.9</range>
+				<range>34.9</range>
 				<burstShotCount>3</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_Laser</soundCast>
