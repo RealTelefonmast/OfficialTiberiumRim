@@ -13,21 +13,19 @@ namespace TiberiumRim
         protected override Job TryGiveJob(Pawn pawn)
         {
             Harvester harvester = pawn as Harvester;
-            if (harvester.ShouldHarvest && harvester.CurJob?.def != TiberiumDefOf.HarvestTiberium)
-            {
-                if (!harvester.HarvestQueue.NullOrEmpty())
-                {
-                    var queue = harvester.HarvestQueue;
-                    Job job = JobMaker.MakeJob(TiberiumDefOf.HarvestTiberium, queue[0]);
-                    job.targetQueueA = new List<LocalTargetInfo>();
-                    foreach (var t in queue)
-                    {
-                        job.targetQueueA.Add(t);
-                    }
-                    return job;
-                }
-            }
-            return null;
+            if (!harvester.ShouldHarvest || harvester.CurJob?.def == TiberiumDefOf.HarvestTiberium) return null;
+
+            TiberiumCrystal crystal = harvester.TiberiumManager.HarvesterInfo.FindClosestTiberiumFor(harvester);
+            if (crystal == null) return null;
+
+            Job job = JobMaker.MakeJob(TiberiumDefOf.HarvestTiberium, crystal);
+           
+            // job.targetQueueA = new List<LocalTargetInfo>();
+            // foreach (var t in queue)
+            // {
+            //     job.targetQueueA.Add(t);
+            // }
+            return job;
         }
     }
 
@@ -51,7 +49,7 @@ namespace TiberiumRim
 
         private Harvester Harvester => pawn as Harvester;
 
-        private bool FailOn => Harvester.ShouldIdle || (TiberiumCrystal.def.IsMoss ? Harvester.harvestMode != HarvestMode.Moss : Harvester.harvestMode == HarvestMode.Moss);
+        private bool FailOn => Harvester.ShouldIdle || !Harvester.CorrectModeFor(TiberiumCrystal.def);
 
         public override string GetReport()
         {
@@ -89,6 +87,7 @@ namespace TiberiumRim
                     ticksPerValue = (int) (ticksToHarvest / TiberiumCrystal.HarvestValue);
                     //Growth removed whenever value is added
                     growthPerValue = (TiberiumCrystal.Growth / (float) ticksToHarvest) * ticksPerValue;
+                    Log.Message("Init Harvest Action: " + ticksToHarvest + " | " + ticksPerValue + " | " + growthPerValue);
 
                 },
                 tickAction = delegate
@@ -114,7 +113,7 @@ namespace TiberiumRim
                     }
                 }
             };
-            harvest.AddFinishAction(() => Harvester.TNWManager.ReservationManager.Dequeue(TiberiumCrystal, Harvester));
+            //harvest.AddFinishAction(() => Harvester.TNWManager.ReservationManager.Dequeue(TiberiumCrystal, Harvester));
             harvest.FailOnDespawnedNullOrForbidden(TargetIndex.A);
             harvest.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
             harvest.FailOn(() => FailOn);
@@ -122,7 +121,6 @@ namespace TiberiumRim
             harvest.defaultCompleteMode = ToilCompleteMode.Never;
             yield return harvest;
             yield return Toils_Jump.Jump(extractTarget);
-            yield break;
         }
     }
 }

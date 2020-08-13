@@ -84,7 +84,8 @@ namespace TiberiumRim
             if (!pos.IsValid || !pos.InBounds(map)) return false;
 
             //Prepare potential outcomes for the desired spread position
-            def.SpreadOutcomesAt(pos, map, out TerrainDef topTerrain, out TerrainDef underTerrain, out TiberiumCrystalDef crystalDef);
+            if (!def.SpreadOutcomesAt(pos, map, out TerrainDef topTerrain, out TerrainDef underTerrain, out TiberiumCrystalDef crystalDef)) 
+                return false;
 
             //Check if the tiberium can spread to the position
             if (!CanSpreadTo(def, pos, map, out IntVec3 hidden, out bool needsFlora))
@@ -160,6 +161,7 @@ namespace TiberiumRim
 
         public static TiberiumCrystal GetTiberium(this IntVec3 pos, Map map)
         {
+            if (map == null) return null;
             if (!pos.InBounds(map)) return null;
             return map.Tiberium().TiberiumInfo.TiberiumAt(pos); 
         }
@@ -251,7 +253,7 @@ namespace TiberiumRim
             if (crystal.def.HarvestType == HarvestType.Unharvestable)
                 return false;
 
-            return harvester.harvestMode switch
+            return harvester.HarvestMode switch
             {
                 HarvestMode.Nearest => !crystal.def.IsMoss,
                 HarvestMode.Value => (crystal.def == crystal.TiberiumMapComp.TiberiumInfo.MostValuableType),

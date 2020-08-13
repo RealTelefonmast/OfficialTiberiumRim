@@ -74,7 +74,7 @@
 	<ThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_Flamethrower</defName>
 		<label>flame</label>
-		<thingClass>TiberiumRim.Bullet_Sprite</thingClass>
+		<thingClass>Projectile_Explosive</thingClass>
 		<graphicData>
 			<texPath>Sprites/FlameSprite</texPath>
 			<graphicClass>TiberiumRim.Graphic_Sprite</graphicClass>
@@ -85,7 +85,7 @@
 			<ai_IsIncendiary>true</ai_IsIncendiary>
 			<damageDef>Flame</damageDef>
 			<damageAmountBase>3</damageAmountBase>
-			<!--<explosionRadius>0.025</explosionRadius>-->
+			<explosionRadius>0.025</explosionRadius>
 			<speed>12</speed>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
 		</projectile>
@@ -104,15 +104,13 @@
 		<projectile>
 			<damageDef>TiberiumGas</damageDef>
 			<damageAmountBase>8</damageAmountBase>
-			<explosionRadius>0.045</explosionRadius>
+			<explosionRadius>0.025</explosionRadius>
 			<preExplosionSpawnThingDef>TiberiumGas</preExplosionSpawnThingDef>
 			<preExplosionSpawnChance>0.8</preExplosionSpawnChance>
 			<speed>15</speed>
-			<!--
 			<postExplosionSpawnThingDef>FilthTibLiquidGreen</postExplosionSpawnThingDef>
 			<postExplosionSpawnChance>0.45</postExplosionSpawnChance>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
-			-->
 		</projectile>
 	</ThingDef>
 	
@@ -139,17 +137,20 @@
 		<defName>Bullet_Nod_Grenade</defName>
 		<label>grenade</label>
 		<graphicData>
-			<texPath>Items/Weapons/Projectile/Bullet_Nod_Grenade</texPath>
+			<texPath>Items/Weapons/Projectile/Bullet_Nod_Grenade_static</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
-			<damageDef>Bomb</damageDef>
-			<damageAmountBase>35</damageAmountBase>
+			<damageDef>TiberiumExplosionFrag</damageDef>
+			<damageAmountBase>45</damageAmountBase>
 			<explosionRadius>3</explosionRadius>
 			<explosionDelay>65</explosionDelay>
 			<speed>15</speed>
-			<soundExplode>MortarBomb_Explode</soundExplode>
+			<preExplosionSpawnThingDef>TiberiumGas</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>
+			<soundExplode>Nod_ChemBomb</soundExplode>
 		</projectile>
 	</ThingDef>
 	
@@ -162,7 +163,7 @@
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
-			<damageDef>TRTiberiumBomb</damageDef>
+			<damageDef>TiberiumExplosionBurn</damageDef>
 			<damageAmountBase>75</damageAmountBase>
 			<explosionRadius>6</explosionRadius>
 			<speed>25</speed>

@@ -14,7 +14,6 @@ namespace TiberiumRim
         public Dictionary<TiberiumNetwork, List<IntVec3>> networkCells = new Dictionary<TiberiumNetwork, List<IntVec3>>();
         public StructureSet MainStructureSet = new StructureSet();
 
-        public HarvesterReservationManager ReservationManager;
         public int MasterID = -1;
 
         public bool[] tnwGrid;
@@ -26,7 +25,6 @@ namespace TiberiumRim
 
         public MapComponent_TNWManager(Map map) : base(map)
         {
-            ReservationManager = new HarvesterReservationManager(map);
             tnwGrid = new bool[map.cellIndices.NumGridCells];
         }
 
@@ -36,8 +34,6 @@ namespace TiberiumRim
         public override void MapComponentUpdate()
         {
             base.MapComponentUpdate();
-            int i = 0;
-
             if (DrawBool || TiberiumRimSettings.settings.ShowNetworkValues)
             {
                 DrawTNWNetGrid();
@@ -172,17 +168,6 @@ namespace TiberiumRim
                 Networks.Remove(tnw);
                 networkCells.Remove(tnw);
             }
-        }
-
-        public void RegisterHarvester(Harvester harvester)
-        {
-            ReservationManager.RegisterHarvester(harvester);
-        }
-
-        public void DeregisterHarvester(Harvester harvester)
-        {
-            ReservationManager.DeregisterHarvester(harvester);
-            MainStructureSet.Refineries.ForEach(r => r.RemoveHarvester(harvester));
         }
     }
 }

@@ -55,6 +55,11 @@ namespace TiberiumRim
         public static readonly Texture2D FireStorm_On = ContentFinder<Texture2D>.Get("UI/Icons/Controls/SuperWep/Firestorm_On", true);
         public static readonly Texture2D FireStorm_Off = ContentFinder<Texture2D>.Get("UI/Icons/Controls/SuperWep/Firestorm_Off", true);
 
+        //Harvester Bar
+        public static readonly Material Harvester_EmptyBar = SolidColorMaterials.NewSolidColorMaterial(new Color(0.3f, 0.3f, 0.3f, 0.65f), ShaderDatabase.MetaOverlay);
+        public static readonly Material Harvester_FilledBar = SolidColorMaterials.NewSolidColorMaterial(new Color(0f, 1f, 1f, 1f), ShaderDatabase.MetaOverlay);
+
+
         //----Tib Container
         public static readonly Texture2D ContainMode_Sludge = ContentFinder<Texture2D>.Get("UI/Icons/Controls/TibContainer/ContainMode_Sludge", true);
         public static readonly Texture2D ContainMode_TripleSwitch = ContentFinder<Texture2D>.Get("UI/Icons/Controls/TibContainer/ContainMode_Storage", true);
@@ -74,7 +79,8 @@ namespace TiberiumRim
         //--Hediffs
         public static readonly Texture2D Hediff_Crystallizing = ContentFinder<Texture2D>.Get("UI/Icons/Hediffs/Crystallizing", true);
         public static readonly Texture2D Hediff_Mutation = ContentFinder<Texture2D>.Get("UI/Icons/Hediffs/Mutation", true);
-        public static readonly Texture2D Hediff_TibImmune = ContentFinder<Texture2D>.Get("UI/Icons/Hediffs/TiberiumImmune", true);
+        public static readonly Texture2D Hediff_Radiation = ContentFinder<Texture2D>.Get("UI/Icons/Hediffs/Radiation", true);
+        public static readonly Texture2D Hediff_Immunity = ContentFinder<Texture2D>.Get("UI/Icons/Hediffs/Immunity", true);
 
         //ThingCategories
         public static readonly Texture2D TiberiumIcon = ContentFinder<Texture2D>.Get("UI/Icons/ThingCategories/TiberiumCategory", true);

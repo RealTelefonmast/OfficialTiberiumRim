@@ -8,7 +8,7 @@ namespace TiberiumRim
 {
     public interface IDiscoverable
     {
-        string DiscoverTag { get; }
+        DiscoveryDef DiscoveryDef { get; }
         bool Discovered { get; }
 
         string DiscoveredLabel { get; }

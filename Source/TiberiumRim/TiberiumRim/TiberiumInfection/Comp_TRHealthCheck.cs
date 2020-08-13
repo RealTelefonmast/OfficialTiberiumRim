@@ -19,6 +19,8 @@ namespace TiberiumRim
 
         private Pawn Pawn => parent as Pawn;
 
+        private TiberiumHediffGrid Grid => Pawn.MapHeld.Tiberium().TiberiumAffecter.hediffGrid;
+        
         public bool IsTiberiumImmune => false;
 
         //TODO: reduce calls
@@ -34,11 +36,14 @@ namespace TiberiumRim
             if (!Pawn.Spawned || !canBeAffected) return;
             if (ticker <= 0)
             {
-                var tib = Pawn.Position.GetTiberium(Pawn.Map);
-                if (tib != null)
+                if (Grid.IsAffected(Pawn.Position))
                 {
-                    HediffUtils.TryIrradiatePawn(Pawn, tib, 250);
-                    HediffUtils.TryInfectPawn(Pawn, tib, false, 250);
+                    //Player's pawns should cause a notification
+                    if (Pawn.Faction?.IsPlayer ?? false)
+                        GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.TiberiumExposure);
+
+                    HediffUtils.TryIrradiatePawn(Pawn, Grid.RadiationAt(Pawn.Position), 250);
+                    HediffUtils.TryInfectPawn(Pawn, Grid.InfectivityAt(Pawn.Position), false, 250);
                 }
                 ticker = 250;
             }

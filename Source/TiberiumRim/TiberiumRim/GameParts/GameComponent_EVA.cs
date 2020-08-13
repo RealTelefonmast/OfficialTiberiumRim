@@ -133,7 +133,6 @@ namespace TiberiumRim
 
         public void ReceiveSignal(EVASignal signal)
         {
-            Log.Message("Received EVA signal: " + signal);
             if (!CanPlay) return;
 
             SoundDef soundToPlay = null;

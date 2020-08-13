@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <!--===============  ==============-->
+  <!--=============== BASES ==============-->
 
 	<ThingDef Name="MoteBase_TR" Abstract="True">
 		<thingClass>MoteThrown</thingClass>
@@ -35,6 +35,21 @@
 		<speedRange>0.4~0.85</speedRange>
 	</TiberiumRim.ParticleDef>
 	
+	<ThingDef Abstract="True" Name="TiberiumFog" ParentName="MoteBase_TR">
+		<graphicData>
+			<texPath>Motes/TiberiumFog</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<collide>true</collide>
+			<fadeInTime>2</fadeInTime>
+			<solidTime>1</solidTime>
+			<fadeOutTime>2</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	<!--== PRODUCER ==-->
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>IonLighting</defName>
 		<graphicData>
@@ -50,30 +65,6 @@
 		</mote>
 	</ThingDef>
 	
-	<ThingDef Abstract="True" Name="TiberiumFog" ParentName="MoteBase_TR">
-		<graphicData>
-			<texPath>Motes/TiberiumFog</texPath>
-			<shaderType>MoteGlow</shaderType>
-		</graphicData>
-		<altitudeLayer>MoteOverhead</altitudeLayer>
-		<mote>
-			<collide>true</collide>
-			<fadeInTime>2</fadeInTime>
-			<solidTime>1</solidTime>
-			<fadeOutTime>2</fadeOutTime>
-		</mote>
-	</ThingDef>
-	
-	<ThingDef ParentName="TiberiumFog">
-		<defName>IonCloud</defName>
-		<graphicData>
-			<shaderType>MetaOverlay</shaderType>
-			<color>(75,75,75,75)</color>
-		</graphicData>
-		<altitudeLayer>MoteOverhead</altitudeLayer>
-	</ThingDef>
-	
-	<!-- Tiberium Fog Center -->
 	<ThingDef ParentName="TiberiumFog">
 		<defName>TiberiumFogG</defName>
 		<graphicData>
@@ -98,7 +89,7 @@
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 	</ThingDef>
 	
-	<!-- Tiberium Field Fog-->
+	<!-- TIBERIUM FIELD -->
 	<ThingDef ParentName="TiberiumFog">
 		<defName>TiberiumFieldFogG</defName>
 		<graphicData>
@@ -125,6 +116,62 @@
 		</mote>
 	</ThingDef>
 	
+	<!-- TIBERIUM EFFECTS -->
+	<ThingDef ParentName="MoteBase">
+		<defName>Mote_TiberiumGlow</defName>
+		<graphicData>
+			<texPath>Motes/TiberiumGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.75</fadeInTime>
+			<solidTime>1.08</solidTime>
+			<fadeOutTime>0.8</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase">
+		<defName>Mote_TiberiumGlowBig</defName>
+		<graphicData>
+			<texPath>Motes/TiberiumGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>0.25</solidTime>
+			<fadeOutTime>5.75</fadeOutTime>
+			<growthRate>0.4</growthRate>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumFog">
+		<defName>IonCloud</defName>
+		<graphicData>
+			<shaderType>MetaOverlay</shaderType>
+			<color>(75,75,75,75)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+	</ThingDef>
+	
+	<!-- BLOSSOM -->
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>BlossomSmoke</defName>
+		<graphicData>
+			<texPath>Motes/Fog/BlossomSmoke</texPath>
+			<color>(1,1,1,0.6)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.25</fadeInTime>
+			<solidTime>4</solidTime>
+			<fadeOutTime>5</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	<!-- VEINHOLE -->
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>VeinholeSmoke</defName>
 		<graphicData>
@@ -156,20 +203,7 @@
 			<growthRate>0.45</growthRate>
 		</mote>
 	</ThingDef>
-	
-	<ThingDef ParentName="MoteBase_TR">
-		<defName>BlossomSmoke</defName>
-		<graphicData>
-			<texPath>Motes/Fog/BlossomSmoke</texPath>
-			<color>(1,1,1,0.6)</color>
-		</graphicData>
-		<altitudeLayer>MoteOverhead</altitudeLayer>
-		<mote>
-			<fadeInTime>0.25</fadeInTime>
-			<solidTime>4</solidTime>
-			<fadeOutTime>5</fadeOutTime>
-		</mote>
-	</ThingDef>
+
 	
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_GlowerParticle</defName>
@@ -213,8 +247,8 @@
 		</mote>
 	</ThingDef>
 	
-	<!-- Particles -->
 	
+	<!-- PARTICLE -->
 	<TiberiumRim.ParticleDef ParentName="SporeBase">
 		<defName>TiberiumSpore</defName>
 		<graphicData>

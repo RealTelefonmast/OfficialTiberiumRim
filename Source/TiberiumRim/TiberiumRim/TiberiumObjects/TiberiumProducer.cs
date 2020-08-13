@@ -64,13 +64,13 @@ namespace TiberiumRim
         private bool ResearchBound => (researchCrane ??= (Building)Position.GetFirstThing(Map, TiberiumDefOf.TiberiumResearchCrane)) != null;
 
         private bool IsMature => (areaMutator?.Finished ?? true) || areaMutator.ProgressPct >= def.spawner.minProgressToSpread;
-        public float GrowthRadius => IsGroundZero ? def.spawner.growRadius * 2.5f : def.spawner.growRadius;
-        public float GroundZeroFactor => IsGroundZero ? 2.7f : 1f;
+        public float GrowthRadius => def.spawner.growRadius * GroundZeroFactor;
+        public float GroundZeroFactor => IsGroundZero ? 2f : 1f;
+        public List<IntVec3> FieldCells => tiberiumField.FieldCells;
 
         public TiberiumFieldRuleset Ruleset => def?.tiberiumFieldRules;
         
         public IEnumerable<TiberiumCrystalDef> TiberiumTypes => Ruleset.crystalOptions.NullOrEmpty() ? null : Ruleset.crystalOptions.Select(t => t.thing as TiberiumCrystalDef);
-        public List<IntVec3> FieldCells => tiberiumField.FieldCells;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -91,7 +91,7 @@ namespace TiberiumRim
             ResetBlossomCounter();
 
             //AreaMutator, sets and processes the initial corruption Area
-            int mutationTicks = (int)(GenDate.TicksPerDay * (def.daysToMature * GroundZeroFactor));
+            int mutationTicks = (int)(GenDate.TicksPerDay * (def.daysToMature * GroundZeroFactor/2));
             areaMutator = new AreaMutator(Position, map, GrowthRadius, def.tiberiumFieldRules, mutationTicks, 1f, tiberiumField);
 
             //Init CellPaths for Tiberium growth
@@ -125,7 +125,7 @@ namespace TiberiumRim
             Scribe_Values.Look(ref ticksUntilTiberium, "ticksUntilTiberium");
             Scribe_Values.Look(ref ticksUntilSpore, "ticksUntilSpore");
             Scribe_Values.Look(ref ticksUntilBlossomTree, "ticksUntilBlossomTree");
-            Scribe_Deep.Look(ref tiberiumField, "tiberiumField", this);
+            Scribe_Deep.Look(ref tiberiumField, "tiberiumField");
             Scribe_Deep.Look(ref areaMutator, "areaMutator", def.tiberiumFieldRules, tiberiumField);
         }
 
@@ -134,10 +134,11 @@ namespace TiberiumRim
             base.Tick();
             if (!Spawned) return;
 
-            SpawningTick();
-
             areaMutator?.Tick();
             tiberiumField?.Tick();
+
+            if(areaMutator.Finished)
+                SpawningTick();
         }
 
         private void SpawningTick()
@@ -296,7 +297,7 @@ namespace TiberiumRim
                 GenDraw.DrawFieldEdges(grid.tiberiumGrid.ActiveCells.ToList(), Color.red);
             //Draw CellPaths
             if(showForceGrow)
-                GenDraw.DrawFieldEdges(grid.forceGrow.ActiveCells.ToList(), Color.blue);
+                GenDraw.DrawFieldEdges(grid.alwaysGrowFrom.ActiveCells.ToList(), Color.blue);
             //Draw From
             if (showGrowFrom)
                 GenDraw.DrawFieldEdges(grid.growFromGrid.ActiveCells.ToList(), Color.green);

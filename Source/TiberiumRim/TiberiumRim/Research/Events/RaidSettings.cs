@@ -55,13 +55,13 @@ namespace TiberiumRim
                 if (mode == RaidMode.StageThenAttack)
                 {
                     IntVec3 entrySpot = (!parms.spawnCenter.IsValid) ? pawns[0].PositionHeld : parms.spawnCenter;
-                    IntVec3 stageLoc = RCellFinder.FindSiegePositionFrom(entrySpot, map);
+                    IntVec3 stageLoc = RCellFinder.FindSiegePositionFrom_NewTemp(entrySpot, map);
                     return new LordJob_StageThenAttack(parms.faction, stageLoc, Rand.Int);
                 }
                 if (mode == RaidMode.Siege)
                 {
                     IntVec3 entrySpot = (!parms.spawnCenter.IsValid) ? pawns[0].PositionHeld : parms.spawnCenter;
-                    IntVec3 siegeSpot = RCellFinder.FindSiegePositionFrom(entrySpot, map);
+                    IntVec3 siegeSpot = RCellFinder.FindSiegePositionFrom_NewTemp(entrySpot, map);
                     float num = parms.points * Rand.Range(0.2f, 0.3f);
                     if (num < 60f)
                     {

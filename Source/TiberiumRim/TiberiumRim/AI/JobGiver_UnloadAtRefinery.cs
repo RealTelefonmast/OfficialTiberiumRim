@@ -16,7 +16,7 @@ namespace TiberiumRim
             Harvester harvester = pawn as Harvester;
             if (!harvester.ShouldUnload) return null;
 
-            CompTNW_Refinery refinery = harvester.CurrentRefinery;
+            CompTNW_Refinery refinery = harvester.MainRefinery;
             if (refinery == null) return null;
 
             if(harvester.CanReserveAndReach(refinery.parent, PathEndMode.InteractionCell, Danger.Deadly))
@@ -30,7 +30,7 @@ namespace TiberiumRim
 
     public class JobDriver_UnloadAtRefinery : JobDriver
     {
-        private CompTNW Refinery => Harvester.CurrentRefinery;
+        private CompTNW Refinery => Harvester.MainRefinery;
 
         private Harvester Harvester => (Harvester)pawn;
 

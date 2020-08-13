@@ -42,9 +42,10 @@ namespace TiberiumRim
             return (topTerrain != null || underTerrain != null);
         }
 
-        public void SpreadOutcomesAt(IntVec3 pos, Map map, out TerrainDef topTerrain, out TerrainDef underTerrain, out TiberiumCrystalDef crystalDef)
+        public bool SpreadOutcomesAt(IntVec3 pos, Map map, out TerrainDef topTerrain, out TerrainDef underTerrain, out TiberiumCrystalDef crystalDef)
         {
             conversionRuleset.GetOutcomes(pos, map, out topTerrain, out underTerrain, out crystalDef);
+            return crystalDef != null;
         }
 
         public bool FloraOutcomesFor(ThingDef plantDef, out TRThingDef toPlant, out TerrainDef plantTerrain)

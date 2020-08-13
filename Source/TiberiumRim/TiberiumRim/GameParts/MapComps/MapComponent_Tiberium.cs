@@ -17,15 +17,17 @@ namespace TiberiumRim
 
     public class MapComponent_Tiberium : MapComponentWithDraw
     {
+        //Map Informations
         public TiberiumMapInfo TiberiumInfo;
+        public HarvesterMapInfo HarvesterInfo;
         public TiberiumFloraMapInfo FloraInfo;
         public TiberiumBlossomInfo BlossomInfo;
 
-        public TiberiumAffecter TiberiumAffecter;
-        public TiberiumSpreader TiberiumSpreader;
-
         public TiberiumStructureInfo StructureInfo;
         public TiberiumInfectionInfo InfectionInfo;
+
+        public TiberiumAffecter TiberiumAffecter;
+        public TiberiumSpreader TiberiumSpreader;
 
         public HashSet<IntVec3> AffectedCells = new HashSet<IntVec3>();
         public HashSet<IntVec3> IteratorTiles = new HashSet<IntVec3>();
@@ -44,30 +46,51 @@ namespace TiberiumRim
         public MapComponent_Tiberium(Map map) : base(map)
         {
             TiberiumInfo  = new TiberiumMapInfo(map);
+            HarvesterInfo = new HarvesterMapInfo(map);
             FloraInfo     = new TiberiumFloraMapInfo(map);
+            BlossomInfo = new TiberiumBlossomInfo(map);
+
             StructureInfo = new TiberiumStructureInfo(map);
             InfectionInfo = new TiberiumInfectionInfo(map);
+
+            TiberiumAffecter = new TiberiumAffecter(map);
         }
 
         public override void FinalizeInit()
         {
             base.FinalizeInit();
+            if (!FloraInfo.HasBeenInitialized)
+                FloraInfo.InfoInit();
+            if (!BlossomInfo.HasBeenInitialized)
+                BlossomInfo.InfoInit();
         }
+
 
         public override void MapGenerated()
         {
+            //Runs once on map generation
             base.MapGenerated();
-            BlossomInfo = new TiberiumBlossomInfo(map);
+            FloraInfo.InfoInit(false);
+            BlossomInfo.InfoInit(false);
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Deep.Look(ref TiberiumInfo, "tiberiumMapInfo", map);
+            Scribe_Deep.Look(ref FloraInfo, "FloraInfo", map);
+            Scribe_Deep.Look(ref BlossomInfo, "BlossomInfo", map);
+            Scribe_Deep.Look(ref TiberiumAffecter, "affecter", map);
         }
 
         [TweakValue("MapComponent_TibDrawBool", 0f, 100f)]
         public static bool DrawBool = false;
+
+        public override void MapComponentOnGUI()
+        {
+            base.MapComponentOnGUI();
+            //TiberiumAffecter.hediffGrid.DrawValues();
+        }
 
         public override void MapComponentUpdate()
         {
@@ -97,14 +120,9 @@ namespace TiberiumRim
 
         }
 
-        public bool HarvestTypeAvailable(HarvestType type)
-        {
-            return TiberiumInfo.TiberiumCrystals[type].Count > TNWManager.ReservationManager.ReservedTypes[type];
-        }
+        public bool TiberiumAvailable => TiberiumInfo.TiberiumCrystals[HarvestType.Valuable].Count > 0;
 
-        public bool TiberiumAvailable => TiberiumInfo.TiberiumCrystals[HarvestType.Valuable].Count > TNWManager.ReservationManager.ReservedTypes[HarvestType.Valuable];
-
-        public bool MossAvailable => TiberiumInfo.TiberiumCrystals[HarvestType.Unvaluable].Count > TNWManager.ReservationManager.ReservedTypes[HarvestType.Unvaluable];
+        public bool MossAvailable => TiberiumInfo.TiberiumCrystals[HarvestType.Unvaluable].Count > 0;
 
         public void RegisterTiberiumThing(Thing thing)
         {
@@ -134,24 +152,6 @@ namespace TiberiumRim
         public void DeregisterTiberiumPlant(TiberiumPlant plant)
         {
             FloraInfo.DeregisterTiberiumPlant(plant);
-        }
-
-        public IEnumerable<Thing> TiberiumSetForHarvester(Harvester harvester)
-        {
-            Log.Message("Getting tiberium set for " + harvester + " with mode "+ harvester.harvestMode);
-            Log.Message("Count for that mode: " + TiberiumInfo.TiberiumCrystals[HarvestType.Valuable]?.Count);
-            List<TiberiumCrystal> things = new List<TiberiumCrystal>();
-            switch (harvester.harvestMode)
-            {
-                case HarvestMode.Nearest:
-                    things = TiberiumInfo.TiberiumCrystals[HarvestType.Valuable];break;
-                case HarvestMode.Value:
-                    things = TiberiumInfo.TiberiumCrystals[HarvestType.Valuable].Where(t => t.def == TiberiumInfo.MostValuableType).ToList(); break;
-                case HarvestMode.Moss:
-                    things = TiberiumInfo.TiberiumCrystals[HarvestType.Unvaluable]; break;
-            }
-            Log.Message("Revisited count on things list " + things.Count());
-            return things.Select(t => t as Thing);;
         }
 
         public void IterateThroughTiles()

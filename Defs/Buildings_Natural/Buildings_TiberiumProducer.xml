@@ -5,7 +5,7 @@
 		<defName>TiberiumCraterGreen</defName>
 		<label>green tiberium crater</label>
 		<description>The asteroid left a glowing crater full of green crystals, it's radiating a dangerous amount of warmth if you come close. It seems like there are new crystals growing at the edge?</description>
-		<discoverTag>TiberiumProducerCrater</discoverTag>
+		<discoveryDef>TiberiumProducerCrater</discoveryDef>
 		<unknownLabel>strange crater</unknownLabel>
 		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
@@ -136,7 +136,7 @@
 		<defName>TiberiumCraterHybrid</defName>
 		<label>hybrid tiberium crater</label>
 		<description>The asteroid left a strange crater full of green and blue crystals, observing it shows that that over time both types slowly spread at the edge.</description>
-		<discoverTag>TiberiumProducerCrater</discoverTag>
+		<discoveryDef>TiberiumProducerCrater</discoveryDef>
 		<unknownLabel>strange crater</unknownLabel>
 		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
@@ -336,7 +336,7 @@
 		<defName>TiberiumCraterBlue</defName>
 		<label>blue tiberium crater</label>
 		<description>The asteroid left this glowing crater full of blue crystals, the blue glow is nice to look at. It seems like there are new crystals growing at the edges?</description>
-		<discoverTag>TiberiumProducerCrater</discoverTag>
+		<discoveryDef>TiberiumProducerCrater</discoveryDef>
 		<unknownLabel>strange crater</unknownLabel>
 		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
@@ -520,7 +520,7 @@
 		<defName>TiberiumCruentus</defName>
 		<label>tiberium cruentus</label>
 		<description>This massive crystalline tower will slowly mature over the period of 7 days and detonate into an explosion of tiberium spores, easily covering the landscape with tiberium.</description>
-		<discoverTag>TiberiumProducerCrater</discoverTag>
+		<discoveryDef>TiberiumProducerCrater</discoveryDef>
 		<unknownLabel>strange formation</unknownLabel>
 		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<altitudeLayer>Floor</altitudeLayer>
@@ -623,7 +623,7 @@
 		<defName>TiberiumMonolith</defName>
 		<label>blue tiberium monolith</label>
 		<description>A blue monolith. These monoliths form from patches of blue Tiberium, and usually spread via tiny tiberium particles created by an explosion.</description>
-		<discoverTag>TiberiumProducerCrater</discoverTag>
+		<discoveryDef>TiberiumProducerCrater</discoveryDef>
 		<unknownLabel>strange monolith</unknownLabel>
 		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
@@ -686,7 +686,7 @@
 		<defName>RedTiberiumShard</defName>
 		<label>red tiberium spire</label>
 		<description>This massive red spire is of extraterrestrial origin. It has a very uneasy feeling to it and should be met with caution. The ground around it seems to very slowly grow red crystals similar to the shard.</description>
-		<discoverTag>TiberiumProducerCrater</discoverTag>
+		<discoveryDef>TiberiumProducerCrater</discoveryDef>
 		<unknownLabel>strange spire</unknownLabel>
 		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
@@ -809,7 +809,7 @@
 		<thingClass>TiberiumRim.Veinhole</thingClass>
 		<label>veinhole</label>
 		<description>The Veinhole is a type for itself, it is the producer of Tiberium Veins, spawns Veinmonsters and also creates Vein Hubs which are structures that will attack any living being inside their area of effect with veiny tentacles coming out of the ground.\n\nKilling the Veinhole kills all connected Veins and spawned Vein Hubs. The Veinhole has a chance to eat any pawn that comes too close.\n\nComing too close to the center might cause infection by poisonous gases.</description>
-		<discoverTag>VeinholeEncounter</discoverTag>
+		<discoveryDef>VeinholeEncounter</discoveryDef>
 		<unknownLabel>strange creature</unknownLabel>
 		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>

@@ -274,18 +274,18 @@ namespace TiberiumRim
             return damageFactor > 0f;
         }
 
-        public static void TryInfectPawn(Pawn pawn, TiberiumCrystal crystal, bool isGas, int perTicks)
+        public static void TryInfectPawn(Pawn pawn, float infectivity, bool isGas, int perTicks)
         {
             if(pawn.DestroyedOrNull())
                 Log.Error("Trying to infect null Pawn");
 
             //Getting the initial infection value
-            float numCryst = 0.0001f * perTicks;
+            float numCryst = 0.0001f * perTicks * infectivity;
             //Applying Infection Check
             numCryst *= isGas ? 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumGasResistance) : 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumInfectionResistance);
 
             //
-            bool shouldInfect = numCryst > 0 && (crystal?.def.IsInfective ?? isGas);
+            bool shouldInfect = numCryst > 0;
             if (!shouldInfect || !TRUtils.Chance(InfectionChance(pawn, isGas))) return;
             //
             Comp_TRHealthCheck tibCheck = pawn.GetComp<Comp_TRHealthCheck>();
@@ -296,10 +296,6 @@ namespace TiberiumRim
             }
             List<BodyPartRecord> PossibleBodyParts = isGas ? tibCheck.partsForGas : tibCheck.partsForInfection;
             BodyPartRecord selectedPart = PossibleBodyParts.RandomElement();
-
-            //Player's pawns should cause a notification
-            if(pawn.Faction?.IsPlayer ?? false)
-                GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.TiberiumExposure);
 
             if (TouchedCrystal(pawn, selectedPart))
                 InfectPart(pawn, selectedPart, numCryst);
@@ -377,24 +373,23 @@ namespace TiberiumRim
             return num;
         }
 
-        public static bool TryIrradiatePawn(Pawn pawn, TiberiumCrystal crystal, int perTicks)
+        public static bool TryIrradiatePawn(Pawn pawn, float radiation, int perTicks)
         {
             if (pawn.DestroyedOrNull())
                 Log.Error("Trying to irradiate null Pawn");
 
             //Setup Base Rad value based on tick-frequency 
-            float rads = 0.00013f * perTicks;
+            float rads = 0.00013f * perTicks * radiation;
             //Apply Radiation Check
             rads *= 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumRadiationResistance);
 
             //Check validity of radiation
-            if (crystal?.def.tiberium.radiates ?? false) return false;
             if (!(rads > 0)) return false;
 
             //If irradiated, increase value, else, create radiation
-            Hediff radiation = pawn.health.hediffSet.GetFirstHediffOfDef(TRHediffDefOf.TiberiumExposure);
-            if (radiation != null)
-            { radiation.Severity += rads; }
+            Hediff radiationHediff = pawn.health.hediffSet.GetFirstHediffOfDef(TRHediffDefOf.TiberiumExposure);
+            if (radiationHediff != null)
+            { radiationHediff.Severity += rads; }
             else 
             {
                 Hediff hediff = HediffMaker.MakeHediff(TRHediffDefOf.TiberiumExposure, pawn);

@@ -82,12 +82,11 @@ namespace TiberiumRim
                 return;
             }
 
-
+            /*
             if (!startEnum)
                 startEnum = this.IsHashIntervalTick(3000);
             if (startEnum && !Bursting)
             {
-                Log.Message("Starting burst");
                 StartBursting();
             }
 
@@ -107,6 +106,7 @@ namespace TiberiumRim
                     return;
                 }
             }
+            */
 
             /*
                 foreach (IntVec3 pos in CurrentCracks.Keys)

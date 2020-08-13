@@ -9,34 +9,36 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class TiberiumBlossomInfo : ICellBoolGiver, IExposable
+    public class TiberiumBlossomInfo : MapInformation, ICellBoolGiver
     {
-        public CellBoolDrawer drawer;
-        public BoolGrid blossomGrid;
-        private Map map;
+        public readonly CellBoolDrawer drawer;
+        private readonly float mapRadius;
+        private static readonly float minDistance = 30;
 
-        private float mapRadius;
-
-        private  static BoolGrid positionGrid;
+        private TiberiumBlossom[] blossomGrid;
+        private BoolGrid blossomPositionGrid;
+        private BoolGrid positionGrid;
         //private static List<IntVec3> positions;
 
-        public TiberiumBlossomInfo(Map map)
+        public TiberiumBlossomInfo(Map map) : base(map)
         {
-            this.map = map;
             drawer = new CellBoolDrawer(this, map.Size.x, map.Size.z, 0.4f);
             mapRadius = map.Center.DistanceToEdge(map);
-
-            blossomGrid = new BoolGrid(map);
-
-            positionGrid = new BoolGrid(map);
-            //positions = new List<IntVec3>();
-
-            GetPositions();
         }
 
-        public void ExposeData()
+        public override void InfoInit(bool initAfterReload = false)
         {
-            throw new NotImplementedException();
+            base.InfoInit();
+            if (initAfterReload) return;
+            blossomGrid = new TiberiumBlossom[map.cellIndices.NumGridCells];
+            blossomPositionGrid = new BoolGrid(map);
+            positionGrid = new BoolGrid(map);
+        }
+
+        public override void ExposeData()
+        {
+            Scribe_Deep.Look(ref blossomPositionGrid, "blossomPositionGrid");
+            Scribe_Deep.Look(ref positionGrid, "positionGrid");
         }
 
         public bool ShouldTrySpawn { get; set; } = true;
@@ -62,35 +64,43 @@ namespace TiberiumRim
 
         public Color GetCellExtraColor(int index)
         {
-            if (positionGrid[index])
-                return Color.red;
-            return Color.white;
+            return positionGrid[index] ? Color.green : Color.red;
         }
 
         public Color Color => Color.white;
 
         public void RegisterBlossom(TiberiumBlossom blossom)
         {
-            if (!blossomGrid[blossom.Position])
-                blossomGrid.Set(blossom.Position, true);
+            Log.Message("Registering Blossom Tree at " + blossom.PositionHeld);
+            if (!blossomPositionGrid[blossom.Position])
+                blossomPositionGrid.Set(blossom.Position, true);
+            UpdateGrid(blossom, true);
             //positionGrid.Set(blossom.Position, false);
 
         }
 
         public void DeregisterBlossom(TiberiumBlossom blossom)
         {
-            if(blossomGrid[blossom.Position])
-                blossomGrid.Set(blossom.Position, false);
-            if (!positionGrid[blossom.Position])
-                positionGrid.Set(blossom.Position, true);
+            if(blossomPositionGrid[blossom.Position])
+                blossomPositionGrid.Set(blossom.Position, false);
 
+            UpdateGrid(blossom, false);
         }
 
-        public void UpdateGrid()
+        public IntVec3 FindNextBestPosition()
         {
-
+            return positionGrid.ActiveCells.RandomElement();
         }
 
+        public void UpdateGrid(TiberiumBlossom blossom, bool spawning = true)
+        {
+            foreach (var cell in GenRadial.RadialCellsAround(blossom.PositionHeld, minDistance, true))
+            {
+                positionGrid.Set(cell, !spawning);
+            }
+        }
+
+        [Obsolete]
         private void GetPositions()
         {
             Predicate<IntVec3> BlossomCheck = delegate(IntVec3 c)
@@ -119,11 +129,13 @@ namespace TiberiumRim
             }
         }
 
+        [Obsolete]
         private bool HasConflict(IntVec3 pos)
         {
             return positionGrid.ActiveCells.Any(c => pos.DistanceTo(c) < 30f); //positionsBySize[size].Any(c => c.DistanceTo(pos) < radiusBySize[size]);
         }
 
+        [Obsolete]
         //Get The Percentual Value Of The Position Based On The Distance From Center To Edge
         private float PercentileAt(IntVec3 pos)
         {

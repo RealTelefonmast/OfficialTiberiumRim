@@ -12,7 +12,7 @@ namespace TiberiumRim
 {
     public class TiberiumField : IExposable
     {
-        private readonly TiberiumProducer producer;
+        private TiberiumProducer producer;
         private List<TiberiumCrystal> tiberium = new List<TiberiumCrystal>();
         private CellArea fieldCellArea;
 
@@ -42,6 +42,7 @@ namespace TiberiumRim
 
         public void ExposeData()
         {
+            Scribe_References.Look(ref producer, "producer");
             Scribe_Collections.Look(ref tiberium, "tiberiumList", LookMode.Reference);
             Scribe_Deep.Look(ref fieldCellArea, "fieldCells");
         }

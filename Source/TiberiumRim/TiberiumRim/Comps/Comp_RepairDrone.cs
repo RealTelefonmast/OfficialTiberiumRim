@@ -48,7 +48,7 @@ namespace TiberiumRim
                 {
                     if (parent.Map.physicalInteractionReservationManager.IsReserved(mech)) continue;
                     var closestPos = GenAdjFast.AdjacentCells8Way(parent).MinBy(c => c.DistanceTo(mech.Position));
-                    DroneContainer.TryDrop(drone, closestPos, parent.Map, ThingPlaceMode.Direct, out Thing last);
+                    DroneContainer.TryDrop_NewTmp(drone, closestPos, parent.Map, ThingPlaceMode.Direct, out Thing last);
                     var job = new JobWithExtras(DefDatabase<JobDef>.GetNamed("RepairMechanicalPawn"), mech)
                     {
                         loadID = Find.UniqueIDsManager.GetNextJobID(),

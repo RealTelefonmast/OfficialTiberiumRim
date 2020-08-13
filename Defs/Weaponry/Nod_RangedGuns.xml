@@ -115,7 +115,7 @@
 			<RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
 		</statBases>
 		<equippedStatOffsets>
-					<MoveSpeed>0.15</MoveSpeed>
+				<MoveSpeed>0.15</MoveSpeed>
 		</equippedStatOffsets>
 		<costList>			<!-- Add custom recipe component; Tiberium; maybe upgradable using blue tiberium -->
 			<Steel>75</Steel>
@@ -156,9 +156,6 @@
 			<cooldownTime>1.25</cooldownTime>
 		  </li>
 		</tools>
-		<equippedStatOffsets>
-			<MoveSpeed>0.2</MoveSpeed>
-		</equippedStatOffsets>
 		<weaponTags>
 			<li>TwinFlechetteGun</li>
 		</weaponTags>
@@ -346,7 +343,7 @@
 				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>				
 				<warmupTime>2</warmupTime>
 				<range>14.9</range>
-				<forcedMissRadius>0</forcedMissRadius>
+				<forcedMissRadius>0.25</forcedMissRadius>
 				<burstShotCount>15</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_Flame</soundCast>
@@ -529,6 +526,10 @@
 			<texPath>Items/Weapons/Nod/Grenades</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<menuHidden>true</menuHidden>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
 		<statBases>
 			<MaxHitPoints>50</MaxHitPoints>
 			<WorkToMake>25000</WorkToMake>
@@ -546,12 +547,9 @@
 		<weaponTags>
 			<li>NodGrenade</li>
 		</weaponTags>
-		<tradeTags>
-			<li>Exotic</li>
-		</tradeTags>
 		<verbs>
 			<li>
-				<verbClass>Verb_LaunchProjectile</verbClass>
+				<verbClass>Verb_LaunchProjectileStatic</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Nod_Grenade</defaultProjectile>
 				<warmupTime>2</warmupTime>

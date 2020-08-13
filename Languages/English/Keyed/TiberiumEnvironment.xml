@@ -7,7 +7,7 @@
 	<TR_Deterioration>tiberium exposure</TR_Deterioration>
 	
 	<TR_NewDiscovery>New Discovery!</TR_NewDiscovery>
-	<TR_NewDiscoveryDesc>We have discovered new information!</TR_NewDiscoveryDesc>
+	<TR_NewDiscoveryDesc>We have discovered new information!\n\n{0}</TR_NewDiscoveryDesc>
 	<!-- Infection -->
 	
 	<TR_HediffFusing>Fusing</TR_HediffFusing>

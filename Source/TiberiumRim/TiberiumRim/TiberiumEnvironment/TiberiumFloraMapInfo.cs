@@ -7,23 +7,29 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class TiberiumFloraMapInfo
+    public class TiberiumFloraMapInfo : MapInformation
     {
-        public Map map;
-        private readonly TiberiumFloraGrid floraGrid;
+        private TiberiumFloraGrid floraGrid;
 
-        public List<TiberiumGarden> Gardens;
-        public List<TiberiumPond> Ponds;
+        public List<TiberiumGarden> gardens;
 
-        public TiberiumFloraMapInfo(Map map)
+        public TiberiumFloraMapInfo(Map map) : base(map)
         {
-            this.map = map;
             floraGrid = new TiberiumFloraGrid(map);
-            //Init();
         }
 
-        public void Init()
+        public override void ExposeData()
         {
+            base.ExposeData();
+
+        }
+
+        public override void InfoInit(bool initAfterReload = false)
+        {
+            base.InfoInit();
+            if (initAfterReload) return;
+
+            /*
             LongEventHandler.QueueLongEvent(delegate ()
             {
                 FloodFiller filler = map.floodFiller;
@@ -38,10 +44,11 @@ namespace TiberiumRim
                             floraGrid.SetGrow(cell, true);
                             garden.AddCell(cell);
                         });
-                        Gardens.Add(garden);
+                        gardens.Add(garden);
                     }
                 }
             }, "SettingFloraBools", false, null);
+            */
         }
 
         public void FloraTick()

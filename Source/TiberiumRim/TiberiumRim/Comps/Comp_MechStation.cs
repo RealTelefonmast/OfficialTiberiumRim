@@ -9,7 +9,7 @@ namespace TiberiumRim
 {
     public class Comp_MechStation : Comp_Upgradable, IMechSpawner, IThingHolder
     {
-        private CurrentMech mech;
+        private MakeableMech mech;
         protected ThingOwner<MechanicalPawn> container;
         protected List<MechanicalPawn> storedMechs = new List<MechanicalPawn>();
 
@@ -74,10 +74,15 @@ namespace TiberiumRim
             return mech;
         }
 
-        private sealed class CurrentMech : IExposable
+        private sealed class MakeableMech : IExposable
         {
-            public PawnKindDef mechDef;
-            public Dictionary<MechRecipePart, List<ThingDefCount>> resources = new Dictionary<MechRecipePart, List<ThingDefCount>>();
+            private MechanicalPawnKindDef mechDef;
+            private Dictionary<MechRecipePart, List<ThingDefCount>> resources = new Dictionary<MechRecipePart, List<ThingDefCount>>();
+
+            public MakeableMech(MechanicalPawnKindDef def)
+            {
+                mechDef = def;
+            }
 
             public float Progress
             {

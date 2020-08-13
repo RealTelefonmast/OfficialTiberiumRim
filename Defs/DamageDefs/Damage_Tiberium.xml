@@ -26,40 +26,12 @@
 		<deathMessage>{0} inhaled Tiberium gas.</deathMessage>
 	</DamageDef>
 	
-	
-	<DamageDef ParentName="ProjectileBase_TR">
-		<defName>TRTiberiumBomb</defName>
-		<label>tiberium bomb</label>
-		<externalViolence>true</externalViolence>
-		<isExplosive>true</isExplosive>
-		<deathMessage>{0} has died in the tiberium gas.</deathMessage>
-		<workerClass>DamageWorker_Flame</workerClass>
-		<hediff>Burn</hediff>
-		<hediffSolid>Crack</hediffSolid>
-		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
-		<impactSoundType>Blunt</impactSoundType>
-		<armorCategory>Blunt</armorCategory>
-		<minDamageToFragment>1</minDamageToFragment>
-		<defaultDamage>10</defaultDamage>
-		<defaultArmorPenetration>1.5</defaultArmorPenetration>
-		<defaultStoppingPower>2.0</defaultStoppingPower>
-		<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
-		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
-		<explosionCellMote>Mote_Nuke</explosionCellMote>
-		<explosionColorCenter>(0.25, 1, 0.25)</explosionColorCenter>
-		<explosionColorEdge>(0.1, 0.5, 0.1)</explosionColorEdge>
-		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
-		<combatLogRules>Damage_Bomb</combatLogRules>
-		<soundExplosion>Nod_ChemBomb</soundExplosion>
-		<makesAnimalsFlee>true</makesAnimalsFlee>
-	</DamageDef>
-
 	<DamageDef ParentName="TiberiumDamage_Impact">
 		<defName>TRTiberiumShotGreen</defName>
 		<label>tiberium shot</label>
 		<externalViolence>true</externalViolence>
 		<isExplosive>false</isExplosive>
-		<deathMessage>{0} has died in the tiberium gas.</deathMessage>
+		<deathMessage>{0} has died by green tiberium fragments.</deathMessage>
 		<workerClass>DamageWorker_Flame</workerClass>
 		<hediff>Burn</hediff>
 		<hediffSolid>Crack</hediffSolid>
@@ -84,7 +56,7 @@
 		<label>blue tiberium shot</label>
 		<externalViolence>true</externalViolence>
 		<isExplosive>false</isExplosive>
-		<deathMessage>{0} has died in the tiberium gas.</deathMessage>
+		<deathMessage>{0} has died by blue tiberium fragments.</deathMessage>
 		<workerClass>DamageWorker_Flame</workerClass>
 		<hediff>Burn</hediff>
 		<hediffSolid>Crack</hediffSolid>

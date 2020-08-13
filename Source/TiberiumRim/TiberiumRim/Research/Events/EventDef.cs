@@ -13,9 +13,9 @@ namespace TiberiumRim
     //TODO: Expand EventScannerTable
     public class DiscoveryProperties
     {
-        public List<string> thingsToDiscover;
+        public List<DiscoveryDef> thingsToDiscover;
 
-        public void Discover()
+        public void Discover(string desc = default)
         {
             thingsToDiscover.ForEach(d => TRUtils.DiscoveryTable().Discover(d));
         }

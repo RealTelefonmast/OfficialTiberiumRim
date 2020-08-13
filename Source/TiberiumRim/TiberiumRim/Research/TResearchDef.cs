@@ -152,6 +152,8 @@ namespace TiberiumRim
             }
         }
 
+        public bool CanCheckTargets => creationTasks != null;
+
         public bool HasAnyTarget => !PossibleMainTargets.NullOrEmpty();
         public bool HasSingleTarget => PossibleMainTargets.Count == 1;
         public ThingDef MainTarget => PossibleMainTargets.FirstOrDefault();
@@ -194,11 +196,6 @@ namespace TiberiumRim
 
         //The task check acts allows the task to have a goal for the player
         public virtual bool PlayerTaskCompleted()
-        {
-            return true;
-        }
-
-        public bool CheckConstructed()
         {
             return true;
         }

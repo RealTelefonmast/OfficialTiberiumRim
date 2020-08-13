@@ -7,6 +7,7 @@ using Verse;
 using Verse.AI;
 using RimWorld;
 using System.Collections;
+using System.Runtime.CompilerServices;
 
 namespace TiberiumRim
 {
@@ -35,148 +36,78 @@ namespace TiberiumRim
         public List<TiberiumValueType> acceptedTypes = new List<TiberiumValueType>();
     }
 
-    [StaticConstructorOnStartup]
-    public class Harvester : MechanicalPawn
+    public class Harvester : MechanicalPawn, IContainerHolder
     {
         public new HarvesterKindDef kindDef;
-        public TiberiumContainer Container;
-        public bool forceReturn = false;
+        protected TiberiumContainer container;
 
-        private int waitingTicks = -1;
-        private CompTNW_Refinery mainRefinery;
+        private LocalTargetInfo idlePosition;
+        private int waitingTicksRemaining = -1;
 
-        //SearchSettings
-        public HarvestMode harvestMode = HarvestMode.Nearest;
-        public TiberiumProducer preferredField;
-        public TiberiumCrystalDef preferredType;
+        //Settings
+        private bool forceReturn = false;
+        private HarvestMode harvestMode = HarvestMode.Nearest;
+        private TiberiumProducer preferredProducer;
+        private TiberiumCrystalDef preferredType;
 
-        // ProgressBar
-        private static readonly Material UnfilledMat = SolidColorMaterials.NewSolidColorMaterial(new Color(0.3f, 0.3f, 0.3f, 0.65f), ShaderDatabase.MetaOverlay);
-        private static readonly Material FilledMat = SolidColorMaterials.NewSolidColorMaterial(new Color(0f, 1f, 1f, 1f), ShaderDatabase.MetaOverlay);
 
-        public override void ExposeData()
+        public TiberiumContainer Container => container;
+
+        public TiberiumProducer PreferredProducer
         {
-            base.ExposeData();             
-            Scribe_Values.Look(ref forceReturn, "forceReturn");
-            Scribe_Values.Look(ref harvestMode, "harvestMode");
-            Scribe_Deep.Look(ref Container, "TiberiumContainer", new object[] { this });
-            if(Scribe.mode == LoadSaveMode.PostLoadInit)
-            {
-                mainRefinery = ParentBuilding.GetComp<CompTNW_Refinery>();
-            }
+            get => preferredProducer;
+            private set => preferredProducer = value;
+        }
+        public TiberiumCrystalDef PreferredType
+        {
+            get => preferredType;
+            private set => preferredType = value;
         }
 
-        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        public CompTNW_Refinery MainRefinery { get; set; }
+
+        public bool ShouldNotifyEVA => false;
+        public bool ForceReturn
         {
-            base.SpawnSetup(map, respawningAfterLoad);
-            TNWManager.RegisterHarvester(this);
-            this.kindDef = (HarvesterKindDef)base.kindDef;
-            if (!respawningAfterLoad)
-            {
-                Container = new TiberiumContainer(kindDef.maxStorage, kindDef.acceptedTypes, this);
-                if (ParentBuilding == null)
-                { UpdateRefineries(); }
-            }
+            get => forceReturn;
+            private set => forceReturn = value;
         }
 
-        public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
-        {
-            TNWManager.DeregisterHarvester(this);
-            base.DeSpawn(mode);
-        }
+        public IntVec3 IdlePos => MainRefinery?.PositionFor(this) ?? Position;
 
-        public override void Kill(DamageInfo? dinfo, Hediff exactCulprit = null)
-        {
-            if(Container.TotalStorage > 0)
-            {
-                var spawnDef = TRUtils.CrystalDefFromType(Container.MainValueType, out bool isGas);
-                float radius = kindDef.explosionRadius * Container.StoredPercent;
-                int damage = (int)(10 * Container.StoredPercent);
-                //TODO: Add Tiberium damagedef
-                GenExplosion.DoExplosion(Position, Map,radius, DamageDefOf.Bomb, this, damage, 5, null, null, null, null, spawnDef, 0.18f);
-            }
-            GenSpawn.Spawn(kindDef.wreckDef, Position, Map);
-            DeSpawn(DestroyMode.KillFinalize);
-        }
+        //Status Bools
+        public bool ShouldIdle => CurrentPriority == HarvesterPriority.Idle;
+        public bool ShouldHarvest => CurrentPriority == HarvesterPriority.Harvest;
+        public bool ShouldUnload => CurrentPriority == HarvesterPriority.Unload;
 
-        public override void Tick()
-        {
-            base.Tick();
-            if (this.Downed)
-                this.Kill(null);
-            if (waitingTicks > 0)
-                waitingTicks--;
-            if (MainRefineryLost)
-                UpdateRefineries();
-        }
+        public bool MainRefineryLost => ParentBuilding.DestroyedOrNull() || MainRefinery == null;
+        private bool HasAvailableTiberium => HarvestMode == HarvestMode.Moss ? TiberiumManager.MossAvailable : TiberiumManager.TiberiumAvailable;
 
+        private bool ShouldReturn => ForceReturn || (MainRefinery?.RecallHarvesters ?? true);
+        private bool IsWaiting => waitingTicksRemaining > 0;
+
+        public bool CanHarvest => !Container.CapacityFull && HasAvailableTiberium;
+        public bool CanUnload => MainRefinery != null && MainRefinery.CanBeRefinedAt && this.CanReserve(MainRefinery.parent);
+        public bool Unloading => this.CurJobDef == TiberiumDefOf.UnloadAtRefinery;
+
+
+        //FX Settings
         public override Color[] ColorOverrides => new Color[] { Container.Color };
         public override float[] OpacityFloats => new float[] { Container.StoredPercent };
         public override bool[] DrawBools => new bool[] { true };
 
-        public List<TiberiumCrystal> HarvestQueue
+        public HarvestMode HarvestMode
         {
-            get
-            {
-                if(!TNWManager.ReservationManager.TargetValidFor(this))
-                {
-                    TNWManager.ReservationManager.FillQueuesForExistingHarvesters();
-                }
-                return TNWManager.ReservationManager.ReservedQueues[this];
-            }
+            get => harvestMode;
+            private set => harvestMode = value;
         }
-
-        public void SetMainRefinery(Building building)
-        {
-            if (ParentBuilding == building) return;
-            mainRefinery?.RemoveHarvester(this);
-            ParentBuilding = building;
-            mainRefinery = building.TryGetComp<CompTNW_Refinery>();
-            mainRefinery.AddHarvester(this);
-            Messages.Message("TR_HarvesterNewRefinery".Translate(this.def.LabelCap), new LookTargets(building, this), MessageTypeDefOf.NeutralEvent);
-        }
-
-        public void SetToWait()
-        {
-            waitingTicks = GenTicks.SecondsToTicks(15);
-        }
-
-        public CompTNW_Refinery CurrentRefinery => mainRefinery.CanBeRefinedAt ? mainRefinery : AvailableRefinery;
-
-        private CompTNW_Refinery AvailableRefinery
-        {
-            get
-            {
-                return TNWManager.MainStructureSet.Refineries.Find(r => r.CanBeRefinedAt);
-            }
-        }
-
-        public void UpdateRefineries(Building forceMain = null, CompTNW_Refinery toIgnore = null)
-        {
-            if (forceMain != null)
-            {
-                SetMainRefinery(forceMain);
-                return;
-            }
-            foreach (CompTNW_Refinery refinery in TNWManager.MainStructureSet.Refineries)
-            {
-                if (refinery != null && refinery != toIgnore)
-                {
-                    SetMainRefinery((Building)refinery.parent);
-                }
-            }
-        }
-
-        public IntVec3 IdlePos => ParentBuilding != null ? mainRefinery.PositionFor(this) : Position;
-
-        private bool HasAvailableTiberium => harvestMode == HarvestMode.Moss ? TiberiumManager.MossAvailable : TiberiumManager.TiberiumAvailable;
 
         public HarvesterPriority CurrentPriority
         {
             get
             {
                 if (Drafted) return HarvesterPriority.None;
-                if (!IsWaiting && !ForcedReturn && !Unloading && !Container.CapacityFull && HasAvailableTiberium)
+                if (!IsWaiting && !ShouldReturn && !Unloading && CanHarvest)
                 {
                     return HarvesterPriority.Harvest;
                 }
@@ -188,32 +119,109 @@ namespace TiberiumRim
             }
         }
 
-        private Texture2D TextureForMode
+        public override void ExposeData()
         {
-            get
+            base.ExposeData();
+            //Settings
+            Scribe_Values.Look(ref forceReturn, "ForceReturn;");
+            Scribe_Values.Look(ref harvestMode, "HarvestMode");
+            Scribe_References.Look(ref preferredProducer, "prefProducer");
+            Scribe_Defs.Look(ref preferredType, "prefType");
+            //Data
+            Scribe_Deep.Look(ref container, "tibContainer");
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
-                switch (harvestMode)
-                {
-                    case HarvestMode.Nearest:
-                        return TiberiumContent.HarvesterNearest;
-                    case HarvestMode.Value:
-                        return TiberiumContent.HarvesterValue;
-                    case HarvestMode.Moss:
-                        return TiberiumContent.HarvesterMoss;
-                }
-                return BaseContent.BadTex;
+                SetMainRefinery(parent, false);
             }
         }
 
-        public bool IsWaiting => waitingTicks > 0;
-        public bool ForcedReturn => forceReturn || (mainRefinery?.recallHarvesters ?? true);
-        public bool CanUnload => CurrentRefinery != null && this.CanReserve(CurrentRefinery.parent);
-        public bool MainRefineryLost => ParentBuilding.DestroyedOrNull() || mainRefinery == null;
-        public bool Unloading => this.CurJobDef == TiberiumDefOf.UnloadAtRefinery;
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            this.kindDef = (HarvesterKindDef)base.kindDef;
+            if (!respawningAfterLoad)
+            {
+                container = new TiberiumContainer(kindDef.maxStorage, kindDef.acceptedTypes, this, this);
+                if (ParentBuilding == null)
+                { UpdateRefineries(); }
+            }
 
-        public bool ShouldIdle => CurrentPriority == HarvesterPriority.Idle;
-        public bool ShouldHarvest => CurrentPriority == HarvesterPriority.Harvest;
-        public bool ShouldUnload => CurrentPriority == HarvesterPriority.Unload;
+            TiberiumManager.HarvesterInfo.RegisterHarvester(this);
+        }
+
+        public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
+        {
+            TiberiumManager.HarvesterInfo.DeregisterHarvester(this);
+            base.DeSpawn(mode);
+        }
+
+        public override void Kill(DamageInfo? dinfo, Hediff exactCulprit = null)
+        {
+            if (Container.TotalStorage > 0)
+            {
+                var spawnDef = TRUtils.CrystalDefFromType(Container.MainValueType, out bool isGas);
+                float radius = kindDef.explosionRadius * Container.StoredPercent;
+                int damage = (int)(10 * Container.StoredPercent);
+                //TODO: Add Tiberium damagedef
+                GenExplosion.DoExplosion(Position, Map, radius, DamageDefOf.Bomb, this, damage, 5, null, null, null, null, spawnDef, 0.18f);
+            }
+            GenSpawn.Spawn(kindDef.wreckDef, Position, Map);
+            this.DeSpawn(DestroyMode.KillFinalize);
+        }
+
+        public override void PostApplyDamage(DamageInfo dinfo, float totalDamageDealt)
+        {
+            base.PostApplyDamage(dinfo, totalDamageDealt);
+            //TODO: Potential loss of tiberium
+        }
+
+        public override void Tick()
+        {
+            base.Tick();
+            if (this.Downed)
+                this.Kill(null);
+            if (waitingTicksRemaining > 0)
+                waitingTicksRemaining--;
+            if (MainRefineryLost)
+                UpdateRefineries();
+        }
+
+        public bool CorrectModeFor(TiberiumCrystalDef crystalDef)
+        {
+            return crystalDef.IsMoss ? HarvestMode == HarvestMode.Moss : HarvestMode != HarvestMode.Moss;
+        }
+
+        public void UpdateRefineries(Building setMain = null, CompTNW toIgnore = null)
+        {
+            if (setMain != null)
+            {
+                SetMainRefinery(setMain, false);
+                return;
+            }
+
+            if (TNWManager.MainStructureSet.Refineries.NullOrEmpty()) return;
+
+            foreach (var refinery in TNWManager.MainStructureSet.Refineries.Where(refinery =>!refinery.parent.DestroyedOrNull() && refinery != toIgnore))
+            {
+                SetMainRefinery((Building) refinery.parent);
+            }
+        }
+
+        public void SetMainRefinery(Building building, bool newRef = true)
+        {
+            if (ParentBuilding == building) return;
+            //Clear Current Refinery
+            MainRefinery?.RemoveHarvester(this);
+
+            ParentBuilding = building;
+            MainRefinery   = building.TryGetComp<CompTNW_Refinery>();
+            MainRefinery.AddHarvester(this);
+
+            if(newRef) Messages.Message("TR_HarvesterNewRefinery".Translate(this.def.LabelCap), new LookTargets(building, this), MessageTypeDefOf.NeutralEvent);
+        }
+
+
+        public void Notify_ContainerFull() { }
 
         public override void Draw()
         {
@@ -225,83 +233,87 @@ namespace TiberiumRim
                 r.center.z += 1.5f;
                 r.size = new Vector2(3, 0.15f);
                 r.fillPercent = Container.StoredPercent;
-                r.filledMat = FilledMat;
-                r.unfilledMat = UnfilledMat;
+                r.filledMat = TiberiumContent.Harvester_FilledBar;
+                r.unfilledMat = TiberiumContent.Harvester_EmptyBar;
                 r.margin = 0.12f;
                 GenDraw.DrawFillableBar(r);
             }
         }
 
-        public override string GetInspectString()
+        private Texture2D HarvestModeTexture
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendFormat(base.GetInspectString());
-            sb.AppendLine();
-            if (DebugSettings.godMode)
+            get
             {
-                sb.AppendLine("##Debug##");
-                if (IsWaiting)
+                return HarvestMode switch
                 {
-                    sb.AppendLine("Waiting: " + waitingTicks.TicksToSeconds());
-                }
-
-                sb.AppendLine("Drafted: " + Drafted);
-                sb.AppendLine("Is Waiting: " + IsWaiting);
-                sb.AppendLine("Forced Return: " + ForcedReturn);
-                sb.AppendLine("Unloading: " + Unloading);
-                sb.AppendLine("Capacity Full: " + Container.CapacityFull);
-                sb.AppendLine("Tiberium f/mode Available: " + HasAvailableTiberium);
-                sb.AppendLine("Can Unload: " + CanUnload);
-
-                sb.AppendLine("Exact Storage: " + Container.TotalStorage);
-                sb.AppendLine("Should Harvest: " + ShouldHarvest);
-                sb.AppendLine("Should Unload: " + ShouldUnload);
-                sb.AppendLine("Should Idle: " + ShouldIdle);
-                sb.AppendLine("Mode: " + harvestMode);
-                sb.AppendLine("HarvesterQueue: " + HarvestQueue.Count);
-                //sb.AppendLine("Current Harvest Target: " + CurrentHarvestTarget);               
-                //sb.AppendLine("Valid: " + TNWManager.ReservationManager.TargetValidFor(this) + " CanBeHarvested: " + CurrentHarvestTarget?.CanBeHarvestedBy(this) + " Spawned: " + CurrentHarvestTarget?.Spawned + " Destroyed: " + CurrentHarvestTarget?.Destroyed);
+                    HarvestMode.Nearest => TiberiumContent.HarvesterNearest,
+                    HarvestMode.Value => TiberiumContent.HarvesterValue,
+                    HarvestMode.Moss => TiberiumContent.HarvesterMoss,
+                    _ => BaseContent.BadTex
+                };
             }
-            return sb.ToString().TrimEndNewlines();
         }
 
         public override IEnumerable<Gizmo> GetGizmos()
         {
-            foreach (Gizmo g in base.GetGizmos())
+            foreach (var gizmo in base.GetGizmos())
             {
-                yield return g;
+                yield return gizmo;
             }
 
-            if (this.Faction != Faction.OfPlayer) yield break;
+            if (Faction != Faction.OfPlayer) yield break;
 
             if (DebugSettings.godMode)
             {
-
             }
 
-            foreach (Gizmo g in Container.GetGizmos())
+            foreach (var g in Container.GetGizmos())
             {
                 yield return g;
             }
 
+            //Preferences
             yield return new Command_Action
             {
                 defaultLabel = "TR_HarvesterMode".Translate(),
                 defaultDesc = "TR_HarvesterModeDesc".Translate(),
-                icon = TextureForMode,
+                icon = HarvestModeTexture,
                 action = delegate
                 {
                     List<FloatMenuOption> list = new List<FloatMenuOption>();
                     list.Add(new FloatMenuOption("TRHMode_Nearest".Translate(),
-                        delegate() { harvestMode = HarvestMode.Nearest; }));
+                        delegate () { harvestMode = HarvestMode.Nearest; }));
                     list.Add(new FloatMenuOption("TRHMode_Valuable".Translate(),
-                        delegate() { harvestMode = HarvestMode.Value; }));
+                        delegate () { harvestMode = HarvestMode.Value; }));
                     list.Add(new FloatMenuOption("TRHMode_Moss".Translate(),
-                        delegate() { harvestMode = HarvestMode.Moss; }));
+                        delegate () { harvestMode = HarvestMode.Moss; }));
                     FloatMenu menu = new FloatMenu(list);
                     menu.vanishIfMouseDistant = true;
                     Find.WindowStack.Add(menu);
                 },
+            };
+
+            yield return new Command_Target
+            {
+                defaultLabel = "TR_ProducerPrefLabel".Translate(),
+                defaultDesc = "TR_ProducerPrefDesc".Translate(),
+                icon = BaseContent.BadTex,
+                action = delegate (Thing thing)
+                {
+
+                }
+            };
+
+
+            yield return new Command_Action
+            {
+                defaultLabel = "TR_TypePrefLabel".Translate(),
+                defaultDesc = "TR_TypePrefDesc".Translate(),
+                icon = BaseContent.BadTex,
+                action =
+                {
+
+                }
             };
 
             yield return new Command_Action
@@ -322,7 +334,7 @@ namespace TiberiumRim
                 defaultDesc = "TR_HarvesterRefineryDesc".Translate(),
                 icon = TiberiumContent.HarvesterRefinery,
                 targetingParams = RefineryTargetInfo.ForHarvester(),
-                action = delegate(Thing thing)
+                action = delegate (Thing thing)
                 {
                     if (thing != null)
                     {
@@ -333,6 +345,42 @@ namespace TiberiumRim
                     }
                 },
             };
+        }
+
+        public override string GetInspectString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat(base.GetInspectString());
+            sb.AppendLine();
+            if (DebugSettings.godMode)
+            {
+                sb.AppendLine("##Debug##");
+                /*
+                if (IsWaiting)
+                {
+                    sb.AppendLine("Waiting: " + waitingTicks.TicksToSeconds());
+                }
+
+                sb.AppendLine("Drafted: " + Drafted);
+                sb.AppendLine("Is Waiting: " + IsWaiting);
+                sb.AppendLine("Forced Return: " + ForcedReturn);
+                sb.AppendLine("Unloading: " + Unloading);
+                sb.AppendLine("Capacity Full: " + Container.CapacityFull);
+                sb.AppendLine("Tiberium f/mode Available: " + HasAvailableTiberium);
+                sb.AppendLine("Can Unload: " + CanUnload);
+
+                sb.AppendLine("Exact Storage: " + Container.TotalStorage);
+                sb.AppendLine("Should Harvest: " + ShouldHarvest);
+                sb.AppendLine("Should Unload: " + ShouldUnload);
+                sb.AppendLine("Should Idle: " + ShouldIdle);
+                sb.AppendLine("Mode: " + harvestMode);
+                sb.AppendLine("HarvesterQueue: " + HarvestQueue.Count);
+                sb.AppendLine("Contained In Queue:" + HarvestQueue.ToStringSafeEnumerable());
+                */
+                //sb.AppendLine("Current Harvest Target: " + CurrentHarvestTarget);               
+                //sb.AppendLine("Valid: " + TNWManager.ReservationManager.TargetValidFor(this) + " CanBeHarvested: " + CurrentHarvestTarget?.CanBeHarvestedBy(this) + " Spawned: " + CurrentHarvestTarget?.Spawned + " Destroyed: " + CurrentHarvestTarget?.Destroyed);
+            }
+            return sb.ToString().TrimEndNewlines();
         }
     }
 }

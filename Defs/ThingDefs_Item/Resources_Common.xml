@@ -71,7 +71,7 @@
 		<comps>
 			<li Class="CompProperties_Explosive">
 				<explosiveRadius>3</explosiveRadius>
-				<explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
+				<explosiveDamageType>TiberiumExplosionLQ</explosiveDamageType>
 				<explosiveExpandPerStackcount>0.5</explosiveExpandPerStackcount>
 				<startWickHitPointsPercent>0.2</startWickHitPointsPercent>
 				<wickTicks>

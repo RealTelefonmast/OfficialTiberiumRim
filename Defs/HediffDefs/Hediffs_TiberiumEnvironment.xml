@@ -41,7 +41,6 @@
 			<li Class="HediffCompProperties_Immunizable">
 				<severityPerDayNotImmune>-0.08</severityPerDayNotImmune>
 			</li>
-
 		</comps>
 	</HediffDef>
 
@@ -66,7 +65,7 @@
 				<severityPerDayNotImmune>-0.08</severityPerDayNotImmune>
 			</li>
 			<li Class="TiberiumRim.HediffCompProperties_Icon">
-				<iconPath>UI/Icons/TiberiumImmune</iconPath>
+				<iconPath>UI/Icons/Hediffs/Radiation</iconPath>
 			</li>
 		</comps>
 		<stages>
@@ -204,6 +203,11 @@
 		<everCurableByItem>false</everCurableByItem>
 		<isBad>true</isBad>
 		<makesAlert>false</makesAlert>
+		<comps>
+			<li Class="TiberiumRim.HediffCompProperties_Icon">
+				<iconPath>UI/Icons/Hediffs/Crystallizing</iconPath>
+			</li>
+		</comps>
 		<stages>
 			<li>
 				<minSeverity>0</minSeverity>
@@ -213,19 +217,19 @@
 			<li>
 				<minSeverity>0.01</minSeverity>
 				<label>crystallizing</label>
-				<painOffset>0.75</painOffset>
+				<painOffset>0.05</painOffset>
 			</li>
 			<li>
 				<minSeverity>0.25</minSeverity>
 				<label>crystallizing</label>
 				<partEfficiencyOffset>-0.25</partEfficiencyOffset>
-				<painOffset>0.5</painOffset>
+				<painOffset>0.1</painOffset>
 			</li>
 			<li>
 				<minSeverity>0.55</minSeverity>
 				<label>crystallizing</label>
 				<partEfficiencyOffset>-0.5</partEfficiencyOffset>
-				<painOffset>0.4</painOffset>
+				<painOffset>0.15</painOffset>
 			</li>
 			<li>
 				<minSeverity>0.75</minSeverity>

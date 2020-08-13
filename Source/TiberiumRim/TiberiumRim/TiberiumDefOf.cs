@@ -109,6 +109,8 @@ namespace TiberiumRim
         public static StatDef TiberiumRadiationResistance;
         public static StatDef TiberiumDamageResistance;
 
+        public static StatDef ExtraCarryWeight;
+
         // Skyfallers
         public static ThingDef GreenTiberiumMeteorIncoming;
         public static ThingDef BlueTiberiumMeteorIncoming;

@@ -3,7 +3,7 @@
 
 	<TiberiumRim.TResearchGroupDef>
 		<defName>GDIGroup</defName>
-		<label>GDI</label>	
+		<label>GDI (Not Working Yet)</label>	
 		<priority>1</priority>
 		<researchProjects>
 			<li>RelationBond</li>

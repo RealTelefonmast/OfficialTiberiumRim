@@ -26,7 +26,7 @@ namespace TiberiumRim
         //Tiberium Affects These Cells
         public BoolGrid affectedCells;
         //Tiberium Grows Indefinitely On These Cells
-        public BoolGrid forceGrow;
+        public BoolGrid alwaysGrowFrom;
 
         public BoolGrid[] fieldColorGrids;
 
@@ -46,7 +46,7 @@ namespace TiberiumRim
             growFromGrid  = new BoolGrid(map);
             growToGrid    = new BoolGrid(map);
             affectedCells = new BoolGrid(map);
-            forceGrow     = new BoolGrid(map);
+            alwaysGrowFrom     = new BoolGrid(map);
 
             fieldColorGrids = new BoolGrid[] { new BoolGrid(map), new BoolGrid(map), new BoolGrid(map) };
 
@@ -56,7 +56,7 @@ namespace TiberiumRim
 
         public void ExposeData()
         {
-            Scribe_Deep.Look(ref forceGrow, "forceGrowGrid");
+            Scribe_Deep.Look(ref alwaysGrowFrom, "forceGrowGrid");
         }
 
         //CellBoolGiver
@@ -121,6 +121,7 @@ namespace TiberiumRim
         {
             TiberiumCrystals[map.cellIndices.CellToIndex(c)] = crystal;
             tiberiumGrid.Set(c, value);
+            SetHealthAffects(c);
             MarkDirty(c);
         }
 
@@ -142,6 +143,16 @@ namespace TiberiumRim
             }
         }
 
+        public void SetHealthAffects(IntVec3 c)
+        {
+            TiberiumCrystal crystal = TiberiumCrystals[map.cellIndices.CellToIndex(c)];
+            
+            if(crystal?.def.tiberium.infects ?? true)
+                map.Tiberium().TiberiumAffecter.hediffGrid.SetInfection(c, tiberiumGrid[c] ? 1 : -1);
+            if (crystal?.def.tiberium.radiates ?? true)
+                map.Tiberium().TiberiumAffecter.hediffGrid.SetRadiation(c, tiberiumGrid[c] ? 1 : -1);
+        }
+
         private void SetGrowFromBool(IntVec3 c)
         {
             if (!tiberiumGrid[c])
@@ -156,7 +167,7 @@ namespace TiberiumRim
         private void SetGrowToBool(IntVec3 c)
         {
             //Main Ruleset For Tiberium Spread
-            growToGrid[c] = (forceGrow[c] || !GenTiberium.HasFloraAt(c, map)) && affectedCells[c];
+            growToGrid[c] = (alwaysGrowFrom[c] || !GenTiberium.HasFloraAt(c, map)) && affectedCells[c];
         }
 
         private void SetAffectedBool(IntVec3 c)

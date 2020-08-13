@@ -18,40 +18,50 @@ namespace TiberiumRim
 
         public CompProperties_TiberiumRadiation Props => this.props as CompProperties_TiberiumRadiation;
 
+        public IntVec3 ParentPos { get; set; }
+    
+
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-            cellsPlants.AddRange(GenRadial.RadialCellsAround(parent.Position, Props.radius, true));
-            cellsPawns.AddRange(GenRadial.RadialCellsAround(parent.Position, Props.radius * 0.5f, true));
+            ParentPos = parent.Position;
+            SetRadiation(parent.Map);
+        }
+
+        public override void PostDeSpawn(Map map)
+        {
+            base.PostDeSpawn(map);
+            SetRadiation(map, true);
+        }
+
+        private void SetRadiation(Map map, bool reset = false)
+        {
+            TiberiumHediffGrid grid = map.Tiberium().TiberiumAffecter.hediffGrid;
+            foreach (var pos in GenRadial.RadialCellsAround(ParentPos, Props.radius, true))
+            {
+                if (!pos.InBounds(map)) continue;
+                var intensity = 1f - IntensityAt(pos);
+                grid.SetRadiation(pos, reset ? -intensity : intensity);
+                //grid.SetInfection(pos, intensity / 3f);
+            }
         }
 
         public override void CompTick()
         {
             base.CompTick();
-            if (curTick <= 0)
-            {
-                Irradiate();
-                curTick = TRUtils.Range(Props.interval);
-            }
-            curTick--;
         }
 
         public override void CompTickRare()
         {
             base.CompTickRare();
-            if (curTick <= 0)
-            {
-                Irradiate();
-                curTick = TRUtils.Range(Props.interval);
-            }
-            curTick -= GenTicks.TickRareInterval;
         }
 
-        private float IntensityAt(IntVec3 cell)
+        private double IntensityAt(IntVec3 cell)
         {
-            return parent.Position.DistanceTo(cell) / Props.radius;
+            return (double)parent.Position.DistanceTo(cell) / (double)Props.radius;
         }
 
+        /*
         private void Irradiate()
         {
             foreach (IntVec3 cell in cellsPlants)
@@ -105,6 +115,7 @@ namespace TiberiumRim
                 }
             }
         }
+        */
 
         public override void PostDrawExtraSelectionOverlays()
         {

@@ -65,7 +65,7 @@
 		<defName>TiberiumGreen</defName>
 		<label>green tiberium crystal</label>
 		<description>A glowy green crystal. Looks strangely appealing.</description>
-		<discoverTag>TiberiumCrystalLattice</discoverTag>
+		<discoveryDef>TiberiumCrystalLattice</discoveryDef>
 		<unknownLabel>strange green crystal</unknownLabel>
 		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
@@ -112,7 +112,7 @@
 		<defName>TiberiumBlue</defName>
 		<label>blue tiberium</label>
 		<description>A glowy blue crystal. Beautiful to the eye but of unknown properties.</description>
-		<discoverTag>TiberiumCrystalLattice</discoverTag>
+		<discoveryDef>TiberiumCrystalLattice</discoveryDef>
 		<unknownLabel>strange blue crystal</unknownLabel>
 		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
@@ -165,7 +165,7 @@
 		<defName>TiberiumRed</defName>
 		<label>red tiberium</label>
 		<description>A glowy red crystal. Beautiful to the eye but of unknown properties. It seems strange.</description>
-		<discoverTag>TiberiumCrystalLattice</discoverTag>
+		<discoveryDef>TiberiumCrystalLattice</discoveryDef>
 		<unknownLabel>strange red crystal</unknownLabel>
 		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 		<statBases>
@@ -636,7 +636,7 @@
 
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumVein</defName>
-		<label>vein</label>
+		<label>vein tentacle</label>
 		<description>A stringy, throbbing brown-reddish vein. It grows out of a Veinhole.</description>
 		<thingClass>TiberiumRim.TiberiumVein</thingClass>
 		<statBases>

@@ -15,7 +15,7 @@ namespace TiberiumRim
 
         public override string DescriptionFlavor => Discovered ? DiscoveredDescription : UnknownDescription;
 
-        public string DiscoverTag => def.discoverTag;
+        public DiscoveryDef DiscoveryDef => def.discoveryDef;
         public string DiscoveredLabel => base.Label;
         public string UnknownLabel => def.UnknownLabelCap;
         public string DiscoveredDescription => def.description;
@@ -23,7 +23,7 @@ namespace TiberiumRim
         public string DescriptionExtra => def.extraDescription;
 
         public bool Discovered => !IsDiscoverable || TRUtils.DiscoveryTable().IsDiscovered(this);
-        public bool IsDiscoverable => DiscoverTag != null;
+        public bool IsDiscoverable => DiscoveryDef != null;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -45,10 +45,13 @@ namespace TiberiumRim
         {
             TiberiumComp.StructureInfo.Deregister(this);
             var thingToLeave = def.leavesThing;
-            if (thingToLeave != null)
-                GenSpawn.Spawn(thingToLeave, this.Position, Map);
 
+            Map map = MapHeld;
+            IntVec3 pos = PositionHeld;
             base.DeSpawn(mode);
+
+            if (thingToLeave != null)
+                GenSpawn.Spawn(thingToLeave, pos, map);
         }
 
         public WorldComponent_TR TiberiumRimComp = Find.World.GetComponent<WorldComponent_TR>();
@@ -86,10 +89,9 @@ namespace TiberiumRim
                 yield return new Command_Action()
                 {
                     defaultLabel = "Discover",
-                    action = delegate { TRUtils.DiscoveryTable().Discover(DiscoverTag); }
+                    action = delegate { TRUtils.DiscoveryTable().Discover(DiscoveryDef); }
                 };
             }
-
         }
     }
 }

@@ -50,31 +50,31 @@
 			</li>
 			<li>
 				<signal>Canceled</signal>
-				<ticks>2000</ticks>
+				<ticks>100</ticks>
 			</li>
 			<li>
 				<signal>OnHold</signal>
-				<ticks>2000</ticks>
+				<ticks>100</ticks>
 			</li>
 			<li>
 				<signal>Building</signal>
-				<ticks>2000</ticks>
+				<ticks>100</ticks>
 			</li>
 			<li>
 				<signal>SelectLocation</signal>
-				<ticks>2000</ticks>
+				<ticks>100</ticks>
 			</li>
 			<li>
 				<signal>SelectDestination</signal>
-				<ticks>2000</ticks>
+				<ticks>100</ticks>
 			</li>
 			<li>
 				<signal>SelectDropzone</signal>
-				<ticks>2000</ticks>
+				<ticks>100</ticks>
 			</li>
 			<li>
 				<signal>SelectTarget</signal>
-				<ticks>2000</ticks>
+				<ticks>100</ticks>
 			</li>
 			<li>
 				<signal>SelectUnit</signal>

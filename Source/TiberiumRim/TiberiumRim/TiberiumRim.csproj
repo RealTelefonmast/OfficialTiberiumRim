@@ -111,8 +111,10 @@
     <Compile Include="GameParts\ITab_ContainedPawn_Health.cs" />
     <Compile Include="GameParts\ITab_MechConstruction.cs" />
     <Compile Include="GameParts\ITab_CustomRefineryBills.cs" />
+    <Compile Include="GameParts\HarvesterMapInfo.cs" />
     <Compile Include="GameParts\MapComps\MapComponentWithDraw.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_TiberiumTickManager.cs" />
+    <Compile Include="GameParts\MapInformation.cs" />
     <Compile Include="GameParts\PositionFilter.cs" />
     <Compile Include="GameParts\ScribeList.cs" />
     <Compile Include="GameParts\TerrainFloat.cs" />
@@ -120,8 +122,10 @@
     <Compile Include="GameParts\ThingValue.cs" />
     <Compile Include="GameParts\TiberiumConversionRulesetDef.cs" />
     <Compile Include="GameParts\TiberiumFieldRuleset.cs" />
+    <Compile Include="GameParts\TiberiumHediffGrid.cs" />
     <Compile Include="GameParts\TiberiumResourceValueTable.cs" />
     <Compile Include="GDI\Comp_SonicInhibitor.cs" />
+    <Compile Include="MechanicalPawns\Building_MechStation.cs" />
     <Compile Include="Research\Alert_NewResearch.cs" />
     <Compile Include="Research\CreationProperties.cs" />
     <Compile Include="Research\Events\EventCompositionDef.cs" />
@@ -194,7 +198,6 @@
     <Compile Include="TiberiumEnvironment\TiberiumFloraMapInfo.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumGarden.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumMapRenderer.cs" />
-    <Compile Include="TiberiumEnvironment\TiberiumPond.cs" />
     <Compile Include="TiberiumEnvironment\TiberiumStructureInfo.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_Suppression.cs" />
     <Compile Include="GameParts\MapComps\MapComponent_Terrain.cs" />

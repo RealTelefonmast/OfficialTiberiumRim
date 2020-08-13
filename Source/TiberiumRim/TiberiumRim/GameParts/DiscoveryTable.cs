@@ -8,14 +8,18 @@ using Verse;
 
 namespace TiberiumRim
 {
+    public class DiscoveryDef : Def
+    {
+    }
+
     public class DiscoveryTable : IExposable
     {
-        public Dictionary<string, bool> Discovered = new Dictionary<string, bool>();
+        public Dictionary<DiscoveryDef, bool> Discovered = new Dictionary<DiscoveryDef, bool>();
         public Dictionary<TRThingDef, bool> TRMenuDiscovered = new Dictionary<TRThingDef, bool>();
 
         public void ExposeData()
         {
-            Scribe_Collections.Look(ref Discovered, "discovered");
+            Scribe_Collections.Look(ref Discovered, "discoveredDict");
             Scribe_Collections.Look(ref TRMenuDiscovered, "menuDiscovered");
         }
 
@@ -29,20 +33,20 @@ namespace TiberiumRim
             TRMenuDiscovered.Add(def, true);
         }
 
-        public bool IsDiscovered(string discoverTag)
+        public bool IsDiscovered(DiscoveryDef discovery)
         {
-            return Discovered.TryGetValue(discoverTag, out bool value) && value;
+            return Discovered.TryGetValue(discovery, out bool value) && value;
         }
 
         public bool IsDiscovered(IDiscoverable discoverable)
         {
-            return Discovered.TryGetValue(discoverable.DiscoverTag, out bool value) && value;
+            return IsDiscovered(discoverable.DiscoveryDef);
         }
 
-        public void Discover(string discoverTag)
+        public void Discover(DiscoveryDef discovery)
         {
-            Discovered.Add(discoverTag, true);
-            Find.LetterStack.ReceiveLetter("TR_NewDiscovery".Translate(), "TR_NewDiscoveryDesc".Translate(), TiberiumDefOf.DiscoveryLetter);
+            Discovered.Add(discovery, true);
+            Find.LetterStack.ReceiveLetter("TR_NewDiscovery".Translate(), "TR_NewDiscoveryDesc".Translate(discovery.description), TiberiumDefOf.DiscoveryLetter);
         }
     }
 }

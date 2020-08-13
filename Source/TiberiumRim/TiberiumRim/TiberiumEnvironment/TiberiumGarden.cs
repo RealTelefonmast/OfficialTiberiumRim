@@ -11,14 +11,14 @@ namespace TiberiumRim
     {
         private TiberiumFloraGrid floraGrid;
         private Map map;
-        private IntVec3 center;
-        private List<IntVec3> cells = new List<IntVec3>();
+        private CellArea cells;
 
 
         public TiberiumGarden(TiberiumFloraGrid floraGrid)
         {
             this.floraGrid = floraGrid;
             this.map = floraGrid.map;
+            cells = new CellArea(map);
         }
 
         public void GardenTick()
@@ -26,14 +26,9 @@ namespace TiberiumRim
 
         }
 
-        private void CalculateCenter()
-        {
-
-        }
-
         public void AddCell(IntVec3 cell)
         {
-
+            cells.Add(cell);
         }
 
     }

@@ -42,16 +42,18 @@ namespace TiberiumRim
                 {
                     yield return choice;
                 }
-                
+
                 yield return new DiaOption("TR_OpenTab".Translate())
                 {
                     action = delegate
                     {
                         Find.MainTabsRoot.SetCurrentTab(TiberiumDefOf.TiberiumTab);
-                        MainTabWindow_TibResearch.SelTab = ResearchTabOption.Projects;
+                        var researchWindow = (MainTabWindow_TibResearch) Find.MainTabsRoot.OpenTab.TabWindow;
+                        researchWindow.SelTab = ResearchTabOption.Projects;
                         var proj = events.First(e => !e.unlocksResearch.NullOrEmpty()).unlocksResearch.First();
+                        researchWindow.SelProject = proj;
+
                         var manager = TRUtils.ResearchManager();
-                        MainTabWindow_TibResearch.SelProject = proj;
                         if (!manager.IsOpen(proj.ParentGroup))
                             manager.OpenClose(proj.ParentGroup);
 

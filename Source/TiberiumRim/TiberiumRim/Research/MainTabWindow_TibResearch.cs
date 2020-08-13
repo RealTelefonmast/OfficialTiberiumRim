@@ -86,8 +86,8 @@ namespace TiberiumRim
 
         public TResearchManager Manager => Find.World.GetComponent<TResearchManager>();
 
-        public static ResearchTabOption SelTab { get; set; } = ResearchTabOption.Projects;
-        public static TResearchDef SelProject { get; set; }
+        public ResearchTabOption SelTab { get; set; } = ResearchTabOption.Projects;
+        public TResearchDef SelProject { get; set; }
 
         public TResearchTaskDef CurTask => SelProject.CurrentTask;
 
@@ -421,6 +421,7 @@ namespace TiberiumRim
             Rect LabelRect = new Rect(IconRect.xMax + 4f, rect.y + labelY, labelSize.x, labelSize.y);
             Rect DescriptionRect = new Rect(IconRect.xMax, rect.yMax - labelSize.y, descSize.x, descSize.y);
             Rect RightInfoPartRect = rect.RightPart(0.30f);
+            Rect RecheckButton = RightInfoPartRect.LeftHalf().RightHalf().ContractedBy(2f);
             Rect ProgressBarRect = RightInfoPartRect.RightHalf().TopPart(0.65f).ContractedBy(5f);
 
             Rect debugRect = RightInfoPartRect.LeftHalf().TopHalf();
@@ -439,6 +440,33 @@ namespace TiberiumRim
                     task.Debug_Reset();
             }
 
+            /*Button to check objective state
+            if (task.CanCheckTargets)
+            {
+                Text.Font = GameFont.Medium;
+                Text.Anchor = TextAnchor.MiddleCenter;
+                bool recheckOver = Mouse.IsOver(RecheckButton);
+                Color recheckColor = recheckOver ? Color.white : ColorWhite50P;
+                GUI.color = recheckColor;
+
+                TRWidgets.DrawBox(RecheckButton, recheckColor, 1);
+                Widgets.Label(RecheckButton, "TR_RecheckButton".Translate());
+                if (recheckOver)
+                {
+                    //TipRegion
+                }
+
+                if (Widgets.ButtonInvisible(RecheckButton, false))
+                {
+                    task.CheckTargets();
+                }
+
+                Text.Anchor = default;
+                GUI.color = Color.white;
+                Text.Font = GameFont.Small;
+            }
+            */
+
             ResearchState state = task.State;
             if (state == ResearchState.InProgress)
             {
@@ -454,6 +482,8 @@ namespace TiberiumRim
             }
             if (task == CurTask)
                 TRWidgets.DrawBox(rect, 0.5f, 1);
+
+
 
             Widgets.FillableBar(ProgressBarRect, task.ProgressPct, TRMats.blue, TRMats.black, true);
             Text.Anchor = TextAnchor.MiddleCenter;

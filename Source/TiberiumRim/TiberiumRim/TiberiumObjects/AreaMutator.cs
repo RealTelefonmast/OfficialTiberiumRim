@@ -23,8 +23,8 @@ namespace TiberiumRim
 
         private float radius;
         private float speed = 1;
+        private int ticksLeft = -1;
         private int mutationTicks;
-        private int startTick;
         private bool finished;
 
         public TiberiumFieldRuleset ruleset;
@@ -36,8 +36,8 @@ namespace TiberiumRim
             Scribe_Deep.Look(ref remaining, "remaining");
             Scribe_Values.Look(ref center, "center");
             Scribe_Values.Look(ref finished, "finished");
-            Scribe_Values.Look(ref startTick, "startTick");
             Scribe_Values.Look(ref mutationTicks, "mutationTicks");
+            Scribe_Values.Look(ref ticksLeft, "ticksLeft");
             Scribe_Values.Look(ref speed, "speed");
             Scribe_Values.Look(ref radius, "radius");
             Scribe_Values.Look(ref maxRadius, "maxRadius");
@@ -63,7 +63,7 @@ namespace TiberiumRim
             this.ruleset = ruleset;
             this.speed = speed;
             this.mutationTicks = mutationTicks;
-            startTick = GenTicks.TicksGame;
+            this.ticksLeft = mutationTicks;
             tibField = field;
             SetValuesFor(remaining.Cells);
         }
@@ -77,24 +77,19 @@ namespace TiberiumRim
             this.ruleset = ruleset;
             this.speed = speed;
             this.mutationTicks = mutationTicks;
-            startTick = GenTicks.TicksGame;
+            this.ticksLeft = mutationTicks;
             tibField = field;
             SetupArea();
         }
 
-        public bool Finished => Math.Abs(ProgressPct - 1) <= 0;
-        public float ProgressPct => ((GenTicks.TicksGame - startTick) * speed)/(float)mutationTicks;
+        public bool Finished => finished || Math.Abs(ProgressPct - 1f) <= 0;
+        public float ProgressPct => (mutationTicks - ticksLeft) / (float) mutationTicks;
         public float MaxRadius => maxRadius;
         public float CurrentRadius => MaxRadius * ProgressPct;
 
         public void Tick()
         {
             if (finished) return;
-            if (remaining.Empty())
-            {
-                Finish();
-                return;
-            }
             //Iterate Over Remaining Cells
             for (int i = remaining.Count - 1; i >= 0; i--)
             {
@@ -107,6 +102,15 @@ namespace TiberiumRim
                 if (MutateCell(cell))
                     tibField?.AddFieldCell(cell, map);
             }
+
+            if (ticksLeft <= 0 || remaining.Empty())
+            {
+                Finish();
+                return;
+            }
+
+            if (ticksLeft > 0)
+                ticksLeft -= (int)speed;
         }
 
         private void SetupArea()
@@ -179,9 +183,9 @@ namespace TiberiumRim
         {
             if (finished) return "Fully Mutated";
             string fieldString = "Area Mutation:";//"TR_TibMutatorLabel".Translate(((TiberiumCrystalDef) ruleset.crystalOptions.First().thing).TiberiumValueType.ToString());
-            fieldString += "\nProgress: " + ProgressPct.ToStringPercent();
-            fieldString += "\nRemaining Cells: " + remaining.Count;
-            fieldString += "\n" + (mutationTicks - (GenTicks.TicksGame - startTick)) + " Ticks Remaining";
+            fieldString += $"\nProgress: {ProgressPct.ToStringPercent()}";
+            fieldString += $"\nRemaining Cells: {remaining.Count}";
+            fieldString += $"\n{(ticksLeft)} Ticks Remaining";
             return fieldString;
         }
 
@@ -207,7 +211,8 @@ namespace TiberiumRim
                 defaultLabel = "Finish Area Mutation",
                 action = delegate
                 {
-                    Find.TickManager.DebugSetTicksGame(Find.TickManager.TicksGame + ((mutationTicks - (GenTicks.TicksGame - startTick))));
+                    ticksLeft = 0;
+                    //Find.TickManager.DebugSetTicksGame(Find.TickManager.TicksGame + ((mutationTicks - (ticksLeft))));
                 }
             };
         }

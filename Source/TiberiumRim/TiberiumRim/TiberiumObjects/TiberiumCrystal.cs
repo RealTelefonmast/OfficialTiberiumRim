@@ -51,7 +51,7 @@ namespace TiberiumRim
             TiberiumMapComp.RegisterTiberiumCrystal(this);
             if (!respawningAfterLoad)
             {
-                isRootNode = def.tiberium.smoothSpread || TRUtils.Chance(0.03f);
+                isRootNode = def.tiberium.smoothSpread || TRUtils.Chance(0.02f);
             }
             if (!HasParent) return;
             if (!respawningAfterLoad)
@@ -166,6 +166,9 @@ namespace TiberiumRim
             {
                 float adj = growth * (actualValue / 1);
                 Growth -= adj;
+
+                if(HarvestValue < 1)
+                    TiberiumMapComp.HarvesterInfo.SetHarvestableBool(this, false);
             }
         }
 
@@ -204,9 +207,13 @@ namespace TiberiumRim
             if (Growth >= 1f) return;
             Growth += GrowthPerTick;
 
+            //Set Harvestable
+            if(!TiberiumMapComp.HarvesterInfo.HarvestableAt(Position) && def.HarvestType != HarvestType.Unharvestable && HarvestValue >= 1)
+                TiberiumMapComp.HarvesterInfo.SetHarvestableBool(this, true);
+
             //Set Terrain
             if (!NeedsTerrain || LifeStage != TiberiumLifeStage.ProducingTerrain) return;
-            def.SpreadOutcomesAt(Position, Map, out TerrainDef top, out TerrainDef under, out TiberiumCrystalDef crystDef);
+            def.SpreadOutcomesAt(Position, Map, out TerrainDef top, out _, out _);
             if (top != null)
                 Map.terrainGrid.SetTerrain(Position, top);
         }
@@ -260,7 +267,6 @@ namespace TiberiumRim
             Vector3 vector = Vector3.zero;
             int num4 = 0;
             int[] positionIndices = TiberiumPosIndices.GetPositionIndices(this);
-            bool flag = false;
             foreach (int num5 in positionIndices)
             {
                 if (this.def.tiberium.MeshCount == 1)
@@ -270,7 +276,6 @@ namespace TiberiumRim
                     if (vector.z - num2 / 2f < num6)
                     {
                         vector.z = num6 + num2 / 2f;
-                        flag = true;
                     }
                 }
                 else

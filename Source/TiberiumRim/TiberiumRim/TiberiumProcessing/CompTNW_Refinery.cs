@@ -11,12 +11,22 @@ namespace TiberiumRim
     public class CompTNW_Refinery : CompTNW
     {
         private readonly List<Harvester> harvesters = new List<Harvester>(); 
-        private Zone_MechParking parkingZone;
-        public bool recallHarvesters = false;
+        
+        private readonly Zone_MechParking parkingZone;
+
+        //Settings
+        private bool recallHarvesters = false;
+
 
         public new RefineryProperties Props => (RefineryProperties)props;
 
         public bool CanBeRefinedAt => CompPower.PowerOn && !parent.IsBrokenDown() && !Container.CapacityFull;
+
+        public bool RecallHarvesters
+        {
+            get => recallHarvesters;
+            private set => recallHarvesters = value;
+        }
 
         public override void PostExposeData()
         {
@@ -37,16 +47,13 @@ namespace TiberiumRim
 
         public override void PostDestroy(DestroyMode mode, Map previousMap)
         {
-            foreach (var harvester in harvesters)
+            var list = harvesters.Where(harvester => !harvester.DestroyedOrNull()).ToList();
+            for (var i = 0; i < list.Count; i++)
             {
-                if (!harvester.DestroyedOrNull())
-                {
-                    harvester.UpdateRefineries(null, this);
-                    if (mode != DestroyMode.Deconstruct)
-                    {
-                        Messages.Message("TR_RefineryLost".Translate(), parent, MessageTypeDefOf.NegativeEvent);
-                    }
-                }
+                var harvester = list[i];
+                harvester.UpdateRefineries(null, this);
+                if (mode != DestroyMode.Deconstruct)
+                    Messages.Message("TR_RefineryLost".Translate(), parent, MessageTypeDefOf.NegativeEvent);
             }
 
             base.PostDestroy(mode, previousMap);
@@ -93,22 +100,15 @@ namespace TiberiumRim
             {
                 CellRect rect = parent.OccupiedRect();
                 Rot4 rot = parent.Rotation;
+
                 if (rot == Rot4.North)
-                {
                     rect.minZ += 1;
-                }
                 else if (rot == Rot4.East)
-                {
                     rect.minX += 1;
-                }
                 else if (rot == Rot4.South)
-                {
                     rect.maxZ -= 1;
-                }
                 else
-                {
                     rect.maxX -= 1;
-                }
                 return rect.Cells;
             }
         }
@@ -116,9 +116,9 @@ namespace TiberiumRim
         public override string CompInspectStringExtra()
         {
             string str = base.CompInspectStringExtra();
-            str += "\n Valuable Crystals: " + TiberiumManager.TiberiumInfo.TiberiumCrystals[HarvestType.Valuable].Count;
-            str += "\n Unvalubale Crystals: " + TiberiumManager.TiberiumInfo.TiberiumCrystals[HarvestType.Unvaluable].Count;
-            str += "\n Unharvestable Crystals: " + TiberiumManager.TiberiumInfo.TiberiumCrystals[HarvestType.Unharvestable].Count;
+            str += $"\n Valuable Crystals: {TiberiumManager.TiberiumInfo.TiberiumCrystals[HarvestType.Valuable].Count}";
+            str += $"\n Unvalubale Crystals: {TiberiumManager.TiberiumInfo.TiberiumCrystals[HarvestType.Unvaluable].Count}";
+            str += $"\n Unharvestable Crystals: {TiberiumManager.TiberiumInfo.TiberiumCrystals[HarvestType.Unharvestable].Count}";
             return str; //base.CompInspectStringExtra();
         }
 
@@ -139,12 +139,12 @@ namespace TiberiumRim
 
             yield return new Command_Action
             {
-                defaultLabel = recallHarvesters ? "TR_RefineryAllow".Translate() : "TR_RefineryReturn".Translate(),
+                defaultLabel = RecallHarvesters ? "TR_RefineryAllow".Translate() : "TR_RefineryReturn".Translate(),
                 defaultDesc = "TR_RefineryReturnDesc".Translate(),
-                icon = recallHarvesters ? TiberiumContent.HarvesterHarvest : TiberiumContent.HarvesterReturn,
+                icon = RecallHarvesters ? TiberiumContent.HarvesterHarvest : TiberiumContent.HarvesterReturn,
                 action = delegate
                 {
-                    recallHarvesters = !recallHarvesters;
+                    RecallHarvesters = !RecallHarvesters;
                 },
             };
         }
@@ -153,7 +153,6 @@ namespace TiberiumRim
     public class RefineryProperties : CompProperties_TNW
     {
         public MechanicalPawnKindDef harvester;
-        public float flowAmount = 0.5f;
 
         public RefineryProperties()
         {

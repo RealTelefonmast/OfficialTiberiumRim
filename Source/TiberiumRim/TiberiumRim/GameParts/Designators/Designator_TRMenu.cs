@@ -320,6 +320,8 @@ namespace TiberiumRim
             switch (i)
             {
                 //TODO: Add whatever belongs here
+                default:
+                    break;
             }
             return BaseContent.BadTex;
         }

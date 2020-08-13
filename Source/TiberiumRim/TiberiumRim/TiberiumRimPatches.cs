@@ -254,6 +254,17 @@ namespace TiberiumRim
             }
         }
 
+        //
+        [HarmonyPatch(typeof(MassUtility))]
+        [HarmonyPatch("Capacity")]
+        public static class MassUtility_CapacityPatch
+        {
+            public static float Postfix(float value, Pawn p)
+            {
+                return value + p.GetStatValue(TiberiumDefOf.ExtraCarryWeight, true);
+            }
+        }
+
         //Adding Conditional Stats
         [HarmonyPatch(typeof(StatWorker))]
         [HarmonyPatch("StatOffsetFromGear")]
@@ -805,81 +816,47 @@ namespace TiberiumRim
             {
                 return true;
             }
-
-
         }
 
-
-        #region RegionPatch
         /*
         [HarmonyPatch(typeof(RegionAndRoomUpdater))]
         [HarmonyPatch("RegenerateNewRegionsFromDirtyCells")]
         public static class RegionPatch
         {
-            private static List<Region> regionsBefore = new List<Region>();
-            private static List<Region> newRegions = new List<Region>();
+            private static readonly List<Region> oldRegions = new List<Region>(); 
+            private static readonly List<Region> newRegions = new List<Region>();
+
             public static bool Prefix(RegionAndRoomUpdater __instance)
             {
-                regionsBefore.Clear();
                 Map map = Traverse.Create(__instance).Field("map").GetValue<Map>();
+                RegionGrid grid = Traverse.Create(map).Field("regionGrid").GetValue<RegionGrid>();
+
+                oldRegions.Clear();
+                map.Tiberium().TiberiumInfo.regionGrid.RemoveDirtyGrids(map.regionDirtyer.DirtyCells);
                 foreach (IntVec3 dirty in map.regionDirtyer.DirtyCells)
                 {
-                    Region[] grid = Traverse.Create(map.regionGrid).Field("regionGrid").GetValue<Region[]>();
-                    Region region = grid[map.cellIndices.CellToIndex(dirty)];
-                    if (!regionsBefore.Contains(region))
-                    {
-                        regionsBefore.Add(region);
-                    }
+                    oldRegions.AddDistinct(grid.GetValidRegionAt(dirty));
                 }
                 return true;
             }
 
             public static void Postfix(RegionAndRoomUpdater __instance)
             {
-                newRegions.Clear();
-                Map map = Traverse.Create(__instance).Field("map").GetValue<Map>();
-                var tiberium = map.GetComponent<MapComponent_Tiberium>();
+                Log.Message("Postfixing Regions");
+                var instance = Traverse.Create(__instance);
+                Map map = instance.Field("map").GetValue<Map>();
+                var tiberium = map.Tiberium();
                 var info = tiberium.TiberiumInfo;
+                List<Region> regions = instance.Field("newRegions").GetValue<List<Region>>();
+                Log.Message("Postfix Traverse Complete " + map + " | " + regions.Count);
 
-                List<Region> regions = Traverse.Create(__instance).Field("newRegions").GetValue<List<Region>>();
+                newRegions.Clear();
                 newRegions.AddRange(regions);
-                foreach (Region region in regionsBefore)
-                {
-                    if (region != null)
-                    {
-                        if (info.TiberiumByRegion.ContainsKey(region))
-                        {
-                            CellRect rect = region.Cells.ToList().ToCellRect();
-                            foreach (Region @new in newRegions)
-                            {
-                                if (@new != null)
-                                {
-                                    
-                                    List<IntVec3> potentialSplit = cells.FindAll(c => rect.Cells.Contains(c));
 
-                                    if (!tiberium.CurrentRegions.TryGetValue(@new, out List<IntVec3> value))
-                                    {
-                                        tiberium.CurrentRegions.Add(@new, potentialSplit);
-                                    }
-                                    else
-                                    {
-                                        foreach (IntVec3 cell in potentialSplit)
-                                        {
-                                            if (!value.Contains(cell))
-                                            {
-                                                value.Add(cell);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                info.regionGrid.Notify_RegionSplit(oldRegions,newRegions);
             }
         }
         */
-        #endregion
 
     }
 }

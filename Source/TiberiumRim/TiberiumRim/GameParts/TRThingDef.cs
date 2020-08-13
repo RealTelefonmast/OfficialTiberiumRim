@@ -35,7 +35,7 @@ namespace TiberiumRim
         public bool devObject = false;
         public bool clearTiberium = false;
 
-        public string discoverTag;
+        public DiscoveryDef discoveryDef;
         public string unknownLabel;
         public string unknownDescription;
         public string extraDescription;
@@ -95,12 +95,12 @@ namespace TiberiumRim
             if (minTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel < minTechLevelToBuild)
             {
                 flag = false;
-                sb.AppendLine("TR_LockedDueMinTech".Translate(minTechLevelToBuild));
+                sb.AppendLine("TR_LockedDueMinTech".Translate(minTechLevelToBuild.ToString()));
             }
             if ( maxTechLevelToBuild != TechLevel.Undefined && Faction.OfPlayer.def.techLevel > maxTechLevelToBuild)
             {
                 flag = false;
-                sb.AppendLine("TR_LockedDueMaxTech".Translate(maxTechLevelToBuild));
+                sb.AppendLine("TR_LockedDueMaxTech".Translate(maxTechLevelToBuild.ToString()));
             }
             if (!IsResearchFinished)
             {

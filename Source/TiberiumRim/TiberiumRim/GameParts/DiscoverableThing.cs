@@ -13,7 +13,7 @@ namespace TiberiumRim
 
         public override string DescriptionFlavor => Discovered ? DiscoveredDescription : UnknownDescription;
 
-        public string DiscoverTag => def.discoverTag;
+        public DiscoveryDef DiscoveryDef => def.discoveryDef;
         public string DiscoveredLabel => base.Label;
         public string UnknownLabel => def.UnknownLabelCap;
         public string DiscoveredDescription => def.description;
@@ -21,7 +21,7 @@ namespace TiberiumRim
         public string DescriptionExtra => def.extraDescription;
 
         public bool Discovered => !IsDiscoverable || TRUtils.DiscoveryTable().IsDiscovered(this);
-        public bool IsDiscoverable => DiscoverTag != null;
+        public bool IsDiscoverable => DiscoveryDef != null;
 
         public override string GetInspectString()
         {
@@ -42,7 +42,7 @@ namespace TiberiumRim
                 yield return new Command_Action()
                 {
                     defaultLabel = "Discover",
-                    action = delegate { TRUtils.DiscoveryTable().Discover(DiscoverTag); }
+                    action = delegate { TRUtils.DiscoveryTable().Discover(DiscoveryDef); }
                 };
             }
         }
