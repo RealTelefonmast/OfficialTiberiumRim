@@ -19,7 +19,7 @@ namespace TiberiumRim
 
         private Pawn Pawn => parent as Pawn;
 
-        private TiberiumHediffGrid Grid => Pawn.MapHeld.Tiberium().TiberiumAffecter.hediffGrid;
+        private TiberiumHediffGrid Grid => Pawn.MapHeld.Tiberium().TiberiumAffecter.HediffGrid;
         
         public bool IsTiberiumImmune => false;
 

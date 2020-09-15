@@ -26,6 +26,11 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToBuild>500</WorkToBuild>
@@ -91,6 +96,11 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<statBases>
 			<MaxHitPoints>1000</MaxHitPoints>
 			<WorkToBuild>5000</WorkToBuild>
@@ -154,6 +164,11 @@
 			<drawSize>(5.5,5.5)</drawSize>
 			<drawRotated>false</drawRotated>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<uiIconPath>Buildings/Nod/Production/Refinery/Icon</uiIconPath>
 		<statBases>
 			<MaxHitPoints>450</MaxHitPoints>
@@ -236,6 +251,11 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,4)</drawSize>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToBuild>500</WorkToBuild>
@@ -301,6 +321,11 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(5,5)</drawSize>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<uiIconPath>Buildings/Nod/Production/PowerPlant/Icon</uiIconPath>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.ThingFilterDef>
+		<defName>ThingFilter_Chunks</defName>
+		<filter>
+			<categories>
+				<li>StoneChunks</li>
+			</categories>
+		</filter>
+	</TiberiumRim.ThingFilterDef>
+	
+	<TiberiumRim.ThingFilterDef>
+		<defName>ThingFilter_RockWall</defName>
+		<worker>TiberiumRim.ThingFilterWorker_Mineable</worker>
+	</TiberiumRim.ThingFilterDef>
+
+</Defs>

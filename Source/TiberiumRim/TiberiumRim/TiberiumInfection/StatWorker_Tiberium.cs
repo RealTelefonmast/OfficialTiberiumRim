@@ -88,7 +88,7 @@ namespace TiberiumRim
 
         private static float InfectionChance(Pawn pawn, bool isGas)
         {
-            //TODO: Adjust for tiberium resistance
+            //TODO: Adjust for props resistance
             float num = TRUtils.Range(0.25f, 1f);
             if (isGas)
             {

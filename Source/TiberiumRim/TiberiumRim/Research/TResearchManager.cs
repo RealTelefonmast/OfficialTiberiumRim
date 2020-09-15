@@ -172,7 +172,7 @@ namespace TiberiumRim
         public bool IsCompleted(TResearchDef research)
         {
             return ResearchCompleted.TryGetValue(research, out bool value) && value;
-            //return progress.TryGetValue(def, out float value) && value >= def.baseCost;
+            //return progress.TryGetValue(def, out float weight) && weight >= def.baseCost;
         }
 
         //Research Tasks
@@ -189,7 +189,7 @@ namespace TiberiumRim
         public bool IsCompleted(TResearchTaskDef task)
         {
             return TasksCompleted.TryGetValue(task, out bool value) && value;
-            //return progress.TryGetValue(def, out float value) && value >= def.baseCost;
+            //return progress.TryGetValue(def, out float weight) && weight >= def.baseCost;
         }
 
         public float GetProgress(TResearchTaskDef task)

@@ -13,15 +13,15 @@ namespace TiberiumRim
 
         public override string DescriptionFlavor => Discovered ? DiscoveredDescription : UnknownDescription;
 
-        public DiscoveryDef DiscoveryDef => def.discoveryDef;
+        public DiscoveryDef DiscoveryDef => def.discovery.discoveryDef;
         public string DiscoveredLabel => base.Label;
         public string UnknownLabel => def.UnknownLabelCap;
         public string DiscoveredDescription => def.description;
-        public string UnknownDescription => def.unknownDescription;
-        public string DescriptionExtra => def.extraDescription;
+        public string UnknownDescription => def.discovery.unknownDescription;
+        public string DescriptionExtra => def.discovery.extraDescription;
 
         public bool Discovered => !IsDiscoverable || TRUtils.DiscoveryTable().IsDiscovered(this);
-        public bool IsDiscoverable => DiscoveryDef != null;
+        public bool IsDiscoverable => def.discovery != null;
 
         public override string GetInspectString()
         {

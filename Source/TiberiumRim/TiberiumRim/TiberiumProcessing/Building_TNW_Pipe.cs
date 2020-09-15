@@ -95,41 +95,41 @@ namespace TiberiumRim
 
         private float ThroughPut(TNW_PipeDynamic other)
         {
-            var value = (Container.TotalStorage - other.Container.TotalStorage) / 2f;
-            if (value < smallest)
-                smallest = value;
-            if (value > biggest)
-                biggest = value;
-            return value >= transferVal ? value : 0;
+            var weight = (Container.TotalStorage - other.Container.TotalStorage) / 2f;
+            if (weight < smallest)
+                smallest = weight;
+            if (weight > biggest)
+                biggest = weight;
+            return weight >= transferVal ? weight : 0;
             
             var wantingNeighbors = Neighbors.Where(n => n != null && n.WantsFrom(this));
             if (!wantingNeighbors.Any()) return 0f;
 
             var half = containedValue / 2;
             var 
-            var value = containedValue - wantingNeighbors.
+            var weight = containedValue - wantingNeighbors.
 
-            var value = (Container.TotalStorage - wantingNeighbors.Sum(n => n.Container.TotalStorage)) / (float)(Math.Pow(2, wantingNeighbors.Count()));
+            var weight = (Container.TotalStorage - wantingNeighbors.Sum(n => n.Container.TotalStorage)) / (float)(Math.Pow(2, wantingNeighbors.Count()));
 
-            if (value < smallest)
-                smallest = value;
-            if (value > biggest)
-                biggest = value;
+            if (weight < smallest)
+                smallest = weight;
+            if (weight > biggest)
+                biggest = weight;
 
-            return value;
+            return weight;
             
         }
 
-        public void Give(float value, TNW_PipeDynamic to)
+        public void Give(float weight, TNW_PipeDynamic to)
         {
-            to.Receive(value, this);
+            to.Receive(weight, this);
             cachedPercent = Container.StoredPercent;
         }
 
-        public void Receive(float value, TNW_PipeDynamic from)
+        public void Receive(float weight, TNW_PipeDynamic from)
         {
             
-            from.Container.TryTransferTo(this.Container, TiberiumValueType.Green, value);
+            from.Container.TryTransferTo(this.Container, TiberiumValueType.Green, weight);
             cachedPercent = Container.StoredPercent;
         }
 
@@ -418,10 +418,10 @@ namespace TiberiumRim
                         if (num > 0)
                         {
                             pipe.from = this;
-                            int value = num / Container.AllStoredTypes.Count;
+                            int weight = num / Container.AllStoredTypes.Count;
                             foreach (TiberiumValueType valueType in Container.AllStoredTypes)
                             {
-                                Container.TryTransferTo(pipe.Container, valueType, value);
+                                Container.TryTransferTo(pipe.Container, valueType, weight);
                             }
                         }
                     }
@@ -673,7 +673,7 @@ namespace TiberiumRim
                     return;
                 }
                 //ConnectedPipes.Shuffle();
-                float value = transferAmt / (float)Container.AllStoredTypes.Count;
+                float weight = transferAmt / (float)Container.AllStoredTypes.Count;
                 //float max = ConnectedPipes.Max(p => p.Container.StoredPct);
                 bool hasPusher = ConnectedPipes.Any(p => Container. StoredPct >= Container.StoredPct);
                 bool isPusher = ConnectedPipes.Any(p => p.Container.StoredPct < Container.StoredPct) && Container.GetTotalStorage > transferAmt;
@@ -685,7 +685,7 @@ namespace TiberiumRim
                         {
                             foreach (TiberiumValueType valueType in Container.AllStoredTypes)
                             {
-                                if (Container.TryTransferTo(b.Container, valueType, value))
+                                if (Container.TryTransferTo(b.Container, valueType, weight))
                                 {
                                     if (b is TNW_Pipe2)
                                     {

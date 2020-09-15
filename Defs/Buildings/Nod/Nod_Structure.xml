@@ -9,6 +9,11 @@
 		<graphicData>
 			<texPath>Buildings/Nod/Structure/Wall</texPath>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<costList>
 			<Nod_CarbonPlate>2</Nod_CarbonPlate>
 		</costList>
@@ -27,6 +32,11 @@
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Decoration</TRCategory>
 		<altitudeLayer>Building</altitudeLayer>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<statBases>
 			<MaxHitPoints>150</MaxHitPoints>
 			<WorkToBuild>1000</WorkToBuild>
@@ -86,6 +96,11 @@
 				<enabled>false</enabled>
 			</damageData>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<costList>
 			<Nod_CarbonPlate>2</Nod_CarbonPlate>
 		</costList>
@@ -111,6 +126,11 @@
 				<enabled>false</enabled>
 			</damageData>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<uiIconPath>Buildings/Nod/Structure/AD_Icon</uiIconPath>
 		<costList>
 			<Nod_CarbonPlate>2</Nod_CarbonPlate>

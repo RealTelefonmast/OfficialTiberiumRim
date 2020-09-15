@@ -172,7 +172,7 @@ namespace TiberiumRim
         public override void PostApplyDamage(DamageInfo dinfo, float totalDamageDealt)
         {
             base.PostApplyDamage(dinfo, totalDamageDealt);
-            //TODO: Potential loss of tiberium
+            //TODO: Potential loss of props
         }
 
         public override void Tick()

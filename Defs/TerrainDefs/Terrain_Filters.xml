@@ -1,25 +1,67 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
+	
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_TibSoil</defName>
+		<acceptedFilters>
+			<li>TerrainFilter_AllSoil</li>
+		</acceptedFilters>
+		<neededTags>
+			<li>tiberium</li>
+		</neededTags>
+	</TiberiumRim.TerrainFilterDef>
+	
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_AllSoil</defName>
+		<acceptedFilters>
+			<li>TerrainFilter_Soil</li>
+			<li>TerrainFilter_RichSoil</li>
+		</acceptedFilters>
+	</TiberiumRim.TerrainFilterDef>
+	
 	<TiberiumRim.TerrainFilterDef>
 		<defName>TerrainFilter_Soil</defName>
 		<acceptedTerrain>
 			<li>Soil</li>
-			<li>SoilRich</li>
 			<li>MarshyTerrain</li>
 			<li>Gravel</li>
 		</acceptedTerrain>
 		<acceptedTags>
 			<li>soil</li>
 		</acceptedTags>
+		<ignoreTags>
+			<li>rich</li>
+		</ignoreTags>
+	</TiberiumRim.TerrainFilterDef>
+	
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_RichSoil</defName>
+		<acceptedTerrain>
+			<li>SoilRich</li>
+		</acceptedTerrain>
+		<acceptedTags>
+			<li>soilrich</li>
+		</acceptedTags>
+	</TiberiumRim.TerrainFilterDef>
+
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_AllSand</defName>
+		<neededTags>
+			<li>sand</li>
+		</neededTags>
+		<ignoreTags>
+			<li>stone</li>
+		</ignoreTags>
 	</TiberiumRim.TerrainFilterDef>
 
 	<TiberiumRim.TerrainFilterDef>
 		<defName>TerrainFilter_Sand</defName>
-		<acceptedTerrain>
-			<li>Sand</li>
-			<li>SoftSand</li>
-		</acceptedTerrain>
+		<acceptedFilters>
+			<li>TerrainFilter_AllSand</li>
+		</acceptedFilters>
+		<ignoreTags>
+			<li>soft</li>
+		</ignoreTags>
 	</TiberiumRim.TerrainFilterDef>
 
 	<TiberiumRim.TerrainFilterDef>
@@ -28,6 +70,9 @@
 			<li>MossyTerrain</li>
 			<li>Mud</li>
 		</acceptedTerrain>
+		<acceptedTags>
+			<li>moss</li>
+		</acceptedTags>
 	</TiberiumRim.TerrainFilterDef>
 
 	<TiberiumRim.TerrainFilterDef>
@@ -52,6 +97,13 @@
 		<acceptedTerrain>
 			<li>WaterMovingChestDeep</li>
 			<li>WaterMovingShallow</li>
+		</acceptedTerrain>
+	</TiberiumRim.TerrainFilterDef>
+
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_Concrete</defName>
+		<acceptedTerrain>
+			<li>Concrete</li>
 		</acceptedTerrain>
 	</TiberiumRim.TerrainFilterDef>
 

@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -14,14 +15,19 @@ namespace TiberiumRim
     {
         private TiberiumProducer producer;
         private List<TiberiumCrystal> tiberium = new List<TiberiumCrystal>();
+
         private CellArea fieldCellArea;
+        private TiberiumGarden fieldGarden;
 
         //FastGrowth
-        private readonly List<TiberiumCrystal> crystalsToGrow = new List<TiberiumCrystal>();
-
         private bool fastGrowth;
 
-        private IEnumerator<TiberiumCrystal> tiberiumEnumerator;
+        public TiberiumProducer Producer => producer;
+
+        public IEnumerable<TiberiumCrystal> FieldCrystals => tiberium;
+        public IEnumerable<TiberiumCrystal> GrowingCrystals => FieldCrystals.Where(t => t.ShouldSpread);
+
+        public bool MarkedForGrowth => fastGrowth;
 
         public TiberiumField()
         {
@@ -53,16 +59,6 @@ namespace TiberiumRim
 
         public void Tick()
         {
-            if (fastGrowth)
-            {
-                for (int i = crystalsToGrow.Count - 1; i >= 0; i--)
-                {
-                    crystalsToGrow[i].TickLong();//TiberiumTick(2000);
-                    if (crystalsToGrow[i].HasSpread)
-                        crystalsToGrow.RemoveAt(i);
-                }
-                //EnumerateCrystals();
-            }
         }
 
         public void AddFieldCell(IntVec3 cell, Map map)
@@ -87,15 +83,11 @@ namespace TiberiumRim
         public void AddTiberium(TiberiumCrystal crystal)
         {
             tiberium.Add(crystal);
-
-            crystalsToGrow.Add(crystal);
         }
 
         public void RemoveTiberium(TiberiumCrystal crystal)
         {
             tiberium.Remove(crystal);
-
-            crystalsToGrow.Remove(crystal);
         }
 
         public void DEBUGFastGrowth()
@@ -103,28 +95,12 @@ namespace TiberiumRim
             fastGrowth = !fastGrowth;
         }
 
-        private void EnumerateCrystals()
-        {
-            var curCrystal = tiberiumEnumerator?.Current;
-            for (int i = 0; i < 250; i++)
-            {
-                curCrystal?.TiberiumTick(1);
-            }
-            iterationTicks++;
-            if (!tiberiumEnumerator?.MoveNext() ?? true)
-            {
-                var tempList = new List<TiberiumCrystal>(tiberium);
-                tiberiumEnumerator = tempList.GetEnumerator();
-                Log.Message("Resetting tiberium enumerator");
-            }
-        }
-
         public string InspectString()
         {
             string fieldString = "Tiberium Field:";
             fieldString += "\nField Size: " + fieldCellArea.Count;
             fieldString += "\nTiberium Crystals: " + tiberium.Count;
-            fieldString += "\nGrowing Crystals: " + crystalsToGrow.Count;
+            fieldString += "\nGrowing Crystals: " + GrowingCrystals.Count();//crystalsToGrow.Count;
             fieldString += "\nFast Growth Enabled: " + fastGrowth;
             if (fastGrowth)
                 fieldString += "\nIteration Tick: " + iterationTicks;

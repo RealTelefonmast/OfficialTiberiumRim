@@ -13,6 +13,11 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(4,5)</drawSize>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<size>(4,4)</size>
 		<minifiedDef />
 		<thingCategories Inherit="false" />

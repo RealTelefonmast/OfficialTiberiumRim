@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef Name="Nod_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
+	<TiberiumRim.TRThingDef Name="Nod_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
 		<soundInteract>Interact_Rifle</soundInteract>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<recipeMaker>
 			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 			<workSkill>Crafting</workSkill>
@@ -27,9 +32,9 @@
 		  </li>
 		</comps>
 		-->
-	</ThingDef>	
+	</TiberiumRim.TRThingDef>	
 
-	<ThingDef ParentName="Nod_Gun">
+	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_StandardRifle</defName>
 		<label>Nod rifle</label>
 		<description>A general-purpose military weapon for field or urban combat. Made specifically for urban combat by Nod.\n\nUpgradable to Nod laser rifle.\n\nUpgradable to Nod flamethrower.</description>
@@ -94,9 +99,9 @@
 		<recipeMaker>
 			<!--<researchPrerequisite>NodResearch_Technology</researchPrerequisite>-->
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="Nod_Gun">
+	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_TwinTiberiumFlechetteGun</defName>
 		<label>Nod twin flechette gun</label>
 		<description>The Tiberium Flechette gun fires Tiberium shards rapidly at enemies.</description>
@@ -162,9 +167,9 @@
 		<recipeMaker>
 			<!--<researchPrerequisite>NodResearch_Production</researchPrerequisite>-->
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="Nod_Gun">
+	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_LaserRifleSmall</defName>
 		<label>Nod laser rifle</label>
 		<description>A rifle using Nod's specialized laser technology.\n\nUpgradable to Nod advanced laser rifle.</description>
@@ -235,9 +240,9 @@
 				<Crafting>8</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="Nod_Gun">
+	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_LaserRifleLarge</defName>
 		<label>Nod advanced laser rifle</label>
 		<description>A rifle using Nod's advanced specialized laser technology.</description>
@@ -309,9 +314,9 @@
 				<Crafting>10</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="Nod_Gun">
+	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_Flamethrower</defName>
 		<label>Nod flamethrower</label>
 		<description>A Blackhand flamethrower. Cleanse the your opponents!\n\nUpgradable to Nod chemicalthrower.</description>
@@ -383,9 +388,9 @@
 				<Crafting>8</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="Nod_Gun">
+	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_Chemicalthrower</defName>
 		<label>Nod chemicalthrower</label>
 		<description>The chemical thrower is an advcanced and highly toxic weapon using Nod's liquid Tiberium technology.</description>
@@ -456,9 +461,9 @@
 				<Crafting>10</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="Nod_Gun">
+	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_RocketLauncher</defName>
 		<label>Nod rocket launcher</label>
 		<description>A rocket launcher developed by Nod engineers. It is highly lethal.</description>
@@ -516,9 +521,9 @@
 				<Crafting>8</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="Nod_Gun">
+	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_Grenade</defName>
 		<label>Nod grenade</label>
 		<description>Nod's special grenades, just as lethal as ordinary ones.</description>
@@ -580,10 +585,10 @@
 		<recipeMaker>
 			<!--<researchPrerequisite>NodResearch_Production</researchPrerequisite>-->
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 
-	<ThingDef ParentName="Nod_Gun">
+	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_Sbomb</defName>
 		<label>Nod suicide bomb</label>
 		<description>Take your pawn on a suicide mission. Beware of the blast radius.</description>
@@ -641,6 +646,6 @@
 		<equippedStatOffsets>
 			<MoveSpeed>0.6</MoveSpeed>
 		</equippedStatOffsets>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
 </Defs>

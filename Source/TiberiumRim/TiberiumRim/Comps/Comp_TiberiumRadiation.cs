@@ -20,7 +20,7 @@ namespace TiberiumRim
 
         public IntVec3 ParentPos { get; set; }
     
-
+        //TODO: Add radiation ticker
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
@@ -36,12 +36,12 @@ namespace TiberiumRim
 
         private void SetRadiation(Map map, bool reset = false)
         {
-            TiberiumHediffGrid grid = map.Tiberium().TiberiumAffecter.hediffGrid;
+            var affecter = map.Tiberium().TiberiumAffecter;
             foreach (var pos in GenRadial.RadialCellsAround(ParentPos, Props.radius, true))
             {
                 if (!pos.InBounds(map)) continue;
                 var intensity = 1f - IntensityAt(pos);
-                grid.SetRadiation(pos, reset ? -intensity : intensity);
+                affecter.SetRadiation(pos, reset ? -intensity : intensity);
                 //grid.SetInfection(pos, intensity / 3f);
             }
         }
@@ -96,7 +96,7 @@ namespace TiberiumRim
                 }
                 if (crystal != null)
                 {
-                    if (!crystal.def.tiberium.dependsOnProducer && crystal.HitPoints < crystal.MaxHitPoints)
+                    if (!crystal.def.props.dependsOnProducer && crystal.HitPoints < crystal.MaxHitPoints)
                     {
                         if (TRUtils.Chance(IntensityAt(cell)))
                         {

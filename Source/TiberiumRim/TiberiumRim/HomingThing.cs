@@ -28,11 +28,16 @@ namespace TiberiumRim
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
-            def = (HomingThingDef)base.def;
             speed = TRUtils.Range(def.speed);
             exactPos = Position.ToVector3();
             ticksToLive = def.liveTime.SecondsToTicks();
             base.SpawnSetup(map, respawningAfterLoad);
+        }
+
+        public override void PostMake()
+        {
+            base.PostMake();
+            def = (HomingThingDef)base.def;
         }
 
         public override void ExposeData()

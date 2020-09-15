@@ -108,7 +108,7 @@
 	<!-- Outside -->
 	<HediffDef ParentName="HediffBase_TR">
 		<defName>VisceralBlister</defName>
-		<label>blistered part</label>
+		<label>visceral blistered</label>
 		<hediffClass>HediffWithComps</hediffClass>
 		<defaultLabelColor>(155, 160, 75)</defaultLabelColor>
 		<initialSeverity>1</initialSeverity>

@@ -29,7 +29,7 @@ namespace TiberiumRim
 
         private TiberiumNetwork network;
         private TiberiumContainer container;
-        public List<IntVec3> pipeExtensionCells = new List<IntVec3>();
+        private List<IntVec3> pipeExtensionCells = new List<IntVec3>();
         private List<IntVec3> cardinalCells = new List<IntVec3>();
 
         public bool ShouldLeak => false;

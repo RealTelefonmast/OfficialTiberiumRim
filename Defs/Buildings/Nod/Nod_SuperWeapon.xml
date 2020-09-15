@@ -15,6 +15,11 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(7,8)</drawSize>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<uiIconPath>Buildings/Nod/Defense/Temple/Icon</uiIconPath>
 		<costList>			
 			<ComponentIndustrial>12</ComponentIndustrial>
@@ -124,6 +129,11 @@
 				<offset>(0,0,-0.1)</offset>
 			</shadowData>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<costList>
 			<Nod_CarbonPlate>30</Nod_CarbonPlate>
 			<Nod_LQTiberiumCore>3</Nod_LQTiberiumCore>

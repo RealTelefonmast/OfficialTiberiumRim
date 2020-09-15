@@ -11,7 +11,7 @@ namespace TiberiumRim
     /* Tiberium Map Component
      * Description:
      * In this component all the major Tiberium-related mechanics get managed
-     * Tiberium Information - Main Info on tiberium positions, and cell-states
+     * Tiberium Information - Main Info on props positions, and cell-states
      *
      */
 
@@ -29,19 +29,9 @@ namespace TiberiumRim
         public TiberiumAffecter TiberiumAffecter;
         public TiberiumSpreader TiberiumSpreader;
 
-        public HashSet<IntVec3> AffectedCells = new HashSet<IntVec3>();
-        public HashSet<IntVec3> IteratorTiles = new HashSet<IntVec3>();
-
-        //Affected Objects Iterator
-        private IEnumerator<IntVec3> TileIterator;
-        private bool dirtyIterator = false;
-
-        //Debug
-        public Region currentDebugRegion;
-        public IntVec3 currentDebugCell;
-
         public MapComponent_Suppression Suppression => map.GetComponent<MapComponent_Suppression>();
         public MapComponent_TNWManager TNWManager => map.GetComponent<MapComponent_TNWManager>();
+        public MapComponent_TiberiumWater TiberiumWater => map.GetComponent<MapComponent_TiberiumWater>();
 
         public MapComponent_Tiberium(Map map) : base(map)
         {
@@ -54,6 +44,7 @@ namespace TiberiumRim
             InfectionInfo = new TiberiumInfectionInfo(map);
 
             TiberiumAffecter = new TiberiumAffecter(map);
+            TiberiumSpreader = new TiberiumSpreader(map);
         }
 
         public override void FinalizeInit()
@@ -86,10 +77,14 @@ namespace TiberiumRim
         [TweakValue("MapComponent_TibDrawBool", 0f, 100f)]
         public static bool DrawBool = false;
 
+        [TweakValue("MapComponent_TibHediffBool", 0f, 100f)]
+        public static bool HediffBool = false;
+
         public override void MapComponentOnGUI()
         {
             base.MapComponentOnGUI();
-            //TiberiumAffecter.hediffGrid.DrawValues();
+            if(HediffBool) 
+                TiberiumAffecter.HediffGrid.DrawValues();
         }
 
         public override void MapComponentUpdate()
@@ -97,11 +92,12 @@ namespace TiberiumRim
             base.MapComponentUpdate();
             if (DrawBool)
             {
-                TiberiumInfo.Update();
+                TiberiumInfo.Draw();
+                HarvesterInfo.Draw();
+                BlossomInfo.Draw();
+                FloraInfo.Draw();
+                StructureInfo.Draw();
 
-                BlossomInfo.drawer.RegenerateMesh();
-                BlossomInfo.drawer.MarkForDraw();
-                BlossomInfo.drawer.CellBoolDrawerUpdate();
                 //Suppression.SuppressionGrid.drawer.RegenerateMesh();
                 //Suppression.SuppressionGrid.drawer.MarkForDraw();
                 //Suppression.SuppressionGrid.drawer.CellBoolDrawerUpdate();
@@ -111,13 +107,9 @@ namespace TiberiumRim
         public override void MapComponentTick()
         {
             base.MapComponentTick();
-            IterateThroughTiles();
+            TiberiumAffecter.Tick();
+            TiberiumSpreader.Tick();
             TiberiumInfo.Tick();
-        }
-
-        public override void MapComponentDraw()
-        {
-
         }
 
         public bool TiberiumAvailable => TiberiumInfo.TiberiumCrystals[HarvestType.Valuable].Count > 0;
@@ -132,16 +124,33 @@ namespace TiberiumRim
         {
         }
 
+        public void RegisterTiberiumBuilding(TRBuilding building)
+        {
+            StructureInfo.TryRegister(building);
+            if(building is TiberiumProducer p)
+                TiberiumSpreader.RegisterField(p);
+        }
+
+        public void DeregisterTiberiumBuilding(TRBuilding building)
+        {
+            StructureInfo.Deregister(building);
+            if (building is TiberiumProducer p)
+                TiberiumSpreader.DeregisterField(p);
+        }
+
         public void RegisterTiberiumCrystal(TiberiumCrystal crystal)
         {
             TiberiumInfo.RegisterTiberium(crystal);
-            AddCells(crystal);
+            TiberiumWater.Notify_TibSpawned(crystal);
+            TiberiumAffecter.Notfiy_TibChanged();
+            //AddCells(crystal);
         }
 
         public void DeregisterTiberiumCrystal(TiberiumCrystal crystal)
         {
             TiberiumInfo.DeregisterTiberium(crystal);
-            RemoveCells(crystal);
+            TiberiumAffecter.Notfiy_TibChanged();
+            //RemoveCells(crystal);
         }
 
         public void RegisterTiberiumPlant(TiberiumPlant plant)
@@ -152,78 +161,6 @@ namespace TiberiumRim
         public void DeregisterTiberiumPlant(TiberiumPlant plant)
         {
             FloraInfo.DeregisterTiberiumPlant(plant);
-        }
-
-        public void IterateThroughTiles()
-        {
-            if (!IteratorTiles.Any())
-                return;
-            //Setup Iterator
-            if(TileIterator == null || dirtyIterator)
-            {
-                TileIterator = IteratorTiles.InRandomOrder().GetEnumerator();
-                dirtyIterator = false;
-            }
-            //Affect Objects
-            if(TileIterator?.Current.IsValid ?? false)
-            {
-                currentDebugCell = TileIterator.Current;
-                TiberiumCrystal affecter = currentDebugCell.CellsAdjacent8Way().Select(c => c.GetTiberium(map)).FirstOrDefault();
-                AffectPotentialObject(currentDebugCell, affecter);
-            }
-            if (!TileIterator.MoveNext())
-                dirtyIterator = true;
-        }
-
-        private void AffectPotentialObject(IntVec3 cell, TiberiumCrystal affecter)
-        {
-            if (affecter == null) return;
-            ThingDef newThing = null;
-            float damageFactor = 1;
-            var haulable = cell.GetFirstHaulable(map);
-            if (haulable != null && affecter.def.tiberium.entityDamage.Average > 0 && haulable.CanBeDamagedByTib(out damageFactor))
-            {
-                if (haulable.def.IsNutritionGivingIngestible)
-                    damageFactor += 0.33f;
-                if (haulable.IsCorruptableChunk())
-                    newThing = affecter.def.chunk;
-                haulable.TakeDamage(new DamageInfo(DamageDefOf.Deterioration, damageFactor * TRUtils.Range(affecter.def.tiberium.entityDamage)));
-                if (newThing != null && TRUtils.Chance(MainTCD.Main.ChunkCorruptionChance))
-                {
-                    GenSpawn.Spawn(newThing, haulable.Position, map);
-                    if (!haulable.DestroyedOrNull())
-                        haulable.DeSpawn();
-                }
-                return;
-            }
-
-            Building building = cell.GetFirstBuilding(map);
-            if (building != null && affecter.def.tiberium.buildingDamage.Average > 0 && building.CanBeDamagedByTib(out damageFactor))
-            {
-                float chance = 1f;
-                if (building is Building_SteamGeyser)
-                {
-                    newThing = TiberiumDefOf.TiberiumGeyser;
-                    chance *= MainTCD.Main.GeyserCorruptionChance;
-                }
-                if (building.def.mineable)
-                {
-                    newThing = affecter.def.rock;
-                    chance *= MainTCD.Main.RockCorruptionChance;
-                }
-                if (building.def.IsWall())
-                {
-                    newThing = affecter.def.wall;
-                    chance *= MainTCD.Main.WallCorruptionChance;
-                }
-                building.TakeDamage(new DamageInfo(DamageDefOf.Deterioration, damageFactor * TRUtils.Range(affecter.def.tiberium.buildingDamage)));
-                if (newThing != null && TRUtils.Chance(chance))
-                {
-                    GenSpawn.Spawn(newThing, building.Position, map);
-                    if (!building.DestroyedOrNull())
-                        building.DeSpawn();
-                }
-            }
         }
 
         /*
@@ -249,7 +186,7 @@ namespace TiberiumRim
             RemoveCells(crystal);
         }
         */
-
+        /*
         private void AddCells(TiberiumCrystal crystal)
         {
             List<IntVec3> cells = crystal.CellsAdjacent8WayAndInside().ToList();
@@ -292,5 +229,6 @@ namespace TiberiumRim
                 dirtyIterator = true;
             }
         }
+        */
     }
 }

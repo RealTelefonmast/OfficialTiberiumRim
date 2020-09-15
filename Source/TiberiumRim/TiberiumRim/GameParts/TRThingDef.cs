@@ -35,10 +35,7 @@ namespace TiberiumRim
         public bool devObject = false;
         public bool clearTiberium = false;
 
-        public DiscoveryDef discoveryDef;
-        public string unknownLabel;
-        public string unknownDescription;
-        public string extraDescription;
+        public DiscoveryProperties discovery;
 
         [Unsaved(false)]
         private TaggedString cachedUnknownLabelCap = null;
@@ -60,7 +57,7 @@ namespace TiberiumRim
             get
             {
                 if (cachedUnknownLabelCap.NullOrEmpty())
-                    cachedUnknownLabelCap = unknownLabel.CapitalizeFirst();
+                    cachedUnknownLabelCap = discovery.unknownLabel.CapitalizeFirst();
                 return cachedUnknownLabelCap;
             }
         }
@@ -69,11 +66,10 @@ namespace TiberiumRim
 
         public bool ConstructionOptionDiscovered
         {
-            get => Find.World.Tiberium().DiscoveryTable.IsMenuDiscovered(this) || devObject;
+            get => TRUtils.Tiberium().DiscoveryTable.IsMenuDiscovered(this) || devObject;
             set
             {
-                if (value)
-                    Find.World.Tiberium().DiscoveryTable.DiscoverMenu(this);
+                if (value) TRUtils.Tiberium().DiscoveryTable.DiscoverMenu(this);
             }
         }
 

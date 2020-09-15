@@ -26,6 +26,11 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(7,7)</drawSize>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<costList>			
 			<ComponentIndustrial>12</ComponentIndustrial>
 		</costList>

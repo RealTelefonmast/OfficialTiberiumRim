@@ -72,7 +72,7 @@ namespace TiberiumRim
             float total = TRUtils.Range(0.7f, 1.4f);
            // total *= Mathf.Lerp(1f, 0f, -crystal.Map.mapTemperature.OutdoorTemp);
             //total *= crystal.HitPoints / crystal.MaxHitPoints;
-            //total *= crystal.HarvestValue / crystal.def.tiberium.harvestValue;
+            //total *= crystal.HarvestValue / crystal.def.props.harvestValue;
             return total;
         }
 

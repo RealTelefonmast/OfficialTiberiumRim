@@ -279,7 +279,7 @@ namespace TiberiumRim
             if(pawn.DestroyedOrNull())
                 Log.Error("Trying to infect null Pawn");
 
-            //Getting the initial infection value
+            //Getting the initial infection weight
             float numCryst = 0.0001f * perTicks * infectivity;
             //Applying Infection Check
             numCryst *= isGas ? 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumGasResistance) : 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumInfectionResistance);
@@ -315,7 +315,7 @@ namespace TiberiumRim
                 pawn.apparel.WornApparel.RandomElement().TakeDamage(new DamageInfo(TRDamageDefOf.TiberiumBurn, 3));
         }
 
-        //Pawns can be turned into visceroids on short-term high tiberium exposure
+        //Pawns can be turned into visceroids on short-term high props exposure
         private static bool TryFormVisceralPod(Pawn pawn, float radiation) 
         { 
             float chance = radiation;
@@ -341,7 +341,7 @@ namespace TiberiumRim
 
         private static float InfectionChance(Pawn pawn, bool isGas)
         {
-            //TODO: Adjust for tiberium resistance
+            //TODO: Adjust for props resistance
             float num = 1f;
             if (isGas)
             {
@@ -378,7 +378,7 @@ namespace TiberiumRim
             if (pawn.DestroyedOrNull())
                 Log.Error("Trying to irradiate null Pawn");
 
-            //Setup Base Rad value based on tick-frequency 
+            //Setup Base Rad weight based on tick-frequency 
             float rads = 0.00013f * perTicks * radiation;
             //Apply Radiation Check
             rads *= 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumRadiationResistance);
@@ -386,7 +386,7 @@ namespace TiberiumRim
             //Check validity of radiation
             if (!(rads > 0)) return false;
 
-            //If irradiated, increase value, else, create radiation
+            //If irradiated, increase weight, else, create radiation
             Hediff radiationHediff = pawn.health.hediffSet.GetFirstHediffOfDef(TRHediffDefOf.TiberiumExposure);
             if (radiationHediff != null)
             { radiationHediff.Severity += rads; }

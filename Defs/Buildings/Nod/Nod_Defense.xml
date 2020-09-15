@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
+  	<TiberiumRim.TRThingDef Abstract="True" Name="NODTurret" ParentName="TurretBase_TR">
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+	</TiberiumRim.TRThingDef>
+  
 	<!-- Obelisk Of Light -->
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>ObeliskOfLight</defName>
@@ -85,6 +93,11 @@
 			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<drawOffscreen>true</drawOffscreen>
 		<passability>Impassable</passability>
 		<fillPercent>0.4</fillPercent>
@@ -101,7 +114,7 @@
 	</TiberiumRim.TRThingDef>
 
 
-	<TiberiumRim.TRThingDef ParentName="TurretBase_TR">
+	<TiberiumRim.TRThingDef ParentName="NODTurret">
 		<defName>Nod_TurretHub</defName>
 		<label>turret hub</label>
 		<description>Allows you to construct multiple connected turrets.</description>
@@ -215,7 +228,7 @@
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
 	</TiberiumRim.TRThingDef>
 
-	<TiberiumRim.TRThingDef Name="NodHubTurret" ParentName="TurretBase_TR" Abstract="True">
+	<TiberiumRim.TRThingDef Name="NodHubTurret" ParentName="NODTurret" Abstract="True">
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Defense</TRCategory>
 		<thingClass>TiberiumRim.Building_HubTurret</thingClass>
@@ -435,6 +448,11 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1.25, 1.25)</drawSize>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<passability>Impassable</passability>
 		<blockLight>false</blockLight>

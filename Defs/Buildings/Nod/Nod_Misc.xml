@@ -10,6 +10,11 @@
 		<graphicData>
 			<texPath>Buildings/Nod/Misc/LaserPC</texPath>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<uiIconPath>Buildings/Nod/Misc/LaserPC_Icon</uiIconPath>
 		<statBases>
 			<MaxHitPoints>175</MaxHitPoints>
@@ -43,6 +48,11 @@
 			<texPath>Buildings/Nod/Misc/Light/Floor/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<statBases>
 			<Beauty>5</Beauty>
 			<MaxHitPoints>75</MaxHitPoints>
@@ -87,6 +97,11 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(1.5, 1.5)</drawSize>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_GlowerOffset">
 				<glowerDef>GlowSource_Nod_Red</glowerDef>

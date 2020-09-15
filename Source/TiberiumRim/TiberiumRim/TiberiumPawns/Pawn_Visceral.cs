@@ -31,7 +31,7 @@ namespace TiberiumRim
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat(base.GetInspectString());
             if (!pawnName.NullOrEmpty())
-                "TR_VisceralMemoryName".Translate(pawnName);
+                sb.AppendLine("TR_VisceralMemoryName".Translate(pawnName));
             if (!pawnName.NullOrEmpty())
                 sb.AppendLine("TR_VisceralMemoryKind".Translate(pawnKindName));
             if (!pawnName.NullOrEmpty() && !pawnName.NullOrEmpty())

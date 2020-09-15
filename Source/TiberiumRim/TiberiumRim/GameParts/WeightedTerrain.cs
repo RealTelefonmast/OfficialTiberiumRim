@@ -4,26 +4,26 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class TerrainFloat
+    public class WeightedTerrain
     {
         public TerrainDef terrainDef;
-        public float value = 1f;
+        public float weight = 1f;
 
-        public TerrainFloat() {}
+        public WeightedTerrain() {}
 
-        public TerrainFloat(TerrainDef terrainDef, float value)
+        public WeightedTerrain(TerrainDef terrainDef, float weight)
         {
             this.terrainDef = terrainDef;
-            this.value = value;
+            this.weight = weight;
         }
 
-        public void LoadDataFromXmlCustom(XmlNode xmlRoot)
+        public virtual void LoadDataFromXmlCustom(XmlNode xmlRoot)
         {
             string s = Regex.Replace(xmlRoot.FirstChild.Value, @"\s+", "");
             string[] array = s.Split(',');
             DirectXmlCrossRefLoader.RegisterObjectWantsCrossRef(this, "terrainDef", array[0], null, null);
             if(array.Length > 1)
-                this.value = (float)ParseHelper.FromString(array[1], typeof(float));
+                this.weight = (float)ParseHelper.FromString(array[1], typeof(float));
         }
     }
 }

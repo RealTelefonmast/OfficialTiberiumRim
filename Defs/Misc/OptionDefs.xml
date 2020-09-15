@@ -48,8 +48,8 @@
 		</filter>
 	</TiberiumRim.ThingFilterDef>
 	
-	<TiberiumRim.ThingOptionDef>
-		<defName>TiberiumFloraOptions</defName>
+	<TiberiumRim.ThingOptionsDef>
+		<defName>FloraOptions_General</defName>
 		<options>
 			<li>TiberiumGrass,			10</li>
 			<li>TiberiumGrass_Blue,		8</li>
@@ -60,20 +60,20 @@
 			<li>TiberiumExpeller,		1</li>
 			<li>TiberiumTree,			2</li>
 		</options>
-	</TiberiumRim.ThingOptionDef>
+	</TiberiumRim.ThingOptionsDef>
 	
-	<TiberiumRim.ThingOptionDef>
+	<TiberiumRim.ThingOptionsDef>
 		<defName>FloraOptions_Trees</defName>
 		<options>
 			<li>TiberiumTree,	0.75</li>
 		</options>
-	</TiberiumRim.ThingOptionDef>
+	</TiberiumRim.ThingOptionsDef>
 	
-	<TiberiumRim.TerrainOptionDef>
+	<TiberiumRim.TerrainOptionsDef>
 		<defName>TerrainOption_Flora</defName>
 		<options>
 			<li>TiberiumPodSoil,		1</li>
 		</options>
-	</TiberiumRim.TerrainOptionDef>
+	</TiberiumRim.TerrainOptionsDef>
 	
 </Defs>

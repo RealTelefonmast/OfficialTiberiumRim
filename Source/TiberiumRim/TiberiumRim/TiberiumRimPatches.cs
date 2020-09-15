@@ -40,13 +40,71 @@ namespace TiberiumRim
 
             TiberiumRimMod.mod.LoadAssetBundles();
             TiberiumRimMod.mod.PatchPawnDefs();
-            Log.Message("[TiberiumRim] Patches Done");
         }
 
         public static void MechanoidsFixerAncient(ref bool __result, PawnKindDef kind)
         {
             if (typeof(MechanicalPawn).IsAssignableFrom(kind.race.thingClass)) __result = false;
         }
+
+        private static bool CanPlacrert(BuildableDef newDef, ThingDef oldDef)
+        {
+            if (oldDef.EverHaulable)
+            {
+                return true;
+            }
+            TerrainDef terrainDef = newDef as TerrainDef;
+            if (terrainDef != null)
+            {
+                if (oldDef.IsBlueprint || oldDef.IsFrame)
+                {
+                    if (!terrainDef.affordances.Contains(oldDef.entityDefToBuild.terrainAffordanceNeeded))
+                    {
+                        return false;
+                    }
+                }
+                else if (oldDef.category == ThingCategory.Building && !terrainDef.affordances.Contains(oldDef.terrainAffordanceNeeded))
+                {
+                    return false;
+                }
+            }
+            ThingDef thingDef = newDef as ThingDef;
+            BuildableDef buildableDef = GenConstruct.BuiltDefOf(oldDef);
+            ThingDef thingDef2 = buildableDef as ThingDef;
+            if (newDef.ForceAllowPlaceOver(oldDef))
+            {
+                return true;
+            }
+            if (oldDef.category == ThingCategory.Plant && oldDef.passability == Traversability.Impassable && thingDef != null && thingDef.category == ThingCategory.Building && !thingDef.building.canPlaceOverImpassablePlant)
+            {
+                return false;
+            }
+            if (oldDef.category == ThingCategory.Building || oldDef.IsBlueprint || oldDef.IsFrame)
+            {
+                if (thingDef != null)
+                {
+                    if (!thingDef.IsEdifice())
+                    {
+                        return (oldDef.building == null || oldDef.building.canBuildNonEdificesUnder) && (!thingDef.EverTransmitsPower || !oldDef.EverTransmitsPower);
+                    }
+                    if (thingDef.IsEdifice() && oldDef != null && oldDef.category == ThingCategory.Building && !oldDef.IsEdifice())
+                    {
+                        return thingDef.building == null || thingDef.building.canBuildNonEdificesUnder;
+                    }
+                    if (thingDef2 != null && (thingDef2 == ThingDefOf.Wall || thingDef2.IsSmoothed) && thingDef.building != null && thingDef.building.canPlaceOverWall)
+                    {
+                        return true;
+                    }
+                    if (newDef != ThingDefOf.PowerConduit && buildableDef == ThingDefOf.PowerConduit)
+                    {
+                        return true;
+                    }
+                }
+                return (newDef is TerrainDef && buildableDef is ThingDef && ((ThingDef)buildableDef).CoexistsWithFloors) || (buildableDef is TerrainDef && !(newDef is TerrainDef));
+            }
+            return true;
+        }
+
 
         //Mech Patches
         [HarmonyPatch(typeof(RaceProperties))]
@@ -845,8 +903,8 @@ namespace TiberiumRim
                 Log.Message("Postfixing Regions");
                 var instance = Traverse.Create(__instance);
                 Map map = instance.Field("map").GetValue<Map>();
-                var tiberium = map.Tiberium();
-                var info = tiberium.TiberiumInfo;
+                var props = map.Tiberium();
+                var info = props.TiberiumInfo;
                 List<Region> regions = instance.Field("newRegions").GetValue<List<Region>>();
                 Log.Message("Postfix Traverse Complete " + map + " | " + regions.Count);
 

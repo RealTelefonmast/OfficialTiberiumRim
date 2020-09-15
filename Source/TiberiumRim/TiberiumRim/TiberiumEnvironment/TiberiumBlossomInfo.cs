@@ -11,7 +11,7 @@ namespace TiberiumRim
 {
     public class TiberiumBlossomInfo : MapInformation, ICellBoolGiver
     {
-        public readonly CellBoolDrawer drawer;
+        private readonly CellBoolDrawer drawer;
         private readonly float mapRadius;
         private static readonly float minDistance = 30;
 
@@ -39,6 +39,18 @@ namespace TiberiumRim
         {
             Scribe_Deep.Look(ref blossomPositionGrid, "blossomPositionGrid");
             Scribe_Deep.Look(ref positionGrid, "positionGrid");
+        }
+
+        public override void Tick()
+        {
+            base.Tick();
+        }
+
+        public override void Draw()
+        { 
+            drawer.RegenerateMesh(); 
+            drawer.MarkForDraw();
+            drawer.CellBoolDrawerUpdate();
         }
 
         public bool ShouldTrySpawn { get; set; } = true;
@@ -107,7 +119,7 @@ namespace TiberiumRim
             {
                 if (!c.Standable(map) || c.Fogged(map) || c.Roofed(map)) return false;
                 if (c.DistanceToEdge(map) <= 10) return false;
-                if (!TiberiumDefOf.TerrainFilter_Soil.AllowsTerrainDef(c.GetTerrain(map))) return false;
+                if (!TiberiumDefOf.TerrainFilter_Soil.Allows(c.GetTerrain(map))) return false;
                 return true;
             };
             Predicate<IntVec3> Predicate = c => c.InBounds(map);

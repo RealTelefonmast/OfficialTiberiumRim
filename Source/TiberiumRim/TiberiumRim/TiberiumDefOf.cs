@@ -37,7 +37,7 @@ namespace TiberiumRim
         public static ThingDef TiberiumShroom_Purple;
         public static ThingDef TiberiumTree;
 
-        // Producers
+        // AllProducers
         public static TiberiumProducerDef TiberiumCraterGreen;
         public static TiberiumProducerDef TiberiumCraterHybrid;
         public static TiberiumProducerDef TiberiumCraterBlue;
@@ -124,5 +124,8 @@ namespace TiberiumRim
         public static TerrainFilterDef TerrainFilter_Moss;
         //public static TerrainFilterDef TerrainFilter_Water;
         public static TerrainFilterDef TerrainFilter_Stone;
+
+        //Research
+        public static TResearchDef MineralAnalysis;
     }
 }

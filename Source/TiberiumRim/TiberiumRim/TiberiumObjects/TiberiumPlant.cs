@@ -9,19 +9,23 @@ namespace TiberiumRim
 {
     public class TiberiumPlant : Plant
     {
-        public new TRThingDef def;
+        public new TRThingDef def => (TRThingDef)base.def;
 
         public TiberiumGarden parentGarden;
 
-        public WorldComponent_TR TiberiumRimComp = Find.World.GetComponent<WorldComponent_TR>();
+        public WorldComponent_TR TiberiumRimComp => Find.World.GetComponent<WorldComponent_TR>();
         public WorldComponent_Tiberium WorldTiberiumComp => Find.World.GetComponent<WorldComponent_Tiberium>();
         public MapComponent_Tiberium TiberiumMapComp => Map.GetComponent<MapComponent_Tiberium>();
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            def = (TRThingDef)base.def;
             TiberiumMapComp.RegisterTiberiumPlant(this);
+        }
+
+        public override void PostMake()
+        {
+            base.PostMake();
         }
 
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
@@ -29,6 +33,12 @@ namespace TiberiumRim
 
             TiberiumMapComp.DeregisterTiberiumPlant(this);
             base.DeSpawn(mode);
+        }
+
+        public override void PostApplyDamage(DamageInfo dinfo, float totalDamageDealt)
+        {
+            Log.Message(this + " being damaged by " + dinfo.Def + " with " + totalDamageDealt);
+            base.PostApplyDamage(dinfo, totalDamageDealt);
         }
 
         public override bool BlightableNow => false;

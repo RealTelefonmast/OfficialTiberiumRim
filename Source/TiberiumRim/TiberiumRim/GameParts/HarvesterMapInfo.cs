@@ -8,13 +8,13 @@ namespace TiberiumRim
 {
     public class HarvesterMapInfo : MapInformation
     {
-        private BoolGrid harvestableBools;
+        //private BoolGrid harvestableBools;
 
         public List<Harvester> AllHarvesters = new List<Harvester>(); 
-        public Dictionary<Harvester, Queue<TiberiumCrystal>> ReservedQueues = new Dictionary<Harvester, Queue<TiberiumCrystal>>();
-        public Dictionary<HarvestType, int> ReservedTypes = new Dictionary<HarvestType, int>();
+        //public Dictionary<Harvester, Queue<TiberiumCrystal>> ReservedQueues = new Dictionary<Harvester, Queue<TiberiumCrystal>>();
+        //public Dictionary<HarvestType, int> ReservedTypes = new Dictionary<HarvestType, int>();
 
-        public int TotalReserved = 0;
+        //public int TotalReserved = 0;
 
         private MapComponent_Tiberium Tiberium => map.GetComponent<MapComponent_Tiberium>();
         private MapComponent_TNWManager TNWManager => map.GetComponent<MapComponent_TNWManager>();
@@ -23,24 +23,14 @@ namespace TiberiumRim
 
         public HarvesterMapInfo(Map map) : base(map)
         {
-            harvestableBools = new BoolGrid(map);
+            //harvestableBools = new BoolGrid(map);
         }
 
         public override void InfoInit(bool initAfterReload = false)
         {
             base.InfoInit(initAfterReload);
-            ReservedTypes.Add(HarvestType.Valuable, 0);
-            ReservedTypes.Add(HarvestType.Unvaluable, 0);
-        }
-
-        public bool HarvestableAt(IntVec3 position)
-        {
-            return harvestableBools[map.cellIndices.CellToIndex(position)];
-        }
-
-        public void SetHarvestableBool(TiberiumCrystal crystal, bool value)
-        {
-            harvestableBools[crystal.Position] = value;
+            //ReservedTypes.Add(HarvestType.Valuable, 0);
+            //ReservedTypes.Add(HarvestType.Unvaluable, 0);
         }
 
         public void RegisterHarvester(Harvester harvester)
@@ -75,34 +65,36 @@ namespace TiberiumRim
             Map map = harvester.Map;
             TraverseParms parms = TraverseParms.For(harvester, Danger.Some, TraverseMode.ByPawn);
 
-            Region region = rootPos.GetRegion(map, RegionType.Set_Passable);
-            if (region == null)
+            Region rootRegion = rootPos.GetRegion(map, RegionType.Set_Passable);
+            if (rootRegion == null)
                 return null;
 
-            RegionEntryPredicate entryCondition = (Region from, Region to) => to.Allows(parms, false);
+            bool EntryCondition(Region fromRegion, Region to) => to.Allows(parms, false);
 
             TiberiumCrystal crystal = null;
 
             float closestDistSquared = 9999999f;
 
-            RegionProcessor processor = delegate (Region region)
+            bool Processor(Region region)
             {
                 if ((!region.IsDoorway && !region.Allows(parms, true)) || region.IsForbiddenEntirely(parms.pawn)) return false;
-                if (!HarvestableTiberiumCrystals(region,harvester, out IEnumerable<TiberiumCrystal> crystalList)) return false;
+                if (!HarvestableTiberiumCrystals(region, harvester, out IEnumerable<TiberiumCrystal> crystalList)) return false;
 
                 foreach (var crystal2 in crystalList)
                 {
                     if (!ReachabilityWithinRegion.ThingFromRegionListerReachable(crystal2, region, PathEndMode.Touch, harvester)) continue;
-                    float distance = (float)(crystal2.Position - rootPos).LengthHorizontalSquared;
+                    float distance = (float) (crystal2.Position - rootPos).LengthHorizontalSquared;
                     if ((distance < closestDistSquared) && distance < float.MaxValue)
                     {
                         crystal = crystal2;
                         closestDistSquared = distance;
                     }
                 }
+
                 return crystal != null;
-            };
-            RegionTraverser.BreadthFirstTraverse(rootPos, map, entryCondition, processor);
+            }
+
+            RegionTraverser.BreadthFirstTraverse(rootPos, map, EntryCondition, Processor);
             return crystal;
         }
 

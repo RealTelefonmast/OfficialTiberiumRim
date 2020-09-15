@@ -28,7 +28,8 @@ namespace TiberiumRim
         private TiberiumGrid tiberiumGrid;
         public int TotalCount;
 
-        //Harvest Information
+        public float Coverage => TotalCount / (float)map.Area;
+        public TiberiumCrystalDef MostValuableType => TiberiumCrystalTypes[HarvestType.Valuable].MaxBy(t => t.props.harvestValue);
 
         public TiberiumMapInfo(Map map) : base(map)
         {
@@ -46,19 +47,11 @@ namespace TiberiumRim
             Scribe_Deep.Look(ref tiberiumGrid, "tiberiumGrid", map);
         }
 
-        public TiberiumCrystalDef MostValuableType => TiberiumCrystalTypes[HarvestType.Valuable].MaxBy(t => t.tiberium.harvestValue);
-
-        public float Coverage => TotalCount / (float) map.Area;
-
-        public void Tick()
+        public override void Tick()
         {
-            if (Find.TickManager.TicksGame % 250 == 0)
-            {
-                tiberiumGrid.UpdateDirties();
-            }
         }
 
-        public void Update()
+        public override void Draw()
         {
             tiberiumGrid.drawer.RegenerateMesh();
             tiberiumGrid.drawer.MarkForDraw();
@@ -87,22 +80,12 @@ namespace TiberiumRim
 
         public bool CanGrowTo(IntVec3 cell)
         {
-            return tiberiumGrid.growToGrid[cell] || tiberiumGrid.alwaysGrowFrom[cell];
+            return tiberiumGrid.growToGrid[cell];
         }
 
         public bool IsAffectedCell(IntVec3 cell)
         {
             return tiberiumGrid.affectedCells[cell];
-        }
-
-        public bool ForceGrowAt(IntVec3 cell)
-        {
-            return tiberiumGrid.alwaysGrowFrom[cell];
-        }
-
-        public void SetForceGrowBool(IntVec3 c, bool val)
-        {
-            tiberiumGrid.alwaysGrowFrom[c] = val;
         }
 
         public void SetFieldColor(IntVec3 cell, bool value, TiberiumValueType type)

@@ -18,13 +18,7 @@ namespace TiberiumRim
             parent = base.parent as Building_WorkTable;           
         }
 
-        public bool IsWorkedOn
-        {
-            get
-            {
-                return CurBill != null;
-            }
-        }
+        public bool IsWorkedOn => CurBill != null;
 
         public TiberiumBill CurBill
         {
@@ -34,13 +28,7 @@ namespace TiberiumRim
             }
         }
 
-        public Color CurColor
-        {
-            get
-            {
-                return CurBill?.BillColor ?? Color.clear;
-            }
-        }
+        public Color CurColor => CurBill?.BillColor ?? Color.clear;
 
         public override Color[] ColorOverrides => new Color[] { CurColor, Color.white, Color.white };
         public override float[] OpacityFloats => new float[] { 1f, 1f, 1f };

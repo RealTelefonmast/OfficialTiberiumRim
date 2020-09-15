@@ -39,7 +39,7 @@ namespace TiberiumRim
             }
             if (guilt == null)
             {
-                guilt = new Pawn_GuiltTracker();
+                guilt = new Pawn_GuiltTracker(this);
             }
             if (workSettings == null)
             {

@@ -25,11 +25,16 @@ namespace TiberiumRim
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
-            this.KindKindDef = base.kindDef as RepairDroneKindDef;
             this.parentComp = this.parent?.GetComp<Comp_RepairDrone>();
             if(parent == null)
                 Log.Warning("RepairDrone Spawned without parent");
             base.SpawnSetup(map, respawningAfterLoad);
+        }
+
+        public override void PostMake()
+        {
+            base.PostMake();
+            this.KindKindDef = base.kindDef as RepairDroneKindDef;
         }
 
         public override void Kill(DamageInfo? dinfo, Hediff exactCulprit = null)

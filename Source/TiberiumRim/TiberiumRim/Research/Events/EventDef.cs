@@ -11,7 +11,7 @@ namespace TiberiumRim
     //TODO: Add new events to according tasks
 
     //TODO: Expand EventScannerTable
-    public class DiscoveryProperties
+    public class DiscoveryList
     {
         public List<DiscoveryDef> thingsToDiscover;
 
@@ -37,7 +37,7 @@ namespace TiberiumRim
         public List<TResearchDef> unlocksResearch = new List<TResearchDef>();
 
         public Type eventClass = typeof(BaseEvent);
-        public DiscoveryProperties discoveries;
+        public DiscoveryList discoveries;
         public LetterProperties letter;
 
         public float activeDays = 0;

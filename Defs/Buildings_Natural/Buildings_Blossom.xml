@@ -24,10 +24,12 @@
 						<moteInterval>50~60</moteInterval>
 						<moteDef>Mote_GlowerParticle</moteDef>
 						<rotationRate>1</rotationRate>
-						<positionRadius>0.89</positionRadius>
-						<scale>0.5~1.25</scale>				
-						<angle>0~360</angle>
-						<speed>0.15~0.3</speed>
+						<positionRadius>0.79</positionRadius>
+						<solidTime>1~5</solidTime>
+						<scale>0.5~0.9</scale>				
+						<angle>180</angle>
+						<speed>0.175~0.25</speed>
+						<positionOffset>(0,0,1)</positionOffset>
 					</li>
 				</effecters>
 				<moteData>
@@ -42,7 +44,7 @@
 					</southVec>
 					<westVec>
 						<li>(0.45,0,2.1)</li>
-					</westVec>
+					</westVec>					
 					<thrower>
 						<moteDef>BlossomSmoke</moteDef>
 						<burstCount>2~3</burstCount>
@@ -115,46 +117,63 @@
 		<tiberiumFieldRules>
 			<floraOptions>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumGrass,2</li>
-					</plants>
+					</things>
 					<chance>0</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumShroom_Yellow,0.25</li>
-					</plants>
+					</things>
 					<chance>0.2</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumBush,1.5</li>
-					</plants>
+					</things>
 					<chance>0.3</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumShroom_Yellow,3</li>
 						<li>TiberiumShroom_Blue,3</li>
-					</plants>
+					</things>
 					<chance>0.45</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumTree,4</li>
-					</plants>
+					</things>
 					<chance>0.65</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>SmallBlossom,6</li>
-					</plants>
+					</things>
 					<chance>0.7</chance>
 				</li>
 			</floraOptions>
-			<terrainOptions>
-				<li>TiberiumPodSoil</li>
-			</terrainOptions>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Soil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumPodSoil, 0.92</li>
+						<li>TiberiumSoilGreen, 0.08</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Moss</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumPodSoil, 0.2</li>
+						<li>TiberiumMossyTerrainGreen, 0.8</li>
+					</toTerrain>
+				</li>
+			</terrainRules>
 			<crystalOptions>
 				<li>TiberiumPod</li>
 			</crystalOptions>
@@ -200,47 +219,64 @@
 		<tiberiumFieldRules>
 			<floraOptions>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumGrass,0.25</li>
 						<li>TiberiumGrass_Blue,1</li>
-					</plants>
+					</things>
 					<chance>0</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumBush,1</li>
-					</plants>
+					</things>
 					<chance>0.15</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumShroom_Purple,2</li>
 						<li>TiberiumShroom_Blue,1.75</li>
-					</plants>
+					</things>
 					<chance>0.45</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumTree,2</li>
-					</plants>
+					</things>
 					<chance>0.65</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>SmallBlossom,3</li>
-					</plants>
+					</things>
 					<chance>0.7</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>AlocasiaBlossom,4</li>
-					</plants>
+					</things>
 					<chance>0.8</chance>
 				</li>
 			</floraOptions>
-			<terrainOptions>
-				<li>TiberiumPodSoilBlue</li>
-			</terrainOptions>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Soil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumPodSoilBlue, 0.8</li>
+						<li>TiberiumSoilBlue, 0.2</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Moss</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumPodSoilBlue, 0.2</li>
+						<li>TiberiumMossyTerrainBlue, 0.8</li>
+					</toTerrain>
+				</li>
+			</terrainRules>
 			<crystalOptions>
 				<li>TiberiumPodBlue</li>
 			</crystalOptions>
@@ -301,7 +337,7 @@
 						<moteDef>Mote_GlowerParticle</moteDef>
 						<rotationRate>1</rotationRate>
 						<positionRadius>0.36</positionRadius>
-						<scale>0.4~0.8</scale>				
+						<scale>0.5~0.8</scale>				
 						<angle>0~360</angle>
 						<speed>0.15~0.3</speed>
 					</li>
@@ -311,37 +347,53 @@
 		<tiberiumFieldRules>
 			<floraOptions>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumGrass,1</li>
 						<li>TiberiumGrass_Blue,0.75</li>
-					</plants>
+					</things>
 					<chance>0</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumShroom_Yellow,1.5</li>
 						<li>TiberiumShroom_Blue,1.5</li>
 						<li>TiberiumShroom_Purple,1</li>
-					</plants>
+					</things>
 					<chance>0.35</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>SmallBlossom,2</li>
-					</plants>
+					</things>
 					<chance>0.65</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>AlocasiaBlossom,1.25</li>
-					</plants>
+					</things>
 					<chance>0.85</chance>
 				</li>
 			</floraOptions>
-			<terrainOptions>
-				<li>TiberiumPodSoil</li>
-				<li>TiberiumPodSoilBlue</li>
-			</terrainOptions>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Soil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumPodSoil, 0.5</li>
+						<li>TiberiumPodSoilBlue, 0.5</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Moss</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumMossyTerrainBlue, 0.5</li>
+						<li>TiberiumMossyTerrainGreen, 0.5</li>
+					</toTerrain>
+				</li>
+			</terrainRules>
 			<crystalOptions>
 				<li>TiberiumPodBlue</li>
 				<li>TiberiumPod</li>
@@ -369,29 +421,44 @@
 		<tiberiumFieldRules>
 			<floraOptions>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumGrass,1</li>
 						<li>TiberiumBush,1</li>
-					</plants>
+					</things>
 					<chance>0</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumShroom_Yellow,1.5</li>
 						<li>TiberiumShroom_Blue,1.5</li>
-					</plants>
+					</things>
 					<chance>0.55</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>AlocasiaBlossom,5</li>
-					</plants>
+					</things>
 					<chance>0.8</chance>
 				</li>
 			</floraOptions>
-			<terrainOptions>
-				<li>TiberiumPodSoil</li>
-			</terrainOptions>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Soil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumPodSoil</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Moss</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumMossyTerrainGreen</li>
+					</toTerrain>
+				</li>
+			</terrainRules>
 		</tiberiumFieldRules>	
 	</TiberiumRim.TiberiumProducerDef>
 	

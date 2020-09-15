@@ -12,6 +12,11 @@
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<rotatable>false</rotatable>
 		<tickerType>Rare</tickerType>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<comps>
 			<li Class="CompProperties_Glower">
 				<glowRadius>3</glowRadius>
@@ -133,6 +138,11 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,3)</drawSize>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<comps>
 			<li Class="CompProperties_Glower">
 				<glowRadius>3</glowRadius>

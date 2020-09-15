@@ -49,8 +49,9 @@ namespace TiberiumRim
 
             Action<IntVec3> Processor = delegate(IntVec3 c)
             {
-                if (c.SupportsTiberiumTerrain(Map))
-                    Map.terrainGrid.SetTerrain(c, Ruleset.RandomTerrain());
+                TerrainDef terrain = Ruleset.RandomOutcome(c.GetTerrain(Map));
+                if (terrain != null)
+                    Map.terrainGrid.SetTerrain(c, terrain);
             };
 
             TiberiumFloodInfo flood = new TiberiumFloodInfo(Map,null, Processor);

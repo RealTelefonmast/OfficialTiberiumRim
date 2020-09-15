@@ -3,6 +3,18 @@
 
   <!--===============  ==============-->
 	<DamageDef>
+		<defName>TiberiumDeterioration</defName>
+		<label>tiberium deterioration</label>
+		<hasForcefulImpact>false</hasForcefulImpact>
+		<makesBlood>false</makesBlood>
+		<canInterruptJobs>false</canInterruptJobs>
+		<buildingDamageFactor>2</buildingDamageFactor>
+		<plantDamageFactor>1.5</plantDamageFactor>
+		
+		<!--<damageEffecter></damageEffecter>-->
+	</DamageDef>
+  
+	<DamageDef>
 		<defName>TiberiumBurn</defName>
 		<workerClass>DamageWorker_AddInjury</workerClass>
 		<label>tiberium burn</label>			

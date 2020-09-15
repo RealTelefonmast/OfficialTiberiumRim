@@ -17,11 +17,12 @@
 		</graphicData>
 		<skyfaller>
 			<ticksToImpactRange>
-			<min>120</min>
-			<max>400</max>
+				<min>120</min>
+				<max>400</max>
 			</ticksToImpactRange>
+			<shrapnelDistanceFactor>3</shrapnelDistanceFactor>
 			<shadowSize>(4, 4)</shadowSize>
-			<explosionRadius>4</explosionRadius>
+			<explosionRadius>1</explosionRadius>
 			<explosionDamage>Bomb</explosionDamage>
 			<movementType>Accelerate</movementType>
 			<rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>

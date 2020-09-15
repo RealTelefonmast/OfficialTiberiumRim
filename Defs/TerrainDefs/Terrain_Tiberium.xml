@@ -16,6 +16,7 @@
 			<li>Light</li>
 			<li>Medium</li>
 			<li>Heavy</li>
+			<li>Diggable</li>
 		</affordances>
 		<tags>
 			<li>Tiberium</li>
@@ -23,7 +24,7 @@
 		</tags>
 		<generatedFilth>Filth_Dirt</generatedFilth>
 		<fertility>0</fertility>
-		<takeFootprints>False</takeFootprints>
+		<takeFootprints>True</takeFootprints>
 		<avoidWander>True</avoidWander>
 		<extinguishesFire>True</extinguishesFire>
 		<extraDeteriorationFactor>1.75</extraDeteriorationFactor>
@@ -87,6 +88,11 @@
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef Abstract="True" Name="TiberiumSandTerrain" ParentName="TiberiumSoilTerrain">
+		<affordances Inherit="False">
+			<li>Light</li>
+			<li>Medium</li>
+			<li>Diggable</li>
+		</affordances>	
 		<plantSupport>
 			<li>TiberiumGrass,0.50</li>
 			<li>TiberiumBush,0.35</li>
@@ -103,12 +109,8 @@
 		</tags>
 		<statBases>
 			<Beauty>-10</Beauty>
-			<Cleanliness>-100</Cleanliness>
+			<Cleanliness>-1</Cleanliness>
 		</statBases>
-		<affordances>
-			<li>Light</li>
-			<li>Diggable</li>
-		</affordances>
 		<mainType>TiberiumGreen</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
@@ -123,12 +125,8 @@
 		</tags>
 		<statBases>
 			<Beauty>-5</Beauty>
-			<Cleanliness>-100</Cleanliness>
+			<Cleanliness>-1</Cleanliness>
 		</statBases>
-		<affordances>
-			<li>Light</li>
-			<li>Diggable</li>
-		</affordances>
 		<plantSupport>
 			<li>TiberiumShroom_Purple,0.1</li>
 			<li>TiberiumGrass_Blue,0.4</li>
@@ -146,12 +144,8 @@
 		</tags>
 		<statBases>
 			<Beauty>-2</Beauty>
-			<Cleanliness>-100</Cleanliness>
+			<Cleanliness>-1</Cleanliness>
 		</statBases>
-		<affordances>
-			<li>Light</li>
-			<li>Diggable</li>
-		</affordances>
 		<mainType>TiberiumRed</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
@@ -167,11 +161,6 @@
 		  <Beauty>-12</Beauty>
 		  <Cleanliness>-1</Cleanliness>
 		</statBases>
-		<affordances>
-			<li>Light</li>
-			<li>Medium</li>
-			<li>Heavy</li>
-		</affordances>
 		<plantChanceFactor>0</plantChanceFactor>
 		<mainType>TiberiumMossGreen</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
@@ -188,11 +177,6 @@
 		  <Beauty>-12</Beauty>
 		  <Cleanliness>-1</Cleanliness>
 		</statBases>
-		<affordances>
-			<li>Light</li>
-			<li>Medium</li>
-			<li>Heavy</li>
-		</affordances>
 		<plantChanceFactor>0</plantChanceFactor>
 		<mainType>TiberiumMossBlue</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
@@ -209,10 +193,6 @@
 			<Beauty>-15</Beauty>
 			<Cleanliness>-5</Cleanliness>
 		</statBases>
-		<affordances>
-			<li>Light</li>
-			<li>Diggable</li>
-		</affordances>
 		<mainType>TiberiumMossGreen</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
@@ -228,10 +208,6 @@
 			<Beauty>-15</Beauty>
 			<Cleanliness>-5</Cleanliness>
 		</statBases>
-		<affordances>
-			<li>Light</li>
-			<li>Diggable</li>
-		</affordances>
 		<plantSupport>
 			<li>TiberiumShroom_Purple,0.1</li>
 		</plantSupport>
@@ -252,10 +228,6 @@
 			<Cleanliness>-1</Cleanliness>
 		</statBases>
 		<scatterType>SoftDry</scatterType>
-		<affordances>
-			<li>Light</li>
-			<li>Diggable</li>
-		</affordances>
 		<generatedFilth>Filth_Sand</generatedFilth>
 		<plantChanceFactor>0.1</plantChanceFactor>
 		<mainType>TiberiumShardsGreen</mainType>
@@ -275,10 +247,6 @@
 		  <Cleanliness>-1</Cleanliness>
 		</statBases>
 		<scatterType>SoftDry</scatterType>
-		<affordances>
-			<li>Light</li>
-			<li>Diggable</li>
-		</affordances>
 		<generatedFilth>Filth_Sand</generatedFilth>
 		<plantChanceFactor>0.05</plantChanceFactor>
 		<mainType>TiberiumShardsBlue</mainType>
@@ -298,10 +266,6 @@
 		  <Cleanliness>-1</Cleanliness>
 		</statBases>
 		<scatterType>SoftDry</scatterType>
-		<affordances>
-			<li>Light</li>
-			<li>Diggable</li>
-		</affordances>
 		<generatedFilth>Filth_Sand</generatedFilth>
 		<plantChanceFactor>0.01</plantChanceFactor>
 		<mainType>TiberiumShardsRed</mainType>
@@ -309,40 +273,40 @@
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
 		<defName>TiberiumPodSoil</defName>
-		<label>green tiberium pod soil</label>
+		<label>enriched tiberium soil</label>
 		<texturePath>Terrain/Natural/TiberiumPodSoil</texturePath>
 		<renderPrecedence>340</renderPrecedence>
 		<pathCost>9</pathCost>
+		<fertility>1.7</fertility>
 		<tags>
 			<li>TiberiumSoil</li>
 		</tags>
 		<statBases>
-			<Beauty>-15</Beauty>
-			<Cleanliness>-100</Cleanliness>
+			<Beauty>-2</Beauty>
+			<Cleanliness>-1</Cleanliness>
 		</statBases>
 		<affordances>
-			<li>Light</li>
-			<li>Diggable</li>
+			<li>GrowSoil</li>
 		</affordances>
 		<mainType>TiberiumPod</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
 	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
 		<defName>TiberiumPodSoilBlue</defName>
-		<label>blue tiberium pod soil</label>
+		<label>enriched blue tiberium soil</label>
 		<texturePath>Terrain/Natural/TiberiumPodSoilBlue</texturePath>
 		<renderPrecedence>340</renderPrecedence>
 		<pathCost>9</pathCost>
+		<fertility>1.8</fertility>
 		<tags>
 			<li>TiberiumSoil</li>
 		</tags>
 		<statBases>
-			<Beauty>-15</Beauty>
-			<Cleanliness>-100</Cleanliness>
+			<Beauty>-2</Beauty>
+			<Cleanliness>-1</Cleanliness>
 		</statBases>
 		<affordances>
-			<li>Light</li>
-			<li>Diggable</li>
+			<li>GrowSoil</li>
 		</affordances>
 		<plantSupport>
 			<li>TiberiumShroom_Purple,0.1</li>
@@ -361,12 +325,8 @@
 		</tags>
 		<statBases>
 			<Beauty>-10</Beauty>
-			<Cleanliness>-100</Cleanliness>
+			<Cleanliness>-1</Cleanliness>
 		</statBases>
-		<affordances>
-			<li>Light</li>
-			<li>Diggable</li>
-		</affordances>
 		<mainType>TiberiumAboreus</mainType>
 	</TiberiumRim.TiberiumTerrainDef>
 	
@@ -380,12 +340,12 @@
 			<li>TiberiumSoil</li>
 		</tags>
 		<statBases>
-			<Beauty>-6</Beauty>
-			<Cleanliness>-100</Cleanliness>
+			<Beauty>-12</Beauty>
+			<Cleanliness>-1</Cleanliness>
 		</statBases>
-		<affordances>
+		<affordances Inherit="False">
 			<li>Light</li>
-			<li>Diggable</li>
+			<li>Medium</li>
 		</affordances>
 		<plantChanceFactor>0</plantChanceFactor>
 		<mainType>TiberiumVein</mainType>
@@ -420,9 +380,9 @@
 			<Cleanliness>-100</Cleanliness>
 		</statBases>
 		<plantChanceFactor>0</plantChanceFactor>
-		<affordances>
+		<affordances Inherit="False">
 			<li>Light</li>
-			<li>Diggable</li>
+			<li>Medium</li>
 		</affordances>
 	</TiberiumRim.TiberiumTerrainDef>
 	

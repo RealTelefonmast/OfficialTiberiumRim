@@ -26,7 +26,7 @@ namespace TiberiumRim
 
         public static int[] GetPositionIndices(TiberiumCrystal crystal)
         {
-            int maxMeshCount = crystal.def.tiberium.MeshCount;
+            int maxMeshCount = crystal.def.props.MeshCount;
             int num = (crystal.thingIDNumber ^ 42348528) % 8;
             return rootList[maxMeshCount - 1][num];
         }

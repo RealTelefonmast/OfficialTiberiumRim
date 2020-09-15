@@ -96,9 +96,9 @@ namespace TiberiumRim
         // Value Functions
         public bool TryAddValue(TiberiumValueType valueType, float wantedValue, out float actualValue)
         {
-            //If we add more than we can contain, we have an excess value
+            //If we add more than we can contain, we have an excess weight
             var excessValue = Mathf.Clamp((TotalStorage + wantedValue) - capacity, 0, float.MaxValue);
-            //The actual added value is the wanted value minus the excess
+            //The actual added weight is the wanted weight minus the excess
             actualValue = wantedValue - excessValue; 
 
             //If the container is full, or doesnt accept the type, we dont add anything
@@ -110,7 +110,7 @@ namespace TiberiumRim
                 return false;
             }
 
-            //If the value type is already stored, add to it, if not, make a new entry
+            //If the weight type is already stored, add to it, if not, make a new entry
             if (StoredTiberium.TryGetValue(valueType, out float value))
                 StoredTiberium[valueType] += actualValue;
             else
@@ -120,16 +120,16 @@ namespace TiberiumRim
 
         public bool TryRemoveValue(TiberiumValueType valueType, float wantedValue, out float actualValue)
         {
-            //Attempt to remove a certain value from the container
+            //Attempt to remove a certain weight from the container
             actualValue = wantedValue;
             if (StoredTiberium.TryGetValue(valueType, out float value) && value > 0)
             {
                 if (value >= wantedValue)
-                    //If we have stored more than we need to pay, remove the wanted value
+                    //If we have stored more than we need to pay, remove the wanted weight
                     StoredTiberium[valueType] -= wantedValue;
                 else if (value > 0)
                 {
-                    //If not enough stored to "pay" the wanted value, remove the existing value and set actual removed value to removed value 
+                    //If not enough stored to "pay" the wanted weight, remove the existing weight and set actual removed weight to removed weight 
                     StoredTiberium[valueType] = 0;
                     actualValue = value;
                 }
@@ -139,12 +139,12 @@ namespace TiberiumRim
 
         public bool TryTransferTo(TiberiumContainer other, TiberiumValueType valueType, float value)
         {
-            //Attempt to transfer a value to another container
-            //Check if anything of that type is stored, check if transfer of value is possible without loss, try remove the value from this container
+            //Attempt to transfer a weight to another container
+            //Check if anything of that type is stored, check if transfer of weight is possible without loss, try remove the weight from this container
             if (!other.AcceptsType(valueType)) return false;
             if (StoredTiberium.TryGetValue(valueType) >= value && CanFullyTransferTo(other, value) && TryRemoveValue(valueType, value, out float actualValue))
             {
-                //If passed, try to add the actual value removed from this container, to the other.
+                //If passed, try to add the actual weight removed from this container, to the other.
                 other.TryAddValue(valueType, actualValue, out float actualAddedValue);
                 return true;
             }
@@ -193,7 +193,7 @@ namespace TiberiumRim
                         if (!isGas)
                         {
                             TiberiumCrystalDef crystalDef = def as TiberiumCrystalDef;
-                            int count = (int)(StoredTiberium[type] / crystalDef.tiberium.harvestValue);
+                            int count = (int)(StoredTiberium[type] / crystalDef.props.harvestValue);
                             for (int i = 0; i < count; i++)
                             {
                                 TiberiumCrystal crystal = ThingMaker.MakeThing(crystalDef) as TiberiumCrystal;

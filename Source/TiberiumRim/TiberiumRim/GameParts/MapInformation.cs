@@ -29,5 +29,13 @@ namespace TiberiumRim
         {
             Scribe_Values.Look(ref initialized, "mapInfoInit");
         }
+
+        public virtual void Tick()
+        {
+        }
+
+        public virtual void Draw()
+        {
+        }
     }
 }

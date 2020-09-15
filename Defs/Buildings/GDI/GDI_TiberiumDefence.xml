@@ -39,6 +39,11 @@
 		<costList>
 			<Nod_CarbonPlate>5</Nod_CarbonPlate>
 		</costList>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>

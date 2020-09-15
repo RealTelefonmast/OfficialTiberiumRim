@@ -5,9 +5,12 @@
 		<defName>TiberiumCraterGreen</defName>
 		<label>green tiberium crater</label>
 		<description>The asteroid left a glowing crater full of green crystals, it's radiating a dangerous amount of warmth if you come close. It seems like there are new crystals growing at the edge?</description>
-		<discoveryDef>TiberiumProducerCrater</discoveryDef>
-		<unknownLabel>strange crater</unknownLabel>
-		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+		<thingClass>TiberiumRim.TiberiumCrater</thingClass>
+		<discovery>
+			<discoveryDef>TiberiumProducerCrater</discoveryDef>
+			<unknownLabel>strange crater</unknownLabel>
+			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+		</discovery>
 		<statBases>
 			<MaxHitPoints>5000</MaxHitPoints>
 			<Beauty>175</Beauty>
@@ -77,44 +80,69 @@
 		<leavesThing>DeadGreenCrater</leavesThing>
 		<canBeGroundZero>true</canBeGroundZero>
 		<growsBlossomTree>true</growsBlossomTree>
+		<scatterTiberium>true</scatterTiberium>
 		<tiberiumFieldRules>
 			<floraOptions>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumGrass,2</li>
-					</plants>
+					</things>
 					<chance>0</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumShroom_Yellow,0.25</li>
-					</plants>
+					</things>
 					<chance>0.2</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumBush,1.5</li>
-					</plants>
+					</things>
 					<chance>0.3</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumShroom_Yellow,3</li>
 						<li>TiberiumShroom_Blue,3</li>
-					</plants>
+					</things>
 					<chance>0.45</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumTree,4</li>
-					</plants>
+					</things>
 					<chance>0.65</chance>
 				</li>
 			</floraOptions>
-			<terrainOptions>
-				<li>TiberiumSoilGreen,0.60</li>
-				<li>TiberiumPodSoil,0.40</li>
-			</terrainOptions>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Soil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumSoilGreen,0.60</li>
+						<li>TiberiumPodSoil,0.40</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Sand</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumSandGreen</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Moss</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumMossyTerrainGreen, 0.80</li>
+						<li>TiberiumPodSoil, 0.20</li>
+					</toTerrain>
+				</li>
+			</terrainRules>
 			<crystalOptions>
 				<li>TiberiumGreen</li>
 			</crystalOptions>
@@ -127,18 +155,196 @@
 		-->
 		<spawner>
 			<spawnMode>Direct</spawnMode>
-			<growRadius>5.75</growRadius>
+			<growRadius>12.9</growRadius>
 			<spawnInterval>30000~90000</spawnInterval>
 		</spawner>
+	</TiberiumRim.TiberiumProducerDef>
+	
+	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
+		<defName>TiberiumCraterBlue</defName>
+		<label>blue tiberium crater</label>
+		<description>The asteroid left this glowing crater full of blue crystals, the blue glow is nice to look at. It seems like there are new crystals growing at the edges?</description>
+		<thingClass>TiberiumRim.TiberiumCrater</thingClass>
+		<discovery>
+			<discoveryDef>TiberiumProducerCrater</discoveryDef>
+			<unknownLabel>strange crater</unknownLabel>
+			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+		</discovery>
+		<statBases>
+			<MaxHitPoints>5000</MaxHitPoints>
+			<Beauty>175</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Buildings/Natural/BigTiberiumCraterBlue/BlueCrater</texPath>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<altitudeLayer>Floor</altitudeLayer>
+		<size>(3,3)</size>
+		<filthLeaving>FilthTiberiumBlue</filthLeaving>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX">
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/BigTiberiumCraterBlue/main_overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<mode>Pulse</mode>
+					    <pulse>
+							<opacityRange>0.2~0.6</opacityRange>
+							<opacityDuration>100</opacityDuration>
+						</pulse>
+					</li>
+				</overlays>
+				<effecters>
+					<li>
+						<burstCount>2~3</burstCount>
+						<moteInterval>120</moteInterval>
+						<moteDef>TiberiumFogB</moteDef>
+						<rotationRate>1</rotationRate>
+						<positionRadius>1.49</positionRadius>
+						<scale>3~4.5</scale>					
+						<angle>0~360</angle>
+						<speed>0.2~0.35</speed>
+					</li>
+					<li>
+						<burstCount>1~2</burstCount>
+						<chancePerTick>0.0045</chancePerTick>
+						<moteDef>IonLighting</moteDef>
+						<positionRadius>1.19</positionRadius>
+						<scale>1.25~4</scale>					
+						<angle>0~360</angle>
+						<speed>0</speed>
+					</li>
+				</effecters>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(120,150,255)</glowColor>
+			</li>
+			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+				<radius>6</radius>
+				<intensity>0.3</intensity>
+				<damage>
+					<min>0</min>
+					<max>8</max>
+				</damage>
+			</li>
+			<li Class="TiberiumRim.CompProperties_TiberiumExplosive">
+				<explosionChance>0.32</explosionChance>
+				<explosionRadius>12.5</explosionRadius>
+				<sporeAmount>90</sporeAmount>
+				<radius>20</radius>
+				<tiberiumTypes>
+					<li>TiberiumBlue</li>
+				</tiberiumTypes>
+			</li>
+		</comps>
+		<daysToMature>15</daysToMature>
+		<leaveTiberium>true</leaveTiberium>
+		<leavesThing>DeadBlueCrater</leavesThing>
+		<spore>
+			<blossoms>
+				<li>SmallBlossom,0.5</li>
+				<li>AlocasiaBlossom,0.75</li>
+				<li>BlossomTree,0.25</li>
+				<li>BlueBlossomTree,0.5</li>
+			</blossoms>
+		</spore>
+		<!--
+		<spore>
+			<canBeGroundZero>true</canBeGroundZero>
+			<blossoms>
+				<li>SmallBlossom,0.5</li>
+				<li>AlocasiaBlossom,0.75</li>
+				<li>BlossomTree,0.25</li>
+				<li>BlueBlossomTree,0.5</li>
+			</blossoms>
+		</spore>
+		-->
+		<growsBlossomTree>true</growsBlossomTree>
+		<canBeGroundZero>true</canBeGroundZero>
+		<scatterTiberium>true</scatterTiberium>
+		<spawner>
+			<spawnMode>Direct</spawnMode>
+			<growRadius>9</growRadius>
+		</spawner>
+		<tiberiumFieldRules>
+			<floraOptions>
+				<li>
+					<things>
+						<li>TiberiumGrass,0.35</li>
+						<li>TiberiumGrass_Blue,1.75</li>
+					</things>
+					<chance>0</chance>
+				</li>
+				<li>
+					<things>
+						<li>TiberiumBush,1.5</li>
+					</things>
+					<chance>0.25</chance>
+				</li>
+				<li>
+					<things>
+						<li>TiberiumShroom_Purple,2.5</li>
+						<li>TiberiumShroom_Blue,3.5</li>
+					</things>
+					<chance>0.45</chance>
+				</li>
+				<li>
+					<things>
+						<li>TiberiumTree,4</li>
+					</things>
+					<chance>0.65</chance>
+				</li>
+			</floraOptions>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Soil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumSoilBlue, 	 0.6</li>
+						<li>TiberiumPodSoilBlue, 0.4</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Sand</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumSandBlue</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Moss</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumMossyTerrainBlue, 0.80</li>
+						<li>TiberiumPodSoilBlue, 0.20</li>
+					</toTerrain>
+				</li>
+			</terrainRules>
+			<crystalOptions>
+				<li>TiberiumBlue</li>
+			</crystalOptions>
+		</tiberiumFieldRules>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumCraterHybrid</defName>
 		<label>hybrid tiberium crater</label>
 		<description>The asteroid left a strange crater full of green and blue crystals, observing it shows that that over time both types slowly spread at the edge.</description>
-		<discoveryDef>TiberiumProducerCrater</discoveryDef>
-		<unknownLabel>strange crater</unknownLabel>
-		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+		<thingClass>TiberiumRim.TiberiumCrater</thingClass>
+		<discovery>
+			<discoveryDef>TiberiumProducerCrater</discoveryDef>
+			<unknownLabel>strange crater</unknownLabel>
+			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+		</discovery>
 		<statBases>
 			<MaxHitPoints>7500</MaxHitPoints>
 			<Beauty>200</Beauty>
@@ -245,14 +451,9 @@
 		<daysToMature>12</daysToMature>
 		<leaveTiberium>true</leaveTiberium>
 		<leavesThing>DeadGreenCrater</leavesThing>
-		<!--
-		<evolutions>
-			<TiberiumCraterHybrid>0.3</TiberiumCraterHybrid>
-			<TiberiumCruentus>0.01</TiberiumCruentus>
-		</evolutions>
-		-->
 		<growsBlossomTree>true</growsBlossomTree>
 		<canBeGroundZero>true</canBeGroundZero>
+		<scatterTiberium>true</scatterTiberium>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
 			<growRadius>7.6</growRadius>
@@ -260,423 +461,68 @@
 		<tiberiumFieldRules>
 			<floraOptions>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumGrass,1.25</li>
 						<li>TiberiumGrass_Blue,0.5</li>
-					</plants>
+					</things>
 					<chance>0</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumBush,1.5</li>
-					</plants>
+					</things>
 					<chance>0.25</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumShroom_Yellow,2.25</li>
 						<li>TiberiumShroom_Purple,2.25</li>
 						<li>TiberiumShroom_Blue,2</li>
-					</plants>
+					</things>
 					<chance>0.45</chance>
 				</li>
 				<li>
-					<plants>
+					<things>
 						<li>TiberiumTree,4</li>
-					</plants>
+					</things>
 					<chance>0.65</chance>
 				</li>
 			</floraOptions>
-			<terrainOptions>
-				<li>TiberiumSoilGreen</li>
-				<li>TiberiumPodSoil</li>
-				<li>TiberiumSoilBlue</li>
-				<li>TiberiumPodSoilBlue</li>
-			</terrainOptions>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Soil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumSoilGreen,   0.5</li>
+						<li>TiberiumPodSoil,     0.20</li>
+						<li>TiberiumSoilBlue,    0.5</li>
+						<li>TiberiumPodSoilBlue, 0.2</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Sand</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumSandGreen, 0.5</li>
+						<li>TiberiumSandBlue, 0.5</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Moss</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumMossyTerrainGreen, 	0.40</li>
+						<li>TiberiumPodSoil, 			0.10</li>
+						<li>TiberiumMossyTerrainBlue, 	0.40</li>
+						<li>TiberiumPodSoilBlue, 		0.10</li>
+					</toTerrain>
+				</li>
+			</terrainRules>
 			<crystalOptions>
 				<li>TiberiumGreen</li>
-				<li>TiberiumBlue</li>
-			</crystalOptions>
-		</tiberiumFieldRules>
-	</TiberiumRim.TiberiumProducerDef>
-	
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
-		<defName>DeadGreenCrater</defName>
-		<label>green Tiberium crater residue</label>
-		<description>The remnants of a green Tiberium crater, it does not create any more crystals.</description>
-		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
-		<useHitPoints>false</useHitPoints>
-		<destroyable>false</destroyable>
-		<altitudeLayer>Floor</altitudeLayer>
-		<size>(3,3)</size>
-		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
-			<texPath>Buildings/Natural/BigTiberiumCraterGreen/GreenCrater_Broken</texPath>
-			<shaderType>Transparent</shaderType>
-			<drawSize>(5,5)</drawSize>
-		</graphicData>
-		<comps>
-			<li Class="CompProperties_Glower">
-				<glowRadius>5</glowRadius>
-				<glowColor>(120,255,120)</glowColor>
-			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
-				<radius>8</radius>
-				<intensity>0.2</intensity>
-				<damage>
-					<min>0</min>
-					<max>5</max>
-				</damage>
-			</li>
-		</comps>
-		<tickerType>Rare</tickerType>
-	</TiberiumRim.TRThingDef>
-	
-	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
-		<defName>TiberiumCraterBlue</defName>
-		<label>blue tiberium crater</label>
-		<description>The asteroid left this glowing crater full of blue crystals, the blue glow is nice to look at. It seems like there are new crystals growing at the edges?</description>
-		<discoveryDef>TiberiumProducerCrater</discoveryDef>
-		<unknownLabel>strange crater</unknownLabel>
-		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		<statBases>
-			<MaxHitPoints>5000</MaxHitPoints>
-			<Beauty>175</Beauty>
-		</statBases>
-		<graphicData>
-			<texPath>Buildings/Natural/BigTiberiumCraterBlue/BlueCrater</texPath>
-			<drawSize>(5,5)</drawSize>
-		</graphicData>
-		<altitudeLayer>Floor</altitudeLayer>
-		<size>(3,3)</size>
-		<filthLeaving>FilthTiberiumBlue</filthLeaving>
-		<comps>
-			<li Class="TiberiumRim.CompProperties_FX">
-				<overlays>
-					<li>
-						<data>
-							<texPath>Buildings/Natural/BigTiberiumCraterBlue/main_overlay</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<drawRotated>false</drawRotated>
-							<shaderType>MoteGlow</shaderType>
-							<drawSize>(5,5)</drawSize>
-						</data>
-						<mode>Pulse</mode>
-					    <pulse>
-							<opacityRange>0.2~0.6</opacityRange>
-							<opacityDuration>100</opacityDuration>
-						</pulse>
-					</li>
-				</overlays>
-				<effecters>
-					<li>
-						<burstCount>2~3</burstCount>
-						<moteInterval>120</moteInterval>
-						<moteDef>TiberiumFogB</moteDef>
-						<rotationRate>1</rotationRate>
-						<positionRadius>1.49</positionRadius>
-						<scale>3~4.5</scale>					
-						<angle>0~360</angle>
-						<speed>0.2~0.35</speed>
-					</li>
-					<li>
-						<burstCount>1~2</burstCount>
-						<chancePerTick>0.0045</chancePerTick>
-						<moteDef>IonLighting</moteDef>
-						<positionRadius>1.19</positionRadius>
-						<scale>1.25~4</scale>					
-						<angle>0~360</angle>
-						<speed>0</speed>
-					</li>
-				</effecters>
-			</li>
-			<li Class="CompProperties_Glower">
-				<glowRadius>10</glowRadius>
-				<glowColor>(120,150,255)</glowColor>
-			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
-				<radius>6</radius>
-				<intensity>0.3</intensity>
-				<damage>
-					<min>0</min>
-					<max>8</max>
-				</damage>
-			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumExplosive">
-				<explosionChance>0.32</explosionChance>
-				<explosionRadius>12.5</explosionRadius>
-				<sporeAmount>90</sporeAmount>
-				<radius>20</radius>
-				<tiberiumTypes>
-					<li>TiberiumBlue</li>
-				</tiberiumTypes>
-			</li>
-		</comps>
-		<daysToMature>15</daysToMature>
-		<leaveTiberium>true</leaveTiberium>
-		<leavesThing>DeadBlueCrater</leavesThing>
-		<spore>
-			<blossoms>
-				<li>SmallBlossom,0.5</li>
-				<li>AlocasiaBlossom,0.75</li>
-				<li>BlossomTree,0.25</li>
-				<li>BlueBlossomTree,0.5</li>
-			</blossoms>
-		</spore>
-		<!--
-		<spore>
-			<canBeGroundZero>true</canBeGroundZero>
-			<blossoms>
-				<li>SmallBlossom,0.5</li>
-				<li>AlocasiaBlossom,0.75</li>
-				<li>BlossomTree,0.25</li>
-				<li>BlueBlossomTree,0.5</li>
-			</blossoms>
-		</spore>
-		<evolutions>
-			<TiberiumCruentus>0.3</TiberiumCruentus>
-			<RedTiberiumShard>0.01</RedTiberiumShard>
-		</evolutions>
-		-->
-		<growsBlossomTree>true</growsBlossomTree>
-		<canBeGroundZero>true</canBeGroundZero>
-		<spawner>
-			<spawnMode>Direct</spawnMode>
-			<growRadius>9</growRadius>
-		</spawner>
-		<tiberiumFieldRules>
-			<floraOptions>
-				<li>
-					<plants>
-						<li>TiberiumGrass,0.35</li>
-						<li>TiberiumGrass_Blue,1.75</li>
-					</plants>
-					<chance>0</chance>
-				</li>
-				<li>
-					<plants>
-						<li>TiberiumBush,1.5</li>
-					</plants>
-					<chance>0.25</chance>
-				</li>
-				<li>
-					<plants>
-						<li>TiberiumShroom_Purple,2.5</li>
-						<li>TiberiumShroom_Blue,3.5</li>
-					</plants>
-					<chance>0.45</chance>
-				</li>
-				<li>
-					<plants>
-						<li>TiberiumTree,4</li>
-					</plants>
-					<chance>0.65</chance>
-				</li>
-			</floraOptions>
-			<terrainOptions>
-				<li>TiberiumSoilBlue</li>
-				<li>TiberiumPodSoilBlue</li>
-			</terrainOptions>
-			<crystalOptions>
-				<li>TiberiumBlue</li>
-			</crystalOptions>
-		</tiberiumFieldRules>
-	</TiberiumRim.TiberiumProducerDef>
-	
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
-		<defName>DeadBlueCrater</defName>
-		<label>blue Tiberium crater residue</label>
-		<description>The remnants of a blue Tiberium crater, it does not create any more crystals.</description>
-		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
-		<useHitPoints>false</useHitPoints>
-		<destroyable>false</destroyable>
-		<altitudeLayer>Floor</altitudeLayer>
-		<size>(3,3)</size>
-		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
-			<texPath>Buildings/Natural/BigTiberiumCraterBlue/BlueCrater_Broken</texPath>
-			<shaderType>Transparent</shaderType>
-			<drawSize>(5,5)</drawSize>
-		</graphicData>
-		<comps>
-			<li Class="CompProperties_Glower">
-				<glowRadius>5</glowRadius>
-				<glowColor>(120,255,120)</glowColor>
-			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
-				<radius>9</radius>
-				<intensity>0.3</intensity>
-				<damage>
-					<min>0</min>
-					<max>8</max>
-				</damage>
-			</li>
-		</comps>
-		<tickerType>Rare</tickerType>
-	</TiberiumRim.TRThingDef>
-	
-	
-	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
-		<defName>TiberiumCruentus</defName>
-		<label>tiberium cruentus</label>
-		<description>This massive crystalline tower will slowly mature over the period of 7 days and detonate into an explosion of tiberium spores, easily covering the landscape with tiberium.</description>
-		<discoveryDef>TiberiumProducerCrater</discoveryDef>
-		<unknownLabel>strange formation</unknownLabel>
-		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		<altitudeLayer>Floor</altitudeLayer>
-		<statBases>
-			<MaxHitPoints>2200</MaxHitPoints>
-			<Beauty>75</Beauty>
-			<Flammability>0</Flammability>
-		</statBases>
-		<graphicData>
-			<texPath>Buildings/Natural/TiberiumCruentus/Cruentus_Base</texPath>
-			<drawSize>(5,5)</drawSize>
-		</graphicData>
-		<size>(3,2)</size>
-		<filthLeaving>FilthTiberiumBlue</filthLeaving>
-		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
-				<overlays>
-					<li>
-						<data>
-							<texPath>Buildings/Natural/TiberiumCruentus/Cruentus_Top</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<drawRotated>false</drawRotated>
-							<drawSize>(5,5)</drawSize>
-						</data>				
-						<altitude>BuildingOnTop</altitude>
-					</li>
-					<li>
-						<data>
-							<texPath>Buildings/Natural/TiberiumCruentus/Cruentus_Overglow2</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<drawRotated>false</drawRotated>
-							<shaderType>MoteGlow</shaderType>
-							<drawSize>(5,5)</drawSize>
-						</data>
-						<extraAltitude>0.125</extraAltitude>
-						<altitude>BuildingOnTop</altitude>
-						<mode>Pulse</mode>
-					    <pulse>
-							<opacityRange>0.2~0.6</opacityRange>
-						</pulse>
-					</li>
-				</overlays>
-				<effecters>
-					<li>
-						<burstCount>1~3</burstCount>
-						<chancePerTick>0.0030</chancePerTick>
-						<positionOffset>(0,0,2.55)</positionOffset>
-						<moteDef>IonCloud</moteDef>
-						<positionRadius>0.99</positionRadius>
-						<scale>1.75~2.25</scale>					
-						<angle>0~360</angle>
-						<speed>0.1~0.15</speed>
-					</li>
-					<li>
-						<burstCount>1~3</burstCount>
-						<chancePerTick>0.002</chancePerTick>
-						<positionOffset>(0,0,2.5)</positionOffset>
-						<moteDef>IonLighting</moteDef>
-						<positionRadius>1.19</positionRadius>
-						<scale>1.25~2.5</scale>					
-						<angle>0~360</angle>
-						<speed>0</speed>
-					</li>
-				</effecters>
-			</li>
-			<li Class="CompProperties_Glower">
-				<glowRadius>3</glowRadius>
-				<glowColor>(120,150,255)</glowColor>
-			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
-				<radius>4</radius>
-				<intensity>0.1</intensity>
-				<rareTick>true</rareTick>
-				<damage>
-					<min>0</min>
-					<max>2</max>
-				</damage>
-			</li>
-		</comps>
-		<daysToMature>0</daysToMature>
-		<leaveTiberium>false</leaveTiberium>
-		<spawner>
-			<spawnMode>SporeExplosion</spawnMode>
-			<explosionRange>10~25</explosionRange>
-			<sporeExplosionRadius>65</sporeExplosionRadius>
-			<growRadius>0</growRadius>
-		</spawner>
-		<tiberiumFieldRules>
-			<terrainOptions>
-				<li>TiberiumPodSoil</li>
-				<li>TiberiumPodSoilBlue</li>
-			</terrainOptions>
-			<crystalOptions>
-				<li>TiberiumAboreus</li>
-			</crystalOptions>
-		</tiberiumFieldRules>
-	</TiberiumRim.TiberiumProducerDef>
-	
-	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
-		<defName>TiberiumMonolith</defName>
-		<label>blue tiberium monolith</label>
-		<description>A blue monolith. These monoliths form from patches of blue Tiberium, and usually spread via tiny tiberium particles created by an explosion.</description>
-		<discoveryDef>TiberiumProducerCrater</discoveryDef>
-		<unknownLabel>strange monolith</unknownLabel>
-		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		<filthLeaving>FilthTiberiumBlue</filthLeaving>
-		<altitudeLayer>BuildingOnTop</altitudeLayer>
-		<size>(1,1)</size>
-		<statBases>
-			<MaxHitPoints>5000</MaxHitPoints>
-			<Beauty>240</Beauty>
-		</statBases>
-		<graphicData>
-			<texPath>Buildings/Natural/TiberiumMonolith/Monolith</texPath>
-			<drawSize>(5,5)</drawSize>
-		</graphicData>
-		<extraData>
-			<rotateDrawSize>false</rotateDrawSize>
-			<alignToBottom>true</alignToBottom>
-			<drawOffset>(0,0,-0.25)</drawOffset>
-		</extraData>
-		<comps>
-			<li Class="TiberiumRim.CompProperties_FX">
-				<overlays>
-					<li>
-						<data>
-							<texPath>Buildings/Natural/TiberiumMonolith/Underlay</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>MoteGlow</shaderType>
-							<drawRotated>false</drawRotated>
-							<drawSize>(8,8)</drawSize>
-						</data>				
-						<altitude>Floor</altitude>
-					</li>
-				</overlays>
-			</li>
-			<li Class="CompProperties_HeatPusher">
-				<heatPerSecond>20</heatPerSecond>
-				<heatPushMaxTemperature>207</heatPushMaxTemperature>
-			</li>
-			<li Class="CompProperties_Glower">
-				<glowRadius>6</glowRadius>
-				<glowColor>(120,150,200)</glowColor>
-			</li>
-		</comps>
-		<daysToMature>7</daysToMature>
-		<leaveTiberium>false</leaveTiberium>
-		<spawner>
-			<spawnMode>Direct</spawnMode>
-			<growRadius>5</growRadius>
-		</spawner>
-		<tiberiumFieldRules>
-			<terrainOptions>
-				<li>TiberiumSoilBlue</li>
-			</terrainOptions>
-			<crystalOptions>
 				<li>TiberiumBlue</li>
 			</crystalOptions>
 		</tiberiumFieldRules>
@@ -686,9 +532,12 @@
 		<defName>RedTiberiumShard</defName>
 		<label>red tiberium spire</label>
 		<description>This massive red spire is of extraterrestrial origin. It has a very uneasy feeling to it and should be met with caution. The ground around it seems to very slowly grow red crystals similar to the shard.</description>
-		<discoveryDef>TiberiumProducerCrater</discoveryDef>
-		<unknownLabel>strange spire</unknownLabel>
-		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+		<thingClass>TiberiumRim.TiberiumCrater</thingClass>
+		<discovery>
+			<discoveryDef>TiberiumProducerCrater</discoveryDef>
+			<unknownLabel>strange crater</unknownLabel>
+			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+		</discovery>
 		<statBases>
 			<MaxHitPoints>4500</MaxHitPoints>
 			<Beauty>150</Beauty>
@@ -779,6 +628,7 @@
 				</damage>
 			</li>
 		</comps>
+		<!--
 		<spore>
 			<blossoms>
 				<li>SmallBlossom,0.25</li>
@@ -787,17 +637,34 @@
 				<li>BlueBlossomTree,0.75</li>
 			</blossoms>
 		</spore>
+		-->
 		<canBeGroundZero>true</canBeGroundZero>
 		<daysToMature>12</daysToMature>
 		<leaveTiberium>false</leaveTiberium>
+		<scatterTiberium>true</scatterTiberium>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
 			<growRadius>3</growRadius>
 		</spawner>
 		<tiberiumFieldRules>
-			<terrainOptions>
-				<li>TiberiumSoilRed</li>
-			</terrainOptions>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Soil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumSoilRed</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Sand</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumSandRed</li>
+					</toTerrain>
+				</li>
+			</terrainRules>
 			<crystalOptions>
 				<li>TiberiumRed</li>
 			</crystalOptions>
@@ -805,13 +672,146 @@
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
+		<defName>TiberiumCruentus</defName>
+		<label>tiberium cruentus</label>
+		<description>This massive crystalline tower will slowly mature over the period of 7 days and detonate into an explosion of tiberium spores, easily covering the landscape with tiberium.</description>
+		<discovery>
+			<discoveryDef>TiberiumProducerCrater</discoveryDef>
+			<unknownLabel>strange crater</unknownLabel>
+			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+		</discovery>
+		<altitudeLayer>Floor</altitudeLayer>
+		<statBases>
+			<MaxHitPoints>2200</MaxHitPoints>
+			<Beauty>75</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>Buildings/Natural/TiberiumCruentus/Cruentus_Base</texPath>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<size>(3,2)</size>
+		<filthLeaving>FilthTiberiumBlue</filthLeaving>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/TiberiumCruentus/Cruentus_Top</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawRotated>false</drawRotated>
+							<drawSize>(5,5)</drawSize>
+						</data>				
+						<altitude>BuildingOnTop</altitude>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/TiberiumCruentus/Cruentus_Overglow2</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<extraAltitude>0.125</extraAltitude>
+						<altitude>BuildingOnTop</altitude>
+						<mode>Pulse</mode>
+					    <pulse>
+							<opacityRange>0.2~0.6</opacityRange>
+						</pulse>
+					</li>
+				</overlays>
+				<effecters>
+					<li>
+						<burstCount>1~3</burstCount>
+						<chancePerTick>0.0030</chancePerTick>
+						<positionOffset>(0,0,2.55)</positionOffset>
+						<moteDef>IonCloud</moteDef>
+						<positionRadius>0.99</positionRadius>
+						<scale>1.75~2.25</scale>					
+						<angle>0~360</angle>
+						<speed>0.1~0.15</speed>
+					</li>
+					<li>
+						<burstCount>1~3</burstCount>
+						<chancePerTick>0.002</chancePerTick>
+						<positionOffset>(0,0,2.5)</positionOffset>
+						<moteDef>IonLighting</moteDef>
+						<positionRadius>1.19</positionRadius>
+						<scale>1.25~2.5</scale>					
+						<angle>0~360</angle>
+						<speed>0</speed>
+					</li>
+				</effecters>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(120,150,255)</glowColor>
+			</li>
+			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+				<radius>4</radius>
+				<intensity>0.1</intensity>
+				<rareTick>true</rareTick>
+				<damage>
+					<min>0</min>
+					<max>2</max>
+				</damage>
+			</li>
+		</comps>
+		<daysToMature>0</daysToMature>
+		<leaveTiberium>false</leaveTiberium>
+		<spawner>
+			<spawnMode>SporeExplosion</spawnMode>
+			<explosionRange>10~25</explosionRange>
+			<sporeExplosionRadius>65</sporeExplosionRadius>
+			<growRadius>0</growRadius>
+		</spawner>
+		<tiberiumFieldRules>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Soil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumPodSoil, 0.6</li>
+						<li>TiberiumPodSoilBlue, 0.4</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Sand</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumSandBlue</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Moss</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumMossyTerrainBlue, 0.6</li>
+						<li>TiberiumPodSoil, 0.4</li>
+						<li>TiberiumPodSoilBlue, 0.4</li>
+					</toTerrain>
+				</li>
+			</terrainRules>
+			<crystalOptions>
+				<li>TiberiumAboreus</li>
+			</crystalOptions>
+		</tiberiumFieldRules>
+	</TiberiumRim.TiberiumProducerDef>
+	
+	<!-- Misc -->
+	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
 		<defName>Veinhole</defName>
 		<thingClass>TiberiumRim.Veinhole</thingClass>
 		<label>veinhole</label>
 		<description>The Veinhole is a type for itself, it is the producer of Tiberium Veins, spawns Veinmonsters and also creates Vein Hubs which are structures that will attack any living being inside their area of effect with veiny tentacles coming out of the ground.\n\nKilling the Veinhole kills all connected Veins and spawned Vein Hubs. The Veinhole has a chance to eat any pawn that comes too close.\n\nComing too close to the center might cause infection by poisonous gases.</description>
-		<discoveryDef>VeinholeEncounter</discoveryDef>
-		<unknownLabel>strange creature</unknownLabel>
-		<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+		<discovery>
+			<discoveryDef>VeinholeEncounter</discoveryDef>
+			<unknownLabel>strange creature</unknownLabel>
+			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+		</discovery>
 		<statBases>
 			<MaxHitPoints>4500</MaxHitPoints>
 			<Beauty>-160</Beauty>
@@ -850,7 +850,7 @@
 						<angle>0~10</angle>
 						<burstCount>1~2</burstCount>
 						<affectedByWind>false</affectedByWind>
-						<moteInterval>900~1000</moteInterval>
+						<moteInterval>875~925</moteInterval>
 					</li>
 				</effecters>
 				<tickOffset>100~999</tickOffset>
@@ -870,9 +870,32 @@
 			<growRadius>3.75</growRadius>
 		</spawner>
 		<tiberiumFieldRules>
-			<terrainOptions>
-				<li>TiberiumSoilVein</li>
-			</terrainOptions>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Soil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumSoilVein</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Sand</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumSandRed</li>
+					</toTerrain>
+				</li>
+				<!-- TODO: Veiny Moss 
+				<li>
+					<terrainFilter>TerrainFilter_Moss</terrainFilter>
+					<toTerrain>
+						<li>TiberiumMossyTerrainBlue</li>
+					</toTerrain>
+				</li>
+				-->
+			</terrainRules>
 			<crystalOptions>
 				<li>TiberiumVein</li>
 			</crystalOptions>
@@ -880,15 +903,158 @@
 		<filthLeaving>FilthTibBloodG</filthLeaving>
 	</TiberiumRim.TiberiumProducerDef>
 	
-	<ThingDef ParentName="EtherealThingBase">
-		<defName>VeinholeTunnel</defName>
-		<label>premature veinhole</label>
+	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
+		<defName>TiberiumMonolith</defName>
+		<label>blue tiberium monolith</label>
+		<description>A blue monolith. These monoliths form from patches of blue Tiberium, and usually spread via tiny tiberium particles created by an explosion.</description>
+		<discovery>
+			<discoveryDef>TiberiumProducerCrater</discoveryDef>
+			<unknownLabel>strange crater</unknownLabel>
+			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+		</discovery>
+		<filthLeaving>FilthTiberiumBlue</filthLeaving>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<size>(1,1)</size>
+		<statBases>
+			<MaxHitPoints>5000</MaxHitPoints>
+			<Beauty>240</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Buildings/Natural/TiberiumMonolith/Monolith</texPath>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<extraData>
+			<rotateDrawSize>false</rotateDrawSize>
+			<alignToBottom>true</alignToBottom>
+			<drawOffset>(0,0,-0.25)</drawOffset>
+		</extraData>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX">
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/TiberiumMonolith/Underlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawRotated>false</drawRotated>
+							<drawSize>(8,8)</drawSize>
+						</data>				
+						<altitude>Floor</altitude>
+					</li>
+				</overlays>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>20</heatPerSecond>
+				<heatPushMaxTemperature>207</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>6</glowRadius>
+				<glowColor>(120,150,200)</glowColor>
+			</li>
+		</comps>
+		<daysToMature>7</daysToMature>
+		<leaveTiberium>false</leaveTiberium>
+		<spawner>
+			<spawnMode>Direct</spawnMode>
+			<growRadius>5</growRadius>
+		</spawner>
+		<tiberiumFieldRules>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Soil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumSoilBlue</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Sand</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumSandBlue</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Moss</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumMossyTerrainBlue</li>
+					</toTerrain>
+				</li>
+			</terrainRules>
+			<crystalOptions>
+				<li>TiberiumBlue</li>
+			</crystalOptions>
+		</tiberiumFieldRules>
+	</TiberiumRim.TiberiumProducerDef>
+	
+	<!-- -->
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>DeadGreenCrater</defName>
+		<label>green Tiberium crater residue</label>
+		<description>The remnants of a green Tiberium crater, it does not create any more crystals.</description>
+		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
+		<useHitPoints>false</useHitPoints>
+		<destroyable>false</destroyable>
+		<altitudeLayer>Floor</altitudeLayer>
 		<size>(3,3)</size>
-		<thingClass>TiberiumRim.VeinholeTunnel</thingClass>
-		<tickerType>Normal</tickerType>
-		<drawerType>RealtimeOnly</drawerType>
-		<alwaysFlee>true</alwaysFlee>
-	</ThingDef>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Buildings/Natural/BigTiberiumCraterGreen/GreenCrater_Broken</texPath>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>5</glowRadius>
+				<glowColor>(120,255,120)</glowColor>
+			</li>
+			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+				<radius>8</radius>
+				<intensity>0.2</intensity>
+				<damage>
+					<min>0</min>
+					<max>5</max>
+				</damage>
+			</li>
+		</comps>
+		<tickerType>Rare</tickerType>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>DeadBlueCrater</defName>
+		<label>blue Tiberium crater residue</label>
+		<description>The remnants of a blue Tiberium crater, it does not create any more crystals.</description>
+		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
+		<useHitPoints>false</useHitPoints>
+		<destroyable>false</destroyable>
+		<altitudeLayer>Floor</altitudeLayer>
+		<size>(3,3)</size>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Buildings/Natural/BigTiberiumCraterBlue/BlueCrater_Broken</texPath>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>5</glowRadius>
+				<glowColor>(120,255,120)</glowColor>
+			</li>
+			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+				<radius>9</radius>
+				<intensity>0.3</intensity>
+				<damage>
+					<min>0</min>
+					<max>8</max>
+				</damage>
+			</li>
+		</comps>
+		<tickerType>Rare</tickerType>
+	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>DeadVeinhole</defName>

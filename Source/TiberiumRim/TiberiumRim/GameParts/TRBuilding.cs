@@ -9,28 +9,27 @@ namespace TiberiumRim
 {
     public class TRBuilding : FXBuilding, IDiscoverable
     {
-        public new TRThingDef def;
+        public new TRThingDef def => (TRThingDef)base.def;
 
         public override string Label => Discovered ? DiscoveredLabel : UnknownLabel;
 
         public override string DescriptionFlavor => Discovered ? DiscoveredDescription : UnknownDescription;
 
-        public DiscoveryDef DiscoveryDef => def.discoveryDef;
+        public DiscoveryDef DiscoveryDef => def.discovery.discoveryDef;
         public string DiscoveredLabel => base.Label;
         public string UnknownLabel => def.UnknownLabelCap;
         public string DiscoveredDescription => def.description;
-        public string UnknownDescription => def.unknownDescription;
-        public string DescriptionExtra => def.extraDescription;
+        public string UnknownDescription => def.discovery.unknownDescription;
+        public string DescriptionExtra => def.discovery.extraDescription;
 
         public bool Discovered => !IsDiscoverable || TRUtils.DiscoveryTable().IsDiscovered(this);
-        public bool IsDiscoverable => DiscoveryDef != null;
+        public bool IsDiscoverable => def.discovery != null;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            this.def = (TRThingDef)base.def;
             TiberiumRimComp.TryRegisterSuperweapon(this);
-            TiberiumComp.StructureInfo.TryRegister(this);
+            TiberiumComp.RegisterTiberiumBuilding(this);
             foreach (IntVec3 c in this.OccupiedRect())
             {
                 c.GetPlant(Map)?.DeSpawn();
@@ -43,7 +42,7 @@ namespace TiberiumRim
 
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
         {
-            TiberiumComp.StructureInfo.Deregister(this);
+            TiberiumComp.DeregisterTiberiumBuilding(this);
             var thingToLeave = def.leavesThing;
 
             Map map = MapHeld;

@@ -115,7 +115,7 @@ namespace TiberiumRim
         //Local Requisites
         public CreationProperties creationTasks;
         public TargetProperties taskTarget;
-        public DiscoveryProperties discoveries;
+        public DiscoveryList discoveries;
         public WorkTypeDef workType;
         public List<SkillRequirement> skillRequirements;
         public StatDef relevantPawnStat;
@@ -148,7 +148,7 @@ namespace TiberiumRim
         {
             get
             {
-                return parentProject ??= DefDatabase<TResearchDef>.AllDefsListForReading.FirstOrDefault((r) => r.tasks.Contains(this));
+                return parentProject ??= DefDatabase<TResearchDef>.AllDefsListForReading.FirstOrDefault((r) => !r.tasks.NullOrEmpty() && r.tasks.Contains(this));
             }
         }
 

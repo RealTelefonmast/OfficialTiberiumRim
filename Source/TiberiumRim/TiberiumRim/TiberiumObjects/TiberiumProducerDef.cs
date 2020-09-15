@@ -20,6 +20,12 @@ namespace TiberiumRim
         public bool leaveTiberium = true;
         public bool forResearch = true;
         public bool growsBlossomTree = false;
+        public bool scatterTiberium = false;
+
+        [Unsaved()]
+        private float? spreadRange;
+
+        public float SpreadRange => spreadRange ??= spawner?.spreadRange.RandomInRange ?? 0;
     }
 
     public class SpawnProperties

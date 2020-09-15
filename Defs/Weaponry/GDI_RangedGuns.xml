@@ -3,6 +3,11 @@
 
 	<TiberiumRim.TRThingDef Name="GDI_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
 		<soundInteract>Interact_Rifle</soundInteract>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<recipeMaker>
 			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 			<workSkill>Crafting</workSkill>
@@ -30,11 +35,13 @@
 			<texPath>Items/Weapons/GDI/Rifle</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<!--
 		<requisites>
 			<tiberiumResearchTasks>
 				<li>BasicArsenal_T1</li>
 			</tiberiumResearchTasks>
 		</requisites>
+		-->
 		<statBases>
 			<WorkToMake>35000</WorkToMake>
 			<Mass>5.5</Mass>
@@ -88,7 +95,7 @@
 	</TiberiumRim.TRThingDef>
 	
 	<!-- Allow multi ammo type -->
-	<ThingDef ParentName="GDI_Gun">
+	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_StunLauncher</defName>
 		<label>GDI stun grenade launcher</label>
 		<description>A classic grenade launcher, equipped with stun grenades.</description>
@@ -151,7 +158,7 @@
 		<weaponTags>
 			<li>GDIRifle</li>
 		</weaponTags>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Railgun</defName>
@@ -322,7 +329,7 @@
 		</recipeMaker>
 	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="GDI_Gun">
+	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Mortar</defName>
 		<label>GDI mobile mortar</label>
 		<description>This is a experimental weapon used by GDI for long distance engagements.\n\nUpgradable to GDI shockweaver.</description>
@@ -378,9 +385,9 @@
 				<Crafting>8</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
-	<ThingDef ParentName="GDI_Gun">
+	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Shockweaver</defName>
 		<label>GDI shockweaver</label>
 		<description>This is a siege weapon that uses shockwave warheads. Only effective for structures.</description>
@@ -437,6 +444,6 @@
 				<Crafting>10</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
 </Defs>

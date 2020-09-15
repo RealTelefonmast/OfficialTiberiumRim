@@ -37,12 +37,10 @@
 			<TiberiumInfectionResistance>0.75</TiberiumInfectionResistance>
 		</statBases>
 		<equippedStatOffsets>
-			<MoveSpeed>-0.02</MoveSpeed>
+			<MoveSpeed>-0.2</MoveSpeed>
 			<ToxicSensitivity>-0.25</ToxicSensitivity>
 			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.75</TiberiumRadiationResistance>
-			<Insulation_Cold>-20</Insulation_Cold>
-			<Insulation_Heat>45</Insulation_Heat>
 		</equippedStatOffsets>
 		<apparel>
 			<bodyPartGroups>

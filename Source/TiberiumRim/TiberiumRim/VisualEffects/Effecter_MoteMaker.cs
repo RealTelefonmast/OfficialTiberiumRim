@@ -8,18 +8,17 @@ namespace TiberiumRim
 {
     public class Effecter_MoteMaker : Effecter
     {
-        public new EffecterDefTR def;
+        public EffecterDefTR def => (EffecterDefTR)base.def;
 
         public Effecter_MoteMaker(EffecterDef def) : base(def)
         {
-            this.def = (EffecterDefTR)def;
         }
 
         public void Tick(TargetInfo A, TargetInfo B)
         {
-            for (int i = 0; i < this.children.Count; i++)
+            foreach (var t in this.children)
             {
-                (this.children[i] as SubEffecter_MoteMaker).Tick(def.tickInterval, A, B);
+                (t as SubEffecter_MoteMaker).Tick(def.tickInterval, A, B);
             }
         }
     }
@@ -32,6 +31,33 @@ namespace TiberiumRim
         {
         }
 
+        public override void SubEffectTick(TargetInfo A, TargetInfo B)
+        {
+            base.MakeMote(A, B);
+        }
+
+        public override void SubTrigger(TargetInfo A, TargetInfo B)
+        {
+            if (Rand.Value < def.chancePerTick)
+            {
+                base.MakeMote(A, B);
+            }
+        }
+
+        public void Tick(int ticks, TargetInfo A, TargetInfo B)
+        {
+            if (ticksUntilMote <= 0)
+            {
+                if (Rand.Value < def.chancePerTick)
+                {
+                    SubEffectTick(A, B);
+                }
+                ticksUntilMote = def.ticksBetweenMotes;
+            }
+            ticksUntilMote -= ticks;
+        }
+
+        /*
         public void Tick(int interval, TargetInfo A, TargetInfo B)
         {
             if (ticksUntilMote <= 0)
@@ -44,18 +70,7 @@ namespace TiberiumRim
             }
             ticksUntilMote -= interval;
         }
+        */
 
-        public override void SubEffectTick(TargetInfo A, TargetInfo B)
-        {
-            MakeMote(A, B);
-        }
-
-        public override void SubTrigger(TargetInfo A, TargetInfo B)
-        {
-            if (Rand.Value < def.chancePerTick)
-            {
-                MakeMote(A, B);
-            }
-        }
     }
 }

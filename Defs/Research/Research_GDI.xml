@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+<!--
 	<TiberiumRim.TResearchGroupDef>
 		<defName>GDIGroup</defName>
 		<label>GDI (Not Working Yet)</label>	
@@ -11,7 +12,7 @@
 		</researchProjects>
 	</TiberiumRim.TResearchGroupDef>
 	
-	<!---->
+	
 	<TiberiumRim.TResearchDef>
 		<defName>RelationBond</defName>
 		<label>Establishing Relations</label>	
@@ -40,7 +41,7 @@
 		<workAmount>500</workAmount>
 	</TiberiumRim.TResearchTaskDef>
 	
-	<!---->
+
 	<TiberiumRim.TResearchDef>
 		<defName>BasicArsenal</defName>
 		<label>Basic Arsenal</label>	
@@ -80,6 +81,6 @@
 			</thingsToCreate>
 		</creationTasks>
 	</TiberiumRim.TResearchTaskDef>
-
+-->
 	
 </Defs>

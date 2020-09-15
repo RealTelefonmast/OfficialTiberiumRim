@@ -50,7 +50,7 @@ namespace TiberiumRim
         {
             Scribe_Values.Look(ref QualityCategory, "qc");
             Scribe_Values.Look(ref defName, "defName");
-            Scribe_Values.Look(ref value, "value");
+            Scribe_Values.Look(ref value, "weight");
             Scribe_Values.Look(ref chance, "chance");
         }
 
@@ -100,7 +100,7 @@ namespace TiberiumRim
             return true;
         }
 
-        //Notation - <defName>value, chance, quality, stuff</defName>
+        //Notation - <defName>weight, chance, quality, stuff</defName>
         public void LoadDataFromXmlCustom(XmlNode xmlRoot)
         { 
             defName = xmlRoot.Name;

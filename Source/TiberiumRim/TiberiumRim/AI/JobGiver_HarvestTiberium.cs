@@ -81,11 +81,11 @@ namespace TiberiumRim
             {
                 initAction = delegate
                 {
-                    //Time based on each value per Tick 
+                    //Time based on each weight per Tick 
                     ticksToHarvest =  (int)Math.Round((TiberiumCrystal.HarvestValue / Harvester.kindDef.harvestValue), MidpointRounding.AwayFromZero);
-                    //Ticks Needed to get 1 single value stored
+                    //Ticks Needed to get 1 single weight stored
                     ticksPerValue = (int) (ticksToHarvest / TiberiumCrystal.HarvestValue);
-                    //Growth removed whenever value is added
+                    //Growth removed whenever weight is added
                     growthPerValue = (TiberiumCrystal.Growth / (float) ticksToHarvest) * ticksPerValue;
                     Log.Message("Init Harvest Action: " + ticksToHarvest + " | " + ticksPerValue + " | " + growthPerValue);
 
@@ -101,7 +101,6 @@ namespace TiberiumRim
                     ticksPassed++;
                     if (ticksPassed > ticksToHarvest)
                     {
-                        TiberiumCrystal.Harvested();
                         ticksPassed = 0;
                         ReadyForNextToil();
                         return;

@@ -17,6 +17,7 @@ namespace TiberiumRim
         private Map map;
         private IntVec3 center;
 
+
         private CellArea remaining;
 
         private float maxRadius = 0;
@@ -115,15 +116,16 @@ namespace TiberiumRim
 
         private void SetupArea()
         {
-            bool Predicate(IntVec3 c) => c.SupportsTiberiumTerrain(map);
+            bool Predicate(IntVec3 c) => c.InBounds(map) && tibField.Producer.TiberiumTypes.Any(t => c.AllowsTiberiumTerrain(map, t));
             void Action(IntVec3 c)
             {
                 float curDist = center.DistanceTo(c);
                 if (curDist > MaxRadius)
                     maxRadius = curDist;
             }
-            TiberiumFloodInfo flooder = new TiberiumFloodInfo(map, Predicate, Action);
-            flooder.TryMakeFlood(out List<IntVec3> temp, center, GenRadial.NumCellsInRadius(radius));
+            //TiberiumFloodInfo flooder = new TiberiumFloodInfo(map, Predicate, Action);
+            //flooder.TryMakeFlood(out List<IntVec3> temp, center, GenRadial.NumCellsInRadius(radius));
+            List<IntVec3> temp = TerrainGenerator.RandomRootPatch(tibField.Producer.OccupiedRect().ExpandedBy(1), map, radius, 8, Predicate, Action).ToList();
             remaining.AddRange(temp);
         }
 
@@ -135,30 +137,28 @@ namespace TiberiumRim
         private bool MutateCell(IntVec3 cell)
         {
             if (!TryMutateTerrainAt(cell, out TiberiumTerrainDef newTerr)) return false;
-            if(ruleset.allowFlora && cell.GetFirstBuilding(map) == null)
+            if(ruleset.allowFlora && cell.Standable(map))
                 TrySpawnFloraAt(cell, newTerr);
             return true;
         }
 
-        public bool TryMutateTerrainAt(IntVec3 pos, out TiberiumTerrainDef newTerr)
+        private bool TryMutateTerrainAt(IntVec3 pos, out TiberiumTerrainDef newTerr)
         {
             newTerr = null;
             TerrainDef oldTerr = pos.GetTerrain(map);
-            var options = ruleset.TerrainOptionsFor(oldTerr).ToList();
-            if (!options.Any()) return false;
-            newTerr = options.RandomElementByWeight(t => t.value).terrainDef as TiberiumTerrainDef;
-            if (newTerr == null) return false;
             if (oldTerr.IsTiberiumTerrain())
             {
                 newTerr = (TiberiumTerrainDef)oldTerr;
                 return false;
             }
-            return newTerr.TryCreateOn(pos, map, out newTerr);
+            newTerr = ruleset.RandomOutcome(oldTerr) as TiberiumTerrainDef;
+            return newTerr != null && newTerr.TryCreateOn(pos, map, out newTerr);
         }
 
-        public void TrySpawnFloraAt(IntVec3 pos, TiberiumTerrainDef terrain)
+        private void TrySpawnFloraAt(IntVec3 pos, TiberiumTerrainDef terrain)
         {
-            if (pos.GetPlant(map) is TiberiumPlant) return;
+            var oldPlant = pos.GetPlant(map);
+            if (oldPlant is TiberiumPlant) return;
 
             float distance = center.DistanceTo(pos);
             //float chance = 1f - Mathf.InverseLerp(0f, maxRadius, distance);
@@ -170,7 +170,8 @@ namespace TiberiumRim
             if (flora == null) return;
             Thing plant = ThingMaker.MakeThing(flora);
 
-            if (plant is Plant p) p.Growth = TRUtils.Range(0.1f, 0.55f);
+            if (plant is Plant p) p.Growth = TRUtils.Range(0.3f, 0.9f);
+            oldPlant?.DeSpawn();
             GenSpawn.Spawn(plant, pos, map);
         }
 

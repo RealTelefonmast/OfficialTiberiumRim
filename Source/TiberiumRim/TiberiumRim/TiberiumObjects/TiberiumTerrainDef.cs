@@ -27,7 +27,9 @@ namespace TiberiumRim
         //TODO: Re-Add AllowedTerrain filter to directly spawn terrain instead of using spreadoutcome
         public bool TryCreateOn(IntVec3 pos, Map map, out TiberiumTerrainDef outTerrain)
         {
-            mainType.SpreadOutcomesAt(pos, map, out TerrainDef topTerrain, out TerrainDef underTerrain, out TiberiumCrystalDef crystal);
+            TerrainDef topTerrain = null;
+            TerrainDef underTerrain = null;
+            mainType?.GetTiberiumOutcomesAt(pos, map, out topTerrain, out underTerrain, out TiberiumCrystalDef _);
             outTerrain = (TiberiumTerrainDef)topTerrain;
             if (!(topTerrain != null || underTerrain != null)) return false;
             GenTiberium.SetTerrain(pos, map, topTerrain, underTerrain);
@@ -36,7 +38,7 @@ namespace TiberiumRim
 
         public bool AllowedOn(TerrainDef terrain)
         {
-            return allowedTerrain.Any(t => t.AllowsTerrainDef(terrain));
+            return allowedTerrain.Any(t => t.Allows(terrain));
         }
 
         public bool SupportsTerrain(TerrainDef terrain)

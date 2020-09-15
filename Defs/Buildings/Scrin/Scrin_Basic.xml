@@ -85,13 +85,25 @@
 		<comps>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
-					
+					<!--
+					<li>
+						<data>
+							<graphicClass>Graphic_MotePulse</graphicClass>
+							<shaderType>MotePsychicSkipFlash</shaderType>
+							<texPath>Things/Mote/PsycastSkipFlash</texPath>
+							<shaderParameters>
+								<_Noise>/Things/Mote/SkipFlashNoise</_Noise>
+							</shaderParameters>
+							<drawSize>5.5</drawSize>
+						</data>
+					</li>
+					-->
 					<li>
 						<data>
 							<texPath>Buildings/Scrin/ScrinPortal</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
-							<drawSize>(2.5,2.5)</drawSize>
+							<drawSize>2.5</drawSize>
 						</data>
 						<mode>Pulse</mode>
 					    <pulse>
@@ -99,21 +111,19 @@
 							<sizeRange>0.4~1.05</sizeRange>
 						</pulse>
 					</li>
-					<!--
 					<li>
 						<data>
 							<texPath>Buildings/Scrin/ScrinPortal</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
-							<drawSize>(2.5,2.5)</drawSize>
+							<drawSize>2.5</drawSize>
 						</data>
 						<mode>Pulse</mode>
-						<pulse>
-							<opacityRange>0.9~0.2</opacityRange>
-							<sizeRange>1~0.2</sizeRange>
+					    <pulse>
+							<opacityRange>0.35~0.65</opacityRange>
+							<sizeRange>0.4~1.05</sizeRange>
 						</pulse>
 					</li>
-					-->
 					<li>
 						<data>
 							<texPath>Things/Mote/Black</texPath>
@@ -124,7 +134,7 @@
 								<_distortionIntensity>0.12</_distortionIntensity>
 								<_brightnessMultiplier>1.1</_brightnessMultiplier>
 							</shaderParameters>
-							<drawSize>(5.5,5.5)</drawSize>
+							<drawSize>5.5</drawSize>
 						</data>
 					</li>
 					<!--

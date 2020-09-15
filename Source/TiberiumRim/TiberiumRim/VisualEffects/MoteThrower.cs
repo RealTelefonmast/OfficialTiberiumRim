@@ -29,6 +29,7 @@ namespace TiberiumRim
         public IntRange burstRange = new IntRange(100, 100);
         //public Color color = Color.white;
         public Vector3 positionOffset = Vector3.zero;
+        public FloatRange solidTime = FloatRange.Zero;
         public float positionRadius = 0;
         public bool affectedByWind = false;
 
@@ -107,6 +108,7 @@ namespace TiberiumRim
                 mote.exactPosition = exactPos + Info.positionOffset + Gen.RandomHorizontalVector(Info.positionRadius);
                 mote.exactRotation = TRUtils.Range(Info.rotation);
                 mote.rotationRate = TRUtils.Range(Info.rotationRate);
+                mote.solidTimeOverride = Info.solidTime.Average > 0 ? Info.solidTime.RandomInRange : -1f;
                 if (mote is MoteThrown thrown)
                 {
                     thrown.airTimeLeft = TRUtils.Range(Info.airTime);

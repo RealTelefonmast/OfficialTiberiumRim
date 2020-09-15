@@ -26,11 +26,11 @@ namespace TiberiumRim
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 if(GroundZero.IsValid)
-                    ((TiberiumProducer) GroundZero.Thing).IsGroundZero = true;
+                    ((TiberiumCrater) GroundZero.Thing).IsGroundZero = true;
             }
         }
 
-        public void SetGroundZero(TiberiumProducer producer)
+        public void SetGroundZero(TiberiumCrater producer)
         {
             if (GroundZero.IsValid || !producer.def.canBeGroundZero) return;
             GroundZero = new GlobalTargetInfo(producer);

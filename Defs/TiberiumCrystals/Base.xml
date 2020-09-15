@@ -23,6 +23,7 @@
 		<altitudeLayer>LowPlant</altitudeLayer>
 		<useHitPoints>True</useHitPoints>
 		<statBases>
+			<TiberiumDamageResistance>1</TiberiumDamageResistance>
 			<Flammability>0.2</Flammability>
 		</statBases>
 	    <pathCost>75</pathCost>
@@ -84,12 +85,12 @@
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<blockLight>false</blockLight>
 		<mineable>false</mineable>
-		<tiberium>
+		<props>
 			<sizeRange>
 				<min>0.75</min>
 				<max>2</max>
 			</sizeRange>
-		</tiberium>
+		</props>
 		<statBases>
 			<Flammability>0</Flammability>
 		</statBases>
@@ -109,7 +110,7 @@
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<TiberiumRim.TiberiumCrystalDef Name="TiberiumForWater" ParentName="TiberiumCrystalBase" Abstract="True">
-		<conversionRuleset>GlacierConversion</conversionRuleset>
+		<conversions>GlacierConversion</conversions>
 	</TiberiumRim.TiberiumCrystalDef>
 
 </Defs>

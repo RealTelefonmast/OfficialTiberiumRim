@@ -12,7 +12,7 @@ namespace TiberiumRim
     public class PositionFilter
     {
         public List<TerrainDef> terrainToAvoid = new List<TerrainDef>();
-        public List<TerrainFloat> terrainToPrefer = new List<TerrainFloat>();
+        public List<WeightedTerrain> terrainToPrefer = new List<WeightedTerrain>();
         public List<ThingDef> spawnAt = new List<ThingDef>();
         public List<ThingValue> distanceToThings = new List<ThingValue>();
         public AreaCheck roofs = AreaCheck.Avoid;
@@ -50,7 +50,7 @@ namespace TiberiumRim
             }
             if (!terrainToPrefer.NullOrEmpty())
             {
-                AllCells.RemoveAll(v => !TRUtils.Chance(terrainToPrefer.Find(t => t.terrainDef == v.GetTerrain(map)).value));
+                AllCells.RemoveAll(v => !TRUtils.Chance(terrainToPrefer.Find(t => t.terrainDef == v.GetTerrain(map)).weight));
             }
             if (!spawnAt.NullOrEmpty())
             {

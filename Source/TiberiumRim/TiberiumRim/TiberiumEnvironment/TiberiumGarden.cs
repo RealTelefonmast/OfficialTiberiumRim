@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -9,15 +10,14 @@ namespace TiberiumRim
 {
     public class TiberiumGarden
     {
-        private TiberiumFloraGrid floraGrid;
         private Map map;
         private CellArea cells;
+        private TiberiumBlossom blossomParent;
+        private List<TiberiumPlant> tiberiumFlora = new List<TiberiumPlant>();
 
-
-        public TiberiumGarden(TiberiumFloraGrid floraGrid)
+        public TiberiumGarden(Map map)
         {
-            this.floraGrid = floraGrid;
-            this.map = floraGrid.map;
+            this.map = map;
             cells = new CellArea(map);
         }
 
@@ -31,5 +31,19 @@ namespace TiberiumRim
             cells.Add(cell);
         }
 
+        public void RegisterFlora(TiberiumPlant plant)
+        {
+            tiberiumFlora.Add(plant);
+        }
+
+        public void DeregisterFlora(TiberiumPlant plant)
+        {
+            tiberiumFlora.Remove(plant);
+        }
+
+        public void GrowFlora(float pct)
+        {
+            tiberiumFlora.ForEach(f => f.Growth += pct);
+        }
     }
 }

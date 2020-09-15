@@ -11,6 +11,11 @@
 			<texPath>Buildings/GDI/Misc/IonPC</texPath>
 		</graphicData>
 		<uiIconPath>Buildings/GDI/Misc/IonPC_Icon</uiIconPath>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<statBases>
 			<MaxHitPoints>175</MaxHitPoints>
 			<WorkToBuild>100</WorkToBuild>
@@ -60,6 +65,11 @@
 		<tickerType>Rare</tickerType>
 		<canOverlapZones>false</canOverlapZones>
 		<passability>PassThroughOnly</passability>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<building>
 			<ai_chillDestination>false</ai_chillDestination>
 			<isInert>true</isInert>
@@ -104,6 +114,11 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1,1)</drawSize>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<statBases>
 			<Beauty>5</Beauty>
 			<MaxHitPoints>75</MaxHitPoints>
@@ -148,6 +163,11 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(1.5, 1.5)</drawSize>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_GlowerOffset">
 				<glowerDef>GlowSource_GDI_IonBlue</glowerDef>

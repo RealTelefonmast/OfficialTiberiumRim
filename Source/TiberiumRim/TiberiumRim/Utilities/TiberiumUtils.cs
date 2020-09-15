@@ -15,7 +15,7 @@ namespace TiberiumRim
     {
         public static DiscoveryTable DiscoveryTable()
         {
-            return Tiberium(Find.World).DiscoveryTable;
+            return Tiberium().DiscoveryTable;
         }
 
         public static EventManager EventManager()
@@ -43,9 +43,9 @@ namespace TiberiumRim
             return map.GetComponent<MapComponent_Tiberium>();
         }
 
-        public static WorldComponent_TR Tiberium(this World world)
+        public static WorldComponent_TR Tiberium()
         {
-            return world.GetComponent<WorldComponent_TR>();
+            return Find.World.GetComponent<WorldComponent_TR>();
         }
 
         public static EventLetter SendEventLetter(this LetterStack stack, TaggedString eventLabel, TaggedString eventDesc, EventDef eventDef, LookTargets targets = null)
@@ -59,14 +59,16 @@ namespace TiberiumRim
         public static ThingDef VeinCorpseDef(this Pawn pawn)
         {
             ThingDef raceDef = pawn.def;
-            ThingDef d = new ThingDef();
-            d.category = ThingCategory.Item;
-            d.thingClass = typeof(VeinholeFood);
-            d.selectable = true;
-            d.tickerType = TickerType.Normal;
-            d.altitudeLayer = AltitudeLayer.ItemImportant;
-            d.scatterableOnMapGen = false;
-            d.drawerType = DrawerType.RealtimeOnly;
+            ThingDef d = new ThingDef
+            {
+                category = ThingCategory.Item,
+                thingClass = typeof(VeinholeFood),
+                selectable = true,
+                tickerType = TickerType.Normal,
+                altitudeLayer = AltitudeLayer.ItemImportant,
+                scatterableOnMapGen = false,
+                drawerType = DrawerType.RealtimeOnly
+            };
             d.SetStatBaseValue(StatDefOf.Beauty, -50f);
             d.SetStatBaseValue(StatDefOf.DeteriorationRate, 1f);
             d.SetStatBaseValue(StatDefOf.FoodPoisonChanceFixedHuman, 0.05f);
@@ -130,6 +132,11 @@ namespace TiberiumRim
                 d.thingCategories = new List<ThingCategoryDef>();
             }
             return d;
+        }
+
+        public static bool IsBuilding(this ThingDef def)
+        {
+            return def.category == ThingCategory.Building;
         }
 
         public static bool IsWall(this ThingDef def)
@@ -431,20 +438,6 @@ namespace TiberiumRim
             thing.AllComps.ForEach(c => c.PostPrintOnto(layer));
         }
 
-        public static string ToString(this System.Xml.XmlNode node, int indentation)
-        {
-            using (var sw = new System.IO.StringWriter())
-            {
-                using (var xw = new System.Xml.XmlTextWriter(sw))
-                {
-                    xw.Formatting = System.Xml.Formatting.Indented;
-                    xw.Indentation = indentation;
-                    node.WriteContentTo(xw);
-                }
-                return sw.ToString();
-            }
-        }
-
         public static ThingDef MakeNewBluePrint(ThingDef def, bool isInstallBlueprint, ThingDef normalBlueprint = null)
         {
             Type type = typeof(ThingDefGenerator_Buildings);
@@ -580,9 +573,9 @@ namespace TiberiumRim
             return tex;
         }
 
-        public static float PulseVal(float minVal, float maxVal, float duration, int currentTick)
+        public static float OscillateBetween(float minVal, float maxVal, float duration, int currentTick)
         {
-            //This since function makes the value oscilate between 0 and 1, with a multiplier to set the duration between 0 and 1
+            //This since function makes the weight oscilate between 0 and 1, with a multiplier to set the duration between 0 and 1
             float sineVal = Mathf.Sin(((float)currentTick + (float)duration/2f)/(float)duration * Mathf.PI) / 2 + 0.5f;
             return Mathf.Lerp(minVal, maxVal, sineVal);
         }
@@ -603,29 +596,6 @@ namespace TiberiumRim
             return (mltp * Mathf.Cos(ang)) + height;
         }
 
-        public static TiberiumCrystal ClosestTiberiumFor(Pawn seeker, TraverseParms parms, PathEndMode peMode = PathEndMode.Touch, HarvestMode hMode = HarvestMode.Nearest, TiberiumCrystalDef preferredDef = null)
-        {
-            TiberiumCrystal crystal = null;
-            Predicate<IntVec3> predicate = x => x.IsValid && x.Standable(seeker.Map) && crystal == null;
-            Action<IntVec3> action = delegate(IntVec3 c) {
-                if (crystal == null)
-                {
-                    crystal = c.GetTiberium(seeker.Map);
-                    if(!seeker.CanReserve(crystal) || !seeker.CanReach(c, peMode, Danger.Deadly))
-                    {
-                        crystal = null;
-                    }
-                }
-            };
-            seeker.Map.floodFiller.FloodFill(seeker.Position, predicate, action);    
-            return crystal;
-        }
-
-        public static bool HarvestablyBy(this TiberiumCrystalDef def, Harvester harvester)
-        {
-            return true;
-        }
-
         public static bool IsTiberiumTerrain(this TerrainDef def)
         {
             return def is TiberiumTerrainDef;
@@ -638,24 +608,6 @@ namespace TiberiumRim
             {
 
             }
-        }
-
-        public static void CorruptThing(Thing thing, TiberiumCrystalDef def = null)
-        {
-            if(thing is Pawn)
-            {
-
-            }
-            if(thing is Mineable)
-            {
-
-            }
-        }
-
-        public static bool IsCorruptableChunk(this Thing haulable)
-        {
-            return (haulable.def.thingCategories?.Contains(ThingCategoryDef.Named("StoneChunks")) ?? false) &&
-                   !(haulable is TiberiumChunk);
         }
 
         public static TiberiumCrystalDef CrystalDefFromType(TiberiumValueType valueType, out bool isGas)
