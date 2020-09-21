@@ -145,6 +145,7 @@
     <Compile Include="Research\ResearchCreationTable.cs" />
     <Compile Include="Research\ResearchTargetTable.cs" />
     <Compile Include="Research\TargetProperties.cs" />
+    <Compile Include="Research\TRMainButtonDef.cs" />
     <Compile Include="TiberiumEnvironment\Conversions\PlantConversion.cs" />
     <Compile Include="TiberiumEnvironment\Conversions\TerrainConversion.cs" />
     <Compile Include="TiberiumEnvironment\Conversions\TerrainFilter.cs" />

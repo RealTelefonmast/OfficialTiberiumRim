@@ -11,9 +11,9 @@ namespace TiberiumRim
 {
     public class ITab_CustomRefineryBills : ITab
     {
-        public Dictionary<ThingDef, int> MetalAmount = new Dictionary<ThingDef, int>();
-        public string[] textBuffers;
-        private readonly float marketPriceTiberiumFactor = 1.9f;
+        private Dictionary<ThingDef, int> MetalAmount = new Dictionary<ThingDef, int>();
+        private string[] textBuffers;
+        public static readonly float MarketPriceTiberiumFactor = 1.9f;
 
         public ITab_CustomRefineryBills()
         {
@@ -32,7 +32,12 @@ namespace TiberiumRim
             }
         }
 
-        public int TotalCost => MetalAmount.Sum(m => (int)(m.Key.BaseMarketValue * m.Value * marketPriceTiberiumFactor));
+        protected override void CloseTab()
+        {
+            base.CloseTab();
+        }
+
+        public int TotalCost => MetalAmount.Sum(m => (int)(m.Key.BaseMarketValue * m.Value * MarketPriceTiberiumFactor));
 
         public TiberiumCost MainCost
         {

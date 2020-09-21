@@ -48,6 +48,11 @@ namespace TiberiumRim
             return Find.World.GetComponent<WorldComponent_TR>();
         }
 
+        public static MainTabWindow WindowFor(MainButtonDef def)
+        {
+            return def.TabWindow;
+        }
+
         public static EventLetter SendEventLetter(this LetterStack stack, TaggedString eventLabel, TaggedString eventDesc, EventDef eventDef, LookTargets targets = null)
         {
             EventLetter letter = (EventLetter)LetterMaker.MakeLetter(eventLabel, eventDesc, TiberiumDefOf.EventLetter, targets);
@@ -414,6 +419,13 @@ namespace TiberiumRim
             return cells;
         }
 
+        public static Matrix4x4 MatrixFor(Vector3 pos, float rotation, Vector3 size)
+        {
+            Matrix4x4 matrix = default;
+            matrix.SetTRS(pos, rotation.ToQuat(), size);
+            return matrix;
+        }
+
         public static void Draw(Graphic graphic, Vector3 drawPos, Rot4 rot, float? rotation, FXThingDef fxDef)
         {
             GraphicDrawInfo info = new GraphicDrawInfo(graphic, drawPos, rot, fxDef?.extraData, fxDef);
@@ -429,6 +441,7 @@ namespace TiberiumRim
             }
             if (graphic is Graphic_Random rand)
                 graphic = rand.SubGraphicFor(thing);
+
             GraphicDrawInfo info = new GraphicDrawInfo(graphic, thing.DrawPos, thing.Rotation, fxDef.extraData, fxDef, thing);
             Printer_Plane.PrintPlane(layer, info.drawPos, info.drawSize, info.drawMat, info.rotation, info.flipUV, null, null, 0.01f, 0f);
             if (graphic.ShadowGraphic != null && thing != null)

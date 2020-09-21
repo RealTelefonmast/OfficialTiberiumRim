@@ -29,7 +29,7 @@ namespace TiberiumRim
 
         private TiberiumNetwork network;
         private TiberiumContainer container;
-        private List<IntVec3> pipeExtensionCells = new List<IntVec3>();
+        public List<IntVec3> pipeExtensionCells = new List<IntVec3>();
         private List<IntVec3> cardinalCells = new List<IntVec3>();
 
         public bool ShouldLeak => false;
@@ -260,12 +260,14 @@ namespace TiberiumRim
         public override string CompInspectStringExtra()
         {
             StringBuilder sb = new StringBuilder();
+            if (!Network.IsWorking)
+                sb.AppendLine("TR_MissingNetworkController".Translate());
             if (!Network.ValidFor(Props.tnwbMode, out string reason))
             {
                 sb.AppendLine("TR_MissingConnection".Translate() + ":");
                 if (!reason.NullOrEmpty())
                 {
-                    sb.AppendLine("    " + reason.Translate());
+                    sb.AppendLine("   - " + reason.Translate());
                 }
             }
             if (DebugSettings.godMode)

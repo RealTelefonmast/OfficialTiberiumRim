@@ -112,12 +112,14 @@
 			<shaderType>Transparent</shaderType>
 			<drawSize>(4,4)</drawSize>
 		</graphicData>
+		<!--
 		<extraGraphicData>
 			<texPath>Buildings/Natural/TibGeyser/Crack</texPath>
 			<graphicClass>TiberiumRim.Graphic_RandomSelection</graphicClass>
 			<shaderType>Transparent</shaderType>
 			<drawSize>(2,2)</drawSize>
 		</extraGraphicData>
+		-->
 		<altitudeLayer>Floor</altitudeLayer>
 		<rotatable>false</rotatable>
 		<destroyable>false</destroyable>

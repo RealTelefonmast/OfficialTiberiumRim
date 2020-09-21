@@ -40,7 +40,7 @@ namespace TiberiumRim
         public bool IsSelfSufficient => !def.props.needsParent || HasParent;
         public bool HarvestableNow => LifeStage != TiberiumLifeStage.Growing && HarvestValue > 1f;
         private bool NeedsTerrain => !Position.GetTerrain(Map).IsTiberiumTerrain();
-        public bool ShouldSpread => Position.CanGrowFrom(Map);
+        public bool ShouldSpread => Position.CanGrowFrom(Map) || !Dormant;
 
         //TODO?: Suppression with radial dropoff?
         private bool Suppressed => def.props.canBeInhibited &&  Position.IsSuppressed(Map);
@@ -93,10 +93,11 @@ namespace TiberiumRim
             }
         }
 
-        public void PreSpawnSetup(TiberiumProducer parent, int gen = 0)
+        public void PreSpawnSetup(TiberiumProducer parent, int gen = 0, bool dormant = false)
         {
             this.parent = parent;
             this.generationInt = gen;
+            this.Dormant = dormant;
         }
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
@@ -157,7 +158,7 @@ namespace TiberiumRim
         public void TiberiumTick(int interval)
         {
             StateTick();
-            if (Dormant && Suppressed) return;
+            if (Suppressed) return;
             GrowthTick();
             if (!ShouldSpread) return;
             SpreadTick(interval);
@@ -222,7 +223,7 @@ namespace TiberiumRim
             if (Dormant)
                 sb.AppendLine("TR_TibDormant".Translate());
             if (Suppressed)
-                sb.AppendLine("TR_TibSuppressed");
+                sb.AppendLine("TR_TibSuppressed".Translate());
 
             sb.AppendLine("PercentGrowth".Translate(Growth.ToStringPercent()));
             if (Growth < 1f)

@@ -15,9 +15,6 @@ namespace TiberiumRim
         public TRThingCategoryDef TRCategory = null;
         public Requisites requisites;
 
-        //Graphics
-        public GraphicData extraGraphicData;
-
         //Properties
         public TurretHolderProperties turret;
         public BeamHubProperties beamHub; 
@@ -66,10 +63,10 @@ namespace TiberiumRim
 
         public bool ConstructionOptionDiscovered
         {
-            get => TRUtils.Tiberium().DiscoveryTable.IsMenuDiscovered(this) || devObject;
+            get => TRUtils.Tiberium().DiscoveryTable.MenuOptionHasBeenSeen(this) || devObject;
             set
             {
-                if (value) TRUtils.Tiberium().DiscoveryTable.DiscoverMenu(this);
+                if (value) TRUtils.Tiberium().DiscoveryTable.DiscoverInMenu(this);
             }
         }
 

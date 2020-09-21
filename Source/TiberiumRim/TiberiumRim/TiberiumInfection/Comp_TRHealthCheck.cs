@@ -5,6 +5,7 @@ using System.Text;
 using Verse;
 using RimWorld;
 using UnityEngine;
+using Verse.Sound;
 
 namespace TiberiumRim
 {
@@ -42,12 +43,21 @@ namespace TiberiumRim
                     if (Pawn.Faction?.IsPlayer ?? false)
                         GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.TiberiumExposure);
 
-                    HediffUtils.TryIrradiatePawn(Pawn, Grid.RadiationAt(Pawn.Position), 250);
+                    if (HediffUtils.TryIrradiatePawn(Pawn, Grid.RadiationAt(Pawn.Position), 250, out float rads))
+                    {
+                        DoRadiationClick(rads);
+                    }
                     HediffUtils.TryInfectPawn(Pawn, Grid.InfectivityAt(Pawn.Position), false, 250);
                 }
                 ticker = 250;
             }
             ticker--;
+        }
+
+        private void DoRadiationClick(float rads)
+        {
+            MoteMaker.ThrowText(this.parent.TrueCenter() + new Vector3(0.5f, 0f, 0.5f), this.parent.Map, rads.ToStringDecimalIfSmall(), Color.white, -1f);
+            TiberiumDefOf.RadiationClick.PlayOneShot(SoundInfo.InMap(parent));
         }
 
         public override void CompTickRare()

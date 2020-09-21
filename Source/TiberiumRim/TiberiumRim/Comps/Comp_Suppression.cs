@@ -30,16 +30,19 @@ namespace TiberiumRim
 
         public override void PostDeSpawn(Map map)
         {
-            base.PostDeSpawn(map);
             Suppression.DeregisterSuppressor(this);
+            Suppression.RemoveFromGrid(SuppressionCells);
+            base.PostDeSpawn(map);
         }
 
         public void UpdateSuppressionCells()
         {
-            Predicate<IntVec3> cellPredicate =
-                c => !c.Roofed(parent.Map) && GenSight.LineOfSight(parent.Position, c, parent.Map);
-            SuppressionCells = TRUtils.SectorCells(parent.Position, parent.Map, Props.radius, Props.angle,
-                parent.Rotation.AsAngle, false, cellPredicate).ToList();
+            Suppression.RemoveFromGrid(SuppressionCells);
+
+            bool Predicate(IntVec3 c) => !c.Roofed(parent.Map) && GenSight.LineOfSight(parent.Position, c, parent.Map);
+            SuppressionCells = TRUtils.SectorCells(parent.Position, parent.Map, Props.radius, Props.angle, parent.Rotation.AsAngle, false, Predicate).ToList();
+
+            Suppression.AddToGrid(SuppressionCells);
         }
 
         public override void ReceiveCompSignal(string signal)
@@ -48,10 +51,8 @@ namespace TiberiumRim
             {
                 case "PowerTurnedOff":
                     Suppression.RemoveFromGrid(SuppressionCells);
-                    UpdateSuppressionCells();
                     break;
                 case "PowerTurnedOn":
-                    UpdateSuppressionCells();
                     Suppression.AddToGrid(SuppressionCells);
                     break;
             }

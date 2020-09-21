@@ -16,12 +16,21 @@
 		</researchProjects>
 	</TiberiumRim.TResearchGroupDef>
 	
+	<!--TODO:
+	Initial Mission
+	Incident->Event-> "Shooting Stars" //Global light effect on map
+	Event->Causes Job/ThinkTree Detour->Free Pawn Watches stars //Gloabl "Job Effect"
+	During Job->Incident Possible->Event->Green Sky/Shooting stars coming close // Global light flash on map
+	Pawn becomes culprit/Seen in description
+	-->
+	
 	<!---->
 	<TiberiumRim.TResearchDef>
 		<defName>GreenSky</defName>
 		<label>Green Sky</label>	
 		<researchType>observation</researchType>
-		<description>We are not quite sure what it is yet and need to investigate further.\nA telescope would be useful, but we don't know how to build one yet, maybe one of our researchers can figure it out!</description>
+		<description>A colonist spotted a strange green light in the sky the other night. They insist it was not a natural occurance. We should put our best researchers to use and figure out if it is anything of concern.</description>
+		<!--<description>[PAWN_nameFull] caught a strange green light in the sky the other night. [PAWN_pronoun] insists that it was not a natural occurance.</description>-->
 		<!-- TODO: Re-add on release
 		<requisites>
 			<events>
@@ -44,13 +53,17 @@
 	<TiberiumRim.TResearchTaskDef>
 		<defName>GreenSky_T1</defName>
 		<label>Research Components</label>		
-		<descriptionShort>Figure out basic telescope technology.</descriptionShort>
+		<description>As a first step we need to research a telescope. This will help us to observe any further strange occurances in the sky. A capable colonist should be provided with a research bench to start work.</description>
+		<descriptionShort>Research telescope technology.</descriptionShort>
 		<skillRequirements>
 			<Intellectual>2</Intellectual>
 		</skillRequirements>
 		<taskTarget>
 			<targetType>Building_ResearchBench</targetType>
 		</taskTarget>
+		<images>
+			<li>Story/Mission1/M1_1</li>
+		</images>
 		<workType>Research</workType>
 		<workAmount>200</workAmount>
 	</TiberiumRim.TResearchTaskDef>
@@ -58,18 +71,23 @@
 	<TiberiumRim.TResearchTaskDef>
 		<defName>GreenSky_T2</defName>
 		<label>Construct Telescope</label>		
-		<descriptionShort>Place down the telescope.</descriptionShort>
+		<description>Now that we know how to construct a telescope, we should make one and place it somewhere outside. A pawn should start observation soon after.</description>
+		<descriptionShort>Construct a telescope.</descriptionShort>
 		<creationTasks>
 			<thingsToCreate>
 				<Telescope_TR>1</Telescope_TR>
 			</thingsToCreate>
 		</creationTasks>
+		<images>
+			<li>Story/Mission1/M1_2</li>
+		</images>
 		<workType>Construction</workType>
 	</TiberiumRim.TResearchTaskDef>
 	
 	<TiberiumRim.TResearchTaskDef>
 		<defName>GreenSky_T3</defName>
-		<label>Observation Research</label>		
+		<label>Observation Research</label>	
+		<description>Now it is time to wait and see if anything happens.</description>
 		<descriptionShort>Observe the sky.</descriptionShort>
 		<skillRequirements>
 			<Intellectual>4</Intellectual>
@@ -77,6 +95,9 @@
 		<taskTarget>
 			<targetDefs><li>Telescope_TR</li></targetDefs>
 		</taskTarget>
+		<images>
+			<li>Story/Mission1/M1_3</li>
+		</images>
 		<workType>Research</workType>
 		<workAmount>250</workAmount>
 	</TiberiumRim.TResearchTaskDef>
@@ -106,7 +127,6 @@
 		<descriptionShort>Inspect the impact crater.</descriptionShort>
 		<workType>Research</workType>
 		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
-		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<distanceFromTarget>10</distanceFromTarget>
 		<taskTarget>
 			<targetDefs>
@@ -115,6 +135,9 @@
 				<li>TiberiumCraterHybrid</li>
 			</targetDefs>
 		</taskTarget>
+		<images>
+			<li>Story/Mission2/M2_1</li>
+		</images>
 		<workAmount>500</workAmount>
 	</TiberiumRim.TResearchTaskDef>
 	
@@ -128,6 +151,9 @@
 				<CommsConsole>1</CommsConsole>
 			</thingsToCreate>
 		</creationTasks>
+		<images>
+			<li>Story/Mission2/M2_2</li>
+		</images>
 	</TiberiumRim.TResearchTaskDef>
 	
 	<TiberiumRim.TResearchTaskDef>
@@ -151,6 +177,9 @@
 		<events>
 			<li>TiberiumToxemiaDiscovery</li>
 		</events>
+		<images>
+			<li>Story/Mission2/M2_2</li>
+		</images>
 		<workAmount>500</workAmount>
 	</TiberiumRim.TResearchTaskDef>
 	
@@ -164,6 +193,9 @@
 				<TiberiumResearchCrane>1</TiberiumResearchCrane>
 			</thingsToCreate>
 		</creationTasks>
+		<images>
+			<li>Story/Mission2/M2_3</li>
+		</images>
 	</TiberiumRim.TResearchTaskDef>
 	
 	<!---->

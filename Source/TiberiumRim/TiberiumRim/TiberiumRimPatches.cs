@@ -156,29 +156,6 @@ namespace TiberiumRim
             return false;
         }
 
-        [HarmonyPatch(typeof(ThingWithComps))]
-        [HarmonyPatch("Print")]
-        public static class PrintPatch
-        {
-            public static bool Prefix(ThingWithComps __instance, SectionLayer layer)
-            {
-                ThingDef def = __instance.def;
-                if (__instance is Blueprint b)
-                {
-                    if (b.def.entityDefToBuild is TerrainDef)
-                        return true;
-
-                    def = (ThingDef)b.def.entityDefToBuild;
-                }
-                if (def is FXThingDef fx)
-                {
-                    TRUtils.Print(layer, __instance.Graphic, __instance, fx);
-                    return false;
-                }
-                return true;
-            }
-        }
-
         [HarmonyPatch(typeof(HealthCardUtility))]
         [HarmonyPatch("DrawHediffRow")]
         public static class HediffDrawerPatch
@@ -252,20 +229,43 @@ namespace TiberiumRim
             }
         }
 
+        [HarmonyPatch(typeof(ThingWithComps))]
+        [HarmonyPatch("Print")]
+        public static class PrintPatch
+        {
+            public static bool Prefix(ThingWithComps __instance, SectionLayer layer)
+            {
+                ThingDef def = __instance.def;
+                if (__instance is Blueprint b)
+                {
+                    if (b.def.entityDefToBuild is TerrainDef)
+                        return true;
+
+                    def = (ThingDef)b.def.entityDefToBuild;
+                }
+                if (def is FXThingDef fx)
+                {
+                    TRUtils.Print(layer, __instance.Graphic, __instance, fx);
+                    return false;
+                }
+                return true;
+            }
+        }
+
         [HarmonyPatch(typeof(GhostDrawer))]
-        [HarmonyPatch("DrawGhostThing")]
+        [HarmonyPatch("DrawGhostThing_NewTmp")]
         public static class DrawGhostThingPatch
         {
             public static bool Prefix(IntVec3 center, Rot4 rot, ThingDef thingDef, Graphic baseGraphic, Color ghostCol, AltitudeLayer drawAltitude)
             {
-                if (!(thingDef is FXThingDef fx)) return true;
+                if (!(thingDef is FXThingDef fxDef)) return true;
                 if (baseGraphic == null)
                 {
                     baseGraphic = thingDef.graphic;
                 }
                 Graphic graphic = GhostUtility.GhostGraphicFor(baseGraphic, thingDef, ghostCol);
                 Vector3 loc = GenThing.TrueCenter(center, rot, thingDef.Size, drawAltitude.AltitudeFor());
-                TRUtils.Draw(graphic, loc, rot, null, fx);
+                TRUtils.Draw(graphic, loc, rot, null, fxDef);
 
                 foreach (var t in thingDef.comps)
                 {
@@ -309,6 +309,54 @@ namespace TiberiumRim
                     }
                 }
                 yield break;
+            }
+        }
+
+        // GUI.color = new Color(1f, 1f, 1f, Pulser.PulseBrightness(1.2f, 0.7f));
+        // Widgets.DrawAtlas(rect2, UIHighlighter.TutorHighlightAtlas);
+        // GUI.color = Color.white;
+
+        [HarmonyPatch(typeof(MainButtonWorker))]
+        [HarmonyPatch("DoButton")]
+        public static class MainButtonWorker_DoButtonPatch
+        {
+            /*
+            public static bool Prefix(MainButtonWorker __instance)
+            {
+                if (__instance.def == TiberiumDefOf.TiberiumTab)
+                {
+                    GUI.color = new Color(0f, 200f, 40f, Pulser.PulseBrightness(1.2f, 0.7f));
+                }
+                return true;
+            }
+            */
+
+            public static void Postfix(Rect rect, MainButtonWorker __instance)
+            {
+                if (__instance.def.TabWindow is MainTabWindow_TibResearch tibRes && tibRes.HasUnseenProjects)
+                {
+                    GUI.color = new Color(0f, 200, 40f, Pulser.PulseBrightness(0.8f, 0.7f) - 0.2f);
+                    Widgets.DrawAtlas(rect.ContractedBy(-10), TiberiumContent.HighlightAtlas);
+                    GUI.color = Color.white;
+                }
+            }
+        }
+
+        //
+        [HarmonyPatch(typeof(MainButtonDef))]
+        [HarmonyPatch("Icon", MethodType.Getter)]
+        public static class MainButtonDef_IconPatch
+        {
+            public static void Postfix(MainButtonDef __instance, ref Texture2D __result)
+            {
+                //Custom detour if its the tiberium window
+                if(!(__instance is TRMainButtonDef trButton)) return;
+                if (trButton.SpecialIcon == null) return;
+                if (trButton.TabWindow is MainTabWindow_TibResearch research && research.HasUnseenProjects)
+                {
+                    __result = trButton.SpecialIcon;
+                }
+                //return value + p.GetStatValue(TiberiumDefOf.ExtraCarryWeight, true);
             }
         }
 

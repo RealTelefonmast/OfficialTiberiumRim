@@ -85,9 +85,9 @@ namespace TiberiumRim
                     DrawDesignator(extraDes, new Designator_Cancel());
                     Rect DesignatorRect = new Rect(iconSize + sideMargin, 0f, menuRect.width - (iconSize + sideMargin), menuRect.height);
                     GUI.BeginGroup(DesignatorRect);
-                        var cats = SelectedFaction.subCategories;
+                        var subCats = SelectedFaction.subCategories;
                         Vector2 curXY = Vector2.zero;
-                        foreach (var cat in cats)
+                        foreach (var cat in subCats)
                         {
                             Rect tabRect = new Rect(curXY, tabSize);
                             Rect clickRect = new Rect(tabRect.x + 5, tabRect.y, tabRect.width - (10), tabRect.height);
@@ -95,7 +95,8 @@ namespace TiberiumRim
                             Widgets.DrawTextureFitted(tabRect, tex, 1f);
                             if (TRThingDefList.HasUnDiscovered(SelectedFaction, cat))
                             {
-                                DrawUndiscovered(tabRect, new Vector2(-6, 3));
+                                TRWidgets.DrawTextureInCorner(tabRect, TiberiumContent.Undiscovered, 7, TextAnchor.UpperRight, new Vector2(-6, 3));
+                                //DrawUndiscovered(tabRect, new Vector2(-6, 3));
                                 //Widgets.DrawTextureFitted(tabRect, TiberiumContent.Tab_Undisc, 1f);
                             }
 
@@ -186,7 +187,8 @@ namespace TiberiumRim
 
             if (!def.ConstructionOptionDiscovered)
             {
-                DrawUndiscovered(rect, new Vector2(-5, 5));
+                TRWidgets.DrawTextureInCorner(rect, TiberiumContent.Undiscovered, 7, TextAnchor.UpperRight, new Vector2(-5, 5));
+                //DrawUndiscovered(rect, new Vector2(-5, 5));
                 //Widgets.DrawTextureFitted(rect, TiberiumContent.Des_Undisc, 1f);
             }
 
@@ -274,7 +276,8 @@ namespace TiberiumRim
                 GUI.color = Color.white;
                 if (TRThingDefList.HasUnDiscovered(des))
                 {
-                    DrawUndiscovered(partRect);
+                    TRWidgets.DrawTextureInCorner(partRect, TiberiumContent.Undiscovered, 8, TextAnchor.UpperRight);
+                    //DrawUndiscovered(partRect);
                 }
 
                 if (Widgets.ButtonInvisible(partRect))

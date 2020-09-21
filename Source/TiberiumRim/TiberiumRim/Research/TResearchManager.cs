@@ -125,12 +125,12 @@ namespace TiberiumRim
                 return true;
             if (task.ProgressToDo > 0 && task.ProgressReal < task.ProgressToDo)
                 return false;
-            if (!task.PlayerTaskCompleted())
+            if (!task.Worker.PlayerTaskCompleted())
                 return false;
             SetCompleted(task, true);
             task.DoDiscoveries();
             task.TriggerEvents();
-            task.FinishAction();
+            task.Worker.FinishAction();
             Messages.Message("TR_ResearchTaskDone".Translate(task.LabelCap), MessageTypeDefOf.TaskCompletion, false);
             CheckResearch(task.ParentProject);
             return true;

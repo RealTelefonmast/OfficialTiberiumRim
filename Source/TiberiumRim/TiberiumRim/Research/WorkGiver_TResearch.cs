@@ -28,7 +28,7 @@ namespace TiberiumRim
         public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
         {
             if (CurrentTask?.HasSingleTarget ?? true) return null;
-            return TRUtils.ResearchTargetTable().GetTargetsFor(Manager.currentProject.CurrentTask);
+            return CurrentTask.TargetThings();;
         }
 
         public override bool Prioritized => true;

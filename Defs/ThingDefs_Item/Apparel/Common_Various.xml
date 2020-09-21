@@ -16,7 +16,7 @@
 		</requisites>
 		<costList>
 			<Plasteel>10</Plasteel>
-			<Cloth>50</Cloth>
+			<Cloth>150</Cloth>
 			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<recipeMaker>
@@ -75,9 +75,9 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<costList>
-			<Steel>75</Steel>
-			<Cloth>50</Cloth>
+			<Cloth>125</Cloth>
 			<!-- Industrial components dont really fit in a simple jumpsuit 
+			<Steel>75</Steel>
 			<ComponentIndustrial>3</ComponentIndustrial>
 			-->
 		</costList>

@@ -8,7 +8,7 @@ namespace TiberiumRim
     public static class TiberiumDefOf
     {
         //MainButton
-        public static MainButtonDef TiberiumTab;
+        public static TRMainButtonDef TiberiumTab;
 
         // TiberiumCrystals
         //Green
@@ -29,6 +29,7 @@ namespace TiberiumRim
         public static TiberiumCrystalDef TiberiumVein;
         public static TiberiumCrystalDef TiberiumGlacier;
 
+        // Plants
         // Plants
         public static ThingDef TiberiumGrass;
         public static ThingDef TiberiumBush;
@@ -110,6 +111,9 @@ namespace TiberiumRim
         public static StatDef TiberiumDamageResistance;
 
         public static StatDef ExtraCarryWeight;
+
+        //Sounds
+        public static SoundDef RadiationClick;
 
         // Skyfallers
         public static ThingDef GreenTiberiumMeteorIncoming;

@@ -373,7 +373,7 @@ namespace TiberiumRim
             return num;
         }
 
-        public static bool TryIrradiatePawn(Pawn pawn, float radiation, int perTicks)
+        public static bool TryIrradiatePawn(Pawn pawn, float radiation, int perTicks, out float radiationDone)
         {
             if (pawn.DestroyedOrNull())
                 Log.Error("Trying to irradiate null Pawn");
@@ -383,6 +383,7 @@ namespace TiberiumRim
             //Apply Radiation Check
             rads *= 1 - pawn.GetStatValue(TiberiumDefOf.TiberiumRadiationResistance);
 
+            radiationDone = rads;
             //Check validity of radiation
             if (!(rads > 0)) return false;
 

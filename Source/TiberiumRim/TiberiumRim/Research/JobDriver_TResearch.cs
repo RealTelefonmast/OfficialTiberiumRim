@@ -54,21 +54,23 @@ namespace TiberiumRim
             get
             {
                 if (targetPos.IsValid) return targetPos;
-
                 var distance = Project.CurrentTask.distanceFromTarget;
-                var atTarget = distance <= 0;
+                var atTarget  = distance <= 0;
+
                 if (atTarget)
                 {
                     targetPos = TargetA.Thing.RandomAdjacentCell8Way();
                 }
                 else
                 {
+                    var width = Project.CurrentTask.distanceRange;
+                    var minDistance = distance - width / 2;
+                    var maxDistance = distance + width / 2;
                     bool Predicate(IntVec3 x)
                     {
-                        if (!x.Standable(Map))
-                            return false;
-                        if (TargetA.Cell.DistanceTo(x) is float d && (d > distance || d < distance))
-                            return false;
+                        if (!x.Standable(Map)) return false;
+                        float distanceTo = TargetA.Cell.DistanceTo(x);
+                        if (distanceTo > maxDistance || distanceTo < minDistance) return false;
                         return GenSight.LineOfSight(TargetA.Cell, x, Map);
                     }
                     CellFinder.TryFindRandomCellNear(TargetA.Cell, Map, Mathf.CeilToInt(distance), Predicate, out targetPos);
@@ -89,8 +91,11 @@ namespace TiberiumRim
             research.tickAction = delegate
             {
                 Pawn pawn = research.actor;
-                float num = pawn.GetStatValue(task.RelevantPawnStat, true);
-                num *= TargetThingA.GetStatValue(task.RelevantTargetStat, true);
+                float num = 1;
+                if (task.RelevantPawnStat != null) 
+                    num *= pawn.GetStatValue(task.RelevantPawnStat, true);
+                if (task.RelevantTargetStat != null)
+                    num *= TargetThingA.GetStatValue(task.RelevantTargetStat, true);
                 Manager.PerformResearch(task, pawn, num);
                 if (!task.SkillRequirements.NullOrEmpty())
                 {

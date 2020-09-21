@@ -8,6 +8,7 @@
 	<TR_StartedProject>Started new research project: {0}</TR_StartedProject>
 	<TR_CurTask>Current Task: {0}</TR_CurTask>
 	<TR_TaskTargets>Main Targets:</TR_TaskTargets>
+	<TR_TaskBenches>Allowed Workbenches  ({0}):</TR_TaskBenches>
 	
 	<TR_TaskCreationsCraft>Craft Items:</TR_TaskCreationsCraft>
 	<TR_TaskCreationsBuild>Construct Buildings:</TR_TaskCreationsBuild>

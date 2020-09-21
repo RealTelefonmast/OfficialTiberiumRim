@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using Verse;
 using RimWorld;
@@ -25,6 +26,8 @@ namespace TiberiumRim
 
         public bool IsVisible => !IsFinished && !ActiveProjects.NullOrEmpty() || (IsFinished && !TResearchManager.hideGroups);
         public bool IsFinished => researchProjects.NullOrEmpty() || researchProjects.All(r => r.IsFinished);
+
+        public bool HasUnseenProjects => ActiveProjects.Any(t => !t.HasBeenSeen);
     }
 
     public class TResearchDef : Def
@@ -48,9 +51,9 @@ namespace TiberiumRim
         public override void ResolveReferences()
         {
             base.ResolveReferences();
-            workType = DefDatabase<WorkTypeDef>.GetNamed("Research");
-            relevantPawnStat = StatDefOf.ResearchSpeed;
-            relevantTargetStat = StatDefOf.ResearchSpeedFactor;
+            //workType = DefDatabase<WorkTypeDef>.GetNamed("Research");
+            //relevantPawnStat = StatDefOf.ResearchSpeed;
+            //relevantTargetStat = StatDefOf.ResearchSpeedFactor;
         }
 
         public void TriggerEvents()
@@ -69,6 +72,7 @@ namespace TiberiumRim
         public virtual bool RequisitesComplete => requisites?.FulFilled() ?? true;
         public virtual bool CanStartNow => RequisitesComplete;
         public bool IsFinished => TRUtils.ResearchManager().IsCompleted(this);
+        public bool HasBeenSeen => TRUtils.DiscoveryTable().ResearchHasBeenSeen(this);
 
         public TResearchGroupDef ParentGroup
         {
@@ -109,9 +113,10 @@ namespace TiberiumRim
         private List<ThingDef> mainTargets;
         [Unsaved]
         private string cachedTaskInfo;
-        [Unsaved]
-        private List<Texture2D> cachedImages;
+        [Unsaved()]
+        private ResearchWorker workerInt;
 
+        public Type researchWorker = typeof(ResearchWorker);
         //Local Requisites
         public CreationProperties creationTasks;
         public TargetProperties taskTarget;
@@ -123,7 +128,9 @@ namespace TiberiumRim
 
         public List<EventDef> events;
 
+        public string descriptionShort;
         public List<string> images;
+
         //TODO: Look at base.Map.listerBuildings.ColonistsHaveBuilding for building requisites
         public List<ThingDef> requiredFacilities;
         public List<ThingDef> requiredThings = new List<ThingDef>();
@@ -131,17 +138,20 @@ namespace TiberiumRim
         public List<RecipeDef> recipeUnlocks = new List<RecipeDef>();
 
         //settings
+        public float workAmount = 750;
         public float distanceFromTarget = -1;
-        public FloatRange distanceRange = FloatRange.One;
+        public float distanceRange = 1;
         public PawnPosture posture = PawnPosture.Standing;
 
-        public float workAmount = 750;
         public bool showTargetList = true;
         //
-        public string descriptionShort;
 
-        public TResearchTaskDef()
+        public ResearchWorker Worker
         {
+            get
+            {
+                return workerInt ??= (ResearchWorker)System.Activator.CreateInstance(researchWorker);
+            }
         }
 
         public TResearchDef ParentProject
@@ -153,11 +163,14 @@ namespace TiberiumRim
         }
 
         public bool CanCheckTargets => creationTasks != null;
+        //public bool TargetIsBenchOrStation => PossibleMainTargets.Any(t => t);
 
         public bool HasAnyTarget => !PossibleMainTargets.NullOrEmpty();
-        public bool HasSingleTarget => PossibleMainTargets.Count == 1;
-        public ThingDef MainTarget => PossibleMainTargets.FirstOrDefault();
+        public bool HasSingleTarget => HasAnyTarget && PossibleMainTargets.Count == 1;
+        public ThingDef MainTarget => PossibleMainTargets?.FirstOrDefault();
         public TargetProperties TargetProperties => taskTarget ?? ParentProject.mainTarget;
+
+        //Targets
         public List<ThingDef> PossibleMainTargets
         {
             get
@@ -167,38 +180,36 @@ namespace TiberiumRim
                 {
                     if (TargetProperties.targetType == null)
                         return TargetProperties.targetDefs;
-                    mainTargets = DefDatabase<ThingDef>.AllDefsListForReading.FindAll(t =>
-                        t.thingClass == TargetProperties.targetType);
+                    mainTargets = DefDatabase<ThingDef>.AllDefsListForReading.FindAll(t => t.thingClass == TargetProperties.targetType);
                 }
                 return mainTargets;
             }
         }
 
-        public List<Texture2D> Images
+        public IEnumerable<Thing> TargetThings()
         {
-            get
-            {
-                if (images.NullOrEmpty()) return null;
-                if (cachedImages == null)
-                {
-                    cachedImages = new List<Texture2D>(images.Count);
-                    foreach(var image in images)
-                        cachedImages.Add(ContentFinder<Texture2D>.Get(image));
-                }
-                return cachedImages;
-            }
+           return TRUtils.ResearchTargetTable().GetTargetsFor(this);
+        }
+
+        public IEnumerable<IntVec3> TargetInteractionPositions()
+        {
+            return TargetThings().Select(t => t.InteractionCell);
+        }
+
+        public IEnumerable<IntVec3> TargetPositions(IntVec3 origin)
+        {
+            return GenRadial.RadialCellsAround(origin, distanceFromTarget - distanceRange/2, distanceFromTarget + (distanceRange/2));
+        }
+
+        public IEnumerable<IntVec3> TargetDistancePositions()
+        {
+            return TargetThings().SelectMany(t => TargetPositions(t.Position));
         }
 
         public WorkTypeDef WorkType => workType ?? ParentProject.workType;
         public List<SkillRequirement> SkillRequirements => skillRequirements ?? ParentProject.skillRequirements;
         public StatDef RelevantPawnStat => relevantPawnStat ?? ParentProject.relevantPawnStat;
         public StatDef RelevantTargetStat => relevantTargetStat ?? ParentProject.relevantTargetStat;
-
-        //The task check acts allows the task to have a goal for the player
-        public virtual bool PlayerTaskCompleted()
-        {
-            return true;
-        }
 
         public void TriggerEvents()
         {
@@ -212,10 +223,6 @@ namespace TiberiumRim
         public void DoDiscoveries()
         {
             discoveries?.Discover();
-        }
-
-        public virtual void FinishAction()
-        {
         }
 
         public void Debug_Finish()
@@ -248,7 +255,6 @@ namespace TiberiumRim
         public virtual float ProgressToDo => creationTasks?.TotalCountToMake ?? workAmount;
 
         public float ProgressPct => ProgressReal / ProgressToDo;
-
         public bool IsFinished => TRUtils.ResearchManager().IsCompleted(this);
 
         public string WorkLabel => (int)ProgressReal + "/" + ProgressToDo;
@@ -258,54 +264,65 @@ namespace TiberiumRim
             get
             {
                 if (cachedTaskInfo != null) return cachedTaskInfo;
+                StringBuilder sb = new StringBuilder();
                 //Targets
                 if (TargetProperties != null)
                 {
-                    cachedTaskInfo += "TR_TaskTargets".Translate() + "\n";
+                    //Log.Message("<color=#FFC800>" + "TR_TaskBenches".Translate((RelevantTargetStat.LabelCap)).RawText + "</color>");
+                    //Log.Message("TR_TaskBenches".Translate(("<color=#FFC800>" + RelevantTargetStat.LabelCap.RawText + "</color>")).RawText);
+
+                    sb.AppendLine(RelevantTargetStat != null
+                        ? "TR_TaskBenches".Translate(("<color=#FFE164>" + RelevantTargetStat.LabelCap.RawText + "</color>")).RawText
+                        : "TR_TaskTargets".Translate().RawText);
+
                     if (!TargetProperties.groupLabel.NullOrEmpty())
-                        cachedTaskInfo += TargetProperties.groupLabel + "\n";
-                    if(showTargetList)
+                        sb.AppendLine(TargetProperties.groupLabel);
+                    
+                    if (showTargetList)
                     {
                         foreach (var target in PossibleMainTargets)
                         {
-                            cachedTaskInfo += "   -" + target.LabelCap;
+                            sb.Append("  -" + target.LabelCap.RawText);
                             if (RelevantTargetStat != null)
-                                cachedTaskInfo += " (" + RelevantTargetStat.LabelCap + ": " + target.GetStatValueAbstract(RelevantTargetStat) + ")";
-                            cachedTaskInfo += "\n";
+                                sb.Append(("  (<color=#FFE164>" + target.GetStatValueAbstract(RelevantTargetStat) + "x</color>)"));
+                            //cachedTaskInfo += " (" + RelevantTargetStat.LabelCap + ": " + target.GetStatValueAbstract(RelevantTargetStat) + ")";
+                            sb.AppendLine();
                         }
                     }
-                    cachedTaskInfo += "\n";
+                    sb.AppendLine();
                 }
+
                 //Crafting & Construction
                 if (creationTasks != null)
                 {
-                    cachedTaskInfo += creationTasks.TargetLabel() + "\n";
+                    sb.AppendLine(creationTasks.TargetLabel());
                     foreach (var option in creationTasks.thingsToCreate)
                     {
-                        cachedTaskInfo += "    -";
+                        sb.Append("    -");
                         if (option.amount > 1)
-                            cachedTaskInfo += option.amount + "x ";
-                        cachedTaskInfo += option.def.LabelCap;
+                            sb.Append(option.amount + "x ");
+                        sb.Append(option.def.LabelCap.RawText);
                         if(option.stuffDef != null)
-                            cachedTaskInfo += "(" + option.stuffDef.LabelAsStuff + ")";
-                        cachedTaskInfo += "\n";
+                            sb.Append("(" + option.stuffDef.LabelAsStuff + ")");
+                        sb.AppendLine();
                     }
-
-                    cachedTaskInfo += "\n";
+                    sb.AppendLine();
                 }
 
                 //WorkType
-                cachedTaskInfo += "TR_TaskWorkType".Translate(WorkType.labelShort) + "\n\n";
+                sb.AppendLine("TR_TaskWorkType".Translate("<color=#00C8CC>" + WorkType.labelShort + "</color>").RawText);
+                sb.AppendLine();
 
                 //Skills
                 if (!SkillRequirements.NullOrEmpty())
                 {
-                    cachedTaskInfo += "TR_TaskSkillReq".Translate() + "\n";
+                    sb.AppendLine("TR_TaskSkillReq".Translate().RawText);
                     foreach (var skill in SkillRequirements)
                     {
-                        cachedTaskInfo += "    -" + skill.skill.LabelCap + " (" + skill.minLevel + ")\n";
+                        sb.Append("    -" + skill.skill.LabelCap.RawText + " (" + skill.minLevel + ")");
                     }
                 }
+                cachedTaskInfo = sb.ToString();
                 return cachedTaskInfo;
             }
         }
@@ -320,6 +337,39 @@ namespace TiberiumRim
                     return ResearchState.Finished;
                 return ResearchState.Available;
             }
+        }
+    }
+
+    /*  ResearchWorker is going to contain valuable data such as culprits for events
+     *  ResearchWorkers can vary in their completion task
+     *
+     */
+
+    public class ResearchWorker
+    {
+        public TResearchTaskDef def;
+        public TargetInfo Culprit;
+
+        public ResearchWorker(){}
+
+        public ResearchWorker(TResearchTaskDef def)
+        {
+            this.def = def;
+        }
+
+        public void RegisterCulprit(Thing thing)
+        {
+            Culprit = new TargetInfo(thing);
+        }
+
+        //The task check acts allows the task to have a goal for the player
+        public virtual bool PlayerTaskCompleted()
+        {
+            return true;
+        }
+
+        public virtual void FinishAction()
+        {
         }
     }
 }

@@ -31,7 +31,7 @@ namespace TiberiumRim
 
             //DrawSize
             drawSize = g.drawSize;
-            bool drawRotated = parent?.def.graphicData.Graphic.ShouldDrawRotated ?? g.ShouldDrawRotated;
+            bool drawRotated = /*parent?.def.graphicData.Graphic.ShouldDrawRotated ??*/ g.ShouldDrawRotated;
             if (drawRotated)
             {
                 flipUV = false;

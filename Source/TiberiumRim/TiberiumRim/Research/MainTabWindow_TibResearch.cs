@@ -19,6 +19,8 @@ namespace TiberiumRim
 
     public class MainTabWindow_TibResearch : MainTabWindow
     {
+        private TResearchDef researchInt;
+
         //Dimensions
         private static float leftWidth = 250; //Original: 200
         private static float tabHeight = 32;
@@ -58,7 +60,7 @@ namespace TiberiumRim
                                stopProjLabel = "TR_StopResearch".Translate();
 
         //Images
-        private int currentImage = 0;
+        private int curImage = 0;
         private Dictionary<TResearchTaskDef, List<Texture2D>> cachedImages = new Dictionary<TResearchTaskDef, List<Texture2D>>();
 
         public MainTabWindow_TibResearch()
@@ -84,16 +86,39 @@ namespace TiberiumRim
 
         public override Vector2 RequestedTabSize => new Vector2(1280f, 720f); //new Vector2(UI.screenWidth, UI.screenHeight * 0.6f);
 
+        public bool HasUnseenProjects => Manager.Groups.Where(g => g.IsVisible).Any(g => g.HasUnseenProjects);
+
         public TResearchManager Manager => Find.World.GetComponent<TResearchManager>();
 
         public ResearchTabOption SelTab { get; set; } = ResearchTabOption.Projects;
-        public TResearchDef SelProject { get; set; }
+
+        public TResearchDef SelProject
+        {
+            get => researchInt;
+            set
+            {
+                SetDiaShowFor(value);
+                researchInt = value;
+            }
+        }
 
         public TResearchTaskDef CurTask => SelProject.CurrentTask;
 
         public TResearchDef MainProject
         {
             get => Manager.currentProject;
+        }
+
+        private void SetDiaShowFor(TResearchDef def)
+        {
+            curImage = 0;
+            cachedImages.Clear();
+            foreach (var task in def.tasks)
+            {
+                if(task.images == null) continue;
+                var textures = task.images.Select(i => ContentFinder<Texture2D>.Get(i, false)).ToList();
+                cachedImages.Add(task, textures);
+            }
         }
 
         //
@@ -193,23 +218,35 @@ namespace TiberiumRim
             {
                 Manager.OpenClose(group);
             }
+
+            if (group.HasUnseenProjects)
+            {
+                TRWidgets.DrawTextureInCorner(groupOptionRect, TiberiumContent.NewMarker, 50, TextAnchor.UpperRight, new Vector2(-1,1));
+            }
             if (Manager.IsOpen(group))
             {
                 var groupOptionSelection = new Rect(researchOptionXOffset, curY, researchOptionSize.x, height);
                 Widgets.DrawMenuSection(groupOptionSelection);
+
                 foreach (var project in group.ActiveProjects)
                 {
                     float margin = (researchOptionSize.y - 24f) / 2;
                     WidgetRow row = new WidgetRow(researchOptionXOffset + margin, curY + margin, UIDirection.RightThenDown);
-                    row.Icon(ProjectStatusTexture(project.State));
+                    row.Icon(project.HasBeenSeen ? ProjectStatusTexture(project.State) : TiberiumContent.AttentionMarker);
                     row.Label(project.LabelCap);
                     
                     var projectOptionRect = new Rect(researchOptionXOffset, curY, researchOptionSize.x, researchOptionSize.y);
+
                     if (Mouse.IsOver(projectOptionRect) || project == SelProject)
+                    {
+                        TRUtils.DiscoveryTable().DiscoverResearch(project);
                         Widgets.DrawHighlight(projectOptionRect);
+                    }
 
                     if (Widgets.ButtonInvisible(projectOptionRect))
+                    {
                         SelProject = project;
+                    }
 
                     curY += projectOptionRect.height;
                 }
@@ -268,27 +305,31 @@ namespace TiberiumRim
             menuRect = new Rect(0, 0, menuRect.width, menuRect.height);
 
             Rect LeftPart = menuRect.LeftPart(mainRectLeftPct);
-            Rect RightPart = menuRect.RightPart(1f - mainRectLeftPct);//(new Rect(LeftThird.width, 0, menuRect.width - LeftThird.width, menuRect.height));
+            Rect RightPart =
+                menuRect.RightPart(
+                    1f - mainRectLeftPct); //(new Rect(LeftThird.width, 0, menuRect.width - LeftThird.width, menuRect.height));
 
-            //LeftPart
+            // ##++ LEFT PART ++##
             //Desc
-            Rect TopHalfRect = LeftPart.TopHalf().ContractedBy(5);
-            Rect BottomHalfRect = LeftPart.BottomHalf().ContractedBy(5);
+            Rect TopQuarterRect = LeftPart.TopPart(0.30f).ContractedBy(5);
+            Rect BottomRestRect = LeftPart.BottomPart(0.70f).ContractedBy(5);
 
             //Title
             Text.Font = GameFont.Medium;
             float mainTitleHeight = Text.CalcHeight(SelProject.LabelCap, LeftPart.width);
-            Rect TitleRect = new Rect(0, 0, TopHalfRect.width, mainTitleHeight);
+            Rect TitleRect = new Rect(0, 0, TopQuarterRect.width, mainTitleHeight);
             Widgets.Label(TitleRect, SelProject.LabelCap);
             Text.Font = GameFont.Tiny;
             float subTitleHeight = Text.CalcHeight(SelProject.researchType, LeftPart.width);
-            Rect SubTitleRect = new Rect(0, mainTitleHeight, TopHalfRect.width, subTitleHeight);
+            Rect SubTitleRect = new Rect(0, mainTitleHeight, TopQuarterRect.width, subTitleHeight);
             Widgets.Label(SubTitleRect, SelProject.researchType);
             Text.Font = GameFont.Small;
             float fullTitleHeight = mainTitleHeight + subTitleHeight;
 
-            Rect DescRect = new Rect(0, fullTitleHeight, TopHalfRect.width, TopHalfRect.height - fullTitleHeight - startButtonSize.y);
-            Rect StartButtonRect = new Rect(TopHalfRect.xMax - (startButtonSize.x + 10), DescRect.yMax, startButtonSize.x, startButtonSize.y);
+            Rect DescRect = new Rect(0, fullTitleHeight, TopQuarterRect.width,
+                TopQuarterRect.height - fullTitleHeight - startButtonSize.y);
+            Rect StartButtonRect = new Rect(TopQuarterRect.xMax - (startButtonSize.x + 10), DescRect.yMax,
+                startButtonSize.x, startButtonSize.y);
 
             Widgets.TextArea(DescRect, SelProject.description, true);
 
@@ -324,18 +365,25 @@ namespace TiberiumRim
             }
 
             //
-            DrawTaskInfo(BottomHalfRect);
+            DrawTaskInfo(BottomRestRect);
 
-            //RightPart
+
+            // ##++ RIGHT PART ++##
             //Image 
-            Rect ImageRect = RightPart.TopHalf().ContractedBy(5f);
-            if(CurTask?.Images != null)
-                DrawImage(ImageRect);
+            float imageHeight = 280;
+            Rect ImageRect = RightPart.TopPartPixels(imageHeight).ContractedBy(5f);
+            if (CurTask != null && cachedImages.ContainsKey(CurTask))
+            {
+                DrawImage(ImageRect, CurTask);
+            }
 
             //Tasks
-            Rect TaskRect = RightPart.BottomHalf().ContractedBy(5f);
+            Rect TaskRect = RightPart.BottomPartPixels(RightPart.height - imageHeight).ContractedBy(5f);
             if (SelProject != null && !SelProject.tasks.NullOrEmpty())
+            {
                 DrawTasks(TaskRect);
+            }
+
             GUI.EndGroup();
         }
 
@@ -348,14 +396,45 @@ namespace TiberiumRim
             GUI.color = Color.white;
         }
 
-        private void DrawImage(Rect rect)
+        private void DrawImage(Rect rect, TResearchTaskDef task)
         {
+            Vector2 buttonSize = new Vector2(45f, rect.height);
+            Rect ImageButtonLeft = new Rect(new Vector2(rect.x, rect.y), buttonSize).ContractedBy(5f);
+            Rect ImageButtonRight = new Rect(new Vector2(rect.xMax - 45f, rect.y), buttonSize).ContractedBy(5f);
+
             Widgets.DrawShadowAround(rect);
-            Text.Anchor = TextAnchor.MiddleCenter;
-            Text.Font = GameFont.Medium;
-            Widgets.Label(rect, rect.height + " x " + rect.width);
-            Text.Font = GameFont.Small;
-            Text.Anchor = default;
+            Widgets.DrawTextureFitted(rect, cachedImages[task][curImage], 1);
+
+            GUI.color = new Color(1f, 1f, 1f, 0.5f);
+            if (Mouse.IsOver(rect) && cachedImages.TryGetValue(CurTask, out List<Texture2D> texts))
+            {
+                string imageCount = (curImage + 1) + "/" + texts.Count;
+                Vector2 size = Text.CalcSize(imageCount);
+                Rect imageCountRect = new Rect(new Vector2(0f, 0f), size);
+                imageCountRect.center = new Vector2(rect.center.x, rect.yMax - (size.y * 0.5f));
+                Widgets.Label(imageCountRect, imageCount);
+                if (curImage > 0)
+                {
+                    UI.RotateAroundPivot(180f, ImageButtonLeft.center);
+                    Widgets.DrawTextureFitted(ImageButtonLeft, TiberiumContent.SideBarArrow, 1f);
+                    UI.RotateAroundPivot(180f, ImageButtonLeft.center);
+                    if (Widgets.ButtonInvisible(ImageButtonLeft, true))
+                    {
+                        SoundDefOf.TabClose.PlayOneShotOnCamera(null);
+                        curImage -= 1;
+                    }
+                }
+                if (curImage < texts.Count - 1)
+                {
+                    Widgets.DrawTextureFitted(ImageButtonRight, TiberiumContent.SideBarArrow, 1f);
+                    if (Widgets.ButtonInvisible(ImageButtonRight, true))
+                    {
+                        SoundDefOf.TabOpen.PlayOneShotOnCamera(null);
+                        curImage += 1;
+                    }
+                }
+            }
+            GUI.color = Color.white;
         }
 
         private void DrawTaskInfo(Rect rect)
@@ -376,14 +455,23 @@ namespace TiberiumRim
             Widgets.DrawBoxSolid(BGRect, taskInfoBG);
             AddGapLine(BGRect, 0, out float newY);
 
+            float taskDescStringHeight = Text.CalcHeight(CurTask.description, BGRect.width);
+            //Task Desc
+            if (!CurTask.description.NullOrEmpty())
+            {
+                Rect descRect = new Rect(BGRect.x, newY + 5, BGRect.width, taskDescStringHeight);
+                newY += descRect.height;
+                Widgets.Label(descRect, CurTask.description);
+            }
+
             //TaskInfo
             float taskInfoStringHeight = Text.CalcHeight(CurTask.TaskInfo, BGRect.width);
             Rect textRect = new Rect(BGRect.x, newY + 5, BGRect.width, taskInfoStringHeight);
-            Widgets.TextArea(textRect, CurTask.TaskInfo, true);
+            Widgets.Label(textRect, CurTask.TaskInfo);
 
             //Task Functions
             Rect funcRect = BGRect.BottomPartPixels(20);
-            AddGapLine(funcRect, 0, out float newY2);
+            AddGapLine(funcRect, 0, out float newY3);
 
             GUI.EndGroup();
         }

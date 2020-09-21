@@ -14,28 +14,33 @@ namespace TiberiumRim
 
     public class DiscoveryTable : IExposable
     {
-        public Dictionary<DiscoveryDef, bool> Discovered = new Dictionary<DiscoveryDef, bool>();
-        public Dictionary<TRThingDef, bool> TRMenuDiscovered = new Dictionary<TRThingDef, bool>();
+        public Dictionary<DiscoveryDef, bool> DiscoveredThings = new Dictionary<DiscoveryDef, bool>();
+        public Dictionary<TResearchDef, bool> DiscoveredResearch = new Dictionary<TResearchDef, bool>();
+        public Dictionary<TRThingDef, bool> DiscoveredMenuOptions = new Dictionary<TRThingDef, bool>();
 
         public void ExposeData()
         {
-            Scribe_Collections.Look(ref Discovered, "discoveredDict");
-            Scribe_Collections.Look(ref TRMenuDiscovered, "menuDiscovered");
+            Scribe_Collections.Look(ref DiscoveredThings, "discoveredDict");
+            Scribe_Collections.Look(ref DiscoveredResearch, "discoveredResearch");
+            Scribe_Collections.Look(ref DiscoveredMenuOptions, "menuDiscovered");
         }
 
-        public bool IsMenuDiscovered(TRThingDef def)
+        //Build Menu
+        public bool MenuOptionHasBeenSeen(TRThingDef def)
         {
-            return TRMenuDiscovered.TryGetValue(def, out bool value) && value;
+            return DiscoveredMenuOptions.TryGetValue(def, out bool value) && value;
         }
 
-        public void DiscoverMenu(TRThingDef def)
+        public void DiscoverInMenu(TRThingDef def)
         {
-            TRMenuDiscovered.Add(def, true);
+            if (MenuOptionHasBeenSeen(def)) return;
+            DiscoveredMenuOptions.Add(def, true);
         }
 
+        //Thing Discovery
         public bool IsDiscovered(DiscoveryDef discovery)
         {
-            return Discovered.TryGetValue(discovery, out bool value) && value;
+            return DiscoveredThings.TryGetValue(discovery, out bool value) && value;
         }
 
         public bool IsDiscovered(IDiscoverable discoverable)
@@ -45,8 +50,21 @@ namespace TiberiumRim
 
         public void Discover(DiscoveryDef discovery)
         {
-            Discovered.Add(discovery, true);
+            if(IsDiscovered(discovery)) return;
+            DiscoveredThings.Add(discovery, true);
             Find.LetterStack.ReceiveLetter("TR_NewDiscovery".Translate(), "TR_NewDiscoveryDesc".Translate(discovery.description), TiberiumDefOf.DiscoveryLetter);
+        }
+
+        //Research Discovery
+        public bool ResearchHasBeenSeen(TResearchDef research)
+        {
+            return DiscoveredResearch.TryGetValue(research, out bool value) && value;
+        }
+
+        public void DiscoverResearch(TResearchDef research)
+        {
+            if (ResearchHasBeenSeen(research)) return;
+            DiscoveredResearch.Add(research, true);
         }
     }
 }

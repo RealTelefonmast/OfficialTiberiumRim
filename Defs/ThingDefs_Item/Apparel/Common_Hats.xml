@@ -15,8 +15,7 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<costList>
-			<Plasteel>5</Plasteel>
-			<Cloth>25</Cloth>
+			<Cloth>50</Cloth>
 			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<recipeMaker>

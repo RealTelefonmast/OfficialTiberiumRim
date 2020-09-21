@@ -38,7 +38,12 @@ namespace TiberiumRim
         public static readonly Texture2D Des_Undisc = ContentFinder<Texture2D>.Get("UI/Menu/Des_Undiscovered", true);
         public static readonly Texture2D Tab_Undisc = ContentFinder<Texture2D>.Get("UI/Menu/Tab_Undiscovered", true);
         public static readonly Texture2D InfoButton = ContentFinder<Texture2D>.Get("UI/Buttons/InfoButton", true);
+        public static readonly Texture2D SideBarArrow = ContentFinder<Texture2D>.Get("UI/Menu/Arrow", true);
 
+        public static readonly Texture2D HighlightAtlas = ContentFinder<Texture2D>.Get("UI/Widgets/TutorHighlightAtlas", true);
+
+        public static readonly Texture2D AttentionMarker = ContentFinder<Texture2D>.Get("UI/Icons/AttentionMarker", true);
+        public static readonly Texture2D NewMarker = ContentFinder<Texture2D>.Get("UI/Icons/NewMarker", true);
         //UI - Icons
         //--Controls
         //----Harvester

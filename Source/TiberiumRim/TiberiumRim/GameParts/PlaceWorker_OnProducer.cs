@@ -40,7 +40,7 @@ namespace TiberiumRim
             //CurrentCellRect = new CellRect(loc.x - 1, loc.z - 1, 3, 3);
             //Producer = loc.GetFirstBuilding(map) as TiberiumProducer;
 
-            return FitsOnProducer(Producer, CurrentCellRect) ? (AcceptanceReport)true : "OnTiberiumProducer".Translate();
+            return FitsOnProducer(Producer, CurrentCellRect) ? (AcceptanceReport)true : "TR_OnTiberiumProducer".Translate();
         }
         public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol, Thing thing = null)
         {
