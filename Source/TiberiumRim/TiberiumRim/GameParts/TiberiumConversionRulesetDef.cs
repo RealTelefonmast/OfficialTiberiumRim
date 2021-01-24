@@ -10,6 +10,7 @@ namespace TiberiumRim
     public class TiberiumConversionRulesetDef : Def
     {
         public TiberiumCrystalDef baseType;
+        public TiberiumTerrainDef baseTerrain;
         public List<TiberiumConversion> conversions;
         public List<PlantConversion> floraConversions;
         public List<ThingConversion> thingConversions;
@@ -18,21 +19,6 @@ namespace TiberiumRim
         {
             if (baseType == null)
                 yield return "Base Type for ConversionRuleset is null!";
-            /*
-            foreach (var tibCon in conversions)
-            {
-                foreach (var terrain in tibCon.toTerrain)
-                {
-                    if (terrain.terrainDef == null)
-                        yield return "TibConversion for " + tibCon.terrainFilter + " has null terrain outcome.";
-                }
-                foreach (var thing in tibCon.toCrystal)
-                {
-                    if (thing.thing == null)
-                        yield return "TibConversion for " + tibCon.terrainFilter + " has null crystal outcome.";
-                }
-            }
-            */
         }
 
         public bool HasOutcomeFor(Thing thing, out ThingConversion conversion)
@@ -51,6 +37,21 @@ namespace TiberiumRim
         {
             conversion = ConversionFor(thing);
             return conversion != null;
+        }
+
+        public TiberiumConversion ConversionForStone()
+        {
+            return conversions.First(t => t.FromTerrainGroup == TiberiumDefOf.TerrainFilter_Stone);
+        }
+
+        public TiberiumConversion ConversionForSoil()
+        {
+            return conversions.First(t => t.FromTerrainGroup == TiberiumDefOf.TerrainFilter_Soil);
+        }
+
+        public TiberiumConversion ConversionForSand()
+        {
+            return conversions.First(t => t.FromTerrainGroup == TiberiumDefOf.TerrainFilter_Sand);
         }
 
         public TiberiumConversion ConversionFor(TerrainDef def)

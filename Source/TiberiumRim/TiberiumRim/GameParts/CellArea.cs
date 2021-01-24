@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using Verse;
@@ -10,6 +11,9 @@ namespace TiberiumRim
     public class CellArea : IExposable
     {
         private List<IntVec3> cells = new List<IntVec3>();
+        private List<IntVec3> border = new List<IntVec3>();
+
+        private bool withBorder;
 
         private bool[] cellBools;
         private int trueCountInt;
@@ -18,19 +22,19 @@ namespace TiberiumRim
 
         public CellArea(){}
 
-        public CellArea(Map map)
+        public CellArea(Map map, bool withBorder = false)
         {
             cells = new List<IntVec3>();
             mapSizeX = map.Size.x;
             mapSizeZ = map.Size.z;
             cellBools = new bool[mapSizeZ * mapSizeX];
             trueCountInt = 0;
+            this.withBorder = withBorder;
         }
 
-        public List<IntVec3> Cells
-        {
-            get => cells;
-        }
+        public List<IntVec3> Cells => cells;
+
+        public List<IntVec3> Border => border;
 
         public void Add(IntVec3 cell)
         {
@@ -59,6 +63,11 @@ namespace TiberiumRim
         }
 
         public int Count => cells.Count;
+
+        public bool Contains(IntVec3 cell)
+        {
+            return cells.Contains(cell);
+        }
 
         public bool Empty()
         {

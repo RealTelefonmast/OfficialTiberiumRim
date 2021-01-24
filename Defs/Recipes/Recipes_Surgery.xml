@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
+	<!--
 	<RecipeDef ParentName="SurgeryFlesh">
 		<defName>InstallTiberiumArm</defName>
 		<label>install tiberium arm</label>
@@ -84,7 +84,41 @@
 		</appliedOnFixedBodyParts>
 		<addsHediff>TiberiumEnhancedLeg</addsHediff>
 	</RecipeDef>
-
+	-->
+	
+	<RecipeDef ParentName="SurgeryFlesh">
+		<defName>RemoveBloatedGland</defName>
+		<label>remove bloated gland</label>
+		<description>Remove a bloated gland.</description>
+		<workerClass>Recipe_RemoveHediff</workerClass>
+		<jobString>Removing bloated gland.</jobString>
+		<workAmount>4500</workAmount>
+		<removesHediff>ViscousBloat</removesHediff>
+		<successfullyRemovedHediffMessage>{0} has successfully removed a bloated gland.</successfullyRemovedHediffMessage>
+		<deathOnFailedSurgeryChance>0.05</deathOnFailedSurgeryChance>
+		<skillRequirements>
+			<Medicine>10</Medicine>
+		</skillRequirements>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Medicine</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Medicine</li>
+			</categories>
+			<disallowedThingDefs>
+				<li>MedicineHerbal</li>
+			</disallowedThingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+	
 	<RecipeDef ParentName="SurgeryFlesh">
 		<defName>RemoveTiberiumSample</defName>
 		<label>remove tiberium skin sample</label>

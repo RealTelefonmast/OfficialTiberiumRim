@@ -13,9 +13,14 @@
 	<TRCat_Producers>Producers</TRCat_Producers>
 	<TRCat_Crystals>Crystals</TRCat_Crystals>
 	
+	<!-- Tiberium Crystal -->
 	<TR_TibDormant>Currently dormant, will not spread.</TR_TibDormant>
 	<TR_TibSuppressed>Suppressed, will not grow.</TR_TibSuppressed>
 	<TR_TibHarvestValue>Current Value:{0}</TR_TibHarvestValue>
+	
+	<!-- Tiberium Producer-->
+	
+	
 	
   <Risk>Risk</Risk>
   <Halted>Halted at</Halted>

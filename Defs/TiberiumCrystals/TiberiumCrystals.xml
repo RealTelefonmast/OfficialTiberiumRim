@@ -84,7 +84,7 @@
 				<glowColor>(90,230,95,50)</glowColor>
 			</li>
 		</comps>
-		<props>
+		<tiberium>
 			<type>Green</type>
 			<consistence>Lattice</consistence>
 			<deteriorationDamage>
@@ -97,7 +97,7 @@
 			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.35</reproduceDays>
 			<MeshCount>4</MeshCount>
-		</props>
+		</tiberium>
 		<conversions>GreenConversion</conversions>
 	</TiberiumRim.TiberiumCrystalDef>
 	
@@ -120,14 +120,11 @@
 				<glowColor>(90,230,95,100)</glowColor>
 			</li>
 		</comps>
-		<props>
+		<tiberium>
 			<type>Green</type>
 			<consistence>Plantlike</consistence>
+			<infects>true</infects>
 			<radiates>false</radiates>
-			<deteriorationDamage>
-				<min>0</min>
-				<max>4</max>
-			</deteriorationDamage>
 			<rootNodeChance>0.1</rootNodeChance>
 			<plantMutationChance>0.7</plantMutationChance>
 			<harvestValue>8</harvestValue>
@@ -135,7 +132,7 @@
 			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.4</reproduceDays>
 			<MeshCount>4</MeshCount>
-		</props>
+		</tiberium>
 		<conversions>GreenPodConversion</conversions>
 	</TiberiumRim.TiberiumCrystalDef>	
 	
@@ -158,7 +155,7 @@
 				<glowColor>(90,230,95,100)</glowColor>
 			</li>
 		</comps>
-		<props>
+		<tiberium>
 			<type>Green</type>
 			<consistence>Lattice</consistence>
 			<deteriorationDamage>
@@ -172,7 +169,7 @@
 			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.6</reproduceDays>
 			<MeshCount>4</MeshCount>
-		</props>
+		</tiberium>
 		<conversions>GreenConversion</conversions>
 	</TiberiumRim.TiberiumCrystalDef>
 	
@@ -196,7 +193,7 @@
 				<glowColor>(90,230,95,235)</glowColor>
 			</li>
 		</comps>
-		<props>
+		<tiberium>
 			<type>Sludge</type>
 			<consistence>Plantlike</consistence>
 			<infects>false</infects>
@@ -211,7 +208,7 @@
 			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.6</reproduceDays>
 			<MeshCount>4</MeshCount>
-		</props>
+		</tiberium>
 		<conversions>GreenMossConversion</conversions>
 	</TiberiumRim.TiberiumCrystalDef>
 	
@@ -234,7 +231,7 @@
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<pathCost>75</pathCost>
-		<props>
+		<tiberium>
 			<type>Blue</type>
 			<consistence>Lattice</consistence>
 			<deteriorationDamage>
@@ -248,7 +245,7 @@
 			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.35</reproduceDays>
 			<MeshCount>4</MeshCount>
-		</props>
+		</tiberium>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_PlantExplode">
 				<explosiveRadius>1.49</explosiveRadius>
@@ -289,14 +286,10 @@
 				<explosionChance>0.01</explosionChance>
 			</li>
 		</comps>
-		<props>
+		<tiberium>
 			<type>Blue</type>
 			<consistence>Plantlike</consistence>
 			<radiates>false</radiates>
-			<deteriorationDamage>
-				<min>0</min>
-				<max>5</max>
-			</deteriorationDamage>
 			<rootNodeChance>0.1</rootNodeChance>
 			<plantMutationChance>0.8</plantMutationChance>
 			<harvestValue>8</harvestValue>
@@ -304,7 +297,7 @@
 			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.4</reproduceDays>
 			<MeshCount>4</MeshCount>
-		</props>
+		</tiberium>
 		<conversions>BluePodConversion</conversions>
 	</TiberiumRim.TiberiumCrystalDef>
 	
@@ -333,7 +326,7 @@
 				<glowColor>(90,105,230,100)</glowColor>
 			</li>
 		</comps>
-		<props>
+		<tiberium>
 			<type>Blue</type>
 			<consistence>Lattice</consistence>
 			<deteriorationDamage>
@@ -347,7 +340,7 @@
 			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.6</reproduceDays>
 			<MeshCount>4</MeshCount>
-		</props>
+		</tiberium>
 		<conversions>BlueConversion</conversions>
 	</TiberiumRim.TiberiumCrystalDef>
 	
@@ -371,7 +364,7 @@
 				<glowColor>(90,105,230,235)</glowColor>
 			</li>
 		</comps>
-		<props>
+		<tiberium>
 			<type>Sludge</type>
 			<consistence>Plantlike</consistence>
 			<infects>false</infects>
@@ -386,7 +379,7 @@
 			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.6</reproduceDays>
 			<MeshCount>4</MeshCount>
-		</props>
+		</tiberium>
 		<conversions>BlueMossConversion</conversions>
 	</TiberiumRim.TiberiumCrystalDef>
 	
@@ -409,7 +402,7 @@
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<pathCost>75</pathCost>
-		<props>
+		<tiberium>
 			<type>Red</type>
 			<consistence>Lattice</consistence>
 			<deteriorationDamage>
@@ -423,7 +416,7 @@
 			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.75</reproduceDays>
 			<MeshCount>4</MeshCount>
-		</props>
+		</tiberium>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_PlantExplode">
 				<explosiveRadius>2</explosiveRadius>
@@ -464,7 +457,7 @@
 				<glowColor>(230,75,75,150)</glowColor>
 			</li>
 		</comps>
-		<props>
+		<tiberium>
 			<type>Red</type>
 			<consistence>Lattice</consistence>
 			<deteriorationDamage>
@@ -478,7 +471,7 @@
 			<spreadRadius>1</spreadRadius>
 			<reproduceDays>1</reproduceDays>
 			<MeshCount>4</MeshCount>
-		</props>
+		</tiberium>
 		<conversions>RedConversion</conversions>
 	</TiberiumRim.TiberiumCrystalDef>
 	
@@ -502,7 +495,7 @@
 				<glowColor>(90,230,95,240)</glowColor>
 			</li>
 		</comps>
-		<props>
+		<tiberium>
 			<type>Unharvestable</type>
 			<consistence>Lattice</consistence>
 			<deteriorationDamage>
@@ -516,7 +509,7 @@
 			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.5</reproduceDays>
 			<MeshCount>4</MeshCount>
-		</props>
+		</tiberium>
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
@@ -544,7 +537,7 @@
 				<glowColor>(90,230,95,50)</glowColor>
 			</li>
 		</comps>
-		<props>
+		<tiberium>
 			<type>Green</type>
 			<consistence>Lattice</consistence>
 			<deteriorationDamage>
@@ -557,7 +550,7 @@
 			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.35</reproduceDays>
 			<MeshCount>4</MeshCount>
-		</props>
+		</tiberium>
 		<!--<monolith>TiberiumCruentus</monolith>-->
 		<conversions>AboreusConversion</conversions>
 	</TiberiumRim.TiberiumCrystalDef>	
@@ -577,7 +570,7 @@
 			<drawSize>(0.6,0.6)</drawSize>
 		</graphicData>
 		<pathCost>75</pathCost>
-		<props>
+		<tiberium>
 			<type>Gas</type>
 			<consistence>Fleshy</consistence>
 			<infects>false</infects>
@@ -594,7 +587,7 @@
 			<spreadRadius>1</spreadRadius>
 			<reproduceDays>0.35</reproduceDays>
 			<MeshCount>4</MeshCount>
-		</props>
+		</tiberium>
 		<dead>TiberiumSoilVeinDead</dead>
 		<conversions>VeinConversion</conversions>
 	</TiberiumRim.TiberiumCrystalDef>

@@ -195,9 +195,9 @@
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
-				<laser>
+				<beamProps>
 					<beamPath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam</beamPath>
-				</laser>
+				</beamProps>
 				<originOffsets>	
 					<li>(0, 0, 0.7)</li>
 				</originOffsets>
@@ -269,9 +269,9 @@
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
-				<laser>
+				<beamProps>
 					<beamPath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam</beamPath>
-				</laser>
+				</beamProps>
 				<originOffsets>	
 					<li>(0, 0, 0.7)</li>
 				</originOffsets>
@@ -348,7 +348,7 @@
 				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>				
 				<warmupTime>2</warmupTime>
 				<range>14.9</range>
-				<forcedMissRadius>0.25</forcedMissRadius>
+				<forcedMissRadius>0</forcedMissRadius>
 				<burstShotCount>15</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_Flame</soundCast>

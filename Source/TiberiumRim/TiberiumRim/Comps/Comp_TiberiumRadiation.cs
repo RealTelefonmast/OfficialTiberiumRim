@@ -4,152 +4,184 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using UnityEngine;
+using UnityEngine.Windows.WebCam;
 using Verse;
 
 namespace TiberiumRim
 {
-    public class ThingComp_TiberiumRadiation : ThingComp
+    public class ThingComp_TiberiumRadiation : ThingComp, IRadiationSource
     {
-        public List<IntVec3> cellsPlants = new List<IntVec3>();
-        public List<IntVec3> cellsPawns = new List<IntVec3>();
-
-        private bool showRadius = false;
-        private int curTick = 0;
-
         public CompProperties_TiberiumRadiation Props => this.props as CompProperties_TiberiumRadiation;
-
         public IntVec3 ParentPos { get; set; }
-    
-        //TODO: Add radiation ticker
+        public List<IntVec3> AffectedCells { get; set; }
+        public Thing SourceThing => parent;
+
+        private bool radiating;
+
+        protected bool IsRadiating => radiating;
+        protected virtual bool ShouldRadiate => true;
+        protected virtual bool ShouldGlow => true;
+
+        public override void PostExposeData()
+        {
+            base.PostExposeData();
+        }
+
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
             ParentPos = parent.Position;
-            SetRadiation(parent.Map);
+            AffectedCells = GenRadial.RadialCellsAround(ParentPos, Props.radius, true).Where(c => c.InBounds(parent.Map)).ToList();
+            TryRadiate();
         }
 
         public override void PostDeSpawn(Map map)
         {
             base.PostDeSpawn(map);
-            SetRadiation(map, true);
+            if (IsRadiating)
+            {
+                var Rand = AffectedCells.RandomElement();
+                map.Tiberium().TiberiumAffecter.HediffGrid.Notify_SourceDespawned(this);
+                Reset(map);
+            }
         }
 
-        private void SetRadiation(Map map, bool reset = false)
+        public void TryRadiate()
         {
-            var affecter = map.Tiberium().TiberiumAffecter;
-            foreach (var pos in GenRadial.RadialCellsAround(ParentPos, Props.radius, true))
+            if (ShouldRadiate && !IsRadiating)
             {
-                if (!pos.InBounds(map)) continue;
-                var intensity = 1f - IntensityAt(pos);
-                affecter.SetRadiation(pos, reset ? -intensity : intensity);
-                //grid.SetInfection(pos, intensity / 3f);
+                parent.Map.Tiberium().TiberiumAffecter.HediffGrid.Notify_SourceSpawned(this);
+                SetRadiation();
             }
+        }
+
+        //On Spawn:     First Reset | Spawn Thing           | Set New
+        //OR:           Spawn Thing | Reset(ignore thing)   | Set New (with thing)
+        //On Despawn:   First Reset | Despawn               | Set New
+
+        public void Notify_BuildingSpawned(Building building)
+        {
+            Reset(parent.Map, building);
+            SetRadiation();
+        }
+
+        public void Notify_BuildingDespawning(Building building)
+        {
+            Reset(parent.Map);
+        }
+
+        public void Notify_UpdateRadiation()
+        {
+            SetRadiation();
+        }
+
+        private void Reset(Map map, Thing thingToIgnore = null)
+        {
+            if (!IsRadiating)
+            {
+                Log.Error(SourceThing + " trying to reset radiation before setting radiation!");
+                return;
+            }
+            var affecter = map.Tiberium().TiberiumAffecter;
+            foreach (var cell in AffectedCells)
+            {
+                if (!cell.InBounds(map)) continue;
+                var intensity = RadiationAt(cell, map, thingToIgnore);
+                if(intensity < 0) continue;
+                affecter.AddRadiation(cell, -intensity);
+            }
+            radiating = false;
+        }
+
+        private void SetRadiation()
+        {
+            if (radiating)
+            {
+                Log.Error(SourceThing + " trying to set radiation after already setting radiation!");
+                return;
+            }
+            var affecter = parent.Map.Tiberium().TiberiumAffecter;
+            foreach (var cell in AffectedCells)
+            {
+                if (!cell.InBounds(parent.Map)) continue;
+                var intensity = RadiationAt(cell, parent.Map);
+                if (intensity < 0) continue;
+                affecter.AddRadiation(cell, intensity);
+            }
+            radiating = true;
+        }
+
+        private float RadiationAt(IntVec3 pos, Map map, Thing thingToIgnore = null)
+        {
+            ShootLine line = new ShootLine(ParentPos, pos);
+            float intensity = 1;
+            float fraction = (ParentPos.DistanceTo(pos) / Props.radius) / line.Points().Count();
+            foreach (IntVec3 point in line.Points())
+            {
+                intensity -= fraction;
+                var building = point.GetFirstBuilding(map);
+                var penis = 1;
+                if (thingToIgnore != null && thingToIgnore == building) continue;
+                if (building != null && building != this.parent)
+                {
+                    /*float fallOff = FillPercentFactor(building) * (1f - (building.def.MadeFromStuff
+                        ? TiberiumDefOf.RadiationResistances.FactorFor(building.Stuff)
+                        : 0.2f));
+                    float fallOff = FillPercentFactor(building);*/
+                    intensity -= (intensity * (FillPercentFactor(building) * StuffFactor(building)));
+                }
+            }
+            return intensity * Props.intensity;
+        }
+
+        private float FillPercentFactor(Building building)
+        {
+            return (building.def.fillPercent > 0 ? building.def.fillPercent : building.def.IsEdifice() ? 0.2f : 0) / building.def.size.Area;
+        }
+
+        private float StuffFactor(Building building)
+        {
+            return TiberiumDefOf.RadiationResistances.FactorFor(building.Stuff, 0.2f);
         }
 
         public override void CompTick()
         {
             base.CompTick();
+            if (parent.IsHashIntervalTick(250) && ShouldGlow)
+            {
+                TiberiumMotes.ThrowTiberiumGlow(AffectedCells.RandomElement(), parent.Map, Rand.Range(1.25f, 1.85f));
+            }
+
+            if (!IsRadiating && ShouldRadiate)
+            {
+                TryRadiate();
+            }
         }
 
         public override void CompTickRare()
         {
             base.CompTickRare();
-        }
-
-        private double IntensityAt(IntVec3 cell)
-        {
-            return (double)parent.Position.DistanceTo(cell) / (double)Props.radius;
-        }
-
-        /*
-        private void Irradiate()
-        {
-            foreach (IntVec3 cell in cellsPlants)
+            if (ShouldGlow)
             {
-                if (!cell.InBounds(parent.Map))
-                {
-                    return;
-                }
-                Plant plant = cell.GetPlant(parent.Map);
-                TiberiumCrystal crystal = cell.GetTiberium(parent.Map);
-                if (plant != null)
-                {
-                    if (!plant.IsTiberiumPlant())
-                    {
-                        if (TRUtils.Chance(Props.intensity))
-                        {
-                            float damage = Mathf.Lerp(0f, TRUtils.Range(Props.damage), Mathf.Lerp(0, Props.intensity, IntensityAt(cell)));
-                            DamageInfo dinfo = new DamageInfo(DamageDefOf.Burn, damage, 1f, -1, parent);
-                            plant.TakeDamage(dinfo);
-                        }
-                    }
-                    else
-                    {
-                        if (plant.HitPoints < plant.MaxHitPoints)
-                        {
-                            if (TRUtils.Chance(IntensityAt(cell)))
-                            {
-                                plant.HitPoints += 1;
-                            }
-                        }
-                    }
-                }
-                if (crystal != null)
-                {
-                    if (!crystal.def.props.dependsOnProducer && crystal.HitPoints < crystal.MaxHitPoints)
-                    {
-                        if (TRUtils.Chance(IntensityAt(cell)))
-                        {
-                            crystal.HitPoints += 1;
-                        }
-                    }
-                }
+                TiberiumMotes.ThrowTiberiumGlow(AffectedCells.RandomElement(), parent.Map, Rand.Range(1.25f, 1.85f));
             }
-            foreach (IntVec3 cell in cellsPawns)
+            if (!IsRadiating && ShouldRadiate)
             {
-                Pawn pawn = cell.GetFirstPawn(parent.Map);
-                if (pawn != null)
-                {
-                    //TODO: Finish radiaion
-                    HediffUtils.TryIrradiatePawn(pawn, null, 1);
-                }
-            }
-        }
-        */
-
-        public override void PostDrawExtraSelectionOverlays()
-        {
-            base.PostDrawExtraSelectionOverlays();
-            if (showRadius)
-            {
-                GenDraw.DrawFieldEdges(cellsPawns, Color.green);
-                GenDraw.DrawFieldEdges(cellsPlants, Color.cyan);
+                TryRadiate();
             }
         }
 
-        public override IEnumerable<Gizmo> CompGetGizmosExtra()
+        public bool AffectsCell(IntVec3 pos)
         {
-            if (Prefs.DevMode && DebugSettings.godMode)
-            {
-                yield return new Command_Action
-                {
-                    defaultLabel = "Show radius",
-                    action = delegate
-                    {
-                        showRadius = !showRadius;
-                    }
-                };
-            }
+            return AffectedCells.Contains(pos);
         }
     }
 
     public class CompProperties_TiberiumRadiation : CompProperties
     {
-        public bool rareTick = false;
         public float radius = 1f;
         public float intensity = 1f;
-        public IntRange damage = new IntRange(0, 1);
-        public IntRange interval = new IntRange(1, 15);
+        public float leakDamageThreshold = -1;
 
         public CompProperties_TiberiumRadiation()
         {

@@ -256,24 +256,25 @@
 			<Beauty>-18</Beauty>
 		</statBases>
 		<costList>
-			<Steel>75</Steel>
-			<ComponentIndustrial>6</ComponentIndustrial>
+			<Steel>150</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_RepairDrone">
+			<li Class="TiberiumRim.CompProperties_DroneStation">
 				<mechRecipes>
 					<li>MakeRepairDroneCommon</li>
 				</mechRecipes>
-				<maxStored>4</maxStored>
+				<mechKindDef>RepairDrone_Common</mechKindDef>
+				<mechCapacity>4</mechCapacity>
+				<garageCapacity>4</garageCapacity>
 				<radius>12</radius>
-				<droneSize>1.3</droneSize>
-				<dronePositions>
+				<renderSize>1.3</renderSize>
+				<renderOffsets>
 					<li>(0,0,1)</li>
 					<li>(1.1,0,0)</li>
 					<li>(0,0,-1)</li>
 					<li>(-1.1,0,0)</li>
-				</dronePositions>
-				<droneDef>RepairDrone_Common</droneDef>
+				</renderOffsets>
 			</li>
 		</comps>
 	</TiberiumRim.TRThingDef>	
@@ -294,17 +295,19 @@
 			<Beauty>-18</Beauty>
 		</statBases>
 		<costList>
-			<Steel>75</Steel>
-			<ComponentIndustrial>6</ComponentIndustrial>
+			<Steel>40</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_RepairDrone">
+			<li Class="TiberiumRim.CompProperties_DroneStation">
 				<mechRecipes>
 					<li>MakeRepairDroneCommon</li>
 				</mechRecipes>
-				<maxStored>1</maxStored>
+				<mechKindDef>RepairDrone_Common</mechKindDef>
+				<mechCapacity>1</mechCapacity>
+				<garageCapacity>1</garageCapacity>
+				<renderSize>1</renderSize>
 				<radius>4</radius>
-				<droneDef>RepairDrone_Common</droneDef>
 			</li>
 		</comps>
 	</TiberiumRim.TRThingDef>	

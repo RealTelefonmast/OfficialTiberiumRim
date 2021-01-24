@@ -11,9 +11,14 @@
 			<Flammability>0</Flammability>
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Flora/Grass/Green</texPath>
+			<texPath>Tiberium/Flora/Grass/Green/Base</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
+		<graphicData2>
+			<texPath>Tiberium/Flora/Grass/Green/FX</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData2>
 		<plant>
 			<harvestedThingDef>TiberiumPlantGrass</harvestedThingDef>
 			<harvestYield>6</harvestYield>
@@ -31,9 +36,14 @@
 			<Flammability>0</Flammability>
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Flora/Grass/Blue</texPath>
+			<texPath>Tiberium/Flora/Grass/Blue/Base</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
+		<graphicData2>
+			<texPath>Tiberium/Flora/Grass/Blue/FX</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData2>
 		<plant>
 			<harvestedThingDef>TiberiumPlantGrass</harvestedThingDef>
 			<harvestYield>6</harvestYield>
@@ -56,6 +66,11 @@
 				<volume>(0.55, 0.2, 0.2)</volume>
 			</shadowData>
 		</graphicData>
+		<graphicData2>
+			<texPath>Tiberium/Flora/Bush/FX</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData2>
 		<plant>
 			<harvestedThingDef>TiberiumPlantBerry</harvestedThingDef>
 			<harvestYield>6</harvestYield>
@@ -90,6 +105,11 @@
 			<texPath>Tiberium/Flora/Shroom/yello</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
+		<graphicData2>
+			<texPath>Tiberium/Flora/Shroom/yello/FX</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData2>
 		<comps>
 			<li Class="CompProperties_Glower">
 				<glowRadius>3</glowRadius>
@@ -106,6 +126,11 @@
 			<texPath>Tiberium/Flora/Shroom/blu</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
+		<graphicData2>
+			<texPath>Tiberium/Flora/Shroom/blu/FX</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData2>
 		<comps>
 		  <li Class="CompProperties_Glower">
 			<glowRadius>3</glowRadius>
@@ -121,8 +146,12 @@
 		<graphicData>
 			<texPath>Tiberium/Flora/Shroom/purp</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
-			<drawSize>0.65,0.8</drawSize>
 		</graphicData>
+		<graphicData2>
+			<texPath>Tiberium/Flora/Shroom/purp/FX</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData2>
 		<comps>
 		  <li Class="CompProperties_Glower">
 			<glowRadius>3</glowRadius>
@@ -151,19 +180,25 @@
 		</plant>
 	</TiberiumRim.TRThingDef>
 	
+	
 	<TiberiumRim.TRThingDef ParentName="PlantBase_TR">
 		<defName>TiberiumTree</defName>
 		<label>tiberium tree</label>
 		<description>A Tiberium infested tree, seems to be mostly harmless.</description>
 		<altitudeLayer>Building</altitudeLayer>
 		<graphicData>
-			<texPath>Tiberium/Flora/Tree</texPath>
+			<texPath>Tiberium/Flora/Tree/Base</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<shadowData>
 				<volume>(0.24, 0.4, 0.13)</volume>
 				<offset>(-0.03,0,-0.44)</offset>
 			</shadowData>
 		</graphicData>
+		<graphicData2>
+			<texPath>Tiberium/Flora/Tree/FX</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData2>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
 			<Beauty>-16</Beauty>
@@ -182,13 +217,14 @@
 		</plant>
 	</TiberiumRim.TRThingDef>
 	
+	
 	<TiberiumRim.TRThingDef ParentName="PlantBase_TR">
 		<defName>DeadTiberiumTree</defName>
 		<label>dead tree</label>
 		<description>.</description>
 		<altitudeLayer>Building</altitudeLayer>
 		<graphicData>
-			<texPath>Tiberium/Flora/Tree</texPath>
+			<texPath>Tiberium/Flora/Tree/Base</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<shadowData>
 				<volume>(0.24, 0.4, 0.13)</volume>

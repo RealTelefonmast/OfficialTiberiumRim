@@ -21,18 +21,6 @@ namespace TiberiumRim
         }
     }
 
-    public class JobGiver_RepairDrone_WanderAtParent : ThinkNode_JobGiver
-    {
-        protected override Job TryGiveJob(Pawn pawn)
-        {
-            Comp_RepairDrone drone = (pawn as RepairDrone).parentComp;
-            IntVec3 gotoIdle = drone.parent.Position + GenRadial.RadialPattern[Rand.Range(0, drone.radialCells)];
-            if (!GenSight.LineOfSight(drone.parent.Position, gotoIdle, pawn.Map)) return null;
-            if (!(pawn as IPawnWithParent).CanWander) return null;
-            return JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("WanderAtParent"), gotoIdle);
-        }
-    }
-
     public class JobDriver_WanderAtParent : JobDriver
     {
         public override bool TryMakePreToilReservations(bool errorOnFailed)

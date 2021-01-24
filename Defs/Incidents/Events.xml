@@ -28,6 +28,18 @@
 	</TiberiumRim.EventDef>
 	
 	<TiberiumRim.EventDef>
+		<defName>TiberiumRadiationLeak</defName>
+		<label>Meteorite</label>
+		<description>.</description>
+		<eventClass>TiberiumRim.Event_TiberiumArrival</eventClass>
+		<letter>
+			<letterLabel>Meteor crashed!</letterLabel>
+			<letterText>The strange object has crashed directly onto our map, we might want to investigate it closer...</letterText>
+			<letterDef>NegativeEvent</letterDef>
+		</letter>
+	</TiberiumRim.EventDef>
+	
+	<TiberiumRim.EventDef>
 		<defName>TiberiumFloraDiscovery</defName>
 		<label>Alien Flora</label>
 		<description>Alien flora seems to be growing around the area of impact.</description>
@@ -35,14 +47,36 @@
 	
 	<TiberiumRim.EventDef>
 		<defName>TiberiumToxemiaDiscovery</defName>
-		<label>Tiberium Infection</label>
+		<label>Tiberium Toxemia</label>
 		<description>{0} was wandering close to the crystals, and discovered that they are more than just growing minerals. They got affected by {1} and should be treated to recover.</description>
+		<triggerProps>
+			<hediffs>
+				<li>TiberiumToxemia</li>
+			</hediffs>
+		</triggerProps>
+		<discoveries>
+			<thingsToDiscover>
+				<li>TiberiumToxemiaDiscovery</li>
+			</thingsToDiscover>
+		</discoveries>
 	</TiberiumRim.EventDef>
 	
 	<TiberiumRim.EventDef>
 		<defName>TiberiumGeyserDiscovery</defName>
 		<label>Tiberium Geyser Discovery</label>
 		<description>A tiberium geyser.</description>
+		<triggerProps>
+			<targets>
+				<targetDefs>
+					<li>TiberiumGeyser</li>
+				</targetDefs>
+			</targets>
+		</triggerProps>
+		<discoveries>
+			<thingsToDiscover>
+				<li>TiberiumGeyserDiscovery</li>
+			</thingsToDiscover>
+		</discoveries>
 	</TiberiumRim.EventDef>
 	
 </Defs>

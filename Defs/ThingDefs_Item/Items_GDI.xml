@@ -30,8 +30,8 @@
 	
 	<ThingDef ParentName="BuildingBase_TR">
 		<defName>IonCannonBeacon_Placed</defName>
-		<label>ion cannon beacon (placed)</label>
-		<description>ion cannon strike</description>
+		<label>GS-2 beacon (placed)</label>
+		<description>An active GS-2 beacon!</description>
 		<graphicData>
 			<texPath>Items/Weapons/IonCannon_Beacon</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

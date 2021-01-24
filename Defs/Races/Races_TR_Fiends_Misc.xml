@@ -67,7 +67,7 @@
 		</race>
 	</ThingDef>
   
-	<PawnKindDef ParentName="AnimalKindBase_TR">
+	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>TibScarab</defName>
 		<label>tiberium scarab</label>
 		<race>TibScarab</race>
@@ -109,9 +109,9 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</PawnKindDef>
+	</TiberiumRim.TiberiumKindDef>
 	
-	<ThingDef ParentName="AnimalBase_TR">
+	<ThingDef ParentName="FiendBase">
 		<defName>Crawler</defName>
 		<label>crawler</label>
 		<description>A huge snake. This one seems to be infected with Tiberium.</description>
@@ -202,7 +202,7 @@
 		</race>
 	</ThingDef>
 
-	<PawnKindDef ParentName="AnimalKindBase_TR">
+	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>Crawler</defName>
 		<label>crawler</label>
 		<race>Crawler</race>
@@ -239,7 +239,7 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</PawnKindDef>
+	</TiberiumRim.TiberiumKindDef>
   
 	<ThingDef ParentName="VisceralPawnBase">
 		<defName>BoomFiend</defName>
@@ -338,7 +338,7 @@
 		</race>
 	</ThingDef>
 
-	<PawnKindDef ParentName="AnimalKindBase_TR">
+	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>BoomFiend</defName>
 		<label>tiberian bloater</label>
 		<race>BoomFiend</race>
@@ -382,6 +382,6 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</PawnKindDef>
+	</TiberiumRim.TiberiumKindDef>
 	
 </Defs>

@@ -8,7 +8,7 @@
 		<iconPath>UI/Icons/ThingCategories/MortarShells</iconPath>
 	</ThingCategoryDef>
 	
-	<ThingDef ParentName="ShellBase">
+	<ThingDef ParentName="TR_ShellBase">
 		<defName>TempleShell_Explosive</defName>
 		<label>nuclear warhead</label>
 		<description>This warhead is specifically designed to decimate entire areas within moments. After installation on a ICBM within the temple of Nod, a long range attack to any target within the missile's range will be allowed.</description>

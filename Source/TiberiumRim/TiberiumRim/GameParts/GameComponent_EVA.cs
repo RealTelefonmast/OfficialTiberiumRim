@@ -95,10 +95,7 @@ namespace TiberiumRim
             }
         }
 
-        public bool CanPlay
-        {
-            get { return TiberiumRimSettings.settings.EVASystem; }
-        }
+        public bool CanPlay => TRUtils.Tiberium().GameSettings.EVASystem;
 
         public override void GameComponentTick()
         {

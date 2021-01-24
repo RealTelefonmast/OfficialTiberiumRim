@@ -33,7 +33,7 @@ namespace TiberiumRim
     public class JobDriver_RepairDroneReturn : JobDriver
     {
         private RepairDrone Drone => this.pawn as RepairDrone;
-        private Comp_RepairDrone RepairComp => Drone.parentComp;
+        private Comp_DroneStation Comp => Drone.parentComp;
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -46,7 +46,7 @@ namespace TiberiumRim
             Toil repair = new Toil();
             repair.initAction = delegate
             {
-                RepairComp.StoreDrone(Drone);
+                Comp.StoreDrone(Drone);
             };
             yield return repair;
         }

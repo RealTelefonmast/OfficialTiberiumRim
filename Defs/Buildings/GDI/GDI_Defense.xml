@@ -422,7 +422,7 @@
 	
 	<!-- Sonic Emitter -->
 	<TiberiumRim.TRThingDef ParentName="GDITurret">
-		<defName>GDISecurity_SonicEmitter</defName>
+		<defName>GDI_SonicEmitter</defName>
 		<label>Sonic Emitter</label>
 		<description>The sonic emitter, this heavy weapon clears anything in it's path.\n\nVulnerable by flame attack.</description>
 		<factionDesignation>GDI</factionDesignation>

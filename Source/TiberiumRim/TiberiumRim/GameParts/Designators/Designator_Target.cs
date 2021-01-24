@@ -93,7 +93,7 @@ namespace TiberiumRim
 
 
             targeterMat = TiberiumContent.IonCannonTargeter;
-            size = 50;
+            size = IonCannon_Strike.radius * 2;
         }
 
         public override void Selected()
@@ -129,7 +129,7 @@ namespace TiberiumRim
                 fromTile = map.Tile;
             }
 
-            var sats = Find.World.GetComponent<WorldComponent_TR>().AttackSatelliteNetwork.ASatsIon;
+            var sats = Find.World.GetComponent<WorldComponent_TR>().SatelliteInfo.AttackSatelliteNetwork.ASatsIon;
             sat = fromTile >= 0 ? sats.MinBy(s => Find.WorldGrid.ApproxDistanceInTiles(fromTile, s.Tile)) : sats.FirstOrDefault();
             return sat;
         }

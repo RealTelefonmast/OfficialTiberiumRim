@@ -1,47 +1,51 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef Name="Forgotten_Armor" ParentName="ArmorMachineableBase_TR" Abstract="True">
-		<colorGenerator Class="ColorGenerator_Options">
-			<options>
-				<li>
-					<weight>10</weight>
-					<only>RGBA(1,1,1,1)</only>
-				</li>
-			</options>
-		</colorGenerator>
+	<ThingDef Name="Common_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
+		<recipeMaker>
+			<recipeUsers Inherit="False">
+				<li>TiberiumWorkbench</li>
+			</recipeUsers>
+		</recipeMaker>
 	</ThingDef>
+
+	<TiberiumRim.TRThingDef Name="Forgotten_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
+		<recipeMaker>
+			<recipeUsers Inherit="False">
+				<li>TiberiumWorkbench</li>
+			</recipeUsers>
+		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>ForgottenExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef Name="GDI_Armor" ParentName="ArmorMachineableBase_TR" Abstract="True">
+	<TiberiumRim.TRThingDef Name="GDI_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
 		<recipeMaker>
 			<recipeUsers Inherit="False">
 				<li>GDI_Factory</li>
 			</recipeUsers>
 		</recipeMaker>
-		<colorGenerator Class="ColorGenerator_Options">
-			<options>
-				<li>
-					<weight>10</weight>
-					<only>RGBA(1,1,1,1)</only>
-				</li>
-			</options>
-		</colorGenerator>
-	</ThingDef>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef Name="Nod_Armor" ParentName="ArmorMachineableBase_TR" Abstract="True">
+	<TiberiumRim.TRThingDef Name="Nod_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
 		<recipeMaker>
 			<recipeUsers Inherit="False">
 				<li>Nod_Factory</li>
 			</recipeUsers>
 		</recipeMaker>
-		<colorGenerator Class="ColorGenerator_Options">
-			<options>
-				<li>
-					<weight>10</weight>
-					<only>RGBA(1,1,1,1)</only>
-				</li>
-			</options>
-		</colorGenerator>
-	</ThingDef>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+	</TiberiumRim.TRThingDef>
 
 </Defs>

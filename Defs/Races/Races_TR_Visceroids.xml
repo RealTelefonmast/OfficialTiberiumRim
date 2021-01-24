@@ -273,7 +273,7 @@
 			<herdAnimal>true</herdAnimal>
 			<predator>true</predator>
 			<maxPreyBodySize>2.0</maxPreyBodySize>
-			<baseBodySize>1.2</baseBodySize>
+			<baseBodySize>1.45</baseBodySize>
 			<baseHungerRate>0.4</baseHungerRate>
 			<baseHealthScale>1</baseHealthScale>
 			<meatLabel>visceral meat</meatLabel>
@@ -303,11 +303,11 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawns/WildLife/Visceroid/visceroid</texPath>
-					<drawSize>1.5</drawSize>
+					<drawSize>1.75</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Pawns/WildLife/Visceroid/VisceroidDessicated</texPath>
-					<drawSize>1.5</drawSize>
+					<drawSize>1.75</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>

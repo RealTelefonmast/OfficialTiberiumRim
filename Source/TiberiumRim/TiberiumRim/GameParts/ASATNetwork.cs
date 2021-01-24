@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 namespace TiberiumRim
@@ -14,6 +15,8 @@ namespace TiberiumRim
 
         public void ExposeData()
         {
+            Scribe_Collections.Look(ref AttackSatellites, "attackSATS", LookMode.Reference);
+            Scribe_Collections.Look(ref ASatsIon, "ionSats", LookMode.Reference);
         }
 
         public void RegisterNew(AttackSatellite sat)

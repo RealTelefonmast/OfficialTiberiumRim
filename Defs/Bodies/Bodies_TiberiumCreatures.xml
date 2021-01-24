@@ -2,8 +2,6 @@
 <Defs>
 
 	<!-- Visceral Horror | Humanlike -->
-	
-	
 	<BodyDef>
 		<defName>VisceralBody</defName>
 		<label>viscose human</label>
@@ -209,7 +207,7 @@
 				</li>
 				<li>
 					<def>Tentacle_Leg</def>
-					<customLabel>right back tentacle leg</customLabel>
+					<customLabel>back tentacle leg</customLabel>
 					<coverage>0.07</coverage>
 					<height>Bottom</height>
 					<groups>

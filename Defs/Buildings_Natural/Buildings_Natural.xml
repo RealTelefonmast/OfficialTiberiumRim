@@ -4,17 +4,18 @@
 	<!-- Intact Meteor-->
 	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>TiberiumMeteoriteChunk</defName>
-		<description>A massive crystalline tower, created via multiple Tiberium crystals merging into one bigger crystal. However, this structure does not seem to spread more Tiberium.</description>
-		<label>tiberium meteorite chunk tower</label>
+		<thingClass>TiberiumRim.TiberiumMeteorite</thingClass>
+		<description>A metoerite of unknown origin. Data suggests this meteorite carries an extremely agressive self-replicating mineral called "Tiberium".</description>
+		<label>tiberium meteorite chunk</label>
 		<TRCategory>Producers</TRCategory>
 		<discovery>
 			<discoveryDef>TiberiumProducerCrater</discoveryDef>
 			<unknownLabel>strange meteorite</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+			<unknownDescription>We have not yet figured out what this is. Approach with caution.</unknownDescription>
 		</discovery>
 		<size>(3,3)</size>
 		<altitudeLayer>Building</altitudeLayer>
-		<tickerType>Never</tickerType>
+		<tickerType>Rare</tickerType>
 		<graphicData>
 			<texPath>Buildings/Natural/TiberiumMeteor/Meteor</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -25,16 +26,17 @@
 			<MaxHitPoints>1500</MaxHitPoints>
 			<Beauty>360</Beauty>
 		</statBases>
+		<building>
+			<isEdifice>false</isEdifice>
+		</building>
 		<rotatable>false</rotatable>
 		<blockPlants>true</blockPlants>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
-				<radius>3.5</radius>
-				<intensity>0.1</intensity>
-				<damage>
-					<min>0</min>
-					<max>8</max>
-				</damage>
+				<compClass>TiberiumRim.Comp_RadiationLeak</compClass>
+				<leakDamageThreshold>0.6</leakDamageThreshold>
+				<radius>5.5</radius>
+				<intensity>1</intensity>
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>4</glowRadius>
@@ -87,11 +89,7 @@
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
 				<radius>8</radius>
-				<intensity>0.2</intensity>
-				<damage>
-					<min>0</min>
-					<max>8</max>
-				</damage>
+				<intensity>1.5</intensity>
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>6</glowRadius>

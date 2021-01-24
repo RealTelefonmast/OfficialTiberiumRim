@@ -89,9 +89,6 @@
 			<ArmorRating_Blunt>0</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0</ArmorRating_Sharp>
 			<ArmorRating_Heat>0</ArmorRating_Heat>
-			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
-			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
-			<TiberiumGasResistance>1</TiberiumGasResistance>
 		</statBases>
 		<race>
 			<intelligence>Animal</intelligence>
@@ -135,8 +132,13 @@
 			<li>Anesthetize</li>
 		</recipes>
 	</ThingDef>
-  
+	
 	<ThingDef Name="FiendBase" ParentName="AnimalBase_TR" Abstract="True" >
+		<statBases>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
+		</statBases>
 		<race>
 			<manhunterOnDamageChance>1</manhunterOnDamageChance>
 			<manhunterOnTameFailChance>0.75</manhunterOnTameFailChance>
@@ -147,13 +149,17 @@
 			<foodType>CarnivoreAnimalStrict, OvivoreAnimal, AnimalProduct</foodType>
 		</race>
 	</ThingDef>
-  
+	
   	<TiberiumRim.TiberiumKindDef Name="VisceralKindBase" Abstract="True">
 		<ecoSystemWeight>0</ecoSystemWeight>
+		<canArriveManhunter>false</canArriveManhunter>
+		<wildGroupSize>1~1</wildGroupSize>
 	</TiberiumRim.TiberiumKindDef>
 	
 	<TiberiumRim.TiberiumKindDef Name="AnimalKindBase_TR" Abstract="True">
 		<ecoSystemWeight>0</ecoSystemWeight>
+		<canArriveManhunter>false</canArriveManhunter>
+		<wildGroupSize>1~1</wildGroupSize>
 	</TiberiumRim.TiberiumKindDef>
   
 </Defs>

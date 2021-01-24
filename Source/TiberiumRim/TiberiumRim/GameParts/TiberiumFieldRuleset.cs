@@ -14,10 +14,16 @@ namespace TiberiumRim
         public List<WeightedThing> crystalOptions;
         public List<TerrainConversion> terrainRules;
         public bool allowFlora = true;
+        public float tiberiumDensity = 0.05f;
+
+        public SimpleCurve corruptionCurve = new SimpleCurve(new CurvePoint[2] {new CurvePoint(0, 1), new CurvePoint(1, 0)});
+        public float corruptionRadius = 0f;
         public bool createBlossom;
 
         [Unsaved]
         private float maxWeight;
+
+        public bool SpawnsTib => !crystalOptions.NullOrEmpty();
 
         public float MaxFloraWeight
         {
@@ -27,6 +33,13 @@ namespace TiberiumRim
                     maxWeight = floraOptions.Max(t => t.things.Max(p => p.weight));
                 return maxWeight;
             }
+        }
+
+        public IEnumerable<TiberiumCrystalDef> TiberiumTypes => crystalOptions?.Select(t => t.thing as TiberiumCrystalDef);
+
+        public bool AllowTerrain(TerrainDef terrain)
+        {
+            return terrainRules.Any(t => t.Supports(terrain));
         }
 
         public TiberiumCrystalDef RandomTiberiumType()
@@ -47,7 +60,11 @@ namespace TiberiumRim
 
         public float ChanceFor(TRThingDef plant, float atDistance, float maxDistance)
         {
-            float distanceChance = 1f - Mathf.InverseLerp(0f, maxDistance, atDistance);
+            //The percentual float of the position along the max radius
+            float distanceFloat = Mathf.InverseLerp(0f, maxDistance, atDistance);
+            //The chance value depending on distance
+            float distanceChance = corruptionCurve.Evaluate(distanceFloat);
+            //The thing at that position depending on predefined weight
             WeightedThing thing = floraOptions.SelectMany(f => f.things).First(w => w.thing == plant);
             var weightChance = Mathf.InverseLerp(0f, MaxFloraWeight, thing.weight);
             var lerpedChance = Mathf.Lerp(distanceChance, 1f, Mathf.Clamp01(weightChance - (1f - distanceChance)));

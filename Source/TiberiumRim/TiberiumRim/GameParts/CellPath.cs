@@ -27,11 +27,6 @@ namespace TiberiumRim
         private readonly Predicate<IntVec3> endCondition;
 
         private IntVec3 currentCell;
-        private IntVec3 lastCell;
-        private float currentDistance;
-        private float lastDistance;
-
-        private int attempts = 0;
 
         private bool shouldFinish = false;
 
@@ -55,8 +50,6 @@ namespace TiberiumRim
         public void ExposeData()
         {
             Scribe_Values.Look(ref currentCell, "currentCell");
-            Scribe_Values.Look(ref lastCell, "lastCell");
-            Scribe_Values.Look(ref attempts, "attempts");
         }
 
         public void CreatePath()
@@ -100,69 +93,5 @@ namespace TiberiumRim
         {
 
         }
-
-        /*
-        public bool ShouldFinish()
-        {
-            return origin.DistanceTo(currentCell) > pathLength || attempts > 8 || (endCondition != null && endCondition(currentCell));
-        }
-
-        public void GrowFully(ref List<IntVec3> cells)
-        {
-            for (;;)
-            {
-                if (ShouldFinish()) break;
-                Grow(ref cells);
-            }
-        }
-
-        public void Grow(float radius, ref List<IntVec3> cells)
-        {
-            for (; ; )
-            {
-                if (radius < origin.DistanceTo(currentCell) || attempts > 8) break;
-                Grow(ref cells);
-            }
-        }
-
-        public void Grow(ref List<IntVec3> cells) 
-        {
-            attempts++;
-            if (pusher.IsValid)
-            {
-                IntVec3 cell = GrowAway();
-                if (!cell.IsValid) return;
-
-                attempts = 0;
-                cells.Add(cell);
-                pathCells.Add(cell);
-                processor?.Invoke(cell);
-            }
-            else if (puller.IsValid)
-            {
-                GrowTo();
-                attempts = 0;
-            }
-        }
-
-        private IntVec3 GrowAway()
-        {
-            if (currentCell.InBounds(map) && currentCell.Standable(map) && !pathCells.Contains(currentCell))
-            {
-                lastCell = currentCell;
-                currentCell = currentCell.RandomAdjacentCell8Way();
-                return lastCell;
-            }
-            currentCell = lastCell.RandomAdjacentCell8Way();
-            return IntVec3.Invalid;
-        }
-
-        private void GrowTo()
-        {
-
-        }
-
-        public List<IntVec3> CurrentPath => pathCells;
-        */
     }
 }

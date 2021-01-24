@@ -12,5 +12,15 @@
 		<expandingIconTexture>Buildings/GDI/Defense/IonCannon/ASat</expandingIconTexture>
 		<expandingIconPriority>10</expandingIconPriority>
 	</WorldObjectDef>
-
+	
+	<WorldObjectDef>
+		<defName>TiberiumTile</defName>
+		<label>Tiberium Infestation</label>
+		<description>.</description>
+		<worldObjectClass>TiberiumRim.TiberiumTile</worldObjectClass>
+		<canHaveFaction>false</canHaveFaction>
+		<selectable>false</selectable>
+		<!--mapGenerator></mapGenerator Add Tib Generation -->
+		<expandingIcon>false</expandingIcon>
+	</WorldObjectDef>
 </Defs>

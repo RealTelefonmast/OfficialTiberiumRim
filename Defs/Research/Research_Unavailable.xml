@@ -6,6 +6,7 @@
 		<label>Upcoming!</label>	
 		<priority>10</priority>
 		<researchProjects>
+			<li>ForgottenExperimental</li>
 			<li>GDIExperimental</li>
 			<li>NODExperimental</li>
 		</researchProjects>
@@ -54,6 +55,32 @@
 		<defName>NODUnlock</defName>
 		<label>Unlock NOD Tech</label>		
 		<descriptionShort>Get experimental NOD content.</descriptionShort>
+		<skillRequirements>
+			<Intellectual>2</Intellectual>
+		</skillRequirements>
+		<taskTarget>
+			<targetType>Building_ResearchBench</targetType>
+		</taskTarget>
+		<workType>Research</workType>
+		<workAmount>9999</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchDef>
+		<defName>ForgottenExperimental</defName>
+		<label>Forgotten Tech</label>	
+		<researchType>experimental content</researchType>
+		<description>Unlock the current available Forgotten structures and items, most of them are experimental and not meant to be available yet!</description>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<tasks>
+			<li>ForgottenUnlock</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>ForgottenUnlock</defName>
+		<label>Unlock Forgotten Tech</label>		
+		<descriptionShort>Get experimental Forgotten content.</descriptionShort>
 		<skillRequirements>
 			<Intellectual>2</Intellectual>
 		</skillRequirements>

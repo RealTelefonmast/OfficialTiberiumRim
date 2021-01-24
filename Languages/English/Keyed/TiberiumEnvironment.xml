@@ -2,14 +2,16 @@
 <LanguageData>
 
 	<!--  -->
+	<TR_WorldInfestationLevel>Tiberium Infestation: {0}</TR_WorldInfestationLevel>
+	
 	<TR_GZProducer>Ground Zero</TR_GZProducer>
 	
 	<TR_Deterioration>tiberium exposure</TR_Deterioration>
 	
 	<TR_NewDiscovery>New Discovery!</TR_NewDiscovery>
 	<TR_NewDiscoveryDesc>We have discovered new information!\n\n{0}</TR_NewDiscoveryDesc>
-	<!-- Infection -->
 	
+	<!-- Infection -->
 	<TR_HediffFusing>Fusing</TR_HediffFusing>
 	<TR_HediffCrystallizing>Crystallizing</TR_HediffCrystallizing>
 	<TR_HediffCrystallized>Crystallized</TR_HediffCrystallized>
@@ -18,6 +20,11 @@
 	<TR_HediffMutation>Mutation Chance</TR_HediffMutation>
 	<TR_Visceral>Visceral</TR_Visceral>
 	<TR_Symbiotic>Symbiotic</TR_Symbiotic>
+	<TR_HediffToxemiaInfBracket>Fully crystallized in {0}</TR_HediffToxemiaInfBracket>
+
+	<!-- -->
+	<TR_Supercritical>Supercritical!</TR_Supercritical>
+	<TR_TimeLeft>{0} until breakdown.</TR_TimeLeft>
 	
 	<!-- Visceral Memory -->
 	<TR_VisceralMemoryName>Used to be {0}.</TR_VisceralMemoryName>
@@ -25,7 +32,11 @@
 	<TR_VisceralMemoryKindName>Used to be {0}, a {1}.</TR_VisceralMemoryKindName>
 	<TR_VisceralConversion>{0} has converted into a visceral horror.</TR_VisceralConversion>
 	
+	<!-- Visceral Pod-->
+	<TR_VisceralPodLetter>Visceral Encasement!</TR_VisceralPodLetter>
+	<TR_VisceralPodLetterDesc>{0} has been encased inside of a visceral mass, they need to be rescued as soon as possible or else they might suffer severe wounds and potentially death.</TR_VisceralPodLetterDesc>
 	<!-- Natural Structures -->
 	<TR_GasDeposit>Current deposit value</TR_GasDeposit>
+	
 	
 </LanguageData>

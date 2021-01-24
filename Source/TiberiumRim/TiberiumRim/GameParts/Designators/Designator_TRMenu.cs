@@ -21,6 +21,8 @@ namespace TiberiumRim
         private Dictionary<FactionDesignationDef, TRThingCategoryDef> cachedSelection = new Dictionary<FactionDesignationDef, TRThingCategoryDef>();
         private Dictionary<FactionDesignationDef,DesignationTexturePack> TexturePacks = new Dictionary<FactionDesignationDef, DesignationTexturePack>();
 
+        private List<ThingDef> HighLightOptions = new List<ThingDef>();
+
         private Vector2 scroller = Vector2.zero;
         private string SearchText = "";
 
@@ -43,27 +45,36 @@ namespace TiberiumRim
         public override string LabelCap => CurrentDesignator?.LabelCap;
         public override string Desc => CurrentDesignator?.Desc;
 
+        public void Select(TRThingDef def)
+        {
+            SelectedFaction = def.factionDesignation;
+            cachedSelection[SelectedFaction] = def.TRCategory;
+        }
+
+        public void MarkForHighlight(ThingDef def)
+        {
+            HighLightOptions.Add(def);
+        }
+
         public override void DrawPanelReadout(ref float curY, float width)
         {
             if (CurrentDesignator == null && inactiveDef != null)
             {
-                float height = 0;
+                inactiveDef.IsActive(out var reason);
+                if (reason.NullOrEmpty()) return;
+
                 Vector2 bannerSize = TRWidgets.FittedSizeFor(TiberiumContent.LockedBanner, width + 12f);
-                Find.WindowStack.ImmediateWindow(324576, new Rect(1, UI.screenHeight - (560f), bannerSize.x, bannerSize.y), WindowLayer.GameUI, delegate
+                Find.WindowStack.ImmediateWindow(9357445, new Rect(1, ArchitectCategoryTab.InfoRect.yMin + 1, bannerSize.x, bannerSize.y), WindowLayer.GameUI, delegate
                 {
                     Widgets.DrawTextureFitted(new Rect(0, 0, bannerSize.x, bannerSize.y), TiberiumContent.LockedBanner, 1f);
                 }, false, false, 0);
 
-                curY += height;
-
-                inactiveDef.IsActive(out var reason);
                 Rect reasonRect = new Rect(new Vector2(0, curY), new Vector2(width, Text.CalcHeight(reason, width)));
-                //Widgets.LongLabel(reasonRect.x, width, reason, ref curY);
                 Widgets.Label(reasonRect, reason);
                 return;
             }
             CurrentDesignator?.DrawPanelReadout(ref curY, width);
-        }     
+        }
 
         public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth)
         {
@@ -183,6 +194,11 @@ namespace TiberiumRim
                 Widgets.Label(rect, "DEV");
                 Text.Anchor = default;
                 Text.Font = GameFont.Small;
+            }
+
+            if (HighLightOptions.Contains(def))
+            {
+                Widgets.DrawTextureFitted(rect, TiberiumContent.Des_Undisc, 1);
             }
 
             if (!def.ConstructionOptionDiscovered)

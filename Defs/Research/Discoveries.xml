@@ -19,4 +19,16 @@
 		<description>This strange creature is the result of long term Tiberium mutation and effects on the natural environment. A monstrous creature covering was landmasses in its tentacle-like tendrils syphoning resources from the ground just like Tiberium crystals do. However, these tendrils are not radioactive or directly infectious, though they will attack anything that disturbs the creature. Besides blunt attacks via the tentacles, some tentacles have the ability to release toxic Tiberium gas near any victims, which will result in rapid Tiberium Toxemia without any respiratory protection.</description>
 	</TiberiumRim.DiscoveryDef>
 	
+	<TiberiumRim.DiscoveryDef>
+		<defName>TiberiumToxemiaDiscovery</defName>
+		<label>Tiberium Toxemia</label>
+		<description>Tiberium toxicity... WIP</description>
+	</TiberiumRim.DiscoveryDef>
+	
+	<TiberiumRim.DiscoveryDef>
+		<defName>TiberiumGeyserDiscovery</defName>
+		<label>Exotic Gas</label>
+		<description>Tiberium Geysers... WIP</description>
+	</TiberiumRim.DiscoveryDef>
+	
 </Defs>

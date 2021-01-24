@@ -85,12 +85,12 @@
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<blockLight>false</blockLight>
 		<mineable>false</mineable>
-		<props>
+		<tiberium>
 			<sizeRange>
 				<min>0.75</min>
 				<max>2</max>
 			</sizeRange>
-		</props>
+		</tiberium>
 		<statBases>
 			<Flammability>0</Flammability>
 		</statBases>

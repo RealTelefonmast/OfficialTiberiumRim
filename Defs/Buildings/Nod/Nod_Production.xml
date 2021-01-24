@@ -3,7 +3,7 @@
 	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>Nod_Factory</defName>
-		<label>Nodd Assembler</label>
+		<label>Nod Assembler</label>
 		<description>The Nod Assembler is used to create high-tier materials and items.</description>
 		<thingClass>Building_WorkTable</thingClass>
 		<altitudeLayer>Building</altitudeLayer>
@@ -176,8 +176,8 @@
 			<Flammability>0.85</Flammability>
 		</statBases>
 		<costList>
-			<Nod_CarbonPlate>20</Nod_CarbonPlate>
-			<ComponentIndustrial>10</ComponentIndustrial>
+			<Nod_CarbonPlate>200</Nod_CarbonPlate>
+			<ComponentIndustrial>100</ComponentIndustrial>
 		</costList>
 		<comps>
 			<li Class="TiberiumRim.RefineryProperties">
@@ -341,7 +341,7 @@
 		<tickerType>Normal</tickerType>
 		<size>(4,4)</size>
 		<costList>
-			<GDI_ReinforcedPlate>25</GDI_ReinforcedPlate>
+			<Nod_CarbonPlate>25</Nod_CarbonPlate>
 			<Plasteel>25</Plasteel>
 			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>

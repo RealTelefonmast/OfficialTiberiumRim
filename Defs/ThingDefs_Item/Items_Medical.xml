@@ -141,7 +141,7 @@
 					<hediffDef>TiberBlockHediff</hediffDef>
 					<severity>1.0</severity>
 					<hediffs>
-						<li>TiberiumCrystallization</li>
+						<li>TiberiumToxemia</li>
 					</hediffs>
 					<sideEffects>
 						<li>TiberBlockSide</li>

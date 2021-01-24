@@ -28,6 +28,7 @@ namespace TiberiumRim
         //
         public List<ConditionalStatModifier> conditionalStatOffsets;
 
+        public bool isNatural = false;
         public bool hidden = false;
         public bool devObject = false;
         public bool clearTiberium = false;

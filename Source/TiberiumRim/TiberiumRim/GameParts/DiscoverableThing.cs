@@ -7,7 +7,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class DiscoverableThing : TiberiumThing, IDiscoverable
+    public class DiscoverableThing : TRThing, IDiscoverable
     {
         public override string Label => Discovered ? DiscoveredLabel : UnknownLabel;
 
@@ -42,7 +42,7 @@ namespace TiberiumRim
                 yield return new Command_Action()
                 {
                     defaultLabel = "Discover",
-                    action = delegate { TRUtils.DiscoveryTable().Discover(DiscoveryDef); }
+                    action = delegate { DiscoveryDef.Discover(); }
                 };
             }
         }

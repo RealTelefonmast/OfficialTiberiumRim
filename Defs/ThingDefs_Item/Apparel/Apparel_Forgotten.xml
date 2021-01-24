@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 		
-	<ThingDef ParentName="Forgotten_Armor">
+	<TiberiumRim.TRThingDef ParentName="Forgotten_Armor">
 		<defName>ForgottenMask</defName>
 		<label>Forgotten mask</label>
 		<description>Forgotten's scrapmetal helmet.</description>
@@ -47,9 +47,9 @@
 		<thingCategories>
 			<li>Headgear</li>
 		</thingCategories>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="Forgotten_Armor">
+	<TiberiumRim.TRThingDef ParentName="Forgotten_Armor">
 		<defName>Apparel_ForgottenSuit</defName>
 		<description>Forgotten's scrapmetal armor.</description>
 		<label>Forgotten scrap armor</label>
@@ -97,9 +97,9 @@
 			</defaultOutfitTags>
 			<useDeflectMetalEffect>true</useDeflectMetalEffect>
 		</apparel>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="Forgotten_Armor">
+	<TiberiumRim.TRThingDef ParentName="Forgotten_Armor">
 		<defName>Apparel_ForgottenMail</defName>
 		<description>Forgotten's scrapmetal mail.</description>
 		<label>Forgotten scrap mail</label>
@@ -150,6 +150,6 @@
 			</defaultOutfitTags>
 			<useDeflectMetalEffect>true</useDeflectMetalEffect>
 		</apparel>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
 </Defs>

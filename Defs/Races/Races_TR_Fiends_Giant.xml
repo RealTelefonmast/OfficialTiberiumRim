@@ -2,7 +2,7 @@
 <Defs>
 
 	<!-- Thrumbo -->
-	<ThingDef ParentName="AnimalBase_TR">
+	<ThingDef ParentName="FiendBase">
 		<defName>Thrimbo</defName>
 		<label>thrimbo</label>
 		<description>A gigantic creature of unknown origin. The Thrumbo, but this one seems to have an Tiberium infection. Be careful, it might be easily enraged.</description>
@@ -106,7 +106,7 @@
 		</race>
 	</ThingDef>
 
-	<PawnKindDef ParentName="AnimalKindBase_TR">
+	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>Thrimbo</defName>
 		<label>thrimbo</label>
 		<race>Thrimbo</race>
@@ -162,7 +162,7 @@
 				</butcherBodyPart>
 			</li>
 		</lifeStages>
-	</PawnKindDef>
+	</TiberiumRim.TiberiumKindDef>
 	
 	<!-- Bears -->
 	
@@ -284,7 +284,7 @@
 		</race>
 	</ThingDef>
 
-	<PawnKindDef ParentName="AnimalKindBase_TR">
+	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>BigTiberiumFiend</defName>
 		<label>tiberian bear</label>
 		<race>BigTiberiumFiend</race>
@@ -335,11 +335,11 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</PawnKindDef>
+	</TiberiumRim.TiberiumKindDef>
 	
 	<!-- Muffalo -->
 	
-	<ThingDef ParentName="AnimalBase_TR">
+	<ThingDef ParentName="FiendBase">
 		<defName>Tiffalo</defName>
 		<label>tiffalo</label>
 		<description>These creatures have lost all their fluffiness to a crystaline structure, they also seem less friendly.</description>
@@ -428,12 +428,12 @@
 		</race>
 	</ThingDef>
   
-	<PawnKindDef ParentName="AnimalKindBase_TR">
+	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>Tiffalo</defName>
 		<label>tiffalo</label>
 		<race>Tiffalo</race>
 		<combatPower>125</combatPower>
-		<wildGroupSize>
+		<wildGroupSize Inherit="False">
 			<min>3</min>
 			<max>6</max>
 		</wildGroupSize>
@@ -483,6 +483,6 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</PawnKindDef>
+	</TiberiumRim.TiberiumKindDef>
 	
 </Defs>

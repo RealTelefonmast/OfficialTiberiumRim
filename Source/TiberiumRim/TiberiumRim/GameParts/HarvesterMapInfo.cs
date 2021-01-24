@@ -8,18 +8,12 @@ namespace TiberiumRim
 {
     public class HarvesterMapInfo : MapInformation
     {
-        //private BoolGrid harvestableBools;
+        public List<Harvester> AllHarvesters = new List<Harvester>();
 
-        public List<Harvester> AllHarvesters = new List<Harvester>(); 
-        //public Dictionary<Harvester, Queue<TiberiumCrystal>> ReservedQueues = new Dictionary<Harvester, Queue<TiberiumCrystal>>();
-        //public Dictionary<HarvestType, int> ReservedTypes = new Dictionary<HarvestType, int>();
-
-        //public int TotalReserved = 0;
-
-        private MapComponent_Tiberium Tiberium => map.GetComponent<MapComponent_Tiberium>();
+        private MapComponent_Tiberium Tiberium => TRUtils.Tiberium(map);
         private MapComponent_TNWManager TNWManager => map.GetComponent<MapComponent_TNWManager>();
 
-        private TiberiumGrid TiberiumGrid => Tiberium.TiberiumInfo.GetGrid();
+        private TiberiumGrid TiberiumGrid => Tiberium.TiberiumInfo.TiberiumGrid;
 
         public HarvesterMapInfo(Map map) : base(map)
         {
@@ -63,7 +57,7 @@ namespace TiberiumRim
         {
             IntVec3 rootPos = harvester.Position;
             Map map = harvester.Map;
-            TraverseParms parms = TraverseParms.For(harvester, Danger.Some, TraverseMode.ByPawn);
+            TraverseParms parms = TraverseParms.For(harvester, Danger.Deadly, TraverseMode.ByPawn);
 
             Region rootRegion = rootPos.GetRegion(map, RegionType.Set_Passable);
             if (rootRegion == null)
@@ -73,7 +67,7 @@ namespace TiberiumRim
 
             TiberiumCrystal crystal = null;
 
-            float closestDistSquared = 9999999f;
+            float currentClosest = 9999999f;
 
             bool Processor(Region region)
             {
@@ -84,16 +78,14 @@ namespace TiberiumRim
                 {
                     if (!ReachabilityWithinRegion.ThingFromRegionListerReachable(crystal2, region, PathEndMode.Touch, harvester)) continue;
                     float distance = (float) (crystal2.Position - rootPos).LengthHorizontalSquared;
-                    if ((distance < closestDistSquared) && distance < float.MaxValue)
+                    if(distance < currentClosest)
                     {
                         crystal = crystal2;
-                        closestDistSquared = distance;
+                        currentClosest = distance;
                     }
                 }
-
                 return crystal != null;
             }
-
             RegionTraverser.BreadthFirstTraverse(rootPos, map, EntryCondition, Processor);
             return crystal;
         }

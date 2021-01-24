@@ -3,26 +3,53 @@
 
 	<TiberiumRim.HediffMutationGroup>
 		<defName>Crystallized</defName>
-		<arms>CrystalBlade</arms>
-		<hands>HandSpikes</hands>
+		<Skin>CrystalRash</Skin>
+		<!--
+		<Arm>VisceralArm</Arm>
+		<Leg>VisceralLeg</Leg>
+		<Hand></Hand>
+		<Foot></Foot>
+		<Torso></Torso>
+		<Spine>CrystalSpine</Spine>
+		-->
+		<Bone>CrystalBone</Bone>
 	</TiberiumRim.HediffMutationGroup>
 
 	<TiberiumRim.HediffMutationGroup>
 		<defName>Visceral</defName>
-		<arms>VisceralArm</arms>
-		<legs>VisceralLeg</legs>
+		<!--Generic></Generic-->
+		<Skin>VisceralBlister</Skin>
+		<Arm>VisceralArm</Arm>
+		<Leg>VisceralLeg</Leg>
+		<!--
+		<Hand></Hand>
+		<Foot></Foot>
+		<Torso></Torso>
+		<Spine></Spine>
+		-->
+		<Organ>
+			<li>ViscousBloat,0.05</li>
+			<li>ViscousPart,0.85</li>
+		</Organ>
+		<Bone>VisceralBone</Bone>
 	</TiberiumRim.HediffMutationGroup>
 
 	<TiberiumRim.HediffMutationGroup>
-		<defName>Enhanced</defName>
-		<arms>TiberiumEnhancedArm</arms>
-		<legs>TiberiumEnhancedLeg</legs>
-	</TiberiumRim.HediffMutationGroup>
-	
-	<TiberiumRim.HediffMutationGroup>
-		<defName>Animal</defName>
-		<arms>TiberiumEnhancedArm</arms>
-		<legs>TiberiumEnhancedLeg</legs>
+		<defName>Symbiotic</defName>
+		<Generic>EnhancedPart</Generic>
+		<Skin>SymbioticNode</Skin>
+		<!--
+		<Arm>VisceralArm</Arm>
+		<Leg>VisceralLeg</Leg>
+		<Hand></Hand>
+		<Foot></Foot>
+		<Torso></Torso>
+		<Spine></Spine>
+		-->
+		<Organ>
+			<li>SymbioticNode,0.85</li>
+		</Organ>
+		<Bone>SymbioticBone</Bone>
 	</TiberiumRim.HediffMutationGroup>
 	
 	<!--

@@ -31,6 +31,9 @@
 		<pathCost>70</pathCost>
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<building>
+			<isEdifice>true</isEdifice>
+		</building>
 		<statBases>
 			<MaxHitPoints>350</MaxHitPoints>
 			<WorkToBuild>3000</WorkToBuild>
@@ -46,7 +49,7 @@
 			<li Class="CompProperties_Flickable"/>
 		</comps>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
-		<fillPercent>0.5</fillPercent>
+		<fillPercent>0.75</fillPercent>
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<rotatable>false</rotatable>
 		<hasInteractionCell>true</hasInteractionCell>
@@ -57,7 +60,7 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_OnProducer</li>
+			<li>TiberiumRim.PlaceWorker_ResearchCrane</li>
 			<li>TiberiumRim.PlaceWorker_Once</li>
 		</placeWorkers>
 	</TiberiumRim.TRThingDef>

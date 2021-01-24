@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.RecipeDef_Tiberium>
+	<TiberiumRim.TRecipeDef>
 		<defName>ExtractSteel</defName>
 		<label>Get Steel</label>
 		<description>Extract steel from the stored Tiberium.\n\nYou will get 5 steel for 30 Tiberium credits.</description>
@@ -21,9 +21,9 @@
 			<Steel>15</Steel>
 		</products>
 		<workSkill>Crafting</workSkill>
-	</TiberiumRim.RecipeDef_Tiberium>	
+	</TiberiumRim.TRecipeDef>	
 	
-	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
+	<RecipeDef Class="TiberiumRim.TRecipeDef">
 		<defName>ExtractPlasteel</defName>
 		<label>Get Plasteel</label>
 		<description>Extract plasteel from the stored Tiberium.\n\nYou will get 5 plasteel for 210 Tiberium credits.</description>
@@ -45,7 +45,7 @@
 		<workSkill>Crafting</workSkill>
 	</RecipeDef>
 
-	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
+	<RecipeDef Class="TiberiumRim.TRecipeDef">
 		<defName>ExtractGold</defName>
 		<label>Get Gold</label>
 		<description>Extract gold from the stored Tiberium.\n\nYou will get 5 gold for 150 Tiberium credits.</description>
@@ -67,7 +67,7 @@
 		<workSkill>Crafting</workSkill>
 	</RecipeDef>
 	
-	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
+	<RecipeDef Class="TiberiumRim.TRecipeDef">
 		<defName>ExtractUranium</defName>
 		<label>Get Uranium</label>
 		<description>Extract uranium from the stored Tiberium.\n\nYou will get 5 uranium for 90 Tiberium credits.</description>
@@ -89,7 +89,7 @@
 		<workSkill>Crafting</workSkill>
 	</RecipeDef>
 	
-	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
+	<RecipeDef Class="TiberiumRim.TRecipeDef">
 		<defName>BurnSludge</defName>
 		<label>Burn Sludge</label>
 		<description>Get rid of the useless sludge.</description>

@@ -17,8 +17,7 @@ namespace TiberiumRim
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            var reserv = this.pawn.Reserve(this.TargetA, this.job);
-            return reserv;
+            return pawn.Reserve(this.TargetA, this.job);
         }
 
         protected override IEnumerable<Toil> MakeNewToils()
@@ -41,10 +40,13 @@ namespace TiberiumRim
                         Target.health.RestorePart(injury.Part);
                         return;
                     }
-                    injury.Heal(Drone.KindKindDef.healFloat);
+                    injury.Heal(Drone.kindDef.healFloat);
                 }
                 else
+                {
+
                     Hediffs.Remove(injury);
+                }
 
                 if (!Hediffs.NullOrEmpty()) return;
                 Target.jobs.EndCurrentJob(JobCondition.Succeeded, true);

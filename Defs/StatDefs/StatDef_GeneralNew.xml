@@ -4,7 +4,7 @@
 	<StatDef>
 		<defName>ExtraCarryWeight</defName>
 		<label>extra carrying weight</label>
-		<description>The amount of extra carry weight the pawn currently has.</description>
+		<description>The amount of additional stuff this creature can carry.</description>
 		<category>BasicsPawn</category>
 		<defaultBaseValue>0</defaultBaseValue>
 		<minValue>0</minValue>

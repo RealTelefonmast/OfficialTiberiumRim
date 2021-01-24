@@ -41,7 +41,7 @@
 						</data>
 						<mode>Pulse</mode>
 						<pulse>
-							<opacityRange>0.2~0.8</opacityRange>
+							<opacityRange>0.4~0.9</opacityRange>
 							<opacityDuration>90</opacityDuration>
 						</pulse>
 					</li>
@@ -101,5 +101,80 @@
 		<size>(1,1)</size>
 		<blockPlants>true</blockPlants>
 	</TiberiumRim.TRThingDef>	
+	
+	<!-- -->
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>DeadGreenCrater</defName>
+		<label>green Tiberium crater residue</label>
+		<description>The remnants of a green Tiberium crater, it does not create any more crystals.</description>
+		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<useHitPoints>false</useHitPoints>
+		<destroyable>false</destroyable>
+		<altitudeLayer>Floor</altitudeLayer>
+		<size>(3,3)</size>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Buildings/Natural/BigTiberiumCraterGreen/GreenCrater_Broken</texPath>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>5</glowRadius>
+				<glowColor>(120,255,120)</glowColor>
+			</li>
+			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+				<radius>8</radius>
+				<intensity>1.25</intensity>
+			</li>
+		</comps>
+		<tickerType>Rare</tickerType>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>DeadBlueCrater</defName>
+		<label>blue Tiberium crater residue</label>
+		<description>The remnants of a blue Tiberium crater, it does not create any more crystals.</description>
+		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<useHitPoints>false</useHitPoints>
+		<destroyable>false</destroyable>
+		<altitudeLayer>Floor</altitudeLayer>
+		<size>(3,3)</size>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Buildings/Natural/BigTiberiumCraterBlue/BlueCrater_Broken</texPath>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>5</glowRadius>
+				<glowColor>(120,255,120)</glowColor>
+			</li>
+			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+				<radius>9</radius>
+				<intensity>1.35</intensity>
+			</li>
+		</comps>
+		<tickerType>Rare</tickerType>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>DeadVeinhole</defName>
+		<label>dead veinhole</label>
+		<description>A dead veinhole.</description>
+		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
+		<useHitPoints>false</useHitPoints>
+		<destroyable>false</destroyable>
+		<size>(3,3)</size>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Buildings/Natural/Veinhole/Veinhole/Broken</texPath>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<altitudeLayer>Floor</altitudeLayer>
+	</TiberiumRim.TRThingDef>
 	
 </Defs>

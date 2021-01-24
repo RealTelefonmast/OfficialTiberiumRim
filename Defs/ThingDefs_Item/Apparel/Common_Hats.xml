@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef ParentName="HatMakeableBase_TR">
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR">
 		<defName>TiberiumSuitMask</defName>
 		<label>Tiberium protection mask</label>
 		<description>This mask is a necessity for anyone attempting to traverse Tiberium infested lands. It shields the head from radiation and filters the toxic Tiberium gases and even particles from a Toxic Fallout.</description>
+		<thingCategories>
+			<li>Headgear</li>
+		</thingCategories>
 		<graphicData>
 			<texPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuitMask</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>

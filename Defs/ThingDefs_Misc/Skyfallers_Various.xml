@@ -63,7 +63,7 @@
 		<defName>TiberiumMeteorIncoming</defName>
 		<label>Tiberium Meteor (incoming)</label>
 		<graphicData>
-			<texPath>Things/Skyfaller/Meteorite</texPath>
+			<texPath>Skyfaller/GreenMeteor</texPath>
 		</graphicData>
 	</ThingDef>
 

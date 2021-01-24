@@ -52,7 +52,7 @@
 				<li>
 					<turretGunDef>Gun_NodObelisk</turretGunDef>
 					<turretBurstWarmupTime>2.35</turretBurstWarmupTime>
-					<turretBurstCooldownTime>2</turretBurstCooldownTime>
+					<turretBurstCooldownTime>5</turretBurstCooldownTime>
 				</li>
 			</turrets>
 		</turret>
@@ -126,7 +126,7 @@
 		<graphicData>
 			<texPath>Buildings/Nod/Defense/Turrets/Hub_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(2,2)</drawSize>
+			<drawSize>(2.25, 2.25)</drawSize>
 			<damageData>
 				<rect>(0.2,0.2,0.6,0.6)</rect>
 			</damageData>
@@ -150,6 +150,7 @@
 			<hub>
 				<isHub>true</isHub>
 				<hubDef>Nod_TurretHub</hubDef>
+				<cableTexturePath>Buildings/Nod/Defense/Turrets/TurretCable</cableTexturePath>
 				<maxTurrets>4</maxTurrets>
 			</hub>
 			<!--
@@ -176,7 +177,7 @@
 							<texPath>Buildings/Nod/Defense/Turrets/Hub_Glow</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
-							<drawSize>(2,2)</drawSize>							
+							<drawSize>(2.25,2.25)</drawSize>						
 						</data>
 						<needsPower>true</needsPower>
 					</li>
@@ -236,7 +237,7 @@
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(2,2)</drawSize>
+			<drawSize>(2.25,2.25)</drawSize>
 			<damageData>
 				<rect>(0.2,0.2,0.6,0.6)</rect>
 			</damageData>
@@ -313,11 +314,35 @@
 				<li>
 					<turretTop>
 						<turret>
-							<texPath>Buildings/Nod/Defense/Turrets/Shredder_Base</texPath>
+							<texPath>Buildings/Nod/Defense/Turrets/Shredder_BaseNoBarrels</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
-							<drawSize>(2,2)</drawSize>
+							<drawSize>(2.5,2.5)</drawSize>
 						</turret>
+						<barrels>
+							<li>
+								<graphic>
+									<texPath>Buildings/Nod/Defense/Turrets/Shredder_BarrelLeft</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(2.5,2.5)</drawSize>
+								</graphic>
+								<barrelOffset>(0,0,-0.05)</barrelOffset>
+								<recoilOffset>(0,0,-0.25)</recoilOffset>
+							</li>
+							<li>
+								<graphic>
+									<texPath>Buildings/Nod/Defense/Turrets/Shredder_BarrelRight</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(2.5,2.5)</drawSize>
+								</graphic>
+								<altitudeOffset>-0.1</altitudeOffset>
+								<barrelOffset>(0,0,-0.05)</barrelOffset>
+								<recoilOffset>(0,0,-0.25)</recoilOffset>
+							</li>
+						</barrels>
 						<speed>200</speed>
+						<resetSpeed>100</resetSpeed>
+						<recoilSpeed>200</recoilSpeed>
+						<barrelMuzzleOffset>(0,0,0.75)</barrelMuzzleOffset>
 					</turretTop>
 					<turretGunDef>Gun_ShredderTurret</turretGunDef>
 					<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
@@ -333,7 +358,7 @@
 							<texPath>Buildings/Nod/Defense/Turrets/Lights</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
-							<drawSize>(2,2)</drawSize>							
+							<drawSize>(2.25,2.25)</drawSize>							
 						</data>
 						<needsPower>true</needsPower>
 					</li>
@@ -342,10 +367,32 @@
 					</li>
 					<li>
 						<data>
-							<texPath>Buildings/Nod/Defense/Turrets/Shredder_Glow</texPath>
+							<texPath>Buildings/Nod/Defense/Turrets/Shredder_GlowNoBarrel</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
-							<drawSize>(2,2)</drawSize>							
+							<drawSize>(2.5,2.5)</drawSize>							
+						</data>
+						<altitude>Item</altitude>
+						<mode>Dynamic</mode>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Defense/Turrets/Shredder_GlowLeft</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.5,2.5)</drawSize>							
+						</data>
+						<altitude>Item</altitude>
+						<mode>Dynamic</mode>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Defense/Turrets/Shredder_GlowRight</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.5,2.5)</drawSize>						
 						</data>
 						<altitude>Item</altitude>
 						<mode>Dynamic</mode>
@@ -354,6 +401,9 @@
 				</overlays>
 			</li>	
 		</comps>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_AtTurretHub</li>
+		</placeWorkers>
 	</TiberiumRim.TRThingDef>
 	
 	<!-- Flame Turret -->
@@ -506,6 +556,9 @@
 				<drawSize>(1, 1)</drawSize>
 			</toggleGraphic>
 		</beamHub>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_BeamHub</li>
+		</placeWorkers>
 		<filthLeaving>Filth_Ash</filthLeaving>
 		<rotatable>false</rotatable>
 		<selectable>true</selectable>
@@ -521,12 +574,16 @@
 		<defName>LaserFenceSegment</defName>
 		<label>laser fence segment</label>
 		<description>A laser fence segment.</description>
-		<thingClass>TiberiumRim.Building_BeamSegmentPart</thingClass>
+		<thingClass>TiberiumRim.Building_BeamHubSegmentPart</thingClass>
 		<category>Building</category> 
 		<drawerType>MapMeshOnly</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Structure/LaserFence/Fence_Base</texPath>
 			<graphicClass>TiberiumRim.Graphic_LinkedWithSame</graphicClass>
+			<linkType>Basic</linkType>
+			<linkFlags>
+				<li>Custom8</li>
+			</linkFlags>
 		</graphicData>
 		<size>(1,1)</size>
 		<fillPercent>0.0</fillPercent>
@@ -562,11 +619,15 @@
 		<label>lasers</label>
 		<thingClass>ThingWithComps</thingClass>
 		<drawerType>MapMeshOnly</drawerType>
-		<altitudeLayer>Building</altitudeLayer>
+		<altitudeLayer>Item</altitudeLayer>
 		<graphicData>
 			<texPath>Buildings/Nod/Structure/LaserFence/Laser_Atlas</texPath>
 			<graphicClass>TiberiumRim.Graphic_LinkedWithSame</graphicClass>
 			<shaderType>MoteGlow</shaderType>
+			<linkType>Basic</linkType>
+			<linkFlags>
+				<li>Custom9</li>
+			</linkFlags>
 		</graphicData>
 		<comps>
 			<li Class="CompProperties_Glower">

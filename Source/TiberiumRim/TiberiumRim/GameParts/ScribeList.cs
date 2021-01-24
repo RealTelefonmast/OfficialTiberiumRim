@@ -16,6 +16,12 @@ namespace TiberiumRim
 
         public ScribeList(){}
 
+        public ScribeList(LookMode lookMode)
+        {
+            savedList = new List<T>();
+            this.lookMode = lookMode;
+        }
+
         public ScribeList(List<T> list, LookMode lookMode)
         {
             savedList = list;
@@ -37,6 +43,14 @@ namespace TiberiumRim
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public void ForEach(Action<T> action)
+        {
+            foreach (var variable in savedList)
+            {
+                action.Invoke(variable);
+            }
         }
 
         public void SortBy<TSortBy>(Func<T, TSortBy> selector) where TSortBy : IComparable<TSortBy>

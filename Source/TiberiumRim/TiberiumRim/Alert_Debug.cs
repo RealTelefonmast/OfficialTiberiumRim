@@ -16,6 +16,7 @@ namespace TiberiumRim
 
         public override TaggedString GetExplanation()
         {
+            
             MapComponent_Particles particles = Find.CurrentMap.GetComponent<MapComponent_Particles>();
             MapComponent_Tiberium tiberium = Find.CurrentMap.GetComponent<MapComponent_Tiberium>();
             TiberiumMapInfo mapinfo = tiberium.TiberiumInfo;

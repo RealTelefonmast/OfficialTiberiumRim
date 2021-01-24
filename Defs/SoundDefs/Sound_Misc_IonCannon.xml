@@ -9,46 +9,46 @@
 	</SoundDef>
 	
 	<SoundDef ParentName="IonCannonBase">
-		<defName>IonCannon_StartUp</defName>  
+		<defName>IonCannon_StartUp</defName>
 		<subSounds>
-			<li><grains><li Class="AudioGrain_Folder">
-				<clipFolderPath>SuperWeapons/IonCannon/StartUp</clipFolderPath>
+			<li><grains><li Class="AudioGrain_Clip">
+				<clipPath>SuperWeapons/IonCannon/StartUp</clipPath>
 			</li></grains></li>
 		</subSounds>
 	</SoundDef>
 	
 	<SoundDef ParentName="IonCannonBase">
-		<defName>IonCannon_InitialCharge</defName>  
+		<defName>IonCannon_InitialCharge</defName>
 		<subSounds>
-			<li><grains><li Class="AudioGrain_Folder">
-				<clipFolderPath>SuperWeapons/IonCannon/InitialCharge</clipFolderPath>
+			<li><grains><li Class="AudioGrain_Clip">
+				<clipPath>SuperWeapons/IonCannon/InitialCharge</clipPath>
 			</li></grains></li>
 		</subSounds>
 	</SoundDef>
 	
 	<SoundDef ParentName="IonCannonBase">
-		<defName>IonCannon_ClimaxChargeUp</defName>  
+		<defName>IonCannon_ClimaxChargeUp</defName>
 		<subSounds>
-			<li><grains><li Class="AudioGrain_Folder">
-				<clipFolderPath>SuperWeapons/IonCannon/ClimaxChargeUp</clipFolderPath>
-			</li></grains></li>
-		</subSounds>
-	</SoundDef>
-
-	<SoundDef ParentName="IonCannonBase">
-		<defName>IonCannon_PreClimaxPause</defName>  
-		<subSounds>
-			<li><grains><li Class="AudioGrain_Folder">
-				<clipFolderPath>SuperWeapons/IonCannon/PreClimaxPause</clipFolderPath>
+			<li><grains><li Class="AudioGrain_Clip">
+				<clipPath>SuperWeapons/IonCannon/ClimaxChargeUp</clipPath>
 			</li></grains></li>
 		</subSounds>
 	</SoundDef>
 	
 	<SoundDef ParentName="IonCannonBase">
-		<defName>IonCannon_Climax</defName>  
+		<defName>IonCannon_PreClimaxPause</defName>
 		<subSounds>
-			<li><grains><li Class="AudioGrain_Folder">
-				<clipFolderPath>SuperWeapons/IonCannon/Climax</clipFolderPath>
+			<li><grains><li Class="AudioGrain_Clip">
+				<clipPath>SuperWeapons/IonCannon/PreClimaxPause</clipPath>
+			</li></grains></li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="IonCannonBase">
+		<defName>IonCannon_Climax</defName>
+		<subSounds>
+			<li><grains><li Class="AudioGrain_Clip">
+				<clipPath>SuperWeapons/IonCannon/Climax</clipPath>
 			</li></grains></li>
 		</subSounds>
 	</SoundDef>

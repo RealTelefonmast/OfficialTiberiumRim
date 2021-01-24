@@ -37,7 +37,7 @@
 			<isInert>true</isInert>
 		</building>
 		<costList>
-			<Nod_CarbonPlate>5</Nod_CarbonPlate>
+			<GDI_ReinforcedPlate>5</GDI_ReinforcedPlate>
 		</costList>
 		<requisites>
 			<tiberiumResearch>
@@ -89,12 +89,13 @@
 		<defName>SonicFenceSegment</defName>
 		<label>sonic fence segment</label>
 		<description>A laser fence segment.</description>
-		<thingClass>TiberiumRim.Building_BeamSegmentPart</thingClass>
+		<thingClass>TiberiumRim.Building_BeamHubSegmentPart</thingClass>
 		<category>Building</category> 
 		<drawerType>MapMeshOnly</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/SonicInhibition/SonicFence/Fence_Base</texPath>
 			<graphicClass>TiberiumRim.Graphic_LinkedWithSame</graphicClass>
+			<linkType>Transmitter</linkType>
 		</graphicData>
 		<size>(1,1)</size>
 		<fillPercent>0.0</fillPercent>
@@ -130,11 +131,15 @@
 		<label>sonic wall</label>
 		<thingClass>ThingWithComps</thingClass>
 		<drawerType>MapMeshOnly</drawerType>
-		<altitudeLayer>Building</altitudeLayer>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/SonicInhibition/SonicFence/Sonic_Atlas</texPath>
 			<graphicClass>TiberiumRim.Graphic_LinkedWithSame</graphicClass>
 			<shaderType>MoteGlow</shaderType>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Custom9</li>
+			</linkFlags>
 		</graphicData>
 		<comps>
 			<li Class="CompProperties_Glower">

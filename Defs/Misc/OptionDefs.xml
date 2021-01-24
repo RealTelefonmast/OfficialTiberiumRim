@@ -1,52 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
-	<TiberiumRim.ThingFilterDef>
-		<defName>PlantFilter_Trees</defName>
-		<filter>
-			<thingDefs>
-				<li>Plant_TreeCocoa</li>
-				<li>Plant_TreeDrago</li>
-				<li>Plant_TreeWillow</li>
-				<li>Plant_TreeCypress</li>
-				<li>Plant_TreeMaple</li>
-				<li>Plant_TreeOak</li>
-				<li>Plant_TreePoplar</li>
-				<li>Plant_TreePine</li>
-				<li>Plant_TreeBirch</li>
-				<li>Plant_TreeTeak</li>
-				<li>Plant_TreeCecropia</li>
-				<li>Plant_TreePalm</li>
-				<li>Plant_TreeBamboo</li>
-			</thingDefs>
-		</filter>
-	</TiberiumRim.ThingFilterDef>
-	
-	<TiberiumRim.ThingFilterDef>
-		<defName>PlantFilter_Grass</defName>
-		<filter>
-			<thingDefs>
-				<li>Plant_Grass</li>
-				<li>Plant_TallGrass</li>
-			</thingDefs>
-		</filter>
-	</TiberiumRim.ThingFilterDef>
-	
-	<TiberiumRim.ThingFilterDef>
-		<defName>PlantFilter_FarmPlants</defName>
-		<filter>
-			<thingDefs>
-				<li>Plant_Rice</li>
-				<li>Plant_Potato</li>
-				<li>Plant_Corn</li>
-				<li>Plant_Strawberry</li>
-				<li>Plant_Haygrass</li>
-				<li>Plant_Cotton</li>
-				<li>Plant_Devilstrand</li>
-				<li>Plant_Hops</li>
-			</thingDefs>
-		</filter>
-	</TiberiumRim.ThingFilterDef>
 	
 	<TiberiumRim.ThingOptionsDef>
 		<defName>FloraOptions_General</defName>
@@ -63,9 +16,37 @@
 	</TiberiumRim.ThingOptionsDef>
 	
 	<TiberiumRim.ThingOptionsDef>
+		<defName>FloraOptions_Grass</defName>
+		<options>
+			<li>TiberiumGrass,			4</li>
+			<li>TiberiumGrass_Blue,		1</li>
+		</options>
+	</TiberiumRim.ThingOptionsDef>
+	
+	<TiberiumRim.ThingOptionsDef>
+		<defName>FloraOptions_Bush</defName>
+		<options>
+			<li>TiberiumBush,			4</li>
+			<li>TiberiumShroom_Yellow,	1</li>
+			<li>TiberiumShroom_Blue,	1</li>
+			<li>TiberiumShroom_Purple,	1</li>
+		</options>
+	</TiberiumRim.ThingOptionsDef>
+	
+	<TiberiumRim.ThingOptionsDef>
+		<defName>FloraOptions_Exotic</defName>
+		<options>
+			<li>TiberiumShroom_Yellow,	1</li>
+			<li>TiberiumShroom_Blue,	1</li>
+			<li>TiberiumShroom_Purple,	1</li>
+		</options>
+	</TiberiumRim.ThingOptionsDef>
+	
+	<TiberiumRim.ThingOptionsDef>
 		<defName>FloraOptions_Trees</defName>
 		<options>
-			<li>TiberiumTree,	0.75</li>
+			<li>TiberiumExpeller,		1</li>
+			<li>TiberiumTree,		    10</li>
 		</options>
 	</TiberiumRim.ThingOptionsDef>
 	

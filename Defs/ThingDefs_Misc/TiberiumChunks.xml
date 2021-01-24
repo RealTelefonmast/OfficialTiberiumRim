@@ -3,7 +3,7 @@
 
 	<TiberiumRim.TRThingDef Name="TiberiumChunkBase" ParentName="ChunkBase" Abstract="True">
 		<thingClass>TiberiumRim.TiberiumChunk</thingClass>
-		<description>A Tiberium chunk, it will slowly deteriorate into Tiberium crystals.</description>
+		<description>A Tiberium chunk, it will slowly deteriorate while emitting harmful radiation.</description>
 		<statBases>
 			<Mass>20</Mass>
 			<Beauty>-15</Beauty>
@@ -45,12 +45,8 @@
 			</li>
 			-->
 			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
-				<radius>4</radius>
-				<intensity>0.35</intensity>
-				<damage>
-					<min>1</min>
-					<max>6</max>
-				</damage>
+				<radius>5</radius>
+				<intensity>0.65</intensity>
 			</li>
 		</comps>
 		<tickerType>Rare</tickerType>
@@ -67,6 +63,7 @@
 			<graphicClass>Graphic_Random</graphicClass>
 			<flipExtraRotation>80</flipExtraRotation>
 		</graphicData>
+		<!--
 		<comps>
 			<li Class="CompProperties_Spawner">
 				<thingToSpawn>TiberiumGreen</thingToSpawn>
@@ -79,6 +76,7 @@
 				<spawnForbidden>false</spawnForbidden>
 			</li>
 		</comps>
+		-->
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 	</TiberiumRim.TRThingDef>
 	
@@ -93,18 +91,6 @@
 			<graphicClass>Graphic_Random</graphicClass>
 			<flipExtraRotation>80</flipExtraRotation>
 		</graphicData>
-		<comps>
-			<li Class="CompProperties_Spawner">
-				<thingToSpawn>TiberiumBlue</thingToSpawn>
-				<spawnCount>1</spawnCount>
-				<spawnIntervalRange>
-					<min>40000</min>
-					<max>60000</max>
-				</spawnIntervalRange>
-				<spawnMaxAdjacent>3</spawnMaxAdjacent>
-				<spawnForbidden>false</spawnForbidden>
-			</li>
-		</comps>
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 	</TiberiumRim.TRThingDef>
 	
@@ -120,24 +106,12 @@
 			<graphicClass>Graphic_Random</graphicClass>
 			<flipExtraRotation>80</flipExtraRotation>
 		</graphicData>
-		<comps>
-			<li Class="CompProperties_Spawner">
-				<thingToSpawn>TiberiumRed</thingToSpawn>
-				<spawnCount>1</spawnCount>
-				<spawnIntervalRange>
-					<min>60000</min>
-					<max>90000</max>
-				</spawnIntervalRange>
-				<spawnMaxAdjacent>3</spawnMaxAdjacent>
-				<spawnForbidden>false</spawnForbidden>
-			</li>
-		</comps>
 		<filthLeaving>FilthTiberiumRed</filthLeaving>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="TiberiumChunkBase">
 		<defName>VeinTiberiumChunk</defName>
-		<thingClass>TiberiumRim.TiberiumThing</thingClass>
+		<thingClass>TiberiumRim.TRThing</thingClass>
 		<label>veiny chunk</label>
 		<description>A vein infested chunk, I swear I saw it moving.</description>
 		<statBases>

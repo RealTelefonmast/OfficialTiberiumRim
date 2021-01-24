@@ -10,16 +10,16 @@ namespace TiberiumRim
 {
     public class ITab_MechConstruction : ITab
     {
-        public TRThingDef SelThingDef => SelThing.def as TRThingDef;
-
-        private MechRecipeDef selectedRecipe;
-        private float viewHeight = 1000f;
         private static readonly Vector2 WinSize = new Vector2(420f, 480f);
         private static Vector2 BPWinSize = new Vector2(350, 350);
         private static Vector2 BPSize = new Vector2(200, 200);
+
+        private MechRecipeDef selectedRecipe;
+        private float viewHeight = 1000f;
         private Vector2 scrollPosition = default(Vector2);
 
-        public bool[] selBools = new bool[4] {false, false, false, false};
+        public TRThingDef SelThingDef => SelThing.def as TRThingDef;
+
 
         public ITab_MechConstruction()
         {
@@ -29,8 +29,6 @@ namespace TiberiumRim
         }
 
         public Comp_MechStation MechStation => SelThing.TryGetComp<Comp_MechStation>();
-
-        public MechBlueprint SelBlueprint => selectedRecipe?.Blueprint;
 
         private void SelectRecipe(MechRecipeDef recipe)
         {
@@ -54,9 +52,6 @@ namespace TiberiumRim
 
             Widgets.EndScrollView();
             GUI.EndGroup();
-
-            if(selectedRecipe != null)
-                DoMechConstructor();
         }
 
         private void DoMechListing(Rect rect, MechRecipeDef recipe, int index)
@@ -67,7 +62,7 @@ namespace TiberiumRim
                 Widgets.DrawAltRect(rect);
             }
             Rect iconRect = new Rect(rect.x, rect.y, rect.height, rect.height);
-            Widgets.DrawTextureFitted(iconRect, recipe.Blueprint.ActualMech, 1);
+            //Widgets.DrawTextureFitted(iconRect, recipe.Blueprint.ActualMech, 1);
             Rect labelRect = new Rect(iconRect.xMax, rect.y, rect.width-iconRect.width, rect.height);
             Widgets.Label(labelRect, recipe.mechDef.LabelCap);
             if (Widgets.ButtonInvisible(rect))
@@ -76,6 +71,7 @@ namespace TiberiumRim
             }
         }
 
+        /*
         private void DoMechConstructor()
         {
             Rect windowRect = new Rect((UI.screenWidth - BPWinSize.x) * 0.5f, (UI.screenHeight - BPWinSize.x) * 0.5f, BPWinSize.x, BPWinSize.y);
@@ -120,6 +116,7 @@ namespace TiberiumRim
                 }
             }, true, false, 1f);
         }
+        */
 
         protected override void ExtraOnGUI()
         {
@@ -135,77 +132,22 @@ namespace TiberiumRim
 
     public class MechBlueprint
     {
-        public Texture2D Blueprint;
-        public Texture2D Head;
-        public Texture2D Body;
-        public Texture2D Movement;
-        public Texture2D Manipulation;
 
-        public Texture2D ActualMech;
-
-
-        public MechBlueprint(string path)
-        {
-            Blueprint = ContentFinder<Texture2D>.Get(path + "/Blueprint/Blueprint");
-            Head = ContentFinder<Texture2D>.Get(path + "/Blueprint/Head");
-            Body = ContentFinder<Texture2D>.Get(path + "/Blueprint/Body");
-            Movement = ContentFinder<Texture2D>.Get(path + "/Blueprint/Movement");
-            Manipulation = ContentFinder<Texture2D>.Get(path + "/Blueprint/Tool");
-
-            string[] splitted = path.Split('/');
-            ActualMech = ContentFinder<Texture2D>.Get(path + "/" + splitted[splitted.Length-1] + "_south");
-        }
     }
 
-    //TODO: Add as defs in xml
     public class MechRecipeDef : Def
     {
+        public MechanicalPawnKindDef mechDef;
+        public List<ThingDefCountClass> costList;
         public string graphicPath;
-        public List<MechRecipePart> parts;
-        public PawnKindDef mechDef;
-
-        [Unsaved] private MechBlueprint cachedBP;
-
-        public MechBlueprint Blueprint
-        {
-            get
-            {
-                if (cachedBP == null)
-                    cachedBP = new MechBlueprint(graphicPath);
-                return cachedBP;
-            }
-        }
     }
 
-    public class MechRecipePart
-    {
-        public string label;
-        public MechRecipePartType type;
-        public List<ThingDefCountClass> ingredients;
-
-        //TODO: Upgrade Options, speed, resistance etc
-    }
 
     public class MechUpgradeDef : Def
     {
-        public List<ThingDefCountClass> cost;
-        //public 
-    }
+        public MechanicalPawnKindDef forMech;
+        public List<ThingDefCountClass> costList;
 
-    public enum MechRecipePartType
-    {
-        Head,
-        Body,
-        Tool,
-        Movement
-    }
-
-    public interface IMechSpawner
-    {
-        ThingOwner Container { get; set; }
-        bool HoldsMech { get; set; }
-
-        void SpawnMech();
-
+       
     }
 }

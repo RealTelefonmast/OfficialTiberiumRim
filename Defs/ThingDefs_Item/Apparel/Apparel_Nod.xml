@@ -2,7 +2,7 @@
 <Defs>	
 
 	<!-- ====================================== Militia =========================================== -->
-	<ThingDef ParentName="Nod_Armor">
+	<TiberiumRim.TRThingDef ParentName="Nod_Armor">
 		<defName>Apparel_NodMilitiaMask</defName>
 		<label>Nod militia mask</label>
 		<description>The mask of the Nod militia.</description>
@@ -55,9 +55,9 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="Nod_Armor">
+	<TiberiumRim.TRThingDef ParentName="Nod_Armor">
 		<defName>Apparel_NodMilitiaSuit</defName>
 		<label>Nod militia robe</label>
 		<description>Robe of the Nod militia.</description>
@@ -116,11 +116,11 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 	<!-- ====================================== Officer =========================================== -->
 
-	<ThingDef ParentName="Nod_Armor">
+	<TiberiumRim.TRThingDef ParentName="Nod_Armor">
 		<defName>Apparel_NodOfficerHelmet</defName>
 		<label>Nod officer hat</label>
 		<description>A cool helmet, perfect for every Nod officer!</description>
@@ -169,9 +169,9 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="Nod_Armor">
+	<TiberiumRim.TRThingDef ParentName="Nod_Armor">
 		<defName>Apparel_NodOfficerSuit</defName>
 		<label>Nod officer suit</label>
 		<description>A nice looking suit, perfect for a Nod Officer.</description>
@@ -222,11 +222,11 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 		<!-- ====================================== Blackhand =========================================== -->
 		
-	<ThingDef ParentName="Nod_Armor">
+	<TiberiumRim.TRThingDef ParentName="Nod_Armor">
 		<defName>Apparel_NodBlackHandHelmet</defName>
 		<label>black hand helmet</label>
 		<description>This special helmet is used to protect the soldier from their fiery actions.</description>
@@ -286,9 +286,9 @@
 				<Crafting>12</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="Nod_Armor">
+	<TiberiumRim.TRThingDef ParentName="Nod_Armor">
 		<defName>Apparel_NodBlackHand</defName>
 		<label>black hand suit</label>
 		<description>The Black hand's own powered armor, meant for elite personnel in extreme, and fiery environments.</description>
@@ -391,6 +391,6 @@
 				<ai_AvoidFriendlyFireRadius>5</ai_AvoidFriendlyFireRadius>
 			</li>
 		</verbs>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
           
 </Defs>

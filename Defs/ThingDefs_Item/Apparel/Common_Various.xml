@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
-	<TiberiumRim.TRThingDef ParentName="ApparelMakeableBase_TR">
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR">
 		<defName>TiberiumSuit</defName>
 		<description>With this suit you can savely traverse any Tiberium infested terrain. It shields the wearer from getting infected by Tiberium and also any possible radiation.  A suit to protect from Tiberium.\n\n Also protects from toxic fallout.</description>
 		<label>Tiberium protection suit</label>
@@ -53,15 +53,17 @@
 			</bodyPartGroups>
 			<wornGraphicPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuit</wornGraphicPath>
 			<layers>
-			    <li>OnSkin</li>
+			    <li>Middle</li>
+				<li>Shell</li>
 			</layers>
 			<defaultOutfitTags>
+				<li>TiberiumProtection</li>
 				<li>Worker</li>
 			</defaultOutfitTags>
 		</apparel>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="ApparelMakeableBase_TR">
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR">
 		<defName>Jumpsuit</defName>
 		<description>A simple jumpsuit to improve comfort while wearing heavy armor.</description>
 		<label>jumpsuit</label>
@@ -75,7 +77,7 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<costList>
-			<Cloth>125</Cloth>
+			<Cloth>100</Cloth>
 			<!-- Industrial components dont really fit in a simple jumpsuit 
 			<Steel>75</Steel>
 			<ComponentIndustrial>3</ComponentIndustrial>
@@ -101,24 +103,23 @@
 		<apparel>
 			<bodyPartGroups>
 				<li>Torso</li>
-				<li>Neck</li>
 				<li>Shoulders</li>
 				<li>Arms</li>
 				<li>Legs</li>
-				<li>Hands</li>
-				<li>Feet</li>
 			</bodyPartGroups>
 			<wornGraphicPath>Items/Apparel/Common_Jumpsuit/JS</wornGraphicPath>
 			<layers>
 			    <li>OnSkin</li>
 			</layers>
+			<!--
 			<tags>
 				<li>FactionInnerSet</li>
 			</tags>
 			<defaultOutfitTags>
 				<li>FactionInnerSet</li>
 			</defaultOutfitTags>
-			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+			-->
+			<useDeflectMetalEffect>false</useDeflectMetalEffect>
 		</apparel>
 	</TiberiumRim.TRThingDef>
     

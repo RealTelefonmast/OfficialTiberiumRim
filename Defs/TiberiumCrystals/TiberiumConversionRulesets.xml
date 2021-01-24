@@ -4,6 +4,7 @@
 	<TiberiumRim.TiberiumConversionRulesetDef>
 		<defName>GreenConversion</defName>
 		<baseType>TiberiumGreen</baseType>
+		<baseTerrain>TiberiumSoilGreen</baseTerrain>
 		<conversions>
 			<li>TerrainFilter_TibSoil		->	TiberiumSoilGreen			,	TiberiumGreen									</li>
 			<li>Soil						->	TiberiumSoilGreen			,	TiberiumGreen:0.99	|TiberiumShardsGreen:0.01	</li>
@@ -19,8 +20,10 @@
 			<li>TerrainFilter_WaterMoving	->	TiberiumWaterMovingChestDeep,	TiberiumGlacier									</li>
 		</conversions>
 		<floraConversions>
+			<li>PlantFilter_Exotic, FloraOptions_Exotic, 	TerrainOption_Flora</li>
 			<li>PlantFilter_Trees, 	FloraOptions_Trees, 	TerrainOption_Flora</li>
-			<li>PlantFilter_Grass, 	FloraOptions_General, 	TerrainOption_Flora</li>
+			<li>PlantFilter_Bush, 	FloraOptions_Bush, 		TerrainOption_Flora</li>
+			<li>PlantFilter_Grass, 	FloraOptions_Grass, 	TerrainOption_Flora</li>
 		</floraConversions>
 		<thingConversions>
 			<li>ThingFilter_RockWall->	GreenTiberiumRock	,0.05</li>
@@ -32,6 +35,7 @@
 	<TiberiumRim.TiberiumConversionRulesetDef>
 		<defName>GreenPodConversion</defName>
 		<baseType>TiberiumPod</baseType>
+		<baseTerrain>TiberiumPodSoil</baseTerrain>
 		<conversions>
 			<li>TerrainFilter_TibSoil	->	TiberiumPodSoil				,	TiberiumPod	</li>
 			<li>Soil					->	TiberiumPodSoil				,	TiberiumPod</li>
@@ -47,6 +51,7 @@
 	<TiberiumRim.TiberiumConversionRulesetDef>
 		<defName>GreenMossConversion</defName>
 		<baseType>TiberiumMossGreen</baseType>
+		<baseTerrain>TiberiumMossyTerrainGreen</baseTerrain>
 		<conversions>
 			<li>TerrainFilter_Moss	->	TiberiumMossyTerrainGreen	,	TiberiumMossGreen</li>
 			<li>TerrainFilter_Stone	->	TiberiumStoneGreen			,	TiberiumMossGreen</li>
@@ -62,6 +67,7 @@
 	<TiberiumRim.TiberiumConversionRulesetDef>
 		<defName>BlueConversion</defName>
 		<baseType>TiberiumBlue</baseType>
+		<baseTerrain>TiberiumSoilBlue</baseTerrain>
 		<conversions>
 			<li>TerrainFilter_TibSoil		->	TiberiumSoilBlue			,	TiberiumBlue								</li>
 			<li>Soil						->	TiberiumSoilBlue			,	TiberiumBlue								</li>
@@ -90,6 +96,7 @@
 	<TiberiumRim.TiberiumConversionRulesetDef>
 		<defName>BluePodConversion</defName>
 		<baseType>TiberiumPodBlue</baseType>
+		<baseTerrain>TiberiumPodSoilBlue</baseTerrain>
 		<conversions>
 			<li>TerrainFilter_TibSoil	->	TiberiumPodSoilBlue		,	TiberiumPodBlue</li>
 			<li>Soil					->	TiberiumPodSoilBlue		,	TiberiumPodBlue</li>
@@ -105,6 +112,7 @@
 	<TiberiumRim.TiberiumConversionRulesetDef>
 		<defName>BlueMossConversion</defName>
 		<baseType>TiberiumMossBlue</baseType>
+		<baseTerrain>TiberiumMossyTerrainBlue</baseTerrain>
 		<conversions>
 			<li>TerrainFilter_Moss	->	TiberiumMossyTerrainBlue,	TiberiumMossBlue</li>
 			<li>TerrainFilter_Stone	->	TiberiumStoneBlue		,	TiberiumMossBlue</li>
@@ -120,6 +128,7 @@
 	<TiberiumRim.TiberiumConversionRulesetDef>
 		<defName>RedConversion</defName>
 		<baseType>TiberiumRed</baseType>
+		<baseTerrain>TiberiumSoilRed</baseTerrain>
 		<conversions>
 			<li>TerrainFilter_TibSoil		->	TiberiumSoilRed				,	TiberiumRed								</li>
 			<li>Soil						->	TiberiumSoilRed				,	TiberiumRed								</li>
@@ -159,6 +168,7 @@
 	<TiberiumRim.TiberiumConversionRulesetDef>
 		<defName>AboreusConversion</defName>
 		<baseType>TiberiumAboreus</baseType>
+		<baseTerrain>TiberiumSoilAboreus</baseTerrain>
 		<conversions>
 			<li>TerrainFilter_AllSoil	->	TiberiumSoilAboreus	,	TiberiumAboreus</li>
 		</conversions>
@@ -176,6 +186,7 @@
 	<TiberiumRim.TiberiumConversionRulesetDef>
 		<defName>VeinConversion</defName>
 		<baseType>TiberiumVein</baseType>
+		<baseTerrain>TiberiumSoilVein</baseTerrain>
 		<conversions>
 			<!-- Use Vein Covering-->
 			<li>TerrainFilter_AllSoil	->	TiberiumSoilVein,	TiberiumVein</li>

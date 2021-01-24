@@ -67,12 +67,7 @@
 			</li>
 			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
 				<radius>4.5</radius>
-				<intensity>0.2</intensity>
-				<rareTick>true</rareTick>
-				<damage>
-					<min>0</min>
-					<max>5</max>
-				</damage>
+				<intensity>1</intensity>
 			</li>
 		</comps>
 		<daysToMature>7</daysToMature>
@@ -80,7 +75,6 @@
 		<leavesThing>DeadGreenCrater</leavesThing>
 		<canBeGroundZero>true</canBeGroundZero>
 		<growsBlossomTree>true</growsBlossomTree>
-		<scatterTiberium>true</scatterTiberium>
 		<tiberiumFieldRules>
 			<floraOptions>
 				<li>
@@ -118,7 +112,7 @@
 			<terrainRules>
 				<li>
 					<filter>
-						<filterDef>TerrainFilter_Soil</filterDef>
+						<filterDef>TerrainFilter_AllSoil</filterDef>
 					</filter>
 					<toTerrain>
 						<li>TiberiumSoilGreen,0.60</li>
@@ -127,7 +121,7 @@
 				</li>
 				<li>
 					<filter>
-						<filterDef>TerrainFilter_Sand</filterDef>
+						<filterDef>TerrainFilter_AllSand</filterDef>
 					</filter>
 					<toTerrain>
 						<li>TiberiumSandGreen</li>
@@ -146,7 +140,18 @@
 			<crystalOptions>
 				<li>TiberiumGreen</li>
 			</crystalOptions>
+			<corruptionCurve>
+				<points>
+					<li>(0, 1)</li>
+					<li>(0.35, 1)</li>
+					<li>(1, 0)</li>
+				</points>
+			</corruptionCurve>
+			<tiberiumDensity>0.1</tiberiumDensity>
+			<corruptionRadius>18</corruptionRadius>
+			<createBlossom>true</createBlossom>
 		</tiberiumFieldRules>
+		<makesTerrain>TiberiumStoneGreen</makesTerrain>
 		<!--
 		<evolutions>
 			<TiberiumCraterHybrid>0.3</TiberiumCraterHybrid>
@@ -155,7 +160,7 @@
 		-->
 		<spawner>
 			<spawnMode>Direct</spawnMode>
-			<growRadius>12.9</growRadius>
+			<growRadius>11.9</growRadius>
 			<spawnInterval>30000~90000</spawnInterval>
 		</spawner>
 	</TiberiumRim.TiberiumProducerDef>
@@ -183,6 +188,7 @@
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_FX">
+				<!--
 				<overlays>
 					<li>
 						<data>
@@ -199,6 +205,7 @@
 						</pulse>
 					</li>
 				</overlays>
+				-->
 				<effecters>
 					<li>
 						<burstCount>2~3</burstCount>
@@ -227,11 +234,7 @@
 			</li>
 			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
 				<radius>6</radius>
-				<intensity>0.3</intensity>
-				<damage>
-					<min>0</min>
-					<max>8</max>
-				</damage>
+				<intensity>1</intensity>
 			</li>
 			<li Class="TiberiumRim.CompProperties_TiberiumExplosive">
 				<explosionChance>0.32</explosionChance>
@@ -267,10 +270,10 @@
 		-->
 		<growsBlossomTree>true</growsBlossomTree>
 		<canBeGroundZero>true</canBeGroundZero>
-		<scatterTiberium>true</scatterTiberium>
+		<makesTerrain>TiberiumStoneBlue</makesTerrain>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
-			<growRadius>9</growRadius>
+			<growRadius>10</growRadius>
 		</spawner>
 		<tiberiumFieldRules>
 			<floraOptions>
@@ -304,7 +307,7 @@
 			<terrainRules>
 				<li>
 					<filter>
-						<filterDef>TerrainFilter_Soil</filterDef>
+						<filterDef>TerrainFilter_AllSoil</filterDef>
 					</filter>
 					<toTerrain>
 						<li>TiberiumSoilBlue, 	 0.6</li>
@@ -313,7 +316,7 @@
 				</li>
 				<li>
 					<filter>
-						<filterDef>TerrainFilter_Sand</filterDef>
+						<filterDef>TerrainFilter_AllSand</filterDef>
 					</filter>
 					<toTerrain>
 						<li>TiberiumSandBlue</li>
@@ -332,6 +335,16 @@
 			<crystalOptions>
 				<li>TiberiumBlue</li>
 			</crystalOptions>
+			<corruptionCurve>
+				<points>
+					<li>(0, 1)</li>
+					<li>(0.35, 1)</li>
+					<li>(1, 0)</li>
+				</points>
+			</corruptionCurve>
+			<tiberiumDensity>0.15</tiberiumDensity>
+			<corruptionRadius>22</corruptionRadius>
+			<createBlossom>true</createBlossom>
 		</tiberiumFieldRules>
 	</TiberiumRim.TiberiumProducerDef>
 	
@@ -430,12 +443,7 @@
 			</li>
 			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
 				<radius>4.5</radius>
-				<intensity>0.2</intensity>
-				<rareTick>true</rareTick>
-				<damage>
-					<min>0</min>
-					<max>5</max>
-				</damage>
+				<intensity>1.2</intensity>
 			</li>
 			<li Class="TiberiumRim.CompProperties_TiberiumExplosive">
 				<explosionChance>0.05</explosionChance>
@@ -451,12 +459,12 @@
 		<daysToMature>12</daysToMature>
 		<leaveTiberium>true</leaveTiberium>
 		<leavesThing>DeadGreenCrater</leavesThing>
+		<makesTerrain>TiberiumStoneBlue</makesTerrain>
 		<growsBlossomTree>true</growsBlossomTree>
 		<canBeGroundZero>true</canBeGroundZero>
-		<scatterTiberium>true</scatterTiberium>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
-			<growRadius>7.6</growRadius>
+			<growRadius>12</growRadius>
 		</spawner>
 		<tiberiumFieldRules>
 			<floraOptions>
@@ -491,7 +499,7 @@
 			<terrainRules>
 				<li>
 					<filter>
-						<filterDef>TerrainFilter_Soil</filterDef>
+						<filterDef>TerrainFilter_AllSoil</filterDef>
 					</filter>
 					<toTerrain>
 						<li>TiberiumSoilGreen,   0.5</li>
@@ -502,7 +510,7 @@
 				</li>
 				<li>
 					<filter>
-						<filterDef>TerrainFilter_Sand</filterDef>
+						<filterDef>TerrainFilter_AllSand</filterDef>
 					</filter>
 					<toTerrain>
 						<li>TiberiumSandGreen, 0.5</li>
@@ -522,9 +530,19 @@
 				</li>
 			</terrainRules>
 			<crystalOptions>
-				<li>TiberiumGreen</li>
-				<li>TiberiumBlue</li>
+				<li>TiberiumGreen, 0.75</li>
+				<li>TiberiumBlue,  0.2</li>
 			</crystalOptions>
+			<corruptionCurve>
+				<points>
+					<li>(0, 1)</li>
+					<li>(0.5, 0.8)</li>
+					<li>(1, 0)</li>
+				</points>
+			</corruptionCurve>
+			<tiberiumDensity>0.075</tiberiumDensity>
+			<corruptionRadius>20</corruptionRadius>
+			<createBlossom>true</createBlossom>
 		</tiberiumFieldRules>
 	</TiberiumRim.TiberiumProducerDef>
 	
@@ -620,12 +638,7 @@
 			</li>
 			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
 				<radius>9.5</radius>
-				<intensity>0.8</intensity>
-				<rareTick>true</rareTick>
-				<damage>
-					<min>2</min>
-					<max>10</max>
-				</damage>
+				<intensity>2</intensity>
 			</li>
 		</comps>
 		<!--
@@ -641,16 +654,15 @@
 		<canBeGroundZero>true</canBeGroundZero>
 		<daysToMature>12</daysToMature>
 		<leaveTiberium>false</leaveTiberium>
-		<scatterTiberium>true</scatterTiberium>
 		<spawner>
-			<spawnMode>Direct</spawnMode>
-			<growRadius>3</growRadius>
+			<spawnMode>None</spawnMode>
+			<growRadius>0</growRadius>
 		</spawner>
 		<tiberiumFieldRules>
 			<terrainRules>
 				<li>
 					<filter>
-						<filterDef>TerrainFilter_Soil</filterDef>
+						<filterDef>TerrainFilter_AllSoil</filterDef>
 					</filter>
 					<toTerrain>
 						<li>TiberiumSoilRed</li>
@@ -658,7 +670,7 @@
 				</li>
 				<li>
 					<filter>
-						<filterDef>TerrainFilter_Sand</filterDef>
+						<filterDef>TerrainFilter_AllSand</filterDef>
 					</filter>
 					<toTerrain>
 						<li>TiberiumSandRed</li>
@@ -668,6 +680,17 @@
 			<crystalOptions>
 				<li>TiberiumRed</li>
 			</crystalOptions>
+			<corruptionCurve>
+				<points>
+					<li>(0, 1)</li>
+					<!--<li>(0.5, 0.8)</li>-->
+					<li>(1, 1)</li>
+				</points>
+			</corruptionCurve>
+			<tiberiumDensity>0.7</tiberiumDensity>
+			<corruptionRadius>10</corruptionRadius>
+			<createBlossom>false</createBlossom>
+			<allowFlora>false</allowFlora>
 		</tiberiumFieldRules>
 	</TiberiumRim.TiberiumProducerDef>
 	
@@ -749,12 +772,7 @@
 			</li>
 			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
 				<radius>4</radius>
-				<intensity>0.1</intensity>
-				<rareTick>true</rareTick>
-				<damage>
-					<min>0</min>
-					<max>2</max>
-				</damage>
+				<intensity>1</intensity>
 			</li>
 		</comps>
 		<daysToMature>0</daysToMature>
@@ -769,7 +787,7 @@
 			<terrainRules>
 				<li>
 					<filter>
-						<filterDef>TerrainFilter_Soil</filterDef>
+						<filterDef>TerrainFilter_AllSoil</filterDef>
 					</filter>
 					<toTerrain>
 						<li>TiberiumPodSoil, 0.6</li>
@@ -778,7 +796,7 @@
 				</li>
 				<li>
 					<filter>
-						<filterDef>TerrainFilter_Sand</filterDef>
+						<filterDef>TerrainFilter_AllSand</filterDef>
 					</filter>
 					<toTerrain>
 						<li>TiberiumSandBlue</li>
@@ -873,7 +891,7 @@
 			<terrainRules>
 				<li>
 					<filter>
-						<filterDef>TerrainFilter_Soil</filterDef>
+						<filterDef>TerrainFilter_AllSoil</filterDef>
 					</filter>
 					<toTerrain>
 						<li>TiberiumSoilVein</li>
@@ -881,7 +899,7 @@
 				</li>
 				<li>
 					<filter>
-						<filterDef>TerrainFilter_Sand</filterDef>
+						<filterDef>TerrainFilter_AllSand</filterDef>
 					</filter>
 					<toTerrain>
 						<li>TiberiumSandRed</li>
@@ -935,11 +953,12 @@
 						<data>
 							<texPath>Buildings/Natural/TiberiumMonolith/Underlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>MoteGlow</shaderType>
+							<!--<shaderType>Cut</shaderType>-->
 							<drawRotated>false</drawRotated>
 							<drawSize>(8,8)</drawSize>
 						</data>				
 						<altitude>Floor</altitude>
+						<drawOffset>(0,0,-3.5)</drawOffset>
 					</li>
 				</overlays>
 			</li>
@@ -954,6 +973,7 @@
 		</comps>
 		<daysToMature>7</daysToMature>
 		<leaveTiberium>false</leaveTiberium>
+		<mutatesArea>false</mutatesArea>
 		<spawner>
 			<spawnMode>Direct</spawnMode>
 			<growRadius>5</growRadius>
@@ -990,86 +1010,5 @@
 			</crystalOptions>
 		</tiberiumFieldRules>
 	</TiberiumRim.TiberiumProducerDef>
-	
-	<!-- -->
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
-		<defName>DeadGreenCrater</defName>
-		<label>green Tiberium crater residue</label>
-		<description>The remnants of a green Tiberium crater, it does not create any more crystals.</description>
-		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
-		<useHitPoints>false</useHitPoints>
-		<destroyable>false</destroyable>
-		<altitudeLayer>Floor</altitudeLayer>
-		<size>(3,3)</size>
-		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
-			<texPath>Buildings/Natural/BigTiberiumCraterGreen/GreenCrater_Broken</texPath>
-			<shaderType>Transparent</shaderType>
-			<drawSize>(5,5)</drawSize>
-		</graphicData>
-		<comps>
-			<li Class="CompProperties_Glower">
-				<glowRadius>5</glowRadius>
-				<glowColor>(120,255,120)</glowColor>
-			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
-				<radius>8</radius>
-				<intensity>0.2</intensity>
-				<damage>
-					<min>0</min>
-					<max>5</max>
-				</damage>
-			</li>
-		</comps>
-		<tickerType>Rare</tickerType>
-	</TiberiumRim.TRThingDef>
-	
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
-		<defName>DeadBlueCrater</defName>
-		<label>blue Tiberium crater residue</label>
-		<description>The remnants of a blue Tiberium crater, it does not create any more crystals.</description>
-		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
-		<useHitPoints>false</useHitPoints>
-		<destroyable>false</destroyable>
-		<altitudeLayer>Floor</altitudeLayer>
-		<size>(3,3)</size>
-		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
-			<texPath>Buildings/Natural/BigTiberiumCraterBlue/BlueCrater_Broken</texPath>
-			<shaderType>Transparent</shaderType>
-			<drawSize>(5,5)</drawSize>
-		</graphicData>
-		<comps>
-			<li Class="CompProperties_Glower">
-				<glowRadius>5</glowRadius>
-				<glowColor>(120,255,120)</glowColor>
-			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
-				<radius>9</radius>
-				<intensity>0.3</intensity>
-				<damage>
-					<min>0</min>
-					<max>8</max>
-				</damage>
-			</li>
-		</comps>
-		<tickerType>Rare</tickerType>
-	</TiberiumRim.TRThingDef>
-	
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
-		<defName>DeadVeinhole</defName>
-		<label>dead veinhole</label>
-		<description>A dead veinhole.</description>
-		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
-		<useHitPoints>false</useHitPoints>
-		<destroyable>false</destroyable>
-		<size>(3,3)</size>
-		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
-			<texPath>Buildings/Natural/Veinhole/Veinhole/Broken</texPath>
-			<drawSize>(4,4)</drawSize>
-		</graphicData>
-		<altitudeLayer>Floor</altitudeLayer>
-	</TiberiumRim.TRThingDef>
 	
 </Defs>

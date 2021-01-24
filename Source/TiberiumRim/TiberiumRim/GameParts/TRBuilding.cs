@@ -28,7 +28,7 @@ namespace TiberiumRim
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            TiberiumRimComp.TryRegisterSuperweapon(this);
+            TiberiumRimComp.SuperWeaponInfo.TryRegisterSuperweapon(this);
             TiberiumComp.RegisterTiberiumBuilding(this);
             foreach (IntVec3 c in this.OccupiedRect())
             {
@@ -54,7 +54,6 @@ namespace TiberiumRim
         }
 
         public WorldComponent_TR TiberiumRimComp = Find.World.GetComponent<WorldComponent_TR>();
-        public WorldComponent_Tiberium WorldTiberiumComp => Find.World.GetComponent<WorldComponent_Tiberium>();
         public MapComponent_Tiberium TiberiumComp => Map.GetComponent<MapComponent_Tiberium>();
 
         public bool CannotHaveDuplicates => def.placeWorkers.Any(p => p == typeof(PlaceWorker_Once));
@@ -88,7 +87,7 @@ namespace TiberiumRim
                 yield return new Command_Action()
                 {
                     defaultLabel = "Discover",
-                    action = delegate { TRUtils.DiscoveryTable().Discover(DiscoveryDef); }
+                    action = delegate { DiscoveryDef.Discover(); }
                 };
             }
         }

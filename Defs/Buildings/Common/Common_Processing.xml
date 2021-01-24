@@ -227,6 +227,10 @@
 			<texPath>Buildings/Common/Network/GasTank/GasTank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(5,5)</drawSize>
+			<shadowData>
+				<volume>(3, 1, 3)</volume>
+				<offset>(0, 0, 0)</offset>
+			</shadowData>
 		</graphicData>
 		<rotatable>false</rotatable>
 		<altitudeLayer>Building</altitudeLayer>
@@ -234,6 +238,7 @@
 		<pathCost>70</pathCost>
 		<blockWind>true</blockWind>
 		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<fillPercent>1</fillPercent>
 		<tickerType>Normal</tickerType>
 		<statBases>
@@ -279,7 +284,6 @@
 			</li>
 		</comps>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
 	</TiberiumRim.TRThingDef>
@@ -298,6 +302,10 @@
 			<texPath>Buildings/Common/Network/Silo/Silo</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(3,3)</drawSize>
+			<shadowData>
+				<volume>(1.9, 1, 1.68)</volume>
+				<offset>(-0.03,0,-0.1)</offset>
+			</shadowData>
 		</graphicData>
 		<rotatable>false</rotatable>
 		<altitudeLayer>Building</altitudeLayer>
@@ -369,8 +377,8 @@
 			<Flammability>0.85</Flammability>
 		</statBases>
 		<costList>
-			<Steel>200</Steel>
-			<ComponentIndustrial>10</ComponentIndustrial>
+			<Steel>2500</Steel>
+			<ComponentIndustrial>100</ComponentIndustrial>
 		</costList>
 		<requisites>
 			<tiberiumResearchTasks>
@@ -378,15 +386,15 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.RefineryProperties">
-				<harvester>Harvester_Common</harvester>
-				<maxStorage>1000</maxStorage>
-				<tnwbMode>Producer</tnwbMode>
-			</li>
 			<li Class="TiberiumRim.CompProperties_MechStation">
 				<mechRecipes>
 					<li>MakeHarvesterCommon</li>
 				</mechRecipes>
+			</li>
+			<li Class="TiberiumRim.RefineryProperties">
+				<harvester>Harvester_Common</harvester>
+				<maxStorage>1000</maxStorage>
+				<tnwbMode>Producer</tnwbMode>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>

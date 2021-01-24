@@ -55,9 +55,6 @@
 			<leaveTerrain>TiberiumStoneGreen</leaveTerrain>
 		</building>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<killedLeavings>
-			<TiberiumGreen>1</TiberiumGreen>
-		</killedLeavings>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 	</TiberiumRim.TRThingDef>
 	
@@ -81,9 +78,6 @@
 			<leaveTerrain>TiberiumStoneBlue</leaveTerrain>
 		</building>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<killedLeavings>
-			<TiberiumBlue>1</TiberiumBlue>
-		</killedLeavings>
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 	</TiberiumRim.TRThingDef>
 	
@@ -107,9 +101,6 @@
 			<leaveTerrain>TiberiumSoilRed</leaveTerrain>
 		</building>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<killedLeavings>
-			<TiberiumRed>1</TiberiumRed>
-		</killedLeavings>
 		<filthLeaving>FilthTiberiumRed</filthLeaving>
 	</TiberiumRim.TRThingDef>
 	

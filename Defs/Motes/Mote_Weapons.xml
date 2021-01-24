@@ -3,7 +3,7 @@
 
 	<!-- OBELISK OF LIGHT -->
 	<ThingDef ParentName="MoteBase_TR">
-		<defName>LaserBeam</defName>
+		<defName>Mote_Beam</defName>
 		<thingClass>TiberiumRim.Mote_Beam</thingClass>
 		<graphicData>
 			<texPath>Things/Mote/PowerBeam</texPath>
@@ -11,11 +11,6 @@
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<drawOffscreen>true</drawOffscreen>
-		<mote>
-			<fadeInTime>0.25</fadeInTime>
-			<solidTime>0.25</solidTime>
-			<fadeOutTime>0.85</fadeOutTime>
-		</mote>
 	</ThingDef>
 	
 	<ThingDef ParentName="MoteBase_TR">
@@ -31,6 +26,17 @@
 			<solidTime>0.1</solidTime>
 			<fadeOutTime>1</fadeOutTime>
 		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_Arc</defName>
+		<thingClass>TiberiumRim.Mote_Arc</thingClass>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
 	</ThingDef>
 	
 	<ThingDef Abstract = "True" Name="DistortionShockwaveBase" ParentName="MoteBase_TR">
@@ -251,6 +257,8 @@
 		</mote>
 	</ThingDef>
 	
+	
+	<!---->
 	
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_ScrinCut</defName>

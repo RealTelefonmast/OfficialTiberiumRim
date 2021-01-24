@@ -7,127 +7,113 @@ using Verse.AI;
 
 namespace TiberiumRim
 {
-    public class Comp_MechStation : Comp_Upgradable, IMechSpawner, IThingHolder
+    public class Comp_MechStation : Comp_Upgradable, IMechGarage<MechanicalPawn>
     {
-        private MakeableMech mech;
-        protected ThingOwner<MechanicalPawn> container;
-        protected List<MechanicalPawn> storedMechs = new List<MechanicalPawn>();
+        private MechGarage garage;
+        private MechLink link;
 
-        public bool HasMechInProgress => mech != null;
+        //List of mechs made/connected by this station, can be spawned or stored in a garage
+        public MechLink MainMechLink => link ??= new MechLink(Props.mechCapacity);
+        public MechGarage MainGarage => garage ??= new MechGarage(Props.garageCapacity);
 
-        public float MechProgress => mech?.Progress ?? 0;
-
-        public new CompProperties_MechStation Props => (CompProperties_MechStation)base.props;
-
-        public Comp_MechStation()
-        {
-            container = new ThingOwner<MechanicalPawn>(this, false, LookMode.Reference);
-        }
+        public List<MechanicalPawn> ConnectedMechs => MainMechLink.LinkedMechs;
+        
+        public CompProperties_MechStation Props => (CompProperties_MechStation)base.props;
 
         public override void PostExposeData()
         {
             base.PostExposeData();
-            Scribe_Collections.Look(ref storedMechs, "storedMechs", LookMode.Reference);
-            Scribe_Deep.Look(ref container, "mechThingOwner");
+            Scribe_Deep.Look(ref link, "mechHolder", Props.mechCapacity);
+            Scribe_Deep.Look(ref garage, "mechGarage", Props.garageCapacity);
+        }
+
+        public override void PostSpawnSetup(bool respawningAfterLoad)
+        {
+            base.PostSpawnSetup(respawningAfterLoad);
         }
 
         public override void PostDestroy(DestroyMode mode, Map previousMap)
         {
-            RemoveMechs();
             base.PostDestroy(mode, previousMap);
         }
 
-        public void AddMech(MechanicalPawn mech)
+        public void SendToGarage(MechanicalPawn mech)
         {
-            storedMechs.Add(mech);
-            container.TryAdd(mech);
-        }
-
-        public void RemoveMech(MechanicalPawn mech)
-        {
-            storedMechs.Remove(mech);
-            container.Remove(mech);
-            //TODO: Add Job
-            return;
-            storedMechs.ForEach(d =>
+            if (!MainMechLink.Contains(mech))
             {
-                d.jobs.ClearQueuedJobs();
-                d.jobs.EndCurrentJob(JobCondition.InterruptForced);
-                d.jobs.StartJob(JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("RepairMechanicalPawn"), parent.Position));
-            });
+                //Transfer foreign mech to local link
+                mech.ParentMechLink ??= MainMechLink;
+                if (mech.ParentMechLink != MainMechLink)
+                {
+                    if (!mech.ParentMechLink.TryTransferTo(MainMechLink, mech)) 
+                        return;
+                }
+            }
+            if (garage.TryPushToGarage(mech))
+            {
+                //
+            }
         }
 
-        public void RemoveMechs()
+        public MechanicalPawn ReleaseFromGarageDirect(MechanicalPawn mech)
         {
-            storedMechs.ForEach(m => RemoveMech(m));
+            if (garage.TryPullFromGarage(mech, out Thing result, parent.InteractionCell, parent.Map))
+            {
+                return (MechanicalPawn)result;
+            }
+            return null;
         }
 
-        protected MechanicalPawn MakeMech(MechanicalPawnKindDef mechDef)
+        public MechanicalPawn ReleaseFromGarage(MechanicalPawn mech, Map map, IntVec3 pos, ThingPlaceMode placeMode = ThingPlaceMode.Direct)
         {
-            if (storedMechs.Count >= Props.maxStored) return null;
-            MechanicalPawn mech = (MechanicalPawn)PawnGenerator.GeneratePawn(mechDef, parent.Faction);
+            if (garage.TryPullFromGarage(mech, out Thing result, pos, map, placeMode))
+            {
+                //
+                return (MechanicalPawn)result;
+            }
+            return null;
+        }
+
+        public bool TryAddMech(MechanicalPawn mech, bool pushToGarage = false)
+        {
+            if (MainMechLink.TryConnectNewMech(mech))
+            {
+                return !pushToGarage || MainGarage.TryPushToGarage(mech);
+            }
+            return false;
+        }
+
+        public void RemoveMech(MechanicalPawn mech, bool pullFromGarage = false)
+        {
+            MainMechLink.RemoveMech(mech);
+        }
+
+        public MechanicalPawn MakeMech(MechanicalPawnKindDef kindDef)
+        {
+            if (!MainMechLink.CanHaveNewMech) return null;
+            MechanicalPawn mech = (MechanicalPawn)PawnGenerator.GeneratePawn(kindDef, parent.Faction);
             mech.ageTracker.AgeBiologicalTicks = 0;
             mech.ageTracker.AgeChronologicalTicks = 0;
             mech.Rotation = Rot4.Random;
             mech.ParentBuilding = this.parent as Building;
             mech.Drawer.renderer.graphics.ResolveAllGraphics();
+            mech.ParentMechLink = this.MainMechLink;
             return mech;
         }
 
-        private sealed class MakeableMech : IExposable
+        public MechanicalPawn SpawnMech(MechanicalPawn mech)
         {
-            private MechanicalPawnKindDef mechDef;
-            private Dictionary<MechRecipePart, List<ThingDefCount>> resources = new Dictionary<MechRecipePart, List<ThingDefCount>>();
-
-            public MakeableMech(MechanicalPawnKindDef def)
-            {
-                mechDef = def;
-            }
-
-            public float Progress
-            {
-                get
-                {
-                    return (float)resources.Sum(s => s.Value.Sum(c => c.Count)) / TotalParts;
-                }
-            }
-
-            private int TotalParts => resources.Sum(s => s.Key.ingredients.Sum(c => c.count));
-
-            public void AddResource()
-            {
-
-            }
-
-            public void ExposeData()
-            {
-            }
+            return (MechanicalPawn) GenSpawn.Spawn(mech, parent.InteractionCell, parent.Map);
         }
 
-        public ThingOwner Container { get; set; }
-        public bool HoldsMech { get; set; }
-
-        public void SpawnMech()
-        {
-
-        }
-
-        public void GetChildHolders(List<IThingHolder> outChildren)
-        {
-            ThingOwnerUtility.AppendThingHoldersFromThings(outChildren, this.GetDirectlyHeldThings());
-        }
-
-        public ThingOwner GetDirectlyHeldThings()
-        {
-            return container;
-        }
     }
 
     public class CompProperties_MechStation : CompProperties_Upgrade
     {
         public List<MechRecipeDef> mechRecipes = new List<MechRecipeDef>();
-        public bool hasStorage = false;
-        public int maxStored = 1;
+        public MechanicalPawnKindDef mechKindDef;
+        public int mechCapacity = -1;
+        public int garageCapacity = 1;
 
         public CompProperties_MechStation()
         {

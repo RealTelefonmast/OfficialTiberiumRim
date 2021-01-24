@@ -51,8 +51,8 @@
 					<subNodes>
 						<!-- Flee From Stuff -->
 						<li Class="JobGiver_FleePotentialExplosion" />
-									
-						<li Class="JobGiver_ConfigurableHostilityResponse"/>									
+						<li Class="JobGiver_ConfigurableHostilityResponse"/>
+															
 						<!-- Do Work -->
 						<li Class="TiberiumRim.JobGiver_HarvestTiberium"/>	
 						<li Class="TiberiumRim.JobGiver_UnloadAtRefinery"/>

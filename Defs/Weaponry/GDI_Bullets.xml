@@ -104,8 +104,34 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="BaseBullet_TR">
-		<defName>Bullet_SonicWave</defName>
+		<defName>Bullet_JuggernautAntigrain</defName>
+		<label>incendiary juggernaut shell</label>
+		<graphicData>
+			<drawSize>1.5</drawSize>
+			<texPath>Items/Weapons/Projectile/Bullet_Jugg</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>BombSuper</damageDef>
+			<speed>41</speed>
+			<explosionRadius>14.9</explosionRadius>
+			<explosionChanceToStartFire>0.22</explosionChanceToStartFire>
+			<explosionDamageFalloff>true</explosionDamageFalloff>
+			<explosionEffect>GiantExplosion</explosionEffect>
+			<flyOverhead>true</flyOverhead>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>Explosion_GiantBomb</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Projectile_SonicWave</defName>
 		<label>sonic wave</label>
+		<drawerType>None</drawerType>
 		<graphicData>
 			<texPath>Items/Weapons/Gun_Blank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

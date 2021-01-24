@@ -14,15 +14,21 @@ namespace TiberiumRim
         protected override Job TryGiveJob(Pawn pawn)
         {
             Harvester harvester = pawn as Harvester;
-            if (!harvester.ShouldUnload) return null;
-
-            CompTNW_Refinery refinery = harvester.MainRefinery;
-            if (refinery == null) return null;
-
-            if(harvester.CanReserveAndReach(refinery.parent, PathEndMode.InteractionCell, Danger.Deadly))
+            if (harvester.CurrentPriority != HarvesterPriority.Unload) return null;
+            if (harvester.IsUnloading) return null;
+            //
+            if (harvester.RefineryComp.HarvesterCount > 1)
+            {
+                //if(!)
+                if (!harvester.AtRefinery && harvester.Refinery.IsReserved(out Pawn claimant) && claimant != harvester)
+                {
+                    return JobMaker.MakeJob(JobDefOf.Goto, harvester.Refinery.InteractionCell);
+                }
+            }
+            if(harvester.CanReserveAndReach(harvester.Refinery, PathEndMode.InteractionCell, Danger.Deadly))
             {
                 JobDef job = DefDatabase<JobDef>.GetNamed("UnloadAtRefinery");
-                return JobMaker.MakeJob(job, refinery.parent);
+                return JobMaker.MakeJob(job, harvester.Refinery);
             }
             return null;
         }
@@ -30,7 +36,7 @@ namespace TiberiumRim
 
     public class JobDriver_UnloadAtRefinery : JobDriver
     {
-        private CompTNW Refinery => Harvester.MainRefinery;
+        private CompTNW Refinery => Harvester.RefineryComp;
 
         private Harvester Harvester => (Harvester)pawn;
 
@@ -70,6 +76,7 @@ namespace TiberiumRim
             };
             unload.FailOnDespawnedOrNull(TargetIndex.A);
             unload.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
+            unload.FailOn(() => !((Building) TargetA.Thing).IsPowered(out bool usesPower) && usesPower);
             unload.defaultCompleteMode = ToilCompleteMode.Never;
             yield return unload;
         }

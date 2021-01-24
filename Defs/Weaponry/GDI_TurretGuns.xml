@@ -171,9 +171,9 @@
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
-				<laser>
+				<beamProps>
 					<beamPath>Items/Weapons/Projectile/Bullet_RailshotHeavy</beamPath>
-				</laser>
+				</beamProps>
 				<originOffsets>	
 					<li>(0,0,0)</li>
 				</originOffsets>
@@ -222,7 +222,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_BurstToTarget</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Bullet_SonicWave</defaultProjectile>
+				<defaultProjectile>Projectile_SonicWave</defaultProjectile>
 				<requireLineOfSight>true</requireLineOfSight>
 				<warmupTime>2.25</warmupTime>
 				<range>39.9</range>

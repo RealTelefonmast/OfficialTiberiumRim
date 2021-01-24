@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.UniquePawnDef>
+		<defName>Volkov</defName>
+		<label>Volkov</label>
+		<bodyType>Male</bodyType>
+		<crownType>Narrow</crownType>
+		<gender>Male</gender>
+		<!--<hairDef>null</hairDef>-->
+		<melanin>0.45</melanin>
+	</TiberiumRim.UniquePawnDef>
+
+</Defs>

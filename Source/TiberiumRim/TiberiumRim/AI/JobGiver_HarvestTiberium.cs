@@ -13,9 +13,11 @@ namespace TiberiumRim
         protected override Job TryGiveJob(Pawn pawn)
         {
             Harvester harvester = pawn as Harvester;
-            if (!harvester.ShouldHarvest || harvester.CurJob?.def == TiberiumDefOf.HarvestTiberium) return null;
 
-            TiberiumCrystal crystal = harvester.TiberiumManager.HarvesterInfo.FindClosestTiberiumFor(harvester);
+            if (harvester.CurrentPriority != HarvesterPriority.Harvest) return null;
+            if (harvester.IsHarvesting) return null;
+
+            TiberiumCrystal crystal = pawn.Map.Tiberium().HarvesterInfo.FindClosestTiberiumFor(harvester);
             if (crystal == null) return null;
 
             Job job = JobMaker.MakeJob(TiberiumDefOf.HarvestTiberium, crystal);
@@ -49,7 +51,7 @@ namespace TiberiumRim
 
         private Harvester Harvester => pawn as Harvester;
 
-        private bool FailOn => Harvester.ShouldIdle || !Harvester.CorrectModeFor(TiberiumCrystal.def);
+        private bool FailOn => Harvester.PlayerInterrupt || !Harvester.CanHarvestTiberium(TiberiumCrystal.def);
 
         public override string GetReport()
         {
@@ -81,14 +83,13 @@ namespace TiberiumRim
             {
                 initAction = delegate
                 {
+
                     //Time based on each weight per Tick 
                     ticksToHarvest =  (int)Math.Round((TiberiumCrystal.HarvestValue / Harvester.kindDef.harvestValue), MidpointRounding.AwayFromZero);
                     //Ticks Needed to get 1 single weight stored
                     ticksPerValue = (int) (ticksToHarvest / TiberiumCrystal.HarvestValue);
                     //Growth removed whenever weight is added
                     growthPerValue = (TiberiumCrystal.Growth / (float) ticksToHarvest) * ticksPerValue;
-                    Log.Message("Init Harvest Action: " + ticksToHarvest + " | " + ticksPerValue + " | " + growthPerValue);
-
                 },
                 tickAction = delegate
                 {
@@ -98,9 +99,12 @@ namespace TiberiumRim
                         return;
                     }
 
-                    ticksPassed++;
                     if (ticksPassed > ticksToHarvest)
                     {
+                        if (TiberiumCrystal.Spawned && !Harvester.Container.CapacityFull)
+                        {
+                            TiberiumCrystal.DeSpawn();
+                        }
                         ticksPassed = 0;
                         ReadyForNextToil();
                         return;
@@ -110,6 +114,7 @@ namespace TiberiumRim
                     {
                         TiberiumCrystal.Harvest(Harvester, growthPerValue);
                     }
+                    ticksPassed++;
                 }
             };
             //harvest.AddFinishAction(() => Harvester.TNWManager.ReservationManager.Dequeue(TiberiumCrystal, Harvester));

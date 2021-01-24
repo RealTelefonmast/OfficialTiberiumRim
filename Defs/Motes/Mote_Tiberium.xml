@@ -11,6 +11,9 @@
 			<graphicClass>Graphic_Mote</graphicClass>
 			<shaderType>Mote</shaderType>
 		</graphicData>
+		<mote>
+			<realTime>false</realTime>
+		</mote>
 		<altitudeLayer>MoteLow</altitudeLayer>
 		<tickerType>Normal</tickerType>
 		<useHitPoints>false</useHitPoints>
@@ -89,6 +92,8 @@
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 	</ThingDef>
 	
+	<!---->
+	
 	<!-- TIBERIUM FIELD -->
 	<ThingDef ParentName="TiberiumFog">
 		<defName>TiberiumFieldFogG</defName>
@@ -125,9 +130,9 @@
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<mote>
-			<fadeInTime>0.75</fadeInTime>
-			<solidTime>1.08</solidTime>
-			<fadeOutTime>0.8</fadeOutTime>
+			<fadeInTime>2.6</fadeInTime>
+			<solidTime>1.5</solidTime>
+			<fadeOutTime>3.3</fadeOutTime>
 		</mote>
 	</ThingDef>
 	

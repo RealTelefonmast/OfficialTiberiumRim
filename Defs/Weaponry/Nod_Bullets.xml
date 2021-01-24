@@ -71,12 +71,12 @@
 		</projectile>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseBullet_TR">
+	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_Flamethrower</defName>
 		<label>flame</label>
-		<thingClass>Projectile_Explosive</thingClass>
+		<thingClass>TiberiumRim.Projectile_ThrownFlame</thingClass>
 		<graphicData>
-			<texPath>Sprites/FlameSprite</texPath>
+			<texPath>Sprites\FlameMatrix</texPath>
 			<graphicClass>TiberiumRim.Graphic_Sprite</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>2</drawSize>
@@ -89,7 +89,7 @@
 			<speed>12</speed>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
 		</projectile>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 	<ThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_TiberiumGas</defName>

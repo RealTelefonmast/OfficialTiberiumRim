@@ -3,76 +3,16 @@
 
 	<TiberiumRim.MechRecipeDef>
 		<defName>MakeHarvesterCommon</defName>
-		<label></label>
-		<graphicPath>Pawns/Common/Harvester</graphicPath>
+		<label>Harvester Blueprint</label>
+		<graphicPath>Pawns/Mechanical/Common/Harvester</graphicPath>
 		<mechDef>Harvester_Common</mechDef>
-		<parts>
-			<li>
-				<label>Cockpit</label>
-				<type>Head</type>
-				<ingredients>
-					<Steel>25</Steel>
-				</ingredients>
-			</li>
-			<li>
-				<label>Container</label>
-				<type>Body</type>
-				<ingredients>
-					<Steel>25</Steel>
-				</ingredients>
-			</li>
-			<li>
-				<label>Collector Arms</label>
-				<type>Tool</type>
-				<ingredients>
-					<Steel>25</Steel>
-				</ingredients>
-			</li>
-			<li>
-				<label>Tracks</label>
-				<type>Movement</type>
-				<ingredients>
-					<Steel>25</Steel>
-				</ingredients>
-			</li>
-		</parts>
 	</TiberiumRim.MechRecipeDef>	
 	
 	<TiberiumRim.MechRecipeDef>
 		<defName>MakeRepairDroneCommon</defName>
 		<label></label>
-		<graphicPath>Pawns/Common/RepairDrone</graphicPath>
+		<graphicPath>Pawns/Mechanical/Common/RepairDrone</graphicPath>
 		<mechDef>RepairDrone_Common</mechDef>
-		<parts>
-			<li>
-				<label>circuity</label>
-				<type>Head</type>
-				<ingredients>
-					<Steel>25</Steel>
-				</ingredients>
-			</li>
-			<li>
-				<label>mechanical spine</label>
-				<type>Body</type>
-				<ingredients>
-					<Steel>25</Steel>
-				</ingredients>
-			</li>
-			<li>
-				<label>repair tools</label>
-				<type>Tool</type>
-				<ingredients>
-					<Steel>25</Steel>
-				</ingredients>
-			</li>
-			<li>
-				<label>turbines</label>
-				<type>Movement</type>
-				<ingredients>
-					<Steel>25</Steel>
-				</ingredients>
-			</li>
-		</parts>
 	</TiberiumRim.MechRecipeDef>	
 	
 </Defs>

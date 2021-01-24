@@ -35,7 +35,7 @@
 		</statBases>
 		<costList>
 			<Steel>200</Steel>
-			<ComponentIndustrial>6</ComponentIndustrial>
+			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>
 		<inspectorTabs>
 			<li>ITab_Bills</li>
@@ -174,8 +174,8 @@
 			<Flammability>0.85</Flammability>
 		</statBases>
 		<costList>
-			<GDI_ReinforcedPlate>20</GDI_ReinforcedPlate>
-			<ComponentIndustrial>10</ComponentIndustrial>
+			<GDI_ReinforcedPlate>200</GDI_ReinforcedPlate>
+			<ComponentIndustrial>100</ComponentIndustrial>
 		</costList>
 		<comps>
 			<li Class="TiberiumRim.RefineryProperties">

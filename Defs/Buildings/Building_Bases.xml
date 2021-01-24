@@ -89,6 +89,7 @@
 		<factionDesignation>Tiberium</factionDesignation>
 		<TRCategory>Misc</TRCategory>
 		<devObject>true</devObject>
+		<isNatural>true</isNatural>
 		<menuHidden>true</menuHidden>
 		<building>
 			<claimable>false</claimable>

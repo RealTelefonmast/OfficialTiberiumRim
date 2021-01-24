@@ -37,7 +37,7 @@
 				</capacities>
 				<hediff>TibInEyes</hediff>
 				<power>0.75</power>
-				<cooldownTime>25</cooldownTime>
+				<cooldownTime>3</cooldownTime>
 			</li>
 		</tools>
 		<plantSupport>

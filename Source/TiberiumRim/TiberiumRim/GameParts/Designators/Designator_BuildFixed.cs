@@ -32,7 +32,8 @@ namespace TiberiumRim
                 else
                 {
                     Thing thing = ThingMaker.MakeThing((ThingDef)this.entDef, this.stuffDef);
-                    thing.SetFactionDirect(TRThingDef.devObject ? null : Faction.OfPlayer);
+                    if(TRThingDef != null)
+                        thing.SetFactionDirect(TRThingDef.devObject ? null : Faction.OfPlayer);
                     GenSpawn.Spawn(thing, c, base.Map, this.placingRot, WipeMode.Vanish, false);
                 }
             }

@@ -8,8 +8,6 @@ namespace TiberiumRim
 {
     public class GameComponent_TR : GameComponent
     {
-        public SampleManager soundManager = new SampleManager();
-
         public GameComponent_TR(Game game)
         {
         }
@@ -22,7 +20,6 @@ namespace TiberiumRim
         public override void GameComponentUpdate()
         {
             base.GameComponentUpdate();
-            soundManager.Update();
         }
     }
 }

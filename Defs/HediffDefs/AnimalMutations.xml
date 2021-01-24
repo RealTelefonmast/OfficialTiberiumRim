@@ -3,66 +3,130 @@
 
 	<TiberiumRim.AnimalMutationDef>
 		<defName>TiberiumFiendMutations</defName>
-		<Mutations>
+		<conversions>
 			<li>
-				<turnsInto>Thrimbo</turnsInto>
-				<pawnKinds>
+				<toPawn>Thrimbo</toPawn>
+				<fromPawn>
 					<li>Thrumbo</li>
-				</pawnKinds>
+				</fromPawn>
 			</li>
 			<li>
-				<turnsInto>BigTiberiumFiend</turnsInto>
-				<pawnKinds>
+				<toPawn>BigTiberiumFiend</toPawn>
+				<fromPawn>
 					<li>Bear_Grizzly</li>
 					<li>Bear_Polar</li>
-				</pawnKinds>
+				</fromPawn>
 			</li>
 			<li>
-				<turnsInto>TiberiumFiend</turnsInto>
-				<pawnKinds>
+				<toPawn>TiberiumFiend</toPawn>
+				<fromPawn>
 					<li>Wolf_Timber</li>
 					<li>Wolf_Arctic</li>
-				</pawnKinds>
+				</fromPawn>
 			</li>
 			<li>
-				<turnsInto>SmallTiberiumFiend</turnsInto>
-				<pawnKinds>
+				<toPawn>SmallTiberiumFiend</toPawn>
+				<fromPawn>
 					<li>Fox_Fennec</li>
 					<li>Fox_Red</li>
 					<li>Fox_Arctic</li>
-				</pawnKinds>
+				</fromPawn>
 			</li>
 			<li>
-				<turnsInto>Tiffalo</turnsInto>
-				<pawnKinds>
+				<toPawn>Tiffalo</toPawn>
+				<fromPawn>
 					<li>Muffalo</li>
-				</pawnKinds>
+				</fromPawn>
 			</li>
 			<li>
-				<turnsInto>Spiner</turnsInto>
-				<pawnKinds>
+				<toPawn>Spiner</toPawn>
+				<fromPawn>
 					<li>Warg</li>
-				</pawnKinds>
+				</fromPawn>
 			</li>
 			<li>
-				<turnsInto>BoomFiend</turnsInto>
-				<pawnKinds>
+				<toPawn>BoomFiend</toPawn>
+				<fromPawn>
 					<li>Boomrat</li>
-				</pawnKinds>
+				</fromPawn>
 			</li>
 			<li>
-				<turnsInto>Crawler</turnsInto>
-				<pawnKinds>
+				<toPawn>Crawler</toPawn>
+				<fromPawn>
 					<li>Cobra</li>
-				</pawnKinds>
+				</fromPawn>
 			</li>
 			<li>
-				<turnsInto>TibScarab</turnsInto>
-				<pawnKinds>
+				<toPawn>TibScarab</toPawn>
+				<fromPawn>
 					<li>Megascarab</li>
-				</pawnKinds>
+				</fromPawn>
 			</li>
-		</Mutations>
+		</conversions>
 	</TiberiumRim.AnimalMutationDef>
+
+	<!--TiberiumRim.AnimalMutationDef>
+		<defName>TiberiumFiendMutations</defName>
+		<conversions>
+			<li>
+				<toPawn>Thrimbo</toPawn>
+				<fromPawn>
+					<li>Thrumbo</li>
+				</fromPawn>
+			</li>
+			<li>
+				<toPawn>BigTiberiumFiend</toPawn>
+				<fromPawn>
+					<li>Bear_Grizzly</li>
+					<li>Bear_Polar</li>
+				</fromPawn>
+			</li>
+			<li>
+				<toPawn>TiberiumFiend</toPawn>
+				<fromPawn>
+					<li>Wolf_Timber</li>
+					<li>Wolf_Arctic</li>
+				</fromPawn>
+			</li>
+			<li>
+				<toPawn>SmallTiberiumFiend</toPawn>
+				<fromPawn>
+					<li>Fox_Fennec</li>
+					<li>Fox_Red</li>
+					<li>Fox_Arctic</li>
+				</fromPawn>
+			</li>
+			<li>
+				<toPawn>Tiffalo</toPawn>
+				<fromPawn>
+					<li>Muffalo</li>
+				</fromPawn>
+			</li>
+			<li>
+				<toPawn>Spiner</toPawn>
+				<fromPawn>
+					<li>Warg</li>
+				</fromPawn>
+			</li>
+			<li>
+				<toPawn>BoomFiend</toPawn>
+				<fromPawn>
+					<li>Boomrat</li>
+				</fromPawn>
+			</li>
+			<li>
+				<toPawn>Crawler</toPawn>
+				<fromPawn>
+					<li>Cobra</li>
+				</fromPawn>
+			</li>
+			<li>
+				<toPawn>TibScarab</toPawn>
+				<fromPawn>
+					<li>Megascarab</li>
+				</fromPawn>
+			</li>
+		</conversions>
+	</TiberiumRim.AnimalMutationDef-->
 	
 </Defs>

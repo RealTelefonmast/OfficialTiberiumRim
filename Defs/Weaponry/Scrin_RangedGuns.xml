@@ -70,9 +70,9 @@
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
-				<laser>
+				<beamProps>
 					<beamPath>Items/Weapons/Projectile/Bullet_BeamScrin</beamPath>
-				</laser>
+				</beamProps>
 				<originOffsets>	
 					<li>(0,-1,0.15)</li>
 				</originOffsets>
@@ -119,9 +119,9 @@
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
-				<laser>
+				<beamProps>
 					<beamPath>Items/Weapons/Projectile/Bullet_BeamScrinMiddle</beamPath>
-				</laser>
+				</beamProps>
 				<originOffsets>	
 					<li>(0.45,-1,-0.1)</li>
 					<li>(-0.5,-1,-0.6)</li>
@@ -172,9 +172,9 @@
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
-				<laser>
+				<beamProps>
 					<beamPath>Items/Weapons/Projectile/Bullet_BeamScrinBig</beamPath>
-				</laser>
+				</beamProps>
 				<originOffsets>	
 					<li>(0.45,-1,-0.1)</li>
 					<li>(-0.5,-1,-0.6)</li>

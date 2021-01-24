@@ -2,7 +2,7 @@
 <Defs>
 
 	<!-- ============== Soldier ============================= -->
-	<ThingDef ParentName="GDI_Armor">
+	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
 		<defName>Apparel_GDISoldierHelmet</defName>
 		<label>GDI soldier helmet</label>
 		<description>This helmet has an integrated Tiberium filter, might also repell some bullets if you're lucky.</description>
@@ -52,9 +52,9 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="GDI_Armor">
+	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
 		<defName>Apparel_GDISoldierSuit</defName>
 		<label>GDI soldier suit</label>
 		<description>This suit is optimized to resist most attacks.</description>
@@ -111,11 +111,11 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>	
+	</TiberiumRim.TRThingDef>	
 	
 	<!-- ==================== Officer ===================== -->
 	
-	<ThingDef ParentName="GDI_Armor">
+	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
 		<defName>Apparel_GDIOfficerHelmet</defName>
 		<label>GDI officer hat</label>
 		<description>A shique cap, perfect for every GDI officer!</description>
@@ -164,9 +164,9 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="GDI_Armor">
+	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
 		<defName>Apparel_GDIOfficerSuit</defName>
 		<label>GDI officer suit</label>
 		<description>A nice looking suit, perfect for a GDI Officer.</description>
@@ -216,11 +216,11 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 	<!-- Engineer -->
 	
-	<ThingDef ParentName="GDI_Armor">
+	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
 		<defName>Apparel_GDIEngineerMask</defName>
 		<label>GDI Engineer Mask</label>
 		<description>This is the mask of a true engineer. Improves work skills!</description>
@@ -274,9 +274,9 @@
 				<Crafting>8</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="GDI_Armor">
+	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
 		<defName>Apparel_GDIEngineerSuit</defName>
 		<label>GDI Engineer suit</label>
 		<description>This suit is optimized for any type of work. Improves work abilities.</description>
@@ -336,11 +336,11 @@
 				<Crafting>8</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 	<!-- ====================================== GDI Zone Trooper =========================================== -->
 
-	<ThingDef ParentName="GDI_Armor">
+	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
 		<defName>Apparel_GDIZoneHelmet</defName>
 		<label>zone helmet</label>
 		<description>A part of the GDI Zone Trooper armor.</description>
@@ -398,9 +398,9 @@
 				<Crafting>12</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="GDI_Armor">
+	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
 		<defName>Apparel_GDIZoneSuit</defName>
 		<label>zone suit</label>
 		<description>A GDI Zone Trooper suit, perfect against Tiberium.</description>
@@ -466,6 +466,6 @@
 				<Crafting>12</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 </Defs>

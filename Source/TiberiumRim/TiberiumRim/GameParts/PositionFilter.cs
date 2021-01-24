@@ -4,30 +4,71 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Verse;
-using TerrainDef = Verse.TerrainDef;
-using ThingDef = Verse.ThingDef;
 
 namespace TiberiumRim
 {
     public class PositionFilter
     {
-        public List<TerrainDef> terrainToAvoid = new List<TerrainDef>();
+        public List<TerrainDef>       terrainToAvoid = new List<TerrainDef>();
         public List<WeightedTerrain> terrainToPrefer = new List<WeightedTerrain>();
-        public List<ThingDef> spawnAt = new List<ThingDef>();
-        public List<ThingValue> distanceToThings = new List<ThingValue>();
-        public AreaCheck roofs = AreaCheck.Avoid;
-        public AreaCheck homeArea = AreaCheck.Avoid;
+        public List<ThingDef>        thingsToSpawnAt = new List<ThingDef>();
+        public List<ThingValue>     distanceToThings = new List<ThingValue>();
 
-        public bool IsDefault => terrainToAvoid.NullOrEmpty() && terrainToPrefer.NullOrEmpty() && spawnAt.NullOrEmpty() && distanceToThings.NullOrEmpty() && roofs == AreaCheck.Avoid && homeArea == AreaCheck.Avoid;
+        //public AreaCheck roofed   = AreaCheck.Avoid;
+        //public AreaCheck homeArea = AreaCheck.Avoid;
 
-        public IntVec3 FindCell(Map map, List<ThingValue> rewards = null)
+        public IntVec3 FindCell(Map map)
         {
-            IntVec3 cell = IntVec3.Invalid;
-            cell = FindCells(map, 1, rewards).FirstOrDefault();
-            return cell;
+            return AllCells(map).RandomElement();
         }
 
-        public List<IntVec3> FindCells(Map map, int count, List<ThingValue> rewards = null, List<ThingDef> things = null)
+        public IEnumerable<IntVec3> AllCells(Map map)
+        {
+            foreach (var cell in map.AllCells)
+            {
+                if(terrainToAvoid.Contains(cell.GetTerrain(map)))continue;
+                if(terrainToPrefer.Any() && !terrainToPrefer.Any(ttp => TRUtils.Chance(ttp.weight))) continue;
+                if(thingsToSpawnAt.Any() && !thingsToSpawnAt.Any(t => cell.GetFirstThing(map, t) != null)) continue;
+                if(distanceToThings.Any() && distanceToThings.Any(t => map.listerThings.ThingsOfDef(t.ThingDef).Any(t2 => t2.Position.DistanceTo(cell) < t.value))) continue;
+                yield return cell;
+            }
+        }
+
+        public IEnumerable<IntVec3> AllCellsFitting(Map map, List<ThingDef> expectedThings)
+        {
+            var allCells = AllCells(map).ToList();
+            foreach (var cell in allCells)
+            {
+                foreach (var thing in expectedThings)
+                {
+                    if (GenAdj.OccupiedRect(cell, Rot4.North, thing.size).Any(c => !allCells.Contains(c))) continue;
+                    yield return cell;
+                }
+            }
+        }
+
+        public IEnumerable<IntVec3> NeededCellsFor(Map map, List<ThingDef> expectedThings)
+        {
+            var allCells = AllCells(map).ToList();
+            var cells = new List<IntVec3>();
+            foreach (var cell in allCells)
+            {
+                foreach (var thing in expectedThings)
+                {
+                    if (GenAdj.OccupiedRect(cell, Rot4.North, thing.size).Any(c => !allCells.Contains(c))) continue;
+                    cells.Add(cell);
+                }
+            }
+
+            for (int i = 0; i < expectedThings.Count; i++)
+            {
+                if (cells.TryRandomElement(out IntVec3 cell))
+                    yield return cell;
+            }
+        }
+
+        /*
+        public List<IntVec3> FindCells(Map map, int needed, List<ThingValue> rewards = null, List<ThingDef> things = null)
         {
             List<IntVec3> spawnPositions = new List<IntVec3>();
             int minRoomSize = 0;
@@ -91,6 +132,7 @@ namespace TiberiumRim
             }
             return spawnPositions;
         }
+        */
     }
 
     public enum AreaCheck
