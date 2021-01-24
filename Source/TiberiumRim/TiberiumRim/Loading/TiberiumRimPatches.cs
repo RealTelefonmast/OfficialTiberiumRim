@@ -56,6 +56,7 @@ namespace TiberiumRim
                 TiberiumRimMod mod = TiberiumRimMod.mod; //LoadedModManager.ModHandles.FirstOrDefault(x => x is TiberiumRimMod) as TiberiumRimMod;
                 if (!mod.settings.FirstStartUp) return;
                 mod.settings.FirstStartUp = false;
+                return; //TODO: Implement difficulty dialog
                 Find.WindowStack.Add(new Dialog_Difficulty(delegate
                     {
                         mod.settings.SetEasy();

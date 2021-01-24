@@ -32,6 +32,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
+					<damageDef>TRLaser</damageDef>
 					<beamPath>Items/Weapons/Projectile/Bullet_ObeliskBeam</beamPath>
 					<hitEffecter>StrongBeamHit</hitEffecter>
 					<glow>

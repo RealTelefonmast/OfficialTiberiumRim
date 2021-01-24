@@ -7,38 +7,34 @@
 		<defName>TRRailgun</defName>
 		<label>railgun projectile</label>
 		<isExplosive>false</isExplosive>
+		<externalViolence>true</externalViolence>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<hediff>Shredded</hediff>
+		<hediffSolid>Crack</hediffSolid>
 		<makesBlood>true</makesBlood>
-		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
-		<minDamageToFragment>0</minDamageToFragment>
-		<defaultDamage>0</defaultDamage>
-		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
-		<explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
-		<explosionCellMote>TiberiumGas</explosionCellMote>
-		<explosionColorCenter>(0.75, 0.75, 0.75)</explosionColorCenter>
-		<explosionColorEdge>(0.25, 0.25, 0.25)</explosionColorEdge>
-		<soundExplosion>Blast_Rail</soundExplosion>
-		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
+		<armorCategory>Sharp</armorCategory>
+		<defaultStoppingPower>1</defaultStoppingPower>
+		<defaultArmorPenetration>1</defaultArmorPenetration>
+		
+		<buildingDamageFactor>1</buildingDamageFactor>
+		<plantDamageFactor>2</plantDamageFactor>
 	</DamageDef>
-  
+	
 	<DamageDef ParentName="ProjectileBase_TR">
 		<defName>TRLaser</defName>
-		<label>laser burn</label>
+		<label>laser cut</label>
 		<isExplosive>false</isExplosive>
-		<hediff>Burn</hediff>
-		<makesBlood>true</makesBlood>
-		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
-		<armorCategory>Heat</armorCategory>
-		<minDamageToFragment>0</minDamageToFragment>
-		<defaultDamage>0</defaultDamage>
-		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
-		<explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
-		<explosionCellMote>TiberiumGas</explosionCellMote>
-		<explosionColorCenter>(1, 0.25, 0.25)</explosionColorCenter>
-		<explosionColorEdge>(0.75, 0.1, 0.1)</explosionColorEdge>
-		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
-		<soundExplosion>Blast_Rail</soundExplosion>
-		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
+		<externalViolence>true</externalViolence>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<hediff>Cut</hediff>
+		<hediffSolid>Cut</hediffSolid>
+		<makesBlood>false</makesBlood>
+		<defaultDamage>100</defaultDamage>
+		<defaultStoppingPower>0.25</defaultStoppingPower>
+        <defaultArmorPenetration>1</defaultArmorPenetration>
+	
+		<buildingDamageFactor>1.5</buildingDamageFactor>
+		<plantDamageFactor>2</plantDamageFactor>
 	</DamageDef>
 	
 	<DamageDef ParentName="ProjectileBase_TR">

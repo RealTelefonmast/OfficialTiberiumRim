@@ -198,7 +198,9 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
+					<damageDef>TRRailgun</damageDef>
 					<beamPath>Items/Weapons/Projectile/Bullet_Railshot</beamPath>
+					<hitEffecter>RailgunHit</hitEffecter>
 				</beamProps>
 				<originOffsets>	
 					<li>(0, 0, 0.7)</li>

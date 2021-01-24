@@ -34,16 +34,31 @@ namespace TiberiumRim
             Scribe_Deep.Look(ref SuperWeaponInfo, "SuperWeaponInfo", world);
             Scribe_Deep.Look(ref SatelliteInfo, "SatelliteInfo", world);
             Scribe_Deep.Look(ref GameSettings, "GameSettings", world);
+
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                GenerateInfos();
+            }
+        }
+
+        private void GenerateInfos()
+        {
+            DiscoveryTable ??= new DiscoveryTable();
+            TiberiumInfo ??= new TiberiumWorldInfo(world);
+            GroundZeroInfo ??= new GroundZeroInfo(world);
+            SuperWeaponInfo ??= new SuperWeaponInfo(world);
+            SatelliteInfo ??= new SatelliteInfo(world);
+            GameSettings ??= new GameSettingsInfo(world);
         }
 
         public WorldComponent_TR(World world) : base(world)
         {
-            DiscoveryTable = new DiscoveryTable();
-            TiberiumInfo = new TiberiumWorldInfo(world);
-            GroundZeroInfo = new GroundZeroInfo(world);
-            SuperWeaponInfo = new SuperWeaponInfo(world);
-            SatelliteInfo = new SatelliteInfo(world);
-            GameSettings = new GameSettingsInfo(world);
+            GenerateInfos();
+        }
+
+        public override void FinalizeInit()
+        {
+            base.FinalizeInit();
         }
 
         public void Notify_TiberiumArrival(Map map)
