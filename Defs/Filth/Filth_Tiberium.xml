@@ -82,6 +82,7 @@
 	</ThingDef>
   
   
+	<!--
 	<ThingDef ParentName="InciendiaryFilth">
 		<defName>FilthTibLiquid</defName>
 		<thingClass>TiberiumRim.TiberiumLeak</thingClass>
@@ -94,7 +95,7 @@
 		<graphicData>  
 			<texPath>Filth/TibLiquid</texPath>
 		</graphicData>
-	</ThingDef>
+	</ThingDef>-->
   
 	<ThingDef ParentName="InciendiaryFilth">
 		<defName>FilthTibLiquidGreen</defName>
