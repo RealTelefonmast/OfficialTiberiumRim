@@ -7,7 +7,7 @@ This mod is based on the Command & Conquer universe owned by EA. The goal is to 
 This will not be based on any specific game – so don't expect that.
 This mod is under constant development to add all of those lovely nice features that the C&C lore has to offer.
 
-Rimworld owned by Ludeon Studios.
+RimWorld owned by Ludeon Studios.
 
 Command & Conquer owned by Electronic Arts.
 
