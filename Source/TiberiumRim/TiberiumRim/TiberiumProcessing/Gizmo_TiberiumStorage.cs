@@ -57,7 +57,7 @@ namespace TiberiumRim
                 {
                     float percent = (container.ValueForType(type) / container.capacity);
                     Rect typeRect = new Rect(2.5f + xPos, BarRect.y, BarRect.width * percent, BarRect.height);
-                    Color color = TRUtils.ColorForType(type);
+                    Color color = TRUtils.GetColor(type);
                     xPos += BarRect.width * percent;
                     Widgets.DrawBoxSolid(typeRect, color);
                 }

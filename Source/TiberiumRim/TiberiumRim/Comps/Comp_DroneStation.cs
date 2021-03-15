@@ -32,9 +32,8 @@ namespace TiberiumRim
         }
 
         public new CompProperties_DroneStation Props => base.props as CompProperties_DroneStation;
-
-        //public ThingOwner DroneContainer => MainGarage.Container;
         public ThingOwner DroneGarage => MainGarage.Container;
+        public CompRefuelable FuelComp => parent.GetComp<CompRefuelable>();
 
         private PhysicalInteractionReservationManager Reservations => parent.Map.physicalInteractionReservationManager;
 
@@ -49,18 +48,18 @@ namespace TiberiumRim
 
         public void TryReleaseDrone()
         {
+            if (!FuelComp.HasFuel) return;
             var mechs = MechsAvailableForRepair().ToList();
             if (!mechs.Any()) return;
-            for (var i = DroneGarage.Count - 1; i >= 0; i--)
+            for (var i = MainMechLink.Count - 1; i >= 0; i--)
             {
-                var drone = (RepairDrone)DroneGarage[i];
+                var drone = (RepairDrone)MainMechLink[i];
                 foreach (var damagedMech in MechsAvailableForRepair())
                 {
-                    if (Reservations.IsReserved(damagedMech))continue;
+                    if (Reservations.IsReserved(damagedMech)) continue;
                     var closestPos = GenAdjFast.AdjacentCells8Way(parent).MinBy(c => c.DistanceTo(damagedMech.Position));
-                    MainGarage.TryPullFromGarage(drone, out Thing mech, closestPos, parent.Map, ThingPlaceMode.Direct);
-
-                    //DroneGarage.TryDrop_NewTmp(drone, closestPos, parent.Map, ThingPlaceMode.Direct, out Thing last);
+                    if (drone.Spawned && Reservations.FirstReservationFor(drone) != null) continue;
+                    if (!drone.Spawned && !MainGarage.TryPullFromGarage(drone, out Thing mech, closestPos, parent.Map, ThingPlaceMode.Direct)) continue;
 
                     var job = new JobWithExtras(DefDatabase<JobDef>.GetNamed("RepairMechanicalPawn"), damagedMech)
                     {

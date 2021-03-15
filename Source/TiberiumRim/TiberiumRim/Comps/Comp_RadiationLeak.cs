@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,7 @@ namespace TiberiumRim
             base.PostPostApplyDamage(dinfo, totalDamageDealt);
             if (ShouldLeakWhenDamaged && !parent.DestroyedOrNull() && (float)parent.HitPoints / parent.MaxHitPoints <= Props.leakDamageThreshold)
             {
-                TryRadiate();
+                TryStartRadiating();
             }
         }
     }

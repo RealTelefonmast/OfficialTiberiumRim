@@ -98,6 +98,7 @@ namespace TiberiumRim
         public static JobDef UnloadAtRefinery;
 
         public static JobDef TiberiumResearch;
+        public static JobDef TiberiumBill;
 
         //
         public static RadiationFallOffDef RadiationResistances;

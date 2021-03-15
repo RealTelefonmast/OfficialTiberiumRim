@@ -11,6 +11,7 @@ namespace TiberiumRim
 {
     public class JobDriver_RepairDroneRepair : JobDriver
     {
+        private Comp_DroneStation DroneStation => Drone.parentComp;
         private RepairDrone Drone => this.pawn as RepairDrone;
         private MechanicalPawn Target => this.TargetA.Thing as MechanicalPawn;
         private List<Hediff> Hediffs => (this.job as JobWithExtras).hediffs;
@@ -24,7 +25,9 @@ namespace TiberiumRim
         {
             this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
             this.FailOnDowned(TargetIndex.A);
-            yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
+            this.FailOn(() => !DroneStation.FuelComp.HasFuel || (Target.Position.DistanceTo(DroneStation.parent.Position) > DroneStation.Props.radius));
+            Toil gotoTarget = Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
+            yield return gotoTarget;
             Toil repair = new Toil();
             repair.initAction = delegate
             {
@@ -41,19 +44,19 @@ namespace TiberiumRim
                         return;
                     }
                     injury.Heal(Drone.kindDef.healFloat);
+                    DroneStation.FuelComp.ConsumeFuel(Drone.kindDef.healFloat);
                 }
                 else
                 {
-
                     Hediffs.Remove(injury);
                 }
-
                 if (!Hediffs.NullOrEmpty()) return;
                 Target.jobs.EndCurrentJob(JobCondition.Succeeded, true);
                 repair.actor.jobs.EndCurrentJob(JobCondition.Succeeded, true);
             };
             repair.WithEffect(TargetThingA.def.repairEffect, TargetIndex.A);
             repair.defaultCompleteMode = ToilCompleteMode.Never;
+            repair.JumpIf(() => !this.GetActor().CanReachImmediate(this.GetActor().jobs.curJob.GetTarget(TargetIndex.A), PathEndMode.Touch), gotoTarget);
             yield return repair;
         }
     }

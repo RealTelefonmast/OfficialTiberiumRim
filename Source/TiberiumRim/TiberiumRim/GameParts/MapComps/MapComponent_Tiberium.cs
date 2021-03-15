@@ -22,11 +22,11 @@ namespace TiberiumRim
         public TiberiumMapInfo TiberiumInfo;        // Tiberium Crystals, Pods, etc, all variations
         public TiberiumFloraMapInfo FloraInfo;      // Tiberium Plant life
         public TiberiumBlossomInfo BlossomInfo;     // Special Case of Tiberium Producer, TODO: might need moving to another position
-        public TiberiumInfectionInfo InfectionInfo;
+        public PawnHediffInfo InfectionInfo;        //Currently infected pawns, animals, colonists, visitors, etc
 
         // Artificial
         public TiberiumStructureInfo StructureInfo; // Tiberium Network
-        public HarvesterMapInfo HarvesterInfo;
+        public HarvesterMapInfo HarvesterInfo;      
 
         //Active Update Components - Keep update loops running to ensure
         public TiberiumAffecter TiberiumAffecter;
@@ -46,7 +46,7 @@ namespace TiberiumRim
             BlossomInfo = new TiberiumBlossomInfo(map);
 
             StructureInfo = new TiberiumStructureInfo(map);
-            InfectionInfo = new TiberiumInfectionInfo(map);
+            InfectionInfo = new PawnHediffInfo(map);
 
             TiberiumAffecter = new TiberiumAffecter(map);
             TiberiumSpreader = new TiberiumSpreader(map);

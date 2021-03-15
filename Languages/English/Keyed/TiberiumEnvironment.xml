@@ -38,5 +38,7 @@
 	<!-- Natural Structures -->
 	<TR_GasDeposit>Current deposit value</TR_GasDeposit>
 	
+	<TR_MutationTip>Tiberium Mutation is a constant battle between beneficial and fatal effects on the body. Depending on </TR_MutationTip>
+	
 	
 </LanguageData>

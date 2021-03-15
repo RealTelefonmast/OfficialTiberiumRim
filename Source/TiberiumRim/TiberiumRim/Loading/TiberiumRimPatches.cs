@@ -46,6 +46,37 @@ namespace TiberiumRim
             TiberiumRimMod.mod.PatchPawnDefs();
         }
 
+        [HarmonyPatch(typeof(GenConstruct)), HarmonyPatch("CanPlaceBlueprintOver")]
+        public static class TestPatch
+        {
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                MethodInfo helper = AccessTools.Method(typeof(TestPatch), nameof(GibHelp));
+
+                bool patched = false;
+                int i = 0;
+                foreach (var code in instructions)
+                {
+                    if (code.opcode == OpCodes.Ret)
+                    {
+                        yield return new CodeInstruction(OpCodes.Ldc_I4, i);
+                        yield return new CodeInstruction(OpCodes.Call, helper);
+
+                        i++;
+                    }
+                    yield return code;
+                }
+
+            }
+
+            public static int GibHelp(int retval , int count)
+            {
+                Log.Message("Returning " + (retval != 0) + " at " + count, true);
+                return retval;
+            }
+
+        }
+
         //First Startup
         [HarmonyPatch(typeof(MainMenuDrawer)), HarmonyPatch("MainMenuOnGUI"), StaticConstructorOnStartup]
         class FirstGame
@@ -786,7 +817,7 @@ namespace TiberiumRim
                 //Suppression Field Logic
                 Map map = Traverse.Create(__instance).Field("map").GetValue<Map>();
                 var suppression = map.GetComponent<MapComponent_Suppression>();
-                if (suppression.IsInSuppressorField(c, out List<Comp_Suppression> sups))
+                if (suppression.IsInSuppressionCoverage(c, out List<Comp_Suppression> sups))
                 {
                     suppression.MarkDirty(sups);
                 }
@@ -856,7 +887,7 @@ namespace TiberiumRim
                     if (!building.CanBeSeenOver())
                     {
                         var suppression = building.Map.GetComponent<MapComponent_Suppression>();
-                        if (suppression.IsInSuppressorField(building.Position, out List<Comp_Suppression> sups))
+                        if (suppression.IsInSuppressionCoverage(building.Position, out List<Comp_Suppression> sups))
                         {
                             suppression.MarkDirty(sups);
                         }
@@ -923,7 +954,7 @@ namespace TiberiumRim
                 if (updateSuppressionGrid)
                 {
                     var suppression = instanceMap.GetComponent<MapComponent_Suppression>();
-                    if (suppression.IsInSuppressorField(instancePos, out List<Comp_Suppression> sups))
+                    if (suppression.IsInSuppressionCoverage(instancePos, out List<Comp_Suppression> sups))
                     {
                         suppression.MarkDirty(sups);
                     }
@@ -1156,6 +1187,14 @@ namespace TiberiumRim
             }
         }
 
+        //MessageReadOut
+        [HarmonyPatch(typeof(Message))]
+        [HarmonyPatch("Draw")]
+        public static class MessageDrawPatch
+        {
+
+        }
+
         //Readout
         [HarmonyPatch(typeof(ResourceReadout))]
         [HarmonyPatch("ResourceReadoutOnGUI")]
@@ -1163,7 +1202,8 @@ namespace TiberiumRim
         {
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
-                MethodInfo helper = AccessTools.Method(typeof(ResourceReadoutOnGUIPatch), nameof(AdjustResourceReadoutDownwards));
+                MethodInfo helper = AccessTools.Method(typeof(ResourceReadoutOnGUIPatch),
+                    nameof(AdjustResourceReadoutDownwards));
 
                 bool patched = false;
                 foreach (var code in instructions)
@@ -1171,7 +1211,7 @@ namespace TiberiumRim
                     yield return code;
                     if (code.opcode == OpCodes.Stloc_0 && !patched)
                     {
-                        yield return new CodeInstruction(OpCodes.Ldloc_0);    //Rect on stack  
+                        yield return new CodeInstruction(OpCodes.Ldloc_0); //Rect on stack  
                         yield return new CodeInstruction(OpCodes.Call, helper); //Consumes 1 and returns Rect
                         yield return new CodeInstruction(OpCodes.Stloc_0);
                         patched = true;
@@ -1191,7 +1231,7 @@ namespace TiberiumRim
                 if (!ShouldFix) return rect;
 
                 Rect newRect = new Rect(rect);
-                newRect.yMin += 60;
+                newRect.yMin += TotalHeight.Value + 10f;
                 return newRect;
             }
 
@@ -1199,25 +1239,46 @@ namespace TiberiumRim
 
             static float GetTiberiumCredits(Map map)
             {
-                return map.Tiberium().TNWManager.MainController?.Network.TotalSiloNetworkValue ?? 0;
+                return GetNetwork(map)?.TotalSiloNetworkValue ?? 0;
             }
 
-            public static void DrawCredits()
+            private static float? TotalHeight = 120;
+            private static float? ResourceReadoutHeight = 60f;
+
+            static TiberiumNetwork GetNetwork(Map map)
+            {
+                return map.Tiberium().TNWManager.MainController?.Network;
+            }
+            
+            static void DrawCredits()
             {
                 //
-                Rect rect = new Rect(5f, 10, 120f, 60f);
-                Rect rect2 = new Rect(5f, 10, rect.width, 30);
+                Rect mainRect = new Rect(5f, 10, 120f, TotalHeight.Value);
+                string creditLabel = "TR_Credits".Translate();
+                Vector2 creditLabelSize = Text.CalcSize(creditLabel);
+                Rect creditLabelRect = new Rect(5, mainRect.y, mainRect.width, creditLabelSize.y + 8);
+                Rect readoutRect = new Rect(5, creditLabelRect.yMax, mainRect.width, ResourceReadoutHeight.Value);
 
-                Widgets.DrawWindowBackground(rect);
-
+                //Main
+                //Widgets.DrawWindowBackground(mainRect);
+                TRWidgets.DrawColoredBox(mainRect, new Color(1,1,1,0.125f), Color.white, 1);
                 Text.Anchor = TextAnchor.MiddleCenter;
-                Widgets.Label(rect2, "TR_Credits".Translate());
-                Widgets.DrawLine(new Vector2(5f, 40), new Vector2(125f, 40), Color.gray, 1f);
-
-                Text.Font = GameFont.Medium;
-                Widgets.Label(new Rect(5, 40, rect.width, rect.height - rect2.height), Math.Round(GetTiberiumCredits(Find.CurrentMap)).ToString());
-                Text.Font = default;
+                Widgets.Label(creditLabelRect, creditLabel); 
                 Text.Anchor = default;
+                Widgets.DrawLine(new Vector2(5f, creditLabelRect.yMax), new Vector2(125f, creditLabelRect.yMax), Color.white, 1f);
+
+                TRWidgets.DrawTiberiumTypeReadout(readoutRect, GameFont.Tiny, -2, GetNetwork(Find.CurrentMap).TypeValues, out float height);
+                ResourceReadoutHeight = height;
+
+                Text.Font = GameFont.Tiny;
+                string totalLabel = "TR_CreditsTotal".Translate(Math.Round(GetTiberiumCredits(Find.CurrentMap)));
+                Vector2 totalLabelSize = Text.CalcSize(totalLabel);
+                Rect totalLabelRect = new Rect(10f, readoutRect.yMax, mainRect.width, totalLabelSize.y);
+                Widgets.Label(totalLabelRect, totalLabel);
+                Text.Font = default;
+
+                TotalHeight = totalLabelRect.yMax - mainRect.y;
+                //
             }
         }
     }

@@ -13,7 +13,7 @@ namespace TiberiumRim
         private bool symbioticBias = false;
         private bool visceralBias = false;
 
-        public override string LabelInBrackets => pawn.Dead ? null : VisceralRisk.ToStringPercent() + "/x" + MutationSpeed;
+        public override string LabelInBrackets => pawn.Dead ? null : (VisceralPct + SymbioticPct).ToStringPercent();//VisceralRisk.ToStringPercent() + "/x" + MutationSpeed;
 
         //public override float PainFactor { get; }
 
@@ -45,11 +45,11 @@ namespace TiberiumRim
                 if (visceralBias)
                     num *= 1.25f;
                 if(symbioticBias)
-                    num /= 1.3f;
-                //Being in Tiberium worsens the probability
+                    num *= 0.7f;
+                //Being in Tiberium increases the probability
                 if (pawn.Position.GetTiberium(pawn.Map) != null)
                     num *= 2f;
-                return num / 2f;
+                return num * 0.5f;
             }
         }
 
@@ -57,8 +57,7 @@ namespace TiberiumRim
         {
             get
             {
-                if (pawn.HealthComp().IsInTiberium)
-                    return 1;
+                if (pawn.HealthComp().IsInTiberium) return 1;
                 return Mathf.RoundToInt(Mathf.Lerp(1, 8, 1 - pawn.health.hediffSet.GetFirstHediffOfDef(TRHediffDefOf.TiberiumToxemia).Severity));
             }
         }
@@ -195,9 +194,7 @@ namespace TiberiumRim
             }
         }
 
-        [TweakValue("Hediff_MutationHelper_Bar_contracter", -50f, 50f)]
-        private static float contracted = 3f;
-        //
+
         public void DrawMutation(Rect rect, ref float curY)
         {
             float viscNum = VisceralPct;
@@ -216,10 +213,11 @@ namespace TiberiumRim
             Rect rect2 = new Rect((rect.width / 2f) + rectSide.width / 2f, curY, vec2.x, vec2.y);
             curY += rect1.height;
 
-            Rect fillRectTotal = new Rect(0f, curY, rect.width, 18f).ContractedBy(contracted);
+            Rect fillRectTotal = new Rect(0f, curY, rect.width, 18f).ContractedBy(3);
             Rect visceral = fillRectTotal.LeftHalf();
             Rect symbiotic = fillRectTotal.RightHalf();
-            curY += fillRectTotal.ExpandedBy(contracted).height;
+            Rect fullArea = new Rect(fillRectTotal.xMin, rect1.yMin, fillRectTotal.width, fillRectTotal.height + rect1.height);
+            curY += fillRectTotal.ExpandedBy(3).height;
 
             GUI.color = TRMats.VisceralColor;
             Widgets.Label(rect1, visc);
@@ -230,6 +228,7 @@ namespace TiberiumRim
             GUI.color = Color.white;
             Widgets.FillableBar(visceral, reverseVisc, TRMats.grey, TRMats.MutationVisceral, false);
             Widgets.FillableBar(symbiotic, symbNum, TRMats.MutationSymbiotic, TRMats.grey, false);
+            TooltipHandler.TipRegion(fullArea, "TR_MutationTip".Translate());
         }
     }
 }

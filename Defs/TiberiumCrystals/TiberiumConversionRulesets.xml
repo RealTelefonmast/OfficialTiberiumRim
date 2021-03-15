@@ -18,6 +18,7 @@
 			<li>TerrainFilter_WaterDeep		->	TiberiumDeepWater			,	TiberiumGlacier									</li>
 			<li>TerrainFilter_WaterShallow	->	TiberiumShallowWater		,	TiberiumGlacier									</li>
 			<li>TerrainFilter_WaterMoving	->	TiberiumWaterMovingChestDeep,	TiberiumGlacier									</li>
+			<li>PackedDirt					->	TiberiumSandGreen			,	TiberiumShardsGreen								</li>
 		</conversions>
 		<floraConversions>
 			<li>PlantFilter_Exotic, FloraOptions_Exotic, 	TerrainOption_Flora</li>

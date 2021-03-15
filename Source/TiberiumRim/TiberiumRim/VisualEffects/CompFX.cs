@@ -26,6 +26,9 @@ namespace TiberiumRim
         private List<Vector3> motePositions = new List<Vector3>();
         private MoteThrower MainThrower;
 
+        //Data for graphics
+        public Color[] GraphicColors;
+
         public int tickOffset = 0;
         public int startTick = 0;
         private int moteTicker = -1;
@@ -61,6 +64,7 @@ namespace TiberiumRim
                     Graphics.Add(new FXGraphic(this, Props.overlays[i], i));
                 }
             }
+            InitializeData();
             spawnedOnce = true;
             if (!respawningAfterLoad)
             {
@@ -69,7 +73,16 @@ namespace TiberiumRim
             }
         }
 
-        private List<Vector3> MotePositions
+        private void InitializeData()
+        {
+            GraphicColors = new Color[Graphics.Count];
+            for (int i = 0; i < Graphics.Count; i++)
+            {
+                GraphicColors[0] = Color.white;
+            }
+        }
+
+        private List<Vector3> MoteOrigins
         {
             get
             {              
@@ -180,27 +193,10 @@ namespace TiberiumRim
 
         private void MoteThrowTick()
         {
-            foreach(Vector3 v in MotePositions)
+            foreach(Vector3 v in MoteOrigins)
             {
                 MainThrower.ThrowerTick(v, parent.Map);
             }
-            /*
-            switch (Props.moteData.moteType)
-            {
-                case MoteMakerType.TiberiumSmoke:
-                    foreach (Vector3 v in MotePositions)
-                    {
-                        TRUtils.ThrowTiberiumSmoke(v, parent);
-                    }
-                    break;
-                case MoteMakerType.TiberiumFog:
-                    foreach (Vector3 v in MotePositions)
-                    {
-                        TRUtils.ThrowTiberiumContainerFog(v, parent);
-                    }
-                    break;
-            }
-            */
         }
 
         public override void ReceiveCompSignal(string signal)
@@ -263,13 +259,17 @@ namespace TiberiumRim
             return IParent.RotationOverrides[index];
         }
 
-        public Color ColorOverride(int index)
+        public ref Color ColorOverride(int index)
         {
             if (IParent == null || IParent.ColorOverrides.Count() < (index + 1))
             {
-                return Color.white;
+                GraphicColors[index] = Color.white;
             }
-            return IParent.ColorOverrides[index];
+            else
+            {
+                GraphicColors[index] = IParent.ColorOverrides[index];
+            }
+            return ref GraphicColors[index];
         }
 
         public Vector3 DrawPosition(int index)

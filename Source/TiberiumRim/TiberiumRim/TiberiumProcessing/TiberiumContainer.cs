@@ -11,7 +11,6 @@ namespace TiberiumRim
 
     public class TiberiumContainer : IExposable
     {
-        //private, public, protected
         public object parent;
         public IContainerHolder holder;
         public float capacity;
@@ -23,6 +22,7 @@ namespace TiberiumRim
         private Dictionary<TiberiumValueType, float> StoredTiberium = new Dictionary<TiberiumValueType, float>();
 
         public List<TiberiumValueType> AllStoredTypes => StoredTiberium.Keys.ToList();
+        public Dictionary<TiberiumValueType, float> AllStoredTypeValues => StoredTiberium;
 
         public float TotalStorage => StoredTiberium.Sum(t => t.Value);
         public float StoredPercent => TotalStorage / capacity;
@@ -259,7 +259,6 @@ namespace TiberiumRim
         public bool PotentialCapactiyFull(TiberiumValueType valueType, float potentialVal, out bool overfilled)
         {
             float val = potentialVal;
-            overfilled = false;
             foreach(TiberiumValueType type2 in AllStoredTypes)
             {
                 if(type2 != valueType)
@@ -267,10 +266,7 @@ namespace TiberiumRim
                     val += StoredTiberium[type2];
                 }
             }
-            if(val > capacity)
-            {
-                overfilled = true;
-            }
+            overfilled = val > capacity;
             return val >= capacity;
         }
 
@@ -283,7 +279,7 @@ namespace TiberiumRim
                 {
                     foreach (TiberiumValueType type in StoredTiberium.Keys)
                     {
-                        color += TRUtils.ColorForType(type) * (StoredTiberium[type] / capacity);
+                        color += type.GetColor() * (StoredTiberium[type] / capacity);
                     }
                 }
                 return color;

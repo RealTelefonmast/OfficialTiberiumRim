@@ -11,24 +11,29 @@ namespace TiberiumRim
     public class CompTNW_Crafter : CompTNW
     {
         public new Building_WorkTable parent;
+        public TiberiumBillStack billStack;
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-            parent = base.parent as Building_WorkTable;           
+            parent = base.parent as Building_WorkTable;
+            if(!respawningAfterLoad)
+                billStack = new TiberiumBillStack(this);
         }
 
-        public bool IsWorkedOn => CurBill != null;
-
-        public TiberiumBill CurBill
+        public override void PostExposeData()
         {
-            get
-            {
-                return (TiberiumBill)parent.billStack.Bills.Find(b => b is TiberiumBill tb && tb.isBeingDone);
-            }
+            base.PostExposeData();
+            Scribe_Deep.Look(ref billStack, "tiberiumBillStack", this);
         }
 
-        public Color CurColor => CurBill?.BillColor ?? Color.clear;
+        public bool IsWorkedOn => false; //CurBill != null;
+
+        public TiberiumBillStack BillStack => billStack;
+
+        //public CustomTiberiumBill CurrentTiberiumBill => BillStack.Bills.Find(b => b);
+
+        public Color CurColor => Color.clear;//CurBill?.BillColor ?? Color.clear;
 
         public override Color[] ColorOverrides => new Color[] { CurColor, Color.white, Color.white };
         public override float[] OpacityFloats => new float[] { 1f, 1f, 1f };

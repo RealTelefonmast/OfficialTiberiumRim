@@ -21,6 +21,12 @@ namespace TiberiumRim
         public override Color[] ColorOverrides => new Color[1] { Container?.Color ?? Color.white };
         public override bool[] DrawBools => new bool[1] { true };
 
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Deep.Look(ref Container, "tibContainer");
+        }
+
         public override void DrawGUIOverlay()
         {
             base.DrawGUIOverlay();

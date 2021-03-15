@@ -17,9 +17,9 @@
 		<WallCorruptionChance>0.01</WallCorruptionChance>
 		<ChunkCorruptionChance>0.01</ChunkCorruptionChance>
 		
-		<GreenColor>(90,230,95)</GreenColor>
-		<BlueColor>(90,105,230)</BlueColor>
-		<RedColor>(230,75,75)</RedColor>
+		<GreenColor>(111,200,4)</GreenColor>
+		<BlueColor>(8,142,208)</BlueColor>
+		<RedColor>(208,8,42)</RedColor>
 		<SludgeColor>(160,255,0)</SludgeColor>
 		<GasColor>(215,255,165)</GasColor>
 		<AlertColor>(50, 100, 50)</AlertColor>

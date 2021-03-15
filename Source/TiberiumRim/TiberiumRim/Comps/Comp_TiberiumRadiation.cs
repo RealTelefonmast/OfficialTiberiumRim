@@ -32,7 +32,7 @@ namespace TiberiumRim
             base.PostSpawnSetup(respawningAfterLoad);
             ParentPos = parent.Position;
             AffectedCells = GenRadial.RadialCellsAround(ParentPos, Props.radius, true).Where(c => c.InBounds(parent.Map)).ToList();
-            TryRadiate();
+            TryStartRadiating();
         }
 
         public override void PostDeSpawn(Map map)
@@ -40,13 +40,12 @@ namespace TiberiumRim
             base.PostDeSpawn(map);
             if (IsRadiating)
             {
-                var Rand = AffectedCells.RandomElement();
                 map.Tiberium().TiberiumAffecter.HediffGrid.Notify_SourceDespawned(this);
                 Reset(map);
             }
         }
 
-        public void TryRadiate()
+        public void TryStartRadiating()
         {
             if (ShouldRadiate && !IsRadiating)
             {
@@ -147,6 +146,7 @@ namespace TiberiumRim
         public override void CompTick()
         {
             base.CompTick();
+            if (!parent.Spawned) return;
             if (parent.IsHashIntervalTick(250) && ShouldGlow)
             {
                 TiberiumMotes.ThrowTiberiumGlow(AffectedCells.RandomElement(), parent.Map, Rand.Range(1.25f, 1.85f));
@@ -154,7 +154,7 @@ namespace TiberiumRim
 
             if (!IsRadiating && ShouldRadiate)
             {
-                TryRadiate();
+                TryStartRadiating();
             }
         }
 
@@ -167,7 +167,7 @@ namespace TiberiumRim
             }
             if (!IsRadiating && ShouldRadiate)
             {
-                TryRadiate();
+                TryStartRadiating();
             }
         }
 

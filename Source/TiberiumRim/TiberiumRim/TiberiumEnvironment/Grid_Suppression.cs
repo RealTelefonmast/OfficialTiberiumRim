@@ -8,34 +8,62 @@ using UnityEngine;
 
 namespace TiberiumRim
 {
-    public class SuppressionGrid : ICellBoolGiver
+    public class SuppressionGrid
     {
         public Map map;
-        public BoolGrid suppressionBools;
-        public CellBoolDrawer drawer;
+        public List<Comp_Suppression> Sources = new List<Comp_Suppression>();
+        public BoolGrid CoveredBools;
+        public BoolGrid SuppressionBools;
 
         public SuppressionGrid(Map map)
         {
             this.map = map;
-            suppressionBools = new BoolGrid(map);
-            drawer = new CellBoolDrawer(this, map.Size.x, map.Size.z, 0.4f);
+            CoveredBools = new BoolGrid(map);
+            SuppressionBools = new BoolGrid(map);
         }
 
-        public void Set(IntVec3 c, bool value)
+        public List<Comp_Suppression> SuppressorsAt(IntVec3 cell, Comp_Suppression except = null)
         {
-            suppressionBools.Set(c, value);
+            return Sources.Where(s => s != except && s.CoversCell(cell)).ToList();
         }
 
-        public Color Color => Color.white;
-
-        public Color GetCellExtraColor(int index)
+        public void RegisterSource(Comp_Suppression source)
         {
-            return suppressionBools[index] ? Color.red : Color.gray;
+            Sources.Add(source);
         }
 
-        public bool GetCellBool(int index)
+        public void DeregisterSource(Comp_Suppression source)
         {
-            return suppressionBools[index];
+            Sources.Remove(source);
+            foreach (var cell in source.SuppressionCells)
+            {
+                if (!cell.InBounds(map)) continue;
+                CoveredBools[cell] = !SuppressorsAt(cell, source).NullOrEmpty();
+            }
+            ToggleSuppressor(source, false);
+        }
+
+        public void Notify_SuppressionSourceUpdated(Comp_Suppression suppressor, List<IntVec3> oldCells)
+        {
+            foreach (var cell in oldCells)
+            {
+                if (!cell.InBounds(map)) continue;
+                CoveredBools[cell] = false;
+                SuppressionBools[cell] = SuppressorsAt(cell, suppressor).Any(t => t.AffectsCell(cell));
+            }
+            foreach (var cell in suppressor.SuppressionCells)
+            {
+                if (!cell.InBounds(map)) continue;
+                CoveredBools[cell] = true;
+            }
+        }
+
+        public void ToggleSuppressor(Comp_Suppression suppressor, bool toggleOn)
+        {
+            foreach (var cell in suppressor.SuppressionCells)
+            {
+                SuppressionBools[cell] = SuppressorsAt(cell, suppressor).Any(s => s.SuppressingNow) || (suppressor.SuppressingNow && toggleOn);
+            }
         }
     }
 }

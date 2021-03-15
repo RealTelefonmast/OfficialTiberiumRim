@@ -164,7 +164,7 @@
 		<costList>
 			<Steel>5</Steel>
 		</costList>
-		<drawerType>MapMeshAndRealTime</drawerType>
+		<drawerType>MapMeshOnly</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Network/TNW_PipeAtlas</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -698,7 +698,7 @@
 			<li Class="TiberiumRim.CompProperties_TNW">
 				<compClass>TiberiumRim.CompTNW_WorkBench</compClass>
 				<maxStorage>1000</maxStorage>
-				<tnwbMode>Consumer</tnwbMode>
+				<tnwbMode>Storage</tnwbMode>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -821,7 +821,6 @@
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<inspectorTabs>
-			<li>ITab_Bills</li>
 			<li>TiberiumRim.ITab_CustomRefineryBills</li>
 		</inspectorTabs>
 		<building>

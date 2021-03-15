@@ -32,6 +32,28 @@ namespace TiberiumRim
         public float TotalNetworkValue => NetworkSet.FullList.Sum(c => c.Container.TotalStorage);
         public float TotalSiloNetworkValue => NetworkSet.Silos.Any() ? NetworkSet.Silos.Sum(c => c.Container.TotalStorage) : 0;
 
+        public IEnumerable<TiberiumValueType> AvailableTypes => NetworkSet.FullList.SelectMany(t => t.Container.AllStoredTypes).Distinct();
+
+        public Dictionary<TiberiumValueType, float> TypeValues
+        {
+            get
+            {
+                Dictionary<TiberiumValueType, float> dictionary = new Dictionary<TiberiumValueType, float>();
+                foreach (var comp in NetworkSet.FullList)
+                {
+                    foreach (var typeValue in comp.Container.AllStoredTypeValues)
+                    {
+                        if (!dictionary.ContainsKey(typeValue.Key))
+                        {
+                            dictionary.Add(typeValue.Key, 0);
+                        }
+                        dictionary[typeValue.Key] += typeValue.Value;
+                    }
+                }
+                return dictionary;
+            }
+        }
+
         public Color GeneralColor
         {
             get

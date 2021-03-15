@@ -18,31 +18,40 @@ namespace TiberiumRim
         public List<IntVec3> SuppressionCells { get; set; } = new List<IntVec3>();
 
         public bool IsPowered => PowerComp.PowerOn;
+        public bool SuppressingNow => IsPowered;
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
             Suppression = parent.Map.GetComponent<MapComponent_Suppression>();
             PowerComp = parent.GetComp<CompPowerTrader>();
+
             Suppression.RegisterSuppressor(this);
-            Suppression.UpdateGrid(this);
         }
 
         public override void PostDeSpawn(Map map)
         {
             Suppression.DeregisterSuppressor(this);
-            Suppression.RemoveFromGrid(SuppressionCells);
             base.PostDeSpawn(map);
+        }
+
+        public bool CoversCell(IntVec3 cell)
+        {
+            return SuppressionCells.Contains(cell);
+        }
+
+        public bool AffectsCell(IntVec3 cell)
+        {
+            if (!SuppressingNow) return false;
+            return SuppressionCells.Contains(cell);
         }
 
         public void UpdateSuppressionCells()
         {
-            Suppression.RemoveFromGrid(SuppressionCells);
-
+            //Select all potentially coverable cells and define new suppression area
             bool Predicate(IntVec3 c) => !c.Roofed(parent.Map) && GenSight.LineOfSight(parent.Position, c, parent.Map);
             SuppressionCells = TRUtils.SectorCells(parent.Position, parent.Map, Props.radius, Props.angle, parent.Rotation.AsAngle, false, Predicate).ToList();
-
-            Suppression.AddToGrid(SuppressionCells);
+            
         }
 
         public override void ReceiveCompSignal(string signal)
@@ -50,10 +59,10 @@ namespace TiberiumRim
             switch (signal)
             {
                 case "PowerTurnedOff":
-                    Suppression.RemoveFromGrid(SuppressionCells);
+                    Suppression.Toggle(this, false);
                     break;
                 case "PowerTurnedOn":
-                    Suppression.AddToGrid(SuppressionCells);
+                    Suppression.Toggle(this, true);
                     break;
             }
 
@@ -65,8 +74,10 @@ namespace TiberiumRim
             base.PostDraw();
             if (Find.Selector.IsSelected(parent))
             {
-                Color color = IsPowered ? Color.cyan : Color.gray;
-                GenDraw.DrawFieldEdges(SuppressionCells, color);
+                var coveredCells = Suppression.CoveredCells.ToList();
+                var suppressedCells = Suppression.SuppressedCells.ToList();
+                GenDraw.DrawFieldEdges(coveredCells, Color.gray);
+                GenDraw.DrawFieldEdges(suppressedCells, Color.cyan);
             }
         }
     }

@@ -17,9 +17,11 @@ namespace TiberiumRim
                 return;
             Map map = Find.CurrentMap;
             Predicate<IntVec3> pred = cell => !cell.Roofed(map) && GenSight.LineOfSight(center, cell, map);
-            GenDraw.DrawFieldEdges(TRUtils.SectorCells(center, map, props.radius, props.angle, rot.AsAngle,false, pred).ToList(), Color.cyan);
-            var otherCells = map.GetComponent<MapComponent_Suppression>().ActiveCells.ToList();
-            GenDraw.DrawFieldEdges(otherCells, Color.gray);
+            GenDraw.DrawFieldEdges(TRUtils.SectorCells(center, map, props.radius, props.angle, rot.AsAngle,false, pred).ToList(), Color.blue);
+            var coveredCells = map.GetComponent<MapComponent_Suppression>().CoveredCells.ToList();
+            var suppressedCells = map.GetComponent<MapComponent_Suppression>().SuppressedCells.ToList();
+            GenDraw.DrawFieldEdges(coveredCells, Color.gray);
+            GenDraw.DrawFieldEdges(suppressedCells, Color.cyan);
 
         }
     }

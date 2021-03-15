@@ -97,17 +97,5 @@ namespace TiberiumRim
         {
             hediffGrid.AddInfection(pos, pctValue);
         }
-
-        /*
-        public void SetRadiation(IntVec3 pos, float pctValue)
-        {
-            hediffGrid.SetRad(pos, pctValue);
-        }
-
-        public void SetInfection(IntVec3 pos, float pctValue)
-        {
-            hediffGrid.SetInf(pos, pctValue);
-        }
-        */
     }
 }

@@ -152,7 +152,10 @@ namespace TiberiumRim
                     CasterPawn.records.AccumulateStoryEvent(StoryEventDefOf.AttackedPlayer);
                 }
             }
-            Props.tiberiumCostPerBurst?.Pay(TiberiumComp.Container);
+
+            //var tibCost = Props.tiberiumCostPerBurst;
+            //if(tibCost?.CanPayWith(TiberiumComp.Container)?? false)
+            Props.tiberiumCostPerBurst?.PayWith(TiberiumComp);
         }
 
         protected override bool TryCastShot()
@@ -164,8 +167,8 @@ namespace TiberiumRim
 
             if (flag && Props.tiberiumCostPerShot != null)
             {
-                if (Props.tiberiumCostPerShot.CanPay(TiberiumComp.Container))
-                    Props.tiberiumCostPerShot.Pay(TiberiumComp.Container);
+                if (Props.tiberiumCostPerShot.CanPayWith(TiberiumComp))
+                    Props.tiberiumCostPerShot.PayWith(TiberiumComp);
                 else
                     return false;
             }
@@ -188,11 +191,11 @@ namespace TiberiumRim
             }
             if (Props.tiberiumCostPerBurst != null)
             {
-                return Props.tiberiumCostPerBurst.CanPay(TiberiumComp.Container);
+                return Props.tiberiumCostPerBurst.CanPayWith(TiberiumComp);
             }
             if(Props.tiberiumCostPerShot != null)
             {
-                return Props.tiberiumCostPerShot.CanPay(TiberiumComp.Container);
+                return Props.tiberiumCostPerShot.CanPayWith(TiberiumComp);
             }
             if (CasterIsPawn)
             {

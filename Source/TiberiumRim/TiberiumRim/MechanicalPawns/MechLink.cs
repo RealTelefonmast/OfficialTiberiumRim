@@ -16,6 +16,8 @@ namespace TiberiumRim
         public List<MechanicalPawn> LinkedMechs => connectedMechs;
         public bool CanHaveNewMech => capacity <= 0 || connectedMechs.Count < capacity;
 
+        public int Count => LinkedMechs.Count;
+
         public MechLink(int capacity)
         {
             if (capacity > 0)
@@ -54,5 +56,6 @@ namespace TiberiumRim
             connectedMechs.Remove(mech);
         }
 
+        public MechanicalPawn this[int i] => LinkedMechs[i];
     }
 }

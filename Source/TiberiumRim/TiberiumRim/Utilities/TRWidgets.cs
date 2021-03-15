@@ -117,6 +117,28 @@ namespace TiberiumRim
             GUI.color = oldColor;
         }
 
+        public static void DrawTiberiumTypeReadout(Rect rect, GameFont font, float textYOffset, Dictionary<TiberiumValueType, float> typeValues, out float height)
+        {
+            GUI.BeginGroup(rect);
+            height = 5;
+            Text.Font = font;
+            Text.Anchor = TextAnchor.UpperLeft;
+            foreach (var type in typeValues.Keys)
+            {
+                // float value = GetNetwork(Find.CurrentMap).NetworkValueFor(type);
+                //if(value <= 0) continue;
+                string label = type + ": " + typeValues[type];
+                Rect typeRect = new Rect(5, height, 10, 10);
+                Vector2 typeSize = Text.CalcSize(label);
+                Rect typeLabelRect = new Rect(20, height + textYOffset, typeSize.x, typeSize.y);
+                Widgets.DrawBoxSolid(typeRect, type.GetColor());
+                Widgets.Label(typeLabelRect, label);
+                height += 10 + 2;
+            }
+            Text.Font = default;
+            Text.Anchor = default;
+            GUI.EndGroup();
+        }
 
     }
 }

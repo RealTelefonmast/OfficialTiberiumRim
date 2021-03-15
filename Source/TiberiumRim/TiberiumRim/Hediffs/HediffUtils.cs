@@ -331,8 +331,8 @@ namespace TiberiumRim
             pod.VisceralSetup(pawn);
             GenPlace.TryPlaceThing(pod, loc, map, ThingPlaceMode.Near);
 
-            if (!pawn.Faction?.IsPlayer ?? true) return;
-            Letter letter = LetterMaker.MakeLetter("TR_VisceralPodLetter".Translate(), "TR_VisceralPodLetterDesc".Translate(pawn), LetterDefOf.NegativeEvent, pod, Faction.OfPlayer);
+            if ((!pawn.Faction?.IsPlayer ?? true) || !pawn.Faction.AllyOrNeutralTo(Faction.OfPlayer)) return;
+            Letter letter = LetterMaker.MakeLetter("TR_VisceralPodLetter".Translate(), "TR_VisceralPodLetterDesc".Translate(pawn), LetterDefOf.NegativeEvent, pod, pawn.Faction);
             Find.LetterStack.ReceiveLetter(letter);
         }
 

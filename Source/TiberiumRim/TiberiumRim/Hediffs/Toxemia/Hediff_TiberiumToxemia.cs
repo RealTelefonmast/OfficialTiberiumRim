@@ -20,11 +20,19 @@ namespace TiberiumRim
             {
                 if (pawn.Dead) return null;
                 string label = "";
-                var time = TicksUntilDeath(pawn);
-                if (time != null)
+                if (IsImmune)
                 {
-                    label += "TR_HediffToxemiaInfBracket".Translate(time?.ToStringTicksToPeriod(false, false, true, false));
+                    label += "TR_HediffToxemiaRecovering".Translate();
                 }
+                else
+                {
+                    var time = TicksUntilDeath(pawn);
+                    if (time != null)
+                    {
+                        label += "TR_HediffToxemiaInfBracket".Translate(time?.ToStringTicksToPeriod(false, false, true, false));
+                    }
+                }
+
                 return label;
             }
         }
@@ -51,6 +59,7 @@ namespace TiberiumRim
 
         private Hediff Radiation => pawn.health.hediffSet.GetFirstHediffOfDef(TRHediffDefOf.TiberiumExposure);
 
+        private bool IsImmune => pawn.HealthComp().IsTiberiumImmune;
         private bool HasRadiation => Radiation != null;
         private bool HasMutation => pawn.health.hediffSet.HasHediff(TRHediffDefOf.TiberiumMutation);
         private bool HasCrystallization => TotalAffectedParts > 0;

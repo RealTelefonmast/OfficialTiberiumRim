@@ -11,22 +11,26 @@ namespace TiberiumRim
 {
     public class ITab_CustomRefineryBills : ITab
     {
-        private Dictionary<ThingDef, int> MetalAmount = new Dictionary<ThingDef, int>();
-        private string[] textBuffers;
+        public static readonly float MarketPriceFactor = 2.4f;
+        public static readonly float WorkAmountFactor = 48;
+        private static readonly Vector2 WinSize = new Vector2(800, 500);
+        private static readonly float resourceSize = 26;
+
         private static float maxLabelWidth = 0;
 
-        public static readonly float MarketPriceTiberiumFactor = 1.9f;
+        public static IEnumerable<ThingDef> Metals => DefDatabase<ThingDef>.AllDefs.Where(t => t.mineable && t.building.mineableThing != null && t.building.mineableThing.IsMetal).Select(t => t.building.mineableThing);
+
+        //Scrollers
+        private Vector2 billCreationResourceScroller = new Vector2();
+        private Vector2 billReadourScroller = new Vector2();
+
+        public CompTNW_Crafter CrafterComp => SelThing.TryGetComp<CompTNW_Crafter>();
+        public TiberiumBillStack BillStack => CrafterComp.BillStack;
 
         public ITab_CustomRefineryBills()
         {
-            this.size = new Vector2(800f, 400f);
+            this.size = WinSize;
             this.labelKey = "TR_TibResourceRefiner";
-            var metals = DefDatabase<ThingDef>.AllDefs.Where(t => t.IsMetal);
-            textBuffers = new string[metals.Count()];
-            foreach (var resource in metals)
-            {
-                MetalAmount.Add(resource, 0);
-            }
         }
 
         public override void OnOpen()
@@ -34,91 +38,194 @@ namespace TiberiumRim
             base.OnOpen();
         }
 
+        public override void TabUpdate()
+        {
+            base.TabUpdate();
+        }
+
         protected override void CloseTab()
         {
             base.CloseTab();
         }
 
-        public int TotalCost => MetalAmount.Sum(m => (int)(m.Key.BaseMarketValue * m.Value * MarketPriceTiberiumFactor));
-
-        public TiberiumCost MainCost
+        public override void Notify_ClearingAllMapsMemory()
         {
-            get
-            {
-                TiberiumCost cost = new TiberiumCost();
-                foreach (var i in MetalAmount)
-                {
-                    cost.costs.Add(new TiberiumTypeCost());
-                }
-                return cost;
-            }
+            base.Notify_ClearingAllMapsMemory();
+            TiberiumBillUtility.Clipboard = null;
         }
-
-        private IEnumerable<ThingDef> Metals => DefDatabase<ThingDef>.AllDefs.Where(t => t.IsMetal);
 
         protected override void FillTab()
         {
-            Rect mainRect = new Rect(default, size).ContractedBy(15f);
-            GUI.BeginGroup(mainRect);
-            //Left Part
+            Text.Font = GameFont.Small;
+            Rect mainRect = new Rect(0, 24, WinSize.x, WinSize.y - 24).ContractedBy(10);
+            Rect leftPart = mainRect.LeftPart(0.6f);
+            Rect rightPart = mainRect.RightPart(0.4f);
+            Rect pasteButton = new Rect(rightPart.x, rightPart.y - 22, 22, 22);
 
-            float curY = 0;
-            for (int i = 0; i < Metals.Count(); i++)
+            //Left Part
+            BillCreation(leftPart.ContractedBy(5));
+            //Right Part
+            DrawBillInfo(rightPart.ContractedBy(5));
+            //Paste Option
+            if (TiberiumBillUtility.Clipboard != null)
             {
-                ResourceRow(new Rect(0, curY, mainRect.LeftHalf().width, 40f), Metals.ElementAt(i), i);
-                curY += 42f;
+                if (Widgets.ButtonImage(pasteButton, TiberiumContent.Paste))
+                {
+                    BillStack.PasteFromClipBoard();
+                }
+            }
+            else
+            {
+                GUI.color = Color.gray;
+                Widgets.DrawTextureFitted(pasteButton, TiberiumContent.Paste, 1);
+                GUI.color = Color.white;
             }
 
-            //Right Part
+        }
 
-            Widgets.Label(new Rect(0,0, mainRect.RightHalf().width, mainRect.RightHalf().height), "Current Cost: " + TotalCost);
+        private void DrawBillInfo(Rect rect)
+        {
+            Widgets.DrawMenuSection(rect);
+            GUI.BeginGroup(rect);
+            
+            Rect outRect = new Rect(0,0, rect.width, rect.height);
+            Rect viewRect = new Rect(0,0, rect.width, CrafterComp.billStack.Bills.Sum(a => a.DrawHeight));
+            Widgets.BeginScrollView(outRect, ref billReadourScroller, viewRect, false);
+            float curY = 0;
+            for (var index = 0; index < CrafterComp.billStack.Count; index++)
+            {
+                var bill = CrafterComp.billStack[index];
+                bill.DrawBill(new Rect(0, curY, rect.width, bill.DrawHeight), index);
+                curY += bill.DrawHeight;
+            }
+            Widgets.EndScrollView();
+            GUI.EndGroup();
+        }
+
+        private void BillCreation(Rect rect)
+        {
+            Rect topPart = rect.TopPart(0.65f);
+            Rect bottomPart = rect.BottomPart(0.35f);
+
+            //TOP PART
+            topPart = topPart.ContractedBy(5f);
+            GUI.BeginGroup(topPart);
+
+            string label1 = "Desired Resources";
+            string label2 = "Credit Cost (" + "Market Value".Colorize(Color.yellow) + " * Credit Factor".Colorize(TRMats.Orange) + ")";
+            float label1H = Text.CalcHeight(label1, rect.width);
+            float resourceWidth = resourceSize + maxLabelWidth + 60;
+            Rect label1Rect = new Rect(0, 0, rect.width, label1H);
+            Rect label2Rect = new Rect(resourceWidth + 5, 0, rect.width - (resourceWidth + 5), label1H);
+            Widgets.Label(label1Rect, label1);
+            Widgets.Label(label2Rect, label2);
+            //Wanted Resources
+            Rect resourceRect = new Rect(0, label1H + 5, rect.width, topPart.height - label1H);
+            Rect scrollRect = new Rect(0, label1H + 5, rect.width, BillStack.MetalAmount.Count * (resourceSize + 4));
+
+            Widgets.BeginScrollView(resourceRect, ref billCreationResourceScroller, scrollRect, false);
+            float curY = label1H + 5;
+            for (int i = 0; i < Metals.Count(); i++)
+            {
+                ResourceRow(new Rect(0, curY, rect.width, resourceSize), Metals.ElementAt(i), i);
+                curY += resourceSize + 4;
+            }
+
+            Widgets.EndScrollView();
+            GUI.EndGroup();
+
+            //BOTTOM PART
+            BillCreationInfo(bottomPart);
+        }
+
+        private void BillCreationInfo(Rect rect)
+        {
+            Widgets.DrawMenuSection(rect);
+            rect = rect.ContractedBy(5f);
+            GUI.BeginGroup(rect);
+            string nameLabel = "Bill Name: ";
+            string workLabel = "Work To Do: " + BillStack.TotalWorkAmount;
+            string tiberiumCostLabel = "Cost: " + BillStack.TotalCost;
+            Vector2 nameLabelSize = Text.CalcSize(nameLabel);
+            Vector2 workLabelSize = Text.CalcSize(workLabel);
+            Vector2 tiberiumCostLabelSize = Text.CalcSize(tiberiumCostLabel);
+            Rect nameLabelRect = new Rect(0, 0, nameLabelSize.x, nameLabelSize.y);
+            Rect nameFieldRect = new Rect(nameLabelRect.xMax, 0, (rect.width / 2) - nameLabelRect.width,
+                nameLabelRect.height);
+
+            Rect workLabelRect = new Rect(0, nameLabelRect.yMax + 5, workLabelSize.x, workLabelSize.y);
+            Rect tiberiumCostLabelRect = new Rect(0, workLabelRect.yMax, tiberiumCostLabelSize.x, tiberiumCostLabelSize.y);
+            Rect addButtonRect = new Rect(rect.width - 80, rect.height - 30, 80, 30);
+
+            Widgets.Label(nameLabelRect, nameLabel);
+            BillStack.billName = Widgets.TextField(nameFieldRect, BillStack.billName);
+
+            Widgets.Label(workLabelRect, workLabel);
+            Widgets.Label(tiberiumCostLabelRect, tiberiumCostLabel);
+
+            if (Widgets.ButtonText(addButtonRect, "Add Bill"))
+            {
+                BillStack.CreateNewBill();
+            }
+
             GUI.EndGroup();
         }
 
         private void ResourceRow(Rect rect, ThingDef resource, int index)
         {
-            //Icon
-            Rect iconRect = new Rect(rect.xMin, rect.y, 30, 30);
+            Rect iconRect = new Rect(rect.xMin, rect.y, resourceSize, resourceSize);
+            Vector2 labelSize = Text.CalcSize(resource.LabelCap);
+            if (labelSize.x > maxLabelWidth) maxLabelWidth = labelSize.x;
+
+            Rect labelRect = new Rect(iconRect.xMax, rect.y, labelSize.x, resourceSize);
+            Rect fieldRect = new Rect(iconRect.xMax + maxLabelWidth + 5, rect.y, 60, resourceSize);
+
             Widgets.ThingIcon(iconRect, resource);
-            //Label
-            Vector2 vector = Text.CalcSize(resource.LabelCap);
-            if (vector.x > maxLabelWidth)
-                maxLabelWidth = vector.x;
-            Rect labelRect = new Rect(iconRect.xMax, rect.y, vector.x, 30);
             Text.Anchor = TextAnchor.MiddleLeft;
             Widgets.Label(labelRect, resource.LabelCap);
             Text.Anchor = default;
-            //Buttons
-            //Rect buttonArray = new Rect(labelRect.xMax, rect.y, 100, 40);
-            float buttonArrayX = iconRect.xMax + maxLabelWidth + 5;
-            Rect buttonMO = new Rect(buttonArrayX, rect.y,30,30);
-            Rect buttonMT = new Rect(buttonMO.xMax, rect.y, 40, 30);
-            Rect buttonPT = new Rect(buttonMT.xMax, rect.y, 40, 30);
-            Rect buttonPO = new Rect(buttonPT.xMax, rect.y, 30, 30);
-            if (Widgets.ButtonText(buttonMO, "-1"))
-            {
-                MetalAmount[resource] -= 1;
-            }
-            if (Widgets.ButtonText(buttonMT, "-10"))
-            {
-                MetalAmount[resource] -= 10;
-            }
-            if (Widgets.ButtonText(buttonPT, "+10"))
-            {
-                MetalAmount[resource] += 10;
-            }
-            if (Widgets.ButtonText(buttonPO, "+1"))
-            {
-                MetalAmount[resource] += 1;
-            }
-            //Value Field
-            Rect fieldRect = new Rect(buttonPO.xMax, rect.y, 60, 30);
-            var temp = MetalAmount[resource];
-            Widgets.TextFieldNumeric<int>(fieldRect, ref temp, ref textBuffers[index]); //(int)Widgets.HorizontalSlider(sliderRect, MetalAmount[resource], 0, 100, false, default, default, default, 1);
-            MetalAmount[resource] = temp;
-            
-            //
 
+            var temp = BillStack.MetalAmount[resource];
+            Widgets.TextFieldNumeric<int>(fieldRect, ref temp, ref BillStack.textBuffers[index], 0, resource.stackLimit * 2); //(int)Widgets.HorizontalSlider(sliderRect, MetalAmount[resource], 0, 100, false, default, default, default, 1);
+            BillStack.MetalAmount[resource] = temp;
+
+            CostLabel(new Vector2(fieldRect.xMax + 5, fieldRect.y), resource);
+
+            //Rect buttonAdd = new Rect(fieldRect.xMax, rect.y, 30, resourceSize/2);
+            //Rect buttonRemove = new Rect(fieldRect.xMax, rect.y+15, 30, resourceSize/2);
+            /*
+            if (Widgets.ButtonText(buttonAdd, "▲"))
+            {
+                MetalAmount[resource] = Mathf.Clamp(MetalAmount[resource] + 10, 0, resource.stackLimit * 2); 
+                textBuffers[index] = MetalAmount[resource].ToString();
+            }
+            if (Widgets.ButtonText(buttonRemove, "▼"))
+            {
+                MetalAmount[resource] = Mathf.Clamp(MetalAmount[resource] - 10, 0, resource.stackLimit * 2);
+                textBuffers[index] = MetalAmount[resource].ToString();
+            }
+            */
+        }
+
+        // × 2400 (BaseMarketValue * Multiplier)
+        private void CostLabel(Vector2 pos, ThingDef resource)
+        {
+            string totalCost = ("× " + (BillStack.MetalAmount[resource] * resource.BaseMarketValue * MarketPriceFactor));
+            string marketValue = " (" + (resource.BaseMarketValue + " ").Colorize(Color.yellow);
+            string multiplier = ("* " + MarketPriceFactor).Colorize(TRMats.Orange) + ")";
+            Vector2 label1Size = Text.CalcSize(totalCost);
+            Vector2 label2Size = Text.CalcSize(marketValue);
+            Vector2 label3Size = Text.CalcSize(multiplier);
+            Rect totalCostRect = new Rect(pos.x, pos.y, label1Size.x, label1Size.y);
+            Rect baseMarketValueRect = new Rect(totalCostRect.xMax, pos.y, label2Size.x, label2Size.y);
+            Rect multiplierRect = new Rect(baseMarketValueRect.xMax, pos.y, label3Size.x, label3Size.y);
+
+            Widgets.Label(totalCostRect, totalCost);
+            Widgets.Label(baseMarketValueRect, marketValue);
+            Widgets.Label(multiplierRect, multiplier);
+            TooltipHandler.TipRegion(totalCostRect, "");
+            TooltipHandler.TipRegion(baseMarketValueRect,  resource.LabelCap + "'s market value.");
+            TooltipHandler.TipRegion(multiplierRect, "Tiberium Cost Factor");
         }
     }
 }

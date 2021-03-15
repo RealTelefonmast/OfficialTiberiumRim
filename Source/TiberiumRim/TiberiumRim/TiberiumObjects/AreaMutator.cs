@@ -92,15 +92,8 @@ namespace TiberiumRim
 
         public void Tick()
         {
-            if (finished)
-            {
-                if (Ruleset.createBlossom && !HasBlossom)
-                {
-                    CreateBlossom();
-                }
-                return;
-            }
-            
+            if (finished) return;
+
             //Iterate Over Remaining Cells
             if (tibField.MainProducer.IsHashIntervalTick(mutationInterval))
             {
@@ -159,7 +152,7 @@ namespace TiberiumRim
         private bool TryGetNextCell(IntVec3 from, out IntVec3 nextCell)
         {
             nextCell = IntVec3.Invalid;
-            bool Predicate(IntVec3 c) => (!c.IsBlocked(map, out bool byPlant) || byPlant) && Ruleset.AllowTerrain(c.GetTerrain(map));
+            bool Predicate(IntVec3 c) => !c.IsSuppressed(map) && (!c.IsBlocked(map, out bool byPlant) || byPlant) && Ruleset.AllowTerrain(c.GetTerrain(map));
             int attempts = 0;
             while (!nextCell.InBounds(map) || NewCells.Contains(nextCell) || MutatedArea.Contains(nextCell) || !Predicate(nextCell))
             {
@@ -223,13 +216,17 @@ namespace TiberiumRim
 
         public TiberiumProducer CreateBlossom()
         {
-            var randomCell = tibField.FieldCells.RandomElementByWeight(t =>
+            bool Predicate(IntVec3 x) => x.InBounds(map) && !x.IsSuppressed(map) && tibField.FieldCells.Contains(x);
+            var potentialCells = tibField.FieldCells.Where(Predicate).ToList();
+            if (potentialCells.EnumerableNullOrEmpty()) return null;
+            var randomCell = potentialCells.RandomElementByWeight(t =>
             {
                 var dist = t.DistanceTo(center);
-                if (dist < desiredRadius * 0.8f)
+                if (dist < desiredRadius * 0.75f)
                     return 0;
                 return dist / desiredRadius;
             });
+            if (!randomCell.IsValid) return null;
             var blossom = GenTiberium.BlossomTreeFrom(tibField.MainProducer.def);
             if (blossom == null) return null;
             var blossomTree = (TiberiumProducer)GenSpawn.Spawn(blossom, randomCell, map);
@@ -240,6 +237,10 @@ namespace TiberiumRim
         private void Finish()
         {
             finished = true;
+            if (Ruleset.createBlossom && !HasBlossom)
+            {
+                CreateBlossom();
+            }
             MutatedArea.Clear();
             NewCells.Clear();
             CurrentCells.Clear();

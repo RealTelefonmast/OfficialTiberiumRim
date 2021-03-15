@@ -56,48 +56,16 @@ namespace TiberiumRim
         {
             foreach (var def in DefDatabase<ThingDef>.AllDefs)
             {
-                if(def?.thingClass == null) continue;
+                if (def?.thingClass == null) continue;
                 Type thingClass = def.thingClass;
                 if (!thingClass.IsSubclassOf(typeof(Pawn)) && thingClass != typeof(Pawn)) continue;
-                if(def.comps == null)
+                if (def.comps == null)
                     def.comps = new List<CompProperties>();
                 def.comps.Add(new CompProperties_TiberiumCheck());
                 def.comps.Add(new CompProperties_PawnExtraDrawer());
                 def.comps.Add(new CompProperties_CrystalDrawer());
             }
         }
-        
-        /*
-        [HarmonyPatch(typeof(ModContentLoader<Texture2D>))]
-        [HarmonyPatch("LoadPNG")]
-        public static class LoadPNGPatch
-        {
-            static bool Prefix(string filePath, ref Texture2D __result)
-            {
-                
-                if (filePath.Contains("\\TiberiumRim\\Textures\\"))
-                {
-                    Texture2D texture2D = null;
-                    if (File.Exists(filePath))
-                    {
-                        bool mipmap = filePath.Contains("\\UI\\");
-                        byte[] data = File.ReadAllBytes(filePath);
-                        texture2D = new Texture2D(2, 2, TextureFormat.Alpha8, true);
-                        texture2D.anisoLevel = 9;
-                        //texture2D.mipMapBias = -0.5f;
-                        texture2D.LoadImage(data);
-                        texture2D.name = Path.GetFileNameWithoutExtension(filePath);
-                        texture2D.filterMode = FilterMode.Trilinear;
-                        texture2D.Apply(true, true);
-                    }
-                    __result = texture2D;
-                    return false;
-                }         
-                
-                return true;
-            }
-        }
-        */
 
         [HarmonyPatch(typeof(DefGenerator))]
         [HarmonyPatch("GenerateImpliedDefs_PreResolve")]
@@ -117,7 +85,7 @@ namespace TiberiumRim
                     DefGenerator.AddImpliedDef(frame);
                     if (def.Minifiable)
                     {
-                        ThingDef mini = TRUtils.MakeNewBluePrint(def, true, blueprint);
+                        def.minifiedDef = TRUtils.MakeNewBluePrint(def, true, blueprint);
                     }
                     DirectXmlCrossRefLoader.ResolveAllWantedCrossReferences(FailMode.Silent);
                 }

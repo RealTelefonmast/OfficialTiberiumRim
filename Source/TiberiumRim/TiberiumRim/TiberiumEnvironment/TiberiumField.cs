@@ -36,6 +36,8 @@ namespace TiberiumRim
 
         public bool MarkedForFastGrowth => fastFastGrowth;
 
+        public int TotalWorth => FieldCrystals.Sum(c => (int)c.HarvestValue);
+
         public TiberiumField()
         {
         }
@@ -109,6 +111,7 @@ namespace TiberiumRim
             fieldString += "\nField Size: " + fieldCellArea.Count;
             fieldString += "\nTiberium Crystals: " + tiberium.Count;
             fieldString += "\nGrowing Crystals: " + GrowingCrystals.Count();//crystalsToGrow.Count;
+            fieldString += "\nTotal Field Value: " + TotalWorth;
             fieldString += "\nFast Growth Enabled: " + fastFastGrowth;
             if (fastFastGrowth)
                 fieldString += "\nIteration Tick: " + iterationTicks;

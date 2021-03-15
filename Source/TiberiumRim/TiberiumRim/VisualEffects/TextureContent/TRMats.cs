@@ -12,6 +12,13 @@ namespace TiberiumRim
     {
         public static readonly Color GapLineColor = new Color(0.35f, 0.35f, 0.35f);
 
+        public static readonly Color Orange = new ColorInt(255, 175, 0).ToColor;
+        public static readonly Color Blue = new ColorInt(38, 169, 224).ToColor;
+        public static readonly Color Yellow = new ColorInt(249, 236, 49).ToColor;
+        public static readonly Color Red = new ColorInt(190, 30, 45).ToColor;
+        public static readonly Color Green = new ColorInt(41, 180, 115).ToColor;
+        public static readonly Color Black = new ColorInt(15, 11, 12).ToColor;
+
         public static readonly Color WindowBGBorderColor           = new ColorInt(97, 108, 122).ToColor;
         public static readonly Color WindowBGFillColor             = new ColorInt(21, 25, 29).ToColor;
         public static readonly Color MenuSectionBGFillColor        = new ColorInt(42, 43, 44).ToColor;
@@ -41,11 +48,11 @@ namespace TiberiumRim
 
         public static readonly Texture2D clear = SolidColorMaterials.NewSolidColorTexture(Color.clear);
         public static readonly Texture2D grey = SolidColorMaterials.NewSolidColorTexture(Color.grey);
-        public static readonly Texture2D blue = SolidColorMaterials.NewSolidColorTexture(new ColorInt(38, 169, 224).ToColor);
-        public static readonly Texture2D yellow = SolidColorMaterials.NewSolidColorTexture(new ColorInt(249, 236, 49).ToColor);
-        public static readonly Texture2D red = SolidColorMaterials.NewSolidColorTexture(new ColorInt(190, 30, 45).ToColor);
-        public static readonly Texture2D green = SolidColorMaterials.NewSolidColorTexture(new ColorInt(41, 180, 115).ToColor);
-        public static readonly Texture2D white = SolidColorMaterials.NewSolidColorTexture(new ColorInt(255, 255, 255).ToColor);
-        public static readonly Texture2D black = SolidColorMaterials.NewSolidColorTexture(new ColorInt(15, 11, 12).ToColor);
+        public static readonly Texture2D blue = SolidColorMaterials.NewSolidColorTexture(Blue);
+        public static readonly Texture2D yellow = SolidColorMaterials.NewSolidColorTexture(Yellow);
+        public static readonly Texture2D red = SolidColorMaterials.NewSolidColorTexture(Red);
+        public static readonly Texture2D green = SolidColorMaterials.NewSolidColorTexture(Green);
+        public static readonly Texture2D white = SolidColorMaterials.NewSolidColorTexture(Color.white);
+        public static readonly Texture2D black = SolidColorMaterials.NewSolidColorTexture(Black);
     }
 }

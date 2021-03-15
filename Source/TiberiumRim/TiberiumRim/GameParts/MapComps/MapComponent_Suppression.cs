@@ -12,7 +12,6 @@ namespace TiberiumRim
     public class MapComponent_Suppression : MapComponent
     {
         //public Dictionary<Comp_Suppression, List<IntVec3>> Suppressors = new Dictionary<Comp_Suppression, List<IntVec3>>();
-        public List<Comp_Suppression> Suppressors = new List<Comp_Suppression>();
         private readonly SuppressionGrid grid;
         private readonly List<Comp_Suppression> dirtySuppressors = new List<Comp_Suppression>();
 
@@ -27,77 +26,80 @@ namespace TiberiumRim
             UpdateDirties();
         }
 
-        public IEnumerable<IntVec3> ActiveCells => grid.suppressionBools.ActiveCells;
+        public IEnumerable<IntVec3> SuppressedCells => grid.SuppressionBools.ActiveCells;
+        public IEnumerable<IntVec3> CoveredCells => grid.CoveredBools.ActiveCells;
 
-        public bool IsInSuppressorField(IntVec3 cell)
+        public bool IsSuppressed(IntVec3 cell)
         {
-            return grid.suppressionBools[cell]; //.GetCellBool(map.cellIndices.CellToIndex(cell));
+            return grid.SuppressionBools[cell];
         }
 
-        public bool IsInSuppressorField(IntVec3 cell, out List<Comp_Suppression> suppressors)
+        public bool IsCovered(IntVec3 cell)
         {
-            suppressors = Suppressors.Where(s => s.SuppressionCells.Contains(cell)).ToList();
-            return suppressors.Count > 0;
-        }
-
-        public void UpdateSuppressors()
-        {
-            foreach (var suppressor in Suppressors)
-            {
-                UpdateGrid(suppressor);
-            }
-        }
-
-        public void UpdateGrid(Comp_Suppression suppressor)
-        {
-            RemoveFromGrid(suppressor.SuppressionCells);
-            suppressor.UpdateSuppressionCells();
-            AddToGrid(suppressor.SuppressionCells);
+            return grid.CoveredBools[cell];
         }
 
         public void RegisterSuppressor(Comp_Suppression suppressor)
         {
-            Suppressors.Add(suppressor);
+            grid.RegisterSource(suppressor);
+            MarkDirty(suppressor);
         }
 
         public void DeregisterSuppressor(Comp_Suppression suppressor)
         {
-            Suppressors.Remove(suppressor);
+            grid.DeregisterSource(suppressor);
         }
 
-        public void RemoveFromGrid(List<IntVec3> cells)
+        public bool IsInSuppressionCoverage(IntVec3 cell, out List<Comp_Suppression> suppressors)
         {
-            foreach (var cell in cells)
-            {
-                grid.Set(cell, false);
-            }
+            suppressors = null;
+            if (!IsCovered(cell)) return false;
+            suppressors = grid.Sources.Where(s => s.CoversCell(cell)).ToList();
+            return suppressors.Count > 0;
         }
 
-        public void AddToGrid(List<IntVec3> cells)
+        public bool IsSuppressed(IntVec3 cell, out List<Comp_Suppression> suppressors)
         {
-            foreach (var cell in cells)
-            {
-                grid.Set(cell, true);
-            }
+            suppressors = null;
+            if (!IsSuppressed(cell)) return false;
+            suppressors = grid.Sources.Where(s => s.AffectsCell(cell)).ToList();
+            return suppressors.Count > 0;
         }
+
+        public void UpdateSuppressor(Comp_Suppression suppressor)
+        {
+            Toggle(suppressor, false);
+            var oldCells = new List<IntVec3>(suppressor.SuppressionCells);
+            suppressor.UpdateSuppressionCells();
+            grid.Notify_SuppressionSourceUpdated(suppressor, oldCells);
+            Toggle(suppressor, true);
+        }
+
+        public void Toggle(Comp_Suppression suppressor, bool toggleOn)
+        {
+            grid.ToggleSuppressor(suppressor, toggleOn);
+        }
+
 
         public void MarkDirty(List<Comp_Suppression> suppressors)
         {
             dirtySuppressors.AddRange(suppressors);
         }
 
-        public void MarkDirty(Comp_Suppression suppresor)
+        public void MarkDirty(Comp_Suppression suppressor)
         {
-            dirtySuppressors.Add(suppresor);
+            dirtySuppressors.Add(suppressor);
         }
 
         public void UpdateDirties()
         {
+            if (!dirtySuppressors.Any()) return;
             for (var index = dirtySuppressors.Count - 1; index >= 0; index--)
             {
                 var suppressor = dirtySuppressors[index];
-                UpdateGrid(suppressor);
                 dirtySuppressors.Remove(suppressor);
+                if (suppressor.parent.DestroyedOrNull()) continue;
+                UpdateSuppressor(suppressor);
             }
         }
     }

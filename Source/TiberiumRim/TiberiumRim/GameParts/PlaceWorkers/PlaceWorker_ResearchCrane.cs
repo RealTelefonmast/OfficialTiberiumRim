@@ -61,6 +61,7 @@ namespace TiberiumRim
         {
             new LookTargets(ResearchTargets).TryHighlight(true, false, true);
             GenDraw.DrawFieldEdges(new List<IntVec3>(){pos}, Color.blue);
+            GenDraw.DrawFieldEdges(new List<IntVec3>() { center }, Color.blue);
             GenDraw.DrawFieldEdges(CellRectAt(center).ToList());
             GenDraw.DrawFieldEdges(ResearchTargets.SelectMany(p => p.OccupiedRect()).ToList(), Color.green);
         }

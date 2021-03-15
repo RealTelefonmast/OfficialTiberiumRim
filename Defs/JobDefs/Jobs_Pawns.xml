@@ -7,7 +7,13 @@
 		<reportString>doing tiberium research.</reportString>
 		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
 	</JobDef>
-	
+
+	<JobDef>
+		<defName>TiberiumBill</defName>
+		<driverClass>TiberiumRim.JobDriver_DoTiberiumBill</driverClass>
+		<reportString>doing tiberium bill.</reportString>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>	
 	
 	<JobDef>
 		<defName>FormAmalgamation</defName>

@@ -18,6 +18,8 @@ namespace TiberiumRim
         public new RepairDroneKindDef kindDef => base.kindDef as RepairDroneKindDef;
         public Comp_DroneStation parentComp;
 
+        public bool OutsideOfStationRadius => parentComp.parent.Position.DistanceTo(this.Position) > parentComp.Props.radius;
+
         public override void ExposeData()
         {
             base.ExposeData();

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
+	
+	<!--
 	<TiberiumRim.TRecipeDef>
 		<defName>ExtractSteel</defName>
 		<label>Get Steel</label>
@@ -104,7 +105,7 @@
 		</tiberiumCost>
 		<workSkill>Crafting</workSkill>
 	</RecipeDef>
-
+	-->
 	<!--
 
 	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">

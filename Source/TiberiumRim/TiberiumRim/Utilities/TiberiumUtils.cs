@@ -14,7 +14,9 @@ namespace TiberiumRim
 {
     public static class TRUtils
     {
-        public static GameComponent_CameraPanAndLock CameraPanNLock()
+        public static TiberiumValueType[] MainValueTypes = new[] {TiberiumValueType.Green, TiberiumValueType.Blue, TiberiumValueType.Red}; 
+
+    public static GameComponent_CameraPanAndLock CameraPanNLock()
         {
             return Current.Game.GetComponent<GameComponent_CameraPanAndLock>();
         }
@@ -645,28 +647,34 @@ namespace TiberiumRim
             return null;
         }
 
-        public static Color ColorForType(TiberiumValueType valueType)
+        public static string ShortLabel(this TiberiumValueType valueType)
+        {
+            string label = valueType switch
+            {
+                TiberiumValueType.Green => "G",
+                TiberiumValueType.Blue => "B",
+                TiberiumValueType.Red => "R",
+                TiberiumValueType.Sludge => "Slg",
+                TiberiumValueType.Gas => "Gs",
+                _ => string.Empty
+            };
+
+            return label;
+        }
+
+        public static Color GetColor(this TiberiumValueType valueType)
         {
             Color color = Color.white;
             TiberiumControlDef def = MainTCD.Main;
-            switch (valueType)
+            color = valueType switch
             {
-                case TiberiumValueType.Green:
-                    color = def.GreenColor;
-                    break;
-                case TiberiumValueType.Blue:
-                    color = def.BlueColor;
-                    break;
-                case TiberiumValueType.Red:
-                    color = def.RedColor;
-                    break;
-                case TiberiumValueType.Sludge:
-                    color = def.SludgeColor;
-                    break;
-                case TiberiumValueType.Gas:
-                    color = def.GasColor;
-                    break;
-            }
+                TiberiumValueType.Green => def.GreenColor,
+                TiberiumValueType.Blue => def.BlueColor,
+                TiberiumValueType.Red => def.RedColor,
+                TiberiumValueType.Sludge => def.SludgeColor,
+                TiberiumValueType.Gas => def.GasColor,
+                _ => color
+            };
             return color;
         }
 

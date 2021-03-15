@@ -259,6 +259,12 @@ namespace TiberiumRim
         }
 
         //Support Bools
+        public static bool UsableForAnyTiberiumPurpose(this IntVec3 c, Map map)
+        {
+            //Maybe useless
+            return !c.IsSuppressed(map);
+        }
+
         public static bool AllowsTiberiumTerrain(this IntVec3 c, Map map, TiberiumCrystalDef crystalDef)
         {
             return crystalDef.conversions.HasOutcomeFor(c.GetTerrain(map), out _);
@@ -307,9 +313,8 @@ namespace TiberiumRim
 
         public static bool IsSuppressed(this IntVec3 c, Map map)
         {
-            return map.Tiberium().Suppression.IsInSuppressorField(c);
+            return map.Tiberium().Suppression.IsSuppressed(c);
         }
-
 
         public static bool ShouldGrowFloraAt(IntVec3 c, Map map)
         {

@@ -3,13 +3,13 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class TiberiumInfectionInfo : MapInformation
+    public class PawnHediffInfo : MapInformation
     {
         public List<Pawn> TotalSickPawns = new List<Pawn>();
         public List<Pawn> TotalSickColonists = new List<Pawn>();
         public Dictionary<HediffDef, List<Pawn>> InfectedPawns = new Dictionary<HediffDef, List<Pawn>>();
 
-        public TiberiumInfectionInfo(Map map) : base(map) { }
+        public PawnHediffInfo(Map map) : base(map) { }
 
         //TODO: Pawn Registering For Alerts
         public void RegisterPawn(Pawn pawn, HediffDef def)

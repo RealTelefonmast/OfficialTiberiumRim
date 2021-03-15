@@ -13,6 +13,7 @@ namespace TiberiumRim
         public List<CompTNW_Pipe> Pipes = new List<CompTNW_Pipe>();
         public List<CompTNW_Silo> Silos = new List<CompTNW_Silo>();
         public List<CompTNW_Refinery> Refineries = new List<CompTNW_Refinery>();
+        public List<CompTNW_Crafter> Crafters = new List<CompTNW_Crafter>();
 
         public List<CompTNW> FullList = new List<CompTNW>();
         public List<CompTNW> Storages = new List<CompTNW>();
@@ -41,6 +42,10 @@ namespace TiberiumRim
                 if (tnwb is CompTNW_Refinery refinery)
                 {
                     Refineries.Add(refinery);
+                }
+                if (tnwb is CompTNW_Crafter crafter)
+                {
+                    Crafters.Add(crafter);
                 }
                 FullList.Add(tnwb);
                 switch (tnwb.NetworkMode)

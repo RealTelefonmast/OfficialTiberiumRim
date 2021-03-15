@@ -3,6 +3,7 @@
 
 	<!-- UI -->
 	<TR_Credits>Tiberium Credits</TR_Credits>
+	<TR_CreditsTotal>Total: {0}</TR_CreditsTotal>
 	
 	<TR_PowerLeft>{0} of power left.</TR_PowerLeft>
 	
@@ -10,6 +11,10 @@
 	<TR_MissingConnection>Missing connection to</TR_MissingConnection>
 	<TR_ConsumerLack>A silo or refinery</TR_ConsumerLack>
 	<TR_ProducerLack>A silo or production facility</TR_ProducerLack>
+
+	<!-- ITAB -->
+	<TR_TibResourceRefiner>Resources</TR_TibResourceRefiner>
+	
 
 	<!--Harvesters-->
 	<TR_HarvesterInside>Harvester and Refinery need to be outside to work.</TR_HarvesterInside>

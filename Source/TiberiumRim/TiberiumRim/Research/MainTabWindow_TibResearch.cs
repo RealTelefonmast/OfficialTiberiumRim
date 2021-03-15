@@ -513,7 +513,7 @@ namespace TiberiumRim
                         columnIndex += 1;
                     }
                 }
-                curY += columnIndex * iconSize;
+                //curY += columnIndex * iconSize;
             }
 
             GUI.EndGroup();
