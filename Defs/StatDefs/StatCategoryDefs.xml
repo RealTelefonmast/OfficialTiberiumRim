@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <StatCategoryDef>
+    <defName>TiberiumStats</defName>
+    <label>Tiberium Resistance</label>
+    <displayOrder>11</displayOrder>
+    <displayAllByDefault>true</displayAllByDefault>
+  </StatCategoryDef>
+  
+</Defs>

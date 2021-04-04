@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumFiend.label>타이베리움 늑대</TiberiumFiend.label>
+  <TiberiumFiend.labelPlural>타이베리움 늑대</TiberiumFiend.labelPlural>
+  <TiberiumFiend.lifeStages.0.label>어린 타이베리움 늑대</TiberiumFiend.lifeStages.0.label>
+  <TiberiumFiend.lifeStages.0.labelPlural>어린 타이베리움 늑대</TiberiumFiend.lifeStages.0.labelPlural>
+  <TiberiumFiend.lifeStages.0.labelMale>어린 타이베리움 늑대</TiberiumFiend.lifeStages.0.labelMale>
+  <TiberiumFiend.lifeStages.0.labelMalePlural>어린 타이베리움 늑대</TiberiumFiend.lifeStages.0.labelMalePlural>
+  <TiberiumFiend.lifeStages.0.labelFemale>어린 타이베리움 늑대</TiberiumFiend.lifeStages.0.labelFemale>
+  <TiberiumFiend.lifeStages.0.labelFemalePlural>어린 타이베리움 늑대</TiberiumFiend.lifeStages.0.labelFemalePlural>
+  <TiberiumFiend.lifeStages.1.label>성장기 타이베리움 늑대</TiberiumFiend.lifeStages.1.label>
+  <TiberiumFiend.lifeStages.1.labelPlural>성장기 타이베리움 늑대</TiberiumFiend.lifeStages.1.labelPlural>
+  <TiberiumFiend.lifeStages.1.labelMale>성장기 타이베리움 늑대</TiberiumFiend.lifeStages.1.labelMale>
+  <TiberiumFiend.lifeStages.1.labelMalePlural>성장기 타이베리움 늑대</TiberiumFiend.lifeStages.1.labelMalePlural>
+  <TiberiumFiend.lifeStages.1.labelFemale>성장기 타이베리움 늑대</TiberiumFiend.lifeStages.1.labelFemale>
+  <TiberiumFiend.lifeStages.1.labelFemalePlural>성장기 타이베리움 늑대</TiberiumFiend.lifeStages.1.labelFemalePlural>
+  <TiberiumFiend.lifeStages.2.label>타이베리움 늑대</TiberiumFiend.lifeStages.2.label>
+  <TiberiumFiend.lifeStages.2.labelPlural>타이베리움 늑대</TiberiumFiend.lifeStages.2.labelPlural>
+  <TiberiumFiend.lifeStages.2.labelMale>타이베리움 늑대</TiberiumFiend.lifeStages.2.labelMale>
+  <TiberiumFiend.lifeStages.2.labelMalePlural>타이베리움 늑대</TiberiumFiend.lifeStages.2.labelMalePlural>
+  <TiberiumFiend.lifeStages.2.labelFemale>타이베리움 늑대</TiberiumFiend.lifeStages.2.labelFemale>
+  <TiberiumFiend.lifeStages.2.labelFemalePlural>타이베리움 늑대</TiberiumFiend.lifeStages.2.labelFemalePlural>
+  <TiberiumFiend.labelMale>타이베리움 늑대</TiberiumFiend.labelMale>
+  <TiberiumFiend.labelMalePlural>타이베리움 늑대</TiberiumFiend.labelMalePlural>
+  <TiberiumFiend.labelFemale>타이베리움 늑대</TiberiumFiend.labelFemale>
+  <TiberiumFiend.labelFemalePlural>타이베리움 늑대</TiberiumFiend.labelFemalePlural>
+
+  <Spiner.label>스피너</Spiner.label>
+  <Spiner.labelPlural>스피너</Spiner.labelPlural>
+  <Spiner.lifeStages.0.label>어린 스피너</Spiner.lifeStages.0.label>
+  <Spiner.lifeStages.0.labelPlural>어린 스피너</Spiner.lifeStages.0.labelPlural>
+  <Spiner.lifeStages.0.labelMale>어린 스피너</Spiner.lifeStages.0.labelMale>
+  <Spiner.lifeStages.0.labelMalePlural>어린 스피너</Spiner.lifeStages.0.labelMalePlural>
+  <Spiner.lifeStages.0.labelFemale>어린 스피너</Spiner.lifeStages.0.labelFemale>
+  <Spiner.lifeStages.0.labelFemalePlural>어린 스피너</Spiner.lifeStages.0.labelFemalePlural>
+  <Spiner.lifeStages.1.label>성장기 스피너</Spiner.lifeStages.1.label>
+  <Spiner.lifeStages.1.labelPlural>성장기 스피너</Spiner.lifeStages.1.labelPlural>
+  <Spiner.lifeStages.1.labelMale>성장기 스피너</Spiner.lifeStages.1.labelMale>
+  <Spiner.lifeStages.1.labelMalePlural>성장기 스피너</Spiner.lifeStages.1.labelMalePlural>
+  <Spiner.lifeStages.1.labelFemale>성장기 스피너</Spiner.lifeStages.1.labelFemale>
+  <Spiner.lifeStages.1.labelFemalePlural>성장기 스피너</Spiner.lifeStages.1.labelFemalePlural>
+  <Spiner.lifeStages.2.label>스피너</Spiner.lifeStages.2.label>
+  <Spiner.lifeStages.2.labelPlural>스피너</Spiner.lifeStages.2.labelPlural>
+  <Spiner.lifeStages.2.labelMale>스피너</Spiner.lifeStages.2.labelMale>
+  <Spiner.lifeStages.2.labelMalePlural>스피너</Spiner.lifeStages.2.labelMalePlural>
+  <Spiner.lifeStages.2.labelFemale>스피너</Spiner.lifeStages.2.labelFemale>
+  <Spiner.lifeStages.2.labelFemalePlural>스피너</Spiner.lifeStages.2.labelFemalePlural>
+  <Spiner.labelMale>수컷 스피너</Spiner.labelMale>
+  <Spiner.labelMalePlural>수컷 스피너</Spiner.labelMalePlural>
+  <Spiner.labelFemale>암컷 스피너</Spiner.labelFemale>
+  <Spiner.labelFemalePlural>암컷 스피너</Spiner.labelFemalePlural>
+
+  <SmallTiberiumFiend.label>타이베리움 여우</SmallTiberiumFiend.label>
+  <SmallTiberiumFiend.labelPlural>타이베리움 여우</SmallTiberiumFiend.labelPlural>
+  <SmallTiberiumFiend.lifeStages.0.label>어린 타이베리움 여우</SmallTiberiumFiend.lifeStages.0.label>
+  <SmallTiberiumFiend.lifeStages.0.labelPlural>어린 타이베리움 여우</SmallTiberiumFiend.lifeStages.0.labelPlural>
+  <SmallTiberiumFiend.lifeStages.0.labelMale>어린 타이베리움 여우</SmallTiberiumFiend.lifeStages.0.labelMale>
+  <SmallTiberiumFiend.lifeStages.0.labelMalePlural>어린 타이베리움 여우</SmallTiberiumFiend.lifeStages.0.labelMalePlural>
+  <SmallTiberiumFiend.lifeStages.0.labelFemale>어린 타이베리움 여우</SmallTiberiumFiend.lifeStages.0.labelFemale>
+  <SmallTiberiumFiend.lifeStages.0.labelFemalePlural>어린 타이베리움 여우</SmallTiberiumFiend.lifeStages.0.labelFemalePlural>
+  <SmallTiberiumFiend.lifeStages.1.label>성장기 타이베리움 여우</SmallTiberiumFiend.lifeStages.1.label>
+  <SmallTiberiumFiend.lifeStages.1.labelPlural>성장기 타이베리움 여우</SmallTiberiumFiend.lifeStages.1.labelPlural>
+  <SmallTiberiumFiend.lifeStages.1.labelMale>성장기 타이베리움 여우</SmallTiberiumFiend.lifeStages.1.labelMale>
+  <SmallTiberiumFiend.lifeStages.1.labelMalePlural>성장기 타이베리움 여우</SmallTiberiumFiend.lifeStages.1.labelMalePlural>
+  <SmallTiberiumFiend.lifeStages.1.labelFemale>성장기 타이베리움 여우</SmallTiberiumFiend.lifeStages.1.labelFemale>
+  <SmallTiberiumFiend.lifeStages.1.labelFemalePlural>성장기 타이베리움 여우</SmallTiberiumFiend.lifeStages.1.labelFemalePlural>
+  <SmallTiberiumFiend.lifeStages.2.label>타이베리움 여우</SmallTiberiumFiend.lifeStages.2.label>
+  <SmallTiberiumFiend.lifeStages.2.labelPlural>타이베리움 여우</SmallTiberiumFiend.lifeStages.2.labelPlural>
+  <SmallTiberiumFiend.lifeStages.2.labelMale>타이베리움 여우</SmallTiberiumFiend.lifeStages.2.labelMale>
+  <SmallTiberiumFiend.lifeStages.2.labelMalePlural>타이베리움 여우</SmallTiberiumFiend.lifeStages.2.labelMalePlural>
+  <SmallTiberiumFiend.lifeStages.2.labelFemale>타이베리움 여우</SmallTiberiumFiend.lifeStages.2.labelFemale>
+  <SmallTiberiumFiend.lifeStages.2.labelFemalePlural>타이베리움 여우</SmallTiberiumFiend.lifeStages.2.labelFemalePlural>
+  <SmallTiberiumFiend.labelMale>타이베리움 여우</SmallTiberiumFiend.labelMale>
+  <SmallTiberiumFiend.labelMalePlural>타이베리움 여우</SmallTiberiumFiend.labelMalePlural>
+  <SmallTiberiumFiend.labelFemale>타이베리움 여우</SmallTiberiumFiend.labelFemale>
+  <SmallTiberiumFiend.labelFemalePlural>타이베리움 여우</SmallTiberiumFiend.labelFemalePlural>
+
+
+</LanguageData>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Visceral Horror | HumanLike -->
+
+  <VisceralHorror_Human.label>뒤틀린 인간</VisceralHorror_Human.label>
+
+
+  <!-- Visceral Horror | AnimalLike -->
+
+  <VisceralHorror_Animal.label>뒤틀린 동물</VisceralHorror_Animal.label>
+
+
+  <!-- Visceral Beast -->
+
+  <VisceralBeast.label>뒤틀린 야수</VisceralBeast.label>
+
+
+  <!-- Visceroid -->
+
+  <Visceroid.label>비세로이드</Visceroid.label>
+
+
+  <!-- Amalgamation -->
+
+  <Amalgamation.label>비세로이드 융합체</Amalgamation.label>
+
+
+  <!-- Veinmonster -->
+
+  <Veinmonster.label>덩굴귀</Veinmonster.label>
+
+
+  <!-- Vein Rock -->
+
+  <VeinChunk.label>덩굴바위</VeinChunk.label>
+
+
+</LanguageData>

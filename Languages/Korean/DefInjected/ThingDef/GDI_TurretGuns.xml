@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Gun_Juggernaut.label>저거넛 3연장포</Gun_Juggernaut.label>
+  <Gun_Juggernaut.description>저거넛 3연장포</Gun_Juggernaut.description>
+
+  <Gun_WatchTower.label>기관포</Gun_WatchTower.label>
+  <Gun_WatchTower.description>기관포</Gun_WatchTower.description>
+
+  <Gun_Guardian.label>직사포</Gun_Guardian.label>
+  <Gun_Guardian.description>직사포</Gun_Guardian.description>
+
+  <Gun_SonicEmitter.label>음파 방사기</Gun_SonicEmitter.label>
+  <Gun_SonicEmitter.description>음파 방사기</Gun_SonicEmitter.description>
+
+
+</LanguageData>

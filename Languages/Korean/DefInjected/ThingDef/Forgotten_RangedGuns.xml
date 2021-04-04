@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Forg_ShardgunGreen.label>포가튼 대인 파편총</Forg_ShardgunGreen.label>
+  <Forg_ShardgunGreen.description>타이베리움 파편을 대강 갈아 발사하는 장치입니다. 탄착지 주변을 녹색 타이베리움으로 오염시킵니다. 포가튼 병력이 주로 운용합니다.</Forg_ShardgunGreen.description>
+  <Forg_ShardgunGreen.tools.0.label>개머리판</Forg_ShardgunGreen.tools.0.label>
+  <Forg_ShardgunGreen.tools.1.label>총열</Forg_ShardgunGreen.tools.1.label>
+
+  <Forg_ShardgunBlue.label>포가튼 폭발 파편총</Forg_ShardgunBlue.label>
+  <Forg_ShardgunBlue.description>통상보다 훨씬 거대한 파편총입니다. 탄착지 주변을 청색 타이베리움으로 오염시키며, 낮은 확률로 연쇄폭발을 유발합니다. 포가튼 병력이 주로 운용합니다.</Forg_ShardgunBlue.description>
+  <Forg_ShardgunBlue.tools.0.label>개머리판</Forg_ShardgunBlue.tools.0.label>
+  <Forg_ShardgunBlue.tools.1.label>총열</Forg_ShardgunBlue.tools.1.label>
+
+
+</LanguageData>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	
+	<HediffDef ParentName="HediffBase_TR">
+		<defName>RegenerativeNanites</defName>
+		<hediffClass>HediffWithComps</hediffClass>
+		<label>regenerative nanites</label>
+		<defaultLabelColor>(175, 255, 0)</defaultLabelColor>
+		<initialSeverity>1</initialSeverity>
+		<scenarioCanAdd>false</scenarioCanAdd>
+	</HediffDef>
+	
+	<HediffDef ParentName="HediffImplant_TR">
+		<defName>AugmentedEye</defName>
+		<label>augmented eye</label>
+		<labelNoun>an augmented eye</labelNoun>
+		<description>An installed augmented eye.</description>
+		<descriptionHyperlinks><ThingDef>AugmentedEye</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>AugmentedEye</spawnThingOnRemoved>
+		<comps>
+			<li Class="TiberiumRim.HediffCompProperties_Draw">
+				<headGraphic>
+					<texPath>Pawns/RedAlert/Sovjet/Volkov/EyeAugment</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+				</headGraphic>
+				<identifier>HeadEyeAugment</identifier>
+			</li>
+		</comps>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.25</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="BodyPartBionicBase">
+		<defName>AugmentedEye</defName>
+		<label>augmented eye</label>
+		<description>This is ancient advanced technology, available to us after defeating one of the strongest warriors of the Sovjet nation.</description>
+		<descriptionHyperlinks><RecipeDef>InstallAugmentedEye</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Plasteel>15</Plasteel>
+			<ComponentSpacer>4</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+	
+	<RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+		<defName>InstallAugmentedEye</defName>
+		<label>install aug eye</label>
+		<description>Install a aug eye.</description>
+		<descriptionHyperlinks>
+		<ThingDef>AugmentedEye</ThingDef>
+		<HediffDef>AugmentedEye</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing aug eye.</jobString>
+		<ingredients>
+		<li>
+		<filter>
+		<thingDefs>
+		<li>AugmentedEye</li>
+		</thingDefs>
+		</filter>
+		<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+		<li>AugmentedEye</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Eye</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>AugmentedEye</addsHediff>
+	</RecipeDef>
+	
+	<HediffDef ParentName="HediffImplant_TR">
+		<defName>CannonImplant</defName>
+		<label>cannon implant</label>
+		<defaultLabelColor>(175, 255, 0)</defaultLabelColor>
+		<descriptionHyperlinks><ThingDef>CannonImplant</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>CannonImplant</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>false</solid>
+			<partEfficiency>1</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+		<comps>
+			<li Class="TiberiumRim.HediffCompProperties_RangedVerb">
+				<verbs>
+					<li Class="TiberiumRim.VerbProperties_TR">
+						<verbClass>TiberiumRim.Verb_TR</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>Bullet_ArmCannonSniper</defaultProjectile>
+						<!--
+						<secondaryProjectile>Bullet_GDIHighVelocity</secondaryProjectile>
+						-->
+						<warmupTime>1.5</warmupTime>
+						<range>26</range>
+						<burstShotCount>1</burstShotCount>
+						<ticksBetweenBurstShots>16</ticksBetweenBurstShots>
+						<soundCast>Shot_SniperRifle</soundCast>
+						<soundCastTail>GunTail_Heavy</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+			</li>
+		</comps>
+	</HediffDef>
+	
+	<ThingDef ParentName="BodyPartBionicBase">
+		<defName>CannonImplant</defName>
+		<label>cannon implant</label>
+		<description>an implant</description>
+		<descriptionHyperlinks><RecipeDef>InstallCannonImplant</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Plasteel>15</Plasteel>
+			<ComponentSpacer>4</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+	
+	<RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+		<defName>InstallCannonImplant</defName>
+		<label>install cannon implant</label>
+		<description>Install a cannon.</description>
+		<descriptionHyperlinks>
+		<ThingDef>CannonImplant</ThingDef>
+		<HediffDef>CannonImplant</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing cannon.</jobString>
+		<ingredients>
+		<li>
+		<filter>
+		<thingDefs>
+		<li>CannonImplant</li>
+		</thingDefs>
+		</filter>
+		<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+		<li>CannonImplant</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Arm</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>CannonImplant</addsHediff>
+	</RecipeDef>
+	
+</Defs>

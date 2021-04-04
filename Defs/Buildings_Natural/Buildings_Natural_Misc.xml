@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Visceral Stuff -->
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>VisceralPod</defName>
+		<label>visceral pod</label>
+		<thingClass>TiberiumRim.VisceralPod</thingClass>
+		<tickerType>Normal</tickerType>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Natural/VisceralPod/Base</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<inspectorTabs>
+			<li>TiberiumRim.ITab_ContainedPawn_Health</li>
+		</inspectorTabs>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Beauty>-130</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/VisceralPod/Overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>Transparent</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</data>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/VisceralPod/FX</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</data>
+						<mode>Pulse</mode>
+						<pulse>
+							<opacityRange>0.4~0.9</opacityRange>
+							<opacityDuration>90</opacityDuration>
+						</pulse>
+					</li>
+				</overlays>
+			</li>
+		</comps>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>false</rotatable>
+		<size>(1,1)</size>
+		<blockPlants>true</blockPlants>
+	</TiberiumRim.TRThingDef>	
+	
+	<!-- Veinhole -->
+	<ThingDef ParentName="EtherealThingBase">
+		<defName>VeinholeTunnel</defName>
+		<label>premature veinhole</label>
+		<size>(3,3)</size>
+		<thingClass>TiberiumRim.VeinholeTunnel</thingClass>
+		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
+		<alwaysFlee>true</alwaysFlee>
+	</ThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>VeinHub</defName>
+		<label>vein hub</label>
+		<thingClass>TiberiumRim.VeinHub</thingClass>
+		<tickerType>Rare</tickerType>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Natural/Veinhole/VeinHub/Hub</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.5,1.5)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>170</MaxHitPoints>
+			<Beauty>-130</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/Veinhole/VeinHub/Overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>Transparent</shaderType>
+							<drawSize>(1.5,1.5)</drawSize>
+						</data>
+						<mode>Pulse</mode>
+					</li>
+				</overlays>
+			</li>
+		</comps>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>false</rotatable>
+		<size>(1,1)</size>
+		<blockPlants>true</blockPlants>
+	</TiberiumRim.TRThingDef>	
+	
+	<!-- -->
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>DeadGreenCrater</defName>
+		<label>green Tiberium crater residue</label>
+		<description>The remnants of a green Tiberium crater, it does not create any more crystals.</description>
+		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<useHitPoints>false</useHitPoints>
+		<destroyable>false</destroyable>
+		<altitudeLayer>Floor</altitudeLayer>
+		<size>(3,3)</size>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Buildings/Natural/BigTiberiumCraterGreen/GreenCrater_Broken</texPath>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>5</glowRadius>
+				<glowColor>(120,255,120)</glowColor>
+			</li>
+			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+				<radius>8</radius>
+				<intensity>1.25</intensity>
+			</li>
+		</comps>
+		<tickerType>Rare</tickerType>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>DeadBlueCrater</defName>
+		<label>blue Tiberium crater residue</label>
+		<description>The remnants of a blue Tiberium crater, it does not create any more crystals.</description>
+		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<useHitPoints>false</useHitPoints>
+		<destroyable>false</destroyable>
+		<altitudeLayer>Floor</altitudeLayer>
+		<size>(3,3)</size>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Buildings/Natural/BigTiberiumCraterBlue/BlueCrater_Broken</texPath>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>5</glowRadius>
+				<glowColor>(120,255,120)</glowColor>
+			</li>
+			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+				<radius>9</radius>
+				<intensity>1.35</intensity>
+			</li>
+		</comps>
+		<tickerType>Rare</tickerType>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>DeadVeinhole</defName>
+		<label>dead veinhole</label>
+		<description>A dead veinhole.</description>
+		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
+		<useHitPoints>false</useHitPoints>
+		<destroyable>false</destroyable>
+		<size>(3,3)</size>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Buildings/Natural/Veinhole/Veinhole/Broken</texPath>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<altitudeLayer>Floor</altitudeLayer>
+	</TiberiumRim.TRThingDef>
+	
+</Defs>

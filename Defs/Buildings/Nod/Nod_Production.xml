@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>Nod_Factory</defName>
+		<label>Nod Assembler</label>
+		<description>The Nod Assembler is used to create high-tier materials and items.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<altitudeLayer>Building</altitudeLayer>
+		<factionDesignation>Nod</factionDesignation>
+		<TRCategory>Processing</TRCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<size>(3,2)</size>
+		<minifiedDef />
+		<thingCategories Inherit="false" />
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Production/Factory/Base</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<recipes>
+			<li>MakeCarbonPlate</li>
+		</recipes>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>300</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>Nod_Hangar</defName>
+		<label>Nod hangar</label>
+		<description>This hangar is used for mechanical unit construction.</description>
+		<factionDesignation>Nod</factionDesignation>
+		<TRCategory>Processing</TRCategory>
+		<size>(5,5)</size>
+		<minifiedDef />
+		<thingCategories Inherit="false" />
+		<castEdgeShadows>true</castEdgeShadows>
+		<hasInteractionCell>true</hasInteractionCell>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<fillPercent>1</fillPercent>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Production/Hangar/Base</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>7,7)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<statBases>
+			<MaxHitPoints>1000</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<costList>
+			<Steel>500</Steel>
+			<ComponentIndustrial>15</ComponentIndustrial>
+		</costList>
+		<inspectorTabs>
+			<li>TiberiumRim.ITab_MechConstruction</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Production/Hangar/BaseLight</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,7)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Production/Hangar/Cover</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<drawSize>(7,7)</drawSize>
+						</data>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Production/Hangar/CoverLight</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,7)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+			</li>
+		</comps>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="RefineryBase_TR">
+		<defName>Nod_TiberiumRefinery</defName>
+		<label>tiberium refinery (Nod)</label>
+		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
+		<size>(5,5)</size>
+		<factionDesignation>Nod</factionDesignation>
+		<TRCategory>Processing</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Production/Refinery/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5.5,5.5)</drawSize>
+			<drawRotated>false</drawRotated>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<uiIconPath>Buildings/Nod/Production/Refinery/Icon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>450</MaxHitPoints>
+			<WorkToBuild>3000</WorkToBuild>
+			<Flammability>0.85</Flammability>
+		</statBases>
+		<costList>
+			<Nod_CarbonPlate>200</Nod_CarbonPlate>
+			<ComponentIndustrial>100</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.RefineryProperties">
+				<harvester>Harvester_Nod</harvester>
+				<maxStorage>5000</maxStorage>
+				<tnwbMode>Producer</tnwbMode>
+			</li>
+			<li Class="TiberiumRim.CompProperties_MechStation">
+				<mechRecipes>
+					<li>MakeHarvesterCommon</li>
+				</mechRecipes>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Production/Refinery/ContainerOverlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5.5,5.5)</drawSize>
+							<drawRotated>false</drawRotated>
+						</data>
+						<mode>Dynamic</mode>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Production/Refinery/Connector</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<drawSize>(5.5,5.5)</drawSize>
+						</data>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Production/Refinery/RefConnector</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(5.5,5.5)</drawSize>
+						</data>
+					</li>
+				</overlays>
+			</li>
+		</comps>
+		<inspectorTabs>
+			<li>TiberiumRim.ITab_MechConstruction</li>
+		</inspectorTabs>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_Gap</li>
+		</placeWorkers>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<interactionCellIcon>RefineryCell</interactionCellIcon>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+		<defName>Nod_Crane</defName>
+		<label>Crane</label>
+		<description>.</description>
+		<thingClass>Building</thingClass>
+		<altitudeLayer>Building</altitudeLayer>
+		<factionDesignation>Nod</factionDesignation>
+		<TRCategory>Processing</TRCategory>
+		<tickerType>Normal</tickerType>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.75</fillPercent>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<rotatable>false</rotatable>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<size>(2,2)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Production/Crane/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,4)</drawSize>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<costList>
+			<Steel>275</Steel>
+			<Nod_CarbonPlate>10</Nod_CarbonPlate>
+			<ComponentIndustrial>15</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Production/Crane/Light</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2,4)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>750</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+			<!--
+			<li Class="TiberiumRimFactions.CompProperties_NodCrane">
+				<statList>
+					<MoveSpeed>1.1</MoveSpeed>
+					<MiningSpeed>1.25</MiningSpeed>
+					<WorkSpeedGlobal>1.25</WorkSpeedGlobal>			
+					<ConstructionSpeed>1.5</ConstructionSpeed>
+					<ConstructSuccessChance>1.25</ConstructSuccessChance>
+				</statList>
+			</li>
+			-->
+		</comps>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_Once</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>NodPowerPlant</defName>
+		<thingClass>Building</thingClass>
+		<label>Nod power plant</label>
+		<description>.</description>
+		<factionDesignation>Nod</factionDesignation>
+		<TRCategory>Processing</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Production/PowerPlant/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<uiIconPath>Buildings/Nod/Production/PowerPlant/Icon</uiIconPath>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<blockWind>true</blockWind>
+		<fillPercent>1.0</fillPercent>
+		<castEdgeShadows>false</castEdgeShadows>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<size>(4,4)</size>
+		<costList>
+			<Nod_CarbonPlate>25</Nod_CarbonPlate>
+			<Plasteel>25</Plasteel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Production/PowerPlant/Container</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+					</li>
+					<li>
+						<skip>true</skip>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Production/PowerPlant/Light</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Production/PowerPlant/Display</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>
+			<li Class="TiberiumRim.PowerProperties">
+				<compClass>TiberiumRim.CompTNW_Power</compClass>
+				<maxStorage>3000</maxStorage>
+				<supportedTypes>
+					<li>Green</li>
+					<li>Blue</li>
+					<li>Red</li>
+				</supportedTypes>
+			    <tnwbMode>Consumer</tnwbMode>
+				<consumeAmt>500</consumeAmt>
+				<daysPerLoad>5</daysPerLoad>
+			</li>
+			<li Class="CompProperties_Flickable" />	
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>12</heatPerSecond>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>TiberiumRim.CompPower_Tiberium</compClass>
+				<basePowerConsumption>-3500</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+		</comps>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<constructEffect>ConstructMetal</constructEffect>
+	</TiberiumRim.TRThingDef>
+
+</Defs>

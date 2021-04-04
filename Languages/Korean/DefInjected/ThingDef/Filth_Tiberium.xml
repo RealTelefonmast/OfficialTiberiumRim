@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Filth_TiberiumDirt.label>타이베리움 찌꺼기</Filth_TiberiumDirt.label>
+  <FilthTiberiumGreen.label>녹색 타이베리움 파편</FilthTiberiumGreen.label>
+  <FilthTiberiumBlue.label>청색 타이베리움 파편</FilthTiberiumBlue.label>
+  <FilthTiberiumRed.label>적색 타이베리움 파편</FilthTiberiumRed.label>
+  <FilthTibBloodG.label>변이된 녹색 피</FilthTibBloodG.label>
+  <FilthTibBloodB.label>변이된 청색 피</FilthTibBloodB.label>
+
+  <FilthTibLiquid.label>누출된 타이베리움</FilthTibLiquid.label>
+  <FilthTibLiquid.description>누출된 타이베리움 혼합물입니다.</FilthTibLiquid.description>
+
+  <FilthTibLiquidGreen.label>누출된 녹색 타이베리움</FilthTibLiquidGreen.label>
+  <FilthTibLiquidGreen.description>누출된 녹색 타이베리움입니다.</FilthTibLiquidGreen.description>
+
+  <FilthTibLiquidBlue.label>누출된 청색 타이베리움</FilthTibLiquidBlue.label>
+  <FilthTibLiquidBlue.description>누출된 청색 타이베리움입니다.</FilthTibLiquidBlue.description>
+
+  <FilthTibLiquidRed.label>누출된 적색 타이베리움</FilthTibLiquidRed.label>
+  <FilthTibLiquidRed.description>누출된 적색 타이베리움입니다.</FilthTibLiquidRed.description>
+
+
+</LanguageData>

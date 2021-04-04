@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.FXThingDef ParentName="ResourceBase_TR">
+		<defName>PortableContainer</defName>
+		<label>tiberium storage cell</label>
+		<description>This container appears after deconstruction of any structure with a tiberium storage. It contains the exact amount as was left remaining in that structure. You can use this at any structure which stores a type from this container.</description>
+		<thingClass>TiberiumRim.PortableContainer</thingClass>
+		<graphicData>
+			<texPath>Items/Resource/TSC/TSC</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Items/Resource/TSC/Overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(1,1)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+					</li>
+				</overlays>
+			</li>
+		</comps>
+		<drawerType>RealtimeOnly</drawerType>
+		<tickerType>Normal</tickerType>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<techLevel>Industrial</techLevel>
+		<stackLimit>1</stackLimit>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<MarketValue>0</MarketValue>
+			<Mass>2</Mass>
+			<Flammability>0</Flammability>
+			<DeteriorationRate>0.25</DeteriorationRate>
+		</statBases>
+		<smeltable>true</smeltable>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</TiberiumRim.FXThingDef>
+	
+	<!-- custom tiberium spawner explosion -->
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>LiquidTiberiumCell</defName>
+		<label>unstable liquid Tiberium cell</label>
+		<description>Liquid Tiberium in its purest form contained in a simple cell.\nWARNING - Beware of deterioration, this item is very unstable!</description>
+		<graphicData>
+			<texPath>Items/Resource/LiquidTiberiumCell</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>5</stackLimit>
+		<statBases>
+			<MaxHitPoints>10</MaxHitPoints>
+			<MarketValue>175</MarketValue>
+			<Mass>1</Mass>
+			<Flammability>1</Flammability>
+			<DeteriorationRate>2</DeteriorationRate>
+		</statBases>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3</explosiveRadius>
+				<explosiveDamageType>TiberiumExplosionLQ</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.5</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+				<wickTicks>
+					<min>5</min>
+					<max>5</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<tickerType>Normal</tickerType>
+	</ThingDef>
+	
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>TRBattleChip</defName>
+		<label>battle control circuit</label>
+		<description>Our advanced weaponry, including mechanical units and high-tech turrets, require this circuit to operate.</description>
+		<graphicData>
+			<texPath>Items/Resource/BattleChip</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>25</stackLimit>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<MarketValue>250</MarketValue>
+			<Mass>0.25</Mass>
+			<Flammability>1</Flammability>
+			<DeteriorationRate>1.25</DeteriorationRate>
+		</statBases>
+		<tradeability>Sellable</tradeability>
+		<tradeTags>
+			<li>Exotic</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>
+	
+</Defs>

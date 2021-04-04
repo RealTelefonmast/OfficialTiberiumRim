@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<RecipeDef>
+		<defName>MakeDronePackage_Common</defName>
+		<label>craft common drone package</label>
+		<description>Crafts one common drone package.</description>
+		<jobString>crafting common drone package.</jobString>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workAmount>5000</workAmount>
+		<workSpeedStat>ConstructionSpeed</workSpeedStat>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>100</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+					<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<RepairDronePackage_Common>1</RepairDronePackage_Common>
+		</products>
+		<workSkill>Crafting</workSkill>	
+		<skillRequirements>
+			<Crafting>5</Crafting>
+		</skillRequirements>
+	</RecipeDef>
+	
+	<TiberiumRim.MechRecipeDef>
+		<defName>MakeHarvesterCommon</defName>
+		<label>Harvester Blueprint</label>
+		<graphicPath>Pawns/Mechanical/Common/Harvester</graphicPath>
+		<mechDef>Harvester_Common</mechDef>
+	</TiberiumRim.MechRecipeDef>	
+	
+	<TiberiumRim.MechRecipeDef>
+		<defName>MakeRepairDroneCommon</defName>
+		<label></label>
+		<graphicPath>Pawns/Mechanical/Common/RepairDrone</graphicPath>
+		<mechDef>RepairDrone_Common</mechDef>
+	</TiberiumRim.MechRecipeDef>	
+	
+</Defs>

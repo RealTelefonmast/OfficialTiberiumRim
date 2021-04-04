@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Main1.label>Green Sky</Main1.label>
+  <Main1.description>We are not quite sure what it is yet and need to investigate further.\nA telescope would be useful, but we don't know how to build one yet, maybe one of our researchers can figure it out!</Main1.description>
+
+  <Main2.label>Tiberium Analysis</Main2.label>
+  <Main2.description></Main2.description>
+
+
+  <!--<GDIResearch.label>Research 1</GDIResearch.label>-->
+  <!--<GDIResearch2.label>Research 2</GDIResearch2.label>-->
+  <!--<GDIResearch3.label>Research 3</GDIResearch3.label>-->
+  <!--<GDIResearch4.label>Research 4</GDIResearch4.label>-->
+  <!--<GDIResearch5.label>Research 5</GDIResearch5.label>-->
+  <!--<GDIResearch6.label>Research 6</GDIResearch6.label>-->
+
+</LanguageData>

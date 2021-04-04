@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<HediffDef Abstract="True" Name="CrystalPart" ParentName="HediffBase_TR">
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(175, 255, 0)</defaultLabelColor>
+		<makesAlert>false</makesAlert>
+		<tendable>false</tendable>
+		<isBad>true</isBad>
+		<everCurableByItem>false</everCurableByItem>
+		<cureAllAtOnceIfCuredByItem>false</cureAllAtOnceIfCuredByItem>
+		<makesSickThought>true</makesSickThought>
+	</HediffDef>
+
+
+	<HediffDef ParentName="CrystalPart">
+		<defName>CrystalRash</defName>
+		<label>crystal rash</label>
+		<stages>
+			<li>
+				<painFactor>1.005</painFactor>
+				<partEfficiencyOffset>-0.05</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<HediffDef ParentName="CrystalPart">
+		<defName>CrystalBone</defName>
+		<label>crystal bone</label>
+		<stages>
+			<li>
+				<painFactor>1.05</painFactor>
+				<partEfficiencyOffset>0.4</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<HediffDef ParentName="HediffBase_TR">
+		<defName>CrystalSpine</defName>
+		<hediffClass>HediffWithComps</hediffClass>
+		<label>tiberian spine</label>
+		<defaultLabelColor>(175, 255, 0)</defaultLabelColor>
+		<initialSeverity>1</initialSeverity>
+		<chanceToCauseNoPain>1</chanceToCauseNoPain>
+		<makesSickThought>false</makesSickThought>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<cureAllAtOnceIfCuredByItem>false</cureAllAtOnceIfCuredByItem>
+		<everCurableByItem>false</everCurableByItem>
+		<!--<causesNeed></causesNeed>-->
+		<stages>
+			<li>
+				<painFactor>1.5</painFactor>
+			</li>
+		</stages>
+		<comps>
+			<li Class="TiberiumRim.HediffCompProperties_RangedVerb">
+				<verbs>
+					<li Class="TiberiumRim.VerbProperties_TR">
+						<verbClass>TiberiumRim.Verb_TR</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>Bullet_Shard</defaultProjectile>
+						<warmupTime>1.5</warmupTime>
+						<range>36.9</range>
+						<burstShotCount>4</burstShotCount>
+						<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+						<soundCast>TiberiumFiend_RangedAttack</soundCast>
+						<soundCastTail>GunTail_Light</soundCastTail>
+						<muzzleFlashScale>0</muzzleFlashScale>
+					</li>
+				</verbs>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<!-- Hand -->
+	<HediffDef ParentName="HediffImplant_TR">
+		<defName>HandSpikes</defName>
+		<label>crystal claws</label>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>crystal claws</label>
+						<capacities>
+							<li>Scratch</li>
+							<li>Stab</li>
+						</capacities>
+						<power>16</power>
+						<cooldownTime>2.45</cooldownTime>
+						<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+					</li>
+				</tools>
+			</li>
+		</comps>
+		<addedPartProps>
+			<solid>true</solid>
+			<isGoodWeapon>true</isGoodWeapon>
+			<partEfficiency>0.85</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	
+	<!-- Whole Arm -->
+	<HediffDef ParentName="HediffImplant_TR">
+		<defName>CrystalBlade</defName>
+		<label>crystalline blade</label>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>crystal spike</label>
+						<capacities>
+							<li>Cut</li>
+							<li>Stab</li>
+						</capacities>
+						<power>18</power>
+						<cooldownTime>1.75</cooldownTime>
+						<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+					</li>
+				</tools>
+			</li>
+		</comps>
+		<addedPartProps>
+			<solid>true</solid>
+			<isGoodWeapon>true</isGoodWeapon>
+			<partEfficiency>0</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	
+</Defs>

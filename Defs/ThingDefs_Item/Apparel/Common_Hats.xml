@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR">
+		<defName>TiberiumSuitMask</defName>
+		<label>Tiberium protection mask</label>
+		<description>This mask is a necessity for anyone attempting to traverse Tiberium infested lands. It shields the head from radiation and filters the toxic Tiberium gases and even particles from a Toxic Fallout.</description>
+		<thingCategories>
+			<li>Headgear</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuitMask</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+		</graphicData>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumProtection_T1</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<costList>
+			<Cloth>50</Cloth>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<recipeMaker>
+			<recipeUsers Inherit="false">
+				<li>TiberiumWorkbench</li>
+			</recipeUsers>
+		</recipeMaker>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToMake>2500</WorkToMake>
+			<Mass>0.5</Mass>
+			<StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor>
+			<StuffEffectMultiplierInsulation_Cold>0.25</StuffEffectMultiplierInsulation_Cold>
+			<StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat>
+			<TiberiumDamageResistance>0.75</TiberiumDamageResistance>
+		</statBases>
+		<equippedStatOffsets>
+			<SocialImpact>-0.1</SocialImpact>
+			<ToxicSensitivity>-0.75</ToxicSensitivity>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
+			<TiberiumRadiationResistance>0.25</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+				<wornGraphicPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuitMask</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<defaultOutfitTags>
+				<li>Worker</li>
+			</defaultOutfitTags>
+		</apparel>
+	</TiberiumRim.TRThingDef>
+	
+  <!--
+  	<ThingDef ParentName="HatBase_TR">
+		<defName>RavensMask</defName>
+		<label>abandoned mask</label>
+		<description>This mask was found on a long dessicated corpse. The origin is unknown, but looking around the chamber we have found various writing and leftovers of meal packages. Whoever this belonged to, tried his very best to survive.</description>
+		<graphicData>
+			<texPath>Items/Apparel/TiberiumProtectionSuit/Extra/RavensMask</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>0.5</Mass>
+			<StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor>
+			<StuffEffectMultiplierInsulation_Cold>0.25</StuffEffectMultiplierInsulation_Cold>
+			<StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat>
+			<TiberiumDamageResistance>0.5</TiberiumDamageResistance>
+		</statBases>
+		<techLevel>Medieval</techLevel>
+		<tradeability>None</tradeability>
+		<generateAllowChance>0</generateAllowChance>
+		<generateCommonality>0</generateCommonality>
+		<equippedStatOffsets>
+			<SocialImpact>0.75</SocialImpact>
+			<ToxicSensitivity>-1</ToxicSensitivity>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
+			<TiberiumRadiationResistance>0.25</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/TiberiumProtectionSuit/Rev/RavensMask</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<defaultOutfitTags>
+				<li>Worker</li>
+			</defaultOutfitTags>
+		</apparel>
+	</ThingDef>
+	-->
+	
+</Defs>

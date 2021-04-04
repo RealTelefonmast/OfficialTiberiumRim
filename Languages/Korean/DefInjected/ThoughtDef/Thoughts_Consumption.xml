@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <AteTiberiumMeatDirect.stages.0.label>역겨운 식재료 섭취</AteTiberiumMeatDirect.stages.0.label>
+  <AteTiberiumMeatDirect.stages.0.description>고기인지 오물덩이인지 모를 것을 먹었어. 이런 걸 먹고 사느니 차라리 죽는 게 나을지도 몰라.</AteTiberiumMeatDirect.stages.0.description>
+
+  <AteTiberiumMeatAsIngredient.stages.0.label>역겨운 음식 섭취</AteTiberiumMeatAsIngredient.stages.0.label>
+  <AteTiberiumMeatAsIngredient.stages.0.description>음식같지도 않은 것을 먹어보려다 결정 조각에 혀를 찔렸어. 혀가 타들어가는 느낌이야.</AteTiberiumMeatAsIngredient.stages.0.description>
+
+  <AteMutatedMeatDirect.stages.0.label>이상한 식재료 섭취</AteMutatedMeatDirect.stages.0.label>
+  <AteMutatedMeatDirect.stages.0.description>형광색이 감도는 질긴 고깃덩이를 먹었어. 역겹고 끔찍한 맛이야.</AteMutatedMeatDirect.stages.0.description>
+
+  <AteMutatedMeatAsIngredient.stages.0.label>이상한 음식 섭취</AteMutatedMeatAsIngredient.stages.0.label>
+  <AteMutatedMeatAsIngredient.stages.0.description>형광색이 감도는 질긴 요리를 먹었어. 아직도 끔찍한 맛이 혀를 감돌고 있어.</AteMutatedMeatAsIngredient.stages.0.description>
+
+
+</LanguageData>

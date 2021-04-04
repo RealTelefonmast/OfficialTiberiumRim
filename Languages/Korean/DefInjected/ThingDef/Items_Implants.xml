@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumEnhancedArm.label>타이베리움 강화팔</TiberiumEnhancedArm.label>
+  <TiberiumEnhancedArm.description>이 팔은 타이베리움 돌연변이로부터 떼어낸 신체의 일부입니다. 내부에 타이베리움 성분이 가득함에도 알 수 없는 이유로 결정화되지 않고 있습니다. 심지어 다른 사람에게 이식할 수도 있습니다.</TiberiumEnhancedArm.description>
+
+  <TiberiumEnhancedLeg.label>타이베리움 강화다리</TiberiumEnhancedLeg.label>
+  <TiberiumEnhancedLeg.description>이 다리는 타이베리움 돌연변이로부터 떼어낸 신체의 일부입니다. 내부에 타이베리움 성분이 가득함에도 알 수 없는 이유로 결정화되지 않고 있습니다. 심지어 다른 사람에게 이식할 수도 있습니다.</TiberiumEnhancedLeg.description>
+
+  <TiberiumSkinSample.label>타이베리움 피부</TiberiumSkinSample.label>
+  <TiberiumSkinSample.description>타이베리움 돌연변이에게서 채취한 피부 샘플입니다. 손상된 신체 부위를 대체할 수 있지만 위험을 초래할 수 있습니다.</TiberiumSkinSample.description>
+
+
+</LanguageData>

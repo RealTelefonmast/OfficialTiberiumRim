@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<NeedDef>
+		<defName>TiberiumNeed</defName>
+		<needClass>TiberiumRim.Need_Tiberium</needClass>
+		<label>Tiberium</label>
+		<description>This pawn is dependant on Tiberium, the need can be sated by having your pawn sit in Tiberium or by consuming Tiberadd.</description>
+		<showForCaravanMembers>true</showForCaravanMembers>
+		<onlyIfCausedByHediff>true</onlyIfCausedByHediff>
+		<scaleBar>false</scaleBar>
+		<major>true</major>
+		<listPriority>20</listPriority>
+	</NeedDef>
+
+</Defs>

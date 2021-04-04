@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThoughtDef Abstract="True" Name="TiberiumThought">
+		<icon>UI/Icons/ThingCategories/TiberiumCategory</icon>
+	</ThoughtDef>
+
+	<ThoughtDef ParentName="TiberiumThought">
+		<defName>UneasyTiberiumThought</defName>
+		<durationDays>0.01</durationDays>
+		<stackLimit>1</stackLimit>
+		<nullifyingTraits>
+			<li>TiberiumTrait</li>
+		</nullifyingTraits>
+		<stages>
+			<li>
+				<label>alien environment</label>
+				<description>Walking through this alien wasteland is scary, I can't tell whether something is moving or if it's just the radiation.</description>
+				<baseMoodEffect>-5</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+  
+	<ThoughtDef ParentName="TiberiumThought">
+		<defName>TiberiumWaterBath</defName>
+		<durationDays>0.25</durationDays>
+		<stackLimit>1</stackLimit>
+		<nullifyingTraits>
+			<li>TiberiumTrait</li>
+		</nullifyingTraits>
+		<stages>
+			<li>
+				<label>soaked in contaminated water</label>
+				<description>I had to traverse shallow contaminated water, I hope it won't affect me.</description>
+				<baseMoodEffect>-15</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+</Defs>

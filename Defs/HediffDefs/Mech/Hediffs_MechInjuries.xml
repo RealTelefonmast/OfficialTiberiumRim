@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<HediffDef ParentName="MechUpgradeBase">
+		<defName>MechInjury_Wear</defName>
+		<label>component wear</label>
+		<stages>
+			<li>
+				<minSeverity>0</minSeverity>
+				<label>None</label>
+			</li>
+			<li>
+				<minSeverity>0.1</minSeverity>
+				<label>Requires Maintenance</label>
+			</li>
+			<li>
+				<minSeverity>1</minSeverity>
+				<label>Needs Repairs</label>
+			</li>
+		</stages>
+	</HediffDef>
+	
+</Defs>

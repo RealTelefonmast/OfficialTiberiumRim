@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Harvester_Common.label>수확기</Harvester_Common.label>
+  <Harvester_Common.description>조악하게 만들어진 메카노이드 수확기입니다. 정착지에 존재하는 타이베리움을 채취합니다.</Harvester_Common.description>
+  <Harvester_Common.tools.0.label>수확팔</Harvester_Common.tools.0.label>
+
+  <Harvester_GDI.label>GDI 수확기</Harvester_GDI.label>
+  <Harvester_GDI.description>GDI의 표준형 메카노이드 수확기입니다. 정착지에 존재하는 타이베리움을 채취합니다.</Harvester_GDI.description>
+  <Harvester_GDI.tools.0.label>수확팔</Harvester_GDI.tools.0.label>
+
+  <Harvester_Nod.label>Nod 수확기</Harvester_Nod.label>
+  <Harvester_Nod.description>노드의 표준형 메카노이드 수확기입니다. 정착지에 존재하는 타이베리움을 채취합니다.</Harvester_Nod.description>
+  <Harvester_Nod.tools.0.label>수확팔</Harvester_Nod.tools.0.label>
+
+
+</LanguageData>

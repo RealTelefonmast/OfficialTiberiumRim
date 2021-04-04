@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  	<TiberiumRim.TRThingDef ParentName="PowerConduitBase_TR">
+		<defName>Nod_PowerConduit</defName>
+		<label>nod power conduit</label>
+		<description>A set of electrical cables for moving power around. Can be placed under walls and other buildings. GDI's ion control makes it very durable.</description>
+		<factionDesignation>Nod</factionDesignation>
+		<TRCategory>Misc</TRCategory>
+		<graphicData>
+			<texPath>Buildings/Nod/Misc/LaserPC</texPath>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<uiIconPath>Buildings/Nod/Misc/LaserPC_Icon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>175</MaxHitPoints>
+			<WorkToBuild>100</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Beauty>4</Beauty>
+		</statBases>
+		<costList>
+			<Steel>3</Steel>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+		</comps>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Buildings/Nod/Misc/LaserPC_Blueprint</texPath>
+			</blueprintGraphicData>
+		</building>
+	</TiberiumRim.TRThingDef>
+  
+	<TiberiumRim.TRThingDef ParentName="LampBase_TR">
+		<defName>Light_Nod</defName>
+		<label>Nod Lamp</label>
+		<description>Fill your colony with the ever so beautiful glow of Nod's red light.</description>
+		<factionDesignation>Nod</factionDesignation>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Misc/Light/Floor/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<statBases>
+			<Beauty>5</Beauty>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToMake>330</WorkToMake>
+			<Mass>20</Mass>
+			<Flammability>0.05</Flammability>
+		</statBases>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Misc/Light/Floor/Glow</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(1, 1)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>	
+			<li Class="CompProperties_Glower">
+				<glowRadius>15</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+		</comps>
+		<costList>
+			<Steel>15</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>
+ 	
+	<TiberiumRim.TRThingDef ParentName="WallLampBase">
+		<defName>NodWallLight</defName>
+		<label>wall light</label>
+		<description>An electrical wall lamp that lights an area. People need light to move and work at full speed.</description>
+		<factionDesignation>Nod</factionDesignation>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		 <graphicData>
+			<texPath>Buildings/Nod/Misc/Light/Wall/Base</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1.5, 1.5)</drawSize>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_GlowerOffset">
+				<glowerDef>GlowSource_Nod_Red</glowerDef>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Misc/Light/Wall/Glow</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(1.5, 1.5)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>	
+		</comps>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="GlowSourceBase">
+		<defName>GlowSource_Nod_Red</defName>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+		</comps>
+	</TiberiumRim.TRThingDef>
+
+</Defs>

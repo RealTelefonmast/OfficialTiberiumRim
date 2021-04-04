@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <NodWall.label>사원벽</NodWall.label>
+  <NodWall.description>사원벽은 사라예보 성지의 유서 깊은 디자인을 모방하여 설계되었습니다.</NodWall.description>
+
+  <DoorFrame_Nod.label>사원 아치</DoorFrame_Nod.label>
+  <DoorFrame_Nod.description>노드 시설의 주요 통로에 설치되는 장식물입니다. 조형미가 있으며, 약간의 조명을 포함합니다.</DoorFrame_Nod.description>
+
+  <Nod_Door.label>사원문</Nod_Door.label>
+  <Nod_Door.description>튼튼하게 설계된 문입니다. 열고 닫는 과정에서 약간의 시간이 소모됩니다.</Nod_Door.description>
+
+  <Nod_Autodoor.label>자동 사원문</Nod_Autodoor.label>
+  <Nod_Autodoor.description>튼튼하게 설계된 문입니다. 스스로 작동하지만 전기가 부족하면 수동으로 열어야 합니다.</Nod_Autodoor.description>
+
+</LanguageData>

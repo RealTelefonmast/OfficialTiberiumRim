@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!---->
+	<!-- Research -->
+	<TR_Startesearch>Start Project</TR_StartResearch>
+	<TR_Stoprch>Stop Project</TR_StopResearch>
+	
+	<!-- -->
+	
+	<!-- Task -->
+	<TR_CurTask>Current Task: {0}</TR_CurTask>
+	<TR_TaskTargets>Main Targets:</TR_Tasgets>
+
+</LanguageData>

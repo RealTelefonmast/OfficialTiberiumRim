@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Visceroid Parts -->
+
+  <VisceroidBody.label>변이한 몸통</VisceroidBody.label>
+  <VisceroidGulper.label>주둥이</VisceroidGulper.label>
+  <Tentacle_Mover.label>이동 촉수</Tentacle_Mover.label>
+  <Tentacle_Grabber.label>조작 촉수</Tentacle_Grabber.label>
+  <VeinNet.label>혈관</VeinNet.label>
+  <DigestionChamber.label>소화기관</DigestionChamber.label>
+
+
+  <!-- Veinmonster Parts -->
+
+  <VeinmonsterBody.label>끈적한 몸통</VeinmonsterBody.label>
+  <TentacleMass.label>꿈틀거리는 촉수</TentacleMass.label>
+  <VeinmonsterEye.label>눈</VeinmonsterEye.label>
+  <VeinmonsterMouth.label>아가리</VeinmonsterMouth.label>
+
+
+  <!-- VeinRock Parts -->
+
+  <VeinRockBody.label>덩굴바위</VeinRockBody.label>
+  <VeinRockMover.label>덩굴 다리</VeinRockMover.label>
+  <VeinRockFoot.label>덩굴 발</VeinRockFoot.label>
+  <VeinRockMouth.label>아가리</VeinRockMouth.label>
+
+
+</LanguageData>

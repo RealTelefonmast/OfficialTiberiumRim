@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Decorative -->
+
+  <PlantGreenTiberium.label>녹색 타이베리움</PlantGreenTiberium.label>
+  <PlantGreenTiberium.description>은은한 녹색 빛을 발하는 결정체입니다.</PlantGreenTiberium.description>
+
+  <PlantBlueTiberium.label>청색 타이베리움</PlantBlueTiberium.label>
+  <PlantBlueTiberium.description>아름다운 청색 빛을 발하는 결정체입니다.</PlantBlueTiberium.description>
+
+  <PlantRedTiberium.label>적색 타이베리움</PlantRedTiberium.label>
+  <PlantRedTiberium.description>적색으로 강렬하게 빛나는 결정체입니다.</PlantRedTiberium.description>
+
+
+</LanguageData>

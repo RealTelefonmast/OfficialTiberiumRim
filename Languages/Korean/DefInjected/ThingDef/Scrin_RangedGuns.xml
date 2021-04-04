@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Scrin_ShockDiscLauncher.label>충격 원반 발사기</Scrin_ShockDiscLauncher.label>
+  <Scrin_ShockDiscLauncher.description>충격 원반을 발사하는 장치입니다.</Scrin_ShockDiscLauncher.description>
+
+  <Scrin_Disint.label>분쇄기 머리</Scrin_Disint.label>
+  <Scrin_Disint.description>스크린 분쇄기의 공격용 단말입니다. 머리처럼 생겼습니다.</Scrin_Disint.description>
+
+  <Scrin_MechapedeLance.label>레이저 절단기</Scrin_MechapedeLance.label>
+  <Scrin_MechapedeLance.description>우수한 파괴력과 연사력을 갖춘 레이저 발사기입니다. 병기가 아니라 타이베리움 채취를 위한 농기구라는 설도 있습니다.</Scrin_MechapedeLance.description>
+
+  <Scrin_ShockLanceLauncher.label>광창 발사기</Scrin_ShockLanceLauncher.label>
+  <Scrin_ShockLanceLauncher.description>어마어마한 파괴력과 정밀도를 갖춘 레이저 병기입니다. 유일한 단점은 당장이라도 부서질 것처럼 내구력이 약하다는 것입니다.</Scrin_ShockLanceLauncher.description>
+  <Scrin_ShockLanceLauncher.tools.0.label>가시</Scrin_ShockLanceLauncher.tools.0.label>
+
+
+</LanguageData>

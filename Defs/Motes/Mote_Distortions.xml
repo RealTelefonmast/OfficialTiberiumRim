@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--=============== BASES ==============-->
+	<ThingDef Abstract="True" Name="DistortionBase">
+	</ThingDef>
+
+
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>ChronoVortexDistortionTest</defName>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>8</solidTime>
+			<fadeOutTime>0.5</fadeOutTime>
+			<growthRate>0</growthRate>
+		</mote>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderType>MoteGlowDistortBackground</shaderType>
+			<shaderParameters>
+				<_DistortionTex>/Motes/VortexDistortionMask</_DistortionTex>
+				<_distortionIntensity>0.1</_distortionIntensity>
+				<_brightnessMultiplier>1</_brightnessMultiplier>
+			</shaderParameters>
+			<drawSize>4</drawSize>
+		</graphicData>
+	</ThingDef>
+
+</Defs>

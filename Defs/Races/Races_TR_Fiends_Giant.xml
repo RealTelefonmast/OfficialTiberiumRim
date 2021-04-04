@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Thrumbo -->
+	<ThingDef ParentName="FiendBase">
+		<defName>Thrimbo</defName>
+		<label>thrimbo</label>
+		<description>A gigantic creature of unknown origin. The Thrumbo, but this one seems to have an Tiberium infection. Be careful, it might be easily enraged.</description>
+		<statBases>
+			<MoveSpeed>5.25</MoveSpeed>
+			<MarketValue>6000</MarketValue>
+			<ComfyTemperatureMin>-65</ComfyTemperatureMin>
+			<ComfyTemperatureMax>50</ComfyTemperatureMax>
+			<ArmorRating_Sharp>0.60</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.40</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.30</ArmorRating_Heat>
+			<PainShockThreshold>1</PainShockThreshold>
+		</statBases>
+		<tools>
+			<li>
+				<label>horn</label>
+				<capacities>
+					<li>Scratch</li>
+					<li>Stab</li>
+				</capacities>
+				<power>35</power>
+				<cooldownTime>3</cooldownTime>
+				<linkedBodyPartsGroup>HornAttackTool</linkedBodyPartsGroup>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+			<li>
+				<capacities>
+					<li>Bite</li>
+				</capacities>
+				<power>30</power>
+				<cooldownTime>2.5</cooldownTime>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+			<li>
+				<label>left foot</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>FrontLeftLeg</linkedBodyPartsGroup>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+			<li>
+				<label>right foot</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>FrontRightLeg</linkedBodyPartsGroup>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>15</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+		</tools>
+		<race>
+			<body>QuadrupedAnimalWithHoovesAndHorn</body>
+			<predator>true</predator>
+			<maxPreyBodySize>3</maxPreyBodySize>
+			<baseBodySize>3.5</baseBodySize>
+			<baseHungerRate>2</baseHungerRate>
+			<baseHealthScale>15.0</baseHealthScale>
+			<leatherDef>Leather_GreenTib</leatherDef>
+			<trainability>Advanced</trainability>
+			<gestationPeriodDays>60</gestationPeriodDays>
+			<manhunterOnDamageChance>1.00</manhunterOnDamageChance>
+			<wildness>0.99</wildness>
+			<lifeExpectancy>220</lifeExpectancy>
+			<lifeStageAges>
+				<li>
+					<def>AnimalBaby</def>
+					<minAge>0</minAge>
+				</li>
+				<li>
+					<def>AnimalJuvenile</def>
+					<minAge>6.0</minAge>
+				</li>
+				<li>
+					<def>AnimalAdult</def>
+					<minAge>25.0</minAge>
+					<soundCall>Pawn_Thrumbo_Call</soundCall>
+					<soundAngry>Pawn_Thrumbo_Angry</soundAngry>
+					<soundWounded>Pawn_Thrumbo_Pain</soundWounded>
+					<soundDeath>Pawn_Thrumbo_Death</soundDeath>
+				</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+
+	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+		<defName>Thrimbo</defName>
+		<label>thrimbo</label>
+		<race>Thrimbo</race>
+		<combatPower>500</combatPower>
+		<canArriveManhunter>false</canArriveManhunter>
+		<lifeStages>
+			<li>
+				<label>thrimbo calf</label>
+				<labelPlural>thrimbo calves</labelPlural>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Thrimbo/Thrimbo</texPath>
+					<drawSize>2.5</drawSize>
+					<shadowData>
+						<volume>(0.4, 0.3, 0.3)</volume>
+						<offset>(0,0,-0.2)</offset>
+					</shadowData>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
+					<drawSize>1.5</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawn/Animals/Thrimbo/Thrimbo</texPath>
+					<drawSize>4.0</drawSize>
+					<shadowData>
+						<volume>(0.7, 0.6, 0.4)</volume>
+						<offset>(0,0,-0.25)</offset>
+					</shadowData>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
+					<drawSize>1.75</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Thrimbo/Thrimbo</texPath>
+					<drawSize>5</drawSize>
+					<shadowData>
+						<volume>(1, 0.8, 0.5)</volume>
+						<offset>(0,0,-0.5)</offset>
+					</shadowData>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
+					<drawSize>2</drawSize>
+				</dessicatedBodyGraphicData>
+				<butcherBodyPart>
+					<bodyPartGroup>HornAttackTool</bodyPartGroup>
+					<thing>ThrumboHorn</thing>
+				</butcherBodyPart>
+			</li>
+		</lifeStages>
+	</TiberiumRim.TiberiumKindDef>
+	
+	<!-- Bears -->
+	
+	<ThingDef ParentName="FiendBase">
+		<defName>BigTiberiumFiend</defName>
+		<label>tiberian bear</label>
+		<description>Huge omnivorous mammals adapted for Tiberium. Their skin and fur has been crystalized.\n\nWhile their usual diet consists of fish, berries, honey, and scavenged meat, this Fiend is capable of using its massive strength and deadly claws to kill live prey. They are startlingly quick for such lumbering creatures.</description>
+		<statBases>
+			<MoveSpeed>4.5</MoveSpeed>
+			<ComfyTemperatureMin>-40</ComfyTemperatureMin>
+			<MarketValue>1500</MarketValue>
+			<Mass>500</Mass>
+			<MeatAmount>50</MeatAmount>
+			<PainShockThreshold>1</PainShockThreshold>
+		</statBases>
+		<tools>
+			<li>
+				<label>left claw</label>
+				<capacities>
+				<li>Scratch</li>
+				</capacities>
+				<power>25</power>
+				<cooldownTime>2.5</cooldownTime>
+				<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+				<surpriseAttack>
+				<extraMeleeDamages>
+				<li>
+				<def>Stun</def>
+				<amount>14</amount>
+				</li>
+				</extraMeleeDamages>
+				</surpriseAttack>
+				<chanceFactor>0.3</chanceFactor>
+			</li>
+			<li>
+				<label>right claw</label>
+				<capacities>
+				<li>Scratch</li>
+				</capacities>
+				<power>25</power>
+				<cooldownTime>2.5</cooldownTime>
+				<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+				<surpriseAttack>
+				<extraMeleeDamages>
+				<li>
+				<def>Stun</def>
+				<amount>14</amount>
+				</li>
+				</extraMeleeDamages>
+				</surpriseAttack>
+				<chanceFactor>0.3</chanceFactor>
+			</li>
+			<li>
+				<capacities>
+				<li>Bite</li>
+				</capacities>
+				<power>25</power>
+				<cooldownTime>2.5</cooldownTime>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<surpriseAttack>
+				<extraMeleeDamages>
+				<li>
+				<def>Stun</def>
+				<amount>14</amount>
+				</li>
+				</extraMeleeDamages>
+				</surpriseAttack>
+				<chanceFactor>0.5</chanceFactor>
+			</li>
+			<li>
+				<label>head</label>
+				<capacities>
+				<li>Blunt</li>
+				</capacities>
+				<power>15</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+		</tools>
+		<race>
+			<wildness>0.80</wildness>
+			<herdAnimal>false</herdAnimal>
+			<predator>true</predator>
+			<maxPreyBodySize>3</maxPreyBodySize>
+			<body>QuadrupedAnimalWithPaws</body>
+			<baseHungerRate>0.35</baseHungerRate>
+			<baseBodySize>2.15</baseBodySize>
+			<baseHealthScale>2.5</baseHealthScale>
+			<foodType>OmnivoreAnimal, OvivoreAnimal</foodType>
+			<leatherDef>Leather_BlackTib</leatherDef>
+			<gestationPeriodDays>30</gestationPeriodDays>
+			<lifeExpectancy>22</lifeExpectancy>
+			<trainability>Advanced</trainability>
+			<manhunterOnTameFailChance>0.10</manhunterOnTameFailChance>
+			<manhunterOnDamageChance>0.10</manhunterOnDamageChance>
+			<lifeStageAges>
+				<li>
+					<def>AnimalBaby</def>
+					<minAge>0</minAge>
+				</li>
+				<li>
+					<def>AnimalJuvenile</def>
+					<minAge>0.4</minAge>
+				</li>
+				<li>
+					<def>AnimalAdult</def>
+					<minAge>0.8</minAge>
+					<soundWounded>Pawn_Bear_Injured</soundWounded>
+					<soundDeath>Pawn_Bear_Death</soundDeath>
+					<soundCall>Pawn_Bear_Call</soundCall>
+					<soundAngry>Pawn_Bear_Angry</soundAngry>
+				</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+
+	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+		<defName>BigTiberiumFiend</defName>
+		<label>tiberian bear</label>
+		<race>BigTiberiumFiend</race>
+		<combatPower>150</combatPower>
+		<lifeStages>
+			<li>
+				<label>Fiend puppy</label>
+				<labelPlural>Fiend puppies</labelPlural>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/BigFiend/BigTiberiumFiend</texPath>
+					<drawSize>1.5</drawSize>
+					<shadowData>
+						<volume>(0.4, 0.3, 0.3)</volume>
+						<offset>(0,0,-0.2)</offset>
+					</shadowData>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Bear/Dessicated_Bear</texPath>
+					<drawSize>1.5</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/BigFiend/BigTiberiumFiend</texPath>
+					<drawSize>2</drawSize>
+					<shadowData>
+						<volume>(0.6, 0.45, 0.45)</volume>
+						<offset>(0,0,-0.25)</offset>
+					</shadowData>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Bear/Dessicated_Bear</texPath>
+					<drawSize>2</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/BigFiend/BigTiberiumFiend</texPath>
+					<drawSize>3</drawSize>
+					<shadowData>
+						<volume>(0.8, 0.6, 0.6)</volume>
+						<offset>(0,0,-0.3)</offset>
+					</shadowData>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Bear/Dessicated_Bear</texPath>
+					<drawSize>3</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.TiberiumKindDef>
+	
+	<!-- Muffalo -->
+	
+	<ThingDef ParentName="FiendBase">
+		<defName>Tiffalo</defName>
+		<label>tiffalo</label>
+		<description>These creatures have lost all their fluffiness to a crystaline structure, they also seem less friendly.</description>
+		<statBases>
+			<MoveSpeed>4</MoveSpeed>
+			<MarketValue>700</MarketValue>
+			<ComfyTemperatureMin>-75</ComfyTemperatureMin>
+			<ComfyTemperatureMax>45</ComfyTemperatureMax>
+			<Mass>200</Mass>
+			<MeatAmount>50</MeatAmount>
+			<PainShockThreshold>1</PainShockThreshold>
+		</statBases>
+		<tools>
+			<li>
+				<label>head</label>
+				<capacities>
+				<li>Blunt</li>
+				</capacities>
+				<power>15</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+			</li>
+			<li>
+				<label>left hoof</label>
+				<capacities>
+				<li>Blunt</li>
+				<li>Poke</li>
+				</capacities>
+				<power>10</power>
+				<cooldownTime>1.65</cooldownTime>
+				<linkedBodyPartsGroup>FrontLeftLeg</linkedBodyPartsGroup>
+			</li>
+			<li>
+				<label>right hoof</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>10</power>
+				<cooldownTime>1.65</cooldownTime>
+				<linkedBodyPartsGroup>FrontRightLeg</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<comps>
+			<li Class="CompProperties_Milkable">
+				<milkDef>Milk</milkDef>
+				<milkIntervalDays>2</milkIntervalDays>
+				<milkAmount>10</milkAmount>
+			</li>
+		</comps>
+		<race>
+			<herdAnimal>true</herdAnimal>
+			<packAnimal>true</packAnimal>
+			<predator>true</predator>
+			<body>QuadrupedAnimalWithHooves</body>
+			<baseBodySize>2.1</baseBodySize>
+			<baseHealthScale>2</baseHealthScale>
+			<baseHungerRate>0.6</baseHungerRate>
+			<gestationPeriodDays>28</gestationPeriodDays>
+			<foodType>OmnivoreAnimal, VegetarianRoughAnimal</foodType>
+			<wildness>0.6</wildness>
+			<trainability>Simple</trainability>
+			<lifeExpectancy>21</lifeExpectancy>
+			<lifeStageAges>
+				<li>
+					<def>AnimalBaby</def>
+					<minAge>0</minAge>
+				</li>
+				<li>
+					<def>AnimalJuvenile</def>
+					<minAge>0.25</minAge>
+				</li>
+				<li>
+					<def>AnimalAdult</def>
+					<minAge>0.5</minAge>
+					<soundWounded>Pawn_Muffalo_Wounded</soundWounded>
+					<soundDeath>Pawn_Muffalo_Death</soundDeath>
+					<soundCall>Pawn_Muffalo_Call</soundCall>
+					<soundAngry>Pawn_Muffalo_Angry</soundAngry>
+				</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+  
+	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+		<defName>Tiffalo</defName>
+		<label>tiffalo</label>
+		<race>Tiffalo</race>
+		<combatPower>125</combatPower>
+		<wildGroupSize Inherit="False">
+			<min>3</min>
+			<max>6</max>
+		</wildGroupSize>
+		<lifeStages>
+			<li>
+				<label>tiffalo calf</label>
+				<labelPlural>tiffalo calves</labelPlural>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Tiffalo/Tiffalo</texPath>
+					<drawSize>1.5</drawSize>
+					<shadowData>
+						<volume>(0.4, 0.3, 0.3)</volume>
+						<offset>(0,0,-0.2)</offset>
+					</shadowData>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Muffalo/Dessicated_Muffalo</texPath>
+					<drawSize>1.5</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Tiffalo/Tiffalo</texPath>
+					<drawSize>2.25</drawSize>
+					<shadowData>
+						<volume>(0.6, 0.45, 0.45)</volume>
+						<offset>(0,0,-0.25)</offset>
+					</shadowData>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Muffalo/Dessicated_Muffalo</texPath>
+					<drawSize>2.25</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Tiffalo/Tiffalo</texPath>
+					<drawSize>3</drawSize>
+					<shadowData>
+						<volume>(0.8, 0.6, 0.6)</volume>
+						<offset>(0,0,-0.3)</offset>
+					</shadowData>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Muffalo/Dessicated_Muffalo</texPath>
+					<drawSize>3</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.TiberiumKindDef>
+	
+</Defs>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<JobDef>
+		<defName>TiberiumResearch</defName>
+		<driverClass>TiberiumRim.JobDriver_TResearch</driverClass>
+		<reportString>doing tiberium research.</reportString>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+
+	<JobDef>
+		<defName>TiberiumBill</defName>
+		<driverClass>TiberiumRim.JobDriver_DoTiberiumBill</driverClass>
+		<reportString>doing tiberium bill.</reportString>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>	
+	
+	<JobDef>
+		<defName>FormAmalgamation</defName>
+		<driverClass>TiberiumRim.JobDriver_FormAmalgamation</driverClass>
+		<reportString>forming Amalgamation.</reportString>
+	</JobDef>
+	
+	<JobDef>
+		<defName>TiberiumBath</defName>
+		<driverClass>TiberiumRim.JobDriver_SatisfyTiberiumNeed</driverClass>
+	</JobDef>
+	
+	
+	<!---->
+	
+</Defs>

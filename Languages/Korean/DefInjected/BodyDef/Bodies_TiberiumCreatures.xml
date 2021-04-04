@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Visceral Horror | Humanlike -->
+
+  <VisceralBody.label>변이한 인간</VisceralBody.label>
+  <VisceralBody.corePart.parts.6.customLabel>왼쪽 녹아내린 폐</VisceralBody.corePart.parts.6.customLabel>
+  <VisceralBody.corePart.parts.7.customLabel>오른쪽 녹아내린 폐</VisceralBody.corePart.parts.7.customLabel>
+  <VisceralBody.corePart.parts.8.customLabel>왼쪽 점액질 신장</VisceralBody.corePart.parts.8.customLabel>
+  <VisceralBody.corePart.parts.9.customLabel>오른쪽 점액질 신장</VisceralBody.corePart.parts.9.customLabel>
+  <VisceralBody.corePart.parts.11.parts.0.parts.1.customLabel>왼쪽 눈</VisceralBody.corePart.parts.11.parts.0.parts.1.customLabel>
+  <VisceralBody.corePart.parts.11.parts.0.parts.2.customLabel>오른쪽 눈</VisceralBody.corePart.parts.11.parts.0.parts.2.customLabel>
+  <VisceralBody.corePart.parts.11.parts.0.parts.3.customLabel>왼쪽 귀</VisceralBody.corePart.parts.11.parts.0.parts.3.customLabel>
+  <VisceralBody.corePart.parts.11.parts.0.parts.4.customLabel>오른쪽 귀</VisceralBody.corePart.parts.11.parts.0.parts.4.customLabel>
+  <VisceralBody.corePart.parts.12.customLabel>왼쪽 촉수팔</VisceralBody.corePart.parts.12.customLabel>
+  <VisceralBody.corePart.parts.13.customLabel>오른쪽 촉수팔</VisceralBody.corePart.parts.13.customLabel>
+  <VisceralBody.corePart.parts.15.customLabel>오른쪽 앞발</VisceralBody.corePart.parts.15.customLabel>
+  <VisceralBody.corePart.parts.16.customLabel>왼쪽 앞발</VisceralBody.corePart.parts.16.customLabel>
+  <VisceralBody.corePart.parts.17.customLabel>오른쪽 뒷발</VisceralBody.corePart.parts.17.customLabel>
+  <VisceralBody.corePart.parts.18.customLabel>왼쪽 뒷발</VisceralBody.corePart.parts.18.customLabel>
+
+
+  <!-- Vein Rock -->
+
+  <VeinRock.label>덩굴바위</VeinRock.label>
+
+
+  <!-- // Visceroid // -->
+
+  <Visceroid.label>비세로이드</Visceroid.label>
+  <Visceroid.corePart.parts.2.customLabel>왼쪽 촉수팔</Visceroid.corePart.parts.2.customLabel>
+  <Visceroid.corePart.parts.3.customLabel>오른쪽 촉수팔</Visceroid.corePart.parts.3.customLabel>
+  <Visceroid.corePart.parts.4.customLabel>촉수</Visceroid.corePart.parts.4.customLabel>
+  <Visceroid.corePart.parts.5.customLabel>촉수</Visceroid.corePart.parts.5.customLabel>
+  <Visceroid.corePart.parts.6.customLabel>촉수</Visceroid.corePart.parts.6.customLabel>
+  <Visceroid.corePart.parts.7.customLabel>촉수</Visceroid.corePart.parts.7.customLabel>
+
+
+  <!-- // Veinmonster // -->
+
+  <Veinmonster.label>덩굴귀</Veinmonster.label>
+
+
+</LanguageData>

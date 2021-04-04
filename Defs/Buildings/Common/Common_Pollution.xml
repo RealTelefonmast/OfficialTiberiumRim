@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>PollutionFilter</defName>
+		<label>pollution filter</label>
+		<description>.</description>
+		<thingCategories Inherit="false" />
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Processing</TRCategory>
+		<drawerType>MapMeshOnly</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Pollution/Filter</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.25,2.25)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-10</Beauty>
+		</statBases>
+		<size>(2,2)</size>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T5</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Pollution/Filter_Overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,2.25)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(255,155,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>255</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<tickerType>Normal</tickerType>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>	
+		<fillPercent>1</fillPercent>
+		<rotatable>false</rotatable>			
+		<surfaceType>Item</surfaceType>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>PollutionVent</defName>
+		<label>pollution vent</label>
+		<description>.</description>
+		<thingCategories Inherit="false" />
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Processing</TRCategory>
+		<drawerType>MapMeshOnly</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Pollution/Vent</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>1500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-10</Beauty>
+		</statBases>
+		<size>(1,1)</size>
+		<costList>
+			<Steel>50</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T5</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<tickerType>Normal</tickerType>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>	
+		<fillPercent>1</fillPercent>
+		<rotatable>true</rotatable>			
+		<surfaceType>Item</surfaceType>
+	</TiberiumRim.TRThingDef>
+	
+</Defs>

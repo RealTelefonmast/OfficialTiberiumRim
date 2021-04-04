@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GDI_StandardRifle.label>표준 GDI 소총</GDI_StandardRifle.label>
+  <GDI_StandardRifle.description>GDI 신병들에게 기본적으로 지급되는 소총입니다. 20세기 수준의 무기체계이지만 여전히 유용합니다.\n\n레일건으로 업그레이드할 수 있습니다.</GDI_StandardRifle.description>
+  <GDI_StandardRifle.tools.0.label>개머리판</GDI_StandardRifle.tools.0.label>
+  <GDI_StandardRifle.tools.1.label>총열</GDI_StandardRifle.tools.1.label>
+
+
+  <!-- Allow multi ammo type -->
+
+  <GDI_StunLauncher.label>섬광탄 발사기</GDI_StunLauncher.label>
+  <GDI_StunLauncher.description>적을 잠시 무력화시킬 수 있는 섬광탄을 발사합니다.</GDI_StunLauncher.description>
+  <GDI_StunLauncher.tools.0.label>개머리판</GDI_StunLauncher.tools.0.label>
+  <GDI_StunLauncher.tools.1.label>총열</GDI_StunLauncher.tools.1.label>
+
+  <GDI_Railgun.label>레일건</GDI_Railgun.label>
+  <GDI_Railgun.description>GDI 레일건은 전자기 가속 탄환을 발사합니다. 연사는 불가능하지만 어마어마한 파괴력과 유효사거리를 자랑합니다.</GDI_Railgun.description>
+  <GDI_Railgun.tools.0.label>개머리판</GDI_Railgun.tools.0.label>
+  <GDI_Railgun.tools.1.label>총열</GDI_Railgun.tools.1.label>
+
+  <GDI_Shatterer.label>파쇄포</GDI_Shatterer.label>
+  <GDI_Shatterer.description>이 무기는 음파 기술을 활용하여 만들어졌습니다. 대단히 불안정하지만 위력적입니다.</GDI_Shatterer.description>
+  <GDI_Shatterer.tools.0.label>개머리판</GDI_Shatterer.tools.0.label>
+  <GDI_Shatterer.tools.1.label>총열</GDI_Shatterer.tools.1.label>
+
+  <GDI_Mortar.label>이동박격포</GDI_Mortar.label>
+  <GDI_Mortar.description>장거리 화력투사를 위해 설계된 곡사 병기입니다.\n\n공성충격포로 업그레이드할 수 있습니다.</GDI_Mortar.description>
+
+  <GDI_Shockweaver.label>공성충격포</GDI_Shockweaver.label>
+  <GDI_Shockweaver.description>음파 충격탄을 발사할 수 있도록 개조된 이동식 박격포입니다. 건축물에 치명적인 피해를 입히지만, 생명체를 상대로는 거의 효과가 없습니다.</GDI_Shockweaver.description>
+
+
+</LanguageData>

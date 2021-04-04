@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumDamageResistance.label>타이베리움 접촉 저항력</TiberiumDamageResistance.label>
+  <TiberiumDamageResistance.description>단순한 타이베리움 접촉에 대한 저항력을 나타냅니다.</TiberiumDamageResistance.description>
+
+  <TiberiumInfectionResistance.label>타이베리움 감염 저항력</TiberiumInfectionResistance.label>
+  <TiberiumInfectionResistance.description>타이베리움 감염에 대한 저항력을 나타냅니다.</TiberiumInfectionResistance.description>
+
+  <TiberiumRadiationResistance.label>타이베리움 방사선 저항력</TiberiumRadiationResistance.label>
+  <TiberiumRadiationResistance.description>타이베리움 방사선에 대한 저항력을 나타냅니다.</TiberiumRadiationResistance.description>
+
+  <TiberiumGasResistance.label>타이베리움 가스 저항력</TiberiumGasResistance.label>
+  <TiberiumGasResistance.description>타이베리움 가스에 대한 저항력을 나타냅니다.</TiberiumGasResistance.description>
+
+
+</LanguageData>

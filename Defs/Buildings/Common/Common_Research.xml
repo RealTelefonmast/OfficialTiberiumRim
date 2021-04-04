@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>TiberiumResearchCrane</defName>
+		<label>tiberium research crane</label>
+		<description>This research crane can be placed on any Tiberium source and will allow you to learn more about the alien substance. It is immune to Tiberium itself and will inhibit the producer from spawning more Tiberium.\n\nOnly one research crane can be placed on a map.</description>
+		<size>(5,5)</size>
+		<minifiedDef />
+		<thingCategories Inherit="false" />
+		<TRCategory>Research</TRCategory>
+		<clearTiberium>true</clearTiberium>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+		</costList>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Research/ResearchCrane</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(8,8)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<building>
+			<isEdifice>true</isEdifice>
+		</building>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>3000</WorkToBuild>
+			<Flammability>0.5</Flammability>
+			<TiberiumDamageResistance>1</TiberiumDamageResistance>
+			<!--<ResearchSpeedFactor>1.0</ResearchSpeedFactor>-->
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>110</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<fillPercent>0.75</fillPercent>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
+		<rotatable>false</rotatable>
+		<hasInteractionCell>true</hasInteractionCell>
+		<surfaceType>Item</surfaceType>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>MineralAnalysis_T3</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_ResearchCrane</li>
+			<li>TiberiumRim.PlaceWorker_Once</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BenchBase_TR">
+		<defName>TiberiumResearchStation</defName>
+		<label>research station</label>
+		<description>...</description>
+		<size>(7,4)</size>
+		<minifiedDef Inherit="false"/>
+		<thingCategories Inherit="false" />
+		<TRCategory>Research</TRCategory>
+		<hidden>true</hidden>
+		<costList>
+			<Steel>400</Steel>
+			<Plasteel>50</Plasteel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Research/ResearchStation/TibResearchStation</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(8,4)</drawSize>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<statBases>
+			<MaxHitPoints>900</MaxHitPoints>
+			<WorkToBuild>10000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<ResearchSpeedFactor>1.5</ResearchSpeedFactor>
+		</statBases>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Research/ResearchStation/TRSoverlay</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(8,4)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>325</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>MultiAnalyzer</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<surfaceType>Item</surfaceType>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BenchBase_TR">
+		<defName>TiberiumResearchAdapter</defName>
+		<label>tiberium research adapter</label>
+		<description>.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<TRCategory>Research</TRCategory>
+		<hidden>true</hidden>
+		<pathCost>70</pathCost>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>2500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<size>(3,4)</size>
+		<costList>
+			<Steel>100</Steel>
+			<Plasteel>15</Plasteel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Research/ResearchCrafter/TibResearchCrafter</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4.5,4.5)</drawSize>
+			<shadowData>
+				<volume>(1.5,1,1.5)</volume>
+			</shadowData>
+			<damageData>
+				<rect>(0.3,0.1,2.4,1.8)</rect>
+			</damageData>
+		</graphicData>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<recipes>
+		</recipes>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<surfaceType>Item</surfaceType>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Research/ResearchCrafter/TRCoverlay</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(4.5,4.5)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>125</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Facility">
+				<statOffsets>
+					<ResearchSpeedFactor>0.1</ResearchSpeedFactor>
+				</statOffsets>
+				<maxSimultaneous>1</maxSimultaneous>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+	
+</Defs>

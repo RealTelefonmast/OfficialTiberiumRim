@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TiberiumRim.TRThingDef ParentName="WallBase_TR" Name="GDIWall">
+		<defName>GDIWall</defName>
+		<label>GDI wall</label>
+		<description>An impassable wall, reinforced by GDI engineers.</description>
+		<factionDesignation>GDI</factionDesignation>
+		<graphicData>
+			<texPath>Buildings/GDI/Structure/Wall_GDI</texPath>
+		</graphicData>
+		<costList>
+			<GDI_ReinforcedPlate>2</GDI_ReinforcedPlate>
+		</costList>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<uiIconPath>Buildings/GDI/Structure/Wall_GDI_Icon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>1000</MaxHitPoints>
+			<WorkToBuild>2000</WorkToBuild>
+			<Flammability>0</Flammability>
+		</statBases>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="WallBase_TR">
+		<defName>GDIPillbox</defName>
+		<label>pillbox</label>
+		<description>Cover from gunfire.</description>
+		<factionDesignation>GDI</factionDesignation>
+		<graphicData>
+			<texPath>Buildings/GDI/Structure/Pillbox_GDI</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkFlags Inherit="False">
+				<li>65536</li>
+			</linkFlags>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<uiIconPath>Buildings/GDI/Structure/Pillbox_GDI_icon</uiIconPath>
+		<passability>Impassable</passability>
+		<blockLight>false</blockLight>
+		<blockWind>false</blockWind>
+		<coversFloor>true</coversFloor>
+		<holdsRoof>false</holdsRoof>
+		<castEdgeShadows>false</castEdgeShadows>
+		<canOverlapZones>false</canOverlapZones>
+		<staticSunShadowHeight>0.1</staticSunShadowHeight>
+		<fillPercent>0.70</fillPercent>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Beauty>0</Beauty>
+			<WorkToBuild>600</WorkToBuild>
+			<Flammability>0</Flammability>
+		</statBases>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<blueprintGraphicData>
+				<texPath>Buildings/GDI/Structure/Pillbox_GDI</texPath>
+			</blueprintGraphicData>
+		</building>
+		<costList>
+			<GDI_ReinforcedPlate>2</GDI_ReinforcedPlate>
+		</costList>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<constructEffect>ConstructDirt</constructEffect>
+		<repairEffect>ConstructDirt</repairEffect>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>	
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+		<defName>DoorFrame_GDI</defName>
+		<label>GDI door frame</label>
+		<description>A metal frame to decorate doorways with.</description>
+		<factionDesignation>GDI</factionDesignation>
+		<TRCategory>Decoration</TRCategory>
+		<altitudeLayer>Building</altitudeLayer>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToBuild>500</WorkToBuild>
+			<Flammability>0.2</Flammability>
+			<Mass>10</Mass>
+			<Beauty>25</Beauty>
+		</statBases>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Structure/DoorFrame/DoorFrameGDI</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<linkFlags>
+				<li>Wall</li>
+				<li>Rock</li>
+			</linkFlags>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<uiIconScale>2</uiIconScale>
+		<uiIconPath>Buildings/GDI/Structure/DoorFrame/DoorFrameGDI_south</uiIconPath>
+		<uiIconOffset>(0,0.1)</uiIconOffset>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_DoorFrame</li>
+		</placeWorkers>
+		<costList>
+			<Steel>15</Steel>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>10</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>4</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+		</comps>
+		<defaultPlacingRot>South</defaultPlacingRot>
+		<building>
+			<isEdifice>false</isEdifice>
+		</building>
+		<rotatable>true</rotatable>
+		<clearBuildingArea>false</clearBuildingArea>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
+		<defName>GDI_Door</defName>
+		<label>GDI door</label>
+		<description>Divides rooms. Must be manually opened and closed, which slows people down.</description>
+		<factionDesignation>GDI</factionDesignation>
+		<graphicData>
+			<texPath>Buildings/GDI/Structure/Door_GDI</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<enabled>false</enabled>
+			</damageData>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<costList>
+			<GDI_ReinforcedPlate>2</GDI_ReinforcedPlate>
+		</costList>
+		<stuffCategories Inherit="False"/>
+		<uiIconPath>Buildings/GDI/Structure/Door_GDI_icon</uiIconPath>
+		<statBases>
+			<WorkToBuild>1000</WorkToBuild>
+			<MaxHitPoints>400</MaxHitPoints>
+			<Flammability>0.0</Flammability>
+		</statBases>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>
+
+	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
+		<defName>GDI_Autodoor</defName>
+		<label>GDI autodoor</label>
+		<description>Divides rooms. Powered operation allows people to move through the door without slowing down.</description>
+		<factionDesignation>GDI</factionDesignation>
+		<graphicData>
+			<texPath>Buildings/GDI/Structure/AutoDoor_GDI</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<enabled>false</enabled>
+			</damageData>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<uiIconPath>Buildings/GDI/Structure/AutoDoor_GDI_icon</uiIconPath>
+		<costList>
+			<GDI_ReinforcedPlate>2</GDI_ReinforcedPlate>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<stuffCategories Inherit="False"/>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+				<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>Autodoors</li>
+		</researchPrerequisites>
+		<statBases>
+			<WorkToBuild>2000</WorkToBuild>
+			<MaxHitPoints>400</MaxHitPoints>
+			<Flammability>0.0</Flammability>
+		</statBases>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>	
+	
+</Defs>

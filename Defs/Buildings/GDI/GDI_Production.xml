@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>GDI_Factory</defName>
+		<label>GDI Factory</label>
+		<description>The GDI factory allows you to construct many different items, weapons and units if available.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<factionDesignation>GDI</factionDesignation>
+		<TRCategory>Processing</TRCategory>
+		<size>(3,2)</size>
+		<minifiedDef />
+		<thingCategories Inherit="false" />
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Production/Factory_GDI</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<recipes>
+			<li>MakeReinforcedPlate</li>
+			<li>MakeGDISonicCore</li>
+		</recipes>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>300</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>GDI_Hangar</defName>
+		<label>GDI hangar</label>
+		<description>This hangar is used for mechanical unit construction.</description>
+		<factionDesignation>GDI</factionDesignation>
+		<TRCategory>Processing</TRCategory>
+		<size>(5,5)</size>
+		<minifiedDef />
+		<thingCategories Inherit="false" />
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Production/Hangar/Base</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>7,7)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<statBases>
+			<MaxHitPoints>1000</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<costList>
+			<Steel>500</Steel>
+			<ComponentIndustrial>15</ComponentIndustrial>
+		</costList>
+		<inspectorTabs>
+			<li>TiberiumRim.ITab_MechConstruction</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/GDI/Production/Hangar/BaseLight</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,7)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/GDI/Production/Hangar/Cover</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<drawSize>(7,7)</drawSize>
+						</data>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/GDI/Production/Hangar/CoverLight</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,7)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+			</li>
+		</comps>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<fillPercent>1</fillPercent>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="RefineryBase_TR">
+		<defName>GDI_TiberiumRefinery</defName>
+		<label>tiberium refinery (GDI)</label>
+		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
+		<size>(5,5)</size>
+		<factionDesignation>GDI</factionDesignation>
+		<TRCategory>Processing</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Production/Refinery/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5.5,5.5)</drawSize>
+			<drawRotated>false</drawRotated>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<uiIconPath>Buildings/GDI/Production/Refinery/Icon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>450</MaxHitPoints>
+			<WorkToBuild>3000</WorkToBuild>
+			<Flammability>0.85</Flammability>
+		</statBases>
+		<costList>
+			<GDI_ReinforcedPlate>200</GDI_ReinforcedPlate>
+			<ComponentIndustrial>100</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.RefineryProperties">
+				<harvester>Harvester_GDI</harvester>
+				<maxStorage>4000</maxStorage>
+				<tnwbMode>Producer</tnwbMode>
+			</li>
+			<li Class="TiberiumRim.CompProperties_MechStation">
+				<mechRecipes>
+					<li>MakeHarvesterCommon</li>
+				</mechRecipes>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/GDI/Production/Refinery/ContainerOverlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5.5,5.5)</drawSize>
+							<drawRotated>false</drawRotated>
+						</data>
+						<mode>Dynamic</mode>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/GDI/Production/Refinery/Connector</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<drawSize>(5.5,5.5)</drawSize>
+						</data>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/GDI/Production/Refinery/Grid</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(5.5,5.5)</drawSize>
+						</data>
+						<directAltitudeOffset>0.25</directAltitudeOffset>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/GDI/Production/Refinery/RefConnector</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(5.5,5.5)</drawSize>
+						</data>
+					</li>
+				</overlays>
+			</li>
+		</comps>
+		<inspectorTabs>
+			<li>TiberiumRim.ITab_MechConstruction</li>
+		</inspectorTabs>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_Gap</li>
+		</placeWorkers>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<interactionCellIcon>RefineryCell</interactionCellIcon>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>GDIPowerPlant</defName>
+		<thingClass>Building</thingClass>
+		<label>GDI power plant</label>
+		<description>.</description>
+		<factionDesignation>GDI</factionDesignation>
+		<TRCategory>Processing</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Production/PowerPlant/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<uiIconPath>Buildings/GDI/Production/PowerPlant/Icon</uiIconPath>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<blockWind>true</blockWind>
+		<fillPercent>1.0</fillPercent>
+		<castEdgeShadows>false</castEdgeShadows>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<size>(4,4)</size>
+		<costList>
+			<GDI_ReinforcedPlate>25</GDI_ReinforcedPlate>
+			<Plasteel>25</Plasteel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/GDI/Production/PowerPlant/Container</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+					</li>
+					<li>
+						<skip>true</skip>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/GDI/Production/PowerPlant/Core</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/GDI/Production/PowerPlant/Display</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+				<moteData>
+					<northVec>
+						<li>(0,0,0.75)</li>
+					</northVec>
+					<thrower>
+						<moteDef>TiberiumSmokeMote</moteDef>
+						<speed>1.75</speed>
+						<scale>3~4</scale>
+						<rotation>0~90</rotation>
+						<rotationRate>0.1</rotationRate>
+						<angle>0~50</angle>
+						<burstCount>1</burstCount>
+						<affectedByWind>true</affectedByWind>
+						<moteInterval>25~50</moteInterval>
+					</thrower>
+				</moteData>
+			</li>
+			<li Class="TiberiumRim.PowerProperties">
+				<compClass>TiberiumRim.CompTNW_Power</compClass>
+				<maxStorage>2000</maxStorage>
+				<supportedTypes>
+					<li>Green</li>
+					<li>Blue</li>
+					<li>Red</li>
+				</supportedTypes>
+			    <tnwbMode>Consumer</tnwbMode>
+				<consumeAmt>1000</consumeAmt>
+				<daysPerLoad>7</daysPerLoad>
+			</li>
+			<li Class="CompProperties_Flickable" />	
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>12</heatPerSecond>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>TiberiumRim.CompPower_Tiberium</compClass>
+				<basePowerConsumption>-4000</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+		</comps>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<constructEffect>ConstructMetal</constructEffect>
+	</TiberiumRim.TRThingDef>
+	
+</Defs>

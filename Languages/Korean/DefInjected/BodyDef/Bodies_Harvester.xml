@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <HarvesterBody_Common.label>수확기 동체</HarvesterBody_Common.label>
+  <HarvesterBody_Common.corePart.parts.0.parts.0.customLabel>전면 장갑판</HarvesterBody_Common.corePart.parts.0.parts.0.customLabel>
+  <HarvesterBody_Common.corePart.parts.1.parts.0.customLabel>좌측 수확팔</HarvesterBody_Common.corePart.parts.1.parts.0.customLabel>
+  <HarvesterBody_Common.corePart.parts.1.parts.1.customLabel>우측 수확팔</HarvesterBody_Common.corePart.parts.1.parts.1.customLabel>
+  <HarvesterBody_Common.corePart.parts.2.parts.0.customLabel>측면 장갑판</HarvesterBody_Common.corePart.parts.2.parts.0.customLabel>
+  <HarvesterBody_Common.corePart.parts.3.customLabel>주행장치</HarvesterBody_Common.corePart.parts.3.customLabel>
+  <HarvesterBody_Common.corePart.parts.3.parts.1.customLabel>좌측 궤도</HarvesterBody_Common.corePart.parts.3.parts.1.customLabel>
+  <HarvesterBody_Common.corePart.parts.3.parts.2.customLabel>우측 궤도</HarvesterBody_Common.corePart.parts.3.parts.2.customLabel>
+
+  <HarvesterBody_GDI.label>수확기 동체</HarvesterBody_GDI.label>
+  <HarvesterBody_GDI.corePart.parts.0.parts.0.customLabel>전면 장갑판</HarvesterBody_GDI.corePart.parts.0.parts.0.customLabel>
+  <HarvesterBody_GDI.corePart.parts.1.parts.0.customLabel>좌측 수확팔</HarvesterBody_GDI.corePart.parts.1.parts.0.customLabel>
+  <HarvesterBody_GDI.corePart.parts.1.parts.1.customLabel>우측 수확팔</HarvesterBody_GDI.corePart.parts.1.parts.1.customLabel>
+  <HarvesterBody_GDI.corePart.parts.2.parts.0.customLabel>측면 장갑판</HarvesterBody_GDI.corePart.parts.2.parts.0.customLabel>
+  <HarvesterBody_GDI.corePart.parts.3.customLabel>주행장치</HarvesterBody_GDI.corePart.parts.3.customLabel>
+  <HarvesterBody_GDI.corePart.parts.3.parts.0.customLabel>메인 파워팩</HarvesterBody_GDI.corePart.parts.3.parts.0.customLabel>
+  <HarvesterBody_GDI.corePart.parts.3.parts.1.customLabel>서브 파워팩</HarvesterBody_GDI.corePart.parts.3.parts.1.customLabel>
+  <HarvesterBody_GDI.corePart.parts.3.parts.2.customLabel>바퀴 (R1)</HarvesterBody_GDI.corePart.parts.3.parts.2.customLabel>
+  <HarvesterBody_GDI.corePart.parts.3.parts.3.customLabel>바퀴 (R2)</HarvesterBody_GDI.corePart.parts.3.parts.3.customLabel>
+  <HarvesterBody_GDI.corePart.parts.3.parts.4.customLabel>바퀴 (R3)</HarvesterBody_GDI.corePart.parts.3.parts.4.customLabel>
+  <HarvesterBody_GDI.corePart.parts.3.parts.5.customLabel>바퀴 (L1)</HarvesterBody_GDI.corePart.parts.3.parts.5.customLabel>
+  <HarvesterBody_GDI.corePart.parts.3.parts.6.customLabel>바퀴 (L2)</HarvesterBody_GDI.corePart.parts.3.parts.6.customLabel>
+  <HarvesterBody_GDI.corePart.parts.3.parts.7.customLabel>바퀴 (L3)</HarvesterBody_GDI.corePart.parts.3.parts.7.customLabel>
+
+  <HarvesterBody_Nod.label>수확기 동체</HarvesterBody_Nod.label>
+  <HarvesterBody_Nod.corePart.parts.0.parts.0.customLabel>전면 장갑판</HarvesterBody_Nod.corePart.parts.0.parts.0.customLabel>
+  <HarvesterBody_Nod.corePart.parts.1.parts.0.customLabel>좌측 수확팔</HarvesterBody_Nod.corePart.parts.1.parts.0.customLabel>
+  <HarvesterBody_Nod.corePart.parts.1.parts.1.customLabel>우측 수확팔</HarvesterBody_Nod.corePart.parts.1.parts.1.customLabel>
+  <HarvesterBody_Nod.corePart.parts.2.parts.0.customLabel>측면 장갑판</HarvesterBody_Nod.corePart.parts.2.parts.0.customLabel>
+  <HarvesterBody_Nod.corePart.parts.2.parts.1.customLabel>좌측 배관</HarvesterBody_Nod.corePart.parts.2.parts.1.customLabel>
+  <HarvesterBody_Nod.corePart.parts.2.parts.2.customLabel>우측 배관</HarvesterBody_Nod.corePart.parts.2.parts.2.customLabel>
+  <HarvesterBody_Nod.corePart.parts.3.customLabel>주행장치</HarvesterBody_Nod.corePart.parts.3.customLabel>
+  <HarvesterBody_Nod.corePart.parts.3.parts.0.customLabel>좌측 파워팩</HarvesterBody_Nod.corePart.parts.3.parts.0.customLabel>
+  <HarvesterBody_Nod.corePart.parts.3.parts.1.customLabel>우측 파워팩</HarvesterBody_Nod.corePart.parts.3.parts.1.customLabel>
+  <HarvesterBody_Nod.corePart.parts.3.parts.2.customLabel>바퀴 (L1)</HarvesterBody_Nod.corePart.parts.3.parts.2.customLabel>
+  <HarvesterBody_Nod.corePart.parts.3.parts.3.customLabel>바퀴 (L2)</HarvesterBody_Nod.corePart.parts.3.parts.3.customLabel>
+  <HarvesterBody_Nod.corePart.parts.3.parts.4.customLabel>바퀴 (L3)</HarvesterBody_Nod.corePart.parts.3.parts.4.customLabel>
+  <HarvesterBody_Nod.corePart.parts.3.parts.5.customLabel>바퀴 (R1)</HarvesterBody_Nod.corePart.parts.3.parts.5.customLabel>
+  <HarvesterBody_Nod.corePart.parts.3.parts.6.customLabel>바퀴 (R2)</HarvesterBody_Nod.corePart.parts.3.parts.6.customLabel>
+  <HarvesterBody_Nod.corePart.parts.3.parts.7.customLabel>바퀴 (R3)</HarvesterBody_Nod.corePart.parts.3.parts.7.customLabel>
+
+
+</LanguageData>

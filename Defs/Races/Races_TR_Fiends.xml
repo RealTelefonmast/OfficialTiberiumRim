@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="FiendBase">
+		<defName>TiberiumFiend</defName>
+		<label>tiberium fiend</label>
+		<description>A classic Tiberium predator. The Tiberium Fiend is the most common and rather dangerous Tiberium creature. They are tameable, but only accept those worthy of their trust.</description>
+		<statBases>
+			<MoveSpeed>7</MoveSpeed>
+			<ComfyTemperatureMin>-70</ComfyTemperatureMin>
+			<MarketValue>750</MarketValue>
+			<Mass>50</Mass>
+			<MeatAmount>50</MeatAmount>
+			<PainShockThreshold>1</PainShockThreshold>
+		</statBases>
+		<tools>
+			<li>
+				<label>left claw</label>
+				<capacities>
+					<li>Scratch</li>
+				</capacities>
+				<power>16</power>
+				<cooldownTime>1.65</cooldownTime>
+				<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Stun</def>
+							<amount>20</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+				<chanceFactor>0.5</chanceFactor>
+			</li>
+			<li>
+				<label>right claw</label>
+				<capacities>
+					<li>Scratch</li>
+				</capacities>
+				<power>16</power>
+				<cooldownTime>1.65</cooldownTime>
+				<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Stun</def>
+							<amount>20</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+				<chanceFactor>0.5</chanceFactor>
+			</li>
+			<li>
+				<capacities>
+					<li>Bite</li>
+				</capacities>
+				<power>22</power>
+				<cooldownTime>2.5</cooldownTime>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<surpriseAttack>
+				<extraMeleeDamages>
+					<li>
+						<def>Stun</def>
+						<amount>25</amount>
+					</li>
+				</extraMeleeDamages>
+				</surpriseAttack>
+				<chanceFactor>0.9</chanceFactor>
+			</li>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>10</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+		</tools>
+		<race>
+			<body>QuadrupedAnimalWithPawsAndTail</body>
+			<maxPreyBodySize>2.3</maxPreyBodySize>
+			<petness>0.1</petness>
+			<baseBodySize>0.85</baseBodySize>
+			<baseHungerRate>0.18</baseHungerRate>
+			<baseHealthScale>1.75</baseHealthScale>
+			<foodType>CarnivoreAnimal</foodType>
+			<nameOnTameChance>1</nameOnTameChance>
+			<trainability>Advanced</trainability>
+			<wildness>0.85</wildness>
+			<nuzzleMtbHours>640</nuzzleMtbHours>
+			<manhunterOnTameFailChance>1</manhunterOnTameFailChance>
+			<manhunterOnDamageChance>0.3</manhunterOnDamageChance>
+			<gestationPeriodDays>26</gestationPeriodDays>
+			<litterSizeCurve>
+				<points>
+					<li>(0.5, 0)</li>
+					<li>(1, 1)</li>
+					<li>(2, 1.7)</li>
+					<li>(2.5, 0.7)</li>
+					<li>(3, 0)</li>
+				</points>
+			</litterSizeCurve>
+			<lifeExpectancy>10</lifeExpectancy>
+			<lifeStageAges>
+				<li>
+					<def>AnimalBaby</def>
+					<minAge>0</minAge>
+				</li>
+				<li>
+					<def>AnimalJuvenile</def>
+					<minAge>0.2</minAge>
+				</li>
+				<li>
+					<def>AnimalAdult</def>
+					<minAge>0.45</minAge>
+					<soundWounded>Pawn_Dog_Injured</soundWounded>
+					<soundDeath>Pawn_Dog_Death</soundDeath>
+					<soundCall>Pawn_Dog_Call</soundCall>
+					<soundAngry>Pawn_Dog_Angry</soundAngry>
+				</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+
+	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+		<defName>TiberiumFiend</defName>
+		<label>tiberium fiend</label>
+		<labelPlural>tiberium fiends</labelPlural>
+		<race>TiberiumFiend</race>
+		<combatPower>100</combatPower>
+		<lifeStages>
+			<li>
+				<label>fiend puppy</label>
+				<labelPlural>fiend puppies</labelPlural>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Fiend/TiberiumFiend</texPath>
+					<drawSize>1.25</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Wolf_Timber/Dessicated_Wolf_Timber</texPath>
+					<drawSize>1.25</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Fiend/TiberiumFiend</texPath>
+					<drawSize>2</drawSize>
+					<shadowData>
+						<volume>(0.25, 0.3, 0.25)</volume>
+						<offset>(0,0,-0.15)</offset>
+					</shadowData>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Wolf_Timber/Dessicated_Wolf_Timber</texPath>
+					<drawSize>2</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Fiend/TiberiumFiend</texPath>
+					<drawSize>2.5</drawSize>
+					<shadowData>
+						<volume>(0.3, 0.4, 0.3)</volume>
+						<offset>(0,0,-0.15)</offset>
+					</shadowData>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Wolf_Timber/Dessicated_Wolf_Timber</texPath>
+					<drawSize>2.5</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.TiberiumKindDef>
+	
+	<ThingDef ParentName="FiendBase">
+		<defName>Spiner</defName>
+		<label>spiner</label>
+		<description>Heavily-muscled Pig-like creatures, iinfused with Tiberium. These "Spiners" are very dangerous and should be avoided.</description>
+		<statBases>
+			<MoveSpeed>6.0</MoveSpeed>
+			<MarketValue>450</MarketValue>
+			<ComfyTemperatureMin>-40</ComfyTemperatureMin>
+			<Mass>100</Mass>
+			<MeatAmount>75</MeatAmount>
+			<PainShockThreshold>1</PainShockThreshold>
+		</statBases>
+		<tools>
+			<li>
+				<label>razorfangs</label>
+				<capacities>
+					<li>Bite</li>
+				</capacities>
+				<power>25</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<chanceFactor>0.5</chanceFactor>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Stun</def>
+							<amount>30</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>15</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+			</li>
+		</tools>
+		<race>
+			<body>QuadrupedAnimalWithPawsAndTail</body>
+			<predator>true</predator>
+			<maxPreyBodySize>1.2</maxPreyBodySize>
+			<baseBodySize>1.5</baseBodySize>
+			<baseHungerRate>0.25</baseHungerRate>
+			<baseHealthScale>1.25</baseHealthScale>
+			<foodType>CarnivoreAnimalStrict</foodType>
+			<gestationPeriodDays>26</gestationPeriodDays>
+			<nameOnTameChance>1</nameOnTameChance>
+			<trainability>Advanced</trainability>
+			<wildness>0.8</wildness>
+			<manhunterOnTameFailChance>1</manhunterOnTameFailChance>
+			<manhunterOnDamageChance>0.35</manhunterOnDamageChance>
+			<lifeExpectancy>15</lifeExpectancy>
+			<litterSizeCurve>
+				<points>
+					<li>(0.5, 0)</li>
+					<li>(1, 1)</li>
+					<li>(2, 1.7)</li>
+					<li>(2.5, 0.7)</li>
+					<li>(3, 0)</li>
+				</points>
+			</litterSizeCurve>
+			<lifeStageAges>
+				<li>
+					<def>AnimalBaby</def>
+					<minAge>0</minAge>
+				</li>
+				<li>
+					<def>AnimalJuvenile</def>
+					<minAge>0.2</minAge>
+				</li>
+				<li>
+					<def>AnimalAdult</def>
+					<minAge>0.45</minAge>
+					<soundWounded>Pawn_Warg_Wounded</soundWounded>
+					<soundDeath>Pawn_Warg_Death</soundDeath>
+					<soundCall>Pawn_Warg_Call</soundCall>
+					<soundAngry>Pawn_Warg_Angry</soundAngry>
+				</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+  
+	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+		<defName>Spiner</defName>
+		<label>spiner</label>
+		<race>Spiner</race>
+		<combatPower>160</combatPower>
+		<ecoSystemWeight>0.5</ecoSystemWeight>
+		<lifeStages>
+			<li>
+				<label>spiner puppy</label>
+				<labelPlural>spiner puppies</labelPlural>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Spiner/Spiner</texPath>
+					<drawSize>1</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Warg/Dessicated_Warg</texPath>
+					<drawSize>1</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Spiner/Spiner</texPath>
+					<drawSize>1.5</drawSize>
+					<shadowData>
+						<volume>(0.25, 0.3, 0.25)</volume>
+						<offset>(0,0,-0.15)</offset>
+					</shadowData>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Warg/Dessicated_Warg</texPath>
+					<drawSize>1.5</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Spiner/Spiner</texPath>
+					<drawSize>2</drawSize>
+					<shadowData>
+						<volume>(0.3, 0.4, 0.3)</volume>
+						<offset>(0,0,-0.15)</offset>
+					</shadowData>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Warg/Dessicated_Warg</texPath>
+					<drawSize>2</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.TiberiumKindDef>
+	
+	
+	<ThingDef ParentName="FiendBase">
+		<defName>SmallTiberiumFiend</defName>
+		<label>tiberian fox</label>
+		<description>A small solitary canine infected with Tiberium.</description>
+		<statBases>
+			<MoveSpeed>6</MoveSpeed>
+			<ComfyTemperatureMin>-75</ComfyTemperatureMin>
+			<MarketValue>400</MarketValue>
+			<Mass>50</Mass>
+			<MeatAmount>25</MeatAmount>
+			<PainShockThreshold>1</PainShockThreshold>
+		</statBases>
+		<tools>
+			<li>
+				<label>left claw</label>
+				<capacities>
+				<li>Scratch</li>
+				</capacities>
+				<power>12</power>
+				<cooldownTime>1.65</cooldownTime>
+				<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+				<surpriseAttack>
+				<extraMeleeDamages>
+					<li>
+						<def>Stun</def>
+						<amount>15</amount>
+					</li>
+				</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+			<li>
+				<label>right claw</label>
+				<capacities>
+				<li>Scratch</li>
+				</capacities>
+				<power>12</power>
+				<cooldownTime>1.65</cooldownTime>
+				<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+				<surpriseAttack>
+				<extraMeleeDamages>
+					<li>
+						<def>Stun</def>
+						<amount>15</amount>
+					</li>
+				</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+			<li>
+				<capacities>
+				<li>Bite</li>
+				</capacities>
+				<power>15</power>
+				<cooldownTime>2.1</cooldownTime>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<chanceFactor>0.9</chanceFactor>
+				<surpriseAttack>
+				<extraMeleeDamages>
+				<li>
+				<def>Stun</def>
+				<amount>15</amount>
+				</li>
+				</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+		</tools>
+		<race>
+			<body>QuadrupedAnimalWithPawsAndTail</body>
+			<predator>true</predator>
+			<maxPreyBodySize>0.80</maxPreyBodySize>
+			<petness>0.1</petness>
+			<baseBodySize>0.55</baseBodySize>
+			<baseHungerRate>0.12</baseHungerRate>
+			<baseHealthScale>1.25</baseHealthScale>
+			<foodType>CarnivoreAnimal</foodType>
+			<nameOnTameChance>1</nameOnTameChance>
+			<trainability>Advanced</trainability>
+			<wildness>0.75</wildness>
+			<nuzzleMtbHours>120</nuzzleMtbHours>
+			<manhunterOnDamageChance>1</manhunterOnDamageChance>
+			<manhunterOnTameFailChance>0.2</manhunterOnTameFailChance>
+			<gestationPeriodDays>21</gestationPeriodDays>
+			<litterSizeCurve>
+				<points>
+					<li>(0.5, 0)</li>
+					<li>(1, 1)</li>
+					<li>(2, 1.7)</li>
+					<li>(2.5, 0.7)</li>
+					<li>(3, 0)</li>
+				</points>
+			</litterSizeCurve>
+			<lifeExpectancy>9</lifeExpectancy>
+			<lifeStageAges>
+				<li>
+					<def>AnimalBaby</def>
+					<minAge>0</minAge>
+				</li>
+				<li>
+					<def>AnimalJuvenile</def>
+					<minAge>0.15</minAge>
+				</li>
+				<li>
+					<def>AnimalAdult</def>
+					<minAge>0.35</minAge>
+					<!-- no sounds -->
+				</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+	
+	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+		<defName>SmallTiberiumFiend</defName>
+		<label>tiberian fox</label>
+		<labelPlural>tiberian foxes</labelPlural>
+		<race>SmallTiberiumFiend</race>
+		<combatPower>75</combatPower>
+		<lifeStages>
+			<li>
+				<label>tiberian fox puppy</label>
+				<labelPlural>tiberian fox puppies</labelPlural>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/SmallFiend/SmallTiberiumFiend</texPath>
+					<drawSize>1.0</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Fox_Red/Dessicated_Fox_Red</texPath>
+					<drawSize>1.0</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/SmallFiend/SmallTiberiumFiend</texPath>
+					<drawSize>1.5</drawSize>
+					<shadowData>
+						<volume>(0.25, 0.3, 0.25)</volume>
+						<offset>(0,0,-0.15)</offset>
+					</shadowData>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Fox_Red/Dessicated_Fox_Red</texPath>
+					<drawSize>1.5</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/SmallFiend/SmallTiberiumFiend</texPath>
+					<drawSize>2</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Fox_Red/Dessicated_Fox_Red</texPath>
+					<drawSize>2</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.TiberiumKindDef>
+
+</Defs>

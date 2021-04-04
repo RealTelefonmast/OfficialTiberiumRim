@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<HediffDef ParentName="HediffMedical">
+		<defName>TiberAddHediff</defName>
+		<label>tiberadd effect</label>
+		<description>TiberAdd makes sure that your pawn has a steady supply of Tiberium need, without risking to wander the deadly fields of green.</description>
+		<defaultLabelColor>(255, 102, 255)</defaultLabelColor>
+		<stages>
+			<li>
+				<statOffsets>
+					<MentalBreakThreshold>-0.1</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<HediffDef>
+		<defName>TiberAddSide</defName>
+		<label>tiberadd side effect</label>
+		<description>n/a</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(215, 0, 65)</defaultLabelColor>
+		<isBad>true</isBad>
+		<makesSickThought>true</makesSickThought>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>
+					<min>45000</min>
+					<max>60000</max>
+				</disappearsAfterTicks>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<painOffset>0.2</painOffset>
+				<vomitMtbDays>0.5</vomitMtbDays>
+				<hungerRateFactor>1.5</hungerRateFactor>
+				<restFallFactor>2</restFallFactor>
+				<socialFightChanceFactor>1.2</socialFightChanceFactor>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<HediffDef ParentName="HediffMedical">
+		<defName>TiberBlockHediff</defName>
+		<label>tiberblock effect</label>
+		<description>TiberBlock makes sure to immunize your pawn from any Tiberium effects temporarily. It will help recover from crystallization, as long as the part isnt fully crystallized.</description>
+		<defaultLabelColor>(204, 255, 255)</defaultLabelColor>
+	</HediffDef>
+	
+	<HediffDef>
+		<defName>TiberBlockSide</defName>
+		<label>tiberblock side effect</label>
+		<description>n/a</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(215, 0, 65)</defaultLabelColor>
+		<isBad>true</isBad>
+		<makesSickThought>true</makesSickThought>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>
+					<min>55000</min>
+					<max>75000</max>
+				</disappearsAfterTicks>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<painOffset>0.2</painOffset>
+				<vomitMtbDays>0.25</vomitMtbDays>
+				<hungerRateFactor>2</hungerRateFactor>
+				<restFallFactor>3</restFallFactor>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<setMax>0.25</setMax>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+	
+</Defs>
