@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+
+
   
-	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR">
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR"> <!--balance standard - flak jacket-->
 		<defName>TiberiumSuit</defName>
 		<description>With this suit you can savely traverse any Tiberium infested terrain. It shields the wearer from getting infected by Tiberium and also any possible radiation.  A suit to protect from Tiberium.\n\n Also protects from toxic fallout.</description>
 		<label>Tiberium protection suit</label>
@@ -15,9 +17,9 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<costList>
-			<Plasteel>10</Plasteel>
-			<Cloth>150</Cloth>
-			<ComponentIndustrial>1</ComponentIndustrial>
+			<Cloth>75</Cloth>
+			<Steel>25</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
 		</costList>
 		<recipeMaker>
 			<recipeUsers Inherit="false">
@@ -27,21 +29,26 @@
 		<thingCategories>
 			<li>Apparel</li>
 		</thingCategories>
-		<statBases>
-			<MaxHitPoints>75</MaxHitPoints>
-			<WorkToMake>5000</WorkToMake>
-			<Mass>2.5</Mass>
-			<StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor>
-			<StuffEffectMultiplierInsulation_Cold>0.25</StuffEffectMultiplierInsulation_Cold>
-			<StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat>
-			<TiberiumInfectionResistance>0.75</TiberiumInfectionResistance>
+		<statBases> 
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToMake>15000</WorkToMake>
+			<Mass>8</Mass>
+			<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.1</ArmorRating_Heat>
+			<Insulation_Cold>10</Insulation_Cold>
+			<Insulation_Heat>10</Insulation_Heat>
+			<EquipDelay>15</EquipDelay>
 		</statBases>
 		<equippedStatOffsets>
-			<MoveSpeed>-0.2</MoveSpeed>
-			<ToxicSensitivity>-0.25</ToxicSensitivity>
-			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
-			<TiberiumRadiationResistance>0.75</TiberiumRadiationResistance>
+			<MoveSpeed>-0.1</MoveSpeed>
+			<ToxicSensitivity>-0.6</ToxicSensitivity>
+			<TiberiumInfectionResistance>1.2</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.8</TiberiumRadiationResistance>
 		</equippedStatOffsets>
+		<skillRequirements>
+			<Crafting>7</Crafting>
+		</skillRequirements>
 		<apparel>
 			<bodyPartGroups>
 				<li>Torso</li>
@@ -63,7 +70,7 @@
 		</apparel>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR">
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR"> <!--balance standard - flak vest-->
 		<defName>Jumpsuit</defName>
 		<description>A simple jumpsuit to improve comfort while wearing heavy armor.</description>
 		<label>jumpsuit</label>
@@ -77,11 +84,9 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<costList>
-			<Cloth>100</Cloth>
-			<!-- Industrial components dont really fit in a simple jumpsuit 
+			<Cloth>30</Cloth>
 			<Steel>75</Steel>
-			<ComponentIndustrial>3</ComponentIndustrial>
-			-->
+			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<recipeMaker>
 			<recipeUsers Inherit="false">
@@ -92,14 +97,23 @@
 			<li>Apparel</li>
 		</thingCategories>
 		<statBases>
-			<MaxHitPoints>100</MaxHitPoints>
-			<WorkToMake>5000</WorkToMake>
-			<Mass>1</Mass>
-			<StuffEffectMultiplierArmor>0.25</StuffEffectMultiplierArmor>
-			<Insulation_Cold>15</Insulation_Cold>
-			<Insulation_Heat>15</Insulation_Heat>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToMake>10000</WorkToMake>
+			<Mass>3</Mass>
+			<Flammability>0.8</Flammability>
+			<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.2</ArmorRating_Heat>
+			<Insulation_Cold>5</Insulation_Cold>
+			<Insulation_Heat>5</Insulation_Heat>
 			<EquipDelay>10</EquipDelay>
 		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>0.1</MoveSpeed>
+		</equippedStatOffsets>
+		<skillRequirements>
+			<Crafting>5</Crafting>
+		</skillRequirements>
 		<apparel>
 			<bodyPartGroups>
 				<li>Torso</li>
@@ -119,7 +133,7 @@
 				<li>FactionInnerSet</li>
 			</defaultOutfitTags>
 			-->
-			<useDeflectMetalEffect>false</useDeflectMetalEffect>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
 		</apparel>
 	</TiberiumRim.TRThingDef>
     

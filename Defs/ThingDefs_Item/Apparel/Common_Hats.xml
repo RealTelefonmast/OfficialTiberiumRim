@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR">
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR"> <!--balance standard - simple helmet-->
 		<defName>TiberiumSuitMask</defName>
 		<label>Tiberium protection mask</label>
 		<description>This mask is a necessity for anyone attempting to traverse Tiberium infested lands. It shields the head from radiation and filters the toxic Tiberium gases and even particles from a Toxic Fallout.</description>
@@ -18,7 +18,7 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<costList>
-			<Cloth>50</Cloth>
+			<Cloth>25</Cloth>
 			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<recipeMaker>
@@ -27,20 +27,25 @@
 			</recipeUsers>
 		</recipeMaker>
 		<statBases>
-			<MaxHitPoints>75</MaxHitPoints>
-			<WorkToMake>2500</WorkToMake>
-			<Mass>0.5</Mass>
-			<StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor>
-			<StuffEffectMultiplierInsulation_Cold>0.25</StuffEffectMultiplierInsulation_Cold>
-			<StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat>
-			<TiberiumDamageResistance>0.75</TiberiumDamageResistance>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToMake>5500</WorkToMake>
+			<Mass>1.5</Mass>
+			<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.1</ArmorRating_Heat>
+			<Insulation_Cold>10</Insulation_Cold>
+			<Insulation_Heat>10</Insulation_Heat>
+			<EquipDelay>2.5</EquipDelay>
 		</statBases>
 		<equippedStatOffsets>
-			<SocialImpact>-0.1</SocialImpact>
-			<ToxicSensitivity>-0.75</ToxicSensitivity>
-			<TiberiumGasResistance>1</TiberiumGasResistance>
-			<TiberiumRadiationResistance>0.25</TiberiumRadiationResistance>
+			<MoveSpeed>-0.1</MoveSpeed>
+			<ToxicSensitivity>-0.6</ToxicSensitivity>
+			<TiberiumGasResistance>1.2</TiberiumGasResistance>
+			<TiberiumRadiationResistance>0.4</TiberiumRadiationResistance>
 		</equippedStatOffsets>
+		<skillRequirements>
+			<Crafting>5</Crafting>
+		</skillRequirements>
 		<apparel>
 			<bodyPartGroups>
 				<li>FullHead</li>
