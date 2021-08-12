@@ -22,9 +22,6 @@
 		<rescueesCanJoin>true</rescueesCanJoin>
 		<autoFlee>false</autoFlee>
 		<geneticVariance>1</geneticVariance>
-		<hairTags>
-			<li>Urban</li>
-		</hairTags>
 		<!-- TODO SOVJET CLOTHING -->
 		<apparelStuffFilter>
 			<thingDefs>

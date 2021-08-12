@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
+	<!--
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>TiberiumCannon</defName>
 		<label>tib cannon</label>
@@ -107,7 +108,8 @@
 			<li>PlaceWorker_TurretTop</li>
 		</placeWorkers>
 	</TiberiumRim.TRThingDef>
-
+	-->
+	
 	<ThingDef ParentName="BaseBullet">
 		<defName>Bullet_Sludge</defName>
 		<label>sludge blob</label>
@@ -131,7 +133,6 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
-		<menuHidden>true</menuHidden>
 		<destroyOnDrop>true</destroyOnDrop>
 		<tradeability>None</tradeability>
 		<useHitPoints>false</useHitPoints>
@@ -152,10 +153,12 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<tiberiumCostPerShot>
+					<costSet>
+						<specificCosts>
+							<TiberiumValueType.Sludge>6</TiberiumValueType.Sludge>
+						</specificCosts>
+					</costSet>
 					<useDirectStorage>true</useDirectStorage>
-					<specificTypes>
-						<Sludge>6</Sludge>
-					</specificTypes>
 				</tiberiumCostPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Sludge</defaultProjectile>

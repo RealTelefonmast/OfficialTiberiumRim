@@ -46,6 +46,13 @@
 	</TiberiumRim.EventDef>
 	
 	<TiberiumRim.EventDef>
+		<defName>SupercriticalState</defName>
+		<label></label>
+		<description>The meteor has gone supercritical and should be avoided.</description>
+		<activeDays>0</activeDays>
+	</TiberiumRim.EventDef>
+	
+	<TiberiumRim.EventDef>
 		<defName>TiberiumToxemiaDiscovery</defName>
 		<label>Tiberium Toxemia</label>
 		<description>{0} was wandering close to the crystals, and discovered that they are more than just growing minerals. They got affected by {1} and should be treated to recover.</description>

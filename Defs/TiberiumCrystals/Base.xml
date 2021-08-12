@@ -64,7 +64,6 @@
 		<thingClass>TiberiumRim.TiberiumCrystal</thingClass>
 		<factionDesignation>Tiberium</factionDesignation>
 		<TRCategory>Crystals</TRCategory>
-		<menuHidden>true</menuHidden>
 		<devObject>true</devObject>
 		<category>Building</category>
 		<tickerType>Long</tickerType>

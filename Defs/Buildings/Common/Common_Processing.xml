@@ -33,8 +33,10 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNW">
-				<compClass>TiberiumRim.CompTNW_TNC</compClass>
+			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+				<networkType>TiberiumProcessing</networkType>
+				<networkRole>Transmitter</networkRole>
+				<isMainNetworkStructure>true</isMainNetworkStructure>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -81,6 +83,7 @@
 		</placeWorkers>
 	</TiberiumRim.TRThingDef>
 	
+	<!--
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>NetworkNode</defName>
 		<label>Node</label>
@@ -391,7 +394,7 @@
 					<li>MakeHarvesterCommon</li>
 				</mechRecipes>
 			</li>
-			<li Class="TiberiumRim.RefineryProperties">
+			<li Class="TiberiumRim.CompProperties_TNSRefinery">
 				<harvester>Harvester_Common</harvester>
 				<maxStorage>1000</maxStorage>
 				<tnwbMode>Producer</tnwbMode>
@@ -563,7 +566,6 @@
 			<Uranium>50</Uranium>
 			<Plasteel>25</Plasteel>
 			<ComponentIndustrial>5</ComponentIndustrial>
-			<!--<BookRiparius>1</BookRiparius>-->
 		</costList>
 		<requisites>
 			<tiberiumResearchTasks>
@@ -571,8 +573,8 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.PowerProperties">
-				<compClass>TiberiumRim.CompTNW_Power</compClass>
+			<li Class="TiberiumRim.CompProperties_NetworkStructurePowerPlant">
+				<compClass>TiberiumRim.Comp_NetworkStructurePowerPlant</compClass>
 				<maxStorage>750</maxStorage>
 				<supportedTypes>
 					<li>Green</li>
@@ -636,6 +638,8 @@
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 	</TiberiumRim.TRThingDef>
+	-->
+	<!--
 	
 	<TiberiumRim.TRThingDef ParentName="BenchBase_TR">
 		<defName>TiberiumWorkbench</defName>
@@ -676,6 +680,7 @@
 			<li>ITab_Bills</li>
 		</inspectorTabs>
 		<recipes>
+			<li>MakeDronePackage_Common</li>
 		</recipes>
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
@@ -833,5 +838,5 @@
 		<surfaceType>Item</surfaceType>
 		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
 	</TiberiumRim.TRThingDef>
-	
+	-->
 </Defs>

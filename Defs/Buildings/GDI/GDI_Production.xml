@@ -148,6 +148,7 @@
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
 	</TiberiumRim.TRThingDef>
 	
+	<!--
 	<TiberiumRim.TRThingDef ParentName="RefineryBase_TR">
 		<defName>GDI_TiberiumRefinery</defName>
 		<label>tiberium refinery (GDI)</label>
@@ -178,7 +179,7 @@
 			<ComponentIndustrial>100</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.RefineryProperties">
+			<li Class="TiberiumRim.CompProperties_TNSRefinery">
 				<harvester>Harvester_GDI</harvester>
 				<maxStorage>4000</maxStorage>
 				<tnwbMode>Producer</tnwbMode>
@@ -324,8 +325,8 @@
 					</thrower>
 				</moteData>
 			</li>
-			<li Class="TiberiumRim.PowerProperties">
-				<compClass>TiberiumRim.CompTNW_Power</compClass>
+			<li Class="TiberiumRim.CompProperties_NetworkStructurePowerPlant">
+				<compClass>TiberiumRim.Comp_NetworkStructurePowerPlant</compClass>
 				<maxStorage>2000</maxStorage>
 				<supportedTypes>
 					<li>Green</li>
@@ -352,5 +353,5 @@
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 	</TiberiumRim.TRThingDef>
-	
+	-->
 </Defs>

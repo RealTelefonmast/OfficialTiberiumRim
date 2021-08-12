@@ -103,6 +103,7 @@
 	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>TiberiumGeyser</defName>
 		<label>tiberium geyser</label>
+		<description>This tiberium infested geyser has a massive tiberium gas deposit beneath it, however, the surrounding ground has been destabilized and will occasionally create toxic gas clouds.\nIt may be useful for a Tiberium Spike!</description>
 		<thingClass>TiberiumRim.TiberiumGeyser</thingClass>
 		<graphicData>
 			<texPath>Buildings/Natural/TibGeyser/TibGeyser</texPath>
@@ -110,26 +111,26 @@
 			<shaderType>Transparent</shaderType>
 			<drawSize>(4,4)</drawSize>
 		</graphicData>
-		<!--
-		<extraGraphicData>
-			<texPath>Buildings/Natural/TibGeyser/Crack</texPath>
-			<graphicClass>TiberiumRim.Graphic_RandomSelection</graphicClass>
-			<shaderType>Transparent</shaderType>
-			<drawSize>(2,2)</drawSize>
-		</extraGraphicData>
-		-->
+		<uiIconScale>0.5</uiIconScale>
 		<altitudeLayer>Floor</altitudeLayer>
 		<rotatable>false</rotatable>
 		<destroyable>false</destroyable>
 		<useHitPoints>false</useHitPoints>
 		<tickerType>Normal</tickerType>
 		<selectable>true</selectable>
-		<description>This tiberium infested geyser has a massive tiberium gas deposit beneath it, however, the surrounding ground has been destabilized and will occasionally create toxic gas clouds.\nIt may be useful for a Tiberium Spike!</description>
 		<size>(2,2)</size>
 		<neverOverlapFloors>true</neverOverlapFloors>
 		<blockPlants>true</blockPlants>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_PollutionSource">
+				<pollutionAmount>100</pollutionAmount>
+				<pollutionInterval>750</pollutionInterval>
+			</li>
+		</comps>
 		<building>
 			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>false</deconstructible>
 		</building>
 	</TiberiumRim.TRThingDef>
 	

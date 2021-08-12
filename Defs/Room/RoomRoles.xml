@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RoomRoleDef>
+    <defName>TR_AirLock</defName>
+    <label>air lock</label>
+    <workerClass>TiberiumRim.RoomRoleWorker_AirLock</workerClass>
+    <relatedStats>
+      <li>Space</li>
+    </relatedStats>
+  </RoomRoleDef>
+
+</Defs>

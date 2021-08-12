@@ -9,6 +9,15 @@
 	</JobDef>
 
 	<JobDef>
+		<defName>UseAirlock</defName>
+		<driverClass>TiberiumRim.JobDriver_UseAirlock</driverClass>
+		<reportString>using airlock.</reportString>
+		<allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+		<playerInterruptible>false</playerInterruptible>
+		<casualInterruptible>false</casualInterruptible>
+	</JobDef>
+
+	<JobDef>
 		<defName>TiberiumBill</defName>
 		<driverClass>TiberiumRim.JobDriver_DoTiberiumBill</driverClass>
 		<reportString>doing tiberium bill.</reportString>

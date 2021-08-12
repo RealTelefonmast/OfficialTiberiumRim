@@ -51,7 +51,7 @@
 			<turrets>
 				<li>
 					<turretGunDef>Gun_NodObelisk</turretGunDef>
-					<turretBurstWarmupTime>2.35</turretBurstWarmupTime>
+					<turretBurstWarmupTime>2.85</turretBurstWarmupTime>
 					<turretBurstCooldownTime>5</turretBurstCooldownTime>
 				</li>
 			</turrets>

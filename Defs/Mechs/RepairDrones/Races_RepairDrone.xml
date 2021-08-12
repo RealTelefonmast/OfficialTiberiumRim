@@ -11,5 +11,15 @@
 			<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
 		</statBases>
 	</ThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="MechPackageBase">
+		<defName>RepairDronePackage_Common</defName>
+		<label>repair drone (packaged)</label>	
+		<description>A simple repair drone.</description>
+		<graphicData>
+			<texPath>Pawns/Mechanical/Common/RepairDrone/RepairDrone_south</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</TiberiumRim.TRThingDef>
 
 </Defs>

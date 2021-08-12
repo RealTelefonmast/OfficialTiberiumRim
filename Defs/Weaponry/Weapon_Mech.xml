@@ -5,7 +5,6 @@
 		<tradeability>None</tradeability>
 		<techLevel>Spacer</techLevel>
 		<destroyOnDrop>True</destroyOnDrop>
-		<menuHidden>True</menuHidden>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<MarketValue>10</MarketValue>
@@ -422,7 +421,6 @@
 		</statBases>
 		<tradeability>None</tradeability>
 		<destroyOnDrop>True</destroyOnDrop>
-		<menuHidden>True</menuHidden>
 		<techLevel>Industrial</techLevel>
 		<weaponTags>
 			<li>BigArm</li>

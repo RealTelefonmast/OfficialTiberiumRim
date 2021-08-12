@@ -34,6 +34,17 @@
   <IsOpen>Has hatched.</IsOpen>
   <PawnNameKind>{0}, the {1}.</PawnNameKind>
   
+  <TR_SideEffectLabel>side effects</TR_SideEffectLabel>
+  <TR_SideEffectDesc>This medication is used to treat certain needs and health effects, consuming this item may cause some side effects if none of the required afflictions are present.\nBeware the following rules to avoid negative effects.</TR_SideEffectDesc>
+  <TR_SideEffectListing>Possible side effects include:</TR_SideEffectListing>
+  <TR_SideEffectWarning>The following afflictions will cause side effects:</TR_SideEffectWarning>
+  <TR_SideEffectCulpritNeeds>Needs:</TR_SideEffectCulpritNeeds>
+  <TR_SideEffectCulpritHediffs>Health Effects:</TR_SideEffectCulpritHediffs>
+  
+  <TR_SideEffectRequiredNeeds>Following needs are required:</TR_SideEffectRequiredNeeds>
+  <TR_SideEffectRequiredHediffs>Following health effects are required:</TR_SideEffectRequiredHediffs>
+  <TR_SideEffectChance>Consuming this may cause side effects {0} of the time.</TR_SideEffectChance>
+  
   <!-- Pawn  Messages-->
   <MessageTiberiumSuitLeak>A Tiberium protection suit is leaking!</MessageTiberiumSuitLeak>
   <TiberiumNeed>Pawn Needs Tiberium!</TiberiumNeed>

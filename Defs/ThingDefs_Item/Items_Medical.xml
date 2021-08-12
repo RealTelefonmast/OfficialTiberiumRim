@@ -10,15 +10,15 @@
 		<healthAffectsPrice>false</healthAffectsPrice>
 		<selectable>true</selectable>
 		<statBases>
-		<MaxHitPoints>50</MaxHitPoints>
-		<Flammability>1.0</Flammability>
-		<DeteriorationRate>2</DeteriorationRate>
-		<Beauty>-4</Beauty>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>2</DeteriorationRate>
+			<Beauty>-4</Beauty>
 		</statBases>
 		<altitudeLayer>Item</altitudeLayer>
 		<stackLimit>150</stackLimit>
 		<thingCategories>
-		<li>Drugs</li>
+			<li>Drugs</li>
 		</thingCategories>
 		<alwaysHaulable>true</alwaysHaulable>
 		<comps>
@@ -93,10 +93,9 @@
 				<li Class="TiberiumRim.IngestionOutcomeDoer_GiveHediffWithSideEffect">
 					<hediffDef>TiberAddHediff</hediffDef>
 					<severity>1.0</severity>
-					<needs>
+					<requiredNeeds>
 						<li>TiberiumNeed</li>
-					</needs>
-					
+					</requiredNeeds>
 					<sideEffects>
 						<li>TiberAddSide</li>
 					</sideEffects>
@@ -122,7 +121,7 @@
 	<ThingDef ParentName="MakeableDrugPillBase_TR">
 		<defName>Tiberblock</defName>
 		<label>tiberblock</label>
-		<description>A drug that can cure Tiberium infections./n/nWARNING: This drug only cures Tiberium Poisoning, Tiberium Assmilation or Tiberum Infection!</description>
+		<description>A drug to mitigate the effects of Tiberium infection.</description>
 		<graphicData>
 			<texPath>Items/Consumable/Tiberblock</texPath>
 			<graphicClass>Graphic_StackCount</graphicClass>
@@ -140,14 +139,17 @@
 				<li Class="TiberiumRim.IngestionOutcomeDoer_GiveHediffWithSideEffect">
 					<hediffDef>TiberBlockHediff</hediffDef>
 					<severity>1.0</severity>
-					<hediffs>
+					<chance>0</chance>
+					<culpritNeeds>
+						<li>TiberiumNeed</li>
+					</culpritNeeds>
+					<requiredHediffs>
 						<li>TiberiumToxemia</li>
-					</hediffs>
+					</requiredHediffs>
 					<sideEffects>
-						<li>TiberBlockSide</li>
+						<li>TiberBlockSide,1</li>
+						<li>FoodPoisoning,0.34</li>
 					</sideEffects>
-					<needsNeeded>false</needsNeeded>
-					<hediffsNeeded>true</hediffsNeeded>
 				</li>
 			</outcomeDoers>
 		</ingestible>

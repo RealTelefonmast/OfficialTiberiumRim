@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
+	
+	<TiberiumRim.TRGroupDef>
+		<defName>All</defName>
+		<label>AllThings</label>
+	</TiberiumRim.TRGroupDef>
+	
 	<TiberiumRim.TRThingDef Abstract="True" Name="LampBase_TR" ParentName="BuildingBase_TR">
 		<category>Building</category>
 		<TRCategory>Decoration</TRCategory>
-		<menuHidden>true</menuHidden>
+		<TRGroup>All</TRGroup>
 		<minifiedDef>MinifiedThing</minifiedDef>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
@@ -86,7 +91,6 @@
 	
 	<TiberiumRim.TRThingDef Name="WallBase_TR" ParentName="BuildingBase_TR" Abstract="True">
 		<TRCategory>Structure</TRCategory>
-		<menuHidden>true</menuHidden>
 		<graphicData>
 			<graphicClass>Graphic_single</graphicClass>
 			<linkType>CornerFiller</linkType>
@@ -147,7 +151,6 @@
 		<TRCategory>Structure</TRCategory>
 		<altitudeLayer>DoorMoveable</altitudeLayer>
 		<fillPercent>1</fillPercent>
-		<menuHidden>true</menuHidden>
 		<useHitPoints>true</useHitPoints>
 		<stuffCategories>
 			<li>Metallic</li>
@@ -192,7 +195,6 @@
 	<ThingDef ParentName="BuildingBase_TR" Name="PowerConduitBase_TR" Abstract="True">
 		<description>A bundle of electrical cables for moving power around. Can be placed under walls and other buildings.</description>
 		<category>Building</category>
-		<menuHidden>true</menuHidden>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
 			<linkType>Transmitter</linkType>

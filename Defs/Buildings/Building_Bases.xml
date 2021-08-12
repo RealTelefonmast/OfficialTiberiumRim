@@ -43,7 +43,6 @@
 		<factionDesignation>Common</factionDesignation>		
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<surfaceType>Item</surfaceType>
-		<menuHidden>true</menuHidden>
 		<statBases>
 			<Mass>1000</Mass>
 		</statBases>
@@ -80,21 +79,20 @@
 	
 	<TiberiumRim.TRThingDef Abstract="True" Name="TurretBase_TR" ParentName="BuildingBase_TR">
 		<TRCategory>Defense</TRCategory>
-		<menuHidden>true</menuHidden>
 	</TiberiumRim.TRThingDef>
 	
 	<!-- Natural -->
 	<TiberiumRim.TRThingDef Abstract="True" Name="BuildingNaturalBase_TR" ParentName="BuildingBase_TR">
-		<passability>Impassable</passability>
+		<passability>PassThroughOnly</passability>
 		<factionDesignation>Tiberium</factionDesignation>
 		<TRCategory>Misc</TRCategory>
 		<devObject>true</devObject>
 		<isNatural>true</isNatural>
-		<menuHidden>true</menuHidden>
 		<building>
 			<claimable>false</claimable>
 			<deconstructible>false</deconstructible>
 			<allowAutoroof>false</allowAutoroof>
+			<artificialForMeditationPurposes>false</artificialForMeditationPurposes>
 		</building>
 		<statBases>
 			<TiberiumDamageResistance>1</TiberiumDamageResistance>

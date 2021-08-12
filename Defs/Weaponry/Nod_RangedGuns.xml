@@ -531,7 +531,6 @@
 			<texPath>Items/Weapons/Nod/Grenades</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<menuHidden>true</menuHidden>
 		<destroyOnDrop>true</destroyOnDrop>
 		<tradeability>None</tradeability>
 		<useHitPoints>false</useHitPoints>

@@ -33,9 +33,6 @@
 		<weaponTags>
 			<li>VolkovArsenal</li>
 		</weaponTags>
-		<hairTags>
-			<li>Soldier</li>
-		</hairTags>
 		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
 		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
 		<apparelRequired>

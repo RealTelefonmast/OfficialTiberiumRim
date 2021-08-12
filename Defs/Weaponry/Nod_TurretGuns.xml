@@ -10,7 +10,6 @@
 			<texPath>Buildings/Nod/Defense/Obelisk/ObeliskGun</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<menuHidden>true</menuHidden>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<destroyOnDrop>true</destroyOnDrop>
 		<tradeability>None</tradeability>
@@ -65,7 +64,6 @@
 			<texPath>Buildings/Nod/Defense/Turrets/Shredder_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<menuHidden>true</menuHidden>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<destroyOnDrop>true</destroyOnDrop>
 		<tradeability>None</tradeability>
@@ -111,7 +109,6 @@
 			<texPath>Buildings/Nod/Defense/Turrets/Flamer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<menuHidden>true</menuHidden>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<destroyOnDrop>true</destroyOnDrop>
 		<tradeability>None</tradeability>

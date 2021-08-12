@@ -111,7 +111,6 @@
 			<nameGeneratorFemale>NamerAnimalGenericFemale</nameGeneratorFemale>
 			<manhunterOnDamageChance>0.95</manhunterOnDamageChance>
 			<manhunterOnTameFailChance>0.15</manhunterOnTameFailChance>
-			<nameOnNuzzleChance>0.5</nameOnNuzzleChance>
 			<baseHungerRate>0.75</baseHungerRate>
 			<predator>true</predator>
 			<canBePredatorPrey>false</canBePredatorPrey>

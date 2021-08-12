@@ -7,7 +7,7 @@
 		<label>do tiberium research</label>
 		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
 		<workType>Research</workType>
-		<priorityInType>99</priorityInType>
+		<priorityInType>90</priorityInType>
 		<verb>(TR)research</verb>
 		<gerund>(TR)researching at</gerund>
 		<requiredCapacities>
@@ -21,7 +21,7 @@
 		<label>do tiberium bill</label>
 		<giverClass>TiberiumRim.WorkGiver_TiberiumBills</giverClass>
 		<workType>Crafting</workType>
-		<priorityInType>99</priorityInType>
+		<priorityInType>85</priorityInType>
 		<verb>(TR)do bill</verb>
 		<gerund>(TR)doing bill at</gerund>
 		<requiredCapacities>

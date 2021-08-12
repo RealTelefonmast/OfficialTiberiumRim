@@ -86,5 +86,24 @@
 		<explosionSnowMeltAmount>200</explosionSnowMeltAmount>
 		<soundExplosion>Nod_ChemBomb</soundExplosion>
 	</DamageDef>
+	
+	<DamageDef ParentName="TRExplosionBase">
+		<defName>PressureExplosion</defName>
+		<label>pressure explosion</label>
+		<deathMessage>{0} has been crushed by a pressure wave.</deathMessage>
+		<workerClass>DamageWorker_Flame</workerClass>
+		<hediff>Burn</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+		<minDamageToFragment>20</minDamageToFragment>
+		<defaultDamage>40</defaultDamage>
+		<defaultArmorPenetration>0.10</defaultArmorPenetration>
+		<defaultStoppingPower>0.5</defaultStoppingPower>
+		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>20</explosionHeatEnergyPerCell>
+		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
+		<soundExplosion>Explosion_Bomb</soundExplosion>
+	</DamageDef>
 
 </Defs>

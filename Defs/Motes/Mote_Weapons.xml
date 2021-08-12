@@ -159,6 +159,40 @@
 		</mote>
 	</ThingDef>
 	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>IonParticle</defName>
+		<thingClass>TiberiumRim.TRMote</thingClass>
+		<graphicData>
+			<texPath>Motes/IonParticle</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<altitudeLayer>VisEffects</altitudeLayer>
+		<mote>
+			<fadeInTime>0.5</fadeInTime>
+			<solidTime>3</solidTime>
+			<fadeOutTime>6</fadeOutTime>
+			<acceleration>(0,0,1)</acceleration>
+		</mote>
+	</ThingDef>
+
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>IonAscensionCloud</defName>
+		<thingClass>TiberiumRim.TRMote</thingClass>
+		<graphicData>
+			<texPath>Motes/IonCannon/Clouds/particleCloud1</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<altitudeLayer>VisEffects</altitudeLayer>
+		<mote>
+			<fadeInTime>0.5</fadeInTime>
+			<solidTime>3</solidTime>
+			<fadeOutTime>6</fadeOutTime>
+			<acceleration>(0,0,1.75)</acceleration>
+		</mote>
+	</ThingDef>
 	
 	<!-- Ion Bubble is 5 seconds alive -->
 	<ThingDef ParentName="MoteBase_TR">

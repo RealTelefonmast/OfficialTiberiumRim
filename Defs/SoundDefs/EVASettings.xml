@@ -5,7 +5,7 @@
 		<defName>EVASettings</defName>  
 		<times>
 			<li>
-				<signal>SILOSNEEDED</signal>
+				<signal>SilosNeeded</signal>
 				<ticks>2000</ticks>
 			</li>
 			<li>
@@ -49,7 +49,7 @@
 				<ticks>100</ticks>
 			</li>
 			<li>
-				<signal>Canceled</signal>
+				<signal>Cancelled</signal>
 				<ticks>100</ticks>
 			</li>
 			<li>

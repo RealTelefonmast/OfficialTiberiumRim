@@ -33,9 +33,6 @@
 			<li>ClassicStart</li>
 			<li>ClassicStartTechprints</li>
 		</startingTechprintsResearchTags>
-		<hairTags>
-			<li>Urban</li>
-		</hairTags>
 		<apparelStuffFilter>
 			<thingDefs>
 				<li>Synthread</li>

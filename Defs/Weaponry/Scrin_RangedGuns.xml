@@ -21,7 +21,6 @@
 		<tradeability>None</tradeability>
 		<techLevel>Spacer</techLevel>
 		<destroyOnDrop>True</destroyOnDrop>
-		<menuHidden>True</menuHidden>
 		<weaponTags>
 			<li>ShocktrooperGun</li>
 		</weaponTags>
@@ -63,7 +62,6 @@
 		<tradeability>None</tradeability>
 		<techLevel>Spacer</techLevel>
 		<destroyOnDrop>True</destroyOnDrop>
-		<menuHidden>True</menuHidden>
 		<weaponTags>
 			<li>DisintegratorGun</li>
 		</weaponTags>
@@ -111,7 +109,6 @@
 		</statBases>
 		<tradeability>None</tradeability>
 		<techLevel>Spacer</techLevel>
-		<menuHidden>False</menuHidden>
 		<destroyOnDrop>False</destroyOnDrop>
 		<weaponTags>
 			<li>MechapedeGun</li>
@@ -165,7 +162,6 @@
 		</statBases>
 		<tradeability>None</tradeability>
 		<techLevel>Spacer</techLevel>
-		<menuHidden>True</menuHidden>
 		<weaponTags>
 			<li>ScrinChargeGun</li>
 		</weaponTags>

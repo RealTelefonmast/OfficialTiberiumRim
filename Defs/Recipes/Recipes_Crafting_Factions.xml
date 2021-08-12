@@ -55,9 +55,11 @@
 		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 		<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
 		<tiberiumCost>
-			<specificTypes>
-				<Blue>60</Blue>
-			</specificTypes>
+			<costSet>
+				<specificCosts>
+					<TiberiumValueType.Blue>60</TiberiumValueType.Blue>
+				</specificCosts>
+			</costSet>
 		</tiberiumCost>
 		<ingredients>
 			<li>

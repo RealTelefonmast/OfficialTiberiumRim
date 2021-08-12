@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<FleshTypeDef> 
+	<FleshTypeDef>
 		<defName>TiberiumFlesh</defName>
 		<ateDirect>AteTiberiumMeatDirect</ateDirect>
 		<ateAsIngredient>AteTiberiumMeatAsIngredient</ateAsIngredient>
 		<corpseCategory>CorpsesAnimal</corpseCategory>
-		<wounds>
+		<damageEffecter>Damage_HitInsect</damageEffecter>
+		<genericWounds>
 			<li>
 				<texture>Filth/WoundTibFlesh/WoundTibFleshA</texture>
 			</li>
@@ -16,13 +17,13 @@
 			<li>
 				<texture>Filth/WoundTibFlesh/WoundTibFleshC</texture>
 			</li>
-		</wounds>
+		</genericWounds>
 	</FleshTypeDef>
 
 	<FleshTypeDef>
 		<defName>Mechanical</defName>
 		<corpseCategory>CorpsesMechanoid</corpseCategory>
-		<wounds>
+		<genericWounds>
 			<li>
 				<texture>Things/Pawn/Wounds/WoundMechA</texture>
 			</li>
@@ -32,7 +33,7 @@
 			<li>
 				<texture>Things/Pawn/Wounds/WoundMechC</texture>
 			</li>
-		</wounds>
+		</genericWounds>
 	</FleshTypeDef>
   
 </Defs>

@@ -165,6 +165,7 @@
 	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
 		<defName>GDI_Autodoor</defName>
 		<label>GDI autodoor</label>
+		<thingClass>TiberiumRim.Building_AirLock</thingClass>
 		<description>Divides rooms. Powered operation allows people to move through the door without slowing down.</description>
 		<factionDesignation>GDI</factionDesignation>
 		<graphicData>
