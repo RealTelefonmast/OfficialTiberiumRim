@@ -50,6 +50,7 @@
 			<Crafting>5</Crafting>
 		</skillRequirements>
 		<apparel>
+			<scoreOffset>3</scoreOffset>
 			<bodyPartGroups>
 				<li>Torso</li>
 				<li>Neck</li>
@@ -121,6 +122,7 @@
 			<Crafting>7</Crafting>
 		</skillRequirements>
 		<apparel>
+			<scoreOffset>3</scoreOffset>
 			<bodyPartGroups>
 				<li>Torso</li>
 				<li>Shoulders</li>
@@ -188,6 +190,7 @@
 			<Crafting>5</Crafting>
 		</skillRequirements>
 		<apparel>
+			<scoreOffset>3</scoreOffset>
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
