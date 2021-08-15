@@ -56,6 +56,9 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<comps>
+			<li Class="CompProperties_Styleable" />
+		</comps>
 		<randomStyleChance>0.35</randomStyleChance>
         <randomStyle>
             <li>
@@ -66,7 +69,7 @@
 
 	<ThingStyleDef>
 		<defName>GDISoldierHelmet2</defName>
-		<overrideLabel>GDI spartan soldier helmet</overrideLabel>
+		<overrideLabel>GDI spartan helmet</overrideLabel>
 		<wornGraphicPath>Items/Apparel/GDI_Soldier/Helmet2</wornGraphicPath>
 		<graphicData>
 			<texPath>Items/Apparel/GDI_Soldier/Helmet2</texPath>
