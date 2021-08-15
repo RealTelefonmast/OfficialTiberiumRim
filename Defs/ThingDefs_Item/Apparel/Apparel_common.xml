@@ -202,7 +202,10 @@
 				<li>Worker</li>
 			</defaultOutfitTags>
 		</apparel>
-		<randomStyleChance>0.25</randomStyleChance>
+		<comps>
+			<li Class="CompProperties_Styleable" />
+		</comps>
+		<randomStyleChance>0.15</randomStyleChance>
 		<randomStyle>
 			<li>
 				<styleDef>RavensMask</styleDef>
@@ -212,7 +215,7 @@
 	
   <ThingStyleDef>
     <defName>RavensMask</defName>
-    <overrideLabel>TiberiumSuitMask</overrideLabel>
+    <overrideLabel>ravens mask</overrideLabel>
     <wornGraphicPath>Items/Apparel/TiberiumProtectionSuit/RavensMask</wornGraphicPath>
     <graphicData>
       <texPath>Items/Apparel/TiberiumProtectionSuit/RavensMask</texPath>
