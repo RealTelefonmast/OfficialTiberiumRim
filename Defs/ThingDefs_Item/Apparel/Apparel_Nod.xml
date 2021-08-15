@@ -424,6 +424,9 @@
 				<Crafting>12</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<comps>
+			<li Class="CompProperties_Styleable" />
+		</comps>
 		<randomStyleChance>0.35</randomStyleChance>
         <randomStyle>
             <li>
@@ -434,7 +437,7 @@
 	
 	<ThingStyleDef>
 		<defName>Apparel_NodBlackHandHelmet2</defName>
-		<overrideLabel>Nod black hand confessor helmet</overrideLabel>
+		<overrideLabel>Nod confessor helmet</overrideLabel>
 		<wornGraphicPath>Items/Apparel/Nod_Blackhand/BHSuitHelmet2</wornGraphicPath>
 		<graphicData>
 			<texPath>Items/Apparel/Nod_Blackhand/BHSuitHelmet2</texPath>
