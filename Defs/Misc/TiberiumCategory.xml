@@ -30,5 +30,62 @@
 		<label>tiberium parts</label>
 		<parent>BodyParts</parent>
 	</ThingCategoryDef>
+	
+
+	<!--for Weapons
+	<ThingCategoryDef>
+		<defName>TRWeaponETC</defName>
+		<label>tiberium weapons</label>
+		<parent>Apparel</parent>
+	</ThingCategoryDef>	
+	-->
+
+	
+	<!--for Apparels-->
+	<ThingCategoryDef>
+		<defName>TRApp</defName>
+		<label>tiberium adaptive gears</label>
+		<parent>Apparel</parent>
+	</ThingCategoryDef>
+
+
+	<ThingCategoryDef>
+		<defName>TRAppNod</defName>
+		<label>Nod gears</label>
+		<parent>TRApp</parent>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>TRHelmetsNod</defName>
+		<label>Nod headgears</label>
+		<parent>TRAppNod</parent>
+	</ThingCategoryDef>
+
+
+	<ThingCategoryDef>
+		<defName>TRAppGDI</defName>
+		<label>GDI gears</label>
+		<parent>TRApp</parent>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>TRHelmetsGDI</defName>
+		<label>GDI headgears</label>
+		<parent>TRAppNod</parent>
+	</ThingCategoryDef>
+
+
+	<ThingCategoryDef>
+		<defName>TRAppFG</defName>
+		<label>Forgotten gears</label>
+		<parent>TRApp</parent>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>TRHelmetsFG</defName>
+		<label>Forgotten headgears</label>
+		<parent>TRAppNod</parent>
+	</ThingCategoryDef>
+	
 
 </Defs>
