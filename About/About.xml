@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
    <name>TiberiumRim</name>
-   <authors>
-	<li>Telefonmast</li>
-	<li>Nephlite</li>
-   </authors>
+   <author>Telefonmast, Nephlite</author>
    <supportedVersions>
 	  <li>1.3</li>
    </supportedVersions>
    <packageId>telefonmast.tiberiumrim</packageId>
-   <description>	-----Transmission Begin-----
+   <description>-----Transmission Begin-----
+
 Welcome back Commander.
 Tiberium has spread across space. 
 Humanity thought they could flee from earth 
@@ -17,6 +15,7 @@ as it was becoming crystalized.
 But now it is back, closer than ever.
 Now get on this Rimworld and get it under control.
 Your people are counting on you.
-	-----Transmisson End-----
+	   
+-----Transmisson End-----
 </description>
 </ModMetaData>
