@@ -43,49 +43,47 @@
 	
 	<!--for Apparels-->
 	<ThingCategoryDef>
-		<defName>TRApp</defName>
+		<defName>TRApparels</defName>
 		<label>tiberium adaptive gears</label>
 		<parent>Apparel</parent>
 	</ThingCategoryDef>
-
-
+	
 	<ThingCategoryDef>
-		<defName>TRAppNod</defName>
-		<label>Nod gears</label>
-		<parent>TRApp</parent>
+		<defName>TRApparelsETC</defName>
+		<label>common adaptive gears</label>
+		<parent>TRApparels</parent>
 	</ThingCategoryDef>
 
 	<ThingCategoryDef>
-		<defName>TRHelmetsNod</defName>
-		<label>Nod headgears</label>
-		<parent>TRAppNod</parent>
+		<defName>TRHelmetsETC</defName>
+		<label>common adaptive headgears</label>
+		<parent>TRApparelsETC</parent>
 	</ThingCategoryDef>
 
-
 	<ThingCategoryDef>
-		<defName>TRAppGDI</defName>
+		<defName>TRApparelsGDI</defName>
 		<label>GDI gears</label>
-		<parent>TRApp</parent>
+		<parent>TRApparels</parent>
 	</ThingCategoryDef>
 
 	<ThingCategoryDef>
 		<defName>TRHelmetsGDI</defName>
 		<label>GDI headgears</label>
-		<parent>TRAppNod</parent>
-	</ThingCategoryDef>
-
-
-	<ThingCategoryDef>
-		<defName>TRAppFG</defName>
-		<label>Forgotten gears</label>
-		<parent>TRApp</parent>
-	</ThingCategoryDef>
-
-	<ThingCategoryDef>
-		<defName>TRHelmetsFG</defName>
-		<label>Forgotten headgears</label>
-		<parent>TRAppNod</parent>
+		<parent>TRApparelsGDI</parent>
 	</ThingCategoryDef>
 	
+	<ThingCategoryDef>
+		<defName>TRApparelsNod</defName>
+		<label>Nod gears</label>
+		<parent>TRApparels</parent>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>TRHelmetsNod</defName>
+		<label>Nod headgears</label>
+		<parent>TRApparelsNod</parent>
+	</ThingCategoryDef>
+
+
 
 </Defs>
