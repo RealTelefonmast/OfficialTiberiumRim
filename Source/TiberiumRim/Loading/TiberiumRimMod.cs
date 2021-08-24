@@ -20,7 +20,7 @@ namespace TiberiumRim
         //
         public TiberiumSettings settings;
 
-        public static Harmony Tiberium => tiberium ??= new Harmony("com.tiberiumrim.rimworld.mod");
+        public static Harmony Tiberium => tiberium ??= new Harmony("telefonmast.tiberiumrim");
 
         public TiberiumRimMod(ModContentPack content) : base(content)
         {

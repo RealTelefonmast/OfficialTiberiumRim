@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
@@ -10,14 +11,36 @@ namespace TiberiumRim
     //Defines the logical ruleset for a network
     public class NetworkDef : Def
     {
+        //Cached Data
+        private Graphic_LinkedNetworkStructure cachedTransmitterGraphic;
+        private Graphic_Linked_NetworkStructureOverlay cachedOverlayGraphic;
+
+        /// Loaded from XML ///
+        public string containerLabel;
+
         //
-        public Type networkValueType;
+        public GraphicData transmitterGraphic;
+        public GraphicData overlayGraphic;
 
         //Structure Ruleset
-        public ThingDef mainStructure;
+        public ThingDef controllerDef;
         public ThingDef transmitter;
 
 
-        //Container Ruleset
+        public Graphic_LinkedNetworkStructure TransmitterGraphic
+        {
+            get
+            {
+                return cachedTransmitterGraphic ??= new Graphic_LinkedNetworkStructure(transmitterGraphic.Graphic);
+            }
+        }
+
+        public Graphic_Linked_NetworkStructureOverlay OverlayGraphic
+        {
+            get
+            {
+                return cachedOverlayGraphic ??= new Graphic_Linked_NetworkStructureOverlay(overlayGraphic.Graphic);
+            }
+        }
     }
 }

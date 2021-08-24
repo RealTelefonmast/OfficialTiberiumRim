@@ -236,7 +236,7 @@ namespace TiberiumRim
                     WidgetRow row = new WidgetRow(researchOptionXOffset + margin, curY + margin, UIDirection.RightThenDown);
                     row.Icon(project.HasBeenSeen ? ProjectStatusTexture(project.State) : TiberiumContent.AttentionMarker);
                     row.Label(project.LabelCap);
-                    
+
                     var projectOptionRect = new Rect(researchOptionXOffset, curY, researchOptionSize.x, researchOptionSize.y);
 
                     if (Mouse.IsOver(projectOptionRect) || project == SelProject)
@@ -278,7 +278,7 @@ namespace TiberiumRim
 
         public void DrawEvent(BaseEvent baseEvent, Rect rect)
         {
-            //BaseEvent activeEvent = TRUtils.EventManager().activeEvents.First(e => e != null && e.def == def);
+            //BaseEvent activeEvent = TRUtils.EventManager().activeEvents.First(e => e != null && e.props == props);
             Widgets.DrawMenuSection(rect);
             Widgets.Label(rect, baseEvent.def.LabelCap + " " + baseEvent.TimeReadOut + " " + baseEvent.def.IsFinished);
         }
@@ -671,24 +671,24 @@ namespace TiberiumRim
         }
 
         /*
-        private float HeightFrom(TResearchDef def)
+        private float HeightFrom(TResearchDef props)
         {
             float val = selSize.y;
             int num = 0;
-            for (num = 0; def.unlocks.Count > 0; num += def.unlocks.Count) { }
+            for (num = 0; props.unlocks.Count > 0; num += props.unlocks.Count) { }
             if (num > 0)
                 val += (num - 1) * selSize.y;
-            foreach (var def2 in def.unlocks)
+            foreach (var def2 in props.unlocks)
                 val += HeightFrom(def2);
             return val;
         }
 
-        private float WidthFrom(TResearchDef def)
+        private float WidthFrom(TResearchDef props)
         {
             float val = selSize.x;
-            if (def.unlocks.Count > 0)
+            if (props.unlocks.Count > 0)
                 val += selSize.x;
-            foreach (var def2 in def.unlocks)
+            foreach (var def2 in props.unlocks)
                 val += WidthFrom(def2);
             return val;
         }

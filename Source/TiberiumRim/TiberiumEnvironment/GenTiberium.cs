@@ -14,7 +14,7 @@ namespace TiberiumRim
                 crystalDef = crystal.Parent.TiberiumCrystalDefWeighted;
             bool Predicate(IntVec3 c) => TrySpawnTiberium(c, crystal.Map, crystalDef, crystal.Parent);
             /*
-            if (CellFinder.TryFindRandomCellNear(crystal.Position, crystal.Map, (int) crystal.def.tiberium.spreadRadius, predicate, out IntVec3 result))
+            if (CellFinder.TryFindRandomCellNear(crystal.Position, crystal.Map, (int) crystal.props.tiberium.spreadRadius, predicate, out IntVec3 result))
             {
                 return true;
             }
@@ -113,7 +113,7 @@ namespace TiberiumRim
         public static bool TryMutatePlant(Plant plant, TiberiumCrystalDef def)
         {
             if (plant == null) return false;
-            //if (!TRUtils.Chance(def.tiberium.plantMutationChance)) return false;
+            //if (!TRUtils.Chance(props.tiberium.plantMutationChance)) return false;
             var map = plant.Map;
             var position = new IntVec3(plant.Position.x, plant.Position.y, plant.Position.z);
 
@@ -171,11 +171,12 @@ namespace TiberiumRim
                 map.terrainGrid.SetUnderTerrain(pos, underTerrain);
         }
 
-        //Tiberium Spores
+        //Tiberium Spores //TODO: Reimplement based on flecks
+        /*
         public static BlossomSpore SpawnBlossomSpore(IntVec3 start, IntVec3 dest, Map map, TiberiumProducerDef blossom, TiberiumProducer parent)
         {
             BlossomSpore spore = (BlossomSpore)ParticleMaker.MakeParticle(TiberiumDefOf.BlossomSpore);
-            start += parent?.def.spawner.sporeOffset ?? IntVec3.Zero;
+            start += parent?.props.spawner.sporeOffset ?? IntVec3.Zero;
             spore.SporeSetup(blossom, parent);
             return (BlossomSpore)ParticleMaker.SpawnParticleWithPath(start, dest, map, spore);
         }
@@ -192,9 +193,9 @@ namespace TiberiumRim
         {
             if (type == null)
                 return null;
-            ParticleDef def = dustlike ? TiberiumDefOf.TiberiumDustSpore : TiberiumDefOf.TiberiumSpore;
-            TiberiumSpore spore = (TiberiumSpore)ParticleMaker.MakeParticle(def);
-            start += parent?.def.spawner.sporeOffset ?? IntVec3.Zero;
+            ParticleDef props = dustlike ? TiberiumDefOf.TiberiumDustSpore : TiberiumDefOf.TiberiumSpore;
+            TiberiumSpore spore = (TiberiumSpore)ParticleMaker.MakeParticle(props);
+            start += parent?.props.spawner.sporeOffset ?? IntVec3.Zero;
             spore.SporeSetup(type, parent);
             return (TiberiumSpore)ParticleMaker.SpawnParticleWithPath(start, dest, map, spore);
         }
@@ -203,20 +204,21 @@ namespace TiberiumRim
         {
             if (type == null)
                 return;
-            ParticleDef def = dustlike ? DefDatabase<ParticleDef>.GetNamed("TiberiumDustSpore") : DefDatabase<ParticleDef>.GetNamed("TiberiumSpore");
+            ParticleDef props = dustlike ? DefDatabase<ParticleDef>.GetNamed("TiberiumDustSpore") : DefDatabase<ParticleDef>.GetNamed("TiberiumSpore");
             List<IntVec3> alreadyAdded = new List<IntVec3>();
             for (int i = 0; i < sporeCount; i++)
             {
-                TiberiumSpore spore = (TiberiumSpore)ParticleMaker.MakeParticle(def);
+                TiberiumSpore spore = (TiberiumSpore)ParticleMaker.MakeParticle(props);
                 spore.SporeSetup(type, parent);
                 IntVec3 cell = startRect.Cells.RandomElement();
-                cell += parent?.def.spawner.sporeOffset ?? IntVec3.Zero;
+                cell += parent?.props.spawner.sporeOffset ?? IntVec3.Zero;
                 CellFinder.TryFindRandomCellNear(cell, map, (int)radius, c => !alreadyAdded.Contains(c) && c.InBounds(map) && !c.Fogged(map) && !c.Roofed(map) && !c.GetTerrain(map).IsWater && c.Standable(map) && c.GetTiberium(map) == null, out IntVec3 dest);
                 if (alreadyAdded.Contains(dest)) continue;
                 alreadyAdded.Add(dest);
                 ParticleMaker.SpawnParticleWithPath(cell, dest, map, spore);
             }
         }
+        */
 
         public static TiberiumProducerDef BlossomTreeFrom(TiberiumProducerDef producer)
         {

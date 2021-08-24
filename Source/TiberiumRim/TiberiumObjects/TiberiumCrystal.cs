@@ -15,8 +15,8 @@ namespace TiberiumRim
 
     public class TiberiumCrystal : TRThing
     {
-        public new TiberiumCrystalDef def => (TiberiumCrystalDef)base.def;
         private TiberiumProducer parent;
+        private static Color32[] workingColors = new Color32[4];
 
         protected float growthInt = 0.05f;
         protected int ageInt;
@@ -25,6 +25,8 @@ namespace TiberiumRim
 
         protected float distanceToParent = -1;
 
+        public new TiberiumCrystalDef def => (TiberiumCrystalDef) base.def;
+
         //Tweak Crap
         [TweakValue("CrystalGrowth", 0f, 100f)]
         public static int CrystalGrowthVal = 1;
@@ -32,16 +34,20 @@ namespace TiberiumRim
         public TiberiumProducer Parent => parent;
 
         public bool HasParent => !Parent.DestroyedOrNull();
-        public bool OutOfParentRange => HasParent && Parent.def.SpreadRange > 0 && distanceToParent > Parent.def.SpreadRange;
+
+        public bool OutOfParentRange =>
+            HasParent && Parent.def.SpreadRange > 0 && distanceToParent > Parent.def.SpreadRange;
+
         public bool IsSelfSufficient => !def.tiberium.needsParent || HasParent;
         public bool HarvestableNow => LifeStage != TiberiumLifeStage.Growing && HarvestValue >= 1f;
         private bool NeedsTerrain => !Position.GetTerrain(Map).IsTiberiumTerrain();
         public bool ShouldSpread => Position.CanGrowFrom(Map) && !Dormant && !OutOfParentRange;
 
-        private bool SpreadLocked => Parent != null && !(Parent.ShouldSpawnTiberium || Parent.TiberiumField.MarkedForFastGrowth);
+        private bool SpreadLocked =>
+            Parent != null && !(Parent.ShouldSpawnTiberium || Parent.TiberiumField.MarkedForFastGrowth);
 
         //TODO?: Suppression with radial dropoff?
-        private bool Suppressed => def.tiberium.canBeInhibited &&  Position.IsSuppressed(Map);
+        private bool Suppressed => def.tiberium.canBeInhibited && Position.IsSuppressed(Map);
 
         public bool Dormant
         {
@@ -70,7 +76,7 @@ namespace TiberiumRim
                 rate *= TRUtils.TiberiumSettings().GrowthRate;
                 rate *= CrystalGrowthVal;
                 //TODO: Suppression dropoff affecting growthrate, rather than fully suppressing
-                //rate *= Mathf.InverseLerp(def.tiberium.minTemperature, 2000, Map.mapTemperature.OutdoorTemp);
+                //rate *= Mathf.InverseLerp(props.tiberium.minTemperature, 2000, Map.mapTemperature.OutdoorTemp);
                 return rate;
             }
         }
@@ -83,10 +89,12 @@ namespace TiberiumRim
                 {
                     return TiberiumLifeStage.Evolving;
                 }
+
                 if (Growth > 0.8f)
                 {
                     return TiberiumLifeStage.Spreading;
                 }
+
                 return TiberiumLifeStage.Growing;
             }
         }
@@ -134,12 +142,13 @@ namespace TiberiumRim
             Scribe_References.Look(ref parent, "parent");
         }
 
-        private Effecter_MoteMaker intmaker;
-        private Effecter_MoteMaker effecter
+        private Effecter_MoteMaker makerInt;
+
+        private Effecter_MoteMaker TibFogEffecter
         {
             get
             {
-                return intmaker ??= new Effecter_MoteMaker(DefDatabase<EffecterDefTR>.GetNamed("TiberiumClouds_Green2"));
+                return makerInt ??= new Effecter_MoteMaker(DefDatabase<EffecterDefTR>.GetNamed("TiberiumClouds_Green2"));
             }
         }
 
@@ -147,13 +156,13 @@ namespace TiberiumRim
         public override void TickLong()
         {
             TiberiumTick(GenTicks.TickLongInterval);
-            /*
+            
             if (!parent.TiberiumField.MarkedForFastGrowth)
             {
-                var targetInfo = new TargetInfo(Position, Map, false);
-                effecter.EffectTick(targetInfo, targetInfo);
+                //var targetInfo = new TargetInfo(Position, Map, false);
+                //TibFogEffecter.Tick(this, this);
             }
-            */
+            
         }
 
         public void TiberiumTick(int interval)
@@ -177,7 +186,7 @@ namespace TiberiumRim
             Growth += GrowthPerTick;
 
             //Set Terrain
-            if(NeedsTerrain)
+            if (NeedsTerrain)
                 DoCorruption();
         }
 
@@ -207,7 +216,7 @@ namespace TiberiumRim
 
         public void Harvest(Harvester harvester, float amount)
         {
-            if (harvester.Container.TryAddValue(def.TiberiumValueType, 1, out float actualValue))
+            if (harvester.Container.TryAddValue(def.TiberiumValueTypeForNetwork, 1, out float actualValue))
             {
                 float adj = amount * (actualValue / 1);
                 Growth -= adj;
@@ -254,6 +263,7 @@ namespace TiberiumRim
                 sb.AppendLine("Tiberium Type: " + def.HarvestType);
                 sb.AppendLine("Generation: " + generationInt);
             }
+
             return sb.ToString().TrimEndNewlines();
         }
 
@@ -279,6 +289,8 @@ namespace TiberiumRim
             };
         }
 
+        private static Color32[] colors = new Color32[4];
+
         public override void Print(SectionLayer layer)
         {
             Vector3 a = this.TrueCenter();
@@ -291,18 +303,18 @@ namespace TiberiumRim
             }
             float num2 = this.def.tiberium.sizeRange.LerpThroughRange(this.Growth);
             float num3 = this.def.graphicData.drawSize.x * num2;
-            Vector3 vector = Vector3.zero;
+            Vector3 finalPos = Vector3.zero;
             int num4 = 0;
             int[] positionIndices = TiberiumPosIndices.GetPositionIndices(this);
             foreach (int num5 in positionIndices)
             {
                 if (this.def.tiberium.MeshCount == 1)
                 {
-                    vector = a + Gen.RandomHorizontalVector(0.05f);
+                    finalPos = a + Gen.RandomHorizontalVector(0.05f);
                     float num6 = (float)base.Position.z;
-                    if (vector.z - num2 / 2f < num6)
+                    if (finalPos.z - num2 / 2f < num6)
                     {
-                        vector.z = num6 + num2 / 2f;
+                        finalPos.z = num6 + num2 / 2f;
                     }
                 }
                 else
@@ -343,25 +355,22 @@ namespace TiberiumRim
                             break;
                     }
                     float num8 = 1f / (float)num7;
-                    vector = base.Position.ToVector3();
-                    vector.y = this.def.Altitude;
-                    vector.x += 0.5f * num8;
-                    vector.z += 0.5f * num8;
+                    finalPos = base.Position.ToVector3();
+                    finalPos.y = this.def.Altitude;
+                    finalPos.x += 0.5f * num8;
+                    finalPos.z += 0.5f * num8;
                     int num9 = num5 / num7;
                     int num10 = num5 % num7;
-                    vector.x += (float)num9 * num8;
-                    vector.z += (float)num10 * num8;
+                    finalPos.x += (float)num9 * num8;
+                    finalPos.z += (float)num10 * num8;
                     float max = num8 * 0.3f;
-                    vector += Gen.RandomHorizontalVector(max);
+                    finalPos += Gen.RandomHorizontalVector(max);
                 }
-                bool @bool = Rand.Bool;
+                bool randBool = Rand.Bool;
                 Material matSingle = this.Graphic.MatSingle;
-                Vector2 vector2 = new Vector2(num3, num3);
-                Vector3 center = vector;
-                Vector2 size = vector2;
-                Material mat = matSingle;
-                bool flipUv = @bool;
-                Printer_Plane.PrintPlane(layer, center, size, mat, 0f, flipUv, null, new Color32[4], 0.1f, (float)(this.HashOffset() % 1024));
+                Vector2 size = new Vector2(num3, num3);
+                Graphic.TryGetTextureAtlasReplacementInfo(matSingle, this.def.category.ToAtlasGroup(), randBool, false, out matSingle, out var uvs, out _);
+                Printer_Plane.PrintPlane(layer, finalPos, size, matSingle, 0f, randBool, uvs, colors, 0.1f, (float)(this.HashOffset() % 1024));
                 num4++;
                 if (num4 >= num)
                 {

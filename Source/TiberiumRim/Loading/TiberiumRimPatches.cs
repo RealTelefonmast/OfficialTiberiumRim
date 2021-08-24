@@ -45,6 +45,19 @@ namespace TiberiumRim
             }
         }
 
+        /*
+        [HarmonyPatch(typeof(ParseHelper)), HarmonyPatch("FromString")]
+        [HarmonyPatch(new Type[] { typeof(string), typeof(Type) })]
+        public static class ParseHelper_FromStringPatch
+        {
+            public static bool Prefix(string str, Type itemType)
+            {
+                if()
+                return true;
+            }
+        }
+        */
+
         [HarmonyPatch(typeof(GenConstruct)), HarmonyPatch("CanPlaceBlueprintOver")]
         public static class TestPatch
         {
@@ -95,12 +108,16 @@ namespace TiberiumRim
                 //Check path for airlocks
                 var rooms = __instance.curPath.RoomsAlongPath(___pawn.Map);
                 Room airLock = rooms?.Find(r => r.Role == TiberiumDefOf.TR_AirLock);
+
                 //No airlocks, no job
                 if (airLock == null) return;
 
+                ___pawn.pather.StopDead();
                 //Start the airlock job and set the current job to be resumed
                 Job airlockJob = JobMaker.MakeJob(TiberiumDefOf.UseAirlock, airLock.GeneralCenter());
                 ___pawn.jobs.StartJob(airlockJob, JobCondition.Ongoing, null, true);
+
+                __result = false;
             }
         }
 
@@ -650,7 +667,7 @@ namespace TiberiumRim
             /*
             public static bool Prefix(MainButtonWorker __instance)
             {
-                if (__instance.def == TiberiumDefOf.TiberiumTab)
+                if (__instance.props == TiberiumDefOf.TiberiumTab)
                 {
                     GUI.color = new Color(0f, 200f, 40f, Pulser.PulseBrightness(1.2f, 0.7f));
                 }
@@ -1101,11 +1118,7 @@ namespace TiberiumRim
         {
             public static void Postfix()
             {
-                var particles = Find.CurrentMap.GetComponent<MapComponent_Particles>().SavedParticles.ToArray();
-                foreach (Particle p in particles)
-                {
-                    p.Draw();
-                }
+
             }
         }
 
@@ -1125,17 +1138,7 @@ namespace TiberiumRim
             {
                 if (!__instance.Paused)
                 {
-                    var particles = Find.Maps.Select(x => x.GetComponent<MapComponent_Particles>());
-                    int num = 0;
-                    var mltp = __instance.TickRateMultiplier;
-                    foreach (MapComponent_Particles p in particles)
-                    {
-                        while (num < mltp)
-                        {
-                            Find.CameraDriver.StartCoroutine(p.Ticker());
-                            num++;
-                        }
-                    }
+
                 }
             }
         }
@@ -1337,7 +1340,7 @@ namespace TiberiumRim
 
             static Network GetNetwork(Map map)
             {
-                return map.Tiberium()?.NetworkInfo[NetworkType.TiberiumProcessing]?.MainNetworkStructure?.Network ?? null;
+                return map.Tiberium()?.NetworkInfo[TiberiumDefOf.TiberiumNetwork]?.MainNetworkComponent?.Network ?? null;
             }
             
             static void DrawCredits()

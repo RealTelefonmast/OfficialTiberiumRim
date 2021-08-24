@@ -84,6 +84,10 @@
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<blockLight>false</blockLight>
 		<mineable>false</mineable>
+		<graphicData>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>CutoutPlant</shaderType>
+		</graphicData>
 		<tiberium>
 			<sizeRange>
 				<min>0.75</min>

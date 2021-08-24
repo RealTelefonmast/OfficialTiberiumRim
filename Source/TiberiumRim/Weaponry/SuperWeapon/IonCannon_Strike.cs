@@ -111,13 +111,13 @@ namespace TiberiumRim
                                 var thing = list[i];
                                 var pawn = thing as Pawn;
                                 if (thing == null) continue;
-                                if (!thing.def.destroyable || !thing.def.useHitPoints) continue;
+                                if (!thing.props.destroyable || !thing.props.useHitPoints) continue;
                                 float damage = pawn != null ? 1000 : (Rand.Range(thing.MaxHitPoints * 0.45f, thing.MaxHitPoints) * 2);
                                 var dinfo = new DamageInfo(DamageDefOf.Flame, damage, 100);
                                 thing.TakeDamage(dinfo);
                                 if (thing.Destroyed)
                                     GenSpawn.Spawn(ThingDefOf.Filth_Ash, cell, Map);
-                                if(thing.def.IsBuilding() && Rand.Chance(0.5f))
+                                if(thing.props.IsBuilding() && Rand.Chance(0.5f))
                                     GenSpawn.Spawn(ThingDefOf.Filth_RubbleRock, cell, Map);
                                 if (pawn?.Destroyed ?? false)
                                 {

@@ -25,7 +25,7 @@ namespace TiberiumRim
                 foreach (var creationOption in task.creationTasks.thingsToCreate)
                 {
                     if(creationOption.def == null) continue;
-                    //taskCreationThingDefs[task].Add(creationOption.def);
+                    //taskCreationThingDefs[task].Add(creationOption.props);
                     if(tasksForThings.ContainsKey(creationOption.def))
                         tasksForThings[creationOption.def].Add(task);
                     else

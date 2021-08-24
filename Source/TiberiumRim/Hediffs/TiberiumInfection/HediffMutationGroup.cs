@@ -93,7 +93,8 @@ namespace TiberiumRim
                         hediff = Foot;
                     }
                 }
-                //Foot
+
+                //
                 if (part.IsInGroup(BodyPartGroupDefOf.Torso))
                 {
                     hediff = Torso;

@@ -6,6 +6,16 @@ namespace TiberiumRim
     [DefOf]
     public static class TiberiumDefOf
     {
+        //NETWORKS
+        public static NetworkDef TiberiumNetwork;
+        public static NetworkDef AtmosphericNetwork;
+
+        public static NetworkValueDef TibGreen;
+        public static NetworkValueDef TibBlue;
+        public static NetworkValueDef TibRed;
+        public static NetworkValueDef TibSludge;
+        public static NetworkValueDef TibGas;
+
         //Factions
 
         //Pawns
@@ -83,14 +93,23 @@ namespace TiberiumRim
         public static ThingDef TiberiumPipe;
 
         //Particles
+        /*
         public static ParticleDef BlossomSpore;
         public static ParticleDef TiberiumSpore;
         public static ParticleDef TiberiumDustSpore;
         public static ParticleDef TiberiumParticle;
+        */
+
+        //Flecks
+        public static FleckDef TiberiumAirPuff;
+        public static FleckDef TiberiumSmoke;
 
         //Motes
-        public static ThingDef Mote_TiberiumGeyser;
         public static ThingDef Mote_TiberiumLeak;
+        public static ThingDef TiberiumSmokeMote;
+        public static ThingDef TiberiumGas;
+        public static ThingDef Mote_Beam;
+        public static ThingDef Mote_Arc;
 
         //public static ThingDef FilthTibLiquid;
 
@@ -117,12 +136,6 @@ namespace TiberiumRim
         //FleshTypes
         public static FleshTypeDef Mechanical;
         public static FleshTypeDef TiberiumFlesh;
-
-        //Motes
-        public static ThingDef TiberiumSmokeMote;
-        public static ThingDef TiberiumGas;
-        public static ThingDef Mote_Beam;
-        public static ThingDef Mote_Arc;
 
         //StatDefs
         public static StatDef TiberiumInfectionResistance;

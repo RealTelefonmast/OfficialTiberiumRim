@@ -3,35 +3,35 @@
 
 	<TiberiumRim.EffecterDefTR>
 		<defName>TiberiumClouds_Green2</defName>
+		<tickInterval>2000</tickInterval>
 		<children>
 			<li>
 				<subEffecterClass>TiberiumRim.SubEffecter_MoteMaker</subEffecterClass>
 				<scale>
-					<min>1.75</min>
+					<min>1.5</min>
 					<max>2.5</max>
 				</scale>
-				<chancePerTick>0.8</chancePerTick>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+				<chancePerTick>0.75</chancePerTick>
 				<positionLerpFactor>0.01</positionLerpFactor>
 				<positionRadius>0.5</positionRadius>
-				<moteDef>Mote_TiberiumFog_Green</moteDef>
+				<fleckDef>Fleck_TiberiumFog_Green</fleckDef>
 				<spawnLocType>RandomCellOnTarget</spawnLocType>
 				<speed>0.01~0.1</speed>
 			</li>
-			<!--
 			<li>
 				<subEffecterClass>TiberiumRim.SubEffecter_MoteMaker</subEffecterClass>
 				<scale>
-					<min>1</min>
-					<max>1.2</max>
+					<min>1.5</min>
+					<max>2.5</max>
 				</scale>
 				<burstCount>0~1</burstCount>
 				<chancePerTick>0.01</chancePerTick>
 				<positionLerpFactor>0.35</positionLerpFactor>
 				<positionRadius>0.2</positionRadius>
-				<moteDef>Mote_TiberiumCloudLightning</moteDef>
+				<fleckDef>Fleck_TiberiumCloudLightning</fleckDef>
 				<spawnLocType>RandomCellOnTarget</spawnLocType>
 			</li>
-			-->
 		</children>
 	</TiberiumRim.EffecterDefTR>
 

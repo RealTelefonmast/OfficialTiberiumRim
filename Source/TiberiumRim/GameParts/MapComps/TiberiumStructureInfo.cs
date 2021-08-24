@@ -8,7 +8,7 @@ namespace TiberiumRim
         public HashSet<TiberiumProducer> AllProducers = new HashSet<TiberiumProducer>();
         public HashSet<TiberiumProducer> ResearchProducers = new HashSet<TiberiumProducer>();
         public HashSet<TiberiumBlossom> Blossoms = new HashSet<TiberiumBlossom>();
-        public HashSet<TiberiumGeyser> Geysers = new HashSet<TiberiumGeyser>();
+        public HashSet<Building_TiberiumGeyser> Geysers = new HashSet<Building_TiberiumGeyser>();
 
         public TiberiumStructureInfo(Map map) : base(map) { }
 
@@ -35,7 +35,7 @@ namespace TiberiumRim
                         Blossoms.Add(b);
                     break;
                 }
-                case TiberiumGeyser g:
+                case Building_TiberiumGeyser g:
                     Geysers.Add(g);
                     break;
             }
@@ -54,7 +54,7 @@ namespace TiberiumRim
                         Blossoms.Remove(b);
                     break;
                 }
-                case TiberiumGeyser g:
+                case Building_TiberiumGeyser g:
                     Geysers.Remove(g);
                     break;
             }

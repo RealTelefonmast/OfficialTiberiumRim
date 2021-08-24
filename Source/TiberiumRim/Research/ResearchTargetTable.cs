@@ -67,7 +67,7 @@ namespace TiberiumRim
         public void RegisterNewTarget(Thing thing)
         {
             if (!tasksForThings.TryGetValue(thing.def, out List<TResearchTaskDef> tasks)) return;
-            //if (!tasksForThings.ContainsKey(thing.def)) return;
+            //if (!tasksForThings.ContainsKey(thing.props)) return;
             foreach (var task in tasks)
             {
                 if (!targets.ContainsKey(task))

@@ -61,8 +61,8 @@ namespace TiberiumRim
             {
                 Categorized[def.factionDesignation][def.TRCategory].Add(def);
             }
-            //if (!def.menuHidden)
-                //Log.Error(def +  " should have menuHidden");
+            //if (!props.menuHidden)
+                //Log.Error(props +  " should have menuHidden");
         }
     }
     

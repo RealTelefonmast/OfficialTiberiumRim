@@ -57,7 +57,7 @@
 		<tiberiumCost>
 			<costSet>
 				<specificCosts>
-					<TiberiumValueType.Blue>60</TiberiumValueType.Blue>
+					<TibBlue>60</TibBlue>
 				</specificCosts>
 			</costSet>
 		</tiberiumCost>

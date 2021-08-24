@@ -19,8 +19,8 @@ namespace TiberiumRim
         /*
         protected void Prepare(Map map)
         {
-            SkyfallerValue pair = def.skyfallers.RandomWeightedElement(s => s.chance);
-            positions = def.positionFilter.NeededCellsFor(map, def.skyfallers.Select(t => t.innerThing).ToList()).ToList();
+            SkyfallerValue pair = props.skyfallers.RandomWeightedElement(s => s.chance);
+            positions = props.positionFilter.NeededCellsFor(map, props.skyfallers.Select(t => t.innerThing).ToList()).ToList();
             for (int i = 0; i < pair.amount; i++)
             {
                 skyfallers.Add(SkyfallerMaker.MakeSkyfaller(pair.skyfallerDef, pair.innerThing));

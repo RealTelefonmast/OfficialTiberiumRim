@@ -16,7 +16,7 @@ namespace TiberiumRim
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Defs.Look(ref def, "def");
+            Scribe_Defs.Look(ref def, "props");
         }
 
         public override void Tick()

@@ -12,6 +12,7 @@ namespace TiberiumRim
     {
         private int powerProductionTicks = 0;
         private Comp_NetworkStructure compNetworkStructure;
+        private NetworkComponent networkComponent;
 
         public new CompProperties_NetworkStructurePowerPlant Props => (CompProperties_NetworkStructurePowerPlant)compNetworkStructure.Props;
 
@@ -30,6 +31,7 @@ namespace TiberiumRim
         {
             base.PostSpawnSetup(respawningAfterLoad);
             compNetworkStructure = parent.GetComp<Comp_NetworkStructure>();
+            networkComponent = compNetworkStructure[Props.fromNetwork];
         }
 
         public override void CompTick()
@@ -42,7 +44,7 @@ namespace TiberiumRim
         {
             if (powerProductionTicks <= 0)
             {
-                if (compNetworkStructure.Container.TryConsume(Props.consumeAmt))
+                if (networkComponent.Container.TryConsume(Props.consumeAmt))
                     powerProductionTicks = (int)(GenDate.TicksPerDay * Props.daysPerLoad);
             }
             else
@@ -61,6 +63,7 @@ namespace TiberiumRim
 
     public class CompProperties_NetworkStructurePowerPlant : CompProperties_NetworkStructure
     {
+        public NetworkDef fromNetwork;
         public int consumeAmt = 0;
         public float daysPerLoad = 1;
     }

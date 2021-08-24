@@ -9,20 +9,21 @@ namespace TiberiumRim
 {
     public class NetworkCost
     {
+        public NetworkDef withNetwork;
         public NetworkCostSet costSet;
         public bool useDirectStorage = false;
 
         public NetworkCostSet Cost => costSet;
 
         //Validation
-        public bool CanPayWith(INetworkStructure networkStructure)
+        public bool CanPayWith(INetworkComponent networkComponent)
         {
-            return useDirectStorage ? CanPayWith(networkStructure.Container) : CanPayWith(networkStructure.Network);
+            return useDirectStorage ? CanPayWith(networkComponent.Container) : CanPayWith(networkComponent.Network);
         }
 
         private bool CanPayWith(NetworkContainer directContainer)
         {
-            if (directContainer.TotalStorage < Cost.TotalCost) return false;
+            if (directContainer.TotalStored < Cost.TotalCost) return false;
             float totalNeeded = Cost.TotalCost;
 
             //
@@ -30,8 +31,8 @@ namespace TiberiumRim
             {
                 foreach (var specificCost in Cost.SpecificCosts)
                 {
-                    if (directContainer.ValueForType(specificCost.valueType) >= specificCost.cost)
-                        totalNeeded -= specificCost.cost;
+                    if (directContainer.ValueForType(specificCost.valueDef) >= specificCost.value)
+                        totalNeeded -= specificCost.value;
                 }
             }
 
@@ -57,8 +58,8 @@ namespace TiberiumRim
             {
                 foreach (var typeCost in Cost.SpecificCosts)
                 {
-                    var specCost = typeCost.cost;
-                    if (wholeNetwork.NetworkValueFor(typeCost.valueType) >= specCost)
+                    var specCost = typeCost.value;
+                    if (wholeNetwork.NetworkValueFor(typeCost.valueDef) >= specCost)
                         totalNeeded -= specCost;
                 }
             }
@@ -79,9 +80,9 @@ namespace TiberiumRim
         public void DoPayWith(Comp_NetworkStructure networkStructure)
         {
             if(useDirectStorage)
-                DoPayWith(networkStructure.Container);
+                DoPayWith(networkStructure[withNetwork].Container);
             else 
-                DoPayWith(networkStructure.Network);
+                DoPayWith(networkStructure[withNetwork].Network);
         }
 
         private void DoPayWith(NetworkContainer container)
@@ -91,8 +92,8 @@ namespace TiberiumRim
 
             foreach (var typeCost in Cost.SpecificCosts)
             {
-                if (container.TryConsume(typeCost.valueType, typeCost.cost))
-                    totalCost -= typeCost.cost;
+                if (container.TryConsume(typeCost.valueDef, typeCost.value))
+                    totalCost -= typeCost.value;
             }
 
             foreach (var type in Cost.AcceptedValueTypes)
@@ -114,12 +115,12 @@ namespace TiberiumRim
             var totalCost = Cost.TotalCost;
             if (totalCost <= 0) return;
 
-            foreach (var storage in network.StructureSet.Storages.TakeWhile(storage => !(totalCost <= 0)))
+            foreach (var storage in network.ComponentSet.Storages.TakeWhile(storage => !(totalCost <= 0)))
             {
                 foreach (var typeCost in Cost.SpecificCosts)
                 {
-                    if (storage.Container.TryConsume(typeCost.valueType, typeCost.cost))
-                        totalCost -= typeCost.cost;
+                    if (storage.Container.TryConsume(typeCost.valueDef, typeCost.value))
+                        totalCost -= typeCost.value;
                 }
 
                 foreach (var type in Cost.AcceptedValueTypes)

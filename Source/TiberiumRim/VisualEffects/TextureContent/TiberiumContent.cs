@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -197,30 +198,6 @@ namespace TiberiumRim
             TextureBlend = bundle.LoadAsset<Shader>("TextureBlend");
             FlowMapShader = bundle.LoadAsset<Shader>("FlowMapShader");
         }
-
-        public static Graphic_LinkedNetworkStructure ConnectionGraphicForNetwork(NetworkType type)
-        {
-            return type switch
-            {
-                NetworkType.TiberiumProcessing => TiberiumNetworkPipes,
-                NetworkType.GasPiping => null,
-                _ => null
-            };
-        }
-
-        public static GraphicLinkedNetworkStructureOverlay OverlayGraphicForNetwork(NetworkType type)
-        {
-            return type switch
-            {
-                NetworkType.TiberiumProcessing => TiberiumNetworkPipesOverlay,
-                NetworkType.GasPiping => null,
-                _ => null
-            };
-        }
-
-        public static readonly GraphicLinkedNetworkStructureOverlay TiberiumNetworkPipesOverlay = new GraphicLinkedNetworkStructureOverlay(GraphicDatabase.Get<Graphic_Single>("Buildings/Common/Network/TNW_PipeOverlayAtlas", ShaderDatabase.Transparent, Vector2.one, new ColorInt(155, 255, 0).ToColor));
-        public static readonly GraphicLinkedNetworkStructureOverlay TiberiumNetworkPipesGlow = new GraphicLinkedNetworkStructureOverlay(GraphicDatabase.Get<Graphic_Single>("Buildings/Common/Network/TNW_PipeOverlayAtlas", ShaderDatabase.MoteGlow, Vector2.one, Color.white));
-        public static readonly Graphic_LinkedNetworkStructure TiberiumNetworkPipes = new Graphic_LinkedNetworkStructure(GraphicDatabase.Get<Graphic_Single>("Buildings/Common/Network/TNW_PipeAtlas", ShaderDatabase.Transparent, Vector2.one, Color.white));
 
         public static readonly int FlowMapRadius = 5;
         public static readonly int FlowMapPixelDensity = 16;

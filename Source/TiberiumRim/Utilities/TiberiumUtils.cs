@@ -12,7 +12,7 @@ namespace TiberiumRim
 {
     public static class TRUtils
     {
-        public static TiberiumValueType[] MainValueTypes = new[] {TiberiumValueType.Green, TiberiumValueType.Blue, TiberiumValueType.Red}; 
+        public static NetworkValueDef[] MainValueTypes = new[] {TiberiumDefOf.TibGreen, TiberiumDefOf.TibBlue, TiberiumDefOf.TibRed }; 
 
         public static GameComponent_CameraPanAndLock CameraPanNLock()
         {
@@ -509,13 +509,16 @@ namespace TiberiumRim
             return result;
         }
 
-        public static int RangeInclusive(int min, int max)
+        public static uint Range(uint min, uint max)
         {
             if (max <= min)
             {
                 return min;
             }
-            return Range(min, max + 1);
+            Rand.PushState();
+            uint result = min + (uint)Math.Abs(Rand.Int % (max - min));
+            Rand.PopState();
+            return result;
         }
 
         public static int Range(IntRange range)
@@ -533,6 +536,15 @@ namespace TiberiumRim
             int result = min + Mathf.Abs(Rand.Int % (max - min));
             Rand.PopState();
             return result;
+        }
+
+        public static int RangeInclusive(int min, int max)
+        {
+            if (max <= min)
+            {
+                return min;
+            }
+            return Range(min, max + 1);
         }
 
         public static float RandValue
@@ -812,19 +824,22 @@ namespace TiberiumRim
             return label;
         }
 
-        public static Color GetColor(this TiberiumValueType valueType)
+        public static Color GetColor(this Enum valueType)
         {
             Color color = Color.white;
-            TiberiumControlDef def = MainTCD.Main;
-            color = valueType switch
+            if (valueType is TiberiumValueType tibType)
             {
-                TiberiumValueType.Green => def.GreenColor,
-                TiberiumValueType.Blue => def.BlueColor,
-                TiberiumValueType.Red => def.RedColor,
-                TiberiumValueType.Sludge => def.SludgeColor,
-                TiberiumValueType.Gas => def.GasColor,
-                _ => color
-            };
+                TiberiumControlDef def = MainTCD.Main;
+                color = tibType switch
+                {
+                    TiberiumValueType.Green => def.GreenColor,
+                    TiberiumValueType.Blue => def.BlueColor,
+                    TiberiumValueType.Red => def.RedColor,
+                    TiberiumValueType.Sludge => def.SludgeColor,
+                    TiberiumValueType.Gas => def.GasColor,
+                    _ => color
+                };
+            }
             return color;
         }
 
@@ -860,19 +875,31 @@ namespace TiberiumRim
             return def is TiberiumTerrainDef;
         }
 
-        public static TiberiumCrystalDef CrystalDefFromType(TiberiumValueType valueType, out bool isGas)
+        public static TiberiumCrystalDef CrystalDefFromType(NetworkValueDef valueDef, out bool isGas)
         {
             isGas = false;
-            TiberiumCrystalDef crystalDef = null;
-            switch (valueType)
+            //TODO: Adjust drops
+            if (valueDef == TiberiumDefOf.TibGreen)
             {
-                case TiberiumValueType.Green: return TiberiumDefOf.TiberiumGreen;
-                case TiberiumValueType.Blue: return TiberiumDefOf.TiberiumBlue;
-                case TiberiumValueType.Red: return TiberiumDefOf.TiberiumRed;
-                case TiberiumValueType.Sludge: return TiberiumDefOf.TiberiumMossGreen;
-                case TiberiumValueType.Gas: isGas = true; return crystalDef;
-                default: return crystalDef;
+                return TiberiumDefOf.TiberiumGreen;
             }
+            if (valueDef == TiberiumDefOf.TibBlue)
+            {
+                return TiberiumDefOf.TiberiumBlue;
+            }
+            if (valueDef == TiberiumDefOf.TibRed)
+            {
+                return TiberiumDefOf.TiberiumRed;
+            }
+            if (valueDef == TiberiumDefOf.TibSludge)
+            {
+                return TiberiumDefOf.TiberiumMossGreen;
+            }
+            if (valueDef == TiberiumDefOf.TibGas)
+            {
+                isGas = true;
+            }
+            return null;
         }
 
         public static bool ThingFitsAt(this ThingDef thing, Map map, IntVec3 cell)

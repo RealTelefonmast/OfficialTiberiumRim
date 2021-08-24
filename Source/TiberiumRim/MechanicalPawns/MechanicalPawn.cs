@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TiberiumRim.GameParts.MapComps;
 using Verse;
 
 namespace TiberiumRim

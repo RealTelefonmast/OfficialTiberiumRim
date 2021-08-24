@@ -7,6 +7,7 @@ namespace TiberiumRim
     public class TiberiumBillStack : IExposable
     {
         private Comp_NetworkStructureCrafter billStackOwner;
+        private NetworkComponent billStackHolder;
         private List<CustomTiberiumBill> bills = new ();
 
         //New Bill Data
@@ -21,6 +22,7 @@ namespace TiberiumRim
         public TiberiumBillStack(Comp_NetworkStructureCrafter parent)
         {
             billStackOwner = parent;
+            billStackHolder = parent[TiberiumDefOf.TiberiumNetwork];
             textBuffers ??= new string[ITab_CustomRefineryBills.Metals.Count()];
             foreach (var resource in ITab_CustomRefineryBills.Metals)
             {
@@ -31,6 +33,7 @@ namespace TiberiumRim
 
         public Building ParentBuilding => billStackOwner.parent;
         public Comp_NetworkStructureCrafter ParentComp => billStackOwner;
+        public NetworkComponent ParentTibComp => billStackHolder;
 
         public List<CustomTiberiumBill> Bills => bills;
 

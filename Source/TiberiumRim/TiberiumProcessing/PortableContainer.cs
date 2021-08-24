@@ -5,13 +5,22 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class PortableContainer : FXThing
+    public class PortableContainer : FXThing, IContainerHolder
     {
-        public TiberiumContainer Container;
+        private NetworkContainer container;
+        private ContainerProps containerProps;
 
-        public void PostSetup(TiberiumContainer container)
+        public string ContainerTitle => "TODO: PORTABLE TITLE";
+        public Thing Thing => this;
+        public NetworkContainer Container => container;
+        public ContainerProps ContainerProps => containerProps;
+        public bool DropsContents => true;
+        public bool LeavesPhysicalContainer => false;
+
+        public void PostSetup(NetworkContainer container, ContainerProps props)
         {
-            Container = (TiberiumContainer)container.Copy(this);
+            this.containerProps = props;
+            this.container = container.Copy(this);
         }
 
         public override float[] OpacityFloats => new float[1] { Container?.StoredPercent ?? 0f };
@@ -21,7 +30,12 @@ namespace TiberiumRim
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Deep.Look(ref Container, "tibContainer");
+            Scribe_Deep.Look(ref container, "networkContainer");
+        }
+
+        public void Notify_ContainerFull()
+        {
+            //
         }
 
         public override void DrawGUIOverlay()
@@ -38,7 +52,7 @@ namespace TiberiumRim
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat(base.GetInspectString());
-            sb.AppendLine("TR_PortableContainer".Translate() + ": " + Container.TotalStorage + "/" + Container.TotalCapacity);
+            sb.AppendLine($"{"TR_PortableContainer".Translate()}: {Container.TotalStored}/{Container.Capacity}");
             return sb.ToString().TrimEndNewlines();
         }
 

@@ -528,7 +528,7 @@ namespace TiberiumRim
                 : cells;//cells.Where(t => growToGrid[t]).ToList();
 
             if (!potentialGrowTo.Any()) return;
-            if (Rand.ChanceSeeded(crystal?.def.tiberium.rootNodeChance ?? 0f, crystal?.GetHashCode() ?? Seed))
+            if (Rand.ChanceSeeded(crystal?.props.tiberium.rootNodeChance ?? 0f, crystal?.GetHashCode() ?? Seed))
                 potentialGrowTo.ForEach(SetGrowToSpecific);
             else
                 SetGrowToSpecific(WeightedGrowToCell(crystal, potentialGrowTo));
@@ -638,7 +638,7 @@ namespace TiberiumRim
 
         }
 
-        public void Notify_TerrainUpdated(TerrainDef def, IntVec3 cell)
+        public void Notify_TerrainUpdated(TerrainDef props, IntVec3 cell)
         {
 
         }

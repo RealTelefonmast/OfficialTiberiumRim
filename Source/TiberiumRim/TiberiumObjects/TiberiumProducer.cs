@@ -81,7 +81,7 @@ namespace TiberiumRim
         public override void ExposeData()
         {
             base.ExposeData();
-            //Scribe_Defs.Look(ref def, "def");
+            //Scribe_Defs.Look(ref props, "props");
             Scribe_Values.Look(ref ticksUntilTiberium, "ticksUntilTiberium");
             Scribe_Deep.Look(ref tiberiumField, "tiberiumField");
             Scribe_Deep.Look(ref areaMutator, "areaMutator", def.tiberiumFieldRules, tiberiumField);
@@ -148,7 +148,7 @@ namespace TiberiumRim
                         CellFinder.TryFindRandomCellNear(Position, Map, (int)def.spawner.sporeExplosionRadius, c => c.CanSendSporeTo(Map, tibDef), out IntVec3 dest);
                         GenTiberium.SpawnTiberium(dest, Map, tibDef, this);
                     }
-                    //GenTiberium.SpawnSpore(this.OccupiedRect(), def.spawner.sporeExplosionRadius, Map, TiberiumTypes.RandomElement(), this, spores, true);
+                    //GenTiberium.SpawnSpore(this.OccupiedRect(), props.spawner.sporeExplosionRadius, Map, TiberiumTypes.RandomElement(), this, spores, true);
                     break;
                 case TiberiumSpawnMode.SporeExplosion:
                     spores = TRUtils.Range(def.spawner.explosionRange);
@@ -165,7 +165,7 @@ namespace TiberiumRim
 
         private void SpawnDirect(TiberiumCrystalDef def)
         {
-            //var cells = this.CellsAdjacent8WayAndInside().Where(c => def.AllowsTiberiumAt(c, Map, out _, out _)).ToList();
+            //var cells = this.CellsAdjacent8WayAndInside().Where(c => props.AllowsTiberiumAt(c, Map, out _, out _)).ToList();
             //if (cells.Any())
             GenTiberium.SpawnTiberium(this.RandomAdjacentCell8Way(), Map, def, this);
         }
@@ -175,7 +175,7 @@ namespace TiberiumRim
             var cells = FieldCells.Where(c => !c.Roofed(Map) && GenTiberium.AllowsTiberiumAt(c, Map, def, out _)).ToList();
             if (cells.Any())
                 GenTiberium.SpawnTiberium(cells.RandomElement(), Map, def, this);
-            //  GenTiberium.SpawnSpore(this.OccupiedRect(), cells.RandomElement(), Map, def, this);
+            //  GenTiberium.SpawnSpore(this.OccupiedRect(), cells.RandomElement(), Map, props, this);
         }
 
         private void ResetTiberiumCounter()

@@ -19,6 +19,7 @@ namespace TiberiumRim
         }
     }
 
+
     public class SubEffecter_MoteMaker : SubEffecter_Sprayer
     {
         private int ticksUntilMote = 0;
@@ -27,33 +28,6 @@ namespace TiberiumRim
         {
         }
 
-        public override void SubEffectTick(TargetInfo A, TargetInfo B)
-        {
-            base.MakeMote(A, B);
-        }
-
-        public override void SubTrigger(TargetInfo A, TargetInfo B)
-        {
-            if (Rand.Value < def.chancePerTick)
-            {
-                base.MakeMote(A, B);
-            }
-        }
-
-        public void Tick(int ticks, TargetInfo A, TargetInfo B)
-        {
-            if (ticksUntilMote <= 0)
-            {
-                if (Rand.Value < def.chancePerTick)
-                {
-                    SubEffectTick(A, B);
-                }
-                ticksUntilMote = def.ticksBetweenMotes;
-            }
-            ticksUntilMote -= ticks;
-        }
-
-        /*
         public void Tick(int interval, TargetInfo A, TargetInfo B)
         {
             if (ticksUntilMote <= 0)
@@ -66,7 +40,18 @@ namespace TiberiumRim
             }
             ticksUntilMote -= interval;
         }
-        */
 
+        public override void SubEffectTick(TargetInfo A, TargetInfo B)
+        {
+            MakeMote(A, B);
+        }
+
+        public override void SubTrigger(TargetInfo A, TargetInfo B)
+        {
+            if (Rand.Value < def.chancePerTick)
+            {
+                MakeMote(A, B);
+            }
+        }
     }
 }

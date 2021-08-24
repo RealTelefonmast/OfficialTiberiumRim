@@ -36,7 +36,7 @@ namespace TiberiumRim
         }
 
         private MapComponent_Tiberium TiberiumManager => map.Tiberium();
-        private NetworkMaster NetworkMaser => TiberiumManager.NetworkInfo[NetworkType.TiberiumProcessing];
+        private NetworkMaster NetworkMaser => TiberiumManager.NetworkInfo[TiberiumDefOf.TiberiumNetwork];
 
         private Harvester CurHarvester => AllHarvesters[Current];
 
@@ -71,8 +71,8 @@ namespace TiberiumRim
 
         private bool QueueFull(Harvester harvester)
         {
-            float value = ReservedQueues[harvester].Sum(t => t.HarvestValue) + harvester.Container.TotalStorage;
-            return value >= harvester.Container.TotalCapacity;
+            float value = ReservedQueues[harvester].Sum(t => t.HarvestValue) + harvester.Container.TotalStored;
+            return value >= harvester.Container.Capacity;
         }
 
         private void Enqueue(TiberiumCrystal tib, Harvester harvester)

@@ -54,9 +54,9 @@
         }
 
         public int OpenRoofCount => Group.OpenRoofCount;
-        public int TotalCapacity => totalCapacity;
+        public int Capacity => totalCapacity;
 
-        public float ActualSaturation => (float)ActualPollution / TotalCapacity;
+        public float ActualSaturation => (float)ActualPollution / Capacity;
         public float Saturation => IsDoorWay ? MixSaturation : (UsesOutDoorPollution ? Outside.Saturation : ActualSaturation);
         private float MixSaturation => ((ConnectingRooms[0]?.Saturation ?? 0) + (ConnectingRooms[1]?.Saturation ?? 0) / 2);
 
@@ -118,7 +118,7 @@
                     if (!ShouldPushToOther(Saturation, tracker.Key.Saturation)) continue;
                     int from = Pollution, 
                         to = tracker.Key.Pollution;
-                    TryPushToOther(ref from, ref to, PushAmountToOther(Saturation, tracker.Key.Saturation, CELL_CAPACITY, 1f - passer.Building.def.fillPercent));
+                    TryPushToOther(ref from, ref to, PushAmountToOther(Saturation, tracker.Key.Saturation, CELL_CAPACITY, 1f - passer.Building.props.fillPercent));
                     Pollution = from;
                     tracker.Key.Pollution = to;
                 }
@@ -276,7 +276,7 @@
                 if (!cell.InBounds(map)) continue;
                 var building = cell.GetFirstBuilding(roomGroup.Map);
                 if (building == null) continue;
-                if (!(building is Building_Door || building is Building_Vent || building is Building_Cooler || building.def.Fillage != FillCategory.Full)) continue;
+                if (!(building is Building_Door || building is Building_Vent || building is Building_Cooler || building.props.Fillage != FillCategory.Full)) continue;
                 var actualRoom = OppositeRoomFrom(building.Position);
                 if (actualRoom == null) continue;
                 var tracker = PollutionInfo.PollutionFor(actualRoom);

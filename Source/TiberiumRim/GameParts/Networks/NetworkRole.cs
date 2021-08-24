@@ -11,6 +11,8 @@ namespace TiberiumRim
         Producer    = 4U,
         Consumer    = 8U,
         Storage     = 16U,
+        Requester   = 32U,
+
         AllContainers = Producer | Consumer | Storage,
         All = Transmitter | AllContainers,
     }

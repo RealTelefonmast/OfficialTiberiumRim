@@ -9,7 +9,7 @@ namespace TiberiumRim
         public Room Room => this.parent.GetRoomIndirect();
         public int PollutionInterval => Props.pollutionInterval;
         public int PollutionAmount => Props.pollutionAmount;
-        public bool IsPolluting => (!(parent is TiberiumGeyser g) || TiberiumGeyser.makeGas);
+        public bool IsPolluting => (!(parent is Building_TiberiumGeyser g) || Building_TiberiumGeyser.makePollutionGas);
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {

@@ -10,6 +10,7 @@ namespace TiberiumRim
 {
     public class Building_NetworkStructureTransmitter : FXBuilding
     {
+        /*
         public override Graphic Graphic => TiberiumContent.TiberiumNetworkPipes;
         public Comp_NetworkStructureTransmitter TransmitterComp => this.TryGetComp<Comp_NetworkStructureTransmitter>();
 
@@ -23,5 +24,6 @@ namespace TiberiumRim
                 //TiberiumContent.TiberiumNetworkPipesGlow.ColoredVersion(ShaderDatabase.MoteGlow, color, color).Draw(this.DrawPos + Altitudes.AltIncVect, Rotation, this);
             }
         }
+        */
     }
 }

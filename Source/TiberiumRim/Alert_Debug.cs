@@ -17,12 +17,10 @@ namespace TiberiumRim
         public override TaggedString GetExplanation()
         {
             
-            MapComponent_Particles particles = Find.CurrentMap.GetComponent<MapComponent_Particles>();
             MapComponent_Tiberium tiberium = Find.CurrentMap.GetComponent<MapComponent_Tiberium>();
             TiberiumMapInfo mapinfo = tiberium.TiberiumInfo;
-            NetworkMaster tiberiumNetworkMaster = tiberium.NetworkInfo[NetworkType.TiberiumProcessing];
+            NetworkMaster tiberiumNetworkMaster = tiberium.NetworkInfo[TiberiumDefOf.TiberiumNetwork];
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Current Particles: " + particles.SavedParticles.Count);
             sb.AppendLine("Total AllProducers: " + tiberium.NatrualTiberiumStructureInfo.AllProducers.Count);
             int TibCount = tiberium.TiberiumInfo.TotalCount;
             sb.AppendLine("Total Tiberium: " + TibCount);

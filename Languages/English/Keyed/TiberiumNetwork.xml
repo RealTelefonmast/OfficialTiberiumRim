@@ -7,7 +7,7 @@
 	
 	<TR_PowerLeft>{0} of power left.</TR_PowerLeft>
 	
-	<TR_ContainerContent>Tiberium Storage</TR_ContainerContent>
+	<TR_NetworkStorage>Network Storage</TR_NetworkStorage>
 	<TR_MissingConnection>Missing connection to</TR_MissingConnection>
 	<TR_ConsumerLack>A silo or refinery</TR_ConsumerLack>
 	<TR_ProducerLack>A silo or production facility</TR_ProducerLack>

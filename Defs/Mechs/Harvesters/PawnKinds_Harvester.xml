@@ -9,8 +9,17 @@
 		<isFighter>false</isFighter>
 		<aiAvoidCover>false</aiAvoidCover>
 		<race>Harvester_Common</race>
-		<maxStorage>125</maxStorage>
-		<wreckDef>HarvesterHusk_Common</wreckDef>		
+		<wreckDef>HarvesterHusk_Common</wreckDef>
+		<containerProps>
+			<maxStorage>125</maxStorage>
+			<doExplosion>true</doExplosion>
+		</containerProps>
+		<allowedValues>
+			<li>TibGreen</li>
+			<li>TibBlue</li>
+			<li>TibRed</li>			
+			<li>TibSludge</li>					
+		</allowedValues>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
@@ -33,8 +42,17 @@
 		<isFighter>false</isFighter>
 		<aiAvoidCover>false</aiAvoidCover>
 		<race>Harvester_GDI</race>
-		<maxStorage>300</maxStorage>
 		<wreckDef>HarvesterHusk_GDI</wreckDef>		
+		<containerProps>
+			<maxStorage>300</maxStorage>
+			<doExplosion>true</doExplosion>
+		</containerProps>
+		<allowedValues>
+			<li>TibGreen</li>
+			<li>TibBlue</li>
+			<li>TibRed</li>			
+			<li>TibSludge</li>					
+		</allowedValues>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
@@ -57,8 +75,17 @@
 		<isFighter>false</isFighter>
 		<aiAvoidCover>false</aiAvoidCover>
 		<race>Harvester_Nod</race>
-		<maxStorage>200</maxStorage>
 		<wreckDef>HarvesterHusk_Nod</wreckDef>
+		<containerProps>
+			<maxStorage>200</maxStorage>
+			<doExplosion>true</doExplosion>
+		</containerProps>
+		<allowedValues>
+			<li>TibGreen</li>
+			<li>TibBlue</li>
+			<li>TibRed</li>			
+			<li>TibSludge</li>					
+		</allowedValues>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>

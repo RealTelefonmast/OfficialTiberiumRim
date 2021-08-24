@@ -20,7 +20,7 @@
             PollutionTracker tracker = parentInfo.PollutionFor(group);
             if (tracker == null) return;
             if (tracker.OpenRoofCount > 0) return;
-            int val = Mathf.RoundToInt(tracker.TotalCapacity * parentInfo.OutsideSaturation);
+            int val = Mathf.RoundToInt(tracker.Capacity * parentInfo.OutsideSaturation);
             tracker.Pollution += val;
             parentInfo.OutsidePollution -= val;
         }

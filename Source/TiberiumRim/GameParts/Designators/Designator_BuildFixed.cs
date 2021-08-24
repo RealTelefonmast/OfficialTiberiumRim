@@ -36,7 +36,7 @@ namespace TiberiumRim
             else
             {
                 GenSpawn.WipeExistingThings(c, this.placingRot, this.entDef.blueprintDef, base.Map, DestroyMode.Deconstruct);
-                GenConstruct.PlaceBlueprintForBuild(this.entDef, c, base.Map, this.placingRot, Faction.OfPlayer, this.stuffDef);
+                GenConstruct.PlaceBlueprintForBuild_NewTemp(this.entDef, c, base.Map, this.placingRot, Faction.OfPlayer, this.stuffDef);
             }
             FleckMaker.ThrowMetaPuffs(GenAdj.OccupiedRect(c, this.placingRot, this.entDef.Size), base.Map);
             if (this.entDef is ThingDef thingDef && thingDef.IsOrbitalTradeBeacon)

@@ -383,7 +383,7 @@ namespace TiberiumRim
             {
                 int degreesWide = (int)((float)this.burstWarmupTicksLeft * 0.5f);
                 GenDraw.DrawAimPieRaw(DrawPos + new Vector3(0f, top.props.barrelMuzzleOffset.magnitude, 0f), TurretRotation, degreesWide);
-                //GenDraw.DrawAimPie(parent, this.CurrentTarget, degreesWide, (float)this.parent.def.size.x * 0.5f);
+                //GenDraw.DrawAimPie(parent, this.CurrentTarget, degreesWide, (float)this.parent.props.size.x * 0.5f);
             }
         }
 

@@ -9,39 +9,39 @@ namespace TiberiumRim
     public class Network : IExposable
     {
         //
+        protected NetworkDef def;
         protected NetworkMaster networkParent;
-
-        protected NetworkType networkType;
-        protected NetworkRank networkRank;
-        public int NetworkID = -1;
-
-        protected NetworkStructureSet structureSet;
-        protected NetworkContainerSet containerSet;
         protected Map map;
 
-        protected List<IntVec3> networkCells;
+        protected NetworkRank networkRank = NetworkRank.Alpha;
+        public int NetworkID = -1;
+
+        protected NetworkComponentSet componentSet;
+        protected NetworkContainerSet containerSet;
 
         //
-        public INetworkStructure NetworkController { get; set; }
+        public INetworkStructure NetworkController => ComponentSet.Controller?.Parent;
 
         //
-        public virtual bool IsWorking => NetworkController.IsPowered;
+        public virtual bool IsWorking => NetworkController?.IsPowered ?? false;
         public virtual float TotalNetworkValue => ContainerSet.TotalNetworkValue;
         public virtual float TotalStorageNetworkValue => ContainerSet.TotalStorageValue;
 
-        public List<IntVec3> NetworkCells => networkCells;
+        public NetworkRank NetworkRank => networkRank;
+
+        public List<IntVec3> NetworkCells { get; set; }
 
         public NetworkMaster NetworkParent => networkParent;
-        public NetworkStructureSet StructureSet => structureSet;
+        public NetworkComponentSet ComponentSet => componentSet;
         public NetworkContainerSet ContainerSet => containerSet;
 
-        public Network(NetworkType type, Map map, NetworkMaster parent)
+        public Network(NetworkDef def, Map map, NetworkMaster parent)
         {
             this.networkParent = parent;
-            this.networkType = type;
             this.map = map;
-            structureSet = new NetworkStructureSet();
+            componentSet = new NetworkComponentSet(def, null);
             containerSet = new NetworkContainerSet();
+            NetworkCells = new List<IntVec3>();
         }
 
         public virtual void ExposeData()
@@ -60,9 +60,9 @@ namespace TiberiumRim
         }
 
         //
-        public float NetworkValueFor(Enum valueType)
+        public float NetworkValueFor(NetworkValueDef valueDef)
         {
-            return ContainerSet.TotalValueByType[valueType];
+            return ContainerSet.TotalValueByType[valueDef];
         }
 
         public float NetworkValueFor(NetworkRole ofRole)
@@ -70,47 +70,62 @@ namespace TiberiumRim
             return ContainerSet.TotalValueByRole[ofRole];
         }
 
-        public float NetworkValueFor(Enum valueType, NetworkRole ofRole)
+        public float NetworkValueFor(NetworkValueDef valueDef, NetworkRole ofRole)
         {
-            return ContainerSet.ValueByTypeByRole[ofRole][valueType];
+            return ContainerSet.ValueByTypeByRole[ofRole][valueDef];
         }
 
         //
         public bool ValidFor(NetworkRole role, out string reason)
         {
             reason = string.Empty;
-            switch (role)
+            NetworkRole[] values = (NetworkRole[])Enum.GetValues(typeof(NetworkRole));
+            foreach (var value in values)
             {
-                case NetworkRole.Consumer:
-                    reason = "TR_ConsumerLack";
-                    return StructureSet.FullSet.Any(x =>  x.NetworkRole == NetworkRole.Storage || x.NetworkRole == NetworkRole.Producer);
-                case NetworkRole.Producer:
-                    reason = "TR_ProducerLack";
-                    return StructureSet.FullSet.Any(x => x.NetworkRole == NetworkRole.Storage || x.NetworkRole == NetworkRole.Consumer);
-                case NetworkRole.Transmitter:
-                    break;
-                case NetworkRole.Storage:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(role), role, null);
+                if ((role & value) == value)
+                {
+                    switch (value)
+                    {
+                        case NetworkRole.Consumer:
+                            reason = "TR_ConsumerLack";
+                            return ComponentSet.FullSet.Any(x => x.NetworkRole.HasFlag(NetworkRole.Storage) || x.NetworkRole.HasFlag(NetworkRole.Producer));
+                        case NetworkRole.Producer:
+                            reason = "TR_ProducerLack";
+                            return ComponentSet.FullSet.Any(x => x.NetworkRole.HasFlag(NetworkRole.Storage) || x.NetworkRole.HasFlag(NetworkRole.Consumer));
+                        case NetworkRole.Transmitter:
+                            break;
+                        case NetworkRole.Storage:
+                            break;
+                        case NetworkRole.None:
+                            break;
+                        case NetworkRole.Controller:
+                            break;
+                        case NetworkRole.AllContainers:
+                            break;
+                        case NetworkRole.All:
+                            break;
+                        default: break;
+                    }
+                }
             }
             return true;
         }
 
-        public void AddStructure(INetworkStructure structure)
+        public void AddComponent(INetworkComponent component)
         {
-            StructureSet.AddStructure(structure);
-            ContainerSet.AddNewContainerFrom(structure);
+            if (ComponentSet.AddNewComponent(component))
+                NetworkCells.AddRange(component.Parent.InnerConnectionCells);
 
-            networkCells.AddRange(structure.ConnectionCells);
+            ContainerSet.AddNewContainerFrom(component);
         }
 
-        public void RemoveStructure(INetworkStructure structure)
+        public void RemoveComponent(INetworkComponent component)
         {
-            structureSet.RemoveStructure(structure);
-            foreach (var cell in structure.ConnectionCells)
+            ComponentSet.RemoveComponent(component);
+            containerSet.RemoveContainerFrom(component);
+            foreach (var cell in component.Parent.InnerConnectionCells)
             {
-                networkCells.Remove(cell);
+                NetworkCells.Remove(cell);
             }
         }
 
@@ -120,11 +135,12 @@ namespace TiberiumRim
 
         }
 
+        /*
         public void Notify_PotentialSplit(INetworkStructure from)
         {
             from.Network = null;
             Network newNet = null;
-            foreach (INetworkStructure root in from.StructureSet.FullSet)
+            foreach (INetworkStructure root in from.NeighbourStructureSet.FullSet)
             {
                 if (root.Network != newNet)
                 {
@@ -132,10 +148,11 @@ namespace TiberiumRim
                 }
             }
         }
+        */
 
         public override string ToString()
         {
-            return $"{networkType}[{networkRank}]";
+            return $"{def}[{networkRank}]";
         }
 
         public string GreekLetter

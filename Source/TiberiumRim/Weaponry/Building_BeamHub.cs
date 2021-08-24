@@ -8,7 +8,7 @@
         private bool[] connections = new bool[4] { false, false, false, false };
 
         private Graphic toggleGraphic;
-        public Graphic ToggleGraphic => toggleGraphic ??= def.beamHub.toggleGraphic.Graphic;
+        public Graphic ToggleGraphic => toggleGraphic ??= props.beamHub.toggleGraphic.Graphic;
 
         public bool IsPowered => this.GetComp<CompPowerTrader>().PowerOn;
 
@@ -53,12 +53,12 @@
         private void LookForHub(Rot4 rot)
         {
             List<IntVec3> vecs = new List<IntVec3>();
-            for (int i = 0; i <= def.beamHub.range; i++)
+            for (int i = 0; i <= props.beamHub.range; i++)
             {
                 IntVec3 c = Position + new IntVec3(0, 0, i).RotatedBy(rot);
                 if (!c.InBounds(Map)) break;
                 vecs.Add(c);
-                if(c.GetFirstBuilding(Map) is Building_BeamHub hub && hub.def == def && hub != this)
+                if(c.GetFirstBuilding(Map) is Building_BeamHub hub && hub.props == props && hub != this)
                 {
                     BeamSegment segment = new BeamSegment(new Building_BeamHub[] { this, hub }, vecs);
                     SetConnection(segment, rot);

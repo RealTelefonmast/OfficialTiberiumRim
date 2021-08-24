@@ -28,6 +28,8 @@ namespace TiberiumRim
         private Matrix4x4 matrix = default(Matrix4x4);
         private readonly MaterialPropertyBlock materialProperties = new MaterialPropertyBlock();
 
+        private float AnimationSpeed => parent.AnimationSpeed(index) ?? 1;
+
         public FXGraphic(CompFX parent, FXGraphicData data, int index)
         {
             //Log.Message(index + " '" + data.data?.texPath + "'" + " which is " + data.Role);
@@ -53,7 +55,7 @@ namespace TiberiumRim
         {
             if (unused) return;
             if (data.rotationSpeed > 0)
-                exactRotation += data.rotationSpeed * 0.0166666675f;
+                exactRotation += (AnimationSpeed * (data.rotationSpeed * 0.0166666675f));
             if (ticksToBlink > 0 && blinkDuration == 0)
                 ticksToBlink--;
             else
@@ -145,7 +147,18 @@ namespace TiberiumRim
                     return;
             }
             materialProperties.SetColor(ShaderPropertyIDs.Color, drawColor);
-            matrix.SetTRS(new Vector3(newDrawPos.x, altitude, newDrawPos.z), (exactRotation + (rotation ?? drawInfo.rotation)).ToQuat(), new Vector3(drawSize.x, 1f, drawSize.y));
+
+            var rotationQuat = (exactRotation + (rotation ?? drawInfo.rotation)).ToQuat();
+
+            if (data.PivotOffset != null)
+            {
+                var pivotPoint = newDrawPos + data.PivotOffset.Value;
+                Vector3 relativePos = rotationQuat * (newDrawPos - pivotPoint);
+                newDrawPos = pivotPoint + relativePos;
+            }
+            
+            matrix.SetTRS(new Vector3(newDrawPos.x, altitude, newDrawPos.z), rotationQuat, new Vector3(drawSize.x, 1f, drawSize.y));
+
             Graphics.DrawMesh(drawInfo.drawMesh, matrix, drawMat, 0, null, 0, materialProperties);
         }
 

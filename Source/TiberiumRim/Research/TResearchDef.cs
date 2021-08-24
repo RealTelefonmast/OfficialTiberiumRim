@@ -447,7 +447,7 @@ namespace TiberiumRim
             if (thing.Any() && row.ButtonIcon(TiberiumContent.SelectThing, ""))
             {
                 //if (!TargetThings().Any()) return;
-                //Thing thing = TargetThings().RandomElement(); //FirstOrDefault(t => t.def == def); //Find.Maps.SelectMany(m => m.listerThings.ThingsOfDef(def)).RandomElement();
+                //Thing thing = TargetThings().RandomElement(); //FirstOrDefault(t => t.props == props); //Find.Maps.SelectMany(m => m.listerThings.ThingsOfDef(props)).RandomElement();
                 Find.MainTabsRoot.EscapeCurrentTab();
                 CameraJumper.TryJumpAndSelect(thing.RandomElement());
             }

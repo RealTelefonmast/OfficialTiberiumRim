@@ -132,10 +132,10 @@
 		<defaultStoppingPower>2.0</defaultStoppingPower>
 		<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
 		<explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
-		<explosionCellMote>Mote_BlastEMP</explosionCellMote>
+		<explosionCellFleck>BlastEMP</explosionCellFleck>
 		<explosionColorCenter>(1, 1, 1, 1)</explosionColorCenter>
 		<explosionColorEdge>(0.65, 0.65, 0.65, 1)</explosionColorEdge>
-		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+		<explosionInteriorFleck>ElectricalSpark</explosionInteriorFleck>
 		<combatLogRules>Damage_Bomb</combatLogRules>
 		<soundExplosion>Shot_GDI_Sonic</soundExplosion>
 		<makesAnimalsFlee>true</makesAnimalsFlee>

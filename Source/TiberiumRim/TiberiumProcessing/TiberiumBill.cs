@@ -85,7 +85,7 @@ namespace TiberiumRim
 
         private bool CanPay()
         {
-            var network = billStack.ParentComp.Network;
+            var network = billStack.ParentTibComp.Network;
             float networkValue = 0;
             foreach (var valueType in TRUtils.MainValueTypes)
             {
@@ -98,9 +98,9 @@ namespace TiberiumRim
 
         public void Pay()
         {
-            var network = billStack.ParentComp.Network;
+            var network = billStack.ParentTibComp.Network;
             float totalCost = tiberiumCost;
-            var storages = network.StructureSet.Storages;
+            var storages = network.ComponentSet.Storages;
             foreach (var storage in storages)
             {
                 foreach (var type in TRUtils.MainValueTypes)
@@ -299,13 +299,14 @@ namespace TiberiumRim
         public TiberiumBill() : base() { }
 
         private Comp_NetworkStructureCrafter CompTNW => ((Building) billStack.billGiver).GetComp<Comp_NetworkStructureCrafter>();
-        private Network Network => CompTNW.Network;
+        public NetworkComponent ParentTibComp => CompTNW[TiberiumDefOf.TiberiumNetwork];
+        private Network Network => ParentTibComp.Network;
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Values.Look(ref isBeingDone, "isBeingDone");
-            Scribe_Defs.Look(ref def, "def");
+            Scribe_Defs.Look(ref def, "props");
         }       
 
         public override void Notify_DoBillStarted(Pawn billDoer)
@@ -329,7 +330,7 @@ namespace TiberiumRim
                 {
                     if (Network != null && Network.IsWorking)
                     {
-                        return def.tiberiumCost.CanPayWith(CompTNW);
+                        return def.tiberiumCost.CanPayWith(ParentTibComp);
                     }
                 }
             }
@@ -338,7 +339,7 @@ namespace TiberiumRim
 
         public override void Notify_IterationCompleted(Pawn billDoer, List<Thing> ingredients)
         {
-            if (def.tiberiumCost.CanPayWith(CompTNW))
+            if (def.tiberiumCost.CanPayWith(ParentTibComp))
             {
                 def.tiberiumCost.DoPayWith(CompTNW);
                 isBeingDone = false;
@@ -351,9 +352,9 @@ namespace TiberiumRim
             get
             {
                 Color color = Color.white;
-                foreach(TiberiumValueType type in def.tiberiumCost.Cost.AcceptedValueTypes)
+                foreach(NetworkValueDef valueDef in def.tiberiumCost.Cost.AcceptedValueTypes)
                 {
-                    color *= TRUtils.GetColor(type);
+                    color *= valueDef.valueColor;
                 }
                 return color;
             }

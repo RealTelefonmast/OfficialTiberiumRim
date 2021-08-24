@@ -3,6 +3,7 @@ using Verse;
 
 namespace TiberiumRim
 {
+    /*TODO: Rebase on flecks
     public class TiberiumSpore : Particle
     {
         public TiberiumCrystalDef crystalDef = TiberiumDefOf.TiberiumPod;
@@ -53,4 +54,5 @@ namespace TiberiumRim
             }
         }
     }
+    */
 }

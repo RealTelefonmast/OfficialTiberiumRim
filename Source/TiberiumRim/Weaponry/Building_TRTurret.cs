@@ -200,6 +200,7 @@ namespace TiberiumRim
         public virtual Color[] ColorOverrides => new Color[3] { Color.white, Color.white, Color.white };
         public virtual float[] OpacityFloats => new float[3] { 1f ,1f, 1f};
         public virtual float?[] RotationOverrides => new float?[3] { null, null, MainGun?.TurretRotation };
+        public float?[] AnimationSpeeds => null;
         public virtual bool[] DrawBools => new bool[3] { true, true, true };
         public virtual Action<FXGraphic>[] Actions => null;
 

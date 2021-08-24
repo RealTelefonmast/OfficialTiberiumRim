@@ -128,7 +128,7 @@ namespace TiberiumRim
             return Color.white;
         }
 
-        public static float DrawNetworkValueTypeReadout(Rect rect, GameFont font, float textYOffset, Dictionary<Enum, float> typeValues)
+        public static float DrawNetworkValueTypeReadout(Rect rect, GameFont font, float textYOffset, Dictionary<NetworkValueDef, float> typeValues)
         {
             float height = 5;
 
@@ -143,7 +143,7 @@ namespace TiberiumRim
                 Rect typeRect = new Rect(5, height, 10, 10);
                 Vector2 typeSize = Text.CalcSize(label);
                 Rect typeLabelRect = new Rect(20, height + textYOffset, typeSize.x, typeSize.y);
-                Widgets.DrawBoxSolid(typeRect, ColorFor(type));
+                Widgets.DrawBoxSolid(typeRect, type.valueColor);
                 Widgets.Label(typeLabelRect, label);
                 height += 10 + 2;
             }

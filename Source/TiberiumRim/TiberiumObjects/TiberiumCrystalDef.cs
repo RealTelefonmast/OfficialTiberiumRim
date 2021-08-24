@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -47,6 +48,24 @@ namespace TiberiumRim
         {
             conversions.GetPlantOutcomes(plantDef, out toPlant, out plantTerrain);
             return toPlant != null;
+        }
+
+        public NetworkValueDef TiberiumValueTypeForNetwork
+        {
+            get
+            {
+                return TiberiumValueType switch
+                {
+                    TiberiumValueType.None => null,
+                    TiberiumValueType.Green => TiberiumDefOf.TibGreen,
+                    TiberiumValueType.Blue => TiberiumDefOf.TibBlue,
+                    TiberiumValueType.Red => TiberiumDefOf.TibRed,
+                    TiberiumValueType.Gas => TiberiumDefOf.TibGas,
+                    TiberiumValueType.Sludge => TiberiumDefOf.TibSludge,
+                    TiberiumValueType.Unharvestable => null,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+            }
         }
 
         public TiberiumValueType TiberiumValueType => tiberium.type;

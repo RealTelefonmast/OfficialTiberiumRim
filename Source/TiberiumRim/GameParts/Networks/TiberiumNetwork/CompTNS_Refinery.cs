@@ -17,7 +17,7 @@ namespace TiberiumRim
         public Comp_MechStation MechComp => parent.GetComp<Comp_MechStation>();
         public new CompProperties_TNSRefinery Props => (CompProperties_TNSRefinery)props;
 
-        public bool CanBeRefinedAt => CompPower.PowerOn && !parent.IsBrokenDown() && !Container.CapacityFull;
+        public bool CanBeRefinedAt => CompPower.PowerOn && !parent.IsBrokenDown() && !NetworkParts[0].Container.CapacityFull;
         public bool RecallHarvesters
         {
             get => recallHarvesters;
@@ -50,8 +50,8 @@ namespace TiberiumRim
             base.PostDestroy(mode, previousMap);
         }
 
-        //Notifiers
-        public override void Notify_ContainerFull()
+        //Notifiers TODO: FIX NOTIFIER (CUSTOM NETWORKCOMPONENT??)
+        public void Notify_ContainerFull()
         {
             GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.SilosNeeded);
         }

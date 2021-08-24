@@ -6,13 +6,7 @@ namespace TiberiumRim
 {
     public class ThingComp_TiberiumExplosive : ThingComp
     {
-        public CompProperties_TiberiumExplosive Props
-        {
-            get
-            {
-                return base.props as CompProperties_TiberiumExplosive;
-            }
-        }
+        public CompProperties_TiberiumExplosive Props => base.props as CompProperties_TiberiumExplosive;
 
         public override void PostPreApplyDamage(DamageInfo dinfo, out bool absorbed)
         {
@@ -22,7 +16,7 @@ namespace TiberiumRim
                 if (TRUtils.Chance(Props.explosionChance))
                 {
                     GenExplosion.DoExplosion(parent.Position, parent.Map, Props.explosionRadius, DamageDefOf.Bomb, parent);
-                    GenTiberium.SpawnSpore(parent.OccupiedRect(), Props.radius, parent.Map, Props.tiberiumTypes.RandomElement(), null, Props.sporeAmount, true);
+                    //GenTiberium.SpawnSpore(parent.OccupiedRect(), Props.radius, parent.Map, Props.tiberiumTypes.RandomElement(), null, Props.sporeAmount, true);
                     parent.Destroy(DestroyMode.KillFinalize);
                 }
             }

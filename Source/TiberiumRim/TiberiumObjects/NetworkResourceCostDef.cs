@@ -7,6 +7,6 @@ namespace TiberiumRim
     {
         public ThingDef resource;
         public float costMultiplier = 1;
-        public List<NetworkTypeCost> specificTypes;
+        public List<NetworkCostValue> specificTypes;
     }
 }

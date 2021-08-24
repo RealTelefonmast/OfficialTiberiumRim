@@ -25,7 +25,7 @@ namespace TiberiumRim
 
         public void ExposeData()
         {
-            Scribe_Defs.Look(ref def, "def");
+            Scribe_Defs.Look(ref def, "props");
             Scribe_Values.Look(ref startTick, "startTick");
             Scribe_Values.Look(ref endTick, "endTick");
         }

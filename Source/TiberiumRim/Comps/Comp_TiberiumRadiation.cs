@@ -118,7 +118,7 @@ namespace TiberiumRim
                 if (thingToIgnore != null && thingToIgnore == building) continue;
                 if (building != null && building != this.parent)
                 {
-                    /*float fallOff = FillPercentFactor(building) * (1f - (building.def.MadeFromStuff
+                    /*float fallOff = FillPercentFactor(building) * (1f - (building.props.MadeFromStuff
                         ? TiberiumDefOf.RadiationResistances.FactorFor(building.Stuff)
                         : 0.2f));
                     float fallOff = FillPercentFactor(building);*/

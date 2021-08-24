@@ -23,6 +23,9 @@
 			<recipeUsers Inherit="false">
 				<li>TiberiumWorkbench</li>
 			</recipeUsers>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
 		</recipeMaker>
 		<thingCategories>
 			<li>TRApparelsETC</li>
@@ -46,9 +49,6 @@
 			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
 		</equippedStatOffsets>
-		<skillRequirements>
-			<Crafting>5</Crafting>
-		</skillRequirements>
 		<apparel>
 			<scoreOffset>3</scoreOffset>
 			<bodyPartGroups>
@@ -96,6 +96,9 @@
 			<recipeUsers Inherit="false">
 				<li>TiberiumWorkbench</li>
 			</recipeUsers>
+			<skillRequirements>
+				<Crafting>7</Crafting>
+			</skillRequirements>
 		</recipeMaker>
 		<thingCategories>
 			<li>TRApparelsETC</li>
@@ -118,9 +121,6 @@
 			<TiberiumInfectionResistance>0.9</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.9</TiberiumRadiationResistance>
 		</equippedStatOffsets>
-		<skillRequirements>
-			<Crafting>7</Crafting>
-		</skillRequirements>
 		<apparel>
 			<scoreOffset>3</scoreOffset>
 			<bodyPartGroups>
@@ -164,6 +164,9 @@
 			<recipeUsers Inherit="false">
 				<li>TiberiumWorkbench</li>
 			</recipeUsers>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
 		</recipeMaker>
 		<thingCategories>
 			<li>TRHelmetsETC</li>
@@ -186,9 +189,6 @@
 			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
 		</equippedStatOffsets>
-		<skillRequirements>
-			<Crafting>5</Crafting>
-		</skillRequirements>
 		<apparel>
 			<scoreOffset>3</scoreOffset>
 			<bodyPartGroups>

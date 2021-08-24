@@ -44,7 +44,7 @@ namespace TiberiumRim
             }
 
             float alpha = Alpha;
-            /*if (shouldMove && AgeSecs >= def.mote.fadeInTime)
+            /*if (shouldMove && AgeSecs >= props.mote.fadeInTime)
                 end2 = Vector3.Lerp(puller, finalEnd, alpha);
             */
             Vector3 diff = end - start;

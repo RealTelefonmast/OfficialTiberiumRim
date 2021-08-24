@@ -34,6 +34,8 @@ namespace TiberiumRim
     {
         private Comp_TiberiumNetworkStructure Refinery => Harvester.RefineryComp;
 
+        private NetworkComponent RefineryComp => Refinery[TiberiumDefOf.TiberiumNetwork];
+
         private Harvester Harvester => (Harvester)pawn;
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
@@ -54,11 +56,11 @@ namespace TiberiumRim
             };
             unload.tickAction = delegate
             {
-                if (!Refinery?.Container.CapacityFull ?? false)
+                if (!RefineryComp?.Container.CapacityFull ?? false)
                 {
                     if (Harvester.Container.StoredPercent > 0f)
                     {
-                        Harvester.Container.TryTransferTo(Refinery.Container, Harvester.Container.MainValueType, Harvester.kindDef.unloadValue);
+                        Harvester.Container.TryTransferTo(RefineryComp.Container, Harvester.Container.MainValueType, Harvester.kindDef.unloadValue);
                     }
                     else
                     {

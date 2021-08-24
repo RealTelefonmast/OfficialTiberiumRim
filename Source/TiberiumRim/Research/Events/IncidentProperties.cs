@@ -70,7 +70,7 @@ namespace TiberiumRim
         {
             get
             {
-                return null; //Find.FactionManager.AllFactions.First(f => f.def == raidSettings.faction);
+                return null; //Find.FactionManager.AllFactions.First(f => f.props == raidSettings.faction);
             }
         }
 

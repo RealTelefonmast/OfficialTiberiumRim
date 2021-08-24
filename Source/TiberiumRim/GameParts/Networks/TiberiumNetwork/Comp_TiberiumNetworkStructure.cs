@@ -9,7 +9,9 @@ namespace TiberiumRim
 {
     public class Comp_TiberiumNetworkStructure : Comp_NetworkStructure
     {
-        public TiberiumContainer TiberiumContainer => (TiberiumContainer)Container;
+        public NetworkComponent TiberiumComp => this[TiberiumDefOf.TiberiumNetwork];
+        public NetworkContainer Container => TiberiumComp.Container;
+        public bool HasConnection => TiberiumComp.HasConnection;
 
         public override void PostExposeData()
         {
@@ -38,7 +40,6 @@ namespace TiberiumRim
             if (DebugSettings.godMode)
             {
                 sb.AppendLine("Storage Mode: " + Container.AcceptedTypes.ToStringSafeEnumerable());
-                sb.AppendLine(Network.ToString());
             }
 
             return sb.ToString();

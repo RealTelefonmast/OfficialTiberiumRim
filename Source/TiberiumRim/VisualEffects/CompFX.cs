@@ -240,6 +240,15 @@ namespace TiberiumRim
             return IParent.DrawBools[index];
         }
 
+        public float? AnimationSpeed(int index)
+        {
+            if (IParent == null || IParent.AnimationSpeeds == null || IParent.AnimationSpeeds.Count() < (index + 1))
+            {
+                return 1f;
+            }
+            return IParent.AnimationSpeeds[index];
+        }
+
         public float OpacityFloat(int index)
         {
             if (IParent == null || IParent.OpacityFloats.Count() < (index + 1))

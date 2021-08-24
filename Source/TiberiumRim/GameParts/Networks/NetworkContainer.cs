@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -11,28 +12,31 @@ namespace TiberiumRim
     public class NetworkContainer : IExposable
     {
         private NetworkContainerSet parentSet;
-        private Type valueType;
 
+        //Container Props
+        private ContainerProps props;
+
+        //Container Data
         private IContainerHolder parentHolder;
-        private float totalCapacity;
-        private float totalStorageCache;
-        private List<Enum> storedTypeCache;
-        private List<Enum> acceptedTypes;
+        private float totalStoredCache;
+        private HashSet<NetworkValueDef> storedTypeCache;
+        private List<NetworkValueDef> acceptedTypes;
 
-        private Dictionary<Enum, bool> TypeFilter = new Dictionary<Enum, bool>();
-        private Dictionary<Enum, float> StoredValues = new Dictionary<Enum, float>();
+        private Dictionary<NetworkValueDef, bool> TypeFilter = new();
+        private Dictionary<NetworkValueDef, float> StoredValues = new();
 
+        public string Title => parentHolder.ContainerTitle;
 
-        public float TotalCapacity => totalCapacity;
-        public float TotalStorage => totalStorageCache;
-        public float StoredPercent => totalStorageCache / totalCapacity;
+        public float Capacity => props.maxStorage;
+        public float TotalStored => totalStoredCache;
+        public float StoredPercent => TotalStored / Capacity;
 
-        public bool HasStorage => TotalStorage > 0;
-        public bool Empty => !StoredValues.Any() || TotalStorage <= 0;
-        public bool CapacityFull => TotalStorage >= totalCapacity;
-        public bool ContainsForbiddenType => Enumerable.Any(AllStoredTypes, t => !AcceptsType(t));
+        public bool HasValueStored => TotalStored > 0;
+        public bool Empty => !StoredValues.Any() || TotalStored <= 0;
+        public bool CapacityFull => TotalStored >= Capacity;
+        public bool ContainsForbiddenType => AllStoredTypes.Any(t => !AcceptsType(t));
 
-        public Enum MainValueType
+        public NetworkValueDef MainValueType
         {
             get
             {
@@ -40,12 +44,16 @@ namespace TiberiumRim
             }
         }
 
-        public List<Enum> AllStoredTypes => storedTypeCache;
-        public Dictionary<Enum, float> StoredValuesByType => StoredValues;
+        public HashSet<NetworkValueDef> AllStoredTypes
+        {
+            get { return storedTypeCache ??= new HashSet<NetworkValueDef>(); }
+        }
+
+        public Dictionary<NetworkValueDef, float> StoredValuesByType => StoredValues;
 
         public virtual Color Color => Color.white;
 
-        public List<Enum> AcceptedTypes
+        public List<NetworkValueDef> AcceptedTypes
         {
             get => acceptedTypes;
             set => acceptedTypes = value;
@@ -55,46 +63,95 @@ namespace TiberiumRim
 
         public NetworkContainer() { }
 
-        public NetworkContainer(IContainerHolder parent, Type containedType)
+        public NetworkContainer(IContainerHolder parent)
         {
             this.parentHolder = parent;
-            this.valueType = containedType;
         }
 
-        public NetworkContainer(IContainerHolder parent, float capacity, Type containedType)
+        public NetworkContainer(IContainerHolder parent, ContainerProps props)
         {
             this.parentHolder = parent;
-            this.totalCapacity = capacity;
-            this.valueType = containedType;
+            this.props = props;
         }
 
-        public NetworkContainer(IContainerHolder parent, float capacity, List<Enum> acceptedTypes, Type containedType)
+        public NetworkContainer(IContainerHolder parent, ContainerProps props, List<NetworkValueDef> acceptedTypes)
         {
             this.parentHolder = parent;
-            this.totalCapacity = capacity;
+            this.props = props;
             if (!acceptedTypes.NullOrEmpty())
+            {
                 AcceptedTypes = acceptedTypes;
-            this.valueType = containedType;
+                foreach (var type in AcceptedTypes)
+                {
+                    TypeFilter.Add(type, true);
+                }
+            }
+            else
+            {
+                Log.Warning($"Created NetworkContainer for {parent.Thing} without any allowed types!");
+            }
+
+            Log.Message($"Creating new container for {parentHolder.Thing} with capacity {Capacity} | acceptedTypes: {this.AcceptedTypes.ToStringSafeEnumerable()}");
         }
 
-        public NetworkContainer Copy(Thing thing)
+        public NetworkContainer Copy(IContainerHolder newHolder)
         {
-            NetworkContainer newContainer = new NetworkContainer();
-            newContainer.totalCapacity = totalCapacity;
-            newContainer.AcceptedTypes = AcceptedTypes.ListFullCopy();
+            NetworkContainer newContainer = new NetworkContainer(newHolder, props, AcceptedTypes.ListFullCopy());
+            newContainer.totalStoredCache = TotalStored;
+            newContainer.AllStoredTypes.AddRange(AllStoredTypes);
+
+            newContainer.StoredValues = StoredValues.Copy();
             newContainer.TypeFilter = TypeFilter.Copy();
-            foreach (Enum type in AllStoredTypes)
-            {
-                newContainer.TryAddValue(type, StoredValues[type], out float e);
-            }
             return newContainer;
+        }
+
+        public void Parent_Destroyed(DestroyMode mode, Map previousMap)
+        {
+            if (TotalStored <= 0 || mode == DestroyMode.Vanish) return;
+            if ((mode is DestroyMode.Deconstruct or DestroyMode.Refund) && props.leaveContainer)
+            {
+                PortableContainer container = (PortableContainer)ThingMaker.MakeThing(TiberiumDefOf.PortableContainer);
+                container.PostSetup(this, props);
+                GenSpawn.Spawn(container, Parent.Thing.Position, previousMap);
+            }
+            else if (props.doExplosion)
+            {
+                if (TotalStored > 0)
+                {
+                    var spawnDef = TRUtils.CrystalDefFromType(MainValueType, out bool isGas);
+                    float radius = props.explosionRadius * StoredPercent;
+                    int damage = (int)(10 * StoredPercent);
+                    //TODO: Add Tiberium damagedef
+                    GenExplosion.DoExplosion(Parent.Thing.Position, previousMap, radius, DamageDefOf.Bomb, Parent.Thing, damage, 5, null, null, null, null, spawnDef, 0.18f);
+                }
+            }
+            else if(props.dropContents)
+            {
+                int i = 0;
+                List<Thing> drops = this.PotentialItemDrops();
+                Predicate<IntVec3> pred = c => c.InBounds(previousMap) && c.GetEdifice(previousMap) == null;
+                Action<IntVec3> action = delegate (IntVec3 c)
+                {
+                    Thing drop = drops.ElementAtOrDefault(i);
+                    if (drops != null)
+                    {
+                        GenSpawn.Spawn(drop, c, previousMap);
+                        drops.Remove(drop);
+                    }
+                    i++;
+                };
+                TiberiumFloodInfo flood = new TiberiumFloodInfo(previousMap, pred, action);
+                flood.TryMakeFlood(out _, Parent.Thing.OccupiedRect(), drops.Count);
+            }
+
+            //
+            Clear();
         }
 
         public virtual void ExposeData()
         {
             Scribe_Collections.Look(ref StoredValues, "StoredTiberium");
-            Scribe_Collections.Look(ref acceptedTypes, "acceptedTypes");
-            Scribe_Values.Look(ref totalCapacity, "capacity");
+            Scribe_Collections.Look(ref acceptedTypes, "acceptedTypes", LookMode.Value);
         }
 
         //Virtual Functions
@@ -109,14 +166,19 @@ namespace TiberiumRim
             parentHolder?.Notify_ContainerFull();
         }
 
-        public void Notify_AddedValue(Enum valueType, float value)
+        public void Notify_AddedValue(NetworkValueDef valueType, float value)
         {
-            parentSet.Notify_AddedValue(valueType, value);
+            totalStoredCache += value;
+            parentSet?.Notify_AddedValue(valueType, value);
+            AllStoredTypes.Add(valueType);
         }
 
-        public void Notify_RemovedValue(Enum valueType, float value)
+        public void Notify_RemovedValue(NetworkValueDef valueType, float value)
         {
-            parentSet.Notify_RemovedValue(valueType, value);
+            totalStoredCache -= value;
+            parentSet?.Notify_RemovedValue(valueType, value);
+            if (AllStoredTypes.Contains(valueType) && ValueForType(valueType) <= 0)
+                AllStoredTypes.Remove(valueType);
         }
 
         public void Notify_SetParentSet(NetworkContainerSet parentSet)
@@ -126,34 +188,39 @@ namespace TiberiumRim
 
         public void Clear()
         {
-            StoredValues.RemoveAll(s => s.Value > 0);
+            var keys = StoredValues.Keys;
+            for (int i = StoredValues.Count - 1; i >= 1; i--)
+            {
+                var keyValuePair = StoredValues.ElementAt(i);
+                TryRemoveValue(keyValuePair.Key, keyValuePair.Value, out _);
+            }
         }
 
         public void FillWith(float wantedValue)
         {
             float val = wantedValue / AcceptedTypes.Count;
-            foreach (Enum type in AcceptedTypes)
+            foreach (NetworkValueDef type in AcceptedTypes)
             {
                 TryAddValue(type, val, out float e);
             }
         }
 
         //Transfer Functions
-        public bool AcceptsType(Enum valueType)
+        public bool AcceptsType(NetworkValueDef valueType)
         {
-            return AcceptedTypes.Contains(valueType);
+            return TypeFilter.TryGetValue(valueType, out bool filterBool) && filterBool;
         }
 
         public bool CanFullyTransferTo(NetworkContainer other, float value)
         {
-            return other.TotalStorage + value <= other.TotalCapacity;
+            return other.TotalStored + value <= other.Capacity;
         }
 
         // Value Functions
-        public bool TryAddValue(Enum valueType, float wantedValue, out float actualValue)
+        public bool TryAddValue(NetworkValueDef valueType, float wantedValue, out float actualValue)
         {
             //If we add more than we can contain, we have an excess weight
-            var excessValue = Mathf.Clamp((TotalStorage + wantedValue) - totalCapacity, 0, float.MaxValue);
+            var excessValue = Mathf.Clamp((TotalStored + wantedValue) - Capacity, 0, float.MaxValue);
             //The actual added weight is the wanted weight minus the excess
             actualValue = wantedValue - excessValue;
 
@@ -168,7 +235,7 @@ namespace TiberiumRim
                 return false;
 
             //If the weight type is already stored, add to it, if not, make a new entry
-            if (StoredValues.TryGetValue(valueType, out float value))
+            if (StoredValues.ContainsKey(valueType))
                 StoredValues[valueType] += actualValue;
             else
                 StoredValues.Add(valueType, actualValue);
@@ -181,7 +248,7 @@ namespace TiberiumRim
             return true;
         }
 
-        public bool TryRemoveValue(Enum valueType, float wantedValue, out float actualValue)
+        public bool TryRemoveValue(NetworkValueDef valueType, float wantedValue, out float actualValue)
         {
             //Attempt to remove a certain weight from the container
             actualValue = wantedValue;
@@ -207,7 +274,7 @@ namespace TiberiumRim
             return actualValue == wantedValue;
         }
 
-        public bool TryTransferTo(NetworkContainer other, Enum valueType, float value)
+        public bool TryTransferTo(NetworkContainer other, NetworkValueDef valueType, float value)
         {
             //Attempt to transfer a weight to another container
             //Check if anything of that type is stored, check if transfer of weight is possible without loss, try remove the weight from this container
@@ -223,10 +290,10 @@ namespace TiberiumRim
 
         public bool TryConsume(float wantedValue)
         {
-            if (TotalStorage >= wantedValue)
+            if (TotalStored >= wantedValue)
             {
                 float value = wantedValue;
-                foreach (Enum type in AllStoredTypes)
+                foreach (NetworkValueDef type in AllStoredTypes)
                 {
                     if (value > 0f && TryRemoveValue(type, value, out float leftOver))
                     {
@@ -238,7 +305,7 @@ namespace TiberiumRim
             return false;
         }
 
-        public bool TryConsume(Enum valueType, float wantedValue)
+        public bool TryConsume(NetworkValueDef valueType, float wantedValue)
         {
             if (ValueForType(valueType) >= wantedValue)
             {
@@ -248,10 +315,10 @@ namespace TiberiumRim
         }
 
         //Value
-        public float ValueForTypes(List<Enum> types)
+        public float ValueForTypes(List<NetworkValueDef> types)
         {
             float value = 0;
-            foreach (Enum type in types)
+            foreach (NetworkValueDef type in types)
             {
                 if (StoredValues.ContainsKey(type))
                 {
@@ -261,7 +328,7 @@ namespace TiberiumRim
             return value;
         }
 
-        public float ValueForType(Enum valueType)
+        public float ValueForType(NetworkValueDef valueType)
         {
             if (StoredValues.ContainsKey(valueType))
             {
@@ -270,7 +337,7 @@ namespace TiberiumRim
             return 0;
         }
 
-        public bool PotentialCapacityFull(Enum valueType, float potentialVal, out bool overfilled)
+        public bool PotentialCapacityFull(NetworkValueDef valueType, float potentialVal, out bool overfilled)
         {
             float val = potentialVal;
             foreach (var type2 in AllStoredTypes)
@@ -280,14 +347,62 @@ namespace TiberiumRim
                     val += StoredValues[type2];
                 }
             }
-            overfilled = val > TotalCapacity;
-            return val >= TotalCapacity;
+            overfilled = val > Capacity;
+            return val >= Capacity;
         }
 
         //
         public virtual IEnumerable<Gizmo> GetGizmos()
         {
-            yield break;
+            if (Capacity <= 0) yield break;
+
+            
+            if (Find.Selector.NumSelected == 1 && Find.Selector.IsSelected(Parent.Thing))
+            {
+                yield return new Gizmo_NetworkStorage
+                {
+                    container = this
+                };
+            }
+
+            /*
+            if (DebugSettings.godMode)
+            {
+                yield return new Command_Action
+                {
+                    defaultLabel = $"DEBUG: Container Options {Props.maxStorage}",
+                    icon = TiberiumContent.ContainMode_TripleSwitch,
+                    action = delegate
+                    {
+                        List<FloatMenuOption> list = new List<FloatMenuOption>();
+                        list.Add(new FloatMenuOption("Add ALL", delegate
+                        {
+                            foreach (var type in AcceptedTypes)
+                            {
+                                TryAddValue(type, 500, out _);
+                            }
+                        }));
+                        list.Add(new FloatMenuOption("Remove ALL", delegate
+                        {
+                            foreach (var type in AcceptedTypes)
+                            {
+                                TryRemoveValue(type, 500, out _);
+                            }
+                        }));
+                        foreach (var type in AcceptedTypes)
+                        {
+                            list.Add(new FloatMenuOption($"Add {type}", delegate
+                            {
+                                TryAddValue(type, 500, out var _);
+                            }));
+                        }
+                        FloatMenu menu = new FloatMenu(list, $"Add NetworkValue", true);
+                        menu.vanishIfMouseDistant = true;
+                        Find.WindowStack.Add(menu);
+                    }
+                };
+            }
+            */
         }
     }
 }

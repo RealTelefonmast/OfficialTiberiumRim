@@ -181,7 +181,7 @@ namespace TiberiumRim
 
         public void RegisterHub(Building_BeamHub hub, int directionTo)
         {
-            parentHubDef ??= hub.def;
+            parentHubDef ??= hub.props;
             connectingHubs[Opposite(directionTo)] ??= hub;
         }
 

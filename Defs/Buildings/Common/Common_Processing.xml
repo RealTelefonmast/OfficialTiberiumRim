@@ -1,8 +1,56 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+	<TiberiumRim.NetworkDef>
+		<defName>TiberiumNetwork</defName>
+		<containerLabel>Tiberium Storage</containerLabel>
+		<controllerDef>TiberiumNetworkController</controllerDef>
+		<transmitter>TiberiumPipe</transmitter>
+		<transmitterGraphic>
+			<texPath>Buildings/Common/Network/TNW_PipeAtlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</transmitterGraphic>
+		<overlayGraphic>
+			<texPath>Buildings/Common/Network/TNW_PipeOverlayAtlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MetaOverlay</shaderType>
+			<color>(155, 255, 0)</color>
+		</overlayGraphic>
+	</TiberiumRim.NetworkDef>
+	
+	<TiberiumRim.NetworkValueDef>
+		<defName>TibGreen</defName>
+		<label>green</label>
+		<valueColor>(111,200,4)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+	<TiberiumRim.NetworkValueDef>
+		<defName>TibBlue</defName>
+		<label>blue</label>
+		<valueColor>(8,142,208)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+	<TiberiumRim.NetworkValueDef>
+		<defName>TibRed</defName>
+		<label>red</label>
+		<valueColor>(208,8,42)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+	<TiberiumRim.NetworkValueDef>
+		<defName>TibSludge</defName>
+		<label>sludge</label>
+		<valueColor>(160,255,0)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+	<TiberiumRim.NetworkValueDef>
+		<defName>TibGas</defName>
+		<label>gas</label>
+		<valueColor>(215,255,165)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
-		<defName>NetworkController</defName>
+		<defName>TiberiumNetworkController</defName>
 		<label>Tiberium Network Controller</label>
 		<description>This structure is the main part of any Tiberium network, it acts as a pump for the entire networks and ensures flow while powered.</description>
 		<thingCategories Inherit="false" />
@@ -34,9 +82,16 @@
 		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_NetworkStructure">
-				<networkType>TiberiumProcessing</networkType>
-				<networkRole>Transmitter</networkRole>
-				<isMainNetworkStructure>true</isMainNetworkStructure>
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Controller</li>
+						</networkRoles>
+					</li>
+				</networks>
+				<connectionPattern>#++#|++++|++++|#++#</connectionPattern>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -83,98 +138,28 @@
 		</placeWorkers>
 	</TiberiumRim.TRThingDef>
 	
-	<!--
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
-		<defName>NetworkNode</defName>
-		<label>Node</label>
-		<description>.</description>
-		<thingCategories Inherit="false" />
-		<altitudeLayer>Building</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<factionDesignation>Common</factionDesignation>
-		<TRCategory>Processing</TRCategory>
-		<hidden>true</hidden>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<graphicData>
-			<texPath>Buildings/Common/Network/Node/Node</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(2.25,4.5)</drawSize>
-		</graphicData>
-		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<WorkToBuild>1000</WorkToBuild>
-			<Flammability>1.0</Flammability>
-			<Beauty>-5</Beauty>
-		</statBases>
-		<size>(2,4)</size>
-		<costList>
-			<Steel>100</Steel>
-			<ComponentIndustrial>5</ComponentIndustrial>
-		</costList>
-		<requisites>
-			<tiberiumResearchTasks>
-				<li>TiberiumRefining_T2</li>
-			</tiberiumResearchTasks>
-		</requisites>
-		<comps>
-			<li Class="TiberiumRim.CompProperties_TNW">
-				<compClass>TiberiumRim.CompTNW_Node</compClass>
-			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
-				<overlays>
-					<li>
-						<data>
-							<texPath>Buildings/Common/Network/Node/Overlay1</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>MoteGlow</shaderType>
-							<drawSize>(2.25,4.5)</drawSize>
-						</data>
-						<mode>Dynamic</mode>
-						<needsPower>false</needsPower>
-					</li>
-					<li>
-						<data>
-							<texPath>Buildings/Common/Network/Node/Overlay2</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>MoteGlow</shaderType>
-							<drawSize>(2.25,4.5)</drawSize>
-						</data>
-						<needsPower>true</needsPower>
-					</li>
-				</overlays>
-			</li>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>100</basePowerConsumption>
-			</li>
-		</comps>
-		<rotatable>true</rotatable>
-		<tickerType>Never</tickerType>
-		<castEdgeShadows>false</castEdgeShadows>
-		<staticSunShadowHeight>0</staticSunShadowHeight>	
-		<fillPercent>1</fillPercent>			
-		<surfaceType>Item</surfaceType>
-	</TiberiumRim.TRThingDef>
-	
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>TiberiumPipe</defName>
 		<label>tiberium pipe</label>
 		<description>This structure connects Tiberium processing structures on the Tiberium Network.</description>
-		<thingClass>TiberiumRim.TNW_Pipe</thingClass>
+		<!--<thingClass></thingClass>-->
 		<factionDesignation>Common</factionDesignation>
 		<TRCategory>Processing</TRCategory>
 		<hidden>true</hidden>
 		<costList>
 			<Steel>5</Steel>
 		</costList>
-		<drawerType>MapMeshOnly</drawerType>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<uiIconPath>Buildings/Icons/Connector_Icon</uiIconPath>
 		<graphicData>
-			<texPath>Buildings/Common/Network/TNW_PipeAtlas</texPath>
+			<texPath>Blank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<!--
 			<linkType>Basic</linkType>
 		    <linkFlags>
 				<li>Custom7</li>
 		    </linkFlags>
+			-->
 		</graphicData>
 		<building>
 			<ai_chillDestination>false</ai_chillDestination>
@@ -185,13 +170,20 @@
 			</blueprintGraphicData>
 		</building>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNW">
-				<compClass>TiberiumRim.CompTNW_Pipe</compClass>
+			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<networkRoles>
+							<li>Transmitter</li>
+						</networkRoles>
+					</li>
+				</networks>
+				<connectionPattern>+</connectionPattern>
 			</li>
 		</comps>
 		<drawGUIOverlay>True</drawGUIOverlay>
 		<placingDraggableDimensions>1</placingDraggableDimensions>
-		<uiIconPath>Buildings/Icons/Connector_Icon</uiIconPath>
 		<altitudeLayer>FloorEmplacement</altitudeLayer>
 		<passability>Standable</passability>
 		<pathCost>0</pathCost>
@@ -213,6 +205,97 @@
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_Pipe</li>
 		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>TiberiumSilo</defName>
+		<label>tiberium silo</label>
+		<description>Stores Tiberium and distributes it to other Tiberium structures when necessary.</description>
+		<TRCategory>Processing</TRCategory>
+		<size>(3,3)</size>
+		<costList>
+			<Steel>100</Steel>
+		</costList>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Network/Silo/Silo</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<shadowData>
+				<volume>(1.9, 1, 1.68)</volume>
+				<offset>(-0.03,0,-0.1)</offset>
+			</shadowData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<fillPercent>1</fillPercent>
+		<tickerType>Normal</tickerType>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>2500</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-25</Beauty>
+		</statBases>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T2</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<storeEvenly>false</storeEvenly>					
+						<containerProps>
+							<maxStorage>2500</maxStorage>
+							<dropContents>true</dropContents>
+							<leaveContainer>true</leaveContainer>
+						</containerProps>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Storage</li>
+						</networkRoles>
+						<allowedValues>
+							<li>TibGreen</li>
+							<li>TibBlue</li>
+							<li>TibRed</li>			
+							<li>TibSludge</li>					
+						</allowedValues>
+					</li>
+				</networks>
+				<connectionPattern>#+#|+++|#+#</connectionPattern>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Network/Silo/Silo_Filled</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Network/Silo/SiloOL</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(3,3)</drawSize>
+						</data>
+					</li>
+				</overlays>
+			</li>
+		</comps>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<constructEffect>ConstructMetal</constructEffect>
+		<canOverlapZones>false</canOverlapZones>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
@@ -257,13 +340,26 @@
 			</tiberiumResearch>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNW">
-				<compClass>TiberiumRim.CompTNW_Silo</compClass>
-				<maxStorage>10000</maxStorage>
-				<supportedTypes>
-					<li>Gas</li>
-				</supportedTypes>
-				<tnwbMode>Storage</tnwbMode>
+			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<storeEvenly>false</storeEvenly>					
+						<containerProps>
+							<maxStorage>10000</maxStorage>
+							<dropContents>false</dropContents>
+							<leaveContainer>true</leaveContainer>
+						</containerProps>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Storage</li>
+						</networkRoles>
+						<allowedValues>
+							<li>TibGas</li>			
+						</allowedValues>
+					</li>
+				</networks>
+				<connectionPattern>#++#|++++|++++|#++#</connectionPattern>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -291,77 +387,17 @@
 		<canOverlapZones>false</canOverlapZones>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
-		<defName>TiberiumSilo</defName>
-		<label>tiberium silo</label>
-		<description>Stores Tiberium and distributes it to other Tiberium structures when necessary.</description>
-		<TRCategory>Processing</TRCategory>
-		<size>(3,3)</size>
-		<costList>
-			<Steel>100</Steel>
-		</costList>
-		<drawerType>MapMeshAndRealTime</drawerType>
+	<ThingDef>
+		<defName>RefineryCell</defName>
+		<label>refineryCell</label>
+		<thingClass>Thing</thingClass>
 		<graphicData>
-			<texPath>Buildings/Common/Network/Silo/Silo</texPath>
+			<texPath>Buildings/Icons/FlowDirection</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(3,3)</drawSize>
-			<shadowData>
-				<volume>(1.9, 1, 1.68)</volume>
-				<offset>(-0.03,0,-0.1)</offset>
-			</shadowData>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(1.45,1.45)</drawSize>
 		</graphicData>
-		<rotatable>false</rotatable>
-		<altitudeLayer>Building</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<pathCost>70</pathCost>
-		<blockWind>true</blockWind>
-		<castEdgeShadows>false</castEdgeShadows>
-		<staticSunShadowHeight>0</staticSunShadowHeight>
-		<fillPercent>1</fillPercent>
-		<tickerType>Normal</tickerType>
-		<statBases>
-			<MaxHitPoints>350</MaxHitPoints>
-			<WorkToBuild>2500</WorkToBuild>
-			<Mass>20</Mass>
-			<Flammability>1.0</Flammability>
-			<Beauty>-25</Beauty>
-		</statBases>
-		<requisites>
-			<tiberiumResearchTasks>
-				<li>TiberiumRefining_T2</li>
-			</tiberiumResearchTasks>
-		</requisites>
-		<comps>
-			<li Class="TiberiumRim.CompProperties_TNW">
-				<compClass>TiberiumRim.CompTNW_Silo</compClass>
-				<maxStorage>2500</maxStorage>
-				<tnwbMode>Storage</tnwbMode>
-			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
-				<overlays>
-					<li>
-						<data>
-							<texPath>Buildings/Common/Network/Silo/Silo_Filled</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>MoteGlow</shaderType>
-							<drawSize>(3,3)</drawSize>
-						</data>
-						<mode>Dynamic</mode>
-					</li>
-					<li>
-						<data>
-							<texPath>Buildings/Common/Network/Silo/SiloOL</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<drawSize>(3,3)</drawSize>
-						</data>
-					</li>
-				</overlays>
-			</li>
-		</comps>
-		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<constructEffect>ConstructMetal</constructEffect>
-		<canOverlapZones>false</canOverlapZones>
-	</TiberiumRim.TRThingDef>
+	</ThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="RefineryBase_TR">
 		<defName>TiberiumRefinery</defName>
@@ -395,9 +431,29 @@
 				</mechRecipes>
 			</li>
 			<li Class="TiberiumRim.CompProperties_TNSRefinery">
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<storeEvenly>false</storeEvenly>					
+						<containerProps>
+							<maxStorage>1500</maxStorage>
+							<dropContents>false</dropContents>
+							<leaveContainer>true</leaveContainer>
+						</containerProps>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Producer</li>
+						</networkRoles>
+						<allowedValues>
+							<li>TibGreen</li>
+							<li>TibBlue</li>
+							<li>TibRed</li>			
+							<li>TibSludge</li>		
+						</allowedValues>
+					</li>
+				</networks>
 				<harvester>Harvester_Common</harvester>
-				<maxStorage>1000</maxStorage>
-				<tnwbMode>Producer</tnwbMode>
+				<connectionPattern>#+#|+++|+#+|+#+</connectionPattern>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -431,22 +487,10 @@
 		<interactionCellIcon>RefineryCell</interactionCellIcon>
 	</TiberiumRim.TRThingDef>
 	
-	<ThingDef>
-		<label>refineryCell</label>
-		<defName>RefineryCell</defName>
-		<thingClass>Thing</thingClass>
-		<graphicData>
-			<texPath>Buildings/Icons/FlowDirection</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>Transparent</shaderType>
-			<drawSize>(1.45,1.45)</drawSize>
-		</graphicData>
-	</ThingDef>
-	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>TiberiumSpike</defName>
 		<label>tiberium spike</label>
-		<thingClass>TiberiumRim.TNW_TiberiumSpike</thingClass>
+		<thingClass>TiberiumRim.Building_TiberiumSpike</thingClass>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Network/TibSpike/TibSpike</texPath>
@@ -489,13 +533,26 @@
 			</tiberiumResearch>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNW">
-				<compClass>TiberiumRim.CompTNW</compClass>
-				<maxStorage>2500</maxStorage>
-				<supportedTypes>
-					<li>Gas</li>
-				</supportedTypes>
-				<tnwbMode>Producer</tnwbMode>
+			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<storeEvenly>false</storeEvenly>					
+						<containerProps>
+							<maxStorage>4000</maxStorage>
+							<dropContents>false</dropContents>
+							<leaveContainer>true</leaveContainer>
+						</containerProps>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Producer</li>
+						</networkRoles>
+						<allowedValues>
+							<li>TibGas</li>	
+						</allowedValues>
+					</li>
+				</networks>
+				<connectionPattern>++++</connectionPattern>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<useParentClass>true</useParentClass>
@@ -574,16 +631,34 @@
 		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_NetworkStructurePowerPlant">
-				<compClass>TiberiumRim.Comp_NetworkStructurePowerPlant</compClass>
-				<maxStorage>750</maxStorage>
-				<supportedTypes>
-					<li>Green</li>
-					<li>Blue</li>
-					<li>Red</li>
-				</supportedTypes>
-			    <tnwbMode>Consumer</tnwbMode>
 				<consumeAmt>500</consumeAmt>
 				<daysPerLoad>3</daysPerLoad>
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<storeEvenly>false</storeEvenly>					
+						<containerProps>
+							<maxStorage>1000</maxStorage>
+							<dropContents>false</dropContents>
+							<leaveContainer>true</leaveContainer>
+						</containerProps>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Consumer</li>
+						</networkRoles>
+						<allowedValues>
+							<li>TibGreen</li>	
+							<li>TibBlue</li>	
+							<li>TibRed</li>	
+						</allowedValues>
+					</li>
+				</networks>
+				<connectionPattern>+++++|+###+|+###+|+###+|+++++</connectionPattern>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>TiberiumRim.Comp_NetworkStructurePowerPlant</compClass>
+				<basePowerConsumption>-3000</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -627,20 +702,120 @@
 				<compClass>CompHeatPusherPowered</compClass>
 				<heatPerSecond>12</heatPerSecond>
 			</li>
-			<li Class="CompProperties_Power">
-				<compClass>TiberiumRim.CompPower_Tiberium</compClass>
-				<basePowerConsumption>-3000</basePowerConsumption>
-				<transmitsPower>true</transmitsPower>
-			</li>
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 	</TiberiumRim.TRThingDef>
-	-->
-	<!--
 	
+	
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>TiberiumExtractor</defName>
+		<label>tiberium extractor</label>
+		<description>tbd</description>
+		<TRCategory>Processing</TRCategory>
+		<size>(6,6)</size>
+		<costList>
+			<Steel>100</Steel>
+		</costList>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Network/Extractor/Extractor_main</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(6,6)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<fillPercent>1</fillPercent>
+		<tickerType>Normal</tickerType>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>2500</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-25</Beauty>
+		</statBases>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T2</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+				<compClass>TiberiumRim.CompTNS_Centrifuge</compClass>
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<storeEvenly>false</storeEvenly>					
+						<containerProps>
+							<maxStorage>1000</maxStorage>
+							<dropContents>true</dropContents>
+							<leaveContainer>true</leaveContainer>
+						</containerProps>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Storage</li>
+						</networkRoles>
+						<allowedValues>
+							<li>TibGreen</li>	
+							<li>TibBlue</li>	
+							<li>TibRed</li>	
+							<li>TibSludge</li>	
+							<li>TibGas</li>	
+						</allowedValues>
+					</li>
+				</networks>
+				<connectionPattern>++++++|+####+|+####+|+####+|+####+|++++++</connectionPattern>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li><skip>true</skip></li>
+					<li><skip>true</skip></li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Network/Extractor/Extractor_fan</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<color>(0.8,0.8,0.8)</color>
+							<drawSize>(5,5)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+						<rotationSpeed>75</rotationSpeed>
+						<needsPower>false</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Network/Extractor/Extractor_fan</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(6,6)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+						<rotationSpeed>100</rotationSpeed>
+						<pivotPixelOffset>(0,0,7)</pivotPixelOffset>
+						<needsPower>false</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Network/Extractor/Extractor_cover</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(6,6)</drawSize>
+						</data>
+						<needsPower>false</needsPower>
+					</li>
+				</overlays>
+			</li>
+		</comps>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<constructEffect>ConstructMetal</constructEffect>
+		<canOverlapZones>false</canOverlapZones>
+	</TiberiumRim.TRThingDef>
+	
+	<!---->
 	<TiberiumRim.TRThingDef ParentName="BenchBase_TR">
 		<defName>TiberiumWorkbench</defName>
 		<label>tiberium workbench</label>
@@ -700,10 +875,29 @@
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>125</basePowerConsumption>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TNW">
-				<compClass>TiberiumRim.CompTNW_WorkBench</compClass>
-				<maxStorage>1000</maxStorage>
-				<tnwbMode>Storage</tnwbMode>
+			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<storeEvenly>false</storeEvenly>					
+						<containerProps>
+							<maxStorage>1000</maxStorage>
+							<dropContents>true</dropContents>
+							<leaveContainer>true</leaveContainer>
+						</containerProps>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Requester</li>
+						</networkRoles>
+						<allowedValues>
+							<li>TibGreen</li>	
+							<li>TibBlue</li>	
+							<li>TibRed</li>	
+							<li>TibSludge</li>	
+						</allowedValues>
+					</li>
+				</networks>
+				<connectionPattern>#++#|++++|++++</connectionPattern>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -760,9 +954,30 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNW">
-				<compClass>TiberiumRim.CompTNW_Crafter</compClass>
-				<tnwbMode>Consumer</tnwbMode>
+			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+				<compClass>TiberiumRim.Comp_NetworkStructureCrafter</compClass>
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<storeEvenly>false</storeEvenly>					
+						<containerProps>
+							<maxStorage>1000</maxStorage>
+							<dropContents>true</dropContents>
+							<leaveContainer>true</leaveContainer>
+						</containerProps>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Requester</li>
+						</networkRoles>
+						<allowedValues>
+							<li>TibGreen</li>	
+							<li>TibBlue</li>	
+							<li>TibRed</li>	
+							<li>TibSludge</li>	
+						</allowedValues>
+					</li>
+				</networks>
+				<connectionPattern>+++|+#+|+#+</connectionPattern>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -815,6 +1030,7 @@
 			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
+		<!--
 		<recipes>
 			<li>ExtractSteel</li>
 			<li>ExtractPlasteel</li>
@@ -822,6 +1038,7 @@
 			<li>ExtractUranium</li>
 			<li>BurnSludge</li>
 		</recipes>
+		-->
 		<tickerType>Normal</tickerType>
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
@@ -838,5 +1055,79 @@
 		<surfaceType>Item</surfaceType>
 		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
 	</TiberiumRim.TRThingDef>
+	
+	<!--
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>NetworkNode</defName>
+		<label>Node</label>
+		<description>.</description>
+		<thingCategories Inherit="false" />
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Processing</TRCategory>
+		<hidden>true</hidden>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Network/Node/Node</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.25,4.5)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToBuild>1000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-5</Beauty>
+		</statBases>
+		<size>(2,4)</size>
+		<costList>
+			<Steel>100</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T2</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TNW">
+				<compClass>TiberiumRim.CompTNW_Node</compClass>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Network/Node/Overlay1</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,4.5)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+						<needsPower>false</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Network/Node/Overlay2</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,4.5)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>100</basePowerConsumption>
+			</li>
+		</comps>
+		<rotatable>true</rotatable>
+		<tickerType>Never</tickerType>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>	
+		<fillPercent>1</fillPercent>			
+		<surfaceType>Item</surfaceType>
+	</TiberiumRim.TRThingDef>
+	
 	-->
 </Defs>

@@ -115,6 +115,7 @@ namespace TiberiumRim
             }
         }
 
+
         public static float SeverityPerDayFunc(float curSev)
         {
             return Mathf.Lerp(0.21f, 0.84f, SeverityCurve.Evaluate(curSev));
@@ -171,6 +172,7 @@ namespace TiberiumRim
 
             if (CurrentStage != InfectionStage.Crystallized) return;
             if (Part.IsCorePart) return;
+
             WanderToNextPart();
             Crystallize();
         }

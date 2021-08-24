@@ -103,7 +103,7 @@ namespace TiberiumRim
             RegionEntryPredicate entryCondition = (Region from, Region to) => to.Allows(parms, false);
 
             List<TiberiumCrystal> crystals = null;
-            int valueLeft = (int)(harvester.Container.capacity - harvester.Container.TotalStorage);
+            int valueLeft = (int)(harvester.Container.capacity - harvester.Container.TotalStored);
             RegionProcessor processor = delegate (Region region)
             {
                 if ((!region.IsDoorway && !region.Allows(parms, true)) || region.IsForbiddenEntirely(parms.pawn))

@@ -37,7 +37,7 @@ namespace TiberiumRim
                 return PawnsFinder
                     .AllMapsCaravansAndTravelingTransportPods_Alive_FreeColonistsAndPrisoners_NoCryptosleep.Where(p =>
                         Enumerable.Any(p.health.hediffSet.hediffs,
-                            diff => diff is Hediff_Crystallizing || diff.def == TRHediffDefOf.TiberiumExposure));
+                            diff => diff is Hediff_Crystallizing || diff.props == TRHediffDefOf.TiberiumExposure));
             }
         }
         */

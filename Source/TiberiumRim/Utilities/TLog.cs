@@ -6,12 +6,17 @@ namespace TiberiumRim
     {
         public static void Error(string msg)
         {
-            Log.Error($"[TiberiumRim] {msg}", true);
+            Log.Error($"[TiberiumRim] {msg}");
         }
 
         public static void Warning(string msg)
         {
             Log.Warning($"[TiberiumRim] {msg}");
+        }
+
+        public static void Message(string msg)
+        {
+            Log.Message(msg);
         }
     }
 }

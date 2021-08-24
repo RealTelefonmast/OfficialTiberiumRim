@@ -29,8 +29,9 @@ namespace TiberiumRim
             if(t is ThingWithComps thing && !thing.IsPoweredOn()) return false;
 
             var compTNW = t.TryGetComp<Comp_NetworkStructureCrafter>();
+
             if (compTNW == null) return false;
-            if (!compTNW.Network.IsWorking) return false;
+            if (!compTNW[TiberiumDefOf.TiberiumNetwork].Network.IsWorking) return false;
             if (compTNW.billStack.CurrentBill != null)
             {
                 if (!compTNW.billStack.CurrentBill.ShouldDoNow()) return false;

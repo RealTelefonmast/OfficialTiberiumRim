@@ -2,6 +2,8 @@
 
 namespace TiberiumRim
 {
+    //TODO: Base it on fleck
+    /*
     public class BlossomSpore : Particle
     {
         public TiberiumProducerDef blossom;
@@ -24,4 +26,5 @@ namespace TiberiumRim
             Log.Message("Spawned Blossom thing");
         }
     }
+    */
 }

@@ -155,7 +155,7 @@
 				<tiberiumCostPerShot>
 					<costSet>
 						<specificCosts>
-							<TiberiumValueType.Sludge>6</TiberiumValueType.Sludge>
+							<TibSludge>6</TibSludge>
 						</specificCosts>
 					</costSet>
 					<useDirectStorage>true</useDirectStorage>

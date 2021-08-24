@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using RimWorld;
 using UnityEngine;
@@ -27,16 +28,26 @@ namespace TiberiumRim
     {
         public float unloadValue = 0.125f;
         public float harvestValue = 0.125f;
-        public int maxStorage;
-        public float explosionRadius = 7;
         public ThingDef wreckDef;
-        public List<Enum> acceptedTypes = new List<Enum>();
+        public ContainerProps containerProps;
+        public List<NetworkValueDef> allowedValues;
+
+        /*
+        public List<Enum> AllowedTypes
+        {
+            get
+            {
+                if (allowedTypes.NullOrEmpty()) return null;
+                return enumList ??= allowedTypes.Select(t => t.valueType).ToList();
+            }
+        }
+        */
     }
 
     public class Harvester : MechanicalPawn, IContainerHolder
     {
         public new HarvesterKindDef kindDef => (HarvesterKindDef) base.kindDef;
-        protected TiberiumContainer container;
+        protected NetworkContainer container;
 
         //Data
         private IntVec3 lastKnownPos;
@@ -97,12 +108,12 @@ namespace TiberiumRim
         private bool HasAvailableTiberium => HarvestMode == HarvestMode.Moss ? TiberiumManager.MossAvailable : TiberiumManager.TiberiumAvailable;
 
         //Priority Bools
-        private bool ShouldIdle    => Container.Empty && (!HasAvailableTiberium || (Container.TotalStorage > 0 && RefineryComp.Container.CapacityFull));
+        private bool ShouldIdle    => Container.Empty && (!HasAvailableTiberium || (Container.TotalStored > 0 && RefineryComp.Container.CapacityFull));
         private bool ShouldHarvest => !ContainerFull && HasAvailableTiberium;//CurrentPriority == HarvesterPriority.Harvest;
-        private bool ShouldUnload  => ContainerFull || (container.TotalStorage > 0 && !HasAvailableTiberium);
+        private bool ShouldUnload  => ContainerFull || (container.TotalStored > 0 && !HasAvailableTiberium);
 
         private bool CanHarvest => !IsUnloading; // !ContainerFull && HasAvailableTiberium;
-        private bool CanUnload  => Container.TotalStorage > 0 && RefineryComp.CanBeRefinedAt;
+        private bool CanUnload  => Container.TotalStored > 0 && RefineryComp.CanBeRefinedAt;
 
         public bool IsHarvesting
         {
@@ -152,8 +163,10 @@ namespace TiberiumRim
         public override bool[] DrawBools => new bool[] { true };
 
         public Thing Thing => this;
+        public string ContainerTitle => "TODO: Harvester Container";
         public NetworkContainer Container => container;
-        public TiberiumContainer TibContainer => (TiberiumContainer) Container;
+        public bool DropsContents => false;
+        public bool LeavesPhysicalContainer => false;
 
         public void Notify_ContainerFull() { }
         public void Notify_RefineryDestroyed(CompTNS_Refinery notifier)
@@ -187,7 +200,7 @@ namespace TiberiumRim
             base.SpawnSetup(map, respawningAfterLoad);
             if (!respawningAfterLoad)
             {
-                container = new TiberiumContainer(this, kindDef.maxStorage, kindDef.acceptedTypes, typeof(TiberiumValueType));
+                container = new NetworkContainer(this, kindDef.containerProps, kindDef.allowedValues);
                 if (ParentBuilding == null)
                 { 
                     ResolveNewRefinery(); 
@@ -205,14 +218,7 @@ namespace TiberiumRim
         public override void Kill(DamageInfo? dinfo, Hediff exactCulprit = null)
         {
             base.Kill(dinfo, exactCulprit);
-            if (Container.TotalStorage > 0)
-            {
-                var spawnDef = TRUtils.CrystalDefFromType((TiberiumValueType)Container.MainValueType, out bool isGas);
-                float radius = kindDef.explosionRadius * Container.StoredPercent;
-                int damage = (int)(10 * Container.StoredPercent);
-                //TODO: Add Tiberium damagedef
-                GenExplosion.DoExplosion(Position, Map, radius, DamageDefOf.Bomb, this, damage, 5, null, null, null, null, spawnDef, 0.18f);
-            }
+            Container.Parent_Destroyed(DestroyMode.KillFinalize, Map);
             GenSpawn.Spawn(kindDef.wreckDef, Position, Map);
             this.DeSpawn(DestroyMode.KillFinalize);
         }
@@ -245,13 +251,13 @@ namespace TiberiumRim
 
         private void ResolveNewRefinery(CompTNS_Refinery lastParent = null)
         {
-            var Refineries = NetworkInfo[NetworkType.TiberiumProcessing].MainStructureSet.Producers;
+            var Refineries = NetworkInfo[TiberiumDefOf.TiberiumNetwork].TotalComponentSet.Producers;
             if (Refineries.Count <= 0) return;
 
             foreach (var refinery in Refineries)
             {
                 if (refinery == lastParent) continue;
-                SetMainRefinery((Building)refinery.Thing, (CompTNS_Refinery)refinery, lastParent);
+                SetMainRefinery((Building)refinery.Parent.Thing, (CompTNS_Refinery)refinery, lastParent);
                 return;
             }
         }
@@ -417,7 +423,7 @@ namespace TiberiumRim
                 sb.AppendLine("Tiberium f/Role Available: " + HasAvailableTiberium);
                 sb.AppendLine("Can Unload: " + CanUnload);
 
-                sb.AppendLine("Exact Storage: " + Container.TotalStorage);
+                sb.AppendLine("Exact Storage: " + Container.TotalStored);
                 sb.AppendLine("Should Harvest: " + ShouldHarvest);
                 sb.AppendLine("Should Unload: " + ShouldUnload);
                 sb.AppendLine("Should Idle: " + ShouldIdle);

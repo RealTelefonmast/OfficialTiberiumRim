@@ -162,7 +162,7 @@ namespace TiberiumRim
 
             if (flag && Props.tiberiumCostPerShot != null)
             {
-                if (Props.tiberiumCostPerShot.CanPayWith(TiberiumComp))
+                if (Props.tiberiumCostPerShot.CanPayWith(TiberiumComp.TiberiumComp))
                     Props.tiberiumCostPerShot.DoPayWith(TiberiumComp);
                 else
                     return false;
@@ -186,11 +186,11 @@ namespace TiberiumRim
             }
             if (Props.tiberiumCostPerBurst != null)
             {
-                return Props.tiberiumCostPerBurst.CanPayWith(TiberiumComp);
+                return Props.tiberiumCostPerBurst.CanPayWith(TiberiumComp.TiberiumComp);
             }
             if(Props.tiberiumCostPerShot != null)
             {
-                return Props.tiberiumCostPerShot.CanPayWith(TiberiumComp);
+                return Props.tiberiumCostPerShot.CanPayWith(TiberiumComp.TiberiumComp);
             }
             if (CasterIsPawn)
             {

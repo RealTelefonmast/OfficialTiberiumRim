@@ -42,7 +42,7 @@ namespace TiberiumRim
         //private string DeathInfo => "Time Left: " + GenDate.ToStringTicksToPeriod(TicksUntilDeath(pawn));
         private string MutationInfo => "TOX:" + Math.Round(ToxemiaSeverity, 2) + "|MC:" + Math.Round(MutationChance, 4) +"/"+ Math.Round(MTBValue, 2) + "d |BIC:" + Math.Round(BloodInfectionChance, 4);
         //private string HediffInfo => "C:" + CrystallizingParts.Count + "|R:" + (Radiation != null) + "|M:" + (Mutation != null) + "|SR:" + ShouldRemove;
-        //private string CountInfo => "T:" + TotalAffectedParts + "|B:" + pawn.def.race.body.AllParts.Count + "|NM:" + pawn.HealthComp().NonMisingPartsCount + "|[" + CrystallizingParts.Count + "/" + affectedPartsCount + "]";
+        //private string CountInfo => "T:" + TotalAffectedParts + "|B:" + pawn.props.race.body.AllParts.Count + "|NM:" + pawn.HealthComp().NonMisingPartsCount + "|[" + CrystallizingParts.Count + "/" + affectedPartsCount + "]";
         
         public override Color LabelColor => Color.Lerp(mainColor, mutationColor, ToxemiaSeverity);
         public override bool ShouldRemove => pawn.health.hediffSet.GetHediffs<Hediff_CauseToxemia>().EnumerableNullOrEmpty();//!(HasRadiation || HasCrystallization);

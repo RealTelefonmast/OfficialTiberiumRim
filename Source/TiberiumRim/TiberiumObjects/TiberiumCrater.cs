@@ -26,8 +26,6 @@ namespace TiberiumRim
         //Since a placeworker is too much of a pain for some reason, the crater simply wont spawn tib until the main research is done
         private bool InitialResearchDone => TiberiumDefOf.MineralAnalysis.IsFinished;
 
-        private CustomParticleSystem system;
-
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
@@ -62,8 +60,8 @@ namespace TiberiumRim
             if (!ShouldSpawnSpore) return false;
             //if (!TiberiumComp.BlossomInfo.TryGetNewBlossom(out IntVec3 dest)) return false;
             //TODO: Blossom Tree Spore
-            //var spore = GenTiberium.SpawnBlossomSpore(Position, dest, Map, def.spore.Blossom(), this);
-            //GenSpawn.Spawn(def.spore.Blossom(), dest, Map);
+            //var spore = GenTiberium.SpawnBlossomSpore(Position, dest, Map, props.spore.Blossom(), this);
+            //GenSpawn.Spawn(props.spore.Blossom(), dest, Map);
             Messages.Message("A blossom spore has appeared, and will fly to this position.", MessageTypeDefOf.NeutralEvent, false);
             //var let = LetterMaker.MakeLetter("Blossom Spore", "A blossom spore has appeared, and will fly to this position.", LetterDefOf.NeutralEvent, new LookTargets(dest, Map));
             //Find.LetterStack.ReceiveLetter(let);

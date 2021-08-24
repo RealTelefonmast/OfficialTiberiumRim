@@ -52,7 +52,7 @@ namespace TiberiumRim
 
         //Check blocking things
         var thingList = x.GetThingList(map);
-        if (thingList.Any(t => t.def.IsEdifice() || t is TiberiumCrystal)) return false;
+        if (thingList.Any(t => t.props.IsEdifice() || t is TiberiumCrystal)) return false;
 
         //Try prefer river cells
         bool tryRiver = !map.TileInfo.Rivers.NullOrEmpty();

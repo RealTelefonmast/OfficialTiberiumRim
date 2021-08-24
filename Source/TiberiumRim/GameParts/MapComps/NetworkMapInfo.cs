@@ -5,40 +5,46 @@ using System.Text;
 using System.Threading.Tasks;
 using Verse;
 
-namespace TiberiumRim.GameParts.MapComps
+namespace TiberiumRim
 {
     public class NetworkMapInfo : MapInformation
     {
-        private Dictionary<NetworkType, NetworkMaster> NetworksByType = new Dictionary<NetworkType, NetworkMaster>();
+        private Dictionary<NetworkDef, NetworkMaster> NetworksByType = new Dictionary<NetworkDef, NetworkMaster>();
         private List<NetworkMaster> NetworkSystems = new List<NetworkMaster>();
 
         public NetworkMapInfo(Map map) : base(map)
         {
         }
 
-        public NetworkMaster this[NetworkType type] => NetworksByType.TryGetValue(type);
+        public NetworkMaster this[NetworkDef type] => NetworksByType.TryGetValue(type);
 
-        public NetworkMaster GetOrCreateNewNetworkSystemFor(NetworkType type)
+        public NetworkMaster GetOrCreateNewNetworkSystemFor(NetworkDef networkDef)
         {
-            if (NetworksByType.TryGetValue(type, out var network))
+            if (NetworksByType.TryGetValue(networkDef, out var network))
             {
                 return network;
             }
-            var networkMaster = new NetworkMaster(Map, type);
-            NetworksByType.Add(type, networkMaster);
+            var networkMaster = new NetworkMaster(Map, networkDef);
+            NetworksByType.Add(networkDef, networkMaster);
             NetworkSystems.Add(networkMaster);
             return networkMaster;
         }
 
         public void Notify_NewNetworkStructureSpawned(INetworkStructure structure)
         {
-            var master = GetOrCreateNewNetworkSystemFor(structure.NetworkType);
-            master.RegisterComponent(structure);
+            foreach (var networkComponent in structure.NetworkParts)
+            {
+                var master = GetOrCreateNewNetworkSystemFor(networkComponent.NetworkDef);
+                master.RegisterComponent(networkComponent);
+            }
         }
 
         public void Notify_NetworkStructureDespawned(INetworkStructure structure)
         {
-            GetOrCreateNewNetworkSystemFor(structure.NetworkType).DeregisterComponent(structure);
+            foreach (var networkComponent in structure.NetworkParts)
+            {
+                GetOrCreateNewNetworkSystemFor(networkComponent.NetworkDef).DeregisterComponent(networkComponent);
+            }
         }
 
         //Data Getters
@@ -46,7 +52,14 @@ namespace TiberiumRim.GameParts.MapComps
         {
             var networkStructure = thing.TryGetComp<Comp_NetworkStructure>();
             if (networkStructure == null) return false;
-            return this[networkStructure.NetworkType].HasNetworkStrucureAt(c);
+            foreach (var networkPart in networkStructure.NetworkParts)
+            {
+                if (this[networkPart.NetworkDef].HasNetworkConnectionAt(c))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public override void Tick()

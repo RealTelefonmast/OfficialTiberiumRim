@@ -92,7 +92,7 @@ namespace TiberiumRim
             }
             if (!spawnAt.NullOrEmpty())
             {
-                AllCells.RemoveAll(v => v.GetThingList(map)?.Any(t => !spawnAt.Contains(t.def)) ?? true);
+                AllCells.RemoveAll(v => v.GetThingList(map)?.Any(t => !spawnAt.Contains(t.props)) ?? true);
             }
             if (!distanceToThings.NullOrEmpty())
             {

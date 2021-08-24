@@ -1,5 +1,4 @@
-﻿using TiberiumRim.GameParts.MapComps;
-using Verse;
+﻿using Verse;
 
 namespace TiberiumRim
 {

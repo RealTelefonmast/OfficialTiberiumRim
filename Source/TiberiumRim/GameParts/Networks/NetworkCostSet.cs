@@ -13,12 +13,12 @@ namespace TiberiumRim
         private float? totalCost;
         private float? totalSpecificCost;
 
-        private List<Enum> acceptedTypes;
-        private List<NetworkTypeCost> specificCostsWithValues;
+        private List<NetworkValueDef> acceptedTypes;
+        private List<NetworkCostValue> specificCostsWithValues;
 
         //
         public float mainCost;
-        public List<NetworkTypeCost> specificCosts;
+        public List<NetworkCostValue> specificCosts;
 
         public bool HasSpecifics => SpecificCosts.Any();
 
@@ -26,21 +26,21 @@ namespace TiberiumRim
         {
             get
             {
-                totalSpecificCost ??= HasSpecifics ? SpecificCosts.Sum(t => t.cost) : 0;
+                totalSpecificCost ??= HasSpecifics ? SpecificCosts.Sum(t => t.value) : 0;
                 return totalSpecificCost.Value;
             }
         }
 
-        public List<Enum> AcceptedValueTypes
+        public List<NetworkValueDef> AcceptedValueTypes
         {
             get
             {
-                acceptedTypes ??= specificCosts.Select(t => t.valueType).ToList();
+                acceptedTypes ??= specificCosts.Select(t => t.valueDef).ToList();
                 return acceptedTypes;
             }
         }
 
-        public List<NetworkTypeCost> SpecificCosts
+        public List<NetworkCostValue> SpecificCosts
         {
             get
             {
@@ -61,10 +61,11 @@ namespace TiberiumRim
         public override string ToString()
         {
             return $"[Total: {TotalCost}|AT: {AcceptedValueTypes.Count}|SC: {SpecificCosts.Count}]";
+            /*
             string retString = $"NetworkCost([{mainCost}]";
             foreach (var specificCost in SpecificCosts)
             {
-                retString = string.Join(String.Empty, retString, $"|{specificCost.valueType.ShortLabel()}: {specificCost.cost}");
+                retString = string.Join(String.Empty, retString, $"|{specificCost.valueType.ShortLabel()}: {specificCost.value}");
             }
 
             retString += "[";
@@ -73,6 +74,7 @@ namespace TiberiumRim
                 retString += "|" + type.ShortLabel();
             }
             return retString + "])";
+            */
         }
     }
 }

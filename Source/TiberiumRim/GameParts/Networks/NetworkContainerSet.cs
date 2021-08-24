@@ -9,7 +9,6 @@ namespace TiberiumRim
 {
     public class NetworkContainerSet
     {
-        private Type networkValueType;
         private float totalValue, totalStorageValue;
         private Color networkColor = new Color(0,0,0,0);
 
@@ -18,11 +17,11 @@ namespace TiberiumRim
         public HashSet<NetworkContainer> ConsumerContainers = new ();
         public HashSet<NetworkContainer> StorageContainers = new ();
 
-        public HashSet<Enum> AllStoredTypes;
+        public HashSet<NetworkValueDef> AllStoredTypes;
 
-        public Dictionary<Enum, float> TotalValueByType = new();
+        public Dictionary<NetworkValueDef, float> TotalValueByType = new();
         public Dictionary<NetworkRole, float> TotalValueByRole = new();
-        public Dictionary<NetworkRole, Dictionary<Enum, float>> ValueByTypeByRole = new();
+        public Dictionary<NetworkRole, Dictionary<NetworkValueDef, float>> ValueByTypeByRole = new();
 
         public float TotalNetworkValue => totalValue;
         public float TotalStorageValue => totalStorageValue;
@@ -32,37 +31,39 @@ namespace TiberiumRim
 
         }
 
-        public void AddNewContainerFrom(INetworkStructure structure)
+        public bool AddNewContainerFrom(INetworkComponent component)
         {
             //TODO: Adjust value with existing values
-            if (FullSet.Contains(structure.Container)) return;
-            AddContainerFrom(structure, structure.Container);
-            //structure.StructureSet.AddStructure(parent, cell + parent?.Thing?.Position.PositionOffset(cell) ?? IntVec3.Invalid);
+            if (!component.HasContainer || FullSet.Contains(component.Container)) return false;
+            AddContainerFrom(component, component.Container);
+            return true;
+            //structure.NeighbourStructureSet.AddStructure(parent, cell + parent?.Thing?.Position.PositionOffset(cell) ?? IntVec3.Invalid);
         }
 
-        public void RemoveContainerFrom(INetworkStructure structure)
+        public void RemoveContainerFrom(INetworkComponent component)
         {
             //TODO: Adjust value with existing values
-            if (!FullSet.Contains(structure.Container)) return;
-            RemoveContainerFrom(structure, structure.Container);
-            //structure.StructureSet.AddStructure(parent, cell + parent?.Thing?.Position.PositionOffset(cell) ?? IntVec3.Invalid);
+            if (!FullSet.Contains(component.Container)) return;
+            RemoveContainerFrom(component, component.Container);
+            //structure.NeighbourStructureSet.AddStructure(parent, cell + parent?.Thing?.Position.PositionOffset(cell) ?? IntVec3.Invalid);
         }
 
-        public void Notify_AddedValue(Enum type, float value)
+        public void Notify_AddedValue(NetworkValueDef type, float value)
         {
 
         }
 
-        public void Notify_RemovedValue(Enum type, float value)
+        public void Notify_RemovedValue(NetworkValueDef type, float value)
         {
 
         }
 
-        private void AddContainerFrom(INetworkStructure structure, NetworkContainer container)
+        private void AddContainerFrom(INetworkComponent component, NetworkContainer container)
         {
             //if (!(structure.Container is NetworkContainer container)) return;
+            container.Notify_SetParentSet(this);
             FullSet.Add(container);
-            switch (structure.NetworkRole)
+            switch (component.NetworkRole)
             {
                 case NetworkRole.Producer:
                     ProducerContainers.Add(container);
@@ -76,10 +77,10 @@ namespace TiberiumRim
             }
         }
 
-        public void RemoveContainerFrom(INetworkStructure structure, NetworkContainer container)
+        private void RemoveContainerFrom(INetworkComponent component, NetworkContainer container)
         {
             if (!FullSet.Contains(container)) return;
-            switch (structure.NetworkRole)
+            switch (component.NetworkRole)
             {
                 case NetworkRole.Producer:
                     ProducerContainers.Remove(container);

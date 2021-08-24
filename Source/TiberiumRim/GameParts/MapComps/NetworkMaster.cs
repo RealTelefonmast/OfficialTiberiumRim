@@ -17,32 +17,35 @@ namespace TiberiumRim
         public List<Network> Networks = new List<Network>();
         public Dictionary<Network, List<IntVec3>> NetworkCells = new Dictionary<Network, List<IntVec3>>();
 
-        public NetworkStructureSet MainStructureSet;
+        public NetworkComponentSet TotalComponentSet;
         public int MasterID = -1;
 
-        public NetworkType NetworkType { get; }
-        public INetworkStructure MainNetworkStructure { get; set; }
+        public NetworkDef NetworkType { get; }
+        public INetworkComponent MainNetworkComponent { get; set; }
 
         //Debug
         private static bool ShouldShowNetwork = false;
 
-        public NetworkMaster(Map map, NetworkType network)
+        public NetworkMaster(Map map, NetworkDef networkDef)
         {
             this.map = map;
-            NetworkType = network;
+            NetworkType = networkDef;
+            TotalComponentSet = new NetworkComponentSet(networkDef, null);
             networkBools = new bool[map.cellIndices.NumGridCells];
+            networkGrid = new Network[map.cellIndices.NumGridCells];
         }
 
-        public void RegisterComponent(INetworkStructure structure)
+        public void RegisterComponent(INetworkComponent component)
         {
-            MainStructureSet.AddStructure(structure);
-            var network = RegenerateNetwork(structure);
+            TotalComponentSet.AddNewComponent(component);
+            var network = RegenerateNetwork(component);
             RegisterNetwork(network);
         }
 
-        public void DeregisterComponent(INetworkStructure structure)
+        public void DeregisterComponent(INetworkComponent component)
         {
-            MainStructureSet.RemoveStructure(structure);
+            DeregisterNetworkPart(component);
+            TotalComponentSet.RemoveComponent(component);
         }
 
         public void ToggleShowNetworks()
@@ -81,43 +84,44 @@ namespace TiberiumRim
         }
 
 
-        public bool HasNetworkStrucureAt(IntVec3 c)
+        public bool HasNetworkConnectionAt(IntVec3 c)
         {
             return networkBools[map.cellIndices.CellToIndex(c)];
         }
 
-        public Network RegenerateNetwork(INetworkStructure root)
+        public Network RegenerateNetwork(INetworkComponent root)
         {
-            Network newNet = new Network(root.NetworkType, map, this);
-            HashSet<INetworkStructure> closedSet = new HashSet<INetworkStructure>();
-            HashSet<INetworkStructure> openSet = new HashSet<INetworkStructure>() { root };
-            HashSet<INetworkStructure> currentSet = new HashSet<INetworkStructure>();
+            Log.Message($"Regenerating new net from {root.Parent.Thing}");
+            Network newNet = new Network(root.NetworkDef, map, this);
+            HashSet<INetworkComponent> closedSet = new HashSet<INetworkComponent>();
+            HashSet<INetworkComponent> openSet = new HashSet<INetworkComponent>() { root };
+            HashSet<INetworkComponent> currentSet = new HashSet<INetworkComponent>();
             while (openSet.Count > 0)
             {
-                foreach (INetworkStructure structure in openSet)
+                foreach (INetworkComponent component in openSet)
                 {
-                    structure.Network = newNet;
-                    newNet.AddStructure(structure);
-                    closedSet.Add(structure);
+                    component.Network = newNet;
+                    newNet.AddComponent(component);
+                    closedSet.Add(component);
                 }
-                HashSet<INetworkStructure> hashSet = currentSet;
+                HashSet<INetworkComponent> hashSet = currentSet;
                 currentSet = openSet;
                 openSet = hashSet;
                 openSet.Clear();
-                foreach (INetworkStructure structure in currentSet)
+                foreach (INetworkComponent component in currentSet)
                 {
-                    foreach (IntVec3 c in structure.ConnectionCells)
+                    foreach (IntVec3 c in component.Parent.ConnectionCells)
                     {
                         List<Thing> thingList = c.GetThingList(map);
                         foreach (var thing in thingList)
                         {
-                            if (!Fits(thing, out INetworkStructure newStructure)) continue;
-                            if (newStructure.NetworkType == root.NetworkType && !closedSet.Contains(newStructure) && newStructure.ConnectsTo(structure))
+                            if (!Fits(thing, component.NetworkDef, out INetworkComponent newComponent)) continue;
+                            if (!closedSet.Contains(newComponent) && newComponent.ConnectsTo(component))
                             {
                                 map.mapDrawer.MapMeshDirty(c, MapMeshFlag.Buildings);
-                                structure.StructureSet.AddNewStructure(newStructure);
-                                newStructure.StructureSet.AddNewStructure(structure);
-                                openSet.Add(newStructure);
+                                component.Notify_NewComponentAdded(newComponent);
+                                newComponent.Notify_NewComponentAdded(component);
+                                openSet.Add(newComponent);
                                 break;
                             }
                         }
@@ -128,11 +132,12 @@ namespace TiberiumRim
         }
 
         //Check whether or not a thing is part of a network
-        private bool Fits(Thing thing, out INetworkStructure structure)
+        private bool Fits(Thing thing, NetworkDef forNetwork, out INetworkComponent component)
         {
-            structure = thing as INetworkStructure;
-            structure ??= (thing as ThingWithComps).AllComps.Find(t => t is INetworkStructure) as INetworkStructure;
-            return structure != null;
+            //component = thing as INetworkStructure;
+            INetworkStructure structure = (thing as ThingWithComps)?.AllComps.Find(t => t is INetworkStructure) as INetworkStructure;
+            component = structure?.NetworkParts.Find(c => c.NetworkDef == forNetwork);
+            return component != null;
         }
 
         public void RegisterNetwork(Network tnw)
@@ -142,7 +147,9 @@ namespace TiberiumRim
             NetworkCells.Add(tnw, tnw.NetworkCells);
             for (int i = 0; i < NetworkCells[tnw].Count; i++)
             {
-                networkGrid[map.cellIndices.CellToIndex(NetworkCells[tnw][i])] = tnw;
+                int index = map.cellIndices.CellToIndex(NetworkCells[tnw][i]);
+                networkBools[index] = true;
+                networkGrid[index] = tnw;
             }
         }
 
@@ -151,10 +158,27 @@ namespace TiberiumRim
             if (!Networks.Contains(tnw)) return;
             for (int i = 0; i < NetworkCells[tnw].Count; i++)
             {
-                networkGrid[map.cellIndices.CellToIndex(NetworkCells[tnw][i])] = null;
+                int index = map.cellIndices.CellToIndex(NetworkCells[tnw][i]);
+                networkBools[index] = false;
+                networkGrid[index] = null;
             }
             Networks.Remove(tnw);
             NetworkCells.Remove(tnw);
+        }
+
+        public void DeregisterNetworkPart(INetworkComponent component)
+        {
+            foreach (var cell in component.Parent.InnerConnectionCells)
+            {
+                int index = map.cellIndices.CellToIndex(cell);
+                networkBools[index] = false;
+                networkGrid[index] = null;
+            }
+
+            if (NetworkCells.ContainsKey(component.Network))
+            {
+                NetworkCells[component.Network].RemoveAll(component.Parent.InnerConnectionCells.Contains);
+            }
         }
 
         private Color ColorByNum(int num)
