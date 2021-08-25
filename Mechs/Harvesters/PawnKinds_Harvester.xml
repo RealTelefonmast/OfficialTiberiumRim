@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.HarvesterKindDef>
+		<defName>Harvester_Common</defName>
+		<label>harvester</label>
+		<combatPower>125</combatPower>
+		<defaultFactionType>PlayerColony</defaultFactionType>
+		<isFighter>false</isFighter>
+		<aiAvoidCover>false</aiAvoidCover>
+		<race>Harvester_Common</race>
+		<wreckDef>HarvesterHusk_Common</wreckDef>
+		<containerProps>
+			<maxStorage>125</maxStorage>
+			<doExplosion>true</doExplosion>
+		</containerProps>
+		<allowedValues>
+			<li>TibGreen</li>
+			<li>TibBlue</li>
+			<li>TibRed</li>			
+			<li>TibSludge</li>					
+		</allowedValues>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/Mechanical/Common/Harvester/Harvester</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>3</drawSize>
+					<shadowData>
+						<volume>(0.4, 0.8, 0.4)</volume>
+					</shadowData>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.HarvesterKindDef>
+
+	<TiberiumRim.HarvesterKindDef>
+		<defName>Harvester_GDI</defName>
+		<label>GDI harvester</label>
+		<combatPower>125</combatPower>
+		<defaultFactionType>PlayerColony</defaultFactionType>
+		<isFighter>false</isFighter>
+		<aiAvoidCover>false</aiAvoidCover>
+		<race>Harvester_GDI</race>
+		<wreckDef>HarvesterHusk_GDI</wreckDef>		
+		<containerProps>
+			<maxStorage>300</maxStorage>
+			<doExplosion>true</doExplosion>
+		</containerProps>
+		<allowedValues>
+			<li>TibGreen</li>
+			<li>TibBlue</li>
+			<li>TibRed</li>			
+			<li>TibSludge</li>					
+		</allowedValues>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/Mechanical/GDI/Harvester/Harvester</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>3</drawSize>
+					<shadowData>
+						<volume>(0.4, 0.8, 0.4)</volume>
+					</shadowData>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.HarvesterKindDef>
+
+	<TiberiumRim.HarvesterKindDef>
+		<defName>Harvester_Nod</defName>
+		<label>Nod harvester</label>
+		<combatPower>125</combatPower>
+		<defaultFactionType>PlayerColony</defaultFactionType>
+		<isFighter>false</isFighter>
+		<aiAvoidCover>false</aiAvoidCover>
+		<race>Harvester_Nod</race>
+		<wreckDef>HarvesterHusk_Nod</wreckDef>
+		<containerProps>
+			<maxStorage>200</maxStorage>
+			<doExplosion>true</doExplosion>
+		</containerProps>
+		<allowedValues>
+			<li>TibGreen</li>
+			<li>TibBlue</li>
+			<li>TibRed</li>			
+			<li>TibSludge</li>					
+		</allowedValues>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/Mechanical/Nod/Harvester/Base</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>3</drawSize>
+					<shadowData>
+						<volume>(0.4, 0.8, 0.4)</volume>
+					</shadowData>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.HarvesterKindDef>
+
+
+</Defs>

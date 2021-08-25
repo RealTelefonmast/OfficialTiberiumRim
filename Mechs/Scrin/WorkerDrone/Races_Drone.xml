@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<ThingDef ParentName="BaseMechanoidTR">
+		<defName>ScrinDrone</defName>
+		<label>scrin worker drone</label>	
+		<description>wörk wörk</description>
+		<thingClass>TiberiumRim.ScrinWorkerDrone</thingClass>
+		<race>
+			<thinkTreeMain>MechWorkerMain</thinkTreeMain>
+			<thinkTreeConstant>MechMainConstant</thinkTreeConstant>
+			<intelligence>ToolUser</intelligence>
+			<body>ScrinDrone_Body</body>
+			<baseBodySize>1</baseBodySize>
+			<baseHealthScale>1</baseHealthScale>
+		</race>
+		<statBases>
+			<MoveSpeed>1.33</MoveSpeed>
+			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
+			<!-- -->
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
+		</statBases>
+	</ThingDef>
+
+</Defs>

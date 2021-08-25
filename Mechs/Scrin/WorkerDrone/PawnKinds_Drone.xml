@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<PawnKindDef Class="TiberiumRim.MechanicalPawnKindDef">
+		<defName>ScrinDrone</defName>
+		<label>scrin worker drone</label>
+		<combatPower>75</combatPower>
+		<defaultFactionType>PlayerColony</defaultFactionType>
+		<isFighter>false</isFighter>
+		<aiAvoidCover>false</aiAvoidCover>
+		<race>ScrinDrone</race>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/Mechanical/Scrin/RepairDrone/RepairDrone_Scrin</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>2</drawSize>
+					<shadowData>
+						<volume>(0.4, 0.8, 0.4)</volume>
+					</shadowData>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</PawnKindDef>
+
+</Defs>
