@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<FactionDef ParentName="FactionBase" Name="GDIFactionBase" Abstract="True">
+<FactionDef Abstract="True">
 	<pawnSingular>GDI troop</pawnSingular>
 	<pawnsPlural>GDI troops</pawnsPlural>
     <categoryTag>Spacer</categoryTag>
@@ -70,6 +70,15 @@
         <li>(4000, 2.6)</li>
       </points>
     </raidCommonalityFromPointsCurve>
+    <raidLootValueFromPointsCurve>
+      <points>
+        <li>(35,     15)</li>
+        <li>(100,   120)</li>
+        <li>(1000,  500)</li>
+        <li>(2000,  800)</li>
+        <li>(4000, 1000)</li>
+      </points>
+    </raidLootValueFromPointsCurve>
 	<autoFlee>true</autoFlee>
 	<pawnGroupMakers>
 		<li>
