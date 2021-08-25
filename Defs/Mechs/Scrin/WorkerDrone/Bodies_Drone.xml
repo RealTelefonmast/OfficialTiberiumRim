@@ -15,7 +15,7 @@
 					<height>Middle</height>
 					<parts>
 						<li>
-							<def>Scrin_SonsorArray</def>
+							<def>Scrin_SensorArray</def>
 							<coverage>0.15</coverage>
 							<height>Top</height>
 							<parts>

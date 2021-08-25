@@ -36,7 +36,7 @@
 				</capacities>
 				<power>12</power>
 				<cooldownTime>3.5</cooldownTime>
-				<linkedBodyPartsGroup>HeadButt</linkedBodyPartsGroup>
+				<linkedBodyPartsGroup>Dozer</linkedBodyPartsGroup>
 				<chanceFactor>0.2</chanceFactor>
 			</li>
 		</tools>
@@ -77,7 +77,7 @@
 				</capacities>
 				<power>20</power>
 				<cooldownTime>3.5</cooldownTime>
-				<linkedBodyPartsGroup>HeadButt</linkedBodyPartsGroup>
+				<linkedBodyPartsGroup>Dozer</linkedBodyPartsGroup>
 				<chanceFactor>0.2</chanceFactor>
 			</li>
 		</tools>
@@ -131,7 +131,7 @@
 				</capacities>
 				<power>12</power>
 				<cooldownTime>3.5</cooldownTime>
-				<linkedBodyPartsGroup>HeadButt</linkedBodyPartsGroup>
+				<linkedBodyPartsGroup>Dozer</linkedBodyPartsGroup>
 				<chanceFactor>0.2</chanceFactor>
 			</li>
 		</tools>

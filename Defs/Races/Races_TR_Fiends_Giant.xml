@@ -402,7 +402,7 @@
 			<gestationPeriodDays>28</gestationPeriodDays>
 			<foodType>OmnivoreAnimal, VegetarianRoughAnimal</foodType>
 			<wildness>0.6</wildness>
-			<trainability>Simple</trainability>
+			<trainability>None</trainability>
 			<lifeExpectancy>21</lifeExpectancy>
 			<lifeStageAges>
 				<li>

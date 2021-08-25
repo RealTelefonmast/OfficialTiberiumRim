@@ -20,7 +20,7 @@
 							<height>Middle</height>
 							<customLabel>frontal armor plate</customLabel>
 							<groups>
-								<li>HeadButt</li>
+								<li>Dozer</li>
 							</groups>
 						</li>
 						<li>
@@ -126,7 +126,7 @@
 							<height>Middle</height>
 							<customLabel>front armor</customLabel>
 							<groups>
-								<li>HeadButt</li>
+								<li>Dozer</li>
 							</groups>
 						</li>
 						<li>
@@ -258,7 +258,7 @@
 							<coverage>0.7</coverage>
 							<height>Middle</height>
 							<groups>
-								<li>HeadButt</li>
+								<li>Dozer</li>
 							</groups>
 							<customLabel>front armor</customLabel>
 						</li>

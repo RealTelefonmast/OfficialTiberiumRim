@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!--drone-->
+
+	<BodyPartDef Abstract= "True" Name="ScrinPart">
+		<hitPoints>5</hitPoints>
+		<frostbiteVulnerability>0</frostbiteVulnerability>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<bleedRate>0</bleedRate>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>	
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="ScrinPart">
+		<defName>Scrin_Brain</defName>
+		<label>biomechanical brain</label>
+		<hitPoints>16</hitPoints>
+		<tags>
+			<li>ConsciousnessSource</li>
+		</tags>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="ScrinPart">
+		<defName>Scrin_Eye</defName>
+		<label>eye</label>
+		<hitPoints>6</hitPoints>
+		<socketed>true</socketed>
+		<tags>
+			<li>SightSource</li>
+		</tags>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="ScrinPart">
+		<defName>Scrin_SensorArray</defName>
+		<label>sensor array</label>
+		<hitPoints>25</hitPoints>
+		<tags>
+			<li>HearingSource</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="ScrinPart">
+		<defName>Scrin_AtmosphericFilter</defName>
+		<label>atmospheric filter</label>
+		<hitPoints>22</hitPoints>
+		<tags>
+			<li>BreathingPathway</li>
+			<li>EatingPathway</li>
+			<li>TalkingPathway</li>
+		</tags>
+	</BodyPartDef>
+	
+	
+<!--battle unit's-->
+
+	<BodyPartDef ParentName="ScrinPart">
+		<defName>TetraPodLeftFrontLeg</defName>
+		<label>Left front leg</label>
+		<hitPoints>50</hitPoints>
+		<tags>
+			<li>ManipulationLimbSegment</li>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="ScrinPart">
+		<defName>TetraPodRightFrontLeg</defName>
+		<label>Right front leg</label>
+		<hitPoints>50</hitPoints>
+		<tags>
+			<li>ManipulationLimbSegment</li>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="ScrinPart">
+		<defName>TetraPodLeftHindLeg</defName>
+		<label>Left hind leg</label>
+		<hitPoints>50</hitPoints>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="ScrinPart">
+		<defName>TetraPodRightHindLeg</defName>
+		<label>Right hind leg</label>
+		<hitPoints>50</hitPoints>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+
+  <BodyPartDef ParentName="ScrinPart">
+    <defName>ScrinBase</defName>
+    <label>Exoskeleton Armor</label>
+    <hitPoints>100</hitPoints>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="ScrinPart">
+    <defName>ScrinHead</defName>
+    <label>Head</label>
+    <hitPoints>100</hitPoints>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="ScrinPart">
+    <defName>CenterScrinEye</defName>
+    <label>center eye</label>
+    <hitPoints>15</hitPoints>
+    <frostbiteVulnerability>2</frostbiteVulnerability>
+    <tags>
+      <li>SightSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="ScrinPart">
+    <defName>LeftScrinEye</defName>
+    <label>left eye</label>
+    <hitPoints>15</hitPoints>
+    <frostbiteVulnerability>2</frostbiteVulnerability>
+    <tags>
+      <li>SightSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="ScrinPart">
+    <defName>RightScrinEye</defName>
+    <label>right eye</label>
+    <hitPoints>15</hitPoints>
+    <frostbiteVulnerability>2</frostbiteVulnerability>
+    <tags>
+      <li>SightSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="ScrinPart">
+    <defName>HearingOrgan</defName>
+    <label>hearing organ</label>
+    <hitPoints>15</hitPoints>
+    <frostbiteVulnerability>2</frostbiteVulnerability>
+    <tags>
+      <li>HearingSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="ScrinPart">
+    <defName>TetraPodCore</defName>
+    <label>Energy Core</label>
+    <hitPoints>50</hitPoints>
+    <tags>
+      <li>MovingLimbCore</li>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+
+  <BodyPartDef ParentName="ScrinPart">
+    <defName>ScrinBrain</defName>
+    <label>Scrin Brain</label>
+    <hitPoints>30</hitPoints>
+    <tags>
+      <li>ConsciousnessSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="ScrinPart">
+    <defName>GunOrgan</defName>
+    <label>Energy Emitter</label>
+    <hitPoints>50</hitPoints>
+    <tags>
+	  <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="ScrinPart">
+    <defName>ScrinPelvis</defName>
+    <label>Pelvis</label>
+    <hitPoints>50</hitPoints>
+    <tags>
+	  <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+	<BodyPartDef ParentName="ScrinPart">
+		<defName>OuterSwarm</defName>
+		<label>Outer Swarm</label>
+		<hitPoints>20</hitPoints>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="ScrinPart">
+    <defName>NeuralSwarm</defName>
+    <label>Neural Swarm</label>
+    <hitPoints>15</hitPoints>
+    <frostbiteVulnerability>1</frostbiteVulnerability>
+    <tags>
+      <li>ConsciousnessSource</li>
+	  <li>HearingSource</li>
+	  <li>SightSource</li>
+    </tags>
+	</BodyPartDef>
+  
+	<BodyPartDef ParentName="ScrinPart">
+		<defName>LiftSwarm</defName>
+		<label>Lift Swarm</label>
+		<hitPoints>10</hitPoints>
+		<tags>
+			<li>MovingLimbCore</li>
+		</tags>
+	</BodyPartDef>
+
+  <BodyPartDef ParentName="ScrinPart">
+    <defName>RazorSwarm</defName>
+    <label>Razor Swarm</label>
+    <hitPoints>10</hitPoints>
+	<tags>
+		<li>ManipulationLimbCore</li>
+	</tags>
+  </BodyPartDef>
+  
+  
+</Defs>

@@ -151,8 +151,41 @@
 	</BodyPartGroupDef>
 	
 	<BodyPartGroupDef>
-		<defName>HeadButt</defName>
+		<defName>Dozer</defName>
 		<label>dozer</label>
 	</BodyPartGroupDef>
+
+	<BodyPartGroupDef>
+		<defName>RazorCloud</defName>
+		<label>razor Cloud</label>
+	</BodyPartGroupDef>
+	
+	<BodyPartGroupDef>
+		<defName>FrontLegs</defName>
+		<label>front Legs</label>
+	</BodyPartGroupDef>
+
+
+
+
+	
+  <LifeStageDef>
+    <defName>ScrinFormed</defName>
+    <label>Scrin</label>
+    <visible>false</visible>
+  </LifeStageDef>
+  
+  <LifeStageDef>
+    <defName>VehicleFormed</defName>
+    <label>Vehicle</label>
+    <visible>false</visible>
+  </LifeStageDef>
+
+  <LifeStageDef>
+    <defName>MechFormed</defName>
+    <label>Mech</label>
+    <visible>false</visible>
+  </LifeStageDef>
+
 
 </Defs>

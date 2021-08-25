@@ -80,6 +80,7 @@
 			</li>
 		</tools>
 		<race>
+			<herdAnimal>true</herdAnimal>
 			<body>QuadrupedAnimalWithPawsAndTail</body>
 			<maxPreyBodySize>2.3</maxPreyBodySize>
 			<petness>0.1</petness>
@@ -134,6 +135,7 @@
 		<labelPlural>tiberium fiends</labelPlural>
 		<race>TiberiumFiend</race>
 		<combatPower>100</combatPower>
+		<wildGroupSize>3~7</wildGroupSize>
 		<lifeStages>
 			<li>
 				<label>fiend puppy</label>
@@ -221,6 +223,7 @@
 			</li>
 		</tools>
 		<race>
+			<herdAnimal>true</herdAnimal>
 			<body>QuadrupedAnimalWithPawsAndTail</body>
 			<predator>true</predator>
 			<maxPreyBodySize>1.2</maxPreyBodySize>
@@ -273,7 +276,7 @@
 		<label>spiner</label>
 		<race>Spiner</race>
 		<combatPower>160</combatPower>
-		<ecoSystemWeight>0.5</ecoSystemWeight>
+		<wildGroupSize>3~7</wildGroupSize>
 		<lifeStages>
 			<li>
 				<label>spiner puppy</label>
@@ -385,6 +388,7 @@
 			</li>
 		</tools>
 		<race>
+			<herdAnimal>true</herdAnimal>
 			<body>QuadrupedAnimalWithPawsAndTail</body>
 			<predator>true</predator>
 			<maxPreyBodySize>0.80</maxPreyBodySize>
@@ -437,6 +441,7 @@
 		<labelPlural>tiberian foxes</labelPlural>
 		<race>SmallTiberiumFiend</race>
 		<combatPower>75</combatPower>
+		<wildGroupSize>3~7</wildGroupSize>
 		<lifeStages>
 			<li>
 				<label>tiberian fox puppy</label>
