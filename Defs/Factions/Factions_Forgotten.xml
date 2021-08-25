@@ -12,6 +12,7 @@
 	<canStageAttacks>false</canStageAttacks>
 	<leaderTitle>khan</leaderTitle>
 	<factionIconPath>UI/Icons/Factions/Forgotten</factionIconPath>
+	<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
 	<techLevel>Industrial</techLevel>
 	<factionNameMaker>NamerFactionPirate</factionNameMaker>
 	<settlementNameMaker>NamerSettlementPirate</settlementNameMaker>

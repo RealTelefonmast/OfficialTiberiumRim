@@ -12,6 +12,7 @@
 	<canStageAttacks>true</canStageAttacks>
 	<leaderTitle>bishop</leaderTitle>
 	<factionIconPath>UI/Icons/Factions/Nod</factionIconPath>
+	<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
     <techLevel>Spacer</techLevel>
 	<factionNameMaker>NamerFactionNod</factionNameMaker>
 	<settlementNameMaker>NamerFactionBaseNod</settlementNameMaker>

@@ -8,6 +8,7 @@
 	<pawnSingular>scrin unit</pawnSingular>
 	<pawnsPlural>scrin units</pawnsPlural>
 	<factionIconPath>UI/Icons/Factions/Scrin</factionIconPath>
+	<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
 	<requiredCountAtGameStart>1</requiredCountAtGameStart>
 	<fixedName>a scrin hive</fixedName>
 	<raidCommonalityFromPointsCurve>

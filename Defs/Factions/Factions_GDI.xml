@@ -12,6 +12,7 @@
 	<canStageAttacks>true</canStageAttacks>
 	<leaderTitle>general</leaderTitle>
 	<factionIconPath>UI/Icons/Factions/GDI</factionIconPath>
+	<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
     <techLevel>Spacer</techLevel>
 	<factionNameMaker>NamerFactionGDI</factionNameMaker>
 	<settlementNameMaker>NamerFactionBaseGDI</settlementNameMaker>

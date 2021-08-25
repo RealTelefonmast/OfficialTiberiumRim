@@ -53,30 +53,7 @@
 		<drawGUIOverlay>true</drawGUIOverlay>
 	</ThingDef>
   
-	<ThingDef Name="VisceralPawnBase" ParentName="AnimalBase_TR" Abstract="True">
-		<statBases>
-			<Flammability>0.15</Flammability>
-			<LeatherAmount>15</LeatherAmount>
-			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
-			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
-			<TiberiumGasResistance>1</TiberiumGasResistance>
-			<PainShockThreshold>1</PainShockThreshold>
-		</statBases>
-		<race>
-			<hasGenders>false</hasGenders>
-			<gestationPeriodDays>0</gestationPeriodDays>
-			<mateMtbHours>0</mateMtbHours>
-			<needsRest>false</needsRest>
-			<lifeExpectancy>999</lifeExpectancy>
-			<manhunterOnDamageChance>1</manhunterOnDamageChance>
-			<manhunterOnTameFailChance>1</manhunterOnTameFailChance>
-			<trainability>None</trainability>
-			<baseHungerRate>2</baseHungerRate>
-			<foodType>OmnivoreAnimal, OvivoreAnimal, AnimalProduct</foodType>
-			<leatherDef>Leather_Visceral</leatherDef>
-		</race>
-	</ThingDef>
-	
+
 	<ThingDef Name="AnimalBase_TR" ParentName="BasePawn_TR" Abstract="True" >
 		<thingClass>TiberiumRim.TiberiumPawn</thingClass>
 		<statBases>
@@ -134,6 +111,30 @@
 		</recipes>
 	</ThingDef>
 	
+	<ThingDef Name="VisceralPawnBase" ParentName="AnimalBase_TR" Abstract="True">
+		<statBases>
+			<Flammability>0.15</Flammability>
+			<LeatherAmount>15</LeatherAmount>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
+			<PainShockThreshold>1</PainShockThreshold>
+		</statBases>
+		<race>
+			<hasGenders>false</hasGenders>
+			<gestationPeriodDays>0</gestationPeriodDays>
+			<mateMtbHours>0</mateMtbHours>
+			<needsRest>false</needsRest>
+			<lifeExpectancy>999</lifeExpectancy>
+			<manhunterOnDamageChance>1</manhunterOnDamageChance>
+			<manhunterOnTameFailChance>1</manhunterOnTameFailChance>
+			<trainability>None</trainability>
+			<baseHungerRate>2</baseHungerRate>
+			<foodType>OmnivoreAnimal, OvivoreAnimal, AnimalProduct</foodType>
+			<leatherDef>Leather_Visceral</leatherDef>
+		</race>
+	</ThingDef>
+	
 	<ThingDef Name="FiendBase" ParentName="AnimalBase_TR" Abstract="True" >
 		<statBases>
 			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
@@ -141,7 +142,7 @@
 			<TiberiumGasResistance>1</TiberiumGasResistance>
 		</statBases>
 		<race>
-			<manhunterOnDamageChance>1</manhunterOnDamageChance>
+			<manhunterOnDamageChance>0.8</manhunterOnDamageChance>
 			<manhunterOnTameFailChance>0.75</manhunterOnTameFailChance>
 			<leatherDef>Leather_BlackTib</leatherDef>
 			<meatLabel>tiberianMeat</meatLabel>
