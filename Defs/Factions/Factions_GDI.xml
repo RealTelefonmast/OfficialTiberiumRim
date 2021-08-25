@@ -1,22 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<FactionDef Name="GDIFactionBase" Abstract="True">
+<FactionDef ParentName="OutlanderFactionBase" Name="GDIFactionBase" Abstract="True">
 	<pawnSingular>GDI troop</pawnSingular>
 	<pawnsPlural>GDI troops</pawnsPlural>
     <categoryTag>Spacer</categoryTag>
-	<requiredCountAtGameStart>1</requiredCountAtGameStart>
-	<hidden>true</hidden>
 	<canMakeRandomly>true</canMakeRandomly>
-	<canSiege>true</canSiege>
-	<canStageAttacks>true</canStageAttacks>
 	<leaderTitle>general</leaderTitle>
 	<factionIconPath>UI/Icons/Factions/GDI</factionIconPath>
 	<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
     <techLevel>Spacer</techLevel>
 	<factionNameMaker>NamerFactionGDI</factionNameMaker>
 	<settlementNameMaker>NamerFactionBaseGDI</settlementNameMaker>
-    <allowedCultures><li>Rustican</li></allowedCultures>
     <disallowedMemes>
       <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Animist</li>
       <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
@@ -36,10 +31,6 @@
 		<li>(255, 255, 255)</li>
 		<li>(255, 255, 255)</li>
 	</colorSpectrum>
-	<backstoryCategories>
-		<li>Civil</li>
-	</backstoryCategories>
-	<geneticVariance>0.8</geneticVariance>
 	<caravanTraderKinds>
 		<li>Caravan_Tiberium_BulkGoods</li>
 		<li>Caravan_Tiberium_CombatSupplier</li>
@@ -70,15 +61,6 @@
         <li>(4000, 2.6)</li>
       </points>
     </raidCommonalityFromPointsCurve>
-    <raidLootValueFromPointsCurve>
-      <points>
-        <li>(35,     15)</li>
-        <li>(100,   120)</li>
-        <li>(1000,  500)</li>
-        <li>(2000,  800)</li>
-        <li>(4000, 1000)</li>
-      </points>
-    </raidLootValueFromPointsCurve>
 	<autoFlee>true</autoFlee>
 	<pawnGroupMakers>
 		<li>
@@ -165,13 +147,15 @@
 			</options>
 		</li>
 	</pawnGroupMakers>
-    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    
 </FactionDef>
 
 <FactionDef ParentName="GDIFactionBase">
 	<defName>GDI</defName>
 	<label>Galactic Defense Initiative</label>
 	<description>The Galactic Defense Initiative, formerly known as Global Defense Initiative on planet Earth, is the current government of this planet. Their purpose is to keep up world peace and free it from terrorism, especially from the Brotherhood of Nod. After winning the battle at the Tiber river the GDI was reformed and started colonizing space, with the mission of cleansing the Universe from the Scrin. Unfortunately the Brotherhood of Nod followed their plan with the opposite idea.</description>
+	<maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+	<configurationListOrderPriority>0</configurationListOrderPriority>
 </FactionDef>
 
 </Defs>
