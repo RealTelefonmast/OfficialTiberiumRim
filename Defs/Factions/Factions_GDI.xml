@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<FactionDef Abstract="True">
+<FactionDef Name="GDIFactionBase" Abstract="True">
 	<pawnSingular>GDI troop</pawnSingular>
 	<pawnsPlural>GDI troops</pawnsPlural>
     <categoryTag>Spacer</categoryTag>
 	<listOrderPriority>80</listOrderPriority>
-	<settlementGenerationWeight>0.5</settlementGenerationWeight>
+	<settlementGenerationWeight>1</settlementGenerationWeight>
 	<requiredCountAtGameStart>1</requiredCountAtGameStart>
 	<canMakeRandomly>true</canMakeRandomly>
 	<canSiege>true</canSiege>
 	<canStageAttacks>true</canStageAttacks>
 	<leaderTitle>general</leaderTitle>
-	<factionIconPath>UI/Icon_GDI</factionIconPath>
+	<factionIconPath>UI/Icons/Factions/GDI</factionIconPath>
     <techLevel>Spacer</techLevel>
 	<factionNameMaker>NamerFactionGDI</factionNameMaker>
 	<settlementNameMaker>NamerFactionBaseGDI</settlementNameMaker>
@@ -165,6 +165,7 @@
 			</options>
 		</li>
 	</pawnGroupMakers>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
 </FactionDef>
 
 <FactionDef ParentName="GDIFactionBase">

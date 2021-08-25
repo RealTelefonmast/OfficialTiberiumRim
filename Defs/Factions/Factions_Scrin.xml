@@ -7,7 +7,7 @@
 	<description>A Scrin hive, the center of operations where they harvest the so called Ichor.</description>
 	<pawnSingular>scrin unit</pawnSingular>
 	<pawnsPlural>scrin units</pawnsPlural>
-	<factionIconPath>World/WorldObjects/DefaultFactionBase</factionIconPath>
+	<factionIconPath>UI/Icons/Factions/Scrin</factionIconPath>
 	<requiredCountAtGameStart>1</requiredCountAtGameStart>
 	<fixedName>a scrin hive</fixedName>
 	<raidCommonalityFromPointsCurve>
@@ -74,6 +74,7 @@
 			</options>
 		</li>
 	</pawnGroupMakers>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
 </FactionDef>
 	
 </Defs>

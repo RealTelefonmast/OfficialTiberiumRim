@@ -6,13 +6,13 @@
 	<pawnsPlural>forgotten horde</pawnsPlural>
     <categoryTag>Tribal</categoryTag>
 	<listOrderPriority>100</listOrderPriority>
-	<settlementGenerationWeight>0.5</settlementGenerationWeight>
+	<settlementGenerationWeight>1</settlementGenerationWeight>
 	<requiredCountAtGameStart>1</requiredCountAtGameStart>
 	<canMakeRandomly>true</canMakeRandomly>
 	<canSiege>false</canSiege>
 	<canStageAttacks>false</canStageAttacks>
 	<leaderTitle>khan</leaderTitle>
-	<factionIconPath>UI/Icon_GDI</factionIconPath>
+	<factionIconPath>UI/Icons/Factions/Forgotten</factionIconPath>
 	<techLevel>Industrial</techLevel>
 	<factionNameMaker>NamerFactionPirate</factionNameMaker>
 	<settlementNameMaker>NamerSettlementPirate</settlementNameMaker>
@@ -130,6 +130,7 @@
 				</options>
 		</li>
 	</pawnGroupMakers>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
 </FactionDef>
 
 <FactionDef ParentName="ForgottenFactionBase">

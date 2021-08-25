@@ -6,13 +6,13 @@
 	<pawnsPlural>Nod troops</pawnsPlural>
     <categoryTag>Spacer</categoryTag>
 	<listOrderPriority>90</listOrderPriority>
-	<settlementGenerationWeight>0.5</settlementGenerationWeight>
+	<settlementGenerationWeight>1</settlementGenerationWeight>
 	<requiredCountAtGameStart>1</requiredCountAtGameStart>
 	<canMakeRandomly>true</canMakeRandomly>
 	<canSiege>true</canSiege>
 	<canStageAttacks>true</canStageAttacks>
 	<leaderTitle>bishop</leaderTitle>
-	<factionIconPath>UI/Icon_Nod</factionIconPath>
+	<factionIconPath>UI/Icons/Factions/Nod</factionIconPath>
     <techLevel>Spacer</techLevel>
 	<factionNameMaker>NamerFactionNod</factionNameMaker>
 	<settlementNameMaker>NamerFactionBaseNod</settlementNameMaker>
@@ -180,6 +180,7 @@
 			</options>
 		</li>		
 	</pawnGroupMakers>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
 </FactionDef>
 
 <FactionDef ParentName="NodFactionBase">
