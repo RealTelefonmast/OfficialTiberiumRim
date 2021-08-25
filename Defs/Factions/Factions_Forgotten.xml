@@ -5,8 +5,7 @@
 	<pawnSingular>>forgotten one</pawnSingular>
 	<pawnsPlural>forgotten horde</pawnsPlural>
     <categoryTag>Tribal</categoryTag>
-	<listOrderPriority>100</listOrderPriority>
-	<settlementGenerationWeight>1</settlementGenerationWeight>
+	<hidden>true</hidden>
 	<requiredCountAtGameStart>1</requiredCountAtGameStart>
 	<canMakeRandomly>true</canMakeRandomly>
 	<canSiege>false</canSiege>

@@ -5,9 +5,8 @@
 	<pawnSingular>GDI troop</pawnSingular>
 	<pawnsPlural>GDI troops</pawnsPlural>
     <categoryTag>Spacer</categoryTag>
-	<listOrderPriority>80</listOrderPriority>
-	<settlementGenerationWeight>1</settlementGenerationWeight>
 	<requiredCountAtGameStart>1</requiredCountAtGameStart>
+	<hidden>true</hidden>
 	<canMakeRandomly>true</canMakeRandomly>
 	<canSiege>true</canSiege>
 	<canStageAttacks>true</canStageAttacks>

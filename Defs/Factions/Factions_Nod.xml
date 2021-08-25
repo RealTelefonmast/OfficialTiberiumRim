@@ -5,9 +5,8 @@
 	<pawnSingular>>Nod troop</pawnSingular>
 	<pawnsPlural>Nod troops</pawnsPlural>
     <categoryTag>Spacer</categoryTag>
-	<listOrderPriority>90</listOrderPriority>
-	<settlementGenerationWeight>1</settlementGenerationWeight>
 	<requiredCountAtGameStart>1</requiredCountAtGameStart>
+	<hidden>true</hidden>
 	<canMakeRandomly>true</canMakeRandomly>
 	<canSiege>true</canSiege>
 	<canStageAttacks>true</canStageAttacks>
