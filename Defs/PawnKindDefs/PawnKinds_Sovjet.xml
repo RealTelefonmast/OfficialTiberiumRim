@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
+<!--
 	<PawnKindDef Name="SovjetBase" Abstract="True">
 		<race>Human</race>
 		<defaultFactionType>SovjetFaction</defaultFactionType>
@@ -17,7 +17,6 @@
 	<PawnKindDef ParentName="SovjetBase">
 		<defName>Volkov</defName>
 		<combatPower>200</combatPower>
-		<!-- Volkov should not have negative health/mental traits -->
 		<disallowedTraits>
 			<li>Nudist</li>
 		</disallowedTraits>
@@ -56,24 +55,21 @@
 				<bodyPartGroup>Legs</bodyPartGroup>
 			</li>
 		</specificApparelRequirements>
-		<!--<apparelColor>(200,120,20)</apparelColor>
+		<apparelColor>(200,120,20)</apparelColor>
 		<specificApparelRequirements>
 			<li>Apparel_Duster</li>
 		</specificApparelRequirements>
 		<apparelTags>
 			<li>Volkov_Arsenal</li>
 		</apparelTags>
-		-->
 		<techHediffsMaxAmount>4</techHediffsMaxAmount>
 		<biocodeWeaponChance>1</biocodeWeaponChance>
 		<techHediffsRequired>
 			<li>AugmentedEye</li>
 			<li>CannonImplant</li>
-			<!--
 			<li>CannonImplant</li>
 			<li>RegenerativeNanites</li>
-			-->
 		</techHediffsRequired>
 	</PawnKindDef>
-
+-->
 </Defs>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
+<!--
 	<FactionDef ParentName="FactionBase">
 		<defName>ScrinFactionPlayer</defName>
 		<label>Scrin Mining Force</label>
@@ -39,5 +39,5 @@
 			</thingDefs>
 		</apparelStuffFilter>
 	</FactionDef>
-  
+  -->
 </Defs>

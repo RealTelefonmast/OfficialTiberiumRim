@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<FactionDef ParentName="FactionBase" Name="ForgottenFactionBase" Abstract="True">
+	<pawnSingular>>forgotten one</pawnSingular>
+	<pawnsPlural>forgotten horde</pawnsPlural>
+    <categoryTag>Tribal</categoryTag>
+	<listOrderPriority>100</listOrderPriority>
+	<settlementGenerationWeight>0.5</settlementGenerationWeight>
+	<requiredCountAtGameStart>1</requiredCountAtGameStart>
+	<canMakeRandomly>true</canMakeRandomly>
+	<canSiege>false</canSiege>
+	<canStageAttacks>false</canStageAttacks>
+	<leaderTitle>khan</leaderTitle>
+	<factionIconPath>UI/Icon_GDI</factionIconPath>
+	<techLevel>Industrial</techLevel>
+	<factionNameMaker>NamerFactionPirate</factionNameMaker>
+	<settlementNameMaker>NamerSettlementPirate</settlementNameMaker>
+    <allowedCultures><li>Rustican</li></allowedCultures>
+    <disallowedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Animist</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+    </disallowedMemes>
+    <structureMemeWeights>
+      <Structure_TheistEmbodied MayRequire="Ludeon.RimWorld.Ideology">1</Structure_TheistEmbodied>
+      <Structure_TheistAbstract MayRequire="Ludeon.RimWorld.Ideology">2</Structure_TheistAbstract>
+      <Structure_Ideological MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Ideological>
+      <Structure_Archist MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Archist>
+      <Structure_OriginChristian MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginChristian>
+      <Structure_OriginIslamic MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginIslamic>
+      <Structure_OriginHindu MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginHindu>
+      <Structure_OriginBuddhist MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginBuddhist>
+    </structureMemeWeights>
+	<colorSpectrum>
+		<li>(255, 255, 255)</li>
+		<li>(255, 255, 255)</li>
+	</colorSpectrum>
+	<backstoryCategories>
+		<li>Industrial</li>
+	</backstoryCategories>
+	<geneticVariance>0.8</geneticVariance>
+	<caravanTraderKinds>
+		<li>Base_Outlander_Standard</li>
+	</caravanTraderKinds>
+	<visitorTraderKinds>
+		<li>Visitor_Outlander_Standard</li>
+	</visitorTraderKinds>
+	<baseTraderKinds>
+		<li>Base_Faction_Standard</li>
+	</baseTraderKinds>
+    <allowedArrivalTemperatureRange>-50~100</allowedArrivalTemperatureRange>
+	<maxPawnCostPerTotalPointsCurve>
+		<points>
+			<li>(0, 1000)</li>
+			<li>(50, 2500)</li>
+			<li>(500, 5000)</li>
+			<li>(1000, 10000)</li>
+			<li>(100000, 100000)</li>
+		</points>
+	</maxPawnCostPerTotalPointsCurve>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(300,  0)</li>
+        <li>(700,  1)</li>
+        <li>(1400, 1.5)</li>
+        <li>(2800, 2)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+	<autoFlee>true</autoFlee>
+	<pawnGroupMakers>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>100</commonality>
+			<disallowedStrategies>
+				<li>Siege</li>
+			</disallowedStrategies>
+			<options>
+				<Forgotten_HeadChief>5</Forgotten_HeadChief>
+				<Forgotten_GoodMutant>15</Forgotten_GoodMutant>
+				<Forgotten_BadMutant>55</Forgotten_BadMutant>
+				<Forgotten_Warrior>10</Forgotten_Warrior>
+				<Forgotten_Heavygunner>12</Forgotten_Heavygunner>
+				<Forgotten_Ironback>3</Forgotten_Ironback>
+			</options>
+		</li>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>100</commonality>
+			<disallowedStrategies>
+				<li>ImmediateAttackSappers</li>
+				<li>Siege</li>
+			</disallowedStrategies>
+			<options>
+				<Forgotten_BadMutant>70</Forgotten_BadMutant>
+				<TiberiumTerror>3</TiberiumTerror>
+				<BigTiberiumFiend>7</BigTiberiumFiend>
+				<TiberiumFiend>10</TiberiumFiend>
+				<Boomfiend>10</Boomfiend>
+			</options>
+		</li>
+		<li>
+			<kindDef>Peaceful</kindDef>
+			<options>
+				<Forgotten_BadMutant>40</Forgotten_BadMutant>
+				<Forgotten_GoodMutant>10</Forgotten_GoodMutant>
+			</options>
+		</li>
+		<li>
+			<kindDef>Settlement</kindDef>
+			<options>
+				<Forgotten_HeadChief>100</Forgotten_HeadChief>
+				<Forgotten_GoodMutant>50</Forgotten_GoodMutant>
+				<Forgotten_BadMutant>50</Forgotten_BadMutant>
+				<Forgotten_Warrior>15</Forgotten_Warrior>
+				<Forgotten_Heavygunner>15</Forgotten_Heavygunner>
+				<Forgotten_Ironback>15</Forgotten_Ironback>
+				<TiberiumTerror>15</TiberiumTerror>
+				<BigTiberiumFiend>15</BigTiberiumFiend>
+				<TiberiumFiend>15</TiberiumFiend>
+				</options>
+		</li>
+	</pawnGroupMakers>
+</FactionDef>
+
+<FactionDef ParentName="ForgottenFactionBase">
+	<defName>Forgotten</defName>
+	<label>Forgotten Mutants</label>
+	<description>A gang of mutants.\n\nMutants don't sow, they don't build, and they rarely trade. They enrich themselves mostly by raiding and robbing the more productive groups in the area.\n\nTheir technology level depends mostly on who they've managed to steal from recently. Mostly they carry gunpowder weapons, though the luckier ones may have advanced energy weapons, and some may just like to stab people at close range.</description>
+</FactionDef>
+
+</Defs>

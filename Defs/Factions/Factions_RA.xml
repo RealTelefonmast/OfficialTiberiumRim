@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	
+	<!--
 	<FactionDef ParentName="FactionBase">
 		<defName>SovjetFaction</defName>
 		<label>sovjets</label>
@@ -22,7 +22,7 @@
 		<rescueesCanJoin>true</rescueesCanJoin>
 		<autoFlee>false</autoFlee>
 		<geneticVariance>1</geneticVariance>
-		<!-- TODO SOVJET CLOTHING -->
+
 		<apparelStuffFilter>
 			<thingDefs>
 				<li>Synthread</li>
@@ -31,5 +31,5 @@
 			</thingDefs>
 		</apparelStuffFilter>
 	</FactionDef>
-  
+  -->
 </Defs>

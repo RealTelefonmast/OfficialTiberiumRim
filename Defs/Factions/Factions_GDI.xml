@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<FactionDef ParentName="FactionBase" Name="GDIFactionBase" Abstract="True">
+	<pawnSingular>GDI troop</pawnSingular>
+	<pawnsPlural>GDI troops</pawnsPlural>
+    <categoryTag>Spacer</categoryTag>
+	<listOrderPriority>80</listOrderPriority>
+	<settlementGenerationWeight>0.5</settlementGenerationWeight>
+	<requiredCountAtGameStart>1</requiredCountAtGameStart>
+	<canMakeRandomly>true</canMakeRandomly>
+	<canSiege>true</canSiege>
+	<canStageAttacks>true</canStageAttacks>
+	<leaderTitle>general</leaderTitle>
+	<factionIconPath>UI/Icon_GDI</factionIconPath>
+    <techLevel>Spacer</techLevel>
+	<factionNameMaker>NamerFactionGDI</factionNameMaker>
+	<settlementNameMaker>NamerFactionBaseGDI</settlementNameMaker>
+    <allowedCultures><li>Rustican</li></allowedCultures>
+    <disallowedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Animist</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+    </disallowedMemes>
+    <structureMemeWeights>
+      <Structure_TheistEmbodied MayRequire="Ludeon.RimWorld.Ideology">1</Structure_TheistEmbodied>
+      <Structure_TheistAbstract MayRequire="Ludeon.RimWorld.Ideology">2</Structure_TheistAbstract>
+      <Structure_Ideological MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Ideological>
+      <Structure_Archist MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Archist>
+      <Structure_OriginChristian MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginChristian>
+      <Structure_OriginIslamic MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginIslamic>
+      <Structure_OriginHindu MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginHindu>
+      <Structure_OriginBuddhist MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginBuddhist>
+    </structureMemeWeights>
+	<colorSpectrum>
+		<li>(255, 255, 255)</li>
+		<li>(255, 255, 255)</li>
+	</colorSpectrum>
+	<backstoryCategories>
+		<li>Civil</li>
+	</backstoryCategories>
+	<geneticVariance>0.8</geneticVariance>
+	<caravanTraderKinds>
+		<li>Caravan_Tiberium_BulkGoods</li>
+		<li>Caravan_Tiberium_CombatSupplier</li>
+		<li>Caravan_Tiberium_Exotic</li>
+	</caravanTraderKinds>
+	<visitorTraderKinds>
+		<li>Visitor_GDI_Standard</li>
+	</visitorTraderKinds>
+	<baseTraderKinds>
+		<li>Base_Faction_Standard</li>
+	</baseTraderKinds>
+    <allowedArrivalTemperatureRange>-100~200</allowedArrivalTemperatureRange>
+	<maxPawnCostPerTotalPointsCurve>
+		<points>
+			<li>(0, 1000)</li>
+			<li>(50, 2500)</li>
+			<li>(500, 5000)</li>
+			<li>(1000, 10000)</li>
+			<li>(100000, 100000)</li>
+		</points>
+	</maxPawnCostPerTotalPointsCurve>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(300,  0)</li>
+        <li>(700,  1)</li>
+        <li>(1400, 1.8)</li>
+        <li>(2800, 2.2)</li>
+        <li>(4000, 2.6)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+	<autoFlee>true</autoFlee>
+	<pawnGroupMakers>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>100</commonality>
+			<disallowedStrategies>
+				<li>Siege</li>
+			</disallowedStrategies>
+			<options>
+				<GDI_Citizen>15</GDI_Citizen>
+				<GDI_Soldier>30</GDI_Soldier>
+				<GDI_Officer>30</GDI_Officer>
+				<GDI_ZoneTrooper>10</GDI_ZoneTrooper>
+				<GDI_Wolverine>10</GDI_Wolverine>
+				<GDI_Disruptor>5</GDI_Disruptor>
+				<GDI_SiegeTrooper>5</GDI_SiegeTrooper>
+			</options>
+		</li>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>75</commonality>
+			<disallowedStrategies>
+				<li>ImmediateAttack</li>
+				<li>ImmediateAttackSmart</li>
+				<li>StageThenAttack</li>
+				<li>ImmediateAttackSappers</li>					
+			</disallowedStrategies>
+			<options>
+				<GDI_Citizen>35</GDI_Citizen>
+				<GDI_Soldier>35</GDI_Soldier>
+				<GDI_Officer>15</GDI_Officer>
+				<GDI_SiegeTrooper>15</GDI_SiegeTrooper>
+			</options>
+		</li>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>75</commonality>
+			<disallowedStrategies>
+				<li>ImmediateAttackSappers</li>
+				<li>Siege</li>
+			</disallowedStrategies>
+			<options>
+				<GDI_ZoneTrooper>50</GDI_ZoneTrooper>
+				<GDI_Wolverine>20</GDI_Wolverine>
+				<GDI_Momtank>10</GDI_Momtank>
+				<GDI_Disruptor>15</GDI_Disruptor>
+				<GDI_General>5</GDI_General>
+			</options>
+		</li>
+		<li>
+			<kindDef>Peaceful</kindDef>
+			<options>
+				<GDI_Citizen>50</GDI_Citizen>
+				<GDI_Soldier>35</GDI_Soldier>
+				<GDI_Officer>15</GDI_Officer>
+			</options>
+		</li>
+		<li>
+			<kindDef>Trader</kindDef>
+			<traders>
+				<GDI_Trader>1</GDI_Trader>
+			</traders>
+			<carriers>
+				<Tiffalo>10</Tiffalo>
+			</carriers>
+			<guards>
+				<GDI_Citizen>30</GDI_Citizen>
+				<GDI_Soldier>30</GDI_Soldier>
+				<GDI_Officer>20</GDI_Officer>
+				<GDI_ZoneTrooper>20</GDI_ZoneTrooper>
+			</guards>
+		</li>
+		<li>
+			<kindDef>Settlement</kindDef>
+			<options>
+				<GDI_Citizen>50</GDI_Citizen>
+				<GDI_Soldier>50</GDI_Soldier>
+				<GDI_General>100</GDI_General>
+				<GDI_Officer>15</GDI_Officer>
+				<GDI_SiegeTrooper>15</GDI_SiegeTrooper>
+				<GDI_ZoneTrooper>15</GDI_ZoneTrooper>
+				<GDI_Wolverine>15</GDI_Wolverine>
+				<GDI_Momtank>15</GDI_Momtank>
+			</options>
+		</li>
+	</pawnGroupMakers>
+</FactionDef>
+
+<FactionDef ParentName="GDIFactionBase">
+	<defName>GDI</defName>
+	<label>Galactic Defense Initiative</label>
+	<description>The Galactic Defense Initiative, formerly known as Global Defense Initiative on planet Earth, is the current government of this planet. Their purpose is to keep up world peace and free it from terrorism, especially from the Brotherhood of Nod. After winning the battle at the Tiber river the GDI was reformed and started colonizing space, with the mission of cleansing the Universe from the Scrin. Unfortunately the Brotherhood of Nod followed their plan with the opposite idea.</description>
+</FactionDef>
+
+</Defs>

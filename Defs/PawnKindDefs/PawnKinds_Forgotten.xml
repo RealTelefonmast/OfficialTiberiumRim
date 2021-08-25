@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <PawnKindDef Name="ForgottenBase" Abstract="True">
+    <defaultFactionType>Forgotten</defaultFactionType>
+    <backstoryCategories>
+      <li>Raider</li>
+	  <li>Tribe</li>
+    </backstoryCategories>
+	<chemicalAddictionChance>0.3</chemicalAddictionChance>
+    <baseRecruitDifficulty>0.6</baseRecruitDifficulty>
+	<gearHealthRange>0.4~1.2</gearHealthRange>
+	<techHediffsChance>0.2</techHediffsChance>
+    <techHediffsMoney>500~1000</techHediffsMoney>
+    <techHediffsTags>
+      <li>ImplantEmpireCommon</li>
+    </techHediffsTags>
+    <initialWillRange>1~2</initialWillRange>
+    <initialResistanceRange>5~10</initialResistanceRange>
+    <invNutrition>2.55</invNutrition>
+    <invFoodDef>Pemmican</invFoodDef>
+	<inventoryOptions>
+      <skipChance>0.6</skipChance>
+      <subOptionsChooseOne>
+        <li>
+          <choiceChance>70</choiceChance>
+          <thingDef>Silver</thingDef>
+          <countRange>
+            <min>10</min>
+            <max>25</max>
+          </countRange>
+        </li>
+        <li>
+          <choiceChance>20</choiceChance>
+          <thingDef>Gold</thingDef>
+          <countRange>
+            <min>10</min>
+            <max>25</max>
+          </countRange>
+        </li>
+        <li>
+          <choiceChance>10</choiceChance>
+          <thingDef>TRBattleChip</thingDef>
+          <countRange>
+            <min>1</min>
+            <max>3</max>
+          </countRange>
+        </li>
+      </subOptionsChooseOne>
+	</inventoryOptions>
+    <apparelAllowHeadgearChance>1</apparelAllowHeadgearChance>
+	<aiAvoidCover>false</aiAvoidCover>
+	<race>Human</race>
+  </PawnKindDef>
+  
+  <PawnKindDef ParentName="ForgottenBase">
+    <defName>Forgotten_BadMutant</defName>
+    <label>mutant scavenger</label>
+    <combatPower>40</combatPower>
+    <itemQuality>Poor</itemQuality>
+    <isFighter>true</isFighter>
+    <weaponMoney>400~750</weaponMoney>
+    <apparelMoney>800~1500</apparelMoney>
+	<apparelTags>
+	  <li>ForgottenSet</li>  
+    </apparelTags>
+    <weaponTags>
+      <li>Shardgun</li>
+      <li>Gun</li>
+      <li>NonNeolithicOnlyMelee</li>
+    </weaponTags>
+  </PawnKindDef>
+
+  <PawnKindDef Name="GoodMutantBase" ParentName="ForgottenBase">
+    <defName>Forgotten_GoodMutant</defName>
+    <label>mutant marauder</label>
+    <combatPower>100</combatPower>
+    <isFighter>true</isFighter>
+    <weaponMoney>2000</weaponMoney>
+    <apparelMoney>3000</apparelMoney>
+	<aiAvoidCover>true</aiAvoidCover>
+	<apparelTags>
+	  <li>ForgottenSet</li>  
+    </apparelTags>
+    <weaponTags>
+      <li>Shardgun</li>
+    </weaponTags>
+  </PawnKindDef>
+ 
+  <PawnKindDef ParentName="GoodMutantBase">
+    <defName>Forgotten_HeadChief</defName>
+    <label>khan</label>
+    <labelPlural>Quriltai</labelPlural>
+	<aiAvoidCover>true</aiAvoidCover>
+	<combatPower>100</combatPower>
+    <weaponMoney>20000</weaponMoney>
+    <apparelMoney>20000</apparelMoney>
+	<weaponTags>
+	  <li>GDIRailgun</li>	
+	  <li>NodChemicalSpray</li>
+	</weaponTags>
+    <factionLeader>true</factionLeader>
+    <minGenerationAge>30</minGenerationAge>
+    <maxGenerationAge>70</maxGenerationAge>
+  </PawnKindDef>
+  
+  <PawnKindDef ParentName="GoodMutantBase">
+    <defName>Forgotten_Warrior</defName>
+    <label>mutant hijacker</label>
+    <combatPower>150</combatPower>
+    <maxGenerationAge>65</maxGenerationAge>
+	<aiAvoidCover>true</aiAvoidCover>
+    <weaponMoney>7500</weaponMoney>
+    <apparelMoney>20000</apparelMoney>
+	<weaponTags>
+	  <li>GDIRailgun</li>	
+	  <li>NodChemicalSpray</li>
+	</weaponTags>
+	<biocodeWeaponChance>0.8</biocodeWeaponChance>
+  </PawnKindDef>
+  
+  <PawnKindDef ParentName="GoodMutantBase">
+    <defName>Forgotten_Heavygunner</defName>
+    <label>mutant heavygunner</label>
+    <combatPower>150</combatPower>
+    <maxGenerationAge>65</maxGenerationAge>
+	<aiAvoidCover>true</aiAvoidCover>
+    <weaponMoney>7500</weaponMoney>
+    <apparelMoney>10000</apparelMoney>
+    <weaponTags>
+      <li>ShardgunB</li>
+    </weaponTags>
+  </PawnKindDef>
+
+</Defs>
