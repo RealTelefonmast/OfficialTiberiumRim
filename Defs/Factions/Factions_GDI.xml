@@ -27,6 +27,20 @@
       <Structure_OriginHindu MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginHindu>
       <Structure_OriginBuddhist MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginBuddhist>
     </structureMemeWeights>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Outlander</li>
+        </categories>
+        <commonality>0.5</commonality>
+      </li>
+      <li>
+        <categories>
+          <li>Offworld</li>
+        </categories>
+        <commonality>0.5</commonality>
+      </li>
+    </backstoryFilters>
 	<colorSpectrum>
 		<li>(255, 255, 255)</li>
 		<li>(255, 255, 255)</li>

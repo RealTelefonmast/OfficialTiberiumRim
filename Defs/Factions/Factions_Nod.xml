@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
 <FactionDef ParentName="OutlanderFactionBase" Name="NodFactionBase" Abstract="True">
@@ -27,6 +28,20 @@
       <Structure_OriginHindu MayRequire="Ludeon.RimWorld.Ideology">0</Structure_OriginHindu>
       <Structure_OriginBuddhist MayRequire="Ludeon.RimWorld.Ideology">0</Structure_OriginBuddhist>
     </structureMemeWeights>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Outlander</li>
+        </categories>
+        <commonality>0.75</commonality>
+      </li>
+      <li>
+        <categories>
+          <li>Offworld</li>
+        </categories>
+        <commonality>0.25</commonality>
+      </li>
+    </backstoryFilters>
 	<colorSpectrum>
 		<li>(255, 255, 255)</li>
 		<li>(255, 255, 255)</li>
