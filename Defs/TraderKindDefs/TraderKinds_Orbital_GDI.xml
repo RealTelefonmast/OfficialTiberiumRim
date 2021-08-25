@@ -159,9 +159,6 @@
 	<defName>Oribital_NodTrader</defName>
 	<label>Nod Chapelship</label>
     <orbital>true</orbital>
-    <defName>Orbital_PirateMerchant</defName>
-    <label>slave ship</label>
-    <orbital>true</orbital>
     <requestable>false</requestable>
     <category>Slaver</category>
     <commonalityMultFromPopulationIntent>
