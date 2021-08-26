@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<ThingDef ParentName="Forgotten_Armor"> <!--balance standard - flak jacket-->
+	<TiberiumRim.TRThingDef ParentName="Forgotten_Armor"> <!--balance standard - flak jacket-->
 		<defName>Apparel_ForgottenMail</defName>
 		<description>Forgotten's scrapmetal mail. Very cost-effective gear but very heavy, vulnerable to flame attack.\n\nScrap set has some protection against tiberium, but not perfect.</description>
 		<label>Forgotten scrap mail</label>
@@ -55,9 +55,9 @@
 			</defaultOutfitTags>
 			<useDeflectMetalEffect>true</useDeflectMetalEffect>
 		</apparel>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
-	<ThingDef ParentName="Forgotten_Armor"> <!--balance standard - recon armor -20%-->
+	<TiberiumRim.TRThingDef ParentName="Forgotten_Armor"> <!--balance standard - recon armor -20%-->
 		<defName>Apparel_ForgottenSuit</defName>
 		<description>Forgotten's scrapmetal armor. Very cost-effective gear but very heavy, vulnerable to flame attack.\n\nScrap set has some protection against tiberium, but not perfect.</description>
 		<label>Forgotten scrap armor</label>
@@ -109,9 +109,9 @@
 			</defaultOutfitTags>
 			<useDeflectMetalEffect>true</useDeflectMetalEffect>
 		</apparel>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 		
-	<ThingDef ParentName="Forgotten_Armor"> <!--balance standard - recon helmet -20% -->
+	<TiberiumRim.TRThingDef ParentName="Forgotten_Armor"> <!--balance standard - recon helmet -20% -->
 		<defName>ForgottenMask</defName>
 		<label>Forgotten scrap mask</label>
 		<description>Forgotten's scrapmetal helmet. Very cost-effective gear but very heavy, vulnerable to flame attack.\n\nScrap set has some protection against tiberium, but not perfect.</description>
@@ -161,6 +161,6 @@
 		<thingCategories>
 			<li>TRHelmetsETC</li>
 		</thingCategories>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
 </Defs>

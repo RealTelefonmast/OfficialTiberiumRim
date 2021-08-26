@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	
-	<ThingDef ParentName="ApparelUniqueMakeableBase_TR"> <!--balance standard - flak vest-->
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR"> <!--balance standard - flak vest-->
 		<defName>Jumpsuit</defName>
 		<description>A simple jumpsuit to improve comfort while wearing heavy armor.\n\nJumpsuit has little protection against tiberium.</description>
 		<label>jumpsuit</label>
@@ -72,9 +72,9 @@
 			-->
 			<useDeflectMetalEffect>true</useDeflectMetalEffect>
 		</apparel>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
-	<ThingDef ParentName="ApparelUniqueMakeableBase_TR"> <!--balance standard - flak jacket-->
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR"> <!--balance standard - flak jacket-->
 		<defName>TiberiumSuit</defName>
 		<description>With this suit you can savely traverse any Tiberium infested terrain. It shields the wearer from getting infected by Tiberium and also any possible radiation.\n\nTiberium protection set has perfect protection against tiberium.</description>
 		<label>Tiberium protection suit</label>
@@ -141,9 +141,9 @@
 				<li>Worker</li>
 			</defaultOutfitTags>
 		</apparel>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
-	<ThingDef ParentName="ApparelUniqueMakeableBase_TR"> <!--balance standard - simple helmet-->
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR"> <!--balance standard - simple helmet-->
 		<defName>TiberiumSuitMask</defName>
 		<label>Tiberium protection mask</label>
 		<description>This mask is a necessity for anyone attempting to traverse Tiberium infested lands. It shields the head from radiation and filters the toxic Tiberium gases and even particles from a Toxic Fallout.\n\nTiberium protection set has perfect protection against tiberium.</description>
@@ -211,7 +211,7 @@
 				<styleDef>RavensMask</styleDef>
 			</li>
 		</randomStyle>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
   <ThingStyleDef>
     <defName>RavensMask</defName>
