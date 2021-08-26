@@ -11,7 +11,7 @@ namespace TiberiumRim
     {
         static TiberiumContent()
         {
-            PreGenerateFlowMapVectors();
+
         }
 
         private static int Compare(IntVec3 a, IntVec3 b, int gridWidth)
@@ -21,6 +21,7 @@ namespace TiberiumRim
             return aValue - bValue;
         }
 
+        
         public static void PreGenerateFlowMapVectors()
         {
             var radius = FlowMapRadius;
@@ -78,6 +79,7 @@ namespace TiberiumRim
             GenerateTextureFrom(FlowMapColorsSouth_Inverted, FlowMapSize, "TestFlowMapSouth_Inverted");
             GenerateTextureFrom(FlowMapColorsWest_Inverted,  FlowMapSizeRotated, "TestFlowMapWest_Inverted");
         }
+        
 
         private static void FillFlowMapColors(ref Color[] pixels, int pixelDensity, float radius, Vector3 origin, Vector3 cellFlow, IntVec3 cell, int size, bool inv = false)
         {

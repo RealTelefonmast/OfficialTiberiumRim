@@ -123,6 +123,7 @@
     <Compile Include="Defs\TRThingCategoryDef.cs" />
     <Compile Include="GameParts\MapComps\StructureCacheMapInfo.cs" />
     <Compile Include="GameParts\Networks\AtmosphericNetwork\Comp_ANS_AirVent.cs" />
+    <Compile Include="GameParts\Networks\AtmosphericNetwork\Comp_ANS_Filter.cs" />
     <Compile Include="GameParts\Networks\Building_NetworkStructureTransmitter.cs" />
     <Compile Include="GameParts\Networks\Comp_NetworkStructure.cs" />
     <Compile Include="Comps\Comp_PollutionSource.cs" />
