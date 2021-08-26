@@ -91,7 +91,7 @@ namespace TiberiumRim
         private void TryPollute(IPollutionSource source)
         {
             if (!source.IsPolluting) return;
-            if (PollutionComps[source.Room].TryPollute(source.PollutionAmount))
+            if (PollutionComps[source.Room].TryAddPollution(source.PollutionAmount, out _))
             {
                 //TODO: effect on source...
             }

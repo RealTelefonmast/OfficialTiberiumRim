@@ -42,7 +42,6 @@ namespace TiberiumRim
             Rand.PopState();
             base.FinalizeMesh(MeshParts.All);
             yield break;
-            yield break;
         }
 
         private static Material Material(float coverage, int tile)
@@ -52,19 +51,36 @@ namespace TiberiumRim
             {
                 return TiberiumContent.TibTile_Glacier;
             }
+
+            if (coverage > 0.875)
+            {
+                return TiberiumContent.Infested_8;
+            }
             if (coverage > 0.75f)
             {
-                return TiberiumContent.TibTile_4;
+                return TiberiumContent.Infested_7;
+            }
+            else if (coverage > 0.625f)
+            {
+                return TiberiumContent.Infested_6;
             }
             else if (coverage > 0.5f)
             {
-                return TiberiumContent.TibTile_3;
+                return TiberiumContent.Infested_5;
+            }
+            else if (coverage > 0.375f)
+            {
+                return TiberiumContent.Infested_4;
             }
             else if (coverage > 0.25f)
             {
-                return TiberiumContent.TibTile_2;
+                return TiberiumContent.Infested_3;
             }
-            return TiberiumContent.TibTile_1;
+            else if (coverage > 0.125f)
+            {
+                return TiberiumContent.Infested_2;
+            }
+            return TiberiumContent.Infested_1;
         }
     }
 }

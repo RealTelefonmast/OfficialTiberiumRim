@@ -3,16 +3,6 @@
 	
 	<TR_NotDiscovered>This object can be discoverd.</TR_NotDiscovered>
 	
-	<!--TR Categories-->
-	<TRCat_Structure>Structures</TRCat_Structure>
-	<TRCat_Decoration>Decoration</TRCat_Decoration>
-	<TRCat_Processing>Processing</TRCat_Processing>
-	<TRCat_Defense>Defense</TRCat_Defense>
-	<TRCat_Research>Research</TRCat_Research>
-	<TRCat_Misc>Misc</TRCat_Misc>
-	<TRCat_Producers>Producers</TRCat_Producers>
-	<TRCat_Crystals>Crystals</TRCat_Crystals>
-	
 	<!-- Tiberium Crystal -->
 	<TR_TibDormant>Currently dormant, will not spread.</TR_TibDormant>
 	<TR_TibSuppressed>Suppressed, will not grow.</TR_TibSuppressed>

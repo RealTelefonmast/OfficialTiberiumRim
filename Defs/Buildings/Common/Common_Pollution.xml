@@ -5,6 +5,7 @@
 		<defName>AtmosphericNetwork</defName>
 		<containerLabel>Gas Storage</containerLabel>
 		<transmitter>AtmosphericPipe</transmitter>
+		<controllerDef>PollutionFilter</controllerDef>
 		<transmitterGraphic>
 			<texPath>Buildings/Common/Network/TNW_PipeAtlas</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -32,8 +33,9 @@
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<factionDesignation>Common</factionDesignation>
-		<TRCategory>Processing</TRCategory>
+		<TRCategory>Pollution</TRCategory>
 		<drawerType>MapMeshOnly</drawerType>
+		<tickerType>Normal</tickerType>
 		<graphicData>
 			<texPath>Buildings/Common/Pollution/Filter</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -113,7 +115,6 @@
 			</li>
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
-		<tickerType>Normal</tickerType>
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>	
 		<fillPercent>1</fillPercent>
@@ -127,7 +128,7 @@
 		<description>tbd</description>
 		<!--<thingClass></thingClass>-->
 		<factionDesignation>Common</factionDesignation>
-		<TRCategory>Processing</TRCategory>
+		<TRCategory>Pollution</TRCategory>
 		<hidden>true</hidden>
 		<costList>
 			<Steel>5</Steel>
@@ -178,7 +179,6 @@
 			<Flammability>0.2</Flammability>
 			<Beauty>-18</Beauty>
 		</statBases>
-		<tickerType>Never</tickerType>
 		<neverMultiSelect>true</neverMultiSelect>
 		<constructEffect>ConstructMetal</constructEffect>
 		<rotatable>false</rotatable>
@@ -198,8 +198,9 @@
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<factionDesignation>Common</factionDesignation>
-		<TRCategory>Processing</TRCategory>
+		<TRCategory>Pollution</TRCategory>
 		<drawerType>MapMeshOnly</drawerType>
+		<tickerType>Normal</tickerType>
 		<graphicData>
 			<texPath>Buildings/Common/Pollution/Vent</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -217,7 +218,7 @@
 			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+			<li Class="TiberiumRim.CompProperties_ANS_AirVent">
 				<networks>
 					<li>
 						<networkDef>AtmosphericNetwork</networkDef>
@@ -242,7 +243,6 @@
 				<li>TiberiumRefining_T5</li>
 			</tiberiumResearchTasks>
 		</requisites>
-		<tickerType>Normal</tickerType>
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>	
 		<fillPercent>1</fillPercent>
@@ -258,7 +258,7 @@
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<factionDesignation>Common</factionDesignation>
-		<TRCategory>Processing</TRCategory>
+		<TRCategory>Pollution</TRCategory>
 		<drawerType>MapMeshOnly</drawerType>
 		<size>(1,1)</size>
 		<graphicData>
@@ -277,7 +277,9 @@
 			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+			<li Class="TiberiumRim.CompProperties_ANS_AirVent">
+				<ventMode>Output</ventMode>
+				<gasThroughPut>10</gasThroughPut>
 				<networks>
 					<li>
 						<networkDef>AtmosphericNetwork</networkDef>

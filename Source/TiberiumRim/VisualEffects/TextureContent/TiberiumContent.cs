@@ -255,6 +255,8 @@ namespace TiberiumRim
         public static readonly Texture2D Banner = ContentFinder<Texture2D>.Get("UI/Menu/Banner", true);
         public static readonly Texture2D LockedBanner = ContentFinder<Texture2D>.Get("UI/Menu/LockedBanner", true);
 
+        public static readonly Texture2D TopBar = ContentFinder<Texture2D>.Get("UI/Menu/TopBar", true);
+
         public static readonly Texture2D Undiscovered = ContentFinder<Texture2D>.Get("UI/Menu/Undiscovered", true);
         public static readonly Texture2D Fact_Undisc = ContentFinder<Texture2D>.Get("UI/Menu/Fact_Undiscovered", true);
         public static readonly Texture2D Des_Undisc = ContentFinder<Texture2D>.Get("UI/Menu/Des_Undiscovered", true);
@@ -314,16 +316,16 @@ namespace TiberiumRim
         public static readonly Texture2D RedTiberium = ContentFinder<Texture2D>.Get("Tiberium/Red/Tiberium_Red2");
 
         //--World
-        public static readonly Material Infested_1 = MaterialPool.MatFrom("World/Tile/Tib_1", ShaderDatabase.WorldOverlayTransparentLit, 3505);
-        public static readonly Material Infested_2 = MaterialPool.MatFrom("World/Tile/Tib_2", ShaderDatabase.WorldOverlayTransparentLit, 3505);
-        public static readonly Material Infested_3 = MaterialPool.MatFrom("World/Tile/Tib_3", ShaderDatabase.WorldOverlayTransparentLit, 3505);
-        public static readonly Material Infested_4 = MaterialPool.MatFrom("World/Tile/Tib_4", ShaderDatabase.WorldOverlayTransparentLit, 3505);
+        public static readonly Material Infested_1 = MaterialPool.MatFrom("World/Tile/Tib1", ShaderDatabase.WorldOverlayAdditive, 3505);
+        public static readonly Material Infested_2 = MaterialPool.MatFrom("World/Tile/Tib2", ShaderDatabase.WorldOverlayAdditive, 3505);
+        public static readonly Material Infested_3 = MaterialPool.MatFrom("World/Tile/Tib3", ShaderDatabase.WorldOverlayAdditive, 3505);
+        public static readonly Material Infested_4 = MaterialPool.MatFrom("World/Tile/Tib4", ShaderDatabase.WorldOverlayAdditive, 3505);
+        public static readonly Material Infested_5 = MaterialPool.MatFrom("World/Tile/Tib5", ShaderDatabase.WorldOverlayAdditive, 3505);
+        public static readonly Material Infested_6 = MaterialPool.MatFrom("World/Tile/Tib6", ShaderDatabase.WorldOverlayAdditive, 3505);
+        public static readonly Material Infested_7 = MaterialPool.MatFrom("World/Tile/Tib7", ShaderDatabase.WorldOverlayAdditive, 3505);
+        public static readonly Material Infested_8   = MaterialPool.MatFrom("World/Tile/Tib8", ShaderDatabase.WorldOverlayAdditive, 3505);
 
-        public static readonly Material TibTile_1 = MaterialPool.MatFrom("World/Old/Tib_1", ShaderDatabase.WorldOverlayTransparentLit, 3505);
-        public static readonly Material TibTile_2 = MaterialPool.MatFrom("World/Old/Tib_2", ShaderDatabase.WorldOverlayTransparentLit, 3505);
-        public static readonly Material TibTile_3 = MaterialPool.MatFrom("World/Old/Tib_3", ShaderDatabase.WorldOverlayTransparentLit, 3505);
-        public static readonly Material TibTile_4 = MaterialPool.MatFrom("World/Old/Tib_4", ShaderDatabase.WorldOverlayTransparentLit, 3505);
-        public static readonly Material TibTile_Glacier = MaterialPool.MatFrom("World/Old/Tib_4", ShaderDatabase.WorldOverlayTransparentLit, 3505);
+        public static readonly Material TibTile_Glacier = MaterialPool.MatFrom("World/Tile/TiberiumGlacier", ShaderDatabase.WorldOverlayTransparentLit, 3505);
 
         //--Research
         public static readonly Texture2D Research_Active = ContentFinder<Texture2D>.Get("UI/Icons/Research/Active");

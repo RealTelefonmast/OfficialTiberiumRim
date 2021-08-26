@@ -122,6 +122,7 @@
     <Compile Include="Defs\TRGroupDefOf.cs" />
     <Compile Include="Defs\TRThingCategoryDef.cs" />
     <Compile Include="GameParts\MapComps\StructureCacheMapInfo.cs" />
+    <Compile Include="GameParts\Networks\AtmosphericNetwork\Comp_ANS_AirVent.cs" />
     <Compile Include="GameParts\Networks\Building_NetworkStructureTransmitter.cs" />
     <Compile Include="GameParts\Networks\Comp_NetworkStructure.cs" />
     <Compile Include="Comps\Comp_PollutionSource.cs" />
@@ -228,7 +229,7 @@
     <Compile Include="GameParts\MapComps\TiberiumWaterInfo.cs" />
     <Compile Include="GameParts\Networks\Comp_NetworkStructureCrafter.cs" />
     <Compile Include="GameParts\Networks\Comp_NetworkStructureTransmitter.cs" />
-    <Compile Include="GameParts\Networks\AtmosphericNetwork\Comp_GasNetworkStructure.cs" />
+    <Compile Include="GameParts\Networks\AtmosphericNetwork\Comp_AtmosphericNetworkStructure.cs" />
     <Compile Include="GameParts\Networks\AtmosphericValueType.cs" />
     <Compile Include="GameParts\Networks\ContainerProps.cs" />
     <Compile Include="GameParts\Networks\Gizmo_NetworkInfo.cs" />
@@ -253,6 +254,9 @@
     <Compile Include="GameParts\Networks\TiberiumNetwork\CompTNS_Refinery.cs" />
     <Compile Include="GameParts\Networks\TiberiumNetwork\CompTNS_Turret.cs" />
     <Compile Include="GameParts\Networks\TiberiumNetwork\Comp_TiberiumNetworkStructure.cs" />
+    <Compile Include="GameParts\SegmentedPawn\PawnSegment.cs" />
+    <Compile Include="GameParts\SegmentedPawn\PawnSegmentTweener.cs" />
+    <Compile Include="GameParts\SegmentedPawn\PawnSegment_PawnFollower.cs" />
     <Compile Include="GameParts\PlaceWorkers\PlaceWorker_AtTurretHub.cs" />
     <Compile Include="GameParts\PlaceWorkers\PlaceWorker_BeamHub.cs" />
     <Compile Include="GameParts\PlaceWorkers\PlaceWorker_DoorFrame.cs" />
@@ -271,6 +275,7 @@
     <Compile Include="GameParts\PositionFilter.cs" />
     <Compile Include="GameParts\RadiationInfectionGrid.cs" />
     <Compile Include="GameParts\ScribeList.cs" />
+    <Compile Include="GameParts\SegmentedPawn\SegmentedPawn.cs" />
     <Compile Include="GameParts\SkyfallerValue.cs" />
     <Compile Include="GameParts\ThingValue.cs" />
     <Compile Include="GameParts\TiberiumFieldRuleset.cs" />
@@ -284,6 +289,7 @@
     <Compile Include="GameParts\World\SuperWeaponInfo.cs" />
     <Compile Include="GameParts\World\TiberiumWorldInfo.cs" />
     <Compile Include="GameParts\World\WorldComponent_TR.cs" />
+    <Compile Include="GameParts\World\WorldGenStep_TiberiumWorldLayer.cs" />
     <Compile Include="GameParts\World\WorldInfo.cs" />
     <Compile Include="GraphicsManager.cs" />
     <Compile Include="Hediffs\Comps\HediffComp_Draw.cs" />

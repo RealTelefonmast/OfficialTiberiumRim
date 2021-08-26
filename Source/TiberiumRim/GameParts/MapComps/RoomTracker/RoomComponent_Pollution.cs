@@ -137,9 +137,14 @@ namespace TiberiumRim
             markedDirty++;
         }
 
-        public bool TryPollute(int amount)
+        public bool TryAddPollution(int amount, out int actuallyAdded)
         {
-            return UsedContainer.TryPollute(amount);
+            return UsedContainer.TryAddValue(amount, out actuallyAdded);
+        }
+
+        public bool TryRemovePollution(int amount, out int actuallyRemoved)
+        {
+            return UsedContainer.TryRemoveValue(amount, out actuallyRemoved);
         }
 
         //Equalization Logic

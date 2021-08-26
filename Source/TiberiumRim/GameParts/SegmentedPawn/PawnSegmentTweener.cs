@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace TiberiumRim
 {
-    public class Comp_GasNetworkStructure : Comp_NetworkStructure
+    public class PawnSegmentTweener
     {
-
     }
 }

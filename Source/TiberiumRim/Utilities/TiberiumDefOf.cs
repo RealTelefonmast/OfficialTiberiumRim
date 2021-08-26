@@ -10,11 +10,15 @@ namespace TiberiumRim
         public static NetworkDef TiberiumNetwork;
         public static NetworkDef AtmosphericNetwork;
 
+        //Tiberium Network
         public static NetworkValueDef TibGreen;
         public static NetworkValueDef TibBlue;
         public static NetworkValueDef TibRed;
         public static NetworkValueDef TibSludge;
         public static NetworkValueDef TibGas;
+
+        //Atmospheric Network
+        public static NetworkValueDef TibPollution;
 
         //Factions
 

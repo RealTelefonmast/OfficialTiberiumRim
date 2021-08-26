@@ -58,6 +58,49 @@ namespace TiberiumRim
         }
         */
 
+        
+        [HarmonyPatch(typeof(Page_CreateWorldParams)), HarmonyPatch("DoWindowContents")]
+        public static class WindowContentsPatch
+        {
+            //private static MethodInfo changeMethod = AccessTools.Method(typeof(WindowContentsPatch), nameof(ChangeTiberiumCoverage));
+            //private static MethodInfo callOperand = AccessTools.Method(typeof(GUI), nameof(GUI.EndGroup));
+
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                MethodInfo changeMethod = AccessTools.Method(typeof(WindowContentsPatch), nameof(ChangeTiberiumCoverage));
+                MethodInfo callOperand = AccessTools.Method(typeof(GUI), nameof(GUI.EndGroup));
+
+                Log.Message("Patching 'DoWindowContents' of 'Page_CreateWorldParams'");
+
+                foreach (var code in instructions)
+                {
+                    //Log.Message($"Checking {code.opcode} with operand {code.operand}");
+                    if (code.opcode == OpCodes.Call && code.Calls(callOperand))
+                    {
+                        Log.Message($"Checking {code.opcode} with operand {code.operand}");
+                        yield return new CodeInstruction(OpCodes.Ldloc_S, 6);
+                        yield return new CodeInstruction(OpCodes.Ldloc_S, 7);
+
+                        yield return new CodeInstruction(OpCodes.Call, changeMethod);
+                    }
+                    yield return code;
+                }
+            }
+
+            public static void ChangeTiberiumCoverage(float curY, float width)
+            {
+                curY += 40;
+                float fullWidth = 200 + width;
+                var imageRect = new Rect(0, curY - 5f, fullWidth, 40);
+                Widgets.DrawShadowAround(imageRect);
+                GenUI.DrawTextureWithMaterial(imageRect, TiberiumContent.TopBar, null, new Rect(0,0,1,1));
+                Widgets.Label(new Rect(0f, curY, 200f, 30f), "Tiberium Coverage");
+                Rect newRect = new Rect(200, curY, width, 30f);
+                TiberiumRimMod.mod.settings.tiberiumCoverage = Widgets.HorizontalSlider(newRect, (float)TiberiumRimMod.mod.settings.tiberiumCoverage, 0f, 1, true, "Medium","None", "Full", 0.1f);
+            }
+        }
+        
+
         [HarmonyPatch(typeof(GenConstruct)), HarmonyPatch("CanPlaceBlueprintOver")]
         public static class TestPatch
         {
@@ -112,11 +155,11 @@ namespace TiberiumRim
                 //No airlocks, no job
                 if (airLock == null) return;
 
-                ___pawn.pather.StopDead();
                 //Start the airlock job and set the current job to be resumed
                 Job airlockJob = JobMaker.MakeJob(TiberiumDefOf.UseAirlock, airLock.GeneralCenter());
                 ___pawn.jobs.StartJob(airlockJob, JobCondition.Ongoing, null, true);
 
+                //Discard original path result
                 __result = false;
             }
         }
@@ -155,6 +198,7 @@ namespace TiberiumRim
 
                 yield return Toils_Goto.GotoCell(endPos.Cell, PathEndMode.OnCell);
 
+                yield return endToil;
                 yield return endToil;
             }
         }

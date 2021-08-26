@@ -31,6 +31,9 @@ namespace TiberiumRim
         public GraphicsSettings graphicsSettings = new GraphicsSettings();
         public bool UseCustomBackground = true;
 
+        //World Init Data
+        public float tiberiumCoverage = 0f;
+
         //Debug Settings
         public bool FirstStartUp = true;
 

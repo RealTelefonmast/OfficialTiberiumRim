@@ -36,6 +36,8 @@ namespace TiberiumRim
         public bool CapacityFull => TotalStored >= Capacity;
         public bool ContainsForbiddenType => AllStoredTypes.Any(t => !AcceptsType(t));
 
+        public IContainerHolder Parent => parentHolder;
+
         public NetworkValueDef MainValueType
         {
             get
@@ -58,8 +60,6 @@ namespace TiberiumRim
             get => acceptedTypes;
             set => acceptedTypes = value;
         }
-
-        public IContainerHolder Parent => parentHolder;
 
         public NetworkContainer() { }
 
@@ -88,10 +88,10 @@ namespace TiberiumRim
             }
             else
             {
-                Log.Warning($"Created NetworkContainer for {parent.Thing} without any allowed types!");
+                Log.Warning($"Created NetworkContainer for {Parent?.Thing} without any allowed types!");
             }
 
-            Log.Message($"Creating new container for {parentHolder.Thing} with capacity {Capacity} | acceptedTypes: {this.AcceptedTypes.ToStringSafeEnumerable()}");
+            Log.Message($"Creating new container for {Parent?.Thing} with capacity {Capacity} | acceptedTypes: {this.AcceptedTypes.ToStringSafeEnumerable()}");
         }
 
         public NetworkContainer Copy(IContainerHolder newHolder)
@@ -107,7 +107,7 @@ namespace TiberiumRim
 
         public void Parent_Destroyed(DestroyMode mode, Map previousMap)
         {
-            if (TotalStored <= 0 || mode == DestroyMode.Vanish) return;
+            if (Parent == null || TotalStored <= 0 || mode == DestroyMode.Vanish) return;
             if ((mode is DestroyMode.Deconstruct or DestroyMode.Refund) && props.leaveContainer)
             {
                 PortableContainer container = (PortableContainer)ThingMaker.MakeThing(TiberiumDefOf.PortableContainer);
@@ -163,7 +163,7 @@ namespace TiberiumRim
         //Helper Methods
         public void Notify_Full()
         {
-            parentHolder?.Notify_ContainerFull();
+            Parent?.Notify_ContainerFull();
         }
 
         public void Notify_AddedValue(NetworkValueDef valueType, float value)

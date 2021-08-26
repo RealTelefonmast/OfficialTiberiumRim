@@ -47,7 +47,7 @@ namespace TiberiumRim
             GameSettings ??= new GameSettingsInfo(world);
         }
 
-        public WorldComponent_TR(RimWorld.Planet.World world) : base(world)
+        public WorldComponent_TR(World world) : base(world)
         {
             GenerateInfos();
         }

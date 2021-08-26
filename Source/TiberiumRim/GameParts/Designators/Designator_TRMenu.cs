@@ -112,7 +112,7 @@ namespace TiberiumRim
 
                     Text.Anchor = TextAnchor.MiddleCenter;
                     Text.Font = GameFont.Small;
-                    string catLabel = ("TRCat_" + cat.defName).Translate();
+                    string catLabel = cat.LabelCap;
                     if (Text.CalcSize(catLabel).y > tabRect.width)
                     { Text.Font = GameFont.Tiny; }
                     Widgets.Label(tabRect, catLabel);
