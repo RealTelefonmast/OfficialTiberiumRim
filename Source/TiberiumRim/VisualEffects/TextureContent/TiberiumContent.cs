@@ -11,7 +11,6 @@ namespace TiberiumRim
     {
         static TiberiumContent()
         {
-
         }
 
         private static int Compare(IntVec3 a, IntVec3 b, int gridWidth)
@@ -258,6 +257,7 @@ namespace TiberiumRim
         public static readonly Texture2D LockedBanner = ContentFinder<Texture2D>.Get("UI/Menu/LockedBanner", true);
 
         public static readonly Texture2D TopBar = ContentFinder<Texture2D>.Get("UI/Menu/TopBar", true);
+        public static readonly Texture2D TibOptionBG = ContentFinder<Texture2D>.Get("UI/Menu/TibOptionBG", true);
 
         public static readonly Texture2D Undiscovered = ContentFinder<Texture2D>.Get("UI/Menu/Undiscovered", true);
         public static readonly Texture2D Fact_Undisc = ContentFinder<Texture2D>.Get("UI/Menu/Fact_Undiscovered", true);
