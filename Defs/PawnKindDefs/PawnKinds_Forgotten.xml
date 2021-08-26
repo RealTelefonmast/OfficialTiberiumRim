@@ -1,23 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <PawnKindDef Name="ForgottenBase" Abstract="True">
+  <PawnKindDef ParentName="MercenaryBase" Name="ForgottenBase" Abstract="True">
     <defaultFactionType>Forgotten</defaultFactionType>
-    <backstoryCategories>
-      <li>Raider</li>
-	  <li>Tribe</li>
-    </backstoryCategories>
-	<chemicalAddictionChance>0.3</chemicalAddictionChance>
+    <backstoryFiltersOverride>
+      <li>
+        <categories>
+			<li>Raider</li>
+			<li>Tribe</li>
+        </categories>
+      </li>
+    </backstoryFiltersOverride>
+    <backstoryCryptosleepCommonality>0.08</backstoryCryptosleepCommonality>
     <baseRecruitDifficulty>0.6</baseRecruitDifficulty>
 	<gearHealthRange>0.4~1.2</gearHealthRange>
-	<techHediffsChance>0.2</techHediffsChance>
-    <techHediffsMoney>500~1000</techHediffsMoney>
-    <techHediffsTags>
-      <li>ImplantEmpireCommon</li>
-    </techHediffsTags>
     <initialWillRange>1~2</initialWillRange>
     <initialResistanceRange>5~10</initialResistanceRange>
-    <invNutrition>2.55</invNutrition>
     <invFoodDef>Pemmican</invFoodDef>
 	<inventoryOptions>
       <skipChance>0.6</skipChance>
@@ -41,15 +39,22 @@
 	</inventoryOptions>
     <apparelAllowHeadgearChance>1</apparelAllowHeadgearChance>
 	<aiAvoidCover>false</aiAvoidCover>
-	<race>Human</race>
+	<itemQuality>Normal</itemQuality>
+	<combatPower>40</combatPower>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>0~10</range>
+      </li>
+    </skills>
   </PawnKindDef>
   
   <PawnKindDef ParentName="ForgottenBase">
     <defName>Forgotten_BadMutant</defName>
     <label>mutant scavenger</label>
     <combatPower>40</combatPower>
+	<canBeSapper>true</canBeSapper>
     <itemQuality>Poor</itemQuality>
-    <isFighter>true</isFighter>
     <weaponMoney>400~750</weaponMoney>
     <apparelMoney>800~1500</apparelMoney>
 	<apparelTags>
@@ -66,9 +71,8 @@
     <defName>Forgotten_GoodMutant</defName>
     <label>mutant marauder</label>
     <combatPower>100</combatPower>
-    <isFighter>true</isFighter>
-    <weaponMoney>2000</weaponMoney>
-    <apparelMoney>3000</apparelMoney>
+    <weaponMoney>2000~2000</weaponMoney>
+    <apparelMoney>3000~3000</apparelMoney>
 	<aiAvoidCover>true</aiAvoidCover>
 	<apparelTags>
 	  <li>ForgottenSet</li>  
@@ -81,28 +85,42 @@
   <PawnKindDef ParentName="GoodMutantBase">
     <defName>Forgotten_HeadChief</defName>
     <label>khan</label>
-    <labelPlural>Quriltai</labelPlural>
 	<aiAvoidCover>true</aiAvoidCover>
 	<combatPower>100</combatPower>
-    <weaponMoney>20000</weaponMoney>
-    <apparelMoney>20000</apparelMoney>
+    <weaponMoney>20000~20000</weaponMoney>
+    <apparelMoney>20000~20000</apparelMoney>
 	<weaponTags>
 	  <li>GDIRailgun</li>	
 	  <li>NodChemicalSpray</li>
 	</weaponTags>
     <factionLeader>true</factionLeader>
-    <minGenerationAge>30</minGenerationAge>
-    <maxGenerationAge>70</maxGenerationAge>
+    <itemQuality>Excellent</itemQuality>
+  </PawnKindDef>
+  
+  <PawnKindDef ParentName="GoodMutantBase">
+    <defName>Forgotten_Trader</defName>
+    <label>chief trader</label>
+	<aiAvoidCover>true</aiAvoidCover>
+	<combatPower>100</combatPower>
+    <weaponMoney>10000~10000</weaponMoney>
+    <apparelMoney>10000~10000</apparelMoney>
+	<weaponTags>
+	  <li>GDIRailgun</li>	
+	  <li>NodChemicalSpray</li>
+	</weaponTags>
+    <itemQuality>Excellent</itemQuality>
+    <trader>true</trader>
+	<biocodeWeaponChance>1</biocodeWeaponChance>
   </PawnKindDef>
   
   <PawnKindDef ParentName="GoodMutantBase">
     <defName>Forgotten_Warrior</defName>
     <label>mutant hijacker</label>
     <combatPower>150</combatPower>
-    <maxGenerationAge>65</maxGenerationAge>
+	<isGoodBreacher>true</isGoodBreacher>
 	<aiAvoidCover>true</aiAvoidCover>
-    <weaponMoney>7500</weaponMoney>
-    <apparelMoney>20000</apparelMoney>
+    <weaponMoney>7500~7500</weaponMoney>
+    <apparelMoney>20000~20000</apparelMoney>
 	<weaponTags>
 	  <li>GDIRailgun</li>	
 	  <li>NodChemicalSpray</li>
@@ -114,10 +132,9 @@
     <defName>Forgotten_Heavygunner</defName>
     <label>mutant heavygunner</label>
     <combatPower>150</combatPower>
-    <maxGenerationAge>65</maxGenerationAge>
 	<aiAvoidCover>true</aiAvoidCover>
-    <weaponMoney>7500</weaponMoney>
-    <apparelMoney>10000</apparelMoney>
+    <weaponMoney>7500~7500</weaponMoney>
+    <apparelMoney>10000~10000</apparelMoney>
     <weaponTags>
       <li>ShardgunB</li>
     </weaponTags>

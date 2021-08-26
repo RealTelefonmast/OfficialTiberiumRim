@@ -2,7 +2,7 @@
 <Defs>	
 
 	<!-- ====================================== Militia =========================================== -->
-	<TiberiumRim.TRThingDef ParentName="Nod_Armor"> <!--balance standard - AdvancedHelmet-->
+	<ThingDef ParentName="Nod_Armor"> <!--balance standard - AdvancedHelmet-->
 		<defName>Apparel_NodMilitiaMask</defName>
 		<label>Nod militia mask</label>
 		<description>The mask of the Nod militia.\n\nNod militia set has little protection against tiberium.</description>
@@ -57,9 +57,9 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</ThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="Nod_Armor"> <!--balance standard - flak jacket-->
+	<ThingDef ParentName="Nod_Armor"> <!--balance standard - flak jacket-->
 		<defName>Apparel_NodMilitiaSuit</defName>
 		<label>Nod militia robe</label>
 		<description>Robe of the Nod militia.\n\nNod militia set has little protection against tiberium.</description>
@@ -119,9 +119,9 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</ThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
+	<ThingDef ParentName="GDI_Armor">
 		<defName>Apparel_NodSoldierHelmet</defName>  <!--balance standard - recon helmet -->
 		<label>Nod soldier helmet</label>
 		<description>This helmet has an integrated Tiberium filter, might also repell some bullets if you're lucky.\n\nNod soldier set has some protection against tiberium, but not perfect.</description>
@@ -176,9 +176,9 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</ThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
+	<ThingDef ParentName="GDI_Armor">
 		<defName>Apparel_NodSoldierSuit</defName>  <!--balance standard - recon armor -->
 		<label>Nod soldier suit</label>
 		<description>This suit is optimized to resist most attacks.\n\nNod soldier set has some protection against tiberium, but not perfect.</description>
@@ -240,11 +240,11 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</ThingDef>
 	
 	<!-- ====================================== Officer =========================================== -->
 
-	<TiberiumRim.TRThingDef ParentName="Nod_Armor">
+	<ThingDef ParentName="Nod_Armor">
 		<defName>Apparel_NodOfficerHelmet</defName> <!--balance standard - AdvancedHelmet-->
 		<label>Nod officer hat</label>
 		<description>A cool helmet, perfect for every Nod officer!\n\nNod officer set has little protection against tiberium.</description>
@@ -301,9 +301,9 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</ThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="Nod_Armor"> <!--balance standard - flak jacket-->
+	<ThingDef ParentName="Nod_Armor"> <!--balance standard - flak jacket-->
 		<defName>Apparel_NodOfficerSuit</defName>
 		<label>Nod officer suit</label>
 		<description>A nice looking suit, perfect for a Nod Officer.\n\nNod officer set has little protection against tiberium.</description>
@@ -364,11 +364,11 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</ThingDef>
 	
 		<!-- ====================================== Blackhand =========================================== -->
 		
-	<TiberiumRim.TRThingDef ParentName="Nod_Armor">
+	<ThingDef ParentName="Nod_Armor">
 		<defName>Apparel_NodBlackHandHelmet</defName> <!--balance standard - cataphract helmet + -->
 		<label>Nod black hand helmet</label>
 		<description>This special helmet is used to protect the soldier from their fiery actions.\n\nNod black hand set has strong protection against tiberium, but not perfect.</description>
@@ -438,7 +438,7 @@
                 <styleDef>Apparel_NodBlackHandHelmet2</styleDef>
             </li>
         </randomStyle>
-    </TiberiumRim.TRThingDef>
+    </ThingDef>
 	
 	<ThingStyleDef>
 		<defName>Apparel_NodBlackHandHelmet2</defName>
@@ -451,7 +451,7 @@
 		</graphicData>
 	</ThingStyleDef>
 	
-	<TiberiumRim.TRThingDef ParentName="Nod_Armor">
+	<ThingDef ParentName="Nod_Armor">
 		<defName>Apparel_NodBlackHand</defName> <!--balance standard - cataphract armor + -->
 		<label>Nod black hand suit</label>
 		<description>The Black hand's own powered armor, meant for elite personnel in extreme, and fiery environments.\n\nNod black hand set has strong protection against tiberium, but not perfect.</description>
@@ -553,7 +553,7 @@
 				<ai_AvoidFriendlyFireRadius>5</ai_AvoidFriendlyFireRadius>
 			</li>
 		</verbs>
-	</TiberiumRim.TRThingDef>
+	</ThingDef>
 	
           
 </Defs>

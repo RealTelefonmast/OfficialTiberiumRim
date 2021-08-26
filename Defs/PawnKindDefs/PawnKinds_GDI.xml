@@ -1,23 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <PawnKindDef Name="GDIBase" Abstract="True">
+  <PawnKindDef ParentName="OutlanderBase" Name="GDIBase" Abstract="True">
     <defaultFactionType>GDI</defaultFactionType>
-    <backstoryCategories>
-      <li>Civil</li>
-    </backstoryCategories>
-    <chemicalAddictionChance>0.045</chemicalAddictionChance>
+    <backstoryFiltersOverride>
+      <li>
+        <categories>
+			<li>Civil</li>
+        </categories>
+      </li>
+    </backstoryFiltersOverride>
+	<backstoryCryptosleepCommonality>0.08</backstoryCryptosleepCommonality>
     <baseRecruitDifficulty>0.7</baseRecruitDifficulty>
-    <backstoryCryptosleepCommonality>0.04</backstoryCryptosleepCommonality>
+	<combatEnhancingDrugsChance>0.1</combatEnhancingDrugsChance>
     <gearHealthRange>0.4~1.2</gearHealthRange>
-	<techHediffsChance>0.2</techHediffsChance>
-    <techHediffsMoney>500~1000</techHediffsMoney>
-    <techHediffsTags>
-      <li>ImplantEmpireCommon</li>
-    </techHediffsTags>
     <initialWillRange>1~3</initialWillRange>
     <initialResistanceRange>15~24</initialResistanceRange>
-    <invNutrition>2.55</invNutrition>
     <invFoodDef>MealSurvivalPack</invFoodDef>
 	<inventoryOptions>
       <skipChance>0.6</skipChance>
@@ -41,7 +39,14 @@
 	</inventoryOptions>
     <apparelAllowHeadgearChance>1</apparelAllowHeadgearChance>
 	<aiAvoidCover>false</aiAvoidCover>
-	<race>Human</race>
+	<itemQuality>Normal</itemQuality>
+	<combatPower>40</combatPower>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>6~20</range>
+      </li>
+    </skills>
   </PawnKindDef>
 
   <PawnKindDef ParentName="GDIBase">
@@ -67,15 +72,14 @@
   <PawnKindDef ParentName="GDIBase">
     <defName>GDI_General</defName>
     <label>general</label>
-    <labelPlural>Generals</labelPlural>
     <combatPower>200</combatPower>
 	<apparelRequired>
 		<li>Apparel_GDIZoneHelmet</li>
 		<li>Apparel_GDIZoneSuit</li>
 		<li>Jumpsuit</li>
 	</apparelRequired>
-    <weaponMoney>20000</weaponMoney>
-    <apparelMoney>50000</apparelMoney>
+    <weaponMoney>20000~20000</weaponMoney>
+    <apparelMoney>50000~50000</apparelMoney>
     <apparelTags>
 	  <li>GDIZone</li>
 	  <li>BeltDefensePop</li>
@@ -87,14 +91,15 @@
     <factionLeader>true</factionLeader>
     <minGenerationAge>40</minGenerationAge>
     <maxGenerationAge>60</maxGenerationAge>
+    <itemQuality>Excellent</itemQuality>
   </PawnKindDef>
   
   <PawnKindDef ParentName="GDIBase">
     <defName>GDI_Trader</defName>
     <label>trade director</label>
     <combatPower>100</combatPower>
-    <weaponMoney>20000</weaponMoney>
-    <apparelMoney>50000</apparelMoney>
+    <weaponMoney>20000~20000</weaponMoney>
+    <apparelMoney>50000~50000</apparelMoney>
 	<apparelRequired>
 		<li>Apparel_GDIOfficerHelmet</li>
 		<li>Apparel_GDIOfficerSuit</li>
@@ -127,8 +132,8 @@
 		<li>BeltDefensePop</li>
 		<li>FactionInnerSet</li>
 	</apparelTags>
-    <weaponMoney>6000</weaponMoney>
-    <apparelMoney>15000</apparelMoney>
+    <weaponMoney>6000~6000</weaponMoney>
+    <apparelMoney>15000~15000</apparelMoney>
 	<weaponTags>
 		<li>GDIRailgun</li>
 		<li>GDIShatterer</li>
@@ -139,26 +144,17 @@
         <li>
           <choiceChance>50</choiceChance>
           <thingDef>Silver</thingDef>
-          <countRange>
-            <min>10</min>
-            <max>25</max>
-          </countRange>
+          <countRange>10~25</countRange>
         </li>
         <li>
           <choiceChance>30</choiceChance>
           <thingDef>Gold</thingDef>
-          <countRange>
-            <min>10</min>
-            <max>25</max>
-          </countRange>
+          <countRange>10~25</countRange>
         </li>
         <li>
           <choiceChance>20</choiceChance>
           <thingDef>TRBattleChip</thingDef>
-          <countRange>
-            <min>1</min>
-            <max>3</max>
-          </countRange>
+		  <countRange>1~3</countRange>
         </li>
       </subOptionsChooseOne>
 	</inventoryOptions>
@@ -170,7 +166,7 @@
 	<label>siege trooper</label>
     <combatPower>175</combatPower>
 	<aiAvoidCover>true</aiAvoidCover>
-	<canBeSapper>false</canBeSapper>
+	<canBeSapper>true</canBeSapper>
     <isGoodBreacher>true</isGoodBreacher>
     <apparelRequired>
 		<li>Apparel_GDISoldierHelmet</li>
@@ -182,8 +178,8 @@
 		<li>BeltDefensePop</li>
 		<li>FactionInnerSet</li>
 	</apparelTags>
-    <weaponMoney>7500</weaponMoney>
-    <apparelMoney>15000</apparelMoney>
+    <weaponMoney>7500~7500</weaponMoney>
+    <apparelMoney>15000~15000</apparelMoney>
 	<weaponTags>
 		<li>GDIMobileMortar</li>
 	</weaponTags>
@@ -191,28 +187,19 @@
       <skipChance>0.6</skipChance>
       <subOptionsChooseOne>
         <li>
-          <choiceChance>70</choiceChance>
+          <choiceChance>50</choiceChance>
           <thingDef>Silver</thingDef>
-          <countRange>
-            <min>10</min>
-            <max>25</max>
-          </countRange>
+          <countRange>10~25</countRange>
+        </li>
+        <li>
+          <choiceChance>30</choiceChance>
+          <thingDef>Gold</thingDef>
+          <countRange>10~25</countRange>
         </li>
         <li>
           <choiceChance>20</choiceChance>
-          <thingDef>Gold</thingDef>
-          <countRange>
-            <min>10</min>
-            <max>25</max>
-          </countRange>
-        </li>
-        <li>
-          <choiceChance>10</choiceChance>
           <thingDef>TRBattleChip</thingDef>
-          <countRange>
-            <min>1</min>
-            <max>3</max>
-          </countRange>
+		  <countRange>1~3</countRange>
         </li>
       </subOptionsChooseOne>
 	</inventoryOptions>
@@ -233,8 +220,8 @@
 			<li>BeltDefensePop</li>
 			<li>FactionInnerSet</li>
 		</apparelTags>
-		<weaponMoney>3500</weaponMoney>
-		<apparelMoney>7500</apparelMoney>
+		<weaponMoney>3500~3500</weaponMoney>
+		<apparelMoney>7500~7500</apparelMoney>
 		<weaponTags>
 			<li>GDIRifle</li>
 			<li>SniperRifle</li>
@@ -254,8 +241,8 @@
 			<li>GDISoldier</li>
 			<li>FactionInnerSet</li>
 		</apparelTags>
-		<weaponMoney>1600</weaponMoney>
-		<apparelMoney>7500</apparelMoney>
+		<weaponMoney>1600~1600</weaponMoney>
+		<apparelMoney>7500~7500</apparelMoney>
 		<weaponTags>
 			<li>Gun</li>
 			<li>GDIRifle</li>

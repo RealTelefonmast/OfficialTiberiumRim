@@ -2,7 +2,7 @@
 <Defs>
 
 	<!-- ============== Soldier ============================= -->
-	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
+	<ThingDef ParentName="GDI_Armor">
 		<defName>Apparel_GDISoldierHelmet</defName>  <!--balance standard - recon helmet -->
 		<label>GDI soldier helmet</label>
 		<description>This helmet has an integrated Tiberium filter, might also repell some bullets if you're lucky.\n\nGDI soldier set has some protection against tiberium, but not perfect.</description>
@@ -66,7 +66,7 @@
                 <styleDef>GDISoldierHelmet2</styleDef>
             </li>
         </randomStyle>
-    </TiberiumRim.TRThingDef>
+    </ThingDef>
 
 	<ThingStyleDef>
 		<defName>GDISoldierHelmet2</defName>
@@ -79,7 +79,7 @@
 		</graphicData>
 	</ThingStyleDef>
 	
-	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
+	<ThingDef ParentName="GDI_Armor">
 		<defName>Apparel_GDISoldierSuit</defName>  <!--balance standard - recon armor -->
 		<label>GDI soldier suit</label>
 		<description>This suit is optimized to resist most attacks.\n\nGDI soldier set has some protection against tiberium, but not perfect.</description>
@@ -141,11 +141,11 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>	
+	</ThingDef>	
 	
 	<!-- ==================== Officer ===================== -->
 	
-	<TiberiumRim.TRThingDef ParentName="GDI_Armor"> <!--balance standard - AdvancedHelmet-->
+	<ThingDef ParentName="GDI_Armor"> <!--balance standard - AdvancedHelmet-->
 		<defName>Apparel_GDIOfficerHelmet</defName>
 		<label>GDI officer hat</label>
 		<description>A shique cap, perfect for every GDI officer!\n\nGDI officer set has little protection against tiberium.</description>
@@ -201,9 +201,9 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</ThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="GDI_Armor"> <!--balance standard - flak jacket-->
+	<ThingDef ParentName="GDI_Armor"> <!--balance standard - flak jacket-->
 		<defName>Apparel_GDIOfficerSuit</defName>
 		<label>GDI officer suit</label>
 		<description>A nice looking suit, perfect for a GDI Officer.\n\nGDI officer set has little protection against tiberium.</description>
@@ -263,11 +263,11 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</ThingDef>
 	
 	<!-- Engineer -->
 	
-	<TiberiumRim.TRThingDef ParentName="GDI_Armor"> <!--balance standard - PowerArmorHelmet but low armor rating-->
+	<ThingDef ParentName="GDI_Armor"> <!--balance standard - PowerArmorHelmet but low armor rating-->
 		<defName>Apparel_GDIEngineerMask</defName>
 		<label>GDI Engineer Mask</label>
 		<description>This is the mask of a true engineer. Improves work skills!\n\nGDI Engineer set has little protection against tiberium.</description>
@@ -324,9 +324,9 @@
 				<Crafting>8</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</ThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
+	<ThingDef ParentName="GDI_Armor">
 		<defName>Apparel_GDIEngineerSuit</defName> <!--balance standard - PowerArmor but low armor rating-->
 		<label>GDI Engineer suit</label>
 		<description>This suit is optimized for any type of work. Improves work abilities.\n\nGDI Engineer set has little protection against tiberium.</description>
@@ -388,11 +388,11 @@
 				<Crafting>8</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</ThingDef>
 	
 	<!-- ====================================== GDI Zone Trooper =========================================== -->
 
-	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
+	<ThingDef ParentName="GDI_Armor">
 		<defName>Apparel_GDIZoneHelmet</defName> <!--balance standard - cataphract helmet ++ -->
 		<label>GDI zone helmet</label>
 		<description>A head part of the GDI Zone Trooper armor.\n\nGDI zone set has perfect protection against tiberium.</description>
@@ -452,9 +452,9 @@
 				<Crafting>12</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</ThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
+	<ThingDef ParentName="GDI_Armor">
 		<defName>Apparel_GDIZoneSuit</defName> <!--balance standard - cataphract armor ++ -->
 		<label>GDI zone suit</label>
 		<description>A GDI Zone Trooper suit.\n\nGDI zone set has perfect protection against tiberium.</description>
@@ -551,6 +551,6 @@
 				</targetParams>
 			</li>
     </verbs>
-	</TiberiumRim.TRThingDef>
+	</ThingDef>
 	
 </Defs>

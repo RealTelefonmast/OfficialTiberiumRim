@@ -1,5 +1,4 @@
-﻿
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
 <FactionDef ParentName="OutlanderFactionBase" Name="NodFactionBase" Abstract="True">
@@ -8,25 +7,26 @@
     <categoryTag>Spacer</categoryTag>
 	<canMakeRandomly>true</canMakeRandomly>
 	<leaderTitle>bishop</leaderTitle>
+	<leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
+    <fixedLeaderKinds>
+      <li>Nod_Bishop</li>
+    </fixedLeaderKinds>
 	<factionIconPath>UI/Icons/Factions/Nod</factionIconPath>
 	<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
     <techLevel>Spacer</techLevel>
 	<factionNameMaker>NamerFactionNod</factionNameMaker>
 	<settlementNameMaker>NamerFactionBaseNod</settlementNameMaker>
+    <requiredMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Loyalist</li>
+    </requiredMemes>
     <disallowedMemes>
-      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Animist</li>
       <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
       <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
     </disallowedMemes>
     <structureMemeWeights>
-      <Structure_TheistEmbodied MayRequire="Ludeon.RimWorld.Ideology">1</Structure_TheistEmbodied>
-      <Structure_TheistAbstract MayRequire="Ludeon.RimWorld.Ideology">2</Structure_TheistAbstract>
-      <Structure_Ideological MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Ideological>
       <Structure_Archist MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Archist>
       <Structure_OriginChristian MayRequire="Ludeon.RimWorld.Ideology">1</Structure_OriginChristian>
-      <Structure_OriginIslamic MayRequire="Ludeon.RimWorld.Ideology">0</Structure_OriginIslamic>
-      <Structure_OriginHindu MayRequire="Ludeon.RimWorld.Ideology">0</Structure_OriginHindu>
-      <Structure_OriginBuddhist MayRequire="Ludeon.RimWorld.Ideology">0</Structure_OriginBuddhist>
     </structureMemeWeights>
     <backstoryFilters>
       <li>
@@ -43,8 +43,7 @@
       </li>
     </backstoryFilters>
 	<colorSpectrum>
-		<li>(255, 255, 255)</li>
-		<li>(255, 255, 255)</li>
+		<li>(1, 1, 1)</li>
 	</colorSpectrum>
 	<caravanTraderKinds>
 		<li>Caravan_Tiberium_BulkGoods</li>
@@ -58,6 +57,7 @@
 		<li>Base_Faction_Standard</li>
 	</baseTraderKinds>
     <allowedArrivalTemperatureRange>-100~200</allowedArrivalTemperatureRange>
+    <raidLootMaker>NodRaidLootMaker</raidLootMaker>
 	<maxPawnCostPerTotalPointsCurve>
 		<points>
 			<li>(0, 1000)</li>
@@ -87,36 +87,30 @@
 			<options>
 				<Nod_Follower>15</Nod_Follower>
 				<Nod_Officer>30</Nod_Officer>
+				<Nod_Soldier>30</Nod_Soldier>
 				<Nod_Militia>30</Nod_Militia>
+				<Nod_MilitiaRocket>5</Nod_MilitiaRocket>
 				<Nod_BlackHand>10</Nod_BlackHand>
+				<!--
 				<Nod_Buggy>10</Nod_Buggy>
 				<Nod_Flametank>5</Nod_Flametank>
-				<Nod_MilitiaRocket>5</Nod_MilitiaRocket>
+				-->				
 			</options>
 		</li>
 		<li>
 			<kindDef>Combat</kindDef>
 			<commonality>75</commonality>
-			<disallowedStrategies>
-				<li>ImmediateAttack</li>
-				<li>ImmediateAttackSmart</li>
-				<li>StageThenAttack</li>
-				<li>ImmediateAttackSappers</li>					
-			</disallowedStrategies>
 			<options>
 				<Nod_Follower>35</Nod_Follower>
 				<Nod_Militia>35</Nod_Militia>
 				<Nod_Officer>15</Nod_Officer>
+				<Nod_Soldier>30</Nod_Soldier>
 				<Nod_MilitiaRocket>15</Nod_MilitiaRocket>
 			</options>
 		</li>
 		<li>
 			<kindDef>Combat</kindDef>
 			<commonality>50</commonality>
-			<disallowedStrategies>
-				<li>ImmediateAttackSappers</li>
-				<li>Siege</li>
-			</disallowedStrategies>
 			<options>
 				<Nod_Fanatic>100</Nod_Fanatic>
 			</options>
@@ -124,17 +118,16 @@
 		<li>
 			<kindDef>Combat</kindDef>
 			<commonality>75</commonality>
-			<disallowedStrategies>
-				<li>ImmediateAttackSappers</li>
-				<li>Siege</li>
-			</disallowedStrategies>
 			<options>
+				<Nod_Bishop>5</Nod_Bishop>
+				<Nod_Soldier>30</Nod_Soldier>
 				<Nod_BlackHand>50</Nod_BlackHand>
+				<!---
 				<Nod_Buggy>15</Nod_Buggy>
 				<Nod_Avatar>10</Nod_Avatar>
 				<Nod_Purifier>5</Nod_Purifier>
 				<Nod_Flametank>15</Nod_Flametank>
-				<Nod_Bishop>5</Nod_Bishop>
+				-->
 			</options>
 		</li>
 		<li>
@@ -142,6 +135,7 @@
 			<options>
 				<Nod_Follower>50</Nod_Follower>
 				<Nod_Militia>35</Nod_Militia>
+				<Nod_Soldier>30</Nod_Soldier>
 				<Nod_Officer>15</Nod_Officer>
 			</options>
 		</li>
@@ -156,6 +150,7 @@
 			<guards>
 				<Nod_Follower>30</Nod_Follower>				
 				<Nod_Militia>30</Nod_Militia>
+				<Nod_Soldier>30</Nod_Soldier>
 				<Nod_Officer>20</Nod_Officer>
 				<Nod_BlackHand>20</Nod_BlackHand>
 			</guards>
@@ -163,17 +158,20 @@
 		<li>
 			<kindDef>Settlement</kindDef>
 			<options>
+				<Nod_Bishop>100</Nod_Bishop>
 				<Nod_Follower>50</Nod_Follower>	
 				<Nod_Fanatic>15</Nod_Fanatic>
-				<Nod_Bishop>100</Nod_Bishop>
 				<Nod_Officer>15</Nod_Officer>
+				<Nod_Soldier>30</Nod_Soldier>
 				<Nod_Militia>50</Nod_Militia>
 				<Nod_MilitiaRocket>15</Nod_MilitiaRocket>
 				<Nod_BlackHand>15</Nod_BlackHand>
+				<!--
 				<Nod_Avatar>15</Nod_Avatar>
 				<Nod_Purifier>15</Nod_Purifier>
 				<Nod_Flametank>15</Nod_Flametank>
 				<Nod_Buggy>15</Nod_Buggy>
+				-->
 			</options>
 		</li>		
 	</pawnGroupMakers>
@@ -186,5 +184,23 @@
 	<maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
 	<configurationListOrderPriority>0</configurationListOrderPriority>
 </FactionDef>
+
+  <ThingSetMakerDef>
+    <defName>NodRaidLootMaker</defName>
+    <root Class="ThingSetMaker_MarketValue">
+      <fixedParams>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+            <li>MedicineIndustrial</li>
+            <li>ComponentIndustrial</li>
+            <li>MealSurvivalPack</li>
+            <li>Neutroamine</li>
+          </thingDefs>
+        </filter>
+      </fixedParams>
+    </root>
+  </ThingSetMakerDef>
+
 
 </Defs>

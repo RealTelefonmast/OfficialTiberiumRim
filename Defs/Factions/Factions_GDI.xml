@@ -7,20 +7,24 @@
     <categoryTag>Spacer</categoryTag>
 	<canMakeRandomly>true</canMakeRandomly>
 	<leaderTitle>general</leaderTitle>
+	<leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
+    <fixedLeaderKinds>
+      <li>GDI_General</li>
+    </fixedLeaderKinds>
 	<factionIconPath>UI/Icons/Factions/GDI</factionIconPath>
 	<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
     <techLevel>Spacer</techLevel>
 	<factionNameMaker>NamerFactionGDI</factionNameMaker>
 	<settlementNameMaker>NamerFactionBaseGDI</settlementNameMaker>
+    <requiredMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">HumanPrimacy</li>
+    </requiredMemes>
     <disallowedMemes>
-      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Animist</li>
       <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
       <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
     </disallowedMemes>
     <structureMemeWeights>
-      <Structure_TheistEmbodied MayRequire="Ludeon.RimWorld.Ideology">1</Structure_TheistEmbodied>
-      <Structure_TheistAbstract MayRequire="Ludeon.RimWorld.Ideology">2</Structure_TheistAbstract>
-      <Structure_Ideological MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Ideological>
       <Structure_Archist MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Archist>
       <Structure_OriginChristian MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginChristian>
       <Structure_OriginIslamic MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginIslamic>
@@ -42,8 +46,7 @@
       </li>
     </backstoryFilters>
 	<colorSpectrum>
-		<li>(255, 255, 255)</li>
-		<li>(255, 255, 255)</li>
+		<li>(1, 1, 1)</li>
 	</colorSpectrum>
 	<caravanTraderKinds>
 		<li>Caravan_Tiberium_BulkGoods</li>
@@ -57,6 +60,7 @@
 		<li>Base_Faction_Standard</li>
 	</baseTraderKinds>
     <allowedArrivalTemperatureRange>-100~200</allowedArrivalTemperatureRange>
+    <raidLootMaker>GDIRaidLootMaker</raidLootMaker>
 	<maxPawnCostPerTotalPointsCurve>
 		<points>
 			<li>(0, 1000)</li>
@@ -80,28 +84,21 @@
 		<li>
 			<kindDef>Combat</kindDef>
 			<commonality>100</commonality>
-			<disallowedStrategies>
-				<li>Siege</li>
-			</disallowedStrategies>
 			<options>
 				<GDI_Citizen>15</GDI_Citizen>
 				<GDI_Soldier>30</GDI_Soldier>
 				<GDI_Officer>30</GDI_Officer>
 				<GDI_ZoneTrooper>10</GDI_ZoneTrooper>
+				<!--
 				<GDI_Wolverine>10</GDI_Wolverine>
 				<GDI_Disruptor>5</GDI_Disruptor>
 				<GDI_SiegeTrooper>5</GDI_SiegeTrooper>
+				-->
 			</options>
 		</li>
 		<li>
 			<kindDef>Combat</kindDef>
 			<commonality>75</commonality>
-			<disallowedStrategies>
-				<li>ImmediateAttack</li>
-				<li>ImmediateAttackSmart</li>
-				<li>StageThenAttack</li>
-				<li>ImmediateAttackSappers</li>					
-			</disallowedStrategies>
 			<options>
 				<GDI_Citizen>35</GDI_Citizen>
 				<GDI_Soldier>35</GDI_Soldier>
@@ -112,16 +109,14 @@
 		<li>
 			<kindDef>Combat</kindDef>
 			<commonality>75</commonality>
-			<disallowedStrategies>
-				<li>ImmediateAttackSappers</li>
-				<li>Siege</li>
-			</disallowedStrategies>
 			<options>
+				<GDI_General>5</GDI_General>
 				<GDI_ZoneTrooper>50</GDI_ZoneTrooper>
+				<!--
 				<GDI_Wolverine>20</GDI_Wolverine>
 				<GDI_Momtank>10</GDI_Momtank>
 				<GDI_Disruptor>15</GDI_Disruptor>
-				<GDI_General>5</GDI_General>
+				-->				
 			</options>
 		</li>
 		<li>
@@ -150,14 +145,16 @@
 		<li>
 			<kindDef>Settlement</kindDef>
 			<options>
+				<GDI_General>100</GDI_General>
 				<GDI_Citizen>50</GDI_Citizen>
 				<GDI_Soldier>50</GDI_Soldier>
-				<GDI_General>100</GDI_General>
 				<GDI_Officer>15</GDI_Officer>
 				<GDI_SiegeTrooper>15</GDI_SiegeTrooper>
 				<GDI_ZoneTrooper>15</GDI_ZoneTrooper>
+				<!--
 				<GDI_Wolverine>15</GDI_Wolverine>
 				<GDI_Momtank>15</GDI_Momtank>
+				-->
 			</options>
 		</li>
 	</pawnGroupMakers>
@@ -171,5 +168,22 @@
 	<maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
 	<configurationListOrderPriority>0</configurationListOrderPriority>
 </FactionDef>
+
+  <ThingSetMakerDef>
+    <defName>GDIRaidLootMaker</defName>
+    <root Class="ThingSetMaker_MarketValue">
+      <fixedParams>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+            <li>MedicineIndustrial</li>
+            <li>ComponentIndustrial</li>
+            <li>MealSurvivalPack</li>
+            <li>Neutroamine</li>
+          </thingDefs>
+        </filter>
+      </fixedParams>
+    </root>
+  </ThingSetMakerDef>
 
 </Defs>
