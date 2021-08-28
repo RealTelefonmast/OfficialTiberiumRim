@@ -3,7 +3,7 @@
 
 	<TerrainDef ParentName="FloorBase">
 		<defName>NodConcreteTile</defName>
-		<label>Nod Concrete Tile</label>
+		<label>Nod concrete tile</label>
 		<renderPrecedence>240</renderPrecedence>
 		<description>Nod concrete tiles.</description>
 		<texturePath>Terrain/Nod/ConcreteTile</texturePath>
@@ -19,9 +19,9 @@
 	
 	<TerrainDef ParentName="FloorBase">
 		<defName>NodConcreteFloor</defName>
-		<label>Nod Concrete Floor</label>
+		<label>Nod concrete floor</label>
 		<renderPrecedence>240</renderPrecedence>
-		<description>Nod concrete tiles.</description>
+		<description>Nod concrete floor.</description>
 		<texturePath>Terrain/Nod/ConcreteField</texturePath>
 		<statBases>
 			<Beauty>-1</Beauty>
@@ -35,9 +35,9 @@
 	
 	<TerrainDef ParentName="FloorBase">
 		<defName>NodDangerTile</defName>
-		<label>Nod Striped Tile</label>
+		<label>Nod striped floor</label>
 		<renderPrecedence>240</renderPrecedence>
-		<description>Nod danger tiles.</description>
+		<description>Nod danger floor.</description>
 		<texturePath>Terrain/Nod/Stripedpattern</texturePath>
 		<statBases>
 			<Beauty>-2</Beauty>
@@ -50,11 +50,28 @@
 	</TerrainDef>
 	
 	<TerrainDef ParentName="FloorBase">
+		<defName>NodCarbonPlate</defName>
+		<label>Nod carbon floor</label>
+		<renderPrecedence>240</renderPrecedence>
+		<description>Nod carbon floor. Beautiful, and clean.</description>
+		<texturePath>Terrain/Nod/CarbonScaffold</texturePath>
+		<statBases>
+			<Beauty>4</Beauty>
+			<WorkToBuild>450</WorkToBuild>
+			<Cleanliness>0.5</Cleanliness>
+		</statBases>
+		<costList>
+			<Nod_CarbonPlate>1</Nod_CarbonPlate>
+		</costList>
+		<constructEffect>ConstructMetal</constructEffect>
+	</TerrainDef>
+	
+	<TerrainDef ParentName="FloorBase">
 		<defName>NodCarbonTile</defName>
-		<label>Nod Carbon Tile</label>
+		<label>Nod carbon tile</label>
 		<renderPrecedence>240</renderPrecedence>
 		<description>Nod carbon tiles. Beautiful, and clean.</description>
-		<texturePath>Terrain/Nod/CarbonScaffold</texturePath>
+		<texturePath>Terrain/Nod/CarbonScaffoldTile</texturePath>
 		<statBases>
 			<Beauty>4</Beauty>
 			<WorkToBuild>450</WorkToBuild>
@@ -70,7 +87,7 @@
 	
 	<TerrainDef ParentName="FloorBase">
 		<defName>GDIConcreteTile</defName>
-		<label>GDI Concrete Tile</label>
+		<label>GDI concrete tile</label>
 		<renderPrecedence>240</renderPrecedence>
 		<description>GDI concrete tiles.</description>
 		<texturePath>Terrain/GDI/ConcreteTile</texturePath>
@@ -86,9 +103,9 @@
 	
 	<TerrainDef ParentName="FloorBase">
 		<defName>GDIConcreteFloor</defName>
-		<label>GDI Concrete Floor</label>
+		<label>GDI concrete floor</label>
 		<renderPrecedence>240</renderPrecedence>
-		<description>GDI concrete tiles.</description>
+		<description>GDI concrete floor.</description>
 		<texturePath>Terrain/GDI/ConcreteField</texturePath>
 		<statBases>
 			<Beauty>-1</Beauty>
@@ -102,9 +119,9 @@
 	
 	<TerrainDef ParentName="FloorBase">
 		<defName>GDIDangerTile</defName>
-		<label>GDI Striped Tile</label>
+		<label>GDI striped floor</label>
 		<renderPrecedence>240</renderPrecedence>
-		<description>GDI striped tiles.</description>
+		<description>GDI striped floor.</description>
 		<texturePath>Terrain/GDI/Stripedpattern</texturePath>
 		<statBases>
 			<Beauty>-1</Beauty>
@@ -117,11 +134,28 @@
 	</TerrainDef>
 	
 	<TerrainDef ParentName="FloorBase">
+		<defName>GDIReinforcedPlate</defName>
+		<label>GDI reinforced floor</label>
+		<renderPrecedence>240</renderPrecedence>
+		<description>GDI reinforced floor. Beautiful, and clean.</description>
+		<texturePath>Terrain/GDI/ReinforcedScaffold</texturePath>
+		<statBases>
+			<Beauty>4</Beauty>
+			<WorkToBuild>450</WorkToBuild>
+			<Cleanliness>0.5</Cleanliness>
+		</statBases>
+		<costList>
+			<GDI_ReinforcedPlate>1</GDI_ReinforcedPlate>
+		</costList>
+		<constructEffect>ConstructMetal</constructEffect>
+	</TerrainDef>
+	
+	<TerrainDef ParentName="FloorBase">
 		<defName>GDIReinforcedTile</defName>
-		<label>GDI Reinforced Tile</label>
+		<label>GDI reinforced tile</label>
 		<renderPrecedence>240</renderPrecedence>
 		<description>GDI reinforced tiles. Beautiful, and clean.</description>
-		<texturePath>Terrain/GDI/ReinforcedScaffold</texturePath>
+		<texturePath>Terrain/GDI/ReinforcedScaffoldTile</texturePath>
 		<statBases>
 			<Beauty>4</Beauty>
 			<WorkToBuild>450</WorkToBuild>
@@ -135,15 +169,15 @@
 	
 	<TerrainDef>
 		<defName>ScrinFloor</defName>
-		<label>scrin construction ground</label>
+		<label>scrin landed site</label>
 		<renderPrecedence>240</renderPrecedence>
 		<description>---</description>
 		<texturePath>Terrain/Scrin/ScrinFloor</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<pathCost>2</pathCost>
 		<statBases>
-		  <Beauty>-30</Beauty>
-		  <Cleanliness>-50</Cleanliness>
+		  <Beauty>-5</Beauty>
+		  <Cleanliness>-5</Cleanliness>
 		</statBases>
 		<scatterType>Rocky</scatterType>
 		<fertility>0</fertility>
