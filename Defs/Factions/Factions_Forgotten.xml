@@ -2,7 +2,7 @@
 <Defs>
 
 <FactionDef ParentName="OutlanderFactionBase" Name="ForgottenFactionBase" Abstract="True">
-	<pawnSingular>>forgotten one</pawnSingular>
+	<pawnSingular>forgotten one</pawnSingular>
 	<pawnsPlural>forgotten horde</pawnsPlural>
     <categoryTag>Tribal</categoryTag>
 	<canMakeRandomly>true</canMakeRandomly>
@@ -102,9 +102,9 @@
 			</options>
 		</li>
 		<li>
-			<kindDef>Forgotten_Trader</kindDef>
+			<kindDef>Trader</kindDef>
 			<traders>
-				<Nod_Trader>1</Nod_Trader>
+				<Forgotten_Trader>1</Forgotten_Trader>
 			</traders>
 			<carriers>
 				<Tiffalo>10</Tiffalo>

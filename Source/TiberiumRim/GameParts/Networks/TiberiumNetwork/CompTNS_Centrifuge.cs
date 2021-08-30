@@ -10,35 +10,29 @@ namespace TiberiumRim
 {
     public class CompTNS_Centrifuge : Comp_TiberiumNetworkStructure
     {
-        private float speedInt = 0;
-        private int currentSpeedUpTick = -1;
-        private int currentIdleTicks = -1;
-
-        private const int speedUpTicks = 500;
-        private const int idleTime = 1000;
-
-        public override float?[] AnimationSpeeds => new float?[5] {null, null, CurrentSpeed, CurrentSpeed, null};
-
-        private float CurrentSpeed => speedInt;
-        private bool SpeedingUp => false;
-
-        public SimpleCurve Curve = new SimpleCurve()
-        {
-            new CurvePoint(0, 0),
-            new CurvePoint(0.5f, 3),
-            new CurvePoint(0.8f, 6),
-            new CurvePoint(1, 10),
-        };
+        private FloatControl speedControl;
         
+        public override float?[] AnimationSpeeds => new float?[5] {null, null, speedControl.CurrentValue, speedControl.CurrentValue, null};
+
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
             Log.Message("Setting up centrifuge...");
+            SimpleCurve Curve = new SimpleCurve()
+            {
+                new (0, 0),
+                new (0.5f, 3),
+                new (0.8f, 6),
+                new (1, 10),
+            };
+            speedControl = new FloatControl(5f, 10, 1, Curve);
         }
 
         public override void CompTick()
         {
             base.CompTick();
+            speedControl.Tick();
+            /*
             if (currentSpeedUpTick > speedUpTicks || currentIdleTicks > 0)
             {
                 if (currentIdleTicks < idleTime)
@@ -56,6 +50,7 @@ namespace TiberiumRim
                 currentSpeedUpTick++;
 
             speedInt = Curve.Evaluate((float)currentSpeedUpTick / speedUpTicks);
+            */
         }
     }
 }

@@ -25,6 +25,7 @@ namespace TiberiumRim
             }
             if (this.Faction == Faction.OfPlayer)
             {
+
                 if (this.playerSettings == null)
                 {
                     this.playerSettings = new Pawn_PlayerSettings(this);
@@ -61,6 +62,5 @@ namespace TiberiumRim
         {
             return from x in health?.hediffSet?.GetHediffs<Hediff>() where x is Hediff_Injury || x is Hediff_MissingPart select x;
         }
-     
     }
 }

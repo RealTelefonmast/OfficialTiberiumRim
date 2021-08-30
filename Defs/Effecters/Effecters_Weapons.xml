@@ -6,7 +6,7 @@
 		<children>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<moteDef>Mote_Smoke</moteDef>
+				<fleckDef>Smoke</fleckDef>
 				<burstCount>1~1</burstCount>
 				<scale>1.5~2.5</scale>
 				<rotation>-30~30</rotation>
@@ -16,7 +16,7 @@
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<moteDef>Mote_MicroSparks</moteDef>
+				<fleckDef>MicroSparks</fleckDef>
 				<scale>0.8~1.2</scale>
 				<rotation>0~0</rotation>
 				<positionRadius>0.8</positionRadius>
@@ -33,7 +33,7 @@
 		<children>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<moteDef>Mote_Smoke</moteDef>
+				<fleckDef>Smoke</fleckDef>
 				<burstCount>1~1</burstCount>
 				<scale>1~1.5</scale>
 				<rotation>-30~30</rotation>
@@ -43,7 +43,7 @@
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<moteDef>Mote_MicroSparks</moteDef>
+				<fleckDef>MicroSparks</fleckDef>
 				<scale>0.4~0.6</scale>
 				<rotation>0~0</rotation>
 				<positionRadius>0.8</positionRadius>

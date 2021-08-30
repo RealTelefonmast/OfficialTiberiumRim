@@ -2,7 +2,7 @@
 <Defs>
 
 <FactionDef ParentName="OutlanderFactionBase" Name="NodFactionBase" Abstract="True">
-	<pawnSingular>>Nod troop</pawnSingular>
+	<pawnSingular>Nod troop</pawnSingular>
 	<pawnsPlural>Nod troops</pawnsPlural>
     <categoryTag>Spacer</categoryTag>
 	<canMakeRandomly>true</canMakeRandomly>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using RimWorld;
 using RimWorld.Planet;
 using Verse;
 using Verse.Sound;
@@ -141,7 +142,7 @@ namespace TiberiumRim
         public void ReceiveSignal(EVASignal signal)
         {
             if (!CanPlay) return;
-
+            int ticks;
             SoundDef soundToPlay = null;
             switch (signal)
             {

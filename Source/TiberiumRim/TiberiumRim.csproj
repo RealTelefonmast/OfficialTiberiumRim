@@ -352,6 +352,11 @@
     <Compile Include="MechanicalPawns\Zone_MechParking.cs" />
     <Compile Include="MultiCurve.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="RadiationFallOffDef.cs" />
     <Compile Include="Research\Alert_NewResearch.cs" />
     <Compile Include="Research\CreationProperties.cs" />
@@ -499,6 +504,7 @@
     <Compile Include="VisualEffects\FXThing.cs" />
     <Compile Include="VisualEffects\FXThingDef.cs" />
     <Compile Include="VisualEffects\GraphicDrawInfo.cs" />
+    <Compile Include="VisualEffects\Graphic_LinkedNoPadding.cs" />
     <Compile Include="VisualEffects\Graphic_LinkedWithSame.cs" />
     <Compile Include="VisualEffects\Graphic_NumberedCollection.cs" />
     <Compile Include="VisualEffects\Graphic_RandomCluster.cs" />
@@ -507,6 +513,7 @@
     <Compile Include="VisualEffects\Graphic_Sprite.cs" />
     <Compile Include="VisualEffects\IFXObject.cs" />
     <Compile Include="VisualEffects\IntermittenFleckSprayer.cs" />
+    <Compile Include="VisualEffects\MaterialAtlasPool_TR.cs" />
     <Compile Include="VisualEffects\MoteThrower.cs" />
     <Compile Include="VisualEffects\Mote_Arc.cs" />
     <Compile Include="VisualEffects\Mote_Beam.cs" />
@@ -567,6 +574,12 @@
     <Compile Include="Weather\GameCondition_TiberiumBiome.cs" />
     <Compile Include="Weather\WeatherEvent_IonStrike.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

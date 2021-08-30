@@ -15,6 +15,8 @@ namespace TiberiumRim
 
         public bool ConnectsToOutside => RoomInner.UsesOutdoorTemperature || RoomOuter.UsesOutdoorTemperature;
 
+        
+
         public override void Draw()
         {
             base.Draw();

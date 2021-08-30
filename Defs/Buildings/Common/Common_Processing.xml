@@ -7,11 +7,11 @@
 		<controllerDef>TiberiumNetworkController</controllerDef>
 		<transmitter>TiberiumPipe</transmitter>
 		<transmitterGraphic>
-			<texPath>Buildings/Common/Network/TNW_PipeAtlas</texPath>
+			<texPath>Buildings/Common/Network/Pipe_Tib</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</transmitterGraphic>
 		<overlayGraphic>
-			<texPath>Buildings/Common/Network/TNW_PipeOverlayAtlas</texPath>
+			<texPath>Buildings/Common/Network/Pipe_Tib_overlay</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>MetaOverlay</shaderType>
 			<color>(155, 255, 0)</color>
@@ -166,7 +166,7 @@
 			<isInert>true</isInert>
 			<isEdifice>false</isEdifice>
 			<blueprintGraphicData>
-				<texPath>Buildings/Common/Network/TNW_PipeBluePrintAtlas</texPath>
+				<texPath>Buildings/Common/Network/Pipe_Tib_blueprint</texPath>
 			</blueprintGraphicData>
 		</building>
 		<comps>

@@ -19,13 +19,13 @@ namespace TiberiumRim
         public virtual void Notify_Reused() { }
         public virtual void Notify_RoofClosed() { }
         public virtual void Notify_RoofOpened() { }
+        public virtual void Notify_RoofChanged() { }
+        public virtual void Notify_ThingSpawned(Thing thing) {}
+        public virtual void Notify_ThingDespawned(Thing thing) { }
 
         public virtual void PreApply() { }
 
         public virtual void FinalizeApply() { }
-
-
-        public virtual void Notify_RoofChanged() { }
 
         public virtual void CompTick() { }
 

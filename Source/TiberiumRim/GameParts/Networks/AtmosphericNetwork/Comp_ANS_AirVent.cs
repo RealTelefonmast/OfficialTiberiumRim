@@ -16,39 +16,69 @@ namespace TiberiumRim
 
     public class Comp_ANS_AirVent : Comp_AtmosphericNetworkStructure
     {
+        private FloatControl speedControl;
+
+        public override float?[] AnimationSpeeds => new float?[4] { null, null, speedControl.CurrentValue, null };
+
         public CompProperties_ANS_AirVent Props => (CompProperties_ANS_AirVent)base.props;
+
+        public override void PostSpawnSetup(bool respawningAfterLoad)
+        {
+            base.PostSpawnSetup(respawningAfterLoad);
+            speedControl = new FloatControl(0.5f, 0, 10);
+        }
+
         public override void CompTick()
         {
             base.CompTick();
-            ManipulatePollution(1);
+            speedControl.Tick();
+            if (ManipulatePollution(1))
+            {
+                speedControl.Start();
+                return;
+            }
+            speedControl.Stop();
         }
 
         public override void CompTickRare()
         {
             base.CompTickRare();
-            ManipulatePollution(GenTicks.TickRareInterval);
+            if (ManipulatePollution(GenTicks.TickRareInterval))
+            {
+                speedControl.Start();
+                return;
+            }
+            speedControl.Stop();
         }
 
-        private void ManipulatePollution(int tick)
+        private bool ManipulatePollution(int tick)
         {
-            if (!IsPowered || AtmosphericComp.Container.CapacityFull) return;
+            if (!IsPowered || AtmosphericComp.Container.CapacityFull) return false;
             int totalThroughput = Props.gasThroughPut * tick;
             switch (Props.ventMode)
             {
                 case AtmosphericVentMode.Intake:
-                    if(Pollution.TryRemovePollution(totalThroughput, out int actuallyRemoved))
+                    if (Pollution.TryRemovePollution(totalThroughput, out int actuallyRemoved))
+                    {
                         AtmosphericComp.Container.TryAddValue(TiberiumDefOf.TibPollution, actuallyRemoved, out _);
+                        return true;
+                    }
+
                     break;
                 case AtmosphericVentMode.Output:
-                    if (AtmosphericComp.Container.TryRemoveValue(TiberiumDefOf.TibPollution, totalThroughput, out float actualValue)) 
-                        Pollution.TryAddPollution((int)actualValue, out _);
-                    
+                    if (AtmosphericComp.Container.TryRemoveValue(TiberiumDefOf.TibPollution, totalThroughput, out float actualValue))
+                    {
+                        Pollution.TryAddPollution((int) actualValue, out _);
+                        return true;
+                    }
+
                     break;
                 case AtmosphericVentMode.Dynamic:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            return false;
         }
     }
 

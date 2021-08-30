@@ -143,7 +143,7 @@
 		<type>ConstructOrCraft</type>
 		<targetSettings>
 			<targets>
-				<li>NetworkController</li>
+				<li>TiberiumNetworkController</li>
 				<li>TiberiumRefinery</li>
 				<li>TiberiumSilo,2</li>
 			</targets>

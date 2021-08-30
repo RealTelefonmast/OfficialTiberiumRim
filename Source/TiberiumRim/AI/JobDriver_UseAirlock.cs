@@ -11,7 +11,7 @@ namespace TiberiumRim
     public class JobDriver_UseAirlock : JobDriver
     {
         private Room AirLockRoom => TargetA.Cell.GetRoom(Map);
-
+        private RoomComponent_AirLock AirLock => AirLockRoom.GetRoomComp<RoomComponent_AirLock>();
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -21,8 +21,21 @@ namespace TiberiumRim
         protected override IEnumerable<Toil> MakeNewToils()
         {
             yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
-            yield return Toils_General.Wait(600);
-            yield break;
+            Toil toil = new Toil();
+            toil.initAction = delegate
+            {
+                toil.actor.pather.StopDead();
+            };
+            toil.tickAction = delegate
+            {
+                if (!AirLock.AllDoorsClosed) return;
+                if (AirLock.IsClean)
+                {
+                    EndJobWith(JobCondition.Succeeded);
+                }
+            };
+            toil.defaultCompleteMode = ToilCompleteMode.Delay;
+            yield return toil;
         }
     }
 }

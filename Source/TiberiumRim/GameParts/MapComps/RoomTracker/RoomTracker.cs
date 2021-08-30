@@ -89,6 +89,22 @@ namespace TiberiumRim
             }
         }
 
+        public void Notify_ThingSpawned(Thing thing)
+        {
+            foreach (var comp in comps)
+            {
+                comp.Notify_ThingSpawned(thing);
+            }
+        }
+
+        public void Notify_ThingDespawned(Thing thing)
+        {
+            foreach (var comp in comps)
+            {
+                comp.Notify_ThingDespawned(thing);
+            }
+        }
+
         public void Notify_Reused()
         {
             UpdateGroupData();

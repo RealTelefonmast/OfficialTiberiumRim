@@ -21,7 +21,7 @@ namespace TiberiumRim
         {
             float coverage = TiberiumRimMod.mod.settings.tiberiumCoverage;
             if (coverage <= 0) return;
-            ModuleBase noiseTest = new Perlin((double)(0.035f * coverage), 2.0, 0.40000000596046448, 6, Rand.Range(0, int.MaxValue), QualityMode.High);
+            ModuleBase noiseTest = new Perlin((double)(0.035f * coverage), 2.0, 0.4, 6, Rand.Range(0, int.MaxValue), QualityMode.High);
             
             int tilesCount = Find.WorldGrid.TilesCount;
             for (int i = 0; i < tilesCount; i++)

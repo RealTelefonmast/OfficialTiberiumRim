@@ -145,8 +145,9 @@ namespace TiberiumRim
                 if (___pawn.CurJobDef == TiberiumDefOf.UseAirlock) return;
 
                 //If already in airlock which is cleaned, return
-                bool airlockCondition = true;
-                if (___pawn.GetRoom().Role == TiberiumDefOf.TR_AirLock && airlockCondition) return;
+                var currentRoom = ___pawn.GetRoom();
+                var airLockComp = currentRoom.GetRoomComp<RoomComponent_AirLock>();
+                if (currentRoom.Role == TiberiumDefOf.TR_AirLock && airLockComp.IsClean) return;
 
                 //Check path for airlocks
                 var rooms = __instance.curPath.RoomsAlongPath(___pawn.Map);
@@ -1016,14 +1017,17 @@ namespace TiberiumRim
         {
             public static void Postfix(Thing __instance)
             {
+                var Tiberium = __instance.Map.Tiberium();
+                //
+
                 //Register For DataBase
-                __instance.Map.Tiberium().RegisterNewThing(__instance);
+                Tiberium.RegisterNewThing(__instance);
 
                 //Updates On Structure Spawn
                 if (__instance is Building building)
                 {
                     //Radiation Logic
-                    var radiation = building.Map.Tiberium().TiberiumAffecter.HediffGrid;
+                    var radiation = Tiberium.TiberiumAffecter.HediffGrid;
                     if (radiation.IsInRadiationSourceRange(__instance.Position))
                     {
                         List<IRadiationSource> sources = radiation.RadiationSourcesAt(building.Position);
@@ -1035,7 +1039,7 @@ namespace TiberiumRim
 
                     if (!building.CanBeSeenOver())
                     {
-                        var suppression = building.Map.Tiberium().SuppressionInfo;
+                        var suppression = Tiberium.SuppressionInfo;
                         if (suppression.IsInSuppressionCoverage(building.Position, out List<Comp_Suppression> sups))
                         {
                             suppression.MarkDirty(sups);
@@ -1055,6 +1059,8 @@ namespace TiberiumRim
                 //Research
                 TRUtils.ResearchTargetTable().RegisterNewTarget(__instance);
                 TRUtils.EventManager().CheckForEventStart(__instance);
+
+                Tiberium.RoomInfo.Notify_ThingSpawned(__instance);
             }
         }
 

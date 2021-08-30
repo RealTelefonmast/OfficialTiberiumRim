@@ -61,6 +61,18 @@ namespace TiberiumRim
             tracker.Disband(Map);
         }
 
+        public void Notify_ThingSpawned(Thing thing)
+        {
+            if (thing.GetRoom() == null) return;
+            AllTrackers[thing.GetRoom()].Notify_ThingSpawned(thing);
+        }
+
+        public void Notify_ThingDespawned(Thing thing)
+        {
+            if (thing.GetRoom() == null) return;
+            AllTrackers[thing.GetRoom()].Notify_ThingDespawned(thing);
+        }
+
         public void Notify_RoofChanged(Room room)
         {
             AllTrackers[room].Notify_RoofChanged();

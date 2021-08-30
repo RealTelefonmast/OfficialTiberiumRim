@@ -3,10 +3,81 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
 {
+    public class FloatControl
+    {
+        private int curIncreaseTick;
+        private int curSustainTick;
+
+        private bool shouldStart;
+        private bool shouldStop;
+
+        //
+        private readonly float maxValue;
+        private readonly int increaseTimeTicks;
+        private readonly int sustainTimeTicks;
+        private SimpleCurve controlCurve;
+
+        public float CurrentPct => curIncreaseTick / (float)increaseTimeTicks;
+        public float CurrentValue => controlCurve?.Evaluate(CurrentPct) ?? Mathf.Lerp(0, maxValue, CurrentPct);
+
+        public FloatControl(float increaseTime, float sustainTime, float maxValue, SimpleCurve controlCurve = null)
+        {
+            increaseTimeTicks = increaseTime.SecondsToTicks();
+            sustainTimeTicks = sustainTime.SecondsToTicks();
+            this.maxValue = maxValue;
+            this.controlCurve = controlCurve;
+        }
+
+        public void Start()
+        {
+            shouldStop = false;
+            shouldStart = true;
+        }
+
+        public void Stop()
+        {
+            shouldStart = false;
+            shouldStop = true;
+        }
+
+        public void Tick()
+        {
+            //Sustain control
+            if (sustainTimeTicks > 0)
+            {
+                if (CurrentPct < 1f)
+                {
+                    Start();
+                }
+                else if(curSustainTick < sustainTimeTicks)
+                {
+                    curSustainTick++;
+                }
+                else
+                {
+                    Stop();
+                }
+            }
+            //Manual Control
+            if (shouldStop)
+            {
+                if (curIncreaseTick > 0)
+                {
+                    curIncreaseTick--;
+                }
+            }
+            if (shouldStart && curIncreaseTick < increaseTimeTicks)
+            {
+                curIncreaseTick++;
+            }
+        }
+    }
+
     public class Comp_TiberiumNetworkStructure : Comp_NetworkStructure
     {
         public NetworkComponent TiberiumComp => this[TiberiumDefOf.TiberiumNetwork];

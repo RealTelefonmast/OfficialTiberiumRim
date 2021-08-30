@@ -7,12 +7,11 @@
 		<transmitter>AtmosphericPipe</transmitter>
 		<controllerDef>PollutionFilter</controllerDef>
 		<transmitterGraphic>
-			<texPath>Buildings/Common/Network/TNW_PipeAtlas</texPath>
+			<texPath>Buildings/Common/Pollution/Pipe_Air</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<color>(255, 0, 0)</color>
 		</transmitterGraphic>
 		<overlayGraphic>
-			<texPath>Buildings/Common/Network/TNW_PipeOverlayAtlas</texPath>
+			<texPath>Buildings/Common/Pollution/Pipe_Air_overlay</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>MetaOverlay</shaderType>
 			<color>(0, 255, 255)</color>
@@ -149,7 +148,7 @@
 			<isInert>true</isInert>
 			<isEdifice>false</isEdifice>
 			<blueprintGraphicData>
-				<texPath>Buildings/Common/Network/TNW_PipeBluePrintAtlas</texPath>
+				<texPath>Buildings/Common/Pollution/Pipe_Air_blueprint</texPath>
 			</blueprintGraphicData>
 		</building>
 		<comps>
@@ -192,20 +191,24 @@
 	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>AtmosphericVentIn</defName>
-		<label>pollution vent (int)</label>
+		<label>pollution vent (intake)</label>
 		<description>.</description>
 		<thingCategories Inherit="false" />
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<factionDesignation>Common</factionDesignation>
 		<TRCategory>Pollution</TRCategory>
-		<drawerType>MapMeshOnly</drawerType>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<tickerType>Normal</tickerType>
+		<uiIconPath>Buildings/Common/Pollution/Intake/icon</uiIconPath>
 		<graphicData>
-			<texPath>Buildings/Common/Pollution/Vent</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(1,1)</drawSize>
+			<texPath>Buildings/Common/Pollution/Intake/base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.25,1.25)</drawSize>
 		</graphicData>
+		<extraData>
+			<drawOffset>(0,0,0.1)</drawOffset>
+		</extraData>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToBuild>1500</WorkToBuild>
@@ -236,6 +239,31 @@
 					</li>
 				</networks>
 				<connectionPattern>+</connectionPattern>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li><skip>true</skip></li>
+					<li><skip>true</skip></li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Pollution/Intake/fan</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(1.25,1.25)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+						<drawOffset>(0,0,0.1)</drawOffset>
+						<rotationSpeed>75</rotationSpeed>
+						<needsPower>false</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Pollution/Intake/top</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(1.25,1.25)</drawSize>
+						</data>
+						<needsPower>false</needsPower>
+					</li>
+				</overlays>
 			</li>
 		</comps>
 		<requisites>

@@ -311,7 +311,7 @@
 		<workType>Construction</workType>
 		<creationTasks>
 			<thingsToCreate>
-				<NetworkController>1</NetworkController>
+				<TiberiumNetworkController>1</TiberiumNetworkController>
 				<TiberiumSilo>1</TiberiumSilo>
 				<TiberiumRefinery>1</TiberiumRefinery>
 			</thingsToCreate>
