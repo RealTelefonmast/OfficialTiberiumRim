@@ -15,7 +15,7 @@
 	<!---->
 	<TiberiumRim.TResearchDef>
 		<defName>GDIExperimental</defName>
-		<label>GDI Tech</label>	
+		<label>GDI</label>	
 		<researchType>experimental content</researchType>
 		<description>Unlock the current available GDI structures and items, most of them are experimental and not meant to be available yet!</description>
 		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
@@ -27,21 +27,29 @@
 	
 	<TiberiumRim.TResearchTaskDef>
 		<defName>GDIUnlock</defName>
-		<label>Unlock GDI Tech</label>		
-		<descriptionShort>Get experimental GDI content.</descriptionShort>
+		<label>Join the GDI</label>		
+		<descriptionShort>Join the Galaxy Defense Initiative.</descriptionShort>
 		<skillRequirements>
-			<Intellectual>2</Intellectual>
+			<Social>6</Social>
 		</skillRequirements>
 		<taskTarget>
-			<targetType>Building_ResearchBench</targetType>
+			<targetType>Building_CommsConsole</targetType>
 		</taskTarget>
 		<workType>Research</workType>
-		<workAmount>9999</workAmount>
+		<workAmount>9000</workAmount>
 	</TiberiumRim.TResearchTaskDef>
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	<TiberiumRim.TResearchDef>
 		<defName>NODExperimental</defName>
-		<label>NOD Tech</label>	
+		<label>Nod</label>	
 		<researchType>experimental content</researchType>
 		<description>Unlock the current available NOD structures and items, most of them are experimental and not meant to be available yet!</description>
 		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
@@ -50,24 +58,37 @@
 			<li>NODUnlock</li>
 		</tasks>
 	</TiberiumRim.TResearchDef>
-	
+
 	<TiberiumRim.TResearchTaskDef>
 		<defName>NODUnlock</defName>
-		<label>Unlock NOD Tech</label>		
-		<descriptionShort>Get experimental NOD content.</descriptionShort>
+		<label>Join the Nod</label>		
+		<descriptionShort>Join the Brotherhood of Nod.</descriptionShort>
 		<skillRequirements>
-			<Intellectual>2</Intellectual>
+			<Social>6</Social>
 		</skillRequirements>
 		<taskTarget>
-			<targetType>Building_ResearchBench</targetType>
+			<targetType>Building_CommsConsole</targetType>
 		</taskTarget>
 		<workType>Research</workType>
-		<workAmount>9999</workAmount>
+		<workAmount>9000</workAmount>
 	</TiberiumRim.TResearchTaskDef>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	<TiberiumRim.TResearchDef>
 		<defName>ForgottenExperimental</defName>
-		<label>Forgotten Tech</label>	
+		<label>Forgotten</label>	
 		<researchType>experimental content</researchType>
 		<description>Unlock the current available Forgotten structures and items, most of them are experimental and not meant to be available yet!</description>
 		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
@@ -76,19 +97,19 @@
 			<li>ForgottenUnlock</li>
 		</tasks>
 	</TiberiumRim.TResearchDef>
-	
+
 	<TiberiumRim.TResearchTaskDef>
 		<defName>ForgottenUnlock</defName>
-		<label>Unlock Forgotten Tech</label>		
-		<descriptionShort>Get experimental Forgotten content.</descriptionShort>
+		<label>Join the Forgotten</label>		
+		<descriptionShort>Join the Forgotten mutants.</descriptionShort>
 		<skillRequirements>
-			<Intellectual>2</Intellectual>
+			<Social>6</Social>
 		</skillRequirements>
 		<taskTarget>
-			<targetType>Building_ResearchBench</targetType>
+			<targetType>Building_CommsConsole</targetType>
 		</taskTarget>
 		<workType>Research</workType>
-		<workAmount>9999</workAmount>
+		<workAmount>9000</workAmount>
 	</TiberiumRim.TResearchTaskDef>
 	
 </Defs>
