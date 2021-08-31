@@ -30,10 +30,13 @@
 		<description>This part has a large viscous growth on it. If the pawn dies it may cause an explosion.</description>
 		<comps>
 			<li Class="TiberiumRim.HediffCompProperties_ExplodeOnPartDestroyed">
-				<explosionRadius>1.25</explosionRadius>
-				<damageDef>Burn</damageDef>
-				<damageAmount>6</damageAmount>
-			</li>	
+				<explosionProps>
+					<explosionRadius>1.5</explosionRadius>
+					<damageAmount>5</damageAmount>
+					<postExplosionSpawnThingDef>TiberiumGas</postExplosionSpawnThingDef>
+					<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
+				</explosionProps>
+			</li>
 		</comps>
 		<stages>
 			<li>

@@ -20,11 +20,13 @@
     </stages>
 	<comps>
 		<li Class="TiberiumRim.HediffCompProperties_ExplodeOnPartDestroyed">
-			<explosionRadius>7.9</explosionRadius>
-			<damageDef>TiberiumExplosionFrag</damageDef>
-			<damageAmount>75</damageAmount>
-			<postExplosionSpawnThingDef>TiberiumGas</postExplosionSpawnThingDef>
-			<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
+			<explosionProps>
+				<explosionRadius>7.9</explosionRadius>
+				<damageDef>TiberiumExplosionFrag</damageDef>
+				<damageAmount>75</damageAmount>
+				<postExplosionSpawnThingDef>TiberiumGas</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
+			</explosionProps>
 		</li>
 		<li Class="HediffCompProperties_ReactOnDamage">
 			<damageDefIncoming>EMP</damageDefIncoming>

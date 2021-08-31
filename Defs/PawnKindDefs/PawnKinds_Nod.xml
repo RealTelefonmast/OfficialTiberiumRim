@@ -11,6 +11,7 @@
         </categories>
       </li>
     </backstoryFiltersOverride>
+	<chemicalAddictionChance>0.1</chemicalAddictionChance>
 	<backstoryCryptosleepCommonality>0.08</backstoryCryptosleepCommonality>
     <baseRecruitDifficulty>0.8</baseRecruitDifficulty>
 	<combatEnhancingDrugsChance>0.25</combatEnhancingDrugsChance>
@@ -142,6 +143,7 @@
 		<li>ChemicalBombImplant</li>
 	</techHediffsTags>
 	<techHediffsChance>1</techHediffsChance>
+    <chemicalAddictionChance>0.75</chemicalAddictionChance>
   </PawnKindDef>  
   
   <PawnKindDef ParentName="NodBase">
