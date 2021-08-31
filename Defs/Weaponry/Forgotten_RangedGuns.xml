@@ -61,6 +61,10 @@
 			<cooldownTime>1.9</cooldownTime>
 		  </li>
 		</tools>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+			<li>ShortShots</li>
+		</weaponClasses>
 	</ThingDef>
 	
 	<ThingDef ParentName="BaseMakeableGun_TR">
@@ -124,6 +128,10 @@
 			<cooldownTime>1.9</cooldownTime>
 		  </li>
 		</tools>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+			<li>ShortShots</li>
+		</weaponClasses>
 	</ThingDef>
 
 </Defs>

@@ -16,8 +16,9 @@
 			<preExplosionSpawnThingDef>TiberiumGreen</preExplosionSpawnThingDef>
 			<preExplosionSpawnChance>0.1</preExplosionSpawnChance>
 			<postExplosionSpawnThingDef>FilthTiberiumGreen</postExplosionSpawnThingDef>
-			<postExplosionSpawnChance>0.15</postExplosionSpawnChance>
+			<postExplosionSpawnChance>0.1</postExplosionSpawnChance>
 			<speed>50</speed>
+			<arcHeightFactor>1.1</arcHeightFactor>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
 	</ThingDef>
@@ -36,10 +37,11 @@
 			<damageAmountBase>10</damageAmountBase>
 			<explosionRadius>0.025</explosionRadius>
 			<preExplosionSpawnThingDef>TiberiumBlue</preExplosionSpawnThingDef>
-			<preExplosionSpawnChance>0.35</preExplosionSpawnChance>
+			<preExplosionSpawnChance>0.2</preExplosionSpawnChance>
 			<postExplosionSpawnThingDef>FilthTiberiumBlue</postExplosionSpawnThingDef>
-			<postExplosionSpawnChance>0.35</postExplosionSpawnChance>
+			<postExplosionSpawnChance>0.2</postExplosionSpawnChance>
 			<speed>50</speed>
+			<arcHeightFactor>1.1</arcHeightFactor>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
 	</ThingDef>

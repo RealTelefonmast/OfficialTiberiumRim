@@ -152,7 +152,7 @@
 		</graphicData>
 		<statBases>
 			<MarketValue>5000</MarketValue>
-			<MaxHitPoints>15</MaxHitPoints>
+			<MaxHitPoints>10</MaxHitPoints>
 			<Mass>5</Mass>
 			<AccuracyTouch>0.5</AccuracyTouch>
 			<AccuracyShort>0.8</AccuracyShort>
@@ -181,7 +181,7 @@
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>3</warmupTime>
-				<range>44.9</range>
+				<range>54.9</range>
 				<minRange>1.5</minRange>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<burstShotCount>1</burstShotCount>
@@ -201,6 +201,10 @@
 				<cooldownTime>2</cooldownTime>
 			</li>
 		</tools>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+			<li>LongShots</li>
+		</weaponClasses>
 	</ThingDef>
 
 </Defs>

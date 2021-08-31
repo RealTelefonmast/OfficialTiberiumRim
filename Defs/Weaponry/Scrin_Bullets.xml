@@ -14,6 +14,7 @@
 		</graphicData>
 		<projectile>
 			<damageDef>Crush</damageDef>
+			<arcHeightFactor>1.5</arcHeightFactor>
 			<damageAmountBase>10</damageAmountBase>
 			<speed>30</speed>
 		</projectile>
