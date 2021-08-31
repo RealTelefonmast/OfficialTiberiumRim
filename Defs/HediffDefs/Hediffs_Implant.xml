@@ -4,8 +4,8 @@
   <HediffDef ParentName="ImplantHediffBase">
     <defName>ChemicalBombImplant</defName>
     <label>suicide bomb implant</label>
-    <labelNoun>a suicide bomb heart</labelNoun>
-    <description>An installed bionic implant, connected to the strong chemical suicide bomb.</description>
+    <labelNoun>a suicide bomb implant</labelNoun>
+    <description>An installed bionic implant, connected to the strong chemical suicide bomb. Also improves body response.</description>
     <descriptionHyperlinks><ThingDef>ChemicalBombImplant</ThingDef></descriptionHyperlinks>
     <spawnThingOnRemoved>ChemicalBombImplant</spawnThingOnRemoved>
     <stages>
@@ -23,10 +23,8 @@
 			<explosionRadius>7.9</explosionRadius>
 			<damageDef>TiberiumExplosionFrag</damageDef>
 			<damageAmount>75</damageAmount>
-			<!--
-			<preExplosionSpawnThingDef>TiberiumGas</preExplosionSpawnThingDef>
-			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>
-			-->
+			<postExplosionSpawnThingDef>TiberiumGas</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
 		</li>
 		<li Class="HediffCompProperties_ReactOnDamage">
 			<damageDefIncoming>EMP</damageDefIncoming>
@@ -40,7 +38,7 @@
   <ThingDef ParentName="BodyPartBionicBase">
     <defName>ChemicalBombImplant</defName>
     <label>suicide bomb implant</label>
-    <description>An installed bionic implant, connected to the strong chemical suicide bomb. The Nod fanatics love to use this.</description>
+    <description>An installed bionic implant, connected to the strong chemical suicide bomb. Take your pawn on a suicide mission.</description>
     <descriptionHyperlinks><RecipeDef>InstallChemicalBombImplant</RecipeDef></descriptionHyperlinks>
 		<graphicData>
 			<texPath>Items/Weapons/Nod/SuicideBomb</texPath>
@@ -64,6 +62,21 @@
 		</skillRequirements>
       <researchPrerequisite></researchPrerequisite>
     </recipeMaker>
+	<tickerType>Normal</tickerType>
+	<stackLimit>1</stackLimit>
+		<comps>
+			<li Class="CompProperties_Explosive">
+			<explosionRadius>7.9</explosionRadius>
+			<explosiveDamageType>TiberiumExplosionFrag</explosiveDamageType>
+			<damageAmount>75</damageAmount>
+			<postExplosionSpawnThingDef>TiberiumGas</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
+			<wickTicks>
+				<min>10</min>
+				<max>30</max>
+			</wickTicks>
+			</li>
+		</comps>
 	<techHediffsTags>
 		<li>ChemicalBombImplant</li>
 	</techHediffsTags>
