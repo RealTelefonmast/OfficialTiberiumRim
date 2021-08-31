@@ -31,16 +31,13 @@
 		<comps>
 			<li Class="TiberiumRim.HediffCompProperties_ExplodeOnPartDestroyed">
 				<explosionProps>
-<<<<<<< Updated upstream
 					<explosionRadius>1.5</explosionRadius>
 					<damageAmountOverride>5</damageAmountOverride>
 					<postSpawnDef>TiberiumGas</postSpawnDef>
 					<postSpawnChance>0.5</postSpawnChance>
-=======
 					<damageDef>Burn</damageDef>
 					<explosionRadius>1.25</explosionRadius>
 					<damageAmountOverride>6</damageAmountOverride>
->>>>>>> Stashed changes
 				</explosionProps>
 			</li>
 		</comps>
