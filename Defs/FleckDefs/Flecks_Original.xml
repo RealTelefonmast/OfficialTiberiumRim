@@ -132,7 +132,7 @@
   <FleckDef ParentName="FleckBase_Thrown">
     <defName>Smoke</defName>
     <graphicData>
-      <texPath>Misc/Smoke</texPath>
+      <texPath>Motes/Original/Smoke</texPath>
       <renderInstanced>true</renderInstanced>
     </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
@@ -145,7 +145,7 @@
   <FleckDef ParentName="FleckBase">
 		<defName>Mote_AdvFlame</defName>
 		<graphicData>
-			<texPath>Misc/Gas4</texPath>
+			<texPath>Motes/Original/Gas4</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 		</graphicData>
@@ -159,7 +159,7 @@
   <FleckDef ParentName="FleckBase">
 		<defName>Mote_AdvExplosion1</defName>
 		<graphicData>
-			<texPath>Misc/Gas1</texPath>
+			<texPath>Motes/Original/Gas1</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 		</graphicData>
@@ -173,7 +173,7 @@
   <FleckDef ParentName="FleckBase">
 		<defName>Mote_AdvExplosion2</defName>
 		<graphicData>
-			<texPath>Misc/Gas2</texPath>
+			<texPath>Motes/Original/Gas2</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 		</graphicData>
@@ -187,7 +187,7 @@
   <FleckDef ParentName="FleckBase">
 		<defName>Mote_AdvExplosion3</defName>
 		<graphicData>
-			<texPath>Misc/Gas3</texPath>
+			<texPath>Motes/Original/Gas3</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 		</graphicData>
@@ -201,7 +201,7 @@
   <FleckDef ParentName="FleckBase">
 		<defName>Mote_AdvSuperExplosion</defName>
 		<graphicData>
-			<texPath>Misc/Gas2</texPath>
+			<texPath>Motes/Original/Gas2</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 		</graphicData>
@@ -216,7 +216,7 @@
 		<defName>Mote_AdvParticle</defName>
 		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
 		<graphicData>
-			<texPath>Misc/Particles</texPath>
+			<texPath>Motes/Original/Particles</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 		</graphicData>
@@ -230,7 +230,7 @@
   <FleckDef ParentName="FleckBase_Thrown">
 		<defName>SubMote_AdvParticle</defName>
 		<graphicData>
-			<texPath>Misc/Particles4</texPath>
+			<texPath>Motes/Original/Particles4</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 			<drawSize>0.5</drawSize>
@@ -245,7 +245,7 @@
   <FleckDef ParentName="FleckBase_Thrown">
 		<defName>SubMote_AdvParticle2</defName>
 		<graphicData>
-			<texPath>Misc/Particles2</texPath>
+			<texPath>Motes/Original/Particles2</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 			<drawSize>0.5</drawSize>
@@ -260,7 +260,7 @@
   <FleckDef ParentName="FleckBase">
 		<defName>SubMote_AdvParticle3</defName>
 		<graphicData>
-			<texPath>Misc/Particles3</texPath>
+			<texPath>Motes/Original/Particles3</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 			<drawSize>0.7</drawSize>
@@ -275,7 +275,7 @@
   <FleckDef ParentName="FleckBase_Thrown">
 		<defName>SubMote_AdvSpark</defName>
 		<graphicData>
-			<texPath>Misc/Spark</texPath>
+			<texPath>Motes/Original/Spark</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 			<drawSize>0.75</drawSize>
