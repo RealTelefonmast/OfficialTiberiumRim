@@ -158,6 +158,9 @@
 		<weaponTags>
 			<li>GDIRifle</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
 	</TiberiumRim.TRThingDef>
 
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
@@ -244,6 +247,10 @@
 				<Crafting>10</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+			<li>LongShots</li>
+		</weaponClasses>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
@@ -329,6 +336,10 @@
 				<Crafting>10</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+			<li>ShortShots</li>
+		</weaponClasses>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
@@ -362,8 +373,8 @@
 				<warmupTime>5</warmupTime>
 				<requireLineOfSight>false</requireLineOfSight>
 				<range>49.9</range>
-				<minRange>25</minRange>
-				<forcedMissRadius>5</forcedMissRadius>
+				<minRange>24.9</minRange>
+				<forcedMissRadius>3</forcedMissRadius>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<soundCast>Mortar_LaunchA</soundCast>
@@ -387,6 +398,10 @@
 				<Crafting>8</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+			<li>LongShots</li>
+		</weaponClasses>
 	</TiberiumRim.TRThingDef>
 
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
@@ -421,8 +436,8 @@
 				<requireLineOfSight>false</requireLineOfSight>
 				<warmupTime>5</warmupTime>
 				<range>49.9</range>
-				<minRange>25</minRange>
-				<forcedMissRadius>5</forcedMissRadius>
+				<minRange>24.9</minRange>
+				<forcedMissRadius>3</forcedMissRadius>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<soundCast>Mortar_LaunchA</soundCast>
@@ -446,6 +461,10 @@
 				<Crafting>10</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+			<li>LongShots</li>
+		</weaponClasses>
 	</TiberiumRim.TRThingDef>
 
 </Defs>

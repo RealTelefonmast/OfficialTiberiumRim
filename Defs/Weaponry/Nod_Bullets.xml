@@ -86,6 +86,7 @@
 			<damageDef>Flame</damageDef>
 			<damageAmountBase>3</damageAmountBase>
 			<explosionRadius>0.025</explosionRadius>
+			<arcHeightFactor>1.25</arcHeightFactor>
 			<speed>12</speed>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
 		</projectile>
@@ -107,6 +108,7 @@
 			<explosionRadius>0.025</explosionRadius>
 			<preExplosionSpawnThingDef>TiberiumGas</preExplosionSpawnThingDef>
 			<preExplosionSpawnChance>0.8</preExplosionSpawnChance>
+			<arcHeightFactor>1.25</arcHeightFactor>
 			<speed>15</speed>
 			<postExplosionSpawnThingDef>FilthTibLiquidGreen</postExplosionSpawnThingDef>
 			<postExplosionSpawnChance>0.45</postExplosionSpawnChance>
@@ -126,9 +128,10 @@
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
 			<damageDef>Bomb</damageDef>
+			<arcHeightFactor>1.25</arcHeightFactor>
 			<damageAmountBase>20</damageAmountBase>
 			<explosionRadius>2.5</explosionRadius>
-			<speed>30</speed>
+			<speed>25</speed>
 			<soundExplode>MortarBomb_Explode</soundExplode>
 		</projectile>
 	</ThingDef>
@@ -145,12 +148,14 @@
 		<projectile>
 			<damageDef>TiberiumExplosionFrag</damageDef>
 			<damageAmountBase>45</damageAmountBase>
-			<explosionRadius>3</explosionRadius>
+			<explosionRadius>3.9</explosionRadius>
 			<explosionDelay>65</explosionDelay>
 			<speed>15</speed>
+			<arcHeightFactor>1.5</arcHeightFactor>
 			<preExplosionSpawnThingDef>TiberiumGas</preExplosionSpawnThingDef>
 			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>
 			<soundExplode>Nod_ChemBomb</soundExplode>
+			<shadowSize>0.5</shadowSize>
 		</projectile>
 	</ThingDef>
 	
@@ -165,13 +170,15 @@
 		<projectile>
 			<damageDef>TiberiumExplosionBurn</damageDef>
 			<damageAmountBase>75</damageAmountBase>
-			<explosionRadius>6</explosionRadius>
-			<speed>25</speed>
+			<explosionRadius>5.9</explosionRadius>
+			<speed>15</speed>
+			<arcHeightFactor>1.5</arcHeightFactor>
 			<explosionDelay>150</explosionDelay>
 			<preExplosionSpawnThingDef>TiberiumGas</preExplosionSpawnThingDef>
 			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>
 			<soundExplode>Nod_ChemBomb</soundExplode>
 			<explosionEffect>GiantExplosion</explosionEffect>
+			<shadowSize>0.6</shadowSize>
 		</projectile>
 	</ThingDef>
 

@@ -68,7 +68,8 @@
 		<projectile>
 			<damageDef>Bomb</damageDef>
 			<damageAmountBase>100</damageAmountBase>
-			<speed>45</speed>
+			<speed>35</speed>
+			<arcHeightFactor>1.25</arcHeightFactor>
 			<explosionRadius>5.9</explosionRadius>
 			<flyOverhead>true</flyOverhead>
 			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
@@ -76,6 +77,7 @@
 			<soundAmbient>MortarRound_Ambient</soundAmbient>
 			<explosionEffect>GiantExplosion</explosionEffect>
 			<soundExplode>Explosion_GiantBomb</soundExplode>
+			<shadowSize>0.6</shadowSize>
 		</projectile>
 	</ThingDef>
 
@@ -92,14 +94,16 @@
 		<projectile>
 			<damageDef>Flame</damageDef>
 			<damageAmountBase>100</damageAmountBase>
-			<speed>45</speed>
-			<explosionRadius>7.9</explosionRadius>
+			<speed>35</speed>
+			<arcHeightFactor>1.25</arcHeightFactor>
+			<explosionRadius>6.9</explosionRadius>
 			<flyOverhead>true</flyOverhead>
 			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
 			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
 			<soundAmbient>MortarRound_Ambient</soundAmbient>
 			<explosionEffect>GiantExplosion</explosionEffect>
 			<soundExplode>Explosion_GiantBomb</soundExplode>
+			<shadowSize>0.6</shadowSize>
 		</projectile>
 	</ThingDef>
 	
@@ -115,8 +119,9 @@
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
 			<damageDef>BombSuper</damageDef>
-			<speed>41</speed>
-			<explosionRadius>14.9</explosionRadius>
+			<speed>35</speed>
+			<arcHeightFactor>1.25</arcHeightFactor>
+			<explosionRadius>13.9</explosionRadius>
 			<explosionChanceToStartFire>0.22</explosionChanceToStartFire>
 			<explosionDamageFalloff>true</explosionDamageFalloff>
 			<explosionEffect>GiantExplosion</explosionEffect>
@@ -125,6 +130,7 @@
 			<soundExplode>Explosion_GiantBomb</soundExplode>
 			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
 			<soundAmbient>MortarRound_Ambient</soundAmbient>
+			<shadowSize>0.6</shadowSize>
 		</projectile>
 	</ThingDef>
 	
@@ -163,11 +169,13 @@
 			<damageDef>Stun</damageDef>
 			<damageAmountBase>8</damageAmountBase>
 			<stoppingPower>2.5</stoppingPower>
-			<explosionRadius>1.75</explosionRadius>
+			<explosionRadius>1.9</explosionRadius>
+			<arcHeightFactor>1.5</arcHeightFactor>
 			<speed>40</speed>
 			<explosionDelay>30</explosionDelay>
 			<soundExplode>Blast_Rail</soundExplode>
 			<soundAmbient>MortarRound_Ambient</soundAmbient>
+			<shadowSize>0.5</shadowSize>
 		</projectile>
 	</ThingDef>
 
@@ -183,13 +191,15 @@
 		<projectile>
 			<damageDef>Bomb</damageDef>
 			<damageAmountBase>35</damageAmountBase>
-			<explosionRadius>2.5</explosionRadius>
-			<speed>35</speed>
+			<explosionRadius>2.9</explosionRadius>
+			<speed>20</speed>
+			<arcHeightFactor>1.5</arcHeightFactor>
 			<flyOverhead>true</flyOverhead>
 			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
 			<soundExplode>MortarBomb_Explode</soundExplode>
 			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
 			<soundAmbient>MortarRound_Ambient</soundAmbient>
+			<shadowSize>0.5</shadowSize>
 		</projectile>
 	</ThingDef>
 	
@@ -205,14 +215,36 @@
 		<projectile>
 			<damageDef>TRShockWave</damageDef>
 			<damageAmountBase>10</damageAmountBase>
-			<explosionRadius>5</explosionRadius>
-			<speed>30</speed>
+			<explosionRadius>4.9</explosionRadius>
+			<speed>20</speed>
+			<arcHeightFactor>1.5</arcHeightFactor>
 			<flyOverhead>true</flyOverhead>
 			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
 			<soundExplode>Shot_GDI_Sonic</soundExplode>
 			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
 			<soundAmbient>MortarRound_Ambient</soundAmbient>
+			<shadowSize>0.5</shadowSize>
 		</projectile>
 	</ThingDef>
+	
+  <ThingDef ParentName="BaseBullet_TR">
+    <defName>Bullet_Extbomb</defName>
+    <label>extinguish bomb</label>
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Grenade</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <explosionRadius>4.9</explosionRadius >
+	  <speed>15</speed>
+	  <arcHeightFactor>1.5</arcHeightFactor>
+      <damageDef>Extinguish</damageDef>
+      <preExplosionSpawnThingDef>Filth_FireFoam</preExplosionSpawnThingDef>
+      <explosionDelay>100</explosionDelay>
+      <ai_IsIncendiary>false</ai_IsIncendiary>
+      <shadowSize>0.5</shadowSize>
+    </projectile>
+  </ThingDef>
 	
 </Defs>

@@ -167,6 +167,10 @@
 		<recipeMaker>
 			<!--<researchPrerequisite>NodResearch_Production</researchPrerequisite>-->
 		</recipeMaker>
+		<weaponClasses>
+			<li>RangedLight</li>
+			<li>ShortShots</li>
+		</weaponClasses>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
@@ -314,6 +318,10 @@
 				<Crafting>10</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+			<li>LongShots</li>
+		</weaponClasses>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
@@ -347,7 +355,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>				
 				<warmupTime>2</warmupTime>
-				<range>14.9</range>
+				<range>10.9</range>
 				<forcedMissRadius>0</forcedMissRadius>
 				<burstShotCount>15</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
@@ -388,6 +396,10 @@
 				<Crafting>8</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+			<li>ShortShots</li>
+		</weaponClasses>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
@@ -420,8 +432,8 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_TiberiumGas</defaultProjectile>
 				<warmupTime>1.75</warmupTime>
-				<range>14.9</range>
-				<forcedMissRadius>0.25</forcedMissRadius>
+				<range>10.9</range>
+				<forcedMissRadius>0</forcedMissRadius>
 				<burstShotCount>15</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<soundCast>DropPod_Open</soundCast>
@@ -461,6 +473,10 @@
 				<Crafting>10</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+			<li>ShortShots</li>
+		</weaponClasses>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
@@ -497,7 +513,7 @@
 				<forcedMissRadius>2.0</forcedMissRadius>
 				<warmupTime>4</warmupTime>
 				<range>29.9</range>
-				<minRange>5</minRange>
+				<minRange>4.9</minRange>
 				<burstShotCount>2</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<soundCast>Nod_Rocket</soundCast>
@@ -521,6 +537,10 @@
 				<Crafting>8</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+			<li>LongShots</li>
+		</weaponClasses>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">

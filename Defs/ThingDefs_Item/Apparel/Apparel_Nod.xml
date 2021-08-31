@@ -521,7 +521,7 @@
 		<comps>
 			<!--TODO: ADD CUSTOM FUEL / MAKE TIBERIUM GAS OBJECT CLASS-->
 			<li Class="CompProperties_Reloadable">
-				<maxCharges>1</maxCharges>
+				<maxCharges>2</maxCharges>
 				<ammoDef>Chemfuel</ammoDef>
 				<ammoCountPerCharge>50</ammoCountPerCharge>
 				<baseReloadTicks>60</baseReloadTicks>
