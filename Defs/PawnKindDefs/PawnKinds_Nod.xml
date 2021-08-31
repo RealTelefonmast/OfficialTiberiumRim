@@ -65,8 +65,8 @@
 	  <li>TiberiumProtection</li>
     </apparelTags>
     <weaponTags>
-      <li>Gun</li>
-      <li>NonNeolithicOnlyMelee</li>
+		<li>Gun</li>
+		<li>NeolithicMeleeDecent</li>
     </weaponTags>
    </PawnKindDef>
 
@@ -121,10 +121,13 @@
   <PawnKindDef ParentName="NodBase">
     <defName>Nod_Fanatic</defName>
     <label>fanatic</label>
-    <labelPlural>Fanatics</labelPlural>
 	<canBeSapper>true</canBeSapper>
 	<aiAvoidCover>true</aiAvoidCover>
-	<combatPower>200</combatPower>
+	<combatPower>170</combatPower>
+    <weaponTags>
+		<li>NonNeolithicOnlyMelee</li>
+		<li>NeolithicMeleeDecent</li>
+    </weaponTags>
 	<apparelRequired>
 		<li>Jumpsuit</li>
 	</apparelRequired>
@@ -132,12 +135,13 @@
 		<li>NodMilitia</li>
 		<li>FactionInnerSet</li>
 	</apparelTags>
-    <weaponMoney>15000~15000</weaponMoney>
-    <apparelMoney>1200~1200</apparelMoney>
-	<weaponTags>
-		<li>Suicidebomb</li>
-	</weaponTags>
-	<biocodeWeaponChance>1</biocodeWeaponChance>
+    <weaponMoney>300~750</weaponMoney>
+    <apparelMoney>1200~2000</apparelMoney>
+    <techHediffsMoney>5500~6000</techHediffsMoney>
+	<techHediffsTags>
+		<li>ChemicalBombImplant</li>
+	</techHediffsTags>
+	<techHediffsChance>1</techHediffsChance>
   </PawnKindDef>  
   
   <PawnKindDef ParentName="NodBase">
