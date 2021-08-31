@@ -72,7 +72,7 @@
 	</ThingDef>
 
 	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
-		<defName>Bullet_Flamethrower</defName>
+		<defName>Bullet_FlamethrowerTower</defName>
 		<label>flame</label>
 		<thingClass>TiberiumRim.Projectile_ThrownFlame</thingClass>
 		<graphicData>
@@ -91,6 +91,27 @@
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
 		</projectile>
 	</TiberiumRim.TRThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Flamethrower</defName>
+		<label>flame</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/FlameSmall</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<projectile>
+			<ai_IsIncendiary>true</ai_IsIncendiary>
+			<damageDef>Flame</damageDef>
+			<damageAmountBase>3</damageAmountBase>
+			<explosionRadius>0.025</explosionRadius>
+			<arcHeightFactor>1.25</arcHeightFactor>
+			<speed>15</speed>
+			<soundExplode>Shot_Nod_FlameTail</soundExplode>
+		</projectile>
+	</ThingDef>
 	
 	<ThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_TiberiumGas</defName>

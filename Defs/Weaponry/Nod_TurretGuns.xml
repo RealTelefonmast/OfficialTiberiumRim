@@ -134,7 +134,7 @@
 				</originOffsets>
 				<shotIntervalTicks>5</shotIntervalTicks>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>
+				<defaultProjectile>Bullet_FlamethrowerTower</defaultProjectile>
 				<warmupTime>0</warmupTime>
 				<range>17.9</range>
 				<burstShotCount>1</burstShotCount>

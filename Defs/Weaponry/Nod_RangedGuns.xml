@@ -356,7 +356,7 @@
 				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>				
 				<warmupTime>2</warmupTime>
 				<range>14.9</range>
-				<forcedMissRadius>0.8</forcedMissRadius>
+				<forcedMissRadius>0.2</forcedMissRadius>
 				<burstShotCount>15</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_Flame</soundCast>
@@ -433,7 +433,7 @@
 				<defaultProjectile>Bullet_TiberiumGas</defaultProjectile>
 				<warmupTime>1.75</warmupTime>
 				<range>14.9</range>
-				<forcedMissRadius>0.8</forcedMissRadius>
+				<forcedMissRadius>0.2</forcedMissRadius>
 				<burstShotCount>15</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<soundCast>DropPod_Open</soundCast>
