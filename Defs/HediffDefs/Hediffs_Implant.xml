@@ -64,6 +64,9 @@
 		</skillRequirements>
       <researchPrerequisite></researchPrerequisite>
     </recipeMaker>
+	<techHediffsTags>
+		<li>ChemicalBombImplant</li>
+	</techHediffsTags>
   </ThingDef>
 
   <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
