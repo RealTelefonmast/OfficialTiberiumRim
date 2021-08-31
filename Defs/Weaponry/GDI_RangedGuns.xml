@@ -62,7 +62,7 @@
 				<defaultProjectile>Bullet_GDIStandard</defaultProjectile>
 				<secondaryProjectile>Bullet_GDIHighVelocity</secondaryProjectile>
 				<warmupTime>1.5</warmupTime>
-				<range>36.9</range>
+				<range>34.9</range>
 				<burstShotCount>4</burstShotCount>
 				<ticksBetweenBurstShots>16</ticksBetweenBurstShots>
 				<soundCast>Shot_AssaultRifle</soundCast>
@@ -211,7 +211,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<requireLineOfSight>true</requireLineOfSight>
 				<warmupTime>2</warmupTime>
-				<range>48.9</range>
+				<range>44.9</range>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<soundCast>Shot_GDI_Railgun</soundCast>
@@ -295,7 +295,7 @@
 				<defaultProjectile>Projectile_SonicWave</defaultProjectile>
 				<requireLineOfSight>true</requireLineOfSight>
 				<warmupTime>3</warmupTime>
-				<range>25</range>
+				<range>19.9</range>
 				<minRange>1.9</minRange>
 				<burstShotCount>2</burstShotCount>
 				<forcedMissRadius>1</forcedMissRadius>
@@ -374,11 +374,13 @@
 				<requireLineOfSight>false</requireLineOfSight>
 				<range>49.9</range>
 				<minRange>24.9</minRange>
-				<forcedMissRadius>3</forcedMissRadius>
+				<forcedMissRadius>2</forcedMissRadius>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<soundCast>Mortar_LaunchA</soundCast>
 				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
+				<onlyManualCast>true</onlyManualCast>
+				<stopBurstWithoutLos>false</stopBurstWithoutLos>
 				<muzzleFlashScale>13</muzzleFlashScale>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
@@ -437,11 +439,13 @@
 				<warmupTime>5</warmupTime>
 				<range>49.9</range>
 				<minRange>24.9</minRange>
-				<forcedMissRadius>3</forcedMissRadius>
+				<forcedMissRadius>2</forcedMissRadius>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<soundCast>Mortar_LaunchA</soundCast>
 				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
+				<onlyManualCast>true</onlyManualCast>
+				<stopBurstWithoutLos>false</stopBurstWithoutLos>
 				<muzzleFlashScale>13</muzzleFlashScale>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>

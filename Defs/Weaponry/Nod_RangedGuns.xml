@@ -66,7 +66,7 @@
 				<defaultProjectile>Bullet_NodStandard</defaultProjectile>
 				<secondaryProjectile>Bullet_NodAntiPersonnel</secondaryProjectile>
 				<warmupTime>1</warmupTime>
-				<range>28.9</range>
+				<range>34.9</range>
 				<burstShotCount>5</burstShotCount>
 				<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
 				<soundCast>Shot_HeavySMG</soundCast>
@@ -281,7 +281,7 @@
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>1.75</warmupTime>
-				<range>29.9</range>
+				<range>39.9</range>
 				<burstShotCount>4</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_LaserLarge</soundCast>
@@ -355,7 +355,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>				
 				<warmupTime>2</warmupTime>
-				<range>10.9</range>
+				<range>14.9</range>
 				<forcedMissRadius>0</forcedMissRadius>
 				<burstShotCount>15</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
@@ -432,7 +432,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_TiberiumGas</defaultProjectile>
 				<warmupTime>1.75</warmupTime>
-				<range>10.9</range>
+				<range>14.9</range>
 				<forcedMissRadius>0</forcedMissRadius>
 				<burstShotCount>15</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
@@ -512,8 +512,9 @@
 				<defaultProjectile>Bullet_NodRocket</defaultProjectile>
 				<forcedMissRadius>2.0</forcedMissRadius>
 				<warmupTime>4</warmupTime>
-				<range>29.9</range>
+				<range>34.9</range>
 				<minRange>4.9</minRange>
+				<forcedMissRadius>1</forcedMissRadius>
 				<burstShotCount>2</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<soundCast>Nod_Rocket</soundCast>
@@ -638,13 +639,13 @@
 				<verbClass>Verb_ShootOneUse</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Sbomb</defaultProjectile>
-				<warmupTime>0.25</warmupTime>
-				<range>1.9</range>
+				<warmupTime>0</warmupTime>
+				<range>1.5</range>
 				<forcedMissRadius>0.1</forcedMissRadius>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-				<soundCast>ThrowGrenade</soundCast>
-				<noiseRadius>8</noiseRadius>
+				<soundCast></soundCast>
+				<noiseRadius>0</noiseRadius>
 				<stopBurstWithoutLos>false</stopBurstWithoutLos>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
@@ -663,7 +664,7 @@
 			</skillRequirements>
 		</recipeMaker>
 		<equippedStatOffsets>
-			<MoveSpeed>0.6</MoveSpeed>
+			<MoveSpeed>0.75</MoveSpeed>
 		</equippedStatOffsets>
 	</TiberiumRim.TRThingDef>
 

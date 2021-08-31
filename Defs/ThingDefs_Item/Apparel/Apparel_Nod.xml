@@ -537,7 +537,7 @@
 				<verbClass>Verb_LaunchProjectileStatic</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<onlyManualCast>True</onlyManualCast>
-				<range>10.9</range>
+				<range>9.9</range>
 				<forcedMissRadius>0.9</forcedMissRadius>
 				<warmupTime>1.5</warmupTime>
 				<noiseRadius>4</noiseRadius>
