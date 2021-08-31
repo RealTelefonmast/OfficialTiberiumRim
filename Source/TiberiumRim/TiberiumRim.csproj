@@ -301,6 +301,7 @@
     <Compile Include="Hediffs\HediffDiscoverable.cs" />
     <Compile Include="Hediffs\HediffUtils.cs" />
     <Compile Include="Hediffs\HediffVerb\Command_HediffVerbTarget.cs" />
+    <Compile Include="Hediffs\HediffVerb\HediffComp_ExplosiveTrigger.cs" />
     <Compile Include="Hediffs\HediffVerb\HediffComp_Gizmo.cs" />
     <Compile Include="Hediffs\HediffVerb\HediffComp_RangedVerb.cs" />
     <Compile Include="Hediffs\HediffVerb\HediffRangedHelper.cs" />
@@ -473,6 +474,7 @@
     <Compile Include="Utilities\CellUtils.cs" />
     <Compile Include="Utilities\ConvexTriangulator.cs" />
     <Compile Include="Utilities\Geometry.cs" />
+    <Compile Include="Utilities\ModuleVisualizer.cs" />
     <Compile Include="Utilities\RedAlertDefOf.cs" />
     <Compile Include="Utilities\SoundUtility.cs" />
     <Compile Include="Utilities\TerrainGenerator.cs" />
@@ -514,6 +516,7 @@
     <Compile Include="VisualEffects\IFXObject.cs" />
     <Compile Include="VisualEffects\IntermittenFleckSprayer.cs" />
     <Compile Include="VisualEffects\MaterialAtlasPool_TR.cs" />
+    <Compile Include="VisualEffects\ModuleVisualizer\ModuleData.cs" />
     <Compile Include="VisualEffects\MoteThrower.cs" />
     <Compile Include="VisualEffects\Mote_Arc.cs" />
     <Compile Include="VisualEffects\Mote_Beam.cs" />
@@ -534,6 +537,7 @@
     <Compile Include="Weaponry\BeamHub\Building_BeamHub.cs" />
     <Compile Include="Weaponry\BeamHub\Building_BeamHubBeam.cs" />
     <Compile Include="Weaponry\BeamHub\Building_BeamHubSegmentPart.cs" />
+    <Compile Include="Weaponry\BeamProperties.cs" />
     <Compile Include="Weaponry\Building_BeamHub.cs" />
     <Compile Include="Weaponry\Building_BeamSegmentPart.cs" />
     <Compile Include="Weaponry\Building_FlameTurret.cs" />
@@ -546,6 +550,7 @@
     <Compile Include="Weaponry\Comp_ExtraTurret.cs" />
     <Compile Include="Weaponry\DamageWorker_Pressure.cs" />
     <Compile Include="Weaponry\DamageWorker_SoftExplosion.cs" />
+    <Compile Include="Weaponry\ExplosionProperties.cs" />
     <Compile Include="Weaponry\PlaceWorker_TurretHub.cs" />
     <Compile Include="Weaponry\ProjectileProperties_Extended.cs" />
     <Compile Include="Weaponry\Projectiles\Bullet_Sprite.cs" />
@@ -581,5 +586,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

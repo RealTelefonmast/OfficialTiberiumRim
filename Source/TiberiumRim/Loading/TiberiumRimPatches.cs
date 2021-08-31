@@ -93,9 +93,9 @@ namespace TiberiumRim
                 float fullWidth = 200 + width;
                 var imageRect = new Rect(0, curY - 8f, fullWidth, 40);
                 Widgets.DrawShadowAround(imageRect);
-                GenUI.DrawTextureWithMaterial(imageRect, TiberiumContent.TibOptionBG, null, new Rect(0,0,1,1));
-                Widgets.Label(new Rect(5f, curY, 200f, 30f), "Tiberium Coverage");
-                Rect newRect = new Rect(200, curY, width-5, 30f);
+                GenUI.DrawTextureWithMaterial(imageRect, TiberiumContent.TibOptionBG_Cut, null, new Rect(0,0,1,1));
+                Widgets.Label(new Rect(0f, curY, 200f, 30f), "Tiberium Coverage");
+                Rect newRect = new Rect(200, curY, width, 30f);
                 TiberiumRimMod.mod.settings.tiberiumCoverage = Widgets.HorizontalSlider(newRect, (float)TiberiumRimMod.mod.settings.tiberiumCoverage, 0f, 1, true, "Medium","None", "Full", 0.05f);
             }
         }

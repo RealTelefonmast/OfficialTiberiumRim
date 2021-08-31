@@ -258,6 +258,8 @@ namespace TiberiumRim
 
         public static readonly Texture2D TopBar = ContentFinder<Texture2D>.Get("UI/Menu/TopBar", true);
         public static readonly Texture2D TibOptionBG = ContentFinder<Texture2D>.Get("UI/Menu/TibOptionBG", true);
+        public static readonly Texture2D TibOptionBG_Cut = ContentFinder<Texture2D>.Get("UI/Menu/TibOptionBG_Cut", true);
+        public static readonly Texture2D TibOptionBG_CutFade = ContentFinder<Texture2D>.Get("UI/Menu/TibOptionBG_CutFade", true);
 
         public static readonly Texture2D Undiscovered = ContentFinder<Texture2D>.Get("UI/Menu/Undiscovered", true);
         public static readonly Texture2D Fact_Undisc = ContentFinder<Texture2D>.Get("UI/Menu/Fact_Undiscovered", true);

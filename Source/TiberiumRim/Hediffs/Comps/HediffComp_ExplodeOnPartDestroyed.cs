@@ -3,6 +3,8 @@ using Verse;
 
 namespace TiberiumRim
 {
+    //TODO!! because neph wanted it make an explosion property container to re-use in all other explosion related effects, could create a method in the container to call the explosion
+
     public class HediffComp_ExplodeOnPartDestroyed : HediffComp
     {
         public HediffCompProperties_ExplodeOnPartDestroyed Props => (HediffCompProperties_ExplodeOnPartDestroyed) base.props;
@@ -36,7 +38,7 @@ namespace TiberiumRim
             if (isRuptered) return;
             isRuptered = true;
             Pawn.TakeDamage(new DamageInfo(DamageDefOf.Bomb, parent.Part.def.hitPoints, 1));
-            GenExplosion.DoExplosion(base.Pawn.Position, base.Pawn.Map, this.Props.explosionRadius * intensity, this.Props.damageDef, base.Pawn, this.Props.damageAmount / 2, -1f, null, null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false, null, null);
+            Props.explosionProps.DoExplosion(Pawn.Position, Pawn.Map, this.Pawn);
         }
     }
 
@@ -49,8 +51,6 @@ namespace TiberiumRim
 
         //public bool destroyGear;
         //public bool destroyBody;
-        public float explosionRadius;
-        public DamageDef damageDef;
-        public int damageAmount = -1;
+        public ExplosionProperties explosionProps;
     }
 }
