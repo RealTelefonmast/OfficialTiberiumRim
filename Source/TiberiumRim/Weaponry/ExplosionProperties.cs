@@ -9,7 +9,7 @@ namespace TiberiumRim
 {
     public class ExplosionProperties
     {
-        public float intensity;
+        public float intensity = 1;
 
         //Default
         //Explosion Props
