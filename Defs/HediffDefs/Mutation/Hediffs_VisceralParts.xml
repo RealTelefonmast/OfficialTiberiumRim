@@ -33,11 +33,9 @@
 				<explosionProps>
 					<explosionRadius>1.5</explosionRadius>
 					<damageAmountOverride>5</damageAmountOverride>
+					<damageDef>TiberiumExplosionFrag</damageDef>
 					<postSpawnDef>TiberiumGas</postSpawnDef>
 					<postSpawnChance>0.5</postSpawnChance>
-					<damageDef>Burn</damageDef>
-					<explosionRadius>1.25</explosionRadius>
-					<damageAmountOverride>6</damageAmountOverride>
 				</explosionProps>
 			</li>
 		</comps>
