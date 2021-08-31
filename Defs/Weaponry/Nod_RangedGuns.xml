@@ -356,7 +356,7 @@
 				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>				
 				<warmupTime>2</warmupTime>
 				<range>14.9</range>
-				<forcedMissRadius>0</forcedMissRadius>
+				<forcedMissRadius>0.8</forcedMissRadius>
 				<burstShotCount>15</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_Flame</soundCast>
@@ -433,7 +433,7 @@
 				<defaultProjectile>Bullet_TiberiumGas</defaultProjectile>
 				<warmupTime>1.75</warmupTime>
 				<range>14.9</range>
-				<forcedMissRadius>0</forcedMissRadius>
+				<forcedMissRadius>0.8</forcedMissRadius>
 				<burstShotCount>15</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<soundCast>DropPod_Open</soundCast>
@@ -606,7 +606,7 @@
 		</recipeMaker>
 	</TiberiumRim.TRThingDef>
 	
-
+<!--
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_Sbomb</defName>
 		<label>Nod suicide bomb</label>
@@ -657,7 +657,7 @@
 			<li>Suicidebomb</li>
 		</weaponTags>
 		<recipeMaker>
-			<!--<researchPrerequisite>NodResearch_LiquidTechnology</researchPrerequisite>-->
+			<researchPrerequisite>NodResearch_LiquidTechnology</researchPrerequisite>
 			<skillRequirements>
 				<Crafting>10</Crafting>
 			</skillRequirements>
@@ -666,5 +666,5 @@
 			<MoveSpeed>0.75</MoveSpeed>
 		</equippedStatOffsets>
 	</TiberiumRim.TRThingDef>
-
+-->
 </Defs>
