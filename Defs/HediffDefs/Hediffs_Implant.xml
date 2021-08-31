@@ -23,9 +23,9 @@
 			<explosionProps>
 				<explosionRadius>7.9</explosionRadius>
 				<damageDef>TiberiumExplosionFrag</damageDef>
-				<damageAmount>75</damageAmount>
-				<postExplosionSpawnThingDef>TiberiumGas</postExplosionSpawnThingDef>
-				<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
+				<damageAmountOverride>75</damageAmountOverride>
+				<postSpawnDef>TiberiumGas</postSpawnDef>
+				<postSpawnChance>0.25</postSpawnChance>
 			</explosionProps>
 		</li>
 		<li Class="HediffCompProperties_ReactOnDamage">
@@ -64,21 +64,6 @@
 		</skillRequirements>
       <researchPrerequisite></researchPrerequisite>
     </recipeMaker>
-	<tickerType>Normal</tickerType>
-	<stackLimit>1</stackLimit>
-		<comps>
-			<li Class="CompProperties_Explosive">
-			<explosionRadius>7.9</explosionRadius>
-			<explosiveDamageType>TiberiumExplosionFrag</explosiveDamageType>
-			<damageAmount>75</damageAmount>
-			<postExplosionSpawnThingDef>TiberiumGas</postExplosionSpawnThingDef>
-			<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
-			<wickTicks>
-				<min>10</min>
-				<max>30</max>
-			</wickTicks>
-			</li>
-		</comps>
 	<techHediffsTags>
 		<li>ChemicalBombImplant</li>
 	</techHediffsTags>
