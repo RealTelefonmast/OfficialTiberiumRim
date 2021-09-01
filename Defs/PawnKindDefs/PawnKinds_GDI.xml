@@ -47,6 +47,10 @@
 				<range>6~20</range>
 			</li>
 		</skills>
+		<biocodeWeaponChance>0.15</biocodeWeaponChance>
+		<disallowedTraits>
+			<li>BodyPurist</li>
+		</disallowedTraits>
 	</PawnKindDef>
 
 	<!-- GDI UNITS  -->
@@ -69,11 +73,37 @@
 			<li>NonNeolithicOnlyMelee</li>
 		</weaponTags>
 	</PawnKindDef>
+	
+	<PawnKindDef ParentName="GDIBase">
+		<defName>GDI_General</defName>
+		<label>general</label>
+		<combatPower>200</combatPower>
+		<weaponTags>
+			<li>GDIRailgun</li>
+		</weaponTags>
+		<apparelRequired>
+			<li>Apparel_GDIZoneHelmet</li>
+			<li>Apparel_GDIZoneSuit</li>
+			<li>Jumpsuit</li>
+		</apparelRequired>
+		<weaponMoney>20000~20000</weaponMoney>
+		<apparelMoney>50000~50000</apparelMoney>
+		<apparelTags>
+			<li>GDIZone</li>
+			<li>BeltDefensePop</li>
+			<li>FactionInnerSet</li>
+		</apparelTags>
+		<factionLeader>true</factionLeader>
+		<minGenerationAge>40</minGenerationAge>
+		<maxGenerationAge>60</maxGenerationAge>
+		<itemQuality>Excellent</itemQuality>
+		<initialWillRange>16~19</initialWillRange>
+		<initialResistanceRange>38~58</initialResistanceRange>
+	</PawnKindDef>
 
 	<PawnKindDef ParentName="GDIBase">
 		<defName>GDI_Trader</defName>
 		<label>trade director</label>
-		<trader>true</trader>
 		<combatPower>100</combatPower>
 		<isFighter>false</isFighter>
 		<gearHealthRange>1~1</gearHealthRange>
@@ -93,16 +123,13 @@
 			<li>Apparel_GDIOfficerSuit</li>
 			<li>Jumpsuit</li>
 		</apparelRequired>
-		<techHediffsChance>0.15</techHediffsChance>
-		<techHediffsMoney>600~1500</techHediffsMoney>
-		<techHediffsTags>
-			<li>Poor</li>
-			<li>Simple</li>
-			<li>Advanced</li>
-			<li>ImplantEmpireCommon</li>
-		</techHediffsTags>
-		<initialWillRange>2~4</initialWillRange>
-		<initialResistanceRange>12~20</initialResistanceRange>
+		<trader>true</trader>
+		<techHediffsChance>1</techHediffsChance>
+		<techHediffsMoney>1000~1500</techHediffsMoney>
+		<techHediffsRequired>
+			<li>DeathAcidifier</li>
+		</techHediffsRequired>
+		<biocodeWeaponChance>1</biocodeWeaponChance>
 	</PawnKindDef>
 	
 	<PawnKindDef ParentName="GDIBase">
@@ -127,31 +154,6 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="GDIBase">
-		<defName>GDI_General</defName>
-		<label>general</label>
-		<combatPower>200</combatPower>
-		<apparelRequired>
-			<li>Apparel_GDIZoneHelmet</li>
-			<li>Apparel_GDIZoneSuit</li>
-			<li>Jumpsuit</li>
-		</apparelRequired>
-		<weaponMoney>20000~20000</weaponMoney>
-		<apparelMoney>50000~50000</apparelMoney>
-		<apparelTags>
-			<li>GDIZone</li>
-			<li>BeltDefensePop</li>
-			<li>FactionInnerSet</li>
-		</apparelTags>
-		<weaponTags>
-			<li>GDIRailgun</li>
-		</weaponTags>
-		<factionLeader>true</factionLeader>
-		<minGenerationAge>40</minGenerationAge>
-		<maxGenerationAge>60</maxGenerationAge>
-		<itemQuality>Excellent</itemQuality>
-	</PawnKindDef>
-  
   	<PawnKindDef ParentName="GDIBase">
 		<defName>GDI_Soldier</defName>
 		<label>soldier</label>
@@ -214,6 +216,11 @@
 			</li>
 			</subOptionsChooseOne>
 		</inventoryOptions>
+		<techHediffsChance>0.5</techHediffsChance>
+		<techHediffsMoney>1000~1500</techHediffsMoney>
+		<techHediffsRequired>
+			<li>DeathAcidifier</li>
+		</techHediffsRequired>
 		<biocodeWeaponChance>0.8</biocodeWeaponChance>
 	</PawnKindDef>
 	
@@ -259,6 +266,11 @@
 				</li>
 			</subOptionsChooseOne>
 		</inventoryOptions>
+		<techHediffsChance>0.5</techHediffsChance>
+		<techHediffsMoney>1000~1500</techHediffsMoney>
+		<techHediffsRequired>
+			<li>DeathAcidifier</li>
+		</techHediffsRequired>
 		<biocodeWeaponChance>0.8</biocodeWeaponChance>
 	</PawnKindDef>
 	

@@ -49,6 +49,10 @@
         <range>5~15</range>
       </li>
     </skills>
+	<biocodeWeaponChance>0.15</biocodeWeaponChance>
+	<disallowedTraits>
+      <li>BodyPurist</li>
+    </disallowedTraits>
   </PawnKindDef>
 
   <PawnKindDef ParentName="NodBase">
@@ -94,6 +98,8 @@
     <minGenerationAge>40</minGenerationAge>
     <maxGenerationAge>60</maxGenerationAge>
     <itemQuality>Excellent</itemQuality>
+    <initialWillRange>16~19</initialWillRange>
+    <initialResistanceRange>38~58</initialResistanceRange>
   </PawnKindDef>
   
   <PawnKindDef ParentName="NodBase">
@@ -116,7 +122,13 @@
 		<li>NodLaserRifle</li>
 	</weaponTags>
     <trader>true</trader>
+    <techHediffsChance>1</techHediffsChance>
+    <techHediffsMoney>1000~1500</techHediffsMoney>
+    <techHediffsRequired>
+      <li>DeathAcidifier</li>
+    </techHediffsRequired>
 	<biocodeWeaponChance>1</biocodeWeaponChance>
+
   </PawnKindDef>
 
   <PawnKindDef ParentName="NodBase">
@@ -124,27 +136,25 @@
     <label>fanatic</label>
 	<canBeSapper>true</canBeSapper>
 	<aiAvoidCover>true</aiAvoidCover>
-	<combatPower>170</combatPower>
+	<combatPower>50</combatPower>
     <weaponTags>
 		<li>NonNeolithicOnlyMelee</li>
-		<li>NeolithicMeleeDecent</li>
     </weaponTags>
-	<apparelRequired>
-		<li>Jumpsuit</li>
-	</apparelRequired>
 	<apparelTags>
-		<li>NodMilitia</li>
-		<li>FactionInnerSet</li>
+	  <li>Outlander</li>
+      <li>IndustrialBasic</li>
+      <li>IndustrialAdvanced</li>
 	</apparelTags>
     <weaponMoney>300~750</weaponMoney>
     <apparelMoney>1200~2000</apparelMoney>
-    <techHediffsMoney>5500~6000</techHediffsMoney>
-	<techHediffsTags>
-		<li>ChemicalBombImplant</li>
-	</techHediffsTags>
+    <techHediffsMoney>5000~5000</techHediffsMoney>
 	<techHediffsChance>1</techHediffsChance>
+    <techHediffsRequired>
+      <li>ChemicalBombImplant</li>
+    </techHediffsRequired>
     <chemicalAddictionChance>0.75</chemicalAddictionChance>
-  </PawnKindDef>  
+	<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+  </PawnKindDef>
   
   <PawnKindDef ParentName="NodBase">
     <defName>Nod_BlackHand</defName>
@@ -188,6 +198,11 @@
         </li>
       </subOptionsChooseOne>
 	</inventoryOptions>
+    <techHediffsChance>0.5</techHediffsChance>
+    <techHediffsMoney>1000~1500</techHediffsMoney>
+    <techHediffsRequired>
+      <li>DeathAcidifier</li>
+    </techHediffsRequired>
 	<biocodeWeaponChance>0.8</biocodeWeaponChance>
   </PawnKindDef>
   

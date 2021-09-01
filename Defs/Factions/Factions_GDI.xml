@@ -17,20 +17,20 @@
 	<factionNameMaker>NamerFactionGDI</factionNameMaker>
 	<settlementNameMaker>NamerFactionBaseGDI</settlementNameMaker>
     <requiredMemes>
-      <li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Individualist</li>
 	  <li MayRequire="Ludeon.RimWorld.Ideology">HumanPrimacy</li>
     </requiredMemes>
     <disallowedMemes>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">MaleSupremacy</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">FemaleSupremacy</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">AnimalPersonhood</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">NaturePrimacy</li>
       <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
       <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Darkness</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">TreeConnection</li>
     </disallowedMemes>
-    <structureMemeWeights>
-      <Structure_Archist MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Archist>
-      <Structure_OriginChristian MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginChristian>
-      <Structure_OriginIslamic MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginIslamic>
-      <Structure_OriginHindu MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginHindu>
-      <Structure_OriginBuddhist MayRequire="Ludeon.RimWorld.Ideology">0.25</Structure_OriginBuddhist>
-    </structureMemeWeights>
     <backstoryFilters>
       <li>
         <categories>

@@ -47,6 +47,10 @@
         <range>0~10</range>
       </li>
     </skills>
+	<biocodeWeaponChance>0.15</biocodeWeaponChance>
+    <disallowedTraits>
+      <li>BodyPurist</li>
+    </disallowedTraits>
   </PawnKindDef>
   
   <PawnKindDef ParentName="ForgottenBase">
@@ -86,7 +90,7 @@
     <defName>Forgotten_HeadChief</defName>
     <label>khan</label>
 	<aiAvoidCover>true</aiAvoidCover>
-	<combatPower>100</combatPower>
+	<combatPower>150</combatPower>
     <weaponMoney>20000~20000</weaponMoney>
     <apparelMoney>20000~20000</apparelMoney>
 	<weaponTags>
@@ -95,6 +99,8 @@
 	</weaponTags>
     <factionLeader>true</factionLeader>
     <itemQuality>Excellent</itemQuality>
+	<initialWillRange>16~19</initialWillRange>
+	<initialResistanceRange>38~58</initialResistanceRange>
   </PawnKindDef>
   
   <PawnKindDef ParentName="GoodMutantBase">
@@ -110,13 +116,18 @@
 	</weaponTags>
     <itemQuality>Excellent</itemQuality>
     <trader>true</trader>
+    <techHediffsChance>1</techHediffsChance>
+    <techHediffsMoney>1000~1500</techHediffsMoney>
+    <techHediffsRequired>
+      <li>DeathAcidifier</li>
+    </techHediffsRequired>
 	<biocodeWeaponChance>1</biocodeWeaponChance>
   </PawnKindDef>
   
   <PawnKindDef ParentName="GoodMutantBase">
     <defName>Forgotten_Warrior</defName>
     <label>mutant hijacker</label>
-    <combatPower>150</combatPower>
+    <combatPower>140</combatPower>
 	<isGoodBreacher>true</isGoodBreacher>
 	<aiAvoidCover>true</aiAvoidCover>
     <weaponMoney>7500~7500</weaponMoney>
@@ -125,13 +136,18 @@
 	  <li>GDIRailgun</li>	
 	  <li>NodChemicalSpray</li>
 	</weaponTags>
+	<techHediffsChance>0.5</techHediffsChance>
+	<techHediffsMoney>1000~1500</techHediffsMoney>
+	<techHediffsRequired>
+		<li>DeathAcidifier</li>
+	</techHediffsRequired>
 	<biocodeWeaponChance>0.8</biocodeWeaponChance>
   </PawnKindDef>
   
   <PawnKindDef ParentName="GoodMutantBase">
     <defName>Forgotten_Heavygunner</defName>
     <label>mutant heavygunner</label>
-    <combatPower>150</combatPower>
+    <combatPower>140</combatPower>
 	<aiAvoidCover>true</aiAvoidCover>
     <weaponMoney>7500~7500</weaponMoney>
     <apparelMoney>10000~10000</apparelMoney>

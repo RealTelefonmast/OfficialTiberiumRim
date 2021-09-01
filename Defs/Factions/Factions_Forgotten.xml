@@ -16,9 +16,15 @@
 	<techLevel>Industrial</techLevel>
 	<factionNameMaker>NamerFactionPirate</factionNameMaker>
 	<settlementNameMaker>NamerSettlementPirate</settlementNameMaker>
+    <requiredMemes>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Animist</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Raider</li>
+    </requiredMemes>
     <disallowedMemes>
       <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
       <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Darkness</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">TreeConnection</li>
     </disallowedMemes>
     <backstoryFilters>
       <li>

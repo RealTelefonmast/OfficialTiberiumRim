@@ -17,17 +17,23 @@
 	<factionNameMaker>NamerFactionNod</factionNameMaker>
 	<settlementNameMaker>NamerFactionBaseNod</settlementNameMaker>
     <requiredMemes>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Structure_OriginChristian</li>
       <li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
-      <li MayRequire="Ludeon.RimWorld.Ideology">Loyalist</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Supremacist</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Transhumanist</li>
     </requiredMemes>
     <disallowedMemes>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Cannibal</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">FleshPurity</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">MaleSupremacy</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">FemaleSupremacy</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">AnimalPersonhood</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">NaturePrimacy</li>
       <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
       <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Darkness</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">TreeConnection</li>
     </disallowedMemes>
-    <structureMemeWeights>
-      <Structure_Archist MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Archist>
-      <Structure_OriginChristian MayRequire="Ludeon.RimWorld.Ideology">1</Structure_OriginChristian>
-    </structureMemeWeights>
     <backstoryFilters>
       <li>
         <categories>
@@ -86,9 +92,9 @@
 			</disallowedStrategies>
 			<options>
 				<Nod_Follower>15</Nod_Follower>
-				<Nod_Officer>30</Nod_Officer>
-				<Nod_Soldier>30</Nod_Soldier>
-				<Nod_Militia>30</Nod_Militia>
+				<Nod_Officer>20</Nod_Officer>
+				<Nod_Soldier>20</Nod_Soldier>
+				<Nod_Militia>20</Nod_Militia>
 				<Nod_MilitiaRocket>5</Nod_MilitiaRocket>
 				<Nod_BlackHand>10</Nod_BlackHand>
 				<!--
@@ -101,8 +107,8 @@
 			<kindDef>Combat</kindDef>
 			<commonality>75</commonality>
 			<options>
-				<Nod_Follower>35</Nod_Follower>
-				<Nod_Militia>35</Nod_Militia>
+				<Nod_Follower>10</Nod_Follower>
+				<Nod_Militia>30</Nod_Militia>
 				<Nod_Officer>15</Nod_Officer>
 				<Nod_Soldier>30</Nod_Soldier>
 				<Nod_MilitiaRocket>15</Nod_MilitiaRocket>
@@ -112,7 +118,10 @@
 			<kindDef>Combat</kindDef>
 			<commonality>50</commonality>
 			<options>
-				<Nod_Fanatic>100</Nod_Fanatic>
+				<Nod_Fanatic>40</Nod_Fanatic>
+				<Nod_Militia>30</Nod_Militia>
+				<Nod_Officer>10</Nod_Officer>
+				<Nod_Soldier>20</Nod_Soldier>
 			</options>
 		</li>
 		<li>
@@ -133,10 +142,10 @@
 		<li>
 			<kindDef>Peaceful</kindDef>
 			<options>
-				<Nod_Follower>50</Nod_Follower>
-				<Nod_Militia>35</Nod_Militia>
-				<Nod_Soldier>30</Nod_Soldier>
-				<Nod_Officer>15</Nod_Officer>
+				<Nod_Follower>40</Nod_Follower>
+				<Nod_Militia>30</Nod_Militia>
+				<Nod_Soldier>20</Nod_Soldier>
+				<Nod_Officer>10</Nod_Officer>
 			</options>
 		</li>
 		<li>
@@ -148,11 +157,11 @@
 				<Tiffalo>10</Tiffalo>
 			</carriers>
 			<guards>
-				<Nod_Follower>30</Nod_Follower>				
-				<Nod_Militia>30</Nod_Militia>
-				<Nod_Soldier>30</Nod_Soldier>
-				<Nod_Officer>20</Nod_Officer>
-				<Nod_BlackHand>20</Nod_BlackHand>
+				<Nod_Follower>40</Nod_Follower>				
+				<Nod_Militia>15</Nod_Militia>
+				<Nod_Soldier>15</Nod_Soldier>
+				<Nod_Officer>15</Nod_Officer>
+				<Nod_BlackHand>15</Nod_BlackHand>
 			</guards>
 		</li>
 		<li>
