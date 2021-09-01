@@ -17,7 +17,6 @@
 	<factionNameMaker>NamerFactionPirate</factionNameMaker>
 	<settlementNameMaker>NamerSettlementPirate</settlementNameMaker>
     <requiredMemes>
-	  <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Animist</li>
       <li MayRequire="Ludeon.RimWorld.Ideology">Raider</li>
     </requiredMemes>
     <disallowedMemes>
