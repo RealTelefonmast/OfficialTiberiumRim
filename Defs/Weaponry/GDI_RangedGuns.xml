@@ -125,7 +125,6 @@
 				<defaultProjectile>Projectile_StunGrenade</defaultProjectile>
 				<warmupTime>2</warmupTime>
 				<range>24.9</range>
-				<minRange>1.5</minRange>
 				<forcedMissRadius>0.1</forcedMissRadius>
 				<burstShotCount>1</burstShotCount>
 				<soundCast>Interact_AssaultRifle</soundCast>
@@ -296,7 +295,7 @@
 				<requireLineOfSight>true</requireLineOfSight>
 				<warmupTime>3</warmupTime>
 				<range>19.9</range>
-				<minRange>1.9</minRange>
+				<minRange>2.9</minRange>
 				<burstShotCount>2</burstShotCount>
 				<forcedMissRadius>1</forcedMissRadius>
 				<soundCast>Shot_GDI_Sonic</soundCast>
@@ -384,7 +383,7 @@
 				<warmupTime>5</warmupTime>
 				<requireLineOfSight>false</requireLineOfSight>
 				<range>49.9</range>
-				<minRange>24.9</minRange>
+				<minRange>9.9</minRange>
 				<forcedMissRadius>2</forcedMissRadius>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
@@ -460,7 +459,7 @@
 				<requireLineOfSight>false</requireLineOfSight>
 				<warmupTime>5</warmupTime>
 				<range>49.9</range>
-				<minRange>24.9</minRange>
+				<minRange>9.9</minRange>
 				<forcedMissRadius>2</forcedMissRadius>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>

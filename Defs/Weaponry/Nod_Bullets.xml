@@ -99,7 +99,7 @@
 			<texPath>Items/Weapons/Projectile/FlameSmall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
-			<drawSize>2</drawSize>
+			<drawSize>1</drawSize>
 		</graphicData>
 		<projectile>
 			<ai_IsIncendiary>true</ai_IsIncendiary>
@@ -119,7 +119,7 @@
 			<texPath>Items/Weapons/Projectile/Gas</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
-			<drawSize>1.5</drawSize>
+			<drawSize>1</drawSize>
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
