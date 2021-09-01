@@ -53,10 +53,10 @@
 			<RangedWeapon_Cooldown>1.70</RangedWeapon_Cooldown>
 		</statBases>
 		<equippedStatOffsets>
-					<MoveSpeed>0.05</MoveSpeed>
+			<MoveSpeed>0.05</MoveSpeed>
 		</equippedStatOffsets>
 		<costList>
-			<Steel>150</Steel>
+			<Nod_CarbonPlate>25</Nod_CarbonPlate>
 			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<verbs>
@@ -120,12 +120,11 @@
 			<RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
 		</statBases>
 		<equippedStatOffsets>
-				<MoveSpeed>0.15</MoveSpeed>
+			<MoveSpeed>0.15</MoveSpeed>
 		</equippedStatOffsets>
-		<costList>			<!-- Add custom recipe component; Tiberium; maybe upgradable using blue tiberium -->
-			<Steel>75</Steel>
-			<Uranium>1</Uranium>
-			<ComponentIndustrial>5</ComponentIndustrial>
+		<costList><!-- Add custom recipe component; Tiberium; maybe upgradable using blue tiberium -->
+			<Nod_CarbonPlate>15</Nod_CarbonPlate>
+			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<verbs>
 			<li>
@@ -184,7 +183,7 @@
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
-			<WorkToMake>35000</WorkToMake>
+			<WorkToMake>30000</WorkToMake>
 			<Mass>4.0</Mass>
 			<AccuracyTouch>0.70</AccuracyTouch>
 			<AccuracyShort>0.87</AccuracyShort>
@@ -194,7 +193,8 @@
 		</statBases>
 		<costList>
 			<Nod_StandardRifle>1</Nod_StandardRifle>
-			<ComponentIndustrial>10</ComponentIndustrial>
+			<ComponentSpacer>1</ComponentSpacer>
+			<TRBattleChip>1</TRBattleChip>
 		</costList>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
@@ -257,7 +257,7 @@
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
-			<WorkToMake>20000</WorkToMake>
+			<WorkToMake>30000</WorkToMake>
 			<Mass>5.0</Mass>
 			<AccuracyTouch>0.70</AccuracyTouch>
 			<AccuracyShort>0.87</AccuracyShort>
@@ -267,8 +267,8 @@
 		</statBases>
 		<costList>
 			<Nod_LaserRifleSmall>1</Nod_LaserRifleSmall>
-			<ComponentIndustrial>10</ComponentIndustrial>
-			<TRBattleChip>2</TRBattleChip>
+			<ComponentSpacer>1</ComponentSpacer>
+			<TRBattleChip>1</TRBattleChip>
 		</costList>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
@@ -327,7 +327,7 @@
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_Flamethrower</defName>
 		<label>Nod flamethrower</label>
-		<description>A Blackhand flamethrower. Cleanse the your opponents!\n\nUpgradable to Nod chemicalthrower.</description>
+		<description>A Blackhand flamethrower. Cleanse the your opponents! Made to be used in conjunction with the black hand armor.\n\nUpgradable to Nod chemicalthrower.</description>
 		<graphicData>
 			<texPath>Items/Weapons/Nod/FlameThrower</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -335,19 +335,30 @@
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
-			<WorkToMake>20000</WorkToMake>
-			<MarketValue>3000</MarketValue>
-			<Mass>6.0</Mass>
+			<WorkToMake>50000</WorkToMake>
+			<Mass>12.0</Mass>
 			<AccuracyTouch>0.5</AccuracyTouch>
 			<AccuracyShort>0.5</AccuracyShort>
 			<AccuracyMedium>0.25</AccuracyMedium>
 			<AccuracyLong>0.12</AccuracyLong>
 			<RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
 		</statBases>
+		<conditionalStatOffsets>
+			<li>
+				<unequippedOffsets>
+					<MoveSpeed>-0.35</MoveSpeed>
+				</unequippedOffsets>
+				<requiredEquip>
+					<li>Apparel_NodBlackHand</li>
+				</requiredEquip>
+			</li>
+		</conditionalStatOffsets>
 		<costList>
-			<Nod_StandardRifle>1</Nod_StandardRifle>
-			<ComponentIndustrial>5</ComponentIndustrial>
+			<Nod_CarbonPlate>50</Nod_CarbonPlate>
 			<Chemfuel>25</Chemfuel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+			<ComponentSpacer>1</ComponentSpacer>
+			<TRBattleChip>1</TRBattleChip>
 		</costList>
 		<verbs>
 			<li>
@@ -404,8 +415,8 @@
 	
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_Chemicalthrower</defName>
-		<label>Nod chemicalthrower</label>
-		<description>The chemical thrower is an advcanced and highly toxic weapon using Nod's liquid Tiberium technology.</description>
+		<label>Nod chemicalspray</label>
+		<description>The chemical thrower is an advcanced and highly toxic weapon using Nod's liquid Tiberium technology. Made to be used in conjunction with the black hand armor.</description>
 		<graphicData>
 			<texPath>Items/Weapons/Nod/ChemicalThrower</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -414,16 +425,27 @@
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
 			<WorkToMake>20000</WorkToMake>
-			<Mass>5.0</Mass>
+			<Mass>13.0</Mass>
 			<AccuracyTouch>0.5</AccuracyTouch>
 			<AccuracyShort>0.5</AccuracyShort>
 			<AccuracyMedium>0.25</AccuracyMedium>
 			<AccuracyLong>0.12</AccuracyLong>
 			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
 		</statBases>
+		<conditionalStatOffsets>
+			<li>
+				<unequippedOffsets>
+					<MoveSpeed>-0.35</MoveSpeed>
+				</unequippedOffsets>
+				<requiredEquip>
+					<li>Apparel_NodBlackHand</li>
+				</requiredEquip>
+			</li>
+		</conditionalStatOffsets>
 		<costList>
 			<Nod_Flamethrower>1</Nod_Flamethrower>
 			<Nod_LQTiberiumCore>1</Nod_LQTiberiumCore>
+			<ComponentSpacer>2</ComponentSpacer>
 			<TRBattleChip>2</TRBattleChip>
 		</costList>
 		<verbs>
@@ -490,17 +512,16 @@
 		</graphicData>
 		<statBases>
 			<WorkToMake>45000</WorkToMake>
-			<Mass>10</Mass>
-			<AccuracyTouch>0.2</AccuracyTouch>
-			<AccuracyShort>0.3</AccuracyShort>
+			<Mass>8</Mass>
+			<AccuracyTouch>0.3</AccuracyTouch>
+			<AccuracyShort>0.4</AccuracyShort>
 			<AccuracyMedium>0.6</AccuracyMedium>
-			<AccuracyLong>0.4</AccuracyLong>
+			<AccuracyLong>0.5</AccuracyLong>
 			<RangedWeapon_Cooldown>4</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
-			<Nod_CarbonPlate>25</Nod_CarbonPlate>
-			<Steel>150</Steel>
-			<ComponentIndustrial>15</ComponentIndustrial>
+			<Nod_CarbonPlate>50</Nod_CarbonPlate>
+			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>
 		<tradeTags>
 			<li>Exotic</li>
@@ -542,7 +563,8 @@
 			<li>LongShots</li>
 		</weaponClasses>
 	</TiberiumRim.TRThingDef>
-	
+
+<!--
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_Grenade</defName>
 		<label>Nod grenade</label>
@@ -602,11 +624,11 @@
 		</comps>
 		<tickerType>Normal</tickerType>
 		<recipeMaker>
-			<!--<researchPrerequisite>NodResearch_Production</researchPrerequisite>-->
+			<researchPrerequisite>NodResearch_Production</researchPrerequisite>
 		</recipeMaker>
 	</TiberiumRim.TRThingDef>
 	
-<!--
+
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_Sbomb</defName>
 		<label>Nod suicide bomb</label>

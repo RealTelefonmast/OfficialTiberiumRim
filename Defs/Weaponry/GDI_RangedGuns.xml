@@ -52,7 +52,7 @@
 			<RangedWeapon_Cooldown>1.70</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
-			<Steel>150</Steel>
+			<GDI_ReinforcedPlate>25</GDI_ReinforcedPlate>
 			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<verbs>
@@ -106,7 +106,7 @@
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
-			<WorkToMake>37000</WorkToMake>
+			<WorkToMake>35000</WorkToMake>
 			<Mass>4.0</Mass>
 			<AccuracyTouch>0.75</AccuracyTouch>
 			<AccuracyShort>0.75</AccuracyShort>
@@ -115,8 +115,8 @@
 			<RangedWeapon_Cooldown>2.25</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
-			<GDI_ReinforcedPlate>20</GDI_ReinforcedPlate>
-			<ComponentIndustrial>5</ComponentIndustrial>
+			<GDI_ReinforcedPlate>25</GDI_ReinforcedPlate>
+			<ComponentIndustrial>6</ComponentIndustrial>
 		</costList>
 		<verbs>
 			<li>
@@ -166,7 +166,7 @@
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Railgun</defName>
 		<label>GDI railgun</label>
-		<description>This railgun fires accurate supersonic sabots. Made to be used in conjunction with the GDI Zone Trooper armor.</description>
+		<description>This railgun fires accurate supersonic sabots. Made to be used in conjunction with the GDI zone armor.</description>
 		<graphicData>
 			<texPath>Items/Weapons/GDI/Railgun</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -174,9 +174,9 @@
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
-			<WorkToMake>52000</WorkToMake>
+			<WorkToMake>60000</WorkToMake>
 			<Mass>15.5</Mass>
-			<AccuracyTouch>0.25</AccuracyTouch>
+			<AccuracyTouch>0.35</AccuracyTouch>
 			<AccuracyShort>0.65</AccuracyShort>
 			<AccuracyMedium>0.9</AccuracyMedium>
 			<AccuracyLong>1</AccuracyLong>
@@ -194,7 +194,7 @@
 		</conditionalStatOffsets>
 		<costList>
 			<GDI_StandardRifle>1</GDI_StandardRifle>
-			<ComponentIndustrial>15</ComponentIndustrial>
+			<ComponentSpacer>2</ComponentSpacer>
 			<TRBattleChip>2</TRBattleChip>
 		</costList>
 		<verbs>
@@ -256,7 +256,7 @@
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Shatterer</defName>
 		<label>GDI sonic shatterer</label>
-		<description>This weapon uses GDI's sonic technology. Extremely unstable.</description>
+		<description>This weapon uses GDI's sonic technology, Extremely unstable. Made to be used in conjunction with the GDI zone armor.</description>
 		<graphicData>
 			<texPath>Items/Weapons/GDI/GDI_Shatterer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -264,12 +264,12 @@
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
-			<WorkToMake>70000</WorkToMake>
+			<WorkToMake>100000</WorkToMake>
 			<Mass>10.0</Mass>
 			<AccuracyTouch>0.85</AccuracyTouch>
-			<AccuracyShort>1</AccuracyShort>
-			<AccuracyMedium>0.80</AccuracyMedium>
-			<AccuracyLong>0.6</AccuracyLong>
+			<AccuracyShort>0.75</AccuracyShort>
+			<AccuracyMedium>0.65</AccuracyMedium>
+			<AccuracyLong>0.55</AccuracyLong>
 			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
 		</statBases>
 		<conditionalStatOffsets>
@@ -283,10 +283,10 @@
 			</li>
 		</conditionalStatOffsets>
 		<costList>
-			<GDI_ReinforcedPlate>25</GDI_ReinforcedPlate>
-			<ComponentIndustrial>10</ComponentIndustrial>
+			<GDI_ReinforcedPlate>50</GDI_ReinforcedPlate>
 			<GDI_SonicCore>1</GDI_SonicCore>
-			<TRBattleChip>2</TRBattleChip>
+			<ComponentSpacer>3</ComponentSpacer>
+			<TRBattleChip>3</TRBattleChip>
 		</costList>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
@@ -345,7 +345,7 @@
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Mortar</defName>
 		<label>GDI mobile mortar</label>
-		<description>This is a experimental weapon used by GDI for long distance engagements.\n\nUpgradable to GDI shockweaver.</description>
+		<description>This is a experimental weapon used by GDI for long distance engagements. Made to be used in conjunction with the GDI zone armor.\n\nUpgradable to GDI shockweaver.</description>
 		<graphicData>
 			<texPath>Items/Weapons/GDI/MobileMortar</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -361,9 +361,20 @@
 			<AccuracyLong>0.6</AccuracyLong>
 			<RangedWeapon_Cooldown>6</RangedWeapon_Cooldown>
 		</statBases>
+		<conditionalStatOffsets>
+			<li>
+				<unequippedOffsets>
+					<MoveSpeed>-0.20</MoveSpeed>
+				</unequippedOffsets>
+				<requiredEquip>
+					<li>Apparel_GDIZoneSuit</li>
+				</requiredEquip>
+			</li>
+		</conditionalStatOffsets>
 		<costList>
-			<GDI_ReinforcedPlate>35</GDI_ReinforcedPlate>
-			<ComponentIndustrial>15</ComponentIndustrial>
+			<GDI_ReinforcedPlate>50</GDI_ReinforcedPlate>
+			<ComponentSpacer>2</ComponentSpacer>
+			<TRBattleChip>2</TRBattleChip>
 		</costList>
 		<verbs>
 			<li>
@@ -409,7 +420,7 @@
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Shockweaver</defName>
 		<label>GDI shockweaver</label>
-		<description>This is a siege weapon that uses shockwave warheads. Only effective for structures.</description>
+		<description>This is a siege weapon that uses shockwave warheads. Only effective for structures. Made to be used in conjunction with the GDI zone armor.</description>
 		<graphicData>
 			<texPath>Items/Weapons/GDI/Shockweaver</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -425,10 +436,21 @@
 			<AccuracyLong>0.6</AccuracyLong>
 			<RangedWeapon_Cooldown>6</RangedWeapon_Cooldown>
 		</statBases>
+		<conditionalStatOffsets>
+			<li>
+				<unequippedOffsets>
+					<MoveSpeed>-0.20</MoveSpeed>
+				</unequippedOffsets>
+				<requiredEquip>
+					<li>Apparel_GDIZoneSuit</li>
+				</requiredEquip>
+			</li>
+		</conditionalStatOffsets>
 		<costList>
 			<GDI_Mortar>1</GDI_Mortar>
 			<GDI_SonicCore>1</GDI_SonicCore>
-			<TRBattleChip>2</TRBattleChip>
+			<ComponentSpacer>1</ComponentSpacer>
+			<TRBattleChip>1</TRBattleChip>
 		</costList>
 		<verbs>
 			<li>
