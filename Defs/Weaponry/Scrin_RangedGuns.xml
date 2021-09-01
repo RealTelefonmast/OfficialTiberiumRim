@@ -144,12 +144,15 @@
 	<ThingDef ParentName="BaseGunWithQuality">
 		<defName>Scrin_ShockLanceLauncher</defName>
 		<label>scrin charge cannon</label>
-		<description>Almost fragmented alien weapon. But performance is extremmly excellent.</description>
+		<description>Almost fragmented alien weapon. But performance is extremmly excellent.
+\nThis weapon has an onboard persona that can bond to only a single person. The wielder and intelligent weapon can synchronize their reflexes and attack with frightening speed, accuracy, and creativity. Once bonded to a wielder, the weapon's persona will refuse to be wielded by anyone else.</description>
 		<graphicData>
 			<texPath>Items/Weapons/Scrin/Scrin_ChargeCannon</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.25</drawSize>
 		</graphicData>
+		<soundInteract>Interact_BladelinkMonoSword</soundInteract>
+		<meleeHitSound>MeleeHit_BladelinkMonoSword</meleeHitSound>
 		<statBases>
 			<MarketValue>5000</MarketValue>
 			<MaxHitPoints>10</MaxHitPoints>
@@ -161,7 +164,7 @@
 			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
 		</statBases>
 		<tradeability>None</tradeability>
-		<techLevel>Spacer</techLevel>
+		<techLevel>Ultra</techLevel>
 		<weaponTags>
 			<li>ScrinChargeGun</li>
 		</weaponTags>
@@ -191,6 +194,17 @@
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
 			</li>
 		</verbs>
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_BladelinkWeapon" MayRequire="Ludeon.RimWorld.Ideology">
+				<biocodeOnEquip>true</biocodeOnEquip>
+			</li>
+			<li Class="CompProperties_GeneratedName" MayRequire="Ludeon.RimWorld.Ideology">
+				<nameMaker>NamerWeaponBladelink</nameMaker>
+			</li>
+		</comps>
 		<tools>
 			<li>
 				<label>spine</label>

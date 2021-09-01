@@ -3,7 +3,7 @@
 
 	<!-- Turrets -->
 	<ThingDef ParentName="BaseBullet_TR">
-		<defName>Bullet_GDIStandard</defName>
+		<defName>Bullet_GDITurret</defName>
 		<label>bullet</label>
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Bullet_Base_GDI</texPath>
@@ -12,28 +12,44 @@
 		</graphicData>
 		<projectile>
 			<damageDef>Bullet</damageDef>
-			<damageAmountBase>13</damageAmountBase>
-			<stoppingPower>0.75</stoppingPower>
-			<speed>100</speed>
-			<armorPenetrationBase>0.45</armorPenetrationBase>
+			<damageAmountBase>12</damageAmountBase>
+			<stoppingPower>0.25</stoppingPower>
+			<speed>70</speed>
+			<armorPenetrationBase>0.25</armorPenetrationBase>
 		</projectile>
 	</ThingDef>
 	
 	<ThingDef ParentName="BaseBullet_TR">
-		<defName>Bullet_GDIHighVelocity</defName>
+		<defName>Bullet_GDIStandard</defName>
+		<label>bullet</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Base_GDI</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<stoppingPower>0.25</stoppingPower>
+			<speed>70</speed>
+			<armorPenetrationBase>0.1</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_GDIAP</defName>
 		<label>bullet</label>
 		<description>bullet</description>
 		<graphicData>
 		<texPath>Items/Weapons/Projectile/Bullet_Base_GDI</texPath>
 		<graphicClass>Graphic_Single</graphicClass>
-		<drawSize>0.7</drawSize>
+		<drawSize>1.1</drawSize>
 		</graphicData>
 		<projectile>
 			<damageDef>Bullet</damageDef>
-			<damageAmountBase>9</damageAmountBase>
-			<stoppingPower>0.45</stoppingPower>
-			<speed>180</speed>
-			<armorPenetrationBase>0.75</armorPenetrationBase>
+			<damageAmountBase>10</damageAmountBase>
+			<speed>90</speed>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
 		</projectile>
 	</ThingDef>
 	

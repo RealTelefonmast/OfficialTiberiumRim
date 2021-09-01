@@ -34,7 +34,7 @@
 		-->
 	</TiberiumRim.TRThingDef>	
 
-	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
+	<TiberiumRim.TRThingDef ParentName="Nod_Gun"> <!--balance standard - assault rifle + -->
 		<defName>Nod_StandardRifle</defName>
 		<label>Nod rifle</label>
 		<description>A general-purpose military weapon for field or urban combat. Made specifically for urban combat by Nod.\n\nUpgradable to Nod laser rifle.\n\nUpgradable to Nod flamethrower.</description>
@@ -44,31 +44,31 @@
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
-			<WorkToMake>30000</WorkToMake>
+			<WorkToMake>40000</WorkToMake>
 			<Mass>3.5</Mass>
-			<AccuracyTouch>0.75</AccuracyTouch>
-			<AccuracyShort>0.8</AccuracyShort>
+			<AccuracyTouch>0.60</AccuracyTouch>
+			<AccuracyShort>0.70</AccuracyShort>
 			<AccuracyMedium>0.65</AccuracyMedium>
 			<AccuracyLong>0.55</AccuracyLong>
-			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>1.70</RangedWeapon_Cooldown>
 		</statBases>
 		<equippedStatOffsets>
 					<MoveSpeed>0.05</MoveSpeed>
 		</equippedStatOffsets>
 		<costList>
 			<Steel>150</Steel>
-			<ComponentIndustrial>10</ComponentIndustrial>
+			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_NodStandard</defaultProjectile>
-				<secondaryProjectile>Bullet_NodAntiPersonnel</secondaryProjectile>
-				<warmupTime>1</warmupTime>
-				<range>34.9</range>
+				<secondaryProjectile>Bullet_NodAP</secondaryProjectile>
+				<warmupTime>1.2</warmupTime>
+				<range>32.9</range>
 				<burstShotCount>5</burstShotCount>
-				<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
 				<soundCast>Shot_HeavySMG</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>

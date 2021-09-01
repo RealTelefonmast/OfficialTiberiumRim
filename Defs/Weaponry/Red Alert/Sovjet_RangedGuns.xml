@@ -33,7 +33,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Projectile_TeslaArc</defaultProjectile>
 				<requireLineOfSight>true</requireLineOfSight>
-				<warmupTime>5</warmupTime>
+				<warmupTime>4</warmupTime>
 				<range>25</range>
 				<minRange>2</minRange>
 				<burstShotCount>1</burstShotCount>

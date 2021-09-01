@@ -25,19 +25,19 @@
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Bullet_Base_Nod</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>0.9</drawSize>
+			<drawSize>1</drawSize>
 		</graphicData>
 		<projectile>
 			<damageDef>Bullet</damageDef>
-			<damageAmountBase>8</damageAmountBase>
-			<stoppingPower>0.655</stoppingPower>
-			<speed>75</speed>
-			<armorPenetrationBase>0.25</armorPenetrationBase>
+			<damageAmountBase>9</damageAmountBase>
+			<stoppingPower>0.3</stoppingPower>
+			<speed>70</speed>
+			<armorPenetrationBase>0.1</armorPenetrationBase>
 		</projectile>
 	</ThingDef>
 	
 		<ThingDef ParentName="BaseBullet_TR">
-		<defName>Bullet_NodAntiPersonnel</defName>
+		<defName>Bullet_NodAP</defName>
 		<label>bullet</label>
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Bullet_Base_Nod</texPath>
@@ -46,10 +46,9 @@
 		</graphicData>
 		<projectile>
 			<damageDef>Bullet</damageDef>
-			<damageAmountBase>11</damageAmountBase>
-			<stoppingPower>0.655</stoppingPower>
-			<speed>55</speed>
-			<armorPenetrationBase>0.125</armorPenetrationBase>
+			<damageAmountBase>7</damageAmountBase>
+			<speed>90</speed>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
 		</projectile>
 	</ThingDef>
 	

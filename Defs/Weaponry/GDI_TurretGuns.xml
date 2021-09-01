@@ -83,7 +83,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Bullet_GDIHighVelocity</defaultProjectile>
+				<defaultProjectile>Bullet_GDITurret</defaultProjectile>
 				<warmupTime>2.5</warmupTime>
 				<range>24.9</range>
 				<burstShotCount>8</burstShotCount>
