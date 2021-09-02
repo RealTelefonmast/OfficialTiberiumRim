@@ -71,6 +71,87 @@
 		<fadeOutTime>2</fadeOutTime>
 	</FleckDef>
 	
+
+	<!-- EXPLOSIONS -->
+	
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_BlastSound</defName>
+		<graphicData>
+			<texPath>Motes/SoundMote</texPath> 
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.1</solidTime>
+		<fadeOutTime>0.65</fadeOutTime>
+		<growthRate>2</growthRate>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_BlastWave</defName>
+		<graphicData>
+			<texPath>Motes/SoundMote</texPath> 
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.1</solidTime>
+		<fadeOutTime>1.5</fadeOutTime>
+		<growthRate>1</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_Nuke</defName>
+		<graphicData>
+			<texPath>Motes/Gas</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>4</fadeInTime>
+		<solidTime>0</solidTime>
+		<fadeOutTime>8</fadeOutTime>
+		<growthRate>0.8</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_NukePostEffect</defName>
+		<graphicData>
+			<texPath>Motes/Gas</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>4</fadeInTime>
+		<solidTime>0</solidTime>
+		<fadeOutTime>10</fadeOutTime>
+		<growthRate>0.6</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_ScrinCut</defName>
+		<graphicData>
+			<texPath>Motes/ScrinCut</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.15</fadeInTime>
+		<solidTime>0.75</solidTime>
+		<fadeOutTime>1.5</fadeOutTime>
+		<growthRate>0.75</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_ScrinBomb</defName>
+		<graphicData>
+			<texPath>Motes/ScrinBomb</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.15</fadeInTime>
+		<solidTime>0.75</solidTime>
+		<fadeOutTime>1.5</fadeOutTime>
+		<growthRate>0.75</growthRate>
+	</FleckDef>
+	
 	<!--
 	<TiberiumRim.ParticleDef Name="SporeBase" Abstract="True">
 		<altitudeLayer>MoteOverhead</altitudeLayer>

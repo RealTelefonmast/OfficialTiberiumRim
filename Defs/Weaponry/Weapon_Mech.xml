@@ -105,7 +105,6 @@
 				<defaultProjectile>Bullet_AvatarFlamethrower</defaultProjectile>
 				<warmupTime>2</warmupTime>
 				<range>7.9</range>
-				<minRange>1.5</minRange>
 				<forcedMissRadius>0.5</forcedMissRadius>
 				<burstShotCount>15</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
@@ -168,7 +167,6 @@
 				<defaultProjectile>Bullet_TwinFlamethrower</defaultProjectile>
 				<warmupTime>2</warmupTime>
 				<range>7.9</range>
-				<minRange>1.5</minRange>
 				<forcedMissRadius>0.5</forcedMissRadius>
 				<burstShotCount>12</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
@@ -222,7 +220,6 @@
 				<defaultProjectile>Bullet_Buggy</defaultProjectile>
 				<warmupTime>0.5</warmupTime>
 				<range>14.9</range>
-				<minRange>1.5</minRange>
 				<burstShotCount>6</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_Buggy</soundCast>
@@ -273,7 +270,6 @@
 				<defaultProjectile>Bullet_Wolverine</defaultProjectile>
 				<warmupTime>0.5</warmupTime>
 				<range>11.9</range>
-				<minRange>1.5</minRange>
 				<burstShotCount>10</burstShotCount>
 				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
 				<soundCast>Interact_AssaultRifle</soundCast>
@@ -393,7 +389,7 @@
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
-			<damageDef>TRShock</damageDef>
+			<damageDef>TRShockArm</damageDef>
 			<damageAmountBase>25</damageAmountBase>
 			<explosionRadius>1.25</explosionRadius>
 			<speed>50</speed>
@@ -432,7 +428,6 @@
 				<defaultProjectile>Bullet_Bash</defaultProjectile>
 				<warmupTime>1</warmupTime>
 				<range>2.25</range>
-				<minRange>0.25</minRange>
 				<forcedMissRadius>0.1</forcedMissRadius>
 				<burstShotCount>2</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>

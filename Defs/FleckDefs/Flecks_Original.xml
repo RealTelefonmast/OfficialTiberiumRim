@@ -127,7 +127,7 @@
   </DamageDef>
 -->  
 	
-	<!--Fleck-->
+	<!--Original Fleck-->
 	
   <FleckDef ParentName="FleckBase_Thrown">
     <defName>Smoke</defName>

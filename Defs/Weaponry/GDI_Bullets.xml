@@ -8,6 +8,7 @@
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Bullet_Base_GDI</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>1.1</drawSize>
 		</graphicData>
 		<projectile>
@@ -25,6 +26,7 @@
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Bullet_Base_GDI</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>1</drawSize>
 		</graphicData>
 		<projectile>
@@ -41,9 +43,10 @@
 		<label>bullet</label>
 		<description>bullet</description>
 		<graphicData>
-		<texPath>Items/Weapons/Projectile/Bullet_Base_GDI</texPath>
-		<graphicClass>Graphic_Single</graphicClass>
-		<drawSize>1.1</drawSize>
+			<texPath>Items/Weapons/Projectile/Bullet_Base_GDI</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1.1</drawSize>
 		</graphicData>
 		<projectile>
 			<damageDef>Bullet</damageDef>
@@ -78,7 +81,6 @@
 			<drawSize>1.5</drawSize>
 			<texPath>Items/Weapons/Projectile/Bullet_Jugg</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
@@ -104,7 +106,6 @@
 			<drawSize>1.5</drawSize>
 			<texPath>Items/Weapons/Projectile/Bullet_Jugg</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
@@ -130,7 +131,6 @@
 			<drawSize>1.5</drawSize>
 			<texPath>Items/Weapons/Projectile/Bullet_Jugg</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>

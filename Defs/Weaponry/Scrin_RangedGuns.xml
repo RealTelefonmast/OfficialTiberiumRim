@@ -72,12 +72,11 @@
 					<beamPath>Items/Weapons/Projectile/Bullet_BeamScrin</beamPath>
 				</beamProps>
 				<originOffsets>	
-					<li>(0,-1,0.15)</li>
+					<li>(0,0,0)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>0.5</warmupTime>
 				<range>4.9</range>
-				<minRange>1.5</minRange>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<burstShotCount>5</burstShotCount>
 				<soundCast>Shot_Scrin_BeamSml</soundCast>
@@ -130,7 +129,6 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>2.5</warmupTime>
 				<range>19.9</range>
-				<minRange>1.5</minRange>
 				<ticksBetweenBurstShots>25</ticksBetweenBurstShots>
 				<burstShotCount>6</burstShotCount>
 				<soundCast>Shot_Scrin_Devourer</soundCast>
@@ -175,17 +173,11 @@
 					<beamPath>Items/Weapons/Projectile/Bullet_BeamScrinBig</beamPath>
 				</beamProps>
 				<originOffsets>	
-					<li>(0.45,-1,-0.1)</li>
-					<li>(-0.5,-1,-0.6)</li>
-					<li>(0.45,-1,-1.1)</li>
-					<li>(-0.45,-1,-0.1)</li>
-					<li>(0.5,-1,-0.6)</li>
-					<li>(-0.45,-1,-1.1)</li>
+					<li>(0,0,0)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>3</warmupTime>
 				<range>54.9</range>
-				<minRange>1.5</minRange>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<burstShotCount>1</burstShotCount>
 				<soundCast>Shot_Scrin_BeamMid</soundCast>

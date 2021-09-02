@@ -9,6 +9,7 @@
 			<texPath>Items/Weapons/Projectile/Bullet_Shredder</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>0.75</drawSize>
+			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
 		<projectile>
 			<damageDef>Bullet</damageDef>
@@ -25,6 +26,7 @@
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Bullet_Base_Nod</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>1</drawSize>
 		</graphicData>
 		<projectile>
@@ -42,6 +44,7 @@
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Bullet_Base_Nod</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>1.1</drawSize>
 		</graphicData>
 		<projectile>
@@ -58,6 +61,7 @@
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Bullet_Nod_Tiberium</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
@@ -143,7 +147,6 @@
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Bullet_Nod_Rocket</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
