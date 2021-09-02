@@ -180,12 +180,12 @@
 		<defaultArmorPenetration>0.3</defaultArmorPenetration>
 		<defaultStoppingPower>0.75</defaultStoppingPower>
 		<explosionCellFleck>Mote_AdvExplosion1</explosionCellFleck>
-		<explosionInteriorFleck>SubMote_AdvParticle1</explosionInteriorFleck>
+		<explosionInteriorFleck>SubMote_TibGasParticle</explosionInteriorFleck>
 		<explosionColorCenter>(0.5, 1, 0.7, 1)</explosionColorCenter>
 		<explosionColorEdge>(0.1, 0.5, 0.1, 0)</explosionColorEdge>
 	</DamageDef>
-	
-	
+
+
 	<!--FX checked-->
 	
 

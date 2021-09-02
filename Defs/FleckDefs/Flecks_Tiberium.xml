@@ -152,6 +152,20 @@
 		<growthRate>0.75</growthRate>
 	</FleckDef>
 	
+  <FleckDef ParentName="FleckBase_Thrown">
+		<defName>SubMote_TibGasParticle</defName>
+		<graphicData>
+			<texPath>Motes/TiberiumGasLight</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>0.5</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.25</fadeInTime>
+		<solidTime>0</solidTime>
+		<fadeOutTime>1</fadeOutTime>
+		<growthRate>3.5</growthRate>
+	</FleckDef>
+	
 	<!--
 	<TiberiumRim.ParticleDef Name="SporeBase" Abstract="True">
 		<altitudeLayer>MoteOverhead</altitudeLayer>
