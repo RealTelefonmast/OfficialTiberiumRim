@@ -172,6 +172,7 @@
 		</comps>
 	</ThingDef>
 	
+	<!--
 	<ThingDef ParentName="MakeableDrugPillBase_TR">
 		<defName>TiberOS</defName>
 		<label>tiberOs</label>
@@ -208,5 +209,6 @@
 			</li>
 		</comps>
 	</ThingDef>
+	-->
 	
 </Defs>
