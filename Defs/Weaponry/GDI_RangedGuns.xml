@@ -30,7 +30,7 @@
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun"> <!--balance standard - assault rifle + -->
 		<defName>GDI_StandardRifle</defName>
 		<label>GDI rifle</label>
-		<description>A general-purpose military weapon for field or urban combat.\n\nUpgradable to GDI railgun.</description>
+		<description>A general-purpose military weapon for field or urban combat.\n\nUpgradable to the railgun.</description>
 		<graphicData>
 			<texPath>Items/Weapons/GDI/Rifle</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -165,7 +165,7 @@
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Railgun</defName>
 		<label>GDI railgun</label>
-		<description>This railgun fires accurate supersonic sabots. Made to be used in conjunction with the GDI zone armor.</description>
+		<description>This railgun fires accurate supersonic sabots. Made to be used in conjunction with the zone armor.</description>
 		<graphicData>
 			<texPath>Items/Weapons/GDI/Railgun</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -255,7 +255,7 @@
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Shatterer</defName>
 		<label>GDI sonic shatterer</label>
-		<description>This weapon uses GDI's sonic technology, Extremely unstable. Made to be used in conjunction with the GDI zone armor.</description>
+		<description>A weapon using GDI's sonic technology, Extremely unstable. Made to be used in conjunction with the zone armor.</description>
 		<graphicData>
 			<texPath>Items/Weapons/GDI/GDI_Shatterer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -344,7 +344,7 @@
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Mortar</defName>
 		<label>GDI mobile mortar</label>
-		<description>This is a experimental weapon used by GDI for long distance engagements. Made to be used in conjunction with the GDI zone armor.\n\nUpgradable to GDI shockweaver.</description>
+		<description>A heavy weapon used by GDI for long distance engagements. Made to be used in conjunction with the zone armor.\n\nUpgradable to the shockweaver.</description>
 		<graphicData>
 			<texPath>Items/Weapons/GDI/MobileMortar</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -419,7 +419,7 @@
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Shockweaver</defName>
 		<label>GDI shockweaver</label>
-		<description>This is a siege weapon that uses shockwave warheads. Only effective for structures. Made to be used in conjunction with the GDI zone armor.</description>
+		<description>A experimental  siege weapon using shockwave warheads. Only effective for structures. Made to be used in conjunction with the zone armor.</description>
 		<graphicData>
 			<texPath>Items/Weapons/GDI/Shockweaver</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

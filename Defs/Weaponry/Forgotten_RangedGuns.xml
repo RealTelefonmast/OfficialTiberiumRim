@@ -4,14 +4,14 @@
 	<ThingDef ParentName="BaseMakeableGun_TR">
 		<defName>Forg_ShardgunGreen</defName>
 		<label>shard gun</label>
-		<description>A simple shotgun made from scrap and other components. Launches crushed tiberium crystals towards the target, may accidentally seed the ground with green tiberium.</description>
+		<description>A simple shotgun made from scrap and other components. Launches crushed tiberium crystals towards the target, may accidentally seed the ground with green tiberium.\n\nUpgradable to the explosive shard launcher.</description>
 		<graphicData>
 			<texPath>Items/Weapons/Forgotten/TibShardgun</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.25</drawSize>
 		</graphicData>
 		<statBases>
-			<WorkToMake>12000</WorkToMake>
+			<WorkToMake>15000</WorkToMake>
 			<Mass>3</Mass>
 			<AccuracyTouch>0.7</AccuracyTouch>
 			<AccuracyShort>0.6</AccuracyShort>
@@ -77,8 +77,8 @@
 			<drawSize>1.25</drawSize>
 		</graphicData>
 		<statBases>
-			<WorkToMake>15000</WorkToMake>
-			<Mass>2</Mass>
+			<WorkToMake>10000</WorkToMake>
+			<Mass>4</Mass>
 			<AccuracyTouch>0.7</AccuracyTouch>
 			<AccuracyShort>0.6</AccuracyShort>
 			<AccuracyMedium>0.4</AccuracyMedium>
@@ -89,8 +89,9 @@
 			<li>ShardgunB</li>
 		</weaponTags>
 		<costList>
-			<Steel>150</Steel>
-			<ComponentIndustrial>5</ComponentIndustrial>
+			<Forg_ShardgunGreen>1</Forg_ShardgunGreen>
+			<Steel>75</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
 		</costList>
 		<techLevel>Industrial</techLevel>
 		<verbs>
