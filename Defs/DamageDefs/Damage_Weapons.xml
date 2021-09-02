@@ -13,6 +13,7 @@
 		<hediffSolid>Crack</hediffSolid>
 		<makesBlood>true</makesBlood>
 		<armorCategory>Sharp</armorCategory>
+		<defaultDamage>10</defaultDamage>
 		<defaultStoppingPower>0.5</defaultStoppingPower>
 		<defaultArmorPenetration>0.5</defaultArmorPenetration>
 		<buildingDamageFactor>1</buildingDamageFactor>
@@ -25,10 +26,11 @@
 		<isExplosive>false</isExplosive>
 		<externalViolence>true</externalViolence>
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
-		<hediff>Cut</hediff>
+		<hediff>Burn</hediff>
 		<hediffSolid>Cut</hediffSolid>
 		<makesBlood>false</makesBlood>
-		<defaultDamage>100</defaultDamage>
+		<armorCategory>Heat</armorCategory>
+		<defaultDamage>10</defaultDamage>
 		<defaultStoppingPower>0.25</defaultStoppingPower>
         <defaultArmorPenetration>0.25</defaultArmorPenetration>
 		<buildingDamageFactor>1</buildingDamageFactor>

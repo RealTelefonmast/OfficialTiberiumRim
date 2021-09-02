@@ -109,7 +109,9 @@
 			<ai_IsIncendiary>true</ai_IsIncendiary>
 			<damageDef>Flame</damageDef>
 			<damageAmountBase>3</damageAmountBase>
-			<explosionRadius>0.025</explosionRadius>
+			<explosionRadius>1.1</explosionRadius>
+			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.25</preExplosionSpawnChance>
 			<arcHeightFactor>1.25</arcHeightFactor>
 			<speed>15</speed>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
@@ -118,7 +120,7 @@
 	
 	<ThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_TiberiumGas</defName>
-		<label>tiberium gas cloud</label>
+		<label>chemical gas cloud</label>
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Gas</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -127,15 +129,15 @@
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
-			<damageDef>TiberiumGas</damageDef>
+			<damageDef>TiberiumExplosionGas</damageDef>
 			<damageAmountBase>8</damageAmountBase>
-			<explosionRadius>0.025</explosionRadius>
-			<preExplosionSpawnThingDef>TiberiumGas</preExplosionSpawnThingDef>
-			<preExplosionSpawnChance>0.8</preExplosionSpawnChance>
+			<explosionRadius>1.1</explosionRadius>
+			<preExplosionSpawnThingDef>FilthTibLiquidGreen</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.25</preExplosionSpawnChance>
 			<arcHeightFactor>1.25</arcHeightFactor>
 			<speed>15</speed>
-			<postExplosionSpawnThingDef>FilthTibLiquidGreen</postExplosionSpawnThingDef>
-			<postExplosionSpawnChance>0.45</postExplosionSpawnChance>
+			<postExplosionSpawnThingDef>TiberiumGas</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
 		</projectile>
 	</ThingDef>
@@ -191,7 +193,7 @@
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
-			<damageDef>TiberiumExplosionBurn</damageDef>
+			<damageDef>TiberiumExplosionGas</damageDef>
 			<damageAmountBase>75</damageAmountBase>
 			<explosionRadius>5.9</explosionRadius>
 			<speed>15</speed>

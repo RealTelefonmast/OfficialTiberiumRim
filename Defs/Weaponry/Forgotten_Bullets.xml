@@ -18,7 +18,7 @@
 			<postExplosionSpawnThingDef>FilthTiberiumGreen</postExplosionSpawnThingDef>
 			<postExplosionSpawnChance>0.1</postExplosionSpawnChance>
 			<speed>50</speed>
-			<arcHeightFactor>1.1</arcHeightFactor>
+			<arcHeightFactor>0.25</arcHeightFactor>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
 	</ThingDef>
@@ -41,7 +41,7 @@
 			<postExplosionSpawnThingDef>FilthTiberiumBlue</postExplosionSpawnThingDef>
 			<postExplosionSpawnChance>0.2</postExplosionSpawnChance>
 			<speed>50</speed>
-			<arcHeightFactor>1.1</arcHeightFactor>
+			<arcHeightFactor>0.25</arcHeightFactor>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
 	</ThingDef>

@@ -40,7 +40,7 @@
 	
 	<ThingDef Abstract="True" Name="TiberiumFog" ParentName="MoteBase_TR">
 		<graphicData>
-			<texPath>Motes/TiberiumFog</texPath>
+			<texPath>Motes/Gas</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>

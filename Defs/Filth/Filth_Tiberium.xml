@@ -3,18 +3,20 @@
   
 	<ThingDef Name="TibFilth" ParentName="BaseFilth" Abstract="True">
 		<statBases>
-			<Beauty>-10</Beauty>
-			<Cleanliness>-55</Cleanliness>
+			<Beauty>-5</Beauty>
+			<Cleanliness>-25</Cleanliness>
 		</statBases>
 		<graphicData>	
-			<color>(255, 255, 255, 155)</color>
+			<color>(1, 1, 1, 0.5)</color>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<filth>
 			<cleaningWorkToReduceThickness>65</cleaningWorkToReduceThickness>
 			<canFilthAttach>true</canFilthAttach>
 			<rainWashes>true</rainWashes>
-			<maxThickness>80</maxThickness>
+			<maxThickness>5</maxThickness>
+			<disappearsInDays>1~5</disappearsInDays>
+			<cleaningSound>Interact_CleanFilth_Fluid</cleaningSound>
 		</filth>
 	</ThingDef>
 
@@ -33,6 +35,7 @@
       <texPath>Filth/TibDustGreen</texPath>
       <color>(255, 255, 255, 90)</color>
     </graphicData>
+	
   </ThingDef>
   
   <ThingDef ParentName="TibFilth">
@@ -80,23 +83,7 @@
 			<maxThickness>1</maxThickness>
 		</filth>
 	</ThingDef>
-  
-  
-	<!--
-	<ThingDef ParentName="InciendiaryFilth">
-		<defName>FilthTibLiquid</defName>
-		<thingClass>TiberiumRim.TiberiumLeak</thingClass>
-		<label>leaked tiberium</label>
-		<description>A puddle of liquid Tiberium.</description>
-		<statBases>
-			<Beauty>-25</Beauty>
-			<Cleanliness>-50</Cleanliness>
-		</statBases>
-		<graphicData>  
-			<texPath>Filth/TibLiquid</texPath>
-		</graphicData>
-	</ThingDef>-->
-  
+
 	<ThingDef ParentName="InciendiaryFilth">
 		<defName>FilthTibLiquidGreen</defName>
 		<label>leaked green tiberium</label>
@@ -136,4 +123,18 @@
 		</graphicData>
 	</ThingDef>
   
+	<!--
+	<ThingDef ParentName="InciendiaryFilth">
+		<defName>FilthTibLiquid</defName>
+		<thingClass>TiberiumRim.TiberiumLeak</thingClass>
+		<label>leaked tiberium</label>
+		<description>A puddle of liquid Tiberium.</description>
+		<statBases>
+			<Beauty>-25</Beauty>
+			<Cleanliness>-50</Cleanliness>
+		</statBases>
+		<graphicData>  
+			<texPath>Filth/TibLiquid</texPath>
+		</graphicData>
+	</ThingDef>-->
 </Defs>

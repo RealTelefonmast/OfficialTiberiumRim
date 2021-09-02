@@ -24,6 +24,7 @@
 		<soundExplosion>Explosion_Bomb</soundExplosion>
 		<combatLogRules>Damage_Bomb</combatLogRules>
 		<makesAnimalsFlee>true</makesAnimalsFlee>
+		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
 	</DamageDef>
 
 	<DamageDef ParentName="TRExplosionBase">
@@ -58,7 +59,7 @@
 		<hediff>Burn</hediff>
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<impactSoundType>Blunt</impactSoundType>
-		<armorCategory>Blunt</armorCategory>
+		<armorCategory>Heat</armorCategory>
 		<minDamageToFragment>5</minDamageToFragment>
 		<defaultDamage>25</defaultDamage>
 		<defaultArmorPenetration>1</defaultArmorPenetration>
@@ -72,6 +73,7 @@
 		<explosionColorEdge>(0.1, 0.5, 0.1, 0)</explosionColorEdge>
 		<explosionInteriorMote></explosionInteriorMote>
 		<soundExplosion>Blast_Rail</soundExplosion>
+		<canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
 	</DamageDef>
 
 	<DamageDef ParentName="TRExplosionBase">
@@ -90,10 +92,9 @@
 		<explosionColorCenter>(0.4, 0.4, 0.4, 0.8)</explosionColorCenter>
 		<explosionColorEdge>(0.1, 0.1, 0.1, 0.1)</explosionColorEdge>
 		<soundExplosion>Shot_GDI_Sonic</soundExplosion>
-		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
 	</DamageDef>
 
-	<DamageDef ParentName="TRExplosionBase"><!--only specialized siege attack-->
+	<DamageDef ParentName="TRExplosionBase"> <!--only specialized siege attack-->
 		<defName>TRShockWave</defName>
 		<label>Seismic Wave</label>
 		<deathMessage>{0} has died in the shockwave.</deathMessage>
@@ -109,7 +110,7 @@
 		<explosionCellFleck>Fleck_BlastWave</explosionCellFleck>
 		<explosionInteriorFleck>SubMote_AdvParticle</explosionInteriorFleck>
 		<explosionColorCenter>(0.4, 0.4, 0.4, 1)</explosionColorCenter>
-		<explosionColorEdge>(0.1, 0.1, 0.1, 0)</explosionColorEdge>
+		<explosionColorEdge>(0.1, 0.1, 0.1, 0.1)</explosionColorEdge>
 		<soundExplosion>Shot_GDI_Sonic</soundExplosion>
 	</DamageDef>
 
@@ -131,7 +132,6 @@
 		<explosionColorEdge>(0.6, 0.1, 1, 0)</explosionColorEdge>
 		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
 		<soundExplosion>Blast_Rail</soundExplosion>
-		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
 	</DamageDef>
 
 	<DamageDef ParentName="TRExplosionBase">
@@ -143,11 +143,10 @@
 		<explosionInteriorFleck>SubMote_AdvParticle2</explosionInteriorFleck>
 		<explosionColorCenter>(0.1, 0.5, 1, 0.5)</explosionColorCenter>
 		<explosionColorEdge>(0.1, 0.5, 1, 0)</explosionColorEdge>
-		<soundExplosion>Blast_Rail</soundExplosion>
-		<combatLogRules>Damage_Bomb</combatLogRules>		
+		<soundExplosion>Blast_Rail</soundExplosion>	
 	</DamageDef>
 
-	<DamageDef ParentName="StunBase"><!--for Big arm-->
+	<DamageDef ParentName="StunBase"> <!--for Big arm-->
 		<defName>TRShockArm</defName>
 		<label>Shock</label>
 		<deathMessage>{0} has died due to electric shock.</deathMessage>
@@ -168,7 +167,6 @@
 		<explosionColorEdge>(0.6, 0.6, 1, 0.1)</explosionColorEdge>
 		<combatLogRules>Damage_Bomb</combatLogRules>
 		<soundExplosion>Shot_GDI_Sonic</soundExplosion>
-		<makesAnimalsFlee>true</makesAnimalsFlee>
 	</DamageDef>
 
   	<DamageDef ParentName="TRExplosionBase">
@@ -183,32 +181,64 @@
 		<explosionInteriorFleck>SubMote_TibGasParticle</explosionInteriorFleck>
 		<explosionColorCenter>(0.5, 1, 0.7, 1)</explosionColorCenter>
 		<explosionColorEdge>(0.1, 0.5, 0.1, 0)</explosionColorEdge>
+		<soundExplosion>Nod_ChemBomb</soundExplosion>
 	</DamageDef>
-
-
-	<!--FX checked-->
 	
-
-  
-
-
 	<DamageDef ParentName="TRExplosionBase">
-		<defName>TiberiumExplosionBurn</defName>
+		<defName>TiberiumExplosionGas</defName>
 		<label>tiberium heat explosion</label>
 		<deathMessage>{0} has burned to death in an tiberium explosion.</deathMessage>
 		<workerClass>DamageWorker_Flame</workerClass>
 		<hediff>Burn</hediff>
 		<hediffSolid>Crack</hediffSolid>
 		<impactSoundType>Blunt</impactSoundType>
-		<armorCategory>Blunt</armorCategory>
-		<minDamageToFragment>20</minDamageToFragment>
-		<defaultDamage>40</defaultDamage>
-		<defaultArmorPenetration>0.10</defaultArmorPenetration>
-		<defaultStoppingPower>0.5</defaultStoppingPower>
-		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
-		<explosionHeatEnergyPerCell>20</explosionHeatEnergyPerCell>
-		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
+		<armorCategory>Heat</armorCategory>
+		<minDamageToFragment>10</minDamageToFragment>
+		<defaultDamage>30</defaultDamage>
+		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>		
+		<explosionCellFleck>Mote_AdvParticle</explosionCellFleck>
+		<explosionInteriorFleck>SubMote_TibGasParticle</explosionInteriorFleck>
+		<explosionColorCenter>(0.5, 1, 0.7, 0.75)</explosionColorCenter>
+		<explosionColorEdge>(0.5, 0.1, 0.1, 0)</explosionColorEdge>
+		<canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
+		<soundExplosion>Nod_ChemBomb</soundExplosion>
+		<combatLogRules>Damage_Flame</combatLogRules>
 	</DamageDef>
+
+  	<DamageDef ParentName="TRExplosionBase">
+		<defName>TRTiberiumShotGreen</defName>
+		<label>green tiberium shot</label>
+		<deathMessage>{0} has died by green tiberium fragments.</deathMessage>
+		<minDamageToFragment>1</minDamageToFragment>
+		<defaultDamage>5</defaultDamage>
+		<explosionCellFleck>Mote_AdvExplosion1</explosionCellFleck>
+		<explosionInteriorFleck>SubMote_TibGasParticle</explosionInteriorFleck>
+		<explosionColorCenter>(0.1, 0.25, 0.1)</explosionColorCenter>
+		<explosionColorEdge>(0, 0.15, 0.05)</explosionColorEdge>
+		<soundExplosion>Nod_ChemBomb</soundExplosion>
+	</DamageDef>
+	
+  	<DamageDef ParentName="TRExplosionBase">
+		<defName>TRTiberiumShotBlue</defName>
+		<label>blue tiberium shot</label>
+		<deathMessage>{0} has died by green tiberium fragments.</deathMessage>
+		<workerClass>DamageWorker_Flame</workerClass>
+		<hediff>Burn</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<minDamageToFragment>1</minDamageToFragment>
+		<defaultDamage>5</defaultDamage>
+		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+		<explosionCellFleck>Mote_AdvExplosion1</explosionCellFleck>
+		<explosionInteriorFleck>SubMote_TibGasParticle</explosionInteriorFleck>
+		<explosionColorCenter>(0.1, 0.1, 0.5)</explosionColorCenter>
+		<explosionColorEdge>(0, 0.25, 0.25)</explosionColorEdge>
+		<soundExplosion>Nod_ChemBomb</soundExplosion>
+	</DamageDef>
+  
+
+
+
+	<!--not checked-->
 
 	<DamageDef ParentName="TRExplosionBase">
 		<defName>TiberiumExplosionLQ</defName>
