@@ -183,7 +183,8 @@
 			<shadowSize>0.5</shadowSize>
 		</projectile>
 	</ThingDef>
-	
+
+	<!--
 	<ThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_Sbomb</defName>
 		<label>Suicide bomb</label>
@@ -206,5 +207,6 @@
 			<shadowSize>0.6</shadowSize>
 		</projectile>
 	</ThingDef>
+	-->
 
 </Defs>

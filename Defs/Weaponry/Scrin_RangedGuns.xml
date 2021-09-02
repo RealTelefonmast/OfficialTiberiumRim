@@ -31,7 +31,7 @@
 				<defaultProjectile>Bullet_ShockDisc</defaultProjectile>
 				<warmupTime>2.25</warmupTime>
 				<range>17.9</range>
-				<forcedMissRadius>0</forcedMissRadius>
+				<forcedMissRadius>0.2</forcedMissRadius>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<burstShotCount>4</burstShotCount>
 				<soundCast>Shot_Scrin_Disc</soundCast>
