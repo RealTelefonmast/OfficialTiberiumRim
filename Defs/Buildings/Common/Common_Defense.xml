@@ -114,8 +114,8 @@
 		<defName>Bullet_Sludge</defName>
 		<label>sludge blob</label>
 		<graphicData>
-			<texPath>Items/Weapons/Projectile/Gas/Gas_Small</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Items/Weapons/Projectile/Gas</texPath>
+			<graphicClass>Graphic_random</graphicClass>
 		</graphicData>
 		<projectile>
 			<damageDef>TiberiumBurn</damageDef>
