@@ -10,7 +10,7 @@
 		<tickerType>Normal</tickerType>
 		<graphicData>
 			<graphicClass>Graphic_Gas</graphicClass>
-			<shaderType>TransparentPostLight</shaderType>
+			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 	</ThingDef>
 
@@ -18,9 +18,10 @@
 		<defName>TiberiumGas</defName>
 		<label>tiberium gas</label>
 		<graphicData>
-			<texPath>Motes/Gas</texPath>
+			<texPath>Motes/TiberiumGas</texPath>
 			<drawSize>2.2</drawSize>
-			<color>(15,255,55,90)</color>
+			<color>(1,1,1,0.5)</color>
+			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
 		<gas>
 			<expireSeconds>24~36</expireSeconds>
@@ -28,38 +29,6 @@
 			<accuracyPenalty>0.6</accuracyPenalty>
 			<rotationSpeed>10</rotationSpeed>
 		</gas>
-	</ThingDef>
-	
-	<!---->
-	
-	<ThingDef ParentName="MoteBase_TR">
-		<defName>Mote_TiberiumGas</defName>
-		<graphicData>
-			<texPath>Motes/Gas</texPath>
-			<shaderType>MoteGlow</shaderType>
-		</graphicData>
-		<altitudeLayer>MoteOverhead</altitudeLayer>
-		<mote>
-			<fadeInTime>0.5</fadeInTime>
-			<solidTime>0.25</solidTime>
-			<fadeOutTime>0.5</fadeOutTime>
-			<growthRate>1.75</growthRate>
-		</mote>
-		<drawOffscreen>true</drawOffscreen>
-	</ThingDef>
-  
-	<ThingDef ParentName="MoteBase_TR">
-		<defName>Mote_TiberiumSmoke</defName>
-			<graphicData>
-			<texPath>Motes/TiberiumGasDark</texPath>
-		</graphicData>
-		<altitudeLayer>MoteOverhead</altitudeLayer>
-		<mote>
-			<fadeInTime>0.5</fadeInTime>
-			<solidTime>3</solidTime>
-			<fadeOutTime>6</fadeOutTime>
-			<growthRate>0.01</growthRate>
-		</mote>
 	</ThingDef>
 
 </Defs>

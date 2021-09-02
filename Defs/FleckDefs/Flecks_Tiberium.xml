@@ -48,7 +48,7 @@
 	<FleckDef ParentName="FleckBaseThrown_TR">
 		<defName>Fleck_TiberiumFog_Green</defName>
 		<graphicData>
-			<texPath>Motes/TiberiumFog</texPath>
+			<texPath>Motes/Gas</texPath>
 			<color>(15,255,55,55)</color>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
@@ -186,7 +186,7 @@
 	
 	<ThingDef Abstract="True" Name="TiberiumFog" ParentName="MoteBase_TR">
 		<graphicData>
-			<texPath>Motes/TiberiumFog</texPath>
+			<texPath>Motes/Gas</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
