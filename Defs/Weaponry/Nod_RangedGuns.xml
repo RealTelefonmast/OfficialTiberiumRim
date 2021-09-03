@@ -365,11 +365,11 @@
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>				
-				<warmupTime>3</warmupTime>
+				<warmupTime>1.5</warmupTime>
 				<range>14.9</range>
 				<forcedMissRadius>0.2</forcedMissRadius>
-				<burstShotCount>15</burstShotCount>
-				<ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+				<burstShotCount>25</burstShotCount>
+				<ticksBetweenBurstShots>3.5</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_Flame</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
 				<muzzleFlashScale>5</muzzleFlashScale>
@@ -453,11 +453,11 @@
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_TiberiumGas</defaultProjectile>
-				<warmupTime>3</warmupTime>
+				<warmupTime>1.5</warmupTime>
 				<range>14.9</range>
 				<forcedMissRadius>0.2</forcedMissRadius>
-				<burstShotCount>15</burstShotCount>
-				<ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+				<burstShotCount>25</burstShotCount>
+				<ticksBetweenBurstShots>3.5</ticksBetweenBurstShots>
 				<soundCast>DropPod_Open</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
 				<muzzleFlashScale>5</muzzleFlashScale>

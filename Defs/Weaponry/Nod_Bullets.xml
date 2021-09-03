@@ -108,14 +108,14 @@
 		<projectile>
 			<ai_IsIncendiary>true</ai_IsIncendiary>
 			<damageDef>Flame</damageDef>
-			<damageAmountBase>3</damageAmountBase>
-			<explosionRadius>1.1</explosionRadius>
+			<damageAmountBase>4</damageAmountBase>
+			<explosionRadius>0.05</explosionRadius>
 			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
-			<preExplosionSpawnChance>0.25</preExplosionSpawnChance>
+			<preExplosionSpawnChance>0.75</preExplosionSpawnChance>
 			<arcHeightFactor>1.25</arcHeightFactor>
 			<speed>15</speed>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
-			<shadowSize>0.5</shadowSize>
+			<shadowSize>1</shadowSize>
 		</projectile>
 	</ThingDef>
 	
@@ -132,15 +132,15 @@
 		<projectile>
 			<damageDef>TiberiumExplosionGas</damageDef>
 			<damageAmountBase>8</damageAmountBase>
-			<explosionRadius>1.1</explosionRadius>
+			<explosionRadius>0.05</explosionRadius>
 			<preExplosionSpawnThingDef>FilthTibLiquidGreen</preExplosionSpawnThingDef>
-			<preExplosionSpawnChance>0.25</preExplosionSpawnChance>
+			<preExplosionSpawnChance>0.75</preExplosionSpawnChance>
 			<arcHeightFactor>1.25</arcHeightFactor>
 			<speed>15</speed>
 			<postExplosionSpawnThingDef>TiberiumGas</postExplosionSpawnThingDef>
-			<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
+			<postExplosionSpawnChance>0.75</postExplosionSpawnChance>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
-			<shadowSize>0.5</shadowSize>
+			<shadowSize>1</shadowSize>
 		</projectile>
 	</ThingDef>
 	
