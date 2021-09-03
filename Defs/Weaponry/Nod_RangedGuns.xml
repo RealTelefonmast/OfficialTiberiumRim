@@ -200,20 +200,30 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
+					<damageDef>TRLaser</damageDef>
+					<damageBase>15</damageBase>
+					<stoppingPower>0.1</stoppingPower>
+					<armorPenetrationBase>0.25</armorPenetrationBase>
 					<beamPath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam</beamPath>
+					<fadeInTime>0.05</fadeInTime>
+					<solidTime>0</solidTime>
+					<fadeOutTime>0.25</fadeOutTime>
+					<hitEffecter>StrongBeamHit</hitEffecter>
 				</beamProps>
-				<originOffsets>	
-					<li>(0, 0, 0.7)</li>
+				<originOffsets>
+					<li>(-0.05, 0, -0.1)</li>
+					<li>(0, 0, -0.1)</li>
+					<li>(0.05, 0, -0.1)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
-				<warmupTime>1</warmupTime>
+				<warmupTime>1.5</warmupTime>
 				<range>34.9</range>
 				<burstShotCount>3</burstShotCount>
-				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>12</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_Laser</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
-				<muzzleFlashScale>9</muzzleFlashScale>
-				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				<muzzleFlashScale>8</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
 			</li>
 		</verbs>
 		<tools>
@@ -274,20 +284,30 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
-					<beamPath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam</beamPath>
+					<damageDef>TRLaser</damageDef>
+					<damageBase>20</damageBase>
+					<stoppingPower>0.2</stoppingPower>
+					<armorPenetrationBase>0.5</armorPenetrationBase>
+					<beamPath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam_Heavy</beamPath>
+					<fadeInTime>0.05</fadeInTime>
+					<solidTime>0</solidTime>
+					<fadeOutTime>0.25</fadeOutTime>
+					<hitEffecter>StrongBeamHit</hitEffecter>
 				</beamProps>
-				<originOffsets>	
-					<li>(0, 0, 0.7)</li>
+				<originOffsets>
+					<li>(-0.05, 0, -0.1)</li>
+					<li>(0, 0, -0.1)</li>
+					<li>(0.05, 0, -0.1)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
-				<warmupTime>1.75</warmupTime>
+				<warmupTime>1.5</warmupTime>
 				<range>39.9</range>
-				<burstShotCount>4</burstShotCount>
-				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<burstShotCount>3</burstShotCount>
+				<ticksBetweenBurstShots>12</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_LaserLarge</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
-				<muzzleFlashScale>10</muzzleFlashScale>
-				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
 			</li>
 		</verbs>
 		<tools>
