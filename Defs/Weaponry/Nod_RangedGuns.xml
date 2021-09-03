@@ -365,14 +365,14 @@
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>				
-				<warmupTime>2</warmupTime>
+				<warmupTime>3</warmupTime>
 				<range>14.9</range>
 				<forcedMissRadius>0.2</forcedMissRadius>
 				<burstShotCount>15</burstShotCount>
-				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>3</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_Flame</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
-				<muzzleFlashScale>15</muzzleFlashScale>
+				<muzzleFlashScale>5</muzzleFlashScale>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>
@@ -453,14 +453,14 @@
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_TiberiumGas</defaultProjectile>
-				<warmupTime>1.75</warmupTime>
+				<warmupTime>3</warmupTime>
 				<range>14.9</range>
 				<forcedMissRadius>0.2</forcedMissRadius>
 				<burstShotCount>15</burstShotCount>
-				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>3</ticksBetweenBurstShots>
 				<soundCast>DropPod_Open</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
-				<muzzleFlashScale>9</muzzleFlashScale>
+				<muzzleFlashScale>5</muzzleFlashScale>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>

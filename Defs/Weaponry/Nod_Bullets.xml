@@ -115,6 +115,7 @@
 			<arcHeightFactor>1.25</arcHeightFactor>
 			<speed>15</speed>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
+			<shadowSize>0.5</shadowSize>
 		</projectile>
 	</ThingDef>
 	
@@ -139,6 +140,7 @@
 			<postExplosionSpawnThingDef>TiberiumGas</postExplosionSpawnThingDef>
 			<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
+			<shadowSize>0.5</shadowSize>
 		</projectile>
 	</ThingDef>
 	
@@ -158,6 +160,7 @@
 			<explosionRadius>2.5</explosionRadius>
 			<speed>25</speed>
 			<soundExplode>MortarBomb_Explode</soundExplode>
+			<shadowSize>0.5</shadowSize>
 		</projectile>
 	</ThingDef>
 
