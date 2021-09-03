@@ -108,14 +108,15 @@
 		<projectile>
 			<ai_IsIncendiary>true</ai_IsIncendiary>
 			<damageDef>Flame</damageDef>
-			<damageAmountBase>4</damageAmountBase>
+			<damageAmountBase>6</damageAmountBase>
+			<armorPenetrationBase>0.2</armorPenetrationBase>
 			<explosionRadius>0.05</explosionRadius>
 			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
 			<preExplosionSpawnChance>0.75</preExplosionSpawnChance>
 			<arcHeightFactor>1.25</arcHeightFactor>
 			<speed>15</speed>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
-			<shadowSize>1</shadowSize>
+			<shadowSize>2</shadowSize>			
 		</projectile>
 	</ThingDef>
 	
@@ -123,15 +124,16 @@
 		<defName>Bullet_TiberiumGas</defName>
 		<label>chemical gas cloud</label>
 		<graphicData>
-			<texPath>Items/Weapons/Projectile/Gas</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
+			<texPath>Items/Weapons/Projectile/Gas/Flame_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
-			<drawSize>1</drawSize>
+			<drawSize>2</drawSize>
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
 			<damageDef>TiberiumExplosionGas</damageDef>
 			<damageAmountBase>8</damageAmountBase>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
 			<explosionRadius>0.05</explosionRadius>
 			<preExplosionSpawnThingDef>FilthTibLiquidGreen</preExplosionSpawnThingDef>
 			<preExplosionSpawnChance>0.75</preExplosionSpawnChance>
@@ -140,7 +142,7 @@
 			<postExplosionSpawnThingDef>TiberiumGas</postExplosionSpawnThingDef>
 			<postExplosionSpawnChance>0.75</postExplosionSpawnChance>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
-			<shadowSize>1</shadowSize>
+			<shadowSize>2</shadowSize>
 		</projectile>
 	</ThingDef>
 	

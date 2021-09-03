@@ -223,8 +223,9 @@
 		<weaponMoney>3500~3500</weaponMoney>
 		<apparelMoney>7500~7500</apparelMoney>
 		<weaponTags>
+			<li>NodRifle</li>
+			<li>SniperRifle</li>
 			<li>NodLaserRifle</li>
-			<li>NodGrenade</li>
 		</weaponTags>
 	</PawnKindDef>
 	

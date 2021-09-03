@@ -336,11 +336,11 @@
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
 			<WorkToMake>50000</WorkToMake>
-			<Mass>12.0</Mass>
+			<Mass>11.0</Mass>
 			<AccuracyTouch>0.8</AccuracyTouch>
-			<AccuracyShort>0.8</AccuracyShort>
-			<AccuracyMedium>0.8</AccuracyMedium>
-			<AccuracyLong>0.8</AccuracyLong>
+			<AccuracyShort>0.7</AccuracyShort>
+			<AccuracyMedium>0.6</AccuracyMedium>
+			<AccuracyLong>0.5</AccuracyLong>
 			<RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
 		</statBases>
 		<conditionalStatOffsets>
@@ -427,9 +427,9 @@
 			<WorkToMake>20000</WorkToMake>
 			<Mass>13.0</Mass>
 			<AccuracyTouch>0.8</AccuracyTouch>
-			<AccuracyShort>0.8</AccuracyShort>
-			<AccuracyMedium>0.8</AccuracyMedium>
-			<AccuracyLong>0.8</AccuracyLong>
+			<AccuracyShort>0.7</AccuracyShort>
+			<AccuracyMedium>0.6</AccuracyMedium>
+			<AccuracyLong>0.5</AccuracyLong>
 			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
 		</statBases>
 		<conditionalStatOffsets>
