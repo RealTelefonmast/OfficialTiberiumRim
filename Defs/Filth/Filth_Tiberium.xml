@@ -3,6 +3,7 @@
   
 	<ThingDef Name="TibFilth" ParentName="BaseFilth" Abstract="True">
 		<statBases>
+			<MaxHitPoints>1500</MaxHitPoints>
 			<Beauty>-5</Beauty>
 			<Cleanliness>-25</Cleanliness>
 		</statBases>
@@ -75,12 +76,10 @@
 	<ThingDef Name="InciendiaryFilth" ParentName="TibFilth" Abstract="True">
 		<useHitPoints>true</useHitPoints>
 		<statBases>
-			<MaxHitPoints>150</MaxHitPoints>
 			<Flammability>2.0</Flammability>
 		</statBases>
 		<filth>
 			<cleaningWorkToReduceThickness>70</cleaningWorkToReduceThickness>
-			<maxThickness>1</maxThickness>
 		</filth>
 	</ThingDef>
 
