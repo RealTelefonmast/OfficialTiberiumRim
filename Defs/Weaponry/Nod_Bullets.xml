@@ -95,7 +95,7 @@
 		</projectile>
 	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="BaseBullet_TR">
+	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_Flamethrower</defName>
 		<label>flame</label>
 		<thingClass>Projectile_Explosive</thingClass>
@@ -110,17 +110,26 @@
 			<damageDef>Flame</damageDef>
 			<damageAmountBase>6</damageAmountBase>
 			<armorPenetrationBase>0.2</armorPenetrationBase>
-			<explosionRadius>0.05</explosionRadius>
+			<!--<explosionRadius>0.05</explosionRadius>
 			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
-			<preExplosionSpawnChance>0.75</preExplosionSpawnChance>
+			<preExplosionSpawnChance>0.75</preExplosionSpawnChance>-->
 			<arcHeightFactor>1.25</arcHeightFactor>
 			<speed>15</speed>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
 			<shadowSize>2</shadowSize>			
 		</projectile>
-	</ThingDef>
+		<projectileExtended>
+			<impactEffecter>FlameHit</impactEffecter>
+			<impactFilth>
+				<filths>
+					<li>Filth_Fuel, 0.75</li>
+				</filths>
+				<spreadRadius>1</spreadRadius>
+			</impactFilth>
+		</projectileExtended>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="BaseBullet_TR">
+	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_TiberiumGas</defName>
 		<label>chemical gas cloud</label>
 		<graphicData>
@@ -134,17 +143,27 @@
 			<damageDef>TiberiumExplosionGas</damageDef>
 			<damageAmountBase>8</damageAmountBase>
 			<armorPenetrationBase>0.5</armorPenetrationBase>
-			<explosionRadius>0.05</explosionRadius>
-			<preExplosionSpawnThingDef>FilthTibLiquidGreen</preExplosionSpawnThingDef>
-			<preExplosionSpawnChance>0.75</preExplosionSpawnChance>
 			<arcHeightFactor>1.25</arcHeightFactor>
 			<speed>15</speed>
+			<shadowSize>2</shadowSize>
+			<!--<explosionRadius>0.05</explosionRadius>
+			<preExplosionSpawnThingDef>FilthTibLiquidGreen</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.75</preExplosionSpawnChance>
 			<postExplosionSpawnThingDef>TiberiumGas</postExplosionSpawnThingDef>
 			<postExplosionSpawnChance>0.75</postExplosionSpawnChance>
-			<soundExplode>Shot_Nod_FlameTail</soundExplode>
-			<shadowSize>2</shadowSize>
+			<soundExplode>Shot_Nod_FlameTail</soundExplode>-->
 		</projectile>
-	</ThingDef>
+		<projectileExtended>
+			<impactEffecter>ChemicalHit</impactEffecter>
+			<impactFilth>
+				<filths>
+					<li>FilthTibLiquidGreen, 0.75</li>
+					<li>TiberiumGas, 0.75</li>
+				</filths>
+				<spreadRadius>1</spreadRadius>
+			</impactFilth>
+		</projectileExtended>
+	</TiberiumRim.TRThingDef>
 	
 	<ThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_NodRocket</defName>
