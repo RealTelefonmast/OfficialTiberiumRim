@@ -77,7 +77,7 @@
 	<!-- Bullet -->
 	<TiberiumRim.TRThingDef Name="BaseBullet_TR" Abstract="True">
 		<label>bullet</label>
-		<thingClass>TiberiumRim.Bullet_TR</thingClass>
+		<thingClass>TiberiumRim.ProjectileTR_Bullet</thingClass>
 		<category>Projectile</category>
 		<tickerType>Normal</tickerType>
 		<altitudeLayer>Projectile</altitudeLayer>

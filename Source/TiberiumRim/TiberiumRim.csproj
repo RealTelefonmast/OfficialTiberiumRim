@@ -475,6 +475,8 @@
     <Compile Include="Utilities\CellUtils.cs" />
     <Compile Include="Utilities\ConvexTriangulator.cs" />
     <Compile Include="Utilities\Geometry.cs" />
+    <Compile Include="Loading\TRThingPatches.cs" />
+    <Compile Include="Loading\TRUIPatches.cs" />
     <Compile Include="VisualEffects\ModuleVisualizer\ModuleNode.cs" />
     <Compile Include="VisualEffects\ModuleVisualizer\ModuleNodes.cs" />
     <Compile Include="VisualEffects\ModuleVisualizer\NodeIOData.cs" />
@@ -563,12 +565,14 @@
     <Compile Include="Weaponry\PlaceWorker_TurretHub.cs" />
     <Compile Include="Weaponry\ProjectileProperties_Extended.cs" />
     <Compile Include="Weaponry\Projectiles\Bullet_Sprite.cs" />
+    <Compile Include="Weaponry\Projectiles\ProjectileTR_Bullet.cs" />
+    <Compile Include="Weaponry\Projectiles\ProjectileTR_Explosive.cs" />
     <Compile Include="Weaponry\Projectiles\Projectile_Homing.cs" />
     <Compile Include="Weaponry\Projectiles\Projectile_Instant.cs" />
     <Compile Include="Weaponry\Projectiles\Projectile_SonicWave.cs" />
     <Compile Include="Weaponry\Projectiles\Projectile_TeslaArc.cs" />
     <Compile Include="Weaponry\Projectiles\Projectile_ThrownFlame.cs" />
-    <Compile Include="Weaponry\Projectiles\Bullet_TR.cs" />
+    <Compile Include="Weaponry\Projectiles\ProjectileTR.cs" />
     <Compile Include="Weaponry\SuperWeapon\AttackSatellite.cs" />
     <Compile Include="Weaponry\SuperWeapon\AttackSatellite_Ion.cs" />
     <Compile Include="Weaponry\SuperWeapon\Building_IonCannon.cs" />

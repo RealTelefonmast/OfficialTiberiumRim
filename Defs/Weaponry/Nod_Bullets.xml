@@ -63,7 +63,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
-		<thingClass>Projectile_Explosive</thingClass>
+		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<damageAmountBase>3</damageAmountBase>
@@ -98,7 +98,7 @@
 	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_Flamethrower</defName>
 		<label>flame</label>
-		<thingClass>Projectile_Explosive</thingClass>
+		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/FlameSmall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -138,7 +138,7 @@
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>1</drawSize>
 		</graphicData>
-		<thingClass>Projectile_Explosive</thingClass>
+		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
 		<projectile>
 			<damageDef>TiberiumExplosionGas</damageDef>
 			<damageAmountBase>8</damageAmountBase>
@@ -173,7 +173,7 @@
 			<texPath>Items/Weapons/Projectile/Bullet_Nod_Rocket</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<thingClass>Projectile_Explosive</thingClass>
+		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
 		<projectile>
 			<damageDef>Bomb</damageDef>
 			<arcHeightFactor>1.25</arcHeightFactor>
@@ -193,7 +193,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
-		<thingClass>Projectile_Explosive</thingClass>
+		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
 		<projectile>
 			<damageDef>TiberiumExplosionFrag</damageDef>
 			<damageAmountBase>45</damageAmountBase>

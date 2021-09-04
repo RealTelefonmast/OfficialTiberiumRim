@@ -14,5 +14,7 @@ namespace TiberiumRim
         public bool PreLaunch(Thing launcher, Vector3 origin, LocalTargetInfo usedTarget, LocalTargetInfo intendedTarget, ProjectileHitFlags hitFlags, bool preventFriendlyFire = false, Thing equipment = null, ThingDef targetCoverDef = null);
         public void PostLaunch(ref Vector3 origin, ref Vector3 destination);
         public bool CanHitOverride(Thing thing);
+        bool PreImpact();
+        void PostImpact();
     }
 }

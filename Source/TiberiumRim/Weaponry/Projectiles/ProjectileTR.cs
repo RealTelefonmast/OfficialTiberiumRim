@@ -5,11 +5,10 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class Bullet_TR : Bullet, IPatchedProjectile
+    public class ProjectileTR : Projectile, IPatchedProjectile
     {
-        public ProjectileProperties_Extended Props => TRDef?.projectileExtended;
-
         public TRThingDef TRDef => base.def as TRThingDef;
+        public ProjectileProperties_Extended Props => TRDef?.projectileExtended;
 
         //
         public virtual float ArcHeightFactorPostAdd => 0;
@@ -33,14 +32,23 @@ namespace TiberiumRim
             return base.CanHit(thing);
         }
 
+        public bool PreImpact()
+        {
+            return true;
+        }
+
+        public void PostImpact()
+        {
+        }
+
 
         protected override void Impact(Thing hitThing)
         {
             if (Props != null)
             {
-                Props.impactExplosion?.DoExplosion(this.Position, Map, this);
-                Props.impactEffecter?.Spawn(Position, Map);
+                Props.impactExplosion?.DoExplosion(Position, Map, this);
                 Props.impactFilth?.SpawnFilth(Position, Map);
+                Props.impactEffecter?.Spawn(Position, Map);
             }
             base.Impact(hitThing);
         }
