@@ -6,12 +6,22 @@
 		<defName>Mote_Beam</defName>
 		<thingClass>TiberiumRim.Mote_Beam</thingClass>
 		<graphicData>
-			<texPath>Things/Mote/PowerBeam</texPath>
-			<shaderType>MoteGlow</shaderType>
+			<texPath>Blank</texPath>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<drawOffscreen>true</drawOffscreen>
 	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_MuzzleFlash</defName>
+		<thingClass>TiberiumRim.Mote_MuzzleFlash</thingClass>
+		<graphicData>
+			<texPath>Blank</texPath>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+	</ThingDef>
+	
 	
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>ObeliskGlow</defName>

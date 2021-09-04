@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -230,6 +231,7 @@ namespace TiberiumRim
 
         //Misc
         public static readonly Texture2D VectorArrow = ContentFinder<Texture2D>.Get("Misc/Arrow", false);
+        public static readonly Material ArrowMat = MaterialPool.MatFrom("Misc/Arrow");
 
         //Icons
         public static readonly Texture2D MissingConnection = ContentFinder<Texture2D>.Get("UI/Icons/TiberiumNetwork/ConnectionMissing", false);
@@ -272,6 +274,11 @@ namespace TiberiumRim
 
         public static readonly Texture2D AttentionMarker = ContentFinder<Texture2D>.Get("UI/Icons/AttentionMarker", true);
         public static readonly Texture2D NewMarker = ContentFinder<Texture2D>.Get("UI/Icons/NewMarker", true);
+
+        //ModuleVis
+        public static readonly Texture Node_Open = ContentFinder<Texture2D>.Get("UI/Menu/Node_Open");
+        public static readonly Texture NodeOut_Closed = ContentFinder<Texture2D>.Get("UI/Menu/NodeOut_Closed");
+        public static readonly Texture NodeIn_Closed = ContentFinder<Texture2D>.Get("UI/Menu/NodeIn_Closed");
 
         //public static readonly Texture2D HightlightInMenu = ContentFinder<Texture2D>.Get("UI/Icons/HighLight", true);
         public static readonly Texture2D OpenMenu = ContentFinder<Texture2D>.Get("UI/Icons/OpenMenu", true);

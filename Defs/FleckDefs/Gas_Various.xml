@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
-	<ThingDef Name="Gas_TR" Abstract="True">
+<!-- Needs to be correctly set up for flecks...
+	<FleckDef Name="Gas_TR" Abstract="True">
 		<thingClass>Gas</thingClass>
 		<label>gas</label>
 		<category>Gas</category>
@@ -12,9 +12,9 @@
 			<graphicClass>Graphic_Gas</graphicClass>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
-	</ThingDef>
+	</FleckDef>
 
-	<ThingDef ParentName="Gas_TR">
+	<FleckDef ParentName="Gas_TR">
 		<defName>TiberiumGas</defName>
 		<label>tiberium gas</label>
 		<graphicData>
@@ -29,6 +29,6 @@
 			<accuracyPenalty>0.6</accuracyPenalty>
 			<rotationSpeed>10</rotationSpeed>
 		</gas>
-	</ThingDef>
-
+	</FleckDef>
+-->
 </Defs>

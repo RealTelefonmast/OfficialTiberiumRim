@@ -75,14 +75,14 @@
 	</ThingDef>
 
 	<!-- Bullet -->
-	<ThingDef Name="BaseBullet_TR" Abstract="True">
+	<TiberiumRim.TRThingDef Name="BaseBullet_TR" Abstract="True">
+		<label>bullet</label>
+		<thingClass>TiberiumRim.Bullet_TR</thingClass>
 		<category>Projectile</category>
 		<tickerType>Normal</tickerType>
 		<altitudeLayer>Projectile</altitudeLayer>
-		<thingClass>Bullet</thingClass>
-		<label>bullet</label>
 		<useHitPoints>False</useHitPoints>
 		<neverMultiSelect>True</neverMultiSelect>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
 </Defs>

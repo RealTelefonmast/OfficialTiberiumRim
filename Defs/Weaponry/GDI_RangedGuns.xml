@@ -206,12 +206,12 @@
 					<damageDef>TRRailgun</damageDef>
 					<damageBase>45</damageBase>
 					<stoppingPower>0.5</stoppingPower>
-					<armorPenetrationBase>0.5</armorPenetrationBase>
-					<beamPath>Items/Weapons/Projectile/Bullet_Railshot</beamPath>
+					<armorPenetration>0.5</armorPenetration>
+					<beamTexturePath>Items/Weapons/Projectile/Bullet_Railshot</beamTexturePath>
 					<fadeInTime>0.05</fadeInTime>
 					<solidTime>0</solidTime>
 					<fadeOutTime>1</fadeOutTime>
-					<hitEffecter>RailgunHit</hitEffecter>
+					<impactEffecter>RailgunHit</impactEffecter>
 				</beamProps>
 				<originOffsets>	
 					<li>(0, 0, -0.1)</li>

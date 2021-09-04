@@ -72,7 +72,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
-					<beamPath>Items/Weapons/Projectile/Bullet_BeamScrin</beamPath>
+					<beamTexturePath>Items/Weapons/Projectile/Bullet_BeamScrin</beamTexturePath>
 				</beamProps>
 				<originOffsets>	
 					<li>(0, 0, 1)</li>
@@ -119,7 +119,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
-					<beamPath>Items/Weapons/Projectile/Bullet_BeamScrinMiddle</beamPath>
+					<beamTexturePath>Items/Weapons/Projectile/Bullet_BeamScrinMiddle</beamTexturePath>
 				</beamProps>
 				<originOffsets>	
 					<li>(0.45,-1,-0.1)</li>
@@ -176,12 +176,12 @@
 					<damageDef>TRRailgun</damageDef>
 					<damageBase>45</damageBase>
 					<stoppingPower>0.5</stoppingPower>
-					<armorPenetrationBase>0.5</armorPenetrationBase>
-					<beamPath>Items/Weapons/Projectile/Bullet_BeamScrinBig</beamPath>
+					<armorPenetration>0.5</armorPenetration>
+					<beamTexturePath>Items/Weapons/Projectile/Bullet_BeamScrinBig</beamTexturePath>
 					<fadeInTime>0.05</fadeInTime>
 					<solidTime>0</solidTime>
 					<fadeOutTime>1</fadeOutTime>
-					<hitEffecter>ScrinBeamHit</hitEffecter>
+					<impactEffecter>ScrinBeamHit</impactEffecter>
 				</beamProps>
 				<originOffsets>	
 					<li>(0, 0, -0.1)</li>

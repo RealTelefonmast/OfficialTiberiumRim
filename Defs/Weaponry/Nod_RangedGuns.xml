@@ -63,8 +63,17 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<originOffsets>
-					<li>(0, 0, 1)</li>
+					<li>(0, 0, 1.2)</li>
 				</originOffsets>
+				<muzzleFlash>
+					<flashGraphicData>
+						<graphicClass>Graphic_Random</graphicClass>
+						<shaderType>TransparentPostLight</shaderType>
+						<texPath>Items/Weapons/Projectile/Flashes/BasicFlash</texPath>
+					</flashGraphicData>
+					<solidTime>0.2</solidTime>
+					<scale>1</scale>
+				</muzzleFlash>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_NodStandard</defaultProjectile>
 				<secondaryProjectile>Bullet_NodAP</secondaryProjectile>
@@ -206,12 +215,12 @@
 					<damageDef>TRLaser</damageDef>
 					<damageBase>15</damageBase>
 					<stoppingPower>0.1</stoppingPower>
-					<armorPenetrationBase>0.25</armorPenetrationBase>
-					<beamPath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam</beamPath>
+					<armorPenetration>0.25</armorPenetration>
+					<beamTexturePath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam</beamTexturePath>
 					<fadeInTime>0.05</fadeInTime>
 					<solidTime>0</solidTime>
 					<fadeOutTime>0.25</fadeOutTime>
-					<hitEffecter>BeamHit</hitEffecter>
+					<impactEffecter>BeamHit</impactEffecter>
 				</beamProps>
 				<originOffsets>
 					<li>(-0.05, 0, -0.1)</li>
@@ -290,12 +299,12 @@
 					<damageDef>TRLaser</damageDef>
 					<damageBase>20</damageBase>
 					<stoppingPower>0.2</stoppingPower>
-					<armorPenetrationBase>0.5</armorPenetrationBase>
-					<beamPath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam</beamPath>
+					<armorPenetration>0.5</armorPenetration>
+					<beamTexturePath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam</beamTexturePath>
 					<fadeInTime>0.05</fadeInTime>
 					<solidTime>0</solidTime>
 					<fadeOutTime>0.3</fadeOutTime>
-					<hitEffecter>BeamHit</hitEffecter>
+					<impactEffecter>BeamHit</impactEffecter>
 				</beamProps>
 				<originOffsets>
 					<li>(-0.05, 0, -0.1)</li>

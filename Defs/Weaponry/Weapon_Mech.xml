@@ -33,7 +33,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
-					<beamPath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam_Heavy</beamPath>
+					<beamTexturePath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam_Heavy</beamTexturePath>
 				</beamProps>
 				<originOffsets>	
 					<li>(0,-1,0.25)</li>
@@ -305,7 +305,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
-					<beamPath>Items/Weapons/Projectile/Bullet_RailshotHeavy</beamPath>
+					<beamTexturePath>Items/Weapons/Projectile/Bullet_RailshotHeavy</beamTexturePath>
 				</beamProps>
 				<originOffsets>	
 					<li>(0.5,-1,0.75)</li>
@@ -349,7 +349,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
-					<beamPath>Items/Weapons/Projectile/Bullet_Disruptorshot</beamPath>
+					<beamTexturePath>Items/Weapons/Projectile/Bullet_Disruptorshot</beamTexturePath>
 				</beamProps>
 				<originOffsets>	
 					<li>(0.6,-1,-0.22)</li>

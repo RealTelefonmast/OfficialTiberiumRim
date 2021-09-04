@@ -7,14 +7,13 @@ namespace TiberiumRim
     public class Designator_BuildFixed : Designator_Build
     {
         private ThingDef stuffDef;
+        public TRThingDef TRThingDef => entDef as TRThingDef;
 
         public Designator_BuildFixed(BuildableDef entdef) : base(entdef)
         {
             this.iconProportions = new Vector2(1f, 1f);
             stuffDef = (bool)entdef?.MadeFromStuff ? GenStuff.DefaultStuffFor(entdef) : null;
         }
-
-        public TRThingDef TRThingDef => entDef as TRThingDef;
 
         public override void DesignateSingleCell(IntVec3 c)
         {

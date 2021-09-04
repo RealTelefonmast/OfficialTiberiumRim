@@ -23,7 +23,8 @@ namespace TiberiumRim
                 if(cell.DistanceTo(from) <= Props.minRange) continue;
                 ShootLine line2 = new ShootLine(from, cell);
                 AdjustedTarget(cell, ref line2, out ProjectileHitFlags flags);
-                CastProjectile(from, caster, cell, currentTarget, flags);
+                CastProjectile(from, caster, ShotOrigin,cell, currentTarget, flags, false, null, null);
+                //CastProjectile(from, caster, cell, currentTarget, flags);
             }
             return true;
         }

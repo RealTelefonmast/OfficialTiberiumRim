@@ -602,6 +602,32 @@
 						<turret>
 							<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(2.5,2.5)</drawSize>
+						</turret>
+						<barrels>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Railgun</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(2.5,2.5)</drawSize>
+								</graphic>
+								<altitudeOffset>-0.1</altitudeOffset>
+								<recoilOffset>(0,0,-0.5)</recoilOffset>
+							</li>
+						</barrels>
+						<speed>60</speed>
+						<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
+					</turretTop>
+					<drawOffset>(0,0,0)</drawOffset>
+					<turretGunDef>Gun_MissilePod</turretGunDef>
+					<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+					<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+				</li>
+				<li>
+					<turretTop>
+						<turret>
+							<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(5,5)</drawSize>
 						</turret>
 						<barrels>
@@ -692,4 +718,70 @@
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
 	</TiberiumRim.TRThingDef>
 
+
+	<!--Test Stuff-->
+	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>Gun_MissilePod</defName>
+		<label>missilepod launcher</label>
+		<description>pew pew</description>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Turrets/WatchTower</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_MicroMissile</defaultProjectile>
+				<warmupTime>2.5</warmupTime>
+				<range>60</range>
+				<burstShotCount>12</burstShotCount>
+				<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+				<soundCast>Nod_Rocket</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>10</muzzleFlashScale>
+				<consumeFuelPerShot>0.25</consumeFuelPerShot>
+				<forcedMissRadius>14</forcedMissRadius>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_MicroMissile</defName>
+		<label>micro missile</label>
+		<description>rocket</description>
+		<thingClass>TiberiumRim.Projectile_Homing</thingClass>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Nod_Rocket</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>(1.75,1.75)</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<arcHeightFactor>1.25</arcHeightFactor>
+			<damageAmountBase>20</damageAmountBase>
+			<explosionRadius>1.5</explosionRadius>
+			<speed>12</speed>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+		</projectile>
+	</ThingDef>
+	
 </Defs>

@@ -121,6 +121,7 @@
     <Compile Include="Defs\TRGroupDef.cs" />
     <Compile Include="Defs\TRGroupDefOf.cs" />
     <Compile Include="Defs\TRThingCategoryDef.cs" />
+    <Compile Include="FilthSpewerProperties.cs" />
     <Compile Include="GameParts\MapComps\StructureCacheMapInfo.cs" />
     <Compile Include="GameParts\Networks\AtmosphericNetwork\Comp_ANS_AirVent.cs" />
     <Compile Include="GameParts\Networks\AtmosphericNetwork\Comp_ANS_Filter.cs" />
@@ -474,7 +475,11 @@
     <Compile Include="Utilities\CellUtils.cs" />
     <Compile Include="Utilities\ConvexTriangulator.cs" />
     <Compile Include="Utilities\Geometry.cs" />
-    <Compile Include="Utilities\ModuleVisualizer.cs" />
+    <Compile Include="VisualEffects\ModuleVisualizer\ModuleNode.cs" />
+    <Compile Include="VisualEffects\ModuleVisualizer\ModuleNodes.cs" />
+    <Compile Include="VisualEffects\ModuleVisualizer\NodeIOData.cs" />
+    <Compile Include="VisualEffects\ModuleVisualizer\NodeRenderData.cs" />
+    <Compile Include="VisualEffects\ModuleVisualizer\ModuleVisualizer.cs" />
     <Compile Include="Utilities\RedAlertDefOf.cs" />
     <Compile Include="Utilities\SoundUtility.cs" />
     <Compile Include="Utilities\TerrainGenerator.cs" />
@@ -517,9 +522,12 @@
     <Compile Include="VisualEffects\IntermittenFleckSprayer.cs" />
     <Compile Include="VisualEffects\MaterialAtlasPool_TR.cs" />
     <Compile Include="VisualEffects\ModuleVisualizer\ModuleData.cs" />
+    <Compile Include="VisualEffects\ModuleVisualizer\NodeAnchor.cs" />
+    <Compile Include="VisualEffects\ModuleVisualizer\NodeAnchorPanel.cs" />
     <Compile Include="VisualEffects\MoteThrower.cs" />
     <Compile Include="VisualEffects\Mote_Arc.cs" />
     <Compile Include="VisualEffects\Mote_Beam.cs" />
+    <Compile Include="VisualEffects\Mote_MuzzleFlash.cs" />
     <Compile Include="VisualEffects\MoverProperties.cs" />
     <Compile Include="VisualEffects\PulseProperties.cs" />
     <Compile Include="VisualEffects\QuadTree.cs" />
@@ -551,6 +559,7 @@
     <Compile Include="Weaponry\DamageWorker_Pressure.cs" />
     <Compile Include="Weaponry\DamageWorker_SoftExplosion.cs" />
     <Compile Include="Weaponry\ExplosionProperties.cs" />
+    <Compile Include="Weaponry\IPatchedProjectile.cs" />
     <Compile Include="Weaponry\PlaceWorker_TurretHub.cs" />
     <Compile Include="Weaponry\ProjectileProperties_Extended.cs" />
     <Compile Include="Weaponry\Projectiles\Bullet_Sprite.cs" />
@@ -559,7 +568,7 @@
     <Compile Include="Weaponry\Projectiles\Projectile_SonicWave.cs" />
     <Compile Include="Weaponry\Projectiles\Projectile_TeslaArc.cs" />
     <Compile Include="Weaponry\Projectiles\Projectile_ThrownFlame.cs" />
-    <Compile Include="Weaponry\Projectiles\Projectile_TR.cs" />
+    <Compile Include="Weaponry\Projectiles\Bullet_TR.cs" />
     <Compile Include="Weaponry\SuperWeapon\AttackSatellite.cs" />
     <Compile Include="Weaponry\SuperWeapon\AttackSatellite_Ion.cs" />
     <Compile Include="Weaponry\SuperWeapon\Building_IonCannon.cs" />

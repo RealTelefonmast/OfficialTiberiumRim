@@ -126,7 +126,7 @@ namespace TiberiumRim
 
             public static int GibHelp(int retval , int count)
             {
-                Log.Message("Returning " + (retval != 0) + " at " + count, true);
+                //Log.Message("Returning " + (retval != 0) + " at " + count, true);
                 return retval;
             }
 
@@ -597,6 +597,37 @@ namespace TiberiumRim
             return false;
         }
 
+        //Draw Equipment Size Fix
+        [HarmonyPatch(typeof(PawnRenderer)), HarmonyPatch("DrawEquipmentAiming")]
+        public static class DrawEquipmentAimingPatch
+        {
+            private static MethodInfo injection = AccessTools.Method(typeof(DrawEquipmentAimingPatch), nameof(RenderInjection));
+
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                var instructionList = instructions.ToList();
+                for (var i = 0; i < instructionList.Count; i++)
+                {
+                    var code = instructionList[i];
+                    var nextCode = i + 1 < instructionList.Count ? instructionList[i + 1] : null;
+                    if (nextCode != null && nextCode.opcode == OpCodes.Ret)
+                    {
+                        yield return new CodeInstruction(OpCodes.Ldarg_1);
+                        yield return new CodeInstruction(OpCodes.Call, injection);
+                        continue;
+                    }
+
+                    yield return code;
+                }
+            }
+
+            public static void RenderInjection(Mesh mesh, Vector3 drawLoc, Quaternion quat, Material mat, int layer, Thing thing)
+            {
+                var size = thing.Graphic.drawSize;
+                Graphics.DrawMesh(mesh, Matrix4x4.TRS(drawLoc, quat, new Vector3(size.x, 1, size.y)), mat, layer);
+            }
+        }
+
         //Draw
         [HarmonyPatch(typeof(HealthCardUtility))]
         [HarmonyPatch("DrawHediffRow")]
@@ -839,20 +870,6 @@ namespace TiberiumRim
                     }
                 }
                 yield break;
-            }
-        }
-
-        [HarmonyPatch(typeof(PawnRenderer))]
-        [HarmonyPatch("DrawEquipmentAiming")]
-        public static class DrawEquipmentAimingPatch
-        {
-            public static bool Prefix(Thing eq, Vector3 drawLoc, float aimAngle)
-            {
-                if (eq is FXThing thing)
-                {
-                    return true;
-                }
-                return true;
             }
         }
 

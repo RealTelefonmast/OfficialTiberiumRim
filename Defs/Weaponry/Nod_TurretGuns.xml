@@ -32,8 +32,13 @@
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaser</damageDef>
-					<beamPath>Items/Weapons/Projectile/Bullet_ObeliskBeam</beamPath>
-					<hitEffecter>StrongBeamHit</hitEffecter>
+					<damageBase>100</damageBase>
+					<beamTexturePath>Items/Weapons/Projectile/Bullet_ObeliskBeam</beamTexturePath>
+					
+					<fadeInTime>0.25</fadeInTime>
+					<solidTime>0.25</solidTime>
+					<fadeOutTime>0.85</fadeOutTime>
+					<impactEffecter>StrongBeamHit</impactEffecter>
 					<glow>
 						<glowMote>ObeliskGlow</glowMote>
 						<scale>3.5</scale>

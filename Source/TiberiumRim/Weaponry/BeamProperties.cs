@@ -13,9 +13,18 @@ namespace TiberiumRim
         public int damageBase = 100;
         public int damageTicks = 10;
 
+        public float stoppingPower;
+        public float staggerTime = 95.TicksToSeconds();
+
+        public float armorPenetration;
+
+        //
+        public ExplosionProperties impactExplosion;
+        public EffecterDef impactEffecter;
+        public FilthSpewerProperties impactFilth;
 
         //Graphical
-        public string beamPath;
+        public string beamTexturePath;
         //public FloatRange scratchRange = new FloatRange(3, 4);
 
         public float fadeInTime = 0.25f;
@@ -23,6 +32,5 @@ namespace TiberiumRim
         public float fadeOutTime = 0.85f;
 
         public BeamGlow glow;
-        public EffecterDef hitEffecter;
     }
 }

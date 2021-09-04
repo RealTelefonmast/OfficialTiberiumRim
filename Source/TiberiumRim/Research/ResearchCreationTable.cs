@@ -94,11 +94,9 @@ namespace TiberiumRim
 
         private void Setup(TResearchTaskDef task, List<int> values = null)
         {
-            Log.Message($"Setting up task {task.defName} with CreationProps: {task.creationTasks != null} with count: {task.creationTasks?.thingsToCreate?.Count.ToString() ?? "N/A"}");
             int i = 0;
             foreach (var creationOption in task.creationTasks.thingsToCreate)
-            {
-                Log.Message($"Current CreationOption: {creationOption.def} of count {creationOption.amount}");
+            { 
                 if (creationOption.def == null) continue;
                 thingsToCreate.Add(creationOption, values?[i] ?? creationOption.amount);
                 if (creationOptionMap.ContainsKey(creationOption.def))

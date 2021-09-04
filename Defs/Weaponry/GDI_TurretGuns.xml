@@ -168,7 +168,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
-					<beamPath>Items/Weapons/Projectile/Bullet_RailshotHeavy</beamPath>
+					<beamTexturePath>Items/Weapons/Projectile/Bullet_RailshotHeavy</beamTexturePath>
 				</beamProps>
 				<originOffsets>	
 					<li>(0,0,0)</li>

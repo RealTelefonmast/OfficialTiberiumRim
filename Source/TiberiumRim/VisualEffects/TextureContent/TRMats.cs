@@ -26,6 +26,9 @@ namespace TiberiumRim
         public static readonly Color OptionSelectedBGFillColor     = new Color(0.32f, 0.28f, 0.21f);
         public static readonly Color OptionSelectedBGBorderColor   = OptionSelectedBGFillColor * 1.8f;
 
+        public static readonly Color BGDarker = new ColorInt(29, 30, 30).ToColor;
+        public static readonly Color BGLighter = new ColorInt(61, 62, 63).ToColor;
+
         //public static readonly Color VisceralColor = new ColorInt(140, 156, 50).ToColor;
         //public static readonly Color SymbioticColor = new ColorInt(138, 229, 226).ToColor;
         public static Color VisceralColor = new ColorInt(155, 160, 75).ToColor;

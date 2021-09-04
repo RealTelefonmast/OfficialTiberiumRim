@@ -38,7 +38,7 @@
 		</projectile>
 	</ThingDef>
 	
-		<ThingDef ParentName="BaseBullet_TR">
+	<ThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_NodAP</defName>
 		<label>bullet</label>
 		<graphicData>

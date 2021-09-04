@@ -60,7 +60,6 @@ namespace TiberiumRim
             base.Create(parent);
             //Notify Parent Manager
             PollutionInfo.Notify_NewComp(this);
-            Log.Message($"Creating Pollution RoomComp for {Room.ID} with {Room.CellCount} cells. (AllCompCount: {PollutionInfo.AllComps.Count})");
 
             //Create new comps
             pollutionContainer = new PollutionContainer();
@@ -78,7 +77,6 @@ namespace TiberiumRim
 
         public override void Disband(RoomTracker parent, Map map)
         {
-            Log.Message($"Disbanding {Room.ID}");
             var pollInfo = map.Tiberium().PollutionInfo;
             pollInfo.Notify_DisbandedComp(this);
             foreach (var connector in connections)
@@ -120,13 +118,11 @@ namespace TiberiumRim
 
         public override void PreApply()
         {
-            Log.Message($"Pre-appyling for {Room.ID}");
             MarkDirty();
         }
 
         public override void FinalizeApply()
         {
-            Log.Message($"Finalizing Apply for {Room.ID}");
             RegenerateData();
         }
 
@@ -213,7 +209,7 @@ namespace TiberiumRim
         //DATA
         public void RegenerateData(bool ignoreOthers = false, bool onlyConnections = false, bool force = false)
         {
-            Log.Message($"Regenerating {Room.ID} with ignOth: {ignoreOthers} onlyConn: {onlyConnections} force: {force} | IsDirty: {IsDirty}");
+            //Log.Message($"Regenerating {Room.ID} with ignOth: {ignoreOthers} onlyConn: {onlyConnections} force: {force} | IsDirty: {IsDirty}");
             if (!force && !IsDirty) return;
             if (Parent.IsDisbanded)
             {
@@ -240,8 +236,6 @@ namespace TiberiumRim
                 this.width = maxX - minX + 1;
                 this.height = maxZ - minZ + 1;
 
-                Log.Message(
-                    $"Setting size for {Room.ID} - minX: {minX}|maxX: {maxX}|minZ: {minZ}|maxZ: {maxZ} - {width}/{height}");
                 size = new IntVec2(width, height);
                 minVec = new IntVec3(minX, 0, minZ);
                 actualCenter = new Vector3(minX + (width / 2f), 0, minZ + (height / 2f));

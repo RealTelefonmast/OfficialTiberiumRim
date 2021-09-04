@@ -4,7 +4,9 @@ namespace TiberiumRim
 {
     public class ProjectileProperties_Extended
     {
-        public ExplosionProperties explosion;
+        public ExplosionProperties impactExplosion;
+        public EffecterDef impactEffecter;
+        public FilthSpewerProperties impactFilth;
     }
 
     public class BeamGlow

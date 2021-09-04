@@ -23,8 +23,6 @@ namespace TiberiumRim
         public override void Create(RoomTracker parent)
         {
             base.Create(parent);
-            Log.Message("Creating AirLock RoomComp");
-
             foreach (var thing in Room.ContainedAndAdjacentThings)
             {
                 TryAddComponent(thing);
@@ -33,14 +31,13 @@ namespace TiberiumRim
 
         public override void Notify_ThingSpawned(Thing thing)
         {
-            Log.Message($"Spawned {thing} in {this.Room.ID} RoomComp_AirLock");
             TryAddComponent(thing);
         }
 
         public override void Notify_ThingDespawned(Thing thing)
         {
-            base.Notify_ThingDespawned(thing);
             AirVents.RemoveAll(t => t.Thing == thing);
+            base.Notify_ThingDespawned(thing);
         }
 
         private void TryAddComponent(Thing thing)
