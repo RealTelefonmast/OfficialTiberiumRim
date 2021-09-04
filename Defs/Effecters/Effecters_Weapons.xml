@@ -8,16 +8,43 @@
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
 				<fleckDef>Smoke</fleckDef>
 				<burstCount>1~1</burstCount>
-				<scale>1.5~2.5</scale>
+				<scale>2~3</scale>
 				<rotation>-30~30</rotation>
-				<speed>0.5~0.7</speed>
+				<speed>0.1~0.25</speed>
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>MicroSparks</fleckDef>
+				<fleckDef>SubMote_AdvParticle</fleckDef>
 				<scale>0.8~1.2</scale>
+				<rotation>0~0</rotation>
+				<positionRadius>0.8</positionRadius>
+				<rotationRate>45~65</rotationRate>
+				<speed>1.2</speed>
+				<angle>35~45</angle>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+		</children>
+	</EffecterDef>
+	
+	<EffecterDef>
+		<defName>BeamHit</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Smoke</fleckDef>
+				<burstCount>1~1</burstCount>
+				<scale>2~3</scale>
+				<rotation>-30~30</rotation>
+				<speed>0.1~0.25</speed>
+				<angle>30~40</angle>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>SubMote_AdvParticle</fleckDef>
+				<scale>2~3</scale>
 				<rotation>0~0</rotation>
 				<positionRadius>0.8</positionRadius>
 				<rotationRate>45~65</rotationRate>
@@ -35,21 +62,37 @@
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
 				<fleckDef>Smoke</fleckDef>
 				<burstCount>1~1</burstCount>
-				<scale>1~1.5</scale>
+				<scale>2~3</scale>
 				<rotation>-30~30</rotation>
-				<speed>0.5~0.7</speed>
+				<speed>0.1~0.25</speed>
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>MicroSparks</fleckDef>
-				<scale>0.4~0.6</scale>
+				<fleckDef>SubMote_AdvParticle</fleckDef>
+				<scale>2~3</scale>
 				<rotation>0~0</rotation>
 				<positionRadius>0.8</positionRadius>
 				<rotationRate>45~65</rotationRate>
 				<speed>1.2</speed>
 				<angle>35~45</angle>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+		</children>
+	</EffecterDef>
+	
+	<EffecterDef>
+		<defName>ScrinBeamHit</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_ScrinCut</fleckDef>
+				<burstCount>1~1</burstCount>
+				<scale>0.75~1.25</scale>
+				<rotation>-45~45</rotation>
+				<speed>0</speed>
+				<angle>0~45</angle>
 				<spawnLocType>OnSource</spawnLocType>
 			</li>
 		</children>

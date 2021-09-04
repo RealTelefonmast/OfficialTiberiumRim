@@ -58,6 +58,9 @@
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>
+					<li>(0, 0, 1)</li>
+				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_GDIStandard</defaultProjectile>
 				<secondaryProjectile>Bullet_GDIAP</secondaryProjectile>
@@ -179,7 +182,7 @@
 			<AccuracyShort>0.65</AccuracyShort>
 			<AccuracyMedium>0.9</AccuracyMedium>
 			<AccuracyLong>1</AccuracyLong>
-			<RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
 		</statBases>
 		<conditionalStatOffsets>
 			<li>
@@ -201,11 +204,17 @@
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRRailgun</damageDef>
+					<damageBase>45</damageBase>
+					<stoppingPower>0.5</stoppingPower>
+					<armorPenetrationBase>0.5</armorPenetrationBase>
 					<beamPath>Items/Weapons/Projectile/Bullet_Railshot</beamPath>
+					<fadeInTime>0.05</fadeInTime>
+					<solidTime>0</solidTime>
+					<fadeOutTime>1</fadeOutTime>
 					<hitEffecter>RailgunHit</hitEffecter>
 				</beamProps>
 				<originOffsets>	
-					<li>(0, 0, 0.7)</li>
+					<li>(0, 0, -0.1)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<requireLineOfSight>true</requireLineOfSight>

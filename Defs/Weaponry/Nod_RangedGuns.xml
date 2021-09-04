@@ -62,6 +62,9 @@
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>
+					<li>(0, 0, 1)</li>
+				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_NodStandard</defaultProjectile>
 				<secondaryProjectile>Bullet_NodAP</secondaryProjectile>
@@ -208,7 +211,7 @@
 					<fadeInTime>0.05</fadeInTime>
 					<solidTime>0</solidTime>
 					<fadeOutTime>0.25</fadeOutTime>
-					<hitEffecter>StrongBeamHit</hitEffecter>
+					<hitEffecter>BeamHit</hitEffecter>
 				</beamProps>
 				<originOffsets>
 					<li>(-0.05, 0, -0.1)</li>
@@ -273,7 +276,7 @@
 			<AccuracyShort>0.87</AccuracyShort>
 			<AccuracyMedium>0.77</AccuracyMedium>
 			<AccuracyLong>0.64</AccuracyLong>
-			<RangedWeapon_Cooldown>1.75</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
 			<Nod_LaserRifleSmall>1</Nod_LaserRifleSmall>
@@ -288,11 +291,11 @@
 					<damageBase>20</damageBase>
 					<stoppingPower>0.2</stoppingPower>
 					<armorPenetrationBase>0.5</armorPenetrationBase>
-					<beamPath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam_Heavy</beamPath>
+					<beamPath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam</beamPath>
 					<fadeInTime>0.05</fadeInTime>
 					<solidTime>0</solidTime>
-					<fadeOutTime>0.25</fadeOutTime>
-					<hitEffecter>StrongBeamHit</hitEffecter>
+					<fadeOutTime>0.3</fadeOutTime>
+					<hitEffecter>BeamHit</hitEffecter>
 				</beamProps>
 				<originOffsets>
 					<li>(-0.05, 0, -0.1)</li>
@@ -303,7 +306,7 @@
 				<warmupTime>1.5</warmupTime>
 				<range>39.9</range>
 				<burstShotCount>3</burstShotCount>
-				<ticksBetweenBurstShots>12</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>13</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_LaserLarge</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
@@ -381,8 +384,11 @@
 			<TRBattleChip>1</TRBattleChip>
 		</costList>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>
+					<li>(0, 0, 1)</li>
+				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>				
 				<warmupTime>1.5</warmupTime>
@@ -469,8 +475,11 @@
 			<TRBattleChip>2</TRBattleChip>
 		</costList>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>
+					<li>(0, 0, 1)</li>
+				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_TiberiumGas</defaultProjectile>
 				<warmupTime>1.5</warmupTime>
@@ -547,8 +556,12 @@
 			<li>Exotic</li>
 		</tradeTags>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>
+					<li>(-0.2, 0, 1)</li>
+					<li>(0.2, 0, 1)</li>
+				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_NodRocket</defaultProjectile>
 				<warmupTime>4</warmupTime>

@@ -25,8 +25,11 @@
 			<li>ShocktrooperGun</li>
 		</weaponTags>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>
+					<li>(0, 0, 1)</li>
+				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_ShockDisc</defaultProjectile>
 				<warmupTime>2.25</warmupTime>
@@ -72,7 +75,7 @@
 					<beamPath>Items/Weapons/Projectile/Bullet_BeamScrin</beamPath>
 				</beamProps>
 				<originOffsets>	
-					<li>(0,0,0)</li>
+					<li>(0, 0, 1)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>0.5</warmupTime>
@@ -170,10 +173,18 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
+					<damageDef>TRRailgun</damageDef>
+					<damageBase>45</damageBase>
+					<stoppingPower>0.5</stoppingPower>
+					<armorPenetrationBase>0.5</armorPenetrationBase>
 					<beamPath>Items/Weapons/Projectile/Bullet_BeamScrinBig</beamPath>
+					<fadeInTime>0.05</fadeInTime>
+					<solidTime>0</solidTime>
+					<fadeOutTime>1</fadeOutTime>
+					<hitEffecter>ScrinBeamHit</hitEffecter>
 				</beamProps>
 				<originOffsets>	
-					<li>(0,0,0)</li>
+					<li>(0, 0, -0.1)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>3</warmupTime>
