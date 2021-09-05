@@ -110,9 +110,9 @@
 			<damageDef>Flame</damageDef>
 			<damageAmountBase>6</damageAmountBase>
 			<armorPenetrationBase>0.2</armorPenetrationBase>
-			<!--<explosionRadius>0.05</explosionRadius>
+			<!--<explosionRadius>0.05</explosionRadius>-->
 			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
-			<preExplosionSpawnChance>0.75</preExplosionSpawnChance>-->
+			<preExplosionSpawnChance>0.35</preExplosionSpawnChance>
 			<arcHeightFactor>1.25</arcHeightFactor>
 			<speed>15</speed>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
@@ -120,12 +120,6 @@
 		</projectile>
 		<projectileExtended>
 			<impactEffecter>FlameHit</impactEffecter>
-			<impactFilth>
-				<filths>
-					<li>Filth_Fuel, 0.5</li>
-				</filths>
-				<spreadRadius>1</spreadRadius>
-			</impactFilth>
 		</projectileExtended>
 	</TiberiumRim.TRThingDef>
 	
@@ -146,20 +140,18 @@
 			<arcHeightFactor>1.25</arcHeightFactor>
 			<speed>15</speed>
 			<shadowSize>1.8</shadowSize>
-
+			<soundExplode>Shot_Nod_FlameTail</soundExplode>
+			<postExplosionSpawnThingDef>Gas_Chemical</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>0.15</postExplosionSpawnChance>
 			<!--<explosionRadius>0.05</explosionRadius>
 			<preExplosionSpawnThingDef>FilthTibLiquidGreen</preExplosionSpawnThingDef>
-			<preExplosionSpawnChance>0.75</preExplosionSpawnChance>
-			<postExplosionSpawnThingDef>Gas_Chemical</postExplosionSpawnThingDef>
-			<postExplosionSpawnChance>0.5</postExplosionSpawnChance>
-			<soundExplode>Shot_Nod_FlameTail</soundExplode>-->
+			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>-->
 		</projectile>
 		<projectileExtended>
 			<impactEffecter>ChemicalHit</impactEffecter>
 			<impactFilth>
 				<filths>
 					<li>FilthTibLiquidGreen, 0.5</li>
-					<li>Gas_Chemical, 0.5</li>
 				</filths>
 				<spreadRadius>1</spreadRadius>
 			</impactFilth>

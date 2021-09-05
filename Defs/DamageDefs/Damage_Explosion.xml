@@ -89,7 +89,7 @@
 		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
 		<explosionCellFleck>Fleck_BlastSound</explosionCellFleck>
 		<explosionInteriorFleck>SubMote_AdvParticle</explosionInteriorFleck>
-		<explosionColorCenter>(0.4, 0.4, 0.4, 0.8)</explosionColorCenter>
+		<explosionColorCenter>(1, 1, 1, 0.4)</explosionColorCenter>
 		<explosionColorEdge>(0.1, 0.1, 0.1, 0.1)</explosionColorEdge>
 		<soundExplosion>Shot_GDI_Sonic</soundExplosion>
 	</DamageDef>
@@ -109,7 +109,7 @@
 		<plantDamageFactor>5</plantDamageFactor>
 		<explosionCellFleck>Fleck_BlastWave</explosionCellFleck>
 		<explosionInteriorFleck>SubMote_AdvParticle</explosionInteriorFleck>
-		<explosionColorCenter>(0.4, 0.4, 0.4, 1)</explosionColorCenter>
+		<explosionColorCenter>(1, 1, 1, 0.4)</explosionColorCenter>
 		<explosionColorEdge>(0.1, 0.1, 0.1, 0.1)</explosionColorEdge>
 		<soundExplosion>Shot_GDI_Sonic</soundExplosion>
 	</DamageDef>
@@ -183,8 +183,8 @@
 		<explosionColorEdge>(0.1, 0.5, 0.1, 0)</explosionColorEdge>
 		<soundExplosion>Nod_ChemBomb</soundExplosion>
 	</DamageDef>
-	
-	<DamageDef ParentName="TRExplosionBase">  <!--only specialized chemical attack-->
+
+	<DamageDef ParentName="TRExplosionBase">  <!--only specialized nod chemicalspray attack-->
 		<defName>TiberiumExplosionGas</defName>
 		<label>tiberium heat explosion</label>
 		<deathMessage>{0} has burned to death in an tiberium explosion.</deathMessage>

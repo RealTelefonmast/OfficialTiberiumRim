@@ -90,14 +90,15 @@
 	<FleckDef ParentName="FleckBase_TR">
 		<defName>Fleck_BlastWave</defName>
 		<graphicData>
-			<texPath>Motes/SoundMote</texPath> 
+			<texPath>Motes/SoundVortex</texPath>
 			<shaderType>MoteGlow</shaderType>
+			<drawSize>1</drawSize>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
-		<fadeInTime>0</fadeInTime>
-		<solidTime>0.1</solidTime>
-		<fadeOutTime>1.5</fadeOutTime>
-		<growthRate>1</growthRate>
+		<fadeInTime>0.25</fadeInTime>
+		<solidTime>0</solidTime>
+		<fadeOutTime>2</fadeOutTime>
+		<growthRate>3</growthRate>
 	</FleckDef>
 	
 	<FleckDef ParentName="FleckBase_TR">
@@ -152,7 +153,7 @@
 		<growthRate>0.75</growthRate>
 	</FleckDef>
 	
-  <FleckDef ParentName="FleckBase_Thrown">
+	<FleckDef ParentName="FleckBase_Thrown">
 		<defName>SubMote_TibGasParticle</defName>
 		<graphicData>
 			<texPath>Motes/TiberiumGasLight</texPath>
@@ -165,6 +166,8 @@
 		<fadeOutTime>1</fadeOutTime>
 		<growthRate>3.5</growthRate>
 	</FleckDef>
+	
+
 	
 	<!--
 	<TiberiumRim.ParticleDef Name="SporeBase" Abstract="True">

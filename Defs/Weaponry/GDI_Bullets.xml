@@ -239,6 +239,8 @@
 			<soundExplode>Shot_GDI_Sonic</soundExplode>
 			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
 			<soundAmbient>MortarRound_Ambient</soundAmbient>
+			<postExplosionSpawnThingDef>Gas_Shockwave</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>0.15</postExplosionSpawnChance>
 			<shadowSize>0.5</shadowSize>
 		</projectile>
 	</ThingDef>
