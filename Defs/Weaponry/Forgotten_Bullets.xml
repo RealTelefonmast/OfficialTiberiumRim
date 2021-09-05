@@ -21,6 +21,11 @@
 			<arcHeightFactor>0.25</arcHeightFactor>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
+		<requisites>
+			<tiberiumResearch>
+				<li>ForgottenExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</ThingDef>
 	
 	<ThingDef ParentName="BaseBullet_TR">
@@ -44,6 +49,11 @@
 			<arcHeightFactor>0.25</arcHeightFactor>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
+		<requisites>
+			<tiberiumResearch>
+				<li>ForgottenExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</ThingDef>
 
 	

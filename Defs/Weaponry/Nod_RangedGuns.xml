@@ -5,7 +5,7 @@
 		<soundInteract>Interact_Rifle</soundInteract>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
 		<recipeMaker>
@@ -366,6 +366,11 @@
 			<li>RangedHeavy</li>
 			<li>LongShots</li>
 		</weaponClasses>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
@@ -549,6 +554,11 @@
 			<li>RangedHeavy</li>
 			<li>ShortShots</li>
 		</weaponClasses>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
