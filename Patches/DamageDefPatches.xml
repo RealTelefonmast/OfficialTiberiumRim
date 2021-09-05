@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
 
+	<!-- Smoke -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/FleckDef[defName="Smoke"]/graphicData/texPath</xpath>
+        <value>
+           <texPath>Motes/Original/Smoke</texPath>
+        </value>
+    </Operation>
+
 	<!-- Flame -->
     <Operation Class="PatchOperationReplace">
         <xpath>/Defs/DamageDef[defName="Flame"]/explosionCellFleck</xpath>
