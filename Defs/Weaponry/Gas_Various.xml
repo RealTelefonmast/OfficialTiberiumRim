@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="BaseGas">
+		<defName>Gas_Chemical</defName>
+		<label>tiberium gas</label>
+		<graphicData>
+			<texPath>Motes/TiberiumGas</texPath>
+			<drawSize>2.2</drawSize>
+			<color>(1,1,1,0.5)</color>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<gas>
+			<expireSeconds>24~36</expireSeconds>
+			<blockTurretTracking>true</blockTurretTracking>
+			<accuracyPenalty>0.6</accuracyPenalty>
+			<rotationSpeed>10</rotationSpeed>
+		</gas>
+	</ThingDef>
+</Defs>
