@@ -3,11 +3,6 @@
 
 	<TiberiumRim.TRThingDef Name="Nod_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
 		<soundInteract>Interact_Rifle</soundInteract>
-		<requisites>
-			<tiberiumResearch>
-				<li>NODExperimental2</li>
-			</tiberiumResearch>
-		</requisites>
 		<recipeMaker>
 			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 			<workSkill>Crafting</workSkill>
@@ -111,6 +106,11 @@
 		<recipeMaker>
 			<!--<researchPrerequisite>NodResearch_Technology</researchPrerequisite>-->
 		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
@@ -182,6 +182,11 @@
 			<li>RangedLight</li>
 			<li>ShortShots</li>
 		</weaponClasses>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
@@ -272,6 +277,11 @@
 				<Crafting>8</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
@@ -463,6 +473,11 @@
 			<li>RangedHeavy</li>
 			<li>ShortShots</li>
 		</weaponClasses>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
@@ -626,6 +641,11 @@
 			<li>RangedHeavy</li>
 			<li>LongShots</li>
 		</weaponClasses>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 
 <!--

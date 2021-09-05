@@ -15,11 +15,6 @@
 				<li>TiberiumWorkbench</li>
 			</recipeUsers>
 		</recipeMaker>
-		<requisites>
-			<tiberiumResearch>
-				<li>ForgottenExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef Name="GDI_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
@@ -28,11 +23,6 @@
 				<li>GDI_Factory</li>
 			</recipeUsers>
 		</recipeMaker>
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef Name="Nod_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
@@ -41,11 +31,6 @@
 				<li>Nod_Factory</li>
 			</recipeUsers>
 		</recipeMaker>
-		<requisites>
-			<tiberiumResearch>
-				<li>NODExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 	</TiberiumRim.TRThingDef>
 
 </Defs>

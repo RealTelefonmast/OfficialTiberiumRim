@@ -3,11 +3,6 @@
 
 	<TiberiumRim.TRThingDef Name="GDI_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
 		<soundInteract>Interact_Rifle</soundInteract>
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIExperimental2</li>
-			</tiberiumResearch>
-		</requisites>
 		<recipeMaker>
 			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 			<workSkill>Crafting</workSkill>
@@ -95,6 +90,11 @@
 		<weaponTags>
 			<li>GDIRifle</li>
 		</weaponTags>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<!-- Allow multi ammo type -->
@@ -163,6 +163,11 @@
 		<weaponClasses>
 			<li>RangedHeavy</li>
 		</weaponClasses>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
@@ -435,7 +440,7 @@
 		</weaponClasses>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental3</li>
+				<li>GDIExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
