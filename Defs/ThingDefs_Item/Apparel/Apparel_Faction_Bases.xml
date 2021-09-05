@@ -17,7 +17,7 @@
 		</recipeMaker>
 		<requisites>
 			<tiberiumResearch>
-				<li>ForgottenExperimental</li>
+				<li>ForgottenExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -30,7 +30,7 @@
 		</recipeMaker>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -43,7 +43,7 @@
 		</recipeMaker>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>

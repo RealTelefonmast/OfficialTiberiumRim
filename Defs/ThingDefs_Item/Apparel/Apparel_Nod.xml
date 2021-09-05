@@ -121,7 +121,7 @@
 		</recipeMaker>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
+	<TiberiumRim.TRThingDef ParentName="Nod_Armor">
 		<defName>Apparel_NodSoldierHelmet</defName>  <!--balance standard - recon helmet -->
 		<label>Nod soldier helmet</label>
 		<description>This helmet has an integrated Tiberium filter, might also repell some bullets if you're lucky.\n\nNod soldier set has some protection against tiberium, but not perfect.</description>
@@ -176,9 +176,14 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
+	<TiberiumRim.TRThingDef ParentName="Nod_Armor">
 		<defName>Apparel_NodSoldierSuit</defName>  <!--balance standard - recon armor -->
 		<label>Nod soldier suit</label>
 		<description>This suit is optimized to resist most attacks.\n\nNod soldier set has some protection against tiberium, but not perfect.</description>
@@ -240,6 +245,11 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<!-- ====================================== Officer =========================================== -->
@@ -301,6 +311,11 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="Nod_Armor"> <!--balance standard - flak jacket-->
@@ -364,6 +379,11 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 		<!-- ====================================== Blackhand =========================================== -->
@@ -438,6 +458,11 @@
                 <styleDef>Apparel_NodBlackHandHelmet2</styleDef>
             </li>
         </randomStyle>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
     </TiberiumRim.TRThingDef>
 	
 	<ThingStyleDef>
@@ -553,6 +578,11 @@
 				<ai_AvoidFriendlyFireRadius>5</ai_AvoidFriendlyFireRadius>
 			</li>
 		</verbs>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
           

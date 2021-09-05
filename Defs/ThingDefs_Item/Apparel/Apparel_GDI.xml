@@ -66,6 +66,11 @@
                 <styleDef>GDISoldierHelmet2</styleDef>
             </li>
         </randomStyle>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
     </TiberiumRim.TRThingDef>
 
 	<ThingStyleDef>
@@ -141,6 +146,11 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>	
 	
 	<!-- ==================== Officer ===================== -->
@@ -201,6 +211,11 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="GDI_Armor"> <!--balance standard - flak jacket-->
@@ -263,6 +278,11 @@
 				<Crafting>5</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<!-- Engineer -->
@@ -324,6 +344,11 @@
 				<Crafting>8</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
@@ -422,6 +447,11 @@
 				<ai_AvoidFriendlyFireRadius>1</ai_AvoidFriendlyFireRadius>
 			</li>
 		</verbs>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 
@@ -488,6 +518,11 @@
 				<Crafting>12</Crafting>
 			</skillRequirements>
 		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="GDI_Armor">
@@ -586,7 +621,12 @@
 					<canTargetBuildings>false</canTargetBuildings>
 				</targetParams>
 			</li>
-    </verbs>
+		</verbs>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 </Defs>
