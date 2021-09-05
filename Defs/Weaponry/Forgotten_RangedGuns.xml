@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef ParentName="BaseMakeableGun_TR">
+	<TiberiumRim.TRThingDef ParentName="BaseMakeableGun_TR">
 		<defName>Forg_ShardgunGreen</defName>
 		<label>shard gun</label>
 		<description>A simple shotgun made from scrap and other components. Launches crushed tiberium crystals towards the target, may accidentally seed the ground with green tiberium.\n\nUpgradable to the explosive shard launcher.</description>
@@ -70,9 +70,9 @@
 				<li>ForgottenExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="BaseMakeableGun_TR">
+	<TiberiumRim.TRThingDef ParentName="BaseMakeableGun_TR">
 		<defName>Forg_ShardgunBlue</defName>
 		<label>explosive shard launcher</label>
 		<description>A heavy scrap metal shotgun. Launches crushed tiberium crystals towards the target, may accidentally seed the ground with blue tiberium. Blue tiberium tends to explode.</description>
@@ -143,6 +143,6 @@
 				<li>ForgottenExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
 </Defs>
