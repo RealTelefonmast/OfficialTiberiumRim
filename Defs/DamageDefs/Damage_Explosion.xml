@@ -184,7 +184,7 @@
 		<soundExplosion>Nod_ChemBomb</soundExplosion>
 	</DamageDef>
 	
-	<DamageDef ParentName="TRExplosionBase">
+	<DamageDef ParentName="TRExplosionBase">  <!--only specialized chemical attack-->
 		<defName>TiberiumExplosionGas</defName>
 		<label>tiberium heat explosion</label>
 		<deathMessage>{0} has burned to death in an tiberium explosion.</deathMessage>
@@ -201,7 +201,7 @@
 		<explosionColorCenter>(0.5, 1, 0.7, 0.75)</explosionColorCenter>
 		<explosionColorEdge>(0.5, 0.1, 0.1, 0)</explosionColorEdge>
 		<canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
-		<soundExplosion>Nod_ChemBomb</soundExplosion>
+		<soundExplosion>Shot_Nod_FlameTail</soundExplosion>
 		<combatLogRules>Damage_Flame</combatLogRules>
 	</DamageDef>
 
@@ -215,7 +215,7 @@
 		<explosionInteriorFleck>SubMote_TibGasParticle</explosionInteriorFleck>
 		<explosionColorCenter>(0.1, 0.25, 0.1)</explosionColorCenter>
 		<explosionColorEdge>(0, 0.15, 0.05)</explosionColorEdge>
-		<soundExplosion>Nod_ChemBomb</soundExplosion>
+		<soundExplosion>Shot_Nod_FlameTail</soundExplosion>
 	</DamageDef>
 	
   	<DamageDef ParentName="TRExplosionBase">
@@ -232,7 +232,7 @@
 		<explosionInteriorFleck>SubMote_TibGasParticle</explosionInteriorFleck>
 		<explosionColorCenter>(0.1, 0.1, 0.5)</explosionColorCenter>
 		<explosionColorEdge>(0, 0.25, 0.25)</explosionColorEdge>
-		<soundExplosion>Nod_ChemBomb</soundExplosion>
+		<soundExplosion>Shot_Nod_FlameTail</soundExplosion>
 	</DamageDef>
   
 
@@ -275,6 +275,7 @@
 		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
 		<explosionHeatEnergyPerCell>20</explosionHeatEnergyPerCell>
 		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
+		<soundExplosion>Nod_ChemBomb</soundExplosion>
 	</DamageDef>
 
 

@@ -417,7 +417,7 @@
 				<forcedMissRadius>0.2</forcedMissRadius>
 				<burstShotCount>25</burstShotCount>
 				<ticksBetweenBurstShots>3.5</ticksBetweenBurstShots>
-				<soundCast>Shot_Nod_Flame</soundCast>
+				<soundCast>DropPod_Open</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
 				<muzzleFlashScale>5</muzzleFlashScale>
 				<targetParams>

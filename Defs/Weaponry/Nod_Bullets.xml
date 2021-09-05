@@ -116,7 +116,7 @@
 			<arcHeightFactor>1.25</arcHeightFactor>
 			<speed>15</speed>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
-			<shadowSize>2</shadowSize>			
+			<shadowSize>1.8</shadowSize>			
 		</projectile>
 		<projectileExtended>
 			<impactEffecter>FlameHit</impactEffecter>
@@ -145,7 +145,7 @@
 			<armorPenetrationBase>0.5</armorPenetrationBase>
 			<arcHeightFactor>1.25</arcHeightFactor>
 			<speed>15</speed>
-			<shadowSize>2</shadowSize>
+			<shadowSize>1.8</shadowSize>
 			<!--<explosionRadius>0.05</explosionRadius>
 			<preExplosionSpawnThingDef>FilthTibLiquidGreen</preExplosionSpawnThingDef>
 			<preExplosionSpawnChance>0.75</preExplosionSpawnChance>
@@ -157,8 +157,8 @@
 			<impactEffecter>ChemicalHit</impactEffecter>
 			<impactFilth>
 				<filths>
-					<li>FilthTibLiquidGreen, 0.75</li>
-					<li>TiberiumGas, 0.75</li>
+					<li>FilthTibLiquidGreen, 0.5</li>
+					<li>TiberiumGas, 0.5</li>
 				</filths>
 				<spreadRadius>1</spreadRadius>
 			</impactFilth>

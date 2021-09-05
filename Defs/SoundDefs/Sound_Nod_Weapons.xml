@@ -93,13 +93,15 @@
 			</li>
 			</grains>
 			<volumeRange>
-			<min>150</min>
-			<max>200</max>
+			<min>60</min>
+			<max>70</max>
 			</volumeRange>
 			<pitchRange>
 			<min>0.8516304</min>
 			<max>1.254348</max>
 			</pitchRange>
+			<repeatMode>NeverTwice</repeatMode>
+			<sustainLoop>False</sustainLoop>
 			</li>
 		</subSounds>
 	</SoundDef>
@@ -125,6 +127,8 @@
 			<min>0.8516304</min>
 			<max>1.254348</max>
 			</pitchRange>
+			<repeatMode>NeverTwice</repeatMode>
+			<sustainLoop>False</sustainLoop>
 			</li>
 		</subSounds>
 	</SoundDef>
@@ -261,7 +265,8 @@
 		<defName>Shot_Nod_Flame</defName>
 		<context>MapOnly</context>
 		<eventNames />
-		<maxSimultaneous>1</maxSimultaneous>
+		<maxSimultaneous>15</maxSimultaneous>
+		<maxVoices>5</maxVoices>
 		<subSounds>
 			<li>
 			<grains>
@@ -288,6 +293,7 @@
 		<context>MapOnly</context>
 		<eventNames />
 		<maxSimultaneous>15</maxSimultaneous>
+		<maxVoices>5</maxVoices>
 		<subSounds>
 			<li>
 			<grains>
@@ -296,8 +302,8 @@
 			</li>
 			</grains>
 			<volumeRange>
-			<min>30</min>
-			<max>60</max>
+			<min>20</min>
+			<max>45</max>
 			</volumeRange>
 			<pitchRange>
 			<min>0.9541177</min>
