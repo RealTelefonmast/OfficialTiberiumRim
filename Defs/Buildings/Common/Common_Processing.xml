@@ -416,8 +416,8 @@
 			<Flammability>0.85</Flammability>
 		</statBases>
 		<costList>
-			<Steel>2500</Steel>
-			<ComponentIndustrial>100</ComponentIndustrial>
+			<Steel>500</Steel>
+			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>
 		<requisites>
 			<tiberiumResearchTasks>
@@ -520,9 +520,9 @@
 		<tickerType>Normal</tickerType>
 		<size>(2,2)</size>
 		<costList>
-			<Steel>400</Steel>
-			<Plasteel>100</Plasteel>
-			<ComponentIndustrial>30</ComponentIndustrial>
+			<Steel>300</Steel>
+			<Plasteel>75</Plasteel>
+			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>
 		<building>
 			<ai_chillDestination>false</ai_chillDestination>
@@ -620,7 +620,7 @@
 		<size>(4,4)</size>
 		<costList>
 			<Steel>250</Steel>
-			<Uranium>50</Uranium>
+			<Uranium>25</Uranium>
 			<Plasteel>25</Plasteel>
 			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>
