@@ -4,7 +4,7 @@
   	<TiberiumRim.TRThingDef Abstract="True" Name="NODTurret" ParentName="TurretBase_TR">
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -95,7 +95,7 @@
 		</comps>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<drawOffscreen>true</drawOffscreen>
@@ -500,7 +500,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>

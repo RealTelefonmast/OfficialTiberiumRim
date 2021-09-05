@@ -17,7 +17,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<uiIconPath>Buildings/Nod/Defense/Temple/Icon</uiIconPath>
@@ -131,7 +131,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<costList>

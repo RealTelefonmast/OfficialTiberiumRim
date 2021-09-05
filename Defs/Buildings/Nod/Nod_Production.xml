@@ -26,19 +26,14 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>NODExperimental</li>
-			</tiberiumResearch>
-		</requisites>
 		<statBases>
-			<MaxHitPoints>250</MaxHitPoints>
-			<WorkToBuild>500</WorkToBuild>
-			<Flammability>1.0</Flammability>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>1</Flammability>
 		</statBases>
 		<costList>
 			<Steel>200</Steel>
-			<ComponentIndustrial>6</ComponentIndustrial>
+			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>
 		<inspectorTabs>
 			<li>ITab_Bills</li>
@@ -66,9 +61,15 @@
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
 		</placeWorkers>
-		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
+	<!--
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>Nod_Hangar</defName>
 		<label>Nod hangar</label>
@@ -98,7 +99,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<statBases>
@@ -173,7 +174,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<statBases>
@@ -210,7 +211,6 @@
 				<glowRadius>2</glowRadius>
 				<glowColor>(255,150,150)</glowColor>
 			</li>
-			<!--
 			<li Class="TiberiumRimFactions.CompProperties_NodCrane">
 				<statList>
 					<MoveSpeed>1.1</MoveSpeed>
@@ -220,13 +220,13 @@
 					<ConstructSuccessChance>1.25</ConstructSuccessChance>
 				</statList>
 			</li>
-			-->
+			
 		</comps>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_Once</li>
 		</placeWorkers>
-	</TiberiumRim.TRThingDef>
+	</TiberiumRim.TRThingDef>-->
 	
 	<!--
 	<TiberiumRim.TRThingDef ParentName="RefineryBase_TR">
@@ -245,7 +245,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<uiIconPath>Buildings/Nod/Production/Refinery/Icon</uiIconPath>
@@ -324,7 +324,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<uiIconPath>Buildings/Nod/Production/PowerPlant/Icon</uiIconPath>

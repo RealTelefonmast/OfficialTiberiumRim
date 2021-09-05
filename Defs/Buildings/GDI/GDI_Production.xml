@@ -23,15 +23,10 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIExperimental</li>
-			</tiberiumResearch>
-		</requisites>
 		<statBases>
-			<MaxHitPoints>250</MaxHitPoints>
-			<WorkToBuild>500</WorkToBuild>
-			<Flammability>1.0</Flammability>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>1</Flammability>
 		</statBases>
 		<costList>
 			<Steel>200</Steel>
@@ -64,9 +59,15 @@
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
 		</placeWorkers>
-		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
+	<!--
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>GDI_Hangar</defName>
 		<label>GDI hangar</label>
@@ -90,7 +91,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<statBases>
@@ -147,6 +148,7 @@
 		<hasInteractionCell>true</hasInteractionCell>
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
 	</TiberiumRim.TRThingDef>
+	-->
 	
 	<!--
 	<TiberiumRim.TRThingDef ParentName="RefineryBase_TR">
@@ -165,7 +167,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<uiIconPath>Buildings/GDI/Production/Refinery/Icon</uiIconPath>
@@ -252,7 +254,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<uiIconPath>Buildings/GDI/Production/PowerPlant/Icon</uiIconPath>

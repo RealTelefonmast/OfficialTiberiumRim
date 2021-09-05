@@ -13,7 +13,7 @@
 		<uiIconPath>Buildings/GDI/Misc/IonPC_Icon</uiIconPath>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<statBases>
@@ -67,7 +67,7 @@
 		<passability>PassThroughOnly</passability>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<building>
@@ -116,7 +116,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<statBases>
@@ -165,7 +165,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<comps>

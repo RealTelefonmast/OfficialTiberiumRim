@@ -28,7 +28,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<costList>			

@@ -6,19 +6,15 @@
 		<label>shrine</label>
 		<description>Nod's advanced research facility. The shrine of the brotherhood.</description>
 		<factionDesignation>Nod</factionDesignation>
-		<TRCategory>Misc</TRCategory>
+		<TRCategory>Research</TRCategory>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Misc/Shrine/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(5.5,6.875)</drawSize>
+			<drawSize>(4,5)</drawSize>
+			<drawOffset>(0,0,0.5)</drawOffset>
 		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>NODExperimental</li>
-			</tiberiumResearch>
-		</requisites>
-		<size>(5,4)</size>
+		<size>(4,4)</size>
 		<minifiedDef />
 		<thingCategories Inherit="false" />
 		<rotatable>false</rotatable>
@@ -35,13 +31,13 @@
 	    <canOverlapZones>false</canOverlapZones>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<statBases>
-			<MaxHitPoints>750</MaxHitPoints>
-			<WorkToBuild>2500</WorkToBuild>
-			<Flammability>0.5</Flammability>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>10000</WorkToBuild>
+			<Flammability>1</Flammability>
 		</statBases>
 		<costList>
-			<Nod_CarbonPlate>10</Nod_CarbonPlate>
-			<ComponentIndustrial>5</ComponentIndustrial>
+			<Nod_CarbonPlate>30</Nod_CarbonPlate>
+			<ComponentIndustrial>10</ComponentIndustrial>
 			<Gold>25</Gold>
 		</costList>
 		<comps>
@@ -52,6 +48,11 @@
 			<li Class="CompProperties_Flickable"/>
 		</comps>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 </Defs>

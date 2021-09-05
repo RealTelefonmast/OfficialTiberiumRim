@@ -14,7 +14,7 @@
 		</costList>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<uiIconPath>Buildings/GDI/Structure/Wall_GDI_Icon</uiIconPath>
@@ -39,7 +39,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<uiIconPath>Buildings/GDI/Structure/Pillbox_GDI_icon</uiIconPath>
@@ -90,7 +90,7 @@
 		</statBases>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<drawerType>MapMeshAndRealTime</drawerType>
@@ -146,7 +146,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<costList>
@@ -177,7 +177,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<uiIconPath>Buildings/GDI/Structure/AutoDoor_GDI_icon</uiIconPath>

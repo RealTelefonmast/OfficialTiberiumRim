@@ -12,7 +12,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<uiIconPath>Buildings/Nod/Misc/LaserPC_Icon</uiIconPath>
@@ -50,7 +50,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<statBases>
@@ -99,7 +99,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<comps>

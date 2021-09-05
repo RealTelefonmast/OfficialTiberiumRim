@@ -11,7 +11,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<costList>
@@ -34,7 +34,7 @@
 		<altitudeLayer>Building</altitudeLayer>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<statBases>
@@ -98,7 +98,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<costList>
@@ -128,7 +128,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental</li>
+				<li>NODExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<uiIconPath>Buildings/Nod/Structure/AD_Icon</uiIconPath>

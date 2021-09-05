@@ -28,20 +28,15 @@
 	    <canOverlapZones>false</canOverlapZones>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<statBases>
-			<MaxHitPoints>750</MaxHitPoints>
-			<WorkToBuild>2500</WorkToBuild>
-			<Flammability>0.5</Flammability>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>10000</WorkToBuild>
+			<Flammability>1</Flammability>
 		</statBases>
 		<costList>
-			<GDI_ReinforcedPlate>10</GDI_ReinforcedPlate>
-			<ComponentIndustrial>5</ComponentIndustrial>
+			<GDI_ReinforcedPlate>30</GDI_ReinforcedPlate>
+			<ComponentIndustrial>10</ComponentIndustrial>
 			<Gold>25</Gold>
 		</costList>
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIExperimental</li>
-			</tiberiumResearch>
-		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -62,6 +57,11 @@
 			</li>
 		</comps>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 </Defs>
