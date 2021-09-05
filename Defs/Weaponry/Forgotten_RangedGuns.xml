@@ -65,6 +65,11 @@
 			<li>RangedHeavy</li>
 			<li>ShortShots</li>
 		</weaponClasses>
+		<requisites>
+			<tiberiumResearch>
+				<li>ForgottenExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</ThingDef>
 	
 	<ThingDef ParentName="BaseMakeableGun_TR">
@@ -133,6 +138,11 @@
 			<li>RangedHeavy</li>
 			<li>ShortShots</li>
 		</weaponClasses>
+		<requisites>
+			<tiberiumResearch>
+				<li>ForgottenExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</ThingDef>
 
 </Defs>
