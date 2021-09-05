@@ -12,17 +12,17 @@
 		<costList>
 			<GDI_ReinforcedPlate>2</GDI_ReinforcedPlate>
 		</costList>
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 		<uiIconPath>Buildings/GDI/Structure/Wall_GDI_Icon</uiIconPath>
 		<statBases>
 			<MaxHitPoints>1000</MaxHitPoints>
 			<WorkToBuild>2000</WorkToBuild>
 			<Flammability>0</Flammability>
 		</statBases>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="WallBase_TR">
@@ -30,6 +30,7 @@
 		<label>pillbox</label>
 		<description>Cover from gunfire.</description>
 		<factionDesignation>GDI</factionDesignation>
+		<TRCategory>Defense</TRCategory>
 		<graphicData>
 			<texPath>Buildings/GDI/Structure/Pillbox_GDI</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -37,11 +38,6 @@
 				<li>65536</li>
 			</linkFlags>
 		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 		<uiIconPath>Buildings/GDI/Structure/Pillbox_GDI_icon</uiIconPath>
 		<passability>Impassable</passability>
 		<blockLight>false</blockLight>
@@ -71,7 +67,12 @@
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<constructEffect>ConstructDirt</constructEffect>
 		<repairEffect>ConstructDirt</repairEffect>
-		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>	
 	
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
@@ -88,11 +89,6 @@
 			<Mass>10</Mass>
 			<Beauty>25</Beauty>
 		</statBases>
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Structure/DoorFrame/DoorFrameGDI</texPath>
@@ -130,6 +126,11 @@
 		</building>
 		<rotatable>true</rotatable>
 		<clearBuildingArea>false</clearBuildingArea>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
@@ -144,11 +145,6 @@
 				<enabled>false</enabled>
 			</damageData>
 		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 		<costList>
 			<GDI_ReinforcedPlate>2</GDI_ReinforcedPlate>
 		</costList>
@@ -159,7 +155,12 @@
 			<MaxHitPoints>400</MaxHitPoints>
 			<Flammability>0.0</Flammability>
 		</statBases>
-		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 
 	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
@@ -175,11 +176,6 @@
 				<enabled>false</enabled>
 			</damageData>
 		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 		<uiIconPath>Buildings/GDI/Structure/AutoDoor_GDI_icon</uiIconPath>
 		<costList>
 			<GDI_ReinforcedPlate>2</GDI_ReinforcedPlate>
@@ -205,7 +201,12 @@
 			<MaxHitPoints>400</MaxHitPoints>
 			<Flammability>0.0</Flammability>
 		</statBases>
-		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>	
 	
 </Defs>

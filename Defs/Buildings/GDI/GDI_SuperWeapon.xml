@@ -26,11 +26,6 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(7,7)</drawSize>
 		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 		<costList>			
 			<ComponentIndustrial>12</ComponentIndustrial>
 		</costList>
@@ -78,6 +73,11 @@
 			<li>TiberiumRim.PlaceWorker_OnlyOutside</li>
 			<li>TiberiumRim.PlaceWorker_Once</li>
 		</placeWorkers>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
@@ -159,6 +159,11 @@
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
 		<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
@@ -221,6 +226,11 @@
 			</blueprintGraphicData>
 		</building>
 		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 </Defs>

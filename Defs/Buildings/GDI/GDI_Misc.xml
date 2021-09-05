@@ -1,43 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
-	<TiberiumRim.TRThingDef ParentName="PowerConduitBase_TR">
-		<defName>GDI_PowerConduit</defName>
-		<label>gdi power conduit</label>
-		<description>A set of electrical cables for moving power around. Can be placed under walls and other buildings. GDI's ion control makes it very durable.</description>
-		<factionDesignation>GDI</factionDesignation>
-		<TRCategory>Misc</TRCategory>
-		<graphicData>
-			<texPath>Buildings/GDI/Misc/IonPC</texPath>
-		</graphicData>
-		<uiIconPath>Buildings/GDI/Misc/IonPC_Icon</uiIconPath>
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
-		<statBases>
-			<MaxHitPoints>175</MaxHitPoints>
-			<WorkToBuild>100</WorkToBuild>
-			<Flammability>0</Flammability>
-			<Beauty>4</Beauty>
-		</statBases>
-		<costList>
-			<Steel>3</Steel>
-		</costList>
-		<comps>
-			<li Class="CompProperties_Glower">
-				<glowRadius>1</glowRadius>
-				<glowColor>(200,200,255)</glowColor>
-			</li>
-		</comps>
-		<building>
-			<blueprintGraphicData>
-				<texPath>Buildings/GDI/Misc/IonPC_Blueprint</texPath>
-			</blueprintGraphicData>
-		</building>
-	</TiberiumRim.TRThingDef>
-	
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>GDI_Grave</defName>
 		<label>honorable grave</label>
@@ -103,6 +66,92 @@
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
 	</TiberiumRim.TRThingDef>
 
+ 
+	<TiberiumRim.TRThingDef ParentName="WallLampBase">
+		<defName>GDIWallLight</defName>
+		<label>wall light</label>
+		<description>An electrical wall lamp that lights an area. People need light to move and work at full speed.</description>
+		<factionDesignation>GDI</factionDesignation>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Misc/Light/Wall/light</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1.5, 1.5)</drawSize>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_GlowerOffset">
+				<glowerDef>GlowSource_GDI_IonBlue</glowerDef>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/GDI/Misc/Light/Wall/overlay</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(1.5, 1.5)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>	
+		</comps>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="GlowSourceBase">
+		<defName>GlowSource_GDI_IonBlue</defName>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+		</comps>
+	</TiberiumRim.TRThingDef>
+
+	<!--not cool and no special-->
+	<!--
+	<TiberiumRim.TRThingDef ParentName="PowerConduitBase_TR">
+		<defName>GDI_PowerConduit</defName>
+		<label>gdi power conduit</label>
+		<description>A set of electrical cables for moving power around. Can be placed under walls and other buildings. GDI's ion control makes it very durable.</description>
+		<factionDesignation>GDI</factionDesignation>
+		<TRCategory>Misc</TRCategory>
+		<graphicData>
+			<texPath>Buildings/GDI/Misc/IonPC</texPath>
+		</graphicData>
+		<uiIconPath>Buildings/GDI/Misc/IonPC_Icon</uiIconPath>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+		<statBases>
+			<MaxHitPoints>175</MaxHitPoints>
+			<WorkToBuild>100</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Beauty>4</Beauty>
+		</statBases>
+		<costList>
+			<Steel>3</Steel>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+		</comps>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Buildings/GDI/Misc/IonPC_Blueprint</texPath>
+			</blueprintGraphicData>
+		</building>
+	</TiberiumRim.TRThingDef>
+	
 	<TiberiumRim.TRThingDef ParentName="LampBase_TR">
 		<defName>Light_GDI</defName>
 		<label>Ion Lamp</label>
@@ -150,52 +199,6 @@
 			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
-	</TiberiumRim.TRThingDef>
- 
-	<TiberiumRim.TRThingDef ParentName="WallLampBase">
-		<defName>GDIWallLight</defName>
-		<label>wall light</label>
-		<description>An electrical wall lamp that lights an area. People need light to move and work at full speed.</description>
-		<factionDesignation>GDI</factionDesignation>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<graphicData>
-			<texPath>Buildings/GDI/Misc/Light/Wall/light</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(1.5, 1.5)</drawSize>
-		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
-		<comps>
-			<li Class="TiberiumRim.CompProperties_GlowerOffset">
-				<glowerDef>GlowSource_GDI_IonBlue</glowerDef>
-			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
-				<overlays>
-					<li>
-						<data>
-							<texPath>Buildings/GDI/Misc/Light/Wall/overlay</texPath>
-							<graphicClass>Graphic_Multi</graphicClass>
-							<shaderType>MoteGlow</shaderType>
-							<drawSize>(1.5, 1.5)</drawSize>
-						</data>
-						<needsPower>true</needsPower>
-					</li>
-				</overlays>
-			</li>	
-		</comps>
-	</TiberiumRim.TRThingDef>
-	
-	<TiberiumRim.TRThingDef ParentName="GlowSourceBase">
-		<defName>GlowSource_GDI_IonBlue</defName>
-		<comps>
-			<li Class="CompProperties_Glower">
-				<glowRadius>10</glowRadius>
-				<glowColor>(200,200,255)</glowColor>
-			</li>
-		</comps>
-	</TiberiumRim.TRThingDef>
+	</TiberiumRim.TRThingDef>-->
 
 </Defs>

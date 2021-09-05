@@ -156,6 +156,11 @@
 		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<!---->
@@ -418,6 +423,11 @@
 			</li>
 		</damageMultipliers>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<!-- Sonic Emitter -->
@@ -558,9 +568,14 @@
 			<li>TiberiumRim.PlaceWorker_TurretGunTop</li>
 		</placeWorkers>
 		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef >
 	
-	<!-- Rig Station -->
+	<!-- Rig Station 
 	<TiberiumRim.TRThingDef ParentName="GDITurret">
 		<defName>GDI_BattleBase</defName>
 		<label>battle base</label>
@@ -716,7 +731,7 @@
 			<li>TiberiumRim.PlaceWorker_TurretGunTop</li>
 		</placeWorkers>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
-	</TiberiumRim.TRThingDef>
+	</TiberiumRim.TRThingDef>-->
 
 
 	<!--Test Stuff-->

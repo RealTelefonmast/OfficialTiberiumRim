@@ -8,20 +8,16 @@
 		<thingClass>TiberiumRim.Building_Temple</thingClass>
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Defense</TRCategory>
-		<size>(6,7)</size>
+		<size>(7,7)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Defense/Temple/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(7,8)</drawSize>
+			<drawOffset>(0,0,0.5)</drawOffset>
 		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>NODExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 		<uiIconPath>Buildings/Nod/Defense/Temple/Icon</uiIconPath>
-		<costList>			
+		<costList>
 			<ComponentIndustrial>12</ComponentIndustrial>
 		</costList>
 		<superWeapon>
@@ -109,8 +105,13 @@
 			<li>TiberiumRim.PlaceWorker_OnlyOutside</li>
 			<li>TiberiumRim.PlaceWorker_Once</li>
 		</placeWorkers>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
-  
+
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>Nod_TiberiumSuppressor</defName>
 		<label>Tiberium-Growth Suppressor</label>
@@ -129,11 +130,6 @@
 				<offset>(0,0,-0.1)</offset>
 			</shadowData>
 		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>NODExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 		<costList>
 			<Nod_CarbonPlate>30</Nod_CarbonPlate>
 			<Nod_LQTiberiumCore>3</Nod_LQTiberiumCore>
@@ -218,6 +214,12 @@
 		<rotatable>false</rotatable>
 		<canOverlapZones>false</canOverlapZones>
 		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>TiberiumSuppressionBasic</li>
+				<li>NODExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 </Defs>

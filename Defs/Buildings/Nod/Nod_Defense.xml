@@ -93,11 +93,6 @@
 			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
-		<requisites>
-			<tiberiumResearch>
-				<li>NODExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 		<drawOffscreen>true</drawOffscreen>
 		<passability>Impassable</passability>
 		<fillPercent>0.4</fillPercent>
@@ -111,6 +106,11 @@
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_OnlyOutside</li>
 		</placeWorkers>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 
 
@@ -480,6 +480,11 @@
 				</overlays>
 			</li>	
 		</comps>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	
@@ -498,11 +503,6 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1.25, 1.25)</drawSize>
 		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>NODExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<passability>Impassable</passability>
 		<blockLight>false</blockLight>
@@ -568,6 +568,11 @@
 		<constructEffect>ConstructDirt</constructEffect>
 		<repairEffect>ConstructDirt</repairEffect>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<ThingDef ParentName="BuildingBase_TR">

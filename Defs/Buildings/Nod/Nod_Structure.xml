@@ -9,11 +9,6 @@
 		<graphicData>
 			<texPath>Buildings/Nod/Structure/Wall</texPath>
 		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>NODExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 		<costList>
 			<Nod_CarbonPlate>2</Nod_CarbonPlate>
 		</costList>
@@ -23,6 +18,11 @@
 			<WorkToBuild>2000</WorkToBuild>
 			<Flammability>0</Flammability>
 		</statBases>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
@@ -32,11 +32,6 @@
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Decoration</TRCategory>
 		<altitudeLayer>Building</altitudeLayer>
-		<requisites>
-			<tiberiumResearch>
-				<li>NODExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 		<statBases>
 			<MaxHitPoints>150</MaxHitPoints>
 			<WorkToBuild>1000</WorkToBuild>
@@ -82,6 +77,11 @@
 		</building>
 		<rotatable>true</rotatable>
 		<clearBuildingArea>false</clearBuildingArea>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
@@ -96,11 +96,6 @@
 				<enabled>false</enabled>
 			</damageData>
 		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>NODExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 		<costList>
 			<Nod_CarbonPlate>2</Nod_CarbonPlate>
 		</costList>
@@ -111,7 +106,12 @@
 			<MaxHitPoints>400</MaxHitPoints>
 			<Flammability>0.0</Flammability>
 		</statBases>
-		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 
 	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
@@ -126,11 +126,6 @@
 				<enabled>false</enabled>
 			</damageData>
 		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>NODExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 		<uiIconPath>Buildings/Nod/Structure/AD_Icon</uiIconPath>
 		<costList>
 			<Nod_CarbonPlate>2</Nod_CarbonPlate>
@@ -156,7 +151,11 @@
 			<MaxHitPoints>400</MaxHitPoints>
 			<Flammability>0.0</Flammability>
 		</statBases>
-		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>	
-	
 </Defs>

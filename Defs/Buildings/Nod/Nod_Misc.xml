@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
+	<TiberiumRim.TRThingDef ParentName="WallLampBase">
+		<defName>NodWallLight</defName>
+		<label>wall light</label>
+		<description>An electrical wall lamp that lights an area. People need light to move and work at full speed.</description>
+		<factionDesignation>Nod</factionDesignation>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		 <graphicData>
+			<texPath>Buildings/Nod/Misc/Light/Wall/Base</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1.5, 1.5)</drawSize>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_GlowerOffset">
+				<glowerDef>GlowSource_Nod_Red</glowerDef>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Misc/Light/Wall/Glow</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(1.5, 1.5)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>	
+		</comps>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="GlowSourceBase">
+		<defName>GlowSource_Nod_Red</defName>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+		</comps>
+	</TiberiumRim.TRThingDef>
+
+	<!--not cool and no special-->
+	<!--
   	<TiberiumRim.TRThingDef ParentName="PowerConduitBase_TR">
 		<defName>Nod_PowerConduit</defName>
 		<label>nod power conduit</label>
@@ -85,51 +133,6 @@
 		</costList>
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
 	</TiberiumRim.TRThingDef>
- 	
-	<TiberiumRim.TRThingDef ParentName="WallLampBase">
-		<defName>NodWallLight</defName>
-		<label>wall light</label>
-		<description>An electrical wall lamp that lights an area. People need light to move and work at full speed.</description>
-		<factionDesignation>Nod</factionDesignation>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		 <graphicData>
-			<texPath>Buildings/Nod/Misc/Light/Wall/Base</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(1.5, 1.5)</drawSize>
-		</graphicData>
-		<requisites>
-			<tiberiumResearch>
-				<li>NODExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
-		<comps>
-			<li Class="TiberiumRim.CompProperties_GlowerOffset">
-				<glowerDef>GlowSource_Nod_Red</glowerDef>
-			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
-				<overlays>
-					<li>
-						<data>
-							<texPath>Buildings/Nod/Misc/Light/Wall/Glow</texPath>
-							<graphicClass>Graphic_Multi</graphicClass>
-							<shaderType>MoteGlow</shaderType>
-							<drawSize>(1.5, 1.5)</drawSize>
-						</data>
-						<needsPower>true</needsPower>
-					</li>
-				</overlays>
-			</li>	
-		</comps>
-	</TiberiumRim.TRThingDef>
-	
-	<TiberiumRim.TRThingDef ParentName="GlowSourceBase">
-		<defName>GlowSource_Nod_Red</defName>
-		<comps>
-			<li Class="CompProperties_Glower">
-				<glowRadius>10</glowRadius>
-				<glowColor>(255,150,150)</glowColor>
-			</li>
-		</comps>
-	</TiberiumRim.TRThingDef>
+	-->
 
 </Defs>
