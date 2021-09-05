@@ -340,6 +340,7 @@
     <Compile Include="Loading\TiberiumRimMod.cs" />
     <Compile Include="Loading\TiberiumRimPatches.cs" />
     <Compile Include="Loading\TiberiumSettings.cs" />
+    <Compile Include="Loading\VerbPatches.cs" />
     <Compile Include="MechanicalPawns\Building_MechStation.cs" />
     <Compile Include="MechanicalPawns\Designator_ZoneAdd_MechParking.cs" />
     <Compile Include="MechanicalPawns\HediffComp_ModuleColors.cs" />

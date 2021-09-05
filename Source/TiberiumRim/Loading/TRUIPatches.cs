@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TiberiumRim.Utilities
+namespace TiberiumRim
 {
-    class TRUIPatches
+    public static class TRUIPatches
     {
     }
 }

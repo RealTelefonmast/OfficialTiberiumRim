@@ -602,7 +602,7 @@ namespace TiberiumRim
         public static class DrawEquipmentAimingPatch
         {
             private static MethodInfo injection = AccessTools.Method(typeof(DrawEquipmentAimingPatch), nameof(RenderInjection));
-
+           
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
                 var instructionList = instructions.ToList();
@@ -1025,130 +1025,6 @@ namespace TiberiumRim
             {
                 bool TRRequisiteDone = __instance.products.All(t => (t.thingDef as TRThingDef)?.requisites?.FulFilled() ?? true);
                 __result = __result && TRRequisiteDone;
-            }
-        }
-
-        [HarmonyPatch(typeof(Thing))]
-        [HarmonyPatch("SpawnSetup")]
-        public static class SpawnSetupPatch
-        {
-            public static void Postfix(Thing __instance)
-            {
-                var Tiberium = __instance.Map.Tiberium();
-                //
-
-                //Register For DataBase
-                Tiberium.RegisterNewThing(__instance);
-
-                //Updates On Structure Spawn
-                if (__instance is Building building)
-                {
-                    //Radiation Logic
-                    var radiation = Tiberium.TiberiumAffecter.HediffGrid;
-                    if (radiation.IsInRadiationSourceRange(__instance.Position))
-                    {
-                        List<IRadiationSource> sources = radiation.RadiationSourcesAt(building.Position);
-                        foreach (IRadiationSource source in sources)
-                        {
-                            source.Notify_BuildingSpawned(building);
-                        }
-                    }
-
-                    if (!building.CanBeSeenOver())
-                    {
-                        var suppression = Tiberium.SuppressionInfo;
-                        if (suppression.IsInSuppressionCoverage(building.Position, out List<Comp_Suppression> sups))
-                        {
-                            suppression.MarkDirty(sups);
-                        }
-                    }
-
-                    if (building.def.IsEdifice())
-                    {
-                        foreach (var cell in __instance.OccupiedRect())
-                        {
-                            var tib = cell.GetTiberium(__instance.Map);
-                            tib?.Destroy();
-                        }
-                    }
-                }
-
-                //Research
-                TRUtils.ResearchTargetTable().RegisterNewTarget(__instance);
-                TRUtils.EventManager().CheckForEventStart(__instance);
-
-                Tiberium.RoomInfo.Notify_ThingSpawned(__instance);
-            }
-        }
-
-        [HarmonyPatch(typeof(Thing))]
-        [HarmonyPatch("DeSpawn")]
-        public static class DeSpawnPatch
-        {
-            private static IntVec3 instancePos;
-            private static Map instanceMap;
-            private static bool updateSuppressionGrid;
-            private static bool updateRadiationGrid;
-
-            //Radiation - On Despawn:   First Reset | Despawn | Set New
-
-            public static bool Prefix(Thing __instance)
-            {
-                instancePos = __instance.Position;
-                instanceMap = __instance.Map;
-
-                Building building = __instance as Building;
-                updateRadiationGrid = building != null;
-                updateSuppressionGrid = updateRadiationGrid && !building.CanBeSeenOver();
-
-                if (updateRadiationGrid)
-                {
-                    //Radiation Logic
-                    var radiation = building.Map.Tiberium().TiberiumAffecter.HediffGrid;
-                    if (radiation.IsInRadiationSourceRange(instancePos))
-                    {
-                        List<IRadiationSource> sources = radiation.RadiationSourcesAt(building.Position);
-                        foreach (IRadiationSource source in sources)
-                        {
-                            if (source.SourceThing == building || !source.SourceThing.Spawned) continue;
-                            source.Notify_BuildingDespawning(building);
-                        }
-                    }
-                }
-
-                //Research
-                TRUtils.ResearchTargetTable().DeregisterTarget(__instance);
-
-                //Register For DataBase
-                instanceMap.Tiberium().DeregisterThing(__instance);
-                return true;
-            }
-
-            public static void Postfix(Thing __instance)
-            {
-                if (updateSuppressionGrid)
-                {
-                    var suppression = instanceMap.Tiberium().SuppressionInfo;
-                    if (suppression.IsInSuppressionCoverage(instancePos, out List<Comp_Suppression> sups))
-                    {
-                        suppression.MarkDirty(sups);
-                    }
-                }
-
-                if (updateRadiationGrid)
-                {
-                    //Radiation Logic
-                    var radiation = instanceMap.Tiberium().TiberiumAffecter.HediffGrid;
-                    if (radiation.IsInRadiationSourceRange(instancePos))
-                    {
-                        List<IRadiationSource> sources = radiation.RadiationSourcesAt(instancePos);
-                        foreach (IRadiationSource source in sources)
-                        {
-                            if (source.SourceThing == __instance || !source.SourceThing.Spawned) continue;
-                            source.Notify_UpdateRadiation();
-                        }
-                    }
-                }
             }
         }
 

@@ -6,7 +6,7 @@ using Verse;
 namespace TiberiumRim
 {
     //This custom verb replaces and reworks most of the base Verb, often doing redundant things to avoid complicated specific patches.
-    public class Verb_TR : Verb_LaunchProjectile
+    public class Verb_TR : Verb
     {
         //Shot Index
         private int lastOffsetIndex = 0;
@@ -21,7 +21,7 @@ namespace TiberiumRim
 
         private ThingDef currentProjectile;
 
-        public override ThingDef Projectile
+        public virtual ThingDef Projectile
         {
             get
             {
@@ -33,6 +33,9 @@ namespace TiberiumRim
                 return currentProjectile ??= Props.defaultProjectile;
             }
         }
+
+        public virtual DamageDef DamageDef => IsBeam ? Props.beamProps.damageDef : Projectile.projectile.damageDef;
+
         public void SetProjectile(ThingDef projectile) => currentProjectile = projectile;
 
         public Vector3 DrawPos => castingGun?.DrawPos ?? caster.DrawPos;
@@ -122,7 +125,6 @@ namespace TiberiumRim
 
         private void Notify_SingleShot()
         {
-
             if (castingGun != null)
                 castingGun.Notify_FiredSingleProjectile();
             else
@@ -192,32 +194,35 @@ namespace TiberiumRim
             return flag;
         }
 
-
         public override bool Available()
         {
-            if (!base.Available())
-                return false;
+            if (!base.Available()) return false;
 
-            if(Props.powerConsumption > 0)
+            if (Props.powerConsumption > 0)
             {
 
             }
+
             if (Props.tiberiumCostPerBurst != null)
             {
                 return Props.tiberiumCostPerBurst.CanPayWith(TiberiumComp.TiberiumComp);
             }
-            if(Props.tiberiumCostPerShot != null)
+
+            if (Props.tiberiumCostPerShot != null)
             {
                 return Props.tiberiumCostPerShot.CanPayWith(TiberiumComp.TiberiumComp);
             }
+
             if (CasterIsPawn)
             {
                 Pawn casterPawn = CasterPawn;
-                if (casterPawn.Faction != Faction.OfPlayer && casterPawn.mindState.MeleeThreatStillThreat && casterPawn.mindState.meleeThreat.Position.AdjacentTo8WayOrInside(casterPawn.Position))
+                if (casterPawn.Faction != Faction.OfPlayer && casterPawn.mindState.MeleeThreatStillThreat &&
+                    casterPawn.mindState.meleeThreat.Position.AdjacentTo8WayOrInside(casterPawn.Position))
                 {
                     return false;
                 }
             }
+
             return IsBeam || Projectile != null;
         }
 
@@ -446,6 +451,7 @@ namespace TiberiumRim
         public VerbBurstMode mode = VerbBurstMode.Normal;
 
         //Functional
+        public bool isProjectile = true;
         public bool avoidFriendlyFire;
         public int shotIntervalTicks = 10;
         public ThingDef secondaryProjectile;
