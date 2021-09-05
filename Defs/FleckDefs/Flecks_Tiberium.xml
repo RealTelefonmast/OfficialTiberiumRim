@@ -74,6 +74,33 @@
 
 	<!-- EXPLOSIONS -->
 	
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>Mote_Smokeblack</defName>
+		<graphicData>
+			<texPath>Motes/Original/Smoke</texPath>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>1</fadeInTime>
+		<solidTime>1.5</solidTime>
+		<fadeOutTime>6.5</fadeOutTime>
+		<growthRate>0.4</growthRate>
+	</FleckDef>
+  
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>Mote_SmokeTR</defName>
+		<graphicData>
+			<texPath>Motes/Original/Smoke</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>1</fadeInTime>
+		<solidTime>1.5</solidTime>
+		<fadeOutTime>6.5</fadeOutTime>
+		<growthRate>0.4</growthRate>
+	</FleckDef>
+  
 	<FleckDef ParentName="FleckBase_TR">
 		<defName>Fleck_BlastSound</defName>
 		<graphicData>

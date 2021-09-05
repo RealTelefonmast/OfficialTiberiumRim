@@ -127,20 +127,8 @@
   </DamageDef>
 -->  
 	
-	<!--Original Fleck-->
-	
-  <FleckDef ParentName="FleckBase_Thrown">
-    <defName>Smoke</defName>
-    <graphicData>
-      <texPath>Motes/Original/Smoke</texPath>
-      <renderInstanced>true</renderInstanced>
-    </graphicData>
-    <altitudeLayer>MoteOverhead</altitudeLayer>
-    <fadeInTime>0.50</fadeInTime>
-    <solidTime>6</solidTime>
-    <fadeOutTime>3.2</fadeOutTime>
-    <growthRate>0.005</growthRate>
-  </FleckDef>
+	<!-- Flecks for original damagetypes-->
+
 	
   <FleckDef ParentName="FleckBase">
 		<defName>Mote_AdvFlame</defName>

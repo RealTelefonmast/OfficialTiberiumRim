@@ -192,7 +192,17 @@ Ticks before sound starts
 				<angle>0~45</angle>
 				<spawnLocType>OnSource</spawnLocType>
 			</li>
-
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Mote_Smokeblack</fleckDef>
+				<color>(0.1, 0.1, 0.1, 1)</color>
+				<burstCount>1~1</burstCount>
+				<scale>2~3</scale>
+				<rotation>-30~30</rotation>
+				<speed>0.2~0.5</speed>
+				<angle>30~40</angle>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
 		</children>
 	</EffecterDef>
 
@@ -209,6 +219,17 @@ Ticks before sound starts
 				<rotation>-45~45</rotation>
 				<speed>0</speed>
 				<angle>0~45</angle>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Mote_SmokeTR</fleckDef>
+				<color>(0.1, 0.6, 0.25, 0.6)</color>
+				<burstCount>1~1</burstCount>
+				<scale>2~3</scale>
+				<rotation>-30~30</rotation>
+				<speed>0.2~0.5</speed>
+				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
 			</li>
 		</children>
