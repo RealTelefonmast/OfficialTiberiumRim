@@ -7,11 +7,11 @@
 		<researchProjects>
 			<li>GreenSky</li>
 			<li>MineralAnalysis</li>
+			<li>TiberiumProtection</li>
 			<li>TiberiumRefining</li>
 			<li>TiberiumSuppressionBasic</li>
 			<li>TiberiumPower</li>
 			<li>TiberiumForaging</li>
-			<li>TiberiumProtection</li>
 			<li>TiberiumGasRefining</li>
 		</researchProjects>
 	</TiberiumRim.TResearchGroupDef>
@@ -200,6 +200,65 @@
 		<images>
 			<li>Story/MinerAnalysis/M2_3</li>
 		</images>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>TiberiumProtection</defName>
+		<label>Tiberium Protection</label>	
+		<researchType>tech research</researchType>
+		<description>After the discovery of toxicity from Tiberium crystals, there is a need for proper protection for our colony to wear. Without it, there's very little chance of a good outcome if exposed. It can end in emergency amputations or death. To avoid this, we can try and create suits that prevent this risk.</description>
+		<requisites>
+			<events>
+				<li>TiberiumToxemiaDiscovery</li>
+			</events>
+		</requisites>
+		<tasks>
+			<li>TiberiumProtection_T1</li>
+			<li>TiberiumProtection_T2</li>
+			<li>TiberiumProtection_T3</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumProtection_T1</defName>
+		<label>Hardening Plates</label>	
+		<description>As a first step towards making a protective suit, which we will call a jumpsuit from now on: there needs to be a full body piece similar to a diving suit to help ease discomfort from the next step. That step being that we need to create a material such as inlaid plates that can block radiation and toxicity. Dense materials such as lead have been long used for blocking radiation in particular, but wearing a lead jumpsuit is a bit primitive. Instead, and along with this challenge, the concept of working respirators build into a full-coverage helmet will be a must. It is a balancing act in inventing armour that both protects and has a reasonable weight.</description>
+		<descriptionShort>Research a protective material.</descriptionShort>
+		<workType>Crafting</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumCrafter</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>500</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumProtection_T2</defName>
+		<label>Comfort Layers</label>		
+		<description>The first layer seems to be the easy part. It may take some time to get right, but the jumpsuit will be worth the trouble for whoever ends up wearing this new gear. It won't provide any protection on its own but it can be worn underneath armour. When paired with the rest of the set it will soften the burden of wearing such hard materials.</description>
+		<descriptionShort>Provide a jumpsuit.</descriptionShort>
+		<creationTasks>
+			<thingsToCreate>
+				<Jumpsuit>1</Jumpsuit>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumProtection_T3</defName>
+		<label>Suit Up</label>
+		<description>Despite the paradoxical problem given by balancing mass and protection, there should be enough practice to attempt this feat. Once you have a jumpsuit ready, it's time to create a proper mask and the protective suit itself. These parts will all fit together on one person and it will be a revolutionary new way to avoid exposure.</description>		
+		<descriptionShort>Provide gear for a colonist.</descriptionShort>
+		<creationTasks>
+			<thingsToCreate>
+				<TiberiumSuitMask>1</TiberiumSuitMask>
+				<TiberiumSuit>1</TiberiumSuit>
+			</thingsToCreate>
+		</creationTasks>
 	</TiberiumRim.TResearchTaskDef>
 	
 	<!---->
@@ -473,64 +532,7 @@
 		</creationTasks>
 	</TiberiumRim.TResearchTaskDef>
 	
-	<!---->
-	<TiberiumRim.TResearchDef>
-		<defName>TiberiumProtection</defName>
-		<label>Tiberium Protection</label>	
-		<researchType>tech research</researchType>
-		<description>After the discovery of toxicity from Tiberium crystals, there is a need for proper protection for our colony to wear. Without it, there's very little chance of a good outcome if exposed. It can end in emergency amputations or death. To avoid this, we can try and create suits that prevent this risk.</description>
-		<requisites>
-			<events>
-				<li>TiberiumToxemiaDiscovery</li>
-			</events>
-		</requisites>
-		<tasks>
-			<li>TiberiumProtection_T1</li>
-			<li>TiberiumProtection_T2</li>
-			<li>TiberiumProtection_T3</li>
-		</tasks>
-	</TiberiumRim.TResearchDef>
-	
-	<TiberiumRim.TResearchTaskDef>
-		<defName>TiberiumProtection_T1</defName>
-		<label>Hardening Plates</label>	
-		<description>As a first step towards making a protective suit, which we will call a jumpsuit from now on: there needs to be a full body piece similar to a diving suit to help ease discomfort from the next step. That step being that we need to create a material such as inlaid plates that can block radiation and toxicity. Dense materials such as lead have been long used for blocking radiation in particular, but wearing a lead jumpsuit is a bit primitive. Instead, and along with this challenge, the concept of working respirators build into a full-coverage helmet will be a must. It is a balancing act in inventing armour that both protects and has a reasonable weight.</description>
-		<descriptionShort>Research a protective material.</descriptionShort>
-		<workType>Crafting</workType>
-		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
-		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
-		<taskTarget>
-			<targetDefs>
-				<li>TiberiumCrafter</li>
-			</targetDefs>
-		</taskTarget>
-		<workAmount>500</workAmount>
-	</TiberiumRim.TResearchTaskDef>
-	
-	<TiberiumRim.TResearchTaskDef>
-		<defName>TiberiumProtection_T2</defName>
-		<label>Comfort Layers</label>		
-		<description>The first layer seems to be the easy part. It may take some time to get right, but the jumpsuit will be worth the trouble for whoever ends up wearing this new gear. It won't provide any protection on its own but it can be worn underneath armour. When paired with the rest of the set it will soften the burden of wearing such hard materials.</description>
-		<descriptionShort>Provide a jumpsuit.</descriptionShort>
-		<creationTasks>
-			<thingsToCreate>
-				<Jumpsuit>1</Jumpsuit>
-			</thingsToCreate>
-		</creationTasks>
-	</TiberiumRim.TResearchTaskDef>
-	
-	<TiberiumRim.TResearchTaskDef>
-		<defName>TiberiumProtection_T3</defName>
-		<label>Suit Up</label>
-		<description>Despite the paradoxical problem given by balancing mass and protection, there should be enough practice to attempt this feat. Once you have a jumpsuit ready, it's time to create a proper mask and the protective suit itself. These parts will all fit together on one person and it will be a revolutionary new way to avoid exposure.</description>		
-		<descriptionShort>Provide gear for a colonist.</descriptionShort>
-		<creationTasks>
-			<thingsToCreate>
-				<TiberiumSuitMask>1</TiberiumSuitMask>
-				<TiberiumSuit>1</TiberiumSuit>
-			</thingsToCreate>
-		</creationTasks>
-	</TiberiumRim.TResearchTaskDef>
+
 	
 	<!---->
 	<TiberiumRim.TResearchDef>
