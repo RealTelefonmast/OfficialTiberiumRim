@@ -170,27 +170,29 @@ Ticks before sound starts
 		<children>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>Mote_AdvExplosion1</fleckDef>
-				<color>(1, 0.1, 0.1, 1)</color>
+				<fleckDef>Mote_AdvFlame2</fleckDef>
+				<color>(1, 1, 0.8, 1)</color>
 				<burstCount>1~1</burstCount>
 				<scale>0.1~0.15</scale>
-				<positionRadius>0.5</positionRadius>
+				<positionRadius>0.75</positionRadius>
 				<rotation>-45~45</rotation>
-				<speed>0</speed>
+				<speed>-0.1~0.2</speed>
 				<angle>0~45</angle>
 				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~25</rotationRate>				
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
 				<fleckDef>Mote_AdvFlame</fleckDef>
-				<color>(1, 1, 0.1, 0.35)</color>
+				<color>(1, 0.9, 0.1, 0.25)</color>
 				<burstCount>1~1</burstCount>
 				<scale>0.05~0.1</scale>
-				<positionRadius>0.5</positionRadius>
+				<positionRadius>0.25</positionRadius>
 				<rotation>-45~45</rotation>
-				<speed>0</speed>
+				<speed>-0.1~0.2</speed>
 				<angle>0~45</angle>
 				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>50~100</rotationRate>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
@@ -199,9 +201,10 @@ Ticks before sound starts
 				<burstCount>1~1</burstCount>
 				<scale>2~3</scale>
 				<rotation>-30~30</rotation>
-				<speed>0.2~0.5</speed>
+				<speed>-0.2~0.5</speed>
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
 			</li>
 		</children>
 	</EffecterDef>
@@ -217,9 +220,10 @@ Ticks before sound starts
 				<scale>0.75~1.1</scale>
 				<positionRadius>1.25</positionRadius>
 				<rotation>-45~45</rotation>
-				<speed>0</speed>
+				<speed>-0.1~0.2</speed>
 				<angle>0~45</angle>
 				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
@@ -228,9 +232,10 @@ Ticks before sound starts
 				<burstCount>1~1</burstCount>
 				<scale>2~3</scale>
 				<rotation>-30~30</rotation>
-				<speed>0.2~0.5</speed>
+				<speed>-0.2~0.5</speed>
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
 			</li>
 		</children>
 	</EffecterDef>
