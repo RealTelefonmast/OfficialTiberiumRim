@@ -299,21 +299,29 @@
 			<AccuracyShort>0.5</AccuracyShort>
 			<AccuracyMedium>0.6</AccuracyMedium>
 			<AccuracyLong>0.6</AccuracyLong>
-			<RangedWeapon_Cooldown>2.75</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
+					<damageDef>TRRailgun</damageDef>
+					<damageBase>55</damageBase>
+					<stoppingPower>0.5</stoppingPower>
+					<armorPenetration>0.5</armorPenetration>
 					<beamTexturePath>Items/Weapons/Projectile/Bullet_RailshotHeavy</beamTexturePath>
+					<fadeInTime>0.05</fadeInTime>
+					<solidTime>0.25</solidTime>
+					<fadeOutTime>0.7</fadeOutTime>
+					<impactEffecter>StrongRailgunHit</impactEffecter>
 				</beamProps>
 				<originOffsets>	
 					<li>(0.5,-1,0.75)</li>
 					<li>(-0.5,-1,0.75)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
-				<warmupTime>1.75</warmupTime>
-				<range>24.9</range>
+				<warmupTime>3</warmupTime>
+				<range>44.9</range>
 				<minRange>2.5</minRange>
 				<burstShotCount>2</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
@@ -349,9 +357,17 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
+					<damageDef>TRShockWave</damageDef>
+					<damageBase>5</damageBase>
+					<stoppingPower>0.4</stoppingPower>
+					<armorPenetration>0.4</armorPenetration>
 					<beamTexturePath>Items/Weapons/Projectile/Bullet_Disruptorshot</beamTexturePath>
+					<fadeInTime>0.05</fadeInTime>
+					<solidTime>0.25</solidTime>
+					<fadeOutTime>0.7</fadeOutTime>
+					<impactEffecter>SonicHit</impactEffecter>
 				</beamProps>
-				<originOffsets>	
+				<originOffsets>
 					<li>(0.6,-1,-0.22)</li>
 					<li>(-0.6,-1,-0.22)</li>
 					<li>(0.3,-1.25,-0.4)</li>
@@ -362,7 +378,7 @@
 				<warmupTime>3.2</warmupTime>
 				<range>14.9</range>
 				<minRange>2.5</minRange>
-				<burstShotCount>6</burstShotCount>
+				<burstShotCount>10</burstShotCount>
 				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
 				<soundAiming>OrbitalTargeter_Aiming</soundAiming>
 				<soundCast>OrbitalTargeter_Fire</soundCast>

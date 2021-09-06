@@ -136,7 +136,7 @@
 				<consumeFuelPerShot>2</consumeFuelPerShot>
 			</li>
 		</verbs>
-		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 	</ThingDef>
 	
 	<ThingDef ParentName="BaseWeapon_TR">
@@ -156,7 +156,7 @@
 			<AccuracyShort>1</AccuracyShort>
 			<AccuracyMedium>1</AccuracyMedium>
 			<AccuracyLong>1</AccuracyLong>
-			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
 			<DeteriorationRate>0</DeteriorationRate>
 			<Mass>50</Mass>
 			<Flammability>0</Flammability>
@@ -168,24 +168,32 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
+					<damageDef>TRRailgun</damageDef>
+					<damageBase>55</damageBase>
+					<stoppingPower>0.5</stoppingPower>
+					<armorPenetration>0.5</armorPenetration>
 					<beamTexturePath>Items/Weapons/Projectile/Bullet_RailshotHeavy</beamTexturePath>
+					<fadeInTime>0.05</fadeInTime>
+					<solidTime>0.25</solidTime>
+					<fadeOutTime>0.7</fadeOutTime>
+					<impactEffecter>StrongRailgunHit</impactEffecter>
 				</beamProps>
-				<originOffsets>	
+				<originOffsets>
 					<li>(0,0,0)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<requireLineOfSight>true</requireLineOfSight>
 				<warmupTime>2.5</warmupTime>
-				<range>29.9</range>
+				<range>44.9</range>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<soundCast>Shot_GDI_RailgunHeavy</soundCast>
 				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
-				<muzzleFlashScale>15</muzzleFlashScale>
+				<muzzleFlashScale>12</muzzleFlashScale>
 				<consumeFuelPerShot>2</consumeFuelPerShot>
 			</li>
 		</verbs>
-		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
 	</ThingDef>
 	
 	<ThingDef ParentName="BaseWeapon_TR">

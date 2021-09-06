@@ -218,7 +218,7 @@
 					<fadeOutTime>0.6</fadeOutTime>
 					<impactEffecter>RailgunHit</impactEffecter>
 				</beamProps>
-				<originOffsets>	
+				<originOffsets>
 					<li>(0, 0, -0.1)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
