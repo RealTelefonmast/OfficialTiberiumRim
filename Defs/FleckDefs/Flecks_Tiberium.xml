@@ -208,6 +208,51 @@
 		<growthRate>3.5</growthRate>
 	</FleckDef>
 	
+	<!-- beamtargets -->
+  <FleckDef ParentName="FleckBase">
+		<defName>Mote_BeamtargetRS</defName>
+		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
+		<graphicData>
+			<texPath>Motes/targetRail</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.4</solidTime>
+		<fadeOutTime>0.5</fadeOutTime>
+		<growthRate>2</growthRate>
+	</FleckDef>
+	
+  <FleckDef ParentName="FleckBase">
+		<defName>Mote_BeamtargetLS</defName>
+		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
+		<graphicData>
+			<texPath>Motes/TargetBeam</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.3</solidTime>
+		<fadeOutTime>0.25</fadeOutTime>
+		<growthRate>3</growthRate>
+	</FleckDef>
+	
+  <FleckDef ParentName="FleckBase">
+		<defName>Mote_BeamtargetLB</defName>
+		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
+		<graphicData>
+			<texPath>Motes/TargetBeam</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+			<fadeInTime>0</fadeInTime>
+			<solidTime>0.75</solidTime>
+			<fadeOutTime>0.75</fadeOutTime>
+		<growthRate>1.4</growthRate>
+	</FleckDef>
 
 	
 	<!--

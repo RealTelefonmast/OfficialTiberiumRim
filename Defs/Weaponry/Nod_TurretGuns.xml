@@ -19,7 +19,7 @@
 			<AccuracyShort>1</AccuracyShort>
 			<AccuracyMedium>1</AccuracyMedium>
 			<AccuracyLong>1</AccuracyLong>
-			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
 			<DeteriorationRate>0</DeteriorationRate>
 			<Mass>50</Mass>
 			<Flammability>0</Flammability>
@@ -33,12 +33,19 @@
 				<beamProps>
 					<damageDef>TRLaser</damageDef>
 					<damageBase>100</damageBase>
+					<stoppingPower>1</stoppingPower>
+					<armorPenetration>1</armorPenetration>
 					<beamTexturePath>Items/Weapons/Projectile/Bullet_ObeliskBeam</beamTexturePath>
-					
-					<fadeInTime>0.25</fadeInTime>
+					<fadeInTime>0.05</fadeInTime>
 					<solidTime>0.25</solidTime>
-					<fadeOutTime>0.85</fadeOutTime>
+					<fadeOutTime>1</fadeOutTime>
 					<impactEffecter>StrongBeamHit</impactEffecter>
+					<impactFilth>
+						<filths>
+							<li>Filth_Ash, 1</li>
+						</filths>
+						<spreadRadius>1</spreadRadius>
+					</impactFilth>
 					<glow>
 						<glowMote>ObeliskGlow</glowMote>
 						<scale>3.5</scale>
@@ -46,14 +53,14 @@
 						<rotationRate>0</rotationRate>
 					</glow>
 				</beamProps>
-				<originOffsets>	
-					<li>(0,0,4.5)</li>
+				<originOffsets>
+					<li>(0,0,0)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<requireLineOfSight>false</requireLineOfSight>
 				<warmupTime>3.5</warmupTime>
 				<minRange>2.9</minRange>
-				<range>45</range>
+				<range>44.9</range>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<chargeSound>Obelisk_Chargup</chargeSound>

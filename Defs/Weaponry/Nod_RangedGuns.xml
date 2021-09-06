@@ -223,20 +223,20 @@
 					<armorPenetration>0.25</armorPenetration>
 					<beamTexturePath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam</beamTexturePath>
 					<fadeInTime>0.05</fadeInTime>
-					<solidTime>0</solidTime>
+					<solidTime>0.05</solidTime>
 					<fadeOutTime>0.25</fadeOutTime>
 					<impactEffecter>BeamHit</impactEffecter>
 					<impactFilth>
 						<filths>
-							<li>Filth_Ash, 0.5</li>
+							<li>Filth_Ash, 0.2</li>
 						</filths>
 						<spreadRadius>1</spreadRadius>
 					</impactFilth>
 				</beamProps>
 				<originOffsets>
-					<li>(-0.05, 0, -0.1)</li>
-					<li>(0, 0, -0.1)</li>
-					<li>(0.05, 0, -0.1)</li>
+					<li>(0.05, 0, -0.45)</li>
+					<li>(0, 0, -0.45)</li>
+					<li>(-0.05, 0, -0.45)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>1.5</warmupTime>
@@ -318,20 +318,20 @@
 					<armorPenetration>0.5</armorPenetration>
 					<beamTexturePath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam</beamTexturePath>
 					<fadeInTime>0.05</fadeInTime>
-					<solidTime>0</solidTime>
+					<solidTime>0.05</solidTime>
 					<fadeOutTime>0.3</fadeOutTime>
 					<impactEffecter>BeamHit</impactEffecter>
 					<impactFilth>
 						<filths>
-							<li>Filth_Ash, 0.5</li>
+							<li>Filth_Ash, 0.2</li>
 						</filths>
 						<spreadRadius>1</spreadRadius>
 					</impactFilth>
 				</beamProps>
 				<originOffsets>
-					<li>(-0.05, 0, -0.1)</li>
-					<li>(0, 0, -0.1)</li>
-					<li>(0.05, 0, -0.1)</li>
+					<li>(0.05, 0, -0.4)</li>
+					<li>(0, 0, -0.4)</li>
+					<li>(-0.05, 0, -0.4)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>1.5</warmupTime>
@@ -423,7 +423,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<originOffsets>
-					<li>(0, 0, 1)</li>
+					<li>(0, 0, 1.5)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>				
@@ -519,7 +519,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<originOffsets>
-					<li>(0, 0, 1)</li>
+					<li>(0, 0, 1.5)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_TiberiumGas</defaultProjectile>
@@ -605,8 +605,8 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<originOffsets>
-					<li>(-0.2, 0, 1)</li>
-					<li>(0.2, 0, 1)</li>
+					<li>(-0.2, 0, 1.5)</li>
+					<li>(0.2, 0, 1.5)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_NodRocket</defaultProjectile>

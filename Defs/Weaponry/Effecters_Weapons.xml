@@ -70,24 +70,36 @@ Ticks before sound starts
 		<children>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>Smoke</fleckDef>
+				<fleckDef>Mote_BeamtargetLB</fleckDef>
+				<color>(1, 0.5, 0.5, 1)</color>
 				<burstCount>1~1</burstCount>
-				<scale>2~3</scale>
-				<rotation>-30~30</rotation>
-				<speed>0.1~0.25</speed>
-				<angle>30~40</angle>
+				<scale>1.5</scale>
+				<speed>0</speed>
 				<spawnLocType>OnSource</spawnLocType>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>SubMote_AdvParticle</fleckDef>
-				<scale>0.8~1.2</scale>
-				<rotation>0~0</rotation>
-				<positionRadius>0.8</positionRadius>
-				<rotationRate>45~65</rotationRate>
-				<speed>1.2</speed>
-				<angle>35~45</angle>
+				<fleckDef>Mote_AdvFlame</fleckDef>
+				<color>(1, 0.5, 0.5, 0.35)</color>
+				<burstCount>1</burstCount>
+				<scale>0.1</scale>
+				<rotation>-45~45</rotation>
+				<speed>0.2</speed>
+				<angle>0~45</angle>
 				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>50~100</rotationRate>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Mote_Smokeblack</fleckDef>
+				<color>(0.1, 0.1, 0.1, 1)</color>
+				<burstCount>3~5</burstCount>
+				<scale>2~3</scale>
+				<rotation>-30~30</rotation>
+				<speed>-0.05~0.3</speed>
+				<angle>30~40</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
 			</li>
 		</children>
 	</EffecterDef>
@@ -97,24 +109,24 @@ Ticks before sound starts
 		<children>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>Smoke</fleckDef>
+				<fleckDef>Mote_BeamtargetLS</fleckDef>
+				<color>(1, 0.5, 0.5, 1)</color>
 				<burstCount>1~1</burstCount>
-				<scale>2~3</scale>
-				<rotation>-30~30</rotation>
-				<speed>0.1~0.25</speed>
-				<angle>30~40</angle>
+				<scale>0.5~0.6</scale>
+				<speed>0</speed>
 				<spawnLocType>OnSource</spawnLocType>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>SubMote_AdvParticle</fleckDef>
-				<scale>2~3</scale>
-				<rotation>0~0</rotation>
-				<positionRadius>0.8</positionRadius>
-				<rotationRate>45~65</rotationRate>
-				<speed>1.2</speed>
-				<angle>35~45</angle>
+				<fleckDef>Mote_Smokeblack</fleckDef>
+				<color>(0.1, 0.1, 0.1, 1)</color>
+				<burstCount>1~2</burstCount>
+				<scale>1~2</scale>
+				<rotation>-30~30</rotation>
+				<speed>-0.05~0.3</speed>
+				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
 			</li>
 		</children>
 	</EffecterDef>
@@ -124,25 +136,24 @@ Ticks before sound starts
 		<children>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>Smoke</fleckDef>
+				<fleckDef>Mote_BeamtargetRS</fleckDef>
+				<color>(0.8, 0.8, 1, 1)</color>
 				<burstCount>1~1</burstCount>
-				<scale>2~3</scale>
-				<rotation>-30~30</rotation>
-				<speed>0.1~0.25</speed>
-				<angle>30~40</angle>
+				<scale>0.5~0.6</scale>
+				<speed>0</speed>
 				<spawnLocType>OnSource</spawnLocType>
-				<soundDef>Explosion_Smoke</soundDef>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>SubMote_AdvParticle</fleckDef>
-				<scale>2~3</scale>
-				<rotation>0~0</rotation>
-				<positionRadius>0.8</positionRadius>
-				<rotationRate>45~65</rotationRate>
-				<speed>1.2</speed>
-				<angle>35~45</angle>
+				<fleckDef>Smoke</fleckDef>
+				<color>(1, 1, 1, 1)</color>
+				<burstCount>1~2</burstCount>
+				<scale>1~2</scale>
+				<rotation>-30~30</rotation>
+				<speed>-0.05~0.3</speed>
+				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
 			</li>
 		</children>
 	</EffecterDef>
@@ -176,7 +187,7 @@ Ticks before sound starts
 				<scale>0.1~0.15</scale>
 				<positionRadius>0.75</positionRadius>
 				<rotation>-45~45</rotation>
-				<speed>-0.1~0.2</speed>
+				<speed>-0.05~0.2</speed>
 				<angle>0~45</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>0~25</rotationRate>				
@@ -185,11 +196,11 @@ Ticks before sound starts
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
 				<fleckDef>Mote_AdvFlame</fleckDef>
 				<color>(1, 0.9, 0.1, 0.25)</color>
-				<burstCount>1~1</burstCount>
+				<burstCount>0~1</burstCount>
 				<scale>0.05~0.1</scale>
 				<positionRadius>0.25</positionRadius>
 				<rotation>-45~45</rotation>
-				<speed>-0.1~0.2</speed>
+				<speed>-0.05~0.2</speed>
 				<angle>0~45</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>50~100</rotationRate>
@@ -198,10 +209,11 @@ Ticks before sound starts
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
 				<fleckDef>Mote_Smokeblack</fleckDef>
 				<color>(0.1, 0.1, 0.1, 1)</color>
-				<burstCount>1~1</burstCount>
+				<burstCount>1~3</burstCount>
+				<ticksBetweenMotes>50</ticksBetweenMotes>
 				<scale>2~3</scale>
 				<rotation>-30~30</rotation>
-				<speed>-0.2~0.5</speed>
+				<speed>-0.05~0.5</speed>
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>0~50</rotationRate>
@@ -220,7 +232,7 @@ Ticks before sound starts
 				<scale>0.75~1.1</scale>
 				<positionRadius>1.25</positionRadius>
 				<rotation>-45~45</rotation>
-				<speed>-0.1~0.2</speed>
+				<speed>-0.05~0.2</speed>
 				<angle>0~45</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>0~50</rotationRate>
@@ -229,10 +241,11 @@ Ticks before sound starts
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
 				<fleckDef>Mote_SmokeTR</fleckDef>
 				<color>(0.1, 0.6, 0.25, 0.6)</color>
-				<burstCount>1~1</burstCount>
+				<burstCount>1~3</burstCount>
+				<ticksBetweenMotes>50</ticksBetweenMotes>
 				<scale>2~3</scale>
 				<rotation>-30~30</rotation>
-				<speed>-0.2~0.5</speed>
+				<speed>-0.05~0.5</speed>
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>0~50</rotationRate>
