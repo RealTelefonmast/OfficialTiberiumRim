@@ -86,6 +86,8 @@
 		<armorCategory>Blunt</armorCategory>
 		<minDamageToFragment>5</minDamageToFragment>
 		<defaultDamage>5</defaultDamage>
+		<defaultStoppingPower>0.25</defaultStoppingPower>
+		<buildingDamageFactor>2</buildingDamageFactor>
 		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
 		<explosionCellFleck>Fleck_BlastSound</explosionCellFleck>
 		<explosionInteriorFleck>SubMote_AdvParticle</explosionInteriorFleck>
@@ -104,8 +106,8 @@
 		<armorCategory>Blunt</armorCategory>
 		<minDamageToFragment>1</minDamageToFragment>
 		<defaultDamage>1</defaultDamage>
-		<defaultStoppingPower>5</defaultStoppingPower>
-		<buildingDamageFactor>20</buildingDamageFactor>
+		<defaultStoppingPower>0.25</defaultStoppingPower>
+		<buildingDamageFactor>10</buildingDamageFactor>
 		<plantDamageFactor>5</plantDamageFactor>
 		<explosionCellFleck>Fleck_BlastWave</explosionCellFleck>
 		<explosionInteriorFleck>SubMote_AdvParticle</explosionInteriorFleck>

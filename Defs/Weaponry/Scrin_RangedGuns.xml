@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef ParentName="BaseGun">
+	<TiberiumRim.TRThingDef ParentName="BaseGun">
 		<defName>Scrin_ShockDiscLauncher</defName>
 		<label>shock disc launcher</label>
 		<description>shock disc launcher</description>
@@ -42,9 +42,9 @@
 				<muzzleFlashScale>14</muzzleFlashScale>
 			</li>
 		</verbs>
-	</ThingDef>	
+	</TiberiumRim.TRThingDef>	
 	
-	<ThingDef ParentName="BaseGun">
+	<TiberiumRim.TRThingDef ParentName="BaseGun">
 		<defName>Scrin_Disint</defName>
 		<label>disintegrator head</label>
 		<description>disintegrator head</description>
@@ -72,15 +72,23 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
+					<damageDef>TRLaser</damageDef>
+					<damageBase>12</damageBase>
+					<stoppingPower>0.1</stoppingPower>
+					<armorPenetration>0.1</armorPenetration>
 					<beamTexturePath>Items/Weapons/Projectile/Bullet_BeamScrin</beamTexturePath>
+					<fadeInTime>0.05</fadeInTime>
+					<solidTime>0.05</solidTime>
+					<fadeOutTime>0.2</fadeOutTime>
+					<impactEffecter>ScrinBeamHit</impactEffecter>
 				</beamProps>
 				<originOffsets>	
-					<li>(0, 0, 1)</li>
+					<li>(0, 0, -0.5)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>0.5</warmupTime>
-				<range>4.9</range>
-				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<range>5.9</range>
+				<ticksBetweenBurstShots>3</ticksBetweenBurstShots>
 				<burstShotCount>5</burstShotCount>
 				<soundCast>Shot_Scrin_BeamSml</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
@@ -88,9 +96,9 @@
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
 			</li>
 		</verbs>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
-	<ThingDef ParentName="BaseGun">
+	<TiberiumRim.TRThingDef ParentName="BaseGun">
 		<defName>Scrin_MechapedeLance</defName>
 		<label>swarm charge cannon</label>
 		<description>A huge alien laser weapon.</description>
@@ -103,11 +111,11 @@
 			<MarketValue>10</MarketValue>
 			<MaxHitPoints>250</MaxHitPoints>
 			<Mass>50</Mass>
-			<AccuracyTouch>0.15</AccuracyTouch>
+			<AccuracyTouch>0.25</AccuracyTouch>
 			<AccuracyShort>0.55</AccuracyShort>
 			<AccuracyMedium>0.65</AccuracyMedium>
 			<AccuracyLong>0.75</AccuracyLong>
-			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
 		</statBases>
 		<tradeability>None</tradeability>
 		<techLevel>Spacer</techLevel>
@@ -119,7 +127,15 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
+					<damageDef>TRLaser</damageDef>
+					<damageBase>18</damageBase>
+					<stoppingPower>0.2</stoppingPower>
+					<armorPenetration>0.2</armorPenetration>
 					<beamTexturePath>Items/Weapons/Projectile/Bullet_BeamScrinMiddle</beamTexturePath>
+					<fadeInTime>0.05</fadeInTime>
+					<solidTime>0.05</solidTime>
+					<fadeOutTime>0.5</fadeOutTime>
+					<impactEffecter>StrongScrinBeamHit</impactEffecter>
 				</beamProps>
 				<originOffsets>	
 					<li>(0.45,-1,-0.1)</li>
@@ -132,7 +148,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>2.5</warmupTime>
 				<range>19.9</range>
-				<ticksBetweenBurstShots>25</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>20</ticksBetweenBurstShots>
 				<burstShotCount>6</burstShotCount>
 				<soundCast>Shot_Scrin_Devourer</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
@@ -140,10 +156,10 @@
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
 			</li>
 		</verbs>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="BaseGunWithQuality">
-		<defName>Scrin_ShockLanceLauncher</defName>
+	<TiberiumRim.TRThingDef ParentName="BaseGunWithQuality">
+		<defName>Scrin_ShockLance</defName>
 		<label>scrin charge cannon</label>
 		<description>Almost fragmented alien weapon. But performance is extremmly excellent.
 \nThis weapon has an onboard persona that can bond to only a single person. The wielder and intelligent weapon can synchronize their reflexes and attack with frightening speed, accuracy, and creativity. Once bonded to a wielder, the weapon's persona will refuse to be wielded by anyone else.</description>
@@ -156,7 +172,7 @@
 		<meleeHitSound>MeleeHit_BladelinkMonoSword</meleeHitSound>
 		<statBases>
 			<MarketValue>5000</MarketValue>
-			<MaxHitPoints>10</MaxHitPoints>
+			<MaxHitPoints>25</MaxHitPoints>
 			<Mass>5</Mass>
 			<AccuracyTouch>0.5</AccuracyTouch>
 			<AccuracyShort>0.8</AccuracyShort>
@@ -173,27 +189,27 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
-					<damageDef>TRRailgun</damageDef>
+					<damageDef>TRLaser</damageDef>
 					<damageBase>45</damageBase>
 					<stoppingPower>0.5</stoppingPower>
 					<armorPenetration>0.5</armorPenetration>
 					<beamTexturePath>Items/Weapons/Projectile/Bullet_BeamScrinBig</beamTexturePath>
 					<fadeInTime>0.05</fadeInTime>
-					<solidTime>0</solidTime>
-					<fadeOutTime>1</fadeOutTime>
-					<impactEffecter>ScrinBeamHit</impactEffecter>
+					<solidTime>0.1</solidTime>
+					<fadeOutTime>0.6</fadeOutTime>
+					<impactEffecter>StrongScrinBeamHit</impactEffecter>
 				</beamProps>
 				<originOffsets>	
 					<li>(0, 0, -0.1)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>3</warmupTime>
-				<range>54.9</range>
+				<range>49.9</range>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<burstShotCount>1</burstShotCount>
 				<soundCast>Shot_Scrin_BeamMid</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
-				<muzzleFlashScale>30</muzzleFlashScale>
+				<muzzleFlashScale>10</muzzleFlashScale>
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
 			</li>
 		</verbs>
@@ -222,6 +238,6 @@
 			<li>RangedHeavy</li>
 			<li>LongShots</li>
 		</weaponClasses>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
 </Defs>

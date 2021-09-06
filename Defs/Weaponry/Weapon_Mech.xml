@@ -11,9 +11,9 @@
 			<Mass>500</Mass>
 		</statBases>
 		<tickerType>Normal</tickerType>
-	</ThingDef>	
+	</ThingDef>
 	
-	<ThingDef ParentName="MechFactionGun">
+	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
 		<defName>Nod_AvatarLaser</defName>
 		<label>Avatar Laser</label>
 		<graphicData>
@@ -33,19 +33,27 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
+					<damageDef>TRLaser</damageDef>
+					<damageBase>35</damageBase>
+					<stoppingPower>0.2</stoppingPower>
+					<armorPenetration>0.5</armorPenetration>
 					<beamTexturePath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam_Heavy</beamTexturePath>
+					<fadeInTime>0.05</fadeInTime>
+					<solidTime>0.05</solidTime>
+					<fadeOutTime>0.35</fadeOutTime>
+					<impactEffecter>BeamHit</impactEffecter>
 				</beamProps>
-				<originOffsets>	
-					<li>(0,-1,0.25)</li>
-					<li>(0,-1,0.25)</li>
-					<li>(0,-1,0.25)</li>
+				<originOffsets>
+					<li>(0.15, 0, 0)</li>
+					<li>(0, 0, 0)</li>
+					<li>(-0.15, 0, 0)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>2</warmupTime>
-				<range>19.9</range>
+				<range>29.9</range>
 				<minRange>3.5</minRange>
 				<burstShotCount>3</burstShotCount>
-				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>3</ticksBetweenBurstShots>
 				<soundCast>Nod_AvatarLaser</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
@@ -58,10 +66,10 @@
 		<weaponTags>
 			<li>NodAvatarSetA</li>
 		</weaponTags>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 	<!-- Nod Purifier weapons -->	
-	<ThingDef ParentName="BaseBullet_TR">
+	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_AvatarFlamethrower</defName>
 		<label>flame</label>
 		<graphicData>
@@ -70,20 +78,26 @@
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>1.1</drawSize>
 		</graphicData>
-		<thingClass>Projectile_Explosive</thingClass>
+		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
 		<projectile>
 			<ai_IsIncendiary>true</ai_IsIncendiary>
 			<damageDef>Flame</damageDef>
 			<damageAmountBase>10</damageAmountBase>
-			<explosionRadius>0.025</explosionRadius>
+			<armorPenetrationBase>0.2</armorPenetrationBase>
+			<!--<explosionRadius>0.05</explosionRadius>-->
 			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
 			<preExplosionSpawnChance>0.35</preExplosionSpawnChance>
+			<arcHeightFactor>1.15</arcHeightFactor>
 			<speed>15</speed>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
+			<shadowSize>1.8</shadowSize>			
 		</projectile>
-	</ThingDef>
+		<projectileExtended>
+			<impactEffecter>FlameHit</impactEffecter>
+		</projectileExtended>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="MechFactionGun">
+	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
 		<defName>Nod_AvatarFlamethrower</defName>
 		<label>Purifier Flamethrower</label>
 		<graphicData>
@@ -92,59 +106,69 @@
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
-			<AccuracyTouch>0.25</AccuracyTouch>
-			<AccuracyShort>0.25</AccuracyShort>
-			<AccuracyMedium>0.25</AccuracyMedium>
-			<AccuracyLong>0.125</AccuracyLong>
+			<AccuracyTouch>0.8</AccuracyTouch>
+			<AccuracyShort>0.7</AccuracyShort>
+			<AccuracyMedium>0.6</AccuracyMedium>
+			<AccuracyLong>0.5</AccuracyLong>
 			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>
+					<li>(0, 0, 2)</li>
+				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_AvatarFlamethrower</defaultProjectile>
 				<warmupTime>2</warmupTime>
-				<range>7.9</range>
+				<range>15.9</range>
 				<forcedMissRadius>0.5</forcedMissRadius>
-				<burstShotCount>15</burstShotCount>
-				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
-				<soundCast>Shot_Nod_FlameTail</soundCast>
+				<burstShotCount>20</burstShotCount>
+				<ticksBetweenBurstShots>3.5</ticksBetweenBurstShots>
+				<soundCast>DropPod_Open</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
-				<muzzleFlashScale>15</muzzleFlashScale>
+				<muzzleFlashScale>5</muzzleFlashScale>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>
+				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
 			</li>
 		</verbs>
 		<weaponTags>
 			<li>NodAvatarSetB</li>
 		</weaponTags>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 	<!-- Nod Flametank weapons -->	
-	<ThingDef ParentName="BaseBullet_TR">
+	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_TwinFlamethrower</defName>
 		<label>flame</label>
+		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
 		<graphicData>
-			<texPath>Items/Weapons/Projectile/FlameTwin</texPath>
+			<texPath>Items/Weapons/Projectile/FlameSmall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
-			<drawSize>1.1</drawSize>
+			<drawSize>1</drawSize>
 		</graphicData>
-		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
 			<ai_IsIncendiary>true</ai_IsIncendiary>
 			<damageDef>Flame</damageDef>
 			<damageAmountBase>5</damageAmountBase>
-			<explosionRadius>0.025</explosionRadius>
+			<armorPenetrationBase>0.2</armorPenetrationBase>
+			<!--<explosionRadius>0.05</explosionRadius>-->
 			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
 			<preExplosionSpawnChance>0.35</preExplosionSpawnChance>
+			<arcHeightFactor>1.15</arcHeightFactor>
 			<speed>15</speed>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
+			<shadowSize>1.8</shadowSize>			
 		</projectile>
-	</ThingDef>
+		<projectileExtended>
+			<impactEffecter>FlameHit</impactEffecter>
+		</projectileExtended>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="MechFactionGun">
+	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
 		<defName>Nod_TwinFlamethrower</defName>
 		<label>TwinFlamethrower</label>
 		<graphicData>
@@ -154,34 +178,39 @@
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
-			<AccuracyTouch>0.25</AccuracyTouch>
-			<AccuracyShort>0.25</AccuracyShort>
-			<AccuracyMedium>0.25</AccuracyMedium>
-			<AccuracyLong>0.125</AccuracyLong>
-			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<AccuracyTouch>0.8</AccuracyTouch>
+			<AccuracyShort>0.7</AccuracyShort>
+			<AccuracyMedium>0.6</AccuracyMedium>
+			<AccuracyLong>0.5</AccuracyLong>
+			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>
+					<li>(0.55, 0, 1)</li>
+					<li>(-0.55, 0, 1)</li>
+				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_TwinFlamethrower</defaultProjectile>
-				<warmupTime>2</warmupTime>
-				<range>7.9</range>
-				<forcedMissRadius>0.5</forcedMissRadius>
-				<burstShotCount>12</burstShotCount>
+				<warmupTime>1.5</warmupTime>
+				<range>15.9</range>
+				<forcedMissRadius>0.2</forcedMissRadius>
+				<burstShotCount>40</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
-				<soundCast>Shot_Nod_FlameTail</soundCast>
+				<soundCast>DropPod_Open</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
-				<muzzleFlashScale>15</muzzleFlashScale>
+				<muzzleFlashScale>5</muzzleFlashScale>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>
+				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
 			</li>
 		</verbs>
 		<weaponTags>
 			<li>FlameTankSet</li>
 		</weaponTags>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
 	<!-- Gun weapons -->	
 	<ThingDef ParentName="BaseBullet_TR">
@@ -198,7 +227,7 @@
 		</projectile>
 	</ThingDef>
 	
-	<ThingDef ParentName="MechFactionGun">
+	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
 		<defName>Nod_BuggyGun</defName>
 		<label>Chaingun</label>
 		<graphicData>
@@ -214,8 +243,20 @@
 			<RangedWeapon_Cooldown>2.25</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>
+					<li>(0, 0, 1.2)</li>
+				</originOffsets>
+				<muzzleFlash>
+					<flashGraphicData>
+						<graphicClass>Graphic_Random</graphicClass>
+						<shaderType>TransparentPostLight</shaderType>
+						<texPath>Items/Weapons/Projectile/Flashes/BasicFlash</texPath>
+					</flashGraphicData>
+					<solidTime>0.2</solidTime>
+					<scale>1</scale>
+				</muzzleFlash>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Buggy</defaultProjectile>
 				<warmupTime>0.5</warmupTime>
@@ -230,7 +271,7 @@
 		<weaponTags>
 			<li>NodBuggySet</li>
 		</weaponTags>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 
 	<!-- GDI Wolverine weapons -->	
 	
@@ -248,7 +289,7 @@
 		</projectile>
 	</ThingDef>
 	
-	<ThingDef ParentName="MechFactionGun">
+	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
 		<defName>GDI_WolverineGun</defName>
 		<label>Chaingun</label>
 		<graphicData>
@@ -264,8 +305,20 @@
 			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>
+					<li>(0, 0, 1.2)</li>
+				</originOffsets>
+				<muzzleFlash>
+					<flashGraphicData>
+						<graphicClass>Graphic_Random</graphicClass>
+						<shaderType>TransparentPostLight</shaderType>
+						<texPath>Items/Weapons/Projectile/Flashes/BasicFlash</texPath>
+					</flashGraphicData>
+					<solidTime>0.2</solidTime>
+					<scale>1</scale>
+				</muzzleFlash>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Wolverine</defaultProjectile>
 				<warmupTime>0.5</warmupTime>
@@ -280,11 +333,11 @@
 		<weaponTags>
 			<li>GDIWolverineSet</li>
 		</weaponTags>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 	<!-- GDI Mommoth weapons -->	
 	
-	<ThingDef ParentName="MechFactionGun">
+	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
 		<defName>GDI_MomRailgun</defName>
 		<label>Twin Railgun</label>
 		<graphicData>
@@ -334,9 +387,9 @@
 		<weaponTags>
 			<li>MomTankSet</li>
 		</weaponTags>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="MechFactionGun">
+	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
 		<defName>GDI_DisruptorCannon</defName>
 		<label>Disruption beam emitter</label>
 		<graphicData>
@@ -357,19 +410,19 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
-					<!--<damageBase>5</damageBase>
-					<damageDef>TRSonic</damageDef>-->
+					<damageBase>10</damageBase>
+					<damageDef>TRSonic</damageDef>
 					<stoppingPower>0.1</stoppingPower>
-					<armorPenetration>1</armorPenetration>
+					<armorPenetration>0.25</armorPenetration>
 					<beamTexturePath>Items/Weapons/Projectile/Bullet_Disruptorshot</beamTexturePath>
-					<fadeInTime>0.05</fadeInTime>
+					<fadeInTime>0.15</fadeInTime>
 					<solidTime>0.25</solidTime>
-					<fadeOutTime>0.7</fadeOutTime>
+					<fadeOutTime>1</fadeOutTime>
 					<impactEffecter>SonicHit</impactEffecter>
 					<impactExplosion>
-						<damageBase>3</damageBase>
+						<damageOverride>3</damageOverride>
 						<damageDef>TRSonic</damageDef>
-						<explosionRadius>1.5</explosionRadius>
+						<explosionRadius>2.9</explosionRadius>
 						<!--<preSpawnDef>filth</preSpawnDef>
   						<postSpawnDef><filth/postSpawnDef>
   						<preSpawnChance>0.5</preSpawnChance>
@@ -380,15 +433,15 @@
 					</impactExplosion>
 				</beamProps>
 				<originOffsets>
-					<li>(0.6,-1,-0.22)</li>
-					<li>(-0.6,-1,-0.22)</li>
-					<li>(0.3,-1.25,-0.4)</li>
-					<li>(-0.3,-1.25,-0.4)</li>
+					<li>(0.7,-1,-0.22)</li>
+					<li>(-0.7,-1,-0.22)</li>
+					<li>(0.35,-1.25,-0.4)</li>
+					<li>(-0.35,-1.25,-0.4)</li>
 					<li>(0,-1.5,-0.41)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>3.2</warmupTime>
-				<range>14.9</range>
+				<range>17.9</range>
 				<minRange>2.5</minRange>
 				<burstShotCount>5</burstShotCount>
 				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
@@ -404,7 +457,7 @@
 		<weaponTags>
 			<li>DisruptorSet</li>
 		</weaponTags>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 	<!-- Forgotten Ironback weapons -->	
 	<ThingDef ParentName="BaseBullet_TR">
@@ -418,7 +471,7 @@
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
 			<damageDef>TRShockArm</damageDef>
-			<damageAmountBase>25</damageAmountBase>
+			<damageAmountBase>20</damageAmountBase>
 			<explosionRadius>1.25</explosionRadius>
 			<speed>50</speed>
 			<soundExplode>Blast_Rail</soundExplode>
@@ -426,7 +479,7 @@
 		</projectile>
 		</ThingDef>
 
-	<ThingDef ParentName="MechFactionGun">
+	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
 		<defName>Forg_Bash</defName>
 		<label>Big Arm</label>
 		<description>The big arm.</description>
@@ -450,8 +503,12 @@
 			<li>BigArm</li>
 		</weaponTags>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>
+					<li>(0.5,0,0.75)</li>
+					<li>(-0.5,0,0.75)</li>
+				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Bash</defaultProjectile>
 				<warmupTime>1</warmupTime>
@@ -468,6 +525,6 @@
 				</targetParams>
 			</li>
 		</verbs>
-	</ThingDef>
-	
+	</TiberiumRim.TRThingDef>
+					
 </Defs>

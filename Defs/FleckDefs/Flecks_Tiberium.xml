@@ -175,10 +175,10 @@
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
-		<fadeInTime>0.15</fadeInTime>
-		<solidTime>0.75</solidTime>
-		<fadeOutTime>1.5</fadeOutTime>
-		<growthRate>0.75</growthRate>
+		<fadeInTime>0.05</fadeInTime>
+		<solidTime>0.3</solidTime>
+		<fadeOutTime>0.8</fadeOutTime>
+		<growthRate>0.12</growthRate>
 	</FleckDef>
 	
 	<FleckDef ParentName="FleckBase_TR">
