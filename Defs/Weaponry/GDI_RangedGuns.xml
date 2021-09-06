@@ -314,15 +314,16 @@
 				<requireLineOfSight>true</requireLineOfSight>
 				<warmupTime>3</warmupTime>
 				<range>19.9</range>
-				<minRange>2.9</minRange>
+				<minRange>1.9</minRange>
 				<burstShotCount>2</burstShotCount>
+				<ticksBetweenBurstShots>15</ticksBetweenBurstShots>
 				<forcedMissRadius>1</forcedMissRadius>
 				<soundCast>Shot_GDI_Sonic</soundCast>
 				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>
-				<muzzleFlashScale>15</muzzleFlashScale>
+				<muzzleFlashScale>10</muzzleFlashScale>
 				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
 			</li>

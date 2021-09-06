@@ -228,9 +228,10 @@
 				<defaultProjectile>Projectile_SonicWave</defaultProjectile>
 				<requireLineOfSight>true</requireLineOfSight>
 				<warmupTime>2.25</warmupTime>
-				<range>39.9</range>
+				<range>22.9</range>
 				<minRange>2.9</minRange>
-				<burstShotCount>1</burstShotCount>
+				<burstShotCount>2</burstShotCount>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<forcedMissRadius>1</forcedMissRadius>
 				<soundCast>Shot_GDI_Sonic</soundCast>
 				<soundCastTail>Shot_GDI_GunTail</soundCastTail>

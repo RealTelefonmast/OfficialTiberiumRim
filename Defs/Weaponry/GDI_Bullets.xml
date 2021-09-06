@@ -162,11 +162,33 @@
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
 			<damageDef>TRSonic</damageDef>
-			<damageAmountBase>12</damageAmountBase>
+			<damageAmountBase>10</damageAmountBase>
 			<explosionRadius>1.1</explosionRadius>
 			<stoppingPower>0.5</stoppingPower>
 			<speed>25</speed>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
+			<armorPenetrationBase>0.1</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Projectile_SonicTower</defName>
+		<label>sonic wave</label>
+		<drawerType>None</drawerType>
+		<graphicData>
+			<texPath>Items/Weapons/Gun_Blank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>TRSonic</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<explosionRadius>1.1</explosionRadius>
+			<stoppingPower>0.5</stoppingPower>
+			<speed>25</speed>
+			<soundExplode>BulletImpact_Flesh</soundExplode>
+			<armorPenetrationBase>0.2</armorPenetrationBase>
 		</projectile>
 	</ThingDef>
 	
