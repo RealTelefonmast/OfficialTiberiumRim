@@ -58,6 +58,7 @@
     <context>MapOnly</context>
     <eventNames />
 		<maxSimultaneous>1</maxSimultaneous>
+		<maxVoices>2</maxVoices>
     <subSounds>
       <li>
         <grains>

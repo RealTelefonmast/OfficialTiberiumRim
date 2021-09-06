@@ -137,6 +137,7 @@
 		<defName>Nod_Nuke_Launch</defName>
 		<context>MapOnly</context>
 		<eventNames />
+		<maxVoices>1</maxVoices>
 		<maxSimultaneous>1</maxSimultaneous>
 		<subSounds>
 			<li>
@@ -266,7 +267,7 @@
 		<context>MapOnly</context>
 		<eventNames />
 		<maxSimultaneous>15</maxSimultaneous>
-		<maxVoices>5</maxVoices>
+		<maxVoices>2</maxVoices>
 		<subSounds>
 			<li>
 			<grains>
@@ -293,7 +294,7 @@
 		<context>MapOnly</context>
 		<eventNames />
 		<maxSimultaneous>15</maxSimultaneous>
-		<maxVoices>5</maxVoices>
+		<maxVoices>2</maxVoices>
 		<subSounds>
 			<li>
 			<grains>
