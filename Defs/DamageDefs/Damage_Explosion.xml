@@ -84,8 +84,8 @@
 		<hediff>Crush</hediff>
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<armorCategory>Blunt</armorCategory>
-		<minDamageToFragment>1</minDamageToFragment>
-		<defaultDamage>1</defaultDamage>
+		<minDamageToFragment>5</minDamageToFragment>
+		<defaultDamage>5</defaultDamage>
 		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
 		<explosionCellFleck>Fleck_BlastSound</explosionCellFleck>
 		<explosionInteriorFleck>SubMote_AdvParticle</explosionInteriorFleck>

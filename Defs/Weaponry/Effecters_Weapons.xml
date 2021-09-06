@@ -202,19 +202,20 @@ Ticks before sound starts
 		<children>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>Fleck_BlastSound</fleckDef>
-				<color>(0.8, 0.8, 1, 0.5)</color>
-				<burstCount>1~1</burstCount>
-				<scale>0.5~1</scale>
+				<fleckDef>Fleck_BlastWave</fleckDef>
+				<color>(0.9, 0.9, 1, 0.12)</color>
+				<burstCount>2</burstCount>
+				<scale>0.1~0.15</scale>
 				<positionRadius>0.75</positionRadius>
 				<speed>0</speed>
 				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>50~75</rotationRate>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
 				<fleckDef>Smoke</fleckDef>
 				<color>(1, 1, 1, 0.25)</color>
-				<burstCount>1</burstCount>
+				<burstCount>0~1</burstCount>
 				<scale>1~2</scale>
 				<rotation>-30~30</rotation>
 				<speed>-0.05~0.3</speed>

@@ -357,15 +357,27 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
-					<damageDef>TRShockWave</damageDef>
-					<damageBase>5</damageBase>
-					<stoppingPower>0.4</stoppingPower>
-					<armorPenetration>0.4</armorPenetration>
+					<!--<damageBase>5</damageBase>
+					<damageDef>TRSonic</damageDef>-->
+					<stoppingPower>0.1</stoppingPower>
+					<armorPenetration>1</armorPenetration>
 					<beamTexturePath>Items/Weapons/Projectile/Bullet_Disruptorshot</beamTexturePath>
 					<fadeInTime>0.05</fadeInTime>
 					<solidTime>0.25</solidTime>
 					<fadeOutTime>0.7</fadeOutTime>
 					<impactEffecter>SonicHit</impactEffecter>
+					<impactExplosion>
+						<damageBase>3</damageBase>
+						<damageDef>TRSonic</damageDef>
+						<explosionRadius>1.5</explosionRadius>
+						<!--<preSpawnDef>filth</preSpawnDef>
+  						<postSpawnDef><filth/postSpawnDef>
+  						<preSpawnChance>0.5</preSpawnChance>
+  						<postSpawnChance>0.5</postSpawnChance>
+  						<preSpawnCount>1</preSpawnCount>
+  						<postSpawnCount>1</postSpawnCount>
+  						<fireChance>0</fireChance>-->
+					</impactExplosion>
 				</beamProps>
 				<originOffsets>
 					<li>(0.6,-1,-0.22)</li>
@@ -378,7 +390,7 @@
 				<warmupTime>3.2</warmupTime>
 				<range>14.9</range>
 				<minRange>2.5</minRange>
-				<burstShotCount>10</burstShotCount>
+				<burstShotCount>5</burstShotCount>
 				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
 				<soundAiming>OrbitalTargeter_Aiming</soundAiming>
 				<soundCast>OrbitalTargeter_Fire</soundCast>
