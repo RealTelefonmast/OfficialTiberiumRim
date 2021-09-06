@@ -72,7 +72,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
-					<damageDef>TRLaser</damageDef>
+					<damageDef>TRLaserC</damageDef>
 					<damageBase>12</damageBase>
 					<stoppingPower>0.1</stoppingPower>
 					<armorPenetration>0.1</armorPenetration>
@@ -127,7 +127,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
-					<damageDef>TRLaser</damageDef>
+					<damageDef>TRLaserC</damageDef>
 					<damageBase>18</damageBase>
 					<stoppingPower>0.2</stoppingPower>
 					<armorPenetration>0.2</armorPenetration>
@@ -189,7 +189,7 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
-					<damageDef>TRLaser</damageDef>
+					<damageDef>TRLaserC</damageDef>
 					<damageBase>45</damageBase>
 					<stoppingPower>0.5</stoppingPower>
 					<armorPenetration>0.5</armorPenetration>

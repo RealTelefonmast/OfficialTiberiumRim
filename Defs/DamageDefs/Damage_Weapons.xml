@@ -14,15 +14,15 @@
 		<makesBlood>true</makesBlood>
 		<armorCategory>Sharp</armorCategory>
 		<defaultDamage>10</defaultDamage>
-		<defaultStoppingPower>0.5</defaultStoppingPower>
-		<defaultArmorPenetration>0.5</defaultArmorPenetration>
+		<defaultStoppingPower>0.1</defaultStoppingPower>
+		<defaultArmorPenetration>0.1</defaultArmorPenetration>
 		<buildingDamageFactor>1</buildingDamageFactor>
 		<plantDamageFactor>1</plantDamageFactor>
 	</DamageDef>
 	
 	<DamageDef ParentName="ProjectileBase_TR">
 		<defName>TRLaser</defName>
-		<label>laser cut</label>
+		<label>laser heat</label>
 		<isExplosive>false</isExplosive>
 		<externalViolence>true</externalViolence>
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
@@ -31,8 +31,25 @@
 		<makesBlood>false</makesBlood>
 		<armorCategory>Heat</armorCategory>
 		<defaultDamage>10</defaultDamage>
-		<defaultStoppingPower>0.25</defaultStoppingPower>
-        <defaultArmorPenetration>0.25</defaultArmorPenetration>
+		<defaultStoppingPower>0.1</defaultStoppingPower>
+        <defaultArmorPenetration>0.1</defaultArmorPenetration>
+		<buildingDamageFactor>1</buildingDamageFactor>
+		<plantDamageFactor>1</plantDamageFactor>
+	</DamageDef>
+	
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRLaserC</defName>
+		<label>laser cut</label>
+		<isExplosive>false</isExplosive>
+		<externalViolence>true</externalViolence>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<hediff>Cut</hediff>
+		<hediffSolid>Cut</hediffSolid>
+		<makesBlood>true</makesBlood>
+		<armorCategory>Sharp</armorCategory>
+		<defaultDamage>10</defaultDamage>
+		<defaultStoppingPower>0.1</defaultStoppingPower>
+        <defaultArmorPenetration>0.1</defaultArmorPenetration>
 		<buildingDamageFactor>1</buildingDamageFactor>
 		<plantDamageFactor>1</plantDamageFactor>
 	</DamageDef>
