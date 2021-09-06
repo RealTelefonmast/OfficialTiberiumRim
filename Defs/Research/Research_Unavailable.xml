@@ -49,7 +49,7 @@
 			<li>Story/FactionEmblem/F_GDI</li>
 		</images>
 		<workType>Research</workType>
-		<workAmount>2000</workAmount>
+		<workAmount>1000</workAmount>
 	</TiberiumRim.TResearchTaskDef>
 	
 	<TiberiumRim.TResearchDef>
@@ -101,7 +101,7 @@
 			<li>Story/FactionEmblem/F_GDI</li>
 		</images>
 		<workType>Research</workType>
-		<workAmount>5000</workAmount>
+		<workAmount>4000</workAmount>
 	</TiberiumRim.TResearchTaskDef>
 	
 	<TiberiumRim.TResearchDef>
@@ -196,7 +196,7 @@
 			<li>Story/FactionEmblem/F_Nod</li>
 		</images>
 		<workType>Research</workType>
-		<workAmount>2000</workAmount>
+		<workAmount>1000</workAmount>
 	</TiberiumRim.TResearchTaskDef>
 	
 	<TiberiumRim.TResearchDef>
@@ -248,7 +248,7 @@
 			<li>Story/FactionEmblem/F_Nod</li>
 		</images>
 		<workType>Research</workType>
-		<workAmount>5000</workAmount>
+		<workAmount>4000</workAmount>
 	</TiberiumRim.TResearchTaskDef>
 	
 	<TiberiumRim.TResearchDef>
@@ -347,7 +347,7 @@
 			<li>Story/FactionEmblem/F_Forg</li>
 		</images>
 		<workType>Research</workType>
-		<workAmount>2000</workAmount>
+		<workAmount>1000</workAmount>
 	</TiberiumRim.TResearchTaskDef>
 	
 </Defs>
