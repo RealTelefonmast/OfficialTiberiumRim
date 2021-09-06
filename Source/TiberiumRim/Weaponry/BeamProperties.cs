@@ -11,12 +11,12 @@ namespace TiberiumRim
     {
         public DamageDef damageDef;
         public int damageBase = 100;
+        public float armorPenetration;
+
         public int damageTicks = 10;
 
         public float stoppingPower;
         public float staggerTime = 95.TicksToSeconds();
-
-        public float armorPenetration;
 
         //
         public ExplosionProperties impactExplosion;

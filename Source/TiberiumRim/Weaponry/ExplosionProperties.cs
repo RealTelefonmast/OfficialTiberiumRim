@@ -14,7 +14,7 @@ namespace TiberiumRim
         //Default
         //Explosion Props
         public float explosionRadius;
-        public int? damageAmountOverride;
+        public int? damageOverride;
         public DamageDef damageDef;
 
         //Spawning
@@ -34,12 +34,12 @@ namespace TiberiumRim
 
         public void DoExplosion(IntVec3 center, Map map, Thing instigator)
         {
-            GenExplosion.DoExplosion(center, map, explosionRadius * intensity, damageDef, instigator, damageAmountOverride ?? -1, -1f, explosionSound, null,
-                null, null, postSpawnDef, postSpawnChance, postSpawnCount, 
-                false, preSpawnDef, preSpawnChance, preSpawnCount, fireChance, 
+            GenExplosion.DoExplosion(center, map, explosionRadius * intensity, damageDef, instigator,
+                damageOverride ?? -1, -1f, explosionSound, null, null, null, postSpawnDef, postSpawnChance,
+                postSpawnCount, false, preSpawnDef, preSpawnChance, preSpawnCount, fireChance,
                 useDamageFalloff, null, null);
 
-            explosionEffect.Spawn(center, map);
+            explosionEffect?.Spawn(center, map);
         }
 
     }
