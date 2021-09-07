@@ -23,7 +23,7 @@
 			<explosionProps>
 				<explosionRadius>6.9</explosionRadius>
 				<damageDef>TiberiumExplosionFrag</damageDef>
-				<damageAmountOverride>75</damageAmountOverride>
+				<damageOverride>75</damageOverride>
 				<postSpawnDef>Gas_Chemical</postSpawnDef>
 				<postSpawnChance>0.25</postSpawnChance>
 			</explosionProps>
@@ -42,11 +42,11 @@
     <label>suicide bomb implant</label>
     <description>An installed bionic implant, connected to the strong chemical suicide bomb. Take your pawn on a suicide mission.</description>
     <descriptionHyperlinks><RecipeDef>InstallChemicalBombImplant</RecipeDef></descriptionHyperlinks>
-		<graphicData>
-			<texPath>Items/Weapons/Nod/SuicideBomb</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>1.25</drawSize>
-		</graphicData>
+	<graphicData>
+		<texPath>Items/Weapons/Nod/SuicideBomb</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>1.25</drawSize>
+	</graphicData>
     <costList>
       <Uranium>15</Uranium>
       <ComponentIndustrial>3</ComponentIndustrial>
@@ -112,6 +112,92 @@
   </RecipeDef>
   
   
+	<HediffDef ParentName="ImplantHediffBase">
+    <defName>InfusionImplant</defName>
+    <label>tiberium infusion</label>
+    <labelNoun>a tiberium infusion</labelNoun>
+    <description>A special tiberium infusion for the nod soldiers. It changes the organs to almost fit the Tiberium environment. But users become sensitive to mental break, and cannot be removed.</description>
+    <descriptionHyperlinks><ThingDef>InfusionImplant</ThingDef></descriptionHyperlinks>
+    <spawnThingOnRemoved>InfusionImplant</spawnThingOnRemoved>
+		<stages>
+			<li>
+				<minSeverity>0</minSeverity>
+				<statOffsets>
+					<TiberiumInfectionResistance>0.8</TiberiumInfectionResistance>
+					<TiberiumRadiationResistance>0.8</TiberiumRadiationResistance>
+					<TiberiumGasResistance>0.8</TiberiumGasResistance>
+					<MentalBreakThreshold>0.05</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+		</stages>
+    <tags><li>InfusionImplant</li></tags>
+  </HediffDef>
+
+
+  <ThingDef ParentName="BodyPartBionicBase">
+    <defName>InfusionImplant</defName>
+    <label>tiberium infusion</label>
+    <description>A special tiberium infusion for the nod soldiers. It changes the organs to almost fit the Tiberium environment. but users become sensitive to anger, and cannot be removed.</description>
+    <descriptionHyperlinks><RecipeDef>InstallInfusionImplant</RecipeDef></descriptionHyperlinks>
+	<graphicData>
+		<texPath>Items/Consumable/TibInfusion</texPath>
+		<graphicClass>Graphic_StackCount</graphicClass>
+		<drawSize>1</drawSize>
+	</graphicData>
+	<drawGUIOverlay>true</drawGUIOverlay>
+    <costList>
+		<MedicineUltratech>1</MedicineUltratech>
+		<Penoxycyline>5</Penoxycyline>
+		<Flake>5</Flake>
+    </costList>
+    <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+    <statBases>
+      <Mass>1</Mass>
+    </statBases>
+	<stackLimit>10</stackLimit>
+    <recipeMaker>
+		<recipeUsers>
+			<li>Nod_Factory</li>
+		</recipeUsers>
+		<skillRequirements>
+			<Medicine>8</Medicine>
+		</skillRequirements>
+      <researchPrerequisite></researchPrerequisite>
+    </recipeMaker>
+	<techHediffsTags>
+		<li>InfusionImplant</li>
+	</techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>InstallInfusionImplant</defName>
+    <label>install tiberium infusion</label>
+    <description>Install a tiberium infusion.</description>
+    <descriptionHyperlinks>
+      <ThingDef>InfusionImplant</ThingDef>
+      <HediffDef>InfusionImplant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tiberium infusion.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>InfusionImplant</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>InfusionImplant</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>InfusionImplant</addsHediff>
+  </RecipeDef>
   
   
 </Defs>
