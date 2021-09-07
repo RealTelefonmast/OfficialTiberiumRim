@@ -132,39 +132,6 @@ namespace TiberiumRim
 
         }
 
-        [HarmonyPatch(typeof(Pawn_PathFollower)), HarmonyPatch("TrySetNewPath")]
-        public static class TrySetNewPathPatch
-        {
-            //Patch the new path setter method to hook into new logic depending on the path
-            public static void Postfix(Pawn_PathFollower __instance, ref bool __result, Pawn ___pawn)
-            {
-                //Bad path... return
-                if (!__result) return;
-
-                //If already using an airlock..
-                if (___pawn.CurJobDef == TiberiumDefOf.UseAirlock) return;
-
-                //If already in airlock which is cleaned, return
-                var currentRoom = ___pawn.GetRoom();
-                var airLockComp = currentRoom.GetRoomComp<RoomComponent_AirLock>();
-                if (currentRoom.Role == TiberiumDefOf.TR_AirLock && airLockComp.IsClean) return;
-
-                //Check path for airlocks
-                var rooms = __instance.curPath.RoomsAlongPath(___pawn.Map);
-                Room airLock = rooms?.Find(r => r.Role == TiberiumDefOf.TR_AirLock);
-
-                //No airlocks, no job
-                if (airLock == null) return;
-
-                //Start the airlock job and set the current job to be resumed
-                Job airlockJob = JobMaker.MakeJob(TiberiumDefOf.UseAirlock, airLock.GeneralCenter());
-                ___pawn.jobs.StartJob(airlockJob, JobCondition.Ongoing, null, true);
-
-                //Discard original path result
-                __result = false;
-            }
-        }
-
         /*
         [HarmonyPatch(typeof(JobDriver_Goto)), HarmonyPatch("MakeNewToils")]
         public static class GotoPatch

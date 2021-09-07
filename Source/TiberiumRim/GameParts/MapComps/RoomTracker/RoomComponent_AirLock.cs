@@ -11,11 +11,14 @@ namespace TiberiumRim
     public class RoomComponent_AirLock : RoomComponent
     {
         private RoomComponent_Pollution pollutionCompInt;
-        private List<Comp_ANS_AirVent> AirVents = new List<Comp_ANS_AirVent>();
+        private List<Building> AirVents = new List<Building>();
         private List<Building_AirLock> AirLockDoors = new List<Building_AirLock>();
+
+        private bool HasAirLockRole = false;
         
         public RoomComponent_Pollution Pollution => pollutionCompInt ??= Parent.GetRoomComp<RoomComponent_Pollution>();
-        public bool IsActive => this.Room.Districts.All(r => r.Room.Role == TiberiumDefOf.TR_AirLock);
+
+        public bool IsActive => HasAirLockRole && AirVents.Concat(AirLockDoors).All(c => c.IsPoweredOn());
         public bool IsClean => Pollution.ActualPollution <= 0;
 
         public bool AllDoorsClosed => AirLockDoors.All(d => !d.Open);
@@ -27,6 +30,13 @@ namespace TiberiumRim
             {
                 TryAddComponent(thing);
             }
+            SetData();
+        }
+
+        public override void Notify_Reused()
+        {
+            base.Notify_Reused();
+            SetData();
         }
 
         public override void Notify_ThingSpawned(Thing thing)
@@ -36,8 +46,12 @@ namespace TiberiumRim
 
         public override void Notify_ThingDespawned(Thing thing)
         {
-            AirVents.RemoveAll(t => t.Thing == thing);
-            base.Notify_ThingDespawned(thing);
+            TryRemoveComponent(thing);
+        }
+
+        private void SetData()
+        {
+            HasAirLockRole = Room.Districts.All(r => r.Room.Role == TiberiumDefOf.TR_AirLock);
         }
 
         private void TryAddComponent(Thing thing)
@@ -50,16 +64,22 @@ namespace TiberiumRim
             var comp = thing.TryGetComp<Comp_ANS_AirVent>();
             if (comp != null)
             {
-                AirVents.Add(comp);
+                AirVents.Add(thing as Building);
             }
+        }
+
+        private void TryRemoveComponent(Thing thing)
+        {
+            AirLockDoors.Remove(thing as Building_AirLock);
+            AirVents.Remove(thing as Building);
         }
 
 
         public override void Draw()
         {
-            if (Room.Cells.Contains(UI.MouseCell()))
+            if (UI.MouseCell().GetRoom(Map) == this.Room)
             {
-                GenDraw.DrawFieldEdges(AirVents.Select(t => t.Thing.Position).ToList(), Color.green);
+                GenDraw.DrawFieldEdges(AirVents.Select(t => t.Position).ToList(), Color.green);
             }
 
         }

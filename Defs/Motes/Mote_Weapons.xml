@@ -26,7 +26,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>ObeliskGlow</defName>
 		<graphicData>
-			<texPath>Motes/Fog/ObeliskGlow</texPath>
+			<texPath>VisualFX/Fog/ObeliskGlow</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -108,7 +108,7 @@
 		<defName>IonParticle</defName>
 		<thingClass>TiberiumRim.TRMote</thingClass>
 		<graphicData>
-			<texPath>Motes/IonParticle</texPath>
+			<texPath>VisualFX/IonParticle</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>(1,1)</drawSize>
 		</graphicData>
@@ -126,7 +126,7 @@
 		<defName>IonAscensionCloud</defName>
 		<thingClass>TiberiumRim.TRMote</thingClass>
 		<graphicData>
-			<texPath>Motes/IonCannon/Clouds/particleCloud1</texPath>
+			<texPath>VisualFX/IonCannon/Clouds/particleCloud1</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>(1,1)</drawSize>
 		</graphicData>
@@ -242,7 +242,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_ScrinCut</defName>
 		<graphicData>
-			<texPath>Motes/ScrinCut</texPath>
+			<texPath>VisualFX/ScrinCut</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>

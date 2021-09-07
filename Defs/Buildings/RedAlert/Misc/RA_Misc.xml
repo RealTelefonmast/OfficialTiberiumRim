@@ -28,7 +28,7 @@
 					<li>
 						<data>
 							<graphicClass>Graphic_Single</graphicClass>
-							<texPath>Motes/ChronoVortex</texPath>
+							<texPath>VisualFX/ChronoVortex</texPath>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>8</drawSize>
 						</data>
@@ -41,7 +41,7 @@
 							<texPath>Things/Mote/Black</texPath>
 							<shaderType>MoteGlowDistortBackground</shaderType>
 							<shaderParameters>
-								<_DistortionTex>/Motes/VortexDistortionMask</_DistortionTex>
+								<_DistortionTex>/VisualFX/VortexDistortionMask</_DistortionTex>
 								<_distortionIntensity>0.1</_distortionIntensity>
 								<_brightnessMultiplier>1</_brightnessMultiplier>
 							</shaderParameters>

@@ -86,6 +86,8 @@ namespace TiberiumRim
                 instancePos = __instance.Position;
                 instanceMap = __instance.Map;
 
+                var Tiberium = __instance.Map.Tiberium();
+
                 Building building = __instance as Building;
                 updateRadiationGrid = building != null;
                 updateSuppressionGrid = updateRadiationGrid && !building.CanBeSeenOver();
@@ -93,7 +95,7 @@ namespace TiberiumRim
                 if (updateRadiationGrid)
                 {
                     //Radiation Logic
-                    var radiation = building.Map.Tiberium().TiberiumAffecter.HediffGrid;
+                    var radiation = Tiberium.TiberiumAffecter.HediffGrid;
                     if (radiation.IsInRadiationSourceRange(instancePos))
                     {
                         List<IRadiationSource> sources = radiation.RadiationSourcesAt(building.Position);
@@ -105,6 +107,8 @@ namespace TiberiumRim
                     }
                 }
 
+                Tiberium.RoomInfo.Notify_ThingDespawned(__instance);
+
                 //Research
                 TRUtils.ResearchTargetTable().DeregisterTarget(__instance);
 
@@ -115,9 +119,11 @@ namespace TiberiumRim
 
             public static void Postfix(Thing __instance)
             {
+                var Tiberium = instanceMap.Tiberium();
+
                 if (updateSuppressionGrid)
                 {
-                    var suppression = instanceMap.Tiberium().SuppressionInfo;
+                    var suppression = Tiberium.SuppressionInfo;
                     if (suppression.IsInSuppressionCoverage(instancePos, out List<Comp_Suppression> sups))
                     {
                         suppression.MarkDirty(sups);
@@ -127,7 +133,7 @@ namespace TiberiumRim
                 if (updateRadiationGrid)
                 {
                     //Radiation Logic
-                    var radiation = instanceMap.Tiberium().TiberiumAffecter.HediffGrid;
+                    var radiation = Tiberium.TiberiumAffecter.HediffGrid;
                     if (radiation.IsInRadiationSourceRange(instancePos))
                     {
                         List<IRadiationSource> sources = radiation.RadiationSourcesAt(instancePos);

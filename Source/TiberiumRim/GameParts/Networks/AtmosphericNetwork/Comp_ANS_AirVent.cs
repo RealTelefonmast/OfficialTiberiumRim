@@ -53,11 +53,13 @@ namespace TiberiumRim
 
         private bool ManipulatePollution(int tick)
         {
-            if (!IsPowered || AtmosphericComp.Container.CapacityFull) return false;
+            if (!IsPowered) return false;
+
             int totalThroughput = Props.gasThroughPut * tick;
             switch (Props.ventMode)
             {
                 case AtmosphericVentMode.Intake:
+                    if (AtmosphericComp.Container.CapacityFull) return false;
                     if (Pollution.TryRemovePollution(totalThroughput, out int actuallyRemoved))
                     {
                         AtmosphericComp.Container.TryAddValue(TiberiumDefOf.TibPollution, actuallyRemoved, out _);
@@ -66,6 +68,7 @@ namespace TiberiumRim
 
                     break;
                 case AtmosphericVentMode.Output:
+                    if (AtmosphericComp.Container.Empty) return false;
                     if (AtmosphericComp.Container.TryRemoveValue(TiberiumDefOf.TibPollution, totalThroughput, out float actualValue))
                     {
                         Pollution.TryAddPollution((int) actualValue, out _);
@@ -75,8 +78,6 @@ namespace TiberiumRim
                     break;
                 case AtmosphericVentMode.Dynamic:
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
             return false;
         }

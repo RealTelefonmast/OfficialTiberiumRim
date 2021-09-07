@@ -359,7 +359,7 @@ namespace TiberiumRim
         public static readonly Material NodNukeTargeter = MaterialPool.MatFrom("UI/Targeters/Target_Nuke", ShaderDatabase.Transparent);
         public static readonly Material ScrinLandingTargeter = MaterialPool.MatFrom("UI/Targeters/Target_IonCannon", ShaderDatabase.Transparent);
 
-        public static readonly Material IonLightningMat = MaterialPool.MatFrom("Motes/LightningBoltIon", ShaderDatabase.MoteGlow);
+        public static readonly Material IonLightningMat = MaterialPool.MatFrom("VisualFX/LightningBoltIon", ShaderDatabase.MoteGlow);
 
         public static readonly Material ForcedTargetLineMat = MaterialPool.MatFrom(GenDraw.LineTexPath, ShaderDatabase.Transparent, new Color(1f, 0.5f, 0.5f));
     }

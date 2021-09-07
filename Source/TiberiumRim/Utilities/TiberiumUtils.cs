@@ -248,6 +248,22 @@ namespace TiberiumRim
                    def.blockLight;
         }
 
+
+        public static float AtmosphericPassPercent(this Thing forThing)
+        {
+            var fullFillage = forThing.def.Fillage == FillCategory.Full;
+            var fillage = forThing.def.fillPercent;
+            return forThing switch
+            {
+                Building_Door door => door.Open ? 1 : (fullFillage ? 0 : 1f - fillage),
+                Building_Vent vent => FlickUtility.WantsToBeOn(vent) ? 1 : 0,
+                Building_Cooler cooler => cooler.IsPoweredOn() ? 1 : 0,
+                { } b => fullFillage ? 0 : 1f - fillage,
+                _ => 0
+            };
+        }
+
+
         public static Material GetColoredVersion(this Material mat, Color color)
         {
             Material material = new Material(mat);

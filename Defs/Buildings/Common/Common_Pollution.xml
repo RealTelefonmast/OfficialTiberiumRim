@@ -265,6 +265,10 @@
 					</li>
 				</overlays>
 			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>45</basePowerConsumption>
+			</li>
 		</comps>
 		<requisites>
 			<tiberiumResearchTasks>
@@ -338,6 +342,48 @@
 		<fillPercent>1</fillPercent>
 		<rotatable>true</rotatable>			
 		<surfaceType>Item</surfaceType>
+	</TiberiumRim.TRThingDef>
+	
+	<!---->
+	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
+		<defName>Atmospheric_AirLockDoor</defName>
+		<label>air-lock door</label>
+		<thingClass>TiberiumRim.Building_AirLock</thingClass>
+		<description>Defines an air-lock room, when powered and active, pawns will automatically use the airlock inbetween their work routines.</description>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Pollution</TRCategory>
+		<graphicData>
+			<texPath>Buildings/Common/Pollution/Door_Airlock</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<enabled>false</enabled>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Buildings/Common/Pollution/Door_Airlock_icon</uiIconPath>
+		<costList>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<stuffCategories Inherit="False"/>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>Autodoors</li>
+		</researchPrerequisites>
+		<statBases>
+			<WorkToBuild>2000</WorkToBuild>
+			<MaxHitPoints>400</MaxHitPoints>
+			<Flammability>0.0</Flammability>
+		</statBases>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T5</li>
+			</tiberiumResearchTasks>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 </Defs>

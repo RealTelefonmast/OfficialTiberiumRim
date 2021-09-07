@@ -49,6 +49,9 @@ namespace TiberiumRim
                 if (Find.TickManager.TicksGame % 20 == 0)
                 {
                     GenTemperature.PushHeat(this, 40f);
+
+                    var gas = (SpreadingGas)GenSpawn.Spawn(ThingDef.Named("Gas_TiberiumGas"), this.OccupiedRect().RandomCell, Map);
+                    gas.AdjustSaturation(Rand.Range(5000, 9500));
                     depositValue--;
                 }
             }, StartSpray, EndSpray);

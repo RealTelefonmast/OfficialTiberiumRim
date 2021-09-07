@@ -38,7 +38,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_TiberiumFog_Green</defName>
 		<graphicData>
-			<texPath>Motes/Gas</texPath>
+			<texPath>VisualFX/Natural/Gas</texPath>
 			<color>(15,255,55,45)</color>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
@@ -54,7 +54,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_TiberiumCloudLightning</defName>
 		<graphicData>
-			<texPath>Motes/IonLighting/ion</texPath>
+			<texPath>VisualFX/IonLighting/ion</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>

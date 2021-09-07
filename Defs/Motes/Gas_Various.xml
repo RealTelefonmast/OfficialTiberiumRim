@@ -18,7 +18,7 @@
 		<defName>TiberiumGas</defName>
 		<label>tiberium gas</label>
 		<graphicData>
-			<texPath>Motes/Gas</texPath>
+			<texPath>VisualFX/Natural/Gas</texPath>
 			<drawSize>2.2</drawSize>
 			<color>(15,255,55,90)</color>
 		</graphicData>
@@ -35,7 +35,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_TiberiumGas</defName>
 		<graphicData>
-			<texPath>Motes/Gas</texPath>
+			<texPath>VisualFX/Natural/Gas</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -51,7 +51,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_TiberiumSmoke</defName>
 			<graphicData>
-			<texPath>Motes/TiberiumGasDark</texPath>
+			<texPath>VisualFX/Natural/TiberiumGas/TiberiumGasDark</texPath>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<mote>

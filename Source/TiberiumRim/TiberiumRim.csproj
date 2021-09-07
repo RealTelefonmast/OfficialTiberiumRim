@@ -122,6 +122,7 @@
     <Compile Include="Defs\TRGroupDefOf.cs" />
     <Compile Include="Defs\TRThingCategoryDef.cs" />
     <Compile Include="FilthSpewerProperties.cs" />
+    <Compile Include="GameParts\Gas\SpreadingGas.cs" />
     <Compile Include="GameParts\MapComps\StructureCacheMapInfo.cs" />
     <Compile Include="GameParts\Networks\AtmosphericNetwork\Comp_ANS_AirVent.cs" />
     <Compile Include="GameParts\Networks\AtmosphericNetwork\Comp_ANS_Filter.cs" />
@@ -340,6 +341,7 @@
     <Compile Include="Loading\TiberiumRimMod.cs" />
     <Compile Include="Loading\TiberiumRimPatches.cs" />
     <Compile Include="Loading\TiberiumSettings.cs" />
+    <Compile Include="Loading\TRAIPatches.cs" />
     <Compile Include="Loading\VerbPatches.cs" />
     <Compile Include="MechanicalPawns\Building_MechStation.cs" />
     <Compile Include="MechanicalPawns\Designator_ZoneAdd_MechParking.cs" />

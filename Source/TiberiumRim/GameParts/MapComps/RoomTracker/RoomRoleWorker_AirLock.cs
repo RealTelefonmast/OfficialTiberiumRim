@@ -34,5 +34,14 @@ namespace TiberiumRim
             }
             return 0f;
         }
+
+        public override string PostProcessedLabel(string baseLabel)
+        {
+            var curRoom = UI.MouseCell().GetRoom(Find.CurrentMap);
+            var curAirLock = curRoom.GetRoomComp<RoomComponent_AirLock>();
+            if (curAirLock == null) return base.PostProcessedLabel(baseLabel);
+
+            return base.PostProcessedLabel(baseLabel) + (curAirLock.IsActive ? "ACTIVE" : "INACTIVE");
+        }
     }
 }

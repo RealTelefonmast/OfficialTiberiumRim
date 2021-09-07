@@ -25,7 +25,7 @@ namespace TiberiumRim
             this.building = building;
             connections = new[] { roomA, roomB };
             connDirections = new[] { RotationFrom(building.Position - roomA.MinVec), RotationFrom(building.Position - roomB.MinVec) };
-            Log.Message("Setting Connection: " + building.Position + " - " + connDirections[0].ToStringWord() + " <=> " + connDirections[1].ToStringWord());
+            //Log.Message("Setting Connection: " + building.Position + " - " + connDirections[0].ToStringWord() + " <=> " + connDirections[1].ToStringWord());
         }
 
         /*

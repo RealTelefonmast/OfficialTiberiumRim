@@ -7,7 +7,7 @@
 		<label>gas cloud</label>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
-			<texPath>Motes/Gas</texPath>
+			<texPath>VisualFX/Natural/Gas</texPath>
 		</graphicData>
 		<tickerType>Normal</tickerType>
 		<altitudeLayer>MoteOverhead</altitudeLayer>

@@ -22,6 +22,7 @@ namespace TiberiumRim
         public BeamHubProperties beamHub; 
         public ProjectileProperties_Extended projectileExtended;
         public SuperWeaponProperties superWeapon;
+        public TRGasProperties gasProps;
 
         //Creation Events
         public TerrainDef makesTerrain;

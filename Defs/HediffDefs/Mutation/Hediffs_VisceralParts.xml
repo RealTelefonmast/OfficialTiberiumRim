@@ -32,7 +32,7 @@
 			<li Class="TiberiumRim.HediffCompProperties_ExplodeOnPartDestroyed">
 				<explosionProps>
 					<explosionRadius>1.5</explosionRadius>
-					<damageAmountOverride>5</damageAmountOverride>
+					<damageOverride>5</damageOverride>
 					<damageDef>TiberiumExplosionFrag</damageDef>
 					<postSpawnDef>Gas_Chemical</postSpawnDef>
 					<postSpawnChance>0.5</postSpawnChance>
