@@ -5,7 +5,7 @@
     <Operation Class="PatchOperationReplace">
         <xpath>/Defs/FleckDef[defName="Smoke"]/graphicData/texPath</xpath>
         <value>
-           <texPath>Motes/Original/Smoke</texPath>
+           <texPath>VisualFX/Original/Smoke</texPath>
         </value>
     </Operation>
 
