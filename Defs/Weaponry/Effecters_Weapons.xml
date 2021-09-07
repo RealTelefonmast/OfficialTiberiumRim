@@ -85,9 +85,10 @@ Ticks before sound starts
 				<scale>0.1</scale>
 				<rotation>-45~45</rotation>
 				<speed>0.2</speed>
-				<angle>0~45</angle>
+				<angle>-10~10</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>50~100</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
@@ -100,6 +101,7 @@ Ticks before sound starts
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
 			</li>
 		</children>
 	</EffecterDef>
@@ -127,6 +129,7 @@ Ticks before sound starts
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
 			</li>
 		</children>
 	</EffecterDef>
@@ -151,9 +154,10 @@ Ticks before sound starts
 				<scale>0.1</scale>
 				<rotation>-45~45</rotation>
 				<speed>0.2</speed>
-				<angle>0~45</angle>
+				<angle>-10~10</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>50~100</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
@@ -166,6 +170,7 @@ Ticks before sound starts
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
 			</li>
 		</children>
 	</EffecterDef>
@@ -193,6 +198,7 @@ Ticks before sound starts
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
 			</li>
 		</children>
 	</EffecterDef>
@@ -217,9 +223,10 @@ Ticks before sound starts
 				<scale>0.1</scale>
 				<rotation>-45~45</rotation>
 				<speed>0.2</speed>
-				<angle>0~45</angle>
+				<angle>-10~10</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>50~100</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
@@ -232,6 +239,7 @@ Ticks before sound starts
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
 			</li>
 		</children>
 	</EffecterDef>
@@ -259,6 +267,7 @@ Ticks before sound starts
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
 			</li>
 		</children>
 	</EffecterDef>
@@ -288,6 +297,7 @@ Ticks before sound starts
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
 			</li>
 		</children>
 	</EffecterDef>
@@ -304,9 +314,10 @@ Ticks before sound starts
 				<positionRadius>0.75</positionRadius>
 				<rotation>-45~45</rotation>
 				<speed>-0.05~0.2</speed>
-				<angle>0~45</angle>
+				<angle>-10~10</angle>
 				<spawnLocType>OnSource</spawnLocType>
-				<rotationRate>0~25</rotationRate>				
+				<rotationRate>0~25</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>				
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
@@ -317,9 +328,10 @@ Ticks before sound starts
 				<positionRadius>0.25</positionRadius>
 				<rotation>-45~45</rotation>
 				<speed>-0.05~0.2</speed>
-				<angle>0~45</angle>
+				<angle>-10~10</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>50~100</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
@@ -333,6 +345,7 @@ Ticks before sound starts
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
 			</li>
 		</children>
 	</EffecterDef>
@@ -349,9 +362,10 @@ Ticks before sound starts
 				<positionRadius>1.25</positionRadius>
 				<rotation>-45~45</rotation>
 				<speed>-0.05~0.2</speed>
-				<angle>0~45</angle>
+				<angle>-10~10</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
@@ -365,6 +379,7 @@ Ticks before sound starts
 				<angle>30~40</angle>
 				<spawnLocType>OnSource</spawnLocType>
 				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
 			</li>
 		</children>
 	</EffecterDef>
