@@ -301,7 +301,7 @@
 		<graphicData>
 			<texPath>Items/Weapons/GDI/GDI_Shatterer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>1.25</drawSize>
+			<drawSize>1.5</drawSize>
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
@@ -332,11 +332,25 @@
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_BurstToTarget</verbClass>
+				<originOffsets>
+					<li>(0, 0, 0.5)</li>
+				</originOffsets>
+				<muzzleFlash>
+					<flashGraphicData>
+						<graphicClass>Graphic_Single</graphicClass>
+						<shaderType>TransparentPostLight</shaderType>
+						<texPath>Items/Weapons/Projectile/Flashes/Shatterer</texPath>
+					</flashGraphicData>
+					<fadeInTime>0.05</fadeInTime>
+					<solidTime>0.05</solidTime>
+					<fadeOutTime>1</fadeOutTime>
+					<scale>1.5</scale>
+				</muzzleFlash>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Projectile_SonicWave</defaultProjectile>
 				<requireLineOfSight>true</requireLineOfSight>
 				<warmupTime>3</warmupTime>
-				<range>19.9</range>
+				<range>24.9</range>
 				<minRange>1.9</minRange>
 				<burstShotCount>2</burstShotCount>
 				<ticksBetweenBurstShots>15</ticksBetweenBurstShots>
