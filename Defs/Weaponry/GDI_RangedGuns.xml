@@ -29,6 +29,7 @@
 		<graphicData>
 			<texPath>Items/Weapons/GDI/Rifle</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.2</drawSize>
 		</graphicData>
 		<!--
 		<requisites>
@@ -54,13 +55,24 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<originOffsets>
-					<li>(0, 0, 1)</li>
+					<li>(0, 0, 1.1)</li>
 				</originOffsets>
+				<muzzleFlash>
+					<flashGraphicData>
+						<graphicClass>Graphic_Random</graphicClass>
+						<shaderType>TransparentPostLight</shaderType>
+						<texPath>Items/Weapons/Projectile/Flashes/Basic</texPath>
+					</flashGraphicData>
+					<fadeInTime>0.05</fadeInTime>
+					<solidTime>0.05</solidTime>
+					<fadeOutTime>0.15</fadeOutTime>
+					<scale>0.75</scale>
+				</muzzleFlash>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_GDIStandard</defaultProjectile>
 				<secondaryProjectile>Bullet_GDIAP</secondaryProjectile>
 				<warmupTime>1.2</warmupTime>
-				<range>32.9</range>
+				<range>30.9</range>
 				<burstShotCount>4</burstShotCount>
 				<ticksBetweenBurstShots>12</ticksBetweenBurstShots>
 				<soundCast>Shot_AssaultRifle</soundCast>
