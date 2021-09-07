@@ -117,34 +117,45 @@
 		<graphicData>
 			<texPath>Items/Weapons/GDI/DiscThrower</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>1.25</drawSize>
+			<drawSize>1.2</drawSize>
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
 			<WorkToMake>35000</WorkToMake>
 			<Mass>4.0</Mass>
-			<AccuracyTouch>0.75</AccuracyTouch>
-			<AccuracyShort>0.75</AccuracyShort>
-			<AccuracyMedium>0.75</AccuracyMedium>
-			<AccuracyLong>0.75</AccuracyLong>
-			<RangedWeapon_Cooldown>2.25</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
 			<GDI_ReinforcedPlate>25</GDI_ReinforcedPlate>
-			<ComponentIndustrial>6</ComponentIndustrial>
+			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<verbs>
-			<li>
-				<verbClass>Verb_LaunchProjectile</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>
+					<li>(0, 0, 1)</li>
+				</originOffsets>
+				<muzzleFlash>
+					<flashGraphicData>
+						<graphicClass>Graphic_Random</graphicClass>
+						<shaderType>TransparentPostLight</shaderType>
+						<texPath>Items/Weapons/Projectile/Flashes/Basic</texPath>
+					</flashGraphicData>
+					<fadeInTime>0.05</fadeInTime>
+					<solidTime>0.1</solidTime>
+					<fadeOutTime>0.2</fadeOutTime>
+					<scale>0.75</scale>
+				</muzzleFlash>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Projectile_StunGrenade</defaultProjectile>
-				<warmupTime>2</warmupTime>
-				<range>24.9</range>
-				<forcedMissRadius>0.1</forcedMissRadius>
+				<defaultProjectile>Projectile_TRGrenade</defaultProjectile>
+				<secondaryProjectile>Projectile_StunGrenade</secondaryProjectile>
+				<warmupTime>3</warmupTime>
+				<range>23.9</range>
+				<forcedMissRadius>1.9</forcedMissRadius>
 				<burstShotCount>1</burstShotCount>
-				<soundCast>Interact_AssaultRifle</soundCast>
+				<soundCast>Shot_IncendiaryLauncher</soundCast>
 				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
-				<muzzleFlashScale>5</muzzleFlashScale>
+				<muzzleFlashScale>10</muzzleFlashScale>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>

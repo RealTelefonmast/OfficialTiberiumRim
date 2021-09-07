@@ -349,6 +349,26 @@ Ticks before sound starts
 			</li>
 		</children>
 	</EffecterDef>
+	
+	<EffecterDef>
+		<defName>FlechetteHit</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>SubMote_TibGasParticle</fleckDef>
+				<color>(1,1,1,0.8)</color>
+				<burstCount>1~1</burstCount>
+				<scale>0.25~0.5</scale>
+				<positionRadius>0.75</positionRadius>
+				<rotation>-45~45</rotation>
+				<speed>-0.05~0.2</speed>
+				<angle>-10~10</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+		</children>
+	</EffecterDef>
 
 	<EffecterDef>
 		<defName>ChemicalHit</defName>

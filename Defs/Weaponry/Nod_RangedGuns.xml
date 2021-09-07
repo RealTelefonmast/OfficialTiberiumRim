@@ -123,16 +123,17 @@
 		<graphicData>
 			<texPath>Items/Weapons/Nod/TwinFlechetteGun</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.2</drawSize>
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
 			<WorkToMake>35000</WorkToMake>
 			<Mass>2.0</Mass>
-			<AccuracyTouch>0.70</AccuracyTouch>
-			<AccuracyShort>0.87</AccuracyShort>
-			<AccuracyMedium>0.47</AccuracyMedium>
-			<AccuracyLong>0.24</AccuracyLong>
-			<RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
+			<AccuracyTouch>0.6</AccuracyTouch>
+			<AccuracyShort>0.7</AccuracyShort>
+			<AccuracyMedium>0.5</AccuracyMedium>
+			<AccuracyLong>0.2</AccuracyLong>
+			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
 		</statBases>
 		<equippedStatOffsets>
 			<MoveSpeed>0.15</MoveSpeed>
@@ -142,18 +143,33 @@
 			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>
+					<li>(-0.2, 0, 1)</li>
+					<li>(0.2, 0, 1)</li>
+				</originOffsets>
+				<muzzleFlash>
+					<flashGraphicData>
+						<graphicClass>Graphic_Random</graphicClass>
+						<shaderType>TransparentPostLight</shaderType>
+						<texPath>Items/Weapons/Projectile/Flashes/Basic</texPath>
+					</flashGraphicData>
+					<fadeInTime>0.03</fadeInTime>
+					<solidTime>0.03</solidTime>
+					<fadeOutTime>0.1</fadeOutTime>
+					<scale>0.6</scale>
+				</muzzleFlash>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Nod_TwinFlechetteGun</defaultProjectile>
 				<warmupTime>0.5</warmupTime>
 				<range>14.9</range>
-				<forcedMissRadius>0.1</forcedMissRadius>
+				<forcedMissRadius>0.2</forcedMissRadius>
 				<burstShotCount>10</burstShotCount>
-				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<soundCast>Interact_AssaultRifle</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
-				<muzzleFlashScale>9</muzzleFlashScale>
+				<muzzleFlashScale>5</muzzleFlashScale>
 			</li>
 		</verbs>
 		<tools>
@@ -596,9 +612,20 @@
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_TR</verbClass>
 				<originOffsets>
-					<li>(-0.2, 0, 1.5)</li>
-					<li>(0.2, 0, 1.5)</li>
+					<li>(-0.13, 0, 1.35)</li>
+					<li>(0.13, 0, 1.35)</li>
 				</originOffsets>
+				<muzzleFlash>
+					<flashGraphicData>
+						<graphicClass>Graphic_Random</graphicClass>
+						<shaderType>TransparentPostLight</shaderType>
+						<texPath>Items/Weapons/Projectile/Flashes/Basic</texPath>
+					</flashGraphicData>
+					<fadeInTime>0.05</fadeInTime>
+					<solidTime>0.1</solidTime>
+					<fadeOutTime>0.2</fadeOutTime>
+					<scale>0.75</scale>
+				</muzzleFlash>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_NodRocket</defaultProjectile>
 				<warmupTime>4</warmupTime>
@@ -623,7 +650,6 @@
 			<li>MilitiaRocketLauncher</li>
 		</weaponTags>
 		<recipeMaker>
-			<!--<researchPrerequisite>NodResearch_AdvancedProduction</researchPrerequisite>-->
 			<skillRequirements>
 				<Crafting>8</Crafting>
 			</skillRequirements>

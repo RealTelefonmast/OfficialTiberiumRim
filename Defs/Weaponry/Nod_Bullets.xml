@@ -42,10 +42,10 @@
 		<defName>Bullet_NodAP</defName>
 		<label>bullet</label>
 		<graphicData>
-			<texPath>Items/Weapons/Projectile/Bullet_Base_Nod</texPath>
+			<texPath>Items/Weapons/Projectile/Bullet_AP_Nod</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
-			<drawSize>1.1</drawSize>
+			<drawSize>1.5</drawSize>
 		</graphicData>
 		<projectile>
 			<damageDef>Bullet</damageDef>
@@ -55,12 +55,12 @@
 		</projectile>
 	</ThingDef>
 	
-	<ThingDef ParentName="BaseBullet_TR">
+	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_Nod_TwinFlechetteGun</defName>
 		<label>tiberium flechette</label>
 		<graphicData>
-			<texPath>Items/Weapons/Projectile/Bullet_Nod_Tiberium</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Items/Weapons/Projectile/NodTib</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
 		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
@@ -68,11 +68,18 @@
 			<damageDef>Bullet</damageDef>
 			<damageAmountBase>3</damageAmountBase>
 			<speed>35</speed>
-			<preExplosionSpawnThingDef>FilthTiberiumGreen</preExplosionSpawnThingDef>
-			<preExplosionSpawnChance>0.1</preExplosionSpawnChance>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
-	</ThingDef>
+		<projectileExtended>
+			<impactEffecter>FlechetteHit</impactEffecter>
+			<impactFilth>
+				<filths>
+					<li>FilthTiberiumGreen, 0.1</li>
+				</filths>
+				<spreadRadius>0</spreadRadius>
+			</impactFilth>
+		</projectileExtended>
+	</TiberiumRim.TRThingDef>
 
 	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_FlamethrowerTower</defName>
