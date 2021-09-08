@@ -12,13 +12,13 @@
 		<soundInteract>Metal_Drop</soundInteract>
 		<soundDrop>Standard_Drop</soundDrop>
 		<techLevel>Industrial</techLevel>
-		<stackLimit>200</stackLimit>
+		<stackLimit>75</stackLimit>
 		<statBases>
-			<MaxHitPoints>75</MaxHitPoints>
-			<MarketValue>20</MarketValue>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>50</MarketValue>
 			<Mass>0.5</Mass>
-			<Flammability>0.50</Flammability>
-			<DeteriorationRate>0.50</DeteriorationRate>
+			<Flammability>0.5</Flammability>
+			<DeteriorationRate>0</DeteriorationRate>
 		</statBases>
 		<smeltable>true</smeltable>
 		<intricate>true</intricate>
@@ -39,11 +39,11 @@
 		<soundDrop>Standard_Drop</soundDrop>
 		<stackLimit>25</stackLimit>
 		<statBases>
-			<MaxHitPoints>175</MaxHitPoints>
-			<MarketValue>2500</MarketValue>
+			<MaxHitPoints>150</MaxHitPoints>
+			<MarketValue>1200</MarketValue>
 			<Mass>5</Mass>
 			<Flammability>1</Flammability>
-			<DeteriorationRate>0.90</DeteriorationRate>
+			<DeteriorationRate>0.5</DeteriorationRate>
 		</statBases>
 		<intricate>true</intricate>
 		<thingCategories>
@@ -52,10 +52,10 @@
 		<tickerType>Normal</tickerType>
 		<comps>
 			<li Class="CompProperties_Explosive">
-				<explosiveRadius>2</explosiveRadius>
+				<explosiveRadius>4</explosiveRadius>
 				<explosiveDamageType>TiberiumExplosionLQ</explosiveDamageType>
 				<explosiveExpandPerStackcount>0.2</explosiveExpandPerStackcount>
-				<startWickHitPointsPercent>0.1</startWickHitPointsPercent>
+				<startWickHitPointsPercent>0.2</startWickHitPointsPercent>
 				<wickTicks>
 					<min>5</min>
 					<max>5</max>

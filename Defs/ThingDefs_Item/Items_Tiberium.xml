@@ -1,6 +1,103 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>TiberiumPlantTree</defName>
+		<label>tiberium wood</label>
+		<description>This wood-like matter is unfortunately not usable like regular wood, except you want to breathe toxic spores all day. However it might be useful for medical application.</description>
+		<graphicData>
+			<texPath>Items/Resource/TiberiumWood</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>25</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>0.65</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>75</stackLimit>
+    </ThingDef>
 	
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>TiberiumPlantGrass</defName>
+		<label>tiberium grass</label>
+		<description>This alien grass seems... alive? You should most likely avoid traversing it.</description>
+		<graphicData>
+			<texPath>Items/Resource/TiberiumGrass</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<statBases>
+			<MaxHitPoints>25</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>5</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>0.85</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>75</stackLimit>
+    </ThingDef>
+	
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>TiberiumPlantShroom</defName>
+		<label>tiberium shroom</label>
+		<description>These plants seem to be a sort of fungi, heavily mutated or even evolved in these death driven fields. Just like the wood and grass that can be found nearby, it might be useful for medical application.</description>
+		<graphicData>
+			<texPath>Items/Resource/TiberiumShroom</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<statBases>
+			<MaxHitPoints>40</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>10</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>0.25</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>75</stackLimit>
+    </ThingDef>
+	
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>TiberiumPlantBerry</defName>
+		<label>tiberium berries</label>
+		<description>A bunch of strange fruit from various Tiberium flora, while not consumable, it could prove useful.</description>
+		<graphicData>
+			<texPath>Items/Resource/TiberiumBerry</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<statBases>
+			<MaxHitPoints>30</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>15</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>0.50</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>75</stackLimit>
+    </ThingDef>
+
+	<!--
 	<ThingDef ParentName="ResourceBase_TR">
 		<defName>BookRiparius</defName>
 		<label>riparius book</label>
@@ -72,104 +169,7 @@
 		</thingCategories>
 		<stackLimit>25</stackLimit>
     </ThingDef>
-	
-	
-	<ThingDef ParentName="ResourceBase_TR">
-		<defName>TiberiumPlantTree</defName>
-		<label>tiberium wood</label>
-		<description>This wood-like matter is unfortunately not usable like regular wood, except you want to breathe toxic spores all day. However it might be useful for medical application.</description>
-		<graphicData>
-			<texPath>Items/Resource/TiberiumWood</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<resourceReadoutPriority>First</resourceReadoutPriority>
-		<soundInteract>Wood_Drop</soundInteract>
-		<soundDrop>Wood_Drop</soundDrop>	
-		<statBases>
-			<MaxHitPoints>75</MaxHitPoints>
-			<DeteriorationRate>2</DeteriorationRate>
-			<MarketValue>25</MarketValue>
-			<Mass>0.1</Mass>
-			<Flammability>0.65</Flammability>
-		</statBases>
-		<thingCategories>
-			<li>TiberiumItems</li>
-		</thingCategories>
-		<stackLimit>75</stackLimit>
-    </ThingDef>
-	
-	<ThingDef ParentName="ResourceBase_TR">
-		<defName>TiberiumPlantGrass</defName>
-		<label>tiberium grass</label>
-		<description>This alien grass seems.. alive? You should most likely avoid traversing it.</description>
-		<graphicData>
-			<texPath>Items/Resource/TiberiumGrass</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<resourceReadoutPriority>First</resourceReadoutPriority>
-		<soundInteract>Wood_Drop</soundInteract>
-		<soundDrop>Wood_Drop</soundDrop>	
-		<statBases>
-			<MaxHitPoints>25</MaxHitPoints>
-			<DeteriorationRate>2</DeteriorationRate>
-			<MarketValue>5</MarketValue>
-			<Mass>0.1</Mass>
-			<Flammability>0.85</Flammability>
-		</statBases>
-		<thingCategories>
-			<li>TiberiumItems</li>
-		</thingCategories>
-		<stackLimit>125</stackLimit>
-    </ThingDef>
-	
-	<ThingDef ParentName="ResourceBase_TR">
-		<defName>TiberiumPlantShroom</defName>
-		<label>tiberium shroom</label>
-		<description>These plants seem to be a sort of fungi, heavily mutated or even evolved in these death driven fields. Just like the wood and grass that can be found nearby, it might be useful for medical application.</description>
-		<graphicData>
-			<texPath>Items/Resource/TiberiumShroom</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<resourceReadoutPriority>First</resourceReadoutPriority>
-		<soundInteract>Wood_Drop</soundInteract>
-		<soundDrop>Wood_Drop</soundDrop>	
-		<statBases>
-			<MaxHitPoints>40</MaxHitPoints>
-			<DeteriorationRate>2</DeteriorationRate>
-			<MarketValue>10</MarketValue>
-			<Mass>0.1</Mass>
-			<Flammability>0.25</Flammability>
-		</statBases>
-		<thingCategories>
-			<li>TiberiumItems</li>
-		</thingCategories>
-		<stackLimit>100</stackLimit>
-    </ThingDef>
-	
-	<ThingDef ParentName="ResourceBase_TR">
-		<defName>TiberiumPlantBerry</defName>
-		<label>tiberium berries</label>
-		<description>A bunch of strange fruit from various Tiberium flora, while not consumable, it could prove useful.</description>
-		<graphicData>
-			<texPath>Items/Resource/TiberiumBerry</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<resourceReadoutPriority>First</resourceReadoutPriority>
-		<soundInteract>Wood_Drop</soundInteract>
-		<soundDrop>Wood_Drop</soundDrop>	
-		<statBases>
-			<MaxHitPoints>30</MaxHitPoints>
-			<DeteriorationRate>2</DeteriorationRate>
-			<MarketValue>15</MarketValue>
-			<Mass>0.1</Mass>
-			<Flammability>0.50</Flammability>
-		</statBases>
-		<thingCategories>
-			<li>TiberiumItems</li>
-		</thingCategories>
-		<stackLimit>225</stackLimit>
-    </ThingDef>
-	
+		-->
 	
 	<!-- TO DO: 
 	<ThingDef ParentName="MakeableDrugPillBase">
