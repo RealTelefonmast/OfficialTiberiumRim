@@ -31,20 +31,13 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.2</drawSize>
 		</graphicData>
-		<!--
-		<requisites>
-			<tiberiumResearchTasks>
-				<li>BasicArsenal_T1</li>
-			</tiberiumResearchTasks>
-		</requisites>
-		-->
 		<statBases>
-			<WorkToMake>40000</WorkToMake>
+			<WorkToMake>42000</WorkToMake>
 			<Mass>3.5</Mass>
-			<AccuracyTouch>0.60</AccuracyTouch>
-			<AccuracyShort>0.70</AccuracyShort>
-			<AccuracyMedium>0.65</AccuracyMedium>
-			<AccuracyLong>0.55</AccuracyLong>
+			<AccuracyTouch>0.55</AccuracyTouch>
+			<AccuracyShort>0.65</AccuracyShort>
+			<AccuracyMedium>0.60</AccuracyMedium>
+			<AccuracyLong>0.50</AccuracyLong>
 			<RangedWeapon_Cooldown>1.70</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
@@ -72,7 +65,7 @@
 				<defaultProjectile>Bullet_GDIStandard</defaultProjectile>
 				<secondaryProjectile>Bullet_GDIAP</secondaryProjectile>
 				<warmupTime>1.2</warmupTime>
-				<range>30.9</range>
+				<range>28.9</range>
 				<burstShotCount>4</burstShotCount>
 				<ticksBetweenBurstShots>12</ticksBetweenBurstShots>
 				<soundCast>Shot_AssaultRifle</soundCast>
@@ -86,8 +79,8 @@
 			<capacities>
 			  <li>Blunt</li>
 			</capacities>
-			<power>16</power>
-			<cooldownTime>2.5</cooldownTime>
+			<power>12</power>
+			<cooldownTime>3</cooldownTime>
 		  </li>
 		  <li>
 			<label>barrel</label>
@@ -95,24 +88,27 @@
 			  <li>Blunt</li>
 			  <li>Poke</li>
 			</capacities>
-			<power>9</power>
-			<cooldownTime>2</cooldownTime>
+			<power>12</power>
+			<cooldownTime>3</cooldownTime>
 		  </li>
 		</tools>
 		<weaponTags>
 			<li>GDIRifle</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>LongShots</li>
+		</weaponClasses>
 		<requisites>
 			<tiberiumResearch>
 				<li>GDIExperimental1</li>
+				<!--<li>BasicArsenal_T1</li>-->
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
 	
-	<!-- Allow multi ammo type -->
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
-		<defName>GDI_StunLauncher</defName>
-		<label>GDI stun grenade launcher</label>
+		<defName>GDI_GreLauncher</defName>
+		<label>GDI grenade thrower</label>
 		<description>A classic grenade launcher, equipped with stun grenades.</description>
 		<graphicData>
 			<texPath>Items/Weapons/GDI/DiscThrower</texPath>
@@ -122,7 +118,7 @@
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
 			<WorkToMake>35000</WorkToMake>
-			<Mass>4.0</Mass>
+			<Mass>4</Mass>
 			<RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
@@ -159,6 +155,7 @@
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>
+				<ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
 			</li>
 		</verbs>
 		<tools>
@@ -167,8 +164,8 @@
 			<capacities>
 			  <li>Blunt</li>
 			</capacities>
-			<power>7</power>
-			<cooldownTime>1.8</cooldownTime>
+			<power>8</power>
+			<cooldownTime>2</cooldownTime>
 		  </li>
 		  <li>
 			<label>barrel</label>
@@ -176,8 +173,8 @@
 			  <li>Blunt</li>
 			  <li>Poke</li>
 			</capacities>
-			<power>7.7</power>
-			<cooldownTime>1.9</cooldownTime>
+			<power>8</power>
+			<cooldownTime>2</cooldownTime>
 		  </li>
 		</tools>
 		<weaponTags>
@@ -185,10 +182,11 @@
 		</weaponTags>
 		<weaponClasses>
 			<li>RangedHeavy</li>
+			<li>LongShots</li>
 		</weaponClasses>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental2</li>
+				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -206,16 +204,16 @@
 		<statBases>
 			<WorkToMake>60000</WorkToMake>
 			<Mass>15.5</Mass>
-			<AccuracyTouch>0.35</AccuracyTouch>
-			<AccuracyShort>0.65</AccuracyShort>
-			<AccuracyMedium>0.9</AccuracyMedium>
-			<AccuracyLong>1</AccuracyLong>
-			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<AccuracyTouch>0.4</AccuracyTouch>
+			<AccuracyShort>0.5</AccuracyShort>
+			<AccuracyMedium>0.6</AccuracyMedium>
+			<AccuracyLong>0.7</AccuracyLong>
+			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
 		</statBases>
 		<conditionalStatOffsets>
 			<li>
 				<unequippedOffsets>
-					<MoveSpeed>-0.40</MoveSpeed>
+					<MoveSpeed>-0.20</MoveSpeed>
 				</unequippedOffsets>
 				<requiredEquip>
 					<li>Apparel_GDIZoneSuit</li>
@@ -225,7 +223,6 @@
 		<costList>
 			<GDI_StandardRifle>1</GDI_StandardRifle>
 			<ComponentSpacer>2</ComponentSpacer>
-			<TRBattleChip>2</TRBattleChip>
 		</costList>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
@@ -233,8 +230,8 @@
 				<beamProps>
 					<damageDef>TRRailgun</damageDef>
 					<damageBase>45</damageBase>
-					<stoppingPower>0.5</stoppingPower>
-					<armorPenetration>0.5</armorPenetration>
+					<stoppingPower>0.25</stoppingPower>
+					<armorPenetration>0.75</armorPenetration>
 					<beamTexturePath>Items/Weapons/Projectile/Bullet_Railshot</beamTexturePath>
 					<fadeInTime>0.05</fadeInTime>
 					<solidTime>0.15</solidTime>
@@ -246,14 +243,14 @@
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
 				<requireLineOfSight>true</requireLineOfSight>
-				<warmupTime>2</warmupTime>
-				<range>44.9</range>
+				<warmupTime>1.8</warmupTime>
+				<range>39.9</range>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<soundCast>Shot_GDI_Railgun</soundCast>
 				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
 				<muzzleFlashScale>10</muzzleFlashScale>
-				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				<ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
 			</li>
 		</verbs>
 		<tools>
@@ -262,8 +259,8 @@
 			<capacities>
 			  <li>Blunt</li>
 			</capacities>
-			<power>10</power>
-			<cooldownTime>2</cooldownTime>
+			<power>15</power>
+			<cooldownTime>3</cooldownTime>
 		  </li>
 		  <li>
 			<label>barrel</label>
@@ -271,8 +268,8 @@
 			  <li>Blunt</li>
 			  <li>Poke</li>
 			</capacities>
-			<power>10</power>
-			<cooldownTime>2</cooldownTime>
+			<power>15</power>
+			<cooldownTime>3</cooldownTime>
 		  </li>
 		</tools>
 		<weaponTags>
@@ -316,7 +313,7 @@
 		<conditionalStatOffsets>
 			<li>
 				<unequippedOffsets>
-					<MoveSpeed>-0.40</MoveSpeed>
+					<MoveSpeed>-0.20</MoveSpeed>
 				</unequippedOffsets>
 				<requiredEquip>
 					<li>Apparel_GDIZoneSuit</li>
@@ -327,7 +324,6 @@
 			<GDI_ReinforcedPlate>50</GDI_ReinforcedPlate>
 			<GDI_SonicCore>1</GDI_SonicCore>
 			<ComponentSpacer>3</ComponentSpacer>
-			<TRBattleChip>3</TRBattleChip>
 		</costList>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
@@ -362,7 +358,7 @@
 				</targetParams>
 				<muzzleFlashScale>10</muzzleFlashScale>
 				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
-				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				<ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
 			</li>
 		</verbs>
 		<tools>
@@ -371,8 +367,8 @@
 			<capacities>
 			  <li>Blunt</li>
 			</capacities>
-			<power>7</power>
-			<cooldownTime>1.8</cooldownTime>
+			<power>15</power>
+			<cooldownTime>3</cooldownTime>
 		  </li>
 		  <li>
 			<label>barrel</label>
@@ -380,8 +376,8 @@
 			  <li>Blunt</li>
 			  <li>Poke</li>
 			</capacities>
-			<power>7.7</power>
-			<cooldownTime>1.9</cooldownTime>
+			<power>15</power>
+			<cooldownTime>3</cooldownTime>
 		  </li>
 		</tools>
 		<weaponTags>
@@ -416,16 +412,12 @@
 		<statBases>
 			<WorkToMake>50000</WorkToMake>
 			<Mass>10.0</Mass>
-			<AccuracyTouch>0.3</AccuracyTouch>
-			<AccuracyShort>0.4</AccuracyShort>
-			<AccuracyMedium>0.5</AccuracyMedium>
-			<AccuracyLong>0.6</AccuracyLong>
 			<RangedWeapon_Cooldown>6</RangedWeapon_Cooldown>
 		</statBases>
 		<conditionalStatOffsets>
 			<li>
 				<unequippedOffsets>
-					<MoveSpeed>-0.20</MoveSpeed>
+					<MoveSpeed>-0.40</MoveSpeed>
 				</unequippedOffsets>
 				<requiredEquip>
 					<li>Apparel_GDIZoneSuit</li>
@@ -435,18 +427,17 @@
 		<costList>
 			<GDI_ReinforcedPlate>50</GDI_ReinforcedPlate>
 			<ComponentSpacer>2</ComponentSpacer>
-			<TRBattleChip>2</TRBattleChip>
 		</costList>
 		<verbs>
 			<li>
 				<verbClass>Verb_LaunchProjectile</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Mortar</defaultProjectile>
-				<warmupTime>5</warmupTime>
+				<warmupTime>6</warmupTime>
 				<requireLineOfSight>false</requireLineOfSight>
 				<range>49.9</range>
 				<minRange>9.9</minRange>
-				<forcedMissRadius>2</forcedMissRadius>
+				<forcedMissRadius>3.9</forcedMissRadius>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<soundCast>Mortar_LaunchA</soundCast>
@@ -467,11 +458,6 @@
 		<equippedStatOffsets>
 			<MoveSpeed>-0.15</MoveSpeed>
 		</equippedStatOffsets>
-		<recipeMaker>
-			<skillRequirements>
-				<Crafting>8</Crafting>
-			</skillRequirements>
-		</recipeMaker>
 		<weaponClasses>
 			<li>RangedHeavy</li>
 			<li>LongShots</li>
@@ -496,16 +482,12 @@
 		<statBases>
 			<WorkToMake>20000</WorkToMake>
 			<Mass>10.0</Mass>
-			<AccuracyTouch>0.3</AccuracyTouch>
-			<AccuracyShort>0.4</AccuracyShort>
-			<AccuracyMedium>0.5</AccuracyMedium>
-			<AccuracyLong>0.6</AccuracyLong>
 			<RangedWeapon_Cooldown>6</RangedWeapon_Cooldown>
 		</statBases>
 		<conditionalStatOffsets>
 			<li>
 				<unequippedOffsets>
-					<MoveSpeed>-0.20</MoveSpeed>
+					<MoveSpeed>-0.40</MoveSpeed>
 				</unequippedOffsets>
 				<requiredEquip>
 					<li>Apparel_GDIZoneSuit</li>
@@ -516,7 +498,6 @@
 			<GDI_Mortar>1</GDI_Mortar>
 			<GDI_SonicCore>1</GDI_SonicCore>
 			<ComponentSpacer>1</ComponentSpacer>
-			<TRBattleChip>1</TRBattleChip>
 		</costList>
 		<verbs>
 			<li>
@@ -524,10 +505,10 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_ShockShell</defaultProjectile>
 				<requireLineOfSight>false</requireLineOfSight>
-				<warmupTime>5</warmupTime>
+				<warmupTime>6</warmupTime>
 				<range>49.9</range>
 				<minRange>9.9</minRange>
-				<forcedMissRadius>2</forcedMissRadius>
+				<forcedMissRadius>3.9</forcedMissRadius>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<soundCast>Mortar_LaunchA</soundCast>

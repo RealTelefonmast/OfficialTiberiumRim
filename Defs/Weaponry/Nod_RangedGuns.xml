@@ -40,17 +40,14 @@
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
-			<WorkToMake>40000</WorkToMake>
+			<WorkToMake>42000</WorkToMake>
 			<Mass>3.5</Mass>
-			<AccuracyTouch>0.60</AccuracyTouch>
-			<AccuracyShort>0.70</AccuracyShort>
-			<AccuracyMedium>0.65</AccuracyMedium>
-			<AccuracyLong>0.55</AccuracyLong>
+			<AccuracyTouch>0.55</AccuracyTouch>
+			<AccuracyShort>0.65</AccuracyShort>
+			<AccuracyMedium>0.60</AccuracyMedium>
+			<AccuracyLong>0.50</AccuracyLong>
 			<RangedWeapon_Cooldown>1.70</RangedWeapon_Cooldown>
 		</statBases>
-		<equippedStatOffsets>
-			<MoveSpeed>0.05</MoveSpeed>
-		</equippedStatOffsets>
 		<costList>
 			<Nod_CarbonPlate>25</Nod_CarbonPlate>
 			<ComponentIndustrial>8</ComponentIndustrial>
@@ -76,7 +73,7 @@
 				<defaultProjectile>Bullet_NodStandard</defaultProjectile>
 				<secondaryProjectile>Bullet_NodAP</secondaryProjectile>
 				<warmupTime>1.2</warmupTime>
-				<range>30.9</range>
+				<range>28.9</range>
 				<burstShotCount>5</burstShotCount>
 				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
 				<soundCast>Shot_HeavySMG</soundCast>
@@ -90,7 +87,7 @@
 			<capacities>
 			  <li>Blunt</li>
 			</capacities>
-			<power>9</power>
+			<power>8</power>
 			<cooldownTime>2</cooldownTime>
 		  </li>
 		  <li>
@@ -99,16 +96,16 @@
 			  <li>Blunt</li>
 			  <li>Poke</li>
 			</capacities>
-			<power>9</power>
+			<power>8</power>
 			<cooldownTime>2</cooldownTime>
 		  </li>
 		</tools>
 		<weaponTags>
 			<li>NodRifle</li>
 		</weaponTags>
-		<recipeMaker>
-			<!--<researchPrerequisite>NodResearch_Technology</researchPrerequisite>-->
-		</recipeMaker>
+		<weaponClasses>
+			<li>LongShots</li>
+		</weaponClasses>
 		<requisites>
 			<tiberiumResearch>
 				<li>NODExperimental1</li>
@@ -129,17 +126,17 @@
 		<statBases>
 			<WorkToMake>35000</WorkToMake>
 			<Mass>2.0</Mass>
-			<AccuracyTouch>0.6</AccuracyTouch>
-			<AccuracyShort>0.7</AccuracyShort>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.6</AccuracyShort>
 			<AccuracyMedium>0.5</AccuracyMedium>
 			<AccuracyLong>0.2</AccuracyLong>
-			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
 		</statBases>
 		<equippedStatOffsets>
 			<MoveSpeed>0.15</MoveSpeed>
 		</equippedStatOffsets>
-		<costList><!-- Add custom recipe component; Tiberium; maybe upgradable using blue tiberium -->
-			<Nod_CarbonPlate>15</Nod_CarbonPlate>
+		<costList>
+			<Nod_CarbonPlate>25</Nod_CarbonPlate>
 			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<verbs>
@@ -162,7 +159,7 @@
 				</muzzleFlash>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Nod_TwinFlechetteGun</defaultProjectile>
-				<warmupTime>0.5</warmupTime>
+				<warmupTime>0.25</warmupTime>
 				<range>14.9</range>
 				<forcedMissRadius>0.2</forcedMissRadius>
 				<burstShotCount>10</burstShotCount>
@@ -178,8 +175,8 @@
 			<capacities>
 			  <li>Blunt</li>
 			</capacities>
-			<power>6</power>
-			<cooldownTime>1.25</cooldownTime>
+			<power>5</power>
+			<cooldownTime>1</cooldownTime>
 		  </li>
 		  <li>
 			<label>barrel</label>
@@ -187,16 +184,13 @@
 			  <li>Blunt</li>
 			  <li>Poke</li>
 			</capacities>
-			<power>6</power>
-			<cooldownTime>1.25</cooldownTime>
+			<power>5</power>
+			<cooldownTime>1</cooldownTime>
 		  </li>
 		</tools>
 		<weaponTags>
 			<li>TwinFlechetteGun</li>
 		</weaponTags>
-		<recipeMaker>
-			<!--<researchPrerequisite>NodResearch_Production</researchPrerequisite>-->
-		</recipeMaker>
 		<weaponClasses>
 			<li>RangedLight</li>
 			<li>ShortShots</li>
@@ -221,16 +215,15 @@
 		<statBases>
 			<WorkToMake>30000</WorkToMake>
 			<Mass>4.0</Mass>
-			<AccuracyTouch>0.70</AccuracyTouch>
-			<AccuracyShort>0.87</AccuracyShort>
-			<AccuracyMedium>0.77</AccuracyMedium>
-			<AccuracyLong>0.64</AccuracyLong>
-			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<AccuracyTouch>0.4</AccuracyTouch>
+			<AccuracyShort>0.5</AccuracyShort>
+			<AccuracyMedium>0.6</AccuracyMedium>
+			<AccuracyLong>0.6</AccuracyLong>
+			<RangedWeapon_Cooldown>2.2</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
 			<Nod_StandardRifle>1</Nod_StandardRifle>
 			<ComponentSpacer>1</ComponentSpacer>
-			<TRBattleChip>1</TRBattleChip>
 		</costList>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
@@ -252,8 +245,8 @@
 					<li>(-0.05, 0, -0.45)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
-				<warmupTime>1.5</warmupTime>
-				<range>34.9</range>
+				<warmupTime>1.25</warmupTime>
+				<range>30.9</range>
 				<burstShotCount>3</burstShotCount>
 				<ticksBetweenBurstShots>12</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_Laser</soundCast>
@@ -268,7 +261,7 @@
 			<capacities>
 			  <li>Blunt</li>
 			</capacities>
-			<power>7</power>
+			<power>8</power>
 			<cooldownTime>1.8</cooldownTime>
 		  </li>
 		  <li>
@@ -277,19 +270,13 @@
 			  <li>Blunt</li>
 			  <li>Poke</li>
 			</capacities>
-			<power>7.7</power>
-			<cooldownTime>1.9</cooldownTime>
+			<power>8</power>
+			<cooldownTime>1.8</cooldownTime>
 		  </li>
 		</tools>
 		<weaponTags>
 			<li>NodLaserRifle</li>
 		</weaponTags>
-		<recipeMaker>
-			<!--<researchPrerequisite>NodResearch_Production</researchPrerequisite>-->
-			<skillRequirements>
-				<Crafting>8</Crafting>
-			</skillRequirements>
-		</recipeMaker>
 		<requisites>
 			<tiberiumResearch>
 				<li>NODExperimental2</li>
@@ -310,24 +297,23 @@
 		<statBases>
 			<WorkToMake>30000</WorkToMake>
 			<Mass>5.0</Mass>
-			<AccuracyTouch>0.70</AccuracyTouch>
-			<AccuracyShort>0.87</AccuracyShort>
-			<AccuracyMedium>0.77</AccuracyMedium>
-			<AccuracyLong>0.64</AccuracyLong>
-			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<AccuracyTouch>0.4</AccuracyTouch>
+			<AccuracyShort>0.5</AccuracyShort>
+			<AccuracyMedium>0.6</AccuracyMedium>
+			<AccuracyLong>0.6</AccuracyLong>
+			<RangedWeapon_Cooldown>2.2</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
 			<Nod_LaserRifleSmall>1</Nod_LaserRifleSmall>
 			<ComponentSpacer>1</ComponentSpacer>
-			<TRBattleChip>1</TRBattleChip>
 		</costList>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaser</damageDef>
-					<damageBase>20</damageBase>
-					<stoppingPower>0.2</stoppingPower>
+					<damageBase>18</damageBase>
+					<stoppingPower>0.1</stoppingPower>
 					<armorPenetration>0.5</armorPenetration>
 					<beamTexturePath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam</beamTexturePath>
 					<fadeInTime>0.05</fadeInTime>
@@ -341,13 +327,13 @@
 					<li>(-0.05, 0, -0.4)</li>
 				</originOffsets>
 				<hasStandardCommand>true</hasStandardCommand>
-				<warmupTime>1.5</warmupTime>
-				<range>39.9</range>
+				<warmupTime>1.25</warmupTime>
+				<range>32.9</range>
 				<burstShotCount>3</burstShotCount>
 				<ticksBetweenBurstShots>13</ticksBetweenBurstShots>
 				<soundCast>Shot_Nod_LaserLarge</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
-				<muzzleFlashScale>9</muzzleFlashScale>
+				<muzzleFlashScale>10</muzzleFlashScale>
 				<ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
 			</li>
 		</verbs>
@@ -358,7 +344,7 @@
 			  <li>Blunt</li>
 			</capacities>
 			<power>10</power>
-			<cooldownTime>2</cooldownTime>
+			<cooldownTime>1.8</cooldownTime>
 		  </li>
 		  <li>
 			<label>barrel</label>
@@ -367,14 +353,13 @@
 			  <li>Poke</li>
 			</capacities>
 			<power>10</power>
-			<cooldownTime>2</cooldownTime>
+			<cooldownTime>1.8</cooldownTime>
 		  </li>
 		</tools>
 		<weaponTags>
 			<li>NodLaserRifle</li>
 		</weaponTags>
 		<recipeMaker>
-			<!--<researchPrerequisite>NodResearch_AdvancedProduction</researchPrerequisite>-->
 			<skillRequirements>
 				<Crafting>10</Crafting>
 			</skillRequirements>
@@ -403,16 +388,16 @@
 		<statBases>
 			<WorkToMake>50000</WorkToMake>
 			<Mass>11.0</Mass>
-			<AccuracyTouch>0.8</AccuracyTouch>
-			<AccuracyShort>0.7</AccuracyShort>
-			<AccuracyMedium>0.6</AccuracyMedium>
-			<AccuracyLong>0.5</AccuracyLong>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.5</AccuracyShort>
+			<AccuracyMedium>0.4</AccuracyMedium>
+			<AccuracyLong>0.3</AccuracyLong>
 			<RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
 		</statBases>
 		<conditionalStatOffsets>
 			<li>
 				<unequippedOffsets>
-					<MoveSpeed>-0.35</MoveSpeed>
+					<MoveSpeed>-0.3</MoveSpeed>
 				</unequippedOffsets>
 				<requiredEquip>
 					<li>Apparel_NodBlackHand</li>
@@ -424,7 +409,6 @@
 			<Chemfuel>25</Chemfuel>
 			<ComponentIndustrial>5</ComponentIndustrial>
 			<ComponentSpacer>1</ComponentSpacer>
-			<TRBattleChip>1</TRBattleChip>
 		</costList>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
@@ -446,6 +430,7 @@
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>
 				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
 			</li>
 		</verbs>
 		<tools>
@@ -470,12 +455,6 @@
 		<weaponTags>
 			<li>NodFlamethrower</li>
 		</weaponTags>
-		<recipeMaker>
-			<!--<researchPrerequisite>NodResearch_AdvancedProduction</researchPrerequisite>-->
-			<skillRequirements>
-				<Crafting>8</Crafting>
-			</skillRequirements>
-		</recipeMaker>
 		<weaponClasses>
 			<li>RangedHeavy</li>
 			<li>ShortShots</li>
@@ -500,16 +479,16 @@
 		<statBases>
 			<WorkToMake>20000</WorkToMake>
 			<Mass>13.0</Mass>
-			<AccuracyTouch>0.8</AccuracyTouch>
-			<AccuracyShort>0.7</AccuracyShort>
-			<AccuracyMedium>0.6</AccuracyMedium>
-			<AccuracyLong>0.5</AccuracyLong>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.5</AccuracyShort>
+			<AccuracyMedium>0.4</AccuracyMedium>
+			<AccuracyLong>0.3</AccuracyLong>
 			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
 		</statBases>
 		<conditionalStatOffsets>
 			<li>
 				<unequippedOffsets>
-					<MoveSpeed>-0.35</MoveSpeed>
+					<MoveSpeed>-0.3</MoveSpeed>
 				</unequippedOffsets>
 				<requiredEquip>
 					<li>Apparel_NodBlackHand</li>
@@ -520,7 +499,6 @@
 			<Nod_Flamethrower>1</Nod_Flamethrower>
 			<Nod_LQTiberiumCore>1</Nod_LQTiberiumCore>
 			<ComponentSpacer>2</ComponentSpacer>
-			<TRBattleChip>2</TRBattleChip>
 		</costList>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
@@ -542,6 +520,7 @@
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>
 				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
 			</li>
 		</verbs>
 		<tools>
@@ -550,8 +529,8 @@
 			<capacities>
 			  <li>Blunt</li>
 			</capacities>
-			<power>8</power>
-			<cooldownTime>1.8</cooldownTime>
+			<power>15</power>
+			<cooldownTime>3</cooldownTime>
 		  </li>
 		  <li>
 			<label>barrel</label>
@@ -559,15 +538,14 @@
 			  <li>Blunt</li>
 			  <li>Poke</li>
 			</capacities>
-			<power>9</power>
-			<cooldownTime>1.9</cooldownTime>
+			<power>15</power>
+			<cooldownTime>3</cooldownTime>
 		  </li>
 		</tools>
 		<weaponTags>
 			<li>NodChemicalSpray</li>
 		</weaponTags>
 		<recipeMaker>
-			<!--<researchPrerequisite>NodResearch_LiquidTechnology</researchPrerequisite>-->
 			<skillRequirements>
 				<Crafting>10</Crafting>
 			</skillRequirements>
@@ -595,10 +573,6 @@
 		<statBases>
 			<WorkToMake>45000</WorkToMake>
 			<Mass>8</Mass>
-			<AccuracyTouch>0.3</AccuracyTouch>
-			<AccuracyShort>0.4</AccuracyShort>
-			<AccuracyMedium>0.6</AccuracyMedium>
-			<AccuracyLong>0.5</AccuracyLong>
 			<RangedWeapon_Cooldown>4</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
@@ -629,19 +603,18 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_NodRocket</defaultProjectile>
 				<warmupTime>4</warmupTime>
-				<range>34.9</range>
+				<range>28.9</range>
 				<minRange>4.9</minRange>
-				<forcedMissRadius>1.5</forcedMissRadius>
+				<forcedMissRadius>1.9</forcedMissRadius>
 				<burstShotCount>2</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<soundCast>Nod_Rocket</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
 				<onlyManualCast>true</onlyManualCast>
-				<stopBurstWithoutLos>false</stopBurstWithoutLos>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>
-				<muzzleFlashScale>14</muzzleFlashScale>
+				<muzzleFlashScale>10</muzzleFlashScale>
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
 				<ai_AvoidFriendlyFireRadius>5</ai_AvoidFriendlyFireRadius>
 			</li>
@@ -649,11 +622,6 @@
 		<weaponTags>
 			<li>MilitiaRocketLauncher</li>
 		</weaponTags>
-		<recipeMaker>
-			<skillRequirements>
-				<Crafting>8</Crafting>
-			</skillRequirements>
-		</recipeMaker>
 		<weaponClasses>
 			<li>RangedHeavy</li>
 			<li>LongShots</li>
