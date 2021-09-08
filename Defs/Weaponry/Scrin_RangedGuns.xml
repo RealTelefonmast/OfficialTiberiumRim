@@ -182,9 +182,6 @@
 		</statBases>
 		<tradeability>None</tradeability>
 		<techLevel>Ultra</techLevel>
-		<weaponTags>
-			<li>ScrinChargeGun</li>
-		</weaponTags>
 		<verbs>
 			<li Class="TiberiumRim.VerbProperties_TR">
 				<verbClass>TiberiumRim.Verb_Beam</verbClass>
@@ -234,6 +231,9 @@
 				<cooldownTime>2</cooldownTime>
 			</li>
 		</tools>
+		<weaponTags>
+			<li>ScrinArtifactWeapon</li>
+		</weaponTags>
 		<weaponClasses>
 			<li>RangedHeavy</li>
 			<li>LongShots</li>

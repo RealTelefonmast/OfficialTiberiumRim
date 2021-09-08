@@ -80,6 +80,7 @@
 		<combatPower>200</combatPower>
 		<weaponTags>
 			<li>GDIRailgun</li>
+			<li>ScrinArtifactWeapon</li>
 		</weaponTags>
 		<apparelRequired>
 			<li>Apparel_GDIZoneHelmet</li>
@@ -157,7 +158,7 @@
   	<PawnKindDef ParentName="GDIBase">
 		<defName>GDI_Soldier</defName>
 		<label>soldier</label>
-		<combatPower>75</combatPower>
+		<combatPower>80</combatPower>
 	    <apparelRequired>
 			<li>Apparel_GDISoldierHelmet</li>
 			<li>Apparel_GDISoldierSuit</li>
@@ -166,11 +167,11 @@
 		<apparelTags>
 			<li>GDISoldier</li>
 			<li>FactionInnerSet</li>
+			<li>BeltDefensePop</li>
 		</apparelTags>
-		<weaponMoney>1600~1600</weaponMoney>
+		<weaponMoney>1750~3000</weaponMoney>
 		<apparelMoney>7500~7500</apparelMoney>
 		<weaponTags>
-			<li>Gun</li>
 			<li>GDIRifle</li>
 		</weaponTags>
 	</PawnKindDef>
@@ -187,7 +188,6 @@
 		<aiAvoidCover>true</aiAvoidCover>
 		<apparelTags>
 			<li>GDIZone</li>
-			<li>BeltDefensePop</li>
 			<li>FactionInnerSet</li>
 		</apparelTags>
 		<weaponMoney>6000~6000</weaponMoney>
@@ -244,6 +244,7 @@
 		<weaponMoney>7500~7500</weaponMoney>
 		<apparelMoney>15000~15000</apparelMoney>
 		<weaponTags>
+			<li>GDIGranade</li>
 			<li>GDIMobileMortar</li>
 		</weaponTags>
 		<inventoryOptions>

@@ -93,6 +93,7 @@
     </apparelTags>
 	<weaponTags>
 		<li>NodLaserRifle</li>
+		<li>ScrinArtifactWeapon</li>
 	</weaponTags>
     <factionLeader>true</factionLeader>
     <minGenerationAge>40</minGenerationAge>
@@ -168,7 +169,6 @@
 	</apparelRequired>
     <apparelTags>
 		<li>NodBlackHand</li>
-		<li>BeltDefensePop</li>
 		<li>FactionInnerSet</li>
 	</apparelTags>
     <weaponMoney>6000~6000</weaponMoney>
@@ -232,7 +232,7 @@
 	<PawnKindDef ParentName="NodBase">
 		<defName>Nod_Soldier</defName>
 		<label>Soldier</label>
-		<combatPower>75</combatPower>
+		<combatPower>80</combatPower>
 	    <apparelRequired>
 			<li>Apparel_NodSoldierHelmet</li>
 			<li>Apparel_NodSoldierSuit</li>
@@ -241,11 +241,11 @@
 		<apparelTags>
 			<li>NodSoldier</li>
 			<li>FactionInnerSet</li>
+			<li>BeltDefensePop</li>
 		</apparelTags>
-		<weaponMoney>1600~1600</weaponMoney>
+		<weaponMoney>1750~3000</weaponMoney>
 		<apparelMoney>7500~7500</apparelMoney>
 		<weaponTags>
-			<li>Gun</li>
 			<li>NodRifle</li>
 		</weaponTags>
 	</PawnKindDef>
@@ -253,7 +253,7 @@
 	<PawnKindDef ParentName="NodBase">
 		<defName>Nod_Militia</defName>
 		<label>Militia</label>
-		<combatPower>75</combatPower>
+		<combatPower>70</combatPower>
 		<canBeSapper>true</canBeSapper>
 		<apparelRequired>
 			<li>Apparel_NodMilitiaMask</li>
@@ -264,10 +264,10 @@
 			<li>NodMilitia</li>
 			<li>FactionInnerSet</li>
 		</apparelTags>
-		<weaponMoney>1600~1600</weaponMoney>
+		<weaponMoney>1500~2500</weaponMoney>
 		<apparelMoney>7500~7500</apparelMoney>
 		<weaponTags>
-			<li>NodRifle</li>
+			<li>Gun</li>
 			<li>TwinFlechetteGun</li>
 		</weaponTags>
 	</PawnKindDef>

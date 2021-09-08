@@ -94,8 +94,9 @@
     <weaponMoney>20000~20000</weaponMoney>
     <apparelMoney>20000~20000</apparelMoney>
 	<weaponTags>
-	  <li>GDIRailgun</li>	
+	  <li>GDIRailgun</li>
 	  <li>NodChemicalSpray</li>
+	  <li>ScrinArtifactWeapon</li>
 	</weaponTags>
     <factionLeader>true</factionLeader>
     <itemQuality>Excellent</itemQuality>
