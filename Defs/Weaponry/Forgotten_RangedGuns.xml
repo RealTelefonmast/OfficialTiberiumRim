@@ -6,7 +6,7 @@
 		<label>shard gun</label>
 		<description>A simple shotgun made from scrap and other components. Launches crushed tiberium crystals towards the target, may accidentally seed the ground with green tiberium.\n\nUpgradable to the explosive shard launcher.</description>
 		<graphicData>
-			<texPath>Items/Weapons/Forgotten/TibShardgun</texPath>
+			<texPath>Items/Weapons/Forgotten/TibShardgun_A</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.25</drawSize>
 		</graphicData>
