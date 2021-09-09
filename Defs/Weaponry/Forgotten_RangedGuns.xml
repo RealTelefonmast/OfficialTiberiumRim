@@ -1,7 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+	<TiberiumRim.TRThingDef Name="Forg_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
+		<soundInteract>Interact_Rifle</soundInteract>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>TiberiumWorkbench</li>
+			</recipeUsers>
+			<unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+			<researchPrerequisite>Gunsmithing</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<weaponTags>
+			<li>Forg_Gun</li>
+		</weaponTags>
+	</TiberiumRim.TRThingDef>	
 
-	<TiberiumRim.TRThingDef ParentName="BaseMakeableGun_TR">
+	<TiberiumRim.TRThingDef ParentName="Forg_Gun">
 		<defName>Forg_ShardgunGreen</defName>
 		<label>shard gun</label>
 		<description>A simple shotgun made from scrap and other components. Launches crushed tiberium crystals towards the target, may accidentally seed the ground with green tiberium.\n\nUpgradable to the explosive shard launcher.</description>
@@ -52,7 +72,7 @@
 				<burstShotCount>3</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<soundCast>Shot_Shotgun</soundCast>
-				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
 				<muzzleFlashScale>5</muzzleFlashScale>
 			</li>
 		</verbs>
@@ -86,7 +106,7 @@
 		</requisites>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BaseMakeableGun_TR">
+	<TiberiumRim.TRThingDef ParentName="Forg_Gun">
 		<defName>Forg_ShardgunBlue</defName>
 		<label>chain shard gun</label>
 		<description>A heavy scrap metal chaingun. Launches crushed tiberium crystals towards the target, may accidentally seed the ground with blue tiberium. Blue tiberium tends to burn.</description>
@@ -140,7 +160,7 @@
 				<burstShotCount>12</burstShotCount>
 				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
 				<soundCast>Shot_Minigun</soundCast>
-				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
 				<muzzleFlashScale>5</muzzleFlashScale>
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
 			</li>
