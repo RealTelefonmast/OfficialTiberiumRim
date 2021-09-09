@@ -11,9 +11,10 @@
 		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
 		<projectile>
 			<damageDef>TRTiberiumShotGreen</damageDef>
-			<damageAmountBase>4</damageAmountBase>
-			<speed>50</speed>
-			<arcHeightFactor>0.25</arcHeightFactor>
+			<damageAmountBase>7</damageAmountBase>
+			<armorPenetrationBase>0.1</armorPenetrationBase>
+			<speed>45</speed>
+			<arcHeightFactor>0.1</arcHeightFactor>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
 		<projectileExtended>
@@ -38,17 +39,17 @@
 		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
 		<projectile>
 			<damageDef>TRTiberiumShotBlue</damageDef>
-			<damageAmountBase>10</damageAmountBase>
-			<explosionRadius>0.9</explosionRadius>
-			<speed>50</speed>
-			<arcHeightFactor>0.25</arcHeightFactor>
+			<damageAmountBase>7</damageAmountBase>
+			<armorPenetrationBase>0.05</armorPenetrationBase>
+			<speed>45</speed>
+			<arcHeightFactor>0.1</arcHeightFactor>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
 		<projectileExtended>
 			<impactEffecter>FlechetteHit</impactEffecter>
 			<impactFilth>
 				<filths>
-					<li>FilthTiberiumBlue, 0.1</li>
+					<li>FilthTiberiumBlue, 0.05</li>
 				</filths>
 				<spreadRadius>0</spreadRadius>
 			</impactFilth>
