@@ -208,6 +208,20 @@
 		<growthRate>3.5</growthRate>
 	</FleckDef>
 	
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>SubMote_TibGasParticle_Shadow</defName>
+		<graphicData>
+			<texPath>VisualFX/Natural/Gas</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>0.5</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.25</fadeInTime>
+		<solidTime>0</solidTime>
+		<fadeOutTime>1</fadeOutTime>
+		<growthRate>3.5</growthRate>
+	</FleckDef>
+	
 	<!-- beamtargets -->
   <FleckDef ParentName="FleckBase">
 		<defName>Mote_BeamtargetRS</defName>

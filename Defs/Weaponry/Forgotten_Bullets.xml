@@ -46,7 +46,7 @@
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
 		<projectileExtended>
-			<impactEffecter>FlechetteHit</impactEffecter>
+			<impactEffecter>FlechetteBlueHit</impactEffecter>
 			<impactFilth>
 				<filths>
 					<li>FilthTiberiumBlue, 0.05</li>
