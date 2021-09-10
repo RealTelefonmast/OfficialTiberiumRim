@@ -64,7 +64,7 @@
 		</comps>
 		<requisites>
 			<tiberiumResearch>
-				<li>GDIExperimental3</li>
+				<li>NodExperimental3</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>

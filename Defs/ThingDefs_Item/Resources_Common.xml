@@ -81,11 +81,6 @@
 			</li>
 		</comps>
 		<tickerType>Normal</tickerType>
-		<requisites>
-			<tiberiumResearch>
-				<li>GDIExperimental3</li>
-			</tiberiumResearch>
-		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<ThingDef ParentName="ResourceBase_TR">
