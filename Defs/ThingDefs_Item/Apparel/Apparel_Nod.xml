@@ -410,7 +410,6 @@
 		<costList>
 			<Nod_CarbonPlate>40</Nod_CarbonPlate>
 			<ComponentSpacer>1</ComponentSpacer>
-			<TRBattleChip>1</TRBattleChip>
 		</costList>
 		<statBases>
 			<WorkToMake>28000</WorkToMake>
@@ -501,7 +500,6 @@
 		<costList>
 			<Nod_CarbonPlate>125</Nod_CarbonPlate>
 			<ComponentSpacer>8</ComponentSpacer>
-			<TRBattleChip>3</TRBattleChip>
 		</costList>
 		<statBases>
 			<WorkToMake>80000</WorkToMake>

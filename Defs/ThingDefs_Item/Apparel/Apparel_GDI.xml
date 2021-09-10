@@ -470,7 +470,6 @@
 		<costList>
 			<GDI_ReinforcedPlate>50</GDI_ReinforcedPlate>
 			<ComponentSpacer>1</ComponentSpacer>
-			<TRBattleChip>1</TRBattleChip>
 		</costList>
 		<statBases>
 			<WorkToMake>30000</WorkToMake>
@@ -537,7 +536,6 @@
 		<costList>
 			<GDI_ReinforcedPlate>150</GDI_ReinforcedPlate>
 			<ComponentSpacer>10</ComponentSpacer>
-			<TRBattleChip>3</TRBattleChip>
 		</costList>
 		<statBases>
 			<WorkToMake>100000</WorkToMake>
