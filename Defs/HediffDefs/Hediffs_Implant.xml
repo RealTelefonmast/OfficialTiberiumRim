@@ -67,6 +67,11 @@
 	<techHediffsTags>
 		<li>ChemicalBombImplant</li>
 	</techHediffsTags>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
   </ThingDef>
 
   <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
@@ -167,6 +172,11 @@
 	<techHediffsTags>
 		<li>InfusionImplant</li>
 	</techHediffsTags>
+	<requisites>
+		<tiberiumResearch>
+			<li>NODExperimental1</li>
+		</tiberiumResearch>
+	</requisites>
   </ThingDef>
 
   <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
