@@ -62,6 +62,11 @@
 				</wickTicks>
 			</li>
 		</comps>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</ThingDef>
 	
 		<!-- custom tiberium spawner explosion 

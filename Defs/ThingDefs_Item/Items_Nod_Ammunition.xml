@@ -64,7 +64,12 @@
 		</costList>
 		<thingCategories>
 			<li>NuclearShells</li>
-		</thingCategories>		
+		</thingCategories>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</ThingDef>
 	
 </Defs>

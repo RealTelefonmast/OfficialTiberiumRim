@@ -58,7 +58,12 @@
 		</costList>
 		<thingCategories>
 			<li>JuggernautShells</li>
-		</thingCategories>		
+		</thingCategories>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</ThingDef>
 	
 	<ThingDef ParentName="TR_ShellBase">
@@ -111,7 +116,12 @@
 		</costList>
 		<thingCategories>
 			<li>JuggernautShells</li>
-		</thingCategories>		
+		</thingCategories>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</ThingDef>
 	
 	<ThingDef ParentName="TR_ShellBase">
@@ -164,7 +174,12 @@
 		</costList>
 		<thingCategories>
 			<li>JuggernautShells</li>
-		</thingCategories>		
+		</thingCategories>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</ThingDef>
 	
 </Defs>
