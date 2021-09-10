@@ -26,7 +26,7 @@
 			<isInert>true</isInert>
 		</building>
 		<castEdgeShadows>false</castEdgeShadows>
-		<uiIconPath>Buildings/Nod/Misc/Shrine/Shrine</uiIconPath>
+		<uiIconPath>Buildings/Nod/Misc/Shrine/ShrineIcon</uiIconPath>
 		<uiIconScale>1.25</uiIconScale>
 	    <canOverlapZones>false</canOverlapZones>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
@@ -50,9 +50,8 @@
 				<overlays>
 					<li>
 						<data>
-							<texPath>Buildings/Nod/Misc/Shrine/ShrineIcon</texPath>
+							<texPath>Buildings/Nod/Misc/Shrine/Shrine_Glow</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>MoteGlow</shaderType>
 							<drawSize>(4,5)</drawSize>
 						</data>
 						<needsPower>true</needsPower>
