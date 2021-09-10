@@ -9,7 +9,7 @@
 		<TRCategory>Research</TRCategory>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
-			<texPath>Buildings/Nod/Misc/Shrine/Base</texPath>
+			<texPath>Buildings/Nod/Misc/Shrine/Shrine</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(4,5)</drawSize>
 			<drawOffset>(0,0,0.5)</drawOffset>
@@ -26,7 +26,7 @@
 			<isInert>true</isInert>
 		</building>
 		<castEdgeShadows>false</castEdgeShadows>
-		<uiIconPath>Buildings/Nod/Misc/Shrine/Base</uiIconPath>
+		<uiIconPath>Buildings/Nod/Misc/Shrine/Shrine</uiIconPath>
 		<uiIconScale>1.25</uiIconScale>
 	    <canOverlapZones>false</canOverlapZones>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
@@ -46,6 +46,19 @@
 				<basePowerConsumption>200</basePowerConsumption>
 			</li>
 			<li Class="CompProperties_Flickable"/>
+			<li Class="TiberiumRim.CompProperties_FX">
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Nod/Misc/Shrine/ShrineIcon</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(4,5)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>
 		</comps>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
 		<requisites>

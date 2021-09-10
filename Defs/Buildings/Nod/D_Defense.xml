@@ -646,4 +646,70 @@
 		<passability>Impassable</passability>
 	</ThingDef>
 	
+	<!--
+	<TiberiumRim.TRThingDef ParentName="TrapIEDBase">
+		<defName>IED_Nuke</defName>
+		<label>IED nuke mine</label>
+		<description>A mine equipped with a nuclear warhead. Creates a huge explosion and starts fires around itself when disturbed.</description>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Temple/IED_Nuke</texPath>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<size>(1,1)</size>
+		<uiIconPath>Buildings/Nod/Defense/Temple/IED_Nuke</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<uiIconOffset>(0,0)</uiIconOffset>
+		<designationHotKey>Misc5</designationHotKey>
+		<costList>
+			<TempleShell_Explosive>1</TempleShell_Explosive>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MarketValue>10000</MarketValue>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>25</Mass>
+			<Flammability>0</Flammability>
+			<SellPriceFactor>0.2</SellPriceFactor>
+			<TrapSpringChance>1.0</TrapSpringChance>
+		</statBases>
+		<factionDesignation>Nod</factionDesignation>
+		<altitudeLayer>Building</altitudeLayer>
+		<tradeability>Sellable</tradeability>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>11.9</explosiveRadius>
+				<damageAmountBase>650</damageAmountBase>
+				<explosiveDamageType>TRNuke</explosiveDamageType>
+				<postExplosionSpawnThingDef>Gas_Chemical</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
+				<explosionEffect>GiantExplosion</explosionEffect>
+				<wickTicks>
+					<min>100</min>
+					<max>200</max>
+				</wickTicks>
+				<startWickOnDamageTaken>
+					<li>Bullet</li>
+					<li>Arrow</li>
+					<li>ArrowHighVelocity</li>
+				</startWickOnDamageTaken>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+		</comps>
+		<specialDisplayRadius>11.9</specialDisplayRadius>
+		<building>
+			<isTrap>true</isTrap>
+			<trapPeacefulWildAnimalsSpringChanceFactor>0</trapPeacefulWildAnimalsSpringChanceFactor>
+			<expandHomeArea>false</expandHomeArea>
+			<ai_chillDestination>false</ai_chillDestination>
+		</building>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+	</TiberiumRim.TRThingDef>-->
+	
 </Defs>

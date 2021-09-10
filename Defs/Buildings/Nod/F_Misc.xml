@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+
+	<TiberiumRim.TRThingDef ParentName="SculptureBase">
+		<defName>NodSculptureLarge</defName>
+		<label>Brotherhood sculpture</label>
+		<description>These statues are a sign of the power of Nod.</description>
+		<castEdgeShadows>true</castEdgeShadows>
+		<graphicData>
+		  <graphicClass>Graphic_Random</graphicClass>
+		  <texPath>Buildings/Nod/Misc/Relics</texPath>
+		  <drawSize>(3,3)</drawSize>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<fillPercent>0.5</fillPercent>
+		<rotatable>false</rotatable>
+		<statBases>
+		  <MaxHitPoints>150</MaxHitPoints>
+		  <Mass>10</Mass>
+		  <Beauty>125</Beauty>
+		  <WorkToMake>30000</WorkToMake>
+		</statBases>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>250</costStuffCount>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+	</TiberiumRim.TRThingDef>
   
 	<TiberiumRim.TRThingDef ParentName="WallLampBase">
 		<defName>NodWallLight</defName>
