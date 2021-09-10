@@ -65,9 +65,9 @@
 	  <li>ForgottenSet</li>  
     </apparelTags>
     <weaponTags>
-      <li>Shardgun</li>
-      <li>Gun</li>
-      <li>NonNeolithicOnlyMelee</li>
+		<li>Scrapgun</li>
+		<li>Gun</li>
+		<li>NonNeolithicOnlyMelee</li>
     </weaponTags>
   </PawnKindDef>
 
@@ -82,7 +82,8 @@
 	  <li>ForgottenSet</li>  
     </apparelTags>
     <weaponTags>
-      <li>Shardgun</li>
+		<li>Scrapgun</li>
+		<li>Shardgun</li>
     </weaponTags>
   </PawnKindDef>
  
