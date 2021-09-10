@@ -8,7 +8,7 @@
 		<iconPath>UI/Icons/ThingCategories/MortarShells</iconPath>
 	</ThingCategoryDef>
 	
-	<ThingDef ParentName="TR_ShellBase">
+	<TiberiumRim.TRThingDef ParentName="TR_ShellBase">
 		<defName>JuggernautShell_Explosive</defName>
 		<label>juggernaut shells (explosive)</label>
 		<description>A pack of shells to be fired by a Juggernaut Turret, these three shells will explode on contact.</description>
@@ -64,9 +64,9 @@
 				<li>GDIExperimental3</li>
 			</tiberiumResearch>
 		</requisites>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="TR_ShellBase">
+	<TiberiumRim.TRThingDef ParentName="TR_ShellBase">
 		<defName>JuggernautShell_Incendiary</defName>
 		<label>juggernaut shells (incendiary)</label>
 		<description>A pack of shells to be fired by a Juggernaut Turret, these three shells will explode on contact.</description>
@@ -122,9 +122,9 @@
 				<li>GDIExperimental3</li>
 			</tiberiumResearch>
 		</requisites>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
-	<ThingDef ParentName="TR_ShellBase">
+	<TiberiumRim.TRThingDef ParentName="TR_ShellBase">
 		<defName>JuggernautShell_Antigrain</defName>
 		<label>juggernaut shells (antigrain)</label>
 		<description>A pack of shells to be fired by a Juggernaut Turret, these three devastating shells will explode on contact.</description>
@@ -180,6 +180,6 @@
 				<li>GDIExperimental3</li>
 			</tiberiumResearch>
 		</requisites>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 </Defs>

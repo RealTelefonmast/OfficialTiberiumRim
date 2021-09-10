@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef ParentName="ResourceBase_TR">
+	<TiberiumRim.TRThingDef ParentName="ResourceBase_TR">
 		<defName>GDI_ReinforcedPlate</defName>
 		<label>Reinforced Plate</label>
 		<description>GDI's engineers have focused on resistance and endurance, this alloy is quite heavy...</description>
@@ -25,10 +25,10 @@
 		<thingCategories>
 			<li>Manufactured</li>
 		</thingCategories>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 
-	<ThingDef ParentName="ResourceBase_TR">
+	<TiberiumRim.TRThingDef ParentName="ResourceBase_TR">
 		<defName>GDI_SonicCore</defName>
 		<label>Sonic Energy Core</label>
 		<description>Sonic technology is extremly experimental and needs special measures to be handled. This component serves as a core part in most sonic weaponry.</description>
@@ -68,7 +68,7 @@
 				<li>GDIExperimental3</li>
 			</tiberiumResearch>
 		</requisites>
-	</ThingDef>
+	</TiberiumRim.TRThingDef>
 	
 
 <!--
