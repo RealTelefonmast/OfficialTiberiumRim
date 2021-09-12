@@ -25,6 +25,11 @@
 		<thingCategories>
 			<li>Manufactured</li>
 		</thingCategories>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 
@@ -63,6 +68,11 @@
 				</wickTicks>
 			</li>
 		</comps>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 

@@ -25,6 +25,11 @@
 		<thingCategories>
 			<li>Manufactured</li>
 		</thingCategories>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="ResourceBase_TR">
@@ -62,6 +67,11 @@
 				</wickTicks>
 			</li>
 		</comps>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 		<!-- custom tiberium spawner explosion 

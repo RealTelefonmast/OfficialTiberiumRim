@@ -18,7 +18,7 @@
 		<statBases>
 		  <MaxHitPoints>150</MaxHitPoints>
 		  <Mass>10</Mass>
-		  <Beauty>125</Beauty>
+		  <Beauty>150</Beauty>
 		  <WorkToMake>30000</WorkToMake>
 		</statBases>
 		<stuffCategories>
@@ -49,6 +49,11 @@
 				</disallowedThingDefs>
 			</defaultIngredientFilter>
 		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
   
 	<TiberiumRim.TRThingDef ParentName="WallLampBase">
