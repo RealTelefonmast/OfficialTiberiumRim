@@ -65,7 +65,7 @@
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental1</li>
+				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -100,7 +100,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental1</li>
+				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<statBases>
@@ -175,7 +175,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental1</li>
+				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<statBases>
@@ -246,7 +246,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental1</li>
+				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<uiIconPath>Buildings/Nod/Production/Refinery/Icon</uiIconPath>
@@ -325,7 +325,7 @@
 		</graphicData>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental1</li>
+				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<uiIconPath>Buildings/Nod/Production/PowerPlant/Icon</uiIconPath>

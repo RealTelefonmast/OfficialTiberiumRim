@@ -59,7 +59,7 @@
 		</recipeMaker>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental1</li>
+				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -126,7 +126,7 @@
 		</recipeMaker>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental1</li>
+				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -188,7 +188,7 @@
 		</recipeMaker>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental2</li>
+				<li>NodExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -257,7 +257,7 @@
 		</recipeMaker>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental2</li>
+				<li>NodExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -323,7 +323,7 @@
 		</recipeMaker>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental2</li>
+				<li>NodExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -391,7 +391,7 @@
 		</recipeMaker>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental2</li>
+				<li>NodExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>

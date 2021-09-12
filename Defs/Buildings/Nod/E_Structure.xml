@@ -20,7 +20,7 @@
 		</statBases>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental1</li>
+				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -79,7 +79,7 @@
 		<clearBuildingArea>false</clearBuildingArea>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental1</li>
+				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -109,7 +109,7 @@
 		<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental1</li>
+				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -154,7 +154,7 @@
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental1</li>
+				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>	

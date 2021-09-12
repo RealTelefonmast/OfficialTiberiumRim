@@ -62,7 +62,7 @@
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental2</li>
+				<li>NodExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>

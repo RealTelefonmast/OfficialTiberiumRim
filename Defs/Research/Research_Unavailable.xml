@@ -10,8 +10,8 @@
 			<li>GDIExperimental1</li>
 			<li>GDIExperimental2</li>
 			<li>GDIExperimental3</li>
-			<li>NODExperimental1</li>
-			<li>NODExperimental2</li>
+			<li>NodExperimental1</li>
+			<li>NodExperimental2</li>
 			<li>NodExperimental3</li>
 		</researchProjects>
 	</TiberiumRim.TResearchGroupDef>
@@ -165,7 +165,7 @@
 	
 	
 	<TiberiumRim.TResearchDef>
-		<defName>NODExperimental1</defName>
+		<defName>NodExperimental1</defName>
 		<label>Join the Nod</label>
 		<researchType>experimental content</researchType>
 		<description>Unlock the Nod techtree. Most of them are experimental and not meant to be available yet!</description>
@@ -200,7 +200,7 @@
 	</TiberiumRim.TResearchTaskDef>
 	
 	<TiberiumRim.TResearchDef>
-		<defName>NODExperimental2</defName>
+		<defName>NodExperimental2</defName>
 		<label>Nod basic</label>
 		<researchType>tech research</researchType>
 		<description>Unlock the basic NOD structures and items. Most of them are experimental and not meant to be available yet!</description>
@@ -208,7 +208,7 @@
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental1</li>
+				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
 		<tasks>
@@ -260,7 +260,7 @@
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental2</li>
+				<li>NodExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
 		<tasks>

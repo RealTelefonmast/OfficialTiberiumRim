@@ -4,7 +4,7 @@
   	<TiberiumRim.TRThingDef Abstract="True" Name="NODTurret" ParentName="TurretBase_TR">
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental2</li>
+				<li>NodExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -482,7 +482,7 @@
 		</comps>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental2</li>
+				<li>NodExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -570,7 +570,7 @@
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental2</li>
+				<li>NodExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>

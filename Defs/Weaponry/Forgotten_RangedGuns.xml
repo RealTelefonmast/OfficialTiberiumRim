@@ -97,11 +97,6 @@
 			<li>RangedLight</li>
 			<li>ShortShots</li>
 		</weaponClasses>
-		<requisites>
-			<tiberiumResearch>
-				<li>ForgottenExperimental1</li>
-			</tiberiumResearch>
-		</requisites>
 	</TiberiumRim.TRThingDef>
 
 	<TiberiumRim.TRThingDef ParentName="Forg_Gun">
