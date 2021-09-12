@@ -2,7 +2,7 @@
 <Defs>
 	
 	<!-- GDI -->
-  	<RecipeDef>
+  	<TiberiumRim.TRecipeDef>
 		<defName>MakeReinforcedPlate</defName>
 		<label>produce reinforced plate</label>
 		<description>produces 10 Reinforced Plate.</description>
@@ -42,7 +42,7 @@
 		<skillRequirements>
 			<Crafting>5</Crafting>
 		</skillRequirements>
-	</RecipeDef>
+	</TiberiumRim.TRecipeDef>
 	
 	<TiberiumRim.TRecipeDef>
 		<defName>MakeGDISonicCore</defName>
@@ -94,7 +94,7 @@
 	</TiberiumRim.TRecipeDef>
 	
 	<!-- Nod -->
-	<RecipeDef>
+	<TiberiumRim.TRecipeDef>
 		<defName>MakeCarbonPlate</defName>
 		<label>produce carbon plate</label>
 		<description>produces 10 carbon plates.</description>
@@ -134,7 +134,7 @@
 		<skillRequirements>
 			<Crafting>5</Crafting>
 		</skillRequirements>
-	</RecipeDef>
+	</TiberiumRim.TRecipeDef>
 	
 	<TiberiumRim.TRecipeDef>
 		<defName>MakeLQTiberiumCore</defName>
