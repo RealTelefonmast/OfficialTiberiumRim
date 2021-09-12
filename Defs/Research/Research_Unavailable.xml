@@ -325,7 +325,7 @@
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<requisites>
 			<tiberiumResearch>
-				<li>TiberiumProtection</li>
+				<li>GreenSky</li>
 			</tiberiumResearch>
 		</requisites>
 		<tasks>

@@ -11,7 +11,6 @@
 				<li>TiberiumWorkbench</li>
 			</recipeUsers>
 			<unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
-			<researchPrerequisite>Gunsmithing</researchPrerequisite>
 		</recipeMaker>
 		<weaponTags>
 			<li>Forg_Gun</li>
@@ -20,7 +19,7 @@
 			<li>Ranged</li>
 		</weaponClasses>
 	</TiberiumRim.TRThingDef>
-	
+
 	<TiberiumRim.TRThingDef ParentName="Forg_Gun">
 		<defName>Forg_Scrapgun</defName>
 		<label>scrap gun</label>
@@ -97,6 +96,11 @@
 			<li>RangedLight</li>
 			<li>ShortShots</li>
 		</weaponClasses>
+		<requisites>
+			<tiberiumResearch>
+				<li>ForgottenExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 
 	<TiberiumRim.TRThingDef ParentName="Forg_Gun">

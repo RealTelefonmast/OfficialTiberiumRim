@@ -60,20 +60,6 @@
 		</comps>
 	</ThingDef>
 
-	<ThingDef Name="BaseMakeableGun_TR" ParentName="BaseGunWithQuality_TR" Abstract="True">
-		<recipeMaker>
-			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
-			<workSkill>Crafting</workSkill>
-			<effectWorking>Smith</effectWorking>
-			<soundWorking>Recipe_Smith</soundWorking>
-			<recipeUsers>
-				<li>TiberiumWorkbench</li>
-			</recipeUsers>
-			<unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
-			<researchPrerequisite>Gunsmithing</researchPrerequisite>
-		</recipeMaker>
-	</ThingDef>
-
 	<!-- Bullet -->
 	<TiberiumRim.TRThingDef Name="BaseBullet_TR" Abstract="True">
 		<label>bullet</label>
