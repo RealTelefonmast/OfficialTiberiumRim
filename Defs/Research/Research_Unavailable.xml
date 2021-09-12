@@ -12,7 +12,7 @@
 			<li>GDIExperimental3</li>
 			<li>NODExperimental1</li>
 			<li>NODExperimental2</li>
-			<li>NODExperimental3</li>
+			<li>NodExperimental3</li>
 		</researchProjects>
 	</TiberiumRim.TResearchGroupDef>
 	
@@ -252,7 +252,7 @@
 	</TiberiumRim.TResearchTaskDef>
 	
 	<TiberiumRim.TResearchDef>
-		<defName>NODExperimental3</defName>
+		<defName>NodExperimental3</defName>
 		<label>Nod advanced</label>
 		<researchType>tech research</researchType>
 		<description>Unlock the advanced NOD structures and items. Most of them are experimental and not meant to be available yet!</description>

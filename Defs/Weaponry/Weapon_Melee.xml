@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+	<TiberiumRim.TRThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
 		<defName>GDI_Wrench</defName>
 		<label>Engineering Wrench</label>
 		<description>An engineer's good wrench, improves work speed.</description>
@@ -43,6 +43,18 @@
 		<equippedStatOffsets>
 			<WorkSpeedGlobal>0.5</WorkSpeedGlobal>
 		</equippedStatOffsets>
-	</ThingDef>
+		<weaponTags>
+			<li>EngiWrench</li>
+		</weaponTags>
+		<weaponClasses>
+			<li>Melee</li>
+			<li>MeleeBlunt</li>
+		</weaponClasses>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+	</TiberiumRim.TRThingDef>
 
 </Defs>

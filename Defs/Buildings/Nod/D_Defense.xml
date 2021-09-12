@@ -108,7 +108,7 @@
 		</placeWorkers>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental3</li>
+				<li>NodExperimental3</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>

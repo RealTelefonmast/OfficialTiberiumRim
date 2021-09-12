@@ -12,13 +12,13 @@
 			</recipeUsers>
 			<unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
 			<researchPrerequisite>Gunsmithing</researchPrerequisite>
-			<skillRequirements>
-				<Crafting>5</Crafting>
-			</skillRequirements>
 		</recipeMaker>
 		<weaponTags>
 			<li>Forg_Gun</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>Ranged</li>
+		</weaponClasses>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="Forg_Gun">

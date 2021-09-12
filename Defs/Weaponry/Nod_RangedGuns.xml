@@ -20,13 +20,9 @@
 		<weaponTags>
 			<li>Nod_Gun</li>
 		</weaponTags>
-		<!--
-		<comps>
-		  <li>
-		    <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
-		  </li>
-		</comps>
-		-->
+		<weaponClasses>
+			<li>Ranged</li>
+		</weaponClasses>
 	</TiberiumRim.TRThingDef>	
 
 	<TiberiumRim.TRThingDef ParentName="Nod_Gun"> <!--balance standard - assault rifle + -->
@@ -277,6 +273,11 @@
 		<weaponTags>
 			<li>NodLaserRifle</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+			<li>LongShots</li>
+			<li>Ultratech</li>
+		</weaponClasses>
 		<requisites>
 			<tiberiumResearch>
 				<li>NODExperimental2</li>
@@ -367,10 +368,11 @@
 		<weaponClasses>
 			<li>RangedHeavy</li>
 			<li>LongShots</li>
+			<li>Ultratech</li>
 		</weaponClasses>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental3</li>
+				<li>NodExperimental3</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
@@ -553,10 +555,11 @@
 		<weaponClasses>
 			<li>RangedHeavy</li>
 			<li>ShortShots</li>
+			<li>Ultratech</li>
 		</weaponClasses>
 		<requisites>
 			<tiberiumResearch>
-				<li>NODExperimental3</li>
+				<li>NodExperimental3</li>
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>

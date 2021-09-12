@@ -62,11 +62,6 @@
 				</wickTicks>
 			</li>
 		</comps>
-		<requisites>
-			<tiberiumResearch>
-				<li>NodExperimental3</li>
-			</tiberiumResearch>
-		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 		<!-- custom tiberium spawner explosion 

@@ -20,6 +20,9 @@
 		<weaponTags>
 			<li>GDI_Gun</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>Ranged</li>
+		</weaponClasses>
 	</TiberiumRim.TRThingDef>	
 
 	<TiberiumRim.TRThingDef ParentName="GDI_Gun"> <!--balance standard - assault rifle + -->
@@ -283,6 +286,7 @@
 		<weaponClasses>
 			<li>RangedHeavy</li>
 			<li>LongShots</li>
+			<li>Ultratech</li>
 		</weaponClasses>
 		<requisites>
 			<tiberiumResearch>
@@ -391,6 +395,7 @@
 		<weaponClasses>
 			<li>RangedHeavy</li>
 			<li>ShortShots</li>
+			<li>Ultratech</li>
 		</weaponClasses>
 		<requisites>
 			<tiberiumResearch>
@@ -537,6 +542,7 @@
 		<weaponClasses>
 			<li>RangedHeavy</li>
 			<li>LongShots</li>
+			<li>Ultratech</li>
 		</weaponClasses>
 		<requisites>
 			<tiberiumResearch>

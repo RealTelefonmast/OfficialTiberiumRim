@@ -235,8 +235,10 @@
 			<li>ScrinArtifactWeapon</li>
 		</weaponTags>
 		<weaponClasses>
+			<li>Ranged</li>
 			<li>RangedHeavy</li>
 			<li>LongShots</li>
+			<li>Ultratech</li>
 		</weaponClasses>
 	</TiberiumRim.TRThingDef>
 
