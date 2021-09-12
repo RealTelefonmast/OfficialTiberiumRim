@@ -832,7 +832,7 @@
 			<WorkToBuild>2500</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<size>(4,3)</size>
+		<size>(3,2)</size>
 		<costList>
 			<Steel>150</Steel>
 			<ComponentIndustrial>5</ComponentIndustrial>
@@ -843,7 +843,7 @@
 		<graphicData>
 			<texPath>Buildings/Common/Network/Workbench/Bench</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(4.7,4.7)</drawSize>
+			<drawSize>3.3</drawSize>
 			<shadowData>
 				<volume>(1.5,1,1.5)</volume>
 			</shadowData>
@@ -861,7 +861,7 @@
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 		</building>
 		<fillPercent>0.5</fillPercent>
-		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<surfaceType>Item</surfaceType>
@@ -897,7 +897,7 @@
 						</allowedValues>
 					</li>
 				</networks>
-				<connectionPattern>#++#|++++|++++</connectionPattern>
+				<connectionPattern>#+#|###|</connectionPattern>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -906,7 +906,7 @@
 							<texPath>Buildings/Common/Network/Workbench/Overlay</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<shaderType>MoteGlow</shaderType>
-							<drawSize>(4.7,4.7)</drawSize>
+							<drawSize>3.3</drawSize>
 						</data>
 						<mode>Dynamic</mode>
 					</li>
@@ -914,7 +914,7 @@
 						<data>
 							<texPath>Buildings/Common/Network/Workbench/Connection</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
-							<drawSize>(4.7,4.7)</drawSize>	
+							<drawSize>3.3</drawSize>	
 						</data>
 					</li>
 				</overlays>
