@@ -25,7 +25,13 @@ namespace TiberiumRim
 
         public virtual void PreApply() { }
 
-        public virtual void FinalizeApply() { }
+        public virtual void FinalizeApply()
+        {
+            foreach (var thing in Room.ContainedAndAdjacentThings)
+            {
+                Notify_ThingSpawned(thing);
+            }
+        }
 
         public virtual void CompTick() { }
 

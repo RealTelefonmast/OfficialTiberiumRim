@@ -9,19 +9,19 @@ namespace TiberiumRim
 {
     public class Comp_AtmosphericNetworkStructure : Comp_NetworkStructure
     {
-        private RoomComponent_Pollution pollutionInt;
+        private RoomComponent_Atmospheric atmosphericInt;
 
         public NetworkComponent AtmosphericComp => this[TiberiumDefOf.AtmosphericNetwork];
 
-        public RoomComponent_Pollution Pollution
+        public RoomComponent_Atmospheric Atmospheric
         {
             get
             {
-                if (pollutionInt == null || pollutionInt.Parent.IsDisbanded)
+                if (atmosphericInt == null || atmosphericInt.Parent.IsDisbanded)
                 {
-                    pollutionInt = parent.GetRoom().Pollution();
+                    atmosphericInt = parent.GetRoom().AtmosphericRoomComp();
                 }
-                return pollutionInt;
+                return atmosphericInt;
             }
         }
 

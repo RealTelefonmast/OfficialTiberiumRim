@@ -10,32 +10,40 @@ namespace TiberiumRim
 {
     public class RoomComponent_AirLock : RoomComponent
     {
-        private RoomComponent_Pollution pollutionCompInt;
+        private RoomComponent_Atmospheric atmosphericCompInt;
         private List<Building> AirVents = new List<Building>();
         private List<Building_AirLock> AirLockDoors = new List<Building_AirLock>();
 
         private bool HasAirLockRole = false;
         
-        public RoomComponent_Pollution Pollution => pollutionCompInt ??= Parent.GetRoomComp<RoomComponent_Pollution>();
+        public RoomComponent_Atmospheric Atmospheric => atmosphericCompInt ??= Parent.GetRoomComp<RoomComponent_Atmospheric>();
 
         public bool IsActive => HasAirLockRole && AirVents.Concat(AirLockDoors).All(c => c.IsPoweredOn());
-        public bool IsClean => Pollution.ActualPollution <= 0;
+        public bool IsClean => Atmospheric.ActualValue <= 0;
 
         public bool AllDoorsClosed => AirLockDoors.All(d => !d.Open);
 
         public override void Create(RoomTracker parent)
         {
             base.Create(parent);
-            foreach (var thing in Room.ContainedAndAdjacentThings)
-            {
-                TryAddComponent(thing);
-            }
-            SetData();
         }
-
         public override void Notify_Reused()
         {
             base.Notify_Reused();
+        }
+
+        public override void Disband(RoomTracker parent, Map map)
+        {
+            foreach (var buildingAirLock in AirLockDoors)
+            {
+                buildingAirLock.SetAirlock(null);
+            }
+            base.Disband(parent, map);
+        }
+
+        public override void FinalizeApply()
+        {
+            base.FinalizeApply();
             SetData();
         }
 
@@ -59,6 +67,7 @@ namespace TiberiumRim
             if (thing is Building_AirLock airLock)
             {
                 AirLockDoors.Add(airLock);
+                airLock.SetAirlock(this);
                 return;
             }
             var comp = thing.TryGetComp<Comp_ANS_AirVent>();
@@ -73,7 +82,6 @@ namespace TiberiumRim
             AirLockDoors.Remove(thing as Building_AirLock);
             AirVents.Remove(thing as Building);
         }
-
 
         public override void Draw()
         {

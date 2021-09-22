@@ -96,6 +96,8 @@ namespace TiberiumRim
         //
         public void SetCrystal(TiberiumCrystal crystal)
         {
+            Rand.PushState(crystal.GetHashCode());
+
             TiberiumBoolGrid[crystal.Position] = true;
             TiberiumCrystals[Index(crystal.Position)] = crystal;
 
@@ -107,6 +109,8 @@ namespace TiberiumRim
                 SetAffected(adj, adjacent2);
             }
             SetGrowTo(crystal.Position, crystal);
+
+            Rand.PopState();
         }
 
         public void ResetCrystal(IntVec3 c)
@@ -158,12 +162,12 @@ namespace TiberiumRim
             }
             var cells = Adjacent(c, false, x => !TiberiumBoolGrid[x] && !x.HasTibFlora(map));
             if (cells.NullOrEmpty()) return;
-            if(Rand.ChanceSeeded(crystal.def.tiberium.rootNodeChance, crystal.GetHashCode()))
+            if(Rand.Chance(crystal.def.tiberium.rootNodeChance))
             {
                 cells.Do(x => GrowToGrid[x] = true);
                 return;
             }
-            var cell = cells[Rand.RangeSeeded(0, cells.Count - 1, crystal.GetHashCode())];
+            var cell = cells[Rand.Range(0, cells.Count - 1)];
             GrowToGrid[cell] = true;
         }
 

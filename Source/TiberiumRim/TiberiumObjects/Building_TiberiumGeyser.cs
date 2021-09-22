@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using RimWorld;
 using UnityEngine;
@@ -48,11 +49,16 @@ namespace TiberiumRim
                 TR_FleckMaker.ThrowTiberiumAirPuff(this.TrueCenter(), Map);
                 if (Find.TickManager.TicksGame % 20 == 0)
                 {
-                    GenTemperature.PushHeat(this, 40f);
-
-                    var gas = (SpreadingGas)GenSpawn.Spawn(ThingDef.Named("Gas_TiberiumGas"), this.OccupiedRect().RandomCell, Map);
-                    gas.AdjustSaturation(Rand.Range(5000, 9500));
                     depositValue--;
+                    GenTemperature.PushHeat(this, 40f);
+                    var cell = this.OccupiedRect().RandomCell;
+                    if (cell.GetGas(Map) is SpreadingGas spreadGas)
+                    {
+                        spreadGas.AdjustSaturation(Rand.Range(500, 1000), out _);
+                        return;
+                    }
+                    var gas = (SpreadingGas)GenSpawn.Spawn(ThingDef.Named("Gas_TiberiumGas"), cell, Map);
+                    gas.AdjustSaturation(Rand.Range(500, 1000), out _);
                 }
             }, StartSpray, EndSpray);
             if (respawningAfterLoad) return;
@@ -146,7 +152,7 @@ namespace TiberiumRim
                 action = delegate
                 {
                     makePollutionGas = !makePollutionGas;
-                    //Map.Tiberium().PollutionInfo.AddDirect(Position.RandomAdjacentCell8Way(), 100);
+                    //Map.Tiberium().AtmosphericInfo.AddDirect(Position.RandomAdjacentCell8Way(), 100);
                 }
             };
         }

@@ -8,4 +8,5 @@ C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\Assemblies\TiberiumRim.dll
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\Assemblies\TiberiumRim.pdb
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\Assemblies\TiberiumRim.dll.config
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\Source\TiberiumRim\obj\Debug\TiberiumRim.csproj.CopyComplete
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\Source\TiberiumRim\obj\Debug\TiberiumRim.csproj.AssemblyReference.cache

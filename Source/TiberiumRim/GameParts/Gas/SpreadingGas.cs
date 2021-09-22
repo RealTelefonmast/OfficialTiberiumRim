@@ -14,11 +14,11 @@ namespace TiberiumRim
     public class TRGasProperties
     {
         public int updateInterval = 60;
-        public float maxSaturation = 10000f;
-        public float minSpreadSaturation = 1f;
-        public float dissipationSaturation = 10f;
+        public int maxSaturation = 10000;
+        public int minSpreadSaturation = 1;
+        //public int dissipationSaturation = 10;
 
-        public NetworkValueDef dissipatesTo;
+        public NetworkValueDef dissipateTo;
     }
 
     public class SpreadingGas : Gas
@@ -26,7 +26,9 @@ namespace TiberiumRim
         public new TRThingDef def;
 
         private int tickOffset;
-        private float saturation;
+        private int saturation;
+
+        private IntVec3[] randomCells;
 
         private readonly SimpleCurve OpacityCurve = new SimpleCurve()
         {
@@ -37,13 +39,14 @@ namespace TiberiumRim
             new(1f,1f),
         };
 
+        [TweakValue("SPREAD_GAS_VISCOSITY", 0, 1)]
+        public static float Viscosity = 0.5f;
+
         public TRGasProperties Props => def.gasProps;
 
-        public float SaturationPercent => saturation / Props.maxSaturation;
-
-
-        [TweakValue("SPREAD_GAS_VISCOSITY", 0, 1)]
-        public static float Viscosity = 0.1f;
+        public float SaturationPercent => saturation / (float)Props.maxSaturation;
+        public int DissipationAmount => Props.maxSaturation / 100;
+        //public bool Dissipating => saturation <= Props.dissipationSaturation;
 
         public override string LabelCap => $"{base.LabelCap} ({SaturationPercent.ToStringPercent()})";
 
@@ -57,66 +60,117 @@ namespace TiberiumRim
             base.SpawnSetup(map, respawningAfterLoad);
             def = (TRThingDef)base.def;
             tickOffset = Rand.Range(0, Props.updateInterval);
+            randomCells = GenAdjFast.AdjacentCellsCardinal(Position).InRandomOrder().ToArray();
             //saturation = Rand.Range(Props.maxSaturation / 2, Props.maxSaturation);
         }
 
         public override void Tick()
         {
             if (!Spawned) return;
-            if (saturation > Props.dissipationSaturation)
+
+            graphicRotation += graphicRotationSpeed;
+            if (SaturationPercent <= 0.0001f)
             {
-                destroyTick++;
+                Destroy();
+                return;
             }
 
-            if ((GenTicks.TicksGame + tickOffset) % Props.updateInterval != 0) return;
-            if (!Position.Roofed(Map)) //Dissipate into pollution grid
+            var curTick = Find.TickManager.TicksGame;
+            if (((curTick + tickOffset) % Props.updateInterval) != 0) return;
+
+            if (!CanSpreadTo(Position, out _))   //cloud is in inaccessible cell, probably a recently closed door or vent. Spread to nearby cells and delete.
             {
-                //Map.Tiberium().PollutionInfo.
-                //AdjustSaturation(-1);
+                TrySpread();
+                Destroy();
+                return;
             }
+
+            var room = this.GetRoom();
+            if (room != null)
+            {
+                var pollution = Map.Tiberium().AtmosphericInfo.PollutionFor(room);
+                if (!pollution.UsedContainer.FullySaturated)
+                {
+                    //!Position.Roofed(Map) &&
+                    AdjustSaturation(-DissipationAmount, out var actualValue);
+                    if (Props.dissipateTo != null)
+                    {
+                        pollution.TryAddValue(Props.dissipateTo, -(actualValue / 10), out _);
+                    }
+                }
+            }
+
             TrySpread();
-
-            base.Tick();
         }
 
-        public void AdjustSaturation(float value)
+        public void AdjustSaturation(int value, out int actualValue)
         {
-            saturation = Mathf.Clamp(saturation + value, 0, Props.maxSaturation);
+            actualValue = value;
+            var val = saturation + value;
+            saturation = Mathf.Clamp(val, 0, Props.maxSaturation);
+
+            if (val < 0)
+            {
+                actualValue = value + val;
+                return;
+            }
+
+            if (val < Props.maxSaturation) return;
+            var overFlow = val - Props.maxSaturation;
+            actualValue = value - overFlow;
+
+            foreach (var cell in randomCells)
+            {
+                if (!CanSpreadTo(cell, out _)) continue;
+
+                if (cell.GetGas(Map) is SpreadingGas gas)
+                {
+                    if (gas.SaturationPercent >= SaturationPercent) continue;
+                    gas.AdjustSaturation(overFlow, out _);
+                    return;
+                }
+                var newGas = (SpreadingGas)GenSpawn.Spawn(this.def, cell, Map);
+                newGas.AdjustSaturation(overFlow, out _);
+                return;
+            }
         }
 
-        public void EqualizeWith(SpreadingGas other, float value)
+
+        public void EqualizeWith(SpreadingGas other, int value)
         {
-            AdjustSaturation(-value);
-            other.AdjustSaturation(value);
+            AdjustSaturation(-value, out int actualValue);
+            other.AdjustSaturation(-actualValue, out _);
         }
 
+        //
         private void TrySpread()
         {
             if (saturation < Props.minSpreadSaturation) return;
-            
-            foreach (var cell in GenAdjFast.AdjacentCellsCardinal(Position).InRandomOrder())
+
+            foreach (var cell in randomCells)
             {
                 if (!CanSpreadTo(cell, out float passPct)) continue;
 
                 if (cell.GetGas(Map) is SpreadingGas gas)
                 {
-                    if (gas.SaturationPercent > SaturationPercent) return;
+                    if (gas.SaturationPercent > SaturationPercent) continue;
                     var diff = saturation - gas.saturation;
-                    EqualizeWith(gas, (diff / 2f) * (passPct * Viscosity));
+                    EqualizeWith(gas, (int) ((diff * 0.25f) * (passPct * Viscosity)));
                 }
                 else
                 {
                     var newGas = (SpreadingGas) GenSpawn.Spawn(this.def, cell, Map);
-                    EqualizeWith(newGas, (saturation / 2f) * (passPct * Viscosity));
+                    EqualizeWith(newGas, (int) ((saturation * 0.25f) * (passPct * Viscosity)));
                 }
             }
         }
 
-        //
         private bool CanSpreadTo(IntVec3 other, out float passPct)
         {
+            passPct = 1f;
+            if (!other.InBounds(Map)) return false;
             passPct = other.GetFirstBuilding(Map)?.AtmosphericPassPercent() ?? 1f;
-            return other.InBounds(Map) && passPct > 0;
+            return passPct > 0;
         }
 
         private MaterialPropertyBlock propertyBlock;
@@ -128,7 +182,7 @@ namespace TiberiumRim
             Rand.PushState();
             Rand.Seed = this.thingIDNumber.GetHashCode();
 
-            var alphaRaw = (0.1f + Mathf.Lerp(0, 0.9f, OpacityCurve.Evaluate(SaturationPercent)));
+            var alphaRaw = (0.1f + Mathf.Lerp(0, 0.9f, SaturationPercent));
             //var alpha = Mathf.Round(alphaRaw * 128) / 128;
 
             float angle = Rand.Range(0, 360) + this.graphicRotation;

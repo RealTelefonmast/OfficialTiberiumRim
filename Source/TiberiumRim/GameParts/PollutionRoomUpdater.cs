@@ -3,14 +3,14 @@
     /*
     public class PollutionRoomUpdater
     {
-        private TiberiumPollutionMapInfo parentInfo;
+        private AtmosphericMapInfo parentInfo;
         private List<PollutionTracker> existingTrackers = new List<PollutionTracker>();
         private List<PollutionTracker> newTrackers = new List<PollutionTracker>();
 
         public List<RoomGroup> reusedRoomGroups = new List<RoomGroup>();
         public List<RoomGroup> newRoomGroups = new List<RoomGroup>();
 
-        public PollutionRoomUpdater(TiberiumPollutionMapInfo mapInfo)
+        public PollutionRoomUpdater(AtmosphericMapInfo mapInfo)
         {
             parentInfo = mapInfo;
         }
@@ -21,7 +21,7 @@
             if (tracker == null) return;
             if (tracker.OpenRoofCount > 0) return;
             int val = Mathf.RoundToInt(tracker.Capacity * parentInfo.OutsideSaturation);
-            tracker.Pollution += val;
+            tracker.Atmospheric += val;
             parentInfo.OutsidePollution -= val;
         }
 
@@ -79,7 +79,7 @@
                         if (newTracker.Group.UsesOutdoorTemperature) break;
                         if (parentInfo.pollutionCache.TryGetAverageRoomPollution(newGroup, out int pollution))
                         {
-                            newTracker.Pollution = pollution;
+                            newTracker.Atmospheric = pollution;
                         }
                         break;
                     }

@@ -17,7 +17,7 @@ namespace TiberiumRim
         public bool storeEvenly = false;
 
         public NetworkDef networkDef;
-        public ContainerProps containerProps;
+        public ContainerProperties containerProps;
         public List<NetworkRole> networkRoles = new() { NetworkRole.Transmitter };
         public List<NetworkValueDef> allowedValues;
 

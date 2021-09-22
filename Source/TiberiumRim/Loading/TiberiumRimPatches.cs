@@ -1321,7 +1321,6 @@ namespace TiberiumRim
         {
             ___map.Tiberium().RoomInfo.updater.Notify_RoomUpdatePostfix();
         }
-
     }
 
     [HarmonyPatch(typeof(TemperatureCache))]
@@ -1330,9 +1329,8 @@ namespace TiberiumRim
     {
         public static void Postfix(IntVec3 c, Region reg, Map ___map)
         {
-            ___map.Tiberium().PollutionInfo.Cache.TryCacheRegionPollutionInfo(c, reg);
+            ___map.Tiberium().AtmosphericInfo.Cache.TryCacheRegionAtmosphericInfo(c, reg);
         }
-
     }
 
     [HarmonyPatch(typeof(TemperatureCache))]
@@ -1341,7 +1339,7 @@ namespace TiberiumRim
     {
         public static void Postfix(IntVec3 c, Map ___map)
         {
-            ___map.Tiberium().PollutionInfo.Cache.ResetInfo(c);
+            ___map.Tiberium().AtmosphericInfo.Cache.ResetInfo(c);
         }
     }
 
@@ -1351,10 +1349,9 @@ namespace TiberiumRim
     {
         public static void Postfix(Map ___map)
         {
-            ___map.Tiberium().PollutionInfo.Cache.pollutionSaveLoad.ApplyLoadedDataToRegions();
+            ___map.Tiberium().AtmosphericInfo.Cache.atmosphericSaveLoad.ApplyLoadedDataToRegions();
         }
     }
-
 
 
     /*
@@ -1364,7 +1361,7 @@ namespace TiberiumRim
     {
         public static void Postfix(RoomGroup __instance, Room room)
         {
-            room.Map.Tiberium().PollutionInfo.RoomGroupAddedRoom(__instance, room);
+            room.Map.Tiberium().AtmosphericInfo.RoomGroupAddedRoom(__instance, room);
         }
     }
 
@@ -1374,7 +1371,7 @@ namespace TiberiumRim
     {
         public static void Postfix(RoomGroup __instance, Room room)
         {
-            room.Map.Tiberium().PollutionInfo.RoomGroupRemovedRoom(__instance, room);
+            room.Map.Tiberium().AtmosphericInfo.RoomGroupRemovedRoom(__instance, room);
         }
     }
     */

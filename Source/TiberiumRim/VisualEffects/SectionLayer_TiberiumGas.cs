@@ -20,7 +20,7 @@ namespace TiberiumRim
             /*
             float y = AltitudeLayer.FogOfWar.AltitudeFor();
 
-            TiberiumPollutionMapInfo pollution = Map.Tiberium().PollutionInfo;
+            AtmosphericMapInfo pollution = Map.Tiberium().AtmosphericInfo;
             CellRect cellRect = new CellRect(this.section.botLeft.x, this.section.botLeft.z, 17, 17);
             cellRect.ClipInsideMap(base.Map);
             base.ClearSubMeshes(MeshParts.All);

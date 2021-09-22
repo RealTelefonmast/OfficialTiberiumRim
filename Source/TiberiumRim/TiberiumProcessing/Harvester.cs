@@ -29,7 +29,7 @@ namespace TiberiumRim
         public float unloadValue = 0.125f;
         public float harvestValue = 0.125f;
         public ThingDef wreckDef;
-        public ContainerProps containerProps;
+        public ContainerProperties containerProps;
         public List<NetworkValueDef> allowedValues;
 
         /*

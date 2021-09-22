@@ -86,7 +86,7 @@
 		<mineable>false</mineable>
 		<graphicData>
 			<graphicClass>Graphic_Random</graphicClass>
-			<shaderType>CutoutPlant</shaderType>
+			<shaderType>CutoutComplex</shaderType>
 		</graphicData>
 		<tiberium>
 			<sizeRange>

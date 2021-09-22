@@ -7,7 +7,7 @@ namespace TiberiumRim
 {
     public class PlaceWorker_OnProducer : PlaceWorker
     {
-        private IEnumerable<TiberiumProducer> ValidProducers => Find.CurrentMap.Tiberium().NatrualTiberiumStructureInfo.ResearchProducers;
+        private IEnumerable<TiberiumProducer> ValidProducers => Find.CurrentMap.Tiberium().NaturalTiberiumStructureInfo.ResearchProducers;
 
         private bool ProducerValid(TiberiumProducer producer)
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Verse;
 
@@ -9,6 +10,8 @@ namespace TiberiumRim
         public RoomTrackerUpdater updater;
         private Dictionary<Room, RoomTracker> allTrackers = new Dictionary<Room, RoomTracker>();
         private List<RoomTracker> TrackerSet = new List<RoomTracker>();
+
+        //private static Action<Thing> preInitMapAction;
 
         public Dictionary<Room, RoomTracker> AllTrackers
         {
@@ -63,12 +66,16 @@ namespace TiberiumRim
 
         public void Notify_ThingSpawned(Thing thing)
         {
+            if (!this.map.regionAndRoomUpdater.Enabled && this.map.regionAndRoomUpdater.AnythingToRebuild) return;
+
             if (thing.GetRoom() == null) return;
             AllTrackers[thing.GetRoom()].Notify_ThingSpawned(thing);
         }
 
         public void Notify_ThingDespawned(Thing thing)
         {
+            if (!this.map.regionAndRoomUpdater.Enabled && this.map.regionAndRoomUpdater.AnythingToRebuild) return;
+
             if (thing.GetRoom() == null) return;
             AllTrackers[thing.GetRoom()].Notify_ThingDespawned(thing);
         }

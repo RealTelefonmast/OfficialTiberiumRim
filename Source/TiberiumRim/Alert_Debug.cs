@@ -21,7 +21,7 @@ namespace TiberiumRim
             TiberiumMapInfo mapinfo = tiberium.TiberiumInfo;
             NetworkMaster tiberiumNetworkMaster = tiberium.NetworkInfo[TiberiumDefOf.TiberiumNetwork];
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Total AllProducers: " + tiberium.NatrualTiberiumStructureInfo.AllProducers.Count);
+            sb.AppendLine("Total AllProducers: " + tiberium.NaturalTiberiumStructureInfo.AllProducers.Count);
             int TibCount = tiberium.TiberiumInfo.TotalCount;
             sb.AppendLine("Total Tiberium: " + TibCount);
             sb.AppendLine("Total Cells: " + tiberium.TiberiumInfo.TotalCount);
@@ -31,12 +31,12 @@ namespace TiberiumRim
                           mapinfo.TiberiumCrystalTypes[HarvestType.Valuable].Count + " types" + "\n Unvaluables: " +
                           mapinfo.TiberiumCrystals[HarvestType.Unvaluable].Count + " - " +
                           mapinfo.TiberiumCrystalTypes[HarvestType.Unvaluable].Count + " types");
-            sb.AppendLine("Trackers: " + tiberium.PollutionInfo.AllComps.Count);
-            //sb.AppendLine("All Trackers: " + tiberium.PollutionInfo.PollutionTrackers.Count + "Tr/" +
+            sb.AppendLine("Trackers: " + tiberium.AtmosphericInfo.AllComps.Count);
+            //sb.AppendLine("All Trackers: " + tiberium.AtmosphericInfo.PollutionTrackers.Count + "Tr/" +
                           //Find.CurrentMap.regionGrid.allRooms.Count + "Rooms\n[" +
-                          //(tiberium.PollutionInfo.TotalPollution) + "][" + tiberium.PollutionInfo.OutsideCells + "][" + tiberium.PollutionInfo.OutsideSaturation +
+                          //(tiberium.AtmosphericInfo.TotalPollution) + "][" + tiberium.AtmosphericInfo.OutsideCells + "][" + tiberium.AtmosphericInfo.OutsideSaturation +
                           //"]");
-                          //sb.AppendLine("All RoomGroups: " + tiberium.PollutionInfo.RoomGroups.Count + "/" + Find.CurrentMap.regionGrid.allRooms.Select(r => r.Group).Distinct().Count());
+                          //sb.AppendLine("All RoomGroups: " + tiberium.AtmosphericInfo.RoomGroups.Count + "/" + Find.CurrentMap.regionGrid.allRooms.Select(r => r.Group).Distinct().Count());
             return sb.ToString();
         }
 

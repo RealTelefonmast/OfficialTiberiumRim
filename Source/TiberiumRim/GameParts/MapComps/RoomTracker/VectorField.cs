@@ -21,7 +21,7 @@ namespace TiberiumRim
         }
 
 
-        public Texture2D GetTextureFor(RoomComponent_Pollution comp)
+        public Texture2D GetTextureFor(RoomComponent_Atmospheric comp)
         {
             var flowRadius = TiberiumContent.FlowMapRadius;
             var pixelDensity = TiberiumContent.FlowMapPixelDensity;
@@ -110,7 +110,7 @@ namespace TiberiumRim
             return TiberiumContent.GenerateTextureFrom(colors, new IntVec2(pixelWidth, pixelHeight), "RoomTexture " + comp.Room.ID);
         }
 
-        private Color ColorAt(IntVec3 cell, Vector3 pixelVec, int PX, int PZ, List<PollutionConnector> conns)
+        private Color ColorAt(IntVec3 cell, Vector3 pixelVec, int PX, int PZ, List<AtmosphericConnector> conns)
         {
             Color color = new Color();//new Color(1,1,1,1);
             float r = 0, g = 0;
@@ -179,7 +179,7 @@ namespace TiberiumRim
             return new IntVec3(sourceVec.x - size.x, 0, sourceVec.z - (size.z / 2));
         }
 
-        private Color[] FlowMapForConn(PollutionConnector conn, Rot4 rot, out IntVec2 size)
+        private Color[] FlowMapForConn(AtmosphericConnector conn, Rot4 rot, out IntVec2 size)
         {
             //Log.Message("Getting Map From: " + conn.Building + " Rot: " + rot.ToStringWord() + " IsFlowing? " + conn.IsFlowing + " FlowDir: " + conn.FlowDirection.ToStringWord());
             size = IntVec2.Invalid;

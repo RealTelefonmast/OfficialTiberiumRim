@@ -95,10 +95,10 @@
 		<label>Mommoth tank</label>
 		<race>MomTank</race>
 		<combatPower>450</combatPower>
-		<defaultFactionType>GDI</defaultFactionType>
+		<defaultFactionType>PlayerColony</defaultFactionType>
 		<aiAvoidCover>true</aiAvoidCover>
 		<destroyGearOnDrop>false</destroyGearOnDrop>
-		<lifeStages>
+		<lifeStages Inherit="False">
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawns/Mechanical/GDI/MomTank</texPath>

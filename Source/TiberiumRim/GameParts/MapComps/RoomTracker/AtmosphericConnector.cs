@@ -6,10 +6,10 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class PollutionConnector
+    public class AtmosphericConnector
     {
         private Building building;
-        private RoomComponent_Pollution[] connections;
+        private RoomComponent_Atmospheric[] connections;
         private Rot4[] connDirections;
         private Rot4 lastFlowDirection;
         private Rot4 flowDirection;
@@ -20,7 +20,7 @@ namespace TiberiumRim
 
         public Rot4 FlowDirection => flowDirection;
 
-        public PollutionConnector(Building building, RoomComponent_Pollution roomA, RoomComponent_Pollution roomB)
+        public AtmosphericConnector(Building building, RoomComponent_Atmospheric roomA, RoomComponent_Atmospheric roomB)
         {
             this.building = building;
             connections = new[] { roomA, roomB };
@@ -76,19 +76,18 @@ namespace TiberiumRim
         {
             IsFlowing = false;
             if (!CanPass) return;
-            if (!ShouldEqualize(connections[0].Saturation, connections[1].Saturation)) return;
-            var flowAmount = PushAmountToOther(connections[0].Saturation, connections[1].Saturation, (TiberiumPollutionMapInfo.CELL_CAPACITY), PassPercent);
-            TryEqualizeBetween(connections[0].UsedContainer, connections[1].UsedContainer, flowAmount);
-            IsFlowing = true;
-            flowDirection = flowAmount > 0 ? connDirections[1].Opposite : connDirections[0].Opposite;
 
-            if (lastFlowDirection != flowDirection)
+            if (connections[0].UsedContainer.TryEqualize(connections[1].UsedContainer, PassPercent, out var flow))
             {
-                connections[0].Notify_FlowChanged();
-                connections[1].Notify_FlowChanged();
+                IsFlowing = true; 
+                flowDirection = flow > 0 ? connDirections[1].Opposite : connDirections[0].Opposite;
+                if (lastFlowDirection != flowDirection)
+                {
+                    connections[0].Notify_FlowChanged();
+                    connections[1].Notify_FlowChanged();
+                }
+                lastFlowDirection = flowDirection;
             }
-            lastFlowDirection = flowDirection;
-
         }
 
         public int PushAmountToOther(float saturation, float otherSaturation, int throughPutCap, float factor = 1)
@@ -101,28 +100,22 @@ namespace TiberiumRim
             return Math.Abs((saturation - otherSaturation)) > 0.01f;
         }
 
-        public void TryEqualizeBetween(PollutionContainer containerA, PollutionContainer containerB, int amount)
-        {
-            containerA.Pollution -= amount;
-            containerB.Pollution += amount;
-        }
-
-        public RoomComponent_Pollution Other(RoomComponent_Pollution from)
+        public RoomComponent_Atmospheric Other(RoomComponent_Atmospheric from)
         {
             return from == connections[0] ? connections[1] : connections[0];
         }
 
-        public bool Connects(RoomComponent_Pollution toThis)
+        public bool Connects(RoomComponent_Atmospheric toThis)
         {
             return toThis == connections[0] || toThis ==connections[1];
         }
 
-        public bool IsSameBuilding(PollutionConnector other)
+        public bool IsSameBuilding(AtmosphericConnector other)
         {
             return Building == other.Building;
         }
 
-        public bool ConnectsSame(PollutionConnector other)
+        public bool ConnectsSame(AtmosphericConnector other)
         {
             return other.connections.All(connections.Contains);
         }

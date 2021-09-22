@@ -8,16 +8,16 @@ namespace TiberiumRim
     public class PortableContainer : FXThing, IContainerHolder
     {
         private NetworkContainer container;
-        private ContainerProps containerProps;
+        private ContainerProperties containerProps;
 
         public string ContainerTitle => "TODO: PORTABLE TITLE";
         public Thing Thing => this;
         public NetworkContainer Container => container;
-        public ContainerProps ContainerProps => containerProps;
+        public ContainerProperties ContainerProperties => containerProps;
         public bool DropsContents => true;
         public bool LeavesPhysicalContainer => false;
 
-        public void PostSetup(NetworkContainer container, ContainerProps props)
+        public void PostSetup(NetworkContainer container, ContainerProperties props)
         {
             this.containerProps = props;
             this.container = container.Copy(this);

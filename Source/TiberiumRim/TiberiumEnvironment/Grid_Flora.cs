@@ -46,7 +46,7 @@ namespace TiberiumRim
 
         public void SetGrow(IntVec3 c, bool value)
         {
-            growBools.Set(c, true);
+            growBools.Set(c, value);
         }
 
         //Bool Getters

@@ -7,7 +7,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class ContainerProps
+    public class ContainerProperties
     {
         public int maxStorage = 0;
         public bool dropContents = false;

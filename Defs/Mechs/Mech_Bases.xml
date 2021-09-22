@@ -58,6 +58,21 @@
 			<soundMeleeHitBuilding>Pawn_Melee_MechanoidBash_HitBuilding</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_MechanoidBash_Miss</soundMeleeMiss>
 		</race>
+	</ThingDef>
+	
+	<ThingDef Name="HarvesterBase" ParentName="BaseMechanoidTR" Abstract="True">
+		<thingClass>TiberiumRim.Harvester</thingClass>
+		<statBases>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
+			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
+		</statBases>
+		<race>
+			<thinkTreeMain>HarvesterMain</thinkTreeMain>
+			<thinkTreeConstant>HarvesterConstant</thinkTreeConstant>
+			<baseBodySize>4</baseBodySize>
+			<baseHealthScale>1</baseHealthScale>
+		</race>
 		<tools>
 			<li>
 				<label>collector arm</label>
@@ -80,21 +95,6 @@
 				<chanceFactor>0.4</chanceFactor>
 			</li>
 		</tools>
-	</ThingDef>
-	
-	<ThingDef Name="HarvesterBase" ParentName="BaseMechanoidTR" Abstract="True">
-		<thingClass>TiberiumRim.Harvester</thingClass>
-		<statBases>
-			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
-			<TiberiumGasResistance>1</TiberiumGasResistance>
-			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
-		</statBases>
-		<race>
-			<thinkTreeMain>HarvesterMain</thinkTreeMain>
-			<thinkTreeConstant>HarvesterConstant</thinkTreeConstant>
-			<baseBodySize>4</baseBodySize>
-			<baseHealthScale>1</baseHealthScale>
-		</race>
 
 	</ThingDef>
 	

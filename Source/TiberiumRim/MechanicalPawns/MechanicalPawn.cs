@@ -7,13 +7,22 @@ namespace TiberiumRim
 {
     public class MechanicalPawn : FXPawn
     {
-        private MechLink parentLink;
+        protected MechLink parentLink;
         protected Building parent;
+
+        public MapComponent_Tiberium TiberiumManager => Map.Tiberium();
+        public NetworkMapInfo NetworkInfo => TiberiumManager.NetworkInfo;
 
         public MechLink ParentMechLink
         {
             get => parentLink;
             set => parentLink = value;
+        }
+
+        public virtual Building ParentBuilding
+        {
+            get => parent;
+            set => parent = value;
         }
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
@@ -25,7 +34,6 @@ namespace TiberiumRim
             }
             if (this.Faction == Faction.OfPlayer)
             {
-
                 if (this.playerSettings == null)
                 {
                     this.playerSettings = new Pawn_PlayerSettings(this);
@@ -43,15 +51,10 @@ namespace TiberiumRim
             Scribe_References.Look(ref parent, "parent");
         }
 
-        public virtual Building ParentBuilding
+        public override void Tick()
         {
-            get => parent;
-            set => parent = value;
+            base.Tick();
         }
-
-        public NetworkMapInfo NetworkInfo => TiberiumManager.NetworkInfo;
-
-        public MapComponent_Tiberium TiberiumManager => Map.Tiberium();
 
         public bool IsDamaged()
         {

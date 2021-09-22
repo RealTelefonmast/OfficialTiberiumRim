@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using RimWorld;
 using UnityEngine;
@@ -43,8 +44,7 @@ namespace TiberiumRim
         private bool NeedsTerrain => !Position.GetTerrain(Map).IsTiberiumTerrain();
         public bool ShouldSpread => Position.CanGrowFrom(Map) && !Dormant && !OutOfParentRange;
 
-        private bool SpreadLocked =>
-            Parent != null && !(Parent.ShouldSpawnTiberium || Parent.TiberiumField.MarkedForFastGrowth);
+        private bool SpreadLocked => Parent != null && !(Parent.ShouldSpawnTiberium || Parent.TiberiumField.MarkedForFastGrowth);
 
         //TODO?: Suppression with radial dropoff?
         private bool Suppressed => def.tiberium.canBeInhibited && Position.IsSuppressed(Map);
@@ -58,7 +58,6 @@ namespace TiberiumRim
         public float HarvestValue => (Growth * def.tiberium.harvestValue);
 
         //public float ParentSpreadRange => parent
-
 
         public float Growth
         {
@@ -167,9 +166,14 @@ namespace TiberiumRim
 
         public void TiberiumTick(int interval)
         {
+            //Check for current state
             StateTick();
             if (Suppressed) return;
+            //Grow the tib
             GrowthTick();
+            //During growth, this may despawn
+            if (!Spawned) return;
+            //Try to spread
             if (!ShouldSpread) return;
             SpreadTick(interval);
         }
@@ -206,7 +210,42 @@ namespace TiberiumRim
 
                 //Try Mutate Plant
                 if (!TRUtils.Chance(def.tiberium.plantMutationChance)) continue;
-                if (GenTiberium.TryMutatePlant(pos.GetPlant(Map), def)) continue;
+                if (GenTiberium.TryMutatePlant(pos.GetPlant(Map), def))
+                {
+                    if (Rand.Chance(0.01f))
+                    {
+                        var mapComp = TiberiumMapComp;
+                        Map mapRef = mapComp.map;
+
+                        //Once we mutate a plant, lets create garden
+                        Predicate<IntVec3> pred = c => c.InBounds(mapRef) && c.GetEdifice(mapRef) == null && c.GetTerrain(mapRef).IsSoil();
+                        Action<IntVec3> action = delegate(IntVec3 c)
+                        {
+                            var tib = c.GetTiberium(mapRef);
+                            c.GetTiberium(mapRef)?.DeSpawn();
+                            c.GetPlant(mapRef)?.DeSpawn();
+                            /*if (tib != null)
+                            {
+                                tib.DeSpawn();
+                                var hasOut = def.GetFloraOutcomes(ThingDefOf.Plant_Grass, out ThingDef toPlant, out TerrainDef _);
+                                if (hasOut)
+                                {
+                                    var newPlant = (TiberiumPlant) ThingMaker.MakeThing(toPlant);
+                                    newPlant.Growth += Rand.Range(0.25f, Growth);
+                                    GenSpawn.Spawn(newPlant, c, mapRef);
+                                }
+                            }
+                            GenTiberium.TryMutatePlant(c.GetPlant(mapRef), def);
+                            */
+                            mapRef.terrainGrid.SetTerrain(c, TiberiumTerrainDefOf.TiberiumPodSoil);
+                        };
+                        TiberiumFloodInfo flood = new TiberiumFloodInfo(Map, pred, action);
+                        flood.TryMakeFlood(out var cells, Position, Rand.Range(100, 200));
+                        mapComp.FloraInfo.MakeGarden(cells);
+                        return;
+                    }
+                    continue;
+                }
 
                 //TryCreateTerrain
                 if (!TRUtils.Chance(Mathf.Pow(def.tiberium.plantMutationChance, 2))) continue;
@@ -289,13 +328,31 @@ namespace TiberiumRim
             };
         }
 
-        private static Color32[] colors = new Color32[4];
+        private Color32[] colorsInt = new Color32[4];
+
+        private Color32? colorInt;
+
+        private Color32 MainColor
+        {
+            get
+            {
+                if (colorInt == null)
+                {
+                    var color = Color.white; //* Mathf. Map.fertilityGrid.FertilityAt(Position);
+                    color.a = 1;
+                    colorInt = color;
+                }
+                return colorInt.Value;
+            }
+        }
 
         public override void Print(SectionLayer layer)
         {
             Vector3 a = this.TrueCenter();
             Rand.PushState();
             Rand.Seed = base.Position.GetHashCode();
+
+            //Log.Message($"Printing tib {Position.GetHashCode()} Color: {graphicRand.MatSingle.color}");
             int num = Mathf.CeilToInt(this.Growth * (float)this.def.tiberium.MeshCount);
             if (num < 1)
             {
@@ -369,8 +426,20 @@ namespace TiberiumRim
                 bool randBool = Rand.Bool;
                 Material matSingle = this.Graphic.MatSingle;
                 Vector2 size = new Vector2(num3, num3);
-                Graphic.TryGetTextureAtlasReplacementInfo(matSingle, this.def.category.ToAtlasGroup(), randBool, false, out matSingle, out var uvs, out _);
-                Printer_Plane.PrintPlane(layer, finalPos, size, matSingle, 0f, randBool, uvs, colors, 0.1f, (float)(this.HashOffset() % 1024));
+
+                Vector2[] uvs;
+                //Color32 color;
+                Graphic.TryGetTextureAtlasReplacementInfo(matSingle, this.def.category.ToAtlasGroup(), randBool, true, out matSingle, out uvs, out _);
+
+                //matSingle.SetColor(ShaderPropertyIDs.Color, Color.red);
+                Printer_Plane.PrintPlane(layer, finalPos, size, matSingle, 0, randBool, uvs, new Color32[]
+                {
+                    MainColor,
+                    MainColor,
+                    MainColor,
+                    MainColor
+                }, 0.1f, (this.HashOffset() % 1024));
+
                 num4++;
                 if (num4 >= num)
                 {

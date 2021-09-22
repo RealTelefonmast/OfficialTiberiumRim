@@ -53,10 +53,11 @@
   </ThingDef>
   
 
-  <ThingDef ParentName="BaseTRMechanical">
+  <ThingDef ParentName="BaseMechanoidTR">
     <defName>MomTank</defName>
     <label>Mommoth tank</label>
     <description>GDI Mommth tanks are characterized by their extreme power, toughness and sluggishness. In a direct, head-on confrontation, they were always the most powerful ground unit.</description>
+	<size>(2,2)</size>
     <statBases>
 		<MoveSpeed>2</MoveSpeed>
 		<ArmorRating_Blunt>0.6</ArmorRating_Blunt>
@@ -81,7 +82,7 @@
       <body>BasicVehicleBody</body>
       <baseBodySize>3</baseBodySize>
       <baseHealthScale>1.5</baseHealthScale>
-      <lifeStageAges>
+      <lifeStageAges Inherit="False">
         <li>
           <def>VehicleFormed</def>
           <minAge>0</minAge>

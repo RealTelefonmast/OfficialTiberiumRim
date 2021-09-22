@@ -6,12 +6,12 @@ namespace TiberiumRim
     public class TiberiumFloraMapInfo : MapInformation
     {
         private TiberiumFloraGrid floraGrid;
-
         public List<TiberiumGarden> gardens;
 
         public TiberiumFloraMapInfo(Map map) : base(map)
         {
             floraGrid = new TiberiumFloraGrid(map);
+            gardens = new List<TiberiumGarden>();
         }
 
         public override void ExposeData()
@@ -68,6 +68,12 @@ namespace TiberiumRim
             floraGrid.SetFlora(plant.Position, false);
         }
 
+        public void MakeGarden(List<IntVec3> gardenCells)
+        {
+            gardens.Add(new TiberiumGarden(Map, gardenCells));
+            gardenCells.ForEach(c => floraGrid.SetGrow(c, true));
+        }
+
         //Bools
         public bool HasFloraAt(IntVec3 c)
         {
@@ -93,6 +99,5 @@ namespace TiberiumRim
         {
             floraGrid.Notify_PlantSpawned(plant);
         }
-
     }
 }

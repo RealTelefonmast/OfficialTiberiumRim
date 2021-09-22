@@ -28,6 +28,7 @@ namespace TiberiumRim
 
         public override void Tick()
         {
+
             if (!ShouldSpread) return;
 
             if (crystalIterator == null && CanReset)

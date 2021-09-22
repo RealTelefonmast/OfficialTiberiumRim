@@ -10,15 +10,9 @@ namespace TiberiumRim
         public static bool TrySpreadTiberium(TiberiumCrystal crystal)
         {
             var crystalDef = crystal.def;
-            if (crystal.Parent != null)
+            if (crystal.Parent != null) 
                 crystalDef = crystal.Parent.TiberiumCrystalDefWeighted;
             bool Predicate(IntVec3 c) => TrySpawnTiberium(c, crystal.Map, crystalDef, crystal.Parent);
-            /*
-            if (CellFinder.TryFindRandomCellNear(crystal.Position, crystal.Map, (int) crystal.props.tiberium.spreadRadius, predicate, out IntVec3 result))
-            {
-                return true;
-            }
-            */
             return GenAdj.CellsAdjacent8Way(crystal).InRandomOrder().Any(Predicate);
         }
 
@@ -65,7 +59,8 @@ namespace TiberiumRim
             {
                 if (requiresFlora && pos.Standable(map))
                 {
-                    GenSpawn.Spawn(TiberiumDefOf.TiberiumGrass, pos, map);
+                    var flora = parent?.Ruleset.PlantAt(0.25f, 1);
+                    GenSpawn.Spawn(flora ?? TiberiumDefOf.TiberiumGrass, pos, map);
                 }
                 return false;
             }
@@ -322,7 +317,7 @@ namespace TiberiumRim
         //Terrain Checks
         public static bool IsSoil(this TerrainDef def)
         {
-            return TiberiumDefOf.TerrainFilter_Soil.Allows(def);
+            return def.IsSoil || TiberiumDefOf.TerrainFilter_Soil.Allows(def);
         }
 
         public static bool IsMoss(this TerrainDef def)

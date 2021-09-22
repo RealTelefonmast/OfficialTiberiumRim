@@ -26,16 +26,15 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\Assemblies\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>..\References\0Harmony.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="0Harmony, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Lib.Harmony.2.1.1\lib\net472\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
@@ -128,7 +127,7 @@
     <Compile Include="GameParts\Networks\AtmosphericNetwork\Comp_ANS_Filter.cs" />
     <Compile Include="GameParts\Networks\Building_NetworkStructureTransmitter.cs" />
     <Compile Include="GameParts\Networks\Comp_NetworkStructure.cs" />
-    <Compile Include="Comps\Comp_PollutionSource.cs" />
+    <Compile Include="Comps\CompAtmosphericSource.cs" />
     <Compile Include="Comps\Comp_RadiationLeak.cs" />
     <Compile Include="Comps\Comp_Suppression.cs" />
     <Compile Include="Comps\Comp_TiberiumExplosive.cs" />
@@ -192,7 +191,7 @@
     <Compile Include="GameParts\Interfaces\IContainerHolder.cs" />
     <Compile Include="GameParts\Interfaces\IContainerLeaker.cs" />
     <Compile Include="GameParts\Interfaces\IGroundZero.cs" />
-    <Compile Include="GameParts\Interfaces\IPollutionSource.cs" />
+    <Compile Include="GameParts\Interfaces\IAtmosphericSource.cs" />
     <Compile Include="GameParts\Interfaces\IRadiationLeaker.cs" />
     <Compile Include="GameParts\Interfaces\IRadiationSource.cs" />
     <Compile Include="GameParts\Interfaces\IResearchCraneTarget.cs" />
@@ -210,11 +209,11 @@
     <Compile Include="GameParts\MapComps\NetworkMapInfo.cs" />
     <Compile Include="GameParts\MapComps\NetworkMaster.cs" />
     <Compile Include="GameParts\MapComps\RoomMapInfo.cs" />
-    <Compile Include="GameParts\MapComps\RoomTracker\PollutionConnector.cs" />
-    <Compile Include="GameParts\MapComps\RoomTracker\PollutionContainer.cs" />
+    <Compile Include="GameParts\MapComps\RoomTracker\AtmosphericConnector.cs" />
+    <Compile Include="GameParts\MapComps\RoomTracker\AtmosphericContainer.cs" />
     <Compile Include="GameParts\MapComps\RoomTracker\RoomComponent.cs" />
     <Compile Include="GameParts\MapComps\RoomTracker\RoomComponent_AirLock.cs" />
-    <Compile Include="GameParts\MapComps\RoomTracker\RoomComponent_Pollution.cs" />
+    <Compile Include="GameParts\MapComps\RoomTracker\RoomComponent_Atmospheric.cs" />
     <Compile Include="GameParts\MapComps\RoomTracker\RoomRoleWorker_AirLock.cs" />
     <Compile Include="GameParts\MapComps\RoomTracker\RoomTracker.cs" />
     <Compile Include="GameParts\MapComps\RoomTracker\RoomTrackerUpdater.cs" />
@@ -224,7 +223,7 @@
     <Compile Include="GameParts\MapComps\TiberiumBlossomInfo.cs" />
     <Compile Include="GameParts\MapComps\TiberiumFloraMapInfo.cs" />
     <Compile Include="GameParts\MapComps\TiberiumMapInfo.cs" />
-    <Compile Include="GameParts\MapComps\TiberiumPollutionMapInfo.cs" />
+    <Compile Include="GameParts\MapComps\AtmosphericMapInfo.cs" />
     <Compile Include="GameParts\MapComps\TiberiumSpreader.cs" />
     <Compile Include="GameParts\MapComps\TiberiumStructureInfo.cs" />
     <Compile Include="GameParts\MapComps\TiberiumTerrainInfo.cs" />
@@ -234,7 +233,7 @@
     <Compile Include="GameParts\Networks\Comp_NetworkStructureTransmitter.cs" />
     <Compile Include="GameParts\Networks\AtmosphericNetwork\Comp_AtmosphericNetworkStructure.cs" />
     <Compile Include="GameParts\Networks\AtmosphericValueType.cs" />
-    <Compile Include="GameParts\Networks\ContainerProps.cs" />
+    <Compile Include="GameParts\Networks\ContainerProperties.cs" />
     <Compile Include="GameParts\Networks\Gizmo_NetworkInfo.cs" />
     <Compile Include="GameParts\Networks\INetworkStructure.cs" />
     <Compile Include="GameParts\Networks\Network.cs" />
@@ -354,6 +353,7 @@
     <Compile Include="MechanicalPawns\Mech_Gunned.cs" />
     <Compile Include="MechanicalPawns\Pawn_UnitDrafter.cs" />
     <Compile Include="MechanicalPawns\RepairDrone.cs" />
+    <Compile Include="MechanicalPawns\Vehicles\Vehicle.cs" />
     <Compile Include="MechanicalPawns\Zone_MechParking.cs" />
     <Compile Include="MultiCurve.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -538,6 +538,7 @@
     <Compile Include="VisualEffects\QuadTree.cs" />
     <Compile Include="VisualEffects\SectionLayer_TiberiumGas.cs" />
     <Compile Include="VisualEffects\Sprites\SpriteAtlas.cs" />
+    <Compile Include="VisualEffects\Subeffecter_SprayerFixed.cs" />
     <Compile Include="VisualEffects\TextureContent\FlowMapCache.cs" />
     <Compile Include="VisualEffects\TextureContent\MaterialsTesla.cs" />
     <Compile Include="VisualEffects\TextureContent\TiberiumContent.cs" />
@@ -597,6 +598,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

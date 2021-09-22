@@ -7,7 +7,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class RoomComponent_Pollution : RoomComponent
+    public class RoomComponent_Atmospheric : RoomComponent
     {
         private int markedDirty, width, height;
         private IntVec2 size;
@@ -20,94 +20,100 @@ namespace TiberiumRim
 
         private FlowRenderer renderer;
         private VectorField vectorField;
-        private PollutionContainer pollutionContainer;
 
-        public Dictionary<RoomComponent_Pollution, List<PollutionConnector>> neighbourConnections = new Dictionary<RoomComponent_Pollution, List<PollutionConnector>>();
-        public List<PollutionConnector> connections = new List<PollutionConnector>();
+        private AtmosphericContainer valueContainer;
+
+        public Dictionary<RoomComponent_Atmospheric, List<AtmosphericConnector>> neighbourConnections = new Dictionary<RoomComponent_Atmospheric, List<AtmosphericConnector>>();
+        public List<AtmosphericConnector> connections = new List<AtmosphericConnector>();
 
         //
-        public TiberiumPollutionMapInfo PollutionInfo => Map.Tiberium().PollutionInfo;
+        public AtmosphericMapInfo AtmosphericInfo => Map.Tiberium().AtmosphericInfo;
 
         public HashSet<IntVec3> BorderCellsNoCorners => borderCells;
-        public List<PollutionConnector> Connections => UsesOutDoorPollution ? PollutionInfo.ConnectionsToOutside : connections;
+        public List<AtmosphericConnector> Connections => UsesOutDoorPollution ? AtmosphericInfo.ConnectionsToOutside : connections;
 
+        public AtmosphericContainer Outside => AtmosphericInfo.OutsideContainer;
+        public AtmosphericContainer ActualContainer => valueContainer;
+        public AtmosphericContainer UsedContainer => UsesOutDoorPollution ? Outside : ActualContainer;
 
-        public PollutionContainer Outside => PollutionInfo.OutsideContainer;
-        public PollutionContainer ActualContainer => pollutionContainer;
-        public PollutionContainer UsedContainer => UsesOutDoorPollution ? Outside : ActualContainer;
-
-        public int ActualPollution => ActualContainer.Pollution;
+        public int ActualValue => ActualContainer.Value;
         public float ActualSaturation => ActualContainer.Saturation;
 
         public IntVec3 MinVec => minVec;
         public IntVec2 Size => size;
 
-        public int Pollution
+        public Dictionary<NetworkValueDef, int> Values
         {
-            get => UsedContainer.Pollution;
-            set => UsedContainer.Pollution = value;
+            get
+            {
+                var returnDict = new Dictionary<NetworkValueDef, int>();
+                foreach (var values in ActualContainer.Container.StoredValuesByType)
+                {
+                    returnDict.Add(values.Key, Mathf.RoundToInt(values.Value));
+                }
+                return returnDict;
+            }
+        } 
+
+        public int TotalValue
+        {
+            get => UsedContainer.Value;
+            //set => UsedContainer.Pollution = value;
         }
 
         public float Saturation => UsedContainer.Saturation;
 
         public bool UsesOutDoorPollution => Parent.IsOutside;
         public bool IsDirty => markedDirty > 0;
-        //
 
         //CREATION 
         public override void Create(RoomTracker parent)
         {
             base.Create(parent);
             //Notify Parent Manager
-            PollutionInfo.Notify_NewComp(this);
+            AtmosphericInfo.Notify_NewComp(this);
 
             //Create new comps
-            pollutionContainer = new PollutionContainer();
+            valueContainer = new AtmosphericContainer(this);
             renderer = new FlowRenderer();
             vectorField = new VectorField(Map);
-
-            if (UsesOutDoorPollution) return;
-            //Assign starting pollution based on position
-            if (PollutionInfo.Cache.TryGetAverageRoomPollution(Room, out int pollution))
-            {
-                //We know we are not outside, use actual
-                ActualContainer.Pollution = pollution;
-            }
         }
 
         public override void Disband(RoomTracker parent, Map map)
         {
-            var pollInfo = map.Tiberium().PollutionInfo;
-            pollInfo.Notify_DisbandedComp(this);
+            var atmosInfo = map.Tiberium().AtmosphericInfo;
+            atmosInfo.Notify_DisbandedComp(this);
             foreach (var connector in connections)
             {
-                pollInfo.Notify_RemoveConnection(connector);
+                atmosInfo.Notify_RemoveConnection(connector);
             }
 
             if (UsesOutDoorPollution)
             {
-                for (var i = pollInfo.ConnectionsToOutside.Count - 1; i >= 0; i--)
+                for (var i = atmosInfo.ConnectionsToOutside.Count - 1; i >= 0; i--)
                 {
-                    var pollutionConnector = pollInfo.ConnectionsToOutside[i];
+                    var pollutionConnector = atmosInfo.ConnectionsToOutside[i];
                     pollutionConnector.Other(this).RegenerateData(true, true, true);
                 }
             }
         }
 
-        public override void Notify_Reused() { }
+        public override void Notify_Reused()
+        {
+            ActualContainer.Container.Clear();
+        }
 
         public override void Notify_RoofClosed()
         {
-            PollutionInfo.RegenerateOutside();
-            pollutionContainer.RegenerateData(Room.CellCount);
+            AtmosphericInfo.RegenerateOutside();
+            ActualContainer.RegenerateData(this, Room.CellCount);
         }
 
         public override void Notify_RoofOpened()
         {
-            if (ActualPollution > 0)
+            if (ActualValue > 0)
             {
-                Outside.Pollution += ActualPollution;
-                ActualContainer.Pollution -= ActualPollution;
+                ActualContainer.TransferAllTo(Outside);
             }
         }
 
@@ -133,36 +139,31 @@ namespace TiberiumRim
             markedDirty++;
         }
 
-        public bool TryAddPollution(int amount, out int actuallyAdded)
+        public bool TryAddValue(NetworkValueDef value, int amount, out float actualAmount)
         {
-            return UsedContainer.TryAddValue(amount, out actuallyAdded);
+            //Log.Message($"Adding {value} ({amount}) to RoomComp {Room.ID} | Outside: {Outside}");
+            return UsedContainer.Container.TryAddValue(value, amount, out actualAmount);
         }
 
-        public bool TryRemovePollution(int amount, out int actuallyRemoved)
+        public bool TryRemoveValue(NetworkValueDef value, int amount, out float actualAmount)
         {
-            return UsedContainer.TryRemoveValue(amount, out actuallyRemoved);
+            return UsedContainer.Container.TryRemoveValue(value, amount, out actualAmount);
         }
 
         //Equalization Logic
         public void Equalize()
         {
             //
-            if (ActualPollution <= 0) return;
+            if (ActualValue <= 0) return;
 
-            //Equalize
+            //EqualizeWith
             if (Parent.OpenRoofCount <= 0) return;
             if (Outside.FullySaturated) return;
 
-            if (ShouldPushToOther(ActualSaturation, Outside.Saturation))
+            if (ActualSaturation > Outside.Saturation)
             {
-                int from = ActualPollution, to = Outside.Pollution;
-                TryPushToOther(ref @from, ref to, PushAmountToOther(ActualSaturation, Outside.Saturation, TiberiumPollutionMapInfo.CELL_CAPACITY * Parent.OpenRoofCount));
-
-                //Moving from actual container to outside or vice versa
-                ActualContainer.Pollution = @from;
-                Outside.Pollution = to;
+                ActualContainer.TryEqualize(Outside, 1f, out _);
             }
-            
         }
 
         public int PushAmountToOther(float saturation, float otherSaturation, int throughPutCap, float factor = 1)
@@ -220,8 +221,8 @@ namespace TiberiumRim
             //Special Outdoor Case
             if (UsesOutDoorPollution)
             {
-                PollutionInfo.RegenerateOutside();
-                ActualContainer.RegenerateData(Room.CellCount);
+                AtmosphericInfo.RegenerateOutside();
+                ActualContainer.RegenerateData(this, Room.CellCount);
 
                 markedDirty--;
                 return;
@@ -243,13 +244,13 @@ namespace TiberiumRim
 
                 //Get Cell Data
                 GenerateCellData();
-                ActualContainer.RegenerateData(Parent.CellCount);
+                ActualContainer.RegenerateData(this, Parent.CellCount);
                 renderer.UpdateMesh(Room.Cells, minVec, width, height);
             }
 
             foreach (var connector in connections)
             {
-                PollutionInfo.Notify_RemoveConnection(connector);
+                AtmosphericInfo.Notify_RemoveConnection(connector);
             }
 
             neighbourConnections.Clear();
@@ -264,16 +265,23 @@ namespace TiberiumRim
                 if (!IsPassBuilding(building)) continue;
                 var otherRoom = OppositeRoomFrom(building.Position);
                 if (otherRoom == null) continue;
-                var otherPollution = otherRoom.Pollution();
+                var otherPollution = otherRoom.AtmosphericRoomComp();
                 if (otherPollution == null) continue;
 
                 var newConn = SetNewConnection(otherPollution, building);
-                PollutionInfo.Notify_AddConnection(newConn);
+                AtmosphericInfo.Notify_AddConnection(newConn);
                 if (!ignoreOthers)
                 {
                     otherPollution.MarkDirty();
                     otherPollution.RegenerateData(true, true);
                 }
+            }
+
+            //Assign starting pollution based on position
+            if (AtmosphericInfo.Cache.TryGetAtmosphericValuesForRoom(Room, out var info))
+            {
+                //We know we are not outside, use actual
+                ActualContainer.Data_SetInfo(info);
             }
 
             /*
@@ -288,16 +296,16 @@ namespace TiberiumRim
             markedDirty--;
         }
 
-        public PollutionConnector SetNewConnection(RoomComponent_Pollution toOther, Building connection)
+        public AtmosphericConnector SetNewConnection(RoomComponent_Atmospheric toOther, Building connection)
         {
             if (!neighbourConnections.ContainsKey(toOther))
             {
-                neighbourConnections.Add(toOther, new List<PollutionConnector>());
+                neighbourConnections.Add(toOther, new List<AtmosphericConnector>());
             }
 
             var cells = GenAdj.CellsAdjacentCardinal(connection);
 
-            var newConn = new PollutionConnector(connection, this, toOther);
+            var newConn = new AtmosphericConnector(connection, this, toOther);
             connections.Add(newConn);
             neighbourConnections[toOther].Add(newConn);
             return newConn;
@@ -357,14 +365,116 @@ namespace TiberiumRim
         //RENDERING
         public override void OnGUI()
         {
+            /*
             if (Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest)
             {
                 if (Room.CellCount <= 0) return;
                 IntVec3 first = Room.Cells.First();
                 Vector3 v = (GenMapUI.LabelDrawPosFor(first)) + new Vector2(0, -0.75f);
-                GenMapUI.DrawThingLabel(v, Room.ID + "[" + Pollution + "]{" + UsedContainer.TotalCapacity + "}", Color.red);
+                GenMapUI.DrawThingLabel(v,  $"{Room.ID} [{ActualValue}]({UsedContainer.Container.Capacity})", Color.red);
+            }
+            */
+            if (Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest)
+            {
+                if (Room.CellCount <= 0) return;
+                DrawMenu(Room.Cells.First());
+
+                /*
+                Vector3 v = (GenMapUI.LabelDrawPosFor(first));
+                UsedContainer.Container.ContainerGizmo.GizmoOnGUI(v, 500, new GizmoRenderParms()
+                {
+                    highLight = false,
+                    lowLight = false,
+                    shrunk = false,
+                });
+                */
             }
             //vectorField.OnGUI();
+        }
+
+        private void DrawMenu(IntVec3 pos)
+        {
+            var v = DrawPosFor(pos) - new Vector2(0, 69);
+            //46
+            var rect = new Rect(v.x, v.y, 115, 69);
+            TRWidgets.DrawColoredBox(rect, new Color(1, 1, 1, 0.125f), Color.white, 1);
+
+            rect = rect.ContractedBy(5);
+            GUI.BeginGroup(rect);
+
+            var rect1 = new Rect(0, 0, 20, rect.height);
+            var rect2 = new Rect(25, 0, 20, rect.height);
+            Widgets.DrawHighlight(rect1);
+            Widgets.DrawHighlight(rect2);
+
+            Text.Font = GameFont.Tiny;
+            //Rect labelRect = new Rect(0, 0, 0, 0);
+
+            Text.Font = default;
+
+            DrawPctBar(rect1, Outside);
+            DrawPctBar(rect2, ActualContainer);
+
+            Rect textRect = new Rect(0, 0, rect.width, rect.height);
+            GUI.color = Color.red;
+            Text.Anchor = TextAnchor.UpperRight;
+            Widgets.Label(textRect, $"ID: {Room.ID}");
+
+            GUI.color = Color.green;
+            Text.Anchor = TextAnchor.MiddleRight;
+            Widgets.Label(textRect, $"Val: {TotalValue}");
+
+            GUI.color = Color.green;
+            Text.Anchor = TextAnchor.LowerRight;
+            Widgets.Label(textRect, $"Pct: {Saturation.ToStringPercent()}");
+
+
+            Text.Anchor = default;
+            GUI.color = Color.white;
+            GUI.EndGroup();
+
+            /*
+            Find.WindowStack.ImmediateWindow(Room.GetHashCode(), rect, WindowLayer.GameUI, delegate
+            {
+                rect = rect.ContractedBy(5);
+                Widgets.DrawHighlight(rect);
+
+                GUI.BeginGroup(rect);
+
+                var rect1 = new Rect(0,0, 20, rect.height);
+                var rect2 = new Rect(25, 0, 20, rect.height);
+                Widgets.DrawHighlight(rect1);
+                Widgets.DrawHighlight(rect2);
+
+                DrawPctBar(rect1, Outside);
+                DrawPctBar(rect2, ActualContainer);
+                GUI.EndGroup();
+            }, true, false, 0);
+            */
+        }
+
+        private void DrawPctBar(Rect rect, AtmosphericContainer container)
+        {
+            GUI.BeginGroup(rect);
+            var actualContainer = container.Container;
+            float yPos = rect.height;
+            foreach (var type in actualContainer.AllStoredTypes)
+            {
+                float percent = (actualContainer.ValueForType(type) / actualContainer.Capacity);
+                var height = rect.height * percent;
+                Rect typeRect = new Rect(0, yPos - height, rect.width, height);
+                yPos -= height;
+                Widgets.DrawBoxSolid(typeRect, type.valueColor);
+            }
+            GUI.EndGroup();
+        }
+
+        private Vector2 DrawPosFor(IntVec3 pos)
+        {
+            Vector3 position = new Vector3((float)pos.x, (float)pos.y + AltitudeLayer.MetaOverlays.AltitudeFor(), (float)pos.z);
+            Vector2 vector = Find.Camera.WorldToScreenPoint(position) / Prefs.UIScale;
+            vector.y = (float)UI.screenHeight - vector.y;
+            return vector;
         }
 
         public override void Draw()
@@ -386,19 +496,20 @@ namespace TiberiumRim
                 }
             }
 
+            /*
             if (Room.CellCount <= 0) return;
             var vec = Room.Cells.First().ToVector3();
             GenDraw.FillableBarRequest r = default;
             r.center = vec + new Vector3(0.25f, 0, 0.5f);
             r.size = new Vector2(1f, 0.5f);
             r.rotation = Rot4.East;
-            r.fillPercent = PollutionInfo.OutsideContainer.Saturation;
+            r.fillPercent = AtmosphericInfo.OutsideContainer.Saturation;
             r.filledMat = TiberiumContent.GreenMaterial;
             r.unfilledMat = TiberiumContent.ClearMaterial;
             r.margin = 0.125f;
             GenDraw.DrawFillableBar(r);
 
-            if (ActualContainer.Pollution > 0)
+            if (ActualContainer.Value > 0)
             {
                 GenDraw.FillableBarRequest r2 = default;
                 r2.center = vec + new Vector3(0.75f, 0, 0.5f);
@@ -410,6 +521,7 @@ namespace TiberiumRim
                 r2.margin = 0.125f;
                 GenDraw.DrawFillableBar(r2);
             }
+            */
         }
     }
 
@@ -420,7 +532,6 @@ namespace TiberiumRim
         private Mesh cachedMesh;
 
         public static float MainAlpha = 0.8f;
-
 
         [TweakValue("DrawPollution_Tiling", 0.01f, 20f)]
         public static float Tiling = 0.15f;
@@ -461,7 +572,6 @@ namespace TiberiumRim
                 return cachedMat;
             }
         }
-
 
         private List<IntVec3> OffsetIntvecs(IEnumerable<IntVec3> cells, IntVec3 reference)
         {

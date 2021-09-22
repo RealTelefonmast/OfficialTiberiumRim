@@ -77,7 +77,7 @@ namespace TiberiumRim
         public override void PostOpen()
         {
             base.PostOpen();
-            Find.WindowStack.Add(new ModuleVisualizer());
+            //Find.WindowStack.Add(new ModuleVisualizer());
             //esearchRoots.AddRange(DefDatabase<TResearchDef>.AllDefs.Where(t => t.requisites?.tiberiumResearch.NullOrEmpty() ?? false));
         }
 

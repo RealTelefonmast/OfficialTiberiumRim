@@ -22,7 +22,7 @@ namespace TiberiumRim.Utilities
 
         public static IntVec3 GeneralCenter(this Room room)
         {
-            var poll = room.Pollution();
+            var poll = room.AtmosphericRoomComp();
             var size = poll.Size;
             return poll.MinVec + new IntVec3(size.x/2,0, size.z/2);
         }

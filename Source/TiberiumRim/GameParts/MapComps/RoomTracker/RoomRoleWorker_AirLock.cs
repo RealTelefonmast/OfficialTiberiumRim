@@ -37,11 +37,13 @@ namespace TiberiumRim
 
         public override string PostProcessedLabel(string baseLabel)
         {
-            var curRoom = UI.MouseCell().GetRoom(Find.CurrentMap);
+            var selectedThing = Find.Selector.FirstSelectedObject as Thing;
+            var curRoom = selectedThing != null ? selectedThing.GetRoom() : UI.MouseCell().GetRoom(Find.CurrentMap);
             var curAirLock = curRoom.GetRoomComp<RoomComponent_AirLock>();
+
             if (curAirLock == null) return base.PostProcessedLabel(baseLabel);
 
-            return base.PostProcessedLabel(baseLabel) + (curAirLock.IsActive ? "ACTIVE" : "INACTIVE");
+            return $"{base.PostProcessedLabel(baseLabel)} {(curAirLock.IsActive ? "ACTIVE" : "INACTIVE")}";
         }
     }
 }

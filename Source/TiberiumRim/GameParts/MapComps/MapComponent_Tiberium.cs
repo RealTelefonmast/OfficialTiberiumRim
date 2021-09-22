@@ -16,8 +16,8 @@ namespace TiberiumRim
         public TiberiumMapInfo TiberiumInfo;        // Tiberium Crystals, Pods, etc, all variations
         public TiberiumFloraMapInfo FloraInfo;      // Tiberium Plant life, Gardens, Environment
         public TiberiumTerrainInfo TerrainInfo;
-        public TiberiumPollutionMapInfo PollutionInfo;
-        public TiberiumStructureInfo NatrualTiberiumStructureInfo;
+        public AtmosphericMapInfo AtmosphericInfo;
+        public TiberiumStructureInfo NaturalTiberiumStructureInfo;
         public StructureCacheMapInfo StructureCacheInfo;
         public NetworkMapInfo NetworkInfo;
         public MapPawnInfo MapPawnInfo; // Currently infected pawns, animals, colonists, visitors, etc
@@ -38,10 +38,10 @@ namespace TiberiumRim
             TiberiumInfo = new TiberiumMapInfo(map);
             FloraInfo = new TiberiumFloraMapInfo(map);
             TerrainInfo = new TiberiumTerrainInfo(map);
-            NatrualTiberiumStructureInfo = new TiberiumStructureInfo(map);
+            NaturalTiberiumStructureInfo = new TiberiumStructureInfo(map);
             StructureCacheInfo = new StructureCacheMapInfo(map);
             NetworkInfo = new NetworkMapInfo(map);
-            PollutionInfo = new TiberiumPollutionMapInfo(map);
+            AtmosphericInfo = new AtmosphericMapInfo(map);
             MapPawnInfo = new MapPawnInfo(map);
             RoomInfo = new RoomMapInfo(map);
 
@@ -81,8 +81,8 @@ namespace TiberiumRim
             Scribe_Deep.Look(ref TiberiumInfo,  "tiberiumMapInfo", map);
             Scribe_Deep.Look(ref FloraInfo,     "FloraInfo",       map);
             Scribe_Deep.Look(ref TerrainInfo,   "TerrainInfo",     map);
-            Scribe_Deep.Look(ref PollutionInfo, "PollutionInfo",   map);
-            Scribe_Deep.Look(ref NatrualTiberiumStructureInfo, "NatrualTiberiumStructureInfo",   map);
+            Scribe_Deep.Look(ref AtmosphericInfo, "AtmosphericInfo",   map);
+            Scribe_Deep.Look(ref NaturalTiberiumStructureInfo, "NatrualTiberiumStructureInfo",   map);
             Scribe_Deep.Look(ref MapPawnInfo,   "MapPawnInfo",     map);
 
             Scribe_Deep.Look(ref SuppressionInfo, "SuppressionInfo", map);
@@ -111,7 +111,7 @@ namespace TiberiumRim
         public override void MapComponentOnGUI()
         {
             base.MapComponentOnGUI();
-            PollutionInfo.UpdateOnGUI();
+            AtmosphericInfo.UpdateOnGUI();
             RoomInfo.UpdateOnGUI();
             if(HediffBool) 
                 TiberiumAffecter.HediffGrid.DrawValues();
@@ -124,8 +124,8 @@ namespace TiberiumRim
         public override void MapComponentUpdate()
         {
             base.MapComponentUpdate();
-            //PollutionInfo.Update();
-            PollutionInfo.Draw();
+            //AtmosphericInfo.Update();
+            AtmosphericInfo.Draw();
             RoomInfo.Draw();
             if (DrawBool)
             {
@@ -134,7 +134,7 @@ namespace TiberiumRim
                 TerrainInfo.Draw();
 
                 HarvesterInfo.Draw();
-                NatrualTiberiumStructureInfo.Draw();
+                NaturalTiberiumStructureInfo.Draw();
                 //Suppression.SuppressionGrid.drawer.RegenerateMesh();
                 //Suppression.SuppressionGrid.drawer.MarkForDraw();
                 //Suppression.SuppressionGrid.drawer.CellBoolDrawerUpdate();
@@ -145,7 +145,7 @@ namespace TiberiumRim
         {
             base.MapComponentTick();
             TiberiumInfo.Tick();
-            PollutionInfo.Tick();
+            AtmosphericInfo.Tick();
             SuppressionInfo.Tick();
             TiberiumAffecter.Tick();
             TiberiumSpreader.Tick();
@@ -159,10 +159,10 @@ namespace TiberiumRim
         {
             if(thing.def is TRThingDef def)
                 StructureCacheInfo.RegisterPart(def.TRGroup, thing);
-            if (thing is IPollutionSource source)
+            if (thing is IAtmosphericSource source)
             {
                 //TODO
-                //PollutionInfo.RegisterSource(source);
+                //AtmosphericInfo.RegisterSource(source);
             }
         }
 
@@ -170,23 +170,23 @@ namespace TiberiumRim
         {
             if (thing.def is TRThingDef def)
                 StructureCacheInfo.DeregisterPart(def.TRGroup, thing);
-            if (thing is IPollutionSource source)
+            if (thing is IAtmosphericSource source)
             {
                 //TODO
-                //PollutionInfo.DeregisterSource(source);
+                //AtmosphericInfo.DeregisterSource(source);
             }
         }
 
         public void RegisterTRBuilding(TRBuilding building)
         {
-            NatrualTiberiumStructureInfo.TryRegister(building);
+            NaturalTiberiumStructureInfo.TryRegister(building);
             if(building is TiberiumProducer p)
                 TiberiumSpreader.RegisterField(p);
         }
 
         public void DeregisterTRBuilding(TRBuilding building)
         {
-            NatrualTiberiumStructureInfo.Deregister(building);
+            NaturalTiberiumStructureInfo.Deregister(building);
             if (building is TiberiumProducer p)
                 TiberiumSpreader.DeregisterField(p);
         }

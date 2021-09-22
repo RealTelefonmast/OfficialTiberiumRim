@@ -60,18 +60,16 @@ namespace TiberiumRim
             {
                 case AtmosphericVentMode.Intake:
                     if (AtmosphericComp.Container.CapacityFull) return false;
-                    if (Pollution.TryRemovePollution(totalThroughput, out int actuallyRemoved))
+                    if (Atmospheric.UsedContainer.Container.TryTransferTo(AtmosphericComp.Container, TiberiumDefOf.TibPollution, totalThroughput))
                     {
-                        AtmosphericComp.Container.TryAddValue(TiberiumDefOf.TibPollution, actuallyRemoved, out _);
                         return true;
                     }
 
                     break;
                 case AtmosphericVentMode.Output:
                     if (AtmosphericComp.Container.Empty) return false;
-                    if (AtmosphericComp.Container.TryRemoveValue(TiberiumDefOf.TibPollution, totalThroughput, out float actualValue))
+                    if (AtmosphericComp.Container.TryTransferTo(Atmospheric.UsedContainer.Container, TiberiumDefOf.TibPollution, totalThroughput))
                     {
-                        Pollution.TryAddPollution((int) actualValue, out _);
                         return true;
                     }
 

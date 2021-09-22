@@ -16,7 +16,7 @@ namespace TiberiumRim
             if (x.InNoBuildEdgeArea(map)) return false;
             if (x.Fogged(map)) return false;
             if (!x.Standable(map)) return false;
-            if (map.Tiberium().NatrualTiberiumStructureInfo.AllProducers.Any(p => p.Position.DistanceTo(x) < 46)) return false;
+            if (map.Tiberium().NaturalTiberiumStructureInfo.AllProducers.Any(p => p.Position.DistanceTo(x) < 46)) return false;
             //If pos is viable, check if all needed surrounding cells are viable too
             foreach (var c in GenAdj.CellsOccupiedBy(x, Rot4.North, new IntVec2(5, 5)))
             {

@@ -8,7 +8,7 @@ namespace TiberiumRim
         public new TRThingDef def;
 
         public WorldComponent_TR TiberiumRimComp => Find.World.GetComponent<WorldComponent_TR>();
-        public MapComponent_Tiberium TiberiumMapComp => Map.Tiberium();
+        public MapComponent_Tiberium TiberiumMapComp => MapHeld.Tiberium();
 
         public override string Label => Discovered ? DiscoveredLabel : UnknownLabel;
         public override string DescriptionFlavor => Discovered ? DiscoveredDescription : UnknownDescription;

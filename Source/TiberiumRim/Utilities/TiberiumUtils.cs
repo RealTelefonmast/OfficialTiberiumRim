@@ -74,11 +74,6 @@ namespace TiberiumRim
             return def.TabWindow;
         }
 
-        public static RoomComponent_Pollution Pollution(this Room room)
-        {
-            return room.Map.Tiberium().PollutionInfo.PollutionFor(room); //room.GetRoomComp<RoomComponent_Pollution>();
-        }
-
         public static RoomTracker RoomTracker(this Room room)
         {
             return room.Map.Tiberium().RoomInfo[room];
@@ -87,6 +82,12 @@ namespace TiberiumRim
         public static T GetRoomComp<T>(this Room room) where T : RoomComponent
         {
             return room.RoomTracker().GetRoomComp<T>();
+        }
+
+        public static RoomComponent_Atmospheric AtmosphericRoomComp(this Room room)
+        {
+            return room.Map.Tiberium().RoomInfo[room].GetRoomComp<RoomComponent_Atmospheric>();
+            //room.Map.Tiberium().AtmosphericInfo.PollutionFor(room); //room.GetRoomComp<RoomComponent_Atmospheric>();
         }
 
         public static void EnqueueActionForMainThread(this Action action)

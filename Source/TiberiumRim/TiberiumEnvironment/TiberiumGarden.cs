@@ -16,6 +16,13 @@ namespace TiberiumRim
             cells = new CellArea(map);
         }
 
+        public TiberiumGarden(Map map, List<IntVec3> cells)
+        {
+            this.map = map;
+            this.cells = new CellArea(map);
+            this.cells.AddRange(cells);
+        }
+
         public void GardenTick()
         {
 

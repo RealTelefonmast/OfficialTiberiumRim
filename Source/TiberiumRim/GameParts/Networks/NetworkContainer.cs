@@ -9,15 +9,112 @@ using Verse;
 
 namespace TiberiumRim
 {
+    //TODO: Add density to values (ie container of 100 can contain 50A with d:1 and 100B with d:0.5)
+    public struct NetworkValue
+    {
+        public NetworkValueDef valueDef;
+        public int value;
+        public float valueF;
+
+        public NetworkValue(NetworkValueDef def, float value)
+        {
+            valueDef = def;
+            this.value = Mathf.RoundToInt(value);
+            this.valueF = value;
+        }
+
+        public static NetworkValue operator +(NetworkValue a, NetworkValue b)
+        {
+            a.value += b.value;
+            a.valueF += b.valueF;
+            return a;
+        }
+    }
+
+    public struct NetworkValueStack
+    {
+        public NetworkValue[] networkValues;
+
+        public bool Empty => networkValues.NullOrEmpty();
+
+        public NetworkValueStack(Dictionary<NetworkValueDef, float> values)
+        {
+            networkValues = new NetworkValue[values.Count];
+            foreach (var value in values)
+            {
+                networkValues[0] = new NetworkValue(value.Key, value.Value);
+            }
+        }
+
+        public NetworkValueStack(NetworkValueDef def, int val)
+        {
+            networkValues = new NetworkValue[1];
+            networkValues[0] = new NetworkValue(def, val);
+        }
+
+        public NetworkValueStack(int valueCount)
+        {
+            networkValues = new NetworkValue[valueCount];
+        }
+
+        public void Reset()
+        {
+            networkValues = null;
+        }
+
+        public static NetworkValueStack operator +(NetworkValueStack a, NetworkValueStack b)
+        {
+            if (a.networkValues == null)
+            {
+                return b;
+            }
+            else if (b.networkValues == null)
+            {
+                return a;
+            }
+
+            for (var i = 0; i < a.networkValues.Length; i++)
+            {
+                var valueA = a.networkValues[i];
+                for (var k = 0; k < b.networkValues.Length; k++)
+                {
+                    var valueB = b.networkValues[k];
+                    if (valueA.valueDef.Equals(valueB.valueDef))
+                    {
+                        a.networkValues[i] += valueB;
+                    }
+                }
+            }
+
+            return a;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[");
+            if (!networkValues.NullOrEmpty())
+            {
+                foreach (var value in networkValues)
+                {
+                    sb.Append($"{value.valueDef}: {value.value}|");
+                }
+            }
+            sb.Append("]");
+            return sb.ToString();
+        }
+    }
+
     public class NetworkContainer : IExposable
     {
         private NetworkContainerSet parentSet;
 
         //Container Props
-        private ContainerProps props;
+        private ContainerProperties props;
 
         //Container Data
         private IContainerHolder parentHolder;
+        private float totalCapacity;
         private float totalStoredCache;
         private HashSet<NetworkValueDef> storedTypeCache;
         private List<NetworkValueDef> acceptedTypes;
@@ -27,7 +124,7 @@ namespace TiberiumRim
 
         public string Title => parentHolder.ContainerTitle;
 
-        public float Capacity => props.maxStorage;
+        public float Capacity => totalCapacity;
         public float TotalStored => totalStoredCache;
         public float StoredPercent => TotalStored / Capacity;
 
@@ -52,6 +149,7 @@ namespace TiberiumRim
         }
 
         public Dictionary<NetworkValueDef, float> StoredValuesByType => StoredValues;
+        public NetworkValueStack ValueStack { get; private set; }
 
         public virtual Color Color => Color.white;
 
@@ -68,16 +166,18 @@ namespace TiberiumRim
             this.parentHolder = parent;
         }
 
-        public NetworkContainer(IContainerHolder parent, ContainerProps props)
+        public NetworkContainer(IContainerHolder parent, ContainerProperties props)
         {
             this.parentHolder = parent;
             this.props = props;
+            this.totalCapacity = props.maxStorage;
         }
 
-        public NetworkContainer(IContainerHolder parent, ContainerProps props, List<NetworkValueDef> acceptedTypes)
+        public NetworkContainer(IContainerHolder parent, ContainerProperties props, List<NetworkValueDef> acceptedTypes)
         {
             this.parentHolder = parent;
             this.props = props;
+            this.totalCapacity = props.maxStorage;
             if (!acceptedTypes.NullOrEmpty())
             {
                 AcceptedTypes = acceptedTypes;
@@ -92,6 +192,11 @@ namespace TiberiumRim
             }
 
             Log.Message($"Creating new container for {Parent?.Thing} with capacity {Capacity} | acceptedTypes: {this.AcceptedTypes.ToStringSafeEnumerable()}");
+        }
+
+        public void Data_ChangeCapacity(int newCapacity)
+        {
+            totalCapacity = newCapacity;
         }
 
         public NetworkContainer Copy(IContainerHolder newHolder)
@@ -152,6 +257,10 @@ namespace TiberiumRim
         {
             Scribe_Collections.Look(ref StoredValues, "StoredTiberium");
             Scribe_Collections.Look(ref acceptedTypes, "acceptedTypes", LookMode.Value);
+            if (Scribe.mode == LoadSaveMode.LoadingVars)
+            {
+                ValueStack = new NetworkValueStack(StoredValues);
+            }
         }
 
         //Virtual Functions
@@ -171,6 +280,9 @@ namespace TiberiumRim
             totalStoredCache += value;
             parentSet?.Notify_AddedValue(valueType, value);
             AllStoredTypes.Add(valueType);
+
+            //Update stack state
+            ValueStack = new NetworkValueStack(StoredValues);
         }
 
         public void Notify_RemovedValue(NetworkValueDef valueType, float value)
@@ -179,6 +291,9 @@ namespace TiberiumRim
             parentSet?.Notify_RemovedValue(valueType, value);
             if (AllStoredTypes.Contains(valueType) && ValueForType(valueType) <= 0)
                 AllStoredTypes.Remove(valueType);
+
+            //Update stack state
+            ValueStack = new NetworkValueStack(StoredValues);
         }
 
         public void Notify_SetParentSet(NetworkContainerSet parentSet)
@@ -186,10 +301,18 @@ namespace TiberiumRim
             this.parentSet = parentSet;
         }
 
+        public void LoadFromStack(NetworkValueStack stack)
+        {
+            Clear();
+            foreach (var networkValue in stack.networkValues)
+            {
+                TryAddValue(networkValue.valueDef, networkValue.valueF, out _);
+            }
+        }
+
         public void Clear()
         {
-            var keys = StoredValues.Keys;
-            for (int i = StoredValues.Count - 1; i >= 1; i--)
+            for (int i = StoredValues.Count - 1; i >= 0; i--)
             {
                 var keyValuePair = StoredValues.ElementAt(i);
                 TryRemoveValue(keyValuePair.Key, keyValuePair.Value, out _);
@@ -352,6 +475,11 @@ namespace TiberiumRim
         }
 
         //
+        public Gizmo_NetworkStorage ContainerGizmo => new Gizmo_NetworkStorage()
+        {
+            container = this
+        };
+
         public virtual IEnumerable<Gizmo> GetGizmos()
         {
             if (Capacity <= 0) yield break;
@@ -359,10 +487,7 @@ namespace TiberiumRim
             
             if (Find.Selector.NumSelected == 1 && Find.Selector.IsSelected(Parent.Thing))
             {
-                yield return new Gizmo_NetworkStorage
-                {
-                    container = this
-                };
+                yield return ContainerGizmo;
             }
 
             /*
