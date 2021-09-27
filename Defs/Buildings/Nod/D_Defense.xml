@@ -2,11 +2,7 @@
 <Defs>
   
   	<TiberiumRim.TRThingDef Abstract="True" Name="NODTurret" ParentName="TurretBase_TR">
-		<requisites>
-			<tiberiumResearch>
-				<li>NodExperimental2</li>
-			</tiberiumResearch>
-		</requisites>
+
 	</TiberiumRim.TRThingDef>
   
 	<!-- Obelisk Of Light -->
@@ -29,9 +25,9 @@
 			<alignToBottom>true</alignToBottom>
 			<drawOffset>(0,0,0.25)</drawOffset>
 		</extraData>
-		<costList>			
-			<Nod_CarbonPlate>100</Nod_CarbonPlate>
-			<ComponentIndustrial>12</ComponentIndustrial>
+		<costList>
+			<Nod_CarbonPlate>150</Nod_CarbonPlate>
+			<ComponentIndustrial>50</ComponentIndustrial>
 		</costList>
 		<uiIconPath>Buildings/Nod/Defense/Obelisk/Icon</uiIconPath>
 		<uiIconScale>0.90</uiIconScale>
@@ -39,9 +35,10 @@
 		<stealable>false</stealable>
 		<rotatable>false</rotatable>
 		<statBases>
+			<MarketValue>30000</MarketValue>
 			<MaxHitPoints>460</MaxHitPoints>
 			<Flammability>0.40</Flammability>
-			<WorkToBuild>12000</WorkToBuild>
+			<WorkToBuild>15000</WorkToBuild>
 			<Mass>1000</Mass>
 			<Beauty>5</Beauty>
 		</statBases>
@@ -137,11 +134,10 @@
 		<stealable>false</stealable>
 		<rotatable>false</rotatable>
 		<statBases>
-			<MarketValue>5000</MarketValue>
 			<MaxHitPoints>350</MaxHitPoints>
 			<Flammability>0.5</Flammability>
 			<WorkToBuild>5000</WorkToBuild>
-			<Mass>5000</Mass>
+			<Mass>500</Mass>
 			<Beauty>-10</Beauty>
 		</statBases>
 		<tickerType>Normal</tickerType>
@@ -227,6 +223,11 @@
 		</building>
 		<filthLeaving>Filth_Ash</filthLeaving>
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 
 	<TiberiumRim.TRThingDef Name="NodHubTurret" ParentName="NODTurret" Abstract="True">
@@ -252,7 +253,7 @@
 			<MaxHitPoints>350</MaxHitPoints>
 			<Flammability>0.5</Flammability>
 			<WorkToBuild>5000</WorkToBuild>
-			<Mass>5000</Mass>
+			<Mass>500</Mass>
 			<Beauty>-25</Beauty>
 			<ShootingAccuracyTurret>0.93</ShootingAccuracyTurret>
 		</statBases>
@@ -291,7 +292,6 @@
 				<multiplier>1.5</multiplier>
 			</li>
 		</damageMultipliers>
-		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
 	</TiberiumRim.TRThingDef>
 
 	<!-- Shredder Turret -->
@@ -480,11 +480,6 @@
 				</overlays>
 			</li>	
 		</comps>
-		<requisites>
-			<tiberiumResearch>
-				<li>NodExperimental2</li>
-			</tiberiumResearch>
-		</requisites>
 	</TiberiumRim.TRThingDef>
 	
 	
