@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<BodyDef>
+		<defName>HarvesterBody_Common</defName>
+		<label>harvester corpus</label>
+		<corePart>
+			<def>HarvesterMainFrame</def>
+			<height>Middle</height>
+			<depth>Outside</depth>
+			<parts>
+				<li>
+					<def>HarvesterCockpit</def>
+					<coverage>0.2</coverage>
+					<height>Middle</height>
+					<parts>
+						<li>
+							<def>HarvesterArmorPlate</def>
+							<coverage>0.7</coverage>
+							<height>Middle</height>
+							<customLabel>frontal armor plate</customLabel>
+							<groups>
+								<li>HeadButt</li>
+							</groups>
+						</li>
+						<li>
+							<def>HarvesterBrain</def>
+							<coverage>0.05</coverage>
+							<height>Middle</height>
+							<depth>Inside</depth>
+						</li>
+						<li>
+							<def>HarvesterEye</def>
+							<coverage>0.1</coverage>
+							<height>Middle</height>
+						</li>
+					</parts>
+				</li>
+				<li>						
+					<def>Harvester_Collector</def>
+					<coverage>0.2</coverage>
+					<height>Bottom</height>
+					<parts>
+						<li>
+							<def>Harvester_CollectorArm</def>
+							<customLabel>left collector arm</customLabel>
+							<coverage>0.2</coverage>
+							<groups>
+								<li>LeftArm</li>
+							</groups>
+						</li>
+						<li>
+							<def>Harvester_CollectorArm</def>
+							<customLabel>right collector arm</customLabel>
+							<coverage>0.2</coverage>
+							<groups>
+								<li>RightArm</li>
+							</groups>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>HarvesterContainer</def>
+					<coverage>0.2</coverage>
+					<height>Top</height>
+					<parts>
+						<li>
+							<def>HarvesterArmorPlate</def>
+							<coverage>0.3</coverage>
+							<customLabel>side armor plate</customLabel>
+						</li>
+						<li>
+							<def>HarvesterNozzle</def>
+							<coverage>0.1</coverage>
+						</li>
+						<li>
+							<def>HarvesterMixer</def>
+							<coverage>0.1</coverage>
+							<depth>Inside</depth>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>HarvesterDrivingPart</def>
+					<customLabel>drive sprocket</customLabel>
+					<coverage>0.3</coverage>
+					<height>Bottom</height>
+					<parts>
+						<li>
+							<def>HarvesterPowerPack</def>
+							<coverage>0.1</coverage>
+							<depth>Inside</depth>
+						</li>
+						<li>
+							<def>Harvester_Track</def>
+							<customLabel>left track</customLabel>
+							<coverage>0.35</coverage>
+						</li>
+						<li>
+							<def>Harvester_Track</def>
+							<customLabel>right track</customLabel>
+							<coverage>0.35</coverage>
+						</li>
+					</parts>
+				</li>
+			</parts>
+		</corePart>
+	</BodyDef>
+	
+	<BodyDef>
+		<defName>HarvesterBody_GDI</defName>
+		<label>harvester corpus</label>
+		<corePart>
+			<def>HarvesterMainFrame</def>
+			<height>Middle</height>
+			<depth>Outside</depth>
+			<parts>
+				<li>
+					<def>HarvesterCockpit</def>
+					<coverage>0.2</coverage>
+					<height>Middle</height>
+					<parts>
+						<li>
+							<def>HarvesterArmorPlate</def>
+							<coverage>0.7</coverage>
+							<height>Middle</height>
+							<customLabel>front armor</customLabel>
+							<groups>
+								<li>HeadButt</li>
+							</groups>
+						</li>
+						<li>
+							<def>HarvesterBrain</def>
+							<coverage>0.05</coverage>
+							<height>Middle</height>
+							<depth>Inside</depth>
+						</li>
+						<li>
+							<def>HarvesterEye</def>
+							<coverage>0.1</coverage>
+							<height>Middle</height>
+						</li>
+					</parts>
+				</li>
+				<li>						
+					<def>Harvester_Collector</def>
+					<coverage>0.2</coverage>
+					<height>Bottom</height>
+					<parts>
+						<li>
+							<def>Harvester_CollectorArm</def>
+							<customLabel>left collector arm</customLabel>
+							<coverage>0.2</coverage>
+							<groups>
+								<li>LeftArm</li>
+							</groups>
+						</li>
+						<li>
+							<def>Harvester_CollectorArm</def>
+							<customLabel>right collector arm</customLabel>
+							<coverage>0.2</coverage>
+							<groups>
+								<li>RightArm</li>
+							</groups>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>HarvesterContainer</def>
+					<coverage>0.2</coverage>
+					<height>Top</height>
+					<parts>
+						<li>
+							<def>HarvesterArmorPlate</def>
+							<coverage>0.3</coverage>
+							<customLabel>side armor</customLabel>
+						</li>
+						<li>
+							<def>HarvesterNozzle</def>
+							<coverage>0.1</coverage>
+						</li>
+						<li>
+							<def>HarvesterGrinder</def>
+							<coverage>0.1</coverage>
+							<depth>Inside</depth>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>HarvesterDrivingPart</def>
+					<customLabel>wheel axel</customLabel>
+					<coverage>0.2</coverage>
+					<height>Bottom</height>
+					<parts>
+						<li>
+							<def>HarvesterPowerPack</def>
+							<coverage>0.1</coverage>
+							<depth>Inside</depth>
+							<customLabel>main powerpack</customLabel>
+						</li>
+						<li>
+							<def>HarvesterPowerPack</def>
+							<coverage>0.1</coverage>
+							<depth>Inside</depth>
+							<customLabel>sub powerpack</customLabel>
+						</li>
+						<li>
+							<def>Harvester_ReinforcedWheel</def>
+							<customLabel>wheel R1</customLabel>
+							<coverage>0.10</coverage>
+						</li>
+						<li>
+							<def>Harvester_ReinforcedWheel</def>
+							<customLabel>wheel R2</customLabel>
+							<coverage>0.10</coverage>
+						</li>
+						<li>
+							<def>Harvester_ReinforcedWheel</def>
+							<customLabel>wheel R3</customLabel>
+							<coverage>0.10</coverage>
+						</li>
+						<li>
+							<def>Harvester_ReinforcedWheel</def>
+							<customLabel>wheel L1</customLabel>
+							<coverage>0.10</coverage>
+						</li>
+						<li>
+							<def>Harvester_ReinforcedWheel</def>
+							<customLabel>wheel L2</customLabel>
+							<coverage>0.10</coverage>
+						</li>
+						<li>
+							<def>Harvester_ReinforcedWheel</def>
+							<customLabel>wheel L3</customLabel>
+							<coverage>0.10</coverage>
+						</li>
+					</parts>
+				</li>
+			</parts>
+		</corePart>
+	</BodyDef>
+	
+	<BodyDef>
+		<defName>HarvesterBody_Nod</defName>
+		<label>harvester corpus</label>
+		<corePart>
+			<def>HarvesterMainFrame</def>
+			<height>Middle</height>
+			<depth>Outside</depth>
+			<parts>
+				<li>
+					<def>HarvesterCockpit</def>
+					<coverage>0.2</coverage>
+					<height>Middle</height>
+					<parts>
+						<li>
+							<def>HarvesterArmorPlate</def>
+							<coverage>0.7</coverage>
+							<height>Middle</height>
+							<groups>
+								<li>HeadButt</li>
+							</groups>
+							<customLabel>front armor</customLabel>
+						</li>
+						<li>
+							<def>HarvesterBrain</def>
+							<coverage>0.05</coverage>
+							<height>Middle</height>
+							<depth>Inside</depth>
+						</li>
+						<li>
+							<def>HarvesterEye</def>
+							<coverage>0.1</coverage>
+							<height>Middle</height>
+						</li>
+					</parts>
+				</li>
+				<li>						
+					<def>Harvester_Collector</def>
+					<coverage>0.2</coverage>
+					<height>Bottom</height>
+					<parts>
+						<li>
+							<def>Harvester_CollectorArm</def>
+							<customLabel>left collector arm</customLabel>
+							<coverage>0.4</coverage>
+							<height>Top</height>
+							<groups>
+								<li>LeftArm</li>
+							</groups>
+						</li>
+						<li>
+							<def>Harvester_CollectorArm</def>
+							<customLabel>right collector arm</customLabel>
+							<height>Top</height>
+							<coverage>0.4</coverage>
+							<groups>
+								<li>RightArm</li>
+							</groups>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>HarvesterContainer</def>
+					<coverage>0.2</coverage>
+					<height>Top</height>
+					<parts>
+						<li>
+							<def>HarvesterArmorPlate</def>
+							<coverage>0.3</coverage>
+							<customLabel>side armor</customLabel>
+						</li>
+						<li>
+							<def>HarvesterNozzle</def>
+							<customLabel>left nozzle</customLabel>
+							<coverage>0.1</coverage>
+						</li>
+						<li>
+							<def>HarvesterNozzle</def>
+							<customLabel>right nozzle</customLabel>
+							<coverage>0.1</coverage>
+						</li>
+						<li>
+							<def>HarvesterMelter</def>
+							<coverage>0.1</coverage>
+							<depth>Inside</depth>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>HarvesterDrivingPart</def>
+					<customLabel>wheel axel</customLabel>
+					<coverage>0.2</coverage>
+					<height>Bottom</height>
+					<parts>
+						<li>
+							<def>HarvesterPowerPack</def>
+							<coverage>0.1</coverage>
+							<depth>Inside</depth>
+							<customLabel>left powerpack</customLabel>
+						</li>
+						<li>
+							<def>HarvesterPowerPack</def>
+							<coverage>0.1</coverage>
+							<depth>Inside</depth>
+							<customLabel>right powerpack</customLabel>
+						</li>
+						<li>
+							<def>Harvester_CarbonWheel</def>
+							<customLabel>wheel L1</customLabel>
+							<coverage>0.1</coverage>
+						</li>
+						<li>
+							<def>Harvester_CarbonWheel</def>
+							<customLabel>wheel L2</customLabel>
+							<coverage>0.1</coverage>
+						</li>
+						<li>
+							<def>Harvester_CarbonWheel</def>
+							<customLabel>wheel L3</customLabel>
+							<coverage>0.1</coverage>
+						</li>
+						<li>
+							<def>Harvester_CarbonWheel</def>
+							<customLabel>wheel R1</customLabel>
+							<coverage>0.1</coverage>
+						</li>
+						<li>
+							<def>Harvester_CarbonWheel</def>
+							<customLabel>wheel R2</customLabel>
+							<coverage>0.1</coverage>
+						</li>
+						<li>
+							<def>Harvester_CarbonWheel</def>
+							<customLabel>wheel R3</customLabel>
+							<coverage>0.1</coverage>
+						</li>
+					</parts>
+				</li>
+			</parts>
+		</corePart>
+	</BodyDef>
+
+</Defs>

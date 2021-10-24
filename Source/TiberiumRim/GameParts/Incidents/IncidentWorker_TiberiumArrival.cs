@@ -11,7 +11,7 @@ namespace TiberiumRim
 
         protected override LookTargets EventTargets => skyfallerThing;
 
-        protected override bool CanFireNowSub(IncidentParms parms)
+        public override bool CanFireNowSub(IncidentParms parms)
         {
             //Check if needed research is done
             if (!TRUtils.Tiberium().AllowNewMeteorites) return false;
@@ -20,7 +20,7 @@ namespace TiberiumRim
             return true;
         }
 
-        protected override bool TryExecuteWorker(IncidentParms parms)
+        public override bool TryExecuteWorker(IncidentParms parms)
         {
             if (!CanFireNowSub(parms)) return false;
             Map map = (Map) parms.target;
@@ -30,7 +30,7 @@ namespace TiberiumRim
 
             if (!TryFindCell(out IntVec3 cell, map)) return false;
             var faller = SkyfallerMaker.MakeSkyfaller(pair.skyfallerDef, pair.innerThing);
-            skyfallerThing = faller.innerContainer[0];
+            skyfallerThing = faller.innerContainer.GetAt(0);
 
             GenSpawn.Spawn(faller, cell, map);
             SendStandardLetter(parms, skyfallerThing);

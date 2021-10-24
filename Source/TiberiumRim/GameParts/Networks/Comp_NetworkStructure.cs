@@ -150,6 +150,11 @@ namespace TiberiumRim
             }
         }
 
+        public virtual bool AcceptsValue(NetworkValueDef value)
+        {
+            return true;
+        }
+
         //Data Notifiers
         public void Notify_StructureAdded(INetworkStructure other)
         {
@@ -189,7 +194,6 @@ namespace TiberiumRim
             {
                 networkPart.NetworkDef.OverlayGraphic?.Print(layer, Thing, 0);   
             }
-            //TiberiumContent.OverlayGraphicForNetwork(NetworkType).Print(layer, this.parent, 0);
         }
 
         public override void PostPrintOnto(SectionLayer layer)
@@ -242,6 +246,19 @@ namespace TiberiumRim
             {
                 yield return g;
             }
+
+
+            yield return new Command_Action()
+            {
+                defaultLabel = "Draw Networks",
+                action = delegate
+                {
+                    foreach (var networkPart in networkParts)
+                    {
+                        NetworkInfo[networkPart.NetworkDef].ToggleShowNetworks();
+                    }
+                }
+            };
 
             yield return new Command_Action
             {

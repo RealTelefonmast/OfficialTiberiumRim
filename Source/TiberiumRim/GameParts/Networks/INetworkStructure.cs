@@ -17,6 +17,7 @@ namespace TiberiumRim
         public bool HasLeak { get; }
         public bool HasConnection { get; }
         public bool HasContainer { get; }
+        public bool IsReceiving { get; set; }
 
         public NetworkRole NetworkRole { get; }
 

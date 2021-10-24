@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- These are Mote ThingDefs. Remain the same, DO NOT translate them. -->
+
+  <IonLighting.label>Mote</IonLighting.label>
+  <IonCloud.label>Mote</IonCloud.label>
+  <TiberiumFogG.label>Mote</TiberiumFogG.label>
+  <TiberiumFogB.label>Mote</TiberiumFogB.label>
+  <TiberiumFogR.label>Mote</TiberiumFogR.label>
+  <TiberiumFieldFogG.label>Mote</TiberiumFieldFogG.label>
+  <TiberiumFieldFogB.label>Mote</TiberiumFieldFogB.label>
+  <VeinholeSmoke.label>Mote</VeinholeSmoke.label>
+  <TiberiumSmokeMote.label>Mote</TiberiumSmokeMote.label>
+  <BlossomSmoke.label>Mote</BlossomSmoke.label>
+  <Mote_GlowerParticle.label>Mote</Mote_GlowerParticle.label>
+  <Mote_TiberiumGeyser.label>Mote</Mote_TiberiumGeyser.label>
+  <Mote_TiberiumLeak.label>Mote</Mote_TiberiumLeak.label>
+  <LaserBeam.label>Mote</LaserBeam.label>
+  <ObeliskGlow.label>Mote</ObeliskGlow.label>
+  <SonicEmitterWave.label>Mote</SonicEmitterWave.label>
+  <IonBeamBurn.label>Mote</IonBeamBurn.label>
+  <IonDistortionBubble.label>Mote</IonDistortionBubble.label>
+  <IonCenterDistortionBubble.label>Mote</IonCenterDistortionBubble.label>
+  <IonBubble.label>Mote</IonBubble.label>
+  <IonExplosionShockwave.label>Mote</IonExplosionShockwave.label>
+  <IonBurnMark.label>Mote</IonBurnMark.label>
+  <Mote_BlastSound.label>Mote</Mote_BlastSound.label>
+  <Mote_BlastWave.label>Mote</Mote_BlastWave.label>
+  <Mote_Nuke.label>Mote</Mote_Nuke.label>
+  <Mote_NukePostEffect.label>Mote</Mote_NukePostEffect.label>
+  <Mote_TiberiumGas.label>Mote</Mote_TiberiumGas.label>
+  <Mote_TiberiumSmoke.label>Mote</Mote_TiberiumSmoke.label>
+  <Mote_ScrinCut.label>Mote</Mote_ScrinCut.label>
+
+
+</LanguageData>

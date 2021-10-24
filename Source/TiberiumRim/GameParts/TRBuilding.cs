@@ -70,8 +70,8 @@ namespace TiberiumRim
                 yield return g;
             }
 
-            if(!def.devObject)
-                yield return new Designator_BuildFixed(def);
+            //if(!def.devObject)
+                //yield return new Designator_BuildFixed(def);
 
             if (def.superWeapon?.ResolvedDesignator != null)
                 yield return def.superWeapon.ResolvedDesignator;

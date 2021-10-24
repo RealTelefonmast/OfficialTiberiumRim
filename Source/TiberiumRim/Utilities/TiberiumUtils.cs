@@ -81,13 +81,12 @@ namespace TiberiumRim
 
         public static T GetRoomComp<T>(this Room room) where T : RoomComponent
         {
-            return room.RoomTracker().GetRoomComp<T>();
+            return room.RoomTracker()?.GetRoomComp<T>();
         }
 
         public static RoomComponent_Atmospheric AtmosphericRoomComp(this Room room)
         {
-            return room.Map.Tiberium().RoomInfo[room].GetRoomComp<RoomComponent_Atmospheric>();
-            //room.Map.Tiberium().AtmosphericInfo.PollutionFor(room); //room.GetRoomComp<RoomComponent_Atmospheric>();
+            return room.Map.Tiberium().RoomInfo[room]?.GetRoomComp<RoomComponent_Atmospheric>();
         }
 
         public static void EnqueueActionForMainThread(this Action action)
@@ -387,10 +386,10 @@ namespace TiberiumRim
             return (p % 2 != 0) ? -1 : 1;
         }
 
+        //This sine function makes the weight oscillate between 0 and 1, with a multiplier to set the duration between 0 and 1
         public static float OscillateBetween(float minVal, float maxVal, float duration, int currentTick)
         {
-            //This sine function makes the weight oscillate between 0 and 1, with a multiplier to set the duration between 0 and 1
-            float sineVal = Mathf.Sin(((float)currentTick + (float)duration / 2f) / (float)duration * Mathf.PI) / 2 + 0.5f;
+            float sineVal = Mathf.Sin((currentTick + duration / 2f) / duration * Mathf.PI) / 2 + 0.5f;
             return Mathf.Lerp(minVal, maxVal, sineVal);
         }
 
@@ -638,8 +637,8 @@ namespace TiberiumRim
 
         public static void Draw(Graphic graphic, Vector3 drawPos, Rot4 rot, float? rotation, FXThingDef fxDef)
         {
-            GraphicDrawInfo info = new GraphicDrawInfo(graphic, drawPos, rot, fxDef?.extraData, fxDef);
-            Graphics.DrawMesh(info.drawMesh, info.drawPos, rotation?.ToQuat() ?? info.rotation.ToQuat(), info.drawMat,0);
+            FXGraphic.GetDrawInfo(graphic, ref drawPos, rot, fxDef?.extraData, fxDef, out _, out var drawMat, out var drawMesh, out var exactRotation, out _);
+            Graphics.DrawMesh(drawMesh, drawPos, rotation?.ToQuat() ?? exactRotation.ToQuat(), drawMat,0);
         }
 
         public static void Print(SectionLayer layer, Graphic graphic, ThingWithComps thing, FXThingDef fxDef)
@@ -651,11 +650,12 @@ namespace TiberiumRim
             }
             if (graphic is Graphic_Random rand)
                 graphic = rand.SubGraphicFor(thing);
-            GraphicDrawInfo info = new GraphicDrawInfo(graphic, thing.DrawPos, thing.Rotation, fxDef.extraData, fxDef, thing);
-            Printer_Plane.PrintPlane(layer, info.drawPos, info.drawSize, info.drawMat, info.rotation, info.flipUV, null, null, 0.01f, 0f);
+            var drawPos = thing.DrawPos;
+            FXGraphic.GetDrawInfo(graphic, ref drawPos, thing.Rotation, fxDef.extraData, fxDef, out var drawSize, out var drawMat, out _, out var exactRotation, out var flipUV);
+            Printer_Plane.PrintPlane(layer, drawPos, drawSize, drawMat, exactRotation, flipUV, null, null, 0.01f, 0f);
             if (graphic.ShadowGraphic != null && thing != null)
             {
-                graphic.ShadowGraphic.Print(layer, thing, info.rotation);
+                graphic.ShadowGraphic.Print(layer, thing, exactRotation);
             }
             thing.AllComps.ForEach(c => c.PostPrintOnto(layer));
         }

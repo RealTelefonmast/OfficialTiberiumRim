@@ -7,7 +7,7 @@ namespace TiberiumRim
 {
     public class JobGiver_UnloadAtRefinery : ThinkNode_JobGiver
     {
-        protected override Job TryGiveJob(Pawn pawn)
+        public override Job TryGiveJob(Pawn pawn)
         {
             Harvester harvester = pawn as Harvester;
             if (harvester.CurrentPriority != HarvesterPriority.Unload) return null;
@@ -43,7 +43,7 @@ namespace TiberiumRim
             return pawn.CanReserve(TargetA) && pawn.Reserve(TargetA, job);
         }
 
-        protected override IEnumerable<Toil> MakeNewToils()
+        public override IEnumerable<Toil> MakeNewToils()
         {
             Toil gotoToil = Toils_Goto.GotoCell(TargetA.Thing.InteractionCell, PathEndMode.OnCell);
             gotoToil.FailOnDespawnedOrNull(TargetIndex.A);

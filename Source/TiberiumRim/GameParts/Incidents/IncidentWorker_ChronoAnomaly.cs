@@ -8,7 +8,7 @@ namespace TiberiumRim
         private Map map;
         private IntVec3 spawnLoc;
 
-        protected override bool CanFireNowSub(IncidentParms parms)
+        public override bool CanFireNowSub(IncidentParms parms)
         {
             if (base.CanFireNowSub(parms))
             {
@@ -17,7 +17,7 @@ namespace TiberiumRim
             return false;
         }
 
-        protected override bool TryExecuteWorker(IncidentParms parms)
+        public override bool TryExecuteWorker(IncidentParms parms)
         {
             map = (Map) parms.target;
             if (!DropCellFinder.TryFindRaidDropCenterClose(out spawnLoc, map, false, false, true, -1))
@@ -30,7 +30,7 @@ namespace TiberiumRim
             composition.AddPart(delegate
             {
                 ChronoVortex Vortex = (ChronoVortex) ThingMaker.MakeThing(RedAlertDefOf.ChronoVortexPortal);
-                Vortex.Add(VolkovGenerator.GenerateVolkov(map));
+                Vortex.Add(VolkovGenerator.GenTemp()/*GenerateVolkov(map)*/);
                 Vortex.PortalSetup(8f.SecondsToTicks(), 7f.SecondsToTicks());
                 GenSpawn.Spawn(Vortex, spawnLoc, map);
 

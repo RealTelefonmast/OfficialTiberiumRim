@@ -16,6 +16,8 @@ namespace TiberiumRim
 
         public static Dictionary<int, Color[]> CanvasBySize;
 
+        //TR Build Menu
+        private static Dictionary<TRThingDef, Designator_BuildFixed> CachedDesignators;
 
         static StaticData()
         {
@@ -29,6 +31,7 @@ namespace TiberiumRim
 
             TiberiumMapComp = new Dictionary<int, MapComponent_Tiberium>();
             FlowMapsByMap = new Dictionary<int, RenderTexture>();
+            CachedDesignators = new Dictionary<TRThingDef, Designator_BuildFixed>();
         }
 
         public static void Notify_NewTibMapComp(MapComponent_Tiberium mapComp)
@@ -37,6 +40,18 @@ namespace TiberiumRim
             var map = mapComp.map;
             var pixelDensity = TiberiumContent.FlowMapPixelDensity;
             FlowMapsByMap[mapComp.map.uniqueID] = new RenderTexture(pixelDensity * map.Size.x, pixelDensity * map.Size.z, 0);
+        }
+
+        //Data Accessors
+        public static Designator_BuildFixed GetDesignatorFor(TRThingDef def)
+        {
+            if (CachedDesignators.TryGetValue(def, out var des))
+            {
+                return des;
+            }
+            des = new Designator_BuildFixed(def);
+            CachedDesignators.Add(def, des);
+            return des;
         }
 
         public static Color[] GetCanvasFor(int size)

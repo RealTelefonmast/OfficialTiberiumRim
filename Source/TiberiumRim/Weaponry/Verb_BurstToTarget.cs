@@ -4,7 +4,7 @@ namespace TiberiumRim
 {
     public class Verb_BurstToTarget : Verb_TR
     {
-        protected override bool TryCastShot()
+        public override bool TryCastShot()
         {
             if (!currentTarget.IsValid) return false;
             var from = DrawPos.ToIntVec3();

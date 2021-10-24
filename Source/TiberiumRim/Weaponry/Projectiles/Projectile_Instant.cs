@@ -15,7 +15,7 @@ namespace TiberiumRim
             base.Tick();
         }
 
-        protected override void Impact(Thing hitThing)
+        public override void Impact(Thing hitThing)
         {
             GenClamor.DoClamor(this, 2.1f, ClamorDefOf.Impact);
         }

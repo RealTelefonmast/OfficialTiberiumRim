@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TRThingDef Abstract="True" Name="LampBase_TR" ParentName="BuildingBase_TR">
+		<category>Building</category>
+		<TRCategory>Decoration</TRCategory>
+		<menuHidden>true</menuHidden>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<selectable>true</selectable>
+		<fillPercent>0.20</fillPercent>
+		<pathCost>8</pathCost>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<rotatable>false</rotatable>
+		<uiIconOffset>(0, 0.03)</uiIconOffset>
+		<thingCategories>
+			<li>BuildingsFurniture</li>
+		</thingCategories>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shadowData>
+			<volume>(0.3, 0.6, 0.3)</volume>
+			<offset>(0,0,-0.1)</offset>
+			</shadowData>
+			<damageData>
+			<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>30</basePowerConsumption>
+			</li>
+		</comps>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<WorkToBuild>300</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<researchPrerequisites>
+			<li>Electricity</li>
+		</researchPrerequisites>
+	</TiberiumRim.TRThingDef>
+
+	<TiberiumRim.TRThingDef Abstract="True" Name="WallLampBase" ParentName="LampBase_TR">
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<passability>Standable</passability>
+		<pathCost>0</pathCost>
+		<rotatable>true</rotatable>
+		<clearBuildingArea>false</clearBuildingArea>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<WorkToBuild>300</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Mass>3</Mass>
+		</statBases>
+		<building>
+			<isEdifice>false</isEdifice>
+		</building>
+		<costList>
+			<Steel>20</Steel>
+		</costList>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_WallLight</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef Abstract="True" Name="GlowSourceBase" ParentName="EtherealThingBase">
+		<label>wall light glow</label>
+		<thingClass>ThingWithComps</thingClass>
+		<graphicData>
+			<texPath>Blank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<tickerType>Never</tickerType>
+		<drawerType>MapMeshOnly</drawerType>
+		<drawOffscreen>true</drawOffscreen>
+		<seeThroughFog>false</seeThroughFog>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef Name="WallBase_TR" ParentName="BuildingBase_TR" Abstract="True">
+		<TRCategory>Structure</TRCategory>
+		<menuHidden>true</menuHidden>
+		<graphicData>
+			<graphicClass>Graphic_single</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Wall</li>
+				<li>Rock</li>
+			</linkFlags>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>1000</MaxHitPoints>
+			<WorkToBuild>2000</WorkToBuild>
+			<Flammability>0.0</Flammability>
+		</statBases>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<passability>Impassable</passability>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>1</fillPercent>
+		<coversFloor>true</coversFloor>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<tickerType>Never</tickerType>
+		<rotatable>false</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<holdsRoof>true</holdsRoof>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<blockLight>true</blockLight>
+		<canOverlapZones>false</canOverlapZones>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Linked/Wall_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+		</building>
+		<damageMultipliers>
+			<li>
+				<damageDef>Bomb</damageDef>
+				<multiplier>2</multiplier>
+			</li>
+		</damageMultipliers>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef Name="DoorBase_TR" ParentName="BuildingBase_TR" Abstract="True">
+		<thingClass>Building_Door</thingClass>
+		<category>Building</category>
+		<TRCategory>Structure</TRCategory>
+		<altitudeLayer>DoorMoveable</altitudeLayer>
+		<fillPercent>1</fillPercent>
+		<menuHidden>true</menuHidden>
+		<useHitPoints>true</useHitPoints>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<statBases>
+			<MaxHitPoints>160</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<selectable>true</selectable>
+		<tickerType>Normal</tickerType>
+		<rotatable>false</rotatable>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<holdsRoof>true</holdsRoof>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<blockLight>true</blockLight>
+		<drawerType>RealtimeOnly</drawerType>
+		<building>
+			<isInert>true</isInert>
+			<canPlaceOverWall>true</canPlaceOverWall>
+			<soundDoorOpenPowered>Door_OpenPowered</soundDoorOpenPowered>
+			<soundDoorClosePowered>Door_ClosePowered</soundDoorClosePowered>
+			<soundDoorOpenManual>Door_OpenManual</soundDoorOpenManual>
+			<soundDoorCloseManual>Door_CloseManual</soundDoorCloseManual>
+			<blueprintClass>Blueprint_Door</blueprintClass>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Door/Door_Blueprint</texPath>
+			</blueprintGraphicData>
+			<ai_chillDestination>false</ai_chillDestination>
+		</building>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_DoorLearnOpeningSpeed</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+	
+	<ThingDef ParentName="BuildingBase_TR" Name="PowerConduitBase_TR" Abstract="True">
+		<description>A bundle of electrical cables for moving power around. Can be placed under walls and other buildings.</description>
+		<category>Building</category>
+		<menuHidden>true</menuHidden>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>Transmitter</linkType>
+			<linkFlags>
+				<li>PowerConduit</li>
+			</linkFlags>
+			<damageData>
+				<rect>(0,0.35,1,0.3)</rect>
+			</damageData>
+		</graphicData>
+		<uiIconScale>0.7</uiIconScale>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Linked/PowerConduit_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+		</building>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<passability>Standable</passability>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<WorkToBuild>35</WorkToBuild>
+			<Flammability>0.7</Flammability>
+			<Beauty>-2</Beauty>
+		</statBases>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<costList>
+			<Steel>1</Steel>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTransmitter</compClass>
+				<transmitsPower>true</transmitsPower>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_Conduit</li>
+		</placeWorkers>
+		<rotatable>false</rotatable>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<constructEffect>ConstructMetal</constructEffect>
+		<clearBuildingArea>false</clearBuildingArea>
+		<researchPrerequisites>
+			<li>Electricity</li>
+		</researchPrerequisites>
+	</ThingDef>
+	
+</Defs>

@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BaseGun">
+		<defName>Scrin_ShockDiscLauncher</defName>
+		<label>shock disc launcher</label>
+		<description>shock disc launcher</description>
+		<graphicData>
+			<texPath>Items/Weapons/Gun_Blank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<Mass>5</Mass>
+			<AccuracyTouch>0.35</AccuracyTouch>
+			<AccuracyShort>0.50</AccuracyShort>
+			<AccuracyMedium>0.60</AccuracyMedium>
+			<AccuracyLong>0.55</AccuracyLong>
+			<RangedWeapon_Cooldown>2.75</RangedWeapon_Cooldown>
+		</statBases>
+		<tradeability>None</tradeability>
+		<techLevel>Spacer</techLevel>
+		<destroyOnDrop>True</destroyOnDrop>
+		<menuHidden>True</menuHidden>
+		<weaponTags>
+			<li>ShocktrooperGun</li>
+		</weaponTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_ShockDisc</defaultProjectile>
+				<warmupTime>2.25</warmupTime>
+				<range>17.9</range>
+				<minRange>1.5</minRange>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<burstShotCount>4</burstShotCount>
+				<soundCast>Shot_Scrin_Disc</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>14</muzzleFlashScale>
+			</li>
+		</verbs>
+	</ThingDef>	
+	
+	<ThingDef ParentName="BaseGun">
+		<defName>Scrin_Disint</defName>
+		<label>disintegrator head</label>
+		<description>disintegrator head</description>
+		<graphicData>
+			<texPath>Items/Weapons/Scrin/Turret_Scrin_Disintegrator</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>2.5</drawSize>
+		</graphicData>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<Mass>5</Mass>
+			<AccuracyTouch>0.35</AccuracyTouch>
+			<AccuracyShort>0.35</AccuracyShort>
+			<AccuracyMedium>0.35</AccuracyMedium>
+			<AccuracyLong>0.35</AccuracyLong>
+			<RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+		</statBases>
+		<tradeability>None</tradeability>
+		<techLevel>Spacer</techLevel>
+		<destroyOnDrop>True</destroyOnDrop>
+		<menuHidden>True</menuHidden>
+		<weaponTags>
+			<li>DisintegratorGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+				<beamProps>
+					<beamPath>Items/Weapons/Projectile/Bullet_BeamScrin</beamPath>
+				</beamProps>
+				<originOffsets>	
+					<li>(0,-1,0.15)</li>
+				</originOffsets>
+				<hasStandardCommand>true</hasStandardCommand>
+				<warmupTime>0.5</warmupTime>
+				<range>4.9</range>
+				<minRange>1.5</minRange>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<burstShotCount>5</burstShotCount>
+				<soundCast>Shot_Scrin_BeamSml</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>3</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseGun">
+		<defName>Scrin_MechapedeLance</defName>
+		<label>swarm charge cannon</label>
+		<description>A huge alien laser weapon.</description>
+		<graphicData>
+			<texPath>Items/Weapons/Gun_Blank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>3</drawSize>
+		</graphicData>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<MaxHitPoints>250</MaxHitPoints>
+			<Mass>50</Mass>
+			<AccuracyTouch>0.15</AccuracyTouch>
+			<AccuracyShort>0.55</AccuracyShort>
+			<AccuracyMedium>0.65</AccuracyMedium>
+			<AccuracyLong>0.75</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+		</statBases>
+		<tradeability>None</tradeability>
+		<techLevel>Spacer</techLevel>
+		<menuHidden>False</menuHidden>
+		<destroyOnDrop>False</destroyOnDrop>
+		<weaponTags>
+			<li>MechapedeGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+				<beamProps>
+					<beamPath>Items/Weapons/Projectile/Bullet_BeamScrinMiddle</beamPath>
+				</beamProps>
+				<originOffsets>	
+					<li>(0.45,-1,-0.1)</li>
+					<li>(-0.5,-1,-0.6)</li>
+					<li>(0.45,-1,-1.1)</li>
+					<li>(-0.45,-1,-0.1)</li>
+					<li>(0.5,-1,-0.6)</li>
+					<li>(-0.45,-1,-1.1)</li>
+				</originOffsets>
+				<hasStandardCommand>true</hasStandardCommand>
+				<warmupTime>2.5</warmupTime>
+				<range>19.9</range>
+				<minRange>1.5</minRange>
+				<ticksBetweenBurstShots>25</ticksBetweenBurstShots>
+				<burstShotCount>6</burstShotCount>
+				<soundCast>Shot_Scrin_Devourer</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>10</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseGunWithQuality">
+		<defName>Scrin_ShockLanceLauncher</defName>
+		<label>scrin charge cannon</label>
+		<description>Almost fragmented alien weapon. But performance is extremmly excellent.</description>
+		<graphicData>
+			<texPath>Items/Weapons/Scrin/Scrin_ChargeCannon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<statBases>
+			<MarketValue>5000</MarketValue>
+			<MaxHitPoints>15</MaxHitPoints>
+			<Mass>5</Mass>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.8</AccuracyShort>
+			<AccuracyMedium>0.9</AccuracyMedium>
+			<AccuracyLong>1.0</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+		</statBases>
+		<tradeability>None</tradeability>
+		<techLevel>Spacer</techLevel>
+		<menuHidden>True</menuHidden>
+		<weaponTags>
+			<li>ScrinChargeGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+				<beamProps>
+					<beamPath>Items/Weapons/Projectile/Bullet_BeamScrinBig</beamPath>
+				</beamProps>
+				<originOffsets>	
+					<li>(0.45,-1,-0.1)</li>
+					<li>(-0.5,-1,-0.6)</li>
+					<li>(0.45,-1,-1.1)</li>
+					<li>(-0.45,-1,-0.1)</li>
+					<li>(0.5,-1,-0.6)</li>
+					<li>(-0.45,-1,-1.1)</li>
+				</originOffsets>
+				<hasStandardCommand>true</hasStandardCommand>
+				<warmupTime>3</warmupTime>
+				<range>44.9</range>
+				<minRange>1.5</minRange>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<burstShotCount>1</burstShotCount>
+				<soundCast>Shot_Scrin_BeamMid</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>30</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>spine</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+</Defs>

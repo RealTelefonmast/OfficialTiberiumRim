@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TR_ContainerContent>보관량</TR_ContainerContent>
+  <TR_MissingConnection>연결되지 않음:</TR_MissingConnection>
+  <TR_ConsumerLack>저장고 또는 정제시설</TR_ConsumerLack>
+  <TR_ProducerLack>저장고 또는 생산시설</TR_ProducerLack>
+
+  <!--Harvesters-->
+  <TR_HarvesterInside>수확기와 정제소는 실외에서만 작동합니다.</TR_HarvesterInside>
+  <TR_HarvesterMode>수확 모드</TR_HarvesterMode>
+  <TR_HarvesterModeDesc>수확기의 행동 방식을 설정합니다.</TR_HarvesterModeDesc>
+  <TRHMode_Nearest>가까운 타이베리움 수확</TRHMode_Nearest>
+  <TRHMode_Valuable>희귀한 타이베리움 수확</TRHMode_Valuable>
+  <TRHMode_Moss>타이베리움 슬러지 수확</TRHMode_Moss>
+  <TR_HarvesterHarvest>수확</TR_HarvesterHarvest>
+  <TR_HarvesterReturn>정제소로 귀환</TR_HarvesterReturn>
+  <TR_HarvesterRefinery>작업할 정제소 선택</TR_HarvesterRefinery>
+  <TR_HarvesterRefineryDesc>수확기가 우선적으로 사용할 정제소를 선택합니다.</TR_HarvesterRefineryDesc>
+  <TR_HarvesterNewRefinery>새 정제소가 설정되었습니다.</TR_HarvesterNewRefinery>
+
+  <!--Refinery-->
+  <TR_RefineryLost>정제소 상실</TR_RefineryLost>
+  <TR_RefineryReturn>작업 중단</TR_RefineryReturn>
+  <TR_RefineryAllow>작업 재개</TR_RefineryAllow>
+  <TR_RefineryReturnDesc>작업을 중단하고 정제소에 등록된 모든 수확기를 복귀시킵니다.</TR_RefineryReturnDesc>
+
+</LanguageData>

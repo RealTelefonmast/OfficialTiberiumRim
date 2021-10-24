@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<SoundDef>
+		<defName>RadiationClick</defName>  
+		<context>MapOnly</context>   
+		<maxSimultaneous>3</maxSimultaneous>  
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>Effects/Radiation</clipFolderPath>
+					</li>
+				</grains>      
+				<volumeRange>
+					<min>20</min>
+					<max>22</max>
+				</volumeRange>      
+				<distRange>
+					<min>0</min>
+					<max>90</max>
+				</distRange>
+				<pitchRange>1~1</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>ElectricJump</defName>  
+		<context>MapOnly</context>   
+		<maxSimultaneous>9</maxSimultaneous>  
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>Effects/Tesla/jump</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>
+					<min>20</min>
+					<max>22</max>
+				</volumeRange>      
+				<distRange>
+					<min>0</min>
+					<max>60</max>
+				</distRange>
+				<pitchRange>1~1</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>ElectricArc</defName>  
+		<context>MapOnly</context>   
+		<maxSimultaneous>9</maxSimultaneous>  
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>Effects/Tesla/arc</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>
+					<min>20</min>
+					<max>22</max>
+				</volumeRange>      
+				<distRange>
+					<min>0</min>
+					<max>60</max>
+				</distRange>
+				<pitchRange>0.9~1.1</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+</Defs>

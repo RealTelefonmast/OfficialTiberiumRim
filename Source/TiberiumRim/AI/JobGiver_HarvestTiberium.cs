@@ -8,7 +8,7 @@ namespace TiberiumRim
 {
     public class JobGiver_HarvestTiberium : ThinkNode_JobGiver
     {
-        protected override Job TryGiveJob(Pawn pawn)
+        public override Job TryGiveJob(Pawn pawn)
         {
             Harvester harvester = pawn as Harvester;
 
@@ -67,7 +67,7 @@ namespace TiberiumRim
             return true;
         }
 
-        protected override IEnumerable<Toil> MakeNewToils()
+        public override IEnumerable<Toil> MakeNewToils()
         {
             yield return Toils_JobTransforms.MoveCurrentTargetIntoQueue(TargetIndex.A);
             var extractTarget = Toils_JobTransforms.ClearDespawnedNullOrForbiddenQueuedTargets(TargetIndex.A);

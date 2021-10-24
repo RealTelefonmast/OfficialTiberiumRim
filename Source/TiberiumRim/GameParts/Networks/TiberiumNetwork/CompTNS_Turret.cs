@@ -12,9 +12,8 @@ namespace TiberiumRim
 {
     public class CompTNS_Turret : Comp_TiberiumNetworkStructure
     {
-        //Cached
-        private TurretTop turretTop;
-        private Traverse floatValue;
+        public Building_TurretGun Turret => parent as Building_TurretGun;
+        public TurretTop TurretTop => Turret.top;
 
         //CompFX
         public override Vector3[] DrawPositions => new Vector3[] { parent.DrawPos, parent.DrawPos, parent.DrawPos };
@@ -26,9 +25,6 @@ namespace TiberiumRim
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-            var par = parent as Building_TurretGun;
-            turretTop = Traverse.Create(par).Field("top").GetValue<TurretTop>();
-            floatValue = Traverse.Create(turretTop).Field("curRotationInt");
         }
 
         //Turret
@@ -39,7 +35,7 @@ namespace TiberiumRim
             {
                 return (currentTarget.Cell.ToVector3Shifted() - fromPos).AngleFlat();
             }
-            return floatValue.GetValue<float>();
+            return TurretTop.CurRotation;
         }
 
         //public override float[] DrawRotations => new float[] { ((Building_TurretGun)parent)..Rotation.AsAngle, parent.Rotation.AsAngle, parent.Rotation.AsAngle };

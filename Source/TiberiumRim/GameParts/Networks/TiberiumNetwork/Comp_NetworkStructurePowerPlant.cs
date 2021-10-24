@@ -18,7 +18,7 @@ namespace TiberiumRim
 
         public bool GeneratesPowerNow => powerProductionTicks > 0;
 
-        protected override float DesiredPowerOutput => GeneratesPowerNow ? base.DesiredPowerOutput : 0f;
+        public override float DesiredPowerOutput => GeneratesPowerNow ? base.DesiredPowerOutput : 0f;
 
 
         public override void PostExposeData()

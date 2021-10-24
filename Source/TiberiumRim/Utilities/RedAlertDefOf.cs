@@ -7,11 +7,11 @@ namespace TiberiumRim
     public static class RedAlertDefOf
     {
         //Factions
-        public static FactionDef SovjetFaction;
+       // public static FactionDef SovjetFaction;
 
         //Pawns
-        public static PawnKindDef Volkov;
-        public static PawnKindDef Chitzkoi;
+        //public static PawnKindDef Volkov;
+        //public static PawnKindDef Chitzkoi;
 
         //Misc
         public static ThingDef ChronoVortexPortal;

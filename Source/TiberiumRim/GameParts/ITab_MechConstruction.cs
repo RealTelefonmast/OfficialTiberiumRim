@@ -32,7 +32,7 @@ namespace TiberiumRim
             selectedRecipe = recipe;
         }
 
-        protected override void FillTab()
+        public override void FillTab()
         {
             Rect tabRect = new Rect(0,0, WinSize.x, WinSize.y).ContractedBy(10);
             GUI.BeginGroup(tabRect);
@@ -115,12 +115,12 @@ namespace TiberiumRim
         }
         */
 
-        protected override void ExtraOnGUI()
+        public override void ExtraOnGUI()
         {
             base.ExtraOnGUI();
         }
 
-        protected override void CloseTab()
+        public override void CloseTab()
         {
             SelectRecipe(null);
             //Find.WindowStack.TryRemove(Find.WindowStack.Windows.First(w => w.ID == 947528), false);

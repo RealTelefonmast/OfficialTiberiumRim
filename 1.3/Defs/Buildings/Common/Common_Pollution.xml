@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.NetworkDef>
+		<defName>AtmosphericNetwork</defName>
+		<containerLabel>Gas Storage</containerLabel>
+		<transmitter>AtmosphericPipe</transmitter>
+		<controllerDef>PollutionFilter</controllerDef>
+		<transmitterGraphic>
+			<texPath>Buildings/Common/Pollution/Pipe_Air</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</transmitterGraphic>
+		<overlayGraphic>
+			<texPath>Buildings/Common/Pollution/Pipe_Air_overlay</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MetaOverlay</shaderType>
+			<color>(0, 255, 255)</color>
+		</overlayGraphic>
+	</TiberiumRim.NetworkDef>
+
+	<TiberiumRim.NetworkValueDef>
+		<defName>TibPollution</defName>
+		<label>pollution</label>
+		<valueColor>(38,127,4)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>PollutionFilter</defName>
+		<label>pollution filter</label>
+		<description>.</description>
+		<thingCategories Inherit="false" />
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Pollution</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+			<texPath>Buildings/Common/Pollution/Filter</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.25,2.25)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-10</Beauty>
+		</statBases>
+		<size>(2,2)</size>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T5</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+				<compClass>TiberiumRim.Comp_ANS_Filter</compClass>
+				<networks>
+					<li>
+						<networkDef>AtmosphericNetwork</networkDef>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Controller</li>
+							<li>Storage</li>
+						</networkRoles>
+						<containerProps>
+							<maxStorage>750</maxStorage>
+							<dropContents>false</dropContents>
+						</containerProps>
+						<allowedValues>	
+							<li>TibPollution</li>					
+						</allowedValues>
+					</li>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<storeEvenly>false</storeEvenly>	
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Producer</li>
+						</networkRoles>
+						<containerProps>
+							<maxStorage>1250</maxStorage>
+							<dropContents>false</dropContents>
+							<leaveContainer>true</leaveContainer>
+						</containerProps>
+						<allowedValues>	
+							<li>TibSludge</li>					
+						</allowedValues>
+					</li>
+				</networks>
+				<connectionPattern>++|++</connectionPattern>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Pollution/Filter_Overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,2.25)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(255,155,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>255</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>	
+		<fillPercent>1</fillPercent>
+		<rotatable>false</rotatable>			
+		<surfaceType>Item</surfaceType>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+		<defName>AtmosphericPipe</defName>
+		<label>gas pipe</label>
+		<description>tbd</description>
+		<!--<thingClass></thingClass>-->
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Pollution</TRCategory>
+		<hidden>true</hidden>
+		<costList>
+			<Steel>5</Steel>
+		</costList>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Blank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<!--
+			<linkType>Basic</linkType>
+		    <linkFlags>
+				<li>Custom7</li>
+		    </linkFlags>
+			-->
+		</graphicData>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+			<blueprintGraphicData>
+				<texPath>Buildings/Common/Pollution/Pipe_Air_blueprint</texPath>
+			</blueprintGraphicData>
+		</building>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+				<networks>
+					<li>
+						<networkDef>AtmosphericNetwork</networkDef>
+						<networkRoles>
+							<li>Transmitter</li>
+						</networkRoles>
+					</li>
+				</networks>
+				<connectionPattern>+</connectionPattern>
+			</li>
+		</comps>
+		<drawGUIOverlay>True</drawGUIOverlay>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<uiIconPath>Buildings/Icons/Connector_Icon</uiIconPath>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<passability>Standable</passability>
+		<pathCost>0</pathCost>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>100</WorkToBuild>
+			<Flammability>0.2</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<neverMultiSelect>true</neverMultiSelect>
+		<constructEffect>ConstructMetal</constructEffect>
+		<rotatable>false</rotatable>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<surfaceType>Item</surfaceType>
+		<clearBuildingArea>false</clearBuildingArea>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_Pipe</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>AtmosphericVentIn</defName>
+		<label>pollution vent (intake)</label>
+		<description>.</description>
+		<thingCategories Inherit="false" />
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Pollution</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<tickerType>Normal</tickerType>
+		<uiIconPath>Buildings/Common/Pollution/Intake/icon</uiIconPath>
+		<graphicData>
+			<texPath>Buildings/Common/Pollution/Intake/base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.25,1.25)</drawSize>
+		</graphicData>
+		<extraData>
+			<drawOffset>(0,0,0.1)</drawOffset>
+		</extraData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>1500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-10</Beauty>
+		</statBases>
+		<size>(1,1)</size>
+		<costList>
+			<Steel>50</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_ANS_AirVent">
+				<networks>
+					<li>
+						<networkDef>AtmosphericNetwork</networkDef>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Producer</li>
+						</networkRoles>
+						<containerProps>
+							<maxStorage>100</maxStorage>
+							<dropContents>false</dropContents>
+						</containerProps>
+						<allowedValues>	
+							<li>TibPollution</li>					
+						</allowedValues>
+					</li>
+				</networks>
+				<connectionPattern>+</connectionPattern>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li><skip>true</skip></li>
+					<li><skip>true</skip></li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Pollution/Intake/fan</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(1.25,1.25)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+						<drawOffset>(0,0,0.1)</drawOffset>
+						<rotationSpeed>75</rotationSpeed>
+						<needsPower>false</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Pollution/Intake/top</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(1.25,1.25)</drawSize>
+						</data>
+						<needsPower>false</needsPower>
+					</li>
+				</overlays>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>45</basePowerConsumption>
+			</li>
+		</comps>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T5</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>	
+		<fillPercent>1</fillPercent>
+		<rotatable>true</rotatable>			
+		<surfaceType>Item</surfaceType>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>AtmosphericVentOut</defName>
+		<label>pollution vent (out)</label>
+		<description>.</description>
+		<thingCategories Inherit="false" />
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Pollution</TRCategory>
+		<drawerType>MapMeshOnly</drawerType>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Buildings/Common/Pollution/Vent_Out</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>1500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-10</Beauty>
+		</statBases>
+		<costList>
+			<Steel>50</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_ANS_AirVent">
+				<ventMode>Output</ventMode>
+				<gasThroughPut>10</gasThroughPut>
+				<networks>
+					<li>
+						<networkDef>AtmosphericNetwork</networkDef>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Consumer</li>
+						</networkRoles>
+						<containerProps>
+							<maxStorage>100</maxStorage>
+							<dropContents>false</dropContents>
+						</containerProps>
+						<allowedValues>	
+							<li>TibPollution</li>					
+						</allowedValues>
+					</li>
+				</networks>
+				<connectionPattern>+</connectionPattern>
+			</li>
+		</comps>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T5</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<tickerType>Normal</tickerType>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>	
+		<fillPercent>1</fillPercent>
+		<rotatable>true</rotatable>			
+		<surfaceType>Item</surfaceType>
+	</TiberiumRim.TRThingDef>
+	
+	<!---->
+	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
+		<defName>Atmospheric_AirLockDoor</defName>
+		<label>air-lock door</label>
+		<thingClass>TiberiumRim.Building_AirLock</thingClass>
+		<description>Defines an air-lock room, when powered and active, pawns will automatically use the airlock inbetween their work routines.</description>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Pollution</TRCategory>
+		<passability>PassThroughOnly</passability>
+		<graphicData>
+			<texPath>Buildings/Common/Pollution/Door_Airlock</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<enabled>false</enabled>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Buildings/Common/Pollution/Door_Airlock_icon</uiIconPath>
+		<costList>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<stuffCategories Inherit="False"/>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>Autodoors</li>
+		</researchPrerequisites>
+		<statBases>
+			<WorkToBuild>2000</WorkToBuild>
+			<MaxHitPoints>400</MaxHitPoints>
+			<Flammability>0.0</Flammability>
+		</statBases>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T5</li>
+			</tiberiumResearchTasks>
+		</requisites>
+	</TiberiumRim.TRThingDef>
+	
+</Defs>

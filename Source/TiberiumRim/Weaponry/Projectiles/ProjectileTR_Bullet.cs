@@ -14,7 +14,7 @@ namespace TiberiumRim
         public TRThingDef TRDef => base.def as TRThingDef; 
         public ProjectileProperties_Extended Props => TRDef?.projectileExtended;
 
-        protected override void Impact(Thing hitThing)
+        public override void Impact(Thing hitThing)
         {
             base.Impact(hitThing);
         }

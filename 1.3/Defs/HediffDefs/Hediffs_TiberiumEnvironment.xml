@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<HediffDef ParentName="HediffInjury_TR">
+		<defName>TiberiumBurn</defName>
+		<label>tiberium burn</label>
+		<labelNoun>a tiberium burn</labelNoun>
+		<defaultLabelColor>(1, 1, 0.39)</defaultLabelColor>
+		<comps>
+			<li Class="HediffCompProperties_GetsPermanent">
+				<permanentLabel>crystal scar</permanentLabel>
+			</li>
+		</comps>
+		<injuryProps>
+			<painPerSeverity>0.02</painPerSeverity>
+			<averagePainPerSeverityPermanent>0.08</averagePainPerSeverityPermanent>
+			<bleedRate>0</bleedRate>
+			<canMerge>true</canMerge>
+			<destroyedLabel>destroyed</destroyedLabel>
+			<destroyedOutLabel>burned out</destroyedOutLabel>
+		</injuryProps>
+	</HediffDef>
+	
+	<!--Toxemia deals with both crystallization and radiation effects-->
+	<HediffDef ParentName="HediffBase_TR">
+		<defName>TiberiumToxemia</defName>
+		<label>tiberium toxemia</label>
+		<description>This pawn has come in contact with, or been exposed to, Tiberium. Depending on the severity of this effect the pawn may experience crystallizing body parts and arbitrary mutations.</description>
+		<hediffClass>TiberiumRim.Hediff_TiberiumToxemia</hediffClass>
+		<defaultLabelColor>(1, 0.39, 0.39)</defaultLabelColor>
+		<minSeverity>0</minSeverity>
+		<maxSeverity>1</maxSeverity>
+		<initialSeverity>1</initialSeverity>
+		<makesAlert>true</makesAlert>
+		<!--Tiberium affected pawns should sell less-->
+		<priceImpact>true</priceImpact>
+		<priceOffset>-0.75</priceOffset>
+		<isBad>true</isBad>
+		<tendable>false</tendable>
+		<makesSickThought>true</makesSickThought>
+		<everCurableByItem>false</everCurableByItem>
+		<cureAllAtOnceIfCuredByItem>false</cureAllAtOnceIfCuredByItem>
+		<!--
+		<comps>
+			<li Class="HediffCompProperties_Discoverable">
+				<sendLetterWhenDiscovered>true</sendLetterWhenDiscovered>
+			</li>
+		</comps>
+		-->
+		<stages>
+			<li>
+				<minSeverity>0</minSeverity>
+				<becomeVisible>true</becomeVisible>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<HediffDef ParentName="HediffBase_TR">
+		<defName>CrystallizingPart</defName>
+		<label>tiberium infection</label>
+		<description>Tiberium crystallization, the most lethal effect of Tiberium. The affected body part will slowly crystallize until it becomes unusable. After full crystallization, neighbouring parts get affected as well, slowly growing over the whole body, until the pawn either dies due to losing a vital body part (Torso) or mutation kicks in.</description>
+		<hediffClass>TiberiumRim.Hediff_CrystallizingPart</hediffClass>
+		
+		<minSeverity>0</minSeverity>
+		<maxSeverity>1</maxSeverity>
+		<initialSeverity>0.1</initialSeverity>
+		<isBad>true</isBad>
+		
+		<tendable>true</tendable>
+		
+		<everCurableByItem>false</everCurableByItem>
+		<taleOnVisible>TiberiumInfectionRevealed</taleOnVisible>
+		<comps>
+			<li Class="TiberiumRim.HediffCompProperties_Icon">
+				<iconPath>UI/Icons/Hediffs/Crystallizing</iconPath>
+			</li>
+			<li Class="HediffCompProperties_TendDuration">
+				<severityPerDayTended>-0.6</severityPerDayTended>
+			</li>
+			<!--
+			<li Class="HediffCompProperties_Immunizable">
+				<severityPerDayNotImmune>0.8</severityPerDayNotImmune>
+				<immunityPerDaySick>0</immunityPerDaySick>
+				<severityPerDayImmune>0</severityPerDayImmune>
+				<immunityPerDayNotSick>0</immunityPerDayNotSick>
+			</li>
+			-->
+		</comps>
+		<stages>
+			<li>
+				<minSeverity>0</minSeverity>
+				<label>fusing</label>
+				<becomeVisible>false</becomeVisible>
+			</li>
+			<li>
+				<minSeverity>0.01</minSeverity>
+				<label>crystallizing</label>
+				<painOffset>0.05</painOffset>
+			</li>
+			<li>
+				<minSeverity>0.25</minSeverity>
+				<label>crystallizing</label>
+				<partEfficiencyOffset>-0.25</partEfficiencyOffset>
+				<painOffset>0.1</painOffset>
+			</li>
+			<li>
+				<minSeverity>0.55</minSeverity>
+				<label>crystallizing</label>
+				<partEfficiencyOffset>-0.5</partEfficiencyOffset>
+				<painOffset>0.15</painOffset>
+			</li>
+			<li>
+				<minSeverity>0.75</minSeverity>
+				<label>crystallizing</label>
+				<painOffset>0.25</painOffset>
+				<partEfficiencyOffset>-0.75</partEfficiencyOffset>
+				<lifeThreatening>true</lifeThreatening>
+			</li>
+			<li>
+				<minSeverity>1</minSeverity>
+				<label>crystallized</label>
+				<partEfficiencyOffset>-1</partEfficiencyOffset>
+				<lifeThreatening>true</lifeThreatening>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<HediffDef>
+		<defName>CrystallizedPart</defName>
+		<label>crystallized part</label>
+		<labelNoun>a crystallized part</labelNoun>
+		<description>A crystallized body part.</description>
+		<hediffClass>TiberiumRim.Hediff_CrystallizedPart</hediffClass>
+		<defaultLabelColor>(77, 128, 77)</defaultLabelColor>
+		<injuryProps>
+			<bleedRate>0</bleedRate>
+			<painPerSeverity>0.05</painPerSeverity>
+		</injuryProps>
+		<!--
+		<stages>
+			<li>
+				<minSeverity>0</minSeverity>
+				<partEfficiencyOffset>1</partEfficiencyOffset>
+			</li>
+		</stages>
+		-->
+	</HediffDef>
+
+
+	<!--Radiation-->
+	<HediffDef>
+		<defName>TiberiumExposure</defName>
+		<label>tiberium exposure radiation</label>
+		<description>Tiberium exposure, while not lethal on its own, can cause severe mutations depending on severity and concentration of the effect.</description>
+		<hediffClass>TiberiumRim.Hediff_TiberiumExposure</hediffClass>
+		<initialSeverity>0.01</initialSeverity>
+		<lethalSeverity>-1</lethalSeverity>
+		<minSeverity>0</minSeverity>
+		<maxSeverity>1</maxSeverity>
+		<tendable>false</tendable>
+		<makesSickThought>true</makesSickThought>
+		<isBad>true</isBad>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<cureAllAtOnceIfCuredByItem>false</cureAllAtOnceIfCuredByItem>
+		<everCurableByItem>false</everCurableByItem>
+		<defaultLabelColor>(1, 0.39, 0.39)</defaultLabelColor>
+		<comps>
+			<li Class="HediffCompProperties_Immunizable">
+				<severityPerDayNotImmune>-0.15</severityPerDayNotImmune>
+			</li>
+			<li Class="TiberiumRim.HediffCompProperties_Icon">
+				<iconPath>UI/Icons/Hediffs/Radiation</iconPath>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<label>initial-hidden</label>
+				<becomeVisible>false</becomeVisible>
+			</li>
+			<li>
+				<minSeverity>0.05</minSeverity>
+				<label>initial</label>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.05</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.15</minSeverity>
+				<label>minor</label>
+				<painOffset>0.1</painOffset>
+				<capMods>
+					<li>
+						<capacity>Metabolism</capacity>
+						<offset>-0.1</offset>
+					</li>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>-0.1</offset>
+					</li>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.1</offset>
+					</li>
+				</capMods>
+			</li>		
+			<li>
+				<minSeverity>0.35</minSeverity>
+				<label>moderate</label>
+				<painOffset>0.15</painOffset>
+				<capMods>
+					<li>
+						<capacity>Metabolism</capacity>
+						<offset>-0.2</offset>
+					</li>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>-0.2</offset>
+					</li>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.15</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>-0.1</offset>
+					</li>
+					<li>
+						<capacity>Manipulation</capacity>
+						<offset>-0.2</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.70</minSeverity>
+				<label>serious</label>
+				<painOffset>0.2</painOffset>
+				<vomitMtbDays>0.01</vomitMtbDays>
+				<lifeThreatening>true</lifeThreatening>
+				<capMods>
+					<li>
+						<capacity>Metabolism</capacity>
+						<offset>-0.3</offset>
+					</li>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>-0.3</offset>
+					</li>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.30</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>-0.2</offset>
+					</li>
+					<li>
+						<capacity>Manipulation</capacity>
+						<offset>-0.3</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.84</minSeverity>
+				<label>lethal</label>
+				<painOffset>0.5</painOffset>
+				<vomitMtbDays>0.02</vomitMtbDays>
+				<!--<deathMtbDays>2</deathMtbDays>-->
+				<lifeThreatening>true</lifeThreatening>
+				<capMods>
+					<li>
+						<capacity>Metabolism</capacity>
+						<offset>-0.5</offset>
+					</li>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>-0.5</offset>
+					</li>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.42</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>-0.5</offset>
+					</li>
+					<li>
+						<capacity>Manipulation</capacity>
+						<offset>-0.5</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+	
+</Defs>

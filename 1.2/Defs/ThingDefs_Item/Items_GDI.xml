@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>IonCannonBeacon</defName>
+		<label>GS-2 beacon</label>
+		<description>The GS-2 Godsend is used to designate an Ion Cannon-strike target, it will be placed and starts a timer, allowing your pawns to reach a safe distance.</description>
+		<graphicData>
+			<texPath>Items/Weapons/IonCannon_Beacon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<techLevel>Industrial</techLevel>
+		<stackLimit>5</stackLimit>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>750</MarketValue>
+			<Mass>5</Mass>
+			<Flammability>0</Flammability>
+			<DeteriorationRate>0.25</DeteriorationRate>
+		</statBases>
+		<smeltable>false</smeltable>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase_TR">
+		<defName>IonCannonBeacon_Placed</defName>
+		<label>GS-2 beacon (placed)</label>
+		<description>An active GS-2 beacon!</description>
+		<graphicData>
+			<texPath>Items/Weapons/IonCannon_Beacon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>0</MarketValue>
+			<Mass>5</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<selectable>true</selectable>
+		<drawerType>MapMeshOnly</drawerType>
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+	</ThingDef>
+	
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>GDI_SonicCore</defName>
+		<label>Sonic Energy Core</label>
+		<description>Sonic technology is extremly experimental and needs special measures to be handled. This component serves as a core part in most sonic weaponry.</description>
+		<graphicData>
+			<texPath>Items/Resource/Core_Sonic</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>25</stackLimit>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<MarketValue>350</MarketValue>
+			<Mass>0.4</Mass>
+			<Flammability>0.75</Flammability>
+			<DeteriorationRate>0.90</DeteriorationRate>
+		</statBases>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>2</explosiveRadius>
+				<explosiveDamageType>TRSonic</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.1</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.05</startWickHitPointsPercent>
+				<wickTicks>
+					<min>5</min>
+					<max>5</max>
+				</wickTicks>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<!--
+	<ThingDef ParentName="MakeableDrugPillBase">
+		<defName>Tiberblock</defName>
+		<label>Tiberblock</label>
+		<description>A drug that can cure Tiberium infections./n/nWARNING: This drug only cures Tiberium Poisoning, Tiberium Assmilation or Tiberum Infection!</description>
+		<graphicData>
+			<texPath>Items/Tiberblock</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>750</WorkToMake>
+			<MarketValue>500</MarketValue>
+			<Mass>0.01</Mass>
+		</statBases>
+		<techLevel>Industrial</techLevel>
+		<ingestible>
+			<drugCategory>Social</drugCategory>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>TiberBlockHediff</hediffDef>
+					<severity>1.0</severity>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>TiberiumInfusionImmunityNPC</hediffDef>
+					<severity>1.0</severity>
+				</li>
+			</outcomeDoers>
+		</ingestible>
+		<recipeMaker>
+			<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+			<workSkill>Intellectual</workSkill>
+			<recipeUsers>
+				<li>GDI_Factory</li>
+			</recipeUsers>
+			<researchPrerequisite>GDIResearch_TiberiumDrugs</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<costList>
+			<Neutroamine>2</Neutroamine>
+			<MedicineIndustrial>1</MedicineIndustrial>
+			<TiberiumPlantTree>2</TiberiumPlantTree>
+			<TiberiumPlantBerry>2</TiberiumPlantBerry>
+			<TiberiumPlantGrass>2</TiberiumPlantGrass>
+			<TiberiumPlantShroom>2</TiberiumPlantShroom>
+		</costList>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>JuggernautShell_Explosive</defName>
+		<label>Juggernaut shells (explosive)</label>
+		<description>A pack of shells to be fired by a Juggernaut Turret, these three shells will explode on contact.</description>
+		<graphicData>
+		<texPath>Items/Juggernaut_Shell</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>30</stackLimit>
+		<tickerType>Normal</tickerType>
+		<techLevel>Industrial</techLevel>
+		<statBases>
+			<MarketValue>2000</MarketValue>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Mass>5</Mass>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>4.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.3</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+				<explosionEffect>GiantExplosion</explosionEffect>
+				<explosionSound>Explosion_GiantBomb</explosionSound>
+				<wickTicks>
+					<min>10</min>
+					<max>30</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<projectileWhenLoaded>Bullet_JuggernautBomb</projectileWhenLoaded>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<workAmount>800</workAmount>
+			<targetCountAdjustment>5</targetCountAdjustment>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>GDI_Factory</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+			<researchPrerequisite>GDIResearch_AdvancedSecurity</researchPrerequisite>
+		</recipeMaker>
+		<costList>
+			<Shell_HighExplosive>1</Shell_HighExplosive>
+			<GDI_ReinforcedPlate>5</GDI_ReinforcedPlate>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<thingCategories>
+			<li>JuggernautShells</li>
+		</thingCategories>		
+	</ThingDef>
+	-->
+	
+</Defs>

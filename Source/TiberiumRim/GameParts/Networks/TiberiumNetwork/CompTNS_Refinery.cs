@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
@@ -143,6 +144,11 @@ namespace TiberiumRim
                     RecallHarvesters = !RecallHarvesters;
                 },
             };
+        }
+
+        public override void PostPrintOnto(SectionLayer layer)
+        {
+            base.PostPrintOnto(layer);
         }
     }
 

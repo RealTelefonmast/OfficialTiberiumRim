@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- TODO: Implant application for upgrades needing a mech station -->
+	<HediffDef Name="MechUpgradeBase" Abstract="True">
+		<hediffClass>Hediff_Implant</hediffClass>
+		<description>A mech upgrade.</description>
+		<defaultLabelColor>(255, 102, 255)</defaultLabelColor>
+		<initialSeverity>0</initialSeverity>
+		<lethalSeverity>-1</lethalSeverity>
+		<minSeverity>0</minSeverity>
+		<maxSeverity>1</maxSeverity>
+		<tendable>false</tendable>
+		<isBad>false</isBad>
+		<makesAlert>false</makesAlert>
+		<everCurableByItem>false</everCurableByItem>
+		<!-- Mech Upgrade Thing
+		<spawnThingOnRemoved>UpgradeThingDef</spawnThingOnRemoved>
+			Maintanence need?
+		<causesNeed>
+		-->
+	</HediffDef>
+	
+	<HediffDef ParentName="MechUpgradeBase">
+		<defName>MechUpgrade_GeneralArmor</defName>
+		<label>general armor module</label>
+		<stages>
+			<li>
+				<minSeverity>0</minSeverity>
+				<label>Broken</label>
+				<statOffsets>
+					<ArmorRating_Sharp>-0.1</ArmorRating_Sharp>
+					<ArmorRating_Blunt>-0.05</ArmorRating_Blunt>
+				</statOffsets>
+			</li>
+			<li>
+				<minSeverity>0.25</minSeverity>
+				<label>Mk1</label>
+				<statOffsets>
+					<ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+					<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+					<ArmorRating_Heat>0.25</ArmorRating_Heat>
+					<MoveSpeed>-0.12</MoveSpeed>
+				</statOffsets>
+			</li>
+			<li>
+				<minSeverity>0.5</minSeverity>
+				<label>Mk2</label>
+				<statOffsets>
+					<ArmorRating_Sharp>0.50</ArmorRating_Sharp>
+					<ArmorRating_Blunt>0.35</ArmorRating_Blunt>
+					<ArmorRating_Heat>0.45</ArmorRating_Heat>
+					<MoveSpeed>-0.16</MoveSpeed>
+				</statOffsets>
+			</li>
+			<li>
+				<minSeverity>0.75</minSeverity>
+				<label>Mk3</label>
+				<statOffsets>
+					<ArmorRating_Sharp>0.75</ArmorRating_Sharp>
+					<ArmorRating_Blunt>0.6</ArmorRating_Blunt>
+					<ArmorRating_Heat>0.7</ArmorRating_Heat>
+					<MoveSpeed>-0.22</MoveSpeed>
+				</statOffsets>
+			</li>
+			<li>
+				<minSeverity>1</minSeverity>
+				<label>Mk4</label>
+				<statOffsets>
+					<ArmorRating_Sharp>1</ArmorRating_Sharp>
+					<ArmorRating_Blunt>0.85</ArmorRating_Blunt>
+					<ArmorRating_Heat>0.95</ArmorRating_Heat>
+					<MoveSpeed>-0.3</MoveSpeed>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<HediffDef ParentName="MechUpgradeBase">
+		<defName>MechUpgrade_PartEfficiency</defName>
+		<label>efficiency module</label>
+		<stages>
+			<li>
+				<minSeverity>0</minSeverity>
+				<label>Broken</label>
+				<becomeVisible>false</becomeVisible>
+			</li>
+			<li>
+				<minSeverity>0.25</minSeverity>
+				<label>Mk1</label>
+				<partEfficiencyOffset>0.25</partEfficiencyOffset>
+			</li>
+			<li>
+				<minSeverity>0.5</minSeverity>
+				<label>Mk2</label>
+				<partEfficiencyOffset>0.5</partEfficiencyOffset>
+			</li>
+			<li>
+				<minSeverity>0.75</minSeverity>
+				<label>Mk3</label>
+				<partEfficiencyOffset>0.75</partEfficiencyOffset>
+			</li>
+			<li>
+				<minSeverity>1</minSeverity>
+				<label>Mk4</label>
+				<partEfficiencyOffset>1</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+	
+</Defs>

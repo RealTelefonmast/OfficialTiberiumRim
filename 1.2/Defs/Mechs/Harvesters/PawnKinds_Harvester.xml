@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.HarvesterKindDef>
+		<defName>Harvester_Common</defName>
+		<label>harvester</label>
+		<combatPower>125</combatPower>
+		<defaultFactionType>PlayerColony</defaultFactionType>
+		<isFighter>false</isFighter>
+		<aiAvoidCover>false</aiAvoidCover>
+		<race>Harvester_Common</race>
+		<maxStorage>125</maxStorage>
+		<wreckDef>HarvesterHusk_Common</wreckDef>		
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/Mechanical/Common/Harvester/Harvester</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>3</drawSize>
+					<shadowData>
+						<volume>(0.4, 0.8, 0.4)</volume>
+					</shadowData>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.HarvesterKindDef>
+
+	<TiberiumRim.HarvesterKindDef>
+		<defName>Harvester_GDI</defName>
+		<label>GDI harvester</label>
+		<combatPower>125</combatPower>
+		<defaultFactionType>PlayerColony</defaultFactionType>
+		<isFighter>false</isFighter>
+		<aiAvoidCover>false</aiAvoidCover>
+		<race>Harvester_GDI</race>
+		<maxStorage>300</maxStorage>
+		<wreckDef>HarvesterHusk_GDI</wreckDef>		
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/Mechanical/GDI/Harvester/Harvester</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>3</drawSize>
+					<shadowData>
+						<volume>(0.4, 0.8, 0.4)</volume>
+					</shadowData>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.HarvesterKindDef>
+
+	<TiberiumRim.HarvesterKindDef>
+		<defName>Harvester_Nod</defName>
+		<label>Nod harvester</label>
+		<combatPower>125</combatPower>
+		<defaultFactionType>PlayerColony</defaultFactionType>
+		<isFighter>false</isFighter>
+		<aiAvoidCover>false</aiAvoidCover>
+		<race>Harvester_Nod</race>
+		<maxStorage>200</maxStorage>
+		<wreckDef>HarvesterHusk_Nod</wreckDef>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/Mechanical/Nod/Harvester/Base</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>3</drawSize>
+					<shadowData>
+						<volume>(0.4, 0.8, 0.4)</volume>
+					</shadowData>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.HarvesterKindDef>
+
+
+</Defs>

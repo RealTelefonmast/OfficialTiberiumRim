@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--===============  ==============-->
+	<DamageDef>
+		<defName>TiberiumDeterioration</defName>
+		<label>tiberium deterioration</label>
+		<hasForcefulImpact>false</hasForcefulImpact>
+		<makesBlood>false</makesBlood>
+		<canInterruptJobs>false</canInterruptJobs>
+		<buildingDamageFactor>2</buildingDamageFactor>
+		<plantDamageFactor>1.5</plantDamageFactor>
+		
+		<!--<damageEffecter></damageEffecter>-->
+	</DamageDef>
+  
+	<DamageDef>
+		<defName>TiberiumBurn</defName>
+		<workerClass>DamageWorker_AddInjury</workerClass>
+		<label>tiberium burn</label>			
+		<deathMessage>{0} suffered a lethal Tiberium burn.</deathMessage>
+		<hediff>TiberiumBurn</hediff>
+		<armorCategory>Heat</armorCategory>
+		<minDamageToFragment>15</minDamageToFragment>
+		<defaultDamage>10</defaultDamage>
+		<defaultArmorPenetration>0</defaultArmorPenetration>		
+		<makesBlood>false</makesBlood>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+		<externalViolence>true</externalViolence>
+		<canInterruptJobs>false</canInterruptJobs>	
+		<hasForcefulImpact>false</hasForcefulImpact>		
+		<canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
+	</DamageDef>
+	
+	<DamageDef ParentName="TiberiumDamage">
+		<defName>TiberiumGas</defName>
+		<label>tiberium gas</label>
+		<deathMessage>{0} inhaled Tiberium gas.</deathMessage>
+	</DamageDef>
+	
+	<DamageDef ParentName="TiberiumDamage_Impact">
+		<defName>TRTiberiumShotGreen</defName>
+		<label>tiberium shot</label>
+		<externalViolence>true</externalViolence>
+		<isExplosive>false</isExplosive>
+		<deathMessage>{0} has died by green tiberium fragments.</deathMessage>
+		<workerClass>DamageWorker_Flame</workerClass>
+		<hediff>Burn</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+		<minDamageToFragment>1</minDamageToFragment>
+		<defaultDamage>5</defaultDamage>
+		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+		<explosionCellMote>Mote_TiberiumGas</explosionCellMote>
+		<explosionColorCenter>(0.1, 0.25, 0.1)</explosionColorCenter>
+		<explosionColorEdge>(0, 0.15, 0.05)</explosionColorEdge>
+		<combatLogRules>Damage_Bomb</combatLogRules>
+		<soundExplosion>Nod_ChemBomb</soundExplosion>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
+	</DamageDef>
+  
+	<DamageDef ParentName="TiberiumDamage_Impact">
+		<defName>TRTiberiumShotBlue</defName>
+		<label>blue tiberium shot</label>
+		<externalViolence>true</externalViolence>
+		<isExplosive>false</isExplosive>
+		<deathMessage>{0} has died by blue tiberium fragments.</deathMessage>
+		<workerClass>DamageWorker_Flame</workerClass>
+		<hediff>Burn</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+		<minDamageToFragment>1</minDamageToFragment>
+		<defaultDamage>5</defaultDamage>
+		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+		<explosionCellMote>Mote_TiberiumGas</explosionCellMote>
+		<explosionColorCenter>(0.1, 0.1, 0.5)</explosionColorCenter>
+		<explosionColorEdge>(0, 0.25, 0.25)</explosionColorEdge>
+		<combatLogRules>Damage_Bomb</combatLogRules>
+		<soundExplosion>Nod_ChemBomb</soundExplosion>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
+	</DamageDef>
+
+</Defs>

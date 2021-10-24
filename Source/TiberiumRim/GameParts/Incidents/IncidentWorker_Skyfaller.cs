@@ -10,7 +10,7 @@ namespace TiberiumRim
         private List<Skyfaller> skyfallers = new List<Skyfaller>();
         private List<IntVec3> positions = new List<IntVec3>();
 
-        protected override bool TryExecuteWorker(IncidentParms parms)
+        public override bool TryExecuteWorker(IncidentParms parms)
         {
             throw new NotImplementedException("Skyfaller IncidentWorker is not working yet!");
         }

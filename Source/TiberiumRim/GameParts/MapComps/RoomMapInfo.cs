@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
@@ -11,7 +12,13 @@ namespace TiberiumRim
         private Dictionary<Room, RoomTracker> allTrackers = new Dictionary<Room, RoomTracker>();
         private List<RoomTracker> TrackerSet = new List<RoomTracker>();
 
-        //private static Action<Thing> preInitMapAction;
+        private RoomTracker[] RoomTrackerGrid;
+
+        public RoomMapInfo(Map map) : base(map)
+        {
+            updater = new RoomTrackerUpdater(this);
+            RoomTrackerGrid = new RoomTracker[map.cellIndices.NumGridCells];
+        }
 
         public Dictionary<Room, RoomTracker> AllTrackers
         {
@@ -19,12 +26,40 @@ namespace TiberiumRim
             private set => allTrackers = value;
         }
 
-        public RoomTracker this[Room room] => allTrackers[room];
-        public RoomTracker this[District district] => allTrackers[district.Room];
-
-        public RoomMapInfo(Map map) : base(map)
+        public RoomTracker this[Room room]
         {
-            updater = new RoomTrackerUpdater(this);
+            get
+            {
+                if (room == null)
+                {
+                    Log.Warning($"Room is null, cannot get tracker.");
+                    return null;
+                }
+                if (!allTrackers.ContainsKey(room))
+                {
+                    Log.Warning($"RoomMapInfo doesn't contain {room.ID}");
+                    return null;
+                }
+                return allTrackers[room];
+            }
+        }
+
+        public RoomTracker this[District district]
+        {
+            get
+            {
+                if (district == null || district.Room == null)
+                {
+                    Log.Warning($"District({district?.ID}) or Room ({district?.Room?.ID}) is null, cannot get tracker.");
+                    return null;
+                }
+                if (!allTrackers.ContainsKey(district.Room))
+                {
+                    Log.Warning($"RoomMapInfo doesn't contain {district.Room.ID}");
+                    return null;
+                }
+                return allTrackers[district.Room];
+            }
         }
 
         public void Notify_ApplyAllTrackers(IEnumerator routine)
@@ -67,17 +102,17 @@ namespace TiberiumRim
         public void Notify_ThingSpawned(Thing thing)
         {
             if (!this.map.regionAndRoomUpdater.Enabled && this.map.regionAndRoomUpdater.AnythingToRebuild) return;
-
-            if (thing.GetRoom() == null) return;
-            AllTrackers[thing.GetRoom()].Notify_ThingSpawned(thing);
+            var room = thing.GetRoom();
+            if (room == null || !AllTrackers.ContainsKey(room)) return;
+            AllTrackers[room].Notify_ThingSpawned(thing);
         }
 
         public void Notify_ThingDespawned(Thing thing)
         {
             if (!this.map.regionAndRoomUpdater.Enabled && this.map.regionAndRoomUpdater.AnythingToRebuild) return;
-
-            if (thing.GetRoom() == null) return;
-            AllTrackers[thing.GetRoom()].Notify_ThingDespawned(thing);
+            var room = thing.GetRoom();
+            if (room == null || !AllTrackers.ContainsKey(room)) return;
+            AllTrackers[room]?.Notify_ThingDespawned(thing);
         }
 
         public void Notify_RoofChanged(Room room)

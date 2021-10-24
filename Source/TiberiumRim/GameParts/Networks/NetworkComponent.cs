@@ -48,6 +48,8 @@ namespace TiberiumRim
 
         protected NetworkComponentProperties props;
 
+        protected List<INetworkComponent> currentReceivers = new List<INetworkComponent>();
+
         //DEBUG
         protected bool DebugNetworkCells = false;
 
@@ -60,6 +62,7 @@ namespace TiberiumRim
         public bool HasLeak => false;
         public bool HasConnection => ConnectedComponentSet.Transmitters.Any();
         public bool HasContainer => Props.containerProps != null;
+        public bool IsReceiving { get; set; }
         public NetworkRole NetworkRole => Props.NetworkRole;
 
         public INetworkStructure Parent => parent;
@@ -68,6 +71,7 @@ namespace TiberiumRim
         public NetworkComponentSet ConnectedComponentSet => componentSet;
 
         public string ContainerTitle => NetworkDef.containerLabel;
+
         public NetworkContainer Container
         {
             get => container;
@@ -103,7 +107,11 @@ namespace TiberiumRim
 
         public virtual void NetworkCompTick()
         {
-            if (!Network.IsWorking || !IsPowered || IsMainController) return;
+            if (!Network.IsWorking || !IsPowered || IsMainController)
+            {
+                StopBinding();
+                return;
+            }
             ProcessValues();
         }
 
@@ -112,6 +120,7 @@ namespace TiberiumRim
         {
 
         }
+
         public void Notify_NewComponentAdded(INetworkComponent component)
         {
             ConnectedComponentSet.AddNewComponent(component);
@@ -120,6 +129,23 @@ namespace TiberiumRim
         public void Notify_NewComponentRemoved(INetworkComponent component)
         {
             ConnectedComponentSet.RemoveComponent(component);
+        }
+
+        public void StartBinding(INetworkComponent toOther)
+        {
+            currentReceivers.Add(toOther);
+            toOther.IsReceiving = true;
+        }
+
+        public void StopBinding(INetworkComponent toOther)
+        {
+            currentReceivers.Remove(toOther);
+            toOther.IsReceiving = false;
+        }
+
+        public void StopBinding()
+        {
+            currentReceivers.ForEach(r => r.IsReceiving = false);
         }
 
         //Network 
@@ -145,11 +171,6 @@ namespace TiberiumRim
             }
         }
 
-        public virtual bool NeedsValue(Enum value)
-        {
-            return true;
-        }
-
         protected virtual void ProducerTick()
         {
             TransferToOthers(NetworkRole.Storage, false);
@@ -166,18 +187,22 @@ namespace TiberiumRim
 
         private void TransferToOthers(NetworkRole ofRole, bool evenly)
         {
+            StopBinding();
             if (!Container.HasValueStored) return;
             foreach (var component in Network.ComponentSet[ofRole])
             {
-                if (component.Container.CapacityFull) continue;
+                if (!Container.HasValueStored || component.Container.CapacityFull) continue;
                 if (evenly && component.Container.StoredPercent > Container.StoredPercent) continue;
 
-                Log.Message($"Transferring from {parent} to structures of role {ofRole} with {Container.AllStoredTypes.Count} stored types.");
+                //Log.Message($"Transferring from {parent} to structures of role {ofRole} with {Container.AllStoredTypes.Count} stored types.");
                 for (int i = Container.AllStoredTypes.Count - 1; i >= 0; i--)
                 {
                     var type = Container.AllStoredTypes.ElementAt(i);
                     if (!component.NeedsValue(type)) continue;
-                    Container.TryTransferTo(component.Container, type, 1);
+                    if (Container.TryTransferTo(component.Container, type, 1))
+                    {
+                        StartBinding(component);
+                    }
                 }
             }
         }
@@ -209,7 +234,8 @@ namespace TiberiumRim
 
         public bool NeedsValue(NetworkValueDef value)
         {
-            return true;
+            //Feel free to extend as needed
+            return parent.AcceptsValue(value); // && Whatever..
         }
 
         public void Draw()

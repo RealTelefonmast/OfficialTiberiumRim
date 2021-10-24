@@ -22,12 +22,21 @@ namespace TiberiumRim
             initialized = true;
         }
 
+        //Thread safe initializer for data on the main game thread
+        public virtual void SafeInit()
+        {
+        }
+
         public virtual void ExposeData()
         {
             Scribe_Values.Look(ref initialized, "mapInfoInit");
         }
 
         public virtual void Tick()
+        {
+        }
+
+        public virtual void CellSteadyEffect(IntVec3 c)
         {
         }
 

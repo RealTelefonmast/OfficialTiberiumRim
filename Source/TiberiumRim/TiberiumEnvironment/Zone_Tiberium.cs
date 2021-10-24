@@ -7,7 +7,7 @@ namespace TiberiumRim
     {
         public HarvestType ZoneType = HarvestType.Unharvestable;
 
-        protected override Color NextZoneColor => Color.green;
+        public override Color NextZoneColor => Color.green;
 
         public override void PostRegister()
         {

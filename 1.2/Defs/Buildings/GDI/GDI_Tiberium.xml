@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR" Name="InhibitorBase" Abstract="True">
+		<factionDesignation>GDI</factionDesignation>
+		<TRCategory>Defense</TRCategory>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<statBases>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<rotatable>false</rotatable>
+		<tickerType>Rare</tickerType>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(200,200,255,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+			<!--
+			<li Class="TiberiumRimFactions.CompProperties_SonicInhibition">
+				<compClass>TiberiumRimFactions.ThingComp_SonicInhibition</compClass>
+				<radius>6</radius>
+				<damageShutdownPercent>0.6</damageShutdownPercent>
+			</li>
+			-->
+		</comps>
+		<!--
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_TiberiumInhibitorAll</li>
+		</placeWorkers>
+		-->
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="InhibitorBase">
+		<defName>SonicInhibitorSmall</defName>
+		<label>small sonic inhibitor</label>
+		<description>A device designed to destroy Tiberium and prevent further growth. Due to the experimental nature of the device, it requires direct line of sight to the Tiberium to function. This small version has a smaller radius.</description>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/SonicInhibition/Inhib_S</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,3)</drawSize>
+			<shadowData>
+				<volume>(0.5,0.5,0.5)</volume>
+				<offset>(0,0,0)</offset>
+			</shadowData>
+		</graphicData>
+		<statBases>
+			<MarketValue>2500</MarketValue>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>2500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-13</Beauty>
+		</statBases>
+		<fillPercent>0.65</fillPercent>
+		<costList>
+			<GDI_ReinforcedPlate>10</GDI_ReinforcedPlate>
+			<!--<GDI_SonicCore>1</GDI_SonicCore>-->
+		</costList>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>450</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="TiberiumRim.CompProperties_SonicInhibitor">
+				<radius>6</radius>
+			</li>
+			<!--
+			<li Class="TiberiumRimFactions.CompProperties_SonicInhibition">
+				<compClass>TiberiumRimFactions.ThingComp_SonicInhibition</compClass>
+				<radius>6</radius>
+				<damageShutdownPercent>0.6</damageShutdownPercent>
+			</li>
+			-->
+		</comps>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="InhibitorBase">
+		<defName>SonicInhibitorTall</defName>
+		<label>tall sonic inhibitor</label>
+		<description>A device designed to destroy Tiberium and prevent further growth. Due to the experimental nature of the device, it requires direct line of sight to the Tiberium to function. This tall version has a bigger radius.</description>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/SonicInhibition/Inhib_T</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,3)</drawSize>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<statBases>
+			<MarketValue>5000</MarketValue>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-13</Beauty>
+		</statBases>
+		<fillPercent>0.7</fillPercent>
+		<costList>
+			<GDI_ReinforcedPlate>25</GDI_ReinforcedPlate>
+			<!--<GDI_SonicCore>2</GDI_SonicCore>-->
+		</costList>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>950</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="TiberiumRim.CompProperties_SonicInhibitor">
+				<radius>12</radius>
+			</li>
+			<!--
+			<li Class="TiberiumRimFactions.CompProperties_SonicInhibition">
+				<compClass>TiberiumRimFactions.ThingComp_SonicInhibition</compClass>
+				<radius>12</radius>
+				<damageShutdownPercent>0.6</damageShutdownPercent>
+			</li>
+			-->
+		</comps>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+		<defName>Decrystallizer</defName>
+		<label>Tiberium Soil Decrystallizer</label>
+		<description>Very slowly removes Tiberium from infected ground, converting any Tiberium ground into decrystallized soil that can be used again. Does not affect contaminated water. Requires power.</description>
+		<factionDesignation>GDI</factionDesignation>
+		<TRCategory>Defense</TRCategory>
+		<hidden>true</hidden>
+		<size>(1,1)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/SonicInhibition/Decrystallizer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,3)</drawSize>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(200,200,255,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<!--
+			<li Class="TiberiumRimFactions.CompProperties_Decrystallizer">
+				<radius>15</radius>
+				<daysToRadius>4.5</daysToRadius>
+			</li>
+			-->
+		</comps>
+		<tickerType>Rare</tickerType>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-12</Beauty>
+		</statBases>
+		<fillPercent>0.75</fillPercent>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+		</building>
+		<costList>
+			<GDI_ReinforcedPlate>20</GDI_ReinforcedPlate>
+			<!--<GDI_SonicCore>1</GDI_SonicCore>-->
+		</costList>
+		<specialDisplayRadius>14.9</specialDisplayRadius>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<pathCost>30</pathCost>
+		<rotatable>false</rotatable>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>
+
+</Defs>

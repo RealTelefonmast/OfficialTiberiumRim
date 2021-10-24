@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<BodyPartDef Abstract= "True" Name="RepairDronePart">
+		<hitPoints>5</hitPoints>
+		<frostbiteVulnerability>0</frostbiteVulnerability>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<bleedRate>0</bleedRate>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>	
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="RepairDronePart">
+		<defName>DroneGrid</defName>
+		<label>drone grid</label>
+		<hitPoints>75</hitPoints>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="PartBase">
+		<defName>DroneBrain</defName>
+		<label>auto pilot circuit</label>
+		<hitPoints>25</hitPoints>
+		<skinCovered>true</skinCovered>
+		<tags>
+			<li>ConsciousnessSource</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="PartBase">
+		<defName>DroneEye</defName>
+		<label>sight sensor</label>
+		<hitPoints>25</hitPoints>
+		<tags>
+			<li>SightSource</li>
+		</tags>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="RepairDronePart">
+		<defName>DroneCircuit</defName>
+		<label>circuit</label>
+		<hitPoints>25</hitPoints>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="RepairDronePart">
+		<defName>DroneTools</defName>
+		<label>tool set</label>
+		<hitPoints>10</hitPoints>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="RepairDronePart">
+		<defName>DroneWelder</defName>
+		<label>welder</label>
+		<hitPoints>10</hitPoints>
+		<tags>
+			<li>ManipulationLimbCore</li>
+		</tags>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="RepairDronePart">
+		<defName>DroneCutter</defName>
+		<label>cutter</label>
+		<hitPoints>10</hitPoints>
+		<tags>
+			<li>ManipulationLimbCore</li>
+		</tags>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="RepairDronePart">
+		<defName>Drone_Turbine</defName>
+		<label>turbine</label>
+		<hitPoints>25</hitPoints>
+		<tags>
+			<li>MovingLimbCore</li>
+		</tags>
+	</BodyPartDef>
+
+</Defs>

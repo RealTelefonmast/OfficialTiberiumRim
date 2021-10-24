@@ -54,16 +54,6 @@ namespace TiberiumRim
                     }
                 }
             };
-
-            yield return new Command_Action()
-            {
-                defaultLabel = "Spawn Volkov",
-                action = delegate
-                {
-                    var randPos = Position + GenRadial.RadialPattern[Rand.Range(0, GenRadial.NumCellsInRadius(8))];
-                    GenSpawn.Spawn(VolkovGenerator.GenerateVolkov(Map), randPos, Map);
-                },
-            };
         }
 
     }

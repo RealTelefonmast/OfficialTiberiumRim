@@ -25,8 +25,8 @@ namespace TiberiumRim
         {
             var flowRadius = TiberiumContent.FlowMapRadius;
             var pixelDensity = TiberiumContent.FlowMapPixelDensity;
-            var pixelWidth = pixelDensity * comp.Size.x;
-            var pixelHeight = pixelDensity * comp.Size.z;
+            var pixelWidth = pixelDensity * comp.Parent.Size.x;
+            var pixelHeight = pixelDensity * comp.Parent.Size.z;
 
             var pxPart = 1f / pixelDensity;
 
@@ -40,11 +40,11 @@ namespace TiberiumRim
             var canvas = StaticData.PixelCanvas(map.Size.x, pixelDensity);
             var mapPixelSize = map.Size.x * pixelDensity;
 
-            Log.Message($"Colors Size: {comp.Size} | {pixelWidth},{pixelHeight} | {colors.Length} should be {pixelWidth * pixelHeight}");
+            Log.Message($"Colors Size: {comp.Parent.Size} | {pixelWidth},{pixelHeight} | {colors.Length} should be {pixelWidth * pixelHeight}");
             Log.Message($"Canvas Size: {map.Size.x} | {mapPixelSize} | {canvas.Length} should be {mapPixelSize * mapPixelSize}");
             foreach (var cell in comp.Room.Cells)
             {
-                var diffCell = cell - comp.MinVec;
+                var diffCell = cell - comp.Parent.MinVec;
                 var vec3 = cell.ToVector3();
                 for (int x = 0; x < pixelDensity; x++)
                 {

@@ -80,7 +80,7 @@ namespace TiberiumRim
             }
         }
 
-        protected override void Impact(Thing hitThing)
+        public override void Impact(Thing hitThing)
         {
             Map map = base.Map;
             IntVec3 position = base.Position;

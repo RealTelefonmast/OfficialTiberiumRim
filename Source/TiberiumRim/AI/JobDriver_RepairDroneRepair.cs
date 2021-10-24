@@ -17,7 +17,7 @@ namespace TiberiumRim
             return pawn.Reserve(this.TargetA, this.job);
         }
 
-        protected override IEnumerable<Toil> MakeNewToils()
+        public override IEnumerable<Toil> MakeNewToils()
         {
             this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
             this.FailOnDowned(TargetIndex.A);

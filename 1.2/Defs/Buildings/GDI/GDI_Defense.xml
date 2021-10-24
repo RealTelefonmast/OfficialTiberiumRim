@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<TiberiumRim.TRThingDef Abstract="True" Name="GDITurret" ParentName="TurretBase_TR">
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+	</TiberiumRim.TRThingDef>
+  
+	<!--Juggernaut -->
+	<!-- TODO: Missing filter for different shells -->	
+	<TiberiumRim.TRThingDef ParentName="GDITurret">
+		<defName>GDI_Juggernaut</defName>
+		<label>juggernaut artillery</label>
+		<description>This advanced GDI defensive structure fires a 3 shot burst of shells. The juggernaut has been known as one of the most devastating walkers in the early Tiberium wars, destroying base after base with ease. This version is less mobile but just as devastating.\n\nOnly one can be built./n/n(currently only shoots one shell, which has increased damage and explosion radius)</description>
+		<factionDesignation>GDI</factionDesignation>
+		<TRCategory>Defense</TRCategory>
+		<thingClass>TiberiumRim.Building_TRTurret</thingClass>
+		<size>(3,3)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Juggernaut/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<damageData>
+				<rect>(0.38,0.2,0.56375,0.8)</rect>
+				<cornerTL>Damage/Corner</cornerTL>
+			</damageData>
+		</graphicData>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconPath>Buildings/GDI/Defense/Juggernaut/Turret</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>true</rotatable>
+		<statBases>
+			<MarketValue>35000</MarketValue>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>35000</WorkToBuild>
+			<Mass>300</Mass>
+			<Beauty>-25</Beauty>
+			<ShootingAccuracyTurret>1</ShootingAccuracyTurret>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<turret>
+			<canForceTarget>true</canForceTarget>
+			<turrets>
+				<li>
+					<turretTop>
+						<turret>
+							<texPath>Buildings/GDI/Defense/Juggernaut/Turret_Base</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(4,4)</drawSize>
+						</turret>
+						<barrels>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Juggernaut/Barrel_b1</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(4,4)</drawSize>
+								</graphic>
+								<altitudeOffset>0.5</altitudeOffset>
+								<recoilOffset>(0,0,-0.6)</recoilOffset>
+							</li>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Juggernaut/Barrel_b2</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(4,4)</drawSize>
+								</graphic>
+								<altitudeOffset>0.5</altitudeOffset>
+								<recoilOffset>(0,0,-0.6)</recoilOffset>
+							</li>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Juggernaut/Barrel_b3</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(4,4)</drawSize>
+								</graphic>
+								<altitudeOffset>0.5</altitudeOffset>
+								<recoilOffset>(0,0,-0.6)</recoilOffset>
+							</li>
+						</barrels>
+						<speed>65</speed>
+						<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
+					</turretTop>
+					<turretGunDef>Gun_Juggernaut</turretGunDef>
+					<turretBurstWarmupTime>5</turretBurstWarmupTime>
+					<turretBurstCooldownTime>25</turretBurstCooldownTime>
+				</li>
+			</turrets>
+		</turret>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>4.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<explosionEffect>GiantExplosion</explosionEffect>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Mannable">
+				<manWorkType>Violent</manWorkType>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>150</heatPerSecond>
+				<heatPushMaxTemperature>1000</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Shells capacity</fuelLabel>
+				<fuelGizmoLabel>Shells capacity</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>JuggernautShell_Explosive</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>3</fuelCapacity>
+				<initialFuelPercent>0</initialFuelPercent>
+				<autoRefuelPercent>0.1</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>3</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot shoot: Needs shells charge</outOfFuelMessage>
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<fillPercent>0.4</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<costList>
+			<GDI_ReinforcedPlate>150</GDI_ReinforcedPlate>
+			<ComponentIndustrial>15</ComponentIndustrial>
+			<TRBattleChip>10</TRBattleChip>
+		</costList>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<specialDisplayRadius>14.9</specialDisplayRadius>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+		</building>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_TurretGunTop</li>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+	</TiberiumRim.TRThingDef>
+	
+	<!---->
+	<!-- Watch Tower -->
+	<TiberiumRim.TRThingDef ParentName="GDITurret">
+		<defName>GDI_WatchTower</defName>
+		<label>watch tower</label>
+		<description>A GDI watch tower, fires automatically upon enemies.\n\nVulnerable to flame damage.</description>
+		<factionDesignation>GDI</factionDesignation>
+		<TRCategory>Defense</TRCategory>
+		<thingClass>TiberiumRim.Building_TRTurret</thingClass>
+		<size>(2,2)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Turrets/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.5,2.5)</drawSize>
+		</graphicData>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconPath>Buildings/GDI/Defense/Turrets/WatchTower</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MarketValue>7500</MarketValue>
+			<MaxHitPoints>350</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>7500</WorkToBuild>
+			<Mass>5000</Mass>
+			<Beauty>-25</Beauty>
+			<ShootingAccuracyTurret>0.95</ShootingAccuracyTurret>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<turret>
+			<canForceTarget>true</canForceTarget>
+			<turrets>
+				<li>
+					<turretTop>
+						<turret>
+							<texPath>Buildings/GDI/Defense/Turrets/WatchTower_Base</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(3,3)</drawSize>
+						</turret>
+						<barrels>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Turrets/WatchTower_Barrel1</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(3,3)</drawSize>
+								</graphic>
+								<altitudeOffset>-0.1</altitudeOffset>
+								<recoilOffset>(0,0,-0.25)</recoilOffset>
+							</li>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Turrets/WatchTower_Barrel2</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(3,3)</drawSize>
+								</graphic>
+								<altitudeOffset>-0.1</altitudeOffset>
+								<recoilOffset>(0,0,-0.25)</recoilOffset>
+							</li>
+						</barrels>
+						<speed>80</speed>
+						<resetSpeed>100</resetSpeed>
+						<recoilSpeed>200</recoilSpeed>
+						<barrelMuzzleOffset>(0,0,1.5)</barrelMuzzleOffset>
+					</turretTop>
+					<turretGunDef>Gun_WatchTower</turretGunDef>
+					<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+					<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+				</li>
+			</turrets>
+		</turret>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>1.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<chanceNeverExplodeFromDamage>0.35</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>150</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Shells capacity</fuelLabel>
+				<fuelGizmoLabel>Shells capacity</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>GDI_ReinforcedPlate</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>100</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.25</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>10</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot shoot: Needs shells charge</outOfFuelMessage>
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<fillPercent>0.3</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<costList>
+			<GDI_ReinforcedPlate>50</GDI_ReinforcedPlate>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<specialDisplayRadius>24.9</specialDisplayRadius>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+		</building>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_TurretGunTop</li>
+		</placeWorkers>
+		<damageMultipliers>
+			<li>
+				<damageDef>Flame</damageDef>
+				<multiplier>2</multiplier>
+			</li>
+		</damageMultipliers>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>
+
+	<!-- Guardian turret -->
+	<TiberiumRim.TRThingDef ParentName="GDITurret">
+		<defName>GDI_Guardian</defName>
+		<label>guardian cannon</label>
+		<description>A GDI guardian cannon, fires automatically upon enemies.\n\nVulnerable to flame damage.</description>
+		<factionDesignation>GDI</factionDesignation>
+		<TRCategory>Defense</TRCategory>
+		<thingClass>TiberiumRim.Building_TRTurret</thingClass>
+		<size>(2,2)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Turrets/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.5,2.5)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconPath>Buildings/GDI/Defense/Turrets/Guardian</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MarketValue>15000</MarketValue>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>15000</WorkToBuild>
+			<Mass>5000</Mass>
+			<Beauty>-25</Beauty>
+			<ShootingAccuracyTurret>0.97</ShootingAccuracyTurret>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<turret>
+			<canForceTarget>true</canForceTarget>
+			<turrets>
+				<li>
+					<turretTop>
+						<turret>
+							<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(3.5,3.5)</drawSize>
+						</turret>
+						<barrels>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Standard</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(3.5,3.5)</drawSize>
+								</graphic>
+								<altitudeOffset>-0.1</altitudeOffset>
+								<recoilOffset>(0,0,-0.25)</recoilOffset>
+							</li>
+						</barrels>
+						<speed>60</speed>
+					</turretTop>
+					<turretGunDef>Gun_Guardian</turretGunDef>
+					<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+					<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+				</li>
+			</turrets>
+		</turret>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>1.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<chanceNeverExplodeFromDamage>0.35</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>300</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Shells capacity</fuelLabel>
+				<fuelGizmoLabel>Shells capacity</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>GDI_ReinforcedPlate</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>100</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.25</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>5</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot shoot: Needs shells charge</outOfFuelMessage>
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<fillPercent>0.3</fillPercent>
+		<costList>
+			<GDI_ReinforcedPlate>75</GDI_ReinforcedPlate>
+			<ComponentIndustrial>10</ComponentIndustrial>
+			<TRBattleChip>2</TRBattleChip>
+		</costList>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<specialDisplayRadius>29.9</specialDisplayRadius>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+		</building>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_TurretGunTop</li>
+		</placeWorkers>
+		<damageMultipliers>
+			<li>
+				<damageDef>Flame</damageDef>
+				<multiplier>2</multiplier>
+			</li>
+		</damageMultipliers>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>
+	
+	<!-- Sonic Emitter -->
+	<TiberiumRim.TRThingDef ParentName="GDITurret">
+		<defName>GDI_SonicEmitter</defName>
+		<label>Sonic Emitter</label>
+		<description>The sonic emitter, this heavy weapon clears anything in it's path.\n\nVulnerable by flame attack.</description>
+		<factionDesignation>GDI</factionDesignation>
+		<TRCategory>Defense</TRCategory>
+		<thingClass>TiberiumRim.Building_SonicEmitter</thingClass>
+		<size>(3,3)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/SonicEmitter/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconPath>Buildings/GDI/Defense/SonicEmitter/Turret</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MarketValue>22500</MarketValue>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>22500</WorkToBuild>
+			<Mass>250</Mass>
+			<Beauty>-25</Beauty>
+			<ShootingAccuracyTurret>1</ShootingAccuracyTurret>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<specialDisplayRadius>40</specialDisplayRadius>
+		<turret>
+			<canForceTarget>true</canForceTarget>
+			<turrets>
+				<li>
+					<turretTop>
+						<turret>
+							<texPath>Buildings/GDI/Defense/SonicEmitter/Turret</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(3,3)</drawSize>
+						</turret>
+						<speed>40</speed>
+					</turretTop>
+					<turretGunDef>Gun_SonicEmitter</turretGunDef>
+					<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+					<turretBurstCooldownTime>5</turretBurstCooldownTime>
+				</li>
+			</turrets>
+		</turret>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/GDI/Defense/SonicEmitter/Glow</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>							
+						</data>
+						<altitude>Item</altitude>
+						<mode>Dynamic</mode>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>	
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>4.9</explosiveRadius>
+				<explosiveDamageType>TRSonic</explosiveDamageType>
+				<chanceNeverExplodeFromDamage>0.35</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1000</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>sonic core charge left</fuelLabel>
+				<fuelGizmoLabel>sonic core charge</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>GDI_SonicCore</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>500</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.05</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>500</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot shoot: Needs new sonic core</outOfFuelMessage>
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<fillPercent>0.3</fillPercent>
+		<costList>
+			<GDI_ReinforcedPlate>150</GDI_ReinforcedPlate>
+			<ComponentIndustrial>15</ComponentIndustrial>
+			<GDI_SonicCore>1</GDI_SonicCore>
+			<TRBattleChip>5</TRBattleChip>
+		</costList>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+			<ai_chillDestination>false</ai_chillDestination>
+			<!--
+			<turretGunDef>Gun_SonicEmitter</turretGunDef>
+			<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+			<turretBurstCooldownTime>5</turretBurstCooldownTime>
+			<turretTopGraphicPath>Buildings/GDI/Defense/SonicEmitter/Turret</turretTopGraphicPath>
+			<turretTopDrawSize>3</turretTopDrawSize>
+			<turretTopOffset>(0, 0.1)</turretTopOffset>
+			-->
+		</building>
+		<damageMultipliers>
+			<li>
+				<damageDef>TRSonic</damageDef>
+				<multiplier>0</multiplier>
+			</li>
+		</damageMultipliers>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_TurretGunTop</li>
+		</placeWorkers>
+		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef >
+	
+	<!-- Rig Station -->
+	<TiberiumRim.TRThingDef ParentName="GDITurret">
+		<defName>GDI_BattleBase</defName>
+		<label>battle base</label>
+		<description>.</description>
+		<factionDesignation>GDI</factionDesignation>
+		<TRCategory>Defense</TRCategory>
+		<thingClass>TiberiumRim.Building_TRTurret</thingClass>
+		<size>(8,4)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Turrets/RigBase</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(10,5)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconPath>Buildings/GDI/Defense/Turrets/RigBase</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MarketValue>15000</MarketValue>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>15000</WorkToBuild>
+			<Mass>5000</Mass>
+			<Beauty>-25</Beauty>
+			<ShootingAccuracyTurret>0.97</ShootingAccuracyTurret>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<turret>
+			<canForceTarget>true</canForceTarget>
+			<turrets>
+				<li>
+					<turretTop>
+						<turret>
+							<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(5,5)</drawSize>
+						</turret>
+						<barrels>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Railgun</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(5,5)</drawSize>
+								</graphic>
+								<altitudeOffset>-0.1</altitudeOffset>
+								<recoilOffset>(0,0,-0.5)</recoilOffset>
+							</li>
+						</barrels>
+						<speed>60</speed>
+						<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
+					</turretTop>
+					<drawOffset>(-2.75,0,0)</drawOffset>
+					<turretGunDef>Gun_Guardian_Railgun</turretGunDef>
+					<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+					<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+				</li>
+				<li>
+					<turretTop>
+						<turret>
+							<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(5,5)</drawSize>
+						</turret>
+						<barrels>
+							<li>
+								<graphic>
+									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Standard</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(5,5)</drawSize>
+								</graphic>
+								<altitudeOffset>-0.1</altitudeOffset>
+								<recoilOffset>(0,0,-0.5)</recoilOffset>
+							</li>
+						</barrels>
+						<speed>60</speed>
+						<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
+					</turretTop>
+					<drawOffset>(2.5,0,0)</drawOffset>
+					<turretGunDef>Gun_Guardian</turretGunDef>
+					<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+					<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+				</li>
+			</turrets>
+		</turret>
+		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Shells capacity</fuelLabel>
+				<fuelGizmoLabel>Shells capacity</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>GDI_ReinforcedPlate</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>100</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.25</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>5</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot shoot: Needs shells charge</outOfFuelMessage>
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<fillPercent>0.3</fillPercent>
+		<costList>
+			<GDI_ReinforcedPlate>75</GDI_ReinforcedPlate>
+			<ComponentIndustrial>10</ComponentIndustrial>
+			<TRBattleChip>2</TRBattleChip>
+		</costList>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<specialDisplayRadius>29.9</specialDisplayRadius>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+		</building>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_TurretGunTop</li>
+		</placeWorkers>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>
+
+</Defs>

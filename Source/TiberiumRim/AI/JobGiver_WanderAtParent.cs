@@ -6,7 +6,7 @@ namespace TiberiumRim
 {
     public class JobGiver_WanderAtParent : ThinkNode_JobGiver
     {
-        protected override Job TryGiveJob(Pawn pawn)
+        public override Job TryGiveJob(Pawn pawn)
         {
             Comp_WanderProps wanderComp = pawn.GetComp<Comp_WanderProps>();
             if (wanderComp == null) return null;
@@ -25,7 +25,7 @@ namespace TiberiumRim
             return true;
         }
 
-        protected override IEnumerable<Toil> MakeNewToils()
+        public override IEnumerable<Toil> MakeNewToils()
         {
             Toil gotoIdle = Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
             gotoIdle.FailOn(() => !pawn.CanReach(TargetA, PathEndMode.OnCell, Danger.Deadly));

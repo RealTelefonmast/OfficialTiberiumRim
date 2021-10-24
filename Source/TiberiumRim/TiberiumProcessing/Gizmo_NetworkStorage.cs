@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -68,6 +69,18 @@ namespace TiberiumRim
                     DrawOptions(Main2);
                 }
 
+                //Right Click Input
+                Event curEvent = Event.current;
+                if (Mouse.IsOver(rect) && curEvent.type == EventType.MouseDown && curEvent.button == 1)
+                {
+                    if (DebugSettings.godMode)
+                    {
+                        FloatMenu menu = new FloatMenu(RightClickFloatMenuOptions.ToList(), $"Add NetworkValue", true);
+                        menu.vanishIfMouseDistant = true;
+                        Find.WindowStack.Add(menu);
+                    }
+                }
+
             }, true, false, 1f);
             return new GizmoResult(GizmoState.Clear);
         }
@@ -76,12 +89,12 @@ namespace TiberiumRim
         {
             get
             {
-                if (!DebugSettings.godMode) yield break;
+                float part = container.Capacity / container.AcceptedTypes.Count;
                 yield return new FloatMenuOption("Add ALL", delegate
                 {
                     foreach (var type in container.AcceptedTypes)
                     {
-                        container.TryAddValue(type, 500, out _);
+                        container.TryAddValue(type, part, out _);
                     }
                 });
 
@@ -89,7 +102,7 @@ namespace TiberiumRim
                 {
                     foreach (var type in container.AcceptedTypes)
                     {
-                        container.TryRemoveValue(type, 500, out _);
+                        container.TryRemoveValue(type, part, out _);
                     }
                 });
 
@@ -97,7 +110,7 @@ namespace TiberiumRim
                 {
                     yield return new FloatMenuOption($"Add {type}", delegate
                     {
-                        container.TryAddValue(type, 500, out var _);
+                        container.TryAddValue(type, part, out var _);
                     });
                 }
             }

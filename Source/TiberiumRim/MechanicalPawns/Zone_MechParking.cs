@@ -76,7 +76,7 @@ namespace TiberiumRim
             maxSlots--;
         }
 
-        protected override Color NextZoneColor
+        public override Color NextZoneColor
         {
             get
             {

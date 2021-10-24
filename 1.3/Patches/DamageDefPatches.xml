@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- Smoke -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/FleckDef[defName="Smoke"]/graphicData/texPath</xpath>
+        <value>
+           <texPath>VisualFX/Original/Smoke</texPath>
+        </value>
+    </Operation>
+
+	<!-- Flame -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/DamageDef[defName="Flame"]/explosionCellFleck</xpath>
+        <value>
+           <explosionCellFleck>Mote_AdvFlame</explosionCellFleck>
+        </value>    
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/DamageDef[defName="Flame"]</xpath>
+        <value>
+		   <explosionInteriorFleck>SubMote_AdvParticle2</explosionInteriorFleck>
+        </value>    
+    </Operation>
+	
+	<Operation Class="PatchOperationReplace">
+        <xpath>/Defs/DamageDef[defName="Flame"]/explosionColorCenter</xpath>
+        <value>
+		   <explosionColorCenter>(1, 1, 0.1, 0.5)</explosionColorCenter>
+        </value>    
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/DamageDef[defName="Flame"]/explosionColorEdge</xpath>
+        <value>
+		   <explosionColorEdge>(0.9, 0.1, 0.1, 0.0)</explosionColorEdge>
+        </value>    
+    </Operation>
+
+	<!-- Bomb -->
+	<Operation Class="PatchOperationReplace">
+        <xpath>/Defs/DamageDef[defName="Bomb"]/explosionCellFleck</xpath>
+        <value>
+           <explosionCellFleck>Mote_AdvExplosion1</explosionCellFleck>
+        </value>    
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/DamageDef[defName="Bomb"]</xpath>
+        <value>
+		   <explosionInteriorFleck>SubMote_AdvParticle</explosionInteriorFleck>
+        </value>
+    </Operation>
+	
+	<Operation Class="PatchOperationReplace">
+        <xpath>/Defs/DamageDef[defName="Bomb"]/explosionColorCenter</xpath>
+        <value>
+		   <explosionColorCenter>(1, 1, 0.9, 0.8)</explosionColorCenter>
+        </value>    
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/DamageDef[defName="Bomb"]/explosionColorEdge</xpath>
+        <value>
+		   <explosionColorEdge>(1, 0.8, 0.3, 0)</explosionColorEdge>
+        </value>    
+    </Operation>
+	
+	<!-- BombSuper -->
+	<Operation Class="PatchOperationAdd">
+        <xpath>/Defs/DamageDef[defName="BombSuper"]</xpath>
+        <value>
+           <explosionCellFleck>Mote_AdvExplosion2</explosionCellFleck>
+        </value>    
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/DamageDef[defName="BombSuper"]</xpath>
+        <value>
+		   <explosionInteriorFleck></explosionInteriorFleck>
+        </value>    
+    </Operation>
+	
+	<Operation Class="PatchOperationAdd">
+        <xpath>/Defs/DamageDef[defName="BombSuper"]</xpath>
+        <value>
+		   <explosionColorCenter>(1, 1, 0.9, 1)</explosionColorCenter>
+        </value>    
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/DamageDef[defName="BombSuper"]</xpath>
+        <value>
+		   <explosionColorEdge>(1, 0.8, 0.3, 0)</explosionColorEdge>
+        </value>    
+    </Operation>
+	
+	<!-- Extinguish -->
+	<Operation Class="PatchOperationReplace">
+        <xpath>/Defs/DamageDef[defName="Extinguish"]/explosionCellFleck</xpath>
+        <value>
+           <explosionCellFleck>Mote_AdvExplosion2</explosionCellFleck>
+        </value>    
+    </Operation>
+	
+	<Operation Class="PatchOperationAdd">
+        <xpath>/Defs/DamageDef[defName="Extinguish"]</xpath>
+        <value>
+		   <explosionColorCenter>(0.9, 0.9, 1, 0.5)</explosionColorCenter>
+        </value>    
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/DamageDef[defName="Extinguish"]/explosionColorEdge</xpath>
+        <value>
+		   <explosionColorEdge>(0.8, 0.8, 0.9, 0)</explosionColorEdge>
+        </value>    
+    </Operation>
+	
+	<!-- Smoke -->
+	<Operation Class="PatchOperationReplace">
+        <xpath>/Defs/DamageDef[defName="Smoke"]/explosionCellFleck</xpath>
+        <value>
+           <explosionCellFleck>Mote_AdvExplosion2</explosionCellFleck>
+        </value>    
+    </Operation>
+	
+	<Operation Class="PatchOperationAdd">
+        <xpath>/Defs/DamageDef[defName="Smoke"]</xpath>
+        <value>
+		   <explosionColorCenter>(0.9, 0.9, 1, 0.2)</explosionColorCenter>
+        </value>    
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/DamageDef[defName="Smoke"]/explosionColorEdge</xpath>
+        <value>
+		   <explosionColorEdge>(0.8, 0.8, 0.9, 0)</explosionColorEdge>
+        </value>    
+    </Operation>
+	
+	<!-- Stun -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/DamageDef[defName="Stun"]/explosionCellFleck</xpath>
+        <value>
+           <explosionCellFleck>Mote_AdvParticle</explosionCellFleck>
+        </value>    
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/DamageDef[defName="Stun"]</xpath>
+        <value>
+		   <explosionInteriorFleck>SubMote_AdvParticle3</explosionInteriorFleck>
+        </value>    
+    </Operation>
+	
+	<Operation Class="PatchOperationAdd">
+        <xpath>/Defs/DamageDef[defName="Stun"]</xpath>
+        <value>
+		   <explosionColorCenter>(0.9, 0.9, 1, 0.5)</explosionColorCenter>
+        </value>    
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/DamageDef[defName="Stun"]</xpath>
+        <value>
+		   <explosionColorEdge>(0.8, 0.8, 0.9, 0.1)</explosionColorEdge>
+        </value>    
+    </Operation>
+	
+	<!-- EMP -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/DamageDef[defName="EMP"]/explosionCellFleck</xpath>
+        <value>
+           <explosionCellFleck>Mote_AdvParticle</explosionCellFleck>
+        </value>    
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/DamageDef[defName="EMP"]/explosionInteriorFleck</xpath>
+        <value>
+		   <explosionInteriorFleck>SubMote_AdvSpark</explosionInteriorFleck>
+        </value>    
+    </Operation>
+	
+	<Operation Class="PatchOperationAdd">
+        <xpath>/Defs/DamageDef[defName="EMP"]</xpath>
+        <value>
+		   <explosionColorCenter>(0.8, 0.8, 1, 1)</explosionColorCenter>
+        </value>    
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/DamageDef[defName="EMP"]/explosionColorEdge</xpath>
+        <value>
+		   <explosionColorEdge>(0.6, 0.6, 1, 0.1)</explosionColorEdge>
+        </value>    
+    </Operation>
+	
+</Patch>

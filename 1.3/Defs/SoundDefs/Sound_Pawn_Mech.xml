@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <SoundDef>
+    <defName>Buggy_Call</defName>
+    <context>MapOnly</context>
+    <eventNames />
+    <maxVoices>1</maxVoices>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipPath>Races/Vehicles/Vehicles_Call</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>30</min>
+          <max>75</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.9541177</min>
+          <max>1.068824</max>
+        </pitchRange>
+        <repeatMode>NeverTwice</repeatMode>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>VehicleTanks_Call</defName>
+    <context>MapOnly</context>
+    <eventNames />
+    <maxVoices>1</maxVoices>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipPath>Races/Vehicles/Vehicles_Call</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>30</min>
+          <max>75</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.9541177</min>
+          <max>1.068824</max>
+        </pitchRange>
+        <repeatMode>NeverTwice</repeatMode>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>VehicleTanks_HitPawn</defName>
+    <context>MapOnly</context>
+    <eventNames />
+    <maxVoices>5</maxVoices>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Races/Vehicles/Vehicles_HitPawn</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>30</min>
+          <max>75</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.9541177</min>
+          <max>1.068824</max>
+        </pitchRange>
+        <repeatMode>NeverTwice</repeatMode>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>VehicleTanks_HitBuilding</defName>
+    <context>MapOnly</context>
+    <eventNames />
+    <maxVoices>5</maxVoices>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Races/Vehicles/Vehicles_HitBuilding</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>30</min>
+          <max>75</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.9541177</min>
+          <max>1.068824</max>
+        </pitchRange>
+        <repeatMode>NeverTwice</repeatMode>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>VehicleTanks_Death</defName>
+    <context>MapOnly</context>
+    <eventNames />
+    <maxVoices>1</maxVoices>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Races/Vehicles/Vehicles_Death</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>30</min>
+          <max>75</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.9541177</min>
+          <max>1.068824</max>
+        </pitchRange>
+        <repeatMode>NeverTwice</repeatMode>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>VehicleTanks_Miss</defName>
+    <context>MapOnly</context>
+    <eventNames />
+    <maxVoices>1</maxVoices>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Races/Vehicles/Vehicles_Miss</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>30</min>
+          <max>75</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.9541177</min>
+          <max>1.068824</max>
+        </pitchRange>
+        <repeatMode>NeverTwice</repeatMode>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>VehicleTanks_Wounded</defName>
+    <context>MapOnly</context>
+    <eventNames />
+    <maxVoices>5</maxVoices>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Races/Vehicles/Vehicles_Wounded</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>30</min>
+          <max>75</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.9541177</min>
+          <max>1.068824</max>
+        </pitchRange>
+        <repeatMode>NeverTwice</repeatMode>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+</Defs>

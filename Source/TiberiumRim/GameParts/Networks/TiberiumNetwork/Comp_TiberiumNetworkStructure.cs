@@ -31,6 +31,7 @@ namespace TiberiumRim
             sustainTimeTicks = sustainTime.SecondsToTicks();
             this.maxValue = maxValue;
             this.controlCurve = controlCurve;
+            Start();
         }
 
         public void Start()
@@ -43,14 +44,16 @@ namespace TiberiumRim
         {
             shouldStart = false;
             shouldStop = true;
+            curSustainTick = 0;
         }
 
         public void Tick()
         {
+            /*
             //Sustain control
             if (sustainTimeTicks > 0)
             {
-                if (CurrentPct < 1f)
+                if (CurrentPct <= 1f)
                 {
                     Start();
                 }
@@ -63,6 +66,7 @@ namespace TiberiumRim
                     Stop();
                 }
             }
+            */
             //Manual Control
             if (shouldStop)
             {
@@ -70,11 +74,15 @@ namespace TiberiumRim
                 {
                     curIncreaseTick--;
                 }
+                if(curIncreaseTick == 0)
+                    Start();
             }
             if (shouldStart && curIncreaseTick < increaseTimeTicks)
             {
                 curIncreaseTick++;
             }
+            if (curIncreaseTick == increaseTimeTicks)
+                Stop();
         }
     }
 

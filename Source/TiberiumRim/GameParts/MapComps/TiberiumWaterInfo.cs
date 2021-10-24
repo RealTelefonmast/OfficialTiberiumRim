@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -7,8 +8,11 @@ namespace TiberiumRim
 {
     public class TiberiumWaterInfo : MapInformation, ICellBoolGiver
     {
-        public BoolGrid waterCells;
+        public BoolGrid allWaterCells;
+
+        public BoolGrid lakeCells;
         public BoolGrid riverCells;
+
         public BoolGrid corruption;
 
         public IntGrid corruptionInt;
@@ -20,10 +24,18 @@ namespace TiberiumRim
 
         private List<IntVec3> dirtyCells = new List<IntVec3>();
 
+        public Color Color => Color.white;
+
+        [TweakValue("MapComponent_ShowWater", 0f, 100f)]
+        public static bool DrawBool = false;
+
         public TiberiumWaterInfo(Map map) : base(map)
         {
-            waterCells = new BoolGrid(map);
+            allWaterCells = new BoolGrid(map);
+
+            lakeCells = new BoolGrid(map);
             riverCells = new BoolGrid(map);
+
             landableCells = new BoolGrid(map);
 
             corruption = new BoolGrid(map);
@@ -34,14 +46,15 @@ namespace TiberiumRim
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Deep.Look(ref waterCells, "waterCells");
+            Scribe_Deep.Look(ref allWaterCells, "waterCells");
+            Scribe_Deep.Look(ref lakeCells, "lakeCells");
             Scribe_Deep.Look(ref riverCells, "riverCells");
             Scribe_Deep.Look(ref landableCells, "landableCells");
         }
 
         public bool GetCellBool(int index)
         {
-            return waterCells[index] || landableCells[index];
+            return allWaterCells[index] || landableCells[index];
         }
 
         public Color GetCellExtraColor(int index)
@@ -52,26 +65,31 @@ namespace TiberiumRim
                 return Color.green;
             if (riverCells[index])
                 return Color.cyan;
-            if (waterCells[index])
+            if (lakeCells[index])
                 return Color.blue;
+            if (allWaterCells[index])
+                return Color.magenta;
             return Color.clear;
         }
-
-        public Color Color => Color.white;
 
         public override void InfoInit(bool initAfterReload = false)
         {
             base.InfoInit(initAfterReload);
             LongEventHandler.QueueLongEvent(delegate ()
             {
-                foreach (var waterCell in map.AllCells.Where(c => c.GetTerrain(map).IsWater))
+                foreach (var cell in map.AllCells)
                 {
-                    waterCells[waterCell] = true;
-                }
-
-                foreach (var riverCell in waterCells.ActiveCells.Where(c => c.GetTerrain(map).IsRiver))
-                {
-                    riverCells[riverCell] = true;
+                    var terr = cell.GetTerrain(map);
+                    if (terr.IsWater)
+                    {
+                        allWaterCells[cell] = true;
+                        if (terr.IsRiver)
+                            riverCells[cell] = true;
+                        else if(!terr.defName.Contains("Ocean"))
+                        {
+                            lakeCells[cell] = true;
+                        }
+                    }
                 }
 
                 var activeCells = riverCells.ActiveCells.ToList();
@@ -82,11 +100,13 @@ namespace TiberiumRim
             }, "SettingWaterData", false, null);
         }
 
-        [TweakValue("MapComponent_ShowWater", 0f, 100f)]
-        public static bool DrawBool = false;
-
         public override void Tick()
         {
+        }
+
+        public bool IsLake(IntVec3 cell)
+        {
+            return lakeCells[cell];
         }
 
         public override void Draw()

@@ -17,14 +17,14 @@ namespace TiberiumRim
             this.icon = ContentFinder<Texture2D>.Get("UI/Designators/ZoneCreate_Stockpile", true);
         }
 
-        protected override string NewZoneLabel => mechKindDef + "";
+        public override string NewZoneLabel => mechKindDef + "";
 
         public override AcceptanceReport CanDesignateCell(IntVec3 c)
         {
             return c.Standable(Find.CurrentMap);
         }
 
-        protected override Zone MakeNewZone()
+        public override Zone MakeNewZone()
         {
             if(mechKindDef == null)
                 Log.Error("Designator MechParking has missing mechKindDef!");

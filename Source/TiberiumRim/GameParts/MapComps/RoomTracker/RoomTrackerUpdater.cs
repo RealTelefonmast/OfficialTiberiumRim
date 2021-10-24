@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Verse;
 
@@ -83,6 +84,7 @@ namespace TiberiumRim
             {
                 parentInfo.MarkDisband(tracker);
             }
+
             foreach (var tracker in disbanded)
             {
                 parentInfo.Disband(tracker);

@@ -201,7 +201,7 @@ namespace TiberiumRim
             connectedSegments[direction].ForEach(b => b.CheckBeamStatus());
         }
 
-        protected override void ReceiveCompSignal(string signal)
+        public override void ReceiveCompSignal(string signal)
         {
             base.ReceiveCompSignal(signal);
             if (signal == "PowerTurnedOn")

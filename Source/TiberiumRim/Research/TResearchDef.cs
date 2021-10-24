@@ -425,7 +425,7 @@ namespace TiberiumRim
                 var trThingDef = def as TRThingDef;
                 if (trThingDef != null && trThingDef.IsActive(out _))
                 {
-                    Architect.selectedDesPanel = Traverse.Create(Architect).Field("desPanelsCached").GetValue<List<ArchitectCategoryTab>>().Find(a => a.def == TiberiumDefOf.Tiberium);
+                    Architect.selectedDesPanel = Architect.desPanelsCached.Find(a => a.def == TiberiumDefOf.Tiberium);
                     Designator_TRMenu menu = (TiberiumDefOf.Tiberium.AllResolvedDesignators.FirstOrDefault() as Designator_TRMenu);
                     menu.Select(trThingDef);
 
@@ -435,7 +435,7 @@ namespace TiberiumRim
 
                 if (def.IsResearchFinished)
                 {
-                    Architect.selectedDesPanel = Traverse.Create(Architect).Field("desPanelsCached").GetValue<List<ArchitectCategoryTab>>().Find(a => a.def == def.designationCategory);
+                    Architect.selectedDesPanel = Architect.desPanelsCached.Find(a => a.def == def.designationCategory);
                     new Designator_BuildFixed(def).ProcessInput(null);
                     return;
                 }

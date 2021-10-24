@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  
+  <SoundDef>
+    <defName>Shot_GDI_GunTail</defName>
+    <context>MapOnly</context>
+    <eventNames />
+    <maxVoices>2</maxVoices>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Weapons/Shot_GDI_GunTail</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>10</min>
+          <max>20</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.9082352</min>
+          <max>1.091765</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+</Defs>

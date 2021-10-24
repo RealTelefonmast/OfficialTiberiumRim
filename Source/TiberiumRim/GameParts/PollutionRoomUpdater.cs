@@ -95,7 +95,7 @@
             {
                 if (tracker.IsDirty)
                     tracker.RegenerateData();
-                if (tracker.UsesOutDoorPollution)
+                if (tracker.IsOutdoors)
                     parentInfo.RecalcOutsideCells();
             }
             newTrackers.Clear();

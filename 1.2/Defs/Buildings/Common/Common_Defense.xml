@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+		<defName>TiberiumCannon</defName>
+		<label>tib cannon</label>
+		<description>ree</description>
+		<thingClass>Building_TurretGun</thingClass>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Defense</TRCategory>
+		<hidden>true</hidden>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Defense/TibCannon/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.5,2.5)</drawSize>
+		</graphicData>
+		<costList>
+			<Steel>100</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<uiIconPath>Buildings/Common/Defense/TibCannon/Icon</uiIconPath>
+		<uiIconScale>0.90</uiIconScale>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<thingCategories>
+			<li>BuildingsSecurity</li>
+		</thingCategories>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<Flammability>0.7</Flammability>
+			<WorkToBuild>3500</WorkToBuild>
+			<Mass>500</Mass>
+			<Beauty>-20</Beauty>
+			<ShootingAccuracyTurret>0.9</ShootingAccuracyTurret>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TNW">
+				<compClass>TiberiumRim.CompTNW_Turret</compClass>
+				<maxStorage>150</maxStorage>
+				<supportedTypes>
+					<li>Sludge</li>
+				</supportedTypes>
+				<tnwbMode>Consumer</tnwbMode>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Defense/TibCannon/Overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,2.25)</drawSize>							
+						</data>
+						<mode>Dynamic</mode>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Defense/TibCannon/Connection2</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(2.5,2.5)</drawSize>
+						</data>
+						<altitude>Floor</altitude>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Defense/TibCannon/ConnectionOverlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.5,2.5)</drawSize>							
+						</data>
+						<altitude>FloorEmplacement</altitude>
+						<mode>Dynamic</mode>
+					</li>
+				</overlays>
+			</li>		
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>80</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<fillPercent>0.4</fillPercent>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<specialDisplayRadius>12.89</specialDisplayRadius>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+			<turretGunDef>SludgeCannon</turretGunDef>
+			<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
+			<turretBurstCooldownTime>0</turretBurstCooldownTime>
+			<turretTopDrawSize>2.5</turretTopDrawSize>
+		</building>
+		<placeWorkers>
+			<li>PlaceWorker_TurretTop</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Sludge</defName>
+		<label>sludge blob</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Gas/Gas_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>TiberiumBurn</damageDef>
+			<damageAmountBase>2</damageAmountBase>
+			<speed>15</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>SludgeCannon</defName>
+		<label>sludge cannon</label>
+		<description>.</description>
+		<graphicData>
+			<texPath>Buildings/Common/Defense/TibCannon/Turret</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<menuHidden>true</menuHidden>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<tiberiumCostPerShot>
+					<useDirectStorage>true</useDirectStorage>
+					<specificTypes>
+						<Sludge>6</Sludge>
+					</specificTypes>
+				</tiberiumCostPerShot>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Sludge</defaultProjectile>
+				<warmupTime>3</warmupTime>
+				<range>12.89</range>
+				<burstShotCount>20</burstShotCount>
+				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>3</muzzleFlashScale>
+				<consumeFuelPerShot>0.2</consumeFuelPerShot>
+			</li>
+			<!--
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<tiberiumCost>
+					<costs>
+						<li>Sludge</li>
+					</costs>
+					<cost>12</cost>
+				</tiberiumCost>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Sludge</defaultProjectile>
+				<warmupTime>2</warmupTime>
+				<range>14.9</range>
+				<forcedMissRadius>0.5</forcedMissRadius>
+				<burstShotCount>15</burstShotCount>
+				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+				<muzzleFlashScale>15</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+			</li>
+			-->
+		</verbs>
+	</ThingDef>
+	
+	<TiberiumRim.TRThingDef Abstract="True" Name="DronePlatform" ParentName="BuildingBase_TR">
+		<description>.</description>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Misc</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>100</pathCost>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<fillPercent>0.25</fillPercent>
+		<tickerType>Normal</tickerType>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>800</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<size>(4,4)</size>
+		<inspectorTabs>
+			<li>TiberiumRim.ITab_MechConstruction</li>
+			<li>TiberiumRim.ITab_MechUpgrade</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>150</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<constructEffect>ConstructMetal</constructEffect>
+		<canOverlapZones>false</canOverlapZones>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="DronePlatform">
+		<defName>RepairDronePlatform</defName>
+		<label>repair drone platform</label>
+		<graphicData>
+			<texPath>Buildings/Common/Misc/DronePlatform</texPath>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<size>(4,4)</size>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>800</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_DroneStation">
+				<mechRecipes>
+					<li>MakeRepairDroneCommon</li>
+				</mechRecipes>
+				<mechKindDef>RepairDrone_Common</mechKindDef>
+				<mechCapacity>4</mechCapacity>
+				<garageCapacity>4</garageCapacity>
+				<radius>12</radius>
+				<renderSize>1.3</renderSize>
+				<renderOffsets>
+					<li>(0,0,1)</li>
+					<li>(1.1,0,0)</li>
+					<li>(0,0,-1)</li>
+					<li>(-1.1,0,0)</li>
+				</renderOffsets>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Resource Pool</fuelLabel>
+				<fuelGizmoLabel>Resource Pool</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>100</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.25</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>10</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot use drones.</outOfFuelMessage>
+				<!--TODO: Make icon for missing building-resources-->
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+	</TiberiumRim.TRThingDef>	
+	
+	<TiberiumRim.TRThingDef ParentName="DronePlatform">
+		<defName>RepairDronePlatformSmall</defName>
+		<label>repair drone platform (small)</label>
+		<graphicData>
+			<texPath>Buildings/Common/Misc/DronePlatform_Small</texPath>
+			<drawSize>(1.75,1.75)</drawSize>
+		</graphicData>
+		<size>(1,1)</size>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>800</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<costList>
+			<Steel>40</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_DroneStation">
+				<mechRecipes>
+					<li>MakeRepairDroneCommon</li>
+				</mechRecipes>
+				<mechKindDef>RepairDrone_Common</mechKindDef>
+				<mechCapacity>1</mechCapacity>
+				<garageCapacity>1</garageCapacity>
+				<renderSize>1</renderSize>
+				<radius>4</radius>
+			</li>
+		</comps>
+	</TiberiumRim.TRThingDef>	
+	
+</Defs>

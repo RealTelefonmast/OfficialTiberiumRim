@@ -35,6 +35,7 @@ namespace TiberiumRim
 
         public void RegisterPart(TRGroupDef groupDef, object obj)
         {
+            if (groupDef == null) return;
             switch (obj)
             {
                 case Thing thing:
@@ -67,6 +68,7 @@ namespace TiberiumRim
 
         public void DeregisterPart(TRGroupDef groupDef, object obj)
         {
+            if (groupDef == null) return;
             switch (obj)
             {
                 case Thing thing:

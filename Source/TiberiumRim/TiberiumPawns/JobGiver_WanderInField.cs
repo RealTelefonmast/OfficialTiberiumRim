@@ -12,12 +12,12 @@ namespace TiberiumRim
             this.ticksBetweenWandersRange = new IntRange(300, 345);
         }
 
-        protected override IntVec3 GetWanderRoot(Pawn pawn)
+        public override IntVec3 GetWanderRoot(Pawn pawn)
         {
             return pawn.Position;
         }
 
-        protected override IntVec3 GetExactWanderDest(Pawn pawn)
+        public override IntVec3 GetExactWanderDest(Pawn pawn)
         {
             if (pawn is TiberiumPawn pawn2 && pawn2.ProducerAvailable && !pawn2.kindDef.canLeaveProducer)
                 return pawn2.boundProducer.FieldCells.RandomElement();

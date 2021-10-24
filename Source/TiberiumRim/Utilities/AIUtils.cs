@@ -13,8 +13,9 @@ namespace TiberiumRim.Utilities
         public static List<Room> RoomsAlongPath(this PawnPath path, Map map)
         {
             HashSet<Room> rooms = new HashSet<Room>();
-            foreach (var node in path.NodesReversed)
+            for (var i = 0; i < path.NodesReversed.Count; i++)
             {
+                var node = path.NodesReversed[i];
                 rooms.Add(node.GetRoom(map));
             }
             return rooms.ToList();
@@ -23,8 +24,8 @@ namespace TiberiumRim.Utilities
         public static IntVec3 GeneralCenter(this Room room)
         {
             var poll = room.AtmosphericRoomComp();
-            var size = poll.Size;
-            return poll.MinVec + new IntVec3(size.x/2,0, size.z/2);
+            var size = poll.Parent.Size;
+            return poll.Parent.MinVec + new IntVec3(size.x/2,0, size.z/2);
         }
     }
 }

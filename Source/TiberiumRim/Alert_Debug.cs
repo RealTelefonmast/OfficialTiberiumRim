@@ -11,12 +11,11 @@ namespace TiberiumRim
     {
         public Alert_Debug()
         {
-            defaultLabel = "Debug: Mapcomp Info";
+            defaultLabel = "[DEBUG INFO]";
         }
 
         public override TaggedString GetExplanation()
         {
-            
             MapComponent_Tiberium tiberium = Find.CurrentMap.GetComponent<MapComponent_Tiberium>();
             TiberiumMapInfo mapinfo = tiberium.TiberiumInfo;
             NetworkMaster tiberiumNetworkMaster = tiberium.NetworkInfo[TiberiumDefOf.TiberiumNetwork];
@@ -26,17 +25,12 @@ namespace TiberiumRim
             sb.AppendLine("Total Tiberium: " + TibCount);
             sb.AppendLine("Total Cells: " + tiberium.TiberiumInfo.TotalCount);
             sb.AppendLine("Active percent: " + tiberium.TiberiumInfo.Coverage.ToStringPercent());
-            sb.AppendLine("Networks: " + tiberiumNetworkMaster.Networks.Count);
+            sb.AppendLine($"Networks: {tiberiumNetworkMaster?.Networks?.Count}");
             sb.AppendLine("MapInfo:\n Valuables: " + mapinfo.TiberiumCrystals[HarvestType.Valuable].Count + " - " +
                           mapinfo.TiberiumCrystalTypes[HarvestType.Valuable].Count + " types" + "\n Unvaluables: " +
                           mapinfo.TiberiumCrystals[HarvestType.Unvaluable].Count + " - " +
                           mapinfo.TiberiumCrystalTypes[HarvestType.Unvaluable].Count + " types");
             sb.AppendLine("Trackers: " + tiberium.AtmosphericInfo.AllComps.Count);
-            //sb.AppendLine("All Trackers: " + tiberium.AtmosphericInfo.PollutionTrackers.Count + "Tr/" +
-                          //Find.CurrentMap.regionGrid.allRooms.Count + "Rooms\n[" +
-                          //(tiberium.AtmosphericInfo.TotalPollution) + "][" + tiberium.AtmosphericInfo.OutsideCells + "][" + tiberium.AtmosphericInfo.OutsideSaturation +
-                          //"]");
-                          //sb.AppendLine("All RoomGroups: " + tiberium.AtmosphericInfo.RoomGroups.Count + "/" + Find.CurrentMap.regionGrid.allRooms.Select(r => r.Group).Distinct().Count());
             return sb.ToString();
         }
 

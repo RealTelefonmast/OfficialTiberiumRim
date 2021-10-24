@@ -24,7 +24,7 @@ namespace TiberiumRim
             }
         }
 
-        protected override void TakePrintFrom(Thing t)
+        public override void TakePrintFrom(Thing t)
         {
             var comp = t.TryGetComp<Comp_NetworkStructure>();
             comp?.PrintForGrid(this);

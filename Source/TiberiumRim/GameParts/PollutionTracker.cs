@@ -34,11 +34,11 @@
 
         public int Atmospheric
         {
-            get => UsesOutDoorPollution ? Outside.Atmospheric : ActualPollution;
+            get => IsOutdoors ? Outside.Atmospheric : ActualPollution;
             set
             {
                 if (FullySaturated) return;
-                if (UsesOutDoorPollution)
+                if (IsOutdoors)
                 {
                     Outside.Atmospheric = value;
                     return;
@@ -57,11 +57,11 @@
         public int Capacity => totalCapacity;
 
         public float ActualSaturation => (float)ActualPollution / Capacity;
-        public float Saturation => IsDoorWay ? MixSaturation : (UsesOutDoorPollution ? Outside.Saturation : ActualSaturation);
+        public float Saturation => IsDoorWay ? MixSaturation : (IsOutdoors ? Outside.Saturation : ActualSaturation);
         private float MixSaturation => ((ConnectingRooms[0]?.Saturation ?? 0) + (ConnectingRooms[1]?.Saturation ?? 0) / 2);
 
-        public bool FullySaturated => UsesOutDoorPollution ? Outside.FullySaturated : Saturation >= CriticalPressure;
-        public bool UsesOutDoorPollution => roomGroup.UsesOutdoorTemperature;
+        public bool FullySaturated => IsOutdoors ? Outside.FullySaturated : Saturation >= CriticalPressure;
+        public bool IsOutdoors => roomGroup.UsesOutdoorTemperature;
         public bool IsDoorWay => hasDoor;
         public bool IsDirty => markedDirty > 0;
 
@@ -257,7 +257,7 @@
                 Log.Message("Made Door Connector For |" + ConnectingRooms[0]?.Group.ID + " - " + ConnectingRooms[1]?.Group.ID + "|");
             }
 
-            if (UsesOutDoorPollution)
+            if (IsOutdoors)
             {
                 Log.Message("Updating outdoors - existing passers: " + Outside.);
                 //Update Passers
@@ -286,7 +286,7 @@
 
                 if (!ignoreTracker)
                 {
-                    if (tracker.UsesOutDoorPollution)
+                    if (tracker.IsOutdoors)
                     {
                         tracker.SetNewPasser(this, building);
                     }
@@ -318,7 +318,7 @@
 
         public void DrawData()
         {
-            if (!UsesOutDoorPollution)
+            if (!IsOutdoors)
                 renderer.Draw();
             
             if (!TRUtils.Tiberium().GameSettings.RadiationOverlay) return;

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TibScarab.label>수정벌레</TibScarab.label>
+  <TibScarab.labelPlural>수정벌레</TibScarab.labelPlural>
+  <TibScarab.lifeStages.0.label>수정벌레 유충</TibScarab.lifeStages.0.label>
+  <TibScarab.lifeStages.0.labelPlural>수정벌레 유충</TibScarab.lifeStages.0.labelPlural>
+  <TibScarab.lifeStages.1.label>수정벌레</TibScarab.lifeStages.1.label>
+  <TibScarab.lifeStages.1.labelPlural>수정벌레</TibScarab.lifeStages.1.labelPlural>
+  <TibScarab.lifeStages.2.label>수정벌레</TibScarab.lifeStages.2.label>
+  <TibScarab.lifeStages.2.labelPlural>수정벌레</TibScarab.lifeStages.2.labelPlural>
+
+  <Crawler.label>크롤러</Crawler.label>
+  <Crawler.labelPlural>크롤러</Crawler.labelPlural>
+  <Crawler.lifeStages.0.label>새끼 크롤러</Crawler.lifeStages.0.label>
+  <Crawler.lifeStages.0.labelPlural>새끼 크롤러</Crawler.lifeStages.0.labelPlural>
+  <Crawler.lifeStages.0.labelMale>새끼 크롤러</Crawler.lifeStages.0.labelMale>
+  <Crawler.lifeStages.0.labelMalePlural>새끼 크롤러</Crawler.lifeStages.0.labelMalePlural>
+  <Crawler.lifeStages.0.labelFemale>새끼 크롤러</Crawler.lifeStages.0.labelFemale>
+  <Crawler.lifeStages.0.labelFemalePlural>새끼 크롤러</Crawler.lifeStages.0.labelFemalePlural>
+  <Crawler.lifeStages.1.label>크롤러</Crawler.lifeStages.1.label>
+  <Crawler.lifeStages.1.labelPlural>크롤러</Crawler.lifeStages.1.labelPlural>
+  <Crawler.lifeStages.1.labelMale>크롤러</Crawler.lifeStages.1.labelMale>
+  <Crawler.lifeStages.1.labelMalePlural>크롤러</Crawler.lifeStages.1.labelMalePlural>
+  <Crawler.lifeStages.1.labelFemale>크롤러</Crawler.lifeStages.1.labelFemale>
+  <Crawler.lifeStages.1.labelFemalePlural>크롤러</Crawler.lifeStages.1.labelFemalePlural>
+  <Crawler.lifeStages.2.label>크롤러</Crawler.lifeStages.2.label>
+  <Crawler.lifeStages.2.labelPlural>크롤러</Crawler.lifeStages.2.labelPlural>
+  <Crawler.lifeStages.2.labelMale>크롤러</Crawler.lifeStages.2.labelMale>
+  <Crawler.lifeStages.2.labelMalePlural>크롤러</Crawler.lifeStages.2.labelMalePlural>
+  <Crawler.lifeStages.2.labelFemale>크롤러</Crawler.lifeStages.2.labelFemale>
+  <Crawler.lifeStages.2.labelFemalePlural>크롤러</Crawler.lifeStages.2.labelFemalePlural>
+  <Crawler.labelMale>크롤러</Crawler.labelMale>
+  <Crawler.labelMalePlural>크롤러</Crawler.labelMalePlural>
+  <Crawler.labelFemale>크롤러</Crawler.labelFemale>
+  <Crawler.labelFemalePlural>크롤러</Crawler.labelFemalePlural>
+
+  <BoomFiend.label>폭탄마</BoomFiend.label>
+  <BoomFiend.labelPlural>폭탄마</BoomFiend.labelPlural>
+  <BoomFiend.lifeStages.0.label>어린 폭탄마</BoomFiend.lifeStages.0.label>
+  <BoomFiend.lifeStages.0.labelPlural>어린 폭탄마</BoomFiend.lifeStages.0.labelPlural>
+  <BoomFiend.lifeStages.1.label>성장기 폭탄마</BoomFiend.lifeStages.1.label>
+  <BoomFiend.lifeStages.1.labelPlural>성장기 폭탄마</BoomFiend.lifeStages.1.labelPlural>
+  <BoomFiend.lifeStages.2.label>폭탄마</BoomFiend.lifeStages.2.label>
+  <BoomFiend.lifeStages.2.labelPlural>폭탄마</BoomFiend.lifeStages.2.labelPlural>
+
+
+</LanguageData>

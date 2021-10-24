@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TRThingDef Name="TiberiumChunkBase" ParentName="ChunkBase" Abstract="True">
+		<thingClass>TiberiumRim.TiberiumChunk</thingClass>
+		<description>A Tiberium chunk, it will slowly deteriorate while emitting harmful radiation.</description>
+		<statBases>
+			<Mass>20</Mass>
+			<Beauty>-15</Beauty>
+			<Cleanliness>-15</Cleanliness>
+			<TiberiumDamageResistance>1</TiberiumDamageResistance>
+		</statBases>
+		<graphicData>
+			<graphicClass>Graphic_Random</graphicClass>
+			<flipExtraRotation>80</flipExtraRotation>
+		</graphicData>
+		<thingCategories>
+			<li>StoneChunks</li>	
+			<li>TiberiumMisc</li>
+		</thingCategories>
+		<comps>
+			<!--
+			<li Class="TiberiumRim.CompProperties_FX">
+				<effecters>
+					<li>
+						<moteInterval>300~500</moteInterval>
+						<burstCount>1~2</burstCount>
+						<moteDef>TiberiumFogG</moteDef>
+						<rotationRate>1</rotationRate>
+						<positionRadius>0.69</positionRadius>
+						<rotation>0</rotation>
+						<angle>0~360</angle>
+						<speed>0.01~0.05</speed>
+					</li>
+					<li>
+						<moteInterval>50~80</moteInterval>
+						<moteDef>Mote_GlowerParticle</moteDef>
+						<rotationRate>1</rotationRate>
+						<positionRadius>0.36</positionRadius>
+						<scale>0.4~0.8</scale>				
+						<angle>0~360</angle>
+						<speed>0.15~0.3</speed>
+					</li>
+				</effecters>
+			</li>
+			-->
+			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+				<radius>5</radius>
+				<intensity>0.65</intensity>
+			</li>
+		</comps>
+		<tickerType>Rare</tickerType>
+	</TiberiumRim.TRThingDef>
+  
+	<TiberiumRim.TRThingDef ParentName="TiberiumChunkBase">
+		<defName>GreenTiberiumChunk</defName>
+		<label>green tiberium chunk</label>
+		<statBases>
+		  <MaxHitPoints>600</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Items/Misc/StoneGreen</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<flipExtraRotation>80</flipExtraRotation>
+		</graphicData>
+		<!--
+		<comps>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>TiberiumGreen</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>25000</min>
+					<max>45000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>3</spawnMaxAdjacent>
+				<spawnForbidden>false</spawnForbidden>
+			</li>
+		</comps>
+		-->
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="TiberiumChunkBase">
+		<defName>BlueTiberiumChunk</defName>
+		<label>blue tiberium chunk</label>
+		<statBases>
+		  <MaxHitPoints>900</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Items/Misc/StoneBlue</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<flipExtraRotation>80</flipExtraRotation>
+		</graphicData>
+		<filthLeaving>FilthTiberiumBlue</filthLeaving>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="TiberiumChunkBase">
+		<defName>RedTiberiumChunk</defName>
+		<label>red tiberium chunk</label>
+		<thingClass>ThingWithComps</thingClass>
+		<statBases>
+		  <MaxHitPoints>1200</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Items/Misc/StoneRed</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<flipExtraRotation>80</flipExtraRotation>
+		</graphicData>
+		<filthLeaving>FilthTiberiumRed</filthLeaving>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="TiberiumChunkBase">
+		<defName>VeinTiberiumChunk</defName>
+		<thingClass>TiberiumRim.TRThing</thingClass>
+		<label>veiny chunk</label>
+		<description>A vein infested chunk, I swear I saw it moving.</description>
+		<statBases>
+			<MaxHitPoints>1200</MaxHitPoints>
+		</statBases>
+		<comps Inherit="False">
+		</comps>
+		<graphicData>
+			<texPath>Items/Misc/VeinRock</texPath>
+		</graphicData>
+	</TiberiumRim.TRThingDef>
+	
+</Defs>

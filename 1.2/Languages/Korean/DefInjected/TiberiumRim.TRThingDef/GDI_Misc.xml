@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GDI_PowerConduit.label>이온 스파크 케이블</GDI_PowerConduit.label>
+  <GDI_PowerConduit.description>GDI 표준 전선. 벽이나 건물 아래에도 설치할 수 있습니다. 일반 전선보다 훨씬 튼튼합니다.</GDI_PowerConduit.description>
+
+  <GDI_Grave.label>분묘</GDI_Grave.label>
+  <GDI_Grave.description>용감히 싸운 군인들의 마지막 휴식처입니다. 그들은 결코 잊혀지지 않을 것입니다.</GDI_Grave.description>
+
+  <Light_GDI.label>이온 램프</Light_GDI.label>
+  <Light_GDI.description>램프 내부에서 강력한 이온 폭풍이 몰아치고 있습니다. 실은, 이온 램프 뿐 아니라 모든 형광등이 같은 원리로 빛을 냅니다.</Light_GDI.description>
+
+  <GDIWallLight.label>이온 벽등</GDIWallLight.label>
+  <GDIWallLight.description>벽등 내부에서 강력한 이온 폭풍이 몰아치고 있습니다. 실은, 이온 램프 뿐 아니라 모든 형광등이 같은 원리로 빛을 냅니다.</GDIWallLight.description>
+
+  <GlowerSource.label>광원</GlowerSource.label>
+
+
+</LanguageData>

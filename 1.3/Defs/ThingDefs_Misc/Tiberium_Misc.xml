@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TRThingDef ParentName="BaseGas">
+		<defName>Gas_TiberiumGas</defName>
+		<thingClass>TiberiumRim.TiberiumGas_Standard</thingClass>
+		<label>tiberium gas</label>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>VisualFX/Natural/TiberiumGas/TiberiumGasLight</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>2.5</drawSize>
+		</graphicData>
+		<gas>
+			<expireSeconds>
+				<min>15</min>
+				<max>30</max>
+			</expireSeconds>
+			<blockTurretTracking>true</blockTurretTracking>
+			<accuracyPenalty>0.8</accuracyPenalty>
+			<rotationSpeed>5</rotationSpeed>
+		</gas>
+		<gasProps>
+			<maxSaturation>1000</maxSaturation>
+			<minSpreadSaturation>100</minSpreadSaturation>
+			<!--<dissipationSaturation>200</dissipationSaturation>-->
+			<dissipateTo>TibPollution</dissipateTo>
+		</gasProps>
+	</TiberiumRim.TRThingDef>
+  
+</Defs>

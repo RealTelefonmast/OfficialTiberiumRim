@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<BodyPartDef Abstract= "True" Name="ScrinPart">
+		<hitPoints>5</hitPoints>
+		<frostbiteVulnerability>0</frostbiteVulnerability>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<bleedRate>0</bleedRate>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>	
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="ScrinPart">
+		<defName>Scrin_Brain</defName>
+		<label>biomechanical brain</label>
+		<hitPoints>16</hitPoints>
+		<tags>
+			<li>ConsciousnessSource</li>
+		</tags>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="ScrinPart">
+		<defName>Scrin_Eye</defName>
+		<label>eye</label>
+		<hitPoints>6</hitPoints>
+		<socketed>true</socketed>
+		<tags>
+			<li>SightSource</li>
+		</tags>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="ScrinPart">
+		<defName>Scrin_SonsorArray</defName>
+		<label>sensor array</label>
+		<hitPoints>25</hitPoints>
+		<tags>
+			<li>HearingSource</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="ScrinPart">
+		<defName>Scrin_AtmosphericFilter</defName>
+		<label>atmospheric filter</label>
+		<hitPoints>22</hitPoints>
+		<tags>
+			<li>BreathingPathway</li>
+			<li>EatingPathway</li>
+			<li>TalkingPathway</li>
+		</tags>
+	</BodyPartDef>
+	
+</Defs>

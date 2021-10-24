@@ -38,7 +38,11 @@ namespace TiberiumRim
         public void RegisterComponent(INetworkComponent component)
         {
             TotalComponentSet.AddNewComponent(component);
-            var network = RegenerateNetwork(component);
+            var network = RegenerateNetwork(component, out var oldNets);
+            foreach (var oldNet in oldNets)
+            {
+                DeregisterNetwork(oldNet);
+            }
             RegisterNetwork(network);
         }
 
@@ -46,6 +50,19 @@ namespace TiberiumRim
         {
             DeregisterNetworkPart(component);
             TotalComponentSet.RemoveComponent(component);
+
+            DeregisterNetwork(component.Network);
+
+            //from.Network = null;
+            Network newNet = null;
+            foreach (var root in component.ConnectedComponentSet.FullSet)
+            {
+                if (root.Network != newNet)
+                {
+                    newNet = RegenerateNetwork(root, out _);
+                    RegisterNetwork(newNet);
+                }
+            }
         }
 
         public void ToggleShowNetworks()
@@ -89,9 +106,10 @@ namespace TiberiumRim
             return networkBools[map.cellIndices.CellToIndex(c)];
         }
 
-        public Network RegenerateNetwork(INetworkComponent root)
+        public Network RegenerateNetwork(INetworkComponent root, out HashSet<Network> oldNets)
         {
             Log.Message($"Regenerating new net from {root.Parent.Thing}");
+            oldNets = new HashSet<Network>();
             Network newNet = new Network(root.NetworkDef, map, this);
             HashSet<INetworkComponent> closedSet = new HashSet<INetworkComponent>();
             HashSet<INetworkComponent> openSet = new HashSet<INetworkComponent>() { root };
@@ -100,13 +118,18 @@ namespace TiberiumRim
             {
                 foreach (INetworkComponent component in openSet)
                 {
+                    if (component.Network != null)
+                    {
+                        oldNets.Add(component.Network);
+                    }
                     component.Network = newNet;
                     newNet.AddComponent(component);
                     closedSet.Add(component);
                 }
-                HashSet<INetworkComponent> hashSet = currentSet;
-                currentSet = openSet;
-                openSet = hashSet;
+
+                //
+                (currentSet, openSet) = (openSet, currentSet);
+
                 openSet.Clear();
                 foreach (INetworkComponent component in currentSet)
                 {

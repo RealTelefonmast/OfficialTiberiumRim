@@ -18,7 +18,7 @@ namespace TiberiumRim
             return true;
         }
 
-        protected override IEnumerable<Toil> MakeNewToils()
+        public override IEnumerable<Toil> MakeNewToils()
         {
             yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
             Toil toil = new Toil();

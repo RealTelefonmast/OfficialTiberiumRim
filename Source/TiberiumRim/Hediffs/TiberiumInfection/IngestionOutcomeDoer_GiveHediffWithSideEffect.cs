@@ -20,7 +20,7 @@ namespace TiberiumRim
 
         public List<DefFloat<HediffDef>> sideEffects = new List<DefFloat<HediffDef>>();
 
-        protected override void DoIngestionOutcomeSpecial(Pawn pawn, Thing ingested)
+        public override void DoIngestionOutcomeSpecial(Pawn pawn, Thing ingested)
         {
             if (ShoulDoSideEffect(pawn))
             {

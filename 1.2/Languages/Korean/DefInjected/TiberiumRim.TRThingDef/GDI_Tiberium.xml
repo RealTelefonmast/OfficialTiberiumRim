@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <SonicInhibitorSmall.label>소형 음파 억제기</SonicInhibitorSmall.label>
+  <SonicInhibitorSmall.description>타이베리움만을 파괴하도록 고안된 표준 음파 공명 장치입니다. 좁은 범위의 타이베리움을 지속적으로 파괴합니다.</SonicInhibitorSmall.description>
+
+  <SonicInhibitorTall.label>대형 음파 억제기</SonicInhibitorTall.label>
+  <SonicInhibitorTall.description>타이베리움만을 파괴하도록 고안된 대형 음파 공명 장치입니다. 넓은 범위의 타이베리움을 지속적으로 파괴합니다.</SonicInhibitorTall.description>
+
+  <Decrystallizer.label>토양 정화기</Decrystallizer.label>
+  <Decrystallizer.description>땅 아래로 파고든 마지막 타이베리움 입자까지 완전히 정화할 수 있는 궁극의 음파 공명 장치입니다.</Decrystallizer.description>
+
+
+</LanguageData>

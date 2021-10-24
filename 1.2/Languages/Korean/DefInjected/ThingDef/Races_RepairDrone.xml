@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RepairDrone_Common.label>수리 드론</RepairDrone_Common.label>
+  <RepairDrone_Common.description>손상된 중장비들을 수리할 수 있는 자동 유닛입니다.</RepairDrone_Common.description>
+  <RepairDrone_Common.tools.0.label>작업팔</RepairDrone_Common.tools.0.label>
+  <RepairDrone_Common.tools.1.label>작업팔</RepairDrone_Common.tools.1.label>
+  <RepairDrone_Common.tools.2.label>천공기</RepairDrone_Common.tools.2.label>
+  <RepairDrone_Common.tools.3.label>절단기</RepairDrone_Common.tools.3.label>
+  <!-- Flesh Type: Mechanoid -->
+  <RepairDrone_Common_Corpse.label>수리 드론 잔해</RepairDrone_Common_Corpse.label>
+  <RepairDrone_Common_Corpse.description>수리 드론 잔해</RepairDrone_Common_Corpse.description>
+
+
+
+</LanguageData>

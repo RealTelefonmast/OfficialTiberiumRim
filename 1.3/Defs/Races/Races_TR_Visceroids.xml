@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Visceral Horror | HumanLike -->
+	<ThingDef ParentName="VisceralPawnBase">
+		<defName>VisceralHorror_Human</defName>
+		<label>visceral human</label>
+		<thingClass>TiberiumRim.Pawn_Visceral</thingClass>
+		<description>This poor soul has been half molten inside a visceral pod. Whatever is left of them is now unrecognizable. These visceral horrors are extremely hostile, and should be avoided.</description>
+		<statBases>
+			<MoveSpeed>3</MoveSpeed>
+			<MarketValue>760</MarketValue>
+		</statBases>
+		<tools>
+			<li>
+				<label>mouth</label>
+				<capacities>
+					<li>Bite</li>
+					<li>Scratch</li>
+					<li>Cut</li>
+				</capacities>
+				<power>16</power>
+				<cooldownTime>1.6</cooldownTime>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<chanceFactor>0.5</chanceFactor>
+			</li>
+			<li>
+				<label>tentacle</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Stab</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.5</cooldownTime>
+				<linkedBodyPartsGroup>Arms</linkedBodyPartsGroup>
+				<chanceFactor>0.5</chanceFactor>
+			</li>
+		</tools>
+		<race>
+			<body>VisceralBody</body>
+			<thinkTreeMain>Animal</thinkTreeMain>
+			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+			<maxPreyBodySize>1.5</maxPreyBodySize>
+			<baseBodySize>1.2</baseBodySize>
+			<baseHungerRate>0.4</baseHungerRate>
+			<baseHealthScale>2</baseHealthScale>
+			<useMeatFrom>Visceroid</useMeatFrom>
+			<lifeStageAges>
+					<li>
+						<def>VisceralFormed</def>
+						<minAge>0</minAge>
+						<soundWounded>Pawn_Cobra_Wounded</soundWounded>
+						<soundDeath>Pawn_Cobra_Death</soundDeath>
+						<soundCall>Pawn_Cobra_Call</soundCall>
+						<soundAngry>Pawn_Cobra_Angry</soundAngry>
+					</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+	
+	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+		<defName>VisceralHorror_Human</defName>
+		<label>visceral human</label>
+		<race>VisceralHorror_Human</race>
+		<combatPower>50</combatPower>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/VisceralHorror/HumanLike/Bob</texPath>
+					<drawSize>2.5</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Pawns/WildLife/VisceralHorror/HumanLike/Bob</texPath>
+					<drawSize>2.5</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.TiberiumKindDef>
+	
+	
+	<!-- Visceral Horror | AnimalLike -->
+	<ThingDef ParentName="VisceralPawnBase">
+		<defName>VisceralHorror_Animal</defName>
+		<label>visceral animal</label>
+		<thingClass>TiberiumRim.Pawn_Visceral</thingClass>
+		<description>This animal, or whatever is left of it, has suffered inside a visceral pod. These visceral horrors are extremely hostile, and should be avoided.</description>
+		<statBases>
+			<MoveSpeed>3</MoveSpeed>
+			<MarketValue>760</MarketValue>
+		</statBases>
+		<tools>
+			<li>
+				<label>mouth</label>
+				<capacities>
+					<li>Bite</li>
+					<li>Scratch</li>
+					<li>Cut</li>
+				</capacities>
+				<power>16</power>
+				<cooldownTime>1.6</cooldownTime>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<chanceFactor>0.5</chanceFactor>
+			</li>
+			<!--
+			<li>
+				<label>back tentacle</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Stab</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>1.5</cooldownTime>
+				<linkedBodyPartsGroup>Arms</linkedBodyPartsGroup>
+				<chanceFactor>0.7</chanceFactor>
+			</li>
+			-->
+		</tools>
+		<race>
+			<body>QuadrupedAnimalWithPaws</body>
+			<thinkTreeMain>Animal</thinkTreeMain>
+			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+			<maxPreyBodySize>1.5</maxPreyBodySize>
+			<baseBodySize>1.2</baseBodySize>
+			<baseHungerRate>0.4</baseHungerRate>
+			<baseHealthScale>2</baseHealthScale>
+			<useMeatFrom>Visceroid</useMeatFrom>
+			<lifeStageAges>
+					<li>
+						<def>VisceralFormed</def>
+						<minAge>0</minAge>
+						<soundWounded>Pawn_Cobra_Wounded</soundWounded>
+						<soundDeath>Pawn_Cobra_Death</soundDeath>
+						<soundCall>Pawn_Cobra_Call</soundCall>
+						<soundAngry>Pawn_Cobra_Angry</soundAngry>
+					</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+	
+	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+		<defName>VisceralHorror_Animal</defName>
+		<label>visceral animal</label>
+		<race>VisceralHorror_Animal</race>
+		<combatPower>50</combatPower>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/VisceralHorror/AnimalLike/Berd</texPath>
+					<drawSize>2.5</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Pawns/WildLife/VisceralHorror/AnimalLike/Berd</texPath>
+					<drawSize>2.5</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.TiberiumKindDef>
+	
+	<!-- Visceral Beast -->
+	<ThingDef ParentName="VisceralPawnBase">
+		<defName>VisceralBeast</defName>
+		<label>visceral beast</label>
+		<thingClass>TiberiumRim.Pawn_Visceral</thingClass>
+		<description>This horrific being hatched from a Visceral Pod. Seems like a creature of enough biomass</description>
+		<statBases>
+			<MoveSpeed>2</MoveSpeed>
+			<MarketValue>4550</MarketValue>
+		</statBases>
+		<tools>
+			<li>
+				<label>mouth</label>
+				<capacities>
+					<li>Bite</li>
+					<li>Scratch</li>
+					<li>Cut</li>
+				</capacities>
+				<power>29</power>
+				<cooldownTime>1.6</cooldownTime>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<chanceFactor>0.5</chanceFactor>
+			</li>
+		</tools>
+		<race>
+			<body>QuadrupedAnimalWithPaws</body>
+			<thinkTreeMain>Animal</thinkTreeMain>
+			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+			<maxPreyBodySize>5</maxPreyBodySize>
+			<baseBodySize>6</baseBodySize>
+			<baseHungerRate>0.66</baseHungerRate>
+			<baseHealthScale>4</baseHealthScale>
+			<useMeatFrom>Visceroid</useMeatFrom>
+			<lifeStageAges>
+					<li>
+						<def>VisceralFormed</def>
+						<minAge>0</minAge>
+						<soundWounded>Pawn_Cobra_Wounded</soundWounded>
+						<soundDeath>Pawn_Cobra_Death</soundDeath>
+						<soundCall>Pawn_Cobra_Call</soundCall>
+						<soundAngry>Pawn_Cobra_Angry</soundAngry>
+					</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+	
+	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+		<defName>VisceralBeast</defName>
+		<label>visceral beast</label>
+		<race>VisceralBeast</race>
+		<combatPower>50</combatPower>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/VisceralHorror/Beast/Beast</texPath>
+					<drawSize>5</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Pawns/WildLife/VisceralHorror/Beast/Beast</texPath>
+					<drawSize>5</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.TiberiumKindDef>
+	
+	
+	<!-- Visceroid -->
+	<ThingDef ParentName="VisceralPawnBase">
+		<defName>Visceroid</defName>
+		<label>visceroid</label>
+		<thingClass>TiberiumRim.Visceroid</thingClass>
+		<description>A blob-like and disturbing lifeform. Formed after the death of a creature by Tiberium.</description>
+		<statBases>
+			<MoveSpeed>2</MoveSpeed>
+			<MarketValue>100</MarketValue>
+		</statBases>
+		<tools>
+			<li>
+				<label>mouth</label>
+				<capacities>
+					<li>Bite</li>
+					<li>Scratch</li>
+					<li>Cut</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>5</cooldownTime>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<chanceFactor>0.3</chanceFactor>
+			</li>
+			<li>
+				<label>tentacle</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Stab</li>
+				</capacities>
+				<power>10</power>
+				<cooldownTime>2.5</cooldownTime>
+				<linkedBodyPartsGroup>Arms</linkedBodyPartsGroup>
+				<chanceFactor>0.7</chanceFactor>
+			</li>
+		</tools>
+		<race>
+			<body>Visceroid</body>
+			<thinkTreeMain>Animal</thinkTreeMain>
+			<thinkTreeConstant>Visceroid_Constant</thinkTreeConstant>
+			<herdAnimal>true</herdAnimal>
+			<predator>true</predator>
+			<maxPreyBodySize>2.0</maxPreyBodySize>
+			<baseBodySize>1.45</baseBodySize>
+			<baseHungerRate>0.4</baseHungerRate>
+			<baseHealthScale>1</baseHealthScale>
+			<meatLabel>visceral meat</meatLabel>
+			<meatColor>(200,225,20)</meatColor>
+			<lifeStageAges>
+				<li>
+					<def>VisceralFormed</def>
+					<minAge>0</minAge>
+					<soundWounded>Pawn_Cobra_Wounded</soundWounded>
+					<soundDeath>Pawn_Cobra_Death</soundDeath>
+					<soundCall>Pawn_Cobra_Call</soundCall>
+					<soundAngry>Pawn_Cobra_Angry</soundAngry>
+				</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+	
+	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+		<defName>Visceroid</defName>
+		<label>visceroid</label>
+		<race>Visceroid</race>
+		<combatPower>50</combatPower>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Visceroid/visceroid</texPath>
+					<drawSize>1.75</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Pawns/WildLife/Visceroid/VisceroidDessicated</texPath>
+					<drawSize>1.75</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.TiberiumKindDef>
+	
+	<!-- Amalgamation -->
+	<ThingDef ParentName="VisceralPawnBase">
+		<defName>Amalgamation</defName>
+		<label>Amalgamation</label>
+		<thingClass>TiberiumRim.Visceroid</thingClass>
+		<description>A great irregular lifeform. Formed after the death of a creature by Tiberium.</description>
+		<statBases>
+			<MoveSpeed>2</MoveSpeed>
+			<MarketValue>5000</MarketValue>
+			<LeatherAmount>50</LeatherAmount>
+			<MeatAmount>50</MeatAmount>
+			<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0</ArmorRating_Sharp>
+			<ArmorRating_Heat>0.5</ArmorRating_Heat>
+		</statBases>
+		<tools>
+			<li>
+				<label>mouth</label>
+				<capacities>
+					<li>Bite</li>
+					<li>Scratch</li>
+					<li>Cut</li>
+				</capacities>
+				<power>40</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<chanceFactor>0.3</chanceFactor>
+			</li>
+			<li>
+				<label>tentacle</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Stab</li>
+				</capacities>
+				<power>30</power>
+				<cooldownTime>1.5</cooldownTime>
+				<linkedBodyPartsGroup>Arms</linkedBodyPartsGroup>
+				<chanceFactor>0.7</chanceFactor>
+			</li>
+		</tools>
+		<race>
+			<body>Visceroid</body>
+			<thinkTreeMain>Animal</thinkTreeMain>
+			<thinkTreeConstant>Visceroid_Constant</thinkTreeConstant>
+			<herdAnimal>true</herdAnimal>
+			<predator>true</predator>
+			<maxPreyBodySize>2.0</maxPreyBodySize>
+			<baseBodySize>5</baseBodySize>
+			<baseHungerRate>5</baseHungerRate>
+			<baseHealthScale>15</baseHealthScale>
+			<meatLabel>visceral meat</meatLabel>
+			<meatColor>(200,225,20)</meatColor>
+			<lifeStageAges>
+				<li>
+					<def>VisceralFormed</def>
+					<minAge>0</minAge>
+					<soundWounded>Pawn_Elephant_Injured</soundWounded>
+					<soundDeath>Pawn_Elephant_Dead</soundDeath>
+					<soundCall>Pawn_Elephant_Call</soundCall>
+					<soundAngry>Pawn_Elephant_Angry</soundAngry>
+				</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+	
+	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+		<defName>Amalgamation</defName>
+		<label>Amalgamation</label>
+		<race>Amalgamation</race>
+		<combatPower>500</combatPower>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Visceroid/Amalgamation</texPath>
+					<drawSize>4</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Pawns/WildLife/Visceroid/AmalgamationD</texPath>
+					<drawSize>4</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.TiberiumKindDef>
+	
+	<!-- Veinmonster -->
+	<ThingDef ParentName="VisceralPawnBase">
+		<defName>Veinmonster</defName>
+		<label>veinmonster</label>
+		<thingClass>TiberiumRim.VeinMonster</thingClass>
+		<description>Freshly hatched from a veiny hive these little guys will roam their veinhole's area and attack anything that comes too close. They will die if their veinhole is destroyed.</description>
+		<statBases>
+			<MoveSpeed>6</MoveSpeed>
+			<MarketValue>150</MarketValue>
+		</statBases>
+		<tools>
+			<li>
+				<label>mouth</label>
+				<capacities>
+					<li>Bite</li>
+					<li>Scratch</li>
+					<li>Cut</li>
+				</capacities>
+				<power>5</power>
+				<cooldownTime>2.5</cooldownTime>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<chanceFactor>0.5</chanceFactor>
+			</li>
+			<li>
+				<label>tentacles</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>3</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+				<chanceFactor>0.5</chanceFactor>
+			</li>
+		</tools>
+		<race>
+			<herdAnimal>true</herdAnimal>
+			<predator>true</predator>
+			<maxPreyBodySize>1.0</maxPreyBodySize>
+			<baseBodySize>1.0</baseBodySize>
+			<baseHungerRate>0.5</baseHungerRate>
+			<baseHealthScale>1</baseHealthScale>
+			<thinkTreeMain>Veinmonster</thinkTreeMain>
+			<thinkTreeConstant>Veinmonster_Constant</thinkTreeConstant>
+			<meatLabel>veiny meat</meatLabel>
+			<meatColor>(217,130,157)</meatColor>
+			<body>Veinmonster</body>	
+			<lifeStageAges>
+					<li>
+						<def>VisceralFormed</def>
+						<minAge>0</minAge>					
+						<soundWounded>Pawn_Cobra_Wounded</soundWounded>
+						<soundDeath>Pawn_Cobra_Death</soundDeath>
+						<soundCall>Pawn_Cobra_Call</soundCall>
+						<soundAngry>Pawn_Cobra_Angry</soundAngry>
+					</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+	
+	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+		<defName>Veinmonster</defName>
+		<label>Veinmonster</label>
+		<race>Veinmonster</race>
+		<combatPower>30</combatPower>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/WildLife/Veinmonster/Veinmonster</texPath>
+					<drawSize>0.8</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Pawns/WildLife/Veinmonster/VeinmonsterDessicated</texPath>
+					<drawSize>0.8</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.TiberiumKindDef>
+	
+	<!-- Vein Rock -->	
+	<ThingDef ParentName="VisceralPawnBase">
+		<defName>VeinChunk</defName>
+		<label>veiny chunk</label>
+		<thingClass>TiberiumRim.VeinChunk</thingClass>
+		<description>A vein infested chunk.</description>
+		<tools>
+			<li>
+				<label>rock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>5</cooldownTime>
+				<linkedBodyPartsGroup>VeinRockBody</linkedBodyPartsGroup>
+				<chanceFactor>0.75</chanceFactor>
+			</li>
+		</tools>
+		<statBases>
+			<MoveSpeed>0.5</MoveSpeed>
+			<MarketValue>125</MarketValue>
+			<ArmorRating_Blunt>100</ArmorRating_Blunt>
+			<ArmorRating_Sharp>100</ArmorRating_Sharp>
+			<ArmorRating_Heat>100</ArmorRating_Heat>
+		</statBases>
+		<race>
+			<thinkTreeMain>VeinRock</thinkTreeMain>
+			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+			<body>VeinRock</body>
+			<predator>false</predator>
+			<canBePredatorPrey>false</canBePredatorPrey>
+			<manhunterOnDamageChance>0.1</manhunterOnDamageChance>
+			<manhunterOnTameFailChance>0</manhunterOnTameFailChance>
+			<meatLabel>veiny meat</meatLabel>
+			<meatColor>(217,130,157)</meatColor>
+			<baseHungerRate>0</baseHungerRate>		
+			<baseHealthScale>4</baseHealthScale>
+			<lifeStageAges>
+					<li>
+						<def>VisceralFormed</def>
+						<minAge>0</minAge>					
+					</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+	
+	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+		<defName>VeinChunk</defName>
+		<label>veiny chunk</label>
+		<race>VeinChunk</race>
+		<combatPower>25</combatPower>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Items/Misc/VeinRock/VeinRock</texPath>
+					<drawSize>1</drawSize>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.TiberiumKindDef>
+	
+</Defs>

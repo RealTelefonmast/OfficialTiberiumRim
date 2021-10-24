@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Turrets -->
+
+  <Bullet_GDIStandard.label>탄환</Bullet_GDIStandard.label>
+
+  <Bullet_GDIHighVelocity.label>탄환</Bullet_GDIHighVelocity.label>
+  <Bullet_GDIHighVelocity.description>탄환</Bullet_GDIHighVelocity.description>
+
+
+  <!-- Guardian Shell Shot - Railgun version requires no projectile -->
+
+  <Bullet_Guardian.label>철갑탄</Bullet_Guardian.label>
+  <Bullet_Juggernaut.label>저거넛 고폭탄</Bullet_Juggernaut.label>
+  <Bullet_JuggernautIncendiary.label>저거넛 소이탄</Bullet_JuggernautIncendiary.label>
+  <Bullet_SonicWave.label>충격파</Bullet_SonicWave.label>
+
+
+  <!-- Held Gun -->
+
+  <Projectile_StunGrenade.label>섬광탄</Projectile_StunGrenade.label>
+  <Projectile_StunGrenade.description>섬광탄</Projectile_StunGrenade.description>
+
+  <Bullet_Mortar.label>박격포탄</Bullet_Mortar.label>
+  <Bullet_Mortar.description>박격포탄</Bullet_Mortar.description>
+
+  <Bullet_ShockShell.label>충격탄</Bullet_ShockShell.label>
+  <Bullet_ShockShell.description>충격탄</Bullet_ShockShell.description>
+
+
+
+</LanguageData>

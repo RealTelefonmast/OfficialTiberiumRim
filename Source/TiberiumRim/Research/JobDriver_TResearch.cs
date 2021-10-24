@@ -77,7 +77,7 @@ namespace TiberiumRim
             }
         }
 
-        protected override IEnumerable<Toil> MakeNewToils()
+        public override IEnumerable<Toil> MakeNewToils()
         {
             this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
             yield return Toils_Reserve.Reserve(TargetIndex.A, 1, -1, null);

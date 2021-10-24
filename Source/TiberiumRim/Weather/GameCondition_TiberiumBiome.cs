@@ -67,6 +67,11 @@ namespace TiberiumRim
             return 0f;
         }
 
+        public override WeatherDef ForcedWeather()
+        {
+            return WeatherDef.Named("TiberiumClear");
+        }
+
         public override SkyTarget? SkyTarget(Map map)
         {
             return new SkyTarget(0.85f, this.TiberiumSkyColors, 1f, 1f);

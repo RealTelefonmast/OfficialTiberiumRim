@@ -7,7 +7,8 @@ namespace TiberiumRim
 {
     public class Alert_TiberiumExposure : Alert_Critical
     {
-        protected override Color BGColor => Color.green;
+        //public override
+        public override Color BGColor => Color.green;
 
         public override void AlertActiveUpdate()
         {

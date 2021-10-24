@@ -41,25 +41,25 @@ namespace TiberiumRim
             Scribe_Deep.Look(ref Cache, "Cache", map);
         }
 
-        public RoomComponent_Atmospheric TrackerAt(IntVec3 pos)
+        public RoomComponent_Atmospheric ComponentAt(IntVec3 pos)
         {
             return PollutionComps[pos.GetRoom(map)];
         }
 
-        public RoomComponent_Atmospheric PollutionFor(District district)
+        public RoomComponent_Atmospheric ComponentAt(District district)
         {
             return PollutionComps[district.Room];
         }
 
 
-        public RoomComponent_Atmospheric PollutionFor(Room room)
+        public RoomComponent_Atmospheric ComponentAt(Room room)
         {
             return PollutionComps[room];
         }
 
         public void RegenerateOutside()
         {
-            var totalCells = Map.cellIndices.NumGridCells; //AllComps.Where(c => c.UsesOutDoorPollution).Sum(c => c.Room.CellCount) 
+            var totalCells = Map.cellIndices.NumGridCells; //AllComps.Where(c => c.IsOutdoors).Sum(c => c.Room.CellCount) 
             OutsideContainer.RegenerateData(null, totalCells);
         }
 
@@ -199,6 +199,18 @@ namespace TiberiumRim
             AllComps.Remove(comp);
             PollutionComps.Remove(comp.Room);
         }
+
+        public bool TrySpawnGasAt(IntVec3 cell, ThingDef def,  int value)
+        {
+            if (!ComponentAt(cell).CanHaveTangibleGas) return false;
+            if (cell.GetGas(Map) is SpreadingGas existingGas)
+            {
+                existingGas.AdjustSaturation(value, out _);
+                return true;
+            }
+            ((SpreadingGas)GenSpawn.Spawn(def, cell, Map)).AdjustSaturation(value, out _);
+            return true;
+        }
     }
 
     public struct CachedAtmosphereInfo : IExposable
@@ -263,7 +275,7 @@ namespace TiberiumRim
         {
             Room room = reg.Room;
             if (room == null) return;
-            SetCachedInfo(c, new CachedAtmosphereInfo(room.ID, room.CellCount, AtmosphericInfo.PollutionFor(room).ActualContainer.ValueStack));
+            SetCachedInfo(c, new CachedAtmosphereInfo(room.ID, room.CellCount, AtmosphericInfo.ComponentAt(room).ActualContainer.ValueStack));
         }
 
         public bool TryGetAtmosphericValuesForRoom(Room r, out Dictionary<NetworkValueDef, int> result)
@@ -324,7 +336,7 @@ namespace TiberiumRim
             {
                 var valueStack = atmosphericGrid[cellIndices.CellToIndex(comp.Key.Cells.First())];
                 comp.Value.ActualContainer.Container.LoadFromStack(valueStack);
-                Log.Message($"Applying on Tracker {comp.Key.ID}: {valueStack}");
+                //Log.Message($"Applying on Tracker {comp.Key.ID}: {valueStack}");
             }
             //
             /*
@@ -351,15 +363,12 @@ namespace TiberiumRim
             {
                 temporaryGrid = new NetworkValueStack[arraySize];
                 var outsideAtmosphere = AtmosphericMapInfo.OutsideContainer.Container.ValueStack;
-
                 temporaryGrid[arraySize - 1] = outsideAtmosphere;
-                Log.Message("Saving Outside Atmosphere: ...");
 
                 foreach (var roomComp in AtmosphericMapInfo.AllComps)
                 {
-                    if (roomComp.UsesOutDoorPollution) continue;
+                    if (roomComp.IsOutdoors) continue;
                     var roomAtmosphereStack = roomComp.ActualContainer.Container.ValueStack;
-                    Log.Message($"Saving RoomComp {roomComp.Room.ID}");
                     foreach (IntVec3 c2 in roomComp.Room.Cells)
                     {
                         temporaryGrid[map.cellIndices.CellToIndex(c2)] = roomAtmosphereStack;
@@ -384,10 +393,12 @@ namespace TiberiumRim
                     atmosphericGrid = new NetworkValueStack[arraySize];
                     DataSerializeUtility.LoadInt(dataBytes, arraySize, delegate(int idx, int idxValue)
                     {
+                        /*
                         if (idxValue > 0)
                         {
                             Log.Message($"Loading {idx}[{map.cellIndices.IndexToCell(idx)}]: {idxValue} ({type})");
                         }
+                        */
                         atmosphericGrid[idx] += new NetworkValueStack(type, idxValue);
                     });
                 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
@@ -21,6 +22,17 @@ namespace TiberiumRim
         private Room attachedRoom;
         private List<RoomComponent> comps = new List<RoomComponent>();
 
+        //Shared Room Data
+        private IntVec3[] borderCells = new IntVec3[]{};
+        private IntVec3[] thinRoofCells = new IntVec3[]{};
+
+        private IntVec3[] cornerCells = new IntVec3[4];
+        private IntVec3 minVec;
+        private IntVec2 size;
+
+        private Vector3 actualCenter;
+        private Vector3 drawPos;
+
         private static readonly List<Type> SubClasses = typeof(RoomComponent).AllSubclassesNonAbstract().ToList();
 
         public bool IsDisbanded => isDisbandedInt;
@@ -30,6 +42,15 @@ namespace TiberiumRim
 
         public Map Map => cachedMap;
         public Room Room => attachedRoom;
+
+        public IntVec3[] BorderCellsNoCorners => borderCells;
+        public IntVec3[] ThinRoofCells => thinRoofCells;
+
+        public IntVec3[] MinMaxCorners => cornerCells;
+        public IntVec3 MinVec => minVec;
+        public IntVec2 Size => size;
+        public Vector3 ActualCenter => actualCenter;
+        public Vector3 DrawPos => drawPos;
 
         public RoomTracker(Room room)
         {
@@ -44,24 +65,6 @@ namespace TiberiumRim
                 comp.Create(this);
                 comps.Add(comp);
             }
-        }
-
-        public HashSet<IntVec3> GetBorderCells()
-        {
-            HashSet<IntVec3> newSet = new HashSet<IntVec3>();
-            foreach (IntVec3 c in Room.Cells)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    IntVec3 cardinal = c + GenAdj.CardinalDirections[i];
-                    var region = cardinal.GetRegion(Map);
-                    if (region == null || region.Room != Room)
-                    {
-                        newSet.Add(cardinal);
-                    }
-                }
-            }
-            return newSet;
         }
 
         public T GetRoomComp<T>() where T : RoomComponent
@@ -105,6 +108,22 @@ namespace TiberiumRim
             }
         }
 
+        public void Notify_PawnEnteredRoom(Pawn pawn)
+        {
+            foreach (var comp in comps)
+            {
+                comp.Notify_PawnEnteredRoom(pawn);
+            }
+        }
+
+        public void Notify_PawnLeftRoom(Pawn pawn)
+        {
+            foreach (var comp in comps)
+            {
+                comp.Notify_PawnLeftRoom(pawn);
+            }
+        }
+
         public void Notify_Reused()
         {
             UpdateGroupData();
@@ -124,6 +143,7 @@ namespace TiberiumRim
 
         public void FinalizeApply()
         {
+            RegenerateData();
             foreach (var comp in comps)
             {
                 comp.FinalizeApply();
@@ -186,6 +206,69 @@ namespace TiberiumRim
             {
                 comp.Draw();
             }
+        }
+
+        public void RegenerateData()
+        {
+            var roomCells = Room.Cells.ToArray();
+            int minX, minZ = minX = int.MaxValue;
+            int maxX, maxZ = maxX = int.MinValue;
+            for (int i = 0; i < roomCells.Length; i++)
+            {
+                var cell = roomCells[i];
+                if (minX > cell.x)
+                {
+                    minX = cell.x;
+                    cornerCells[0] = cell;
+                }
+                if (maxX < cell.x)
+                {
+                    maxX = cell.x;
+                    cornerCells[1] = cell;
+                }
+                if (minZ > cell.z)
+                {
+                    minZ = cell.z;
+                    cornerCells[2] = cell;
+                }
+                if (maxZ < cell.z)
+                {
+                    maxZ = cell.z;
+                    cornerCells[3] = cell;
+                }
+            }
+            minVec = new IntVec3(minX, 0, minZ);
+            size = new IntVec2(maxX - minX + 1, maxZ - minZ + 1);
+            actualCenter = new Vector3(minX + (size.x / 2f), 0, minZ + (size.z / 2f));
+            drawPos = new Vector3(minX, AltitudeLayer.FogOfWar.AltitudeFor(), minZ);
+
+            //Get Roof and Border Cells
+            GenerateCellData();
+        }
+
+        private void GenerateCellData()
+        {
+            var tCells = new HashSet<IntVec3>();
+            var bCells = new HashSet<IntVec3>();
+            foreach (IntVec3 c in Room.Cells)
+            {
+                if (!Map.roofGrid.RoofAt(c)?.isThickRoof ?? false)
+                    tCells.Add(c);
+
+                for (int i = 0; i < 4; i++)
+                {
+                    IntVec3 cardinal = c + GenAdj.CardinalDirections[i];
+
+                    var region = cardinal.GetRegion(Map);
+                    if ((region == null || region.Room != Room) && cardinal.InBounds(Map))
+                    {
+                        bCells.Add(cardinal);
+                    }
+                }
+            }
+
+            borderCells = bCells.ToArray();
+            thinRoofCells = tCells.ToArray();
         }
 
         private void UpdateGroupData()

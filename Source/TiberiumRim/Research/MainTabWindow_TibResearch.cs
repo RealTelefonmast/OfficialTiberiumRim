@@ -7,12 +7,11 @@ using Verse.Sound;
 
 namespace TiberiumRim
 {
-
     public enum ResearchTabOption
     {
         Projects,
         Events,
-        Discoveries
+        Wiki
     }
 
     public class MainTabWindow_TibResearch : MainTabWindow
@@ -81,7 +80,7 @@ namespace TiberiumRim
             //esearchRoots.AddRange(DefDatabase<TResearchDef>.AllDefs.Where(t => t.requisites?.tiberiumResearch.NullOrEmpty() ?? false));
         }
 
-        protected override float Margin => 0f;
+        public override float Margin => 0f;
 
         public override Vector2 RequestedTabSize => new Vector2(1280f, 720f); //new Vector2(UI.screenWidth, UI.screenHeight * 0.6f);
 
@@ -133,8 +132,8 @@ namespace TiberiumRim
             Rect RightRect = new Rect(LeftRect.xMax, 0, rect.width - LeftRect.width, rect.height);
 
             DrawLeftPart(LeftRect.ContractedBy(10f));
-            if (SelProject != null)
-                DrawRightPart(RightRect.ContractedBy(10f));
+            if (SelProject != null && SelTab == ResearchTabOption.Projects)
+                DrawProject(RightRect.ContractedBy(10f));
 
             GUI.EndGroup();
 
@@ -162,6 +161,8 @@ namespace TiberiumRim
             var tabs = new List<TabRecord>();
             tabs.Add(new TabRecord("TR_MainTabResearch".Translate(), delegate { SelTab = ResearchTabOption.Projects; }, SelTab == ResearchTabOption.Projects));
             tabs.Add(new TabRecord("TR_MainTabEvents".Translate(), delegate { SelTab = ResearchTabOption.Events; }, SelTab == ResearchTabOption.Events));
+            tabs.Add(new TabRecord("TR_MainTabWiki".Translate(), delegate { SelTab = ResearchTabOption.Wiki; }, SelTab == ResearchTabOption.Wiki));
+            //
             TabDrawer.DrawTabs(tabRect, tabs);
 
             switch (SelTab)
@@ -172,7 +173,7 @@ namespace TiberiumRim
                 case ResearchTabOption.Events:
                     DrawEvents(menuRect.ContractedBy(5f));
                     break;
-                case ResearchTabOption.Discoveries:
+                case ResearchTabOption.Wiki:
                     DrawDiscoveries(menuRect.ContractedBy(5f));
                     break;
             }
@@ -184,7 +185,7 @@ namespace TiberiumRim
         {
             Find.WindowStack.ImmediateWindow(873459, rect, WindowLayer.GameUI, delegate
             {
-                DrawRightPart(rect.ContractedBy(10f));
+                DrawProject(rect.ContractedBy(10f));
             }, true, true, 1f);
         }
         */
@@ -287,7 +288,10 @@ namespace TiberiumRim
         // DISCOVERY MENU // WIKI
         private void DrawDiscoveries(Rect rect)
         {
+            //Draw list of all entries
 
+            //Draw entry description (with image)
+            //Draw interactive entry links
         }
 
         private Texture2D ProjectStatusTexture(ResearchState state)
@@ -306,7 +310,7 @@ namespace TiberiumRim
         }
 
         // Desc / Image / Steps-Tasks
-        private void DrawRightPart(Rect rect)
+        private void DrawProject(Rect rect)
         {
             Rect menuRect = new Rect(rect.x, rect.y + tabHeight, rect.width, rect.height - tabHeight);
             Widgets.DrawMenuSection(menuRect);
@@ -335,10 +339,8 @@ namespace TiberiumRim
             Text.Font = GameFont.Small;
             float fullTitleHeight = mainTitleHeight + subTitleHeight;
 
-            Rect DescRect = new Rect(0, fullTitleHeight, TopQuarterRect.width,
-                TopQuarterRect.height - fullTitleHeight - startButtonSize.y);
-            Rect StartButtonRect = new Rect(TopQuarterRect.xMax - (startButtonSize.x + 10), DescRect.yMax,
-                startButtonSize.x, startButtonSize.y);
+            Rect DescRect = new Rect(0, fullTitleHeight, TopQuarterRect.width, TopQuarterRect.height - fullTitleHeight - startButtonSize.y);
+            Rect StartButtonRect = new Rect(TopQuarterRect.xMax - (startButtonSize.x + 10), DescRect.yMax, startButtonSize.x, startButtonSize.y);
 
             Widgets.TextArea(DescRect, SelProject.description, true);
 

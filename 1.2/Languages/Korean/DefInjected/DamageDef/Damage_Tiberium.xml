@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumBurn.label>타이베리움 접촉</TiberiumBurn.label>
+  <TiberiumBurn.deathMessage>{0}(이)가 과도한 타이베리움 접촉에 의해 사망했습니다.</TiberiumBurn.deathMessage>
+
+  <TiberiumGas.label>타이베리움 가스</TiberiumGas.label>
+  <TiberiumGas.deathMessage>{0}(이)가 과도힌 타이베리움 가스 흡입에 의해 사망했습니다.</TiberiumGas.deathMessage>
+
+  <TRTiberiumBomb.label>타이베리움 폭발</TRTiberiumBomb.label>
+  <TRTiberiumBomb.deathMessage>{0}(이)가 타이베리움 연쇄폭발에 휘말려 죽었습니다.</TRTiberiumBomb.deathMessage>
+
+  <TRTiberiumShotGreen.label>타이베리움 파편</TRTiberiumShotGreen.label>
+  <TRTiberiumShotGreen.deathMessage>{0}(이)가 타이베리움 파편에 맞아 죽었습니다.</TRTiberiumShotGreen.deathMessage>
+
+  <TRTiberiumShotBlue.label>타이베리움 파편</TRTiberiumShotBlue.label>
+  <TRTiberiumShotBlue.deathMessage>{0}(이)가 타이베리움 파편에 맞아 죽었습니다.</TRTiberiumShotBlue.deathMessage>
+
+
+</LanguageData>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThinkTreeDef>
+		<defName>HarvesterMain</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="ThinkNode_Subtree">
+					<treeDef>Downed</treeDef>
+				</li>
+
+				<li Class="ThinkNode_Subtree">
+					<treeDef>BurningResponse</treeDef>
+				</li>
+
+				<!-- React to close melee threat -->
+				<li Class="JobGiver_ReactToCloseMeleeThreat" />
+
+				<!-- Do a queued job -->
+				<li Class="ThinkNode_QueuedJob" />
+
+				<!-- Wait if drafted -->
+				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+					<subNodes>
+						<li Class="ThinkNode_Tagger">
+							<tagToGive>DraftedOrder</tagToGive>
+							<subNodes>
+								<li Class="JobGiver_MoveToStandable" />
+								<li Class="JobGiver_Orders" />
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+
+				<!-- Idle -->
+				<li Class="ThinkNode_Tagger">
+					<tagToGive>Idle</tagToGive>
+					<subNodes>
+						<li Class="TiberiumRim.JobGiver_IdleAtRefinery"/>
+					</subNodes>
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+	
+	<ThinkTreeDef>
+		<defName>HarvesterConstant</defName>
+			<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="ThinkNode_ConditionalCanDoConstantThinkTreeJobNow">
+					<subNodes>
+						<!-- Flee From Stuff -->
+						<li Class="JobGiver_FleePotentialExplosion" />
+						<li Class="JobGiver_ConfigurableHostilityResponse"/>
+															
+						<!-- Do Work -->
+						<li Class="TiberiumRim.JobGiver_HarvestTiberium"/>	
+						<li Class="TiberiumRim.JobGiver_UnloadAtRefinery"/>
+					</subNodes>
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+  
+</Defs>

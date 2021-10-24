@@ -24,7 +24,7 @@ namespace TiberiumRim
         {
             this.building = building;
             connections = new[] { roomA, roomB };
-            connDirections = new[] { RotationFrom(building.Position - roomA.MinVec), RotationFrom(building.Position - roomB.MinVec) };
+            connDirections = new[] { RotationFrom(building.Position - roomA.Parent.MinVec), RotationFrom(building.Position - roomB.Parent.MinVec) };
             //Log.Message("Setting Connection: " + building.Position + " - " + connDirections[0].ToStringWord() + " <=> " + connDirections[1].ToStringWord());
         }
 
@@ -77,10 +77,10 @@ namespace TiberiumRim
             IsFlowing = false;
             if (!CanPass) return;
 
-            if (connections[0].UsedContainer.TryEqualize(connections[1].UsedContainer, PassPercent, out var flow))
+            if (connections[0].UsedContainer.TryEqualize(connections[1].UsedContainer, PassPercent, out var toOther))
             {
                 IsFlowing = true; 
-                flowDirection = flow > 0 ? connDirections[1].Opposite : connDirections[0].Opposite;
+                flowDirection = toOther ? connDirections[0].Opposite : connDirections[1].Opposite;
                 if (lastFlowDirection != flowDirection)
                 {
                     connections[0].Notify_FlowChanged();
@@ -122,12 +122,12 @@ namespace TiberiumRim
 
         public bool ConnectsOutside()
         {
-            return connections[0].UsesOutDoorPollution || connections[1].UsesOutDoorPollution;
+            return connections[0].IsOutdoors || connections[1].IsOutdoors;
         }
 
         public bool IsOutside()
         {
-            return connections[0].UsesOutDoorPollution && connections[1].UsesOutDoorPollution;
+            return connections[0].IsOutdoors && connections[1].IsOutdoors;
         }
 
         public override string ToString()

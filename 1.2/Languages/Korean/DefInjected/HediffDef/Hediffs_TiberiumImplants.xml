@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Hand -->
+
+  <HandSpikes.label>결정질 가시</HandSpikes.label>
+  <HandSpikes.comps.0.tools.0.label>결정질 가시</HandSpikes.comps.0.tools.0.label>
+
+
+  <!-- Whole Arm -->
+
+  <CrystalBlade.label>결정질 칼날</CrystalBlade.label>
+  <CrystalBlade.comps.0.tools.0.label>결정질 칼날</CrystalBlade.comps.0.tools.0.label>
+
+  <VisceralArm.label>촉수팔</VisceralArm.label>
+  <VisceralArm.comps.0.tools.0.label>촉수</VisceralArm.comps.0.tools.0.label>
+
+  <VisceralLeg.label>촉수다리</VisceralLeg.label>
+  <VisceralLeg.comps.0.tools.0.label>촉수</VisceralLeg.comps.0.tools.0.label>
+
+  <TiberiumEnhancedArm.label>타이베리움 강화팔</TiberiumEnhancedArm.label>
+  <TiberiumEnhancedArm.comps.0.tools.0.label>주먹</TiberiumEnhancedArm.comps.0.tools.0.label>
+  <TiberiumEnhancedArm.comps.0.tools.1.label>팔꿈치</TiberiumEnhancedArm.comps.0.tools.1.label>
+  <TiberiumEnhancedArm.labelNoun>타이베리움 강화팔</TiberiumEnhancedArm.labelNoun>
+
+  <TiberiumEnhancedLeg.label>타이베리움 강화다리</TiberiumEnhancedLeg.label>
+  <TiberiumEnhancedLeg.comps.0.tools.0.label>발</TiberiumEnhancedLeg.comps.0.tools.0.label>
+  <TiberiumEnhancedLeg.labelNoun>타이베리움 강화다리</TiberiumEnhancedLeg.labelNoun>
+
+  <TiberiumSkinSample.label>타이베리움 피부</TiberiumSkinSample.label>
+  <TiberiumSkinSample.labelNoun>타이베리움 피부</TiberiumSkinSample.labelNoun>
+
+
+</LanguageData>

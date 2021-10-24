@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--===============  ==============-->
+	<DamageDef Name="TiberiumDamage" Abstract="True">
+		<label>tiberium</label>
+		<externalViolence>false</externalViolence>
+		<hasForcefulImpact>false</hasForcefulImpact>
+		<makesBlood>false</makesBlood>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+		<canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
+		<deathMessage></deathMessage>
+		<defaultStoppingPower>0</defaultStoppingPower>
+		<defaultDamage>3</defaultDamage>
+		<defaultArmorPenetration>0</defaultArmorPenetration>
+		<hediffSkin>TiberiumBurn</hediffSkin>
+	</DamageDef>
+	
+	<DamageDef Name="TiberiumDamage_Impact" ParentName="TiberiumDamage" Abstract="True">
+		<hediff>Gunshot</hediff>
+		<impactSoundType>Bullet</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+		
+		<externalViolence>true</externalViolence>
+		<hasForcefulImpact>true</hasForcefulImpact>
+		<makesBlood>true</makesBlood>
+		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
+		<isRanged>true</isRanged>
+		
+		<deathMessage>{0} has been shot to death.</deathMessage>
+		<defaultStoppingPower>1</defaultStoppingPower>
+		<defaultDamage>5</defaultDamage>
+		<defaultArmorPenetration>2</defaultArmorPenetration>
+	</DamageDef>
+	
+  	<DamageDef Name="ProjectileBase_TR" Abstract="True">
+		<workerClass>DamageWorker_AddInjury</workerClass>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} has been shot to death.</deathMessage>
+		<hediff>Gunshot</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Bullet</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+		<overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
+		<isRanged>true</isRanged>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+	</DamageDef>
+
+</Defs>

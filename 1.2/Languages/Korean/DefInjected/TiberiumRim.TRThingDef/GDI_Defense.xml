@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TODO: Missing filter for different shells -->
+
+  <GDI_Juggernaut.label>저거넛 포탑</GDI_Juggernaut.label>
+  <GDI_Juggernaut.description>이족보행병기 저거넛의 거대한 포탑을 고정 포대에 장착한 수동식 곡사포입니다. 부정확하지만 매우 강력한 3연장포를 발사합니다.\n\n벽 너머를 공격할 수 있습니다.</GDI_Juggernaut.description>
+
+
+  <!-- Watch Tower -->
+
+  <GDI_WatchTower.label>감시 포탑</GDI_WatchTower.label>
+  <GDI_WatchTower.description>기관포를 탑재한 기본적인 방어포탑입니다.\n\n화염 공격에 취약합니다.</GDI_WatchTower.description>
+
+
+  <!-- Guardian turret -->
+
+  <GDI_Guardian.label>가디언 포탑</GDI_Guardian.label>
+  <GDI_Guardian.description>직사포를 탑재한 고급 방어포탑입니다.\n\n충분히 연구가 진행되면 무장을 레일건으로 대체할 수 있습니다.</GDI_Guardian.description>
+
+
+  <!-- Sonic Emitter -->
+
+  <GDISecurity_SonicEmitter.label>소닉 이미터</GDISecurity_SonicEmitter.label>
+  <GDISecurity_SonicEmitter.description>음파 방사기를 탑재한 최고급 방어포탑입니다. 음파 방사기는 격렬한 공명 현상을 발생시켜 사거리 내의 모든 것을 파괴합니다.</GDISecurity_SonicEmitter.description>
+
+
+  <!-- Rig Station -->
+
+  <GDI_BattleBase.label>이동형 전투기지</GDI_BattleBase.label>
+  
+<GDI_WatchTower.comps.6.fuelLabel>탄환 적재량</GDI_WatchTower.comps.6.fuelLabel>
+<GDI_WatchTower.comps.6.fuelGizmoLabel>탄환 적재량</GDI_WatchTower.comps.6.fuelGizmoLabel>
+<GDI_WatchTower.comps.6.outOfFuelMessage>작동 불능: 탄환 보급 필요</GDI_WatchTower.comps.6.outOfFuelMessage>
+<GDI_Guardian.comps.6.fuelLabel>포탄 적재량</GDI_Guardian.comps.6.fuelLabel>
+<GDI_Guardian.comps.6.fuelGizmoLabel>포탄 적재량</GDI_Guardian.comps.6.fuelGizmoLabel>
+<GDI_Guardian.comps.6.outOfFuelMessage>작동 불능: 포탄 보급 필요</GDI_Guardian.comps.6.outOfFuelMessage>
+<GDI_SonicEmitter.comps.6.fuelLabel>공명핵 내구도</GDI_SonicEmitter.comps.6.fuelLabel>
+<GDI_SonicEmitter.comps.6.fuelGizmoLabel>공명핵 내구도</GDI_SonicEmitter.comps.6.fuelGizmoLabel>
+<GDI_SonicEmitter.comps.6.outOfFuelMessage>작동 불능: 공명핵 교체 필요</GDI_SonicEmitter.comps.6.outOfFuelMessage>-->
+<GDI_Juggernaut.comps.7.fuelLabel>포탄 적재량</GDI_Juggernaut.comps.7.fuelLabel>
+<GDI_Juggernaut.comps.7.fuelGizmoLabel>포탄 적재량</GDI_Juggernaut.comps.7.fuelGizmoLabel>
+<GDI_Juggernaut.comps.7.outOfFuelMessage>작동 불능: 포탄 보급 필요</GDI_Juggernaut.comps.7.outOfFuelMessage>
+<Bullet_JuggernautBomb.label>저거넛 포탄</Bullet_JuggernautBomb.label>
+
+</LanguageData>

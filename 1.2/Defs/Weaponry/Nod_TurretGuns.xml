@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- Turrets -->
+	
+	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>Gun_NodObelisk</defName>
+		<label>obelisk gun</label>
+		<description>pew pew</description>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Obelisk/ObeliskGun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<menuHidden>true</menuHidden>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+				<beamProps>
+					<damageDef>TRLaser</damageDef>
+					<beamPath>Items/Weapons/Projectile/Bullet_ObeliskBeam</beamPath>
+					<hitEffecter>StrongBeamHit</hitEffecter>
+					<glow>
+						<glowMote>ObeliskGlow</glowMote>
+						<scale>3.5</scale>
+						<rotation>0</rotation>
+						<rotationRate>0</rotationRate>
+					</glow>
+				</beamProps>
+				<originOffsets>	
+					<li>(0,0,4.5)</li>
+				</originOffsets>
+				<hasStandardCommand>true</hasStandardCommand>
+				<requireLineOfSight>false</requireLineOfSight>
+				<warmupTime>3.5</warmupTime>
+				<minRange>2.9</minRange>
+				<range>45</range>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<chargeSound>Obelisk_Chargup</chargeSound>
+				<soundCast>Obelisk_Shot</soundCast>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>Gun_ShredderTurret</defName>
+		<label>shredder turret gun</label>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Turrets/Shredder_Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<menuHidden>true</menuHidden>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>	
+					<li>(0.25,0,0.85)</li>
+					<li>(-0.25,0,0.85)</li>
+				</originOffsets>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Shredder</defaultProjectile>
+				<warmupTime>1.5</warmupTime>
+				<range>17.9</range>
+				<burstShotCount>2</burstShotCount>
+				<ticksBetweenBurstShots>15</ticksBetweenBurstShots>
+				<soundCast>Shot_Nod_Shredder</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<consumeFuelPerShot>0.5</consumeFuelPerShot>
+			</li>
+		</verbs>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>Gun_FlameTurret</defName>
+		<label>flame turret gun</label>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Turrets/Flamer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<menuHidden>true</menuHidden>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TiberiumRim.VerbProperties_TR">
+				<verbClass>TiberiumRim.Verb_TR</verbClass>
+				<originOffsets>	
+					<li>(0,0,1.15)</li>
+				</originOffsets>
+				<shotIntervalTicks>5</shotIntervalTicks>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>
+				<warmupTime>0</warmupTime>
+				<range>17.9</range>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<soundCast>Shot_Nod_Flame</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>0</muzzleFlashScale>
+				<consumeFuelPerShot>0.2</consumeFuelPerShot>
+			</li>
+		</verbs>
+	</ThingDef>
+
+</Defs>

@@ -27,7 +27,7 @@ namespace TiberiumRim
                 //
 
                 //Register For DataBase
-                Tiberium.RegisterNewThing(__instance);
+                Tiberium.Notify_ThingSpawned(__instance);
 
                 //Updates On Structure Spawn
                 if (__instance is Building building)
@@ -113,7 +113,7 @@ namespace TiberiumRim
                 TRUtils.ResearchTargetTable().DeregisterTarget(__instance);
 
                 //Register For DataBase
-                instanceMap.Tiberium().DeregisterThing(__instance);
+                instanceMap.Tiberium().Notify_DespawnedThing(__instance);
                 return true;
             }
 
@@ -144,6 +144,35 @@ namespace TiberiumRim
                         }
                     }
                 }
+            }
+        }
+
+        //
+        [HarmonyPatch(typeof(BuildCopyCommandUtility), nameof(BuildCopyCommandUtility.FindAllowedDesignator))]
+        public static class FindAllowedDesignatorPatch
+        {
+            public static bool Prefix(BuildableDef buildable, bool mustBeVisible, ref Designator_Build __result)
+            {
+                if (buildable is TRThingDef {devObject: false} trDef)
+                {
+                    __result = StaticData.GetDesignatorFor(trDef);
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(BuildCopyCommandUtility), nameof(BuildCopyCommandUtility.BuildCommand))]
+        public static class BuildCommandPatch
+        {
+            public static bool Prefix(BuildableDef buildable, string label, string description, ref Command __result)
+            {
+                if (buildable is TRThingDef { devObject: false } trDef)
+                {
+                    __result = StaticData.GetDesignatorFor(trDef);
+                    return false;
+                }
+                return true;
             }
         }
 

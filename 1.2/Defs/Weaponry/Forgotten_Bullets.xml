@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Shard</defName>
+		<label>green tiberium shard</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_TiberiumA</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>TRTiberiumShotGreen</damageDef>
+			<damageAmountBase>4</damageAmountBase>
+			<explosionRadius>0.025</explosionRadius>
+			<preExplosionSpawnThingDef>TiberiumGreen</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.1</preExplosionSpawnChance>
+			<postExplosionSpawnThingDef>FilthTiberiumGreen</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>0.15</postExplosionSpawnChance>
+			<speed>50</speed>
+			<soundExplode>BulletImpact_Flesh</soundExplode>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_ShardB</defName>
+		<label>blue tiberium shard</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_TiberiumB</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>TRTiberiumShotBlue</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<explosionRadius>0.025</explosionRadius>
+			<preExplosionSpawnThingDef>TiberiumBlue</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.35</preExplosionSpawnChance>
+			<postExplosionSpawnThingDef>FilthTiberiumBlue</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>0.35</postExplosionSpawnChance>
+			<speed>50</speed>
+			<soundExplode>BulletImpact_Flesh</soundExplode>
+		</projectile>
+	</ThingDef>
+
+	
+</Defs>

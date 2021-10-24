@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TiberiumRim.TiberiumProducerDef Name="BlossomTreeBase" ParentName="TiberiumProducerBase" Abstract="True">
+		<statBases>
+			<MaxHitPoints>750</MaxHitPoints>
+			<Beauty>-75</Beauty>
+			<Flammability>1</Flammability>
+		</statBases>
+		<graphicData>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<extraData>
+			<rotateDrawSize>false</rotateDrawSize>
+			<alignToBottom>true</alignToBottom>
+			<drawOffset>(0,0,-0.25)</drawOffset>
+		</extraData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<size>(1,1)</size>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX">
+				<effecters>
+					<li>
+						<moteInterval>50~60</moteInterval>
+						<moteDef>Mote_GlowerParticle</moteDef>
+						<rotationRate>1</rotationRate>
+						<positionRadius>0.79</positionRadius>
+						<solidTime>1~5</solidTime>
+						<scale>0.5~0.9</scale>				
+						<angle>180</angle>
+						<speed>0.175~0.25</speed>
+						<positionOffset>(0,0,1)</positionOffset>
+					</li>
+				</effecters>
+				<moteData>
+					<northVec>
+						<li>(-0.45,0,2.1)</li>
+					</northVec>
+					<eastVec>
+						<li>(-0.45,0,2.1)</li>
+					</eastVec>
+					<southVec>
+						<li>(-0.45,0,2.1)</li>
+					</southVec>
+					<westVec>
+						<li>(0.45,0,2.1)</li>
+					</westVec>					
+					<thrower>
+						<moteDef>BlossomSmoke</moteDef>
+						<burstCount>2~3</burstCount>
+						<speed>0.75~1</speed>
+						<scale>0.75~1.25</scale>
+						<rotation>0~90</rotation>
+						<rotationRate>0.1</rotationRate>
+						<angle>-30~60</angle>
+						<affectedByWind>true</affectedByWind>
+						<moteInterval>750~1250</moteInterval>
+					</thrower>
+				</moteData>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>4</glowRadius>
+				<glowColor>(120,200,120)</glowColor>
+			</li>
+		</comps>
+		<forResearch>false</forResearch>
+		<daysToMature>5</daysToMature>
+		<leaveTiberium>false</leaveTiberium>
+		<spawner>
+			<spawnMode>Spore</spawnMode>
+			<growRadius>5</growRadius>
+			<spreadRange>14.5~18.6</spreadRange>
+			<minProgressToSpread>0.33</minProgressToSpread>
+			<spawnInterval>1250~3750</spawnInterval>
+			<sporeOffset>(0,0,1)</sporeOffset>
+		</spawner>
+	</TiberiumRim.TiberiumProducerDef>
+	
+	<TiberiumRim.TiberiumProducerDef ParentName="BlossomTreeBase">
+		<defName>BlossomTree</defName>
+		<label>blossom tree</label>
+		<description>This biological Tiberium producer is the result of tiberium exposure to plant-life.</description>
+		<graphicData>
+			<texPath>Buildings/Natural/BlossomTree/BlossomTree</texPath>
+		</graphicData>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
+		<!--
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX">
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/BlossomTree/BlossomTree_overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</data>
+						<altitude>Item</altitude>
+						<mode>Pulse</mode>
+					    <pulse>
+							<opacityRange>0.3~0.8</opacityRange>
+							<opacityDuration>120</opacityDuration>
+						</pulse>
+					</li>
+				</overlays>
+			</li>
+		</comps>
+		-->
+		<tiberiumFieldRules>
+			<floraOptions>
+				<li>
+					<things>
+						<li>TiberiumGrass,2</li>
+					</things>
+					<chance>0</chance>
+				</li>
+				<li>
+					<things>
+						<li>TiberiumShroom_Yellow,0.25</li>
+					</things>
+					<chance>0.2</chance>
+				</li>
+				<li>
+					<things>
+						<li>TiberiumBush,1.5</li>
+					</things>
+					<chance>0.3</chance>
+				</li>
+				<li>
+					<things>
+						<li>TiberiumShroom_Yellow,3</li>
+						<li>TiberiumShroom_Blue,3</li>
+					</things>
+					<chance>0.45</chance>
+				</li>
+				<li>
+					<things>
+						<li>TiberiumTree,4</li>
+					</things>
+					<chance>0.65</chance>
+				</li>
+				<!--
+				<li>
+					<things>
+						<li>SmallBlossom,6</li>
+					</things>
+					<chance>0.7</chance>
+				</li>
+				-->
+			</floraOptions>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_AllSoil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumPodSoil, 0.92</li>
+						<li>TiberiumSoilGreen, 0.08</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Moss</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumPodSoil, 0.2</li>
+						<li>TiberiumMossyTerrainGreen, 0.8</li>
+					</toTerrain>
+				</li>
+			</terrainRules>
+			<crystalOptions>
+				<li>TiberiumPod</li>
+			</crystalOptions>
+			<corruptionCurve>
+				<points>
+					<li>(0, 0)</li>
+					<li>(0.25,0.8)</li>
+					<li>(0.5, 1)</li>
+					<li>(0.7, 0.8)</li>
+					<li>(1, 0)</li>
+				</points>
+			</corruptionCurve>
+			<corruptionRadius>18</corruptionRadius>
+		</tiberiumFieldRules>
+		<spore>
+			<spawnInterval>30000~90000</spawnInterval>
+			<blossoms>
+				<li>SmallBlossom,0.75</li>
+				<li>AlocasiaBlossom,0.75</li>
+			</blossoms>
+		</spore>
+	</TiberiumRim.TiberiumProducerDef>
+	
+	<TiberiumRim.TiberiumProducerDef ParentName="BlossomTreeBase">
+		<defName>BlueBlossomTree</defName>
+		<label>blue blossom tree</label>
+		<description>This biological Tiberium producer is the result of tiberium exposure to plant-life.</description>
+		<graphicData>
+			<texPath>Buildings/Natural/BlossomTree/BlossomTreeBlue</texPath>
+		</graphicData>
+		<filthLeaving>FilthTiberiumBlue</filthLeaving>
+		<!--
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX">
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Natural/BlossomTree/BlossomTreeBlue_overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</data>
+						<altitude>Item</altitude>
+						<mode>Pulse</mode>
+					    <pulse>
+							<opacityRange>0.3~0.8</opacityRange>
+							<opacityDuration>120</opacityDuration>
+						</pulse>
+					</li>
+				</overlays>
+			</li>
+		</comps>
+		-->
+		<tiberiumFieldRules>
+			<floraOptions>
+				<li>
+					<things>
+						<li>TiberiumGrass,0.25</li>
+						<li>TiberiumGrass_Blue,1</li>
+					</things>
+					<chance>0</chance>
+				</li>
+				<li>
+					<things>
+						<li>TiberiumBush,1</li>
+					</things>
+					<chance>0.15</chance>
+				</li>
+				<li>
+					<things>
+						<li>TiberiumShroom_Purple,2</li>
+						<li>TiberiumShroom_Blue,1.75</li>
+					</things>
+					<chance>0.45</chance>
+				</li>
+				<li>
+					<things>
+						<li>TiberiumTree,2</li>
+					</things>
+					<chance>0.65</chance>
+				</li>
+				<!--
+				<li>
+					<things>
+						<li>SmallBlossom,3</li>
+					</things>
+					<chance>0.7</chance>
+				</li>
+				<li>
+					<things>
+						<li>AlocasiaBlossom,4</li>
+					</things>
+					<chance>0.8</chance>
+				</li>
+				-->
+			</floraOptions>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_AllSoil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumPodSoilBlue, 0.8</li>
+						<li>TiberiumSoilBlue, 0.2</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Moss</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumPodSoilBlue, 0.2</li>
+						<li>TiberiumMossyTerrainBlue, 0.8</li>
+					</toTerrain>
+				</li>
+			</terrainRules>
+			<crystalOptions>
+				<li>TiberiumPodBlue</li>
+			</crystalOptions>
+			<corruptionCurve>
+				<points>
+					<li>(0, 1)</li>
+					<li>(0.8, 0.85)</li>
+					<li>(1, 0)</li>
+				</points>
+			</corruptionCurve>
+			<corruptionRadius>19</corruptionRadius>
+		</tiberiumFieldRules>
+		<spore>
+			<spawnInterval>30000~90000</spawnInterval>
+			<blossoms>
+				<li>SmallBlossom,0.65</li>
+				<li>AlocasiaBlossom,0.85</li>
+			</blossoms>
+		</spore>
+	</TiberiumRim.TiberiumProducerDef>
+	
+	<TiberiumRim.TiberiumProducerDef Name="SmallBlossomBase" ParentName="BlossomTreeBase" Abstract="True">
+		<thingClass>TiberiumRim.TiberiumBlossom</thingClass>
+		<statBases>
+			<MaxHitPoints>400</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>	
+		<extraData Inherit="False">
+			<rotateDrawSize>false</rotateDrawSize>
+			<alignToBottom>true</alignToBottom>
+		</extraData>
+		<comps Inherit="False"/>
+		<forResearch>false</forResearch>
+		<daysToMature>1.5</daysToMature>		
+		<spawner>
+			<spawnMode>Spore</spawnMode>
+			<growRadius>4.25</growRadius>
+			<spreadRange>2~5</spreadRange>
+			<spawnInterval>1250~3750</spawnInterval>
+			<sporeOffset>(0,0,1)</sporeOffset>
+		</spawner>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
+	</TiberiumRim.TiberiumProducerDef>
+		
+	<TiberiumRim.TiberiumProducerDef ParentName="SmallBlossomBase">
+		<defName>AlocasiaBlossom</defName>
+		<label>alocasia candentis</label>
+		<description>This small mutated plant is part of Tiberium's terraforming abilities, acting as a biological Tiberium producer, spreading toxic spores through the air.\n While extremely toxic, the wide leafs and dark blue colors make it quite a sight to find.</description>
+		<statBases>
+			<MaxHitPoints>360</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Buildings/Natural/BlossomTree/Blossoms/Alocasia</texPath>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<extraData Inherit="False">
+			<alignToBottom>false</alignToBottom>
+		</extraData>
+		<comps Inherit="False">
+			<li Class="TiberiumRim.CompProperties_FX">
+				<effecters>
+					<li>
+						<moteInterval>50~80</moteInterval>
+						<moteDef>Mote_GlowerParticle</moteDef>
+						<rotationRate>1</rotationRate>
+						<positionRadius>0.36</positionRadius>
+						<scale>0.5~0.8</scale>				
+						<angle>0~360</angle>
+						<speed>0.15~0.3</speed>
+					</li>
+				</effecters>
+			</li>
+		</comps>
+		<tiberiumFieldRules>
+			<floraOptions>
+				<li>
+					<things>
+						<li>TiberiumGrass,1</li>
+						<li>TiberiumGrass_Blue,0.75</li>
+					</things>
+					<chance>0</chance>
+				</li>
+				<li>
+					<things>
+						<li>TiberiumShroom_Yellow,1.5</li>
+						<li>TiberiumShroom_Blue,1.5</li>
+						<li>TiberiumShroom_Purple,1</li>
+					</things>
+					<chance>0.35</chance>
+				</li>
+				<!--
+				<li>
+					<things>
+						<li>SmallBlossom,2</li>
+					</things>
+					<chance>0.65</chance>
+				</li>
+				<li>
+					<things>
+						<li>AlocasiaBlossom,1.25</li>
+					</things>
+					<chance>0.85</chance>
+				</li>
+				-->
+			</floraOptions>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_AllSoil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumPodSoil, 0.5</li>
+						<li>TiberiumPodSoilBlue, 0.5</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Moss</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumMossyTerrainBlue, 0.5</li>
+						<li>TiberiumMossyTerrainGreen, 0.5</li>
+					</toTerrain>
+				</li>
+			</terrainRules>
+			<crystalOptions>
+				<li>TiberiumPodBlue</li>
+				<li>TiberiumPod</li>
+			</crystalOptions>
+			<corruptionRadius>16.9</corruptionRadius>
+		</tiberiumFieldRules>		
+	</TiberiumRim.TiberiumProducerDef>
+	
+	<TiberiumRim.TiberiumProducerDef ParentName="SmallBlossomBase">
+		<defName>SmallBlossom</defName>
+		<label>blossom</label>
+		<description>A smaller version of the blossom tree, this tiberium blossom acts as a catalyst to quickly cover a wide range of the map with tiberium life.</description>
+		<statBases>
+			<MaxHitPoints>450</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Buildings/Natural/BlossomTree/Blossoms/B</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>(2.5,2.5)</drawSize>
+			<drawRotated>false</drawRotated>
+		</graphicData>
+		<extraData Inherit="False">
+			<alignToBottom>true</alignToBottom>
+			<drawRotatedOverride>false</drawRotatedOverride>
+		</extraData>
+		<spawner>
+			<growRadius>5.79</growRadius>
+			<spreadRange>2~4.5</spreadRange>
+			<spawnInterval>0</spawnInterval>
+		</spawner>
+		<tiberiumFieldRules>
+			<floraOptions>
+				<li>
+					<things>
+						<li>TiberiumGrass,1</li>
+						<li>TiberiumBush,1</li>
+					</things>
+					<chance>0</chance>
+				</li>
+				<li>
+					<things>
+						<li>TiberiumShroom_Yellow,1.5</li>
+						<li>TiberiumShroom_Blue,1.5</li>
+					</things>
+					<chance>0.55</chance>
+				</li>
+				<!--
+				<li>
+					<things>
+						<li>AlocasiaBlossom,5</li>
+					</things>
+					<chance>0.8</chance>
+				</li>
+				-->
+			</floraOptions>
+			<terrainRules>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_AllSoil</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumPodSoil</li>
+					</toTerrain>
+				</li>
+				<li>
+					<filter>
+						<filterDef>TerrainFilter_Moss</filterDef>
+					</filter>
+					<toTerrain>
+						<li>TiberiumMossyTerrainGreen</li>
+					</toTerrain>
+				</li>
+			</terrainRules>
+		</tiberiumFieldRules>	
+	</TiberiumRim.TiberiumProducerDef>
+	
+</Defs>

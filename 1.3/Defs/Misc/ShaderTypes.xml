@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TRShaderTypeDef> 
+		<defName>TextureBlend</defName>
+		<shaderPath>TextureBlend</shaderPath>
+	</TiberiumRim.TRShaderTypeDef>
+	
+	<TiberiumRim.TRShaderTypeDef> 
+		<defName>MaskedFlowMap</defName>
+		<shaderPath>MaskedFlowMap</shaderPath>
+	</TiberiumRim.TRShaderTypeDef>
+	
+	<TiberiumRim.TRShaderTypeDef> 
+		<defName>SimpleBlend</defName>
+		<shaderPath>SimpleBlend</shaderPath>
+	</TiberiumRim.TRShaderTypeDef>
+	
+	<TiberiumRim.TRShaderTypeDef> 
+		<defName>MultiStepBlend</defName>
+		<shaderPath>MultiStepBlend</shaderPath>
+	</TiberiumRim.TRShaderTypeDef>
+  
+  	<TiberiumRim.TRShaderTypeDef> 
+		<defName>RadialBlur</defName>
+		<shaderPath>RadialBlur</shaderPath>
+	</TiberiumRim.TRShaderTypeDef>
+  
+</Defs>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <BlossomTree.label>녹색 포자나무</BlossomTree.label>
+  <BlossomTree.description>괴상하게 생긴 식물입니다. 때때로 원시적인 녹색 결정을 퍼뜨리는 것 같습니다.</BlossomTree.description>
+
+  <BlueBlossomTree.label>청색 포자나무</BlueBlossomTree.label>
+  <BlueBlossomTree.description>괴상하게 생긴 식물입니다. 때때로 원시적인 청색 결정을 퍼뜨리는 것 같습니다.</BlueBlossomTree.description>
+
+  <AlocasiaBlossom.label>포자꽃</AlocasiaBlossom.label>
+  <AlocasiaBlossom.description>이 돌연변이 식물은 광범위한 영역에 타이베리움 변이 인자를 흩뿌립니다.</AlocasiaBlossom.description>
+
+  <SmallBlossom.label>포자기둥</SmallBlossom.label>
+  <SmallBlossom.description>포자나무의 작은 버전인 포자기둥은 광범위한 영역에 타이베리움 변이 인자를 흩뿌립니다.</SmallBlossom.description>
+
+
+</LanguageData>

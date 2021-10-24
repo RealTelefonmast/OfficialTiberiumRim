@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- OBELISK OF LIGHT -->
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_Beam</defName>
+		<thingClass>TiberiumRim.Mote_Beam</thingClass>
+		<graphicData>
+			<texPath>Things/Mote/PowerBeam</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>ObeliskGlow</defName>
+		<graphicData>
+			<texPath>Motes/Fog/ObeliskGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>0.1</fadeInTime>
+			<solidTime>0.1</solidTime>
+			<fadeOutTime>1</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_Arc</defName>
+		<thingClass>TiberiumRim.Mote_Arc</thingClass>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+	</ThingDef>
+	
+	<ThingDef Abstract = "True" Name="DistortionShockwaveBase" ParentName="MoteBase_TR">
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<mote>
+			<fadeInTime>0.05</fadeInTime>
+			<fadeOutTime>1</fadeOutTime>
+			<solidTime>0.5</solidTime>
+			<growthRate>2</growthRate>
+		</mote>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderType>MoteGlowDistortBackground</shaderType>
+			<shaderParameters>
+				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
+				<_distortionIntensity>0.05</_distortionIntensity>
+				<_brightnessMultiplier>1.15</_brightnessMultiplier>
+			</shaderParameters>
+			<drawSize>2</drawSize>
+		</graphicData>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>SonicEmitterWave</defName>
+		<graphicData>
+			<texPath>Things/Mote/PowerBeam</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>4.8</solidTime>
+			<fadeOutTime>0.1</fadeOutTime>
+			<growthRate>25</growthRate>
+		</mote>
+	</ThingDef>
+	
+	<!-- EXPLOSIONS -->
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_BlastSound</defName>
+		<graphicData>
+			<texPath>Motes/SoundMote</texPath> 
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.15</fadeInTime>
+			<solidTime>0.15</solidTime>
+			<fadeOutTime>0.5</fadeOutTime>
+			<growthRate>2</growthRate>
+		</mote>
+		<drawOffscreen>true</drawOffscreen>
+	</ThingDef>
+
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_BlastWave</defName>
+		<graphicData>
+			<texPath>Motes/SoundMote</texPath> 
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.15</fadeInTime>
+			<solidTime>0.75</solidTime>
+			<fadeOutTime>1.5</fadeOutTime>
+			<growthRate>0.75</growthRate>
+		</mote>
+		<drawOffscreen>true</drawOffscreen>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_Nuke</defName>
+		<graphicData>
+			<texPath>Motes/Gas</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>4</fadeInTime>
+			<solidTime>0</solidTime>
+			<fadeOutTime>8</fadeOutTime>
+			<growthRate>0.8</growthRate>
+		</mote>
+		<drawOffscreen>true</drawOffscreen>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_NukePostEffect</defName>
+		<graphicData>
+			<texPath>Motes/Gas</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>4</fadeInTime>
+			<solidTime>0</solidTime>
+			<fadeOutTime>10</fadeOutTime>
+			<growthRate>0.6</growthRate>
+		</mote>
+		<drawOffscreen>true</drawOffscreen>
+	</ThingDef>
+	
+	
+	<!-- ION CANNON -->
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>IonBeamBurn</defName>
+		<graphicData>
+			<texPath>Things/Mote/PowerBeam</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>0</fadeInTime>
+			<solidTime>1</solidTime>
+			<fadeOutTime>0.25</fadeOutTime>
+			<growthRate>-6</growthRate>
+		</mote>
+	</ThingDef>
+	
+	
+	<!-- Ion Bubble is 5 seconds alive -->
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>IonDistortionBubble</defName>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>4</solidTime>
+			<fadeOutTime>0.25</fadeOutTime>
+			<growthRate>0</growthRate>
+		</mote>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderType>MoteGlowDistortBackground</shaderType>
+			<shaderParameters>
+				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
+				<_distortionIntensity>0.1</_distortionIntensity>
+				<_brightnessMultiplier>1.15</_brightnessMultiplier>
+			</shaderParameters>
+			<drawSize>2</drawSize>
+		</graphicData>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>IonCenterDistortionBubble</defName>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>4</solidTime>
+			<fadeOutTime>0.25</fadeOutTime>
+			<growthRate>0</growthRate>
+		</mote>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderType>MoteGlowDistortBackground</shaderType>
+			<shaderParameters>
+				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
+				<_distortionIntensity>1</_distortionIntensity>
+				<_brightnessMultiplier>2</_brightnessMultiplier>
+			</shaderParameters>
+			<drawSize>2</drawSize>
+		</graphicData>
+	</ThingDef>
+	
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>IonBubble</defName>
+		<graphicData>
+			<texPath>Things/Mote/PowerBeam</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<drawSize>6</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>4</solidTime>
+			<fadeOutTime>0.25</fadeOutTime>
+			<growthRate>0</growthRate>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="DistortionShockwaveBase">
+		<defName>IonExplosionShockwave</defName>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<mote>
+			<fadeInTime>0</fadeInTime>
+			<solidTime>0.5</solidTime>
+			<fadeOutTime>1</fadeOutTime>
+			<growthRate>2</growthRate>
+		</mote>
+		<graphicData>
+			<shaderParameters>
+				<_distortionIntensity>0.5</_distortionIntensity>
+				<_brightnessMultiplier>2</_brightnessMultiplier>
+			</shaderParameters>
+			<drawSize>3</drawSize>
+		</graphicData>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>IonBurnMark</defName>
+		<graphicData>
+			<texPath>Things/Mote/PowerBeam</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<color>(255,240,200.200)</color>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>2</solidTime>
+			<fadeOutTime>10</fadeOutTime>
+			<growthRate>0</growthRate>
+		</mote>
+	</ThingDef>
+	
+	
+	<!---->
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_ScrinCut</defName>
+		<graphicData>
+			<texPath>Motes/ScrinCut</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.15</fadeInTime>
+			<solidTime>0.75</solidTime>
+			<fadeOutTime>1.5</fadeOutTime>
+			<growthRate>0.75</growthRate>
+		</mote>
+		<drawOffscreen>true</drawOffscreen>
+	</ThingDef>	
+
+</Defs>

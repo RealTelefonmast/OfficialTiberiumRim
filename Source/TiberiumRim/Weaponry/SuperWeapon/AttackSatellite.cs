@@ -46,6 +46,7 @@ namespace TiberiumRim
             startPos = !ShouldMove ? Find.WorldGrid.GetTileCenter(Tile) : MovingPos;
             endPos = Find.WorldGrid.GetTileCenter(tileDest);
             travelPct = 0;
+
             travelTicks = (int)Find.WorldGrid.ApproxDistanceInTiles(GenMath.SphericalDistance(startPos.normalized, endPos.normalized)) * 60;
         }
 

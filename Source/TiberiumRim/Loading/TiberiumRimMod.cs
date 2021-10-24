@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 using RimWorld;
@@ -13,14 +14,21 @@ namespace TiberiumRim
     {
         //Static Data
         public static TiberiumRimMod mod;
-        public static AssetBundle assetBundle;
-        public static AssetBundle MainBundle;
         private static Harmony tiberium;
 
         //
         public TiberiumSettings settings;
 
         public static Harmony Tiberium => tiberium ??= new Harmony("telefonmast.tiberiumrim");
+
+        public AssetBundle MainBundle
+        {
+            get
+            {
+                string mainBundlePath = Path.Combine(Content.RootDir, @"Materials\Shaders\tiberiumrimbundle");
+                return AssetBundle.LoadFromFile(mainBundlePath);
+            }
+        }
 
         public TiberiumRimMod(ModContentPack content) : base(content)
         {
@@ -36,17 +44,18 @@ namespace TiberiumRim
             base.WriteSettings();
         }
 
+        /*
         public void LoadAssetBundles()
         {
-            string path2 = Path.Combine(Content.RootDir, @"Materials\Shaders\tiberiumrimbundle");
-            MainBundle = AssetBundle.LoadFromFile(path2);
-            TiberiumContent.LoadFromMainAssetPack(MainBundle);
+            string mainBundlePath = Path.Combine(Content.RootDir, @"Materials\Shaders\tiberiumrimbundle");
+            TRContentDatabase.SetBundle(AssetBundle.LoadFromFile(mainBundlePath));
 
-            string path = Path.Combine(Content.RootDir, @"Materials\Shaders\shaderbundle");
-            assetBundle = AssetBundle.LoadFromFile(path);
-            TiberiumContent.AlphaShader = (Shader)assetBundle.LoadAsset("AlphaShader");
-            TiberiumContent.AlphaShaderMaterial = (Material)assetBundle.LoadAsset("ShaderMaterial");
+            //string path = Path.Combine(Content.RootDir, @"Materials\Shaders\shaderbundle");
+            //assetBundle = AssetBundle.LoadFromFile(path);
+            //TiberiumContent.AlphaShader = (Shader)assetBundle.LoadAsset("AlphaShader");
+            //TiberiumContent.AlphaShaderMaterial = (Material)assetBundle.LoadAsset("ShaderMaterial");
         }
+        */
 
         public void PatchPawnDefs()
         {

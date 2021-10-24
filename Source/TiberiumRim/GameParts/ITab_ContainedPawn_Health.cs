@@ -28,7 +28,7 @@ namespace TiberiumRim
             }
         }
 
-        protected override void FillTab()
+        public override void FillTab()
         {
             Pawn pawnForHealth = this.PawnForHealth;
             if (pawnForHealth == null) return;

@@ -74,18 +74,19 @@ namespace TiberiumRim
             }
         }
 
-        public bool TryEqualize(AtmosphericContainer other, float passPercent, out float flowAmount)
+        public bool TryEqualize(AtmosphericContainer other, float passPercent, out bool toOther)
         {
-            flowAmount = 0f;
+            toOther = false;
             var diff = (Saturation - other.Saturation);
-            if (!(Math.Abs(diff) > 0.01f)) return false;
+            var diffAbs = Math.Abs(diff);
+            if (!(diffAbs > 0.01f)) return false;
 
-            flowAmount = AtmosphericMapInfo.CELL_CAPACITY * diff * passPercent;
-            float partValue = flowAmount / Container.AllStoredTypes.Count;
-            foreach (var type in Container.AllStoredTypes)
-            {
-                Container.TryTransferTo(other.Container, type, partValue);
-            }
+            toOther = diff > 0;
+            var sendingContainer = toOther ? Container : other.Container;
+            var receivingContainer = toOther ? other.Container : Container;
+            var partCount = sendingContainer.ValueStack.networkValues.Length;
+            //flowAmount = AtmosphericMapInfo.CELL_CAPACITY * diffAbs * passPercent;
+            sendingContainer.TryTransferTo(receivingContainer, (AtmosphericMapInfo.CELL_CAPACITY * diffAbs * passPercent) / partCount);
             return true;
         }
     }

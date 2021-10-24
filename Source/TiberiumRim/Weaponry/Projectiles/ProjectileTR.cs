@@ -15,7 +15,7 @@ namespace TiberiumRim
             base.SpawnSetup(map, respawningAfterLoad);
         }
 
-        protected override void Impact(Thing hitThing)
+        public override void Impact(Thing hitThing)
         {
             if (Props != null)
             {

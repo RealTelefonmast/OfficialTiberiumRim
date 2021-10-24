@@ -40,7 +40,7 @@ namespace TiberiumRim
             base.TabUpdate();
         }
 
-        protected override void CloseTab()
+        public override void CloseTab()
         {
             base.CloseTab();
         }
@@ -51,7 +51,7 @@ namespace TiberiumRim
             TiberiumBillUtility.Clipboard = null;
         }
 
-        protected override void FillTab()
+        public override void FillTab()
         {
             Text.Font = GameFont.Small;
             Rect mainRect = new Rect(0, 24, WinSize.x, WinSize.y - 24).ContractedBy(10);

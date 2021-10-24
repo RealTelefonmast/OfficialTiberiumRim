@@ -10,7 +10,7 @@ namespace TiberiumRim
             closeOnClickedOutside = true;
         }
 
-        protected override float Margin => 0f;
+        public override float Margin => 0f;
 
         public override Vector2 InitialSize => new Vector2(400f, 500f);
 

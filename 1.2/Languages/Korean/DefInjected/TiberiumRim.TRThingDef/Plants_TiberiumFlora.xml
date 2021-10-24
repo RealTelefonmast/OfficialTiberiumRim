@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumGrass.label>포자덤불</TiberiumGrass.label>
+  <TiberiumGrass.description>타이베리움 환경에서만 발견되는 괴상한 식물입니다. 살아있는 것처럼 꿈틀거립니다.</TiberiumGrass.description>
+
+  <TiberiumGrass_Blue.label>포자덤불</TiberiumGrass_Blue.label>
+  <TiberiumGrass_Blue.description>타이베리움 환경에서만 발견되는 괴상한 식물입니다. 살아있는 것처럼 꿈틀거립니다.</TiberiumGrass_Blue.description>
+
+  <TiberiumBush.label>포자과육</TiberiumBush.label>
+  <TiberiumBush.description>타이베리움 환경에서만 발견되는 괴상한 식물입니다.</TiberiumBush.description>
+
+  <TiberiumShroom_Yellow.label>타이베리움 버섯</TiberiumShroom_Yellow.label>
+  <TiberiumShroom_Yellow.description>타이베리움 환경에서만 발견되는 버섯입니다. 괴상한 방사성 빛을 내뿜습니다.</TiberiumShroom_Yellow.description>
+
+  <TiberiumShroom_Blue.label>타이베리움 버섯</TiberiumShroom_Blue.label>
+  <TiberiumShroom_Blue.description>타이베리움 환경에서만 발견되는 버섯입니다. 괴상한 방사성 빛을 내뿜습니다.</TiberiumShroom_Blue.description>
+
+  <TiberiumShroom_Purple.label>타이베리움 버섯</TiberiumShroom_Purple.label>
+  <TiberiumShroom_Purple.description>타이베리움 환경에서만 발견되는 버섯입니다. 괴상한 방사성 빛을 내뿜습니다.</TiberiumShroom_Purple.description>
+
+
+  <!-- Expeller, does the expelling -->
+
+  <TiberiumExpeller.label>타이베리움 증기균열</TiberiumExpeller.label>
+  <TiberiumExpeller.description>!</TiberiumExpeller.description>
+
+  <TiberiumTree.label>오염된 나무</TiberiumTree.label>
+  <TiberiumTree.description>타이베리움에 오염되었지만 특별히 위험해 보이지는 않는 나무입니다.</TiberiumTree.description>
+
+  <DeadTiberiumTree.label>죽은 나무</DeadTiberiumTree.label>
+  <DeadTiberiumTree.description>말라죽은 나무입니다.</DeadTiberiumTree.description>
+
+
+</LanguageData>

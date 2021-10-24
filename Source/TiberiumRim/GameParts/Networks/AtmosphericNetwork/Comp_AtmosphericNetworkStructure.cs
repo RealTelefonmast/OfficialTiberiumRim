@@ -29,8 +29,6 @@ namespace TiberiumRim
         {
             base.CompTick();
         }
-
-
     }
 
     public class CompProperties_ANS : CompProperties_NetworkStructure

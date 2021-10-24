@@ -1,4 +1,8 @@
-﻿using Verse;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using HarmonyLib;
+using Verse;
 
 namespace TiberiumRim
 {
@@ -22,6 +26,17 @@ namespace TiberiumRim
         public NetworkMapInfo NetworkInfo;
         public MapPawnInfo MapPawnInfo; // Currently infected pawns, animals, colonists, visitors, etc
 
+        public DangerMapInfo DangerInfo;
+
+        public GeneralDataMapInfo GeneralDataInfo;
+
+        public DynamicDataCacheInfo DynamicDataInfo;
+
+
+        public GlowGridGPUInfo GlowGridGPUInfo;
+
+        public GasGridInfo GasGridInfo;
+
         public RoomMapInfo RoomInfo;
 
         // Artificial
@@ -35,18 +50,30 @@ namespace TiberiumRim
         public MapComponent_Tiberium(Map map) : base(map)
         {
             StaticData.Notify_NewTibMapComp(this);
-            TiberiumInfo = new TiberiumMapInfo(map);
-            FloraInfo = new TiberiumFloraMapInfo(map);
+
+            //Nature
+            //TODO: Combine Into One Info "Environment"
             TerrainInfo = new TiberiumTerrainInfo(map);
+            FloraInfo = new TiberiumFloraMapInfo(map);
+            TiberiumInfo = new TiberiumMapInfo(map);
+            AtmosphericInfo = new AtmosphericMapInfo(map);
+            GasGridInfo = new GasGridInfo(map);
+            DangerInfo = new DangerMapInfo(map);
+
             NaturalTiberiumStructureInfo = new TiberiumStructureInfo(map);
             StructureCacheInfo = new StructureCacheMapInfo(map);
+            //Technology
+            HarvesterInfo = new HarvesterMapInfo(map);
+            SuppressionInfo = new SuppressionMapInfo(map);
             NetworkInfo = new NetworkMapInfo(map);
-            AtmosphericInfo = new AtmosphericMapInfo(map);
+
+            //MetaData
             MapPawnInfo = new MapPawnInfo(map);
             RoomInfo = new RoomMapInfo(map);
+            DynamicDataInfo = new DynamicDataCacheInfo(map);
+            GeneralDataInfo = new GeneralDataMapInfo(map);
 
-            SuppressionInfo = new SuppressionMapInfo(map);
-            HarvesterInfo = new HarvesterMapInfo(map);
+            GlowGridGPUInfo = new GlowGridGPUInfo(map);
 
             TiberiumAffecter = new TiberiumAffecter(map);
             TiberiumSpreader = new TiberiumSpreader(map);
@@ -60,11 +87,15 @@ namespace TiberiumRim
                 FloraInfo.InfoInit();
             if (!TerrainInfo.HasBeenInitialized)
                 TerrainInfo.InfoInit();
+
+            LongEventHandler.QueueLongEvent(ThreadSafeFinalize, string.Empty, false, null, false);
         }
 
-        public void TiberiumMapInterfaceUpdate()
+        public void ThreadSafeFinalize()
         {
-            TiberiumAffecter.HediffGrid.Update();
+            GasGridInfo.SafeInit();
+            DynamicDataInfo.SafeInit();
+            GlowGridGPUInfo.SafeInit();
         }
 
         public override void MapGenerated()
@@ -121,12 +152,25 @@ namespace TiberiumRim
             }
         }
 
+        public void TiberiumMapInterfaceUpdate()
+        {
+            TiberiumAffecter.HediffGrid.Update();
+        }
+
+        public void CustomCellSteadyEffect(IntVec3 c)
+        {
+            GasGridInfo.CellSteadyEffect(c);
+        }
+
         public override void MapComponentUpdate()
         {
             base.MapComponentUpdate();
             //AtmosphericInfo.Update();
             AtmosphericInfo.Draw();
             RoomInfo.Draw();
+            NetworkInfo.Draw();
+            GasGridInfo.Draw();
+
             if (DrawBool)
             {
                 TiberiumInfo.Draw();
@@ -149,16 +193,23 @@ namespace TiberiumRim
             SuppressionInfo.Tick();
             TiberiumAffecter.Tick();
             TiberiumSpreader.Tick();
+            GasGridInfo.Tick();
         }
 
         public bool TiberiumAvailable => TiberiumInfo.TiberiumCrystals[HarvestType.Valuable].Count > 0;
 
         public bool MossAvailable => TiberiumInfo.TiberiumCrystals[HarvestType.Unvaluable].Count > 0;
 
-        public void RegisterNewThing(Thing thing)
+        public void Notify_ThingSpawned(Thing thing)
         {
-            if(thing.def is TRThingDef def)
+            //Update MetaData
+            DynamicDataInfo.Notify_ThingSpawned(thing);
+
+            if (thing.def is TRThingDef def)
+            {
                 StructureCacheInfo.RegisterPart(def.TRGroup, thing);
+            }
+
             if (thing is IAtmosphericSource source)
             {
                 //TODO
@@ -166,10 +217,16 @@ namespace TiberiumRim
             }
         }
 
-        public void DeregisterThing(Thing thing)
+        public void Notify_DespawnedThing(Thing thing)
         {
+            //Update MetaData
+            DynamicDataInfo.Notify_ThingDespawned(thing);
+
             if (thing.def is TRThingDef def)
+            {
                 StructureCacheInfo.DeregisterPart(def.TRGroup, thing);
+            }
+
             if (thing is IAtmosphericSource source)
             {
                 //TODO

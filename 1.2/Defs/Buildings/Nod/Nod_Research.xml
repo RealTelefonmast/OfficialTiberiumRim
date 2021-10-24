@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+		<defName>Nod_Shrine</defName>
+		<label>shrine</label>
+		<description>Nod's advanced research facility. The shrine of the brotherhood.</description>
+		<factionDesignation>Nod</factionDesignation>
+		<TRCategory>Misc</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Misc/Shrine/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5.5,6.875)</drawSize>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
+		<size>(5,4)</size>
+		<minifiedDef />
+		<thingCategories Inherit="false" />
+		<rotatable>false</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.5</fillPercent>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+		</building>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconPath>Buildings/Nod/Misc/Shrine/Base</uiIconPath>
+		<uiIconScale>1.25</uiIconScale>
+	    <canOverlapZones>false</canOverlapZones>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<statBases>
+			<MaxHitPoints>750</MaxHitPoints>
+			<WorkToBuild>2500</WorkToBuild>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<costList>
+			<Nod_CarbonPlate>10</Nod_CarbonPlate>
+			<ComponentIndustrial>5</ComponentIndustrial>
+			<Gold>25</Gold>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>200</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</TiberiumRim.TRThingDef>
+	
+</Defs>

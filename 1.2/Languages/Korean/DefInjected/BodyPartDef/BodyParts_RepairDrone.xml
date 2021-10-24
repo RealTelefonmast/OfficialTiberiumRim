@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <DroneGrid.label>드론 격자</DroneGrid.label>
+  <DroneBrain.label>인공지능 칩</DroneBrain.label>
+  <DroneEye.label>시각 센서</DroneEye.label>
+  <DroneCircuit.label>회로</DroneCircuit.label>
+  <DroneTools.label>조작팔</DroneTools.label>
+  <DroneWelder.label>용접기</DroneWelder.label>
+  <DroneCutter.label>절단기</DroneCutter.label>
+  <Drone_Turbine.label>추진기</Drone_Turbine.label>
+
+
+</LanguageData>

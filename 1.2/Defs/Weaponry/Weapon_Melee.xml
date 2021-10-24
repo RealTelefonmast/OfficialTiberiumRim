@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+		<defName>GDI_Wrench</defName>
+		<label>Wrench</label>
+		<description>An Engineer's wrench, improves work speed.</description>
+		<graphicData>
+			<texPath>Items/Weapons/GDI/Wrench</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>4500</WorkToMake>
+			<Mass>0.75</Mass>
+		</statBases>
+		<costList>
+			<GDI_ReinforcedPlate>5</GDI_ReinforcedPlate>
+			<Steel>75</Steel>
+		</costList>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<recipeMaker>
+			<recipeUsers>
+				<li>GDI_Factory</li>
+			</recipeUsers>
+		</recipeMaker>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>5</power>
+				<cooldownTime>1.6</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>10.7</power>
+				<cooldownTime>1.8</cooldownTime>
+			</li>
+		</tools>
+		<equippedStatOffsets>
+			<WorkSpeedGlobal>0.25</WorkSpeedGlobal>
+		</equippedStatOffsets>
+	</ThingDef>
+
+</Defs>

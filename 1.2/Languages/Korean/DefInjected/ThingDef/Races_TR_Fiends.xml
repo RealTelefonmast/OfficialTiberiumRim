@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumFiend.label>타이베리움 늑대</TiberiumFiend.label>
+  <TiberiumFiend.description>타이베리움 악마라는 이름으로 더 잘 알려져 있습니다. 환경에 적응한 포유류 중 가장 표준적인 형태입니다. 무리를 짓는 경우가 많고, 지능적이며, 모피와 발톱은 대부분 결정화되어 있습니다.</TiberiumFiend.description>
+  <TiberiumFiend.tools.0.label>왼쪽 발톱</TiberiumFiend.tools.0.label>
+  <TiberiumFiend.tools.1.label>오른쪽 발톱</TiberiumFiend.tools.1.label>
+  <TiberiumFiend.tools.3.label>머리</TiberiumFiend.tools.3.label>
+  <TiberiumFiend_Leather.label>타이베리움 악마 가죽</TiberiumFiend_Leather.label>
+  <TiberiumFiend_Leather.description>타이베리움 악마 가죽</TiberiumFiend_Leather.description>
+  <TiberiumFiend_Leather.stuffProps.stuffAdjective>타이베리움 악마 가죽</TiberiumFiend_Leather.stuffProps.stuffAdjective>
+  <TiberiumFiend_Meat.label>오염된 고기</TiberiumFiend_Meat.label>
+  <TiberiumFiend_Meat.description>오염된 고기</TiberiumFiend_Meat.description>
+  <TiberiumFiend_Corpse.label>타이베리움 늑대 시체</TiberiumFiend_Corpse.label>
+  <TiberiumFiend_Corpse.description>타이베리움 늑대의 시체.</TiberiumFiend_Corpse.description>
+
+  <Spiner.label>스피너</Spiner.label>
+  <Spiner.description>돼지처럼 생긴 사나운 돌연변이 생물입니다. 척추 전체가 타이베리움으로 강화되어 있습니다.</Spiner.description>
+  <Spiner.tools.0.label>왼쪽 발톱</Spiner.tools.0.label>
+  <Spiner.tools.1.label>오른쪽 발톱</Spiner.tools.1.label>
+  <Spiner_Leather.label>스피너 가죽</Spiner_Leather.label>
+  <Spiner_Leather.description>스피너 가죽</Spiner_Leather.description>
+  <Spiner_Leather.stuffProps.stuffAdjective>스피너 가죽</Spiner_Leather.stuffProps.stuffAdjective>
+  <Spiner_Meat.label>스피너 고기</Spiner_Meat.label>
+  <Spiner_Meat.description>스피너 고기</Spiner_Meat.description>
+  <Spiner_Corpse.label>스피너 시체</Spiner_Corpse.label>
+  <Spiner_Corpse.description>스피너의 시체.</Spiner_Corpse.description>
+
+  <SmallTiberiumFiend.label>타이베리움 여우</SmallTiberiumFiend.label>
+  <SmallTiberiumFiend.description>타이베리움 환경에 적응한 육식성 포유류입니다. 덩치는 작지만 아주 사납습니다.</SmallTiberiumFiend.description>
+  <SmallTiberiumFiend.tools.0.label>왼쪽 발톱</SmallTiberiumFiend.tools.0.label>
+  <SmallTiberiumFiend.tools.1.label>오른쪽 발톱</SmallTiberiumFiend.tools.1.label>
+  <SmallTiberiumFiend_Leather.label>타이베리움 여우 가죽</SmallTiberiumFiend_Leather.label>
+  <SmallTiberiumFiend_Leather.description>타이베리움 여우 가죽</SmallTiberiumFiend_Leather.description>
+  <SmallTiberiumFiend_Leather.stuffProps.stuffAdjective>타이베리움 여우 가죽</SmallTiberiumFiend_Leather.stuffProps.stuffAdjective>
+  <SmallTiberiumFiend_Meat.label>타이베리움 여우 고기</SmallTiberiumFiend_Meat.label>
+  <SmallTiberiumFiend_Meat.description>타이베리움 여우 고기</SmallTiberiumFiend_Meat.description>
+  <SmallTiberiumFiend_Corpse.label>타이베리움 여우 시체</SmallTiberiumFiend_Corpse.label>
+  <SmallTiberiumFiend_Corpse.description>타이베리움 여우의 시체.</SmallTiberiumFiend_Corpse.description>
+
+
+</LanguageData>

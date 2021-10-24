@@ -20,7 +20,7 @@ namespace TiberiumRim
             //this.blueprint = new MechBlueprint("Pawns/Common/Harvester/Blueprint/Harvester");
         }
 
-        protected override void FillTab()
+        public override void FillTab()
         {
 
         }

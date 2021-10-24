@@ -5,12 +5,12 @@ namespace TiberiumRim
 {
     public class DamageWorker_Pressure : DamageWorker_AddInjury
     {
-        protected override BodyPartRecord ChooseHitPart(DamageInfo dinfo, Pawn pawn)
+        public override BodyPartRecord ChooseHitPart(DamageInfo dinfo, Pawn pawn)
         {
             return base.ChooseHitPart(dinfo, pawn);
         }
 
-        protected override void ExplosionDamageThing(Explosion explosion, Thing t, List<Thing> damagedThings, List<Thing> ignoredThings, IntVec3 cell)
+        public override void ExplosionDamageThing(Explosion explosion, Thing t, List<Thing> damagedThings, List<Thing> ignoredThings, IntVec3 cell)
         {
             base.ExplosionDamageThing(explosion, t, damagedThings, ignoredThings, cell);
         }

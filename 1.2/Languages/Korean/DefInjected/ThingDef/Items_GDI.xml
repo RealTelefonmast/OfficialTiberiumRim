@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <IonCannonBeacon.label>이온캐논 신호기</IonCannonBeacon.label>
+  <IonCannonBeacon.description>설치된 위치에 이온캐논 공격 명령을 내릴 수 있는 기기입니다.</IonCannonBeacon.description>
+
+  <IonCannonBeacon_Placed.label>설치된 이온캐논 신호기</IonCannonBeacon_Placed.label>
+  <IonCannonBeacon_Placed.description>곧 이온캐논 공격이 시작됩니다.</IonCannonBeacon_Placed.description>
+
+  <GDI_SonicCore.label>음파 공명핵</GDI_SonicCore.label>
+  <GDI_SonicCore.description>변경의 기술력으로는 정밀한 음파 공명 기술을 완전히 제어하기 어렵습니다. 오직 공명핵만이 그것을 가능케 합니다.</GDI_SonicCore.description>
+
+
+</LanguageData>

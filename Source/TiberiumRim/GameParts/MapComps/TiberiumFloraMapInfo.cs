@@ -47,7 +47,10 @@ namespace TiberiumRim
 
         public override void Tick()
         {
-
+            foreach (var garden in gardens)
+            {
+                garden.GardenTick();
+            }
         }
 
         public override void Draw()

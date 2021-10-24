@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 
@@ -8,6 +9,8 @@ namespace TiberiumRim
     {
         private static Pawn Volkov;
 
+        //TODO: Reimplement
+        /*
         public static Pawn GenerateVolkovCyborg(Map map)
         {
             Pawn volkov = GenerateVolkov(map);
@@ -109,6 +112,11 @@ namespace TiberiumRim
                 KindDef = RedAlertDefOf.Chitzkoi,
             };
             return PawnGenerator.GeneratePawn(request);
+        }
+        */
+        public static Thing GenTemp()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

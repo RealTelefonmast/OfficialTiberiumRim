@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <HarvesterHusk_Common.label>수확기 잔해</HarvesterHusk_Common.label>
+  <HarvesterHusk_Common.description>파괴된 수확기의 잔해입니다. 해체하면 약간의 자원을 얻을 수 있습니다.</HarvesterHusk_Common.description>
+
+  <HarvesterHusk_GDI.label>수확기 잔해</HarvesterHusk_GDI.label>
+  <HarvesterHusk_GDI.description>파괴된 수확기의 잔해입니다. 해체하면 약간의 자원을 얻을 수 있습니다.</HarvesterHusk_GDI.description>
+
+  <HarvesterHusk_Nod.label>수확기 잔해</HarvesterHusk_Nod.label>
+  <HarvesterHusk_Nod.description>파괴된 수확기의 잔해입니다. 해체하면 약간의 자원을 얻을 수 있습니다.</HarvesterHusk_Nod.description>
+
+
+</LanguageData>

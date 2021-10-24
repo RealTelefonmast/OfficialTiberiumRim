@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.NetworkDef>
+		<defName>ChemicalNetwork</defName>
+		<containerLabel>Chemical Storage</containerLabel>
+		<controllerDef>TiberiumNetworkController</controllerDef>
+		<transmitter>TiberiumPipe</transmitter>
+		<transmitterGraphic>
+			<texPath>Buildings/Common/Network/Pipe_Tib</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</transmitterGraphic>
+		<overlayGraphic>
+			<texPath>Buildings/Common/Network/Pipe_Tib_SelOverlay</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MetaOverlay</shaderType>
+			<color>(0, 255, 155)</color>
+		</overlayGraphic>
+	</TiberiumRim.NetworkDef>
+	
+	<TiberiumRim.NetworkValueDef>
+		<defName>Carbon</defName>
+		<label>C</label>
+		<valueColor>(144,144,144)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+	
+	<TiberiumRim.NetworkValueDef>
+		<defName>Phosphorus</defName>
+		<label>P</label>
+		<valueColor>(255,128,0)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+	<TiberiumRim.NetworkValueDef>
+		<defName>Calcium</defName>
+		<label>Ca</label>
+		<valueColor>(61,255,0)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+	
+	<TiberiumRim.NetworkValueDef>
+		<defName>Iron</defName>
+		<label>Fe</label>
+		<valueColor>(224,102,51)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+	<TiberiumRim.NetworkValueDef>
+		<defName>Copper</defName>
+		<label>Cu</label>
+		<valueColor>(200,128,51</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+	<TiberiumRim.NetworkValueDef>
+		<defName>Silicon</defName>
+		<label>Si</label>
+		<valueColor>(240,200,160</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+	<TiberiumRim.NetworkValueDef>
+		<defName>Exotic</defName>
+		<label>EX</label>
+		<valueColor>(85,9,96</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+</Defs>

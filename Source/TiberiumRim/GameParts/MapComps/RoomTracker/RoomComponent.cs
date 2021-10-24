@@ -1,10 +1,12 @@
-﻿using Verse;
+﻿using System.Collections.Generic;
+using Verse;
 
 namespace TiberiumRim
 {
     public abstract class RoomComponent
     {
         private RoomTracker parent;
+        protected HashSet<Pawn> containedPawns;
 
         public RoomTracker Parent => parent;
         public Map Map => Parent.Map;
@@ -13,6 +15,7 @@ namespace TiberiumRim
         public virtual void Create(RoomTracker parent)
         {
             this.parent = parent;
+            containedPawns = new HashSet<Pawn>();
         }
 
         public virtual void Disband(RoomTracker parent, Map map) { }
@@ -23,14 +26,20 @@ namespace TiberiumRim
         public virtual void Notify_ThingSpawned(Thing thing) {}
         public virtual void Notify_ThingDespawned(Thing thing) { }
 
+        public virtual void Notify_PawnEnteredRoom(Pawn pawn)
+        {
+            containedPawns.Add(pawn);
+        }
+
+        public virtual void Notify_PawnLeftRoom(Pawn pawn)
+        {
+            containedPawns.Remove(pawn);
+        }
+
         public virtual void PreApply() { }
 
         public virtual void FinalizeApply()
         {
-            foreach (var thing in Room.ContainedAndAdjacentThings)
-            {
-                Notify_ThingSpawned(thing);
-            }
         }
 
         public virtual void CompTick() { }

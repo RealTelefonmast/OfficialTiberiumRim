@@ -47,19 +47,15 @@ namespace TiberiumRim
             tibSprayer = new IntermittenFleckSprayer(this, delegate
             {
                 TR_FleckMaker.ThrowTiberiumAirPuff(this.TrueCenter(), Map);
+                
                 if (Find.TickManager.TicksGame % 20 == 0)
                 {
                     depositValue--;
                     GenTemperature.PushHeat(this, 40f);
-                    var cell = this.OccupiedRect().RandomCell;
-                    if (cell.GetGas(Map) is SpreadingGas spreadGas)
-                    {
-                        spreadGas.AdjustSaturation(Rand.Range(500, 1000), out _);
-                        return;
-                    }
-                    var gas = (SpreadingGas)GenSpawn.Spawn(ThingDef.Named("Gas_TiberiumGas"), cell, Map);
-                    gas.AdjustSaturation(Rand.Range(500, 1000), out _);
+                    var cell = this.OccupiedRect().ExpandedBy(1).RandomCell;
+                    TiberiumComp.AtmosphericInfo.TrySpawnGasAt(cell, ThingDef.Named("Gas_TiberiumGas"), Rand.Range(500, 1000));
                 }
+                
             }, StartSpray, EndSpray);
             if (respawningAfterLoad) return;
 
@@ -151,8 +147,20 @@ namespace TiberiumRim
                 defaultLabel = "Make Gas",
                 action = delegate
                 {
-                    makePollutionGas = !makePollutionGas;
+                    foreach (var cel in this.OccupiedRect().ExpandedBy(1))
+                    {
+                        Map.Tiberium().GasGridInfo.SetValue(cel);
+                    }
+                    //makePollutionGas = !makePollutionGas;
                     //Map.Tiberium().AtmosphericInfo.AddDirect(Position.RandomAdjacentCell8Way(), 100);
+                }
+            };
+            yield return new Command_Action()
+            {
+                defaultLabel = "Do Spread",
+                action = delegate
+                {
+                    Map.Tiberium().GasGridInfo.DoSpreadOnce();
                 }
             };
         }

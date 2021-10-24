@@ -23,6 +23,8 @@ namespace TiberiumRim
         public static TiberiumTerrainDef TiberiumStoneBlue;
 
         // Water
+        public static TiberiumTerrainDef BlueTiberiumWater;
+
         public static TiberiumTerrainDef TiberiumShallowWater;
         public static TiberiumTerrainDef TiberiumShallowMovingWater;
         public static TiberiumTerrainDef TiberiumDeepWater;

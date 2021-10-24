@@ -69,7 +69,7 @@ namespace TiberiumRim
 
         public bool IsBeam => Props.beamProps != null;
 
-        protected override int ShotsPerBurst => this.verbProps.burstShotCount;
+        public override int ShotsPerBurst => this.verbProps.burstShotCount;
 
         protected float GunRotation
         {
@@ -173,7 +173,7 @@ namespace TiberiumRim
             Props.tiberiumCostPerBurst?.DoPayWith(TiberiumComp);
         }
 
-        protected override bool TryCastShot()
+        public override bool TryCastShot()
         {
             var flag = IsBeam ? TryCastBeam() : TryCastProjectile();
 

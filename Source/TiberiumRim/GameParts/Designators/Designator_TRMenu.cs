@@ -90,9 +90,9 @@ namespace TiberiumRim
                 GUI.BeginGroup(menuRect);
                 FactionSideBar(3);
                 Rect extraDes = new Rect(2, menuRect.height - 75, iconSize, iconSize);
-                DrawDesignator(extraDes, new Designator_Deconstruct());
+                DrawDesignator(extraDes, DesignatorUtility.FindAllowedDesignator<Designator_Deconstruct>());
                 extraDes.y = extraDes.yMax + 5;
-                DrawDesignator(extraDes, new Designator_Cancel());
+                DrawDesignator(extraDes, DesignatorUtility.FindAllowedDesignator<Designator_Cancel>());
                 Rect DesignatorRect = new Rect(iconSize + sideMargin, 0f, menuRect.width - (iconSize + sideMargin), menuRect.height);
                 GUI.BeginGroup(DesignatorRect);
                 var subCats = SelectedFaction.subCategories;
@@ -211,7 +211,7 @@ namespace TiberiumRim
             {
                 if (!def.ConstructionOptionDiscovered)
                     def.ConstructionOptionDiscovered = true;
-                mouseOverGizmo = new Designator_BuildFixed(def);
+                mouseOverGizmo = StaticData.GetDesignatorFor(def);
                 Text.Anchor = TextAnchor.UpperCenter;
                 Widgets.Label(rect, def.LabelCap);
                 Text.Anchor = 0;

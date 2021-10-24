@@ -6,8 +6,8 @@ namespace TiberiumRim
     [StaticConstructorOnStartup]
     public class GameComponent_TR : GameComponent
     {
-        private static GameObject RootHolder;
-        public TiberiumRoot MainRoot;
+        private static readonly GameObject RootHolder;
+        public readonly TiberiumRoot MainRoot;
 
         public ActionCompositionHolder ActionCompositionHolder;
         public TiberiumUpdateManager UpdateManager;

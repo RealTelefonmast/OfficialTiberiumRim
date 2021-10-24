@@ -6,7 +6,7 @@ namespace TiberiumRim
 {
     public class JobGiver_IdleAtRefinery : ThinkNode_JobGiver
     {
-        protected override Job TryGiveJob(Pawn pawn)
+        public override Job TryGiveJob(Pawn pawn)
         {
             //If Harvester has refinery, idle at refiner
             //If Refinery lost, and none available to change to, wait for a refinery to appear, or orders
@@ -36,7 +36,7 @@ namespace TiberiumRim
 
         private Harvester Harvester => pawn as Harvester;
 
-        protected override IEnumerable<Toil> MakeNewToils()
+        public override IEnumerable<Toil> MakeNewToils()
         {
             yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.InteractionCell);
             Toil idle = new Toil();

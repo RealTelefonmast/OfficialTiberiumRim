@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <HediffDef>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defName>TibInEyes</defName>
+    <label>tiberium dust</label>
+    <labelNoun>tiberium dust</labelNoun>
+	<description>Oh that must hurt, someone kicked tiberium dust into this pawn's eyes!</description>
+    <battleStateLabel>blind</battleStateLabel>
+    <maxSeverity>1</maxSeverity>
+    <stages>
+      <li>
+        <partEfficiencyOffset>-0.75</partEfficiencyOffset>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_SelfHeal">
+        <healAmount>0.02</healAmount>
+      </li>
+    </comps>
+  </HediffDef>
+  
+</Defs>

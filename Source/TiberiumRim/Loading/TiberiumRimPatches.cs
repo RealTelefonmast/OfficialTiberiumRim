@@ -14,14 +14,17 @@ using MapInterface = RimWorld.MapInterface;
 
 namespace TiberiumRim
 {
+
     [StaticConstructorOnStartup]
     public static class TiberiumRimPatches
     {
         static TiberiumRimPatches()
         {
             Log.Message("[TiberiumRim] - Startup Init");
-            TiberiumRimMod.Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI"),new HarmonyMethod(typeof(TiberiumRimPatches), "BackgroundOnGUIPatch"));
-            
+            TiberiumRimMod.Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI"),
+                new HarmonyMethod(typeof(TiberiumRimPatches), "BackgroundOnGUIPatch"));
+
+            //Manual Harmony Patches
             /*
             TiberiumRimMod.Tiberium.Patch(
             typeof(SymbolResolver_RandomMechanoidGroup).GetMethods(BindingFlags.NonPublic | BindingFlags.Static)
@@ -32,17 +35,16 @@ namespace TiberiumRim
             nameof(TiberiumRimPatches.MechanoidsFixerAncient)));
             */
 
-            TiberiumRimMod.mod.LoadAssetBundles();
+            //Manual C# XML-Def Patches
             TiberiumRimMod.mod.PatchPawnDefs();
 
-            var allinci = DefDatabase<IncidentDef>.AllDefs;
-            allinci.Where(c => c.letterDef == LetterDefOf.NeutralEvent);
-            allinci.Where(c => c.letterDef == LetterDefOf.NeutralEvent);
-
-            foreach (var incidentDef in DefDatabase<IncidentDef>.AllDefs)
+            /*
+            Log.Message("TibAssets:");
+            foreach (var asset in TRContentDatabase.TiberiumBundle.GetAllAssetNames())
             {
-                
+                Log.Message($" - {asset}");
             }
+            */
         }
 
         /*
@@ -62,22 +64,15 @@ namespace TiberiumRim
         [HarmonyPatch(typeof(Page_CreateWorldParams)), HarmonyPatch("DoWindowContents")]
         public static class WindowContentsPatch
         {
-            //private static MethodInfo changeMethod = AccessTools.Method(typeof(WindowContentsPatch), nameof(ChangeTiberiumCoverage));
-            //private static MethodInfo callOperand = AccessTools.Method(typeof(GUI), nameof(GUI.EndGroup));
+            static readonly MethodInfo changeMethod = AccessTools.Method(typeof(WindowContentsPatch), nameof(ChangeTiberiumCoverage));
+            static readonly MethodInfo callOperand = AccessTools.Method(typeof(GUI), nameof(GUI.EndGroup));
 
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
-                MethodInfo changeMethod = AccessTools.Method(typeof(WindowContentsPatch), nameof(ChangeTiberiumCoverage));
-                MethodInfo callOperand = AccessTools.Method(typeof(GUI), nameof(GUI.EndGroup));
-
-                Log.Message("Patching 'DoWindowContents' of 'Page_CreateWorldParams'");
-
                 foreach (var code in instructions)
                 {
-                    //Log.Message($"Checking {code.opcode} with operand {code.operand}");
                     if (code.opcode == OpCodes.Call && code.Calls(callOperand))
                     {
-                        Log.Message($"Checking {code.opcode} with operand {code.operand}");
                         yield return new CodeInstruction(OpCodes.Ldloc_S, 6);
                         yield return new CodeInstruction(OpCodes.Ldloc_S, 7);
 
@@ -201,29 +196,6 @@ namespace TiberiumRim
         }
 
         //Control Patches
-        [HarmonyPatch(typeof(WorldSelector))]
-        [HarmonyPatch("HandleWorldClicks")]
-        public static class HandleWorldClicksPatch
-        {
-            public static bool Prefix(WorldSelector __instance)
-            {
-                if (Event.current.type == EventType.MouseDown)
-                {
-                    if (Event.current.button == 1 && __instance.NumSelectedObjects > 0)
-                    {
-                        WorldObject obj = __instance.FirstSelectedObject;
-                        if (obj is AttackSatellite asat)
-                        {
-                            asat.SetDestination(GenWorld.MouseTile(false));
-                            Event.current.Use();
-                            return false;
-                        }
-                    }
-                }
-                return true;
-            }
-        }
-
         [HarmonyPatch(typeof(Selector))]
         [HarmonyPatch("HandleMapClicks")]
         public static class HandleMapClicksPatch
@@ -234,7 +206,7 @@ namespace TiberiumRim
                 {
                     if (Event.current.type == EventType.MouseDown)
                     {
-                        List<object> selected = Traverse.Create(__instance).Field("selected").GetValue<List<object>>();
+                        List<object> selected = __instance.selected;;
                         if (Event.current.button == 1)
                         {
                             //TODO: Mech needs to select what to do
@@ -568,7 +540,7 @@ namespace TiberiumRim
         [HarmonyPatch(typeof(PawnRenderer)), HarmonyPatch("DrawEquipmentAiming")]
         public static class DrawEquipmentAimingPatch
         {
-            private static MethodInfo injection = AccessTools.Method(typeof(DrawEquipmentAimingPatch), nameof(RenderInjection));
+            static readonly MethodInfo injection = AccessTools.Method(typeof(DrawEquipmentAimingPatch), nameof(RenderInjection));
            
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
@@ -583,7 +555,6 @@ namespace TiberiumRim
                         yield return new CodeInstruction(OpCodes.Call, injection);
                         continue;
                     }
-
                     yield return code;
                 }
             }
@@ -622,7 +593,7 @@ namespace TiberiumRim
                 if (!renderBody || bodyDrawType == RotDrawMode.Dessicated)
                     return;
 
-                Pawn pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
+                Pawn pawn = __instance.pawn;
                 var renderComp = pawn.GetComp<Comp_CrystalDrawer>();
                 var drawerComp = pawn.GetComp<Comp_PawnExtraDrawer>();
                 if (drawerComp == null)
@@ -946,8 +917,7 @@ namespace TiberiumRim
             public static void Postfix(RoofGrid __instance, IntVec3 c)
             {
                 //Suppression Field Logic
-                Map map = Traverse.Create(__instance).Field("map").GetValue<Map>();
-                var suppression = map.Tiberium().SuppressionInfo;
+                var suppression = __instance.map.Tiberium().SuppressionInfo;
                 if (suppression.IsInSuppressionCoverage(c, out List<Comp_Suppression> sups))
                 {
                     suppression.MarkDirty(sups);
@@ -1121,7 +1091,7 @@ namespace TiberiumRim
         {
             public static void Postfix()
             {
-                Traverse.Create(typeof(ThingSetMaker_Meteorite)).Field("nonSmoothedMineables").GetValue<List<ThingDef>>().RemoveAll(t => t is TRThingDef);
+                ThingSetMaker_Meteorite.nonSmoothedMineables.RemoveAll(t => t is TRThingDef);
             }
         }
 

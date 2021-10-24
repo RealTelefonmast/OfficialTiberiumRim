@@ -31,7 +31,7 @@ namespace TiberiumRim
             base.DoBottomButtons(rect, "Start".Translate(), null, null, true, false);
         }
 
-        protected override bool CanDoNext()
+        public override bool CanDoNext()
         {
             if (!base.CanDoNext())
                 return false;
@@ -39,7 +39,7 @@ namespace TiberiumRim
             return true;
         }
 
-        protected override void DoNext()
+        public override void DoNext()
         {
             base.DoNext();
         }

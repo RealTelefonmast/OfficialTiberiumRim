@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumMutation.label>타이베리움 변이</TiberiumMutation.label>
+  <TiberiumMutation.description>A health effect.</TiberiumMutation.description>
+
+
+  <!-- Mutation -->
+
+  <MutationBuff.label>Symbiotic PLACEHOLDER</MutationBuff.label>
+  <MutationBuff.description>A health effect.</MutationBuff.description>
+
+  <MutationDebuff.label>Visceral PLACEHOLDER</MutationDebuff.label>
+  <MutationDebuff.description>A health effect.</MutationDebuff.description>
+
+  <TiberiumImmunity.label>타이베리움 면역력</TiberiumImmunity.label>
+  <TiberiumImmunity.description>A health effect.</TiberiumImmunity.description>
+  <TiberiumImmunity.labelNoun>타이베리움 면역력</TiberiumImmunity.labelNoun>
+
+
+  <!-- Inside -->
+
+  <ViscousPart.label>Viscous {0}</ViscousPart.label>
+  <ViscousPart.description>A health effect.</ViscousPart.description>
+
+
+  <!-- Outside -->
+
+  <VisceralBlister.label>blistered part</VisceralBlister.label>
+  <VisceralBlister.description>A health effect.</VisceralBlister.description>
+
+
+</LanguageData>

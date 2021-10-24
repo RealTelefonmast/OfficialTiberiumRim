@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!--
+	<FactionDef ParentName="FactionBase">
+		<defName>SovjetFaction</defName>
+		<label>sovjets</label>
+		<pawnSingular>sovjet</pawnSingular>
+		<pawnsPlural>sovjets</pawnsPlural>
+		<categoryTag>Ancient</categoryTag>
+		<requiredCountAtGameStart>1</requiredCountAtGameStart>
+		<fixedName>Sovjets</fixedName>
+		<factionIconPath>World/WorldObjects/Expanding/Sites/DownedRefugee</factionIconPath>
+		<techLevel>Spacer</techLevel>
+		<backstoryFilters>
+			<li>
+				<categories>
+					<li>Offworld</li>
+				</categories>
+			</li>
+		</backstoryFilters>
+		<hidden>true</hidden>
+		<autoFlee>false</autoFlee>
+		<geneticVariance>1</geneticVariance>
+
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Synthread</li>
+				<li>Hyperweave</li>
+				<li>Plasteel</li>
+			</thingDefs>
+		</apparelStuffFilter>
+	</FactionDef>
+	-->
+</Defs>

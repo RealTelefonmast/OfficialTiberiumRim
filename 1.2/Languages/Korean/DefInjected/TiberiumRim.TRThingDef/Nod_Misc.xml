@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Nod_PowerConduit.label>레이저 펄스 케이블</Nod_PowerConduit.label>
+  <Nod_PowerConduit.description>노드 표준 전선. 벽이나 건물 아래에도 설치할 수 있습니다. 불에 타지 않습니다.</Nod_PowerConduit.description>
+
+  <Light_Nod.label>노드의 빛</Light_Nod.label>
+  <Light_Nod.description>노드 추종자들은 시뻘건 조명을 선호합니다. 멋지긴 하지만 눈건강에는 좋지 않을 것이 틀림없습니다.</Light_Nod.description>
+
+  <NodWallLight.label>노드의 빛</NodWallLight.label>
+  <NodWallLight.description>노드 추종자들은 시뻘건 조명을 선호합니다. 멋지긴 하지만 눈건강에는 좋지 않을 것이 틀림없습니다.</NodWallLight.description>
+
+
+</LanguageData>

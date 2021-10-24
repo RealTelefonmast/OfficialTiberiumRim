@@ -7,7 +7,7 @@ namespace TiberiumRim
 {
     public class ThinkNode_ConditionalRepair : ThinkNode_Conditional
     {
-        protected override bool Satisfied(Pawn pawn)
+        public override bool Satisfied(Pawn pawn)
         {
             var drone = pawn as RepairDrone;
             var comp = drone.parentComp;
@@ -18,7 +18,7 @@ namespace TiberiumRim
 
     public class JobGiver_RepairDroneReturn : ThinkNode_JobGiver
     {
-        protected override Job TryGiveJob(Pawn pawn)
+        public override Job TryGiveJob(Pawn pawn)
         {
             var jobDef = DefDatabase<JobDef>.GetNamed("ReturnFromRepair");
             var drone = pawn as RepairDrone;
@@ -37,7 +37,7 @@ namespace TiberiumRim
             return true;
         }
 
-        protected override IEnumerable<Toil> MakeNewToils()
+        public override IEnumerable<Toil> MakeNewToils()
         {
             yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.OnCell);
             Toil repair = new Toil();

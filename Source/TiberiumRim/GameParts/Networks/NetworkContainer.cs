@@ -40,9 +40,11 @@ namespace TiberiumRim
         public NetworkValueStack(Dictionary<NetworkValueDef, float> values)
         {
             networkValues = new NetworkValue[values.Count];
+            //color = Color.clear;
             foreach (var value in values)
             {
                 networkValues[0] = new NetworkValue(value.Key, value.Value);
+                //color += value.Key.valueColor/values.Count;
             }
         }
 
@@ -50,11 +52,13 @@ namespace TiberiumRim
         {
             networkValues = new NetworkValue[1];
             networkValues[0] = new NetworkValue(def, val);
+            //color = Color.white;
         }
 
         public NetworkValueStack(int valueCount)
         {
             networkValues = new NetworkValue[valueCount];
+            //color = Color.white;
         }
 
         public void Reset()
@@ -114,6 +118,7 @@ namespace TiberiumRim
 
         //Container Data
         private IContainerHolder parentHolder;
+        private Color colorInt;
         private float totalCapacity;
         private float totalStoredCache;
         private HashSet<NetworkValueDef> storedTypeCache;
@@ -150,8 +155,7 @@ namespace TiberiumRim
 
         public Dictionary<NetworkValueDef, float> StoredValuesByType => StoredValues;
         public NetworkValueStack ValueStack { get; private set; }
-
-        public virtual Color Color => Color.white;
+        public Color Color => colorInt;
 
         public List<NetworkValueDef> AcceptedTypes
         {
@@ -260,6 +264,7 @@ namespace TiberiumRim
             if (Scribe.mode == LoadSaveMode.LoadingVars)
             {
                 ValueStack = new NetworkValueStack(StoredValues);
+                SetNewColorState();
             }
         }
 
@@ -283,6 +288,7 @@ namespace TiberiumRim
 
             //Update stack state
             ValueStack = new NetworkValueStack(StoredValues);
+            SetNewColorState();
         }
 
         public void Notify_RemovedValue(NetworkValueDef valueType, float value)
@@ -294,6 +300,7 @@ namespace TiberiumRim
 
             //Update stack state
             ValueStack = new NetworkValueStack(StoredValues);
+            SetNewColorState();
         }
 
         public void Notify_SetParentSet(NetworkContainerSet parentSet)
@@ -317,6 +324,10 @@ namespace TiberiumRim
                 var keyValuePair = StoredValues.ElementAt(i);
                 TryRemoveValue(keyValuePair.Key, keyValuePair.Value, out _);
             }
+
+            //
+            ValueStack = new NetworkValueStack(StoredValues);
+            SetNewColorState();
         }
 
         public void FillWith(float wantedValue)
@@ -394,7 +405,15 @@ namespace TiberiumRim
             }
 
             Notify_RemovedValue(valueType, actualValue);
-            return actualValue == wantedValue;
+            return actualValue > 0;
+        }
+
+        public void TryTransferTo(NetworkContainer other, float value)
+        {
+            for (int i = AllStoredTypes.Count - 1; i >= 0; i--)
+            {
+                TryTransferTo(other, AllStoredTypes.ElementAt(i), value);
+            }
         }
 
         public bool TryTransferTo(NetworkContainer other, NetworkValueDef valueType, float value)
@@ -472,6 +491,18 @@ namespace TiberiumRim
             }
             overfilled = val > Capacity;
             return val >= Capacity;
+        }
+
+        private void SetNewColorState()
+        {
+            colorInt = Color.clear;
+            if (StoredValues.Count > 0)
+            {
+                foreach (var value in StoredValues)
+                {
+                    colorInt += value.Key.valueColor * (value.Value / Capacity);
+                }
+            }
         }
 
         //

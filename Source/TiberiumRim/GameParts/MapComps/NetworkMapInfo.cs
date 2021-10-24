@@ -73,7 +73,6 @@ namespace TiberiumRim
 
         public override void Draw()
         {
-            base.Draw();
             foreach (var networkSystem in NetworkSystems)
             {
                 networkSystem.DrawNetwork();
