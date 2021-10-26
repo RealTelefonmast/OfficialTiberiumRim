@@ -658,6 +658,7 @@
 		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_NetworkStructurePowerPlant">
+				<fromNetwork>TiberiumNetwork</fromNetwork>
 				<consumeAmt>500</consumeAmt>
 				<daysPerLoad>3</daysPerLoad>
 				<networks>
@@ -684,6 +685,7 @@
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>TiberiumRim.Comp_NetworkStructurePowerPlant</compClass>
+
 				<basePowerConsumption>-3000</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
 			</li>
@@ -996,6 +998,8 @@
 		<passability>PassThroughOnly</passability>
 		<TRCategory>Processing</TRCategory>
 		<drawerType>MapMeshAndRealTime</drawerType>
+		<!--TODO: FixUp-->
+		<hidden>true</hidden>
 		<graphicData>
 			<texPath>Buildings/Common/Network/ResourceCrafter/Replant</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>

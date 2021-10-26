@@ -41,17 +41,20 @@ namespace TiberiumRim
 
         public TiberiumCrystalDef RandomTiberiumType()
         {
+            if (crystalOptions.NullOrEmpty()) return null;
             return (TiberiumCrystalDef)crystalOptions.RandomElementByWeight(t => t.weight).thing;
         }
 
         public TRThingDef RandomPlant()
         {
+            if (floraOptions.NullOrEmpty()) return null;
             return (TRThingDef)floraOptions.SelectMany(o => o.things).RandomElementByWeight(p => p.weight).thing;
         }
 
         public TRThingDef PlantAt(float distance, float maxDistance)
         {
             //"Chance" in this case is "DistancePercent"
+            if (floraOptions.NullOrEmpty()) return null;
             return (TRThingDef)floraOptions.Where(p => distance >= maxDistance * p.chance).SelectMany(p => p.things).RandomElementByWeight(p => p.weight).thing;
         }
 

@@ -47,7 +47,7 @@ namespace TiberiumRim
         public override void CompTick()
         {
             base.CompTick();
-            if (!Pawn.Spawned || IsTiberiumImmune) return;
+            if (!Pawn.Spawned || IsTiberiumImmune || Pawn.Dead) return;
             if (ticker <= 0)
             {
                 if (IsInTiberium)

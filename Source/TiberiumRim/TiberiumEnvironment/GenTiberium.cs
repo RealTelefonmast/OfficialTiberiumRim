@@ -39,8 +39,9 @@ namespace TiberiumRim
             foreach (var thing in thingList)
             {
                 if (MainTCD.Main.spreadFilter.Contains(thing.def)) return false;
-                if (thing.def.IsBuilding()) return false;
-                if (thing.def.designateHaulable) return false;
+                if (thing.def.passability != Traversability.Standable) return false;
+                //if (thing.def.IsBuilding()) return false;
+                //if (thing.def.designateHaulable) return false;
             }
             return true;
         }

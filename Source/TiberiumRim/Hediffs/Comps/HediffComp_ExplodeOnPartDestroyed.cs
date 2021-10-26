@@ -21,24 +21,26 @@ namespace TiberiumRim
 
         public override void Notify_PawnPostApplyDamage(DamageInfo dinfo, float totalDamageDealt)
         {
-            base.Notify_PawnPostApplyDamage(dinfo, totalDamageDealt);
-            Rupture(0.5f);
-
             if (Pawn.health.hediffSet.PartIsMissing(dinfo.HitPart))
                 Rupture(1);
+            else 
+                Rupture(0.5f);
+
+            base.Notify_PawnPostApplyDamage(dinfo, totalDamageDealt);
         }
 
         public override void Notify_PawnKilled()
         {
-            Rupture(0.5f);
+            Rupture(0.5f, false);
         }
 
-        private void Rupture(float intensity)
+        private void Rupture(float intensity, bool dealDamage = true)
         {
             if (isRuptered) return;
             isRuptered = true;
-            Pawn.TakeDamage(new DamageInfo(DamageDefOf.Bomb, parent.Part.def.hitPoints, 1));
             Props.explosionProps.DoExplosion(Pawn.Position, Pawn.Map, this.Pawn);
+            if(dealDamage) 
+                Pawn.TakeDamage(new DamageInfo(DamageDefOf.Bomb, parent.Part.def.hitPoints, 1));
         }
     }
 

@@ -82,6 +82,7 @@ namespace TiberiumRim
         public override float Severity
         {
             get => severityInt;
+            /*
             set
             {
                 bool flag = false;
@@ -94,11 +95,12 @@ namespace TiberiumRim
                 severityInt = Mathf.Clamp(value, def.minSeverity, def.maxSeverity);
                 if (CurStageIndex != oldIndex || flag)
                 {
-                    pawn.health.Notify_HediffChanged(this);
                     if (pawn.Dead) return;
+                    pawn.health.Notify_HediffChanged(this);
                     pawn.needs.mood?.thoughts.situational.Notify_SituationalThoughtsDirty();
                 }
             }
+            */
         }
 
         private static SimpleCurve SeverityCurve
@@ -158,7 +160,7 @@ namespace TiberiumRim
         public override void Tick()
         {
             base.Tick();
-
+            if (pawn.Dead) return;
             if (CurrentStage == InfectionStage.Halted) return;
             //Adjust Severity
             if (!base.pawn.IsHashIntervalTick(200)) return;
