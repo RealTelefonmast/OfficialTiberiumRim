@@ -8,6 +8,9 @@
 	<TR_TibSuppressed>Suppressed, will not grow.</TR_TibSuppressed>
 	<TR_TibHarvestValue>Current Value:{0}</TR_TibHarvestValue>
 	
+	
+	<TR_StatPartIsMechanoid>Is Mechanoid</TR_StatPartIsMechanoid>
+	
 	<!-- Tiberium Producer-->
 	
 	

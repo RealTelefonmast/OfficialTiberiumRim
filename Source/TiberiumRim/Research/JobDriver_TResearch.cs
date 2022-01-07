@@ -14,7 +14,7 @@ namespace TiberiumRim
 
         private TResearchManager Manager => TRUtils.ResearchManager();
 
-        private TResearchDef Project => Manager.currentProject;
+        private TResearchDef Project => Manager.CurrentProject;
 
         private Thing ResearchThing => base.TargetThingA;
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Multiplayer.API;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -87,6 +88,7 @@ namespace TiberiumRim
             }
         }
 
+        [SyncMethod]
         public override void OrderAttack(LocalTargetInfo targ)
         {
             //Already have a target, but ordered target invalid
@@ -123,6 +125,7 @@ namespace TiberiumRim
             turrets.ForEach(t => t.ResetForcedTarget());
         }
 
+        [SyncMethod]
         public void CommandHoldFire()
         {
             holdFire = !holdFire;
@@ -286,20 +289,12 @@ namespace TiberiumRim
                     defaultLabel = "CommandHoldFire".Translate(),
                     defaultDesc = "CommandHoldFireDesc".Translate(),
                     icon = ContentFinder<Texture2D>.Get("UI/Commands/HoldFire", true),
-                    toggleAction = new Action(CommandHoldFire),
+                    toggleAction = CommandHoldFire,
                     isActive = (() => holdFire)
                 };
             }
             if (DebugSettings.godMode)
             {
-                yield return new Command_Action()
-                {
-                    defaultLabel = "Rotate 30°",
-                    action = delegate
-                    {
-                        MainGun.top.CurRotation += 30;
-                    }
-                };
             }
             yield break;
         }

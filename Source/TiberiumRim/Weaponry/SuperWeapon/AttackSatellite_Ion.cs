@@ -1,9 +1,13 @@
-﻿using RimWorld.Planet;
+﻿using System;
+using System.Collections.Generic;
+using RimWorld;
+using RimWorld.Planet;
 using Verse;
+using Verse.Sound;
 
 namespace TiberiumRim
 {
-    public class AttackSatellite_Ion : AttackSatellite
+    public class AttackSatellite_Ion : AttackSatellite, IMapWatcher
     {
         private GlobalTargetInfo target = GlobalTargetInfo.Invalid;
 
@@ -11,6 +15,12 @@ namespace TiberiumRim
         {
             base.Draw();
         }
+
+        private bool ShouldAttack => target.IsMapTarget && (Tile == target.Tile && tileDest == target.Tile);
+        private bool ShouldMove => target.IsWorldTarget;
+
+        public bool IsSpyingNow => true;
+        public Map MapTarget => Find.World.worldObjects.MapParentAt(Tile)?.Map;
 
         //TODO: Add Ion Cannon Beacon to target cell
         //Otherwise use comm satallite and console with pawn to use targeter
@@ -51,6 +61,60 @@ namespace TiberiumRim
             target = GlobalTargetInfo.Invalid;
         }
 
-        private bool ShouldAttack => target.IsMapTarget && (Tile == target.Tile && tileDest == target.Tile);
+        public bool ChoseWorldTarget(GlobalTargetInfo target)
+        {
+            if (target.IsMapTarget && target.Map.IsPlayerHome) return false;
+
+            return true;
+        }
+
+        public override IEnumerable<Gizmo> GetGizmos()
+        {
+            yield return new Command_Action
+            {
+                defaultLabel = "Set Target",
+                //icon = MissileSilo.LaunchWorldTex,
+                action = delegate ()
+                {
+                    CameraJumper.TryJump(CameraJumper.GetWorldTarget(this));
+                    Find.WorldSelector.ClearSelection();
+                    Find.WorldTargeter.BeginTargeting((this.ChoseWorldTarget), true);
+                }
+            };
+
+            if (Find.World.worldObjects.AnySettlementAt(Tile))
+            {
+                yield return new Command_Action
+                {
+                    defaultLabel = "Spy",
+                    //icon = MissileSilo.LaunchWorldTex,
+                    action = delegate()
+                    {
+                        Settlement settlement = Find.World.worldObjects.SettlementAt(Tile);
+                        if (!settlement.HasMap)
+                        {
+                            LongEventHandler.QueueLongEvent(delegate ()
+                            {
+                                LoadMap(settlement);
+                            }, "GeneratingMapForNewEncounter", false, null, true);
+                            return;
+                        }
+                        LoadMap(settlement);
+                    }
+                };
+            }
+        }
+
+        private void LoadMap(Settlement settlement)
+        {
+            Map orGenerateMap = GetOrGenerateMapUtility.GetOrGenerateMap(settlement.Tile, null);
+            CameraJumper.TryJump(CameraJumper.GetWorldTarget(settlement));
+
+            if (!CameraJumper.TryHideWorld() && Find.CurrentMap != orGenerateMap)
+            {
+                SoundDefOf.MapSelected.PlayOneShotOnCamera(null);
+            }
+            Current.Game.CurrentMap = orGenerateMap;
+        }
     }
 }

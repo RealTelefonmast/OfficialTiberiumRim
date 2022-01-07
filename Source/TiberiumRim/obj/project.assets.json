@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.7.2": {
-      "Krafs.Rimworld.Ref/1.3.3117": {
+      "Krafs.Rimworld.Ref/1.3.3200": {
         "type": "package",
         "compile": {
           "ref/net472/Assembly-CSharp-firstpass.dll": {},
@@ -86,7 +86,7 @@
           "ref/net472/mscorlib.dll": {}
         }
       },
-      "Lib.Harmony/2.1.1": {
+      "Lib.Harmony/2.2.0": {
         "type": "package",
         "compile": {
           "lib/net472/0Harmony.dll": {}
@@ -125,7 +125,7 @@
           "lib/net46/_._": {}
         }
       },
-      "Microsoft.NETCore.Platforms/5.0.4": {
+      "Microsoft.NETCore.Platforms/6.0.1": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -250,16 +250,16 @@
     }
   },
   "libraries": {
-    "Krafs.Rimworld.Ref/1.3.3117": {
-      "sha512": "mxTQbelrvwpnVfA+WztZFk68J/49uwbZQPgb1TpG9rC6+rRB0IhJLmR85jZ1Ua7WetNGiwkbmVltDyKlpEGudQ==",
+    "Krafs.Rimworld.Ref/1.3.3200": {
+      "sha512": "vjo/xgY9rXwem6RCrYAMCk1uf7j74S5eB1A3h/mbckFPCcCZQFAEy97ozinyC8XefpLJmbIbVXeauUwHJhYE8Q==",
       "type": "package",
-      "path": "krafs.rimworld.ref/1.3.3117",
+      "path": "krafs.rimworld.ref/1.3.3200",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.txt",
         "icon.png",
-        "krafs.rimworld.ref.1.3.3117.nupkg.sha512",
+        "krafs.rimworld.ref.1.3.3200.nupkg.sha512",
         "krafs.rimworld.ref.nuspec",
         "ref/net472/Assembly-CSharp-firstpass.dll",
         "ref/net472/Assembly-CSharp.dll",
@@ -343,16 +343,16 @@
         "ref/net472/mscorlib.dll"
       ]
     },
-    "Lib.Harmony/2.1.1": {
-      "sha512": "CZiVcq01bVIjL2baWW5SVGZWyd6ew8adFp4BB2bzZfIGcWkTEto0G9sKu+9HDrEd75qBq3EHnZxx/gizi4NnqA==",
+    "Lib.Harmony/2.2.0": {
+      "sha512": "1sQzocsFLbQ/t6U5t3h2Yw7ntZ7KnLqAnaDRbyS4bLXtBZCjghh1VoCgsZTkP8ieq9JMlr5aPxcdzZpy/9JZzw==",
       "type": "package",
-      "path": "lib.harmony/2.1.1",
+      "path": "lib.harmony/2.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "HarmonyLogo.png",
         "LICENSE",
-        "lib.harmony.2.1.1.nupkg.sha512",
+        "lib.harmony.2.2.0.nupkg.sha512",
         "lib.harmony.nuspec",
         "lib/net35/0Harmony.dll",
         "lib/net35/0Harmony.xml",
@@ -400,10 +400,10 @@
         "microsoft.build.utilities.core.nuspec"
       ]
     },
-    "Microsoft.NETCore.Platforms/5.0.4": {
-      "sha512": "S/AHu+d3Fk/yoWHIXNAs8N030bCf22GlXoMqLC/zK24i+VfhG0kWYtFeEv6s07b05qchNEGabwOcq49zzR8MPA==",
+    "Microsoft.NETCore.Platforms/6.0.1": {
+      "sha512": "pyZhOIt/DpmKdv9Ahd8gZeTB1YvE8Rto8dpWyFWnIaFec9QDLbE6bCdFOlbO6T+DqYlgufVVoR7XtMyNX4ESig==",
       "type": "package",
-      "path": "microsoft.netcore.platforms/5.0.4",
+      "path": "microsoft.netcore.platforms/6.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -411,11 +411,10 @@
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.5.0.4.nupkg.sha512",
+        "microsoft.netcore.platforms.6.0.1.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
         "runtime.json",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "useSharedDesignerContext.txt"
       ]
     },
     "NuGet.Build.Tasks.Pack/5.2.0": {

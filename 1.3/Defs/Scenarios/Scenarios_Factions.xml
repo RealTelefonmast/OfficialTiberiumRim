@@ -2,7 +2,6 @@
 <Defs>
 
 	<!-- TODO: Can be replaced by gamestart dialgue class -->
-	<!--
 	<ScenPartDef>
 		<defName>ScrinStartDialgue</defName>
 		<label>scrin start dialogue</label>
@@ -10,9 +9,7 @@
 		<scenPartClass>TiberiumRim.ScenPart_ScrinArrival</scenPartClass>
 		<maxUses>1</maxUses>
 	</ScenPartDef>
-	-->
 
-	<!--
 	<ScenarioDef>
 		<defName>ScrinStart</defName>
 		<label>Scrin</label>
@@ -26,20 +23,20 @@
 			</playerFaction>
 			<parts>
 				
-				Config pages 
+				<!--Config pages 
 				<li Class="TiberiumRim.ScenPart_ConfigPage_ScrinInvasion">
 					<def>ConfigPage_ConfigureScrinStart</def>
 				</li>
-
-				Player starting stuff spawn method
+				-->
+				<!--Player starting stuff spawn method-->
 				<li Class="ScenPart_PlayerPawnsArriveMethod">
 					<def>PlayerPawnsArriveMethod</def>
 					<method>DropPods</method>
 					<visible>false</visible>
 				</li>
 
-				Scatter some things near player start
-				Scatter some things anywhere 
+				<!--Scatter some things near player start
+				Scatter some things anywhere -->
 				<li Class="ScenPart_ScatterThingsAnywhere">
 					<def>ScatterThingsAnywhere</def>
 					<thingDef>ShipChunk</thingDef>
@@ -51,7 +48,7 @@
 					<count>720</count>
 				</li>
 
-				Game start dialog
+				<!--Game start dialog-->
 				<li Class="TiberiumRim.ScenPart_ScrinArrival">
 					<def>ScrinStartDialgue</def>
 				</li>
@@ -59,5 +56,5 @@
 			</parts>
 		</scenario>
 	</ScenarioDef>
-	-->
+	
 </Defs>

@@ -154,6 +154,8 @@ namespace TiberiumRim
             return newNet;
         }
 
+        
+
         //Check whether or not a thing is part of a network
         private bool Fits(Thing thing, NetworkDef forNetwork, out INetworkComponent component)
         {

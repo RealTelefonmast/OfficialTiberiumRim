@@ -9,6 +9,12 @@ namespace TiberiumRim
             Log.Error($"[TiberiumRim] {msg}");
         }
 
+        public static void ErrorOnce(string msg, int id)
+        {
+            Log.ErrorOnce($"[TiberiumRim] {msg}", id);
+        }
+
+
         public static void Warning(string msg)
         {
             Log.Warning($"[TiberiumRim] {msg}");
@@ -16,7 +22,15 @@ namespace TiberiumRim
 
         public static void Message(string msg)
         {
-            Log.Message(msg);
+            Log.Message($"[TiberiumRim] {msg}");
+        }
+
+        public static void Debug(string msg)
+        {
+            if (TiberiumRimMod.isDebug)
+            {
+                Log.Message($"[T-DEBUG] {msg}");
+            }
         }
     }
 }

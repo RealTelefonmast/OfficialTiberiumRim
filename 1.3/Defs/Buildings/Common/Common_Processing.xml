@@ -80,7 +80,7 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+			<li Class="TiberiumRim.CompProperties_TNS">
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
@@ -247,7 +247,7 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+			<li Class="TiberiumRim.CompProperties_TNS">
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
@@ -279,7 +279,6 @@
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MaskedFlowMap</shaderType>
 							<drawSize>(3,3)</drawSize>
-							<color>(0,255,0)</color>
 							<shaderParameters>
 								<_FlowSpeed>0.375</_FlowSpeed>
 								<_BlendOpacity>0.5</_BlendOpacity>
@@ -353,7 +352,7 @@
 			</tiberiumResearch>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+			<li Class="TiberiumRim.CompProperties_TNS">
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
@@ -681,7 +680,7 @@
 						</allowedValues>
 					</li>
 				</networks>
-				<connectionPattern>+++++|+###+|+###+|+###+|+++++</connectionPattern>
+				<connectionPattern>++++|+##+|+##+|+##+|++++</connectionPattern>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>TiberiumRim.Comp_NetworkStructurePowerPlant</compClass>
@@ -776,7 +775,7 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+			<li Class="TiberiumRim.CompProperties_TNS">
 				<compClass>TiberiumRim.CompTNS_Centrifuge</compClass>
 				<networks>
 					<li>
@@ -803,7 +802,7 @@
 						<networkDef>ChemicalNetwork</networkDef>
 						<storeEvenly>false</storeEvenly>
 						<containerProps>
-							<maxStorage>1000</maxStorage>
+							<maxStorage>10000</maxStorage>
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
 						</containerProps>
@@ -833,6 +832,29 @@
 							<texPath>Blank</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<color>(0.8,0.8,0.8)</color>
+							<drawSize>(5,5)</drawSize>
+							<shaderType>MultiStepBlend</shaderType>
+							<shaderParameters>
+								<_MainTex1>/Buildings/Common/Network/Extractor/BlurSteps/speed_00</_MainTex1>
+								<_MainTex2>/Buildings/Common/Network/Extractor/BlurSteps/speed_01</_MainTex2>
+								<_MainTex3>/Buildings/Common/Network/Extractor/BlurSteps/speed_03</_MainTex3>
+								<_MainTex4>/Buildings/Common/Network/Extractor/BlurSteps/speed_05</_MainTex4>
+								<_MainTex5>/Buildings/Common/Network/Extractor/BlurSteps/speed_07</_MainTex5>
+								<MySrcMode>5</MySrcMode>
+								<MyDstMode>10</MyDstMode>
+							</shaderParameters>
+						</data>
+						<mode>Dynamic</mode>
+						<rotationSpeed>-75</rotationSpeed>
+						<startRotation>90</startRotation>
+						<textureSize>(512,512)</textureSize>
+						<pivotPixelOffset>(0,0,7)</pivotPixelOffset>
+						<needsPower>false</needsPower>
+					</li>
+					<li>
+						<data>
+							<texPath>Blank</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(6,6)</drawSize>
 							<shaderType>MultiStepBlend</shaderType>
 							<shaderParameters>
@@ -846,25 +868,27 @@
 							</shaderParameters>
 						</data>
 						<mode>Dynamic</mode>
-						<rotationSpeed>75</rotationSpeed>
+						<rotationSpeed>100</rotationSpeed>
 						<textureSize>(512,512)</textureSize>
 						<pivotPixelOffset>(0,0,7)</pivotPixelOffset>
 						<needsPower>false</needsPower>
 					</li>
-					<!--
 					<li>
 						<data>
-							<texPath>Buildings/Common/Network/Extractor/Extractor_fan2</texPath>
+							<texPath>Buildings/Common/Network/Extractor/Extractor_overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>Transparent</shaderType>
+							<shaderType>RadialBlur</shaderType>
 							<drawSize>(6,6)</drawSize>
+							<shaderParameters>		
+								<_Angle>0</_Angle>
+								<MySrcMode>1</MySrcMode>
+								<MyDstMode>1</MyDstMode>
+							</shaderParameters>
 						</data>
 						<mode>Dynamic</mode>
-						<rotationSpeed>100</rotationSpeed>
+						<textureSize>(512,512)</textureSize>
 						<pivotPixelOffset>(0,0,7)</pivotPixelOffset>
-						<needsPower>false</needsPower>
 					</li>
-					-->
 					<li>
 						<data>
 							<texPath>Buildings/Common/Network/Extractor/Extractor_cover</texPath>
@@ -941,7 +965,7 @@
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>125</basePowerConsumption>
 			</li>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+			<li Class="TiberiumRim.CompProperties_TNS">
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>

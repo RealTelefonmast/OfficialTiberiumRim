@@ -1,60 +1,61 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-  <ThingDef ParentName="BaseTRMechanical">
-    <defName>Mechapede</defName>
-    <label>Mechapede</label>
-    <description>The Mechapede is a Scrin walker unit from the Third Tiberium War, determined to be an "advanced customizable biotank" according to GDI InOps.</description>
-    <statBases>
-      <MoveSpeed>2</MoveSpeed>
-      <ArmorRating_Blunt>0.3</ArmorRating_Blunt>
-      <ArmorRating_Sharp>1.3</ArmorRating_Sharp>
-	  <ArmorRating_Heat>1.3</ArmorRating_Heat>
-    </statBases>
-    <tools>
-      <li>
-        <label>legs</label>
-        <capacities>
-          <li>Stab</li>
-        </capacities>
-        <power>20</power>
-        <cooldownTime>2</cooldownTime>
-        <linkedBodyPartsGroup>FrontLegs</linkedBodyPartsGroup>
-        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-      </li>
-    </tools>
-    <race>
-      <intelligence>ToolUser</intelligence>
-      <thinkTreeMain>Mechanoid</thinkTreeMain>
-      <body>ScrinMechapedeBody</body>
-      <baseBodySize>4</baseBodySize>
-      <baseHealthScale>3.5</baseHealthScale>
-      <makesFootprints>true</makesFootprints>
-	  <lifeExpectancy>5000</lifeExpectancy>
-      <lifeStageAges>
-        <li>
-          <def>ScrinFormed</def>
-          <minAge>0</minAge>
-          <soundWounded>Pawn_Scrin_Shocktrooper_Wounded</soundWounded>
-          <soundDeath>Pawn_Scrin_Shocktrooper_Death</soundDeath>
-          <soundCall>Pawn_Scrin_Shocktrooper_Call</soundCall>
-		  </li>
-      </lifeStageAges>
-      <soundCallIntervalRange>
-        <min>1000</min>
-        <max>2000</max>
-      </soundCallIntervalRange>
-      <soundMeleeHitPawn>Pawn_Scrin_ShockTrooper_HitPawn</soundMeleeHitPawn>
-      <soundMeleeHitBuilding>Pawn_Scrin_ShockTrooper_HitBuilding</soundMeleeHitBuilding>
-      <soundMeleeMiss>Pawn_Scrin_ShockTrooper_Miss</soundMeleeMiss>
-    </race>
-    <butcherProducts>
-      <Steel>50</Steel>
-      <Plasteel>25</Plasteel>
-      <TRBattleChip>1</TRBattleChip>
-    </butcherProducts>
-  </ThingDef>
 
-  <ThingDef ParentName="BaseTRMechanical">
+	<ThingDef ParentName="BaseMechanoidTR">
+		<defName>Mechapede</defName>
+		<label>Mechapede</label>
+		<description>The Mechapede is a Scrin walker unit from the Third Tiberium War, determined to be an "advanced customizable biotank" according to GDI InOps.</description>
+		<statBases>
+			<MoveSpeed>2</MoveSpeed>
+			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+			<ArmorRating_Sharp>1.3</ArmorRating_Sharp>
+			<ArmorRating_Heat>1.3</ArmorRating_Heat>
+		</statBases>
+		<tools>
+			<li>
+				<label>legs</label>
+				<capacities>
+				<li>Stab</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>FrontLegs</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+			</li>
+		</tools>
+		<race>
+			<intelligence>ToolUser</intelligence>
+			<thinkTreeMain>Mechanoid</thinkTreeMain>
+			<body>ScrinMechapedeBody</body>
+			<baseBodySize>4</baseBodySize>
+			<baseHealthScale>3.5</baseHealthScale>
+			<makesFootprints>true</makesFootprints>
+			<lifeExpectancy>5000</lifeExpectancy>
+			<lifeStageAges Inherit="False">
+			<li>
+			<def>ScrinFormed</def>
+			<minAge>0</minAge>
+			<soundWounded>Pawn_Scrin_Shocktrooper_Wounded</soundWounded>
+			<soundDeath>Pawn_Scrin_Shocktrooper_Death</soundDeath>
+			<soundCall>Pawn_Scrin_Shocktrooper_Call</soundCall>
+			</li>
+			</lifeStageAges>
+			<soundCallIntervalRange>
+			<min>1000</min>
+			<max>2000</max>
+			</soundCallIntervalRange>
+			<soundMeleeHitPawn>Pawn_Scrin_ShockTrooper_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Scrin_ShockTrooper_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Scrin_ShockTrooper_Miss</soundMeleeMiss>
+		</race>
+		<butcherProducts>
+			<Steel>50</Steel>
+			<Plasteel>25</Plasteel>
+			<TRBattleChip>1</TRBattleChip>
+		</butcherProducts>
+	</ThingDef>
+
+  <ThingDef ParentName="BaseMechanoidTR">
     <defName>Shocktrooper</defName>
     <label>Shock Trooper</label>
     <description>Shock Troopers are large, rounded, insect-like techno-organic constructs roughly the size of a small car. Like other Scrin infantry, Shock Troopers appear to have been tailored for combat using advanced alien bio-engineering technology.</description>
@@ -84,7 +85,7 @@
       <baseHealthScale>1.5</baseHealthScale>
       <makesFootprints>true</makesFootprints>
 	  <lifeExpectancy>5000</lifeExpectancy>
-      <lifeStageAges>
+	  <lifeStageAges Inherit="False">
         <li>
           <def>ScrinFormed</def>
           <minAge>0</minAge>
@@ -107,7 +108,7 @@
     </butcherProducts>
   </ThingDef>
   
-	<ThingDef ParentName="BaseTRMechanical">
+	<ThingDef ParentName="BaseMechanoidTR">
     <defName>Disintegrator</defName>
     <label>Disintegrator</label>
     <description>The Disintegrators were metallic creatures with insectoid legs and a head in the shape of a gun. Apparently, they were bio-mechanical constructs designed specifically for anti-armor purposes. They were able to decimate enemy vehicles using a powerful cutting beam fired from their head. When crushed, they explode, damaging enemies in the vicinity.</description>
@@ -138,7 +139,7 @@
       <makesFootprints>true</makesFootprints>
       <deathActionWorkerClass>DeathActionWorker_SmallExplosion</deathActionWorkerClass>
 	  <lifeExpectancy>5000</lifeExpectancy>
-      <lifeStageAges>
+      <lifeStageAges Inherit="False">
         <li>
           <def>ScrinFormed</def>
           <minAge>0</minAge>
@@ -160,7 +161,7 @@
     </butcherProducts>
   </ThingDef>
   
-	<ThingDef ParentName="BaseTRMechanical">
+	<ThingDef ParentName="BaseMechanoidTR">
 	<defName>Buzzer</defName>
 	<label>Buzzer</label>
 	<description>Buzzers are one of the least understood Scrin units. Little is known about them other than they appear to be the aliens' basic infantry unit. And according to information gleaned from those fortunate enough to have survived an encounter, they are described as "clouds of razor sharp buzzing things."</description>
@@ -189,7 +190,7 @@
 		<baseBodySize>1</baseBodySize>
 		<baseHealthScale>1</baseHealthScale>
 		<lifeExpectancy>5000</lifeExpectancy>
-		<lifeStageAges>
+		<lifeStageAges Inherit="False">
 			<li>
 				<def>ScrinFormed</def>
 				<minAge>0</minAge>

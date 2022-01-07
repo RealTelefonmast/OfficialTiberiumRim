@@ -11,5 +11,6 @@ namespace TiberiumRim
         NetworkContainer Container { get; }
 
         void Notify_ContainerFull();
+        void Notify_ContainerStateChanged();
     }
 }

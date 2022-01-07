@@ -79,6 +79,23 @@ namespace TiberiumRim
             }
             return false;
         }
+
+        public override IEnumerable<Gizmo> CompGetGizmosExtra()
+        {
+            foreach (var gizmo in base.CompGetGizmosExtra())
+            {
+                yield return gizmo;
+            }
+
+            yield return new Command_Action()
+            {
+                defaultLabel = "Toggle Overlay",
+                action = delegate
+                {
+                    Atmospheric.ToggleOverlay();
+                }
+            };
+        }
     }
 
     public class CompProperties_ANS_AirVent : CompProperties_ANS

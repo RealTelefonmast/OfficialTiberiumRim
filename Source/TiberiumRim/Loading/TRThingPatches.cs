@@ -9,6 +9,7 @@ using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace TiberiumRim
 {
@@ -28,6 +29,7 @@ namespace TiberiumRim
 
                 //Register For DataBase
                 Tiberium.Notify_ThingSpawned(__instance);
+                TRUtils.Tiberium().Notify_RegisterNewObject(__instance);
 
                 //Updates On Structure Spawn
                 if (__instance is Building building)
@@ -155,26 +157,44 @@ namespace TiberiumRim
             {
                 if (buildable is TRThingDef {devObject: false} trDef)
                 {
-                    __result = StaticData.GetDesignatorFor(trDef);
+                    __result = StaticData.GetDesignatorFor<Designator_Build>(trDef);
                     return false;
                 }
                 return true;
             }
         }
 
+        /*
         [HarmonyPatch(typeof(BuildCopyCommandUtility), nameof(BuildCopyCommandUtility.BuildCommand))]
         public static class BuildCommandPatch
         {
-            public static bool Prefix(BuildableDef buildable, string label, string description, ref Command __result)
+            
+            public static bool Prefix(BuildableDef buildable, ThingDef stuff, string label, string description, ref Command __result)
             {
                 if (buildable is TRThingDef { devObject: false } trDef)
                 {
-                    __result = StaticData.GetDesignatorFor(trDef);
+                    Designator_Build des = BuildCopyCommandUtility.FindAllowedDesignator(buildable, true);
+
+                    Command_Action buildAction = new Command_Action();
+                    buildAction.defaultLabel = "Big Copy Test";
+                    buildAction.defaultDesc = description;
+
+                    buildAction.action = delegate ()
+                    {
+                        SoundDefOf.Tick_Tiny.PlayOneShotOnCamera(null);
+                        Find.DesignatorManager.Select(des);
+                        des.SetStuffDefTemporary(stuff);
+                        des.SetStuffDef(des.StuffDefRaw);
+                    };
+
+                    __result = buildAction;
                     return false;
                 }
                 return true;
             }
+            
         }
+        */
 
         //RENDERING
         [HarmonyPatch(typeof(Thing), "Graphic", MethodType.Getter)]

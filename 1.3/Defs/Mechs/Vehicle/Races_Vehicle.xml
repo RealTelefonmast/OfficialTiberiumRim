@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-  <ThingDef ParentName="BaseTRMechanical">
+  <ThingDef ParentName="BaseMechanoidTR">
     <defName>FlameTank</defName>
     <label>Flame tank</label>
     <description>The Flame tank can incinerate infantry with ease and clear out garrisoned buildings effortlessly.</description>
@@ -28,6 +28,7 @@
       <body>BasicVehicleBody</body>
       <baseBodySize>2</baseBodySize>
       <baseHealthScale>1</baseHealthScale>
+	  <!--
       <lifeStageAges>
         <li>
           <def>VehicleFormed</def>
@@ -37,6 +38,7 @@
           <soundCall>VehicleTanks_Call</soundCall>
         </li>
       </lifeStageAges>
+	  -->
 	  <soundCallIntervalRange>
         <min>250</min>
         <max>500</max>
@@ -107,7 +109,7 @@
   </ThingDef>
   
 
-  <ThingDef ParentName="BaseTRMechanical">
+  <ThingDef ParentName="BaseMechanoidTR">
     <defName>Disruptor</defName>
     <label>Disruptor</label>
     <description>The disruptor was a GDI unit that fired a powerful turreted harmonic resonance cannon.</description>
@@ -135,6 +137,7 @@
       <body>BasicVehicleBody</body>
       <baseBodySize>2.5</baseBodySize>
       <baseHealthScale>1.25</baseHealthScale>
+	  <!--
       <lifeStageAges>
         <li>
           <def>VehicleFormed</def>
@@ -144,6 +147,7 @@
           <soundCall>VehicleTanks_Call</soundCall>
         </li>
       </lifeStageAges>
+	  -->
 	  <soundCallIntervalRange>
         <min>250</min>
         <max>500</max>
@@ -160,7 +164,7 @@
   </ThingDef>
   
 
-  <ThingDef ParentName="BaseTRMechanical">
+  <ThingDef ParentName="BaseMechanoidTR">
     <defName>Buggy</defName>
     <label>Raider Buggy</label>
     <description>It is a four wheel drive machine, with each wheel on a separate mount and a centrally mounted cockpit with a rear-mounted machinegun that deals significant damage to infantry. However, it is almost useless against tanks and heavy armour.</description>
@@ -188,7 +192,8 @@
       <body>BuggyBody</body>
       <baseBodySize>1</baseBodySize>
       <baseHealthScale>1</baseHealthScale>
-      <lifeStageAges>
+      <!--
+	  <lifeStageAges>
         <li>
           <def>VehicleFormed</def>
           <minAge>0</minAge>
@@ -197,6 +202,7 @@
           <soundCall>Buggy_Call</soundCall>
         </li>
       </lifeStageAges>
+	  -->
 	  <soundCallIntervalRange>
         <min>250</min>
         <max>500</max>

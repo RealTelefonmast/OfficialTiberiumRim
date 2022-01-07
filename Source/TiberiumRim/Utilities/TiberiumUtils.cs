@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -248,7 +249,6 @@ namespace TiberiumRim
                    def.blockLight;
         }
 
-
         public static float AtmosphericPassPercent(this Thing forThing)
         {
             var fullFillage = forThing.def.Fillage == FillCategory.Full;
@@ -358,6 +358,11 @@ namespace TiberiumRim
         }
 
         // Math stuff
+        public static Vector2 Abs(this Vector2 v2)
+        {
+            return new Vector2(Mathf.Abs(v2.x), Mathf.Abs(v2.y));
+        }
+
         public static bool IsPrime(int n)
         {
             if (n <= 1) return false;
@@ -602,6 +607,15 @@ namespace TiberiumRim
             PawnGenerationRequest request = new PawnGenerationRequest(kind, faction, context, -1, true, true);
             return PawnGenerator.GeneratePawn(request);
         }
+
+        public static void Move<T>(this List<T> list, int oldIndex, int newIndex)
+        {
+            var item = list[oldIndex];
+            list.RemoveAt(oldIndex);
+            var adjIndex = newIndex;
+            list.Insert(adjIndex, item);
+        }
+
 
         public static List<IntVec3> RemoveCorners(this CellRect rect, int[] range)
         {
@@ -979,6 +993,17 @@ namespace TiberiumRim
                 }
             }
             yield break;
+        }
+
+        public static string ToStringDictListing<K,V>(this Dictionary<K,V> dict)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var v in dict)
+            {
+                sb.AppendLine($"{v.Key}: {v.Value}");
+            }
+
+            return sb.ToString().TrimEndNewlines();
         }
     }
 }

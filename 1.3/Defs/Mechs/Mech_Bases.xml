@@ -13,14 +13,14 @@
 		<drawGUIOverlay>true</drawGUIOverlay>
 		<repairEffect>Repair</repairEffect>
 		<statBases>
-			<PsychicSensitivity>0</PsychicSensitivity>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
+			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
 			<ToxicSensitivity>0</ToxicSensitivity>
 			<Flammability>0.35</Flammability>
 			<ComfyTemperatureMin>-100</ComfyTemperatureMin>
 			<ComfyTemperatureMax>250</ComfyTemperatureMax>
 			<Mass>75</Mass>
-			<MeatAmount>0</MeatAmount>
-			<LeatherAmount>0</LeatherAmount>
 		</statBases>
 		<inspectorTabs>
 			<li>ITab_Pawn_Health</li>
@@ -62,11 +62,13 @@
 	
 	<ThingDef Name="HarvesterBase" ParentName="BaseMechanoidTR" Abstract="True">
 		<thingClass>TiberiumRim.Harvester</thingClass>
+		<!--
 		<statBases>
 			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
 			<TiberiumGasResistance>1</TiberiumGasResistance>
 			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
 		</statBases>
+		-->
 		<race>
 			<thinkTreeMain>HarvesterMain</thinkTreeMain>
 			<thinkTreeConstant>HarvesterConstant</thinkTreeConstant>

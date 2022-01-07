@@ -13,7 +13,7 @@ namespace TiberiumRim
         public int iterationsLeft = -1;
         public int tiberiumCost;
         public float workAmountTotal;
-        public TiberiumBillStack billStack;
+        public NetworkBillStack billStack;
         public List<ThingDefCount> results = new List<ThingDefCount>();
 
         private BillRepeatModeDef repeatMode = BillRepeatModeDefOf.Forever;
@@ -65,7 +65,7 @@ namespace TiberiumRim
             Scribe_Collections.Look(ref results, "results");
         }
 
-        public CustomTiberiumBill(TiberiumBillStack stack)
+        public CustomTiberiumBill(NetworkBillStack stack)
         {
             this.billStack = stack;
         }
@@ -184,7 +184,7 @@ namespace TiberiumRim
             //Controls
             Rect removeRect = new Rect(rect.width - 20f, 0f, 22f, 22f);
             Rect copyRect = new Rect(removeRect.x - 20, 0f, 22f, 22f);
-            if (Widgets.ButtonImage(removeRect, TiberiumContent.DeleteX, Color.white, Color.white * GenUI.SubtleMouseoverColor, true))
+            if (Widgets.ButtonImage(removeRect, TexButton.DeleteX, Color.white, Color.white * GenUI.SubtleMouseoverColor, true))
             {
                 billStack.Delete(this);
             }
@@ -239,13 +239,13 @@ namespace TiberiumRim
 
             if (repeatMode == BillRepeatModeDefOf.RepeatCount)
             {
-                if (controlRow.ButtonIcon(TiberiumContent.Minus))
-                {
-                    iterationsLeft = Mathf.Clamp(iterationsLeft - 1, 0, int.MaxValue);
-                }
                 if (controlRow.ButtonIcon(TiberiumContent.Plus))
                 {
                     iterationsLeft++;
+                }
+                if (controlRow.ButtonIcon(TiberiumContent.Minus))
+                {
+                    iterationsLeft = Mathf.Clamp(iterationsLeft - 1, 0, int.MaxValue);
                 }
             }
             GUI.EndGroup();

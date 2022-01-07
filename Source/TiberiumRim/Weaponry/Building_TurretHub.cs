@@ -106,7 +106,8 @@ namespace TiberiumRim
             {
                 yield return g;
             }
-            yield return new Designator_BuildFixed(def);
+
+            yield return StaticData.GetDesignatorFor<Designator_Build>(def); //new Designator_BuildFixed(def);
 
         }
     }

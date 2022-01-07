@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 2450343718
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7b77c44bdd7d4aae81f6676fbc52f619
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 823f8fe66138b010851c0ae7980dda4b
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 72
+  Script: {instanceID: 0}
+Assets:
+- Assets/Shaders/RadialBlur.shader
+- Assets/Shaders/MultiStepBlend.shader
+- Assets/Shaders/FlowMapOnBlend.shader
+- Assets/Shaders/GasGridCompute.compute
+- Assets/Shaders/FlowMapShader.shader
+- Assets/Shaders/GlowFlooder.compute
+- Assets/Shaders/FluidRipple.shader
+- Assets/Shaders/MaskedFlowMap.shader
+- Assets/Shaders/SimpleBlend.shader
+- Assets/Shaders/TextureBlend.shader
+Dependencies: []

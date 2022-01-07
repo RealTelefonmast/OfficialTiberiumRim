@@ -8,7 +8,17 @@ namespace TiberiumRim
     {
         //NETWORKS
         public static NetworkDef TiberiumNetwork;
+        public static NetworkDef ChemicalNetwork;
         public static NetworkDef AtmosphericNetwork;
+
+        //Chemical Network
+        public static NetworkValueDef Carbon;
+        public static NetworkValueDef Phosphorus;
+        public static NetworkValueDef Calcium;
+        public static NetworkValueDef Iron;
+        public static NetworkValueDef Copper;
+        public static NetworkValueDef Silicon;
+        public static NetworkValueDef Exotic;
 
         //Tiberium Network
         public static NetworkValueDef TibGreen;

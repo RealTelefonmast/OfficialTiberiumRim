@@ -2,16 +2,6 @@
 <Defs>
 	
 	<TiberiumRim.TerrainFilterDef>
-		<defName>TerrainFilter_TibSoil</defName>
-		<acceptedFilters>
-			<li>TerrainFilter_AllSoil</li>
-		</acceptedFilters>
-		<neededTags>
-			<li>tiberium</li>
-		</neededTags>
-	</TiberiumRim.TerrainFilterDef>
-	
-	<TiberiumRim.TerrainFilterDef>
 		<defName>TerrainFilter_AllSoil</defName>
 		<acceptedFilters>
 			<li>TerrainFilter_Soil</li>
@@ -43,7 +33,18 @@
 			<li>soilrich</li>
 		</acceptedTags>
 	</TiberiumRim.TerrainFilterDef>
-
+	
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_TibSoil</defName>
+		<acceptedFilters>
+			<li>TerrainFilter_AllSoil</li>
+		</acceptedFilters>
+		<neededTags>
+			<li>tiberium</li>
+		</neededTags>
+	</TiberiumRim.TerrainFilterDef>
+	
+	<!---->
 	<TiberiumRim.TerrainFilterDef>
 		<defName>TerrainFilter_AllSand</defName>
 		<neededTags>
@@ -64,6 +65,7 @@
 		</ignoreTags>
 	</TiberiumRim.TerrainFilterDef>
 
+	<!---->
 	<TiberiumRim.TerrainFilterDef>
 		<defName>TerrainFilter_Moss</defName>
 		<acceptedTerrain>
@@ -75,6 +77,7 @@
 		</acceptedTags>
 	</TiberiumRim.TerrainFilterDef>
 
+	<!---->
 	<TiberiumRim.TerrainFilterDef>
 		<defName>TerrainFilter_WaterDeep</defName>
 		<acceptedTerrain>

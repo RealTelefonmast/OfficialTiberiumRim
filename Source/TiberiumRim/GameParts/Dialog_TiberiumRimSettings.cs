@@ -43,7 +43,7 @@ namespace TiberiumRim
                 this.Close();
                 //Find.WindowStack.Add(new Dialog_GameplaySettings());
             }
-            if (Widgets.ButtonText(graphics, "Graphics"))
+            if (Widgets.ButtonText(graphics, "Overlays"))
             {
                 this.Close();
                 //Find.WindowStack.Add(new Dialog_GraphicsSettings());

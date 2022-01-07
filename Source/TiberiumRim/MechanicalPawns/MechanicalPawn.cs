@@ -31,6 +31,7 @@ namespace TiberiumRim
             if (this.story == null)
             {
                 story = new Pawn_StoryTracker(this);
+                skills = new Pawn_SkillTracker(this);
             }
             if (this.Faction == Faction.OfPlayer)
             {

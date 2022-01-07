@@ -569,7 +569,7 @@ namespace TiberiumRim
         {
             //var mesh = graphic.MeshAt(Rot4.North);
             TRUtils.Draw(Graphic, DrawPos, Rot4.North, parent.CurRotation, null);
-            //Graphics.DrawMesh(mesh, DrawPos, parent.CurRotation.ToQuat(), graphic.MatSingle, 0);
+            //Overlays.DrawMesh(mesh, DrawPos, parent.CurRotation.ToQuat(), graphic.MatSingle, 0);
         }
     }
 }

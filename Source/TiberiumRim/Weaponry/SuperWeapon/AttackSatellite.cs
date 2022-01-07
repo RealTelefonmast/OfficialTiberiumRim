@@ -5,7 +5,7 @@ using Verse;
 namespace TiberiumRim
 {
     [StaticConstructorOnStartup]
-    public class AttackSatellite : WorldObject
+    public class AttackSatellite : TRWorldObject
     {
         public int tileDest;
 

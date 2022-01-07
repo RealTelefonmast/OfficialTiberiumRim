@@ -34,7 +34,6 @@ namespace TiberiumRim
         public override void CompTick()
         {
             base.CompTick();
-            DoFilterProcess();
             if (curAnimTick < curAnimLength)
             {
                 curAnimTick++;
@@ -52,7 +51,7 @@ namespace TiberiumRim
             return !ProcessingComp.Container.CapacityFull;
         }
 
-        private void DoFilterProcess()
+        protected override void DoNetworkProcessCustom(bool isPowered)
         {
             if (!ShouldProcess) return;
             if (AtmosphericComp.Container.TryRemoveValue(TiberiumDefOf.TibPollution, 10, out float actualValue))

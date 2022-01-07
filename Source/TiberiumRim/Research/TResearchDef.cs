@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
+using Multiplayer.API;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -55,6 +56,7 @@ namespace TiberiumRim
             //relevantTargetStat = StatDefOf.ResearchSpeedFactor;
         }
 
+        [SyncMethod(SyncContext.None)]
         public void TriggerEvents()
         {
             if (events.NullOrEmpty()) return;
@@ -68,19 +70,20 @@ namespace TiberiumRim
         {
         }
 
+        [SyncMethod(SyncContext.None)]
         public void Debug_Finish()
         {
+            TLog.Debug($"Force Finishing TResearch '{LabelCap}'");
             tasks.ForEach(t => t.Debug_Finish());
         }
 
+        [SyncMethod(SyncContext.None)]
         public void Debug_Reset()
         {
-            tasks.ForEach(t => t.Debug_Reset());
-            if (events.NullOrEmpty()) return;
-            foreach (var eventDef in events)
-            {
-                TRUtils.EventManager().ResetEvent(eventDef);
-            }
+            if (!tasks.NullOrEmpty())
+                tasks.ForEach(t => t.Debug_Reset());
+            if (!events.NullOrEmpty())
+                events.ForEach(t => TRUtils.EventManager().ResetEvent(t));
         }
 
         public virtual bool RequisitesComplete => requisites?.FulFilled() ?? true;
@@ -108,7 +111,7 @@ namespace TiberiumRim
         {
             get
             {
-                if (Equals(TRUtils.ResearchManager().currentProject))
+                if (Equals(TRUtils.ResearchManager().CurrentProject))
                     return ResearchState.InProgress;
                 if (IsFinished)
                     return ResearchState.Finished;
@@ -240,6 +243,7 @@ namespace TiberiumRim
         public StatDef RelevantPawnStat => relevantPawnStat ?? ParentProject.relevantPawnStat;
         public StatDef RelevantTargetStat => relevantTargetStat ?? ParentProject.relevantTargetStat;
 
+        [SyncMethod]
         public void TriggerEvents()
         {
             if (events.NullOrEmpty()) return;
@@ -249,23 +253,29 @@ namespace TiberiumRim
             }
         }
 
+        [SyncMethod]
         public void DoDiscoveries()
         {
             discoveries?.Discover();
         }
 
+        [SyncMethod]
         public void Debug_Finish()
         {
+            TLog.Debug($"Force Finishing TResearchTask '{LabelCap}'");
             if (this.creationTasks != null)
             {
                 foreach (var option in this.creationTasks.thingsToCreate)
                 {
+                    TLog.Debug($" - Adding Progress to '{option}'");
                     TRUtils.ResearchCreationTable().taskCreations[this].AddProgress(option, option.amount);
                 }
             }
+            TLog.Debug($"Setting {ProgressToDo} Progress on '{LabelCap}'");
             TRUtils.ResearchManager().SetProgress(this, this.ProgressToDo);
         }
 
+        [SyncMethod(SyncContext.None)]
         public void Debug_Reset()
         {
             TRUtils.ResearchManager().SetProgress(this, 0);
@@ -291,7 +301,6 @@ namespace TiberiumRim
         public bool IsFinished => TRUtils.ResearchManager().IsCompleted(this);
 
         public string WorkLabel => (int)ProgressReal + "/" + ProgressToDo;
-
 
         public void WriteTaskInfo(Rect rect, out float height)
         {
@@ -428,15 +437,14 @@ namespace TiberiumRim
                     Architect.selectedDesPanel = Architect.desPanelsCached.Find(a => a.def == TiberiumDefOf.Tiberium);
                     Designator_TRMenu menu = (TiberiumDefOf.Tiberium.AllResolvedDesignators.FirstOrDefault() as Designator_TRMenu);
                     menu.Select(trThingDef);
-
-                    new Designator_BuildFixed(trThingDef).ProcessInput(null);
+                    StaticData.GetDesignatorFor<Designator_Build>(trThingDef).ProcessInput(null);
                     return;
                 }
 
                 if (def.IsResearchFinished)
                 {
                     Architect.selectedDesPanel = Architect.desPanelsCached.Find(a => a.def == def.designationCategory);
-                    new Designator_BuildFixed(def).ProcessInput(null);
+                    Architect.selectedDesPanel.def.ResolvedAllowedDesignators.First(t => t is Designator_Build b && b.entDef == def).ProcessInput(null);
                     return;
                 }
             }

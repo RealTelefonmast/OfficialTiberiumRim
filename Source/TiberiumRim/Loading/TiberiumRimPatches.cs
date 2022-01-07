@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
+using Multiplayer.API;
 using RimWorld;
 using RimWorld.Planet;
 using TiberiumRim.Utilities;
@@ -20,7 +21,7 @@ namespace TiberiumRim
     {
         static TiberiumRimPatches()
         {
-            Log.Message("[TiberiumRim] - Startup Init");
+            TLog.Message("Startup Init");
             TiberiumRimMod.Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI"),
                 new HarmonyMethod(typeof(TiberiumRimPatches), "BackgroundOnGUIPatch"));
 
@@ -45,6 +46,13 @@ namespace TiberiumRim
                 Log.Message($" - {asset}");
             }
             */
+
+            //MP Hook
+            TLog.Debug($"Multiplayer: {(MP.enabled ? "Enabled - Adding MP hooks..." : "Disabled")}");
+            if (!MP.enabled) return;
+            {
+                MP.RegisterAll();
+            }
         }
 
         /*

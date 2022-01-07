@@ -56,9 +56,7 @@ namespace TiberiumRim
             if(factionDesignation != FactionDesignationDefOf.None && thingClass.IsAssignableFrom(typeof(Building)) && !thingClass.IsAssignableFrom(typeof(TRBuilding)))
                 strings.Add(this.defName + " won't have a build designator.");
             */
-
             return strings;
-
         }
 
         public string UnknownLabelCap

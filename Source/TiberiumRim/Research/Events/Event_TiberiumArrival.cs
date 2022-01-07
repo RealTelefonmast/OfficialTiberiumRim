@@ -19,7 +19,7 @@ namespace TiberiumRim
 
         public override void EventSetup()
         {
-            if (LandingSiteFor(TiberiumDefOf.BlueTiberiumMeteorIncoming, MapForEvent, out IntVec3 cell))
+            if (LandingSiteFor(TiberiumDefOf.TiberiumMeteorIncoming, MapForEvent, out IntVec3 cell))
             {
                 targetInfo = cell;
                 EventTargets = new LookTargets(cell, MapForEvent);
@@ -54,9 +54,9 @@ namespace TiberiumRim
             return skyFallers.RandomElementByWeight(s => s.chance);
         }
 
-        private bool LandingSiteFor(ThingDef skyfaller, Map map, out IntVec3 foundCell)
+        private bool LandingSiteFor(ThingDef skyfaller, Map map, out IntVec3 pos)
         {
-            return CellFinderLoose.TryFindSkyfallerCell(skyfaller, map, out foundCell, 20, default(IntVec3), -1, true, true,
+            return CellFinderLoose.TryFindSkyfallerCell(skyfaller, map, out pos, 10, map.Center, 999999, true, true,
                 false, false, false, false, x => CellUtils.AllowTiberiumMeteorite(x, map));
         }
     }

@@ -22,7 +22,7 @@ namespace TiberiumRim
         private Vector2 billReadourScroller = new Vector2();
 
         public Comp_NetworkStructureCrafter CrafterComp => SelThing.TryGetComp<Comp_NetworkStructureCrafter>();
-        public TiberiumBillStack BillStack => CrafterComp.BillStack;
+        public NetworkBillStack BillStack => CrafterComp.BillStack;
 
         public ITab_CustomRefineryBills()
         {

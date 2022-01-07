@@ -7,7 +7,7 @@
 		<baseTerrain>TiberiumSoilGreen</baseTerrain>
 		<conversions>
 			<li>TerrainFilter_TibSoil		->	TiberiumSoilGreen			,	TiberiumGreen									</li>
-			<li>Soil						->	TiberiumSoilGreen			,	TiberiumGreen:0.99	|TiberiumShardsGreen:0.01	</li>
+			<li>TerrainFilter_Soil			->	TiberiumSoilGreen			,	TiberiumGreen:0.99	|TiberiumShardsGreen:0.01	</li>
 			<li>Gravel						->	TiberiumSoilGreen			,	TiberiumGreen:0.40	|TiberiumShardsGreen:0.60	</li>
 			<li>SoilRich					->	TiberiumPodSoil				,	TiberiumGreen:0.10	|TiberiumPod:0.90			</li>
 			<li>TerrainFilter_Sand			->	TiberiumSandGreen			,	TiberiumGreen:0.10	|TiberiumShardsGreen:0.95	</li>
@@ -39,7 +39,7 @@
 		<baseTerrain>TiberiumPodSoil</baseTerrain>
 		<conversions>
 			<li>TerrainFilter_TibSoil	->	TiberiumPodSoil				,	TiberiumPod	</li>
-			<li>Soil					->	TiberiumPodSoil				,	TiberiumPod</li>
+			<li>TerrainFilter_Soil		->	TiberiumPodSoil				,	TiberiumPod</li>
 			<li>SoilRich				->	TiberiumPodSoil				,	TiberiumPod</li>
 			<li>TerrainFilter_Moss		->	TiberiumMossyTerrainGreen	,	TiberiumPod:0.05|TiberiumMossGreen:0.95</li>
 		</conversions>
@@ -71,7 +71,7 @@
 		<baseTerrain>TiberiumSoilBlue</baseTerrain>
 		<conversions>
 			<li>TerrainFilter_TibSoil		->	TiberiumSoilBlue			,	TiberiumBlue								</li>
-			<li>Soil						->	TiberiumSoilBlue			,	TiberiumBlue								</li>
+			<li>TerrainFilter_Soil			->	TiberiumSoilBlue			,	TiberiumBlue								</li>
 			<li>Gravel						->	TiberiumSoilBlue			,	TiberiumBlue								</li>
 			<li>SoilRich					->	TiberiumPodSoilBlue			,	TiberiumBlue:0.1	|TiberiumPodBlue:0.9	</li>
 			<li>TerrainFilter_Sand			->	TiberiumSandBlue			,	TiberiumBlue:0.1	|TiberiumShardsBlue:0.95</li>
@@ -100,7 +100,7 @@
 		<baseTerrain>TiberiumPodSoilBlue</baseTerrain>
 		<conversions>
 			<li>TerrainFilter_TibSoil	->	TiberiumPodSoilBlue		,	TiberiumPodBlue</li>
-			<li>Soil					->	TiberiumPodSoilBlue		,	TiberiumPodBlue</li>
+			<li>TerrainFilter_Soil		->	TiberiumPodSoilBlue		,	TiberiumPodBlue</li>
 			<li>SoilRich				->	TiberiumPodSoilBlue		,	TiberiumPodBlue</li>
 			<li>TerrainFilter_Moss		->	TiberiumMossyTerrainBlue,	TiberiumPodBlue:0.05|TiberiumMossBlue:0.95</li>
 		</conversions>
@@ -132,7 +132,7 @@
 		<baseTerrain>TiberiumSoilRed</baseTerrain>
 		<conversions>
 			<li>TerrainFilter_TibSoil		->	TiberiumSoilRed				,	TiberiumRed								</li>
-			<li>Soil						->	TiberiumSoilRed				,	TiberiumRed								</li>
+			<li>TerrainFilter_Soil			->	TiberiumSoilRed				,	TiberiumRed								</li>
 			<li>Gravel						->	TiberiumSoilRed				,	TiberiumRed								</li>
 			<li>TerrainFilter_Sand			->	TiberiumSandRed				,	TiberiumRed:0.1	|TiberiumShardsRed:0.95	</li>
 			<li>SoftSand					->	TiberiumSandRed				,	TiberiumShardsRed						</li>

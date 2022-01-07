@@ -41,7 +41,7 @@ namespace TiberiumRim
         {
             if (ThingDef == null)
             {
-                yield return "Can't find thing or pawn with defName: " + defName;
+                yield return $"Can't find thing or pawn with defName: {defName}";
             }
         }
 
@@ -124,9 +124,9 @@ namespace TiberiumRim
             string stuff = stuffDef?.defName;
             if (quality.NullOrEmpty() && stuff.NullOrEmpty())
             {
-                return defName + "," + value + "," + chance;
+                return $"{defName},{value},{chance}";
             }
-            return "(" + defName + "," + QualityCategory + "," + stuff + ")," + value + "," + chance;
+            return $"({defName},{QualityCategory},{stuff}),{value},{chance}";
         }
 
         public override int GetHashCode()

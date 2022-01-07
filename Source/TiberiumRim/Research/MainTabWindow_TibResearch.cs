@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Multiplayer.API;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -106,7 +107,7 @@ namespace TiberiumRim
             set => Manager.TaskOverride = value;
         }
 
-        public TResearchDef MainProject => Manager.currentProject;
+        public TResearchDef MainProject => Manager.CurrentProject;
 
         private void SetDiaShowFor(TResearchDef def)
         {
@@ -368,10 +369,7 @@ namespace TiberiumRim
                 bool sameFlag = SelProject.Equals(MainProject);
                 if (Widgets.ButtonText(StartButtonRect, sameFlag ? stopProjLabel : startProjLabel))
                 {
-                    if (!sameFlag)
-                        Messages.Message("TR_StartedProject".Translate(SelProject.LabelCap),
-                            MessageTypeDefOf.NeutralEvent, false);
-                    Manager.StartResearch(SelProject);
+                    Manager.StartResearch(SelProject, sameFlag);
                 }
             }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Multiplayer.API;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -37,13 +38,18 @@ namespace TiberiumRim
 
         public bool Empty => networkValues.NullOrEmpty();
 
+        public float TotalValue => networkValues.Sum(t => t.valueF);
+        public IEnumerable<NetworkValueDef> AllTypes => networkValues.Select(t => t.valueDef);
+
         public NetworkValueStack(Dictionary<NetworkValueDef, float> values)
         {
             networkValues = new NetworkValue[values.Count];
             //color = Color.clear;
+            int i = 0;
             foreach (var value in values)
             {
-                networkValues[0] = new NetworkValue(value.Key, value.Value);
+                networkValues[i] = new NetworkValue(value.Key, value.Value);
+                i++;
                 //color += value.Key.valueColor/values.Count;
             }
         }
@@ -192,10 +198,10 @@ namespace TiberiumRim
             }
             else
             {
-                Log.Warning($"Created NetworkContainer for {Parent?.Thing} without any allowed types!");
+                TLog.Warning($"Created NetworkContainer for {Parent?.Thing} without any allowed types!");
             }
 
-            Log.Message($"Creating new container for {Parent?.Thing} with capacity {Capacity} | acceptedTypes: {this.AcceptedTypes.ToStringSafeEnumerable()}");
+            TLog.Message($"Creating new container for {Parent?.Thing} with capacity {Capacity} | acceptedTypes: {this.AcceptedTypes.ToStringSafeEnumerable()}");
         }
 
         public void Data_ChangeCapacity(int newCapacity)
@@ -260,11 +266,10 @@ namespace TiberiumRim
         public virtual void ExposeData()
         {
             Scribe_Collections.Look(ref StoredValues, "StoredTiberium");
-            Scribe_Collections.Look(ref acceptedTypes, "acceptedTypes", LookMode.Value);
-            if (Scribe.mode == LoadSaveMode.LoadingVars)
+            Scribe_Collections.Look(ref acceptedTypes, "acceptedTypes", LookMode.Def);
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
-                ValueStack = new NetworkValueStack(StoredValues);
-                SetNewColorState();
+                UpdateContainerState(true);
             }
         }
 
@@ -287,8 +292,7 @@ namespace TiberiumRim
             AllStoredTypes.Add(valueType);
 
             //Update stack state
-            ValueStack = new NetworkValueStack(StoredValues);
-            SetNewColorState();
+            UpdateContainerState();
         }
 
         public void Notify_RemovedValue(NetworkValueDef valueType, float value)
@@ -296,11 +300,10 @@ namespace TiberiumRim
             totalStoredCache -= value;
             parentSet?.Notify_RemovedValue(valueType, value);
             if (AllStoredTypes.Contains(valueType) && ValueForType(valueType) <= 0)
-                AllStoredTypes.Remove(valueType);
+                AllStoredTypes.RemoveWhere(v => v == valueType);
 
             //Update stack state
-            ValueStack = new NetworkValueStack(StoredValues);
-            SetNewColorState();
+            UpdateContainerState();
         }
 
         public void Notify_SetParentSet(NetworkContainerSet parentSet)
@@ -326,8 +329,7 @@ namespace TiberiumRim
             }
 
             //
-            ValueStack = new NetworkValueStack(StoredValues);
-            SetNewColorState();
+            UpdateContainerState();
         }
 
         public void FillWith(float wantedValue)
@@ -493,9 +495,19 @@ namespace TiberiumRim
             return val >= Capacity;
         }
 
-        private void SetNewColorState()
+        private void UpdateContainerState(bool updateMetaData = false)
         {
+            //Set Stack
+            ValueStack = new NetworkValueStack(StoredValues);
+
+            //Update metadata
+            if (updateMetaData)
+            {
+                totalStoredCache = ValueStack.TotalValue;
+                AllStoredTypes.AddRange(ValueStack.AllTypes);
+            }
             colorInt = Color.clear;
+
             if (StoredValues.Count > 0)
             {
                 foreach (var value in StoredValues)
@@ -503,10 +515,13 @@ namespace TiberiumRim
                     colorInt += value.Key.valueColor * (value.Value / Capacity);
                 }
             }
+            Parent?.Notify_ContainerStateChanged();
         }
 
         //
-        public Gizmo_NetworkStorage ContainerGizmo => new Gizmo_NetworkStorage()
+        private Gizmo_NetworkStorage containerGizmoInt;
+
+        public Gizmo_NetworkStorage ContainerGizmo => containerGizmoInt ??= new Gizmo_NetworkStorage()
         {
             container = this
         };

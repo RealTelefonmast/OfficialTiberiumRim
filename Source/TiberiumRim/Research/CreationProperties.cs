@@ -43,5 +43,10 @@ namespace TiberiumRim
             DirectXmlCrossRefLoader.RegisterObjectWantsCrossRef(this, "def", xmlRoot.Name, null, null);
             this.amount = ParseHelper.FromString<int>(xmlRoot.FirstChild.Value);
         }
+
+        public override string ToString()
+        {
+            return $"{def}[{stuffDef}&{quality}]: {amount}";
+        }
     }
 }

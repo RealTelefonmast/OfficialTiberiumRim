@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -17,7 +18,11 @@ namespace TiberiumRim
         public static Dictionary<int, Color[]> CanvasBySize;
 
         //TR Build Menu
-        private static Dictionary<TRThingDef, Designator_BuildFixed> CachedDesignators;
+        private static Dictionary<ThingDef, Designator> CachedDesignators;
+
+        //
+        private static Dictionary<string, object> MP;
+
 
         static StaticData()
         {
@@ -31,11 +36,12 @@ namespace TiberiumRim
 
             TiberiumMapComp = new Dictionary<int, MapComponent_Tiberium>();
             FlowMapsByMap = new Dictionary<int, RenderTexture>();
-            CachedDesignators = new Dictionary<TRThingDef, Designator_BuildFixed>();
+            CachedDesignators = new Dictionary<ThingDef, Designator>();
         }
 
         public static void Notify_NewTibMapComp(MapComponent_Tiberium mapComp)
         {
+            mapComp.map.GetComponent<MapComponent_Tiberium>();
             TiberiumMapComp[mapComp.map.uniqueID] = mapComp;
             var map = mapComp.map;
             var pixelDensity = TiberiumContent.FlowMapPixelDensity;
@@ -43,15 +49,16 @@ namespace TiberiumRim
         }
 
         //Data Accessors
-        public static Designator_BuildFixed GetDesignatorFor(TRThingDef def)
+        public static T GetDesignatorFor<T>(ThingDef def) where T : Designator
         {
             if (CachedDesignators.TryGetValue(def, out var des))
             {
-                return des;
+                return (T)des;
             }
-            des = new Designator_BuildFixed(def);
-            CachedDesignators.Add(def, des);
-            return des;
+
+            des = (Designator)Activator.CreateInstance(typeof(T), def);
+            CachedDesignators.Add(def, (Designator)Activator.CreateInstance(typeof(T), def));
+            return (T)des;
         }
 
         public static Color[] GetCanvasFor(int size)

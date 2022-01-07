@@ -169,6 +169,10 @@ namespace TiberiumRim
         public bool LeavesPhysicalContainer => false;
 
         public void Notify_ContainerFull() { }
+        public void Notify_ContainerStateChanged()
+        {
+        }
+
         public void Notify_RefineryDestroyed(CompTNS_Refinery notifier)
         {
             ResolveNewRefinery(notifier);
@@ -183,7 +187,7 @@ namespace TiberiumRim
             Scribe_References.Look(ref preferredProducer, "prefProducer");
             Scribe_Defs.Look(ref preferredType, "prefType");
             //Data
-            Scribe_Deep.Look(ref container, "tibContainer");
+            Scribe_Deep.Look(ref container, "tibContainer", this, kindDef.containerProps, kindDef.allowedValues);
             Scribe_Values.Look(ref lastKnownPos, "lastPos");
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
@@ -191,6 +195,10 @@ namespace TiberiumRim
                 if(Refinery != null)
                 {
                     compRefinery = Refinery.GetComp<CompTNS_Refinery>();
+                }
+                else
+                {
+                    ResolveNewRefinery();
                 }
             }
         }
@@ -256,8 +264,9 @@ namespace TiberiumRim
 
             foreach (var refinery in Refineries)
             {
-                if (refinery == lastParent) continue;
-                SetMainRefinery((Building)refinery.Parent.Thing, (CompTNS_Refinery)refinery, lastParent);
+                if (refinery.Parent is not CompTNS_Refinery) continue;
+                if (refinery.Parent == lastParent) continue;
+                SetMainRefinery((Building)refinery.Parent.Thing, (CompTNS_Refinery)refinery.Parent, lastParent);
                 return;
             }
         }

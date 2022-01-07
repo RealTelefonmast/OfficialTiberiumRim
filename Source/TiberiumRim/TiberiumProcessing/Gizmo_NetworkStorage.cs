@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Multiplayer.API;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -17,10 +18,27 @@ namespace TiberiumRim
             this.order = -200f;
         }
 
-        // Token: 0x0600298E RID: 10638 RVA: 0x0013B06B File Offset: 0x0013946B
         public override float GetWidth(float maxWidth)
         {
             return 150; //optionToggled ? 310 : 150f;
+        }
+
+        [SyncWorker]
+        static void SyncWorkerGizNS(SyncWorker sync, ref Gizmo_NetworkStorage type)
+        {
+            if (sync.isWriting)
+            {
+                var netComp = (NetworkComponent)type.container.Parent;
+                var comp = (Comp_NetworkStructure)netComp.Parent;
+                sync.Write(comp);
+                sync.Write(netComp.NetworkDef);
+            }
+            else
+            {
+                var comp = sync.Read<Comp_NetworkStructure>();
+                var def = sync.Read<NetworkDef>();
+                type = comp[def].Container.ContainerGizmo;
+            }
         }
 
         public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
@@ -63,11 +81,13 @@ namespace TiberiumRim
                 }
 
                 GUI.EndGroup();
+                /*
                 if (optionToggled)
                 {
                     Rect Main2 = new Rect(topLeft.x + 160, topLeft.y, 150, 75f);
                     DrawOptions(Main2);
                 }
+                */
 
                 //Right Click Input
                 Event curEvent = Event.current;
@@ -85,32 +105,41 @@ namespace TiberiumRim
             return new GizmoResult(GizmoState.Clear);
         }
 
+        [SyncMethod]
+        private void Debug_AddAll(float part)
+        {
+            foreach (var type in container.AcceptedTypes)
+            {
+                container.TryAddValue(type, part, out _);
+            }
+        }
+
+        [SyncMethod]
+        private void Debug_Clear()
+        {
+            container.Clear();
+        }
+
+        [SyncMethod]
+        private void Debug_AddType(NetworkValueDef type, float part)
+        {
+            container.TryAddValue(type, part, out _);
+        }
+
         public override IEnumerable<FloatMenuOption> RightClickFloatMenuOptions
         {
             get
             {
                 float part = container.Capacity / container.AcceptedTypes.Count;
-                yield return new FloatMenuOption("Add ALL", delegate
-                {
-                    foreach (var type in container.AcceptedTypes)
-                    {
-                        container.TryAddValue(type, part, out _);
-                    }
-                });
+                yield return new FloatMenuOption("Add ALL", delegate { Debug_AddAll(part); });
 
-                yield return new FloatMenuOption("Remove ALL", delegate
-                {
-                    foreach (var type in container.AcceptedTypes)
-                    {
-                        container.TryRemoveValue(type, part, out _);
-                    }
-                });
+                yield return new FloatMenuOption("Remove ALL", Debug_Clear);
 
                 foreach (var type in container.AcceptedTypes)
                 {
                     yield return new FloatMenuOption($"Add {type}", delegate
                     {
-                        container.TryAddValue(type, part, out var _);
+                        Debug_AddType(type, part);
                     });
                 }
             }

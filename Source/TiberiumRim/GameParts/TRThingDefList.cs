@@ -11,6 +11,8 @@ namespace TiberiumRim
         public static List<FactionDesignationDef> FactionDesignations = new List<FactionDesignationDef>();
         public static List<TRThingDef> AllDefs = new List<TRThingDef>();
 
+        public static Dictionary<FactionDesignationDef, Dictionary<TRThingCategoryDef, List<Designator>>> ResolvedDesignators = new();
+
         static TRThingDefList()
         {
             var list1 = DefDatabase<FactionDesignationDef>.AllDefs;
@@ -19,13 +21,16 @@ namespace TiberiumRim
             {
                 FactionDesignationDef des = list1.ElementAt(i);
                 var dict = new Dictionary<TRThingCategoryDef, List<TRThingDef>>();
+                var designatorDict = new Dictionary<TRThingCategoryDef, List<Designator>>();
                 for (int j = 0; j < list2.Count(); j++)
                 {
                     TRThingCategoryDef cat = list2.ElementAt(j);
                     dict.Add(cat, new List<TRThingDef>());
+                    designatorDict.Add(cat, new List<Designator>());
                 }
                 Categorized.Add(des, dict);
                 FactionDesignations.Add(des);
+                ResolvedDesignators.Add(des, designatorDict);
             }
         }
 
@@ -60,6 +65,7 @@ namespace TiberiumRim
             if (!Categorized[def.factionDesignation][def.TRCategory].Contains(def))
             {
                 Categorized[def.factionDesignation][def.TRCategory].Add(def);
+                ResolvedDesignators[def.factionDesignation][def.TRCategory].Add(new Designator_Build(def));
             }
             //if (!props.menuHidden)
                 //Log.Error(props +  " should have menuHidden");

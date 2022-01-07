@@ -37,6 +37,10 @@ namespace TiberiumRim
         }
 
         public void Notify_ContainerFull() { }
+        public void Notify_ContainerStateChanged()
+        {
+          
+        }
 
         public void TransferAllTo(AtmosphericContainer other)
         {

@@ -292,6 +292,11 @@
 				<multiplier>1.5</multiplier>
 			</li>
 		</damageMultipliers>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
 	</TiberiumRim.TRThingDef>
 
 	<!-- Shredder Turret -->

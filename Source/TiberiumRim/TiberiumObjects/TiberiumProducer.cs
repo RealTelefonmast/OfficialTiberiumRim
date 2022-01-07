@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Multiplayer.API;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -50,6 +51,7 @@ namespace TiberiumRim
         protected virtual int MutationTicks => (int)(GenDate.TicksPerDay * def.daysToMature);
 
         public TiberiumField TiberiumField => tiberiumField;
+        public AreaMutator AreaMutator => areaMutator;
         public List<IntVec3> FieldCells => TiberiumField.FieldCells;
         public IEnumerable<TiberiumCrystalDef> TiberiumTypes => Ruleset.TiberiumTypes;
         public TiberiumCrystalDef TiberiumCrystalDefWeighted => (TiberiumCrystalDef)Ruleset.crystalOptions?.RandomElementByWeight(c => c.weight).thing;
@@ -236,6 +238,15 @@ namespace TiberiumRim
             return sb.ToString().TrimStart().TrimEndNewlines();
         }
 
+        [SyncMethod]
+        private void Debug_SpawnTiberium()
+        {
+            foreach (var pos in GenAdj.CellsAdjacent8Way(this))
+            {
+                GenTiberium.SpawnTiberium(pos, Map, TiberiumTypes.RandomElement(), this);
+            }
+        }
+
         public override IEnumerable<Gizmo> GetGizmos()
         {
             foreach (var gizmo in base.GetGizmos())
@@ -263,13 +274,7 @@ namespace TiberiumRim
                 yield return new Command_Action
                 {
                     defaultLabel = "DEBUG: Spawn " + TiberiumTypes?.RandomElement().label,
-                    action = delegate
-                    {
-                        foreach (var pos in GenAdj.CellsAdjacent8Way(this))
-                        {
-                            GenTiberium.SpawnTiberium(pos, Map, TiberiumTypes.RandomElement(), this);
-                        }
-                    }
+                    action = Debug_SpawnTiberium
                 };
             }
 
@@ -278,6 +283,8 @@ namespace TiberiumRim
                 defaultLabel = "DEBUG: Speed Up Growth ",
                 action = delegate
                 {
+                    if(tiberiumField.GrowingCrystals.EnumerableNullOrEmpty())
+                        Debug_SpawnTiberium();
                     tiberiumField.DEBUGFastGrowth();
                 }
             };

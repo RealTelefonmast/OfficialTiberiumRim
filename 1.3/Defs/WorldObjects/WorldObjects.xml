@@ -12,7 +12,19 @@
 		<expandingIconTexture>Buildings/GDI/Defense/IonCannon/ASat</expandingIconTexture>
 		<expandingIconPriority>10</expandingIconPriority>
 	</WorldObjectDef>
-	
+	<!--
+	<WorldObjectDef>
+		<defName>ASat_Spy</defName>
+		<label>Spy Satellite</label>
+		<description>.</description>
+		<worldObjectClass>TiberiumRim.AttackSatellite_Spy</worldObjectClass>
+		<texture>Buildings/GDI/Defense/IonCannon/ASat</texture>
+		<useDynamicDrawer>true</useDynamicDrawer>
+		<expandingIcon>true</expandingIcon>
+		<expandingIconTexture>Buildings/GDI/Defense/IonCannon/ASat</expandingIconTexture>
+		<expandingIconPriority>10</expandingIconPriority>
+	</WorldObjectDef>
+	-->
 	<WorldObjectDef>
 		<defName>TiberiumTile</defName>
 		<label>Tiberium Infestation</label>

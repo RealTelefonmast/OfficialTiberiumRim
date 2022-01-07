@@ -35,7 +35,7 @@ namespace TiberiumRim
     {
         public CompProperties_ANS()
         {
-
+            this.compClass = typeof(Comp_AtmosphericNetworkStructure);
         }
     }
 }

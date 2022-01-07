@@ -17,7 +17,7 @@ namespace TiberiumRim
         public bool HasLeak { get; }
         public bool HasConnection { get; }
         public bool HasContainer { get; }
-        public bool IsReceiving { get; set; }
+        public bool IsReceiving { get; }
 
         public NetworkRole NetworkRole { get; }
 
@@ -26,6 +26,7 @@ namespace TiberiumRim
 
         void Notify_NewComponentAdded(INetworkComponent component);
         void Notify_NewComponentRemoved(INetworkComponent component);
+        void Notify_ReceivedValue();
     }
 
     public interface INetworkStructure

@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using RimWorld;
 using Verse;
 
 namespace TiberiumRim
 {
     public class TRBuilding : FXBuilding, IDiscoverable
     {
-        public new TRThingDef def => (TRThingDef)base.def;
+        public new TRThingDef def => (TRThingDef) base.def;
 
         public override string Label => Discovered ? DiscoveredLabel : UnknownLabel;
 
@@ -29,9 +30,9 @@ namespace TiberiumRim
             foreach (IntVec3 c in this.OccupiedRect())
             {
                 c.GetPlant(Map)?.DeSpawn();
-                if (def.clearTiberium) 
+                if (def.clearTiberium)
                     c.GetTiberium(Map)?.DeSpawn();
-                if(def.makesTerrain != null)
+                if (def.makesTerrain != null)
                     map.terrainGrid.SetTerrain(c, def.makesTerrain);
             }
         }
@@ -58,9 +59,23 @@ namespace TiberiumRim
         {
             string str = base.GetInspectString();
             if (IsDiscoverable && !Discovered)
-                str += "\n"+"TR_NotDiscovered".Translate();
+                str += "\n" + "TR_NotDiscovered".Translate();
 
             return str;
+        }
+
+        public static TargetingParameters ForAny()
+        {
+            return new TargetingParameters
+            {
+                canTargetLocations = true,
+                canTargetBuildings = false,
+                canTargetFires = false,
+                canTargetItems = false,
+                canTargetPawns = false,
+                canTargetSelf = false,
+                validator = t => t.Cell.InBounds(Find.CurrentMap)
+            };
         }
 
         public override IEnumerable<Gizmo> GetGizmos()
@@ -70,13 +85,14 @@ namespace TiberiumRim
                 yield return g;
             }
 
+            //
             //if(!def.devObject)
-                //yield return new Designator_BuildFixed(def);
+            //yield return new Designator_BuildFixed(def);
 
             if (def.superWeapon?.ResolvedDesignator != null)
                 yield return def.superWeapon.ResolvedDesignator;
 
-            if(!DebugSettings.godMode) yield break;
+            if (!DebugSettings.godMode) yield break;
 
             if (IsDiscoverable && !Discovered)
             {
@@ -86,6 +102,7 @@ namespace TiberiumRim
                     action = delegate { DiscoveryDef.Discover(); }
                 };
             }
+
         }
     }
 }

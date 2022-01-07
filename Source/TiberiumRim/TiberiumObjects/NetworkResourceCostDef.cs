@@ -5,8 +5,12 @@ namespace TiberiumRim
 {
     public class NetworkResourceCostDef : Def
     {
-        public ThingDef resource;
         public float costMultiplier = 1;
-        public List<NetworkCostValue> specificTypes;
+        public List<NetworkCostValue> costValues;
+
+        //Outcome
+        //public DefFloat<>
+        //public ThingDefCount outThingDef;
+       // public NetworkValueDef outValue;
     }
 }

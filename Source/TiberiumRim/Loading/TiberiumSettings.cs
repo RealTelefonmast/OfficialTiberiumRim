@@ -27,7 +27,7 @@ namespace TiberiumRim
         public float SpreadMltp = 1f;
 
 
-        //Graphics Settings
+        //Overlays Settings
         public GraphicsSettings graphicsSettings = new GraphicsSettings();
         public bool UseCustomBackground = true;
 

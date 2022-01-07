@@ -79,7 +79,7 @@ namespace TiberiumRim
             exactScale2.z *= Graphic.data.drawSize.y;
             matrix.SetTRS(DrawPos, ExactRotation, exactScale2);
             Material matSingle = GraphicSprite.CurrentGraphic(this).MatSingle;
-            //Graphics.DrawMesh(MeshPool.plane10, matrix, matSingle, 0, null, 0);
+            //Overlays.DrawMesh(MeshPool.plane10, matrix, matSingle, 0, null, 0);
 
             propertyBlock.SetColor(ShaderPropertyIDs.Color, color);
             Graphics.DrawMesh(MeshPool.plane10, matrix, matSingle, 0, null, 0, propertyBlock);
@@ -87,7 +87,7 @@ namespace TiberiumRim
             //Mesh mesh = MeshPool.GridPlane(GraphicSprite.data.drawSize);
             //GraphicSprite.DrawWorker(DrawPos, );
 
-            //Graphics.DrawMesh(mesh, DrawPos, ExactRotation, GraphicSprite.CurrentGraphic(this).MatSingle, 0);
+            //Overlays.DrawMesh(mesh, DrawPos, ExactRotation, GraphicSprite.CurrentGraphic(this).MatSingle, 0);
             //Comps_PostDraw();
         }
     }

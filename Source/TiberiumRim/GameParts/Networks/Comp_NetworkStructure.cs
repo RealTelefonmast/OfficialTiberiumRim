@@ -13,18 +13,18 @@ namespace TiberiumRim
     public class Comp_NetworkStructure : ThingComp, IFXObject, INetworkStructure
     {
         //Comp References
-        protected CompPowerTrader powerComp;
-        protected CompFlickable flickComp;
-        protected CompFX fxComp;
-        protected MapComponent_Tiberium TiberiumMapComp;
+        private CompPowerTrader powerComp;
+        private CompFlickable flickComp;
+        private CompFX fxComp;
+        private MapComponent_Tiberium TiberiumMapComp;
 
         //Fields
-        protected NetworkMapInfo NetworkInfo;
-        protected IntVec3[][] innerConnectionCellsByRot;
-        protected IntVec3[][] connectionCellsByRot;
+        private NetworkMapInfo NetworkInfo;
+        private IntVec3[][] innerConnectionCellsByRot;
+        private IntVec3[][] connectionCellsByRot;
 
-        protected List<NetworkComponent> networkParts = new();
-        protected Dictionary<NetworkDef, NetworkComponent> networkComponentByDef = new();
+        private List<NetworkComponent> networkParts = new();
+        private Dictionary<NetworkDef, NetworkComponent> networkComponentByDef = new();
 
         //Debug
         protected static bool DebugConnectionCells = false;
@@ -48,13 +48,23 @@ namespace TiberiumRim
         //public NetworkStructureSet NeighbourStructureSet { get => structureSet; protected set => structureSet = value; }
 
         //FX Data
+        
         public ExtendedGraphicData ExtraData => (parent as IFXObject)?.ExtraData ?? new ExtendedGraphicData();
         public virtual Vector3[] DrawPositions => new Vector3[] { parent.DrawPos, parent.DrawPos, parent.DrawPos };
         public virtual Color[] ColorOverrides => new Color[] { Color.white, Color.white, Color.white };
         public virtual float[] OpacityFloats => new float[] { 1f, 1f, 1f };
         public virtual float?[] RotationOverrides => new float?[] { null, null, null };
         public virtual float?[] AnimationSpeeds => null;
-        public virtual bool[] DrawBools => new bool[] { true, networkParts.Any(t => t.HasConnection), true };
+
+        // !networkParts.NullOrEmpty() && networkParts.Any(t => t?.HasConnection ?? false)
+        public virtual bool[] DrawBools
+        {
+            get
+            {
+                return new bool[] {true, false, true};
+            }
+        }
+
         public virtual Action<FXGraphic>[] Actions => null;
         public virtual Vector2? TextureOffset => null;
         public virtual Vector2? TextureScale => null;
@@ -96,6 +106,15 @@ namespace TiberiumRim
         public override void PostExposeData()
         {
             base.PostExposeData();
+            Scribe_Collections.Look(ref networkParts, "networkParts", LookMode.Deep, this);
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                foreach (var newComponent in networkParts)
+                {
+                    networkComponentByDef.Add(newComponent.NetworkDef, newComponent);
+                    newComponent.ComponentSetup(true);
+                }
+            }
         }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -113,12 +132,16 @@ namespace TiberiumRim
             NetworkInfo = TiberiumMapComp.NetworkInfo;
 
             //Create NetworkComponents
-            foreach (var compProps in Props.networks)
+            if (!respawningAfterLoad)
             {
-                var newComponent = new NetworkComponent(this, compProps);
-                networkParts.Add(newComponent);
-                networkComponentByDef.Add(compProps.networkDef, newComponent);
-                newComponent.ComponentSetup(respawningAfterLoad);
+                for (var i = 0; i < Props.networks.Count; i++)
+                {
+                    var compProps = Props.networks[i];
+                    var newComponent = new NetworkComponent(this, compProps, i);
+                    networkParts.Add(newComponent);
+                    networkComponentByDef.Add(compProps.networkDef, newComponent);
+                    newComponent.ComponentSetup(respawningAfterLoad);
+                }
             }
 
             //Check for neighbor intersections
@@ -144,10 +167,28 @@ namespace TiberiumRim
         public override void CompTick()
         {
             base.CompTick();
+            var isPowered = IsPowered;
             foreach (var networkPart in networkParts)
             {
-                networkPart.NetworkCompTick();
+                networkPart.NetworkCompTick(isPowered);
+                NetworkCompProcessor(networkPart, isPowered);
             }
+            DoNetworkProcessCustom(isPowered);
+        }
+
+        public override void ReceiveCompSignal(string signal)
+        {
+            TLog.Message($"Receiving signal: '{signal}'");
+            base.ReceiveCompSignal(signal);
+        }
+
+        protected virtual void DoNetworkProcessCustom(bool isPowered)
+        {
+
+        }
+
+        protected virtual void NetworkCompProcessor(NetworkComponent netComp, bool isPowered)
+        {
         }
 
         public virtual bool AcceptsValue(NetworkValueDef value)
@@ -247,6 +288,7 @@ namespace TiberiumRim
                 yield return g;
             }
 
+            if (!DebugSettings.godMode) yield break;
 
             yield return new Command_Action()
             {

@@ -13,6 +13,8 @@ namespace TiberiumRim
         public GroundZeroInfo GroundZeroInfo;
         public SuperWeaponInfo SuperWeaponInfo;
         public SatelliteInfo SatelliteInfo;
+        public WorldDataInfo WorldDataInfo;
+
 
         //
         public GameSettingsInfo GameSettings;
@@ -45,6 +47,7 @@ namespace TiberiumRim
             SuperWeaponInfo ??= new SuperWeaponInfo(world);
             SatelliteInfo ??= new SatelliteInfo(world);
             GameSettings ??= new GameSettingsInfo(world);
+            WorldDataInfo ??= new WorldDataInfo(world);
         }
 
         public WorldComponent_TR(World world) : base(world)
@@ -55,6 +58,11 @@ namespace TiberiumRim
         public override void FinalizeInit()
         {
             base.FinalizeInit();
+        }
+
+        public void Notify_RegisterNewObject(GlobalTargetInfo worldObjectOrThing)
+        {
+            WorldDataInfo.RegisterMapWatcher(worldObjectOrThing);
         }
 
         public void Notify_TiberiumArrival(Map map)

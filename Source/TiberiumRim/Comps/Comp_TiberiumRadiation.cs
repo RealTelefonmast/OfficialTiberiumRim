@@ -114,7 +114,6 @@ namespace TiberiumRim
             {
                 intensity -= fraction;
                 var building = point.GetFirstBuilding(map);
-                var penis = 1;
                 if (thingToIgnore != null && thingToIgnore == building) continue;
                 if (building != null && building != this.parent)
                 {

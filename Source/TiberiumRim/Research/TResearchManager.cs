@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Multiplayer.API;
 using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
@@ -8,7 +9,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class TResearchManager : WorldComponent, IExposable
+    public class TResearchManager : WorldComponent, IExposable //, ISynchronizable
     {
         //Research Progress Data
         public Dictionary<TResearchTaskDef, float> TaskProgress = new Dictionary<TResearchTaskDef, float>();
@@ -22,13 +23,23 @@ namespace TiberiumRim
         private readonly Dictionary<TResearchGroupDef, bool[]> researchGroupData = new Dictionary<TResearchGroupDef, bool[]>();
 
         private TResearchTaskDef taskOverride;
-        public TResearchDef currentProject;
+        private TResearchDef currentProject;
 
         public TResearchTaskDef TaskOverride
         {
             get => taskOverride;
+            [SyncMethod]
             set => taskOverride = value;
         }
+
+        public TResearchDef CurrentProject
+        {
+            get => currentProject;
+            [SyncMethod]
+            set => currentProject = value;
+        }
+
+        public List<TResearchGroupDef> Groups => researchGroupData.Keys.ToList();
 
         //Static data
         public static float researchFactor = 0.01f;
@@ -46,7 +57,21 @@ namespace TiberiumRim
             creationTable = new ResearchCreationTable();
         }
 
-        public List<TResearchGroupDef> Groups => researchGroupData.Keys.ToList();
+        /*
+        public void Sync(SyncWorker sync)
+        {
+            sync.Bind(ref this.currentProject);
+            sync.Bind(ref this.TaskProgress);
+            sync.Bind(ref this.TasksCompleted);
+            sync.Bind(ref this.ResearchCompleted);
+        }
+        */
+
+        [SyncWorker]
+        static void SyncTResearchManager(SyncWorker sync, ref TResearchManager type)
+        {
+            type = Find.World.GetComponent<TResearchManager>();
+        }
 
         public override void ExposeData()
         {
@@ -62,20 +87,29 @@ namespace TiberiumRim
         public override void WorldComponentTick()
         {
             base.WorldComponentTick();
-            if (currentProject == null)
+            if (CurrentProject == null)
                 return;
 
             if (checkTick <= 0)
             {
-                CheckGroup(currentProject.ParentGroup);
+                CheckGroup(CurrentProject.ParentGroup);
                 checkTick = 2000;
             }
             checkTick--;
         }
 
-        public void StartResearch(TResearchDef project)
+        [SyncMethod]
+        public void StartResearch(TResearchDef project, bool sameFlag)
         {
-            currentProject = project.Equals(currentProject) ? null : project;
+            if (!sameFlag)
+            {
+                Messages.Message("TR_StartedProject".Translate(project.LabelCap), MessageTypeDefOf.NeutralEvent, false);
+                CurrentProject = project;
+            }
+            else
+            {
+                CurrentProject = null;
+            }
         }
 
         public void DoCompletionDialog(TResearchDef proj)
@@ -96,6 +130,7 @@ namespace TiberiumRim
 
         private void CheckGroup(TResearchGroupDef group)
         {
+            TLog.Debug($"Checking Research Group {group}");
             if (group.IsFinished)
                 return;
             foreach (var research in group.researchProjects)
@@ -108,24 +143,22 @@ namespace TiberiumRim
 
         private bool CheckResearch(TResearchDef research)
         {
+            TLog.Debug($"Checking Research Project {research}");
             if (research.IsFinished)
                 return false;
+
             foreach (var task in research.tasks)
             {
                 if (!CheckTask(task))
                     return false;
             }
             Complete(research);
-            research.TriggerEvents();
-            research.FinishAction();
-            currentProject = null;
-            DoCompletionDialog(research);
-            CheckGroup(research.ParentGroup);
             return true;
         }
 
         public bool CheckTask(TResearchTaskDef task)
         {
+            TLog.Debug($"Checking Research Task '{task}'");
             if (IsCompleted(task))
                 return true;
             if (task.ProgressToDo > 0 && task.ProgressReal < task.ProgressToDo)
@@ -133,18 +166,12 @@ namespace TiberiumRim
             if (!task.Worker.PlayerTaskCompleted())
                 return false;
             SetCompleted(task, true);
-            task.DoDiscoveries();
-            task.TriggerEvents();
-            task.Worker.FinishAction();
-            TaskOverride = null;
-            Messages.Message("TR_ResearchTaskDone".Translate(task.LabelCap), MessageTypeDefOf.TaskCompletion, false);
-            CheckResearch(task.ParentProject);
             return true;
         }
 
         public bool TaskActive(TResearchTaskDef task)
         {
-            return currentProject != null && currentProject.CurrentTask == task;
+            return CurrentProject != null && CurrentProject.CurrentTask == task;
         }
 
         //Research Groups
@@ -158,8 +185,10 @@ namespace TiberiumRim
             researchGroupData[group][0] = !researchGroupData[group][0];
         }
 
+        [SyncMethod(SyncContext.None)]
         public void Complete(TResearchGroupDef group)
         {
+            TLog.Debug($"Completing Research Group {group}");
             researchGroupData[group][1] = true;
         }
 
@@ -169,10 +198,18 @@ namespace TiberiumRim
         }
 
         //Research Projects
-        public void Complete(TResearchDef def)
+        [SyncMethod(SyncContext.None)]
+        public void Complete(TResearchDef researchDef)
         {
-            if (!ResearchCompleted.ContainsKey(def))
-                ResearchCompleted.Add(def, true);
+            TLog.Debug($"Completing Research Project {researchDef}");
+            if (!ResearchCompleted.ContainsKey(researchDef))
+                ResearchCompleted.Add(researchDef, true);
+
+            researchDef.TriggerEvents();
+            researchDef.FinishAction();
+            CurrentProject = null;
+            DoCompletionDialog(researchDef);
+            CheckGroup(researchDef.ParentGroup);
         }
 
         public bool IsCompleted(TResearchDef research)
@@ -182,14 +219,26 @@ namespace TiberiumRim
         }
 
         //Research Tasks
+        [SyncMethod(SyncContext.None)]
         public void SetCompleted(TResearchTaskDef task, bool completed)
         {
+            TLog.Debug($"Completing Research Task {task} -> {completed}");
             if (!TasksCompleted.ContainsKey(task))
             {
                 TasksCompleted.Add(task, completed);
-                return;
             }
             TasksCompleted[task] = completed;
+            if (completed)
+            {
+                TLog.Debug($"Doing completed actions...");
+                task.DoDiscoveries();
+                task.TriggerEvents();
+                task.Worker.FinishAction();
+                TaskOverride = null;
+                Messages.Message("TR_ResearchTaskDone".Translate(task.LabelCap), MessageTypeDefOf.TaskCompletion, false);
+                CheckResearch(task.ParentProject);
+            }
+
         }
 
         public bool IsCompleted(TResearchTaskDef task)

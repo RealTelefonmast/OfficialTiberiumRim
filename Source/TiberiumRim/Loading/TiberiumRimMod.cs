@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using HarmonyLib;
 using RimWorld;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace TiberiumRim
 
         //
         public TiberiumSettings settings;
+        public static bool isDebug = true;
 
         public static Harmony Tiberium => tiberium ??= new Harmony("telefonmast.tiberiumrim");
 
@@ -25,18 +27,53 @@ namespace TiberiumRim
         {
             get
             {
-                string mainBundlePath = Path.Combine(Content.RootDir, @"Materials\Shaders\tiberiumrimbundle");
+                string pathPart = "";
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                    pathPart = "StandaloneOSX";
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    pathPart = "StandaloneWindows";
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                    pathPart = "StandaloneLinux64";
+
+                string mainBundlePath = Path.Combine(Content.RootDir, $@"Materials\Bundles\{pathPart}\tiberiumrimbundle");
                 return AssetBundle.LoadFromFile(mainBundlePath);
             }
         }
 
+        /*
+PlatformID pid = System.Environment.OSVersion.Platform;
+switch (pid)
+{
+    case PlatformID.Win32NT:
+    case PlatformID.Win32S:
+    case PlatformID.Win32Windows:
+    case PlatformID.WinCE:
+        Console.WriteLine("I'm on windows!");
+        break;
+    case PlatformID.Unix:
+        Console.WriteLine("I'm a linux box!");
+        break;
+    case PlatformID.MacOSX:
+        Console.WriteLine("I'm a mac!");
+        break;
+    default:
+        Console.WriteLine("No Idea what I'm on!");
+        break;
+}
+*/
+
         public TiberiumRimMod(ModContentPack content) : base(content)
         {
+            mod = this;
+
             Log.Message("[TiberiumRim] - Init");
             settings = GetSettings<TiberiumSettings>();
 
+            //
             Tiberium.PatchAll(Assembly.GetExecutingAssembly());
-            mod = this;
+
+            //
+            
         }
 
         public override void WriteSettings()

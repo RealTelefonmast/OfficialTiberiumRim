@@ -26,6 +26,21 @@ namespace TiberiumRim
             }
         }
 
+        [HarmonyPatch(typeof(MapParent), nameof(MapParent.ShouldRemoveMapNow))]
+        [HarmonyPatch(typeof(Settlement), nameof(MapParent.ShouldRemoveMapNow))]
+        public static class MapParentShouldRemoveMapNow_Patch
+        {
+            public static void Postfix(MapParent __instance, ref bool alsoRemoveWorldObject, ref bool __result)
+            {
+                var isWatched = TRUtils.Tiberium().WorldDataInfo.IsSpiedOn(__instance.Map);
+                if (isWatched)
+                {
+                    __result = false;
+                    alsoRemoveWorldObject = false;
+                }
+            }
+        }
+
         /*
         //Map/Game Load Patch
         [HarmonyPatch(typeof(Root_Play), nameof(Root_Play.Start))]

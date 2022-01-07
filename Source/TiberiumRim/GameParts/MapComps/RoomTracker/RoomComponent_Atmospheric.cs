@@ -10,6 +10,8 @@ namespace TiberiumRim
     public class RoomComponent_Atmospheric : RoomComponent
     {
         private int markedDirty;
+        //
+        private bool menuActive = false;
 
         private FlowRenderer renderer;
         private VectorField vectorField;
@@ -328,6 +330,16 @@ namespace TiberiumRim
             };
         }
 
+        //
+        public void ToggleOverlay()
+        {
+            menuActive = !menuActive;
+            if (!menuActive)
+            {
+                DrawDebug = false;
+            }
+        }
+
         //RENDERING
         public override void OnGUI()
         {
@@ -340,7 +352,7 @@ namespace TiberiumRim
                 GenMapUI.DrawThingLabel(v,  $"{Room.ID} [{ActualValue}]({UsedContainer.Container.Capacity})", Color.red);
             }
             */
-            if (Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest && !IsOutdoors && !IsConnector)
+            if (menuActive && Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest && !IsOutdoors && !IsConnector)
             {
                 if (Room.CellCount <= 0) return;
                 DrawMenu(Room.Cells.First());
@@ -358,12 +370,11 @@ namespace TiberiumRim
             //vectorField.OnGUI();
         }
 
-        private bool minimized = false;
-
         private void DrawMenu(IntVec3 pos)
         {
             var v = DrawPosFor(pos) - new Vector2(0, 69);
 
+            /*
             if (minimized)
             {
                 var smolRect = new Rect(v.x, v.y, 25, 15);
@@ -374,6 +385,7 @@ namespace TiberiumRim
                 }
                 return;
             }
+            */
 
             //46 - approx cell size when zoomed in
 
@@ -425,8 +437,6 @@ namespace TiberiumRim
             Event curEvent = Event.current;
             if (Widgets.ButtonInvisible(rect.AtZero()))
             {
-                if (curEvent.button == 0)
-                    minimized = true;
                 if(curEvent.button == 1)
                     DrawDebug = !DrawDebug;
             }

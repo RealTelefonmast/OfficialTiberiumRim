@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using Multiplayer.API;
+using TiberiumRim.GameParts.Interfaces;
 using UnityEngine;
 using Verse;
 
@@ -28,9 +31,28 @@ namespace TiberiumRim
         public IEnumerable<TiberiumCrystal> FieldCrystals => tiberium;
         public IEnumerable<TiberiumCrystal> GrowingCrystals => FieldCrystals.Where(t => t.Spawned && t.ShouldSpread);
 
-        public bool MarkedForFastGrowth => fastFastGrowth;
+        public bool MarkedForFastGrowth
+        {
+            get { return fastFastGrowth; }
+            [SyncMethod]
+            private set => fastFastGrowth = value;
+        }
 
         public int TotalWorth => FieldCrystals.Sum(c => (int)c.HarvestValue);
+
+        [SyncWorker]
+        static void SyncWorkerTibField(SyncWorker sync, ref TiberiumField type)
+        {
+            if (sync.isWriting)
+            {
+                sync.Write(type.mainProducer);
+            }
+            else
+            {
+                var thing = sync.Read<TiberiumProducer>();
+                type = thing.TiberiumField;
+            }
+        }
 
         public TiberiumField()
         {
@@ -96,21 +118,23 @@ namespace TiberiumRim
 
         public void DEBUGFastGrowth()
         {
-            fastFastGrowth = !fastFastGrowth;
+            MarkedForFastGrowth = !MarkedForFastGrowth;
         }
 
         public string InspectString()
         {
-            string fieldString = "Tiberium Field:";
-            fieldString += "\nField Size: " + fieldCellArea.Count;
-            fieldString += "\nTiberium Crystals: " + tiberium.Count;
-            fieldString += "\nGrowing Crystals: " + GrowingCrystals.Count();//crystalsToGrow.Count;
-            fieldString += "\nTotal Field Value: " + TotalWorth;
-            fieldString += "\nFast Growth Enabled: " + fastFastGrowth;
-            if (fastFastGrowth)
-                fieldString += "\nIteration Tick: " + iterationTicks;
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("==Tiberium Field==");
+            sb.AppendLine($"[FastGrowth]: {MarkedForFastGrowth}");
+            sb.AppendLine($"Field Size: {fieldCellArea?.Count}");
+            sb.AppendLine($"Tiberium Crystals: {tiberium?.Count}");
+            sb.AppendLine($"Growing Crystals:  {GrowingCrystals?.Count()}"); 
+            sb.AppendLine($"Total Field Value: {TotalWorth}");
+
+            if (MarkedForFastGrowth)
+                sb.AppendLine($"Iteration Tick: {iterationTicks}");
             //fieldString += "\n" + (mutationTicks - (GenTicks.TicksGame - startTick)) + " Ticks Remaining";
-            return fieldString;
+            return sb.ToString().TrimStart().TrimEnd();
         }
 
         public void DrawField()

@@ -7,12 +7,12 @@
 		<researchProjects>
 			<li>GreenSky</li>
 			<li>MineralAnalysis</li>
-			<li>TiberiumProtection</li>
 			<li>TiberiumRefining</li>
-			<li>TiberiumSuppressionBasic</li>
-			<li>TiberiumPower</li>
-			<li>TiberiumForaging</li>
 			<li>TiberiumGasRefining</li>
+			<li>TiberiumPower</li>
+			<li>TiberiumProtection</li>
+			<li>TiberiumSuppressionBasic</li>
+			<li>TiberiumForaging</li>
 		</researchProjects>
 	</TiberiumRim.TResearchGroupDef>
 	

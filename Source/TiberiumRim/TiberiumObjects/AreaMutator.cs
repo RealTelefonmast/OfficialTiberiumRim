@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Multiplayer.API;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -13,7 +14,6 @@ namespace TiberiumRim
 
         private Map map;
         private IntVec3 center;
-
 
         //Static Data
         private int mutationTicks;
@@ -49,6 +49,20 @@ namespace TiberiumRim
             Scribe_Collections.Look(ref MutatedArea, "mutatedArea");
             Scribe_Collections.Look(ref CurrentCells, "currentCells");
             Scribe_Collections.Look(ref NewCells, "newCells");
+        }
+
+        [SyncWorker]
+        static void SyncWorkerAreaMutator(SyncWorker sync, ref AreaMutator type)
+        {
+            if (sync.isWriting)
+            {
+                sync.Write(type.tibField);
+            }
+            else
+            {
+                var field = sync.Read<TiberiumField>();
+                type = field.MainProducer.AreaMutator;
+            }
         }
 
         //Reload Values after load
@@ -121,7 +135,7 @@ namespace TiberiumRim
                     while (NewCells.Count < seekerCellCount)
                     {
                         //Find New Edge Cell
-                        var allPossibleCells = MutatedArea.SelectMany(GenAdjFast.AdjacentCellsCardinal);
+                        var allPossibleCells = MutatedArea.Any() ? MutatedArea.SelectMany(GenAdjFast.AdjacentCellsCardinal) : tibField?.MainProducer.OccupiedRect().ExpandedBy(1).Cells.ToList();
                         var allAdjacentOnly = allPossibleCells.Except(MutatedArea).ToList();
                         if (allAdjacentOnly.NullOrEmpty())
                         {
@@ -211,6 +225,7 @@ namespace TiberiumRim
             GenSpawn.Spawn(plant, pos, map);
         }
 
+        [SyncMethod]
         public TiberiumProducer CreateBlossom()
         {
             bool Predicate(IntVec3 x) => x.InBounds(map) && !x.IsSuppressed(map) && tibField.FieldCells.Contains(x);

@@ -12,6 +12,12 @@
 				<li>MapEdge</li>
 			</linkFlags>
 		</graphicData>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+				<radius>3.75</radius>
+				<intensity>0.75</intensity>
+			</li>
+		</comps>
 		<altitudeLayer>Building</altitudeLayer>
 		<blockWind>true</blockWind>
 		<castEdgeShadows>true</castEdgeShadows>

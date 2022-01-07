@@ -11,7 +11,7 @@ namespace TiberiumRim
     {
         //TODO: Add customizable tab for favorites
         //Static Data
-        private static Designator_BuildFixed mouseOverGizmo;
+        private static Gizmo mouseOverGizmo;
         private static TRThingDef inactiveDef;
 
         //Settings
@@ -43,6 +43,7 @@ namespace TiberiumRim
 
         public override string LabelCap => CurrentDesignator?.LabelCap;
         public override string Desc => CurrentDesignator?.Desc;
+        private Designator CurrentDesignator => (Designator)(mouseOverGizmo ?? Find.DesignatorManager.SelectedDesignator);
 
         public void Select(TRThingDef def)
         {
@@ -211,14 +212,19 @@ namespace TiberiumRim
             {
                 if (!def.ConstructionOptionDiscovered)
                     def.ConstructionOptionDiscovered = true;
-                mouseOverGizmo = StaticData.GetDesignatorFor(def);
+                
+                mouseOverGizmo = def.devObject ? StaticData.GetDesignatorFor<Designator_BuildGodMode>(def) : StaticData.GetDesignatorFor<Designator_Build>(def);
                 Text.Anchor = TextAnchor.UpperCenter;
                 Widgets.Label(rect, def.LabelCap);
                 Text.Anchor = 0;
                 TooltipHandler.TipRegion(rect, def.LabelCap);
             }
+
             if (Widgets.ButtonInvisible(rect))
-            { mouseOverGizmo.ProcessInput(null); }
+            {
+                mouseOverGizmo.ProcessInput(null);
+                Event.current.Use();
+            }
             AdjustXY(ref XY, size.x, size.x, main.width, 5);
         }
 
@@ -330,8 +336,6 @@ namespace TiberiumRim
         {
             return true;
         }
-
-        private Designator_BuildFixed CurrentDesignator => mouseOverGizmo ?? Find.DesignatorManager.SelectedDesignator as Designator_BuildFixed;
 
         private Texture2D IconForIndex(int i)
         {

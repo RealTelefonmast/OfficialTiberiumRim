@@ -8,7 +8,7 @@ namespace TiberiumRim
     public class WorkGiver_TResearch : WorkGiver_Scanner
     {
         private TResearchManager Manager => TRUtils.ResearchManager();
-        private TResearchTaskDef CurrentTask => Manager.currentProject?.CurrentTask;
+        private TResearchTaskDef CurrentTask => Manager.CurrentProject?.CurrentTask;
 
         public override bool Prioritized => true;
 
@@ -16,7 +16,7 @@ namespace TiberiumRim
         {
             get
             {
-                if (Manager.currentProject != null && CurrentTask.HasSingleTarget)
+                if (Manager.CurrentProject != null && CurrentTask.HasSingleTarget)
                     return ThingRequest.ForDef(CurrentTask.MainTarget);
                 return ThingRequest.ForGroup(ThingRequestGroup.Nothing);
             }
@@ -24,7 +24,7 @@ namespace TiberiumRim
 
         public override bool ShouldSkip(Pawn pawn, bool forced = false)
         {
-            return Manager.currentProject == null || !Manager.currentProject.CurrentTask.HasAnyTarget;
+            return Manager.CurrentProject == null || !Manager.CurrentProject.CurrentTask.HasAnyTarget;
         }
 
         public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
@@ -36,7 +36,7 @@ namespace TiberiumRim
         //The pawn needs to be able to do the worktype
         public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
-            TResearchDef currentProj = TRUtils.ResearchManager().currentProject;
+            TResearchDef currentProj = TRUtils.ResearchManager().CurrentProject;
             if (currentProj == null) return false;
             if (!(t as ThingWithComps).IsPoweredOn()) return false;
             if (!PawnCapable(pawn, out string reason))

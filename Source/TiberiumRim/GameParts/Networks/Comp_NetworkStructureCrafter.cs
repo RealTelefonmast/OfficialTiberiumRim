@@ -12,7 +12,7 @@ namespace TiberiumRim
     public class Comp_NetworkStructureCrafter : Comp_NetworkStructure
     {
         public new Building_WorkTable parent;
-        public TiberiumBillStack billStack;
+        public NetworkBillStack billStack;
 
         //CompFX
         public Color CurColor => Color.clear;//CurBill?.BillColor ?? Color.clear;
@@ -23,14 +23,14 @@ namespace TiberiumRim
 
         //Crafter Code
         public bool IsWorkedOn => BillStack.CurrentBill != null;
-        public TiberiumBillStack BillStack => billStack;
+        public NetworkBillStack BillStack => billStack;
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
             parent = base.parent as Building_WorkTable;
             if (!respawningAfterLoad)
-                billStack = new TiberiumBillStack(this);
+                billStack = new NetworkBillStack(this);
         }
 
         public override void PostExposeData()

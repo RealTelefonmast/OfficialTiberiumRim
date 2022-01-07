@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -48,7 +49,10 @@ namespace TiberiumRim
 
         protected NetworkComponentProperties props;
 
-        protected List<INetworkComponent> currentReceivers = new List<INetworkComponent>();
+        //SaveHelper
+        private int savedPropsIndex = -1;
+
+        //protected List<INetworkComponent> currentReceivers = new List<INetworkComponent>();
 
         //DEBUG
         protected bool DebugNetworkCells = false;
@@ -58,11 +62,15 @@ namespace TiberiumRim
 
         //Network Data
         public bool IsMainController => Network.NetworkController == Parent;
-        public bool IsPowered => parent.IsPowered;
+        public bool IsActive => Network.IsWorking;
         public bool HasLeak => false;
         public bool HasConnection => ConnectedComponentSet.Transmitters.Any();
         public bool HasContainer => Props.containerProps != null;
-        public bool IsReceiving { get; set; }
+
+        private int receivingTicks;
+
+        public bool IsReceiving => receivingTicks > 0;
+
         public NetworkRole NetworkRole => Props.NetworkRole;
 
         public INetworkStructure Parent => parent;
@@ -78,21 +86,34 @@ namespace TiberiumRim
             private set => container = value;
         }
 
-        public NetworkComponent(Comp_NetworkStructure parent, NetworkComponentProperties properties)
+        public NetworkComponent(Comp_NetworkStructure parent)
+        {
+            this.parent = parent;
+        }
+
+        public NetworkComponent(Comp_NetworkStructure parent, NetworkComponentProperties properties, int index)
         {
             this.parent = parent;
             this.props = properties;
+            this.savedPropsIndex = index;
         }
 
         public virtual void ExposeData()
         {
-            Scribe_Deep.Look(ref container, "container");
+            Scribe_Values.Look(ref savedPropsIndex, "propsIndex", -1);
+            if (Scribe.mode == LoadSaveMode.LoadingVars)
+            {
+                if(savedPropsIndex >= 0)
+                   props = parent.Props.networks[savedPropsIndex];
+            }
+            Scribe_Deep.Look(ref container, "container", this, Props.containerProps, Props.allowedValues);
         }
 
         public void ComponentSetup(bool respawningAfterLoad)
         {
             //Generate components
             componentSet = new NetworkComponentSet(NetworkDef, this);
+            if (respawningAfterLoad) return;
             if (HasContainer)
                 Container = new NetworkContainer(this, Props.containerProps, Props.allowedValues);
 
@@ -105,13 +126,11 @@ namespace TiberiumRim
             Network.RemoveComponent(this);
         }
 
-        public virtual void NetworkCompTick()
+        public virtual void NetworkCompTick(bool isPowered)
         {
-            if (!Network.IsWorking || !IsPowered || IsMainController)
-            {
-                StopBinding();
-                return;
-            }
+            if(receivingTicks > 0)
+                receivingTicks--;
+            if (!isPowered || !IsActive) return;
             ProcessValues();
         }
 
@@ -119,6 +138,9 @@ namespace TiberiumRim
         public void Notify_ContainerFull()
         {
 
+        }
+        public void Notify_ContainerStateChanged()
+        {
         }
 
         public void Notify_NewComponentAdded(INetworkComponent component)
@@ -131,21 +153,9 @@ namespace TiberiumRim
             ConnectedComponentSet.RemoveComponent(component);
         }
 
-        public void StartBinding(INetworkComponent toOther)
+        public void Notify_ReceivedValue()
         {
-            currentReceivers.Add(toOther);
-            toOther.IsReceiving = true;
-        }
-
-        public void StopBinding(INetworkComponent toOther)
-        {
-            currentReceivers.Remove(toOther);
-            toOther.IsReceiving = false;
-        }
-
-        public void StopBinding()
-        {
-            currentReceivers.ForEach(r => r.IsReceiving = false);
+            receivingTicks++;
         }
 
         //Network 
@@ -185,9 +195,12 @@ namespace TiberiumRim
             TransferToOthers(NetworkRole.Consumer, false);
         }
 
+        protected virtual void ConsumerTick()
+        {
+        }
+
         private void TransferToOthers(NetworkRole ofRole, bool evenly)
         {
-            StopBinding();
             if (!Container.HasValueStored) return;
             foreach (var component in Network.ComponentSet[ofRole])
             {
@@ -201,14 +214,10 @@ namespace TiberiumRim
                     if (!component.NeedsValue(type)) continue;
                     if (Container.TryTransferTo(component.Container, type, 1))
                     {
-                        StartBinding(component);
+                        component.Notify_ReceivedValue();
                     }
                 }
             }
-        }
-
-        protected virtual void ConsumerTick()
-        {
         }
 
         public void SendFirstValue(INetworkComponent other)
@@ -226,7 +235,7 @@ namespace TiberiumRim
         {
             if (other.Network == null)
             {
-                Log.Error($"{other.Parent.Thing} is not part of any Network - this should not be the case.");
+                TLog.Error($"{other.Parent.Thing} is not part of any Network - this should not be the case.");
                 return false;
             }
             return other.Network.NetworkRank == Network.NetworkRank;
@@ -258,9 +267,10 @@ namespace TiberiumRim
 
         protected virtual IEnumerable<Gizmo> GetSpecialNetworkGizmos()
         {
+            yield return StaticData.GetDesignatorFor<Designator_Build>(NetworkDef.transmitter);
             if (!IsMainController && Network.NetworkController == null)
             {
-                yield return new Designator_BuildFixed(NetworkDef.controllerDef);
+                yield return StaticData.GetDesignatorFor<Designator_Build>(NetworkDef.controllerDef);
             }
         }
 
@@ -285,9 +295,6 @@ namespace TiberiumRim
                     }
                 };
             }
-
-            yield return new Designator_BuildFixed(parent.Thing.def);
-            yield return new Designator_BuildFixed(NetworkDef.transmitter);
 
             foreach (var networkGizmo in GetSpecialNetworkGizmos())
             {

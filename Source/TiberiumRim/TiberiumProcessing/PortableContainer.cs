@@ -37,6 +37,9 @@ namespace TiberiumRim
         {
             //
         }
+        public void Notify_ContainerStateChanged()
+        {
+        }
 
         public override void DrawGUIOverlay()
         {
