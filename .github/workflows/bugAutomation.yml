@@ -1,0 +1,22 @@
+# This is a basic workflow to automatically display added bug reports in the bug tracker
+name: Auto Assign to But Tracker
+
+on:
+  issues:
+    types: [created, labeled]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  assign_one_project:
+    runs-on: ubuntu-latest
+    name: Assign to Bug Tracker
+    steps:
+    - name: Assign issues with `bug` label to project 3
+      uses: srggrs/assign-one-project-github-action@1.2.1
+      if: |
+        contains(github.event.issue.labels.*.name, 'bug')
+      with:
+        project: 'https://github.com/Waldleufer/TemplateRepository/projects/3'
+        column_name: 'Needs triage'
