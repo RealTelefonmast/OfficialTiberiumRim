@@ -18,8 +18,8 @@ A clear and concise description of what the bug is.
 2. - [ ] Runnnig **only TiberiumRim Mod (and HugsLib + Harmony)** 
    - [ ] Running other Mods besides TiberimRim, HugsLib and Harmony  <!--- No need to put the other mods here, we can see this in from the ErrorLog -->
 3. Playing with the following **DLCs enabled**
-   - [ ] Rimworld - **Royalty**
-   - [ ] Rimworld - **Ideology**
+   - [x] Rimworld - **Royalty**
+   - [x] Rimworld - **Ideology**
 
 
 ### **To Reproduce**
