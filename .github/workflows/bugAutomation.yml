@@ -18,5 +18,5 @@ jobs:
       if: |
         contains(github.event.issue.labels.*.name, 'bug')
       with:
-        project: 'https://github.com/Waldleufer/TemplateRepository/projects/3'
+        project: 'https://github.com/RealTelefonmast/OfficialTiberiumRim/projects/3'
         column_name: 'Needs triage'
