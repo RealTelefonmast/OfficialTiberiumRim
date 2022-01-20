@@ -15,7 +15,7 @@ A clear and concise description of what the bug is.
   <!--- This can help us a lot! Please pick/replace whatever you see fit most! -->
 1. - I installed TiberiumRim and then created a fresh colony <!--- OR -->
    - I added TiberiumRim to an older, already created colony 
-2. - Runnnig **only TiberiumRim Mod (and HugsLib + Harmony)** <!--- OR -->
+2. - Running **only TiberiumRim Mod and Harmony (and possibly HugsLib to make sharing logs easier)** <!--- OR -->
    - Running other Mods besides TiberimRim, HugsLib and Harmony  <!--- No need to put the other mods here, we can see this in from the ErrorLog -->
 3. Playing with the following **DLCs enabled** <!--- Please delete what doesn't apply -->
    - Rimworld - **Royalty**
