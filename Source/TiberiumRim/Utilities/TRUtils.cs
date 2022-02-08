@@ -716,47 +716,6 @@ namespace TiberiumRim
             return IntVec3.Zero;
         }
 
-        //Text Formatting
-        public static TaggedString Colorize(this TaggedString text, string colorHex)
-        {
-            return "<color=" + colorHex + ">" + text + "</color>";
-        }
-
-        public static TaggedString Colorize(this TaggedString text, Color color)
-        {
-            return Colorize(text, ColorUtility.ToHtmlStringRGB(color));
-        }
-
-        public static TaggedString Bold(this TaggedString text)
-        {
-            return "<b>" + text + "</b>";
-        }
-
-        public static string Colorize(this string text, Color color)
-        {
-            return Colorize(text, ColorUtility.ToHtmlStringRGB(color));
-        }
-
-        public static string Colorize(this string text, string colorHex)
-        {
-            return "<color="+ colorHex +">" + text + "</color>";
-        }
-
-        public static string Bold(this string text)
-        {
-            return "<b>" + text + "</b>";
-        }
-
-        public static string Italic(this string text)
-        {
-            return "<i>" + text + "</i>";
-        }
-
-        public static string StrikeThrough(this string text)
-        {
-            return "<s>" + text + "</s>";
-        }
-
         //Spawning Parent
         public static MoteThrown ThrowTiberiumLeak(Map map, IntVec3 cell, Rot4 rotation, Color color)
         {

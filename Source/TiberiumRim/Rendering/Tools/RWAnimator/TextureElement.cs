@@ -43,7 +43,7 @@ namespace TiberiumRim
         public KeyFrameData KeyFrameData => localData;
         private KeyFrameData RenderData => ParentCanvas.TimeLine.GetDataFor(this) ?? localData;
 
-        private Vector2 RenderPivot => TruePos + pivotPoint;
+        private Vector2 RenderPivot => TruePos + (pivotPoint * ParentCanvas.CanvasZoomScale);
 
         public Vector2 PivotPoint
         {
@@ -165,7 +165,7 @@ namespace TiberiumRim
                         return Color.green;
                     case ManipulationMode.Rotate:
                         return Color.magenta;
-                    default: return IsSelected ? Color.cyan : TRMats.White005;
+                    default: return IsSelected ? Color.cyan : TRColor.White005;
                 }
             }
         }
@@ -225,12 +225,13 @@ namespace TiberiumRim
                 {
                     case ManipulationMode.PivotDrag:
                         var oldPivPos = oldPivot.Value;
+                        dragDiff /= ParentCanvas.CanvasZoomScale;
                         PivotPoint = new Vector2(oldPivPos.x + dragDiff.x, oldPivPos.y + dragDiff.y);
                         break;
                     case ManipulationMode.Move:
                         //if (!TextureRect.Contains(mv) || !IsFocused) return;
-                        dragDiff /= ParentCanvas.CanvasZoomScale;
                         var oldPos = oldKF.Value.position;
+                        dragDiff /= ParentCanvas.CanvasZoomScale;
                         TPosition = new Vector2(oldPos.x + dragDiff.x, oldPos.y + dragDiff.y);
                         break;
                     case ManipulationMode.Resize:

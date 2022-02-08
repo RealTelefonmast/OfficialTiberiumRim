@@ -83,7 +83,7 @@ namespace TiberiumRim
 
         private static void VisualizeDraggedData(object data, Vector2 pos)
         {
-            GUI.color = TRMats.White05;
+            GUI.color = TRColor.White05;
             if (data is Texture texture)
             {
                 Rect box = new Rect(pos, new Vector2(45, 45));

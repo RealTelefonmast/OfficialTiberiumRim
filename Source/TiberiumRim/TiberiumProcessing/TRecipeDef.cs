@@ -4,6 +4,6 @@ namespace TiberiumRim
 {
     public class TRecipeDef : RecipeDef
     {
-        public NetworkCost tiberiumCost;
+        public NetworkCost networkCost;
     }
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.NetworkDef>
+		<defName>TiberiumNetwork</defName>
+		<containerLabel>Tiberium Storage</containerLabel>
+		<controllerDef>TiberiumNetworkController</controllerDef>
+		<transmitter>TiberiumPipe</transmitter>
+		<transmitterGraphic>
+			<texPath>Buildings/Common/Network/Pipe_Tib</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</transmitterGraphic>
+		<overlayGraphic>
+			<texPath>Buildings/Common/Network/Pipe_Tib_SelOverlay</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MetaOverlay</shaderType>
+			<color>(155, 255, 0)</color>
+		</overlayGraphic>
+	</TiberiumRim.NetworkDef>
+	
+	<TiberiumRim.NetworkValueDef>
+		<defName>TibGreen</defName>
+		<networkDef>TiberiumNetwork</networkDef>
+		<label>green</label>
+		<valueColor>(111,200,4)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+	<TiberiumRim.NetworkValueDef>
+		<defName>TibBlue</defName>
+		<networkDef>TiberiumNetwork</networkDef>
+		<label>blue</label>
+		<valueColor>(8,142,208)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+	<TiberiumRim.NetworkValueDef>
+		<defName>TibRed</defName>
+		<networkDef>TiberiumNetwork</networkDef>
+		<label>red</label>
+		<valueColor>(208,8,42)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+	<TiberiumRim.NetworkValueDef>
+		<defName>TibSludge</defName>
+		<networkDef>TiberiumNetwork</networkDef>
+		<label>sludge</label>
+		<valueColor>(160,255,0)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+	<TiberiumRim.NetworkValueDef>
+		<defName>TibGas</defName>
+		<networkDef>TiberiumNetwork</networkDef>
+		<label>gas</label>
+		<valueColor>(215,255,165)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+
+</Defs>

@@ -265,10 +265,10 @@ namespace TiberiumRim
                 UIEventHandler.StartFocus(this);
 
                 //FloatMenu
-                if (curEvent.button == 1 && IsFocused)
+                if (curEvent.button == 1 && Mouse.IsOver(FocusRect))
                 {
-                    var options = RightClickOptions().ToList();
-                    if (options.Any())
+                    var options = RightClickOptions()?.ToList();
+                    if (options != null && options.Any())
                     {
                         FloatMenu menu = new FloatMenu(options);
                         menu.vanishIfMouseDistant = true;

@@ -151,15 +151,31 @@ namespace TiberiumRim
 
         private List<NetworkValue> ValuesFor(NetworkValue value)
         {
-            var mltp = 1f;
 
             if (value.valueDef == TiberiumDefOf.TibBlue)
             {
-                mltp = 2f;
+                return new List<NetworkValue>()
+                {
+                   
+                    new NetworkValue(TiberiumDefOf.Phosphorus, 0.425f  * value.valueF * mltp),
+                    new NetworkValue(TiberiumDefOf.Iron,       0.325f  * value.valueF * mltp),
+                    new NetworkValue(TiberiumDefOf.Calcium,    0.1525f * value.valueF * mltp),
+                    new NetworkValue(TiberiumDefOf.Copper,     0.0575f * value.valueF * mltp),
+                    new NetworkValue(TiberiumDefOf.Silicon,    0.025f  * value.valueF * mltp),
+                    new NetworkValue(TiberiumDefOf.Exotic,     0.015f  * value.valueF * mltp),
+                };
             }
             if (value.valueDef == TiberiumDefOf.TibRed)
             {
-                mltp = 4f;
+                return new List<NetworkValue>()
+                {
+                    new NetworkValue(TiberiumDefOf.Phosphorus, 0.425f  * value.valueF * mltp),
+                    new NetworkValue(TiberiumDefOf.Iron,       0.325f  * value.valueF * mltp),
+                    new NetworkValue(TiberiumDefOf.Calcium,    0.1525f * value.valueF * mltp),
+                    new NetworkValue(TiberiumDefOf.Copper,     0.0575f * value.valueF * mltp),
+                    new NetworkValue(TiberiumDefOf.Silicon,    0.025f  * value.valueF * mltp),
+                    new NetworkValue(TiberiumDefOf.Exotic,     0.015f  * value.valueF * mltp),
+                };
             }
 
             return new List<NetworkValue>()
@@ -171,6 +187,7 @@ namespace TiberiumRim
                 new NetworkValue(TiberiumDefOf.Silicon,    0.025f  * value.valueF * mltp),
                 new NetworkValue(TiberiumDefOf.Exotic,     0.015f  * value.valueF * mltp),
             };
+
         }
 
         public override string CompInspectStringExtra()

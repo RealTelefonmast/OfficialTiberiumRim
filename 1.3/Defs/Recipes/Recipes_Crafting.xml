@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	
+	<TiberiumRim.TRecipeDef>
+		<defName>ExtractSteel</defName>
+		<label>Get Steel</label>
+		<description>Extract steel from the stored Tiberium.\n\nYou will get 5 steel for 30 Tiberium credits.</description>
+		<jobString>extracting steel</jobString>
+		<workAmount>250</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<networkCost>
+			<costSet>
+				<specificCosts>
+					<Carbon>1</Carbon>
+					<Iron>9</Iron>
+				</specificCosts>
+			</costSet>
+		</networkCost>
+		<products>
+			<Steel>15</Steel>
+		</products>
+		<recipeUsers>
+			<li>TiberiumCrafter</li>
+		</recipeUsers>
+		<workSkill>Crafting</workSkill>
+	</TiberiumRim.TRecipeDef>	
+	
 	<!--
 	<TiberiumRim.TRecipeDef>
 		<defName>ExtractSteel</defName>

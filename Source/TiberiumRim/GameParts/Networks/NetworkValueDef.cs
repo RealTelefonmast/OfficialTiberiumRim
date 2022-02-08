@@ -10,7 +10,23 @@ namespace TiberiumRim
 {
     public class NetworkValueDef : Def
     {
+        public string labelShort;
+        public NetworkDef networkDef;
         public Color valueColor;
         public List<ThingDefCountClass> valueThings;
+
+        public override IEnumerable<string> ConfigErrors()
+        {
+            foreach (var configError in base.ConfigErrors())
+            {
+                yield return configError;
+            }
+            //
+            if (labelShort.NullOrEmpty())
+            {
+                labelShort = label;
+            }
+
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace TiberiumRim
 {
-    public static class TiberiumBillUtility
+    public static class ClipBoardUtility
     {
         public static CustomTiberiumBill Clipboard;
     }

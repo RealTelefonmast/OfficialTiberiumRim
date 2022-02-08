@@ -517,7 +517,7 @@ namespace TiberiumRim
 
         private void ElementListing(Rect leftRect, IKeyFramedElement element)
         {
-            TRWidgets.DrawBox(leftRect, SelectedElement  == element ? Color.cyan : TRMats.White05, 1);
+            TRWidgets.DrawBox(leftRect, SelectedElement  == element ? Color.cyan : TRColor.White05, 1);
             Widgets.Label(leftRect, "element wip");
             if (Widgets.ButtonImage(leftRect.RightPartPixels(20), TiberiumContent.DeleteX))
             {
@@ -527,7 +527,7 @@ namespace TiberiumRim
 
         private void ElementTimeLine(Rect rightRect, IKeyFramedElement element)
         {
-            GUI.color = SelectedElement == element ? Color.white : TRMats.White025;
+            GUI.color = SelectedElement == element ? Color.white : TRColor.White025;
             var yPos = rightRect.y + rightRect.height / 2f;
             Widgets.DrawLineHorizontal(rightRect.x, yPos, rightRect.width);
             GUI.color = Color.white;

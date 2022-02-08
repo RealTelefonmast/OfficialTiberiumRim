@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Text;
 using HarmonyLib;
 using Multiplayer.API;
 using RimWorld;
@@ -1075,8 +1076,62 @@ namespace TiberiumRim
             {
                 if(__result.recipe is TRecipeDef)
                 {
-                    TiberiumBill tibBill = new TiberiumBill(__result.recipe as TRecipeDef);
+                    NetworkBill tibBill = new NetworkBill(__result.recipe as TRecipeDef);
                     __result = tibBill;
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(Dialog_BillConfig))]
+        [HarmonyPatch("DoWindowContents")]
+        public static class Dialog_BillConfigDoWindowContentsPatch
+        {
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                MethodInfo methodFinder = AccessTools.Method(typeof(StringBuilder), nameof(StringBuilder.AppendLine));
+                MethodInfo helper = AccessTools.Method(typeof(Dialog_BillConfigDoWindowContentsPatch), nameof(GibHelp));
+
+                bool continuedToPop = false, finalPatched = false;
+                int i = 0;
+                foreach (var code in instructions)
+                {
+                    if (i < 2 && code.opcode == OpCodes.Callvirt && code.operand.Equals(methodFinder))
+                    {
+                        i++;
+                    }
+
+                    yield return code;
+                    if (i != 2) continue;
+                   
+                    if (!continuedToPop)
+                    {
+                        continuedToPop = true;
+                        continue;
+                    }
+
+                    if (!finalPatched)
+                    {
+                        yield return new CodeInstruction(OpCodes.Ldarg_0);
+                        yield return new CodeInstruction(OpCodes.Ldloc_S, 34);
+                        yield return new CodeInstruction(OpCodes.Call, helper);
+                        finalPatched = true;
+                    }
+                }
+
+            }
+
+            private static void GibHelp(Dialog_BillConfig instance, StringBuilder stringBuilder)
+            {
+                if (instance.bill is NetworkBill tBill)
+                {
+                    foreach (var cost in tBill.def.networkCost.Cost.SpecificCosts)
+                    {
+                        stringBuilder.AppendLine($" - {cost.valueDef}: {cost.value}");
+                    }
+                    stringBuilder.AppendLine($"BaseShouldBeDone: {tBill.BaseShouldDo}");
+                    stringBuilder.AppendLine($"ShouldBeDone: {tBill.ShouldDoNow()}");
+                    stringBuilder.AppendLine($"CompTNW: {tBill.CompTNW is { IsPowered: true }}");
+                    stringBuilder.AppendLine($"def.CanPay: {tBill.def.networkCost.CanPayWith(tBill.CompTNW)}");
                 }
             }
         }

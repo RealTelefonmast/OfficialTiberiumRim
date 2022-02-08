@@ -1,11 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using RimWorld;
 using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
 {
+    public class AtomicRecipeDef : Def
+    {
+        public List<DefFloat<NetworkValueDef>> inputRatio;
+        public ThingDef result;
+    }
+
     public class ITab_CustomRefineryBills : ITab
     {
         public static readonly float MarketPriceFactor = 2.4f;
@@ -15,7 +22,9 @@ namespace TiberiumRim
 
         private static float maxLabelWidth = 0;
 
-        public static IEnumerable<ThingDef> Metals => DefDatabase<ThingDef>.AllDefs.Where(t => t.mineable && t.building.mineableThing != null && t.building.mineableThing.IsMetal).Select(t => t.building.mineableThing);
+        //public static IEnumerable<ThingDef> Metals => DefDatabase<ThingDef>.AllDefs.Where(t => t.mineable && t.building.mineableThing != null && t.building.mineableThing.IsMetal).Select(t => t.building.mineableThing);
+
+        public static IEnumerable<AtomicRecipeDef> Recipes => DefDatabase<AtomicRecipeDef>.AllDefs;
 
         //Scrollers
         private Vector2 billCreationResourceScroller = new Vector2();
@@ -48,7 +57,7 @@ namespace TiberiumRim
         public override void Notify_ClearingAllMapsMemory()
         {
             base.Notify_ClearingAllMapsMemory();
-            TiberiumBillUtility.Clipboard = null;
+            ClipBoardUtility.Clipboard = null;
         }
 
         public override void FillTab()
@@ -64,7 +73,7 @@ namespace TiberiumRim
             //Right Part
             DrawBillInfo(rightPart.ContractedBy(5));
             //Paste Option
-            if (TiberiumBillUtility.Clipboard != null)
+            if (ClipBoardUtility.Clipboard != null)
             {
                 if (Widgets.ButtonImage(pasteButton, TiberiumContent.Paste))
                 {
@@ -108,8 +117,8 @@ namespace TiberiumRim
             topPart = topPart.ContractedBy(5f);
             GUI.BeginGroup(topPart);
 
-            string label1 = "Desired Resources";
-            string label2 = "Credit Cost (" + TRUtils.Colorize("Market Value", Color.yellow) + TRUtils.Colorize(" * Credit Factor", TRMats.Orange) + ")";
+            string label1 = "Desired Resource";
+            string label2 = $"Elemental Ratio";
             float label1H = Text.CalcHeight(label1, rect.width);
             float resourceWidth = resourceSize + maxLabelWidth + 60;
             Rect label1Rect = new Rect(0, 0, rect.width, label1H);
@@ -118,13 +127,13 @@ namespace TiberiumRim
             Widgets.Label(label2Rect, label2);
             //Wanted Resources
             Rect resourceRect = new Rect(0, label1H + 5, rect.width, topPart.height - label1H);
-            Rect scrollRect = new Rect(0, label1H + 5, rect.width, BillStack.MetalAmount.Count * (resourceSize + 4));
+            Rect scrollRect = new Rect(0, label1H + 5, rect.width, BillStack.RequestedAmount.Count * (resourceSize + 4));
 
             Widgets.BeginScrollView(resourceRect, ref billCreationResourceScroller, scrollRect, false);
             float curY = label1H + 5;
-            for (int i = 0; i < Metals.Count(); i++)
+            for (int i = 0; i < Recipes.Count(); i++)
             {
-                ResourceRow(new Rect(0, curY, rect.width, resourceSize), Metals.ElementAt(i), i);
+                ResourceRow(new Rect(0, curY, rect.width, resourceSize), Recipes.ElementAt(i), i);
                 curY += resourceSize + 4;
             }
 
@@ -168,8 +177,9 @@ namespace TiberiumRim
             GUI.EndGroup();
         }
 
-        private void ResourceRow(Rect rect, ThingDef resource, int index)
+        private void ResourceRow(Rect rect, AtomicRecipeDef recipe, int index)
         {
+            var resource = recipe.result;
             Rect iconRect = new Rect(rect.xMin, rect.y, resourceSize, resourceSize);
             Vector2 labelSize = Text.CalcSize(resource.LabelCap);
             if (labelSize.x > maxLabelWidth) maxLabelWidth = labelSize.x;
@@ -182,11 +192,11 @@ namespace TiberiumRim
             Widgets.Label(labelRect, resource.LabelCap);
             Text.Anchor = default;
 
-            var temp = BillStack.MetalAmount[resource];
+            var temp = BillStack.RequestedAmount[recipe];
             Widgets.TextFieldNumeric<int>(fieldRect, ref temp, ref BillStack.textBuffers[index], 0, resource.stackLimit * 2); //(int)Widgets.HorizontalSlider(sliderRect, MetalAmount[resource], 0, 100, false, default, default, default, 1);
-            BillStack.MetalAmount[resource] = temp;
+            BillStack.RequestedAmount[recipe] = temp;
 
-            CostLabel(new Vector2(fieldRect.xMax + 5, fieldRect.y), resource);
+            CostLabel(new Vector2(fieldRect.xMax + 5, fieldRect.y), recipe);
 
             //Rect buttonAdd = new Rect(fieldRect.xMax, rect.y, 30, resourceSize/2);
             //Rect buttonRemove = new Rect(fieldRect.xMax, rect.y+15, 30, resourceSize/2);
@@ -205,24 +215,39 @@ namespace TiberiumRim
         }
 
         // × 2400 (BaseMarketValue * Multiplier)
-        private void CostLabel(Vector2 pos, ThingDef resource)
+        private void CostLabel(Vector2 pos, AtomicRecipeDef recipe)
         {
-            string totalCost = ("× " + (BillStack.MetalAmount[resource] * resource.BaseMarketValue * MarketPriceFactor));
-            string marketValue = " (" + TRUtils.Colorize((resource.BaseMarketValue + " "), Color.yellow);
-            string multiplier = TRUtils.Colorize(("* " + MarketPriceFactor), TRMats.Orange) + ")";
-            Vector2 label1Size = Text.CalcSize(totalCost);
-            Vector2 label2Size = Text.CalcSize(marketValue);
-            Vector2 label3Size = Text.CalcSize(multiplier);
-            Rect totalCostRect = new Rect(pos.x, pos.y, label1Size.x, label1Size.y);
-            Rect baseMarketValueRect = new Rect(totalCostRect.xMax, pos.y, label2Size.x, label2Size.y);
-            Rect multiplierRect = new Rect(baseMarketValueRect.xMax, pos.y, label3Size.x, label3Size.y);
+            StringBuilder sb = new StringBuilder();
+            var amount = BillStack.RequestedAmount[recipe];
+            sb.Append("(");
+            foreach (var input in recipe.inputRatio)
+            {
+                sb.Append($"{amount * input.value}{input.def.labelShort.Colorize(input.def.valueColor)} ");
+            }
+            sb.Append(")");
+            string atomicTotal = sb.ToString();
+            //string totalCost = ("× " + (BillStack.MetalAmount[resource] * resource.BaseMarketValue * MarketPriceFactor));
+            //string marketValue = " (" + (resource.BaseMarketValue + " ").Colorize(Color.yellow);
+            //string multiplier = ("* " + MarketPriceFactor).Colorize(TRColor.Orange) + ")";
 
-            Widgets.Label(totalCostRect, totalCost);
-            Widgets.Label(baseMarketValueRect, marketValue);
-            Widgets.Label(multiplierRect, multiplier);
-            TooltipHandler.TipRegion(totalCostRect, "");
-            TooltipHandler.TipRegion(baseMarketValueRect,  resource.LabelCap + "'s market value.");
-            TooltipHandler.TipRegion(multiplierRect, "Tiberium Cost Factor");
+            Vector2 label0Size = Text.CalcSize(atomicTotal);
+
+            //Vector2 label1Size = Text.CalcSize(totalCost);
+            //Vector2 label2Size = Text.CalcSize(marketValue);
+            //Vector2 label3Size = Text.CalcSize(multiplier);
+
+            Rect atomicTotalRect = new Rect(pos.x, pos.y, label0Size.x, label0Size.y);
+            //Rect totalCostRect = new Rect(pos.x, pos.y, label1Size.x, label1Size.y);
+            //Rect baseMarketValueRect = new Rect(totalCostRect.xMax, pos.y, label2Size.x, label2Size.y);
+            //Rect multiplierRect = new Rect(baseMarketValueRect.xMax, pos.y, label3Size.x, label3Size.y);
+
+            Widgets.Label(atomicTotalRect, atomicTotal);
+            //Widgets.Label(totalCostRect, totalCost);
+            //Widgets.Label(baseMarketValueRect, marketValue);
+            //Widgets.Label(multiplierRect, multiplier);
+            //TooltipHandler.TipRegion(totalCostRect, "");
+            //TooltipHandler.TipRegion(baseMarketValueRect,  resource.LabelCap + "'s market value.");
+            //TooltipHandler.TipRegion(multiplierRect, "Tiberium Cost Factor");
         }
     }
 }

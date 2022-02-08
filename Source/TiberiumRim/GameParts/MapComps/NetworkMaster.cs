@@ -108,7 +108,7 @@ namespace TiberiumRim
 
         public Network RegenerateNetwork(INetworkComponent root, out HashSet<Network> oldNets)
         {
-            Log.Message($"Regenerating new net from {root.Parent.Thing}");
+            TLog.Debug($"Regenerating new net from {root.Parent.Thing}");
             oldNets = new HashSet<Network>();
             Network newNet = new Network(root.NetworkDef, map, this);
             HashSet<INetworkComponent> closedSet = new HashSet<INetworkComponent>();

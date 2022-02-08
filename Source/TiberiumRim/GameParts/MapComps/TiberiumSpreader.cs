@@ -11,12 +11,12 @@ namespace TiberiumRim
 
         public IEnumerator<TiberiumCrystal> crystalIterator;
 
-        public IEnumerable<TiberiumField> TiberiumFields => producers.Select(t => t.TiberiumField);
-        public IEnumerable<TiberiumField> MarkedFields => TiberiumFields.Where(t => t.MarkedForFastGrowth);
-        public IEnumerable<TiberiumCrystal> TiberiumCrystals => MarkedFields.SelectMany(t => t.GrowingCrystals);
+        public IEnumerable<TiberiumField> TiberiumFields => producers.NullOrEmpty() ? default : producers.Select(t => t.TiberiumField);
+        public IEnumerable<TiberiumField> MarkedFields => TiberiumFields.EnumerableNullOrEmpty() ? default : TiberiumFields.Where(t => t.MarkedForFastGrowth);
+        public IEnumerable<TiberiumCrystal> TiberiumCrystals => MarkedFields.EnumerableNullOrEmpty() ? default : MarkedFields.SelectMany(t => t.GrowingCrystals);
 
-        public bool ShouldSpread => MarkedFields.Any(); //TiberiumFields.Any(t => t?.MarkedForFastGrowth ?? false);
-        private bool CanReset => TiberiumCrystals.Any();
+        public bool ShouldSpread => !MarkedFields.EnumerableNullOrEmpty(); //TiberiumFields.Any(t => t?.MarkedForFastGrowth ?? false);
+        private bool CanReset => !TiberiumCrystals.EnumerableNullOrEmpty();
 
         public TiberiumSpreader(Map map) : base(map)
         {

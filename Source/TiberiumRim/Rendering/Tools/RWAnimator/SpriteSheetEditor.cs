@@ -229,7 +229,7 @@ namespace TiberiumRim
         private void DrawSettings(Rect rect)
         {
             var sheetExists = finalSheet != null;
-            Widgets.DrawLine(new(rect.x, rect.y - 10f), new(rect.xMax, rect.y - 10), TRMats.White025, 1);
+            Widgets.DrawLine(new(rect.x, rect.y - 10f), new(rect.xMax, rect.y - 10), TRColor.White025, 1);
 
             //Readout
             Widgets.DrawBoxSolid(TileReadoutRect, TRMats.BGDarker);
@@ -255,7 +255,7 @@ namespace TiberiumRim
                 if (Mouse.IsOver(spriteRect))
                 {
                     DragAndDropData = tile;
-                    TRWidgets.DrawBox(spriteRect, TRMats.White05, 1);
+                    TRWidgets.DrawBox(spriteRect, TRColor.White05, 1);
                 }
 
                 if (XY.x + (size * 2) > width)

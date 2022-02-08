@@ -50,12 +50,15 @@ namespace TiberiumRim
 
         public void Notify_AddedValue(NetworkValueDef type, float value)
         {
-
+            totalValue += value;
+            if(!TotalValueByType.TryAdd(type, value))
+                TotalValueByType[type] += value;
         }
 
         public void Notify_RemovedValue(NetworkValueDef type, float value)
         {
-
+            totalValue -= value;
+            TotalValueByType[type] -= value;
         }
 
         private void AddContainerFrom(INetworkComponent component, NetworkContainer container)

@@ -1,53 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.NetworkDef>
-		<defName>TiberiumNetwork</defName>
-		<containerLabel>Tiberium Storage</containerLabel>
-		<controllerDef>TiberiumNetworkController</controllerDef>
-		<transmitter>TiberiumPipe</transmitter>
-		<transmitterGraphic>
-			<texPath>Buildings/Common/Network/Pipe_Tib</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</transmitterGraphic>
-		<overlayGraphic>
-			<texPath>Buildings/Common/Network/Pipe_Tib_SelOverlay</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>MetaOverlay</shaderType>
-			<color>(155, 255, 0)</color>
-		</overlayGraphic>
-	</TiberiumRim.NetworkDef>
-	
-	<TiberiumRim.NetworkValueDef>
-		<defName>TibGreen</defName>
-		<label>green</label>
-		<valueColor>(111,200,4)</valueColor>
-	</TiberiumRim.NetworkValueDef>
-
-	<TiberiumRim.NetworkValueDef>
-		<defName>TibBlue</defName>
-		<label>blue</label>
-		<valueColor>(8,142,208)</valueColor>
-	</TiberiumRim.NetworkValueDef>
-
-	<TiberiumRim.NetworkValueDef>
-		<defName>TibRed</defName>
-		<label>red</label>
-		<valueColor>(208,8,42)</valueColor>
-	</TiberiumRim.NetworkValueDef>
-
-	<TiberiumRim.NetworkValueDef>
-		<defName>TibSludge</defName>
-		<label>sludge</label>
-		<valueColor>(160,255,0)</valueColor>
-	</TiberiumRim.NetworkValueDef>
-
-	<TiberiumRim.NetworkValueDef>
-		<defName>TibGas</defName>
-		<label>gas</label>
-		<valueColor>(215,255,165)</valueColor>
-	</TiberiumRim.NetworkValueDef>
-
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>TiberiumNetworkController</defName>
 		<label>Tiberium Network Controller</label>
@@ -877,13 +830,16 @@
 						<data>
 							<texPath>Buildings/Common/Network/Extractor/Extractor_overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>RadialBlur</shaderType>
 							<drawSize>(6,6)</drawSize>
+							<shaderType>MoteGlow</shaderType>
+							<!--
+							<shaderType>RadialBlur</shaderType>
 							<shaderParameters>		
 								<_Angle>0</_Angle>
 								<MySrcMode>1</MySrcMode>
 								<MyDstMode>1</MyDstMode>
 							</shaderParameters>
+							-->
 						</data>
 						<mode>Dynamic</mode>
 						<textureSize>(512,512)</textureSize>
@@ -893,6 +849,7 @@
 						<data>
 							<texPath>Buildings/Common/Network/Extractor/Extractor_cover</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>Transparent</shaderType>
 							<drawSize>(6,6)</drawSize>
 						</data>
 						<needsPower>false</needsPower>
@@ -1013,10 +970,29 @@
 		</comps>
 	</TiberiumRim.TRThingDef>
 	
+	<TiberiumRim.AtomicRecipeDef>
+		<defName>MakeElementalSteel</defName>
+		<inputRatio>
+			<li>Carbon,0.1</li>
+			<li>Iron,0.9</li>
+		</inputRatio>
+		<result>Steel</result>
+	</TiberiumRim.AtomicRecipeDef>
+	
+		<TiberiumRim.AtomicRecipeDef>
+		<defName>MakeElementalPlasteel</defName>
+		<inputRatio>
+			<li>Carbon,0.25</li>
+			<li>Exotic,0.25</li>
+			<li>Iron,0.5</li>
+		</inputRatio>
+		<result>Plasteel</result>
+	</TiberiumRim.AtomicRecipeDef>
+	
 	<TiberiumRim.TRThingDef ParentName="BenchBase_TR">
 		<defName>TiberiumCrafter</defName>
-		<label>tiberium resource refinery</label>
-		<description>A specialized chemical refining plant. Used to refine lethal Tiberium into useful resources.</description>
+		<label>Atomic Assembler</label>
+		<description>A specialized chemical refining plant.</description>
 		<thingClass>Building_WorkTable</thingClass>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
@@ -1049,6 +1025,7 @@
 			<li Class="TiberiumRim.CompProperties_NetworkStructure">
 				<compClass>TiberiumRim.Comp_NetworkStructureCrafter</compClass>
 				<networks>
+					<!--
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
 						<storeEvenly>false</storeEvenly>					
@@ -1067,6 +1044,14 @@
 							<li>TibRed</li>	
 							<li>TibSludge</li>	
 						</allowedValues>
+					</li>
+					-->
+					<li>
+						<networkDef>ChemicalNetwork</networkDef>
+						<storeEvenly>false</storeEvenly>
+						<networkRoles>
+							<li>Transmitter</li>
+						</networkRoles>
 					</li>
 				</networks>
 				<connectionPattern>+++|+#+|+#+</connectionPattern>
@@ -1135,6 +1120,7 @@
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<inspectorTabs>
+			<li>ITab_Bills</li>
 			<li>TiberiumRim.ITab_CustomRefineryBills</li>
 		</inspectorTabs>
 		<building>

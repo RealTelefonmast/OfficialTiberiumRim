@@ -31,12 +31,15 @@ namespace TiberiumRim
 
         public List<IntVec3> NetworkCells { get; set; }
 
+        public NetworkDef Def => def;
+
         public NetworkMaster NetworkParent => networkParent;
         public NetworkComponentSet ComponentSet => componentSet;
         public NetworkContainerSet ContainerSet => containerSet;
 
         public Network(NetworkDef def, Map map, NetworkMaster parent)
         {
+            this.def = def;
             this.networkParent = parent;
             this.map = map;
             componentSet = new NetworkComponentSet(def, null);

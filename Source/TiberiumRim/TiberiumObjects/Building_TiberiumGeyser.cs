@@ -20,7 +20,7 @@ namespace TiberiumRim
         private int sustainerStartTick = -1;
 
         //Values
-        private uint maxDepositValue = 0;
+        private float maxDepositValue = 0;
         private float depositValue = 0f;
 
         //
@@ -31,12 +31,14 @@ namespace TiberiumRim
         public static bool makePollutionGas = false;
 
         public float ContentPercent => depositValue / maxDepositValue;
+        public bool IsEmpty => depositValue <= 0;
         public bool Bursting => burstTicksLeft > 0;
         public override bool ShouldDoEffecters => tiberiumSpike.Spawned;
 
         public override void ExposeData()
         {
             base.ExposeData();
+
             Scribe_Values.Look(ref maxDepositValue, "maxDeposit");
             Scribe_Values.Look(ref depositValue, "depositValue");
         }
@@ -81,7 +83,7 @@ namespace TiberiumRim
 
         public override void Tick()
         {
-            if (depositValue <= 0) return;
+            if (IsEmpty) return;
 
             if (tiberiumSpike == null)
             {
@@ -108,9 +110,10 @@ namespace TiberiumRim
                 return;
             }
 
+            //Do spray when not covered by a spike
             if (spraySustainer != null && Find.TickManager.TicksGame > sustainerStartTick + 1000)
             {
-                Log.Message("Tiberium Geyser spray sustainer still playing after 1000 ticks. Force-ending.");
+                TLog.Warning("Tiberium Geyser spray sustainer still playing after 1000 ticks. Force-ending.");
                 spraySustainer.End();
                 spraySustainer = null;
             }

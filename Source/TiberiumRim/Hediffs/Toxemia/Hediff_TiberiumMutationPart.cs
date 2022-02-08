@@ -8,7 +8,7 @@ namespace TiberiumRim
         public MutationState Mutation = MutationState.None;
 
         private bool Visceral => Mutation == MutationState.Visceral;
-        public override Color LabelColor => Visceral ? TRMats.VisceralColor : TRMats.SymbioticColor;
+        public override Color LabelColor => Visceral ? TRColor.VisceralColor : TRColor.SymbioticColor;
 
         public override float Severity => Visceral ? 1 : 2;
 

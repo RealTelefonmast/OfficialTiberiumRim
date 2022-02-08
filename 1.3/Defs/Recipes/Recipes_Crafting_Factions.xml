@@ -14,9 +14,9 @@
 		<ingredients>
 			<li>
 				<filter>
-				<thingDefs>
-					<li>Steel</li>
-				</thingDefs>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
 				</filter>
 				<count>40</count>
 			</li>

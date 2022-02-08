@@ -14,6 +14,12 @@
 		<windowClass>TiberiumRim.Window_Animator</windowClass>
 	</TiberiumRim.DevToolDef>
 	
+	<TiberiumRim.DevToolDef>
+		<defName>UIMaker</defName>
+		<label>UI Maker</label>
+		<windowClass>TiberiumRim.Window_UIMaker</windowClass>
+	</TiberiumRim.DevToolDef>
+	
 	<!--
 	<MainButtonDef>
 		<defName>TiberiumTab</defName>

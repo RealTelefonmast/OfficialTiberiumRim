@@ -34,7 +34,6 @@ namespace TiberiumRim
                         networkRole |= role;
                     }
                 }
-
                 return networkRole.Value;
             }
         }

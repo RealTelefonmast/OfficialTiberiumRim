@@ -9,13 +9,18 @@ namespace TiberiumRim
 {
     public class NetworkCost
     {
-        public NetworkDef withNetwork;
+        //public NetworkDef withNetwork; //TODO => network should be implied via value type
         public NetworkCostSet costSet;
         public bool useDirectStorage = false;
 
         public NetworkCostSet Cost => costSet;
 
         //Validation
+        public bool CanPayWith(Comp_NetworkStructureCrafter compTNW)
+        {
+            return compTNW.NetworkParts.Any(CanPayWith);
+        }
+
         public bool CanPayWith(INetworkComponent networkComponent)
         {
             return useDirectStorage ? CanPayWith(networkComponent.Container) : CanPayWith(networkComponent.Network);
@@ -51,8 +56,8 @@ namespace TiberiumRim
         private bool CanPayWith(Network wholeNetwork)
         {
             var totalNetworkValue = wholeNetwork.TotalNetworkValue;
-            if (totalNetworkValue < Cost.TotalCost) return false;
             float totalNeeded = Cost.TotalCost;
+            if (totalNetworkValue < totalNeeded) return false;
             //Check For Specifics
             if (Cost.HasSpecifics)
             {
@@ -80,24 +85,28 @@ namespace TiberiumRim
         public void DoPayWith(Comp_NetworkStructure networkStructure)
         {
             if(useDirectStorage)
-                DoPayWith(networkStructure[withNetwork].Container);
+                DoPayWithContainer(networkStructure);
             else 
-                DoPayWith(networkStructure[withNetwork].Network);
+                DoPayWithNetwork(networkStructure);
         }
 
-        private void DoPayWith(NetworkContainer container)
+
+
+        private void DoPayWithContainer(Comp_NetworkStructure structure)
         {
             var totalCost = Cost.TotalCost;
             if (totalCost <= 0) return;
 
             foreach (var typeCost in Cost.SpecificCosts)
             {
+                var container = structure[typeCost.valueDef.networkDef].Container;
                 if (container.TryConsume(typeCost.valueDef, typeCost.value))
                     totalCost -= typeCost.value;
             }
 
             foreach (var type in Cost.AcceptedValueTypes)
             {
+                var container = structure[type.networkDef].Container;
                 if (container.TryRemoveValue(type, totalCost, out float actualVal))
                 {
                     totalCost -= actualVal;
@@ -105,17 +114,17 @@ namespace TiberiumRim
             }
 
             if (totalCost > 0)
-                Log.Warning($"Paying {this} with {container.Parent} had leftOver {totalCost}");
+                Log.Warning($"Paying {this} with {structure.Thing} had leftOver {totalCost}");
             if (totalCost < 0)
-                Log.Warning($"Paying {this} with {container.Parent} was too much: {totalCost}");
+                Log.Warning($"Paying {this} with {structure.Thing} was too much: {totalCost}");
         }
 
-        private void DoPayWith(Network network)
+        private void DoPayWithNetwork(Comp_NetworkStructure structure)
         {
             var totalCost = Cost.TotalCost;
             if (totalCost <= 0) return;
 
-            foreach (var storage in network.ComponentSet.Storages.TakeWhile(storage => !(totalCost <= 0)))
+            foreach (var storage in structure.NetworkParts.Select(s => s.Network).SelectMany(n => n.ComponentSet.Storages).TakeWhile(storage => !(totalCost <= 0)))
             {
                 foreach (var typeCost in Cost.SpecificCosts)
                 {
@@ -133,9 +142,9 @@ namespace TiberiumRim
             }
 
             if (totalCost > 0)
-                Log.Warning($"Paying {this} with {network} had leftOver: {totalCost}");
+                Log.Warning($"Paying {this} with {structure.Thing} had leftOver: {totalCost}");
             if(totalCost < 0)
-                Log.Warning($"Paying {this} with {network} was too much: {totalCost}");
+                Log.Warning($"Paying {this} with {structure.Thing} was too much: {totalCost}");
         }
 
         public override string ToString()

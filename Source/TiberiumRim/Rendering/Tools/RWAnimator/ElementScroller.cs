@@ -117,7 +117,7 @@ namespace TiberiumRim
 
                 if (sFlag)
                 {
-                    Widgets.DrawBoxSolid(rect, TRMats.White005);
+                    Widgets.DrawBoxSolid(rect, TRColor.White005);
                 }
 
                 if (sameFlag || mouseOver)

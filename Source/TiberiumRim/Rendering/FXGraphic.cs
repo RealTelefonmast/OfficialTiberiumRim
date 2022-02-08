@@ -37,7 +37,7 @@ namespace TiberiumRim
 
         public FXGraphic(CompFX parent, FXGraphicData data, int index)
         {
-            Log.Message($"Adding Layer {index}: {data.data?.texPath} ({data.mode})");
+            TLog.Debug($"Adding Layer {index}: {data.data?.texPath} ({data.mode})");
             this.parent = parent;
             this.data = data;
             this.index = index;

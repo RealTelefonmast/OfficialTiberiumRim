@@ -331,8 +331,8 @@ namespace TiberiumRim
                     var xPosEnd = new Vector2(xVal, inRect.height);
                     var yPos = new Vector2(0, yVal);
                     var yPosEnd = new Vector2(inRect.width, yVal);
-                    Widgets.DrawLine(xPos, xPosEnd, TRMats.White005, 1);
-                    Widgets.DrawLine(yPos, yPosEnd, TRMats.White005, 1);
+                    Widgets.DrawLine(xPos, xPosEnd, TRColor.White005, 1);
+                    Widgets.DrawLine(yPos, yPosEnd, TRColor.White005, 1);
                 }
             }
             GUI.EndGroup();
@@ -364,7 +364,7 @@ namespace TiberiumRim
         public static void AddGapLine(ref float curY, float width, float gapSize, float x = 0, TextAnchor anchor = TextAnchor.MiddleCenter)
         {
             //Adds 
-            GUI.color = TRMats.GapLineColor;
+            GUI.color = TRColor.GapLineColor;
             var yPos = curY;
             switch (anchor)
             {
@@ -430,7 +430,7 @@ namespace TiberiumRim
 
         public static void DrawBoxHighlight(Rect rect)
         {
-            DrawBox(rect, TRMats.White025, 1);
+            DrawBox(rect, TRColor.White025, 1);
         }
 
         public static void DrawBoxIfMouseOver(Rect rect, Color color)

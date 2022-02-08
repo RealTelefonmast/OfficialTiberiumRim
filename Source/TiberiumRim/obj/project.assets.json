@@ -134,19 +134,10 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "NuGet.Build.Tasks.Pack/5.2.0": {
-        "type": "package",
-        "build": {
-          "build/_._": {}
-        },
-        "buildMultiTargeting": {
-          "buildCrossTargeting/_._": {}
-        }
-      },
-      "RimWorld.MultiplayerAPI/0.3.0": {
+      "RimWorld.MultiplayerAPI/0.4.0": {
         "type": "package",
         "dependencies": {
-          "NuGet.Build.Tasks.Pack": "5.2.0"
+          "Krafs.Rimworld.Ref": "1.3.3200"
         },
         "compile": {
           "lib/net472/0MultiplayerAPI.dll": {}
@@ -417,32 +408,15 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "NuGet.Build.Tasks.Pack/5.2.0": {
-      "sha512": "jRE2Ya2cFTEu9XZ6rQtYjKE1a8q2KjCs0b8bd3cGlZ1cdgfZ6EgR2X0LZ/pCbN2WVcCRI7ISEIcqJ5Ji+Z1HMQ==",
+    "RimWorld.MultiplayerAPI/0.4.0": {
+      "sha512": "YTdROm2Xq5T9fGD01YuOB8GKwsYdpHTk2F83d9nWxxipIjqoCM3lVl9V2403w5L4qcKhHIUyT87puRaD4DmoAw==",
       "type": "package",
-      "path": "nuget.build.tasks.pack/5.2.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "CoreCLR/NuGet.Build.Tasks.Pack.dll",
-        "CoreCLR/NuGet.Build.Tasks.Pack.xml",
-        "Desktop/NuGet.Build.Tasks.Pack.dll",
-        "Desktop/NuGet.Build.Tasks.Pack.xml",
-        "build/NuGet.Build.Tasks.Pack.targets",
-        "buildCrossTargeting/NuGet.Build.Tasks.Pack.targets",
-        "nuget.build.tasks.pack.5.2.0.nupkg.sha512",
-        "nuget.build.tasks.pack.nuspec"
-      ]
-    },
-    "RimWorld.MultiplayerAPI/0.3.0": {
-      "sha512": "8CnjXBpTjkO5U9G6UnmH7O/0npakPXWE7w0/Z7nd9H00MvCG7PWcT5IW41HtLElxVEAD2CxrVxdwZeVVew3isw==",
-      "type": "package",
-      "path": "rimworld.multiplayerapi/0.3.0",
+      "path": "rimworld.multiplayerapi/0.4.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net472/0MultiplayerAPI.dll",
-        "rimworld.multiplayerapi.0.3.0.nupkg.sha512",
+        "rimworld.multiplayerapi.0.4.0.nupkg.sha512",
         "rimworld.multiplayerapi.nuspec"
       ]
     },

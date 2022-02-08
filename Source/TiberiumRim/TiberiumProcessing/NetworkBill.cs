@@ -34,7 +34,7 @@ namespace TiberiumRim
                 if (iterationsLeft == -1)
                     return "Forever.";
                 if (iterationsLeft >= 0)
-                    return iterationsLeft + "x";
+                    return $"{iterationsLeft}x";
                 return "Something is broken :(";
             }
         }
@@ -190,7 +190,7 @@ namespace TiberiumRim
             }
             if (Widgets.ButtonImageFitted(copyRect, TiberiumContent.Copy, Color.white))
             {
-                TiberiumBillUtility.Clipboard = this.Clone();
+                ClipBoardUtility.Clipboard = this.Clone();
                 SoundDefOf.Tick_High.PlayOneShotOnCamera(null);
             }
 
@@ -286,21 +286,21 @@ namespace TiberiumRim
         }
     }
 
-    public class TiberiumBill : Bill_Production
+    public class NetworkBill : Bill_Production
     {
         public TRecipeDef def;
         public bool isBeingDone = false;
 
-        public TiberiumBill(TRecipeDef def) : base(def as RecipeDef)
+        public NetworkBill(TRecipeDef def) : base(def as RecipeDef)
         {
             this.def = def;
         }
 
-        public TiberiumBill() : base() { }
+        public NetworkBill() : base() { }
 
-        private Comp_NetworkStructureCrafter CompTNW => ((Building) billStack.billGiver).GetComp<Comp_NetworkStructureCrafter>();
-        public NetworkComponent ParentTibComp => CompTNW[TiberiumDefOf.TiberiumNetwork];
-        private Network Network => ParentTibComp.Network;
+        public Comp_NetworkStructureCrafter CompTNW => ((Building) billStack.billGiver).GetComp<Comp_NetworkStructureCrafter>();
+        //public NetworkComponent ParentTibComp => CompTNW[TiberiumDefOf.TiberiumNetwork];
+        //private Network Network => ParentTibComp.Network;
 
         public override void ExposeData()
         {
@@ -321,17 +321,16 @@ namespace TiberiumRim
             base.Notify_PawnDidWork(p);
         }
 
-        
+        public bool BaseShouldDo => base.ShouldDoNow();
+
         public override bool ShouldDoNow()
         {
             if (base.ShouldDoNow())
             {
-                if (CompTNW != null)
+                if (CompTNW is {IsPowered: true})
                 {
-                    if (Network != null && Network.IsWorking)
-                    {
-                        return def.tiberiumCost.CanPayWith(ParentTibComp);
-                    }
+                    return def.networkCost.CanPayWith(CompTNW);
+                    //if (Network != null && Network.IsWorking)
                 }
             }
             return false;
@@ -339,9 +338,9 @@ namespace TiberiumRim
 
         public override void Notify_IterationCompleted(Pawn billDoer, List<Thing> ingredients)
         {
-            if (def.tiberiumCost.CanPayWith(ParentTibComp))
+            if (def.networkCost.CanPayWith(CompTNW))
             {
-                def.tiberiumCost.DoPayWith(CompTNW);
+                def.networkCost.DoPayWith(CompTNW);
                 isBeingDone = false;
                 base.Notify_IterationCompleted(billDoer, ingredients);
             }
@@ -352,7 +351,7 @@ namespace TiberiumRim
             get
             {
                 Color color = Color.white;
-                foreach(NetworkValueDef valueDef in def.tiberiumCost.Cost.AcceptedValueTypes)
+                foreach(NetworkValueDef valueDef in def.networkCost.Cost.AcceptedValueTypes)
                 {
                     color *= valueDef.valueColor;
                 }
@@ -360,5 +359,9 @@ namespace TiberiumRim
             }
         }
 
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

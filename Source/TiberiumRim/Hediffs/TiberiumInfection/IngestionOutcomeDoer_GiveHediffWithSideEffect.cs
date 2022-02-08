@@ -125,7 +125,7 @@ namespace TiberiumRim
                 result += "TR_SideEffectWarning".Translate() + "\n";
                 if (!culpritNeeds.NullOrEmpty())
                 {
-                    result += TRUtils.Colorize(((string)"TR_SideEffectCulpritNeeds".Translate()), Color.red).Bold() + "\n"; ;
+                    result += ((string)"TR_SideEffectCulpritNeeds".Translate()).Colorize(Color.red).Bold() + "\n"; ;
                     foreach (var culpritNeed in culpritNeeds)
                     {
                         result += "     -  " + culpritNeed.LabelCap + "\n"; ;

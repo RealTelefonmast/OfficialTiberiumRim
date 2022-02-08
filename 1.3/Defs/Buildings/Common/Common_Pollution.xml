@@ -1,29 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.NetworkDef>
-		<defName>AtmosphericNetwork</defName>
-		<containerLabel>Gas Storage</containerLabel>
-		<transmitter>AtmosphericPipe</transmitter>
-		<controllerDef>PollutionFilter</controllerDef>
-		<transmitterGraphic>
-			<texPath>Buildings/Common/Pollution/Pipe_Air</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</transmitterGraphic>
-		<overlayGraphic>
-			<texPath>Buildings/Common/Pollution/Pipe_Air_overlay</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>MetaOverlay</shaderType>
-			<color>(0, 255, 255)</color>
-		</overlayGraphic>
-	</TiberiumRim.NetworkDef>
-
-	<TiberiumRim.NetworkValueDef>
-		<defName>TibPollution</defName>
-		<label>pollution</label>
-		<valueColor>(38,127,4)</valueColor>
-	</TiberiumRim.NetworkValueDef>
-
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>PollutionFilter</defName>
 		<label>pollution filter</label>

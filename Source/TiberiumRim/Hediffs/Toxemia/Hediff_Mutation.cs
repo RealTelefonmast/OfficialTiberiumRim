@@ -216,11 +216,11 @@ namespace TiberiumRim
             Rect fullArea = new Rect(fillRectTotal.xMin, rect1.yMin, fillRectTotal.width, fillRectTotal.height + rect1.height);
             curY += fillRectTotal.ExpandedBy(3).height;
 
-            GUI.color = TRMats.VisceralColor;
+            GUI.color = TRColor.VisceralColor;
             Widgets.Label(rect1, visc);
             GUI.color = Color.white;
             Widgets.Label(rectSide, s2);
-            GUI.color = TRMats.SymbioticColor;
+            GUI.color = TRColor.SymbioticColor;
             Widgets.Label(rect2, symb);
             GUI.color = Color.white;
             Widgets.FillableBar(visceral, reverseVisc, TRMats.grey, TRMats.MutationVisceral, false);

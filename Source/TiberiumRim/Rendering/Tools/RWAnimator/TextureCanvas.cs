@@ -137,8 +137,8 @@ namespace TiberiumRim
         {
             //Limit rect
             //TRWidgets.DrawBox(Origin.RectOnPos(LimitSize), TRMats.White075, 2);
-            TRWidgets.DrawColoredBox(Origin.RectOnPos(LimitSize), TRMats.BGDarker, TRMats.White05, 1);
-            GUI.color = TRMats.White025;
+            TRWidgets.DrawColoredBox(Origin.RectOnPos(LimitSize), TRMats.BGDarker, TRColor.White05, 1);
+            GUI.color = TRColor.White025;
             Widgets.DrawLineHorizontal(Origin.x-LimitSize.x/2, Origin.y, LimitSize.x);
             Widgets.DrawLineVertical(Origin.x, Origin.y - LimitSize.y / 2, LimitSize.y);
             GUI.color = Color.white;
@@ -156,7 +156,7 @@ namespace TiberiumRim
         //Dragging
         public void DrawHoveredData(object draggedData, Vector2 pos)
         {
-            GUI.color = TRMats.White05;
+            GUI.color = TRColor.White05;
             if (draggedData is Texture tex)
             {
                 Rect drawRect = pos.RectOnPos((new Vector2(tex.width, tex.height) / 2) * CanvasZoomScale);

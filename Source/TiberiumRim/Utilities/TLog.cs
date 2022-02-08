@@ -1,4 +1,5 @@
-﻿using Verse;
+﻿using UnityEngine;
+using Verse;
 
 namespace TiberiumRim
 {
@@ -6,30 +7,30 @@ namespace TiberiumRim
     {
         public static void Error(string msg)
         {
-            Log.Error($"[TiberiumRim] {msg}");
+            Log.Error($"{"[TR]".Colorize(TRColor.Green)} {msg}");
         }
 
         public static void ErrorOnce(string msg, int id)
         {
-            Log.ErrorOnce($"[TiberiumRim] {msg}", id);
+            Log.ErrorOnce($"{"[TR]".Colorize(TRColor.Green)} {msg}", id);
         }
 
 
         public static void Warning(string msg)
         {
-            Log.Warning($"[TiberiumRim] {msg}");
+            Log.Warning($"{"[TR]".Colorize(TRColor.Green)} {msg}");
         }
 
         public static void Message(string msg)
         {
-            Log.Message($"[TiberiumRim] {msg}");
+            Log.Message($"{"[TR]".Colorize(TRColor.Green)} {msg}");
         }
 
         public static void Debug(string msg)
         {
             if (TiberiumRimMod.isDebug)
             {
-                Log.Message($"[T-DEBUG] {msg}");
+                Log.Message($"{"[TR-Debug]".Colorize(TRColor.Green)} {msg}");
             }
         }
     }

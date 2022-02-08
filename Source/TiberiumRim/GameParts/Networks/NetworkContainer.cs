@@ -299,6 +299,7 @@ namespace TiberiumRim
         {
             totalStoredCache -= value;
             parentSet?.Notify_RemovedValue(valueType, value);
+           //TODO: Add value by role/
             if (AllStoredTypes.Contains(valueType) && ValueForType(valueType) <= 0)
                 AllStoredTypes.RemoveWhere(v => v == valueType);
 
@@ -437,7 +438,8 @@ namespace TiberiumRim
             if (TotalStored >= wantedValue)
             {
                 float value = wantedValue;
-                foreach (NetworkValueDef type in AllStoredTypes)
+                var allTypes = AllStoredTypes.ToArray();
+                foreach (NetworkValueDef type in allTypes)
                 {
                     if (value > 0f && TryRemoveValue(type, value, out float leftOver))
                     {

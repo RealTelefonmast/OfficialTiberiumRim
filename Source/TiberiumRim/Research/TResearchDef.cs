@@ -399,7 +399,7 @@ namespace TiberiumRim
                         bool mouseOver = Mouse.IsOver(capableRect);
                         Color textCol = mouseOver ? Color.white : new Color(0.45f, 0.45f, 0.45f);
                         var pawns = CapablePawnsFor(skillRequirements[i]);
-                        Widgets.Label(capableRect, TRUtils.Colorize((" | " + "TR_Capable".Translate().RawText + " " + pawns.Count), textCol));
+                        Widgets.Label(capableRect, (" | " + "TR_Capable".Translate().RawText + " " + pawns.Count).Colorize(textCol));
                         if (mouseOver)
                         {
                             pawns.ForEach(p => TargetHighlighter.Highlight(p, false, true, false));
