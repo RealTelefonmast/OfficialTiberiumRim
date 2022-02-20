@@ -10,8 +10,22 @@ namespace TiberiumRim
     [StaticConstructorOnStartup]
     public class TiberiumContent
     {
+        public static readonly Texture2D GradientTop;
+        public static readonly Texture2D GradientBot;
         static TiberiumContent()
         {
+            Color color = new Color(1f, 1f, 1f, 0f);
+            GradientTop = new Texture2D(1, 2, TextureFormat.ARGB32, mipChain: false);
+            GradientBot = new Texture2D(1, 2, TextureFormat.ARGB32, mipChain: false);
+            GradientTop.name = "GradientTop";
+            GradientBot.name = "GradientBot";
+            GradientTop.SetPixel(0, 0, Color.white);
+            GradientTop.SetPixel(0, 1, color);
+            GradientTop.Apply();
+
+            GradientBot.SetPixel(0, 0, color);
+            GradientBot.SetPixel(0, 1, Color.white);
+            GradientBot.Apply();
         }
 
         #region FLOWMAPSTUFF
@@ -374,5 +388,7 @@ namespace TiberiumRim
         public static readonly Material IonLightningMat = MaterialPool.MatFrom("VisualFX/LightningBoltIon", ShaderDatabase.MoteGlow);
 
         public static readonly Material ForcedTargetLineMat = MaterialPool.MatFrom(GenDraw.LineTexPath, ShaderDatabase.Transparent, new Color(1f, 0.5f, 0.5f));
+
+        public static readonly Texture2D Gradient = ContentFinder<Texture2D>.Get("UI/GradientTest");
     }
 }

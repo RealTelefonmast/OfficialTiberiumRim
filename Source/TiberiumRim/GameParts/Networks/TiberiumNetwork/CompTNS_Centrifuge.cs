@@ -122,13 +122,13 @@ namespace TiberiumRim
             */
         }
 
-        protected override void DoNetworkProcessCustom(bool isPowered)
+        protected override void NetworkTickCustom(bool isPowered)
         {
             if (speedControl.ReachedPeak && processingBatch && isPowered)
             {
                 var storedTypes = TiberiumComp.Container.AllStoredTypes;
                 //foreach (var storedType in TiberiumComp.Container.AllStoredTypes)
-                for (int i = storedTypes.Count - 1; i >= 0; i--)
+                for (int i = storedTypes.Count() - 1; i >= 0; i--)
                 {
                     var storedType = storedTypes.ElementAt(i);
                     if (TiberiumComp.Container.TryRemoveValue(storedType, 1f, out float actualValue))
@@ -157,35 +157,35 @@ namespace TiberiumRim
                 return new List<NetworkValue>()
                 {
                    
-                    new NetworkValue(TiberiumDefOf.Phosphorus, 0.425f  * value.valueF * mltp),
-                    new NetworkValue(TiberiumDefOf.Iron,       0.325f  * value.valueF * mltp),
-                    new NetworkValue(TiberiumDefOf.Calcium,    0.1525f * value.valueF * mltp),
-                    new NetworkValue(TiberiumDefOf.Copper,     0.0575f * value.valueF * mltp),
-                    new NetworkValue(TiberiumDefOf.Silicon,    0.025f  * value.valueF * mltp),
-                    new NetworkValue(TiberiumDefOf.Exotic,     0.015f  * value.valueF * mltp),
+                    new NetworkValue(TiberiumDefOf.Phosphorus, 0.425f  * value.valueF),
+                    new NetworkValue(TiberiumDefOf.Iron,       0.325f  * value.valueF),
+                    new NetworkValue(TiberiumDefOf.Calcium,    0.1525f * value.valueF),
+                    new NetworkValue(TiberiumDefOf.Copper,     0.0575f * value.valueF),
+                    new NetworkValue(TiberiumDefOf.Silicon,    0.025f  * value.valueF),
+                    new NetworkValue(TiberiumDefOf.Exotic,     0.015f  * value.valueF),
                 };
             }
             if (value.valueDef == TiberiumDefOf.TibRed)
             {
                 return new List<NetworkValue>()
                 {
-                    new NetworkValue(TiberiumDefOf.Phosphorus, 0.425f  * value.valueF * mltp),
-                    new NetworkValue(TiberiumDefOf.Iron,       0.325f  * value.valueF * mltp),
-                    new NetworkValue(TiberiumDefOf.Calcium,    0.1525f * value.valueF * mltp),
-                    new NetworkValue(TiberiumDefOf.Copper,     0.0575f * value.valueF * mltp),
-                    new NetworkValue(TiberiumDefOf.Silicon,    0.025f  * value.valueF * mltp),
-                    new NetworkValue(TiberiumDefOf.Exotic,     0.015f  * value.valueF * mltp),
+                    new NetworkValue(TiberiumDefOf.Phosphorus, 0.425f  * value.valueF),
+                    new NetworkValue(TiberiumDefOf.Iron,       0.325f  * value.valueF),
+                    new NetworkValue(TiberiumDefOf.Calcium,    0.1525f * value.valueF),
+                    new NetworkValue(TiberiumDefOf.Copper,     0.0575f * value.valueF),
+                    new NetworkValue(TiberiumDefOf.Silicon,    0.025f  * value.valueF),
+                    new NetworkValue(TiberiumDefOf.Exotic,     0.015f  * value.valueF),
                 };
             }
 
             return new List<NetworkValue>()
             {
-                new NetworkValue(TiberiumDefOf.Phosphorus, 0.425f  * value.valueF * mltp),
-                new NetworkValue(TiberiumDefOf.Iron,       0.325f  * value.valueF * mltp),
-                new NetworkValue(TiberiumDefOf.Calcium,    0.1525f * value.valueF * mltp),
-                new NetworkValue(TiberiumDefOf.Copper,     0.0575f * value.valueF * mltp),
-                new NetworkValue(TiberiumDefOf.Silicon,    0.025f  * value.valueF * mltp),
-                new NetworkValue(TiberiumDefOf.Exotic,     0.015f  * value.valueF * mltp),
+                new NetworkValue(TiberiumDefOf.Phosphorus, 0.425f  * value.valueF),
+                new NetworkValue(TiberiumDefOf.Iron,       0.325f  * value.valueF),
+                new NetworkValue(TiberiumDefOf.Calcium,    0.1525f * value.valueF),
+                new NetworkValue(TiberiumDefOf.Copper,     0.0575f * value.valueF),
+                new NetworkValue(TiberiumDefOf.Silicon,    0.025f  * value.valueF),
+                new NetworkValue(TiberiumDefOf.Exotic,     0.015f  * value.valueF),
             };
 
         }

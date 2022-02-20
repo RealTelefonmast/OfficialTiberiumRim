@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RimWorld;
+using TiberiumRim.GameParts;
+using TiberiumRim.Utilities;
 using UnityEngine;
 using Verse;
 
@@ -11,6 +14,12 @@ namespace TiberiumRim
     {
         public List<DefFloat<NetworkValueDef>> inputRatio;
         public ThingDef result;
+    }
+
+    public class AtomicRecipePreset : Def
+    {
+        public List<DefCount<AtomicRecipeDef>> desiredResources;
+
     }
 
     public class ITab_CustomRefineryBills : ITab
@@ -29,6 +38,10 @@ namespace TiberiumRim
         //Scrollers
         private Vector2 billCreationResourceScroller = new Vector2();
         private Vector2 billReadourScroller = new Vector2();
+
+        //Cachery
+        private bool inputDirty = false;
+        private DefValue<NetworkValueDef>[] cachedCustomCost;
 
         public Comp_NetworkStructureCrafter CrafterComp => SelThing.TryGetComp<Comp_NetworkStructureCrafter>();
         public NetworkBillStack BillStack => CrafterComp.BillStack;
@@ -60,16 +73,50 @@ namespace TiberiumRim
             ClipBoardUtility.Clipboard = null;
         }
 
+        private enum CustomBillTab
+        {
+            PresetBills,
+            CustomBills
+        }
+
+        private CustomBillTab SelTab { get; set; }
+
         public override void FillTab()
         {
             Text.Font = GameFont.Small;
             Rect mainRect = new Rect(0, 24, WinSize.x, WinSize.y - 24).ContractedBy(10);
             Rect leftPart = mainRect.LeftPart(0.6f);
             Rect rightPart = mainRect.RightPart(0.4f);
+
+            var leftArea = leftPart.ContractedBy(5);
+            Rect tabRect = new Rect(leftArea.x, leftArea.y, leftArea.width, 32);
+            Rect contentRect = new Rect(leftArea.x, leftArea.y, leftArea.width, leftArea.height);
+
             Rect pasteButton = new Rect(rightPart.x, rightPart.y - 22, 22, 22);
 
             //Left Part
-            BillCreation(leftPart.ContractedBy(5));
+            //Draw Tabs
+            var tabs = new List<TabRecord>();
+            var enums = (CustomBillTab[]) Enum.GetValues(typeof(CustomBillTab));
+            tabs.Add(new TabRecord("TR_CustomBillCustom".Translate(), delegate { SelTab = enums[0]; },
+                SelTab == enums[0]));
+            tabs.Add(new TabRecord("TR_CustomBillPresetBills".Translate(), delegate { SelTab = enums[1]; },
+                SelTab == enums[1]));
+            //
+            Widgets.DrawLine(new Vector2(leftArea.x, leftArea.y), new Vector2(leftArea.xMax, leftArea.y),
+                TRColor.White025, 1);
+
+            TabDrawer.DrawTabs(tabRect, tabs);
+            switch (SelTab)
+            {
+                case CustomBillTab.CustomBills:
+                    BillSelection(contentRect);
+                    break;
+                case CustomBillTab.PresetBills:
+                    BillCreation(contentRect);
+                    break;
+            }
+
             //Right Part
             DrawBillInfo(rightPart.ContractedBy(5));
             //Paste Option
@@ -93,9 +140,9 @@ namespace TiberiumRim
         {
             Widgets.DrawMenuSection(rect);
             GUI.BeginGroup(rect);
-            
-            Rect outRect = new Rect(0,0, rect.width, rect.height);
-            Rect viewRect = new Rect(0,0, rect.width, CrafterComp.billStack.Bills.Sum(a => a.DrawHeight));
+
+            Rect outRect = new Rect(0, 0, rect.width, rect.height);
+            Rect viewRect = new Rect(0, 0, rect.width, CrafterComp.billStack.Bills.Sum(a => a.DrawHeight));
             Widgets.BeginScrollView(outRect, ref billReadourScroller, viewRect, false);
             float curY = 0;
             for (var index = 0; index < CrafterComp.billStack.Count; index++)
@@ -104,8 +151,38 @@ namespace TiberiumRim
                 bill.DrawBill(new Rect(0, curY, rect.width, bill.DrawHeight), index);
                 curY += bill.DrawHeight;
             }
+
             Widgets.EndScrollView();
             GUI.EndGroup();
+        }
+
+        private void BillSelection(Rect rect)
+        {
+            Widgets.DrawBoxSolid(rect, TRColor.LightBlack);
+            DrawListedPart(rect, DefDatabase<AtomicRecipePreset>.AllDefs.ToList(), delegate(Rect rect, AtomicRecipePreset recipe)
+                {
+                    Widgets.Label(rect, recipe.LabelCap);
+                    if (Widgets.ButtonInvisible(rect))
+                    {
+                        BillStack.CreateBillFromDef(recipe);
+                    }
+                }, 64);
+        }
+
+        public void DrawListedPart<T>(Rect rect, List<T> elements, Action<Rect, T> drawProccessor, float listingHeight)
+        {
+            float curY = rect.y;
+            for (var i = 0; i < elements.Count; i++)
+            {
+                var element = elements[i];
+                var listingRect = new Rect(rect.x, curY, rect.width, listingHeight);
+                if (i % 2 == 0)
+                {
+                    Widgets.DrawHighlight(listingRect);
+                }
+                drawProccessor(listingRect, element);
+                curY += listingHeight;
+            }
         }
 
         private void BillCreation(Rect rect)
@@ -127,7 +204,8 @@ namespace TiberiumRim
             Widgets.Label(label2Rect, label2);
             //Wanted Resources
             Rect resourceRect = new Rect(0, label1H + 5, rect.width, topPart.height - label1H);
-            Rect scrollRect = new Rect(0, label1H + 5, rect.width, BillStack.RequestedAmount.Count * (resourceSize + 4));
+            Rect scrollRect = new Rect(0, label1H + 5, rect.width,
+                BillStack.RequestedAmount.Count * (resourceSize + 4));
 
             Widgets.BeginScrollView(resourceRect, ref billCreationResourceScroller, scrollRect, false);
             float curY = label1H + 5;
@@ -144,14 +222,17 @@ namespace TiberiumRim
             BillCreationInfo(bottomPart);
         }
 
+
+        //Custom Bill Preview
         private void BillCreationInfo(Rect rect)
         {
             Widgets.DrawMenuSection(rect);
             rect = rect.ContractedBy(5f);
             GUI.BeginGroup(rect);
-            string nameLabel = "Bill Name: ";
+            string nameLabel = "Bill Name: " +
+                               $"TotalCost: {BillStack.TotalCost != null} TotalSum: {BillStack?.TotalCost?.Sum(t => t.Value) ?? -1}";
             string workLabel = "Work To Do: " + BillStack.TotalWorkAmount;
-            string tiberiumCostLabel = "Cost: " + BillStack.TotalCost;
+            string tiberiumCostLabel = $"Cost: {CostLabel(TryGetCachedCost())}";
             Vector2 nameLabelSize = Text.CalcSize(nameLabel);
             Vector2 workLabelSize = Text.CalcSize(workLabel);
             Vector2 tiberiumCostLabelSize = Text.CalcSize(tiberiumCostLabel);
@@ -160,7 +241,8 @@ namespace TiberiumRim
                 nameLabelRect.height);
 
             Rect workLabelRect = new Rect(0, nameLabelRect.yMax + 5, workLabelSize.x, workLabelSize.y);
-            Rect tiberiumCostLabelRect = new Rect(0, workLabelRect.yMax, tiberiumCostLabelSize.x, tiberiumCostLabelSize.y);
+            Rect tiberiumCostLabelRect =
+                new Rect(0, workLabelRect.yMax, tiberiumCostLabelSize.x, tiberiumCostLabelSize.y);
             Rect addButtonRect = new Rect(rect.width - 80, rect.height - 30, 80, 30);
 
             Widgets.Label(nameLabelRect, nameLabel);
@@ -169,9 +251,9 @@ namespace TiberiumRim
             Widgets.Label(workLabelRect, workLabel);
             Widgets.Label(tiberiumCostLabelRect, tiberiumCostLabel);
 
-            if (Widgets.ButtonText(addButtonRect, "Add Bill"))
+            if (Widgets.ButtonText(addButtonRect, "TR_AddBill".Translate()))
             {
-                BillStack.CreateNewBill();
+                BillStack.TryCreateNewBill();
             }
 
             GUI.EndGroup();
@@ -192,9 +274,15 @@ namespace TiberiumRim
             Widgets.Label(labelRect, resource.LabelCap);
             Text.Anchor = default;
 
-            var temp = BillStack.RequestedAmount[recipe];
-            Widgets.TextFieldNumeric<int>(fieldRect, ref temp, ref BillStack.textBuffers[index], 0, resource.stackLimit * 2); //(int)Widgets.HorizontalSlider(sliderRect, MetalAmount[resource], 0, 100, false, default, default, default, 1);
+            int temp, compare = temp = BillStack.RequestedAmount[recipe];
+            Widgets.TextFieldNumeric<int>(fieldRect, ref temp, ref BillStack.textBuffers[index], 0,
+                resource.stackLimit *
+                2); //(int)Widgets.HorizontalSlider(sliderRect, MetalAmount[resource], 0, 100, false, default, default, default, 1);
             BillStack.RequestedAmount[recipe] = temp;
+            if (compare != temp)
+            {
+                inputDirty = true;
+            }
 
             CostLabel(new Vector2(fieldRect.xMax + 5, fieldRect.y), recipe);
 
@@ -212,6 +300,49 @@ namespace TiberiumRim
                 textBuffers[index] = MetalAmount[resource].ToString();
             }
             */
+        }
+        public static DefValue<NetworkValueDef>[] ConstructCustomCost(Dictionary<AtomicRecipeDef, int> requestedAmount)
+        {
+            var allDefs = requestedAmount.Where(t => t.Value > 0).SelectMany(t => t.Key.inputRatio.Select(d => d.def)).Distinct().ToList();
+            var tempCost = new DefValue<NetworkValueDef>[allDefs.Count()];
+            tempCost.Populate(allDefs.Select(d => new DefValue<NetworkValueDef>(d, 0)));
+            foreach (var part in requestedAmount)
+            {
+                if (part.Value <= 0) continue;
+                foreach (var ratio in part.Key.inputRatio)
+                {
+                    for (var i = 0; i < tempCost.Length; i++)
+                    {
+                        var defValue = tempCost[i];
+                        if (defValue.Def == ratio.def)
+                        {
+                            tempCost[i].Value += ratio.value * part.Value;
+                        }
+                    }
+                }
+            }
+            return tempCost;
+        }
+
+        public DefValue<NetworkValueDef>[] TryGetCachedCost()
+        {
+            if (!inputDirty && cachedCustomCost != null) return cachedCustomCost;
+            inputDirty = false;
+            BillStack.TotalCost = ConstructCustomCost(BillStack.RequestedAmount);
+            return cachedCustomCost;
+        }
+
+        public static string CostLabel(DefValue<NetworkValueDef>[] values)
+        {
+            if (values.NullOrEmpty()) return "N/A";
+            StringBuilder sb = new StringBuilder();
+            sb.Append("(");
+            foreach (var input in values)
+            {
+                sb.Append($"{input.Value}{input.Def.labelShort.Colorize(input.Def.valueColor)} ");
+            }
+            sb.Append(")");
+            return sb.ToString();
         }
 
         // × 2400 (BaseMarketValue * Multiplier)

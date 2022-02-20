@@ -9,7 +9,7 @@ namespace TiberiumRim
     {
         public Comp_NetworkStructureCrafter Crafter => job.GetTarget(TargetIndex.A).Thing.TryGetComp<Comp_NetworkStructureCrafter>();
 
-        public CustomTiberiumBill CurrentBill => Crafter.BillStack.CurrentBill;
+        public CustomNetworkBill CurrentBill => Crafter.BillStack.CurrentBill;
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {

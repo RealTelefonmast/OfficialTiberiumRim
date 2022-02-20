@@ -11,12 +11,15 @@ namespace TiberiumRim
         [NoTranslate]
         private string fromTerrain;
 
+        private TerrainDef terrainDefInt;
+        private TerrainFilterDef filterDefInt;
+
         public bool isTopLayer = false;
         public TerrainDef toTerrain;
         public List<WeightedThing> toCrystal = new List<WeightedThing>();
 
-        public TerrainDef FromTerrain => DefDatabase<TerrainDef>.GetNamedSilentFail(fromTerrain);
-        public TerrainFilterDef FromTerrainGroup => DefDatabase<TerrainFilterDef>.GetNamedSilentFail(fromTerrain);
+        public TerrainDef FromTerrain => terrainDefInt ??= DefDatabase<TerrainDef>.GetNamedSilentFail(fromTerrain);
+        public TerrainFilterDef FromTerrainGroup => filterDefInt ??= DefDatabase<TerrainFilterDef>.GetNamedSilentFail(fromTerrain);
 
         public void GetOutcomes(out TiberiumCrystalDef crystalDef, out TerrainDef terrainDef, out bool isTopLayer)
         {

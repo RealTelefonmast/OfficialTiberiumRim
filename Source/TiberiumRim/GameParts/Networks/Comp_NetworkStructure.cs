@@ -173,7 +173,7 @@ namespace TiberiumRim
                 networkPart.NetworkCompTick(isPowered);
                 NetworkCompProcessor(networkPart, isPowered);
             }
-            DoNetworkProcessCustom(isPowered);
+            NetworkTickCustom(isPowered);
         }
 
         public override void ReceiveCompSignal(string signal)
@@ -182,7 +182,7 @@ namespace TiberiumRim
             base.ReceiveCompSignal(signal);
         }
 
-        protected virtual void DoNetworkProcessCustom(bool isPowered)
+        protected virtual void NetworkTickCustom(bool isPowered)
         {
 
         }
@@ -343,12 +343,8 @@ namespace TiberiumRim
                     int inv = ((height - 1) - y) * width + x;
 
                     var c = pattern[inv];
-                    switch (c)
-                    {
-                        case '+':
-                            cellsInner.Add(rectList[actualIndex]);
-                            break;
-                    }
+                    if (c == '+') 
+                        cellsInner.Add(rectList[actualIndex]);
                 }
             }
             return cellsInner.ToArray();

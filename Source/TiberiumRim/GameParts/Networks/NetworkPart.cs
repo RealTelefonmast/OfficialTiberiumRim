@@ -206,7 +206,6 @@ namespace TiberiumRim
                 if (!Container.HasValueStored || component.Container.CapacityFull) continue;
                 if (evenly && component.Container.StoredPercent > Container.StoredPercent) continue;
 
-                //Log.Message($"Transferring from {parent} to structures of role {ofRole} with {Container.AllStoredTypes.Count} stored types.");
                 for (int i = Container.AllStoredTypes.Count - 1; i >= 0; i--)
                 {
                     var type = Container.AllStoredTypes.ElementAt(i);

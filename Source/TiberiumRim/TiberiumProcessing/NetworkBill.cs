@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -7,13 +9,16 @@ using Verse.Sound;
 namespace TiberiumRim
 {
     //TODO: Potentially make this a "NetworkBill"
-    public class CustomTiberiumBill : IExposable
+    public class CustomNetworkBill : IExposable
     {
+        //General
+        public NetworkBillStack billStack;
+
+        //Custom
         public string billName;
         public int iterationsLeft = -1;
-        public int tiberiumCost;
         public float workAmountTotal;
-        public NetworkBillStack billStack;
+        public DefValue<NetworkValueDef>[] networkCost;
         public List<ThingDefCount> results = new List<ThingDefCount>();
 
         private BillRepeatModeDef repeatMode = BillRepeatModeDefOf.Forever;
@@ -24,8 +29,8 @@ namespace TiberiumRim
 
         public float WorkLeft => workAmountLeft;
 
-        private string WorkLabel => "Work Left: " + (int)workAmountLeft; 
-        private string CostLabel => "Cost: " + tiberiumCost;
+        private string WorkLabel => "TR_NetworkBillWork".Translate((int)workAmountLeft);
+        private string CostLabel => "TR_NetworkBillCost".Translate(ITab_CustomRefineryBills.CostLabel(networkCost));
 
         private string CountLabel
         {
@@ -55,22 +60,24 @@ namespace TiberiumRim
             }
         }
 
+        private Type type;
+
         public void ExposeData()
         {
             Scribe_Values.Look(ref billName, "billName");
             Scribe_Values.Look(ref iterationsLeft, "iterationsLeft");
-            Scribe_Values.Look(ref tiberiumCost, "tiberiumCost"); 
+            Scribe_Universal.Look(ref networkCost, "networkCost", LookMode.Deep, ref type); 
             Scribe_Values.Look(ref workAmountTotal, "workAmountTotal");
             Scribe_Values.Look(ref workAmountLeft, "workAmountLeft");
             Scribe_Collections.Look(ref results, "results");
         }
 
-        public CustomTiberiumBill(NetworkBillStack stack)
+        public CustomNetworkBill(NetworkBillStack stack)
         {
             this.billStack = stack;
         }
 
-        public CustomTiberiumBill(float workAmount)
+        public CustomNetworkBill(float workAmount)
         {
             workAmountTotal = workAmountLeft = workAmount;
         }
@@ -83,36 +90,56 @@ namespace TiberiumRim
             return true;
         }
 
+        private bool CanPayWith(Network wholeNetwork)
+        {
+            var totalNetworkValue = wholeNetwork.TotalNetworkValue;
+            float totalNeeded = networkCost.Sum(t => t.Value);
+            if (totalNetworkValue < totalNeeded) return false;
+     
+                foreach (var typeCost in networkCost)
+                {
+                    var specCost = typeCost.Value;
+                    if (wholeNetwork.NetworkValueFor(typeCost.Def) >= specCost)
+                        totalNeeded -= specCost;
+                }
+            
+
+
+            return totalNeeded == 0;
+        }
+
         private bool CanPay()
         {
-            var network = billStack.ParentTibComp.Network;
-            float networkValue = 0;
-            foreach (var valueType in TRUtils.MainValueTypes)
+            float totalNeeded = networkCost.Sum(t => t.Value);
+            foreach (var value in networkCost)
             {
-                networkValue += network.NetworkValueFor(valueType);
-                if (networkValue > tiberiumCost)
-                    return true;
+                var network = billStack.ParentComp[value.Def.networkDef].Network;
+                if (network.NetworkValueFor(value.Def) >= value.Value)
+                {
+                    totalNeeded -= value.Value;
+                }
             }
-            return false;
+
+            return totalNeeded == 0;
         }
 
         public void Pay()
         {
             var network = billStack.ParentTibComp.Network;
-            float totalCost = tiberiumCost;
+            float totalNeeded = networkCost.Sum(t => t.Value);
             var storages = network.ComponentSet.Storages;
             foreach (var storage in storages)
             {
-                foreach (var type in TRUtils.MainValueTypes)
+                foreach (var value in networkCost)
                 {
-                    if (totalCost <= 0) return;
-                    if (storage.Container.ValueForType(type) > 0 && storage.Container.TryRemoveValue(type, totalCost, out float actualVal))
+                    if (totalNeeded <= 0) return;
+                    if (storage.Container.ValueForType(value.Def) > 0 && storage.Container.TryRemoveValue(value.Def, value.Value, out float actualVal))
                     {
-                        totalCost -= actualVal;
+                        totalNeeded -= actualVal;
                     }
                 }
             }
-            if(totalCost > 0)
+            if(totalNeeded > 0)
                 TLog.Error("TotalCost higher than 0 after payment!");
         }
 
@@ -206,7 +233,7 @@ namespace TiberiumRim
             {
                 WidgetRow row = new WidgetRow(0, curY, UIDirection.RightThenDown);
                 row.Icon(result.ThingDef.uiIcon, result.ThingDef.description);
-                row.Label("×" + result.Count);
+                row.Label($"×{result.Count}");
                 curY += 24 + 5;
             }
             GUI.EndGroup();
@@ -252,13 +279,13 @@ namespace TiberiumRim
             GUI.EndGroup();
         }
 
-        public CustomTiberiumBill Clone()
+        public CustomNetworkBill Clone()
         {
-            CustomTiberiumBill bill = new CustomTiberiumBill(workAmountTotal);
+            CustomNetworkBill bill = new CustomNetworkBill(workAmountTotal);
             bill.iterationsLeft = iterationsLeft;
             bill.billName = billName + "_Copy";
             bill.repeatMode = repeatMode;
-            bill.tiberiumCost = tiberiumCost;
+            networkCost.CopyTo(bill.networkCost);
             bill.results = new List<ThingDefCount>(results);
             return bill;
         }

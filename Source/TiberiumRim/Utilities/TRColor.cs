@@ -15,6 +15,8 @@ namespace TiberiumRim
         public static readonly Color White025 = new Color(1, 1, 1, 0.25f);
         public static readonly Color White005 = new Color(1, 1, 1, 0.05f);
 
+        public static readonly Color LightBlack = new Color(0, 0, 0, 0.15f);
+
         public static readonly Color GapLineColor = new Color(0.35f, 0.35f, 0.35f);
 
         public static readonly Color Orange = new ColorInt(255, 175, 0).ToColor;

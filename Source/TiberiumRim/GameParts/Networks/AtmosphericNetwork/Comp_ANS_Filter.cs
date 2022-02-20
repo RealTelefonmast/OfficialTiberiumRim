@@ -51,7 +51,7 @@ namespace TiberiumRim
             return !ProcessingComp.Container.CapacityFull;
         }
 
-        protected override void DoNetworkProcessCustom(bool isPowered)
+        protected override void NetworkTickCustom(bool isPowered)
         {
             if (!ShouldProcess) return;
             if (AtmosphericComp.Container.TryRemoveValue(TiberiumDefOf.TibPollution, 10, out float actualValue))

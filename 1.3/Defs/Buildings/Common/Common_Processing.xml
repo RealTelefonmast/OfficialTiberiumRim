@@ -970,25 +970,6 @@
 		</comps>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.AtomicRecipeDef>
-		<defName>MakeElementalSteel</defName>
-		<inputRatio>
-			<li>Carbon,0.1</li>
-			<li>Iron,0.9</li>
-		</inputRatio>
-		<result>Steel</result>
-	</TiberiumRim.AtomicRecipeDef>
-	
-		<TiberiumRim.AtomicRecipeDef>
-		<defName>MakeElementalPlasteel</defName>
-		<inputRatio>
-			<li>Carbon,0.25</li>
-			<li>Exotic,0.25</li>
-			<li>Iron,0.5</li>
-		</inputRatio>
-		<result>Plasteel</result>
-	</TiberiumRim.AtomicRecipeDef>
-	
 	<TiberiumRim.TRThingDef ParentName="BenchBase_TR">
 		<defName>TiberiumCrafter</defName>
 		<label>Atomic Assembler</label>

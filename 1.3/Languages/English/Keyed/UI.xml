@@ -5,7 +5,11 @@
 	<TR_StartResearch>Start Project</TR_StartResearch>
 	<TR_StopResearch>Stop Project</TR_StopResearch>
 	
-	<!-- -->
+	<!-- Bills -->
+	<TR_CustomBillCustom>Custom</TR_CustomBillCustom>
+	<TR_CustomBillPresetBills>Presets</TR_CustomBillPresetBills>
+	<TR_NetworkBillWork>Work Left: {0}</TR_NetworkBillWork>
+	<TR_NetworkBillCost>Cost: {0}</TR_NetworkBillCost>
 	
 	<!-- Task -->
 	<TR_CurTask>Current Task: {0}</TR_CurTask>

@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	
+	<TiberiumRim.AtomicRecipePreset>
+		<defName>MakeSteelPreset</defName>
+		<label>Make Steel</label>
+		<desiredResources>
+			<MakeElementalSteel>15</MakeElementalSteel>
+		</desiredResources>
+	</TiberiumRim.AtomicRecipePreset>
+	
+	<TiberiumRim.AtomicRecipePreset>
+		<defName>MakeSteelBulkPreset</defName>
+		<label>Make Steel (Bulk)</label>
+		<desiredResources>
+			<MakeElementalSteel>150</MakeElementalSteel>
+		</desiredResources>
+	</TiberiumRim.AtomicRecipePreset>
+	
+	
+	<TiberiumRim.AtomicRecipePreset>
+		<defName>MakePlasteelPreset</defName>
+		<label>Make Plasteel</label>
+		<desiredResources>
+			<MakeElementalPlasteel>5</MakeElementalPlasteel>
+		</desiredResources>
+	</TiberiumRim.AtomicRecipePreset>
+	
+	<TiberiumRim.AtomicRecipePreset>
+		<defName>MakePlasteelBulkPreset</defName>
+		<label>Make Plasteel (Bulk)</label>
+		<desiredResources>
+			<MakeElementalPlasteel>75</MakeElementalPlasteel>
+		</desiredResources>
+	</TiberiumRim.AtomicRecipePreset>
+	
+	<!---->
+	
+	<TiberiumRim.AtomicRecipeDef>
+		<defName>MakeElementalSteel</defName>
+		<inputRatio>
+			<li>Carbon,10</li>
+			<li>Iron,90</li>
+		</inputRatio>
+		<result>Steel</result>
+	</TiberiumRim.AtomicRecipeDef>
+	
+	<TiberiumRim.AtomicRecipeDef>
+		<defName>MakeElementalPlasteel</defName>
+		<inputRatio>
+			<li>Carbon,25</li>
+			<li>Exotic,25</li>
+			<li>Iron,50</li>
+		</inputRatio>
+		<result>Plasteel</result>
+	</TiberiumRim.AtomicRecipeDef>
+	
+	<TiberiumRim.AtomicRecipeDef>
+		<defName>MakeElementalUranium</defName>
+		<inputRatio>
+			<li>Uranium,100</li>
+		</inputRatio>
+		<result>Uranium</result>
+	</TiberiumRim.AtomicRecipeDef>
+	
+	<TiberiumRim.AtomicRecipeDef>
+		<defName>MakeElementalGold</defName>
+		<inputRatio>
+			<li>Gold,1000</li>
+		</inputRatio>
+		<result>Gold</result>
+	</TiberiumRim.AtomicRecipeDef>
+	
 	<TiberiumRim.TRecipeDef>
 		<defName>ExtractSteel</defName>
 		<label>Get Steel</label>
