@@ -21,6 +21,11 @@ namespace TiberiumRim
             Log.Warning($"{"[TR]".Colorize(TRColor.Green)} {msg}");
         }
 
+        public static void Message(string msg, Color color)
+        {
+            Log.Message($"{"[TR]".Colorize(color)} {msg}");
+        }
+
         public static void Message(string msg)
         {
             Log.Message($"{"[TR]".Colorize(TRColor.Green)} {msg}");

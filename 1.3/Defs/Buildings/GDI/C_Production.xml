@@ -49,6 +49,30 @@
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>300</basePowerConsumption>
 			</li>
+			<li Class="TiberiumRim.CompProperties_TNS">
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<storeEvenly>false</storeEvenly>					
+						<containerProps>
+							<maxStorage>1000</maxStorage>
+							<dropContents>true</dropContents>
+							<leaveContainer>true</leaveContainer>
+						</containerProps>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Requester</li>
+						</networkRoles>
+						<allowedValues>
+							<li>TibGreen</li>	
+							<li>TibBlue</li>	
+							<li>TibRed</li>	
+							<li>TibSludge</li>	
+						</allowedValues>
+					</li>
+				</networks>
+				<!--connectionPattern>#+#|###|</connectionPattern-->
+			</li>
 			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>

@@ -16,7 +16,7 @@ namespace TiberiumRim
         public Dictionary<AtomicRecipeDef, int> RequestedAmount = new ();
         public string[] textBuffers;
 
-        public DefValue<NetworkValueDef>[] TotalCost; 
+        public DefValue<NetworkValueDef>[] TotalCost { get; set; }
         public int TotalWorkAmount => TotalCost.NullOrEmpty() ? 0 : TotalCost.Sum(m => (int)(m.Value * ITab_CustomRefineryBills.WorkAmountFactor));
 
         //
@@ -57,7 +57,13 @@ namespace TiberiumRim
 
         public void CreateBillFromDef(AtomicRecipePreset presetDef)
         {
-           
+            var totalCost = presetDef.desiredResources.Sum(t => (int)(t.Value * ITab_CustomRefineryBills.WorkAmountFactor));
+            CustomNetworkBill customBill = new CustomNetworkBill(totalCost);
+            customBill.billName = presetDef.defName;
+            customBill.networkCost = ITab_CustomRefineryBills.ConstructCustomCost(presetDef.desiredResources);
+            customBill.billStack = this;
+            customBill.results = presetDef.desiredResources.Select(m => new ThingDefCount(m.Def.result, m.Value)).ToList();
+            bills.Add(customBill);
         }
 
         public void TryCreateNewBill()

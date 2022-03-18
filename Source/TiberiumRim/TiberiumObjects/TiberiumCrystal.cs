@@ -217,7 +217,7 @@ namespace TiberiumRim
                         Map mapRef = mapComp.map;
 
                         //Once we mutate a plant, lets create garden
-                        Predicate<IntVec3> pred = c => c.InBounds(mapRef) && c.GetEdifice(mapRef) == null && (c.GetTerrain(mapRef).IsSoil() || c.GetTerrain(mapRef).IsWater);
+                        Predicate<IntVec3> pred = c => this.Parent.TiberiumField.Contains(c); //c.InBounds(mapRef) && c.GetEdifice(mapRef) == null && (c.GetTerrain(mapRef).IsSoil() || c.GetTerrain(mapRef).IsWater);
                         Action<IntVec3> action = delegate(IntVec3 c)
                         {
                             if (c.GetTerrain(mapRef).IsWater)
@@ -225,9 +225,10 @@ namespace TiberiumRim
                                 mapRef.terrainGrid.SetTerrain(c, TiberiumTerrainDefOf.BlueTiberiumWater);
                                 return;
                             }
-                            var tib = c.GetTiberium(mapRef);
                             c.GetTiberium(mapRef)?.DeSpawn();
-                            c.GetPlant(mapRef)?.DeSpawn();
+                            var flora = parent?.Ruleset.PlantAt(0.25f, 1);
+                            GenSpawn.Spawn(flora ?? TiberiumDefOf.TiberiumGrass, c, mapRef);
+                            //c.GetPlant(mapRef)?.DeSpawn();
                             /*if (tib != null)
                             {
                                 tib.DeSpawn();

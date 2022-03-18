@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Multiplayer.API;
@@ -137,13 +138,13 @@ namespace TiberiumRim
             return sb.ToString().TrimStart().TrimEnd();
         }
 
-        public void DrawField()
+        internal void DrawField()
         {
             if(drawField)
                 GenDraw.DrawFieldEdges(FieldCells, Color.green);
         }
 
-        public IEnumerable<Gizmo> Gizmos()
+        internal IEnumerable<Gizmo> Gizmos()
         {
             if (!DebugSettings.godMode) yield break;
 
@@ -152,6 +153,11 @@ namespace TiberiumRim
                 defaultLabel = "Show Field",
                 action = delegate { drawField = !drawField; }
             };
+        }
+
+        internal bool Contains(IntVec3 cell)
+        {
+            return fieldCellArea.Contains(cell);
         }
     }
 }

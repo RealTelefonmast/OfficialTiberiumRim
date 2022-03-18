@@ -16,7 +16,7 @@ namespace TiberiumRim
         }
 
         //Text Formatting
-        public static TaggedString Colorize(this string text, string colorHex)
+        public static string Colorize(this string text, string colorHex)
         {
             return $"<color={colorHex}>{text}</color>";
         }
@@ -26,7 +26,7 @@ namespace TiberiumRim
             return Colorize(text, ColorToHex(color));
         }
 
-        public static TaggedString Colorize(this string text, Color color)
+        public static string Colorize(this string text, Color color)
         {
             return Colorize(text, ColorToHex(color));
         }

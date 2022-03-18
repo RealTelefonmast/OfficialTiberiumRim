@@ -1074,7 +1074,7 @@ namespace TiberiumRim
         {
             public static void Postfix(ref Bill __result)
             {
-                if(__result.recipe is TRecipeDef)
+                if(__result.recipe is TRecipeDef tRecipe && tRecipe.networkCost != null)
                 {
                     NetworkBill tibBill = new NetworkBill(__result.recipe as TRecipeDef);
                     __result = tibBill;

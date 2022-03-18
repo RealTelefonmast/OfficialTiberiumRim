@@ -54,13 +54,13 @@
 		<workAmount>5500</workAmount>
 		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 		<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
-		<tiberiumCost>
+		<networkCost>
 			<costSet>
 				<specificCosts>
 					<TibBlue>60</TibBlue>
 				</specificCosts>
 			</costSet>
-		</tiberiumCost>
+		</networkCost>
 		<ingredients>
 			<li>
 				<filter>
@@ -146,13 +146,13 @@
 		<workAmount>5500</workAmount>
 		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 		<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
-		<tiberiumCost>
+		<networkCost>
 			<costSet>
 				<specificCosts>
 					<TibBlue>60</TibBlue>
 				</specificCosts>
 			</costSet>
-		</tiberiumCost>
+		</networkCost>
 		<ingredients>
 			<li>
 				<filter>

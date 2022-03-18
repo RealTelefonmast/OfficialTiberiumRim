@@ -19,7 +19,6 @@ namespace TiberiumRim
     public class AtomicRecipePreset : Def
     {
         public List<DefCount<AtomicRecipeDef>> desiredResources;
-
     }
 
     public class ITab_CustomRefineryBills : ITab
@@ -97,22 +96,17 @@ namespace TiberiumRim
             //Left Part
             //Draw Tabs
             var tabs = new List<TabRecord>();
-            var enums = (CustomBillTab[]) Enum.GetValues(typeof(CustomBillTab));
-            tabs.Add(new TabRecord("TR_CustomBillCustom".Translate(), delegate { SelTab = enums[0]; },
-                SelTab == enums[0]));
-            tabs.Add(new TabRecord("TR_CustomBillPresetBills".Translate(), delegate { SelTab = enums[1]; },
-                SelTab == enums[1]));
-            //
-            Widgets.DrawLine(new Vector2(leftArea.x, leftArea.y), new Vector2(leftArea.xMax, leftArea.y),
-                TRColor.White025, 1);
+            tabs.Add(new TabRecord("TR_CustomBillPresetBills".Translate(), delegate { SelTab = CustomBillTab.PresetBills; }, SelTab == CustomBillTab.PresetBills));
+            tabs.Add(new TabRecord("TR_CustomBillCustom".Translate(), delegate { SelTab = CustomBillTab.CustomBills;  }, SelTab == CustomBillTab.CustomBills));
+            Widgets.DrawLine(new Vector2(leftArea.x, leftArea.y), new Vector2(leftArea.xMax, leftArea.y), TRColor.White025, 1);
 
             TabDrawer.DrawTabs(tabRect, tabs);
             switch (SelTab)
             {
-                case CustomBillTab.CustomBills:
+                case CustomBillTab.PresetBills:
                     BillSelection(contentRect);
                     break;
-                case CustomBillTab.PresetBills:
+                case CustomBillTab.CustomBills:
                     BillCreation(contentRect);
                     break;
             }
@@ -162,6 +156,10 @@ namespace TiberiumRim
             DrawListedPart(rect, DefDatabase<AtomicRecipePreset>.AllDefs.ToList(), delegate(Rect rect, AtomicRecipePreset recipe)
                 {
                     Widgets.Label(rect, recipe.LabelCap);
+
+
+                    //
+                    TRWidgets.DrawBoxHighlightIfMouseOver(rect);
                     if (Widgets.ButtonInvisible(rect))
                     {
                         BillStack.CreateBillFromDef(recipe);
@@ -229,8 +227,7 @@ namespace TiberiumRim
             Widgets.DrawMenuSection(rect);
             rect = rect.ContractedBy(5f);
             GUI.BeginGroup(rect);
-            string nameLabel = "Bill Name: " +
-                               $"TotalCost: {BillStack.TotalCost != null} TotalSum: {BillStack?.TotalCost?.Sum(t => t.Value) ?? -1}";
+            string nameLabel = "Bill Name: ";
             string workLabel = "Work To Do: " + BillStack.TotalWorkAmount;
             string tiberiumCostLabel = $"Cost: {CostLabel(TryGetCachedCost())}";
             Vector2 nameLabelSize = Text.CalcSize(nameLabel);
@@ -275,9 +272,7 @@ namespace TiberiumRim
             Text.Anchor = default;
 
             int temp, compare = temp = BillStack.RequestedAmount[recipe];
-            Widgets.TextFieldNumeric<int>(fieldRect, ref temp, ref BillStack.textBuffers[index], 0,
-                resource.stackLimit *
-                2); //(int)Widgets.HorizontalSlider(sliderRect, MetalAmount[resource], 0, 100, false, default, default, default, 1);
+            Widgets.TextFieldNumeric<int>(fieldRect, ref temp, ref BillStack.textBuffers[index], 0, resource.stackLimit * 2); //(int)Widgets.HorizontalSlider(sliderRect, MetalAmount[resource], 0, 100, false, default, default, default, 1);
             BillStack.RequestedAmount[recipe] = temp;
             if (compare != temp)
             {
@@ -301,23 +296,41 @@ namespace TiberiumRim
             }
             */
         }
-        public static DefValue<NetworkValueDef>[] ConstructCustomCost(Dictionary<AtomicRecipeDef, int> requestedAmount)
+
+        public static DefValue<NetworkValueDef>[] ConstructCustomCost(List<DefCount<AtomicRecipeDef>> list)
         {
-            var allDefs = requestedAmount.Where(t => t.Value > 0).SelectMany(t => t.Key.inputRatio.Select(d => d.def)).Distinct().ToList();
-            var tempCost = new DefValue<NetworkValueDef>[allDefs.Count()];
+            var allValues = list.SelectMany(t => t.Def.inputRatio.Select(r => new DefValue<NetworkValueDef>(r.def, r.value * t.Value)));
+            var allDefs = allValues.Select(d => d.Def).Distinct().ToList();
+            var tempCost = new DefValue<NetworkValueDef>[allDefs.Count];
             tempCost.Populate(allDefs.Select(d => new DefValue<NetworkValueDef>(d, 0)));
-            foreach (var part in requestedAmount)
+            foreach (var value in allValues)
             {
-                if (part.Value <= 0) continue;
-                foreach (var ratio in part.Key.inputRatio)
+                for (var i = 0; i < tempCost.Length; i++)
                 {
-                    for (var i = 0; i < tempCost.Length; i++)
+                    var defValue = tempCost[i];
+                    if (defValue.Def == value.Def)
                     {
-                        var defValue = tempCost[i];
-                        if (defValue.Def == ratio.def)
-                        {
-                            tempCost[i].Value += ratio.value * part.Value;
-                        }
+                        tempCost[i].Value += value.Value;
+                    }
+                }
+            }
+            return tempCost;
+        }
+
+        public static DefValue<NetworkValueDef>[] ConstructCustomCost(IDictionary<AtomicRecipeDef, int> requestedAmount)
+        {
+            var allValues = requestedAmount.SelectMany(t => t.Key.inputRatio.Select(r => new DefValue<NetworkValueDef>(r.def, r.value * t.Value)));
+            var allDefs = allValues.Select(d => d.Def).Distinct().ToList();
+            var tempCost = new DefValue<NetworkValueDef>[allDefs.Count];
+            tempCost.Populate(allDefs.Select(d => new DefValue<NetworkValueDef>(d, 0)));
+            foreach (var value in allValues)
+            {
+                for (var i = 0; i < tempCost.Length; i++)
+                {
+                    var defValue = tempCost[i];
+                    if (defValue.Def == value.Def)
+                    {
+                        tempCost[i].Value += value.Value;
                     }
                 }
             }
@@ -326,9 +339,11 @@ namespace TiberiumRim
 
         public DefValue<NetworkValueDef>[] TryGetCachedCost()
         {
+            TLog.Message($"Redo: {inputDirty} | Cached: {cachedCustomCost?.Length}");
             if (!inputDirty && cachedCustomCost != null) return cachedCustomCost;
             inputDirty = false;
-            BillStack.TotalCost = ConstructCustomCost(BillStack.RequestedAmount);
+            BillStack.TotalCost = cachedCustomCost = ConstructCustomCost(BillStack.RequestedAmount);
+
             return cachedCustomCost;
         }
 
@@ -350,10 +365,10 @@ namespace TiberiumRim
         {
             StringBuilder sb = new StringBuilder();
             var amount = BillStack.RequestedAmount[recipe];
-            sb.Append("(");
+            sb.Append(" x (");
             foreach (var input in recipe.inputRatio)
             {
-                sb.Append($"{amount * input.value}{input.def.labelShort.Colorize(input.def.valueColor)} ");
+                sb.Append($"{input.value}{input.def.labelShort.Colorize(input.def.valueColor)} ");
             }
             sb.Append(")");
             string atomicTotal = sb.ToString();
