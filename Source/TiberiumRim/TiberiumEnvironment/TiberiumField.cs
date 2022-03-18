@@ -11,6 +11,8 @@ namespace TiberiumRim
 {
     public class TiberiumField : IExposable
     {
+        private Map map;
+
         private TiberiumProducer mainProducer;
         private TiberiumProducer blossomTree;
         private List<TiberiumCrystal> tiberium = new List<TiberiumCrystal>();
@@ -63,6 +65,7 @@ namespace TiberiumRim
         {
             this.mainProducer = mainProducer;
             fieldCellArea = new CellArea(mainProducer.Map);
+            map = mainProducer.Map;
         }
 
         public TiberiumField(TiberiumProducer mainProducer, List<TiberiumCrystal> crystals)
@@ -70,6 +73,7 @@ namespace TiberiumRim
             this.mainProducer = mainProducer;
             this.tiberium = crystals;
             fieldCellArea = new CellArea(mainProducer.Map);
+            map = mainProducer.Map;
         }
 
         public void ExposeData()
@@ -89,7 +93,7 @@ namespace TiberiumRim
 
         public void AddFieldCell(IntVec3 cell, Map map)
         {
-            if(!fieldCellArea.Contains(cell))
+            if(!fieldCellArea.Contains(cell, map))
                 fieldCellArea.Add(cell);
             if (mainProducer.TiberiumTypes.EnumerableNullOrEmpty()) return;
             foreach (var type in mainProducer.TiberiumTypes)
@@ -157,7 +161,7 @@ namespace TiberiumRim
 
         internal bool Contains(IntVec3 cell)
         {
-            return fieldCellArea.Contains(cell);
+            return fieldCellArea.Contains(cell, map);
         }
     }
 }

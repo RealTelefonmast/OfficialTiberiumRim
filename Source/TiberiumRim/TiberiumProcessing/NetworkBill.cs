@@ -102,8 +102,7 @@ namespace TiberiumRim
                     if (wholeNetwork.NetworkValueFor(typeCost.Def) >= specCost)
                         totalNeeded -= specCost;
                 }
-            
-
+                
 
             return totalNeeded == 0;
         }

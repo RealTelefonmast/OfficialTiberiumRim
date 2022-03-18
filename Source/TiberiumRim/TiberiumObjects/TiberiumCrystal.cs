@@ -16,9 +16,10 @@ namespace TiberiumRim
 
     public class TiberiumCrystal : TRThing
     {
-        private TiberiumProducer parent;
         private static Color32[] workingColors = new Color32[4];
 
+        private TiberiumField parentField;
+        private TiberiumProducer parent;
         protected float growthInt = 0.05f;
         protected int ageInt;
         protected int generationInt;

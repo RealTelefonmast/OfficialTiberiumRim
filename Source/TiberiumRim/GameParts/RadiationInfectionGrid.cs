@@ -71,6 +71,7 @@ namespace TiberiumRim
         //TODO: Check if exposing necessary
         public void ExposeData()
         {
+            /*
             if (Scribe.mode == LoadSaveMode.Saving)
             {
                 Buffer.BlockCopy(radiationIntGrid, 0, radiationBytes, 0, mapCells * 4);
@@ -87,6 +88,7 @@ namespace TiberiumRim
                 Buffer.BlockCopy(radiationBytes, 0, radiationIntGrid, 0, mapCells);
                 Buffer.BlockCopy(infectionBytes, 0, infectionIntGrid, 0, mapCells);
             }
+            */
         }
 
         public void Update()

@@ -10,7 +10,6 @@ namespace TiberiumRim
 
         private bool withBorder;
 
-        private Map map;
         private bool[] cellBools;
         private int trueCountInt;
         private int mapSizeX;
@@ -21,7 +20,6 @@ namespace TiberiumRim
         public CellArea(Map map, bool withBorder = false)
         {
             cells = new List<IntVec3>();
-            this.map = map;
             mapSizeX = map.Size.x;
             mapSizeZ = map.Size.z;
             cellBools = new bool[mapSizeZ * mapSizeX];
@@ -60,7 +58,7 @@ namespace TiberiumRim
 
         public int Count => cells.Count;
 
-        public bool Contains(IntVec3 cell)
+        public bool Contains(IntVec3 cell, Map map)
         {
             return cellBools[cell.Index(map)];
         }
