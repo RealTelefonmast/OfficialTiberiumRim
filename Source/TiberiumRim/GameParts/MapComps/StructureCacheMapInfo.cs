@@ -64,6 +64,8 @@ namespace TiberiumRim
                     break;
                 }
             }
+            if(groupDef.ParentGroup != null)
+                RegisterPart(groupDef.ParentGroup, obj);
         }
 
         public void DeregisterPart(TRGroupDef groupDef, object obj)
@@ -83,6 +85,8 @@ namespace TiberiumRim
                     break;
                 }
             }
+            if (groupDef.ParentGroup != null)
+                DeregisterPart(groupDef.ParentGroup, obj);
         }
     }
 }

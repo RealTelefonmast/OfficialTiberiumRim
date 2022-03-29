@@ -29,15 +29,28 @@ namespace TiberiumRim
 
         public override void Tick()
         {
-
             if (!ShouldSpread) return;
 
             if (crystalIterator == null && CanReset)
             {
                 ResetIterator();
             }
-            else
+            else if(crystalIterator != null)
             {
+                var current = crystalIterator.Current;
+                if (current?.Spawned ?? false)
+                {
+                    while (current.Growth < 1)
+                    {
+                        current.TickLong();
+                    }
+                }
+
+                if (!crystalIterator.MoveNext())
+                {
+                    crystalIterator = null;
+                }
+                /*
                 do
                 {
                     var current = crystalIterator.Current;
@@ -45,6 +58,7 @@ namespace TiberiumRim
                         current.TickLong();
                 } while (crystalIterator.MoveNext());
                 crystalIterator = null;
+            */
             }
         }
 

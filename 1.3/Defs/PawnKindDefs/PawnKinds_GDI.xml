@@ -3,13 +3,6 @@
 
 	<PawnKindDef ParentName="OutlanderBase" Name="GDIBase" Abstract="True">
 		<defaultFactionType>GDI</defaultFactionType>
-		<backstoryFiltersOverride>
-			<li>
-				<categories>
-					<li>Civil</li>
-				</categories>
-			</li>
-		</backstoryFiltersOverride>
 		<backstoryCryptosleepCommonality>0.08</backstoryCryptosleepCommonality>
 		<baseRecruitDifficulty>0.7</baseRecruitDifficulty>
 		<combatEnhancingDrugsChance>0.1</combatEnhancingDrugsChance>

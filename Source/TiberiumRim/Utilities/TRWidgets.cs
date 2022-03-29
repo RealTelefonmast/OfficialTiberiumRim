@@ -26,7 +26,6 @@ namespace TiberiumRim
             return RectOnPos(pos, rect.size);
         }
 
-
         public static void Slider(this WidgetRow row, float width, ref float value, float min = 0, float max = 1)
         {
             row.IncrementYIfWillExceedMaxWidth(width);
@@ -485,18 +484,18 @@ namespace TiberiumRim
             Text.Font = default;
         }
 
-        public static float DrawNetworkValueTypeReadout(Rect rect, GameFont font, float textYOffset, Dictionary<NetworkValueDef, float> typeValues)
+        public static float DrawNetworkValueTypeReadout(Rect rect, GameFont font, float textYOffset, NetworkContainerSet containerSet)
         {
             float height = 5;
 
             GUI.BeginGroup(rect);
             Text.Font = font;
             Text.Anchor = TextAnchor.UpperLeft;
-            foreach (var type in typeValues.Keys)
+            foreach (var type in containerSet.AllTypes)
             {
                 // float value = GetNetwork(Find.CurrentMap).NetworkValueFor(type);
                 //if(value <= 0) continue;
-                string label = $"{type}: {typeValues[type]}";
+                string label = $"{type}: {containerSet.GetValueByType(type)}";
                 Rect typeRect = new Rect(5, height, 10, 10);
                 Vector2 typeSize = Text.CalcSize(label);
                 Rect typeLabelRect = new Rect(20, height + textYOffset, typeSize.x, typeSize.y);
@@ -511,12 +510,87 @@ namespace TiberiumRim
             return height;
         }
 
+        public static bool MouseClickIn(Rect rect, int mouseButton)
+        {
+            Event curEvent = Event.current;
+            return Mouse.IsOver(rect) && curEvent.type == EventType.MouseDown && curEvent.button == mouseButton;
+        }
+
+        public static void DrawListedPart<T>(Rect rect, List<T> elements, Action<Rect, UIPartSizes, T> drawProccessor, Func<T, UIPartSizes> heightFunc)
+        {
+            float curY = rect.y;
+            for (var i = 0; i < elements.Count; i++)
+            {
+                var element = elements[i];
+                var listingHeight = heightFunc(element);
+                var listingRect = new Rect(rect.x, curY, rect.width, listingHeight.totalSize);
+                if (i % 2 == 0)
+                {
+                    Widgets.DrawHighlight(listingRect);
+                }
+                drawProccessor(listingRect, listingHeight, element);
+                curY += listingHeight.totalSize;
+            }
+        }
+
+        public static void AbsorbInput(Rect rect)
+        {
+            var curEv = Event.current;
+            if (Mouse.IsOver(rect) && curEv.type == EventType.MouseDown)
+                curEv.Use();
+        }
+
+        public static void DrawHighlightColor(Rect rect, Color color)
+        {
+            var oldColor = GUI.color;
+            GUI.color = color;
+            Widgets.DrawHighlight(rect);
+            GUI.color = oldColor;
+        }
+
         public static void DrawHighlightIfMouseOverColor(Rect rect, Color color)
         {
             var oldColor = GUI.color;
             GUI.color = color;
             Widgets.DrawHighlightIfMouseover(rect);
             GUI.color = oldColor;
+        }
+
+        public static Vector2 GetTiberiumReadoutSize(NetworkContainer container)
+        {
+            Vector2 size = new Vector2(10, 10);
+            foreach (var type in container.AllStoredTypes)
+            {
+                Vector2 typeSize = Text.CalcSize($"{type.labelShort}: {container.ValueForType(type)}");
+                size.y += 10 + 2;
+                var sizeX = typeSize.x + 20;
+                if (size.x <= sizeX)
+                    size.x += sizeX;
+            }
+            return size;
+        }
+
+        public static void DrawTiberiumReadout(Rect rect, NetworkContainer container)
+        {
+            float height = 5;
+            GUI.BeginGroup(rect);
+            Text.Font = GameFont.Tiny;
+            Text.Anchor = TextAnchor.UpperLeft;
+            foreach (var type in container.AllStoredTypes)
+            {
+                // float value = GetNetwork(Find.CurrentMap).NetworkValueFor(type);
+                //if(value <= 0) continue;
+                string label = $"{type.labelShort}: {container.ValueForType(type)}";
+                Rect typeRect = new Rect(5, height, 10, 10);
+                Vector2 typeSize = Text.CalcSize(label);
+                Rect typeLabelRect = new Rect(20, height - 2, typeSize.x, typeSize.y);
+                Widgets.DrawBoxSolid(typeRect, type.valueColor);
+                Widgets.Label(typeLabelRect, label);
+                height += 10 + 2;
+            }
+            Text.Font = default;
+            Text.Anchor = default;
+            GUI.EndGroup();
         }
     }
 }

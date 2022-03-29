@@ -16,6 +16,7 @@
     <techLevel>Spacer</techLevel>
 	<factionNameMaker>NamerFactionNod</factionNameMaker>
 	<settlementNameMaker>NamerFactionBaseNod</settlementNameMaker>
+	<allowedCultures><li>Rustican</li></allowedCultures>
     <requiredMemes>
 	  <li MayRequire="Ludeon.RimWorld.Ideology">Structure_OriginChristian</li>
       <li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>

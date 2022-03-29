@@ -12,13 +12,16 @@ namespace TiberiumRim
     /// </summary>
     public class TiberiumRoot : MonoBehaviour
     {
-        public static TimeControlTicker WindowAnimator_TimeControl { get; set; }
+        private TiberiumTickManager internalTickManager;
+
+        public TiberiumTickManager TickManager => internalTickManager;
 
         public virtual void Start()
         {
             try
             {
-
+                TRFind.TRoot = this;
+                internalTickManager = new TiberiumTickManager();
             }
             catch (Exception arg)
             {
@@ -30,7 +33,7 @@ namespace TiberiumRim
         {
             try
             {
-                WindowAnimator_TimeControl?.Update();
+                internalTickManager?.Update();
             }
             catch (Exception arg)
             {

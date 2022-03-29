@@ -60,6 +60,11 @@ namespace TiberiumRim
             base.FinalizeInit();
         }
 
+        public override void WorldComponentUpdate()
+        {
+            SimpleWorldView.Self?.Update();
+        }
+
         public void Notify_RegisterNewObject(GlobalTargetInfo worldObjectOrThing)
         {
             WorldDataInfo.RegisterMapWatcher(worldObjectOrThing);

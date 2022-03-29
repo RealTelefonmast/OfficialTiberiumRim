@@ -13,14 +13,18 @@ namespace TiberiumRim
         public string ContainerTitle => "TODO: PORTABLE TITLE";
         public Thing Thing => this;
         public NetworkContainer Container => container;
-        public ContainerProperties ContainerProperties => containerProps;
+        public ContainerProperties ContainerProps => containerProps;
         public bool DropsContents => true;
         public bool LeavesPhysicalContainer => false;
 
-        public void PostSetup(NetworkContainer container, ContainerProperties props)
+        public void SetContainerProps(ContainerProperties props)
         {
             this.containerProps = props;
-            this.container = container.Copy(this);
+        }
+
+        public void SetContainer(NetworkContainer container)
+        {
+            this.container = container;
         }
 
         public override float[] OpacityFloats => new float[1] { Container?.StoredPercent ?? 0f };

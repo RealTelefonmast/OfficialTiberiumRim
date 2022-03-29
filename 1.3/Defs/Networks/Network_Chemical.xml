@@ -23,35 +23,40 @@
 	<TiberiumRim.NetworkValueDef>
 		<defName>Iron</defName>
 		<networkDef>ChemicalNetwork</networkDef>
-		<label>Fe</label>
+		<label>Iron</label>
+		<labelShort>Fe</labelShort>
 		<valueColor>(224,102,51)</valueColor>
 	</TiberiumRim.NetworkValueDef>
 
 	<TiberiumRim.NetworkValueDef>
 		<defName>Copper</defName>
 		<networkDef>ChemicalNetwork</networkDef>
-		<label>Cu</label>
+		<label>Copper</label>
+		<labelShort>Cu</labelShort>
 		<valueColor>(200,128,51</valueColor>
 	</TiberiumRim.NetworkValueDef>
 
 	<TiberiumRim.NetworkValueDef>
 		<defName>Silver</defName>
 		<networkDef>ChemicalNetwork</networkDef>
-		<label>Ag</label>
+		<label>Silver</label>
+		<labelShort>Ag</labelShort>
 		<valueColor>(192,192,192)</valueColor>
 	</TiberiumRim.NetworkValueDef>
 	
 	<TiberiumRim.NetworkValueDef>
 		<defName>Gold</defName>
 		<networkDef>ChemicalNetwork</networkDef>
-		<label>Au</label>
+		<label>Iron</label>
+		<labelShort>Au</labelShort>
 		<valueColor>(255,209,35)</valueColor>
 	</TiberiumRim.NetworkValueDef>
 	
 	<TiberiumRim.NetworkValueDef>
 		<defName>Uranium</defName>
 		<networkDef>ChemicalNetwork</networkDef>
-		<label>U</label>
+		<label>Uranium</label>
+		<labelShort>U</labelShort>
 		<valueColor>(0,143,255)</valueColor>
 	</TiberiumRim.NetworkValueDef>
 	
@@ -59,35 +64,40 @@
 	<TiberiumRim.NetworkValueDef>
 		<defName>Carbon</defName>
 		<networkDef>ChemicalNetwork</networkDef>
-		<label>C</label>
+		<label>Carbon</label>
+		<labelShort>C</labelShort>
 		<valueColor>(144,144,144)</valueColor>
 	</TiberiumRim.NetworkValueDef>
 	
 	<TiberiumRim.NetworkValueDef>
 		<defName>Phosphorus</defName>
 		<networkDef>ChemicalNetwork</networkDef>
-		<label>P</label>
+		<label>Phosphorus</label>
+		<labelShort>P</labelShort>
 		<valueColor>(255,128,0)</valueColor>
 	</TiberiumRim.NetworkValueDef>
 
 	<TiberiumRim.NetworkValueDef>
 		<defName>Calcium</defName>
 		<networkDef>ChemicalNetwork</networkDef>
-		<label>Ca</label>
+		<label>Calcium</label>
+		<labelShort>Ca</labelShort>
 		<valueColor>(61,255,0)</valueColor>
 	</TiberiumRim.NetworkValueDef>
 
 	<TiberiumRim.NetworkValueDef>
 		<defName>Silicon</defName>
 		<networkDef>ChemicalNetwork</networkDef>
-		<label>Si</label>
+		<label>Silicon</label>
+		<labelShort>Si</labelShort>
 		<valueColor>(240,200,160</valueColor>
 	</TiberiumRim.NetworkValueDef>
 
 	<TiberiumRim.NetworkValueDef>
 		<defName>Exotic</defName>
 		<networkDef>ChemicalNetwork</networkDef>
-		<label>EX</label>
+		<label>Exotic</label>
+		<labelShort>EX</labelShort>
 		<valueColor>(85,9,96</valueColor>
 	</TiberiumRim.NetworkValueDef>
 

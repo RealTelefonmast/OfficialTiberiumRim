@@ -39,7 +39,7 @@ namespace TiberiumRim
         }
     }
 
-    public class NetworkComponent : IExposable, INetworkComponent, IContainerHolder
+    public class NetworkComponent : IExposable, INetworkComponent, IContainerHolderStructure
     {
         protected Comp_NetworkStructure parent;
         protected NetworkContainer container;
@@ -47,6 +47,9 @@ namespace TiberiumRim
         protected NetworkComponentSet componentSet;
 
         protected NetworkComponentProperties props;
+
+        //Values
+        private Dictionary<NetworkValueDef, float> requestedTypes;
 
         //SaveHelper
         private int savedPropsIndex = -1;
@@ -58,6 +61,9 @@ namespace TiberiumRim
 
         public NetworkComponentProperties Props => props;
         public Thing Thing => parent.Thing;
+
+        public INetworkComponent NetworkComp => this;
+        public NetworkContainerSet ContainerSet => Network.ContainerSet;
 
         //Network Data
         public bool IsMainController => Network.NetworkController == Parent;
@@ -78,12 +84,15 @@ namespace TiberiumRim
         public NetworkComponentSet ConnectedComponentSet => componentSet;
 
         public string ContainerTitle => NetworkDef.containerLabel;
+        public ContainerProperties ContainerProps => Props.containerProps;
 
         public NetworkContainer Container
         {
             get => container;
             private set => container = value;
         }
+
+        public Dictionary<NetworkValueDef, float> RequestedTypes => requestedTypes;
 
         public NetworkComponent(Comp_NetworkStructure parent)
         {
@@ -114,8 +123,15 @@ namespace TiberiumRim
             componentSet = new NetworkComponentSet(NetworkDef, this);
             if (respawningAfterLoad) return;
             if (HasContainer)
-                Container = new NetworkContainer(this, Props.containerProps, Props.allowedValues);
-
+                Container = new NetworkContainer(this, Props.allowedValues);
+            if (NetworkRole.HasFlag(NetworkRole.Requester))
+            {
+                requestedTypes = new Dictionary<NetworkValueDef, float>();
+                foreach (var allowedValue in props.allowedValues)
+                {
+                    requestedTypes.Add(allowedValue, 0);
+                }
+            }
         }
 
         public void PostDestroy(DestroyMode mode, Map previousMap)
@@ -178,6 +194,11 @@ namespace TiberiumRim
             {
                 ConsumerTick();
             }
+
+            if (NetworkRole.HasFlag(NetworkRole.Requester))
+            {
+                RequesterTick();
+            }
         }
 
         protected virtual void ProducerTick()
@@ -196,6 +217,26 @@ namespace TiberiumRim
 
         protected virtual void ConsumerTick()
         {
+        }
+
+        protected virtual void RequesterTick()
+        {
+            foreach (var requestedType in RequestedTypes)
+            {
+                if (Container.ValueForType(requestedType.Key) < requestedType.Value)
+                {
+                    foreach (var component in Network.ComponentSet[NetworkRole.Storage])
+                    {
+                        var container = component.Container;
+                        if (container.Empty) continue;
+                        if (container.ValueForType(requestedType.Key) <= 0) continue;
+                        if (container.TryTransferTo(Container, requestedType.Key, 1))
+                        {
+                            Notify_ReceivedValue();
+                        }
+                    }
+                }
+            }
         }
 
         private void TransferToOthers(NetworkRole ofRole, bool evenly)
@@ -247,6 +288,7 @@ namespace TiberiumRim
 
         public void Draw()
         {
+            DrawNetworkInfo();
             if (DebugNetworkCells)
             {
                 GenDraw.DrawFieldEdges(Network.NetworkCells, Color.cyan);
@@ -272,8 +314,79 @@ namespace TiberiumRim
             }
         }
 
+        private bool drawNetworkInfo = false;
+
+        private void DrawNetworkInfo()
+        {
+            if (!drawNetworkInfo) return;
+            Rect sizeRect = new Rect(UI.screenWidth / 2 - (756/2),UI.screenHeight/2 - (756/2), 756, 756);
+            Find.WindowStack.ImmediateWindow(GetHashCode(), sizeRect, WindowLayer.GameUI, () =>
+            {
+                int row = 0;
+                float curY = 0;
+
+                foreach (var keyValue in Network.ContainerSet.ContainersByRole)
+                {
+                    Widgets.Label(new Rect(0, curY, 150, 20), $"{keyValue.Key}: ");
+                    int column = 0;
+                    curY += 20;
+                    foreach (var container in keyValue.Value)
+                    {
+                        Rect compRect = new Rect(column * 100 + 5, curY, 100, 100);
+                        Widgets.DrawBox(compRect);
+                        string text = $"{container.Parent.Thing.def}:\n";
+
+                        TRWidgets.DrawTiberiumReadout(compRect, container);
+                        column++;
+                    }
+                    row++;
+                    curY += 100 + 5;
+                }
+                /*
+                foreach (var structures in Network.ComponentSet.StructuresByRole)
+                {
+                    Widgets.Label(new Rect(0, curY, 150, 20), $"{structures.Key}: ");
+                    int column = 0;
+                    curY += 20;
+                    foreach (var component in structures.Value)
+                    {
+                        Rect compRect = new Rect(column * 100 + 5, curY, 100, 100);
+                        Widgets.DrawBox(compRect);
+                        string text = $"{component.Parent.Thing.def}:\n";
+                        switch (structures.Key)
+                        {
+                            case NetworkRole.Producer:
+                                text = $"{text}Producing:";
+                                break;
+                            case NetworkRole.Storage:
+                                text = $"{text}";
+                                break;
+                            case NetworkRole.Consumer:
+                                text = $"{text}";
+                                break;
+                            case NetworkRole.Requester:
+                                text = $"{text}";
+                                break;
+                        }
+                        Widgets.Label(compRect, $"{text}");
+                        column++;
+                    }
+                    row++;
+                    curY += 100 + 5;
+                }
+                */
+            } );
+        }
+        //
+        private Gizmo_NetworkInfo networkInfoGizmo;
+        public Gizmo_NetworkInfo NetworkGizmo => networkInfoGizmo ??= new Gizmo_NetworkInfo(this);
+
+
         public virtual IEnumerable<Gizmo> GetPartGizmos()
         {
+            yield return NetworkGizmo;
+
+            /*
             if (HasContainer)
             {
                 foreach (var containerGizmo in Container.GetGizmos())
@@ -281,6 +394,7 @@ namespace TiberiumRim
                     yield return containerGizmo;
                 }
             }
+            */
 
             if (IsMainController)
             {
@@ -294,10 +408,12 @@ namespace TiberiumRim
                 };
             }
 
+            /*
             foreach (var networkGizmo in GetSpecialNetworkGizmos())
             {
                 yield return networkGizmo;
             }
+            */
 
             if (DebugSettings.godMode)
             {
@@ -312,7 +428,7 @@ namespace TiberiumRim
                 {
                     defaultLabel = $"View Entire {NetworkDef.defName} Set",
                     defaultDesc = Network.ComponentSet.ToString(),
-                    action = delegate { }
+                    action = delegate { drawNetworkInfo = !drawNetworkInfo; }
                 };
             }
         }

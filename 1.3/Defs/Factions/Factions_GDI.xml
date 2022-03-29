@@ -16,6 +16,7 @@
     <techLevel>Spacer</techLevel>
 	<factionNameMaker>NamerFactionGDI</factionNameMaker>
 	<settlementNameMaker>NamerFactionBaseGDI</settlementNameMaker>
+	<allowedCultures><li>Rustican</li></allowedCultures>
     <requiredMemes>
 	  <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
       <li MayRequire="Ludeon.RimWorld.Ideology">Individualist</li>

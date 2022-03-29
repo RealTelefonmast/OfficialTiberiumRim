@@ -19,7 +19,7 @@
 	<WorkGiverDef>
 		<defName>DoTiberiumBills</defName>
 		<label>do tiberium bill</label>
-		<giverClass>TiberiumRim.WorkGiver_TiberiumBills</giverClass>
+		<giverClass>TiberiumRim.WorkGiver_NetworkBills</giverClass>
 		<workType>Crafting</workType>
 		<priorityInType>85</priorityInType>
 		<verb>(TR)do bill</verb>

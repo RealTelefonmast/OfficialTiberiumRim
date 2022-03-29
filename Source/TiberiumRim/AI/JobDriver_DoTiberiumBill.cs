@@ -27,17 +27,14 @@ namespace TiberiumRim
             billToil.FailOn(() => CurrentBill == null || !CurrentBill.ShouldDoNow());
             billToil.initAction = delegate
             {
-
+                CurrentBill.StartWorkAndPay();
             };
             billToil.tickAction = delegate
             {
                 var bill = CurrentBill;
                 Pawn pawn = billToil.actor;
                 bill.DoWork(pawn);
-                if (bill.TryFinish())
-                {
-                    bill.Pay();
-                }
+                bill.TryFinish();
             };
             billToil.defaultCompleteMode = ToilCompleteMode.Never;
             billToil.WithEffect(() => EffecterDefOf.ConstructMetal, TargetIndex.A);

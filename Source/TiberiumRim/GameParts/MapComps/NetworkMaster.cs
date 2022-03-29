@@ -44,6 +44,10 @@ namespace TiberiumRim
                 DeregisterNetwork(oldNet);
             }
             RegisterNetwork(network);
+
+            //Controller is set after net is regenerated
+            if (component.IsMainController)
+                MainNetworkComponent = component;
         }
 
         public void DeregisterComponent(INetworkComponent component)
@@ -100,15 +104,14 @@ namespace TiberiumRim
             return networkGrid[map.cellIndices.CellToIndex(c)];
         }
 
-
         public bool HasNetworkConnectionAt(IntVec3 c)
         {
             return networkBools[map.cellIndices.CellToIndex(c)];
         }
 
+        //Todo: Fix regen to queue like power net
         public Network RegenerateNetwork(INetworkComponent root, out HashSet<Network> oldNets)
         {
-            TLog.Debug($"Regenerating new net from {root.Parent.Thing}");
             oldNets = new HashSet<Network>();
             Network newNet = new Network(root.NetworkDef, map, this);
             HashSet<INetworkComponent> closedSet = new HashSet<INetworkComponent>();

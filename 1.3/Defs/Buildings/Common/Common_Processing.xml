@@ -741,7 +741,7 @@
 						</containerProps>
 						<networkRoles>
 							<li>Transmitter</li>
-							<li>Storage</li>
+							<li>Requester</li>
 						</networkRoles>
 						<allowedValues>
 							<li>TibGreen</li>	
@@ -760,6 +760,7 @@
 							<leaveContainer>true</leaveContainer>
 						</containerProps>
 						<networkRoles>
+							<li>Controller</li>
 							<li>Transmitter</li>
 							<li>Storage</li>
 						</networkRoles>
@@ -978,9 +979,8 @@
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<TRCategory>Processing</TRCategory>
+		<TRGroup>TiberiumCrafters</TRGroup>
 		<drawerType>MapMeshAndRealTime</drawerType>
-		<!--TODO: FixUp-->
-		<hidden>true</hidden>
 		<graphicData>
 			<texPath>Buildings/Common/Network/ResourceCrafter/Replant</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -1115,10 +1115,10 @@
 		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
 	</TiberiumRim.TRThingDef>
 	
-	<!--
+	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
-		<defName>NetworkNode</defName>
-		<label>Node</label>
+		<defName>NetworkValve</defName>
+		<label>Programmable Valve</label>
 		<description>.</description>
 		<thingCategories Inherit="false" />
 		<altitudeLayer>Building</altitudeLayer>
@@ -1149,8 +1149,8 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNW">
-				<compClass>TiberiumRim.CompTNW_Node</compClass>
+			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+			
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -1188,5 +1188,4 @@
 		<surfaceType>Item</surfaceType>
 	</TiberiumRim.TRThingDef>
 	
-	-->
 </Defs>

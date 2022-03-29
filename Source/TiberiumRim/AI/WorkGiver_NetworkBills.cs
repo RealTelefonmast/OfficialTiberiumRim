@@ -6,7 +6,7 @@ using Verse.AI;
 
 namespace TiberiumRim
 {
-    public class WorkGiver_TiberiumBills : WorkGiver_Scanner
+    public class WorkGiver_NetworkBills : WorkGiver_Scanner
     {
 		public override PathEndMode PathEndMode => PathEndMode.InteractionCell;
 
@@ -16,7 +16,7 @@ namespace TiberiumRim
         {
             //var tnw = map.Tiberium().NetworkInfo[NetworkType.TiberiumProcessing];
             //var buildings = tnw.MainStructureSet.Consumers.Select(t => t.parent);
-            return map.Tiberium().StructureCacheInfo.GetCompParentsFromGroup(TRGroupDefOf.TiberiumCrafters);
+            return map.Tiberium().StructureCacheInfo.GetThingsFromGroup(TRGroupDefOf.TiberiumCrafters);
         }
 
         public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
@@ -31,7 +31,8 @@ namespace TiberiumRim
             var compTNW = t.TryGetComp<Comp_NetworkStructureCrafter>();
 
             if (compTNW == null) return false;
-            if (!compTNW[TiberiumDefOf.TiberiumNetwork].Network.IsWorking) return false;
+            if (compTNW.BillStack.ParentNetComps.Any(t => !t.Network.IsWorking)) return false;
+            //if (!compTNW[compTNW.BillStack.ParentTibComp].Network.IsWorking) return false;
             if (compTNW.billStack.CurrentBill != null)
             {
                 if (!compTNW.billStack.CurrentBill.ShouldDoNow()) return false;

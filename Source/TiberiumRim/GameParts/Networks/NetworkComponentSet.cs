@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using TiberiumRim.GameParts.Interfaces;
+using Verse;
 
 namespace TiberiumRim
 {
@@ -38,7 +39,7 @@ namespace TiberiumRim
         }
 
         public string[] CachedStrings { get; set; }
-        public bool Empty => !FullSet.Any();
+        public bool Empty => !Enumerable.Any(FullSet);
 
         public NetworkComponentSet(NetworkDef def, INetworkComponent parent) 
         {
@@ -48,16 +49,25 @@ namespace TiberiumRim
             CachedStrings = new string[1];
 
             FullSet = new HashSet<INetworkComponent>();
-            StructuresByRole = new Dictionary<NetworkRole, HashSet<INetworkComponent>>();
-            foreach (NetworkRole value in typeof(NetworkRole).GetEnumValues())
-            {
-                StructuresByRole.Add(value, new HashSet<INetworkComponent>());
-            }
-
             Transmitters = new HashSet<INetworkComponent>();
             Producers = new HashSet<INetworkComponent>();
             Consumers = new HashSet<INetworkComponent>();
             Storages = new HashSet<INetworkComponent>();
+
+            StructuresByRole = new Dictionary<NetworkRole, HashSet<INetworkComponent>>();
+            StructuresByRole.Add(NetworkRole.All, FullSet);
+            StructuresByRole.Add(NetworkRole.Transmitter, Transmitters);
+            StructuresByRole.Add(NetworkRole.Producer, Producers);
+            StructuresByRole.Add(NetworkRole.Consumer, Consumers);
+            StructuresByRole.Add(NetworkRole.Storage, Storages);
+
+            /*
+            foreach (NetworkRole value in typeof(NetworkRole).GetEnumValues())
+            {
+                StructuresByRole.Add(value, new HashSet<INetworkComponent>());
+            }
+            */
+
         }
 
         public bool AddNewComponent(INetworkComponent component)
@@ -65,7 +75,6 @@ namespace TiberiumRim
             if (FullSet.Contains(component) || component == null) return false;
             AddComponent(component);
             return true;
-            //structure.NeighbourStructureSet.AddStructure(parent, cell + parent?.Thing?.Position.PositionOffset(cell) ?? IntVec3.Invalid);
         }
 
         private void AddComponent(INetworkComponent component)
@@ -75,7 +84,7 @@ namespace TiberiumRim
             FullSet.Add(component);
 
             if (component.NetworkRole.HasFlag(NetworkRole.Controller))
-            {
+            { 
                 Controller = component;
             }
             if (component.NetworkRole.HasFlag(NetworkRole.Transmitter))

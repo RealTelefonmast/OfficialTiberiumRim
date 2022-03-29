@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Multiplayer.API;
 using RimWorld;
+using TiberiumRim.Utilities;
 using UnityEngine;
 using Verse;
 
@@ -24,10 +25,29 @@ namespace TiberiumRim
             this.valueF = value;
         }
 
+        public void AdjustValue(float diff)
+        {
+            value += (int)diff;
+            valueF += diff;
+        }
+
         public static NetworkValue operator +(NetworkValue a, NetworkValue b)
         {
             a.value += b.value;
             a.valueF += b.valueF;
+            return a;
+        }
+        public static NetworkValue operator +(NetworkValue a, int b)
+        {
+            a.value += b;
+            a.valueF += b;
+            return a;
+        }
+
+        public static NetworkValue operator -(NetworkValue a, int b)
+        {
+            a.value -= b;
+            a.valueF -= b;
             return a;
         }
     }
@@ -40,6 +60,12 @@ namespace TiberiumRim
 
         public float TotalValue => networkValues.Sum(t => t.valueF);
         public IEnumerable<NetworkValueDef> AllTypes => networkValues.Select(t => t.valueDef);
+
+        public NetworkValue this[NetworkValueDef def]
+        {
+            get { return networkValues.First(v => v.valueDef == def); }
+            set { networkValues.SetValue(value, networkValues.FirstIndexOf(v => v.valueDef == def));}
+        }
 
         public NetworkValueStack(Dictionary<NetworkValueDef, float> values)
         {
@@ -65,6 +91,19 @@ namespace TiberiumRim
         {
             networkValues = new NetworkValue[valueCount];
             //color = Color.white;
+        }
+
+        public void Add(NetworkValueDef def, float value)
+        {
+            var old = networkValues;
+            if (networkValues == null)
+            {
+                networkValues = new NetworkValue[1] {new (def, value)};
+                return;
+            }
+            networkValues = new NetworkValue[networkValues.Length + 1];
+            networkValues.Populate(old);
+            networkValues[networkValues.Length - 1] = new NetworkValue(def, value);
         }
 
         public void Reset()
@@ -117,11 +156,6 @@ namespace TiberiumRim
 
     public class NetworkContainer : IExposable
     {
-        private NetworkContainerSet parentSet;
-
-        //Container Props
-        private ContainerProperties props;
-
         //Container Data
         private IContainerHolder parentHolder;
         private Color colorInt;
@@ -144,7 +178,12 @@ namespace TiberiumRim
         public bool CapacityFull => TotalStored >= Capacity;
         public bool ContainsForbiddenType => AllStoredTypes.Any(t => !AcceptsType(t));
 
+        public bool IsStructure => parentHolder is IContainerHolderStructure;
+
         public IContainerHolder Parent => parentHolder;
+        public IContainerHolderStructure ParentStructure => Parent is IContainerHolderStructure ? (IContainerHolderStructure) parentHolder : null;
+
+        public ContainerProperties Props => Parent.ContainerProps;
 
         public NetworkValueDef MainValueType
         {
@@ -174,20 +213,25 @@ namespace TiberiumRim
         public NetworkContainer(IContainerHolder parent)
         {
             this.parentHolder = parent;
+            this.totalCapacity = Props.maxStorage;
         }
 
-        public NetworkContainer(IContainerHolder parent, ContainerProperties props)
+        public NetworkContainer(IContainerHolder parent, NetworkValueStack valueStack)
         {
             this.parentHolder = parent;
-            this.props = props;
-            this.totalCapacity = props.maxStorage;
+            this.totalCapacity = Props.maxStorage;
+            AcceptedTypes = valueStack.AllTypes.ToList();
+            foreach (var type in AcceptedTypes)
+            {
+                TypeFilter.Add(type, true);
+            }
+            LoadFromStack(valueStack);
         }
 
-        public NetworkContainer(IContainerHolder parent, ContainerProperties props, List<NetworkValueDef> acceptedTypes)
+        public NetworkContainer(IContainerHolder parent, List<NetworkValueDef> acceptedTypes)
         {
             this.parentHolder = parent;
-            this.props = props;
-            this.totalCapacity = props.maxStorage;
+            this.totalCapacity = Props.maxStorage;
             if (!acceptedTypes.NullOrEmpty())
             {
                 AcceptedTypes = acceptedTypes;
@@ -211,7 +255,7 @@ namespace TiberiumRim
 
         public NetworkContainer Copy(IContainerHolder newHolder)
         {
-            NetworkContainer newContainer = new NetworkContainer(newHolder, props, AcceptedTypes.ListFullCopy());
+            NetworkContainer newContainer = new NetworkContainer(newHolder, AcceptedTypes.ListFullCopy());
             newContainer.totalStoredCache = TotalStored;
             newContainer.AllStoredTypes.AddRange(AllStoredTypes);
 
@@ -223,24 +267,25 @@ namespace TiberiumRim
         public void Parent_Destroyed(DestroyMode mode, Map previousMap)
         {
             if (Parent == null || TotalStored <= 0 || mode == DestroyMode.Vanish) return;
-            if ((mode is DestroyMode.Deconstruct or DestroyMode.Refund) && props.leaveContainer)
+            if ((mode is DestroyMode.Deconstruct or DestroyMode.Refund) && Props.leaveContainer)
             {
                 PortableContainer container = (PortableContainer)ThingMaker.MakeThing(TiberiumDefOf.PortableContainer);
-                container.PostSetup(this, props);
+                container.SetContainerProps(Props);
+                container.SetContainer(Copy(container));
                 GenSpawn.Spawn(container, Parent.Thing.Position, previousMap);
             }
-            else if (props.doExplosion)
+            else if (Props.doExplosion)
             {
                 if (TotalStored > 0)
                 {
                     var spawnDef = TRUtils.CrystalDefFromType(MainValueType, out bool isGas);
-                    float radius = props.explosionRadius * StoredPercent;
+                    float radius = Props.explosionRadius * StoredPercent;
                     int damage = (int)(10 * StoredPercent);
                     //TODO: Add Tiberium damagedef
                     GenExplosion.DoExplosion(Parent.Thing.Position, previousMap, radius, DamageDefOf.Bomb, Parent.Thing, damage, 5, null, null, null, null, spawnDef, 0.18f);
                 }
             }
-            else if(props.dropContents)
+            else if(Props.dropContents)
             {
                 int i = 0;
                 List<Thing> drops = this.PotentialItemDrops();
@@ -288,7 +333,7 @@ namespace TiberiumRim
         public void Notify_AddedValue(NetworkValueDef valueType, float value)
         {
             totalStoredCache += value;
-            parentSet?.Notify_AddedValue(valueType, value);
+            ParentStructure?.ContainerSet?.Notify_AddedValue(valueType, value, ParentStructure.NetworkComp);
             AllStoredTypes.Add(valueType);
 
             //Update stack state
@@ -298,18 +343,13 @@ namespace TiberiumRim
         public void Notify_RemovedValue(NetworkValueDef valueType, float value)
         {
             totalStoredCache -= value;
-            parentSet?.Notify_RemovedValue(valueType, value);
-           //TODO: Add value by role/
+            ParentStructure?.ContainerSet?.Notify_RemovedValue(valueType, value, ParentStructure.NetworkComp);
+            //TODO: Add value by role/
             if (AllStoredTypes.Contains(valueType) && ValueForType(valueType) <= 0)
                 AllStoredTypes.RemoveWhere(v => v == valueType);
 
             //Update stack state
             UpdateContainerState();
-        }
-
-        public void Notify_SetParentSet(NetworkContainerSet parentSet)
-        {
-            this.parentSet = parentSet;
         }
 
         public void LoadFromStack(NetworkValueStack stack)

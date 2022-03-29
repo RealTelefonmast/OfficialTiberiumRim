@@ -10,8 +10,8 @@ namespace TiberiumRim
     public class TiberiumUpdateManager
     {
         public OutsourceWorker OutsourceWorker;
-
-        public Queue<MainThreadAction> MainThreadActions = new Queue<MainThreadAction>();
+        private Queue<MainThreadAction> MainThreadActions = new Queue<MainThreadAction>();
+        private Action tickActions;
 
         public TickManager BaseTickManager => Find.TickManager;
         public bool GameRunning => Current.Game != null && !Find.TickManager.Paused;
@@ -21,9 +21,20 @@ namespace TiberiumRim
             
         }
 
+        public void GameTick()
+        {
+
+        }
+
         public void Tick()
         {
+            WorkSubscribedTickActions();
             WorkMainThreadActionQueue();
+        }
+
+        public void WorkSubscribedTickActions()
+        {
+            tickActions?.Invoke();
         }
 
         public void WorkMainThreadActionQueue()
@@ -31,6 +42,12 @@ namespace TiberiumRim
             if (MainThreadActions.Count <= 0) return;
             var next = MainThreadActions.Dequeue();
             next.DoAction();
+        }
+
+        public void Notify_AddNewTickAction(Action action)
+        {
+            TLog.Debug("Added tick-action!");
+            tickActions += action;
         }
 
         public void Notify_AddNewAction(Action action)

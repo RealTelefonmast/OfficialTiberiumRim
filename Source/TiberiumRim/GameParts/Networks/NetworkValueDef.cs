@@ -15,18 +15,21 @@ namespace TiberiumRim
         public Color valueColor;
         public List<ThingDefCountClass> valueThings;
 
+        public override void ResolveReferences()
+        {
+            base.ResolveReferences();
+            if (labelShort.NullOrEmpty())
+            {
+                labelShort = label;
+            }
+        }
+
         public override IEnumerable<string> ConfigErrors()
         {
             foreach (var configError in base.ConfigErrors())
             {
                 yield return configError;
             }
-            //
-            if (labelShort.NullOrEmpty())
-            {
-                labelShort = label;
-            }
-
         }
     }
 }

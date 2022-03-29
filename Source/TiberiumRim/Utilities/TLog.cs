@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
@@ -23,12 +24,22 @@ namespace TiberiumRim
 
         public static void Message(string msg, Color color)
         {
-            Log.Message($"{"[TR]".Colorize(color)} {msg}");
+            if (Log.ReachedMaxMessagesLimit)
+                Log.ResetMessageCount();
+
+            UnityEngine.Debug.Log(msg);
+            Log.messageQueue.Enqueue(new LogMessage(LogMessageType.Message, $"{"[TR]".Colorize(color)} {msg}", StackTraceUtility.ExtractStackTrace()));
+            Log.PostMessage();
         }
 
         public static void Message(string msg)
         {
-            Log.Message($"{"[TR]".Colorize(TRColor.Green)} {msg}");
+            if(Log.ReachedMaxMessagesLimit)
+                Log.ResetMessageCount();
+
+            UnityEngine.Debug.Log(msg);
+            Log.messageQueue.Enqueue(new LogMessage(LogMessageType.Message, $"{"[TR]".Colorize(TRColor.Green)} {msg}", StackTraceUtility.ExtractStackTrace()));
+            Log.PostMessage();
         }
 
         public static void Debug(string msg)

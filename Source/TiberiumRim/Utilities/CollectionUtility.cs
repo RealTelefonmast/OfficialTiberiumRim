@@ -13,7 +13,7 @@ namespace TiberiumRim.Utilities
             int i = 0;
             foreach (var value in values)
             {
-                array.SetValue(value, i);
+                array[i] = value;
                 i++;
             }
         }

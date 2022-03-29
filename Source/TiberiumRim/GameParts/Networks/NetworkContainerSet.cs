@@ -4,37 +4,128 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Verse;
 
 namespace TiberiumRim
 {
     public class NetworkContainerSet
     {
-        private float totalValue, totalStorageValue;
         private Color networkColor = new Color(0,0,0,0);
 
-        public HashSet<NetworkContainer> FullSet = new ();
-        public HashSet<NetworkContainer> ProducerContainers = new ();
-        public HashSet<NetworkContainer> ConsumerContainers = new ();
-        public HashSet<NetworkContainer> StorageContainers = new ();
+        public readonly Dictionary<NetworkRole, HashSet<NetworkContainer>> ContainersByRole;
 
-        public HashSet<NetworkValueDef> AllStoredTypes;
+        private readonly Dictionary<NetworkValueDef, float> TotalValueByType = new();
+        private readonly Dictionary<NetworkRole, float> TotalValueByRole = new();
+        private Dictionary<NetworkRole, Dictionary<NetworkValueDef, float>> ValueByTypeByRole = new();
 
-        public Dictionary<NetworkValueDef, float> TotalValueByType = new();
-        public Dictionary<NetworkRole, float> TotalValueByRole = new();
-        public Dictionary<NetworkRole, Dictionary<NetworkValueDef, float>> ValueByTypeByRole = new();
+        private readonly HashSet<NetworkValueDef> AllStoredTypes;
 
-        public float TotalNetworkValue => totalValue;
-        public float TotalStorageValue => totalStorageValue;
+        public float TotalNetworkValue => GetTotalValueByRole(NetworkRole.All);
+        public float TotalStorageValue => GetTotalValueByRole(NetworkRole.Storage);
+        public IEnumerable<NetworkValueDef> AllTypes => AllStoredTypes;
+
+
+        public HashSet<NetworkContainer> this[NetworkRole role] => ContainersByRole[role];
+
+        public float GetValueByType(NetworkValueDef def)
+        {
+            return TotalValueByType.GetValueOrDefault(def, 0);
+        }
+
+        public float GetTotalValueByRole(NetworkRole role)
+        {
+            return TotalValueByRole.GetValueOrDefault(role, 0);
+        }
+
+        public float GetValueByTypeByRole(NetworkValueDef type, NetworkRole inRole)
+        {
+            return ValueByTypeByRole.GetValueOrDefault(inRole, null)?.GetValueOrDefault(type, 0) ?? 0;
+        }
 
         public NetworkContainerSet()
         {
+            //
+            ContainersByRole = new();
+            ContainersByRole.Add(NetworkRole.All, new HashSet<NetworkContainer>());
+            ContainersByRole.Add(NetworkRole.Producer, new HashSet<NetworkContainer>());
+            ContainersByRole.Add(NetworkRole.Consumer, new HashSet<NetworkContainer>());
+            ContainersByRole.Add(NetworkRole.Storage, new HashSet<NetworkContainer>());
+            //
+            TotalValueByRole = new();
+            TotalValueByRole.Add(NetworkRole.All, 0);
 
+            //
+            AllStoredTypes = new HashSet<NetworkValueDef>();
+        }
+
+        public void Notify_AddedValue(NetworkValueDef type, float value, INetworkComponent comp)
+        {
+            //Increment total value
+            TotalValueByRole[NetworkRole.All] += value;
+
+            //Increment by type
+            if (!TotalValueByType.TryAdd(type, value))
+                TotalValueByType[type] += value;
+
+            foreach (var enums in comp.NetworkRole.GetAllSelectedItems<NetworkRole>())
+            {
+                //Increment by role
+                if (!TotalValueByRole.TryAdd(enums, value))
+                    TotalValueByRole[enums] += value;
+                //Increment by type by role
+                if (!ValueByTypeByRole.TryAdd(enums, new Dictionary<NetworkValueDef, float>() { { type, value } }))
+                    if (!ValueByTypeByRole[enums].TryAdd(type, value))
+                        ValueByTypeByRole[enums][type] += value;
+            }
+
+            //Add type to known types
+            AllStoredTypes.Add(type);
+        }
+
+        public void Notify_RemovedValue(NetworkValueDef type, float value, INetworkComponent comp)
+        {
+            TotalValueByRole[NetworkRole.All] -= value;
+
+            //
+            if (!TotalValueByType.ContainsKey(type))
+            {
+                TLog.Warning($"Tried to remove ({value}){type} in ContainerSet but {type} is not stored!");
+            }
+            else
+            {
+                TotalValueByType[type] -= value;
+                //Remove type if empty
+                if (TotalValueByType[type] <= 0)
+                    AllStoredTypes.Remove(type);
+            }
+
+            //
+            foreach (var enums in comp.NetworkRole.GetAllSelectedItems<NetworkRole>())
+            {
+                if (!TotalValueByRole.ContainsKey(enums))
+                {
+                    TLog.Warning($"Tried to remove ({value}){type} for role {enums} in ContainerSet but {enums} is not stored!");
+                }
+                else
+                {
+                    TotalValueByRole[enums] -= value;
+                    //if(TotalValueByRole[comp.NetworkRole] <= 0)
+                }
+
+                if (ValueByTypeByRole.ContainsKey(enums))
+                {
+                    if (ValueByTypeByRole[enums].ContainsKey(type))
+                    {
+                        ValueByTypeByRole[enums][type] -= value;
+                    }
+                }
+            }
         }
 
         public bool AddNewContainerFrom(INetworkComponent component)
         {
             //TODO: Adjust value with existing values
-            if (!component.HasContainer || FullSet.Contains(component.Container)) return false;
+            if (!component.HasContainer || this[NetworkRole.All].Contains(component.Container)) return false;
             AddContainerFrom(component, component.Container);
             return true;
             //structure.NeighbourStructureSet.AddStructure(parent, cell + parent?.Thing?.Position.PositionOffset(cell) ?? IntVec3.Invalid);
@@ -43,59 +134,40 @@ namespace TiberiumRim
         public void RemoveContainerFrom(INetworkComponent component)
         {
             //TODO: Adjust value with existing values
-            if (!FullSet.Contains(component.Container)) return;
+            if (!this[NetworkRole.All].Contains(component.Container)) return;
             RemoveContainerFrom(component, component.Container);
             //structure.NeighbourStructureSet.AddStructure(parent, cell + parent?.Thing?.Position.PositionOffset(cell) ?? IntVec3.Invalid);
         }
 
-        public void Notify_AddedValue(NetworkValueDef type, float value)
-        {
-            totalValue += value;
-            if(!TotalValueByType.TryAdd(type, value))
-                TotalValueByType[type] += value;
-        }
-
-        public void Notify_RemovedValue(NetworkValueDef type, float value)
-        {
-            totalValue -= value;
-            TotalValueByType[type] -= value;
-        }
-
         private void AddContainerFrom(INetworkComponent component, NetworkContainer container)
         {
-            //if (!(structure.Container is NetworkContainer container)) return;
-            container.Notify_SetParentSet(this);
-            FullSet.Add(container);
-            switch (component.NetworkRole)
+            foreach (var @enum in component.NetworkRole.GetAllSelectedItems<NetworkRole>())
             {
-                case NetworkRole.Producer:
-                    ProducerContainers.Add(container);
-                    break;
-                case NetworkRole.Consumer:
-                    ConsumerContainers.Add(container);
-                    break;
-                case NetworkRole.Storage:
-                    StorageContainers.Add(container);
-                    break;
+                if (!ContainersByRole.ContainsKey(@enum))
+                    ContainersByRole.Add(@enum, new());
+                this[@enum].Add(container);
+            }
+
+            //Adjust values
+            foreach (var values in container.StoredValuesByType)
+            {
+                Notify_AddedValue(values.Key, values.Value, component);
             }
         }
 
         private void RemoveContainerFrom(INetworkComponent component, NetworkContainer container)
         {
-            if (!FullSet.Contains(container)) return;
-            switch (component.NetworkRole)
+            if (!this[NetworkRole.All].Contains(container)) return;
+            foreach (var @enum in component.NetworkRole.GetAllSelectedItems<NetworkRole>())
             {
-                case NetworkRole.Producer:
-                    ProducerContainers.Remove(container);
-                    break;
-                case NetworkRole.Consumer:
-                    ConsumerContainers.Remove(container);
-                    break;
-                case NetworkRole.Storage:
-                    StorageContainers.Remove(container);
-                    break;
+                this[@enum].Remove(container);
             }
-            FullSet.Remove(container);
+
+            //Adjust values
+            foreach (var values in container.StoredValuesByType)
+            {
+                Notify_RemovedValue(values.Key, values.Value, component);
+            }
         }
 
     }

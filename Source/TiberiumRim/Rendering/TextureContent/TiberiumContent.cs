@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using RimWorld;
+using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 
@@ -363,6 +364,8 @@ namespace TiberiumRim
         public static readonly Material Infested_8   = MaterialPool.MatFrom("World/Tile/Tib8", ShaderDatabase.WorldOverlayAdditive, 3505);
 
         public static readonly Material TibTile_Glacier = MaterialPool.MatFrom("World/Tile/TiberiumGlacier", ShaderDatabase.WorldOverlayTransparentLit, 3505);
+
+        public static readonly Material WorldTerrain = MaterialPool.MatFrom("World/Tile/Terrain", ShaderDatabase.WorldOverlayCutout, 3500);
 
         //--Research
         public static readonly Texture2D Research_Active = ContentFinder<Texture2D>.Get("UI/Icons/Research/Active");

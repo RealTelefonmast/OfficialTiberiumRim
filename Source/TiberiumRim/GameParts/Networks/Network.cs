@@ -65,17 +65,17 @@ namespace TiberiumRim
         //
         public float NetworkValueFor(NetworkValueDef valueDef)
         {
-            return ContainerSet.TotalValueByType[valueDef];
+            return ContainerSet.GetValueByType(valueDef);
         }
 
         public float NetworkValueFor(NetworkRole ofRole)
         {
-            return ContainerSet.TotalValueByRole[ofRole];
+            return ContainerSet.GetTotalValueByRole(ofRole);
         }
 
         public float NetworkValueFor(NetworkValueDef valueDef, NetworkRole ofRole)
         {
-            return ContainerSet.ValueByTypeByRole[ofRole][valueDef];
+            return ContainerSet.GetValueByTypeByRole(valueDef, ofRole);
         }
 
         //

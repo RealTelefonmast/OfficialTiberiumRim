@@ -8,7 +8,6 @@ using Verse.Sound;
 
 namespace TiberiumRim
 {
-    //TODO: Potentially make this a "NetworkBill"
     public class CustomNetworkBill : IExposable
     {
         //General
@@ -23,11 +22,15 @@ namespace TiberiumRim
 
         private BillRepeatModeDef repeatMode = BillRepeatModeDefOf.Forever;
         private float workAmountLeft;
+        private bool hasBeenPaid = false;
 
         private static float borderWidth = 5;
         private static float contentHeight = 0;
 
         public float WorkLeft => workAmountLeft;
+
+        public bool HasBeenPaid => hasBeenPaid;
+        public bool CanBeWorkedOn => hasBeenPaid || CanPay();
 
         private string WorkLabel => "TR_NetworkBillWork".Translate((int)workAmountLeft);
         private string CostLabel => "TR_NetworkBillCost".Translate(ITab_CustomRefineryBills.CostLabel(networkCost));
@@ -84,27 +87,10 @@ namespace TiberiumRim
 
         public bool ShouldDoNow()
         {
-            if (!CanPay()) return false;
+            if (!CanBeWorkedOn) return false;
             if (iterationsLeft == 0) return false;
 
             return true;
-        }
-
-        private bool CanPayWith(Network wholeNetwork)
-        {
-            var totalNetworkValue = wholeNetwork.TotalNetworkValue;
-            float totalNeeded = networkCost.Sum(t => t.Value);
-            if (totalNetworkValue < totalNeeded) return false;
-     
-                foreach (var typeCost in networkCost)
-                {
-                    var specCost = typeCost.Value;
-                    if (wholeNetwork.NetworkValueFor(typeCost.Def) >= specCost)
-                        totalNeeded -= specCost;
-                }
-                
-
-            return totalNeeded == 0;
         }
 
         private bool CanPay()
@@ -118,20 +104,22 @@ namespace TiberiumRim
                     totalNeeded -= value.Value;
                 }
             }
-
             return totalNeeded == 0;
         }
 
         public void Pay()
         {
-            var network = billStack.ParentTibComp.Network;
             float totalNeeded = networkCost.Sum(t => t.Value);
-            var storages = network.ComponentSet.Storages;
+            var storages = billStack.ParentNetComps.SelectMany(n => n.Network.ComponentSet.Storages);
             foreach (var storage in storages)
             {
                 foreach (var value in networkCost)
                 {
-                    if (totalNeeded <= 0) return;
+                    if (totalNeeded <= 0)
+                    {
+                        hasBeenPaid = true;
+                        return;
+                    }
                     if (storage.Container.ValueForType(value.Def) > 0 && storage.Container.TryRemoveValue(value.Def, value.Value, out float actualVal))
                     {
                         totalNeeded -= actualVal;
@@ -140,6 +128,43 @@ namespace TiberiumRim
             }
             if(totalNeeded > 0)
                 TLog.Error("TotalCost higher than 0 after payment!");
+        }
+
+        private void Refund()
+        {
+            var storages = billStack.ParentNetComps.SelectMany(n => n.Network.ComponentSet.Storages);
+            NetworkValueStack stack = new NetworkValueStack();
+            foreach (var value in networkCost)
+            {
+                stack.Add(value.Def, value.Value);
+            }
+            
+            foreach (var storage in storages)
+            {
+                foreach (var value in stack.networkValues)
+                {
+                    if (storage.Container.TryAddValue(value.valueDef, value.valueF, out float actualValue))
+                    {
+                        value.AdjustValue(-actualValue);
+                    }
+                }
+            }
+
+            if (stack.TotalValue > 0)
+            {
+                TLog.Warning("Stack not empty after refunding... dropping container.");
+                PortableContainer container = (PortableContainer)ThingMaker.MakeThing(TiberiumDefOf.PortableContainer);
+                container.SetContainerProps(new ContainerProperties()
+                {
+                    doExplosion = false,
+                    dropContents = false,
+                    explosionRadius = 0,
+                    leaveContainer = false,
+                    maxStorage = Mathf.RoundToInt(stack.TotalValue)
+                });
+                container.SetContainer(new NetworkContainer(container, stack));
+                GenSpawn.Spawn(container, billStack.ParentBuilding.Position, billStack.ParentBuilding.Map);
+            }
         }
 
         public bool TryFinish()
@@ -155,7 +180,6 @@ namespace TiberiumRim
                     thing.stackCount = possibleAmount;
                     GenSpawn.Spawn(thing, billStack.ParentBuilding.InteractionCell, billStack.ParentBuilding.Map, WipeMode.VanishOrMoveAside);
                     desiredAmount -= possibleAmount;
-
                 }
 
                 if (iterationsLeft > 0)
@@ -167,14 +191,26 @@ namespace TiberiumRim
                 if (iterationsLeft == 0)
                     billStack.Delete(this);
             }
-
-
             return true;
         }
 
         private void Reset()
         {
             workAmountLeft = workAmountTotal;
+            hasBeenPaid = false;
+        }
+
+        //Allocate network cost as "paid", refund if cancelled
+        public void StartWorkAndPay()
+        {
+            if (HasBeenPaid) return;
+            Pay();
+        }
+
+        //Refund
+        public void Cancel()
+        {
+            Refund();
         }
 
         public void DoWork(Pawn pawn)
@@ -195,6 +231,16 @@ namespace TiberiumRim
 
         public void DrawBill(Rect rect, int index)
         {
+            if (!CanBeWorkedOn)
+            {
+                TRWidgets.DrawHighlightColor(rect, Color.red);
+            }
+
+            if (HasBeenPaid)
+            {
+                TRWidgets.DrawHighlightColor(rect, Color.green);
+            }
+
             if(index % 2 == 0)
                 Widgets.DrawAltRect(rect);
             rect = rect.ContractedBy(5);
@@ -239,13 +285,9 @@ namespace TiberiumRim
 
             //RIGHT
             GUI.BeginGroup(rightRect);
-            Vector2 workLabelSize = Text.CalcSize(WorkLabel);
-            Vector2 costLabelSize = Text.CalcSize(CostLabel);
-            Rect workRect = new Rect(0,0, workLabelSize.x, workLabelSize.y);
-            Rect costRect = new Rect(0, workRect.yMax, costLabelSize.x, costLabelSize.y);
 
-            Widgets.Label(workRect, WorkLabel);
-            Widgets.Label(costRect, CostLabel);
+            Rect workBarRect = new Rect(rightRect.width - 75, rightRect.height - (24 + 5), 100, 24);
+            Widgets.FillableBar(workBarRect, Mathf.InverseLerp(0, workAmountTotal, workAmountTotal-workAmountLeft));
 
             GUI.EndGroup();
 

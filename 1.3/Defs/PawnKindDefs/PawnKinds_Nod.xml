@@ -3,14 +3,6 @@
 
   <PawnKindDef ParentName="MercenaryBase" Name="NodBase" Abstract="True">
     <defaultFactionType>Nod</defaultFactionType>
-    <backstoryFiltersOverride>
-      <li>
-        <categories>
-			<li>Civil</li>
-			<li>Raider</li>
-        </categories>
-      </li>
-    </backstoryFiltersOverride>
 	<chemicalAddictionChance>0.1</chemicalAddictionChance>
 	<backstoryCryptosleepCommonality>0.08</backstoryCryptosleepCommonality>
     <baseRecruitDifficulty>0.8</baseRecruitDifficulty>

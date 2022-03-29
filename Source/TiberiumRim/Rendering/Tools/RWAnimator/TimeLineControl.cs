@@ -82,79 +82,14 @@ namespace TiberiumRim
 
     }
 
-    public class TimeControlTicker
-    {
-        private Stopwatch clock = new Stopwatch();
-
-        private float realTimeToTickThrough;
-        private bool isPaused = true;
-        private Action actions;
-
-        private int timeControlTicks;
-
-        private float CurTimePerTick => 1f / (60f);
-        public bool Paused => isPaused;
-        public int CurrentTick => timeControlTicks;
-
-        public TimeControlTicker()
-        {
-            TiberiumRoot.WindowAnimator_TimeControl = this;
-        }
-
-        public void Update()
-        {
-            if (Paused) return;
-            float curTimePerTick = CurTimePerTick;
-            if (Mathf.Abs(Time.deltaTime - curTimePerTick) < curTimePerTick * 0.1f)
-            {
-                realTimeToTickThrough += curTimePerTick;
-            }
-            else
-            {
-               realTimeToTickThrough += Time.deltaTime;
-            }
-
-            int num = 0;
-            clock.Reset();
-            clock.Start();
-            while (realTimeToTickThrough > 0f && (float)num < 2)
-            {
-                DoSingleTick();
-                realTimeToTickThrough -= curTimePerTick;
-                num++;
-
-                if (Paused || (float)clock.ElapsedMilliseconds > 1000f / 30f)
-                {
-                    break;
-                }
-            }
-        }
-
-        private void DoSingleTick()
-        {
-            timeControlTicks++;
-            actions.Invoke();
-        }
-
-        public void TogglePlay()
-        {
-            isPaused = !isPaused;
-        }
-        public void AddTickAction(Action action)
-        {
-            actions += action;
-        }
-    }
-
     public class TimeLineControl : UIElement
     {
         //
         private const int _PixelsPerTick = 4;
 
-        public readonly TimeControlTicker ticker;
-
         private int tickLength;
         private int currentFrameInt;
+        private bool isPaused = true;
         private IntRange playTickRange;
         public Dictionary<IKeyFramedElement, Dictionary<int, KeyFrame>> framedElements = new();
 
@@ -229,9 +164,9 @@ namespace TiberiumRim
 
         public TimeLineControl()
         {
-            ticker = new TimeControlTicker();
-            ticker.AddTickAction(delegate
+            TRFind.TickManager.RegisterTickAction(delegate
             {
+                if (isPaused) return;
                 if (CurrentFrame >= PlayRange.max)
                 {
                     CurrentFrame = PlayRange.min;
@@ -559,7 +494,7 @@ namespace TiberiumRim
         {
             if (Widgets.ButtonImage(playRect, TiberiumContent.PlayPause))
             {
-                ticker.TogglePlay();
+                isPaused = !isPaused;
             }
 
             GUI.BeginGroup(topSettingPart);
@@ -576,7 +511,7 @@ namespace TiberiumRim
             row.Slider(125, ref SCROLLVAL, 0.5f, 2);
 
 
-            row.Label($"{ticker.CurrentTick}");
+            row.Label($"{TRFind.TickManager.CurrentTick}");
             row.Init(0, Rect.height - 16, UIDirection.LeftThenUp);
             GUI.EndGroup();
         }

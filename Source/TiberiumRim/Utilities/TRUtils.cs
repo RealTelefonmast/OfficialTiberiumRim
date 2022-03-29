@@ -90,6 +90,11 @@ namespace TiberiumRim
             return room.Map.Tiberium().RoomInfo[room]?.GetRoomComp<RoomComponent_Atmospheric>();
         }
 
+        public static void RegisterTickAction(this Action action)
+        {
+            Current.Game.GetComponent<GameComponent_TR>().UpdateManager.Notify_AddNewTickAction(action);
+        }
+
         public static void EnqueueActionForMainThread(this Action action)
         {
             Current.Game.GetComponent<GameComponent_TR>().UpdateManager.Notify_AddNewAction(action);

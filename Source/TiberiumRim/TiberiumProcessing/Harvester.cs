@@ -165,6 +165,7 @@ namespace TiberiumRim
         public Thing Thing => this;
         public string ContainerTitle => "TODO: Harvester Container";
         public NetworkContainer Container => container;
+        public ContainerProperties ContainerProps => kindDef.containerProps;
         public bool DropsContents => false;
         public bool LeavesPhysicalContainer => false;
 
@@ -208,7 +209,7 @@ namespace TiberiumRim
             base.SpawnSetup(map, respawningAfterLoad);
             if (!respawningAfterLoad)
             {
-                container = new NetworkContainer(this, kindDef.containerProps, kindDef.allowedValues);
+                container = new NetworkContainer(this, kindDef.allowedValues);
                 if (ParentBuilding == null)
                 { 
                     ResolveNewRefinery(); 

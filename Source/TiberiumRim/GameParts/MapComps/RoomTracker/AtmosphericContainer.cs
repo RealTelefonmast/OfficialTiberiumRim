@@ -9,9 +9,17 @@ namespace TiberiumRim
     {
         private NetworkContainer container;
         private RoomComponent parentComp;
+        private ContainerProperties propsInt;
 
         public Thing Thing => null;
         public NetworkContainer Container => container;
+        public ContainerProperties ContainerProps => propsInt ??= new ContainerProperties()
+        {
+            doExplosion = false,
+            dropContents = false,
+            leaveContainer = false,
+            maxStorage = 0
+        };
 
         public string ContainerTitle => $"Room({parentComp?.Room?.ID.ToString() ?? "NOROOM"}) Container";
 
@@ -24,13 +32,7 @@ namespace TiberiumRim
         public AtmosphericContainer(RoomComponent parent)
         {
             parentComp = parent;
-            container = new NetworkContainer(this, new ContainerProperties()
-            {
-                doExplosion = false,
-                dropContents = false,
-                leaveContainer = false,
-                maxStorage = 0
-            }, new List<NetworkValueDef>()
+            container = new NetworkContainer(this, new List<NetworkValueDef>()
             {
                 TiberiumDefOf.TibPollution
             });

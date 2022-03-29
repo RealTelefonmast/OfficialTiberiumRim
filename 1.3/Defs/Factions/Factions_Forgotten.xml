@@ -16,6 +16,7 @@
 	<techLevel>Industrial</techLevel>
 	<factionNameMaker>NamerFactionPirate</factionNameMaker>
 	<settlementNameMaker>NamerSettlementPirate</settlementNameMaker>
+	 <allowedCultures><li>Corunan</li></allowedCultures>
     <requiredMemes>
       <li MayRequire="Ludeon.RimWorld.Ideology">Raider</li>
     </requiredMemes>

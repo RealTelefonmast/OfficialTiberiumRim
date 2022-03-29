@@ -11,7 +11,7 @@ namespace TiberiumRim
         private List<CustomNetworkBill> bills = new ();
 
         //Temp Custom Bill
-        public int billID = 0;
+        public int billID = 1;
         public string billName = "";
         public Dictionary<AtomicRecipeDef, int> RequestedAmount = new ();
         public string[] textBuffers;
@@ -22,7 +22,8 @@ namespace TiberiumRim
         //
         public Building ParentBuilding => billStackOwner.parent;
         public Comp_NetworkStructureCrafter ParentComp => billStackOwner;
-        public NetworkComponent ParentTibComp => ParentComp[TiberiumDefOf.TiberiumNetwork];
+        public IEnumerable<NetworkComponent> ParentNetComps => UsedNetworks?.Select(n => ParentComp[n]) ?? null;
+        public IEnumerable<NetworkDef> UsedNetworks => CurrentBill?.networkCost.Select(t => t.Def.networkDef) ?? null;
 
         public List<CustomNetworkBill> Bills => bills;
         public CustomNetworkBill CurrentBill => bills.FirstOrDefault();
@@ -62,7 +63,7 @@ namespace TiberiumRim
             customBill.billName = presetDef.defName;
             customBill.networkCost = ITab_CustomRefineryBills.ConstructCustomCost(presetDef.desiredResources);
             customBill.billStack = this;
-            customBill.results = presetDef.desiredResources.Select(m => new ThingDefCount(m.Def.result, m.Value)).ToList();
+            customBill.results = presetDef.Results;
             bills.Add(customBill);
         }
 
@@ -92,6 +93,7 @@ namespace TiberiumRim
 
         public void Delete(CustomNetworkBill bill)
         {
+            bill.Cancel();
             bills.Remove(bill);
         }
 
@@ -102,6 +104,7 @@ namespace TiberiumRim
             {
                 textBuffers[i] = "0";
                 RequestedAmount[ITab_CustomRefineryBills.Recipes.ElementAt(i)] = 0;
+                TotalCost = null;
             }
         }
 

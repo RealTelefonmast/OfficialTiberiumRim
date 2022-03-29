@@ -12,16 +12,26 @@ using Verse.Noise;
 
 namespace TiberiumRim
 {
+
+    public enum ModuleVisualizerMode
+    {
+        Flat,
+        World
+    }
+
     public class Window_ModuleVisualizer : Window
     {
         private static int renderResultSize = 512;
-        private float nodeGraphScale = 1f;
+        private static float nodeGraphScale = 1f;
         private static List<Type> moduleTypesInt;
 
+        private static ModuleVisualizerMode CurrentMode { get; set; } = ModuleVisualizerMode.Flat;
 
         public static float AnchorHeight = 20f;
 
         private List<ModuleNode> allNodes = new List<ModuleNode>();
+
+        private static SimpleWorldView simpleWorld;
 
         public static Window_ModuleVisualizer Vis { get; private set; }
         public static List<Type> ModuleTypes => moduleTypesInt ??= typeof(ModuleNode).AllSubclassesNonAbstract();
@@ -44,7 +54,28 @@ namespace TiberiumRim
         public override void PostOpen()
         {
             Vis = this;
+            simpleWorld ??= new SimpleWorldView();
+            ReadoutShaderProps(ShaderDatabase.Transparent);
+            ReadoutShaderProps(ShaderDatabase.WorldTerrain);
+            ReadoutShaderProps(ShaderDatabase.WorldOverlayAdditive);
+            ReadoutShaderProps(ShaderDatabase.WorldOverlayCutout);
+            ReadoutShaderProps(ShaderDatabase.WorldOverlayTransparent);
+            ReadoutShaderProps(ShaderDatabase.WorldOverlayTransparentLit);
+            ReadoutShaderProps(ShaderDatabase.WorldOcean);
             base.PostOpen();
+        }
+
+        private void ReadoutShaderProps(Shader shader)
+        {
+            TLog.Message($"Shader '{shader.name}' Props:", Color.cyan);
+            for (int i = 0; i < shader.GetPropertyCount(); i++)
+            {
+                TLog.Message($"Property '{shader.GetPropertyName(i)}':");
+                foreach (var attribute in shader.GetPropertyAttributes(i))
+                {
+                    TLog.Message($" - {attribute}");
+                }
+            }
         }
 
         public void SetNewConnection(int hash, Vector3 start, Vector3 end)
@@ -74,7 +105,7 @@ namespace TiberiumRim
 
             if (FinalOutput is {FinalBase: { }})
             {
-                Rect renderRect = new Rect(inRect.width - renderResultSize, 0, renderResultSize, renderResultSize);
+                Rect renderRect = new Rect(inRect.width - (renderResultSize + 1), 0, renderResultSize+1, renderResultSize+1);
                 RenderModuleResult(renderRect, FinalOutput.FinalBase);
             }
         }
@@ -139,7 +170,57 @@ namespace TiberiumRim
         public void RenderModuleResult(Rect inRect, ModuleBase result)
         {
             Widgets.DrawMenuSection(inRect);
+            inRect = inRect.ContractedBy(1);
+            switch (CurrentMode)
+            {
+                //Render 2D
+                case ModuleVisualizerMode.Flat:
+                    RenderFlatView(inRect, result);
+                    break;
+                //Render 3D (World)
+                case ModuleVisualizerMode.World:
+                    RenderWorldView(inRect, result);
+                    break;
+            }
+
+            //
+            Rect switch2DRect = new Rect(inRect.x - 20,inRect.y + 5, 15, 15);
+            Rect switch3DRect = new Rect(inRect.x - 20, inRect.y + 25, 15, 15);
+
+            TRWidgets.DrawBox(switch2DRect, TRColor.White075, 1);
+            TRWidgets.DrawBox(switch3DRect, TRColor.White075, 1);
+
+            Text.Font = GameFont.Tiny;
+            Widgets.Label(switch2DRect, "2D");
+            Widgets.Label(switch3DRect, "3D");
+            Text.Font = default;
+
+            if (Widgets.ButtonInvisible(switch2DRect))
+            {
+                CurrentMode = ModuleVisualizerMode.Flat;
+            }
+
+            if (Widgets.ButtonInvisible(switch3DRect))
+            {
+                CurrentMode = ModuleVisualizerMode.World;
+            }
+
+        }
+
+        private void RenderFlatView(Rect inRect, ModuleBase result)
+        {
             Widgets.DrawTextureFitted(inRect, GetTextureFrom(result), 1);
+        }
+
+        private void RenderWorldView(Rect inRect, ModuleBase result)
+        {
+            if (NeedsReRender)
+            {
+                simpleWorld.ChangedResult();
+                NeedsReRender = false;
+            }
+            simpleWorld.SetResult(result);
+            simpleWorld.DrawInRect(inRect);
         }
 
         public bool NeedsReRender { get; private set; }

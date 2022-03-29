@@ -1058,8 +1058,19 @@ namespace TiberiumRim
         [HarmonyPatch("DoPlaySettingsGlobalControls")]
         public static class PlaySettingsPatch
         {
+            public static bool OpenThing = false;
             public static void Postfix(WidgetRow row, bool worldView)
             {
+                if (worldView)
+                {
+                    /*
+                    if (row.ButtonIcon(TiberiumContent.Icon_EVA))
+                    {
+                       var def = DefDatabase<DevToolDef>.GetNamed("ModuleVisualizerDef");
+                       Find.WindowStack.Add(def.GetWindow);
+                    }
+                    */
+                }
                 if (!worldView)
                 {
                     row.ToggleableIcon(ref TRUtils.GameSettings().EVASystem, TiberiumContent.Icon_EVA, "Enable or disable the EVA", SoundDefOf.Mouseover_ButtonToggle);
@@ -1089,7 +1100,7 @@ namespace TiberiumRim
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
                 MethodInfo methodFinder = AccessTools.Method(typeof(StringBuilder), nameof(StringBuilder.AppendLine));
-                MethodInfo helper = AccessTools.Method(typeof(Dialog_BillConfigDoWindowContentsPatch), nameof(GibHelp));
+                MethodInfo helper = AccessTools.Method(typeof(Dialog_BillConfigDoWindowContentsPatch), nameof(WriteNetworkCost));
 
                 bool continuedToPop = false, finalPatched = false;
                 int i = 0;
@@ -1120,14 +1131,16 @@ namespace TiberiumRim
 
             }
 
-            private static void GibHelp(Dialog_BillConfig instance, StringBuilder stringBuilder)
+            private static void WriteNetworkCost(Dialog_BillConfig instance, StringBuilder stringBuilder)
             {
                 if (instance.bill is NetworkBill tBill)
                 {
+                    stringBuilder.AppendLine($"Network Cost:");
                     foreach (var cost in tBill.def.networkCost.Cost.SpecificCosts)
                     {
-                        stringBuilder.AppendLine($" - {cost.valueDef}: {cost.value}");
+                        stringBuilder.AppendLine($" - {cost.valueDef.LabelCap.Colorize(cost.valueDef.valueColor)}: {cost.value}");
                     }
+
                     stringBuilder.AppendLine($"BaseShouldBeDone: {tBill.BaseShouldDo}");
                     stringBuilder.AppendLine($"ShouldBeDone: {tBill.ShouldDoNow()}");
                     stringBuilder.AppendLine($"CompTNW: {tBill.CompTNW is { IsPowered: true }}");
@@ -1283,7 +1296,7 @@ namespace TiberiumRim
 
             static Network GetNetwork(Map map)
             {
-                return map.Tiberium()?.NetworkInfo[TiberiumDefOf.TiberiumNetwork]?.MainNetworkComponent?.Network ?? null;
+                return map.Tiberium()?.NetworkInfo[TiberiumDefOf.TiberiumNetwork]?.MainNetworkComponent?.Network;
             }
             
             static void DrawCredits()
@@ -1303,7 +1316,7 @@ namespace TiberiumRim
                 Text.Anchor = default;
                 Widgets.DrawLine(new Vector2(5f, creditLabelRect.yMax), new Vector2(125f, creditLabelRect.yMax), Color.white, 1f);
 
-                ResourceReadoutHeight = TRWidgets.DrawNetworkValueTypeReadout(readoutRect, GameFont.Tiny, -2, GetNetwork(Find.CurrentMap).ContainerSet.TotalValueByType);
+                ResourceReadoutHeight = TRWidgets.DrawNetworkValueTypeReadout(readoutRect, GameFont.Tiny, -2, GetNetwork(Find.CurrentMap).ContainerSet);
 
                 Text.Font = GameFont.Tiny;
                 string totalLabel = "TR_CreditsTotal".Translate(Math.Round(GetTiberiumCredits(Find.CurrentMap)));

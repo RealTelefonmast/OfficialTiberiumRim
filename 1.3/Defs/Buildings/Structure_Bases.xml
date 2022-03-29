@@ -3,7 +3,10 @@
 	
 	<TiberiumRim.TRGroupDef>
 		<defName>All</defName>
-		<label>AllThings</label>
+		<label>All Things</label>
+		<subGroups>
+			<li>TiberiumCrafters</li>
+		</subGroups>
 	</TiberiumRim.TRGroupDef>
 	
 	<TiberiumRim.TRGroupDef>
