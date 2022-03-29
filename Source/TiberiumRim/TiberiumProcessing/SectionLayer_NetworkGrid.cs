@@ -1,4 +1,6 @@
-﻿using RimWorld;
+﻿using System.Collections.Generic;
+using System.Linq;
+using RimWorld;
 using Verse;
 
 namespace TiberiumRim
@@ -9,6 +11,12 @@ namespace TiberiumRim
         {
             this.requireAddToMapMesh = false;
             this.relevantChangeTypes = MapMeshFlag.Buildings;
+        }
+
+        public static NetworkDef[] NetworksFromDesignator(Designator designator)
+        {
+            if (designator is not Designator_Build build) return null;
+            return ((build.PlacingDef as ThingDef)?.comps.Find(c => c is CompProperties_NetworkStructure) as CompProperties_NetworkStructure)?.networks?.Select(n => n.networkDef).ToArray();
         }
 
         public override void DrawLayer()

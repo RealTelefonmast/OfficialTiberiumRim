@@ -244,8 +244,7 @@ namespace TiberiumRim
             {
                 TLog.Warning($"Created NetworkContainer for {Parent?.Thing} without any allowed types!");
             }
-
-            TLog.Message($"Creating new container for {Parent?.Thing} with capacity {Capacity} | acceptedTypes: {this.AcceptedTypes.ToStringSafeEnumerable()}");
+            //TLog.Message($"Creating new container for {Parent?.Thing} with capacity {Capacity} | acceptedTypes: {this.AcceptedTypes.ToStringSafeEnumerable()}");
         }
 
         public void Data_ChangeCapacity(int newCapacity)
