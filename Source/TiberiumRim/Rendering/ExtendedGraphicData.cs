@@ -42,7 +42,6 @@ namespace TiberiumRim
                     mats[2] = ContentFinder<Texture2D>.Get($"{path}_south", false);
                     mats[3] = ContentFinder<Texture2D>.Get($"{path}_west", false);
 
-                    Log.Message($"Got mats for N:{mats[0] != null}; E:{mats[1] != null}; S:{mats[2] != null}; W:{mats[3] != null};");
                     if (mats[0] != null)
                         m.MatNorth.SetTexture(name, mats[0]);
                     if (mats[1] != null)
@@ -69,7 +68,7 @@ namespace TiberiumRim
         {
             if (xmlRoot.ChildNodes.Count != 1)
             {
-                Log.Error($"Misconfigured DynamicTextureParameter: {xmlRoot.OuterXml}");
+                TLog.Error($"Misconfigured DynamicTextureParameter: {xmlRoot.OuterXml}");
                 return;
             }
             this.name = xmlRoot.Name;

@@ -17,15 +17,6 @@ namespace TiberiumRim
 {
     public static class MapWorldPatches
     {
-        [HarmonyPatch(typeof(RegionAndRoomUpdater), nameof(RegionAndRoomUpdater.Enabled), MethodType.Setter)]
-        public static class RegionAndRoomUpdater_EnabledPatch
-        {
-            public static void Postfix(bool value)
-            {
-                Log.Message($"Setting Enabled To: {value}");
-            }
-        }
-
         [HarmonyPatch(typeof(MapParent), nameof(MapParent.ShouldRemoveMapNow))]
         [HarmonyPatch(typeof(Settlement), nameof(MapParent.ShouldRemoveMapNow))]
         public static class MapParentShouldRemoveMapNow_Patch

@@ -69,7 +69,7 @@
 		<defName>TiberiumResearchStation</defName>
 		<label>research station</label>
 		<description>...</description>
-		<thingClass>TiberiumRim.Building_ANGLETEST</thingClass>
+		<thingClass>Building</thingClass>
 		<size>(7,4)</size>
 		<minifiedDef Inherit="false"/>
 		<thingCategories Inherit="false" />

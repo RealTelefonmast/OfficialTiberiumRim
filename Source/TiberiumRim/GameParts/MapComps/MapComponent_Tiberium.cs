@@ -82,7 +82,7 @@ namespace TiberiumRim
 
         public override void FinalizeInit()
         {
-            Log.Message("MapComp TR FinalizeInit");
+            TLog.Debug("MapComp TR FinalizeInit");
             base.FinalizeInit();
             if (!FloraInfo.HasBeenInitialized)
                 FloraInfo.InfoInit();

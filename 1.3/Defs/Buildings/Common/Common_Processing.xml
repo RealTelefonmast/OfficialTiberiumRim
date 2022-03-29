@@ -433,7 +433,6 @@
 								<MySrcMode>1</MySrcMode>
 								<MyDstMode>1</MyDstMode>
 							</shaderParameters>
-							<color>(0,255,0)</color>
 							<drawSize>(4.15,4.15)</drawSize>
 						</data>
 						<textureParams>

@@ -31,7 +31,7 @@ namespace TiberiumRim
 
         public static void Notify_Reload()
         {
-            Log.Message("Clearing StaticData!");
+            TLog.Debug("Clearing StaticData!");
             CanvasBySize = new Dictionary<int, Color[]>();
 
             TiberiumMapComp = new Dictionary<int, MapComponent_Tiberium>();

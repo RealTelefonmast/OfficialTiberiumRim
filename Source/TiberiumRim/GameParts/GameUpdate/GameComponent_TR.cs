@@ -39,7 +39,7 @@ namespace TiberiumRim
 
         public override void FinalizeInit()
         {
-            Log.Message("GameComp TR FinalizeInit");
+            TLog.Debug("GameComp TR FinalizeInit");
             base.FinalizeInit();
         }
 
