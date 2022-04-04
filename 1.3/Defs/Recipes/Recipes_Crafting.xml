@@ -17,7 +17,6 @@
 		</desiredResources>
 	</TiberiumRim.AtomicRecipePreset>
 	
-	
 	<TiberiumRim.AtomicRecipePreset>
 		<defName>MakePlasteelPreset</defName>
 		<label>Make Plasteel</label>
@@ -31,6 +30,40 @@
 		<label>Make Plasteel (Bulk)</label>
 		<desiredResources>
 			<MakeElementalPlasteel>75</MakeElementalPlasteel>
+		</desiredResources>
+	</TiberiumRim.AtomicRecipePreset>
+	
+	
+	<TiberiumRim.AtomicRecipePreset>
+		<defName>MakeUraniumPreset</defName>
+		<label>Make Uranium</label>
+		<desiredResources>
+			<MakeElementalGold>5</MakeElementalGold>
+		</desiredResources>
+	</TiberiumRim.AtomicRecipePreset>
+	
+	<TiberiumRim.AtomicRecipePreset>
+		<defName>MakeUraniumBulkPreset</defName>
+		<label>Make Uranium (Bulk)</label>
+		<desiredResources>
+			<MakeElementalGold>75</MakeElementalGold>
+		</desiredResources>
+	</TiberiumRim.AtomicRecipePreset>
+	
+	
+	<TiberiumRim.AtomicRecipePreset>
+		<defName>MakeGoldPreset</defName>
+		<label>Make Gold</label>
+		<desiredResources>
+			<MakeElementalUranium>5</MakeElementalUranium>
+		</desiredResources>
+	</TiberiumRim.AtomicRecipePreset>
+	
+	<TiberiumRim.AtomicRecipePreset>
+		<defName>MakeGoldBulkPreset</defName>
+		<label>Make Gold (Bulk)</label>
+		<desiredResources>
+			<MakeElementalUranium>75</MakeElementalUranium>
 		</desiredResources>
 	</TiberiumRim.AtomicRecipePreset>
 	
@@ -65,7 +98,7 @@
 	<TiberiumRim.AtomicRecipeDef>
 		<defName>MakeElementalGold</defName>
 		<inputRatio>
-			<li>Gold,1000</li>
+			<li>Gold,100</li>
 		</inputRatio>
 		<result>Gold</result>
 	</TiberiumRim.AtomicRecipeDef>

@@ -191,38 +191,38 @@ namespace TiberiumRim
 
         private static readonly List<NetworkValue> GreenTibValues = new()
         {
-            new NetworkValue(TiberiumDefOf.Phosphorus, 0.275f),
-            new NetworkValue(TiberiumDefOf.Carbon, 0.25f),
-            new NetworkValue(TiberiumDefOf.Iron, 0.325f),
-            new NetworkValue(TiberiumDefOf.Calcium, 0.1525f),
-            new NetworkValue(TiberiumDefOf.Copper, 0.0575f),
-            new NetworkValue(TiberiumDefOf.Silicon, 0.025f),
-            new NetworkValue(TiberiumDefOf.Exotic, 0.015f)
+            new NetworkValue(TiberiumDefOf.Phosphorus, 1f/8),
+            new NetworkValue(TiberiumDefOf.Carbon    , 1f/4),
+            new NetworkValue(TiberiumDefOf.Iron      , 1f/4),
+            new NetworkValue(TiberiumDefOf.Calcium   , 1f/8),
+            new NetworkValue(TiberiumDefOf.Copper    , 1f/4),
+            new NetworkValue(TiberiumDefOf.Silicon   , 1f/8),
+            new NetworkValue(TiberiumDefOf.Exotic    , 1f/16)
         };
 
         private static readonly List<NetworkValue> BlueTibValues = new()
         {
-            new NetworkValue(TiberiumDefOf.Phosphorus, 0.275f),
-            new NetworkValue(TiberiumDefOf.Carbon, 0.25f),
-            new NetworkValue(TiberiumDefOf.Iron, 0.325f),
-            new NetworkValue(TiberiumDefOf.Calcium, 0.1525f),
-            new NetworkValue(TiberiumDefOf.Copper, 0.0575f),
-            new NetworkValue(TiberiumDefOf.Silicon, 0.025f),
-            new NetworkValue(TiberiumDefOf.Exotic, 0.015f),
-            new NetworkValue(TiberiumDefOf.Silver, 0.0125f)
+            new NetworkValue(TiberiumDefOf.Phosphorus, 1f / 8),
+            new NetworkValue(TiberiumDefOf.Carbon    , 1f / 4),
+            new NetworkValue(TiberiumDefOf.Iron      , 1f / 4),
+            new NetworkValue(TiberiumDefOf.Calcium   , 1f / 8),
+            new NetworkValue(TiberiumDefOf.Copper    , 1f / 4),
+            new NetworkValue(TiberiumDefOf.Silicon   , 1f / 8),
+            new NetworkValue(TiberiumDefOf.Exotic    , 1f / 16),
+            new NetworkValue(TiberiumDefOf.Silver    , 1f / 8)
         };
 
         private static readonly List<NetworkValue> RedTibValues = new()
         {
-            new NetworkValue(TiberiumDefOf.Phosphorus, 0.275f),
-            new NetworkValue(TiberiumDefOf.Carbon, 0.25f),
-            new NetworkValue(TiberiumDefOf.Iron, 0.325f),
-            new NetworkValue(TiberiumDefOf.Calcium, 0.1525f),
-            new NetworkValue(TiberiumDefOf.Copper, 0.0575f),
-            new NetworkValue(TiberiumDefOf.Silicon, 0.025f),
-            new NetworkValue(TiberiumDefOf.Exotic, 0.015f),
-            new NetworkValue(TiberiumDefOf.Gold, 0.025f),
-            new NetworkValue(TiberiumDefOf.Uranium, 0.015f)
+            new NetworkValue(TiberiumDefOf.Phosphorus, 1f / 8),
+            new NetworkValue(TiberiumDefOf.Carbon    , 1f / 4),
+            new NetworkValue(TiberiumDefOf.Iron      , 1f / 4),
+            new NetworkValue(TiberiumDefOf.Calcium   , 1f / 8),
+            new NetworkValue(TiberiumDefOf.Copper    , 1f / 4),
+            new NetworkValue(TiberiumDefOf.Silicon   , 1f / 8),
+            new NetworkValue(TiberiumDefOf.Exotic    , 1f / 16),
+            new NetworkValue(TiberiumDefOf.Gold      , 1f / 8),
+            new NetworkValue(TiberiumDefOf.Uranium   , 1f / 8)
         };
 
         public override string CompInspectStringExtra()
