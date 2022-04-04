@@ -44,11 +44,20 @@ namespace TiberiumRim
         {
             if (powerProductionTicks <= 0)
             {
-                if (networkComponent.Container.TryConsume(Props.consumeAmt))
-                    powerProductionTicks = (int)(GenDate.TicksPerDay * Props.daysPerLoad);
+                if (networkComponent.RequestedCapacityPercent >= networkComponent.Container.StoredPercent)
+                {
+                    var consumeAmt = networkComponent.RequestedCapacityPercent * networkComponent.Container.Capacity;
+                    if (networkComponent.Container.TryConsume(consumeAmt))
+                    {
+                        var loadTime = (Props.daysPerLoad * (consumeAmt / Props.consumeAmt));
+                        powerProductionTicks = (int) (GenDate.TicksPerDay * loadTime);
+                    }
+                }
             }
             else
+            {
                 powerProductionTicks--;
+            }
         }
 
         public override string CompInspectStringExtra()

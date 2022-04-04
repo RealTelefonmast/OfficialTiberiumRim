@@ -109,6 +109,11 @@ namespace TiberiumRim
             Scribe_Collections.Look(ref networkParts, "networkParts", LookMode.Deep, this);
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
+                if (networkParts.NullOrEmpty())
+                {
+                    TLog.Warning($"Could not load network parts for {parent}... Correcting.");
+                    return;
+                }
                 foreach (var newComponent in networkParts)
                 {
                     networkComponentByDef.Add(newComponent.NetworkDef, newComponent);
@@ -132,8 +137,12 @@ namespace TiberiumRim
             NetworkInfo = TiberiumMapComp.NetworkInfo;
 
             //Create NetworkComponents
-            if (!respawningAfterLoad)
+            if (!respawningAfterLoad || networkParts.NullOrEmpty())
             {
+                if (respawningAfterLoad && networkParts.NullOrEmpty())
+                {
+                    TLog.Warning($"Spawning {parent} after load with null parts... Correcting.");
+                }
                 for (var i = 0; i < Props.networks.Count; i++)
                 {
                     var compProps = Props.networks[i];
