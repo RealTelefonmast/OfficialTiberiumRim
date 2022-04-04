@@ -330,7 +330,7 @@ namespace TiberiumRim
 
             CellIndices cellIndices = map.cellIndices;
             AtmosphericMapInfo.OutsideContainer.Container.LoadFromStack(atmosphericGrid[map.cellIndices.NumGridCells]); //ShortToInt(pollGrid[map.cellIndices.NumGridCells]);
-            Log.Message($"Applying Outside Atmospheric: {atmosphericGrid[map.cellIndices.NumGridCells]}");
+            TLog.Debug($"Applying Outside Atmospheric: {atmosphericGrid[map.cellIndices.NumGridCells]}");
 
             foreach (var comp in AtmosphericMapInfo.PollutionComps)
             {
@@ -357,7 +357,7 @@ namespace TiberiumRim
         
         public void DoExposing()
         {
-            Log.Message("Exposing Atmospheric");
+            TLog.Debug("Exposing Atmospheric");
             int arraySize = map.cellIndices.NumGridCells + 1;
             if (Scribe.mode == LoadSaveMode.Saving)
             {

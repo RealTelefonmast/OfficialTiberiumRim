@@ -188,7 +188,7 @@ namespace TiberiumRim
             Scribe_References.Look(ref preferredProducer, "prefProducer");
             Scribe_Defs.Look(ref preferredType, "prefType");
             //Data
-            Scribe_Deep.Look(ref container, "tibContainer", this, kindDef.containerProps, kindDef.allowedValues);
+            Scribe_Deep.Look(ref container, "tibContainer", this, kindDef.allowedValues);
             Scribe_Values.Look(ref lastKnownPos, "lastPos");
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)

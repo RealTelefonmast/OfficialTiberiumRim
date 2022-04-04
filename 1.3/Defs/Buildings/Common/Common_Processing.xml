@@ -119,6 +119,7 @@
 			<isEdifice>false</isEdifice>
 			<blueprintGraphicData>
 				<texPath>Buildings/Common/Network/Pipe_Tib_blueprint</texPath>
+				<graphicClass>TiberiumRim.Graphic_LinkedWithSame</graphicClass>
 			</blueprintGraphicData>
 		</building>
 		<comps>
@@ -727,6 +728,10 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+			</li>
 			<li Class="TiberiumRim.CompProperties_TNS">
 				<compClass>TiberiumRim.CompTNS_Centrifuge</compClass>
 				<networks>
@@ -746,8 +751,10 @@
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
+							<!--
 							<li>TibSludge</li>	
 							<li>TibGas</li>	
+							-->
 						</allowedValues>
 					</li>
 					<li>
@@ -763,15 +770,7 @@
 							<li>Transmitter</li>
 							<li>Storage</li>
 						</networkRoles>
-						<allowedValues>
-							<li>Carbon</li>	
-							<li>Phosphorus</li>	
-							<li>Calcium</li>	
-							<li>Silicon</li>	
-							<li>Iron</li>	
-							<li>Copper</li>	
-							<li>Exotic</li>	
-						</allowedValues>						
+						<allowValuesFromNetwork>ChemicalNetwork</allowValuesFromNetwork>						
 					</li>
 				</networks>
 				<connectionPattern>++++++|+####+|+####+|+####+|+####+|++++++</connectionPattern>
@@ -804,6 +803,7 @@
 						<pivotPixelOffset>(0,0,7)</pivotPixelOffset>
 						<needsPower>false</needsPower>
 					</li>
+					
 					<li>
 						<data>
 							<texPath>Blank</texPath>
@@ -831,15 +831,16 @@
 							<texPath>Buildings/Common/Network/Extractor/Extractor_overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(6,6)</drawSize>
-							<shaderType>MoteGlow</shaderType>
-							<!--
-							<shaderType>RadialBlur</shaderType>
-							<shaderParameters>		
-								<_Angle>0</_Angle>
+							<shaderType>MultiStepBlend</shaderType>
+							<shaderParameters>
+								<_MainTex1>/Buildings/Common/Network/Extractor/BlurSteps/Overlay/overlay_00</_MainTex1>
+								<_MainTex2>/Buildings/Common/Network/Extractor/BlurSteps/Overlay/overlay_01</_MainTex2>
+								<_MainTex3>/Buildings/Common/Network/Extractor/BlurSteps/Overlay/overlay_03</_MainTex3>
+								<_MainTex4>/Buildings/Common/Network/Extractor/BlurSteps/Overlay/overlay_05</_MainTex4>
+								<_MainTex5>/Buildings/Common/Network/Extractor/BlurSteps/Overlay/overlay_10</_MainTex5>
 								<MySrcMode>1</MySrcMode>
 								<MyDstMode>1</MyDstMode>
 							</shaderParameters>
-							-->
 						</data>
 						<mode>Dynamic</mode>
 						<textureSize>(512,512)</textureSize>
@@ -849,7 +850,6 @@
 						<data>
 							<texPath>Buildings/Common/Network/Extractor/Extractor_cover</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>Transparent</shaderType>
 							<drawSize>(6,6)</drawSize>
 						</data>
 						<needsPower>false</needsPower>
@@ -972,8 +972,8 @@
 	
 	<TiberiumRim.TRThingDef ParentName="BenchBase_TR">
 		<defName>TiberiumCrafter</defName>
-		<label>Atomic Assembler</label>
-		<description>A specialized chemical refining plant.</description>
+		<label>Atomic Synthesizer</label>
+		<description>A specialized elemental refining plant.</description>
 		<thingClass>Building_WorkTable</thingClass>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
@@ -1082,7 +1082,7 @@
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>425</basePowerConsumption>
+				<basePowerConsumption>250</basePowerConsumption>
 			</li>
 			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_Breakdownable"/>

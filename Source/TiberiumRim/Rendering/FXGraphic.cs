@@ -37,7 +37,6 @@ namespace TiberiumRim
 
         public FXGraphic(CompFX parent, FXGraphicData data, int index)
         {
-            TLog.Debug($"Adding Layer {index}: {data.data?.texPath} ({data.mode})");
             this.parent = parent;
             this.data = data;
             this.index = index;
@@ -55,6 +54,8 @@ namespace TiberiumRim
             else
                 altitude = parent.parent.def.altitudeLayer.AltitudeFor() + (0.125f * (index + 1));
             altitude += data.extraAltitude;
+
+            TLog.Debug($"Adding Layer {index}: {data.data?.texPath} ({data.mode}) at alt: {altitude}");
             //ShaderMaterial = new Material(TiberiumContent.AlphaShaderMaterial);
         }
 
@@ -222,9 +223,9 @@ namespace TiberiumRim
 
         public void Print(SectionLayer layer, Vector3 drawPos, Rot4 rot, float? rotation, Thing parent)
         {
-            //var info = new GraphicDrawInfo(Graphic, drawPos, rot, ((FXThingDef)parent.def).extraData, parent.def);
             GetDrawInfo(Graphic, ref drawPos, rot, ((FXThingDef)parent.def).extraData, parent.def, out drawSize, out drawMat, out drawMesh, out float extraRotation, out flipUV);
             drawPos += data.drawOffset;
+
             Printer_Plane.PrintPlane(layer, new Vector3(drawPos.x, altitude, drawPos.z), drawSize, drawMat, (rotation ?? exactRotation) + extraRotation, flipUV);
         }
     }

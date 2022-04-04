@@ -22,6 +22,8 @@ namespace TiberiumRim
             {
                 labelShort = label;
             }
+
+            networkDef.ResolvedValueDef(this);
         }
 
         public override IEnumerable<string> ConfigErrors()

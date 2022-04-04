@@ -102,108 +102,53 @@ namespace TiberiumRim
             }
         }
 
-        public static void SliderRangeCustom(Rect rect, int id, ref IntRange range, int min = 0, int max = 100, string labelKey = null, int minWidth = 0, Texture leftTexture = null, Texture rightTexture = null, Color sliderColor = default)
+        public static void DrawBarMarkerAt(Rect barRect, float pct)
         {
-            GameFont font = Text.Font;
+            float num = barRect.height;
+            Vector2 vector = new Vector2(barRect.x + barRect.width * pct, barRect.y);
+            Rect rect = new Rect(vector.x - num / 2f, vector.y, num, num);
+            var matrix = GUI.matrix;
+            UI.RotateAroundPivot(180f, rect.center);
+            GUI.DrawTexture(rect, Need.BarInstantMarkerTex);
+            GUI.matrix = matrix;
+        }
 
-            Rect rect2 = rect;
-            rect2.xMin += 8f;
-            rect2.xMax -= 8f;
-            GUI.color = sliderColor;
-
-            string text = range.min.ToStringCached() + " - " + range.max.ToStringCached();
-            if (labelKey != null)
-                text = labelKey.Translate(text);
-            Text.Font = GameFont.Tiny;
-            Text.Anchor = TextAnchor.UpperCenter;
-            Rect rect3 = rect2;
-            rect3.yMin -= 2f;
-            Widgets.Label(rect3, text);
-
-            //
-            Rect position = new Rect(rect2.x, rect2.yMax - 8f - 1f, rect2.width, 2f);
-            GUI.DrawTexture(position, BaseContent.WhiteTex);
-            GUI.color = Color.white;
-            float num = rect2.x + rect2.width * (float)(range.min - min) / (float)(max - min);
-            float num2 = rect2.x + rect2.width * (float)(range.max - min) / (float)(max - min);
-            Rect position2 = new Rect(num - 16f, position.center.y - 8f, 16f, 16f);
-            Rect position3 = new Rect(num2 + 16f, position.center.y - 8f, 16f, 16f);
-
-            //
-            GUI.DrawTexture(position2,  leftTexture ?? Widgets.FloatRangeSliderTex);
-            GUI.DrawTexture(position3, rightTexture ?? Widgets.FloatRangeSliderTex);
-
-            if (Widgets.curDragEnd != Widgets.RangeEnd.None && (Event.current.type == EventType.MouseUp || Event.current.rawType == EventType.MouseDown))
+        public static void SliderCustomVertical(Rect rect, ref float value)
+        {
+            var previousVal = value;
+            value = (float)Math.Round(GUI.VerticalSlider(rect, value, 0f, 1f), 2);
+            if (Math.Abs(previousVal - value) > 0.01f)
             {
-                Widgets.draggingId = 0;
-                Widgets.curDragEnd = Widgets.RangeEnd.None;
                 SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
             }
-            bool flag = false;
-            if (Mouse.IsOver(rect) || Widgets.draggingId == id)
-            {
-                if (Event.current.type == EventType.MouseDown && Event.current.button == 0 && id != Widgets.draggingId)
-                {
-                    Widgets.draggingId = id;
-                    float x = Event.current.mousePosition.x;
-                    if (x < position2.xMax)
-                    {
-                        Widgets.curDragEnd = Widgets.RangeEnd.Min;
-                    }
-                    else if (x > position3.xMin)
-                    {
-                        Widgets.curDragEnd = Widgets.RangeEnd.Max;
-                    }
-                    else
-                    {
-                        float num3 = Mathf.Abs(x - position2.xMax);
-                        float num4 = Mathf.Abs(x - (position3.x - 16f));
-                        Widgets.curDragEnd = ((num3 < num4) ? Widgets.RangeEnd.Min : Widgets.RangeEnd.Max);
-                    }
-                    flag = true;
-                    Event.current.Use();
-                    SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                }
-                if (flag || (Widgets.curDragEnd != Widgets.RangeEnd.None && Event.current.type == EventType.MouseDrag))
-                {
-                    int num5 = Mathf.RoundToInt(Mathf.Clamp((Event.current.mousePosition.x - rect2.x) / rect2.width * (float)(max - min) + (float)min, (float)min, (float)max));
-                    if (Widgets.curDragEnd == Widgets.RangeEnd.Min)
-                    {
-                        if (num5 != range.min)
-                        {
-                            range.min = num5;
-                            if (range.min > max - minWidth)
-                            {
-                                range.min = max - minWidth;
-                            }
-                            int num6 = Mathf.Max(min, range.min + minWidth);
-                            if (range.max < num6)
-                            {
-                                range.max = num6;
-                            }
-                            Widgets.CheckPlayDragSliderSound();
-                        }
-                    }
-                    else if (Widgets.curDragEnd == Widgets.RangeEnd.Max && num5 != range.max)
-                    {
-                        range.max = num5;
-                        if (range.max < min + minWidth)
-                        {
-                            range.max = min + minWidth;
-                        }
-                        int num7 = Mathf.Min(max, range.max - minWidth);
-                        if (range.min > num7)
-                        {
-                            range.min = num7;
-                        }
-                        Widgets.CheckPlayDragSliderSound();
-                    }
-                    Event.current.Use();
-                }
-            }
+        }
 
-            Text.Anchor = TextAnchor.UpperLeft;
-            Text.Font = font;
+        public static float HorizontalSlider(Rect rect, float value, float min, float max, float roundTo = -1f)
+        {
+            float num = GUI.HorizontalSlider(rect, value, min, max);
+            if (roundTo > 0f)
+            {
+                num = (float)Mathf.RoundToInt(num / roundTo) * roundTo;
+            }
+            if (value != num)
+            {
+                SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
+            }
+            return num;
+        }
+
+        public static float VerticalSlider(Rect rect, float value, float min, float max, float roundTo = -1f)
+        {
+            float num = GUI.VerticalSlider(rect, value, max, min);
+            if (roundTo > 0f)
+            {
+                num = (float)Mathf.RoundToInt(num / roundTo) * roundTo;
+            }
+            if (value != num)
+            {
+                SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
+            }
+            return num;
         }
 
         public static void SliderCustom(Rect rect, int id, ref int value, int min = 0, int max = 100, Texture sliderTexture = null, Color sliderColor = default)

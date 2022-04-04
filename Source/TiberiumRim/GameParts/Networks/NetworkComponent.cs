@@ -9,10 +9,17 @@ using Verse;
 
 namespace TiberiumRim
 {
+    public enum RequesterMode : byte
+    {
+        Automatic, 
+        Manual
+    }
+
     public class NetworkComponentProperties
     {
         //Cached Data
         private NetworkRole? networkRole;
+        private List<NetworkValueDef> allowedValuesInt;
 
         //Loaded from XML
         public bool storeEvenly = false;
@@ -20,7 +27,27 @@ namespace TiberiumRim
         public NetworkDef networkDef;
         public ContainerProperties containerProps;
         public List<NetworkRole> networkRoles = new() { NetworkRole.Transmitter };
-        public List<NetworkValueDef> allowedValues;
+        public NetworkDef allowValuesFromNetwork;
+        private List<NetworkValueDef> allowedValues;
+
+        public List<NetworkValueDef> AllowedValues
+        {
+            get
+            {
+                var list = new List<NetworkValueDef>();
+                if (allowValuesFromNetwork != null)
+                {
+                    list.AddRange(allowValuesFromNetwork.NetworkValueDefs);
+                }
+
+                if (!allowedValues.NullOrEmpty())
+                {
+                    list.AddRange(allowedValues);
+                }
+
+                return allowedValuesInt ??= list.Distinct().ToList();
+            }
+        }
 
         public NetworkRole NetworkRole
         {
@@ -50,6 +77,9 @@ namespace TiberiumRim
 
         //Values
         private Dictionary<NetworkValueDef, float> requestedTypes;
+        private float requestedCapacityPercent = 0.5f;
+
+        private RequesterMode requesterMode = RequesterMode.Automatic;
 
         //SaveHelper
         private int savedPropsIndex = -1;
@@ -94,6 +124,18 @@ namespace TiberiumRim
 
         public Dictionary<NetworkValueDef, float> RequestedTypes => requestedTypes;
 
+        public float RequestedCapacityPercent
+        {
+            get => requestedCapacityPercent;
+            set => requestedCapacityPercent = Mathf.Clamp01(value);
+        }
+
+        public RequesterMode RequesterMode
+        {
+            get => requesterMode;
+            set => requesterMode = value;
+        }
+
         public NetworkComponent(Comp_NetworkStructure parent)
         {
             this.parent = parent;
@@ -114,24 +156,24 @@ namespace TiberiumRim
                 if(savedPropsIndex >= 0)
                    props = parent.Props.networks[savedPropsIndex];
             }
-            Scribe_Deep.Look(ref container, "container", this, Props.containerProps, Props.allowedValues);
+            Scribe_Deep.Look(ref container, "container", this, Props.AllowedValues);
         }
 
         public void ComponentSetup(bool respawningAfterLoad)
         {
             //Generate components
             componentSet = new NetworkComponentSet(NetworkDef, this);
-            if (respawningAfterLoad) return;
-            if (HasContainer)
-                Container = new NetworkContainer(this, Props.allowedValues);
             if (NetworkRole.HasFlag(NetworkRole.Requester))
             {
                 requestedTypes = new Dictionary<NetworkValueDef, float>();
-                foreach (var allowedValue in props.allowedValues)
+                foreach (var allowedValue in props.AllowedValues)
                 {
                     requestedTypes.Add(allowedValue, 0);
                 }
             }
+            if (respawningAfterLoad) return; // IGNORING EXPOSED CONSTRUCTORS
+            if (HasContainer)
+                Container = new NetworkContainer(this, Props.AllowedValues);
         }
 
         public void PostDestroy(DestroyMode mode, Map previousMap)
@@ -221,6 +263,7 @@ namespace TiberiumRim
 
         protected virtual void RequesterTick()
         {
+            if (Container.StoredPercent >= RequestedCapacityPercent) return;
             foreach (var requestedType in RequestedTypes)
             {
                 if (Container.ValueForType(requestedType.Key) < requestedType.Value)
@@ -396,18 +439,6 @@ namespace TiberiumRim
             }
             */
 
-            if (IsMainController)
-            {
-                yield return new Command_Action()
-                {
-                    defaultLabel = "Show Entire Network",
-                    action = delegate
-                    {
-                        DebugNetworkCells = !DebugNetworkCells;
-                    }
-                };
-            }
-
             /*
             foreach (var networkGizmo in GetSpecialNetworkGizmos())
             {
@@ -417,6 +448,18 @@ namespace TiberiumRim
 
             if (DebugSettings.godMode)
             {
+                if (IsMainController)
+                {
+                    yield return new Command_Action()
+                    {
+                        defaultLabel = "Show Entire Network",
+                        action = delegate
+                        {
+                            DebugNetworkCells = !DebugNetworkCells;
+                        }
+                    };
+                }
+
                 yield return new Command_Action
                 {
                     defaultLabel = $"View {NetworkDef.defName} Set",

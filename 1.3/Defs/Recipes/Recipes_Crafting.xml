@@ -35,7 +35,6 @@
 	</TiberiumRim.AtomicRecipePreset>
 	
 	<!---->
-	
 	<TiberiumRim.AtomicRecipeDef>
 		<defName>MakeElementalSteel</defName>
 		<inputRatio>
@@ -70,6 +69,17 @@
 		</inputRatio>
 		<result>Gold</result>
 	</TiberiumRim.AtomicRecipeDef>
+	
+	<!--
+	<TiberiumRim.AtomicRecipeDef>
+		<defName>MakeChemfuel</defName>
+		<inputRatio>
+			<li>Carbon,10</li>
+			<li>Iron,90</li>
+		</inputRatio>
+		<result>Chemfuel</result>
+	</TiberiumRim.AtomicRecipeDef>
+	-->
 	
 	<TiberiumRim.TRecipeDef>
 		<defName>ExtractSteel</defName>

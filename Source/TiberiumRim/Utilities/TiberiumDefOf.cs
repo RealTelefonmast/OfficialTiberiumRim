@@ -19,6 +19,9 @@ namespace TiberiumRim
         public static NetworkValueDef Copper;
         public static NetworkValueDef Silicon;
         public static NetworkValueDef Exotic;
+        public static NetworkValueDef Silver;
+        public static NetworkValueDef Gold;
+        public static NetworkValueDef Uranium;
 
         //Tiberium Network
         public static NetworkValueDef TibGreen;

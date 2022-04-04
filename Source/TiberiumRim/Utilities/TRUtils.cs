@@ -131,6 +131,15 @@ namespace TiberiumRim
             return mod.Content.RootDir;
         }
 
+        public static string SizeTo(this string label, float newSize)
+        {
+            while (Text.CalcSize(label).x < newSize)
+            {
+                label += " ";
+            }
+            return label;
+        }
+
         public static ThingDef VeinCorpseDef(this Pawn pawn)
         {
             ThingDef raceDef = pawn.def;

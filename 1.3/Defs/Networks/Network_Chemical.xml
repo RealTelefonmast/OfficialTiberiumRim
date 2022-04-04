@@ -90,7 +90,7 @@
 		<networkDef>ChemicalNetwork</networkDef>
 		<label>Silicon</label>
 		<labelShort>Si</labelShort>
-		<valueColor>(240,200,160</valueColor>
+		<valueColor>(240,200,160)</valueColor>
 	</TiberiumRim.NetworkValueDef>
 
 	<TiberiumRim.NetworkValueDef>
@@ -98,7 +98,16 @@
 		<networkDef>ChemicalNetwork</networkDef>
 		<label>Exotic</label>
 		<labelShort>EX</labelShort>
-		<valueColor>(85,9,96</valueColor>
+		<valueColor>(85,9,96)</valueColor>
 	</TiberiumRim.NetworkValueDef>
 
+	<!--Gases
+	<TiberiumRim.NetworkValueDef>
+		<defName>Methane</defName>
+		<networkDef>ChemicalNetwork</networkDef>
+		<label>Methane</label>
+		<labelShort>CH4</labelShort>
+		<valueColor>(85,9,96)</valueColor>
+	</TiberiumRim.NetworkValueDef>
+	-->
 </Defs>

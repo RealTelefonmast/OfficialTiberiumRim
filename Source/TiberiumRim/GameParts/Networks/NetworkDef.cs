@@ -14,6 +14,7 @@ namespace TiberiumRim
         //Cached Data
         private Graphic_LinkedNetworkStructure cachedTransmitterGraphic;
         private Graphic_Linked_NetworkStructureOverlay cachedOverlayGraphic;
+        private List<NetworkValueDef> belongingValueDefs = new List<NetworkValueDef>();
 
         /// Loaded from XML ///
         public string containerLabel;
@@ -26,6 +27,8 @@ namespace TiberiumRim
         public ThingDef controllerDef;
         public ThingDef transmitter;
 
+
+        public List<NetworkValueDef> NetworkValueDefs => belongingValueDefs;
 
         public Graphic_LinkedNetworkStructure TransmitterGraphic
         {
@@ -41,6 +44,11 @@ namespace TiberiumRim
             {
                 return cachedOverlayGraphic ??= new Graphic_Linked_NetworkStructureOverlay(overlayGraphic.Graphic);
             }
+        }
+
+        public void ResolvedValueDef(NetworkValueDef networkValueDef)
+        {
+            belongingValueDefs.Add(networkValueDef);
         }
     }
 }

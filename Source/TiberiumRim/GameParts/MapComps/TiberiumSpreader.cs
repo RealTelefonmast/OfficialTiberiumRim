@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Multiplayer.API;
 using Verse;
 
@@ -37,28 +38,20 @@ namespace TiberiumRim
             }
             else if(crystalIterator != null)
             {
-                var current = crystalIterator.Current;
-                if (current?.Spawned ?? false)
-                {
-                    while (current.Growth < 1)
-                    {
-                        current.TickLong();
-                    }
-                }
-
-                if (!crystalIterator.MoveNext())
-                {
-                    crystalIterator = null;
-                }
-                /*
-                do
+                for(int i = 0; i < 20; i++)
                 {
                     var current = crystalIterator.Current;
                     if (current?.Spawned ?? false)
+                    {
                         current.TickLong();
-                } while (crystalIterator.MoveNext());
-                crystalIterator = null;
-            */
+                    }
+
+                    if (!crystalIterator.MoveNext())
+                    {
+                        crystalIterator = null;
+                        break;
+                    }
+                }
             }
         }
 

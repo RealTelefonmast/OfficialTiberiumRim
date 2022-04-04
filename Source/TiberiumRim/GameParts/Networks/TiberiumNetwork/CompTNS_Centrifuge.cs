@@ -16,7 +16,7 @@ namespace TiberiumRim
 
         private bool processingBatch;
 
-        SimpleCurve Curve = new SimpleCurve()
+        readonly SimpleCurve Curve = new SimpleCurve()
         {
             new (0, 0),
             new (0.5f, 3),
@@ -24,7 +24,7 @@ namespace TiberiumRim
             new (1, 10),
         };
 
-        private SimpleCurve shaderCurve = new SimpleCurve()
+        private readonly SimpleCurve shaderCurve = new SimpleCurve()
         {
             new(0, 0),
             new(0.5f, 0),
@@ -77,27 +77,13 @@ namespace TiberiumRim
 
         private float BlendValue => OverrideBlendValue > 0 ? OverrideBlendValue : shaderCurve.Evaluate(speedControl.CurPct);
 
+        private bool HasEnoughStored => TiberiumComp.Container.StoredPercent >= TiberiumComp.RequestedCapacityPercent && !Container.Empty;
+
         public override void CompTick()
         {
             base.CompTick();
-            if (!processingBatch)
-            {
-                accelerator.Stop();
-            }
-            if (TiberiumComp.Container.StoredPercent >= 0.5f && !processingBatch && !ChemicalComponent.Container.CapacityFull)
-            {
-                //Start
-                accelerator.Start();
-                processingBatch = true;
-            }
-
-            accelerator.Tick();
-            speedControl.Tick();
-
-            CompFX.Overlays[2].PropertyBlock.SetFloat("_BlendValue", BlendValue);
-            CompFX.Overlays[3].PropertyBlock.SetFloat("_BlendValue", BlendValue);
             //_Samples
-            CompFX.Overlays[4].PropertyBlock.SetFloat("_Samples", Mathf.CeilToInt(Mathf.Lerp(1,360, BlendValue)));
+            //CompFX.Overlays[4].PropertyBlock.SetFloat("_Samples", Mathf.CeilToInt(Mathf.Lerp(1,360, BlendValue)));
             //CompFX.Overlays[2].Graphic.MatSingle.SetFloat("_BlendValue", BlendValue);
 
 
@@ -122,21 +108,62 @@ namespace TiberiumRim
             */
         }
 
+        private void StartOrSustainCentrifuge(bool isPowered)
+        {
+            if (!processingBatch || !isPowered)
+            {
+                accelerator.Stop();
+                processingBatch = false;
+            }
+            if (isPowered && HasEnoughStored && !processingBatch && !ChemicalComponent.Container.CapacityFull)
+            {
+                //Start
+                accelerator.Start();
+                processingBatch = true;
+            }
+
+            accelerator.Tick();
+            speedControl.Tick();
+
+            CompFX.Overlays[2].PropertyBlock.SetFloat("_BlendValue", BlendValue);
+            CompFX.Overlays[3].PropertyBlock.SetFloat("_BlendValue", BlendValue);
+            CompFX.Overlays[4].PropertyBlock.SetFloat("_BlendValue", BlendValue);
+        }
+
         protected override void NetworkTickCustom(bool isPowered)
         {
-            if (speedControl.ReachedPeak && processingBatch && isPowered)
+            StartOrSustainCentrifuge(isPowered);
+            if (!isPowered) return;
+            if (TiberiumComp.RequesterMode == RequesterMode.Automatic)
+            {
+                //Resolve..
+                var maxVal = TiberiumComp.RequestedCapacityPercent * Container.Capacity;
+
+                foreach (var valType in TiberiumComp.Container.AcceptedTypes)
+                {
+                    var valTypeValue = Container.ValueForType(valType) + TiberiumComp.Network.NetworkValueFor(valType, NetworkRole.Storage);
+                    if (valTypeValue > 0)
+                    {
+                        var setValue = Mathf.Min(maxVal, valTypeValue);
+                        TiberiumComp.RequestedTypes[valType] = setValue;
+                        maxVal = Mathf.Clamp(maxVal - setValue, 0, maxVal);
+                    }
+                }
+            }
+
+            if (speedControl.ReachedPeak && processingBatch)
             {
                 var storedTypes = TiberiumComp.Container.AllStoredTypes;
-                //foreach (var storedType in TiberiumComp.Container.AllStoredTypes)
                 for (int i = storedTypes.Count() - 1; i >= 0; i--)
                 {
                     var storedType = storedTypes.ElementAt(i);
+                    var values = ValuesFor(storedType);
+                    if(values.NullOrEmpty()) continue;
                     if (TiberiumComp.Container.TryRemoveValue(storedType, 1f, out float actualValue))
                     {
-                        var types = ValuesFor(new NetworkValue(storedType, actualValue));
-                        foreach (var type in types)
+                        foreach (var type in values)
                         {
-                            ChemicalComponent.Container.TryAddValue(type.valueDef, type.valueF, out _);
+                            ChemicalComponent.Container.TryAddValue(type.valueDef, type.valueF * actualValue, out _);
                         }
                     }
 
@@ -149,46 +176,54 @@ namespace TiberiumRim
             }
         }
 
-        private List<NetworkValue> ValuesFor(NetworkValue value)
+        private List<NetworkValue> ValuesFor(NetworkValueDef def)
         {
+            if (def == TiberiumDefOf.TibGreen)
+                return GreenTibValues;
+            if (def == TiberiumDefOf.TibBlue)
+                return BlueTibValues;
+            if (def == TiberiumDefOf.TibRed)
+                return RedTibValues;
 
-            if (value.valueDef == TiberiumDefOf.TibBlue)
-            {
-                return new List<NetworkValue>()
-                {
-                   
-                    new NetworkValue(TiberiumDefOf.Phosphorus, 0.425f  * value.valueF),
-                    new NetworkValue(TiberiumDefOf.Iron,       0.325f  * value.valueF),
-                    new NetworkValue(TiberiumDefOf.Calcium,    0.1525f * value.valueF),
-                    new NetworkValue(TiberiumDefOf.Copper,     0.0575f * value.valueF),
-                    new NetworkValue(TiberiumDefOf.Silicon,    0.025f  * value.valueF),
-                    new NetworkValue(TiberiumDefOf.Exotic,     0.015f  * value.valueF),
-                };
-            }
-            if (value.valueDef == TiberiumDefOf.TibRed)
-            {
-                return new List<NetworkValue>()
-                {
-                    new NetworkValue(TiberiumDefOf.Phosphorus, 0.425f  * value.valueF),
-                    new NetworkValue(TiberiumDefOf.Iron,       0.325f  * value.valueF),
-                    new NetworkValue(TiberiumDefOf.Calcium,    0.1525f * value.valueF),
-                    new NetworkValue(TiberiumDefOf.Copper,     0.0575f * value.valueF),
-                    new NetworkValue(TiberiumDefOf.Silicon,    0.025f  * value.valueF),
-                    new NetworkValue(TiberiumDefOf.Exotic,     0.015f  * value.valueF),
-                };
-            }
-
-            return new List<NetworkValue>()
-            {
-                new NetworkValue(TiberiumDefOf.Phosphorus, 0.425f  * value.valueF),
-                new NetworkValue(TiberiumDefOf.Iron,       0.325f  * value.valueF),
-                new NetworkValue(TiberiumDefOf.Calcium,    0.1525f * value.valueF),
-                new NetworkValue(TiberiumDefOf.Copper,     0.0575f * value.valueF),
-                new NetworkValue(TiberiumDefOf.Silicon,    0.025f  * value.valueF),
-                new NetworkValue(TiberiumDefOf.Exotic,     0.015f  * value.valueF),
-            };
-
+            TLog.Warning($"[TibExtractor] {def} does not have a value list!");
+            return null;
         }
+
+        private static readonly List<NetworkValue> GreenTibValues = new()
+        {
+            new NetworkValue(TiberiumDefOf.Phosphorus, 0.275f),
+            new NetworkValue(TiberiumDefOf.Carbon, 0.25f),
+            new NetworkValue(TiberiumDefOf.Iron, 0.325f),
+            new NetworkValue(TiberiumDefOf.Calcium, 0.1525f),
+            new NetworkValue(TiberiumDefOf.Copper, 0.0575f),
+            new NetworkValue(TiberiumDefOf.Silicon, 0.025f),
+            new NetworkValue(TiberiumDefOf.Exotic, 0.015f)
+        };
+
+        private static readonly List<NetworkValue> BlueTibValues = new()
+        {
+            new NetworkValue(TiberiumDefOf.Phosphorus, 0.275f),
+            new NetworkValue(TiberiumDefOf.Carbon, 0.25f),
+            new NetworkValue(TiberiumDefOf.Iron, 0.325f),
+            new NetworkValue(TiberiumDefOf.Calcium, 0.1525f),
+            new NetworkValue(TiberiumDefOf.Copper, 0.0575f),
+            new NetworkValue(TiberiumDefOf.Silicon, 0.025f),
+            new NetworkValue(TiberiumDefOf.Exotic, 0.015f),
+            new NetworkValue(TiberiumDefOf.Silver, 0.0125f)
+        };
+
+        private static readonly List<NetworkValue> RedTibValues = new()
+        {
+            new NetworkValue(TiberiumDefOf.Phosphorus, 0.275f),
+            new NetworkValue(TiberiumDefOf.Carbon, 0.25f),
+            new NetworkValue(TiberiumDefOf.Iron, 0.325f),
+            new NetworkValue(TiberiumDefOf.Calcium, 0.1525f),
+            new NetworkValue(TiberiumDefOf.Copper, 0.0575f),
+            new NetworkValue(TiberiumDefOf.Silicon, 0.025f),
+            new NetworkValue(TiberiumDefOf.Exotic, 0.015f),
+            new NetworkValue(TiberiumDefOf.Gold, 0.025f),
+            new NetworkValue(TiberiumDefOf.Uranium, 0.015f)
+        };
 
         public override string CompInspectStringExtra()
         {
@@ -196,14 +231,27 @@ namespace TiberiumRim
             sb.AppendLine();
 
             //Accelerator
+            var accMaxVal = Math.Round(accelerator.FC.MaxVal, 2);
+            var accCurState = accelerator.FC.CurState;
+            var accAcceleration = Math.Round(accelerator.FC.Acceleration, 2); 
+            var accCurValue = Math.Round(accelerator.FC.CurValue, 2); 
+            var accCurPct = accelerator.FC.CurPct.ToStringPercent(); 
+            var accOutputVal = Math.Round(accelerator.FC.OutputValue, 2);
 
-            sb.AppendLine($"{"VALUE",5}|{"ACCELERATOR",5}|{"SPEEDER",5}|\n" +
-                          $"{"MaxVal",5}|{accelerator.FC.MaxVal,5}|{speedControl.MaxVal,5}|\n" +
-                          $"{"State",5}|{accelerator.FC.CurState,5}|{speedControl.CurState,5}|\n" +
-                          $"{"Accel.",5}|{accelerator.FC.Acceleration,5}|{speedControl.Acceleration,5}|\n" +
-                          $"{"CurValue",5}|{accelerator.FC.CurValue,5}|{speedControl.CurValue,5}|\n" +
-                          $"{"CurPct",5}|{accelerator.FC.CurPct,5}|{speedControl.CurPct,5}|\n" +
-                          $"{"Output",5}|{accelerator.FC.OutputValue,5}|{speedControl.OutputValue,5}|\n");
+            var spdMaxVal = Math.Round(speedControl.MaxVal, 2);
+            var spdCurState = speedControl.CurState;
+            var spdAcceleration = Math.Round(speedControl.Acceleration, 2);
+            var spdCurValue = Math.Round(speedControl.CurValue, 2);
+            var spdCurPct = speedControl.CurPct.ToStringPercent();
+            var spdOutputVal = Math.Round(speedControl.OutputValue, 2);
+
+            sb.AppendLine($"VALUE\t|ACCELERATOR\t|SPEEDER\t|\n" +
+                          $"MaxVal\t|{accMaxVal}\t\t|{spdMaxVal}\t\t|\n" +
+                          $"State\t|{accCurState}\t|{spdCurState}\t|\n" +
+                          $"Accel.\t|{accAcceleration}\t\t|{spdAcceleration} \t\t|\n" +
+                          $"CurValue\t|{accCurValue}\t\t|{spdCurValue}\t\t|\n" +
+                          $"CurPct\t|{accCurPct}\t\t|{spdCurPct}\t\t|\n" +
+                          $"Output\t|{accOutputVal}\t\t|{spdOutputVal}\t\t|\n");
 
             sb.Append($"Shader BlendValue: {BlendValue}");
             return sb.ToString().TrimEndNewlines();

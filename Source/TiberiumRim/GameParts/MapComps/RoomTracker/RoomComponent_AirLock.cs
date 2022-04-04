@@ -37,9 +37,11 @@ namespace TiberiumRim
         public Pawn CurrentPawn
         {
             get
-            { 
-                if(pawnQueue.TryPeek(out Pawn pawn))
+            {
+                if (pawnQueue.TryPeek(out Pawn pawn))
+                {
                     return pawn;
+                }
                 return null;
             }
         }

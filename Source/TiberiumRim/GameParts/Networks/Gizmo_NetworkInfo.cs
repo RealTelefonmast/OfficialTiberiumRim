@@ -7,6 +7,7 @@ using Multiplayer.API;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace TiberiumRim
 {
@@ -50,6 +51,7 @@ namespace TiberiumRim
                 $"{parentComp.NetworkDef}",
                 $"{parentComp.NetworkRole}",
                 $"Add NetworkValue",
+                "Set Mode"
             };
             UILayout = new UILayout();
             //
@@ -58,14 +60,23 @@ namespace TiberiumRim
             Vector2 size = currentInspectTab.RequestedTabSize;
             Vector2 titleSize = Text.CalcSize(cachedStrings[0]);
 
-            Rect bgRect = new Rect(pos.x, pos.y, mainWidth + gizmoPadding, size.y);
-            Rect settingsRect = new Rect(pos.x, pos.y - size.y, bgRect.width, bgRect.height);
-            Rect mainRect = bgRect.ContractedBy(5f);
+            var mainSize = new Vector2(mainWidth + gizmoPadding, size.y);
+            Rect bgRect = new Rect(pos.x, pos.y, mainSize.x, mainSize.y);
+            Rect settingsRect = new Rect(bgRect.x, bgRect.y - mainSize.y, bgRect.width, bgRect.height);
+
+            var r = bgRect.AtZero();
+
+            var settingCloseSize = new Vector2(settingsRect.width-(gizmoPadding*2), 14);
+            var halfWidth = (settingsRect.width / 2) - (settingCloseSize.x / 2);
+            Rect closeSettingsRect = new Rect(settingsRect.x + halfWidth,settingsRect.y - settingCloseSize.y, settingCloseSize.x, settingCloseSize.y + gizmoPadding);
+            
+            Rect mainRect = r.ContractedBy(5f);
             Rect titleRect = new Rect(mainRect.x, mainRect.y, titleSize.x, titleSize.y);
             Vector2 roleTextSize = new Vector2(mainRect.width / 2, Text.CalcHeight(cachedStrings[1], mainRect.width / 2));
             Rect roleReadoutRect = new Rect(mainRect.x + roleTextSize.x, mainRect.y, roleTextSize.x, roleTextSize.y);
             Rect contentRect = new Rect(mainRect.x, titleRect.yMax, mainRect.width, mainRect.height - titleRect.height);
             Rect containerBarRect = new Rect(contentRect.x, contentRect.yMax - 16, contentRect.width / 2, 16);
+            Rect requestSelectionRect = new Rect(contentRect.x, containerBarRect.y - 10, contentRect.width / 2, 10);
             var padding = 5;
             var iconSize = 30;
             var width = iconSize + 2 * padding;
@@ -74,11 +85,13 @@ namespace TiberiumRim
 
             UILayout.Register("BGRect", bgRect); //
             UILayout.Register("SettingsRect", settingsRect); //
+            UILayout.Register("CloseSettingsButtonRect", closeSettingsRect); //
             UILayout.Register("MainRect", mainRect); //
             UILayout.Register("TitleRect", titleRect); //
             UILayout.Register("RoleReadoutRect", roleReadoutRect);
             UILayout.Register("ContentRect", contentRect); //
             UILayout.Register("ContainerRect", containerBarRect); //
+            UILayout.Register("RequestSelectionRect", requestSelectionRect); //
             UILayout.Register("BuildOptionsRect", buildOptionsRect); //
             UILayout.Register("ControllerOptionRect", buildOptionsRect.ContractedBy(5).TopPartPixels(iconSize)); //
             UILayout.Register("PipeOptionRect", buildOptionsRect.ContractedBy(5).BottomPartPixels(iconSize)); //
@@ -107,53 +120,96 @@ namespace TiberiumRim
         public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
         {
             UILayout.SetOrigin(new Vector2(topLeft.x - 15, 0));
-            Rect rect = UILayout["BGRect"];
+            Rect setRect = UILayout["BGRect"];
 
             //Extension Button
-            if (HasExtension)
+            if (HasExtension && selectedSetting == null)
             {
-                var mainRect = UILayout["MainRect"];
-                var yMax = Math.Max(15, currentExtendedY) + 10;
-                Rect extendTriggerArea = new Rect(mainRect.x, mainRect.y - (yMax - 5), mainRect.width, yMax);
-                Rect extendedButton = new Rect(mainRect.x, mainRect.y - (currentExtendedY + 1), mainRect.width, currentExtendedY + 1);
-                Notify_ExtendHovered(Mouse.IsOver(extendTriggerArea));
-
-                Widgets.DrawWindowBackground(extendedButton);
-                Text.Anchor = TextAnchor.MiddleCenter;
-                var curY = extendedButton.y;
-                foreach (var setting in extensionSettings)
-                {
-                    Rect labelRect = new Rect(extendedButton.x, curY, extendedButton.width, Math.Min(extendedButton.height, 20));
-                    Widgets.Label(labelRect, setting.Key);
-                    Widgets.DrawHighlightIfMouseover(labelRect);
-                    if (Widgets.ButtonInvisible(labelRect))
-                    {
-                        selectedSetting = setting.Key;
-                    }
-                    curY += 20;
-                }
-                Text.Anchor = default;
-
-                if (selectedSetting != null)
-                {
-                    var settingRect = UILayout["SettingsRect"];
-                    var mouseOver = Mouse.IsOver(settingRect);
-                    extensionSettings[selectedSetting].Invoke(settingRect);
-                    if (Input.GetMouseButton(1) && mouseOver)
-                    {
-                        selectedSetting = null;
-                    }
-                }
+                UILayout.SetOrigin(new Vector2(topLeft.x - 15, setRect.y));
+                DrawSettingSelection();
             }
 
+            Find.WindowStack.ImmediateWindow(this.GetHashCode(), setRect, WindowLayer.GameUI, delegate
+            {
+                UILayout.SetOrigin(new Vector2(0, 0));
+                DrawMainContent(setRect.AtZero());
+
+            }, false, false, 0);
+
+            if (selectedSetting != null)
+            {
+                UILayout.SetOrigin(new Vector2(topLeft.x - 15, 0));
+                DrawSelectedSetting();
+            }
+            return new GizmoResult(GizmoState.Mouseover);
+        }
+
+        private void DrawSettingSelection()
+        {
+            var mainRect = UILayout["MainRect"];
+            var yMax = Math.Max(15, currentExtendedY) + 10;
+            Rect extendTriggerArea = new Rect(mainRect.x, mainRect.y - (yMax - 5), mainRect.width, yMax);
+            Rect extendedButton = new Rect(mainRect.x, mainRect.y - (currentExtendedY + 1), mainRect.width, currentExtendedY + 1);
+            Notify_ExtendHovered(Mouse.IsOver(extendTriggerArea));
+
+            Widgets.DrawWindowBackground(extendedButton);
+            Text.Anchor = TextAnchor.MiddleCenter;
+            var curY = extendedButton.y;
+            foreach (var setting in extensionSettings)
+            {
+                if (curY > extendedButton.yMax) continue;
+                Rect labelRect = new Rect(extendedButton.x, curY, extendedButton.width, Math.Min(extendedButton.height, 20));
+                Widgets.Label(labelRect, setting.Key);
+                Widgets.DrawHighlightIfMouseover(labelRect);
+                if (Widgets.ButtonInvisible(labelRect))
+                {
+                    selectedSetting = setting.Key;
+                }
+                curY += 20;
+            }
+            Text.Anchor = default;
+        }
+
+        private void DrawMainContent(Rect rect)
+        {
             Widgets.DrawWindowBackground(rect);
+            Text.Font = GameFont.Tiny;
             Widgets.Label(UILayout["TitleRect"], cachedStrings[0]);
             Text.Anchor = TextAnchor.UpperRight;
             Widgets.Label(UILayout["RoleReadoutRect"], cachedStrings[1]);
             Text.Anchor = default;
+            Text.Font = default;
+
+            //Custom Behaviour
+            if (parentComp.NetworkRole.HasFlag(NetworkRole.Requester))
+            {
+                //Mode
+                var contentRect = UILayout["ContentRect"];
+                var selectorRect = contentRect.LeftHalf().TopPartPixels(25);
+
+                if (Widgets.ButtonText(selectorRect, parentComp.RequesterMode.ToString()))
+                {
+                    FloatMenu menu = new FloatMenu(new List<FloatMenuOption>()
+                    {
+                        new (RequesterMode.Automatic.ToString(), delegate { parentComp.RequesterMode = RequesterMode.Automatic;}),
+                        new (RequesterMode.Manual.ToString(), delegate { parentComp.RequesterMode = RequesterMode.Manual;}),
+                    }, cachedStrings[3], true);
+                    menu.vanishIfMouseDistant = true;
+                    Find.WindowStack.Add(menu);
+                }
+
+                //Threshold
+                var requestArrowRect = UILayout["RequestSelectionRect"];
+                var getVal = parentComp.RequestedCapacityPercent;
+                Widgets.DrawLineHorizontal(requestArrowRect.x, requestArrowRect.y + requestArrowRect.height / 2, requestArrowRect.width);
+                TRWidgets.DrawBarMarkerAt(requestArrowRect, getVal);
+                var setVal = (float)Math.Round(GUI.HorizontalSlider(requestArrowRect, getVal, 0.1f, 1f, GUIStyle.none, GUIStyle.none), 1);  // Widgets.HorizontalSlider(requestArrowRect, getVal, 0, 1f, true, roundTo: 0.01f);
+                parentComp.RequestedCapacityPercent = setVal;
+            }
 
             if (parentComp.HasContainer)
             {
+                //
                 Rect containerRect = UILayout["ContainerRect"];
                 Rect BarRect = containerRect.ContractedBy(2f);
                 float xPos = BarRect.x;
@@ -173,21 +229,10 @@ namespace TiberiumRim
                 {
                     var mousePos = Event.current.mousePosition;
                     var containerReadoutSize = TRWidgets.GetTiberiumReadoutSize(Container);
-                    Rect rectAtMouse = new Rect(mousePos.x, mousePos.y - containerReadoutSize.y, containerReadoutSize.x,
-                        containerReadoutSize.y);
+                    Rect rectAtMouse = new Rect(mousePos.x, mousePos.y - containerReadoutSize.y, containerReadoutSize.x, containerReadoutSize.y);
                     Widgets.DrawMenuSection(rectAtMouse);
                     TRWidgets.DrawTiberiumReadout(rectAtMouse, Container);
                 }
-            }
-
-            //Custom Behaviour
-            switch (parentComp.NetworkRole)
-            {
-                case NetworkRole.Requester:
-                {
-
-                }
-                    break;
             }
 
             //Do network build options
@@ -203,13 +248,37 @@ namespace TiberiumRim
             {
                 pipeDesignator.ProcessInput(Event.current);
             }
-
-            //
-            TRWidgets.AbsorbInput(rect);
-            return new GizmoResult(GizmoState.Mouseover);
         }
 
+        private void DrawSelectedSetting()
+        {
+            var settingRect = UILayout["SettingsRect"];
+            var closeButtonRect = UILayout["CloseSettingsButtonRect"];
 
+            //
+            Widgets.DrawWindowBackground(closeButtonRect);
+            Widgets.DrawHighlightIfMouseover(closeButtonRect);
+
+            Text.Anchor = TextAnchor.UpperCenter;
+            //var matrix = GUI.matrix;
+            //UI.RotateAroundPivot(90, closeButtonRect.center);
+            Widgets.Label(closeButtonRect, "<CLOSE>");
+            //GUI.matrix = matrix;
+            Text.Anchor = default;
+
+            if (Widgets.ButtonInvisible(closeButtonRect))
+            {
+                selectedSetting = null;
+                return;
+            }
+
+            Find.WindowStack.ImmediateWindow(this.parentComp.GetHashCode(), settingRect, WindowLayer.GameUI, delegate
+            {
+                if (selectedSetting == null) return;
+                extensionSettings[selectedSetting].Invoke(settingRect.AtZero());
+            }, false, false, 0);
+
+        }
 
         public override float GetWidth(float maxWidth)
         {
@@ -235,22 +304,23 @@ namespace TiberiumRim
                     GUI.BeginGroup(contentRect);
                     contentRect = contentRect.AtZero();
 
-                    var curX = 0;
+                    var curX = 5;
                     var allowedTypes = Container.AcceptedTypes;
                     foreach (var type in allowedTypes)
                     {
-                        Rect typeRect = new Rect(curX, contentRect.height - 10, 10, 10);
-                        Rect typeSliderSetting = new Rect(curX, contentRect.height - (15 + 100), 10, 100);
+                        Rect typeRect = new Rect(curX, contentRect.height - 15, 10, 10);
+                        Rect typeSliderSetting = new Rect(curX, contentRect.height - (20 + 100), 10, 100);
                         Widgets.DrawBoxSolid(typeRect, type.valueColor);
+
                         var previousValue = parentComp.RequestedTypes[type];
-                        var newValue = GUI.VerticalSlider(typeSliderSetting, previousValue, Container.Capacity, 0);
+                        var newValue = TRWidgets.VerticalSlider(typeSliderSetting, previousValue, 0, Container.Capacity, 0.01f);
                         parentComp.RequestedTypes[type] = newValue;
+
                         var totalRequested = parentComp.RequestedTypes.Values.Sum();
                         if (totalRequested > Container.Capacity)
                         {
                             if (previousValue < newValue)
                             {
-                                var diff = newValue - previousValue;
                                 foreach (var type2 in allowedTypes)
                                 {
                                     if(type2 == type) continue;
@@ -261,11 +331,9 @@ namespace TiberiumRim
                         }
                         curX += 20 + 5;
                     }
-
                     GUI.EndGroup();
 
-                    //
-                    TRWidgets.AbsorbInput(rect);
+                    //TRWidgets.AbsorbInput(rect);
                 });
             }
 
@@ -277,7 +345,7 @@ namespace TiberiumRim
                     TRWidgets.DrawTiberiumReadout(rect, parentComp.Container);
 
                     //Right Click Input
-                    if (TRWidgets.MouseClickIn(rect, 1))
+                    if (TRWidgets.MouseClickIn(rect, 1) && DebugSettings.godMode)
                     {
                         FloatMenu menu = new FloatMenu(RightClickFloatMenuOptions.ToList(), cachedStrings[2], true);
                         menu.vanishIfMouseDistant = true;
@@ -285,7 +353,7 @@ namespace TiberiumRim
                     }
 
                     //
-                    TRWidgets.AbsorbInput(rect);
+                    //TRWidgets.AbsorbInput(rect);
                 });
             }
         }

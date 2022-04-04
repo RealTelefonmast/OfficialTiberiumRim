@@ -34,7 +34,8 @@ namespace TiberiumRim
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Deep.Look(ref container, "networkContainer");
+            Scribe_Deep.Look(ref containerProps, "containerProps");
+            Scribe_Deep.Look(ref container, "networkContainer", this);
         }
 
         public void Notify_ContainerFull()
