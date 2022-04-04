@@ -326,6 +326,7 @@ namespace TiberiumRim
             bill.iterationsLeft = iterationsLeft;
             bill.billName = billName + "_Copy";
             bill.repeatMode = repeatMode;
+            bill.networkCost = new DefValue<NetworkValueDef>[networkCost.Length];
             networkCost.CopyTo(bill.networkCost);
             bill.results = new List<ThingDefCount>(results);
             return bill;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -461,8 +462,11 @@ namespace TiberiumRim
             return Mouse.IsOver(rect) && curEvent.type == EventType.MouseDown && curEvent.button == mouseButton;
         }
 
-        public static void DrawListedPart<T>(Rect rect, List<T> elements, Action<Rect, UIPartSizes, T> drawProccessor, Func<T, UIPartSizes> heightFunc)
+        public static void DrawListedPart<T>(Rect rect, ref Vector2 scrollPos, List<T> elements, Action<Rect, UIPartSizes, T> drawProccessor, Func<T, UIPartSizes> heightFunc)
         {
+            var height = elements.Sum(s => heightFunc(s).totalSize);
+            var viewRect = new Rect(rect.x, rect.y, rect.width, height);
+            Widgets.BeginScrollView(rect, ref scrollPos, viewRect, false);
             float curY = rect.y;
             for (var i = 0; i < elements.Count; i++)
             {
@@ -476,6 +480,7 @@ namespace TiberiumRim
                 drawProccessor(listingRect, listingHeight, element);
                 curY += listingHeight.totalSize;
             }
+            Widgets.EndScrollView();
         }
 
         public static void AbsorbInput(Rect rect)

@@ -165,11 +165,14 @@ namespace TiberiumRim
             GUI.EndGroup();
         }
 
+
+        private Vector2 presetScrollVec = Vector2.zero;
+
         //Preset Tab
         private void BillSelection(Rect rect)
         {
             Widgets.DrawBoxSolid(rect, TRColor.LightBlack);
-            TRWidgets.DrawListedPart(rect, DefDatabase<AtomicRecipePreset>.AllDefs.ToList(), DrawPresetOption, GetListingHeight);
+            TRWidgets.DrawListedPart(rect, ref presetScrollVec, DefDatabase<AtomicRecipePreset>.AllDefs.ToList(), DrawPresetOption, GetListingHeight);
         }
 
         private UIPartSizes GetListingHeight(AtomicRecipePreset preset)

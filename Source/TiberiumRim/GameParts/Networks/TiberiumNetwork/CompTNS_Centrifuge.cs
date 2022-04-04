@@ -134,22 +134,6 @@ namespace TiberiumRim
         {
             StartOrSustainCentrifuge(isPowered);
             if (!isPowered) return;
-            if (TiberiumComp.RequesterMode == RequesterMode.Automatic)
-            {
-                //Resolve..
-                var maxVal = TiberiumComp.RequestedCapacityPercent * Container.Capacity;
-
-                foreach (var valType in TiberiumComp.Container.AcceptedTypes)
-                {
-                    var valTypeValue = Container.ValueForType(valType) + TiberiumComp.Network.NetworkValueFor(valType, NetworkRole.Storage);
-                    if (valTypeValue > 0)
-                    {
-                        var setValue = Mathf.Min(maxVal, valTypeValue);
-                        TiberiumComp.RequestedTypes[valType] = setValue;
-                        maxVal = Mathf.Clamp(maxVal - setValue, 0, maxVal);
-                    }
-                }
-            }
 
             if (speedControl.ReachedPeak && processingBatch)
             {
@@ -163,7 +147,7 @@ namespace TiberiumRim
                     {
                         foreach (var type in values)
                         {
-                            ChemicalComponent.Container.TryAddValue(type.valueDef, type.valueF * actualValue, out _);
+                            ChemicalComponent.Container.TryAddValue(type.valueDef, type.valueF * actualValue * 2, out _);
                         }
                     }
 

@@ -71,8 +71,8 @@
 	<TiberiumRim.AtomicRecipeDef>
 		<defName>MakeElementalSteel</defName>
 		<inputRatio>
-			<li>Carbon,10</li>
-			<li>Iron,90</li>
+			<li>Carbon,25</li>
+			<li>Iron,25</li>
 		</inputRatio>
 		<result>Steel</result>
 	</TiberiumRim.AtomicRecipeDef>
@@ -80,9 +80,9 @@
 	<TiberiumRim.AtomicRecipeDef>
 		<defName>MakeElementalPlasteel</defName>
 		<inputRatio>
-			<li>Carbon,25</li>
+			<li>Carbon,100</li>
 			<li>Exotic,25</li>
-			<li>Iron,50</li>
+			<li>Iron,100</li>
 		</inputRatio>
 		<result>Plasteel</result>
 	</TiberiumRim.AtomicRecipeDef>
@@ -90,7 +90,7 @@
 	<TiberiumRim.AtomicRecipeDef>
 		<defName>MakeElementalUranium</defName>
 		<inputRatio>
-			<li>Uranium,100</li>
+			<li>Uranium,25</li>
 		</inputRatio>
 		<result>Uranium</result>
 	</TiberiumRim.AtomicRecipeDef>
@@ -98,7 +98,7 @@
 	<TiberiumRim.AtomicRecipeDef>
 		<defName>MakeElementalGold</defName>
 		<inputRatio>
-			<li>Gold,100</li>
+			<li>Gold,20</li>
 		</inputRatio>
 		<result>Gold</result>
 	</TiberiumRim.AtomicRecipeDef>

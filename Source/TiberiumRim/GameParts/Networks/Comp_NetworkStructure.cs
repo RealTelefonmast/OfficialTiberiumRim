@@ -51,7 +51,7 @@ namespace TiberiumRim
         
         public ExtendedGraphicData ExtraData => (parent as IFXObject)?.ExtraData ?? new ExtendedGraphicData();
         public virtual Vector3[] DrawPositions => new Vector3[] { parent.DrawPos, parent.DrawPos, parent.DrawPos };
-        public virtual Color[] ColorOverrides => new Color[] { Color.white, Color.white, Color.white };
+        public virtual Color[] ColorOverrides => new Color[] { NetworkParts[0].Container.Color, Color.white, Color.white };
         public virtual float[] OpacityFloats => new float[] { 1f, 1f, 1f };
         public virtual float?[] RotationOverrides => new float?[] { null, null, null };
         public virtual float?[] AnimationSpeeds => null;

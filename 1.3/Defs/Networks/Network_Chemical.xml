@@ -9,7 +9,7 @@
 		<transmitterGraphic>
 			<texPath>Buildings/Common/Pollution/Pipe_Air</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<color>(0,0,255)</color>
+			<color>(1,0.75,0)</color>
 		</transmitterGraphic>
 		<overlayGraphic>
 			<texPath>Buildings/Common/Pollution/Pipe_Air_overlay</texPath>

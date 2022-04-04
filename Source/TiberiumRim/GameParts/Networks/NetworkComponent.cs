@@ -263,6 +263,23 @@ namespace TiberiumRim
 
         protected virtual void RequesterTick()
         {
+            if (RequesterMode == RequesterMode.Automatic)
+            {
+                //Resolve..
+                var maxVal = RequestedCapacityPercent * Container.Capacity;
+
+                foreach (var valType in Container.AcceptedTypes)
+                {
+                    var valTypeValue = Container.ValueForType(valType) + Network.NetworkValueFor(valType, NetworkRole.Storage);
+                    if (valTypeValue > 0)
+                    {
+                        var setValue = Mathf.Min(maxVal, valTypeValue);
+                        RequestedTypes[valType] = setValue;
+                        maxVal = Mathf.Clamp(maxVal - setValue, 0, maxVal);
+                    }
+                }
+            }
+
             if (Container.StoredPercent >= RequestedCapacityPercent) return;
             foreach (var requestedType in RequestedTypes)
             {
