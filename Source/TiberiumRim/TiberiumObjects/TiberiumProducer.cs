@@ -54,7 +54,7 @@ namespace TiberiumRim
         public AreaMutator AreaMutator => areaMutator;
         public List<IntVec3> FieldCells => TiberiumField.FieldCells;
         public IEnumerable<TiberiumCrystalDef> TiberiumTypes => Ruleset.TiberiumTypes;
-        public TiberiumCrystalDef TiberiumCrystalDefWeighted => (TiberiumCrystalDef)Ruleset.crystalOptions?.RandomElementByWeight(c => c.weight).thing;
+        public TiberiumCrystalDef TiberiumCrystalDefWeighted => Ruleset.crystalOptions?.RandomElementByWeight(c => c.value).def;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {

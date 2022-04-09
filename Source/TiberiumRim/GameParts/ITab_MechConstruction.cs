@@ -35,7 +35,7 @@ namespace TiberiumRim
         public override void FillTab()
         {
             Rect tabRect = new Rect(0,0, WinSize.x, WinSize.y).ContractedBy(10);
-            GUI.BeginGroup(tabRect);
+            Widgets.BeginGroup(tabRect);
             Rect outRect = new Rect(0f, 35f, tabRect.width, tabRect.height - 35f);
             Rect viewRect = new Rect(0f, 0f, outRect.width - 16f, viewHeight);
             Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect, true);
@@ -48,7 +48,7 @@ namespace TiberiumRim
             }
 
             Widgets.EndScrollView();
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         private void DoMechListing(Rect rect, MechRecipeDef recipe, int index)

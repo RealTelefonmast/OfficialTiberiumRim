@@ -228,7 +228,7 @@ namespace TiberiumRim
 
         private void DoSettings(Rect rect)
         {
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             WidgetRow row = new WidgetRow();
             if (UIMode == UIElementMode.Dynamic)
             {
@@ -247,7 +247,7 @@ namespace TiberiumRim
             }
 
             row.Init(rect.width - (WidgetRow.IconSize * 2 + 1), rect.height - (WidgetRow.IconSize + 1), UIDirection.RightThenDown);
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         //Event Handling

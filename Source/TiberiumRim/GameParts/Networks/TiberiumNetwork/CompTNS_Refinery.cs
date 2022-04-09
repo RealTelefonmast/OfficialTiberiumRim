@@ -51,12 +51,6 @@ namespace TiberiumRim
             base.PostDestroy(mode, previousMap);
         }
 
-        //Notifiers TODO: FIX NOTIFIER (CUSTOM NETWORKCOMPONENT??)
-        public void Notify_ContainerFull()
-        {
-            GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.SilosNeeded);
-        }
-
         public override void PostExposeData()
         {
             base.PostExposeData();

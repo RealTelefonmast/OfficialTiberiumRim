@@ -88,10 +88,10 @@ namespace TiberiumRim
 
         public void DrawData(Rect rect)
         {
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             if (fields.NullOrEmpty())
             {
-                GUI.EndGroup();
+                Widgets.EndGroup();
                 return;
             }
 
@@ -103,7 +103,7 @@ namespace TiberiumRim
                 DoField(pos, rect.width, pair.Key, pair.Value, i, out float newY);
                 pos.y = newY;
             }
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
     }
 }

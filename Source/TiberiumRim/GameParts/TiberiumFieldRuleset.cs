@@ -8,7 +8,7 @@ namespace TiberiumRim
     public class TiberiumFieldRuleset
     {
         public List<ThingGroupChance> floraOptions;
-        public List<WeightedThing> crystalOptions;
+        public List<DefFloat<TiberiumCrystalDef>> crystalOptions;
         public List<TerrainConversion> terrainRules;
         public bool allowFlora = true;
         public float tiberiumDensity = 0.05f;
@@ -27,12 +27,12 @@ namespace TiberiumRim
             get
             {
                 if (maxWeight <= 0)
-                    maxWeight = floraOptions.Max(t => t.things.Max(p => p.weight));
+                    maxWeight = floraOptions.Max(t => t.things.Max(p => p.value));
                 return maxWeight;
             }
         }
 
-        public IEnumerable<TiberiumCrystalDef> TiberiumTypes => crystalOptions?.Select(t => t.thing as TiberiumCrystalDef);
+        public IEnumerable<TiberiumCrystalDef> TiberiumTypes => crystalOptions?.Select(t => t.def);
 
         public bool AllowTerrain(TerrainDef terrain)
         {
@@ -42,20 +42,20 @@ namespace TiberiumRim
         public TiberiumCrystalDef RandomTiberiumType()
         {
             if (crystalOptions.NullOrEmpty()) return null;
-            return (TiberiumCrystalDef)crystalOptions.RandomElementByWeight(t => t.weight).thing;
+            return crystalOptions.RandomElementByWeight(t => t.value).def;
         }
 
         public TRThingDef RandomPlant()
         {
             if (floraOptions.NullOrEmpty()) return null;
-            return (TRThingDef)floraOptions.SelectMany(o => o.things).RandomElementByWeight(p => p.weight).thing;
+            return (TRThingDef)floraOptions.SelectMany(o => o.things).RandomElementByWeight(p => p.value).def;
         }
 
         public TRThingDef PlantAt(float distance, float maxDistance)
         {
             //"Chance" in this case is "DistancePercent"
             if (floraOptions.NullOrEmpty()) return null;
-            return (TRThingDef)floraOptions.Where(p => distance >= maxDistance * p.chance).SelectMany(p => p.things).RandomElementByWeight(p => p.weight).thing;
+            return (TRThingDef)floraOptions.Where(p => distance >= maxDistance * p.chance).SelectMany(p => p.things).RandomElementByWeight(p => p.value).def;
         }
 
         public float ChanceFor(TRThingDef plant, float atDistance, float maxDistance)
@@ -65,13 +65,13 @@ namespace TiberiumRim
             //The chance value depending on distance
             float distanceChance = corruptionCurve.Evaluate(distanceFloat);
             //The thing at that position depending on predefined weight
-            WeightedThing thing = floraOptions.SelectMany(f => f.things).First(w => w.thing == plant);
-            var weightChance = Mathf.InverseLerp(0f, MaxFloraWeight, thing.weight);
+            DefFloat<ThingDef> thing = floraOptions.SelectMany(f => f.things).First(w => w.def == plant);
+            var weightChance = Mathf.InverseLerp(0f, MaxFloraWeight, thing.value);
             var lerpedChance = Mathf.Lerp(distanceChance, 1f, Mathf.Clamp01(weightChance - (1f - distanceChance)));
             return lerpedChance; //Mathf.Lerp(distanceChance, 1f, Mathf.InverseLerp(0f, MaxFloraWeight, thing?.weight  ?? 0));
         }
 
-        public List<WeightedTerrain> TerrainOutcomes(TerrainDef terrain)
+        public List<DefFloat<TerrainDef>> TerrainOutcomes(TerrainDef terrain)
         {
             return terrainRules.Find(t => t.Supports(terrain)).toTerrain;
         }

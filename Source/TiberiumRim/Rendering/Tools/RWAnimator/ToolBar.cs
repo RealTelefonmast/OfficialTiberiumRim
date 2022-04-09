@@ -32,14 +32,14 @@ namespace TiberiumRim
 
         protected override void DrawContents(Rect inRect)
         {
-            GUI.BeginGroup(inRect);
+            Widgets.BeginGroup(inRect);
             List<ListableOption> list = new List<ListableOption>();
             foreach (UIElement element in elements)
             {
                 list.Add(new ListableOption(element.Label, () => { element.ToggleOpen(); }));
             }
             OptionListingUtility.DrawOptionListing(new Rect(0, 0, inRect.width, inRect.height), list);
-            GUI.EndGroup();
+            Widgets.EndGroup();
 
             //Draw Each Tool
             foreach (var element in elements)

@@ -37,13 +37,13 @@ namespace TiberiumRim
                 TRUtils.Tiberium().Notify_TiberiumArrival(map);
 
                 //Initial Setup
-                craterDef = (TiberiumProducerDef)new List<WeightedThing>()
+                craterDef = new List<DefFloat<TiberiumProducerDef>>()
                 {
-                    new WeightedThing(TiberiumDefOf.TiberiumCraterGreen,0.66f),
-                    new WeightedThing(TiberiumDefOf.TiberiumCraterBlue,0.33f),
-                    new WeightedThing(TiberiumDefOf.TiberiumCraterHybrid,0.22f),
+                    new (TiberiumDefOf.TiberiumCraterGreen,0.66f),
+                    new (TiberiumDefOf.TiberiumCraterBlue,0.33f),
+                    new (TiberiumDefOf.TiberiumCraterHybrid,0.22f),
                     //new WeightedThing(TiberiumDefOf.RedTiberiumShard,0.01f)
-                }.RandomElementByWeight(s => s.weight).thing;
+                }.RandomElementByWeight(s => s.value).def;
                 ticksLeft = (int)(TRUtils.Range(1f, 2f) * GenDate.TicksPerDay);
                 DoMeteoriteImpact();
             }
@@ -91,7 +91,7 @@ namespace TiberiumRim
             bool Validator(IntVec3 c) => c.InBounds(Map) && c.Standable(Map) && !c.GetTerrain(Map).IsWater && GenTiberium.AllowsTiberiumAtFast(c, Map);
             void Action(IntVec3 c)
             {
-                TiberiumCrystalDef crystalDef = (TiberiumCrystalDef)craterDef.tiberiumFieldRules.crystalOptions.RandomElement().thing;
+                TiberiumCrystalDef crystalDef = (TiberiumCrystalDef)craterDef.tiberiumFieldRules.crystalOptions.RandomElement().def;
                 GenTiberium.SetTerrain(c, Map, crystalDef);
 
                 if (!GenAdj.CellsAdjacent8Way(this).Contains(c) && Rand.Chance(0.20f))

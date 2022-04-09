@@ -6,11 +6,11 @@ namespace TiberiumRim
     public class SporeProperties
     {
         public IntRange spawnInterval = new IntRange(20000, 45000);
-        public List<WeightedThing> blossoms;
+        public List<DefFloat<TiberiumProducerDef>> blossoms;
 
         public TiberiumProducerDef Blossom()
         {
-            return (TiberiumProducerDef)blossoms.RandomElementByWeight(x => x.weight).thing;
+            return blossoms.RandomElementByWeight(x => x.value).def;
         }
     }
 }

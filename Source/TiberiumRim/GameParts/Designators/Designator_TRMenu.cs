@@ -88,14 +88,14 @@ namespace TiberiumRim
                 Widgets.DrawTextureRotated(menuRect, TexturePacks[SelectedFaction].BackGround, 0f);
                 //Reduce Content Rect
                 menuRect = new Rect(sideMargin, menuRect.y + topBotMargin, menuRect.width - sideMargin, menuRect.height - (topBotMargin * 2));
-                GUI.BeginGroup(menuRect);
+                Widgets.BeginGroup(menuRect);
                 FactionSideBar(3);
                 Rect extraDes = new Rect(2, menuRect.height - 75, iconSize, iconSize);
                 DrawDesignator(extraDes, DesignatorUtility.FindAllowedDesignator<Designator_Deconstruct>());
                 extraDes.y = extraDes.yMax + 5;
                 DrawDesignator(extraDes, DesignatorUtility.FindAllowedDesignator<Designator_Cancel>());
                 Rect DesignatorRect = new Rect(iconSize + sideMargin, 0f, menuRect.width - (iconSize + sideMargin), menuRect.height);
-                GUI.BeginGroup(DesignatorRect);
+                Widgets.BeginGroup(DesignatorRect);
                 var subCats = SelectedFaction.subCategories;
                 Vector2 curXY = Vector2.zero;
                 foreach (var cat in subCats)
@@ -128,8 +128,8 @@ namespace TiberiumRim
                     }
                 }
                 DrawFactionCat(new Rect(0f, curXY.y, DesignatorRect.width, DesignatorRect.height - curXY.y), SelectedFaction, SelectedCategory);
-                GUI.EndGroup();
-                GUI.EndGroup();
+                Widgets.EndGroup();
+                Widgets.EndGroup();
             }, false, false, 0f);
             return new GizmoResult(GizmoState.Mouseover);
         }
@@ -153,7 +153,7 @@ namespace TiberiumRim
         {
             if (faction != null && category != null)
             {             
-                GUI.BeginGroup(main);
+                Widgets.BeginGroup(main);
                     Vector2 size = new Vector2(80, 80);
                     Vector2 curXY = new Vector2(5f, 5f);
                     List<TRThingDef> things = SearchText.NullOrEmpty() ? TRThingDefList.Categorized[faction][category] : ItemsBySearch(SearchText);
@@ -173,7 +173,7 @@ namespace TiberiumRim
                             InactiveDesignator(def, main, size, ref curXY);
                     }
                     Widgets.EndScrollView();
-                GUI.EndGroup();
+                Widgets.EndGroup();
             }
         }
 

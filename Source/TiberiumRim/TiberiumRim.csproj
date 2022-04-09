@@ -27,12 +27,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="*" GeneratePathProperty="true" />
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.3.3326" GeneratePathProperty="true" />
     <!-- Use Version="*-*" to get the latest beta! -->
-    <PackageReference Include="Lib.Harmony" Version="*" ExcludeAssets="runtime" />
+    <PackageReference Include="Lib.Harmony" Version="2.2.1" ExcludeAssets="runtime" />
     <PackageReference Include="TaskPubliciser" Version="1.0.3" />
 
-    <PackageReference Include="Microsoft.NETCore.Platforms" Version="*" />
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="6.0.2" />
     <PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="*" ExcludeAssets="runtime" />
     <PackageReference Include="RimWorld.MultiplayerAPI" Version="*" ExcludeAssets="runtime" />
   </ItemGroup>

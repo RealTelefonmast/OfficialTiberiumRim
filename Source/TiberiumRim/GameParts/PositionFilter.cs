@@ -6,10 +6,10 @@ namespace TiberiumRim
 {
     public class PositionFilter
     {
-        public List<TerrainDef>       terrainToAvoid = new List<TerrainDef>();
-        public List<WeightedTerrain> terrainToPrefer = new List<WeightedTerrain>();
-        public List<ThingDef>        thingsToSpawnAt = new List<ThingDef>();
-        public List<ThingValue>     distanceToThings = new List<ThingValue>();
+        public List<TerrainDef>       terrainToAvoid = new ();
+        public List<DefFloat<TerrainDef>> terrainToPrefer = new ();
+        public List<ThingDef>        thingsToSpawnAt = new ();
+        public List<ThingValue>     distanceToThings = new ();
 
         //public AreaCheck roofed   = AreaCheck.Avoid;
         //public AreaCheck homeArea = AreaCheck.Avoid;
@@ -24,7 +24,7 @@ namespace TiberiumRim
             foreach (var cell in map.AllCells)
             {
                 if(terrainToAvoid.Contains(cell.GetTerrain(map)))continue;
-                if(terrainToPrefer.Any() && !terrainToPrefer.Any(ttp => TRUtils.Chance(ttp.weight))) continue;
+                if(terrainToPrefer.Any() && !terrainToPrefer.Any(ttp => TRUtils.Chance(ttp.value))) continue;
                 if(thingsToSpawnAt.Any() && !thingsToSpawnAt.Any(t => cell.GetFirstThing(map, t) != null)) continue;
                 if(distanceToThings.Any() && distanceToThings.Any(t => map.listerThings.ThingsOfDef(t.ThingDef).Any(t2 => t2.Position.DistanceTo(cell) < t.value))) continue;
                 yield return cell;

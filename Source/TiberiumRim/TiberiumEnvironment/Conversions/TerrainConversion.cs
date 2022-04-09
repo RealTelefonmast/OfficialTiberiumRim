@@ -6,7 +6,7 @@ namespace TiberiumRim
     public class TerrainConversion
     {
         public TerrainFilter filter;
-        public List<WeightedTerrain> toTerrain;
+        public List<DefFloat<TerrainDef>> toTerrain;
 
         public bool Supports(TerrainDef def)
         {
@@ -15,7 +15,7 @@ namespace TiberiumRim
 
         public TerrainDef RandomOutcome()
         {
-            return toTerrain.RandomElementByWeight(w => w.weight).terrainDef;
+            return toTerrain.RandomElementByWeight(w => w.value).def;
         }
     }
 }

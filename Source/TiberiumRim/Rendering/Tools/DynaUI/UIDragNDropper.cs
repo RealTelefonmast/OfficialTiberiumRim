@@ -84,11 +84,11 @@ namespace TiberiumRim
         private static void VisualizeDraggedData(object data, Vector2 pos)
         {
             GUI.color = TRColor.White05;
-            if (data is Texture texture)
+            if (data is WrappedTexture texture)
             {
                 Rect box = new Rect(pos, new Vector2(45, 45));
                 TRWidgets.DrawBoxHighlight(box);
-                Widgets.DrawTextureFitted(box.ContractedBy(1), texture, 1f);
+                Widgets.DrawTextureFitted(box.ContractedBy(1), texture.texture, 1f);
                 return;
             }
 
@@ -111,7 +111,7 @@ namespace TiberiumRim
                 Rect rect = new Rect(pos, new Vector2(width, height));
                 Widgets.DrawBox(rect, 1);
 
-                GUI.BeginGroup(rect);
+                Widgets.BeginGroup(rect);
                 Vector2 XY = Vector2.zero;
                 foreach (var tile in sheet.Tiles)
                 {
@@ -129,7 +129,7 @@ namespace TiberiumRim
                         XY.x += size;
                     }
                 }
-                GUI.EndGroup();
+                Widgets.EndGroup();
 
                 return;
             }

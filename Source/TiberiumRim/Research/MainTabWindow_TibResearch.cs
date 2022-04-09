@@ -127,7 +127,7 @@ namespace TiberiumRim
             //Draw BackGround Image Here
 
             Rect rect = inRect.ContractedBy(5f);
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
 
             Rect LeftRect = new Rect(0, 0, leftWidth, rect.height);
             Rect RightRect = new Rect(LeftRect.xMax, 0, rect.width - LeftRect.width, rect.height);
@@ -136,7 +136,7 @@ namespace TiberiumRim
             if (SelProject != null && SelTab == ResearchTabOption.Projects)
                 DrawProject(RightRect.ContractedBy(10f));
 
-            GUI.EndGroup();
+            Widgets.EndGroup();
 
             //TODO: REMOVE FROM
             // if (!DebugSettings.godMode) return;
@@ -152,7 +152,7 @@ namespace TiberiumRim
         private void DrawLeftPart(Rect rect)
         {
             //
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
 
             Rect tabRect = new Rect(0, tabHeight, rect.width, tabHeight);
             Rect menuRect = new Rect(0, tabHeight, rect.width, rect.height - tabHeight);
@@ -178,7 +178,7 @@ namespace TiberiumRim
                     DrawDiscoveries(menuRect.ContractedBy(5f));
                     break;
             }
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         /*
@@ -196,7 +196,7 @@ namespace TiberiumRim
             Rect bannerRect = new Rect(rect.x - 4, rect.y - 5, rect.width + 8, bannerHeight);
             Widgets.DrawTextureFitted(bannerRect, TiberiumContent.Banner, 1f);
 
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             var outRect  = new Rect(0, 0, rect.width, rect.height - bannerHeight);
             var viewRect = new Rect(0, 0, outRect.width, outRect.height);
             var curY= bannerRect.height + 5; 
@@ -207,7 +207,7 @@ namespace TiberiumRim
                     DrawResearchGroup(ref curY, researchGroup);
             }
             Widgets.EndScrollView();
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         private void DrawResearchGroup(ref float curY, TResearchGroupDef group)
@@ -265,7 +265,7 @@ namespace TiberiumRim
         // EVENT MENU
         private void DrawEvents(Rect rect)
         {
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             Rect outRect = new Rect(0, 0, rect.width, rect.height - bannerHeight);
             Rect viewRect = new Rect(0, 0, outRect.width, outRect.height);
             Widgets.BeginScrollView(outRect, ref projectScrollPos, viewRect, true);
@@ -276,7 +276,7 @@ namespace TiberiumRim
                 curY += researchGroupSize.y;
             }
             Widgets.EndScrollView();
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         public void DrawEvent(BaseEvent baseEvent, Rect rect)
@@ -317,7 +317,7 @@ namespace TiberiumRim
             Widgets.DrawMenuSection(menuRect);
 
             menuRect = menuRect.ContractedBy(5f);
-            GUI.BeginGroup(menuRect);
+            Widgets.BeginGroup(menuRect);
             menuRect = new Rect(0, 0, menuRect.width, menuRect.height);
 
             Rect LeftPart = menuRect.LeftPart(mainRectLeftPct);
@@ -393,7 +393,7 @@ namespace TiberiumRim
                 DrawTasks(TaskRect);
             }
 
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         private void DrawImage(Rect rect, TResearchTaskDef task)
@@ -450,7 +450,7 @@ namespace TiberiumRim
             }
 
             rect = rect.ContractedBy(5f);
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             Rect TaskInfoRect = rect.AtZero();
             float curY = TaskInfoRect.y;
 
@@ -514,12 +514,12 @@ namespace TiberiumRim
                 //curY += columnIndex * iconSize;
             }
 
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         private void DrawTasks(Rect rect)
         {
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             Rect outRect = rect.AtZero();
             TRWidgets.DrawColoredBox(outRect, taskBG, ColorWhite50P, 1);
             Rect viewRect = new Rect(0, 0, outRect.width, taskCurrentHeight * SelProject.tasks.Count);
@@ -534,7 +534,7 @@ namespace TiberiumRim
                 curY += yHeight;
             }
             Widgets.EndScrollView();
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         //Draw Task - Design depends on status: current | to do | finished

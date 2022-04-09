@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
-  <Title> [1.3][1.2]TiberiumRim - Development Build</Title>
+  <Title>TiberiumRim - Development Build</Title>
   <Excluded>
     <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\.git</exclude>
-    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\gitattributes</exclude>
     <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\LICENSE.md</exclude>
     <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\README.md</exclude>
     <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\Source</exclude>

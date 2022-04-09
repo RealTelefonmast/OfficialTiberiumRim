@@ -108,26 +108,26 @@ namespace TiberiumRim
             CanvasCursor.Notify_TriggeredMode(ActiveTexture?.LockedInMode);
 
             //
-            GUI.BeginGroup(inRect);
+            Widgets.BeginGroup(inRect);
             ActiveTexture?.DrawSelOverlay();
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         private void DrawGrid(Rect inRect)
         {
-            GUI.BeginGroup(inRect);
+            Widgets.BeginGroup(inRect);
             DrawCanvasGuidelines();
-            GUI.EndGroup();
+            Widgets.EndGroup();
             /*
             var size = inRect.size * CanvasZoomScale;
-            GUI.BeginGroup(inRect);
+            Widgets.BeginGroup(inRect);
             TRWidgets.DrawGridOnCenter(new Rect(TrueOrigin.x - size.x / 2, TrueOrigin.y - size.y / 2, size.x, size.y), 100 * CanvasZoomScale, TrueOrigin);
-            GUI.EndGroup();
+            Widgets.EndGroup();
             */
             //TRWidgets.DrawGrid(inRect, 100f, CanvasScale, LastZoomPos);
 
             //LayerView
-            Rect viewRect = new Rect(Position.x + Size.x, Position.y, 150, Size.y);
+            Rect viewRect = new Rect((Position.x + Size.x) - 1, Position.y, 150, Size.y);
             layerView.DrawElement(viewRect);
         }
 
@@ -157,10 +157,11 @@ namespace TiberiumRim
         public void DrawHoveredData(object draggedData, Vector2 pos)
         {
             GUI.color = TRColor.White05;
-            if (draggedData is Texture tex)
+            if (draggedData is WrappedTexture tex)
             {
-                Rect drawRect = pos.RectOnPos((new Vector2(tex.width, tex.height) / 2) * CanvasZoomScale);
-                Widgets.DrawTextureFitted(drawRect, tex, 1);
+                var texture = tex.texture;
+                Rect drawRect = pos.RectOnPos((new Vector2(texture.width, texture.height) / 2) * CanvasZoomScale);
+                Widgets.DrawTextureFitted(drawRect, texture, 1);
                 TRWidgets.DoTinyLabel(drawRect, $"{pos}");
                 TRWidgets.DrawBox(drawRect, Color.black, 1);
             }
@@ -178,7 +179,7 @@ namespace TiberiumRim
         public bool TryAccept(object draggedObject, Vector2 pos)
         {
             TextureElement element = null;
-            if (draggedObject is Texture texture)
+            if (draggedObject is WrappedTexture texture)
             {
                 element = new TextureElement(new Rect(Vector2.zero, Size), texture);
                 element.SetData(parent: this);
@@ -202,7 +203,7 @@ namespace TiberiumRim
 
         public bool Accepts(object draggedObject)
         {
-            if (draggedObject is Texture or SpriteTile) return true;
+            if (draggedObject is WrappedTexture or SpriteTile) return true;
             return false;
         }
     }

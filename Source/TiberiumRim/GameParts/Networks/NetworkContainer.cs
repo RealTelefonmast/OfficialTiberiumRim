@@ -416,11 +416,11 @@ namespace TiberiumRim
             else
                 StoredValues.Add(valueType, actualValue);
 
+            Notify_AddedValue(valueType, actualValue);
             //If this adds the last drop, notify full
             if (CapacityFull)
                 Notify_Full();
 
-            Notify_AddedValue(valueType, actualValue);
             return true;
         }
 

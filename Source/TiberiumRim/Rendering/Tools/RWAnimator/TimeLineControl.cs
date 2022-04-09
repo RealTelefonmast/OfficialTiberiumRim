@@ -19,13 +19,21 @@ namespace TiberiumRim
         void SetTRS(KeyFrameData? data);
     }
 
-    public struct KeyFrameData
+    public struct KeyFrameData : IExposable
     {
         //TRS
         public float rotation;
         public Vector2 position, size;
 
         public float layerPos;
+
+        public void ExposeData()
+        {
+            Scribe_Values.Look(ref rotation, "rotation", forceSave: true);
+            Scribe_Values.Look(ref position, "position", forceSave: true);
+            Scribe_Values.Look(ref size, "size", forceSave: true);
+            Scribe_Values.Look(ref layerPos, "layerPos", forceSave: true);
+        }
 
         public KeyFrameData(Vector2 pos, float rot, Vector2 size)
         {
@@ -56,30 +64,6 @@ namespace TiberiumRim
         }
 
         public float Second => frameTick.TicksToSeconds();
-    }
-
-    public class KeyFrameList
-    {
-        private KeyFrame[] keyFrames = Array.Empty<KeyFrame>();
-
-        public KeyFrameList()
-        {
-
-        }
-
-        public void AddKeyframe(KeyFrame newFrame)
-        {
-            int size = keyFrames.Length + 1;
-            Array.Resize(ref keyFrames, size);
-            keyFrames[size - 1] = newFrame;
-        }
-        public void RemoveKeyframe(KeyFrame newFrame)
-        {
-            int size = keyFrames.Length + 1;
-            Array.Resize(ref keyFrames, size);
-            keyFrames[size - 1] = newFrame;
-        }
-
     }
 
     public class TimeLineControl : UIElement
@@ -323,7 +307,7 @@ namespace TiberiumRim
             //CurrentFrame = (int)Widgets.HorizontalSlider(rect, CurrentFrame, 0, tickLength, roundTo: 1);
 
             //Draw Tick Lines
-            GUI.BeginGroup(timeBar);
+            Widgets.BeginGroup(timeBar);
             timeBar = timeBar.AtZero();
             float curX = 0;
             for (int i = 0; i < tickLength; i++)
@@ -341,7 +325,7 @@ namespace TiberiumRim
                 curX += PixelPerTickAdjusted;
             }
 
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         private void DrawTimeSelectorCustom(Rect rect, int id, ref IntRange range, ref int value, int min = 0, int max = 100, int minWidth = 0)
@@ -497,7 +481,7 @@ namespace TiberiumRim
                 isPaused = !isPaused;
             }
 
-            GUI.BeginGroup(topSettingPart);
+            Widgets.BeginGroup(topSettingPart);
             WidgetRow row = new WidgetRow();
             if (row.ButtonIcon(TiberiumContent.AddKeyFrame))
             {
@@ -513,7 +497,7 @@ namespace TiberiumRim
 
             row.Label($"{TRFind.TickManager.CurrentTick}");
             row.Init(0, Rect.height - 16, UIDirection.LeftThenUp);
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
     }
 }

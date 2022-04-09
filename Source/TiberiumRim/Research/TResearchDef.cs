@@ -304,7 +304,7 @@ namespace TiberiumRim
 
         public void WriteTaskInfo(Rect rect, out float height)
         {
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             float curY = 0;
             float Width = rect.width;
             //Targets
@@ -415,7 +415,7 @@ namespace TiberiumRim
                 curY += 6;
             }
             height = curY;
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         private void DoMenuOptions(Rect rect, ThingDef def, bool allowJump)

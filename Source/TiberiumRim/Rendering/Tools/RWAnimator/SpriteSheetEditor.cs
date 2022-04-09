@@ -161,7 +161,7 @@ namespace TiberiumRim
             Widgets.DrawTextureFitted(rect, Texture, 1);
 
             //Draw Tiles
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             for (var i = 0; i < Tiles.Count; i++)
             {
                 var spriteTile = Tiles[i];
@@ -179,14 +179,14 @@ namespace TiberiumRim
                 Clear();
             }
 
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         private void DrawTileList(Rect rect)
         {
             TRWidgets.DrawColoredBox(rect, TRMats.BGDarker, TRMats.MenuSectionBGBorderColor, 1);
 
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             rect = rect.AtZero();
 
             Rect fullRect = new Rect(0, 0, rect.width, Tiles.Count * _ListSize.y);
@@ -208,14 +208,14 @@ namespace TiberiumRim
             }
 
             Widgets.EndScrollView();
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         private void DrawTileInfo(Rect rect, SpriteTile tile)
         {
             TRWidgets.DrawColoredBox(rect, TRMats.BGLighter, TRMats.MenuSectionBGBorderColor, 1);
 
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             rect = rect.AtZero();
             var center = rect.center;
             var rect2 = center.RectOnPos(tile.rect);
@@ -223,7 +223,7 @@ namespace TiberiumRim
             tile.DrawTile(rect2);
             Widgets.DrawBox(rect2, 1);
 
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         private void DrawSettings(Rect rect)
@@ -239,7 +239,7 @@ namespace TiberiumRim
 
             float height = ((float)(Math.Round((Tiles.Count / 4f), 0, MidpointRounding.AwayFromZero)) * size);
 
-            GUI.BeginGroup(TileReadoutRect);
+            Widgets.BeginGroup(TileReadoutRect);
             Vector2 XY = Vector2.zero;
             for (var i = 0; i < tiles.Count; i++)
             {
@@ -269,7 +269,7 @@ namespace TiberiumRim
                 }
             }
 
-            GUI.EndGroup();
+            Widgets.EndGroup();
 
             if (sheetExists)
             {

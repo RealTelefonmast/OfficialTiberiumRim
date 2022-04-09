@@ -245,7 +245,7 @@ namespace TiberiumRim
                 Widgets.DrawAltRect(rect);
             rect = rect.ContractedBy(5);
 
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             rect = rect.AtZero();
 
             //Name
@@ -271,7 +271,7 @@ namespace TiberiumRim
             var rightRect = newRect.RightHalf();
 
             //LEFT
-            GUI.BeginGroup(leftRect);
+            Widgets.BeginGroup(leftRect);
             //List
             float curY = 0;
             foreach (var result in results) 
@@ -281,18 +281,18 @@ namespace TiberiumRim
                 row.Label($"×{result.Count}");
                 curY += 24 + 5;
             }
-            GUI.EndGroup();
+            Widgets.EndGroup();
 
             //RIGHT
-            GUI.BeginGroup(rightRect);
+            Widgets.BeginGroup(rightRect);
 
             Rect workBarRect = new Rect(rightRect.width - 75, rightRect.height - (24 + 5), 100, 24);
             Widgets.FillableBar(workBarRect, Mathf.InverseLerp(0, workAmountTotal, workAmountTotal-workAmountLeft));
 
-            GUI.EndGroup();
+            Widgets.EndGroup();
 
             Rect bottomRect = new Rect(0, newRect.yMax, rect.width, 24);
-            GUI.BeginGroup(bottomRect);
+            Widgets.BeginGroup(bottomRect);
             bottomRect = bottomRect.AtZero();
 
             Vector2 countLabelSize = Text.CalcSize(CountLabel);
@@ -316,8 +316,8 @@ namespace TiberiumRim
                     iterationsLeft = Mathf.Clamp(iterationsLeft - 1, 0, int.MaxValue);
                 }
             }
-            GUI.EndGroup();
-            GUI.EndGroup();
+            Widgets.EndGroup();
+            Widgets.EndGroup();
         }
 
         public CustomNetworkBill Clone()

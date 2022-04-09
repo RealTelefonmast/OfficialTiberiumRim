@@ -84,7 +84,7 @@ namespace TiberiumRim
 
         protected override void DrawContents(Rect inRect)
         {
-            GUI.BeginGroup(inRect);
+            Widgets.BeginGroup(inRect);
             switch (ContainerMode)
             {
                 case UIContainerMode.InOrder:
@@ -108,7 +108,7 @@ namespace TiberiumRim
                 }
             }
 
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
     }
 }

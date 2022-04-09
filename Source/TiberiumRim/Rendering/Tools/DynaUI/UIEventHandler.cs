@@ -24,7 +24,6 @@ namespace TiberiumRim
         {
             if (element.CanBeFocused && Mouse.IsOver(element.FocusRect))
             {
-                Log.Message($"Starting to focus {element}");
                 FocusedElement = element;
             }
         }

@@ -46,14 +46,14 @@ namespace TiberiumRim
             Widgets.Label(titleRect, "Select a Tool");
             Text.Font = default;
 
-            GUI.BeginGroup(selectionRect);
+            Widgets.BeginGroup(selectionRect);
             List<ListableOption> list = new List<ListableOption>();
             foreach (var devTool in allDevTools)
             {
                 list.Add(new ListableOption(devTool.LabelCap, () => { Find.WindowStack.Add(devTool.GetWindow); }));
             }
             OptionListingUtility.DrawOptionListing(new Rect(0, 0, 200, selectionRect.height), list);
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
     }
 }

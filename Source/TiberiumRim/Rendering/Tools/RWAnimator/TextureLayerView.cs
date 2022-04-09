@@ -42,11 +42,12 @@ namespace TiberiumRim
 
         protected override void DrawContents(Rect inRect)
         {
-            internalScroller.DrawElement(inRect);
+            Rect rect = new Rect(inRect.x - 1, inRect.y, inRect.width + 2, inRect.height);
+            internalScroller.DrawElement(rect);
             
             /*
             base.DrawContents(inRect);
-            GUI.BeginGroup(inRect);
+            Widgets.BeginGroup(inRect);
             inRect = inRect.AtZero();
             Rect scrollRect = new Rect(0, 0, inRect.width, elements.Count * inRect.width);
             Widgets.BeginScrollView(inRect, ref scrollVec, scrollRect, false);
@@ -91,7 +92,7 @@ namespace TiberiumRim
             }
 
             Widgets.EndScrollView();
-            GUI.EndGroup();
+            Widgets.EndGroup();
             */
         }
 

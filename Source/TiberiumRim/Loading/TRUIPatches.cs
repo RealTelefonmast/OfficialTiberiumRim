@@ -14,8 +14,21 @@ namespace TiberiumRim
 {
     public static class TRUIPatches
     {
+        [HarmonyPatch(typeof(PlaySettings))]
+        [HarmonyPatch(nameof(PlaySettings.DoPlaySettingsGlobalControls))]
+        public static class PlaySettingsPatch
+        {
+            public static void Postfix(WidgetRow row, bool worldView)
+            {
+                if (worldView || row == null) return;
+
+                row.ToggleableIcon(ref TRUtils.GameSettings().EVASystem, TiberiumContent.Icon_EVA, "Enable or disable the EVA", SoundDefOf.Mouseover_ButtonToggle);
+                row.ToggleableIcon(ref TRUtils.GameSettings().RadiationOverlay, TiberiumContent.Hediff_Radiation, "Toggle the Tiberium Radiation overlay.", SoundDefOf.Mouseover_ButtonToggle);
+            }
+        }
+
         [HarmonyPatch(typeof(MainMenuDrawer))]
-        [HarmonyPatch("DoMainMenuControls")]
+        [HarmonyPatch(nameof(MainMenuDrawer.DoMainMenuControls))]
         public static class DoMainMenuControlsPatch
         {
             public static float addedHeight = 45f + 7f;
@@ -65,7 +78,7 @@ namespace TiberiumRim
 
         //Readout
         [HarmonyPatch(typeof(ResourceReadout))]
-        [HarmonyPatch("ResourceReadoutOnGUI")]
+        [HarmonyPatch(nameof(ResourceReadout.ResourceReadoutOnGUI))]
         public static class ResourceReadoutOnGUIPatch
         {
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)

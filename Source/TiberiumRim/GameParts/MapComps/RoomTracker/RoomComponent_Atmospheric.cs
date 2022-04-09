@@ -393,7 +393,7 @@ namespace TiberiumRim
             TRWidgets.DrawColoredBox(rect, new Color(1, 1, 1, 0.125f), Color.white, 1);
 
             rect = rect.ContractedBy(5);
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
 
             var rect1 = new Rect(0, 0, 10, rect.height);
             var rect2 = new Rect(12.5f, 0, 10, rect.height);
@@ -441,7 +441,7 @@ namespace TiberiumRim
                     DrawDebug = !DrawDebug;
             }
 
-            GUI.EndGroup();
+            Widgets.EndGroup();
 
             /*
             Find.WindowStack.ImmediateWindow(Room.GetHashCode(), rect, WindowLayer.GameUI, delegate
@@ -449,7 +449,7 @@ namespace TiberiumRim
                 rect = rect.ContractedBy(5);
                 Widgets.DrawHighlight(rect);
 
-                GUI.BeginGroup(rect);
+                Widgets.BeginGroup(rect);
 
                 var rect1 = new Rect(0,0, 20, rect.height);
                 var rect2 = new Rect(25, 0, 20, rect.height);
@@ -458,14 +458,14 @@ namespace TiberiumRim
 
                 DrawPctBar(rect1, Outside);
                 DrawPctBar(rect2, ActualContainer);
-                GUI.EndGroup();
+                Widgets.EndGroup();
             }, true, false, 0);
             */
         }
 
         private void DrawPctBar(Rect rect, AtmosphericContainer container)
         {
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             var actualContainer = container.Container;
             float yPos = rect.height;
             foreach (var type in actualContainer.AllStoredTypes)
@@ -476,7 +476,7 @@ namespace TiberiumRim
                 yPos -= height;
                 Widgets.DrawBoxSolid(typeRect, type.valueColor);
             }
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         private Vector2 DrawPosFor(IntVec3 pos)

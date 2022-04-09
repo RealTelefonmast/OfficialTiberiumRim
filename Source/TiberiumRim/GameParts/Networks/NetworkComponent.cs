@@ -194,7 +194,8 @@ namespace TiberiumRim
         //Data Notifiers
         public void Notify_ContainerFull()
         {
-
+            if(NetworkRole.HasFlag(NetworkRole.Producer))
+                GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.SilosNeeded, Parent.Thing);
         }
         public void Notify_ContainerStateChanged()
         {

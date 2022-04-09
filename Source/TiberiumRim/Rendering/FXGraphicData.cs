@@ -4,15 +4,6 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class AnimationStep
-    {
-        public int timeStep;
-        public float timeStepSeconds;
-        public int? speed;              //When null use oldStep
-        public Vector3 position;
-
-    }
-
     public class FXGraphicData
     {
         public GraphicData data;

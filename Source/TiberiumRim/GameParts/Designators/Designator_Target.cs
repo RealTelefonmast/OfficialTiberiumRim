@@ -52,7 +52,7 @@ namespace TiberiumRim
         public override void Selected()
         {
             base.Selected();
-            GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.SelectDestination);
+            GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.SelectDestination, null);
         }
 
         public override void DesignateSingleCell(IntVec3 c)
@@ -95,7 +95,7 @@ namespace TiberiumRim
         public override void Selected()
         {
             base.Selected();
-            GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.SelectTarget);
+            GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.SelectTarget, null);
         }
 
         public override AcceptanceReport CanDesignateCell(IntVec3 loc)
@@ -111,7 +111,7 @@ namespace TiberiumRim
             {
                 sat.SetAttackDest(Map, c);
                 sat.SetDestination(Map.Tile);
-                GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.IonCannonActivated);
+                GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.IonCannonActivated, null);
             }
             Find.DesignatorManager.Deselect();
         }
@@ -154,7 +154,7 @@ namespace TiberiumRim
         public override void Selected()
         {
             base.Selected();
-            GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.SelectTarget);
+            GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.SelectTarget, null);
         }
 
         public override AcceptanceReport CanDesignateCell(IntVec3 loc)

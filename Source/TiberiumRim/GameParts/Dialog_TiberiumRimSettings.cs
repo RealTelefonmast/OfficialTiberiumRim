@@ -21,7 +21,7 @@ namespace TiberiumRim
             {
                 this.Close(true);
             }
-            GUI.BeginGroup(inRect);
+            Widgets.BeginGroup(inRect);
 
             float curY = 94;
             float yOffset = 60f;
@@ -48,7 +48,7 @@ namespace TiberiumRim
                 this.Close();
                 //Find.WindowStack.Add(new Dialog_GraphicsSettings());
             }
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
     }
 }

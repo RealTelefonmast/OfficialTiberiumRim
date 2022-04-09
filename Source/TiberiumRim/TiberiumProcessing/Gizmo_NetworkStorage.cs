@@ -65,7 +65,7 @@ namespace TiberiumRim
                 Text.Anchor = 0;
                 Rect rect2 = rect.BottomHalf();
                 Rect rect3 = rect2.BottomHalf();
-                GUI.BeginGroup(rect3);
+                Widgets.BeginGroup(rect3);
                 Rect BGRect = new Rect(0, 0, rect3.width, rect3.height);
                 Rect BarRect = BGRect.ContractedBy(2.5f);
                 float xPos = 0f;
@@ -80,7 +80,7 @@ namespace TiberiumRim
                     Widgets.DrawBoxSolid(typeRect, color);
                 }
 
-                GUI.EndGroup();
+                Widgets.EndGroup();
                 /*
                 if (optionToggled)
                 {

@@ -301,7 +301,7 @@ namespace TiberiumRim
                     Widgets.DrawWindowBackground(rect);
 
                     var contentRect = rect.ContractedBy(5);
-                    GUI.BeginGroup(contentRect);
+                    Widgets.BeginGroup(contentRect);
                     contentRect = contentRect.AtZero();
 
                     var curX = 5;
@@ -331,7 +331,7 @@ namespace TiberiumRim
                         }
                         curX += 20 + 5;
                     }
-                    GUI.EndGroup();
+                    Widgets.EndGroup();
 
                     //TRWidgets.AbsorbInput(rect);
                 });

@@ -17,6 +17,7 @@ namespace TiberiumRim
         private TextureCanvas canvas;
         private ObjectBrowser browser;
         private ToolBar toolBar;
+        private AnimationSaveLoader saveLoader;
 
         public override Vector2 InitialSize => new Vector2(UI.screenWidth, UI.screenHeight);
         private Vector2 CanvasSize => new(800, 800);
@@ -42,19 +43,13 @@ namespace TiberiumRim
             canvas = new TextureCanvas(new Rect(50,50, 800, 800));
             canvas.TimeLine = timeLine;
             timeLine.Canvas = canvas;
-            browser = new ObjectBrowser(new Rect(850, 50, 275, 700));
+            browser = new ObjectBrowser(new Rect(850, 50, 350, 700));
+            saveLoader = new AnimationSaveLoader(canvas);
 
-            //window.AddElement(timeLine);
-            //window.AddElement(toolBar);
-            //window.AddElement(canvas);
-            //window.AddElement(browser);
-
-            toolBar.AddElement(new SpriteSheetEditor(), new Vector2(100, 100));
             toolBar.AddElement(canvas);
+            toolBar.AddElement(new SpriteSheetEditor(), new Vector2(100, 100));
             toolBar.AddElement(browser);
-
-            //canvas.AddElement(new GraphicElement(DefDatabase<HarvesterKindDef>.GetNamed("Harvester_Nod").lifeStages.First().bodyGraphicData.Graphic), new Vector2(15,15));
-            //canvas.AddElement(new GraphicElement(DefDatabase<HarvesterKindDef>.GetNamed("Harvester_GDI").lifeStages.First().bodyGraphicData.Graphic), new Vector2(30, 30));
+            toolBar.AddElement(saveLoader);
         }
 
         public override void PreOpen()
@@ -62,13 +57,10 @@ namespace TiberiumRim
             base.PreOpen();
         }
 
-
         public override void DoWindowContents(Rect inRect)
         {
-            //TRWidgets.DrawBoxHighlight(inRect);
-
-            //Rect canvasRect = new Rect(InitialSize.x / 2 - CanvasSize.x / 2, InitialSize.y / 2 - CanvasSize.y / 2, CanvasSize.x, CanvasSize.y);
             Rect toolBarRect = inRect.RightPartPixels(125).TopHalf();
+            Rect saveLoadRect = new Rect(inRect.xMax - 500, inRect.y, 500 - 130, 500);
 
             canvas.DrawElement();
             browser.DrawElement();
@@ -76,7 +68,7 @@ namespace TiberiumRim
 
             Rect timeLineRect = new Rect(inRect.BottomPart(0.15f));
             timeLine.DrawElement(timeLineRect);
-
+            saveLoader.DrawElement(saveLoadRect);
 
             UIDragNDropper.DrawCurDrag();
         }

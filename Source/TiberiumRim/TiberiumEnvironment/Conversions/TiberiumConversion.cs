@@ -16,14 +16,14 @@ namespace TiberiumRim
 
         public bool isTopLayer = false;
         public TerrainDef toTerrain;
-        public List<WeightedThing> toCrystal = new List<WeightedThing>();
+        public List<DefFloat<TiberiumCrystalDef>> toCrystal = new();
 
         public TerrainDef FromTerrain => terrainDefInt ??= DefDatabase<TerrainDef>.GetNamedSilentFail(fromTerrain);
         public TerrainFilterDef FromTerrainGroup => filterDefInt ??= DefDatabase<TerrainFilterDef>.GetNamedSilentFail(fromTerrain);
 
         public void GetOutcomes(out TiberiumCrystalDef crystalDef, out TerrainDef terrainDef, out bool isTopLayer)
         {
-            crystalDef = (TiberiumCrystalDef)toCrystal.RandomElementByWeight(t => t.weight).thing;
+            crystalDef = toCrystal.RandomElementByWeight(t => t.value).def;
             terrainDef = toTerrain;
             isTopLayer = this.isTopLayer;
         }
@@ -55,7 +55,7 @@ namespace TiberiumRim
             {
                 string[] parts = s.Split(':');
                 float val = parts.Length > 1 ? ParseHelper.ParseFloat(parts[1]) : 1f;
-                toCrystal.Add(new WeightedThing(parts[0], val));
+                toCrystal.Add(new DefFloat<TiberiumCrystalDef>(parts[0], val));
             }
         }
         

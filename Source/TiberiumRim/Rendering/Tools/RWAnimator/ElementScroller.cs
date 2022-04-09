@@ -90,7 +90,7 @@ namespace TiberiumRim
 
         protected override void DrawContents(Rect inRect)
         {
-            GUI.BeginGroup(inRect);
+            Widgets.BeginGroup(inRect);
             MousePos = Event.current.mousePosition;
 
             Rect rect2 = inRect.AtZero();
@@ -145,7 +145,7 @@ namespace TiberiumRim
             }
 
             Widgets.EndScrollView();
-            GUI.EndGroup();
+            Widgets.EndGroup();
 
             copyList.Clear();
         }

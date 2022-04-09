@@ -37,7 +37,7 @@ namespace TiberiumRim
             composition.CacheMap(target);
             composition.AddPart(delegate
             {
-                GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.IonCannonActivated);
+                GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.IonCannonActivated, null);
                 composition.target.Map.weatherManager.TransitionTo(WeatherDef.Named("Rain"));
             },0);
             composition.AddPart(delegate

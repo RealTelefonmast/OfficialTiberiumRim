@@ -828,6 +828,21 @@ namespace TiberiumRim
             return label;
         }
 
+        public static string Location(this Texture texture)
+        {
+            if (texture is not Texture2D tx2D)
+            {
+                TLog.Error($"Tried to find {texture} location as non Texture2D");
+                return null;
+            }
+            return LoadedModManager.RunningMods.Select(m => m.textures.contentList.First(t => t.Value == (Texture2D) texture)).First().Key;
+        }
+
+        public static string Location(this Shader shader)
+        {
+            return DefDatabase<ShaderTypeDef>.AllDefs.First(t => t.Shader == shader).shaderPath;
+        }
+
         public static Color GetColor(this Enum valueType)
         {
             Color color = Color.white;

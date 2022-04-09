@@ -148,7 +148,7 @@ namespace TiberiumRim
         private void DrawBillReadout(Rect rect)
         {
             Widgets.DrawMenuSection(rect);
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
 
             Rect outRect = new Rect(0, 0, rect.width, rect.height);
             Rect viewRect = new Rect(0, 0, rect.width, CrafterComp.billStack.Bills.Sum(a => a.DrawHeight));
@@ -162,7 +162,7 @@ namespace TiberiumRim
             }
 
             Widgets.EndScrollView();
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
 
@@ -199,7 +199,7 @@ namespace TiberiumRim
             Widgets.Label(drawRect, preset.LabelCap);
 
             //Draw Result
-            GUI.BeginGroup(leftRect);
+            Widgets.BeginGroup(leftRect);
             //List
             float curY = 0;
             foreach (var result in preset.Results)
@@ -209,7 +209,7 @@ namespace TiberiumRim
                 row.Label($"×{result.Count}");
                 curY += 24 + 5;
             }
-            GUI.EndGroup();
+            Widgets.EndGroup();
             
             //Draw Cost
             var costLabelRect = new Rect(drawRect.x, contentRect.yMax + 5, contentRect.width, sizes[2]);
@@ -230,7 +230,7 @@ namespace TiberiumRim
 
             //TOP PART
             topPart = topPart.ContractedBy(5f);
-            GUI.BeginGroup(topPart);
+            Widgets.BeginGroup(topPart);
 
             string label1 = "Desired Resource";
             string label2 = $"Elemental Ratio";
@@ -254,7 +254,7 @@ namespace TiberiumRim
             }
 
             Widgets.EndScrollView();
-            GUI.EndGroup();
+            Widgets.EndGroup();
 
             //BOTTOM PART
             BillCreationInfo(bottomPart);
@@ -266,7 +266,7 @@ namespace TiberiumRim
         {
             Widgets.DrawMenuSection(rect);
             rect = rect.ContractedBy(5f);
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             string nameLabel = "TR_BillName".Translate();
             string workLabel = "Work To Do: " + BillStack.TotalWorkAmount;
             string tiberiumCostLabel = $"Cost: {CostLabel(TryGetCachedCost())}";
@@ -293,7 +293,7 @@ namespace TiberiumRim
                 BillStack.TryCreateNewBill();
             }
 
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         private void ResourceRow(Rect rect, AtomicRecipeDef recipe, int index)

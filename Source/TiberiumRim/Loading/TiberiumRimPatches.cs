@@ -74,7 +74,7 @@ namespace TiberiumRim
         public static class WindowContentsPatch
         {
             static readonly MethodInfo changeMethod = AccessTools.Method(typeof(WindowContentsPatch), nameof(ChangeTiberiumCoverage));
-            static readonly MethodInfo callOperand = AccessTools.Method(typeof(GUI), nameof(GUI.EndGroup));
+            static readonly MethodInfo callOperand = AccessTools.Method(typeof(GUI), nameof(Widgets.EndGroup));
 
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
@@ -235,7 +235,7 @@ namespace TiberiumRim
                 var forbid = blueprint?.TryGetComp<CompForbiddable>();
                 if (blueprint == null || forbid == null) return;
                 if (blueprint.Faction.IsPlayer && forbid.Forbidden)
-                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.OnHold);
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.OnHold, blueprint);
             }
         }
 
@@ -824,15 +824,22 @@ namespace TiberiumRim
         [HarmonyPatch("Kill")]
         static class KillThingPatch
         {
+            private static IntVec3 lastPos;
+
+            public static bool Prefix(Thing __instance, DamageInfo? dinfo)
+            {
+                lastPos = __instance.Position;
+                return true;
+            }
+
             public static void Postfix(Thing __instance, DamageInfo? dinfo)
             {
-                if (!__instance.Spawned) return;
                 if (__instance.Faction == null) return;
                 if (!__instance.Faction.IsPlayer) return;
                 if (__instance is Building)
-                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.BuildingLost);
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.BuildingLost, lastPos);
                 if (__instance is Pawn)
-                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.UnitLost);
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.UnitLost, lastPos);
 
             }
         }
@@ -849,9 +856,9 @@ namespace TiberiumRim
                 if (!__instance.Faction.IsPlayer) return;
 
                 if (__instance is Building)
-                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.BaseUnderAttack);
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.BaseUnderAttack, __instance);
                 if (__instance is Pawn)
-                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.UnitUnderAttack);
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.UnitUnderAttack,  __instance);
             }
         }
 
@@ -865,7 +872,7 @@ namespace TiberiumRim
             {
                 if (__instance is Designator_Cancel)
                 {
-                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.Cancelled);
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.Cancelled, null);
                 }
             }
         }
@@ -878,7 +885,7 @@ namespace TiberiumRim
             {
                 if (__instance is Designator_Build)
                 {
-                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.CantDeploy);
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.CantDeploy, null);
                 }
             }
         }
@@ -1051,31 +1058,6 @@ namespace TiberiumRim
                     map.glowGrid.RegisterGlower(__instance);
                 }
                 return false;
-            }
-        }
-
-        [HarmonyPatch(typeof(PlaySettings))]
-        [HarmonyPatch("DoPlaySettingsGlobalControls")]
-        public static class PlaySettingsPatch
-        {
-            public static bool OpenThing = false;
-            public static void Postfix(WidgetRow row, bool worldView)
-            {
-                if (worldView)
-                {
-                    /*
-                    if (row.ButtonIcon(TiberiumContent.Icon_EVA))
-                    {
-                       var def = DefDatabase<DevToolDef>.GetNamed("ModuleVisualizerDef");
-                       Find.WindowStack.Add(def.GetWindow);
-                    }
-                    */
-                }
-                if (!worldView)
-                {
-                    row.ToggleableIcon(ref TRUtils.GameSettings().EVASystem, TiberiumContent.Icon_EVA, "Enable or disable the EVA", SoundDefOf.Mouseover_ButtonToggle);
-                    row.ToggleableIcon(ref TRUtils.GameSettings().RadiationOverlay, TiberiumContent.Hediff_Radiation, "Toggle the Tiberium Radiation overlay.", SoundDefOf.Mouseover_ButtonToggle);
-                }
             }
         }
 

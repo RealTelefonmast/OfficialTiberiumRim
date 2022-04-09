@@ -15,14 +15,14 @@ namespace TiberiumRim
         //public override UIElementMode UIMode => UIElementMode.Static;
 
         //private List<ThingDef> searchList;
-        private List<Texture2D> textureList;
+        private List<WrappedTexture> textureList;
         private Vector2 scrollPos = Vector2.zero;
 
         public override string Label => "Object Browser";
 
         private Rect MainRect => Rect.BottomPartPixels(Rect.height - TopRect.height);
         private Rect SearchWidgetRect => MainRect.TopPartPixels(QuickSearchWidget.WidgetHeight);
-        private Rect SearchAreaRect => MainRect.BottomPartPixels(MainRect.height - QuickSearchWidget.WidgetHeight);
+        private Rect SearchAreaRect => MainRect.BottomPartPixels(MainRect.height - QuickSearchWidget.WidgetHeight).ContractedBy(1);
         private Rect ScrollRect => SearchAreaRect.BottomPart(.95f);
         private Rect ScrollRectInner => new Rect(ScrollRect.x, ScrollRect.y, ScrollRect.width, textureList.Count * 30);
         private Rect InfoRect => SearchAreaRect.TopPart(0.05f);
@@ -47,24 +47,31 @@ namespace TiberiumRim
 
             Widgets.BeginScrollView(ScrollRect, ref scrollPos, ScrollRectInner, false);
 
-            startIndex = (int)(scrollPos.y / 30f);
-            indexRange = Math.Min((int)(ScrollRect.height / 30f) + 1, textureList.Count);
+            var optionSize = 40;
+
+            startIndex = (int)(scrollPos.y / optionSize);
+            indexRange = Math.Min((int)(ScrollRect.height / optionSize) + 1, textureList.Count);
             endIndex = startIndex + indexRange;
             if (startIndex >= 0 && endIndex <= textureList.Count)
             {
                 for (int i = startIndex; i < endIndex; i++)
                 {
-                    curY = ScrollRect.y + i * 30;
-                    Texture2D tex = textureList[i];
+                    curY = ScrollRect.y + i * optionSize;
+                    Texture2D tex = (Texture2D)textureList[i].texture;
                     WidgetRow row = new WidgetRow(Rect.x, curY, gap: 4f);
                     row.Label($"[{i}]");
                     row.Icon(tex);
                     row.Label($"{tex.name}");
 
-                    var optionRect = new Rect(Rect.x, curY, Rect.width, 30);
+                    Rect pathLabelRect = new Rect(Rect.x, curY + WidgetRow.IconSize, Rect.width, optionSize);
+                    GUI.color = TRColor.White075;
+                    TRWidgets.DoTinyLabel(pathLabelRect, textureList[i].path);
+                    GUI.color = Color.white;
+                    
+                    var optionRect = new Rect(Rect.x, curY, Rect.width, optionSize);
                     if (Mouse.IsOver(optionRect))
                     {
-                        DragAndDropData = tex;
+                        DragAndDropData = textureList[i];
                         Widgets.DrawHighlight(optionRect);
                     }
                 }
@@ -82,7 +89,7 @@ namespace TiberiumRim
         {
             //
             textureList = TiberiumRimMod.mod.Content.textures.contentList.Where(t => searchWidget.filter.Matches($"{t.Key} {t.Value.name}"))
-                .Select(t => t.Value).ToList();
+                .Select(t => new WrappedTexture(t.Key, t.Value)).ToList();
             //searchList = DefDatabase<ThingDef>.AllDefs.Where(t => searchWidget.filter.Matches(t)).ToList();
         }
     }

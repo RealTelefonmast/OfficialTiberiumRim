@@ -92,7 +92,7 @@ namespace TiberiumRim
 
         public void DrawInRect(Rect rect)
         {
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             rect = rect.AtZero();
 
             Widgets.DrawTextureFitted(rect, cameraViewTexture, 1);
@@ -100,7 +100,7 @@ namespace TiberiumRim
             if(Mouse.IsOver(rect))
                 cameraDriver.DriverOnGUI();
 
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
     }
 }

@@ -19,17 +19,11 @@ namespace TiberiumRim
 
     public class TextureElement : UIElement, IKeyFramedElement, IReorderableElement
     {
-        //
-        private Material materialInt;
-
-        //
-        private KeyFrameData localData;
-        public readonly Rect? texCoords;
-        public Vector2 pivotPoint = Vector2.zero;
+        protected TextureData texture;
 
         //Local texture manipulation
-        protected Vector2? oldPivot;
-        protected KeyFrameData? oldKF;
+        private Vector2? oldPivot;
+        private KeyFrameData? oldKF;
 
         //UIElement
         public UIElement Element => this;
@@ -40,33 +34,41 @@ namespace TiberiumRim
         public ManipulationMode ManiMode { get; private set; } = ManipulationMode.Move;
 
         //Texture Data
-        public KeyFrameData KeyFrameData => localData;
-        private KeyFrameData RenderData => ParentCanvas.TimeLine.GetDataFor(this) ?? localData;
+        public KeyFrameData KeyFrameData => LocalData;
+        private KeyFrameData RenderData => ParentCanvas.TimeLine.GetDataFor(this) ?? LocalData;
 
-        private Vector2 RenderPivot => TruePos + (pivotPoint * ParentCanvas.CanvasZoomScale);
+        private Vector2 RenderPivot => TruePos + (PivotPoint * ParentCanvas.CanvasZoomScale);
+
+        private Rect? TexCoords => texture.TexCoords;
+
+        public KeyFrameData LocalData
+        {
+            get => texture.LocalData;
+            set => texture.LocalData = value;
+        }
 
         public Vector2 PivotPoint
         {
-            get => pivotPoint;
-            set => pivotPoint = value;
+            get => texture.PivotPoint;
+            set => texture.PivotPoint = value;
         }
 
         public Vector2 TPosition
         {
             get => RenderData.position;
-            set => localData.position = value;
+            set => texture.TPosition = value;
         }
 
         public float TRotation
         {
             get => RenderData.rotation;
-            set => localData.rotation = value;
+            set => texture.TRotation = value;
         }
 
         public Vector2 TSize
         {
-            get => RenderData.size;
-            set => localData.size = value;
+            get => RenderData.size * texture.TSizeFactor;
+            set => texture.TSize = value;
         }
 
         private bool IsSelected => ParentCanvas.ActiveTexture == this;
@@ -82,20 +84,14 @@ namespace TiberiumRim
         public Rect TextureRect => new Rect(RectPosition, ZoomedSize);
         public override Rect FocusRect => TextureRect.ExpandedBy(15);
 
-        public Material Material => materialInt;
+        public Material Material => texture.Material;
         public Texture Texture => Material.mainTexture;
-        public Vector2 TextureSize => new Vector2(materialInt.mainTexture.width, materialInt.mainTexture.height);
 
-        public TextureElement(Rect rect, Texture texture) : base(rect)
+        public TextureElement(Rect rect, WrappedTexture texture) : base(rect)
         {
             bgColor = Color.clear;
-            materialInt = new Material(ShaderDatabase.CutoutComplex);
-            materialInt.mainTexture = texture;
-            materialInt.color = Color.white;
-
-            TPosition = Vector3.zero;
-            TRotation = 0;
-            TSize = TextureSize / 2f;
+            this.texture = new TextureData(texture);
+            this.texture.SetTRS(Vector2.zero, 0, Vector2.one);
 
             hasTopBar = false;
         }
@@ -103,12 +99,9 @@ namespace TiberiumRim
         public TextureElement(Rect rect, Material mat, Rect texCoords) : base(rect)
         {
             bgColor = Color.clear;
-            materialInt = mat;
-            this.texCoords ??= texCoords;
-
-            TPosition = Vector3.zero;
-            TRotation = 0;
-            TSize = TextureSize / 2f;
+            texture = new TextureData(mat);
+            texture.SetTRS(Vector2.zero, 0, Vector2.one);
+            texture.SetTexCoords(texCoords);
 
             hasTopBar = false;
         }
@@ -140,10 +133,10 @@ namespace TiberiumRim
 
         public void Reset()
         {
-            TSize = TextureSize / 2f;
+            TSize = Vector2.one;
             TRotation = 0;
             PivotPoint = Vector2.zero;
-            ParentCanvas.TimeLine.UpdateKeyframeFor(this, localData);
+            ParentCanvas.TimeLine.UpdateKeyframeFor(this, LocalData);
         }
 
         private Vector2? CanvasPosToOffset(Vector2? canvasPos)
@@ -208,11 +201,11 @@ namespace TiberiumRim
                 {
                     lockedInMode ??= ManiMode;
                     oldKF ??= RenderData;
-                    oldPivot ??= pivotPoint;
+                    oldPivot ??= PivotPoint;
 
                     if (ManiModeFlag) //Update Local
                     {
-                        localData = oldKF.Value;
+                        LocalData = oldKF.Value;
                         UIEventHandler.StartFocus(this);
                     }
                 }
@@ -244,7 +237,7 @@ namespace TiberiumRim
                         break;
                 }
                 if (ManiModeFlag) //Update KeyFrame
-                    ParentCanvas.TimeLine.UpdateKeyframeFor(this, localData);
+                    ParentCanvas.TimeLine.UpdateKeyframeFor(this, LocalData);
             }
 
             if (ev.type == EventType.MouseUp)
@@ -262,7 +255,7 @@ namespace TiberiumRim
             yield return new FloatMenuOption("Center", delegate
             {
                 TPosition = Vector2.zero;
-                ParentCanvas.TimeLine.UpdateKeyframeFor(this, localData);
+                ParentCanvas.TimeLine.UpdateKeyframeFor(this, LocalData);
             });
         }
 
@@ -285,7 +278,7 @@ namespace TiberiumRim
 
         protected override void DrawContents(Rect inRect)
         {
-            TRWidgets.DrawTextureFromMat(TextureRect, RenderPivot, TRotation, materialInt, texCoords ?? default);
+            TRWidgets.DrawTextureFromMat(TextureRect, RenderPivot, TRotation, Material, TexCoords ?? default);
             //GUI.DrawTextureWithTexCoords(TextureRect, texture, texCoords);
 
             if (TRotation != 0 && IsSelected)
@@ -314,6 +307,11 @@ namespace TiberiumRim
         private string RectSimple(Rect rect)
         {
             return $"({rect.x},{rect.y});({rect.width},{rect.height})";
+        }
+
+        public TextureData GetData()
+        {
+            return texture;
         }
     }
 }

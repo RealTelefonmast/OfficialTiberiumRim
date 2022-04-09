@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	
-	<TiberiumRim.EVASettings>
+	<TiberiumRim.EVASettingsDef>
 		<defName>EVASettings</defName>  
 		<times>
 			<li>
@@ -30,19 +30,19 @@
 			</li>
 			<li>
 				<signal>BaseUnderAttack</signal>
-				<ticks>2000</ticks>
+				<ticks>1500</ticks>
 			</li>
 			<li>
 				<signal>BuildingLost</signal>
-				<ticks>2000</ticks>
+				<ticks>750</ticks>
 			</li>
 			<li>
 				<signal>UnitUnderAttack</signal>
-				<ticks>2000</ticks>
+				<ticks>1500</ticks>
 			</li>
 			<li>
 				<signal>UnitLost</signal>
-				<ticks>2000</ticks>
+				<ticks>750</ticks>
 			</li>
 			<li>
 				<signal>CantDeploy</signal>
@@ -149,6 +149,6 @@
 				<ticks>10</ticks>
 			</li>
 		</times>
-	</TiberiumRim.EVASettings>
+	</TiberiumRim.EVASettingsDef>
 	
 </Defs>

@@ -211,7 +211,7 @@ namespace TiberiumRim
 
         public static void DrawGridOnCenter(Rect rect, float gridSize, Vector2 center)
         {
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             rect = rect.AtZero();
 
             float xSize, ySize = xSize = 0;
@@ -241,12 +241,12 @@ namespace TiberiumRim
                 Widgets.DrawLine(startY, endY, Color.red, 1);
             }
 
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         public static void DrawGrid(Rect inRect, float value, float scale = 1, Vector2 origin = default, bool asCellAmount = false)
         {
-            GUI.BeginGroup(inRect);
+            Widgets.BeginGroup(inRect);
             float xSize, ySize = xSize = 0;
             float xCount, yCount = xCount = 0;
 
@@ -280,7 +280,7 @@ namespace TiberiumRim
                     Widgets.DrawLine(yPos, yPosEnd, TRColor.White005, 1);
                 }
             }
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
 
         public static void DrawTextureInCorner(Rect rect, Texture2D texture, float textureWidth, TextAnchor anchor, Vector2 offset = default)
@@ -434,7 +434,7 @@ namespace TiberiumRim
         {
             float height = 5;
 
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             Text.Font = font;
             Text.Anchor = TextAnchor.UpperLeft;
             foreach (var type in containerSet.AllTypes)
@@ -451,7 +451,7 @@ namespace TiberiumRim
             }
             Text.Font = default;
             Text.Anchor = default;
-            GUI.EndGroup();
+            Widgets.EndGroup();
 
             return height;
         }
@@ -523,7 +523,7 @@ namespace TiberiumRim
         public static void DrawTiberiumReadout(Rect rect, NetworkContainer container)
         {
             float height = 5;
-            GUI.BeginGroup(rect);
+            Widgets.BeginGroup(rect);
             Text.Font = GameFont.Tiny;
             Text.Anchor = TextAnchor.UpperLeft;
             foreach (var type in container.AllStoredTypes)
@@ -540,7 +540,7 @@ namespace TiberiumRim
             }
             Text.Font = default;
             Text.Anchor = default;
-            GUI.EndGroup();
+            Widgets.EndGroup();
         }
     }
 }

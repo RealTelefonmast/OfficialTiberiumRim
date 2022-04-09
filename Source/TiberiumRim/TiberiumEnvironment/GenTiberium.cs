@@ -220,7 +220,7 @@ namespace TiberiumRim
         {
             var crystals = producer.tiberiumFieldRules.crystalOptions;
             if (crystals.NullOrEmpty()) return TiberiumDefOf.BlossomTree;
-            var crystalType = ((TiberiumCrystalDef) crystals.RandomElement().thing).TiberiumValueType;
+            var crystalType = (crystals.RandomElement().def).TiberiumValueType;
             if (crystalType == TiberiumValueType.Green)
                 return TiberiumDefOf.BlossomTree;
             if (crystalType == TiberiumValueType.Blue)

@@ -54,7 +54,7 @@ namespace TiberiumRim
                 {
                     //Player's pawns should cause a notification
                     if (Pawn.Faction?.IsPlayer ?? false)
-                        GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.TiberiumExposure);
+                        GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.TiberiumExposure, Pawn);
 
                     if (HediffUtils.TryIrradiatePawn(Pawn, Grid.RadiationAt(Pawn.Position), 250, out float rads))
                     {
