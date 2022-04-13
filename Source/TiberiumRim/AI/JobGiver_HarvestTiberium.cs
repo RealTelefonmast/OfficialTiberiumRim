@@ -16,7 +16,11 @@ namespace TiberiumRim
             if (harvester.IsHarvesting) return null;
 
             TiberiumCrystal crystal = pawn.Map.Tiberium().HarvesterInfo.FindClosestTiberiumFor(harvester);
-            if (crystal == null) return null;
+            if (crystal == null)
+            {
+                harvester.Notify_CouldNotFindTib();
+                return null;
+            }
 
             Job job = JobMaker.MakeJob(TiberiumDefOf.HarvestTiberium, crystal);
            

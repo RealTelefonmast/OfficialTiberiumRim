@@ -99,7 +99,8 @@ namespace TiberiumRim
         }
 
         //User Control
-        private bool ShouldReturnToIdle => ForceReturn || RefineryComp.RecallHarvesters;
+        private bool TimeOut => idleTicksLeft > 0;
+        private bool ShouldReturnToIdle => ForceReturn || RefineryComp.RecallHarvesters || TimeOut;
         public bool PlayerInterrupt => ShouldReturnToIdle || Drafted;
 
         //Data Bools
@@ -144,7 +145,12 @@ namespace TiberiumRim
             get
             {
                 if (Drafted) return HarvesterPriority.Drafted;
-                if (ShouldReturnToIdle) return HarvesterPriority.Idle;
+                if (ShouldReturnToIdle)
+                {
+                    if (CanUnload)
+                        return HarvesterPriority.Unload;
+                    return HarvesterPriority.Idle;
+                }
                 if (ShouldHarvest && CanHarvest)
                 {
                     return HarvesterPriority.Harvest;
@@ -237,6 +243,15 @@ namespace TiberiumRim
             base.PreApplyDamage(ref dinfo, out absorbed);
             //TODO: EVA Warning
             //GameComponent_EVA.EVAComp().ReceiveSignal();
+        }
+
+        public override void Tick()
+        {
+            base.Tick();
+            if (idleTicksLeft > 0)
+            {
+                idleTicksLeft--;
+            }
         }
 
         public bool CanHarvestTiberium(TiberiumCrystalDef crystal)
@@ -445,6 +460,21 @@ namespace TiberiumRim
                 //sb.AppendLine("Valid: " + TNWManager.ReservationManager.TargetValidFor(this) + " CanBeHarvested: " + CurrentHarvestTarget?.CanBeHarvestedBy(this) + " Spawned: " + CurrentHarvestTarget?.Spawned + " Destroyed: " + CurrentHarvestTarget?.Destroyed);
             }
             return sb.ToString().TrimEndNewlines();
+        }
+
+        private int failedTibSearches;
+        private int idleTicksLeft;
+
+        public void Notify_CouldNotFindTib()
+        {
+            failedTibSearches++;
+            if (failedTibSearches > 10)
+            {
+                //Start idle hour
+                idleTicksLeft = GenDate.TicksPerHour * 2;
+
+                failedTibSearches = 0;
+            }
         }
     }
 }

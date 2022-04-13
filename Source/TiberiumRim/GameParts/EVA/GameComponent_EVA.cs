@@ -47,7 +47,6 @@ namespace TiberiumRim
         {
         }
 
-
         public static GameComponent_EVA EVAComp()
         {
             return Current.Game.GetComponent<GameComponent_EVA>();

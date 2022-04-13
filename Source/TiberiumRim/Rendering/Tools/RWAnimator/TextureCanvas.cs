@@ -14,10 +14,12 @@ namespace TiberiumRim
         //Internal Data
         public TextureElement ActiveTexture => layerView.ActiveElement;
         public TimeLineControl TimeLine { get; set; }
-
+        
         public override string Label => "Canvas";
 
         public override UIContainerMode ContainerMode => UIContainerMode.Reverse;
+
+        private Rect DataReadoutRect => new Rect(InRect.xMax - 250, InRect.y + 1, 250, 250);
 
         //Render Data
         private Vector2? oldDragPos;
@@ -27,12 +29,14 @@ namespace TiberiumRim
         public Vector2 Origin => InRect.AtZero().center + DragPos;
         public Vector2 TrueOrigin => InRect.center + DragPos;
         public Vector2 DragPos { get; private set; } = Vector2.zero;
+        private Vector2 LimitSize => (Size * 1f) * CanvasZoomScale;
+
         public float CanvasZoomScale => zoomScale;
 
         //Event stuff
         public Vector2 MousePos => (Event.current.mousePosition - TrueOrigin) / CanvasZoomScale;
 
-        public TextureCanvas(Rect rect) : base(rect)
+        public TextureCanvas(UIElementMode mode) : base(mode)
         {
             layerView = new TextureLayerView(this);
             UIDragNDropper.RegisterAcceptor(this);
@@ -57,17 +61,22 @@ namespace TiberiumRim
 
         protected override void HandleEvent_Custom(Event ev, bool inContext = false)
         {
-            base.HandleEvent_Custom(ev, inContext);
             if (Mouse.IsOver(InRect))
             {
-                if (IsFocused /*&& (layerView.ActiveElement == null || layerView.ActiveElement.ManiMode == ManipulationMode.None)*/)
+                if (layerView.DrawDataReadout && Mouse.IsOver(DataReadoutRect))
+                {
+                    if(ev.type == EventType.MouseDown)
+                        UIEventHandler.StartFocus(this, DataReadoutRect);
+                    return;
+                }
+                if (IsFocused && ev.button == 0)
                 {
                     if (ev.type == EventType.MouseDown)
                     {
                         oldDragPos = DragPos;
                     }
 
-                    if (ev.type == EventType.MouseDrag)
+                    if (ev.type == EventType.MouseDrag && oldDragPos.HasValue)
                     {
                         var dragDiff = (CurrentDragDiff);
                         var oldDrag = oldDragPos.Value;
@@ -103,7 +112,10 @@ namespace TiberiumRim
         {
             DrawGrid(inRect);
             base.DrawContents(inRect);
-            TRWidgets.DoTinyLabel(inRect, $"Focused: {UIEventHandler.FocusedElement}\n{Event.current.mousePosition}\n{MousePos}");
+            var element = UIEventHandler.FocusedElement as UIElement;
+            var texElement = element as TextureElement;
+            TRWidgets.DoTinyLabel(inRect, $"Focused: {element}[{(element)?.RenderLayer}]\n{Event.current.mousePosition}\n{MousePos}\n{(element)?.CurrentDragDiff}" +
+                                          $"\n{((element?.StartDragPos - (texElement?.TextureRect.center)) ?? Vector2.zero).normalized}");
 
             CanvasCursor.Notify_TriggeredMode(ActiveTexture?.LockedInMode);
 
@@ -111,6 +123,11 @@ namespace TiberiumRim
             Widgets.BeginGroup(inRect);
             ActiveTexture?.DrawSelOverlay();
             Widgets.EndGroup();
+
+            if (layerView.DrawDataReadout)
+            {
+                DrawReadout(DataReadoutRect, ActiveTexture);
+            }
         }
 
         private void DrawGrid(Rect inRect)
@@ -118,39 +135,95 @@ namespace TiberiumRim
             Widgets.BeginGroup(inRect);
             DrawCanvasGuidelines();
             Widgets.EndGroup();
-            /*
-            var size = inRect.size * CanvasZoomScale;
-            Widgets.BeginGroup(inRect);
-            TRWidgets.DrawGridOnCenter(new Rect(TrueOrigin.x - size.x / 2, TrueOrigin.y - size.y / 2, size.x, size.y), 100 * CanvasZoomScale, TrueOrigin);
-            Widgets.EndGroup();
-            */
-            //TRWidgets.DrawGrid(inRect, 100f, CanvasScale, LastZoomPos);
 
             //LayerView
             Rect viewRect = new Rect((Position.x + Size.x) - 1, Position.y, 150, Size.y);
             layerView.DrawElement(viewRect);
         }
 
-        private Vector2 LimitSize => (Size*1f) * CanvasZoomScale;
+        private void DrawReadout(Rect rect, TextureElement tex)
+        {
+            //Transform
+            Widgets.DrawMenuSection(rect);
+            var ev = Event.current;
+            //var mousePos = ev.mousePosition;
+            Listing_Standard listing = new Listing_Standard();
+            listing.Begin(rect.ContractedBy(4));
+            listing.Label("Transform");
+            listing.GapLine();
+            listing.Label("Size:");
+            var xSize = tex.TSize.x;
+            var ySize = tex.TSize.y;
+            var xPos = tex.TPosition.x;
+            var yPos = tex.TPosition.y;
+            var rot = tex.TRotation;
+
+            bool flag = ev.type == EventType.KeyDown;
+
+            listing.DoBGForNext(TRColor.White025);
+            listing.TextFieldNumericLabeled("X", ref xSize, ref tex.ValueBuffer[0], float.MinValue,
+                anchor: TextAnchor.MiddleLeft);
+            listing.DoBGForNext(TRColor.White025);
+            listing.TextFieldNumericLabeled("Y", ref ySize, ref tex.ValueBuffer[1], float.MinValue,
+                anchor: TextAnchor.MiddleLeft);
+
+            listing.Label("Position:");
+            listing.DoBGForNext(TRColor.White025);
+            listing.TextFieldNumericLabeled("X", ref xPos, ref tex.ValueBuffer[2], float.MinValue,
+                anchor: TextAnchor.MiddleLeft);
+            listing.DoBGForNext(TRColor.White025);
+            listing.TextFieldNumericLabeled("Y", ref yPos, ref tex.ValueBuffer[3], float.MinValue,
+                anchor: TextAnchor.MiddleLeft);
+
+            listing.Label("Rotation:");
+            listing.DoBGForNext(TRColor.White025);
+            listing.TextFieldNumericLabeled("Rot", ref rot, ref tex.ValueBuffer[4], -360, 360, TextAnchor.MiddleLeft);
+
+            if (flag)
+            {
+                var newSize = new Vector2(xSize, ySize);
+                var newPos = new Vector2(xPos, yPos);
+                if (newSize != tex.TSize)
+                    tex.TSize = newSize;
+                if (newPos != tex.TPosition)
+                    tex.TPosition = newPos;
+                if (rot != tex.TRotation)
+                    tex.TRotation = rot;
+            }
+
+            if (OriginalEventUtility.EventType == EventType.MouseDown && !rect.Contains(UIEventHandler.MouseOnScreen))
+                GUI.FocusControl(null);
+
+            listing.End();
+        }
 
         private void DrawCanvasGuidelines()
         {
             //Limit rect
             //TRWidgets.DrawBox(Origin.RectOnPos(LimitSize), TRMats.White075, 2);
-            TRWidgets.DrawColoredBox(Origin.RectOnPos(LimitSize), TRMats.BGDarker, TRColor.White05, 1);
+            var canvasRect = Origin.RectOnPos(LimitSize).Rounded();
+            TRWidgets.DrawColoredBox(canvasRect, TRMats.BGDarker, TRColor.White05, 1);
+
+            var xParts = canvasRect.width / 8;
+            var yParts = canvasRect.height / 8;
             GUI.color = TRColor.White025;
+            var curX = canvasRect.x;
+            var curY = canvasRect.y;
+            for (int x = 0; x < 8; x++)
+            {
+                Widgets.DrawLineVertical(curX, canvasRect.y, canvasRect.height);
+                curX += xParts;
+            }
+            for (int y = 0; y < 8; y++)
+            {
+                Widgets.DrawLineHorizontal(canvasRect.x, curY, canvasRect.width);
+                curY += yParts;
+            }
+
+            GUI.color = TRColor.White05;
             Widgets.DrawLineHorizontal(Origin.x-LimitSize.x/2, Origin.y, LimitSize.x);
             Widgets.DrawLineVertical(Origin.x, Origin.y - LimitSize.y / 2, LimitSize.y);
             GUI.color = Color.white;
-        }
-
-        private void DrawSelectedProperties(Rect rect)
-        {
-            Widgets.DrawMenuSection(rect);
-
-            Widgets.Label(rect, $"Properties");
-
-            //Widgets.TextFieldNumericLabeled();
         }
 
         //Dragging
@@ -182,23 +255,18 @@ namespace TiberiumRim
             if (draggedObject is WrappedTexture texture)
             {
                 element = new TextureElement(new Rect(Vector2.zero, Size), texture);
-                element.SetData(parent: this);
-                element.SetTRSP_FromScreenSpace(pos);
+                AddElement(element);
+                element.SetTRSP_FromScreenSpace();
             }
 
             if (draggedObject is SpriteTile tile)
             {
                 element = new TextureElement(new Rect(Vector2.zero, Size), tile.spriteMat, tile.normalRect);
-                element.SetData(parent: this);
-                element.SetTRSP_FromScreenSpace(pos, size:tile.rect.size / 2f, pivot:tile.pivot);
+                AddElement(element);
+                element.SetTRSP_FromScreenSpace(size:tile.rect.size / 2f, pivot:tile.pivot);
             }
 
-            if (element != null)
-            {
-                AddElement(element);
-                return true;
-            }
-            return false;
+            return element != null;
         }
 
         public bool Accepts(object draggedObject)

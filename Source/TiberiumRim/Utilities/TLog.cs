@@ -42,9 +42,9 @@ namespace TiberiumRim
             Log.PostMessage();
         }
 
-        public static void Debug(string msg)
+        public static void Debug(string msg, bool flag = true)
         {
-            if (TiberiumRimMod.isDebug)
+            if (TiberiumRimMod.isDebug && flag)
             {
                 Log.Message($"{"[TR-Debug]".Colorize(TRColor.Green)} {msg}");
             }

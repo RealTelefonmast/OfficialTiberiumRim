@@ -23,30 +23,12 @@ namespace TiberiumRim
         static TiberiumRimPatches()
         {
             TLog.Message("Startup Init");
-            TiberiumRimMod.Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI"),
-                new HarmonyMethod(typeof(TiberiumRimPatches), "BackgroundOnGUIPatch"));
-
-            //Manual Harmony Patches
-            /*
-            TiberiumRimMod.Tiberium.Patch(
-            typeof(SymbolResolver_RandomMechanoidGroup).GetMethods(BindingFlags.NonPublic | BindingFlags.Static)
-            .First(mi => mi.HasAttribute<CompilerGeneratedAttribute>() && mi.ReturnType == typeof(bool) &&
-                     mi.GetParameters().Count() == 1 &&
-                     mi.GetParameters()[0].ParameterType == typeof(PawnKindDef)),
-            null, new HarmonyMethod(typeof(TiberiumRimPatches),
-            nameof(TiberiumRimPatches.MechanoidsFixerAncient)));
-            */
+            
+            TiberiumRimMod.Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod(nameof(UI_BackgroundMain.BackgroundOnGUI)), new HarmonyMethod(typeof(TRUIPatches), nameof(TRUIPatches.BackgroundOnGUIPatch)));
 
             //Manual C# XML-Def Patches
             TiberiumRimMod.mod.PatchPawnDefs();
 
-            /*
-            Log.Message("TibAssets:");
-            foreach (var asset in TRContentDatabase.TiberiumBundle.GetAllAssetNames())
-            {
-                Log.Message($" - {asset}");
-            }
-            */
 
             //MP Hook
             TLog.Debug($"Multiplayer: {(MP.enabled ? "Enabled - Adding MP hooks..." : "Disabled")}");
@@ -55,55 +37,6 @@ namespace TiberiumRim
                 MP.RegisterAll();
             }
         }
-
-        /*
-        [HarmonyPatch(typeof(ParseHelper)), HarmonyPatch("FromString")]
-        [HarmonyPatch(new Type[] { typeof(string), typeof(Type) })]
-        public static class ParseHelper_FromStringPatch
-        {
-            public static bool Prefix(string str, Type itemType)
-            {
-                if()
-                return true;
-            }
-        }
-        */
-
-        
-        [HarmonyPatch(typeof(Page_CreateWorldParams)), HarmonyPatch("DoWindowContents")]
-        public static class WindowContentsPatch
-        {
-            static readonly MethodInfo changeMethod = AccessTools.Method(typeof(WindowContentsPatch), nameof(ChangeTiberiumCoverage));
-            static readonly MethodInfo callOperand = AccessTools.Method(typeof(GUI), nameof(Widgets.EndGroup));
-
-            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-            {
-                foreach (var code in instructions)
-                {
-                    if (code.opcode == OpCodes.Call && code.Calls(callOperand))
-                    {
-                        yield return new CodeInstruction(OpCodes.Ldloc_S, 6);
-                        yield return new CodeInstruction(OpCodes.Ldloc_S, 7);
-
-                        yield return new CodeInstruction(OpCodes.Call, changeMethod);
-                    }
-                    yield return code;
-                }
-            }
-
-            public static void ChangeTiberiumCoverage(float curY, float width)
-            {
-                curY += 40;
-                float fullWidth = 200 + width;
-                var imageRect = new Rect(0, curY - 8f, fullWidth, 40);
-                Widgets.DrawShadowAround(imageRect);
-                GenUI.DrawTextureWithMaterial(imageRect, TiberiumContent.TibOptionBG_Cut, null, new Rect(0,0,1,1));
-                Widgets.Label(new Rect(0f, curY, 200f, 30f), "Tiberium Coverage");
-                Rect newRect = new Rect(200, curY, width, 30f);
-                TiberiumRimMod.mod.settings.tiberiumCoverage = Widgets.HorizontalSlider(newRect, (float)TiberiumRimMod.mod.settings.tiberiumCoverage, 0f, 1, true, "Medium","None", "Full", 0.05f);
-            }
-        }
-        
 
         [HarmonyPatch(typeof(GenConstruct)), HarmonyPatch("CanPlaceBlueprintOver")]
         public static class TestPatch
@@ -183,23 +116,19 @@ namespace TiberiumRim
             [HarmonyPostfix]
             static void Fix()
             {
-                TiberiumRimMod mod = TiberiumRimMod.mod; //LoadedModManager.ModHandles.FirstOrDefault(x => x is TiberiumRimMod) as TiberiumRimMod;
-                if (!mod.settings.FirstStartUp) return;
-                mod.settings.FirstStartUp = false;
+                if (!TiberiumSettings.Settings.FirstStartUp) return;
+                TiberiumSettings.Settings.FirstStartUp = false;
                 return; //TODO: Implement difficulty dialog
                 Find.WindowStack.Add(new Dialog_Difficulty(delegate
                     {
-                        mod.settings.SetEasy();
-                        mod.WriteSettings();
+                        TiberiumSettings.Settings.SetEasy();
                     }, delegate
                     {
-                        mod.settings.ResetToDefault();
-                        mod.WriteSettings();
+                        TiberiumSettings.Settings.ResetToDefault();
                     },
                     delegate
                     {
-                        mod.settings.SetHard();
-                        mod.WriteSettings();
+                        TiberiumSettings.Settings.SetHard();
                     }));
             }
         }
@@ -523,27 +452,6 @@ namespace TiberiumRim
         */
 
         //Render Patches
-        public static bool BackgroundOnGUIPatch()
-        {
-            if (!TRUtils.TiberiumSettings().CustomBackground) return true;
-            bool flag = !((float) UI.screenWidth > (float) UI.screenHeight * (2048f / 1280f));
-            Rect position;
-            if (flag)
-            {
-                float height = (float) UI.screenHeight;
-                float num = (float) UI.screenHeight * (2048f / 1280f);
-                position = new Rect((float) (UI.screenWidth / 2) - num / 2f, 0f, num, height);
-            }
-            else
-            {
-                float width = (float) UI.screenWidth;
-                float num2 = (float) UI.screenWidth * (1280f / 2048f);
-                position = new Rect(0f, (float) (UI.screenHeight / 2) - num2 / 2f, width, num2);
-            }
-
-            GUI.DrawTexture(position, TiberiumContent.BGPlanet, ScaleMode.ScaleToFit);
-            return false;
-        }
 
         //Draw Equipment Size Fix
         [HarmonyPatch(typeof(PawnRenderer)), HarmonyPatch("DrawEquipmentAiming")]

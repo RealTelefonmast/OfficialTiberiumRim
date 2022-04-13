@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using UnityEngine;
 using Verse;
 
@@ -16,9 +17,9 @@ namespace TiberiumRim
 
         private Vector2 scrollPos = Vector2.zero;
 
-        public override UIElementMode UIMode => UIElementMode.Static;
+        public override string Label => "Save & Load";
 
-        public AnimationSaveLoader(TextureCanvas canvas)
+        public AnimationSaveLoader(TextureCanvas canvas, Rect rect, UIElementMode mode) : base(rect, mode)
         {
             this.canvas = canvas;
         }
@@ -27,7 +28,18 @@ namespace TiberiumRim
         {
             animationData = new AnimationData();
             animationData.allParts = canvas.ElementList.Select(t => (t as TextureElement).GetData()).ToList();
+            var p = animationData.allParts;
+            //Orders the keyframe dictionary to correspond to the element layers, creating a list of keyframe lists, where the index of the first list corresponds to the index of the element
+            animationData.keyFramesOrdered = canvas.TimeLine.framedElements.Copy()
+                .OrderByDescending((x) => (p.Count-1) - p.IndexOf((x.Key as TextureElement).GetData()))
+                .Select(parentDict => new ScribeList<KeyFrame>(parentDict.Value.Select(keyFrameDict => keyFrameDict.Value).ToList(), LookMode.Deep))
+                .ToList();
+
             label = Scribe.saver.DebugOutputFor(animationData);
+            //var reader = new XmlTextReader(new StreamReader(new MemoryStream(Encoding.UTF8.GetBytes(label))));
+            //XmlDocument document = new XmlDocument();
+            //document.Load(reader);
+            
             WriteSettings();
         }
 
@@ -55,10 +67,10 @@ namespace TiberiumRim
                 ConstructSaveData();
             }
 
-            var bottomRect = inRect.BottomPartPixels(inRect.height - buttonRect.height).ContractedBy(5);
+            var bottomRect = inRect.BottomPartPixels(inRect.height - buttonRect.height).ContractedBy(4);
             Widgets.DrawMenuSection(bottomRect);
 
-            Widgets.TextAreaScrollable(bottomRect, label, ref scrollPos, true);
+            Widgets.TextAreaScrollable(bottomRect.ContractedBy(1), label, ref scrollPos, true);
         }
     }
 }

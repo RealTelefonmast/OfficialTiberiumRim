@@ -13,6 +13,22 @@ namespace TiberiumRim
 {
     public static class MiscPatches
     {
+        //Patching Pref Changes
+        [HarmonyPatch(typeof(Prefs))]
+        [HarmonyPatch(nameof(Prefs.BackgroundImageExpansion), MethodType.Setter)]
+        public static class Prefs_BackgroundImageExpansionSetterPatch
+        {
+            public static void Postfix(ExpansionDef value)
+            {
+                TLog.Debug($"Patching Pref Setter {value}");
+                if (value != null)
+                {
+                    TiberiumSettings.Settings.UseCustomBackground = false;
+                    TLog.Debug("Setting UseCustomBG to FALSE");
+                }
+            }
+        }
+
         //Patching the vanilla shader def to allow custom shaders
         [HarmonyPatch(typeof(ShaderTypeDef))]
         [HarmonyPatch("Shader", MethodType.Getter)]

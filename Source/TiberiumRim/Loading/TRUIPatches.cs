@@ -27,6 +27,139 @@ namespace TiberiumRim
             }
         }
 
+        //Tiberium World Coverage Option
+        [HarmonyPatch(typeof(Page_CreateWorldParams))]
+        [HarmonyPatch(nameof(Page_CreateWorldParams.DoWindowContents))]
+        public static class WindowContentsPatch
+        {
+            static readonly MethodInfo changeMethod = AccessTools.Method(typeof(WindowContentsPatch), nameof(ChangeTiberiumCoverage));
+            static readonly MethodInfo callOperand = AccessTools.Method(typeof(GUI), nameof(Widgets.EndGroup));
+
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                foreach (var code in instructions)
+                {
+                    if (code.opcode == OpCodes.Call && code.Calls(callOperand))
+                    {
+                        yield return new CodeInstruction(OpCodes.Ldloc_S, 6);
+                        yield return new CodeInstruction(OpCodes.Ldloc_S, 7);
+
+                        yield return new CodeInstruction(OpCodes.Call, changeMethod);
+                    }
+                    yield return code;
+                }
+            }
+
+            public static void ChangeTiberiumCoverage(float curY, float width)
+            {
+                curY += 40;
+                float fullWidth = 200 + width;
+                var imageRect = new Rect(0, curY - 8f, fullWidth, 40);
+                Widgets.DrawShadowAround(imageRect);
+                GenUI.DrawTextureWithMaterial(imageRect, TiberiumContent.TibOptionBG_Cut, null, new Rect(0, 0, 1, 1));
+                Widgets.Label(new Rect(0f, curY, 200f, 30f), "Tiberium Coverage");
+                Rect newRect = new Rect(200, curY, width, 30f);
+                TiberiumSettings.Settings.tiberiumCoverage = Widgets.HorizontalSlider(newRect, (float)TiberiumSettings.Settings.tiberiumCoverage, 0f, 1, true, "Medium", "None", "Full", 0.05f);
+            }
+        }
+
+
+        public static bool BackgroundOnGUIPatch()
+        {
+            if (!TiberiumSettings.Settings.UseCustomBackground) return true;
+            bool flag = !((float) UI.screenWidth > (float) UI.screenHeight * (2048f / 1280f));
+            Rect position;
+            if (flag)
+            {
+                float height = (float) UI.screenHeight;
+                float num = (float) UI.screenHeight * (2048f / 1280f);
+                position = new Rect((float) (UI.screenWidth / 2) - num / 2f, 0f, num, height);
+            }
+            else
+            {
+                float width = (float) UI.screenWidth;
+                float num2 = (float) UI.screenWidth * (1280f / 2048f);
+                position = new Rect(0f, (float) (UI.screenHeight / 2) - num2 / 2f, width, num2);
+            }
+
+            GUI.DrawTexture(position, TiberiumContent.BGPlanet, ScaleMode.ScaleToFit);
+            return false;
+        }
+        
+
+        //Tiberium Background Selection
+        [HarmonyPatch(typeof(Dialog_Options))]
+        [HarmonyPatch(nameof(Dialog_Options.DoWindowContents))]
+        public static class Dialog_OptionsPatch
+        {
+            private static MethodInfo helper = AccessTools.Method(typeof(Dialog_OptionsPatch), nameof(AddTiberiumBGOption));
+            private static MethodInfo textHelper = AccessTools.Method(typeof(Dialog_OptionsPatch), nameof(GetButtonLabel));
+
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                int loadedCount = 0;
+                bool Check(CodeInstruction x) => x.opcode.Equals(OpCodes.Ldloc_S) && (x.operand as LocalBuilder).LocalIndex.Equals(23);
+
+                foreach (var codeInstruction in instructions)
+                {
+                    if (Check(codeInstruction))
+                    {
+                        loadedCount++;
+                    }
+                }
+
+                int curCount = 0;
+                int injectTextIn = 0;
+                foreach (var codeInstruction in instructions)
+                {
+                    if (injectTextIn > 0)
+                    {
+                        yield return codeInstruction;
+                        injectTextIn--;
+                        if (injectTextIn == 0)
+                        {
+                            yield return new CodeInstruction(OpCodes.Call, textHelper);
+                        }
+                        continue;
+                    }
+                    if (codeInstruction.opcode == OpCodes.Ldstr && ReferenceEquals(codeInstruction.operand, "SetBackgroundImage"))
+                    {
+                        injectTextIn = 5;
+                    }
+                    if (Check(codeInstruction))
+                    {
+                        curCount++;
+                        if (curCount == loadedCount)
+                        {
+                            yield return new CodeInstruction(OpCodes.Ldloc_S, 23);
+                            yield return new CodeInstruction(OpCodes.Call, helper);
+                        }
+                    }
+                    yield return codeInstruction;
+                }
+            }
+
+            public static void SetTiberiumBG()
+            {
+                //((UI_BackgroundMain)UIMenuBackgroundManager.background).overrideBGImage = TiberiumContent.BGPlanet;
+                TiberiumSettings.Settings.UseCustomBackground = true;
+            }
+
+            private static string GetButtonLabel(string label)
+            {
+                if (TiberiumSettings.Settings.UseCustomBackground)
+                {
+                    return "TiberiumRim";
+                }
+                return label;
+            }
+
+            private static void AddTiberiumBGOption(List<FloatMenuOption> options)
+            {
+                options.Add(new FloatMenuOption("TiberiumRim", SetTiberiumBG, TiberiumContent.ForgottenIcon, Color.white));
+            }
+        }
+
         [HarmonyPatch(typeof(MainMenuDrawer))]
         [HarmonyPatch(nameof(MainMenuDrawer.DoMainMenuControls))]
         public static class DoMainMenuControlsPatch

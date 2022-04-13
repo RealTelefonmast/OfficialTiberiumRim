@@ -9,9 +9,7 @@ namespace TiberiumRim
 {
     public class SpriteSheetViewer : UIElement, IDragAndDropReceiver
     {
-        public override UIElementMode UIMode => UIElementMode.Static;
-
-        public SpriteSheetViewer() : base()
+        public SpriteSheetViewer(UIElementMode mode) : base(mode)
         {
             hasTopBar = false;
         }

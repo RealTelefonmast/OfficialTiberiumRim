@@ -103,12 +103,12 @@ namespace TiberiumRim
 
             //Arc To Other Things
             if (ArcType == TeslaArcType.Spark) return;
-            float arcRadius = 0;
             if (hitThing is Pawn || (hitThing.Stuff != null && hitThing.Stuff.IsMetal))
             {
                 var cells = GenRadial.RadialCellsAround(hitThing.Position, 7, false);
-                var options = from x in cells
-                    where x.GetThingList(hitThing.Map).Any(t => t is Pawn || t.IsMetallic())
+                var options = 
+                    from x in cells 
+                    where x.GetThingList(hitThing.Map).Any(t => t is Pawn || t.IsMetallic()) 
                     select x.GetFirstThing<Thing>(hitThing.Map);
 
                 //var pawns = cells.Select(p => p.GetFirstPawn(hitThing.Map));

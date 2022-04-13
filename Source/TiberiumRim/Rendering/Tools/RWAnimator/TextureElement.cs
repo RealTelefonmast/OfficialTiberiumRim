@@ -29,53 +29,77 @@ namespace TiberiumRim
         public UIElement Element => this;
         public UIElement Owner => this;
         public TextureCanvas ParentCanvas => (TextureCanvas)parent;
-        public override UIElementMode UIMode => UIElementMode.Static;
+        public override bool CanBeFocused => base.CanBeFocused && IsSelected;
         protected override Rect DragAreaRect => Rect;
         public ManipulationMode ManiMode { get; private set; } = ManipulationMode.Move;
 
         //Texture Data
         public KeyFrameData KeyFrameData => LocalData;
-        private KeyFrameData RenderData => ParentCanvas.TimeLine.GetDataFor(this) ?? LocalData;
-
+        private KeyFrameData RenderData => ParentCanvas.TimeLine.GetDataFor(this);
         private Vector2 RenderPivot => TruePos + (PivotPoint * ParentCanvas.CanvasZoomScale);
-
         private Rect? TexCoords => texture.TexCoords;
+
+        public string[] ValueBuffer => RenderData.ValueBuffer;
 
         public KeyFrameData LocalData
         {
             get => texture.LocalData;
-            set => texture.LocalData = value;
+            set
+            {
+                texture.LocalData = value;
+                ParentCanvas.TimeLine.UpdateKeyframeFor(this, value);
+            }
         }
 
         public Vector2 PivotPoint
         {
             get => texture.PivotPoint;
-            set => texture.PivotPoint = value;
+            set
+            {
+                texture.PivotPoint = value;
+                ParentCanvas.TimeLine.UpdateKeyframeFor(this, LocalData);
+            }
         }
 
         public Vector2 TPosition
         {
-            get => RenderData.position;
-            set => texture.TPosition = value;
+            get => RenderData.TPosition;
+            set
+            {
+                texture.TPosition = value;
+                ParentCanvas.TimeLine.UpdateKeyframeFor(this, LocalData);
+            }
         }
 
         public float TRotation
         {
-            get => RenderData.rotation;
-            set => texture.TRotation = value;
+            get => RenderData.TRotation;
+            set
+            {
+                texture.TRotation = value;
+                ParentCanvas.TimeLine.UpdateKeyframeFor(this, LocalData);
+            }
         }
 
         public Vector2 TSize
         {
-            get => RenderData.size * texture.TSizeFactor;
-            set => texture.TSize = value;
+            get => RenderData.TSize;
+            set
+            {
+                texture.TSize = value;
+                ParentCanvas.TimeLine.UpdateKeyframeFor(this, LocalData);
+            }
         }
+
+        public void UpdateBuffer() => LocalData.UpdateBuffer();
+
+        public Vector2 DrawSize => RenderData.TSize * texture.TSizeFactor;
 
         private bool IsSelected => ParentCanvas.ActiveTexture == this;
         private float RotateDistance => 1.15f * TSize.x;
 
         //
-        private Vector2 ZoomedSize => TSize * ParentCanvas.CanvasZoomScale;
+        private Vector2 ZoomedSize => DrawSize * ParentCanvas.CanvasZoomScale;
         private Vector2 ZoomedPos => TPosition * ParentCanvas.CanvasZoomScale;
 
         private Vector2 TruePos => ParentCanvas.Origin + (ZoomedPos);
@@ -87,7 +111,7 @@ namespace TiberiumRim
         public Material Material => texture.Material;
         public Texture Texture => Material.mainTexture;
 
-        public TextureElement(Rect rect, WrappedTexture texture) : base(rect)
+        public TextureElement(Rect rect, WrappedTexture texture) : base(rect, UIElementMode.Dynamic)
         {
             bgColor = Color.clear;
             this.texture = new TextureData(texture);
@@ -96,7 +120,7 @@ namespace TiberiumRim
             hasTopBar = false;
         }
 
-        public TextureElement(Rect rect, Material mat, Rect texCoords) : base(rect)
+        public TextureElement(Rect rect, Material mat, Rect texCoords) : base(rect, UIElementMode.Dynamic)
         {
             bgColor = Color.clear;
             texture = new TextureData(mat);
@@ -111,24 +135,26 @@ namespace TiberiumRim
             if (data.HasValue)
             {
                 var frame = data.Value;
-                SetTRSP_Direct(frame.position, frame.rotation, frame.size);
+                SetTRSP_Direct(frame.TPosition, frame.TRotation, frame.TSize);
             }
         }
 
         public void SetTRSP_Direct(Vector2? pos = null, float? rot = null, Vector2? size = null, Vector2? pivot = null)
         {
-            TPosition = pos ?? RenderData.position;
-            TRotation = rot ?? RenderData.rotation;
-            TSize = size ?? RenderData.size;
+            TPosition = pos ?? RenderData.TPosition;
+            TRotation = rot ?? RenderData.TRotation;
+            TSize = size ?? RenderData.TSize;
             PivotPoint = pivot ?? PivotPoint;
+            UpdateBuffer();
         }
 
         public void SetTRSP_FromScreenSpace(Vector2? pos = null, float? rot = null, Vector2? size = null, Vector2? pivot = null)
         {
             TPosition = ParentCanvas.MousePos;
-            TRotation = rot ?? RenderData.rotation;
-            TSize = size ?? RenderData.size;
+            TRotation = rot ?? RenderData.TRotation;
+            TSize = size ?? RenderData.TSize;
             PivotPoint = pivot ?? PivotPoint;
+            UpdateBuffer();
         }
 
         public void Reset()
@@ -137,11 +163,14 @@ namespace TiberiumRim
             TRotation = 0;
             PivotPoint = Vector2.zero;
             ParentCanvas.TimeLine.UpdateKeyframeFor(this, LocalData);
+            UpdateBuffer();
         }
 
-        private Vector2? CanvasPosToOffset(Vector2? canvasPos)
+        public void Recenter()
         {
-            return ((canvasPos - ParentCanvas.InRect.position) - ParentCanvas.TrueOrigin) / ParentCanvas.CanvasZoomScale;
+            TPosition = Vector2.zero;
+            ParentCanvas.TimeLine.UpdateKeyframeFor(this, LocalData);
+            UpdateBuffer();
         }
 
         public ManipulationMode LockedInMode => lockedInMode ?? ManiMode;
@@ -169,7 +198,7 @@ namespace TiberiumRim
 
         protected override void HandleEvent_Custom(Event ev, bool inContext)
         {
-            if (!IsSelected) return;
+            if (!(IsSelected)) return;
 
             var mv = ev.mousePosition;
             var dist = mv.DistanceToRect(TextureRect);
@@ -206,12 +235,12 @@ namespace TiberiumRim
                     if (ManiModeFlag) //Update Local
                     {
                         LocalData = oldKF.Value;
-                        UIEventHandler.StartFocus(this);
+                        UIEventHandler.StartFocusForced(this);
                     }
                 }
             }
 
-            if (ev.type == EventType.MouseDrag)
+            if (IsFocused && ev.type == EventType.MouseDrag)
             {
                 var dragDiff = CurrentDragDiff;
                 switch (lockedInMode)
@@ -223,21 +252,34 @@ namespace TiberiumRim
                         break;
                     case ManipulationMode.Move:
                         //if (!TextureRect.Contains(mv) || !IsFocused) return;
-                        var oldPos = oldKF.Value.position;
+                        var oldPos = oldKF.Value.TPosition;
                         dragDiff /= ParentCanvas.CanvasZoomScale;
                         TPosition = new Vector2(oldPos.x + dragDiff.x, oldPos.y + dragDiff.y);
                         break;
                     case ManipulationMode.Resize:
-                        TSize = oldKF.Value.size + dragDiff;
+                        dragDiff *= 2;
+                        dragDiff /= texture.TSizeFactor;
+                        dragDiff /= ParentCanvas.CanvasZoomScale;
+
+                        var norm = (StartDragPos - TextureRect.center).normalized;
+
+                        if (norm.x < 0)
+                            dragDiff = new Vector2(-dragDiff.x, dragDiff.y);
+                        if (norm.y < 0)
+                            dragDiff = new Vector2(dragDiff.x, -dragDiff.y);
+
+                        TSize = oldKF.Value.TSize + dragDiff;
                         break;
                     case ManipulationMode.Rotate:
                         var vec1 = StartDragPos - RenderPivot;
                         var vec2 = ev.mousePosition - RenderPivot;
-                        TRotation = Normalize(Mathf.FloorToInt(oldKF.Value.rotation + Normalize(Mathf.FloorToInt(Vector2.SignedAngle(vec1, vec2)),0, 360)), 0, 360);
+                        TRotation = Normalize(Mathf.FloorToInt(oldKF.Value.TRotation + Normalize(Mathf.FloorToInt(Vector2.SignedAngle(vec1, vec2)),0, 360)), 0, 360);
                         break;
                 }
+
                 if (ManiModeFlag) //Update KeyFrame
-                    ParentCanvas.TimeLine.UpdateKeyframeFor(this, LocalData);
+                    UpdateBuffer();
+                //ParentCanvas.TimeLine.UpdateKeyframeFor(this, LocalData);
             }
 
             if (ev.type == EventType.MouseUp)
@@ -252,11 +294,7 @@ namespace TiberiumRim
         {
             yield return new FloatMenuOption("Reset", this.Reset);
             yield return new FloatMenuOption("Delete", delegate { ParentCanvas.Discard(this); });
-            yield return new FloatMenuOption("Center", delegate
-            {
-                TPosition = Vector2.zero;
-                ParentCanvas.TimeLine.UpdateKeyframeFor(this, LocalData);
-            });
+            yield return new FloatMenuOption("Center", Recenter);
         }
 
         private int Normalize(int value, int start, int end)

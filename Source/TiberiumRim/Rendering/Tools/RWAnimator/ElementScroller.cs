@@ -31,10 +31,9 @@ namespace TiberiumRim
 
         //
         public UIElement SelectedElement { get; private set; }
-        public override UIElementMode UIMode => UIElementMode.Static;
 
         //
-        public ElementScroller(UIContainer parentContainer)
+        public ElementScroller(UIContainer parentContainer, UIElementMode mode) : base(mode)
         {
             this.parentContainer = parentContainer;
             hasTopBar = false;

@@ -57,16 +57,15 @@ namespace TiberiumRim
 
         public static void DrawSpriteSheet(Vector2 topLeft, TextureSpriteSheet sheet)
         {
-
         }
 
         //
-        public SpriteSheetEditor()
+        public SpriteSheetEditor(UIElementMode mode) : base(mode)
         {
             Title = "Texture Sheet Editor";
             Size = new Vector2(800, 425);
 
-            spriteViewer = new SpriteSheetViewer();
+            spriteViewer = new SpriteSheetViewer(mode);
             tiles = new List<SpriteTile>();
 
             UIDragNDropper.RegisterAcceptor(this);

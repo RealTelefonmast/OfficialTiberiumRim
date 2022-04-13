@@ -35,6 +35,68 @@ namespace TiberiumRim
             row.IncrementPosition(width);
         }
 
+        public static Rect TextFieldNumericFix<T>(this WidgetRow row, ref T val, ref string buffer, float width = -1f) where T : struct
+        {
+            if (width < 0f)
+            {
+                width = Text.CalcSize(val.ToString()).x;
+            }
+            row.IncrementYIfWillExceedMaxWidth(width + 2f);
+            row.IncrementPosition(2f);
+            Rect rect = new Rect(row.LeftX(width), row.curY, width, 24f);
+            Widgets.TextFieldNumeric<T>(rect, ref val, ref buffer, float.MinValue, float.MaxValue);
+            row.IncrementPosition(2f);
+            row.IncrementPosition(rect.width);
+            return rect;
+        }
+
+        public static void DoBGForNext(this Listing_Standard listing, Color color)
+        {
+            Rect rect = listing.GetNextRect();
+            Widgets.DrawBoxSolid(rect, color);
+        }
+
+        public static Rect GetNextRect(this Listing_Standard listing)
+        {
+            return new Rect(listing.curX, listing.curY, listing.ColumnWidth, Text.LineHeight);
+        }
+
+        public static void TextFieldNumericLabeled<T>(this Listing_Standard listing, string label, ref T val, ref string buffer, float min = 0f, float max = 1E+09f, TextAnchor anchor = TextAnchor.MiddleRight) where T : struct
+        {
+            Rect rect = listing.GetRect(Text.LineHeight);
+            if (listing.BoundingRectCached == null || rect.Overlaps(listing.BoundingRectCached.Value))
+            {
+                Rect rect2 = rect.LeftHalf().Rounded();
+                Rect rect3 = rect.RightHalf().Rounded();
+                TextAnchor oldAnchor = Text.Anchor;
+                Text.Anchor = anchor;
+                Widgets.Label(rect2, label);
+                Text.Anchor = oldAnchor;
+                Widgets.TextFieldNumeric(rect3, ref val, ref buffer, min, max);
+                //TextFieldNumericFix(rect3, ref val, ref buffer, min, max);
+            }
+            listing.Gap(listing.verticalSpacing);
+        }
+
+        public static void ScrollVertical(Rect outRect, ref Vector2 scrollPosition, Rect viewRect, float ScrollWheelSpeed = 20f)
+        {
+            if (Event.current.type == EventType.ScrollWheel && Mouse.IsOver(outRect))
+            {
+                scrollPosition.y += Event.current.delta.y * ScrollWheelSpeed;
+                float num = 0f;
+                float num2 = viewRect.height - outRect.height + 16f;
+                if (scrollPosition.y < num)
+                {
+                    scrollPosition.y = num;
+                }
+                if (scrollPosition.y > num2)
+                {
+                    scrollPosition.y = num2;
+                }
+                Event.current.Use();
+            }
+        }
+
         public static void DrawMaterial(Rect rect, Vector2 pivot, float angle, Material material, Rect texCoords = default(Rect))
         {
             if (Event.current.type != EventType.Repaint) return;

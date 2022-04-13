@@ -103,21 +103,22 @@ namespace TiberiumRim
         {
             if (!this.map.regionAndRoomUpdater.Enabled && this.map.regionAndRoomUpdater.AnythingToRebuild) return;
             var room = thing.GetRoom();
-            if (room == null || !AllTrackers.ContainsKey(room)) return;
-            AllTrackers[room].Notify_ThingSpawned(thing);
+            if (room == null || !AllTrackers.TryGetValue(room, out var tracker)) return;
+            tracker?.Notify_ThingSpawned(thing);
         }
 
         public void Notify_ThingDespawned(Thing thing)
         {
             if (!this.map.regionAndRoomUpdater.Enabled && this.map.regionAndRoomUpdater.AnythingToRebuild) return;
             var room = thing.GetRoom();
-            if (room == null || !AllTrackers.ContainsKey(room)) return;
-            AllTrackers[room]?.Notify_ThingDespawned(thing);
+            if (room == null || !AllTrackers.TryGetValue(room, out var tracker)) return;
+            tracker?.Notify_ThingDespawned(thing);
         }
 
         public void Notify_RoofChanged(Room room)
         {
-            AllTrackers[room].Notify_RoofChanged();
+            if(!AllTrackers.TryGetValue(room, out var tracker)) return;
+            tracker?.Notify_RoofChanged();
         }
 
         public override void Tick()

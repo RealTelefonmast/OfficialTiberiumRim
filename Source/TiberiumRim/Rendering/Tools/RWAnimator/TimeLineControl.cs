@@ -21,11 +21,46 @@ namespace TiberiumRim
 
     public struct KeyFrameData : IExposable
     {
-        //TRS
-        public float rotation;
-        public Vector2 position, size;
+        // Size(0,1) | Pos(2,3) Rot(4)
+        [Unsaved]
+        private string[] stringBuffers;
 
+        //TRS
+        private float rotation;
+        private Vector2 position, size;
         public float layerPos;
+
+        public string[] ValueBuffer => stringBuffers;
+
+        public Vector2 TSize
+        {
+            get => size;
+            set => size = value;
+        }
+
+        public Vector2 TPosition
+        {
+            get => position;
+            set => position = value;
+        }
+
+        public float TRotation
+        {
+            get => rotation;
+            set => rotation = value;
+        }
+
+        public void UpdateBuffer()
+        {
+            var tSize = TSize;
+            var tPos = TPosition;
+            var tRot = TRotation;
+            stringBuffers[0] = tSize.x.ToString();
+            stringBuffers[1] = tSize.y.ToString();
+            stringBuffers[2] = tPos.x.ToString();
+            stringBuffers[3] = tPos.y.ToString();
+            stringBuffers[4] = tRot .ToString();
+        }
 
         public void ExposeData()
         {
@@ -40,8 +75,17 @@ namespace TiberiumRim
             position = pos;
             rotation = rot;
             this.size = size;
+            stringBuffers = new string[5]
+            {
+                size.x.ToString(),
+                size.y.ToString(),
+                pos.x.ToString(),
+                pos.y.ToString(),
+                rot.ToString()
+            };
             layerPos = 0;
         }
+
 
         public KeyFrameData Interpolated(KeyFrameData other, float val)
         {
@@ -52,10 +96,19 @@ namespace TiberiumRim
         }
     }
 
-    public struct KeyFrame
+    public struct KeyFrame : IExposable
     {
-        public KeyFrameData frameData;
-        public int frameTick;
+        private KeyFrameData frameData;
+        private int frameTick;
+
+        public KeyFrameData Data => frameData;
+        public int Frame => frameTick;
+
+        public void ExposeData()
+        {
+            Scribe_Values.Look(ref frameTick, "frameTick");
+            Scribe_Deep.Look(ref frameData, "frameData");
+        }
 
         public KeyFrame(KeyFrameData data, int tick)
         {
@@ -91,8 +144,6 @@ namespace TiberiumRim
             get => zoomFactor;
             set => zoomFactor = Mathf.Clamp(value, zoomRange.min, zoomRange.max);
         }
-
-        public override UIElementMode UIMode => UIElementMode.Static;
 
         public List<UIElement> Elements => Canvas.ElementList;
 
@@ -132,21 +183,27 @@ namespace TiberiumRim
 
             if (framesMax.TryMinBy(t=> t.Key, out var value2))
                 frame2 = value2.Value;
-            dist = Mathf.InverseLerp(frame1?.frameTick ?? 0, frame2?.frameTick ?? 0, CurrentFrame);
+            dist = Mathf.InverseLerp(frame1?.Frame ?? 0, frame2?.Frame ?? 0, CurrentFrame);
             return frame1 != null && frame2 != null;
         }
 
-        public KeyFrameData? GetDataFor(IKeyFramedElement element)
+        public KeyFrameData GetDataFor(IKeyFramedElement element)
         {
-            if (!framedElements.ContainsKey(element)) return null;
-            if (IsAtKeyFrame(element)) return framedElements[element][CurrentFrame].frameData;
+            if (!framedElements.ContainsKey(element)) return element.KeyFrameData;
+            if (IsAtKeyFrame(element)) return framedElements[element][CurrentFrame].Data;
             if (GetKeyFrames(element, out var frame1, out var frame2, out var lerpVal))
-                return frame1.Value.frameData.Interpolated(frame2.Value.frameData, lerpVal);
+                return frame1.Value.Data.Interpolated(frame2.Value.Data, lerpVal);
 
-            return frame1?.frameData ?? frame2?.frameData;
+            if (frame1.HasValue)
+                return frame1.Value.Data;
+            if (frame2.HasValue)
+                return frame2.Value.Data;
+
+
+            return element.KeyFrameData;
         }
 
-        public TimeLineControl()
+        public TimeLineControl() : base(UIElementMode.Static)
         {
             TRFind.TickManager.RegisterTickAction(delegate
             {
@@ -191,15 +248,16 @@ namespace TiberiumRim
         public void SetKeyFrameFor(IKeyFramedElement element)
         {
             var data = GetDataFor(element);
-            if (data != null)
-                element.SetTRS(data);
-            if (framedElements[element].ContainsKey(CurrentFrame))
+            //if (data.HasValue)
             {
-                framedElements[element][CurrentFrame] = new KeyFrame(element.KeyFrameData, CurrentFrame);
-                return;
+                //element.SetTRS(data);
+                if (framedElements[element].ContainsKey(CurrentFrame))
+                {
+                    framedElements[element][CurrentFrame] = new KeyFrame(data, CurrentFrame);
+                    return;
+                }
+                framedElements[element].Add(CurrentFrame, new KeyFrame(data, CurrentFrame));
             }
-
-            framedElements[element].Add(CurrentFrame, new KeyFrame(element.KeyFrameData, CurrentFrame));
         }
 
         protected override void HandleEvent_Custom(Event ev, bool inContext)
@@ -213,7 +271,6 @@ namespace TiberiumRim
                 if (ev.keyCode == KeyCode.RightArrow)
                     CurrentFrame++;
             }
-
             /*
             if (ev.isScrollWheel)
             {
@@ -228,6 +285,23 @@ namespace TiberiumRim
 
         protected override void DrawContents(Rect inRect)
         {
+            int topSize = 30;
+            int leftSize = 125;
+            Rect topPart = inRect.TopPartPixels(topSize);
+            Rect botPart = inRect.BottomPartPixels(inRect.height - topPart.height);
+
+            Rect leftPart = inRect.LeftPartPixels(leftSize);
+            Rect rightPart = inRect.RightPartPixels(inRect.width - leftPart.width);
+
+            Widgets.DrawHighlight(topPart);
+            Widgets.DrawHighlight(botPart);
+            Widgets.DrawHighlight(leftPart);
+            Widgets.DrawHighlight(rightPart);
+        }
+
+
+        protected void DrawContents2(Rect inRect)
+        {
             Rect topPart = inRect.TopPartPixels(30);
             Rect botPart = inRect.BottomPartPixels(inRect.height - topPart.height);
 
@@ -240,9 +314,9 @@ namespace TiberiumRim
             //
 
             Rect elementScrollList = new Rect(elementListRect.x, elementListRect.y, elementListRect.width, framedElements.Count * 20f);
-            Rect timeLineElementScrollRect = new Rect(timeLineElementListRect.x, timeLineElementListRect.y, TimeLineLength, Mathf.Max(rightPart.height, elementScrollList.height));
-
-            Rect timeLineFullScrollRect = new Rect(rightPart.x, rightPart.y, TimeLineLength, timeLineElementScrollRect.height).ExpandedBy(10, 0);
+           
+            Rect timeLineFullScrollRect = new Rect(rightPart.x, rightPart.y, TimeLineLength, Mathf.Max(rightPart.height, elementScrollList.height)).ExpandedBy(10, 0);
+            Rect elementTimeLineFullScrollRect = new Rect(rightPart.x, TopRect.yMax, timeLineFullScrollRect.width, framedElements.Count * 20f);
 
             //
             Rect playRect = new Rect(leftPart.xMax - 16, leftPart.y, 16, 16);
@@ -255,7 +329,9 @@ namespace TiberiumRim
             foreach (var element in framedElements.Keys)
             {
                 Rect left = new Rect(leftPart.x, curY, leftPart.width, 20);
+                Rect right = new Rect(rightPart.x, curY, TimeLineLength, 20);
                 ElementListing(left, element);
+                ElementTimeLine(right, element);
                 curY += 20;
             }
             Widgets.EndScrollView();
@@ -263,27 +339,29 @@ namespace TiberiumRim
             //Scrolling on the right timeline
             Widgets.ScrollHorizontal(rightPart, ref timeLineScrollPos, timeLineFullScrollRect);
             Widgets.BeginScrollView(rightPart, ref timeLineScrollPos, timeLineFullScrollRect, false);
-            //
+            
             Widgets.DrawBoxSolid(timeLineFullScrollRect, TRMats.BGDarker);
+            DrawTimeSelector(timeLineFullScrollRect);
+            
+            Widgets.EndScrollView();
 
+            elementScrollPos = new Vector2(timeLineScrollPos.x, elementScrollPos.y);
             //
-            GUI.BeginScrollView(timeLineElementListRect, elementScrollPos, timeLineElementScrollRect, GUIStyle.none, GUIStyle.none);
+            /*
+            GUI.BeginScrollView(elementListRect, elementScrollPos, elementTimeLineFullScrollRect, GUIStyle.none, GUIStyle.none);
             if (!framedElements.NullOrEmpty())
             {
                 curY = timeLineElementListRect.y;
                 foreach (var element in framedElements.Keys)
                 {
-                    Rect right = new Rect(rightPart.x, curY, rightPart.width, 20);
+                    Rect right = new Rect(rightPart.x, curY, TimeLineLength, 20);
                     ElementTimeLine(right, element);
                     curY += 20;
                 }
             }
             GUI.EndScrollView();
+            */
 
-            //
-            timeLineFullScrollRect = timeLineFullScrollRect.ContractedBy(10, 0);
-            DrawTimeSelector(timeLineFullScrollRect);
-            Widgets.EndScrollView();
 
             TRWidgets.DrawBox(rightPart, TRMats.MenuSectionBGBorderColor, 1);
         }
@@ -291,6 +369,7 @@ namespace TiberiumRim
         private void DrawTimeSelector(Rect rect)
         {
             //TopPart
+            rect = rect.ContractedBy(10, 0);
             Rect timeBar = rect.TopPartPixels(30);
 
             //Draw Global
@@ -302,14 +381,8 @@ namespace TiberiumRim
             //Draw Selector
             DrawTimeSelectorCustom(rect, GetHashCode(), ref playTickRange, ref currentFrameInt, 0, tickLength);
 
-            //TRWidgets.SliderCustom(rect, this.GetHashCode(), ref currentFrameInt, 0, tickLength, TiberiumContent.TimeSelMarker, Color.cyan);
-            //TRWidgets.SliderRangeCustom(rect, GetHashCode()+1, ref playTickRange, 0, tickLength, leftTexture:TiberiumContent.TimeSelRangeL, rightTexture:TiberiumContent.TimeSelRangeR);
-            //CurrentFrame = (int)Widgets.HorizontalSlider(rect, CurrentFrame, 0, tickLength, roundTo: 1);
-
             //Draw Tick Lines
-            Widgets.BeginGroup(timeBar);
-            timeBar = timeBar.AtZero();
-            float curX = 0;
+            float curX = timeBar.x;
             for (int i = 0; i < tickLength; i++)
             {
                 bool bigOne = i % 60 == 0;
@@ -324,8 +397,6 @@ namespace TiberiumRim
                 }
                 curX += PixelPerTickAdjusted;
             }
-
-            Widgets.EndGroup();
         }
 
         private void DrawTimeSelectorCustom(Rect rect, int id, ref IntRange range, ref int value, int min = 0, int max = 100, int minWidth = 0)
@@ -342,6 +413,8 @@ namespace TiberiumRim
             float valX = rect.x + (value * PixelPerTickAdjusted); //marginRect.width * (float) (value - min) / (float) (max - min);
             Rect rangeLPos = new Rect(leftX, rect.y, 16f, 16f);
             Rect rangeRPos = new Rect(rightX - 16f, rect.y, 16f, 16f);
+            Rect rangeLBar = new Rect(rangeLPos.position, new Vector2(rangeLPos.width, rect.height));
+            Rect rangeRBar = new Rect(rangeRPos.position, new Vector2(rangeRPos.width, rect.height));
             Rect valPos = new Rect(valX-12, rect.y, 25, 25);
             GUI.DrawTexture(rangeLPos,  TiberiumContent.TimeSelRangeL);
             GUI.DrawTexture(rangeRPos, TiberiumContent.TimeSelRangeR);
@@ -351,6 +424,9 @@ namespace TiberiumRim
 
             valPos = new Rect(valPos.x + 8, valPos.y, valPos.width, valPos.height);
             Widgets.Label(valPos, $"{CurrentFrame}");
+
+            Widgets.DrawHighlightIfMouseover(rangeLBar);
+            Widgets.DrawHighlightIfMouseover(rangeRBar);
 
             var mouseUp = Event.current.type == EventType.MouseUp;
             if ( (mouseUp || Event.current.rawType == EventType.MouseDown))
@@ -446,6 +522,7 @@ namespace TiberiumRim
 
         private void ElementTimeLine(Rect rightRect, IKeyFramedElement element)
         {
+            Widgets.DrawHighlightIfMouseover(rightRect);
             GUI.color = SelectedElement == element ? Color.white : TRColor.White025;
             var yPos = rightRect.y + rightRect.height / 2f;
             Widgets.DrawLineHorizontal(rightRect.x, yPos, rightRect.width);
@@ -465,7 +542,7 @@ namespace TiberiumRim
                     GUI.color = Color.cyan;
                 }
 
-                Rect rect = new Vector2(rightRect.x + keyFrame.Value.frameTick * 4, yPos).RectOnPos(new Vector2(16, 16));
+                Rect rect = new Vector2(rightRect.x + keyFrame.Value.Frame * PixelPerTickAdjusted, yPos).RectOnPos(new Vector2(16, 16));
                 Widgets.DrawTextureFitted(rect, TiberiumContent.KeyFrame, 1f);
 
                 GUI.color = Color.white;

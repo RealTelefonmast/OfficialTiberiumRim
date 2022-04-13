@@ -22,8 +22,8 @@ namespace TiberiumRim
 
         public void ExposeData()
         {
-            Scribe_Values.Look(ref color, "color", forceSave: true);
             Scribe_Values.Look(ref texPath, "texPath", forceSave: true);
+            Scribe_Values.Look(ref color, "color", forceSave: true); 
             Scribe_Values.Look(ref shaderPath, "shaderPath", forceSave: true);
         }
 
@@ -82,19 +82,20 @@ namespace TiberiumRim
             set => pivotPoint = value;
         }
 
+        public Vector2 TSize
+        {
+            set => localData.TSize = value;
+        }
+
         public Vector2 TPosition
         {
-            set => localData.position = value;
+            get => localData.TPosition;
+            set => localData.TPosition = value;
         }
 
         public float TRotation
         {
-            set => localData.rotation = value;
-        }
-
-        public Vector2 TSize
-        {
-            set => localData.size = value;
+            set => localData.TRotation = value;
         }
 
         public Vector2 TSizeFactor => TextureSize /2f;
@@ -111,7 +112,7 @@ namespace TiberiumRim
         {
             materialData = new MaterialData(texture);
             matInt = materialData.GetMat();
-            localData = new KeyFrameData();
+            localData = new KeyFrameData(default, 0, default);
             texCoords = null;
             pivotPoint = Vector2.zero;
         }
@@ -120,7 +121,7 @@ namespace TiberiumRim
         {
             materialData = new MaterialData(material);
             matInt = material;
-            localData = new KeyFrameData();
+            localData = new KeyFrameData(default, 0, default);
             texCoords = null;
             pivotPoint = Vector2.zero;
         }

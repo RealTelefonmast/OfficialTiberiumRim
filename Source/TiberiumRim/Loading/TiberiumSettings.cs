@@ -4,15 +4,14 @@ namespace TiberiumRim
 {
     public class TiberiumSettings : ModSettings
     {
-        public bool CustomBackground = true;
-
         //Tiberium Settings:
         public bool BuildingDamage = true;
         public bool EntityDamage = true;
         public bool PawnDamage = true;
         public bool UseProducerCap = false;
         public bool UseSpecificProducers = false;
-
+        private bool useCustomBG;
+        private bool firstStartUp;
 
         public bool UseSpreadRadius = false;
         public int TiberiumProducersAmt = 7;
@@ -29,13 +28,32 @@ namespace TiberiumRim
 
         //Overlays Settings
         public GraphicsSettings graphicsSettings = new GraphicsSettings();
-        public bool UseCustomBackground = true;
 
         //World Init Data
         public float tiberiumCoverage = 0f;
 
-        //Debug Settings
-        public bool FirstStartUp = true;
+        //Special Settings
+        public bool UseCustomBackground
+        {
+            get => useCustomBG;
+            set
+            {
+                useCustomBG = value;
+                Write();
+            }
+        }
+
+        public bool FirstStartUp
+        {
+            get => firstStartUp;
+            set
+            {
+                firstStartUp = value;
+                Write();
+            }
+        }
+
+        public static TiberiumSettings Settings => TiberiumRimMod.Settings;
 
         public void SetValue<T>(ref T field, T value)
         {
@@ -59,6 +77,7 @@ namespace TiberiumRim
             ItemDamageMltp = 0.1f;
             GrowthRate = 0.5f;
             SpreadMltp = 0.25f;
+            Write();
         }
 
         public void ResetToDefault()
@@ -78,6 +97,7 @@ namespace TiberiumRim
             ItemDamageMltp = 1f;
             GrowthRate = 1f;
             SpreadMltp = 1f;
+            Write();
         }
 
         public void SetHard()
@@ -97,13 +117,23 @@ namespace TiberiumRim
             ItemDamageMltp = 4f;
             GrowthRate = 2f;
             SpreadMltp = 2.5f;
+            Write();
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
+            Scribe_Values.Look(ref useCustomBG, "useCustomBG");
+            Scribe_Values.Look(ref firstStartUp, "firstStart");
             Scribe_Deep.Look(ref graphicsSettings, "graphics");
-            Scribe_Values.Look(ref FirstStartUp, "firstStart");
+
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                if (UseCustomBackground)
+                {
+                    LongEventHandler.QueueLongEvent(TRUIPatches.Dialog_OptionsPatch.SetTiberiumBG, string.Empty, false, null, false);
+                }
+            }
         }
     }
 }

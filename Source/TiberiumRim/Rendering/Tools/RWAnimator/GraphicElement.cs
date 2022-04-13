@@ -19,9 +19,8 @@ namespace TiberiumRim
         public KeyFrameData KeyFrameData { get; }
         public UIElement Owner => this;
 
-        public GraphicElement(Graphic graphic) : base()
+        public GraphicElement(Graphic graphic) : base(UIElementMode.Dynamic)
         {
-            
             this.graphic = graphic;
             SetData(null, new Vector2(Texture.width, Texture.height));
             bgColor = Color.clear;

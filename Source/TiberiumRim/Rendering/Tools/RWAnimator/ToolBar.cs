@@ -10,18 +10,15 @@ namespace TiberiumRim
 {
     public class ToolBar : UIContainer
     {
-        public override UIElementMode UIMode => UIElementMode.Static;
-
-        public ToolBar() : base()
-        {
-
-        }
-
-        public ToolBar(Rect rect) : base(rect)
+        public ToolBar(UIElementMode mode) : base(mode)
         {
         }
 
-        public ToolBar(Vector2 pos, Vector2 size) : base(pos, size)
+        public ToolBar(Rect rect, UIElementMode mode) : base(rect, mode)
+        {
+        }
+
+        public ToolBar(Vector2 pos, Vector2 size, UIElementMode mode) : base(pos, size, mode)
         {
         }
 

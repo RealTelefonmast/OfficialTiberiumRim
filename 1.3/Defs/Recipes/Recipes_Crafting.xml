@@ -38,7 +38,7 @@
 		<defName>MakeUraniumPreset</defName>
 		<label>Make Uranium</label>
 		<desiredResources>
-			<MakeElementalGold>5</MakeElementalGold>
+			<MakeElementalUranium>5</MakeElementalUranium>
 		</desiredResources>
 	</TiberiumRim.AtomicRecipePreset>
 	
@@ -46,7 +46,7 @@
 		<defName>MakeUraniumBulkPreset</defName>
 		<label>Make Uranium (Bulk)</label>
 		<desiredResources>
-			<MakeElementalGold>75</MakeElementalGold>
+			<MakeElementalUranium>75</MakeElementalUranium>
 		</desiredResources>
 	</TiberiumRim.AtomicRecipePreset>
 	
@@ -55,7 +55,7 @@
 		<defName>MakeGoldPreset</defName>
 		<label>Make Gold</label>
 		<desiredResources>
-			<MakeElementalUranium>5</MakeElementalUranium>
+			<MakeElementalGold>5</MakeElementalGold>
 		</desiredResources>
 	</TiberiumRim.AtomicRecipePreset>
 	
@@ -63,7 +63,7 @@
 		<defName>MakeGoldBulkPreset</defName>
 		<label>Make Gold (Bulk)</label>
 		<desiredResources>
-			<MakeElementalUranium>75</MakeElementalUranium>
+			<MakeElementalGold>75</MakeElementalGold>
 		</desiredResources>
 	</TiberiumRim.AtomicRecipePreset>
 	

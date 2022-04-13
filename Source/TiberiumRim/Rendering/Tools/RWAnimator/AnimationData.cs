@@ -18,12 +18,12 @@ namespace TiberiumRim
     public class AnimationData : IExposable
     {
         public List<TextureData> allParts;
+        public List<ScribeList<KeyFrame>> keyFramesOrdered;
 
-       // public List<>
-
-       public void ExposeData()
+        public void ExposeData()
        {
            Scribe_Collections.Look(ref allParts, "allParts", LookMode.Deep);
-       }
+           Scribe_Collections.Look(ref keyFramesOrdered, "keyFrames", LookMode.Deep);
+        }
     }
 }

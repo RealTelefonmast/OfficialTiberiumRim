@@ -28,6 +28,7 @@ namespace TiberiumRim
         private const int _BorderMargin = 25;
 
         //
+        private UIElementMode uiModeInt = UIElementMode.Dynamic;
         protected UIElement parent;
 
         //Local Data
@@ -36,43 +37,41 @@ namespace TiberiumRim
 
         protected string label, title;
         protected bool hasTopBar = true;
-        private bool active = true;
 
         private Rect? overrideRect;
         private Vector2 position = Vector2.zero;
         private Vector2 size;
 
         //
-        private Vector2? startDragPos, oldPos;
+        private Vector2? startDragPos, endDragPos, oldPos;
 
-        protected Vector2 StartDragPos => startDragPos ?? Vector2.zero;
-        protected Vector2 CurrentDragDiff => startDragPos.HasValue ? Event.current.mousePosition - startDragPos.Value : Vector2.zero;
+        public Vector2 StartDragPos => startDragPos ?? Vector2.zero;
+        public Vector2 CurrentDragDiff => endDragPos.HasValue ? endDragPos.Value - startDragPos.Value : Vector2.zero;
         protected Vector2 CurrentNewPos => oldPos.HasValue ? new Vector2(oldPos.Value.x + CurrentDragDiff.x, oldPos.Value.y + CurrentDragDiff.y) : position;
 
 
-        private UIElementState stateInt = UIElementState.Open;
+        public UIElementMode UIMode
+        {
+            get => uiModeInt;
+            private set => uiModeInt = value;
+        }
 
-        public virtual UIElementMode UIMode => UIElementMode.Dynamic;
         public virtual int Priority => 999;
+
+        public int RenderLayer { get; set; } = 0;
 
         public bool CanAcceptAnything => IsActive && UIState == UIElementState.Open;
 
-        public UIElementState UIState
-        {
-            get => stateInt;
-            protected set => stateInt = value;
-        }
+        public UIElementState UIState { get; protected set; } = UIElementState.Open;
 
         protected bool IsFocused => UIEventHandler.IsFocused(this);
         protected bool IsLocked { get; private set; }
+        protected bool ClickedIntoTop { get; private set; }
+
 
         public virtual bool CanBeFocused => true;
 
-        public bool IsActive
-        {
-            get => active;
-            set => active = value;
-        }
+        public bool IsActive { get; set; } = true;
 
         public object DragAndDropData { get; protected set; }
 
@@ -99,7 +98,7 @@ namespace TiberiumRim
 
         public Rect Rect
         {
-            get => overrideRect ?? new Rect(position, size);
+            get => (overrideRect ?? new Rect(position, size)).Rounded();
             private set
             {
                 overrideRect = value;
@@ -126,22 +125,25 @@ namespace TiberiumRim
         protected virtual Rect DragAreaRect => TopRect;
         public virtual Rect FocusRect => Rect;
 
-        protected bool CanMove => UIMode == UIElementMode.Dynamic && !IsLocked;
+        protected bool CanMove => UIMode == UIElementMode.Dynamic && ClickedIntoTop && !IsLocked && IsInDragArea();
 
         //Constructors
-        protected UIElement()
+        protected UIElement(UIElementMode mode)
         {
+            this.UIMode = mode;
         }
 
-        protected UIElement(Rect rect)
+        protected UIElement(Rect rect, UIElementMode mode)
         {
             this.Rect = rect;
+            this.UIMode = mode;
         }
 
-        protected UIElement(Vector2 pos, Vector2 size)
+        protected UIElement(Vector2 pos, Vector2 size, UIElementMode mode)
         {
             this.size = size;
             Position = pos;
+            this.UIMode = mode;
         }
 
         //Public Data Transfer
@@ -189,6 +191,9 @@ namespace TiberiumRim
         //Drawing
         public void DrawElement(Rect? overrideRect = null)
         {
+            //UIEventHandler.CurrentLayer++;
+            //RenderLayer = UIEventHandler.CurrentLayer;
+            UIEventHandler.RegisterLayer(this);
             if (UIState == UIElementState.Closed) return;
 
             if (overrideRect != null)
@@ -257,12 +262,18 @@ namespace TiberiumRim
             Vector2 mousePos = curEvent.mousePosition;
 
             bool isInContext = Rect.Contains(mousePos);
+            //if (!isInContext) return;
 
-            if (curEvent.type == EventType.MouseDown)
+            if (curEvent.type == EventType.MouseDown && isInContext)
             {
                 startDragPos ??= mousePos;
                 oldPos ??= position;
                 UIEventHandler.StartFocus(this);
+
+                if (Mouse.IsOver(TopRect))
+                {
+                    ClickedIntoTop = true;
+                }
 
                 //FloatMenu
                 if (curEvent.button == 1 && Mouse.IsOver(FocusRect))
@@ -277,23 +288,29 @@ namespace TiberiumRim
                 }
             }
 
+            if (curEvent.type == EventType.MouseDrag && startDragPos != null)
+            {
+                endDragPos = mousePos;
+            }
+
+            //Custom Handling
+            HandleEvent_Custom(curEvent, isInContext);
+
             //Handle Pos Manipulation
             if (IsFocused)
             {
-                if (UIDragger.IsBeingDragged(this) || (curEvent.type == EventType.MouseDrag && CanMove && IsInDragArea()))
+                if (UIDragger.IsBeingDragged(this) || (curEvent.type == EventType.MouseDrag && CanMove))
                     UIDragger.Notify_ActiveDrag(this, curEvent);
 
                 if (UIDragNDropper.IsSource(this) || DragAndDropData != null && curEvent.type == EventType.MouseDrag)
                     UIDragNDropper.Notify_DraggingData(this, DragAndDropData, curEvent);
             }
 
-            //Custom Handling
-            HandleEvent_Custom(curEvent, isInContext);
-
             //Reset
             if (curEvent.type == EventType.MouseUp)
             {
-                startDragPos = oldPos = null;
+                startDragPos = oldPos = endDragPos = null;
+                ClickedIntoTop = false;
                 UIEventHandler.StopFocus(this);
             }
         }

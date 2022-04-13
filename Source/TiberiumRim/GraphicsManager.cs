@@ -30,7 +30,7 @@ namespace TiberiumRim
         {
             get
             {
-                return TRUtils.TiberiumSettings().graphicsSettings.TiberiumGlow;
+                return TiberiumSettings.Settings.graphicsSettings.TiberiumGlow;
             }
         }
     }

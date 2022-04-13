@@ -96,37 +96,7 @@ namespace TiberiumRim
                     beam.width = 8;
                     beam.continuousBurn = false;
                     GenSpawn.Spawn(beam, Position, this.Map);
-                    //GenExplosion.DoExplosion(Position, Map, radius, DamageDefOf.Bomb, this, TRUtils.Range(1000, 9999));
 
-                    //DO DETONATION
-                    /*
-                    LongEventHandler.QueueLongEvent( delegate
-                    {
-                        Log.Message("Doing long event");
-                        foreach (var cell in Map.AllCells)
-                        {
-                            var list = cell.GetThingList(Map);
-                            for (var i = list.Count - 1; i >= 0; i--)
-                            {
-                                var thing = list[i];
-                                var pawn = thing as Pawn;
-                                if (thing == null) continue;
-                                if (!thing.props.destroyable || !thing.props.useHitPoints) continue;
-                                float damage = pawn != null ? 1000 : (Rand.Range(thing.MaxHitPoints * 0.45f, thing.MaxHitPoints) * 2);
-                                var dinfo = new DamageInfo(DamageDefOf.Flame, damage, 100);
-                                thing.TakeDamage(dinfo);
-                                if (thing.Destroyed)
-                                    GenSpawn.Spawn(ThingDefOf.Filth_Ash, cell, Map);
-                                if(thing.props.IsBuilding() && Rand.Chance(0.5f))
-                                    GenSpawn.Spawn(ThingDefOf.Filth_RubbleRock, cell, Map);
-                                if (pawn?.Destroyed ?? false)
-                                {
-                                    GenSpawn.Spawn(ThingDefOf.Filth_CorpseBile, cell, Map);
-                                }
-                            }
-                        }
-                    }, "Ion Cannon Strike", true, null);
-                    */
                     foreach (var intVec3 in GenRadial.RadialCellsAround(Position, radius, true))
                     {
                         var list = intVec3.GetThingList(Map);
@@ -147,10 +117,8 @@ namespace TiberiumRim
                     mote.Scale = radius * 6.5f;
                     mote.rotationRate = 1.2f;
                     GenSpawn.Spawn(mote, Position, Map);
-                    //MakeIonBubble(2, 8, new ColorInt(120, 140, 225).ToColor, ThingDef.Named("IonCenterDistortionBubble"));
-                    //MoteMaker.MakeStaticMote(Position, Map, ThingDef.Named("IonExplosionShockwave"), radius);
 
-                    ActionComposition ionExpComp = new ActionComposition("Ion Last Exp ");
+                    ActionComposition ionExpComp = new ActionComposition("Ion Last Exp");
                     Mote distortion = (Mote)ThingMaker.MakeThing(ThingDef.Named("IonExplosionShockwave"));
                     ionExpComp.AddPart(delegate
                     {

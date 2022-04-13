@@ -73,7 +73,7 @@ namespace TiberiumRim
             get
             {
                 float rate = 1f;
-                rate *= TRUtils.TiberiumSettings().GrowthRate;
+                rate *= TiberiumSettings.Settings.GrowthRate;
                 rate *= CrystalGrowthVal;
                 //TODO: Suppression dropoff affecting growthrate, rather than fully suppressing
                 //rate *= Mathf.InverseLerp(props.tiberium.minTemperature, 2000, Map.mapTemperature.OutdoorTemp);

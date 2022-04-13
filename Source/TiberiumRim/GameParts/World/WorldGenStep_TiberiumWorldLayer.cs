@@ -19,7 +19,7 @@ namespace TiberiumRim
 
         public override void GenerateFresh(string seed)
         {
-            float coverage = TiberiumRimMod.mod.settings.tiberiumCoverage;
+            float coverage = TiberiumSettings.Settings.tiberiumCoverage;
             if (coverage <= 0) return;
             ModuleBase noiseTest = new Perlin((double)(0.035f * coverage), 2.0, 0.4, 6, Rand.Range(0, int.MaxValue), QualityMode.High);
             //var test = 

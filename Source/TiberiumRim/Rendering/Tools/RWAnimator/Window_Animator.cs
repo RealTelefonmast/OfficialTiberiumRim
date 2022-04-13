@@ -19,7 +19,7 @@ namespace TiberiumRim
         private ToolBar toolBar;
         private AnimationSaveLoader saveLoader;
 
-        public override Vector2 InitialSize => new Vector2(UI.screenWidth, UI.screenHeight);
+        public sealed override Vector2 InitialSize => new Vector2(UI.screenWidth, UI.screenHeight);
         private Vector2 CanvasSize => new(800, 800);
         public override float Margin => 5f;
 
@@ -39,15 +39,15 @@ namespace TiberiumRim
             //window = new UIContainer();
 
             timeLine = new TimeLineControl();
-            toolBar = new ToolBar();
-            canvas = new TextureCanvas(new Rect(50,50, 800, 800));
+            toolBar = new ToolBar(UIElementMode.Static);
+            canvas = new TextureCanvas(UIElementMode.Static);
             canvas.TimeLine = timeLine;
             timeLine.Canvas = canvas;
-            browser = new ObjectBrowser(new Rect(850, 50, 350, 700));
-            saveLoader = new AnimationSaveLoader(canvas);
+            browser = new ObjectBrowser(new Rect(850, 50, 350, 700), UIElementMode.Dynamic);
+            saveLoader = new AnimationSaveLoader(canvas, new Rect(InitialSize.x - 650, 0, 650 - 130, 500), UIElementMode.Static);
 
-            toolBar.AddElement(canvas);
-            toolBar.AddElement(new SpriteSheetEditor(), new Vector2(100, 100));
+            //toolBar.AddElement(canvas);
+            toolBar.AddElement(new SpriteSheetEditor(UIElementMode.Dynamic), new Vector2(100, 100));
             toolBar.AddElement(browser);
             toolBar.AddElement(saveLoader);
         }
@@ -59,18 +59,21 @@ namespace TiberiumRim
 
         public override void DoWindowContents(Rect inRect)
         {
+            UIEventHandler.CurrentLayer = 0;
+            Rect topRect = inRect.TopPart(0.85f).Rounded();
+            Rect canvasRect = topRect.LeftPartPixels(900);
             Rect toolBarRect = inRect.RightPartPixels(125).TopHalf();
-            Rect saveLoadRect = new Rect(inRect.xMax - 500, inRect.y, 500 - 130, 500);
+            Rect timeLineRect = inRect.BottomPart(0.15f).Rounded();
 
-            canvas.DrawElement();
-            browser.DrawElement();
+            UIEventHandler.Notify_MouseOnScreen(Event.current.mousePosition);
+
+            canvas.DrawElement(canvasRect);
             toolBar.DrawElement(toolBarRect);
-
-            Rect timeLineRect = new Rect(inRect.BottomPart(0.15f));
             timeLine.DrawElement(timeLineRect);
-            saveLoader.DrawElement(saveLoadRect);
 
             UIDragNDropper.DrawCurDrag();
+
+            UIEventHandler.Notify_MouseOnScreen(Vector2.zero);
         }
     }
 }

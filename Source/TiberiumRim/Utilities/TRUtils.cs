@@ -65,11 +65,6 @@ namespace TiberiumRim
             return Tiberium().GameSettings;
         }
 
-        public static TiberiumSettings TiberiumSettings()
-        {
-            return TiberiumRimMod.mod.settings;
-        }
-
         public static MainTabWindow WindowFor(MainButtonDef def)
         {
             return def.TabWindow;

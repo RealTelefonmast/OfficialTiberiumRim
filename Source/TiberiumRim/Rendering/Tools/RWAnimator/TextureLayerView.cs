@@ -9,19 +9,19 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class TextureLayerView : UIElement, IDragAndDropReceiver
+    public class TextureLayerView : UIElement
     {
         private UIContainer parentContainer;
         private ElementScroller internalScroller;
 
-        public override UIElementMode UIMode => UIElementMode.Static;
-
         public TextureElement ActiveElement => internalScroller.SelectedElement as TextureElement;
 
-        public TextureLayerView(UIContainer parentContainer)
+        public bool DrawDataReadout => ActiveElement != null;
+
+        public TextureLayerView(UIContainer parentContainer) : base(UIElementMode.Static)
         {
             this.parentContainer = parentContainer;
-            internalScroller = new ElementScroller(parentContainer);
+            internalScroller = new ElementScroller(parentContainer, UIElementMode.Static);
         }
 
         public void Notify_NewLayer(TextureElement newElement)
@@ -44,71 +44,6 @@ namespace TiberiumRim
         {
             Rect rect = new Rect(inRect.x - 1, inRect.y, inRect.width + 2, inRect.height);
             internalScroller.DrawElement(rect);
-            
-            /*
-            base.DrawContents(inRect);
-            Widgets.BeginGroup(inRect);
-            inRect = inRect.AtZero();
-            Rect scrollRect = new Rect(0, 0, inRect.width, elements.Count * inRect.width);
-            Widgets.BeginScrollView(inRect, ref scrollVec, scrollRect, false);
-
-            float curY = 0;
-            for (var i = 0; i < elements.Count; i++)
-            {
-                var element = elements[i];
-                var sFlag = i % 2 != 0;
-                var sameFlag = element.Equals(ActiveElement);
-                var rect = new Rect(0, curY, inRect.width, inRect.width);
-                var mouseOver = Mouse.IsOver(rect);
-
-                if (sFlag)
-                {
-                    Widgets.DrawBoxSolid(rect, TRMats.White005);
-                }
-
-                if (sameFlag || mouseOver)
-                {
-                    Widgets.DrawHighlight(rect);
-                    if (sameFlag)
-                    {
-                        TRWidgets.DrawBox(rect, Color.cyan, 1);
-                    }
-
-                    if (mouseOver)
-                    {
-                        DragAndDropData = element;
-                    }
-                }
-
-                if (Widgets.ButtonInvisible(rect))
-                {
-                    ActiveElement = element;
-                }
-
-                var mat = element.Material;
-                TRWidgets.DoTinyLabel(rect,
-                    $"{mat.mainTexture.name}\n{mat.shader.name}\n{RectSimple(element.texCoords ?? default)}\n{element.pivotPoint}\n{mat.mainTextureOffset}\n{mat.mainTextureScale}");
-                curY += inRect.width;
-            }
-
-            Widgets.EndScrollView();
-            Widgets.EndGroup();
-            */
-        }
-
-        public void DrawHoveredData(object draggedObject, Vector2 pos)
-        {
-
-        }
-
-        public bool TryAccept(object draggedObject, Vector2 pos)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Accepts(object draggedObject)
-        {
-            throw new NotImplementedException();
         }
     }
 }

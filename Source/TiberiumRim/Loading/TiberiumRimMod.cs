@@ -18,10 +18,11 @@ namespace TiberiumRim
         private static Harmony tiberium;
 
         //
-        public TiberiumSettings settings;
         public static bool isDebug = true;
 
         public static Harmony Tiberium => tiberium ??= new Harmony("telefonmast.tiberiumrim");
+
+        public static TiberiumSettings Settings => (TiberiumSettings) mod.modSettings;
 
         public AssetBundle MainBundle
         {
@@ -65,9 +66,8 @@ switch (pid)
         public TiberiumRimMod(ModContentPack content) : base(content)
         {
             mod = this;
-
-            Log.Message("[TiberiumRim] - Init");
-            settings = GetSettings<TiberiumSettings>();
+            TLog.Message("[TiberiumRim] - Init", Color.cyan);
+            modSettings = GetSettings<TiberiumSettings>();
 
             //
             Tiberium.PatchAll(Assembly.GetExecutingAssembly());
@@ -78,6 +78,7 @@ switch (pid)
 
         public override void WriteSettings()
         {
+            TLog.Debug("Writing settings?");
             base.WriteSettings();
         }
 

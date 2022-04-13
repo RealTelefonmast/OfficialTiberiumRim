@@ -34,7 +34,6 @@ namespace TiberiumRim
             Scribe_Collections.Look(ref savedList, "savedList", lookMode);
         }
 
-
         public IEnumerator<T> GetEnumerator()
         {
             return savedList.GetEnumerator();

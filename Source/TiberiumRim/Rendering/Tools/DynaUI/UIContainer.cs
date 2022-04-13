@@ -22,17 +22,17 @@ namespace TiberiumRim
 
         public virtual UIContainerMode ContainerMode => UIContainerMode.InOrder;
 
-        public UIContainer() : base()
+        public UIContainer(UIElementMode mode) : base(mode)
         {
             elements = new List<UIElement>();
         }
 
-        public UIContainer(Rect rect) : base(rect)
+        public UIContainer(Rect rect, UIElementMode mode) : base(rect, mode)
         {
             elements = new List<UIElement>();
         }
 
-        public UIContainer(Vector2 pos, Vector2 size) : base(pos, size)
+        public UIContainer(Vector2 pos, Vector2 size, UIElementMode mode) : base(pos, size, mode)
         {
             elements = new List<UIElement>();
         }

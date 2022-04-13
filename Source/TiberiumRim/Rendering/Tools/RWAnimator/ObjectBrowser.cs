@@ -27,7 +27,7 @@ namespace TiberiumRim
         private Rect ScrollRectInner => new Rect(ScrollRect.x, ScrollRect.y, ScrollRect.width, textureList.Count * 30);
         private Rect InfoRect => SearchAreaRect.TopPart(0.05f);
 
-        public ObjectBrowser(Rect rect) : base(rect)
+        public ObjectBrowser(Rect rect, UIElementMode mode) : base(rect, mode)
         {
             searchWidget = new QuickSearchWidget();
         }
