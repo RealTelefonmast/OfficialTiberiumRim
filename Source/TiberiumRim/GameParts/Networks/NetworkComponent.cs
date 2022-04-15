@@ -198,6 +198,7 @@ namespace TiberiumRim
             if(NetworkRole.HasFlag(NetworkRole.Producer))
                 GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.SilosNeeded, Parent.Thing);
         }
+
         public void Notify_ContainerStateChanged()
         {
         }

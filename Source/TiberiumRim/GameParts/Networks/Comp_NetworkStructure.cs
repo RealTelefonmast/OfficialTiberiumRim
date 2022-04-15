@@ -240,13 +240,9 @@ namespace TiberiumRim
 
         public void PrintForGrid(SectionLayer layer)
         {
-            //var networks = SectionLayer_NetworkGrid.NetworksFromDesignator(Find.DesignatorManager.SelectedDesignator);
-            //if (networks == null) return;
-            
             foreach (var networkPart in NetworkParts)
             {
                 networkPart.NetworkDef.OverlayGraphic?.Print(layer, Thing, 0);
-                //if (networks.Contains(networkPart.NetworkDef))
             }
         }
 

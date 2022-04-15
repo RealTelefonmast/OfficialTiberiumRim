@@ -19,6 +19,40 @@
 		</overlayGraphic>
 	</TiberiumRim.NetworkDef>
 	
+	<TiberiumRim.TRThingDef ParentName="NetworkPipeBase">
+		<defName>ChemicalPipe</defName>
+		<label>chemical pipe</label>
+		<description>This structure connects Chemical processing structures on the Chemical Network.</description>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Buildings/Common/Pollution/Pipe_Air_blueprint</texPath>
+				<graphicClass>TiberiumRim.Graphic_LinkedWithSame</graphicClass>
+			</blueprintGraphicData>
+		</building>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>100</WorkToBuild>
+			<Flammability>0.2</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<costList>
+			<Steel>5</Steel>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+				<networks>
+					<li>
+						<networkDef>ChemicalNetwork</networkDef>
+						<networkRoles>
+							<li>Transmitter</li>
+						</networkRoles>
+					</li>
+				</networks>
+				<connectionPattern>+</connectionPattern>
+			</li>
+		</comps>
+	</TiberiumRim.TRThingDef>
+	
 	<!-- Metals -->
 	<TiberiumRim.NetworkValueDef>
 		<defName>Iron</defName>

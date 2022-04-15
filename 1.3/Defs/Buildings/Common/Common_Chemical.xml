@@ -1,69 +1,41 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
-		<defName>ChemicalPipe</defName>
-		<label>chemical pipe</label>
-		<description>tbd</description>
-		<!--<thingClass></thingClass>-->
+	
+	<TiberiumRim.TRThingDef Name="NetworkPipeBase" ParentName="BuildingBase_TR" Abstract="True">
+		<category>Building</category>
 		<factionDesignation>Common</factionDesignation>
 		<TRCategory>Processing</TRCategory>
 		<hidden>true</hidden>
-		<costList>
-			<Steel>5</Steel>
-		</costList>
 		<drawerType>MapMeshAndRealTime</drawerType>
+		<!--<altitudeLayer>Conduits</altitudeLayer>-->
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<uiIconPath>Buildings/Icons/Connector_Icon</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<passability>Standable</passability>
+		<drawGUIOverlay>True</drawGUIOverlay>
 		<graphicData>
 			<texPath>Blank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<!--
-			<linkType>Basic</linkType>
-		    <linkFlags>
-				<li>Custom7</li>
-		    </linkFlags>
-			-->
+			<!--<linkType>Basic</linkType>-->
 		</graphicData>
 		<building>
 			<ai_chillDestination>false</ai_chillDestination>
 			<isInert>true</isInert>
 			<isEdifice>false</isEdifice>
-			<blueprintGraphicData>
-				<texPath>Buildings/Common/Pollution/Pipe_Air_blueprint</texPath>
-			</blueprintGraphicData>
 		</building>
-		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
-				<networks>
-					<li>
-						<networkDef>ChemicalNetwork</networkDef>
-						<networkRoles>
-							<li>Transmitter</li>
-						</networkRoles>
-					</li>
-				</networks>
-				<connectionPattern>+</connectionPattern>
-			</li>
-		</comps>
-		<drawGUIOverlay>True</drawGUIOverlay>
-		<placingDraggableDimensions>1</placingDraggableDimensions>
-		<uiIconPath>Buildings/Icons/Connector_Icon</uiIconPath>
-		<altitudeLayer>FloorEmplacement</altitudeLayer>
-		<passability>Standable</passability>
-		<pathCost>0</pathCost>
-		<castEdgeShadows>false</castEdgeShadows>
-		<staticSunShadowHeight>0</staticSunShadowHeight>
-		<statBases>
-			<MaxHitPoints>100</MaxHitPoints>
-			<WorkToBuild>100</WorkToBuild>
-			<Flammability>0.2</Flammability>
-			<Beauty>-18</Beauty>
-		</statBases>
-		<neverMultiSelect>true</neverMultiSelect>
-		<constructEffect>ConstructMetal</constructEffect>
+		<tickerType>Never</tickerType>
 		<rotatable>false</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<clearBuildingArea>false</clearBuildingArea>
+		<castEdgeShadows>false</castEdgeShadows>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<pathCost>0</pathCost>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		
+		<constructEffect>ConstructMetal</constructEffect>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<surfaceType>Item</surfaceType>
-		<clearBuildingArea>false</clearBuildingArea>
+		
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_Pipe</li>
 		</placeWorkers>

@@ -187,18 +187,23 @@ namespace TiberiumRim
 
         private bool TryPay()
         {
-            float totalNeeded = networkCost.Sum(t => t.Value);
-            var storages = billStack.ParentNetComps.SelectMany(n => n.ContainerSet[NetworkFlags]); //billStack.ParentNetComps.SelectMany(n => n.Network.ComponentSet.Storages);
+            var storages = billStack.ParentNetComps.SelectMany(n => n.ContainerSet[NetworkFlags]);
+            NetworkValueStack stack = new NetworkValueStack();
+            foreach (var value in networkCost)
+            {
+                stack.Add(value.Def, value.Value);
+            }
+
             foreach (var storage in storages)
             {
-                foreach (var value in networkCost)
+                foreach (var value in stack.networkValues)
                 {
-                    if (storage.ValueForType(value.Def) > 0 && storage.TryRemoveValue(value.Def, value.Value, out float actualVal))
+                    if (storage.ValueForType(value.valueDef) > 0 && storage.TryRemoveValue(value.valueDef, value.valueF, out float actualVal))
                     {
-                        totalNeeded -= actualVal;
+                        stack -= new NetworkValue(value.valueDef, actualVal);
                     }
 
-                    if (totalNeeded <= 0)
+                    if (stack.TotalValue <= 0)
                     {
                         hasBeenPaid = true;
                         return true;
@@ -206,8 +211,8 @@ namespace TiberiumRim
                 }
             }
            
-            if (totalNeeded > 0)
-                TLog.Error($"TotalCost higher than 0 after payment! LeftOver: {totalNeeded}");
+            if (stack.TotalValue > 0)
+                TLog.Error($"TotalCost higher than 0 after payment! LeftOver: {stack.TotalValue}");
             return false;
         }
 

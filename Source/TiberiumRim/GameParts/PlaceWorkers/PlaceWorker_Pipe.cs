@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using RimWorld;
+using System.Linq;
 using Verse;
+using UnityEngine;
 
 namespace TiberiumRim
 {
@@ -16,6 +18,21 @@ namespace TiberiumRim
                 return false;
             }
             return true;
+        }
+
+        public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol, Thing thing = null)
+        {
+            int num = 0;
+            num = Gen.HashCombine(num, def.graphicData);
+            num = Gen.HashCombine(num, def);
+            num = Gen.HashCombineStruct(num, ghostCol);
+            if (!GhostUtility.ghostGraphics.TryGetValue(num, out var graphic))
+            {
+                graphic = GraphicDatabase.Get<Graphic_Single>(def.uiIconPath, ShaderTypeDefOf.EdgeDetect.Shader, def.graphicData.drawSize, ghostCol);
+                GhostUtility.ghostGraphics.Add(num, graphic);
+            }
+            Vector3 loc = GenThing.TrueCenter(center, rot, def.Size, AltitudeLayer.Blueprint.AltitudeFor());
+            graphic.DrawFromDef(loc, rot, def, 0f);
         }
     }
 }

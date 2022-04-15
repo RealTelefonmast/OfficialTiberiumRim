@@ -57,7 +57,8 @@ namespace TiberiumRim
             }
 
             des = (Designator)Activator.CreateInstance(typeof(T), def);
-            CachedDesignators.Add(def, (Designator)Activator.CreateInstance(typeof(T), def));
+            des.icon = def.uiIcon;
+            CachedDesignators.Add(def, des);
             return (T)des;
         }
 

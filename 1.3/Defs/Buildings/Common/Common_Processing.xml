@@ -90,76 +90,6 @@
 		</placeWorkers>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
-		<defName>TiberiumPipe</defName>
-		<label>tiberium pipe</label>
-		<description>This structure connects Tiberium processing structures on the Tiberium Network.</description>
-		<!--<thingClass></thingClass>-->
-		<factionDesignation>Common</factionDesignation>
-		<TRCategory>Processing</TRCategory>
-		<hidden>true</hidden>
-		<costList>
-			<Steel>5</Steel>
-		</costList>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<uiIconPath>Buildings/Icons/Connector_Icon</uiIconPath>
-		<graphicData>
-			<texPath>Blank</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<!--
-			<linkType>Basic</linkType>
-		    <linkFlags>
-				<li>Custom7</li>
-		    </linkFlags>
-			-->
-		</graphicData>
-		<building>
-			<ai_chillDestination>false</ai_chillDestination>
-			<isInert>true</isInert>
-			<isEdifice>false</isEdifice>
-			<blueprintGraphicData>
-				<texPath>Buildings/Common/Network/Pipe_Tib_blueprint</texPath>
-				<graphicClass>TiberiumRim.Graphic_LinkedWithSame</graphicClass>
-			</blueprintGraphicData>
-		</building>
-		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
-				<networks>
-					<li>
-						<networkDef>TiberiumNetwork</networkDef>
-						<networkRoles>
-							<li>Transmitter</li>
-						</networkRoles>
-					</li>
-				</networks>
-				<connectionPattern>+</connectionPattern>
-			</li>
-		</comps>
-		<drawGUIOverlay>True</drawGUIOverlay>
-		<placingDraggableDimensions>1</placingDraggableDimensions>
-		<altitudeLayer>FloorEmplacement</altitudeLayer>
-		<passability>Standable</passability>
-		<pathCost>0</pathCost>
-		<castEdgeShadows>false</castEdgeShadows>
-		<staticSunShadowHeight>0</staticSunShadowHeight>
-		<statBases>
-			<MaxHitPoints>100</MaxHitPoints>
-			<WorkToBuild>100</WorkToBuild>
-			<Flammability>0.2</Flammability>
-			<Beauty>-18</Beauty>
-		</statBases>
-		<tickerType>Never</tickerType>
-		<neverMultiSelect>true</neverMultiSelect>
-		<constructEffect>ConstructMetal</constructEffect>
-		<rotatable>false</rotatable>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<surfaceType>Item</surfaceType>
-		<clearBuildingArea>false</clearBuildingArea>
-		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_Pipe</li>
-		</placeWorkers>
-	</TiberiumRim.TRThingDef>
-	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>TiberiumSilo</defName>
 		<label>tiberium silo</label>
@@ -507,9 +437,9 @@
 			<ai_chillDestination>false</ai_chillDestination>
 		</building>
 		<requisites>
-			<tiberiumResearch>
-				<li>TiberiumGasRefining</li>
-			</tiberiumResearch>
+			<tiberiumResearchTasks>
+				<li>TiberiumGasRefining_T1</li>
+			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_NetworkStructure">
