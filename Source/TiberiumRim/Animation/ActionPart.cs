@@ -29,7 +29,7 @@ namespace TiberiumRim
             this.startTick = time.SecondsToTicks();
             this.endTick = startTick + playTime.SecondsToTicks();
             this.playTime = playTime.SecondsToTicks();
-            Log.Message("Part is Instant: " + Instant);
+            TLog.Debug("Part is Instant: " + Instant);
         }
 
         public ActionPart(ActionComposition parent, SoundDef sound, SoundInfo info, float time, float playTime = 0f)
@@ -39,7 +39,7 @@ namespace TiberiumRim
             this.startTick = time.SecondsToTicks();
             this.endTick = startTick + playTime.SecondsToTicks();
             this.playTime = playTime.SecondsToTicks();
-            Log.Message("Part is Instant: " + Instant);
+            TLog.Debug("Part is Instant: " + Instant);
         }
 
         public ActionPart(ActionComposition parent, Action<ActionPart> action, SoundDef sound, SoundInfo info, float time, float playTime = 0f)
@@ -50,7 +50,7 @@ namespace TiberiumRim
             this.startTick = time.SecondsToTicks();
             this.endTick = startTick + playTime.SecondsToTicks();
             this.playTime = playTime.SecondsToTicks();
-            Log.Message("Part is Instant: " + Instant);
+            TLog.Debug("Part is Instant: " + Instant);
         }
 
         public int CurrentTick => curTick;
@@ -73,7 +73,7 @@ namespace TiberiumRim
             //Play Sound Once - Always
             if (CurrentTick == 0)
             {
-                Log.Message("Should play sound now: " + sound?.def);
+                TLog.Debug("Should play sound now: " + sound?.def);
                 sound?.PlaySound(compositionTick);
             }
 
@@ -88,7 +88,7 @@ namespace TiberiumRim
         {
             if (Instant || compositionTick == endTick)
             {
-                Log.Message("Completing Part: " + (index + 1) + "/" + parentComposition.ActionCount + " for " + parentComposition + " with " + actionCounter + " actions");
+                TLog.Debug("Completing Part: " + (index + 1) + "/" + parentComposition.ActionCount + " for " + parentComposition + " with " + actionCounter + " actions");
                 Completed = true;
                 return true;
             }

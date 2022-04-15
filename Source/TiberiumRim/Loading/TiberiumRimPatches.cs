@@ -515,7 +515,7 @@ namespace TiberiumRim
                 var drawerComp = pawn.GetComp<Comp_PawnExtraDrawer>();
                 if (drawerComp == null)
                 {
-                    Log.ErrorOnce("Comp_PawnExtraDrawer not applied!", 2803974);
+                    TLog.ErrorOnce("Comp_PawnExtraDrawer not applied!", 2803974);
                     return;
                 }
                 Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
@@ -523,7 +523,7 @@ namespace TiberiumRim
 
                 if (renderComp == null)
                 {
-                    Log.ErrorOnce("Comp_CrystalDrawer Not Applied!", 87348728);
+                    TLog.ErrorOnce("Comp_CrystalDrawer Not Applied!", 87348728);
                     return;
                 }
 

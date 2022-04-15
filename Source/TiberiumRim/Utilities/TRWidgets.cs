@@ -61,6 +61,14 @@ namespace TiberiumRim
             return new Rect(listing.curX, listing.curY, listing.ColumnWidth, Text.LineHeight);
         }
 
+        public static void TextureElement(this Listing_Standard listing, TextureElement tex)
+        {
+            Rect rect = listing.GetRect(Text.LineHeight);
+            if (listing.BoundingRectCached == null || rect.Overlaps(listing.BoundingRectCached.Value))
+            {
+                DrawTextureWithMaterial(rect, tex.Texture, tex.Material, tex.TexCoords);
+            }
+        }
         public static void TextFieldNumericLabeled<T>(this Listing_Standard listing, string label, ref T val, ref string buffer, float min = 0f, float max = 1E+09f, TextAnchor anchor = TextAnchor.MiddleRight) where T : struct
         {
             Rect rect = listing.GetRect(Text.LineHeight);

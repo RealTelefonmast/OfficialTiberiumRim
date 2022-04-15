@@ -37,19 +37,19 @@ namespace TiberiumRim
         public void AddPart(Action<ActionPart> action, float time, float playTime = 0)
         {
             actionParts.Add(new ActionPart(this, action, time, playTime));
-            Log.Message("[" + compositionName + "]Adding Action Part at " + time + " for " + playTime + "s");
+            TLog.Debug("[" + compositionName + "]Adding Action Part at " + time + " for " + playTime + "s");
         }
 
         public void AddPart(Action<ActionPart> action, SoundDef sound, SoundInfo info, float time, float playTime = 0)
         {
             actionParts.Add(new ActionPart(this, action, sound, info, time, playTime));
-            Log.Message("[" + compositionName + "]Adding Action/Sound Part at " + time + " for " + playTime + "s");
+            TLog.Debug("[" + compositionName + "]Adding Action/Sound Part at " + time + " for " + playTime + "s");
         }
 
         public void AddPart(SoundDef sound, SoundInfo info, float time, float playTime = 0)
         {
             actionParts.Add(new ActionPart(this, sound, info, time, playTime));
-            Log.Message("[" + compositionName + "]Adding Sound Part at " + time + " for " + playTime + "s");
+            TLog.Debug("[" + compositionName + "]Adding Sound Part at " + time + " for " + playTime + "s");
         }
 
         public int CurrentTick => curTick;
@@ -66,14 +66,14 @@ namespace TiberiumRim
                     var action2 = actionParts[k];
                     if (action.startTick == action2.startTick)
                     {
-                        Log.Error("Action " + i + " is simultanous to action " + k + "!");
+                        TLog.Error("Action " + i + " is simultanous to action " + k + "!");
                     }
                 }
             }
             startTick = actionParts.First().startTick;
             endTick = actionParts.Last().endTick;
 
-            Log.Message("Initializing ActionComposition starttick: " + startTick + " endTick: " + endTick);
+            TLog.Debug("Initializing ActionComposition starttick: " + startTick + " endTick: " + endTick);
             GameComponent_TR.TRComp().ActionCompositionHolder.InitComposition(this);
         }
 

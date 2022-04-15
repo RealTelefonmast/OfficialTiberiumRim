@@ -199,7 +199,6 @@ namespace TiberiumRim
             if (frame2.HasValue)
                 return frame2.Value.Data;
 
-
             return element.KeyFrameData;
         }
 
@@ -217,6 +216,7 @@ namespace TiberiumRim
             });
 
             //
+            //hasTopBar = false;
             tickLength = 10f.SecondsToTicks();
             playTickRange = new IntRange(0, tickLength);
         }
@@ -287,89 +287,74 @@ namespace TiberiumRim
         {
             int topSize = 30;
             int leftSize = 125;
-            Rect topPart = inRect.TopPartPixels(topSize);
-            Rect botPart = inRect.BottomPartPixels(inRect.height - topPart.height);
+            int elementSize = 25;
+            int timeLineContract = 10;
 
-            Rect leftPart = inRect.LeftPartPixels(leftSize);
-            Rect rightPart = inRect.RightPartPixels(inRect.width - leftPart.width);
+            Rect leftRect = inRect.LeftPartPixels(leftSize);
+            Rect rightRect = inRect.RightPartPixels(inRect.width - leftSize);
 
-            Widgets.DrawHighlight(topPart);
-            Widgets.DrawHighlight(botPart);
-            Widgets.DrawHighlight(leftPart);
-            Widgets.DrawHighlight(rightPart);
-        }
+            Rect topLeft = leftRect.TopPartPixels(topSize);
+            Rect botLeft = leftRect.BottomPartPixels(inRect.height - topSize);
 
+            Rect topRight = rightRect.TopPartPixels(topSize);
+            Rect botRight = rightRect.BottomPartPixels(inRect.height - topSize);
 
-        protected void DrawContents2(Rect inRect)
-        {
-            Rect topPart = inRect.TopPartPixels(30);
-            Rect botPart = inRect.BottomPartPixels(inRect.height - topPart.height);
+            TimeControlButtons(TopRect.RightPartPixels(TopRect.width - leftSize));
 
-            Rect leftPart = inRect.LeftPartPixels(100);
-            Rect rightPart = inRect.RightPartPixels(inRect.width - leftPart.width);
+            //Element List Scroller
+            int elementListCount = 10; //framedElements.Count
+            Rect elementListViewRect = new Rect(botLeft.x, botLeft.y, botLeft.width,
+                (elementListCount * elementSize) - botLeft.height);
 
-            Rect elementListRect = new Rect(0, botPart.y, leftPart.width, botPart.height);
-            Rect timeLineElementListRect = new Rect(leftPart.width, botPart.y, rightPart.width, botPart.height);
-
-            //
-
-            Rect elementScrollList = new Rect(elementListRect.x, elementListRect.y, elementListRect.width, framedElements.Count * 20f);
-           
-            Rect timeLineFullScrollRect = new Rect(rightPart.x, rightPart.y, TimeLineLength, Mathf.Max(rightPart.height, elementScrollList.height)).ExpandedBy(10, 0);
-            Rect elementTimeLineFullScrollRect = new Rect(rightPart.x, TopRect.yMax, timeLineFullScrollRect.width, framedElements.Count * 20f);
+            //Time Line Scroller
+            Rect timelineViewRect =
+                new Rect(topRight.x, topRight.y, TimeLineLength, rightRect.height).ExpandedBy(timeLineContract, 0);
+            Rect timelineBotViewRect = new Rect(botRight.x, botRight.y, TimeLineLength, elementListViewRect.height);
 
             //
-            Rect playRect = new Rect(leftPart.xMax - 16, leftPart.y, 16, 16);
-            Rect topBar = new Rect(rightPart.x, TopRect.y, rightPart.width, TopRect.height);
-            TimeControlButtons(playRect, topBar);
-
-            //Scrolling through left element list
-            Widgets.BeginScrollView(elementListRect, ref elementScrollPos, elementScrollList, false);
-            float curY = elementListRect.y;
-            foreach (var element in framedElements.Keys)
+            float curY = 0;
+            Widgets.BeginScrollView(botLeft, ref elementScrollPos, elementListViewRect, false);
             {
-                Rect left = new Rect(leftPart.x, curY, leftPart.width, 20);
-                Rect right = new Rect(rightPart.x, curY, TimeLineLength, 20);
-                ElementListing(left, element);
-                ElementTimeLine(right, element);
-                curY += 20;
+                curY = elementListViewRect.y;
+                foreach (var element in framedElements.Keys)
+                {
+                    Rect left = new Rect(botLeft.x, curY, botLeft.width, elementSize);
+                    ElementListing(left, element);
+                    curY += elementSize;
+                }
             }
             Widgets.EndScrollView();
 
-            //Scrolling on the right timeline
-            Widgets.ScrollHorizontal(rightPart, ref timeLineScrollPos, timeLineFullScrollRect);
-            Widgets.BeginScrollView(rightPart, ref timeLineScrollPos, timeLineFullScrollRect, false);
-            
-            Widgets.DrawBoxSolid(timeLineFullScrollRect, TRMats.BGDarker);
-            DrawTimeSelector(timeLineFullScrollRect);
-            
+            //
+            Widgets.DrawBoxSolid(rightRect, TRMats.BGDarker);
+            Widgets.ScrollHorizontal(rightRect, ref timeLineScrollPos, timelineViewRect);
+            Widgets.BeginScrollView(rightRect, ref timeLineScrollPos, timelineViewRect, false);
+            {
+                DrawTimeSelector(timelineViewRect.ContractedBy(timeLineContract, 0));
+            }
             Widgets.EndScrollView();
 
-            elementScrollPos = new Vector2(timeLineScrollPos.x, elementScrollPos.y);
-            //
-            /*
-            GUI.BeginScrollView(elementListRect, elementScrollPos, elementTimeLineFullScrollRect, GUIStyle.none, GUIStyle.none);
-            if (!framedElements.NullOrEmpty())
+            timeLineScrollPos = new Vector2(timeLineScrollPos.x, elementScrollPos.y);
+            GUI.BeginScrollView(botRight, timeLineScrollPos, timelineBotViewRect, GUIStyle.none, GUIStyle.none);
             {
-                curY = timeLineElementListRect.y;
+                curY = timelineBotViewRect.y;
                 foreach (var element in framedElements.Keys)
                 {
-                    Rect right = new Rect(rightPart.x, curY, TimeLineLength, 20);
+                    Rect right =
+                        new Rect(timelineBotViewRect.x, curY, TimeLineLength, elementSize).ContractedBy(
+                            timeLineContract, 0);
                     ElementTimeLine(right, element);
-                    curY += 20;
+                    curY += elementSize;
                 }
             }
             GUI.EndScrollView();
-            */
 
-
-            TRWidgets.DrawBox(rightPart, TRMats.MenuSectionBGBorderColor, 1);
+            TRWidgets.DrawBox(rightRect, TRMats.MenuSectionBGBorderColor, 1);
         }
 
         private void DrawTimeSelector(Rect rect)
         {
             //TopPart
-            rect = rect.ContractedBy(10, 0);
             Rect timeBar = rect.TopPartPixels(30);
 
             //Draw Global
@@ -551,15 +536,16 @@ namespace TiberiumRim
 
         public static float SCROLLVAL = 1;
 
-        private void TimeControlButtons(Rect playRect, Rect topSettingPart)
+        public static float ROTATION = 0;
+
+        private void TimeControlButtons(Rect topPart)
         {
-            if (Widgets.ButtonImage(playRect, TiberiumContent.PlayPause))
+            Widgets.BeginGroup(topPart);
+            WidgetRow row = new WidgetRow();
+            if (row.ButtonIcon(TiberiumContent.PlayPause))
             {
                 isPaused = !isPaused;
             }
-
-            Widgets.BeginGroup(topSettingPart);
-            WidgetRow row = new WidgetRow();
             if (row.ButtonIcon(TiberiumContent.AddKeyFrame))
             {
                 foreach (var element in framedElements.Keys)
@@ -570,7 +556,12 @@ namespace TiberiumRim
 
             row.Slider(125, ref zoomFactor, zoomRange.min, zoomRange.max);
             row.Slider(125, ref SCROLLVAL, 0.5f, 2);
+            row.Slider(125, ref ROTATION, 0, 360);
 
+            if (Canvas.ActiveTexture != null)
+            {
+                //Canvas.ActiveTexture.SetTRSP_Direct(rot: Canvas.ActiveTexture.TRotation);
+            }
 
             row.Label($"{TRFind.TickManager.CurrentTick}");
             row.Init(0, Rect.height - 16, UIDirection.LeftThenUp);

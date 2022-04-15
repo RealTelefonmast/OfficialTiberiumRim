@@ -10,6 +10,8 @@ namespace TiberiumRim
 {
     public class CustomNetworkBill : IExposable
     {
+        private static NetworkRole NetworkFlags => NetworkRole.Consumer | NetworkRole.Producer;
+        
         //General
         public NetworkBillStack billStack;
 
@@ -30,7 +32,7 @@ namespace TiberiumRim
         public float WorkLeft => workAmountLeft;
 
         public bool HasBeenPaid => hasBeenPaid;
-        public bool CanBeWorkedOn => hasBeenPaid || CanPay();
+        public bool CanBeWorkedOn => hasBeenPaid || (CanPay());
 
         private string WorkLabel => "TR_NetworkBillWork".Translate((int)workAmountLeft);
         private string CostLabel => "TR_NetworkBillCost".Translate(ITab_CustomRefineryBills.CostLabel(networkCost));
@@ -89,82 +91,26 @@ namespace TiberiumRim
         {
             if (!CanBeWorkedOn) return false;
             if (iterationsLeft == 0) return false;
-
             return true;
         }
 
         private bool CanPay()
         {
+            if (networkCost.NullOrEmpty())
+            {
+                TLog.Error($"Trying to pay for {billName} with empty networkCost! | Paid: {HasBeenPaid} WorkLeft: {WorkLeft}");
+                return false;
+            }
             float totalNeeded = networkCost.Sum(t => t.Value);
             foreach (var value in networkCost)
             {
                 var network = billStack.ParentComp[value.Def.networkDef].Network;
-                if (network.NetworkValueFor(value.Def) >= value.Value)
+                if (network.NetworkValueFor(value.Def, NetworkFlags) >= value.Value)
                 {
                     totalNeeded -= value.Value;
                 }
             }
             return totalNeeded == 0;
-        }
-
-        public void Pay()
-        {
-            float totalNeeded = networkCost.Sum(t => t.Value);
-            var storages = billStack.ParentNetComps.SelectMany(n => n.Network.ComponentSet.Storages);
-            foreach (var storage in storages)
-            {
-                foreach (var value in networkCost)
-                {
-                    if (totalNeeded <= 0)
-                    {
-                        hasBeenPaid = true;
-                        return;
-                    }
-                    if (storage.Container.ValueForType(value.Def) > 0 && storage.Container.TryRemoveValue(value.Def, value.Value, out float actualVal))
-                    {
-                        totalNeeded -= actualVal;
-                    }
-                }
-            }
-            if(totalNeeded > 0)
-                TLog.Error("TotalCost higher than 0 after payment!");
-        }
-
-        private void Refund()
-        {
-            var storages = billStack.ParentNetComps.SelectMany(n => n.Network.ComponentSet.Storages);
-            NetworkValueStack stack = new NetworkValueStack();
-            foreach (var value in networkCost)
-            {
-                stack.Add(value.Def, value.Value);
-            }
-            
-            foreach (var storage in storages)
-            {
-                foreach (var value in stack.networkValues)
-                {
-                    if (storage.Container.TryAddValue(value.valueDef, value.valueF, out float actualValue))
-                    {
-                        value.AdjustValue(-actualValue);
-                    }
-                }
-            }
-
-            if (stack.TotalValue > 0)
-            {
-                TLog.Warning("Stack not empty after refunding... dropping container.");
-                PortableContainer container = (PortableContainer)ThingMaker.MakeThing(TiberiumDefOf.PortableContainer);
-                container.SetContainerProps(new ContainerProperties()
-                {
-                    doExplosion = false,
-                    dropContents = false,
-                    explosionRadius = 0,
-                    leaveContainer = false,
-                    maxStorage = Mathf.RoundToInt(stack.TotalValue)
-                });
-                container.SetContainer(new NetworkContainer(container, stack));
-                GenSpawn.Spawn(container, billStack.ParentBuilding.Position, billStack.ParentBuilding.Map);
-            }
         }
 
         public bool TryFinish()
@@ -201,10 +147,55 @@ namespace TiberiumRim
         }
 
         //Allocate network cost as "paid", refund if cancelled
-        public void StartWorkAndPay()
+        public void DoWork(Pawn pawn)
+        {
+            StartWorkAndPay();
+            float num = pawn.GetStatValue(StatDefOf.GeneralLaborSpeed, true);
+            Building billBuilding = billStack.ParentBuilding;
+            if (billBuilding != null)
+            {
+                num *= billBuilding.GetStatValue(StatDefOf.WorkSpeedGlobal, true);
+            }
+
+            if (DebugSettings.fastCrafting)
+            {
+                num *= 30f;
+            }
+            workAmountLeft = Mathf.Clamp(workAmountLeft - num, 0, float.MaxValue);
+        }
+
+        private void StartWorkAndPay()
         {
             if (HasBeenPaid) return;
-            Pay();
+            if (TryPay()) return;
+            
+            //Failed to pay...
+        }
+
+        private bool TryPay()
+        {
+            float totalNeeded = networkCost.Sum(t => t.Value);
+            var storages = billStack.ParentNetComps.SelectMany(n => n.ContainerSet[NetworkFlags]); //billStack.ParentNetComps.SelectMany(n => n.Network.ComponentSet.Storages);
+            foreach (var storage in storages)
+            {
+                foreach (var value in networkCost)
+                {
+                    if (storage.ValueForType(value.Def) > 0 && storage.TryRemoveValue(value.Def, value.Value, out float actualVal))
+                    {
+                        totalNeeded -= actualVal;
+                    }
+
+                    if (totalNeeded <= 0)
+                    {
+                        hasBeenPaid = true;
+                        return true;
+                    }
+                }
+            }
+           
+            if (totalNeeded > 0)
+                TLog.Error($"TotalCost higher than 0 after payment! LeftOver: {totalNeeded}");
+            return false;
         }
 
         //Refund
@@ -213,20 +204,41 @@ namespace TiberiumRim
             Refund();
         }
 
-        public void DoWork(Pawn pawn)
+        private void Refund()
         {
-            float num = pawn.GetStatValue(StatDefOf.GeneralLaborSpeed, true);
-            Building billBuilding = billStack.ParentBuilding;
-            if (billBuilding != null)
+            var storages = billStack.ParentNetComps.SelectMany(n => n.ContainerSet[NetworkFlags]);
+            NetworkValueStack stack = new NetworkValueStack();
+            foreach (var value in networkCost)
             {
-                num *= billBuilding.GetStatValue(StatDefOf.WorkSpeedGlobal, true);
+                stack.Add(value.Def, value.Value);
             }
-            
-            if (DebugSettings.fastCrafting)
+
+            foreach (var storage in storages)
             {
-                num *= 30f;
+                foreach (var value in stack.networkValues)
+                {
+                    if (storage.TryAddValue(value.valueDef, value.valueF, out float actualValue))
+                    {
+                        stack -= new NetworkValue(value.valueDef, actualValue);
+                    }
+                }
             }
-            workAmountLeft = Mathf.Clamp(workAmountLeft - num, 0, float.MaxValue);
+
+            if (stack.TotalValue > 0)
+            {
+                TLog.Warning($"Stack not empty ({stack.TotalValue}) after refunding... dropping container.");
+                PortableContainer container = (PortableContainer)ThingMaker.MakeThing(TiberiumDefOf.PortableContainer);
+                container.SetContainerProps(new ContainerProperties()
+                {
+                    doExplosion = false,
+                    dropContents = false,
+                    explosionRadius = 0,
+                    leaveContainer = false,
+                    maxStorage = Mathf.RoundToInt(stack.TotalValue)
+                });
+                container.SetContainer(new NetworkContainer(container, stack));
+                GenSpawn.Spawn(container, billStack.ParentBuilding.Position, billStack.ParentBuilding.Map);
+            }
         }
 
         public void DrawBill(Rect rect, int index)
@@ -241,82 +253,98 @@ namespace TiberiumRim
                 TRWidgets.DrawHighlightColor(rect, Color.green);
             }
 
-            if(index % 2 == 0)
+            if (index % 2 == 0)
                 Widgets.DrawAltRect(rect);
             rect = rect.ContractedBy(5);
 
             Widgets.BeginGroup(rect);
-            rect = rect.AtZero();
-
-            //Name
-            Vector2 labelSize = Text.CalcSize(billName);
-            Rect labelRect = new Rect(new Vector2(0, 0), labelSize);
-            Widgets.Label(labelRect, billName);
-
-            //Controls
-            Rect removeRect = new Rect(rect.width - 20f, 0f, 22f, 22f);
-            Rect copyRect = new Rect(removeRect.x - 20, 0f, 22f, 22f);
-            if (Widgets.ButtonImage(removeRect, TexButton.DeleteX, Color.white, Color.white * GenUI.SubtleMouseoverColor, true))
             {
-                billStack.Delete(this);
-            }
-            if (Widgets.ButtonImageFitted(copyRect, TiberiumContent.Copy, Color.white))
-            {
-                ClipBoardUtility.Clipboard = this.Clone();
-                SoundDefOf.Tick_High.PlayOneShotOnCamera(null);
-            }
+                rect = rect.AtZero();
 
-            var newRect = new Rect(0, labelRect.height, rect.width, contentHeight);
-            var leftRect = newRect.LeftHalf();
-            var rightRect = newRect.RightHalf();
+                //Name
+                Vector2 labelSize = Text.CalcSize(billName);
+                Rect labelRect = new Rect(new Vector2(0, 0), labelSize);
+                Widgets.Label(labelRect, billName);
 
-            //LEFT
-            Widgets.BeginGroup(leftRect);
-            //List
-            float curY = 0;
-            foreach (var result in results) 
-            {
-                WidgetRow row = new WidgetRow(0, curY, UIDirection.RightThenDown);
-                row.Icon(result.ThingDef.uiIcon, result.ThingDef.description);
-                row.Label($"×{result.Count}");
-                curY += 24 + 5;
-            }
-            Widgets.EndGroup();
-
-            //RIGHT
-            Widgets.BeginGroup(rightRect);
-
-            Rect workBarRect = new Rect(rightRect.width - 75, rightRect.height - (24 + 5), 100, 24);
-            Widgets.FillableBar(workBarRect, Mathf.InverseLerp(0, workAmountTotal, workAmountTotal-workAmountLeft));
-
-            Widgets.EndGroup();
-
-            Rect bottomRect = new Rect(0, newRect.yMax, rect.width, 24);
-            Widgets.BeginGroup(bottomRect);
-            bottomRect = bottomRect.AtZero();
-
-            Vector2 countLabelSize = Text.CalcSize(CountLabel);
-            Rect countLabelRect = new Rect(0, 0, countLabelSize.x, countLabelSize.y);
-            Widgets.Label(countLabelRect, CountLabel);
-
-            WidgetRow controlRow = new WidgetRow(bottomRect.xMax, 0, UIDirection.LeftThenUp);
-            if (controlRow.ButtonText(repeatMode.LabelCap))
-            {
-                DoConfigFloatMenu();
-            }
-
-            if (repeatMode == BillRepeatModeDefOf.RepeatCount)
-            {
-                if (controlRow.ButtonIcon(TiberiumContent.Plus))
+                //Controls
+                Rect removeRect = new Rect(rect.width - 20f, 0f, 22f, 22f);
+                Rect copyRect = new Rect(removeRect.x - 20, 0f, 22f, 22f);
+                if (Widgets.ButtonImage(removeRect, TexButton.DeleteX, Color.white, Color.white * GenUI.SubtleMouseoverColor, true))
                 {
-                    iterationsLeft++;
+                    billStack.Delete(this);
                 }
-                if (controlRow.ButtonIcon(TiberiumContent.Minus))
+                if (Widgets.ButtonImageFitted(copyRect, TiberiumContent.Copy, Color.white))
                 {
-                    iterationsLeft = Mathf.Clamp(iterationsLeft - 1, 0, int.MaxValue);
+                    ClipBoardUtility.Clipboard = this.Clone();
+                    SoundDefOf.Tick_High.PlayOneShotOnCamera(null);
                 }
+
+                var newRect = new Rect(0, labelRect.height, rect.width, contentHeight);
+                var leftRect = newRect.LeftHalf();
+                var rightRect = newRect.RightHalf();
+
+                //LEFT
+                Widgets.BeginGroup(leftRect);
+                {
+                    //List
+                    float curY = 0;
+                    foreach (var result in results)
+                    {
+                        WidgetRow row = new WidgetRow(0, curY, UIDirection.RightThenDown);
+                        row.Icon(result.ThingDef.uiIcon, result.ThingDef.description);
+                        row.Label($"×{result.Count}");
+                        curY += 24 + 5;
+                    }
+                }
+                Widgets.EndGroup();
+
+                //RIGHT
+                Widgets.BeginGroup(rightRect);
+                {
+                    Rect workBarRect = new Rect(rightRect.width - 75, rightRect.height - (24 + 5), 100, 24);
+                    Widgets.FillableBar(workBarRect, Mathf.InverseLerp(0, workAmountTotal, workAmountTotal - workAmountLeft));
+                }
+                Widgets.EndGroup();
+
+                Rect bottomRect = new Rect(0, newRect.yMax, rect.width, 24);
+                Widgets.BeginGroup(bottomRect);
+                {
+                    bottomRect = bottomRect.AtZero();
+
+                    Vector2 countLabelSize = Text.CalcSize(CountLabel);
+                    Rect countLabelRect = new Rect(0, 0, countLabelSize.x, countLabelSize.y);
+                    Widgets.Label(countLabelRect, CountLabel);
+
+                    WidgetRow controlRow = new WidgetRow(bottomRect.xMax, 0, UIDirection.LeftThenUp);
+                    if (controlRow.ButtonText(repeatMode.LabelCap))
+                    {
+                        DoConfigFloatMenu();
+                    }
+
+                    if (repeatMode == BillRepeatModeDefOf.RepeatCount)
+                    {
+                        if (controlRow.ButtonIcon(TiberiumContent.Plus))
+                        {
+                            int incrementor = 1;
+                            if (Event.current.keyCode == KeyCode.LeftShift)
+                                incrementor = 10;
+                            if (Event.current.keyCode == KeyCode.LeftControl)
+                                incrementor = 100;
+                            iterationsLeft += incrementor;
+                        }
+                        if (controlRow.ButtonIcon(TiberiumContent.Minus))
+                        {
+                            int incrementor = 1;
+                            if (Event.current.keyCode == KeyCode.LeftShift)
+                                incrementor = 10;
+                            if (Event.current.keyCode == KeyCode.LeftControl)
+                                incrementor = 100;
+                            iterationsLeft = Mathf.Clamp(iterationsLeft - incrementor, 0, int.MaxValue);
+                        }
+                    }
+                }
+                Widgets.EndGroup();
             }
-            Widgets.EndGroup();
             Widgets.EndGroup();
         }
 

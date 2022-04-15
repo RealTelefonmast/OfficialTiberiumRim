@@ -88,7 +88,7 @@ namespace TiberiumRim
             {
                 Rect box = new Rect(pos, new Vector2(45, 45));
                 TRWidgets.DrawBoxHighlight(box);
-                Widgets.DrawTextureFitted(box.ContractedBy(1), texture.texture, 1f);
+                Widgets.DrawTextureFitted(box.ContractedBy(1), texture.Texture, 1f);
                 return;
             }
 

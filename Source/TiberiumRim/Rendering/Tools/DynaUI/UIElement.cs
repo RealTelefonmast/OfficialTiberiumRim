@@ -108,7 +108,7 @@ namespace TiberiumRim
             }
         }
 
-        public Rect InRect => new Rect(Rect.x, hasTopBar? TopRect.yMax : Rect.y, Rect.width, Rect.height - TopRect.height);
+        public Rect InRect => new Rect(Rect.x, hasTopBar ? TopRect.yMax : Rect.y, Rect.width, Rect.height - (hasTopBar ? TopRect.height : 0));
 
         public Rect? DragContext => parent?.Rect ?? null;
 
@@ -187,6 +187,14 @@ namespace TiberiumRim
             return Mouse.IsOver(DragAreaRect);
         }
 
+        //
+        public virtual void Notify_AddedToContainer(UIContainer parent)
+        {
+        }
+
+        public virtual void Notify_RemovedFromContainer(UIContainer parent)
+        {
+        }
 
         //Drawing
         public void DrawElement(Rect? overrideRect = null)

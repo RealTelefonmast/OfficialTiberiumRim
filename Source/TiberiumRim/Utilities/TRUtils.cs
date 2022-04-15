@@ -49,7 +49,7 @@ namespace TiberiumRim
         {
             if (map == null)
             {
-                Log.Warning("Map is null for Tiberium MapComp getter");
+                TLog.Warning("Map is null for Tiberium MapComp getter");
                 return null;
             }
             return StaticData.TiberiumMapComp[map.uniqueID];
@@ -120,7 +120,7 @@ namespace TiberiumRim
             TiberiumRimMod mod = LoadedModManager.GetMod<TiberiumRimMod>();
             if (mod == null)
             {
-                Log.Error("LoadedModManager.GetMod<TiberiumRimMod>() failed", false);
+                TLog.Error("LoadedModManager.GetMod<TiberiumRimMod>() failed");
                 return "";
             }
             return mod.Content.RootDir;
@@ -780,6 +780,11 @@ namespace TiberiumRim
             }
             return null;
         }
+        
+        public static IEnumerable<T> AllFlags<T>(this T enumType) where T : Enum
+        {
+            return enumType.GetAllSelectedItems<T>();
+        }
 
         public static string ShortLabel(this Enum enumType)
         {
@@ -830,7 +835,7 @@ namespace TiberiumRim
                 TLog.Error($"Tried to find {texture} location as non Texture2D");
                 return null;
             }
-            return LoadedModManager.RunningMods.Select(m => m.textures.contentList.First(t => t.Value == (Texture2D) texture)).First().Key;
+            return LoadedModManager.RunningMods.SelectMany(m => m.textures.contentList).First(t => t.Value == tx2D).Key;
         }
 
         public static string Location(this Shader shader)

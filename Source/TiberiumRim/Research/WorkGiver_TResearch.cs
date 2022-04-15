@@ -12,7 +12,10 @@ namespace TiberiumRim
 
         public override bool Prioritized => true;
 
-        public override ThingRequest PotentialWorkThingRequest
+        public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForUndefined();
+        public override Danger MaxPathDanger(Pawn pawn) => Danger.Some;
+
+        /*
         {
             get
             {
@@ -21,6 +24,7 @@ namespace TiberiumRim
                 return ThingRequest.ForGroup(ThingRequestGroup.Nothing);
             }
         }
+        */
 
         public override bool ShouldSkip(Pawn pawn, bool forced = false)
         {

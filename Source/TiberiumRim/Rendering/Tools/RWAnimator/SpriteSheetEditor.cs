@@ -10,9 +10,7 @@ namespace TiberiumRim
 {
     public class SpriteSheetEditor : UIElement, IDragAndDropReceiver
     {
-        private SpriteSheetViewer spriteViewer;
-
-        private Texture texture;
+        private WrappedTexture texture;
         private List<SpriteTile> tiles;
 
         private TextureSpriteSheet finalSheet;
@@ -26,7 +24,7 @@ namespace TiberiumRim
         private Rect? currentTile;
 
 
-        public Texture Texture => texture;
+        public Texture Texture => texture.Texture;
         public List<SpriteTile> Tiles => tiles;
 
         //
@@ -47,10 +45,9 @@ namespace TiberiumRim
         private Rect ExportRect => ExportInteractRect.LeftPartPixels(SettingsRect.height);
         private Rect ViewRectButton => ExportInteractRect.RightPartPixels(SettingsRect.height * 0.5f);
 
-
         //Viewer
-        private bool ViewerIsActive { get; set; }
-        private Rect ViewerRect => new Rect(BaseRect.x, BaseRect.yMax, BaseRect.width, 250);
+        //private bool ViewerIsActive { get; set; }
+        //private Rect ViewerRect => new Rect(BaseRect.x, BaseRect.yMax, BaseRect.width, 250);
 
         //
         public override string Label => "Sprite Sheet Editor";
@@ -64,15 +61,13 @@ namespace TiberiumRim
         {
             Title = "Texture Sheet Editor";
             Size = new Vector2(800, 425);
-
-            spriteViewer = new SpriteSheetViewer(mode);
             tiles = new List<SpriteTile>();
 
             UIDragNDropper.RegisterAcceptor(this);
         }
 
         //
-        public void LoadTexture(Texture texture)
+        public void LoadTexture(WrappedTexture texture)
         {
             //TODO: Notify replacemenet
             this.texture = texture;
@@ -80,7 +75,7 @@ namespace TiberiumRim
 
         private void CreateTile(Rect tileRect)
         {
-            finalSheet ??= new TextureSpriteSheet(texture, tiles);
+            finalSheet ??= new TextureSpriteSheet(Texture, tiles);
 
             var tile = new SpriteTile(CanvasRect, tileRect, Texture);
             tiles.Add(tile);
@@ -91,14 +86,19 @@ namespace TiberiumRim
         private void Clear()
         {
             tiles.Clear();
-            texture = null;
+            texture.Clear();
             finalSheet = null;
         }
+
+        private static int GridDimensions = 10;
 
         //
         protected override void HandleEvent_Custom(Event ev, bool inContext)
         {
             var inEditor = CanvasRect.Contains(ev.mousePosition);
+
+
+
             if (finalSheet != null && ExportRect.Contains(ev.mousePosition))
             {
                 if(ev.type == EventType.MouseDown)
@@ -113,15 +113,19 @@ namespace TiberiumRim
                 }
                 else
                 {
-                    var translatedPos = (StartDragPos - CanvasRect.position);
+                    var tileSize = CanvasRect.width/ GridDimensions;
+                    var tp = (StartDragPos - CanvasRect.position);
+                    var cdd = CurrentDragDiff;
+                    var startDragSnapped = new Vector2(Mathf.RoundToInt(tp.x / tileSize) * tileSize, Mathf.RoundToInt(tp.y / tileSize) * tileSize);
+                    var dragDiffSnapped = new Vector2(Mathf.RoundToInt(cdd.x / tileSize) * tileSize, Mathf.RoundToInt(cdd.y / tileSize) * tileSize);
 
                     if (CurrentDragDiff.x < 0)
-                        translatedPos.x += CurrentDragDiff.x;
+                        startDragSnapped.x += dragDiffSnapped.x;
 
                     if (CurrentDragDiff.y < 0)
-                        translatedPos.y += CurrentDragDiff.y;
+                        startDragSnapped.y += dragDiffSnapped.y;
 
-                    currentTile = new Rect(translatedPos, CurrentDragDiff.Abs());
+                    currentTile = new Rect(startDragSnapped, dragDiffSnapped.Abs());
                 }
 
                 if (ev.type == EventType.MouseUp)
@@ -135,13 +139,11 @@ namespace TiberiumRim
 
         protected override void DrawContents(Rect inRect)
         {
-            DrawCanvas(CanvasRect);
+            DrawCanvas(CanvasRect.Rounded());
 
             //
-            if(ViewerIsActive)
-                spriteViewer.DrawElement(ViewerRect);
 
-            if (texture == null) return;
+            if (Texture == null) return;
             DrawTileList(TileListRect);
             DrawSettings(SettingsRect);
 
@@ -149,14 +151,43 @@ namespace TiberiumRim
             DrawTileInfo(TileInfoRect, selTile.Value);
         }
 
+        private void DrawMouseOnGrid(Rect rect, int gridTileSize)
+        {
+            Widgets.BeginGroup(rect);
+            {
+                var mp = Event.current.mousePosition;
+                var mousePos = new Vector2(Mathf.RoundToInt(mp.x / gridTileSize) * gridTileSize, Mathf.RoundToInt(mp.y / gridTileSize) * gridTileSize);
+                //Draw SnapPos
+                Widgets.DrawLineHorizontal(mousePos.x - 5, mousePos.y, 10);
+                Widgets.DrawLineVertical(mousePos.x, mousePos.y - 5, 10);
+            }
+            Widgets.EndGroup();
+        }
+
+        private void DrawCanvasGrid(Rect canvasRect, int tileSize, int dimension)
+        {
+            TRWidgets.DrawColoredBox(canvasRect, TRMats.BGDarker, TRMats.MenuSectionBGBorderColor, 1);
+            GUI.color = TRColor.White025;
+            {
+                var curX = canvasRect.x;
+                var curY = canvasRect.y;
+                for (int x = 0; x < dimension; x++)
+                {
+                    Widgets.DrawLineVertical(curX, canvasRect.y, canvasRect.height);
+                    Widgets.DrawLineHorizontal(canvasRect.x, curY, canvasRect.width);
+                    curY += tileSize;
+                    curX += tileSize;
+                }
+            }
+            GUI.color = Color.white;
+            DrawMouseOnGrid(canvasRect, tileSize);
+        }
+
         private void DrawCanvas(Rect rect)
         {
-            TRWidgets.DrawColoredBox(rect, TRMats.BGDarker, TRMats.MenuSectionBGBorderColor, 1);
-            TRWidgets.DrawGrid(rect, 10, asCellAmount:true);
+            DrawCanvasGrid(rect, Mathf.RoundToInt(rect.width / GridDimensions), GridDimensions);
 
             if (Texture == null) return;
-
-            //Draw Texture
             Widgets.DrawTextureFitted(rect, Texture, 1);
 
             //Draw Tiles
@@ -279,36 +310,34 @@ namespace TiberiumRim
                 Widgets.Label(ExportRect, "Take");
                 Text.Anchor = default;
             }
+        }
 
-            //
-            TRWidgets.DrawColoredBox(ViewRectButton, TRMats.BGDarker, TRMats.MenuSectionBGBorderColor, 1);
-            Text.Anchor = TextAnchor.MiddleCenter;
-            Matrix4x4 matrix = GUI.matrix;
-            UI.RotateAroundPivot(90, ViewRectButton.center);
-            Widgets.Label(ViewRectButton, ">>>");
-            GUI.matrix = matrix;
-            Text.Anchor = default;
-            if (Widgets.ButtonInvisible(ViewRectButton))
-            {
-                ViewerIsActive = !ViewerIsActive;
-            }
+        protected override IEnumerable<FloatMenuOption> RightClickOptions()
+        {
+            return base.RightClickOptions();
         }
 
         //Drag N Drop
         public void DrawHoveredData(object draggedObject, Vector2 pos)
         {
-            if (draggedObject is Texture texture)
+            if (draggedObject is WrappedTexture texture)
             {
-                var label = $"Splice '{texture.name}'";
+                var label = $"Splice '{texture.Texture.name}'";
                 var size = Text.CalcSize(label);
                 pos.y -= size.y;
+
+                //
+                GUI.color = TRColor.White075;
+                Widgets.DrawTextureFitted(CanvasRect, texture.Texture, 1);
+                GUI.color = Color.white;
+
                 Widgets.Label(new Rect(pos, size), label);
             }
         }
 
         public bool TryAccept(object draggedObject, Vector2 pos)
         {
-            if (draggedObject is Texture texture)
+            if (draggedObject is WrappedTexture texture)
             {
                 LoadTexture(texture);
                 return true;
@@ -318,7 +347,7 @@ namespace TiberiumRim
 
         public bool Accepts(object draggedObject)
         {
-            return draggedObject is Texture;
+            return draggedObject is WrappedTexture;
         }
     }
 }

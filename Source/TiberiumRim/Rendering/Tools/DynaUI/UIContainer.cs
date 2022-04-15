@@ -40,12 +40,12 @@ namespace TiberiumRim
         //Data Notifiers
         protected virtual void Notify_AddedElement(UIElement newElement)
         {
-
+            newElement.Notify_AddedToContainer(this);
         }
 
         protected virtual void Notify_RemovedElement(UIElement newElement)
         {
-
+            newElement.Notify_RemovedFromContainer(this);
         }
 
         protected override void Notify_ChildElementChanged(UIElement element)

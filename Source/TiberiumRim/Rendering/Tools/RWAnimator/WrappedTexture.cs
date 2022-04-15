@@ -9,13 +9,22 @@ namespace TiberiumRim
 {
     public struct WrappedTexture
     {
-        public readonly string path;
-        public readonly Texture texture;
+        private string path;
+        private Texture texture;
+
+        public string Path => path;
+        public Texture Texture => texture;
 
         public WrappedTexture(string path, Texture texture)
         {
             this.path = path;
             this.texture = texture;
+        }
+
+        public void Clear()
+        {
+            path = null;
+            texture = null;
         }
     }
 }

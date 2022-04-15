@@ -25,10 +25,6 @@ namespace TiberiumRim
             yield return Toils_Goto.Goto(TargetIndex.A, PathEndMode.InteractionCell);
             var billToil = new Toil();
             billToil.FailOn(() => CurrentBill == null || !CurrentBill.ShouldDoNow());
-            billToil.initAction = delegate
-            {
-                CurrentBill.StartWorkAndPay();
-            };
             billToil.tickAction = delegate
             {
                 var bill = CurrentBill;

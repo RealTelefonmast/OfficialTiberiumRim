@@ -44,12 +44,14 @@ namespace TiberiumRim
 
         protected override void Notify_AddedElement(UIElement newElement)
         {
+            base.Notify_AddedElement(newElement);
             layerView.Notify_NewLayer(newElement as TextureElement);
             TimeLine.Notify_NewElement(newElement as TextureElement);
         }
 
         protected override void Notify_RemovedElement(UIElement newElement)
         {
+            base.Notify_RemovedElement(newElement);
             layerView.Notify_RemovedLayer(newElement);
             TimeLine.Notify_RemovedElement(newElement);
         }
@@ -195,34 +197,50 @@ namespace TiberiumRim
                 GUI.FocusControl(null);
 
             listing.End();
+
+            //if(!ActiveTexture.SubParts.NullOrEmpty())
+                //DrawChildProperties(new Rect(rect.x, rect.yMax, rect.width, rect.height));
+        }
+
+        private void DrawChildProperties(Rect rect)
+        {
+            Widgets.DrawMenuSection(rect);
+            Listing_Standard listing = new Listing_Standard();
+            listing.Begin(rect.ContractedBy(4));
+            listing.Label("Sub Parts");
+            listing.GapLine();
+
+            foreach (var part in ActiveTexture.SubParts)
+            {
+                listing.TextureElement(part);
+            }
+
+            listing.End();
         }
 
         private void DrawCanvasGuidelines()
         {
             //Limit rect
-            //TRWidgets.DrawBox(Origin.RectOnPos(LimitSize), TRMats.White075, 2);
-            var canvasRect = Origin.RectOnPos(LimitSize).Rounded();
+            var dimension = 5;
+            var tileSize = 100 * CanvasZoomScale;
+            var limitSize = (new Vector2(tileSize, tileSize) * dimension);
+            var canvasRect = Origin.RectOnPos(limitSize).Rounded();
             TRWidgets.DrawColoredBox(canvasRect, TRMats.BGDarker, TRColor.White05, 1);
 
-            var xParts = canvasRect.width / 8;
-            var yParts = canvasRect.height / 8;
             GUI.color = TRColor.White025;
             var curX = canvasRect.x;
             var curY = canvasRect.y;
-            for (int x = 0; x < 8; x++)
+            for (int x = 0; x < dimension; x++)
             {
                 Widgets.DrawLineVertical(curX, canvasRect.y, canvasRect.height);
-                curX += xParts;
-            }
-            for (int y = 0; y < 8; y++)
-            {
                 Widgets.DrawLineHorizontal(canvasRect.x, curY, canvasRect.width);
-                curY += yParts;
+                curY += tileSize;
+                curX += tileSize;
             }
 
             GUI.color = TRColor.White05;
-            Widgets.DrawLineHorizontal(Origin.x-LimitSize.x/2, Origin.y, LimitSize.x);
-            Widgets.DrawLineVertical(Origin.x, Origin.y - LimitSize.y / 2, LimitSize.y);
+            Widgets.DrawLineHorizontal(Origin.x - limitSize.x / 2, Origin.y, limitSize.x);
+            Widgets.DrawLineVertical(Origin.x, Origin.y - limitSize.y / 2, limitSize.y);
             GUI.color = Color.white;
         }
 
@@ -232,8 +250,8 @@ namespace TiberiumRim
             GUI.color = TRColor.White05;
             if (draggedData is WrappedTexture tex)
             {
-                var texture = tex.texture;
-                Rect drawRect = pos.RectOnPos((new Vector2(texture.width, texture.height) / 2) * CanvasZoomScale);
+                var texture = tex.Texture;
+                Rect drawRect = pos.RectOnPos(new Vector2(100, 100) * CanvasZoomScale);
                 Widgets.DrawTextureFitted(drawRect, texture, 1);
                 TRWidgets.DoTinyLabel(drawRect, $"{pos}");
                 TRWidgets.DrawBox(drawRect, Color.black, 1);
@@ -241,7 +259,7 @@ namespace TiberiumRim
 
             if (draggedData is SpriteTile tile)
             {
-                Rect drawRect = pos.RectOnPos((tile.rect.size / 2) * CanvasZoomScale);
+                Rect drawRect = pos.RectOnPos(((tile.normalRect.size) * new Vector2(100,100)) * CanvasZoomScale);
                 tile.DrawTile(drawRect);
                 TRWidgets.DoTinyLabel(drawRect, $"{pos}");
                 TRWidgets.DrawBox(drawRect, Color.black, 1);
@@ -263,7 +281,7 @@ namespace TiberiumRim
             {
                 element = new TextureElement(new Rect(Vector2.zero, Size), tile.spriteMat, tile.normalRect);
                 AddElement(element);
-                element.SetTRSP_FromScreenSpace(size:tile.rect.size / 2f, pivot:tile.pivot);
+                element.SetTRSP_FromScreenSpace(pivot:tile.pivot);
             }
 
             return element != null;

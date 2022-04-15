@@ -44,8 +44,8 @@ namespace TiberiumRim
             canvas.TimeLine = timeLine;
             timeLine.Canvas = canvas;
             browser = new ObjectBrowser(new Rect(850, 50, 350, 700), UIElementMode.Dynamic);
-            saveLoader = new AnimationSaveLoader(canvas, new Rect(InitialSize.x - 650, 0, 650 - 130, 500), UIElementMode.Static);
-
+            saveLoader = new AnimationSaveLoader(canvas, new Rect(InitialSize.x - (125 + 650), 0, 650 - 125, 500), UIElementMode.Static);
+            
             //toolBar.AddElement(canvas);
             toolBar.AddElement(new SpriteSheetEditor(UIElementMode.Dynamic), new Vector2(100, 100));
             toolBar.AddElement(browser);

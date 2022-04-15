@@ -13,7 +13,6 @@ namespace TiberiumRim
     {
         static TiberiumContent()
         {
-
         }
 
         #region FLOWMAPSTUFF
@@ -276,6 +275,8 @@ namespace TiberiumRim
 
         public static readonly Texture2D AttentionMarker = ContentFinder<Texture2D>.Get("UI/Icons/AttentionMarker", true);
         public static readonly Texture2D NewMarker = ContentFinder<Texture2D>.Get("UI/Icons/NewMarker", true);
+
+        public static readonly Texture2D LinkIcon = ContentFinder<Texture2D>.Get("UI/Icons/Link", false);
 
         //
         public static readonly Texture2D KeyFrame = ContentFinder<Texture2D>.Get("UI/Menu/Animator/KeyFrame", true);

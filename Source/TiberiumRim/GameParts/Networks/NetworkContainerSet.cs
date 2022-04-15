@@ -12,7 +12,7 @@ namespace TiberiumRim
     {
         private Color networkColor = new Color(0,0,0,0);
 
-        public readonly Dictionary<NetworkRole, HashSet<NetworkContainer>> ContainersByRole;
+        private readonly Dictionary<NetworkRole, HashSet<NetworkContainer>> ContainersByRole;
 
         private readonly Dictionary<NetworkValueDef, float> TotalValueByType = new();
         private readonly Dictionary<NetworkRole, float> TotalValueByRole = new();
@@ -24,8 +24,20 @@ namespace TiberiumRim
         public float TotalStorageValue => GetTotalValueByRole(NetworkRole.Storage);
         public IEnumerable<NetworkValueDef> AllTypes => AllStoredTypes;
 
+        public HashSet<NetworkContainer> this[NetworkRole role] 
+        {
+            get
+            {
+                if (role == NetworkRole.All)
+                    return ContainersByRole[NetworkRole.All];
+                
+                var set = new HashSet<NetworkContainer>();
+                foreach (var @enum in role.AllFlags()) 
+                    set.AddRange(ContainersByRole[@enum]);
 
-        public HashSet<NetworkContainer> this[NetworkRole role] => ContainersByRole[role];
+                return set;
+            }
+        }
 
         public float GetValueByType(NetworkValueDef def)
         {
@@ -34,12 +46,26 @@ namespace TiberiumRim
 
         public float GetTotalValueByRole(NetworkRole role)
         {
-            return TotalValueByRole.GetValueOrDefault(role, 0);
+            //If getting all, simply return the existing dict entry
+            if(role == NetworkRole.All)
+                return TotalValueByRole.GetValueOrDefault(role, 0);
+
+            //Otherwise, check for all flags
+            float totalVal = 0;
+            foreach (var @enum in role.AllFlags())
+            {
+                totalVal += TotalValueByRole.GetValueOrDefault(@enum, 0);
+            }
+            return totalVal;
         }
 
         public float GetValueByTypeByRole(NetworkValueDef type, NetworkRole inRole)
         {
-            return ValueByTypeByRole.GetValueOrDefault(inRole, null)?.GetValueOrDefault(type, 0) ?? 0;
+            float totalVal = 0;
+            foreach(var role in inRole.AllFlags())
+                totalVal += ValueByTypeByRole.GetValueOrDefault(role, null)?.GetValueOrDefault(type, 0) ?? 0;
+            
+            return totalVal;
         }
 
         public NetworkContainerSet()
@@ -67,7 +93,7 @@ namespace TiberiumRim
             if (!TotalValueByType.TryAdd(type, value))
                 TotalValueByType[type] += value;
 
-            foreach (var enums in comp.NetworkRole.GetAllSelectedItems<NetworkRole>())
+            foreach (var enums in comp.NetworkRole.AllFlags())
             {
                 //Increment by role
                 if (!TotalValueByRole.TryAdd(enums, value))
@@ -100,7 +126,7 @@ namespace TiberiumRim
             }
 
             //
-            foreach (var enums in comp.NetworkRole.GetAllSelectedItems<NetworkRole>())
+            foreach (var enums in comp.NetworkRole.AllFlags())
             {
                 if (!TotalValueByRole.ContainsKey(enums))
                 {
@@ -141,11 +167,11 @@ namespace TiberiumRim
 
         private void AddContainerFrom(INetworkComponent component, NetworkContainer container)
         {
-            foreach (var @enum in component.NetworkRole.GetAllSelectedItems<NetworkRole>())
+            foreach (var @enum in component.NetworkRole.AllFlags())
             {
                 if (!ContainersByRole.ContainsKey(@enum))
                     ContainersByRole.Add(@enum, new());
-                this[@enum].Add(container);
+                ContainersByRole[@enum].Add(container);
             }
 
             //Adjust values
@@ -158,7 +184,7 @@ namespace TiberiumRim
         private void RemoveContainerFrom(INetworkComponent component, NetworkContainer container)
         {
             if (!this[NetworkRole.All].Contains(container)) return;
-            foreach (var @enum in component.NetworkRole.GetAllSelectedItems<NetworkRole>())
+            foreach (var @enum in component.NetworkRole.AllFlags())
             {
                 this[@enum].Remove(container);
             }

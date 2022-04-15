@@ -15,10 +15,10 @@
 		</requiredCapacities>
 	</WorkGiverDef>
 	
-	<!-- Research -->
+	<!-- Craft -->
 	<WorkGiverDef>
 		<defName>DoTiberiumBills</defName>
-		<label>do tiberium bill</label>
+		<label>do network bill</label>
 		<giverClass>TiberiumRim.WorkGiver_NetworkBills</giverClass>
 		<workType>Crafting</workType>
 		<priorityInType>85</priorityInType>

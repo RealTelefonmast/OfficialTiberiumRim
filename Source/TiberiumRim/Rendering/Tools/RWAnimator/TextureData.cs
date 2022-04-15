@@ -29,7 +29,7 @@ namespace TiberiumRim
 
         public MaterialData(WrappedTexture fromTexture)
         {
-            this.texPath = fromTexture.path;
+            this.texPath = fromTexture.Path;
             shader = ShaderDatabase.CutoutComplex;
             shaderPath = ShaderTypeDefOf.CutoutComplex.shaderPath;
             color = Color.white;
@@ -41,14 +41,14 @@ namespace TiberiumRim
             shader = fromMat.shader;
             shaderPath = fromMat.shader.Location();
             texture = new WrappedTexture(fromMat.mainTexture.Location(), fromMat.mainTexture);
-            texPath = texture.path;
+            texPath = texture.Path;
             color = fromMat.color;
         }
 
         public Material GetMat()
         {
             var materialInt = new Material(shader);
-            materialInt.mainTexture = texture.texture;
+            materialInt.mainTexture = texture.Texture;
             materialInt.color = color;
             return materialInt;
         }
@@ -58,7 +58,7 @@ namespace TiberiumRim
     {
         private MaterialData materialData;
         private KeyFrameData localData;
-        private Rect? texCoords;
+        private Rect texCoords;
         private Vector2 pivotPoint;
 
         [Unsaved]
@@ -67,8 +67,8 @@ namespace TiberiumRim
         private Texture Texture => Material.mainTexture;
         public Material Material => matInt;
 
-        public Vector2 TextureSize => new (Texture.width, Texture.height);
-        public Rect? TexCoords => texCoords;
+        public Vector2 TextureSize => new Vector2(100, 100) * texCoords.size;//new (Texture.width, Texture.height);
+        public Rect TexCoords => texCoords;
 
         public KeyFrameData LocalData
         {
@@ -98,7 +98,7 @@ namespace TiberiumRim
             set => localData.TRotation = value;
         }
 
-        public Vector2 TSizeFactor => TextureSize /2f;
+        public Vector2 TSizeFactor => TextureSize;
 
         public void ExposeData()
         {
@@ -113,7 +113,7 @@ namespace TiberiumRim
             materialData = new MaterialData(texture);
             matInt = materialData.GetMat();
             localData = new KeyFrameData(default, 0, default);
-            texCoords = null;
+            texCoords = new Rect(0, 0, 1, 1);
             pivotPoint = Vector2.zero;
         }
 
@@ -122,7 +122,7 @@ namespace TiberiumRim
             materialData = new MaterialData(material);
             matInt = material;
             localData = new KeyFrameData(default, 0, default);
-            texCoords = null;
+            texCoords = new Rect(0, 0, 1, 1);
             pivotPoint = Vector2.zero;
         }
 
@@ -135,7 +135,7 @@ namespace TiberiumRim
 
         public void SetTexCoords(Rect rect)
         {
-            texCoords ??= rect;
+            texCoords = rect;
         }
     }
 }

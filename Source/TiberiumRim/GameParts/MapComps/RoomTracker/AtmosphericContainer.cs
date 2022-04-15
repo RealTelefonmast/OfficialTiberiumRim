@@ -71,11 +71,11 @@ namespace TiberiumRim
 
         public void Data_SetInfo(Dictionary<NetworkValueDef, int> data)
         {
-            Log.Message("Setting new data...");
+            TLog.Debug("Setting new data...");
             Container.Clear();
             foreach (var value in data)
             {
-                Log.Message($"Adding {value.Key}: {value.Value}");
+                TLog.Debug($"Adding {value.Key}: {value.Value}");
                 Container.TryAddValue(value.Key, value.Value, out _);
             }
         }

@@ -23,7 +23,7 @@ namespace TiberiumRim
         public Building ParentBuilding => billStackOwner.parent;
         public Comp_NetworkStructureCrafter ParentComp => billStackOwner;
         public IEnumerable<NetworkComponent> ParentNetComps => UsedNetworks?.Select(n => ParentComp[n]) ?? null;
-        public IEnumerable<NetworkDef> UsedNetworks => CurrentBill?.networkCost.Select(t => t.Def.networkDef) ?? null;
+        public IEnumerable<NetworkDef> UsedNetworks => CurrentBill?.networkCost.Select(t => t.Def.networkDef)?.Distinct() ?? null;
 
         public List<CustomNetworkBill> Bills => bills;
         public CustomNetworkBill CurrentBill => bills.FirstOrDefault();

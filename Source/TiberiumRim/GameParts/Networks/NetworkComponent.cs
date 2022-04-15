@@ -379,6 +379,7 @@ namespace TiberiumRim
 
         private void DrawNetworkInfo()
         {
+            /*
             if (!drawNetworkInfo) return;
             Rect sizeRect = new Rect(UI.screenWidth / 2 - (756/2),UI.screenHeight/2 - (756/2), 756, 756);
             Find.WindowStack.ImmediateWindow(GetHashCode(), sizeRect, WindowLayer.GameUI, () =>
@@ -386,7 +387,7 @@ namespace TiberiumRim
                 int row = 0;
                 float curY = 0;
 
-                foreach (var keyValue in Network.ContainerSet.ContainersByRole)
+                foreach (var container in Network.ContainerSet[NetworkRole.All])
                 {
                     Widgets.Label(new Rect(0, curY, 150, 20), $"{keyValue.Key}: ");
                     int column = 0;
@@ -403,7 +404,7 @@ namespace TiberiumRim
                     row++;
                     curY += 100 + 5;
                 }
-                /*
+                
                 foreach (var structures in Network.ComponentSet.StructuresByRole)
                 {
                     Widgets.Label(new Rect(0, curY, 150, 20), $"{structures.Key}: ");
@@ -435,8 +436,9 @@ namespace TiberiumRim
                     row++;
                     curY += 100 + 5;
                 }
-                */
+                
             } );
+        */
         }
         //
         private Gizmo_NetworkInfo networkInfoGizmo;

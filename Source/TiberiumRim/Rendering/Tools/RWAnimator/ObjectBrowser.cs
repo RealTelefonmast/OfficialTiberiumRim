@@ -57,7 +57,7 @@ namespace TiberiumRim
                 for (int i = startIndex; i < endIndex; i++)
                 {
                     curY = ScrollRect.y + i * optionSize;
-                    Texture2D tex = (Texture2D)textureList[i].texture;
+                    Texture2D tex = (Texture2D) textureList[i].Texture;
                     WidgetRow row = new WidgetRow(Rect.x, curY, gap: 4f);
                     row.Label($"[{i}]");
                     row.Icon(tex);
@@ -65,7 +65,7 @@ namespace TiberiumRim
 
                     Rect pathLabelRect = new Rect(Rect.x, curY + WidgetRow.IconSize, Rect.width, optionSize);
                     GUI.color = TRColor.White075;
-                    TRWidgets.DoTinyLabel(pathLabelRect, textureList[i].path);
+                    TRWidgets.DoTinyLabel(pathLabelRect, textureList[i].Path);
                     GUI.color = Color.white;
                     
                     var optionRect = new Rect(Rect.x, curY, Rect.width, optionSize);

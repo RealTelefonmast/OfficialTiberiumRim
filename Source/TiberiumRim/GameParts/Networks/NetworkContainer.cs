@@ -21,33 +21,41 @@ namespace TiberiumRim
         public NetworkValue(NetworkValueDef def, float value)
         {
             valueDef = def;
-            this.value = Mathf.RoundToInt(value);
             this.valueF = value;
+            this.value = Mathf.RoundToInt(valueF);
         }
 
         public void AdjustValue(float diff)
         {
-            value += (int)diff;
             valueF += diff;
+            value = Mathf.RoundToInt(valueF);
         }
 
         public static NetworkValue operator +(NetworkValue a, NetworkValue b)
         {
-            a.value += b.value;
             a.valueF += b.valueF;
+            a.value = Mathf.RoundToInt(a.valueF);
             return a;
         }
+
+        public static NetworkValue operator -(NetworkValue a, NetworkValue b)
+        {
+            a.valueF -= b.valueF;
+            a.value = Mathf.RoundToInt(a.valueF);
+            return a;
+        }
+
         public static NetworkValue operator +(NetworkValue a, int b)
         {
-            a.value += b;
             a.valueF += b;
+            a.value = Mathf.RoundToInt(a.valueF);
             return a;
         }
 
         public static NetworkValue operator -(NetworkValue a, int b)
         {
-            a.value -= b;
             a.valueF -= b;
+            a.value = Mathf.RoundToInt(a.valueF);
             return a;
         }
     }
@@ -111,6 +119,11 @@ namespace TiberiumRim
             networkValues = null;
         }
 
+        public bool HasValue(NetworkValueDef def)
+        {
+            return networkValues.Any(t => t.valueDef == def);
+        }
+
         public static NetworkValueStack operator +(NetworkValueStack a, NetworkValueStack b)
         {
             if (a.networkValues == null)
@@ -135,6 +148,14 @@ namespace TiberiumRim
                 }
             }
 
+            return a;
+        }
+
+        public static NetworkValueStack operator -(NetworkValueStack a, NetworkValue b)
+        {
+            if (!a.HasValue(b.valueDef)) return a;
+
+            a[b.valueDef] = a[b.valueDef] - b;
             return a;
         }
 

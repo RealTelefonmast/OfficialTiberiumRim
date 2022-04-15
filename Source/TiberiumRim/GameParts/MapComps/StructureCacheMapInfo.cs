@@ -45,6 +45,7 @@ namespace TiberiumRim
                         CachedThingsByGroup.Add(groupDef, new List<Thing>());
                     }
                     CachedThingsByGroup[groupDef].Add(thing);
+                    
                     break;
                 }
                 case ThingComp comp:

@@ -99,8 +99,6 @@ namespace TiberiumRim
                             break;
                         case NetworkRole.Storage:
                             break;
-                        case NetworkRole.None:
-                            break;
                         case NetworkRole.Controller:
                             break;
                         case NetworkRole.AllContainers:
