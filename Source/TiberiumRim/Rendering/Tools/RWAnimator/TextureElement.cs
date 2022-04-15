@@ -21,6 +21,10 @@ namespace TiberiumRim
 
     public class TextureElement : UIElement, IKeyFramedElement, IReorderableElement
     {
+        public static float CanvasSize = 5;
+        public static readonly FloatRange SizeRange = new FloatRange(0.125f, CanvasSize);
+
+        //
         protected TextureData texture;
         protected TextureElement parentElement;
         protected List<TextureElement> subParts = new ();
@@ -116,7 +120,7 @@ namespace TiberiumRim
                 {
                     var point = t.TPosition;
                     var result = ((Quaternion.Euler(0,0, rotDiff) * (point - pivot)) + (Vector3)pivot);
-                    t.SetTRSP_Direct(result, rot: value);
+                    t.SetTRSP_Direct(result, rot: t.TRotation + rotDiff);
                 }
                 ParentCanvas.TimeLine.UpdateKeyframeFor(this, LocalData);
             }
@@ -128,29 +132,14 @@ namespace TiberiumRim
             set
             {
                 var oldSize = TSize;
-                texture.TSize = value;
-                var sizeDiff = (value - oldSize);
+                var newVal = value.Clamp(new Vector2(SizeRange.min, SizeRange.min), new Vector2(SizeRange.max, SizeRange.max));
+                texture.TSize = newVal;
+                var sizeDiff = (newVal - oldSize);
                 foreach (var t in SubParts)
                 {
-                    var vec = Vector2.one;
-                    if (t.TPosition.x < TPosition.x)
-                        vec.x = -1;
-                    if (t.TPosition.y < TPosition.y)
-                        vec.y = -1;
-
-                    var offSet = new Vector2((t.TPosition.x / value.x), (t.TPosition.x / value.x));
-                    if (sizeDiff.x < 0)
-                    {
-                        offSet.x = -offSet.x;
-                    }
-                    if (sizeDiff.y < 0)
-                    {
-                        offSet.y = -offSet.y;
-                    }
-                    offSet *= vec;
-
-                    //TLog.Debug($"Settings TSize: {t.TPosition} + ({vec} * ({sizeDiff} * {(t.TPosition / 2f)})) => {t. + (vec * (sizeDiff * (t.TPosition)))}");
-                    var newPos = t.TPosition + offSet;
+                    var tPosOff = t.TPosition - TPosition;
+                    var offSet = new Vector2((tPosOff.x / oldSize.x), (tPosOff.y / oldSize.y)) * sizeDiff; 
+                    var newPos = t.TPosition + (offSet);
                     t.SetTRSP_Direct(newPos, size:t.TSize + sizeDiff);
                 }
                 ParentCanvas.TimeLine.UpdateKeyframeFor(this, LocalData);
@@ -262,7 +251,11 @@ namespace TiberiumRim
             UnlinkFromParent();
             if (!subParts.NullOrEmpty())
             {
-                subParts.Do(p => p.UnlinkFromParent());
+                for (int i = subParts.Count - 1; i >= 0; i--)
+                {
+                    TextureElement part = subParts[i];
+                    part.Notify_RemovedFromContainer(parent);
+                }
             }
         }
 

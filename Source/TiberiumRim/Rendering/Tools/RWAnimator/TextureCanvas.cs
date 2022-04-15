@@ -153,7 +153,7 @@ namespace TiberiumRim
             listing.Begin(rect.ContractedBy(4));
             listing.Label("Transform");
             listing.GapLine();
-            listing.Label("Size:");
+
             var xSize = tex.TSize.x;
             var ySize = tex.TSize.y;
             var xPos = tex.TPosition.x;
@@ -161,21 +161,18 @@ namespace TiberiumRim
             var rot = tex.TRotation;
 
             bool flag = ev.type == EventType.KeyDown;
-
+       
+            listing.Label("Size:");
             listing.DoBGForNext(TRColor.White025);
-            listing.TextFieldNumericLabeled("X", ref xSize, ref tex.ValueBuffer[0], float.MinValue,
-                anchor: TextAnchor.MiddleLeft);
+            listing.TextFieldNumericLabeled("X", ref xSize, ref tex.ValueBuffer[0], TextureElement.SizeRange.TrueMin, TextureElement.SizeRange.TrueMax, anchor: TextAnchor.MiddleLeft);
             listing.DoBGForNext(TRColor.White025);
-            listing.TextFieldNumericLabeled("Y", ref ySize, ref tex.ValueBuffer[1], float.MinValue,
-                anchor: TextAnchor.MiddleLeft);
+            listing.TextFieldNumericLabeled("Y", ref ySize, ref tex.ValueBuffer[1], TextureElement.SizeRange.TrueMin, TextureElement.SizeRange.TrueMax, anchor: TextAnchor.MiddleLeft);
 
             listing.Label("Position:");
             listing.DoBGForNext(TRColor.White025);
-            listing.TextFieldNumericLabeled("X", ref xPos, ref tex.ValueBuffer[2], float.MinValue,
-                anchor: TextAnchor.MiddleLeft);
+            listing.TextFieldNumericLabeled("X", ref xPos, ref tex.ValueBuffer[2], float.MinValue, anchor: TextAnchor.MiddleLeft);
             listing.DoBGForNext(TRColor.White025);
-            listing.TextFieldNumericLabeled("Y", ref yPos, ref tex.ValueBuffer[3], float.MinValue,
-                anchor: TextAnchor.MiddleLeft);
+            listing.TextFieldNumericLabeled("Y", ref yPos, ref tex.ValueBuffer[3], float.MinValue, anchor: TextAnchor.MiddleLeft);
 
             listing.Label("Rotation:");
             listing.DoBGForNext(TRColor.White025);

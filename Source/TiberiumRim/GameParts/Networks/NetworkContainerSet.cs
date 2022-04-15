@@ -64,7 +64,7 @@ namespace TiberiumRim
             float totalVal = 0;
             foreach(var role in inRole.AllFlags())
                 totalVal += ValueByTypeByRole.GetValueOrDefault(role, null)?.GetValueOrDefault(type, 0) ?? 0;
-            
+
             return totalVal;
         }
 

@@ -5,17 +5,24 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public struct DefValue<T> where T : Def
+    public struct DefValue<T> : IExposable where T : Def 
     {
+        private Type type;
+
         private T def;
         private float value;
 
-        public T Def => def;
+        public T Def => (T)def;
 
         public float Value
         {
             get => value;
             set => this.value = value;
+        }
+        public void ExposeData()
+        {
+            Scribe_Universal.Look(ref def, "def", LookMode.Def, ref type);
+            Scribe_Values.Look(ref value, "value");
         }
 
         public static explicit operator DefValue<T>(DefFloat<T> defFloat)
@@ -25,12 +32,14 @@ namespace TiberiumRim
 
         public DefValue(DefFloat<T> defFloat)
         {
+            type = typeof(T);
             this.def = defFloat.def;
             this.value = defFloat.value;
         }
 
         public DefValue(T def, float value)
         {
+            type = typeof(T);
             this.def = def;
             this.value = value;
         }

@@ -151,6 +151,7 @@ namespace TiberiumRim
         public virtual void ExposeData()
         {
             Scribe_Values.Look(ref savedPropsIndex, "propsIndex", -1);
+            Scribe_Values.Look(ref requestedCapacityPercent, "requesterPercent");
             if (Scribe.mode == LoadSaveMode.LoadingVars)
             {
                 if(savedPropsIndex >= 0)

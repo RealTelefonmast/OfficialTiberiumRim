@@ -367,6 +367,11 @@ namespace TiberiumRim
         }
 
         // Math stuff
+        public static Vector2 Clamp(this Vector2 vec, Vector2 min, Vector2 max)
+        {
+            return new Vector2(Mathf.Clamp(vec.x, min.x, max.x), Mathf.Clamp(vec.y, min.x, max.x));
+        }
+
         public static Vector2 Abs(this Vector2 v2)
         {
             return new Vector2(Mathf.Abs(v2.x), Mathf.Abs(v2.y));

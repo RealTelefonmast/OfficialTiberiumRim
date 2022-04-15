@@ -10,7 +10,7 @@ namespace TiberiumRim
 {
     public class CustomNetworkBill : IExposable
     {
-        private static NetworkRole NetworkFlags => NetworkRole.Consumer | NetworkRole.Producer;
+        private static NetworkRole NetworkFlags => NetworkRole.Storage | NetworkRole.Producer;
         
         //General
         public NetworkBillStack billStack;
@@ -25,6 +25,9 @@ namespace TiberiumRim
         private BillRepeatModeDef repeatMode = BillRepeatModeDefOf.Forever;
         private float workAmountLeft;
         private bool hasBeenPaid = false;
+
+        //
+        private List<DefValue<NetworkValueDef>> scribedListInt;
 
         private static float borderWidth = 5;
         private static float contentHeight = 0;
@@ -65,16 +68,26 @@ namespace TiberiumRim
             }
         }
 
-        private Type type;
-
         public void ExposeData()
         {
+            if (Scribe.mode == LoadSaveMode.Saving)
+            {
+                scribedListInt = networkCost.ToList();
+            }
+
             Scribe_Values.Look(ref billName, "billName");
             Scribe_Values.Look(ref iterationsLeft, "iterationsLeft");
-            Scribe_Universal.Look(ref networkCost, "networkCost", LookMode.Deep, ref type); 
             Scribe_Values.Look(ref workAmountTotal, "workAmountTotal");
             Scribe_Values.Look(ref workAmountLeft, "workAmountLeft");
+            Scribe_Values.Look(ref hasBeenPaid, "hasBeenPaid");
             Scribe_Collections.Look(ref results, "results");
+
+            Scribe_Collections.Look(ref scribedListInt, "networkCostList", LookMode.Deep);
+
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                networkCost = scribedListInt.ToArray();
+            }
         }
 
         public CustomNetworkBill(NetworkBillStack stack)
@@ -201,7 +214,8 @@ namespace TiberiumRim
         //Refund
         public void Cancel()
         {
-            Refund();
+            if(HasBeenPaid)
+                Refund();
         }
 
         private void Refund()
