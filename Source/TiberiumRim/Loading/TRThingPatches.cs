@@ -13,7 +13,7 @@ using Verse.Sound;
 
 namespace TiberiumRim
 {
-    public static class TRThingPatches
+    internal static class TRThingPatches
     {
         #region THING PATCHES
 

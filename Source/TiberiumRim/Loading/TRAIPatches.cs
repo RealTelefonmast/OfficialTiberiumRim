@@ -13,7 +13,7 @@ using Verse.AI;
 
 namespace TiberiumRim
 {
-    public static class TRAIPatches
+    internal static class TRAIPatches
     {
         [HarmonyPatch(typeof(Pawn_PathFollower)), HarmonyPatch("TrySetNewPath")]
         public static class TrySetNewPathPatch

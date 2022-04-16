@@ -50,6 +50,7 @@ namespace TiberiumRim
 
         public MapComponent_Tiberium(Map map) : base(map)
         {
+            TLog.Debug($"Making new Tiberium MapComp for [{map.uniqueID}]");
             StaticData.Notify_NewTibMapComp(this);
 
             //Nature

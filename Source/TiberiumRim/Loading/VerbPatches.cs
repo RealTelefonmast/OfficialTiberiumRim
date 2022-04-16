@@ -8,7 +8,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public static class VerbPatches
+    internal static class VerbPatches
     {
         [HarmonyPatch(typeof(VerbTracker), "CreateVerbTargetCommand")]
         public static class CreateVerbTargetCommandPatch

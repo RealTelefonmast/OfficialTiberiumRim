@@ -12,7 +12,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public static class TRUIPatches
+    internal static class TRUIPatches
     {
         [HarmonyPatch(typeof(PlaySettings))]
         [HarmonyPatch(nameof(PlaySettings.DoPlaySettingsGlobalControls))]

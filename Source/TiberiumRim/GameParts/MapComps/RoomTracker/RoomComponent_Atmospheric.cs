@@ -80,12 +80,16 @@ namespace TiberiumRim
         {
             var atmosInfo = map.Tiberium().AtmosphericInfo;
             atmosInfo.Notify_DisbandedComp(this);
-            foreach (var connector in connections)
+            if (connections.Count > 0)
             {
-                atmosInfo.Notify_RemoveConnection(connector);
+                for (var i = connections.Count - 1; i >= 0; i--)
+                {
+                    var connector = connections[i];
+                    atmosInfo.Notify_RemoveConnection(connector);
+                }
             }
 
-            if (IsOutdoors)
+            if (IsOutdoors && atmosInfo.ConnectionsToOutside.Count > 0)
             {
                 for (var i = atmosInfo.ConnectionsToOutside.Count - 1; i >= 0; i--)
                 {

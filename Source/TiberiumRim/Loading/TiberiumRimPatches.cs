@@ -18,7 +18,7 @@ namespace TiberiumRim
 {
 
     [StaticConstructorOnStartup]
-    public static class TiberiumRimPatches
+    internal static class TiberiumRimPatches
     {
         static TiberiumRimPatches()
         {
@@ -68,46 +68,6 @@ namespace TiberiumRim
             }
 
         }
-
-        /*
-        [HarmonyPatch(typeof(JobDriver_Goto)), HarmonyPatch("MakeNewToils")]
-        public static class GotoPatch
-        {
-            public static IEnumerable<Toil> Postfix(IEnumerable<Toil> values, JobDriver_Goto __instance)
-            {
-                Log.Message("Postfixing goto toils");
-                var gotoToil = values.First();
-                var endToil = values.Last();
-
-                var endPos = __instance.pawn.CurJob.targetA;
-
-                //Force path
-                PawnPath path = __instance.pawn.Map.pathFinder.FindPath(__instance.pawn.Position, endPos,
-                    __instance.pawn, PathEndMode.OnCell);
-                __instance.pawn.pather.StartPath(endPos, PathEndMode.OnCell);
-
-                //var curPath = __instance.pawn.pather.curPath;
-                var pathRooms = path?.RoomsAlongPath(__instance.pawn.Map);
-                Room airLock = pathRooms?.Find(r => r.Role == TiberiumDefOf.TR_AirLock);
-                if (airLock == null)
-                {
-                    Log.Message("Found no airlock... normal goto");
-                    yield return gotoToil;
-                    yield return endToil;
-                    yield break;
-                }
-
-                yield return Toils_Goto.GotoCell(airLock.GeneralCenter(), PathEndMode.OnCell);
-
-                yield return Toils_General.Wait(10f.SecondsToTicks());
-
-                yield return Toils_Goto.GotoCell(endPos.Cell, PathEndMode.OnCell);
-
-                yield return endToil;
-                yield return endToil;
-            }
-        }
-        */
 
         //First Startup
         [HarmonyPatch(typeof(MainMenuDrawer)), HarmonyPatch("MainMenuOnGUI"), StaticConstructorOnStartup]
@@ -1136,44 +1096,6 @@ namespace TiberiumRim
         }
     }
 
-    [HarmonyPatch(typeof(Room))]
-    [HarmonyPatch("Notify_RoofChanged")]
-    public static class Notify_RoofChangedPatch
-    {
-        public static void Postfix(Room __instance)
-        {
-            __instance.Map.Tiberium().RoomInfo.updater.Notify_RoofChanged(__instance);
-        }
-    }
-
-    [HarmonyPatch(typeof(RegionAndRoomUpdater))]
-    [HarmonyPatch("NotifyAffectedDistrictsAndRoomsAndUpdateTemperature")]
-    public static class NotifyAffectedRoomsAndRoomGroupsAndUpdateTemperaturePatch
-    {
-        public static bool Prefix(Map ___map, List<Room> ___newRooms, HashSet<Room> ___reusedOldRooms)
-        {
-            ___map.Tiberium().RoomInfo.updater.Notify_SetNewRoomData(___newRooms, ___reusedOldRooms);
-            return true;
-        }
-    }
-
-    [HarmonyPatch(typeof(RegionAndRoomUpdater))]
-    [HarmonyPatch("CreateOrUpdateRooms")]
-    public static class CreateOrUpdateRoomsPatch
-    {
-        public static bool Prefix(Map ___map)
-        {
-            ___map.Tiberium().RoomInfo.updater.Notify_RoomUpdatePrefix();
-            return true;
-        }
-
-        
-        public static void Postfix(Map ___map)
-        {
-            ___map.Tiberium().RoomInfo.updater.Notify_RoomUpdatePostfix();
-        }
-    }
-
     [HarmonyPatch(typeof(TemperatureCache))]
     [HarmonyPatch("TryCacheRegionTempInfo")]
     public static class TryCacheRegionTempInfoPatch
@@ -1203,65 +1125,5 @@ namespace TiberiumRim
             ___map.Tiberium().AtmosphericInfo.Cache.atmosphericSaveLoad.ApplyLoadedDataToRegions();
         }
     }
-
-
-    /*
-    [HarmonyPatch(typeof(RoomGroup))]
-    [HarmonyPatch("AddRoom")]
-    public static class AddRoomPatch
-    {
-        public static void Postfix(RoomGroup __instance, Room room)
-        {
-            room.Map.Tiberium().AtmosphericInfo.RoomGroupAddedRoom(__instance, room);
-        }
-    }
-
-    [HarmonyPatch(typeof(RoomGroup))]
-    [HarmonyPatch("RemoveRoom")]
-    public static class RemoveRoomPatch
-    {
-        public static void Postfix(RoomGroup __instance, Room room)
-        {
-            room.Map.Tiberium().AtmosphericInfo.RoomGroupRemovedRoom(__instance, room);
-        }
-    }
-    */
-    /*
-    [HarmonyPatch(typeof(RegionAndRoomUpdater))]
-    [HarmonyPatch("RegenerateNewRegionsFromDirtyCells")]
-    public static class RegionPatch
-    {
-        private static readonly List<Region> oldRegions = new List<Region>(); 
-        private static readonly List<Region> newRegions = new List<Region>();
-
-        public static bool Prefix(RegionAndRoomUpdater __instance)
-        {
-            Map map = Traverse.Create(__instance).Field("map").GetValue<Map>();
-            RegionGrid grid = Traverse.Create(map).Field("regionGrid").GetValue<RegionGrid>();
-
-            oldRegions.Clear();
-            map.Tiberium().TiberiumInfo.regionGrid.RemoveDirtyGrids(map.regionDirtyer.DirtyCells);
-            foreach (IntVec3 dirty in map.regionDirtyer.DirtyCells)
-            {
-                oldRegions.AddDistinct(grid.GetValidRegionAt(dirty));
-            }
-            return true;
-        }
-
-        public static void Postfix(RegionAndRoomUpdater __instance)
-        {
-            var instance = Traverse.Create(__instance);
-            Map map = instance.Field("map").GetValue<Map>();
-            var tiberium = map.Tiberium();
-            var info = tiberium.TiberiumInfo;
-            List<Region> regions = instance.Field("newRegions").GetValue<List<Region>>();
-
-            newRegions.Clear();
-            newRegions.AddRange(regions);
-
-            info.regionGrid.Notify_RegionSplit(oldRegions,newRegions);
-        }
-    }
-    */
 
 }
