@@ -66,7 +66,8 @@ switch (pid)
         public TiberiumRimMod(ModContentPack content) : base(content)
         {
             mod = this;
-            TLog.Message("[TiberiumRim] - Init", Color.cyan);
+            var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            TLog.Message($"[TiberiumRim][{version}] - Init", Color.cyan);
             modSettings = GetSettings<TiberiumSettings>();
 
             //

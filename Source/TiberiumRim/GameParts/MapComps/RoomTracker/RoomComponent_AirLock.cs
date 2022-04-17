@@ -120,7 +120,7 @@ namespace TiberiumRim
         public Building_AirLock[] AirLocksOnPath(List<IntVec3> pathNodes)
         {
             var airlocks = new Building_AirLock[2];
-            Log.Message($"CurPath: {pathNodes != null} Nodes: {pathNodes?.Count} BorderCells: {Room.BorderCells.Count()}");
+            TLog.Debug($"CurPath: {pathNodes != null} Nodes: {pathNodes?.Count} BorderCells: {Room.BorderCells.Count()}");
             var pathCells = pathNodes.Intersect(Room.BorderCells);
             int i = 0;
             foreach (var cell in pathCells)
@@ -137,26 +137,31 @@ namespace TiberiumRim
 
         public void Notify_EnqueuePawnPos(IntVec3 pos)
         {
+            TLog.Debug($"Enqueued PawnPos: {pos}");
             queuePosCells.Add(pos);
         }
 
         public void Notify_DequeuePawnPos(IntVec3 pos)
         {
+            TLog.Debug($"Dequeuing PawnPos: {pos}");
             queuePosCells.Remove(pos);
         }
 
         public void Notify_EnqueuePawn(Pawn pawn)
         {
+            TLog.Debug($"Enqueued Pawn: {pawn}");
             pawnQueue.Enqueue(pawn);
         }
 
         public void Notify_FinishJob(Pawn pawn)
         {
-            if (pawn != CurrentPawn)
+            if (PawnQueue.TryDequeue(out Pawn deqPawn))
             {
-                Log.Error($"Trying to dequeue {pawn} from airlock queue, next should be: {CurrentPawn}");
+                if (deqPawn != null && deqPawn != pawn)
+                {
+                    TLog.Error($"Trying to dequeue {pawn} from airlock queue, next should be: {CurrentPawn}");
+                }
             }
-            pawnQueue.Dequeue();
         }
 
         public override void Notify_ThingSpawned(Thing thing)

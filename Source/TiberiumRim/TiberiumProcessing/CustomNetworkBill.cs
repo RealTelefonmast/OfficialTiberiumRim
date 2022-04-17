@@ -114,6 +114,7 @@ namespace TiberiumRim
                 TLog.Error($"Trying to pay for {billName} with empty networkCost! | Paid: {HasBeenPaid} WorkLeft: {WorkLeft}");
                 return false;
             }
+
             float totalNeeded = networkCost.Sum(t => t.Value);
             foreach (var value in networkCost)
             {
@@ -123,7 +124,7 @@ namespace TiberiumRim
                     totalNeeded -= value.Value;
                 }
             }
-            return totalNeeded == 0;
+            return totalNeeded == 0f;
         }
 
         public bool TryFinish()

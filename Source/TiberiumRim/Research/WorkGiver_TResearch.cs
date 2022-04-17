@@ -12,19 +12,17 @@ namespace TiberiumRim
 
         public override bool Prioritized => true;
 
-        public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForUndefined();
         public override Danger MaxPathDanger(Pawn pawn) => Danger.Some;
 
-        /*
+        public override ThingRequest PotentialWorkThingRequest
         {
             get
             {
-                if (Manager.CurrentProject != null && CurrentTask.HasSingleTarget)
+                if (CurrentTask?.HasSingleTarget ?? false)
                     return ThingRequest.ForDef(CurrentTask.MainTarget);
                 return ThingRequest.ForGroup(ThingRequestGroup.Nothing);
             }
         }
-        */
 
         public override bool ShouldSkip(Pawn pawn, bool forced = false)
         {

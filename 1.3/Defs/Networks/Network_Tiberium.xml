@@ -23,7 +23,7 @@
 		<label>tiberium pipe</label>
 		<description>This structure connects Tiberium processing structures on the Tiberium Network.</description>
 		<building>
-			<blueprintGraphicData>
+			<blueprintGraphicData Inherit="False">
 				<texPath>Buildings/Common/Network/Pipe_Tib_blueprint</texPath>
 				<graphicClass>TiberiumRim.Graphic_LinkedWithSame</graphicClass>
 			</blueprintGraphicData>

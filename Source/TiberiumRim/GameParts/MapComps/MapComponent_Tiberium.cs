@@ -52,7 +52,7 @@ namespace TiberiumRim
         {
             TLog.Debug($"Making new Tiberium MapComp for [{map.uniqueID}]");
             StaticData.Notify_NewTibMapComp(this);
-
+            
             //Nature
             //TODO: Combine Into One Info "Environment"
             TerrainInfo = new TiberiumTerrainInfo(map);

@@ -24,7 +24,7 @@ namespace TiberiumRim
         private HashSet<IntVec3> roomCellsTemp;
         private IntVec3 QueueCell;
 
-        private bool ShouldQueue => AirLock.CurrentPawn != pawn;
+        private bool ShouldQueue => AirLock.CurrentPawn != null && AirLock.CurrentPawn != pawn;
 
         public override string GetReport()
         {
@@ -64,7 +64,7 @@ namespace TiberiumRim
             //SetupData
             AddFinishAction(() =>
             {
-                Log.Message($"[{pawn}]Finishing toil...");
+                TLog.Debug($"[{pawn}]Finishing toil...");
                 AirLock.Notify_FinishJob(pawn);
             });
             return true;
@@ -74,10 +74,10 @@ namespace TiberiumRim
 
         public override IEnumerable<Toil> MakeNewToils()
         {
-            Log.Message($"Going To {GotoTarget}");
+            TLog.Debug($"Going To {GotoTarget}");
             yield return Toils_Goto.GotoCell(GotoTarget, PathEndMode.OnCell);
 
-            Log.Message($"Should Queue: {ShouldQueue}");
+            TLog.Debug($"Current Pawn in Airlock: {AirLock.CurrentPawn} | Should Queue: {ShouldQueue}");
             //
             if (ShouldQueue)
             {

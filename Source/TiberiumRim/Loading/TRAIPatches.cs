@@ -60,7 +60,7 @@ namespace TiberiumRim
                     airLockComp.Notify_EnqueuePawn(___pawn);
 
                     //Start the airlock job and set the current job to be resumed
-                    Log.Message($"[{___pawn}]Adding airlock job at: {airLockComp.Room.ID} via {airlocks[1]}");
+                    TLog.Debug($"[{___pawn}]Adding airlock job at: {airLockComp.Room.ID} via {airlocks[1]}");
                     Job theJob = JobMaker.MakeJob(TiberiumDefOf.UseAirlock, airlocks[1], airLock.GeneralCenter());
                     ___pawn.jobs.StartJob(theJob, JobCondition.Ongoing, null, true);
 
