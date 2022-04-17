@@ -56,7 +56,7 @@ namespace TiberiumRim
         {
             foreach (var ps in plantSupport)
             {
-                if (TRUtils.Chance(ps.probability))
+                if (TRandom.Chance(ps.probability))
                     return ps.thing;
             }
             return null;

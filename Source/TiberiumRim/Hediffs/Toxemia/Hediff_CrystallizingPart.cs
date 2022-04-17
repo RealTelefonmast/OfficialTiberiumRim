@@ -169,7 +169,7 @@ namespace TiberiumRim
             num *=  0.00333333341f;
             Severity += (CurrentStage == InfectionStage.Reversing ?  -num/2 : num);
 
-            if (CanFuseToGround && TRUtils.Chance(GroundFusionChance))
+            if (CanFuseToGround && TRandom.Chance(GroundFusionChance))
                 FuseToGround();
 
             if (CurrentStage != InfectionStage.Crystallized) return;

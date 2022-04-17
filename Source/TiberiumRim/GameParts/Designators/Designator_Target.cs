@@ -26,7 +26,7 @@ namespace TiberiumRim
             bool designateCheck = CanDesignateCell(UI.MouseCell()).Accepted;
             Color color = !designateCheck ? Color.red : targeterMat.color;
             if (opacity.min != opacity.max)
-                color.a = TRUtils.Cosine2(opacity.min, opacity.max, 3f, 0, Time.realtimeSinceStartup * 6.28318548f);
+                color.a = TMath.Cosine2(opacity.min, opacity.max, 3f, 0, Time.realtimeSinceStartup * 6.28318548f);
             tempMaterial.color = color;
             TRUtils.DrawTargeter(UI.MouseCell(), tempMaterial, size);
         }

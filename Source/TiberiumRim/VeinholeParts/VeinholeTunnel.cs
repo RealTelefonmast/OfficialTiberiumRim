@@ -38,16 +38,16 @@ namespace TiberiumRim
         public override void Tick()
         {
             sustainer.Maintain();
-            if (TRUtils.Chance(0.32f))
+            if (TRandom.Chance(0.32f))
                 foreach (var cell in occupied)
                 {
-                    if (TRUtils.Chance(0.39f))
-                        if (TRUtils.Chance(0.25f))
+                    if (TRandom.Chance(0.39f))
+                        if (TRandom.Chance(0.25f))
                             FilthMaker.TryMakeFilth(cell, Map, ThingDefOf.Filth_RubbleRock);
                         else
                             FilthMaker.TryMakeFilth(cell, Map, ThingDefOf.Filth_Dirt);
 
-                    FleckMaker.ThrowDustPuffThick(cell.ToVector3ShiftedWithAltitude(AltitudeLayer.MoteOverhead), Map, TRUtils.Range(1.5f, 3.5f), new Color(1f, 1f, 1f, 0.55f));
+                    FleckMaker.ThrowDustPuffThick(cell.ToVector3ShiftedWithAltitude(AltitudeLayer.MoteOverhead), Map, TRandom.Range(1.5f, 3.5f), new Color(1f, 1f, 1f, 0.55f));
                 }
             if (ticksToSpawn <= Find.TickManager.TicksGame)
             {

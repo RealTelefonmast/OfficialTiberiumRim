@@ -58,7 +58,7 @@ namespace TiberiumRim
 
         private void TryDamageOrBurn(IntVec3 cell)
         {
-            float damage = TRUtils.Range(1, 15);
+            float damage = TRandom.Range(1, 15);
             DamageInfo dInfo = new DamageInfo(DamageDefOf.Burn, damage, 5, 0, this);
             var list = cell.GetThingList(Map);
             for (var i = 0; i < list.Count; i++)
@@ -66,20 +66,20 @@ namespace TiberiumRim
                 var thing = list[i];
                 thing.TakeDamage(dInfo);
             }
-            if (FireUtility.TryStartFireIn(cell, Map, TRUtils.Range(0.1f, 0.5f)))
+            if (FireUtility.TryStartFireIn(cell, Map, TRandom.Range(0.1f, 0.5f)))
             {
                 FleckMaker.ThrowSmoke(realPos, Map, 3);
                 /*
                 FleckThrown moteThrown = (FleckThrown)FleckMaker.ThrowSmoke(realPos, Map, 3);
-                moteThrown.Scale = TRUtils.Range(3f, 5.5f);
-                moteThrown.rotationRate = TRUtils.Range(-30f, 30f);
+                moteThrown.Scale = TRandom.Range(3f, 5.5f);
+                moteThrown.rotationRate = TRandom.Range(-30f, 30f);
                 moteThrown.exactPosition = realPos;
                 moteThrown.instanceColor = new ColorInt(50, 50, 50).ToColor;
-                moteThrown.SetVelocity((float)TRUtils.Range(25, 75), TRUtils.Range(0.7f, 2.8f));
+                moteThrown.SetVelocity((float)TRandom.Range(25, 75), TRandom.Range(0.7f, 2.8f));
                 GenSpawn.Spawn(moteThrown, cell, Map, WipeMode.Vanish);
                 */
             }
-            //if (TRUtils.Chance(0.3f))
+            //if (TRandom.Chance(0.3f))
                 //GenSpawn.Spawn(ThingDef.Named("IonizedAir"), cell, Map);
         }
 

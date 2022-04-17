@@ -184,7 +184,7 @@ namespace TiberiumRim
             if (cell.IsBlocked(map, out bool byPlant) && !byPlant) return false;
             if (cell.HasTiberium(map)) return true;
 
-            if (Ruleset.SpawnsTib && TRUtils.Chance(Ruleset.tiberiumDensity))
+            if (Ruleset.SpawnsTib && TRandom.Chance(Ruleset.tiberiumDensity))
                 GenTiberium.SpawnTiberium(cell, map, tibField.MainProducer.TiberiumTypes.RandomElement(),
                     tibField.MainProducer);
             else if (Ruleset.allowFlora)
@@ -213,14 +213,14 @@ namespace TiberiumRim
             float distance = center.DistanceTo(pos);
             //float chance = 1f - Mathf.InverseLerp(0f, maxRadius, distance);
 
-            //if (!TRUtils.Chance(ruleset.ChanceFor() * terrain.plantChanceFactor)) return;
+            //if (!TRandom.Chance(ruleset.ChanceFor() * terrain.plantChanceFactor)) return;
             TRThingDef flora = Ruleset.PlantAt(distance, desiredRadius);
-            if (!TRUtils.Chance(Ruleset.ChanceFor(flora, distance, desiredRadius) * terrain.plantChanceFactor)) return;
+            if (!TRandom.Chance(Ruleset.ChanceFor(flora, distance, desiredRadius) * terrain.plantChanceFactor)) return;
 
             if (flora == null) return;
             Thing plant = ThingMaker.MakeThing(flora);
 
-            if (plant is Plant p) p.Growth = TRUtils.Range(0.3f, 0.9f);
+            if (plant is Plant p) p.Growth = TRandom.Range(0.3f, 0.9f);
             oldPlant?.DeSpawn();
             GenSpawn.Spawn(plant, pos, map);
         }

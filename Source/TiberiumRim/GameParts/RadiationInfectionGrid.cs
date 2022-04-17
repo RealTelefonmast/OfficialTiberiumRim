@@ -149,7 +149,7 @@ namespace TiberiumRim
 
         public float RadiationAt(IntVec3 pos)
         {
-            return TRUtils.InverseLerpUnclamped(0, 255, (float)RadiationIntAt(pos));
+            return TMath.InverseLerpUnclamped(0, 255, (float)RadiationIntAt(pos));
         }
 
         private int RadiationIntAt(IntVec3 pos)
@@ -174,7 +174,7 @@ namespace TiberiumRim
         //Infection
         public float InfectionAt(IntVec3 pos)
         {
-            return TRUtils.InverseLerpUnclamped(0, 255, (float)InfectionIntAt(pos));
+            return TMath.InverseLerpUnclamped(0, 255, (float)InfectionIntAt(pos));
         }
 
         private int InfectionIntAt(IntVec3 pos)

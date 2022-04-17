@@ -67,8 +67,8 @@ namespace TiberiumRim
             InnerContainer = new ThingOwner<Thing>(this, false);
             pawn.DeSpawn(DestroyMode.Vanish);
             InnerContainer.TryAdd(pawn);
-            ticksLeft = TRUtils.Range(100000, 120000);
-            if (TRUtils.Chance(0.46f))
+            ticksLeft = TRandom.Range(100000, 120000);
+            if (TRandom.Chance(0.46f))
                 prematureHatch = true;
         }
 
@@ -170,7 +170,7 @@ namespace TiberiumRim
             PawnGenerationRequest request = new PawnGenerationRequest(PawnKindDef.Named("VisceralHorror_Human"));
             if (!pawn.RaceProps.Humanlike)
             {
-                if (viscs >= 3f && TRUtils.Chance(0.33f))
+                if (viscs >= 3f && TRandom.Chance(0.33f))
                     request = new PawnGenerationRequest(PawnKindDef.Named("VisceralBeast"));
                 else
                     request = new PawnGenerationRequest(PawnKindDef.Named("VisceralHorror_Animal"));
@@ -189,9 +189,9 @@ namespace TiberiumRim
             if (!pawn.IsHashIntervalTick(750)) return;
 
 
-            float dmg = TRUtils.Range(0, 3);
+            float dmg = TRandom.Range(0, 3);
             BodyPartRecord part = null;
-            if (TRUtils.Chance(0.0125f))
+            if (TRandom.Chance(0.0125f))
             {
                 //Inside
                 part = pawn.HealthComp().OrgansInside.Where(p => pawn.health.hediffSet.PartHasHediff(p, TRHediffDefOf.ViscousBloat)).RandomElement();
@@ -204,7 +204,7 @@ namespace TiberiumRim
                 part = pawn.HealthComp().OutsideParts.RandomElement();
                 if (!(part.coverageAbs > 0)) return;
                 //TODO: Work on Tiberium Damages
-                if (TRUtils.Chance(0.3f))
+                if (TRandom.Chance(0.3f))
                 {
                     if (part.IsOrgan())
                     {
@@ -212,7 +212,7 @@ namespace TiberiumRim
                         return;
                     }
 
-                    if (part.IsLimb() && TRUtils.Chance(0.3f))
+                    if (part.IsLimb() && TRandom.Chance(0.3f))
                     {
                         pawn.health.AddHediff(TRHediffDefOf.VisceralArm, part);
                         return;

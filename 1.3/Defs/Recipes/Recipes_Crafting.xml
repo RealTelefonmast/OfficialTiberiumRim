@@ -2,6 +2,14 @@
 <Defs>
 	
 	<TiberiumRim.AtomicRecipePreset>
+		<defName>MakeComponentPreset</defName>
+		<label>Make Components</label>
+		<desiredResources>
+			<MakeComponent>5</MakeComponent>
+		</desiredResources>
+	</TiberiumRim.AtomicRecipePreset>
+	
+	<TiberiumRim.AtomicRecipePreset>
 		<defName>MakeSteelPreset</defName>
 		<label>Make Steel</label>
 		<desiredResources>
@@ -101,6 +109,37 @@
 			<li>Gold,20</li>
 		</inputRatio>
 		<result>Gold</result>
+	</TiberiumRim.AtomicRecipeDef>
+	
+	<!---->
+	<TiberiumRim.AtomicRecipeDef>
+		<defName>MakeComponent</defName>
+		<inputRatio>
+			<li>Iron,100</li>
+			<li>Copper,100</li>
+			<li>Silicon,50</li>
+		</inputRatio>
+		<result>ComponentIndustrial</result>
+	</TiberiumRim.AtomicRecipeDef>
+	
+	<TiberiumRim.AtomicRecipeDef>
+		<defName>MakeCarbonPlate</defName>
+		<inputRatio>
+			<li>Iron,25</li>
+			<li>Carbon,75</li>
+			<li>Calcium,75</li>		
+		</inputRatio>
+		<result>Nod_CarbonPlate</result>
+	</TiberiumRim.AtomicRecipeDef>
+	
+	<TiberiumRim.AtomicRecipeDef>
+		<defName>MakeReinforcedPlate</defName>
+		<inputRatio>
+			<li>Iron,100</li>
+			<li>Carbon,25</li>
+			<li>Phosphorus,50</li>		
+		</inputRatio>
+		<result>GDI_ReinforcedPlate</result>
 	</TiberiumRim.AtomicRecipeDef>
 	
 	<!--

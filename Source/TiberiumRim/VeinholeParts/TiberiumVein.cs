@@ -11,7 +11,7 @@ namespace TiberiumRim
             {
                 var chunk = intVec3.GetFirstHaulable(Map);
                 if (chunk.IsCorruptableChunk())
-                    if (TRUtils.Chance(0.019f))
+                    if (TRandom.Chance(0.019f))
                     {
                         chunk.DeSpawn();
                         var chunky = (VeinChunk) TRUtils.NewBorn(PawnKindDef.Named("VeinChunk"));

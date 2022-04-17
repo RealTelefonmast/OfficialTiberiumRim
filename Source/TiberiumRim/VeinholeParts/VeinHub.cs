@@ -43,7 +43,7 @@ namespace TiberiumRim
             foreach (var cell in AffectedCells)
             {
                 var pawn = cell.GetFirstPawn(Map);
-                if (pawn != null && TRUtils.Chance(0.86f))
+                if (pawn != null && TRandom.Chance(0.86f))
                 {
                     LaunchGas(pawn);
                 }

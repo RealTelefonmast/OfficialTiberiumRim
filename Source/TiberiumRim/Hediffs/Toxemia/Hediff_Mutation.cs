@@ -62,8 +62,8 @@ namespace TiberiumRim
         public override void PostMake()
         {
             base.PostMake();
-            symbioticBias = TRUtils.Chance(0.40f);
-            visceralBias = !symbioticBias && TRUtils.Chance(0.475f);
+            symbioticBias = TRandom.Chance(0.40f);
+            visceralBias = !symbioticBias && TRandom.Chance(0.475f);
         }
 
         public override void PostAdd(DamageInfo? dinfo)
@@ -102,11 +102,11 @@ namespace TiberiumRim
 
             Hediff_TiberiumMutationPart mutationPart = (Hediff_TiberiumMutationPart)HediffMaker.MakeHediff(TRHediffDefOf.TiberiumMutationPart, pawn, null);
             float symbioticChance = 1 - VisceralRisk;
-            bool visceral = TRUtils.Chance(VisceralRisk);
+            bool visceral = TRandom.Chance(VisceralRisk);
             if (visceral)
             {
                 mutationPart.Mutation = Hediff_TiberiumMutationPart.MutationState.Visceral;
-                if (TRUtils.Chance(VisceralRisk * VisceralRisk))
+                if (TRandom.Chance(VisceralRisk * VisceralRisk))
                 {
                     //Add worse visceral effect (blisters, viscous organ)
                     HediffDef hediff = TRHediffDefOf.Visceral.HediffFor(randomPart);
@@ -119,7 +119,7 @@ namespace TiberiumRim
             else
             {
                 mutationPart.Mutation = Hediff_TiberiumMutationPart.MutationState.Symbiotic;
-                if (TRUtils.Chance(symbioticChance * symbioticChance))
+                if (TRandom.Chance(symbioticChance * symbioticChance))
                 {
                     //
                     HediffDef hediff = TRHediffDefOf.Symbiotic.HediffFor(randomPart);
@@ -130,7 +130,7 @@ namespace TiberiumRim
                 }
             }
 
-            mutationPart.Mutation = TRUtils.Chance(VisceralRisk)
+            mutationPart.Mutation = TRandom.Chance(VisceralRisk)
                 ? Hediff_TiberiumMutationPart.MutationState.Visceral
                 : Hediff_TiberiumMutationPart.MutationState.Symbiotic;
             pawn.health.AddHediff(mutationPart, randomPart);
@@ -139,11 +139,11 @@ namespace TiberiumRim
         private void FinalizeMutation()
         {
             bool visceral = VisceralPct > SymbioticPct;
-            if (visceral && TRUtils.Chance(VisceralPct))
+            if (visceral && TRandom.Chance(VisceralPct))
             {
                 HediffUtils.FormVisceralPod(pawn);
             }
-            else if(TRUtils.Chance(SymbioticPct))//Symbiotic - Turns animals into fiends, pawns into mutants
+            else if(TRandom.Chance(SymbioticPct))//Symbiotic - Turns animals into fiends, pawns into mutants
             {
                 if (pawn.RaceProps.Animal)
                 {
@@ -179,7 +179,7 @@ namespace TiberiumRim
             for (var index = pawn.health.hediffSet.hediffs.Count - 1; index >= 0; index--)
             {
                 var hediff = pawn.health.hediffSet.hediffs[index];
-                if (hediff is Hediff_CrystallizingPart && TRUtils.Chance(hediff.Severity))
+                if (hediff is Hediff_CrystallizingPart && TRandom.Chance(hediff.Severity))
                 {
                     HediffDef crystalDiff = TRHediffDefOf.Crystallized.HediffFor(hediff.Part);
                     if (crystalDiff != null)

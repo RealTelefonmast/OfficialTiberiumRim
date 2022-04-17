@@ -10,7 +10,7 @@ namespace TiberiumRim
 
         public TerrainDef SelectRandomOptionByChance()
         {
-            return options.First(t => TRUtils.Chance(t.value)).def;
+            return options.First(t => TRandom.Chance(t.value)).def;
         }
 
         public TerrainDef SelectRandomOptionByWeight()

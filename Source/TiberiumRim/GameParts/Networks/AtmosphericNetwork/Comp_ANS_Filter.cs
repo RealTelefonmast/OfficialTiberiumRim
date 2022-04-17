@@ -10,9 +10,15 @@ namespace TiberiumRim
 {
     public class Comp_ANS_Filter : Comp_AtmosphericNetworkStructure
     {
+        private int curAnimLength;
+        private int ticksLeft;
+        private IntRange animationRange = new(15, 45);
+
         public NetworkComponent AtmosphericComp => this[TiberiumDefOf.AtmosphericNetwork];
         public NetworkComponent ProcessingComp => this[TiberiumDefOf.TiberiumNetwork];
 
+        public override Vector3[] DrawPositions => new Vector3[] { parent.DrawPos};
+        public override Color[] ColorOverrides => new Color[] { Color.white };
         public override float[] OpacityFloats => new float[] { Alpha };
 
         public SimpleCurve FlickerCurve = new SimpleCurve()
@@ -25,25 +31,19 @@ namespace TiberiumRim
         };
 
         private bool ShouldProcess => !AtmosphericComp.Container.Empty && !ProcessingComp.Container.CapacityFull;
-        private float Alpha => AtmosphericComp.IsReceiving ? FlickerCurve.Evaluate((curAnimTick / (float) curAnimLength)) : 0.4f;
+        private float Alpha => ticksLeft > 0 ? FlickerCurve.Evaluate(((curAnimLength - ticksLeft) / (float)curAnimLength)) : 0.4f;
 
-        private int curAnimLength;
-        private int curAnimTick;
-        private IntRange animationRange = new IntRange(25, 45);
-        
         public override void CompTick()
         {
             base.CompTick();
-            if (curAnimTick < curAnimLength)
-            {
-                curAnimTick++;
-            }
+            if (ticksLeft > 0)
+                ticksLeft--;
+        }
 
-            if (curAnimTick == curAnimLength)
-            {
-                curAnimTick = 0;
-                curAnimLength = animationRange.RandomInRange;
-            }
+        public override void Notify_ReceivedValue()
+        {
+            if (ticksLeft > 0) return;
+            ticksLeft = curAnimLength = animationRange.RandomInRange;
         }
 
         public override bool AcceptsValue(NetworkValueDef value)
@@ -58,6 +58,11 @@ namespace TiberiumRim
             {
                 ProcessingComp.Container.TryAddValue(TiberiumDefOf.TibSludge, actualValue * 0.125f, out _);
             }
+        }
+
+        public override string CompInspectStringExtra()
+        {
+            return base.CompInspectStringExtra();
         }
     }
 }

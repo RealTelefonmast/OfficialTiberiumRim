@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
@@ -35,6 +36,57 @@ namespace TiberiumRim
                 }
             }
             return true;
+        }
+
+        public static IEnumerable<IntVec3> SectorCells(IntVec3 center, Map map, float radius, float angle, float rotation, bool useCenter = false, Predicate<IntVec3> validator = null)
+        {
+            int cellCount = GenRadial.NumCellsInRadius(radius);
+            int startCell = useCenter ? 0 : 1;
+            var angleMin = TMath.AngleWrapped(rotation - angle * 0.5f);
+            var angleMax = TMath.AngleWrapped(angleMin + angle);
+            for (int i = startCell; i < cellCount; i++)
+            {
+                IntVec3 cell = GenRadial.RadialPattern[i] + center;
+                float curAngle = (cell.ToVector3Shifted() - center.ToVector3Shifted()).AngleFlat();
+                var invert = angleMin > angleMax;
+                var flag = invert ? (curAngle >= angleMin || curAngle <= angleMax) : (curAngle >= angleMin && curAngle <= angleMax);
+                if (map != null && !cell.InBounds(map) || !flag || (validator != null && !validator(cell)))
+                    continue;
+                yield return cell;
+            }
+        }
+
+        public static Vector3[] CornerVec3s(this IntVec3 origin)
+        {
+            var originVec = origin.ToVector3();
+            return new Vector3[]
+            {
+                originVec,                              //00
+                originVec + new Vector3(1,0,0),   //10
+                originVec + new Vector3(0,0,1),   //01
+                originVec + new Vector3(1,0,1)    //11
+            };
+        }
+
+        public static Vector2[] CornerVecs(this IntVec3 origin)
+        {
+            var originVec = origin.ToIntVec2.ToVector2();
+            return new Vector2[]
+            {
+                originVec, originVec + new Vector2(1,0),
+                originVec + new Vector2(1,1), originVec +  new Vector2(0,1)
+            };
+        }
+
+        public static List<IntVec3> OffsetIntvecs(IEnumerable<IntVec3> cells, IntVec3 reference)
+        {
+            List<IntVec3> offsetVecs = new List<IntVec3>();
+            foreach (IntVec3 c in cells)
+            {
+                offsetVecs.Add(c - reference);
+            }
+
+            return offsetVecs;
         }
 
         /*

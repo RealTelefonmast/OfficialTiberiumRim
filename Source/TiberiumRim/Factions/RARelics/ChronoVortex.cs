@@ -15,7 +15,7 @@ namespace TiberiumRim
 
         protected override void DoParticleEffect()
         {
-            IntVec3 randomCell1 = Position + GenRadial.RadialPattern[TRUtils.Range(0, GenRadial.NumCellsInRadius(2.75f))];
+            IntVec3 randomCell1 = Position + GenRadial.RadialPattern[TRandom.Range(0, GenRadial.NumCellsInRadius(2.75f))];
 
             var from = Position;
             var to   = randomCell1;
@@ -24,7 +24,7 @@ namespace TiberiumRim
             IntVec3 toCell = from + (normed * Rand.Range(6, 8)).ToIntVec3();
 
             Mote_Arc arc = (Mote_Arc)ThingMaker.MakeThing(TiberiumDefOf.Mote_Arc);
-            Material mat = MaterialsTesla.Arcs[TRUtils.Range(0, 3)];
+            Material mat = MaterialsTesla.Arcs[TRandom.Range(0, 3)];
             arc.fadeInTimeOverride = 0.25f;
             arc.solidTimeOverride = 0.25f;
             arc.fadeOutTimeOverride = 0.85f;

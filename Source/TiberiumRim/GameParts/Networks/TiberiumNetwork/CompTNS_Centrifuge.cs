@@ -11,12 +11,26 @@ namespace TiberiumRim
 {
     public class CompTNS_Centrifuge : Comp_TiberiumNetworkStructure
     {
-        private FCAccelerator accelerator;
-        private FC speedControl;
-
+        private FCSimple speedControl;
         private bool processingBatch;
 
-        readonly SimpleCurve Curve = new SimpleCurve()
+        readonly SimpleCurve AccCurve = new()
+        {
+            new (0, 0),
+            new (0.25f, 0.125f),
+            new (0.5f, 0.35f),
+            new (0.65f, 0.5f),
+            new (1, 1),
+        };
+
+        readonly SimpleCurve DecCurve = new()
+        {
+            new (0, 0),
+            new (0.75f, 0.5f),
+            new (1, 0.75f),
+        };
+
+        readonly SimpleCurve OutCurve = new()
         {
             new (0, 0),
             new (0.5f, 3),
@@ -24,7 +38,7 @@ namespace TiberiumRim
             new (1, 10),
         };
 
-        private readonly SimpleCurve shaderCurve = new SimpleCurve()
+        readonly SimpleCurve shaderCurve = new()
         {
             new(0, 0),
             new(0.5f, 0),
@@ -38,38 +52,10 @@ namespace TiberiumRim
         public override float?[] RotationOverrides => new float?[6] {null, null, null, null, CompFX.Overlays[3].Rotation, null};
 
         //
-        private float MaxValue()
-        {
-            return 25f;
-        }
-
-        private float AccValue()
-        {
-            if (FCState() == TiberiumRim.FCState.Decelerating)
-                return 10f;
-            return accelerator.FC.CurValue;
-        }
-
-        private FCState FCState()
-        {
-            var accState = accelerator.AcceleratorState();
-            if (accState is TiberiumRim.FCState.Accelerating or TiberiumRim.FCState.Sustaining)
-            {
-                return TiberiumRim.FCState.Accelerating;
-            }
-            if (accState is TiberiumRim.FCState.Decelerating)
-            {
-                return TiberiumRim.FCState.Decelerating;
-            }
-            return TiberiumRim.FCState.Sustaining;
-        }
-
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-
-            accelerator = new FCAccelerator(MaxValue()/4f, 4f);
-            speedControl = new FC(MaxValue, AccValue, FCState, Curve);
+            speedControl = new FCSimple(25, 4, AccCurve, DecCurve, OutCurve);
         }
 
         [TweakValue("CENTRIFUGE_BLEND", 0f, 1f)]
@@ -82,47 +68,21 @@ namespace TiberiumRim
         public override void CompTick()
         {
             base.CompTick();
-            //_Samples
-            //CompFX.Overlays[4].PropertyBlock.SetFloat("_Samples", Mathf.CeilToInt(Mathf.Lerp(1,360, BlendValue)));
-            //CompFX.Overlays[2].Graphic.MatSingle.SetFloat("_BlendValue", BlendValue);
-
-
-            /*
-            if (currentSpeedUpTick > speedUpTicks || currentIdleTicks > 0)
-            {
-                if (currentIdleTicks < idleTime)
-                {
-                    currentIdleTicks++;
-                }
-                else
-                {
-                    currentSpeedUpTick--;
-                    if (currentSpeedUpTick == 0)
-                        currentIdleTicks = 0;
-                }
-            }
-            else
-                currentSpeedUpTick++;
-
-            speedInt = Curve.Evaluate((float)currentSpeedUpTick / speedUpTicks);
-            */
         }
 
         private void StartOrSustainCentrifuge(bool isPowered)
         {
             if (!processingBatch || !isPowered)
             {
-                accelerator.Stop();
+                speedControl.Stop();
                 processingBatch = false;
             }
             if (isPowered && HasEnoughStored && !processingBatch && !ChemicalComponent.Container.CapacityFull)
             {
                 //Start
-                accelerator.Start();
+                speedControl.Start();
                 processingBatch = true;
             }
-
-            accelerator.Tick();
             speedControl.Tick();
 
             CompFX.Overlays[2].PropertyBlock.SetFloat("_BlendValue", BlendValue);
@@ -214,28 +174,20 @@ namespace TiberiumRim
             StringBuilder sb = new StringBuilder(base.CompInspectStringExtra());
             sb.AppendLine();
 
-            //Accelerator
-            var accMaxVal = Math.Round(accelerator.FC.MaxVal, 2);
-            var accCurState = accelerator.FC.CurState;
-            var accAcceleration = Math.Round(accelerator.FC.Acceleration, 2); 
-            var accCurValue = Math.Round(accelerator.FC.CurValue, 2); 
-            var accCurPct = accelerator.FC.CurPct.ToStringPercent(); 
-            var accOutputVal = Math.Round(accelerator.FC.OutputValue, 2);
-
-            var spdMaxVal = Math.Round(speedControl.MaxVal, 2);
+            var spdMaxVal = Math.Round(25f, 2);
             var spdCurState = speedControl.CurState;
             var spdAcceleration = Math.Round(speedControl.Acceleration, 2);
             var spdCurValue = Math.Round(speedControl.CurValue, 2);
             var spdCurPct = speedControl.CurPct.ToStringPercent();
             var spdOutputVal = Math.Round(speedControl.OutputValue, 2);
 
-            sb.AppendLine($"VALUE\t|ACCELERATOR\t|SPEEDER\t|\n" +
-                          $"MaxVal\t|{accMaxVal}\t\t|{spdMaxVal}\t\t|\n" +
-                          $"State\t|{accCurState}\t|{spdCurState}\t|\n" +
-                          $"Accel.\t|{accAcceleration}\t\t|{spdAcceleration} \t\t|\n" +
-                          $"CurValue\t|{accCurValue}\t\t|{spdCurValue}\t\t|\n" +
-                          $"CurPct\t|{accCurPct}\t\t|{spdCurPct}\t\t|\n" +
-                          $"Output\t|{accOutputVal}\t\t|{spdOutputVal}\t\t|\n");
+            sb.AppendLine($"VALUE\t|ACCELERATOR\n" +
+                          $"MaxVal\t|{spdMaxVal}\n" +
+                          $"State\t|{spdCurState}\n" +
+                          $"Accel.\t|{spdAcceleration}\n" +
+                          $"CurValue\t|{spdCurValue}\n" +
+                          $"CurPct\t|{spdCurPct}\n" +
+                          $"Output\t|{spdOutputVal}\n");
 
             sb.Append($"Shader BlendValue: {BlendValue}");
             return sb.ToString().TrimEndNewlines();

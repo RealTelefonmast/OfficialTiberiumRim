@@ -71,7 +71,7 @@ namespace TiberiumRim
             if (!respawningAfterLoad)
             {
                 startTick = Find.TickManager.TicksGame;
-                tickOffset = TRUtils.Range(Props.tickOffset);
+                tickOffset = TRandom.Range(Props.tickOffset);
             }
         }
 
@@ -178,7 +178,7 @@ namespace TiberiumRim
                     if (moteTicker <= 0)
                     {
                         MoteThrowTick();
-                        moteTicker = TRUtils.Range(Props.moteData.tickRange); 
+                        moteTicker = TRandom.Range(Props.moteData.tickRange); 
                     }
                     moteTicker--;
                 }

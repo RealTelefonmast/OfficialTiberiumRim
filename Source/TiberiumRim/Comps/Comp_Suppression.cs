@@ -47,7 +47,7 @@ namespace TiberiumRim
         {
             //Select all potentially coverable cells and define new suppression area
             bool Predicate(IntVec3 c) => !c.Roofed(parent.Map) && GenSight.LineOfSight(parent.Position, c, parent.Map);
-            SuppressionCells = TRUtils.SectorCells(parent.Position, parent.Map, Props.radius, Props.angle, parent.Rotation.AsAngle, false, Predicate).ToList();
+            SuppressionCells = CellUtils.SectorCells(parent.Position, parent.Map, Props.radius, Props.angle, parent.Rotation.AsAngle, false, Predicate).ToList();
             
         }
 

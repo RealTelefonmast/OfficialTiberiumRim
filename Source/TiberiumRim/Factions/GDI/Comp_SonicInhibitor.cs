@@ -14,7 +14,7 @@ namespace TiberiumRim
             foreach (var intVec3 in GenRadial.RadialCellsAround(parent.Position, Props.radius, true))
             {
                 var tib = intVec3.GetTiberium(parent.Map);
-                tib?.TakeDamage(new DamageInfo(TRDamageDefOf.TRSonic, TRUtils.Range(Props.damageRange)));
+                tib?.TakeDamage(new DamageInfo(TRDamageDefOf.TRSonic, TRandom.Range(Props.damageRange)));
             }
         }
 

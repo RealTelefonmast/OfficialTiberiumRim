@@ -17,7 +17,7 @@ namespace TiberiumRim
         public override void PostPreApplyDamage(DamageInfo dinfo, out bool absorbed)
         {
             base.PostPreApplyDamage(dinfo, out absorbed);
-            if (TRUtils.Chance(properties.explosionChance) && dinfo.Def.isExplosive)
+            if (TRandom.Chance(properties.explosionChance) && dinfo.Def.isExplosive)
             {
                 GenExplosion.DoExplosion(this.parent.Position, parent.Map, properties.explosiveRadius, DamageDefOf.Bomb, null, properties.damageAmountBase);
             }
@@ -27,7 +27,7 @@ namespace TiberiumRim
         {
             if (mode != DestroyMode.Vanish)
             {
-                if (!TRUtils.Chance(properties.chanceNeverExplodeFromDamage))
+                if (!TRandom.Chance(properties.chanceNeverExplodeFromDamage))
                 {
                     Find.CameraDriver.StartCoroutine(Explode(previousMap));
                     //aGenExplosion.DoExplosion(this.parent.Position, previousMap, properties.explosiveRadius, DamageDefOf.Bomb, null, properties.damageAmountBase);

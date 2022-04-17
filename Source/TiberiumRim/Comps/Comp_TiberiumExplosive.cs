@@ -13,7 +13,7 @@ namespace TiberiumRim
             base.PostPreApplyDamage(dinfo, out absorbed);
             if (dinfo.Def.isExplosive)
             {
-                if (TRUtils.Chance(Props.explosionChance))
+                if (TRandom.Chance(Props.explosionChance))
                 {
                     GenExplosion.DoExplosion(parent.Position, parent.Map, Props.explosionRadius, DamageDefOf.Bomb, parent);
                     //GenTiberium.SpawnSpore(parent.OccupiedRect(), Props.radius, parent.Map, Props.tiberiumTypes.RandomElement(), null, Props.sporeAmount, true);

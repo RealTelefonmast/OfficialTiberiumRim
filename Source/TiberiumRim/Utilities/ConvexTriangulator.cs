@@ -187,7 +187,7 @@ namespace TiberiumRim
                 }
 
                 //Pick next point randomly
-                Vertex nextPoint = points[TRUtils.Range(0, points.Count)];
+                Vertex nextPoint = points[TRandom.Range(0, points.Count)];
 
                 //To 2d space so we can see if a point is to the left is the vector ab
                 Vector2 a = currentPoint.GetPos2D_XZ();

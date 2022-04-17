@@ -205,6 +205,10 @@ namespace TiberiumRim
             return true;
         }
 
+        public virtual void Notify_ReceivedValue()
+        {
+        }
+
         //Data Notifiers
         public void Notify_StructureAdded(INetworkStructure other)
         {

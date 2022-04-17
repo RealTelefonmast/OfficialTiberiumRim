@@ -83,12 +83,12 @@ namespace TiberiumRim
 
         private void ResetHubTimer()
         {
-            ticksToHub = (int)(GenDate.TicksPerDay * TRUtils.Range(3f, 7f));
+            ticksToHub = (int)(GenDate.TicksPerDay * TRandom.Range(3f, 7f));
         }
 
         private void ResetEggTimer()
         {
-            ticksToEgg = (int)(GenDate.TicksPerDay * TRUtils.Range(1f, 3f));
+            ticksToEgg = (int)(GenDate.TicksPerDay * TRandom.Range(1f, 3f));
         }
 
 

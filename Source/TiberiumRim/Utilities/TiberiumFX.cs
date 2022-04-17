@@ -20,7 +20,7 @@ namespace TiberiumRim
         {
             Log.Message("Zapping");
             Mote_Arc arc = (Mote_Arc)ThingMaker.MakeThing(TiberiumDefOf.Mote_Arc);
-            Material mat = MaterialsTesla.Jumps[TRUtils.Range(0, 5)];
+            Material mat = MaterialsTesla.Jumps[TRandom.Range(0, 5)];
             arc.fadeInTimeOverride = 0.25f;
             arc.solidTimeOverride = 0.25f;
             arc.fadeOutTimeOverride = 0.85f;
@@ -39,15 +39,15 @@ namespace TiberiumRim
             {
                 if (part.CurrentTick % 4 == 0)
                 {
-                    FleckMaker.ThrowDustPuffThick(cachedList[i].ToVector3Shifted(), map, 1.9f * TRUtils.Range(2f, 5f), color);
+                    FleckMaker.ThrowDustPuffThick(cachedList[i].ToVector3Shifted(), map, 1.9f * TRandom.Range(2f, 5f), color);
 
                     /*
                     MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDefOf.Mote_DustPuffThick, null);
-                    moteThrown.Scale = 1.9f * TRUtils.Range(2f, 5f);
+                    moteThrown.Scale = 1.9f * TRandom.Range(2f, 5f);
                     moteThrown.rotationRate = (float)Rand.Range(-60, 60);
                     moteThrown.exactPosition = cachedList[i].ToVector3Shifted();
                     moteThrown.instanceColor = color;
-                    moteThrown.SetVelocity((float)Rand.Range(0, 360), TRUtils.Range(0.6f, 0.75f));
+                    moteThrown.SetVelocity((float)Rand.Range(0, 360), TRandom.Range(0.6f, 0.75f));
                     GenSpawn.Spawn(moteThrown, cachedList[i], map);
                     */
 
@@ -66,7 +66,7 @@ namespace TiberiumRim
             ActionComposition composition = new ActionComposition("Ascension Particles");
             composition.AddPart(delegate (ActionPart part)
             {
-                if (part.CurrentTick % TRUtils.Range(frequency) == 0)
+                if (part.CurrentTick % TRandom.Range(frequency) == 0)
                 {
                     AscensionParticle(cachedList[i], map);
                 }
@@ -87,19 +87,19 @@ namespace TiberiumRim
             ActionComposition composition = new ActionComposition("Floating Effects");
             composition.AddPart(delegate (ActionPart part)
             {
-                if (part.CurrentTick % TRUtils.Range(frequency) == 0)
+                if (part.CurrentTick % TRandom.Range(frequency) == 0)
                 {
-                    int count = TRUtils.Range(particleCount);
+                    int count = TRandom.Range(particleCount);
                     for (int ii = 0; ii < count; ii++)
                     {
-                        Vector3 exactPos = cachedList[i].ToVector3Shifted() + new Vector3(0, 0, TRUtils.Range(heightRange)) + Gen.RandomHorizontalVector(0.75f);
+                        Vector3 exactPos = cachedList[i].ToVector3Shifted() + new Vector3(0, 0, TRandom.Range(heightRange)) + Gen.RandomHorizontalVector(0.75f);
                         TRMote particle = (TRMote) ThingMaker.MakeThing(ThingDef.Named("IonAscensionCloud"), null);
                         particle.exactPosition = exactPos;
-                        particle.Scale = TRUtils.Range(0.5f, 2.5f);
-                        particle.exactRotation = TRUtils.Range(0, 360);
+                        particle.Scale = TRandom.Range(0.5f, 2.5f);
+                        particle.exactRotation = TRandom.Range(0, 360);
                         particle.instanceColor = new ColorInt(70, 90, 175).ToColor;
                         particle.rotationRate = 1.75f;
-                        particle.Speed = TRUtils.Range(0.5f, 1.5f);
+                        particle.Speed = TRandom.Range(0.5f, 1.5f);
                         if (useFallOff)
                         {
                             var pct = Mathf.InverseLerp(0, radius, center.DistanceTo(cachedList[i]));
@@ -125,8 +125,8 @@ namespace TiberiumRim
             Mote mote = (Mote) ThingMaker.MakeThing(ThingDef.Named("IonBeamBurn"), null);
             TRMote mote2 = (TRMote) ThingMaker.MakeThing(ThingDef.Named("IonParticle"), null);
             mote.exactPosition = mote2.exactPosition = pos.ToVector3Shifted();
-            mote.Scale = 3 * TRUtils.Range(1.5f, 3f);
-            mote2.Scale = 1 * TRUtils.Range(0.5f, 1f);
+            mote.Scale = 3 * TRandom.Range(1.5f, 3f);
+            mote2.Scale = 1 * TRandom.Range(0.5f, 1f);
             mote.rotationRate = 1.2f;
             mote2.rotationRate = 1.2f;
             mote.instanceColor = new ColorInt(70, 90, 175).ToColor;

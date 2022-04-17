@@ -16,39 +16,35 @@ namespace TiberiumRim
 
     public class Comp_ANS_AirVent : Comp_AtmosphericNetworkStructure
     {
-        private FloatControl speedControl;
+        private FCSimple speedControl;
 
-        public override float?[] AnimationSpeeds => new float?[4] { null, null, speedControl.CurrentValue, null };
+        public override float?[] AnimationSpeeds => new float?[4] { null, null, speedControl.OutputValue, null };
 
         public CompProperties_ANS_AirVent Props => (CompProperties_ANS_AirVent)base.props;
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-            speedControl = new FloatControl(0.5f, 0, 10);
+            speedControl = new FCSimple(5, 1);
         }
 
         public override void CompTick()
         {
             base.CompTick();
             speedControl.Tick();
-            if (ManipulatePollution(1))
+            if (!Atmospheric.IsOutdoors)
             {
-                speedControl.Start();
-                return;
+                if (Atmospheric.ActualValue > 0 && !AtmosphericComp.Container.CapacityFull)
+                {
+                    speedControl.Start();
+                    if (speedControl.ReachedPeak)
+                    {
+                        _ = ManipulatePollution(1);
+                    }
+                    return;
+                }
+                speedControl.Stop();
             }
-            speedControl.Stop();
-        }
-
-        public override void CompTickRare()
-        {
-            base.CompTickRare();
-            if (ManipulatePollution(GenTicks.TickRareInterval))
-            {
-                speedControl.Start();
-                return;
-            }
-            speedControl.Stop();
         }
 
         private bool ManipulatePollution(int tick)

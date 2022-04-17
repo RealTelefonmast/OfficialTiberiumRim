@@ -46,11 +46,11 @@ namespace TiberiumRim
             {
                 float offset = totalPoints > 0f ? general : 0f;
                 totalPoints -= offset;
-                if (TRUtils.RandValue > 0.4646469f)
+                if (TRandom.RandValue > 0.4646469f)
                 {
                     offset = -offset;
                 }
-                offsets[i] = TRUtils.Chance(0.68f) ? offset : 0f;
+                offsets[i] = TRandom.Chance(0.68f) ? offset : 0f;
                 i++;
             }
             GrowthAdd(offsets[0]);
@@ -65,7 +65,7 @@ namespace TiberiumRim
 
         private float TotalPoints(TiberiumCrystal crystal)
         {
-            float total = TRUtils.Range(0.7f, 1.4f);
+            float total = TRandom.Range(0.7f, 1.4f);
            // total *= Mathf.Lerp(1f, 0f, -crystal.Map.mapTemperature.OutdoorTemp);
             //total *= crystal.HitPoints / crystal.MaxHitPoints;
             //total *= crystal.HarvestValue / crystal.props.tiberium.harvestValue;

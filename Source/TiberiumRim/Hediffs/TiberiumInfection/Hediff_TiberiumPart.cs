@@ -30,7 +30,7 @@ namespace TiberiumRim
             if (!IsRisky) return;
             if (!pawn.IsHashIntervalTick(6000)) return;
             var risk = Risk;
-            if (!TRUtils.Chance(risk))
+            if (!TRandom.Chance(risk))
             {
                 addedManually = false;
                 return;

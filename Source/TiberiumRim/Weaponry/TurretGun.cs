@@ -198,7 +198,7 @@ namespace TiberiumRim
             Faction faction = attackTargetSearcher.Thing.Faction;
             float range = AttackVerb.verbProps.range;
             Building t;
-            if (TRUtils.RandValue < 0.5f && NeedsRoof && faction.HostileTo(Faction.OfPlayer) && Parent.Map.listerBuildings.allBuildingsColonist.Where(delegate (Building x)
+            if (TRandom.RandValue < 0.5f && NeedsRoof && faction.HostileTo(Faction.OfPlayer) && Parent.Map.listerBuildings.allBuildingsColonist.Where(delegate (Building x)
             {
                 float num = AttackVerb.verbProps.EffectiveMinRange(x, Parent);
                 float num2 = x.Position.DistanceToSquared(Parent.Position);
@@ -485,7 +485,7 @@ namespace TiberiumRim
                 if(ticksUntilTurn == 0)
                 {
                     clockWise = !(Rand.Value > 0.5);
-                    turnTicks = TRUtils.Range(props.idleDuration);
+                    turnTicks = TRandom.Range(props.idleDuration);
                 }
             }
             else 
@@ -493,7 +493,7 @@ namespace TiberiumRim
                 targetRot += clockWise ? 0.26f : -0.26f;
                 turnTicks--;
                 if(turnTicks <= 0)
-                    ticksUntilTurn = TRUtils.Range(props.idleInterval);
+                    ticksUntilTurn = TRandom.Range(props.idleInterval);
             }
             rotation = Mathf.SmoothDampAngle(rotation, targetRot, ref speed, 0.01f, props.speed, 0.01666f);
             if (OnTarget && !targetAcquired)

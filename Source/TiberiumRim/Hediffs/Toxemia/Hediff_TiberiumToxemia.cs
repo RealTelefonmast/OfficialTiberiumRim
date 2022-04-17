@@ -196,13 +196,13 @@ namespace TiberiumRim
         {
             if (HasMutation) return;
             if (!Rand.MTBEventOccurs(MTBValue, 60000, 750)) return;
-            if (!TRUtils.Chance(MutationChance)) return;
+            if (!TRandom.Chance(MutationChance)) return;
             pawn.health.AddHediff(TRHediffDefOf.TiberiumMutation);
         }
 
         private void TryBloodInfection()
         {
-            if (!TRUtils.Chance(BloodInfectionChance)) return;
+            if (!TRandom.Chance(BloodInfectionChance)) return;
             BodyPartRecord organ = pawn.AllVitalOrgans().Where(p => !pawn.health.hediffSet.PartIsCrystallizing(p)).RandomElement();
             if (organ == null) return;
             HediffUtils.InfectPart(pawn, organ, 0.01f);

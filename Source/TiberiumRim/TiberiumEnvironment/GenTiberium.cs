@@ -109,7 +109,7 @@ namespace TiberiumRim
         public static bool TryMutatePlant(Plant plant, TiberiumCrystalDef def)
         {
             if (plant == null) return false;
-            //if (!TRUtils.Chance(props.tiberium.plantMutationChance)) return false;
+            //if (!TRandom.Chance(props.tiberium.plantMutationChance)) return false;
             var map = plant.Map;
             var position = new IntVec3(plant.Position.x, plant.Position.y, plant.Position.z);
 

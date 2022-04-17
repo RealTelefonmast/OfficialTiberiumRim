@@ -28,7 +28,7 @@ namespace TiberiumRim
 
         public WeatherEvent_IonStrike(Map map) : base(map)
         {
-            duration = TRUtils.Range(15, 60);
+            duration = TRandom.Range(15, 60);
             this.shadowVector = new Vector2(Rand.Range(-5f, 5f), Rand.Range(-5f, 0f));
         }
 
@@ -100,6 +100,6 @@ namespace TiberiumRim
             }
         }
 
-        private bool DoStrike => TRUtils.Chance(0.4f);
+        private bool DoStrike => TRandom.Chance(0.4f);
     }
 }

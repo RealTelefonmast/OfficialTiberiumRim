@@ -19,7 +19,7 @@ namespace TiberiumRim
             {
                 foreach (var filth in filths)
                 {
-                    if (TRUtils.Chance(filth.value))
+                    if (TRandom.Chance(filth.value))
                     {
                         FilthMaker.TryMakeFilth(cell, map, filth.def, 1);
                         break;

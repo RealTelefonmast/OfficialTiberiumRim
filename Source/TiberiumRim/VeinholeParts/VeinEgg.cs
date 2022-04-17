@@ -6,7 +6,7 @@ namespace TiberiumRim
     public class VeinEgg : TRBuilding
     {
         public Veinhole parent;
-        private int ticksToHatch = TRUtils.Range(GenDate.TicksPerDay, GenDate.TicksPerDay * 3);
+        private int ticksToHatch = TRandom.Range(GenDate.TicksPerDay, GenDate.TicksPerDay * 3);
 
         public override void ExposeData()
         {
@@ -38,7 +38,7 @@ namespace TiberiumRim
 
         public void Hatch(bool premature = false)
         {
-            int num = TRUtils.Range(1, 4);
+            int num = TRandom.Range(1, 4);
             for(int i = 0; i < num; i++)
             {
                 PawnKindDef Veinmonster = PawnKindDef.Named("Veinmonster");

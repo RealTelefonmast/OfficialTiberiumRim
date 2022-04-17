@@ -63,7 +63,7 @@ namespace TiberiumRim
                 var thing = thingList[i];
                 if (!thing.CanBeDamagedByTib(out float damageFactor)) continue;
                 if (thing.def.useHitPoints)
-                    thing.TakeDamage(new DamageInfo(TRDamageDefOf.TiberiumDeterioration,damageFactor * TRUtils.Range(affecter.def.tiberium.deteriorationDamage), 1));
+                    thing.TakeDamage(new DamageInfo(TRDamageDefOf.TiberiumDeterioration,damageFactor * TRandom.Range(affecter.def.tiberium.deteriorationDamage), 1));
                 if (affecter.def.conversions.HasOutcomeFor(thing, out ThingConversion conversion) && Rand.Chance(conversion.chance))
                 {
                     GenSpawn.Spawn(conversion.GetOutcome(), thing.Position, map);

@@ -56,7 +56,7 @@ namespace TiberiumRim
                 IntVec3 cell = Positions[i];
                 for (int ii = 0; ii < 2; ii++)
                 {
-                    int iii = TRUtils.Chance(0.5f) ? 1 : -1;
+                    int iii = TRandom.Chance(0.5f) ? 1 : -1;
                     IntVec3 vec1 = cell + new IntVec3(iii, 0, 0);
                     if (!Positions.Contains(vec1))
                     {
@@ -151,7 +151,7 @@ namespace TiberiumRim
 
                 foreach (var adjCell in curCell.CellsAdjacent8Way().Where(c => c.InBounds(map) && !floodBools[c] && validator(c)).InRandomOrder())
                 {
-                    if(TRUtils.RandValue > 0.4)
+                    if(TRandom.RandValue > 0.4)
                         openSet.Enqueue(adjCell);
                 }
                 num++;

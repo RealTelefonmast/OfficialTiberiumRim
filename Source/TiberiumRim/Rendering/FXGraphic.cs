@@ -186,7 +186,7 @@ namespace TiberiumRim
                     ShaderMaterial.SetTexture("_MainTex", drawMat.mainTexture);
                     ShaderMaterial.SetTexture("_MaskTex", ContentFinder<Texture2D>.Get(Graphic.path + "_s"));
                     drawMat = ShaderMaterial;
-                    Vector2 offset = new Vector2(0, TRUtils.Cosine(data.startOffset, data.endOffset, data.MoverSpeed, Find.TickManager.TicksGame));
+                    Vector2 offset = new Vector2(0, TMath.Cosine(data.startOffset, data.endOffset, data.MoverSpeed, Find.TickManager.TicksGame));
                     drawMat.mainTextureOffset = offset;
                     break;
                 case FXMode.Blink:
@@ -197,8 +197,8 @@ namespace TiberiumRim
                 case FXMode.Pulse:
                     var pulse = data.pulse;
                     var tick = Find.TickManager.TicksGame;
-                    var opaVal = TRUtils.OscillateBetween(pulse.opacityRange.min, pulse.opacityRange.max, pulse.opacityDuration, tick + parent.tickOffset);
-                    var sizeVal = TRUtils.OscillateBetween(pulse.sizeRange.min, pulse.sizeRange.max, pulse.sizeDuration, tick + parent.tickOffset);
+                    var opaVal = TMath.OscillateBetween(pulse.opacityRange.min, pulse.opacityRange.max, pulse.opacityDuration, tick + parent.tickOffset);
+                    var sizeVal = TMath.OscillateBetween(pulse.sizeRange.min, pulse.sizeRange.max, pulse.sizeDuration, tick + parent.tickOffset);
                     if(pulse.opacityRange != FloatRange.Zero)
                         drawColor.a = opaVal;
                     if (pulse.sizeRange != FloatRange.Zero)

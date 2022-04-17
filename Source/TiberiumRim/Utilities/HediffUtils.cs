@@ -317,7 +317,7 @@ namespace TiberiumRim
             chance *= 0.01f;
 
             //Visceral chance check
-            if (!TRUtils.Chance(chance)) return false;
+            if (!TRandom.Chance(chance)) return false;
 
             //If successful, spawn pod with pawn inside
             FormVisceralPod(pawn);
@@ -414,9 +414,9 @@ namespace TiberiumRim
             }
             if (!part.CanBeHit()) return false;
 
-            float chance = TRUtils.RandValue;                        //Infection Chance
+            float chance = TRandom.RandValue;                        //Infection Chance
             chance -= pawn.GetStatValue(StatDefOf.MeleeDodgeChance); //Dodge Chance
-            if (!TRUtils.Chance(Mathf.Clamp01(chance))) return true;
+            if (!TRandom.Chance(Mathf.Clamp01(chance))) return true;
 
             pawn.TakeDamage(new DamageInfo(TRDamageDefOf.TiberiumBurn, chance * 6f, 0, -1, null, part));
             return false;

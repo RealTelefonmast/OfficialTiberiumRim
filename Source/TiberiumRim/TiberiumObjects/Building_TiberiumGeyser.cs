@@ -61,8 +61,8 @@ namespace TiberiumRim
             }, StartSpray, EndSpray);
             if (respawningAfterLoad) return;
 
-            depositValue = TRUtils.Range(10000, 30000);
-            maxDepositValue = TRUtils.Range((uint)depositValue, 30000U);
+            depositValue = TRandom.Range(10000, 30000);
+            maxDepositValue = TRandom.Range((uint)depositValue, 30000U);
         }
 
         private void StartSpray()
@@ -94,7 +94,7 @@ namespace TiberiumRim
                 {
                     if (depositValue < maxDepositValue)
                     {
-                        depositValue += TRUtils.Range(100, 450);
+                        depositValue += TRandom.Range(100, 450);
                     }
                 }
             }

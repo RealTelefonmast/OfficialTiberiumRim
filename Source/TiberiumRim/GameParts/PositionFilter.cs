@@ -24,7 +24,7 @@ namespace TiberiumRim
             foreach (var cell in map.AllCells)
             {
                 if(terrainToAvoid.Contains(cell.GetTerrain(map)))continue;
-                if(terrainToPrefer.Any() && !terrainToPrefer.Any(ttp => TRUtils.Chance(ttp.value))) continue;
+                if(terrainToPrefer.Any() && !terrainToPrefer.Any(ttp => TRandom.Chance(ttp.value))) continue;
                 if(thingsToSpawnAt.Any() && !thingsToSpawnAt.Any(t => cell.GetFirstThing(map, t) != null)) continue;
                 if(distanceToThings.Any() && distanceToThings.Any(t => map.listerThings.ThingsOfDef(t.ThingDef).Any(t2 => t2.Position.DistanceTo(cell) < t.value))) continue;
                 yield return cell;
@@ -88,7 +88,7 @@ namespace TiberiumRim
             }
             if (!terrainToPrefer.NullOrEmpty())
             {
-                AllCells.RemoveAll(v => !TRUtils.Chance(terrainToPrefer.Find(t => t.terrainDef == v.GetTerrain(map)).weight));
+                AllCells.RemoveAll(v => !TRandom.Chance(terrainToPrefer.Find(t => t.terrainDef == v.GetTerrain(map)).weight));
             }
             if (!spawnAt.NullOrEmpty())
             {

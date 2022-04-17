@@ -209,7 +209,7 @@ namespace TiberiumRim
                 if (!pos.InBounds(Map) || (pos.GetFirstBuilding(Map) != null)) continue;
 
                 //Try Mutate Plant
-                if (!TRUtils.Chance(def.tiberium.plantMutationChance)) continue;
+                if (!TRandom.Chance(def.tiberium.plantMutationChance)) continue;
                 if (GenTiberium.TryMutatePlant(pos.GetPlant(Map), def))
                 {
                     if (Rand.Chance(0.01f))
@@ -254,7 +254,7 @@ namespace TiberiumRim
                 }
 
                 //TryCreateTerrain
-                if (!TRUtils.Chance(Mathf.Pow(def.tiberium.plantMutationChance, 2))) continue;
+                if (!TRandom.Chance(Mathf.Pow(def.tiberium.plantMutationChance, 2))) continue;
                 GenTiberium.SetTerrain(pos, Map, def);
             }
         }

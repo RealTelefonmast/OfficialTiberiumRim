@@ -44,7 +44,7 @@ namespace TiberiumRim
                     new (TiberiumDefOf.TiberiumCraterHybrid,0.22f),
                     //new WeightedThing(TiberiumDefOf.RedTiberiumShard,0.01f)
                 }.RandomElementByWeight(s => s.value).def;
-                ticksLeft = (int)(TRUtils.Range(1f, 2f) * GenDate.TicksPerDay);
+                ticksLeft = (int)(TRandom.Range(1f, 2f) * GenDate.TicksPerDay);
                 DoMeteoriteImpact();
             }
         }

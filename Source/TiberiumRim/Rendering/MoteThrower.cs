@@ -72,12 +72,12 @@ namespace TiberiumRim
                         if (ticksLeft <= 0)
                         {
                             MakeMote(pos, map);
-                            ticksLeft = TRUtils.Range(Info.moteInterval);
+                            ticksLeft = TRandom.Range(Info.moteInterval);
                         }
                     }
                     return;
                 case MoteThrowerType.ChanceBased:
-                    if (TRUtils.Chance(Info.chancePerTick))
+                    if (TRandom.Chance(Info.chancePerTick))
                     {
                         MakeMote(pos, map);
                     }
@@ -87,28 +87,28 @@ namespace TiberiumRim
 
         private void ResetBurst()
         {
-            ticksUntilBurst = TRUtils.Range(Info.burstInterval);
-            burstLeft = TRUtils.Range(Info.burstRange);
+            ticksUntilBurst = TRandom.Range(Info.burstInterval);
+            burstLeft = TRandom.Range(Info.burstRange);
         }
 
         public void MakeMote(Vector3 exactPos, Map map)
         {
             IntVec3 spawnPos = exactPos.ToIntVec3();
             if (!spawnPos.InBounds(map)) return;
-            int rand = TRUtils.Range(Info.burstCount);
+            int rand = TRandom.Range(Info.burstCount);
             for (int i = 0; i < rand; i++)
             {
                 Mote mote = (Mote)ThingMaker.MakeThing(Info.moteDef);
-                mote.Scale = TRUtils.Range(Info.scale);
+                mote.Scale = TRandom.Range(Info.scale);
                 mote.exactPosition = exactPos + Info.positionOffset + Gen.RandomHorizontalVector(Info.positionRadius);
-                mote.exactRotation = TRUtils.Range(Info.rotation);
-                mote.rotationRate = TRUtils.Range(Info.rotationRate);
+                mote.exactRotation = TRandom.Range(Info.rotation);
+                mote.rotationRate = TRandom.Range(Info.rotationRate);
                 mote.solidTimeOverride = Info.solidTime.Average > 0 ? Info.solidTime.RandomInRange : -1f;
                 if (mote is MoteThrown thrown)
                 {
-                    thrown.airTimeLeft = TRUtils.Range(Info.airTime);
-                    float speed = TRUtils.Range(Info.speed);
-                    float angle = TRUtils.Range(Info.angle);
+                    thrown.airTimeLeft = TRandom.Range(Info.airTime);
+                    float speed = TRandom.Range(Info.speed);
+                    float angle = TRandom.Range(Info.angle);
                     if (Info.affectedByWind)
                     {
                         float windSpeed = Room.PsychologicallyOutdoors ? map.windManager.WindSpeed : 0f;

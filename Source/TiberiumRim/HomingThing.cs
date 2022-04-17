@@ -27,7 +27,7 @@ namespace TiberiumRim
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
-            speed = TRUtils.Range(def.speed);
+            speed = TRandom.Range(def.speed);
             exactPos = Position.ToVector3();
             ticksToLive = def.liveTime.SecondsToTicks();
             base.SpawnSetup(map, respawningAfterLoad);

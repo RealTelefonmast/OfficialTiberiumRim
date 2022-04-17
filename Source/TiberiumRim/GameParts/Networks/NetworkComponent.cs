@@ -102,6 +102,7 @@ namespace TiberiumRim
         public bool HasConnection => ConnectedComponentSet.Transmitters.Any();
         public bool HasContainer => Props.containerProps != null;
 
+        private int lastReceivedTick;
         private int receivingTicks;
 
         public bool IsReceiving => receivingTicks > 0;
@@ -186,8 +187,9 @@ namespace TiberiumRim
 
         public virtual void NetworkCompTick(bool isPowered)
         {
-            if(receivingTicks > 0)
+            if (receivingTicks > 0 && lastReceivedTick < Find.TickManager.TicksGame)
                 receivingTicks--;
+
             if (!isPowered || !IsActive) return;
             ProcessValues();
         }
@@ -215,7 +217,9 @@ namespace TiberiumRim
 
         public void Notify_ReceivedValue()
         {
+            lastReceivedTick = Find.TickManager.TicksGame;
             receivingTicks++;
+            parent.Notify_ReceivedValue();
         }
 
         //Network 

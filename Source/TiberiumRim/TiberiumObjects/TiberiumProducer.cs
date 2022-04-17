@@ -143,7 +143,7 @@ namespace TiberiumRim
                     break;
                 case TiberiumSpawnMode.SporeBurst:
                     //TODO: Use Actual Spores
-                    spores = TRUtils.Range(def.spawner.explosionRange);
+                    spores = TRandom.Range(def.spawner.explosionRange);
                     for (int i = 0; i < spores; i++)
                     {
                         var tibDef = TiberiumCrystalDefWeighted;
@@ -153,7 +153,7 @@ namespace TiberiumRim
                     //GenTiberium.SpawnSpore(this.OccupiedRect(), props.spawner.sporeExplosionRadius, Map, TiberiumTypes.RandomElement(), this, spores, true);
                     break;
                 case TiberiumSpawnMode.SporeExplosion:
-                    spores = TRUtils.Range(def.spawner.explosionRange);
+                    spores = TRandom.Range(def.spawner.explosionRange);
                     for (int i = 0; i < spores; i++)
                     {
                         var tibDef = TiberiumCrystalDefWeighted;
@@ -183,7 +183,7 @@ namespace TiberiumRim
         private void ResetTiberiumCounter()
         {
             if (def.spawner != null)
-                ticksUntilTiberium = TRUtils.Range(def.spawner.spawnInterval);
+                ticksUntilTiberium = TRandom.Range(def.spawner.spawnInterval);
         }
 
         public override void Draw()

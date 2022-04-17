@@ -26,7 +26,7 @@ namespace TiberiumRim
             {
                 foreach (var hediff in sideEffects)
                 {
-                    if (TRUtils.Chance(hediff.value))
+                    if (TRandom.Chance(hediff.value))
                     {
                         var hediffCaused = HediffMaker.MakeHediff(hediff.def, pawn);
                         hediffCaused.Severity = 0.5f;
