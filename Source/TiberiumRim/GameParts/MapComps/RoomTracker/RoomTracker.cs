@@ -135,6 +135,7 @@ namespace TiberiumRim
 
         public void PreApply()
         {
+            RegenerateData();
             foreach (var comp in comps)
             {
                 comp.PreApply();
@@ -143,7 +144,6 @@ namespace TiberiumRim
 
         public void FinalizeApply()
         {
-            RegenerateData();
             foreach (var comp in comps)
             {
                 comp.FinalizeApply();

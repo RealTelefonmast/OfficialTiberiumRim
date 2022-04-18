@@ -60,7 +60,6 @@ namespace TiberiumRim
                     if (reusedOldRooms.Contains(tracker.Room))
                     {
                         tracker.Notify_Reused();
-                        tracker.PreApply();
                     }
                     newTrackers.Add(tracker);
                     continue;
@@ -72,7 +71,6 @@ namespace TiberiumRim
                     {
                         var newTracker = new RoomTracker(newAddedRoom);
                         newTrackers.Add(newTracker);
-                        newTracker.PreApply();
                         break;
                     }
                 }
@@ -94,6 +92,12 @@ namespace TiberiumRim
             foreach (var tracker in newTrackers)
             {
                 parentInfo.SetTracker(tracker);
+            }
+
+
+            foreach (var tracker in newTrackers)
+            {
+                tracker.PreApply();
             }
 
             foreach (var tracker in newTrackers)

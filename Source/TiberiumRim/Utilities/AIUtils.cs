@@ -10,22 +10,32 @@ namespace TiberiumRim.Utilities
 {
     public static class AIUtils
     {
-        public static List<Room> RoomsAlongPath(this PawnPath path, Map map)
+        public static List<Room> RoomsAlongPath(this PawnPath path, Map map, RoomRoleDef withRole = null)
         {
-            HashSet<Room> rooms = new HashSet<Room>();
+            List<Room> rooms = new();
+            Room lastAddedRoom = null;
             for (var i = 0; i < path.NodesReversed.Count; i++)
             {
                 var node = path.NodesReversed[i];
-                rooms.Add(node.GetRoom(map));
+                var newRoom = node.GetRoom(map);
+                if(newRoom == lastAddedRoom) continue;
+                if(withRole != null && newRoom.Role != withRole) continue;
+                rooms.Add(newRoom);
+                lastAddedRoom = newRoom;
             }
-            return rooms.ToList();
+            return rooms;
         }
 
         public static IntVec3 GeneralCenter(this Room room)
         {
             var poll = room.AtmosphericRoomComp();
-            var size = poll.Parent.Size;
-            return poll.Parent.MinVec + new IntVec3(size.x/2,0, size.z/2);
+            var size = poll.Parent.Size/2;
+            return room.Cells.First(t =>
+            {
+                var vec = (t - poll.Parent.MinVec);
+                return (vec.x >= size.x && vec.z >= size.z) || (vec.x <= size.x && vec.z <= size.z);
+            });
+            //return poll.Parent.MinVec + new IntVec3(size.x/2,0, size.z/2);
         }
     }
 }

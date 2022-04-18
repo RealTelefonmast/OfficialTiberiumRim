@@ -24,11 +24,11 @@ namespace TiberiumRim
         private HashSet<IntVec3> roomCellsTemp;
         private IntVec3 QueueCell;
 
-        private bool ShouldQueue => AirLock.CurrentPawn != null && AirLock.CurrentPawn != pawn;
+        private bool ShouldQueue => !(AirLock.IsReadyForUsage && AirLock.NextPawnInQueue == pawn);//AirLock.NextPawnInQueue != null && AirLock.NextPawnInQueue != pawn || !AirLock.IsReadyForUsage;
 
         public override string GetReport()
         {
-            return $"{base.GetReport()}[{AirLockRoom.ID}][{(ShouldQueue ? "Waiting" : "Direct")}]";
+            return $"{base.GetReport()}[{AirLockRoom.ID}][{(ShouldQueue ? "Queued" : "Direct")}]";
         }
 
         private bool ShouldStop
@@ -42,7 +42,9 @@ namespace TiberiumRim
                     case AirLockUsage.WaitForClean:
                         return AirLock.IsClean;
                 }
+
                 return true;
+                //return true;
             }
         }
 
@@ -54,43 +56,49 @@ namespace TiberiumRim
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            //If it is not our turn, setup queue data
-            if (ShouldQueue)
+            if (AirLock.AlreadyWaitingFor(pawn, out IntVec3 pos))
             {
+                QueueCell = pos;
+            }
+            else if(AirLock.NextPawnInQueue != null && AirLock.NextPawnInQueue != pawn)
+            {
+                //If it is not our turn, setup queue data
                 roomCellsTemp = AirLockRoom.Cells.ToHashSet();
                 QueueCell = NextBestQueuePos();
-                AirLock.Notify_EnqueuePawnPos(QueueCell);
+                AirLock.Notify_EnqueuePawnPos(pawn, QueueCell);
             }
+
             //SetupData
             AddFinishAction(() =>
             {
-                TLog.Debug($"[{pawn}]Finishing toil...");
-                AirLock.Notify_FinishJob(pawn);
+                var jobCondition = TRAIPatches.JobDriver_CleanupPatch._LastJobCondition;
+                TLog.Debug($"[{pawn.NameShortColored}][{AirLockRoom.ID}]Finishing toil with condition: {jobCondition}");
+                AirLock.Notify_FinishJob(pawn, jobCondition);
             });
             return true;
         }
 
-        public IntVec3 GotoTarget => ShouldQueue ? QueueCell : RoomCenter;
-
         public override IEnumerable<Toil> MakeNewToils()
         {
-            TLog.Debug($"Going To {GotoTarget}");
-            yield return Toils_Goto.GotoCell(GotoTarget, PathEndMode.OnCell);
-
-            TLog.Debug($"Current Pawn in Airlock: {AirLock.CurrentPawn} | Should Queue: {ShouldQueue}");
+            TLog.Debug($"[{pawn.NameShortColored}][{AirLock.Room.ID}]Next Pawn in Airlock: {AirLock.NextPawnInQueue?.NameShortColored} | Should Queue: {ShouldQueue}");
             //
             if (ShouldQueue)
             {
+                TLog.Debug($"[{pawn.NameShortColored}][{AirLock.Room.ID}]Going To Queue {QueueCell}");
+                yield return Toils_Goto.GotoCell(QueueCell, PathEndMode.OnCell);
+
                 Toil waitForQueue = new Toil();
                 waitForQueue.initAction = delegate
                 {
-
                 };
                 waitForQueue.defaultCompleteMode = ToilCompleteMode.Never;
-                waitForQueue.FailOn(() => AirLock.IsReadyForUsage && AirLock.CurrentPawn == pawn);
-                waitForQueue.AddFinishAction(() => AirLock.Notify_DequeuePawnPos(QueueCell));
+                waitForQueue.FailOn(() => !ShouldQueue);
+                waitForQueue.AddFinishAction(() => AirLock.Notify_DequeuePawnPos(pawn, QueueCell));
                 yield return waitForQueue;
             }
+
+            TLog.Debug($"[{pawn.NameShortColored}][{AirLock.Room.ID}]Going To Room {RoomCenter}");
+            yield return Toils_Goto.GotoCell(RoomCenter, PathEndMode.OnCell);
 
             Toil toil = new Toil();
             toil.initAction = delegate
@@ -99,9 +107,10 @@ namespace TiberiumRim
             };
             toil.tickAction = delegate
             {
+                if(ShouldStop)
+                    EndJobWith(JobCondition.Succeeded);
             };
             toil.defaultCompleteMode = ToilCompleteMode.Never;
-            toil.FailOn(() => ShouldStop);
             yield return toil;
         }
     }

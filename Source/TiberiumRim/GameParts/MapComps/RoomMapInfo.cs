@@ -159,11 +159,11 @@ namespace TiberiumRim
 
             var ratio = Math.Round(roomCount / (float)trackerCount, 1);
             var ratioBool = ratio == 1;
-            var ratioString = $"[{ratio}]{(ratioBool ? check:fail)}".Colorize(ratioBool ? Color.green : Color.red);
+            var ratioString = $"[{roomCount}/{trackerCount}][{ratio}]{(ratioBool ? check:fail)}".Colorize(ratioBool ? Color.green : Color.red);
 
             var hitCountRatio = Math.Round(hitCount / (float)roomCount,1);
             var hitBool = hitCountRatio == 1;
-            var hitCountRatioString = $"[{hitCountRatio}]{(hitBool ? check : fail)}".Colorize(hitBool ? Color.green : Color.red);
+            var hitCountRatioString = $"[{hitCount}/{roomCount}][{hitCountRatio}]{(hitBool ? check : fail)}".Colorize(hitBool ? Color.green : Color.red);
             TLog.Debug($"[Verifying RoomMapInfo] Room/Tracker Ratio: {ratioString} | HitCount Test: {hitCountRatioString}");
 
             if (failedTrackers.Count > 0)

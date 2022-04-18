@@ -25,43 +25,34 @@ namespace TiberiumRim
                 if (!__result) return;
 
                 //If already using an airlock..
-                if (___pawn.CurJobDef == TiberiumDefOf.UseAirlock /*|| ___pawn.CurJobDef == TiberiumDefOf.UseAirlock_Clean*/) return;
-
-                //
-                /*
-                var currentRoom = ___pawn.GetRoom();
-                if (currentRoom.Role == TiberiumDefOf.TR_AirLock)
-                {
-                    //If already in airlock which is cleaned, return
-                    var curAirlock = currentRoom.GetRoomComp<RoomComponent_AirLock>();
-                    if (!curAirlock.ShouldBeUsed(true, out _)) return;
-                }
-                */
+                if (___pawn.CurJobDef == TiberiumDefOf.UseAirlock) return;
 
                 //Check path for airlocks
-                var currentRoom = ___pawn.GetRoom();
+                var entryRoom = ___pawn.GetRoom();
                 var lastPathNodes = __instance.curPath.NodesReversed.ListFullCopy();
-                var rooms = __instance.curPath.RoomsAlongPath(___pawn.Map);
-                var airLocks = rooms?.Where(r => r.Role == TiberiumDefOf.TR_AirLock);
+                var airLockRooms = __instance.curPath.RoomsAlongPath(___pawn.Map, TiberiumDefOf.TR_AirLock);
+
+                //TLog.Debug($"[{___pawn.NameShortColored}]RoomsAlongPath: {airLockRooms.Select(t => t.ID).ToStringSafeEnumerable()}");
 
                 //No airlocks, no job
-                if (airLocks.EnumerableNullOrEmpty()) return;
+                if (airLockRooms.NullOrEmpty()) return;
 
                 bool desiresAirlock = false;
-                foreach (var airLock in airLocks)
+                foreach (var room in airLockRooms)
                 {
                     //If airlock is inactive or cannot be used for any reason, skip it
-                    var airLockComp = airLock.GetRoomComp<RoomComponent_AirLock>();
-                    if (!airLockComp.ShouldBeUsed(currentRoom == airLockComp.Room)) continue;
+                    var airLockComp = room.GetRoomComp<RoomComponent_AirLock>();
+                    if (!airLockComp.ShouldBeUsed(entryRoom == room, ___pawn)) continue;
 
-                    var airlocks = airLockComp.AirLocksOnPath(lastPathNodes);
+                    //Gets an array of size 2 of the 2 airlock doors tha pawn passes through in reverse order
+                    var airLockDoors = airLockComp.AirLocksOnPath(lastPathNodes, ___pawn);
 
                     //Add pawn to the FCFS pawn queue
                     airLockComp.Notify_EnqueuePawn(___pawn);
 
                     //Start the airlock job and set the current job to be resumed
-                    TLog.Debug($"[{___pawn}]Adding airlock job at: {airLockComp.Room.ID} via {airlocks[1]}");
-                    Job theJob = JobMaker.MakeJob(TiberiumDefOf.UseAirlock, airlocks[1], airLock.GeneralCenter());
+                    TLog.Debug($"[{___pawn.NameShortColored}][{airLockComp.Room.ID}]Adding airlock job via {airLockDoors[1]}");
+                    Job theJob = JobMaker.MakeJob(TiberiumDefOf.UseAirlock, airLockDoors[1], room.GeneralCenter());
                     ___pawn.jobs.StartJob(theJob, JobCondition.Ongoing, null, true);
 
                     /*
@@ -119,7 +110,23 @@ namespace TiberiumRim
                     lastRoom.RoomTracker().Notify_PawnLeftRoom(pawn);
                 }
             }
+        }
 
+        [HarmonyPatch(typeof(JobDriver)), HarmonyPatch(nameof(JobDriver.Cleanup))]
+        public static class JobDriver_CleanupPatch
+        {
+            public static JobCondition _LastJobCondition;
+
+            public static bool Prefix(JobCondition condition)
+            {
+                _LastJobCondition = condition;
+                return true;
+            }
+
+            public static void Postfix(JobDriver __instance)
+            {
+
+            }
         }
     }
 }
