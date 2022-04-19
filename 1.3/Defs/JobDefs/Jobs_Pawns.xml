@@ -19,16 +19,6 @@
 	</JobDef>
 	
 	<JobDef>
-		<defName>QueueAtAirlock</defName>
-		<driverClass>TiberiumRim.JobDriver_AirlockQueue</driverClass>
-		<reportString>waiting for airlock.</reportString>
-		<allowOpportunisticPrefix>false</allowOpportunisticPrefix>
-		<playerInterruptible>true</playerInterruptible>
-		<casualInterruptible>false</casualInterruptible>
-		<dropThingBeforeJob>false</dropThingBeforeJob>
-	</JobDef>
-
-	<JobDef>
 		<defName>TiberiumBill</defName>
 		<driverClass>TiberiumRim.JobDriver_DoTiberiumBill</driverClass>
 		<reportString>doing tiberium bill.</reportString>

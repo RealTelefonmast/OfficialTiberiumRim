@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using HarmonyLib;
 using RimWorld;
 using TiberiumRim.Utilities;
 using UnityEngine;
 using Verse;
 using Verse.AI;
-using Verse.AI.Group;
 
 namespace TiberiumRim
 {
@@ -19,74 +18,25 @@ namespace TiberiumRim
         WaitForDoors,
         WaitForClean
     }
-
-    public class PawnQueue
-    {
-        public List<Pawn> pawnList;
-
-        public PawnQueue()
-        {
-            pawnList = new();
-        }
-
-        public void Enqueue(Pawn pawn)
-        {
-            pawnList.Add(pawn);
-        }
-
-        public Pawn Dequeue()
-        {
-            TLog.Debug($"Queue Before Dequeing: {pawnList.ToStringSafeEnumerable()}");
-            if (pawnList.Count <= 0) return null;
-            var pawn = pawnList[0];
-            pawnList.RemoveAt(0);
-            TLog.Debug($"Queue After Dequeing {pawn.NameShortColored}: {pawnList.ToStringSafeEnumerable()}");
-            return pawn;
-        }
-
-        public void Remove(Pawn pawn)
-        {
-            TLog.Debug($"Queue Before Removing: {pawnList.ToStringSafeEnumerable()}");
-            if (pawnList.Remove(pawn))
-            {
-                TLog.Debug($"Safely removed {pawn.NameShortColored} from queue: {pawnList.ToStringSafeEnumerable()}");
-            }
-        }
-
-        public bool TryPeek(out Pawn pawn)
-        {
-            pawn = null;
-            if (pawnList.Count <= 0) return false;
-            pawn = pawnList[0];
-            return true;
-        }
-
-        public override string ToString()
-        {
-            return $"{pawnList.ToStringSafeEnumerable()}";
-        }
-
-        public bool Contains(Pawn pawn)
-        {
-            return pawnList.Contains(pawn);
-        }
-    }
-
     public class RoomComponent_AirLock : RoomComponent
     {
-        private bool HasAirLockRole;
-
+        //
+        private bool hasAirLockRoleInt;
         private RoomComponent_Atmospheric atmosphericCompInt;
+
+        //
+        private HashSet<Comp_ANS_AirVent> AirVentComps = new();
         private HashSet<Building> AirVents = new ();
         private HashSet<Building_AirLock> AirLockDoors = new ();
 
         private PawnQueue pawnQueue = new();
-        private Dictionary<Pawn, IntVec3> queuePositions = new();
-        //private HashSet<IntVec3> queuePosCells = new HashSet<IntVec3>();
+        public Dictionary<Pawn, IntVec3> queuePositions = new();
 
+        //
         public RoomComponent_Atmospheric Atmospheric => atmosphericCompInt ??= Parent.GetRoomComp<RoomComponent_Atmospheric>();
-
         public PawnQueue PawnQueue => pawnQueue;
+        public List<IntVec3> ReservedQueue => queuePositions.Values.ToList();
+
         public Pawn NextPawnInQueue
         {
             get
@@ -99,93 +49,78 @@ namespace TiberiumRim
             }
         }
 
-        public List<IntVec3> ReservedQueue => queuePositions.Values.ToList();
+        //States
+        //A room with two airlock doors, incapable of cleaning
+        public bool IsBuffer => AirLockDoors.Count >= 2;
 
-        public bool IsValidBuffer => AirLockDoors.Count >= 2;
-        public bool IsValid => AirVents.Count >= 1 && IsValidBuffer;
-        public bool IsActive => IsValid && AirVents.Concat(AirLockDoors).All(c => c.IsPoweredOn());
+        //A room with airlock doors and a vent, capable of clearing the area
+        public bool IsAirLock => AirVents.Count >= 1 && IsBuffer;
+
+        //
+        public bool IsActiveAirLock => IsAirLock && AirVents.Concat(AirLockDoors).All(c => c.IsPoweredOn());
         public bool IsClean => Atmospheric.UsedValue <= 0;
-
-        public bool RequiresWait => AirLockDoors.Any(t => t.CannotOpen);
         public bool AllDoorsClosed => !AirLockDoors.Any(d => d.Open);
+        public bool IsAllowedUsable => (!IsAirLock || CanVent);
 
-        public bool ActiveReadyAirlock
+        //Conditions
+        public bool PollutedRoomExposure => AirLockDoors.Any(d => d.ConnectsToPollutedRoom);
+        public bool SafeToEnter => !PollutedRoomExposure || AllDoorsClosed;
+        public bool SafeToLeave => IsClean && AllDoorsClosed;
+
+        public bool CanVent => IsActiveAirLock && AirVentComps.All(c => c.CanVent);
+        public bool LockedDown => IsAirLock && !CanVent;
+
+        public bool IsBeingUsedByOther(Pawn checkingPawn) => containedPawns.Count > 0 && !containedPawns.Contains(checkingPawn);
+        public bool CanBeEnteredBy(Pawn pawn)
         {
-            get
-            {
-                if (!IsActive) return true;
-                return IsActive && IsClean && AllDoorsClosed;
-            }
+            return IsClean && !IsBeingUsedByOther(pawn) && SafeToEnter;
         }
 
-        public AirLockUsage CurrentUsage
+        public bool ShouldBeUsed(Pawn byPawn, Building_AirLock[] pathedDoors, bool isCurrentRoomOfPawn)
         {
-            get
-            {
-                if (!IsValid) return AirLockUsage.None;
-                if (IsActive && !IsClean)
-                {
-                    return AirLockUsage.WaitForClean;
-                }
-                if (IsValidBuffer && RequiresWait)
-                {
-                    return AirLockUsage.WaitForDoors;
-                }
-                return AirLockUsage.None;
-            }
+            //If pawn is inside airlock, and all doors are closed, they dont need to use the airlock
+            if (!IsAllowedUsable) return false;
+            if (isCurrentRoomOfPawn && SafeToLeave) return false;
+            return IsActiveAirLock && pathedDoors.Any(d => d?.ConnectsToPollutedRoom ?? false);
+            //return true;
         }
 
-        public bool IsBeingUsed => CurrentUsage != AirLockUsage.None && containedPawns.Count > 0;
-        public bool IsReadyForUsage => IsClean && !IsBeingUsed && !RequiresWait;
-
-        public bool ShouldBeUsed(bool isCurrent, Pawn byPawn)
+        public bool ShouldWaitFor(Pawn pawn)
         {
-            TLog.Debug($"[{byPawn.NameShortColored}][{Room.ID}]Data- IsActive:{IsActive} IsClean:{IsClean} IsValidBuffer:{IsValidBuffer} RequiresWait:{RequiresWait}");
-            var usage = CurrentUsage;
-            if (usage == AirLockUsage.None) return false;
-
-            if (usage == AirLockUsage.WaitForDoors && (isCurrent && AllDoorsClosed)) return false;
-
-            return true;
-        }
-
-        private LordJob MakeAirLockJob()
-        {
-            return new LordJob_UseAirlock();
+           return !(CanBeEnteredBy(pawn) && (NextPawnInQueue == null || NextPawnInQueue == pawn));
         }
 
         //Queue Stuff
         public void Notify_EnqueuePawnPos(Pawn pawn, IntVec3 pos)
         {
-            TLog.Debug($"[{pawn.NameShortColored}][{Room.ID}]Enqueued PawnPos: {pos}");
+            if (queuePositions.ContainsKey(pawn))
+            {
+                queuePositions[pawn] = pos;
+                return;
+            }
             queuePositions.Add(pawn, pos);
-            //queuePosCells.Add(pos);
         }
 
-        public void Notify_DequeuePawnPos(Pawn pawn, IntVec3 pos)
+        public void Notify_DequeuePawnPos(Pawn pawn)
         {
-            TLog.Debug($"[{Room.ID}]Dequeuing PawnPos: {pos}");
+            if (!queuePositions.ContainsKey(pawn)) return;
             queuePositions.Remove(pawn);
-            //queuePosCells.Remove(pos);
         }
 
         public void Notify_EnqueuePawn(Pawn pawn)
         {
-            TLog.Debug($"[{pawn.NameShortColored}][{Room.ID}]Enqueued Pawn: {pawn.NameShortColored}");
             pawnQueue.Enqueue(pawn);
         }
 
         public void Notify_FinishJob(Pawn pawn, JobCondition condition)
         {
-            if (condition == JobCondition.Ongoing) return;
+            //if (condition == JobCondition.Ongoing) return;
             if (condition != JobCondition.Succeeded)
             {
                 pawnQueue.Remove(pawn);
-                return;
             }
-            if (pawnQueue.TryPeek(out Pawn deqPawn))
+            else if (pawnQueue.TryPeek(out Pawn deqPawn))
             {
-                TLog.Debug($"[{pawn.NameShortColored}][{Room.ID}]Next Dequeued Pawn: {deqPawn?.NameShortColored}");
                 if (deqPawn != null && deqPawn != pawn)
                 {
                     TLog.Error($"Trying to dequeue {pawn} from airlock queue, next should be: {deqPawn} | Queue: {PawnQueue}");
@@ -195,13 +130,13 @@ namespace TiberiumRim
                     pawnQueue.Dequeue();
                 }
             }
+            Notify_DequeuePawnPos(pawn);
         }
 
         //Pathing Helper
         public Building_AirLock[] AirLocksOnPath(List<IntVec3> pathNodes, Pawn pawn = null)
         {
             var airlocks = new Building_AirLock[2];
-            TLog.Debug($"[{pawn?.NameShortColored}]CurPath: {pathNodes != null} Nodes: {pathNodes?.Count} BorderCells: {Room.BorderCells.Count()}");
             var pathCells = pathNodes.Intersect(Room.BorderCells);
             int i = 0;
             foreach (var cell in pathCells)
@@ -216,6 +151,23 @@ namespace TiberiumRim
             return airlocks;
         }
 
+        public int tickSinceLastFleck = 0;
+        public override void CompTick()
+        {
+            AirLockDoors.Do(d => d.CheckLockDown(LockedDown));
+            if (LockedDown)
+            {
+                if (tickSinceLastFleck <= 0)
+                {
+                    foreach (var airLock in AirLockDoors)
+                    {
+                        FleckMaker.ThrowMetaIcon(airLock.Position, airLock.Map, FleckDefOf.IncapIcon, 0.21f);
+                    }
+                    tickSinceLastFleck = 200;
+                }
+                tickSinceLastFleck--;
+            }
+        }
 
         //RoomComponent Stuff
 
@@ -258,14 +210,21 @@ namespace TiberiumRim
         public override void FinalizeApply()
         {
             Room.UpdateRoomStatsAndRole();
-            if (Room.Role != TiberiumDefOf.TR_AirLock) return;
-
-            //If we know this is an airlock, we add the rest of the internal items (Gettings vents)
-            HasAirLockRole = Room.Districts.All(r => r.Room.Role == TiberiumDefOf.TR_AirLock);
-            for (var i = Room.ContainedAndAdjacentThings.Count - 1; i >= 0; i--)
+            if (Room.Role == TiberiumDefOf.TR_AirLock)
             {
-                var thing = Room.ContainedAndAdjacentThings[i];
-                TryAddComponent(thing);
+                //If we know this is an airlock, we add the rest of the internal items (Gettings vents)
+                hasAirLockRoleInt = Room.Districts.All(r => r.Room.Role == TiberiumDefOf.TR_AirLock);
+                for (var i = Room.ContainedAndAdjacentThings.Count - 1; i >= 0; i--)
+                {
+                    var thing = Room.ContainedAndAdjacentThings[i];
+                    TryAddComponent(thing);
+                }
+            }
+
+            //Set AirLockDoor Data after all local data has been generated
+            foreach (var airLockDoor in AirLockDoors)
+            {
+                airLockDoor.SetAirlock(this);
             }
         }
 
@@ -284,18 +243,15 @@ namespace TiberiumRim
             var comp = thing.TryGetComp<Comp_ANS_AirVent>();
             if (comp != null)
             {
-                if (AirVents.Add(thing as Building))
+                if (AirVents.Add(thing as Building) && AirVentComps.Add(comp))
                 {
-                    //
+                    comp.SetAirLock(this);
                 }
             }
 
             if (thing is Building_AirLock airLock)
             {
-                if (AirLockDoors.Add(airLock))
-                {
-                    airLock.SetAirlock(this);
-                }
+                AirLockDoors.Add(airLock);
             }
         }
 
@@ -314,7 +270,7 @@ namespace TiberiumRim
 
         public override void Draw()
         {
-            if (UI.MouseCell().GetRoom(Map) == this.Room && HasAirLockRole) 
+            if (UI.MouseCell().GetRoom(Map) == this.Room && hasAirLockRoleInt) 
             {
                 GenDraw.DrawCircleOutline(Room.GeneralCenter().ToVector3Shifted(), 0.5f, SimpleColor.Red);
                 GenDraw.DrawFieldEdges(AirLockDoors.Select(t => t.Position).ToList(), Color.blue);

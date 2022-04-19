@@ -190,6 +190,8 @@ namespace TiberiumRim
         public override void MapComponentTick()
         {
             base.MapComponentTick();
+            RoomInfo.Tick();
+
             TiberiumInfo.Tick();
             AtmosphericInfo.Tick();
             SuppressionInfo.Tick();

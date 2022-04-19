@@ -197,8 +197,8 @@ namespace TiberiumRim
                 case FXMode.Pulse:
                     var pulse = data.pulse;
                     var tick = Find.TickManager.TicksGame;
-                    var opaVal = TMath.OscillateBetween(pulse.opacityRange.min, pulse.opacityRange.max, pulse.opacityDuration, tick + parent.tickOffset);
-                    var sizeVal = TMath.OscillateBetween(pulse.sizeRange.min, pulse.sizeRange.max, pulse.sizeDuration, tick + parent.tickOffset);
+                    var opaVal = TMath.OscillateBetween(pulse.opacityRange.min, pulse.opacityRange.max, pulse.opacityDuration, tick + parent.TickOffset);
+                    var sizeVal = TMath.OscillateBetween(pulse.sizeRange.min, pulse.sizeRange.max, pulse.sizeDuration, tick + parent.TickOffset);
                     if(pulse.opacityRange != FloatRange.Zero)
                         drawColor.a = opaVal;
                     if (pulse.sizeRange != FloatRange.Zero)

@@ -12,6 +12,8 @@ namespace TiberiumRim
         public Map Map => Parent.Map;
         public Room Room => Parent.Room;
 
+        public bool Disbanded => Parent.IsDisbanded;
+
         public virtual void Create(RoomTracker parent)
         {
             this.parent = parent;
@@ -36,6 +38,12 @@ namespace TiberiumRim
             containedPawns.Remove(pawn);
         }
 
+        public bool ContainsPawn(Pawn pawn)
+        {
+            return containedPawns.Contains(pawn);
+
+        }
+
         public virtual void PreApply() { }
 
         public virtual void FinalizeApply()
@@ -47,5 +55,10 @@ namespace TiberiumRim
         public virtual void OnGUI() { }
 
         public virtual void Draw() { }
+
+        public override string ToString()
+        {
+            return $"{nameof(this.GetType)}[{Room.ID}]";
+        }
     }
 }

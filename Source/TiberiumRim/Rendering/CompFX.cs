@@ -20,20 +20,25 @@ namespace TiberiumRim
     public class CompFX : ThingComp
     {
         private IFXObject iParent;
-        public List<MoteThrower> moteThrowers = new List<MoteThrower>();
-        public List<FXGraphic> Overlays = new List<FXGraphic>();
-        private List<Vector3> motePositions = new List<Vector3>();
+        private List<MoteThrower> moteThrowers;
+        private List<FXGraphic> mainGraphics;
+        private List<Vector3> motePositions;
         private MoteThrower MainThrower;
 
         //Data for graphics
         public Color[] GraphicColors;
 
-        public int tickOffset = 0;
-        public int startTick = 0;
+        private int tickOffset = 0;
+        private int startTick = 0;
         private int moteTicker = -1;
         private bool spawnedOnce = false;
+        private bool hasThrowers, hasOverlays;
 
         public int Size => Overlays.Count;
+        public int TickOffset => tickOffset;
+        public int StartTick => startTick;
+
+        public List<FXGraphic> Overlays => mainGraphics;
 
         public override void PostExposeData()
         {
@@ -54,6 +59,8 @@ namespace TiberiumRim
             }
             if (!Props.effecters.NullOrEmpty())
             {
+                moteThrowers = new();
+                hasThrowers = true;
                 foreach (MoteThrowerInfo info in Props.effecters)
                 {
                     moteThrowers.Add(new MoteThrower(info, parent));
@@ -61,9 +68,11 @@ namespace TiberiumRim
             }
             if (!Props.overlays.NullOrEmpty())
             {
+                mainGraphics = new();
+                hasOverlays = true;
                 for (int i = 0; i < Props.overlays.Count; i++)
                 {
-                    Overlays.Add(new FXGraphic(this, Props.overlays[i], i));
+                    mainGraphics.Add(new FXGraphic(this, Props.overlays[i], i));
                 }
             }
             InitializeData();
@@ -170,6 +179,16 @@ namespace TiberiumRim
 
         private void Tick()
         {
+            //Update Graphics
+            if (hasOverlays)
+            {
+                foreach (var g in Overlays)
+                {
+                    g.Tick();
+                }
+            }
+
+            //Do Effects
             TargetInfo A = parent;            
             if (ShouldDoEffecters)
             {
@@ -182,14 +201,14 @@ namespace TiberiumRim
                     }
                     moteTicker--;
                 }
-                foreach (var t in moteThrowers)
+
+                if (hasThrowers)
                 {
-                    t.ThrowerTick(parent.DrawPos, parent.Map);
+                    foreach (var t in moteThrowers)
+                    {
+                        t.ThrowerTick(parent.DrawPos, parent.Map);
+                    }
                 }
-            }
-            foreach (var g in Overlays)
-            {
-                g.Tick();
             }
         }
 

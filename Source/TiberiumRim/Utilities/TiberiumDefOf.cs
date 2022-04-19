@@ -138,7 +138,6 @@ namespace TiberiumRim
 
         public static JobDef TiberiumResearch;
         public static JobDef UseAirlock;
-        public static JobDef QueueAtAirlock;
 
         public static JobDef TiberiumBill;
 

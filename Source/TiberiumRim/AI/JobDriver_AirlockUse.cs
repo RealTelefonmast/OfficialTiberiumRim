@@ -24,28 +24,11 @@ namespace TiberiumRim
         private HashSet<IntVec3> roomCellsTemp;
         private IntVec3 QueueCell;
 
-        private bool ShouldQueue => !(AirLock.IsReadyForUsage && AirLock.NextPawnInQueue == pawn);//AirLock.NextPawnInQueue != null && AirLock.NextPawnInQueue != pawn || !AirLock.IsReadyForUsage;
+        private bool ShouldQueue => AirLock.ShouldWaitFor(pawn); //!(AirLock.IsReadyForUsage && AirLock.NextPawnInQueue == pawn);//AirLock.NextPawnInQueue != null && AirLock.NextPawnInQueue != pawn || !AirLock.IsReadyForUsage;
 
         public override string GetReport()
         {
             return $"{base.GetReport()}[{AirLockRoom.ID}][{(ShouldQueue ? "Queued" : "Direct")}]";
-        }
-
-        private bool ShouldStop
-        {
-            get
-            {
-                switch (AirLock.CurrentUsage)
-                {
-                    case AirLockUsage.WaitForDoors:
-                        return AirLock.AllDoorsClosed;
-                    case AirLockUsage.WaitForClean:
-                        return AirLock.IsClean;
-                }
-
-                return true;
-                //return true;
-            }
         }
 
         private IntVec3 NextBestQueuePos()
@@ -60,11 +43,18 @@ namespace TiberiumRim
             {
                 QueueCell = pos;
             }
-            else if(AirLock.NextPawnInQueue != null && AirLock.NextPawnInQueue != pawn)
+            else if(ShouldQueue) //AirLock.NextPawnInQueue != null && AirLock.NextPawnInQueue != pawn
             {
-                //If it is not our turn, setup queue data
                 roomCellsTemp = AirLockRoom.Cells.ToHashSet();
-                QueueCell = NextBestQueuePos();
+                //If already inside airlock, wait inside airlock
+                if (pawn.GetRoom() == AirLockRoom)
+                {
+                    QueueCell = RoomCenter;
+                }
+                else //If it is not our turn, setup queue data
+                {
+                    QueueCell = NextBestQueuePos();
+                }
                 AirLock.Notify_EnqueuePawnPos(pawn, QueueCell);
             }
 
@@ -72,7 +62,6 @@ namespace TiberiumRim
             AddFinishAction(() =>
             {
                 var jobCondition = TRAIPatches.JobDriver_CleanupPatch._LastJobCondition;
-                TLog.Debug($"[{pawn.NameShortColored}][{AirLockRoom.ID}]Finishing toil with condition: {jobCondition}");
                 AirLock.Notify_FinishJob(pawn, jobCondition);
             });
             return true;
@@ -80,24 +69,26 @@ namespace TiberiumRim
 
         public override IEnumerable<Toil> MakeNewToils()
         {
-            TLog.Debug($"[{pawn.NameShortColored}][{AirLock.Room.ID}]Next Pawn in Airlock: {AirLock.NextPawnInQueue?.NameShortColored} | Should Queue: {ShouldQueue}");
             //
             if (ShouldQueue)
             {
-                TLog.Debug($"[{pawn.NameShortColored}][{AirLock.Room.ID}]Going To Queue {QueueCell}");
                 yield return Toils_Goto.GotoCell(QueueCell, PathEndMode.OnCell);
 
                 Toil waitForQueue = new Toil();
                 waitForQueue.initAction = delegate
                 {
+                    //TLog.Debug($"[{pawn.NameShortColored}][{AirLock.Room.ID}]Starting to wait in Queue on {QueueCell}");
+                };
+                waitForQueue.tickAction = delegate
+                {
+                    if(!ShouldQueue) 
+                        ReadyForNextToil();
                 };
                 waitForQueue.defaultCompleteMode = ToilCompleteMode.Never;
-                waitForQueue.FailOn(() => !ShouldQueue);
-                waitForQueue.AddFinishAction(() => AirLock.Notify_DequeuePawnPos(pawn, QueueCell));
+                waitForQueue.AddFinishAction(() => AirLock.Notify_DequeuePawnPos(pawn));
                 yield return waitForQueue;
             }
 
-            TLog.Debug($"[{pawn.NameShortColored}][{AirLock.Room.ID}]Going To Room {RoomCenter}");
             yield return Toils_Goto.GotoCell(RoomCenter, PathEndMode.OnCell);
 
             Toil toil = new Toil();
@@ -107,7 +98,7 @@ namespace TiberiumRim
             };
             toil.tickAction = delegate
             {
-                if(ShouldStop)
+                if(AirLock.SafeToLeave)
                     EndJobWith(JobCondition.Succeeded);
             };
             toil.defaultCompleteMode = ToilCompleteMode.Never;

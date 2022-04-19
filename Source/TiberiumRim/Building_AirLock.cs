@@ -15,7 +15,7 @@ namespace TiberiumRim
         private Room[] roomArr;
         private RoomComponent_AirLock[] airLockArr;
 
-
+        //Main Data
         public Rot4 ActualRotation => actualInt ??= DoorRotationAt(Position, Map);
         public bool ConnectsToOutside => Rooms[0].UsesOutdoorTemperature || Rooms[1].UsesOutdoorTemperature;
 
@@ -25,58 +25,12 @@ namespace TiberiumRim
         public Room[] Rooms => roomArr;
         public RoomComponent_AirLock[] RoomComps => airLockArr;
 
+
+        //Main Conditions
         public bool IsFunctioning => airLockArr[0] != null && airLockArr[1] != null;
+        public bool ConnectsToPollutedRoom => !(RoomComps[0].IsClean && RoomComps[1].IsClean);
 
-        private bool IsClean
-        {
-            get
-            {
-                bool flag1 = !RoomComps[0].IsActive || RoomComps[0].IsClean;
-                bool flag2 = !RoomComps[0].IsActive || RoomComps[0].IsClean;
-                return flag1 && flag2;
-            }
-        }
-        /*
-        public bool IsReady
-        {
-            get
-            {
-                bool flag1 = RoomComps[0].IsActive ? RoomComps[0].IsClean : ;
-                bool flag2 = !RoomComps[0].IsActive || RoomComps[0].IsClean;
-                return flag1 && flag2;
-            }
-        }
-
-        public bool IsReady => ((AirlockOne?.IsClean ?? true) || AirlockOne.AllDoorsClosed) ||
-                               ((AirlockTwo?.IsClean ?? true) || AirlockTwo.AllDoorsClosed);
-        */
-        private bool CanBeUsed => IsFunctioning && IsClean;
-
-        //Deciding 
-        private bool NeedsToClose => !(RoomComps[0].IsClean && RoomComps[1].IsClean);
-
-        //Deciding
-        public bool CannotOpen
-        {
-            get
-            {
-                bool oneClean = RoomComps[0].IsClean;
-                bool twoClean = RoomComps[1].IsClean;
-                if (oneClean && twoClean) return false;
-
-                if (!oneClean)
-                {
-                    return !RoomComps[1].AllDoorsClosed;
-                }
-                if (!twoClean)
-                {
-                    return !RoomComps[0].AllDoorsClosed;
-                }
-
-                return false;
-            }
-        }
-
+        //
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             roomArr = new Room[2];
@@ -89,52 +43,100 @@ namespace TiberiumRim
             return room == RoomInner ? RoomOuter : RoomInner;
         }
 
-        /*
-        public RoomComponent_AirLock OppositeOf(Room room)
+        public RoomComponent_AirLock OppositeRoomComp(int i)
         {
-            return room == RoomOne ? AirlockTwo : AirlockOne;
+            return i == 0 ? RoomComps[1] : RoomComps[0];
         }
-        */
-        public void SetAirlock(RoomComponent_AirLock airlock)
+
+        private void Cleanup()
         {
-            TLog.Debug($"Setting airlock for {this}: {airlock.Room?.ID}...");
-            if (airlock.Room == RoomInner)
+            for (int i = 0; i < 2; i++)
             {
-                Rooms[0] = airlock.Room;
-                RoomComps[0] = airlock;
-            }
-            if (airlock.Room == RoomOuter)
-            {
-                Rooms[1] = airlock.Room;
-                RoomComps[1] = airlock;
+                if (RoomComps[i]?.Disbanded ?? false)
+                    SetAirlock(i, null);
             }
         }
 
-        //Might be redundant
-        public void RemoveAirlock(Room forRoom)
+        public void SetAirlock(RoomComponent_AirLock airlock)
         {
-            if (RoomComps[0]?.Room.ID == forRoom.ID)
+            //
+            Cleanup();
+
+            //
+            if (airlock == RoomComps[0] || airlock == RoomComps[1]) return;
+            if (RoomComps[0] == null && (airlock.IsAirLock || RoomComps[1] != null))
             {
-                RoomComps[0] = null;
-                Rooms[0] = null;
+                SetAirlock(0, airlock);
+                return;
             }
+            if(RoomComps[1] == null)
+            {
+                SetAirlock(1, airlock);
+            }
+        }
+
+        private void SetAirlock(int index, RoomComponent_AirLock airlock)
+        {
+            Rooms[index] = airlock?.Room;
+            RoomComps[index] = airlock;
+        }
+
+        public void CheckLockDown(bool lockedDown)
+        {
+            if (lockedDown)
+            {
+                if (this.IsForbidden(Faction.OfPlayerSilentFail)) return;
+                if (ConnectsToPollutedRoom)
+                {
+                    this.SetForbidden(true, false);
+                }
+            }
+            else
+            {
+                if (!this.IsForbidden(Faction.OfPlayerSilentFail)) return;
+                this.SetForbidden(false, false);
+            }
+        }
+
+        private bool RoomInLockDown(int index, Pawn forPawn)
+        {
+            if (RoomComps[index].LockedDown)
+            {
+                return !RoomComps[index].ContainsPawn(forPawn);
+            }
+            if (!RoomComps[index].IsClean)
+            {
+                return !OppositeRoomComp(index).CanVent;
+            }
+            return false;
+        }
+
+        public bool CanOpenOverride(Pawn p)
+        {
+            //If not working fully, not usable
+            if (!IsFunctioning) return false;
+            //If inbetween two airlocks, always openable
+            if (RoomComps[0].IsAirLock && RoomComps[1].IsAirLock) return true;
+            //Special conditions on
+            if (RoomInLockDown(0, p)) return false;
+            if (RoomInLockDown(1, p)) return false;
+            return true;
         }
 
         public override bool PawnCanOpen(Pawn p)
         {
-            return base.PawnCanOpen(p) && CanBeUsed;
+            //
+            return base.PawnCanOpen(p);
         }
 
         public override string GetInspectString()
         {
             StringBuilder sb = new StringBuilder(base.GetInspectString());
             sb.AppendLine();
-            sb.AppendLine($"Can Be Used: {CanBeUsed}");
-            sb.AppendLine($"Can Not Open: {CannotOpen}");
-            sb.AppendLine($"Is Clean: {IsClean}");
-            //sb.AppendLine($"Is Ready: {IsReady}");
-            sb.AppendLine($"Room1[{ Rooms[0].ID}][{Rooms[0].UsesOutdoorTemperature}] IsReady:{RoomComps[0].IsReadyForUsage} Clean:{RoomComps[0].IsClean}");
-            sb.AppendLine($"Room2[{ Rooms[1].ID}][{Rooms[1].UsesOutdoorTemperature}] IsReady:{RoomComps[1].IsReadyForUsage} Clean:{RoomComps[1].IsClean}");
+            sb.AppendLine($"IsFunctioning: {IsFunctioning}");
+            sb.AppendLine($"ConnectsToPollutedRoom: {ConnectsToPollutedRoom}");
+            sb.AppendLine($"{$"Room[{Rooms[0].ID}]".Colorize(Color.cyan)} LockedDown: {RoomComps[0]?.LockedDown} CanVent: {RoomComps[0]?.CanVent} Ticking: {RoomComps[0]?.tickSinceLastFleck}");
+            sb.AppendLine($"{$"Room[{Rooms[1].ID}]".Colorize(Color.magenta)} LockedDown: {RoomComps[1]?.LockedDown} CanVent: {RoomComps[1]?.CanVent} Ticking: {RoomComps[1]?.tickSinceLastFleck}");
             return sb.ToString().TrimEndNewlines();
         }
 
@@ -145,11 +147,11 @@ namespace TiberiumRim
             {
                 if (RoomComps[0] != null)
                 {
-                    GenDraw.DrawFieldEdges(RoomComps[0].Room.Cells.ToList(), Color.magenta);
+                    GenDraw.DrawFieldEdges(RoomComps[0].Room.Cells.ToList(), Color.cyan);
                 }
                 if (RoomComps[1] != null)
                 {
-                    GenDraw.DrawFieldEdges(RoomComps[1].Room.Cells.ToList(), Color.cyan);
+                    GenDraw.DrawFieldEdges(RoomComps[1].Room.Cells.ToList(), Color.magenta);
                 }
             }
         }

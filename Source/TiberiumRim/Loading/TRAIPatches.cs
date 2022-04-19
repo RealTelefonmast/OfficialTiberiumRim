@@ -15,6 +15,7 @@ namespace TiberiumRim
 {
     internal static class TRAIPatches
     {
+        //Pathing
         [HarmonyPatch(typeof(Pawn_PathFollower)), HarmonyPatch("TrySetNewPath")]
         public static class TrySetNewPathPatch
         {
@@ -42,16 +43,16 @@ namespace TiberiumRim
                 {
                     //If airlock is inactive or cannot be used for any reason, skip it
                     var airLockComp = room.GetRoomComp<RoomComponent_AirLock>();
-                    if (!airLockComp.ShouldBeUsed(entryRoom == room, ___pawn)) continue;
-
                     //Gets an array of size 2 of the 2 airlock doors tha pawn passes through in reverse order
                     var airLockDoors = airLockComp.AirLocksOnPath(lastPathNodes, ___pawn);
+                    if (!airLockComp.ShouldBeUsed(___pawn , airLockDoors, entryRoom == room)) continue;
+
 
                     //Add pawn to the FCFS pawn queue
                     airLockComp.Notify_EnqueuePawn(___pawn);
 
                     //Start the airlock job and set the current job to be resumed
-                    TLog.Debug($"[{___pawn.NameShortColored}][{airLockComp.Room.ID}]Adding airlock job via {airLockDoors[1]}");
+                    //TLog.Debug($"[{___pawn.NameShortColored}][{airLockComp.Room.ID}]Adding airlock job via {airLockDoors[1]}");
                     Job theJob = JobMaker.MakeJob(TiberiumDefOf.UseAirlock, airLockDoors[1], room.GeneralCenter());
                     ___pawn.jobs.StartJob(theJob, JobCondition.Ongoing, null, true);
 
@@ -112,6 +113,23 @@ namespace TiberiumRim
             }
         }
 
+        /*
+        [HarmonyPatch(typeof(ReachabilityCache)), HarmonyPatch(nameof(ReachabilityCache.CachedResultFor))]
+        public static class ReachabilityCache_CachedResultForPatch
+        {
+            public static void Postfix(District A, District B, TraverseParms traverseParams, ref BoolUnknown __result)
+            {
+                if (__result == BoolUnknown.Unknown) return;
+
+                if (A.Room.GetRoomComp<RoomComponent_AirLock>().LockedDown ||
+                    B.Room.GetRoomComp<RoomComponent_AirLock>().LockedDown)
+                {
+                    __result = BoolUnknown.Unknown;
+                }
+            }
+        }
+        */
+
         [HarmonyPatch(typeof(JobDriver)), HarmonyPatch(nameof(JobDriver.Cleanup))]
         public static class JobDriver_CleanupPatch
         {
@@ -121,11 +139,6 @@ namespace TiberiumRim
             {
                 _LastJobCondition = condition;
                 return true;
-            }
-
-            public static void Postfix(JobDriver __instance)
-            {
-
             }
         }
     }

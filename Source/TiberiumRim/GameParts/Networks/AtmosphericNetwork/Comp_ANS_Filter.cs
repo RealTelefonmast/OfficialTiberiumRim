@@ -48,7 +48,7 @@ namespace TiberiumRim
 
         public override bool AcceptsValue(NetworkValueDef value)
         {
-            return !ProcessingComp.Container.CapacityFull;
+            return !AtmosphericComp.Container.CapacityFull;
         }
 
         protected override void NetworkTickCustom(bool isPowered)

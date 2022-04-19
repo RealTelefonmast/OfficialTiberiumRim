@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RimWorld;
 using Verse;
 
 namespace TiberiumRim
@@ -17,10 +18,19 @@ namespace TiberiumRim
     public class Comp_ANS_AirVent : Comp_AtmosphericNetworkStructure
     {
         private FCSimple speedControl;
+        private RoomComponent_AirLock airlockComp;
 
         public override float?[] AnimationSpeeds => new float?[4] { null, null, speedControl.OutputValue, null };
 
         public CompProperties_ANS_AirVent Props => (CompProperties_ANS_AirVent)base.props;
+
+        public bool CanVent
+        {
+            get
+            {
+                return this[TiberiumDefOf.AtmosphericNetwork].ContainerSet[NetworkRole.Controller].Any(c => !c.CapacityFull);
+            }
+        }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
@@ -91,6 +101,11 @@ namespace TiberiumRim
                     Atmospheric.ToggleOverlay();
                 }
             };
+        }
+
+        public void SetAirLock(RoomComponent_AirLock roomComponentAirLock)
+        {
+            airlockComp = roomComponentAirLock;
         }
     }
 
