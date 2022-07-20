@@ -55,8 +55,7 @@
 			<li Class="TiberiumRim.CompProperties_TNS">
 				<networks>
 					<li>
-						<networkDef>TiberiumNetwork</networkDef>
-						<storeEvenly>false</storeEvenly>					
+						<networkDef>TiberiumNetwork</networkDef>				
 						<containerProps>
 							<maxStorage>1000</maxStorage>
 							<dropContents>true</dropContents>
@@ -66,15 +65,15 @@
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<allowedValues>
+						<handledValues>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
 							<li>TibSludge</li>	
-						</allowedValues>
+						</handledValues>
 					</li>
 				</networks>
-				<!--connectionPattern>#+#|###|</connectionPattern-->
+				<!--generalIOPattern>#+#|###|</generalIOPattern-->
 			</li>
 			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_AffectedByFacilities">
@@ -94,7 +93,6 @@
 		</requisites>
 	</TiberiumRim.TRThingDef>
 	
-	<!--
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>Nod_Hangar</defName>
 		<label>Nod hangar</label>
@@ -140,7 +138,7 @@
 			<li>TiberiumRim.ITab_MechConstruction</li>
 		</inspectorTabs>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -149,6 +147,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(7,7)</drawSize>
 						</data>
+						<drawOffset>(0,0,7)</drawOffset>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
@@ -157,6 +156,7 @@
 							<graphicClass>Graphic_Multi</graphicClass>
 							<drawSize>(7,7)</drawSize>
 						</data>
+						<drawOffset>(0,0,14)</drawOffset>
 					</li>
 					<li>
 						<data>
@@ -165,6 +165,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(7,7)</drawSize>
 						</data>
+						<drawOffset>(0,0,21)</drawOffset>
 						<needsPower>true</needsPower>
 					</li>
 				</overlays>
@@ -176,6 +177,7 @@
 		</comps>
 	</TiberiumRim.TRThingDef>
 	
+	<!--
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
 		<defName>Nod_Crane</defName>
 		<label>Crane</label>
@@ -213,7 +215,7 @@
 			<ComponentIndustrial>15</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -294,7 +296,7 @@
 					<li>MakeHarvesterCommon</li>
 				</mechRecipes>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -372,7 +374,7 @@
 			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -406,8 +408,9 @@
 					</li>
 				</overlays>
 			</li>
-			<li Class="TiberiumRim.CompProperties_NetworkStructurePowerPlant">
+			<li Class="TeleCore.CompProperties_NetworkStructurePowerPlant">
 				<compClass>TiberiumRim.Comp_NetworkStructurePowerPlant</compClass>
+				<fromNetwork>TiberiumNetwork</fromNetwork>
 				<maxStorage>3000</maxStorage>
 				<supportedTypes>
 					<li>Green</li>

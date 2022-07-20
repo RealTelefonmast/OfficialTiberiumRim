@@ -82,6 +82,7 @@ namespace TiberiumRim
         public override void Tick()
         {
             base.Tick();
+            if (pawn.Dead) return;
             if (!pawn.IsHashIntervalTick(750 * MutationSpeed)) return;
             //SLowly turn each part of the pawn into a mutated part
             MutateRandomNewPart();

@@ -4,6 +4,7 @@ using System.Linq;
 using HarmonyLib;
 using Multiplayer.API;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -73,7 +74,7 @@ namespace TiberiumRim
         [SyncMethod(SyncContext.None)]
         public void Debug_Finish()
         {
-            TLog.Debug($"Force Finishing TResearch '{LabelCap}'");
+            TRLog.Debug($"Force Finishing TResearch '{LabelCap}'");
             tasks.ForEach(t => t.Debug_Finish());
         }
 
@@ -262,16 +263,16 @@ namespace TiberiumRim
         [SyncMethod]
         public void Debug_Finish()
         {
-            TLog.Debug($"Force Finishing TResearchTask '{LabelCap}'");
+            TRLog.Debug($"Force Finishing TResearchTask '{LabelCap}'");
             if (this.creationTasks != null)
             {
                 foreach (var option in this.creationTasks.thingsToCreate)
                 {
-                    TLog.Debug($" - Adding Progress to '{option}'");
+                    TRLog.Debug($" - Adding Progress to '{option}'");
                     TRUtils.ResearchCreationTable().taskCreations[this].AddProgress(option, option.amount);
                 }
             }
-            TLog.Debug($"Setting {ProgressToDo} Progress on '{LabelCap}'");
+            TRLog.Debug($"Setting {ProgressToDo} Progress on '{LabelCap}'");
             TRUtils.ResearchManager().SetProgress(this, this.ProgressToDo);
         }
 
@@ -480,7 +481,7 @@ namespace TiberiumRim
             if (TargetProperties != null)
             {
                 var singleArr = new []{RelevantTargetStat != null
-                    ? "TR_TaskBenches".Translate(RelevantTargetStat.LabelCap.RawText.Colorize("#FFE164")).RawText
+                    ? "TR_TaskBenches".Translate(RelevantTargetStat.LabelCap.RawText.ColorizeFix("#FFE164")).RawText
                     : "TR_TaskTargets".Translate().RawText};
                 cachedTaskInfo.Add("TargetProps_Label", singleArr);
 
@@ -496,7 +497,7 @@ namespace TiberiumRim
                         var target = PossibleMainTargets[i];
                         var targetText = "  -" + target.LabelCap.RawText;
                         if (RelevantTargetStat != null)
-                            targetText += "  (" + (target.GetStatValueAbstract(RelevantTargetStat) + "x").Colorize("#FFE164") + ")";
+                            targetText += "  (" + (target.GetStatValueAbstract(RelevantTargetStat) + "x").ColorizeFix("#FFE164") + ")";
 
                         targetArr[i] = targetText;
                     }
@@ -525,7 +526,7 @@ namespace TiberiumRim
             }
 
             //WorkType
-            cachedTaskInfo.Add("WorkType_Label", new []{"TR_TaskWorkType".Translate(WorkType.labelShort.Colorize("#00C8CC")).RawText});
+            cachedTaskInfo.Add("WorkType_Label", new []{"TR_TaskWorkType".Translate(WorkType.labelShort.ColorizeFix("#00C8CC")).RawText});
 
             //Skills
             if (!SkillRequirements.NullOrEmpty())

@@ -59,12 +59,18 @@ namespace TiberiumRim
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            
+
+            //Init Tiberium Field
+            if (tiberiumField == null)
+            {
+                if (respawningAfterLoad)
+                    TRLog.Warning("TibField null after reloading, setting new one.");
+                tiberiumField = new TiberiumField(this);
+            }
+
             if (respawningAfterLoad) return;
             //Init of saved components - Done Once
 
-            //Init Tiberium Field
-            tiberiumField = new TiberiumField(this);
             //Init Tickers
             ResetTiberiumCounter();
 
@@ -233,6 +239,8 @@ namespace TiberiumRim
                     sb.AppendLine(areaMutator.InspectString());
                 if (tiberiumField != null)
                     sb.AppendLine(tiberiumField.InspectString());
+                else
+                    sb.AppendLine($"[{this}] Has no TiberiumField!".Colorize(Color.red));
                 sb.AppendLine("Spawns Tiberium: " + ShouldSpawnTiberium);
             }
             return sb.ToString().TrimStart().TrimEndNewlines();
@@ -262,9 +270,12 @@ namespace TiberiumRim
                 }
             }
 
-            foreach (var gizmo in tiberiumField.Gizmos())
+            if (tiberiumField != null)
             {
-                yield return gizmo;
+                foreach (var gizmo in tiberiumField.Gizmos())
+                {
+                    yield return gizmo;
+                }
             }
 
             if (!DebugSettings.godMode) yield break;

@@ -87,7 +87,7 @@
 			<li Class="TiberiumRim.CompProperties_GlowerOffset">
 				<glowerDef>GlowSource_GDI_IonBlue</glowerDef>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -176,7 +176,7 @@
 			<Flammability>0.05</Flammability>
 		</statBases>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>

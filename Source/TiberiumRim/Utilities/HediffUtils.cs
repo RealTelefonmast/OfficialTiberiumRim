@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using UnityEngine;
@@ -101,7 +102,7 @@ namespace TiberiumRim
         }
 
         public static Hediff GetHediffAt(this HediffSet set, BodyPartRecord part, HediffDef def)
-        {
+        { 
             foreach (var hediff in set.hediffs)
             {
                 if (hediff.Part == part && hediff.def == def)
@@ -265,7 +266,7 @@ namespace TiberiumRim
         public static void TryInfectPawn(Pawn pawn, float infectivity, bool isGas, int perTicks)
         {
             if(pawn.DestroyedOrNull())
-                TLog.Error("Trying to infect null Pawn");
+                TRLog.Error("Trying to infect null Pawn");
 
             //Getting the initial infection weight
             float infectionValue = 0.0001f * perTicks * infectivity;
@@ -279,7 +280,7 @@ namespace TiberiumRim
             Comp_TRHealthCheck tibCheck = pawn.GetComp<Comp_TRHealthCheck>();
             if (tibCheck == null)
             {
-                TLog.ErrorOnce("TibCheck missing on " + pawn, 4554666);
+                TRLog.ErrorOnce("TibCheck missing on " + pawn, 4554666);
                 return;
             }
             List<BodyPartRecord> PossibleBodyParts = isGas ? tibCheck.PartsForGas : tibCheck.PartsForInfection;
@@ -373,7 +374,7 @@ namespace TiberiumRim
         public static bool TryIrradiatePawn(Pawn pawn, float radiation, int perTicks, out float radiationDone)
         {
             if (pawn.DestroyedOrNull())
-                TLog.Error("Trying to irradiate null Pawn");
+                TRLog.Error("Trying to irradiate null Pawn");
 
             //Setup Base Rad weight based on tick-frequency 
             float rads = 0.00013f * perTicks * radiation;
@@ -404,12 +405,12 @@ namespace TiberiumRim
         {
             if (pawn == null)
             {
-                TLog.Warning($"Trying to infect null pawn.");
+                TRLog.Warning($"Trying to infect null pawn.");
                 return false;
             }
             if (part == null)
             {
-                TLog.Warning($"Trying to infect {pawn} at null part.");
+                TRLog.Warning($"Trying to infect {pawn} at null part.");
                 return false;
             }
             if (!part.CanBeHit()) return false;

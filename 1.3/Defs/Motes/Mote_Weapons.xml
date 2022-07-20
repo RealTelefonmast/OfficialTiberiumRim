@@ -3,27 +3,6 @@
 
 	<!-- OBELISK OF LIGHT -->
 	<ThingDef ParentName="MoteBase_TR">
-		<defName>Mote_Beam</defName>
-		<thingClass>TiberiumRim.Mote_Beam</thingClass>
-		<graphicData>
-			<texPath>Blank</texPath>
-		</graphicData>
-		<altitudeLayer>MoteOverhead</altitudeLayer>
-		<drawOffscreen>true</drawOffscreen>
-	</ThingDef>
-	
-	<ThingDef ParentName="MoteBase_TR">
-		<defName>Mote_MuzzleFlash</defName>
-		<thingClass>TiberiumRim.Mote_MuzzleFlash</thingClass>
-		<graphicData>
-			<texPath>Blank</texPath>
-		</graphicData>
-		<altitudeLayer>MoteOverhead</altitudeLayer>
-		<drawOffscreen>true</drawOffscreen>
-	</ThingDef>
-	
-	
-	<ThingDef ParentName="MoteBase_TR">
 		<defName>ObeliskGlow</defName>
 		<graphicData>
 			<texPath>VisualFX/Fog/ObeliskGlow</texPath>
@@ -36,17 +15,6 @@
 			<solidTime>0.1</solidTime>
 			<fadeOutTime>1</fadeOutTime>
 		</mote>
-	</ThingDef>
-	
-	<ThingDef ParentName="MoteBase_TR">
-		<defName>Mote_Arc</defName>
-		<thingClass>TiberiumRim.Mote_Arc</thingClass>
-		<graphicData>
-			<texPath>Things/Mote/Black</texPath>
-			<shaderType>MoteGlow</shaderType>
-		</graphicData>
-		<altitudeLayer>MoteOverhead</altitudeLayer>
-		<drawOffscreen>true</drawOffscreen>
 	</ThingDef>
 	
 	<ThingDef Abstract = "True" Name="DistortionShockwaveBase" ParentName="MoteBase_TR">

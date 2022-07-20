@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -11,7 +12,7 @@ namespace TiberiumRim
     public class ProjectileTR_Explosive : Projectile_Explosive, IPatchedProjectile
     {
         public TRThingDef TRDef => base.def as TRThingDef;
-        public ProjectileProperties_Extended Props => TRDef?.projectileExtended;
+        public ProjectileDefExtension Props => TRDef?.Tele().projectile;
 
         public override void Impact(Thing hitThing)
         {
@@ -38,9 +39,8 @@ namespace TiberiumRim
             
         }
 
-        public bool CanHitOverride(Thing thing, ref bool result)
+        public void CanHitOverride(Thing thing, ref bool result)
         {
-            return true;
         }
 
         public bool PreImpact()

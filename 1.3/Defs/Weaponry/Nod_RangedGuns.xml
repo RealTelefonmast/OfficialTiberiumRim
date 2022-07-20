@@ -48,8 +48,8 @@
 			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(0, 0, 1.1)</li>
 				</originOffsets>
@@ -135,8 +135,8 @@
 			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(-0.2, 0, 1)</li>
 					<li>(0.2, 0, 1)</li>
@@ -221,8 +221,8 @@
 			<ComponentSpacer>1</ComponentSpacer>
 		</costList>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaser</damageDef>
 					<damageBase>15</damageBase>
@@ -308,8 +308,8 @@
 			<ComponentSpacer>1</ComponentSpacer>
 		</costList>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaser</damageDef>
 					<damageBase>18</damageBase>
@@ -412,8 +412,8 @@
 			<ComponentSpacer>1</ComponentSpacer>
 		</costList>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(0, 0, 1.25)</li>
 				</originOffsets>
@@ -502,8 +502,8 @@
 			<ComponentSpacer>2</ComponentSpacer>
 		</costList>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(0, 0, 1.25)</li>
 				</originOffsets>
@@ -585,8 +585,8 @@
 			<li>Exotic</li>
 		</tradeTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(-0.13, 0, 1.35)</li>
 					<li>(0.13, 0, 1.35)</li>

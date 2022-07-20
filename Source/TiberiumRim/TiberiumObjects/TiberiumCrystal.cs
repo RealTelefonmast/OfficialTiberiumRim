@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -218,7 +220,7 @@ namespace TiberiumRim
                         Map mapRef = mapComp.map;
 
                         //Once we mutate a plant, lets create garden
-                        Predicate<IntVec3> pred = c => this.Parent.TiberiumField.Contains(c); //c.InBounds(mapRef) && c.GetEdifice(mapRef) == null && (c.GetTerrain(mapRef).IsSoil() || c.GetTerrain(mapRef).IsWater);
+                        Predicate<IntVec3> pred = c => this.Parent.TiberiumField.Contains(c) && Rand.Chance(0.5f); //c.InBounds(mapRef) && c.GetEdifice(mapRef) == null && (c.GetTerrain(mapRef).IsSoil() || c.GetTerrain(mapRef).IsWater);
                         Action<IntVec3> action = delegate(IntVec3 c)
                         {
                             if (c.GetTerrain(mapRef).IsWater)
@@ -227,7 +229,7 @@ namespace TiberiumRim
                                 return;
                             }
                             c.GetTiberium(mapRef)?.DeSpawn();
-                            var flora = parent?.Ruleset.PlantAt(0.25f, 1);
+                            var flora = parent?.Ruleset.PlantAt(Rand.Value, 1);
                             GenSpawn.Spawn(flora ?? TiberiumDefOf.TiberiumGrass, c, mapRef);
                             //c.GetPlant(mapRef)?.DeSpawn();
                             /*if (tib != null)
@@ -245,9 +247,7 @@ namespace TiberiumRim
                             */
                             mapRef.terrainGrid.SetTerrain(c, TiberiumTerrainDefOf.TiberiumPodSoil);
                         };
-                        TiberiumFloodInfo flood = new TiberiumFloodInfo(Map, pred, action);
-                        flood.TryMakeFlood(out var cells, Position, Rand.Range(100, 200));
-                        mapComp.FloraInfo.MakeGarden(cells);
+                        mapComp.FloraInfo.MakeGarden(TeleFlooder.Flood(Map, Position, action, pred, Rand.Range(100, 200)).ToList());
                         return;
                     }
                     continue;

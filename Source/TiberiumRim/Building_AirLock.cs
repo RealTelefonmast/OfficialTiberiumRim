@@ -28,7 +28,9 @@ namespace TiberiumRim
 
         //Main Conditions
         public bool IsFunctioning => airLockArr[0] != null && airLockArr[1] != null;
-        public bool ConnectsToPollutedRoom => !(RoomComps[0].IsClean && RoomComps[1].IsClean);
+        public bool ConnectsToPollutedRoom => IsFunctioning && !(RoomComps[0].IsClean && RoomComps[1].IsClean);
+
+        public bool IsLockedDown { get; private set; }
 
         //
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
@@ -43,9 +45,19 @@ namespace TiberiumRim
             return room == RoomInner ? RoomOuter : RoomInner;
         }
 
+        public RoomComponent_AirLock OppositeRoomComp(RoomComponent_AirLock roomComp)
+        {
+            return roomComp == RoomComps[0] ? RoomComps[1] : RoomComps[0];
+        }
+
         public RoomComponent_AirLock OppositeRoomComp(int i)
         {
             return i == 0 ? RoomComps[1] : RoomComps[0];
+        }
+
+        public bool OtherIsClean(RoomComponent_AirLock ofRoom)
+        {
+            return OppositeRoomComp(ofRoom).IsClean;
         }
 
         private void Cleanup()
@@ -83,18 +95,17 @@ namespace TiberiumRim
 
         public void CheckLockDown(bool lockedDown)
         {
-            if (lockedDown)
+            if (lockedDown && ConnectsToPollutedRoom)
             {
                 if (this.IsForbidden(Faction.OfPlayerSilentFail)) return;
-                if (ConnectsToPollutedRoom)
-                {
-                    this.SetForbidden(true, false);
-                }
+                this.SetForbidden(true, false);
+                IsLockedDown = true;
             }
             else
             {
                 if (!this.IsForbidden(Faction.OfPlayerSilentFail)) return;
                 this.SetForbidden(false, false);
+                IsLockedDown = false;
             }
         }
 
@@ -102,7 +113,7 @@ namespace TiberiumRim
         {
             if (RoomComps[index].LockedDown)
             {
-                return !RoomComps[index].ContainsPawn(forPawn);
+                return !RoomComps[index].Parent.ContainsPawn(forPawn);
             }
             if (!RoomComps[index].IsClean)
             {
@@ -123,9 +134,13 @@ namespace TiberiumRim
             return true;
         }
 
+        public override bool BlocksPawn(Pawn p)
+        {
+            return base.BlocksPawn(p);
+        }
+
         public override bool PawnCanOpen(Pawn p)
         {
-            //
             return base.PawnCanOpen(p);
         }
 
@@ -133,18 +148,55 @@ namespace TiberiumRim
         {
             StringBuilder sb = new StringBuilder(base.GetInspectString());
             sb.AppendLine();
-            sb.AppendLine($"IsFunctioning: {IsFunctioning}");
-            sb.AppendLine($"ConnectsToPollutedRoom: {ConnectsToPollutedRoom}");
-            sb.AppendLine($"{$"Room[{Rooms[0].ID}]".Colorize(Color.cyan)} LockedDown: {RoomComps[0]?.LockedDown} CanVent: {RoomComps[0]?.CanVent} Ticking: {RoomComps[0]?.tickSinceLastFleck}");
-            sb.AppendLine($"{$"Room[{Rooms[1].ID}]".Colorize(Color.magenta)} LockedDown: {RoomComps[1]?.LockedDown} CanVent: {RoomComps[1]?.CanVent} Ticking: {RoomComps[1]?.tickSinceLastFleck}");
+            if (IsFunctioning)
+            {
+                if (RoomComps[0].LockedDown)
+                {
+                    sb.AppendLine($"[WARNING LOCKDOWN][0][{Rooms[0].ID}]".Colorize(Color.red));
+                }
+
+                if (RoomComps[1].LockedDown)
+                {
+                    sb.AppendLine($"[WARNING LOCKDOWN][1][{Rooms[1].ID}]".Colorize(Color.red));
+                }
+
+                if (DebugSettings.godMode)
+                {
+                    sb.AppendLine($"IsFunctioning: {IsFunctioning}");
+                    sb.AppendLine($"ConnectsToPollutedRoom: {ConnectsToPollutedRoom}");
+                    sb.AppendLine(
+                        $"{$"Room[{Rooms[0].ID}]".Colorize(Color.cyan)} LockedDown: {RoomComps[0]?.LockedDown} CanVent: {RoomComps[0]?.CanVent} Ticking: {RoomComps[0]?.tickSinceLastFleck}");
+                    sb.AppendLine(
+                        $"{$"Room[{Rooms[1].ID}]".Colorize(Color.magenta)} LockedDown: {RoomComps[1]?.LockedDown} CanVent: {RoomComps[1]?.CanVent} Ticking: {RoomComps[1]?.tickSinceLastFleck}");
+                }
+            }
+
             return sb.ToString().TrimEndNewlines();
+        }
+
+        private void DrawLockDown(int index)
+        {
+            if (IsLockedDown && !RoomComps[index].IsClean)
+            {
+                Room.fields.Clear();
+                Room.fields.AddRange(Rooms[index].Cells);
+                Color color = Color.red;
+                color.a = Pulser.PulseBrightness(1f, 0.6f);
+                GenDraw.DrawFieldEdges(Room.fields, color, null);
+                Room.fields.Clear();
+            }
         }
 
         public override void Draw()
         {
             base.Draw();
+            if (!IsFunctioning) return;
             if (Find.Selector.IsSelected(this))
             {
+                DrawLockDown(0);
+                DrawLockDown(1);
+
+                if (!DebugSettings.godMode) return;
                 if (RoomComps[0] != null)
                 {
                     GenDraw.DrawFieldEdges(RoomComps[0].Room.Cells.ToList(), Color.cyan);

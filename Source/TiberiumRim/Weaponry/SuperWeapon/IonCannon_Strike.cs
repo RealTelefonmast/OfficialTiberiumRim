@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using RimWorld;
 using RimWorld.Planet;
+using TeleCore;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -128,7 +129,7 @@ namespace TiberiumRim
                     }, 0);
                     ionExpComp.AddPart(delegate (ActionPart part)
                     {
-                        distortion.Scale = radius * (part.CurrentTick / (float)part.playTime);
+                        distortion.Scale = radius * (part.CurrentTick / (float)part.Duration);
                     }, 0, 0.75f);
                     ionExpComp.Init();
                 }, SoundDef.Named("IonCannon_Climax"), SoundInfo.InMap(posInfo, MaintenanceType.PerFrame), 12f);
@@ -165,7 +166,7 @@ namespace TiberiumRim
             }, 0);
             composition.AddPart(delegate(ActionPart part)
             {
-                distortion.Scale = mote.Scale = bubbleRadius * (part.CurrentTick / (float)part.playTime);
+                distortion.Scale = mote.Scale = bubbleRadius * (part.CurrentTick / (float)part.Duration);
             }, 0, time);
             composition.Init();
         }

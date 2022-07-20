@@ -1,28 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using HarmonyLib;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 using Verse;
 
 namespace TiberiumRim
 {
+    public struct RoomTrackerMetaData
+    {
+        public int roomID;
+        public int cellCount;
+
+    }
+
     public class RoomTracker
     {
-        private bool cachedOutside = false;
-        private int cachedCellCount = 0;
-        private int cachedOpenRoofCount = 0;
+        private bool wasOutSide = false;
 
-        private bool lastRoofBool = false;
-        private bool currentRoofBool = false;
-
-        private bool isDisbandedInt = false;
-
-        private Map cachedMap;
-
-        private Room attachedRoom;
+        private Dictionary<Type, RoomComponent> compsByType = new();
         private List<RoomComponent> comps = new List<RoomComponent>();
 
         //Shared Room Data
+        private readonly HashSet<Thing> uniqueContainedThingsSet = new HashSet<Thing>();
+        protected ListerThings listerThings;
+        protected ListerThings borderListerThings;
+
         private IntVec3[] borderCells = new IntVec3[]{};
         private IntVec3[] thinRoofCells = new IntVec3[]{};
 
@@ -33,15 +38,18 @@ namespace TiberiumRim
         private Vector3 actualCenter;
         private Vector3 drawPos;
 
-        private static readonly List<Type> SubClasses = typeof(RoomComponent).AllSubclassesNonAbstract().ToList();
+        public bool IsDisbanded { get; private set; }
+        public bool IsOutside { get; private set; }
+        public bool IsProper { get; private set; }
 
-        public bool IsDisbanded => isDisbandedInt;
-        public bool IsOutside => cachedOutside;
-        public int CellCount => cachedCellCount;
-        public int OpenRoofCount => cachedOpenRoofCount;
+        public int CellCount { get; private set; }
+        public int OpenRoofCount { get; private set; }
 
-        public Map Map => cachedMap;
-        public Room Room => attachedRoom;
+        public Map Map { get; private set; }
+        public Room Room { get; }
+
+        public ListerThings ListerThings => listerThings;
+        public List<Thing> ContainedPawns => listerThings.ThingsInGroup(ThingRequestGroup.Pawn);
 
         public IntVec3[] BorderCellsNoCorners => borderCells;
         public IntVec3[] ThinRoofCells => thinRoofCells;
@@ -54,34 +62,29 @@ namespace TiberiumRim
 
         public RoomTracker(Room room)
         {
-            this.attachedRoom = room;
+            Room = room;
+            listerThings = new ListerThings(ListerThingsUse.Region);
+            borderListerThings = new ListerThings(ListerThingsUse.Region);
 
             //Get Group Data
             UpdateGroupData();
-
-            foreach (var type in SubClasses)
+            foreach (var type in typeof(RoomComponent).AllSubclassesNonAbstract())
             {
                 var comp = (RoomComponent)Activator.CreateInstance(type);
                 comp.Create(this);
+                compsByType.Add(type, comp);
                 comps.Add(comp);
             }
         }
 
         public T GetRoomComp<T>() where T : RoomComponent
         {
-            foreach (var comp in comps)
-            {
-                if (comp is T t)
-                {
-                    return t;
-                }
-            }
-            return null;
+            return (T)compsByType[typeof(T)];
         }
 
         public void MarkDisbanded()
         {
-            isDisbandedInt = true;
+            IsDisbanded = true;
         }
 
         public void Disband(Map onMap)
@@ -92,41 +95,68 @@ namespace TiberiumRim
             }
         }
 
-        public void Notify_ThingSpawned(Thing thing)
+        public void Notify_RegisterThing(Thing thing)
         {
+            //Things
+            listerThings.Add(thing);
             foreach (var comp in comps)
             {
-                comp.Notify_ThingSpawned(thing);
+                comp.Notify_ThingAdded(thing);
+            }
+
+            //Pawns
+            if (thing is Pawn pawn)
+            {
+                RegisterPawn(pawn);
             }
         }
 
-        public void Notify_ThingDespawned(Thing thing)
+        public void Notify_DeregisterThing(Thing thing)
         {
+            //Things
+            listerThings.Remove(thing);
             foreach (var comp in comps)
             {
-                comp.Notify_ThingDespawned(thing);
+                comp.Notify_ThingRemoved(thing);
+            }
+
+            //Pawns
+            if (thing is Pawn pawn)
+            {
+                DeregisterPawn(pawn);
             }
         }
 
-        public void Notify_PawnEnteredRoom(Pawn pawn)
+        protected void RegisterPawn(Pawn pawn)
         {
+            //Entered room
+            var followerExtra = pawn.GetComp<Comp_PathFollowerExtra>();
+            followerExtra?.Notify_EnteredRoom(this);
+
+            //
             foreach (var comp in comps)
             {
                 comp.Notify_PawnEnteredRoom(pawn);
             }
         }
 
-        public void Notify_PawnLeftRoom(Pawn pawn)
+        protected void DeregisterPawn(Pawn pawn)
         {
+            //
             foreach (var comp in comps)
             {
                 comp.Notify_PawnLeftRoom(pawn);
             }
         }
 
+        public bool ContainsPawn(Pawn pawn)
+        {
+            return ContainedPawns.Contains(pawn);
+        }
+
         public void Notify_Reused()
         {
-            UpdateGroupData();
+            RegenerateData(true, true, true);
             foreach (var comp in comps)
             {
                 comp.Notify_Reused();
@@ -152,16 +182,18 @@ namespace TiberiumRim
 
         public void Notify_RoofChanged()
         {
-            UpdateGroupData();
+            RegenerateData(true, false, false);
+
             //Check if room closed
-            if (!lastRoofBool && currentRoofBool)
+            if (wasOutSide && !IsOutside)
             {
                 RoofClosed();
             }
-            if (lastRoofBool && !currentRoofBool)
+            if (!wasOutSide && IsOutside)
             {
                 RoofOpened();
             }
+
             foreach (var comp in comps)
             {
                 comp.Notify_RoofChanged();
@@ -208,46 +240,90 @@ namespace TiberiumRim
             }
         }
 
-        public void RegenerateData()
+        private static char check = '✓';
+        private static char fail = '❌';
+
+        private string Icon(bool checkFail) => $"{(checkFail? check : fail)}";
+        private Color ColorSel(bool checkFail) => (checkFail ? Color.green : Color.red);
+
+        public void Validate()
         {
-            var roomCells = Room.Cells.ToArray();
-            int minX, minZ = minX = int.MaxValue;
-            int maxX, maxZ = maxX = int.MinValue;
-            for (int i = 0; i < roomCells.Length; i++)
+            TRLog.Debug($"### Validating Tracker[{Room.ID}]");
+            var innerCells = Room.Cells;
+
+            var containedThing = Room.ContainedAndAdjacentThings.Where(t => innerCells.Contains(t.Position)).ToList();
+            int sameCount = containedThing.Count(t => ListerThings.Contains(t));
+            float sameRatio = sameCount / (float)containedThing.Count();
+            bool sameBool = sameRatio >= 1f;
+            var sameRatioString = $"[{sameCount}/{containedThing.Count()}][{sameRatio}]{Icon(sameBool)}".Colorize(ColorSel(sameBool));
+            TRLog.Debug($"ContainedThingRatio: {sameRatioString}");
+
+            TRLog.Debug($"### Ending Validation [{Room.ID}]");
+        }
+
+        public void RegenerateData(bool ignoreRoomExtents = false, bool regenCellData = true, bool regenListerThings = true)
+        {
+            UpdateGroupData();
+            if (!ignoreRoomExtents)
             {
-                var cell = roomCells[i];
-                if (minX > cell.x)
-                {
-                    minX = cell.x;
-                    cornerCells[0] = cell;
-                }
-                if (maxX < cell.x)
-                {
-                    maxX = cell.x;
-                    cornerCells[1] = cell;
-                }
-                if (minZ > cell.z)
-                {
-                    minZ = cell.z;
-                    cornerCells[2] = cell;
-                }
-                if (maxZ < cell.z)
-                {
-                    maxZ = cell.z;
-                    cornerCells[3] = cell;
-                }
+                //Room.ExtentsClose
+                var extents = Room.ExtentsClose;
+                int minX = extents.minX;
+                int maxX = extents.maxX;
+                int minZ = extents.minZ;
+                int maxZ = extents.maxZ;
+                cornerCells = extents.Corners.ToArray();
+
+                minVec = new IntVec3(minX, 0, minZ);
+                size = new IntVec2(maxX - minX + 1, maxZ - minZ + 1);
+                actualCenter = extents.CenterVector3; //new Vector3(minX + (size.x / 2f), 0, minZ + (size.z / 2f));
+                drawPos = new Vector3(minX, AltitudeLayer.FogOfWar.AltitudeFor(), minZ);
             }
-            minVec = new IntVec3(minX, 0, minZ);
-            size = new IntVec2(maxX - minX + 1, maxZ - minZ + 1);
-            actualCenter = new Vector3(minX + (size.x / 2f), 0, minZ + (size.z / 2f));
-            drawPos = new Vector3(minX, AltitudeLayer.FogOfWar.AltitudeFor(), minZ);
 
             //Get Roof and Border Cells
-            GenerateCellData();
+            if (regenCellData)
+            {
+                GenerateCellData();
+            }
+
+            //Get ListerThings
+            if (regenListerThings)
+            {
+                listerThings.Clear();
+                borderListerThings.Clear();
+                
+                List<Region> regions = Room.Regions;
+                for (int i = 0; i < regions.Count; i++)
+                {
+                    List<Thing> allThings = regions[i].ListerThings.AllThings;
+                    if (allThings != null)
+                    {
+                        for (int j = 0; j < allThings.Count; j++)
+                        {
+                            Thing item = allThings[j];
+                            if (item.Position.GetRoomFast(Map) != Room)
+                            {
+                                if (uniqueContainedThingsSet.Add(item))
+                                {
+                                    borderListerThings.Add(item);
+                                }
+                                continue;
+                            }
+                            if (uniqueContainedThingsSet.Add(item))
+                            {
+                                Notify_RegisterThing(item);
+                            }
+                        }
+                    }
+                }
+                uniqueContainedThingsSet.Clear();
+            }
         }
 
         private void GenerateCellData()
         {
+            if (!IsProper) return;
+
             var tCells = new HashSet<IntVec3>();
             var bCells = new HashSet<IntVec3>();
             foreach (IntVec3 c in Room.Cells)
@@ -266,24 +342,25 @@ namespace TiberiumRim
                     }
                 }
             }
-
             borderCells = bCells.ToArray();
             thinRoofCells = tCells.ToArray();
         }
 
         private void UpdateGroupData()
         {
-            cachedMap = Room.Map;
-            cachedOutside = Room.UsesOutdoorTemperature;
-            cachedCellCount = Room.CellCount;
-            if (!cachedOutside)
+            //
+            wasOutSide = IsOutside;
+            IsOutside = Room.UsesOutdoorTemperature;
+            IsProper = Room.ProperRoom;
+
+            //
+            Map = Room.Map;
+            CellCount = Room.CellCount;
+            if (!IsOutside)
             {
                 //If not outside, we want to know if there are any open roof cells (implies: small room with a few open roof cells
-                cachedOpenRoofCount = Room.OpenRoofCount;
+                OpenRoofCount = Room.OpenRoofCount;
             }
-
-            lastRoofBool = currentRoofBool;
-            currentRoofBool = !IsOutside;
         }
     }
 }

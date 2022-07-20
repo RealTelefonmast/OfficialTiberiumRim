@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -15,7 +16,6 @@ namespace TiberiumRim
         public NetworkContainer Container => container;
         public ContainerProperties ContainerProps => propsInt ??= new ContainerProperties()
         {
-            doExplosion = false,
             dropContents = false,
             leaveContainer = false,
             maxStorage = 0
@@ -27,7 +27,7 @@ namespace TiberiumRim
         public NetworkValueStack ValueStack => Container.ValueStack;
 
         public float Saturation => Container.StoredPercent;
-        public bool FullySaturated => Container.CapacityFull;
+        public bool FullySaturated => Container.Full;
 
         public AtmosphericContainer(RoomComponent parent)
         {
@@ -71,11 +71,10 @@ namespace TiberiumRim
 
         public void Data_SetInfo(Dictionary<NetworkValueDef, int> data)
         {
-            TLog.Debug("Setting new data...");
             Container.Clear();
             foreach (var value in data)
             {
-                TLog.Debug($"Adding {value.Key}: {value.Value}");
+                TRLog.Debug($"Adding {value.Key}: {value.Value}");
                 Container.TryAddValue(value.Key, value.Value, out _);
             }
         }

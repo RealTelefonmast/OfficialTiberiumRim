@@ -52,8 +52,7 @@
 			<li Class="TiberiumRim.CompProperties_TNS">
 				<networks>
 					<li>
-						<networkDef>TiberiumNetwork</networkDef>
-						<storeEvenly>false</storeEvenly>					
+						<networkDef>TiberiumNetwork</networkDef>				
 						<containerProps>
 							<maxStorage>1000</maxStorage>
 							<dropContents>true</dropContents>
@@ -63,15 +62,15 @@
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<allowedValues>
+						<handledValues>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
 							<li>TibSludge</li>	
-						</allowedValues>
+						</handledValues>
 					</li>
 				</networks>
-				<!--connectionPattern>#+#|###|</connectionPattern-->
+				<!--generalIOPattern>#+#|###|</generalIOPattern-->
 			</li>
 			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_AffectedByFacilities">
@@ -131,7 +130,7 @@
 			<li>TiberiumRim.ITab_MechConstruction</li>
 		</inspectorTabs>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -215,7 +214,7 @@
 					<li>MakeHarvesterCommon</li>
 				</mechRecipes>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -240,7 +239,6 @@
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(5.5,5.5)</drawSize>
 						</data>
-						<directAltitudeOffset>0.25</directAltitudeOffset>
 					</li>
 					<li>
 						<data>
@@ -301,7 +299,7 @@
 			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -351,8 +349,9 @@
 					</thrower>
 				</moteData>
 			</li>
-			<li Class="TiberiumRim.CompProperties_NetworkStructurePowerPlant">
+			<li Class="TeleCore.CompProperties_NetworkStructurePowerPlant">
 				<compClass>TiberiumRim.Comp_NetworkStructurePowerPlant</compClass>
+				<fromNetwork>TiberiumNetwork</fromNetwork>
 				<maxStorage>2000</maxStorage>
 				<supportedTypes>
 					<li>Green</li>

@@ -14,10 +14,6 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(3,7.5)</drawSize>
 		</graphicData>
-		<extraData>
-			<rotateDrawSize>false</rotateDrawSize>
-			<alignToBottom>false</alignToBottom>
-		</extraData>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<statBases>
 			<MaxHitPoints>300</MaxHitPoints>
@@ -53,6 +49,14 @@
 		</placeWorkers>
 		<tickerType>Never</tickerType>
 		<rotatable>true</rotatable>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<graphics>
+					<rotateDrawSize>false</rotateDrawSize>
+					<alignToBottom>false</alignToBottom>
+				</graphics>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 </Defs>

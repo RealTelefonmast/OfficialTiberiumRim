@@ -11,7 +11,7 @@
 		<order>79</order>
 		<validWithoutMap>true</validWithoutMap>
 		<minimized>True</minimized>
-		<iconPath>UI/Icons/TiberiumButton</iconPath>
+		<iconPath>UI/Icons/Tiberium/TiberiumIcon_Base</iconPath>
 		<!--<specialIconPath>UI/Icons/TiberiumButtonNew</specialIconPath>-->
 	</TiberiumRim.TRMainButtonDef>
 	

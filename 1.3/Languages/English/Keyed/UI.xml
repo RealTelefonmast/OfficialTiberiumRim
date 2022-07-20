@@ -57,4 +57,14 @@
 	<TR_ResearchUnlocks>Unlocks:</TR_ResearchUnlocks>
 	<TR_Capable>Capable:</TR_Capable>
 	
+	<!--Harvest Zone-->
+	<TR_HarvestTiberiumZone>Harvest Zone</TR_HarvestTiberiumZone>
+	<TR_HarvestTiberiumZoneDesc>Creates a zone boundary for this refinery's harvesters.</TR_HarvestTiberiumZoneDesc>
+	
+	<TR_CreateHarvestZoneProducer>Zone on Source</TR_CreateHarvestZoneProducer>
+	<TR_CreateHarvestZoneProducerDesc>Creates a harvest zone boundary from the selected tiberium field for this refinery's harvesters.</TR_CreateHarvestZoneProducerDesc>
+	
+	<TR_DeleteRefineryZone>Remove Zone</TR_DeleteRefineryZone>
+	<TR_DeleteRefineryZoneDesc>Deletes the current harvest zone boundary, allowing the harvesters to roam for Tiberium freely.</TR_DeleteRefineryZoneDesc>
+	
 </LanguageData>

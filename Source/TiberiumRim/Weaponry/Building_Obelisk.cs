@@ -1,11 +1,12 @@
 ﻿using System;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
 {
-    public class Building_Obelisk : Building_TRTurret
+    public class Building_Obelisk : Building_TeleTurret
     {
         private float chargeAmount = 0;
 
@@ -13,7 +14,7 @@ namespace TiberiumRim
         {
             get
             {
-                return Mathf.InverseLerp(0, MainGun.props.turretBurstWarmupTime.SecondsToTicks(), chargeAmount);
+                return Mathf.InverseLerp(0, MainGun.Props.turretBurstWarmupTime.SecondsToTicks(), chargeAmount);
             }
         }
 
@@ -24,7 +25,7 @@ namespace TiberiumRim
             base.Tick();
             if (CurrentTarget.IsValid)
             {
-                if(MainGun.burstWarmupTicksLeft > 0)
+                if(MainGun.BurstWarmupTicksLeft > 0)
                     chargeAmount++;
             }
             else if (chargeAmount > 0)
@@ -33,14 +34,32 @@ namespace TiberiumRim
             }
         }
 
-        public override ExtendedGraphicData ExtraData => (def as FXThingDef).extraData;
+        //FX
+        public override bool FX_AffectsLayerAt(int index)
+        {
+            return index is 0 or 1;
+        }
 
-        public override Vector3[] DrawPositions => new Vector3[] { base.DrawPos, base.DrawPos };
-        public override Color[] ColorOverrides => new Color[] { Color.white, Color.white };
-        public override float[] OpacityFloats => new float[] { 1f, ObeliskCharge };
-        public override float?[] RotationOverrides => new float?[] { null , null};
-        public override bool[] DrawBools => new bool[] { true, chargeAmount > 0 };
-        public override bool ShouldDoEffecters => true;
+        public override Vector3? FX_GetDrawPositionAt(int index) => base.DrawPos;
+        public override Color? FX_GetColorAt(int index) => Color.white;
+        public override float? FX_GetRotationAt(int index) => null;
+        public override float FX_GetOpacityAt(int index)
+        {
+            return index switch
+            {
+                1 => ObeliskCharge,
+                _ => 1f
+            };
+        }
+
+        public override bool FX_ShouldDrawAt(int index)
+        {
+            return index switch
+            {
+                1 => chargeAmount > 0,
+                _ => true
+            };
+        }
 
         public override void Draw()
         {

@@ -47,7 +47,7 @@
 				</supportedTypes>
 				<tnwbMode>Consumer</tnwbMode>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -150,16 +150,16 @@
 			<li>TurretGun</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
-				<tiberiumCostPerShot>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
+				<networkCostPerShot>
 					<costSet>
 						<specificCosts>
 							<TibSludge>6</TibSludge>
 						</specificCosts>
 					</costSet>
 					<useDirectStorage>true</useDirectStorage>
-				</tiberiumCostPerShot>
+				</networkCostPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Sludge</defaultProjectile>
 				<warmupTime>3</warmupTime>
@@ -171,8 +171,8 @@
 				<consumeFuelPerShot>0.2</consumeFuelPerShot>
 			</li>
 			<!--
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<tiberiumCost>
 					<costs>
 						<li>Sludge</li>

@@ -19,10 +19,10 @@
 			</li>
 		</stages>
 		<comps>
-			<li Class="TiberiumRim.HediffCompProperties_RangedVerb">
+			<li Class="TeleCore.HediffCompProperties_RangedVerb">
 				<verbs>
-					<li Class="TiberiumRim.VerbProperties_TR">
-						<verbClass>TiberiumRim.Verb_TR</verbClass>
+					<li Class="TeleCore.VerbProperties_Extended">
+						<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 						<hasStandardCommand>true</hasStandardCommand>
 						<defaultProjectile>Bullet_Shard</defaultProjectile>
 						<warmupTime>1.5</warmupTime>

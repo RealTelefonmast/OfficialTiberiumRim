@@ -67,8 +67,6 @@ namespace TiberiumRim
                 //Research
                 TRUtils.ResearchTargetTable().RegisterNewTarget(__instance);
                 TRUtils.EventManager().CheckForEventStart(__instance);
-
-                Tiberium.RoomInfo.Notify_ThingSpawned(__instance);
             }
         }
 
@@ -108,8 +106,6 @@ namespace TiberiumRim
                         }
                     }
                 }
-
-                Tiberium.RoomInfo.Notify_ThingDespawned(__instance);
 
                 //Research
                 TRUtils.ResearchTargetTable().DeregisterTarget(__instance);
@@ -195,27 +191,6 @@ namespace TiberiumRim
             
         }
         */
-
-        //RENDERING
-        [HarmonyPatch(typeof(Thing), "Graphic", MethodType.Getter)]
-        public static class ThingGraphicPatch
-        {
-            public static bool Prefix(Thing __instance, ref Graphic __result)
-            {
-                //Fix projectile random graphics (for ourselves)
-                if (__instance is IPatchedProjectile)
-                {
-                    if (__instance.DefaultGraphic is Graphic_Random Random)
-                    {
-                        __result = Random.SubGraphicFor(__instance);
-                        return false;
-                    }
-                    __result = __instance.DefaultGraphic;
-                    return false;
-                }
-                return true;
-            }
-        }
         #endregion
 
         #region PROJECTILE PATCHING
@@ -230,28 +205,6 @@ namespace TiberiumRim
             }
         }
         */
-
-        [HarmonyPatch(typeof(Projectile), "ImpactSomething")]
-        public static class ProjectileImpactSomethingPatch
-        {
-            public static bool Prefix(Projectile __instance)
-            {
-                if (__instance is IPatchedProjectile patchedProj)
-                {
-                    return patchedProj.PreImpact();
-                }
-
-                return true;
-            }
-
-            public static void Postfix(Projectile __instance)
-            {
-                if (__instance is IPatchedProjectile patchedProj)
-                {
-                    patchedProj.PostImpact();
-                }
-            }
-        }
 
         [HarmonyPatch(typeof(Projectile), "Draw")]
         public static class ProjectileDrawPatch

@@ -38,7 +38,7 @@
 			<Gold>25</Gold>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>

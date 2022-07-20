@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -30,16 +31,45 @@ namespace TiberiumRim
         {
             if (pawn is Harvester harvester)
             {
-                if (harvester.Container.CapacityFull) return null;
+                TRLog.Debug($"Getting work things for {harvester.NameFullColored}| Has Zone: {harvester.RefineryComp.HarvestTiberiumZone != null} | {harvester.RefineryComp.HarvestTiberiumZone?.Cells.Count}");
+                if (harvester.Container.Full) return null;
                 var manager = pawn.Map.GetComponent<MapComponent_Tiberium>();
+                if (HarvesterUsesZone(harvester, out _))
+                {
+                    TRLog.Debug($"[{pawn}] Selecting crystals inside of zone");
+                    return harvester.RefineryComp.HarvestTiberiumZone.AllContainedThings.Where(t => t is TiberiumCrystal);
+                }
                 return manager.TiberiumInfo.AllTiberiumCrystals;
             }
             return null;
         }
 
+        private bool HarvesterUsesZone(Pawn pawn, out IEnumerable<IntVec3> cells)
+        {
+            cells = null;
+            if (pawn is Harvester harvester)
+            {
+                if (harvester.RefineryComp.HarvestTiberiumZone != null)
+                {
+                    if (harvester.RefineryComp.HarvestTiberiumZone.cells.Count == 0)
+                    {
+                        Log.ErrorOnce($"Harvest zone has 0 cells: {harvester.RefineryComp.HarvestTiberiumZone}", -674964);
+                    }
+                    cells = harvester.RefineryComp.HarvestTiberiumZone.cells;
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public override IEnumerable<IntVec3> PotentialWorkCellsGlobal(Pawn pawn)
         {
-            return base.PotentialWorkCellsGlobal(pawn);
+            if (HarvesterUsesZone(pawn, out var cells))
+            {
+                TRLog.Debug($"[{pawn.NameShortColored}] Should harvest inside of zone with cells: {cells.EnumerableCount()}");
+                return cells;
+            }
+            return null;
         }
 
         public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)

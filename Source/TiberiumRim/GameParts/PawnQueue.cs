@@ -33,7 +33,7 @@ namespace TiberiumRim
         {
             if (!pawnList.Remove(pawn))
             {
-                TLog.Warning($"Failed to remove {pawn.NameShortColored} from queue: {pawnList.ToStringSafeEnumerable()}");
+                TRLog.Warning($"Failed to remove {pawn.NameShortColored} from queue: {pawnList.ToStringSafeEnumerable()}");
             }
         }
 

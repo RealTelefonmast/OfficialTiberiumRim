@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TeleCore;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -36,7 +37,7 @@ namespace TiberiumRim
         }
 
         private MapComponent_Tiberium TiberiumManager => map.Tiberium();
-        private NetworkMaster NetworkMaser => TiberiumManager.NetworkInfo[TiberiumDefOf.TiberiumNetwork];
+        private PipeNetworkManager NetworkMaster => TiberiumManager.NetworkInfo[TiberiumDefOf.TiberiumNetwork];
 
         private Harvester CurHarvester => AllHarvesters[Current];
 

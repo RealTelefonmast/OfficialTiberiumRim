@@ -34,14 +34,14 @@ namespace TiberiumRim
             {
                 if (room == null)
                 {
-                    TLog.Warning($"Room is null, cannot get tracker.");
+                    TRLog.Warning($"Room is null, cannot get tracker.");
                     VerifyState();
                     return null;
                 }
                 if (!allTrackers.ContainsKey(room))
                 {
-                    TLog.Warning($"RoomMapInfo doesn't contain Room[ID:{room.ID}] on Map[{room.Map}]");
-                    VerifyState();
+                    //TRLog.Warning($"RoomMapInfo doesn't contain Room[ID:{room.ID}] on Map[{room.Map}]");
+                    //VerifyState();
                     return null;
                 }
                 return allTrackers[room];
@@ -54,13 +54,13 @@ namespace TiberiumRim
             {
                 if (district == null || district.Room == null)
                 {
-                    TLog.Warning($"District({district?.ID}) or Room ({district?.Room?.ID}) is null, cannot get tracker.");
+                    TRLog.Warning($"District({district?.ID}) or Room ({district?.Room?.ID}) is null, cannot get tracker.");
                     VerifyState();
                     return null;
                 }
                 if (!allTrackers.ContainsKey(district.Room))
                 {
-                    TLog.Warning($"RoomMapInfo doesn't contain {district.Room.ID}");
+                    TRLog.Warning($"RoomMapInfo doesn't contain {district.Room.ID}");
                     VerifyState();
                     return null;
                 }
@@ -105,20 +105,23 @@ namespace TiberiumRim
             tracker.Disband(Map);
         }
 
-        public void Notify_ThingSpawned(Thing thing)
+        public void Notify_RegisterThing(Thing thing, Room room)
         {
-            if (!this.map.regionAndRoomUpdater.Enabled && this.map.regionAndRoomUpdater.AnythingToRebuild) return;
-            var room = thing.GetRoom();
-            if (room == null || !AllTrackers.TryGetValue(room, out var tracker)) return;
-            tracker?.Notify_ThingSpawned(thing);
+            if (room is null) return;
+            var tracker = this[room];
+            if (tracker is null) return;
+            if (!tracker.ListerThings.Contains(thing))
+                tracker.Notify_RegisterThing(thing);
         }
 
-        public void Notify_ThingDespawned(Thing thing)
+        public void Notify_DeregisterThing(Thing thing, Room room)
         {
-            if (!this.map.regionAndRoomUpdater.Enabled && this.map.regionAndRoomUpdater.AnythingToRebuild) return;
-            var room = thing.GetRoom();
-            if (room == null || !AllTrackers.TryGetValue(room, out var tracker)) return;
-            tracker?.Notify_ThingDespawned(thing);
+            if (room is null) return;
+
+            var tracker = this[room];
+            if (tracker is null) return;
+            if (tracker.ListerThings.Contains(thing))
+                tracker.Notify_DeregisterThing(thing);
         }
 
         public void Notify_RoofChanged(Room room)
@@ -164,12 +167,12 @@ namespace TiberiumRim
             var hitCountRatio = Math.Round(hitCount / (float)roomCount,1);
             var hitBool = hitCountRatio == 1;
             var hitCountRatioString = $"[{hitCount}/{roomCount}][{hitCountRatio}]{(hitBool ? check : fail)}".Colorize(hitBool ? Color.green : Color.red);
-            TLog.Debug($"[Verifying RoomMapInfo] Room/Tracker Ratio: {ratioString} | HitCount Test: {hitCountRatioString}");
+            TRLog.Debug($"[Verifying RoomMapInfo] Room/Tracker Ratio: {ratioString} | HitCount Test: {hitCountRatioString}");
 
             if (failedTrackers.Count > 0)
             {
-                TLog.Debug($"Failed Tracker Count: {failedTrackers.Count}");
-                TLog.Debug($"Failed Trackers: {failedTrackers.Select(t => t.Room.ID).ToStringSafeEnumerable()}");
+                TRLog.Debug($"Failed Tracker Count: {failedTrackers.Count}");
+                TRLog.Debug($"Failed Trackers: {failedTrackers.Select(t => t.Room.ID).ToStringSafeEnumerable()}");
             }
         }
 

@@ -1,18 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using Verse;
 
 namespace TiberiumRim
 {
     public class RoomTrackerUpdater
     {
-        private RoomMapInfo parentInfo;
-        private List<RoomTracker> existingTrackers = new List<RoomTracker>();
-        private List<RoomTracker> newTrackers = new List<RoomTracker>();
+        //private Stopwatch sw = new Stopwatch();
 
-        public List<Room> reusedOldRooms = new List<Room>();
-        public List<Room> newRooms = new List<Room>();
+        private RoomMapInfo parentInfo;
+        private List<RoomTracker> existingTrackers = new();
+
+        private readonly List<RoomTracker> newTrackers = new();
+        private readonly List<RoomTracker> newExistingTrackers = new();
+        private readonly List<RoomTracker> reusedTrackers = new();
+
+        public List<Room> reusedOldRooms = new();
+        public List<Room> newRooms = new();
 
         public RoomTrackerUpdater(RoomMapInfo mapInfo)
         {
@@ -59,11 +66,12 @@ namespace TiberiumRim
                     //Notify Tracker Changed
                     if (reusedOldRooms.Contains(tracker.Room))
                     {
-                        tracker.Notify_Reused();
+                        reusedTrackers.Add(tracker);
                     }
-                    newTrackers.Add(tracker);
+                    newExistingTrackers.Add(tracker);
                     continue;
                 }
+
                 //Compare with new generated rooms
                 foreach (var newAddedRoom in newRooms)
                 {
@@ -77,23 +85,30 @@ namespace TiberiumRim
             }
 
             //Compare old rooms with new rooms to disband unused ones
-            var disbanded = existingTrackers.Except(newTrackers);
+            var allActiveTrackers = newTrackers.Concat(newExistingTrackers).ToList();
+            var disbanded = existingTrackers.Except(allActiveTrackers).ToList();
             foreach (var tracker in disbanded)
             {
                 parentInfo.MarkDisband(tracker);
             }
 
-            foreach (var tracker in disbanded)
-            {
-                parentInfo.Disband(tracker);
-            }
-
             //Finalize Addition
-            foreach (var tracker in newTrackers)
+            foreach (var tracker in allActiveTrackers)
             {
                 parentInfo.SetTracker(tracker);
             }
 
+            //
+            foreach (var tracker in reusedTrackers)
+            {
+                tracker.Notify_Reused();
+            }
+
+            //
+            foreach (var tracker in disbanded)
+            {
+                parentInfo.Disband(tracker);
+            }
 
             foreach (var tracker in newTrackers)
             {
@@ -106,6 +121,8 @@ namespace TiberiumRim
             }
 
             newTrackers.Clear();
+            reusedTrackers.Clear();
+            newExistingTrackers.Clear();
             existingTrackers = null;
         }
     }

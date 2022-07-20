@@ -7,7 +7,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class TRThingDef : FXThingDef
+    public class TRThingDef : ThingDef
     {
         //Designation
         public FactionDesignationDef factionDesignation = null;
@@ -18,9 +18,8 @@ namespace TiberiumRim
         public Requisites requisites;
 
         //Properties
-        public TurretHolderProperties turret;
-        public BeamHubProperties beamHub; 
-        public ProjectileProperties_Extended projectileExtended;
+        public BeamHubProperties beamHub;
+
         public SuperWeaponProperties superWeapon;
         public TRGasProperties gasProps;
 

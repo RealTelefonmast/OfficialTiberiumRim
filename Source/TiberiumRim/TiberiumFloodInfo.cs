@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace TiberiumRim
 {
+    /*
     public class TiberiumFloodInfo
     {
         private readonly Map map;
@@ -49,7 +50,7 @@ namespace TiberiumRim
             {
                 processor(cell);
             }
-            /*
+            
             //Step Two - THICCening      
             for (int i = 0; i < Positions.Count; i++)
             {
@@ -86,7 +87,7 @@ namespace TiberiumRim
             {
                 FloodFillAction(cell);
             }
-            */
+            
         }
 
         public void MakeFlood()
@@ -161,6 +162,7 @@ namespace TiberiumRim
 
         private bool GetFloodCells(CellRect Rect, int MaxCells, out List<IntVec3> final, int maxTries = 9999)
         {
+            telef
             final = new List<IntVec3>();
             List<IntVec3> Flood = new List<IntVec3>();
             Flood.AddRange(Rect.Cells);
@@ -189,4 +191,5 @@ namespace TiberiumRim
             return true;
         }
     }
+    */
 }

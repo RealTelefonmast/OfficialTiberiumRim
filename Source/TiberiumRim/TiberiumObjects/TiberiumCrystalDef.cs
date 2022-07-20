@@ -1,10 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using RimWorld;
+using TeleCore;
 using Verse;
 
 namespace TiberiumRim
 {
+    public enum HarvestType
+    {
+        Valuable,
+        Unvaluable,
+        Unharvestable
+    }
+
     public class TiberiumCrystalDef : TRThingDef
     {
         [Unsaved()]

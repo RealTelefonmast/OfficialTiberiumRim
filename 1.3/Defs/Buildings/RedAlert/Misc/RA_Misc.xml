@@ -23,7 +23,7 @@
 			<Flammability>0</Flammability>
 		</statBases>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -32,7 +32,9 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>8</drawSize>
 						</data>
-						<rotationSpeed>50</rotationSpeed>
+						<rotate>
+							<rotationSpeed>50</rotationSpeed>
+						</rotate>
 						<mode>Dynamic</mode>
 					</li>
 					<li>

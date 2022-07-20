@@ -59,20 +59,16 @@ namespace TiberiumRim
 
         public TiberiumCrystal FindClosestTiberiumFor(Harvester harvester)
         {
-            IntVec3 rootPos = harvester.Position;
             Map map = harvester.Map;
-            TraverseParms parms = TraverseParms.For(harvester, Danger.Deadly, TraverseMode.ByPawn);
-
+            IntVec3 rootPos = harvester.Position;
             Region rootRegion = rootPos.GetRegion(map, RegionType.Set_Passable);
-            if (rootRegion == null)
-                return null;
+            if (rootRegion == null) return null;
 
+            TraverseParms parms = TraverseParms.For(harvester, Danger.Deadly, TraverseMode.ByPawn);
             bool EntryCondition(Region fromRegion, Region to) => to.Allows(parms, false);
 
-            TiberiumCrystal crystal = null;
-
             float currentClosest = 9999999f;
-
+            TiberiumCrystal crystal = null;
             bool Processor(Region region)
             {
                 if ((!region.IsDoorway && !region.Allows(parms, true)) || region.IsForbiddenEntirely(parms.pawn)) return false;

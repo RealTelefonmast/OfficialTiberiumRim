@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using HarmonyLib;
 using RimWorld;
+using TeleCore;
 using Verse;
 
 namespace TiberiumRim
@@ -20,11 +22,9 @@ namespace TiberiumRim
         // Natural
         public TiberiumMapInfo TiberiumInfo;        // Tiberium Crystals, Pods, etc, all variations
         public TiberiumFloraMapInfo FloraInfo;      // Tiberium Plant life, Gardens, Environment
-        public TiberiumTerrainInfo TerrainInfo;
-        public AtmosphericMapInfo AtmosphericInfo;
         public TiberiumStructureInfo NaturalTiberiumStructureInfo;
         public StructureCacheMapInfo StructureCacheInfo;
-        public NetworkMapInfo NetworkInfo;
+
         public MapPawnInfo MapPawnInfo; // Currently infected pawns, animals, colonists, visitors, etc
 
         public DangerMapInfo DangerInfo;
@@ -33,12 +33,13 @@ namespace TiberiumRim
 
         public DynamicDataCacheInfo DynamicDataInfo;
 
-
         public GlowGridGPUInfo GlowGridGPUInfo;
 
-        public GasGridInfo GasGridInfo;
+        public TiberiumTerrainInfo TerrainInfo;
 
         public RoomMapInfo RoomInfo;
+        public GasGridInfo GasGridInfo;
+        public AtmosphericMapInfo AtmosphericInfo;
 
         // Artificial
         public SuppressionMapInfo SuppressionInfo;
@@ -46,11 +47,14 @@ namespace TiberiumRim
 
         //Active Components
         public TiberiumAffecter TiberiumAffecter;
-        public TiberiumSpreader TiberiumSpreader;
+        public TiberiumProducerInfo TiberiumProducerInfo;
+
+
+        public NetworkMapInfo NetworkInfo => map.MapInfo<NetworkMapInfo>();
 
         public MapComponent_Tiberium(Map map) : base(map)
         {
-            TLog.Debug($"Making new Tiberium MapComp for [{map.uniqueID}]");
+            TRLog.Debug($"Making new Tiberium MapComp for [{map.uniqueID}]");
             StaticData.Notify_NewTibMapComp(this);
             
             //Nature
@@ -64,10 +68,10 @@ namespace TiberiumRim
 
             NaturalTiberiumStructureInfo = new TiberiumStructureInfo(map);
             StructureCacheInfo = new StructureCacheMapInfo(map);
+
             //Technology
             HarvesterInfo = new HarvesterMapInfo(map);
             SuppressionInfo = new SuppressionMapInfo(map);
-            NetworkInfo = new NetworkMapInfo(map);
 
             //MetaData
             MapPawnInfo = new MapPawnInfo(map);
@@ -78,12 +82,12 @@ namespace TiberiumRim
             GlowGridGPUInfo = new GlowGridGPUInfo(map);
 
             TiberiumAffecter = new TiberiumAffecter(map);
-            TiberiumSpreader = new TiberiumSpreader(map);
+            TiberiumProducerInfo = new TiberiumProducerInfo(map);
         }
 
         public override void FinalizeInit()
         {
-            TLog.Debug("MapComp TR FinalizeInit");
+            TRLog.Debug("MapComp TR FinalizeInit");
             base.FinalizeInit();
             if (!FloraInfo.HasBeenInitialized)
                 FloraInfo.InfoInit();
@@ -122,7 +126,13 @@ namespace TiberiumRim
             Scribe_Deep.Look(ref HarvesterInfo, "HarvesterInfo", map);
 
             Scribe_Deep.Look(ref TiberiumAffecter, "affecter", map);
-            Scribe_Deep.Look(ref TiberiumSpreader, "TiberiumSpreader", map);
+            Scribe_Deep.Look(ref TiberiumProducerInfo, "TiberiumProducerInfo", map);
+
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                if (TiberiumProducerInfo == null)
+                    TiberiumProducerInfo = new TiberiumProducerInfo(map);
+            }
         }
 
         [TweakValue("MapComponent_TibDrawBool", 0f, 100f)]
@@ -170,7 +180,6 @@ namespace TiberiumRim
             //AtmosphericInfo.Update();
             AtmosphericInfo.Draw();
             RoomInfo.Draw();
-            NetworkInfo.Draw();
             GasGridInfo.Draw();
 
             if (DrawBool)
@@ -196,7 +205,7 @@ namespace TiberiumRim
             AtmosphericInfo.Tick();
             SuppressionInfo.Tick();
             TiberiumAffecter.Tick();
-            TiberiumSpreader.Tick();
+            TiberiumProducerInfo.Tick();
             GasGridInfo.Tick();
         }
 
@@ -242,14 +251,14 @@ namespace TiberiumRim
         {
             NaturalTiberiumStructureInfo.TryRegister(building);
             if(building is TiberiumProducer p)
-                TiberiumSpreader.RegisterField(p);
+                TiberiumProducerInfo.RegisterProducer(p);
         }
 
         public void DeregisterTRBuilding(TRBuilding building)
         {
             NaturalTiberiumStructureInfo.Deregister(building);
             if (building is TiberiumProducer p)
-                TiberiumSpreader.DeregisterField(p);
+                TiberiumProducerInfo.DeregisterProducer(p);
         }
 
         public void RegisterTiberiumCrystal(TiberiumCrystal crystal)

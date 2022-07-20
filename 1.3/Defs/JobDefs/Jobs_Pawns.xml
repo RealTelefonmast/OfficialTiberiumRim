@@ -7,24 +7,8 @@
 		<reportString>doing tiberium research.</reportString>
 		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
 	</JobDef>
-
-	<JobDef>
-		<defName>UseAirlock</defName>
-		<driverClass>TiberiumRim.JobDriver_AirlockUse</driverClass>
-		<reportString>using airlock.</reportString>
-		<allowOpportunisticPrefix>false</allowOpportunisticPrefix>
-		<playerInterruptible>true</playerInterruptible>
-		<casualInterruptible>false</casualInterruptible>
-		<dropThingBeforeJob>false</dropThingBeforeJob>
-	</JobDef>
 	
-	<JobDef>
-		<defName>TiberiumBill</defName>
-		<driverClass>TiberiumRim.JobDriver_DoTiberiumBill</driverClass>
-		<reportString>doing tiberium bill.</reportString>
-		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
-	</JobDef>	
-	
+	<!---->
 	<JobDef>
 		<defName>FormAmalgamation</defName>
 		<driverClass>TiberiumRim.JobDriver_FormAmalgamation</driverClass>
@@ -36,7 +20,5 @@
 		<driverClass>TiberiumRim.JobDriver_SatisfyTiberiumNeed</driverClass>
 	</JobDef>
 	
-	
 	<!---->
-	
 </Defs>

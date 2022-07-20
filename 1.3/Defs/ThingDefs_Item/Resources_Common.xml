@@ -11,7 +11,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>

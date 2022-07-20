@@ -16,8 +16,9 @@
 			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<drawerType>MapMeshAndRealTime</drawerType>
+		<uiIconPath>Buildings/Common/Research/ResearchCrane</uiIconPath>
 		<graphicData>
-			<texPath>Buildings/Common/Research/ResearchCrane</texPath>
+			<texPath>Blank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(8,8)</drawSize>
 			<damageData>
@@ -32,6 +33,11 @@
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<building>
+			<blueprintGraphicData>
+				<texPath>Buildings/Common/Research/ResearchCrane</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(8,8)</drawSize>
+			</blueprintGraphicData>
 			<isEdifice>true</isEdifice>
 		</building>
 		<statBases>
@@ -42,6 +48,10 @@
 			<!--<ResearchSpeedFactor>1.0</ResearchSpeedFactor>-->
 		</statBases>
 		<comps>
+			<li Class="TeleCore.CompProperties_AnimationRenderer"> 	
+				<animationDef>ResearchCrane</animationDef>
+				<defaultAnimationTag>Idle</defaultAnimationTag>
+			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>110</basePowerConsumption>
@@ -98,7 +108,7 @@
 			<ResearchSpeedFactor>1.5</ResearchSpeedFactor>
 		</statBases>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -181,7 +191,7 @@
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<surfaceType>Item</surfaceType>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>

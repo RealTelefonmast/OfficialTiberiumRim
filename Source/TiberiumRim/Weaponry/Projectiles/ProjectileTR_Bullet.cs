@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -11,8 +12,7 @@ namespace TiberiumRim
 {
     public class ProjectileTR_Bullet : Bullet, IPatchedProjectile
     {
-        public TRThingDef TRDef => base.def as TRThingDef; 
-        public ProjectileProperties_Extended Props => TRDef?.projectileExtended;
+        public TRThingDef TRDef => base.def as TRThingDef;
 
         public override void Impact(Thing hitThing)
         {
@@ -33,9 +33,8 @@ namespace TiberiumRim
 
         }
 
-        public bool CanHitOverride(Thing thing, ref bool result)
+        public void CanHitOverride(Thing thing, ref bool result)
         {
-            return true;
         }
 
         public bool PreImpact()

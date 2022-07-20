@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using HarmonyLib;
+using TeleCore;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Verse;
@@ -59,7 +60,7 @@ namespace TiberiumRim
 
         public ComputeGrid(Map map)
         {
-            Constructor(map);
+            Constructor(map, (_) => default);
         }
 
         public ComputeGrid(Map map, Func<int, T> factory)
@@ -72,11 +73,6 @@ namespace TiberiumRim
             isReady = true;
             buffer = new ComputeBuffer(grid.Length, Marshal.SizeOf(typeof(T)));
             buffer.SetData(grid);
-        }
-
-        private void Constructor(Map map)
-        {
-            Constructor(map, (_) => default);
         }
 
         private void Constructor(Map map, Func<int, T> factory)
@@ -92,7 +88,7 @@ namespace TiberiumRim
         public void UpdateCPUData()
         {
             if (!IsReady) return;
-            Find.CameraDriver.StartCoroutine(UpdateData_Internal());
+            TRFind.TRoot.StartCoroutine(UpdateData_Internal());
         }
 
         private IEnumerator UpdateData_Internal()

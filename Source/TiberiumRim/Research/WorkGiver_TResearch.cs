@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
+using TeleCore;
 using Verse;
 using Verse.AI;
 
@@ -26,13 +27,13 @@ namespace TiberiumRim
 
         public override bool ShouldSkip(Pawn pawn, bool forced = false)
         {
-            return Manager.CurrentProject == null || !Manager.CurrentProject.CurrentTask.HasAnyTarget;
+           return Manager.CurrentProject == null || !Manager.CurrentProject.CurrentTask.HasAnyTarget;
         }
 
         public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
         {
             if (CurrentTask?.HasSingleTarget ?? true) return null;
-            return CurrentTask.TargetThings();;
+            return CurrentTask.TargetThings();
         }
 
         //The pawn needs to be able to do the worktype
@@ -41,13 +42,14 @@ namespace TiberiumRim
             TResearchDef currentProj = TRUtils.ResearchManager().CurrentProject;
             if (currentProj == null) return false;
             if (!(t as ThingWithComps).IsPoweredOn()) return false;
+            if (!pawn.CanReserve(t, 1, -1, null, forced)) return false;
+
             if (!PawnCapable(pawn, out string reason))
             {
-                JobFailReason.Is("\n" +  reason, null);
+                JobFailReason.Is($"\n{reason}", null);
                 return false;
             }
-            return pawn.CanReserve(t, 1, -1, null, forced);
-            
+            return true;
         }
 
         private bool PawnCapable(Pawn pawn, out string reason)
@@ -65,7 +67,7 @@ namespace TiberiumRim
                 foreach (var skillReq in CurrentTask.SkillRequirements)
                 {
                     if (!skillReq.PawnSatisfies(pawn))
-                        missingSkills += "  - " + skillReq.skill.skillLabel + " ("+ skillReq.minLevel + ")\n";
+                        missingSkills += $"  - {skillReq.skill.skillLabel} ({skillReq.minLevel})\n";
                 }
 
                 if (!missingSkills.NullOrEmpty())

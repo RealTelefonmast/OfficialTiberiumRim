@@ -71,7 +71,7 @@
 		<everCurableByItem>false</everCurableByItem>
 		<taleOnVisible>TiberiumInfectionRevealed</taleOnVisible>
 		<comps>
-			<li Class="TiberiumRim.HediffCompProperties_Icon">
+			<li Class="TeleCore.HediffCompProperties_Icon">
 				<iconPath>UI/Icons/Hediffs/Crystallizing</iconPath>
 			</li>
 			<li Class="HediffCompProperties_TendDuration">
@@ -168,8 +168,9 @@
 			<li Class="HediffCompProperties_Immunizable">
 				<severityPerDayNotImmune>-0.15</severityPerDayNotImmune>
 			</li>
-			<li Class="TiberiumRim.HediffCompProperties_Icon">
-				<iconPath>UI/Icons/Hediffs/Radiation</iconPath>
+			<li Class="TeleCore.HediffCompProperties_Icon">
+				<iconPath>UI/Icons/Tiberium/Tiberium_Base</iconPath>
+				<color>(118,255,65)</color>
 			</li>
 		</comps>
 		<stages>

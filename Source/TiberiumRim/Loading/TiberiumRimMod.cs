@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using HarmonyLib;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -67,7 +68,7 @@ switch (pid)
         {
             mod = this;
             var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            TLog.Message($"[TiberiumRim][{version}] - Init", Color.cyan);
+            TRLog.Message($"[TiberiumRim][{version}] - Init", Color.cyan);
             modSettings = GetSettings<TiberiumSettings>();
 
             //
@@ -79,7 +80,7 @@ switch (pid)
 
         public override void WriteSettings()
         {
-            TLog.Debug("Writing settings?");
+            TRLog.Debug("Writing settings?");
             base.WriteSettings();
         }
 
@@ -105,6 +106,7 @@ switch (pid)
                 if (!thingClass.IsSubclassOf(typeof(Pawn)) && thingClass != typeof(Pawn)) continue;
                 if (def.comps == null)
                     def.comps = new List<CompProperties>();
+                def.comps.Add(new CompProperties_PathFollowerExtra());
                 def.comps.Add(new CompProperties_TiberiumCheck());
                 def.comps.Add(new CompProperties_PawnExtraDrawer());
                 def.comps.Add(new CompProperties_CrystalDrawer());
@@ -118,9 +120,7 @@ switch (pid)
             public static void Postfix()
             {
                 foreach (TRThingDef def in DefDatabase<TRThingDef>.AllDefs)
-                {
-                    if (def.drawerType == DrawerType.MapMeshOnly && def.comps.Any(c => c is CompProperties_FX fx && fx.overlays.Any(o => o.mode != FXMode.Static)))
-                        Log.Warning(def + " has dynamic overlays but is MapMeshOnly");
+                { 
                     if (def.factionDesignation == null) continue;
                     TRThingDefList.Add(def);
                     ThingDef blueprint = TRUtils.MakeNewBluePrint(def, false, null);

@@ -59,7 +59,7 @@ namespace TiberiumRim
 
         public float MaxSize => Mathf.Lerp(0.5f, 1.3f, RangePct);
         private float PositionPct => ExactPosition.ToIntVec3().DistanceTo(intendedTarget.Cell) / Launcher.Position.DistanceTo(intendedTarget.Cell);
-        private float RangePct => intendedTarget.Cell.DistanceTo(this.Launcher.Position) / FlameTurret.MainGun.props.range;
+        private float RangePct => intendedTarget.Cell.DistanceTo(this.Launcher.Position) / FlameTurret.MainGun.VerbProps.range;
 
         public override void Impact(Thing hitThing)
         {

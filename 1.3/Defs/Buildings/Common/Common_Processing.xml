@@ -43,9 +43,9 @@
 						</networkRoles>
 					</li>
 				</networks>
-				<connectionPattern>#++#|++++|++++|#++#</connectionPattern>
+				<generalIOPattern>#++#|++++|++++|#++#</generalIOPattern>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -134,28 +134,28 @@
 			<li Class="TiberiumRim.CompProperties_TNS">
 				<networks>
 					<li>
-						<networkDef>TiberiumNetwork</networkDef>
-						<storeEvenly>false</storeEvenly>					
+						<networkDef>TiberiumNetwork</networkDef>				
 						<containerProps>
 							<maxStorage>2500</maxStorage>
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
+							<storeEvenly>false</storeEvenly>	
 						</containerProps>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Storage</li>
 						</networkRoles>
-						<allowedValues>
+						<handledValues>
 							<li>TibGreen</li>
 							<li>TibBlue</li>
 							<li>TibRed</li>			
 							<li>TibSludge</li>					
-						</allowedValues>
+						</handledValues>
 					</li>
 				</networks>
-				<connectionPattern>#+#|+++|#+#</connectionPattern>
+				<generalIOPattern>#+#|+++|#+#</generalIOPattern>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -170,6 +170,7 @@
 								<MyDstMode>1</MyDstMode>
 							</shaderParameters>
 						</data>
+						<drawOffset>(0,0,4)</drawOffset>
 						<textureParams>
 							<_BaseTex>Buildings/Common/Network/Silo/VFX/Base</_BaseTex>
 							<_BlendTex1>Buildings/Common/Network/Silo/VFX/FlowBlend1</_BlendTex1>
@@ -239,25 +240,25 @@
 			<li Class="TiberiumRim.CompProperties_TNS">
 				<networks>
 					<li>
-						<networkDef>TiberiumNetwork</networkDef>
-						<storeEvenly>false</storeEvenly>					
+						<networkDef>TiberiumNetwork</networkDef>			
 						<containerProps>
 							<maxStorage>10000</maxStorage>
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
+							<storeEvenly>false</storeEvenly>	
 						</containerProps>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Storage</li>
 						</networkRoles>
-						<allowedValues>
+						<handledValues>
 							<li>TibGas</li>			
-						</allowedValues>
+						</handledValues>
 					</li>
 				</networks>
-				<connectionPattern>#++#|++++|++++|#++#</connectionPattern>
+				<generalIOPattern>#++#|++++|++++|#++#</generalIOPattern>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -329,29 +330,29 @@
 			<li Class="TiberiumRim.CompProperties_TNSRefinery">
 				<networks>
 					<li>
-						<networkDef>TiberiumNetwork</networkDef>
-						<storeEvenly>false</storeEvenly>					
+						<networkDef>TiberiumNetwork</networkDef>				
 						<containerProps>
 							<maxStorage>1500</maxStorage>
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
+							<storeEvenly>false</storeEvenly>	
 						</containerProps>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Producer</li>
 						</networkRoles>
-						<allowedValues>
+						<handledValues>
 							<li>TibGreen</li>
 							<li>TibBlue</li>
 							<li>TibRed</li>			
 							<li>TibSludge</li>		
-						</allowedValues>
+						</handledValues>
 					</li>
 				</networks>
 				<harvester>Harvester_Common</harvester>
-				<connectionPattern>#+#|+++|+#+|+#+</connectionPattern>
+				<generalIOPattern>#+#|+++|+#+|+#+</generalIOPattern>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -442,28 +443,28 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+			<li Class="TeleCore.CompProperties_NetworkStructure">
 				<networks>
 					<li>
-						<networkDef>TiberiumNetwork</networkDef>
-						<storeEvenly>false</storeEvenly>					
+						<networkDef>TiberiumNetwork</networkDef>					
 						<containerProps>
 							<maxStorage>4000</maxStorage>
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
+							<storeEvenly>false</storeEvenly>	
 						</containerProps>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Producer</li>
 						</networkRoles>
-						<allowedValues>
+						<handledValues>
 							<li>TibGas</li>	
-						</allowedValues>
+						</handledValues>
 					</li>
 				</networks>
-				<connectionPattern>++++</connectionPattern>
+				<generalIOPattern>++++</generalIOPattern>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<useParentClass>true</useParentClass>
 				<overlays>
 					<li>
@@ -482,7 +483,7 @@
 							<drawSize>(3,15)</drawSize>	
 						</data>
 						<altitude>MoteOverhead</altitude>
-						<mode>Blink</mode>
+						<mode>Dynamic</mode>
 						<needsPower>true</needsPower>
 					</li>
 				</overlays>
@@ -539,39 +540,49 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructurePowerPlant">
-				<fromNetwork>TiberiumNetwork</fromNetwork>
-				<consumeAmt>500</consumeAmt>
-				<daysPerLoad>3</daysPerLoad>
+			<li Class="TeleCore.CompProperties_NetworkStructure">
 				<networks>
 					<li>
-						<networkDef>TiberiumNetwork</networkDef>
-						<storeEvenly>false</storeEvenly>					
+						<networkDef>TiberiumNetwork</networkDef>				
 						<containerProps>
 							<maxStorage>1000</maxStorage>
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
+							<storeEvenly>false</storeEvenly>
 						</containerProps>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<allowedValues>
+						<handledValues>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
-						</allowedValues>
+						</handledValues>
 					</li>
 				</networks>
-				<connectionPattern>++++|+##+|+##+|+##+|++++</connectionPattern>
+				<generalIOPattern>++++|+##+|+##+|+##+|++++</generalIOPattern>
 			</li>
-			<li Class="CompProperties_Power">
-				<compClass>TiberiumRim.Comp_NetworkStructurePowerPlant</compClass>
-
+			<li Class="TeleCore.CompProperties_NetworkStructurePowerPlant">
+				<compClass>TeleCore.CompPowerPlant_Network</compClass>
 				<basePowerConsumption>-3000</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
+				
+				<fromNetwork>TiberiumNetwork</fromNetwork>
+				<costPerValue>
+					<TibGreen>1</TibGreen>
+					<TibBlue>2</TibBlue>
+					<TibRed>3</TibRed>
+					<TibSludge>4</TibSludge>
+				</costPerValue>
+				<ticksPerValue>
+					<TibSludge>40</TibSludge>
+					<TibBlue>20</TibBlue>
+					<TibRed>30</TibRed>
+					<TibGreen>10</TibGreen>
+				</ticksPerValue>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -590,6 +601,7 @@
 						</data>
 					</li>
 				</overlays>
+				<!-- TODO: Move to fleck thrower
 				<moteData>
 					<northVec>
 						<li>(-1.35,0,-0.18)</li>
@@ -607,6 +619,7 @@
 						<moteInterval>15~25</moteInterval>
 					</thrower>
 				</moteData>
+				-->
 			</li>
 			<li Class="CompProperties_Flickable" />	
 			<li Class="CompProperties_HeatPusher">
@@ -619,7 +632,6 @@
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 	</TiberiumRim.TRThingDef>
-	
 	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>TiberiumExtractor</defName>
@@ -666,46 +678,56 @@
 				<compClass>TiberiumRim.CompTNS_Centrifuge</compClass>
 				<networks>
 					<li>
-						<networkDef>TiberiumNetwork</networkDef>
-						<storeEvenly>false</storeEvenly>					
+						<networkDef>TiberiumNetwork</networkDef>				
 						<containerProps>
 							<maxStorage>1000</maxStorage>
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
+							<storeEvenly>false</storeEvenly>	
 						</containerProps>
 						<networkRoles>
 							<li>Transmitter</li>
-							<li>Requester</li>
+							<li>
+								<role>Requester</role>
+								<subValues>
+									<li>TibGreen</li>
+									<li>TibBlue</li>
+									<li>TibRed</li>
+								</subValues>
+							</li>
+							<li>
+								<role>Producer</role>
+								<subValues>
+									<li>TibSludge</li>
+								</subValues>
+							</li>
 						</networkRoles>
-						<allowedValues>
+						<handledValues>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
-							<!--
-							<li>TibSludge</li>	
-							<li>TibGas</li>	
-							-->
-						</allowedValues>
+							<li>TibSludge</li>
+						</handledValues>
 					</li>
 					<li>
 						<networkDef>ChemicalNetwork</networkDef>
-						<storeEvenly>false</storeEvenly>
 						<containerProps>
 							<maxStorage>10000</maxStorage>
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
+							<storeEvenly>false</storeEvenly>
 						</containerProps>
 						<networkRoles>
 							<li>Controller</li>
 							<li>Transmitter</li>
 							<li>Producer</li>
 						</networkRoles>
-						<allowValuesFromNetwork>ChemicalNetwork</allowValuesFromNetwork>						
+						<networkDefForValues>ChemicalNetwork</networkDefForValues>						
 					</li>
 				</networks>
-				<connectionPattern>++++++|+####+|+####+|+####+|+####+|++++++</connectionPattern>
+				<generalIOPattern>++++++|+####+|+####+|+####+|+####+|++++++</generalIOPattern>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li><skip>true</skip></li>
 					<li><skip>true</skip></li>
@@ -727,8 +749,10 @@
 							</shaderParameters>
 						</data>
 						<mode>Dynamic</mode>
-						<rotationSpeed>-75</rotationSpeed>
-						<startRotation>90</startRotation>
+						<rotate>
+							<startRotation>90</startRotation>
+							<rotationSpeed>-75</rotationSpeed>
+						</rotate>
 						<textureSize>(512,512)</textureSize>
 						<pivotPixelOffset>(0,0,7)</pivotPixelOffset>
 						<needsPower>false</needsPower>
@@ -751,7 +775,9 @@
 							</shaderParameters>
 						</data>
 						<mode>Dynamic</mode>
-						<rotationSpeed>100</rotationSpeed>
+						<rotate>
+							<rotationSpeed>100</rotationSpeed>
+						</rotate>
 						<textureSize>(512,512)</textureSize>
 						<pivotPixelOffset>(0,0,7)</pivotPixelOffset>
 						<needsPower>false</needsPower>
@@ -855,28 +881,28 @@
 			<li Class="TiberiumRim.CompProperties_TNS">
 				<networks>
 					<li>
-						<networkDef>TiberiumNetwork</networkDef>
-						<storeEvenly>false</storeEvenly>					
+						<networkDef>TiberiumNetwork</networkDef>				
 						<containerProps>
 							<maxStorage>1000</maxStorage>
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
+							<storeEvenly>false</storeEvenly>	
 						</containerProps>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<allowedValues>
+						<handledValues>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
 							<li>TibSludge</li>	
-						</allowedValues>
+						</handledValues>
 					</li>
 				</networks>
-				<connectionPattern>#+#|###|</connectionPattern>
+				<generalIOPattern>#+#|###|</generalIOPattern>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -932,8 +958,14 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
-				<compClass>TiberiumRim.Comp_NetworkStructureCrafter</compClass>
+			<li Class="TeleCore.CompProperties_NetworkBillsCrafter">
+				<compClass>TeleCore.Comp_NetworkBillsCrafter</compClass>
+				<ratioTags>
+					<li>TiberiumRatios</li>
+				</ratioTags>
+				<presetTags>
+					<li>TiberiumPresets</li>
+				</presetTags>
 				<networks>
 					<!--
 					<li>
@@ -948,25 +980,24 @@
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<allowedValues>
+						<handledValues>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
 							<li>TibSludge</li>	
-						</allowedValues>
+						</handledValues>
 					</li>
 					-->
 					<li>
 						<networkDef>ChemicalNetwork</networkDef>
-						<storeEvenly>false</storeEvenly>
 						<networkRoles>
 							<li>Transmitter</li>
 						</networkRoles>
 					</li>
 				</networks>
-				<connectionPattern>+++|+#+|+#+</connectionPattern>
+				<generalIOPattern>+++|+#+|+#+</generalIOPattern>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -984,6 +1015,7 @@
 						</data>
 					</li>
 				</overlays>
+				<!-- TODO: Move to fleck thrower
 				<moteData>
 					<northVec>
 						<li>(-1.1,0,1.9)</li>
@@ -1009,6 +1041,7 @@
 						<moteInterval>15~25</moteInterval>
 					</thrower>
 				</moteData>
+				-->
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -1030,7 +1063,7 @@
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<inspectorTabs>
-			<li>TiberiumRim.ITab_CustomRefineryBills</li>
+			<li>TeleCore.ITab_CustomNetworkBills</li>
 		</inspectorTabs>
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
@@ -1081,11 +1114,10 @@
 			<Beauty>-25</Beauty>
 		</statBases>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+			<li Class="TeleCore.CompProperties_NetworkStructure">
 				<networks>
 					<li>
 						<networkDef>ChemicalNetwork</networkDef>
-						<storeEvenly>false</storeEvenly>					
 						<containerProps>
 							<maxStorage>10000</maxStorage>
 							<dropContents>false</dropContents>
@@ -1095,12 +1127,12 @@
 							<li>Transmitter</li>
 							<li>Storage</li>
 						</networkRoles>
-						<allowValuesFromNetwork>ChemicalNetwork</allowValuesFromNetwork>
+						<networkDefForValues>ChemicalNetwork</networkDefForValues>
 					</li>
 				</networks>
-				<connectionPattern>#+#|+++|#+#</connectionPattern>
+				<generalIOPattern>#+#|+++|#+#</generalIOPattern>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -1124,79 +1156,6 @@
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
-	</TiberiumRim.TRThingDef>
-	
-	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
-		<defName>NetworkValve</defName>
-		<label>Programmable Valve</label>
-		<description>.</description>
-		<thingCategories Inherit="false" />
-		<altitudeLayer>Building</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<factionDesignation>Common</factionDesignation>
-		<TRCategory>Processing</TRCategory>
-		<hidden>true</hidden>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<graphicData>
-			<texPath>Buildings/Common/Network/Node/Node</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(2.25,4.5)</drawSize>
-		</graphicData>
-		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<WorkToBuild>1000</WorkToBuild>
-			<Flammability>1.0</Flammability>
-			<Beauty>-5</Beauty>
-		</statBases>
-		<size>(2,4)</size>
-		<costList>
-			<Steel>100</Steel>
-			<ComponentIndustrial>5</ComponentIndustrial>
-		</costList>
-		<requisites>
-			<tiberiumResearchTasks>
-				<li>TiberiumRefining_T2</li>
-			</tiberiumResearchTasks>
-		</requisites>
-		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
-			
-			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
-				<overlays>
-					<li>
-						<data>
-							<texPath>Buildings/Common/Network/Node/Overlay1</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>MoteGlow</shaderType>
-							<drawSize>(2.25,4.5)</drawSize>
-						</data>
-						<mode>Dynamic</mode>
-						<needsPower>false</needsPower>
-					</li>
-					<li>
-						<data>
-							<texPath>Buildings/Common/Network/Node/Overlay2</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>MoteGlow</shaderType>
-							<drawSize>(2.25,4.5)</drawSize>
-						</data>
-						<needsPower>true</needsPower>
-					</li>
-				</overlays>
-			</li>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>100</basePowerConsumption>
-			</li>
-		</comps>
-		<rotatable>true</rotatable>
-		<tickerType>Never</tickerType>
-		<castEdgeShadows>false</castEdgeShadows>
-		<staticSunShadowHeight>0</staticSunShadowHeight>	
-		<fillPercent>1</fillPercent>			
-		<surfaceType>Item</surfaceType>
 	</TiberiumRim.TRThingDef>
 	
 </Defs>

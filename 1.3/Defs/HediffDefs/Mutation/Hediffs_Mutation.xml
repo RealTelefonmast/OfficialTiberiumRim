@@ -13,8 +13,9 @@
 		<cureAllAtOnceIfCuredByItem>false</cureAllAtOnceIfCuredByItem>
 		<everCurableByItem>false</everCurableByItem>
 		<comps>
-			<li Class="TiberiumRim.HediffCompProperties_Icon">
-				<iconPath>UI/Icons/Hediffs/Mutation</iconPath>
+			<li Class="TeleCore.HediffCompProperties_Icon">
+				<iconPath>UI/Icons/Tiberium/Tiberium_Base</iconPath>
+				<color>(255,155,65)</color>
 			</li>
 		</comps>
 	</HediffDef> 

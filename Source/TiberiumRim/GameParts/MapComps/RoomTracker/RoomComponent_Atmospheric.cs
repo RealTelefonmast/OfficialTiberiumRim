@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -36,6 +38,9 @@ namespace TiberiumRim
 
         public int ActualValue => ActualContainer.Value;
         public float ActualSaturation => ActualContainer.Saturation;
+
+        //Physical Gas
+        public List<Thing> PhysicalGas => Parent.ListerThings.ThingsMatching(ThingRequest.ForDef(TiberiumDefOf.Gas_TiberiumGas));
 
         public Dictionary<NetworkValueDef, int> Values
         {
@@ -84,8 +89,7 @@ namespace TiberiumRim
             {
                 for (var i = connections.Count - 1; i >= 0; i--)
                 {
-                    var connector = connections[i];
-                    atmosInfo.Notify_RemoveConnection(connector);
+                    atmosInfo.Notify_RemoveConnection(connections[i]);
                 }
             }
 
@@ -94,20 +98,23 @@ namespace TiberiumRim
                 for (var i = atmosInfo.ConnectionsToOutside.Count - 1; i >= 0; i--)
                 {
                     var pollutionConnector = atmosInfo.ConnectionsToOutside[i];
-                    pollutionConnector.Other(this).RegenerateData(true, true, true);
+                    var other = pollutionConnector.Other(this);
+                    other.MarkDirty();
+                    other.RegenerateData(true, true);
                 }
             }
         }
 
         public override void Notify_Reused()
         {
-            ActualContainer.Container.Clear();
+            //
         }
 
         public override void Notify_RoofClosed()
         {
             AtmosphericInfo.RegenerateOutside();
-            ActualContainer.RegenerateData(this, Room.CellCount);
+            ActualContainer.RegenerateData(this, Parent.CellCount);
+            //RegenerateData();
         }
 
         public override void Notify_RoofOpened()
@@ -120,7 +127,8 @@ namespace TiberiumRim
 
         public override void Notify_RoofChanged()
         {
-            RegenerateData(false, true, true);
+            MarkDirty();
+            RegenerateData(false, false);
         }
 
         public override void PreApply()
@@ -154,6 +162,14 @@ namespace TiberiumRim
         public bool TryRemoveValue(NetworkValueDef value, int amount, out float actualAmount)
         {
             return UsedContainer.Container.TryRemoveValue(value, amount, out actualAmount);
+        }
+
+        public override void Notify_ThingAdded(Thing thing)
+        {
+            if (thing.def == TiberiumDefOf.Gas_TiberiumGas)
+            {
+
+            }
         }
 
         //Equalization Logic
@@ -214,22 +230,35 @@ namespace TiberiumRim
         }
 
         //DATA
-        public void RegenerateData(bool ignoreOthers = false, bool onlyConnections = false, bool force = false)
+        //TODO: CLEANUP RESTRUCTURE
+        public void RegenerateData(bool ignoreOthers = false, bool onlyConnections = false)
         {
-            //Log.Message($"Regenerating {Room.ID} with ignOth: {ignoreOthers} onlyConn: {onlyConnections} force: {force} | IsDirty: {IsDirty}");
-            //Log.Message($"Regenerating {this.Room.ID}...");
-            if (!force && !IsDirty) return;
+            if (!IsDirty) return;
             if (Parent.IsDisbanded)
             {
-                Log.Warning("Tried to regenerate disbanded room comp!");
+                TRLog.Warning("Tried to regenerate disbanded room comp!");
                 return;
             }
+
+            //Clear Data
+            foreach (var connector in connections)
+            {
+                if (!ignoreOthers)
+                {
+                    var other = connector.Other(this);
+                    other.MarkDirty();
+                    other.RegenerateData(true, true);
+                }
+                AtmosphericInfo.Notify_RemoveConnection(connector);
+            }
+            neighbourConnections.Clear();
+            connections.Clear();
 
             //Special Outdoor Case
             if (IsOutdoors)
             {
                 AtmosphericInfo.RegenerateOutside();
-                ActualContainer.RegenerateData(this, Room.CellCount);
+                ActualContainer.RegenerateData(this, Parent.CellCount);
 
                 markedDirty--;
                 return;
@@ -241,23 +270,22 @@ namespace TiberiumRim
                 renderer.UpdateMesh(Room.Cells, Parent.MinVec, Parent.Size.x, Parent.Size.z);
             }
 
-            foreach (var connector in connections)
+            for (var i = 0; i < Parent.BorderCellsNoCorners.Length; i++)
             {
-                AtmosphericInfo.Notify_RemoveConnection(connector);
-            }
-
-            neighbourConnections.Clear();
-            connections.Clear();
-
-            foreach (var cell in Parent.BorderCellsNoCorners)
-            {
+                var cell = Parent.BorderCellsNoCorners[i];
                 //Get All Connectors
                 if (!cell.InBounds(Map)) continue;
-                var building = cell.GetThingList(Map).Select(t => t as Building).FirstOrFallback(IsPassBuilding, null);
-                if (building == null) continue;
-                var otherRoom = OppositeRoomFrom(building.Position);
-                if (otherRoom == null) continue;
-                var otherPollution = otherRoom.AtmosphericRoomComp();
+                Building building = null;
+                var list = cell.GetThingList(Map);
+                for (var t = 0; t < list.Count; t++)
+                {
+                    if (IsPassBuilding(list[t]))
+                        building = (Building) list[t];
+                }
+
+                if (building is null) continue;
+
+                var otherPollution = OppositeRoomFrom(building.Position)?.AtmosphericRoomComp();
                 if (otherPollution == null) continue;
 
                 var newConn = SetNewConnection(otherPollution, building);
@@ -275,15 +303,6 @@ namespace TiberiumRim
                 //We know we are not outside, use actual
                 ActualContainer.Data_SetInfo(info);
             }
-
-            /*
-                Action action = delegate
-                {
-                    var tex = vectorField.GetTextureFor(this);
-                    renderer.SetFlowMap(tex);
-                };
-                action.EnqueueActionForMainThread();
-                */
 
             markedDirty--;
         }
@@ -321,7 +340,7 @@ namespace TiberiumRim
             return null;
         }
 
-        private bool IsPassBuilding(Building building)
+        private bool IsPassBuilding(Thing building)
         {
             return building switch
             {
@@ -431,8 +450,16 @@ namespace TiberiumRim
             Widgets.Label(textRect, $"Pct: {Saturation.ToStringPercent()}");
 
             GUI.color = Color.blue;
+            Text.Anchor = TextAnchor.UpperLeft;
+            Widgets.Label(textRect, $"[{Parent.ListerThings.AllThings.Count}]");
+
+            GUI.color = Color.red;
+            Text.Anchor = TextAnchor.MiddleLeft;
+            Widgets.Label(textRect, $"[{PhysicalGas.Count}]");
+
+            GUI.color = Color.blue;
             Text.Anchor = TextAnchor.LowerLeft;
-            Widgets.Label(textRect, $"[{containedPawns.Count}]");
+            Widgets.Label(textRect, $"[{ContainedPawns.Count}]");
 
             Text.Anchor = default;
             GUI.color = Color.white;
@@ -539,85 +566,4 @@ namespace TiberiumRim
             */
         }
     }
-
-    /*
-    public class FlowRenderer
-    {
-        private Material cachedMat;
-        private Mesh cachedMesh;
-
-        public static float MainAlpha = 0.8f;
-
-        [TweakValue("DrawPollution_Tiling", 0.01f, 20f)]
-        public static float Tiling = 0.15f;
-
-        [TweakValue("DrawPollution_FlowSpeed", 0f, 2f)]
-        public static float FlowSpeed = 0.38f;
-
-        [TweakValue("DrawPollution_BlendSpeed", 0f, 2f)]
-        public static float BlendSpeed = 0.4f;
-
-        [TweakValue("DrawPollution_BlendValue", 0f, 1f)]
-        public static float BlendValue = 0.48f;
-
-        [TweakValue("DrawPollution_Alpha", 0f, 1f)]
-        public static float Alpha = 1f;
-
-        [TweakValue("DrawPollution_Override", 0, 1)]
-        public static int Override = 0;
-
-        public Material Material
-        {
-            get
-            {
-                if (cachedMat == null)
-                {
-                    cachedMat = new Material(TRContentDatabase.TextureBlend);
-                    cachedMat.SetTexture("_MainTex1", TiberiumContent.Nebula1);
-                    cachedMat.SetTexture("_MainTex2", TiberiumContent.Nebula2);
-                    cachedMat.SetColor("_Color", new ColorInt(0, 255, 97, 255).ToColor);
-                }
-
-                cachedMat.SetFloat("_Tiling", Tiling);
-                cachedMat.SetFloat("_BlendValue", BlendValue);
-                cachedMat.SetFloat("_BlendSpeed", BlendSpeed);
-                cachedMat.SetFloat("_Opacity", MainAlpha * Alpha);
-
-                return cachedMat;
-            }
-        }
-
-        private List<IntVec3> OffsetIntvecs(IEnumerable<IntVec3> cells, IntVec3 reference)
-        {
-            List<IntVec3> offsetVecs = new List<IntVec3>();
-            foreach (IntVec3 c in cells)
-            {
-                offsetVecs.Add(c - reference);
-            }
-
-            return offsetVecs;
-        }
-
-        //Mesh Creation
-        private int Compare(IntVec3 a, IntVec3 b, int gridWidth)
-        {
-            var aValue = a.x + (a.z * gridWidth);
-            var bValue = b.x + (b.z * gridWidth);
-            return aValue - bValue;
-        }
-
-        public void UpdateMesh(IEnumerable<IntVec3> cells, IntVec3 reference, int width, int height)
-        {
-            Action action = delegate { cachedMesh = GetMesh(cells, reference, width, height); };
-            action.EnqueueActionForMainThread();
-        }
-
-        private Mesh GetBorderMesh(IEnumerable<IntVec3> borderCells, IntVec3 reference, int width, int height)
-        {
-
-            Mesh mesh = new Mesh();
-            return mesh;
-        }
-    }
-    */
 }

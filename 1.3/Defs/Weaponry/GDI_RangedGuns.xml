@@ -47,8 +47,8 @@
 			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(0, 0, 1.1)</li>
 				</originOffsets>
@@ -128,8 +128,8 @@
 			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(0, 0, 1)</li>
 				</originOffsets>
@@ -227,8 +227,8 @@
 			<ComponentSpacer>2</ComponentSpacer>
 		</costList>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRRailgun</damageDef>
 					<damageBase>45</damageBase>
@@ -329,8 +329,8 @@
 			<ComponentSpacer>3</ComponentSpacer>
 		</costList>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_BurstToTarget</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_BurstToTarget</verbClass>
 				<originOffsets>
 					<li>(0, 0, 0.5)</li>
 				</originOffsets>

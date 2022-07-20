@@ -91,7 +91,7 @@ namespace TiberiumRim
         {
             if (radiating)
             {
-                Log.Error(SourceThing + " trying to set radiation after already setting radiation!");
+                TRLog.Error(SourceThing + " trying to set radiation after already setting radiation!");
                 return;
             }
             var affecter = parent.Map.Tiberium().TiberiumAffecter;

@@ -9,9 +9,6 @@ namespace TiberiumRim
         private static readonly GameObject RootHolder;
         public readonly TiberiumRoot MainRoot;
 
-        public ActionCompositionHolder ActionCompositionHolder;
-        public TiberiumUpdateManager UpdateManager;
-
         public static GameComponent_TR TRComp()
         {
             return Current.Game.GetComponent<GameComponent_TR>();
@@ -28,8 +25,6 @@ namespace TiberiumRim
         {
             StaticData.Notify_Reload();
             MainRoot = RootHolder.GetComponent<TiberiumRoot>();
-            ActionCompositionHolder = new ActionCompositionHolder();
-            UpdateManager = new TiberiumUpdateManager();
         }
 
         public override void ExposeData()
@@ -39,14 +34,12 @@ namespace TiberiumRim
 
         public override void FinalizeInit()
         {
-            TLog.Debug("GameComp TR FinalizeInit");
+            TRLog.Debug("GameComp TR FinalizeInit");
             base.FinalizeInit();
         }
 
         public override void GameComponentTick()
         {
-            ActionCompositionHolder.TickActionComps();
-            UpdateManager.Tick();
         }
 
         public override void GameComponentUpdate()

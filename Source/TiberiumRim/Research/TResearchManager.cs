@@ -130,7 +130,6 @@ namespace TiberiumRim
 
         private void CheckGroup(TResearchGroupDef group)
         {
-            TLog.Debug($"Checking Research Group {group}");
             if (group.IsFinished)
                 return;
             foreach (var research in group.researchProjects)
@@ -143,7 +142,6 @@ namespace TiberiumRim
 
         private bool CheckResearch(TResearchDef research)
         {
-            TLog.Debug($"Checking Research Project {research}");
             if (research.IsFinished)
                 return false;
 
@@ -158,7 +156,6 @@ namespace TiberiumRim
 
         public bool CheckTask(TResearchTaskDef task)
         {
-            TLog.Debug($"Checking Research Task '{task}'");
             if (IsCompleted(task))
                 return true;
             if (task.ProgressToDo > 0 && task.ProgressReal < task.ProgressToDo)
@@ -188,7 +185,7 @@ namespace TiberiumRim
         [SyncMethod(SyncContext.None)]
         public void Complete(TResearchGroupDef group)
         {
-            TLog.Debug($"Completing Research Group {group}");
+            TRLog.Debug($"Completing Research Group {group}");
             researchGroupData[group][1] = true;
         }
 
@@ -201,7 +198,7 @@ namespace TiberiumRim
         [SyncMethod(SyncContext.None)]
         public void Complete(TResearchDef researchDef)
         {
-            TLog.Debug($"Completing Research Project {researchDef}");
+            TRLog.Debug($"Completing Research Project {researchDef}");
             if (!ResearchCompleted.ContainsKey(researchDef))
                 ResearchCompleted.Add(researchDef, true);
 
@@ -222,7 +219,7 @@ namespace TiberiumRim
         [SyncMethod(SyncContext.None)]
         public void SetCompleted(TResearchTaskDef task, bool completed)
         {
-            TLog.Debug($"Completing Research Task {task} -> {completed}");
+            TRLog.Debug($"Completing Research Task {task} -> {completed}");
             if (!TasksCompleted.ContainsKey(task))
             {
                 TasksCompleted.Add(task, completed);
@@ -230,7 +227,7 @@ namespace TiberiumRim
             TasksCompleted[task] = completed;
             if (completed)
             {
-                TLog.Debug($"Doing completed actions...");
+                TRLog.Debug($"Doing completed actions...");
                 task.DoDiscoveries();
                 task.TriggerEvents();
                 task.Worker.FinishAction();
@@ -266,14 +263,8 @@ namespace TiberiumRim
             researcher?.records.AddTo(RecordDefOf.ResearchPointsResearched, value);
             if (task != null)
             {
-                AddProgress(task, value);
+                SetProgress(task, Mathf.Min(GetProgress(task) + value, task.ProgressToDo));
             }
-        }
-
-        public void AddProgress(TResearchTaskDef task, float value)
-        {
-            float progress = GetProgress(task);
-            SetProgress(task, Mathf.Min(progress + value, task.ProgressToDo));
         }
 
         public void SetProgress(TResearchTaskDef task, float f)

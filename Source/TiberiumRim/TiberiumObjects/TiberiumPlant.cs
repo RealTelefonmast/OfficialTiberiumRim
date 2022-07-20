@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -19,23 +20,20 @@ namespace TiberiumRim
         public MapComponent_Tiberium TiberiumMapComp => Map.Tiberium();
 
 		//FX STUFF
-        public ExtendedGraphicData ExtraData => (base.def as FXThingDef).extraData;
         public CompFX FXComp => this.GetComp<CompFX>();
 
-        public virtual Vector3[] DrawPositions => new Vector3[1] { base.DrawPos };
-        public virtual Color[] ColorOverrides => new Color[1] { Color.white };
-        public virtual float[] OpacityFloats => new float[1] { 1f };
-        public virtual float?[] RotationOverrides => new float?[1] { null };
-        public float?[] AnimationSpeeds => null;
-        public virtual bool[] DrawBools => new bool[1] { true };
-        public virtual Action<FXGraphic>[] Actions => null;
-
-        public virtual Vector2? TextureOffset => null;
-        public virtual Vector2? TextureScale => null;
-        public virtual bool ShouldDoEffecters => true;
-
+        public virtual bool IsMain => true;
+        public virtual int Priority => 100;
+        public virtual bool ShouldThrowFlecks => true;
         public virtual CompPower ForcedPowerComp => null;
-
+        public virtual bool FX_AffectsLayerAt(int index) => true;
+        public virtual bool FX_ShouldDrawAt(int index) => true;
+        public virtual float FX_GetOpacityAt(int index) => 1f;
+        public virtual float? FX_GetRotationAt(int index) => null;
+        public virtual float? FX_GetRotationSpeedAt(int index) => null;
+        public virtual Color? FX_GetColorAt(int index) => null;
+        public virtual Vector3? FX_GetDrawPositionAt(int index) => null;
+        public Action<FXGraphic> FX_GetActionAt(int index) => null;
 
 		public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -75,37 +73,6 @@ namespace TiberiumRim
         public override void Draw()
         {
             base.Draw();
-        }
-
-        public Graphic OverlayGraphic
-        {
-            get
-            {
-                if (graphicInt2 == null)
-                {
-                    if (def.graphicData2 == null)
-                    {
-                        return null;
-                    }
-                    graphicInt2 = this.def.graphicData2.GraphicColoredFor(this);
-                    return graphicInt2;
-					if (Graphic is Graphic_Random random)
-                    {
-                        var path = def.graphicData2.texPath;
-						//Log.Message(random  + " | " + random?.SubGraphicFor(this) + " | " + random?.SubGraphicFor(this)?.data + " | ");
-                        var graphic = random.SubGraphicFor(this);
-                        var suffix = graphic.path.Split('/').Last();
-						Log.Message("Graphic: " + graphic.path + " | suffix: " + suffix);
-                        path += "/" + suffix;
-                        graphicInt2 = GraphicDatabase.Get(typeof(Graphic_Single), path, def.graphicData2.shaderType.Shader, def.graphicData2.drawSize, def.graphicData2.color, def.graphicData2.colorTwo);
-                    }
-                    else
-                    {
-                        graphicInt2 = this.def.graphicData2.GraphicColoredFor(this);
-                    }
-                }
-                return graphicInt2;
-			}
         }
 
         private void Print(Graphic graphic, SectionLayer layer)
@@ -191,12 +158,9 @@ namespace TiberiumRim
 				IL_20B:
 				bool @bool = Rand.Bool;
 				Material matSingle = graphic.MatSingleFor(this);
-                Material matSingle2 = OverlayGraphic?.MatSingleFor(this);
-				PlantUtility.SetWindExposureColors(colors, this);
+                PlantUtility.SetWindExposureColors(colors, this);
 				Vector2 size = new Vector2(num3, num3);
 				Printer_Plane.PrintPlane(layer, vector, size, matSingle, 0f, @bool, null, colors, 0.1f, (float)(this.HashOffset() % 1024));
-				if(matSingle2 != null)
-                    Printer_Plane.PrintPlane(layer, vector + new Vector3(0,0.001f,0), size, matSingle2, 0f, @bool, null, colors, 0.1f, (float)(this.HashOffset() % 1024));
 				num4++;
 				if (num4 >= num)
 				{

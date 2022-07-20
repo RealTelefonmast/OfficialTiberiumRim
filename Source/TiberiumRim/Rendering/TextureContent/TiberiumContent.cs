@@ -237,7 +237,8 @@ namespace TiberiumRim
         //Icons
         public static readonly Texture2D MissingConnection = ContentFinder<Texture2D>.Get("UI/Icons/TiberiumNetwork/ConnectionMissing", false);
         public static readonly Texture2D MarkedForDeath = ContentFinder<Texture2D>.Get("UI/Icons/Marked", false);
-        public static readonly Texture2D Icon_EVA = ContentFinder<Texture2D>.Get("UI/Icons/EVA", false);
+        public static readonly Texture2D Icon_EVA = ContentFinder<Texture2D>.Get("UI/Icons/PlaySettings/EVA", false);
+        public static readonly Texture2D Icon_Radiation = ContentFinder<Texture2D>.Get("UI/Icons/PlaySettings/RadiationOverlay", false);
 
         //Turrets
         public static readonly Material TurretCable = MaterialPool.MatFrom("Buildings/Nod/Defense/Turrets/TurretCable");
@@ -273,47 +274,32 @@ namespace TiberiumRim
 
         public static readonly Texture2D HighlightAtlas = ContentFinder<Texture2D>.Get("UI/Widgets/TutorHighlightAtlas", true);
 
-        public static readonly Texture2D AttentionMarker = ContentFinder<Texture2D>.Get("UI/Icons/AttentionMarker", true);
-        public static readonly Texture2D NewMarker = ContentFinder<Texture2D>.Get("UI/Icons/NewMarker", true);
+        public static readonly Texture2D HightlightInMenu = ContentFinder<Texture2D>.Get("UI/Icons/HighLight", true);
 
-        public static readonly Texture2D LinkIcon = ContentFinder<Texture2D>.Get("UI/Icons/Link", false);
+        //Research
+        public static readonly Texture2D UnseenResearch = ContentFinder<Texture2D>.Get("UI/Icons/Research/UnseenResearch", true);
+        public static readonly Texture2D NewResearch = ContentFinder<Texture2D>.Get("UI/Icons/Research/NewResearch", true);
 
         //
-        public static readonly Texture2D KeyFrame = ContentFinder<Texture2D>.Get("UI/Menu/Animator/KeyFrame", true);
-        public static readonly Texture2D AddKeyFrame = ContentFinder<Texture2D>.Get("UI/Menu/Animator/AddKeyFrame", true);
-        public static readonly Texture2D TimeSelMarker = ContentFinder<Texture2D>.Get("UI/Menu/Animator/TimeSelector", true);
-        public static readonly Texture2D LockOpen = ContentFinder<Texture2D>.Get("UI/Menu/Animator/LockOpen", true);
-        public static readonly Texture2D LockClosed = ContentFinder<Texture2D>.Get("UI/Menu/Animator/LockClosed", true);
-        public static readonly Texture2D PlayPause = ContentFinder<Texture2D>.Get("UI/Menu/Animator/PlayPause", true);
-        public static readonly Texture2D TimeSelRangeL = ContentFinder<Texture2D>.Get("UI/Menu/Animator/RangeL", true);
-        public static readonly Texture2D TimeSelRangeR = ContentFinder<Texture2D>.Get("UI/Menu/Animator/RangeR", true);
-        public static readonly Texture2D PivotPoint = ContentFinder<Texture2D>.Get("UI/Menu/Animator/PivotPoint", true);
-
-        //ModuleVis
-        public static readonly Texture Node_Open = ContentFinder<Texture2D>.Get("UI/Menu/Node_Open");
-        public static readonly Texture NodeOut_Closed = ContentFinder<Texture2D>.Get("UI/Menu/NodeOut_Closed");
-        public static readonly Texture NodeIn_Closed = ContentFinder<Texture2D>.Get("UI/Menu/NodeIn_Closed");
-
-        //public static readonly Texture2D HightlightInMenu = ContentFinder<Texture2D>.Get("UI/Icons/HighLight", true);
-        public static readonly Texture2D OpenMenu = ContentFinder<Texture2D>.Get("UI/Icons/OpenMenu", true);
-        public static readonly Texture2D Construct = ContentFinder<Texture2D>.Get("UI/Icons/Construct", true);
-        public static readonly Texture2D SelectThing = ContentFinder<Texture2D>.Get("UI/Icons/SelectThing", true);
+        public static readonly Texture2D OpenMenu = ContentFinder<Texture2D>.Get("UI/Icons/Research/OpenMenu", true);
+        public static readonly Texture2D Construct = ContentFinder<Texture2D>.Get("UI/Icons/Research/Construct", true);
+        public static readonly Texture2D SelectThing = ContentFinder<Texture2D>.Get("UI/Icons/Research/SelectThing", true);
 
         //UI - Icons
         //--Controls
         //----Harvester
-        public static readonly Texture2D HarvesterRefinery = ContentFinder<Texture2D>.Get("UI/Icons/Controls/Harvester/NewRefinery", true);
-        public static readonly Texture2D HarvesterReturn = ContentFinder<Texture2D>.Get("UI/Icons/Controls/Harvester/Return", true);
-        public static readonly Texture2D HarvesterHarvest = ContentFinder<Texture2D>.Get("UI/Icons/Controls/Harvester/Harvest", true);
-        public static readonly Texture2D HarvesterValue = ContentFinder<Texture2D>.Get("UI/Icons/Controls/Harvester/Value", true);
-        public static readonly Texture2D HarvesterNearest = ContentFinder<Texture2D>.Get("UI/Icons/Controls/Harvester/Nearest", true);
-        public static readonly Texture2D HarvesterMoss = ContentFinder<Texture2D>.Get("UI/Icons/Controls/Harvester/Moss", true);
+        public static readonly Texture2D HarvesterRefinery = ContentFinder<Texture2D>.Get("UI/Icons/Harvester/NewRefinery", true);
+        public static readonly Texture2D HarvesterReturn = ContentFinder<Texture2D>.Get("UI/Icons/Harvester/Return", true);
+        public static readonly Texture2D HarvesterHarvest = ContentFinder<Texture2D>.Get("UI/Icons/Harvester/Harvest", true);
+        public static readonly Texture2D HarvesterValue = ContentFinder<Texture2D>.Get("UI/Icons/Harvester/Value", true);
+        public static readonly Texture2D HarvesterNearest = ContentFinder<Texture2D>.Get("UI/Icons/Harvester/Nearest", true);
+        public static readonly Texture2D HarvesterMoss = ContentFinder<Texture2D>.Get("UI/Icons/Harvester/Moss", true);
 
         //----SuperWeapon
-        public static readonly Texture2D NodNukeIcon = ContentFinder<Texture2D>.Get("UI/Icons/Controls/SuperWep/Launch_Nuke", true);
-        public static readonly Texture2D IonCannonIcon = ContentFinder<Texture2D>.Get("UI/Icons/Controls/SuperWep/Launch_IonCannon", true);
-        public static readonly Texture2D FireStorm_On = ContentFinder<Texture2D>.Get("UI/Icons/Controls/SuperWep/Firestorm_On", true);
-        public static readonly Texture2D FireStorm_Off = ContentFinder<Texture2D>.Get("UI/Icons/Controls/SuperWep/Firestorm_Off", true);
+        public static readonly Texture2D NodNukeIcon = ContentFinder<Texture2D>.Get("UI/Icons/SuperWeapon/Launch_Nuke", true);
+        public static readonly Texture2D IonCannonIcon = ContentFinder<Texture2D>.Get("UI/Icons/SuperWeapon/Launch_IonCannon", true);
+        public static readonly Texture2D FireStorm_On = ContentFinder<Texture2D>.Get("UI/Icons/SuperWeapon/Firestorm_On", true);
+        public static readonly Texture2D FireStorm_Off = ContentFinder<Texture2D>.Get("UI/Icons/SuperWeapon/Firestorm_Off", true);
 
         //Harvester Bar
         public static readonly Material Harvester_EmptyBar = SolidColorMaterials.NewSolidColorMaterial(new Color(0.3f, 0.3f, 0.3f, 0.65f), ShaderDatabase.MetaOverlay);
@@ -325,8 +311,8 @@ namespace TiberiumRim
         public static readonly Material ClearMaterial = SolidColorMaterials.NewSolidColorMaterial(new Color(0f, 0f, 0f, 0f), ShaderDatabase.MetaOverlay);
 
         //----Tib Container
-        public static readonly Texture2D ContainMode_Sludge = ContentFinder<Texture2D>.Get("UI/Icons/Controls/TibContainer/ContainMode_Sludge", true);
-        public static readonly Texture2D ContainMode_TripleSwitch = ContentFinder<Texture2D>.Get("UI/Icons/Controls/TibContainer/ContainMode_Storage", true);
+        public static readonly Texture2D ContainMode_Sludge = ContentFinder<Texture2D>.Get("UI/Icons/Container/ContainMode_Sludge", true);
+        public static readonly Texture2D ContainMode_TripleSwitch = ContentFinder<Texture2D>.Get("UI/Icons/Container/ContainMode_Storage", true);
 
         //--Faction Icons
         public static readonly Texture2D CommonIcon = ContentFinder<Texture2D>.Get("UI/Icons/Factions/Common", true);
@@ -361,15 +347,13 @@ namespace TiberiumRim
 
         //--Hediffs
         public static readonly Texture2D Hediff_Crystallizing = ContentFinder<Texture2D>.Get("UI/Icons/Hediffs/Crystallizing", true);
-        public static readonly Texture2D Hediff_Mutation = ContentFinder<Texture2D>.Get("UI/Icons/Hediffs/Mutation", true);
-        public static readonly Texture2D Hediff_Radiation = ContentFinder<Texture2D>.Get("UI/Icons/Hediffs/Radiation", true);
-        public static readonly Texture2D Hediff_Immunity = ContentFinder<Texture2D>.Get("UI/Icons/Hediffs/Immunity", true);
+        public static readonly Texture2D TiberiumIcon_Base = ContentFinder<Texture2D>.Get("UI/Icons/Tiberium/Tiberium_Base", true);
 
         //ThingCategories
-        public static readonly Texture2D TiberiumIcon = ContentFinder<Texture2D>.Get("UI/Icons/ThingCategories/TiberiumCategory", true);
+        public static readonly Texture2D TiberiumIcon = ContentFinder<Texture2D>.Get("UI/Icons/Tiberium/Tiberium_RGB", true);
 
         //Tiberium Network
-        public static readonly Texture2D Network_MissingConnection = ContentFinder<Texture2D>.Get("UI/Icons/TiberiumNetwork/ConnectionMissing", true);
+        public static readonly Texture2D Network_MissingConnection = ContentFinder<Texture2D>.Get("UI/Icons/Network/ConnectionMissing", true);
 
         //Targeter Mats
         public static readonly Material IonCannonTargeter = MaterialPool.MatFrom("UI/Targeters/Target_IonCannon", ShaderDatabase.Transparent);

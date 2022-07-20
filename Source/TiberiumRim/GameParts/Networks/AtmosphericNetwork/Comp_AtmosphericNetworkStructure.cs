@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeleCore;
 using Verse;
 
 namespace TiberiumRim
@@ -11,7 +12,7 @@ namespace TiberiumRim
     {
         private RoomComponent_Atmospheric atmosphericInt;
 
-        public NetworkComponent AtmosphericComp => this[TiberiumDefOf.AtmosphericNetwork];
+        public NetworkSubPart AtmosphericComp => this[TiberiumDefOf.AtmosphericNetwork];
 
         public RoomComponent_Atmospheric Atmospheric
         {

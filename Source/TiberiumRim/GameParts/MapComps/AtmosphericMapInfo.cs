@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -13,13 +14,16 @@ namespace TiberiumRim
         public AtmosphericCache Cache;
         public readonly AtmosphericContainer OutsideContainer;
 
-        public readonly Dictionary<Room, RoomComponent_Atmospheric> PollutionComps = new Dictionary<Room, RoomComponent_Atmospheric>();
+        //
+        public readonly Dictionary<Room, RoomComponent_Atmospheric> PollutionComps = new();
+        public readonly List<RoomComponent_Atmospheric> AllComps = new();
 
-        public readonly List<RoomComponent_Atmospheric> AllComps = new List<RoomComponent_Atmospheric>();
-        public readonly List<IAtmosphericSource> Sources = new List<IAtmosphericSource>();
+        //
+        public readonly List<IAtmosphericSource> Sources = new();
 
-        public readonly List<AtmosphericConnector> AllConnections = new List<AtmosphericConnector>();
-        public readonly List<AtmosphericConnector> ConnectionsToOutside = new List<AtmosphericConnector>();
+        //
+        public readonly List<AtmosphericConnector> AllConnections = new();
+        public readonly List<AtmosphericConnector> ConnectionsToOutside = new();
 
         //public int TotalMapPollution => OutsideContainer.Atmospheric + AllComps.Sum(c => c.PollutionContainer.Atmospheric);
 
@@ -43,20 +47,28 @@ namespace TiberiumRim
 
         public RoomComponent_Atmospheric ComponentAt(IntVec3 pos)
         {
-            return PollutionComps[pos.GetRoom(map)];
+            var room = pos.GetRoomFast(Map);
+            return ComponentAt(room);
         }
 
         public RoomComponent_Atmospheric ComponentAt(District district)
         {
-            return PollutionComps[district.Room];
+            if (district is null) return null;
+            return ComponentAt(district.Room);
         }
-
 
         public RoomComponent_Atmospheric ComponentAt(Room room)
         {
-            return PollutionComps[room];
+            if (room is null) return null;
+            if (!PollutionComps.TryGetValue(room, out var value))
+            {
+                TRLog.Warning($"Could not find RoomComponent_Atmospheric at room {room.ID}");
+                return null;
+            }
+            return value;
         }
 
+        //
         public void RegenerateOutside()
         {
             var totalCells = Map.cellIndices.NumGridCells; //AllComps.Where(c => c.IsOutdoors).Sum(c => c.Room.CellCount) 
@@ -213,7 +225,7 @@ namespace TiberiumRim
         }
     }
 
-    public struct CachedAtmosphereInfo : IExposable
+    public struct CachedAtmosphereInfo
     {
         public int roomID;
         public int numCells;
@@ -231,178 +243,6 @@ namespace TiberiumRim
             this.roomID = -1;
             this.numCells = 0;
             stack.Reset();
-        }
-
-        public void ExposeData()
-        {
-
-        }
-    }
-
-    public class AtmosphericCache : IExposable
-    {
-        private Map map;
-        private HashSet<int> processedRoomIDs = new HashSet<int>();
-        public CachedAtmosphereInfo[] pollutionCache;
-        internal AtmosphericSaveLoad atmosphericSaveLoad;
-
-        public AtmosphericMapInfo AtmosphericInfo => map.Tiberium().AtmosphericInfo;
-
-        public AtmosphericCache(Map map)
-        {
-            this.map = map;
-            this.pollutionCache = new CachedAtmosphereInfo[map.cellIndices.NumGridCells];
-            this.atmosphericSaveLoad = new AtmosphericSaveLoad(map);
-        }
-
-        public void ExposeData()
-        {
-            this.atmosphericSaveLoad.DoExposing();
-        }
-
-        private void SetCachedInfo(IntVec3 c, CachedAtmosphereInfo atmosphere)
-        {
-            //Log.Message($"Caching stack for {atmosphere.roomID}: {atmosphere.stack} [{atmosphere.numCells}]");
-            pollutionCache[map.cellIndices.CellToIndex(c)] = atmosphere;
-        }
-
-        public void ResetInfo(IntVec3 c)
-        {
-            pollutionCache[map.cellIndices.CellToIndex(c)].Reset();
-        }
-
-        public void TryCacheRegionAtmosphericInfo(IntVec3 c, Region reg)
-        {
-            Room room = reg.Room;
-            if (room == null) return;
-            SetCachedInfo(c, new CachedAtmosphereInfo(room.ID, room.CellCount, AtmosphericInfo.ComponentAt(room).ActualContainer.ValueStack));
-        }
-
-        public bool TryGetAtmosphericValuesForRoom(Room r, out Dictionary<NetworkValueDef, int> result)
-        {
-            CellIndices cellIndices = this.map.cellIndices;
-            result = new();
-            foreach (var c in r.Cells)
-            {
-                CachedAtmosphereInfo cachedInfo = this.pollutionCache[cellIndices.CellToIndex(c)];
-                //If already processed or not a room, ignore
-                if (cachedInfo.numCells <= 0 || processedRoomIDs.Contains(cachedInfo.roomID) || cachedInfo.stack.Empty) continue;
-                processedRoomIDs.Add(cachedInfo.roomID);
-                foreach (var value in cachedInfo.stack.networkValues)
-                {
-                    if (!result.ContainsKey(value.valueDef))
-                    {
-                        result.Add(value.valueDef, 0);
-                    }
-
-                    float addedValue = value.value;
-                    if (cachedInfo.numCells > r.CellCount)
-                    {
-                        addedValue = value.value * (r.CellCount / (float)cachedInfo.numCells);
-                    }
-                    //var adder = value.value * (Mathf.Min(cachedInfo.numCells, r.CellCount)/(float)Mathf.Max(cachedInfo.numCells , r.CellCount));
-                    result[value.valueDef] += Mathf.CeilToInt(addedValue);
-                }
-            }
-
-            processedRoomIDs.Clear();
-            return !result.NullOrEmpty();
-        }
-    }
-
-    public class AtmosphericSaveLoad
-    {
-        private Map map;
-
-        private NetworkValueStack[] temporaryGrid;
-        private NetworkValueStack[] atmosphericGrid;
-
-        private AtmosphericMapInfo AtmosphericMapInfo => map.Tiberium().AtmosphericInfo;
-
-        public AtmosphericSaveLoad(Map map)
-        {
-            this.map = map;
-        }
-
-        public void ApplyLoadedDataToRegions()
-        {
-            if (atmosphericGrid == null) return;
-
-            CellIndices cellIndices = map.cellIndices;
-            AtmosphericMapInfo.OutsideContainer.Container.LoadFromStack(atmosphericGrid[map.cellIndices.NumGridCells]); //ShortToInt(pollGrid[map.cellIndices.NumGridCells]);
-            TLog.Debug($"Applying Outside Atmospheric: {atmosphericGrid[map.cellIndices.NumGridCells]}");
-
-            foreach (var comp in AtmosphericMapInfo.PollutionComps)
-            {
-                var valueStack = atmosphericGrid[cellIndices.CellToIndex(comp.Key.Cells.First())];
-                comp.Value.ActualContainer.Container.LoadFromStack(valueStack);
-                //Log.Message($"Applying on Tracker {comp.Key.ID}: {valueStack}");
-            }
-            //
-            /*
-            foreach (Region region in map.regionGrid.AllRegions_NoRebuild_InvalidAllowed)
-            {
-                if (region.Room != null)
-                {
-                    var valueStack = atmosphericGrid[cellIndices.CellToIndex(region.Cells.First())];
-                    Log.Message($"Applying on Region  {region.Room.ID}: {valueStack}");
-                    AtmosphericMapInfo.PollutionFor(region.Room).ActualContainer.Container.LoadFromStack(valueStack);
-                }
-            }
-            */
-            //
-
-            atmosphericGrid = null;
-        }
-        
-        public void DoExposing()
-        {
-            TLog.Debug("Exposing Atmospheric");
-            int arraySize = map.cellIndices.NumGridCells + 1;
-            if (Scribe.mode == LoadSaveMode.Saving)
-            {
-                temporaryGrid = new NetworkValueStack[arraySize];
-                var outsideAtmosphere = AtmosphericMapInfo.OutsideContainer.Container.ValueStack;
-                temporaryGrid[arraySize - 1] = outsideAtmosphere;
-
-                foreach (var roomComp in AtmosphericMapInfo.AllComps)
-                {
-                    if (roomComp.IsOutdoors) continue;
-                    var roomAtmosphereStack = roomComp.ActualContainer.Container.ValueStack;
-                    foreach (IntVec3 c2 in roomComp.Room.Cells)
-                    {
-                        temporaryGrid[map.cellIndices.CellToIndex(c2)] = roomAtmosphereStack;
-                    }
-                }
-            }
-
-            //Turn temp grid into byte arrays
-            var savableTypes = AtmosphericMapInfo.OutsideContainer.Container.AcceptedTypes;
-            foreach (var type in savableTypes)
-            {
-                byte[] dataBytes = null;
-                if (Scribe.mode == LoadSaveMode.Saving)
-                {
-                    dataBytes = DataSerializeUtility.SerializeInt(arraySize, (int idx) => temporaryGrid[idx].networkValues?.FirstOrFallback(f => f.valueDef == type).value ?? 0);
-                    DataExposeUtility.ByteArray(ref dataBytes, $"{type.defName}.atmospheric");
-                }
-
-                if (Scribe.mode == LoadSaveMode.LoadingVars)
-                {
-                    DataExposeUtility.ByteArray(ref dataBytes, $"{type.defName}.atmospheric");
-                    atmosphericGrid = new NetworkValueStack[arraySize];
-                    DataSerializeUtility.LoadInt(dataBytes, arraySize, delegate(int idx, int idxValue)
-                    {
-                        /*
-                        if (idxValue > 0)
-                        {
-                            Log.Message($"Loading {idx}[{map.cellIndices.IndexToCell(idx)}]: {idxValue} ({type})");
-                        }
-                        */
-                        atmosphericGrid[idx] += new NetworkValueStack(type, idxValue);
-                    });
-                }
-            }
         }
     }
 }

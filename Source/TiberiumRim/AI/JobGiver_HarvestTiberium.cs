@@ -63,12 +63,12 @@ namespace TiberiumRim
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             LocalTargetInfo target = job.GetTarget(TargetIndex.A);
-            if (target.IsValid && !pawn.Reserve(target, job, 1, -1, null, errorOnFailed))
+            if (pawn.Reserve(target, job, 1, -1, null, errorOnFailed))
             {
-                return false;
+                pawn.ReserveAsManyAsPossible(job.GetTargetQueue(TargetIndex.A), job);
+                return true;
             }
-            pawn.ReserveAsManyAsPossible(job.GetTargetQueue(TargetIndex.A), job);
-            return true;
+            return false;
         }
 
         public override IEnumerable<Toil> MakeNewToils()
@@ -85,7 +85,6 @@ namespace TiberiumRim
             {
                 initAction = delegate
                 {
-
                     //Time based on each weight per Tick 
                     ticksToHarvest =  (int)Math.Round((TiberiumCrystal.HarvestValue / Harvester.kindDef.harvestValue), MidpointRounding.AwayFromZero);
                     //Ticks Needed to get 1 single weight stored
@@ -95,7 +94,7 @@ namespace TiberiumRim
                 },
                 tickAction = delegate
                 {
-                    if (Harvester.Container.CapacityFull)
+                    if (Harvester.Container.Full)
                     {
                         EndJobWith(JobCondition.InterruptForced);
                         return;
@@ -103,7 +102,7 @@ namespace TiberiumRim
 
                     if (ticksPassed > ticksToHarvest)
                     {
-                        if (TiberiumCrystal.Spawned && !Harvester.Container.CapacityFull)
+                        if (TiberiumCrystal.Spawned && !Harvester.Container.Full)
                         {
                             TiberiumCrystal.DeSpawn();
                         }
@@ -114,6 +113,7 @@ namespace TiberiumRim
 
                     if (ticksPassed % ticksPerValue == 0)
                     {
+                        Harvester.Animator.Start("Harvest", true);
                         TiberiumCrystal.Harvest(Harvester, growthPerValue);
                     }
                     ticksPassed++;
@@ -123,8 +123,8 @@ namespace TiberiumRim
             harvest.FailOnDespawnedNullOrForbidden(TargetIndex.A);
             harvest.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
             harvest.FailOn(() => FailOn);
-            harvest.WithEffect(EffecterDefOf.Harvest_MetaOnly, TargetIndex.A);
             harvest.defaultCompleteMode = ToilCompleteMode.Never;
+            harvest.AddFinishAction(Harvester.Animator.Stop);
             yield return harvest;
             yield return Toils_Jump.Jump(extractTarget);
         }

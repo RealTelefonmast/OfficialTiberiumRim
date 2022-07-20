@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -7,35 +8,57 @@ namespace TiberiumRim
     public class Building_GrowthSuppressor : FXBuilding
     {
         public int tick = 0; 
+
         public bool[] bools = new bool[3];
-        public override Vector3[] DrawPositions => new Vector3[1] { base.DrawPos };
-        public override Color[] ColorOverrides => new Color[1] { Color.white };
-        public override float[] OpacityFloats => new float[1] { 1f };
-        public override float?[] RotationOverrides => new float?[1] { null };
-        public override bool[] DrawBools => new bool[4] { true , bools[0], bools[1], true };
-        public override bool ShouldDoEffecters => true;
+
+        //FX
+        public override float FX_GetOpacityAt(int index)
+        {
+            return index switch
+            {
+                0 => 1f,
+                1 => 1f,
+                2 => 1f,
+                3 => 1f,
+                _ => base.FX_GetOpacityAt(index)
+            };
+        }
+
+        public override bool FX_ShouldDrawAt(int index)
+        {
+            return index switch
+            {
+                0 => true,
+                1 => bools[0],
+                2 => bools[1],
+                3 => true,
+                _ => base.FX_ShouldDrawAt(index)
+            };
+        }
 
         public override void Tick()
         {
+            base.Tick();
+            
+            //
             tick++;
             if (tick < 100)
             {
                 bools[0] = true;
                 return;
-            }
-            else if (tick < 200)
+            } 
+            if (tick < 200)
             {
                 bools[1] = true;
                 return;
             }
-            else if (tick < 300)
+            if (tick < 300)
             {
                 bools[0] = false;
                 bools[1] = false;
                 return;
             }
             tick = 0;
-            base.Tick();
         }
 
         public override IEnumerable<Gizmo> GetGizmos()

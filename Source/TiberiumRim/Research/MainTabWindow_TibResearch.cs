@@ -2,6 +2,7 @@
 using System.Linq;
 using Multiplayer.API;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -219,14 +220,14 @@ namespace TiberiumRim
             var groupOptionRect = new Rect(0, curY, researchGroupSize.x, researchGroupSize.y + textHeight);
             curY += groupOptionRect.height;
 
-            if (TRWidgets.ButtonColoredHighlight(groupOptionRect, group.LabelCap.RawText.Bold(), TRMats.MenuSectionBGFillColor, TRMats.MenuSectionBGBorderColor))
+            if (TRWidgets.ButtonColoredHighlight(groupOptionRect, group.LabelCap.RawText.Bold(), TRColor.MenuSectionBGFillColor, TRColor.MenuSectionBGBorderColor))
             {
                 Manager.OpenClose(group);
             }
 
             if (group.HasUnseenProjects)
             {
-                TRWidgets.DrawTextureInCorner(groupOptionRect, TiberiumContent.NewMarker, 50, TextAnchor.UpperRight, new Vector2(-1,1));
+                TRWidgets.DrawTextureInCorner(groupOptionRect, TiberiumContent.NewResearch, 50, TextAnchor.UpperRight, new Vector2(-1,1));
             }
             if (Manager.IsOpen(group))
             {
@@ -237,7 +238,7 @@ namespace TiberiumRim
                 {
                     float margin = (researchOptionSize.y - 24f) / 2;
                     WidgetRow row = new WidgetRow(researchOptionXOffset + margin, curY + margin, UIDirection.RightThenDown);
-                    row.Icon(project.HasBeenSeen ? ProjectStatusTexture(project.State) : TiberiumContent.AttentionMarker);
+                    row.Icon(project.HasBeenSeen ? ProjectStatusTexture(project.State) : TiberiumContent.UnseenResearch);
                     row.Label(project.LabelCap);
 
                     var projectOptionRect = new Rect(researchOptionXOffset, curY, researchOptionSize.x, researchOptionSize.y);
@@ -460,7 +461,7 @@ namespace TiberiumRim
             Widgets.Label(TitleRect, title);
             curY += TitleRect.height;
 
-            TRWidgets.AddGapLine(ref curY, TaskInfoRect.width, 4, 0, TextAnchor.UpperCenter);
+            curY = TWidgets.GapLine(0, curY, TaskInfoRect.width, 4, 0, anchor:TextAnchor.UpperCenter);
 
             // Do Desc
             if (!CurTask.description.NullOrEmpty())
@@ -469,7 +470,7 @@ namespace TiberiumRim
                 Rect DescRect = new Rect(0, curY, TaskInfoRect.width, descriptionHeight);
                 curY += descriptionHeight;
                 Widgets.Label(DescRect, CurTask.description);
-                TRWidgets.AddGapLine(ref curY, TaskInfoRect.width, 6);
+                curY = TWidgets.GapLine(0, curY, TaskInfoRect.width, 6);
             }
 
             // Do Info
@@ -479,7 +480,7 @@ namespace TiberiumRim
             curY += infoHeight;
             //Widgets.Label(TaskInfoTextRect, CurTask.TaskInfo);
 
-            TRWidgets.AddGapLine(ref curY, TaskInfoRect.width, 6);
+            curY = TWidgets.GapLine(0, curY, TaskInfoRect.width, 6);
 
             // Do Outcomes
             if (CurTask.UnlocksThings.Any())

@@ -9,16 +9,13 @@
 		</statBases>
 		<graphicData>
 			<drawSize>(3,3)</drawSize>
-		</graphicData>
-		<extraData>
-			<rotateDrawSize>false</rotateDrawSize>
-			<alignToBottom>true</alignToBottom>
 			<drawOffset>(0,0,-0.25)</drawOffset>
-		</extraData>
+		</graphicData>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<size>(1,1)</size>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX">
+			<li Class="TeleCore.CompProperties_FleckThrower">
+				<!-- TODO: Fix up fleck thrower data creator
 				<effecters>
 					<li>
 						<moteInterval>50~60</moteInterval>
@@ -57,6 +54,7 @@
 						<moteInterval>750~1250</moteInterval>
 					</thrower>
 				</moteData>
+				-->
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>4</glowRadius>
@@ -74,6 +72,14 @@
 			<spawnInterval>1250~3750</spawnInterval>
 			<sporeOffset>(0,0,1)</sporeOffset>
 		</spawner>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<graphics>
+					<rotateDrawSize>false</rotateDrawSize>
+					<alignToBottom>true</alignToBottom>
+				</graphics>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="BlossomTreeBase">
@@ -86,7 +92,7 @@
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 		<!--
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX">
+			<li Class="TeleCore.CompProperties_FX">
 				<overlays>
 					<li>
 						<data>
@@ -97,11 +103,11 @@
 							<drawSize>(3,3)</drawSize>
 						</data>
 						<altitude>Item</altitude>
-						<mode>Pulse</mode>
-					    <pulse>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.3~0.8</opacityRange>
 							<opacityDuration>120</opacityDuration>
-						</pulse>
+						</fade>
 					</li>
 				</overlays>
 			</li>
@@ -202,7 +208,7 @@
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 		<!--
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX">
+			<li Class="TeleCore.CompProperties_FX">
 				<overlays>
 					<li>
 						<data>
@@ -213,11 +219,11 @@
 							<drawSize>(3,3)</drawSize>
 						</data>
 						<altitude>Item</altitude>
-						<mode>Pulse</mode>
-					    <pulse>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.3~0.8</opacityRange>
 							<opacityDuration>120</opacityDuration>
-						</pulse>
+						</fade>
 					</li>
 				</overlays>
 			</li>
@@ -315,10 +321,6 @@
 		<graphicData>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>	
-		<extraData Inherit="False">
-			<rotateDrawSize>false</rotateDrawSize>
-			<alignToBottom>true</alignToBottom>
-		</extraData>
 		<comps Inherit="False"/>
 		<forResearch>false</forResearch>
 		<daysToMature>1.5</daysToMature>		
@@ -330,6 +332,14 @@
 			<sporeOffset>(0,0,1)</sporeOffset>
 		</spawner>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension" Inherit="False">
+				<graphics>
+					<rotateDrawSize>false</rotateDrawSize>
+					<alignToBottom>true</alignToBottom>
+				</graphics>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TiberiumProducerDef>
 		
 	<TiberiumRim.TiberiumProducerDef ParentName="SmallBlossomBase">
@@ -343,11 +353,9 @@
 			<texPath>Buildings/Natural/BlossomTree/Blossoms/Alocasia</texPath>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>
-		<extraData Inherit="False">
-			<alignToBottom>false</alignToBottom>
-		</extraData>
 		<comps Inherit="False">
-			<li Class="TiberiumRim.CompProperties_FX">
+			<li Class="TeleCore.CompProperties_FleckThrower">
+				<!--
 				<effecters>
 					<li>
 						<moteInterval>50~80</moteInterval>
@@ -359,6 +367,7 @@
 						<speed>0.15~0.3</speed>
 					</li>
 				</effecters>
+				-->
 			</li>
 		</comps>
 		<tiberiumFieldRules>
@@ -418,7 +427,14 @@
 				<li>TiberiumPod</li>
 			</crystalOptions>
 			<corruptionRadius>16.9</corruptionRadius>
-		</tiberiumFieldRules>		
+		</tiberiumFieldRules>	
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension" Inherit="False">
+				<graphics>
+					<alignToBottom>false</alignToBottom>
+				</graphics>
+			</li>
+		</modExtensions>		
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="SmallBlossomBase">
@@ -434,10 +450,6 @@
 			<drawSize>(2.5,2.5)</drawSize>
 			<drawRotated>false</drawRotated>
 		</graphicData>
-		<extraData Inherit="False">
-			<alignToBottom>true</alignToBottom>
-			<drawRotatedOverride>false</drawRotatedOverride>
-		</extraData>
 		<spawner>
 			<growRadius>5.79</growRadius>
 			<spreadRange>2~4.5</spreadRange>
@@ -487,6 +499,14 @@
 				</li>
 			</terrainRules>
 		</tiberiumFieldRules>	
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension" Inherit="False">
+				<graphics>
+					<alignToBottom>true</alignToBottom>
+					<drawRotatedOverride>false</drawRotatedOverride>
+				</graphics>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TiberiumProducerDef>
 	
 </Defs>

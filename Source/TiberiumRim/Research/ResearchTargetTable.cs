@@ -2,6 +2,7 @@
 using System.Linq;
 using HarmonyLib;
 using RimWorld;
+using TeleCore;
 using Verse;
 using Verse.AI;
 
@@ -61,9 +62,9 @@ namespace TiberiumRim
             }
         }
 
-        public List<Thing> GetTargetsFor(TResearchTaskDef task)
+        public IEnumerable<Thing> GetTargetsFor(TResearchTaskDef task)
         {
-            return targets[task].Where(Available).ToList();
+            return targets[task].Where(Available);
         }
 
         public void RegisterNewTarget(Thing thing)
@@ -74,7 +75,7 @@ namespace TiberiumRim
             {
                 if (!targets.ContainsKey(task))
                 {
-                    Log.Error("No target list for " + task);
+                    TRLog.Error($"No target list for {task}");
                     continue;
                 }
                 if (targets[task].Contains(thing)) return;

@@ -6,7 +6,7 @@
 		<label>Harvester</label>	
 		<description>A simple tiberium harvester made out of rough components, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 		
+			<li Class="TeleCore.CompProperties_FX"> 		
 				<overlays>
 					<li>
 						<data>
@@ -18,6 +18,10 @@
 						<mode>Dynamic</mode>
 					</li>
 				</overlays>			
+			</li>
+			<li Class="TeleCore.CompProperties_AnimationRenderer"> 	
+				<animationDef>HarvesterAnimation</animationDef>
+				<defaultAnimationTag>Idle</defaultAnimationTag>
 			</li>
 		</comps>
 		<statBases>
@@ -47,7 +51,7 @@
 		<label>GDI harvester</label>	
 		<description>An armored tiberium harvester designed by GDI, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 		
+			<li Class="TeleCore.CompProperties_FX"> 		
 				<overlays>
 					<li>
 						<data>
@@ -88,7 +92,7 @@
 		<label>Nod harvester</label>	
 		<description>A advanced tiberium harvester developed by Nod, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 		
+			<li Class="TeleCore.CompProperties_FX"> 		
 				<overlays>
 					<li>
 						<data>
@@ -107,10 +111,10 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
 						</data>
-						<mode>Pulse</mode>
-					    <pulse>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.6~1</opacityRange>
-						</pulse>
+						</fade>
 					</li>
 				</overlays>			
 			</li>

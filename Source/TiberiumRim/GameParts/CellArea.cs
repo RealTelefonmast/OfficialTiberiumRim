@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TeleCore;
 using Verse;
 
 namespace TiberiumRim
@@ -15,6 +16,17 @@ namespace TiberiumRim
         private int mapSizeX;
         private int mapSizeZ;
 
+        public int Count => cells.Count;
+
+        public List<IntVec3> Cells => cells;
+        public List<IntVec3> Border => border;
+
+        public IntVec3 this[int i]
+        {
+            get => cells[i];
+            set => cells[i] = value;
+        }
+
         public CellArea(){}
 
         public CellArea(Map map, bool withBorder = false)
@@ -26,9 +38,6 @@ namespace TiberiumRim
             trueCountInt = 0;
             this.withBorder = withBorder;
         }
-
-        public List<IntVec3> Cells => cells;
-        public List<IntVec3> Border => border;
 
         public void Add(IntVec3 cell)
         {
@@ -47,16 +56,16 @@ namespace TiberiumRim
             }
         }
 
-        public void Remove(IntVec3 cell)
+        public bool Remove(IntVec3 cell)
         {
             if (cells.Remove(cell))
             {
                 cellBools[CellIndicesUtility.CellToIndex(cell, mapSizeX)] = false;
                 trueCountInt--;
+                return true;
             }
+            return false;
         }
-
-        public int Count => cells.Count;
 
         public bool Contains(IntVec3 cell, Map map)
         {
@@ -86,12 +95,5 @@ namespace TiberiumRim
                 }
             }
         }
-
-        public IntVec3 this[int i]
-        {
-            get => cells[i];
-            set => cells[i] = value;
-        }
-
     }
 }

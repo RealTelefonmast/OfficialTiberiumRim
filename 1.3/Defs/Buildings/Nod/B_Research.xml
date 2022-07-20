@@ -46,7 +46,7 @@
 				<basePowerConsumption>200</basePowerConsumption>
 			</li>
 			<li Class="CompProperties_Flickable"/>
-			<li Class="TiberiumRim.CompProperties_FX">
+			<li Class="TeleCore.CompProperties_FX">
 				<overlays>
 					<li>
 						<data>

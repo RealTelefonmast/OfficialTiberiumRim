@@ -18,13 +18,28 @@ namespace TiberiumRim
         public Comp_MechStation MechComp => parent.GetComp<Comp_MechStation>();
         public new CompProperties_TNSRefinery Props => (CompProperties_TNSRefinery)props;
 
-        public bool CanBeRefinedAt => CompPower.PowerOn && !parent.IsBrokenDown() && !NetworkParts[0].Container.CapacityFull;
+        public bool CanBeRefinedAt => CompPower.PowerOn && !parent.IsBrokenDown() && !NetworkParts[0].Container.Full;
+
         public bool RecallHarvesters
         {
             get => recallHarvesters;
             private set => recallHarvesters = value;
         }
+
         public int HarvesterCount => MechComp.ConnectedMechs.Count;
+
+        //Preferences
+        private Zone_HarvestTiberium zoneHarvest;
+
+        public Zone_HarvestTiberium HarvestTiberiumZone
+        {
+            get => zoneHarvest;
+            set
+            {
+                zoneHarvest?.Delete();
+                zoneHarvest = value;
+            }
+        }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
@@ -55,16 +70,13 @@ namespace TiberiumRim
         {
             base.PostExposeData();
             Scribe_Values.Look(ref recallHarvesters, "recallHarvesters");
-            //Scribe_Collections.Look(ref Harvesters, "Harvesters", LookMode.Reference);
+            Scribe_References.Look(ref zoneHarvest, "zoneHarvest");
         }
 
         //Constructors
         private Harvester SpawnNewHarvester()
         {
             Harvester harvester = (Harvester)MechComp.MakeMech(Props.harvester);
-            //Harvester harvester = (Harvester)PawnGenerator.GeneratePawn(Props.harvester, parent.Faction);
-            //harvester.ageTracker.AgeBiologicalTicks = 0;
-            //harvester.ageTracker.AgeChronologicalTicks = 0;
             harvester.Rotation = parent.Rotation;
             harvester.SetMainRefinery((Building)parent, this, null);
             IntVec3 spawnLoc = parent.InteractionCell;
@@ -77,14 +89,12 @@ namespace TiberiumRim
         {
             if (MechComp.MainMechLink.Contains(harvester)) return;
             MechComp.TryAddMech(harvester);
-            //Harvesters.Add(harvester);
             //parkingZone?.AssignNextSlot(harvester);
         }
 
         public void RemoveHarvester(Harvester harvester)
         {
             MechComp.RemoveMech(harvester);
-            //Harvesters.Remove(harvester);
             //parkingZone?.DismissSlot(harvester);
         }
 
@@ -111,6 +121,9 @@ namespace TiberiumRim
             return str; //base.CompInspectStringExtra();
         }
 
+        private Designator_ZoneAdd_HarvestTiberium zoneDesignator;
+        public Designator_ZoneAdd_HarvestTiberium ZoneDesignator => zoneDesignator ??= new Designator_ZoneAdd_HarvestTiberium(this);
+
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
             foreach (Gizmo gizmo in base.CompGetGizmosExtra())
@@ -136,6 +149,39 @@ namespace TiberiumRim
                 action = delegate
                 {
                     RecallHarvesters = !RecallHarvesters;
+                },
+            };
+
+            //
+            yield return ZoneDesignator;
+
+            yield return new Command_Target
+            {
+                defaultLabel = "TR_CreateHarvestZoneProducer".Translate(),
+                defaultDesc = "TR_CreateHarvestZoneProducerDesc".Translate(),
+                icon = ContentFinder<Texture2D>.Get("UI/Icons/ZoneCreate_HarvestTiberium_Producer", true),
+                targetingParams = RefineryTargetInfo.ForTiberiumProducers(),
+                action = delegate(LocalTargetInfo target)
+                {
+                    if (target.HasThing && target.Thing is TiberiumProducer producer)
+                    {
+                        Zone_HarvestTiberium newZone = new Zone_HarvestTiberium(parent.Map.zoneManager);
+                        newZone.ParentRefinery = this;
+                        producer.FieldCells.ForEach(c => newZone.AddCell(c));
+                        this.HarvestTiberiumZone = newZone;
+                    }
+                }
+            };
+
+            yield return new Command_Action
+            {
+                icon = TexButton.DeleteX,
+                defaultLabel = "TR_DeleteRefineryZone".Translate(),
+                defaultDesc = "TR_DeleteRefineryZoneDesc".Translate(),
+                action = delegate
+                {
+                    HarvestTiberiumZone.Delete();
+                    HarvestTiberiumZone = null;
                 },
             };
         }

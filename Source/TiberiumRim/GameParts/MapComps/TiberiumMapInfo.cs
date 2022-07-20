@@ -3,13 +3,6 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public enum HarvestType
-    {
-        Valuable,
-        Unvaluable,
-        Unharvestable
-    }
-
     public class TiberiumMapInfo : MapInformation
     {
         //Saved as Parent to be compatible with Parent Enumerators

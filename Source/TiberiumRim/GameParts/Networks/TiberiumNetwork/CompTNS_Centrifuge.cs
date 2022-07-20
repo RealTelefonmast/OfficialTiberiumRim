@@ -4,6 +4,7 @@ using System.Data.Odbc;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -11,7 +12,7 @@ namespace TiberiumRim
 {
     public class CompTNS_Centrifuge : Comp_TiberiumNetworkStructure
     {
-        private FCSimple speedControl;
+        private FloatControl speedControl;
         private bool processingBatch;
 
         readonly SimpleCurve AccCurve = new()
@@ -45,17 +46,41 @@ namespace TiberiumRim
             new(1,1),
         };
 
-        private NetworkComponent ChemicalComponent => this[TiberiumDefOf.ChemicalNetwork];
+        private NetworkSubPart ChemicalComponent => this[TiberiumDefOf.ChemicalNetwork];
 
-        public override float?[] AnimationSpeeds => new float?[6] {null, null, speedControl.OutputValue, speedControl.OutputValue, null, null};
-        public override Color[] ColorOverrides => new Color[6] { Color.white, Color.white, Color.white, Color.white, TiberiumComp.Container.Color, Color.white};
-        public override float?[] RotationOverrides => new float?[6] {null, null, null, null, CompFX.Overlays[3].Rotation, null};
+        public override float? FX_GetRotationSpeedAt(int index)
+        {
+            return index switch
+            {
+                2 => speedControl.OutputValue,
+                3 => speedControl.OutputValue,
+                _ => null
+            };
+        }
+
+        public override float? FX_GetRotationAt(int index)
+        {
+            return index switch
+            {
+                4 => CompFX.Overlays[3].ExactRotation,
+                _ => null
+            };
+        }
+
+        public override Color? FX_GetColorAt(int index)
+        {
+            return index switch
+            {
+                4 => TiberiumComp.Container.Color,
+                _ => null,
+            };
+        }
 
         //
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-            speedControl = new FCSimple(25, 4, AccCurve, DecCurve, OutCurve);
+            speedControl = new FloatControl(25, 4, AccCurve, DecCurve, OutCurve);
         }
 
         [TweakValue("CENTRIFUGE_BLEND", 0f, 1f)]
@@ -64,6 +89,21 @@ namespace TiberiumRim
         private float BlendValue => OverrideBlendValue > 0 ? OverrideBlendValue : shaderCurve.Evaluate(speedControl.CurPct);
 
         private bool HasEnoughStored => TiberiumComp.Container.StoredPercent >= TiberiumComp.RequestedCapacityPercent && !Container.Empty;
+
+        private bool ShouldWork
+        {
+            get
+            {
+                if (!HasEnoughStored) return false;
+                foreach (var valueDef in TiberiumComp.Props.AllowedValuesByRole[NetworkRole.Requester])
+                {
+                    if (Container.ValueForType(valueDef) > 0)
+                        return true;
+                }
+                return false;
+            }
+        }
+
 
         public override void CompTick()
         {
@@ -77,7 +117,7 @@ namespace TiberiumRim
                 speedControl.Stop();
                 processingBatch = false;
             }
-            if (isPowered && HasEnoughStored && !processingBatch && !ChemicalComponent.Container.CapacityFull)
+            if (isPowered && HasEnoughStored && !processingBatch && !ChemicalComponent.Container.Full)
             {
                 //Start
                 speedControl.Start();
@@ -90,7 +130,7 @@ namespace TiberiumRim
             CompFX.Overlays[4].PropertyBlock.SetFloat("_BlendValue", BlendValue);
         }
 
-        protected override void NetworkTickCustom(bool isPowered)
+        public override void NetworkPostTick(bool isPowered)
         {
             StartOrSustainCentrifuge(isPowered);
             if (!isPowered) return;
@@ -108,10 +148,11 @@ namespace TiberiumRim
                         foreach (var type in values)
                         {
                             ChemicalComponent.Container.TryAddValue(type.valueDef, type.valueF * actualValue * 2, out _);
+                            TiberiumComp.Container.TryAddValue(TiberiumDefOf.TibSludge, 0.125f, out _);
                         }
                     }
 
-                    if (TiberiumComp.Container.Empty || ChemicalComponent.Container.CapacityFull)
+                    if (TiberiumComp.Container.Empty || ChemicalComponent.Container.Full)
                     {
                         processingBatch = false;
                         break;
@@ -129,7 +170,7 @@ namespace TiberiumRim
             if (def == TiberiumDefOf.TibRed)
                 return RedTibValues;
 
-            TLog.Warning($"[TibExtractor] {def} does not have a value list!");
+            TRLog.Warning($"[TibExtractor] {def} does not have a value list!");
             return null;
         }
 
@@ -190,7 +231,7 @@ namespace TiberiumRim
                           $"Output\t|{spdOutputVal}\n");
 
             sb.Append($"Shader BlendValue: {BlendValue}");
-            return sb.ToString().TrimEndNewlines();
+            return sb.ToString().TrimStart().TrimEndNewlines();
         }
     }
 }

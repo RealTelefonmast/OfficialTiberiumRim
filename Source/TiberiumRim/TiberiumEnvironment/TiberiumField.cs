@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Multiplayer.API;
-using TiberiumRim.GameParts.Interfaces;
 using UnityEngine;
 using Verse;
 
@@ -36,7 +35,7 @@ namespace TiberiumRim
 
         public bool MarkedForFastGrowth
         {
-            get { return fastFastGrowth; }
+            get => fastFastGrowth;
             [SyncMethod]
             private set => fastFastGrowth = value;
         }
@@ -93,21 +92,30 @@ namespace TiberiumRim
 
         public void AddFieldCell(IntVec3 cell, Map map)
         {
-            if(!fieldCellArea.Contains(cell, map))
+            var Tiberium = map.Tiberium();
+            if (!fieldCellArea.Contains(cell, map))
+            {
                 fieldCellArea.Add(cell);
+                Tiberium.TiberiumProducerInfo.Notify_FieldCellAdded(MainProducer, cell);
+            }
+
             if (mainProducer.TiberiumTypes.EnumerableNullOrEmpty()) return;
             foreach (var type in mainProducer.TiberiumTypes)
             {
-                map.Tiberium().TiberiumInfo.SetFieldColor(cell, true, type.TiberiumValueType);
+                Tiberium.TiberiumInfo.SetFieldColor(cell, true, type.TiberiumValueType);
             }
         }
 
         public void RemoveFieldCell(IntVec3 cell, Map map)
         {
-            fieldCellArea.Remove(cell);
+            var Tiberium = map.Tiberium();
+            if (fieldCellArea.Remove(cell))
+            {
+                Tiberium.TiberiumProducerInfo.Notify_FieldCellRemoved(cell);
+            }
             foreach (var type in mainProducer.TiberiumTypes)
             {
-                map.Tiberium().TiberiumInfo.SetFieldColor(cell, false, type.TiberiumValueType);
+                Tiberium.TiberiumInfo.SetFieldColor(cell, false, type.TiberiumValueType);
             }
         }
 

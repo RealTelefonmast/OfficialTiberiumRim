@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Verse;
 
 namespace TiberiumRim
@@ -7,6 +8,8 @@ namespace TiberiumRim
     {
         public override float GetScore(Room room)
         {
+            if (room.UsesOutdoorTemperature) return -1;
+
             int airlockDoorConns = 0;
             HashSet<Room> knownRooms = new();
             var things = room.ContainedAndAdjacentThings;
@@ -24,13 +27,14 @@ namespace TiberiumRim
             {
                 return float.MaxValue;
             }
-            return 0f;
+            return -1;
         }
 
         public override string PostProcessedLabel(string baseLabel)
         {
-            var room = Find.Selector.SingleSelectedThing?.GetRoom() ?? UI.MouseCell().GetRoom(Find.CurrentMap);
-            var curAirLock = room?.GetRoomComp<RoomComponent_AirLock>();
+            var hoveredRoom = UI.MouseCell().GetRoom(Find.CurrentMap);
+            var selRoom = Find.Selector.SingleSelectedThing?.GetRoom();
+            var curAirLock = (hoveredRoom ?? selRoom).GetRoomComp<RoomComponent_AirLock>();//room?.GetRoomComp<RoomComponent_AirLock>();
             if (curAirLock == null) return base.PostProcessedLabel(baseLabel);
 
             return $"{base.PostProcessedLabel(baseLabel)} [{(curAirLock.IsActiveAirLock ? "Active" : "Inactive")}][{curAirLock.Room.ID}]";

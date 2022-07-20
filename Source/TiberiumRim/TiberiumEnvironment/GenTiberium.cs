@@ -231,6 +231,10 @@ namespace TiberiumRim
         //Static Bools n' Checks
         public static bool CanBeHarvestedBy(this TiberiumCrystal crystal, Harvester harvester)
         {
+            if (harvester.RefineryComp.HarvestTiberiumZone != null)
+            {
+                if (!harvester.RefineryComp.HarvestTiberiumZone.ContainsCell(crystal.Position)) return false;
+            }
             if (!crystal.Map.reservationManager.CanReserve(harvester, crystal))
                 return false;
 

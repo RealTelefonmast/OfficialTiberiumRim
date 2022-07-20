@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -182,14 +183,14 @@ namespace TiberiumRim
                 mote.instanceColor = new ColorInt(70, 90, 175).ToColor;
                 GenSpawn.Spawn(mote, loc, Map, WipeMode.Vanish);
                 distortion.exactPosition = loc.ToVector3Shifted();
-                float scaleVal = 20 * (part.CurrentTick / (float)part.playTime);
+                float scaleVal = 20 * (part.CurrentTick / (float)part.Duration);
                 distortion.Scale = scaleVal;
                 distortion.rotationRate = RotRate;
                 GenSpawn.Spawn(distortion, loc, Map);
             },0);
             composition.AddPart(delegate (ActionPart part)
             {
-                float scaleVal = 20 * (part.CurrentTick / (float)part.playTime);
+                float scaleVal = 20 * (part.CurrentTick / (float)part.Duration);
                 distortion.Scale = scaleVal;
                 mote.Scale = scaleVal * 8;
             }, 0, 20);

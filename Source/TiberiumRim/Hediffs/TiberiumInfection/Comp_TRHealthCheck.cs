@@ -22,15 +22,34 @@ namespace TiberiumRim
 
         private int ticker = 0;
 
-        private Pawn Pawn => parent as Pawn;
 
-        private RadiationInfectionGrid Grid => Pawn.MapHeld.Tiberium().TiberiumAffecter.HediffGrid;
-        public bool IsInTiberium => Grid.IsAffected(Pawn.Position);
+        private Pawn Pawn
+        {
+            get
+            {
+                if (parent is Corpse corpse)
+                    return corpse.InnerPawn;
+                return parent as Pawn;
+            }
+        }
+
+        private RadiationInfectionGrid Grid
+        {
+            get
+            {
+                if (Pawn?.MapHeld == null)
+                {
+                    TRLog.Warning($"Tried to get grid on null map for {Pawn}");
+                    return null;
+                }
+                return Pawn.MapHeld.Tiberium().TiberiumAffecter.HediffGrid;
+            }
+        }
 
         public bool IsTiberiumImmune => Pawn.GetStatValue(TiberiumDefOf.TiberiumInfectionResistance) >= 1 &&
                                         Pawn.GetStatValue(TiberiumDefOf.TiberiumGasResistance)       >= 1 &&
                                         Pawn.GetStatValue(TiberiumDefOf.TiberiumRadiationResistance) >= 1;
-
+        public bool IsInTiberium => Grid?.IsAffected(Pawn.Position) ?? false;
         public bool HasGeiger => Pawn.IsColonist;
 
         public override void PostPostMake()

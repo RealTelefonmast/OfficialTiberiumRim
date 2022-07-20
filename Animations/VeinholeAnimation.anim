@@ -1,0 +1,1010 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AnimationMetaData>
+	<animation>
+		<defName>VeinholeAnimation</defName>
+		<initialized>True</initialized>
+		<internalDef>
+			<defName>VeinholeAnimation</defName>
+			<animationSets>
+				<li>
+					<textureParts>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>-13.68341</rotation>
+								<position>(-24.5, 8.0)</position>
+								<texCoords>(0.125,0.625,0.125,0.125)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(-2.0, 2.3)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.125,0.625,0.125,0.125)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>17.79307</rotation>
+								<position>(-18.8, 22.7)</position>
+								<texCoords>(0.25,0.625,0.125,0.125)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(0.3, 1.5)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.25,0.625,0.125,0.125)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>-13.84749</rotation>
+								<position>(18.5, 20.2)</position>
+								<texCoords>(0.375,0.625,0.125,0.125)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(0.3, 2.3)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.375,0.625,0.125,0.125)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>7.179088</rotation>
+								<position>(0.7, 24.5)</position>
+								<texCoords>(0.625,0.375,0.125,0.125)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(0.3, 4.5)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.625,0.375,0.125,0.125)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>10.12572</rotation>
+								<position>(31.0, 5.2)</position>
+								<texCoords>(0.625,0.625,0.125,0.125)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(2.8, 2.3)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.625,0.625,0.125,0.125)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>-36.05965</rotation>
+								<position>(16.0, -6.5)</position>
+								<texCoords>(0.625,0.75,0.125,0.125)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(1.8, 0.0)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.625,0.75,0.125,0.125)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>10.13091</rotation>
+								<position>(16.2, -18.8)</position>
+								<texCoords>(0.25,0.75,0.125,0.125)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(2.3, -1.3)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.25,0.75,0.125,0.125)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>-12.49945</rotation>
+								<position>(-9.5, -8.0)</position>
+								<texCoords>(0.125,0.75,0.125,0.125)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(-1.8, -1.3)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.125,0.75,0.125,0.125)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>-14.84757</rotation>
+								<position>(21.5, -13.5)</position>
+								<texCoords>(0.375,0.75,0.25,0.125)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(4.5, 0.2)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.375,0.75,0.25,0.125)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>9.687243</rotation>
+								<position>(-23.5, 18.5)</position>
+								<texCoords>(0.125,0.375,0.125,0.25)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(-2.0, 4.0)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.125,0.375,0.125,0.25)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>-11.73188</rotation>
+								<position>(6.0, -25.8)</position>
+								<texCoords>(0.375,0.875,0.25,0.125)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(7.0, 0.0)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.375,0.875,0.25,0.125)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>1.873274</rotation>
+								<position>(-11.5, -23.8)</position>
+								<texCoords>(0.125,0.875,0.25,0.125)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(-5.8, 0.0)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.125,0.875,0.25,0.125)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>13.2875</rotation>
+								<position>(-27.3, -13.0)</position>
+								<texCoords>(0,0.875,0.125,0.125)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(-3.0, 2.0)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0,0.875,0.125,0.125)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>-50.98736</rotation>
+								<position>(30.2, 8.7)</position>
+								<texCoords>(0.5,0.5,0.125,0.25)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(1.3, 6.8)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.5,0.5,0.125,0.25)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>1.1126</rotation>
+								<position>(8.5, 30.2)</position>
+								<texCoords>(0.5,0.25,0.125,0.25)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(1.0, 1.0)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.5,0.25,0.125,0.25)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>21.79883</rotation>
+								<position>(-10.0, 19.5)</position>
+								<texCoords>(0.25,0.25,0.25,0.375)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(0.5, 10.0)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0.25,0.25,0.25,0.375)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Teeth</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>68.99711</rotation>
+								<position>(-35.3, 2.2)</position>
+								<texCoords>(0,0.5,0.125,0.375)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(0.8, 6.0)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0,0.5,0.125,0.375)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Natural/Veinhole/Veinhole/Animated/Veinhole_Base</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>0</rotation>
+								<position>(0.0, 0.0)</position>
+								<texCoords>(0,0,1,1)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(0.0, 0.0)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0,0,1,1)</texCoords>
+						</li>
+					</textureParts>
+					<animations>
+						<li>
+							<tag>Idle</tag>
+							<frames>120</frames>
+							<bounds>0~120</bounds>
+							<keyFrames>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-24.5, 8.0)</position>
+												<texCoords>(0.125,0.625,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-2.0, 2.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-24.5, 8.0)</position>
+												<texCoords>(0.125,0.625,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-2.0, 2.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>-13.68341</rotation>
+												<position>(-24.5, 8.0)</position>
+												<texCoords>(0.125,0.625,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-2.0, 2.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-18.8, 22.7)</position>
+												<texCoords>(0.25,0.625,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.3, 1.5)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-18.8, 22.7)</position>
+												<texCoords>(0.25,0.625,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.3, 1.5)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>71</frameTick>
+											<frameData>
+												<rotation>17.79307</rotation>
+												<position>(-18.8, 22.7)</position>
+												<texCoords>(0.25,0.625,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.3, 1.5)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(18.5, 20.2)</position>
+												<texCoords>(0.375,0.625,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.3, 2.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(18.5, 20.2)</position>
+												<texCoords>(0.375,0.625,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.3, 2.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>-13.84749</rotation>
+												<position>(18.5, 20.2)</position>
+												<texCoords>(0.375,0.625,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.3, 2.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.7, 24.5)</position>
+												<texCoords>(0.625,0.375,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.3, 4.5)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.7, 24.5)</position>
+												<texCoords>(0.625,0.375,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.3, 4.5)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>7.179088</rotation>
+												<position>(0.7, 24.5)</position>
+												<texCoords>(0.625,0.375,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.3, 4.5)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(31.0, 5.2)</position>
+												<texCoords>(0.625,0.625,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(2.8, 2.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(31.0, 5.2)</position>
+												<texCoords>(0.625,0.625,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(2.8, 2.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>10.12572</rotation>
+												<position>(31.0, 5.2)</position>
+												<texCoords>(0.625,0.625,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(2.8, 2.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(16.0, -6.5)</position>
+												<texCoords>(0.625,0.75,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(1.8, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(16.0, -6.5)</position>
+												<texCoords>(0.625,0.75,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(1.8, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>-36.05965</rotation>
+												<position>(16.0, -6.5)</position>
+												<texCoords>(0.625,0.75,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(1.8, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(16.2, -18.8)</position>
+												<texCoords>(0.25,0.75,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(2.3, -1.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(16.2, -18.8)</position>
+												<texCoords>(0.25,0.75,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(2.3, -1.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>10.13091</rotation>
+												<position>(16.2, -18.8)</position>
+												<texCoords>(0.25,0.75,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(2.3, -1.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-9.5, -8.0)</position>
+												<texCoords>(0.125,0.75,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-1.8, -1.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-9.5, -8.0)</position>
+												<texCoords>(0.125,0.75,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-1.8, -1.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>-12.49945</rotation>
+												<position>(-9.5, -8.0)</position>
+												<texCoords>(0.125,0.75,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-1.8, -1.3)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(21.5, -13.5)</position>
+												<texCoords>(0.375,0.75,0.25,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(4.0, -0.8)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(21.5, -13.5)</position>
+												<texCoords>(0.375,0.75,0.25,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(4.0, -0.8)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>-14.84757</rotation>
+												<position>(21.5, -13.5)</position>
+												<texCoords>(0.375,0.75,0.25,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(4.5, 0.2)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-23.5, 18.5)</position>
+												<texCoords>(0.125,0.375,0.125,0.25)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-2.0, 4.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-23.5, 18.5)</position>
+												<texCoords>(0.125,0.375,0.125,0.25)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-2.0, 4.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>9.687243</rotation>
+												<position>(-23.5, 18.5)</position>
+												<texCoords>(0.125,0.375,0.125,0.25)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-2.0, 4.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>-29</rotation>
+												<position>(6.0, -25.8)</position>
+												<texCoords>(0.375,0.875,0.25,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(7.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>-29</rotation>
+												<position>(6.0, -25.8)</position>
+												<texCoords>(0.375,0.875,0.25,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(7.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>-11.73188</rotation>
+												<position>(6.0, -25.8)</position>
+												<texCoords>(0.375,0.875,0.25,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(7.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>24</rotation>
+												<position>(-11.5, -23.8)</position>
+												<texCoords>(0.125,0.875,0.25,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-5.8, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>24</rotation>
+												<position>(-11.5, -23.8)</position>
+												<texCoords>(0.125,0.875,0.25,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-5.8, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>1.873274</rotation>
+												<position>(-11.5, -23.8)</position>
+												<texCoords>(0.125,0.875,0.25,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-5.8, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-27.3, -13.0)</position>
+												<texCoords>(0,0.875,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-3.0, 2.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-27.3, -13.0)</position>
+												<texCoords>(0,0.875,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-3.0, 2.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>13.2875</rotation>
+												<position>(-27.3, -13.0)</position>
+												<texCoords>(0,0.875,0.125,0.125)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(-3.0, 2.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>-35</rotation>
+												<position>(30.2, 8.7)</position>
+												<texCoords>(0.5,0.5,0.125,0.25)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(1.3, 6.8)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>-35</rotation>
+												<position>(30.2, 8.7)</position>
+												<texCoords>(0.5,0.5,0.125,0.25)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(1.3, 6.8)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>-50.98736</rotation>
+												<position>(30.2, 8.7)</position>
+												<texCoords>(0.5,0.5,0.125,0.25)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(1.3, 6.8)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>-5</rotation>
+												<position>(8.5, 30.2)</position>
+												<texCoords>(0.5,0.25,0.125,0.25)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(1.0, 1.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>-5</rotation>
+												<position>(8.5, 30.2)</position>
+												<texCoords>(0.5,0.25,0.125,0.25)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(1.0, 1.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>1.1126</rotation>
+												<position>(8.5, 30.2)</position>
+												<texCoords>(0.5,0.25,0.125,0.25)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(1.0, 1.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>9</rotation>
+												<position>(-10.0, 19.5)</position>
+												<texCoords>(0.25,0.25,0.25,0.375)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.5, 10.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>9</rotation>
+												<position>(-10.0, 19.5)</position>
+												<texCoords>(0.25,0.25,0.25,0.375)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.5, 10.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>21.79883</rotation>
+												<position>(-10.0, 19.5)</position>
+												<texCoords>(0.25,0.25,0.25,0.375)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.5, 10.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>47</rotation>
+												<position>(-35.3, 2.2)</position>
+												<texCoords>(0,0.5,0.125,0.375)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.8, 6.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>47</rotation>
+												<position>(-35.3, 2.2)</position>
+												<texCoords>(0,0.5,0.125,0.375)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.8, 6.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>68.99711</rotation>
+												<position>(-35.3, 2.2)</position>
+												<texCoords>(0,0.5,0.125,0.375)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.8, 6.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.0, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>120</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.0, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+							</keyFrames>
+						</li>
+					</animations>
+				</li>
+				<li>
+					<textureParts IsNull="True" />
+					<animations IsNull="True" />
+				</li>
+				<li>
+					<textureParts IsNull="True" />
+					<animations IsNull="True" />
+				</li>
+				<li>
+					<textureParts IsNull="True" />
+					<animations IsNull="True" />
+				</li>
+			</animationSets>
+		</internalDef>
+		<lastSelectedElementIndex>
+			<li>0</li>
+			<li>-1</li>
+			<li>-1</li>
+			<li>-1</li>
+		</lastSelectedElementIndex>
+		<lastSelectedAnimationIndex>
+			<li>0</li>
+			<li>-1</li>
+			<li>-1</li>
+			<li>-1</li>
+		</lastSelectedAnimationIndex>
+	</animation>
+</AnimationMetaData>

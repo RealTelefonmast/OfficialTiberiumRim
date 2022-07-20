@@ -11,10 +11,33 @@ namespace TiberiumRim
     public class CompTNS_TiberiumSpike : Comp_TiberiumNetworkStructure
     {
         //FX
-        public override float[] OpacityFloats => new float[] { 1f, 1f };
-        public override bool[] DrawBools => new bool[] { HasConnection, HasConnection && CompPower.PowerOn };
-        public override Color[] ColorOverrides => new Color[] { Color.white, Color.white };
+        public override bool FX_ShouldDrawAt(int index)
+        {
+            return index switch
+            {
+                0 => HasConnection,
+                1 => HasConnection && CompPower.PowerOn,
+                _ => base.FX_ShouldDrawAt(index)
+            };
+        }
 
+        public override Color? FX_GetColorAt(int index)
+        {
+            return index switch
+            {
+                _ => Color.white
+            };
+        }
+
+        public override float FX_GetOpacityAt(int index)
+        {
+            return index switch
+            {
+                _ => 1f
+            };
+        }
+
+        //
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);

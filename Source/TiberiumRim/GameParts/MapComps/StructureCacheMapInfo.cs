@@ -9,9 +9,9 @@ namespace TiberiumRim
 {
     public class StructureCacheMapInfo : MapInformation
     {
-        public Dictionary<TRGroupDef, List<Thing>> CachedThingsByGroup = new Dictionary<TRGroupDef, List<Thing>>();
-        public Dictionary<TRGroupDef, List<ThingWithComps>> CachedCompParentsByGroup = new Dictionary<TRGroupDef, List<ThingWithComps>>();
-        public Dictionary<TRGroupDef, List<ThingComp>> CachedCompsByGroup = new Dictionary<TRGroupDef, List<ThingComp>>();
+        public Dictionary<TRGroupDef, List<Thing>> CachedThingsByGroup = new ();
+        public Dictionary<TRGroupDef, List<ThingWithComps>> CachedCompParentsByGroup = new ();
+        public Dictionary<TRGroupDef, List<ThingComp>> CachedCompsByGroup = new ();
 
         public StructureCacheMapInfo(Map map) : base(map)
         {

@@ -8,7 +8,16 @@ namespace TiberiumRim
 {
     public class Building_IonCannon : TRBuilding
     {
-        public override bool[] DrawBools => new bool[2]{true, CentralLight};
+
+        //FX
+        public override bool FX_ShouldDrawAt(int index)
+        {
+            return index switch
+            {
+                0 => true,
+                1 => CentralLight
+            };
+        }
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {

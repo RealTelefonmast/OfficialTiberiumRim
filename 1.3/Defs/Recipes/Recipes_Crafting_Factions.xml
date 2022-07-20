@@ -2,7 +2,7 @@
 <Defs>
 	
 	<!-- GDI -->
-  	<TiberiumRim.TRecipeDef>
+  	<TeleCore.RecipeDef_Network>
 		<defName>MakeReinforcedPlate</defName>
 		<label>produce reinforced plate</label>
 		<description>produces 10 Reinforced Plate.</description>
@@ -42,9 +42,9 @@
 		<skillRequirements>
 			<Crafting>5</Crafting>
 		</skillRequirements>
-	</TiberiumRim.TRecipeDef>
+	</TeleCore.RecipeDef_Network>
 	
-	<TiberiumRim.TRecipeDef>
+	<TeleCore.RecipeDef_Network>
 		<defName>MakeGDISonicCore</defName>
 		<label>make a sonic core</label>
 		<description>This core is a necessary component in most GDI sonic technology.</description>
@@ -91,10 +91,10 @@
 			<Crafting>10</Crafting>
 		</skillRequirements>
 		<workSkill>Crafting</workSkill>
-	</TiberiumRim.TRecipeDef>
+	</TeleCore.RecipeDef_Network>
 	
 	<!-- Nod -->
-	<TiberiumRim.TRecipeDef>
+	<TeleCore.RecipeDef_Network>
 		<defName>MakeCarbonPlate</defName>
 		<label>produce carbon plate</label>
 		<description>produces 10 carbon plates.</description>
@@ -134,9 +134,9 @@
 		<skillRequirements>
 			<Crafting>5</Crafting>
 		</skillRequirements>
-	</TiberiumRim.TRecipeDef>
+	</TeleCore.RecipeDef_Network>
 	
-	<TiberiumRim.TRecipeDef>
+	<TeleCore.RecipeDef_Network>
 		<defName>MakeLQTiberiumCore</defName>
 		<label>make a liquid tiberium Core</label>
 		<description>This core is a necessary component in most Nod chemical technology.</description>
@@ -183,6 +183,6 @@
 			<Crafting>10</Crafting>
 		</skillRequirements>
 		<workSkill>Crafting</workSkill>
-	</TiberiumRim.TRecipeDef>
+	</TeleCore.RecipeDef_Network>
 	
 </Defs>

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
+using TeleCore;
 using Verse;
 using Verse.AI;
 
@@ -16,7 +17,7 @@ namespace TiberiumRim
             if (harvester.RefineryComp.HarvesterCount > 1)
             {
                 //if(!)
-                if (!harvester.AtRefinery && harvester.Refinery.IsReserved(out Pawn claimant) && claimant != harvester)
+                if (!harvester.AtRefinery && harvester.Refinery.IsReserved(pawn.Map, out Pawn claimant) && claimant != harvester)
                 {
                     return JobMaker.MakeJob(JobDefOf.Goto, harvester.Refinery.InteractionCell);
                 }
@@ -34,7 +35,7 @@ namespace TiberiumRim
     {
         private Comp_TiberiumNetworkStructure Refinery => Harvester.RefineryComp;
 
-        private NetworkComponent RefineryComp => Refinery[TiberiumDefOf.TiberiumNetwork];
+        private NetworkSubPart RefineryComp => Refinery[TiberiumDefOf.TiberiumNetwork];
 
         private Harvester Harvester => (Harvester)pawn;
 
@@ -56,7 +57,7 @@ namespace TiberiumRim
             };
             unload.tickAction = delegate
             {
-                if (!RefineryComp?.Container.CapacityFull ?? false)
+                if (!RefineryComp?.Container.Full ?? false)
                 {
                     if (Harvester.Container.StoredPercent > 0f)
                     {

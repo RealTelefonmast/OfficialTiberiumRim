@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -36,7 +37,7 @@ namespace TiberiumRim
             for (int i = 1; i <= length; i++)
             {
                 var curCell = center + new IntVec3(0, 0, i).RotatedBy(dir);
-                TRUtils.Draw(GhostUtility.GhostGraphicFor(def.graphicData.Graphic, def, Color.cyan), curCell.ToVector3Shifted(), Rot4.North, 0, null);
+                TDrawing.Draw(GhostUtility.GhostGraphicFor(def.graphicData.Graphic, def, Color.cyan), curCell.ToVector3Shifted(), Rot4.North, 0, null, null);
             }
         }
 

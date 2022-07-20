@@ -19,11 +19,14 @@
 	<WorkGiverDef>
 		<defName>DoTiberiumBills</defName>
 		<label>do network bill</label>
-		<giverClass>TiberiumRim.WorkGiver_NetworkBills</giverClass>
+		<giverClass>TeleCore.WorkGiver_NetworkBills</giverClass>
 		<workType>Crafting</workType>
 		<priorityInType>85</priorityInType>
 		<verb>(TR)do bill</verb>
 		<gerund>(TR)doing bill at</gerund>
+		<fixedBillGiverDefs>
+			<li>TiberiumCrafter</li>
+		</fixedBillGiverDefs>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>

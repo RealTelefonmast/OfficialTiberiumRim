@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using RimWorld;
 using RimWorld.Planet;
+using TeleCore;
 using Verse;
 using Verse.Sound;
 
@@ -54,7 +55,7 @@ namespace TiberiumRim
 
         public static void RegisterMessageDef(EVAMessageSoundDef messageDef)
         {
-            //TLog.Debug($"Registering EVAMessage [{messageDef.EVAType}][{messageDef.EVASignal}]({messageDef})");
+            //TRLog.Debug($"Registering EVAMessage [{messageDef.EVAType}][{messageDef.EVASignal}]({messageDef})");
             messagyBySignal[messageDef.EVAType].Add(messageDef.EVASignal, messageDef);
         }
 
@@ -131,7 +132,7 @@ namespace TiberiumRim
 
         public void ReceiveSignal(EVASignal signal, LocalTargetInfo target)
         {
-            TLog.Message($"Received Signal {signal}[{CanPlaySignal(signal)}:{settings.TimeFor(signal)}] at {target} while {CanPlay} with {SelectedEVA}");
+            TRLog.Message($"Received Signal {signal}[{CanPlaySignal(signal)}:{settings.TimeFor(signal)}] at {target} while {CanPlay} with {SelectedEVA}");
             if (!CanPlay) return;
 
             RegisterTarget(target);

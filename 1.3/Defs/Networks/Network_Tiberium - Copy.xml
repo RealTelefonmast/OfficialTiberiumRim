@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.NetworkDef>
+	<TeleCore.NetworkDef>
 		<defName>WasteNetwork</defName>
 		<containerLabel>Waste Storage</containerLabel>
 		<controllerDef>TiberiumNetworkController</controllerDef>
-		<transmitter>TiberiumPipe</transmitter>
+		<transmitterDef>TiberiumPipe</transmitterDef>
 		<transmitterGraphic>
 			<texPath>Buildings/Common/Network/Pipe_Tib</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -16,6 +16,6 @@
 			<shaderType>MetaOverlay</shaderType>
 			<color>(155, 255, 0)</color>
 		</overlayGraphic>
-	</TiberiumRim.NetworkDef>
+	</TeleCore.NetworkDef>
 	
 </Defs>

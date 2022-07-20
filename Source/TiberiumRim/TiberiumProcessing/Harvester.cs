@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RimWorld;
+using TeleCore;
+using TeleCore.Static;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -30,18 +32,7 @@ namespace TiberiumRim
         public float harvestValue = 0.125f;
         public ThingDef wreckDef;
         public ContainerProperties containerProps;
-        public List<NetworkValueDef> allowedValues;
-
-        /*
-        public List<Enum> AllowedTypes
-        {
-            get
-            {
-                if (allowedTypes.NullOrEmpty()) return null;
-                return enumList ??= allowedTypes.Select(t => t.valueType).ToList();
-            }
-        }
-        */
+        public List<NetworkValueDef> handledValues;
     }
 
     public class Harvester : MechanicalPawn, IContainerHolder
@@ -52,6 +43,7 @@ namespace TiberiumRim
         //Data
         private IntVec3 lastKnownPos;
         private CompTNS_Refinery compRefinery;
+        private Comp_AnimationRenderer compAnimation;
 
         //Settings
         private bool forceReturn = false;
@@ -60,6 +52,9 @@ namespace TiberiumRim
         private TiberiumCrystalDef preferredType;
 
         public CompTNS_Refinery RefineryComp => compRefinery;
+        
+        public Comp_AnimationRenderer Animator => compAnimation;
+
         public Building Refinery
         {
             get => ParentBuilding;
@@ -104,12 +99,12 @@ namespace TiberiumRim
         public bool PlayerInterrupt => ShouldReturnToIdle || Drafted;
 
         //Data Bools
-        private bool ContainerFull => Container.CapacityFull;
+        private bool ContainerFull => Container.Full;
 
         private bool HasAvailableTiberium => HarvestMode == HarvestMode.Moss ? TiberiumManager.MossAvailable : TiberiumManager.TiberiumAvailable;
 
         //Priority Bools
-        private bool ShouldIdle    => Container.Empty && (!HasAvailableTiberium || (Container.TotalStored > 0 && RefineryComp.Container.CapacityFull));
+        private bool ShouldIdle    => Container.Empty && (!HasAvailableTiberium || (Container.TotalStored > 0 && RefineryComp.Container.Full));
         private bool ShouldHarvest => !ContainerFull && HasAvailableTiberium;//CurrentPriority == HarvesterPriority.Harvest;
         private bool ShouldUnload  => ContainerFull || (container.TotalStored > 0 && !HasAvailableTiberium);
 
@@ -163,17 +158,18 @@ namespace TiberiumRim
             }
         }
 
-        //FX Settings
-        public override Color[] ColorOverrides => new Color[] { Container.Color };
-        public override float[] OpacityFloats => new float[] { Container.StoredPercent };
-        public override bool[] DrawBools => new bool[] { true };
-
         public Thing Thing => this;
         public string ContainerTitle => "TODO: Harvester Container";
         public NetworkContainer Container => container;
         public ContainerProperties ContainerProps => kindDef.containerProps;
         public bool DropsContents => false;
         public bool LeavesPhysicalContainer => false;
+
+        //FX
+        public override bool FX_AffectsLayerAt(int index) => index == 0;
+        public override Color? FX_GetColorAt(int index) => Container.Color;
+        public override float FX_GetOpacityAt(int index) => Container.StoredPercent;
+        public override bool FX_ShouldDrawAt(int index) => true;
 
         public void Notify_ContainerFull() { }
         public void Notify_ContainerStateChanged()
@@ -194,12 +190,13 @@ namespace TiberiumRim
             Scribe_References.Look(ref preferredProducer, "prefProducer");
             Scribe_Defs.Look(ref preferredType, "prefType");
             //Data
-            Scribe_Deep.Look(ref container, "tibContainer", this, kindDef.allowedValues);
+            Scribe_Deep.Look(ref container, "tibContainer", this, kindDef.handledValues);
             Scribe_Values.Look(ref lastKnownPos, "lastPos");
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
-                if(Refinery != null)
+                compAnimation = this.GetComp<Comp_AnimationRenderer>();
+                if (Refinery != null)
                 {
                     compRefinery = Refinery.GetComp<CompTNS_Refinery>();
                 }
@@ -213,9 +210,10 @@ namespace TiberiumRim
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
+            compAnimation = this.GetComp<Comp_AnimationRenderer>();
             if (!respawningAfterLoad)
             {
-                container = new NetworkContainer(this, kindDef.allowedValues);
+                container = new NetworkContainer(this, kindDef.handledValues);
                 if (ParentBuilding == null)
                 { 
                     ResolveNewRefinery(); 
@@ -233,7 +231,7 @@ namespace TiberiumRim
         public override void Kill(DamageInfo? dinfo, Hediff exactCulprit = null)
         {
             base.Kill(dinfo, exactCulprit);
-            Container.Parent_Destroyed(DestroyMode.KillFinalize, Map);
+            Container.Notify_ParentDestroyed(DestroyMode.KillFinalize, Map);
             GenSpawn.Spawn(kindDef.wreckDef, Position, Map);
             this.DeSpawn(DestroyMode.KillFinalize);
         }
@@ -275,7 +273,7 @@ namespace TiberiumRim
 
         private void ResolveNewRefinery(CompTNS_Refinery lastParent = null)
         {
-            var Refineries = NetworkInfo[TiberiumDefOf.TiberiumNetwork].TotalComponentSet.Producers;
+            var Refineries = NetworkInfo[TiberiumDefOf.TiberiumNetwork].TotalPartSet[NetworkRole.Producer];
             if (Refineries.Count <= 0) return;
 
             foreach (var refinery in Refineries)
@@ -471,8 +469,7 @@ namespace TiberiumRim
             if (failedTibSearches > 10)
             {
                 //Start idle hour
-                idleTicksLeft = GenDate.TicksPerHour * 2;
-
+                idleTicksLeft = Mathf.RoundToInt(GenDate.TicksPerHour * 0.75f);
                 failedTibSearches = 0;
             }
         }

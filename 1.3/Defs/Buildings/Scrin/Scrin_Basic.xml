@@ -14,12 +14,8 @@
 			<texPath>Buildings/Scrin/DronePlatform/platform</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(4.5,9)</drawSize>
-		</graphicData>
-		<extraData>
-			<rotateDrawSize>false</rotateDrawSize>
-			<alignToBottom>false</alignToBottom>
 			<drawOffset>(0,0,0.175)</drawOffset>
-		</extraData>
+		</graphicData>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<stealable>false</stealable>
 		<rotatable>false</rotatable>
@@ -31,7 +27,7 @@
 			<Beauty>5</Beauty>
 		</statBases>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					
 					<li>
@@ -41,10 +37,10 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(4.5,9)</drawSize>
 						</data>
-						<mode>Pulse</mode>
-					    <pulse>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.55~0.9</opacityRange>
-						</pulse>
+						</fade>
 					</li>
 				</overlays>
 			</li>
@@ -63,6 +59,14 @@
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_OnlyOutside</li>
 		</placeWorkers>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<graphics>
+					<rotateDrawSize>false</rotateDrawSize>
+					<alignToBottom>false</alignToBottom>
+				</graphics>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 
 	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
@@ -83,7 +87,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<!--
 					<li>
@@ -105,11 +109,13 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>2.5</drawSize>
 						</data>
-						<mode>Pulse</mode>
-					    <pulse>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.35~0.65</opacityRange>
+						</fade>
+						<resize>
 							<sizeRange>0.4~1.05</sizeRange>
-						</pulse>
+						</resize>
 					</li>
 					<li>
 						<data>
@@ -118,11 +124,13 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>2.5</drawSize>
 						</data>
-						<mode>Pulse</mode>
-					    <pulse>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.35~0.65</opacityRange>
+						</fade>
+						<resize>
 							<sizeRange>0.4~1.05</sizeRange>
-						</pulse>
+						</resize>
 					</li>
 					<li>
 						<data>
@@ -145,11 +153,11 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.5,2.5)</drawSize>
 						</data>
-						<mode>Pulse</mode>
-					    <pulse>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.0~0.85</opacityRange>
 							<sizeRange>0.9~1</sizeRange>
-						</pulse>
+						</fade>
 					</li>
 					<li>
 						<data>
@@ -158,11 +166,11 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.5,2.5)</drawSize>
 						</data>
-						<mode>Pulse</mode>
-						<pulse>
+						<mode>Dynamic</mode>
+						<fade>
 							<opacityRange>0.8~0</opacityRange>
 							<sizeRange>0.65~1.25</sizeRange>
-						</pulse>
+						</fade>
 					</li>
 					<li>
 						<data>

@@ -25,8 +25,8 @@
 			<li>ShocktrooperGun</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(0, 0, 1)</li>
 				</originOffsets>
@@ -69,8 +69,8 @@
 			<li>DisintegratorGun</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaserC</damageDef>
 					<damageBase>12</damageBase>
@@ -124,8 +124,8 @@
 			<li>MechapedeGun</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaserC</damageDef>
 					<damageBase>18</damageBase>
@@ -183,8 +183,8 @@
 		<tradeability>None</tradeability>
 		<techLevel>Ultra</techLevel>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaserC</damageDef>
 					<damageBase>45</damageBase>

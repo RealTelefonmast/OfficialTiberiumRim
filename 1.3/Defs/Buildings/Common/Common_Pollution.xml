@@ -2,6 +2,96 @@
 <Defs>
 
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>AtmosphericPump</defName>
+		<label>Atmospheric Pump</label>
+		<description>.</description>
+		<thingCategories Inherit="false" />
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Pollution</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Network/Node/Node</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.25,4.5)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToBuild>1000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-5</Beauty>
+		</statBases>
+		<size>(2,4)</size>
+		<costList>
+			<Steel>100</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T2</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<comps>
+			<li Class="TeleCore.CompProperties_NetworkStructure">
+				<!--<compClass>TiberiumRim.Comp_ANS_Filter</compClass>-->
+				<networks>
+					<li>
+						<networkDef>AtmosphericNetwork</networkDef>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Controller</li>
+							<li>Storage</li>
+						</networkRoles>
+						<containerProps>
+							<maxStorage>1000</maxStorage>
+							<dropContents>false</dropContents>
+						</containerProps>
+						<handledValues>	
+							<li>TibPollution</li>					
+						</handledValues>
+					</li>
+				</networks>
+				<!--<generalIOPattern>++|++</generalIOPattern>-->
+			</li>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Network/Node/Overlay1</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,4.5)</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+						<needsPower>false</needsPower>
+					</li>
+					<li><skip>true</skip></li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Network/Node/Overlay2</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,4.5)</drawSize>
+						</data>
+						<needsPower>true</needsPower>
+					</li>
+				</overlays>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1000</basePowerConsumption>
+			</li>
+		</comps>
+		<rotatable>true</rotatable>
+		<tickerType>Never</tickerType>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>	
+		<fillPercent>1</fillPercent>			
+		<surfaceType>Item</surfaceType>
+	</TiberiumRim.TRThingDef>
+
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>PollutionFilter</defName>
 		<label>pollution filter</label>
 		<description>.</description>
@@ -34,27 +124,26 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+			<li Class="TeleCore.CompProperties_NetworkStructure">
 				<compClass>TiberiumRim.Comp_ANS_Filter</compClass>
 				<networks>
 					<li>
 						<networkDef>AtmosphericNetwork</networkDef>
 						<networkRoles>
 							<li>Transmitter</li>
-							<li>Controller</li>
+							<li>Requester</li>
 							<li>Storage</li>
 						</networkRoles>
 						<containerProps>
 							<maxStorage>750</maxStorage>
 							<dropContents>false</dropContents>
 						</containerProps>
-						<allowedValues>	
+						<handledValues>	
 							<li>TibPollution</li>					
-						</allowedValues>
+						</handledValues>
 					</li>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
-						<storeEvenly>false</storeEvenly>	
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Producer</li>
@@ -63,15 +152,16 @@
 							<maxStorage>1250</maxStorage>
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
+							<storeEvenly>false</storeEvenly>	
 						</containerProps>
-						<allowedValues>	
+						<handledValues>	
 							<li>TibSludge</li>					
-						</allowedValues>
+						</handledValues>
 					</li>
 				</networks>
-				<connectionPattern>++|++</connectionPattern>
+				<generalIOPattern>++|++</generalIOPattern>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -118,10 +208,8 @@
 			<texPath>Buildings/Common/Pollution/Intake/base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1.25,1.25)</drawSize>
-		</graphicData>
-		<extraData>
 			<drawOffset>(0,0,0.1)</drawOffset>
-		</extraData>
+		</graphicData>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToBuild>1500</WorkToBuild>
@@ -146,14 +234,14 @@
 							<maxStorage>100</maxStorage>
 							<dropContents>false</dropContents>
 						</containerProps>
-						<allowedValues>	
+						<handledValues>	
 							<li>TibPollution</li>					
-						</allowedValues>
+						</handledValues>
 					</li>
 				</networks>
-				<connectionPattern>+</connectionPattern>
+				<generalIOPattern>+</generalIOPattern>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li><skip>true</skip></li>
 					<li><skip>true</skip></li>
@@ -162,10 +250,13 @@
 							<texPath>Buildings/Common/Pollution/Intake/fan</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(1.25,1.25)</drawSize>
+							<drawOffset>(0,0,0.1)</drawOffset>
 						</data>
 						<mode>Dynamic</mode>
+						<rotate>
+							<rotationSpeed>75</rotationSpeed>
+						</rotate>
 						<drawOffset>(0,0,0.1)</drawOffset>
-						<rotationSpeed>75</rotationSpeed>
 						<needsPower>false</needsPower>
 					</li>
 					<li>
@@ -173,6 +264,7 @@
 							<texPath>Buildings/Common/Pollution/Intake/top</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(1.25,1.25)</drawSize>
+							<drawOffset>(0,0,0.1)</drawOffset>
 						</data>
 						<needsPower>false</needsPower>
 					</li>
@@ -230,18 +322,22 @@
 						<networkDef>AtmosphericNetwork</networkDef>
 						<networkRoles>
 							<li>Transmitter</li>
-							<li>Consumer</li>
+							<li>Requester</li>
 						</networkRoles>
 						<containerProps>
 							<maxStorage>100</maxStorage>
 							<dropContents>false</dropContents>
 						</containerProps>
-						<allowedValues>	
+						<handledValues>	
 							<li>TibPollution</li>					
-						</allowedValues>
+						</handledValues>
 					</li>
 				</networks>
-				<connectionPattern>+</connectionPattern>
+				<generalIOPattern>+</generalIOPattern>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>45</basePowerConsumption>
 			</li>
 		</comps>
 		<requisites>

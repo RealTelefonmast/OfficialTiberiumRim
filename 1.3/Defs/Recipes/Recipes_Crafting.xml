@@ -1,118 +1,166 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	
-	<TiberiumRim.AtomicRecipePreset>
+	<TeleCore.CustomRecipePresetDef>
 		<defName>MakeComponentPreset</defName>
 		<label>Make Components</label>
+		<tags>
+			<li>TiberiumPresets</li>
+		</tags>
 		<desiredResources>
 			<MakeComponent>5</MakeComponent>
 		</desiredResources>
-	</TiberiumRim.AtomicRecipePreset>
+	</TeleCore.CustomRecipePresetDef>
 	
-	<TiberiumRim.AtomicRecipePreset>
+	<TeleCore.CustomRecipePresetDef>
 		<defName>MakeSteelPreset</defName>
 		<label>Make Steel</label>
+		<tags>
+			<li>TiberiumPresets</li>
+		</tags>
 		<desiredResources>
 			<MakeElementalSteel>15</MakeElementalSteel>
 		</desiredResources>
-	</TiberiumRim.AtomicRecipePreset>
+	</TeleCore.CustomRecipePresetDef>
 	
-	<TiberiumRim.AtomicRecipePreset>
+	<TeleCore.CustomRecipePresetDef>
 		<defName>MakeSteelBulkPreset</defName>
 		<label>Make Steel (Bulk)</label>
+		<tags>
+			<li>TiberiumPresets</li>
+		</tags>
 		<desiredResources>
 			<MakeElementalSteel>150</MakeElementalSteel>
 		</desiredResources>
-	</TiberiumRim.AtomicRecipePreset>
+	</TeleCore.CustomRecipePresetDef>
 	
-	<TiberiumRim.AtomicRecipePreset>
+	<TeleCore.CustomRecipePresetDef>
 		<defName>MakePlasteelPreset</defName>
 		<label>Make Plasteel</label>
+		<tags>
+			<li>TiberiumPresets</li>
+		</tags>
 		<desiredResources>
 			<MakeElementalPlasteel>5</MakeElementalPlasteel>
 		</desiredResources>
-	</TiberiumRim.AtomicRecipePreset>
+	</TeleCore.CustomRecipePresetDef>
 	
-	<TiberiumRim.AtomicRecipePreset>
+	<TeleCore.CustomRecipePresetDef>
 		<defName>MakePlasteelBulkPreset</defName>
 		<label>Make Plasteel (Bulk)</label>
+		<tags>
+			<li>TiberiumPresets</li>
+		</tags>
 		<desiredResources>
 			<MakeElementalPlasteel>75</MakeElementalPlasteel>
 		</desiredResources>
-	</TiberiumRim.AtomicRecipePreset>
+	</TeleCore.CustomRecipePresetDef>
 	
+	<TeleCore.CustomRecipePresetDef>
+		<defName>MakeChemfuelPreset</defName>
+		<label>Make Chemfuel</label>
+		<tags>
+			<li>TiberiumPresets</li>
+		</tags>
+		<desiredResources>
+			<MakeChemfuel>5</MakeChemfuel>
+		</desiredResources>
+	</TeleCore.CustomRecipePresetDef>
 	
-	<TiberiumRim.AtomicRecipePreset>
+	<TeleCore.CustomRecipePresetDef>
 		<defName>MakeUraniumPreset</defName>
 		<label>Make Uranium</label>
+		<tags>
+			<li>TiberiumPresets</li>
+		</tags>
 		<desiredResources>
 			<MakeElementalUranium>5</MakeElementalUranium>
 		</desiredResources>
-	</TiberiumRim.AtomicRecipePreset>
+	</TeleCore.CustomRecipePresetDef>
 	
-	<TiberiumRim.AtomicRecipePreset>
+	<TeleCore.CustomRecipePresetDef>
 		<defName>MakeUraniumBulkPreset</defName>
 		<label>Make Uranium (Bulk)</label>
+		<tags>
+			<li>TiberiumPresets</li>
+		</tags>
 		<desiredResources>
 			<MakeElementalUranium>75</MakeElementalUranium>
 		</desiredResources>
-	</TiberiumRim.AtomicRecipePreset>
+	</TeleCore.CustomRecipePresetDef>
 	
-	
-	<TiberiumRim.AtomicRecipePreset>
+	<TeleCore.CustomRecipePresetDef>
 		<defName>MakeGoldPreset</defName>
 		<label>Make Gold</label>
+		<tags>
+			<li>TiberiumPresets</li>
+		</tags>
 		<desiredResources>
 			<MakeElementalGold>5</MakeElementalGold>
 		</desiredResources>
-	</TiberiumRim.AtomicRecipePreset>
+	</TeleCore.CustomRecipePresetDef>
 	
-	<TiberiumRim.AtomicRecipePreset>
+	<TeleCore.CustomRecipePresetDef>
 		<defName>MakeGoldBulkPreset</defName>
 		<label>Make Gold (Bulk)</label>
+		<tags>
+			<li>TiberiumPresets</li>
+		</tags>
 		<desiredResources>
 			<MakeElementalGold>75</MakeElementalGold>
 		</desiredResources>
-	</TiberiumRim.AtomicRecipePreset>
+	</TeleCore.CustomRecipePresetDef>
 	
 	<!---->
-	<TiberiumRim.AtomicRecipeDef>
+	<TeleCore.CustomRecipeRatioDef>
 		<defName>MakeElementalSteel</defName>
+		<tags>
+			<li>TiberiumRatios</li>
+		</tags>
 		<inputRatio>
 			<li>Carbon,25</li>
 			<li>Iron,25</li>
 		</inputRatio>
 		<result>Steel</result>
-	</TiberiumRim.AtomicRecipeDef>
+	</TeleCore.CustomRecipeRatioDef>
 	
-	<TiberiumRim.AtomicRecipeDef>
+	<TeleCore.CustomRecipeRatioDef>
 		<defName>MakeElementalPlasteel</defName>
+		<tags>
+			<li>TiberiumRatios</li>
+		</tags>
 		<inputRatio>
 			<li>Carbon,100</li>
 			<li>Exotic,25</li>
 			<li>Iron,100</li>
 		</inputRatio>
 		<result>Plasteel</result>
-	</TiberiumRim.AtomicRecipeDef>
+	</TeleCore.CustomRecipeRatioDef>
 	
-	<TiberiumRim.AtomicRecipeDef>
+	<TeleCore.CustomRecipeRatioDef>
 		<defName>MakeElementalUranium</defName>
+		<tags>
+			<li>TiberiumRatios</li>
+		</tags>
 		<inputRatio>
 			<li>Uranium,25</li>
 		</inputRatio>
 		<result>Uranium</result>
-	</TiberiumRim.AtomicRecipeDef>
+	</TeleCore.CustomRecipeRatioDef>
 	
-	<TiberiumRim.AtomicRecipeDef>
+	<TeleCore.CustomRecipeRatioDef>
 		<defName>MakeElementalGold</defName>
+		<tags>
+			<li>TiberiumRatios</li>
+		</tags>
 		<inputRatio>
 			<li>Gold,20</li>
 		</inputRatio>
 		<result>Gold</result>
-	</TiberiumRim.AtomicRecipeDef>
+	</TeleCore.CustomRecipeRatioDef>
 	
 	<!---->
-	<TiberiumRim.AtomicRecipeDef>
+	<TeleCore.CustomRecipeRatioDef>
 		<defName>MakeComponent</defName>
 		<inputRatio>
 			<li>Iron,100</li>
@@ -120,9 +168,9 @@
 			<li>Silicon,50</li>
 		</inputRatio>
 		<result>ComponentIndustrial</result>
-	</TiberiumRim.AtomicRecipeDef>
+	</TeleCore.CustomRecipeRatioDef>
 	
-	<TiberiumRim.AtomicRecipeDef>
+	<TeleCore.CustomRecipeRatioDef>
 		<defName>MakeCarbonPlate</defName>
 		<inputRatio>
 			<li>Iron,25</li>
@@ -130,9 +178,9 @@
 			<li>Calcium,75</li>		
 		</inputRatio>
 		<result>Nod_CarbonPlate</result>
-	</TiberiumRim.AtomicRecipeDef>
+	</TeleCore.CustomRecipeRatioDef>
 	
-	<TiberiumRim.AtomicRecipeDef>
+	<TeleCore.CustomRecipeRatioDef>
 		<defName>MakeReinforcedPlate</defName>
 		<inputRatio>
 			<li>Iron,100</li>
@@ -140,20 +188,19 @@
 			<li>Phosphorus,50</li>		
 		</inputRatio>
 		<result>GDI_ReinforcedPlate</result>
-	</TiberiumRim.AtomicRecipeDef>
+	</TeleCore.CustomRecipeRatioDef>
 	
-	<!--
-	<TiberiumRim.AtomicRecipeDef>
+	<TeleCore.CustomRecipeRatioDef>
 		<defName>MakeChemfuel</defName>
 		<inputRatio>
-			<li>Carbon,10</li>
-			<li>Iron,90</li>
+			<li>Calcium,100</li>
+			<li>Carbon,200</li>
+			<li>Phosphorus,100</li>
 		</inputRatio>
 		<result>Chemfuel</result>
-	</TiberiumRim.AtomicRecipeDef>
-	-->
+	</TeleCore.CustomRecipeRatioDef>
 	
-	<TiberiumRim.TRecipeDef>
+	<TeleCore.RecipeDef_Network>
 		<defName>ExtractSteel</defName>
 		<label>Get Steel</label>
 		<description>Extract steel from the stored Tiberium.\n\nYou will get 5 steel for 30 Tiberium credits.</description>
@@ -176,10 +223,194 @@
 			<li>TiberiumCrafter</li>
 		</recipeUsers>
 		<workSkill>Crafting</workSkill>
-	</TiberiumRim.TRecipeDef>	
+	</TeleCore.RecipeDef_Network>	
 	
+	
+	<!-- TEMPORARY -->
+<!--
+	<TeleCore.CustomRecipeRatioDef>
+		<defName>MakeChemfuel</defName>
+		<inputRatio>
+			<li>Calcium,100</li>
+			<li>Carbon,200</li>
+			<li>Phosphorus,100</li>
+		</inputRatio>
+		<result>Chemfuel</result>
+	</TeleCore.CustomRecipeRatioDef>
+-->	
+	<TeleCore.CustomRecipePresetDef>
+		<defName>MakeSilverFrom_Iron_Preset</defName>
+		<label>Make Silver (Iron)</label>
+		<desiredResources>
+			<MakeSilverFromIron>1</MakeSilverFromIron>
+		</desiredResources>
+	</TeleCore.CustomRecipePresetDef>
+
+	<TeleCore.CustomRecipePresetDef>
+		<defName>MakeSilverFrom_Copper_Preset</defName>
+		<label>Make Silver (Copper)</label>
+		<desiredResources>
+			<MakeSilverFromCopper>1</MakeSilverFromCopper>
+		</desiredResources>
+	</TeleCore.CustomRecipePresetDef>
+
+	<TeleCore.CustomRecipePresetDef>
+		<defName>MakeSilverFrom_Silver_Preset</defName>
+		<label>Make Silver (Silver)</label>
+		<desiredResources>
+			<MakeSilverFromSilver>1</MakeSilverFromSilver>
+		</desiredResources>
+	</TeleCore.CustomRecipePresetDef>
+	
+	<TeleCore.CustomRecipePresetDef>
+		<defName>MakeSilverFrom_Gold_Preset</defName>
+		<label>Make Silver (Gold)</label>
+		<desiredResources>
+			<MakeSilverFromGold>1</MakeSilverFromGold>
+		</desiredResources>
+	</TeleCore.CustomRecipePresetDef>
+	
+	<TeleCore.CustomRecipePresetDef>
+		<defName>MakeSilverFrom_Uranium_Preset</defName>
+		<label>Make Silver (Uranium)</label>
+		<desiredResources>
+			<MakeSilverFromUranium>1</MakeSilverFromUranium>
+		</desiredResources>
+	</TeleCore.CustomRecipePresetDef>
+	
+	<TeleCore.CustomRecipePresetDef>
+		<defName>MakeSilverFrom_Carbon_Preset</defName>
+		<label>Make Silver (Carbon)</label>
+		<desiredResources>
+			<MakeSilverFromCarbon>1</MakeSilverFromCarbon>
+		</desiredResources>
+	</TeleCore.CustomRecipePresetDef>
+	
+	<TeleCore.CustomRecipePresetDef>
+		<defName>MakeSilverFrom_Phosphorus_Preset</defName>
+		<label>Make Silver (Phosphorus)</label>
+		<desiredResources>
+			<MakeSilverFromPhosphorus>1</MakeSilverFromPhosphorus>
+		</desiredResources>
+	</TeleCore.CustomRecipePresetDef>
+	
+	<TeleCore.CustomRecipePresetDef>
+		<defName>MakeSilverFrom_Calcium_Preset</defName>
+		<label>Make Silver (Calcium)</label>
+		<desiredResources>
+			<MakeSilverFromCalcium>1</MakeSilverFromCalcium>
+		</desiredResources>
+	</TeleCore.CustomRecipePresetDef>
+	
+	<TeleCore.CustomRecipePresetDef>
+		<defName>MakeSilverFrom_Silicon_Preset</defName>
+		<label>Make Silver (Silicon)</label>
+		<desiredResources>
+			<MakeSilverFromSilicon>1</MakeSilverFromSilicon>
+		</desiredResources>
+	</TeleCore.CustomRecipePresetDef>
+	
+	<TeleCore.CustomRecipePresetDef>
+		<defName>MakeSilverFrom_Exotic_Preset</defName>
+		<label>Make Silver (Exotic)</label>
+		<desiredResources>
+			<MakeSilverFromExotic>1</MakeSilverFromExotic>
+		</desiredResources>
+	</TeleCore.CustomRecipePresetDef>
+
+	<!---->
+	<TeleCore.CustomRecipeRatioDef>
+		<defName>MakeSilverFromIron</defName>
+		<hidden>true</hidden>
+		<inputRatio>
+			<li>Iron,100</li>
+		</inputRatio>
+		<result>Silver</result>
+	</TeleCore.CustomRecipeRatioDef>
+
+	<TeleCore.CustomRecipeRatioDef>
+		<defName>MakeSilverFromCopper</defName>
+		<hidden>true</hidden>
+		<inputRatio>
+			<li>Copper,100</li>
+		</inputRatio>
+		<result>Silver</result>
+	</TeleCore.CustomRecipeRatioDef>
+	
+	<TeleCore.CustomRecipeRatioDef>
+		<defName>MakeSilverFromSilver</defName>
+		<hidden>true</hidden>
+		<inputRatio>
+			<li>Silver,25</li>
+		</inputRatio>
+		<result>Silver</result>
+	</TeleCore.CustomRecipeRatioDef>
+	
+	<TeleCore.CustomRecipeRatioDef>
+		<defName>MakeSilverFromGold</defName>
+		<hidden>true</hidden>
+		<inputRatio>
+			<li>Gold,10</li>
+		</inputRatio>
+		<result>Silver</result>
+	</TeleCore.CustomRecipeRatioDef>
+	
+	<TeleCore.CustomRecipeRatioDef>
+		<defName>MakeSilverFromUranium</defName>
+		<hidden>true</hidden>
+		<inputRatio>
+			<li>Uranium,100</li>
+		</inputRatio>
+		<result>Silver</result>
+	</TeleCore.CustomRecipeRatioDef>
+	
+	<TeleCore.CustomRecipeRatioDef>
+		<defName>MakeSilverFromCarbon</defName>
+		<hidden>true</hidden>
+		<inputRatio>
+			<li>Carbon,100</li>
+		</inputRatio>
+		<result>Silver</result>
+	</TeleCore.CustomRecipeRatioDef>
+	
+	<TeleCore.CustomRecipeRatioDef>
+		<defName>MakeSilverFromPhosphorus</defName>
+		<hidden>true</hidden>
+		<inputRatio>
+			<li>Phosphorus,100</li>
+		</inputRatio>
+		<result>Silver</result>
+	</TeleCore.CustomRecipeRatioDef>
+	
+	<TeleCore.CustomRecipeRatioDef>
+		<defName>MakeSilverFromCalcium</defName>
+		<hidden>true</hidden>
+		<inputRatio>
+			<li>Calcium,100</li>
+		</inputRatio>
+		<result>Silver</result>
+	</TeleCore.CustomRecipeRatioDef>
+	
+	<TeleCore.CustomRecipeRatioDef>
+		<defName>MakeSilverFromSilicon</defName>
+		<hidden>true</hidden>
+		<inputRatio>
+			<li>Silicon,100</li>
+		</inputRatio>
+		<result>Silver</result>
+	</TeleCore.CustomRecipeRatioDef>
+	
+	<TeleCore.CustomRecipeRatioDef>
+		<defName>MakeSilverFromExotic</defName>
+		<hidden>true</hidden>
+		<inputRatio>
+			<li>Exotic,1</li>
+		</inputRatio>
+		<result>Silver</result>
+	</TeleCore.CustomRecipeRatioDef>
+
 	<!--
-	<TiberiumRim.TRecipeDef>
+	<TeleCore.RecipeDef_Network>
 		<defName>ExtractSteel</defName>
 		<label>Get Steel</label>
 		<description>Extract steel from the stored Tiberium.\n\nYou will get 5 steel for 30 Tiberium credits.</description>
@@ -199,9 +430,9 @@
 			<Steel>15</Steel>
 		</products>
 		<workSkill>Crafting</workSkill>
-	</TiberiumRim.TRecipeDef>	
+	</TeleCore.RecipeDef_Network>	
 	
-	<RecipeDef Class="TiberiumRim.TRecipeDef">
+	<RecipeDef Class="TeleCore.RecipeDef_Network">
 		<defName>ExtractPlasteel</defName>
 		<label>Get Plasteel</label>
 		<description>Extract plasteel from the stored Tiberium.\n\nYou will get 5 plasteel for 210 Tiberium credits.</description>
@@ -223,7 +454,7 @@
 		<workSkill>Crafting</workSkill>
 	</RecipeDef>
 
-	<RecipeDef Class="TiberiumRim.TRecipeDef">
+	<RecipeDef Class="TeleCore.RecipeDef_Network">
 		<defName>ExtractGold</defName>
 		<label>Get Gold</label>
 		<description>Extract gold from the stored Tiberium.\n\nYou will get 5 gold for 150 Tiberium credits.</description>
@@ -245,7 +476,7 @@
 		<workSkill>Crafting</workSkill>
 	</RecipeDef>
 	
-	<RecipeDef Class="TiberiumRim.TRecipeDef">
+	<RecipeDef Class="TeleCore.RecipeDef_Network">
 		<defName>ExtractUranium</defName>
 		<label>Get Uranium</label>
 		<description>Extract uranium from the stored Tiberium.\n\nYou will get 5 uranium for 90 Tiberium credits.</description>
@@ -267,7 +498,7 @@
 		<workSkill>Crafting</workSkill>
 	</RecipeDef>
 	
-	<RecipeDef Class="TiberiumRim.TRecipeDef">
+	<RecipeDef Class="TeleCore.RecipeDef_Network">
 		<defName>BurnSludge</defName>
 		<label>Burn Sludge</label>
 		<description>Get rid of the useless sludge.</description>

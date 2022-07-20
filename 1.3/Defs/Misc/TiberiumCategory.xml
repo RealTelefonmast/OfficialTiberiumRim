@@ -6,7 +6,7 @@
 		<label>Tiberium</label>
 		<parent>Root</parent>
 		<resourceReadoutRoot>true</resourceReadoutRoot>
-		<iconPath>UI/Icons/ThingCategories/TiberiumCategory</iconPath>
+		<iconPath>UI/Icons/Tiberium/Tiberium_RGB</iconPath>
 	</ThingCategoryDef>
 
 	<ThingCategoryDef>
@@ -14,7 +14,7 @@
 		<label>Tiberium Items</label>
 		<parent>Tiberium</parent>
 		<resourceReadoutRoot>true</resourceReadoutRoot>
-		<iconPath>UI/Icons/ThingCategories/TiberiumCategory</iconPath>
+		<iconPath>UI/Icons/Tiberium/Tiberium_RGB</iconPath>
 	</ThingCategoryDef>
 
 	<ThingCategoryDef>
@@ -22,9 +22,10 @@
 		<label>Tiberium Misc</label>
 		<parent>Tiberium</parent>
 		<resourceReadoutRoot>true</resourceReadoutRoot>
-		<iconPath>UI/Icons/ThingCategories/TiberiumCategory</iconPath>
+		<iconPath>UI/Icons/Tiberium/Tiberium_RGB</iconPath>
 	</ThingCategoryDef>
 
+	<!---->
 	<ThingCategoryDef>
 		<defName>BodyPartsTiberium</defName>
 		<label>tiberium parts</label>
@@ -44,46 +45,44 @@
 	<!--for Apparels-->
 	<ThingCategoryDef>
 		<defName>TRApparels</defName>
-		<label>tiberium adaptive gears</label>
+		<label>tiberium protection suits</label>
 		<parent>Apparel</parent>
 	</ThingCategoryDef>
 	
 	<ThingCategoryDef>
 		<defName>TRApparelsETC</defName>
-		<label>common adaptive gears</label>
+		<label>basic tiberium protection suits</label>
 		<parent>TRApparels</parent>
 	</ThingCategoryDef>
 
 	<ThingCategoryDef>
 		<defName>TRHelmetsETC</defName>
-		<label>common adaptive headgears</label>
+		<label>basic tiberium protection helmets</label>
 		<parent>TRApparelsETC</parent>
 	</ThingCategoryDef>
 
 	<ThingCategoryDef>
 		<defName>TRApparelsGDI</defName>
-		<label>GDI gears</label>
+		<label>GDI armors</label>
 		<parent>TRApparels</parent>
 	</ThingCategoryDef>
 
 	<ThingCategoryDef>
 		<defName>TRHelmetsGDI</defName>
-		<label>GDI headgears</label>
+		<label>GDI helmets</label>
 		<parent>TRApparelsGDI</parent>
 	</ThingCategoryDef>
 	
 	<ThingCategoryDef>
 		<defName>TRApparelsNod</defName>
-		<label>Nod gears</label>
+		<label>Nod armors</label>
 		<parent>TRApparels</parent>
 	</ThingCategoryDef>
 
 	<ThingCategoryDef>
 		<defName>TRHelmetsNod</defName>
-		<label>Nod headgears</label>
+		<label>Nod helmets</label>
 		<parent>TRApparelsNod</parent>
 	</ThingCategoryDef>
-
-
 
 </Defs>

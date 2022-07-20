@@ -4,6 +4,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -33,7 +34,7 @@ namespace TiberiumRim
         public float ContentPercent => depositValue / maxDepositValue;
         public bool IsEmpty => depositValue <= 0;
         public bool Bursting => burstTicksLeft > 0;
-        public override bool ShouldDoEffecters => tiberiumSpike.Spawned;
+        public override bool ShouldThrowFlecks => tiberiumSpike.Spawned;
 
         public override void ExposeData()
         {
@@ -55,7 +56,7 @@ namespace TiberiumRim
                     depositValue--;
                     GenTemperature.PushHeat(this, 40f);
                     var cell = this.OccupiedRect().ExpandedBy(1).RandomCell;
-                    TiberiumComp.AtmosphericInfo.TrySpawnGasAt(cell, ThingDef.Named("Gas_TiberiumGas"), Rand.Range(500, 1000));
+                    TiberiumComp.AtmosphericInfo.TrySpawnGasAt(cell, TiberiumDefOf.Gas_TiberiumGas, Rand.Range(500, 1000));
                 }
                 
             }, StartSpray, EndSpray);
@@ -113,7 +114,7 @@ namespace TiberiumRim
             //Do spray when not covered by a spike
             if (spraySustainer != null && Find.TickManager.TicksGame > sustainerStartTick + 1000)
             {
-                TLog.Warning("Tiberium Geyser spray sustainer still playing after 1000 ticks. Force-ending.");
+                TRLog.Warning("Tiberium Geyser spray sustainer still playing after 1000 ticks. Force-ending.");
                 spraySustainer.End();
                 spraySustainer = null;
             }

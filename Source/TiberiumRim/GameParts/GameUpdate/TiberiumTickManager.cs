@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Verse;
 
 namespace TiberiumRim
 {
@@ -14,13 +15,39 @@ namespace TiberiumRim
 
         private float realTimeToTickThrough;
         private bool isPaused = false;
-        private Action actions;
+
+        private Action UITickers;
+        private Action GameTickers;
 
         private int timeControlTicks;
 
-        private float CurTimePerTick => 1f / (60f);
         public bool Paused => isPaused;
+
+        public bool GameActive => Current.Game != null && Current.ProgramState == ProgramState.Playing;
+        public bool GamePaused => !GameActive || Find.TickManager.Paused;
+
         public int CurrentTick => timeControlTicks;
+
+        private float ReusedTickRateMultiplier
+        {
+            get
+            {
+                if (!GameActive) return 0;
+                return Find.TickManager?.TickRateMultiplier ?? 0;
+            }
+        }
+
+        private float CurTimePerTick
+        {
+            get
+            {
+                if (!GameActive) return 1f / (60f);
+
+                if (ReusedTickRateMultiplier == 0f) return 0f;
+
+                return 1f / (60f * ReusedTickRateMultiplier);
+            }
+        }
 
         public TiberiumTickManager()
         {
@@ -44,7 +71,16 @@ namespace TiberiumRim
             clock.Start();
             while (realTimeToTickThrough > 0f && (float)num < 2)
             {
-                DoSingleTick();
+                //Ticking
+                timeControlTicks++;
+
+                if(!GamePaused)
+                    GameTickers?.Invoke();
+
+                UITickers?.Invoke();
+
+
+                //
                 realTimeToTickThrough -= curTimePerTick;
                 num++;
 
@@ -55,10 +91,9 @@ namespace TiberiumRim
             }
         }
 
-        private void DoSingleTick()
+        public void ClearGameTickers()
         {
-            timeControlTicks++;
-            actions?.Invoke();
+            GameTickers = null;
         }
 
         public void TogglePlay()
@@ -66,9 +101,14 @@ namespace TiberiumRim
             isPaused = !isPaused;
         }
 
-        public void RegisterTickAction(Action action)
+        public void RegisterUITickAction(Action action)
         {
-            actions += action;
+            UITickers += action;
+        }
+
+        public void RegisterMapTickAction(Action action)
+        {
+            GameTickers += action;
         }
     }
 }

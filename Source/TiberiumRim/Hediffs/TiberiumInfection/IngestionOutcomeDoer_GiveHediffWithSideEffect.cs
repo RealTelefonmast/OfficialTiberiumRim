@@ -3,6 +3,7 @@ using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using TeleCore;
 
 namespace TiberiumRim
 {
@@ -125,7 +126,7 @@ namespace TiberiumRim
                 result += "TR_SideEffectWarning".Translate() + "\n";
                 if (!culpritNeeds.NullOrEmpty())
                 {
-                    result += ((string)"TR_SideEffectCulpritNeeds".Translate()).Colorize(Color.red).Bold() + "\n"; ;
+                    result += ((string)"TR_SideEffectCulpritNeeds".Translate()).ColorizeFix(Color.red).Bold() + "\n"; ;
                     foreach (var culpritNeed in culpritNeeds)
                     {
                         result += "     -  " + culpritNeed.LabelCap + "\n"; ;
@@ -135,7 +136,7 @@ namespace TiberiumRim
 
                 if (!culpritHediffs.NullOrEmpty())
                 {
-                    result += "TR_SideEffectCulpritHediffs".Translate().Colorize(Color.red).Bold() + "\n"; ;
+                    result += "TR_SideEffectCulpritHediffs".Translate().ColorizeFix(Color.red).Bold() + "\n"; ;
                     foreach (var culpritHediff in culpritHediffs)
                     {
                         result += "     -  " + culpritHediff.LabelCap + "\n"; ;

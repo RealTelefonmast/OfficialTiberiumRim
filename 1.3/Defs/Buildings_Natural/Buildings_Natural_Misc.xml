@@ -22,7 +22,7 @@
 			<Flammability>0</Flammability>
 		</statBases>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -39,11 +39,11 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
 						</data>
-						<mode>Pulse</mode>
-						<pulse>
+						<mode>Dynamic</mode>
+						<fade>
 							<opacityRange>0.4~0.9</opacityRange>
 							<opacityDuration>90</opacityDuration>
-						</pulse>
+						</fade>
 					</li>
 				</overlays>
 			</li>
@@ -82,7 +82,7 @@
 			<Flammability>0</Flammability>
 		</statBases>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -91,7 +91,7 @@
 							<shaderType>Transparent</shaderType>
 							<drawSize>(1.5,1.5)</drawSize>
 						</data>
-						<mode>Pulse</mode>
+						<mode>Dynamic</mode>
 					</li>
 				</overlays>
 			</li>

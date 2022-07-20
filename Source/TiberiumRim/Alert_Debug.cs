@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RimWorld;
+using TeleCore;
 using Verse;
 
 namespace TiberiumRim
@@ -18,14 +19,14 @@ namespace TiberiumRim
         {
             MapComponent_Tiberium tiberium = Find.CurrentMap.GetComponent<MapComponent_Tiberium>();
             TiberiumMapInfo mapinfo = tiberium.TiberiumInfo;
-            NetworkMaster tiberiumNetworkMaster = tiberium.NetworkInfo[TiberiumDefOf.TiberiumNetwork];
+            PipeNetworkManager tiberiumNetworkMaster = tiberium.NetworkInfo[TiberiumDefOf.TiberiumNetwork];
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Total AllProducers: " + tiberium.NaturalTiberiumStructureInfo.AllProducers.Count);
             int TibCount = tiberium.TiberiumInfo.TotalCount;
             sb.AppendLine("Total Tiberium: " + TibCount);
             sb.AppendLine("Total Cells: " + tiberium.TiberiumInfo.TotalCount);
             sb.AppendLine("Active percent: " + tiberium.TiberiumInfo.Coverage.ToStringPercent());
-            sb.AppendLine($"Networks: {tiberiumNetworkMaster?.Networks?.Count}");
+            //sb.AppendLine($"Networks: {tiberiumNetworkMaster?.?.Count}");
             sb.AppendLine("MapInfo:\n Valuables: " + mapinfo.TiberiumCrystals[HarvestType.Valuable].Count + " - " +
                           mapinfo.TiberiumCrystalTypes[HarvestType.Valuable].Count + " types" + "\n Unvaluables: " +
                           mapinfo.TiberiumCrystals[HarvestType.Unvaluable].Count + " - " +

@@ -4,14 +4,6 @@
 	<TiberiumRim.HediffMutationGroup>
 		<defName>Crystallized</defName>
 		<Skin>CrystalRash</Skin>
-		<!--
-		<Arm>VisceralArm</Arm>
-		<Leg>VisceralLeg</Leg>
-		<Hand></Hand>
-		<Foot></Foot>
-		<Torso></Torso>
-		<Spine>CrystalSpine</Spine>
-		-->
 		<Bone>CrystalBone</Bone>
 	</TiberiumRim.HediffMutationGroup>
 

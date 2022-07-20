@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 using static System.String;
@@ -49,7 +50,7 @@ namespace TiberiumRim
         {
             if (map == null)
             {
-                TLog.Warning("Map is null for Tiberium MapComp getter");
+                TRLog.Warning("Map is null for Tiberium MapComp getter");
                 return null;
             }
             return StaticData.TiberiumMapComp[map.uniqueID];
@@ -85,21 +86,14 @@ namespace TiberiumRim
             return room.Map.Tiberium().RoomInfo[room]?.GetRoomComp<RoomComponent_Atmospheric>();
         }
 
-        public static void RegisterTickAction(this Action action)
+        public static Room GetRoomFast(this IntVec3 pos, Map map)
         {
-            Current.Game.GetComponent<GameComponent_TR>().UpdateManager.Notify_AddNewTickAction(action);
-        }
-
-        public static void EnqueueActionForMainThread(this Action action)
-        {
-            Current.Game.GetComponent<GameComponent_TR>().UpdateManager.Notify_AddNewAction(action);
-        }
-
-        public static bool IsReserved(this Thing thing, out Pawn reservedBy)
-        {
-            var reservations = thing.Map.reservationManager;
-            reservedBy = reservations.ReservationsReadOnly.Find(r => r.Target == thing)?.Claimant;
-            return reservedBy != null;
+            Region validRegion = map.regionGrid.GetValidRegionAt_NoRebuild(pos);
+            if (validRegion != null && validRegion.type.Passable())
+            {
+                return validRegion.Room;
+            }
+            return null;
         }
 
         public static EventLetter SendEventLetter(this LetterStack stack, TaggedString eventLabel, TaggedString eventDesc, EventDef eventDef, LookTargets targets = null)
@@ -120,7 +114,7 @@ namespace TiberiumRim
             TiberiumRimMod mod = LoadedModManager.GetMod<TiberiumRimMod>();
             if (mod == null)
             {
-                TLog.Error("LoadedModManager.GetMod<TiberiumRimMod>() failed");
+                TRLog.Error("LoadedModManager.GetMod<TiberiumRimMod>() failed");
                 return "";
             }
             return mod.Content.RootDir;
@@ -272,7 +266,6 @@ namespace TiberiumRim
             };
         }
 
-
         public static Material GetColoredVersion(this Material mat, Color color)
         {
             Material material = new Material(mat);
@@ -342,19 +335,6 @@ namespace TiberiumRim
             
         }
 
-        public static Dictionary<T, T2> Copy<T, T2>(this Dictionary<T, T2> old)
-        {
-            Dictionary<T, T2> newDict = new Dictionary<T, T2>();
-            foreach (T o in old.Keys)
-                newDict.Add(o, old.TryGetValue(o));
-            return newDict;
-        }
-
-       public static int Index(this IntVec3 vec, Map map)
-        {
-            return map.cellIndices.CellToIndex(vec);
-        }
-
         public static Room GetRoomIndirect(this Thing thing)
         {
             var room = thing.GetRoom();
@@ -370,15 +350,6 @@ namespace TiberiumRim
             PawnGenerationRequest request = new PawnGenerationRequest(kind, faction, context, -1, true, true);
             return PawnGenerator.GeneratePawn(request);
         }
-
-        public static void Move<T>(this List<T> list, int oldIndex, int newIndex)
-        {
-            var item = list[oldIndex];
-            list.RemoveAt(oldIndex);
-            var adjIndex = newIndex;
-            list.Insert(adjIndex, item);
-        }
-
 
         public static List<IntVec3> RemoveCorners(this CellRect rect, int[] range)
         {
@@ -410,31 +381,6 @@ namespace TiberiumRim
             Matrix4x4 matrix = default;
             matrix.SetTRS(pos, rotation.ToQuat(), size);
             return matrix;
-        }
-
-        public static void Draw(Graphic graphic, Vector3 drawPos, Rot4 rot, float? rotation, FXThingDef fxDef)
-        {
-            FXGraphic.GetDrawInfo(graphic, ref drawPos, rot, fxDef?.extraData, fxDef, out _, out var drawMat, out var drawMesh, out var exactRotation, out _);
-            Graphics.DrawMesh(drawMesh, drawPos, rotation?.ToQuat() ?? exactRotation.ToQuat(), drawMat,0);
-        }
-
-        public static void Print(SectionLayer layer, Graphic graphic, ThingWithComps thing, FXThingDef fxDef)
-        {
-            if (graphic is Graphic_Linked || graphic is Graphic_Appearances)
-            {
-                graphic.Print(layer, thing, 0);
-                return;
-            }
-            if (graphic is Graphic_Random rand)
-                graphic = rand.SubGraphicFor(thing);
-            var drawPos = thing.DrawPos;
-            FXGraphic.GetDrawInfo(graphic, ref drawPos, thing.Rotation, fxDef.extraData, fxDef, out var drawSize, out var drawMat, out _, out var exactRotation, out var flipUV);
-            Printer_Plane.PrintPlane(layer, drawPos, drawSize, drawMat, exactRotation, flipUV, null, null, 0.01f, 0f);
-            if (graphic.ShadowGraphic != null && thing != null)
-            {
-                graphic.ShadowGraphic.Print(layer, thing, exactRotation);
-            }
-            thing.AllComps.ForEach(c => c.PostPrintOnto(layer));
         }
 
         public static ThingDef MakeNewBluePrint(ThingDef def, bool isInstallBlueprint, ThingDef normalBlueprint = null)
@@ -485,21 +431,6 @@ namespace TiberiumRim
             if (!def.IsBuildingArtificial) return false;
             if (def is TRThingDef trThing && trThing.isNatural) return false;
             return true;
-        }
-
-        public static bool IsPoweredOn(this ThingWithComps thing)
-        {
-            return thing.IsElectricallyPowered(out bool usesPower) || !usesPower;
-        }
-
-        /// <summary>
-        /// Defines whether a structure is powered by electricity and returns whether it actually uses power
-        /// </summary>
-        public static bool IsElectricallyPowered(this ThingWithComps thing, out bool usesPower)
-        {
-            var comp = thing.GetComp<CompPowerTrader>();
-            usesPower = comp != null;
-            return usesPower && comp.PowerOn;
         }
 
         public static bool ThingExistsAt(Map map, IntVec3 pos, ThingDef def)
@@ -566,21 +497,6 @@ namespace TiberiumRim
             };
 
             return label;
-        }
-
-        public static string Location(this Texture texture)
-        {
-            if (texture is not Texture2D tx2D)
-            {
-                TLog.Error($"Tried to find {texture} location as non Texture2D");
-                return null;
-            }
-            return LoadedModManager.RunningMods.SelectMany(m => m.textures.contentList).First(t => t.Value == tx2D).Key;
-        }
-
-        public static string Location(this Shader shader)
-        {
-            return DefDatabase<ShaderTypeDef>.AllDefs.First(t => t.Shader == shader).shaderPath;
         }
 
         public static Color GetColor(this Enum valueType)

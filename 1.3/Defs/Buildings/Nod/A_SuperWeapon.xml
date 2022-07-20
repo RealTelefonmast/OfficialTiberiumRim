@@ -36,7 +36,7 @@
 			<Beauty>100</Beauty>
 		</statBases>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -139,7 +139,7 @@
 				<glowRadius>10</glowRadius>
 				<glowColor>(255,150,150)</glowColor>
 			</li>		
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -178,13 +178,12 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(7,7)</drawSize>
 						</data>
-						<altitude>Item</altitude>
-						<mode>Pulse</mode>
-					    <pulse>
+						<needsPower>true</needsPower>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.25~1</opacityRange>
 							<opacityDuration>100</opacityDuration>
-						</pulse>
-						<needsPower>true</needsPower>
+						</fade>
 					</li>
 				</overlays>
 			</li>	

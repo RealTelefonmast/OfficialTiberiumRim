@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using TeleCore;
 using Verse;
 
 namespace TiberiumRim
@@ -32,6 +33,9 @@ namespace TiberiumRim
 
         //Atmospheric Network
         public static NetworkValueDef TibPollution;
+
+        //Atmospheric Gases
+        public static ThingDef Gas_TiberiumGas;
 
         //Factions
 
@@ -137,15 +141,11 @@ namespace TiberiumRim
         public static JobDef UnloadAtRefinery;
 
         public static JobDef TiberiumResearch;
-        public static JobDef UseAirlock;
 
-        public static JobDef TiberiumBill;
+        //public static JobDef TiberiumBill;
 
         //
         public static RadiationFallOffDef RadiationResistances;
-
-        //
-        public static ThingDef PortableContainer;
 
         //Letter
         public static LetterDef EventLetter;

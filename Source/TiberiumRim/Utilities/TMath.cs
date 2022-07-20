@@ -72,6 +72,11 @@ namespace TiberiumRim
             return true;
         }
 
+        public static Rect Lerp(this Rect rect1, Rect rect2, float val)
+        {
+            return new Rect(Vector2.Lerp(rect1.position, rect2.position, val), Vector2.Lerp(rect1.size, rect2.size, val));
+        }
+
         //Vector Math
         public static Vector2 Clamp(this Vector2 vec, Vector2 min, Vector2 max)
         {
@@ -118,6 +123,14 @@ namespace TiberiumRim
                 angle += 360;
             }
             return angle == 360 ? 0f : angle;
+        }
+
+        //
+        public static int Normalize(int value, int start, int end)
+        {
+            int width = end - start;
+            int offsetValue = value - start;
+            return (offsetValue - ((offsetValue / width) * width)) + start;
         }
     }
 }

@@ -19,12 +19,8 @@
 			<texPath>Buildings/Nod/Defense/Obelisk/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(6,6)</drawSize>
+			<drawOffset>(0,0,0)</drawOffset>
 		</graphicData>
-		<extraData>
-			<rotateDrawSize>true</rotateDrawSize>
-			<alignToBottom>true</alignToBottom>
-			<drawOffset>(0,0,0.25)</drawOffset>
-		</extraData>
 		<costList>
 			<Nod_CarbonPlate>150</Nod_CarbonPlate>
 			<ComponentIndustrial>50</ComponentIndustrial>
@@ -43,18 +39,8 @@
 			<Beauty>5</Beauty>
 		</statBases>
 		<tickerType>Normal</tickerType>
-		<turret>
-			<canForceTarget>true</canForceTarget>
-			<turrets>
-				<li>
-					<turretGunDef>Gun_NodObelisk</turretGunDef>
-					<turretBurstWarmupTime>2.85</turretBurstWarmupTime>
-					<turretBurstCooldownTime>5</turretBurstCooldownTime>
-				</li>
-			</turrets>
-		</turret>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -108,8 +94,26 @@
 				<li>NodExperimental3</li>
 			</tiberiumResearch>
 		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<graphics>
+					<rotateDrawSize>true</rotateDrawSize>
+					<alignToBottom>true</alignToBottom>
+				</graphics>
+				<turret>
+					<turrets>
+						<li>
+							<canForceTarget>true</canForceTarget>
+							<turretGunDef>Gun_NodObelisk</turretGunDef>
+							<turretBurstWarmupTime>2.85</turretBurstWarmupTime>
+							<turretBurstCooldownTime>5</turretBurstCooldownTime>
+							
+						</li>
+					</turrets>
+				</turret>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
-
 
 	<TiberiumRim.TRThingDef ParentName="NODTurret">
 		<defName>Nod_TurretHub</defName>
@@ -117,7 +121,7 @@
 		<description>Allows you to construct multiple connected turrets.</description>
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Defense</TRCategory>
-		<thingClass>TiberiumRim.Building_TurretHub</thingClass>
+		<thingClass>TeleCore.Building_TurretHubCore</thingClass>
 		<size>(2,2)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -141,32 +145,8 @@
 			<Beauty>-10</Beauty>
 		</statBases>
 		<tickerType>Normal</tickerType>
-		<turret>
-			<canForceTarget>true</canForceTarget>
-			<hub>
-				<isHub>true</isHub>
-				<hubDef>Nod_TurretHub</hubDef>
-				<cableTexturePath>Buildings/Nod/Defense/Turrets/TurretCable</cableTexturePath>
-				<maxTurrets>4</maxTurrets>
-			</hub>
-			<!--
-			<turrets>
-				<li>
-					<graphic>
-						<texPath>Buildings/Nod/Defense/Turrets/Shredder_Base</texPath>
-						<graphicClass>Graphic_Single</graphicClass>
-						<drawSize>(2,2)</drawSize>
-					</graphic>
-					<speed>200</speed>
-					<turretGunDef>Gun_ShredderTurret</turretGunDef>
-					<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
-					<turretBurstCooldownTime>1.5</turretBurstCooldownTime>
-				</li>
-			</turrets>
-			-->
-		</turret>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -228,12 +208,68 @@
 				<li>NodExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<graphics>
+					<rotateDrawSize>true</rotateDrawSize>
+					<alignToBottom>true</alignToBottom>
+				</graphics>
+				<turret>
+					<hub>
+						<isHub>true</isHub>
+						<hubDef>Nod_TurretHub</hubDef>
+						<cableTexturePath>Buildings/Nod/Defense/Turrets/TurretCable</cableTexturePath>
+						<maxTurrets>4</maxTurrets>
+					</hub>
+					<turrets>
+						<li>
+							<canForceTarget>true</canForceTarget>
+							<turretTop>
+								<topGraphic>
+									<texPath>Buildings/Nod/Defense/Turrets/Shredder_BaseNoBarrels</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(2.5,2.5)</drawSize>
+								</topGraphic>
+								<barrels>
+									<li>
+										<graphic>
+											<texPath>Buildings/Nod/Defense/Turrets/Shredder_BarrelLeft</texPath>
+											<graphicClass>Graphic_Single</graphicClass>
+											<drawSize>(2.5,2.5)</drawSize>
+										</graphic>
+										<barrelOffset>(0,0,-0.05)</barrelOffset>
+										<recoilOffset>(0,0,-0.25)</recoilOffset>
+									</li>
+									<li>
+										<graphic>
+											<texPath>Buildings/Nod/Defense/Turrets/Shredder_BarrelRight</texPath>
+											<graphicClass>Graphic_Single</graphicClass>
+											<drawSize>(2.5,2.5)</drawSize>
+										</graphic>
+										<altitudeOffset>-0.1</altitudeOffset>
+										<barrelOffset>(0,0,-0.05)</barrelOffset>
+										<recoilOffset>(0,0,-0.25)</recoilOffset>
+									</li>
+								</barrels>
+								<aimSpeed>200</aimSpeed>
+								<resetSpeed>100</resetSpeed>
+								<recoilSpeed>200</recoilSpeed>
+								<barrelMuzzleOffset>(0,0,0.75)</barrelMuzzleOffset>
+							</turretTop>
+							<turretGunDef>Gun_ShredderTurret</turretGunDef>
+							<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
+							<turretBurstCooldownTime>1.5</turretBurstCooldownTime>
+						</li>
+					</turrets>
+				</turret>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 
 	<TiberiumRim.TRThingDef Name="NodHubTurret" ParentName="NODTurret" Abstract="True">
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Defense</TRCategory>
-		<thingClass>TiberiumRim.Building_HubTurret</thingClass>
+		<thingClass>TeleCore.Building_HubTurret</thingClass>
 		<size>(2,2)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -284,7 +320,7 @@
 		</building>
 		<filthLeaving>Filth_Ash</filthLeaving>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_TurretGunTop</li>
+			<li>TeleCore.PlaceWorker_TurretGunTop</li>
 		</placeWorkers>
 		<damageMultipliers>
 			<li>
@@ -303,60 +339,14 @@
 	<TiberiumRim.TRThingDef ParentName="NodHubTurret">
 		<defName>Nod_ShredderTurret</defName>
 		<label>shredder turret</label>
+		<thingClass>TiberiumRim.Building_NodHubTurret</thingClass>
 		<description>Nod's shredder turret, extremely effective towards unarmored infantry.</description>
 		<graphicData>
 			<texPath>Buildings/Nod/Defense/Turrets/Base</texPath>
 		</graphicData>
 		<uiIconPath>Buildings/Nod/Defense/Turrets/Shredder</uiIconPath>
-		<turret>
-			<canForceTarget>true</canForceTarget>
-			<hub>
-				<isHub>false</isHub>
-				<hubDef>Nod_TurretHub</hubDef>
-				<maxTurrets>4</maxTurrets>
-			</hub>
-			<turrets>
-				<li>
-					<turretTop>
-						<turret>
-							<texPath>Buildings/Nod/Defense/Turrets/Shredder_BaseNoBarrels</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<drawSize>(2.5,2.5)</drawSize>
-						</turret>
-						<barrels>
-							<li>
-								<graphic>
-									<texPath>Buildings/Nod/Defense/Turrets/Shredder_BarrelLeft</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<drawSize>(2.5,2.5)</drawSize>
-								</graphic>
-								<barrelOffset>(0,0,-0.05)</barrelOffset>
-								<recoilOffset>(0,0,-0.25)</recoilOffset>
-							</li>
-							<li>
-								<graphic>
-									<texPath>Buildings/Nod/Defense/Turrets/Shredder_BarrelRight</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<drawSize>(2.5,2.5)</drawSize>
-								</graphic>
-								<altitudeOffset>-0.1</altitudeOffset>
-								<barrelOffset>(0,0,-0.05)</barrelOffset>
-								<recoilOffset>(0,0,-0.25)</recoilOffset>
-							</li>
-						</barrels>
-						<speed>200</speed>
-						<resetSpeed>100</resetSpeed>
-						<recoilSpeed>200</recoilSpeed>
-						<barrelMuzzleOffset>(0,0,0.75)</barrelMuzzleOffset>
-					</turretTop>
-					<turretGunDef>Gun_ShredderTurret</turretGunDef>
-					<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
-					<turretBurstCooldownTime>1.5</turretBurstCooldownTime>
-				</li>
-			</turrets>
-		</turret>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -407,8 +397,63 @@
 			</li>	
 		</comps>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_AtTurretHub</li>
+			<li>TeleCore.PlaceWorker_AtTurretHub</li>
 		</placeWorkers>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<graphics>
+					<rotateDrawSize>true</rotateDrawSize>
+					<alignToBottom>false</alignToBottom>
+				</graphics>
+				<turret>
+					<hub>
+						<isHub>false</isHub>
+						<hubDef>Nod_TurretHub</hubDef>
+						<maxTurrets>4</maxTurrets>
+					</hub>
+					<turrets>
+						<li>
+							<turretTop>
+								<topGraphic>
+									<texPath>Buildings/Nod/Defense/Turrets/Shredder_BaseNoBarrels</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(2.5,2.5)</drawSize>
+								</topGraphic>
+								<barrels>
+									<li>
+										<graphic>
+											<texPath>Buildings/Nod/Defense/Turrets/Shredder_BarrelLeft</texPath>
+											<graphicClass>Graphic_Single</graphicClass>
+											<drawSize>(2.5,2.5)</drawSize>
+										</graphic>
+										<barrelOffset>(0,0,-0.05)</barrelOffset>
+										<recoilOffset>(0,0,-0.25)</recoilOffset>
+									</li>
+									<li>
+										<graphic>
+											<texPath>Buildings/Nod/Defense/Turrets/Shredder_BarrelRight</texPath>
+											<graphicClass>Graphic_Single</graphicClass>
+											<drawSize>(2.5,2.5)</drawSize>
+										</graphic>
+										<altitudeOffset>-0.1</altitudeOffset>
+										<barrelOffset>(0,0,-0.05)</barrelOffset>
+										<recoilOffset>(0,0,-0.25)</recoilOffset>
+									</li>
+								</barrels>
+								<aimSpeed>200</aimSpeed>
+								<resetSpeed>100</resetSpeed>
+								<recoilSpeed>200</recoilSpeed>
+								<barrelMuzzleOffset>(0,0,0.75)</barrelMuzzleOffset>
+							</turretTop>
+							<turretGunDef>Gun_ShredderTurret</turretGunDef>
+							<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
+							<turretBurstCooldownTime>1.5</turretBurstCooldownTime>
+							<canForceTarget>true</canForceTarget>
+						</li>
+					</turrets>
+				</turret>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	<!-- Flame Turret -->
@@ -422,32 +467,8 @@
 			<texPath>Buildings/Nod/Defense/Turrets/Base</texPath>
 		</graphicData>
 		<uiIconPath>Buildings/Nod/Defense/Turrets/Flamer</uiIconPath>
-		<turret>
-			<canForceTarget>true</canForceTarget>
-			<hub>
-				<isHub>false</isHub>
-				<hubDef>Nod_TurretHub</hubDef>
-				<maxTurrets>4</maxTurrets>
-			</hub>
-			<turrets>
-				<li>
-					<turretTop>
-						<turret>
-							<texPath>Buildings/Nod/Defense/Turrets/Flame_Base</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<drawSize>(2,2)</drawSize>
-						</turret>
-						<speed>200</speed>
-					</turretTop>
-					<turretGunDef>Gun_FlameTurret</turretGunDef>
-					<turretBurstWarmupTime>0</turretBurstWarmupTime>
-					<turretBurstCooldownTime>0</turretBurstCooldownTime>
-					<continuous>true</continuous>
-				</li>
-			</turrets>
-		</turret>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -485,6 +506,38 @@
 				</overlays>
 			</li>	
 		</comps>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<graphics>
+					<rotateDrawSize>true</rotateDrawSize>
+					<alignToBottom>true</alignToBottom>
+				</graphics>
+				<turret>
+					<hub>
+						<isHub>false</isHub>
+						<hubDef>Nod_TurretHub</hubDef>
+						<maxTurrets>4</maxTurrets>
+					</hub>
+					<turrets>
+						<li>
+							<canForceTarget>true</canForceTarget>
+							<turretTop>
+								<topGraphic>
+									<texPath>Buildings/Nod/Defense/Turrets/Flame_Base</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<drawSize>(2,2)</drawSize>
+								</topGraphic>
+								<aimSpeed>200</aimSpeed>
+							</turretTop>
+							<turretGunDef>Gun_FlameTurret</turretGunDef>
+							<turretBurstWarmupTime>0</turretBurstWarmupTime>
+							<turretBurstCooldownTime>0</turretBurstCooldownTime>
+							<continuous>true</continuous>
+						</li>
+					</turrets>
+				</turret>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	
@@ -533,7 +586,7 @@
 				<shortCircuitInRain>false</shortCircuitInRain>
 				<transmitsPower>false</transmitsPower>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -584,7 +637,7 @@
 		<drawerType>MapMeshOnly</drawerType>
 		<graphicData>
 			<texPath>Buildings/Nod/Structure/LaserFence/Fence_Base</texPath>
-			<graphicClass>TiberiumRim.Graphic_LinkedWithSame</graphicClass>
+			<graphicClass>TeleCore.Graphic_LinkedWithSame</graphicClass>
 			<linkType>Basic</linkType>
 			<linkFlags>
 				<li>Custom8</li>
@@ -627,7 +680,7 @@
 		<altitudeLayer>Item</altitudeLayer>
 		<graphicData>
 			<texPath>Buildings/Nod/Structure/LaserFence/Laser_Atlas</texPath>
-			<graphicClass>TiberiumRim.Graphic_LinkedWithSame</graphicClass>
+			<graphicClass>TeleCore.Graphic_LinkedWithSame</graphicClass>
 			<shaderType>MoteGlow</shaderType>
 			<linkType>Basic</linkType>
 			<linkFlags>

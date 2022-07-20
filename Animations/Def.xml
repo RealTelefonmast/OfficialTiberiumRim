@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<AnimationDataDef>
+		<defName />
+		<animationSets>
+			<li>
+				<textureParts IsNull="True" />
+				<animations>
+					<li>
+						<tag>Undefined</tag>
+						<frames>60</frames>
+						<bounds>0~60</bounds>
+						<keyFrames />
+					</li>
+				</animations>
+			</li>
+			<li>
+				<textureParts IsNull="True" />
+				<animations IsNull="True" />
+			</li>
+			<li>
+				<textureParts IsNull="True" />
+				<animations IsNull="True" />
+			</li>
+			<li>
+				<textureParts IsNull="True" />
+				<animations IsNull="True" />
+			</li>
+		</animationSets>
+	</AnimationDataDef>
+</Defs>

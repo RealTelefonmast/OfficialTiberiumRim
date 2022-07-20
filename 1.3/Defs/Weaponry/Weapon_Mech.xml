@@ -30,8 +30,8 @@
 			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaser</damageDef>
 					<damageBase>35</damageBase>
@@ -92,9 +92,13 @@
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
 			<shadowSize>1.8</shadowSize>			
 		</projectile>
-		<projectileExtended>
-			<impactEffecter>FlameHit</impactEffecter>
-		</projectileExtended>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<projectile>
+					<impactEffecter>FlameHit</impactEffecter>
+				</projectile>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
@@ -113,8 +117,8 @@
 			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(0, 0, 2)</li>
 				</originOffsets>
@@ -163,9 +167,13 @@
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
 			<shadowSize>1.8</shadowSize>			
 		</projectile>
-		<projectileExtended>
-			<impactEffecter>FlameHit</impactEffecter>
-		</projectileExtended>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<projectile>
+					<impactEffecter>FlameHit</impactEffecter>
+				</projectile>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
@@ -185,8 +193,8 @@
 			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(0.55, 0, 1)</li>
 					<li>(-0.55, 0, 1)</li>
@@ -243,8 +251,8 @@
 			<RangedWeapon_Cooldown>2.25</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(0, 0, 1.2)</li>
 				</originOffsets>
@@ -305,8 +313,8 @@
 			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(0, 0, 1.2)</li>
 				</originOffsets>
@@ -355,8 +363,8 @@
 			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRRailgun</damageDef>
 					<damageBase>55</damageBase>
@@ -407,8 +415,8 @@
 			<RangedWeapon_Cooldown>4</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageBase>10</damageBase>
 					<damageDef>TRSonic</damageDef>
@@ -503,8 +511,8 @@
 			<li>BigArm</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(0.5,0,0.75)</li>
 					<li>(-0.5,0,0.75)</li>

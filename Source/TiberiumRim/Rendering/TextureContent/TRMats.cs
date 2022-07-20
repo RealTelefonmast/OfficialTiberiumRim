@@ -6,22 +6,6 @@ namespace TiberiumRim
     [StaticConstructorOnStartup]
     public class TRMats
     {
-        public static readonly Color WindowBGBorderColor           = new ColorInt(97, 108, 122).ToColor;
-        public static readonly Color WindowBGFillColor             = new ColorInt(21, 25, 29).ToColor;
-        public static readonly Color MenuSectionBGFillColor        = new ColorInt(42, 43, 44).ToColor;
-        public static readonly Color MenuSectionBGBorderColor      = new ColorInt(135, 135, 135).ToColor;
-        public static readonly Color TutorWindowBGFillColor        = new ColorInt(133, 85, 44).ToColor;
-        public static readonly Color TutorWindowBGBorderColor      = new ColorInt(176, 139, 61).ToColor;
-        public static readonly Color OptionUnselectedBGFillColor   = new Color(0.21f, 0.21f, 0.21f);
-        public static readonly Color OptionUnselectedBGBorderColor = OptionUnselectedBGFillColor * 1.8f;
-        public static readonly Color OptionSelectedBGFillColor     = new Color(0.32f, 0.28f, 0.21f);
-        public static readonly Color OptionSelectedBGBorderColor   = OptionSelectedBGFillColor * 1.8f;
-        public static readonly Color BlueHighlight                 = new ColorInt(0, 120, 200).ToColor;
-        public static readonly Color BlueHighlight_Transparent = new ColorInt(0, 120, 200, 125).ToColor;
-
-        public static readonly Color BGDarker = new ColorInt(29, 30, 30).ToColor;
-        public static readonly Color BGLighter = new ColorInt(61, 62, 63).ToColor;
-
         public static readonly Texture2D DarkGreyBG = SolidColorMaterials.NewSolidColorTexture(new Color(0.15f, 0.15f, 0.15f));
         public static readonly Texture2D GreenType = SolidColorMaterials.NewSolidColorTexture(MainTCD.Main.GreenColor);
         public static readonly Texture2D BlueType = SolidColorMaterials.NewSolidColorTexture(MainTCD.Main.BlueColor);

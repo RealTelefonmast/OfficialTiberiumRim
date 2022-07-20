@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HarmonyLib;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -16,11 +17,52 @@ namespace TiberiumRim
         public TurretTop TurretTop => Turret.top;
 
         //CompFX
-        public override Vector3[] DrawPositions => new Vector3[] { parent.DrawPos, parent.DrawPos, parent.DrawPos };
-        public override Color[] ColorOverrides => new Color[] { Color.white, Color.white, Color.white };
-        public override float[] OpacityFloats => new float[] { Container.StoredPercent, 1f, Container.StoredPercent };
-        public override float?[] RotationOverrides => new float?[] { Rotation(DrawPositions[0]), Rotation(DrawPositions[1]), Rotation(DrawPositions[2]) };
-        public override bool[] DrawBools => new bool[] { true, HasConnection, HasConnection };
+
+        public override bool FX_AffectsLayerAt(int index)
+        {
+            return index is >= 0 and < 3;
+        }
+
+        public override Vector3? FX_GetDrawPositionAt(int index)
+        {
+            return parent.DrawPos;
+        }
+
+        public override Color? FX_GetColorAt(int index)
+        {
+            return index switch
+            {
+                _ => Color.white
+            };
+        }
+
+        public override float FX_GetOpacityAt(int index)
+        {
+            return index switch
+            {
+                0 => Container.StoredPercent,
+                2 => Container.StoredPercent,
+                _ => 1f
+            };
+        }
+
+        public override float? FX_GetRotationAt(int index)
+        {
+            return index switch
+            {
+                _ => Rotation(parent.DrawPos)
+            };
+        }
+
+        public override bool FX_ShouldDrawAt(int index)
+        {
+            return index switch
+            {
+                1 => HasConnection,
+                2 => HasConnection,
+                _ => true
+            };
+        }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {

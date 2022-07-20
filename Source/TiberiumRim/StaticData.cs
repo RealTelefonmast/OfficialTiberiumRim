@@ -12,6 +12,7 @@ namespace TiberiumRim
     [StaticConstructorOnStartup]
     public static class StaticData
     {
+
         public static Dictionary<int, MapComponent_Tiberium> TiberiumMapComp;
         public static Dictionary<int, RenderTexture> FlowMapsByMap;
 
@@ -31,12 +32,17 @@ namespace TiberiumRim
 
         public static void Notify_Reload()
         {
-            TLog.Debug("Clearing StaticData!");
+            TRLog.Debug("Clearing StaticData!");
             CanvasBySize = new Dictionary<int, Color[]>();
 
             TiberiumMapComp = new Dictionary<int, MapComponent_Tiberium>();
             FlowMapsByMap = new Dictionary<int, RenderTexture>();
             CachedDesignators = new Dictionary<ThingDef, Designator>();
+        }
+
+        public static void Notify_ClearingMapAndWorld()
+        {
+            TRFind.TickManager.ClearGameTickers();
         }
 
         public static void Notify_NewTibMapComp(MapComponent_Tiberium mapComp)
@@ -62,6 +68,8 @@ namespace TiberiumRim
             return (T)des;
         }
 
+
+        //Static Construction
         public static Color[] GetCanvasFor(int size)
         {
             return CanvasBySize[size];

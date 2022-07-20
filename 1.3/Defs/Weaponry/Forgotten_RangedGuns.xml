@@ -47,8 +47,8 @@
 			<li>Scrapgun</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(0, 0, 1)</li>
 				</originOffsets>
@@ -130,8 +130,8 @@
 			<li>Shardgun</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(0, 0, 1.3)</li>
 				</originOffsets>
@@ -215,8 +215,8 @@
 		</costList>
 		<techLevel>Industrial</techLevel>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>
 					<li>(-0.08, 0, 1.3)</li>
 					<li>(0, 0, 1.3)</li>

@@ -20,7 +20,7 @@
 		</thingCategories>
 		<comps>
 			<!--
-			<li Class="TiberiumRim.CompProperties_FX">
+			<li Class="TeleCore.CompProperties_FX">
 				<effecters>
 					<li>
 						<moteInterval>300~500</moteInterval>

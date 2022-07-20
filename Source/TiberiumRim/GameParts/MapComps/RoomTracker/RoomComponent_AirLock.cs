@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using HarmonyLib;
 using RimWorld;
+using TeleCore;
 using TiberiumRim.Utilities;
 using UnityEngine;
 using Verse;
@@ -18,6 +20,7 @@ namespace TiberiumRim
         WaitForDoors,
         WaitForClean
     }
+
     public class RoomComponent_AirLock : RoomComponent
     {
         //
@@ -29,25 +32,10 @@ namespace TiberiumRim
         private HashSet<Building> AirVents = new ();
         private HashSet<Building_AirLock> AirLockDoors = new ();
 
-        private PawnQueue pawnQueue = new();
         public Dictionary<Pawn, IntVec3> queuePositions = new();
 
         //
         public RoomComponent_Atmospheric Atmospheric => atmosphericCompInt ??= Parent.GetRoomComp<RoomComponent_Atmospheric>();
-        public PawnQueue PawnQueue => pawnQueue;
-        public List<IntVec3> ReservedQueue => queuePositions.Values.ToList();
-
-        public Pawn NextPawnInQueue
-        {
-            get
-            {
-                if (pawnQueue.TryPeek(out Pawn pawn))
-                {
-                    return pawn;
-                }
-                return null;
-            }
-        }
 
         //States
         //A room with two airlock doors, incapable of cleaning
@@ -58,102 +46,116 @@ namespace TiberiumRim
 
         //
         public bool IsActiveAirLock => IsAirLock && AirVents.Concat(AirLockDoors).All(c => c.IsPoweredOn());
-        public bool IsClean => Atmospheric.UsedValue <= 0;
-        public bool AllDoorsClosed => !AirLockDoors.Any(d => d.Open);
-        public bool IsAllowedUsable => (!IsAirLock || CanVent);
 
         //Conditions
-        public bool PollutedRoomExposure => AirLockDoors.Any(d => d.ConnectsToPollutedRoom);
-        public bool SafeToEnter => !PollutedRoomExposure || AllDoorsClosed;
-        public bool SafeToLeave => IsClean && AllDoorsClosed;
+        public bool IsFunctional => (!IsAirLock || CanVent);
+        public bool IsClean => Atmospheric.UsedValue <= 0 && Atmospheric.PhysicalGas.NullOrEmpty();
+        public bool IsBeingCleaned => !IsClean && CanVent;
 
         public bool CanVent => IsActiveAirLock && AirVentComps.All(c => c.CanVent);
         public bool LockedDown => IsAirLock && !CanVent;
 
-        public bool IsBeingUsedByOther(Pawn checkingPawn) => containedPawns.Count > 0 && !containedPawns.Contains(checkingPawn);
-        public bool CanBeEnteredBy(Pawn pawn)
-        {
-            return IsClean && !IsBeingUsedByOther(pawn) && SafeToEnter;
-        }
+        public bool AllDoorsClosed => !AirLockDoors.Any(d => d.Open);
+        public bool PollutedRoomExposure => AirLockDoors.Any(d => d.ConnectsToPollutedRoom);
 
-        public bool ShouldBeUsed(Pawn byPawn, Building_AirLock[] pathedDoors, bool isCurrentRoomOfPawn)
-        {
-            //If pawn is inside airlock, and all doors are closed, they dont need to use the airlock
-            if (!IsAllowedUsable) return false;
-            if (isCurrentRoomOfPawn && SafeToLeave) return false;
-            return IsActiveAirLock && pathedDoors.Any(d => d?.ConnectsToPollutedRoom ?? false);
-            //return true;
-        }
+        public bool AnyPollutedDoorOpening => AirLockDoors.Where(d => d.ConnectsToPollutedRoom).Any(d => d.Open);
 
-        public bool ShouldWaitFor(Pawn pawn)
+        public bool CanBeEnteredBy(Pawn pawn, Building_AirLock[] pathedDoors)
         {
-           return !(CanBeEnteredBy(pawn) && (NextPawnInQueue == null || NextPawnInQueue == pawn));
-        }
+            //Case #1: Normal room, can enter always
+            if (!IsActiveAirLock) return true;
 
-        //Queue Stuff
-        public void Notify_EnqueuePawnPos(Pawn pawn, IntVec3 pos)
-        {
-            if (queuePositions.ContainsKey(pawn))
+            //Case #2: Active Airlock not clean, cant enter
+            if (!IsClean)
             {
-                queuePositions[pawn] = pos;
-                return;
+                //Case #2.1: But connecting to polluted room anyway
+                if (!pathedDoors[0].OtherIsClean(this)) return true;
+                return false;
             }
-            queuePositions.Add(pawn, pos);
+
+            //If clean, but entering through polluted door, all doors must be closed first
+            if (pathedDoors[0].ConnectsToPollutedRoom && !AllDoorsClosed) return false;
+
+            //Case #3: Door connecting to pollution is opening
+            if (AnyPollutedDoorOpening) return false;
+            return true;
         }
 
-        public void Notify_DequeuePawnPos(Pawn pawn)
+        public bool CanBeLeftBy(Pawn pawn, Building_AirLock[] pathedDoors, bool isCurrentRoomOfPawn)
         {
-            if (!queuePositions.ContainsKey(pawn)) return;
-            queuePositions.Remove(pawn);
-        }
+            //Case #1: Normal room, can leave always
+            if (!IsActiveAirLock) return true;
 
-        public void Notify_EnqueuePawn(Pawn pawn)
-        {
-            pawnQueue.Enqueue(pawn);
-        }
-
-        public void Notify_FinishJob(Pawn pawn, JobCondition condition)
-        {
-            //if (condition == JobCondition.Ongoing) return;
-            if (condition != JobCondition.Succeeded)
+            //Case #2: Active airlock not clean, waiting for venting
+            if (!IsClean)
             {
-                pawnQueue.Remove(pawn);
+                //Case #2.1: But connecting to polluted room anyway
+                if (!pathedDoors[1].OtherIsClean(this)) return true;
+                return false;
             }
-            else if (pawnQueue.TryPeek(out Pawn deqPawn))
+
+            //Case #3: Door to next room is not connecting to pollution
+            if (!pathedDoors[1].ConnectsToPollutedRoom)
             {
-                if (deqPawn != null && deqPawn != pawn)
-                {
-                    TLog.Error($"Trying to dequeue {pawn} from airlock queue, next should be: {deqPawn} | Queue: {PawnQueue}");
-                }
-                else
-                {
-                    pawnQueue.Dequeue();
-                }
+                //Case #3.1: But other doors opening to pollution
+                if (AnyPollutedDoorOpening) return false;
+                return true;
             }
-            Notify_DequeuePawnPos(pawn);
+
+            //
+            if (pathedDoors[1].ConnectsToPollutedRoom && AllDoorsClosed) return true;
+            return false;
         }
 
         //Pathing Helper
+        // [0] Entrance | [1] Exit
         public Building_AirLock[] AirLocksOnPath(List<IntVec3> pathNodes, Pawn pawn = null)
         {
             var airlocks = new Building_AirLock[2];
-            var pathCells = pathNodes.Intersect(Room.BorderCells);
-            int i = 0;
-            foreach (var cell in pathCells)
+            Room roomIn = null;
+            Room roomOut = null;
+            for (int i = 0; i < pathNodes.Count; i++)
             {
-                var building = cell.GetEdifice(Map);
-                if (building is Building_AirLock airlock)
+                var nextNode = pathNodes[i];
+                if (Parent.BorderCellsNoCorners.Contains(nextNode))
                 {
-                    airlocks[i] = airlock;
-                    i++;
+                    var building = nextNode.GetEdifice(Map);
+                    if (building is Building_AirLock airlock)
+                    {
+                        //Try set both sides of the airlock door
+                        if(i + 1 < pathNodes.Count)
+                            roomIn = pathNodes[i + 1].GetRoomFast(Map);
+                        if (i - 1 >= 0)
+                            roomOut = pathNodes[i - 1].GetRoomFast(Map);
+                
+                        //If airlock door is at start or end of the path, predict next room
+                        if (i + 1 >= pathNodes.Count)
+                            roomIn = airlock.OppositeRoom(roomOut);
+                        if (i - 1 < 0)
+                            roomOut = airlock.OppositeRoom(roomIn);
+                        
+                        //Set airlock doors depending on order of rooms
+                        if (roomIn != Room && roomOut == Room)
+                        {
+                            airlocks[0] = airlock;
+                        }
+
+                        if (roomIn == Room && roomOut != Room)
+                        {
+                            airlocks[1] = airlock;
+                        }
+                    }
                 }
             }
+
             return airlocks;
         }
 
         public int tickSinceLastFleck = 0;
         public override void CompTick()
         {
+            if (!IsAirLock) return;
+
             AirLockDoors.Do(d => d.CheckLockDown(LockedDown));
             if (LockedDown)
             {
@@ -170,14 +172,9 @@ namespace TiberiumRim
         }
 
         //RoomComponent Stuff
-
         public override void Create(RoomTracker parent)
         {
             base.Create(parent);
-            /*
-            Lord lord = LordMaker.MakeNewLord(Faction.OfPlayer, MakeAirLockJob(), Map, null);
-            lord.SetJob(new LordJob_UseAirlock());
-            */
         }
 
         public override void Disband(RoomTracker parent, Map map)
@@ -187,14 +184,16 @@ namespace TiberiumRim
 
         public override void Notify_Reused()
         {
-            base.Notify_Reused();
             atmosphericCompInt = null;
         }
+
         public override void PreApply()
         {
             AirVents.Clear();
             AirLockDoors.Clear();
 
+            if(Parent.IsOutside) return;
+            
             //Pre-gen data by only checking bordering cells (Getting Airlocks)
             for (var c = 0; c < Parent.BorderCellsNoCorners.Length; c++)
             {
@@ -209,7 +208,10 @@ namespace TiberiumRim
 
         public override void FinalizeApply()
         {
+            //TRLog.Debug($"Updating AirLockComp for [{Room.ID}][Pre]: IsOutside: {Parent.IsOutside} | Role: {Room.Role}");
+            if (Parent.IsOutside) return;
             Room.UpdateRoomStatsAndRole();
+            //TRLog.Debug($"Updating AirLockComp for [{Room.ID}][Post]: Role: {Room.Role}");
             if (Room.Role == TiberiumDefOf.TR_AirLock)
             {
                 //If we know this is an airlock, we add the rest of the internal items (Gettings vents)
@@ -226,14 +228,15 @@ namespace TiberiumRim
             {
                 airLockDoor.SetAirlock(this);
             }
+            //TRLog.Debug($"[StopWatch][RoomComp_AirLock]FinalizeApply: {_SW.ElapsedMilliseconds}");
         }
 
-        public override void Notify_ThingSpawned(Thing thing)
+        public override void Notify_ThingAdded(Thing thing)
         { 
             TryAddComponent(thing);
         }
 
-        public override void Notify_ThingDespawned(Thing thing)
+        public override void Notify_ThingRemoved(Thing thing)
         {
             TryRemoveComponent(thing);
         }
@@ -270,23 +273,12 @@ namespace TiberiumRim
 
         public override void Draw()
         {
-            if (UI.MouseCell().GetRoom(Map) == this.Room && hasAirLockRoleInt) 
+            if (DebugSettings.godMode && hasAirLockRoleInt && UI.MouseCell().GetRoom(Map) == this.Room) 
             {
                 GenDraw.DrawCircleOutline(Room.GeneralCenter().ToVector3Shifted(), 0.5f, SimpleColor.Red);
                 GenDraw.DrawFieldEdges(AirLockDoors.Select(t => t.Position).ToList(), Color.blue);
                 GenDraw.DrawFieldEdges(AirVents.Select(t => t.Position).ToList(), Color.green);
-
             }
-
-            foreach (var queuePosCell in ReservedQueue)
-            {
-                GenDraw.DrawCircleOutline(queuePosCell.ToVector3Shifted(), 0.5f, SimpleColor.Green);
-            }
-        }
-
-        public bool AlreadyWaitingFor(Pawn pawn, out IntVec3 value)
-        {
-            return queuePositions.TryGetValue(pawn, out value) && value.IsValid;
         }
     }
 }

@@ -37,7 +37,7 @@
 		<surfaceType>Item</surfaceType>
 		
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_Pipe</li>
+			<li>TeleCore.PlaceWorker_Pipe</li>
 		</placeWorkers>
 	</TiberiumRim.TRThingDef>
 	

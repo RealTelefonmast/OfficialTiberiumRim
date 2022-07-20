@@ -128,7 +128,6 @@ namespace TiberiumRim
                 SetAffected(adj, adjacent2);
                 UpdateGrowTo(adj, adjacent2);
             }
-
         }
 
         private void SetGrowFrom(IntVec3 c, List<IntVec3> adjacent)
@@ -186,7 +185,6 @@ namespace TiberiumRim
             }
             GrowToGrid[c] = false;
         }
-
     }
 
 

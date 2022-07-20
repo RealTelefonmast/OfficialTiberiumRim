@@ -10,20 +10,36 @@ namespace TiberiumRim.Utilities
 {
     public static class AIUtils
     {
-        public static List<Room> RoomsAlongPath(this PawnPath path, Map map, RoomRoleDef withRole = null)
+        public static void RoomsAlongPath(this List<IntVec3> pathNodes, ref List<Room> roomList, Map map, bool ignoreDoorWays = true, bool reverse = false, RoomRoleDef withRole = null)
         {
-            List<Room> rooms = new();
+            roomList.Clear();
             Room lastAddedRoom = null;
-            for (var i = 0; i < path.NodesReversed.Count; i++)
+            for (var i = 0; i < pathNodes.Count; i++)
             {
-                var node = path.NodesReversed[i];
+                var node = pathNodes[reverse ? (pathNodes.Count - 1) - i : i];
                 var newRoom = node.GetRoom(map);
-                if(newRoom == lastAddedRoom) continue;
-                if(withRole != null && newRoom.Role != withRole) continue;
-                rooms.Add(newRoom);
+                if (ignoreDoorWays && newRoom.IsDoorway) continue;
+                if (newRoom == lastAddedRoom) continue;
+                if (withRole != null && newRoom.Role != withRole) continue;
+                roomList.Add(newRoom);
                 lastAddedRoom = newRoom;
             }
-            return rooms;
+        }
+
+        public static void RoomsAlongPath(this List<IntVec3> pathNodes, ref List<RoomTracker> roomList, Map map, bool ignoreDoorWays = true, bool reverse = false, RoomRoleDef withRole = null)
+        {
+            roomList.Clear();
+            Room lastAddedRoom = null;
+            for (var i = 0; i < pathNodes.Count; i++)
+            {
+                var node = pathNodes[reverse ? (pathNodes.Count - 1) - i : i];
+                var newRoom = node.GetRoom(map);
+                if (ignoreDoorWays && newRoom.IsDoorway) continue;
+                if (newRoom == lastAddedRoom) continue;
+                if (withRole != null && newRoom.Role != withRole) continue;
+                roomList.Add(newRoom.RoomTracker());
+                lastAddedRoom = newRoom;
+            }
         }
 
         public static IntVec3 GeneralCenter(this Room room)

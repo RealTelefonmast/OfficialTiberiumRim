@@ -23,7 +23,7 @@
 		<size>(3,3)</size>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX">
+			<li Class="TeleCore.CompProperties_FX">
 				<overlays>
 					<li>
 						<data>
@@ -33,12 +33,13 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<mode>Pulse</mode>
-					    <pulse>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.2~0.6</opacityRange>
-						</pulse>
+						</fade>
 					</li>
 				</overlays>
+				<!--
 				<effecters>
 					<li>
 						<burstCount>1~2</burstCount>
@@ -60,6 +61,7 @@
 						<speed>0</speed>
 					</li>
 				</effecters>
+				-->
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>10</glowRadius>
@@ -187,7 +189,7 @@
 		<size>(3,3)</size>
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX">
+			<li Class="TeleCore.CompProperties_FX">
 				<!--
 				<overlays>
 					<li>
@@ -198,14 +200,15 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<mode>Pulse</mode>
-					    <pulse>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.2~0.6</opacityRange>
 							<opacityDuration>100</opacityDuration>
-						</pulse>
+						</fade>
 					</li>
 				</overlays>
 				-->
+				<!--
 				<effecters>
 					<li>
 						<burstCount>2~3</burstCount>
@@ -227,6 +230,7 @@
 						<speed>0</speed>
 					</li>
 				</effecters>
+				-->
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>10</glowRadius>
@@ -370,7 +374,7 @@
 		<size>(3,3)</size>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX">
+			<li Class="TeleCore.CompProperties_FX">
 				<overlays>
 					<li>
 						<data>
@@ -380,11 +384,10 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<directAltitudeOffset>0.125</directAltitudeOffset>
-						<mode>Pulse</mode>
-					    <pulse>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.2~0.6</opacityRange>
-						</pulse>
+						</fade>
 					</li>
 					<li>
 						<data>
@@ -394,13 +397,13 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<directAltitudeOffset>0.125</directAltitudeOffset>
-						<mode>Pulse</mode>
-					    <pulse>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.3~0.65</opacityRange>
-						</pulse>
+						</fade>
 					</li>
 				</overlays>
+				<!--
 				<effecters>
 					<li>
 						<burstCount>1~2</burstCount>
@@ -432,6 +435,7 @@
 						<speed>0</speed>
 					</li>
 				</effecters>
+				-->
 			</li>
 		    <li Class="CompProperties_Glower">
 				<glowRadius>5</glowRadius>
@@ -569,7 +573,8 @@
 		<size>(3,2)</size>
 		<filthLeaving>FilthTiberiumRed</filthLeaving>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
+				<!--
 				<effecters>
 					<li>
 						<burstCount>2~3</burstCount>
@@ -591,6 +596,7 @@
 						<speed>0</speed>
 					</li>
 				</effecters>
+				-->
 				<overlays>
 					<li>
 						<data>
@@ -609,11 +615,10 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<extraAltitude>0.125</extraAltitude>
-						<mode>Pulse</mode>
-					    <pulse>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.2~0.6</opacityRange>
-						</pulse>
+						</fade>
 					</li>
 					<li>
 						<data>
@@ -623,12 +628,11 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<extraAltitude>0.125</extraAltitude>
 						<altitude>BuildingOnTop</altitude>
-						<mode>Pulse</mode>
-					    <pulse>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.3~0.65</opacityRange>
-						</pulse>
+						</fade>
 					</li>
 				</overlays>
 			</li>
@@ -716,7 +720,7 @@
 		<size>(3,2)</size>
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -735,14 +739,14 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<extraAltitude>0.125</extraAltitude>
 						<altitude>BuildingOnTop</altitude>
-						<mode>Pulse</mode>
-					    <pulse>
+						<mode>Dynamic</mode>
+					    <fade>
 							<opacityRange>0.2~0.6</opacityRange>
-						</pulse>
+						</fade>
 					</li>
 				</overlays>
+				<!--
 				<effecters>
 					<li>
 						<burstCount>1~3</burstCount>
@@ -765,6 +769,7 @@
 						<speed>0</speed>
 					</li>
 				</effecters>
+				-->
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>3</glowRadius>
@@ -834,15 +839,27 @@
 			<MaxHitPoints>4500</MaxHitPoints>
 			<Beauty>-160</Beauty>
 		</statBases>
+		<uiIconPath>Buildings/Natural/Veinhole/Veinhole/Reference</uiIconPath>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Buildings/Natural/Veinhole/Veinhole/Base</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(4.5,4.5)</drawSize>
+			</blueprintGraphicData>
+		</building>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
-			<texPath>Buildings/Natural/Veinhole/Veinhole/Veinhole2</texPath>
+			<texPath>Blank</texPath>
 			<drawSize>(4.5,4.5)</drawSize>
 		</graphicData>
 		<altitudeLayer>Floor</altitudeLayer>
 		<size>(3,3)</size>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX">
+			<li Class="TeleCore.CompProperties_AnimationRenderer"> 	
+				<animationDef>VeinholeAnimation</animationDef>
+				<defaultAnimationTag>Idle</defaultAnimationTag>
+			</li>
+			<li Class="TeleCore.CompProperties_FX">
 				<overlays>
 					<li>
 						<data>
@@ -851,13 +868,14 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3.5,3.5)</drawSize>
 						</data>
-						<mode>Pulse</mode>
-						<pulse>
+						<mode>Dynamic</mode>
+						<fade>
 							<opacityRange>0~0.75</opacityRange>
 							<opacityDuration>450</opacityDuration>
-						</pulse>
+						</fade>
 					</li>
 				</overlays>
+				<!--
 				<effecters>
 					<li>
 						<moteDef>VeinholeSmoke</moteDef>
@@ -871,6 +889,7 @@
 						<moteInterval>875~925</moteInterval>
 					</li>
 				</effecters>
+				-->
 				<tickOffset>100~999</tickOffset>
 			</li>
 			<li Class="CompProperties_HeatPusher">
@@ -940,14 +959,10 @@
 		<graphicData>
 			<texPath>Buildings/Natural/TiberiumMonolith/Monolith</texPath>
 			<drawSize>(5,5)</drawSize>
-		</graphicData>
-		<extraData>
-			<rotateDrawSize>false</rotateDrawSize>
-			<alignToBottom>true</alignToBottom>
 			<drawOffset>(0,0,-0.25)</drawOffset>
-		</extraData>
+		</graphicData>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_FX">
+			<li Class="TeleCore.CompProperties_FX">
 				<overlays>
 					<li>
 						<data>
@@ -1009,6 +1024,14 @@
 				<li>TiberiumBlue</li>
 			</crystalOptions>
 		</tiberiumFieldRules>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<graphics>
+					<rotateDrawSize>false</rotateDrawSize>
+					<alignToBottom>true</alignToBottom>
+				</graphics>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TiberiumProducerDef>
 	
 </Defs>

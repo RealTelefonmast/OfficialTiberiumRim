@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -10,82 +11,6 @@ namespace TiberiumRim
 {
     public static class TRWidgets
     {
-        //
-        public static Vector2 Size(this Texture texture)
-        {
-            return new Vector2(texture.width, texture.height);
-        }
-
-        //
-        public static Rect RectOnPos(this Vector2 pos, Vector2 size)
-        {
-            return new Rect(pos.x - size.x / 2f, pos.y - size.y / 2f, size.x, size.y);
-        }
-
-        public static Rect RectOnPos(this Vector2 pos, Rect rect)
-        {
-            return RectOnPos(pos, rect.size);
-        }
-
-        public static void Slider(this WidgetRow row, float width, ref float value, float min = 0, float max = 1)
-        {
-            row.IncrementYIfWillExceedMaxWidth(width);
-            Rect rect = new Rect(row.LeftX(width), row.curY, width, 24f);
-            value = Widgets.HorizontalSlider(rect, value, min, max, true);
-            row.IncrementPosition(width);
-        }
-
-        public static Rect TextFieldNumericFix<T>(this WidgetRow row, ref T val, ref string buffer, float width = -1f) where T : struct
-        {
-            if (width < 0f)
-            {
-                width = Text.CalcSize(val.ToString()).x;
-            }
-            row.IncrementYIfWillExceedMaxWidth(width + 2f);
-            row.IncrementPosition(2f);
-            Rect rect = new Rect(row.LeftX(width), row.curY, width, 24f);
-            Widgets.TextFieldNumeric<T>(rect, ref val, ref buffer, float.MinValue, float.MaxValue);
-            row.IncrementPosition(2f);
-            row.IncrementPosition(rect.width);
-            return rect;
-        }
-
-        public static void DoBGForNext(this Listing_Standard listing, Color color)
-        {
-            Rect rect = listing.GetNextRect();
-            Widgets.DrawBoxSolid(rect, color);
-        }
-
-        public static Rect GetNextRect(this Listing_Standard listing)
-        {
-            return new Rect(listing.curX, listing.curY, listing.ColumnWidth, Text.LineHeight);
-        }
-
-        public static void TextureElement(this Listing_Standard listing, TextureElement tex)
-        {
-            Rect rect = listing.GetRect(Text.LineHeight);
-            if (listing.BoundingRectCached == null || rect.Overlaps(listing.BoundingRectCached.Value))
-            {
-                DrawTextureWithMaterial(rect, tex.Texture, tex.Material, tex.TexCoords);
-            }
-        }
-        public static void TextFieldNumericLabeled<T>(this Listing_Standard listing, string label, ref T val, ref string buffer, float min = 0f, float max = 1E+09f, TextAnchor anchor = TextAnchor.MiddleRight) where T : struct
-        {
-            Rect rect = listing.GetRect(Text.LineHeight);
-            if (listing.BoundingRectCached == null || rect.Overlaps(listing.BoundingRectCached.Value))
-            {
-                Rect rect2 = rect.LeftHalf().Rounded();
-                Rect rect3 = rect.RightHalf().Rounded();
-                TextAnchor oldAnchor = Text.Anchor;
-                Text.Anchor = anchor;
-                Widgets.Label(rect2, label);
-                Text.Anchor = oldAnchor;
-                Widgets.TextFieldNumeric(rect3, ref val, ref buffer, min, max);
-                //TextFieldNumericFix(rect3, ref val, ref buffer, min, max);
-            }
-            listing.Gap(listing.verticalSpacing);
-        }
-
         public static void ScrollVertical(Rect outRect, ref Vector2 scrollPosition, Rect viewRect, float ScrollWheelSpeed = 20f)
         {
             if (Event.current.type == EventType.ScrollWheel && Mouse.IsOver(outRect))
@@ -222,63 +147,6 @@ namespace TiberiumRim
             return num;
         }
 
-        public static void SliderCustom(Rect rect, int id, ref int value, int min = 0, int max = 100, Texture sliderTexture = null, Color sliderColor = default)
-        {
-            Rect rect2 = rect;
-            rect2.xMin += 8f;
-            rect2.xMax -= 8f;
-
-            Rect position = new Rect(rect2.x, rect2.yMax - 8f - 1f, rect2.width, 2f);
-            GUI.DrawTexture(position, BaseContent.WhiteTex);
-            GUI.color = Color.white;
-            float num = rect2.x + rect2.width * (float)(value - min) / (float)(max - min);
-            Rect position2 = new Rect(num - 16f, position.center.y - 8f, 16f, 16f);
-            GUI.DrawTexture(position2, sliderTexture ?? TiberiumContent.TimeSelMarker);
-
-            if (Event.current.type == EventType.MouseUp || Event.current.rawType == EventType.MouseDown)
-            {
-                Widgets.draggingId = 0;
-                SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-            }
-
-            bool flag = false;
-            if (Mouse.IsOver(rect) || Widgets.draggingId == id)
-            {
-                if (Event.current.type == EventType.MouseDown && Event.current.button == 0 && id != Widgets.draggingId)
-                {
-                    Widgets.draggingId = id;
-                    /*
-                    float x = Event.current.mousePosition.x;
-                    if (x < position2.xMax)
-                    {
-                        Widgets.curDragEnd = Widgets.RangeEnd.Min;
-                    }
-                    else if (x > position3.xMin)
-                    {
-                        Widgets.curDragEnd = Widgets.RangeEnd.Max;
-                    }
-                    else
-                    {
-                        float num3 = Mathf.Abs(x - position2.xMax);
-                        float num4 = Mathf.Abs(x - (position3.x - 16f));
-                        Widgets.curDragEnd = ((num3 < num4) ? Widgets.RangeEnd.Min : Widgets.RangeEnd.Max);
-                    }
-                    */
-                    flag = true;
-                    Event.current.Use();
-                    SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                }
-                if (flag || Event.current.type == EventType.MouseDrag)
-                {
-                    int newSliderVal = Mathf.RoundToInt(Mathf.Clamp((Event.current.mousePosition.x - rect2.x) / rect2.width * (float)(max - min) + (float)min, (float)min, (float)max));
-                    value = Mathf.Clamp(newSliderVal, min, max);
-                    Widgets.CheckPlayDragSliderSound();
-                    Event.current.Use();
-                }
-            }
-
-        }
-
         public static void DrawGridOnCenter(Rect rect, float gridSize, Vector2 center)
         {
             Widgets.BeginGroup(rect);
@@ -376,28 +244,6 @@ namespace TiberiumRim
             Widgets.DrawTextureFitted(newRect, texture, 1f);
         }
 
-        public static void AddGapLine(ref float curY, float width, float gapSize, float x = 0, TextAnchor anchor = TextAnchor.MiddleCenter)
-        {
-            //Adds 
-            GUI.color = TRColor.GapLineColor;
-            var yPos = curY;
-            switch (anchor)
-            {
-                case TextAnchor.MiddleCenter:
-                    yPos = curY + (gapSize / 2f);
-                    break;
-                case TextAnchor.UpperCenter:
-                    yPos = curY;
-                    break;
-                case TextAnchor.LowerCenter:
-                    yPos = curY + gapSize;
-                    break;
-            }
-            Widgets.DrawLineHorizontal(x, yPos, width);
-            curY += gapSize;
-            GUI.color = Color.white;
-        }
-
         public static void DrawTexture(float x, float y, float width, Texture2D texture, out float height)
         {
             Vector2 dimensions = new Vector2(texture.width, texture.height);
@@ -488,129 +334,6 @@ namespace TiberiumRim
 
             }
             return Color.white;
-        }
-
-        public static void DoTinyLabel(Rect rect, string label)
-        {
-            Text.Font = GameFont.Tiny;
-            Text.Anchor = TextAnchor.UpperLeft;
-            Widgets.Label(rect, label);
-
-            Text.Anchor = default;
-            Text.Font = default;
-        }
-
-        public static float DrawNetworkValueTypeReadout(Rect rect, GameFont font, float textYOffset, NetworkContainerSet containerSet)
-        {
-            float height = 5;
-
-            Widgets.BeginGroup(rect);
-            Text.Font = font;
-            Text.Anchor = TextAnchor.UpperLeft;
-            foreach (var type in containerSet.AllTypes)
-            {
-                // float value = GetNetwork(Find.CurrentMap).NetworkValueFor(type);
-                //if(value <= 0) continue;
-                string label = $"{type}: {containerSet.GetValueByType(type)}";
-                Rect typeRect = new Rect(5, height, 10, 10);
-                Vector2 typeSize = Text.CalcSize(label);
-                Rect typeLabelRect = new Rect(20, height + textYOffset, typeSize.x, typeSize.y);
-                Widgets.DrawBoxSolid(typeRect, type.valueColor);
-                Widgets.Label(typeLabelRect, label);
-                height += 10 + 2;
-            }
-            Text.Font = default;
-            Text.Anchor = default;
-            Widgets.EndGroup();
-
-            return height;
-        }
-
-        public static bool MouseClickIn(Rect rect, int mouseButton)
-        {
-            Event curEvent = Event.current;
-            return Mouse.IsOver(rect) && curEvent.type == EventType.MouseDown && curEvent.button == mouseButton;
-        }
-
-        public static void DrawListedPart<T>(Rect rect, ref Vector2 scrollPos, List<T> elements, Action<Rect, UIPartSizes, T> drawProccessor, Func<T, UIPartSizes> heightFunc)
-        {
-            var height = elements.Sum(s => heightFunc(s).totalSize);
-            var viewRect = new Rect(rect.x, rect.y, rect.width, height);
-            Widgets.BeginScrollView(rect, ref scrollPos, viewRect, false);
-            float curY = rect.y;
-            for (var i = 0; i < elements.Count; i++)
-            {
-                var element = elements[i];
-                var listingHeight = heightFunc(element);
-                var listingRect = new Rect(rect.x, curY, rect.width, listingHeight.totalSize);
-                if (i % 2 == 0)
-                {
-                    Widgets.DrawHighlight(listingRect);
-                }
-                drawProccessor(listingRect, listingHeight, element);
-                curY += listingHeight.totalSize;
-            }
-            Widgets.EndScrollView();
-        }
-
-        public static void AbsorbInput(Rect rect)
-        {
-            var curEv = Event.current;
-            if (Mouse.IsOver(rect) && curEv.type == EventType.MouseDown)
-                curEv.Use();
-        }
-
-        public static void DrawHighlightColor(Rect rect, Color color)
-        {
-            var oldColor = GUI.color;
-            GUI.color = color;
-            Widgets.DrawHighlight(rect);
-            GUI.color = oldColor;
-        }
-
-        public static void DrawHighlightIfMouseOverColor(Rect rect, Color color)
-        {
-            var oldColor = GUI.color;
-            GUI.color = color;
-            Widgets.DrawHighlightIfMouseover(rect);
-            GUI.color = oldColor;
-        }
-
-        public static Vector2 GetTiberiumReadoutSize(NetworkContainer container)
-        {
-            Vector2 size = new Vector2(10, 10);
-            foreach (var type in container.AllStoredTypes)
-            {
-                Vector2 typeSize = Text.CalcSize($"{type.labelShort}: {container.ValueForType(type)}");
-                size.y += 10 + 2;
-                var sizeX = typeSize.x + 20;
-                if (size.x <= sizeX)
-                    size.x += sizeX;
-            }
-            return size;
-        }
-
-        public static void DrawTiberiumReadout(Rect rect, NetworkContainer container)
-        {
-            float height = 5;
-            Widgets.BeginGroup(rect);
-            Text.Font = GameFont.Tiny;
-            Text.Anchor = TextAnchor.UpperLeft;
-            foreach (var type in container.AllStoredTypes)
-            {
-                // float value = GetNetwork(Find.CurrentMap).NetworkValueFor(type);
-                //if(value <= 0) continue;
-                string label = $"{type.labelShort}: {container.ValueForType(type)}";
-                Rect typeRect = new Rect(5, height, 10, 10);
-                Vector2 typeSize = Text.CalcSize(label);
-                Rect typeLabelRect = new Rect(20, height - 2, typeSize.x, typeSize.y);
-                Widgets.DrawBoxSolid(typeRect, type.valueColor);
-                Widgets.Label(typeLabelRect, label);
-                height += 10 + 2;
-            }
-            Text.Font = default;
-            Text.Anchor = default;
-            Widgets.EndGroup();
         }
     }
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.NetworkDef>
+	<TeleCore.NetworkDef>
 		<defName>ChemicalNetwork</defName>
 		<containerLabel>Chemical Storage</containerLabel>
 		<controllerDef>TiberiumExtractor</controllerDef>
-		<transmitter>ChemicalPipe</transmitter>
+		<transmitterDef>ChemicalPipe</transmitterDef>
 		<transmitterGraphic>
 			<texPath>Buildings/Common/Pollution/Pipe_Air</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -17,7 +17,7 @@
 			<shaderType>MetaOverlay</shaderType>
 			<color>(0, 255, 155)</color>
 		</overlayGraphic>
-	</TiberiumRim.NetworkDef>
+	</TeleCore.NetworkDef>
 	
 	<TiberiumRim.TRThingDef ParentName="NetworkPipeBase">
 		<defName>ChemicalPipe</defName>
@@ -26,7 +26,7 @@
 		<building>
 			<blueprintGraphicData>
 				<texPath>Buildings/Common/Pollution/Pipe_Air_blueprint</texPath>
-				<graphicClass>TiberiumRim.Graphic_LinkedWithSame</graphicClass>
+				<graphicClass>TeleCore.Graphic_LinkedWithSame</graphicClass>
 			</blueprintGraphicData>
 		</building>
 		<statBases>
@@ -39,7 +39,7 @@
 			<Steel>5</Steel>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_NetworkStructure">
+			<li Class="TeleCore.CompProperties_NetworkStructure">
 				<networks>
 					<li>
 						<networkDef>ChemicalNetwork</networkDef>
@@ -48,100 +48,100 @@
 						</networkRoles>
 					</li>
 				</networks>
-				<connectionPattern>+</connectionPattern>
+				<generalIOPattern>+</generalIOPattern>
 			</li>
 		</comps>
 	</TiberiumRim.TRThingDef>
 	
 	<!-- Metals -->
-	<TiberiumRim.NetworkValueDef>
+	<TeleCore.NetworkValueDef>
 		<defName>Iron</defName>
 		<networkDef>ChemicalNetwork</networkDef>
 		<label>Iron</label>
 		<labelShort>Fe</labelShort>
 		<valueColor>(224,102,51)</valueColor>
-	</TiberiumRim.NetworkValueDef>
+	</TeleCore.NetworkValueDef>
 
-	<TiberiumRim.NetworkValueDef>
+	<TeleCore.NetworkValueDef>
 		<defName>Copper</defName>
 		<networkDef>ChemicalNetwork</networkDef>
 		<label>Copper</label>
 		<labelShort>Cu</labelShort>
 		<valueColor>(200,128,51</valueColor>
-	</TiberiumRim.NetworkValueDef>
+	</TeleCore.NetworkValueDef>
 
-	<TiberiumRim.NetworkValueDef>
+	<TeleCore.NetworkValueDef>
 		<defName>Silver</defName>
 		<networkDef>ChemicalNetwork</networkDef>
 		<label>Silver</label>
 		<labelShort>Ag</labelShort>
 		<valueColor>(192,192,192)</valueColor>
-	</TiberiumRim.NetworkValueDef>
+	</TeleCore.NetworkValueDef>
 	
-	<TiberiumRim.NetworkValueDef>
+	<TeleCore.NetworkValueDef>
 		<defName>Gold</defName>
 		<networkDef>ChemicalNetwork</networkDef>
-		<label>Iron</label>
+		<label>Gold</label>
 		<labelShort>Au</labelShort>
 		<valueColor>(255,209,35)</valueColor>
-	</TiberiumRim.NetworkValueDef>
+	</TeleCore.NetworkValueDef>
 	
-	<TiberiumRim.NetworkValueDef>
+	<TeleCore.NetworkValueDef>
 		<defName>Uranium</defName>
 		<networkDef>ChemicalNetwork</networkDef>
 		<label>Uranium</label>
 		<labelShort>U</labelShort>
 		<valueColor>(0,143,255)</valueColor>
-	</TiberiumRim.NetworkValueDef>
+	</TeleCore.NetworkValueDef>
 	
 	<!---->
-	<TiberiumRim.NetworkValueDef>
+	<TeleCore.NetworkValueDef>
 		<defName>Carbon</defName>
 		<networkDef>ChemicalNetwork</networkDef>
 		<label>Carbon</label>
 		<labelShort>C</labelShort>
 		<valueColor>(144,144,144)</valueColor>
-	</TiberiumRim.NetworkValueDef>
+	</TeleCore.NetworkValueDef>
 	
-	<TiberiumRim.NetworkValueDef>
+	<TeleCore.NetworkValueDef>
 		<defName>Phosphorus</defName>
 		<networkDef>ChemicalNetwork</networkDef>
 		<label>Phosphorus</label>
 		<labelShort>P</labelShort>
 		<valueColor>(255,128,0)</valueColor>
-	</TiberiumRim.NetworkValueDef>
+	</TeleCore.NetworkValueDef>
 
-	<TiberiumRim.NetworkValueDef>
+	<TeleCore.NetworkValueDef>
 		<defName>Calcium</defName>
 		<networkDef>ChemicalNetwork</networkDef>
 		<label>Calcium</label>
 		<labelShort>Ca</labelShort>
 		<valueColor>(61,255,0)</valueColor>
-	</TiberiumRim.NetworkValueDef>
+	</TeleCore.NetworkValueDef>
 
-	<TiberiumRim.NetworkValueDef>
+	<TeleCore.NetworkValueDef>
 		<defName>Silicon</defName>
 		<networkDef>ChemicalNetwork</networkDef>
 		<label>Silicon</label>
 		<labelShort>Si</labelShort>
 		<valueColor>(240,200,160)</valueColor>
-	</TiberiumRim.NetworkValueDef>
+	</TeleCore.NetworkValueDef>
 
-	<TiberiumRim.NetworkValueDef>
+	<TeleCore.NetworkValueDef>
 		<defName>Exotic</defName>
 		<networkDef>ChemicalNetwork</networkDef>
 		<label>Exotic</label>
 		<labelShort>EX</labelShort>
 		<valueColor>(85,9,96)</valueColor>
-	</TiberiumRim.NetworkValueDef>
+	</TeleCore.NetworkValueDef>
 
 	<!--Gases
-	<TiberiumRim.NetworkValueDef>
+	<TeleCore.NetworkValueDef>
 		<defName>Methane</defName>
 		<networkDef>ChemicalNetwork</networkDef>
 		<label>Methane</label>
 		<labelShort>CH4</labelShort>
 		<valueColor>(85,9,96)</valueColor>
-	</TiberiumRim.NetworkValueDef>
+	</TeleCore.NetworkValueDef>
 	-->
 </Defs>

@@ -17,15 +17,19 @@
 			<arcHeightFactor>0.1</arcHeightFactor>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
-		<projectileExtended>
-			<impactEffecter>FlechetteHit</impactEffecter>
-			<impactFilth>
-				<filths>
-					<li>FilthTiberiumGreen, 0.1</li>
-				</filths>
-				<spreadRadius>0</spreadRadius>
-			</impactFilth>
-		</projectileExtended>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<projectile>
+					<impactEffecter>FlechetteHit</impactEffecter>
+					<impactFilth>
+						<filths>
+							<li>FilthTiberiumGreen, 0.1</li>
+						</filths>
+						<spreadRadius>0</spreadRadius>
+					</impactFilth>
+				</projectile>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
@@ -45,16 +49,19 @@
 			<arcHeightFactor>0.1</arcHeightFactor>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
-		<projectileExtended>
-			<impactEffecter>FlechetteBlueHit</impactEffecter>
-			<impactFilth>
-				<filths>
-					<li>FilthTiberiumBlue, 0.05</li>
-				</filths>
-				<spreadRadius>0</spreadRadius>
-			</impactFilth>
-		</projectileExtended>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<projectile>
+					<impactEffecter>FlechetteBlueHit</impactEffecter>
+					<impactFilth>
+						<filths>
+							<li>FilthTiberiumBlue, 0.01</li>
+						</filths>
+						<spreadRadius>0</spreadRadius>
+					</impactFilth>
+				</projectile>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
-
 	
 </Defs>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using RimWorld;
+using TeleCore;
 using Verse;
 
 namespace TiberiumRim
@@ -14,6 +15,9 @@ namespace TiberiumRim
         private int nutrients = 0;
 
         private List<Thing> boundHubs = new List<Thing>();
+        private Comp_AnimationRenderer animationCompInt;
+
+        public Comp_AnimationRenderer AnimationComp => animationCompInt;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -23,6 +27,8 @@ namespace TiberiumRim
             ResetEggTimer();
             ResetHubTimer();
             base.SpawnSetup(map, respawningAfterLoad);
+
+            animationCompInt = this.GetComp<Comp_AnimationRenderer>();
         }
 
         public override void ExposeData()
@@ -55,10 +61,8 @@ namespace TiberiumRim
                     Map.terrainGrid.SetTerrain(c, terrain);
             };
 
-            TiberiumFloodInfo flood = new TiberiumFloodInfo(Map,null, Processor);
             IntVec3 end = GenRadial.RadialCellsAround(Position, 56, false).RandomElement();
-            flood.TryMakeConnection(out List<IntVec3> cells, Position, end);
-
+            _ = TeleFlooder.TryMakeConnection(Position, end, Processor);
             var hub = GenSpawn.Spawn(ThingDef.Named("VeinHub"), end, Map);
             boundHubs.Add(hub);
 

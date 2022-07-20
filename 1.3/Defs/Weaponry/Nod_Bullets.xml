@@ -70,15 +70,19 @@
 			<speed>35</speed>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 		</projectile>
-		<projectileExtended>
-			<impactEffecter>FlechetteHit</impactEffecter>
-			<impactFilth>
-				<filths>
-					<li>FilthTiberiumGreen, 0.1</li>
-				</filths>
-				<spreadRadius>0</spreadRadius>
-			</impactFilth>
-		</projectileExtended>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<projectile>
+					<impactEffecter>FlechetteHit</impactEffecter>
+					<impactFilth>
+						<filths>
+							<li>FilthTiberiumGreen, 0.1</li>
+						</filths>
+						<spreadRadius>0</spreadRadius>
+					</impactFilth>
+				</projectile>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 
 	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
@@ -125,9 +129,13 @@
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
 			<shadowSize>1.8</shadowSize>			
 		</projectile>
-		<projectileExtended>
-			<impactEffecter>FlameHit</impactEffecter>
-		</projectileExtended>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<projectile>
+					<impactEffecter>FlameHit</impactEffecter>
+				</projectile>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
@@ -154,15 +162,19 @@
 			<preExplosionSpawnThingDef>FilthTibLiquidGreen</preExplosionSpawnThingDef>
 			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>-->
 		</projectile>
-		<projectileExtended>
-			<impactEffecter>ChemicalHit</impactEffecter>
-			<impactFilth>
-				<filths>
-					<li>FilthTibLiquidGreen, 0.5</li>
-				</filths>
-				<spreadRadius>1</spreadRadius>
-			</impactFilth>
-		</projectileExtended>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<projectile>
+					<impactEffecter>ChemicalHit</impactEffecter>
+					<impactFilth>
+						<filths>
+							<li>FilthTibLiquidGreen, 0.5</li>
+						</filths>
+						<spreadRadius>1</spreadRadius>
+					</impactFilth>
+				</projectile>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	<ThingDef ParentName="BaseBullet_TR">

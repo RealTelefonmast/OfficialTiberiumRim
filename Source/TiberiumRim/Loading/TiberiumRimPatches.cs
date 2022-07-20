@@ -8,6 +8,7 @@ using HarmonyLib;
 using Multiplayer.API;
 using RimWorld;
 using RimWorld.Planet;
+using TeleCore;
 using TiberiumRim.Utilities;
 using UnityEngine;
 using Verse;
@@ -22,7 +23,7 @@ namespace TiberiumRim
     {
         static TiberiumRimPatches()
         {
-            TLog.Message("Startup Init");
+            TRLog.Message("Startup Init");
             
             TiberiumRimMod.Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod(nameof(UI_BackgroundMain.BackgroundOnGUI)), new HarmonyMethod(typeof(TRUIPatches), nameof(TRUIPatches.BackgroundOnGUIPatch)));
 
@@ -31,7 +32,7 @@ namespace TiberiumRim
 
 
             //MP Hook
-            TLog.Debug($"Multiplayer: {(MP.enabled ? "Enabled - Adding MP hooks..." : "Disabled")}");
+            TRLog.Debug($"Multiplayer: {(MP.enabled ? "Enabled - Adding MP hooks..." : "Disabled")}");
             if (!MP.enabled) return;
             {
                 MP.RegisterAll();
@@ -45,7 +46,6 @@ namespace TiberiumRim
             {
                 MethodInfo helper = AccessTools.Method(typeof(TestPatch), nameof(GibHelp));
 
-                bool patched = false;
                 int i = 0;
                 foreach (var code in instructions)
                 {
@@ -157,7 +157,6 @@ namespace TiberiumRim
                 yield break;
             }
         }
-
 
         //### Mech Patches
         [HarmonyPatch(typeof(RaceProperties))]
@@ -288,29 +287,6 @@ namespace TiberiumRim
             }
         }
 
-        //This adds gizmos to the pawn
-        [HarmonyPatch(typeof(Pawn))]
-        [HarmonyPatch("GetGizmos")]
-        public static class Pawn_GetGizmoPatch
-        {
-            public static void Postfix(ref IEnumerable<Gizmo> __result, Pawn __instance)
-            {
-                List<Gizmo> gizmos = new List<Gizmo>(__result);
-                
-                foreach (var hediff in __instance.health.hediffSet.hediffs)
-                {
-                    if (hediff is HediffWithGizmos gizmoDiff)
-                    {
-                        gizmos.AddRange(gizmoDiff.GetGizmos());
-                    }
-                    var gizmoComp = hediff.TryGetComp<HediffComp_Gizmo>();
-                    if(gizmoComp != null)
-                        gizmos.AddRange(gizmoComp.GetGizmos());
-                }
-                __result = gizmos;
-            }
-        }
-
         [HarmonyPatch(typeof(JobGiver_Manhunter))]
         [HarmonyPatch("TryGiveJob")]
         public class JobGiver_Manhunter_TryGiveJobPatch
@@ -363,36 +339,6 @@ namespace TiberiumRim
             }
         }
 
-        [HarmonyPatch(typeof(FloatMenuMakerMap))]
-        [HarmonyPatch("AddDraftedOrders")]
-        public static class Pawn_AddDraftedOrdersPatch
-        {
-            public static void Postfix(Vector3 clickPos, Pawn pawn, List<FloatMenuOption> opts)
-            {
-                if (!pawn.PawnHasRangedHediffVerb()) return;
-                foreach (LocalTargetInfo attackTarg in GenUI.TargetsAt(clickPos, TargetingParameters.ForAttackHostile(), true, null))
-                {
-                    Action rangedAct = HediffRangedHelper.GetRangedAttackAction(pawn, attackTarg, out string str);
-                    string text = "FireAt".Translate(attackTarg.Thing.Label, attackTarg.Thing);
-                    FloatMenuOption floatMenuOption = new FloatMenuOption("", null, MenuOptionPriority.High, null, attackTarg.Thing, 0f, null, null);
-                    if (rangedAct == null)
-                        text += ": " + str;
-                    else
-                    {
-                        floatMenuOption.autoTakeable = (attackTarg.HasThing || attackTarg.Thing.HostileTo(Faction.OfPlayer));
-                        floatMenuOption.autoTakeablePriority = 40f;
-                        floatMenuOption.action = delegate ()
-                        {
-                            FleckMaker.Static(attackTarg.Thing.DrawPos, attackTarg.Thing.Map, FleckDefOf.FeedbackShoot, 1f);
-                            rangedAct();
-                        };
-                    }
-                    floatMenuOption.Label = text;
-                    opts.Add(floatMenuOption);
-                }
-            }
-        }
-
         /*
         [HarmonyPatch(typeof(Pawn_DraftController))]
         [HarmonyPatch("GetGizmos")]
@@ -412,36 +358,6 @@ namespace TiberiumRim
         */
 
         //Render Patches
-
-        //Draw Equipment Size Fix
-        [HarmonyPatch(typeof(PawnRenderer)), HarmonyPatch("DrawEquipmentAiming")]
-        public static class DrawEquipmentAimingPatch
-        {
-            static readonly MethodInfo injection = AccessTools.Method(typeof(DrawEquipmentAimingPatch), nameof(RenderInjection));
-           
-            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-            {
-                var instructionList = instructions.ToList();
-                for (var i = 0; i < instructionList.Count; i++)
-                {
-                    var code = instructionList[i];
-                    var nextCode = i + 1 < instructionList.Count ? instructionList[i + 1] : null;
-                    if (nextCode != null && nextCode.opcode == OpCodes.Ret)
-                    {
-                        yield return new CodeInstruction(OpCodes.Ldarg_1);
-                        yield return new CodeInstruction(OpCodes.Call, injection);
-                        continue;
-                    }
-                    yield return code;
-                }
-            }
-
-            public static void RenderInjection(Mesh mesh, Vector3 drawLoc, Quaternion quat, Material mat, int layer, Thing thing)
-            {
-                var size = thing.Graphic.drawSize;
-                Graphics.DrawMesh(mesh, Matrix4x4.TRS(drawLoc, quat, new Vector3(size.x, 1, size.y)), mat, layer);
-            }
-        }
 
         //Draw
         [HarmonyPatch(typeof(HealthCardUtility))]
@@ -475,7 +391,7 @@ namespace TiberiumRim
                 var drawerComp = pawn.GetComp<Comp_PawnExtraDrawer>();
                 if (drawerComp == null)
                 {
-                    TLog.ErrorOnce("Comp_PawnExtraDrawer not applied!", 2803974);
+                    TRLog.ErrorOnce("Comp_PawnExtraDrawer not applied!", 2803974);
                     return;
                 }
                 Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
@@ -483,7 +399,7 @@ namespace TiberiumRim
 
                 if (renderComp == null)
                 {
-                    TLog.ErrorOnce("Comp_CrystalDrawer Not Applied!", 87348728);
+                    TRLog.ErrorOnce("Comp_CrystalDrawer Not Applied!", 87348728);
                     return;
                 }
 
@@ -491,59 +407,6 @@ namespace TiberiumRim
                 drawLoc.y += 0.01953125f;
                 Quaternion quaternion = Quaternion.AngleAxis(angle, Vector3.up);
                 renderComp.Drawer.RenderOverlay(pawn, drawLoc, bodyFacing, quaternion, flags.FlagSet(PawnRenderFlags.Portrait));
-            }
-        }
-
-        [HarmonyPatch(typeof(ThingWithComps))]
-        [HarmonyPatch("Print")]
-        public static class PrintPatch
-        {
-            public static bool Prefix(ThingWithComps __instance, SectionLayer layer)
-            {
-                ThingDef def = __instance.def;
-                if (__instance is Blueprint b)
-                {
-                    if (b.def.entityDefToBuild is TerrainDef)
-                        return true;
-
-                    def = (ThingDef)b.def.entityDefToBuild;
-                }
-                if (def is FXThingDef fx)
-                {
-                    TRUtils.Print(layer, __instance.Graphic, __instance, fx);
-                    return false;
-                }
-                return true;
-            }
-        }
-
-        [HarmonyPatch(typeof(GhostDrawer))]
-        [HarmonyPatch("DrawGhostThing")]
-        public static class DrawGhostThingPatch
-        {
-            public static bool Prefix(IntVec3 center, Rot4 rot, ThingDef thingDef, Graphic baseGraphic, Color ghostCol, AltitudeLayer drawAltitude)
-            {
-                if (!(thingDef is FXThingDef fxDef)) return true;
-                if (baseGraphic == null)
-                {
-                    baseGraphic = thingDef.graphic;
-                }
-                Graphic graphic = GhostUtility.GhostGraphicFor(baseGraphic, thingDef, ghostCol);
-                Vector3 loc = GenThing.TrueCenter(center, rot, thingDef.Size, drawAltitude.AltitudeFor());
-                TRUtils.Draw(graphic, loc, rot, null, fxDef);
-
-                foreach (var t in thingDef.comps)
-                {
-                    t.DrawGhost(center, rot, thingDef, ghostCol, drawAltitude);
-                }
-                if (thingDef.PlaceWorkers != null)
-                {
-                    foreach (var p in thingDef.PlaceWorkers)
-                    {
-                        p.DrawGhost(thingDef, center, rot, ghostCol);
-                    }
-                }
-                return false;
             }
         }
 
@@ -665,6 +528,7 @@ namespace TiberiumRim
             }
         }
 
+        /*
         [HarmonyPatch(typeof(ThingDef))]
         [HarmonyPatch("SpecialDisplayStats")]
         public static class SpecialDisplayStatsPatch
@@ -687,6 +551,7 @@ namespace TiberiumRim
                 yield break;
             }
         }
+        */
 
         [HarmonyPatch(typeof(Thing))]
         [HarmonyPatch("Kill")]
@@ -926,76 +791,6 @@ namespace TiberiumRim
                     map.glowGrid.RegisterGlower(__instance);
                 }
                 return false;
-            }
-        }
-
-        [HarmonyPatch(typeof(BillUtility))]
-        [HarmonyPatch("MakeNewBill")]
-        public static class MakeNewBillPatch
-        {
-            public static void Postfix(ref Bill __result)
-            {
-                if(__result.recipe is TRecipeDef tRecipe && tRecipe.networkCost != null)
-                {
-                    NetworkBill tibBill = new NetworkBill(__result.recipe as TRecipeDef);
-                    __result = tibBill;
-                }
-            }
-        }
-
-        [HarmonyPatch(typeof(Dialog_BillConfig))]
-        [HarmonyPatch("DoWindowContents")]
-        public static class Dialog_BillConfigDoWindowContentsPatch
-        {
-            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-            {
-                MethodInfo methodFinder = AccessTools.Method(typeof(StringBuilder), nameof(StringBuilder.AppendLine));
-                MethodInfo helper = AccessTools.Method(typeof(Dialog_BillConfigDoWindowContentsPatch), nameof(WriteNetworkCost));
-
-                bool continuedToPop = false, finalPatched = false;
-                int i = 0;
-                foreach (var code in instructions)
-                {
-                    if (i < 2 && code.opcode == OpCodes.Callvirt && code.operand.Equals(methodFinder))
-                    {
-                        i++;
-                    }
-
-                    yield return code;
-                    if (i != 2) continue;
-                   
-                    if (!continuedToPop)
-                    {
-                        continuedToPop = true;
-                        continue;
-                    }
-
-                    if (!finalPatched)
-                    {
-                        yield return new CodeInstruction(OpCodes.Ldarg_0);
-                        yield return new CodeInstruction(OpCodes.Ldloc_S, 34);
-                        yield return new CodeInstruction(OpCodes.Call, helper);
-                        finalPatched = true;
-                    }
-                }
-
-            }
-
-            private static void WriteNetworkCost(Dialog_BillConfig instance, StringBuilder stringBuilder)
-            {
-                if (instance.bill is NetworkBill tBill)
-                {
-                    stringBuilder.AppendLine($"Network Cost:");
-                    foreach (var cost in tBill.def.networkCost.Cost.SpecificCosts)
-                    {
-                        stringBuilder.AppendLine($" - {cost.valueDef.LabelCap.Colorize(cost.valueDef.valueColor)}: {cost.value}");
-                    }
-
-                    stringBuilder.AppendLine($"BaseShouldBeDone: {tBill.BaseShouldDo}");
-                    stringBuilder.AppendLine($"ShouldBeDone: {tBill.ShouldDoNow()}");
-                    stringBuilder.AppendLine($"CompTNW: {tBill.CompTNW is { IsPowered: true }}");
-                    stringBuilder.AppendLine($"def.CanPay: {tBill.def.networkCost.CanPayWith(tBill.CompTNW)}");
-                }
             }
         }
 

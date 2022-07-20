@@ -8,11 +8,23 @@ using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
 using Verse;
+using Verse.Profile;
 
 namespace TiberiumRim
 {
     public static class MiscPatches
     {
+        //
+        [HarmonyPatch(typeof(MemoryUtility))]
+        [HarmonyPatch(nameof(MemoryUtility.ClearAllMapsAndWorld))]
+        internal static class MemoryUtility_ClearAllMapsAndWorldPatch
+        {
+            public static void Postfix()
+            {
+                StaticData.Notify_ClearingMapAndWorld();
+            }
+        }
+
         //Patching Pref Changes
         [HarmonyPatch(typeof(Prefs))]
         [HarmonyPatch(nameof(Prefs.BackgroundImageExpansion), MethodType.Setter)]
@@ -20,11 +32,11 @@ namespace TiberiumRim
         {
             public static void Postfix(ExpansionDef value)
             {
-                TLog.Debug($"Patching Pref Setter {value}");
+                TRLog.Debug($"Patching Pref Setter {value}");
                 if (value != null)
                 {
                     TiberiumSettings.Settings.UseCustomBackground = false;
-                    TLog.Debug("Setting UseCustomBG to FALSE");
+                    TRLog.Debug("Setting UseCustomBG to FALSE");
                 }
             }
         }

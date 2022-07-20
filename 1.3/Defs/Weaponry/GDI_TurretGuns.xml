@@ -27,8 +27,8 @@
 			<li>TurretGun</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<originOffsets>	
 					<li>(-0.45,0,1)</li>
 					<li>( 0.00,0,1)</li>
@@ -80,8 +80,8 @@
 			<li>TurretGun</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_GDITurret</defaultProjectile>
 				<warmupTime>2.5</warmupTime>
@@ -122,8 +122,8 @@
 			<li>TurretGun</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Guardian</defaultProjectile>
 				<warmupTime>2.5</warmupTime>
@@ -165,8 +165,8 @@
 			<li>TurretGun</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_Beam</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRRailgun</damageDef>
 					<damageBase>55</damageBase>
@@ -222,8 +222,8 @@
 			<li>TurretGun</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_BurstToTarget</verbClass>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_BurstToTarget</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Projectile_SonicWave</defaultProjectile>
 				<requireLineOfSight>true</requireLineOfSight>

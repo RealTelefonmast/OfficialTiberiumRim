@@ -242,7 +242,7 @@
 				<shortCircuitInRain>false</shortCircuitInRain>
 				<transmitsPower>false</transmitsPower>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
+			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
 					<li>
 						<data>
@@ -291,7 +291,7 @@
 		<drawerType>MapMeshOnly</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/SonicInhibition/SonicFence/Fence_Base</texPath>
-			<graphicClass>TiberiumRim.Graphic_LinkedWithSame</graphicClass>
+			<graphicClass>TeleCore.Graphic_LinkedWithSame</graphicClass>
 			<linkType>Transmitter</linkType>
 		</graphicData>
 		<size>(1,1)</size>
@@ -331,7 +331,7 @@
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/SonicInhibition/SonicFence/Sonic_Atlas</texPath>
-			<graphicClass>TiberiumRim.Graphic_LinkedWithSame</graphicClass>
+			<graphicClass>TeleCore.Graphic_LinkedWithSame</graphicClass>
 			<shaderType>MoteGlow</shaderType>
 			<linkType>CornerFiller</linkType>
 			<linkFlags>
