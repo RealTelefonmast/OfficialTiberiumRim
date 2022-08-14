@@ -71,21 +71,6 @@ namespace TiberiumRim
             return def.TabWindow;
         }
 
-        public static RoomComponent_Atmospheric AtmosphericRoomComp(this Room room)
-        {
-            return room.GetRoomComp<RoomComponent_Atmospheric>();
-        }
-
-        public static Room GetRoomFast(this IntVec3 pos, Map map)
-        {
-            Region validRegion = map.regionGrid.GetValidRegionAt_NoRebuild(pos);
-            if (validRegion != null && validRegion.type.Passable())
-            {
-                return validRegion.Room;
-            }
-            return null;
-        }
-
         public static EventLetter SendEventLetter(this LetterStack stack, TaggedString eventLabel, TaggedString eventDesc, EventDef eventDef, LookTargets targets = null)
         {
             EventLetter letter = (EventLetter)LetterMaker.MakeLetter(eventLabel, eventDesc, TiberiumDefOf.EventLetter, targets);

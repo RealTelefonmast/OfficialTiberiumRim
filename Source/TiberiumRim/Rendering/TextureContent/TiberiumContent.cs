@@ -227,9 +227,6 @@ namespace TiberiumRim
 
         #endregion
 
-        public static readonly Texture2D Nebula1 = ContentFinder<Texture2D>.Get("ShaderMaterials/Nebula1", false);
-        public static readonly Texture2D Nebula2 = ContentFinder<Texture2D>.Get("ShaderMaterials/Nebula2", false);
-
         //Misc
         public static readonly Texture2D VectorArrow = ContentFinder<Texture2D>.Get("Misc/Arrow", false);
         public static readonly Material ArrowMat = MaterialPool.MatFrom("Misc/Arrow");
