@@ -37,9 +37,7 @@ namespace TiberiumRim
 
         public TiberiumTerrainInfo TerrainInfo;
 
-        public RoomMapInfo RoomInfo;
         public GasGridInfo GasGridInfo;
-        public AtmosphericMapInfo AtmosphericInfo;
 
         // Artificial
         public SuppressionMapInfo SuppressionInfo;
@@ -62,7 +60,6 @@ namespace TiberiumRim
             TerrainInfo = new TiberiumTerrainInfo(map);
             FloraInfo = new TiberiumFloraMapInfo(map);
             TiberiumInfo = new TiberiumMapInfo(map);
-            AtmosphericInfo = new AtmosphericMapInfo(map);
             GasGridInfo = new GasGridInfo(map);
             DangerInfo = new DangerMapInfo(map);
 
@@ -75,7 +72,6 @@ namespace TiberiumRim
 
             //MetaData
             MapPawnInfo = new MapPawnInfo(map);
-            RoomInfo = new RoomMapInfo(map);
             DynamicDataInfo = new DynamicDataCacheInfo(map);
             GeneralDataInfo = new GeneralDataMapInfo(map);
 
@@ -118,7 +114,6 @@ namespace TiberiumRim
             Scribe_Deep.Look(ref TiberiumInfo,  "tiberiumMapInfo", map);
             Scribe_Deep.Look(ref FloraInfo,     "FloraInfo",       map);
             Scribe_Deep.Look(ref TerrainInfo,   "TerrainInfo",     map);
-            Scribe_Deep.Look(ref AtmosphericInfo, "AtmosphericInfo",   map);
             Scribe_Deep.Look(ref NaturalTiberiumStructureInfo, "NatrualTiberiumStructureInfo",   map);
             Scribe_Deep.Look(ref MapPawnInfo,   "MapPawnInfo",     map);
 
@@ -154,8 +149,6 @@ namespace TiberiumRim
         public override void MapComponentOnGUI()
         {
             base.MapComponentOnGUI();
-            AtmosphericInfo.UpdateOnGUI();
-            RoomInfo.UpdateOnGUI();
             if(HediffBool) 
                 TiberiumAffecter.HediffGrid.DrawValues();
             if (HarvesterBool)
@@ -178,8 +171,6 @@ namespace TiberiumRim
         {
             base.MapComponentUpdate();
             //AtmosphericInfo.Update();
-            AtmosphericInfo.Draw();
-            RoomInfo.Draw();
             GasGridInfo.Draw();
 
             if (DrawBool)
@@ -199,10 +190,8 @@ namespace TiberiumRim
         public override void MapComponentTick()
         {
             base.MapComponentTick();
-            RoomInfo.Tick();
 
             TiberiumInfo.Tick();
-            AtmosphericInfo.Tick();
             SuppressionInfo.Tick();
             TiberiumAffecter.Tick();
             TiberiumProducerInfo.Tick();

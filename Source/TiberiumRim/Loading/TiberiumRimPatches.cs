@@ -890,35 +890,4 @@ namespace TiberiumRim
 
         }
     }
-
-    [HarmonyPatch(typeof(TemperatureCache))]
-    [HarmonyPatch("TryCacheRegionTempInfo")]
-    public static class TryCacheRegionTempInfoPatch
-    {
-        public static void Postfix(IntVec3 c, Region reg, Map ___map)
-        {
-            ___map.Tiberium().AtmosphericInfo.Cache.TryCacheRegionAtmosphericInfo(c, reg);
-        }
-    }
-
-    [HarmonyPatch(typeof(TemperatureCache))]
-    [HarmonyPatch("ResetCachedCellInfo")]
-    public static class ResetCachedCellInfoPatch
-    {
-        public static void Postfix(IntVec3 c, Map ___map)
-        {
-            ___map.Tiberium().AtmosphericInfo.Cache.ResetInfo(c);
-        }
-    }
-
-    [HarmonyPatch(typeof(TemperatureSaveLoad))]
-    [HarmonyPatch("ApplyLoadedDataToRegions")]
-    public static class ApplyLoadedDataToRegionsPatch
-    {
-        public static void Postfix(Map ___map)
-        {
-            ___map.Tiberium().AtmosphericInfo.Cache.atmosphericSaveLoad.ApplyLoadedDataToRegions();
-        }
-    }
-
 }

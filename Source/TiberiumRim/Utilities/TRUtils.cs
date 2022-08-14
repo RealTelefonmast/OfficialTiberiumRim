@@ -71,19 +71,9 @@ namespace TiberiumRim
             return def.TabWindow;
         }
 
-        public static RoomTracker RoomTracker(this Room room)
-        {
-            return room.Map.Tiberium().RoomInfo[room];
-        }
-
-        public static T GetRoomComp<T>(this Room room) where T : RoomComponent
-        {
-            return room.RoomTracker()?.GetRoomComp<T>();
-        }
-
         public static RoomComponent_Atmospheric AtmosphericRoomComp(this Room room)
         {
-            return room.Map.Tiberium().RoomInfo[room]?.GetRoomComp<RoomComponent_Atmospheric>();
+            return room.GetRoomComp<RoomComponent_Atmospheric>();
         }
 
         public static Room GetRoomFast(this IntVec3 pos, Map map)
@@ -252,20 +242,6 @@ namespace TiberiumRim
                    def.blockLight;
         }
 
-        public static float AtmosphericPassPercent(this Thing forThing)
-        {
-            var fullFillage = forThing.def.Fillage == FillCategory.Full;
-            var fillage = forThing.def.fillPercent;
-            return forThing switch
-            {
-                Building_Door door => door.Open ? 1 : (fullFillage ? 0 : 1f - fillage),
-                Building_Vent vent => FlickUtility.WantsToBeOn(vent) ? 1 : 0,
-                Building_Cooler cooler => cooler.IsPoweredOn() ? 1 : 0,
-                { } b => fullFillage ? 0 : 1f - fillage,
-                _ => 0
-            };
-        }
-
         public static Material GetColoredVersion(this Material mat, Color color)
         {
             Material material = new Material(mat);
@@ -332,17 +308,6 @@ namespace TiberiumRim
                 bodyResolved = "Pawns/TiberiumMutant/Bodies/" + body.defName;
                 Body = GraphicDatabase.Get(typeof(Graphic_Multi), bodyResolved, ShaderDatabase.Cutout, Vector2.one, Color.white, Color.white);
             }
-            
-        }
-
-        public static Room GetRoomIndirect(this Thing thing)
-        {
-            var room = thing.GetRoom();
-            if(room == null)
-            {
-                room = thing.CellsAdjacent8WayAndInside().Select(c => c.GetRoom(thing.Map)).First(r => r != null);
-            }
-            return room;
         }
 
         public static Pawn NewBorn(PawnKindDef kind, Faction faction = null, PawnGenerationContext context = PawnGenerationContext.NonPlayer)

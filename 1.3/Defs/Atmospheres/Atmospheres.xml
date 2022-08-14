@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<TAE.AtmosphericDef>
+		<defName>TiberiumGas</defName>
+		<naturalSaturation>0</naturalSaturation>
+		<atmosphericTag>TiberiumPollutant</atmosphericTag>
+		<labelShort>Tib</labelShort>
+		<valueColor>(75,255,75)</valueColor>
+	</TAE.AtmosphericDef>
+	
+</Defs>
