@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -14,7 +15,7 @@ namespace TiberiumRim
                 return;
             Map map = Find.CurrentMap;
             Predicate<IntVec3> pred = cell => !cell.Roofed(map) && GenSight.LineOfSight(center, cell, map);
-            GenDraw.DrawFieldEdges(CellUtils.SectorCells(center, map, props.radius, props.angle, rot.AsAngle,false, pred).ToList(), Color.blue);
+            GenDraw.DrawFieldEdges(CellGen.SectorCells(center, map, props.radius, props.angle, rot.AsAngle,false, pred).ToList(), Color.blue);
             var coveredCells = map.Tiberium().SuppressionInfo.CoveredCells.ToList();
             var suppressedCells = map.Tiberium().SuppressionInfo.SuppressedCells.ToList();
             GenDraw.DrawFieldEdges(coveredCells, Color.gray);

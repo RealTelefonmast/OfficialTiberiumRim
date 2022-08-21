@@ -43,8 +43,8 @@ namespace TiberiumRim
         public override float SkyTargetLerpFactor(Map map)
         {
             return 1f;
-            var val = map.Tiberium().AtmosphericInfo.OutsideContainer.Saturation;
-            return Mathf.Lerp(0,1, val);//GameConditionUtility.LerpInOutValue(this, , MaxSkyLerpFactor);
+            //var val = map.Tiberium().AtmosphericInfo.OutsideContainer.Saturation;
+            //return Mathf.Lerp(0,1, val);//GameConditionUtility.LerpInOutValue(this, , MaxSkyLerpFactor);
         }
 
         public override List<SkyOverlay> SkyOverlays(Map map)

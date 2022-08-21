@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TAE;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -29,7 +31,7 @@ namespace TiberiumRim
             edificeGrid = new ComputeGrid<uint>(map);
         }
 
-        public override void SafeInit()
+        public override void ThreadSafeInit()
         {
             atmosphericPassGrid.ThreadSafeInit();
             lightPassGrid.ThreadSafeInit();
@@ -90,7 +92,8 @@ namespace TiberiumRim
             {
                 if (thing is Building b)
                 {
-                    atmosphericPassGrid.SetValue(pos, b.AtmosphericPassPercent());
+                    //TODO: Map AtmosDef to int ID for compute shader def-based pass percent
+                    atmosphericPassGrid.SetValue(pos, AtmosphericTransferWorker.AtmosphericPassPercent(b));
                     if (b.def.IsEdifice())
                         edificeGrid.SetValue(pos, 1);
                     if (b.def.blockLight)

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TeleCore;
+using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
@@ -9,7 +10,10 @@ namespace TiberiumRim
 
         public TiberiumTerrainInfo(Map map) : base(map)
         {
-            WaterInfo = new TiberiumWaterInfo(map);
+            TeleUpdateManager.Notify_EnqueueNewSingleAction(() =>
+            {
+                WaterInfo = new TiberiumWaterInfo(map);
+            });
         }
 
         public override void ExposeData()
@@ -29,9 +33,9 @@ namespace TiberiumRim
             WaterInfo.Tick();
         }
 
-        public override void Draw()
+        public override void Update()
         {
-            WaterInfo.Draw();
+            WaterInfo.Update();
         }
 
         public void Notify_TibSpawned(TiberiumCrystal crystal)

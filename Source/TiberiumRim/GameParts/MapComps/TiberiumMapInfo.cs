@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TeleCore;
 using Verse;
 
 namespace TiberiumRim
@@ -41,7 +42,7 @@ namespace TiberiumRim
         {
         }
 
-        public override void Draw()
+        public override void Update()
         {
             tiberiumGrid.Drawer.RegenerateMesh();
             tiberiumGrid.Drawer.MarkForDraw();

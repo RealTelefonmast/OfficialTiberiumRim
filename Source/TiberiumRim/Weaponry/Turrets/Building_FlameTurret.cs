@@ -123,7 +123,7 @@ namespace TiberiumRim
             base.Draw();
             if (settingFireWall)
             {
-                GenDraw.DrawFieldEdges(CellUtils.SectorCells(Position, Map, Range, 90f, (DrawPos.AngleToFlat(UI.MouseMapPosition()) + 90).AngleWrapped(), false).ToList());
+                GenDraw.DrawFieldEdges(CellGen.SectorCells(Position, Map, Range, 90f, (DrawPos.AngleToFlat(UI.MouseMapPosition()) + 90).AngleWrapped(), false).ToList());
             }
 
             if (Find.Selector.IsSelected(this))

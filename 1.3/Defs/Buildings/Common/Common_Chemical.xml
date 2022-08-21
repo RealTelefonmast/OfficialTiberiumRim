@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	
+	<!--
 	<TiberiumRim.TRThingDef Name="NetworkPipeBase" ParentName="BuildingBase_TR" Abstract="True">
 		<category>Building</category>
 		<factionDesignation>Common</factionDesignation>
 		<TRCategory>Processing</TRCategory>
 		<hidden>true</hidden>
 		<drawerType>MapMeshAndRealTime</drawerType>
-		<!--<altitudeLayer>Conduits</altitudeLayer>-->
 		<altitudeLayer>FloorEmplacement</altitudeLayer>
 		<uiIconPath>Buildings/Icons/Connector_Icon</uiIconPath>
 		<uiIconScale>1</uiIconScale>
@@ -16,7 +15,6 @@
 		<graphicData>
 			<texPath>Blank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<!--<linkType>Basic</linkType>-->
 		</graphicData>
 		<building>
 			<ai_chillDestination>false</ai_chillDestination>
@@ -40,5 +38,5 @@
 			<li>TeleCore.PlaceWorker_Pipe</li>
 		</placeWorkers>
 	</TiberiumRim.TRThingDef>
-	
+	-->
 </Defs>

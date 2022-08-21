@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -109,7 +110,7 @@ namespace TiberiumRim
             return lakeCells[cell];
         }
 
-        public override void Draw()
+        public override void Update()
         {
             if (DrawBool && Find.CurrentMap == this.map)
             {

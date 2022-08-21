@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -42,7 +43,7 @@ namespace TiberiumRim
             base.Tick();
         }
 
-        public override void Draw()
+        public override void Update()
         { 
             drawer.RegenerateMesh(); 
             drawer.MarkForDraw();

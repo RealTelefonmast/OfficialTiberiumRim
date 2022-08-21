@@ -20,84 +20,38 @@ namespace TiberiumRim
     {
         //Map Information - This encloses all the different areas of a map which can be affected by tiberium, and ensures correct and dynamic effects
         // Natural
-        public TiberiumMapInfo TiberiumInfo;        // Tiberium Crystals, Pods, etc, all variations
-        public TiberiumFloraMapInfo FloraInfo;      // Tiberium Plant life, Gardens, Environment
-        public TiberiumStructureInfo NaturalTiberiumStructureInfo;
-        public StructureCacheMapInfo StructureCacheInfo;
+        public TiberiumMapInfo TiberiumInfo => map.GetMapInfo<TiberiumMapInfo>(); // Tiberium Crystals, Pods, etc, all variations
+        public TiberiumFloraMapInfo FloraInfo => map.GetMapInfo<TiberiumFloraMapInfo>();  // Tiberium Plant life, Gardens, Environment
+        public TiberiumStructureInfo NaturalTiberiumStructureInfo => map.GetMapInfo<TiberiumStructureInfo>();
+        public StructureCacheMapInfo StructureCacheInfo => map.GetMapInfo<StructureCacheMapInfo>();
 
-        public MapPawnInfo MapPawnInfo; // Currently infected pawns, animals, colonists, visitors, etc
-
-        public DangerMapInfo DangerInfo;
-
-        public GeneralDataMapInfo GeneralDataInfo;
-
-        public DynamicDataCacheInfo DynamicDataInfo;
-
-        public GlowGridGPUInfo GlowGridGPUInfo;
-
-        public TiberiumTerrainInfo TerrainInfo;
-
-        public GasGridInfo GasGridInfo;
+        //
+        public MapPawnInfo MapPawnInfo => map.GetMapInfo<MapPawnInfo>(); // Currently infected pawns, animals, colonists, visitors, etc
+        public DangerMapInfo DangerInfo => map.GetMapInfo<DangerMapInfo>();
+        public GeneralDataMapInfo GeneralDataInfo => map.GetMapInfo<GeneralDataMapInfo>();
+        public DynamicDataCacheInfo DynamicDataInfo => map.GetMapInfo<DynamicDataCacheInfo>();
+        public TiberiumTerrainInfo TerrainInfo => map.GetMapInfo<TiberiumTerrainInfo>();
 
         // Artificial
-        public SuppressionMapInfo SuppressionInfo;
-        public HarvesterMapInfo HarvesterInfo;      
+        public SuppressionMapInfo SuppressionInfo => map.GetMapInfo<SuppressionMapInfo>();
+        public HarvesterMapInfo HarvesterInfo => map.GetMapInfo<HarvesterMapInfo>();
 
         //Active Components
-        public TiberiumAffecter TiberiumAffecter;
-        public TiberiumProducerInfo TiberiumProducerInfo;
+        public TiberiumAffecter TiberiumAffecter => map.GetMapInfo<TiberiumAffecter>();
+        public TiberiumProducerInfo TiberiumProducerInfo => map.GetMapInfo<TiberiumProducerInfo>();
 
 
-        public NetworkMapInfo NetworkInfo => map.MapInfo<NetworkMapInfo>();
+        public NetworkMapInfo NetworkInfo => map.GetMapInfo<NetworkMapInfo>();
 
         public MapComponent_Tiberium(Map map) : base(map)
         {
             TRLog.Debug($"Making new Tiberium MapComp for [{map.uniqueID}]");
             StaticData.Notify_NewTibMapComp(this);
-            
-            //Nature
-            //TODO: Combine Into One Info "Environment"
-            TerrainInfo = new TiberiumTerrainInfo(map);
-            FloraInfo = new TiberiumFloraMapInfo(map);
-            TiberiumInfo = new TiberiumMapInfo(map);
-            GasGridInfo = new GasGridInfo(map);
-            DangerInfo = new DangerMapInfo(map);
-
-            NaturalTiberiumStructureInfo = new TiberiumStructureInfo(map);
-            StructureCacheInfo = new StructureCacheMapInfo(map);
-
-            //Technology
-            HarvesterInfo = new HarvesterMapInfo(map);
-            SuppressionInfo = new SuppressionMapInfo(map);
-
-            //MetaData
-            MapPawnInfo = new MapPawnInfo(map);
-            DynamicDataInfo = new DynamicDataCacheInfo(map);
-            GeneralDataInfo = new GeneralDataMapInfo(map);
-
-            GlowGridGPUInfo = new GlowGridGPUInfo(map);
-
-            TiberiumAffecter = new TiberiumAffecter(map);
-            TiberiumProducerInfo = new TiberiumProducerInfo(map);
         }
 
         public override void FinalizeInit()
         {
-            TRLog.Debug("MapComp TR FinalizeInit");
             base.FinalizeInit();
-            if (!FloraInfo.HasBeenInitialized)
-                FloraInfo.InfoInit();
-            if (!TerrainInfo.HasBeenInitialized)
-                TerrainInfo.InfoInit();
-
-            LongEventHandler.QueueLongEvent(ThreadSafeFinalize, string.Empty, false, null, false);
-        }
-
-        public void ThreadSafeFinalize()
-        {
-            GasGridInfo.SafeInit();
-            DynamicDataInfo.SafeInit();
-            GlowGridGPUInfo.SafeInit();
         }
 
         public override void MapGenerated()
@@ -111,23 +65,6 @@ namespace TiberiumRim
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Deep.Look(ref TiberiumInfo,  "tiberiumMapInfo", map);
-            Scribe_Deep.Look(ref FloraInfo,     "FloraInfo",       map);
-            Scribe_Deep.Look(ref TerrainInfo,   "TerrainInfo",     map);
-            Scribe_Deep.Look(ref NaturalTiberiumStructureInfo, "NatrualTiberiumStructureInfo",   map);
-            Scribe_Deep.Look(ref MapPawnInfo,   "MapPawnInfo",     map);
-
-            Scribe_Deep.Look(ref SuppressionInfo, "SuppressionInfo", map);
-            Scribe_Deep.Look(ref HarvesterInfo, "HarvesterInfo", map);
-
-            Scribe_Deep.Look(ref TiberiumAffecter, "affecter", map);
-            Scribe_Deep.Look(ref TiberiumProducerInfo, "TiberiumProducerInfo", map);
-
-            if (Scribe.mode == LoadSaveMode.PostLoadInit)
-            {
-                if (TiberiumProducerInfo == null)
-                    TiberiumProducerInfo = new TiberiumProducerInfo(map);
-            }
         }
 
         [TweakValue("MapComponent_TibDrawBool", 0f, 100f)]
@@ -164,38 +101,17 @@ namespace TiberiumRim
 
         public void CustomCellSteadyEffect(IntVec3 c)
         {
-            GasGridInfo.CellSteadyEffect(c);
+
         }
 
         public override void MapComponentUpdate()
         {
             base.MapComponentUpdate();
-            //AtmosphericInfo.Update();
-            GasGridInfo.Draw();
-
-            if (DrawBool)
-            {
-                TiberiumInfo.Draw();
-                FloraInfo.Draw();
-                TerrainInfo.Draw();
-
-                HarvesterInfo.Draw();
-                NaturalTiberiumStructureInfo.Draw();
-                //Suppression.SuppressionGrid.drawer.RegenerateMesh();
-                //Suppression.SuppressionGrid.drawer.MarkForDraw();
-                //Suppression.SuppressionGrid.drawer.CellBoolDrawerUpdate();
-            }
         }
 
         public override void MapComponentTick()
         {
             base.MapComponentTick();
-
-            TiberiumInfo.Tick();
-            SuppressionInfo.Tick();
-            TiberiumAffecter.Tick();
-            TiberiumProducerInfo.Tick();
-            GasGridInfo.Tick();
         }
 
         public bool TiberiumAvailable => TiberiumInfo.TiberiumCrystals[HarvestType.Valuable].Count > 0;
@@ -211,12 +127,6 @@ namespace TiberiumRim
             {
                 StructureCacheInfo.RegisterPart(def.TRGroup, thing);
             }
-
-            if (thing is IAtmosphericSource source)
-            {
-                //TODO
-                //AtmosphericInfo.RegisterSource(source);
-            }
         }
 
         public void Notify_DespawnedThing(Thing thing)
@@ -229,11 +139,6 @@ namespace TiberiumRim
                 StructureCacheInfo.DeregisterPart(def.TRGroup, thing);
             }
 
-            if (thing is IAtmosphericSource source)
-            {
-                //TODO
-                //AtmosphericInfo.DeregisterSource(source);
-            }
         }
 
         public void RegisterTRBuilding(TRBuilding building)

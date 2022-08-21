@@ -8,6 +8,7 @@ namespace TiberiumRim
 {
     public class VectorField
     {
+        /*
         private Map map;
 
         public Dictionary<Vector3, Vector2> field = new Dictionary<Vector3, Vector2>();
@@ -255,5 +256,7 @@ namespace TiberiumRim
                 Graphics.DrawMesh(MeshPool.plane10, matrix, mat, 0);
             }
         }
+        */
     }
+    
 }

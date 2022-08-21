@@ -4,6 +4,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using RimWorld;
+using TAE;
 using TeleCore;
 using UnityEngine;
 using Verse;
@@ -56,7 +57,7 @@ namespace TiberiumRim
                     depositValue--;
                     GenTemperature.PushHeat(this, 40f);
                     var cell = this.OccupiedRect().ExpandedBy(1).RandomCell;
-                    TiberiumComp.AtmosphericInfo.TrySpawnGasAt(cell, TiberiumDefOf.Gas_TiberiumGas, Rand.Range(500, 1000));
+                    map.GetMapInfo<AtmosphericMapInfo>().TrySpawnGasAt(cell, TiberiumDefOf.Gas_TiberiumGas, Rand.Range(500, 1000));
                 }
                 
             }, StartSpray, EndSpray);
@@ -146,6 +147,7 @@ namespace TiberiumRim
                 yield return gizmo;
             }
 
+            /*
             yield return new Command_Action()
             {
                 defaultLabel = "Make Gas",
@@ -167,7 +169,9 @@ namespace TiberiumRim
                     Map.Tiberium().GasGridInfo.DoSpreadOnce();
                 }
             };
+            */
         }
+        
 
     }
 }

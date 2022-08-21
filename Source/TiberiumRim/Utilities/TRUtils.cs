@@ -194,39 +194,6 @@ namespace TiberiumRim
             return def.race != null;
         }
 
-        public static bool IsMetallic(this Thing thing)
-        {
-            if (thing.def.MadeFromStuff && thing.Stuff.IsMetal) return true;
-            return thing.def.IsMetallic();
-        }
-
-        public static bool IsMetallic(this ThingDef def)
-        {
-            if (def.costList.NullOrEmpty()) return false;
-            float totalCost = def.costList.Sum(t => t.count);
-            float metalCost = def.costList.Find(t => t.thingDef.IsMetal)?.count ?? 0;
-            return metalCost / totalCost > 0.5f;
-        }
-
-        public static bool IsBuilding(this ThingDef def)
-        {
-            return def.category == ThingCategory.Building;
-        }
-
-        public static bool IsWall(this ThingDef def)
-        {
-            if (def.category != ThingCategory.Building) return false;
-            if (!def.graphicData?.Linked ?? true) return false;
-            return (def.graphicData.linkFlags & LinkFlags.Wall) != LinkFlags.None &&
-                   def.graphicData.linkType == LinkDrawerType.CornerFiller &&
-                   def.fillPercent >= 1f &&
-                   def.blockWind         &&
-                   def.coversFloor       &&
-                   def.castEdgeShadows   &&
-                   def.holdsRoof         &&
-                   def.blockLight;
-        }
-
         public static Material GetColoredVersion(this Material mat, Color color)
         {
             Material material = new Material(mat);

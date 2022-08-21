@@ -4,7 +4,7 @@
 	<PropertyGroup>
 		<RootNamespace>TiberiumRim</RootNamespace>
 		<AssemblyName>TiberiumRim</AssemblyName>
-		<TargetFramework>net472</TargetFramework>
+		<TargetFramework>net48</TargetFramework>
 		<LangVersion>latest</LangVersion>
 		<PlatformTarget>x64</PlatformTarget>
 		<OutputPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\1.3\Assemblies\</OutputPath>
@@ -15,6 +15,7 @@
 		<Version>1.0.0</Version>
 		<AssemblyVersion>1.0.*</AssemblyVersion>
 		<Deterministic>false</Deterministic>
+				<UseCommonOutputDirectory>true</UseCommonOutputDirectory>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -38,7 +39,7 @@
 
 		<PackageReference Include="Microsoft.NETCore.Platforms" Version="6.0.5" />
 
-		<PackageReference Include="TeleCore" Version="1.0.16" ExcludeAssets="runtime" />
+		<PackageReference Include="TeleCore" Version="1.2.3" ExcludeAssets="runtime" />
 		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="*" ExcludeAssets="runtime" />
 		<PackageReference Include="RimWorld.MultiplayerAPI" Version="*" ExcludeAssets="runtime" />
 	</ItemGroup>
@@ -64,6 +65,14 @@
 
 	<ItemGroup>
 	  <Folder Include="HelperClasses\" />
+	  <Folder Include="Rendering\Computation\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="AtmosphereExtended">
+	    <HintPath>..\AtmosphereExtended.dll</HintPath>
+	    <CopyLocal>False</CopyLocal>
+	  </Reference>
 	</ItemGroup>
 
 	<Target Name="MyCode" BeforeTargets="UpdateReferences">

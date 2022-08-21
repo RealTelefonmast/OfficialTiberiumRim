@@ -212,7 +212,7 @@ namespace TiberiumRim
 
             static PipeNetwork GetNetwork(Map map)
             {
-                var currentSet = map.MapInfo<NetworkMapInfo>()[TiberiumDefOf.TiberiumNetwork]?.TotalPartSet;
+                var currentSet = map.GetMapInfo<NetworkMapInfo>()[TiberiumDefOf.TiberiumNetwork]?.TotalPartSet;
                 if(currentSet == null) return null;
                 if(currentSet.FullSet.Count == 0) return null;
                 return currentSet.FullSet.First()?.Network;

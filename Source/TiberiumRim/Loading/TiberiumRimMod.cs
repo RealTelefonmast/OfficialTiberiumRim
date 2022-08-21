@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using HarmonyLib;
 using RimWorld;
+using TAE;
 using TeleCore;
 using UnityEngine;
 using Verse;
@@ -99,6 +100,7 @@ switch (pid)
 
         public void PatchPawnDefs()
         {
+            /*
             foreach (var def in DefDatabase<ThingDef>.AllDefs)
             {
                 if (def?.thingClass == null) continue;
@@ -106,11 +108,11 @@ switch (pid)
                 if (!thingClass.IsSubclassOf(typeof(Pawn)) && thingClass != typeof(Pawn)) continue;
                 if (def.comps == null)
                     def.comps = new List<CompProperties>();
-                def.comps.Add(new CompProperties_PathFollowerExtra());
                 def.comps.Add(new CompProperties_TiberiumCheck());
                 def.comps.Add(new CompProperties_PawnExtraDrawer());
                 def.comps.Add(new CompProperties_CrystalDrawer());
             }
+            */
         }
 
         [HarmonyPatch(typeof(DefGenerator))]

@@ -1,11 +1,12 @@
 ﻿using System;
+using TAE;
 using TeleCore;
 using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
 {
-    public class Comp_ANS_Filter : Comp_AtmosphericNetworkStructure
+    public class Comp_ANS_TiberiumFilter : Comp_AtmosphericNetworkStructure
     {
         private int curAnimLength;
         private int ticksLeft;

@@ -221,29 +221,6 @@ namespace TiberiumRim
             Widgets.EndGroup();
         }
 
-        public static void DrawTextureInCorner(Rect rect, Texture2D texture, float textureWidth, TextAnchor anchor, Vector2 offset = default)
-        {
-            Rect newRect = new Rect();
-            Vector2 size = FittedSizeFor(texture, textureWidth);
-            switch (anchor)
-            {
-                case TextAnchor.UpperLeft:
-                    newRect = new Rect(rect.x, rect.y, size.x, size.y);
-                    break;
-                case TextAnchor.LowerLeft:
-                    newRect = new Rect(rect.x, rect.yMax - size.y, size.x, size.y);
-                    break;
-                case TextAnchor.UpperRight:
-                    newRect = new Rect(rect.xMax - size.x, rect.y, size.x, size.y);
-                    break;
-                case TextAnchor.LowerRight:
-                    newRect = new Rect(rect.xMax - size.x, rect.yMax - size.y, size.x, size.y);
-                    break;
-            }
-            newRect.Set(newRect.x + offset.x, newRect.y + offset.y, newRect.width, newRect.height);
-            Widgets.DrawTextureFitted(newRect, texture, 1f);
-        }
-
         public static void DrawTexture(float x, float y, float width, Texture2D texture, out float height)
         {
             Vector2 dimensions = new Vector2(texture.width, texture.height);
@@ -252,14 +229,6 @@ namespace TiberiumRim
             height = dimensions.y;
             Rect rect = new Rect(x, y, dimensions.x, dimensions.y);
             Widgets.DrawTextureFitted(rect, texture, 1f);
-        }
-
-        public static Vector2 FittedSizeFor(Texture2D texture, float width)
-        {
-            Vector2 dimensions = new Vector2(texture.width, texture.height);
-            float mainPct = dimensions.x / width;
-            dimensions /= mainPct;
-            return dimensions;
         }
 
         public static bool ButtonColoredHighlight(Rect rect, string label, Color bgColor, bool mouseOverSound = true, int thickness = 1)

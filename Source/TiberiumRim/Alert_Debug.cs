@@ -31,7 +31,6 @@ namespace TiberiumRim
                           mapinfo.TiberiumCrystalTypes[HarvestType.Valuable].Count + " types" + "\n Unvaluables: " +
                           mapinfo.TiberiumCrystals[HarvestType.Unvaluable].Count + " - " +
                           mapinfo.TiberiumCrystalTypes[HarvestType.Unvaluable].Count + " types");
-            sb.AppendLine("Trackers: " + tiberium.AtmosphericInfo.AllComps.Count);
             return sb.ToString();
         }
 
