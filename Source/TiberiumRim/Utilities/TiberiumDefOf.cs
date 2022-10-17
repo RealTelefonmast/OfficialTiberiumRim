@@ -48,8 +48,8 @@ namespace TiberiumRim
         //MainButton
         public static TRMainButtonDef TiberiumTab;
 
-        //DesignationCategorx
-        public static DesignationCategoryDef Tiberium;
+        //DesignationCategory
+        public static SubMenuDesignator TiberiumMenuDesignator;
 
         // TiberiumCrystals
         //Green
@@ -79,7 +79,6 @@ namespace TiberiumRim
         public static ThingDef TiberiumTree;
 
         public static GameConditionDef TiberiumBiome;
-        public static RoomRoleDef TR_AirLock;
 
         // AllProducers
         public static TRThingDef TiberiumMeteoriteChunk;

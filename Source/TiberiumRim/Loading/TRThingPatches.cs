@@ -206,7 +206,8 @@ namespace TiberiumRim
         }
         */
 
-        [HarmonyPatch(typeof(Projectile), "Draw")]
+        /* TODO: Check if not necessary
+        [HarmonyPatch(typeof(Projectile), nameof(Projectile.Draw))]
         public static class ProjectileDrawPatch
         {
             private static MethodInfo methodToCall = AccessTools.Method(typeof(Graphics), nameof(Graphics.DrawMesh), new []{typeof(Mesh), typeof(Vector3) , typeof(Quaternion) , typeof(Material), typeof(int)});
@@ -243,6 +244,7 @@ namespace TiberiumRim
                 return graphic.MatSingle;
             }
         }
+        */
 
         #endregion
     }

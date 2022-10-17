@@ -12,9 +12,10 @@ namespace TiberiumRim
 
         //Basic Body
         public BodyTypeDef bodyType;
-        public CrownType crownType;
-        public Gender gender;
+        public HeadTypeDef headType;
         public HairDef hairDef;
+        public BeardDef beardDef;
+        public Gender gender;
         public float melanin;
         public Color hairColor;
 
@@ -25,8 +26,8 @@ namespace TiberiumRim
         public int birthDate;
         public int biologicalAge;
 
-        public UniqueBackstoryDef childhood;
-        public UniqueBackstoryDef adulthood;
+        public BackstoryDef childhood;
+        public BackstoryDef adulthood;
 
         //Equipment
         public List<ThingDef> weapons;
@@ -42,8 +43,10 @@ namespace TiberiumRim
         public ThingDef stuff;
     }
 
+    /*
     public class UniqueBackstoryDef : Def
     {
+        private BackstoryDef def;
         public string identifier;
         public BackstorySlot slot;
         public string title;
@@ -77,4 +80,5 @@ namespace TiberiumRim
             return backstory;
         }
     }
+    */
 }

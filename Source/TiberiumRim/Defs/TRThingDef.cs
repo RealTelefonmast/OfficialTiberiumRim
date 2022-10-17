@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -10,11 +11,6 @@ namespace TiberiumRim
     public class TRThingDef : ThingDef
     {
         //Designation
-        public FactionDesignationDef factionDesignation = null;
-        public TRThingCategoryDef TRCategory = null;
-
-        public TRGroupDef TRGroup;
-
         public Requisites requisites;
 
         //Properties
@@ -44,11 +40,13 @@ namespace TiberiumRim
             List<string> strings = new List<string>();
             strings.AddRange(base.ConfigErrors());
 
+            /*
             if (TRGroup == null)
             {
                 //strings.Add("Missing TRGroupDef, adding basic...");
-                TRGroup = TRGroupDefOf.All;
+                TRGroup = ThingGroupDefOf.All;
             }
+            */
 
             /*
             if(factionDesignation != FactionDesignationDefOf.None && thingClass.IsAssignableFrom(typeof(Building)) && !thingClass.IsAssignableFrom(typeof(TRBuilding)))

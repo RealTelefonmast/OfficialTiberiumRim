@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Base -->
+	<ThingDef Name="BasePawn_TR" Abstract="True">
+		<thingClass>Pawn</thingClass>
+		<category>Pawn</category>
+		<selectable>true</selectable>
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>Pawn</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<hasTooltip>true</hasTooltip>
+		<soundImpactDefault>BulletImpact_Flesh</soundImpactDefault>
+		<statBases>
+			<Mass>50</Mass>
+			<Flammability>0.5</Flammability>
+			<ToxicSensitivity>0</ToxicSensitivity>
+			<PainShockThreshold>1</PainShockThreshold>
+			<MeatAmount>50</MeatAmount>
+			<ComfyTemperatureMin>-30</ComfyTemperatureMin>
+			<ComfyTemperatureMax>75</ComfyTemperatureMax>
+			<ArmorRating_Blunt>15</ArmorRating_Blunt>
+			<ArmorRating_Sharp>12</ArmorRating_Sharp>
+			<ArmorRating_Heat>10</ArmorRating_Heat>
+		</statBases>
+		<race>
+			<intelligence>Animal</intelligence>
+			<fleshType>TiberiumFlesh</fleshType>
+			<bloodDef>FilthTibBloodG</bloodDef>		
+			<predator>true</predator>
+			<wildness>1</wildness>
+			<manhunterOnDamageChance>0.5</manhunterOnDamageChance>
+			<herdMigrationAllowed>false</herdMigrationAllowed>
+		</race>
+		<inspectorTabs>
+			<li>ITab_Pawn_Health</li>
+			<li>ITab_Pawn_Needs</li>
+			<li>ITab_Pawn_Character</li>
+			<li>ITab_Pawn_Training</li>
+		<li>ITab_Pawn_Social</li>
+			<li>ITab_Pawn_Guest</li>
+			<li>ITab_Pawn_Prisoner</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">ITab_Pawn_Slave</li>
+			<li>ITab_Pawn_FormingCaravan</li>
+			<li>ITab_Pawn_Gear</li>
+			<li>ITab_Pawn_Log</li>
+		</inspectorTabs>
+		<comps>
+			<li>
+				<compClass>CompAttachBase</compClass>
+			</li>
+		</comps>
+		<drawGUIOverlay>true</drawGUIOverlay>
+	</ThingDef>
+  
+
+	<ThingDef Name="AnimalBase_TR" ParentName="BasePawn_TR" Abstract="True" >
+		<thingClass>TiberiumRim.TiberiumPawn</thingClass>
+		<statBases>
+			<Flammability>0.5</Flammability>
+			<ToxicSensitivity>0</ToxicSensitivity>
+			<PainShockThreshold>1</PainShockThreshold>
+			<LeatherAmount>30</LeatherAmount>
+			<MeatAmount>50</MeatAmount>
+			<ComfyTemperatureMin>-25</ComfyTemperatureMin>
+			<ComfyTemperatureMax>75</ComfyTemperatureMax>
+			<ArmorRating_Blunt>0</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0</ArmorRating_Sharp>
+			<ArmorRating_Heat>0</ArmorRating_Heat>
+			<FilthRate>16</FilthRate>
+		</statBases>
+		<race>
+			<intelligence>Animal</intelligence>
+			<!-- <fleshType></fleshType>
+			<bloodDef></bloodDef>
+			<hediffGiverSets></hediffGiverSets>
+			<deathActionWorkerClass></deathActionWorkerClass>
+			<herdAnimal></herdAnimal>
+			<packAnimal></packAnimal>
+			-->
+			<bloodDef>FilthTibBloodG</bloodDef>
+			<wildness>0.99</wildness>
+			<hasGenders>true</hasGenders>
+			<needsRest>true</needsRest>
+			<thinkTreeMain>Animal</thinkTreeMain>
+			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+			<nameCategory>NoName</nameCategory>
+			<foodType>OmnivoreRoughAnimal</foodType>
+			<nameGenerator>NamerAnimalGenericMale</nameGenerator>
+			<nameGeneratorFemale>NamerAnimalGenericFemale</nameGeneratorFemale>
+			<manhunterOnDamageChance>0.95</manhunterOnDamageChance>
+			<manhunterOnTameFailChance>0.15</manhunterOnTameFailChance>
+			<baseHungerRate>0.75</baseHungerRate>
+			<predator>true</predator>
+			<canBePredatorPrey>false</canBePredatorPrey>
+			<herdMigrationAllowed>false</herdMigrationAllowed>
+			<trainability>Intermediate</trainability>
+			<hediffGiverSets>
+				<li>OrganicStandard</li>
+			</hediffGiverSets>
+		</race>
+		<tradeTags>
+			<li>TiberiumAnimal</li>
+		</tradeTags>
+		<recipes>
+			<li>ExciseCarcinoma</li>
+			<li>AdministerMechSerumHealer</li>
+			<li>RemoveBodyPart</li>
+			<li>Euthanize</li>
+			<li>Anesthetize</li>
+		</recipes>
+	</ThingDef>
+	
+	<ThingDef Name="VisceralPawnBase" ParentName="AnimalBase_TR" Abstract="True">
+		<statBases>
+			<Flammability>0.15</Flammability>
+			<LeatherAmount>15</LeatherAmount>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
+			<PainShockThreshold>1</PainShockThreshold>
+		</statBases>
+		<race>
+			<hasGenders>false</hasGenders>
+			<gestationPeriodDays>0</gestationPeriodDays>
+			<mateMtbHours>0</mateMtbHours>
+			<needsRest>false</needsRest>
+			<lifeExpectancy>999</lifeExpectancy>
+			<manhunterOnDamageChance>1</manhunterOnDamageChance>
+			<manhunterOnTameFailChance>1</manhunterOnTameFailChance>
+			<trainability>None</trainability>
+			<baseHungerRate>2</baseHungerRate>
+			<foodType>OmnivoreAnimal, OvivoreAnimal, AnimalProduct</foodType>
+			<leatherDef>Leather_Visceral</leatherDef>
+		</race>
+	</ThingDef>
+	
+	<ThingDef Name="FiendBase" ParentName="AnimalBase_TR" Abstract="True" >
+		<statBases>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
+		</statBases>
+		<race>
+			<manhunterOnDamageChance>0.8</manhunterOnDamageChance>
+			<manhunterOnTameFailChance>0.75</manhunterOnTameFailChance>
+			<leatherDef>Leather_BlackTib</leatherDef>
+			<meatLabel>tiberianMeat</meatLabel>
+			<meatColor>(26,5,5)</meatColor>
+			<meatMarketValue>3</meatMarketValue>
+			<foodType>CarnivoreAnimalStrict, OvivoreAnimal, AnimalProduct</foodType>
+		</race>
+	</ThingDef>
+	
+  	<TiberiumRim.TiberiumKindDef Name="VisceralKindBase" Abstract="True">
+		<ecoSystemWeight>0</ecoSystemWeight>
+		<canArriveManhunter>false</canArriveManhunter>
+		<wildGroupSize>1~1</wildGroupSize>
+	</TiberiumRim.TiberiumKindDef>
+	
+	<TiberiumRim.TiberiumKindDef Name="AnimalKindBase_TR" Abstract="True">
+		<ecoSystemWeight>0</ecoSystemWeight>
+		<canArriveManhunter>false</canArriveManhunter>
+		<wildGroupSize>1~1</wildGroupSize>
+	</TiberiumRim.TiberiumKindDef>
+  
+</Defs>

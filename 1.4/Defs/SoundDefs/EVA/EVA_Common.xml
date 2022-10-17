@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	
+	<SoundDef Abstract="True" Name="CEVA_Basic">
+		<eventNames />  
+		<maxVoices>4</maxVoices>  
+		<maxSimultaneous>1</maxSimultaneous>  
+	</SoundDef>
+	
+	<!-- Ion Cannon-->
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_IonCannonReady</defName>
+		<evaType>Common</evaType>
+		<evaSignal>IonCannonReady</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/IonCannonReady1,0.5</li>
+			<li>EVA/Common/IonCannonReady_optional1,0.01</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_IonCannonActivated</defName>
+		<evaType>Common</evaType>
+		<evaSignal>IonCannonActivated</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/IonCannonActivated1,0.5</li>
+			<li>EVA/Common/IonCannonActivated_optional1,0.01</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<!-- EVA System -->
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_SystemsOnline</defName>
+		<evaType>Common</evaType>
+		<evaSignal>SystemsOnline</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/SystemsOnline1,0.90</li>
+			<li>EVA/Common/SystemsOnline_optional1,0.01</li>
+			<li>EVA/Common/SystemsOnline_optional2,0.01</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_LowPower</defName>
+		<evaType>Common</evaType>
+		<evaSignal>LowPower</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/LowPower1,0.90</li>
+			<li>EVA/Common/LowPower_optional1,0.01</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_PowerRestored</defName>
+		<evaType>Common</evaType>
+		<evaSignal>PowerRestored</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/PowerRestored1,0.90</li>
+			<li>EVA/Common/PowerRestored_optional1,0.01</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<!-- Targeter -->
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_SelectWormhole</defName>
+		<evaType>Common</evaType>
+		<evaSignal>SelectWormhole</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/SelectWormhole1,0.45</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_SelectTarget</defName>
+		<evaType>Common</evaType>
+		<evaSignal>SelectTarget</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/SelectTarget1,0.45</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_SelectLocation</defName>
+		<evaType>Common</evaType>
+		<evaSignal>SelectLocation</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/SelectLocation1,0.45</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_SelectDestination</defName>
+		<evaType>Common</evaType>
+		<evaSignal>SelectDestination</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/SelectDestination1,0.45</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_SelectDropzone</defName>
+		<evaType>Common</evaType>
+		<evaSignal>SelectDropzone</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/SelectDropzone1,0.45</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_SelectUnit</defName>
+		<evaType>Common</evaType>
+		<evaSignal>SelectUnit</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/SelectUnit1,0.45</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<!--Construction/Building-->
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_Building</defName>
+		<evaType>Common</evaType>
+		<evaSignal>Building</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/Building1,0.45</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_OnHold</defName>
+		<evaType>Common</evaType>
+		<evaSignal>OnHold</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/OnHold1,0.90</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_Cancelled</defName>
+		<evaType>Common</evaType>
+		<evaSignal>Cancelled</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/Cancelled1,0.90</li>
+			<li>EVA/Common/Cancelled_optional1,0.01</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_CantDeploy</defName>
+		<evaType>Common</evaType>
+		<evaSignal>CantDeploy</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/CantDeploy1,0.90</li>
+			<li>EVA/Common/CantDeploy_optional1,0.01</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<!-- Death/Damage -->
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_UnitLost</defName>
+		<evaType>Common</evaType>
+		<evaSignal>UnitLost</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/UnitLost2,0.90</li>
+			<li>EVA/Common/UnitLost1,0.01</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_UnitUnderAttack</defName>
+		<evaType>Common</evaType>
+		<evaSignal>UnitUnderAttack</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/UnitUnderAttack1,0.45</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_InsufficientFunds</defName>
+		<evaType>Common</evaType>
+		<evaSignal>InsufficientFunds</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/InsufficientFunds1,0.5</li>
+			<li>EVA/Common/InsufficientFunds2,0.5</li>
+			<li>EVA/Common/InsufficientFunds3,0.5</li>
+			<li>EVA/Common/InsufficientFunds_optional1,0.01</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_BuildingLost</defName>
+		<evaType>Common</evaType>
+		<evaSignal>BuildingLost</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/BuildingLost1,0.90</li>
+			<li>EVA/Common/BuildingLost_optional1,0.01</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_BaseUnderAttack</defName>
+		<evaType>Common</evaType>
+		<evaSignal>BaseUnderAttack</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/BaseUnderAttack1,0.90</li>
+			<li>EVA/Common/BaseUnderAttack2,0.90</li>
+			<li>EVA/Common/BaseUnderAttack_optional1,0.01</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_TiberiumExposure</defName>
+		<evaType>Common</evaType>
+		<evaSignal>TiberiumExposure</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/TiberiumExposure1,0.90</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	<TiberiumRim.EVAMessageSoundDef>
+		<defName>CEVA_SilosNeeded</defName>
+		<evaType>Common</evaType>
+		<evaSignal>SilosNeeded</evaSignal>
+		<weightedSounds>
+			<li>EVA/Common/SilosNeeded1,0.35</li>
+			<li>EVA/Common/SilosNeeded2,0.75</li>
+			<li>EVA/Common/SilosNeeded_optional1,0.01</li>
+		</weightedSounds>
+	</TiberiumRim.EVAMessageSoundDef>
+	
+	
+</Defs>

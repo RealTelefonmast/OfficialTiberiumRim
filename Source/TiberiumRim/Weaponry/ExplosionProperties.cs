@@ -34,10 +34,10 @@ namespace TiberiumRim
 
         public void DoExplosion(IntVec3 center, Map map, Thing instigator)
         {
-            GenExplosion.DoExplosion(center, map, explosionRadius * intensity, damageDef, instigator,
-                damageOverride ?? -1, -1f, explosionSound, null, null, null, postSpawnDef, postSpawnChance,
-                postSpawnCount, false, preSpawnDef, preSpawnChance, preSpawnCount, fireChance,
-                useDamageFalloff, null, null);
+            GenExplosion.DoExplosion(center, map, explosionRadius * intensity, damageDef, instigator, 
+                damageOverride ?? -1, -1, explosionSound, null, null, null, postSpawnDef, postSpawnChance, postSpawnCount,
+                GasType.Unused, false, preSpawnDef, preSpawnChance, preSpawnCount, fireChance,
+                useDamageFalloff, null, null, null);
 
             explosionEffect?.Spawn(center, map);
         }

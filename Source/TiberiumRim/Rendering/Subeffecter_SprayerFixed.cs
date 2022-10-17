@@ -14,9 +14,9 @@ namespace TiberiumRim.VisualEffects
         {
         }
 
-        public override void SubTrigger(TargetInfo A, TargetInfo B)
+        public override void SubTrigger(TargetInfo A, TargetInfo B, int overrideSpawnTick = -1)
         {
-            MakeMote(A, B);
+	        MakeMote(A, B);
         }
 
         protected void MakeMote(TargetInfo A, TargetInfo B)

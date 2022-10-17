@@ -6,41 +6,40 @@ namespace TiberiumRim
 {
     public class TiberiumTerrainInfo : MapInformation
     {
-        public TiberiumWaterInfo WaterInfo;
+        private TiberiumWaterInfo waterInfo;
 
+        public TiberiumWaterInfo WaterInfo => waterInfo;
+        
         public TiberiumTerrainInfo(Map map) : base(map)
         {
-            TeleUpdateManager.Notify_EnqueueNewSingleAction(() =>
-            {
-                WaterInfo = new TiberiumWaterInfo(map);
-            });
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Deep.Look(ref WaterInfo, "WaterInfo", map);
+            Scribe_Deep.Look(ref waterInfo, "WaterInfo", map);
         }
 
         public override void InfoInit(bool initAfterReload = false)
         {
             base.InfoInit(initAfterReload);
-            WaterInfo.InfoInit(initAfterReload);
+            waterInfo = map.GetMapInfo<TiberiumWaterInfo>();
+            waterInfo.InfoInit(initAfterReload);
         }
 
         public override void Tick()
         {
-            WaterInfo.Tick();
+            waterInfo.Tick();
         }
 
         public override void Update()
         {
-            WaterInfo.Update();
+            waterInfo.Update();
         }
 
         public void Notify_TibSpawned(TiberiumCrystal crystal)
         {
-            WaterInfo.Notify_TibSpawned(crystal);
+            waterInfo.Notify_TibSpawned(crystal);
         }
 
     }

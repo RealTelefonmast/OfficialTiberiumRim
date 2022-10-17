@@ -103,8 +103,8 @@ namespace TiberiumRim
             IncidentParms parms = BasicIncidentParms(target);
             parms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;
             parms.raidNeverFleeIndividual = false;
-            parms.raidForceOneIncap = false;
-
+            parms.raidForceOneDowned = false;
+            
             //Arrival
             parms.raidArrivalMode = PawnsArrivalModeDefOf.EdgeWalkIn;
             parms.raidArrivalModeForQuickMilitaryAid = false;

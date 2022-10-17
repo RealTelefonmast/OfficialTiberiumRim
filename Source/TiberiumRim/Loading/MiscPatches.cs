@@ -32,11 +32,9 @@ namespace TiberiumRim
         {
             public static void Postfix(ExpansionDef value)
             {
-                TRLog.Debug($"Patching Pref Setter {value}");
                 if (value != null)
                 {
                     TiberiumSettings.Settings.UseCustomBackground = false;
-                    TRLog.Debug("Setting UseCustomBG to FALSE");
                 }
             }
         }

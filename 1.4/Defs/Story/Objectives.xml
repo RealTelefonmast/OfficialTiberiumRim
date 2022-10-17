@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Introduction 
+	<StoryFramework.ObjectiveDef>
+		<defName>M1_Research</defName>
+		<label>Looking Ahead</label>
+		<description>We are not quite sure what it is yet and need to investigate further.\nA telescope would be useful, but we don't know how to build one yet, maybe one of our researchers can figure it out!</description>
+		<type>Research</type>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>3</Intellectual>
+		</skillRequirements>
+		<targetSettings>
+			<any>true</any>
+			<targets>
+				<li>SimpleResearchBench</li>
+				<li>HiTechResearchBench</li>
+			</targets>
+		</targetSettings>
+		<images>
+			<li>Story/Mission1/M1_Research</li>
+		</images>
+		<workAmount>750</workAmount>
+	</StoryFramework.ObjectiveDef>
+	
+	<StoryFramework.ObjectiveDef>
+		<defName>M1_Construct</defName>
+		<label>Construct the telescope</label>
+		<description>Having acquired the new blueprint, we can construct the telescope!\nThis should reveal more about the strange object.</description>
+		<type>ConstructOrCraft</type>
+		<targetSettings>
+			<targets>
+				<li>Telescope_TR</li>
+			</targets>
+		</targetSettings>
+		<images>
+			<li>Story/Mission1/M1_Construct</li>
+		</images>
+	</StoryFramework.ObjectiveDef>
+	
+	<StoryFramework.ObjectiveDef>
+		<defName>M1_ObserveMeteor</defName>
+		<label>Observation</label>
+		<description>With the telescope we can finally observe the foreign object. One of our researchers should be able to offer some insight.</description>
+		<type>Research</type>
+		<skillRequirements>
+			<Intellectual>3</Intellectual>
+		</skillRequirements>
+		<targetSettings>
+			<targets>
+				<li>Telescope_TR</li>
+			</targets>
+		</targetSettings>
+		<result>				
+			<type>CustomWorker</type>
+			<workerClass>TiberiumRim.IncidentWorker_TiberiumArrival</workerClass>
+		</result>
+		<images>
+			<li>Story/Mission1/M1_Observe</li>
+		</images>
+		<workAmount>1150</workAmount>
+	</StoryFramework.ObjectiveDef>
+	
+	<StoryFramework.ObjectiveDef>
+		<defName>M2_ObserveCrater</defName>
+		<label>Inspection</label>
+		<description>The meteor crashed right onto our map and formed a crater, however we noticed that it is radiating a strange warmth and killed almost all plants in close proximity.\nWe should advance with caution and observe from a distance or we could end up just like the plants...</description>
+		<type>Research</type>
+		<skillRequirements>
+			<Intellectual>5</Intellectual>
+		</skillRequirements>
+		<targetSettings>
+			<targets>
+				<li>TiberiumCraterGreen,15</li>
+				<li>TiberiumCraterHybrid,15</li>
+				<li>RedTiberiumShard,10</li>
+			</targets>
+		</targetSettings>
+		<images>
+			<li>Story/Mission2/M2_Observe</li>
+		</images>
+		<workAmount>450</workAmount>
+	</StoryFramework.ObjectiveDef>
+	
+	<StoryFramework.ObjectiveDef>
+		<defName>M2_CheckDataBase</defName>
+		<label>Familiar Behaviours</label>
+		<description>While observing the crater one of our colonists discovered unusual behaviour of the crystals growing around it, resembling something they have once heard of. Maybe any passing ships could offer us some information?</description>
+		<type>Research</type>
+		<skillRequirements>
+			<Intellectual>5</Intellectual>
+		</skillRequirements>
+		<targetSettings>
+			<targets>
+				<li>CommsConsole</li>
+			</targets>
+		</targetSettings>
+		<images>
+			<li>Story/Mission2/M2_Comm</li>
+		</images>
+		<workAmount>1000</workAmount>
+	</StoryFramework.ObjectiveDef>
+	
+	<StoryFramework.ObjectiveDef>
+		<defName>M2_ConstructCrater</defName>
+		<label>Isolation</label>
+		<description>We now know that this strange mineral is known as "Tiberium", apparently there is a long history to it, way before humanity started colonizing outer space. We were informed to isolate it as soon as possible, with all means necessary. We have also received a blueprint that could be useful.</description>
+		<type>ConstructOrCraft</type>
+		<targetSettings>
+			<targets>
+				<li>TiberiumResearchCrane</li>
+			</targets>
+		</targetSettings>
+		<images>
+			<li>Story/Mission2/M2_Isolation</li>
+		</images>
+	</StoryFramework.ObjectiveDef>
+	
+	<StoryFramework.ObjectiveDef>
+		<defName>M2_KnowledgeResearch</defName>
+		<customClass>TiberiumRim.Objective_ActivateGZ</customClass>
+		<label>Close Inspection</label>
+		<description>With the research crane we can safely inspect Tiberium and interact with it, supposedly touching it with your bare hands could be lethal, so let's avoid that.\nLet's see what we can learn of this mineral.</description>
+		<type>Research</type>
+		<skillRequirements>
+			<Intellectual>6</Intellectual>
+			<Construction>2</Construction>
+			<Crafting>2</Crafting>
+		</skillRequirements>
+		<targetSettings>
+			<targets>
+				<li>TiberiumResearchCrane</li>
+			</targets>
+		</targetSettings>
+		<workAmount>2000</workAmount>
+	</StoryFramework.ObjectiveDef>
+	
+	<StoryFramework.ObjectiveDef>
+		<defName>M3_TiberiumNetwork</defName>
+		<label>Network Set-Up</label>
+		<description>...</description>
+		<type>ConstructOrCraft</type>
+		<targetSettings>
+			<targets>
+				<li>TiberiumNetworkController</li>
+				<li>TiberiumRefinery</li>
+				<li>TiberiumSilo,2</li>
+			</targets>
+		</targetSettings>
+	</StoryFramework.ObjectiveDef>	
+	
+	<StoryFramework.ObjectiveDef>
+		<defName>M3_TiberiumPower</defName>
+		<label>Powering Up</label>
+		<description>...</description>
+		<type>ConstructOrCraft</type>
+		<targetSettings>
+			<targets>
+				<li>TiberiumPowerPlant</li>
+			</targets>
+		</targetSettings>
+	</StoryFramework.ObjectiveDef>	
+	
+
+	<StoryFramework.ObjectiveDef>
+		<defName>M4_TiberiumSuppression</defName>
+		<label>Suppress The Growth</label>
+		<description>...</description>
+		<type>Research</type>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>5</Intellectual>
+		</skillRequirements>
+		<targetSettings>
+			<any>true</any>
+			<targets>
+				<li>SimpleResearchBench</li>
+				<li>HiTechResearchBench</li>
+			</targets>
+		</targetSettings>
+		<workAmount>750</workAmount>
+	</StoryFramework.ObjectiveDef>	
+	
+
+	
+	<StoryFramework.ObjectiveDef>
+		<defName>GeyserInspection</defName>
+		<label>Geyser Inspection</label>
+		<description>...</description>
+		<type>Research</type>
+		<skillRequirements>
+			<Intellectual>5</Intellectual>
+		</skillRequirements>
+		<targetSettings>
+			<targets>
+				<li>TiberiumGeyser</li>
+			</targets>
+		</targetSettings>
+		<workAmount>1000</workAmount>
+	</StoryFramework.ObjectiveDef>	
+	-->
+	
+</Defs>

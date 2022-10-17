@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--
+	<RoomStatDef> 
+		<defName>TiberiumPollution</defName>
+		<label>tiberium pollution</label>
+		<workerClass>TiberiumRim.RoomStatWorker_Pollution</workerClass>
+		<updatePriority>0</updatePriority>
+		<displayRounded>false</displayRounded>
+		<roomlessScore>0</roomlessScore>
+		<scoreStages>
+			<li>
+				<label>safe</label>
+			</li>
+			<li>
+				<minScore>0.25</minScore>
+				<label>fine for now</label>
+			</li>
+			<li>
+				<minScore>0.5</minScore>
+				<label>dont linger too long</label>
+			</li>
+			<li>
+				<minScore>0.75</minScore>
+				<label>get the suit while you can</label>
+			</li>
+			<li>
+				<minScore>1</minScore>
+				<label>not breathable</label>
+			</li>
+		</scoreStages>
+	</RoomStatDef>
+	-->
+  
+</Defs>

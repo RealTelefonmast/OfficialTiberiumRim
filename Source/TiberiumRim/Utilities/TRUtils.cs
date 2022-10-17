@@ -234,8 +234,8 @@ namespace TiberiumRim
             }
             else
             {
-                CrownType head = pawn.story.crownType;
-                string headPath = pawn.story.HeadGraphicPath;
+                HeadTypeDef head = pawn.story.headType;
+                string headPath = head.graphicPath;
                 string headResolved;
                 BodyTypeDef body = pawn.story.bodyType;
                 string bodyResolved;

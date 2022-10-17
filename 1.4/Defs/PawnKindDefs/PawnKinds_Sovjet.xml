@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!--
+	<PawnKindDef Name="SovjetBase" Abstract="True">
+		<race>Human</race>
+		<defaultFactionType>SovjetFaction</defaultFactionType>
+		<chemicalAddictionChance>0.1</chemicalAddictionChance>
+		<invNutrition>2.55</invNutrition>
+		<itemQuality>Normal</itemQuality>
+		<backstoryCryptosleepCommonality>0.00</backstoryCryptosleepCommonality>
+		<maxGenerationAge>50</maxGenerationAge>
+		<combatEnhancingDrugsChance>0.15</combatEnhancingDrugsChance>
+		<combatEnhancingDrugsCount>0~2</combatEnhancingDrugsCount>
+		<biocodeWeaponChance>0.1</biocodeWeaponChance>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="SovjetBase">
+		<defName>Volkov</defName>
+		<combatPower>200</combatPower>
+		<disallowedTraits>
+			<li>Nudist</li>
+		</disallowedTraits>
+		<defendPointRadius>5</defendPointRadius>
+		<allowRoyalRoomRequirements>false</allowRoyalRoomRequirements>
+		<allowRoyalApparelRequirements>false</allowRoyalApparelRequirements>
+		<baseRecruitDifficulty>1</baseRecruitDifficulty>
+		<fleeHealthThresholdRange>0</fleeHealthThresholdRange>
+		<itemQuality>Excellent</itemQuality>
+		<weaponMoney>9999</weaponMoney>
+		<apparelMoney>9999</apparelMoney>
+		<techHediffsMoney>9999</techHediffsMoney>
+		<weaponTags>
+			<li>VolkovArsenal</li>
+		</weaponTags>
+		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+		<apparelRequired>
+			<li>Apparel_Jacket</li>
+			<li>Apparel_CollarShirt</li>
+			<li>Apparel_Pants</li>
+		</apparelRequired>
+		<specificApparelRequirements>
+			<li>
+				<stuff>Leather_Wolf</stuff>
+				<apparelLayer>OnSkin</apparelLayer>
+				<bodyPartGroup>Torso</bodyPartGroup>
+			</li>
+			<li>
+				<stuff>Leather_Bear</stuff>
+				<apparelLayer>Shell</apparelLayer>
+				<bodyPartGroup>Torso</bodyPartGroup>
+			</li>
+			<li>
+				<stuff>Leather_Panthera</stuff>
+				<bodyPartGroup>Legs</bodyPartGroup>
+			</li>
+		</specificApparelRequirements>
+		<apparelColor>(200,120,20)</apparelColor>
+		<specificApparelRequirements>
+			<li>Apparel_Duster</li>
+		</specificApparelRequirements>
+		<apparelTags>
+			<li>Volkov_Arsenal</li>
+		</apparelTags>
+		<techHediffsMaxAmount>4</techHediffsMaxAmount>
+		<biocodeWeaponChance>1</biocodeWeaponChance>
+		<techHediffsRequired>
+			<li>AugmentedEye</li>
+			<li>CannonImplant</li>
+			<li>CannonImplant</li>
+			<li>RegenerativeNanites</li>
+		</techHediffsRequired>
+	</PawnKindDef>
+-->
+</Defs>

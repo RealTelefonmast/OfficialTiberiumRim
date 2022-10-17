@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Multiplayer.API;
 using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
@@ -28,14 +27,14 @@ namespace TiberiumRim
         public TResearchTaskDef TaskOverride
         {
             get => taskOverride;
-            [SyncMethod]
+            //[SyncMethod]
             set => taskOverride = value;
         }
 
         public TResearchDef CurrentProject
         {
             get => currentProject;
-            [SyncMethod]
+            //[SyncMethod]
             set => currentProject = value;
         }
 
@@ -67,11 +66,13 @@ namespace TiberiumRim
         }
         */
 
+        /*TODO: MULTIPLAYER
         [SyncWorker]
         static void SyncTResearchManager(SyncWorker sync, ref TResearchManager type)
         {
             type = Find.World.GetComponent<TResearchManager>();
         }
+        */
 
         public override void ExposeData()
         {
@@ -98,7 +99,7 @@ namespace TiberiumRim
             checkTick--;
         }
 
-        [SyncMethod]
+        //TODO:[SyncMethod]
         public void StartResearch(TResearchDef project, bool sameFlag)
         {
             if (!sameFlag)
@@ -182,7 +183,7 @@ namespace TiberiumRim
             researchGroupData[group][0] = !researchGroupData[group][0];
         }
 
-        [SyncMethod(SyncContext.None)]
+        //TODO:[SyncMethod(SyncContext.None)]
         public void Complete(TResearchGroupDef group)
         {
             TRLog.Debug($"Completing Research Group {group}");
@@ -195,7 +196,7 @@ namespace TiberiumRim
         }
 
         //Research Projects
-        [SyncMethod(SyncContext.None)]
+        //TODO:[SyncMethod(SyncContext.None)]
         public void Complete(TResearchDef researchDef)
         {
             TRLog.Debug($"Completing Research Project {researchDef}");
@@ -216,7 +217,7 @@ namespace TiberiumRim
         }
 
         //Research Tasks
-        [SyncMethod(SyncContext.None)]
+        //TODO:[SyncMethod(SyncContext.None)]
         public void SetCompleted(TResearchTaskDef task, bool completed)
         {
             TRLog.Debug($"Completing Research Task {task} -> {completed}");

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>ChemicalBombImplant</defName>
+    <label>suicide bomb implant</label>
+    <labelNoun>a suicide bomb implant</labelNoun>
+    <description>An installed bionic implant, connected to the strong chemical suicide bomb. Also improves body response.</description>
+    <descriptionHyperlinks><ThingDef>ChemicalBombImplant</ThingDef></descriptionHyperlinks>
+    <spawnThingOnRemoved>ChemicalBombImplant</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>1.25</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+	<comps>
+		<li Class="TiberiumRim.HediffCompProperties_ExplodeOnPartDestroyed">
+			<explosionProps>
+				<explosionRadius>6.9</explosionRadius>
+				<damageDef>TiberiumExplosionFrag</damageDef>
+				<damageOverride>75</damageOverride>
+				<postSpawnDef>Gas_Chemical</postSpawnDef>
+				<postSpawnChance>0.25</postSpawnChance>
+			</explosionProps>
+		</li>
+		<li Class="HediffCompProperties_ReactOnDamage">
+			<damageDefIncoming>EMP</damageDefIncoming>
+			<createHediff>BrainShock</createHediff>
+		</li>
+	</comps>
+    <tags><li>ChemicalBombImplant</li></tags>
+  </HediffDef>
+
+
+  <TiberiumRim.TRThingDef ParentName="BodyPartBionicBase">
+    <defName>ChemicalBombImplant</defName>
+    <label>suicide bomb implant</label>
+    <description>An installed bionic implant, connected to the strong chemical suicide bomb. Take your pawn on a suicide mission.</description>
+    <descriptionHyperlinks><RecipeDef>InstallChemicalBombImplant</RecipeDef></descriptionHyperlinks>
+	<graphicData>
+		<texPath>Items/Weapons/Nod/SuicideBomb</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>1.25</drawSize>
+	</graphicData>
+    <costList>
+      <Uranium>15</Uranium>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+    <statBases>
+      <Mass>2</Mass>
+    </statBases>
+    <recipeMaker>
+		<recipeUsers>
+			<li>Nod_Factory</li>
+		</recipeUsers>
+		<skillRequirements>
+			<Crafting>8</Crafting>
+		</skillRequirements>
+      <researchPrerequisite></researchPrerequisite>
+    </recipeMaker>
+	<techHediffsTags>
+		<li>ChemicalBombImplant</li>
+	</techHediffsTags>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+  </TiberiumRim.TRThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>InstallChemicalBombImplant</defName>
+    <label>install suicide bomb implant</label>
+    <description>Install a suicide bomb implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ChemicalBombImplant</ThingDef>
+      <HediffDef>ChemicalBombImplant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing suicide bomb implant.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ChemicalBombImplant</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ChemicalBombImplant</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>ChemicalBombImplant</addsHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveChemicalBombImplant</defName>
+    <label>remove suicide bomb implant</label>
+    <description>Remove suicide bomb implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ChemicalBombImplant</ThingDef>
+      <HediffDef>ChemicalBombImplant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing suicide bomb implant.</jobString>
+    <removesHediff>ChemicalBombImplant</removesHediff>
+  </RecipeDef>
+  
+  
+	<HediffDef ParentName="ImplantHediffBase">
+    <defName>InfusionImplant</defName>
+    <label>tiberium infusion</label>
+    <labelNoun>a tiberium infusion</labelNoun>
+    <description>A special tiberium infusion for the nod soldiers. It changes the organs to almost fit the Tiberium environment. But users become sensitive to mental break, and cannot be removed.</description>
+    <descriptionHyperlinks><ThingDef>InfusionImplant</ThingDef></descriptionHyperlinks>
+    <spawnThingOnRemoved>InfusionImplant</spawnThingOnRemoved>
+		<stages>
+			<li>
+				<minSeverity>0</minSeverity>
+				<statOffsets>
+					<TiberiumInfectionResistance>0.8</TiberiumInfectionResistance>
+					<TiberiumRadiationResistance>0.8</TiberiumRadiationResistance>
+					<TiberiumGasResistance>0.8</TiberiumGasResistance>
+					<MentalBreakThreshold>0.05</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+		</stages>
+    <tags><li>InfusionImplant</li></tags>
+  </HediffDef>
+
+
+  <TiberiumRim.TRThingDef ParentName="BodyPartBionicBase">
+    <defName>InfusionImplant</defName>
+    <label>tiberium infusion</label>
+    <description>A special tiberium infusion for the nod soldiers. It changes the organs to almost fit the Tiberium environment. but users become sensitive to anger, and cannot be removed.</description>
+    <descriptionHyperlinks><RecipeDef>InstallInfusionImplant</RecipeDef></descriptionHyperlinks>
+	<graphicData>
+		<texPath>Items/Consumable/TibInfusion</texPath>
+		<graphicClass>Graphic_StackCount</graphicClass>
+		<drawSize>1</drawSize>
+	</graphicData>
+	<drawGUIOverlay>true</drawGUIOverlay>
+    <costList>
+		<MedicineUltratech>1</MedicineUltratech>
+		<Penoxycyline>5</Penoxycyline>
+		<Flake>5</Flake>
+    </costList>
+    <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+    <statBases>
+      <Mass>1</Mass>
+    </statBases>
+	<stackLimit>10</stackLimit>
+    <recipeMaker>
+		<recipeUsers>
+			<li>Nod_Factory</li>
+		</recipeUsers>
+		<skillRequirements>
+			<Medicine>8</Medicine>
+		</skillRequirements>
+      <researchPrerequisite></researchPrerequisite>
+    </recipeMaker>
+	<techHediffsTags>
+		<li>InfusionImplant</li>
+	</techHediffsTags>
+	<requisites>
+		<tiberiumResearch>
+			<li>NodExperimental1</li>
+		</tiberiumResearch>
+	</requisites>
+  </TiberiumRim.TRThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>InstallInfusionImplant</defName>
+    <label>install tiberium infusion</label>
+    <description>Install a tiberium infusion.</description>
+    <descriptionHyperlinks>
+      <ThingDef>InfusionImplant</ThingDef>
+      <HediffDef>InfusionImplant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tiberium infusion.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>InfusionImplant</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>InfusionImplant</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>InfusionImplant</addsHediff>
+  </RecipeDef>
+  
+  
+</Defs>

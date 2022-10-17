@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--===============  ==============-->
+
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRRailgun</defName>
+		<label>railgun projectile</label>
+		<isExplosive>false</isExplosive>
+		<externalViolence>true</externalViolence>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<hediff>Shredded</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<makesBlood>true</makesBlood>
+		<armorCategory>Sharp</armorCategory>
+		<defaultDamage>10</defaultDamage>
+		<defaultStoppingPower>0.1</defaultStoppingPower>
+		<defaultArmorPenetration>0.1</defaultArmorPenetration>
+		<buildingDamageFactor>1</buildingDamageFactor>
+		<plantDamageFactor>1</plantDamageFactor>
+	</DamageDef>
+	
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRLaser</defName>
+		<label>laser heat</label>
+		<isExplosive>false</isExplosive>
+		<externalViolence>true</externalViolence>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<hediff>Burn</hediff>
+		<hediffSolid>Cut</hediffSolid>
+		<makesBlood>false</makesBlood>
+		<armorCategory>Heat</armorCategory>
+		<defaultDamage>10</defaultDamage>
+		<defaultStoppingPower>0.1</defaultStoppingPower>
+        <defaultArmorPenetration>0.1</defaultArmorPenetration>
+		<buildingDamageFactor>1</buildingDamageFactor>
+		<plantDamageFactor>1</plantDamageFactor>
+	</DamageDef>
+	
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRLaserC</defName>
+		<label>laser cut</label>
+		<isExplosive>false</isExplosive>
+		<externalViolence>true</externalViolence>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<hediff>Cut</hediff>
+		<hediffSolid>Cut</hediffSolid>
+		<makesBlood>true</makesBlood>
+		<armorCategory>Sharp</armorCategory>
+		<defaultDamage>10</defaultDamage>
+		<defaultStoppingPower>0.1</defaultStoppingPower>
+        <defaultArmorPenetration>0.1</defaultArmorPenetration>
+		<buildingDamageFactor>1</buildingDamageFactor>
+		<plantDamageFactor>1</plantDamageFactor>
+	</DamageDef>
+
+
+
+</Defs>

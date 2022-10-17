@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<BodyPartDef Abstract= "True" Name="PartBase">
+		<hitPoints>15</hitPoints>
+		<frostbiteVulnerability>2</frostbiteVulnerability>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<bleedRate>0</bleedRate>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>	
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="PartBase">
+		<defName>HarvesterMainFrame</defName>
+		<label>frame</label>
+		<hitPoints>150</hitPoints>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="PartBase">
+		<defName>HarvesterBrain</defName>
+		<label>auto pilot circuit</label>
+		<hitPoints>25</hitPoints>
+		<skinCovered>true</skinCovered>
+		<tags>
+			<li>ConsciousnessSource</li>
+		</tags>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="PartBase">
+		<defName>HarvesterCockpit</defName>
+		<label>cockpit</label>
+		<hitPoints>50</hitPoints>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="PartBase">
+		<defName>HarvesterDrivingPart</defName>
+		<hitPoints>50</hitPoints>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="PartBase">
+		<defName>HarvesterArmorPlate</defName>
+		<label>armor plate</label>
+		<hitPoints>100</hitPoints>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="PartBase">
+		<defName>HarvesterEye</defName>
+		<label>mono eye</label>
+		<hitPoints>25</hitPoints>
+		<tags>
+			<li>SightSource</li>
+		</tags>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="PartBase">
+		<defName>HarvesterContainer</defName>
+		<label>container</label>
+		<hitPoints>100</hitPoints>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="PartBase">
+		<defName>HarvesterNozzle</defName>
+		<label>nozzle</label>
+		<hitPoints>25</hitPoints>
+		<skinCovered>true</skinCovered>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="PartBase">
+		<defName>HarvesterMixer</defName>
+		<label>tiberium mixer</label>
+		<hitPoints>50</hitPoints>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="PartBase">
+		<defName>HarvesterGrinder</defName>
+		<label>tiberium grinder</label>
+		<hitPoints>50</hitPoints>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="PartBase">
+		<defName>HarvesterMelter</defName>
+		<label>tiberium melter</label>
+		<hitPoints>50</hitPoints>
+	</BodyPartDef>
+	
+	<BodyPartDef>
+		<defName>HarvesterPowerPack</defName>
+		<label>power pack</label>
+		<hitPoints>75</hitPoints>
+		<skinCovered>true</skinCovered>
+		<tags>
+			<li>MovingLimbCore</li>
+			<li>ManipulationLimbCore</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="PartBase">
+		<defName>Harvester_Collector</defName>
+		<label>collector base</label>
+		<hitPoints>50</hitPoints>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="PartBase">
+		<defName>Harvester_CollectorArm</defName>
+		<label>collector arm</label>
+		<hitPoints>50</hitPoints>
+		<tags>
+			<li>ManipulationLimbCore</li>
+		</tags>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="PartBase">
+		<defName>Harvester_Track</defName>
+		<label>track</label>
+		<hitPoints>50</hitPoints>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="PartBase">
+		<defName>Harvester_CarbonWheel</defName>
+		<label>carbon wheel</label>
+		<hitPoints>25</hitPoints>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="PartBase">
+		<defName>Harvester_ReinforcedWheel</defName>
+		<label>reinforced wheel</label>
+		<hitPoints>35</hitPoints>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+
+</Defs>

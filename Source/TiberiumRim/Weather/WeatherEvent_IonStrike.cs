@@ -40,7 +40,7 @@ namespace TiberiumRim
                     strikeLoc = CellFinderLoose.RandomCellWith((IntVec3 sq) => sq.Standable(map) && !map.roofGrid.Roofed(sq), map, 1000);
                 boltMesh = LightningBoltMeshPool.RandomBoltMesh;
                 if (strikeLoc.Fogged(map)) return;
-                GenExplosion.DoExplosion(this.strikeLoc, this.map, 1.9f, DamageDefOf.Bomb, null, -1, -1f, null, null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                GenExplosion.DoExplosion(strikeLoc, map, 1.9f, DamageDefOf.Bomb, null);
                 Vector3 loc = strikeLoc.ToVector3Shifted();
                 for (int i = 0; i < 4; i++)
                 {

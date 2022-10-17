@@ -20,12 +20,14 @@
 			<accuracyPenalty>0.8</accuracyPenalty>
 			<rotationSpeed>5</rotationSpeed>
 		</gas>
-		<gasProps>
-			<maxSaturation>1000</maxSaturation>
-			<minSpreadSaturation>100</minSpreadSaturation>
-			<!--<dissipationSaturation>200</dissipationSaturation>-->
-			<dissipateTo>TibPollution</dissipateTo>
-		</gasProps>
+		<modExtensions>
+			<li Class="TAE.GasPropertyExtension">
+				<maxSaturation>1000</maxSaturation>
+				<minSpreadSaturation>100</minSpreadSaturation>
+				<!--<dissipationSaturation>200</dissipationSaturation>-->
+				<dissipateTo>TibPollution</dissipateTo>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
   
 </Defs>

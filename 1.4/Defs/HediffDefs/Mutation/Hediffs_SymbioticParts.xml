@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<HediffDef Abstract="True" Name="SymbioticPart" ParentName="HediffBase_TR">
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(130, 220, 135)</defaultLabelColor>
+		<makesAlert>false</makesAlert>
+		<tendable>false</tendable>
+		<isBad>false</isBad>
+		<cureAllAtOnceIfCuredByItem>false</cureAllAtOnceIfCuredByItem>
+		<makesSickThought>false</makesSickThought>
+	</HediffDef>
+
+	<!-- Organs -->
+	<HediffDef ParentName="SymbioticPart">
+		<defName>SymbioticNode</defName>
+		<label>symbiotic node</label>
+		<stages>
+			<li>
+				<painFactor>1.005</painFactor>
+				<partEfficiencyOffset>0.05</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<!-- Bone -->
+	<HediffDef ParentName="SymbioticPart">
+		<defName>SymbioticBone</defName>
+		<label>tiberian infused bone marrow</label>
+		<stages>
+			<li>
+				<partEfficiencyOffset>0.45</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<!-- Outside -->
+	<HediffDef ParentName="SymbioticPart">
+		<defName>EnhancedPart</defName>
+		<ignoreIllegalLabelCharacterConfigError>true</ignoreIllegalLabelCharacterConfigError>
+		<label>enhanced {0}</label>
+		<hediffClass>TiberiumRim.Hediff_LabelledPart</hediffClass>
+		<stages>
+			<li>
+				<partEfficiencyOffset>0.3</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<!---->
+	<HediffDef Abstract="True" Name="EnhancedImplant" ParentName="HediffImplant_TR">
+		<defaultLabelColor>(130, 220, 135)</defaultLabelColor>
+	</HediffDef>
+	
+	<TiberiumRim.TRHediffDef Abstract="True" Name="EnhancedPart" ParentName="AddedPart_TR">
+		<defaultLabelColor>(130, 220, 135)</defaultLabelColor>
+		<isNaturalInsertion>true</isNaturalInsertion>
+		<addedPartProps>
+			<solid>false</solid>
+			<isGoodWeapon>true</isGoodWeapon>
+			<partEfficiency>1.25</partEfficiency>
+		</addedPartProps>
+	</TiberiumRim.TRHediffDef>
+
+	<TiberiumRim.TRHediffDef ParentName="EnhancedPart">
+		<defName>TiberiumEnhancedArm</defName>
+		<label>tiberium enhanced arm</label>
+		<labelNoun>a tiberium enhanced arm</labelNoun>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>fist</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>10</power> 
+						<cooldownTime>2.2</cooldownTime>
+					</li>
+					<li>
+						<label>crystal elbow</label>
+						<capacities>
+							<li>Cut</li>
+							<li>Stab</li>
+							<li>Scratch</li>
+						</capacities>
+						<power>6</power> 
+						<cooldownTime>3</cooldownTime>
+					</li>
+				</tools>
+			</li>
+		</comps>
+		<!--spawnThingOnRemoved>TiberiumEnhancedArm</spawnThingOnRemoved-->
+	</TiberiumRim.TRHediffDef>
+  
+	<TiberiumRim.TRHediffDef ParentName="EnhancedPart">
+		<defName>TiberiumEnhancedLeg</defName>
+		<label>tiberium enhanced leg</label>
+		<labelNoun>a tiberium enhanced leg</labelNoun>
+		<!--spawnThingOnRemoved>TiberiumEnhancedLeg</spawnThingOnRemoved-->
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>foot</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>KickMaterialInEyes</li>
+						</capacities>
+						<power>8</power> 
+						<cooldownTime>2.2</cooldownTime>
+					</li>
+				</tools>
+			</li>
+		</comps>
+		<addedPartProps>
+			<solid>false</solid>
+			<partEfficiency>1.4</partEfficiency>
+		</addedPartProps>
+	</TiberiumRim.TRHediffDef>
+	
+	<HediffDef ParentName="EnhancedImplant">
+		<defName>TiberiumSkinSample</defName>
+		<label>implanted tiberium tissue</label>
+		<hediffClass>TiberiumRim.Hediff_TiberiumPart</hediffClass>
+		<labelNoun>a tiberium tissue implant</labelNoun>
+		<addedPartProps>
+			<solid>false</solid>
+			<partEfficiency>-0.25</partEfficiency>
+		</addedPartProps>
+		<stages>
+			<li>
+			    <minSeverity>0</minSeverity>
+				<becomeVisible>false</becomeVisible>
+			    <painOffset>0.05</painOffset>
+			</li>
+		</stages>
+	</HediffDef>
+	
+</Defs>

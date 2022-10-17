@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -80,7 +81,7 @@ namespace TiberiumRim
             }
         }
 
-        public override void Impact(Thing hitThing)
+        public override void Impact(Thing hitThing, bool blockedByShield = false)
         {
             Map map = base.Map;
             IntVec3 position = base.Position;

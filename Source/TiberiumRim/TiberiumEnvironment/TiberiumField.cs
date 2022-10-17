@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Multiplayer.API;
 using UnityEngine;
 using Verse;
 
@@ -36,13 +35,13 @@ namespace TiberiumRim
         public bool MarkedForFastGrowth
         {
             get => fastFastGrowth;
-            [SyncMethod]
+            //TODO:[SyncMethod]
             private set => fastFastGrowth = value;
         }
 
         public int TotalWorth => FieldCrystals.Sum(c => (int)c.HarvestValue);
 
-        [SyncWorker]
+        /*TODO:[SyncWorker]
         static void SyncWorkerTibField(SyncWorker sync, ref TiberiumField type)
         {
             if (sync.isWriting)
@@ -55,6 +54,7 @@ namespace TiberiumRim
                 type = thing.TiberiumField;
             }
         }
+        */
 
         public TiberiumField()
         {

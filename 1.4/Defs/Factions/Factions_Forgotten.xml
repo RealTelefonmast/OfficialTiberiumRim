@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<FactionDef ParentName="OutlanderFactionBase" Name="ForgottenFactionBase" Abstract="True">
+	<pawnSingular>forgotten one</pawnSingular>
+	<pawnsPlural>forgotten horde</pawnsPlural>
+    <categoryTag>Tribal</categoryTag>
+	<canMakeRandomly>true</canMakeRandomly>
+	<leaderTitle>khan</leaderTitle>
+	<leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
+    <fixedLeaderKinds>
+      <li>Forgotten_HeadChief</li>
+    </fixedLeaderKinds>
+	<factionIconPath>UI/Icons/Factions/Forgotten</factionIconPath>
+	<settlementTexturePath>World/WorldObjects/TribalSettlement</settlementTexturePath>
+	<techLevel>Industrial</techLevel>
+	<factionNameMaker>NamerFactionPirate</factionNameMaker>
+	<settlementNameMaker>NamerSettlementPirate</settlementNameMaker>
+	 <allowedCultures><li>Corunan</li></allowedCultures>
+    <requiredMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Raider</li>
+    </requiredMemes>
+    <disallowedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Darkness</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">TreeConnection</li>
+    </disallowedMemes>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Outlander</li>
+        </categories>
+        <commonality>0.25</commonality>
+      </li>
+      <li>
+        <categories>
+          <li>Tribal</li>
+        </categories>
+        <commonality>0.75</commonality>
+      </li>
+    </backstoryFilters>
+	<colorSpectrum>
+		<li>(1, 1, 1)</li>
+	</colorSpectrum>
+	<caravanTraderKinds>
+		<li>Caravan_Tiberium_BulkGoods</li>
+	</caravanTraderKinds>
+	<visitorTraderKinds>
+		<li>Visitor_Outlander_Standard</li>
+	</visitorTraderKinds>
+	<baseTraderKinds>
+		<li>Base_Faction_Standard</li>
+	</baseTraderKinds>
+    <allowedArrivalTemperatureRange>-50~100</allowedArrivalTemperatureRange>
+    <raidLootMaker>ForgottenRaidLootMaker</raidLootMaker>
+	<maxPawnCostPerTotalPointsCurve>
+		<points>
+			<li>(0, 1000)</li>
+			<li>(50, 2500)</li>
+			<li>(500, 5000)</li>
+			<li>(1000, 10000)</li>
+			<li>(100000, 100000)</li>
+		</points>
+	</maxPawnCostPerTotalPointsCurve>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(300,  0)</li>
+        <li>(700,  1)</li>
+        <li>(1400, 1.5)</li>
+        <li>(2800, 2)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+	<autoFlee>true</autoFlee>
+	<pawnGroupMakers>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>100</commonality>
+			<options>
+				<Forgotten_HeadChief>5</Forgotten_HeadChief>
+				<Forgotten_GoodMutant>15</Forgotten_GoodMutant>
+				<Forgotten_BadMutant>55</Forgotten_BadMutant>
+				<Forgotten_Warrior>10</Forgotten_Warrior>
+				<Forgotten_Heavygunner>12</Forgotten_Heavygunner>
+				<!--
+				<Forgotten_Ironback>3</Forgotten_Ironback>
+				-->
+			</options>
+		</li>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>100</commonality>
+			<options>
+				<Forgotten_BadMutant>70</Forgotten_BadMutant>
+				<!--
+				<TiberiumTerror>3</TiberiumTerror>
+				<BigTiberiumFiend>7</BigTiberiumFiend>
+				<TiberiumFiend>10</TiberiumFiend>
+				<Boomfiend>10</Boomfiend>
+				-->
+			</options>
+		</li>
+		<li>
+			<kindDef>Peaceful</kindDef>
+			<options>
+				<Forgotten_BadMutant>40</Forgotten_BadMutant>
+				<Forgotten_GoodMutant>10</Forgotten_GoodMutant>
+			</options>
+		</li>
+		<li>
+			<kindDef>Trader</kindDef>
+			<traders>
+				<Forgotten_Trader>1</Forgotten_Trader>
+			</traders>
+			<carriers>
+				<Tiffalo>10</Tiffalo>
+			</carriers>
+			<guards>
+				<Forgotten_BadMutant>40</Forgotten_BadMutant>
+				<Forgotten_GoodMutant>10</Forgotten_GoodMutant>
+			</guards>
+		</li>
+		<li>
+			<kindDef>Settlement</kindDef>
+			<options>
+				<Forgotten_HeadChief>100</Forgotten_HeadChief>
+				<Forgotten_GoodMutant>50</Forgotten_GoodMutant>
+				<Forgotten_BadMutant>50</Forgotten_BadMutant>
+				<Forgotten_Warrior>15</Forgotten_Warrior>
+				<Forgotten_Heavygunner>15</Forgotten_Heavygunner>
+				<!--
+				<Forgotten_Ironback>15</Forgotten_Ironback>
+				<TiberiumTerror>15</TiberiumTerror>
+				<BigTiberiumFiend>15</BigTiberiumFiend>
+				<TiberiumFiend>15</TiberiumFiend>
+				-->
+				</options>
+		</li>
+	</pawnGroupMakers>
+</FactionDef>
+
+<FactionDef ParentName="ForgottenFactionBase">
+	<defName>Forgotten</defName>
+	<label>Forgotten Mutants</label>
+	<description>A gang of mutants.\n\nMutants don't sow, they don't build, and they rarely trade. They enrich themselves mostly by raiding and robbing the more productive groups in the area.\n\nTheir technology level depends mostly on who they've managed to steal from recently. Mostly they carry gunpowder weapons, though the luckier ones may have advanced energy weapons, and some may just like to stab people at close range.</description>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+	<configurationListOrderPriority>0</configurationListOrderPriority>
+</FactionDef>
+
+  <ThingSetMakerDef>
+    <defName>ForgottenRaidLootMaker</defName>
+    <root Class="ThingSetMaker_MarketValue">
+      <fixedParams>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+            <li>Jade</li>
+            <li>MedicineHerbal</li>
+            <li>Pemmican</li>
+          </thingDefs>
+        </filter>
+      </fixedParams>
+    </root>
+  </ThingSetMakerDef>
+
+</Defs>

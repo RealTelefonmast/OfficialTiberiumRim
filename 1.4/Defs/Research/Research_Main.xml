@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TResearchGroupDef>
+		<defName>MainGroup</defName>
+		<label>Main Research</label>	
+		<researchProjects>
+			<li>GreenSky</li>
+			<li>MineralAnalysis</li>
+			<li>TiberiumRefining</li>
+			<li>TiberiumGasRefining</li>
+			<li>TiberiumPower</li>
+			<li>TiberiumProtection</li>
+			<li>TiberiumSuppressionBasic</li>
+			<li>TiberiumForaging</li>
+		</researchProjects>
+	</TiberiumRim.TResearchGroupDef>
+	
+	<!--TODO:
+	Initial Mission
+	Incident->Event-> "Shooting Stars" //Global light effect on map
+	Event->Causes Job/ThinkTree Detour->Free Pawn Watches stars //Gloabl "Job Effect"
+	During Job->Incident Possible->Event->Green Sky/Shooting stars coming close // Global light flash on map
+	Pawn becomes culprit/Seen in description
+	-->
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>GreenSky</defName>
+		<label>Green Sky</label>	
+		<researchType>observation</researchType>
+		<description>A colonist spotted a strange green light in the sky the other night. They insist it was not a natural occurance. We should put our best researchers to use and figure out if it is anything of concern.</description>
+		<!--<description>[PAWN_nameFull] caught a strange green light in the sky the other night. [PAWN_pronoun] insists that it was not a natural occurance.</description>-->
+		<!--
+		<requisites>
+			<events>
+				<li>TiberiumMeteorSighting</li>
+			</events>
+		</requisites>
+		-->
+		<events>
+			<li>TiberiumMeteorCrash</li>
+		</events>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<tasks>
+			<li>GreenSky_T1</li>
+			<li>GreenSky_T2</li>
+			<li>GreenSky_T3</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>GreenSky_T1</defName>
+		<label>Research Components</label>		
+		<description>As a first step we need to research a telescope. This will help us to observe any further strange occurrences in the sky. A capable colonist should be provided with a research bench to start work.</description>
+		<descriptionShort>Research telescope technology.</descriptionShort>
+		<skillRequirements>
+			<Intellectual>2</Intellectual>
+		</skillRequirements>
+		<taskTarget>
+			<targetType>Building_ResearchBench</targetType>
+		</taskTarget>
+		<images>
+			<li>Story/GreenSky/M1_1</li>
+		</images>
+		<workType>Research</workType>
+		<workAmount>200</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>GreenSky_T2</defName>
+		<label>Construct Telescope</label>		
+		<description>Now that we know how to construct a telescope, we should make one and place it somewhere outside. Someone should start observation soon after.</description>
+		<descriptionShort>Construct a telescope.</descriptionShort>
+		<creationTasks>
+			<thingsToCreate>
+				<Telescope_TR>1</Telescope_TR>
+			</thingsToCreate>
+		</creationTasks>
+		<images>
+			<li>Story/GreenSky/M1_2</li>
+		</images>
+		<workType>Construction</workType>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>GreenSky_T3</defName>
+		<label>Observation Research</label>	
+		<description>Now it is time to wait and see if anything else happens.</description>
+		<descriptionShort>Observe the sky.</descriptionShort>
+		<skillRequirements>
+			<Intellectual>4</Intellectual>
+		</skillRequirements>
+		<taskTarget>
+			<targetDefs><li>Telescope_TR</li></targetDefs>
+		</taskTarget>
+		<images>
+			<li>Story/GreenSky/M1_3</li>
+		</images>
+		<workType>Research</workType>
+		<workAmount>250</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>MineralAnalysis</defName>
+		<label>Mineral Analysis</label>	
+		<researchType>analysis</researchType>
+		<description>There was a loud crash nearby. It seems like what the colonist saw landed right next to us! We should try and figure out what it is.</description>
+		<requisites>
+			<events>
+				<li>TiberiumMeteorCrash</li>
+			</events>
+		</requisites>
+		<tasks>
+			<li>MineralAnalysis_T1</li>
+			<li>MineralAnalysis_T2</li>
+			<li>MineralAnalysis_T3</li>
+			<li>MineralAnalysis_T4</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>MineralAnalysis_T1</defName>
+		<label>Crash Site Inspection</label>
+		<description>Since we don't know what we're dealing with, someone needs to investigate. It could be dangerous, so they should stay at a safe distance and observe it.</description>
+		<descriptionShort>Inspect the crash site.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<distanceFromTarget>10</distanceFromTarget>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumMeteoriteChunk</li>
+				<!--li>TiberiumCraterBlue</li>
+				<li>TiberiumCraterHybrid</li-->
+			</targetDefs>
+		</taskTarget>
+		<images>
+			<li>Story/MinerAnalysis/M2_1</li>
+		</images>
+		<workAmount>500</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>MineralAnalysis_T2</defName>
+		<label>Establishing Communications</label>
+		<description>Now that we've seen this object start to spread, there is a need to find out what to do about it. It seems best that we make a way to communicate to others and ask around. Let's start by making a communication console, or comms for short.</description>
+		<descriptionShort>Construct a comms console.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<CommsConsole>1</CommsConsole>
+			</thingsToCreate>
+		</creationTasks>
+		<images>
+			<li>Story/MinerAnalysis/M2_2</li>
+		</images>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>MineralAnalysis_T3</defName>
+		<label>Valuable Information</label>
+		<description>With our comms up and running, someone needs to be the speaker for our colony. There's several channels scattered around that change all the time throughout the day. Maybe they have something useful.</description>
+		<descriptionShort>Figure out what this mineral is.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>CommsConsole</li>
+			</targetDefs>
+		</taskTarget>
+		<discoveries>
+			<thingsToDiscover>
+				<li>TiberiumProducerCrater</li>
+				<li>TiberiumCrystalLattice</li>
+			</thingsToDiscover>
+		</discoveries>
+		<events>
+			<li>TiberiumToxemiaDiscovery</li>
+		</events>
+		<images>
+			<li>Story/MinerAnalysis/M2_2</li>
+		</images>
+		<workAmount>500</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>MineralAnalysis_T4</defName>
+		<label>Constructing Boundaries</label>		
+		<description>We've learned thanks to our random hails to nearby ships and stations that we were correct in believing the meteor is a mineral of some kind. We also learned that it is commonly called Tiberium. It is known to be toxic for life and very radioactive. Despite the risks, there is an opportunity here to learn more about it for ourselves. Inspired by some of the information given and downloaded to the console, perhaps a crane of some kind would be a safe way to study samples on site.</description>
+		<descriptionShort>Construct the research crane.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<TiberiumResearchCrane>1</TiberiumResearchCrane>
+			</thingsToCreate>
+		</creationTasks>
+		<images>
+			<li>Story/MinerAnalysis/M2_3</li>
+		</images>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>TiberiumProtection</defName>
+		<label>Tiberium Protection</label>	
+		<researchType>tech research</researchType>
+		<description>After the discovery of toxicity from Tiberium crystals, there is a need for proper protection for our colony to wear. Without it, there's very little chance of a good outcome if exposed. It can end in emergency amputations or death. To avoid this, we can try and create suits that prevent this risk.</description>
+		<requisites>
+			<events>
+				<li>TiberiumToxemiaDiscovery</li>
+			</events>
+		</requisites>
+		<tasks>
+			<li>TiberiumProtection_T1</li>
+			<li>TiberiumProtection_T2</li>
+			<li>TiberiumProtection_T3</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumProtection_T1</defName>
+		<label>Hardening Plates</label>	
+		<description>As a first step towards making a protective suit, which we will call a jumpsuit from now on: there needs to be a full body piece similar to a diving suit to help ease discomfort from the next step. That step being that we need to create a material such as inlaid plates that can block radiation and toxicity. Dense materials such as lead have been long used for blocking radiation in particular, but wearing a lead jumpsuit is a bit primitive. Instead, and along with this challenge, the concept of working respirators build into a full-coverage helmet will be a must. It is a balancing act in inventing armour that both protects and has a reasonable weight.</description>
+		<descriptionShort>Research a protective material.</descriptionShort>
+		<workType>Crafting</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumCrafter</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>500</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumProtection_T2</defName>
+		<label>Comfort Layers</label>		
+		<description>The first layer seems to be the easy part. It may take some time to get right, but the jumpsuit will be worth the trouble for whoever ends up wearing this new gear. It won't provide any protection on its own but it can be worn underneath armour. When paired with the rest of the set it will soften the burden of wearing such hard materials.</description>
+		<descriptionShort>Provide a jumpsuit.</descriptionShort>
+		<creationTasks>
+			<thingsToCreate>
+				<Jumpsuit>1</Jumpsuit>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumProtection_T3</defName>
+		<label>Suit Up</label>
+		<description>Despite the paradoxical problem given by balancing mass and protection, there should be enough practice to attempt this feat. Once you have a jumpsuit ready, it's time to create a proper mask and the protective suit itself. These parts will all fit together on one person and it will be a revolutionary new way to avoid exposure.</description>		
+		<descriptionShort>Provide gear for a colonist.</descriptionShort>
+		<creationTasks>
+			<thingsToCreate>
+				<TiberiumSuitMask>1</TiberiumSuitMask>
+				<TiberiumSuit>1</TiberiumSuit>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>TiberiumRefining</defName>
+		<label>Tiberium Refining</label>	
+		<researchType>analysis</researchType>
+		<description>Tiberium, being a mineral, would logically seem that it has an application of some kind. This feels more true by the fact our contacts through comms seemed to be holding back some kind of information about it by giving us only simple answers. Tiberium's self-sustaining growth is an alluring trait, something that might create a dangerous but useful yield for us. Putting our best minds forward to this curiosity, the colony can research and create a way to do so.</description>
+		<requisites>
+			<tiberiumResearch>
+				<li>MineralAnalysis</li>
+			</tiberiumResearch>
+		</requisites>
+		<tasks>
+			<li>TiberiumRefining_T1</li>
+			<li>TiberiumRefining_T2</li>
+			<li>TiberiumRefining_T3</li>
+			<li>TiberiumRefining_T4</li>
+			<li>TiberiumRefining_T5</li>
+			<li>TiberiumRefining_T6</li>
+			<li>TiberiumRefining_T7</li>
+			<li>TiberiumRefining_T8</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T1</defName>
+		<label>Preparing Tools</label>		
+		<description>First, there needs to be a place to work on this project. Let's start by building a workbench. This is likely going to be critical to have for the foreseeable future.</description>
+		<descriptionShort>Construct the workbench.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<TiberiumWorkbench>1</TiberiumWorkbench>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T2</defName>
+		<label>Containment Procedures</label>		
+		<description>If we are to start gathering Tiberium in some way, we need some way to store it safely. We can't just throw it anywhere that seems convenient.</description>
+		<descriptionShort>Develop a way to store Tiberium.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumWorkbench</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>500</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T3</defName>
+		<label>Refinement Concepts</label>	
+		<description>Now that we have a way to store Tiberium, we are ready to take a look at actively refining it for the colony. This will be a key step in our future of working with the elusive mineral.</description>		
+		<descriptionShort>Develop a way to refine Tiberium.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumWorkbench</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>500</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T4</defName>
+		<label>Automation Protocol</label>		
+		<description>It may be a bit of an oversight if we didn't make some safer way of gathering it. Sending a colonist to gather crystals by hand is not practical, and they probably wouldn't make it back anyway. Maybe it would work if there was some kind of autonomous machine that could do it for us..?</description>
+		<descriptionShort>Develop an automatic harvesting mech.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumWorkbench</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>750</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T5</defName>
+		<label>Network Planning</label>
+		<description>With all of these ideas and buildings in mind, a computer-based hub is likely going to be required. This will be a key way for a system to be created that can handle the logistics of our project. From there, we can start thinking about how to transport it between our new constructs; again, without putting anyone's hands and life at risk.</description>
+		<descriptionShort>Develop a network concept for the refining system.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumWorkbench</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>500</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<!--TODO: Should have test for connectivity before finishing-->
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T6</defName>
+		<label>Network Setup</label>
+		<description>With great strides in this new technology, it is finally time to start the creation of our network. Taking it one step at a time, let's make the essential parts first. These parts can be connected to each other, either directly by being to the side of another, or through pipes.</description>
+		<descriptionShort>Construct a simple Tiberium network.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<TiberiumNetworkController>1</TiberiumNetworkController>
+				<TiberiumSilo>1</TiberiumSilo>
+				<TiberiumRefinery>1</TiberiumRefinery>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T7</defName>
+		<label>Valuable Reactions</label>
+		<description>We have our ideas on how to handle Tiberium now, but we still don't know how it will behave being stored and concentrated for the long term. So far there's only speculation. Someone needs to make the brave step of studying this in action by intentionally causing small reactions within a refinery.</description>
+		<descriptionShort>Run tests on the refinery.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumRefinery</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>600</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumRefining_T8</defName>
+		<label>Resource Catalyst</label>	
+		<description>After multiple tests, it is believed now that we have an idea of how to work with the mineral in a more efficient way. Using the designs from earlier, it's time to put our plans into action and create a harvester that will hopefully eliminate the risk in gathering the crystals. It will automatically feed into our network so that our other buildings can use the resources.</description>		
+		<descriptionShort>Construct a tiberium resource refinery.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<TiberiumCrafter>1</TiberiumCrafter>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>TiberiumSuppressionBasic</defName>
+		<label>Tiberium Suppression (T1)</label>	
+		<researchType>component research</researchType>
+		<description>Tiberium is dangerous as we've learned. Even with some basic knowledge of it, we never made a true way of controlling the growth in a more stable manner. If we want to be able to prevent unwanted growth, research must be done for the sake of safety for the colony.</description>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>MineralAnalysis_T3</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<tasks>
+			<li>TiberiumSuppressionBasic_T1</li>
+			<li>TiberiumSuppressionBasic_T2</li>
+			<li>TiberiumSuppressionBasic_T3</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumSuppressionBasic_T1</defName>
+		<label>Crystalline Weakness</label>		
+		<description>A colonist apparently took the liberty of accidentally "borrowing" some schematics over comms in the past from one of the contacts we had when asking around. We're not sure how they are used or what exactly they do, but there is several notes about "exploiting weaknesses" of Tiberium. This could be important in finding out how to prevent growth. More thorough analysis is needed to be certain.</description>
+		<descriptionShort>Learn about the stolen Tiberium suppression technology.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>CommsConsole</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>250</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumSuppressionBasic_T2</defName>
+		<label>Blueprint Evaluation</label>		
+		<description>Taking some printed copies of the schematics, it might help to lay them out on a table to study what exactly they are for. A colonist should take the copies to a bench and carefully read through them.</description>
+		<descriptionShort>Evaluate the acquired blueprints.</descriptionShort>
+		<workType>Crafting</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumWorkbench</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>250</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumSuppressionBasic_T3</defName>
+		<label>Suppression Tower Prototype</label>
+		<description>After the work of reading through all of the technical jargon, there may be a solution. Thanks to the visuals and footnotes on some pages, it is in fact designs for a device that dampens the growth of Tiberium. It is proposed to work on Tiberium crystals by emitting a certain frequency that disturbs and essentially crumbles the growths by exploiting weaknesses in its crystalline structure. This is a great discovery, especially since it is within reach of us to build with the common materials we see on the Rim.</description>
+		<descriptionShort>Construct a suppression tower.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<SuppressionTower>1</SuppressionTower>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>TiberiumPower</defName>
+		<label>Tiberium Power</label>	
+		<researchType>energy research</researchType>
+		<description>The time working with Tiberium has taught us several things. But one major note is that it is radioactive. Many years ago, people found multiple uses for radioactive materials; mainly, they were used to generate electricity, generally through using the heat released by decay and controlled reactions. There's a chance that this could be done with Tiberium as well if we can do it correctly.</description>
+		<requisites>
+			<tiberiumResearch>
+				<li>TiberiumRefining</li>
+			</tiberiumResearch>
+		</requisites>
+		<tasks>
+			<li>TiberiumPower_T1</li>
+			<li>TiberiumPower_T2</li>
+			<li>TiberiumPower_T3</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumPower_T1</defName>
+		<label>Glowing Energy</label>	
+		<description>Before attempting to use Tiberium within a reactor, its decay and volatility must be measured to determine if it has practical potential for being used in fuel rods. This involves putting concentrated Tiberium in proximity of other samples as well as taking much smaller pieces and seeing how they break in a hopefully controlled manner. A colonist will need to handle this with care.</description>
+		<descriptionShort>Observe Tiberium reactions.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumCrafter</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>400</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumPower_T2</defName>
+		<label>Energy Containment</label>	
+		<description>There was success in experimenting with the crystals. Some samples essentially popped within the grasp of tongs. We're glad it wasn't any bigger than that. It was determined that they do have quite a bit of potential energy to release, especially when put into close proximity with more of the mineral. However, we're not done yet. Someone has to determine a way to apply what we know and create a functional reactor element with stability as a priority.</description>		
+		<descriptionShort>Evaluate observation results.</descriptionShort>
+		<workType>Research</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumWorkbench</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>300</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumPower_T3</defName>
+		<label>Powerplant Prototype</label>
+		<description>Many plans have been drawn up from the beginning of our project towards now of working with the alien material. Learning how it spreads, how it behaves, and how to use it in a few ways. The time has finally come to apply this knowledge and create our first reactor. It's not known if anyone else on the Rim has a plan like this, but it doesn't hurt to be the first. If done correctly, this will be a major milestone that will provide stable, long-term power.</description>
+		<descriptionShort>Construct a Tiberium powerplant.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<TiberiumPowerPlant>1</TiberiumPowerPlant>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>TiberiumForaging</defName>
+		<label>Tiberium Foraging</label>	
+		<researchType>foraging</researchType>
+		<description>Just as it spreads itself through the soil, the Tiberium apparently can create and live within plants through mutation. Genetically speaking, there could be a lot of new information within the mutations since it essentially achieves natural selection and evolution at once extremely quickly. The colony could find a way to harvest these plants to discover if they have any potential uses.</description>
+		<requisites>
+			<events>
+				<li>TiberiumFloraDiscovery</li>
+			</events>
+		</requisites>
+	</TiberiumRim.TResearchDef>
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>TiberiumGasRefining</defName>
+		<label>Tiberium Gas Refining</label>	
+		<researchType>observation</researchType>
+		<description>A colonist initally thought that a specific geyser was the average steam vent that is common on the Rim. However, this isn't the case. It instead seems to emit some kind of gas. Since geothermal energy is possible with common geysers, there may be an application for this special geyser.</description>
+		<requisites>
+			<events>
+				<li>TiberiumGeyserDiscovery</li>
+			</events>
+		</requisites>
+		<tasks>
+			<li>TiberiumGasRefining_T1</li>
+			<li>TiberiumGasRefining_T2</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumGasRefining_T1</defName>
+		<label>Megastructure Blueprints</label>	
+		<description>tba</description>
+		<descriptionShort>Develop a gas extractor.</descriptionShort>
+		<workType>Crafting</workType>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumWorkbench</li>
+			</targetDefs>
+		</taskTarget>
+		<workAmount>2500</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>TiberiumGasRefining_T2</defName>
+		<label>Spike Construction</label>
+		<description>tba</description>
+		<descriptionShort>Construct a Tiberium extraction spike.</descriptionShort>
+		<workType>Construction</workType>
+		<creationTasks>
+			<thingsToCreate>
+				<TiberiumSpike>1</TiberiumSpike>
+			</thingsToCreate>
+		</creationTasks>
+	</TiberiumRim.TResearchTaskDef>
+	
+</Defs>

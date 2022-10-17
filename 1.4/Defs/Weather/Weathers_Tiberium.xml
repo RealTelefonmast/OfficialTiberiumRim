@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<WeatherDef>
+		<defName>IonStormWeather</defName>
+		<label>Ion Storm</label>
+		<description>An Ion Storm is cursing your map.</description>
+		<durationRange>12000~160000</durationRange>
+		<repeatable>true</repeatable>
+		<favorability>VeryBad</favorability>
+		<temperatureRange>-60~60</temperatureRange>
+		<rainRate>0.3</rainRate>
+		<windSpeedFactor>3</windSpeedFactor>
+		<moveSpeedMultiplier>0.5</moveSpeedMultiplier>
+		<accuracyMultiplier>0.2</accuracyMultiplier>
+		<ambientSounds>
+			<li>AmbientRain</li>
+			<li>AmbientWind_Storm</li>
+		</ambientSounds>   
+		<overlayClasses>
+			<li>WeatherOverlay_Rain</li>
+		</overlayClasses>
+		<eventMakers>
+			<li>
+				<averageInterval>90</averageInterval>
+				<eventClass>TiberiumRim.WeatherEvent_IonStrike</eventClass>
+			</li>
+		</eventMakers>
+		
+		<skyColorsDay>
+			<sky>(50,25,0)</sky>
+			<shadow>(0.95,0.95,0.95)</shadow>
+			<overlay>(0.7,0.7,0.7)</overlay>
+			<saturation>0.8</saturation>
+		</skyColorsDay>
+		<skyColorsDusk>
+			<sky>(50,25,0)</sky>
+			<shadow>(0.99,0.99,0.99)</shadow>
+			<overlay>(0.8,0.8,0.8)</overlay>
+			<saturation>0.8</saturation>
+		</skyColorsDusk>
+		<skyColorsNightEdge>
+			<sky>(50,25,0)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.6,0.6,0.6)</overlay>
+			<saturation>0.7</saturation>
+		</skyColorsNightEdge>
+		<skyColorsNightMid>
+			<sky>(50,25,0)</sky>
+			<shadow>(0.9, 0.9, 0.9)</shadow>
+			<overlay>(0.6,0.6,0.6)</overlay>
+			<saturation>0.8</saturation>
+		</skyColorsNightMid>
+	</WeatherDef>
+  
+	<WeatherDef>
+		<defName>TiberiumClear</defName>
+		<label>tiberian sun</label>
+		<description>A normal day, darkened by tiberium pollution.</description>
+		<repeatable>true</repeatable>
+		<favorability>Good</favorability>
+		<ambientSounds>
+			<li>AmbientWind_Clear</li>
+		</ambientSounds>   
+		<!-- Colors are Clear -->
+		<skyColorsDay>
+			<sky>(105,200,180)</sky>
+			<shadow>(0.95,0.95,0.95)</shadow>
+			<overlay>(0.7,0.7,0.7)</overlay>
+			<saturation>0.8</saturation>
+		</skyColorsDay>
+		<skyColorsDusk>
+			<sky>(84,140,128)</sky>
+			<shadow>(0.99,0.99,0.99)</shadow>
+			<overlay>(0.8,0.8,0.8)</overlay>
+			<saturation>0.8</saturation>
+		</skyColorsDusk>
+		<skyColorsNightEdge>
+			<sky>(11,115,92)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.6,0.6,0.6)</overlay>
+			<saturation>0.7</saturation>
+		</skyColorsNightEdge>
+		<skyColorsNightMid>
+			<sky>(32,64,57)</sky>
+			<shadow>(0.9, 0.9, 0.9)</shadow>
+			<overlay>(0.6,0.6,0.6)</overlay>
+			<saturation>0.5</saturation>
+		</skyColorsNightMid>
+	</WeatherDef>
+
+</Defs>
+
+
+
+
+
+
+
+

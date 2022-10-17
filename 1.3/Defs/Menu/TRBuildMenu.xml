@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TeleCore.SubMenuDesignator>
+		<defName>TiberiumMenuDesignator</defName>
+		<label>build menu</label>
+		<order>1</order>
+		<menuDef>TiberiumMenu</menuDef>
+	</TeleCore.SubMenuDesignator>
+	
+	<TeleCore.SubBuildMenuDef>
+		<defName>TiberiumMenu</defName>
+		<subMenus>
+			<li>Common</li>
+			<li>Forgotten</li>
+			<li>GDI</li>
+			<li>Nod</li>
+			<li>Scrin</li>
+			<li>Tiberium</li>
+		</subMenus>
+		<superPackPath>UI/Menu/Faction/Common</superPackPath>
+	</TeleCore.SubBuildMenuDef>
+	
+	
+	<TeleCore.SubMenuGroupDef Abstract="True" Name="SubThingGroupBase">
+		<subCategories>
+			<li>Structure</li>
+			<li>Decoration</li>
+			<li>Processing</li>
+			<li>Defense</li>
+			<li>Research</li>
+			<li>Misc</li>
+		</subCategories>
+	</TeleCore.SubMenuGroupDef>
+	
+	<TeleCore.SubMenuGroupDef ParentName="SubThingGroupBase">
+		<defName>Common</defName>
+		<groupIconPath>UI/Icons/Factions/Common</groupIconPath>
+	</TeleCore.SubMenuGroupDef>
+	
+	<TeleCore.SubMenuGroupDef ParentName="SubThingGroupBase">
+		<defName>Forgotten</defName>
+		<groupIconPath>UI/Icons/Factions/Forgotten</groupIconPath>
+	</TeleCore.SubMenuGroupDef>
+	
+	<TeleCore.SubMenuGroupDef ParentName="SubThingGroupBase">
+		<defName>GDI</defName>
+		<groupIconPath>UI/Icons/Factions/GDI</groupIconPath>
+		<subPackPath>UI/Menu/Faction/GDI</subPackPath>
+	</TeleCore.SubMenuGroupDef>
+	
+	<TeleCore.SubMenuGroupDef ParentName="SubThingGroupBase">
+		<defName>Nod</defName>
+		<groupIconPath>UI/Icons/Factions/Nod</groupIconPath>
+		<subPackPath>UI/Menu/Faction/Nod</subPackPath>
+	</TeleCore.SubMenuGroupDef>
+
+	<TeleCore.SubMenuGroupDef ParentName="SubThingGroupBase">
+		<defName>Scrin</defName>
+		<groupIconPath>UI/Icons/Factions/Scrin</groupIconPath>
+		<subPackPath>UI/Menu/Faction/Scrin</subPackPath>
+	</TeleCore.SubMenuGroupDef>
+
+	<TeleCore.SubMenuGroupDef ParentName="SubThingGroupBase">
+		<defName>Tiberium</defName>
+		<groupIconPath>UI/Icons/PlaySettings/RadiationOverlay</groupIconPath>
+		<subPackPath>UI/Menu/Faction/Common</subPackPath>
+		<subCategories>
+			<li>Producers</li>
+			<li>Crystals</li>
+			<li>Misc</li>
+		</subCategories>
+	</TeleCore.SubMenuGroupDef>
+	
+	<!-- Categories -->
+	<TeleCore.SubMenuCategoryDef>
+		<defName>Structure</defName>
+		<label>Structure</label>
+	</TeleCore.SubMenuCategoryDef>  
+  
+	<TeleCore.SubMenuCategoryDef>
+		<defName>Decoration</defName>
+		<label>Decoration</label>
+	</TeleCore.SubMenuCategoryDef>  
+	
+	<TeleCore.SubMenuCategoryDef>
+		<defName>Processing</defName>
+		<label>Processing</label>
+	</TeleCore.SubMenuCategoryDef> 
+
+	<TeleCore.SubMenuCategoryDef>
+		<defName>Pollution</defName>
+		<label>Pollution</label>
+	</TeleCore.SubMenuCategoryDef> 
+	
+	<TeleCore.SubMenuCategoryDef>
+		<defName>Defense</defName>
+		<label>Defense</label>
+	</TeleCore.SubMenuCategoryDef>
+	
+	<TeleCore.SubMenuCategoryDef>
+		<defName>Research</defName>
+		<label>Research</label>
+	</TeleCore.SubMenuCategoryDef>  
+  
+	<TeleCore.SubMenuCategoryDef>
+		<defName>Misc</defName>
+		<label>Misc</label>
+	</TeleCore.SubMenuCategoryDef>  
+	
+	<TeleCore.SubMenuCategoryDef>
+		<defName>Producers</defName>
+		<label>Producers</label>
+	</TeleCore.SubMenuCategoryDef>  
+	
+	<TeleCore.SubMenuCategoryDef>
+		<defName>Crystals</defName>
+		<label>Crystals</label>
+	</TeleCore.SubMenuCategoryDef>
+	
+</Defs>

@@ -18,7 +18,7 @@ namespace TiberiumRim
 
     public class VisceralPod : TRThing, IThingHolder
     {
-        private ThingOwner InnerContainer;
+        private ThingOwner<Thing> InnerContainer;
         private string pawnName;
         private string kindName;
         private float pawnSize;
@@ -26,7 +26,7 @@ namespace TiberiumRim
         private bool hatched = false;
         private int ticksLeft = -1;
 
-        public Thing HeldThing => InnerContainer[0];
+        public Thing HeldThing => InnerContainer.innerList[0];
 
         public bool ShouldOpen => ticksLeft <= 0;
         public bool CanOpen => ShouldOpen && InnerContainer.Count > 0 && !hatched;

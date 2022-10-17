@@ -10,6 +10,8 @@ namespace TiberiumRim
         private bool symbioticBias = false;
         private bool visceralBias = false;
 
+        private List<Hediff_TiberiumMutationPart> mutationParts = new List<Hediff_TiberiumMutationPart>();
+        
         public override string LabelInBrackets => pawn.Dead ? null : (VisceralPct + SymbioticPct).ToStringPercent();//VisceralRisk.ToStringPercent() + "/x" + MutationSpeed;
 
         //public override float PainFactor { get; }
@@ -17,8 +19,15 @@ namespace TiberiumRim
         //public override float PainOffset => 0.15f;
 
         private Comp_TRHealthCheck HealthComp => pawn.GetComp<Comp_TRHealthCheck>();
-
-        private IEnumerable<Hediff_TiberiumMutationPart> MutationParts => pawn.health.hediffSet.GetHediffs<Hediff_TiberiumMutationPart>();
+        
+        private IEnumerable<Hediff_TiberiumMutationPart> MutationParts
+        {
+            get
+            {
+                pawn.health.hediffSet.GetHediffs(ref mutationParts);
+                return mutationParts;
+            }
+        }
 
         private bool CanFinalize => (Mathf.RoundToInt(VisceralPct * 100f) + Mathf.RoundToInt(SymbioticPct * 100)) / 100 == 1;
         private int VisceralParts => MutationParts.Count(p => p.Mutation == Hediff_TiberiumMutationPart.MutationState.Visceral);

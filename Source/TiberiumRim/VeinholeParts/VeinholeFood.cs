@@ -6,7 +6,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class VeinholeFood : ThingWithComps, IThingHolder, IObservedThoughtGiver, IStrippable, IBillGiver
+    public class VeinholeFood : ThingWithComps, IThingHolder, IStrippable, IBillGiver, IObservedThoughtGiver
     {
         private Corpse corpse;
         private ThingOwner innerContainer;
@@ -89,6 +89,11 @@ namespace TiberiumRim
         public bool UsableForBillsAfterFueling()
         {
             return corpse.UsableForBillsAfterFueling();
+        }
+
+        public void Notify_BillDeleted(Bill bill)
+        {
+            corpse.Notify_BillDeleted(bill);
         }
 
         public BillStack BillStack => corpse.BillStack;

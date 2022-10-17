@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="ResourceBase_TR" Abstract="True">
+		<thingClass>ThingWithComps</thingClass>
+		<category>Item</category>
+		<resourceReadoutPriority>Middle</resourceReadoutPriority>
+		<useHitPoints>true</useHitPoints>
+		<selectable>true</selectable>
+		<altitudeLayer>Item</altitudeLayer>
+		<stackLimit>75</stackLimit>
+		<statBases>
+			<Beauty>-14</Beauty>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+		</comps>
+		<alwaysHaulable>true</alwaysHaulable>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<rotatable>false</rotatable>
+		<pathCost>15</pathCost>
+	</ThingDef>
+	
+	<ThingDef Abstract="True" Name="LeatherBase_TR" ParentName="ResourceBase_TR">
+		<description>Tanned, dried, scraped skin. A good traditional material for making clothes and bags.</description>
+		<graphicData>
+			<texPath>Things/Item/Resource/Leather</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>60</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<Mass>0.03</Mass>
+			<Flammability>1</Flammability>
+			<MarketValue>2.1</MarketValue>
+			<StuffPower_Armor_Sharp>0.81</StuffPower_Armor_Sharp>
+			<StuffPower_Armor_Blunt>0.24</StuffPower_Armor_Blunt>
+			<StuffPower_Armor_Heat>1.5</StuffPower_Armor_Heat>
+			<StuffPower_Insulation_Cold>16</StuffPower_Insulation_Cold>
+			<StuffPower_Insulation_Heat>16</StuffPower_Insulation_Heat>
+		</statBases>
+		<thingCategories>
+			<li>Leathers</li>
+		</thingCategories>
+		<stuffProps>
+			<categories>
+				<li>Leathery</li>
+			</categories>
+			<commonality>0.025</commonality>
+			<statFactors>
+				<MaxHitPoints>1.3</MaxHitPoints>
+			</statFactors>
+		</stuffProps>
+	</ThingDef>
+	
+	<ThingDef Name="TR_ShellBase" ParentName="ResourceBase_TR" Abstract="True">
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>24</stackLimit>
+		<tickerType>Normal</tickerType>
+		<techLevel>Industrial</techLevel>
+	</ThingDef>
+	
+</Defs>

@@ -12,9 +12,9 @@ namespace TiberiumRim
     public class ProjectileTR_Explosive : Projectile_Explosive, IPatchedProjectile
     {
         public TRThingDef TRDef => base.def as TRThingDef;
-        public ProjectileDefExtension Props => TRDef?.Tele().projectile;
+        public ProjectileDefExtension Props => TRDef?.TeleExtension().projectile;
 
-        public override void Impact(Thing hitThing)
+        public override void Impact(Thing hitThing, bool blockedByShield = false)
         {
             if (Props != null)
             {

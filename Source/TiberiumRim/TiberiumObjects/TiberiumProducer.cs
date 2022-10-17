@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Multiplayer.API;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -246,7 +245,7 @@ namespace TiberiumRim
             return sb.ToString().TrimStart().TrimEndNewlines();
         }
 
-        [SyncMethod]
+        //TODO:[SyncMethod]
         private void Debug_SpawnTiberium()
         {
             foreach (var pos in GenAdj.CellsAdjacent8Way(this))

@@ -46,7 +46,7 @@ namespace TiberiumRim
             MakeMote(A, B);
         }
 
-        public override void SubTrigger(TargetInfo A, TargetInfo B)
+        public override void SubTrigger(TargetInfo A, TargetInfo B, int overrideSpawnTick = -1)
         {
             if (Rand.Value < def.chancePerTick)
             {

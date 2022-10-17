@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!--
+	<PawnKindDef>
+		<defName>SegmentedPawnKindDef</defName>
+		<label>harvester</label>
+		<combatPower>125</combatPower>
+		<defaultFactionType>PlayerColony</defaultFactionType>
+		<isFighter>false</isFighter>
+		<aiAvoidCover>false</aiAvoidCover>
+		<race>SegmentedPawn</race>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/Mechanical/Common/Harvester/Harvester</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>3</drawSize>
+					<shadowData>
+						<volume>(0.4, 0.8, 0.4)</volume>
+					</shadowData>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</PawnKindDef>
+-->
+</Defs>

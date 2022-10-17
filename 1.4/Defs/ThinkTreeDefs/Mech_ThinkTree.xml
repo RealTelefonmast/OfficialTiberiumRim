@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThinkTreeDef Name="MechWorkerMain">
+		<defName>MechWorkerMain</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+
+				<li Class="ThinkNode_Subtree">
+					<treeDef>Downed</treeDef>
+				</li>
+				<li Class="ThinkNode_Subtree">
+					<treeDef>BurningResponse</treeDef>
+				</li>
+
+				<!-- React to close melee threat -->
+				<li Class="JobGiver_ReactToCloseMeleeThreat" />
+
+				<!-- Insertion hook for modders 
+				<li Class="ThinkNode_SubtreesByTag">
+					<insertTag>Humanlike_PostMentalState</insertTag>
+				</li>
+				-->
+				
+				<!-- Do a queued job -->
+				<li Class="ThinkNode_QueuedJob" />
+
+				<!-- Wait if drafted -->
+				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+					<subNodes>
+						<li Class="ThinkNode_Tagger">
+							<tagToGive>DraftedOrder</tagToGive>
+							<subNodes>
+								<li Class="JobGiver_MoveToStandable" />
+								<li Class="JobGiver_Orders" />
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+
+				<!-- Lord directives (high priority) -->
+				<li Class="ThinkNode_JoinVoluntarilyJoinableLord">
+					<dutyHook>HighPriority</dutyHook>
+						<subNodes>
+						<li Class="ThinkNode_Subtree">
+							<treeDef>LordDuty</treeDef>
+						</li>
+					</subNodes>
+				</li>
+
+				<!-- Insertion hook for modders
+				<li Class="ThinkNode_SubtreesByTag">
+					<insertTag>Humanlike_PostDuty</insertTag>
+				</li>
+				-->
+
+				<!-- If on colonist team, do forced and emergency work -->
+				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+					<subNodes>
+					<!-- Seek allowed area -->
+					<li Class="JobGiver_SeekAllowedArea" />
+
+					<!-- Seek safe temperatures -->
+					<li Class="JobGiver_SeekSafeTemperature" />
+
+					<!-- Drop unnused inventory -->
+					<li Class="JobGiver_DropUnusedInventory" />
+
+					<!-- Emergency work -->
+					<li Class="JobGiver_Work">
+						<leaveJoinableLordIfIssuesJob>true</leaveJoinableLordIfIssuesJob>
+						<emergency>true</emergency>
+					</li>
+
+					<!-- Lord directives (medium priority) -->
+					<li Class="ThinkNode_JoinVoluntarilyJoinableLord">
+						<dutyHook>MediumPriority</dutyHook>
+						<subNodes>
+							<li Class="ThinkNode_Subtree">
+								<treeDef>LordDuty</treeDef>
+							</li>
+						</subNodes>
+					</li>
+					</subNodes>
+				</li>
+
+				<!-- Behavior from traits 
+				<li Class="ThinkNode_TraitBehaviors" />
+				-->
+				
+				<!-- Insertion hook for modders 
+				<li Class="ThinkNode_SubtreesByTag">
+					<insertTag>Humanlike_PreMain</insertTag>
+				</li>
+				-->
+				
+				<!-- Main colonist behavior core -->
+				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+					<subNodes>
+						<li Class="ThinkNode_Subtree">
+							<treeDef>MainMechBehaviour</treeDef>
+							<leaveJoinableLordIfIssuesJob>true</leaveJoinableLordIfIssuesJob>
+						</li>
+					</subNodes>
+				</li>
+				
+
+				<!-- Insertion hook for modders
+				<li Class="ThinkNode_SubtreesByTag">
+				<insertTag>Humanlike_PostMain</insertTag>
+				</li>
+				-->
+
+				<!-- Idle colonist -->
+				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+					<subNodes>
+						<li Class="ThinkNode_Tagger">
+							<tagToGive>Idle</tagToGive>
+							<subNodes>
+								<!-- Wander -->
+								<li Class="JobGiver_WanderColony">
+									<maxDanger>None</maxDanger>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+
+	<ThinkTreeDef Name="MechMain">
+		<defName>MechMain</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="ThinkNode_Subtree">
+					<treeDef>Downed</treeDef>
+				</li>
+
+				<li Class="ThinkNode_Subtree">
+					<treeDef>BurningResponse</treeDef>
+				</li>
+
+				<!-- React to close melee threat -->
+				<li Class="JobGiver_ReactToCloseMeleeThreat" />
+
+				<!-- Do a queued job -->
+				<li Class="ThinkNode_QueuedJob" />
+
+				<!-- Wait if drafted -->
+				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+				  <subNodes>
+					<li Class="ThinkNode_Tagger">
+					  <tagToGive>DraftedOrder</tagToGive>
+					  <subNodes>
+						<li Class="JobGiver_MoveToStandable" />
+						<li Class="JobGiver_Orders" />
+					  </subNodes>
+					</li>
+				  </subNodes>
+				</li>
+				
+				<!-- Lord directives (high priority) -->
+				<li Class="ThinkNode_JoinVoluntarilyJoinableLord">
+					<dutyHook>HighPriority</dutyHook>
+					<subNodes>
+						<li Class="ThinkNode_Subtree">
+							<treeDef>LordDuty</treeDef>
+						</li>
+					</subNodes>
+				</li>
+				
+				<!-- Lord directives (medium priority) -->
+				<li Class="ThinkNode_JoinVoluntarilyJoinableLord">
+					<dutyHook>MediumPriority</dutyHook>
+					<subNodes>
+						<li Class="ThinkNode_Subtree">
+							<treeDef>LordDuty</treeDef>
+						</li>
+					</subNodes>
+				</li>
+				
+				<!-- Main Mech behavior core -->
+				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+					<subNodes>
+						<li Class="ThinkNode_Subtree">
+							<treeDef>MainMechBehaviour</treeDef>
+							<leaveJoinableLordIfIssuesJob>true</leaveJoinableLordIfIssuesJob>
+						</li>
+					</subNodes>
+				</li>
+			
+				<!-- Idle Mech -->
+				<li Class="ThinkNode_Tagger">
+					<tagToGive>Idle</tagToGive>
+					<subNodes>         
+						<!-- Wait -->
+						<li Class="JobGiver_Idle"/>
+					</subNodes>
+				</li>
+				
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+	
+	<ThinkTreeDef>
+		<defName>MechMainConstant</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="ThinkNode_ConditionalCanDoConstantThinkTreeJobNow">
+					<subNodes>
+						<!-- Flee explosion -->
+						<li Class="JobGiver_FleePotentialExplosion" />
+
+						<!-- Join auto joinable caravan -->
+						<li Class="ThinkNode_Subtree">
+							<treeDef>JoinAutoJoinableCaravan</treeDef>
+						</li>
+
+						<!-- Hostility response -->
+						<li Class="JobGiver_ConfigurableHostilityResponse" />
+
+						<!-- Lord directives -->
+						<li Class="ThinkNode_Subtree">
+							<treeDef>LordDutyConstant</treeDef>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+	
+	<ThinkTreeDef>
+		<defName>MainMechBehaviour</defName>
+		<thinkRoot Class="ThinkNode_Tagger">
+			<tagToGive>SatisfyingNeeds</tagToGive> <!-- note that JobGiver_Work will assign its own tag -->
+			<subNodes>
+				<li Class="ThinkNode_PrioritySorter">
+					<!--
+					<subNodes>
+						<li Class="JobGiver_Work"/>
+					</subNodes>
+					-->
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+  
+</Defs>

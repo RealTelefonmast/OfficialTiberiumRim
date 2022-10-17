@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR"> <!--balance standard - flak vest-->
+		<defName>Jumpsuit</defName>
+		<description>A simple jumpsuit to improve comfort while wearing heavy armor.\n\nJumpsuit has little protection against tiberium.</description>
+		<label>jumpsuit</label>
+		<graphicData>
+			<texPath>Items/Apparel/Common_Jumpsuit/JS</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumProtection_T1</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<costList>
+			<Cloth>30</Cloth>
+			<Steel>75</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<recipeMaker>
+			<recipeUsers Inherit="false">
+				<li>TiberiumWorkbench</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<thingCategories>
+			<li>TRApparelsETC</li>
+		</thingCategories>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToMake>10000</WorkToMake>
+			<Mass>3</Mass>
+			<Flammability>0.8</Flammability>
+			<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.2</ArmorRating_Heat>
+			<Insulation_Cold>5</Insulation_Cold>
+			<Insulation_Heat>5</Insulation_Heat>
+			<EquipDelay>10</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>0.1</MoveSpeed>
+			<ToxicSensitivity>-0.1</ToxicSensitivity>
+			<TiberiumGasResistance>0.1</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>3</scoreOffset>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/Common_Jumpsuit/JS</wornGraphicPath>
+			<layers>
+			    <li>OnSkin</li>
+			</layers>
+			<!--
+			<tags>
+				<li>FactionInnerSet</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>FactionInnerSet</li>
+			</defaultOutfitTags>
+			-->
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+	</TiberiumRim.TRThingDef>
+
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR"> <!--balance standard - flak jacket-->
+		<defName>TiberiumSuit</defName>
+		<description>With this suit you can savely traverse any Tiberium infested terrain. It shields the wearer from getting infected by Tiberium and also any possible radiation.\n\nTiberium protection set has perfect protection against tiberium.</description>
+		<label>Tiberium protection suit</label>
+		<graphicData>
+			<texPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumProtection_T1</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<costList>
+			<Cloth>75</Cloth>
+			<Steel>25</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<recipeMaker>
+			<recipeUsers Inherit="false">
+				<li>TiberiumWorkbench</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>6</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<thingCategories>
+			<li>TRApparelsETC</li>
+		</thingCategories>
+		<statBases> 
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToMake>15000</WorkToMake>
+			<Mass>8</Mass>
+			<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.1</ArmorRating_Heat>
+			<Insulation_Cold>10</Insulation_Cold>
+			<Insulation_Heat>10</Insulation_Heat>
+			<EquipDelay>15</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.1</MoveSpeed>
+			<ToxicSensitivity>-0.1</ToxicSensitivity>
+			<TiberiumGasResistance>0.1</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.9</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.9</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>3</scoreOffset>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+				<li>Hands</li>
+				<li>Feet</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuit</wornGraphicPath>
+			<layers>
+			    <li>Middle</li>
+				<li>Shell</li>
+			</layers>
+			<defaultOutfitTags>
+				<li>TiberiumProtection</li>
+				<li>Worker</li>
+			</defaultOutfitTags>
+		</apparel>
+	</TiberiumRim.TRThingDef>
+
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR"> <!--balance standard - simple helmet-->
+		<defName>TiberiumSuitMask</defName>
+		<label>Tiberium protection mask</label>
+		<description>This mask is a necessity for anyone attempting to traverse Tiberium infested lands. It shields the head from radiation and filters the toxic Tiberium gases and even particles from a Toxic Fallout.\n\nTiberium protection set has perfect protection against tiberium.</description>
+		<graphicData>
+			<texPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuitMask</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+		</graphicData>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumProtection_T1</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<costList>
+			<Cloth>25</Cloth>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<recipeMaker>
+			<recipeUsers Inherit="false">
+				<li>TiberiumWorkbench</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<thingCategories>
+			<li>TRHelmetsETC</li>
+		</thingCategories>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToMake>5500</WorkToMake>
+			<Mass>1.5</Mass>
+			<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.1</ArmorRating_Heat>
+			<Insulation_Cold>10</Insulation_Cold>
+			<Insulation_Heat>10</Insulation_Heat>
+			<EquipDelay>2.5</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.1</MoveSpeed>
+			<ToxicSensitivity>-0.9</ToxicSensitivity>
+			<TiberiumGasResistance>0.9</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>3</scoreOffset>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+				<wornGraphicPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuitMask</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<defaultOutfitTags>
+				<li>Worker</li>
+			</defaultOutfitTags>
+		</apparel>
+		<comps>
+			<li Class="CompProperties_Styleable" />
+		</comps>
+		<randomStyleChance>0.15</randomStyleChance>
+		<randomStyle>
+			<li>
+				<styleDef>RavensMask</styleDef>
+			</li>
+		</randomStyle>
+	</TiberiumRim.TRThingDef>
+	
+  <ThingStyleDef>
+    <defName>RavensMask</defName>
+    <overrideLabel>ravens mask</overrideLabel>
+    <wornGraphicPath>Items/Apparel/TiberiumProtectionSuit/RavensMask</wornGraphicPath>
+    <graphicData>
+      <texPath>Items/Apparel/TiberiumProtectionSuit/RavensMask</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+  </ThingStyleDef>
+	
+</Defs>

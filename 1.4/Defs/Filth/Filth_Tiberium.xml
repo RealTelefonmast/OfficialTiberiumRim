@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<ThingDef Name="TibFilth" ParentName="BaseFilth" Abstract="True">
+		<statBases>
+			<MaxHitPoints>1500</MaxHitPoints>
+			<Beauty>-5</Beauty>
+			<Cleanliness>-25</Cleanliness>
+		</statBases>
+		<graphicData>
+			<color>(255, 255, 255, 50)</color>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<filth>
+			<cleaningWorkToReduceThickness>65</cleaningWorkToReduceThickness>
+			<canFilthAttach>true</canFilthAttach>
+			<rainWashes>true</rainWashes>
+			<maxThickness>5</maxThickness>
+			<disappearsInDays>1~5</disappearsInDays>
+			<cleaningSound>Interact_CleanFilth_Fluid</cleaningSound>
+		</filth>
+	</ThingDef>
+	
+  <ThingDef ParentName="TibFilth">
+    <defName>FilthTiberiumGreen</defName>
+    <label>Green tiberium dust</label>
+    <graphicData>
+      <texPath>Filth/TibDustGreen</texPath>
+    </graphicData>
+	
+  </ThingDef>
+  
+  <ThingDef ParentName="TibFilth">
+    <defName>FilthTiberiumBlue</defName>
+    <label>Blue tiberium dust</label>
+    <graphicData>
+      <texPath>Filth/TibDustBlue</texPath>
+    </graphicData>
+  </ThingDef>
+  
+  <ThingDef ParentName="TibFilth">
+    <defName>FilthTiberiumRed</defName>
+    <label>Red tiberium dust</label>
+    <graphicData>
+      <texPath>Filth/TibDustRed</texPath>
+    </graphicData>
+  </ThingDef>
+  
+  <ThingDef ParentName="TibFilth">
+    <defName>FilthTibBloodG</defName>
+    <label>green mutated blood</label>
+    <graphicData>
+      <texPath>Filth/TibBloodA</texPath>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="TibFilth">
+    <defName>FilthTibBloodB</defName>
+    <label>blue mutated blood</label>
+    <graphicData>
+      <texPath>Filth/TibBloodB</texPath>
+    </graphicData>
+  </ThingDef>
+  
+	<ThingDef Name="InciendiaryFilth" ParentName="TibFilth" Abstract="True">
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<Flammability>2.0</Flammability>
+		</statBases>
+		<filth>
+			<cleaningWorkToReduceThickness>70</cleaningWorkToReduceThickness>
+		</filth>
+	</ThingDef>
+
+	<ThingDef ParentName="InciendiaryFilth">
+		<defName>FilthTibLiquidGreen</defName>
+		<label>leaked green tiberium</label>
+		<description>A puddle of liquid green Tiberium.</description>
+		<statBases>
+			<Beauty>-25</Beauty>
+			<Cleanliness>-50</Cleanliness>
+		</statBases>
+		<graphicData>
+			<texPath>Filth/TibLiquidG</texPath>
+		</graphicData>
+	</ThingDef>
+  
+	<ThingDef ParentName="InciendiaryFilth">
+		<defName>FilthTibLiquidBlue</defName>
+		<label>leaked blue tiberium</label>
+		<description>A puddle of liquid blue Tiberium.</description>
+		<statBases>
+			<Beauty>-25</Beauty>
+			<Cleanliness>-50</Cleanliness>
+		</statBases>
+		<graphicData>  
+			<texPath>Filth/TibLiquidB</texPath>
+		</graphicData>
+	</ThingDef>
+  
+	<ThingDef ParentName="InciendiaryFilth">
+		<defName>FilthTibLiquidRed</defName>
+		<label>leaked red tiberium</label>
+		<description>A puddle of liquid red Tiberium.</description>
+		<statBases>
+			<Beauty>-25</Beauty>
+			<Cleanliness>-50</Cleanliness>
+		</statBases>
+		<graphicData>  
+			<texPath>Filth/TibLiquidR</texPath>
+		</graphicData>
+	</ThingDef>
+  
+	<!--
+	<ThingDef ParentName="InciendiaryFilth">
+		<defName>FilthTibLiquid</defName>
+		<thingClass>TiberiumRim.TiberiumLeak</thingClass>
+		<label>leaked tiberium</label>
+		<description>A puddle of liquid Tiberium.</description>
+		<statBases>
+			<Beauty>-25</Beauty>
+			<Cleanliness>-50</Cleanliness>
+		</statBases>
+		<graphicData>  
+			<texPath>Filth/TibLiquid</texPath>
+		</graphicData>
+	</ThingDef>-->
+</Defs>

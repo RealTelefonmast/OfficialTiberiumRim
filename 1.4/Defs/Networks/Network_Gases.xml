@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TeleCore.NetworkDef>
+		<defName>AtmosphericNetwork</defName>
+		<containerLabel>Gas Storage</containerLabel>
+		<transmitterDef>AtmosphericPipe</transmitterDef>
+		<controllerDef>AtmosphericPump</controllerDef>
+		<transmitterGraphic>
+			<texPath>Buildings/Common/Pollution/Pipe_Air</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</transmitterGraphic>
+		<overlayGraphic>
+			<texPath>Buildings/Common/Pollution/Pipe_Air_overlay</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MetaOverlay</shaderType>
+			<color>(0, 255, 255)</color>
+		</overlayGraphic>
+	</TeleCore.NetworkDef>
+
+	<TiberiumRim.TRThingDef ParentName="NetworkPipeBase">
+		<defName>AtmosphericPipe</defName>
+		<label>gas pipe</label>
+		<description>This structure connects Atmospheric processing structures on the Atmospheric Network.</description>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Buildings/Common/Pollution/Pipe_Air_blueprint</texPath>
+				<graphicClass>TeleCore.Graphic_LinkedWithSame</graphicClass>
+			</blueprintGraphicData>
+		</building>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>100</WorkToBuild>
+			<Flammability>0.2</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<costList>
+			<Steel>5</Steel>
+		</costList>
+		<comps>
+			<li Class="TeleCore.CompProperties_NetworkStructure">
+				<networks>
+					<li>
+						<networkDef>AtmosphericNetwork</networkDef>
+						<networkRoles>
+							<li>Transmitter</li>
+						</networkRoles>
+					</li>
+				</networks>
+				<generalIOPattern>+</generalIOPattern>
+			</li>
+		</comps>
+	</TiberiumRim.TRThingDef>
+
+	<TeleCore.NetworkValueDef>
+		<defName>TibPollution</defName>
+		<networkDef>AtmosphericNetwork</networkDef>
+		<label>pollution</label>
+		<valueColor>(38,127,4)</valueColor>
+	</TeleCore.NetworkValueDef>
+
+</Defs>

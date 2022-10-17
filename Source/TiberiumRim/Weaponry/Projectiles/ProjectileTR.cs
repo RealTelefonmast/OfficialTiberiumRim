@@ -15,9 +15,9 @@ namespace TiberiumRim
             base.SpawnSetup(map, respawningAfterLoad);
         }
 
-        public override void Impact(Thing hitThing)
+        public override void Impact(Thing hitThing, bool blockedByShield = false)
         {
-            base.Impact(hitThing);
+            base.Impact(hitThing, blockedByShield);
         }
 
         public override void Draw()

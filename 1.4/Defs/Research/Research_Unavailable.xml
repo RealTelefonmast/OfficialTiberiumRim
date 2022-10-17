@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TResearchGroupDef>
+		<defName>FactionGroup</defName>
+		<label>Upcoming!</label>
+		<priority>10</priority>
+		<researchProjects>
+			<li>ForgottenExperimental1</li>
+			<li>GDIExperimental1</li>
+			<li>GDIExperimental2</li>
+			<li>GDIExperimental3</li>
+			<li>NodExperimental1</li>
+			<li>NodExperimental2</li>
+			<li>NodExperimental3</li>
+		</researchProjects>
+	</TiberiumRim.TResearchGroupDef>
+	
+	<!---->
+	<TiberiumRim.TResearchDef>
+		<defName>GDIExperimental1</defName>
+		<label>Join the GDI</label>
+		<researchType>experimental content</researchType>
+		<description>Unlock the GDI techtree. Most of them are experimental and not meant to be available yet!</description>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<requisites>
+			<tiberiumResearch>
+				<li>TiberiumProtection</li>
+				<li>TiberiumRefining</li>
+			</tiberiumResearch>
+		</requisites>
+		<tasks>
+			<li>GDIUnlock1</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>GDIUnlock1</defName>
+		<label>Join the GDI</label>	
+		<descriptionShort>Join the Galaxy Defense Initiative.</descriptionShort>
+		<skillRequirements>
+			<Social>6</Social>
+		</skillRequirements>
+		<taskTarget>
+			<targetType>Building_CommsConsole</targetType>
+		</taskTarget>
+		<images>
+			<li>Story/FactionEmblem/F_GDI</li>
+		</images>
+		<workType>Research</workType>
+		<workAmount>1000</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchDef>
+		<defName>GDIExperimental2</defName>
+		<label>GDI Basic</label>
+		<researchType>tech research</researchType>
+		<description>Unlock the basic GDI structures and items. Most of them are experimental and not meant to be available yet!</description>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+		<tasks>
+			<li>GDIUnlock2_1</li>
+			<li>GDIUnlock2_2</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>GDIUnlock2_1</defName>
+		<label>Construct Factory</label>	
+		<descriptionShort>Construct a factory.</descriptionShort>
+		<creationTasks>
+			<thingsToCreate>
+				<GDI_Factory>1</GDI_Factory>
+			</thingsToCreate>
+		</creationTasks>
+		<images>
+			<li>Story/FactionEmblem/F_GDI</li>
+		</images>
+		<workType>Construction</workType>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>GDIUnlock2_2</defName>
+		<label>Research basic technology</label>	
+		<descriptionShort>Research basic technology of the GDI.</descriptionShort>
+		<skillRequirements>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<taskTarget>
+			<targetDefs>
+				<li>GDI_Factory</li>
+			</targetDefs>
+		</taskTarget>
+		<images>
+			<li>Story/FactionEmblem/F_GDI</li>
+		</images>
+		<workType>Research</workType>
+		<workAmount>4000</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchDef>
+		<defName>GDIExperimental3</defName>
+		<label>GDI Advanced</label>
+		<researchType>tech research</researchType>
+		<description>Unlock the advanced GDI structures and items. Most of them are experimental and not meant to be available yet!</description>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+		<tasks>
+			<li>GDIUnlock3_1</li>
+			<li>GDIUnlock3_2</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>GDIUnlock3_1</defName>
+		<label>Construct Armory</label>	
+		<descriptionShort>Construct an armory.</descriptionShort>
+		<creationTasks>
+			<thingsToCreate>
+				<GDI_Armory>1</GDI_Armory>
+			</thingsToCreate>
+		</creationTasks>
+		<images>
+			<li>Story/FactionEmblem/F_GDI</li>
+		</images>
+		<workType>Construction</workType>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>GDIUnlock3_2</defName>
+		<label>Research advanced technology</label>	
+		<descriptionShort>Research advanced technology of the GDI.</descriptionShort>
+		<skillRequirements>
+			<Intellectual>12</Intellectual>
+		</skillRequirements>
+		<taskTarget>
+			<targetDefs>
+				<li>GDI_Factory</li>
+			</targetDefs>
+		</taskTarget>
+		<images>
+			<li>Story/FactionEmblem/F_GDI</li>
+		</images>
+		<workType>Research</workType>
+		<workAmount>5000</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<TiberiumRim.TResearchDef>
+		<defName>NodExperimental1</defName>
+		<label>Join the Nod</label>
+		<researchType>experimental content</researchType>
+		<description>Unlock the Nod techtree. Most of them are experimental and not meant to be available yet!</description>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<requisites>
+			<tiberiumResearch>
+				<li>TiberiumRefining</li>
+				<li>TiberiumProtection</li>
+			</tiberiumResearch>
+		</requisites>
+		<tasks>
+			<li>NODUnlock1</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+
+	<TiberiumRim.TResearchTaskDef>
+		<defName>NODUnlock1</defName>
+		<label>Join the Nod</label>	
+		<descriptionShort>Join the Brotherhood of Nod.</descriptionShort>
+		<skillRequirements>
+			<Social>6</Social>
+		</skillRequirements>
+		<taskTarget>
+			<targetType>Building_CommsConsole</targetType>
+		</taskTarget>
+		<images>
+			<li>Story/FactionEmblem/F_Nod</li>
+		</images>
+		<workType>Research</workType>
+		<workAmount>1000</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchDef>
+		<defName>NodExperimental2</defName>
+		<label>Nod basic</label>
+		<researchType>tech research</researchType>
+		<description>Unlock the basic NOD structures and items. Most of them are experimental and not meant to be available yet!</description>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+		<tasks>
+			<li>NODUnlock2_1</li>
+			<li>NODUnlock2_2</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>NODUnlock2_1</defName>
+		<label>Construct Assembler</label>
+		<descriptionShort>Construct an assembler.</descriptionShort>
+		<creationTasks>
+			<thingsToCreate>
+				<Nod_Factory>1</Nod_Factory>
+			</thingsToCreate>
+		</creationTasks>
+		<images>
+			<li>Story/FactionEmblem/F_Nod</li>
+		</images>
+		<workType>Construction</workType>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>NODUnlock2_2</defName>
+		<label>Research basic technology</label>	
+		<descriptionShort>Research basic technology of the Nod.</descriptionShort>
+		<skillRequirements>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<taskTarget>
+			<targetDefs>
+				<li>Nod_Factory</li>
+			</targetDefs>
+		</taskTarget>
+		<images>
+			<li>Story/FactionEmblem/F_Nod</li>
+		</images>
+		<workType>Research</workType>
+		<workAmount>4000</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchDef>
+		<defName>NodExperimental3</defName>
+		<label>Nod advanced</label>
+		<researchType>tech research</researchType>
+		<description>Unlock the advanced NOD structures and items. Most of them are experimental and not meant to be available yet!</description>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+		<tasks>
+			<li>NODUnlock3_1</li>
+			<li>NODUnlock3_2</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>NODUnlock3_1</defName>
+		<label>Construct Shrine</label>
+		<descriptionShort>Construct a shrine.</descriptionShort>
+		<creationTasks>
+			<thingsToCreate>
+				<Nod_Shrine>1</Nod_Shrine>
+			</thingsToCreate>
+		</creationTasks>
+		<images>
+			<li>Story/FactionEmblem/F_Nod</li>
+		</images>
+		<workType>Construction</workType>
+	</TiberiumRim.TResearchTaskDef>
+	
+	<TiberiumRim.TResearchTaskDef>
+		<defName>NODUnlock3_2</defName>
+		<label>Research advanced technology</label>	
+		<descriptionShort>Study advanced technology of the Nod.</descriptionShort>
+		<skillRequirements>
+			<Intellectual>12</Intellectual>
+		</skillRequirements>
+		<taskTarget>
+			<targetDefs>
+				<li>Nod_Factory</li>
+			</targetDefs>
+		</taskTarget>
+		<images>
+			<li>Story/FactionEmblem/F_Nod</li>
+		</images>
+		<workType>Research</workType>
+		<workAmount>5000</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<TiberiumRim.TResearchDef>
+		<defName>ForgottenExperimental1</defName>
+		<label>Join the Forgotten</label>
+		<researchType>experimental content</researchType>
+		<description>Unlock the Forgotten techtree. Most of them are experimental and not meant to be available yet!</description>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<requisites>
+			<tiberiumResearch>
+				<li>GreenSky</li>
+			</tiberiumResearch>
+		</requisites>
+		<tasks>
+			<li>ForgottenUnlock1</li>
+		</tasks>
+	</TiberiumRim.TResearchDef>
+
+	<TiberiumRim.TResearchTaskDef>
+		<defName>ForgottenUnlock1</defName>
+		<label>Join the Forgotten</label>	
+		<descriptionShort>Join the Forgotten mutants.</descriptionShort>
+		<skillRequirements>
+			<Social>6</Social>
+		</skillRequirements>
+		<taskTarget>
+			<targetType>Building_CommsConsole</targetType>
+		</taskTarget>
+		<images>
+			<li>Story/FactionEmblem/F_Forg</li>
+		</images>
+		<workType>Research</workType>
+		<workAmount>1000</workAmount>
+	</TiberiumRim.TResearchTaskDef>
+	
+</Defs>

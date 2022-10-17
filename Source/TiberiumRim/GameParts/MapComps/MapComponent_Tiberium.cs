@@ -23,13 +23,11 @@ namespace TiberiumRim
         public TiberiumMapInfo TiberiumInfo => map.GetMapInfo<TiberiumMapInfo>(); // Tiberium Crystals, Pods, etc, all variations
         public TiberiumFloraMapInfo FloraInfo => map.GetMapInfo<TiberiumFloraMapInfo>();  // Tiberium Plant life, Gardens, Environment
         public TiberiumStructureInfo NaturalTiberiumStructureInfo => map.GetMapInfo<TiberiumStructureInfo>();
-        public StructureCacheMapInfo StructureCacheInfo => map.GetMapInfo<StructureCacheMapInfo>();
 
         //
         public MapPawnInfo MapPawnInfo => map.GetMapInfo<MapPawnInfo>(); // Currently infected pawns, animals, colonists, visitors, etc
         public DangerMapInfo DangerInfo => map.GetMapInfo<DangerMapInfo>();
         public GeneralDataMapInfo GeneralDataInfo => map.GetMapInfo<GeneralDataMapInfo>();
-        public DynamicDataCacheInfo DynamicDataInfo => map.GetMapInfo<DynamicDataCacheInfo>();
         public TiberiumTerrainInfo TerrainInfo => map.GetMapInfo<TiberiumTerrainInfo>();
 
         // Artificial
@@ -58,8 +56,6 @@ namespace TiberiumRim
         {
             //Runs once on map generation
             base.MapGenerated();
-            FloraInfo.InfoInit(false);
-            TerrainInfo.InfoInit(false);
         }
 
         public override void ExposeData()
@@ -120,25 +116,10 @@ namespace TiberiumRim
 
         public void Notify_ThingSpawned(Thing thing)
         {
-            //Update MetaData
-            DynamicDataInfo.Notify_ThingSpawned(thing);
-
-            if (thing.def is TRThingDef def)
-            {
-                StructureCacheInfo.RegisterPart(def.TRGroup, thing);
-            }
         }
 
         public void Notify_DespawnedThing(Thing thing)
         {
-            //Update MetaData
-            DynamicDataInfo.Notify_ThingDespawned(thing);
-
-            if (thing.def is TRThingDef def)
-            {
-                StructureCacheInfo.DeregisterPart(def.TRGroup, thing);
-            }
-
         }
 
         public void RegisterTRBuilding(TRBuilding building)

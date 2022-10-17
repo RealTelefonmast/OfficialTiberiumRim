@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!--this is not a fleck-->
+	<!--
+	<TAE.SpreadingGasTypeDef>
+		<defName>Gas_Chemical</defName>
+		<label>tiberium gas</label>
+		
+		<texPath>VisualFX/Natural/TiberiumGas/TiberiumGas</texPath>
+		<shaderType>MoteGlow</shaderType>
+		<colorMin>(0,0,0)</colorMin>
+		<colorMax>(1,1,1,1)</colorMax>
+		
+		<maxDensityPerCell>100</maxDensityPerCell>
+		<expireSeconds>30~60</expireSeconds>
+		<rotationSpeed>10~20</rotationSpeed>
+		<blockTurretTracking>true</blockTurretTracking>
+		<accuracyPenalty>0.3</accuracyPenalty>
+	</TAE.SpreadingGasTypeDef>
+	
+	<TAE.SpreadingGasTypeDef>
+		<defName>Gas_Shockwave</defName>
+		<label>afterchock</label>
+		
+		<texPath>VisualFX/SoundVortex</texPath>
+		<shaderType>MoteGlow</shaderType>
+		<colorMin>(1,1,1,0.05)</colorMin>
+		<colorMax>(1,1,1,1)</colorMax>
+		
+		<expireSeconds>10~20</expireSeconds>
+		<rotationSpeed>100~150</rotationSpeed>
+		<blockTurretTracking>true</blockTurretTracking>
+		<accuracyPenalty>0.5</accuracyPenalty>
+		<colorMin>(0,0,0)</colorMin>
+		<colorMax>(1,1,1,1)</colorMax>
+	</TAE.SpreadingGasTypeDef>
+	-->
+</Defs>

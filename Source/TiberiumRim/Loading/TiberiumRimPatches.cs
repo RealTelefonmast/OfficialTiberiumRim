@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Text;
 using HarmonyLib;
-using Multiplayer.API;
 using RimWorld;
 using RimWorld.Planet;
 using TeleCore;
-using TiberiumRim.Utilities;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -30,13 +27,14 @@ namespace TiberiumRim
             //Manual C# XML-Def Patches
             TiberiumRimMod.mod.PatchPawnDefs();
 
-
+            /*TODO: MULTIPLAYER
             //MP Hook
             TRLog.Debug($"Multiplayer: {(MP.enabled ? "Enabled - Adding MP hooks..." : "Disabled")}");
             if (!MP.enabled) return;
             {
                 MP.RegisterAll();
             }
+            */
         }
 
         [HarmonyPatch(typeof(GenConstruct)), HarmonyPatch("CanPlaceBlueprintOver")]
@@ -727,10 +725,10 @@ namespace TiberiumRim
         }
 
         [HarmonyPatch(typeof(SteadyEnvironmentEffects))]
-        [HarmonyPatch("FinalDeteriorationRate", new Type[]{ typeof(Thing), typeof(bool), typeof(bool), typeof(bool), typeof(TerrainDef), typeof(List<string>) })]
+        [HarmonyPatch( nameof(SteadyEnvironmentEffects.FinalDeteriorationRate), typeof(Thing), typeof(bool), typeof(bool), typeof(TerrainDef), typeof(List<string>))]
         public static class FinalDeteriorationRatePatch
         {
-            public static void Postfix(Thing t, bool roofed, bool roomUsesOutdoorTemperature, bool protectedByEdifice, TerrainDef terrain, ref float __result, List<string> reasons)
+            public static void Postfix(Thing t, bool roofed, bool roomUsesOutdoorTemperature, TerrainDef terrain, List<string> reasons, ref float __result)
             {
                 if (!t.Spawned) return;
                 if (t.def.CanEverDeteriorate && t.Position.GetTiberium(t.Map) != null)

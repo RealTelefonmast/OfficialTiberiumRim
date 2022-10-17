@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Defs>
+
+  <SoundDef>
+    <defName>AmbientNight_Tiberium</defName>
+    <sustain>True</sustain>
+    <context>MapOnly</context>
+    <eventNames />
+    <priorityMode>PrioritizeNearest</priorityMode>
+    <subSounds>
+      <li>
+        <name>Main</name>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Ambience/Ambience_Tib</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>40</min>
+          <max>40</max>
+        </volumeRange>
+        <pitchRange>
+          <min>1</min>
+          <max>1</max>
+        </pitchRange>
+        <paramMappings>
+          <li>
+            <inParam Class="SoundParamSource_MusicPlayingFadeOut" />
+            <outParam Class="SoundParamTarget_Volume" />
+            <paramUpdateMode>Constant</paramUpdateMode>
+            <curve>
+              <points>
+                <li>
+                  <loc>
+                    <x>0</x>
+                    <y>0</y>
+                  </loc>
+                </li>
+                <li>
+                  <loc>
+                    <x>1</x>
+                    <y>1</y>
+                  </loc>
+                </li>
+              </points>
+            </curve>
+          </li>
+          <li>
+            <inParam Class="SoundParamSource_CameraAltitude" />
+            <outParam Class="SoundParamTarget_Volume" />
+            <paramUpdateMode>Constant</paramUpdateMode>
+            <curve>
+              <points>
+                <li>
+                  <loc>
+                    <x>11.0473</x>
+                    <y>0.9918624</y>
+                  </loc>
+                </li>
+                <li>
+                  <loc>
+                    <x>27.45536</x>
+                    <y>0.2410323</y>
+                  </loc>
+                </li>
+                <li>
+                  <loc>
+                    <x>42.48009</x>
+                    <y>-0.004399121</y>
+                  </loc>
+                </li>
+              </points>
+            </curve>
+          </li>
+          <li>
+            <inParam Class="SoundParamSource_TimeOfDay" />
+            <outParam Class="SoundParamTarget_Volume" />
+            <paramUpdateMode>Constant</paramUpdateMode>
+            <curve>
+              <points>
+                <li>
+                  <loc>
+                    <x>1.743164</x>
+                    <y>1</y>
+                  </loc>
+                </li>
+                <li>
+                  <loc>
+                    <x>3.74354</x>
+                    <y>0</y>
+                  </loc>
+                </li>
+                <li>
+                  <loc>
+                    <x>19.08203</x>
+                    <y>0</y>
+                  </loc>
+                </li>
+                <li>
+                  <loc>
+                    <x>22.03683</x>
+                    <y>1</y>
+                  </loc>
+                </li>
+              </points>
+            </curve>
+          </li>
+          <li>
+            <inParam Class="SoundParamSource_OutdoorTemperature" />
+            <outParam Class="SoundParamTarget_Volume" />
+            <paramUpdateMode>Constant</paramUpdateMode>
+            <curve>
+              <points>
+                <li>
+                  <loc>
+                    <x>0</x>
+                    <y>0</y>
+                  </loc>
+                </li>
+                <li>
+                  <loc>
+                    <x>5</x>
+                    <y>1</y>
+                  </loc>
+                </li>
+              </points>
+            </curve>
+          </li>
+          <li>
+            <inParam Class="SoundParamSource_AmbientVolume" />
+            <outParam Class="SoundParamTarget_Volume" />
+          </li>
+        </paramMappings>
+        <sustainLoopDurationRange>
+          <min>40</min>
+          <max>80</max>
+        </sustainLoopDurationRange>
+        <sustainIntervalRange>
+          <min>-20</min>
+          <max>-20</max>
+        </sustainIntervalRange>
+        <sustainAttack>20</sustainAttack>
+        <sustainRelease>20</sustainRelease>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>AmbientDay_Tiberium</defName>
+    <sustain>True</sustain>
+    <context>MapOnly</context>
+    <eventNames />
+    <priorityMode>PrioritizeNearest</priorityMode>
+    <subSounds>
+      <li>
+        <name>Main</name>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Ambience/Ambience_Tib</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>30</min>
+          <max>30</max>
+        </volumeRange>
+        <pitchRange>
+          <min>1</min>
+          <max>1</max>
+        </pitchRange>
+        <paramMappings>
+          <li>
+            <inParam Class="SoundParamSource_MusicPlayingFadeOut" />
+            <outParam Class="SoundParamTarget_Volume" />
+            <paramUpdateMode>Constant</paramUpdateMode>
+            <curve>
+              <points>
+                <li>
+                  <loc>
+                    <x>0</x>
+                    <y>0</y>
+                  </loc>
+                </li>
+                <li>
+                  <loc>
+                    <x>1</x>
+                    <y>1</y>
+                  </loc>
+                </li>
+              </points>
+            </curve>
+          </li>
+          <li>
+            <inParam Class="SoundParamSource_CameraAltitude" />
+            <outParam Class="SoundParamTarget_Volume" />
+            <paramUpdateMode>Constant</paramUpdateMode>
+            <curve>
+              <points>
+                <li>
+                  <loc>
+                    <x>11.0473</x>
+                    <y>0.9918624</y>
+                  </loc>
+                </li>
+                <li>
+                  <loc>
+                    <x>27.45536</x>
+                    <y>0.2410323</y>
+                  </loc>
+                </li>
+                <li>
+                  <loc>
+                    <x>42.48009</x>
+                    <y>-0.004399121</y>
+                  </loc>
+                </li>
+              </points>
+            </curve>
+          </li>
+          <li>
+            <inParam Class="SoundParamSource_TimeOfDay" />
+            <outParam Class="SoundParamTarget_Volume" />
+            <paramUpdateMode>Constant</paramUpdateMode>
+            <curve>
+              <points>
+                <li>
+                  <loc>
+                    <x>1.743164</x>
+                    <y>0</y>
+                  </loc>
+                </li>
+                <li>
+                  <loc>
+                    <x>3.74354</x>
+                    <y>1</y>
+                  </loc>
+                </li>
+                <li>
+                  <loc>
+                    <x>19.08203</x>
+                    <y>1</y>
+                  </loc>
+                </li>
+                <li>
+                  <loc>
+                    <x>22.03683</x>
+                    <y>0</y>
+                  </loc>
+                </li>
+              </points>
+            </curve>
+          </li>
+          <li>
+            <inParam Class="SoundParamSource_OutdoorTemperature" />
+            <outParam Class="SoundParamTarget_Volume" />
+            <paramUpdateMode>Constant</paramUpdateMode>
+            <curve>
+              <points>
+                <li>
+                  <loc>
+                    <x>0</x>
+                    <y>0</y>
+                  </loc>
+                </li>
+                <li>
+                  <loc>
+                    <x>5</x>
+                    <y>1</y>
+                  </loc>
+                </li>
+              </points>
+            </curve>
+          </li>
+          <li>
+            <inParam Class="SoundParamSource_AmbientVolume" />
+            <outParam Class="SoundParamTarget_Volume" />
+          </li>
+        </paramMappings>
+        <sustainLoopDurationRange>
+          <min>40</min>
+          <max>80</max>
+        </sustainLoopDurationRange>
+        <sustainIntervalRange>
+          <min>-20</min>
+          <max>-20</max>
+        </sustainIntervalRange>
+        <sustainAttack>20</sustainAttack>
+        <sustainRelease>20</sustainRelease>
+      </li>
+    </subSounds>
+  </SoundDef>
+</Defs>

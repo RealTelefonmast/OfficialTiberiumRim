@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<Def Class="TiberiumRim.TiberiumControlDef">
+		<defName>Main</defName>
+		<VeinHitDamage>6</VeinHitDamage>
+		<TiberiumLeakScale>1</TiberiumLeakScale>
+		<TiberiumMinTemp>-1</TiberiumMinTemp>
+		<AmalgamationChance>0.0001</AmalgamationChance>
+		<workFloat>0.009</workFloat>
+		<WorldCorruptMinPct>0.55</WorldCorruptMinPct>
+		<WorldCorruptAdder>0.2</WorldCorruptAdder>
+		<cellsPerMonolith>20</cellsPerMonolith>
+		
+		<GeyserCorruptionChance>0.05</GeyserCorruptionChance>
+		<RockCorruptionChance>0.005</RockCorruptionChance>
+		<WallCorruptionChance>0.01</WallCorruptionChance>
+		<ChunkCorruptionChance>0.01</ChunkCorruptionChance>
+		
+		<GreenColor>(111,200,4)</GreenColor>
+		<BlueColor>(8,142,208)</BlueColor>
+		<RedColor>(208,8,42)</RedColor>
+		<SludgeColor>(160,255,0)</SludgeColor>
+		<GasColor>(215,255,165)</GasColor>
+		<AlertColor>(50, 100, 50)</AlertColor>
+		
+		<spreadFilter>
+			<li>SteamGeyser</li>
+			<li>TiberiumGeyser</li>
+			<li>Grave</li>
+		</spreadFilter>
+	</Def>
+  
+</Defs>

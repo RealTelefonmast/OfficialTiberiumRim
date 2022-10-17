@@ -121,6 +121,7 @@ switch (pid)
         {
             public static void Postfix()
             {
+                /*
                 foreach (TRThingDef def in DefDatabase<TRThingDef>.AllDefs)
                 { 
                     if (def.factionDesignation == null) continue;
@@ -135,6 +136,7 @@ switch (pid)
                     }
                     DirectXmlCrossRefLoader.ResolveAllWantedCrossReferences(FailMode.Silent);
                 }
+                */
             }
         }
     }

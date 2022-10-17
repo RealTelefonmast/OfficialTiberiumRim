@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Specific Apparel Bases-->
+	<ThingDef Name="ApparelUniqueMakeableBase_TR" ParentName="ApparelBaseUnique_TR" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Tailor</effectWorking>
+			<soundWorking>Recipe_Tailor</soundWorking>
+			<recipeUsers>
+				<li>TiberiumWorkbench</li>
+			</recipeUsers>
+			<unfinishedThingDef>UnfinishedUniqueApparel</unfinishedThingDef>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef Name="ArmorUniqueSmithableBase_TR" ParentName="ApparelBaseUnique_TR" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>TiberiumWorkbench</li>
+			</recipeUsers>
+			<unfinishedThingDef>UnfinishedUniqueArmor</unfinishedThingDef>
+		</recipeMaker>
+	</ThingDef>
+
+	<ThingDef Name="ArmorUniqueMachineableBase_TR" ParentName="ApparelBaseUnique_TR" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<recipeUsers>
+				<li>TiberiumWorkbench</li>
+			</recipeUsers>
+			<unfinishedThingDef>UnfinishedUniqueArmor</unfinishedThingDef>
+		</recipeMaker>
+	</ThingDef>
+
+</Defs>

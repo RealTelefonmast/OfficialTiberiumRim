@@ -23,25 +23,27 @@
 		<WarningLevel>4</WarningLevel>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<OutputPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\1.4\Assemblies\</OutputPath>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DefineConstants>TRACE;DEBUG</DefineConstants>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<OutputPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\1.4\Assemblies\</OutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.3.3389" GeneratePathProperty="true" />
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3517-beta" GeneratePathProperty="true" />
 		<!-- Use Version="*-*" to get the latest beta! -->
 		<PackageReference Include="Lib.Harmony" Version="2.2.2" ExcludeAssets="runtime" />
+		<PackageReference Include="RimWorld.MultiplayerAPI" Version="0.4.0" />
 		<PackageReference Include="TaskPubliciser" Version="1.0.3" />
 
-		<PackageReference Include="Microsoft.NETCore.Platforms" Version="6.0.5" />
+		<PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.0-rc.2.22472.3" />
 
-		<PackageReference Include="TeleCore" Version="1.2.3" ExcludeAssets="runtime" />
-		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="*" ExcludeAssets="runtime" />
-		<PackageReference Include="RimWorld.MultiplayerAPI" Version="*" ExcludeAssets="runtime" />
+		<PackageReference Include="TeleCore" Version="1.4.2" ExcludeAssets="runtime" />
+		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="9.0.1" ExcludeAssets="runtime" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -64,6 +66,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="GameParts\Gas" />
 	  <Folder Include="HelperClasses\" />
 	  <Folder Include="Rendering\Computation\" />
 	</ItemGroup>

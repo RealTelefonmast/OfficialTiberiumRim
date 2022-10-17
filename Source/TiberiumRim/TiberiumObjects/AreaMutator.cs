@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Multiplayer.API;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -51,7 +50,7 @@ namespace TiberiumRim
             Scribe_Collections.Look(ref NewCells, "newCells");
         }
 
-        [SyncWorker]
+        /*TODO:[SyncWorker]
         static void SyncWorkerAreaMutator(SyncWorker sync, ref AreaMutator type)
         {
             if (sync.isWriting)
@@ -64,6 +63,7 @@ namespace TiberiumRim
                 type = field.MainProducer.AreaMutator;
             }
         }
+        */
 
         //Reload Values after load
         public AreaMutator()
@@ -225,7 +225,7 @@ namespace TiberiumRim
             GenSpawn.Spawn(plant, pos, map);
         }
 
-        [SyncMethod]
+        //TODO:[SyncMethod]
         public TiberiumProducer CreateBlossom()
         {
             bool Predicate(IntVec3 x) => x.InBounds(map) && !x.IsSuppressed(map) && tibField.FieldCells.Contains(x);

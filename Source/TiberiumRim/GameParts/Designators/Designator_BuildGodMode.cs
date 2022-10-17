@@ -1,6 +1,4 @@
-﻿using Multiplayer.API;
-using RimWorld;
-using UnityEngine;
+﻿using RimWorld;
 using Verse;
 
 namespace TiberiumRim
@@ -13,6 +11,7 @@ namespace TiberiumRim
         {
         }
 
+        /*TODO: MULTIPLAYER
         [SyncWorker]
         static void SyncBuildGodMode(SyncWorker sync, ref Designator_BuildGodMode type)
         {
@@ -26,8 +25,8 @@ namespace TiberiumRim
                 type = new Designator_BuildGodMode(entDef);
             }
         }
-
-        [SyncMethod(SyncContext.None)]
+        */
+        //[SyncMethod(SyncContext.None)]
         public override void DesignateSingleCell(IntVec3 c)
         {
             Thing thing = ThingMaker.MakeThing((ThingDef)this.entDef, this.stuffDef);

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.HomingThingDef>
+		<defName>VeinGasCloud</defName>
+		<thingClass>TiberiumRim.VeinGasCloud</thingClass>
+		<label>gas cloud</label>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>VisualFX/Natural/Gas</texPath>
+		</graphicData>
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<speed>0.2~0.5</speed>
+		<destroyOnArrival>false</destroyOnArrival>
+		<liveTime>25</liveTime>
+	</TiberiumRim.HomingThingDef>
+	
+</Defs>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!--
+  <DamageDef Name="Flame">
+    <defName>Flame</defName>
+    <workerClass>DamageWorker_Flame</workerClass>
+    <label>flame</label>
+    <hasForcefulImpact>false</hasForcefulImpact>
+    <makesBlood>false</makesBlood>
+    <canInterruptJobs>false</canInterruptJobs>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has burned to death.</deathMessage>
+    <hediff>Burn</hediff>
+    <armorCategory>Heat</armorCategory>
+    <minDamageToFragment>15</minDamageToFragment>
+    <defaultDamage>10</defaultDamage>
+    <defaultArmorPenetration>0</defaultArmorPenetration>
+    <explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+    <explosionCellFleck>Mote_AdvFlame</explosionCellFleck>
+	<explosionInteriorFleck>SubMote_AdvParticle2</explosionInteriorFleck>
+		<explosionColorCenter>(1, 1, 0.1, 0.5)</explosionColorCenter>
+		<explosionColorEdge>(0.9, 0.1, 0.1, 0.0)</explosionColorEdge>
+    <soundExplosion>Explosion_Flame</soundExplosion>
+    <combatLogRules>Damage_Flame</combatLogRules>
+    <canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
+  </DamageDef>
+
+  <DamageDef Name="Bomb">
+    <defName>Bomb</defName>
+    <label>bomb</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has died in an explosion.</deathMessage>
+    <hediff>Shredded</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+    <minDamageToFragment>15</minDamageToFragment>
+    <defaultDamage>50</defaultDamage>
+    <defaultStoppingPower>0.5</defaultStoppingPower>
+    <defaultArmorPenetration>0.10</defaultArmorPenetration>
+    <buildingDamageFactorImpassable>4</buildingDamageFactorImpassable>
+    <buildingDamageFactorPassable>2</buildingDamageFactorPassable>
+    <plantDamageFactor>4</plantDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>5</explosionHeatEnergyPerCell>
+    <explosionCellFleck>Mote_AdvExplosion1</explosionCellFleck>
+	<explosionInteriorFleck>SubMote_AdvParticle</explosionInteriorFleck>
+	<explosionColorCenter>(1, 1, 0.9, 0.8)</explosionColorCenter>
+	<explosionColorEdge>(1, 0.8, 0.3, 0)</explosionColorEdge>
+    <soundExplosion>Explosion_Bomb</soundExplosion>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+  </DamageDef>
+
+  <DamageDef ParentName="Bomb">
+    <defName>BombSuper</defName>
+    <defaultDamage>550</defaultDamage>
+    <defaultStoppingPower>2.0</defaultStoppingPower>
+    <defaultArmorPenetration>1.30</defaultArmorPenetration>
+    <explosionCellFleck>Mote_AdvExplosion2</explosionCellFleck>
+	<explosionInteriorFleck></explosionInteriorFleck>
+	<explosionColorCenter>(1, 1, 0.9, 1)</explosionColorCenter>
+	<explosionColorEdge>(1, 0.8, 0.3, 0)</explosionColorEdge>
+  </DamageDef>
+  
+  <DamageDef>
+    <defName>Extinguish</defName>
+    <label>extinguish</label>
+    <workerClass>DamageWorker_Extinguish</workerClass>
+    <canInterruptJobs>false</canInterruptJobs>
+    <makesBlood>false</makesBlood>
+    <defaultDamage>999999</defaultDamage>
+    <explosionCellFleck>Mote_AdvExplosion2</explosionCellFleck>
+	<explosionColorCenter>(0.9, 0.9, 1, 0.5)</explosionColorCenter>
+    <explosionColorEdge>(0.8, 0.8, 0.9, 0)</explosionColorEdge>
+    <soundExplosion>Explosion_Stun</soundExplosion>
+    <harmsHealth>false</harmsHealth>
+    <combatLogRules>Damage_Extinguish</combatLogRules>
+  </DamageDef>
+  
+  <DamageDef>
+    <defName>Smoke</defName>
+    <label>smoke</label>
+    <canInterruptJobs>false</canInterruptJobs>
+    <makesBlood>false</makesBlood>
+    <defaultDamage>0</defaultDamage>
+    <explosionCellFleck>Mote_AdvExplosion2</explosionCellFleck>
+	<explosionColorCenter>(0.9, 0.9, 1, 0.2)</explosionColorCenter>
+    <explosionColorEdge>(0.8, 0.8, 0.9, 0)</explosionColorEdge>
+    <harmsHealth>false</harmsHealth>
+    <soundExplosion>Explosion_Smoke</soundExplosion>
+    <combatLogRules>Damage_Smoke</combatLogRules>
+  </DamageDef>
+  
+  <DamageDef ParentName="StunBase">
+    <defName>Stun</defName>
+    <label>stun</label>
+    <workerClass>DamageWorker_Stun</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been stunned to death.</deathMessage>
+    <defaultDamage>20</defaultDamage>
+    <explosionCellFleck>Mote_AdvParticle</explosionCellFleck>
+	<explosionInteriorFleck>SubMote_AdvParticle3</explosionInteriorFleck>
+	<explosionColorCenter>(0.9, 0.9, 1, 0.5)</explosionColorCenter>
+    <explosionColorEdge>(0.8, 0.8, 0.9, 0.1)</explosionColorEdge>
+    <soundExplosion>Explosion_Stun</soundExplosion>
+    <combatLogRules>Damage_Stun</combatLogRules>
+  </DamageDef>
+  
+  <DamageDef ParentName="StunBase">
+    <defName>EMP</defName>
+    <label>EMP</label>
+    <externalViolenceForMechanoids>true</externalViolenceForMechanoids>
+    <deathMessage>{0} has been EMPed to death.</deathMessage>
+    <harmsHealth>false</harmsHealth>
+    <impactSoundType>Electric</impactSoundType>
+    <defaultDamage>50</defaultDamage>
+    <explosionSnowMeltAmount>0</explosionSnowMeltAmount>
+    <explosionCellFleck>Mote_AdvParticle</explosionCellFleck>
+	<explosionInteriorFleck>SubMote_AdvSpark</explosionInteriorFleck>
+    <explosionColorCenter>(0.8, 0.8, 1, 1)</explosionColorCenter>
+    <explosionColorEdge>(0.6, 0.6, 1, 0.1)</explosionColorEdge>
+    <soundExplosion>Explosion_EMP</soundExplosion>
+    <combatLogRules>Damage_EMP</combatLogRules>
+  </DamageDef>
+-->  
+	
+	<!-- Flecks for original damagetypes-->
+
+	
+  <FleckDef ParentName="FleckBase">
+		<defName>Mote_AdvFlame</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Gas4</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.1</fadeInTime>
+		<solidTime>0.2</solidTime>
+		<fadeOutTime>0.6</fadeOutTime>
+		<growthRate>6</growthRate>
+	</FleckDef>
+	
+  <FleckDef ParentName="FleckBase">
+		<defName>Mote_AdvExplosion1</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Gas1</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.1</solidTime>
+		<fadeOutTime>0.4</fadeOutTime>
+		<growthRate>8</growthRate>
+	</FleckDef>
+	
+  <FleckDef ParentName="FleckBase">
+		<defName>Mote_AdvExplosion2</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Gas2</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.1</solidTime>
+		<fadeOutTime>0.5</fadeOutTime>
+		<growthRate>8</growthRate>
+	</FleckDef>
+	
+  <FleckDef ParentName="FleckBase">
+		<defName>Mote_AdvExplosion3</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Gas3</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.1</solidTime>
+		<fadeOutTime>0.5</fadeOutTime>
+		<growthRate>8</growthRate>
+	</FleckDef>
+	
+  <FleckDef ParentName="FleckBase">
+		<defName>Mote_AdvSuperExplosion</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Gas2</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.3</solidTime>
+		<fadeOutTime>0.5</fadeOutTime>
+		<growthRate>8</growthRate>
+	</FleckDef>
+	
+  <FleckDef ParentName="FleckBase">
+		<defName>Mote_AdvParticle</defName>
+		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
+		<graphicData>
+			<texPath>VisualFX/Original/Particles</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.3</solidTime>
+		<fadeOutTime>0.6</fadeOutTime>
+		<growthRate>4</growthRate>
+	</FleckDef>
+	
+  <FleckDef ParentName="FleckBase_Thrown">
+		<defName>SubMote_AdvParticle</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Particles4</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+			<drawSize>0.5</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.2</solidTime>
+		<fadeOutTime>0.3</fadeOutTime>
+		<growthRate>8</growthRate>
+	</FleckDef>
+	
+  <FleckDef ParentName="FleckBase_Thrown">
+		<defName>SubMote_AdvParticle2</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Particles2</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+			<drawSize>0.5</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.3</solidTime>
+		<fadeOutTime>0.4</fadeOutTime>
+		<growthRate>4</growthRate>
+	</FleckDef>
+	
+  <FleckDef ParentName="FleckBase">
+		<defName>SubMote_AdvParticle3</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Particles3</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+			<drawSize>0.7</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.25</solidTime>
+		<fadeOutTime>0.25</fadeOutTime>
+		<growthRate>9</growthRate>
+	</FleckDef>
+	
+  <FleckDef ParentName="FleckBase_Thrown">
+		<defName>SubMote_AdvSpark</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Spark</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+			<drawSize>0.75</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.2</solidTime>
+		<fadeOutTime>0.3</fadeOutTime>
+		<growthRate>5</growthRate>
+	</FleckDef>
+	
+</Defs>

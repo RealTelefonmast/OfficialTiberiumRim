@@ -126,7 +126,7 @@ namespace TiberiumRim
                     float tox = 0, sharp = 0;
                     foreach (Apparel apparel in pawn.apparel.WornApparel)
                     {
-                        tox += Mathf.Clamp01(apparel.GetStatValue(StatDefOf.ToxicSensitivity));
+                        tox += Mathf.Clamp01(apparel.GetStatValue(StatDefOf.ToxicResistance));
                         sharp += Mathf.Clamp01(apparel.GetStatValue(StatDefOf.ArmorRating_Sharp));
                     }
 

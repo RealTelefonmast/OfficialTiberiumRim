@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using HarmonyLib;
-using Multiplayer.API;
 using RimWorld;
 using TeleCore;
 using UnityEngine;
@@ -57,7 +55,8 @@ namespace TiberiumRim
             //relevantTargetStat = StatDefOf.ResearchSpeedFactor;
         }
 
-        [SyncMethod(SyncContext.None)]
+        //TODO: MULTIPLAYER
+        //[SyncMethod(SyncContext.None)]
         public void TriggerEvents()
         {
             if (events.NullOrEmpty()) return;
@@ -66,19 +65,21 @@ namespace TiberiumRim
                 TRUtils.EventManager().StartEvent(@event);
             }
         }
-
+        
+        
         public virtual void FinishAction()
         {
         }
 
-        [SyncMethod(SyncContext.None)]
+        //TODO: MULTIPLAYER
+        //[SyncMethod(SyncContext.None)]
         public void Debug_Finish()
         {
             TRLog.Debug($"Force Finishing TResearch '{LabelCap}'");
             tasks.ForEach(t => t.Debug_Finish());
         }
 
-        [SyncMethod(SyncContext.None)]
+        //[SyncMethod(SyncContext.None)]
         public void Debug_Reset()
         {
             if (!tasks.NullOrEmpty())
@@ -244,7 +245,8 @@ namespace TiberiumRim
         public StatDef RelevantPawnStat => relevantPawnStat ?? ParentProject.relevantPawnStat;
         public StatDef RelevantTargetStat => relevantTargetStat ?? ParentProject.relevantTargetStat;
 
-        [SyncMethod]
+        //TODO: MULTIPLAYER
+        //[SyncMethod]
         public void TriggerEvents()
         {
             if (events.NullOrEmpty()) return;
@@ -254,13 +256,13 @@ namespace TiberiumRim
             }
         }
 
-        [SyncMethod]
+        //[SyncMethod]
         public void DoDiscoveries()
         {
             discoveries?.Discover();
         }
 
-        [SyncMethod]
+        //[SyncMethod]
         public void Debug_Finish()
         {
             TRLog.Debug($"Force Finishing TResearchTask '{LabelCap}'");
@@ -276,7 +278,7 @@ namespace TiberiumRim
             TRUtils.ResearchManager().SetProgress(this, this.ProgressToDo);
         }
 
-        [SyncMethod(SyncContext.None)]
+        //[SyncMethod(SyncContext.None)]
         public void Debug_Reset()
         {
             TRUtils.ResearchManager().SetProgress(this, 0);
@@ -435,10 +437,11 @@ namespace TiberiumRim
                 var trThingDef = def as TRThingDef;
                 if (trThingDef != null && trThingDef.IsActive(out _))
                 {
-                    Architect.selectedDesPanel = Architect.desPanelsCached.Find(a => a.def == TiberiumDefOf.Tiberium);
-                    Designator_TRMenu menu = (TiberiumDefOf.Tiberium.AllResolvedDesignators.FirstOrDefault() as Designator_TRMenu);
-                    menu.Select(trThingDef);
-                    StaticData.GetDesignatorFor<Designator_Build>(trThingDef).ProcessInput(null);
+                    
+                    //TODO: Open TR Menu for thing
+                    //Architect.selectedDesPanel = Architect.desPanelsCached.Find(a => a.def == .TiberiumMenuDesignator);
+                    //var menu = TiberiumDefOf.Tiberium.menuDef;
+                    //StaticData.GetDesignatorFor<Designator_Build>(trThingDef).ProcessInput(null);
                     return;
                 }
 

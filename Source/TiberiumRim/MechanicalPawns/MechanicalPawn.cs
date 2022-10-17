@@ -65,7 +65,7 @@ namespace TiberiumRim
 
         public IEnumerable<Hediff> Damage()
         {
-            return from x in health?.hediffSet?.GetHediffs<Hediff>() where x is Hediff_Injury || x is Hediff_MissingPart select x;
+            return from x in health?.hediffSet?.hediffs where x is Hediff_Injury || x is Hediff_MissingPart select x;
         }
     }
 }

@@ -61,9 +61,10 @@ namespace TiberiumRim
         private float PositionPct => ExactPosition.ToIntVec3().DistanceTo(intendedTarget.Cell) / Launcher.Position.DistanceTo(intendedTarget.Cell);
         private float RangePct => intendedTarget.Cell.DistanceTo(this.Launcher.Position) / FlameTurret.MainGun.VerbProps.range;
 
-        public override void Impact(Thing hitThing)
+        //
+        public override void Impact(Thing hitThing, bool blockedByShield = false)
         {
-            base.Impact(hitThing);
+            base.Impact(hitThing, blockedByShield);
         }
 
         protected MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
