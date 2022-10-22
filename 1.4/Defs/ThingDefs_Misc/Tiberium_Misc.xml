@@ -7,8 +7,8 @@
 		
 		<texPath>VisualFX/Natural/TiberiumGas/TiberiumGasLight</texPath>
 		<shaderType>TransparentPostLight</shaderType>
-		<colorMin>(0,0,0)</colorMin>
-		<colorMax>(1,1,1,1)</colorMax>
+		<colorMin>(0.25,0.5,0)</colorMin>
+		<colorMax>(0,1,0.35)</colorMax>
 		
 		<maxDensityPerCell>1000</maxDensityPerCell>
 		<minSpreadDensity>100</minSpreadDensity>
