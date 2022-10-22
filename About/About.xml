@@ -25,8 +25,8 @@
 		</li>
 		<li>
 			<packageId>Telefonmast.AtmosphereExtended</packageId>
-			<displayName>TeleCore</displayName>
-			<steamWorkshopUrl>steam://url/CommunityFilePage/2810454935</steamWorkshopUrl>
+			<displayName>AtmosphereExtended</displayName>
+			<downloadUrl>https://github.com/RealTelefonmast/AtmospheresExtended/archive/refs/heads/main.zip</downloadUrl>
 		</li>
 	</modDependencies>
 	<packageId>telefonmast.tiberiumrim</packageId>
