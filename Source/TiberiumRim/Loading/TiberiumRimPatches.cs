@@ -362,9 +362,6 @@ namespace TiberiumRim
         [HarmonyPatch("DrawHediffRow")]
         public static class HediffDrawerPatch
         {
-            [TweakValue("Hediff_MutationHelper_Bar_contracter", -50f, 50f)]
-            private static float contracted = 3f;
-
             [HarmonyPostfix]
             public static void Fix(Rect rect, Pawn pawn, IEnumerable<Hediff> diffs, ref float curY)
             {

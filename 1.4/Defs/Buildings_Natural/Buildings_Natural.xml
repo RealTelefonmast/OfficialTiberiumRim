@@ -45,8 +45,9 @@
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 		<modExtensions>
 			<li Class="TeleCore.SubMenuExtension">
-				<groupDef>Nod</groupDef>
+				<groupDef>Tiberium</groupDef>
 				<category>Producers</category>
+				<devObject>true</devObject>
 			</li>
 		</modExtensions>
 	</TiberiumRim.TRThingDef>

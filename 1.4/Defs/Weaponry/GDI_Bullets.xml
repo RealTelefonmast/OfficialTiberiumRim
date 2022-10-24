@@ -166,6 +166,7 @@
 			<explosionRadius>1.1</explosionRadius>
 			<stoppingPower>0.5</stoppingPower>
 			<speed>25</speed>
+			<screenShakeFactor>0.15</screenShakeFactor>
 			<soundExplode>BulletImpact_Flesh</soundExplode>
 			<armorPenetrationBase>0.1</armorPenetrationBase>
 		</projectile>
@@ -284,8 +285,7 @@
 			<soundExplode>Shot_GDI_Sonic</soundExplode>
 			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
 			<soundAmbient>MortarRound_Ambient</soundAmbient>
-			<postExplosionSpawnThingDef>Gas_Shockwave</postExplosionSpawnThingDef>
-			<postExplosionSpawnChance>0.15</postExplosionSpawnChance>
+			<explosionEffect>ShockWaveShellEffect</explosionEffect>
 			<shadowSize>0.5</shadowSize>
 		</projectile>
 	</ThingDef>

@@ -65,7 +65,7 @@ namespace TiberiumRim
             Scribe_TargetInfo.Look(ref fireWallPos, "fireWallPos");
         }
 
-        [TweakValue("FlameTurretGrowth", 100, 2000)]
+        [TweakValue("[TR]FlameTurretGrowth", 100, 2000)]
         public static int growthDuration = 1000;
 
         //TODO: Add simple firewall, no growth

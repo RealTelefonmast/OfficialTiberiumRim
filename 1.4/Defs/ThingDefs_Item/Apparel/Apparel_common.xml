@@ -44,7 +44,7 @@
 		</statBases>
 		<equippedStatOffsets>
 			<MoveSpeed>0.1</MoveSpeed>
-			<ToxicSensitivity>-0.1</ToxicSensitivity>
+			<ToxicResistance>0.1</ToxicResistance>
 			<TiberiumGasResistance>0.1</TiberiumGasResistance>
 			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
@@ -116,7 +116,7 @@
 		</statBases>
 		<equippedStatOffsets>
 			<MoveSpeed>-0.1</MoveSpeed>
-			<ToxicSensitivity>-0.1</ToxicSensitivity>
+			<ToxicResistance>0.1</ToxicResistance>
 			<TiberiumGasResistance>0.1</TiberiumGasResistance>
 			<TiberiumInfectionResistance>0.9</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.9</TiberiumRadiationResistance>
@@ -184,7 +184,7 @@
 		</statBases>
 		<equippedStatOffsets>
 			<MoveSpeed>-0.1</MoveSpeed>
-			<ToxicSensitivity>-0.9</ToxicSensitivity>
+			<ToxicResistance>0.9</ToxicResistance>
 			<TiberiumGasResistance>0.9</TiberiumGasResistance>
 			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>

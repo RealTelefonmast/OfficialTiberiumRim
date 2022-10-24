@@ -1,23 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
-	<TAE.SpreadingGasTypeDef>
-		<defName>Gas_TiberiumGas</defName>
-		<label>tiberium gas</label>
-		
-		<texPath>VisualFX/Natural/TiberiumGas/TiberiumGasLight</texPath>
-		<shaderType>TransparentPostLight</shaderType>
-		<colorMin>(0.25,0.5,0)</colorMin>
-		<colorMax>(0,1,0.35)</colorMax>
-		
-		<maxDensityPerCell>1000</maxDensityPerCell>
-		<minSpreadDensity>100</minSpreadDensity>
-		<dissipateTo>TibPollution</dissipateTo>
-		
-		<expireSeconds>15~30</expireSeconds>
-		<rotationSpeed>5~10</rotationSpeed>
-		<blockTurretTracking>true</blockTurretTracking>
-		<accuracyPenalty>0.8</accuracyPenalty>
-	</TAE.SpreadingGasTypeDef>
   
 </Defs>

@@ -23,7 +23,6 @@
 		<defendPointRadius>5</defendPointRadius>
 		<allowRoyalRoomRequirements>false</allowRoyalRoomRequirements>
 		<allowRoyalApparelRequirements>false</allowRoyalApparelRequirements>
-		<baseRecruitDifficulty>1</baseRecruitDifficulty>
 		<fleeHealthThresholdRange>0</fleeHealthThresholdRange>
 		<itemQuality>Excellent</itemQuality>
 		<weaponMoney>9999</weaponMoney>

@@ -49,7 +49,7 @@ namespace TiberiumRim
         public static TRMainButtonDef TiberiumTab;
 
         //DesignationCategory
-        public static SubMenuDesignator TiberiumMenuDesignator;
+        public static SubMenuDesignationCategoryDef TiberiumMenuDesignator;
 
         // TiberiumCrystals
         //Green

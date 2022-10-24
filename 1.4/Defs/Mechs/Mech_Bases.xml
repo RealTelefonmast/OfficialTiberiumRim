@@ -16,7 +16,7 @@
 			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
 			<TiberiumGasResistance>1</TiberiumGasResistance>
 			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
-			<ToxicSensitivity>0</ToxicSensitivity>
+			<ToxicResistance>1</ToxicResistance>
 			<Flammability>0.35</Flammability>
 			<ComfyTemperatureMin>-100</ComfyTemperatureMin>
 			<ComfyTemperatureMax>250</ComfyTemperatureMax>

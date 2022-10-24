@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using RimWorld;
+using TAE;
 using TeleCore;
 using Verse;
 
@@ -15,6 +16,13 @@ namespace TiberiumRim
 
     public class TiberiumCrystalDef : TRThingDef
     {
+        private static int _masterID;
+        private static Dictionary<int, TiberiumCrystalDef> _defByID = new();
+        
+        [Unsaved] 
+        public int IDReference;
+        
+        //
         [Unsaved()]
         private float? growthPerTick;
         [Unsaved()]
@@ -31,6 +39,11 @@ namespace TiberiumRim
         public IEnumerable<IntVec3> SpreadRangeMask => radialCells ??= GenRadial.RadialPatternInRadius(tiberium.spreadRadius);
 
 
+        //
+        public static implicit operator int(TiberiumCrystalDef def) => def.IDReference;
+        public static explicit operator TiberiumCrystalDef(int ID) => _defByID[ID];
+        
+        //
         public bool HasOutcomesFor(TerrainDef terrain)
         {
             return conversions.HasOutcomeFor(terrain, out _);
@@ -95,5 +108,15 @@ namespace TiberiumRim
         public bool IsMoss => HarvestType == HarvestType.Unvaluable;
 
         public bool DamagesThings => tiberium.deteriorationDamage.Average > 0;
+        
+        
+        //
+        public override void PostLoad()
+        {
+            base.PostLoad();
+            IDReference = _masterID++;
+            _defByID.Add(IDReference, this);
+            
+        }
     }
 }

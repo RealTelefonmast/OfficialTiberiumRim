@@ -42,11 +42,16 @@ namespace TiberiumRim
         {
         }
 
+        [TweakValue("[TR]TibDrawBool", 0f, 100f)]
+        public static bool DrawBool = false;
         public override void Update()
         {
-            tiberiumGrid.Drawer.RegenerateMesh();
-            tiberiumGrid.Drawer.MarkForDraw();
-            tiberiumGrid.Drawer.CellBoolDrawerUpdate();
+            if (DrawBool)
+            {
+                tiberiumGrid.Drawer.RegenerateMesh();
+                tiberiumGrid.Drawer.MarkForDraw();
+                tiberiumGrid.Drawer.CellBoolDrawerUpdate();
+            }
         }
 
         public TiberiumCrystal TiberiumAt(IntVec3 cell)

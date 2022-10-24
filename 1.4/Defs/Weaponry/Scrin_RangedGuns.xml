@@ -120,6 +120,7 @@
 		<tradeability>None</tradeability>
 		<techLevel>Spacer</techLevel>
 		<destroyOnDrop>False</destroyOnDrop>
+		<smeltable>false</smeltable>
 		<weaponTags>
 			<li>MechapedeGun</li>
 		</weaponTags>
@@ -182,6 +183,7 @@
 		</statBases>
 		<tradeability>None</tradeability>
 		<techLevel>Ultra</techLevel>
+		<smeltable>false</smeltable>
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_Beam</verbClass>

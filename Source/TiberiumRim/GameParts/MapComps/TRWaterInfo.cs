@@ -7,7 +7,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class TiberiumWaterInfo : MapInformation, ICellBoolGiver
+    public class TRWaterInfo : MapInformation, ICellBoolGiver
     {
         public BoolGrid allWaterCells;
 
@@ -27,10 +27,7 @@ namespace TiberiumRim
 
         public Color Color => Color.white;
 
-        [TweakValue("MapComponent_ShowWater", 0f, 100f)]
-        public static bool DrawBool = false;
-
-        public TiberiumWaterInfo(Map map) : base(map)
+        public TRWaterInfo(Map map) : base(map)
         {
             allWaterCells = new BoolGrid(map);
 
@@ -110,6 +107,8 @@ namespace TiberiumRim
             return lakeCells[cell];
         }
 
+        [TweakValue("[TR]WaterInfo", 0f, 100f)]
+        public static bool DrawBool = false;
         public override void Update()
         {
             if (DrawBool && Find.CurrentMap == this.map)

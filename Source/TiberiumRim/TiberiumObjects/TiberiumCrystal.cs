@@ -32,7 +32,7 @@ namespace TiberiumRim
         public new TiberiumCrystalDef def => (TiberiumCrystalDef) base.def;
 
         //Tweak Crap
-        [TweakValue("CrystalGrowth", 0f, 100f)]
+        [TweakValue("[TR]CrystalGrowth", 0f, 100f)]
         public static int CrystalGrowthVal = 1;
 
         public TiberiumProducer Parent => parent;

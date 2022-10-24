@@ -51,14 +51,20 @@
       </li>
       
       <!-- Weapons -->
-      <li Class="StockGenerator_WeaponsRanged">
-        <countRange>0~1</countRange>
-      </li>
+		<li Class="StockGenerator_MarketValue">
+			<tradeTag>WeaponRanged</tradeTag>
+			<countRange>0~1</countRange>
+		</li>
 
-      <!-- Apparel -->
-      <li Class="StockGenerator_Clothes">
-        <countRange>0~1</countRange>
-      </li>
+	<!-- Apparel -->
+	<li Class="StockGenerator_MarketValue">
+		<tradeTag>BasicClothing</tradeTag>
+		<countRange>0~1</countRange>
+	</li>
+	<li Class="StockGenerator_MarketValue">
+		<tradeTag>Clothing</tradeTag>
+		<countRange>0~1</countRange>
+	</li>
 
       <!-- Implants -->
       <!-- none -->
@@ -133,14 +139,20 @@
       </li>
       
       <!-- Weapons -->
-      <li Class="StockGenerator_WeaponsRanged">
-        <countRange>0~1</countRange>
-      </li>
+		<li Class="StockGenerator_MarketValue">
+			<tradeTag>WeaponRanged</tradeTag>
+			<countRange>0~1</countRange>
+		</li>
 
-      <!-- Apparel -->
-      <li Class="StockGenerator_Clothes">
-        <countRange>0~1</countRange>
-      </li>
+	<!-- Apparel -->
+	<li Class="StockGenerator_MarketValue">
+		<tradeTag>BasicClothing</tradeTag>
+		<countRange>0~1</countRange>
+	</li>
+	<li Class="StockGenerator_MarketValue">
+		<tradeTag>Clothing</tradeTag>
+		<countRange>0~1</countRange>
+	</li>
 
       <!-- Implants -->
       <!-- none -->

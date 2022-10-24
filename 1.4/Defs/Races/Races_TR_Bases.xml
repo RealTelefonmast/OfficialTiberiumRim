@@ -14,7 +14,7 @@
 		<statBases>
 			<Mass>50</Mass>
 			<Flammability>0.5</Flammability>
-			<ToxicSensitivity>0</ToxicSensitivity>
+			<ToxicResistance>1</ToxicResistance>
 			<PainShockThreshold>1</PainShockThreshold>
 			<MeatAmount>50</MeatAmount>
 			<ComfyTemperatureMin>-30</ComfyTemperatureMin>
@@ -58,7 +58,7 @@
 		<thingClass>TiberiumRim.TiberiumPawn</thingClass>
 		<statBases>
 			<Flammability>0.5</Flammability>
-			<ToxicSensitivity>0</ToxicSensitivity>
+			<ToxicResistance>1</ToxicResistance>
 			<PainShockThreshold>1</PainShockThreshold>
 			<LeatherAmount>30</LeatherAmount>
 			<MeatAmount>50</MeatAmount>

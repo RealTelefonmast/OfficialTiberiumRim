@@ -2,7 +2,7 @@
 
 namespace TiberiumRim
 {
-    public class SectionLayer_TiberiumGas : SectionLayer
+    public class SectionLayer_TiberiumGas : SectionLayer_Gas
     {
         public SectionLayer_TiberiumGas(Section section) : base(section)
         {

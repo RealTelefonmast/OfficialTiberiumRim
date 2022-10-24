@@ -3,44 +3,6 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class Designator_BuildGodMode : Designator_Build
-    {
-        public TRThingDef TRThingDef => entDef as TRThingDef;
-
-        public Designator_BuildGodMode(BuildableDef entDef) : base(entDef)
-        {
-        }
-
-        /*TODO: MULTIPLAYER
-        [SyncWorker]
-        static void SyncBuildGodMode(SyncWorker sync, ref Designator_BuildGodMode type)
-        {
-            if (sync.isWriting)
-            {
-                sync.Write(type.entDef);
-            }
-            else
-            {
-                BuildableDef entDef = sync.Read<BuildableDef>();
-                type = new Designator_BuildGodMode(entDef);
-            }
-        }
-        */
-        //[SyncMethod(SyncContext.None)]
-        public override void DesignateSingleCell(IntVec3 c)
-        {
-            Thing thing = ThingMaker.MakeThing((ThingDef)this.entDef, this.stuffDef);
-            GenSpawn.Spawn(thing, c, base.Map, this.placingRot, WipeMode.Vanish, false);
-            FleckMaker.ThrowMetaPuffs(GenAdj.OccupiedRect(c, this.placingRot, this.entDef.Size), base.Map);
-
-            if (this.entDef.PlaceWorkers == null) return;
-            foreach (var placeWorker in this.entDef.PlaceWorkers)
-            {
-                placeWorker.PostPlace(base.Map, this.entDef, c, this.placingRot);
-            }
-        }
-    }
-
     /*
     public class Designator_BuildFixed : Designator_Build
     {

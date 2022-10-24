@@ -156,7 +156,7 @@
 			<speed>15</speed>
 			<shadowSize>1.8</shadowSize>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
-			<postExplosionSpawnThingDef>Gas_Chemical</postExplosionSpawnThingDef>
+			<postExplosionSpawnThingDef>Gas_ChemicalInterface</postExplosionSpawnThingDef>
 			<postExplosionSpawnChance>0.15</postExplosionSpawnChance>
 			<!--<explosionRadius>0.05</explosionRadius>
 			<preExplosionSpawnThingDef>FilthTibLiquidGreen</preExplosionSpawnThingDef>
@@ -213,7 +213,7 @@
 			<explosionDelay>65</explosionDelay>
 			<speed>15</speed>
 			<arcHeightFactor>1.5</arcHeightFactor>
-			<preExplosionSpawnThingDef>Gas_Chemical</preExplosionSpawnThingDef>
+			<preExplosionSpawnThingDef>Gas_ChemicalInterface</preExplosionSpawnThingDef>
 			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>
 			<soundExplode>Nod_ChemBomb</soundExplode>
 			<shadowSize>0.5</shadowSize>
@@ -236,7 +236,7 @@
 			<speed>15</speed>
 			<arcHeightFactor>1.5</arcHeightFactor>
 			<explosionDelay>150</explosionDelay>
-			<preExplosionSpawnThingDef>Gas_Chemical</preExplosionSpawnThingDef>
+			<preExplosionSpawnThingDef>Gas_ChemicalInterface</preExplosionSpawnThingDef>
 			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>
 			<soundExplode>Nod_ChemBomb</soundExplode>
 			<explosionEffect>GiantExplosion</explosionEffect>

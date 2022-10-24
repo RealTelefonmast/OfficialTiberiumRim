@@ -20,7 +20,7 @@
 			<Flammability>0</Flammability>
 			<DeteriorationRate>0</DeteriorationRate>
 		</statBases>
-		<smeltable>true</smeltable>
+		<smeltable>false</smeltable>
 		<intricate>true</intricate>
 		<thingCategories>
 			<li>Manufactured</li>
@@ -31,7 +31,6 @@
 			</tiberiumResearch>
 		</requisites>
 	</TiberiumRim.TRThingDef>
-	
 
 	<TiberiumRim.TRThingDef ParentName="ResourceBase_TR">
 		<defName>GDI_SonicCore</defName>

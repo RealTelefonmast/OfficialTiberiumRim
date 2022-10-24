@@ -24,7 +24,7 @@
 				<explosionRadius>6.9</explosionRadius>
 				<damageDef>TiberiumExplosionFrag</damageDef>
 				<damageOverride>75</damageOverride>
-				<postSpawnDef>Gas_Chemical</postSpawnDef>
+				<postSpawnDef>Gas_ChemicalInterface</postSpawnDef>
 				<postSpawnChance>0.25</postSpawnChance>
 			</explosionProps>
 		</li>

@@ -159,7 +159,7 @@ namespace TiberiumRim
             {
                 defaultLabel = "TR_CreateHarvestZoneProducer".Translate(),
                 defaultDesc = "TR_CreateHarvestZoneProducerDesc".Translate(),
-                icon = ContentFinder<Texture2D>.Get("UI/Icons/ZoneCreate_HarvestTiberium_Producer", true),
+                icon = TiberiumContent.ZoneCreate_HarvestTiberium_Producer,
                 targetingParams = RefineryTargetInfo.ForTiberiumProducers(),
                 action = delegate(LocalTargetInfo target)
                 {

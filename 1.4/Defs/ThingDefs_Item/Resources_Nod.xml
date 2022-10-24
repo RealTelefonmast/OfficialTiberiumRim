@@ -20,7 +20,7 @@
 			<Flammability>0.5</Flammability>
 			<DeteriorationRate>0</DeteriorationRate>
 		</statBases>
-		<smeltable>true</smeltable>
+		<smeltable>false</smeltable>
 		<intricate>true</intricate>
 		<thingCategories>
 			<li>Manufactured</li>

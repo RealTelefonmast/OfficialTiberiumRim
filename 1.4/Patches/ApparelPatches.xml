@@ -8,7 +8,7 @@
         <xpath>/Defs/ThingDef[defName="Apparel_ArmorHelmetRecon"]</xpath>
         <value>
 			<equippedStatOffsets>
-				<ToxicSensitivity>-0.5</ToxicSensitivity>
+				<ToxicResistance>0.5</ToxicResistance>
 				<TiberiumGasResistance>0.5</TiberiumGasResistance>
 				<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
 				<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
@@ -20,7 +20,7 @@
         <xpath>/Defs/ThingDef[defName="Apparel_ArmorRecon"]</xpath>
         <value>
 		<equippedStatOffsets>
-			<ToxicSensitivity>-0.1</ToxicSensitivity>
+			<ToxicResistance>0.1</ToxicResistance>
 			<TiberiumGasResistance>0.1</TiberiumGasResistance>
 			<TiberiumInfectionResistance>0.5</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.5</TiberiumRadiationResistance>
@@ -34,7 +34,7 @@
         <xpath>/Defs/ThingDef[defName="Apparel_PowerArmorHelmet"]</xpath>
         <value>
 		<equippedStatOffsets>
-		   	<ToxicSensitivity>-0.6</ToxicSensitivity>
+		   	<ToxicResistance>0.6</ToxicResistance>
 			<TiberiumGasResistance>0.6</TiberiumGasResistance>
 			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
@@ -46,7 +46,7 @@
         <xpath>/Defs/ThingDef[defName="Apparel_PowerArmor"]</xpath>
         <value>
 		<equippedStatOffsets>
-			<ToxicSensitivity>-0.1</ToxicSensitivity>
+			<ToxicResistance>0.1</ToxicResistance>
 			<TiberiumGasResistance>0.1</TiberiumGasResistance>
 			<TiberiumInfectionResistance>0.6</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.6</TiberiumRadiationResistance>
@@ -64,7 +64,7 @@
 				<li Class="PatchOperationAdd">
 					<xpath>/Defs/ThingDef[defName="Apparel_ArmorHelmetReconPrestige"]/equippedStatOffsets</xpath>
 					<value>
-						<ToxicSensitivity>-0.5</ToxicSensitivity>
+						<ToxicResistance>0.5</ToxicResistance>
 						<TiberiumGasResistance>0.5</TiberiumGasResistance>
 						<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
 						<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
@@ -73,7 +73,7 @@
 				<li Class="PatchOperationAdd">
 					<xpath>/Defs/ThingDef[defName="Apparel_ArmorReconPrestige"]/equippedStatOffsets</xpath>
 					<value>
-						<ToxicSensitivity>-0.1</ToxicSensitivity>
+						<ToxicResistance>0.1</ToxicResistance>
 						<TiberiumGasResistance>0.1</TiberiumGasResistance>
 						<TiberiumInfectionResistance>0.5</TiberiumInfectionResistance>
 						<TiberiumRadiationResistance>0.5</TiberiumRadiationResistance>
@@ -82,7 +82,7 @@
 				<li Class="PatchOperationAdd">
 					<xpath>/Defs/ThingDef[defName="Apparel_ArmorMarineHelmetPrestige"]/equippedStatOffsets</xpath>
 					<value>
-						<ToxicSensitivity>-0.6</ToxicSensitivity>
+						<ToxicResistance>0.6</ToxicResistance>
 						<TiberiumGasResistance>0.6</TiberiumGasResistance>
 						<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
 						<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
@@ -91,7 +91,7 @@
 				<li Class="PatchOperationAdd">
 					<xpath>/Defs/ThingDef[defName="Apparel_ArmorMarinePrestige"]/equippedStatOffsets</xpath>
 					<value>
-						<ToxicSensitivity>-0.1</ToxicSensitivity>
+						<ToxicResistance>0.1</ToxicResistance>
 						<TiberiumGasResistance>0.1</TiberiumGasResistance>
 						<TiberiumInfectionResistance>0.6</TiberiumInfectionResistance>
 						<TiberiumRadiationResistance>0.6</TiberiumRadiationResistance>
@@ -101,7 +101,7 @@
 					<xpath>/Defs/ThingDef[defName="Apparel_ArmorHelmetCataphract"]</xpath>
 					<value>
 						<equippedStatOffsets>
-							<ToxicSensitivity>-0.7</ToxicSensitivity>
+							<ToxicResistance>0.7</ToxicResistance>
 							<TiberiumGasResistance>0.7</TiberiumGasResistance>
 							<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
 							<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
@@ -112,7 +112,7 @@
 					<xpath>/Defs/ThingDef[defName="Apparel_ArmorCataphract"]</xpath>
 					<value>
 					<equippedStatOffsets>
-						<ToxicSensitivity>-0.1</ToxicSensitivity>
+						<ToxicResistance>0.1</ToxicResistance>
 						<TiberiumGasResistance>0.1</TiberiumGasResistance>
 						<TiberiumInfectionResistance>0.7</TiberiumInfectionResistance>
 						<TiberiumRadiationResistance>0.7</TiberiumRadiationResistance>
@@ -122,7 +122,7 @@
 				<li Class="PatchOperationAdd">
 					<xpath>/Defs/ThingDef[defName="Apparel_ArmorHelmetCataphractPrestige"]/equippedStatOffsets</xpath>
 					<value>
-						<ToxicSensitivity>-0.7</ToxicSensitivity>
+						<ToxicResistance>0.7</ToxicResistance>
 						<TiberiumGasResistance>0.7</TiberiumGasResistance>
 						<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
 						<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
@@ -131,7 +131,7 @@
 				<li Class="PatchOperationAdd">
 					<xpath>/Defs/ThingDef[defName="Apparel_ArmorCataphractPrestige"]/equippedStatOffsets</xpath>
 					<value>
-						<ToxicSensitivity>-0.1</ToxicSensitivity>
+						<ToxicResistance>0.1</ToxicResistance>
 						<TiberiumGasResistance>0.1</TiberiumGasResistance>
 						<TiberiumInfectionResistance>0.7</TiberiumInfectionResistance>
 						<TiberiumRadiationResistance>0.7</TiberiumRadiationResistance>
@@ -141,7 +141,7 @@
 					<xpath>/Defs/ThingDef[defName="Apparel_ArmorLocust"]</xpath>
 					<value>
 					<equippedStatOffsets>
-						<ToxicSensitivity>-0.1</ToxicSensitivity>
+						<ToxicResistance>0.1</ToxicResistance>
 						<TiberiumGasResistance>0.1</TiberiumGasResistance>
 						<TiberiumInfectionResistance>0.5</TiberiumInfectionResistance>
 						<TiberiumRadiationResistance>0.5</TiberiumRadiationResistance>
@@ -152,7 +152,7 @@
 					<xpath>/Defs/ThingDef[defName="Apparel_ArmorMarineGrenadier"]</xpath>
 					<value>
 					<equippedStatOffsets>
-						<ToxicSensitivity>-0.1</ToxicSensitivity>
+						<ToxicResistance>0.1</ToxicResistance>
 						<TiberiumGasResistance>0.1</TiberiumGasResistance>
 						<TiberiumInfectionResistance>0.6</TiberiumInfectionResistance>
 						<TiberiumRadiationResistance>0.6</TiberiumRadiationResistance>
@@ -162,7 +162,7 @@
 				<li Class="PatchOperationAdd">
 					<xpath>/Defs/ThingDef[defName="Apparel_ArmorCataphractPhoenix"]/equippedStatOffsets</xpath>
 					<value>
-						<ToxicSensitivity>-0.1</ToxicSensitivity>
+						<ToxicResistance>0.1</ToxicResistance>
 						<TiberiumGasResistance>0.1</TiberiumGasResistance>
 						<TiberiumInfectionResistance>0.7</TiberiumInfectionResistance>
 						<TiberiumRadiationResistance>0.7</TiberiumRadiationResistance>

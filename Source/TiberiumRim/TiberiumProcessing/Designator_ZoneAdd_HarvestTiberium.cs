@@ -20,7 +20,7 @@ namespace TiberiumRim
             this.zoneTypeToPlace = typeof(Zone_HarvestTiberium);
             this.defaultLabel = "TR_HarvestTiberiumZone".Translate();
             this.defaultDesc = "TR_HarvestTiberiumZoneDesc".Translate();
-            this.icon = ContentFinder<Texture2D>.Get("UI/Icons/ZoneCreate_HarvestTiberium", true);
+            this.icon = TiberiumContent.ZoneCreate_HarvestTiberium;
             this.hotKey = KeyBindingDefOf.Misc2;
         }
 

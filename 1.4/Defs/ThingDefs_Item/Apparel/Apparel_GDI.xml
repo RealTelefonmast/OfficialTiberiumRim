@@ -27,7 +27,7 @@
 			<EquipDelay>2</EquipDelay>
 		</statBases>
 		<equippedStatOffsets>
-			<ToxicSensitivity>-0.6</ToxicSensitivity>
+			<ToxicResistance>0.6</ToxicResistance>
 			<TiberiumGasResistance>0.6</TiberiumGasResistance>
 			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
@@ -114,7 +114,7 @@
 		</statBases>
 		<equippedStatOffsets>
 			<Flammability>-0.2</Flammability>
-			<ToxicSensitivity>-0.1</ToxicSensitivity>
+			<ToxicResistance>0.1</ToxicResistance>
 			<TiberiumGasResistance>0.1</TiberiumGasResistance>
 			<TiberiumInfectionResistance>0.6</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.6</TiberiumRadiationResistance>
@@ -180,7 +180,7 @@
 		</statBases>
 		<equippedStatOffsets>
 			<SocialImpact>0.1</SocialImpact>
-			<ToxicSensitivity>-0.6</ToxicSensitivity>
+			<ToxicResistance>0.6</ToxicResistance>
 			<TiberiumGasResistance>0.6</TiberiumGasResistance>
 			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
@@ -247,7 +247,7 @@
 		</statBases>
 		<equippedStatOffsets>
 			<SocialImpact>0.15</SocialImpact>
-			<ToxicSensitivity>-0.1</ToxicSensitivity>
+			<ToxicResistance>0.1</ToxicResistance>
 			<TiberiumGasResistance>0.1</TiberiumGasResistance>
 			<TiberiumInfectionResistance>0.4</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.4</TiberiumRadiationResistance>
@@ -315,7 +315,7 @@
 			<ShootingAccuracyPawn>-0.5</ShootingAccuracyPawn>
 			<GlobalLearningFactor>0.5</GlobalLearningFactor>
 			<ResearchSpeed>0.25</ResearchSpeed>
-			<ToxicSensitivity>-0.6</ToxicSensitivity>
+			<ToxicResistance>0.6</ToxicResistance>
 			<TiberiumGasResistance>0.6</TiberiumGasResistance>
 			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
@@ -383,7 +383,7 @@
 			<ShootingAccuracyPawn>-0.25</ShootingAccuracyPawn>
 			<WorkSpeedGlobal>1</WorkSpeedGlobal>
 			<ConstructionSpeed>1</ConstructionSpeed>
-			<ToxicSensitivity>-0.1</ToxicSensitivity>
+			<ToxicResistance>0.1</ToxicResistance>
 			<TiberiumGasResistance>0.1</TiberiumGasResistance>
 			<TiberiumInfectionResistance>0.4</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.4</TiberiumRadiationResistance>
@@ -485,7 +485,7 @@
 		</statBases>
 		<equippedStatOffsets>
 			<ShootingAccuracyPawn>0.1</ShootingAccuracyPawn>
-			<ToxicSensitivity>-0.9</ToxicSensitivity>
+			<ToxicResistance>0.9</ToxicResistance>
 			<TiberiumGasResistance>0.9</TiberiumGasResistance>
 			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
@@ -552,7 +552,7 @@
 		<equippedStatOffsets>
 			<Flammability>-0.6</Flammability>
 			<ExtraCarryWeight>150</ExtraCarryWeight>
-			<ToxicSensitivity>-0.1</ToxicSensitivity>
+			<ToxicResistance>0.1</ToxicResistance>
 			<TiberiumGasResistance>0.1</TiberiumGasResistance>
 			<TiberiumInfectionResistance>0.9</TiberiumInfectionResistance>
 			<TiberiumRadiationResistance>0.9</TiberiumRadiationResistance>

@@ -292,6 +292,9 @@ namespace TiberiumRim
         public static readonly Texture2D HarvesterNearest = ContentFinder<Texture2D>.Get("UI/Icons/Harvester/Nearest", true);
         public static readonly Texture2D HarvesterMoss = ContentFinder<Texture2D>.Get("UI/Icons/Harvester/Moss", true);
 
+        public static readonly Texture ZoneCreate_HarvestTiberium = ContentFinder<Texture2D>.Get("UI/Icons/Zones/ZoneCreate_HarvestTiberium", true);
+        public static readonly Texture ZoneCreate_HarvestTiberium_Producer = ContentFinder<Texture2D>.Get("UI/Icons/Zones/ZoneCreate_HarvestTiberium_Producer", true);
+
         //----SuperWeapon
         public static readonly Texture2D NodNukeIcon = ContentFinder<Texture2D>.Get("UI/Icons/SuperWeapon/Launch_Nuke", true);
         public static readonly Texture2D IonCannonIcon = ContentFinder<Texture2D>.Get("UI/Icons/SuperWeapon/Launch_IonCannon", true);
@@ -360,6 +363,5 @@ namespace TiberiumRim
         public static readonly Material IonLightningMat = MaterialPool.MatFrom("VisualFX/LightningBoltIon", ShaderDatabase.MoteGlow);
 
         public static readonly Material ForcedTargetLineMat = MaterialPool.MatFrom(GenDraw.LineTexPath, ShaderDatabase.Transparent, new Color(1f, 0.5f, 0.5f));
-
     }
 }

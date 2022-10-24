@@ -28,7 +28,7 @@ namespace TiberiumRim
         public MapPawnInfo MapPawnInfo => map.GetMapInfo<MapPawnInfo>(); // Currently infected pawns, animals, colonists, visitors, etc
         public DangerMapInfo DangerInfo => map.GetMapInfo<DangerMapInfo>();
         public GeneralDataMapInfo GeneralDataInfo => map.GetMapInfo<GeneralDataMapInfo>();
-        public TiberiumTerrainInfo TerrainInfo => map.GetMapInfo<TiberiumTerrainInfo>();
+        public TRTerrainInfo TerrainInfo => map.GetMapInfo<TRTerrainInfo>();
 
         // Artificial
         public SuppressionMapInfo SuppressionInfo => map.GetMapInfo<SuppressionMapInfo>();
@@ -63,14 +63,11 @@ namespace TiberiumRim
             base.ExposeData();
         }
 
-        [TweakValue("MapComponent_TibDrawBool", 0f, 100f)]
-        public static bool DrawBool = false;
-
-        [TweakValue("MapComponent_TibHediffBool", 0f, 100f)]
+        [TweakValue("[TR]HediffBool", 0f, 100f)]
         public static bool HediffBool = false;
 
 
-        [TweakValue("MapComponent_TibHarvesterBool", 0f, 100f)]
+        [TweakValue("[TR]HarvesterBool", 0f, 100f)]
         public static bool HarvesterBool = false;
 
 

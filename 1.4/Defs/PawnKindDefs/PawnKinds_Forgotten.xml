@@ -4,7 +4,6 @@
   <PawnKindDef ParentName="MercenaryBase" Name="ForgottenBase" Abstract="True">
     <defaultFactionType>Forgotten</defaultFactionType>
     <backstoryCryptosleepCommonality>0.08</backstoryCryptosleepCommonality>
-    <baseRecruitDifficulty>0.6</baseRecruitDifficulty>
 	<gearHealthRange>0.4~1.2</gearHealthRange>
     <initialWillRange>1~2</initialWillRange>
     <initialResistanceRange>5~10</initialResistanceRange>

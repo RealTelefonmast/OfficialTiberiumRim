@@ -1,23 +1,84 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<!--this is not a fleck-->
-	<!--
+
+	<ThingDef>
+		<defName>Gas_ChemicalInterface</defName>
+		<label>n/a</label>
+		<thingClass>TAE.GasInterfaceThing</thingClass>
+		<modExtensions>
+			<li Class="TAE.GasInterface">
+				<gasType>Gas_Chemical</gasType>
+				<startingValue>100</startingValue>
+			</li>
+		</modExtensions>
+	</ThingDef>
+	
+	<ThingDef>
+		<defName>TiberiumGas</defName>
+		<label>n/a</label>
+		<thingClass>TAE.GasInterfaceThing</thingClass>
+		<modExtensions>
+			<li Class="TAE.GasInterface">
+				<gasType>TiberiumGas</gasType>
+				<startingValue>100</startingValue>
+			</li>
+		</modExtensions>
+	</ThingDef>
+	
+	<ThingDef>
+		<defName>TiberiumPollution</defName>
+		<label>n/a</label>
+		<thingClass>TAE.GasInterfaceThing</thingClass>
+		<modExtensions>
+			<li Class="TAE.GasInterface">
+				<gasType>TiberiumPollution</gasType>
+				<startingValue>100</startingValue>
+			</li>
+		</modExtensions>
+	</ThingDef>
+	
 	<TAE.SpreadingGasTypeDef>
 		<defName>Gas_Chemical</defName>
-		<label>tiberium gas</label>
+		<label>chemical gas</label>
 		
-		<texPath>VisualFX/Natural/TiberiumGas/TiberiumGas</texPath>
-		<shaderType>MoteGlow</shaderType>
 		<colorMin>(0,0,0)</colorMin>
 		<colorMax>(1,1,1,1)</colorMax>
 		
 		<maxDensityPerCell>100</maxDensityPerCell>
-		<expireSeconds>30~60</expireSeconds>
-		<rotationSpeed>10~20</rotationSpeed>
+		<rotationSpeeds>10~20</rotationSpeeds>
 		<blockTurretTracking>true</blockTurretTracking>
 		<accuracyPenalty>0.3</accuracyPenalty>
 	</TAE.SpreadingGasTypeDef>
+
+	<TAE.SpreadingGasTypeDef>
+		<defName>TiberiumGas</defName>
+		<label>tiberium gas</label>
+		
+		<colorMin>(0,0,0)</colorMin>
+		<colorMax>(15,255,55,90)</colorMax>
+		
+		<maxDensityPerCell>256</maxDensityPerCell>
+		<rotationSpeeds>10~20</rotationSpeeds>
+		<blockTurretTracking>true</blockTurretTracking>
+		<accuracyPenalty>0.6</accuracyPenalty>
+	</TAE.SpreadingGasTypeDef>
 	
+	<TAE.SpreadingGasTypeDef>
+		<defName>TiberiumPollution</defName>
+		<label>tiberium pollution</label>
+		<colorMin>(0.25,0.5,0)</colorMin>
+		<colorMax>(0,1,0.35)</colorMax>
+		
+		<maxDensityPerCell>1000</maxDensityPerCell>
+		<minSpreadDensity>100</minSpreadDensity>
+		<dissipateTo>TibPollution</dissipateTo>
+		
+		<rotationSpeeds>5~10</rotationSpeeds>
+		<blockTurretTracking>true</blockTurretTracking>
+		<accuracyPenalty>0.8</accuracyPenalty>
+	</TAE.SpreadingGasTypeDef>
+	
+	<!--
 	<TAE.SpreadingGasTypeDef>
 		<defName>Gas_Shockwave</defName>
 		<label>afterchock</label>

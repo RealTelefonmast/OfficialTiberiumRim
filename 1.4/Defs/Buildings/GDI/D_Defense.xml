@@ -110,8 +110,7 @@
 				<groupDef>GDI</groupDef>
 				<category>Defense</category>
 			</li>
-			<li Class="TeleCore.TeleDefExtension">
-			<turret>
+			<li Class="TeleCore.TurretDefExtension">
 				<turrets>
 					<li>
 						<turretTop>
@@ -157,7 +156,6 @@
 						<turretBurstCooldownTime>25</turretBurstCooldownTime>
 					</li>
 				</turrets>
-			</turret>
 			</li>
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
@@ -262,8 +260,7 @@
 				<groupDef>GDI</groupDef>
 				<category>Defense</category>
 			</li>
-			<li Class="TeleCore.TeleDefExtension">
-			<turret>
+			<li Class="TeleCore.TurretDefExtension">
 				<turrets>
 					<li>
 						<turretTop>
@@ -302,7 +299,6 @@
 						<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
 					</li>
 				</turrets>
-			</turret>
 			</li>
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
@@ -408,36 +404,34 @@
 				<groupDef>GDI</groupDef>
 				<category>Defense</category>
 			</li>
-			<li Class="TeleCore.TeleDefExtension">
-				<turret>
-					<turrets>
-						<li>
-							<canForceTarget>true</canForceTarget>
-							<turretTop>
-								<topGraphic>
-									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<drawSize>(3.5,3.5)</drawSize>
-								</topGraphic>
-								<barrels>
-									<li>
-										<graphic>
-											<texPath>Buildings/GDI/Defense/Turrets/Guardian_Standard</texPath>
-											<graphicClass>Graphic_Single</graphicClass>
-											<drawSize>(3.5,3.5)</drawSize>
-										</graphic>
-										<altitudeOffset>-0.1</altitudeOffset>
-										<recoilOffset>(0,0,-0.25)</recoilOffset>
-									</li>
-								</barrels>
-								<aimSpeed>60</aimSpeed>
-							</turretTop>
-							<turretGunDef>Gun_Guardian</turretGunDef>
-							<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
-							<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
-						</li>
-					</turrets>
-				</turret>
+			<li Class="TeleCore.TurretDefExtension">
+				<turrets>
+					<li>
+						<canForceTarget>true</canForceTarget>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(3.5,3.5)</drawSize>
+							</topGraphic>
+							<barrels>
+								<li>
+									<graphic>
+										<texPath>Buildings/GDI/Defense/Turrets/Guardian_Standard</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(3.5,3.5)</drawSize>
+									</graphic>
+									<altitudeOffset>-0.1</altitudeOffset>
+									<recoilOffset>(0,0,-0.25)</recoilOffset>
+								</li>
+							</barrels>
+							<aimSpeed>60</aimSpeed>
+						</turretTop>
+						<turretGunDef>Gun_Guardian</turretGunDef>
+						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+						<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+					</li>
+				</turrets>
 			</li>
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
@@ -569,25 +563,23 @@
 				<groupDef>GDI</groupDef>
 				<category>Defense</category>
 			</li>
-			<li Class="TeleCore.TeleDefExtension">
-				<turret>
-					<turrets>
-						<li>
-							<canForceTarget>true</canForceTarget>
-							<turretTop>
-								<topGraphic>
-									<texPath>Buildings/GDI/Defense/SonicEmitter/Turret</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<drawSize>(3,3)</drawSize>
-								</topGraphic>
-								<aimSpeed>40</aimSpeed>
-							</turretTop>
-							<turretGunDef>Gun_SonicEmitter</turretGunDef>
-							<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
-							<turretBurstCooldownTime>5</turretBurstCooldownTime>
-						</li>
-					</turrets>
-				</turret>
+			<li Class="TeleCore.TurretDefExtension">
+				<turrets>
+					<li>
+						<canForceTarget>true</canForceTarget>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/GDI/Defense/SonicEmitter/Turret</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(3,3)</drawSize>
+							</topGraphic>
+							<aimSpeed>40</aimSpeed>
+						</turretTop>
+						<turretGunDef>Gun_SonicEmitter</turretGunDef>
+						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+						<turretBurstCooldownTime>5</turretBurstCooldownTime>
+					</li>
+				</turrets>
 			</li>
 		</modExtensions>
 	</TiberiumRim.TRThingDef >
@@ -668,92 +660,90 @@
 				<groupDef>GDI</groupDef>
 				<category>Defense</category>
 			</li>
-			<li Class="TeleCore.TeleDefExtension">
-				<turret>
-					<turrets>
-						<li>
-							<canForceTarget>false</canForceTarget>
-							<turretTop>
-								<topGraphic>
-									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<drawSize>(2.5,2.5)</drawSize>
-								</topGraphic>
-								<barrels>
-									<li>
-										<graphic>
-											<texPath>Buildings/GDI/Defense/Turrets/Guardian_Railgun</texPath>
-											<graphicClass>Graphic_Single</graphicClass>
-											<drawSize>(2.5,2.5)</drawSize>
-										</graphic>
-										<altitudeOffset>-0.1</altitudeOffset>
-										<recoilOffset>(0,0,-0.5)</recoilOffset>
-									</li>
-								</barrels>
-								<aimSpeed>60</aimSpeed>
-								<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
-							</turretTop>
-							<drawOffset>(0,0,0)</drawOffset>
-							<turretGunDef>Gun_MissilePod</turretGunDef>
-							<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
-							<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
-						</li>
-						<li>
-							<canForceTarget>true</canForceTarget>
-							<turretTop>
-								<topGraphic>
-									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<drawSize>(5,5)</drawSize>
-								</topGraphic>
-								<barrels>
-									<li>
-										<graphic>
-											<texPath>Buildings/GDI/Defense/Turrets/Guardian_Railgun</texPath>
-											<graphicClass>Graphic_Single</graphicClass>
-											<drawSize>(5,5)</drawSize>
-										</graphic>
-										<altitudeOffset>-0.1</altitudeOffset>
-										<recoilOffset>(0,0,-0.5)</recoilOffset>
-									</li>
-								</barrels>
-								<aimSpeed>60</aimSpeed>
-								<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
-							</turretTop>
-							<drawOffset>(-2.75,0,0)</drawOffset>
-							<turretGunDef>Gun_Guardian_Railgun</turretGunDef>
-							<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
-							<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
-						</li>
-						<li>
-							<canForceTarget>true</canForceTarget>
-							<turretTop>
-								<topGraphic>
-									<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<drawSize>(5,5)</drawSize>
-								</topGraphic>
-								<barrels>
-									<li>
-										<graphic>
-											<texPath>Buildings/GDI/Defense/Turrets/Guardian_Standard</texPath>
-											<graphicClass>Graphic_Single</graphicClass>
-											<drawSize>(5,5)</drawSize>
-										</graphic>
-										<altitudeOffset>-0.1</altitudeOffset>
-										<recoilOffset>(0,0,-0.5)</recoilOffset>
-									</li>
-								</barrels>
-								<aimSpeed>60</aimSpeed>
-								<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
-							</turretTop>
-							<drawOffset>(2.5,0,0)</drawOffset>
-							<turretGunDef>Gun_Guardian</turretGunDef>
-							<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
-							<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
-						</li>
-					</turrets>
-				</turret>
+			<li Class="TeleCore.TurretDefExtension">
+				<turrets>
+					<li>
+						<canForceTarget>false</canForceTarget>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(2.5,2.5)</drawSize>
+							</topGraphic>
+							<barrels>
+								<li>
+									<graphic>
+										<texPath>Buildings/GDI/Defense/Turrets/Guardian_Railgun</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(2.5,2.5)</drawSize>
+									</graphic>
+									<altitudeOffset>-0.1</altitudeOffset>
+									<recoilOffset>(0,0,-0.5)</recoilOffset>
+								</li>
+							</barrels>
+							<aimSpeed>60</aimSpeed>
+							<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
+						</turretTop>
+						<drawOffset>(0,0,0)</drawOffset>
+						<turretGunDef>Gun_MissilePod</turretGunDef>
+						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+						<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+					</li>
+					<li>
+						<canForceTarget>true</canForceTarget>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(5,5)</drawSize>
+							</topGraphic>
+							<barrels>
+								<li>
+									<graphic>
+										<texPath>Buildings/GDI/Defense/Turrets/Guardian_Railgun</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(5,5)</drawSize>
+									</graphic>
+									<altitudeOffset>-0.1</altitudeOffset>
+									<recoilOffset>(0,0,-0.5)</recoilOffset>
+								</li>
+							</barrels>
+							<aimSpeed>60</aimSpeed>
+							<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
+						</turretTop>
+						<drawOffset>(-2.75,0,0)</drawOffset>
+						<turretGunDef>Gun_Guardian_Railgun</turretGunDef>
+						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+						<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+					</li>
+					<li>
+						<canForceTarget>true</canForceTarget>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(5,5)</drawSize>
+							</topGraphic>
+							<barrels>
+								<li>
+									<graphic>
+										<texPath>Buildings/GDI/Defense/Turrets/Guardian_Standard</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(5,5)</drawSize>
+									</graphic>
+									<altitudeOffset>-0.1</altitudeOffset>
+									<recoilOffset>(0,0,-0.5)</recoilOffset>
+								</li>
+							</barrels>
+							<aimSpeed>60</aimSpeed>
+							<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
+						</turretTop>
+						<drawOffset>(2.5,0,0)</drawOffset>
+						<turretGunDef>Gun_Guardian</turretGunDef>
+						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+						<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+					</li>
+				</turrets>
 			</li>
 		</modExtensions>
 	</TiberiumRim.TRThingDef>

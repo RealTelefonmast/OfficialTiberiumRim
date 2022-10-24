@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TeleCore.SubMenuDesignator>
+	<TeleCore.SubMenuDesignationCategoryDef>
 		<defName>TiberiumMenuDesignator</defName>
-		<label>build menu</label>
+		<label>TiberiumRim</label>
 		<order>1</order>
 		<menuDef>TiberiumMenu</menuDef>
-	</TeleCore.SubMenuDesignator>
+	</TeleCore.SubMenuDesignationCategoryDef>
 	
 	<TeleCore.SubBuildMenuDef>
 		<defName>TiberiumMenu</defName>
@@ -21,7 +21,6 @@
 		<superPackPath>UI/Menu/Faction/Common</superPackPath>
 	</TeleCore.SubBuildMenuDef>
 	
-	
 	<TeleCore.SubMenuGroupDef Abstract="True" Name="SubThingGroupBase">
 		<subCategories>
 			<li>Structure</li>
@@ -35,6 +34,9 @@
 	
 	<TeleCore.SubMenuGroupDef ParentName="SubThingGroupBase">
 		<defName>Common</defName>
+		<subCategories Inherit="True">
+			<li>Pollution</li>
+		</subCategories>
 		<groupIconPath>UI/Icons/Factions/Common</groupIconPath>
 	</TeleCore.SubMenuGroupDef>
 	
@@ -65,7 +67,7 @@
 		<defName>Tiberium</defName>
 		<groupIconPath>UI/Icons/PlaySettings/RadiationOverlay</groupIconPath>
 		<subPackPath>UI/Menu/Faction/Common</subPackPath>
-		<subCategories>
+		<subCategories Inherit="False">
 			<li>Producers</li>
 			<li>Crystals</li>
 			<li>Misc</li>

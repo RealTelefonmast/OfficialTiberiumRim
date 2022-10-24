@@ -2,8 +2,8 @@
 <Defs>
 
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
-		<defName>AtmosphericPump</defName>
-		<label>Atmospheric Pump</label>
+		<defName>AtmosphericPumpTwo</defName>
+		<label>Atmospheric Pump 2</label>
 		<description>.</description>
 		<thingCategories Inherit="false" />
 		<altitudeLayer>Building</altitudeLayer>
@@ -94,7 +94,7 @@
 			</li>
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
-
+	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>PollutionFilter</defName>
 		<label>pollution filter</label>
@@ -201,7 +201,7 @@
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
-		<defName>AtmosphericVentIn</defName>
+		<defName>AtmosphericVentInTwo</defName>
 		<label>pollution vent (intake)</label>
 		<description>.</description>
 		<thingCategories Inherit="false" />
@@ -245,9 +245,9 @@
 						</handledValues>
 					</li>
 				</networks>
-				<workingDefs>	
+				<acceptedAtmospheres>	
 					<li>TibPollution</li>					
-				</workingDefs>
+				</acceptedAtmospheres>
 				<generalIOPattern>+</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
@@ -303,7 +303,7 @@
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
-		<defName>AtmosphericVentOut</defName>
+		<defName>AtmosphericVentOutTwo</defName>
 		<label>pollution vent (out)</label>
 		<description>.</description>
 		<thingCategories Inherit="false" />
@@ -346,9 +346,9 @@
 						</handledValues>
 					</li>
 				</networks>
-				<workingDefs>	
+				<acceptedAtmospheres>	
 					<li>TibPollution</li>					
-				</workingDefs>
+				</acceptedAtmospheres>
 				<generalIOPattern>+</generalIOPattern>
 			</li>
 			<li Class="CompProperties_Power">

@@ -54,11 +54,17 @@ namespace TiberiumRim
             }
         }
 
+        [TweakValue("[TR]FloraInfo", 0f, 100f)]
+        public static bool DrawBool = false;
+        
         public override void Update()
         {
-            floraGrid.drawer.RegenerateMesh();
-            floraGrid.drawer.MarkForDraw();
-            floraGrid.drawer.CellBoolDrawerUpdate();
+            if (DrawBool)
+            {
+                floraGrid.drawer.RegenerateMesh();
+                floraGrid.drawer.MarkForDraw();
+                floraGrid.drawer.CellBoolDrawerUpdate();
+            }
         }
 
         public void RegisterTiberiumPlant(TiberiumPlant plant)

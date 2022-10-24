@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<ThingDef ParentName="MoteBase">
+		<defName>Mote_ShockWaveShellExplosion</defName>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.25</fadeInTime>
+			<solidTime>0.55</solidTime>
+			<fadeOutTime>1.65</fadeOutTime>
+			<growthRate>0.07</growthRate>
+			<collide>true</collide>
+			<speedPerTime>-0.12</speedPerTime>
+		</mote>
+		<graphicData>
+			<texPath>VisualFX/SoundVortex</texPath>
+		</graphicData>
+	</ThingDef>
+
+	<EffecterDef>
+		<defName>ShockWaveShellEffect</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<positionRadius>0.2</positionRadius>
+				<moteDef>Mote_ShockWaveShellExplosion</moteDef>
+				<burstCount>10~15</burstCount>
+				<speed>4.8~8.4</speed>
+				<scale>4~5</scale>
+			</li>
+		</children>
+	</EffecterDef>
+
+</Defs>
