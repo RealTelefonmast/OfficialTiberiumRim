@@ -10,13 +10,9 @@ namespace TiberiumRim
     {
         private float chargeAmount = 0;
 
-        public float ObeliskCharge
-        {
-            get
-            {
-                return Mathf.InverseLerp(0, MainGun.Props.turretBurstWarmupTime.SecondsToTicks(), chargeAmount);
-            }
-        }
+        private float ObeliskCharge =>
+            Mathf.SmoothStep(0, 1,
+                Mathf.InverseLerp(0, MainGun.Props.turretBurstWarmupTime.SecondsToTicks(), chargeAmount));
 
         public override LocalTargetInfo CurrentTarget => MainGun.CurrentTarget;
 

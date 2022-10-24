@@ -123,6 +123,13 @@
 		<neverOverlapFloors>true</neverOverlapFloors>
 		<blockPlants>true</blockPlants>	
 		<drawDamagedOverlay>false</drawDamagedOverlay>
+		<modExtensions Inherit="False">
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Tiberium</groupDef>
+				<category>Producers</category>
+				<isDevOption>true</isDevOption>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<!---->

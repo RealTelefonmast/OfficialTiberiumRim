@@ -72,6 +72,7 @@
 			<li>Crystals</li>
 			<li>Misc</li>
 		</subCategories>
+		<isDevGroup>true</isDevGroup>
 	</TeleCore.SubMenuGroupDef>
 	
 	<!-- Categories -->
