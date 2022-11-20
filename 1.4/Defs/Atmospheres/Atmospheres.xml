@@ -13,8 +13,10 @@
 		<defName>TibPollution</defName>
 		<label>pollution</label>
 		<labelShort>tib</labelShort>
-		<viscosity>0.5</viscosity>
+		<atmosphericTag>Air</atmosphericTag>
 		<networkValue>TibPollution</networkValue>
+		<viscosity>8</viscosity>
+		<maxSaturation>2</maxSaturation>
 		<valueColor>(38,127,4)</valueColor>
 	</TAE.AtmosphericDef>
 	

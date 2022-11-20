@@ -31,4 +31,53 @@
 		</children>
 	</EffecterDef>
 
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>Beam_EndGlow</defName>
+		<altitudeLayer>LightingOverlay</altitudeLayer>
+		<fadeInTime>0.02</fadeInTime>
+		<solidTime>0.125</solidTime>
+		<fadeOutTime>0.05</fadeOutTime>
+		<graphicData>
+			<graphicClass>Graphic_Fleck</graphicClass>
+			<texPath>VisualFX/Beam_EndGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<drawSize>2</drawSize>
+		</graphicData>
+	</FleckDef>
+
+	<EffecterDef>
+		<defName>AnyBeam_End</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+				<fleckDef>Smoke</fleckDef>
+				<chancePerTick>0.4</chancePerTick>
+				<scale>0.6~1.1</scale>
+				<spawnLocType>OnSource</spawnLocType>
+				<absoluteAngle>true</absoluteAngle>
+				<angle>30~70</angle>
+				<speed>0.2~0.35</speed>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+				<positionRadius>0.1</positionRadius>
+				<moteDef>Mote_SparkThrownFast</moteDef>
+				<spawnLocType>OnSource</spawnLocType>
+				<chancePerTick>0.9</chancePerTick>
+				<speed>3.3~5</speed>
+				<scale>0.1~0.2</scale>
+				<angle>88~104</angle>
+			<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+				<positionRadius>0.1</positionRadius>
+				<spawnLocType>OnSource</spawnLocType>
+				<fleckDef>Beam_EndGlow</fleckDef>
+				<chancePerTick>0.5</chancePerTick>
+				<scale>0.8</scale>
+			</li>
+		</children>
+	</EffecterDef>
+
 </Defs>

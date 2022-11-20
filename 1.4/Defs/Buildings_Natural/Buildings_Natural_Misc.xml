@@ -1,59 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<!-- Visceral Stuff -->
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
-		<defName>VisceralPod</defName>
-		<label>visceral pod</label>
-		<thingClass>TiberiumRim.VisceralPod</thingClass>
-		<tickerType>Normal</tickerType>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<graphicData>
-			<texPath>Buildings/Natural/VisceralPod/Base</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
-			<drawSize>(3,3)</drawSize>
-		</graphicData>
-		<inspectorTabs>
-			<li>TiberiumRim.ITab_ContainedPawn_Health</li>
-		</inspectorTabs>
-		<statBases>
-			<MaxHitPoints>300</MaxHitPoints>
-			<Beauty>-130</Beauty>
-			<Flammability>0</Flammability>
-		</statBases>
-		<comps>
-			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
-					<li>
-						<data>
-							<texPath>Buildings/Natural/VisceralPod/Overlay</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>Transparent</shaderType>
-							<drawSize>(3,3)</drawSize>
-						</data>
-					</li>
-					<li>
-						<data>
-							<texPath>Buildings/Natural/VisceralPod/FX</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>MoteGlow</shaderType>
-							<drawSize>(3,3)</drawSize>
-						</data>
-						<mode>Dynamic</mode>
-						<fade>
-							<opacityRange>0.4~0.9</opacityRange>
-							<opacityDuration>90</opacityDuration>
-						</fade>
-					</li>
-				</overlays>
-			</li>
-		</comps>
-		<altitudeLayer>Building</altitudeLayer>
-		<rotatable>false</rotatable>
-		<size>(1,1)</size>
-		<blockPlants>true</blockPlants>
-	</TiberiumRim.TRThingDef>	
-	
 	<!-- Veinhole -->
 	<ThingDef ParentName="EtherealThingBase">
 		<defName>VeinholeTunnel</defName>

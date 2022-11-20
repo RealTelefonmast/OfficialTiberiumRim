@@ -130,7 +130,7 @@ namespace TiberiumRim
             CompFX.Overlays[4].PropertyBlock.SetFloat("_BlendValue", BlendValue);
         }
 
-        public override void NetworkPostTick(bool isPowered)
+        public override void NetworkPostTick(NetworkSubPart networkSubPart, bool isPowered)
         {
             StartOrSustainCentrifuge(isPowered);
             if (!isPowered) return;

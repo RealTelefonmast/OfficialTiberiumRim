@@ -27,9 +27,9 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(0, 0, 1)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_ShockDisc</defaultProjectile>
 				<warmupTime>2.25</warmupTime>
@@ -73,18 +73,15 @@
 				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaserC</damageDef>
-					<damageBase>12</damageBase>
-					<stoppingPower>0.1</stoppingPower>
-					<armorPenetration>0.1</armorPenetration>
-					<beamTexturePath>Items/Weapons/Projectile/Bullet_BeamScrin</beamTexturePath>
-					<fadeInTime>0.05</fadeInTime>
-					<solidTime>0.05</solidTime>
-					<fadeOutTime>0.2</fadeOutTime>
+					<isStatic>true</isStatic>
+					<damageBaseOverride>12</damageBaseOverride>
+					<stoppingPowerOverride>0.1</stoppingPowerOverride>
+					<armorPenetrationOverride>0.1</armorPenetrationOverride>
 					<impactEffecter>ScrinBeamHit</impactEffecter>
 				</beamProps>
-				<originOffsets>	
+				<originOffsetPerShot>	
 					<li>(0, 0, -0.5)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>0.5</warmupTime>
 				<range>5.9</range>
@@ -94,6 +91,25 @@
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
 				<muzzleFlashScale>3</muzzleFlashScale>
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				
+				<!--<soundCastBeam></soundCastBeam>-->
+				<beamWidth>0.5</beamWidth>
+				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+				<beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
+				<beamFleckChancePerTick>1</beamFleckChancePerTick>
+				<beamMaxDeviation>0</beamMaxDeviation>
+				<beamCurvature>0</beamCurvature>
+				<beamMoteDef>Mote_ScrinGunBeam</beamMoteDef>
+				<beamChanceToStartFire>0.85</beamChanceToStartFire>
+				<beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+				<beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+				<beamStartOffset>0.15</beamStartOffset>
+				<beamLineFleckChanceCurve>
+					<points>
+						<li>(0, 1)</li>
+						<li>(1, 1)</li>
+					</points>
+				</beamLineFleckChanceCurve>
 			</li>
 		</verbs>
 	</TiberiumRim.TRThingDef>
@@ -129,23 +145,20 @@
 				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaserC</damageDef>
-					<damageBase>18</damageBase>
-					<stoppingPower>0.2</stoppingPower>
-					<armorPenetration>0.2</armorPenetration>
-					<beamTexturePath>Items/Weapons/Projectile/Bullet_BeamScrinMiddle</beamTexturePath>
-					<fadeInTime>0.05</fadeInTime>
-					<solidTime>0.05</solidTime>
-					<fadeOutTime>0.5</fadeOutTime>
+					<isStatic>true</isStatic>
+					<damageBaseOverride>18</damageBaseOverride>
+					<stoppingPowerOverride>0.2</stoppingPowerOverride>
+					<armorPenetrationOverride>0.2</armorPenetrationOverride>
 					<impactEffecter>StrongScrinBeamHit</impactEffecter>
 				</beamProps>
-				<originOffsets>	
+				<originOffsetPerShot>	
 					<li>(0.45,-1,-0.1)</li>
 					<li>(-0.5,-1,-0.6)</li>
 					<li>(0.45,-1,-1.1)</li>
 					<li>(-0.45,-1,-0.1)</li>
 					<li>(0.5,-1,-0.6)</li>
 					<li>(-0.45,-1,-1.1)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>2.5</warmupTime>
 				<range>19.9</range>
@@ -155,6 +168,25 @@
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
 				<muzzleFlashScale>10</muzzleFlashScale>
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				
+				<!--<soundCastBeam></soundCastBeam>-->
+				<beamWidth>0.5</beamWidth>
+				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+				<beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
+				<beamFleckChancePerTick>1</beamFleckChancePerTick>
+				<beamMaxDeviation>0</beamMaxDeviation>
+				<beamCurvature>0</beamCurvature>
+				<beamMoteDef>Mote_ScrinGunStrongBeam</beamMoteDef>
+				<beamChanceToStartFire>0.85</beamChanceToStartFire>
+				<beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+				<beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+				<beamStartOffset>0.15</beamStartOffset>
+				<beamLineFleckChanceCurve>
+					<points>
+						<li>(0, 1)</li>
+						<li>(1, 1)</li>
+					</points>
+				</beamLineFleckChanceCurve>
 			</li>
 		</verbs>
 	</TiberiumRim.TRThingDef>
@@ -189,18 +221,15 @@
 				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaserC</damageDef>
-					<damageBase>45</damageBase>
-					<stoppingPower>0.5</stoppingPower>
-					<armorPenetration>0.5</armorPenetration>
-					<beamTexturePath>Items/Weapons/Projectile/Bullet_BeamScrinBig</beamTexturePath>
-					<fadeInTime>0.05</fadeInTime>
-					<solidTime>0.1</solidTime>
-					<fadeOutTime>0.6</fadeOutTime>
+					<isStatic>true</isStatic>
+					<damageBaseOverride>45</damageBaseOverride>
+					<stoppingPowerOverride>0.5</stoppingPowerOverride>
+					<armorPenetrationOverride>0.5</armorPenetrationOverride>
 					<impactEffecter>StrongScrinBeamHit</impactEffecter>
 				</beamProps>
-				<originOffsets>	
+				<originOffsetPerShot>	
 					<li>(0, 0, -0.1)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>3</warmupTime>
 				<range>49.9</range>
@@ -210,6 +239,25 @@
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
 				<muzzleFlashScale>10</muzzleFlashScale>
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				
+				<!--<soundCastBeam></soundCastBeam>-->
+				<beamWidth>0.5</beamWidth>
+				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+				<beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
+				<beamFleckChancePerTick>1</beamFleckChancePerTick>
+				<beamMaxDeviation>0</beamMaxDeviation>
+				<beamCurvature>0</beamCurvature>
+				<beamMoteDef>Mote_ScrinLanceBeam</beamMoteDef>
+				<beamChanceToStartFire>0.85</beamChanceToStartFire>
+				<beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+				<beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+				<beamStartOffset>0.15</beamStartOffset>
+				<beamLineFleckChanceCurve>
+					<points>
+						<li>(0, 1)</li>
+						<li>(1, 1)</li>
+					</points>
+				</beamLineFleckChanceCurve>
 			</li>
 		</verbs>
 		<comps>

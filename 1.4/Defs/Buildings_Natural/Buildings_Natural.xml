@@ -2,7 +2,7 @@
 <Defs>
 	
 	<!-- Intact Meteor-->
-	<TiberiumRim.TRThingDef ParentName="TiberiumProducerBase">
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>TiberiumMeteoriteChunk</defName>
 		<thingClass>TiberiumRim.TiberiumMeteorite</thingClass>
 		<description>A metoerite of unknown origin. Data suggests this meteorite carries an extremely agressive self-replicating mineral called "Tiberium".</description>
@@ -43,6 +43,13 @@
 			</li>
 		</comps>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
+		<modExtensions Inherit="False">
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Tiberium</groupDef>
+				<category>Producers</category>
+				<isDevOption>true</isDevOption>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	<!--Natural formations-->

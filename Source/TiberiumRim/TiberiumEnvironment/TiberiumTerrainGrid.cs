@@ -38,6 +38,7 @@ public class TiberiumTerrainGrid : IExposable
     
     private readonly HashSet<IntVec3> allInfestableCells = new HashSet<IntVec3>();
 
+    public TiberiumTerrainGrid(){}
     
     public TiberiumTerrainGrid(Map map)
     {

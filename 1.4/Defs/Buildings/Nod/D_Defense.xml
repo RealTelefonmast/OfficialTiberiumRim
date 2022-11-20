@@ -106,6 +106,7 @@
 					<li>
 						<canForceTarget>true</canForceTarget>
 						<turretGunDef>Gun_NodObelisk</turretGunDef>
+						<turretOffset>(0,0,4.5)</turretOffset>
 						<turretBurstWarmupTime>2.85</turretBurstWarmupTime>
 						<turretBurstCooldownTime>5</turretBurstCooldownTime>	
 					</li>
@@ -254,7 +255,6 @@
 							<aimSpeed>200</aimSpeed>
 							<resetSpeed>100</resetSpeed>
 							<recoilSpeed>200</recoilSpeed>
-							<barrelMuzzleOffset>(0,0,0.75)</barrelMuzzleOffset>
 						</turretTop>
 						<turretGunDef>Gun_ShredderTurret</turretGunDef>
 						<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
@@ -449,7 +449,6 @@
 							<aimSpeed>200</aimSpeed>
 							<resetSpeed>100</resetSpeed>
 							<recoilSpeed>200</recoilSpeed>
-							<barrelMuzzleOffset>(0,0,0.75)</barrelMuzzleOffset>
 						</turretTop>
 						<turretGunDef>Gun_ShredderTurret</turretGunDef>
 						<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
@@ -514,7 +513,7 @@
 			<li Class="TeleCore.SubMenuExtension">
 				<groupDef>Nod</groupDef>
 				<category>Defense</category>
-				<hidden>true</hidden>
+				<isDevOption>true</isDevOption>
 			</li>
 			<li Class="TeleCore.FXDefExtension">
 				<rotateDrawSize>true</rotateDrawSize>

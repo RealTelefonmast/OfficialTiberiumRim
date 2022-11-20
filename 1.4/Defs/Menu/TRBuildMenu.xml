@@ -71,6 +71,7 @@
 			<li>Producers</li>
 			<li>Crystals</li>
 			<li>Misc</li>
+			<li>Visceral</li>
 		</subCategories>
 		<isDevGroup>true</isDevGroup>
 	</TeleCore.SubMenuGroupDef>
@@ -120,5 +121,10 @@
 		<defName>Crystals</defName>
 		<label>Crystals</label>
 	</TeleCore.SubMenuCategoryDef>
+	
+	<TeleCore.SubMenuCategoryDef>
+		<defName>Visceral</defName>
+		<label>Visceral</label>
+	</TeleCore.SubMenuCategoryDef>  
 	
 </Defs>

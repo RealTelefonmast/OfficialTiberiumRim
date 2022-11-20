@@ -1,12 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Multiplayer.API;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
 {
+    public class AreaProcessor : IExposable
+    {
+        private Map map;
+        private IntVec2 areaRoot;
+
+        private Action<IntVec3> cellProcessor;
+        private Predicate<IntVec3> cellSelector;
+
+        public AreaProcessor(IntVec3 areaRoot, float desiredRadius, Map map, int processTicks, int processSpeed = 1)
+        {
+            
+        }
+        
+        //
+        public void ExposeData()
+        {
+        }
+
+        public void Tick()
+        {
+            
+        }
+    }
+    
     public class AreaMutator : IExposable
     {
         private readonly TiberiumField tibField;
@@ -49,8 +75,7 @@ namespace TiberiumRim
             Scribe_Collections.Look(ref CurrentCells, "currentCells");
             Scribe_Collections.Look(ref NewCells, "newCells");
         }
-
-        /*TODO:[SyncWorker]
+        
         static void SyncWorkerAreaMutator(SyncWorker sync, ref AreaMutator type)
         {
             if (sync.isWriting)
@@ -63,7 +88,6 @@ namespace TiberiumRim
                 type = field.MainProducer.AreaMutator;
             }
         }
-        */
 
         //Reload Values after load
         public AreaMutator()

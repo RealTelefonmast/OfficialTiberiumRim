@@ -34,20 +34,22 @@ namespace TiberiumRim
 
         public override void FillTab()
         {
-            Rect tabRect = new Rect(0,0, WinSize.x, WinSize.y).ContractedBy(10);
+            Rect tabRect = new Rect(10, 10, WinSize.x - 20, 0); // new Rect(0, 0, WinSize.x, WinSize.y).ContractedBy(10);
             Widgets.BeginGroup(tabRect);
-            Rect outRect = new Rect(0f, 35f, tabRect.width, tabRect.height - 35f);
-            Rect viewRect = new Rect(0f, 0f, outRect.width - 16f, viewHeight);
-            Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect, true);
-            float num = 0f;
-            for (var i = 0; i < MechStation.Props.mechRecipes.Count; i++)
             {
-                var recipe = MechStation.Props.mechRecipes[i];
-                Rect recipeRect = new Rect(0, num, viewRect.width, 75f);
-                DoMechListing(recipeRect, recipe, i);
-            }
+                Rect outRect = new Rect(0f, 35f, tabRect.width, tabRect.height - 35f);
+                Rect viewRect = new Rect(0f, 0f, outRect.width - 16f, viewHeight);
+                Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect, true);
+                float num = 0f;
+                for (var i = 0; i < MechStation.Props.mechRecipes.Count; i++)
+                {
+                    var recipe = MechStation.Props.mechRecipes[i];
+                    Rect recipeRect = new Rect(0, num, viewRect.width, 75f);
+                    DoMechListing(recipeRect, recipe, i);
+                }
 
-            Widgets.EndScrollView();
+                Widgets.EndScrollView();
+            }
             Widgets.EndGroup();
         }
 

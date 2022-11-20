@@ -50,9 +50,9 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(0, 0, 1.1)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<muzzleFlash>
 					<flashGraphicData>
 						<graphicClass>Graphic_Random</graphicClass>
@@ -137,10 +137,10 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(-0.2, 0, 1)</li>
 					<li>(0.2, 0, 1)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<muzzleFlash>
 					<flashGraphicData>
 						<graphicClass>Graphic_Random</graphicClass>
@@ -225,20 +225,22 @@
 				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaser</damageDef>
-					<damageBase>15</damageBase>
-					<stoppingPower>0.1</stoppingPower>
-					<armorPenetration>0.25</armorPenetration>
-					<beamTexturePath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam</beamTexturePath>
+					<isStatic>true</isStatic>	
+					<damageBaseOverride>15</damageBaseOverride>
+					<stoppingPowerOverride>0.1</stoppingPowerOverride>
+					<armorPenetrationOverride>0.25</armorPenetrationOverride>
+					<impactEffecter>BeamHit</impactEffecter>
+					<!--
 					<fadeInTime>0.05</fadeInTime>
 					<solidTime>0.05</solidTime>
 					<fadeOutTime>0.25</fadeOutTime>
-					<impactEffecter>BeamHit</impactEffecter>
+					-->
 				</beamProps>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(0.05, 0, -0.45)</li>
 					<li>(0, 0, -0.45)</li>
 					<li>(-0.05, 0, -0.45)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>1.25</warmupTime>
 				<range>30.9</range>
@@ -248,6 +250,25 @@
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
 				<muzzleFlashScale>8</muzzleFlashScale>
 				<ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
+				
+					<!--<soundCastBeam></soundCastBeam>-->
+				<beamWidth>0.5</beamWidth>
+				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+				<beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
+				<beamFleckChancePerTick>1</beamFleckChancePerTick>
+				<beamMaxDeviation>0</beamMaxDeviation>
+				<beamCurvature>0</beamCurvature>
+				<beamMoteDef>Mote_NodGunBeam</beamMoteDef>
+				<beamChanceToStartFire>0.85</beamChanceToStartFire>
+				<beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+				<beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+				<beamStartOffset>0.15</beamStartOffset>
+				<beamLineFleckChanceCurve>
+					<points>
+						<li>(0, 1)</li>
+						<li>(1, 1)</li>
+					</points>
+				</beamLineFleckChanceCurve>
 			</li>
 		</verbs>
 		<tools>
@@ -312,20 +333,21 @@
 				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaser</damageDef>
-					<damageBase>18</damageBase>
-					<stoppingPower>0.1</stoppingPower>
-					<armorPenetration>0.5</armorPenetration>
-					<beamTexturePath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam</beamTexturePath>
-					<fadeInTime>0.05</fadeInTime>
-					<solidTime>0.05</solidTime>
-					<fadeOutTime>0.3</fadeOutTime>
+					<isStatic>true</isStatic>	
+					<spawnMotePerBeam>true</spawnMotePerBeam>
+					<damageBaseOverride>18</damageBaseOverride>
+					<stoppingPowerOverride>0.1</stoppingPowerOverride>
+					<armorPenetrationOverride>0.5</armorPenetrationOverride>
 					<impactEffecter>BeamHit</impactEffecter>
 				</beamProps>
-				<originOffsets>
-					<li>(0.05, 0, -0.4)</li>
-					<li>(0, 0, -0.4)</li>
-					<li>(-0.05, 0, -0.4)</li>
-				</originOffsets>
+				<!--
+				<originOffsetPerShot>
+					<li>(0.05 ,  0  , -0.4)</li>
+					<li>(0, 0 , -0.4,  0.0)</li>
+					<li>(-0.05,  0  , -0.4)</li>
+				</originOffsetPerShot>
+				-->
+				<forcedMissRadius>1.5</forcedMissRadius>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>1.25</warmupTime>
 				<range>32.9</range>
@@ -335,6 +357,25 @@
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
 				<muzzleFlashScale>10</muzzleFlashScale>
 				<ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
+				
+				<!--<soundCastBeam></soundCastBeam>-->
+				<beamWidth>0.5</beamWidth>
+				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+				<beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
+				<beamFleckChancePerTick>1</beamFleckChancePerTick>
+				<beamMaxDeviation>0</beamMaxDeviation>
+				<beamCurvature>0</beamCurvature>
+				<beamMoteDef>Mote_NodGunBeam</beamMoteDef>
+				<beamChanceToStartFire>0.85</beamChanceToStartFire>
+				<beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+				<beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+				<beamStartOffset>0.8</beamStartOffset>
+				<beamLineFleckChanceCurve>
+					<points>
+						<li>(0, 1)</li>
+						<li>(1, 1)</li>
+					</points>
+				</beamLineFleckChanceCurve>
 			</li>
 		</verbs>
 		<tools>
@@ -414,9 +455,9 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(0, 0, 1.25)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>				
 				<warmupTime>1.5</warmupTime>
@@ -504,9 +545,9 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(0, 0, 1.25)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_TiberiumGas</defaultProjectile>
 				<warmupTime>1.5</warmupTime>
@@ -587,10 +628,10 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(-0.13, 0, 1.35)</li>
 					<li>(0.13, 0, 1.35)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<muzzleFlash>
 					<flashGraphicData>
 						<graphicClass>Graphic_Random</graphicClass>

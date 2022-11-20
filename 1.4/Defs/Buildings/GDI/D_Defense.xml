@@ -67,14 +67,14 @@
 						<li>JuggernautShell_Explosive</li>
 					</thingDefs>
 				</fuelFilter>
-				<fuelCapacity>3</fuelCapacity>
+				<fuelCapacity>6</fuelCapacity>
 				<initialFuelPercent>0</initialFuelPercent>
 				<autoRefuelPercent>0.1</autoRefuelPercent>
 				<showFuelGizmo>true</showFuelGizmo>
 				<minimumFueledThreshold>1</minimumFueledThreshold>
 				<atomicFueling>true</atomicFueling>
-				<fuelMultiplier>3</fuelMultiplier>
-				<factorByDifficulty>true</factorByDifficulty>
+				<fuelMultiplier>1</fuelMultiplier>
+				<factorByDifficulty>false</factorByDifficulty>
 				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
 				<outOfFuelMessage>Cannot shoot: Needs shells charge</outOfFuelMessage>
 				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
@@ -149,8 +149,8 @@
 								</li>
 							</barrels>
 							<aimSpeed>65</aimSpeed>
-							<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
 						</turretTop>
+						<canForceTarget>true</canForceTarget>
 						<turretGunDef>Gun_Juggernaut</turretGunDef>
 						<turretBurstWarmupTime>5</turretBurstWarmupTime>
 						<turretBurstCooldownTime>25</turretBurstCooldownTime>
@@ -292,7 +292,6 @@
 							<aimSpeed>80</aimSpeed>
 							<resetSpeed>100</resetSpeed>
 							<recoilSpeed>200</recoilSpeed>
-							<barrelMuzzleOffset>(0,0,1.5)</barrelMuzzleOffset>
 						</turretTop>
 						<turretGunDef>Gun_WatchTower</turretGunDef>
 						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
@@ -682,9 +681,8 @@
 								</li>
 							</barrels>
 							<aimSpeed>60</aimSpeed>
-							<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
 						</turretTop>
-						<drawOffset>(0,0,0)</drawOffset>
+						<turretOffset>(0,0,0)</turretOffset>
 						<turretGunDef>Gun_MissilePod</turretGunDef>
 						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
 						<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
@@ -709,9 +707,8 @@
 								</li>
 							</barrels>
 							<aimSpeed>60</aimSpeed>
-							<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
 						</turretTop>
-						<drawOffset>(-2.75,0,0)</drawOffset>
+						<turretOffset>(-2.75,0,0)</turretOffset>
 						<turretGunDef>Gun_Guardian_Railgun</turretGunDef>
 						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
 						<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
@@ -736,9 +733,8 @@
 								</li>
 							</barrels>
 							<aimSpeed>60</aimSpeed>
-							<barrelMuzzleOffset>(0,0,1.75)</barrelMuzzleOffset>
 						</turretTop>
-						<drawOffset>(2.5,0,0)</drawOffset>
+						<turretOffset>(2.5,0,0)</turretOffset>
 						<turretGunDef>Gun_Guardian</turretGunDef>
 						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
 						<turretBurstCooldownTime>2.5</turretBurstCooldownTime>

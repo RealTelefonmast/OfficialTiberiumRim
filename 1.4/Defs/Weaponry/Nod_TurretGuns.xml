@@ -32,21 +32,21 @@
 				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaser</damageDef>
-					<damageBase>100</damageBase>
-					<stoppingPower>1</stoppingPower>
-					<armorPenetration>1</armorPenetration>
+					<isStatic>false</isStatic>
+					<damageBaseOverride>100</damageBaseOverride>
+					<stoppingPowerOverride>1</stoppingPowerOverride>
+					<armorPenetrationOverride>1</armorPenetrationOverride>
 					<impactEffecter>StrongBeamHit</impactEffecter>
-					<impactFilth>
-						<filths>
-							<li>Filth_Ash, 1</li>
-						</filths>
-						<spreadRadius>1</spreadRadius>
-					</impactFilth>
+					<impactFilth IsNull="True"/>
 				</beamProps>
 				<originEffecter>ObeliskOriginGlow</originEffecter>
-				<originOffsets>
-					<li>(0,0,4.5)</li>
-				</originOffsets>
+				<shootHeightOffset>4.5</shootHeightOffset>
+				<minHitHeight>1</minHitHeight>
+				
+				<originOffsetPerShot>
+					<li>(0,0,0.5)</li>
+				</originOffsetPerShot>
+				
 				<hasStandardCommand>true</hasStandardCommand>
 				<requireLineOfSight>false</requireLineOfSight>
 				<warmupTime>3.5</warmupTime>
@@ -56,20 +56,21 @@
 				<soundCast>Obelisk_Shot</soundCast>		
 				
 				<!--<soundCastBeam></soundCastBeam>-->
-				<beamFullWidthRange>16.9</beamFullWidthRange>
-				<beamWidth>2</beamWidth>
+				<beamFullWidthRange>0</beamFullWidthRange>
+				<beamWidth>12</beamWidth>
 				<burstShotCount>8</burstShotCount>
 				<ticksBetweenBurstShots>16</ticksBetweenBurstShots>	
 				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+				<beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
 				<beamFleckChancePerTick>0.32</beamFleckChancePerTick>
 				<beamMaxDeviation>0.25</beamMaxDeviation>
 				<beamCurvature>0.6</beamCurvature>
 				<beamMoteDef>Mote_ObeliskBeam</beamMoteDef>
-				<beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef>
+				
+				<beamEndEffecterDef>AnyBeam_End</beamEndEffecterDef>
 				<beamChanceToStartFire>0.85</beamChanceToStartFire>
 				<beamChanceToAttachFire>0.85</beamChanceToAttachFire>
 				<beamFireSizeRange>0.55~0.85</beamFireSizeRange>
-				<beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
 				<beamStartOffset>0.15</beamStartOffset>
 				<beamLineFleckChanceCurve>
 					<points>
@@ -80,35 +81,6 @@
 				</beamLineFleckChanceCurve>
 			</li>
 		</verbs>
-	</ThingDef>
-
-
-	<ThingDef ParentName="MoteBase">
-		<defName>Mote_ObeliskBeam</defName>
-		<thingClass>MoteDualAttached</thingClass>
-		<altitudeLayer>MoteOverhead</altitudeLayer>
-		<mote>
-			<fadeInTime>0.2</fadeInTime>
-			<fadeOutTime>0.3</fadeOutTime>
-			<solidTime>999999</solidTime>
-			<needsMaintenance>True</needsMaintenance>
-			<rotateTowardsTarget>True</rotateTowardsTarget>
-			<scaleToConnectTargets>True</scaleToConnectTargets>
-			<fadeOutUnmaintained>True</fadeOutUnmaintained>
-		</mote>
-		<drawOffscreen>true</drawOffscreen>
-		<graphicData>
-			<texPath>Items/Weapons/Projectile/Bullet_ObeliskBeam</texPath>
-			<graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
-			<shaderType>MoteBeam</shaderType>
-			<shaderParameters>
-				<_ExtraTexA>/Things/Mote/BeamSecondaryNoise_A</_ExtraTexA>
-				<_ExtraTexB>/Things/Mote/BeamSecondaryNoise_B</_ExtraTexB>
-				<_ScrollSpeedA>-2 </_ScrollSpeedA>
-				<_ScrollSpeedB>1</_ScrollSpeedB>
-				<_Intensity>1</_Intensity>
-			</shaderParameters>
-		</graphicData>
 	</ThingDef>
 
 	<ThingDef ParentName="BaseWeapon_TR">
@@ -138,10 +110,11 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>	
+				<originOffsetPerShot>	
 					<li>(0.25,0,0.85)</li>
 					<li>(-0.25,0,0.85)</li>
-				</originOffsets>
+				</originOffsetPerShot>
+				<shotStartOffset>(0,0,0.75)</shotStartOffset>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Shredder</defaultProjectile>
 				<warmupTime>1.5</warmupTime>
@@ -183,9 +156,9 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>	
+				<originOffsetPerShot>	
 					<li>(0,0,1.15)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<shotIntervalTicks>5</shotIntervalTicks>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_FlamethrowerTower</defaultProjectile>

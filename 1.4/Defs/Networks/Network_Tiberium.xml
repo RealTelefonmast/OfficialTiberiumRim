@@ -46,6 +46,12 @@
 							<li>Transmitter</li>
 						</networkRoles>
 					</li>
+					<li>
+						<networkDef>WasteNetwork</networkDef>
+						<networkRoles>
+							<li>Transmitter</li>
+						</networkRoles>
+					</li>
 				</networks>
 				<generalIOPattern>+</generalIOPattern>
 			</li>
@@ -71,13 +77,6 @@
 		<networkDef>TiberiumNetwork</networkDef>
 		<label>red</label>
 		<valueColor>(208,8,42)</valueColor>
-	</TeleCore.NetworkValueDef>
-
-	<TeleCore.NetworkValueDef>
-		<defName>TibSludge</defName>
-		<networkDef>TiberiumNetwork</networkDef>
-		<label>sludge</label>
-		<valueColor>(160,255,0)</valueColor>
 	</TeleCore.NetworkValueDef>
 
 	<TeleCore.NetworkValueDef>

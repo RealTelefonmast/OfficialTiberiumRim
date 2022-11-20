@@ -27,9 +27,9 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>	
+				<originOffsetPerShot>	
 					<li>(0.25, 0 , 0.25)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Projectile_TeslaArc</defaultProjectile>
 				<requireLineOfSight>true</requireLineOfSight>

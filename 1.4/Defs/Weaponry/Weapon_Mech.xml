@@ -34,26 +34,23 @@
 				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRLaser</damageDef>
-					<damageBase>35</damageBase>
-					<stoppingPower>0.2</stoppingPower>
-					<armorPenetration>0.5</armorPenetration>
-					<beamTexturePath>Items/Weapons/Projectile/Bullet_Nod_LaserBeam_Heavy</beamTexturePath>
-					<fadeInTime>0.05</fadeInTime>
-					<solidTime>0.05</solidTime>
-					<fadeOutTime>0.35</fadeOutTime>
+					<isStatic>false</isStatic>
+					<damageBaseOverride>35</damageBaseOverride>
+					<stoppingPowerOverride>0.2</stoppingPowerOverride>
+					<armorPenetrationOverride>0.5</armorPenetrationOverride>
 					<impactEffecter>BeamHit</impactEffecter>
+					<impactFilth IsNull="True"/>
 				</beamProps>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(0.15, 0, 0)</li>
 					<li>(0, 0, 0)</li>
 					<li>(-0.15, 0, 0)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>2</warmupTime>
 				<range>29.9</range>
 				<minRange>3.5</minRange>
 				<burstShotCount>3</burstShotCount>
-				<ticksBetweenBurstShots>3</ticksBetweenBurstShots>
 				<soundCast>Nod_AvatarLaser</soundCast>
 				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
@@ -61,6 +58,29 @@
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				
+				<!--<soundCastBeam></soundCastBeam>-->
+				<beamFullWidthRange>6.9</beamFullWidthRange>
+				<beamWidth>1.25</beamWidth>
+				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>	
+				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+				<beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
+				<beamFleckChancePerTick>0.32</beamFleckChancePerTick>
+				<beamMaxDeviation>0</beamMaxDeviation>
+				<beamCurvature>0.25</beamCurvature>
+				<beamMoteDef>Mote_NodGunStrongBeam</beamMoteDef>
+				<beamEndEffecterDef>AnyBeam_End</beamEndEffecterDef>
+				<beamChanceToStartFire>0.85</beamChanceToStartFire>
+				<beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+				<beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+				<beamStartOffset>0.15</beamStartOffset>
+				<beamLineFleckChanceCurve>
+					<points>
+						<li>(0, 0)</li>
+						<li>(0.65, 0.4)</li>
+						<li>(1, 0.75)</li>
+					</points>
+				</beamLineFleckChanceCurve>
 			</li>
 		</verbs>
 		<weaponTags>
@@ -119,9 +139,9 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(0, 0, 2)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_AvatarFlamethrower</defaultProjectile>
 				<warmupTime>2</warmupTime>
@@ -195,10 +215,10 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(0.55, 0, 1)</li>
 					<li>(-0.55, 0, 1)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_TwinFlamethrower</defaultProjectile>
 				<warmupTime>1.5</warmupTime>
@@ -253,9 +273,9 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(0, 0, 1.2)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<muzzleFlash>
 					<flashGraphicData>
 						<graphicClass>Graphic_Random</graphicClass>
@@ -315,9 +335,9 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(0, 0, 1.2)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<muzzleFlash>
 					<flashGraphicData>
 						<graphicClass>Graphic_Random</graphicClass>
@@ -367,19 +387,16 @@
 				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
 					<damageDef>TRRailgun</damageDef>
-					<damageBase>55</damageBase>
-					<stoppingPower>0.5</stoppingPower>
-					<armorPenetration>0.5</armorPenetration>
-					<beamTexturePath>Items/Weapons/Projectile/Bullet_RailshotHeavy</beamTexturePath>
-					<fadeInTime>0.05</fadeInTime>
-					<solidTime>0.25</solidTime>
-					<fadeOutTime>0.7</fadeOutTime>
+					<isStatic>true</isStatic>	
+					<damageBaseOverride>55</damageBaseOverride>
+					<stoppingPowerOverride>0.5</stoppingPowerOverride>
+					<armorPenetrationOverride>0.5</armorPenetrationOverride>
 					<impactEffecter>StrongRailgunHit</impactEffecter>
 				</beamProps>
-				<originOffsets>	
+				<originOffsetPerShot>	
 					<li>(0.5,-1,0.75)</li>
 					<li>(-0.5,-1,0.75)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>3</warmupTime>
 				<range>44.9</range>
@@ -390,6 +407,26 @@
 				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
 				<muzzleFlashScale>15</muzzleFlashScale>
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				
+				<!--<soundCastBeam></soundCastBeam>-->
+				<beamFullWidthRange>4</beamFullWidthRange>
+				<beamWidth>0.5</beamWidth>
+				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+				<beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
+				<beamFleckChancePerTick>1</beamFleckChancePerTick>
+				<beamMaxDeviation>0</beamMaxDeviation>
+				<beamCurvature>0</beamCurvature>
+				<beamMoteDef>Mote_RailgunBeam</beamMoteDef>
+				<beamChanceToStartFire>0.85</beamChanceToStartFire>
+				<beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+				<beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+				<beamStartOffset>0.15</beamStartOffset>
+				<beamLineFleckChanceCurve>
+					<points>
+						<li>(0, 1)</li>
+						<li>(1, 1)</li>
+					</points>
+				</beamLineFleckChanceCurve>
 			</li>
 		</verbs>
 		<weaponTags>
@@ -408,29 +445,27 @@
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
-			<AccuracyTouch>0.8</AccuracyTouch>
-			<AccuracyShort>0.8</AccuracyShort>
-			<AccuracyMedium>0.8</AccuracyMedium>
-			<AccuracyLong>0.8</AccuracyLong>
+			<AccuracyTouch>0.65</AccuracyTouch>
+			<AccuracyShort>0.75</AccuracyShort>
+			<AccuracyMedium>0.85</AccuracyMedium>
+			<AccuracyLong>0.95</AccuracyLong>
 			<RangedWeapon_Cooldown>4</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_Beam</verbClass>
 				<beamProps>
-					<damageBase>10</damageBase>
 					<damageDef>TRSonic</damageDef>
-					<stoppingPower>0.1</stoppingPower>
-					<armorPenetration>0.25</armorPenetration>
-					<beamTexturePath>Items/Weapons/Projectile/Bullet_Disruptorshot</beamTexturePath>
-					<fadeInTime>0.15</fadeInTime>
-					<solidTime>0.25</solidTime>
-					<fadeOutTime>1</fadeOutTime>
+					<isStatic>true</isStatic>
+					<spawnMotePerBeam>true</spawnMotePerBeam>
+					<damageBaseOverride>10</damageBaseOverride>
+					<stoppingPowerOverride>0.1</stoppingPowerOverride>
+					<armorPenetrationOverride>0.25</armorPenetrationOverride>
 					<impactEffecter>SonicHit</impactEffecter>
 					<impactExplosion>
-						<damageOverride>3</damageOverride>
+						<damageOverride>10</damageOverride>
 						<damageDef>TRSonic</damageDef>
-						<explosionRadius>2.9</explosionRadius>
+						<explosionRadius>4.9</explosionRadius>
 						<!--<preSpawnDef>filth</preSpawnDef>
   						<postSpawnDef><filth/postSpawnDef>
   						<preSpawnChance>0.5</preSpawnChance>
@@ -440,26 +475,50 @@
   						<fireChance>0</fireChance>-->
 					</impactExplosion>
 				</beamProps>
-				<originOffsets>
+				<!--
+				<originOffsetPerShot>
 					<li>(0.7,-1,-0.22)</li>
 					<li>(-0.7,-1,-0.22)</li>
 					<li>(0.35,-1.25,-0.4)</li>
 					<li>(-0.35,-1.25,-0.4)</li>
 					<li>(0,-1.5,-0.41)</li>
-				</originOffsets>
+				</originOffsetPerShot>
+				-->
+				<!--
+				<originOffsetPerShot>
+					<li>(0.0, 0, 0.0)</li>
+				</originOffsetPerShot>
+				-->
+				<originOffsetPerShot>
+					<li>(-0.8, 0, 0.6)</li>
+					<li>(0.8, 0, 0.6)</li>
+					<li>(-0.2, 0, 0.4)</li>
+					<li>(0.2, 0, 0.4)</li>
+				</originOffsetPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>3.2</warmupTime>
 				<range>17.9</range>
-				<minRange>2.5</minRange>
-				<burstShotCount>5</burstShotCount>
-				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+				<minRange>2.49</minRange>
+				<burstShotCount>4</burstShotCount> <!---->
+				<ticksBetweenBurstShots>16</ticksBetweenBurstShots>
 				<soundAiming>OrbitalTargeter_Aiming</soundAiming>
 				<soundCast>OrbitalTargeter_Fire</soundCast>
-				<muzzleFlashScale>5</muzzleFlashScale>
+				<muzzleFlashScale>3.5</muzzleFlashScale>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				
+				<!--<soundCastBeam></soundCastBeam>-->
+				<beamWidth>2</beamWidth>
+				<beamMoteDef>Mote_DisruptorBeam</beamMoteDef>
+				<beamStartOffset>0</beamStartOffset>
+				<beamLineFleckChanceCurve>
+					<points>
+						<li>(0, 1)</li>
+						<li>(1, 1)</li>
+					</points>
+				</beamLineFleckChanceCurve>
 			</li>
 		</verbs>
 		<weaponTags>
@@ -513,10 +572,10 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(0.5,0,0.75)</li>
 					<li>(-0.5,0,0.75)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Bash</defaultProjectile>
 				<warmupTime>1</warmupTime>

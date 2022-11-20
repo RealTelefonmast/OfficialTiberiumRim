@@ -49,9 +49,9 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(0, 0, 1)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<muzzleFlash>
 					<flashGraphicData>
 						<graphicClass>Graphic_Random</graphicClass>
@@ -132,9 +132,9 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(0, 0, 1.3)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<muzzleFlash>
 					<flashGraphicData>
 						<graphicClass>Graphic_Random</graphicClass>
@@ -217,11 +217,11 @@
 		<verbs>
 			<li Class="TeleCore.VerbProperties_Extended">
 				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
-				<originOffsets>
+				<originOffsetPerShot>
 					<li>(-0.08, 0, 1.3)</li>
 					<li>(0, 0, 1.3)</li>
 					<li>(0.08, 0, 1.3)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<muzzleFlash>
 					<flashGraphicData>
 						<graphicClass>Graphic_Random</graphicClass>

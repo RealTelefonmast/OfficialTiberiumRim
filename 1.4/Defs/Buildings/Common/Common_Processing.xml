@@ -40,6 +40,13 @@
 							<li>Controller</li>
 						</networkRoles>
 					</li>
+					<li>
+						<networkDef>WasteNetwork</networkDef>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Controller</li>
+						</networkRoles>
+					</li>
 				</networks>
 				<generalIOPattern>#++#|++++|++++|#++#</generalIOPattern>
 			</li>
@@ -142,18 +149,18 @@
 							<maxStorage>2500</maxStorage>
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
-							<storeEvenly>false</storeEvenly>	
+							<storeEvenly>true</storeEvenly>	
 						</containerProps>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Storage</li>
 						</networkRoles>
-						<handledValues>
+						<valueProperties>
 							<li>TibGreen</li>
 							<li>TibBlue</li>
 							<li>TibRed</li>			
 							<li>TibSludge</li>					
-						</handledValues>
+						</valueProperties>
 					</li>
 				</networks>
 				<generalIOPattern>#+#|+++|#+#</generalIOPattern>
@@ -203,6 +210,76 @@
 			</li>
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>TiberiumNetValve</defName>
+		<label>valve</label>
+		<description>.</description>
+		<size>(3,1)</size>
+		<costList>
+			<Steel>100</Steel>
+		</costList>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Network/Silo/Silo</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,1)</drawSize>
+			<shadowData>
+				<volume>(1.9, 1, 1.68)</volume>
+				<offset>(-0.03,0,-0.1)</offset>
+			</shadowData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<fillPercent>1</fillPercent>
+		<tickerType>Never</tickerType>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>2500</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>0</Beauty>
+		</statBases>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T2</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TNS">
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>				
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>DirectionalControl</li>
+						</networkRoles>
+					</li>
+				</networks>
+				<generalIOPattern>I#O</generalIOPattern>
+			</li>
+			<li Class="CompProperties_Flickable">
+				<commandTexture>UI/Commands/Vent</commandTexture>
+				<commandLabelKey>CommandDesignateOpenCloseVentLabel</commandLabelKey>
+				<commandDescKey>CommandDesignateOpenCloseVentDesc</commandDescKey>
+			</li>
+		</comps>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<constructEffect>ConstructMetal</constructEffect>
+		<canOverlapZones>false</canOverlapZones>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Common</groupDef>
+				<category>Processing</category>
+			</li>
+		</modExtensions>
+	</TiberiumRim.TRThingDef>
+	
 	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>TiberiumGasTank</defName>
@@ -258,9 +335,9 @@
 							<li>Transmitter</li>
 							<li>Storage</li>
 						</networkRoles>
-						<handledValues>
+						<valueProperties>
 							<li>TibGas</li>			
-						</handledValues>
+						</valueProperties>
 					</li>
 				</networks>
 				<generalIOPattern>#++#|++++|++++|#++#</generalIOPattern>
@@ -353,16 +430,16 @@
 							<li>Transmitter</li>
 							<li>Producer</li>
 						</networkRoles>
-						<handledValues>
+						<valueProperties>
 							<li>TibGreen</li>
 							<li>TibBlue</li>
 							<li>TibRed</li>			
 							<li>TibSludge</li>		
-						</handledValues>
+						</valueProperties>
 					</li>
 				</networks>
 				<harvester>Harvester_Common</harvester>
-				<generalIOPattern>#+#|+++|+#+|+#+</generalIOPattern>
+				<generalIOPattern>###|O#O|O+O|#O#</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
 				<overlays>
@@ -474,9 +551,9 @@
 							<li>Transmitter</li>
 							<li>Producer</li>
 						</networkRoles>
-						<handledValues>
+						<valueProperties>
 							<li>TibGas</li>	
-						</handledValues>
+						</valueProperties>
 					</li>
 				</networks>
 				<generalIOPattern>++++</generalIOPattern>
@@ -576,14 +653,14 @@
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<handledValues>
+						<valueProperties>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
-						</handledValues>
+						</valueProperties>
 					</li>
 				</networks>
-				<generalIOPattern>++++|+##+|+##+|+##+|++++</generalIOPattern>
+				<generalIOPattern>++++|+##+|+##+|+##+</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_NetworkStructurePowerPlant">
 				<compClass>TeleCore.CompPowerPlant_Network</compClass>
@@ -729,12 +806,12 @@
 								</subValues>
 							</li>
 						</networkRoles>
-						<handledValues>
+						<valueProperties>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
 							<li>TibSludge</li>
-						</handledValues>
+						</valueProperties>
 					</li>
 					<li>
 						<networkDef>ChemicalNetwork</networkDef>
@@ -749,7 +826,9 @@
 							<li>Transmitter</li>
 							<li>Producer</li>
 						</networkRoles>
-						<networkDefForValues>ChemicalNetwork</networkDefForValues>						
+						<valueProperties>
+							<fromDef>ChemicalNetwork</fromDef>
+						</valueProperties>				
 					</li>
 				</networks>
 				<generalIOPattern>++++++|+####+|+####+|+####+|+####+|++++++</generalIOPattern>
@@ -924,12 +1003,12 @@
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<handledValues>
+						<valueProperties>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
 							<li>TibSludge</li>	
-						</handledValues>
+						</valueProperties>
 					</li>
 				</networks>
 				<generalIOPattern>#+#|###|</generalIOPattern>
@@ -1016,12 +1095,12 @@
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<handledValues>
+						<valueProperties>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
 							<li>TibSludge</li>	
-						</handledValues>
+						</valueProperties>
 					</li>
 					-->
 					<li>
@@ -1174,7 +1253,9 @@
 							<li>Transmitter</li>
 							<li>Storage</li>
 						</networkRoles>
-						<networkDefForValues>ChemicalNetwork</networkDefForValues>
+						<valueProperties>
+							<fromDef>ChemicalNetwork</fromDef>
+						</valueProperties>
 					</li>
 				</networks>
 				<generalIOPattern>#+#|+++|#+#</generalIOPattern>

@@ -18,4 +18,11 @@
 		</overlayGraphic>
 	</TeleCore.NetworkDef>
 	
+	<TeleCore.NetworkValueDef>
+		<defName>TibSludge</defName>
+		<networkDef>WasteNetwork</networkDef>
+		<label>sludge</label>
+		<valueColor>(160,255,0)</valueColor>
+	</TeleCore.NetworkValueDef>
+	
 </Defs>

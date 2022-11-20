@@ -45,9 +45,11 @@
 							<maxStorage>1000</maxStorage>
 							<dropContents>false</dropContents>
 						</containerProps>
-						<handledValues>	
-							<li>TibPollution</li>					
-						</handledValues>
+						<valueProperties>
+							<values>
+								<li>TibPollution</li>
+							</values>
+						</valueProperties>
 					</li>
 				</networks>
 				<!--<generalIOPattern>++|++</generalIOPattern>-->
@@ -140,9 +142,11 @@
 							<maxStorage>750</maxStorage>
 							<dropContents>false</dropContents>
 						</containerProps>
-						<handledValues>	
-							<li>TibPollution</li>					
-						</handledValues>
+						<valueProperties>
+							<values>
+								<li>TibPollution</li>
+							</values>
+						</valueProperties>
 					</li>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
@@ -156,9 +160,11 @@
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
 						</containerProps>
-						<handledValues>	
-							<li>TibSludge</li>					
-						</handledValues>
+						<valueProperties>
+							<values>
+								<li>TibSludge</li>
+							</values>
+						</valueProperties>
 					</li>
 				</networks>
 				<generalIOPattern>++|++</generalIOPattern>
@@ -229,6 +235,11 @@
 		</costList>
 		<comps>
 			<li Class="TAE.CompProperties_ANS_AirVent">
+				<filter>
+					<acceptedAtmospheres>	
+						<li>TibPollution</li>					
+					</acceptedAtmospheres>
+				</filter>
 				<networks>
 					<li>
 						<networkDef>AtmosphericNetwork</networkDef>
@@ -240,14 +251,11 @@
 							<maxStorage>100</maxStorage>
 							<dropContents>false</dropContents>
 						</containerProps>
-						<handledValues>
+						<valueProperties>
 							<li>TibPollution</li>	
-						</handledValues>
+						</valueProperties>
 					</li>
 				</networks>
-				<acceptedAtmospheres>	
-					<li>TibPollution</li>					
-				</acceptedAtmospheres>
 				<generalIOPattern>+</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
@@ -330,6 +338,11 @@
 			<li Class="TAE.CompProperties_ANS_AirVent">
 				<ventMode>Output</ventMode>
 				<gasThroughPut>10</gasThroughPut>
+				<filter>
+					<acceptedAtmospheres>	
+						<li>TibPollution</li>					
+					</acceptedAtmospheres>
+				</filter>
 				<networks>
 					<li>
 						<networkDef>AtmosphericNetwork</networkDef>
@@ -341,14 +354,11 @@
 							<maxStorage>100</maxStorage>
 							<dropContents>false</dropContents>
 						</containerProps>
-						<handledValues>
+						<valueProperties>
 							<li>TibPollution</li>
-						</handledValues>
+						</valueProperties>
 					</li>
 				</networks>
-				<acceptedAtmospheres>	
-					<li>TibPollution</li>					
-				</acceptedAtmospheres>
 				<generalIOPattern>+</generalIOPattern>
 			</li>
 			<li Class="CompProperties_Power">

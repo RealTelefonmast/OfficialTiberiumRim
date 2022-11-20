@@ -275,4 +275,21 @@
 		<growthRate>5</growthRate>
 	</FleckDef>
 	
+	<!-- TODO: Custom texture
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>Fleck_BeamSparking</defName>
+		<fadeInTime>0.03</fadeInTime>
+		<solidTime>0.1</solidTime>
+		<fadeOutTime>0.5</fadeOutTime>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<graphicData>
+		<texPath>Things/Mote/SparkThrownBlue</texPath>
+		<shaderType>MoteGlow</shaderType>
+		<drawSize>0.08</drawSize>
+		<color>(0.7, 0.9, 1.0, 1.0)</color>
+		</graphicData>
+		<acceleration>(0, 0, 0.5)</acceleration>
+		<speedPerTime>0.2~0.5</speedPerTime>
+	</FleckDef>
+-->	
 </Defs>

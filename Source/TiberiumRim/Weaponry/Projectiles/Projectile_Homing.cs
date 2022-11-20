@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+﻿using TeleCore;
+using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
 {
-    //TODO: Implement IPatchedProjectile
-    public class Projectile_Homing : ProjectileTR
+    public class Projectile_Homing : ProjectileTR, IPatchedProjectile
     {
         private float speed = 1f;
         private Vector3? exactPos;
@@ -42,14 +42,14 @@ namespace TiberiumRim
 
         public override void Tick()
         {
-
             startTick++;
 
             //Get initial directional speed vector
             initVector ??= PushVelocity;
             exactPos ??= origin;
-
+            
             exactPos += ((PullVelocity + PushVelocity) * (0.0166666675f * 1));
+            
             if(ActualPosition.DistanceTo(actualTarget.Cell) <= 0.5f)
                 ImpactSomething();
         }

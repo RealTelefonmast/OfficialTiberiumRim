@@ -232,7 +232,7 @@
 			<li Class="TeleCore.SubMenuExtension">
 				<groupDef>Common</groupDef>
 				<category>Research</category>
-				<hidden>true</hidden>
+				<isDevOption>true</isDevOption>
 			</li>
 		</modExtensions>
 	</TiberiumRim.TRThingDef>

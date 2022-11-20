@@ -63,12 +63,12 @@
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<handledValues>
+						<valueProperties>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
 							<li>TibSludge</li>	
-						</handledValues>
+						</valueProperties>
 					</li>
 				</networks>
 				<!--generalIOPattern>#+#|###|</generalIOPattern-->
