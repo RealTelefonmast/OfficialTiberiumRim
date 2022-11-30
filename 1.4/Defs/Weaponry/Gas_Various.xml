@@ -71,7 +71,7 @@
 		
 		<maxDensityPerCell>1000</maxDensityPerCell>
 		<minSpreadDensity>100</minSpreadDensity>
-		<dissipateTo>TibPollution</dissipateTo>
+		<dissipateTo>Atmosphere_TibPollution</dissipateTo>
 		
 		<rotationSpeeds>5~10</rotationSpeeds>
 		<blockTurretTracking>true</blockTurretTracking>

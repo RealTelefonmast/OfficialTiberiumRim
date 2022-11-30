@@ -61,7 +61,7 @@ namespace TiberiumRim
                 {
                     if (Harvester.Container.StoredPercent > 0f)
                     {
-                        Harvester.Container.TryTransferTo(RefineryComp.Container, Harvester.Container.MainValueType, Harvester.kindDef.unloadValue);
+                        Harvester.Container.TryTransferTo(RefineryComp.Container, Harvester.Container.MainValueDef, Harvester.kindDef.unloadValue, out _);
                     }
                     else
                     {

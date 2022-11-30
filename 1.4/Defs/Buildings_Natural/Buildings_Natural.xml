@@ -131,7 +131,7 @@
 			<li Class="TAE.CompProperties_AtmosphericSource">
 				<pushAmount>100</pushAmount>
 				<pushInterval>750</pushInterval>
-				<atmosphericDef>TibPollution</atmosphericDef>
+				<atmosphericDef>Atmosphere_TibPollution</atmosphericDef>
 			</li>
 		</comps>
 		<building>

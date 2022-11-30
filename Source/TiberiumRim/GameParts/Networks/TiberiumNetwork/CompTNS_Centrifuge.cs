@@ -97,7 +97,7 @@ namespace TiberiumRim
                 if (!HasEnoughStored) return false;
                 foreach (var valueDef in TiberiumComp.Props.AllowedValuesByRole[NetworkRole.Requester])
                 {
-                    if (Container.ValueForType(valueDef) > 0)
+                    if (Container.TotalStoredOf(valueDef) > 0)
                         return true;
                 }
                 return false;

@@ -47,7 +47,7 @@
 						</containerProps>
 						<valueProperties>
 							<values>
-								<li>TibPollution</li>
+								<li>Network_TibPollution</li>
 							</values>
 						</valueProperties>
 					</li>
@@ -144,7 +144,7 @@
 						</containerProps>
 						<valueProperties>
 							<values>
-								<li>TibPollution</li>
+								<li>Network_TibPollution</li>
 							</values>
 						</valueProperties>
 					</li>
@@ -237,7 +237,7 @@
 			<li Class="TAE.CompProperties_ANS_AirVent">
 				<filter>
 					<acceptedAtmospheres>	
-						<li>TibPollution</li>					
+						<li>Atmosphere_TibPollution</li>					
 					</acceptedAtmospheres>
 				</filter>
 				<networks>
@@ -252,7 +252,7 @@
 							<dropContents>false</dropContents>
 						</containerProps>
 						<valueProperties>
-							<li>TibPollution</li>	
+							<li>Network_TibPollution</li>	
 						</valueProperties>
 					</li>
 				</networks>
@@ -340,7 +340,7 @@
 				<gasThroughPut>10</gasThroughPut>
 				<filter>
 					<acceptedAtmospheres>	
-						<li>TibPollution</li>					
+						<li>Atmosphere_TibPollution</li>					
 					</acceptedAtmospheres>
 				</filter>
 				<networks>
@@ -355,7 +355,7 @@
 							<dropContents>false</dropContents>
 						</containerProps>
 						<valueProperties>
-							<li>TibPollution</li>
+							<li>Network_TibPollution</li>
 						</valueProperties>
 					</li>
 				</networks>

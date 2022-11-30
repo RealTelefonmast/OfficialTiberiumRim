@@ -35,7 +35,7 @@ namespace TiberiumRim
         public List<NetworkValueDef> handledValues;
     }
 
-    public class Harvester : MechanicalPawn, IContainerHolder
+    public class Harvester : MechanicalPawn, IContainerHolder<NetworkValueDef>
     {
         public new HarvesterKindDef kindDef => (HarvesterKindDef) base.kindDef;
         protected NetworkContainer container;
@@ -159,8 +159,13 @@ namespace TiberiumRim
         }
 
         public Thing Thing => this;
+        public void Notify_AddedContainerValue(NetworkValueDef def, float value)
+        {
+        }
+
         public string ContainerTitle => "TODO: Harvester Container";
         public NetworkContainer Container => container;
+        BaseContainer<NetworkValueDef> IContainerHolder<NetworkValueDef>.Container => (BaseContainer<NetworkValueDef>) this.Container;
         public ContainerProperties ContainerProps => kindDef.containerProps;
         public bool DropsContents => false;
         public bool LeavesPhysicalContainer => false;
