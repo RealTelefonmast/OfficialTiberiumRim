@@ -62,6 +62,7 @@
 		<defName>TibGreen</defName>
 		<networkDef>TiberiumNetwork</networkDef>
 		<label>green</label>
+		<viscosity>0.5</viscosity>
 		<valueColor>(111,200,4)</valueColor>
 	</TeleCore.NetworkValueDef>
 
@@ -69,6 +70,7 @@
 		<defName>TibBlue</defName>
 		<networkDef>TiberiumNetwork</networkDef>
 		<label>blue</label>
+		<viscosity>0.35</viscosity>
 		<valueColor>(8,142,208)</valueColor>
 	</TeleCore.NetworkValueDef>
 
@@ -76,6 +78,7 @@
 		<defName>TibRed</defName>
 		<networkDef>TiberiumNetwork</networkDef>
 		<label>red</label>
+		<viscosity>0.25</viscosity>
 		<valueColor>(208,8,42)</valueColor>
 	</TeleCore.NetworkValueDef>
 

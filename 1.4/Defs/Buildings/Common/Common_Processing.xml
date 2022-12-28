@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
 		<defName>TiberiumNetworkController</defName>
 		<label>Tiberium Network Controller</label>
 		<description>This structure is the main part of any Tiberium network, it acts as a pump for the entire networks and ensures flow while powered.</description>
 		<thingCategories Inherit="false" />
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
-		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Network/TNC/TNC</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -101,7 +100,7 @@
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
 		<defName>TiberiumSilo</defName>
 		<label>tiberium silo</label>
 		<description>Stores Tiberium and distributes it to other Tiberium structures when necessary.</description>
@@ -109,7 +108,6 @@
 		<costList>
 			<Steel>100</Steel>
 		</costList>
-		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Network/Silo/Silo</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -155,12 +153,12 @@
 							<li>Transmitter</li>
 							<li>Storage</li>
 						</networkRoles>
-						<valueProperties>
+						<defFilter>
 							<li>TibGreen</li>
 							<li>TibBlue</li>
 							<li>TibRed</li>			
 							<li>TibSludge</li>					
-						</valueProperties>
+						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>#+#|+++|#+#</generalIOPattern>
@@ -211,7 +209,7 @@
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
 		<defName>TiberiumNetValve</defName>
 		<label>valve</label>
 		<description>.</description>
@@ -219,7 +217,6 @@
 		<costList>
 			<Steel>100</Steel>
 		</costList>
-		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Network/Silo/Silo</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -254,11 +251,23 @@
 			<li Class="TiberiumRim.CompProperties_TNS">
 				<networks>
 					<li>
-						<networkDef>TiberiumNetwork</networkDef>				
+						<networkDef>TiberiumNetwork</networkDef>
+						<containerProps>
+							<maxStorage>125</maxStorage>
+							<dropContents>false</dropContents>
+							<leaveContainer>false</leaveContainer>
+						</containerProps>						
 						<networkRoles>
 							<li>Transmitter</li>
-							<li>DirectionalControl</li>
+							<li>Valve</li>
+							<li>Passthrough</li>
 						</networkRoles>
+						<defFilter>
+							<li>TibGreen</li>
+							<li>TibBlue</li>
+							<li>TibRed</li>			
+							<li>TibSludge</li>					
+						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>I#O</generalIOPattern>
@@ -281,7 +290,7 @@
 	</TiberiumRim.TRThingDef>
 	
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
 		<defName>TiberiumGasTank</defName>
 		<label>tiberium gas tank</label>
 		<description>Stores Tiberium and distributes it to other Tiberium structures when necessary.</description>
@@ -289,7 +298,6 @@
 		<costList>
 			<Steel>150</Steel>
 		</costList>
-		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Network/GasTank/GasTank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -335,9 +343,9 @@
 							<li>Transmitter</li>
 							<li>Storage</li>
 						</networkRoles>
-						<valueProperties>
+						<defFilter>
 							<li>TibGas</li>			
-						</valueProperties>
+						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>#++#|++++|++++|#++#</generalIOPattern>
@@ -391,9 +399,9 @@
 		<label>tiberium refinery</label>
 		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
 		<size>(3,4)</size>
-		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Network/Refinery/Refinery</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(4.15,4.15)</drawSize>
 		</graphicData>
 		<statBases>
@@ -430,12 +438,12 @@
 							<li>Transmitter</li>
 							<li>Producer</li>
 						</networkRoles>
-						<valueProperties>
+						<defFilter>
 							<li>TibGreen</li>
 							<li>TibBlue</li>
 							<li>TibRed</li>			
 							<li>TibSludge</li>		
-						</valueProperties>
+						</defFilter>
 					</li>
 				</networks>
 				<harvester>Harvester_Common</harvester>
@@ -492,11 +500,10 @@
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
 		<defName>TiberiumSpike</defName>
 		<label>tiberium spike</label>
 		<thingClass>TiberiumRim.Building_TiberiumSpike</thingClass>
-		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Network/TibSpike/TibSpike</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -551,9 +558,9 @@
 							<li>Transmitter</li>
 							<li>Producer</li>
 						</networkRoles>
-						<valueProperties>
+						<defFilter>
 							<li>TibGas</li>	
-						</valueProperties>
+						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>++++</generalIOPattern>
@@ -604,11 +611,10 @@
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
 		<defName>TiberiumPowerPlant</defName>
 		<label>Tiberium powerplant</label>
 		<description>This power plant needs to be connected to a Tiberium network before it can properly operate, it will automatically consume Tiberium from the network to sustain itself.</description>
-		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Network/PowerPlant/PowerPlant</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -653,11 +659,11 @@
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<valueProperties>
+						<defFilter>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
-						</valueProperties>
+						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>++++|+##+|+##+|+##+</generalIOPattern>
@@ -738,7 +744,7 @@
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
 		<defName>TiberiumExtractor</defName>
 		<label>tiberium extractor</label>
 		<description>tbd</description>
@@ -746,7 +752,6 @@
 		<costList>
 			<Steel>100</Steel>
 		</costList>
-		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Network/Extractor/Extractor_main</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -806,12 +811,12 @@
 								</subValues>
 							</li>
 						</networkRoles>
-						<valueProperties>
+						<defFilter>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
 							<li>TibSludge</li>
-						</valueProperties>
+						</defFilter>
 					</li>
 					<li>
 						<networkDef>ChemicalNetwork</networkDef>
@@ -826,9 +831,9 @@
 							<li>Transmitter</li>
 							<li>Producer</li>
 						</networkRoles>
-						<valueProperties>
+						<defFilter>
 							<fromDef>ChemicalNetwork</fromDef>
-						</valueProperties>				
+						</defFilter>				
 					</li>
 				</networks>
 				<generalIOPattern>++++++|+####+|+####+|+####+|+####+|++++++</generalIOPattern>
@@ -967,6 +972,7 @@
 		</graphicData>
 		<inspectorTabs>
 			<li>ITab_Bills</li>
+			<li>TeleCore.ITab_NetworkDebug</li>
 		</inspectorTabs>
 		<recipes>
 			<li>MakeDronePackage_Common</li>
@@ -1003,12 +1009,12 @@
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<valueProperties>
+						<defFilter>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
 							<li>TibSludge</li>	
-						</valueProperties>
+						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>#+#|###|</generalIOPattern>
@@ -1095,12 +1101,12 @@
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<valueProperties>
+						<defFilter>
 							<li>TibGreen</li>	
 							<li>TibBlue</li>	
 							<li>TibRed</li>	
 							<li>TibSludge</li>	
-						</valueProperties>
+						</defFilter>
 					</li>
 					-->
 					<li>
@@ -1179,6 +1185,7 @@
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<inspectorTabs>
 			<li>TeleCore.ITab_CustomNetworkBills</li>
+			<li>TeleCore.ITab_NetworkDebug</li>
 		</inspectorTabs>
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
@@ -1204,7 +1211,7 @@
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
 		<defName>ChemicalTank</defName>
 		<label>chemical tank (placeholder)</label>
 		<description>Stores chemical elements.</description>
@@ -1212,7 +1219,6 @@
 		<costList>
 			<Steel>150</Steel>
 		</costList>
-		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Network/GasTank/GasTank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -1253,9 +1259,9 @@
 							<li>Transmitter</li>
 							<li>Storage</li>
 						</networkRoles>
-						<valueProperties>
+						<defFilter>
 							<fromDef>ChemicalNetwork</fromDef>
-						</valueProperties>
+						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>#+#|+++|#+#</generalIOPattern>

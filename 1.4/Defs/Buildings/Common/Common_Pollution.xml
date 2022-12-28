@@ -45,11 +45,11 @@
 							<maxStorage>1000</maxStorage>
 							<dropContents>false</dropContents>
 						</containerProps>
-						<valueProperties>
+						<defFilter>
 							<values>
 								<li>Network_TibPollution</li>
 							</values>
-						</valueProperties>
+						</defFilter>
 					</li>
 				</networks>
 				<!--<generalIOPattern>++|++</generalIOPattern>-->
@@ -142,11 +142,11 @@
 							<maxStorage>750</maxStorage>
 							<dropContents>false</dropContents>
 						</containerProps>
-						<valueProperties>
+						<defFilter>
 							<values>
 								<li>Network_TibPollution</li>
 							</values>
-						</valueProperties>
+						</defFilter>
 					</li>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
@@ -160,11 +160,11 @@
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
 						</containerProps>
-						<valueProperties>
+						<defFilter>
 							<values>
 								<li>TibSludge</li>
 							</values>
-						</valueProperties>
+						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>++|++</generalIOPattern>
@@ -251,9 +251,9 @@
 							<maxStorage>100</maxStorage>
 							<dropContents>false</dropContents>
 						</containerProps>
-						<valueProperties>
+						<defFilter>
 							<li>Network_TibPollution</li>	
-						</valueProperties>
+						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>+</generalIOPattern>
@@ -354,9 +354,9 @@
 							<maxStorage>100</maxStorage>
 							<dropContents>false</dropContents>
 						</containerProps>
-						<valueProperties>
+						<defFilter>
 							<li>Network_TibPollution</li>
-						</valueProperties>
+						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>+</generalIOPattern>

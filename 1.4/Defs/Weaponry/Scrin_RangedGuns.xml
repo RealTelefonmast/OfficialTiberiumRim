@@ -201,8 +201,10 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.25</drawSize>
 		</graphicData>
+		<!--
 		<soundInteract>Interact_BladelinkMonoSword</soundInteract>
 		<meleeHitSound>MeleeHit_BladelinkMonoSword</meleeHitSound>
+		-->
 		<statBases>
 			<MarketValue>5000</MarketValue>
 			<MaxHitPoints>25</MaxHitPoints>

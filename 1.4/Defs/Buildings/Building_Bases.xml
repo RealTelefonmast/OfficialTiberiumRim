@@ -49,7 +49,14 @@
 		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef Name="RefineryBase_TR" ParentName="StationBase_TR" Abstract="True" Class="TiberiumRim.RefineryDef">
+	<TiberiumRim.TRThingDef Name="NetworkStationBase" ParentName="StationBase_TR" Abstract="True">
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<inspectorTabs>
+			<li>TeleCore.ITab_NetworkDebug</li>
+		</inspectorTabs>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef Name="RefineryBase_TR" ParentName="NetworkStationBase" Abstract="True" Class="TiberiumRim.RefineryDef">
 		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
 		<altitudeLayer>DoorMoveable</altitudeLayer>
 		<statBases>
