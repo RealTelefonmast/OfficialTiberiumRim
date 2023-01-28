@@ -57,7 +57,7 @@ namespace TiberiumRim
                     depositValue--;
                     GenTemperature.PushHeat(this, 40f);
                     var cell = this.OccupiedRect().ExpandedBy(1).RandomCell;
-                    map.GetMapInfo<AtmosphericMapInfo>().TrySpawnGasAt(cell, TiberiumDefOf.Gas_TiberiumGas, Rand.Range(500, 1000));
+                    map.GetMapInfo<AtmosphericMapInfo>().TrySpawnGasAt(cell, SpreadingGasDefOf.TiberiumGas, Rand.Range(500, 1000));
                 }
                 
             }, StartSpray, EndSpray);
