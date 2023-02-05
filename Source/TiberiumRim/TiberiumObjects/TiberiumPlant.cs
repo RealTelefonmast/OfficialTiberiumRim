@@ -7,7 +7,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class TiberiumPlant : Plant, IFXObject
+    public class TiberiumPlant : Plant, IFXHolder
     {
         public new TRThingDef def => (TRThingDef)base.def;
 
@@ -24,7 +24,7 @@ namespace TiberiumRim
 
         public virtual bool IsMain => true;
         public virtual int Priority => 100;
-        public virtual bool ShouldThrowFlecks => true;
+        public virtual bool ShouldDoEffects => true;
         public virtual CompPower ForcedPowerComp => null;
         public virtual bool FX_AffectsLayerAt(int index) => true;
         public virtual bool FX_ShouldDrawAt(int index) => true;

@@ -35,7 +35,7 @@ namespace TiberiumRim
         public float ContentPercent => depositValue / maxDepositValue;
         public bool IsEmpty => depositValue <= 0;
         public bool Bursting => burstTicksLeft > 0;
-        public override bool ShouldThrowFlecks => tiberiumSpike.Spawned;
+        public override bool ShouldDoEffects => tiberiumSpike.Spawned;
 
         public override void ExposeData()
         {

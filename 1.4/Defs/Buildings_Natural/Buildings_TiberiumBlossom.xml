@@ -14,7 +14,7 @@
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<size>(1,1)</size>
 		<comps>
-			<li Class="TeleCore.CompProperties_FleckThrower">
+			<li Class="TeleCore.CompProperties_ParticleThrower">
 				<!-- TODO: Fix up fleck thrower data creator
 				<effecters>
 					<li>
@@ -350,7 +350,7 @@
 			<drawSize>(2,2)</drawSize>
 		</graphicData>
 		<comps Inherit="False">
-			<li Class="TeleCore.CompProperties_FleckThrower">
+			<li Class="TeleCore.CompProperties_ParticleThrower">
 				<!--
 				<effecters>
 					<li>

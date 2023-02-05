@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using TeleCore;
+using TeleCore.Static;
 using Verse;
 
 namespace TiberiumRim
@@ -10,7 +11,10 @@ namespace TiberiumRim
         public List<Pawn> TotalSickColonists = new List<Pawn>();
         public Dictionary<HediffDef, List<Pawn>> InfectedPawns = new Dictionary<HediffDef, List<Pawn>>();
 
-        public MapPawnInfo(Map map) : base(map) { }
+        public MapPawnInfo(Map map) : base(map)
+        {
+            //GlobalEventHandler.ThingDespawning;
+        }
 
         public override void ExposeData()
         {

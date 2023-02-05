@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
+using TeleCore.Static;
 using UnityEngine;
 using Verse;
 
@@ -10,18 +12,20 @@ namespace TiberiumRim
         //public override
         public override Color BGColor => Color.green;
 
+        public override string GetLabel() => "TR.Alert.Exposure".Translate();
+
         public override void AlertActiveUpdate()
         {
             base.AlertActiveUpdate();
         }
 
-        //OutSource into 
-
+        //
         private List<Pawn> SickPawns
         {
             get
             {
-                List<Pawn> total = new List<Pawn>();
+                List<Pawn> total = StaticListHolder<Pawn>.RequestList("TR_SickPawnsTempList");
+                total.Clear();
                 foreach (var map in Find.Maps)
                 {
                     total.AddRange(map.Tiberium().MapPawnInfo.TotalSickColonists);
@@ -42,11 +46,15 @@ namespace TiberiumRim
             }
         }
         */
-
-        //TODO: Add alert for player
+        
         public override AlertReport GetReport()
         {
             return AlertReport.CulpritsAre(SickPawns);
+        }
+        
+        public override TaggedString GetExplanation()
+        {
+            return base.GetExplanation();
         }
     }
 }

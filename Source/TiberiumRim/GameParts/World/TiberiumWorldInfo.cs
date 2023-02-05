@@ -52,9 +52,11 @@ namespace TiberiumRim
 
         public override void InfoTick()
         {
-            if (Find.TickManager.TicksGame % checkDuration != 0) return;
+            if (Find.TickManager.TicksGame % checkDuration != 0) 
+                return;
+            
             return;
-            //TODO:...
+            //TODO: re-add world ticking of tib
             for (int i = 0; i < worldTiles; ++i)
             {
                 if (tiberiumGrid[i] <= 0) continue;

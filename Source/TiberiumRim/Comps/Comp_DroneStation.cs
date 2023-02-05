@@ -115,6 +115,7 @@ namespace TiberiumRim
 
         private void PrintIdleDrones(SectionLayer layer)
         {
+            if (!DroneGarage.Any) return;
             for(int i = 0; i < DroneGarage.Count; i++)
             {
                 Vector3 drawPos = parent.DrawPos + new Vector3(0, AltitudeLayer.BuildingOnTop.AltitudeFor(), 0) + Props.renderOffsets[i];
