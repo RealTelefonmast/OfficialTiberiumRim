@@ -2,28 +2,35 @@
 <Defs>
 	
 	<EffecterDef>
-		<defName>PowerPlantCommonSmoke</defName>
+		<defName>TibProducerCloudsGreen</defName>
 		<children>
 			<li Class="TeleCore.SubEffecterExtendedDef">
-				<fleckDef>TiberiumSmoke</fleckDef>
 				<subEffecterClass>TeleCore.SubEffecter_FX</subEffecterClass>
-				<originOffsets>
-					<north>
-						<li>(-1.35,0,-0.18)</li>
-						<li>(1.35,0,-0.18)</li>
-					</north>
-				</originOffsets>
-				<speed>1.5</speed>
-				<scale>0.5</scale>
+				<fleckDef>Fleck_TibFogG</fleckDef>
+				<positionRadius>1.49</positionRadius>
+				<scale>3~4.5</scale>					
+				<angle>0~360</angle>
+				<speed>0.2~0.35</speed>
 				<rotation>0~90</rotation>
-				<rotationRate>0.1</rotationRate>
-				<angle>0~50</angle>
-				<burstCount>1</burstCount>
-				<affectedByWind>true</affectedByWind>
-				<throwInterval>15~25</throwInterval>
+				<rotationRate>1</rotationRate>
+				<burstCount>1~2</burstCount>
+				<affectedByWind>false</affectedByWind>
+				<throwInterval>120</throwInterval>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+				<fleckDef>Fleck_IonLighting</fleckDef>
+				<chancePerTick>0.0045</chancePerTick>
+				<positionRadius>1.19</positionRadius>
+				<scale>1.25~4</scale>					
+				<angle>0~360</angle>
+				<speed>0</speed>
+				<burstCount>1~2</burstCount>
 			</li>
 		</children>
 	</EffecterDef>
+	
+	<!--
 	<TiberiumRim.EffecterDefTR>
 		<defName>TiberiumClouds_Green2</defName>
 		<tickInterval>2000</tickInterval>
@@ -57,5 +64,5 @@
 			</li>
 		</children>
 	</TiberiumRim.EffecterDefTR>
-
+	-->
 </Defs>

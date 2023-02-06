@@ -45,20 +45,6 @@
 		<growthRate>0.45</growthRate>
 	</FleckDef>
 	
-	<FleckDef ParentName="FleckBaseThrown_TR">
-		<defName>Fleck_TiberiumFog_Green</defName>
-		<graphicData>
-			<texPath>VisualFX/Natural/Gas</texPath>
-			<color>(15,255,55,55)</color>
-			<shaderType>MoteGlow</shaderType>
-		</graphicData>
-		<altitudeLayer>MoteOverhead</altitudeLayer>
-		<collide>true</collide>
-		<fadeInTime>5</fadeInTime>
-		<solidTime>30</solidTime>
-		<fadeOutTime>5</fadeOutTime>
-	</FleckDef>
-	
 	<FleckDef ParentName="FleckBase_TR">
 		<defName>Fleck_TiberiumCloudLightning</defName>
 		<graphicData>

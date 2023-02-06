@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<EffecterDef>
+		<defName>PowerPlantCommonSmoke</defName>
+		<children>
+			<li Class="TeleCore.SubEffecterExtendedDef">
+				<fleckDef>TiberiumSmoke</fleckDef>
+				<subEffecterClass>TeleCore.SubEffecter_FX</subEffecterClass>
+				<originOffsets>
+					<north>
+						<li>(-1.35,0,-0.18)</li>
+						<li>(1.35,0,-0.18)</li>
+					</north>
+				</originOffsets>
+				<speed>1.5</speed>
+				<scale>0.5</scale>
+				<rotation>0~90</rotation>
+				<rotationRate>0.1</rotationRate>
+				<angle>0~50</angle>
+				<burstCount>1</burstCount>
+				<affectedByWind>true</affectedByWind>
+				<throwInterval>15~25</throwInterval>
+			</li>
+		</children>
+	</EffecterDef>
+
+</Defs>

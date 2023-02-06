@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<!--Bases-->
+	<FleckDef Abstract="True" Name="FleckBase_TibFog" ParentName="FleckBaseThrown_TR">
+		<graphicData>
+			<texPath>VisualFX/Natural/Gas</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<collide>true</collide>
+		<fadeInTime>5</fadeInTime>
+		<solidTime>30</solidTime>
+		<fadeOutTime>5</fadeOutTime>
+	</FleckDef>
+	
+	<!---->
+	<FleckDef ParentName="FleckBaseThrown_TR">
+		<defName>Fleck_IonLighting</defName>
+		<graphicData>
+			<texPath>VisualFX/IonLighting/ion</texPath>
+			<color>(255,255,255,200)</color>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.05</fadeInTime>
+		<solidTime>0.05</solidTime>
+		<fadeOutTime>2</fadeOutTime>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase_TibFog">
+		<defName>Fleck_TibFogG</defName>
+		<graphicData>
+			<color>(15,255,55,125)</color>
+		</graphicData>
+	</FleckDef>
+	
+	<ThingDef ParentName="FleckBase_TibFog">
+		<defName>Fleck_TibFogB</defName>
+		<graphicData>
+			<color>(15,125,255,125)</color>
+		</graphicData>
+	</ThingDef>
+	
+	<ThingDef ParentName="FleckBase_TibFog">
+		<defName>Fleck_TibFogR</defName>
+		<graphicData>
+			<color>(255,15,115,125)</color>
+		</graphicData>
+	</ThingDef>
+	
+</Defs>

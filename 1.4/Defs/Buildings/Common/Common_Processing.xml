@@ -729,27 +729,6 @@
 			<li Class="CompProperties_Effecter">
 				<compClass>TeleCore.CompEffecter_FX</compClass>
 				<effecterDef>PowerPlantCommonSmoke</effecterDef>
-				<!--
-				<throwers>
-					<li>
-						<fleckDef>TiberiumSmoke</fleckDef>
-						<originOffsets>
-							<north>
-								<li>(-1.35,0,-0.18)</li>
-								<li>(1.35,0,-0.18)</li>
-							</north>
-						</originOffsets>
-						<speed>1.5</speed>
-						<scale>0.5</scale>
-						<rotation>0~90</rotation>
-						<rotationRate>0.1</rotationRate>
-						<angle>0~50</angle>
-						<burstCount>1</burstCount>
-						<affectedByWind>true</affectedByWind>
-						<throwInterval>15~25</throwInterval>
-					</li>
-				</throwers>
-				-->
 			</li>
 			<li Class="CompProperties_Flickable" />	
 			<li Class="CompProperties_HeatPusher">
