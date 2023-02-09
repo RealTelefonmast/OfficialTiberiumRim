@@ -26,15 +26,14 @@
 		</statBases>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<fxLayers>
-					
+				<fxLayers>	
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Scrin/DronePlatform/overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(4.5,9)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.55~0.9</opacityRange>
@@ -85,7 +84,7 @@
 				<fxLayers>
 					<!--
 					<li>
-						<data>
+						<graphicData>
 							<graphicClass>Graphic_MotePulse</graphicClass>
 							<shaderType>MotePsychicSkipFlash</shaderType>
 							<texPath>Things/Mote/PsycastSkipFlash</texPath>
@@ -93,16 +92,16 @@
 								<_Noise>/Things/Mote/SkipFlashNoise</_Noise>
 							</shaderParameters>
 							<drawSize>5.5</drawSize>
-						</data>
+						</graphicData>
 					</li>
 					-->
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Scrin/ScrinPortal</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>2.5</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.35~0.65</opacityRange>
@@ -112,12 +111,12 @@
 						</resize>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Scrin/ScrinPortal</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>2.5</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.35~0.65</opacityRange>
@@ -127,7 +126,7 @@
 						</resize>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Things/Mote/Black</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlowDistortBackground</shaderType>
@@ -137,16 +136,16 @@
 								<_brightnessMultiplier>1.1</_brightnessMultiplier>
 							</shaderParameters>
 							<drawSize>5.5</drawSize>
-						</data>
+						</graphicData>
 					</li>
 					<!--
 					<li>
-					<data>
+						<graphicData>
 							<texPath>Buildings/Scrin/ScrinPortal</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.5,2.5)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.0~0.85</opacityRange>
@@ -154,12 +153,12 @@
 						</fade>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Scrin/ScrinPortal</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.5,2.5)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 						<fade>
 							<opacityRange>0.8~0</opacityRange>
@@ -167,7 +166,7 @@
 						</fade>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Things/Mote/Black</texPath>
 							<shaderType>MoteGlowDistortBackground</shaderType>
 							<shaderParameters>
@@ -176,7 +175,7 @@
 								<_brightnessMultiplier>1.15</_brightnessMultiplier>
 							</shaderParameters>
 							<drawSize>2.5</drawSize>
-						</data>
+						</graphicData>
 					</li>
 					-->
 				</fxLayers>

@@ -50,8 +50,9 @@ namespace TiberiumRim
         {
             return args.index switch
             {
-                3 => delegate (RoutedDrawArgs graphic) {
-                    var blades = (Graphic_NumberedCollection)graphic.Graphic;
+                3 => delegate (RoutedDrawArgs drawArgs) 
+                {
+                    var blades = (Graphic_NumberedCollection)drawArgs.graphic;
                     for (int i = 0; i < blades.Count; i++)
                     {
                         Graphic g = blades.Graphics[i];
@@ -62,12 +63,13 @@ namespace TiberiumRim
                         Graphics.DrawMesh(mesh, drawPos, CurRot.ToQuat(), g.MatSingle, 0);
                     }
                 },
-                4 => delegate (RoutedDrawArgs graphic) {
-                    Material nukeMat = graphic.Graphic.MatSingle;
+                4 => delegate (RoutedDrawArgs drawArgs) 
+                {
+                    Material nukeMat = drawArgs.graphic.MatSingle;
                     nukeMat.SetTextureOffset("_MainTex", new Vector2(0.25f, NukeOffset + NodNukeOffY));
                     nukeMat.SetTextureScale("_MainTex", new Vector2(0.5f, 0.5f));
                     Matrix4x4 matrix4x = default(Matrix4x4);
-                    var pos = new Vector3(DrawPos.x, graphic.altitude, DrawPos.z + 2.55f);
+                    var pos = new Vector3(DrawPos.x, drawArgs.altitude, DrawPos.z + 2.55f);
                     pos.z += NodNukePosZ;
                     matrix4x.SetTRS(pos, Quaternion.Euler(Vector3.up), new Vector3(2f, 1f, 6f));
                     Graphics.DrawMesh(MeshPool.plane10, matrix4x, nukeMat, 0);

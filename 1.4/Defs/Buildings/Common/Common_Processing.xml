@@ -673,18 +673,28 @@
 				<transmitsPower>true</transmitsPower>
 				
 				<fromNetwork>TiberiumNetwork</fromNetwork>
-				<costPerValue>
-					<TibGreen>1</TibGreen>
-					<TibBlue>2</TibBlue>
-					<TibRed>3</TibRed>
-					<TibSludge>4</TibSludge>
-				</costPerValue>
-				<ticksPerValue>
-					<TibSludge>40</TibSludge>
-					<TibBlue>20</TibBlue>
-					<TibRed>30</TibRed>
-					<TibGreen>10</TibGreen>
-				</ticksPerValue>
+				<valueToTickRules>
+					<li>
+						<valueDef>TibGreen</valueDef>
+						<cost>1</cost>
+						<seconds>1</seconds>
+					</li>
+					<li>
+						<valueDef>TibBlue</valueDef>
+						<cost>1</cost>
+						<seconds>1.75</seconds>
+					</li>
+					<li>
+						<valueDef>TibRed</valueDef>
+						<cost>1</cost>
+						<seconds>3</seconds>
+					</li>
+					<li>
+						<valueDef>TibSludge</valueDef>
+						<cost>10</cost>
+						<seconds>1</seconds>
+					</li>
+				</valueToTickRules>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
@@ -706,6 +716,7 @@
 					</li>
 					<li>
 						<layerTag>EffecterPowerPlantSmoke</layerTag>
+						<needsPower>true</needsPower>
 						<effecterDef>PowerPlantCommonSmoke</effecterDef>
 					</li>
 				</fxLayers>
@@ -728,10 +739,6 @@
 					</thrower>
 				</moteData>
 				-->
-			</li>
-			<li Class="CompProperties_Effecter">
-				<compClass>TeleCore.CompEffecter_FX</compClass>
-				<effecterDef>PowerPlantCommonSmoke</effecterDef>
 			</li>
 			<li Class="CompProperties_Flickable" />	
 			<li Class="CompProperties_HeatPusher">

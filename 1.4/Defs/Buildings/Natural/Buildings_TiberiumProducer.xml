@@ -26,13 +26,13 @@
 			<li Class="TeleCore.CompProperties_FX">
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Natural/BigTiberiumCraterGreen/main_overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawRotated>false</drawRotated>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.2~0.6</opacityRange>
@@ -193,13 +193,13 @@
 				<!--
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Natural/BigTiberiumCraterBlue/main_overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawRotated>false</drawRotated>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.2~0.6</opacityRange>
@@ -377,26 +377,26 @@
 			<li Class="TeleCore.CompProperties_FX">
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Natural/BigTiberiumCraterGreen/green_overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawRotated>false</drawRotated>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.2~0.6</opacityRange>
 						</fade>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Natural/BigTiberiumCraterGreen/blue_overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawRotated>false</drawRotated>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.3~0.65</opacityRange>
@@ -599,35 +599,35 @@
 				-->
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Natural/RedTiberiumShard/top</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawRotated>false</drawRotated>
 							<drawSize>(5,5)</drawSize>
-						</data>				
+						</graphicData>				
 						<altitude>BuildingOnTop</altitude>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Natural/RedTiberiumShard/base_overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawRotated>false</drawRotated>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.2~0.6</opacityRange>
 						</fade>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Natural/RedTiberiumShard/top_overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawRotated>false</drawRotated>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
-						</data>
+						</graphicData>
 						<altitude>BuildingOnTop</altitude>
 						<fxMode>Dynamic</fxMode>
 					    <fade>
@@ -723,22 +723,22 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Natural/TiberiumCruentus/Cruentus_Top</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawRotated>false</drawRotated>
 							<drawSize>(5,5)</drawSize>
-						</data>				
+						</graphicData>				
 						<altitude>BuildingOnTop</altitude>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Natural/TiberiumCruentus/Cruentus_Overglow2</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawRotated>false</drawRotated>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
-						</data>
+						</graphicData>
 						<altitude>BuildingOnTop</altitude>
 						<fxMode>Dynamic</fxMode>
 					    <fade>
@@ -862,12 +862,12 @@
 			<li Class="TeleCore.CompProperties_FX">
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Natural/Veinhole/Veinhole/Overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3.5,3.5)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 						<fade>
 							<opacityRange>0~0.75</opacityRange>
@@ -965,13 +965,13 @@
 			<li Class="TeleCore.CompProperties_FX">
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Natural/TiberiumMonolith/Underlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<!--<shaderType>Cut</shaderType>-->
 							<drawRotated>false</drawRotated>
 							<drawSize>(8,8)</drawSize>
-						</data>				
+						</graphicData>				
 						<altitude>Floor</altitude>
 						<drawOffset>(0,0,-3.5)</drawOffset>
 					</li>

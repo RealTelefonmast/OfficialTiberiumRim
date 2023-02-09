@@ -32,12 +32,12 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Natural/Veinhole/VeinHub/Overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>Transparent</shaderType>
 							<drawSize>(1.5,1.5)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					</li>
 				</fxLayers>

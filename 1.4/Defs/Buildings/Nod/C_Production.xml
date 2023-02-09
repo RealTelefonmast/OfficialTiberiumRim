@@ -143,30 +143,30 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Production/Hangar/BaseLight</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(7,7)</drawSize>
-						</data>
+						</graphicData>
 						<drawOffset>(0,0,7)</drawOffset>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Production/Hangar/Cover</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<drawSize>(7,7)</drawSize>
-						</data>
+						</graphicData>
 						<drawOffset>(0,0,14)</drawOffset>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Production/Hangar/CoverLight</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(7,7)</drawSize>
-						</data>
+						</graphicData>
 						<drawOffset>(0,0,21)</drawOffset>
 						<needsPower>true</needsPower>
 					</li>
@@ -224,12 +224,12 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Production/Crane/Light</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2,4)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 				</fxLayers>
@@ -303,28 +303,28 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Production/Refinery/ContainerOverlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5.5,5.5)</drawSize>
 							<drawRotated>false</drawRotated>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Production/Refinery/Connector</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<drawSize>(5.5,5.5)</drawSize>
-						</data>
+						</graphicData>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Production/Refinery/RefConnector</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(5.5,5.5)</drawSize>
-						</data>
+						</graphicData>
 					</li>
 				</fxLayers>
 			</li>
@@ -379,33 +379,33 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Production/PowerPlant/Container</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
 						<skip>true</skip>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Production/PowerPlant/Light</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Production/PowerPlant/Display</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 				</fxLayers>

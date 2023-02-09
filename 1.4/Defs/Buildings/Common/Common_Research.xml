@@ -115,12 +115,12 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Research/ResearchStation/TRSoverlay</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(8,4)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 				</fxLayers>
@@ -202,12 +202,12 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Research/ResearchCrafter/TRCoverlay</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(4.5,4.5)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 				</fxLayers>

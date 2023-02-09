@@ -251,12 +251,12 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/GDI/Defense/SonicInhibition/SonicFence/Hub_Glow</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(1.25, 1.25)</drawSize>							
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 				</fxLayers>

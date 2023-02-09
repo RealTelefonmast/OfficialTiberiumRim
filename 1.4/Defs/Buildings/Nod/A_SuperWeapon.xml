@@ -37,49 +37,49 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Temple/Main</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(7,8)</drawSize>
-						</data>
+						</graphicData>
 						<altitude>BuildingOnTop</altitude>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Temple/Entrance</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(7,8)</drawSize>
-						</data>
+						</graphicData>
 						<altitude>Item</altitude>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Temple/PowerLights</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(7,8)</drawSize>
-						</data>
+						</graphicData>
 						<altitude>Item</altitude>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Temple/Blades</texPath>
 							<graphicClass>TiberiumRim.Graphic_NumberedCollection</graphicClass>
 							<shaderType>Transparent</shaderType>
 							<drawSize>(3,3)</drawSize>
-						</data>
+						</graphicData>
 						<altitude>Building</altitude>
 						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Temple/Nuke/NukeBase</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(2,6)</drawSize>
-						</data>
+						</graphicData>
 						<altitude>MapDataOverlay</altitude>
 						<fxMode>Dynamic</fxMode>
 					</li>
@@ -144,42 +144,42 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Suppressor/Light1</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(7,7)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Suppressor/Light2</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(7,7)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Suppressor/Light3</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(7,7)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Suppressor/LightCenter</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(7,7)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 						<fxMode>Dynamic</fxMode>
 					    <fade>

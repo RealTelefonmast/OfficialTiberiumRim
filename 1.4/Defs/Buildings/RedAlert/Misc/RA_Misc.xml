@@ -24,19 +24,19 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<graphicClass>Graphic_Single</graphicClass>
 							<texPath>VisualFX/ChronoVortex</texPath>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>8</drawSize>
-						</data>
+						</graphicData>
 						<rotate>
 							<rotationSpeed>50</rotationSpeed>
 						</rotate>
 						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<graphicClass>Graphic_Single</graphicClass>
 							<texPath>Things/Mote/Black</texPath>
 							<shaderType>MoteGlowDistortBackground</shaderType>
@@ -46,7 +46,7 @@
 								<_brightnessMultiplier>1</_brightnessMultiplier>
 							</shaderParameters>
 							<drawSize>8</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					</li>
 				</fxLayers>

@@ -78,12 +78,12 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Misc/Light/Wall/Glow</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(1.5, 1.5)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 				</fxLayers>
@@ -169,12 +169,12 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Misc/Light/Floor/Glow</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(1, 1)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 				</fxLayers>

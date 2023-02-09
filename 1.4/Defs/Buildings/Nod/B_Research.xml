@@ -47,11 +47,11 @@
 			<li Class="TeleCore.CompProperties_FX">
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Misc/Shrine/Shrine_Glow</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(4,5)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 				</fxLayers>

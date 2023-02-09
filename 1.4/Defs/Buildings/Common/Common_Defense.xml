@@ -47,29 +47,29 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Defense/TibCannon/Overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.25,2.25)</drawSize>							
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Defense/TibCannon/Connection2</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(2.5,2.5)</drawSize>
-						</data>
+						</graphicData>
 						<altitude>Floor</altitude>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Defense/TibCannon/ConnectionOverlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.5,2.5)</drawSize>							
-						</data>
+						</graphicData>
 						<altitude>FloorEmplacement</altitude>
 						<fxMode>Dynamic</fxMode>
 					</li>

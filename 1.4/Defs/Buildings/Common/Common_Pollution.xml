@@ -57,23 +57,23 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/Node/Overlay1</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.25,4.5)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 						<needsPower>false</needsPower>
 					</li>
 					<li><skip>true</skip></li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/Node/Overlay2</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.25,4.5)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 				</fxLayers>
@@ -172,12 +172,12 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Pollution/Filter_Overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.25,2.25)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 						<needsPower>true</needsPower>
 					</li>
@@ -263,12 +263,12 @@
 					<li><skip>true</skip></li>
 					<li><skip>true</skip></li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Pollution/Intake/fan</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(1.25,1.25)</drawSize>
 							<drawOffset>(0,0,0.1)</drawOffset>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 						<rotate>
 							<rotationSpeed>75</rotationSpeed>
@@ -277,12 +277,12 @@
 						<needsPower>false</needsPower>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Pollution/Intake/top</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(1.25,1.25)</drawSize>
 							<drawOffset>(0,0,0.1)</drawOffset>
-						</data>
+						</graphicData>
 						<needsPower>false</needsPower>
 					</li>
 				</fxLayers>

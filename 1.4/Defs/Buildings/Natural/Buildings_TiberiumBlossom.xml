@@ -14,8 +14,9 @@
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<size>(1,1)</size>
 		<comps>
+			<!-- TODO: 
 			<li Class="TeleCore.CompProperties_ParticleThrower">
-				<!-- TODO: Fix up fleck thrower data creator
+				Fix up fleck thrower data creator
 				<effecters>
 					<li>
 						<moteInterval>50~60</moteInterval>
@@ -54,8 +55,8 @@
 						<moteInterval>750~1250</moteInterval>
 					</thrower>
 				</moteData>
-				-->
 			</li>
+			-->
 			<li Class="CompProperties_Glower">
 				<glowRadius>4</glowRadius>
 				<glowColor>(120,200,120)</glowColor>
@@ -93,13 +94,13 @@
 			<li Class="TeleCore.CompProperties_FX">
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Natural/BlossomTree/BlossomTree_overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawRotated>false</drawRotated>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
-						</data>
+						</graphicData>
 						<altitude>Item</altitude>
 						<fxMode>Dynamic</fxMode>
 					    <fade>
@@ -209,13 +210,13 @@
 			<li Class="TeleCore.CompProperties_FX">
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Natural/BlossomTree/BlossomTreeBlue_overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawRotated>false</drawRotated>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
-						</data>
+						</graphicData>
 						<altitude>Item</altitude>
 						<fxMode>Dynamic</fxMode>
 					    <fade>
@@ -350,8 +351,8 @@
 			<drawSize>(2,2)</drawSize>
 		</graphicData>
 		<comps Inherit="False">
-			<li Class="TeleCore.CompProperties_ParticleThrower">
 				<!--
+			<li Class="TeleCore.CompProperties_ParticleThrower">
 				<effecters>
 					<li>
 						<moteInterval>50~80</moteInterval>
@@ -363,8 +364,8 @@
 						<speed>0.15~0.3</speed>
 					</li>
 				</effecters>
-				-->
 			</li>
+			-->
 		</comps>
 		<tiberiumFieldRules>
 			<floraOptions>

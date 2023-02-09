@@ -9,12 +9,12 @@
 			<li Class="TeleCore.CompProperties_FX"> 		
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<texPath>Pawns/Mechanical/Common/Harvester/FX/HC</texPath>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					</li>
 				</fxLayers>			
@@ -54,12 +54,12 @@
 			<li Class="TeleCore.CompProperties_FX"> 		
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Pawns/Mechanical/GDI/Harvester/FX/HG</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					</li>
 				</fxLayers>			
@@ -95,22 +95,22 @@
 			<li Class="TeleCore.CompProperties_FX"> 		
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Pawns/Mechanical/Nod/Harvester/FX/HN</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Pawns/Mechanical/Nod/Harvester/FX/HNE</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<drawRotated>false</drawRotated>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.6~1</opacityRange>

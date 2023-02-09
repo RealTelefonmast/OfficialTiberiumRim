@@ -41,21 +41,21 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Obelisk/PowerOn</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(6,6)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Obelisk/Charge</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(6,6)</drawSize>
-						</data>
+						</graphicData>
 						<fxMode>Dynamic</fxMode>
 					</li>
 				</fxLayers>
@@ -147,12 +147,12 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Turrets/Hub_Glow</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.25,2.25)</drawSize>						
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 				</fxLayers>
@@ -352,46 +352,46 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Turrets/Lights</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.25,2.25)</drawSize>							
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
 						<skip>true</skip>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Turrets/Shredder_GlowNoBarrel</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.5,2.5)</drawSize>							
-						</data>
+						</graphicData>
 						<altitude>Item</altitude>
 						<fxMode>Dynamic</fxMode>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Turrets/Shredder_GlowLeft</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.5,2.5)</drawSize>							
-						</data>
+						</graphicData>
 						<altitude>Item</altitude>
 						<fxMode>Dynamic</fxMode>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Turrets/Shredder_GlowRight</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.5,2.5)</drawSize>						
-						</data>
+						</graphicData>
 						<altitude>Item</altitude>
 						<fxMode>Dynamic</fxMode>
 						<needsPower>true</needsPower>
@@ -474,35 +474,35 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Turrets/Lights</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2,2)</drawSize>							
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
 						<skip>true</skip>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Turrets/Flame_Glow</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2,2)</drawSize>							
-						</data>
+						</graphicData>
 						<altitude>Item</altitude>
 						<fxMode>Dynamic</fxMode>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Defense/Turrets/Flame_Flash</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2,2)</drawSize>							
-						</data>
+						</graphicData>
 						<altitude>Item</altitude>
 						<fxMode>Dynamic</fxMode>
 					</li>
@@ -593,12 +593,12 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Nod/Structure/LaserFence/Hub_Glow</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(1.25, 1.25)</drawSize>							
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 				</fxLayers>
