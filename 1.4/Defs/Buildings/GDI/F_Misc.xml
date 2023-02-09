@@ -91,7 +91,7 @@
 				<glowerDef>GlowSource_GDI_IonBlue</glowerDef>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/GDI/Misc/Light/Wall/overlay</texPath>
@@ -101,7 +101,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>	
 		</comps>
 		<modExtensions>
@@ -183,7 +183,7 @@
 		</statBases>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/GDI/Misc/Light/Floor/Light_Overlay</texPath>
@@ -193,7 +193,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>	
 			<li Class="CompProperties_Glower">
 				<glowRadius>15</glowRadius>

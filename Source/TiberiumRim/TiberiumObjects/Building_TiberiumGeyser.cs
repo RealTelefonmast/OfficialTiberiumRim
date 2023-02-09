@@ -35,8 +35,13 @@ namespace TiberiumRim
         public float ContentPercent => depositValue / maxDepositValue;
         public bool IsEmpty => depositValue <= 0;
         public bool Bursting => burstTicksLeft > 0;
-        public override bool ShouldDoEffects => tiberiumSpike.Spawned;
-
+        
+        //FX
+        public override bool? FX_ShouldThrowEffects(FXLayerArgs args)
+        {
+            return tiberiumSpike.Spawned;
+        }
+        
         public override void ExposeData()
         {
             base.ExposeData();

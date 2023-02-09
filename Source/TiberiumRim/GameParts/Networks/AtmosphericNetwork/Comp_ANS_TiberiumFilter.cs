@@ -27,31 +27,34 @@ namespace TiberiumRim
         private bool ShouldProcess => !AtmosphericComp.Container.Empty && !ProcessingComp.Container.Full;
         private float Alpha => ticksLeft > 0 ? FlickerCurve.Evaluate(((curAnimLength - ticksLeft) / (float)curAnimLength)) : 0.4f;
 
-        public override Vector3? FX_GetDrawPositionAt(int index)
+        public override Vector3? FX_GetDrawPosition(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 0 => parent.DrawPos,
                 _ => null
             };
+            return base.FX_GetDrawPosition(args);
         }
 
-        public override Color? FX_GetColorAt(int index)
+        public override Color? FX_GetColor(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 0 => Color.white,
                 _ => null
             };
+            return base.FX_GetColor(args);
         }
 
-        public override float FX_GetOpacityAt(int index)
+        public override float? FX_GetOpacity(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 0 => Alpha,
                 _ => 1
             };
+            return base.FX_GetOpacity(args);
         }
 
         //

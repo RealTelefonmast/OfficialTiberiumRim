@@ -7,7 +7,7 @@
 		<description>A simple tiberium harvester made out of rough components, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 		
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<graphicClass>Graphic_Multi</graphicClass>
@@ -15,9 +15,9 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
-				</overlays>			
+				</fxLayers>			
 			</li>
 			<li Class="TeleCore.CompProperties_AnimationRenderer"> 	
 				<animationDef>HarvesterAnimation</animationDef>
@@ -52,7 +52,7 @@
 		<description>An armored tiberium harvester designed by GDI, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 		
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Pawns/Mechanical/GDI/Harvester/FX/HG</texPath>
@@ -60,9 +60,9 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
-				</overlays>			
+				</fxLayers>			
 			</li>
 		</comps>
 		<statBases>
@@ -93,7 +93,7 @@
 		<description>A advanced tiberium harvester developed by Nod, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 		
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Pawns/Mechanical/Nod/Harvester/FX/HN</texPath>
@@ -101,7 +101,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
 						<data>
@@ -111,12 +111,12 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.6~1</opacityRange>
 						</fade>
 					</li>
-				</overlays>			
+				</fxLayers>			
 			</li>
 		</comps>
 		<statBases>

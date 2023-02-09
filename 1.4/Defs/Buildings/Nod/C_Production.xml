@@ -141,7 +141,7 @@
 		</inspectorTabs>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Nod/Production/Hangar/BaseLight</texPath>
@@ -170,7 +170,7 @@
 						<drawOffset>(0,0,21)</drawOffset>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -222,7 +222,7 @@
 		</costList>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Nod/Production/Crane/Light</texPath>
@@ -232,7 +232,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -301,7 +301,7 @@
 				</mechRecipes>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Nod/Production/Refinery/ContainerOverlay</texPath>
@@ -310,7 +310,7 @@
 							<drawSize>(5.5,5.5)</drawSize>
 							<drawRotated>false</drawRotated>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
 						<data>
@@ -326,7 +326,7 @@
 							<drawSize>(5.5,5.5)</drawSize>
 						</data>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 		<inspectorTabs>
@@ -377,7 +377,7 @@
 		</costList>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Nod/Production/PowerPlant/Container</texPath>
@@ -385,7 +385,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
 						<skip>true</skip>
@@ -408,7 +408,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="TeleCore.CompProperties_NetworkStructurePowerPlant">
 				<compClass>TiberiumRim.Comp_NetworkStructurePowerPlant</compClass>

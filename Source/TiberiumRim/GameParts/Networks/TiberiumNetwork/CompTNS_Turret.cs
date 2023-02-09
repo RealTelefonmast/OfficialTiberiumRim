@@ -17,28 +17,29 @@ namespace TiberiumRim
         public TurretTop TurretTop => Turret.top;
 
         //CompFX
-
-        public override bool FX_AffectsLayerAt(int index)
+        public override bool FX_ProvidesForLayer(FXLayerArgs args)
         {
-            return index is >= 0 and < 3;
+            return args.index is >= 0 and < 3;
         }
 
-        public override Vector3? FX_GetDrawPositionAt(int index)
+
+        public override Vector3? FX_GetDrawPosition(FXLayerArgs args)
         {
             return parent.DrawPos;
         }
 
-        public override Color? FX_GetColorAt(int index)
+
+        public override Color? FX_GetColor(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 _ => Color.white
             };
         }
-
-        public override float FX_GetOpacityAt(int index)
+        
+        public override float? FX_GetOpacity(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 0 => Container.StoredPercent,
                 2 => Container.StoredPercent,
@@ -46,22 +47,23 @@ namespace TiberiumRim
             };
         }
 
-        public override float? FX_GetRotationAt(int index)
+        public override float? FX_GetRotation(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 _ => Rotation(parent.DrawPos)
             };
         }
 
-        public override bool FX_ShouldDrawAt(int index)
+        public override bool? FX_ShouldDraw(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 1 => HasConnection,
                 2 => HasConnection,
                 _ => true
             };
+            return base.FX_ShouldDraw(args);
         }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)

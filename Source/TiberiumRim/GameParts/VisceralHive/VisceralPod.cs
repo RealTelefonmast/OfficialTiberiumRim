@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -82,12 +83,10 @@ namespace TiberiumRim
         }
 
         //FX
-        public override bool FX_ShouldDrawAt(int index)
+        public override bool? FX_ShouldDraw(FXLayerArgs args)
         {
-            return index switch
-            {
-                _ => !hatched
-            };
+            return !hatched;
+
         }
 
         public override void ExposeData()

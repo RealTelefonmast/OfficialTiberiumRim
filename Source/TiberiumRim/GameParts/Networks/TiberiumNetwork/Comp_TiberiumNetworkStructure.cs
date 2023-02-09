@@ -30,9 +30,9 @@ namespace TiberiumRim
         }
 
         //FX
-        public override Color? FX_GetColorAt(int index)
+        public override Color? FX_GetColor(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 0 => Color,
                 _ => Color.white

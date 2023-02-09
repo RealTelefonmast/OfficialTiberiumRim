@@ -12,27 +12,27 @@ namespace TiberiumRim
         public bool[] bools = new bool[3];
 
         //FX
-        public override float FX_GetOpacityAt(int index)
+        public override float? FX_GetOpacity(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 0 => 1f,
                 1 => 1f,
                 2 => 1f,
                 3 => 1f,
-                _ => base.FX_GetOpacityAt(index)
+                _ => base.FX_GetOpacity(args)
             };
         }
 
-        public override bool FX_ShouldDrawAt(int index)
+        public override bool? FX_ShouldDraw(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 0 => true,
                 1 => bools[0],
                 2 => bools[1],
                 3 => true,
-                _ => base.FX_ShouldDrawAt(index)
+                _ => base.FX_ShouldDraw(args)
             };
         }
 

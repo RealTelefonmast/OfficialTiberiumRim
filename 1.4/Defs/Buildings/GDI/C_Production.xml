@@ -133,7 +133,7 @@
 		</inspectorTabs>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/GDI/Production/Hangar/BaseLight</texPath>
@@ -159,7 +159,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -221,7 +221,7 @@
 				</mechRecipes>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/GDI/Production/Refinery/ContainerOverlay</texPath>
@@ -230,7 +230,7 @@
 							<drawSize>(5.5,5.5)</drawSize>
 							<drawRotated>false</drawRotated>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
 						<data>
@@ -253,7 +253,7 @@
 							<drawSize>(5.5,5.5)</drawSize>
 						</data>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 		<inspectorTabs>
@@ -310,7 +310,7 @@
 		</costList>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/GDI/Production/PowerPlant/Container</texPath>
@@ -318,7 +318,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
 						<skip>true</skip>
@@ -341,7 +341,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 				<moteData>
 					<northVec>
 						<li>(0,0,0.75)</li>

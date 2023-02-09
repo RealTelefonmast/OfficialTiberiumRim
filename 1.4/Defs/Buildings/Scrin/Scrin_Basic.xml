@@ -26,7 +26,7 @@
 		</statBases>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					
 					<li>
 						<data>
@@ -35,12 +35,12 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(4.5,9)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.55~0.9</opacityRange>
 						</fade>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 		<tickerType>Normal</tickerType>
@@ -82,7 +82,7 @@
 		</graphicData>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<!--
 					<li>
 						<data>
@@ -103,7 +103,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>2.5</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.35~0.65</opacityRange>
 						</fade>
@@ -118,7 +118,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>2.5</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.35~0.65</opacityRange>
 						</fade>
@@ -147,7 +147,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.5,2.5)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.0~0.85</opacityRange>
 							<sizeRange>0.9~1</sizeRange>
@@ -160,7 +160,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.5,2.5)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 						<fade>
 							<opacityRange>0.8~0</opacityRange>
 							<sizeRange>0.65~1.25</sizeRange>
@@ -179,7 +179,7 @@
 						</data>
 					</li>
 					-->
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 		<statBases>

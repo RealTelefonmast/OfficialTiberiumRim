@@ -113,7 +113,7 @@
 		</statBases>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Common/Research/ResearchStation/TRSoverlay</texPath>
@@ -123,7 +123,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -200,7 +200,7 @@
 		<surfaceType>Item</surfaceType>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Common/Research/ResearchCrafter/TRCoverlay</texPath>
@@ -210,7 +210,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>

@@ -2,6 +2,7 @@
 using System.Text;
 using RimWorld;
 using RimWorld.Planet;
+using TeleCore;
 using Verse;
 
 namespace TiberiumRim
@@ -10,9 +11,9 @@ namespace TiberiumRim
     {
 
         //FX
-        public override bool FX_ShouldDrawAt(int index)
+        public override bool? FX_ShouldDraw(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 0 => true,
                 1 => CentralLight

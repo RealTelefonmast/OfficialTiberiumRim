@@ -35,7 +35,7 @@
 		</statBases>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Nod/Defense/Temple/Main</texPath>
@@ -72,7 +72,7 @@
 							<drawSize>(3,3)</drawSize>
 						</data>
 						<altitude>Building</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
 						<data>
@@ -81,9 +81,9 @@
 							<drawSize>(2,6)</drawSize>
 						</data>
 						<altitude>MapDataOverlay</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>		
 			<li Class="CompProperties_Forbiddable"/>
 			<li Class="CompProperties_Power">
@@ -142,7 +142,7 @@
 				<glowColor>(255,150,150)</glowColor>
 			</li>		
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Nod/Defense/Suppressor/Light1</texPath>
@@ -151,7 +151,7 @@
 							<drawSize>(7,7)</drawSize>
 						</data>
 						<needsPower>true</needsPower>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
 						<data>
@@ -161,7 +161,7 @@
 							<drawSize>(7,7)</drawSize>
 						</data>
 						<needsPower>true</needsPower>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
 						<data>
@@ -171,7 +171,7 @@
 							<drawSize>(7,7)</drawSize>
 						</data>
 						<needsPower>true</needsPower>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
 						<data>
@@ -181,13 +181,13 @@
 							<drawSize>(7,7)</drawSize>
 						</data>
 						<needsPower>true</needsPower>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.25~1</opacityRange>
 							<opacityDuration>100</opacityDuration>
 						</fade>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>	
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>

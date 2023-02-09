@@ -26,18 +26,18 @@ namespace TiberiumRim
         public static float NodNukePosZ = 0f;
 
         //FX
-        public override Vector3? FX_GetDrawPositionAt(int index)
+        public override Vector3? FX_GetDrawPosition(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 3 => base.DrawPos + new Vector3(0, 0, -0.25f),
                 _ => DrawPos
             };
         }
 
-        public override bool FX_ShouldDrawAt(int index)
+        public override bool? FX_ShouldDraw(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 0 => bools[0],
                 1 => bools[1],
@@ -46,23 +46,23 @@ namespace TiberiumRim
             };
         }
 
-        public override Action<FXGraphic> FX_GetActionAt(int index)
+        public override Action<RoutedDrawArgs> FX_GetDrawAction(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
-                3 => delegate (FXGraphic graphic) {
+                3 => delegate (RoutedDrawArgs graphic) {
                     var blades = (Graphic_NumberedCollection)graphic.Graphic;
                     for (int i = 0; i < blades.Count; i++)
                     {
                         Graphic g = blades.Graphics[i];
                         var mesh = g.MeshAt(Rotation);
-                        var drawPos = FX_GetDrawPositionAt(3).Value;
+                        var drawPos = FX_GetDrawPosition(args).Value;
                         drawPos += Quaternion.Euler(0, i * (180f / blades.Count), 0) * new Vector3(-2, 0, 0) * CurPct;
                         drawPos.y = AltitudeLayer.Building.AltitudeFor();
                         Graphics.DrawMesh(mesh, drawPos, CurRot.ToQuat(), g.MatSingle, 0);
                     }
                 },
-                4 => delegate (FXGraphic graphic) {
+                4 => delegate (RoutedDrawArgs graphic) {
                     Material nukeMat = graphic.Graphic.MatSingle;
                     nukeMat.SetTextureOffset("_MainTex", new Vector2(0.25f, NukeOffset + NodNukeOffY));
                     nukeMat.SetTextureScale("_MainTex", new Vector2(0.5f, 0.5f));

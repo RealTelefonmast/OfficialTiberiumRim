@@ -22,18 +22,18 @@ namespace TiberiumRim
 		//FX STUFF
         public CompFX FXComp => this.GetComp<CompFX>();
 
-        public virtual bool IsMain => true;
-        public virtual int Priority => 100;
-        public virtual bool ShouldDoEffects => true;
-        public virtual CompPower ForcedPowerComp => null;
-        public virtual bool FX_AffectsLayerAt(int index) => true;
-        public virtual bool FX_ShouldDrawAt(int index) => true;
-        public virtual float FX_GetOpacityAt(int index) => 1f;
-        public virtual float? FX_GetRotationAt(int index) => null;
-        public virtual float? FX_GetRotationSpeedAt(int index) => null;
-        public virtual Color? FX_GetColorAt(int index) => null;
-        public virtual Vector3? FX_GetDrawPositionAt(int index) => null;
-        public Action<FXGraphic> FX_GetActionAt(int index) => null;
+        public virtual bool FX_ProvidesForLayer(FXLayerArgs args) => true; //FXLayerData._ThingHolderTag;
+        public virtual CompPowerTrader FX_PowerProviderFor(FXLayerArgs args) => null!;
+        public virtual bool? FX_ShouldDraw(FXLayerArgs args) => null;
+        public virtual float? FX_GetOpacity(FXLayerArgs args) => null;
+        public virtual float? FX_GetRotation(FXLayerArgs args) => null;
+        public virtual float? FX_GetRotationSpeedOverride(FXLayerArgs args) => null;
+        public virtual float? FX_GetAnimationSpeedFactor(FXLayerArgs args) => null;
+        public virtual Color? FX_GetColor(FXLayerArgs args) => null;
+        public virtual Vector3? FX_GetDrawPosition(FXLayerArgs args) => null;
+        public virtual Action<FXLayer> FX_GetAction(FXLayerArgs args) => null!;
+        public virtual bool? FX_ShouldThrowEffects(FXLayerArgs args) => null;
+        public virtual void FX_OnEffectSpawned(EffecterEffectSpawnedArgs effectSpawnedArgs) { }
 
 		public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {

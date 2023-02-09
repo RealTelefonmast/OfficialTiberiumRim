@@ -55,7 +55,7 @@
 				<!--<generalIOPattern>++|++</generalIOPattern>-->
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Common/Network/Node/Overlay1</texPath>
@@ -63,7 +63,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.25,4.5)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 						<needsPower>false</needsPower>
 					</li>
 					<li><skip>true</skip></li>
@@ -76,7 +76,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -170,7 +170,7 @@
 				<generalIOPattern>++|++</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Common/Pollution/Filter_Overlay</texPath>
@@ -178,10 +178,10 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.25,2.25)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>2</glowRadius>
@@ -259,7 +259,7 @@
 				<generalIOPattern>+</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li><skip>true</skip></li>
 					<li><skip>true</skip></li>
 					<li>
@@ -269,7 +269,7 @@
 							<drawSize>(1.25,1.25)</drawSize>
 							<drawOffset>(0,0,0.1)</drawOffset>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 						<rotate>
 							<rotationSpeed>75</rotationSpeed>
 						</rotate>
@@ -285,7 +285,7 @@
 						</data>
 						<needsPower>false</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>

@@ -50,27 +50,27 @@
 				<generalIOPattern>#++#|++++|++++|#++#</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/TNC/TNC_Displays</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(4.75,4.75)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/TNC/TNC_Overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(4.75,4.75)</drawSize>
-						</data>
-						<mode>Dynamic</mode>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
 						<needsPower>false</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>2</glowRadius>
@@ -164,9 +164,9 @@
 				<generalIOPattern>#+#|+++|#+#</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/Silo/Silo_Filled</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MaskedFlowMap</shaderType>
@@ -177,7 +177,7 @@
 								<MySrcMode>1</MySrcMode>
 								<MyDstMode>1</MyDstMode>
 							</shaderParameters>
-						</data>
+						</graphicData>
 						<drawOffset>(0,0,4)</drawOffset>
 						<textureParams>
 							<_BaseTex>Buildings/Common/Network/Silo/VFX/Base</_BaseTex>
@@ -186,16 +186,16 @@
 							<_FlowMap>Buildings/Common/Network/Silo/VFX/FlowMap</_FlowMap>
 							<_MaskTex>Buildings/Common/Network/Silo/VFX/FlowMask</_MaskTex>
 						</textureParams>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/Silo/SiloOL</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(3,3)</drawSize>
-						</data>
+						</graphicData>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
@@ -351,24 +351,24 @@
 				<generalIOPattern>#++#|++++|++++|#++#</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/GasTank/Gastank_overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
-						</data>
-						<mode>Dynamic</mode>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/GasTank/GasTankOL</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(5,5)</drawSize>
-						</data>
+						</graphicData>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
@@ -450,9 +450,9 @@
 				<generalIOPattern>###|O#O|O+O|#O#</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/Refinery/TibRefineryFilledOL</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<shaderType>MaskedFlowMap</shaderType>
@@ -463,7 +463,7 @@
 								<MyDstMode>1</MyDstMode>
 							</shaderParameters>
 							<drawSize>(4.15,4.15)</drawSize>
-						</data>
+						</graphicData>
 						<textureParams>
 							<_BaseTex>Buildings/Common/Network/Refinery/VFX/Base</_BaseTex>
 							<_BlendTex1>Buildings/Common/Network/Refinery/VFX/FlowBlend1</_BlendTex1>
@@ -471,16 +471,16 @@
 							<_FlowMap>Buildings/Common/Network/Refinery/VFX/FlowMap</_FlowMap>
 							<_MaskTex>Buildings/Common/Network/Refinery/VFX/FlowMask</_MaskTex>
 						</textureParams>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/Refinery/RefineryOL</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<drawSize>(4.15,4.15)</drawSize>
-						</data>
+						</graphicData>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 		<inspectorTabs>
@@ -566,28 +566,27 @@
 				<generalIOPattern>++++</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<useParentClass>true</useParentClass>
-				<overlays>
+				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/TibSpike/TibSpikeTop</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(3,15)</drawSize>
-						</data>
+						</graphicData>
 						<altitude>BuildingOnTop</altitude>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/TibSpike/TibSpikeOL</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,15)</drawSize>	
-						</data>
+						</graphicData>
 						<altitude>MoteOverhead</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -688,24 +687,28 @@
 				</ticksPerValue>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/PowerPlant/Overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
-						</data>
-						<mode>Dynamic</mode>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/PowerPlant/Connection</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(5,5)</drawSize>
-						</data>
+						</graphicData>
 					</li>
-				</overlays>
+					<li>
+						<layerTag>EffecterPowerPlantSmoke</layerTag>
+						<effecterDef>PowerPlantCommonSmoke</effecterDef>
+					</li>
+				</fxLayers>
 				<!-- TODO: Move to fleck thrower
 				<moteData>
 					<northVec>
@@ -843,11 +846,11 @@
 				<generalIOPattern>++++++|+####+|+####+|+####+|+####+|++++++</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li><skip>true</skip></li>
 					<li><skip>true</skip></li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Blank</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<color>(0.8,0.8,0.8)</color>
@@ -862,8 +865,8 @@
 								<MySrcMode>5</MySrcMode>
 								<MyDstMode>10</MyDstMode>
 							</shaderParameters>
-						</data>
-						<mode>Dynamic</mode>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
 						<rotate>
 							<startRotation>90</startRotation>
 							<rotationSpeed>-75</rotationSpeed>
@@ -874,7 +877,7 @@
 					</li>
 					
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Blank</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(6,6)</drawSize>
@@ -888,8 +891,8 @@
 								<MySrcMode>5</MySrcMode>
 								<MyDstMode>10</MyDstMode>
 							</shaderParameters>
-						</data>
-						<mode>Dynamic</mode>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
 						<rotate>
 							<rotationSpeed>100</rotationSpeed>
 						</rotate>
@@ -898,7 +901,7 @@
 						<needsPower>false</needsPower>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/Extractor/Extractor_overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(6,6)</drawSize>
@@ -912,20 +915,20 @@
 								<MySrcMode>1</MySrcMode>
 								<MyDstMode>1</MyDstMode>
 							</shaderParameters>
-						</data>
-						<mode>Dynamic</mode>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
 						<textureSize>(512,512)</textureSize>
 						<pivotPixelOffset>(0,0,7)</pivotPixelOffset>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/Extractor/Extractor_cover</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(6,6)</drawSize>
-						</data>
+						</graphicData>
 						<needsPower>false</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
@@ -1024,24 +1027,24 @@
 				<generalIOPattern>#+#|###|</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/Workbench/Overlay</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>3.3</drawSize>
-						</data>
-						<mode>Dynamic</mode>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/Workbench/Connection</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<drawSize>3.3</drawSize>	
-						</data>
+						</graphicData>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_Flickable"/>
 		</comps>
@@ -1123,23 +1126,23 @@
 				<generalIOPattern>+++|+#+|+#+</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/ResourceCrafter/ReplantFilled</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(4,4)</drawSize>
-						</data>						
+						</graphicData>						
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/ResourceCrafter/ReplantOL</texPath>
 							<graphicClass>Graphic_Multi</graphicClass>
 							<drawSize>(4,4)</drawSize>	
-						</data>
+						</graphicData>
 					</li>
-				</overlays>
+				</fxLayers>
 				<!-- TODO: Move to fleck thrower
 				<moteData>
 					<northVec>
@@ -1271,24 +1274,24 @@
 				<generalIOPattern>#+#|+++|#+#</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/GasTank/Gastank_overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(4,4)</drawSize>
-						</data>
-						<mode>Dynamic</mode>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Network/GasTank/GasTankOL</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(4,4)</drawSize>
-						</data>
+						</graphicData>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>

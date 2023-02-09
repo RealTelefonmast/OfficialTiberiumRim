@@ -91,7 +91,7 @@
 		<!--
 		<comps>
 			<li Class="TeleCore.CompProperties_FX">
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Natural/BlossomTree/BlossomTree_overlay</texPath>
@@ -101,13 +101,13 @@
 							<drawSize>(3,3)</drawSize>
 						</data>
 						<altitude>Item</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.3~0.8</opacityRange>
 							<opacityDuration>120</opacityDuration>
 						</fade>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 		-->
@@ -207,7 +207,7 @@
 		<!--
 		<comps>
 			<li Class="TeleCore.CompProperties_FX">
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Natural/BlossomTree/BlossomTreeBlue_overlay</texPath>
@@ -217,13 +217,13 @@
 							<drawSize>(3,3)</drawSize>
 						</data>
 						<altitude>Item</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.3~0.8</opacityRange>
 							<opacityDuration>120</opacityDuration>
 						</fade>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 		-->

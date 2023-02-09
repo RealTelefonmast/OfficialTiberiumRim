@@ -33,7 +33,7 @@
 		</statBases>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Natural/VisceralPod/Overlay</texPath>
@@ -49,13 +49,13 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 						<fade>
 							<opacityRange>0.4~0.9</opacityRange>
 							<opacityDuration>90</opacityDuration>
 						</fade>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 		<altitudeLayer>Building</altitudeLayer>

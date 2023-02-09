@@ -30,7 +30,7 @@
 		</statBases>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Natural/Veinhole/VeinHub/Overlay</texPath>
@@ -38,9 +38,9 @@
 							<shaderType>Transparent</shaderType>
 							<drawSize>(1.5,1.5)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 		<altitudeLayer>Building</altitudeLayer>

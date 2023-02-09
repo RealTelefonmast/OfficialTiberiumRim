@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--=============== BASES ==============-->
+	<FleckDef Name="FleckBase_TR" Abstract="True">
+		<fleckSystemClass>FleckSystemStatic</fleckSystemClass>
+		<label>Fleck</label>
+		<graphicData>
+		  <graphicClass>Graphic_Fleck</graphicClass>
+		  <shaderType>Mote</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<realTime>false</realTime>
+	</FleckDef>
+	
+	<FleckDef Name="FleckBaseThrown_TR" ParentName="FleckBase" Abstract="True">
+		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
+	</FleckDef>
+	
+</Defs>

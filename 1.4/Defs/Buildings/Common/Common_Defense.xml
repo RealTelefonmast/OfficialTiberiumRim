@@ -45,7 +45,7 @@
 				<tnwbMode>Consumer</tnwbMode>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Common/Defense/TibCannon/Overlay</texPath>
@@ -53,7 +53,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.25,2.25)</drawSize>							
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
 						<data>
@@ -71,9 +71,9 @@
 							<drawSize>(2.5,2.5)</drawSize>							
 						</data>
 						<altitude>FloorEmplacement</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>		
 			<li Class="CompProperties_Explosive">
 				<explosiveRadius>3.9</explosiveRadius>

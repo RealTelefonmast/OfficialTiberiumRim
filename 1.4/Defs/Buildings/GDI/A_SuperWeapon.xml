@@ -39,7 +39,7 @@
 		</statBases>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/GDI/Defense/IonCannon/Lights</texPath>
@@ -58,7 +58,7 @@
 						</data>
 						<needsPower>false</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>		
 			<li Class="CompProperties_Forbiddable"/>
 			<li Class="CompProperties_Power">
@@ -105,7 +105,7 @@
 		</costList>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/GDI/Defense/Firestorm/Light</texPath>
@@ -124,7 +124,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>	
 			<li Class="CompProperties_Glower">
 				<glowRadius>10</glowRadius>

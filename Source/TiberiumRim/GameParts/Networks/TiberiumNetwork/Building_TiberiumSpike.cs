@@ -16,30 +16,29 @@ namespace TiberiumRim
         public Comp_NetworkStructure CompTNW => this.TryGetComp<Comp_NetworkStructure>();
         public NetworkSubPart TibComponent => CompTNW[TiberiumDefOf.TiberiumNetwork];
 
-        public override bool FX_ShouldDrawAt(int index)
+        public override bool? FX_ShouldDraw(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 0 => TibComponent.HasConnection,
                 1 => TibComponent.HasConnection && CompTNW.CompPower.PowerOn,
-                _ => base.FX_ShouldDrawAt(index)
+                _ => base.FX_ShouldDraw(args)
             };
         }
 
-        public override Color? FX_GetColorAt(int index)
+        public override Color? FX_GetColor(FXLayerArgs args)
         {
-            return index switch
+            return null;
+            return args.index switch
             {
                 _ => Color.white
             };
         }
 
-        public override float FX_GetOpacityAt(int index)
+        public override float? FX_GetOpacity(FXLayerArgs args)
         {
-            return index switch
-            {
-                _ => 1f
-            };
+            return null;
+            return base.FX_GetOpacity(args);
         }
 
         //

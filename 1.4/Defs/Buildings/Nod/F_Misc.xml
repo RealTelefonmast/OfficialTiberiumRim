@@ -76,7 +76,7 @@
 				<glowerDef>GlowSource_Nod_Red</glowerDef>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Nod/Misc/Light/Wall/Glow</texPath>
@@ -86,7 +86,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>	
 		</comps>
 		<modExtensions>
@@ -167,7 +167,7 @@
 		</statBases>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Nod/Misc/Light/Floor/Glow</texPath>
@@ -177,7 +177,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>	
 			<li Class="CompProperties_Glower">
 				<glowRadius>15</glowRadius>

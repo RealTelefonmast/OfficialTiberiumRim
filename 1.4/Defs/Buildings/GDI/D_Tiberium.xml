@@ -249,7 +249,7 @@
 				<transmitsPower>false</transmitsPower>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/GDI/Defense/SonicInhibition/SonicFence/Hub_Glow</texPath>
@@ -259,7 +259,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>	
 		</comps>
 		<beamHub>

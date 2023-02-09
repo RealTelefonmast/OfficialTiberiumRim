@@ -24,7 +24,7 @@
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX">
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Natural/BigTiberiumCraterGreen/main_overlay</texPath>
@@ -33,12 +33,12 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.2~0.6</opacityRange>
 						</fade>
 					</li>
-				</overlays>
+				</fxLayers>
 				<!--
 				<effecters>
 					<li>
@@ -191,7 +191,7 @@
 		<comps>
 			<li Class="TeleCore.CompProperties_FX">
 				<!--
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Natural/BigTiberiumCraterBlue/main_overlay</texPath>
@@ -200,13 +200,13 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.2~0.6</opacityRange>
 							<opacityDuration>100</opacityDuration>
 						</fade>
 					</li>
-				</overlays>
+				</fxLayers>
 				-->
 				<!--
 				<effecters>
@@ -375,7 +375,7 @@
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX">
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Natural/BigTiberiumCraterGreen/green_overlay</texPath>
@@ -384,7 +384,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.2~0.6</opacityRange>
 						</fade>
@@ -397,12 +397,12 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.3~0.65</opacityRange>
 						</fade>
 					</li>
-				</overlays>
+				</fxLayers>
 				<!--
 				<effecters>
 					<li>
@@ -597,7 +597,7 @@
 					</li>
 				</effecters>
 				-->
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Natural/RedTiberiumShard/top</texPath>
@@ -615,7 +615,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(5,5)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.2~0.6</opacityRange>
 						</fade>
@@ -629,12 +629,12 @@
 							<drawSize>(5,5)</drawSize>
 						</data>
 						<altitude>BuildingOnTop</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.3~0.65</opacityRange>
 						</fade>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>3</glowRadius>
@@ -721,7 +721,7 @@
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Natural/TiberiumCruentus/Cruentus_Top</texPath>
@@ -740,12 +740,12 @@
 							<drawSize>(5,5)</drawSize>
 						</data>
 						<altitude>BuildingOnTop</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					    <fade>
 							<opacityRange>0.2~0.6</opacityRange>
 						</fade>
 					</li>
-				</overlays>
+				</fxLayers>
 				<!--
 				<effecters>
 					<li>
@@ -860,7 +860,7 @@
 				<defaultAnimationTag>Idle</defaultAnimationTag>
 			</li>
 			<li Class="TeleCore.CompProperties_FX">
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Natural/Veinhole/Veinhole/Overlay</texPath>
@@ -868,13 +868,13 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3.5,3.5)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 						<fade>
 							<opacityRange>0~0.75</opacityRange>
 							<opacityDuration>450</opacityDuration>
 						</fade>
 					</li>
-				</overlays>
+				</fxLayers>
 				<!--
 				<effecters>
 					<li>
@@ -963,7 +963,7 @@
 		</graphicData>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX">
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Natural/TiberiumMonolith/Underlay</texPath>
@@ -975,7 +975,7 @@
 						<altitude>Floor</altitude>
 						<drawOffset>(0,0,-3.5)</drawOffset>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<heatPerSecond>20</heatPerSecond>

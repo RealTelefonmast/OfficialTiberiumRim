@@ -48,9 +48,18 @@ namespace TiberiumRim
 
         private NetworkSubPart ChemicalComponent => this[TiberiumDefOf.ChemicalNetwork];
 
-        public override float? FX_GetRotationSpeedAt(int index)
+        public override float? FX_GetRotation(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
+            {
+                4 => CompFX.FXLayers[3].TrueRotation,
+                _ => null
+            };
+        }
+
+        public override float? FX_GetRotationSpeedOverride(FXLayerArgs args)
+        {
+            return args.index switch
             {
                 2 => speedControl.OutputValue,
                 3 => speedControl.OutputValue,
@@ -58,18 +67,9 @@ namespace TiberiumRim
             };
         }
 
-        public override float? FX_GetRotationAt(int index)
+        public override Color? FX_GetColor(FXLayerArgs args)
         {
-            return index switch
-            {
-                4 => CompFX.Overlays[3].ExactRotation,
-                _ => null
-            };
-        }
-
-        public override Color? FX_GetColorAt(int index)
-        {
-            return index switch
+            return args.index switch
             {
                 4 => TiberiumComp.Container.Color,
                 _ => null,
@@ -125,9 +125,9 @@ namespace TiberiumRim
             }
             speedControl.Tick();
 
-            CompFX.Overlays[2].PropertyBlock.SetFloat("_BlendValue", BlendValue);
-            CompFX.Overlays[3].PropertyBlock.SetFloat("_BlendValue", BlendValue);
-            CompFX.Overlays[4].PropertyBlock.SetFloat("_BlendValue", BlendValue);
+            CompFX.FXLayers[2].PropertyBlock.SetFloat("_BlendValue", BlendValue);
+            CompFX.FXLayers[3].PropertyBlock.SetFloat("_BlendValue", BlendValue);
+            CompFX.FXLayers[4].PropertyBlock.SetFloat("_BlendValue", BlendValue);
         }
 
         public override void NetworkPostTick(NetworkSubPart networkSubPart, bool isPowered)

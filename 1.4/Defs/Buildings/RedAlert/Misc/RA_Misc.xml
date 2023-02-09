@@ -22,7 +22,7 @@
 		</statBases>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<graphicClass>Graphic_Single</graphicClass>
@@ -33,7 +33,7 @@
 						<rotate>
 							<rotationSpeed>50</rotationSpeed>
 						</rotate>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
 						<data>
@@ -47,9 +47,9 @@
 							</shaderParameters>
 							<drawSize>8</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 	</TiberiumRim.TRThingDef>

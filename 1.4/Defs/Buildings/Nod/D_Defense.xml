@@ -39,7 +39,7 @@
 		<tickerType>Normal</tickerType>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Nod/Defense/Obelisk/PowerOn</texPath>
@@ -56,9 +56,9 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(6,6)</drawSize>
 						</data>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>		
 			<li Class="CompProperties_Explosive">
 			<explosiveRadius>3.9</explosiveRadius>
@@ -145,7 +145,7 @@
 		<tickerType>Normal</tickerType>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Nod/Defense/Turrets/Hub_Glow</texPath>
@@ -155,7 +155,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -350,7 +350,7 @@
 		<uiIconPath>Buildings/Nod/Defense/Turrets/Shredder</uiIconPath>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Nod/Defense/Turrets/Lights</texPath>
@@ -371,7 +371,7 @@
 							<drawSize>(2.5,2.5)</drawSize>							
 						</data>
 						<altitude>Item</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
@@ -382,7 +382,7 @@
 							<drawSize>(2.5,2.5)</drawSize>							
 						</data>
 						<altitude>Item</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
@@ -393,10 +393,10 @@
 							<drawSize>(2.5,2.5)</drawSize>						
 						</data>
 						<altitude>Item</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>	
 		</comps>
 		<placeWorkers>
@@ -472,7 +472,7 @@
 		<uiIconPath>Buildings/Nod/Defense/Turrets/Flamer</uiIconPath>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Nod/Defense/Turrets/Lights</texPath>
@@ -493,7 +493,7 @@
 							<drawSize>(2,2)</drawSize>							
 						</data>
 						<altitude>Item</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
@@ -504,9 +504,9 @@
 							<drawSize>(2,2)</drawSize>							
 						</data>
 						<altitude>Item</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>	
 		</comps>
 		<modExtensions>
@@ -591,7 +591,7 @@
 				<transmitsPower>false</transmitsPower>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Nod/Structure/LaserFence/Hub_Glow</texPath>
@@ -601,7 +601,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>	
 		</comps>
 		<beamHub>

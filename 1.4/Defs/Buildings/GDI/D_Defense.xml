@@ -470,7 +470,7 @@
 		<specialDisplayRadius>40</specialDisplayRadius>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/GDI/Defense/SonicEmitter/Glow</texPath>
@@ -479,10 +479,10 @@
 							<drawSize>(3,3)</drawSize>							
 						</data>
 						<altitude>Item</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>	
 			<li Class="CompProperties_Explosive">
 				<explosiveRadius>4.9</explosiveRadius>

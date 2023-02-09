@@ -45,7 +45,7 @@
 			</li>
 			<li Class="CompProperties_Flickable"/>
 			<li Class="TeleCore.CompProperties_FX">
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/Nod/Misc/Shrine/Shrine_Glow</texPath>
@@ -54,7 +54,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>
 		</comps>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>

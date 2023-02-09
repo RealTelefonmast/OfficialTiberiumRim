@@ -171,10 +171,10 @@ namespace TiberiumRim
         public bool LeavesPhysicalContainer => false;
 
         //FX
-        public override bool FX_AffectsLayerAt(int index) => index == 0;
-        public override Color? FX_GetColorAt(int index) => Container.Color;
-        public override float FX_GetOpacityAt(int index) => Container.StoredPercent;
-        public override bool FX_ShouldDrawAt(int index) => true;
+        public override bool FX_ProvidesForLayer(FXLayerArgs args) => args.index == 0;
+        public override Color? FX_GetColor(FXLayerArgs args) => Container.Color;
+        public override float? FX_GetOpacity(FXLayerArgs args) => Container.StoredPercent;
+        public override bool? FX_ShouldDraw(FXLayerArgs args) => true;
 
         public void Notify_ContainerFull() { }
         public void Notify_ContainerStateChanged()

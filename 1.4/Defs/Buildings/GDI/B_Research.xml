@@ -37,7 +37,7 @@
 		</costList>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
-				<overlays>
+				<fxLayers>
 					<li>
 						<data>
 							<texPath>Buildings/GDI/Misc/Armory/Light</texPath>
@@ -47,7 +47,7 @@
 						</data>
 						<needsPower>true</needsPower>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>	
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>

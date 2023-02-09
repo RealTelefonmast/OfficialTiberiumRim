@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -11,32 +12,21 @@ namespace TiberiumRim
     public class CompTNS_TiberiumSpike : Comp_TiberiumNetworkStructure
     {
         //FX
-        public override bool FX_ShouldDrawAt(int index)
+        public override bool? FX_ShouldDraw(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 0 => HasConnection,
                 1 => HasConnection && CompPower.PowerOn,
-                _ => base.FX_ShouldDrawAt(index)
+                _ => base.FX_ShouldDraw(args)
             };
         }
 
-        public override Color? FX_GetColorAt(int index)
-        {
-            return index switch
-            {
-                _ => Color.white
-            };
-        }
+        public override Color? FX_GetColor(FXLayerArgs args) => Color.white;
 
-        public override float FX_GetOpacityAt(int index)
-        {
-            return index switch
-            {
-                _ => 1f
-            };
-        }
+        public override float? FX_GetOpacity(FXLayerArgs args) => 1f;
 
+        
         //
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {

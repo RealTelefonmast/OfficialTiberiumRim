@@ -260,7 +260,7 @@
 		<growthRate>9</growthRate>
 	</FleckDef>
 	
-  <FleckDef ParentName="FleckBase_Thrown">
+	<FleckDef ParentName="FleckBase_Thrown">
 		<defName>SubMote_AdvSpark</defName>
 		<graphicData>
 			<texPath>VisualFX/Original/Spark</texPath>
