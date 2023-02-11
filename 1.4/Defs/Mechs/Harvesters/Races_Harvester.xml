@@ -20,7 +20,7 @@
 				</fxLayers>			
 			</li>
 			<li Class="TeleCore.CompProperties_AnimationRenderer"> 	
-				<animationDef>HarvesterAnimation</animationDef>
+				<animationDef>HarvesterAnimationFixed</animationDef>
 				<defaultAnimationTag>Idle</defaultAnimationTag>
 			</li>
 		</comps>

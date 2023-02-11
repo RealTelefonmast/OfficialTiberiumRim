@@ -1,0 +1,879 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<TeleCore.AnimationDataDef>
+		<defName>HarvesterAnimationFixed</defName>
+		<animationSets>
+			<li>
+				<textureParts>
+					<li>
+						<materialData>
+							<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+							<texPath>Pawns/Mechanical/Common/Harvester/HarvesterBase_north</texPath>
+							<shaderPath>Map/CutoutComplex</shaderPath>
+						</materialData>
+						<texCoordsReference>(0,0,1,1)</texCoordsReference>
+						<layerTag>HarvesterBase_north</layerTag>
+					</li>
+					<li>
+						<materialData>
+							<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+							<texPath>Pawns/Mechanical/Common/Harvester/Harvester_north_arms</texPath>
+							<shaderPath>Map/CutoutComplex</shaderPath>
+						</materialData>
+						<texCoordsReference>(0.1,0.4,0.4,0.6)</texCoordsReference>
+						<layerTag>Harvester_north_arms</layerTag>
+					</li>
+					<li>
+						<materialData>
+							<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+							<texPath>Pawns/Mechanical/Common/Harvester/Harvester_north_arms</texPath>
+							<shaderPath>Map/CutoutComplex</shaderPath>
+						</materialData>
+						<texCoordsReference>(0.5,0.4,0.4,0.6)</texCoordsReference>
+						<layerTag>Harvester_north_arms</layerTag>
+					</li>
+				</textureParts>
+				<animations>
+					<li>
+						<tag>Idle</tag>
+						<frames>60</frames>
+						<bounds>0~60</bounds>
+						<keyFrames>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(-19.7, -21.4)</position>
+											<texCoordsData>(0.1,0.4,0.4,0.6)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(20.9, -20.8)</position>
+											<texCoordsData>(0.5,0.4,0.4,0.6)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+						</keyFrames>
+						<eventFlags IsNull="True" />
+					</li>
+					<li>
+						<tag>Harvest</tag>
+						<frames>90</frames>
+						<bounds>0~90</bounds>
+						<keyFrames>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>21</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>56</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>40</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>72</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>88</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(-20.7, -21.1)</position>
+											<texCoordsData>(0.1,0.4,0.4,0.6)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>21</frameTick>
+										<frameData>
+											<rotation>14</rotation>
+											<position>(-20.7, -21.1)</position>
+											<texCoordsData>(0.1,0.4,0.4,0.6)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>40</frameTick>
+										<frameData>
+											<rotation>14</rotation>
+											<position>(-21.0, -16.6)</position>
+											<texCoordsData>(0.1,0.4,0.4,0.6)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>56</frameTick>
+										<frameData>
+											<rotation>14</rotation>
+											<position>(-20.5, -20.9)</position>
+											<texCoordsData>(0.1,0.4,0.4,0.6)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>72</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(-20.5, -20.9)</position>
+											<texCoordsData>(0.1,0.4,0.4,0.6)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>88</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(-20.5, -20.9)</position>
+											<texCoordsData>(0.1,0.4,0.4,0.6)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(20.9, -20.6)</position>
+											<texCoordsData>(0.5,0.4,0.4,0.6)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>21</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(20.9, -20.6)</position>
+											<texCoordsData>(0.5,0.4,0.4,0.6)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>40</frameTick>
+										<frameData>
+											<rotation>-12</rotation>
+											<position>(20.9, -20.6)</position>
+											<texCoordsData>(0.5,0.4,0.4,0.6)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>56</frameTick>
+										<frameData>
+											<rotation>-12</rotation>
+											<position>(20.4, -16.8)</position>
+											<texCoordsData>(0.5,0.4,0.4,0.6)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>72</frameTick>
+										<frameData>
+											<rotation>-12</rotation>
+											<position>(20.2, -21.1)</position>
+											<texCoordsData>(0.5,0.4,0.4,0.6)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>88</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(20.2, -21.1)</position>
+											<texCoordsData>(0.5,0.4,0.4,0.6)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+						</keyFrames>
+						<eventFlags IsNull="True" />
+					</li>
+				</animations>
+			</li>
+			<li>
+				<textureParts>
+					<li>
+						<materialData>
+							<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+							<texPath>Pawns/Mechanical/Common/Harvester/HarvesterBase_east</texPath>
+							<shaderPath>Map/CutoutComplex</shaderPath>
+						</materialData>
+						<texCoordsReference>(0,0,1,1)</texCoordsReference>
+						<layerTag>HarvesterBase_east</layerTag>
+					</li>
+					<li>
+						<materialData>
+							<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+							<texPath>Pawns/Mechanical/Common/Harvester/Harvester_east_arms</texPath>
+							<shaderPath>Map/CutoutComplex</shaderPath>
+						</materialData>
+						<texCoordsReference>(0.6,0.4,0.4,0.3)</texCoordsReference>
+						<layerTag>Harvester_east_arms</layerTag>
+					</li>
+					<li>
+						<materialData>
+							<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+							<texPath>Pawns/Mechanical/Common/Harvester/Harvester_east_arms</texPath>
+							<shaderPath>Map/CutoutComplex</shaderPath>
+						</materialData>
+						<texCoordsReference>(0.6,0.1,0.4,0.3)</texCoordsReference>
+						<layerTag>Harvester_east_arms</layerTag>
+					</li>
+				</textureParts>
+				<animations>
+					<li>
+						<tag>Idle</tag>
+						<frames>60</frames>
+						<bounds>0~60</bounds>
+						<keyFrames>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(30.5, -7.9)</position>
+											<texCoordsData>(0.6,0.4,0.4,0.3)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(31.2, 22.2)</position>
+											<texCoordsData>(0.6,0.1,0.4,0.3)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+						</keyFrames>
+						<eventFlags IsNull="True" />
+					</li>
+					<li>
+						<tag>Harvest</tag>
+						<frames>90</frames>
+						<bounds>0~90</bounds>
+						<keyFrames>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>19</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>38</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>55</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>73</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>90</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(30.5, -7.9)</position>
+											<texCoordsData>(0.6,0.4,0.4,0.3)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>19</frameTick>
+										<frameData>
+											<rotation>16</rotation>
+											<position>(30.5, -7.9)</position>
+											<texCoordsData>(0.6,0.4,0.4,0.3)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>38</frameTick>
+										<frameData>
+											<rotation>16</rotation>
+											<position>(23.5, -8.1)</position>
+											<texCoordsData>(0.6,0.4,0.4,0.3)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>55</frameTick>
+										<frameData>
+											<rotation>16</rotation>
+											<position>(30.0, -7.6)</position>
+											<texCoordsData>(0.6,0.4,0.4,0.3)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>73</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(30.0, -7.6)</position>
+											<texCoordsData>(0.6,0.4,0.4,0.3)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>90</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(30.5, -7.6)</position>
+											<texCoordsData>(0.6,0.4,0.4,0.3)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(31.2, 22.2)</position>
+											<texCoordsData>(0.6,0.1,0.4,0.3)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>19</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(31.2, 22.2)</position>
+											<texCoordsData>(0.6,0.1,0.4,0.3)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>38</frameTick>
+										<frameData>
+											<rotation>-29</rotation>
+											<position>(31.2, 22.2)</position>
+											<texCoordsData>(0.6,0.1,0.4,0.3)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>55</frameTick>
+										<frameData>
+											<rotation>-29</rotation>
+											<position>(22.0, 22.2)</position>
+											<texCoordsData>(0.6,0.1,0.4,0.3)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>73</frameTick>
+										<frameData>
+											<rotation>-29</rotation>
+											<position>(30.2, 22.2)</position>
+											<texCoordsData>(0.6,0.1,0.4,0.3)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>90</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(30.5, 22.2)</position>
+											<texCoordsData>(0.6,0.1,0.4,0.3)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+						</keyFrames>
+						<eventFlags IsNull="True" />
+					</li>
+				</animations>
+			</li>
+			<li>
+				<textureParts>
+					<li>
+						<materialData>
+							<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+							<texPath>Pawns/Mechanical/Common/Harvester/HarvesterBase_south</texPath>
+							<shaderPath>Map/CutoutComplex</shaderPath>
+						</materialData>
+						<texCoordsReference>(0,0,1,1)</texCoordsReference>
+						<layerTag>HarvesterBase_south</layerTag>
+					</li>
+					<li>
+						<materialData>
+							<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+							<texPath>Pawns/Mechanical/Common/Harvester/HarvesterArms_south</texPath>
+							<shaderPath>Map/CutoutComplex</shaderPath>
+						</materialData>
+						<texCoordsReference>(0.2,0,0.3,0.4)</texCoordsReference>
+						<layerTag>HarvesterArms_south</layerTag>
+					</li>
+					<li>
+						<materialData>
+							<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+							<texPath>Pawns/Mechanical/Common/Harvester/HarvesterArms_south</texPath>
+							<shaderPath>Map/CutoutComplex</shaderPath>
+						</materialData>
+						<texCoordsReference>(0.5,0,0.3,0.4)</texCoordsReference>
+						<layerTag>HarvesterArms_south</layerTag>
+					</li>
+				</textureParts>
+				<animations>
+					<li>
+						<tag>Idle</tag>
+						<frames>60</frames>
+						<bounds>0~60</bounds>
+						<keyFrames>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(-15.4, 30.0)</position>
+											<texCoordsData>(0.2,0,0.3,0.4)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(14.7, 30.0)</position>
+											<texCoordsData>(0.5,0,0.3,0.4)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+						</keyFrames>
+						<eventFlags IsNull="True" />
+					</li>
+					<li>
+						<tag>Harvest</tag>
+						<frames>90</frames>
+						<bounds>0~90</bounds>
+						<keyFrames>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>18</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>36</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>54</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>72</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>90</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(0.0, 0.0)</position>
+											<texCoordsData>(0,0,1,1)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(-14.9, 30.8)</position>
+											<texCoordsData>(0.2,0,0.3,0.4)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>18</frameTick>
+										<frameData>
+											<rotation>-20</rotation>
+											<position>(-14.9, 30.8)</position>
+											<texCoordsData>(0.2,0,0.3,0.4)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>36</frameTick>
+										<frameData>
+											<rotation>-20</rotation>
+											<position>(-15.4, 21.0)</position>
+											<texCoordsData>(0.2,0,0.3,0.4)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>54</frameTick>
+										<frameData>
+											<rotation>-20</rotation>
+											<position>(-13.1, 31.3)</position>
+											<texCoordsData>(0.2,0,0.3,0.4)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>72</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(-14.9, 32.0)</position>
+											<texCoordsData>(0.2,0,0.3,0.4)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>90</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(-14.9, 32.0)</position>
+											<texCoordsData>(0.2,0,0.3,0.4)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+							<li>
+								<lookMode>Deep</lookMode>
+								<savedList>
+									<li>
+										<frameTick>0</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(14.7, 30.0)</position>
+											<texCoordsData>(0.5,0,0.3,0.4)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>18</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(14.7, 30.0)</position>
+											<texCoordsData>(0.5,0,0.3,0.4)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>36</frameTick>
+										<frameData>
+											<rotation>28</rotation>
+											<position>(14.7, 30.0)</position>
+											<texCoordsData>(0.5,0,0.3,0.4)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>54</frameTick>
+										<frameData>
+											<rotation>28</rotation>
+											<position>(14.5, 23.5)</position>
+											<texCoordsData>(0.5,0,0.3,0.4)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>72</frameTick>
+										<frameData>
+											<rotation>28</rotation>
+											<position>(13.5, 31.2)</position>
+											<texCoordsData>(0.5,0,0.3,0.4)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+									<li>
+										<frameTick>90</frameTick>
+										<frameData>
+											<rotation>0</rotation>
+											<position>(14.7, 32.5)</position>
+											<texCoordsData>(0.5,0,0.3,0.4)</texCoordsData>
+											<size>(1.0, 1.0)</size>
+											<pivotPoint>(0.0, 0.0)</pivotPoint>
+										</frameData>
+									</li>
+								</savedList>
+							</li>
+						</keyFrames>
+						<eventFlags IsNull="True" />
+					</li>
+				</animations>
+			</li>
+			<li>
+				<textureParts IsNull="True" />
+				<animations IsNull="True" />
+			</li>
+		</animationSets>
+	</TeleCore.AnimationDataDef>
+</Defs>
