@@ -55,7 +55,7 @@ namespace TiberiumRim
             base.SpawnSetup(map, respawningAfterLoad);
             tibSprayer = new IntermittenFleckSprayer(this, delegate
             {
-                TR_FleckMaker.ThrowTiberiumAirPuff(this.TrueCenter(), Map);
+                TRFleckMaker.ThrowTiberiumAirPuff(this.TrueCenter(), Map);
                 
                 if (Find.TickManager.TicksGame % 20 == 0)
                 {

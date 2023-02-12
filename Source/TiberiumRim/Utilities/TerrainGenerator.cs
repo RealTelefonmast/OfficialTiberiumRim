@@ -78,8 +78,6 @@ namespace TiberiumRim
 
         //Get Patch 
 
-        //Get Path
-
         //Get Cell
         public static bool GetNextRandomCell(IntVec3 from, IntVec3 pusher, List<IntVec3> visited, Predicate<IntVec3> validator, Action<IntVec3> action, out IntVec3 nextCell)
         {

@@ -20,7 +20,7 @@ namespace TiberiumRim
         public static void Zap(IntVec3 pos, Map map, Vector3 from, Vector3 to)
         {
             Log.Message("Zapping");
-            Mote_Arc arc = (Mote_Arc)ThingMaker.MakeThing(TiberiumDefOf.Mote_Arc);
+            Mote_Arc arc = (Mote_Arc)ThingMaker.MakeThing(EffectsDefOf.Mote_Arc);
             Material mat = MaterialsTesla.Jumps[TRandom.Range(0, 5)];
             arc.fadeInTimeOverride = 0.25f;
             arc.solidTimeOverride = 0.25f;
@@ -94,7 +94,7 @@ namespace TiberiumRim
                     for (int ii = 0; ii < count; ii++)
                     {
                         Vector3 exactPos = cachedList[i].ToVector3Shifted() + new Vector3(0, 0, TRandom.Range(heightRange)) + Gen.RandomHorizontalVector(0.75f);
-                        TRMote particle = (TRMote) ThingMaker.MakeThing(ThingDef.Named("IonAscensionCloud"), null);
+                        TRMote particle = (TRMote) ThingMaker.MakeThing(EffectsDefOf.IonAscensionCloud, null);
                         particle.exactPosition = exactPos;
                         particle.Scale = TRandom.Range(0.5f, 2.5f);
                         particle.exactRotation = TRandom.Range(0, 360);
@@ -123,8 +123,8 @@ namespace TiberiumRim
 
         public static void AscensionParticle(IntVec3 pos, Map map)
         {
-            Mote mote = (Mote) ThingMaker.MakeThing(ThingDef.Named("IonBeamBurn"), null);
-            TRMote mote2 = (TRMote) ThingMaker.MakeThing(ThingDef.Named("IonParticle"), null);
+            Mote mote = (Mote) ThingMaker.MakeThing(EffectsDefOf.IonBeamBurn, null);
+            TRMote mote2 = (TRMote) ThingMaker.MakeThing(EffectsDefOf.IonParticle, null);
             mote.exactPosition = mote2.exactPosition = pos.ToVector3Shifted();
             mote.Scale = 3 * TRandom.Range(1.5f, 3f);
             mote2.Scale = 1 * TRandom.Range(0.5f, 1f);
@@ -143,7 +143,7 @@ namespace TiberiumRim
             {
                 return;
             }
-            MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDef.Named("Mote_TiberiumGlow"), null);
+            MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(EffectsDefOf.Mote_TiberiumGlow, null);
             moteThrown.Scale = Rand.Range(4f, 6f) * size;
             moteThrown.rotationRate = Rand.Range(-3f, 3f);
             moteThrown.exactPosition = vector;

@@ -24,7 +24,7 @@ namespace TiberiumRim
             var normed = (to - from).ToVector3().normalized;
             IntVec3 toCell = from + (normed * Rand.Range(6, 8)).ToIntVec3();
 
-            Mote_Arc arc = (Mote_Arc)ThingMaker.MakeThing(TiberiumDefOf.Mote_Arc);
+            Mote_Arc arc = (Mote_Arc)ThingMaker.MakeThing(EffectsDefOf.Mote_Arc);
             Material mat = MaterialsTesla.Arcs[TRandom.Range(0, 3)];
             arc.fadeInTimeOverride = 0.25f;
             arc.solidTimeOverride = 0.25f;

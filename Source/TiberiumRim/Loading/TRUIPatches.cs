@@ -42,8 +42,8 @@ namespace TiberiumRim
                 {
                     if (code.opcode == OpCodes.Call && code.Calls(callOperand))
                     {
-                        yield return new CodeInstruction(OpCodes.Ldloc_S, 6);
                         yield return new CodeInstruction(OpCodes.Ldloc_S, 7);
+                        yield return new CodeInstruction(OpCodes.Ldloc_S, 8);
 
                         yield return new CodeInstruction(OpCodes.Call, changeMethod);
                     }
@@ -60,7 +60,7 @@ namespace TiberiumRim
                 GenUI.DrawTextureWithMaterial(imageRect, TiberiumContent.TibOptionBG_Cut, null, new Rect(0, 0, 1, 1));
                 Widgets.Label(new Rect(0f, curY, 200f, 30f), "Tiberium Coverage");
                 Rect newRect = new Rect(200, curY, width, 30f);
-                TiberiumSettings.Settings.tiberiumCoverage = Widgets.HorizontalSlider(newRect, (float)TiberiumSettings.Settings.tiberiumCoverage, 0f, 1, true, "Medium", "None", "Full", 0.05f);
+                TiberiumSettings.Settings.tiberiumCoverage = Widgets.HorizontalSlider_NewTemp(newRect, (float)TiberiumSettings.Settings.tiberiumCoverage, 0f, 1, true, "Medium", "None", "Full", 0.05f);
             }
         }
 
