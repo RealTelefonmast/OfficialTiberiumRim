@@ -94,7 +94,7 @@ Ticks before sound starts
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>Mote_AdvFlame</fleckDef>
+				<fleckDef>Fleck_AdvFlame</fleckDef>
 				<color>(1, 0.4, 0.4, 0.35)</color>
 				<burstCount>1</burstCount>
 				<scale>0.1</scale>
@@ -107,7 +107,7 @@ Ticks before sound starts
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>Mote_Smokeblack</fleckDef>
+				<fleckDef>Fleck_Smokeblack</fleckDef>
 				<color>(0.1, 0.1, 0.1, 1)</color>
 				<burstCount>3~5</burstCount>
 				<scale>2~3</scale>
@@ -135,7 +135,7 @@ Ticks before sound starts
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>Mote_Smokeblack</fleckDef>
+				<fleckDef>Fleck_Smokeblack</fleckDef>
 				<color>(0.1, 0.1, 0.1, 1)</color>
 				<burstCount>1~2</burstCount>
 				<scale>1~2</scale>
@@ -163,7 +163,7 @@ Ticks before sound starts
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>Mote_AdvFlame</fleckDef>
+				<fleckDef>Fleck_AdvFlame</fleckDef>
 				<color>(0.8, 0.8, 1, 0.35)</color>
 				<burstCount>1</burstCount>
 				<scale>0.1</scale>
@@ -232,7 +232,7 @@ Ticks before sound starts
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>Mote_AdvFlame</fleckDef>
+				<fleckDef>Fleck_AdvFlame</fleckDef>
 				<color>(0.8, 0.2, 1, 0.35)</color>
 				<burstCount>1</burstCount>
 				<scale>0.1</scale>
@@ -322,7 +322,7 @@ Ticks before sound starts
 		<children>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>Mote_AdvFlame2</fleckDef>
+				<fleckDef>Fleck_AdvFlame2</fleckDef>
 				<color>(1, 1, 0.8, 1)</color>
 				<burstCount>1~1</burstCount>
 				<scale>0.1~0.15</scale>
@@ -336,7 +336,7 @@ Ticks before sound starts
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>Mote_AdvFlame</fleckDef>
+				<fleckDef>Fleck_AdvFlame</fleckDef>
 				<color>(1, 0.9, 0.1, 0.25)</color>
 				<burstCount>0~1</burstCount>
 				<scale>0.05~0.1</scale>
@@ -350,7 +350,7 @@ Ticks before sound starts
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>Mote_Smokeblack</fleckDef>
+				<fleckDef>Fleck_Smokeblack</fleckDef>
 				<color>(0.1, 0.1, 0.1, 1)</color>
 				<burstCount>1~3</burstCount>
 				<ticksBetweenMotes>50</ticksBetweenMotes>
@@ -370,7 +370,7 @@ Ticks before sound starts
 		<children>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>SubMote_TibGasParticle</fleckDef>
+				<fleckDef>SubFleck_TibGasParticle</fleckDef>
 				<color>(1,1,1,0.8)</color>
 				<burstCount>1~1</burstCount>
 				<scale>0.25~0.5</scale>
@@ -390,7 +390,7 @@ Ticks before sound starts
 		<children>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>SubMote_TibGasParticle_Shadow</fleckDef>
+				<fleckDef>SubFleck_TibGasParticle_Shadow</fleckDef>
 				<color>(0.65,0.65,1,0.5)</color>
 				<burstCount>1~1</burstCount>
 				<scale>0.25~0.5</scale>
@@ -410,7 +410,7 @@ Ticks before sound starts
 		<children>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>SubMote_TibGasParticle</fleckDef>
+				<fleckDef>SubFleck_TibGasParticle</fleckDef>
 				<color>(1,1,1,1)</color>
 				<burstCount>1~1</burstCount>
 				<scale>0.75~1.1</scale>
@@ -424,7 +424,7 @@ Ticks before sound starts
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
-				<fleckDef>Mote_SmokeTR</fleckDef>
+				<fleckDef>Fleck_SmokeTR</fleckDef>
 				<color>(0.1, 0.6, 0.25, 0.6)</color>
 				<burstCount>1~3</burstCount>
 				<ticksBetweenMotes>50</ticksBetweenMotes>

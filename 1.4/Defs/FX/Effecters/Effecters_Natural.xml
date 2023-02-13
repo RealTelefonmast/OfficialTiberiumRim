@@ -16,6 +16,7 @@
 				<burstCount>1~2</burstCount>
 				<affectedByWind>false</affectedByWind>
 				<throwInterval>120</throwInterval>
+				<spawnLocType>RandomCellOnTarget</spawnLocType>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
@@ -26,6 +27,7 @@
 				<angle>0~360</angle>
 				<speed>0</speed>
 				<burstCount>1~2</burstCount>
+				<spawnLocType>RandomCellOnTarget</spawnLocType>
 			</li>
 		</children>
 	</EffecterDef>

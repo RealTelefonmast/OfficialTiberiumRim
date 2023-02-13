@@ -44,7 +44,7 @@
 	-->
 	
 	<FleckDef ParentName="FleckBase_Thrown">
-		<defName>SubMote_TibGasParticle</defName>
+		<defName>SubFleck_TibGasParticle</defName>
 		<graphicData>
 			<texPath>VisualFX/Natural/TiberiumGas/TiberiumGasLight</texPath>
 			<shaderType>TransparentPostLight</shaderType>
@@ -58,7 +58,7 @@
 	</FleckDef>
 	
 	<FleckDef ParentName="FleckBase_Thrown">
-		<defName>SubMote_TibGasParticle_Shadow</defName>
+		<defName>SubFleck_TibGasParticle_Shadow</defName>
 		<graphicData>
 			<texPath>VisualFX/Natural/Gas</texPath>
 			<shaderType>TransparentPostLight</shaderType>

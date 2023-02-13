@@ -44,7 +44,7 @@
 		<plantDamageFactor>2</plantDamageFactor>
 		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
 		<explosionCellFleck>Fleck_Nuke</explosionCellFleck>
-		<explosionInteriorFleck>SubMote_AdvParticle2</explosionInteriorFleck>
+		<explosionInteriorFleck>SubFleck_AdvParticle2</explosionInteriorFleck>
 		<explosionColorCenter>(1, 1, 0.1, 1)</explosionColorCenter>
 		<explosionColorEdge>(0.9, 0.1, 0.1, 0)</explosionColorEdge>
 		<explosionInteriorMote></explosionInteriorMote>
@@ -68,7 +68,7 @@
 		<plantDamageFactor>2</plantDamageFactor>
 		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
 		<explosionCellFleck>Fleck_NukePostEffect</explosionCellFleck>
-		<explosionInteriorFleck>SubMote_AdvParticle2</explosionInteriorFleck>
+		<explosionInteriorFleck>SubFleck_AdvParticle2</explosionInteriorFleck>
 		<explosionColorCenter>(0.75, 1, 0.1, 1)</explosionColorCenter>
 		<explosionColorEdge>(0.1, 0.5, 0.1, 0)</explosionColorEdge>
 		<explosionInteriorMote></explosionInteriorMote>
@@ -90,7 +90,7 @@
 		<buildingDamageFactor>2</buildingDamageFactor>
 		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
 		<explosionCellFleck>Fleck_BlastSound</explosionCellFleck>
-		<explosionInteriorFleck>SubMote_AdvParticle</explosionInteriorFleck>
+		<explosionInteriorFleck>SubFleck_AdvParticle</explosionInteriorFleck>
 		<explosionColorCenter>(1, 1, 1, 0.4)</explosionColorCenter>
 		<explosionColorEdge>(0.1, 0.1, 0.1, 0.1)</explosionColorEdge>
 		<soundExplosion>Shot_GDI_Sonic</soundExplosion>
@@ -110,7 +110,7 @@
 		<buildingDamageFactor>10</buildingDamageFactor>
 		<plantDamageFactor>5</plantDamageFactor>
 		<explosionCellFleck>Fleck_BlastWave</explosionCellFleck>
-		<explosionInteriorFleck>SubMote_AdvParticle</explosionInteriorFleck>
+		<explosionInteriorFleck>SubFleck_AdvParticle</explosionInteriorFleck>
 		<explosionColorCenter>(1, 1, 1, 0.4)</explosionColorCenter>
 		<explosionColorEdge>(0.1, 0.1, 0.1, 0.1)</explosionColorEdge>
 		<soundExplosion>Shot_GDI_Sonic</soundExplosion>
@@ -141,8 +141,8 @@
 		<label>bomb</label>
 		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
 		<explosionHeatEnergyPerCell>5</explosionHeatEnergyPerCell>
-		<explosionCellFleck>Mote_AdvExplosion1</explosionCellFleck>
-		<explosionInteriorFleck>SubMote_AdvParticle2</explosionInteriorFleck>
+		<explosionCellFleck>Fleck_AdvExplosion1</explosionCellFleck>
+		<explosionInteriorFleck>SubFleck_AdvParticle2</explosionInteriorFleck>
 		<explosionColorCenter>(0.1, 0.5, 1, 0.5)</explosionColorCenter>
 		<explosionColorEdge>(0.1, 0.5, 1, 0)</explosionColorEdge>
 		<soundExplosion>Blast_Rail</soundExplosion>	
@@ -163,8 +163,8 @@
 		<defaultStoppingPower>1</defaultStoppingPower>
 		<buildingDamageFactor>5</buildingDamageFactor>
 		<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
-		<explosionCellFleck>Mote_AdvParticle</explosionCellFleck>
-		<explosionInteriorFleck>SubMote_AdvSpark</explosionInteriorFleck>
+		<explosionCellFleck>Fleck_AdvParticle</explosionCellFleck>
+		<explosionInteriorFleck>SubFleck_AdvSpark</explosionInteriorFleck>
 		<explosionColorCenter>(0.8, 0.8, 1, 1)</explosionColorCenter>
 		<explosionColorEdge>(0.6, 0.6, 1, 0.1)</explosionColorEdge>
 		<combatLogRules>Damage_Bomb</combatLogRules>
@@ -179,8 +179,8 @@
 		<defaultDamage>30</defaultDamage>
 		<defaultArmorPenetration>0.3</defaultArmorPenetration>
 		<defaultStoppingPower>0.75</defaultStoppingPower>
-		<explosionCellFleck>Mote_AdvExplosion1</explosionCellFleck>
-		<explosionInteriorFleck>SubMote_TibGasParticle</explosionInteriorFleck>
+		<explosionCellFleck>Fleck_AdvExplosion1</explosionCellFleck>
+		<explosionInteriorFleck>SubFleck_TibGasParticle</explosionInteriorFleck>
 		<explosionColorCenter>(0.5, 1, 0.7, 1)</explosionColorCenter>
 		<explosionColorEdge>(0.1, 0.5, 0.1, 0)</explosionColorEdge>
 		<soundExplosion>Nod_ChemBomb</soundExplosion>
@@ -198,8 +198,8 @@
 		<minDamageToFragment>10</minDamageToFragment>
 		<defaultDamage>30</defaultDamage>
 		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>		
-		<explosionCellFleck>Mote_AdvParticle</explosionCellFleck>
-		<explosionInteriorFleck>SubMote_TibGasParticle</explosionInteriorFleck>
+		<explosionCellFleck>Fleck_AdvParticle</explosionCellFleck>
+		<explosionInteriorFleck>SubFleck_TibGasParticle</explosionInteriorFleck>
 		<explosionColorCenter>(0.5, 1, 0.7, 0.75)</explosionColorCenter>
 		<explosionColorEdge>(0.5, 0.1, 0.1, 0)</explosionColorEdge>
 		<canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
@@ -213,8 +213,8 @@
 		<deathMessage>{0} has died by green tiberium fragments.</deathMessage>
 		<minDamageToFragment>1</minDamageToFragment>
 		<defaultDamage>5</defaultDamage>
-		<explosionCellFleck>Mote_AdvExplosion1</explosionCellFleck>
-		<explosionInteriorFleck>SubMote_TibGasParticle</explosionInteriorFleck>
+		<explosionCellFleck>Fleck_AdvExplosion1</explosionCellFleck>
+		<explosionInteriorFleck>SubFleck_TibGasParticle</explosionInteriorFleck>
 		<explosionColorCenter>(0.1, 0.25, 0.1)</explosionColorCenter>
 		<explosionColorEdge>(0, 0.15, 0.05)</explosionColorEdge>
 		<soundExplosion>Shot_Nod_FlameTail</soundExplosion>
@@ -230,8 +230,8 @@
 		<minDamageToFragment>1</minDamageToFragment>
 		<defaultDamage>5</defaultDamage>
 		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
-		<explosionCellFleck>Mote_AdvExplosion1</explosionCellFleck>
-		<explosionInteriorFleck>SubMote_TibGasParticle</explosionInteriorFleck>
+		<explosionCellFleck>Fleck_AdvExplosion1</explosionCellFleck>
+		<explosionInteriorFleck>SubFleck_TibGasParticle</explosionInteriorFleck>
 		<explosionColorCenter>(0.1, 0.1, 0.5)</explosionColorCenter>
 		<explosionColorEdge>(0, 0.25, 0.25)</explosionColorEdge>
 		<soundExplosion>Shot_Nod_FlameTail</soundExplosion>

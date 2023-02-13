@@ -16,8 +16,8 @@
     <defaultDamage>10</defaultDamage>
     <defaultArmorPenetration>0</defaultArmorPenetration>
     <explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
-    <explosionCellFleck>Mote_AdvFlame</explosionCellFleck>
-	<explosionInteriorFleck>SubMote_AdvParticle2</explosionInteriorFleck>
+    <explosionCellFleck>Fleck_AdvFlame</explosionCellFleck>
+	<explosionInteriorFleck>SubFleck_AdvParticle2</explosionInteriorFleck>
 		<explosionColorCenter>(1, 1, 0.1, 0.5)</explosionColorCenter>
 		<explosionColorEdge>(0.9, 0.1, 0.1, 0.0)</explosionColorEdge>
     <soundExplosion>Explosion_Flame</soundExplosion>
@@ -46,8 +46,8 @@
     <plantDamageFactor>4</plantDamageFactor>
     <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
     <explosionHeatEnergyPerCell>5</explosionHeatEnergyPerCell>
-    <explosionCellFleck>Mote_AdvExplosion1</explosionCellFleck>
-	<explosionInteriorFleck>SubMote_AdvParticle</explosionInteriorFleck>
+    <explosionCellFleck>Fleck_AdvExplosion1</explosionCellFleck>
+	<explosionInteriorFleck>SubFleck_AdvParticle</explosionInteriorFleck>
 	<explosionColorCenter>(1, 1, 0.9, 0.8)</explosionColorCenter>
 	<explosionColorEdge>(1, 0.8, 0.3, 0)</explosionColorEdge>
     <soundExplosion>Explosion_Bomb</soundExplosion>
@@ -59,7 +59,7 @@
     <defaultDamage>550</defaultDamage>
     <defaultStoppingPower>2.0</defaultStoppingPower>
     <defaultArmorPenetration>1.30</defaultArmorPenetration>
-    <explosionCellFleck>Mote_AdvExplosion2</explosionCellFleck>
+    <explosionCellFleck>Fleck_AdvExplosion2</explosionCellFleck>
 	<explosionInteriorFleck></explosionInteriorFleck>
 	<explosionColorCenter>(1, 1, 0.9, 1)</explosionColorCenter>
 	<explosionColorEdge>(1, 0.8, 0.3, 0)</explosionColorEdge>
@@ -72,7 +72,7 @@
     <canInterruptJobs>false</canInterruptJobs>
     <makesBlood>false</makesBlood>
     <defaultDamage>999999</defaultDamage>
-    <explosionCellFleck>Mote_AdvExplosion2</explosionCellFleck>
+    <explosionCellFleck>Fleck_AdvExplosion2</explosionCellFleck>
 	<explosionColorCenter>(0.9, 0.9, 1, 0.5)</explosionColorCenter>
     <explosionColorEdge>(0.8, 0.8, 0.9, 0)</explosionColorEdge>
     <soundExplosion>Explosion_Stun</soundExplosion>
@@ -86,7 +86,7 @@
     <canInterruptJobs>false</canInterruptJobs>
     <makesBlood>false</makesBlood>
     <defaultDamage>0</defaultDamage>
-    <explosionCellFleck>Mote_AdvExplosion2</explosionCellFleck>
+    <explosionCellFleck>Fleck_AdvExplosion2</explosionCellFleck>
 	<explosionColorCenter>(0.9, 0.9, 1, 0.2)</explosionColorCenter>
     <explosionColorEdge>(0.8, 0.8, 0.9, 0)</explosionColorEdge>
     <harmsHealth>false</harmsHealth>
@@ -101,8 +101,8 @@
     <externalViolence>true</externalViolence>
     <deathMessage>{0} has been stunned to death.</deathMessage>
     <defaultDamage>20</defaultDamage>
-    <explosionCellFleck>Mote_AdvParticle</explosionCellFleck>
-	<explosionInteriorFleck>SubMote_AdvParticle3</explosionInteriorFleck>
+    <explosionCellFleck>Fleck_AdvParticle</explosionCellFleck>
+	<explosionInteriorFleck>SubFleck_AdvParticle3</explosionInteriorFleck>
 	<explosionColorCenter>(0.9, 0.9, 1, 0.5)</explosionColorCenter>
     <explosionColorEdge>(0.8, 0.8, 0.9, 0.1)</explosionColorEdge>
     <soundExplosion>Explosion_Stun</soundExplosion>
@@ -118,8 +118,8 @@
     <impactSoundType>Electric</impactSoundType>
     <defaultDamage>50</defaultDamage>
     <explosionSnowMeltAmount>0</explosionSnowMeltAmount>
-    <explosionCellFleck>Mote_AdvParticle</explosionCellFleck>
-	<explosionInteriorFleck>SubMote_AdvSpark</explosionInteriorFleck>
+    <explosionCellFleck>Fleck_AdvParticle</explosionCellFleck>
+	<explosionInteriorFleck>SubFleck_AdvSpark</explosionInteriorFleck>
     <explosionColorCenter>(0.8, 0.8, 1, 1)</explosionColorCenter>
     <explosionColorEdge>(0.6, 0.6, 1, 0.1)</explosionColorEdge>
     <soundExplosion>Explosion_EMP</soundExplosion>

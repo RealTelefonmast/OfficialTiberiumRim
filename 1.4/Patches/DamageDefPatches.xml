@@ -13,14 +13,14 @@
     <Operation Class="PatchOperationReplace">
         <xpath>/Defs/DamageDef[defName="Flame"]/explosionCellFleck</xpath>
         <value>
-           <explosionCellFleck>Mote_AdvFlame</explosionCellFleck>
+           <explosionCellFleck>Fleck_AdvFlame</explosionCellFleck>
         </value>    
     </Operation>
 
     <Operation Class="PatchOperationAdd">
         <xpath>/Defs/DamageDef[defName="Flame"]</xpath>
         <value>
-		   <explosionInteriorFleck>SubMote_AdvParticle2</explosionInteriorFleck>
+		   <explosionInteriorFleck>SubFleck_AdvParticle2</explosionInteriorFleck>
         </value>    
     </Operation>
 	
@@ -42,14 +42,14 @@
 	<Operation Class="PatchOperationReplace">
         <xpath>/Defs/DamageDef[defName="Bomb"]/explosionCellFleck</xpath>
         <value>
-           <explosionCellFleck>Mote_AdvExplosion1</explosionCellFleck>
+           <explosionCellFleck>Fleck_AdvExplosion1</explosionCellFleck>
         </value>    
     </Operation>
 
     <Operation Class="PatchOperationAdd">
         <xpath>/Defs/DamageDef[defName="Bomb"]</xpath>
         <value>
-		   <explosionInteriorFleck>SubMote_AdvParticle</explosionInteriorFleck>
+		   <explosionInteriorFleck>SubFleck_AdvParticle</explosionInteriorFleck>
         </value>
     </Operation>
 	
@@ -71,7 +71,7 @@
 	<Operation Class="PatchOperationAdd">
         <xpath>/Defs/DamageDef[defName="BombSuper"]</xpath>
         <value>
-           <explosionCellFleck>Mote_AdvExplosion2</explosionCellFleck>
+           <explosionCellFleck>Fleck_AdvExplosion2</explosionCellFleck>
         </value>    
     </Operation>
 
@@ -100,7 +100,7 @@
 	<Operation Class="PatchOperationReplace">
         <xpath>/Defs/DamageDef[defName="Extinguish"]/explosionCellFleck</xpath>
         <value>
-           <explosionCellFleck>Mote_AdvExplosion2</explosionCellFleck>
+           <explosionCellFleck>Fleck_AdvExplosion2</explosionCellFleck>
         </value>    
     </Operation>
 	
@@ -122,7 +122,7 @@
 	<Operation Class="PatchOperationReplace">
         <xpath>/Defs/DamageDef[defName="Smoke"]/explosionCellFleck</xpath>
         <value>
-           <explosionCellFleck>Mote_AdvExplosion2</explosionCellFleck>
+           <explosionCellFleck>Fleck_AdvExplosion2</explosionCellFleck>
         </value>    
     </Operation>
 	
@@ -144,14 +144,14 @@
     <Operation Class="PatchOperationReplace">
         <xpath>/Defs/DamageDef[defName="Stun"]/explosionCellFleck</xpath>
         <value>
-           <explosionCellFleck>Mote_AdvParticle</explosionCellFleck>
+           <explosionCellFleck>Fleck_AdvParticle</explosionCellFleck>
         </value>    
     </Operation>
 
     <Operation Class="PatchOperationAdd">
         <xpath>/Defs/DamageDef[defName="Stun"]</xpath>
         <value>
-		   <explosionInteriorFleck>SubMote_AdvParticle3</explosionInteriorFleck>
+		   <explosionInteriorFleck>SubFleck_AdvParticle3</explosionInteriorFleck>
         </value>    
     </Operation>
 	
@@ -173,14 +173,14 @@
     <Operation Class="PatchOperationReplace">
         <xpath>/Defs/DamageDef[defName="EMP"]/explosionCellFleck</xpath>
         <value>
-           <explosionCellFleck>Mote_AdvParticle</explosionCellFleck>
+           <explosionCellFleck>Fleck_AdvParticle</explosionCellFleck>
         </value>    
     </Operation>
 
     <Operation Class="PatchOperationReplace">
         <xpath>/Defs/DamageDef[defName="EMP"]/explosionInteriorFleck</xpath>
         <value>
-		   <explosionInteriorFleck>SubMote_AdvSpark</explosionInteriorFleck>
+		   <explosionInteriorFleck>SubFleck_AdvSpark</explosionInteriorFleck>
         </value>    
     </Operation>
 	
