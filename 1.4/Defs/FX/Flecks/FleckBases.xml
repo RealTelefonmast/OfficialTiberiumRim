@@ -17,4 +17,22 @@
 		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
 	</FleckDef>
 	
+	<FleckDef Abstract = "True" Name="FleckBase_DistortionShockwave" ParentName="FleckBaseThrown_TR">
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<fadeInTime>0.05</fadeInTime>
+		<fadeOutTime>1</fadeOutTime>
+		<solidTime>0.5</solidTime>
+		<growthRate>2</growthRate>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderType>MoteGlowDistortBackground</shaderType>
+			<shaderParameters>
+				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
+				<_distortionIntensity>0.05</_distortionIntensity>
+				<_brightnessMultiplier>1.15</_brightnessMultiplier>
+			</shaderParameters>
+			<drawSize>2</drawSize>
+		</graphicData>
+	</FleckDef>
+	
 </Defs>

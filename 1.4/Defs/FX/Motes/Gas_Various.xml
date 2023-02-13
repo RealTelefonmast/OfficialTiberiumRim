@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<!---->
+	<!--
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_TiberiumGas</defName>
 		<graphicData>
@@ -31,5 +31,6 @@
 			<growthRate>0.01</growthRate>
 		</mote>
 	</ThingDef>
+	-->
 
 </Defs>

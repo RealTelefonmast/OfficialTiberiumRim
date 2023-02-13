@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Scrin -->
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_ScrinCut</defName>
+		<graphicData>
+			<texPath>VisualFX/ScrinCut</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.05</fadeInTime>
+		<solidTime>0.3</solidTime>
+		<fadeOutTime>0.8</fadeOutTime>
+		<growthRate>0.12</growthRate>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase">
+		<defName>Fleck_AdvFlame</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Gas4</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.1</fadeInTime>
+		<solidTime>0.2</solidTime>
+		<fadeOutTime>0.6</fadeOutTime>
+		<growthRate>6</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase">
+		<defName>Fleck_AdvExplosion1</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Gas1</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.1</solidTime>
+		<fadeOutTime>0.4</fadeOutTime>
+		<growthRate>8</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase">
+		<defName>Fleck_AdvExplosion2</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Gas2</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.1</solidTime>
+		<fadeOutTime>0.5</fadeOutTime>
+		<growthRate>8</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase">
+		<defName>Fleck_AdvExplosion3</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Gas3</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.1</solidTime>
+		<fadeOutTime>0.5</fadeOutTime>
+		<growthRate>8</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase">
+		<defName>Fleck_AdvSuperExplosion</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Gas2</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.3</solidTime>
+		<fadeOutTime>0.5</fadeOutTime>
+		<growthRate>8</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase">
+		<defName>Fleck_AdvParticle</defName>
+		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
+		<graphicData>
+			<texPath>VisualFX/Original/Particles</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.3</solidTime>
+		<fadeOutTime>0.6</fadeOutTime>
+		<growthRate>4</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>SubFleck_AdvParticle</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Particles4</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+			<drawSize>0.5</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.2</solidTime>
+		<fadeOutTime>0.3</fadeOutTime>
+		<growthRate>8</growthRate>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>SubFleck_AdvParticle2</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Particles2</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+			<drawSize>0.5</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.3</solidTime>
+		<fadeOutTime>0.4</fadeOutTime>
+		<growthRate>4</growthRate>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase">
+		<defName>SubFleck_AdvParticle3</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Particles3</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+			<drawSize>0.7</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.25</solidTime>
+		<fadeOutTime>0.25</fadeOutTime>
+		<growthRate>9</growthRate>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>SubFleck_AdvSpark</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Spark</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+			<drawSize>0.75</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.2</solidTime>
+		<fadeOutTime>0.3</fadeOutTime>
+		<growthRate>5</growthRate>
+	</FleckDef>
+
+</Defs>

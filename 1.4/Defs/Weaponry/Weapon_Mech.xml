@@ -544,7 +544,7 @@
 			<soundExplode>Blast_Rail</soundExplode>
 			<explosionDelay>15</explosionDelay>
 		</projectile>
-		</ThingDef>
+	</ThingDef>
 
 	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
 		<defName>Forg_Bash</defName>

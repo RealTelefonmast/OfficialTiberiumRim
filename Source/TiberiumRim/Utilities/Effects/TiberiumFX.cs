@@ -124,7 +124,7 @@ namespace TiberiumRim
         public static void AscensionParticle(IntVec3 pos, Map map)
         {
             Mote mote = (Mote) ThingMaker.MakeThing(EffectsDefOf.IonBeamBurn, null);
-            TRMote mote2 = (TRMote) ThingMaker.MakeThing(EffectsDefOf.IonParticle, null);
+            Mote mote2 = (Mote) ThingMaker.MakeThing(EffectsDefOf.IonParticle, null);
             mote.exactPosition = mote2.exactPosition = pos.ToVector3Shifted();
             mote.Scale = 3 * TRandom.Range(1.5f, 3f);
             mote2.Scale = 1 * TRandom.Range(0.5f, 1f);
