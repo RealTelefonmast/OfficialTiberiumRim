@@ -7,6 +7,8 @@
 			<li Class="TeleCore.SubEffecterExtendedDef">
 				<subEffecterClass>TeleCore.SubEffecter_FX</subEffecterClass>
 				<fleckDef>Fleck_TibFogG</fleckDef>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+				<affectedByWind>false</affectedByWind>
 				<positionRadius>1.49</positionRadius>
 				<scale>3~4.5</scale>					
 				<angle>0~360</angle>
@@ -14,20 +16,22 @@
 				<rotation>0~90</rotation>
 				<rotationRate>1</rotationRate>
 				<burstCount>1~2</burstCount>
-				<affectedByWind>false</affectedByWind>
 				<throwInterval>120</throwInterval>
 				<spawnLocType>RandomCellOnTarget</spawnLocType>
+				<effectMode>Burst</effectMode>
 			</li>
 			<li>
 				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
 				<fleckDef>Fleck_IonLighting</fleckDef>
-				<chancePerTick>0.0045</chancePerTick>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+				<chancePerTick>0.001</chancePerTick>
 				<positionRadius>1.19</positionRadius>
 				<scale>1.25~4</scale>					
 				<angle>0~360</angle>
 				<speed>0</speed>
 				<burstCount>1~2</burstCount>
 				<spawnLocType>RandomCellOnTarget</spawnLocType>
+				<!--effectMode>ChancePerTick</effectMode-->
 			</li>
 		</children>
 	</EffecterDef>

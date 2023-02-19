@@ -11,9 +11,9 @@ namespace TiberiumRim
     public class Building_NodHubTurret : Building_HubTurret
     {
         //FX
-        public override Vector3? FX_GetDrawPositionAt(int index)
+        public override Vector3? FX_GetDrawPosition(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 0 => MainGun.DrawPos,                   //Lights
                 1 => null,                              //Skip
@@ -24,9 +24,9 @@ namespace TiberiumRim
             };
         }
 
-        public override float? FX_GetRotationAt(int index)
+        public override float? FX_GetRotation(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 2 => MainGun?.TurretRotation,
                 3 => MainGun?.TurretRotation,

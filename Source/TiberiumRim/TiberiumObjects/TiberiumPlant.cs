@@ -7,7 +7,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class TiberiumPlant : Plant, IFXHolder
+    public class TiberiumPlant : FXPlant
     {
         public new TRThingDef def => (TRThingDef)base.def;
 
@@ -19,23 +19,8 @@ namespace TiberiumRim
 		public WorldComponent_TR TiberiumRimComp => Find.World.GetComponent<WorldComponent_TR>();
         public MapComponent_Tiberium TiberiumMapComp => Map.Tiberium();
 
-		//FX STUFF
-        public CompFX FXComp => this.GetComp<CompFX>();
 
-        public virtual bool FX_ProvidesForLayer(FXLayerArgs args) => true; //FXLayerData._ThingHolderTag;
-        public virtual CompPowerTrader FX_PowerProviderFor(FXLayerArgs args) => null!;
-        public virtual bool? FX_ShouldDraw(FXLayerArgs args) => null;
-        public virtual float? FX_GetOpacity(FXLayerArgs args) => null;
-        public virtual float? FX_GetRotation(FXLayerArgs args) => null;
-        public virtual float? FX_GetRotationSpeedOverride(FXLayerArgs args) => null;
-        public virtual float? FX_GetAnimationSpeedFactor(FXLayerArgs args) => null;
-        public virtual Color? FX_GetColor(FXLayerArgs args) => null;
-        public virtual Vector3? FX_GetDrawPosition(FXLayerArgs args) => null;
-        public virtual Action<RoutedDrawArgs> FX_GetDrawAction(FXLayerArgs args) => null!;
-        public virtual bool? FX_ShouldThrowEffects(FXLayerArgs args) => null;
-        public virtual void FX_OnEffectSpawned(EffecterEffectSpawnedArgs effectSpawnedArgs) { }
-
-		public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
             TiberiumMapComp.RegisterTiberiumPlant(this);

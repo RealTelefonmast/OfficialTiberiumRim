@@ -171,7 +171,7 @@ namespace TiberiumRim
         public bool LeavesPhysicalContainer => false;
 
         //FX
-        public override bool FX_ProvidesForLayer(FXLayerArgs args) => args.index == 0;
+        public override bool FX_ProvidesForLayer(FXArgs args) => args.index == 0;
         public override Color? FX_GetColor(FXLayerArgs args) => Container.Color;
         public override float? FX_GetOpacity(FXLayerArgs args) => Container.StoredPercent;
         public override bool? FX_ShouldDraw(FXLayerArgs args) => true;

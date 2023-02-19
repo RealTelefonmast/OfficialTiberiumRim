@@ -27,14 +27,15 @@ namespace TiberiumRim
         private float Range => MainGun.AttackVerb.EffectiveRange;
 
         //FX
-        public override bool FX_AffectsLayerAt(int index)
+        public override bool FX_ProvidesForLayer(FXArgs args)
         {
-            return index is >= 0 and < 4;
+            return args.index is >= 0 and < 4;
         }
 
-        public override float? FX_GetRotationAt(int index)
+
+        public override float? FX_GetRotation(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 2 => MainGun?.TurretRotation,
                 3 => MainGun?.TurretRotation,
@@ -42,16 +43,16 @@ namespace TiberiumRim
             };
         }
 
-        public override bool FX_ShouldDrawAt(int index)
+        public override bool? FX_ShouldDraw(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 1 => false,
                 3 => HoldingFire,
                 _ => true
             };
         }
-
+        
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);

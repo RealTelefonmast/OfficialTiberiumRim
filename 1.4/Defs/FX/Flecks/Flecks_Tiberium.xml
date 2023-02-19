@@ -102,7 +102,7 @@
 		<growthRate>3</growthRate>
 	</FleckDef>
 	
-  <FleckDef ParentName="FleckBase">
+	<FleckDef ParentName="FleckBase">
 		<defName>Mote_BeamtargetLB</defName>
 		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
 		<graphicData>
@@ -117,6 +117,32 @@
 		<growthRate>1.4</growthRate>
 	</FleckDef>
 
+	
+	  <!--=================== Visual - Radiation ==================-->
+
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>RadiationGlow</defName>
+		<graphicData>
+			<texPath>VisualFX/TiberiumGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>2.6</fadeInTime>
+		<solidTime>1.5</solidTime>
+		<fadeOutTime>3.3</fadeOutTime>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>RadiationGlow_Intense</defName>
+		<graphicData>
+			<texPath>VisualFX/TiberiumGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.2</fadeInTime>
+		<solidTime>0.3</solidTime>
+		<fadeOutTime>0.2</fadeOutTime>
+	</FleckDef>
 	
 	<!--
 	<TiberiumRim.ParticleDef Name="SporeBase" Abstract="True">

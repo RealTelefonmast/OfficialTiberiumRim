@@ -37,7 +37,7 @@ namespace TiberiumRim
         public bool Bursting => burstTicksLeft > 0;
         
         //FX
-        public override bool? FX_ShouldThrowEffects(FXLayerArgs args)
+        public override bool? FX_ShouldThrowEffects(FXEffecterArgs args)
         {
             return tiberiumSpike.Spawned;
         }

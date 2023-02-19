@@ -714,12 +714,14 @@
 							<drawSize>(5,5)</drawSize>
 						</graphicData>
 					</li>
+				</fxLayers>
+				<effectLayers>
 					<li>
+						<effecterDef>PowerPlantCommonSmoke</effecterDef>
 						<layerTag>EffecterPowerPlantSmoke</layerTag>
 						<needsPower>true</needsPower>
-						<effecterDef>PowerPlantCommonSmoke</effecterDef>
 					</li>
-				</fxLayers>
+				</effectLayers>
 				<!-- TODO: Move to fleck thrower
 				<moteData>
 					<northVec>

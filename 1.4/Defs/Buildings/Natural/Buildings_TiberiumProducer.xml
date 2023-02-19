@@ -39,6 +39,13 @@
 						</fade>
 					</li>
 				</fxLayers>
+				<effectLayers>
+					<li>
+						<effecterDef>TibProducerCloudsGreen</effecterDef>
+						<layerTag>ProducerClouds</layerTag>
+						<needsPower>false</needsPower>
+					</li>
+				</effectLayers>
 				<!--
 				<effecters>
 					<li>

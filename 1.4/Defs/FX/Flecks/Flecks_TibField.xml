@@ -9,8 +9,8 @@
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<collide>true</collide>
-		<fadeInTime>5</fadeInTime>
-		<solidTime>30</solidTime>
+		<fadeInTime>2</fadeInTime>
+		<solidTime>3</solidTime>
 		<fadeOutTime>5</fadeOutTime>
 	</FleckDef>
 	

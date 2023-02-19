@@ -31,26 +31,23 @@ namespace TiberiumRim
         }
 
         //FX
-        public override bool FX_AffectsLayerAt(int index)
+        public override bool FX_ProvidesForLayer(FXArgs args)
         {
-            return index is 0 or 1;
+            return args.index is 0 or 1;
         }
 
-        public override Vector3? FX_GetDrawPositionAt(int index) => base.DrawPos;
-        public override Color? FX_GetColorAt(int index) => Color.white;
-        public override float? FX_GetRotationAt(int index) => null;
-        public override float FX_GetOpacityAt(int index)
+        public override float? FX_GetOpacity(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 1 => ObeliskCharge,
                 _ => 1f
             };
         }
 
-        public override bool FX_ShouldDrawAt(int index)
+        public override bool? FX_ShouldDraw(FXLayerArgs args)
         {
-            return index switch
+            return args.index switch
             {
                 1 => chargeAmount > 0,
                 _ => true

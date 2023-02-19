@@ -17,7 +17,7 @@ namespace TiberiumRim
         public TurretTop TurretTop => Turret.top;
 
         //CompFX
-        public override bool FX_ProvidesForLayer(FXLayerArgs args)
+        public override bool FX_ProvidesForLayer(FXArgs args)
         {
             return args.index is >= 0 and < 3;
         }

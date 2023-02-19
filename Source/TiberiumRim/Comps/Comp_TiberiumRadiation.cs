@@ -143,7 +143,7 @@ namespace TiberiumRim
             if (!parent.Spawned) return;
             if (parent.IsHashIntervalTick(250) && ShouldGlow)
             {
-                TiberiumFX.ThrowTiberiumGlow(AffectedCells.RandomElement(), parent.Map, Rand.Range(1.25f, 1.85f));
+                TiberiumFX.ThrowRadiationGlow(AffectedCells.RandomElement(), parent.Map, Rand.Range(1.25f, 1.85f));
             }
 
             if (!IsRadiating && ShouldRadiate)
@@ -157,7 +157,7 @@ namespace TiberiumRim
             base.CompTickRare();
             if (ShouldGlow)
             {
-                TiberiumFX.ThrowTiberiumGlow(AffectedCells.RandomElement(), parent.Map, Rand.Range(1.25f, 1.85f));
+                TiberiumFX.ThrowRadiationGlow(AffectedCells.RandomElement(), parent.Map, Rand.Range(1.25f, 1.85f));
             }
             if (!IsRadiating && ShouldRadiate)
             {
