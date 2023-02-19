@@ -113,7 +113,7 @@ namespace TiberiumRim
 
                     if (ticksPassed % ticksPerValue == 0)
                     {
-                        Harvester.Animator.Start("Harvest", true);
+                        Harvester.Animator.Start("Harvest", true);i
                         TiberiumCrystal.Harvest(Harvester, growthPerValue);
                     }
                     ticksPassed++;

@@ -116,7 +116,7 @@
 										</frameData>
 									</li>
 									<li>
-										<frameTick>56</frameTick>
+										<frameTick>40</frameTick>
 										<frameData>
 											<rotation>0</rotation>
 											<position>(0.0, 0.0)</position>
@@ -126,7 +126,7 @@
 										</frameData>
 									</li>
 									<li>
-										<frameTick>40</frameTick>
+										<frameTick>56</frameTick>
 										<frameData>
 											<rotation>0</rotation>
 											<position>(0.0, 0.0)</position>
