@@ -91,7 +91,7 @@ namespace TiberiumRim
         public virtual bool RequisitesComplete => requisites?.FulFilled() ?? true;
         public virtual bool CanStartNow => RequisitesComplete;
         public bool IsFinished => TRUtils.ResearchManager().IsCompleted(this);
-        public bool HasBeenSeen => TRUtils.DiscoveryTable().ResearchHasBeenSeen(this);
+        public bool HasBeenSeen => TRUtils.ResearchDiscoveryTable().ResearchHasBeenSeen(this);
 
         public TResearchGroupDef ParentGroup
         {

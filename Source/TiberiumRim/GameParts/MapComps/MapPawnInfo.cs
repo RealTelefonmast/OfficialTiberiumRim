@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using TeleCore;
-using TeleCore.Static;
 using Verse;
 
 namespace TiberiumRim

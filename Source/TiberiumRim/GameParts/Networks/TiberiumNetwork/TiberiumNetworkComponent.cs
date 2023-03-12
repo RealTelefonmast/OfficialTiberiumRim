@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TeleCore;
+﻿using TeleCore;
+using TeleCore.FlowCore;
 
 namespace TiberiumRim
 {
@@ -13,10 +9,15 @@ namespace TiberiumRim
         {
         }
 
-        public override void Notify_ContainerFull()
+
+        public override void Notify_ContainerStateChanged(NotifyContainerChangedArgs<NetworkValueDef> args)
         {
-            if (NetworkRole.HasFlag(NetworkRole.Producer))
-                GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.SilosNeeded, Parent.Thing);
+            base.Notify_ContainerStateChanged(args);
+            if (args.Action == NotifyContainerChangedAction.Filled)
+            {
+                if (NetworkRole.HasFlag(NetworkRole.Producer))
+                    GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.SilosNeeded, Parent.Thing);
+            }
         }
     }
 }

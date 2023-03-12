@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.InteropServices;
+﻿using System.Collections.Generic;
 using System.Text;
 using RimWorld;
 using TAE;
 using TeleCore;
-using UnityEngine;
 using Verse;
 using Verse.Sound;
 
@@ -109,9 +105,9 @@ namespace TiberiumRim
             {
                 if (tiberiumSpike.IsPoweredOn())
                 {
-                    if (tiberiumSpike.TibComponent.Container.TryAddValue(TiberiumDefOf.TibGas, 0.25f, out float actualValue))
+                    if (tiberiumSpike.TibComponent.Container.TryAddValue(TiberiumDefOf.TibGas, 0.25f, out var result))
                     {
-                        depositValue -= actualValue;
+                        depositValue -= result.ActualAmount;
                     }
                 }
                 return;

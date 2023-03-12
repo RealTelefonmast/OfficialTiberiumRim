@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
 using RimWorld;
 using TeleCore;
-using TeleCore.Static;
+using TeleCore.FlowCore;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -31,14 +29,15 @@ namespace TiberiumRim
         public float unloadValue = 0.125f;
         public float harvestValue = 0.125f;
         public ThingDef wreckDef;
-        public ContainerProperties containerProps;
-        public List<NetworkValueDef> handledValues;
+        public ContainerConfig containerConfig;
+        //public List<NetworkValueDef> handledValues;
     }
 
-    public class Harvester : MechanicalPawn, IContainerHolder<NetworkValueDef>
+    public class Harvester : MechanicalPawn, IContainerImplementer<NetworkValueDef, IContainerHolderNetworkThing, NetworkContainerThing<IContainerHolderNetworkThing>>, IContainerHolderNetworkThing
     {
+        private NetworkContainerThing<IContainerHolderNetworkThing> _containerInt;
         public new HarvesterKindDef kindDef => (HarvesterKindDef) base.kindDef;
-        protected NetworkContainer container;
+        protected NetworkContainerThing<IContainerHolderNetworkThing> container;
 
         //Data
         private IntVec3 lastKnownPos;
@@ -55,6 +54,10 @@ namespace TiberiumRim
         
         public Comp_AnimationRenderer Animator => compAnimation;
 
+        public NetworkContainerThing<IContainerHolderNetworkThing> Container => _containerInt;
+
+        public NetworkDef NetworkDef { get; }
+        
         public Building Refinery
         {
             get => ParentBuilding;
@@ -159,14 +162,19 @@ namespace TiberiumRim
         }
 
         public Thing Thing => this;
+        public bool ShowStorageGizmo { get; }
+
         public void Notify_AddedContainerValue(NetworkValueDef def, float value)
         {
         }
 
+        public void Notify_ContainerStateChanged(NotifyContainerChangedArgs<NetworkValueDef> args)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public string ContainerTitle => "TODO: Harvester Container";
-        public NetworkContainer Container => container;
-        BaseContainer<NetworkValueDef> IContainerHolder<NetworkValueDef>.Container => (BaseContainer<NetworkValueDef>) this.Container;
-        public ContainerProperties ContainerProps => kindDef.containerProps;
+        //ValueContainerBase<NetworkValueDef> Container => (BaseContainer<NetworkValueDef>) this.Container
         public bool DropsContents => false;
         public bool LeavesPhysicalContainer => false;
 
@@ -195,7 +203,7 @@ namespace TiberiumRim
             Scribe_References.Look(ref preferredProducer, "prefProducer");
             Scribe_Defs.Look(ref preferredType, "prefType");
             //Data
-            Scribe_Deep.Look(ref container, "tibContainer", this, kindDef.handledValues);
+            Scribe_Container.Look(ref container, kindDef.containerConfig, this, "tibContainer");
             Scribe_Values.Look(ref lastKnownPos, "lastPos");
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
@@ -218,7 +226,7 @@ namespace TiberiumRim
             compAnimation = this.GetComp<Comp_AnimationRenderer>();
             if (!respawningAfterLoad)
             {
-                container = new NetworkContainer(this, kindDef.handledValues);
+                container = new NetworkContainerThing<IContainerHolderNetworkThing>(kindDef.containerConfig, this);
                 if (ParentBuilding == null)
                 { 
                     ResolveNewRefinery(); 
@@ -478,5 +486,6 @@ namespace TiberiumRim
                 failedTibSearches = 0;
             }
         }
+        
     }
 }

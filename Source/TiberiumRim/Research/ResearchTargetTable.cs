@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using HarmonyLib;
 using RimWorld;
 using TeleCore;
 using Verse;
-using Verse.AI;
 
 namespace TiberiumRim
 {

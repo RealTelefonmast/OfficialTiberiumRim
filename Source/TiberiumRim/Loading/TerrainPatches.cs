@@ -1,7 +1,4 @@
-﻿using HarmonyLib;
-using Verse;
-
-namespace TiberiumRim;
+﻿namespace TiberiumRim;
 
 internal static class TerrainPatches
 {

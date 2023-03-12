@@ -1,5 +1,4 @@
-﻿using System;
-using TAE;
+﻿using TAE;
 using TeleCore;
 using UnityEngine;
 using Verse;
@@ -79,9 +78,9 @@ namespace TiberiumRim
         public override void NetworkPostTick(NetworkSubPart networkSubPart, bool isPowered)
         {
             if (!ShouldProcess) return;
-            if (AtmosphericComp.Container.TryRemoveValue(TiberiumDefOf.TibPollution, 10, out float actualValue))
+            if (AtmosphericComp.Container.TryRemoveValue(TiberiumDefOf.TibPollution, 10, out var result))
             {
-                ProcessingComp.Container.TryAddValue(TiberiumDefOf.TibSludge, actualValue * 0.125f, out _);
+                ProcessingComp.Container.TryAddValue(TiberiumDefOf.TibSludge, result.ActualAmount * 0.125f, out _);
             }
         }
 

@@ -1,18 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using HarmonyLib;
-using RimWorld;
-using TAE;
-using TiberiumRim.Utilities;
-using Verse;
-using Verse.AI;
-
-namespace TiberiumRim
+﻿namespace TiberiumRim
 {
     //
     internal static class TRAIPatches

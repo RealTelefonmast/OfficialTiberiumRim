@@ -1,7 +1,4 @@
-﻿using RimWorld;
-using Verse;
-
-namespace TiberiumRim
+﻿namespace TiberiumRim
 {
     /*
     public class Designator_BuildFixed : Designator_Build

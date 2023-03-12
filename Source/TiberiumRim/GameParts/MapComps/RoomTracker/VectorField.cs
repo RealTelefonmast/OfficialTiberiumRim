@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using UnityEngine;
-using Verse;
-
-namespace TiberiumRim
+﻿namespace TiberiumRim
 {
     public class VectorField
     {

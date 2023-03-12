@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using RimWorld;
+﻿using RimWorld;
 using TeleCore;
 using UnityEngine;
 using Verse;

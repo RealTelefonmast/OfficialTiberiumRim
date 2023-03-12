@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using Verse;
-
-namespace TiberiumRim
+﻿namespace TiberiumRim
 {
     /*TODO: Rebase on flecks
     public class TiberiumSpore : Particle

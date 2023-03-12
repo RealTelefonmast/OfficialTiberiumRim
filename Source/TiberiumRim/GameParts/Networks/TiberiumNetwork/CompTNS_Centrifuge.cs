@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Odbc;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using TeleCore;
 using UnityEngine;
 using Verse;
@@ -88,7 +86,8 @@ namespace TiberiumRim
 
         private float BlendValue => OverrideBlendValue > 0 ? OverrideBlendValue : shaderCurve.Evaluate(speedControl.CurPct);
 
-        private bool HasEnoughStored => TiberiumComp.Container.StoredPercent >= TiberiumComp.RequestedCapacityPercent && !Container.Empty;
+        //TiberiumComp.Container.StoredPercent >=
+        private bool HasEnoughStored => TiberiumComp.Requester.ShouldRequest && !Container.Empty;
 
         private bool ShouldWork
         {
@@ -97,7 +96,7 @@ namespace TiberiumRim
                 if (!HasEnoughStored) return false;
                 foreach (var valueDef in TiberiumComp.Props.AllowedValuesByRole[NetworkRole.Requester])
                 {
-                    if (Container.TotalStoredOf(valueDef) > 0)
+                    if (Container.StoredValueOf(valueDef) > 0)
                         return true;
                 }
                 return false;
@@ -137,17 +136,17 @@ namespace TiberiumRim
 
             if (speedControl.ReachedPeak && processingBatch)
             {
-                var storedTypes = TiberiumComp.Container.AllStoredTypes;
+                var storedTypes = TiberiumComp.Container.StoredDefs;
                 for (int i = storedTypes.Count() - 1; i >= 0; i--)
                 {
                     var storedType = storedTypes.ElementAt(i);
                     var values = ValuesFor(storedType);
                     if(values.NullOrEmpty()) continue;
-                    if (TiberiumComp.Container.TryRemoveValue(storedType, 1f, out float actualValue))
+                    if (TiberiumComp.Container.TryRemoveValue(storedType, 1f, out var result))
                     {
                         foreach (var type in values)
                         {
-                            ChemicalComponent.Container.TryAddValue(type.valueDef, type.valueF * actualValue * 2, out _);
+                            ChemicalComponent.Container.TryAddValue(type.valueDef, type.valueF * result.ActualAmount * 2, out _);
                             TiberiumComp.Container.TryAddValue(TiberiumDefOf.TibSludge, 0.125f, out _);
                         }
                     }

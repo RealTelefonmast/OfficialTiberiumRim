@@ -244,7 +244,7 @@ namespace TiberiumRim
 
                     if (Mouse.IsOver(projectOptionRect) || project == SelProject)
                     {
-                        TRUtils.DiscoveryTable().DiscoverResearch(project);
+                        TRUtils.ResearchDiscoveryTable().DiscoverResearch(project);
                         Widgets.DrawHighlight(projectOptionRect);
                     }
 

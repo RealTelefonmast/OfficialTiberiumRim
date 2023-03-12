@@ -21,9 +21,9 @@ namespace TiberiumRim
             return Current.Game.GetComponent<GameComponent_CameraPanAndLock>();
         }
 
-        public static DiscoveryTable DiscoveryTable()
+        public static ResearchDiscoveryTable ResearchDiscoveryTable()
         {
-            return Tiberium().DiscoveryTable;
+            return Tiberium().ResearchDiscoveryTable;
         }
 
         public static EventManager EventManager()

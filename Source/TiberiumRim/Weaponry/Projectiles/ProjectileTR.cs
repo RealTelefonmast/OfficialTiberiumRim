@@ -1,6 +1,4 @@
-﻿using System;
-using RimWorld;
-using TeleCore;
+﻿using TeleCore;
 using UnityEngine;
 using Verse;
 

@@ -261,9 +261,9 @@ namespace TiberiumRim
 
         public void Harvest(Harvester harvester, float amount)
         {
-            if (harvester.Container.TryAddValue(def.TiberiumValueTypeForNetwork, 1, out float actualValue))
+            if (harvester.Container.TryAddValue(def.TiberiumValueTypeForNetwork, 1, out var result))
             {
-                float adj = amount * (actualValue / 1);
+                float adj = amount * (result.ActualAmount / 1);
                 Growth -= adj;
                 if (Growth <= 0.01f)
                     Destroy();
@@ -278,8 +278,7 @@ namespace TiberiumRim
             if (def.tiberium.radiates)
                 Map.Tiberium().TiberiumAffecter.AddRadiation(Position, value);
         }
-
-
+        
         //
         public override string GetInspectString()
         {

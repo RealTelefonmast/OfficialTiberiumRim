@@ -3,7 +3,6 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using TeleCore;
-using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
@@ -30,8 +29,6 @@ namespace TiberiumRim
         public bool devObject = false;
         public bool clearTiberium = false;
 
-        public DiscoveryProperties discovery;
-
         [Unsaved(false)]
         private TaggedString cachedUnknownLabelCap = null;
 
@@ -55,24 +52,17 @@ namespace TiberiumRim
             return strings;
         }
 
-        public string UnknownLabelCap
-        {
-            get
-            {
-                if (cachedUnknownLabelCap.NullOrEmpty())
-                    cachedUnknownLabelCap = discovery.unknownLabel.CapitalizeFirst();
-                return cachedUnknownLabelCap;
-            }
-        }
-
         public bool RequisitesFulfilled => requisites == null || requisites.FulFilled();
 
         public bool ConstructionOptionDiscovered
         {
-            get => TRUtils.Tiberium().DiscoveryTable.MenuOptionHasBeenSeen(this) || devObject;
+            get => TFind.Discoveries.MenuOptionHasBeenSeen(this) || devObject;
             set
             {
-                if (value) TRUtils.Tiberium().DiscoveryTable.DiscoverInMenu(this);
+                if (value)
+                {
+                    TFind.Discoveries.DiscoverInMenu(this);
+                }
             }
         }
 

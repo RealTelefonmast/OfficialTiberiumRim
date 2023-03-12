@@ -7,7 +7,7 @@ namespace TiberiumRim
     public class WorldComponent_TR : WorldComponent
     {
         //Discovery
-        public DiscoveryTable DiscoveryTable;
+        public ResearchDiscoveryTable ResearchDiscoveryTable;
 
         //Infos
         public TiberiumWorldInfo TiberiumInfo;
@@ -27,7 +27,7 @@ namespace TiberiumRim
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Deep.Look(ref DiscoveryTable, "DiscoveryTable");
+            Scribe_Deep.Look(ref ResearchDiscoveryTable, "ResearchDiscoveryTable");
             Scribe_Deep.Look(ref TiberiumInfo, "TiberiumInfo", world);
             Scribe_Deep.Look(ref GroundZeroInfo, "GroundZeroInfo", world);
             Scribe_Deep.Look(ref SuperWeaponInfo, "SuperWeaponInfo", world);
@@ -42,7 +42,7 @@ namespace TiberiumRim
 
         private void GenerateInfos()
         {
-            DiscoveryTable ??= new DiscoveryTable();
+            ResearchDiscoveryTable ??= new ResearchDiscoveryTable();
             TiberiumInfo ??= new TiberiumWorldInfo(world);
             GroundZeroInfo ??= new GroundZeroInfo(world);
             SuperWeaponInfo ??= new SuperWeaponInfo(world);

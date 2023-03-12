@@ -1,27 +1,14 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using TeleCore;
+using TeleCore.RWExtended;
 using Verse;
 
 namespace TiberiumRim
 {
-    public class TRBuilding : FXBuilding, IDiscoverable
+    public class TRBuilding : TeleBuilding
     {
         public new TRThingDef def => (TRThingDef) base.def;
-
-        public override string Label => Discovered ? DiscoveredLabel : UnknownLabel;
-
-        public override string DescriptionFlavor => Discovered ? DiscoveredDescription : UnknownDescription;
-
-        public DiscoveryDef DiscoveryDef => def.discovery.discoveryDef;
-        public string DiscoveredLabel => base.Label;
-        public string UnknownLabel => def.UnknownLabelCap;
-        public string DiscoveredDescription => def.description;
-        public string UnknownDescription => def.discovery.unknownDescription;
-        public string DescriptionExtra => def.discovery.extraDescription;
-
-        public bool Discovered => !IsDiscoverable || TRUtils.DiscoveryTable().IsDiscovered(this);
-        public bool IsDiscoverable => def.discovery != null;
+        
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -55,16 +42,7 @@ namespace TiberiumRim
         public MapComponent_Tiberium TiberiumComp => Map.Tiberium();
 
         public bool CannotHaveDuplicates => def.placeWorkers.Any(p => p == typeof(PlaceWorker_Once));
-
-        public override string GetInspectString()
-        {
-            string str = base.GetInspectString();
-            if (IsDiscoverable && !Discovered)
-                str += "\n" + "TR_NotDiscovered".Translate();
-
-            return str;
-        }
-
+        
         public static TargetingParameters ForAny()
         {
             return new TargetingParameters
@@ -92,18 +70,6 @@ namespace TiberiumRim
 
             if (def.superWeapon?.ResolvedDesignator != null)
                 yield return def.superWeapon.ResolvedDesignator;
-
-            if (!DebugSettings.godMode) yield break;
-
-            if (IsDiscoverable && !Discovered)
-            {
-                yield return new Command_Action()
-                {
-                    defaultLabel = "Discover",
-                    action = delegate { DiscoveryDef.Discover(); }
-                };
-            }
-
         }
     }
 }

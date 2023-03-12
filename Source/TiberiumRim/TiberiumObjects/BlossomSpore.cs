@@ -1,6 +1,4 @@
-﻿using Verse;
-
-namespace TiberiumRim
+﻿namespace TiberiumRim
 {
     //TODO: Base it on fleck
     /*
