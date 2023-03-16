@@ -6,11 +6,6 @@
 		<label>green tiberium crater</label>
 		<description>The asteroid left a glowing crater full of green crystals, it's radiating a dangerous amount of warmth if you come close. It seems like there are new crystals growing at the edge?</description>
 		<thingClass>TiberiumRim.TiberiumCrater</thingClass>
-		<discovery>
-			<discoveryDef>TiberiumProducerCrater</discoveryDef>
-			<unknownLabel>strange crater</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		</discovery>
 		<statBases>
 			<MaxHitPoints>5000</MaxHitPoints>
 			<Beauty>175</Beauty>
@@ -172,6 +167,15 @@
 			<growRadius>11.9</growRadius>
 			<spawnInterval>30000~90000</spawnInterval>
 		</spawner>
+		<modExtensions Inherit="False">
+			<li Class="TeleCore.SubMenuExtension">
+				<discovery>
+					<discoveryDef>TiberiumProducerCrater</discoveryDef>
+					<unknownLabel>strange crater</unknownLabel>
+					<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+				</discovery>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
@@ -179,11 +183,6 @@
 		<label>blue tiberium crater</label>
 		<description>The asteroid left this glowing crater full of blue crystals, the blue glow is nice to look at. It seems like there are new crystals growing at the edges?</description>
 		<thingClass>TiberiumRim.TiberiumCrater</thingClass>
-		<discovery>
-			<discoveryDef>TiberiumProducerCrater</discoveryDef>
-			<unknownLabel>strange crater</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		</discovery>
 		<statBases>
 			<MaxHitPoints>5000</MaxHitPoints>
 			<Beauty>175</Beauty>
@@ -357,6 +356,15 @@
 			<corruptionRadius>22</corruptionRadius>
 			<createBlossom>true</createBlossom>
 		</tiberiumFieldRules>
+		<modExtensions Inherit="False">
+			<li Class="TeleCore.SubMenuExtension">
+				<discovery>
+					<discoveryDef>TiberiumProducerCrater</discoveryDef>
+					<unknownLabel>strange crater</unknownLabel>
+					<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+				</discovery>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
@@ -364,11 +372,6 @@
 		<label>hybrid tiberium crater</label>
 		<description>The asteroid left a strange crater full of green and blue crystals, observing it shows that that over time both types slowly spread at the edge.</description>
 		<thingClass>TiberiumRim.TiberiumCrater</thingClass>
-		<discovery>
-			<discoveryDef>TiberiumProducerCrater</discoveryDef>
-			<unknownLabel>strange crater</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		</discovery>
 		<statBases>
 			<MaxHitPoints>7500</MaxHitPoints>
 			<Beauty>200</Beauty>
@@ -555,6 +558,15 @@
 			<corruptionRadius>20</corruptionRadius>
 			<createBlossom>true</createBlossom>
 		</tiberiumFieldRules>
+		<modExtensions Inherit="False">
+			<li Class="TeleCore.SubMenuExtension">
+				<discovery>
+					<discoveryDef>TiberiumProducerCrater</discoveryDef>
+					<unknownLabel>strange crater</unknownLabel>
+					<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+				</discovery>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
@@ -562,11 +574,6 @@
 		<label>red tiberium spire</label>
 		<description>This massive red spire is of extraterrestrial origin. It has a very uneasy feeling to it and should be met with caution. The ground around it seems to very slowly grow red crystals similar to the shard.</description>
 		<thingClass>TiberiumRim.TiberiumCrater</thingClass>
-		<discovery>
-			<discoveryDef>TiberiumProducerCrater</discoveryDef>
-			<unknownLabel>strange crater</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		</discovery>
 		<statBases>
 			<MaxHitPoints>4500</MaxHitPoints>
 			<Beauty>150</Beauty>
@@ -703,17 +710,21 @@
 			<createBlossom>false</createBlossom>
 			<allowFlora>false</allowFlora>
 		</tiberiumFieldRules>
+		<modExtensions Inherit="False">
+			<li Class="TeleCore.SubMenuExtension">
+				<discovery>
+					<discoveryDef>TiberiumProducerCrater</discoveryDef>
+					<unknownLabel>strange crater</unknownLabel>
+					<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+				</discovery>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumCruentus</defName>
 		<label>tiberium cruentus</label>
 		<description>This massive crystalline tower will slowly mature over the period of 7 days and detonate into an explosion of tiberium spores, easily covering the landscape with tiberium.</description>
-		<discovery>
-			<discoveryDef>TiberiumProducerCrater</discoveryDef>
-			<unknownLabel>strange crater</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		</discovery>
 		<altitudeLayer>Floor</altitudeLayer>
 		<statBases>
 			<MaxHitPoints>2200</MaxHitPoints>
@@ -829,6 +840,15 @@
 				<li>TiberiumAboreus</li>
 			</crystalOptions>
 		</tiberiumFieldRules>
+		<modExtensions Inherit="False">
+			<li Class="TeleCore.SubMenuExtension">
+				<discovery>
+					<discoveryDef>TiberiumProducerCrater</discoveryDef>
+					<unknownLabel>strange crater</unknownLabel>
+					<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+				</discovery>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<!-- Misc -->
@@ -837,11 +857,6 @@
 		<thingClass>TiberiumRim.Veinhole</thingClass>
 		<label>veinhole</label>
 		<description>The Veinhole is a type for itself, it is the producer of Tiberium Veins, spawns Veinmonsters and also creates Vein Hubs which are structures that will attack any living being inside their area of effect with veiny tentacles coming out of the ground.\n\nKilling the Veinhole kills all connected Veins and spawned Vein Hubs. The Veinhole has a chance to eat any pawn that comes too close.\n\nComing too close to the center might cause infection by poisonous gases.</description>
-		<discovery>
-			<discoveryDef>VeinholeEncounter</discoveryDef>
-			<unknownLabel>strange creature</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		</discovery>
 		<statBases>
 			<MaxHitPoints>4500</MaxHitPoints>
 			<Beauty>-160</Beauty>
@@ -944,18 +959,22 @@
 				<li>TiberiumVein</li>
 			</crystalOptions>
 		</tiberiumFieldRules>
-		<filthLeaving>FilthTibBloodG</filthLeaving>
+		<filthLeaving>FilthTibBloodG</filthLeaving>		
+		<modExtensions Inherit="False">
+			<li Class="TeleCore.SubMenuExtension">
+				<discovery>
+					<discoveryDef>VeinholeEncounter</discoveryDef>
+					<unknownLabel>strange creature</unknownLabel>
+					<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+				</discovery>
+			</li>
+		</modExtensions>	
 	</TiberiumRim.TiberiumProducerDef>
 	
 	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumMonolith</defName>
 		<label>blue tiberium monolith</label>
 		<description>A blue monolith. These monoliths form from patches of blue Tiberium, and usually spread via tiny tiberium particles created by an explosion.</description>
-		<discovery>
-			<discoveryDef>TiberiumProducerCrater</discoveryDef>
-			<unknownLabel>strange crater</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		</discovery>
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<size>(1,1)</size>
@@ -1035,6 +1054,11 @@
 			<li Class="TeleCore.FXDefExtension">
 				<rotateDrawSize>false</rotateDrawSize>
 				<alignToBottom>true</alignToBottom>
+				<discovery>
+					<discoveryDef>TiberiumProducerCrater</discoveryDef>
+					<unknownLabel>strange crater</unknownLabel>
+					<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+				</discovery>
 			</li>
 		</modExtensions>
 	</TiberiumRim.TiberiumProducerDef>

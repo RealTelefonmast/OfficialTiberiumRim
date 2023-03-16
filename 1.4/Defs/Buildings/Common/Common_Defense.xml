@@ -38,7 +38,7 @@
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TNW">
 				<compClass>TiberiumRim.CompTNW_Turret</compClass>
-				<maxStorage>150</maxStorage>
+				<baseCapacity>150</baseCapacity>
 				<supportedTypes>
 					<li>Sludge</li>
 				</supportedTypes>

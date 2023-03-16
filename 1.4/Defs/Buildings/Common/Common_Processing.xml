@@ -143,12 +143,12 @@
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>				
-						<containerProps>
-							<maxStorage>2500</maxStorage>
+						<containerConfig>
+							<baseCapacity>2500</baseCapacity>
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>true</storeEvenly>	
-						</containerProps>
+						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Storage</li>
@@ -252,11 +252,11 @@
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
-						<containerProps>
-							<maxStorage>125</maxStorage>
+						<containerConfig>
+							<baseCapacity>125</baseCapacity>
 							<dropContents>false</dropContents>
 							<leaveContainer>false</leaveContainer>
-						</containerProps>						
+						</containerConfig>						
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Valve</li>
@@ -333,12 +333,12 @@
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>			
-						<containerProps>
-							<maxStorage>10000</maxStorage>
+						<containerConfig>
+							<baseCapacity>10000</baseCapacity>
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
-						</containerProps>
+						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Storage</li>
@@ -428,12 +428,12 @@
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>				
-						<containerProps>
-							<maxStorage>1500</maxStorage>
+						<containerConfig>
+							<baseCapacity>1500</baseCapacity>
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
-						</containerProps>
+						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Producer</li>
@@ -548,12 +548,12 @@
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>					
-						<containerProps>
-							<maxStorage>4000</maxStorage>
+						<containerConfig>
+							<baseCapacity>4000</baseCapacity>
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
-						</containerProps>
+						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Producer</li>
@@ -648,12 +648,12 @@
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>				
-						<containerProps>
-							<maxStorage>1000</maxStorage>
+						<containerConfig>
+							<baseCapacity>1000</baseCapacity>
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>
-						</containerProps>
+						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Requester</li>
@@ -804,12 +804,12 @@
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>				
-						<containerProps>
-							<maxStorage>1000</maxStorage>
+						<containerConfig>
+							<baseCapacity>1000</baseCapacity>
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
-						</containerProps>
+						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>
@@ -836,12 +836,12 @@
 					</li>
 					<li>
 						<networkDef>ChemicalNetwork</networkDef>
-						<containerProps>
-							<maxStorage>10000</maxStorage>
+						<containerConfig>
+							<baseCapacity>10000</baseCapacity>
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>
-						</containerProps>
+						</containerConfig>
 						<networkRoles>
 							<li>Controller</li>
 							<li>Transmitter</li>
@@ -1015,12 +1015,12 @@
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>				
-						<containerProps>
-							<maxStorage>1000</maxStorage>
+						<containerConfig>
+							<baseCapacity>1000</baseCapacity>
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
-						</containerProps>
+						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Requester</li>
@@ -1108,11 +1108,11 @@
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
 						<storeEvenly>false</storeEvenly>					
-						<containerProps>
-							<maxStorage>1000</maxStorage>
+						<containerConfig>
+							<baseCapacity>1000</baseCapacity>
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
-						</containerProps>
+						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Requester</li>
@@ -1266,11 +1266,11 @@
 				<networks>
 					<li>
 						<networkDef>ChemicalNetwork</networkDef>
-						<containerProps>
-							<maxStorage>10000</maxStorage>
+						<containerConfig>
+							<baseCapacity>10000</baseCapacity>
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
-						</containerProps>
+						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Storage</li>

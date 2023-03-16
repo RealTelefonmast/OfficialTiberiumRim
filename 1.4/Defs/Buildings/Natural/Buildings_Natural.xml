@@ -7,11 +7,6 @@
 		<thingClass>TiberiumRim.TiberiumMeteorite</thingClass>
 		<description>A metoerite of unknown origin. Data suggests this meteorite carries an extremely agressive self-replicating mineral called "Tiberium".</description>
 		<label>tiberium meteorite chunk</label>
-		<discovery>
-			<discoveryDef>TiberiumProducerCrater</discoveryDef>
-			<unknownLabel>strange meteorite</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is. Approach with caution.</unknownDescription>
-		</discovery>
 		<size>(3,3)</size>
 		<altitudeLayer>Building</altitudeLayer>
 		<tickerType>Rare</tickerType>
@@ -48,6 +43,11 @@
 				<groupDef>Tiberium</groupDef>
 				<category>Producers</category>
 				<isDevOption>true</isDevOption>
+				<discovery>
+					<discoveryDef>TiberiumProducerCrater</discoveryDef>
+					<unknownLabel>strange meteorite</unknownLabel>
+					<unknownDescription>We have not yet figured out what this is. Approach with caution.</unknownDescription>
+				</discovery>
 			</li>
 		</modExtensions>
 	</TiberiumRim.TRThingDef>

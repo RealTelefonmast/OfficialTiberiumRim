@@ -54,11 +54,11 @@
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>				
-						<containerProps>
-							<maxStorage>1000</maxStorage>
+						<containerConfig>
+							<baseCapacity>1000</baseCapacity>
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
-						</containerProps>
+						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Requester</li>
@@ -292,7 +292,7 @@
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TNSRefinery">
 				<harvester>Harvester_Nod</harvester>
-				<maxStorage>5000</maxStorage>
+				<baseCapacity>5000</baseCapacity>
 				<tnwbMode>Producer</tnwbMode>
 			</li>
 			<li Class="TiberiumRim.CompProperties_MechStation">
@@ -413,7 +413,7 @@
 			<li Class="TeleCore.CompProperties_NetworkStructurePowerPlant">
 				<compClass>TiberiumRim.Comp_NetworkStructurePowerPlant</compClass>
 				<fromNetwork>TiberiumNetwork</fromNetwork>
-				<maxStorage>3000</maxStorage>
+				<baseCapacity>3000</baseCapacity>
 				<supportedTypes>
 					<li>Green</li>
 					<li>Blue</li>

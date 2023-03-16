@@ -41,10 +41,10 @@
 							<li>Controller</li>
 							<li>Storage</li>
 						</networkRoles>
-						<containerProps>
-							<maxStorage>1000</maxStorage>
+						<containerConfig>
+							<baseCapacity>1000</baseCapacity>
 							<dropContents>false</dropContents>
-						</containerProps>
+						</containerConfig>
 						<defFilter>
 							<values>
 								<li>Network_TibPollution</li>
@@ -138,10 +138,10 @@
 							<li>Requester</li>
 							<li>Storage</li>
 						</networkRoles>
-						<containerProps>
-							<maxStorage>750</maxStorage>
+						<containerConfig>
+							<baseCapacity>750</baseCapacity>
 							<dropContents>false</dropContents>
-						</containerProps>
+						</containerConfig>
 						<defFilter>
 							<values>
 								<li>Network_TibPollution</li>
@@ -154,12 +154,12 @@
 							<li>Transmitter</li>
 							<li>Producer</li>
 						</networkRoles>
-						<containerProps>
-							<maxStorage>1250</maxStorage>
+						<containerConfig>
+							<baseCapacity>1250</baseCapacity>
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
-						</containerProps>
+						</containerConfig>
 						<defFilter>
 							<values>
 								<li>TibSludge</li>
@@ -247,10 +247,10 @@
 							<li>Transmitter</li>
 							<li>Producer</li>
 						</networkRoles>
-						<containerProps>
-							<maxStorage>100</maxStorage>
+						<containerConfig>
+							<baseCapacity>100</baseCapacity>
 							<dropContents>false</dropContents>
-						</containerProps>
+						</containerConfig>
 						<defFilter>
 							<li>Network_TibPollution</li>	
 						</defFilter>
@@ -350,10 +350,10 @@
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<containerProps>
-							<maxStorage>100</maxStorage>
+						<containerConfig>
+							<baseCapacity>100</baseCapacity>
 							<dropContents>false</dropContents>
-						</containerProps>
+						</containerConfig>
 						<defFilter>
 							<li>Network_TibPollution</li>
 						</defFilter>

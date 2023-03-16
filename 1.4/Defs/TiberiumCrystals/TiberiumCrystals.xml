@@ -64,11 +64,6 @@
 		<defName>TiberiumGreen</defName>
 		<label>green tiberium crystal</label>
 		<description>A glowy green crystal. Looks strangely appealing.</description>
-		<discovery>
-			<discoveryDef>TiberiumCrystalLattice</discoveryDef>
-			<unknownLabel>strange green crystal</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		</discovery>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>
 			<Beauty>50</Beauty>	
@@ -99,6 +94,15 @@
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<conversions>GreenConversion</conversions>
+		<modExtensions Inherit="False">
+			<li Class="TeleCore.SubMenuExtension">
+				<discovery>
+					<discoveryDef>TiberiumCrystalLattice</discoveryDef>
+					<unknownLabel>strange green crystal</unknownLabel>
+					<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+				</discovery>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
@@ -217,11 +221,6 @@
 		<defName>TiberiumBlue</defName>
 		<label>blue tiberium</label>
 		<description>A glowy blue crystal. Beautiful to the eye but of unknown properties.</description>
-		<discovery>
-			<discoveryDef>TiberiumCrystalLattice</discoveryDef>
-			<unknownLabel>strange blue crystal</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		</discovery>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>
 			<Beauty>60</Beauty>	
@@ -259,6 +258,15 @@
 			</li>
 		</comps>
 		<conversions>BlueConversion</conversions>
+		<modExtensions Inherit="False">
+			<li Class="TeleCore.SubMenuExtension">
+				<discovery>
+					<discoveryDef>TiberiumCrystalLattice</discoveryDef>
+					<unknownLabel>strange blue crystal</unknownLabel>
+					<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+				</discovery>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
@@ -388,11 +396,6 @@
 		<defName>TiberiumRed</defName>
 		<label>red tiberium</label>
 		<description>A glowy red crystal. Beautiful to the eye but of unknown properties. It seems strange.</description>
-		<discovery>
-			<discoveryDef>TiberiumCrystalLattice</discoveryDef>
-			<unknownLabel>strange red crystal</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		</discovery>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Beauty>75</Beauty>	
@@ -430,6 +433,15 @@
 			</li>
 		</comps>
 		<conversions>RedConversion</conversions>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<discovery>
+					<discoveryDef>TiberiumCrystalLattice</discoveryDef>
+					<unknownLabel>strange red crystal</unknownLabel>
+					<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+				</discovery>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TiberiumCrystalDef>
 	
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
