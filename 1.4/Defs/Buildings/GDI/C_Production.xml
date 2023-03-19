@@ -55,17 +55,17 @@
 							<baseCapacity>1000</baseCapacity>
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
+							<valueDefs>
+								<li>TibGreen</li>	
+								<li>TibBlue</li>	
+								<li>TibRed</li>	
+								<li>TibSludge</li>	
+							</valueDefs>
 						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<defFilter>
-							<li>TibGreen</li>	
-							<li>TibBlue</li>	
-							<li>TibRed</li>	
-							<li>TibSludge</li>	
-						</defFilter>
 					</li>
 				</networks>
 				<!--generalIOPattern>#+#|###|</generalIOPattern-->

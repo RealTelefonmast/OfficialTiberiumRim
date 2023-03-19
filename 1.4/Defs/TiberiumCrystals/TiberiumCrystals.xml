@@ -94,8 +94,8 @@
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<conversions>GreenConversion</conversions>
-		<modExtensions Inherit="False">
-			<li Class="TeleCore.SubMenuExtension">
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
 				<discovery>
 					<discoveryDef>TiberiumCrystalLattice</discoveryDef>
 					<unknownLabel>strange green crystal</unknownLabel>
@@ -258,8 +258,8 @@
 			</li>
 		</comps>
 		<conversions>BlueConversion</conversions>
-		<modExtensions Inherit="False">
-			<li Class="TeleCore.SubMenuExtension">
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
 				<discovery>
 					<discoveryDef>TiberiumCrystalLattice</discoveryDef>
 					<unknownLabel>strange blue crystal</unknownLabel>

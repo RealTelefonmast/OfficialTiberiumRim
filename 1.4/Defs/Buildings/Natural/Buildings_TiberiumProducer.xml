@@ -167,8 +167,8 @@
 			<growRadius>11.9</growRadius>
 			<spawnInterval>30000~90000</spawnInterval>
 		</spawner>
-		<modExtensions Inherit="False">
-			<li Class="TeleCore.SubMenuExtension">
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
 				<discovery>
 					<discoveryDef>TiberiumProducerCrater</discoveryDef>
 					<unknownLabel>strange crater</unknownLabel>
@@ -356,8 +356,8 @@
 			<corruptionRadius>22</corruptionRadius>
 			<createBlossom>true</createBlossom>
 		</tiberiumFieldRules>
-		<modExtensions Inherit="False">
-			<li Class="TeleCore.SubMenuExtension">
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
 				<discovery>
 					<discoveryDef>TiberiumProducerCrater</discoveryDef>
 					<unknownLabel>strange crater</unknownLabel>
@@ -558,8 +558,8 @@
 			<corruptionRadius>20</corruptionRadius>
 			<createBlossom>true</createBlossom>
 		</tiberiumFieldRules>
-		<modExtensions Inherit="False">
-			<li Class="TeleCore.SubMenuExtension">
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
 				<discovery>
 					<discoveryDef>TiberiumProducerCrater</discoveryDef>
 					<unknownLabel>strange crater</unknownLabel>
@@ -710,8 +710,8 @@
 			<createBlossom>false</createBlossom>
 			<allowFlora>false</allowFlora>
 		</tiberiumFieldRules>
-		<modExtensions Inherit="False">
-			<li Class="TeleCore.SubMenuExtension">
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
 				<discovery>
 					<discoveryDef>TiberiumProducerCrater</discoveryDef>
 					<unknownLabel>strange crater</unknownLabel>
@@ -840,8 +840,8 @@
 				<li>TiberiumAboreus</li>
 			</crystalOptions>
 		</tiberiumFieldRules>
-		<modExtensions Inherit="False">
-			<li Class="TeleCore.SubMenuExtension">
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
 				<discovery>
 					<discoveryDef>TiberiumProducerCrater</discoveryDef>
 					<unknownLabel>strange crater</unknownLabel>
@@ -960,8 +960,8 @@
 			</crystalOptions>
 		</tiberiumFieldRules>
 		<filthLeaving>FilthTibBloodG</filthLeaving>		
-		<modExtensions Inherit="False">
-			<li Class="TeleCore.SubMenuExtension">
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
 				<discovery>
 					<discoveryDef>VeinholeEncounter</discoveryDef>
 					<unknownLabel>strange creature</unknownLabel>
@@ -1054,6 +1054,8 @@
 			<li Class="TeleCore.FXDefExtension">
 				<rotateDrawSize>false</rotateDrawSize>
 				<alignToBottom>true</alignToBottom>
+			</li>
+			<li Class="TeleCore.TeleDefExtension">
 				<discovery>
 					<discoveryDef>TiberiumProducerCrater</discoveryDef>
 					<unknownLabel>strange crater</unknownLabel>

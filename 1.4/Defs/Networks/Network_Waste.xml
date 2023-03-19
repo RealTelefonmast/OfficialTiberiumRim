@@ -20,7 +20,7 @@
 	
 	<TeleCore.NetworkValueDef>
 		<defName>TibSludge</defName>
-		<networkDef>WasteNetwork</networkDef>
+		<collectionDef>WasteNetwork</collectionDef>
 		<label>sludge</label>
 		<valueColor>(160,255,0)</valueColor>
 	</TeleCore.NetworkValueDef>

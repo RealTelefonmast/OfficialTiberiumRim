@@ -43,6 +43,8 @@
 				<groupDef>Tiberium</groupDef>
 				<category>Producers</category>
 				<isDevOption>true</isDevOption>
+			</li>
+			<li Class="TeleCore.TeleDefExtension">
 				<discovery>
 					<discoveryDef>TiberiumProducerCrater</discoveryDef>
 					<unknownLabel>strange meteorite</unknownLabel>

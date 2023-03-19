@@ -32,10 +32,10 @@ namespace TiberiumRim
         public static NetworkValueDef TibGas;
 
         //Atmospheric Network
-        public static NetworkValueDef TibPollution;
+        public static NetworkValueDef Atmospheric_TibPollution;
 
         //Atmospheric Gases
-        public static ThingDef Gas_TiberiumGas;
+        //public static ThingDef Gas_TiberiumGas;
 
         //Factions
 

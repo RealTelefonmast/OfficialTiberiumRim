@@ -78,7 +78,7 @@ namespace TiberiumRim
         public override void NetworkPostTick(NetworkSubPart networkSubPart, bool isPowered)
         {
             if (!ShouldProcess) return;
-            if (AtmosphericComp.Container.TryRemoveValue(TiberiumDefOf.TibPollution, 10, out var result))
+            if (AtmosphericComp.Container.TryRemoveValue(TiberiumDefOf.Atmospheric_TibPollution, 10, out var result))
             {
                 ProcessingComp.Container.TryAddValue(TiberiumDefOf.TibSludge, result.ActualAmount * 0.125f, out _);
             }

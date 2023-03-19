@@ -44,12 +44,10 @@
 						<containerConfig>
 							<baseCapacity>1000</baseCapacity>
 							<dropContents>false</dropContents>
+							<valueDefs>
+								<li>Atmospheric_TibPollution</li>
+							</valueDefs>
 						</containerConfig>
-						<defFilter>
-							<values>
-								<li>Network_TibPollution</li>
-							</values>
-						</defFilter>
 					</li>
 				</networks>
 				<!--<generalIOPattern>++|++</generalIOPattern>-->
@@ -141,12 +139,10 @@
 						<containerConfig>
 							<baseCapacity>750</baseCapacity>
 							<dropContents>false</dropContents>
+							<valueDefs>
+								<li>Atmospheric_TibPollution</li>
+							</valueDefs>
 						</containerConfig>
-						<defFilter>
-							<values>
-								<li>Network_TibPollution</li>
-							</values>
-						</defFilter>
 					</li>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
@@ -159,12 +155,10 @@
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
-						</containerConfig>
-						<defFilter>
-							<values>
+							<valueDefs>
 								<li>TibSludge</li>
-							</values>
-						</defFilter>
+							</valueDefs>
+						</containerConfig>
 					</li>
 				</networks>
 				<generalIOPattern>++|++</generalIOPattern>
@@ -250,10 +244,10 @@
 						<containerConfig>
 							<baseCapacity>100</baseCapacity>
 							<dropContents>false</dropContents>
+							<valueDefs>
+								<li>Atmospheric_TibPollution</li>
+							</valueDefs>
 						</containerConfig>
-						<defFilter>
-							<li>Network_TibPollution</li>	
-						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>+</generalIOPattern>
@@ -353,10 +347,10 @@
 						<containerConfig>
 							<baseCapacity>100</baseCapacity>
 							<dropContents>false</dropContents>
+							<valueDefs>
+								<li>Atmospheric_TibPollution</li>
+							</valueDefs>
 						</containerConfig>
-						<defFilter>
-							<li>Network_TibPollution</li>
-						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>+</generalIOPattern>

@@ -14,7 +14,7 @@
 		<label>pollution</label>
 		<labelShort>tib</labelShort>
 		<atmosphericTag>Air</atmosphericTag>
-		<networkValue>Network_TibPollution</networkValue>
+		<networkValue>Atmospheric_TibPollution</networkValue>
 		<viscosity>8</viscosity>
 		<capacityFactor>2</capacityFactor>
 		<valueColor>(38,127,4)</valueColor>

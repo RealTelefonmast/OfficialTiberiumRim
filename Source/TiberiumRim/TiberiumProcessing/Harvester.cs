@@ -29,7 +29,7 @@ namespace TiberiumRim
         public float unloadValue = 0.125f;
         public float harvestValue = 0.125f;
         public ThingDef wreckDef;
-        public ContainerConfig containerConfig;
+        public ContainerConfig<NetworkValueDef> containerConfig;
         //public List<NetworkValueDef> handledValues;
     }
 
@@ -37,7 +37,6 @@ namespace TiberiumRim
     {
         private NetworkContainerThing<IContainerHolderNetworkThing> _containerInt;
         public new HarvesterKindDef kindDef => (HarvesterKindDef) base.kindDef;
-        protected NetworkContainerThing<IContainerHolderNetworkThing> container;
 
         //Data
         private IntVec3 lastKnownPos;
@@ -109,7 +108,7 @@ namespace TiberiumRim
         //Priority Bools
         private bool ShouldIdle    => Container.Empty && (!HasAvailableTiberium || (Container.TotalStored > 0 && RefineryComp.Container.Full));
         private bool ShouldHarvest => !ContainerFull && HasAvailableTiberium;//CurrentPriority == HarvesterPriority.Harvest;
-        private bool ShouldUnload  => ContainerFull || (container.TotalStored > 0 && !HasAvailableTiberium);
+        private bool ShouldUnload  => ContainerFull || (Container.TotalStored > 0 && !HasAvailableTiberium);
 
         private bool CanHarvest => !IsUnloading; // !ContainerFull && HasAvailableTiberium;
         private bool CanUnload  => Container.TotalStored > 0 && RefineryComp.CanBeRefinedAt;
@@ -170,7 +169,6 @@ namespace TiberiumRim
 
         public void Notify_ContainerStateChanged(NotifyContainerChangedArgs<NetworkValueDef> args)
         {
-            throw new System.NotImplementedException();
         }
 
         public string ContainerTitle => "TODO: Harvester Container";
@@ -203,7 +201,7 @@ namespace TiberiumRim
             Scribe_References.Look(ref preferredProducer, "prefProducer");
             Scribe_Defs.Look(ref preferredType, "prefType");
             //Data
-            Scribe_Container.Look(ref container, kindDef.containerConfig, this, "tibContainer");
+            Scribe_Container.Look(ref _containerInt, kindDef.containerConfig, this, "tibContainer");
             Scribe_Values.Look(ref lastKnownPos, "lastPos");
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
@@ -226,7 +224,7 @@ namespace TiberiumRim
             compAnimation = this.GetComp<Comp_AnimationRenderer>();
             if (!respawningAfterLoad)
             {
-                container = new NetworkContainerThing<IContainerHolderNetworkThing>(kindDef.containerConfig, this);
+                _containerInt = new NetworkContainerThing<IContainerHolderNetworkThing>(kindDef.containerConfig, this);
                 if (ParentBuilding == null)
                 { 
                     ResolveNewRefinery(); 

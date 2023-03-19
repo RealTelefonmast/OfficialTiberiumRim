@@ -53,8 +53,8 @@
 	</TiberiumRim.TRThingDef>
 
 	<TeleCore.NetworkValueDef>
-		<defName>Network_TibPollution</defName>
-		<networkDef>AtmosphericNetwork</networkDef>
+		<defName>Atmospheric_TibPollution</defName>
+		<collectionDef>AtmosphericNetwork</collectionDef>
 		<label>pollution</label>
 		<valueColor>(38,127,4)</valueColor>
 	</TeleCore.NetworkValueDef>

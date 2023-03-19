@@ -148,17 +148,17 @@
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>true</storeEvenly>	
+							<valueDefs>
+								<li>TibGreen</li>
+								<li>TibBlue</li>
+								<li>TibRed</li>			
+								<li>TibSludge</li>	
+							</valueDefs>
 						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Storage</li>
 						</networkRoles>
-						<defFilter>
-							<li>TibGreen</li>
-							<li>TibBlue</li>
-							<li>TibRed</li>			
-							<li>TibSludge</li>					
-						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>#+#|+++|#+#</generalIOPattern>
@@ -256,18 +256,18 @@
 							<baseCapacity>125</baseCapacity>
 							<dropContents>false</dropContents>
 							<leaveContainer>false</leaveContainer>
+							<valueDefs>
+								<li>TibGreen</li>
+								<li>TibBlue</li>
+								<li>TibRed</li>			
+								<li>TibSludge</li>	
+							</valueDefs>
 						</containerConfig>						
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Valve</li>
 							<li>Passthrough</li>
 						</networkRoles>
-						<defFilter>
-							<li>TibGreen</li>
-							<li>TibBlue</li>
-							<li>TibRed</li>			
-							<li>TibSludge</li>					
-						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>I#O</generalIOPattern>
@@ -338,14 +338,14 @@
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
+							<valueDefs>
+								<li>TibGas</li>
+							</valueDefs>
 						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Storage</li>
 						</networkRoles>
-						<defFilter>
-							<li>TibGas</li>			
-						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>#++#|++++|++++|#++#</generalIOPattern>
@@ -433,17 +433,17 @@
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
+							<valueDefs>
+								<li>TibGreen</li>
+								<li>TibBlue</li>
+								<li>TibRed</li>			
+								<li>TibSludge</li>	
+							</valueDefs>
 						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Producer</li>
 						</networkRoles>
-						<defFilter>
-							<li>TibGreen</li>
-							<li>TibBlue</li>
-							<li>TibRed</li>			
-							<li>TibSludge</li>		
-						</defFilter>
 					</li>
 				</networks>
 				<harvester>Harvester_Common</harvester>
@@ -553,14 +553,14 @@
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
+							<valueDefs>
+								<li>TibGas</li>	
+							</valueDefs>
 						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Producer</li>
 						</networkRoles>
-						<defFilter>
-							<li>TibGas</li>	
-						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>++++</generalIOPattern>
@@ -653,16 +653,16 @@
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>
+							<valueDefs>
+								<li>TibGreen</li>	
+								<li>TibBlue</li>	
+								<li>TibRed</li>	
+							</valueDefs>
 						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<defFilter>
-							<li>TibGreen</li>	
-							<li>TibBlue</li>	
-							<li>TibRed</li>	
-						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>++++|+##+|+##+|+##+</generalIOPattern>
@@ -809,6 +809,12 @@
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
+							<valueDefs>
+								<li>TibGreen</li>	
+								<li>TibBlue</li>	
+								<li>TibRed</li>	
+								<li>TibSludge</li>
+							</valueDefs>
 						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
@@ -827,12 +833,6 @@
 								</subValues>
 							</li>
 						</networkRoles>
-						<defFilter>
-							<li>TibGreen</li>	
-							<li>TibBlue</li>	
-							<li>TibRed</li>	
-							<li>TibSludge</li>
-						</defFilter>
 					</li>
 					<li>
 						<networkDef>ChemicalNetwork</networkDef>
@@ -841,15 +841,15 @@
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>
+							<valueDefs>
+								<fromCollection>ChemicalNetwork</fromCollection>
+							</valueDefs>
 						</containerConfig>
 						<networkRoles>
 							<li>Controller</li>
 							<li>Transmitter</li>
 							<li>Producer</li>
-						</networkRoles>
-						<defFilter>
-							<fromDef>ChemicalNetwork</fromDef>
-						</defFilter>				
+						</networkRoles>			
 					</li>
 				</networks>
 				<generalIOPattern>++++++|+####+|+####+|+####+|+####+|++++++</generalIOPattern>
@@ -1020,17 +1020,17 @@
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
+							<valueDefs>
+								<li>TibGreen</li>	
+								<li>TibBlue</li>	
+								<li>TibRed</li>	
+								<li>TibSludge</li>	
+							</valueDefs>
 						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<defFilter>
-							<li>TibGreen</li>	
-							<li>TibBlue</li>	
-							<li>TibRed</li>	
-							<li>TibSludge</li>	
-						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>#+#|###|</generalIOPattern>
@@ -1112,22 +1112,23 @@
 							<baseCapacity>1000</baseCapacity>
 							<dropContents>true</dropContents>
 							<leaveContainer>true</leaveContainer>
+							<valueDefs>
+								<li>TibGreen</li>	
+								<li>TibBlue</li>	
+								<li>TibRed</li>	
+								<li>TibSludge</li>	
+							</valueDefs>
 						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Requester</li>
 						</networkRoles>
-						<defFilter>
-							<li>TibGreen</li>	
-							<li>TibBlue</li>	
-							<li>TibRed</li>	
-							<li>TibSludge</li>	
-						</defFilter>
 					</li>
 					-->
 					<li>
 						<networkDef>ChemicalNetwork</networkDef>
 						<networkRoles>
+							<li>EndPoint</li>
 							<li>Transmitter</li>
 						</networkRoles>
 					</li>
@@ -1270,14 +1271,14 @@
 							<baseCapacity>10000</baseCapacity>
 							<dropContents>false</dropContents>
 							<leaveContainer>true</leaveContainer>
+							<valueDefs>
+								<fromCollection>ChemicalNetwork</fromCollection>
+							</valueDefs>
 						</containerConfig>
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Storage</li>
 						</networkRoles>
-						<defFilter>
-							<fromDef>ChemicalNetwork</fromDef>
-						</defFilter>
 					</li>
 				</networks>
 				<generalIOPattern>#+#|+++|#+#</generalIOPattern>

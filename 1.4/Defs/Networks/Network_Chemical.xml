@@ -56,7 +56,7 @@
 	<!-- Metals -->
 	<TeleCore.NetworkValueDef>
 		<defName>Iron</defName>
-		<networkDef>ChemicalNetwork</networkDef>
+		<collectionDef>ChemicalNetwork</collectionDef>
 		<label>Iron</label>
 		<labelShort>Fe</labelShort>
 		<valueColor>(224,102,51)</valueColor>
@@ -64,7 +64,7 @@
 
 	<TeleCore.NetworkValueDef>
 		<defName>Copper</defName>
-		<networkDef>ChemicalNetwork</networkDef>
+		<collectionDef>ChemicalNetwork</collectionDef>
 		<label>Copper</label>
 		<labelShort>Cu</labelShort>
 		<valueColor>(200,128,51</valueColor>
@@ -72,7 +72,7 @@
 
 	<TeleCore.NetworkValueDef>
 		<defName>Silver</defName>
-		<networkDef>ChemicalNetwork</networkDef>
+		<collectionDef>ChemicalNetwork</collectionDef>
 		<label>Silver</label>
 		<labelShort>Ag</labelShort>
 		<valueColor>(192,192,192)</valueColor>
@@ -80,7 +80,7 @@
 	
 	<TeleCore.NetworkValueDef>
 		<defName>Gold</defName>
-		<networkDef>ChemicalNetwork</networkDef>
+		<collectionDef>ChemicalNetwork</collectionDef>
 		<label>Gold</label>
 		<labelShort>Au</labelShort>
 		<valueColor>(255,209,35)</valueColor>
@@ -88,7 +88,7 @@
 	
 	<TeleCore.NetworkValueDef>
 		<defName>Uranium</defName>
-		<networkDef>ChemicalNetwork</networkDef>
+		<collectionDef>ChemicalNetwork</collectionDef>
 		<label>Uranium</label>
 		<labelShort>U</labelShort>
 		<valueColor>(0,143,255)</valueColor>
@@ -97,7 +97,7 @@
 	<!---->
 	<TeleCore.NetworkValueDef>
 		<defName>Carbon</defName>
-		<networkDef>ChemicalNetwork</networkDef>
+		<collectionDef>ChemicalNetwork</collectionDef>
 		<label>Carbon</label>
 		<labelShort>C</labelShort>
 		<valueColor>(144,144,144)</valueColor>
@@ -105,7 +105,7 @@
 	
 	<TeleCore.NetworkValueDef>
 		<defName>Phosphorus</defName>
-		<networkDef>ChemicalNetwork</networkDef>
+		<collectionDef>ChemicalNetwork</collectionDef>
 		<label>Phosphorus</label>
 		<labelShort>P</labelShort>
 		<valueColor>(255,128,0)</valueColor>
@@ -113,7 +113,7 @@
 
 	<TeleCore.NetworkValueDef>
 		<defName>Calcium</defName>
-		<networkDef>ChemicalNetwork</networkDef>
+		<collectionDef>ChemicalNetwork</collectionDef>
 		<label>Calcium</label>
 		<labelShort>Ca</labelShort>
 		<valueColor>(61,255,0)</valueColor>
@@ -121,7 +121,7 @@
 
 	<TeleCore.NetworkValueDef>
 		<defName>Silicon</defName>
-		<networkDef>ChemicalNetwork</networkDef>
+		<collectionDef>ChemicalNetwork</collectionDef>
 		<label>Silicon</label>
 		<labelShort>Si</labelShort>
 		<valueColor>(240,200,160)</valueColor>
@@ -129,7 +129,7 @@
 
 	<TeleCore.NetworkValueDef>
 		<defName>Exotic</defName>
-		<networkDef>ChemicalNetwork</networkDef>
+		<collectionDef>ChemicalNetwork</collectionDef>
 		<label>Exotic</label>
 		<labelShort>EX</labelShort>
 		<valueColor>(85,9,96)</valueColor>
@@ -138,7 +138,7 @@
 	<!--Gases
 	<TeleCore.NetworkValueDef>
 		<defName>Methane</defName>
-		<networkDef>ChemicalNetwork</networkDef>
+		<collectionDef>ChemicalNetwork</collectionDef>
 		<label>Methane</label>
 		<labelShort>CH4</labelShort>
 		<valueColor>(85,9,96)</valueColor>
