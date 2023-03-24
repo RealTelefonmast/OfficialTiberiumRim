@@ -6,10 +6,10 @@ namespace TiberiumRim
 {
     public class PositionFilter
     {
-        public List<TerrainDef>       terrainToAvoid = new ();
+        public List<TerrainDef>            terrainToAvoid = new ();
         public List<DefFloat<TerrainDef>> terrainToPrefer = new ();
-        public List<ThingDef>        thingsToSpawnAt = new ();
-        public List<ThingValue>     distanceToThings = new ();
+        public List<ThingDef>             thingsToSpawnAt = new ();
+        public List<ThingValue>          distanceToThings = new ();
 
         //public AreaCheck roofed   = AreaCheck.Avoid;
         //public AreaCheck homeArea = AreaCheck.Avoid;

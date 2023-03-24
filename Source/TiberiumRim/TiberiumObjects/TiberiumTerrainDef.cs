@@ -17,9 +17,8 @@ namespace TiberiumRim
         public List<Color> colorSpectrum = new List<Color>();
         //public List<TerrainSupport> terrainSupport = new List<TerrainSupport>();
         public List<TerrainFilterDef> allowedTerrain;
-        public List<ThingProbability> plantSupport = new List<ThingProbability>();
-
-
+        public List<DefFloat<ThingDef>> plantSupport = new ();
+        
         //TODO: Re-Add AllowedTerrain filter to directly spawn terrain instead of using spreadoutcome
         public bool TryCreateOn(IntVec3 pos, Map map, out TiberiumTerrainDef outTerrain)
         {
@@ -31,7 +30,7 @@ namespace TiberiumRim
             GenTiberium.SetTerrain(pos, map, topTerrain, underTerrain);
             return true;
         }
-
+        
         public bool AllowedOn(TerrainDef terrain)
         {
             return allowedTerrain.Any(t => t.Allows(terrain));
@@ -49,20 +48,21 @@ namespace TiberiumRim
 
         public bool SupportsPlant(ThingDef plant)
         {
-            return plantSupport.Any(p => p.thing == plant);
+            return plantSupport.Any(p => p.def == plant);
         }
 
         public ThingDef TiberiumPlantFor()
         {
             foreach (var ps in plantSupport)
             {
-                if (TRandom.Chance(ps.probability))
-                    return ps.thing;
+                if (TRandom.Chance(ps.value))
+                    return ps.def;
             }
             return null;
         }
     }
 
+    /*
     public class ThingProbability
     {
         public ThingDef thing;
@@ -75,4 +75,5 @@ namespace TiberiumRim
             probability = ParseHelper.ParseFloat(parts[1]);
         }
     }
+    */
 }

@@ -6,7 +6,7 @@ namespace TiberiumRim
 {
     public class ContainerLeak
     {
-        private Comp_NetworkStructure parent;
+        private Comp_Network parent;
         private HashSet<IntVec3> radiationCells;
 
         public float Severity

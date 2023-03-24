@@ -34,15 +34,18 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Krafs.Publicizer" Version="2.2.1">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3641" GeneratePathProperty="true" />
 		<!-- Use Version="*-*" to get the latest beta! -->
 		<PackageReference Include="Lib.Harmony" Version="2.2.2" ExcludeAssets="runtime" />
 		<PackageReference Include="RimWorld.MultiplayerAPI" Version="0.4.0" />
-		<PackageReference Include="TaskPubliciser" Version="1.0.3" />
 
 		<PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.1" />
 
-		<PackageReference Include="TeleCore" Version="1.7.8.7" ExcludeAssets="runtime" />
+		<PackageReference Include="TeleCore" Version="1.7.8.7" />
 		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.0.1" ExcludeAssets="runtime" />
 	</ItemGroup>
 
@@ -66,7 +69,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="HelperClasses\" />
 	  <Folder Include="Rendering\Computation\" />
 	</ItemGroup>
 
@@ -77,19 +79,20 @@
 	  </Reference>
 	</ItemGroup>
 
+	<ItemGroup>
+		<Publicize Include="Assembly-CSharp" />
+	</ItemGroup>
+	
+	<!--
 	<Target Name="MyCode" BeforeTargets="UpdateReferences">
-		<!-- Set our variables -->
 		<PropertyGroup>
 			<AssemblyCSharp>$(PkgKrafs_Rimworld_Ref)\ref\net472\Assembly-CSharp.dll</AssemblyCSharp>
 			<PubliciseOutputPath>$(PkgKrafs_Rimworld_Ref)\ref\net472\</PubliciseOutputPath>
 			<AssemblyCSharp_Publicised>$(PubliciseOutputPath)Assembly-CSharp_publicised.dll</AssemblyCSharp_Publicised>
 		</PropertyGroup>
-
-		<!-- Publicise the dlls (if required) -->
+		
 		<Message Importance="High" Text="Publicising Rimworld Assembly ..." />
 		<Publicise TargetAssemblyPath="$(AssemblyCSharp)" OutputPath="$(PubliciseOutputPath)" Condition="Exists('$(AssemblyCSharp)')" />
-
-		<!-- Add references to the new publicised dlls -->
 		<Message Importance="High" Text="Replacing reference to un-publicised assemblies with publicised equivalents ..." />
 
 		<ItemGroup>
@@ -109,5 +112,5 @@
 			<Reference Remove="$(PkgKrafs_Rimworld_Ref)\ref\net472\Assembly-CSharp.dll" />
 		</ItemGroup>
 	</Target>
-
+-->
 </Project>

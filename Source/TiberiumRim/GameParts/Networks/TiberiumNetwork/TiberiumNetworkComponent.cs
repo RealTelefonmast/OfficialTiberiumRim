@@ -5,7 +5,7 @@ namespace TiberiumRim
 {
     public class TiberiumNetworkSubPart : NetworkSubPart
     {
-        public TiberiumNetworkSubPart(Comp_NetworkStructure parent, NetworkSubPartProperties properties) : base(parent, properties)
+        public TiberiumNetworkSubPart(Comp_Network parent, NetworkSubPartProperties properties) : base(parent, properties)
         {
         }
 

@@ -10,7 +10,7 @@ namespace TiberiumRim
     {
         public Building_TiberiumGeyser boundGeyser;
 
-        public Comp_NetworkStructure CompTNW => this.TryGetComp<Comp_NetworkStructure>();
+        public Comp_Network CompTNW => this.TryGetComp<Comp_Network>();
         public NetworkSubPart TibComponent => CompTNW[TiberiumDefOf.TiberiumNetwork];
 
         public override bool? FX_ShouldDraw(FXLayerArgs args)

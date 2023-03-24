@@ -7,7 +7,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class Comp_TiberiumNetworkStructure : Comp_NetworkStructure
+    public class Comp_TiberiumNetworkStructure : Comp_Network
     {
         public NetworkSubPart TiberiumComp => this[TiberiumDefOf.TiberiumNetwork];
         public NetworkContainer Container => TiberiumComp.Container;
@@ -77,7 +77,7 @@ namespace TiberiumRim
             }
         }
     }
-    public class CompProperties_TNS : CompProperties_NetworkStructure
+    public class CompProperties_TNS : CompProperties_Network
     {
         public CompProperties_TNS()
         {

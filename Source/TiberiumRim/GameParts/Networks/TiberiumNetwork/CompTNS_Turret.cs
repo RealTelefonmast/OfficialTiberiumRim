@@ -79,7 +79,7 @@ namespace TiberiumRim
         //public override float[] DrawRotations => new float[] { ((Building_TurretGun)parent)..Rotation.AsAngle, parent.Rotation.AsAngle, parent.Rotation.AsAngle };
     }
 
-    public class CompProperties_TNWTurret : CompProperties_NetworkStructure
+    public class CompProperties_TNWTurret : CompProperties_Network
     {
         public TurretProperties turret;
     }

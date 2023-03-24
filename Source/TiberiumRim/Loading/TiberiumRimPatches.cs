@@ -7,6 +7,7 @@ using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
 using TeleCore;
+using TiberiumRim.Research.Window;
 using UnityEngine;
 using Verse;
 using Verse.AI;
