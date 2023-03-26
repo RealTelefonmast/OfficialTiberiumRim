@@ -359,7 +359,7 @@
 					</thrower>
 				</moteData>
 			</li>
-			<li Class="TeleCore.CompProperties_NetworkStructurePowerPlant">
+			<li Class="TeleCore.CompProperties_NetworkPowerPlant">
 				<compClass>TiberiumRim.Comp_NetworkStructurePowerPlant</compClass>
 				<fromNetwork>TiberiumNetwork</fromNetwork>
 				<baseCapacity>2000</baseCapacity>

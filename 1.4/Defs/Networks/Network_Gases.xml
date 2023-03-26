@@ -38,7 +38,7 @@
 			<Steel>5</Steel>
 		</costList>
 		<comps>
-			<li Class="TeleCore.CompProperties_NetworkStructure">
+			<li Class="TeleCore.CompProperties_Network">
 				<networks>
 					<li>
 						<networkDef>AtmosphericNetwork</networkDef>

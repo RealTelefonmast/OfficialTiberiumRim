@@ -7,7 +7,7 @@
 		<label>Tiberium Rim</label>
 		<description>Check out Tiberium research.</description>
 		<workerClass>MainButtonWorker_ToggleTab</workerClass>
-		<tabWindowClass>TiberiumRim.MainTabWindow_TibResearch</tabWindowClass>
+		<tabWindowClass>TiberiumRim.Research.Window.MainTabWindow_TibResearch</tabWindowClass>
 		<order>79</order>
 		<validWithoutMap>true</validWithoutMap>
 		<minimized>True</minimized>

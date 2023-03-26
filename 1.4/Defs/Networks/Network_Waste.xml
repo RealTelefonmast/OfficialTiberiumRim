@@ -3,6 +3,8 @@
 
 	<TeleCore.NetworkDef>
 		<defName>WasteNetwork</defName>
+		<label>Waste Network</label>
+		<labelShort>Waste</labelShort>
 		<containerLabel>Waste Storage</containerLabel>
 		<controllerDef>TiberiumNetworkController</controllerDef>
 		<transmitterDef>TiberiumPipe</transmitterDef>

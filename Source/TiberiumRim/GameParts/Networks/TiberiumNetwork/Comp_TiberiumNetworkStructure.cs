@@ -9,19 +9,24 @@ namespace TiberiumRim
 {
     public class Comp_TiberiumNetworkStructure : Comp_Network
     {
-        public NetworkSubPart TiberiumComp => this[TiberiumDefOf.TiberiumNetwork];
-        public NetworkContainer Container => TiberiumComp.Container;
-        public bool HasConnection => TiberiumComp.HasConnection;
+        public NetworkSubPart TiberiumNetPart => this[TiberiumDefOf.TiberiumNetwork];
+        public NetworkSubPart WasteNetPart => this[TiberiumDefOf.WasteNetwork];
+        
+        public bool HasConnection => TiberiumNetPart.HasConnection;
+        public bool HasWasteConnection => this.HasPartFor(TiberiumDefOf.WasteNetwork);
+        
+        
+        public CompProperties_TNS TNSProps => (CompProperties_TNS)base.Props;
 
-        public new CompProperties_TNS Props => (CompProperties_TNS)base.Props;
-
+        public NetworkContainer Container => TiberiumNetPart.Container;
+        
         public Color Color
         {
             get
             {
-                if (TiberiumComp.Container != null)
+                if (TiberiumNetPart.Container != null)
                 {
-                    return TiberiumComp.Container.Color;
+                    return TiberiumNetPart.Container.Color;
                 }
                 return Color.magenta;
             }

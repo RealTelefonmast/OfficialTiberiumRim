@@ -11,7 +11,7 @@ namespace TiberiumRim
         private int ticksLeft;
         private IntRange animationRange = new(15, 45);
 
-        public NetworkSubPart AtmosphericComp => this[TiberiumDefOf.AtmosphericNetwork];
+        public NetworkSubPart AtmosphericComp => this[AtmosDefOf.AtmosphericNetwork];
         public NetworkSubPart ProcessingComp => this[TiberiumDefOf.TiberiumNetwork];
 
         public SimpleCurve FlickerCurve = new SimpleCurve()

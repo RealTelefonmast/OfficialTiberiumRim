@@ -3,6 +3,8 @@
 
 	<TeleCore.NetworkDef>
 		<defName>ChemicalNetwork</defName>
+		<label>Chemical Network</label>
+		<labelShort>Chemical</labelShort>
 		<containerLabel>Chemical Storage</containerLabel>
 		<controllerDef>TiberiumExtractor</controllerDef>
 		<transmitterDef>ChemicalPipe</transmitterDef>
@@ -39,7 +41,7 @@
 			<Steel>5</Steel>
 		</costList>
 		<comps>
-			<li Class="TeleCore.CompProperties_NetworkStructure">
+			<li Class="TeleCore.CompProperties_Network">
 				<networks>
 					<li>
 						<networkDef>ChemicalNetwork</networkDef>

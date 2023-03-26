@@ -544,7 +544,7 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TeleCore.CompProperties_NetworkStructure">
+			<li Class="TeleCore.CompProperties_Network">
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>					
@@ -644,7 +644,7 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TeleCore.CompProperties_NetworkStructure">
+			<li Class="TeleCore.CompProperties_Network">
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>				
@@ -667,7 +667,7 @@
 				</networks>
 				<generalIOPattern>++++|+##+|+##+|+##+</generalIOPattern>
 			</li>
-			<li Class="TeleCore.CompProperties_NetworkStructurePowerPlant">
+			<li Class="TeleCore.CompProperties_NetworkPowerPlant">
 				<compClass>TeleCore.CompPowerPlant_Network</compClass>
 				<basePowerConsumption>-3000</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
@@ -813,7 +813,6 @@
 								<li>TibGreen</li>	
 								<li>TibBlue</li>	
 								<li>TibRed</li>	
-								<li>TibSludge</li>
 							</valueDefs>
 						</containerConfig>
 						<networkRoles>
@@ -824,12 +823,6 @@
 									<li>TibGreen</li>
 									<li>TibBlue</li>
 									<li>TibRed</li>
-								</subValues>
-							</li>
-							<li>
-								<role>Producer</role>
-								<subValues>
-									<li>TibSludge</li>
 								</subValues>
 							</li>
 						</networkRoles>
@@ -847,6 +840,24 @@
 						</containerConfig>
 						<networkRoles>
 							<li>Controller</li>
+							<li>Transmitter</li>
+							<li>Producer</li>
+						</networkRoles>			
+					</li>
+					<li>
+						<networkDef>WasteNetwork</networkDef>
+						<containerConfig>
+							<baseCapacity>1000</baseCapacity>
+							<dropContents>false</dropContents>
+							<leaveContainer>true</leaveContainer>
+							<storeEvenly>false</storeEvenly>
+							<valueDefs>
+								<values>
+									<li>TibSludge</li>
+								</values>
+							</valueDefs>
+						</containerConfig>
+						<networkRoles>
 							<li>Transmitter</li>
 							<li>Producer</li>
 						</networkRoles>			
@@ -875,6 +886,7 @@
 								<MyDstMode>10</MyDstMode>
 							</shaderParameters>
 						</graphicData>
+						<holderTag>Centrifuge</holderTag>
 						<fxMode>Dynamic</fxMode>
 						<rotate>
 							<startRotation>90</startRotation>
@@ -884,7 +896,6 @@
 						<pivotPixelOffset>(0,0,7)</pivotPixelOffset>
 						<needsPower>false</needsPower>
 					</li>
-					
 					<li>
 						<graphicData>
 							<texPath>Blank</texPath>
@@ -901,6 +912,7 @@
 								<MyDstMode>10</MyDstMode>
 							</shaderParameters>
 						</graphicData>
+						<holderTag>Centrifuge</holderTag>						
 						<fxMode>Dynamic</fxMode>
 						<rotate>
 							<rotationSpeed>100</rotationSpeed>
@@ -925,6 +937,7 @@
 								<MyDstMode>1</MyDstMode>
 							</shaderParameters>
 						</graphicData>
+						<holderTag>Centrifuge</holderTag>
 						<fxMode>Dynamic</fxMode>
 						<textureSize>(512,512)</textureSize>
 						<pivotPixelOffset>(0,0,7)</pivotPixelOffset>
@@ -1263,7 +1276,7 @@
 			<Beauty>-25</Beauty>
 		</statBases>
 		<comps>
-			<li Class="TeleCore.CompProperties_NetworkStructure">
+			<li Class="TeleCore.CompProperties_Network">
 				<networks>
 					<li>
 						<networkDef>ChemicalNetwork</networkDef>

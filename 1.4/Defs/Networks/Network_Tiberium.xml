@@ -3,6 +3,8 @@
 
 	<TeleCore.NetworkDef>
 		<defName>TiberiumNetwork</defName>
+		<label>Tiberium Network</label>
+		<labelShort>Tiberium</labelShort>
 		<containerLabel>Tiberium Storage</containerLabel>
 		<controllerDef>TiberiumNetworkController</controllerDef>
 		<transmitterDef>TiberiumPipe</transmitterDef>
@@ -38,7 +40,7 @@
 			<Steel>5</Steel>
 		</costList>
 		<comps>
-			<li Class="TeleCore.CompProperties_NetworkStructure">
+			<li Class="TeleCore.CompProperties_Network">
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>

@@ -48,7 +48,7 @@ namespace TiberiumRim
                         var researchWindow = (MainTabWindow_TibResearch) Find.MainTabsRoot.OpenTab.TabWindow;
                         researchWindow.SelTab = ResearchTabOption.Projects;
                         var proj = events.First(e => !e.unlocksResearch.NullOrEmpty()).unlocksResearch.First();
-                        researchWindow.SelProject = proj;
+                        researchWindow.SetProject(proj);
 
                         var manager = TRUtils.ResearchManager();
                         if (!manager.IsOpen(proj.ParentGroup))

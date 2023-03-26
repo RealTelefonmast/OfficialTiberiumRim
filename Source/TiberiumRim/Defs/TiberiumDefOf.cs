@@ -10,7 +10,7 @@ namespace TiberiumRim
         //NETWORKS
         public static NetworkDef TiberiumNetwork;
         public static NetworkDef ChemicalNetwork;
-        public static NetworkDef AtmosphericNetwork;
+        public static NetworkDef WasteNetwork;
 
         //Chemical Network
         public static NetworkValueDef Carbon;

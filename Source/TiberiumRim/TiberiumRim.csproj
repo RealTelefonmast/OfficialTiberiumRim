@@ -31,6 +31,7 @@
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<OutputPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\OfficialTiberiumRim\1.4\Assemblies\</OutputPath>
+		<DebugType>full</DebugType>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -45,7 +46,7 @@
 
 		<PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.1" />
 
-		<PackageReference Include="TeleCore" Version="1.7.8.7" />
+		<PackageReference Include="TeleCore" Version="1.7.9.1" />
 		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.0.1" ExcludeAssets="runtime" />
 	</ItemGroup>
 
