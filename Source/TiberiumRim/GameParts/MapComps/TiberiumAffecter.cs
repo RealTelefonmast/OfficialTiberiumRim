@@ -45,6 +45,8 @@ namespace TiberiumRim
             //Affect Objects
             if (TileIterator?.Current.IsValid ?? false)
             { 
+                //TODO: Use CellSteadyEffects Instead -mark affected tiles
+                //TODO: => MapWorldPatches.DoCellSteadyEffectsPatch
                 var current = TileIterator.Current;
                 TiberiumCrystal affecter = current.CellsAdjacent8Way().Select(c => c.GetTiberium(map)).FirstOrDefault();
                 AffectPotentialObject(current, affecter);

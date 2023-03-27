@@ -13,26 +13,13 @@ namespace TiberiumRim
 {
     internal static class TRUIPatches
     {
-        [HarmonyPatch(typeof(PlaySettings))]
-        [HarmonyPatch(nameof(PlaySettings.DoPlaySettingsGlobalControls))]
-        public static class PlaySettingsPatch
-        {
-            public static void Postfix(WidgetRow row, bool worldView)
-            {
-                if (worldView || row == null) return;
-
-                row.ToggleableIcon(ref TRUtils.GameSettings().EVASystem, TiberiumContent.Icon_EVA, "Enable or disable the EVA", SoundDefOf.Mouseover_ButtonToggle);
-                row.ToggleableIcon(ref TRUtils.GameSettings().RadiationOverlay, TiberiumContent.Icon_Radiation, "Toggle the Tiberium Radiation overlay.", SoundDefOf.Mouseover_ButtonToggle);
-            }
-        }
-
         //Tiberium World Coverage Option
         [HarmonyPatch(typeof(Page_CreateWorldParams))]
         [HarmonyPatch(nameof(Page_CreateWorldParams.DoWindowContents))]
         public static class WindowContentsPatch
         {
             static readonly MethodInfo changeMethod = AccessTools.Method(typeof(WindowContentsPatch), nameof(ChangeTiberiumCoverage));
-            static readonly MethodInfo callOperand = AccessTools.Method(typeof(GUI), nameof(Widgets.EndGroup));
+            static readonly MethodInfo callOperand = AccessTools.Method(typeof(Widgets), nameof(Widgets.EndGroup));
 
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
@@ -40,9 +27,10 @@ namespace TiberiumRim
                 {
                     if (code.opcode == OpCodes.Call && code.Calls(callOperand))
                     {
+                        //"TR.World.CoverageSlider"
+                        TRLog.Message($"Patching Opcodes! Next: {code.opcode} | {code.operand}");
                         yield return new CodeInstruction(OpCodes.Ldloc_S, 7);
                         yield return new CodeInstruction(OpCodes.Ldloc_S, 8);
-
                         yield return new CodeInstruction(OpCodes.Call, changeMethod);
                     }
                     yield return code;
@@ -56,13 +44,12 @@ namespace TiberiumRim
                 var imageRect = new Rect(0, curY - 8f, fullWidth, 40);
                 Widgets.DrawShadowAround(imageRect);
                 GenUI.DrawTextureWithMaterial(imageRect, TiberiumContent.TibOptionBG_Cut, null, new Rect(0, 0, 1, 1));
-                Widgets.Label(new Rect(0f, curY, 200f, 30f), "Tiberium Coverage");
+                Widgets.Label(new Rect(0f, curY, 200f, 30f), "TR.World.CoverageSlider".Translate());
                 Rect newRect = new Rect(200, curY, width, 30f);
                 TiberiumSettings.Settings.tiberiumCoverage = Widgets.HorizontalSlider_NewTemp(newRect, (float)TiberiumSettings.Settings.tiberiumCoverage, 0f, 1, true, "Medium", "None", "Full", 0.05f);
             }
         }
-
-
+        
         public static bool BackgroundOnGUIPatch()
         {
             if (!TiberiumSettings.Settings.UseCustomBackground) return true;

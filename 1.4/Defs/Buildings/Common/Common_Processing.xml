@@ -1145,6 +1145,24 @@
 							<li>Transmitter</li>
 						</networkRoles>
 					</li>
+					<li>
+						<networkDef>WasteNetwork</networkDef>
+						<containerConfig>
+							<baseCapacity>250</baseCapacity>
+							<dropContents>false</dropContents>
+							<leaveContainer>true</leaveContainer>
+							<storeEvenly>false</storeEvenly>
+							<valueDefs>
+								<values>
+									<li>TibSludge</li>
+								</values>
+							</valueDefs>
+						</containerConfig>
+						<networkRoles>
+							<li>Transmitter</li>
+							<li>Producer</li>
+						</networkRoles>			
+					</li>
 				</networks>
 				<generalIOPattern>+++|+#+|+#+</generalIOPattern>
 			</li>

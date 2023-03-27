@@ -77,7 +77,6 @@ namespace TiberiumRim
         public void ExposeData()
         {
             Scribe_References.Look(ref mainProducer, "mainProducer");
-            Scribe_Collections.Look(ref tiberium, "tiberiumList", LookMode.Reference);
             Scribe_Deep.Look(ref fieldCellArea, "fieldCells");
         }
 

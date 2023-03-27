@@ -88,9 +88,9 @@ namespace TiberiumRim
 
         public void CustomCellSteadyEffect(IntVec3 c)
         {
-
+            //TODO
         }
-
+        
         public override void MapComponentUpdate()
         {
             base.MapComponentUpdate();

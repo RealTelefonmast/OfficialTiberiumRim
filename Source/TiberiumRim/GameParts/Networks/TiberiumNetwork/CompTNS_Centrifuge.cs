@@ -207,6 +207,8 @@ namespace TiberiumRim
             base.CompTick();
         }
 
+        private Vector3 speedVec;
+
         private void StartOrSustainCentrifuge(bool isPowered)
         {
             if (!processingBatch || !isPowered)
@@ -231,8 +233,6 @@ namespace TiberiumRim
                 speedController.SetTargetSpeed(0);
             }
 
-            var speed = secondOrderSpeed.Update(1/60f, );
-            
             speedController.Update();
             speedVal = speedController.CurSpeed;
 

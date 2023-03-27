@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using RimWorld.Planet;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -8,9 +9,6 @@ namespace TiberiumRim
 {
     public class TiberiumWorldInfo : WorldInfo
     {
-        private int[] tiberiumGrid;
-        private byte[] dataBytes;
-
         private int worldTiles;
 
         private static int maxLevel = 1000;
@@ -31,22 +29,28 @@ namespace TiberiumRim
         public TiberiumWorldInfo(World world) : base(world)
         {
             worldTiles = world.grid.TilesCount;
-            tiberiumGrid = new int[worldTiles];
+            tiberiumGrid = new ushort[worldTiles];
             dataBytes = new byte[worldTiles * 4];
         }
+
+        private ushort[] tiberiumGrid;
+        private byte[] dataBytes;
 
         public override void ExposeData()
         {
             if (Scribe.mode == LoadSaveMode.Saving)
             {
-                Buffer.BlockCopy(tiberiumGrid, 0, dataBytes, 0, worldTiles * 4);
+                dataBytes = DataSerializeUtility.SerializeUshort(worldTiles, (int i) => tiberiumGrid[i]);
             }
-
+            
             DataExposeUtility.ByteArray(ref dataBytes, "tiberiumWorldBytes");
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
-                Buffer.BlockCopy(dataBytes, 0, tiberiumGrid, 0, worldTiles);
+                DataSerializeUtility.LoadUshort(this.dataBytes, this.worldTiles, delegate(int i, ushort data)
+                {
+                    this.tiberiumGrid[i] =data;
+                });
             }
         }
 
@@ -159,7 +163,7 @@ namespace TiberiumRim
 
         public void AdjustTiberiumLevelAt(int tile, int level)
         {
-            tiberiumGrid[tile] = Mathf.Clamp(tiberiumGrid[tile] + level, 0, maxLevel);
+            tiberiumGrid[tile] = (ushort)Mathf.Clamp(tiberiumGrid[tile] + level, 0, maxLevel);
             Find.World.renderer.SetDirty<WorldLayer_Tiberium>();
         }
     }
