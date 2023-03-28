@@ -11,28 +11,52 @@ namespace TiberiumRim
 {
     public class SpeedController
     {
-        private float curSpeed;
+        //
+        private SecondOrderSpeed secondOrder;
+        private Vector3 target;
+        private Vector3 current;
+        
+        private float maxSpeed = 1;
+
+        //
+        private bool isActive;
         private float targetSpeed;
+        private float curSpeed;
         private float friction;
+      
+        public float CurSpeed => current.x;
+        public float TargetSpeed => target.x;
+        public float CurPct => current.x / maxSpeed;
+        public bool ReachedPeak => current.x >= maxSpeed;
 
-        public float CurSpeed => curSpeed;
-
-        public SpeedController(float initialSpeed, float friction)
+        public SpeedController(float maxSpeed, float friction)
         {
-            this.curSpeed = initialSpeed;
-            this.targetSpeed = initialSpeed;
+            this.maxSpeed = maxSpeed;
             this.friction = friction;
+            secondOrder = new SecondOrderSpeed(0.5f, 1, 2, Vector3.zero);
         }
 
-        public void SetTargetSpeed(float speed)
+        public void Start()
         {
-            this.targetSpeed = speed;
+            isActive = true;
+            targetSpeed = maxSpeed;
         }
 
+        public void Stop()
+        {
+            isActive = false;
+            targetSpeed = 0;
+        }
+        
         public void Update()
         {
-            float acceleration = (targetSpeed - curSpeed) * Mathf.Lerp(friction, 1, Mathf.Lerp(0, targetSpeed, curSpeed));
-            curSpeed += acceleration * Mathf.Pow(1/60f, 2);
+            float acceleration = (targetSpeed - curSpeed) * Mathf.Lerp(friction, 1, Mathf.Lerp(0, maxSpeed, curSpeed));
+            curSpeed += acceleration * 1/60f;
+            curSpeed = Mathf.Clamp(curSpeed, -maxSpeed, maxSpeed);
+            target = new Vector3(curSpeed, 0, 0);
+            
+            current = secondOrder.Update(1/60f, target)!.Value;
+            current = new Vector3((float)Math.Round(current.x, 2), 0, 0);
         }
     }
 
@@ -98,34 +122,7 @@ namespace TiberiumRim
 
     public class CompTNS_Centrifuge : Comp_TiberiumNetworkStructure
     {
-        private float speedVal;
-        private float desiredSpeed;
-        private FloatControl speedControl;
         private bool processingBatch;
-
-        readonly SimpleCurve AccCurve = new()
-        {
-            new (0, 0),
-            new (0.25f, 0.125f),
-            new (0.5f, 0.35f),
-            new (0.65f, 0.5f),
-            new (1, 1),
-        };
-
-        readonly SimpleCurve DecCurve = new()
-        {
-            new (0, 0),
-            new (0.75f, 0.5f),
-            new (1, 0.75f),
-        };
-
-        readonly SimpleCurve OutCurve = new()
-        {
-            new (0, 0),
-            new (0.5f, 0.3f),
-            new (0.8f, 0.6f),
-            new (1, 1),
-        };
 
         readonly SimpleCurve shaderCurve = new()
         {
@@ -155,8 +152,8 @@ namespace TiberiumRim
         {
             return args.index switch
             {
-                2 => speedVal,
-                3 => speedVal,
+                2 => speedController.CurSpeed,
+                3 => speedController.CurSpeed,
                 _ => null
             };
         }
@@ -174,15 +171,13 @@ namespace TiberiumRim
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-            speedControl = new FloatControl(25, 4, AccCurve, DecCurve, OutCurve);
-            speedController = new SpeedController(0, 0.5f); //new AngularSpeedController(initialSpeed: 0.0f, acceleration: 2.0f, friction: 0.2f, mass: 5.0f);
-            secondOrderSpeed = new SecondOrderSpeed(5, 1, 1, Vector3.zero);
+            speedController = new SpeedController(6.5f, 2.5f);
         }
 
         [TweakValue("CENTRIFUGE_BLEND", 0f, 1f)]
         public static float OverrideBlendValue = 0;
 
-        private float BlendValue => OverrideBlendValue > 0 ? OverrideBlendValue : shaderCurve.Evaluate(speedControl.CurPct);
+        private float BlendValue => OverrideBlendValue > 0 ? OverrideBlendValue : shaderCurve.Evaluate(speedController.CurPct);
 
         //TiberiumComp.Container.StoredPercent >=
         private bool HasEnoughStored => TiberiumNetPart.RequestWorker.ShouldRequest && !Container.Empty;
@@ -212,43 +207,29 @@ namespace TiberiumRim
         private void StartOrSustainCentrifuge(bool isPowered)
         {
             if (!processingBatch || !isPowered)
-            {
-                speedControl.Stop();
+            { 
+                speedController.Stop();
                 processingBatch = false;
             }
             if (isPowered && HasEnoughStored && !processingBatch && !ChemicalComponent.Container.Full)
             {
-                //Start
-                speedControl.Start();
+                speedController.Start();
                 processingBatch = true;
             }
-            speedControl.Tick();
-
-            if (speedControl.CurState is FloatControl.FCState.Accelerating or FloatControl.FCState.Sustaining)
-            {
-                speedController.SetTargetSpeed(10);
-            }
-            else
-            {
-                speedController.SetTargetSpeed(0);
-            }
-
+            
             speedController.Update();
-            speedVal = speedController.CurSpeed;
 
             //CompFX.FXLayers[2].PropertyBlock.SetFloat("_BlendValue", BlendValue);
             //CompFX.FXLayers[3].PropertyBlock.SetFloat("_BlendValue", BlendValue);
             //CompFX.FXLayers[4].PropertyBlock.SetFloat("_BlendValue", BlendValue);
         }
-
-        public bool useHarmonics = true;
         
         public override void NetworkPostTick(NetworkSubPart networkSubPart, bool isPowered)
         {
             StartOrSustainCentrifuge(isPowered);
             if (!isPowered) return;
 
-            if (speedControl.ReachedPeak && processingBatch)
+            if (speedController.ReachedPeak && processingBatch)
             {
                 var storedTypes = TiberiumNetPart.Container.StoredDefs;
                 for (int i = storedTypes.Count() - 1; i >= 0; i--)
@@ -328,6 +309,7 @@ namespace TiberiumRim
             StringBuilder sb = new StringBuilder(base.CompInspectStringExtra());
             sb.AppendLine();
 
+            /*
             var spdMaxVal = Math.Round(25f, 2);
             var spdCurState = speedControl.CurState;
             var spdAcceleration = Math.Round(speedControl.Acceleration, 2);
@@ -345,6 +327,9 @@ namespace TiberiumRim
                                         $"CurValue\t|{spdCurValue}\n" +
                                         $"CurPct\t|{spdCurPct}\n" +
                                         $"Output\t|{spdOutputVal}\n");
+                                        */
+            sb.AppendLine("Target Speed: " + speedController.TargetSpeed);
+            sb.AppendLine("Current Speed: " + speedController.CurSpeed);
 
             sb.Append($"Shader BlendValue: {BlendValue}");
             return sb.ToString().TrimStart().TrimEndNewlines();
@@ -356,25 +341,6 @@ namespace TiberiumRim
             {
                 yield return gizmo;
             }
-
-            yield return new Command_Action()
-            {
-                defaultLabel = "ToggleHarmonics",
-                action = delegate { useHarmonics = !useHarmonics; }
-            };
-            
-            yield return new Command_Action()
-            {
-                defaultLabel = $"Boost Speed",
-                action = delegate { desiredSpeed += 1f; }
-            };
-            
-            yield return new Command_Action()
-            {
-                defaultLabel = $"DeBoost Speed",
-                action = delegate { desiredSpeed -= 1f;  }
-                
-            };
         }
     }
 }
