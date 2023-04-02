@@ -136,9 +136,14 @@ namespace TiberiumRim
         private SecondOrderSpeed secondOrderSpeed;
         
         private NetworkSubPart ChemicalComponent => this[TiberiumDefOf.ChemicalNetwork];
-
-        public override string FX_GetHolderTag => "Centrifuge";
         
+        public override bool FX_ProvidesForLayer(FXArgs args)
+        {
+            if (args.layerTag == "FXCentrifuge")
+                return true;
+            return base.FX_ProvidesForLayer(args);
+        }
+
         public override float? FX_GetRotation(FXLayerArgs args)
         {
             return args.index switch

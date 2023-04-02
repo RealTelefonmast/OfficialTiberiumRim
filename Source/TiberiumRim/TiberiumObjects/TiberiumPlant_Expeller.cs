@@ -1,4 +1,7 @@
-﻿namespace TiberiumRim
+﻿using TAE;
+using TeleCore;
+
+namespace TiberiumRim
 {
     public class TiberiumPlant_Expeller : TiberiumPlant
     {
@@ -7,9 +10,7 @@
         public override void TickLong()
         {
             base.TickLong();
-
+            MapHeld.GetMapInfo<SpreadingGasGrid>().Notify_SpawnGasAt(Position, TiberiumDefOf.TiberiumPollution, 255);
         }
-
-
     }
 }

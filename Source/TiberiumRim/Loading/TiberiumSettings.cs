@@ -131,7 +131,10 @@ namespace TiberiumRim
             {
                 if (UseCustomBackground)
                 {
-                    LongEventHandler.QueueLongEvent(TRUIPatches.Dialog_OptionsPatch.SetTiberiumBG, string.Empty, false, null, false);
+                    LongEventHandler.QueueLongEvent(delegate
+                    {
+                        TiberiumSettings.Settings.UseCustomBackground = true;
+                    },  string.Empty, false, null, false);
                 }
             }
         }

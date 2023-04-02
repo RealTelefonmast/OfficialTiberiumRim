@@ -103,7 +103,7 @@ namespace TiberiumRim
                 TRUtils.ResearchTargetTable().DeregisterTarget(__instance);
 
                 //Register For DataBase
-                instanceMap.Tiberium().Notify_DespawnedThing(__instance);
+                Tiberium?.Notify_DespawnedThing(__instance);
                 return true;
             }
 

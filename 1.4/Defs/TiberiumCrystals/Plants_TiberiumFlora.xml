@@ -178,6 +178,7 @@
 		<defName>TiberiumExpeller</defName>
 		<label>tiberian vent</label>
 		<description>!</description>
+		<thingClass>TiberiumRim.TiberiumPlant_Expeller</thingClass>
 		<statBases>
 			<MaxHitPoints>130</MaxHitPoints>
 			<Beauty>-18</Beauty>

@@ -8,12 +8,14 @@ namespace TiberiumRim
     public class VeinHub : TRBuilding
     {
         public Veinhole parent;
+        public CellArea affectedArea;
         public List<IntVec3> AffectedCells = new List<IntVec3>();
         public float radius = 12.59f;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
+            affectedArea = new CellArea();
             AffectedCells = GenRadial.RadialCellsAround(Position, radius, false).ToList();
         }
 

@@ -13,10 +13,12 @@ namespace TiberiumRim
         //CompFX
         public override bool FX_ProvidesForLayer(FXArgs args)
         {
-            return args.index is >= 0 and < 3;
+            if (args.layerTag == "FX_TNS_Turret")
+                return true;
+            return base.FX_ProvidesForLayer(args);
         }
 
-
+        
         public override Vector3? FX_GetDrawPosition(FXLayerArgs args)
         {
             return parent.DrawPos;

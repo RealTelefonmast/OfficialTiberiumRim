@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TAE.SpreadingGasTypeDef>
+		<defName>TiberiumGas</defName>
+		<label>tiberium gas</label>
+		
+		<colorMin>(0,0,0)</colorMin>
+		<colorMax>(15,255,55,90)</colorMax>
+		
+		<maxDensityPerCell>256</maxDensityPerCell>
+		<rotationSpeeds>10~20</rotationSpeeds>
+		<blockTurretTracking>true</blockTurretTracking>
+		<accuracyPenalty>0.6</accuracyPenalty>
+	</TAE.SpreadingGasTypeDef>
+	
+	<TAE.SpreadingGasTypeDef>
+		<defName>TiberiumPollution</defName>
+		<label>tiberium pollution</label>
+		<colorMin>(0.25,0.5,0)</colorMin>
+		<colorMax>(0,1,0.35)</colorMax>
+		
+		<maxDensityPerCell>1000</maxDensityPerCell>
+		<minSpreadDensity>100</minSpreadDensity>
+		<dissipateTo>Atmosphere_TibPollution</dissipateTo>
+		
+		<rotationSpeeds>5~10</rotationSpeeds>
+		<blockTurretTracking>true</blockTurretTracking>
+		<accuracyPenalty>0.8</accuracyPenalty>
+	</TAE.SpreadingGasTypeDef>
+	
+	<TAE.SpreadingGasTypeDef>
+		<defName>Gas_Chemical</defName>
+		<label>chemical gas</label>
+		
+		<colorMin>(0,0,0)</colorMin>
+		<colorMax>(1,1,1,1)</colorMax>
+		
+		<maxDensityPerCell>100</maxDensityPerCell>
+		<rotationSpeeds>10~20</rotationSpeeds>
+		<blockTurretTracking>true</blockTurretTracking>
+		<accuracyPenalty>0.3</accuracyPenalty>
+	</TAE.SpreadingGasTypeDef>
+
+</Defs>

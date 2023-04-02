@@ -75,63 +75,51 @@ namespace TiberiumRim
 
         //Tiberium Background Selection
         [HarmonyPatch(typeof(Dialog_Options))]
-        [HarmonyPatch(nameof(Dialog_Options.DoWindowContents))]
-        public static class Dialog_OptionsPatch
+        [HarmonyPatch(nameof(Dialog_Options.DoUIOptions))]
+        public static class Dialog_OptionsDoUIOptions_Patch
         {
-            private static MethodInfo helper = AccessTools.Method(typeof(Dialog_OptionsPatch), nameof(AddTiberiumBGOption));
-            private static MethodInfo textHelper = AccessTools.Method(typeof(Dialog_OptionsPatch), nameof(GetButtonLabel));
+            private static readonly MethodInfo _AddTiberiumOption = AccessTools.Method(typeof(Dialog_OptionsDoUIOptions_Patch), nameof(AddTiberiumBGOption));
+            private static readonly MethodInfo _ChangeButtonLabel = AccessTools.Method(typeof(Dialog_OptionsDoUIOptions_Patch), nameof(ChangeButtonLabel));
+            private static readonly MethodInfo _WindowStackGetter = AccessTools.PropertyGetter(typeof(Find), nameof(Find.WindowStack));
 
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
-                int loadedCount = 0;
-                bool Check(CodeInstruction x) => x.opcode.Equals(OpCodes.Ldloc_S) && (x.operand as LocalBuilder).LocalIndex.Equals(23);
+                var instructionList = instructions.ToList();
 
-                foreach (var codeInstruction in instructions)
+                for (var i = 0; i < instructionList.Count; i++)
                 {
-                    if (Check(codeInstruction))
-                    {
-                        loadedCount++;
-                    }
-                }
+                    var cur = instructionList[i];
+                    var previous = i > 0 ? instructionList[i - 1] : null;
 
-                int curCount = 0;
-                int injectTextIn = 0;
-                foreach (var codeInstruction in instructions)
-                {
-                    if (injectTextIn > 0)
+                    if (previous != null && cur != null)
                     {
-                        yield return codeInstruction;
-                        injectTextIn--;
-                        if (injectTextIn == 0)
+                        if(previous.opcode == OpCodes.Call && previous.Calls(_WindowStackGetter) && cur.opcode == OpCodes.Ldloc_S && (cur.operand as LocalBuilder).LocalIndex.Equals(18))
                         {
-                            yield return new CodeInstruction(OpCodes.Call, textHelper);
+                            yield return new CodeInstruction(OpCodes.Ldloc_S, 18);
+                            yield return new CodeInstruction(OpCodes.Call, _AddTiberiumOption);
                         }
+                    }
+                    
+                    if(cur.opcode == OpCodes.Stloc_S && (cur.operand as LocalBuilder).LocalIndex.Equals(17))
+                    {
+                        yield return cur;
+                        yield return new CodeInstruction(OpCodes.Ldloc_S, 17);
+                        yield return new CodeInstruction(OpCodes.Call, _ChangeButtonLabel);
+                        yield return new CodeInstruction(OpCodes.Stloc_S, 17);
                         continue;
                     }
-                    if (codeInstruction.opcode == OpCodes.Ldstr && ReferenceEquals(codeInstruction.operand, "SetBackgroundImage"))
-                    {
-                        injectTextIn = 5;
-                    }
-                    if (Check(codeInstruction))
-                    {
-                        curCount++;
-                        if (curCount == loadedCount)
-                        {
-                            yield return new CodeInstruction(OpCodes.Ldloc_S, 23);
-                            yield return new CodeInstruction(OpCodes.Call, helper);
-                        }
-                    }
-                    yield return codeInstruction;
+
+                    yield return cur;
                 }
             }
 
-            public static void SetTiberiumBG()
+            private static void SetTiberiumBG()
             {
-                //((UI_BackgroundMain)UIMenuBackgroundManager.background).overrideBGImage = TiberiumContent.BGPlanet;
+                ((UI_BackgroundMain)UIMenuBackgroundManager.background).overrideBGImage = TiberiumContent.BGPlanet;
                 TiberiumSettings.Settings.UseCustomBackground = true;
             }
 
-            private static string GetButtonLabel(string label)
+            public static TaggedString ChangeButtonLabel(TaggedString label)
             {
                 if (TiberiumSettings.Settings.UseCustomBackground)
                 {

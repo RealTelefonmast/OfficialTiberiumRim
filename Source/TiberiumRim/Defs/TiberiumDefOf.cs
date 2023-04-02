@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using TAE;
 using TeleCore;
 using Verse;
 
@@ -33,8 +34,13 @@ namespace TiberiumRim
 
         //Atmospheric Network
         public static NetworkValueDef Atmospheric_TibPollution;
+        
+        //Gases
+        public static SpreadingGasTypeDef TiberiumGas;
+        public static SpreadingGasTypeDef TiberiumPollution;
+        public static SpreadingGasTypeDef Gas_Chemical;
 
-        //Atmospheric Gases
+//Atmospheric Gases
         //public static ThingDef Gas_TiberiumGas;
 
         //Factions

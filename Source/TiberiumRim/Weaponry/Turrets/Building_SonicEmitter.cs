@@ -7,7 +7,9 @@ namespace TiberiumRim
         //FX
         public override bool FX_ProvidesForLayer(FXArgs args)
         {
-            return args.index is 0;
+            if (args.layerTag == "FXSonicEmitter")
+                return true;
+            return base.FX_ProvidesForLayer(args);
         }
         
         public override float? FX_GetRotation(FXLayerArgs args) => MainGun.TurretRotation;

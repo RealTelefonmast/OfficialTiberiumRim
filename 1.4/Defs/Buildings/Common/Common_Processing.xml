@@ -187,6 +187,7 @@
 							<_MaskTex>Buildings/Common/Network/Silo/VFX/FlowMask</_MaskTex>
 						</textureParams>
 						<fxMode>Dynamic</fxMode>
+						<layerTag>FXNetwork</layerTag>
 					</li>
 					<li>
 						<graphicData>
@@ -194,6 +195,7 @@
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(3,3)</drawSize>
 						</graphicData>
+						<layerTag>FXNetwork</layerTag>
 					</li>
 				</fxLayers>
 			</li>
@@ -886,7 +888,7 @@
 								<MyDstMode>10</MyDstMode>
 							</shaderParameters>
 						</graphicData>
-						<holderTag>Centrifuge</holderTag>
+						<layerTag>FXCentrifuge</layerTag>
 						<fxMode>Dynamic</fxMode>
 						<rotate>
 							<startRotation>90</startRotation>
@@ -912,7 +914,7 @@
 								<MyDstMode>10</MyDstMode>
 							</shaderParameters>
 						</graphicData>
-						<holderTag>Centrifuge</holderTag>						
+						<layerTag>FXCentrifuge</layerTag>						
 						<fxMode>Dynamic</fxMode>
 						<rotate>
 							<rotationSpeed>100</rotationSpeed>
@@ -937,7 +939,7 @@
 								<MyDstMode>1</MyDstMode>
 							</shaderParameters>
 						</graphicData>
-						<holderTag>Centrifuge</holderTag>
+						<layerTag>FXCentrifuge</layerTag>
 						<fxMode>Dynamic</fxMode>
 						<textureSize>(512,512)</textureSize>
 						<pivotPixelOffset>(0,0,7)</pivotPixelOffset>

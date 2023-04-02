@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using TeleCore;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
 namespace TiberiumRim
 {
-    public class Comp_TRHealthCheck : ThingComp
+    public class Comp_TRHealthCheck : TeleComp
     {
         public List<BodyPartRecord> PartsForInfection = new List<BodyPartRecord>();
         public List<BodyPartRecord> PartsForGas = new List<BodyPartRecord>();
@@ -96,15 +97,23 @@ namespace TiberiumRim
         public override void CompTickRare()
         {
             base.CompTickRare();
-            if (!Pawn.Spawned || IsTiberiumImmune) return;
-            if (Pawn.ParentHolder is Corpse corpse)
+            if (!Pawn.SpawnedOrAnyParentSpawned || IsTiberiumImmune) return;
+
+            if (Pawn.ParentHolder is Corpse corpse and not WrappedCorpse)
             {
                 var tib = corpse.Position.GetTiberium(corpse.Map);
-                if (tib != null && tib is TiberiumVein vein)
-                    WrapCorpse(corpse, vein);
+                if (tib is TiberiumVein vein)
+                {
+                    var del = delegate()
+                    {
+                        WrappedCorpse.MakeFrom(corpse, vein);
+                    };
+                    del.EnqueueActionForMainThread();
+                }
             }
         }
-
+        
+        /*Ü
         private VeinholeFood WrapCorpse(Corpse pawn, TiberiumVein vein)
         {
             ThingDef veinCorpse = pawn.InnerPawn.VeinCorpseDef();
@@ -113,6 +122,7 @@ namespace TiberiumRim
             corpse.AddCorpse(pawn, vein.Parent as Veinhole);
             return corpse;
         }
+        */
 
         public override void PostPostApplyDamage(DamageInfo dinfo, float totalDamageDealt)
         {

@@ -29,9 +29,10 @@ namespace TiberiumRim
         //FX
         public override bool FX_ProvidesForLayer(FXArgs args)
         {
-            return args.index is >= 0 and < 4;
+            if (args.layerTag == "FXFlameTurret")
+                return true;
+            return base.FX_ProvidesForLayer(args);
         }
-
 
         public override float? FX_GetRotation(FXLayerArgs args)
         {
