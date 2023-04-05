@@ -71,4 +71,20 @@
 		</children>
 	</TiberiumRim.EffecterDefTR>
 	-->
+	
+	<EffecterDef>
+		<defName>VeinholePusher</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_VeinholePusher</fleckDef>
+				<burstCount>2~3</burstCount>
+				<positionRadius>0.55</positionRadius>
+				<scale>0.65~0.75</scale>
+				<spawnLocType>RandomDrawPosOnTarget</spawnLocType>
+				<!--effectMode>ChancePerTick</effectMode-->
+			</li>
+		</children>
+	</EffecterDef>
+	
 </Defs>

@@ -51,7 +51,7 @@ namespace TiberiumRim
 
         public TiberiumField TiberiumField => tiberiumField;
         public AreaMutator AreaMutator => areaMutator;
-        public List<IntVec3> FieldCells => TiberiumField.FieldCells;
+        public List<IntVec3> FieldCells => TiberiumField.Area.Cells;
         public IEnumerable<TiberiumCrystalDef> TiberiumTypes => Ruleset.TiberiumTypes;
         public TiberiumCrystalDef TiberiumCrystalDefWeighted => Ruleset.crystalOptions?.RandomElementByWeight(c => c.value).def;
 

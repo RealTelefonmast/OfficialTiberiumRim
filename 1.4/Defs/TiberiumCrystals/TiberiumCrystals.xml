@@ -115,7 +115,10 @@
 		</statBases>
 		<graphicData>
 			<texPath>Tiberium/Proto/Green</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
+			<graphicClass>TeleCore.Graphic_RandomExtra</graphicClass>
+			<shaderParameters>
+				<_TeleFakeParamRandChance>0.41</_TeleFakeParamRandChance>
+			</shaderParameters>
 		</graphicData>
 		<pathCost>80</pathCost>
 		<comps>
@@ -279,7 +282,10 @@
 		</statBases>
 		<graphicData>
 			<texPath>Tiberium/Proto/Blue</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
+			<graphicClass>TeleCore.Graphic_RandomExtra</graphicClass>
+			<shaderParameters>
+				<_TeleFakeParamRandChance>0.41</_TeleFakeParamRandChance>
+			</shaderParameters>
 		</graphicData>
 		<pathCost>80</pathCost>
 		<comps>

@@ -28,6 +28,14 @@ namespace TiberiumRim
 
         private const int travelTime = 1200;
 
+        private Effecter _effecter;
+        
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            _effecter = DefDatabase<EffecterDef>.GetNamed("VeinholePusher").SpawnAttached(this, Map);
+        }
+
         public override void ExposeData()
         {
             base.ExposeData();
@@ -59,34 +67,26 @@ namespace TiberiumRim
 	            {
 					pather.StartPath(destination, PathEndMode.Touch, TraverseMode.NoPassClosedDoorsOrWater);   
 	            }
-                
-	            pather.PatherTick();
+                else
+                {
+                    if (this.IsHashIntervalTick(4))
+                    {
+                        var thisPos = new TargetInfo(this);
+                        _effecter.Trigger(thisPos, thisPos);
+                    }
+                    pather.PatherTick();
+                }
             }
         }
 
-        private float MovedPct => pather.MovePctToNextCell;
-        
-        private Vector3 TweenedPosRoot()
-        {
-            if (!Spawned)
-            {
-                return Position.ToVector3Shifted();
-            }
-            float z = 0f;
-            float num = this.MovedPercent();
-            return this.pawn.pather.nextCell.ToVector3Shifted() * num + this.pawn.Position.ToVector3Shifted() * (1f - num) + new Vector3(0f, 0f, z) + PawnCollisionTweenerUtility.PawnCollisionPosOffsetFor(this.pawn);
-        }
-        
         private Vector3 TweenedRoot
         {
             get
             {
                 if (pather.Moving)
                 {
-                    float num = pather.MovePctToNextCell;
-                    return pather.nextCell.ToVector3Shifted() * num +
-                           pather.lastPathedTargetPosition.ToVector3Shifted() * (1 - num) +
-                           PawnCollisionTweenerUtility.PawnCollisionPosOffsetFor(InnerPawn);
+                    float num = pather.MovedPercent;
+                    return pather.nextCell.ToVector3Shifted() * num + Position.ToVector3Shifted() * (1f - num);
                 }
                 return DrawPos;
             }

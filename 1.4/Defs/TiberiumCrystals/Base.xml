@@ -58,6 +58,12 @@
 			</visualSizeRange>
 			<topWindExposure>0.1</topWindExposure>
 		</plant>
+		<modExtensions Inherit="False">
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Tiberium</groupDef>
+				<category>Plants</category>
+			</li>
+		</modExtensions>
 	</ThingDef>
 	
 	<TiberiumRim.TiberiumCrystalDef Name="TiberiumCrystalBase" Abstract="True">

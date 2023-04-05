@@ -13,6 +13,28 @@
 	</ThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>VeinEgg</defName>
+		<label>vein egg</label>
+		<thingClass>TiberiumRim.VeinEgg</thingClass>
+		<tickerType>Rare</tickerType>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Natural/Veinhole/VeinEgg/VeinEgg</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>170</MaxHitPoints>
+			<Beauty>-130</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>false</rotatable>
+		<size>(1,1)</size>
+		<blockPlants>true</blockPlants>
+	</TiberiumRim.TRThingDef>	
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>VeinHub</defName>
 		<label>vein hub</label>
 		<thingClass>TiberiumRim.VeinHub</thingClass>

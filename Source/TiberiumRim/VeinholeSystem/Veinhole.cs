@@ -8,6 +8,7 @@ namespace TiberiumRim
 {
     public class Veinhole : TiberiumProducer
     {
+        private VeinholeNetwork livingNetwork;
         private const int hubRadius = 70;
         private int ticksToHub = 0;
         private int ticksToEgg = 0;
@@ -18,9 +19,13 @@ namespace TiberiumRim
         private Comp_AnimationRenderer animationCompInt;
 
         public Comp_AnimationRenderer AnimationComp => animationCompInt;
+        public VeinholeNetwork LivingNetwork => livingNetwork;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
+            //
+            livingNetwork = new VeinholeNetwork(this);
+            
             //Shake the camera!
             Find.CameraDriver.shaker.DoShake(0.2f);
 
@@ -35,6 +40,7 @@ namespace TiberiumRim
         {
             Scribe_Values.Look(ref ticksToHub, "hubTicks");
             Scribe_Values.Look(ref ticksToEgg, "eggTicks");
+            Scribe_Deep.Look(ref livingNetwork, "livingNetwork");
             base.ExposeData();
         }
 

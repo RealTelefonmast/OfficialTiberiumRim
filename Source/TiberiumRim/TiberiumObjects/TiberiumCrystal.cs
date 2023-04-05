@@ -200,7 +200,15 @@ namespace TiberiumRim
         {
             if (LifeStage < TiberiumLifeStage.Spreading) return;
             if (Rand.MTBEventOccurs(def.tiberium.reproduceDays, GenDate.TicksPerDay, interval))
-                GenTiberium.TrySpreadTiberium(this);
+            {
+                if(CanSpreadNow())
+                    GenTiberium.TrySpreadTiberium(this);
+            }
+        }
+
+        protected virtual bool CanSpreadNow()
+        {
+            return true;
         }
 
         private void DoCorruption()

@@ -70,6 +70,7 @@
 		<subCategories Inherit="False">
 			<li>Producers</li>
 			<li>Crystals</li>
+			<li>Plants</li>
 			<li>Misc</li>
 			<li>Visceral</li>
 		</subCategories>
@@ -120,6 +121,11 @@
 	<TeleCore.SubMenuCategoryDef>
 		<defName>Crystals</defName>
 		<label>Crystals</label>
+	</TeleCore.SubMenuCategoryDef>
+	
+	<TeleCore.SubMenuCategoryDef>
+		<defName>Plants</defName>
+		<label>Plants</label>
 	</TeleCore.SubMenuCategoryDef>
 	
 	<TeleCore.SubMenuCategoryDef>

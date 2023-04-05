@@ -82,6 +82,7 @@ namespace TiberiumRim
                             DoRadiationClick(rads);
                     }
                     HediffUtils.TryInfectPawn(Pawn, Grid.InfectionAt(Pawn.Position), false, 250);
+                    
                 }
                 ticker = 250;
             }

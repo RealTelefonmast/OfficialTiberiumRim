@@ -251,8 +251,8 @@ namespace TiberiumRim
         //TODO:[SyncMethod]
         public TiberiumProducer CreateBlossom()
         {
-            bool Predicate(IntVec3 x) => x.InBounds(map) && !x.IsSuppressed(map) && tibField.FieldCells.Contains(x);
-            var potentialCells = tibField.FieldCells.Where(Predicate).ToList();
+            bool Predicate(IntVec3 x) => x.InBounds(map) && !x.IsSuppressed(map) && tibField.Area.Cells.Contains(x);
+            var potentialCells = tibField.Area.Cells.Where(Predicate).ToList();
             if (potentialCells.EnumerableNullOrEmpty()) return null;
             var randomCell = potentialCells.RandomElementByWeight(t =>
             {

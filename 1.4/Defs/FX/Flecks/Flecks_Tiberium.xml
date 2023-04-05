@@ -144,6 +144,21 @@
 		<fadeOutTime>0.2</fadeOutTime>
 	</FleckDef>
 	
+	<!---->
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_VeinholePusher</defName>
+		<graphicData>
+			<texPath>Tiberium/Vein/Vein5</texPath>
+			<renderInstanced>true</renderInstanced>
+			<graphicClass>Graphic_Fleck</graphicClass>
+		</graphicData>
+		<altitudeLayer>Item</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>2</solidTime>
+		<fadeOutTime>0</fadeOutTime>
+		<growthRate>-0.35</growthRate>
+	</FleckDef>
+	
 	<!--
 	<TiberiumRim.ParticleDef Name="SporeBase" Abstract="True">
 		<altitudeLayer>MoteOverhead</altitudeLayer>

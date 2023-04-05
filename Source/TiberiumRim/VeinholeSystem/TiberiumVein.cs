@@ -24,5 +24,16 @@ namespace TiberiumRim
             */
         }
 
+        protected override bool CanSpreadNow()
+        {
+            if (Parent is Veinhole veinhole)
+            {
+                if (veinhole.LivingNetwork.Notify_RequestSpread())
+                {
+                    
+                }
+            }
+            return base.CanSpreadNow();
+        }
     }
 }
