@@ -20,14 +20,14 @@ namespace TiberiumRim
                 string label = "";
                 if (IsImmune)
                 {
-                    label += "TR_HediffToxemiaRecovering".Translate();
+                    label += "TR.Hediff.Toxemia.Recovering".Translate();
                 }
                 else
                 {
                     var time = TicksUntilDeath(pawn);
                     if (time != null)
                     {
-                        label += "TR_HediffToxemiaInfBracket".Translate(time?.ToStringTicksToPeriod(false, false, true, false));
+                        label += "TR.Hediff.Toxemia.FullyCrystallizedNote".Translate(time?.ToStringTicksToPeriod(false, false, true, false));
                     }
                 }
 
@@ -45,7 +45,7 @@ namespace TiberiumRim
         //private string CountInfo => "T:" + TotalAffectedParts + "|B:" + pawn.props.race.body.AllParts.Count + "|NM:" + pawn.HealthComp().NonMisingPartsCount + "|[" + CrystallizingParts.Count + "/" + affectedPartsCount + "]";
         
         public override Color LabelColor => Color.Lerp(mainColor, mutationColor, ToxemiaSeverity);
-        public override bool ShouldRemove => base.ShouldRemove;//pawn.health.hediffSet.hediffs.Any(h => h is Hediff_CauseToxemia);//!(HasRadiation || HasCrystallization);
+        public override bool ShouldRemove => !pawn.health.hediffSet.hediffs.Any(h => h is Hediff_CauseToxemia);//!(HasRadiation || HasCrystallization);
 
         private float CrystallizedPercent => TotalAffectedParts/(float)pawn.kindDef.RaceProps.body.AllParts.Count;//(float)affectedPartsCount / pawn.kindDef.RaceProps.body.AllParts.Count;
         public float ToxemiaSeverity => (CrystallizedPercent + (Radiation?.Severity ?? 0f)) / 2;

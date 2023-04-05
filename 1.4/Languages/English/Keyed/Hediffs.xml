@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<TR.Hediff.Toxemia.Recovering>Recovering</TR.Hediff.Toxemia.Recovering>
+	<TR.Hediff.Toxemia.FullyCrystallizedNote>Fully crystallized in {0}</TR.Hediff.Toxemia.FullyCrystallizedNote>
+
+
+	<!-- Infection -->
+	<TR_HediffFusing>Fusing</TR_HediffFusing>
+	<TR_HediffCrystallizing>Crystallizing</TR_HediffCrystallizing>
+	<TR_HediffCrystallized>Crystallized</TR_HediffCrystallized>
+	<TR_HediffReverse>Decrystallizing</TR_HediffReverse>
+	<TR_HediffHalted>Halted</TR_HediffHalted>
+	<TR_HediffMutation>Mutation Chance</TR_HediffMutation>
+	<TR_Visceral>Visceral</TR_Visceral>
+	<TR_Symbiotic>Symbiotic</TR_Symbiotic>
+	
+</LanguageData>

@@ -110,7 +110,7 @@
 		</requisites>
 		<modExtensions>
 			<li Class="TeleCore.SubMenuExtension">
-				<groupDef>GDI</groupDef>
+				<groupDef>Nod</groupDef>
 				<category>Defense</category>
 			</li>
 		</modExtensions>
@@ -223,7 +223,7 @@
 		</requisites>
 		<modExtensions>
 			<li Class="TeleCore.SubMenuExtension">
-				<groupDef>GDI</groupDef>
+				<groupDef>Nod</groupDef>
 				<category>Defense</category>
 			</li>
 		</modExtensions>

@@ -10,17 +10,6 @@
 	
 	<TR_NewDiscovery>New Discovery!</TR_NewDiscovery>
 	<TR_NewDiscoveryDesc>We have discovered new information!\n\n{0}</TR_NewDiscoveryDesc>
-	
-	<!-- Infection -->
-	<TR_HediffFusing>Fusing</TR_HediffFusing>
-	<TR_HediffCrystallizing>Crystallizing</TR_HediffCrystallizing>
-	<TR_HediffCrystallized>Crystallized</TR_HediffCrystallized>
-	<TR_HediffReverse>Decrystallizing</TR_HediffReverse>
-	<TR_HediffHalted>Halted</TR_HediffHalted>
-	<TR_HediffMutation>Mutation Chance</TR_HediffMutation>
-	<TR_Visceral>Visceral</TR_Visceral>
-	<TR_Symbiotic>Symbiotic</TR_Symbiotic>
-	<TR_HediffToxemiaInfBracket>Fully crystallized in {0}</TR_HediffToxemiaInfBracket>
 
 	<!-- -->
 	<TR_Supercritical>Supercritical!</TR_Supercritical>
