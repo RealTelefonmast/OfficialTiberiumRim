@@ -1,7 +1,49 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TerrainDef ParentName="FloorBase">
+	<TerrainDef Name="FloorBaseTR" Abstract="True">
+		<layerable>true</layerable>
+			<affordances>
+			<li>Light</li>
+			<li>Medium</li>
+			<li>Heavy</li>
+		</affordances>
+		<tags>
+			<li>Floor</li>
+		</tags>
+		<designationCategory>Floors</designationCategory>
+		<fertility>0</fertility>
+		<constructEffect>ConstructDirt</constructEffect>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<pollutionShaderType MayRequire="Ludeon.RimWorld.Biotech">TerrainFadeRoughLinearBurn</pollutionShaderType>
+		<pollutionOverlayTexturePath>Terrain/Surfaces/PollutionFloorSmooth</pollutionOverlayTexturePath>
+		<pollutionColor>(1, 1, 1, 0.8)</pollutionColor>
+		<pollutionOverlayScale>(0.75, 0.75)</pollutionOverlayScale>
+	</TerrainDef>
+	
+	<TerrainDef Name="FloorBaseFactions" ParentName="FloorBaseTR" Abstract="True">
+		<designationCategory>TiberiumMenuDesignator</designationCategory>
+	</TerrainDef>
+	
+	<TerrainDef Name="FloorBase_Nod" ParentName="FloorBaseFactions" Abstract="True">
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Nod</groupDef>
+				<category>Structure</category>
+			</li>
+		</modExtensions>
+	</TerrainDef>
+	
+	<TerrainDef Name="FloorBase_GDI" ParentName="FloorBaseFactions" Abstract="True">
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Structure</category>
+			</li>
+		</modExtensions>
+	</TerrainDef>
+	
+	<TerrainDef ParentName="FloorBase_Nod">
 		<defName>NodConcreteTile</defName>
 		<label>Nod concrete tile</label>
 		<renderPrecedence>240</renderPrecedence>
@@ -17,7 +59,7 @@
 		<constructEffect>ConstructMetal</constructEffect>
 	</TerrainDef>
 	
-	<TerrainDef ParentName="FloorBase">
+	<TerrainDef ParentName="FloorBase_Nod">
 		<defName>NodConcreteFloor</defName>
 		<label>Nod concrete floor</label>
 		<renderPrecedence>240</renderPrecedence>
@@ -33,7 +75,7 @@
 		<constructEffect>ConstructMetal</constructEffect>
 	</TerrainDef>
 	
-	<TerrainDef ParentName="FloorBase">
+	<TerrainDef ParentName="FloorBase_Nod">
 		<defName>NodDangerTile</defName>
 		<label>Nod striped floor</label>
 		<renderPrecedence>240</renderPrecedence>
@@ -49,7 +91,7 @@
 		<constructEffect>ConstructMetal</constructEffect>
 	</TerrainDef>
 	
-	<TerrainDef ParentName="FloorBase">
+	<TerrainDef ParentName="FloorBase_Nod">
 		<defName>NodCarbonPlate</defName>
 		<label>Nod carbon floor</label>
 		<renderPrecedence>240</renderPrecedence>
@@ -66,7 +108,7 @@
 		<constructEffect>ConstructMetal</constructEffect>
 	</TerrainDef>
 	
-	<TerrainDef ParentName="FloorBase">
+	<TerrainDef ParentName="FloorBase_Nod">
 		<defName>NodCarbonTile</defName>
 		<label>Nod carbon tile</label>
 		<renderPrecedence>240</renderPrecedence>
@@ -85,7 +127,7 @@
 	
 	<!-- GDI -->
 	
-	<TerrainDef ParentName="FloorBase">
+	<TerrainDef ParentName="FloorBase_GDI">
 		<defName>GDIConcreteTile</defName>
 		<label>GDI concrete tile</label>
 		<renderPrecedence>240</renderPrecedence>
@@ -99,9 +141,15 @@
 			<Steel>4</Steel>
 		</costList>
 		<constructEffect>ConstructMetal</constructEffect>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Structure</category>
+			</li>
+		</modExtensions>
 	</TerrainDef>
 	
-	<TerrainDef ParentName="FloorBase">
+	<TerrainDef ParentName="FloorBase_GDI">
 		<defName>GDIConcreteFloor</defName>
 		<label>GDI concrete floor</label>
 		<renderPrecedence>240</renderPrecedence>
@@ -117,7 +165,7 @@
 		<constructEffect>ConstructMetal</constructEffect>
 	</TerrainDef>
 	
-	<TerrainDef ParentName="FloorBase">
+	<TerrainDef ParentName="FloorBase_GDI">
 		<defName>GDIDangerTile</defName>
 		<label>GDI striped floor</label>
 		<renderPrecedence>240</renderPrecedence>
@@ -133,7 +181,7 @@
 		<constructEffect>ConstructMetal</constructEffect>
 	</TerrainDef>
 	
-	<TerrainDef ParentName="FloorBase">
+	<TerrainDef ParentName="FloorBase_GDI">
 		<defName>GDIReinforcedPlate</defName>
 		<label>GDI reinforced floor</label>
 		<renderPrecedence>240</renderPrecedence>
@@ -150,7 +198,7 @@
 		<constructEffect>ConstructMetal</constructEffect>
 	</TerrainDef>
 	
-	<TerrainDef ParentName="FloorBase">
+	<TerrainDef ParentName="FloorBase_GDI">
 		<defName>GDIReinforcedTile</defName>
 		<label>GDI reinforced tile</label>
 		<renderPrecedence>240</renderPrecedence>

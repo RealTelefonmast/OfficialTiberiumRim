@@ -94,7 +94,7 @@
 		</comps>
 		<drawOffscreen>false</drawOffscreen>
 		<passability>Impassable</passability>
-		<fillPercent>0.4</fillPercent>
+		<fillPercent>0.5</fillPercent>
 		<hasTooltip>true</hasTooltip>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<specialDisplayRadius>39.9</specialDisplayRadius>

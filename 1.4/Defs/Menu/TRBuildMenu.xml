@@ -18,6 +18,7 @@
 			<li>Scrin</li>
 			<li>Tiberium</li>
 		</subMenus>
+		<visWorker>TiberiumRim.SubMenuVisibilityWorkerTR</visWorker>
 		<superPackPath>UI/Menu/Faction/Common</superPackPath>
 	</TeleCore.SubBuildMenuDef>
 	

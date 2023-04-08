@@ -25,6 +25,11 @@ namespace TiberiumRim
         [TweakValue("NodNukePosZ", 0f, 15f)]
         public static float NodNukePosZ = 0f;
 
+        public override bool FX_ProvidesForLayer(FXArgs args)
+        {
+            return true;
+        }
+
         //FX
         public override Vector3? FX_GetDrawPosition(FXLayerArgs args)
         {
@@ -46,7 +51,7 @@ namespace TiberiumRim
             };
         }
 
-        public override Action<RoutedDrawArgs> FX_GetDrawAction(FXLayerArgs args)
+        public override Func<RoutedDrawArgs, bool> FX_GetDrawFunc(FXLayerArgs args)
         {
             return args.index switch
             {
@@ -62,6 +67,7 @@ namespace TiberiumRim
                         drawPos.y = AltitudeLayer.Building.AltitudeFor();
                         Graphics.DrawMesh(mesh, drawPos, CurRot.ToQuat(), g.MatSingle, 0);
                     }
+                    return false;
                 },
                 4 => delegate (RoutedDrawArgs drawArgs) 
                 {
@@ -73,6 +79,7 @@ namespace TiberiumRim
                     pos.z += NodNukePosZ;
                     matrix4x.SetTRS(pos, Quaternion.Euler(Vector3.up), new Vector3(2f, 1f, 6f));
                     Graphics.DrawMesh(MeshPool.plane10, matrix4x, nukeMat, 0);
+                    return false;
                 },
                 _ => null
             };
@@ -99,6 +106,11 @@ namespace TiberiumRim
         public override void Draw()
         {
             base.Draw();
+        }
+
+        public override void Print(SectionLayer layer)
+        {
+            base.Print(layer);
         }
 
         public override IEnumerable<Gizmo> GetGizmos()

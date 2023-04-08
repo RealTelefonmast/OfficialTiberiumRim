@@ -172,7 +172,8 @@ namespace TiberiumRim
 
         public override void DesignateSingleCell(IntVec3 loc)
         {
-            ActionComposition composition = new ActionComposition("Designator Bubble Test");
+            //TODO: Add some funny nuke stuff
+            /*ActionComposition composition = new ActionComposition("Designator Bubble Test");
             Mote mote = (Mote)ThingMaker.MakeThing(ThingDef.Named("IonBubble"), null);
             Mote distortion = (Mote)ThingMaker.MakeThing(ThingDef.Named("IonDistortionBubble"));
             composition.AddPart(delegate (ActionPart part)
@@ -194,7 +195,7 @@ namespace TiberiumRim
                 distortion.Scale = scaleVal;
                 mote.Scale = scaleVal * 8;
             }, 0, 20);
-            composition.Init();
+            composition.Init();*/
         }
     }
 
