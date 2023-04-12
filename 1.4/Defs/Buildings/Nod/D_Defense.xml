@@ -47,6 +47,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(6,6)</drawSize>
 						</graphicData>
+						<layerTag>FXObelisk</layerTag>
 						<needsPower>true</needsPower>
 					</li>
 					<li>
@@ -56,6 +57,7 @@
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(6,6)</drawSize>
 						</graphicData>
+						<layerTag>FXObelisk</layerTag>
 						<fxMode>Dynamic</fxMode>
 					</li>
 				</fxLayers>

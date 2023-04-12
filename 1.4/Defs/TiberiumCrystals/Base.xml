@@ -26,7 +26,7 @@
 			<TiberiumDamageResistance>1</TiberiumDamageResistance>
 			<Flammability>0.2</Flammability>
 		</statBases>
-	    <pathCost>75</pathCost>
+	    <pathCost>36</pathCost>
 		<fillPercent>0.30</fillPercent>
 		<tickerType>Long</tickerType>
 		<selectable>true</selectable>

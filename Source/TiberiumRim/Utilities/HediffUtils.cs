@@ -10,7 +10,7 @@ namespace TiberiumRim
     {
         public static Comp_TRHealthCheck HealthComp(this Pawn pawn)
         {
-            return pawn.GetComp<Comp_TRHealthCheck>();
+            return pawn?.GetComp<Comp_TRHealthCheck>();
         }
 
         public static float HediffCoverageFor(Pawn pawn, BodyPartRecord part, HediffDef coverageOf)

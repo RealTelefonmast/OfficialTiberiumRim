@@ -587,7 +587,7 @@
 			<graphicClass>Graphic_Random</graphicClass>
 			<drawSize>(0.6,0.6)</drawSize>
 		</graphicData>
-		<pathCost>75</pathCost>
+		<pathCost>14</pathCost>
 		<tiberium>
 			<type>Gas</type>
 			<consistence>Fleshy</consistence>

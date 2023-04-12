@@ -19,7 +19,7 @@
       </li>
     </stages>
 	<comps>
-		<li Class="TiberiumRim.HediffCompProperties_ExplodeOnPartDestroyed">
+		<li Class="TeleCore.HediffCompProperties_ExplodeOnPartDestroyed">
 			<explosionProps>
 				<explosionRadius>6.9</explosionRadius>
 				<damageDef>TiberiumExplosionFrag</damageDef>
@@ -27,6 +27,7 @@
 				<postSpawnDef>Gas_ChemicalInterface</postSpawnDef>
 				<postSpawnChance>0.25</postSpawnChance>
 			</explosionProps>
+			<labelWhenExploded>ruptured</labelWhenExploded>
 		</li>
 		<li Class="HediffCompProperties_ReactOnDamage">
 			<damageDefIncoming>EMP</damageDefIncoming>

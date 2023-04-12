@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TeleCore;
+using TeleCore.Data.Events;
 using UnityEngine;
 using Verse;
 

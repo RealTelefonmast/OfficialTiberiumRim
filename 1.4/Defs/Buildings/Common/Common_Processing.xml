@@ -178,7 +178,6 @@
 								<MyDstMode>1</MyDstMode>
 							</shaderParameters>
 						</graphicData>
-						<drawOffset>(0,0,4)</drawOffset>
 						<textureParams>
 							<_BaseTex>Buildings/Common/Network/Silo/VFX/Base</_BaseTex>
 							<_BlendTex1>Buildings/Common/Network/Silo/VFX/FlowBlend1</_BlendTex1>

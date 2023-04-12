@@ -999,7 +999,6 @@
 							<drawSize>(8,8)</drawSize>
 						</graphicData>				
 						<altitude>Floor</altitude>
-						<drawOffset>(0,0,-3.5)</drawOffset>
 					</li>
 				</fxLayers>
 			</li>

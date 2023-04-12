@@ -157,7 +157,6 @@
 							<graphicClass>Graphic_Multi</graphicClass>
 							<drawSize>(7,7)</drawSize>
 						</graphicData>
-						<drawOffset>(0,0,14)</drawOffset>
 					</li>
 					<li>
 						<graphicData>

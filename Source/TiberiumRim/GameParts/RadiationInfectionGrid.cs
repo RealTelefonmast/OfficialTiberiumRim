@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TeleCore;
 using UnityEngine;
 using Verse;
 
@@ -161,9 +162,14 @@ namespace TiberiumRim
             var radAt = (int)RadiationIntAt(pos);
             var radExtra = (int)Mathf.LerpUnclamped(0, 255, pct);
             SetRadInt(pos, radAt + radExtra);
+            var inversed = TMath.InverseLerpUnclamped(0, 255, radAt + radExtra);
+            //var pct2 = inversed / 255f;
+            AvoidGrid?.SetRadiation(pos, inversed);
             RadiationDrawer.SetDirty();
         }
 
+        internal RadiationAvoidGrid AvoidGrid { get; set; }
+        
         public void SetRadInt(IntVec3 pos, int value)
         {
             radiationIntGrid[Index(pos)] = Mathf.Clamp(value, 0, int.MaxValue);

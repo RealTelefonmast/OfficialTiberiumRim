@@ -35,17 +35,19 @@
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
 					<li>
+						<categoryTag>Visceral</categoryTag>
 						<graphicData>
 							<texPath>Buildings/Natural/VisceralPod/Overlay</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
+							<graphicClass>Graphic_Random</graphicClass>
 							<shaderType>Transparent</shaderType>
 							<drawSize>(3,3)</drawSize>
 						</graphicData>
 					</li>
 					<li>
+						<categoryTag>Visceral</categoryTag>
 						<graphicData>
 							<texPath>Buildings/Natural/VisceralPod/FX</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
+							<graphicClass>Graphic_Random</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(3,3)</drawSize>
 						</graphicData>

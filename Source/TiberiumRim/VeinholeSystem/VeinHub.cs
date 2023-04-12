@@ -29,7 +29,7 @@ namespace TiberiumRim
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
-            parent.RemoveHub(this);
+            parent?.RemoveHub(this);
             base.Destroy(mode);
         }
 

@@ -267,7 +267,6 @@
 						<rotate>
 							<rotationSpeed>75</rotationSpeed>
 						</rotate>
-						<drawOffset>(0,0,0.1)</drawOffset>
 						<needsPower>false</needsPower>
 					</li>
 					<li>

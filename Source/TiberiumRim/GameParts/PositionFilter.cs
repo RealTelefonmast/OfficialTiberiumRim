@@ -1,9 +1,84 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
+using TeleCore;
+using TeleCore.Data.Events;
+using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
 {
+    public class RadiationAvoidGrid : AvoidGridWorker
+    {
+        public RadiationAvoidGrid(Map map, AvoidGridDef def) : base(map, def)
+        {
+            var hediffGrid = map.Tiberium().TiberiumAffecter.HediffGrid;
+            hediffGrid.AvoidGrid = this;
+        }
+
+        public override bool AffectsThing(Thing thing)
+        {
+            if (thing is Pawn pawn)
+            {
+                var healthComp = pawn.HealthComp();
+                if (healthComp.HasGeiger)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void SetRadiation(IntVec3 pos, float pct)
+        {
+            SetAvoidValue(pos, (byte)Mathf.Lerp(0,255, pct));
+        }
+    }
+    
+    public class TiberiumAvoidGrid : AvoidGridWorker
+    {
+        public TiberiumAvoidGrid(Map map, AvoidGridDef def) : base(map, def) { }
+
+        public override bool AffectsThing(Thing thing)
+        {
+            if (thing is Pawn pawn)
+            {
+                var healthComp = pawn.HealthComp();
+                if (healthComp?.IsTiberiumImmune ?? false)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public override void Notify_CellChanged(CellChangedEventArgs args)
+        {
+            if (args.Thing is TiberiumCrater crystal)
+            {
+                if (args.ThingChangedArgs != null)
+                {
+                    switch (args.ThingChangedArgs.ChangeMode)
+                    {
+                        case ThingChangeFlag.Spawned:
+                            SetAvoidValue(args.Cell, 255);
+                            break;
+                        case ThingChangeFlag.Despawning:
+                            break;
+                        case ThingChangeFlag.Despawned:
+                            SetAvoidValue(args.Cell, 0);
+                            break;
+                        case ThingChangeFlag.StateChanged:
+                            break;
+                        case ThingChangeFlag.SentSignal:
+                            break;
+                    }
+                }
+            }
+        }
+    }
+    
     public class PositionFilter
     {
         public List<TerrainDef>            terrainToAvoid = new ();

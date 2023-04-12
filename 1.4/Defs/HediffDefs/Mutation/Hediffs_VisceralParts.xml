@@ -29,7 +29,7 @@
 		<label>bloated gland</label>
 		<description>This part has a large viscous growth on it. If the pawn dies it may cause an explosion.</description>
 		<comps>
-			<li Class="TiberiumRim.HediffCompProperties_ExplodeOnPartDestroyed">
+			<li Class="TeleCore.HediffCompProperties_ExplodeOnPartDestroyed">
 				<explosionProps>
 					<explosionRadius>1.5</explosionRadius>
 					<damageOverride>5</damageOverride>
@@ -37,6 +37,7 @@
 					<postSpawnDef>Gas_ChemicalInterface</postSpawnDef>
 					<postSpawnChance>0.5</postSpawnChance>
 				</explosionProps>
+				<labelWhenExploded>ruptured</labelWhenExploded>
 			</li>
 		</comps>
 		<stages>

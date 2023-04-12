@@ -3,6 +3,7 @@ using System.Text;
 using RimWorld;
 using RimWorld.Planet;
 using TeleCore;
+using TeleCore.Data.Events;
 using Verse;
 
 namespace TiberiumRim

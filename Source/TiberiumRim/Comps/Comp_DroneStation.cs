@@ -115,11 +115,11 @@ namespace TiberiumRim
 
         private void PrintIdleDrones(SectionLayer layer)
         {
-            if (!DroneGarage.Any) return;
+            if (DroneGarage.Count == 0) return;
             for(int i = 0; i < DroneGarage.Count; i++)
             {
                 Vector3 drawPos = parent.DrawPos + new Vector3(0, AltitudeLayer.BuildingOnTop.AltitudeFor(), 0) + Props.renderOffsets[i];
-                RepairDrone drone = (DroneGarage as ThingOwner<Thing>).innerList[0] as RepairDrone;
+                RepairDrone drone = (DroneGarage as ThingOwner<MechanicalPawn>).innerList[0] as RepairDrone;
                 Graphic droneGraphic = drone.Drawer.renderer.graphics.nakedGraphic;
                 Material mat = droneGraphic.MatSouth;
                 Printer_Plane.PrintPlane(layer, drawPos, new Vector2(Props.renderSize, Props.renderSize), mat, 0, false);

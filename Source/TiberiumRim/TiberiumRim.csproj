@@ -44,9 +44,9 @@
 		<PackageReference Include="Lib.Harmony" Version="2.2.2" ExcludeAssets="runtime" />
 		<PackageReference Include="RimWorld.MultiplayerAPI" Version="0.4.0" />
 
-		<PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.1" />
+		<PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.2" />
 
-		<PackageReference Include="TeleCore" Version="1.8.1.8" />
+		<PackageReference Include="TeleCore" Version="1.8.2.5" />
 		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.0.1" ExcludeAssets="runtime" />
 	</ItemGroup>
 

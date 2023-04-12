@@ -3,6 +3,7 @@ using System.Text;
 using RimWorld;
 using TAE;
 using TeleCore;
+using TeleCore.Data.Events;
 using Verse;
 using Verse.Sound;
 

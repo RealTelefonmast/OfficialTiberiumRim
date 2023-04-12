@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using TeleCore;
+using TeleCore.Data.Events;
 using UnityEngine;
 using Verse;
 
@@ -50,7 +51,6 @@ namespace TiberiumRim
                 {
                     return corpse.InnerPawn;
                 }
-
                 return HeldThing as Pawn;
             }
         }
@@ -81,12 +81,25 @@ namespace TiberiumRim
                 return VisceralStage.Visceroid;
             }
         }
+        
+        #region FX
 
-        //FX
+        public override bool FX_ProvidesForLayer(FXArgs args)
+        {
+            return args.categoryTag == "Visceral";
+        }
+
         public override bool? FX_ShouldDraw(FXLayerArgs args)
         {
             return !hatched;
 
+        }
+
+        #endregion
+
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
         }
 
         public override void ExposeData()
@@ -106,10 +119,6 @@ namespace TiberiumRim
             });
         }
 
-        public VisceralPod()
-        {
-        }
-
         public void VisceralSetup(Pawn pawn)
         {
             pawnSize = pawn.BodySize;
@@ -125,18 +134,13 @@ namespace TiberiumRim
                 prematureHatch = true;
         }
 
-        public override void SpawnSetup(Map map, bool respawningAfterLoad)
-        {
-            base.SpawnSetup(map, respawningAfterLoad);
-        }
-
         public override void Kill(DamageInfo? dinfo = null, Hediff exactCulprit = null)
         {
             if (dinfo.HasValue)
             {
                 if (dinfo.Value.Def == DamageDefOf.Flame)
                 {
-                    this.Destroy(DestroyMode.KillFinalize, true);
+                    Destroy(DestroyMode.KillFinalize, true);
                     return;
                 }
             }
@@ -157,7 +161,6 @@ namespace TiberiumRim
                 Open();
                 return;
             }
-
             base.Destroy(mode);
         }
 
@@ -236,8 +239,7 @@ namespace TiberiumRim
             visceral.ageTracker = new Pawn_AgeTracker(visceral);
             visceral.Remember(kindName, pawnName);
             if (pawn.Faction?.IsPlayer ?? false)
-                Messages.Message("TR_VisceralConversion".Translate(pawn.Name.ToStringShort),
-                    MessageTypeDefOf.PawnDeath);
+                Messages.Message("TR.Visceral.Pod.ConversionMessage".Translate(pawn.Name.ToStringShort), MessageTypeDefOf.PawnDeath);
             return visceral;
         }
 
@@ -333,7 +335,7 @@ namespace TiberiumRim
                     return "Empty Container although not hatched - Something is wrong.";
                 }
 
-                var append = $"{"TR_VisceralState".Translate()}: ";
+                var append = $"{"TR.Visceral.Pod.Progress".Translate()}: ";
                 switch (VisceralStage)
                 {
                     case VisceralStage.Fresh:
@@ -356,7 +358,7 @@ namespace TiberiumRim
                 }
 
                 var name = HeldThing.LabelShortCap;
-                sb.AppendLine("TR_VisceralContains".Translate() + ": " + name);
+                sb.AppendLine($"{"TR.Visceral.Pod.Contains".Translate()}: {name}");
                 sb.AppendLine(append);
             }
 
@@ -386,6 +388,19 @@ namespace TiberiumRim
                     action = delegate { InnerPawn.Kill(new DamageInfo(TRDamageDefOf.TiberiumBurn, 999)); }
                 };
 
+                yield return new Command_Action()
+                {
+                    defaultLabel = "Add Progress",
+                    action = delegate
+                    {
+                        if (HeldThing is Corpse corpse)
+                        {
+                            CompRottable comp = corpse.GetComp<CompRottable>();
+                            comp.RotProgress += 100;
+                        }
+                    }
+                };
+                
                 yield return new Command_Action()
                 {
                     defaultLabel = "Debug: Open",

@@ -22,8 +22,11 @@
 	<TR_VisceralConversion>{0} has converted into a visceral horror.</TR_VisceralConversion>
 	
 	<!-- Visceral Pod-->
-	<TR_VisceralPodLetter>Visceral Encasement!</TR_VisceralPodLetter>
-	<TR_VisceralPodLetterDesc>{0} has been encased inside of a visceral mass, they need to be rescued as soon as possible or else they might suffer severe wounds and potentially death.</TR_VisceralPodLetterDesc>
+	<TR.Visceral.Pod.Contains>Contains</TR.Visceral.Pod.Contains>
+	<TR.Visceral.Pod.Progress>Progress</TR.Visceral.Pod.Progress>
+	<TR.Visceral.Pod.LetterLabel>Visceral Encasement!</TR.Visceral.Pod.LetterLabel>
+	<TR.Visceral.Pod.ConversionMessage>{0} has been encased inside of a visceral mass, they need to be rescued as soon as possible or else they might suffer severe wounds and potentially death.</TR.Visceral.Pod.ConversionMessage>
+
 	<!-- Natural Structures -->
 	<TR_GasDeposit>Current deposit value</TR_GasDeposit>
 	
