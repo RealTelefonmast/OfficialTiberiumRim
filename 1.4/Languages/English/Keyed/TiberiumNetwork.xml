@@ -44,4 +44,7 @@
 	<TR_HarvesterRefineryDesc>Select the refinery that the harvester should prioritize.</TR_HarvesterRefineryDesc>
 	<TR_HarvesterNewRefinery>New refinery set!</TR_HarvesterNewRefinery>
 	
+	<TR.Network.Valve.Label>Designate Open/Close</TR.Network.Valve.Label>
+	<TR.Network.Valve.Desc>Designate this valve to be opened or closed. A colonist will come to do the task as soon as possible.</TR.Network.Valve.Desc>
+	
 </LanguageData>

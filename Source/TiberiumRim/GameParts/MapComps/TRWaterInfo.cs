@@ -40,9 +40,8 @@ namespace TiberiumRim
             drawer = new CellBoolDrawer(this, map.Size.x, map.Size.z);
         }
 
-        public override void ExposeData()
+        public override void ExposeDataExtra()
         {
-            base.ExposeData();
             Scribe_Deep.Look(ref allWaterCells, "waterCells");
             Scribe_Deep.Look(ref lakeCells, "lakeCells");
             Scribe_Deep.Look(ref riverCells, "riverCells");

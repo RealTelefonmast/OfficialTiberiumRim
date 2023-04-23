@@ -201,7 +201,7 @@ namespace TiberiumRim
             TiberiumGrid grid = TiberiumComp.TiberiumInfo.TiberiumGrid;
             //Draw Tiberium Cells
             if(showTiberium)
-                GenDraw.DrawFieldEdges(grid.TiberiumBoolGrid.ActiveCells.ToList(), Color.red);
+                GenDraw.DrawFieldEdges(grid.BoolGrid.ActiveCells.ToList(), Color.red);
             //Draw CellPaths
             //if(showForceGrow)
                // GenDraw.DrawFieldEdges(grid.alwaysGrowFrom.ActiveCells.ToList(), Color.blue);

@@ -22,9 +22,8 @@ namespace TiberiumRim
             hediffGrid = new RadiationInfectionGrid(map);
         }
 
-        public override void ExposeData()
+        public override void ExposeDataExtra()
         {
-            base.ExposeData();
             Scribe_Deep.Look(ref hediffGrid, "hediffGrid", map);
         }
 

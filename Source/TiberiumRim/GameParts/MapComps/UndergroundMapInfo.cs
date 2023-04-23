@@ -9,9 +9,8 @@ namespace TiberiumRim
         {
         }
 
-        public override void ExposeData()
+        public override void ExposeDataExtra()
         {
-            base.ExposeData();
         }
     }
 

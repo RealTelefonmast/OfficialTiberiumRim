@@ -9,7 +9,8 @@ namespace TiberiumRim
 {
     public class Building_Temple : TRBuilding, IRocketSilo
     {
-        private int tick = 1000;
+        private bool runningAnimation;
+        private int tick = 0;
         private int maxTick = 1000;
         private int rotation = 45;
 
@@ -26,6 +27,12 @@ namespace TiberiumRim
         [TweakValue("NodNukePosZ", 0f, 15f)]
         public static float NodNukePosZ = 0f;
 
+        public float NukeOffset => Mathf.Lerp(nukeOffset, nukeIdle, CurPct);
+
+        public float CurPct => (float)tick / maxTick;
+
+        public float CurRot => rotation * CurPct;
+        
         public override bool FX_ProvidesForLayer(FXArgs args)
         {
             return true;
@@ -94,15 +101,20 @@ namespace TiberiumRim
         public override void Tick()
         {
             base.Tick();
-            if(tick < maxTick)
-                tick++;
+            if (runningAnimation)
+            {
+                if (tick < maxTick)
+                {
+                    tick++;
+                }
+                
+                if (tick >= maxTick)
+                {
+                    runningAnimation = false;
+                    tick = 0;
+                }
+            }
         }
-
-        public float NukeOffset => Mathf.Lerp(nukeOffset, nukeIdle, CurPct);
-
-        public float CurPct => (float)tick / maxTick;
-
-        public float CurRot => rotation * CurPct;
 
         public override void Draw()
         {
@@ -125,7 +137,7 @@ namespace TiberiumRim
                 defaultLabel = "origin animation",
                 action = delegate
                 {
-                    tick = 0;
+                    runningAnimation = true;
                 }
             };
 

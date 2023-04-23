@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<GenStepDef>
+		<defName>TiberiumGenStep</defName>
+		<order>610</order>
+		<genStep Class="TiberiumRim.MapGenStep_Tiberium"/>
+	</GenStepDef>
+	
+</Defs>

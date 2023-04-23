@@ -15,8 +15,7 @@ namespace TiberiumRim
         public SuperWeaponInfo SuperWeaponInfo;
         public SatelliteInfo SatelliteInfo;
         public WorldDataInfo WorldDataInfo;
-
-
+        
         //
         public GameSettingsInfo GameSettings;
 

@@ -15,11 +15,6 @@ namespace TiberiumRim
             //GlobalEventHandler.ThingDespawning;
         }
 
-        public override void ExposeData()
-        {
-            base.ExposeData();
-        }
-
         //TODO: Pawn Registering For Alerts
         public void RegisterPawn(Pawn pawn, HediffDef def)
         {

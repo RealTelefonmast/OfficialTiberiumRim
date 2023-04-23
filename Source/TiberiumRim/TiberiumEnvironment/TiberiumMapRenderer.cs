@@ -8,26 +8,12 @@ namespace TiberiumRim
     public class TiberiumMapRenderer
     {
         public Map map;
-        public TiberiumFieldFogLayer[] fogLayers;
 
         public TiberiumMapRenderer(Map map)
         {
             this.map = map;
             MapComponent_Tiberium tiberium = map.Tiberium();
             var grids = tiberium.TiberiumInfo.TiberiumGrid;
-            fogLayers = new TiberiumFieldFogLayer[3] {
-            new TiberiumFieldFogLayer(MainTCD.Main.GreenColor, grids.fieldColorGrids[0]),
-            new TiberiumFieldFogLayer(MainTCD.Main.BlueColor, grids.fieldColorGrids[1]),
-            new TiberiumFieldFogLayer(MainTCD.Main.RedColor, grids.fieldColorGrids[2]),
-            };
-        }
-
-        public void DrawAllTiberiumLayers()
-        {
-            foreach(var fogLayer in fogLayers)
-            {
-                fogLayer.DrawFieldFog(map);
-            }
         }
     }
 

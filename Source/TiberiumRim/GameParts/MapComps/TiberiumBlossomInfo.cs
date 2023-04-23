@@ -32,7 +32,7 @@ namespace TiberiumRim
             positionGrid = new BoolGrid(map);
         }
 
-        public override void ExposeData()
+        public override void ExposeDataExtra()
         {
             Scribe_Deep.Look(ref blossomPositionGrid, "blossomPositionGrid");
             Scribe_Deep.Look(ref positionGrid, "positionGrid");

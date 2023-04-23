@@ -22,7 +22,7 @@ namespace TiberiumRim
             int TibCount = tiberium.TiberiumInfo.TotalCount;
             sb.AppendLine("Total Tiberium: " + TibCount);
             sb.AppendLine("Total Cells: " + tiberium.TiberiumInfo.TotalCount);
-            sb.AppendLine("Active percent: " + tiberium.TiberiumInfo.Coverage.ToStringPercent());
+            sb.AppendLine("Active percent: " + tiberium.TiberiumInfo.InfestationPercent.ToStringPercent());
             //sb.AppendLine($"Networks: {tiberiumNetworkMaster?.?.Count}");
             sb.AppendLine("MapInfo:\n Valuables: " + mapinfo.TiberiumCrystals[HarvestType.Valuable].Count + " - " +
                           mapinfo.TiberiumCrystalTypes[HarvestType.Valuable].Count + " types" + "\n Unvaluables: " +

@@ -91,7 +91,7 @@ namespace TiberiumRim
 
         private MapComponent_Tiberium Tiberium => tiberium ??= this.SingleMap.Tiberium();
 
-        private Color SkyColor => Color.Lerp(Color.white, skyColor, tiberium.TiberiumInfo.Coverage);
+        private Color SkyColor => Color.Lerp(Color.white, skyColor, tiberium.TiberiumInfo.InfestationPercent);
 
         public override void Init()
         {

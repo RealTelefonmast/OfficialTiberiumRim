@@ -27,11 +27,6 @@ namespace TiberiumRim
             producerFieldGrid = new TiberiumProducer[map.cellIndices.NumGridCells];
         }
 
-        public override void ExposeData()
-        {
-            base.ExposeData();
-        }
-
         public override void Tick()
         {
             if (!ShouldSpread) return;

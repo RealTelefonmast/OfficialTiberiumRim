@@ -186,7 +186,8 @@
 							<_MaskTex>Buildings/Common/Network/Silo/VFX/FlowMask</_MaskTex>
 						</textureParams>
 						<fxMode>Dynamic</fxMode>
-						<layerTag>FXNetwork</layerTag>
+						<categoryTag>FXNetwork</categoryTag>
+						<layerTag>Container</layerTag>
 					</li>
 					<li>
 						<graphicData>
@@ -194,7 +195,8 @@
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(3,3)</drawSize>
 						</graphicData>
-						<layerTag>FXNetwork</layerTag>
+						<categoryTag>FXNetwork</categoryTag>
+						<layerTag>Container</layerTag>
 					</li>
 				</fxLayers>
 			</li>
@@ -214,20 +216,18 @@
 		<defName>TiberiumNetValve</defName>
 		<label>valve</label>
 		<description>.</description>
-		<size>(3,1)</size>
+		<size>(1,1)</size>
 		<costList>
 			<Steel>100</Steel>
 		</costList>
+		<rotatable>true</rotatable>
+		<uiIconPath>Buildings/Common/Network/Valve/Valve_Icon</uiIconPath>
 		<graphicData>
-			<texPath>Buildings/Common/Network/Silo/Silo</texPath>
+			<texPath>Buildings/Common/Network/Valve/Valve_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(3,1)</drawSize>
-			<shadowData>
-				<volume>(1.9, 1, 1.68)</volume>
-				<offset>(-0.03,0,-0.1)</offset>
-			</shadowData>
+			<drawSize>(1.25,1.25)</drawSize>
+			<drawRotated>false</drawRotated>
 		</graphicData>
-		<rotatable>false</rotatable>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<pathCost>70</pathCost>
@@ -250,6 +250,7 @@
 		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TNS">
+				<compClass>TeleCore.Comp_Network_Valve</compClass>
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
@@ -257,6 +258,11 @@
 							<baseCapacity>125</baseCapacity>
 							<dropContents>false</dropContents>
 							<leaveContainer>false</leaveContainer>
+							<defaultFilterSettings>
+								<canReceive>true</canReceive>
+								<canStore>false</canStore>
+								<canTransfer>true</canTransfer>
+							</defaultFilterSettings>
 							<valueDefs>
 								<li>TibGreen</li>
 								<li>TibBlue</li>
@@ -266,30 +272,54 @@
 						</containerConfig>						
 						<networkRoles>
 							<li>Transmitter</li>
+							<li>Storage</li>
+							<!--
 							<li>Valve</li>
 							<li>Passthrough</li>
+							-->
 						</networkRoles>
 					</li>
 				</networks>
-				<generalIOPattern>I#O</generalIOPattern>
+				<generalIOPattern>[I:+;E:I;W:O]</generalIOPattern>
+			</li>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Common/Network/Valve/Valve_Handle</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(1.25,1.25)</drawSize>
+						</graphicData>
+						<pivotPixelOffset>(0,0,5)</pivotPixelOffset>
+						<textureSize>(64,64)</textureSize>
+						<fxMode>Dynamic</fxMode>
+						<categoryTag>FXNetwork</categoryTag>
+						<layerTag>Valve</layerTag>
+					</li>
+				</fxLayers>
 			</li>
 			<li Class="CompProperties_Flickable">
-				<commandTexture>UI/Commands/Vent</commandTexture>
-				<commandLabelKey>CommandDesignateOpenCloseVentLabel</commandLabelKey>
-				<commandDescKey>CommandDesignateOpenCloseVentDesc</commandDescKey>
+				<commandTexture>Buildings/Common/Network/Valve/Valve_Handle</commandTexture>
+				<commandLabelKey>TR.Network.Valve.Label</commandLabelKey>
+				<commandDescKey>TR.Network.Valve.Desc</commandDescKey>
 			</li>
 		</comps>
+		<placeWorkers>
+			<li>TeleCore.PlaceWorker_NetworkIO</li>
+		</placeWorkers>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
 		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<addCustomTick>true</addCustomTick>
+			</li>
 			<li Class="TeleCore.SubMenuExtension">
 				<groupDef>Common</groupDef>
 				<category>Processing</category>
 			</li>
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
-	
 	
 	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
 		<defName>TiberiumGasTank</defName>
@@ -843,7 +873,7 @@
 							<li>Controller</li>
 							<li>Transmitter</li>
 							<li>Producer</li>
-						</networkRoles>			
+						</networkRoles>
 					</li>
 					<li>
 						<networkDef>WasteNetwork</networkDef>
@@ -861,10 +891,10 @@
 						<networkRoles>
 							<li>Transmitter</li>
 							<li>Producer</li>
-						</networkRoles>			
+						</networkRoles>
 					</li>
 				</networks>
-				<generalIOPattern>++++++|+####+|+####+|+####+|+####+|++++++</generalIOPattern>
+				<generalIOPattern>##++##|######|+####+|+####+|######|##++##</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>

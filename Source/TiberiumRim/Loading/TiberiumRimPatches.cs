@@ -680,7 +680,21 @@ namespace TiberiumRim
                 //Construction Task Logic
                 if (__instance != null && (__instance.def.entityDefToBuild as TerrainDef) == null)
                 {
-                    TRUtils.ResearchCreationTable().TryTrackCreated((ThingDef)__instance.def.entityDefToBuild);
+                    //TODO: This tracks when a build creation option is done - rename and label it better
+                    TRUtils.ResearchCreationTable().TryTrackConstructedOrClaimedBuilding((ThingDef)__instance.def.entityDefToBuild);
+                }
+            }
+        }
+        
+        [HarmonyPatch(typeof(AutoHomeAreaMaker))]
+        [HarmonyPatch(nameof(AutoHomeAreaMaker.Notify_BuildingClaimed))]
+        static class AutoHomeAreaMakerNotify_BuildingClaimedPatch
+        {
+            public static void Postfix(Thing b)
+            {
+                if (b != null)
+                {
+                    TRUtils.ResearchCreationTable().TryTrackConstructedOrClaimedBuilding(b.def);
                 }
             }
         }

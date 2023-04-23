@@ -15,12 +15,6 @@ namespace TiberiumRim
             gardens = new List<TiberiumGarden>();
         }
 
-        public override void ExposeData()
-        {
-            base.ExposeData();
-
-        }
-
         public override void InfoInit(bool initAfterReload = false)
         {
             base.InfoInit();

@@ -12,12 +12,7 @@ namespace TiberiumRim
         public HashSet<Building_TiberiumGeyser> Geysers = new HashSet<Building_TiberiumGeyser>();
 
         public TiberiumStructureInfo(Map map) : base(map) { }
-
-        public override void ExposeData()
-        {
-            base.ExposeData();
-        }
-
+        
         public TiberiumProducer ClosestProducer(Pawn seeker)
         {
             return AllProducers.MinBy(x => x.Position.DistanceTo(seeker.Position));

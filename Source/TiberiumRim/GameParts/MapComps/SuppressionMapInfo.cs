@@ -29,12 +29,7 @@ namespace TiberiumRim
                 if (suppressor.parent.DestroyedOrNull()) continue;
                 UpdateSuppressor(suppressor);
             }
-        }
-
-        public override void ExposeData()
-        {
-            base.ExposeData();
-        }
+        } 
 
         public bool IsSuppressed(IntVec3 cell)
         {

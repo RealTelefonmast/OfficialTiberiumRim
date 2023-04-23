@@ -11,8 +11,7 @@ namespace TiberiumRim
             var crystalDef = crystal.def;
             if (crystal.Parent != null) 
                 crystalDef = crystal.Parent.TiberiumCrystalDefWeighted;
-            bool Predicate(IntVec3 c) => TrySpawnTiberium(c, crystal.Map, crystalDef, crystal.Parent);
-            return GenAdj.CellsAdjacent8Way(crystal).InRandomOrder().Any(Predicate);
+            return GenAdj.CellsAdjacent8Way(crystal).InRandomOrder().Any(c=> TrySpawnTiberium(c, crystal.Map, crystalDef, crystal.Parent));
         }
 
         public static bool AllowsTiberiumAtFast(IntVec3 cell, Map map)

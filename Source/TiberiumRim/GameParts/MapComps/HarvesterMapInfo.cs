@@ -20,9 +20,8 @@ namespace TiberiumRim
             //harvestableBools = new BoolGrid(map);
         }
 
-        public override void ExposeData()
+        public override void ExposeDataExtra()
         {
-            base.ExposeData();
         }
 
         public override void InfoInit(bool initAfterReload = false)
