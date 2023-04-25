@@ -4,18 +4,12 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using TeleCore;
+using TiberiumRim.Data.Enums;
 using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
 {
-    public enum TiberiumLifeStage
-    {
-        Growing,
-        Spreading,
-        Evolving
-    }
-
     public class TiberiumCrystal : TRThing
     {
         private static Color32[] workingColors = new Color32[4];

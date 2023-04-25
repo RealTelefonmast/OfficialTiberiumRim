@@ -39,14 +39,14 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3682" GeneratePathProperty="true" />
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3704" GeneratePathProperty="true" />
 		<!-- Use Version="*-*" to get the latest beta! -->
 		<PackageReference Include="Lib.Harmony" Version="2.2.2" ExcludeAssets="runtime" />
 		<PackageReference Include="RimWorld.MultiplayerAPI" Version="0.4.0" />
 
 		<PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.2" />
 
-		<PackageReference Include="TeleCore" Version="1.8.3.2" />
+		<PackageReference Include="TeleCore" Version="1.8.3.3" />
 		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.0.1" ExcludeAssets="runtime" />
 	</ItemGroup>
 
@@ -70,6 +70,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Data\Defs\" />
+	  <Folder Include="Data\Environment\TiberiumFields\" />
+	  <Folder Include="Data\Factions\" />
+	  <Folder Include="Data\ThingComps\" />
 	  <Folder Include="Rendering\Computation\" />
 	</ItemGroup>
 

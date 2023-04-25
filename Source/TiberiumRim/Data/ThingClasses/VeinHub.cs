@@ -7,7 +7,8 @@ namespace TiberiumRim
 {
     public class VeinHub : TRBuilding
     {
-        public Veinhole parent;
+        private VeinholeSystem system;
+        
         public CellArea affectedArea;
         public List<IntVec3> AffectedCells = new List<IntVec3>();
         public float radius = 12.59f;
@@ -27,6 +28,11 @@ namespace TiberiumRim
             Scribe_References.Look(ref parent, "veinParent");
         }
 
+        public void Setup(Veinhole parent)
+        {
+            system = parent.System;
+        }
+        
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
             parent?.RemoveHub(this);

@@ -28,7 +28,7 @@ namespace TiberiumRim
         {
             if (Parent is Veinhole veinhole)
             {
-                if (veinhole.LivingNetwork.Notify_RequestSpread())
+                if (veinhole.System.Notify_RequestSpread())
                 {
                     
                 }
