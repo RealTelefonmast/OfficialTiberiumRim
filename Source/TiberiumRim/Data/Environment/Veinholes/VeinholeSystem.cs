@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using RimWorld;
 using TeleCore;
+using TiberiumRim.Data.Enums;
 using Verse;
 
 namespace TiberiumRim;
@@ -15,7 +16,7 @@ public class VeinholeSystem : IExposable
     public Veinhole parent;
     public List<VeinHub> hubs;
     public List<VeinEgg> eggs;
-    public List<VeinMonster> pawns;
+    public List<VeinRoamer> pawns;
 
     private float internalMass;
     private int[] tickers;
@@ -23,14 +24,15 @@ public class VeinholeSystem : IExposable
     public int CurrentMaxEggs => parent.TiberiumField.Area.Count / 64;
     public int CurrentMaxPawns => parent.TiberiumField.Area.Count / 32;
     
-    public bool CanMakeEgg => eggs.Count + pawns.Count < CurrentMaxEggs + CurrentMaxPawns; 
-    
+    public bool CanMakeEgg => eggs.Count + pawns.Count < CurrentMaxEggs + CurrentMaxPawns;
+    public bool IsAlive => !parent.Destroyed;
+
     public VeinholeSystem(Veinhole networkParent)
     {
         parent = networkParent;
         hubs = new List<VeinHub>();
         eggs = new List<VeinEgg>();
-        pawns = new List<VeinMonster>();
+        pawns = new List<VeinRoamer>();
         tickers = new int[2];
     }
 
@@ -110,5 +112,37 @@ public class VeinholeSystem : IExposable
     public void Notify_Consumed(WrappedCorpse corpse)
     {
         internalMass += corpse.InnerPawn.GetStatValue(StatDefOf.MeatAmount) * 8;
+    }
+
+    public void AddPart(Thing part, VeinholeSystemType partType)
+    {
+        switch (partType)
+        {
+            case VeinholeSystemType.Hub:
+                hubs.Add((VeinHub)part);
+                break;
+            case VeinholeSystemType.Egg:
+                eggs.Add((VeinEgg)part);
+                break;
+            case VeinholeSystemType.Roamer:
+                pawns.Add((VeinRoamer)part);
+                break;
+        }
+    }
+    
+    public void RemovePart(Thing part, VeinholeSystemType partType)
+    {
+        switch (partType)
+        {
+            case VeinholeSystemType.Hub:
+                hubs.Remove((VeinHub)part);
+                break;
+            case VeinholeSystemType.Egg:
+                eggs.Remove((VeinEgg)part);
+                break;
+            case VeinholeSystemType.Roamer:
+                pawns.Remove((VeinRoamer)part);
+                break;
+        }
     }
 }

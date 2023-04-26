@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TiberiumRim.Data.Enums;
 using UnityEngine;
 using Verse;
 
@@ -13,32 +14,31 @@ namespace TiberiumRim
         public List<IntVec3> AffectedCells = new List<IntVec3>();
         public float radius = 12.59f;
 
+        private bool Alive => system.IsAlive;
+        
+        public void Setup(Veinhole parent)
+        {
+            system = parent.System;
+        }
+        
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
             affectedArea = new CellArea();
             AffectedCells = GenRadial.RadialCellsAround(Position, radius, false).ToList();
         }
-
-        private bool Dying => parent.DestroyedOrNull();
+        
+        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+        {
+            system.RemovePart(this, VeinholeSystemType.Hub);
+            base.Destroy(mode);
+        }
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_References.Look(ref parent, "veinParent");
-        }
-
-        public void Setup(Veinhole parent)
-        {
-            system = parent.System;
         }
         
-        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
-        {
-            parent?.RemoveHub(this);
-            base.Destroy(mode);
-        }
-
         public override void TickRare()
         {
             /*

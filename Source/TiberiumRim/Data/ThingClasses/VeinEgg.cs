@@ -42,7 +42,7 @@ namespace TiberiumRim
             for(int i = 0; i < num; i++)
             {
                 PawnKindDef Veinmonster = PawnKindDef.Named("Veinmonster");
-                VeinMonster veiny = TRUtils.NewBorn(Veinmonster) as VeinMonster;
+                VeinRoamer veiny = TRUtils.NewBorn(Veinmonster) as VeinRoamer;
                 veiny.boundProducer = parent;
                 GenSpawn.Spawn(veiny, this.RandomAdjacentCell8Way(), Map);
                 if (parent.DestroyedOrNull() || premature)

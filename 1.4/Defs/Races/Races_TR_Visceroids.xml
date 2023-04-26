@@ -400,11 +400,11 @@
 		</lifeStages>
 	</TiberiumRim.TiberiumKindDef>
 	
-	<!-- Veinmonster -->
+	<!-- Veinroamer -->
 	<ThingDef ParentName="VisceralPawnBase">
-		<defName>Veinmonster</defName>
-		<label>veinmonster</label>
-		<thingClass>TiberiumRim.VeinMonster</thingClass>
+		<defName>Veinroamer</defName>
+		<label>vein roamer</label>
+		<thingClass>TiberiumRim.VeinRoamer</thingClass>
 		<description>Freshly hatched from a veiny hive these little guys will roam their veinhole's area and attack anything that comes too close. They will die if their veinhole is destroyed.</description>
 		<statBases>
 			<MoveSpeed>6</MoveSpeed>
@@ -441,11 +441,11 @@
 			<baseBodySize>1.0</baseBodySize>
 			<baseHungerRate>0.5</baseHungerRate>
 			<baseHealthScale>1</baseHealthScale>
-			<thinkTreeMain>Veinmonster</thinkTreeMain>
-			<thinkTreeConstant>Veinmonster_Constant</thinkTreeConstant>
+			<thinkTreeMain>Veinroamer</thinkTreeMain>
+			<thinkTreeConstant>Veinroamer_Constant</thinkTreeConstant>
 			<meatLabel>veiny meat</meatLabel>
 			<meatColor>(217,130,157)</meatColor>
-			<body>Veinmonster</body>	
+			<body>Veinroamer</body>	
 			<lifeStageAges>
 					<li>
 						<def>VisceralFormed</def>
@@ -463,9 +463,9 @@
 	</ThingDef>
 	
 	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
-		<defName>Veinmonster</defName>
-		<label>Veinmonster</label>
-		<race>Veinmonster</race>
+		<defName>Veinroamer</defName>
+		<label>Veinroamer</label>
+		<race>Veinroamer</race>
 		<combatPower>30</combatPower>
 		<lifeStages>
 			<li>
