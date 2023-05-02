@@ -11,6 +11,7 @@ namespace TiberiumRim
 {
     public class Comp_TRHealthCheck : TeleComp
     {
+        private bool partsCacheDirty = true;
         public List<BodyPartRecord> PartsForInfection = new List<BodyPartRecord>();
         public List<BodyPartRecord> PartsForGas = new List<BodyPartRecord>();
         public List<BodyPartRecord> PartsForMutation = new List<BodyPartRecord>();
@@ -22,8 +23,7 @@ namespace TiberiumRim
         public int NonMisingPartsCount = 0;
 
         private int ticker = 0;
-
-
+        
         private Pawn Pawn
         {
             get
@@ -52,6 +52,15 @@ namespace TiberiumRim
                                         Pawn.GetStatValue(TiberiumDefOf.TiberiumRadiationResistance) >= 1;
         public bool IsInTiberium => Grid?.IsAffected(Pawn.Position) ?? false;
         public bool HasGeiger => Pawn.IsColonist;
+
+        public override void PostExposeData()
+        {
+            base.PostExposeData();
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                UpdateParts();
+            }
+        }
 
         public override void PostPostMake()
         {
@@ -130,8 +139,9 @@ namespace TiberiumRim
             base.PostPostApplyDamage(dinfo, totalDamageDealt);
         }
 
-        public void UpdateParts()
-        { 
+        public void UpdateParts(bool forceUpdate = false)
+        {
+            if (!partsCacheDirty && !forceUpdate) return;
             NonMissingParts = Pawn.health.hediffSet.GetNotMissingParts().ToList();
             NonMisingPartsCount = NonMissingParts.Count();
             OutsideParts        = NonMissingParts.Where(p => p.depth == BodyPartDepth.Outside).ToList();
@@ -139,6 +149,7 @@ namespace TiberiumRim
             PartsForGas         = NonMissingParts.Where(p => p.def.tags.Any(t => t == BodyPartTagDefOf.BreathingPathway || t == BodyPartTagDefOf.BreathingSource)).ToList();
             PartsForInfection   = NonMissingParts.Where(p => p.height == BodyPartHeight.Bottom && p.depth == BodyPartDepth.Outside).ToList(); ;
             PartsForMutation    = NonMissingParts.ToList();
+            partsCacheDirty = false;
             //PartsForMutation = Pawn.health.hediffSet.GetWanderParts(Pawn.health.hediffSet.GetHediffs<Hediff_Mutation>().First()).ToList();
         }
     }

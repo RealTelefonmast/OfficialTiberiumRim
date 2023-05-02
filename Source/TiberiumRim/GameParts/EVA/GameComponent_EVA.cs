@@ -131,9 +131,8 @@ namespace TiberiumRim
 
         public void ReceiveSignal(EVASignal signal, LocalTargetInfo target)
         {
-            TRLog.Message($"Received Signal {signal} at {target} with: CanPlay: {CanPlay} SelectedEVA: {SelectedEVA}");
             if (!CanPlay) return;
-
+            TRLog.Debug($"Received Signal {signal} at {target} with: CanPlay: {CanPlay} SelectedEVA: {SelectedEVA}");
             RegisterTarget(target);
             if (!messagyBySignal[SelectedEVA].TryGetValue(signal, out var evaMsg)) return;
             if (CanPlaySignal(signal))

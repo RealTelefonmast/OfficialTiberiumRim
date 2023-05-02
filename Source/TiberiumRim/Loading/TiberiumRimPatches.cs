@@ -272,7 +272,7 @@ namespace TiberiumRim
         {
             public static void Postfix(Hediff_Implant __instance)
             {
-                __instance?.pawn.HealthComp().UpdateParts();
+                __instance?.pawn.HealthComp().UpdateParts(true);
             }
         }
 
@@ -282,7 +282,7 @@ namespace TiberiumRim
         {
             public static void Postfix(Hediff_Implant __instance)
             {
-                __instance?.pawn.HealthComp().UpdateParts();
+                __instance?.pawn.HealthComp().UpdateParts(true);
             }
         }
 
