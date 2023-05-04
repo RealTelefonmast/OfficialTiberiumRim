@@ -54,18 +54,6 @@ namespace TiberiumRim
 
         public bool RequisitesFulfilled => requisites == null || requisites.FulFilled();
 
-        public bool ConstructionOptionDiscovered
-        {
-            get => TFind.Discoveries.MenuOptionHasBeenSeen(this) || devObject;
-            set
-            {
-                if (value)
-                {
-                    TFind.Discoveries.DiscoverInMenu(this);
-                }
-            }
-        }
-
         public bool IsActive(out string reason)
         {
             reason = "";

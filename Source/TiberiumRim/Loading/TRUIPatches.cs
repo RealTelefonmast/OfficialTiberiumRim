@@ -6,6 +6,7 @@ using System.Reflection.Emit;
 using HarmonyLib;
 using RimWorld;
 using TeleCore;
+using TeleCore.Data.Network;
 using UnityEngine;
 using Verse;
 

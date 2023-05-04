@@ -2,6 +2,7 @@
 using System.Linq;
 using RimWorld;
 using TeleCore;
+using TeleCore.Data.Network;
 using Verse;
 
 namespace TiberiumRim

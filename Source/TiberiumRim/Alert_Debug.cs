@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using RimWorld;
 using TeleCore;
+using TeleCore.Data.Network;
 using Verse;
 
 namespace TiberiumRim
@@ -16,7 +17,7 @@ namespace TiberiumRim
         {
             MapComponent_Tiberium tiberium = Find.CurrentMap.GetComponent<MapComponent_Tiberium>();
             TiberiumMapInfo mapinfo = tiberium.TiberiumInfo;
-            PipeNetworkManager tiberiumNetworkMaster = tiberium.NetworkInfo[TiberiumDefOf.TiberiumNetwork];
+            PipeNetworkSystem tiberiumNetworkMaster = tiberium.NetworkInfo[TiberiumDefOf.TiberiumNetwork];
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Total AllProducers: " + tiberium.NaturalTiberiumStructureInfo.AllProducers.Count);
             int TibCount = tiberium.TiberiumInfo.TotalCount;
