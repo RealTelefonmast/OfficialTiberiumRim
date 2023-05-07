@@ -15,7 +15,7 @@
 		<label>Scrin</label>
 		<description>Your mission is simple. Eradicate any life, and harvest Tiberium. Commence the operations, foreman.</description>
 		<scenario>
-			<name>TRScenario_ScrinStart</name>
+			<name>[WIP] Scrin Harvesting Operation</name>
 			<summary>A harvesting operation mission, this planet should yield a fortune.</summary>
 			<playerFaction>
 				<def>PlayerFaction</def>

@@ -280,7 +280,7 @@
 						</networkRoles>
 					</li>
 				</networks>
-				<generalIOPattern>[I:+;E:I;W:O]</generalIOPattern>
+				<generalIOPattern>[E:I;W:O]</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
