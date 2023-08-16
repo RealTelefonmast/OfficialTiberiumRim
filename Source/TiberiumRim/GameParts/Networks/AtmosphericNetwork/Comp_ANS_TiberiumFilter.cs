@@ -1,6 +1,7 @@
 ﻿using TAE;
 using TeleCore;
 using TeleCore.Data.Events;
+using TeleCore.Network.Data;
 using UnityEngine;
 using Verse;
 
@@ -12,8 +13,8 @@ namespace TiberiumRim
         private int ticksLeft;
         private IntRange animationRange = new(15, 45);
 
-        public NetworkSubPart AtmosphericComp => this[AtmosDefOf.AtmosphericNetwork];
-        public NetworkSubPart ProcessingComp => this[TiberiumDefOf.TiberiumNetwork];
+        public INetworkPart AtmosphericComp => this[AtmosDefOf.AtmosphericNetwork];
+        public INetworkPart ProcessingComp => this[TiberiumDefOf.TiberiumNetwork];
 
         public SimpleCurve FlickerCurve = new SimpleCurve()
         {
@@ -24,7 +25,7 @@ namespace TiberiumRim
             new (1, 0.4f)
         };
 
-        private bool ShouldProcess => !AtmosphericComp.Container.Empty && !ProcessingComp.Container.Full;
+        private bool ShouldProcess => !AtmosphericComp.Volume.Empty && !ProcessingComp.Volume.Full;
         private float Alpha => ticksLeft > 0 ? FlickerCurve.Evaluate(((curAnimLength - ticksLeft) / (float)curAnimLength)) : 0.4f;
 
         public override Vector3? FX_GetDrawPosition(FXLayerArgs args)
@@ -73,15 +74,15 @@ namespace TiberiumRim
 
         public override bool AcceptsValue(NetworkValueDef value)
         {
-            return !AtmosphericComp.Container.Full;
+            return !AtmosphericComp.Volume.Full;
         }
 
-        public override void NetworkPostTick(NetworkSubPart networkSubPart, bool isPowered)
+        public override void NetworkPostTick(NetworkPart networkSubPart, bool isPowered)
         {
             if (!ShouldProcess) return;
-            if (AtmosphericComp.Container.TryRemoveValue(TiberiumDefOf.Atmospheric_TibPollution, 10, out var result))
+            if (AtmosphericComp.Volume.TryRemove(TiberiumDefOf.Atmospheric_TibPollution, 10, out var result))
             {
-                ProcessingComp.Container.TryAddValue(TiberiumDefOf.TibSludge, result.ActualAmount * 0.125f, out _);
+                ProcessingComp.Volume.TryAdd(TiberiumDefOf.TibSludge, result.Actual * 0.125f, out _);
             }
         }
 

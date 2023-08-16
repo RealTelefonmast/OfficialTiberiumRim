@@ -9,7 +9,7 @@
 	</TAE.AtmosphericDef>
 	-->
 	
-	<TAE.AtmosphericDef>
+	<TAE.AtmosphericValueDef>
 		<defName>Atmosphere_TibPollution</defName>
 		<label>pollution</label>
 		<labelShort>tib</labelShort>
@@ -18,6 +18,6 @@
 		<viscosity>8</viscosity>
 		<capacityFactor>2</capacityFactor>
 		<valueColor>(38,127,4)</valueColor>
-	</TAE.AtmosphericDef>
+	</TAE.AtmosphericValueDef>
 	
 </Defs>

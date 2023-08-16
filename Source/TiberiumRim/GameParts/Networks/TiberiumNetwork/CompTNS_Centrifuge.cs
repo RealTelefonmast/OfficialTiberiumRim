@@ -5,6 +5,8 @@ using System.Text;
 using RimWorld;
 using TeleCore;
 using TeleCore.Data.Events;
+using TeleCore.Network.Data;
+using TeleCore.Primitive;
 using UnityEngine;
 using Verse;
 
@@ -136,7 +138,7 @@ namespace TiberiumRim
         private SpeedController speedController;
         private SecondOrderSpeed secondOrderSpeed;
         
-        private NetworkSubPart ChemicalComponent => this[TiberiumDefOf.ChemicalNetwork];
+        private INetworkPart ChemicalComponent => this[TiberiumDefOf.ChemicalNetwork];
         
         public override bool FX_ProvidesForLayer(FXArgs args)
         {
@@ -168,7 +170,7 @@ namespace TiberiumRim
         {
             return args.index switch
             {
-                4 => TiberiumNetPart.Container.Color,
+                4 => TiberiumNetPart.Volume.Color,
                 _ => null,
             };
         }
@@ -185,15 +187,15 @@ namespace TiberiumRim
 
         private float BlendValue => OverrideBlendValue > 0 ? OverrideBlendValue : shaderCurve.Evaluate(speedController.CurPct);
 
-        //TiberiumComp.Container.StoredPercent >=
-        private bool HasEnoughStored => TiberiumNetPart.RequestWorker.ShouldRequest && !Container.Empty;
+        //TODO: Min start settings
+        private bool HasEnoughStored => !Container.Empty;
 
         private bool ShouldWork
         {
             get
             {
                 if (!HasEnoughStored) return false;
-                foreach (var valueDef in TiberiumNetPart.Props.AllowedValuesByRole[NetworkRole.Requester])
+                foreach (var valueDef in Container.AllowedValues)
                 {
                     if (Container.StoredValueOf(valueDef) > 0)
                         return true;
@@ -217,7 +219,7 @@ namespace TiberiumRim
                 speedController.Stop();
                 processingBatch = false;
             }
-            if (isPowered && HasEnoughStored && !processingBatch && !ChemicalComponent.Container.Full)
+            if (isPowered && HasEnoughStored && !processingBatch && !ChemicalComponent.Volume.Full)
             {
                 speedController.Start();
                 processingBatch = true;
@@ -230,29 +232,29 @@ namespace TiberiumRim
             //CompFX.FXLayers[4].PropertyBlock.SetFloat("_BlendValue", BlendValue);
         }
         
-        public override void NetworkPostTick(NetworkSubPart networkSubPart, bool isPowered)
+        public override void NetworkPostTick(NetworkPart networkSubPart, bool isPowered)
         {
             StartOrSustainCentrifuge(isPowered);
             if (!isPowered) return;
 
             if (speedController.ReachedPeak && processingBatch)
             {
-                var storedTypes = TiberiumNetPart.Container.StoredDefs;
-                for (int i = storedTypes.Count() - 1; i >= 0; i--)
+                var storedTypes = TiberiumNetPart.Volume.Stack.Defs.ToList();
+                for (int i = storedTypes.Count - 1; i >= 0; i--)
                 {
-                    var storedType = storedTypes.ElementAt(i);
+                    var storedType = storedTypes[i];
                     var values = ValuesFor(storedType);
                     if(values.NullOrEmpty()) continue;
-                    if (TiberiumNetPart.Container.TryRemoveValue(storedType, 1f, out var result))
+                    if (TiberiumNetPart.Volume.TryRemove(storedType, 1f, out var result))
                     {
                         foreach (var type in values)
                         {
-                            ChemicalComponent.Container.TryAddValue(type.valueDef, type.valueF * result.ActualAmount * 2, out _);
-                            WasteNetPart.Container.TryAddValue(TiberiumDefOf.TibSludge, 0.125f, out _);
+                            ChemicalComponent.Volume.TryAdd(type.Def, type.Value * result.Actual * 2, out _);
+                            WasteNetPart.Volume.TryAdd(TiberiumDefOf.TibSludge, 0.125f, out _);
                         }
                     }
 
-                    if (TiberiumNetPart.Container.Empty || ChemicalComponent.Container.Full)
+                    if (TiberiumNetPart.Volume.Empty || ChemicalComponent.Volume.Full)
                     {
                         processingBatch = false;
                         break;
@@ -261,7 +263,7 @@ namespace TiberiumRim
             }
         }
 
-        private List<NetworkValue> ValuesFor(NetworkValueDef def)
+        private List<DefValue<NetworkValueDef, double>> ValuesFor(NetworkValueDef def)
         {
             if (def == TiberiumDefOf.TibGreen)
                 return GreenTibValues;
@@ -274,40 +276,40 @@ namespace TiberiumRim
             return null;
         }
 
-        private static readonly List<NetworkValue> GreenTibValues = new()
+        private static readonly List<DefValue<NetworkValueDef, double>> GreenTibValues = new()
         {
-            new NetworkValue(TiberiumDefOf.Phosphorus, 1f/8),
-            new NetworkValue(TiberiumDefOf.Carbon    , 1f/4),
-            new NetworkValue(TiberiumDefOf.Iron      , 1f/4),
-            new NetworkValue(TiberiumDefOf.Calcium   , 1f/8),
-            new NetworkValue(TiberiumDefOf.Copper    , 1f/4),
-            new NetworkValue(TiberiumDefOf.Silicon   , 1f/8),
-            new NetworkValue(TiberiumDefOf.Exotic    , 1f/16)
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Phosphorus, 1f/8),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Carbon    , 1f/4),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Iron      , 1f/4),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Calcium   , 1f/8),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Copper    , 1f/4),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Silicon   , 1f/8),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Exotic    , 1f/16)
         };
 
-        private static readonly List<NetworkValue> BlueTibValues = new()
+        private static readonly List<DefValue<NetworkValueDef, double>> BlueTibValues = new()
         {
-            new NetworkValue(TiberiumDefOf.Phosphorus, 1f / 8),
-            new NetworkValue(TiberiumDefOf.Carbon    , 1f / 4),
-            new NetworkValue(TiberiumDefOf.Iron      , 1f / 4),
-            new NetworkValue(TiberiumDefOf.Calcium   , 1f / 8),
-            new NetworkValue(TiberiumDefOf.Copper    , 1f / 4),
-            new NetworkValue(TiberiumDefOf.Silicon   , 1f / 8),
-            new NetworkValue(TiberiumDefOf.Exotic    , 1f / 16),
-            new NetworkValue(TiberiumDefOf.Silver    , 1f / 8)
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Phosphorus, 1f / 8),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Carbon    , 1f / 4),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Iron      , 1f / 4),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Calcium   , 1f / 8),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Copper    , 1f / 4),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Silicon   , 1f / 8),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Exotic    , 1f / 16),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Silver    , 1f / 8)
         };
 
-        private static readonly List<NetworkValue> RedTibValues = new()
+        private static readonly List<DefValue<NetworkValueDef, double>> RedTibValues = new()
         {
-            new NetworkValue(TiberiumDefOf.Phosphorus, 1f / 8),
-            new NetworkValue(TiberiumDefOf.Carbon    , 1f / 4),
-            new NetworkValue(TiberiumDefOf.Iron      , 1f / 4),
-            new NetworkValue(TiberiumDefOf.Calcium   , 1f / 8),
-            new NetworkValue(TiberiumDefOf.Copper    , 1f / 4),
-            new NetworkValue(TiberiumDefOf.Silicon   , 1f / 8),
-            new NetworkValue(TiberiumDefOf.Exotic    , 1f / 16),
-            new NetworkValue(TiberiumDefOf.Gold      , 1f / 8),
-            new NetworkValue(TiberiumDefOf.Uranium   , 1f / 8)
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Phosphorus, 1f / 8),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Carbon    , 1f / 4),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Iron      , 1f / 4),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Calcium   , 1f / 8),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Copper    , 1f / 4),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Silicon   , 1f / 8),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Exotic    , 1f / 16),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Gold      , 1f / 8),
+            new DefValue<NetworkValueDef, double>(TiberiumDefOf.Uranium   , 1f / 8)
         };
 
         public override string CompInspectStringExtra()

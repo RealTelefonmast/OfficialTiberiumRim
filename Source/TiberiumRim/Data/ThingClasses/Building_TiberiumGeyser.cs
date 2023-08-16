@@ -20,7 +20,7 @@ namespace TiberiumRim
 
         //Values
         private float maxDepositValue = 0;
-        private float depositValue = 0f;
+        private double depositValue = 0f;
 
         //
         private int burstTicksLeft = -1;
@@ -29,7 +29,7 @@ namespace TiberiumRim
         //
         public static bool makePollutionGas = false;
 
-        public float ContentPercent => depositValue / maxDepositValue;
+        public float ContentPercent => (float)depositValue / maxDepositValue;
         public bool IsEmpty => depositValue <= 0;
         public bool Bursting => burstTicksLeft > 0;
         
@@ -106,9 +106,9 @@ namespace TiberiumRim
             {
                 if (tiberiumSpike.IsPoweredOn())
                 {
-                    if (tiberiumSpike.TibComponent.Container.TryAddValue(TiberiumDefOf.TibGas, 0.25f, out var result))
+                    if (tiberiumSpike.TibComponent.Volume.TryAdd(TiberiumDefOf.TibGas, 0.25f, out var result))
                     {
-                        depositValue -= result.ActualAmount;
+                        depositValue -= result.Actual;
                     }
                 }
                 return;

@@ -2,6 +2,7 @@
 using System.Text;
 using TeleCore;
 using TeleCore.Data.Events;
+using TeleCore.Network.Data;
 using UnityEngine;
 using Verse;
 
@@ -12,7 +13,7 @@ namespace TiberiumRim
         public Building_TiberiumGeyser boundGeyser;
 
         public Comp_Network CompTNW => this.TryGetComp<Comp_Network>();
-        public NetworkSubPart TibComponent => CompTNW[TiberiumDefOf.TiberiumNetwork];
+        public INetworkPart TibComponent => CompTNW[TiberiumDefOf.TiberiumNetwork];
 
         public override bool? FX_ShouldDraw(FXLayerArgs args)
         {

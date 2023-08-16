@@ -54,21 +54,23 @@
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>				
-						<containerConfig>
-							<baseCapacity>1000</baseCapacity>
-							<dropContents>true</dropContents>
+						<volumeConfig>
+							<capacity>1000</capacity>
+							<!--<dropContents>true</dropContents>-->
 							<leaveContainer>true</leaveContainer>
-							<valueDefs>
-								<li>TibGreen</li>	
-								<li>TibBlue</li>	
-								<li>TibRed</li>	
-								<li>TibSludge</li>	
-							</valueDefs>
-						</containerConfig>
-						<networkRoles>
+							<values>
+								<allowedValues>
+									<li>TibGreen</li>	
+									<li>TibBlue</li>	
+									<li>TibRed</li>	
+									<li>TibSludge</li>	
+								</allowedValues>
+							</values>
+						</volumeConfig>
+						<roles>
 							<li>Transmitter</li>
 							<li>Requester</li>
-						</networkRoles>
+						</roles>
 					</li>
 				</networks>
 				<!--generalIOPattern>#+#|###|</generalIOPattern-->

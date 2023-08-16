@@ -11,14 +11,15 @@
 		<race>Harvester_Common</race>
 		<wreckDef>HarvesterHusk_Common</wreckDef>
 		<containerConfig>
-			<baseCapacity>125</baseCapacity>
-			<explosionProps/>
-			<valueDefs>
-				<li>TibGreen</li>
-				<li>TibBlue</li>
-				<li>TibRed</li>			
-				<li>TibSludge</li>	
-			</valueDefs>
+			<capacity>125</capacity>
+			<values>
+				<allowedValues>
+					<li>TibGreen</li>
+					<li>TibBlue</li>
+					<li>TibRed</li>			
+					<li>TibSludge</li>	
+				</allowedValues>
+			</values>
 		</containerConfig>
 		<lifeStages>
 			<li>
@@ -44,14 +45,15 @@
 		<race>Harvester_GDI</race>
 		<wreckDef>HarvesterHusk_GDI</wreckDef>		
 		<containerConfig>
-			<baseCapacity>300</baseCapacity>
-			<explosionProps/>
-			<valueDefs>
-				<li>TibGreen</li>
-				<li>TibBlue</li>
-				<li>TibRed</li>			
-				<li>TibSludge</li>	
-			</valueDefs>
+			<capacity>300</capacity>
+			<values>
+				<allowedValues>
+					<li>TibGreen</li>
+					<li>TibBlue</li>
+					<li>TibRed</li>			
+					<li>TibSludge</li>	
+				</allowedValues>
+			</values>
 		</containerConfig>
 		<lifeStages>
 			<li>
@@ -77,14 +79,15 @@
 		<race>Harvester_Nod</race>
 		<wreckDef>HarvesterHusk_Nod</wreckDef>
 		<containerConfig>
-			<baseCapacity>200</baseCapacity>
-			<explosionProps/>
-			<valueDefs>
-				<li>TibGreen</li>
-				<li>TibBlue</li>
-				<li>TibRed</li>			
-				<li>TibSludge</li>	
-			</valueDefs>
+			<capacity>200</capacity>
+			<values>
+				<allowedValues>
+					<li>TibGreen</li>
+					<li>TibBlue</li>
+					<li>TibRed</li>			
+					<li>TibSludge</li>	
+				</allowedValues>
+			</values>
 		</containerConfig>
 		<lifeStages>
 			<li>

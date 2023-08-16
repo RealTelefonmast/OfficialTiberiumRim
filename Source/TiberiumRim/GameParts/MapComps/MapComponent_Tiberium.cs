@@ -1,5 +1,5 @@
 ﻿using TeleCore;
-using TeleCore.Data.Network;
+using TeleCore.Network;
 using Verse;
 
 namespace TiberiumRim
@@ -34,7 +34,7 @@ namespace TiberiumRim
         public TiberiumProducerInfo TiberiumProducerInfo => map.GetMapInfo<TiberiumProducerInfo>();
 
 
-        public NetworkMapInfo NetworkInfo => map.GetMapInfo<NetworkMapInfo>();
+        public PipeNetworkMapInfo NetworkInfo => map.GetMapInfo<PipeNetworkMapInfo>();
 
         public MapComponent_Tiberium(Map map) : base(map)
         {

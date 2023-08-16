@@ -24,8 +24,8 @@
 			<steamWorkshopUrl>steam://url/CommunityFilePage/2810454935</steamWorkshopUrl>
 		</li>
 		<li>
-			<packageId>Telefonmast.AtmosphereExtended</packageId>
-			<displayName>AtmosphereExtended</displayName>
+			<packageId>Telefonmast.TrueAtmospheres</packageId>
+			<displayName>TrueAtmospheres</displayName>
 			<downloadUrl>https://github.com/RealTelefonmast/AtmospheresExtended/archive/refs/heads/main.zip</downloadUrl>
 		</li>
 	</modDependencies>

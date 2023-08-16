@@ -36,21 +36,27 @@
 				<networks>
 					<li>
 						<networkDef>AtmosphericNetwork</networkDef>
-						<networkRoles>
+						<roles>
 							<li>Transmitter</li>
 							<li>Controller</li>
 							<li>Storage</li>
-						</networkRoles>
-						<containerConfig>
-							<baseCapacity>1000</baseCapacity>
-							<dropContents>false</dropContents>
-							<valueDefs>
-								<li>Atmospheric_TibPollution</li>
-							</valueDefs>
-						</containerConfig>
+						</roles>
+						<volumeConfig>
+							<capacity>1000</capacity>
+							<area>1</area>
+							<elevation>0</elevation>
+							<height>1</height>
+							<values>
+								<allowedValues>
+									<li>Atmospheric_TibPollution</li>
+								</allowedValues>
+							</values>
+						</volumeConfig>
 					</li>
 				</networks>
-				<!--<generalIOPattern>++|++</generalIOPattern>-->
+				<generalIOConfig>
+					<pattern>#XX#|X++X|X++X|#XX#</pattern>
+				</generalIOConfig>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
@@ -131,37 +137,45 @@
 				<networks>
 					<li>
 						<networkDef>AtmosphericNetwork</networkDef>
-						<networkRoles>
+						<roles>
 							<li>Transmitter</li>
 							<li>Requester</li>
 							<li>Storage</li>
-						</networkRoles>
-						<containerConfig>
-							<baseCapacity>750</baseCapacity>
-							<dropContents>false</dropContents>
-							<valueDefs>
-								<li>Atmospheric_TibPollution</li>
-							</valueDefs>
-						</containerConfig>
+						</roles>
+						<volumeConfig>
+							<capacity>750</capacity>
+							<area>1</area>
+							<elevation>0</elevation>
+							<height>1</height>
+							<values>
+								<allowedValues>
+									<li>Atmospheric_TibPollution</li>
+								</allowedValues>
+							</values>
+						</volumeConfig>
 					</li>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
-						<networkRoles>
+						<roles>
 							<li>Transmitter</li>
 							<li>Producer</li>
-						</networkRoles>
-						<containerConfig>
-							<baseCapacity>1250</baseCapacity>
-							<dropContents>false</dropContents>
-							<leaveContainer>true</leaveContainer>
-							<storeEvenly>false</storeEvenly>	
-							<valueDefs>
-								<li>TibSludge</li>
-							</valueDefs>
-						</containerConfig>
+						</roles>
+						<volumeConfig>
+							<capacity>1250</capacity>
+							<area>1</area>
+							<elevation>0</elevation>
+							<height>1</height>
+							<values>
+								<allowedValues>
+									<li>TibSludge</li>
+								</allowedValues>
+							</values>
+						</volumeConfig>
 					</li>
 				</networks>
-				<generalIOPattern>++|++</generalIOPattern>
+				<generalIOConfig>
+					<pattern>#XX#|X++X|X++X|#XX#</pattern>
+				</generalIOConfig>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
@@ -237,20 +251,23 @@
 				<networks>
 					<li>
 						<networkDef>AtmosphericNetwork</networkDef>
-						<networkRoles>
+						<roles>
 							<li>Transmitter</li>
 							<li>Producer</li>
-						</networkRoles>
-						<containerConfig>
-							<baseCapacity>100</baseCapacity>
-							<dropContents>false</dropContents>
-							<valueDefs>
-								<li>Atmospheric_TibPollution</li>
-							</valueDefs>
-						</containerConfig>
+						</roles>
+						<volumeConfig>
+							<capacity>100</capacity>
+							<area>1</area>
+							<elevation>0</elevation>
+							<height>1</height>
+							<values>
+								<allowedValues>
+									<li>Atmospheric_TibPollution</li>
+								</allowedValues>
+							</values>
+						</volumeConfig>
 					</li>
 				</networks>
-				<generalIOPattern>+</generalIOPattern>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
@@ -339,20 +356,23 @@
 				<networks>
 					<li>
 						<networkDef>AtmosphericNetwork</networkDef>
-						<networkRoles>
+						<roles>
 							<li>Transmitter</li>
 							<li>Requester</li>
-						</networkRoles>
-						<containerConfig>
-							<baseCapacity>100</baseCapacity>
-							<dropContents>false</dropContents>
-							<valueDefs>
-								<li>Atmospheric_TibPollution</li>
-							</valueDefs>
-						</containerConfig>
+						</roles>
+						<volumeConfig>
+							<capacity>100</capacity>
+							<area>1</area>
+							<elevation>0</elevation>
+							<height>1</height>
+							<values>
+								<allowedValues>
+									<li>Atmospheric_TibPollution</li>
+								</allowedValues>
+							</values>
+						</volumeConfig>
 					</li>
 				</networks>
-				<generalIOPattern>+</generalIOPattern>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>

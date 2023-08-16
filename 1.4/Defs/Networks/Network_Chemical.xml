@@ -45,12 +45,11 @@
 				<networks>
 					<li>
 						<networkDef>ChemicalNetwork</networkDef>
-						<networkRoles>
+						<roles>
 							<li>Transmitter</li>
-						</networkRoles>
+						</roles>
 					</li>
 				</networks>
-				<generalIOPattern>+</generalIOPattern>
 			</li>
 		</comps>
 	</TiberiumRim.TRThingDef>

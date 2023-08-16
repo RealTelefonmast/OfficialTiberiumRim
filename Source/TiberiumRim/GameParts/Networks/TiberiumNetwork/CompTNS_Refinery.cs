@@ -13,7 +13,7 @@ namespace TiberiumRim
         public Comp_MechStation MechComp => parent.GetComp<Comp_MechStation>();
         public new CompProperties_TNSRefinery Props => (CompProperties_TNSRefinery)props;
 
-        public bool CanBeRefinedAt => CompPower.PowerOn && !parent.IsBrokenDown() && !NetworkParts[0].Container.Full;
+        public bool CanBeRefinedAt => CompPower.PowerOn && !parent.IsBrokenDown() && !NetworkParts[0].Volume.Full;
 
         public bool RecallHarvesters
         {

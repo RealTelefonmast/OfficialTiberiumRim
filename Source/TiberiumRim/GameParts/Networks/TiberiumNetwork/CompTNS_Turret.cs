@@ -38,8 +38,8 @@ namespace TiberiumRim
         {
             return args.index switch
             {
-                0 => Container.StoredPercent,
-                2 => Container.StoredPercent,
+                0 => Container.FillPercent,
+                2 => Container.FillPercent,
                 _ => 1f
             };
         }

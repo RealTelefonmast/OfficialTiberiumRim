@@ -6,7 +6,8 @@ using System.Reflection.Emit;
 using HarmonyLib;
 using RimWorld;
 using TeleCore;
-using TeleCore.Data.Network;
+using TeleCore.Network;
+using TeleCore.Network.Utility;
 using UnityEngine;
 using Verse;
 
@@ -176,9 +177,9 @@ namespace TiberiumRim
 
             private static bool ShouldFix => GetTiberiumCredits(Find.CurrentMap) > 0;
 
-            static float GetTiberiumCredits(Map map)
+            static double GetTiberiumCredits(Map map)
             {
-                return GetNetwork(map)?.TotalNetworkValue ?? 0;
+                return GetNetwork(map)?.NetworkSystem.TotalValue ?? 0;
             }
 
             private static float? TotalHeight = 120;
@@ -186,7 +187,7 @@ namespace TiberiumRim
 
             static PipeNetwork GetNetwork(Map map)
             {
-                var currentSet = map.GetMapInfo<NetworkMapInfo>()[TiberiumDefOf.TiberiumNetwork]?.TotalPartSet;
+                var currentSet = map.GetMapInfo<PipeNetworkMapInfo>()[TiberiumDefOf.TiberiumNetwork]?.TotalPartSet;
                 if(currentSet == null) return null;
                 if(currentSet.FullSet.Count == 0) return null;
                 return currentSet.FullSet.First()?.Network;
@@ -210,7 +211,7 @@ namespace TiberiumRim
                 Text.Anchor = default;
                 Widgets.DrawLine(new Vector2(5f, creditLabelRect.yMax), new Vector2(125f, creditLabelRect.yMax), Color.white, 1f);
 
-                ResourceReadoutHeight = TWidgets.DrawNetworkValueTypeReadout(readoutRect, GameFont.Tiny, -2, GetNetwork(Find.CurrentMap).ContainerSet);
+                ResourceReadoutHeight = FlowUI<NetworkValueDef>.DrawFlowValueStackReadout(readoutRect, GetNetwork(Find.CurrentMap).NetworkSystem.TotalStack);
 
                 Text.Font = GameFont.Tiny;
                 string totalLabel = "TR_CreditsTotal".Translate(Math.Round(GetTiberiumCredits(Find.CurrentMap)));

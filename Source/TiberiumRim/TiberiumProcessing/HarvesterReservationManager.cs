@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TeleCore;
-using TeleCore.Data.Network;
+using TeleCore.Network;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -38,7 +37,7 @@ namespace TiberiumRim
         }
 
         private MapComponent_Tiberium TiberiumManager => map.Tiberium();
-        private PipeNetworkSystem NetworkMaster => TiberiumManager.NetworkInfo[TiberiumDefOf.TiberiumNetwork];
+        private PipeNetworkMaster NetworkMaster => TiberiumManager.NetworkInfo[TiberiumDefOf.TiberiumNetwork];
 
         private Harvester CurHarvester => AllHarvesters[Current];
 
@@ -73,8 +72,8 @@ namespace TiberiumRim
 
         private bool QueueFull(Harvester harvester)
         {
-            float value = ReservedQueues[harvester].Sum(t => t.HarvestValue) + harvester.Container.TotalStored;
-            return value >= harvester.Container.Capacity;
+            var value = ReservedQueues[harvester].Sum(t => t.HarvestValue) + harvester.Container.TotalValue;
+            return value >= harvester.Container.MaxCapacity;
         }
 
         private void Enqueue(TiberiumCrystal tib, Harvester harvester)

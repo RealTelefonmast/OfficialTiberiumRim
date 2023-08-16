@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
 using TeleCore;
+using TeleCore.Network.Data;
 using Verse;
 using Verse.AI;
 
@@ -35,7 +36,7 @@ namespace TiberiumRim
     {
         private Comp_TiberiumNetworkStructure Refinery => Harvester.RefineryComp;
 
-        private NetworkSubPart RefineryComp => Refinery[TiberiumDefOf.TiberiumNetwork];
+        private INetworkPart RefineryComp => Refinery[TiberiumDefOf.TiberiumNetwork];
 
         private Harvester Harvester => (Harvester)pawn;
 
@@ -57,13 +58,12 @@ namespace TiberiumRim
             };
             unload.tickAction = delegate
             {
-                if (!RefineryComp?.Container.Full ?? false)
+                if (!RefineryComp?.Volume.Full ?? false)
                 {
-                    if (Harvester.Container.StoredPercent > 0f)
+                    if (Harvester.Container.FillPercent > 0f)
                     {
-                        //RefineryComp.Container, Harvester.Container.CurrentMainValueType, Harvester.kindDef.unloadValue, out _
-                        Harvester.Container.TryTransferValue(RefineryComp.Container, Harvester.Container.CurrentMainValueType, Harvester.kindDef.unloadValue, out _);
-                        //Harvester.Container.TryTransferTo(RefineryComp.Container, Harvester.kindDef.unloadValue, out _);
+                        Harvester.Container.TryTransfer(RefineryComp.Volume, (Harvester.Container.MainValueDef, Harvester.kindDef.unloadValue));
+                        //Harvester.Container.TryTransferValue(RefineryComp.Container, Harvester.Container.CurrentMainValueType, Harvester.kindDef.unloadValue, out _);
                     }
                     else
                     {

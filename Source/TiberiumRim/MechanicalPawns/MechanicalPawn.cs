@@ -2,7 +2,7 @@
 using System.Linq;
 using RimWorld;
 using TeleCore;
-using TeleCore.Data.Network;
+using TeleCore.Network;
 using Verse;
 
 namespace TiberiumRim
@@ -13,7 +13,7 @@ namespace TiberiumRim
         protected Building parent;
 
         public MapComponent_Tiberium TiberiumManager => Map.Tiberium();
-        public NetworkMapInfo NetworkInfo => TiberiumManager.NetworkInfo;
+        public PipeNetworkMapInfo NetworkInfo => TiberiumManager.NetworkInfo;
 
         public MechLink ParentMechLink
         {

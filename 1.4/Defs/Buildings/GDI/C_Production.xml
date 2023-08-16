@@ -50,22 +50,28 @@
 			<li Class="TiberiumRim.CompProperties_TNS">
 				<networks>
 					<li>
-						<networkDef>TiberiumNetwork</networkDef>				
-						<containerConfig>
-							<baseCapacity>1000</baseCapacity>
-							<dropContents>true</dropContents>
+						<networkDef>TiberiumNetwork</networkDef>
+						<volumeConfig>
+							<capacity>1000</capacity>
+							<area>1</area>
+							<elevation>0</elevation>
+							<height>1</height>
+							<!--<dropContents>true</dropContents>-->
 							<leaveContainer>true</leaveContainer>
-							<valueDefs>
-								<li>TibGreen</li>	
-								<li>TibBlue</li>	
-								<li>TibRed</li>	
-								<li>TibSludge</li>	
-							</valueDefs>
-						</containerConfig>
-						<networkRoles>
+							<storeEvenly>false</storeEvenly>
+							<values>
+								<allowedValues>
+									<li>TibGreen</li>	
+									<li>TibBlue</li>	
+									<li>TibRed</li>	
+									<li>TibSludge</li>	
+								</allowedValues>
+							</values>
+						</volumeConfig>
+						<roles>
 							<li>Transmitter</li>
 							<li>Requester</li>
-						</networkRoles>
+						</roles>
 					</li>
 				</networks>
 				<!--generalIOPattern>#+#|###|</generalIOPattern-->

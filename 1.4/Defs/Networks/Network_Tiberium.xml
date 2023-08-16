@@ -44,18 +44,26 @@
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
-						<networkRoles>
+						<roles>
 							<li>Transmitter</li>
-						</networkRoles>
+						</roles>
+						<volumeConfig>
+							<capacity>400</capacity>
+							<area>1</area>
+							<elevation>0</elevation>
+							<height>1</height>
+							<values>
+								<fromCollection>TiberiumNetwork</fromCollection>
+							</values>
+						</volumeConfig>
 					</li>
 					<li>
 						<networkDef>WasteNetwork</networkDef>
-						<networkRoles>
+						<roles>
 							<li>Transmitter</li>
-						</networkRoles>
+						</roles>
 					</li>
 				</networks>
-				<generalIOPattern>+</generalIOPattern>
 			</li>
 		</comps>
 	</TiberiumRim.TRThingDef>
