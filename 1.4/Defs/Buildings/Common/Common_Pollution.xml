@@ -2,106 +2,6 @@
 <Defs>
 
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
-		<defName>AtmosphericPumpTwo</defName>
-		<label>Atmospheric Pump 2</label>
-		<description>.</description>
-		<thingCategories Inherit="false" />
-		<altitudeLayer>Building</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<graphicData>
-			<texPath>Buildings/Common/Network/Node/Node</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(2.25,4.5)</drawSize>
-		</graphicData>
-		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<WorkToBuild>1000</WorkToBuild>
-			<Flammability>1.0</Flammability>
-			<Beauty>-5</Beauty>
-		</statBases>
-		<size>(2,4)</size>
-		<costList>
-			<Steel>100</Steel>
-			<ComponentIndustrial>5</ComponentIndustrial>
-		</costList>
-		<requisites>
-			<tiberiumResearchTasks>
-				<li>TiberiumRefining_T2</li>
-			</tiberiumResearchTasks>
-		</requisites>
-		<comps>
-			<li Class="TeleCore.CompProperties_Network">
-				<!--<compClass>TiberiumRim.Comp_ANS_Filter</compClass>-->
-				<networks>
-					<li>
-						<networkDef>AtmosphericNetwork</networkDef>
-						<roles>
-							<li>Transmitter</li>
-							<li>Controller</li>
-							<li>Storage</li>
-						</roles>
-						<volumeConfig>
-							<capacity>1000</capacity>
-							<area>1</area>
-							<elevation>0</elevation>
-							<height>1</height>
-							<values>
-								<allowedValues>
-									<li>Atmospheric_TibPollution</li>
-								</allowedValues>
-							</values>
-						</volumeConfig>
-					</li>
-				</networks>
-				<generalIOConfig>
-					<pattern>#XX#|X++X|X++X|#XX#</pattern>
-				</generalIOConfig>
-			</li>
-			<li Class="TeleCore.CompProperties_FX"> 
-				<fxLayers>
-					<li>
-						<graphicData>
-							<texPath>Buildings/Common/Network/Node/Overlay1</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>MoteGlow</shaderType>
-							<drawSize>(2.25,4.5)</drawSize>
-						</graphicData>
-						<fxMode>Dynamic</fxMode>
-						<needsPower>false</needsPower>
-					</li>
-					<li><skip>true</skip></li>
-					<li>
-						<graphicData>
-							<texPath>Buildings/Common/Network/Node/Overlay2</texPath>
-							<graphicClass>Graphic_Single</graphicClass>
-							<shaderType>MoteGlow</shaderType>
-							<drawSize>(2.25,4.5)</drawSize>
-						</graphicData>
-						<needsPower>true</needsPower>
-					</li>
-				</fxLayers>
-			</li>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>1000</basePowerConsumption>
-			</li>
-		</comps>
-		<rotatable>true</rotatable>
-		<tickerType>Never</tickerType>
-		<castEdgeShadows>false</castEdgeShadows>
-		<staticSunShadowHeight>0</staticSunShadowHeight>	
-		<fillPercent>1</fillPercent>			
-		<surfaceType>Item</surfaceType>
-		<modExtensions>
-			<li Class="TeleCore.SubMenuExtension">
-				<groupDef>Common</groupDef>
-				<category>Misc</category>
-			</li>
-		</modExtensions>
-	</TiberiumRim.TRThingDef>
-	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>PollutionFilter</defName>
 		<label>pollution filter</label>
 		<description>.</description>
@@ -210,6 +110,106 @@
 			<li Class="TeleCore.SubMenuExtension">
 				<groupDef>Common</groupDef>
 				<category>Pollution</category>
+			</li>
+		</modExtensions>
+	</TiberiumRim.TRThingDef>
+	
+<!--
+	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+		<defName>AtmosphericPumpTwo</defName>
+		<label>Atmospheric Pump 2</label>
+		<description>.</description>
+		<thingCategories Inherit="false" />
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Network/Node/Node</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.25,4.5)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToBuild>1000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-5</Beauty>
+		</statBases>
+		<size>(2,4)</size>
+		<costList>
+			<Steel>100</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T2</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<comps>
+			<li Class="TeleCore.CompProperties_Network">
+				<networks>
+					<li>
+						<networkDef>AtmosphericNetwork</networkDef>
+						<roles>
+							<li>Transmitter</li>
+							<li>Controller</li>
+							<li>Storage</li>
+						</roles>
+						<volumeConfig>
+							<capacity>1000</capacity>
+							<area>1</area>
+							<elevation>0</elevation>
+							<height>1</height>
+							<values>
+								<allowedValues>
+									<li>Atmospheric_TibPollution</li>
+								</allowedValues>
+							</values>
+						</volumeConfig>
+					</li>
+				</networks>
+				<generalIOConfig>
+					<pattern>#XX#|X++X|X++X|#XX#</pattern>
+				</generalIOConfig>
+			</li>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Common/Network/Node/Overlay1</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,4.5)</drawSize>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
+						<needsPower>false</needsPower>
+					</li>
+					<li><skip>true</skip></li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Common/Network/Node/Overlay2</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,4.5)</drawSize>
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+				</fxLayers>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1000</basePowerConsumption>
+			</li>
+		</comps>
+		<rotatable>true</rotatable>
+		<tickerType>Never</tickerType>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>	
+		<fillPercent>1</fillPercent>			
+		<surfaceType>Item</surfaceType>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Common</groupDef>
+				<category>Misc</category>
 			</li>
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
@@ -398,7 +398,6 @@
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
-	<!---->
 	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
 		<defName>Atmospheric_AirLockDoor</defName>
 		<label>air-lock door</label>
@@ -444,5 +443,6 @@
 			</li>
 		</modExtensions>
 	</TiberiumRim.TRThingDef>
+	-->
 	
 </Defs>
