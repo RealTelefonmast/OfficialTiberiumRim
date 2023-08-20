@@ -37,7 +37,7 @@ namespace TiberiumRim
         }
 
         private MapComponent_Tiberium TiberiumManager => map.Tiberium();
-        private PipeNetworkMaster NetworkMaster => TiberiumManager.NetworkInfo[TiberiumDefOf.TiberiumNetwork];
+        private DynamicNetworkGraph NetworkMaster => TiberiumManager.NetworkInfo[TiberiumDefOf.TiberiumNetwork];
 
         private Harvester CurHarvester => AllHarvesters[Current];
 
