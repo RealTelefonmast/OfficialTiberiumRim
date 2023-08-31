@@ -914,14 +914,7 @@
 						</volumeConfig>
 						<roles>
 							<li>Transmitter</li>
-							<li>
-								<role>Requester</role>
-								<subValues>
-									<li>TibGreen</li>
-									<li>TibBlue</li>
-									<li>TibRed</li>
-								</subValues>
-							</li>
+							<li>Requester</li>
 						</roles>
 					</li>
 					<li>

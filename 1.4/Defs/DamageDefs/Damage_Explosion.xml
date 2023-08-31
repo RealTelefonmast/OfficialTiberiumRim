@@ -281,6 +281,32 @@
 	</DamageDef>
 
 
-
+	<!---->
+	<DamageDef>
+		<defName>TR_ExplosionBlast</defName>
+		<label>blast</label>
+		<workerClass>TR.DamageWorker_ExplosionBlast</workerClass>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} has been killed by a powerful shockwave from an explosion.</deathMessage>
+		<hediff>TR_BlastInjury</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<defaultDamage>800</defaultDamage>
+		<defaultStoppingPower>3.0</defaultStoppingPower>
+		<defaultArmorPenetration>0.5</defaultArmorPenetration>
+		<buildingDamageFactorImpassable>4</buildingDamageFactorImpassable>
+		<buildingDamageFactorPassable>2</buildingDamageFactorPassable>
+		<plantDamageFactor>1</plantDamageFactor>
+		<armorCategory>Shockwave</armorCategory>
+		<minDamageToFragment>15</minDamageToFragment>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+		<explosionColorCenter>(0.7, 0.7, 0.7)</explosionColorCenter>
+		<explosionColorEdge>(0.5, 0.5, 0.5)</explosionColorEdge>
+		<expolosionPropagationSpeed>0.3</expolosionPropagationSpeed>
+		<soundExplosion>Explosion_Bomb</soundExplosion>
+		<explosionCellFleck>BlastDry</explosionCellFleck>
+		<explosionPropagationSpeed>0.5</explosionPropagationSpeed>
+		<hasForcefulImpact>true</hasForcefulImpact>
+		<corpseDamageFactor>1</corpseDamageFactor>
+	</DamageDef>
 
 </Defs>
