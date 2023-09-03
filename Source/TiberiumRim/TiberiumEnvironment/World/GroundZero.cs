@@ -1,7 +1,7 @@
 ﻿using RimWorld.Planet;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class GroundZero : TiberiumTile, IGroundZero
     {

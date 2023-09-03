@@ -5,7 +5,7 @@ using TeleCore;
 using Verse;
 using Verse.Sound;
 
-namespace TiberiumRim
+namespace TR
 {
     public class AttackSatellite_Ion : AttackSatellite, IMapWatcher
     {

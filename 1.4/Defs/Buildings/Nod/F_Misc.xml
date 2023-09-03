@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef ParentName="SculptureBase">
+	<TR.TRThingDef ParentName="SculptureBase">
 		<defName>NodSculptureLarge</defName>
 		<label>Brotherhood sculpture</label>
 		<description>These statues are a sign of the power of Nod.</description>
@@ -54,9 +54,9 @@
 				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
   
-	<TiberiumRim.TRThingDef ParentName="WallLampBase">
+	<TR.TRThingDef ParentName="WallLampBase">
 		<defName>NodWallLight</defName>
 		<label>wall light</label>
 		<description>An electrical wall lamp that lights an area. People need light to move and work at full speed.</description>
@@ -72,7 +72,7 @@
 			</tiberiumResearch>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_GlowerOffset">
+			<li Class="TR.CompProperties_GlowerOffset">
 				<glowerDef>GlowSource_Nod_Red</glowerDef>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
@@ -95,9 +95,9 @@
 				<category>Misc</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="GlowSourceBase">
+	<TR.TRThingDef ParentName="GlowSourceBase">
 		<defName>GlowSource_Nod_Red</defName>
 		<comps>
 			<li Class="CompProperties_Glower">
@@ -105,11 +105,11 @@
 				<glowColor>(255,150,150)</glowColor>
 			</li>
 		</comps>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 	<!--not cool and no special-->
 	<!--
-  	<TiberiumRim.TRThingDef ParentName="PowerConduitBase_TR">
+  	<TR.TRThingDef ParentName="PowerConduitBase_TR">
 		<defName>Nod_PowerConduit</defName>
 		<label>nod power conduit</label>
 		<description>A set of electrical cables for moving power around. Can be placed under walls and other buildings. GDI's ion control makes it very durable.</description>
@@ -142,9 +142,9 @@
 				<texPath>Buildings/Nod/Misc/LaserPC_Blueprint</texPath>
 			</blueprintGraphicData>
 		</building>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
   
-	<TiberiumRim.TRThingDef ParentName="LampBase_TR">
+	<TR.TRThingDef ParentName="LampBase_TR">
 		<defName>Light_Nod</defName>
 		<label>Nod Lamp</label>
 		<description>Fill your colony with the ever so beautiful glow of Nod's red light.</description>
@@ -189,7 +189,7 @@
 			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	-->
 
 </Defs>

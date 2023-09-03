@@ -1,7 +1,7 @@
 ﻿using Verse;
 using RimWorld;
 
-namespace TiberiumRim
+namespace TR
 {
     [DefOf]
     public static class TiberiumTerrainDefOf

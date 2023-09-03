@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef ParentName="ScrinBuildings">
+	<TR.TRThingDef ParentName="ScrinBuildings">
 		<defName>ChronoVortexPortal</defName>
 		<label>chrono vortex</label>
 		<description>Time anomaly.</description>
-		<thingClass>TiberiumRim.ChronoVortex</thingClass>
+		<thingClass>TR.ChronoVortex</thingClass>
 		<tickerType>Normal</tickerType>
 		<rotatable>false</rotatable>
 		<destroyable>false</destroyable>
@@ -52,6 +52,6 @@
 				</fxLayers>
 			</li>
 		</comps>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 </Defs>

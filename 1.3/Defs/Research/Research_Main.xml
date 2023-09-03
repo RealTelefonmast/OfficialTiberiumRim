@@ -371,8 +371,8 @@
 		<creationTasks>
 			<thingsToCreate>
 				<TiberiumNetworkController>1</TiberiumNetworkController>
-				<TiberiumSilo>1</TiberiumSilo>
-				<TiberiumRefinery>1</TiberiumRefinery>
+				<TR_TiberiumSilo>1</TR_TiberiumSilo>
+				<TR_TiberiumRefinery>1</TR_TiberiumRefinery>
 			</thingsToCreate>
 		</creationTasks>
 	</TiberiumRim.TResearchTaskDef>
@@ -387,7 +387,7 @@
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<taskTarget>
 			<targetDefs>
-				<li>TiberiumRefinery</li>
+				<li>TR_TiberiumRefinery</li>
 			</targetDefs>
 		</taskTarget>
 		<workAmount>600</workAmount>

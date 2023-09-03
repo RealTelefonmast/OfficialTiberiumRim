@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<TiberiumRim.TRThingDef Name="Forg_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
+	<TR.TRThingDef Name="Forg_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
 		<soundInteract>Interact_Rifle</soundInteract>
 		<recipeMaker>
 			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
@@ -8,7 +8,7 @@
 			<effectWorking>Smith</effectWorking>
 			<soundWorking>Recipe_Smith</soundWorking>
 			<recipeUsers>
-				<li>TiberiumWorkbench</li>
+				<li>TR_TibWorkbench</li>
 			</recipeUsers>
 			<unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
 		</recipeMaker>
@@ -18,9 +18,9 @@
 		<weaponClasses>
 			<li>Ranged</li>
 		</weaponClasses>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
-	<TiberiumRim.TRThingDef ParentName="Forg_Gun">
+	<TR.TRThingDef ParentName="Forg_Gun">
 		<defName>Forg_Scrapgun</defName>
 		<label>scrap gun</label>
 		<description>A simple knife submachine pistol made from scrap and other components. It's accuracy is slightly lower, but strong in melee combat.</description>
@@ -101,9 +101,9 @@
 				<li>ForgottenExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
-	<TiberiumRim.TRThingDef ParentName="Forg_Gun">
+	<TR.TRThingDef ParentName="Forg_Gun">
 		<defName>Forg_ShardgunGreen</defName>
 		<label>shard gun</label>
 		<description>A simple shotgun made from scrap and other components. Launches crushed tiberium crystals towards the target, may accidentally seed the ground with green tiberium.\n\nUpgradable to the explosive shard launcher.</description>
@@ -185,9 +185,9 @@
 				<li>ForgottenExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="Forg_Gun">
+	<TR.TRThingDef ParentName="Forg_Gun">
 		<defName>Forg_ShardgunBlue</defName>
 		<label>chain shard gun</label>
 		<description>A heavy scrap metal chaingun. Launches crushed tiberium crystals towards the target, may accidentally seed the ground with blue tiberium. Blue tiberium tends to burn.</description>
@@ -273,6 +273,6 @@
 				<li>ForgottenExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 </Defs>

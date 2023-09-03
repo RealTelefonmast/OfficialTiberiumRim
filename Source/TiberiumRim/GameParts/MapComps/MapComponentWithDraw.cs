@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public abstract class MapComponentWithDraw : MapComponent
     {

@@ -12,7 +12,7 @@
 		</statBases>
 	</ThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="MechPackageBase">
+	<TR.TRThingDef ParentName="MechPackageBase">
 		<defName>RepairDronePackage_Common</defName>
 		<label>repair drone (packaged)</label>	
 		<description>A simple repair drone.</description>
@@ -20,6 +20,6 @@
 			<texPath>Pawns/Mechanical/Common/RepairDrone/RepairDrone_south</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 </Defs>

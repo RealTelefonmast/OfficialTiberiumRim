@@ -55,7 +55,7 @@
 		</projectile>
 	</ThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
+	<TR.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_Nod_TwinFlechetteGun</defName>
 		<label>tiberium flechette</label>
 		<graphicData>
@@ -63,7 +63,7 @@
 			<graphicClass>Graphic_Random</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
-		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<damageAmountBase>3</damageAmountBase>
@@ -83,15 +83,15 @@
 				</projectile>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
-	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
+	<TR.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_FlamethrowerTower</defName>
 		<label>flame</label>
-		<thingClass>TiberiumRim.Projectile_ThrownFlame</thingClass>
+		<thingClass>TR.Projectile_ThrownFlame</thingClass>
 		<graphicData>
 			<texPath>Sprites\FlameMatrix</texPath>
-			<graphicClass>TiberiumRim.Graphic_Sprite</graphicClass>
+			<graphicClass>TR.Graphic_Sprite</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>2</drawSize>
 		</graphicData>
@@ -104,12 +104,12 @@
 			<speed>12</speed>
 			<soundExplode>Shot_Nod_FlameTail</soundExplode>
 		</projectile>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
+	<TR.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_Flamethrower</defName>
 		<label>flame</label>
-		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/FlameSmall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -136,9 +136,9 @@
 				</projectile>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
+	<TR.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_TiberiumGas</defName>
 		<label>chemical gas cloud</label>
 		<graphicData>
@@ -147,7 +147,7 @@
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>1</drawSize>
 		</graphicData>
-		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
 		<projectile>
 			<damageDef>TiberiumExplosionGas</damageDef>
 			<damageAmountBase>8</damageAmountBase>
@@ -175,7 +175,7 @@
 				</projectile>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<ThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_NodRocket</defName>
@@ -185,7 +185,7 @@
 			<texPath>Items/Weapons/Projectile/Bullet_Nod_Rocket</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
 		<projectile>
 			<damageDef>Bomb</damageDef>
 			<arcHeightFactor>1.25</arcHeightFactor>
@@ -205,7 +205,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
-		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
 		<projectile>
 			<damageDef>TiberiumExplosionFrag</damageDef>
 			<damageAmountBase>45</damageAmountBase>

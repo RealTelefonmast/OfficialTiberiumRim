@@ -106,7 +106,7 @@
 		</race>
 	</ThingDef>
 
-	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+	<TR.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>Thrimbo</defName>
 		<label>thrimbo</label>
 		<race>Thrimbo</race>
@@ -162,7 +162,7 @@
 				</butcherBodyPart>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
 	<!-- Bears -->
 	
@@ -284,7 +284,7 @@
 		</race>
 	</ThingDef>
 
-	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+	<TR.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>BigTiberiumFiend</defName>
 		<label>tiberian bear</label>
 		<race>BigTiberiumFiend</race>
@@ -335,7 +335,7 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
 	<!-- Muffalo -->
 	
@@ -428,7 +428,7 @@
 		</race>
 	</ThingDef>
   
-	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+	<TR.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>Tiffalo</defName>
 		<label>tiffalo</label>
 		<race>Tiffalo</race>
@@ -483,6 +483,6 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
 </Defs>

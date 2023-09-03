@@ -2,7 +2,7 @@
 using TeleCore;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class MapPawnInfo : MapInformation
     {

@@ -1,4 +1,4 @@
-﻿namespace TiberiumRim
+﻿namespace TR
 {
     /*
     public class Designator_BuildFixed : Designator_Build

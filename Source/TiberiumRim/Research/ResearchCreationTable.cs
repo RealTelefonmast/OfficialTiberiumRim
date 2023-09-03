@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     /*  This Table Keeps track of Research Tasks and their "creation" goal
      *  For example creating a certain amount of a thing

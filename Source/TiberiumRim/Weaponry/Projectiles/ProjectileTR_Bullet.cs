@@ -3,7 +3,7 @@ using TeleCore;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class ProjectileTR_Bullet : Bullet, IPatchedProjectile
     {

@@ -5,7 +5,7 @@
 	<RoomStatDef> 
 		<defName>TiberiumPollution</defName>
 		<label>tiberium pollution</label>
-		<workerClass>TiberiumRim.RoomStatWorker_Pollution</workerClass>
+		<workerClass>TR.RoomStatWorker_Pollution</workerClass>
 		<updatePriority>0</updatePriority>
 		<displayRounded>false</displayRounded>
 		<roomlessScore>0</roomlessScore>

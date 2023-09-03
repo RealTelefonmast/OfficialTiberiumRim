@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Designator_ZoneAdd_MechParking : Designator_ZoneAdd
     {

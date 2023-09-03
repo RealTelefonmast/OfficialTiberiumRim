@@ -7,7 +7,7 @@ using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Comp_TRHealthCheck : TeleComp
     {

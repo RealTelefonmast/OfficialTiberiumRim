@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace TiberiumRim;
+namespace TR;
 
 [DefOf]
 public static class EffectsDefOf

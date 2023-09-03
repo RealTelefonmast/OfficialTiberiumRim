@@ -5,7 +5,7 @@ using HarmonyLib;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     [Obsolete]
     public static class MaterialAtlasPool_TR

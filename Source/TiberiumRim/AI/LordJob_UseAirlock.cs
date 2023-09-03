@@ -1,7 +1,7 @@
 ﻿using System;
 using Verse.AI.Group;
 
-namespace TiberiumRim
+namespace TR
 {
     public class LordJob_UseAirlock : LordJob
     {

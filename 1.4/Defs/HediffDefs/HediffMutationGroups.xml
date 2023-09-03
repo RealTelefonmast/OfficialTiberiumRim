@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.HediffMutationGroup>
+	<TR.HediffMutationGroup>
 		<defName>Crystallized</defName>
 		<Skin>CrystalRash</Skin>
 		<Bone>CrystalBone</Bone>
-	</TiberiumRim.HediffMutationGroup>
+	</TR.HediffMutationGroup>
 
-	<TiberiumRim.HediffMutationGroup>
+	<TR.HediffMutationGroup>
 		<defName>Visceral</defName>
 		<!--Generic></Generic-->
 		<Skin>VisceralBlister</Skin>
@@ -24,9 +24,9 @@
 			<li>ViscousPart,0.85</li>
 		</Organ>
 		<Bone>VisceralBone</Bone>
-	</TiberiumRim.HediffMutationGroup>
+	</TR.HediffMutationGroup>
 
-	<TiberiumRim.HediffMutationGroup>
+	<TR.HediffMutationGroup>
 		<defName>Symbiotic</defName>
 		<Generic>EnhancedPart</Generic>
 		<Skin>SymbioticNode</Skin>
@@ -42,7 +42,7 @@
 			<li>SymbioticNode,0.85</li>
 		</Organ>
 		<Bone>SymbioticBone</Bone>
-	</TiberiumRim.HediffMutationGroup>
+	</TR.HediffMutationGroup>
 	
 	<!--
 	TODO: IDEAS: Multiple tentacle arms

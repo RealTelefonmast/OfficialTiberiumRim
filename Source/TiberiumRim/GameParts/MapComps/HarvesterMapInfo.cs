@@ -5,7 +5,7 @@ using TeleCore;
 using Verse;
 using Verse.AI;
 
-namespace TiberiumRim
+namespace TR
 {
     public class HarvesterMapInfo : MapInformation
     {

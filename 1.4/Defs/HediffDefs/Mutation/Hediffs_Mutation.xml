@@ -3,7 +3,7 @@
 
 	<HediffDef ParentName="HediffBase_TR">
 		<defName>TiberiumMutation</defName>
-		<hediffClass>TiberiumRim.Hediff_TiberiumMutation</hediffClass>
+		<hediffClass>TR.Hediff_TiberiumMutation</hediffClass>
 		<label>tiberium mutation</label>
 		<defaultLabelColor>(175, 255, 0)</defaultLabelColor>
 		<initialSeverity>1</initialSeverity>
@@ -23,7 +23,7 @@
 	<HediffDef ParentName="HediffBase_TR">
 		<defName>TiberiumMutationPart</defName>
 		<label>mutation part</label>
-		<hediffClass>TiberiumRim.Hediff_TiberiumMutationPart</hediffClass>
+		<hediffClass>TR.Hediff_TiberiumMutationPart</hediffClass>
 		<minSeverity>-1</minSeverity>
 		<maxSeverity>2</maxSeverity>
 		<initialSeverity>0</initialSeverity>

@@ -129,7 +129,7 @@
 		</race>
 	</ThingDef>
 
-	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+	<TR.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>TiberiumFiend</defName>
 		<label>tiberium fiend</label>
 		<labelPlural>tiberium fiends</labelPlural>
@@ -178,7 +178,7 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
 	<ThingDef ParentName="FiendBase">
 		<defName>Spiner</defName>
@@ -271,7 +271,7 @@
 		</race>
 	</ThingDef>
   
-	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+	<TR.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>Spiner</defName>
 		<label>spiner</label>
 		<race>Spiner</race>
@@ -319,7 +319,7 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
 	
 	<ThingDef ParentName="FiendBase">
@@ -435,7 +435,7 @@
 		</race>
 	</ThingDef>
 	
-	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+	<TR.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>SmallTiberiumFiend</defName>
 		<label>tiberian fox</label>
 		<labelPlural>tiberian foxes</labelPlural>
@@ -480,6 +480,6 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 
 </Defs>

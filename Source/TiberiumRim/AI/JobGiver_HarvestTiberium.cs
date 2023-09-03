@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Verse;
 using Verse.AI;
 
-namespace TiberiumRim
+namespace TR
 {
     public class JobGiver_HarvestTiberium : ThinkNode_JobGiver
     {

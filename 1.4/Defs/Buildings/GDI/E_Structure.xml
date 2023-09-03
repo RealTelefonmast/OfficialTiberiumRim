@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	
-	<TiberiumRim.TRThingDef ParentName="WallBase_TR" Name="GDIWall">
+	<TR.TRThingDef ParentName="WallBase_TR" Name="GDIWall">
 		<defName>GDIWall</defName>
 		<label>GDI wall</label>
 		<description>An impassable wall, reinforced by GDI engineers.</description>
@@ -28,9 +28,9 @@
 				<category>Structure</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="WallBase_TR">
+	<TR.TRThingDef ParentName="WallBase_TR">
 		<defName>GDIPillbox</defName>
 		<label>pillbox</label>
 		<description>Cover from gunfire.</description>
@@ -82,9 +82,9 @@
 				<category>Defense</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>	
+	</TR.TRThingDef>	
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>DoorFrame_GDI</defName>
 		<label>GDI door frame</label>
 		<description>A metal frame to decorate doorways with.</description>
@@ -110,7 +110,7 @@
 		<uiIconPath>Buildings/GDI/Structure/DoorFrame/DoorFrameGDI_south</uiIconPath>
 		<uiIconOffset>(0,0.1)</uiIconOffset>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_DoorFrame</li>
+			<li>TR.PlaceWorker_DoorFrame</li>
 		</placeWorkers>
 		<costList>
 			<Steel>15</Steel>
@@ -144,9 +144,9 @@
 				<category>Decoration</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
+	<TR.TRThingDef ParentName="DoorBase_TR">
 		<defName>GDI_Door</defName>
 		<label>GDI door</label>
 		<description>Divides rooms. Must be manually opened and closed, which slows people down.</description>
@@ -179,9 +179,9 @@
 				<category>Structure</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
-	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
+	<TR.TRThingDef ParentName="DoorBase_TR">
 		<defName>GDI_Autodoor</defName>
 		<label>GDI autodoor</label>
 		<description>Divides rooms. Powered operation allows people to move through the door without slowing down.</description>
@@ -229,6 +229,6 @@
 				<category>Structure</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>	
+	</TR.TRThingDef>	
 	
 </Defs>

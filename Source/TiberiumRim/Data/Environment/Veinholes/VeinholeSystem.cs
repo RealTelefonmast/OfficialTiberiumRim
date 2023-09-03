@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using RimWorld;
 using TeleCore;
-using TiberiumRim.Data.Enums;
+using TR.Data.Enums;
 using Verse;
 
-namespace TiberiumRim;
+namespace TR;
 
 public class VeinholeSystem : IExposable
 {

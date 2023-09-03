@@ -2,7 +2,7 @@
 using System.Xml;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class TerrainOption : DefFloat<TerrainDef>
     {

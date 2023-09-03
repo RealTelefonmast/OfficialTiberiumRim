@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using TAE;
 
-namespace TiberiumRim;
+namespace TR;
 
 [DefOf]
 public class SpreadingGasDefOf

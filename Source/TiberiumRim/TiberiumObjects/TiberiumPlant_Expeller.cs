@@ -1,7 +1,7 @@
 ﻿using TAE;
 using TeleCore;
 
-namespace TiberiumRim
+namespace TR
 {
     public class TiberiumPlant_Expeller : TiberiumPlant
     {

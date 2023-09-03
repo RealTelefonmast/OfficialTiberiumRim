@@ -2,7 +2,7 @@
 using TeleCore.Data.Events;
 using UnityEngine;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Building_NodHubTurret : Building_HubTurret
     {

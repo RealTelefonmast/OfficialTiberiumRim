@@ -6,16 +6,16 @@
 		<defName>VeinholeTunnel</defName>
 		<label>premature veinhole</label>
 		<size>(3,3)</size>
-		<thingClass>TiberiumRim.VeinholeTunnel</thingClass>
+		<thingClass>TR.VeinholeTunnel</thingClass>
 		<tickerType>Normal</tickerType>
 		<drawerType>RealtimeOnly</drawerType>
 		<alwaysFlee>true</alwaysFlee>
 	</ThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+	<TR.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>VeinEgg</defName>
 		<label>vein egg</label>
-		<thingClass>TiberiumRim.VeinEgg</thingClass>
+		<thingClass>TR.VeinEgg</thingClass>
 		<tickerType>Rare</tickerType>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -32,12 +32,12 @@
 		<rotatable>false</rotatable>
 		<size>(1,1)</size>
 		<blockPlants>true</blockPlants>
-	</TiberiumRim.TRThingDef>	
+	</TR.TRThingDef>	
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+	<TR.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>VeinHub</defName>
 		<label>vein hub</label>
-		<thingClass>TiberiumRim.VeinHub</thingClass>
+		<thingClass>TR.VeinHub</thingClass>
 		<tickerType>Rare</tickerType>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -69,14 +69,14 @@
 		<rotatable>false</rotatable>
 		<size>(1,1)</size>
 		<blockPlants>true</blockPlants>
-	</TiberiumRim.TRThingDef>	
+	</TR.TRThingDef>	
 	
 	<!-- -->
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+	<TR.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>DeadGreenCrater</defName>
 		<label>green Tiberium crater residue</label>
 		<description>The remnants of a green Tiberium crater, it does not create any more crystals.</description>
-		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
+		<thingClass>TR.TiberiumProducerResidue</thingClass>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<useHitPoints>false</useHitPoints>
 		<destroyable>false</destroyable>
@@ -93,19 +93,19 @@
 				<glowRadius>5</glowRadius>
 				<glowColor>(120,255,120)</glowColor>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+			<li Class="TR.CompProperties_TiberiumRadiation">
 				<radius>8</radius>
 				<intensity>1.25</intensity>
 			</li>
 		</comps>
 		<tickerType>Rare</tickerType>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+	<TR.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>DeadBlueCrater</defName>
 		<label>blue Tiberium crater residue</label>
 		<description>The remnants of a blue Tiberium crater, it does not create any more crystals.</description>
-		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
+		<thingClass>TR.TiberiumProducerResidue</thingClass>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<useHitPoints>false</useHitPoints>
 		<destroyable>false</destroyable>
@@ -122,19 +122,19 @@
 				<glowRadius>5</glowRadius>
 				<glowColor>(120,255,120)</glowColor>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+			<li Class="TR.CompProperties_TiberiumRadiation">
 				<radius>9</radius>
 				<intensity>1.35</intensity>
 			</li>
 		</comps>
 		<tickerType>Rare</tickerType>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+	<TR.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>DeadVeinhole</defName>
 		<label>dead veinhole</label>
 		<description>A dead veinhole.</description>
-		<thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
+		<thingClass>TR.TiberiumProducerResidue</thingClass>
 		<useHitPoints>false</useHitPoints>
 		<destroyable>false</destroyable>
 		<size>(3,3)</size>
@@ -144,6 +144,6 @@
 			<drawSize>(4,4)</drawSize>
 		</graphicData>
 		<altitudeLayer>Floor</altitudeLayer>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 </Defs>

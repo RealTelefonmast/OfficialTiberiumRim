@@ -37,12 +37,12 @@
 	</EffecterDef>
 	
 	<!--
-	<TiberiumRim.EffecterDefTR>
+	<TR.EffecterDefTR>
 		<defName>TiberiumClouds_Green2</defName>
 		<tickInterval>2000</tickInterval>
 		<children>
 			<li>
-				<subEffecterClass>TiberiumRim.SubEffecter_MoteMaker</subEffecterClass>
+				<subEffecterClass>TR.SubEffecter_MoteMaker</subEffecterClass>
 				<scale>
 					<min>1.5</min>
 					<max>2.5</max>
@@ -56,7 +56,7 @@
 				<speed>0.01~0.1</speed>
 			</li>
 			<li>
-				<subEffecterClass>TiberiumRim.SubEffecter_MoteMaker</subEffecterClass>
+				<subEffecterClass>TR.SubEffecter_MoteMaker</subEffecterClass>
 				<scale>
 					<min>1.5</min>
 					<max>2.5</max>
@@ -69,7 +69,7 @@
 				<spawnLocType>RandomCellOnTarget</spawnLocType>
 			</li>
 		</children>
-	</TiberiumRim.EffecterDefTR>
+	</TR.EffecterDefTR>
 	-->
 	
 	<EffecterDef>

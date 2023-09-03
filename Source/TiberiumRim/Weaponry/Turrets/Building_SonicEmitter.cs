@@ -1,7 +1,7 @@
 ﻿using TeleCore;
 using TeleCore.Data.Events;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Building_SonicEmitter : Building_TeleTurret
     {

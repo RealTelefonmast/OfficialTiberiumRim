@@ -3,7 +3,7 @@
 
 	<GameConditionDef>
 		<defName>TiberiumBiome</defName>
-		<conditionClass>TiberiumRim.GameCondition_TiberiumBiome</conditionClass>
+		<conditionClass>TR.GameCondition_TiberiumBiome</conditionClass>
 		<label>tiberium terraformation</label>
 		<description>Tiberium has started to affect the air and soil of this land, flora and fauna of alien nature is sprouting out of seemingly nowhere and life as we know it may change forever if this continues.</description>
 		<endMessage>Tiberium has been cleansed from this place.</endMessage>

@@ -4,7 +4,7 @@ using System.Text;
 using RimWorld;
 using Verse;
 
-namespace TiberiumRim;
+namespace TR;
 
 public class TiberiumMeteorite : TRBuilding, IRadiationLeaker, IResearchCraneTarget
 {

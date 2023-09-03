@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Graphic_NumberedCollection : Graphic_Collection
     {

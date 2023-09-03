@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class TiberiumConversion
     {

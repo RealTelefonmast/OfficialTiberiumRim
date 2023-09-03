@@ -4,7 +4,7 @@ using UnityEngine;
 using Verse;
 using Verse.Profile;
 
-namespace TiberiumRim
+namespace TR
 {
     public static class MiscPatches
     {

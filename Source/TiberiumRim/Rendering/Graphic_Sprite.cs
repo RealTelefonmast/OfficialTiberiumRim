@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Graphic_Sprite : Graphic
     {

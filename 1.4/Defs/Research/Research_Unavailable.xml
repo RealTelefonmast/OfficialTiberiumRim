@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TResearchGroupDef>
+	<TR.TResearchGroupDef>
 		<defName>FactionGroup</defName>
 		<label>Upcoming!</label>
 		<priority>10</priority>
@@ -14,10 +14,10 @@
 			<li>NodExperimental2</li>
 			<li>NodExperimental3</li>
 		</researchProjects>
-	</TiberiumRim.TResearchGroupDef>
+	</TR.TResearchGroupDef>
 	
 	<!---->
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>GDIExperimental1</defName>
 		<label>Join the GDI</label>
 		<researchType>experimental content</researchType>
@@ -33,9 +33,9 @@
 		<tasks>
 			<li>GDIUnlock1</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>GDIUnlock1</defName>
 		<label>Join the GDI</label>	
 		<descriptionShort>Join the Galaxy Defense Initiative.</descriptionShort>
@@ -50,9 +50,9 @@
 		</images>
 		<workType>Research</workType>
 		<workAmount>1000</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>GDIExperimental2</defName>
 		<label>GDI Basic</label>
 		<researchType>tech research</researchType>
@@ -68,9 +68,9 @@
 			<li>GDIUnlock2_1</li>
 			<li>GDIUnlock2_2</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>GDIUnlock2_1</defName>
 		<label>Construct Factory</label>	
 		<descriptionShort>Construct a factory.</descriptionShort>
@@ -83,9 +83,9 @@
 			<li>Story/FactionEmblem/F_GDI</li>
 		</images>
 		<workType>Construction</workType>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>GDIUnlock2_2</defName>
 		<label>Research basic technology</label>	
 		<descriptionShort>Research basic technology of the GDI.</descriptionShort>
@@ -102,9 +102,9 @@
 		</images>
 		<workType>Research</workType>
 		<workAmount>4000</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>GDIExperimental3</defName>
 		<label>GDI Advanced</label>
 		<researchType>tech research</researchType>
@@ -120,9 +120,9 @@
 			<li>GDIUnlock3_1</li>
 			<li>GDIUnlock3_2</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>GDIUnlock3_1</defName>
 		<label>Construct Armory</label>	
 		<descriptionShort>Construct an armory.</descriptionShort>
@@ -135,9 +135,9 @@
 			<li>Story/FactionEmblem/F_GDI</li>
 		</images>
 		<workType>Construction</workType>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>GDIUnlock3_2</defName>
 		<label>Research advanced technology</label>	
 		<descriptionShort>Research advanced technology of the GDI.</descriptionShort>
@@ -154,7 +154,7 @@
 		</images>
 		<workType>Research</workType>
 		<workAmount>5000</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
 	
 	
@@ -164,7 +164,7 @@
 	
 	
 	
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>NodExperimental1</defName>
 		<label>Join the Nod</label>
 		<researchType>experimental content</researchType>
@@ -180,9 +180,9 @@
 		<tasks>
 			<li>NODUnlock1</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>NODUnlock1</defName>
 		<label>Join the Nod</label>	
 		<descriptionShort>Join the Brotherhood of Nod.</descriptionShort>
@@ -197,9 +197,9 @@
 		</images>
 		<workType>Research</workType>
 		<workAmount>1000</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>NodExperimental2</defName>
 		<label>Nod basic</label>
 		<researchType>tech research</researchType>
@@ -215,9 +215,9 @@
 			<li>NODUnlock2_1</li>
 			<li>NODUnlock2_2</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>NODUnlock2_1</defName>
 		<label>Construct Assembler</label>
 		<descriptionShort>Construct an assembler.</descriptionShort>
@@ -230,9 +230,9 @@
 			<li>Story/FactionEmblem/F_Nod</li>
 		</images>
 		<workType>Construction</workType>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>NODUnlock2_2</defName>
 		<label>Research basic technology</label>	
 		<descriptionShort>Research basic technology of the Nod.</descriptionShort>
@@ -249,9 +249,9 @@
 		</images>
 		<workType>Research</workType>
 		<workAmount>4000</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>NodExperimental3</defName>
 		<label>Nod advanced</label>
 		<researchType>tech research</researchType>
@@ -267,9 +267,9 @@
 			<li>NODUnlock3_1</li>
 			<li>NODUnlock3_2</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>NODUnlock3_1</defName>
 		<label>Construct Shrine</label>
 		<descriptionShort>Construct a shrine.</descriptionShort>
@@ -282,9 +282,9 @@
 			<li>Story/FactionEmblem/F_Nod</li>
 		</images>
 		<workType>Construction</workType>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>NODUnlock3_2</defName>
 		<label>Research advanced technology</label>	
 		<descriptionShort>Study advanced technology of the Nod.</descriptionShort>
@@ -301,7 +301,7 @@
 		</images>
 		<workType>Research</workType>
 		<workAmount>5000</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
 	
 	
@@ -316,7 +316,7 @@
 	
 	
 	
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>ForgottenExperimental1</defName>
 		<label>Join the Forgotten</label>
 		<researchType>experimental content</researchType>
@@ -331,9 +331,9 @@
 		<tasks>
 			<li>ForgottenUnlock1</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>ForgottenUnlock1</defName>
 		<label>Join the Forgotten</label>	
 		<descriptionShort>Join the Forgotten mutants.</descriptionShort>
@@ -348,6 +348,6 @@
 		</images>
 		<workType>Research</workType>
 		<workAmount>1000</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
 </Defs>

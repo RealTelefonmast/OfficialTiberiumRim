@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	
-	<TiberiumRim.EVASettingsDef>
+	<TR.EVASettingsDef>
 		<defName>EVASettings</defName>  
 		<times>
 			<li>
@@ -149,6 +149,6 @@
 				<ticks>10</ticks>
 			</li>
 		</times>
-	</TiberiumRim.EVASettingsDef>
+	</TR.EVASettingsDef>
 	
 </Defs>

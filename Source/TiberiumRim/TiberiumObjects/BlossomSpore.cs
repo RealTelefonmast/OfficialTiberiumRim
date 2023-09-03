@@ -1,4 +1,4 @@
-﻿namespace TiberiumRim
+﻿namespace TR
 {
     //TODO: Base it on fleck
     /*

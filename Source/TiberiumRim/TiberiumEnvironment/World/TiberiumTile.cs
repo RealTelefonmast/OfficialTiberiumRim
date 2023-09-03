@@ -3,7 +3,7 @@ using System.Text;
 using RimWorld.Planet;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class TiberiumTile : WorldObject
     {

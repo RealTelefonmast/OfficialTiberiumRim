@@ -5,7 +5,7 @@
 		<defName>AtmosphericNetwork</defName>
 		<containerLabel>Gas Storage</containerLabel>
 		<transmitterDef>AtmosphericPipe</transmitterDef>
-		<controllerDef>AtmosphericPump</controllerDef>
+		<controllerDef>AtmosphericController</controllerDef>
 		<transmitterGraphic>
 			<texPath>Buildings/Common/Pollution/Pipe_Air</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -18,7 +18,7 @@
 		</overlayGraphic>
 	</TeleCore.NetworkDef>
 
-	<TiberiumRim.TRThingDef ParentName="NetworkPipeBase">
+	<TR.TRThingDef ParentName="NetworkPipeBase">
 		<defName>AtmosphericPipe</defName>
 		<label>gas pipe</label>
 		<description>This structure connects Atmospheric processing structures on the Atmospheric Network.</description>
@@ -49,7 +49,7 @@
 				</networks>
 			</li>
 		</comps>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 	<TeleCore.NetworkValueDef>
 		<defName>Atmospheric_TibPollution</defName>

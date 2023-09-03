@@ -144,8 +144,8 @@
 		<targetSettings>
 			<targets>
 				<li>NetworkController</li>
-				<li>TiberiumRefinery</li>
-				<li>TiberiumSilo,2</li>
+				<li>TR_TiberiumRefinery</li>
+				<li>TR_TiberiumSilo,2</li>
 			</targets>
 		</targetSettings>
 	</StoryFramework.ObjectiveDef>	

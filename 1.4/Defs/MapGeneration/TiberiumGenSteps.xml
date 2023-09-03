@@ -4,7 +4,7 @@
 	<GenStepDef>
 		<defName>TiberiumGenStep</defName>
 		<order>610</order>
-		<genStep Class="TiberiumRim.MapGenStep_Tiberium"/>
+		<genStep Class="TR.MapGenStep_Tiberium"/>
 	</GenStepDef>
 	
 </Defs>

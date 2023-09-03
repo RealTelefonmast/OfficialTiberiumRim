@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<TiberiumRim.TRThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+	<TR.TRThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
 		<defName>GDI_Wrench</defName>
 		<label>Engineering Wrench</label>
 		<description>An engineer's good wrench, improves work speed.</description>
@@ -55,6 +55,6 @@
 				<li>GDIExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 </Defs>

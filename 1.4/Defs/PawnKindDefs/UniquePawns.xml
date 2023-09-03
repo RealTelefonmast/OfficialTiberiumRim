@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 <!--
-	<TiberiumRim.UniquePawnDef>
+	<TR.UniquePawnDef>
 		<defName>Volkov</defName>
 		<label>Volkov</label>
 		<bodyType>Male</bodyType>
@@ -9,6 +9,6 @@
 		<gender>Male</gender>
 		<hairDef>null</hairDef>
 		<melanin>0.45</melanin>
-	</TiberiumRim.UniquePawnDef>
+	</TR.UniquePawnDef>
 	-->
 </Defs>

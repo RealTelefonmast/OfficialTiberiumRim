@@ -4,7 +4,7 @@ using System.Linq;
 using TeleCore;
 using Verse;
 
-namespace TiberiumRim;
+namespace TR;
 
 public enum TerrainType
 {

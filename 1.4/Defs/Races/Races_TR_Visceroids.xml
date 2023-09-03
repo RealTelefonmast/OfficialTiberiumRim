@@ -5,7 +5,7 @@
 	<ThingDef ParentName="VisceralPawnBase">
 		<defName>VisceralHorror_Human</defName>
 		<label>visceral human</label>
-		<thingClass>TiberiumRim.Pawn_Visceral</thingClass>
+		<thingClass>TR.Pawn_Visceral</thingClass>
 		<description>This poor soul has been half molten inside a visceral pod. Whatever is left of them is now unrecognizable. These visceral horrors are extremely hostile, and should be avoided.</description>
 		<statBases>
 			<MoveSpeed>3</MoveSpeed>
@@ -61,7 +61,7 @@
 		</race>
 	</ThingDef>
 	
-	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+	<TR.TiberiumKindDef ParentName="VisceralKindBase">
 		<defName>VisceralHorror_Human</defName>
 		<label>visceral human</label>
 		<race>VisceralHorror_Human</race>
@@ -78,14 +78,14 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
 	
 	<!-- Visceral Horror | AnimalLike -->
 	<ThingDef ParentName="VisceralPawnBase">
 		<defName>VisceralHorror_Animal</defName>
 		<label>visceral animal</label>
-		<thingClass>TiberiumRim.Pawn_Visceral</thingClass>
+		<thingClass>TR.Pawn_Visceral</thingClass>
 		<description>This animal, or whatever is left of it, has suffered inside a visceral pod. These visceral horrors are extremely hostile, and should be avoided.</description>
 		<statBases>
 			<MoveSpeed>3</MoveSpeed>
@@ -143,7 +143,7 @@
 		</race>
 	</ThingDef>
 	
-	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+	<TR.TiberiumKindDef ParentName="VisceralKindBase">
 		<defName>VisceralHorror_Animal</defName>
 		<label>visceral animal</label>
 		<race>VisceralHorror_Animal</race>
@@ -160,13 +160,13 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
 	<!-- Visceral Beast -->
 	<ThingDef ParentName="VisceralPawnBase">
 		<defName>VisceralBeast</defName>
 		<label>visceral beast</label>
-		<thingClass>TiberiumRim.Pawn_Visceral</thingClass>
+		<thingClass>TR.Pawn_Visceral</thingClass>
 		<description>This horrific being hatched from a Visceral Pod. Seems like a creature of enough biomass</description>
 		<statBases>
 			<MoveSpeed>2</MoveSpeed>
@@ -211,7 +211,7 @@
 		</race>
 	</ThingDef>
 	
-	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+	<TR.TiberiumKindDef ParentName="VisceralKindBase">
 		<defName>VisceralBeast</defName>
 		<label>visceral beast</label>
 		<race>VisceralBeast</race>
@@ -228,14 +228,14 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
 	
 	<!-- Visceroid -->
 	<ThingDef ParentName="VisceralPawnBase">
 		<defName>Visceroid</defName>
 		<label>visceroid</label>
-		<thingClass>TiberiumRim.Visceroid</thingClass>
+		<thingClass>TR.Visceroid</thingClass>
 		<description>A blob-like and disturbing lifeform. Formed after the death of a creature by Tiberium.</description>
 		<statBases>
 			<MoveSpeed>2</MoveSpeed>
@@ -294,7 +294,7 @@
 		</race>
 	</ThingDef>
 	
-	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+	<TR.TiberiumKindDef ParentName="VisceralKindBase">
 		<defName>Visceroid</defName>
 		<label>visceroid</label>
 		<race>Visceroid</race>
@@ -311,13 +311,13 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
 	<!-- Amalgamation -->
 	<ThingDef ParentName="VisceralPawnBase">
 		<defName>Amalgamation</defName>
 		<label>Amalgamation</label>
-		<thingClass>TiberiumRim.Visceroid</thingClass>
+		<thingClass>TR.Visceroid</thingClass>
 		<description>A great irregular lifeform. Formed after the death of a creature by Tiberium.</description>
 		<statBases>
 			<MoveSpeed>2</MoveSpeed>
@@ -381,7 +381,7 @@
 		</race>
 	</ThingDef>
 	
-	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+	<TR.TiberiumKindDef ParentName="VisceralKindBase">
 		<defName>Amalgamation</defName>
 		<label>Amalgamation</label>
 		<race>Amalgamation</race>
@@ -398,13 +398,13 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
 	<!-- Veinroamer -->
 	<ThingDef ParentName="VisceralPawnBase">
 		<defName>Veinroamer</defName>
 		<label>vein roamer</label>
-		<thingClass>TiberiumRim.VeinRoamer</thingClass>
+		<thingClass>TR.VeinRoamer</thingClass>
 		<description>Freshly hatched from a veiny hive these little guys will roam their veinhole's area and attack anything that comes too close. They will die if their veinhole is destroyed.</description>
 		<statBases>
 			<MoveSpeed>6</MoveSpeed>
@@ -462,7 +462,7 @@
 		</race>
 	</ThingDef>
 	
-	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+	<TR.TiberiumKindDef ParentName="VisceralKindBase">
 		<defName>Veinroamer</defName>
 		<label>Veinroamer</label>
 		<race>Veinroamer</race>
@@ -479,13 +479,13 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
 	<!-- Vein Rock -->	
 	<ThingDef ParentName="VisceralPawnBase">
 		<defName>VeinChunk</defName>
 		<label>veiny chunk</label>
-		<thingClass>TiberiumRim.VeinChunk</thingClass>
+		<thingClass>TR.VeinChunk</thingClass>
 		<description>A vein infested chunk.</description>
 		<tools>
 			<li>
@@ -530,7 +530,7 @@
 		</race>
 	</ThingDef>
 	
-	<TiberiumRim.TiberiumKindDef ParentName="VisceralKindBase">
+	<TR.TiberiumKindDef ParentName="VisceralKindBase">
 		<defName>VeinChunk</defName>
 		<label>veiny chunk</label>
 		<race>VeinChunk</race>
@@ -543,6 +543,6 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
 </Defs>

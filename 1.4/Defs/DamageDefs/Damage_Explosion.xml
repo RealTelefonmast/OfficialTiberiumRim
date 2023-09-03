@@ -296,7 +296,7 @@
 		<buildingDamageFactorImpassable>4</buildingDamageFactorImpassable>
 		<buildingDamageFactorPassable>2</buildingDamageFactorPassable>
 		<plantDamageFactor>1</plantDamageFactor>
-		<armorCategory>Shockwave</armorCategory>
+		<armorCategory>Blast</armorCategory>
 		<minDamageToFragment>15</minDamageToFragment>
 		<makesAnimalsFlee>true</makesAnimalsFlee>
 		<explosionColorCenter>(0.7, 0.7, 0.7)</explosionColorCenter>
@@ -304,7 +304,6 @@
 		<expolosionPropagationSpeed>0.3</expolosionPropagationSpeed>
 		<soundExplosion>Explosion_Bomb</soundExplosion>
 		<explosionCellFleck>BlastDry</explosionCellFleck>
-		<explosionPropagationSpeed>0.5</explosionPropagationSpeed>
 		<hasForcefulImpact>true</hasForcefulImpact>
 		<corpseDamageFactor>1</corpseDamageFactor>
 	</DamageDef>

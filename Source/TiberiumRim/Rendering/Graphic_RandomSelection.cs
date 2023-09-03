@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 { 
     public class Graphic_RandomSelection : Graphic_Collection
     {

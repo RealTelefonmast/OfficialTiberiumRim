@@ -2,7 +2,7 @@
 <Defs>
 
 	<ThingDef Name="BaseMechanoidTR" Abstract="True">
-		<thingClass>TiberiumRim.MechanicalPawn</thingClass>
+		<thingClass>TR.MechanicalPawn</thingClass>
 		<category>Pawn</category>
 		<selectable>true</selectable>
 		<tickerType>Normal</tickerType>
@@ -61,7 +61,7 @@
 	</ThingDef>
 	
 	<ThingDef Name="HarvesterBase" ParentName="BaseMechanoidTR" Abstract="True">
-		<thingClass>TiberiumRim.Harvester</thingClass>
+		<thingClass>TR.Harvester</thingClass>
 		<!--
 		<statBases>
 			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
@@ -101,7 +101,7 @@
 	</ThingDef>
 	
 	<ThingDef Name="RepairDroneBase" ParentName="BaseMechanoidTR" Abstract="True">
-		<thingClass>TiberiumRim.RepairDrone</thingClass>
+		<thingClass>TR.RepairDrone</thingClass>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using TeleCore;
-using TiberiumRim.Data.Enums;
+using TR.Data.Enums;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim;
+namespace TR;
 
 public class TiberiumCrystal : TRThing
 {

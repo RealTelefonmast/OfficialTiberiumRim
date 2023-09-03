@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
-  	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+  	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>TemplePrime</defName>
 		<label>Temple Prime</label>
 		<description>uwu</description>
-		<thingClass>TiberiumRim.Building_Temple</thingClass>
+		<thingClass>TR.Building_Temple</thingClass>
 		<size>(7,7)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -19,7 +19,7 @@
 			<ComponentIndustrial>12</ComponentIndustrial>
 		</costList>
 		<superWeapon>
-			<designator>TiberiumRim.Designator_NodNukeTargeter</designator>
+			<designator>TR.Designator_NodNukeTargeter</designator>
 		</superWeapon>
 		<uiIconScale>0.90</uiIconScale>
 		<altitudeLayer>FloorEmplacement</altitudeLayer>
@@ -67,7 +67,7 @@
 					<li>
 						<graphicData>
 							<texPath>Buildings/Nod/Defense/Temple/Blades</texPath>
-							<graphicClass>TiberiumRim.Graphic_NumberedCollection</graphicClass>
+							<graphicClass>TR.Graphic_NumberedCollection</graphicClass>
 							<shaderType>Transparent</shaderType>
 							<drawSize>(3,3)</drawSize>
 						</graphicData>
@@ -101,8 +101,8 @@
 		<specialDisplayRadius>39.9</specialDisplayRadius>
 		<constructionSkillPrerequisite>15</constructionSkillPrerequisite>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_OnlyOutside</li>
-			<li>TiberiumRim.PlaceWorker_Once</li>
+			<li>TR.PlaceWorker_OnlyOutside</li>
+			<li>TR.PlaceWorker_Once</li>
 		</placeWorkers>
 		<requisites>
 			<tiberiumResearch>
@@ -115,9 +115,9 @@
 				<category>Defense</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>TemplePrimeTemplate</defName>
 		<label>Temple Prime Template</label>
 		<description>poggers</description>
@@ -159,13 +159,13 @@
 				<category>Defense</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>Nod_TiberiumSuppressor</defName>
 		<label>Tiberium-Growth Suppressor</label>
 		<description>This specialized facility connects to a nearby Brotherhood of Nod Wall or Laser Fence (needs to be touching) and spreads a suppressing liquid through those. This way Tiberium will be suppressed from further growth near the walls. Requires a huge amount of electricity.</description>
-		<thingClass>TiberiumRim.Building_GrowthSuppressor</thingClass>
+		<thingClass>TR.Building_GrowthSuppressor</thingClass>
 		<size>(7,7)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -272,6 +272,6 @@
 				<category>Defense</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 </Defs>

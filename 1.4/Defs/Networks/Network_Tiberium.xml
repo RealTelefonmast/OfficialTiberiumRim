@@ -6,7 +6,7 @@
 		<label>Tiberium Network</label>
 		<labelShort>Tiberium</labelShort>
 		<containerLabel>Tiberium Storage</containerLabel>
-		<controllerDef>TiberiumNetworkController</controllerDef>
+		<controllerDef>TR_TiberiumNetworkController</controllerDef>
 		<transmitterDef>TiberiumPipe</transmitterDef>
 		<transmitterGraphic>
 			<texPath>Buildings/Common/Network/Pipe_Tib</texPath>
@@ -20,7 +20,7 @@
 		</overlayGraphic>
 	</TeleCore.NetworkDef>
 	
-	<TiberiumRim.TRThingDef ParentName="NetworkPipeBase">
+	<TR.TRThingDef ParentName="NetworkPipeBase">
 		<defName>TiberiumPipe</defName>
 		<label>tiberium pipe</label>
 		<description>This structure connects Tiberium processing structures on the Tiberium Network.</description>
@@ -49,9 +49,6 @@
 						</roles>
 						<volumeConfig>
 							<capacity>400</capacity>
-							<area>1</area>
-							<elevation>0</elevation>
-							<height>1</height>
 							<values>
 								<fromCollection>TiberiumNetwork</fromCollection>
 							</values>
@@ -62,11 +59,17 @@
 						<roles>
 							<li>Transmitter</li>
 						</roles>
+						<volumeConfig>
+							<capacity>400</capacity>
+							<values>
+								<fromCollection>WasteNetwork</fromCollection>
+							</values>
+						</volumeConfig>
 					</li>
 				</networks>
 			</li>
 		</comps>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<TeleCore.NetworkValueDef>
 		<defName>TibGreen</defName>

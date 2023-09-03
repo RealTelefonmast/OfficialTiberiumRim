@@ -10,7 +10,7 @@ using UnityEngine;
 using Verse;
 using static System.String;
 
-namespace TiberiumRim
+namespace TR
 {
     public static class TRUtils
     {

@@ -6,7 +6,7 @@ using TeleCore.Network.Data;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Building_TiberiumSpike : FXBuilding
     {

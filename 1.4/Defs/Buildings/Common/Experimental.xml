@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	<!--
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>TiberiumPipeDynamic</defName>
 		<label>dynamic tiberium pipe</label>
 		<description>This structure connects Tiberium processing structures on the Tiberium Network.</description>
-		<thingClass>TiberiumRim.TNW_PipeDynamic</thingClass>
+		<thingClass>TR.TNW_PipeDynamic</thingClass>
 		
 		<costList>
 			<Steel>5</Steel>
@@ -29,8 +29,8 @@
 		</building>
 		
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNW">
-				<compClass>TiberiumRim.CompTNW_Pipe</compClass>
+			<li Class="TR.CompProperties_TNW">
+				<compClass>TR.CompTNW_Pipe</compClass>
 			</li>
 		</comps>
 		
@@ -56,7 +56,7 @@
 		<surfaceType>Item</surfaceType>
 		<clearBuildingArea>false</clearBuildingArea>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_Pipe</li>
+			<li>TR.PlaceWorker_Pipe</li>
 		</placeWorkers>
 		<modExtensions>
 			<li Class="TeleCore.SubMenuExtension">
@@ -65,7 +65,7 @@
 				<hidden>true</hidden>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	-->
 	
 	<!--
@@ -73,7 +73,7 @@
 		<defName>AngleTester</defName>
 		<label>Angle Tester</label>
 		<description>AAAAAAAAA</description>
-		<thingClass>TiberiumRim.Building_ANGLETEST</thingClass>
+		<thingClass>TR.Building_ANGLETEST</thingClass>
 		<graphicData>
 			<texPath>Things/Building/Misc/MoisturePump</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

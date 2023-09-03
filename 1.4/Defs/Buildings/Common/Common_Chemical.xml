@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	<!--
-	<TiberiumRim.TRThingDef Name="NetworkPipeBase" ParentName="BuildingBase_TR" Abstract="True">
+	<TR.TRThingDef Name="NetworkPipeBase" ParentName="BuildingBase_TR" Abstract="True">
 		<category>Building</category>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<altitudeLayer>FloorEmplacement</altitudeLayer>
@@ -41,6 +41,6 @@
 				<hidden>true</hidden>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	-->
 </Defs>

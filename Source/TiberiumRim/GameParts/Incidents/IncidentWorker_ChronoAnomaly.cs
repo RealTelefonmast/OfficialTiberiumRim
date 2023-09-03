@@ -2,7 +2,7 @@
 using TeleCore;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class IncidentWorker_ChronoAnomaly : IncidentWorker
     {

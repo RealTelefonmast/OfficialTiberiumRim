@@ -3,7 +3,7 @@ using System.Linq;
 using Verse;
 using Verse.AI;
 
-namespace TiberiumRim
+namespace TR
 {
     public class ThinkNode_ConditionalRepair : ThinkNode_Conditional
     {

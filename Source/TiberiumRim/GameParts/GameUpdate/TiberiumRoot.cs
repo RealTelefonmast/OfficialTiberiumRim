@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     /// <summary>
     /// Experimental Updating of custom tiberium related parts

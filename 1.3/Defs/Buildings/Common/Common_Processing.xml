@@ -95,7 +95,7 @@
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
-		<defName>TiberiumSilo</defName>
+		<defName>TR_TiberiumSilo</defName>
 		<label>tiberium silo</label>
 		<description>Stores Tiberium and distributes it to other Tiberium structures when necessary.</description>
 		<size>(3,3)</size>
@@ -310,7 +310,7 @@
 	</ThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="RefineryBase_TR">
-		<defName>TiberiumRefinery</defName>
+		<defName>TR_TiberiumRefinery</defName>
 		<label>tiberium refinery</label>
 		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
 		<size>(3,4)</size>

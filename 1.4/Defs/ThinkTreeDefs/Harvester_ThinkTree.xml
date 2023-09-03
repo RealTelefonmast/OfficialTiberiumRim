@@ -20,7 +20,7 @@
 				<li Class="ThinkNode_QueuedJob" />
 
 				<!-- Wait if drafted -->
-				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+				<li Class="TR.ThinkNode_ConditionalColonistOrMech">
 					<subNodes>
 						<li Class="ThinkNode_Tagger">
 							<tagToGive>DraftedOrder</tagToGive>
@@ -36,7 +36,7 @@
 				<li Class="ThinkNode_Tagger">
 					<tagToGive>Idle</tagToGive>
 					<subNodes>
-						<li Class="TiberiumRim.JobGiver_IdleAtRefinery"/>
+						<li Class="TR.JobGiver_IdleAtRefinery"/>
 					</subNodes>
 				</li>
 			</subNodes>
@@ -54,8 +54,8 @@
 						<li Class="JobGiver_ConfigurableHostilityResponse"/>
 															
 						<!-- Do Work -->
-						<li Class="TiberiumRim.JobGiver_HarvestTiberium"/>	
-						<li Class="TiberiumRim.JobGiver_UnloadAtRefinery"/>
+						<li Class="TR.JobGiver_HarvestTiberium"/>	
+						<li Class="TR.JobGiver_UnloadAtRefinery"/>
 					</subNodes>
 				</li>
 			</subNodes>

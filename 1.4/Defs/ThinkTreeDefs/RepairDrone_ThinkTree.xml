@@ -9,13 +9,13 @@
 				<li Class="ThinkNode_QueuedJob" />
 				
 				<!-- 
-				<li Class="TiberiumRim.JobGiver_RepairDroneRepair" />
+				<li Class="TR.JobGiver_RepairDroneRepair" />
 				-->
 				<!-- Return -->
 				<li Class="ThinkNode_Tagger">
 					<tagToGive>Idle</tagToGive>
 					<subNodes>
-						<li Class="TiberiumRim.JobGiver_RepairDroneReturn"/>
+						<li Class="TR.JobGiver_RepairDroneReturn"/>
 					</subNodes>
 				</li>		
 			</subNodes>

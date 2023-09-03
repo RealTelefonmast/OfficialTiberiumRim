@@ -5,7 +5,7 @@ using UnityEngine;
 using Verse;
 using TeleCore;
 
-namespace TiberiumRim
+namespace TR
 {
     public class IngestionOutcomeDoer_GiveHediffWithSideEffect : IngestionOutcomeDoer_GiveHediff
     {

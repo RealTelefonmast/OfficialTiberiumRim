@@ -4,7 +4,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace TiberiumRim
+namespace TR
 {
     public class WorkGiver_HarvestTiberium : WorkGiver_Scanner
     {

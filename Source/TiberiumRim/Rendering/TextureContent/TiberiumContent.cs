@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     [StaticConstructorOnStartup]
     public class TiberiumContent

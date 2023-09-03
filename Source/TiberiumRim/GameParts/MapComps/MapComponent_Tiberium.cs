@@ -2,7 +2,7 @@
 using TeleCore.Network;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     /* Tiberium Map Component
      * Description:

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<PawnKindDef Class="TiberiumRim.MechanicalPawnKindDef">
+	<PawnKindDef Class="TR.MechanicalPawnKindDef">
 		<defName>ScrinDrone</defName>
 		<label>scrin worker drone</label>
 		<combatPower>75</combatPower>

@@ -5,7 +5,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     /* TIBERIUM PRODUCER
      * The Tiberium MainProducer is the main source of Tiberium

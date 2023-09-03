@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class IncidentWorker_Skyfaller : IncidentWorker_TR
     {

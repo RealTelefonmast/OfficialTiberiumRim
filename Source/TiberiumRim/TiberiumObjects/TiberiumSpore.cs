@@ -1,4 +1,4 @@
-﻿namespace TiberiumRim
+﻿namespace TR
 {
     /*TODO: Rebase on flecks
     public class TiberiumSpore : Particle

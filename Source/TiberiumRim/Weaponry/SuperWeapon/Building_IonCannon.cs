@@ -6,7 +6,7 @@ using TeleCore;
 using TeleCore.Data.Events;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Building_IonCannon : TRBuilding
     {

@@ -67,7 +67,7 @@
 		</race>
 	</ThingDef>
   
-	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+	<TR.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>TibScarab</defName>
 		<label>tiberium scarab</label>
 		<race>TibScarab</race>
@@ -109,7 +109,7 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
 	<ThingDef ParentName="FiendBase">
 		<defName>Crawler</defName>
@@ -202,7 +202,7 @@
 		</race>
 	</ThingDef>
 
-	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+	<TR.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>Crawler</defName>
 		<label>crawler</label>
 		<race>Crawler</race>
@@ -239,7 +239,7 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
   
 	<ThingDef ParentName="VisceralPawnBase">
 		<defName>BoomFiend</defName>
@@ -338,7 +338,7 @@
 		</race>
 	</ThingDef>
 
-	<TiberiumRim.TiberiumKindDef ParentName="AnimalKindBase_TR">
+	<TR.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>BoomFiend</defName>
 		<label>tiberian bloater</label>
 		<race>BoomFiend</race>
@@ -382,6 +382,6 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
 </Defs>

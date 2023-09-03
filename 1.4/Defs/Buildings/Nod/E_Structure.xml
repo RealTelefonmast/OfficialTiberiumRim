@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	
-	<TiberiumRim.TRThingDef ParentName="WallBase_TR" Name="NodWall">
+	<TR.TRThingDef ParentName="WallBase_TR" Name="NodWall">
 		<defName>NodWall</defName>
 		<label>nod wall</label>
 		<description>An impassable wall, specifically designed for the Brotherhood.</description>
@@ -28,9 +28,9 @@
 				<category>Structure</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>DoorFrame_Nod</defName>
 		<label>Nod door arch</label>
 		<description>It is a arch frame to decorate the Nod door.</description>
@@ -56,7 +56,7 @@
 		<uiIconPath>Buildings/Nod/Structure/DoorFrameNod/DoorFrameNod_south</uiIconPath>
 		<uiIconOffset>(0,0.1)</uiIconOffset>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_DoorFrame</li>
+			<li>TR.PlaceWorker_DoorFrame</li>
 		</placeWorkers>
 		<costList>
 			<Steel>15</Steel>
@@ -91,9 +91,9 @@
 				<category>Decoration</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
+	<TR.TRThingDef ParentName="DoorBase_TR">
 		<defName>Nod_Door</defName>
 		<label>Nod door</label>
 		<description>Divides rooms. Must be manually opened and closed, which slows people down.</description>
@@ -126,9 +126,9 @@
 				<category>Structure</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
-	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
+	<TR.TRThingDef ParentName="DoorBase_TR">
 		<defName>Nod_Autodoor</defName>
 		<label>Nod autodoor</label>
 		<description>Divides rooms. Powered operation allows people to move through the door without slowing down.</description>
@@ -176,5 +176,5 @@
 				<category>Structure</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>	
+	</TR.TRThingDef>	
 </Defs>

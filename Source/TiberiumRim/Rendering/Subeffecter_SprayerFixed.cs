@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TiberiumRim.VisualEffects
+namespace TR.VisualEffects
 {
     public class Subeffecter_SprayerFixed : SubEffecter
     {

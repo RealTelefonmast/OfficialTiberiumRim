@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef Name="MechPackageBase" Abstract="True">
-		<thingClass>TiberiumRim.TRThing</thingClass>
+	<TR.TRThingDef Name="MechPackageBase" Abstract="True">
+		<thingClass>TR.TRThing</thingClass>
 		<category>Item</category>
 		<selectable>true</selectable>
 		<tickerType>Never</tickerType>
@@ -24,6 +24,6 @@
 		<thingCategories>
 			<li>Manufactured</li>
 		</thingCategories>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 </Defs>

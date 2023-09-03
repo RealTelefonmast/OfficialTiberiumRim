@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef Name="GDI_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
+	<TR.TRThingDef Name="GDI_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
 		<soundInteract>Interact_Rifle</soundInteract>
 		<recipeMaker>
 			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
@@ -22,9 +22,9 @@
 		<weaponClasses>
 			<li>Ranged</li>
 		</weaponClasses>
-	</TiberiumRim.TRThingDef>	
+	</TR.TRThingDef>	
 
-	<TiberiumRim.TRThingDef ParentName="GDI_Gun"> <!--balance standard - assault rifle + -->
+	<TR.TRThingDef ParentName="GDI_Gun"> <!--balance standard - assault rifle + -->
 		<defName>GDI_StandardRifle</defName>
 		<label>GDI rifle</label>
 		<description>A general-purpose military weapon for field or urban combat.\n\nUpgradable to the railgun.</description>
@@ -106,9 +106,9 @@
 				<!--<li>BasicArsenal_T1</li>-->
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
+	<TR.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_GreLauncher</defName>
 		<label>GDI grenade thrower</label>
 		<description>A classic grenade launcher, equipped with stun grenades.</description>
@@ -191,9 +191,9 @@
 				<li>GDIExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
-	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
+	<TR.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Railgun</defName>
 		<label>GDI railgun</label>
 		<description>This railgun fires accurate supersonic sabots. Made to be used in conjunction with the zone armor.</description>
@@ -309,9 +309,9 @@
 				<li>GDIExperimental3</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
+	<TR.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Shatterer</defName>
 		<label>GDI sonic shatterer</label>
 		<description>A weapon using GDI's sonic technology, Extremely unstable. Made to be used in conjunction with the zone armor.</description>
@@ -418,9 +418,9 @@
 				<li>GDIExperimental3</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
+	<TR.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Mortar</defName>
 		<label>GDI mobile mortar</label>
 		<description>A heavy weapon used by GDI for long distance engagements. Made to be used in conjunction with the zone armor.\n\nUpgradable to the shockweaver.</description>
@@ -488,9 +488,9 @@
 				<li>GDIExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
-	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
+	<TR.TRThingDef ParentName="GDI_Gun">
 		<defName>GDI_Shockweaver</defName>
 		<label>GDI shockweaver</label>
 		<description>A experimental  siege weapon using shockwave warheads. Only effective for structures. Made to be used in conjunction with the zone armor.</description>
@@ -565,6 +565,6 @@
 				<li>GDIExperimental3</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 </Defs>

@@ -2,30 +2,30 @@
 <Defs>
 
 	
-	<TiberiumRim.DevToolDef>
+	<TR.DevToolDef>
 		<defName>ModuleVisualizerDef</defName>
 		<label>Module Visualizer</label>
-		<windowClass>TiberiumRim.Window_ModuleVisualizer</windowClass>
-	</TiberiumRim.DevToolDef>
+		<windowClass>TR.Window_ModuleVisualizer</windowClass>
+	</TR.DevToolDef>
 	
-	<TiberiumRim.DevToolDef>
+	<TR.DevToolDef>
 		<defName>AnimatorDef</defName>
 		<label>Animator</label>
-		<windowClass>TiberiumRim.Window_Animator</windowClass>
-	</TiberiumRim.DevToolDef>
+		<windowClass>TR.Window_Animator</windowClass>
+	</TR.DevToolDef>
 	
-	<TiberiumRim.DevToolDef>
+	<TR.DevToolDef>
 		<defName>UIMaker</defName>
 		<label>UI Maker</label>
-		<windowClass>TiberiumRim.Window_UIMaker</windowClass>
-	</TiberiumRim.DevToolDef>
+		<windowClass>TR.Window_UIMaker</windowClass>
+	</TR.DevToolDef>
 	
 	<!--
 	<MainButtonDef>
 		<defName>TiberiumTab</defName>
 		<label>Tiberium Rim</label>
 		<description>Check out Tiberium research.</description>
-		<tabWindowClass>TiberiumRim.MainTabWindow_TibResearch</tabWindowClass>
+		<tabWindowClass>TR.MainTabWindow_TibResearch</tabWindowClass>
 		<order>79</order>
 		<validWithoutMap>true</validWithoutMap>
 		<minimized>True</minimized>

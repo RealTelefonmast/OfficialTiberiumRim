@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Comp_MechStation : Comp_Upgradable, IMechGarage<MechanicalPawn>
     {

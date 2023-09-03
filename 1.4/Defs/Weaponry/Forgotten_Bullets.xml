@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
+	<TR.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_Shard</defName>
 		<label>green tiberium shard</label>
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Bullet_TiberiumA</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
 		<projectile>
 			<damageDef>TRTiberiumShotGreen</damageDef>
 			<damageAmountBase>7</damageAmountBase>
@@ -30,9 +30,9 @@
 				</projectile>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
+	<TR.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_ShardB</defName>
 		<label>blue tiberium shard</label>
 		<graphicData>
@@ -40,7 +40,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
-		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
 		<projectile>
 			<damageDef>TRTiberiumShotBlue</damageDef>
 			<damageAmountBase>7</damageAmountBase>
@@ -62,6 +62,6 @@
 				</projectile>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 </Defs>

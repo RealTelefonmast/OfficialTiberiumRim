@@ -6,7 +6,7 @@ using TeleCore.Data.Events;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Building_FlameTurret : Building_HubTurret
     {

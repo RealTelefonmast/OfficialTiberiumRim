@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
-		<defName>TiberiumNetworkController</defName>
+	<!--Network Controller-->
+	<TR.TRThingDef ParentName="NetworkStationBase">
+		<defName>TR_TiberiumNetworkController</defName>
 		<label>Tiberium Network Controller</label>
 		<description>This structure is the main part of any Tiberium network, it acts as a pump for the entire networks and ensures flow while powered.</description>
 		<thingCategories Inherit="false" />
@@ -30,7 +31,7 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNS">
+			<li Class="TR.CompProperties_TNS">
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
@@ -48,7 +49,14 @@
 					</li>
 				</networks>
 				<generalIOConfig>
-					<pattern>##XX##|##XX##|X++++X|X++++X|##XX##|##XX##</pattern>
+					<pattern>
+					##XX##|
+					##++##|
+					X++++X|
+					X++++X|
+					##++##|
+					##XX##
+					</pattern>
 				</generalIOConfig>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
@@ -92,7 +100,7 @@
 		<rotatable>false</rotatable>			
 		<surfaceType>Item</surfaceType>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_Once</li>
+			<li>TR.PlaceWorker_Once</li>
 		</placeWorkers>
 		<modExtensions>
 			<li Class="TeleCore.SubMenuExtension">
@@ -100,10 +108,11 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
-		<defName>TiberiumSilo</defName>
+	<!--Silo-->
+	<TR.TRThingDef ParentName="NetworkStationBase">
+		<defName>TR_TiberiumSilo</defName>
 		<label>tiberium silo</label>
 		<description>Stores Tiberium and distributes it to other Tiberium structures when necessary.</description>
 		<size>(3,3)</size>
@@ -141,15 +150,12 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNS">
+			<li Class="TR.CompProperties_TNS">
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
 						<volumeConfig>
 							<capacity>2500</capacity>
-							<area>1</area>
-							<elevation>0</elevation>
-							<height>1</height>
 							<!--<dropContents>true</dropContents>-->
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>true</storeEvenly>	
@@ -225,10 +231,11 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
-		<defName>TiberiumNetValve</defName>
+	<!--Valve-->
+	<TR.TRThingDef ParentName="NetworkStationBase">
+		<defName>TR_TiberiumNetValve</defName>
 		<label>valve</label>
 		<description>.</description>
 		<size>(1,1)</size>
@@ -264,16 +271,13 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNS">
+			<li Class="TR.CompProperties_TNS">
 				<compClass>TeleCore.Comp_Network_Valve</compClass>
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
 						<volumeConfig>
 							<capacity>125</capacity>
-							<area>1</area>
-							<elevation>0</elevation>
-							<height>1</height>
 							<values>
 								<allowedValues>
 									<li>TibGreen</li>
@@ -331,10 +335,11 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
-		<defName>TiberiumGasTank</defName>
+	<!--Gas Tank-->
+	<TR.TRThingDef ParentName="NetworkStationBase">
+		<defName>TR_TiberiumGasTank</defName>
 		<label>tiberium gas tank</label>
 		<description>Stores Tiberium and distributes it to other Tiberium structures when necessary.</description>
 		<size>(4,4)</size>
@@ -372,15 +377,12 @@
 			</tiberiumResearch>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNS">
+			<li Class="TR.CompProperties_TNS">
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>		
 						<volumeConfig>
 							<capacity>10000</capacity>
-							<area>1</area>
-							<elevation>0</elevation>
-							<height>1</height>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>	
 							<values>
@@ -436,7 +438,7 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<ThingDef>
 		<defName>RefineryCell</defName>
@@ -450,8 +452,9 @@
 		</graphicData>
 	</ThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="RefineryBase_TR">
-		<defName>TiberiumRefinery</defName>
+	<!--Refinery-->
+	<TR.TRThingDef ParentName="RefineryBase_TR">
+		<defName>TR_TiberiumRefinery</defName>
 		<label>tiberium refinery</label>
 		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
 		<size>(3,4)</size>
@@ -475,20 +478,17 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_MechStation">
+			<li Class="TR.CompProperties_MechStation">
 				<mechRecipes>
 					<li>MakeHarvesterCommon</li>
 				</mechRecipes>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TNSRefinery">
+			<li Class="TR.CompProperties_TNSRefinery">
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
 						<volumeConfig>
 							<capacity>1500</capacity>
-							<area>1</area>
-							<elevation>0</elevation>
-							<height>1</height>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>
 							<values>
@@ -516,6 +516,14 @@
 					##+##|
 					##O##|
 					</pattern>
+					<!--
+					UUUUU
+					L+#+R
+					L+#+R
+					L+++R
+					##+##
+					##D##
+					-->
 				</generalIOConfig>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
@@ -553,10 +561,10 @@
 			</li>
 		</comps>
 		<inspectorTabs>
-			<li>TiberiumRim.ITab_MechConstruction</li>
+			<li>TR.ITab_MechConstruction</li>
 		</inspectorTabs>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_Gap</li>
+			<li>TR.PlaceWorker_Gap</li>
 		</placeWorkers>
 		<hasInteractionCell>true</hasInteractionCell>
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
@@ -567,12 +575,13 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
-		<defName>TiberiumSpike</defName>
+	<!--TibSpike-->
+	<TR.TRThingDef ParentName="NetworkStationBase">
+		<defName>TR_TiberiumSpike</defName>
 		<label>tiberium spike</label>
-		<thingClass>TiberiumRim.Building_TiberiumSpike</thingClass>
+		<thingClass>TR.Building_TiberiumSpike</thingClass>
 		<graphicData>
 			<texPath>Buildings/Common/Network/TibSpike/TibSpike</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -619,9 +628,6 @@
 						<networkDef>TiberiumNetwork</networkDef>			
 						<volumeConfig>
 							<capacity>4000</capacity>
-							<area>1</area>
-							<elevation>0</elevation>
-							<height>1</height>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>
 							<values>
@@ -679,7 +685,7 @@
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<staticSunShadowHeight>1.0</staticSunShadowHeight>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_OnTiberiumGeyser</li>
+			<li>TR.PlaceWorker_OnTiberiumGeyser</li>
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
 		<modExtensions>
@@ -688,10 +694,11 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
-		<defName>TiberiumPowerPlant</defName>
+	<!--PowerPlant-->
+	<TR.TRThingDef ParentName="NetworkStationBase">
+		<defName>TR_TiberiumPowerPlant</defName>
 		<label>Tiberium powerplant</label>
 		<description>This power plant needs to be connected to a Tiberium network before it can properly operate, it will automatically consume Tiberium from the network to sustain itself.</description>
 		<graphicData>
@@ -730,9 +737,6 @@
 						<networkDef>TiberiumNetwork</networkDef>
 						<volumeConfig>
 							<capacity>1000</capacity>
-							<area>1</area>
-							<elevation>0</elevation>
-							<height>1</height>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>
 							<values>
@@ -851,10 +855,11 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
-		<defName>TiberiumExtractor</defName>
+	<!--TR_TiberiumExtractor-->
+	<TR.TRThingDef ParentName="NetworkStationBase">
+		<defName>TR_TiberiumExtractor</defName>
 		<label>tiberium extractor</label>
 		<description>tbd</description>
 		<size>(6,6)</size>
@@ -892,16 +897,13 @@
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>500</basePowerConsumption>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TNS">
-				<compClass>TiberiumRim.CompTNS_Centrifuge</compClass>
+			<li Class="TR.CompProperties_TNS">
+				<compClass>TR.CompTNS_Centrifuge</compClass>
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
 						<volumeConfig>
 							<capacity>1000</capacity>
-							<area>1</area>
-							<elevation>0</elevation>
-							<height>1</height>
 							<leaveContainer>true</leaveContainer>
 							<storeEvenly>false</storeEvenly>
 							<values>
@@ -1058,11 +1060,11 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<!---->
-	<TiberiumRim.TRThingDef ParentName="BenchBase_TR">
-		<defName>TiberiumWorkbench</defName>
+	<!--TR_TibWorkbench-->
+	<TR.TRThingDef ParentName="BenchBase_TR">
+		<defName>TR_TibWorkbench</defName>
 		<label>tiberium workbench</label>
 		<description>This structure can be used to craft Tiberium specific items.</description>
 		<thingClass>Building_WorkTable</thingClass>
@@ -1120,7 +1122,7 @@
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>125</basePowerConsumption>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TNS">
+			<li Class="TR.CompProperties_TNS">
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>		
@@ -1178,10 +1180,11 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BenchBase_TR">
-		<defName>TiberiumCrafter</defName>
+	<!--TR_AtomicSynthesizer-->
+	<TR.TRThingDef ParentName="BenchBase_TR">
+		<defName>TR_AtomicSynthesizer</defName>
 		<label>Atomic Synthesizer</label>
 		<description>A specialized elemental refining plant.</description>
 		<thingClass>Building_WorkTable</thingClass>
@@ -1219,33 +1222,21 @@
 					<li>TiberiumPresets</li>
 				</presetTags>
 				<networks>
-					<!--
-					<li>
-						<networkDef>TiberiumNetwork</networkDef>
-						<storeEvenly>false</storeEvenly>					
-						<containerConfig>
-							<baseCapacity>1000</baseCapacity>
-							<dropContents>true</dropContents>
-							<leaveContainer>true</leaveContainer>
-							<valueDefs>
-								<li>TibGreen</li>	
-								<li>TibBlue</li>	
-								<li>TibRed</li>	
-								<li>TibSludge</li>	
-							</valueDefs>
-						</containerConfig>
-						<roles>
-							<li>Transmitter</li>
-							<li>Requester</li>
-						</roles>
-					</li>
-					-->
 					<li>
 						<networkDef>ChemicalNetwork</networkDef>
 						<roles>
 							<li>EndPoint</li>
 							<li>Transmitter</li>
 						</roles>
+						<netIOConfig>
+							<pattern>
+							#L#L#
+							#+#+#
+							L+#+L
+							#+#+#
+							#####
+							</pattern>
+						</netIOConfig>	
 					</li>
 					<li>
 						<networkDef>WasteNetwork</networkDef>
@@ -1265,12 +1256,18 @@
 						<roles>
 							<li>Transmitter</li>
 							<li>Producer</li>
-						</roles>			
+						</roles>
+						<netIOConfig>
+							<pattern>
+							##O##
+							O+#+O
+							#+#+#
+							#+#+#
+							#####
+							</pattern>
+						</netIOConfig>		
 					</li>
 				</networks>
-				<generalIOConfig>
-					<pattern>XXXXX|X+#+X|X+#+X|X+#+X|X+#+X</pattern>
-				</generalIOConfig>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
 				<fxLayers>
@@ -1363,10 +1360,11 @@
 				</thingGroups>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="NetworkStationBase">
-		<defName>ChemicalTank</defName>
+	<!--TR_ChemicalTank-->
+	<TR.TRThingDef ParentName="NetworkStationBase">
+		<defName>TR_ChemicalTank</defName>
 		<label>chemical tank (placeholder)</label>
 		<description>Stores chemical elements.</description>
 		<size>(3,3)</size>
@@ -1455,6 +1453,6 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 </Defs>

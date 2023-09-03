@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using UnityEngine;
 
-namespace TiberiumRim
+namespace TR
 { 
     public class ITab_MechUpgrade : ITab
     {

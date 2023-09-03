@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.RepairDroneKindDef>
+	<TR.RepairDroneKindDef>
 		<defName>RepairDrone_Common</defName>
 		<label>repair drone</label>
 		<combatPower>25</combatPower>
@@ -22,6 +22,6 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.RepairDroneKindDef>
+	</TR.RepairDroneKindDef>
 
 </Defs>

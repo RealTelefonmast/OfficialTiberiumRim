@@ -4,7 +4,7 @@ using System.Xml;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class TiberiumTerrainDef : TerrainDef
     {

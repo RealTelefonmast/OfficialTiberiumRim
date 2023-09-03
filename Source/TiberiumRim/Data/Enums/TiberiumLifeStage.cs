@@ -1,4 +1,4 @@
-﻿namespace TiberiumRim.Data.Enums;
+﻿namespace TR.Data.Enums;
 
 public enum TiberiumLifeStage
 {

@@ -7,7 +7,7 @@ using TeleCore.Static;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim;
+namespace TR;
 
 /*
  * Tiberium Grid, keeps track of all cells related to Tiberium

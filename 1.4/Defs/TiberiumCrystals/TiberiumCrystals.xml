@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	<!-- Template
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+	<TR.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName></defName>
 		<label> tiberium</label>
 		<description></description>
@@ -49,7 +49,7 @@
 		<waterType></waterType>
 		<dryType></dryType>
 		<stoneType></stoneType>
-	</TiberiumRim.TiberiumCrystalDef>
+	</TR.TiberiumCrystalDef>
 	Color green
 	(0.35,0.9,0.37)
 	Color blue
@@ -60,7 +60,7 @@
 	-->
 	
 	<!-- Green -->
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+	<TR.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumGreen</defName>
 		<label>green tiberium crystal</label>
 		<description>A glowy green crystal. Looks strangely appealing.</description>
@@ -103,9 +103,9 @@
 				</discovery>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TiberiumCrystalDef>
+	</TR.TiberiumCrystalDef>
 	
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+	<TR.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumPod</defName>
 		<label>tiberium pod</label>
 		<description>A glowy green crystal, growing from a plant-like pod connected to the ground. Looks strangely appealing.</description>
@@ -141,9 +141,9 @@
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<conversions>GreenPodConversion</conversions>
-	</TiberiumRim.TiberiumCrystalDef>	
+	</TR.TiberiumCrystalDef>	
 	
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+	<TR.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumShardsGreen</defName>
 		<label>green tiberium shards</label>
 		<description>Green shards growing out of the sand, they seem to be unstable.</description>
@@ -178,9 +178,9 @@
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<conversions>GreenConversion</conversions>
-	</TiberiumRim.TiberiumCrystalDef>
+	</TR.TiberiumCrystalDef>
 	
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+	<TR.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumMossGreen</defName>
 		<label>green tiberium moss</label>
 		<description>A mossy mass is covering this tile. It seems to be highly toxic.</description>
@@ -217,10 +217,10 @@
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<conversions>GreenMossConversion</conversions>
-	</TiberiumRim.TiberiumCrystalDef>
+	</TR.TiberiumCrystalDef>
 	
 	<!-- Blue -->
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+	<TR.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumBlue</defName>
 		<label>blue tiberium</label>
 		<description>A glowy blue crystal. Beautiful to the eye but of unknown properties.</description>
@@ -249,7 +249,7 @@
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_PlantExplode">
+			<li Class="TR.CompProperties_PlantExplode">
 				<explosiveRadius>1.49</explosiveRadius>
 				<damageAmountBase>8</damageAmountBase>
 				<chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
@@ -270,9 +270,9 @@
 				</discovery>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TiberiumCrystalDef>
+	</TR.TiberiumCrystalDef>
 	
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+	<TR.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumPodBlue</defName>
 		<label>blue tiberium pod</label>
 		<description>A glowy blue crystal, growing from a plant-like pod connected to the ground. Looks strangely appealing.</description>
@@ -293,7 +293,7 @@
 				<glowRadius>1.33</glowRadius>
 				<glowColor>(90,105,230,100)</glowColor>
 			</li>
-			<li Class="TiberiumRim.CompProperties_PlantExplode">
+			<li Class="TR.CompProperties_PlantExplode">
 				<explosiveRadius>0.95</explosiveRadius>
 				<damageAmountBase>5</damageAmountBase>
 				<chanceNeverExplodeFromDamage>0.66</chanceNeverExplodeFromDamage>
@@ -313,9 +313,9 @@
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<conversions>BluePodConversion</conversions>
-	</TiberiumRim.TiberiumCrystalDef>
+	</TR.TiberiumCrystalDef>
 	
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+	<TR.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumShardsBlue</defName>
 		<label>blue tiberium shards</label>
 		<description>Blue shards growing out of the sand, they seem to be unstable.</description>
@@ -329,7 +329,7 @@
 		</graphicData>
 		<pathCost>45</pathCost>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_PlantExplode">
+			<li Class="TR.CompProperties_PlantExplode">
 				<explosiveRadius>0.49</explosiveRadius>
 				<damageAmountBase>4</damageAmountBase>
 				<chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
@@ -356,9 +356,9 @@
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<conversions>BlueConversion</conversions>
-	</TiberiumRim.TiberiumCrystalDef>
+	</TR.TiberiumCrystalDef>
 	
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+	<TR.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumMossBlue</defName>
 		<label>blue tiberium moss</label>
 		<description>A mossy mass is covering this tile. It seems to be highly toxic.</description>
@@ -395,10 +395,10 @@
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<conversions>BlueMossConversion</conversions>
-	</TiberiumRim.TiberiumCrystalDef>
+	</TR.TiberiumCrystalDef>
 	
 	<!-- Red -->
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+	<TR.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumRed</defName>
 		<label>red tiberium</label>
 		<description>A glowy red crystal. Beautiful to the eye but of unknown properties. It seems strange.</description>
@@ -427,7 +427,7 @@
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_PlantExplode">
+			<li Class="TR.CompProperties_PlantExplode">
 				<explosiveRadius>2</explosiveRadius>
 				<damageAmountBase>20</damageAmountBase>
 				<chanceNeverExplodeFromDamage>0.56</chanceNeverExplodeFromDamage>
@@ -448,9 +448,9 @@
 				</discovery>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TiberiumCrystalDef>
+	</TR.TiberiumCrystalDef>
 	
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+	<TR.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumShardsRed</defName>
 		<label>red tiberium shards</label>
 		<description>Red shards growing out of the sand, they seem to be unstable.</description>
@@ -464,7 +464,7 @@
 		</graphicData>
 		<pathCost>45</pathCost>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_PlantExplode">
+			<li Class="TR.CompProperties_PlantExplode">
 				<explosiveRadius>1.5</explosiveRadius>
 				<damageAmountBase>10</damageAmountBase>
 				<chanceNeverExplodeFromDamage>0.09</chanceNeverExplodeFromDamage>
@@ -491,10 +491,10 @@
 			<MeshCount>4</MeshCount>
 		</tiberium>
 		<conversions>RedConversion</conversions>
-	</TiberiumRim.TiberiumCrystalDef>
+	</TR.TiberiumCrystalDef>
 	
 	<!-- Misc -->
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumForWater">
+	<TR.TiberiumCrystalDef ParentName="TiberiumForWater">
 		<defName>TiberiumGlacier</defName>
 		<label>tiberium glacier</label>
 		<description>A huge formation of crystalline water.</description>
@@ -528,9 +528,9 @@
 			<reproduceDays>0.5</reproduceDays>
 			<MeshCount>4</MeshCount>
 		</tiberium>
-	</TiberiumRim.TiberiumCrystalDef>
+	</TR.TiberiumCrystalDef>
 	
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+	<TR.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumAboreus</defName>
 		<label>tiberium aboreus</label>
 		<description>A glowy dark green crystal. Looks different to the usual.</description>
@@ -544,7 +544,7 @@
 		</graphicData>
 		<pathCost>80</pathCost>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_PlantExplode">
+			<li Class="TR.CompProperties_PlantExplode">
 				<explosiveRadius>1.65</explosiveRadius>
 				<damageAmountBase>9</damageAmountBase>
 				<chanceNeverExplodeFromDamage>0.55</chanceNeverExplodeFromDamage>
@@ -571,13 +571,13 @@
 		</tiberium>
 		<!--<monolith>TiberiumCruentus</monolith>-->
 		<conversions>AboreusConversion</conversions>
-	</TiberiumRim.TiberiumCrystalDef>	
+	</TR.TiberiumCrystalDef>	
 	
-	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+	<TR.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
 		<defName>TiberiumVein</defName>
 		<label>vein tentacle</label>
 		<description>A stringy, throbbing brown-reddish vein. It grows out of a Veinhole.</description>
-		<thingClass>TiberiumRim.TiberiumVein</thingClass>
+		<thingClass>TR.TiberiumVein</thingClass>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>
 			<Beauty>-75</Beauty>	
@@ -608,6 +608,6 @@
 		</tiberium>
 		<dead>TiberiumSoilVeinDead</dead>
 		<conversions>VeinConversion</conversions>
-	</TiberiumRim.TiberiumCrystalDef>
+	</TR.TiberiumCrystalDef>
 	
 </Defs>

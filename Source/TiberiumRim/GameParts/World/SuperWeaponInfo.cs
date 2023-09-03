@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class SuperWeaponInfo : WorldInfo
     {

@@ -7,7 +7,7 @@ using TeleCore;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Building_ANGLETEST : Building
     {

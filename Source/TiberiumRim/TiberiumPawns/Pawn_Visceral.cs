@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Pawn_Visceral : TiberiumPawn
     {

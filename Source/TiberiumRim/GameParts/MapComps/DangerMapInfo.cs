@@ -1,7 +1,7 @@
 ﻿using TeleCore;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     /// <summary>
     /// Implements a custom dynamic danger grid to handle custom danger sources

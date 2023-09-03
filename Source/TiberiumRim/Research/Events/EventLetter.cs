@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TiberiumRim.Research.Window;
+using TR.Research.Window;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class EventLetter : StandardLetter
     {

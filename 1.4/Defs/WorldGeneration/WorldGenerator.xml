@@ -4,7 +4,7 @@
 	<WorldGenStepDef>
 		<defName>TiberiumWorldLayer</defName>
 		<order>9999</order>
-		<worldGenStep Class="TiberiumRim.WorldGenStep_TiberiumWorldLayer"/>
+		<worldGenStep Class="TR.WorldGenStep_TiberiumWorldLayer"/>
 	</WorldGenStepDef>
 
 </Defs>

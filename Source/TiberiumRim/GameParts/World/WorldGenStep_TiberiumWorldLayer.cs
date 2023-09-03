@@ -4,7 +4,7 @@ using UnityEngine;
 using Verse;
 using Verse.Noise;
 
-namespace TiberiumRim
+namespace TR
 {
     public class WorldGenStep_TiberiumWorldLayer : WorldGenStep
     {

@@ -1,6 +1,6 @@
 ﻿using RimWorld;
 
-namespace TiberiumRim
+namespace TR
 {
     public class ScenPart_ConfigPage_ScrinInvasion : ScenPart_ConfigPage
     {

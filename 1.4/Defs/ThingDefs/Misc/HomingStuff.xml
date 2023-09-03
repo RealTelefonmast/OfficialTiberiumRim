@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.HomingThingDef>
+	<TR.HomingThingDef>
 		<defName>VeinGasCloud</defName>
-		<thingClass>TiberiumRim.VeinGasCloud</thingClass>
+		<thingClass>TR.VeinGasCloud</thingClass>
 		<label>gas cloud</label>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -14,6 +14,6 @@
 		<speed>0.2~0.5</speed>
 		<destroyOnArrival>false</destroyOnArrival>
 		<liveTime>25</liveTime>
-	</TiberiumRim.HomingThingDef>
+	</TR.HomingThingDef>
 	
 </Defs>

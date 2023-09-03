@@ -2,7 +2,7 @@
 using TeleCore.FlowCore;
 using TeleCore.Network.Data;
 
-namespace TiberiumRim;
+namespace TR;
 
 public class TiberiumNetworkSubPart : NetworkPart
 {

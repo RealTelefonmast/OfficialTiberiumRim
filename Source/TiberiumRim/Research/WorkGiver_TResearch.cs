@@ -4,7 +4,7 @@ using TeleCore;
 using Verse;
 using Verse.AI;
 
-namespace TiberiumRim
+namespace TR
 {
     public class WorkGiver_TResearch : WorkGiver_Scanner
     {

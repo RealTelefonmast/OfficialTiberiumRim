@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TResearchGroupDef>
+	<TR.TResearchGroupDef>
 		<defName>MainGroup</defName>
 		<label>Main Research</label>	
 		<researchProjects>
@@ -14,7 +14,7 @@
 			<li>TiberiumSuppressionBasic</li>
 			<li>TiberiumForaging</li>
 		</researchProjects>
-	</TiberiumRim.TResearchGroupDef>
+	</TR.TResearchGroupDef>
 	
 	<!--TODO:
 	Initial Mission
@@ -25,7 +25,7 @@
 	-->
 	
 	<!---->
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>GreenSky</defName>
 		<label>Green Sky</label>	
 		<researchType>observation</researchType>
@@ -48,9 +48,9 @@
 			<li>GreenSky_T2</li>
 			<li>GreenSky_T3</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>GreenSky_T1</defName>
 		<label>Research Components</label>		
 		<description>As a first step we need to research a telescope. This will help us to observe any further strange occurrences in the sky. A capable colonist should be provided with a research bench to start work.</description>
@@ -66,9 +66,9 @@
 		</images>
 		<workType>Research</workType>
 		<workAmount>200</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>GreenSky_T2</defName>
 		<label>Construct Telescope</label>		
 		<description>Now that we know how to construct a telescope, we should make one and place it somewhere outside. Someone should start observation soon after.</description>
@@ -82,9 +82,9 @@
 			<li>Story/GreenSky/M1_2</li>
 		</images>
 		<workType>Construction</workType>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>GreenSky_T3</defName>
 		<label>Observation Research</label>	
 		<description>Now it is time to wait and see if anything else happens.</description>
@@ -100,10 +100,10 @@
 		</images>
 		<workType>Research</workType>
 		<workAmount>250</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
 	<!---->
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>MineralAnalysis</defName>
 		<label>Mineral Analysis</label>	
 		<researchType>analysis</researchType>
@@ -119,9 +119,9 @@
 			<li>MineralAnalysis_T3</li>
 			<li>MineralAnalysis_T4</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>MineralAnalysis_T1</defName>
 		<label>Crash Site Inspection</label>
 		<description>Since we don't know what we're dealing with, someone needs to investigate. It could be dangerous, so they should stay at a safe distance and observe it.</description>
@@ -140,9 +140,9 @@
 			<li>Story/MinerAnalysis/M2_1</li>
 		</images>
 		<workAmount>500</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>MineralAnalysis_T2</defName>
 		<label>Establishing Communications</label>
 		<description>Now that we've seen this object start to spread, there is a need to find out what to do about it. It seems best that we make a way to communicate to others and ask around. Let's start by making a communication console, or comms for short.</description>
@@ -156,9 +156,9 @@
 		<images>
 			<li>Story/MinerAnalysis/M2_2</li>
 		</images>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>MineralAnalysis_T3</defName>
 		<label>Valuable Information</label>
 		<description>With our comms up and running, someone needs to be the speaker for our colony. There's several channels scattered around that change all the time throughout the day. Maybe they have something useful.</description>
@@ -184,9 +184,9 @@
 			<li>Story/MinerAnalysis/M2_2</li>
 		</images>
 		<workAmount>500</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>MineralAnalysis_T4</defName>
 		<label>Constructing Boundaries</label>		
 		<description>We've learned thanks to our random hails to nearby ships and stations that we were correct in believing the meteor is a mineral of some kind. We also learned that it is commonly called Tiberium. It is known to be toxic for life and very radioactive. Despite the risks, there is an opportunity here to learn more about it for ourselves. Inspired by some of the information given and downloaded to the console, perhaps a crane of some kind would be a safe way to study samples on site.</description>
@@ -200,10 +200,10 @@
 		<images>
 			<li>Story/MinerAnalysis/M2_3</li>
 		</images>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
 	<!---->
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>TiberiumProtection</defName>
 		<label>Tiberium Protection</label>	
 		<researchType>tech research</researchType>
@@ -218,9 +218,9 @@
 			<li>TiberiumProtection_T2</li>
 			<li>TiberiumProtection_T3</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumProtection_T1</defName>
 		<label>Hardening Plates</label>	
 		<description>As a first step towards making a protective suit, which we will call a jumpsuit from now on: there needs to be a full body piece similar to a diving suit to help ease discomfort from the next step. That step being that we need to create a material such as inlaid plates that can block radiation and toxicity. Dense materials such as lead have been long used for blocking radiation in particular, but wearing a lead jumpsuit is a bit primitive. Instead, and along with this challenge, the concept of working respirators build into a full-coverage helmet will be a must. It is a balancing act in inventing armour that both protects and has a reasonable weight.</description>
@@ -230,13 +230,13 @@
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<taskTarget>
 			<targetDefs>
-				<li>TiberiumCrafter</li>
+				<li>TR_AtomicSynthesizer</li>
 			</targetDefs>
 		</taskTarget>
 		<workAmount>500</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumProtection_T2</defName>
 		<label>Comfort Layers</label>		
 		<description>The first layer seems to be the easy part. It may take some time to get right, but the jumpsuit will be worth the trouble for whoever ends up wearing this new gear. It won't provide any protection on its own but it can be worn underneath armour. When paired with the rest of the set it will soften the burden of wearing such hard materials.</description>
@@ -246,9 +246,9 @@
 				<Jumpsuit>1</Jumpsuit>
 			</thingsToCreate>
 		</creationTasks>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumProtection_T3</defName>
 		<label>Suit Up</label>
 		<description>Despite the paradoxical problem given by balancing mass and protection, there should be enough practice to attempt this feat. Once you have a jumpsuit ready, it's time to create a proper mask and the protective suit itself. These parts will all fit together on one person and it will be a revolutionary new way to avoid exposure.</description>		
@@ -259,10 +259,10 @@
 				<TiberiumSuit>1</TiberiumSuit>
 			</thingsToCreate>
 		</creationTasks>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
 	<!---->
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>TiberiumRefining</defName>
 		<label>Tiberium Refining</label>	
 		<researchType>analysis</researchType>
@@ -282,9 +282,9 @@
 			<li>TiberiumRefining_T7</li>
 			<li>TiberiumRefining_T8</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumRefining_T1</defName>
 		<label>Preparing Tools</label>		
 		<description>First, there needs to be a place to work on this project. Let's start by building a workbench. This is likely going to be critical to have for the foreseeable future.</description>
@@ -292,12 +292,12 @@
 		<workType>Construction</workType>
 		<creationTasks>
 			<thingsToCreate>
-				<TiberiumWorkbench>1</TiberiumWorkbench>
+				<TR_TibWorkbench>1</TR_TibWorkbench>
 			</thingsToCreate>
 		</creationTasks>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumRefining_T2</defName>
 		<label>Containment Procedures</label>		
 		<description>If we are to start gathering Tiberium in some way, we need some way to store it safely. We can't just throw it anywhere that seems convenient.</description>
@@ -307,13 +307,13 @@
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<taskTarget>
 			<targetDefs>
-				<li>TiberiumWorkbench</li>
+				<li>TR_TibWorkbench</li>
 			</targetDefs>
 		</taskTarget>
 		<workAmount>500</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumRefining_T3</defName>
 		<label>Refinement Concepts</label>	
 		<description>Now that we have a way to store Tiberium, we are ready to take a look at actively refining it for the colony. This will be a key step in our future of working with the elusive mineral.</description>		
@@ -323,13 +323,13 @@
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<taskTarget>
 			<targetDefs>
-				<li>TiberiumWorkbench</li>
+				<li>TR_TibWorkbench</li>
 			</targetDefs>
 		</taskTarget>
 		<workAmount>500</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumRefining_T4</defName>
 		<label>Automation Protocol</label>		
 		<description>It may be a bit of an oversight if we didn't make some safer way of gathering it. Sending a colonist to gather crystals by hand is not practical, and they probably wouldn't make it back anyway. Maybe it would work if there was some kind of autonomous machine that could do it for us..?</description>
@@ -339,13 +339,13 @@
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<taskTarget>
 			<targetDefs>
-				<li>TiberiumWorkbench</li>
+				<li>TR_TibWorkbench</li>
 			</targetDefs>
 		</taskTarget>
 		<workAmount>750</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumRefining_T5</defName>
 		<label>Network Planning</label>
 		<description>With all of these ideas and buildings in mind, a computer-based hub is likely going to be required. This will be a key way for a system to be created that can handle the logistics of our project. From there, we can start thinking about how to transport it between our new constructs; again, without putting anyone's hands and life at risk.</description>
@@ -355,14 +355,14 @@
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<taskTarget>
 			<targetDefs>
-				<li>TiberiumWorkbench</li>
+				<li>TR_TibWorkbench</li>
 			</targetDefs>
 		</taskTarget>
 		<workAmount>500</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
 	<!--TODO: Should have test for connectivity before finishing-->
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumRefining_T6</defName>
 		<label>Network Setup</label>
 		<description>With great strides in this new technology, it is finally time to start the creation of our network. Taking it one step at a time, let's make the essential parts first. These parts can be connected to each other, either directly by being to the side of another, or through pipes.</description>
@@ -370,14 +370,14 @@
 		<workType>Construction</workType>
 		<creationTasks>
 			<thingsToCreate>
-				<TiberiumNetworkController>1</TiberiumNetworkController>
-				<TiberiumSilo>1</TiberiumSilo>
-				<TiberiumRefinery>1</TiberiumRefinery>
+				<TR_TiberiumNetworkController>1</TR_TiberiumNetworkController>
+				<TR_TiberiumSilo>1</TR_TiberiumSilo>
+				<TR_TiberiumRefinery>1</TR_TiberiumRefinery>
 			</thingsToCreate>
 		</creationTasks>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumRefining_T7</defName>
 		<label>Valuable Reactions</label>
 		<description>We have our ideas on how to handle Tiberium now, but we still don't know how it will behave being stored and concentrated for the long term. So far there's only speculation. Someone needs to make the brave step of studying this in action by intentionally causing small reactions within a refinery.</description>
@@ -387,13 +387,13 @@
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<taskTarget>
 			<targetDefs>
-				<li>TiberiumRefinery</li>
+				<li>TR_TiberiumRefinery</li>
 			</targetDefs>
 		</taskTarget>
 		<workAmount>600</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumRefining_T8</defName>
 		<label>Resource Catalyst</label>	
 		<description>After multiple tests, it is believed now that we have an idea of how to work with the mineral in a more efficient way. Using the designs from earlier, it's time to put our plans into action and create a harvester that will hopefully eliminate the risk in gathering the crystals. It will automatically feed into our network so that our other buildings can use the resources.</description>		
@@ -401,13 +401,13 @@
 		<workType>Construction</workType>
 		<creationTasks>
 			<thingsToCreate>
-				<TiberiumCrafter>1</TiberiumCrafter>
+				<TR_AtomicSynthesizer>1</TR_AtomicSynthesizer>
 			</thingsToCreate>
 		</creationTasks>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
 	<!---->
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>TiberiumSuppressionBasic</defName>
 		<label>Tiberium Suppression (T1)</label>	
 		<researchType>component research</researchType>
@@ -422,9 +422,9 @@
 			<li>TiberiumSuppressionBasic_T2</li>
 			<li>TiberiumSuppressionBasic_T3</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumSuppressionBasic_T1</defName>
 		<label>Crystalline Weakness</label>		
 		<description>A colonist apparently took the liberty of accidentally "borrowing" some schematics over comms in the past from one of the contacts we had when asking around. We're not sure how they are used or what exactly they do, but there is several notes about "exploiting weaknesses" of Tiberium. This could be important in finding out how to prevent growth. More thorough analysis is needed to be certain.</description>
@@ -438,9 +438,9 @@
 			</targetDefs>
 		</taskTarget>
 		<workAmount>250</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumSuppressionBasic_T2</defName>
 		<label>Blueprint Evaluation</label>		
 		<description>Taking some printed copies of the schematics, it might help to lay them out on a table to study what exactly they are for. A colonist should take the copies to a bench and carefully read through them.</description>
@@ -450,13 +450,13 @@
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<taskTarget>
 			<targetDefs>
-				<li>TiberiumWorkbench</li>
+				<li>TR_TibWorkbench</li>
 			</targetDefs>
 		</taskTarget>
 		<workAmount>250</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumSuppressionBasic_T3</defName>
 		<label>Suppression Tower Prototype</label>
 		<description>After the work of reading through all of the technical jargon, there may be a solution. Thanks to the visuals and footnotes on some pages, it is in fact designs for a device that dampens the growth of Tiberium. It is proposed to work on Tiberium crystals by emitting a certain frequency that disturbs and essentially crumbles the growths by exploiting weaknesses in its crystalline structure. This is a great discovery, especially since it is within reach of us to build with the common materials we see on the Rim.</description>
@@ -467,10 +467,10 @@
 				<SuppressionTower>1</SuppressionTower>
 			</thingsToCreate>
 		</creationTasks>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
 	<!---->
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>TiberiumPower</defName>
 		<label>Tiberium Power</label>	
 		<researchType>energy research</researchType>
@@ -485,9 +485,9 @@
 			<li>TiberiumPower_T2</li>
 			<li>TiberiumPower_T3</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumPower_T1</defName>
 		<label>Glowing Energy</label>	
 		<description>Before attempting to use Tiberium within a reactor, its decay and volatility must be measured to determine if it has practical potential for being used in fuel rods. This involves putting concentrated Tiberium in proximity of other samples as well as taking much smaller pieces and seeing how they break in a hopefully controlled manner. A colonist will need to handle this with care.</description>
@@ -497,13 +497,13 @@
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<taskTarget>
 			<targetDefs>
-				<li>TiberiumCrafter</li>
+				<li>TR_AtomicSynthesizer</li>
 			</targetDefs>
 		</taskTarget>
 		<workAmount>400</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumPower_T2</defName>
 		<label>Energy Containment</label>	
 		<description>There was success in experimenting with the crystals. Some samples essentially popped within the grasp of tongs. We're glad it wasn't any bigger than that. It was determined that they do have quite a bit of potential energy to release, especially when put into close proximity with more of the mineral. However, we're not done yet. Someone has to determine a way to apply what we know and create a functional reactor element with stability as a priority.</description>		
@@ -513,13 +513,13 @@
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<taskTarget>
 			<targetDefs>
-				<li>TiberiumWorkbench</li>
+				<li>TR_TibWorkbench</li>
 			</targetDefs>
 		</taskTarget>
 		<workAmount>300</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumPower_T3</defName>
 		<label>Powerplant Prototype</label>
 		<description>Many plans have been drawn up from the beginning of our project towards now of working with the alien material. Learning how it spreads, how it behaves, and how to use it in a few ways. The time has finally come to apply this knowledge and create our first reactor. It's not known if anyone else on the Rim has a plan like this, but it doesn't hurt to be the first. If done correctly, this will be a major milestone that will provide stable, long-term power.</description>
@@ -527,15 +527,15 @@
 		<workType>Construction</workType>
 		<creationTasks>
 			<thingsToCreate>
-				<TiberiumPowerPlant>1</TiberiumPowerPlant>
+				<TR_TiberiumPowerPlant>1</TR_TiberiumPowerPlant>
 			</thingsToCreate>
 		</creationTasks>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
 
 	
 	<!---->
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>TiberiumForaging</defName>
 		<label>Tiberium Foraging</label>	
 		<researchType>foraging</researchType>
@@ -545,10 +545,10 @@
 				<li>TiberiumFloraDiscovery</li>
 			</events>
 		</requisites>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
 	<!---->
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>TiberiumGasRefining</defName>
 		<label>Tiberium Gas Refining</label>	
 		<researchType>observation</researchType>
@@ -562,9 +562,9 @@
 			<li>TiberiumGasRefining_T1</li>
 			<li>TiberiumGasRefining_T2</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumGasRefining_T1</defName>
 		<label>Megastructure Blueprints</label>	
 		<description>tba</description>
@@ -574,13 +574,13 @@
 		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
 		<taskTarget>
 			<targetDefs>
-				<li>TiberiumWorkbench</li>
+				<li>TR_TibWorkbench</li>
 			</targetDefs>
 		</taskTarget>
 		<workAmount>2500</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>TiberiumGasRefining_T2</defName>
 		<label>Spike Construction</label>
 		<description>tba</description>
@@ -588,9 +588,9 @@
 		<workType>Construction</workType>
 		<creationTasks>
 			<thingsToCreate>
-				<TiberiumSpike>1</TiberiumSpike>
+				<TR_TiberiumSpike>1</TR_TiberiumSpike>
 			</thingsToCreate>
 		</creationTasks>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
 </Defs>

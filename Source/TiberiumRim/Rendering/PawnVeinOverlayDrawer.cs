@@ -2,7 +2,7 @@
 using RimWorld;
 using Verse;
 
-namespace TiberiumRim.Rendering;
+namespace TR.Rendering;
 
 public class PawnVeinOverlayDrawer : PawnOverlayDrawer
 {
