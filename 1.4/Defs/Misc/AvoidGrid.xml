@@ -3,12 +3,12 @@
 
 	<TeleCore.AvoidGridDef>
 		<defName>TiberiumAvoidGrid</defName>
-		<avoidGridClass>TiberiumRim.TiberiumAvoidGrid</avoidGridClass>
+		<avoidGridClass>TR.TiberiumAvoidGrid</avoidGridClass>
 	</TeleCore.AvoidGridDef>
 
 	<TeleCore.AvoidGridDef>
 		<defName>RadiationAvoidGrid</defName>
-		<avoidGridClass>TiberiumRim.RadiationAvoidGrid</avoidGridClass>
+		<avoidGridClass>TR.RadiationAvoidGrid</avoidGridClass>
 	</TeleCore.AvoidGridDef>
 
 </Defs>

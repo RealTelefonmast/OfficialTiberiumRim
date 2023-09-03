@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TiberiumRim.Rendering;
+namespace TR.Rendering;
 
 public class SectionLayer_TerrainOverlay : SectionLayer
 {

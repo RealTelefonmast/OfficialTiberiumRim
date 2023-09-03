@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Zone_HarvestTiberium : Zone
     {

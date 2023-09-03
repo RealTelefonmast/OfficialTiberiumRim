@@ -38,7 +38,7 @@
   </HediffDef>
 
 
-  <TiberiumRim.TRThingDef ParentName="BodyPartBionicBase">
+  <TR.TRThingDef ParentName="BodyPartBionicBase">
     <defName>ChemicalBombImplant</defName>
     <label>suicide bomb implant</label>
     <description>An installed bionic implant, connected to the strong chemical suicide bomb. Take your pawn on a suicide mission.</description>
@@ -73,7 +73,7 @@
 				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
-  </TiberiumRim.TRThingDef>
+  </TR.TRThingDef>
 
   <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
     <defName>InstallChemicalBombImplant</defName>
@@ -140,7 +140,7 @@
   </HediffDef>
 
 
-  <TiberiumRim.TRThingDef ParentName="BodyPartBionicBase">
+  <TR.TRThingDef ParentName="BodyPartBionicBase">
     <defName>InfusionImplant</defName>
     <label>tiberium infusion</label>
     <description>A special tiberium infusion for the nod soldiers. It changes the organs to almost fit the Tiberium environment. but users become sensitive to anger, and cannot be removed.</description>
@@ -178,7 +178,7 @@
 			<li>NodExperimental1</li>
 		</tiberiumResearch>
 	</requisites>
-  </TiberiumRim.TRThingDef>
+  </TR.TRThingDef>
 
   <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
     <defName>InstallInfusionImplant</defName>

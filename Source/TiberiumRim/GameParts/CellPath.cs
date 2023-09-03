@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class CellPath : IExposable
     {

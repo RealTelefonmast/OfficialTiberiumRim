@@ -11,7 +11,7 @@
 						<li Class="JobGiver_FleePotentialExplosion" />
 									
 						<!-- Do That Weird Thing 
-						<li Class="TiberiumRim.JobGiver_Amalgamation"/>
+						<li Class="TR.JobGiver_Amalgamation"/>
 						-->
 						<li Class="JobGiver_AnimalFlee" />
 
@@ -72,7 +72,7 @@
 				<li Class="ThinkNode_Tagger">
 					<tagToGive>Idle</tagToGive>
 					<subNodes>
-						<li Class="TiberiumRim.JobGiver_WanderInField">
+						<li Class="TR.JobGiver_WanderInField">
 							<maxDanger>Deadly</maxDanger>
 							<ticksBetweenWandersRange>
 								<min>300</min>
@@ -155,7 +155,7 @@
 				<li Class="ThinkNode_Tagger">
 					<tagToGive>Idle</tagToGive>
 					<subNodes>
-						<li Class="TiberiumRim.JobGiver_WanderInField">
+						<li Class="TR.JobGiver_WanderInField">
 							<maxDanger>Deadly</maxDanger>
 							<wanderRadius>1</wanderRadius>
 							<ticksBetweenWandersRange>

@@ -3,7 +3,7 @@ using RimWorld;
 using Verse;
 using Verse.AI.Group;
 
-namespace TiberiumRim
+namespace TR
 {
     public enum RaidMode
     {

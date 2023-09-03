@@ -2,7 +2,7 @@
 using RimWorld;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public static class GenTiberium
     {

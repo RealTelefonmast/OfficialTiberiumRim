@@ -54,7 +54,7 @@
 		</targetSettings>
 		<result>				
 			<type>CustomWorker</type>
-			<workerClass>TiberiumRim.IncidentWorker_TiberiumArrival</workerClass>
+			<workerClass>TR.IncidentWorker_TiberiumArrival</workerClass>
 		</result>
 		<images>
 			<li>Story/Mission1/M1_Observe</li>
@@ -119,7 +119,7 @@
 	
 	<StoryFramework.ObjectiveDef>
 		<defName>M2_KnowledgeResearch</defName>
-		<customClass>TiberiumRim.Objective_ActivateGZ</customClass>
+		<customClass>TR.Objective_ActivateGZ</customClass>
 		<label>Close Inspection</label>
 		<description>With the research crane we can safely inspect Tiberium and interact with it, supposedly touching it with your bare hands could be lethal, so let's avoid that.\nLet's see what we can learn of this mineral.</description>
 		<type>Research</type>
@@ -143,9 +143,9 @@
 		<type>ConstructOrCraft</type>
 		<targetSettings>
 			<targets>
-				<li>TiberiumNetworkController</li>
-				<li>TiberiumRefinery</li>
-				<li>TiberiumSilo,2</li>
+				<li>TR_TiberiumNetworkController</li>
+				<li>TR_TiberiumRefinery</li>
+				<li>TR_TiberiumSilo,2</li>
 			</targets>
 		</targetSettings>
 	</StoryFramework.ObjectiveDef>	
@@ -157,7 +157,7 @@
 		<type>ConstructOrCraft</type>
 		<targetSettings>
 			<targets>
-				<li>TiberiumPowerPlant</li>
+				<li>TR_TiberiumPowerPlant</li>
 			</targets>
 		</targetSettings>
 	</StoryFramework.ObjectiveDef>	

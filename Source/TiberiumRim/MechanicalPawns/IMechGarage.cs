@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public interface IMechGarage<T> where T : MechanicalPawn
     {

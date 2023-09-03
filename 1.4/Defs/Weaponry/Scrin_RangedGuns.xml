@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef ParentName="BaseGun">
+	<TR.TRThingDef ParentName="BaseGun">
 		<defName>Scrin_ShockDiscLauncher</defName>
 		<label>shock disc launcher</label>
 		<description>shock disc launcher</description>
@@ -42,9 +42,9 @@
 				<muzzleFlashScale>14</muzzleFlashScale>
 			</li>
 		</verbs>
-	</TiberiumRim.TRThingDef>	
+	</TR.TRThingDef>	
 	
-	<TiberiumRim.TRThingDef ParentName="BaseGun">
+	<TR.TRThingDef ParentName="BaseGun">
 		<defName>Scrin_Disint</defName>
 		<label>disintegrator head</label>
 		<description>disintegrator head</description>
@@ -112,9 +112,9 @@
 				</beamLineFleckChanceCurve>
 			</li>
 		</verbs>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
-	<TiberiumRim.TRThingDef ParentName="BaseGun">
+	<TR.TRThingDef ParentName="BaseGun">
 		<defName>Scrin_MechapedeLance</defName>
 		<label>swarm charge cannon</label>
 		<description>A huge alien laser weapon.</description>
@@ -189,9 +189,9 @@
 				</beamLineFleckChanceCurve>
 			</li>
 		</verbs>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BaseGunWithQuality">
+	<TR.TRThingDef ParentName="BaseGunWithQuality">
 		<defName>Scrin_ShockLance</defName>
 		<label>scrin charge cannon</label>
 		<description>Almost fragmented alien weapon. But performance is extremmly excellent.
@@ -292,6 +292,6 @@
 			<li>LongShots</li>
 			<li>Ultratech</li>
 		</weaponClasses>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 </Defs>

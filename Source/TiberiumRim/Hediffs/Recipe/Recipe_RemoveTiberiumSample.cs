@@ -2,7 +2,7 @@
 using RimWorld;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Recipe_RemoveTiberiumSample : Recipe_Surgery
     {

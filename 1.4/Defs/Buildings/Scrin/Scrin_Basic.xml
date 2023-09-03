@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
-	<TiberiumRim.TRThingDef ParentName="ScrinBuildings">
+	<TR.TRThingDef ParentName="ScrinBuildings">
 		<defName>ScrinDronePlatform</defName>
 		<label>scrin drone platform</label>
 		<description>We have arrived.</description>
-		<thingClass>TiberiumRim.DronePlatform</thingClass>
+		<thingClass>TR.DronePlatform</thingClass>
 		<size>(3,3)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -54,7 +54,7 @@
 			<ai_combatDangerous>true</ai_combatDangerous>
 		</building>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_OnlyOutside</li>
+			<li>TR.PlaceWorker_OnlyOutside</li>
 		</placeWorkers>
 		<modExtensions>
 			<li Class="TeleCore.FXDefExtension">
@@ -62,13 +62,13 @@
 				<alignToBottom>false</alignToBottom>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
-	<TiberiumRim.TRThingDef ParentName="ScrinBuildings">
+	<TR.TRThingDef ParentName="ScrinBuildings">
 		<defName>ScrinPortal</defName>
 		<label>portal</label>
 		<description>oh lawd they comin</description>
-		<thingClass>TiberiumRim.ScrinPortal</thingClass>
+		<thingClass>TR.ScrinPortal</thingClass>
 		<tickerType>Normal</tickerType>
 		<rotatable>false</rotatable>
 		<destroyable>false</destroyable>
@@ -185,6 +185,6 @@
 			<Mass>0</Mass>
 			<Flammability>0</Flammability>
 		</statBases>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 </Defs>

@@ -11,7 +11,7 @@ using TeleCore.Network.Utility;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     internal static class TRUIPatches
     {
@@ -179,7 +179,7 @@ namespace TiberiumRim
 
             static double GetTiberiumCredits(Map map)
             {
-                return GetNetwork(map)?.NetworkSystem.TotalValue ?? 0;
+                return GetNetwork(map)?.System.TotalValue ?? 0;
             }
 
             private static float? TotalHeight = 120;
@@ -211,7 +211,7 @@ namespace TiberiumRim
                 Text.Anchor = default;
                 Widgets.DrawLine(new Vector2(5f, creditLabelRect.yMax), new Vector2(125f, creditLabelRect.yMax), Color.white, 1f);
 
-                ResourceReadoutHeight = FlowUI<NetworkValueDef>.DrawFlowValueStackReadout(readoutRect, GetNetwork(Find.CurrentMap).NetworkSystem.TotalStack);
+                ResourceReadoutHeight = FlowUI<NetworkValueDef>.DrawFlowValueStackReadout(readoutRect, GetNetwork(Find.CurrentMap).System.TotalStack);
 
                 Text.Font = GameFont.Tiny;
                 string totalLabel = "TR_CreditsTotal".Translate(Math.Round(GetTiberiumCredits(Find.CurrentMap)));

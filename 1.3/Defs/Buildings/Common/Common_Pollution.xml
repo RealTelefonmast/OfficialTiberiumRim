@@ -2,8 +2,8 @@
 <Defs>
 
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
-		<defName>AtmosphericPump</defName>
-		<label>Atmospheric Pump</label>
+		<defName>TR_AtmosphericController</defName>
+		<label>Atmospheric Controller</label>
 		<description>.</description>
 		<thingCategories Inherit="false" />
 		<altitudeLayer>Building</altitudeLayer>

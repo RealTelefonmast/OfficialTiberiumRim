@@ -3,7 +3,7 @@ using TAE;
 using TeleCore;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     [DefOf]
     public static class TiberiumDefOf

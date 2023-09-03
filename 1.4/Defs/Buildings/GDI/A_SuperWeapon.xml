@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>IonCannonCenter</defName>
 		<label>Ion Cannon Uplink</label>
 		<description>owo</description>
-		<thingClass>TiberiumRim.Building_IonCannon</thingClass>
+		<thingClass>TR.Building_IonCannon</thingClass>
 		<size>(6,6)</size>
 		<drawOffscreen>false</drawOffscreen>
 		<passability>Impassable</passability>
@@ -28,7 +28,7 @@
 			<ComponentIndustrial>12</ComponentIndustrial>
 		</costList>
 		<superWeapon>
-			<designator>TiberiumRim.Designator_IonCannonTargeter</designator>
+			<designator>TR.Designator_IonCannonTargeter</designator>
 		</superWeapon>
 		<statBases>
 			<MaxHitPoints>460</MaxHitPoints>
@@ -68,8 +68,8 @@
 			</li>
 		</comps>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_OnlyOutside</li>
-			<li>TiberiumRim.PlaceWorker_Once</li>
+			<li>TR.PlaceWorker_OnlyOutside</li>
+			<li>TR.PlaceWorker_Once</li>
 		</placeWorkers>
 		<requisites>
 			<tiberiumResearch>
@@ -82,9 +82,9 @@
 				<category>Defense</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>FirestormCenter</defName>
 		<label>Firestorm Operations Center</label>
 		<description>This specialized facility registers all Firestorm-Segments placed by this Faction. When enough power is available the Firestorm-System can be activated anytime and will last for a day, completely cutting off any intruders.\n\nOnly one can be built.</description>
@@ -157,7 +157,7 @@
 		<canOverlapZones>false</canOverlapZones>
 		<size>(5,5)</size>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_Once</li>
+			<li>TR.PlaceWorker_Once</li>
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
 		<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
@@ -172,9 +172,9 @@
 				<category>Defense</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>FirestormWall</defName>
 		<label>firestorm wall segment</label>
 		<category>Building</category>
@@ -243,6 +243,6 @@
 				<category>Defense</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 </Defs>

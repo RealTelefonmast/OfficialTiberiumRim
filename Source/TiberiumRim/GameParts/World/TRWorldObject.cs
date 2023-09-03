@@ -1,6 +1,6 @@
 ﻿using RimWorld.Planet;
 
-namespace TiberiumRim
+namespace TR
 {
     public class TRWorldObject : WorldObject
     {

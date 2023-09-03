@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
-	<TiberiumRim.TRThingDef Abstract="True" Name="GDITurret" ParentName="TurretBase_TR">
+	<TR.TRThingDef Abstract="True" Name="GDITurret" ParentName="TurretBase_TR">
 
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
   
 	<!--Juggernaut -->
 	<!-- TODO: Missing filter for different shells -->	
-	<TiberiumRim.TRThingDef ParentName="GDITurret">
+	<TR.TRThingDef ParentName="GDITurret">
 		<defName>GDI_Juggernaut</defName>
 		<label>juggernaut artillery</label>
 		<description>This advanced GDI defensive structure fires a 3 shot burst of shells. The juggernaut has been known as one of the most devastating walkers in the early Tiberium wars, destroying base after base with ease. This version is less mobile but just as devastating.\n\nOnly one can be built./n/n(currently only shoots one shell, which has increased damage and explosion radius)</description>
@@ -158,11 +158,11 @@
 				</turrets>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<!---->
 	<!-- Watch Tower -->
-	<TiberiumRim.TRThingDef ParentName="GDITurret">
+	<TR.TRThingDef ParentName="GDITurret">
 		<defName>GDI_WatchTower</defName>
 		<label>watch tower</label>
 		<description>A GDI watch tower, fires automatically upon enemies.\n\nVulnerable to flame damage.</description>
@@ -300,10 +300,10 @@
 				</turrets>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 	<!-- Guardian turret -->
-	<TiberiumRim.TRThingDef ParentName="GDITurret">
+	<TR.TRThingDef ParentName="GDITurret">
 		<defName>GDI_Guardian</defName>
 		<label>guardian cannon</label>
 		<description>A GDI guardian cannon, fires automatically upon enemies.\n\nVulnerable to flame damage.</description>
@@ -433,14 +433,14 @@
 				</turrets>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<!-- Sonic Emitter -->
-	<TiberiumRim.TRThingDef ParentName="GDITurret">
+	<TR.TRThingDef ParentName="GDITurret">
 		<defName>GDI_SonicEmitter</defName>
 		<label>Sonic Emitter</label>
 		<description>The sonic emitter, this heavy weapon clears anything in it's path.\n\nVulnerable by flame attack.</description>
-		<thingClass>TiberiumRim.Building_SonicEmitter</thingClass>
+		<thingClass>TR.Building_SonicEmitter</thingClass>
 		<size>(3,3)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -581,10 +581,10 @@
 				</turrets>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef >
+	</TR.TRThingDef >
 	
 	<!-- Rig Station -->	
-	<TiberiumRim.TRThingDef ParentName="GDITurret">
+	<TR.TRThingDef ParentName="GDITurret">
 		<defName>GDI_BattleBase</defName>
 		<label>battle base</label>
 		<description>.</description>
@@ -742,7 +742,7 @@
 				</turrets>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 	<!--Test Stuff-->
 	<ThingDef ParentName="BaseWeapon_TR">
@@ -791,7 +791,7 @@
 		<defName>Bullet_MicroMissile</defName>
 		<label>micro missile</label>
 		<description>rocket</description>
-		<thingClass>TiberiumRim.Projectile_Homing</thingClass>
+		<thingClass>TR.Projectile_Homing</thingClass>
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Bullet_Nod_Rocket</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

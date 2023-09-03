@@ -2,7 +2,7 @@
 using Verse;
 using Verse.AI;
 
-namespace TiberiumRim
+namespace TR
 {
     public class JobGiver_WanderAtParent : ThinkNode_JobGiver
     {

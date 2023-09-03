@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     //Unusable until further notice
     [Obsolete]

@@ -19,7 +19,7 @@
 		<descriptionHyperlinks><ThingDef>AugmentedEye</ThingDef></descriptionHyperlinks>
 		<spawnThingOnRemoved>AugmentedEye</spawnThingOnRemoved>
 		<comps>
-			<li Class="TiberiumRim.HediffCompProperties_Draw">
+			<li Class="TR.HediffCompProperties_Draw">
 				<headGraphic>
 					<texPath>Pawns/RedAlert/Sovjet/Volkov/EyeAugment</texPath>
 					<graphicClass>Graphic_Multi</graphicClass>

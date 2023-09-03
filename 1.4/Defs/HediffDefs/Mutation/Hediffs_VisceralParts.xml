@@ -83,7 +83,7 @@
 	</HediffDef>
 	
 	<!---->
-	<TiberiumRim.TRHediffDef Abstract="True" Name="VisceralLimb" ParentName="AddedPart_TR">
+	<TR.TRHediffDef Abstract="True" Name="VisceralLimb" ParentName="AddedPart_TR">
 		<defaultLabelColor>(155, 160, 75)</defaultLabelColor>
 		<isNaturalInsertion>true</isNaturalInsertion>
 		<comps>
@@ -107,16 +107,16 @@
 			<isGoodWeapon>true</isGoodWeapon>
 			<partEfficiency>0.5</partEfficiency>
 		</addedPartProps>
-	</TiberiumRim.TRHediffDef>
+	</TR.TRHediffDef>
 	
-	<TiberiumRim.TRHediffDef ParentName="VisceralLimb">
+	<TR.TRHediffDef ParentName="VisceralLimb">
 		<defName>VisceralArm</defName>
 		<label>visceral tentacle arm</label>
-	</TiberiumRim.TRHediffDef>
+	</TR.TRHediffDef>
 	
-	<TiberiumRim.TRHediffDef ParentName="VisceralLimb">
+	<TR.TRHediffDef ParentName="VisceralLimb">
 		<defName>VisceralLeg</defName>
 		<label>visceral tentacle leg</label>
-	</TiberiumRim.TRHediffDef>
+	</TR.TRHediffDef>
 	
 </Defs>

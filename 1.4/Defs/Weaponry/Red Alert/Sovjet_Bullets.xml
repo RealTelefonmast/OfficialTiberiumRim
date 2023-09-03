@@ -5,7 +5,7 @@
 	<ThingDef ParentName="BaseBullet_TR">
 		<defName>Projectile_TeslaArc</defName>
 		<label>tesla arc</label>
-		<thingClass>TiberiumRim.Projectile_TeslaArc</thingClass>
+		<thingClass>TR.Projectile_TeslaArc</thingClass>
 		<graphicData>
 			<texPath>Items/Weapons/Gun_Blank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

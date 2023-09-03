@@ -6,7 +6,7 @@
     <defName>TiberiumRimGiver</defName>
     <insertTag>Humanlike_PostMentalState</insertTag>
     <insertPriority>100</insertPriority>
-    <thinkRoot Class="TiberiumRim.JobGiver_TiberiumBath" />
+    <thinkRoot Class="TR.JobGiver_TiberiumBath" />
   </ThinkTreeDef>
   -->
   

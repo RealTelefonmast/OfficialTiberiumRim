@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace TiberiumRim
+namespace TR
 {
     public struct MultiCurvePoint
     {

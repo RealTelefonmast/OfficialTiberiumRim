@@ -3,7 +3,7 @@
 
 	<JobDef>
 		<defName>TiberiumResearch</defName>
-		<driverClass>TiberiumRim.JobDriver_TResearch</driverClass>
+		<driverClass>TR.JobDriver_TResearch</driverClass>
 		<reportString>doing tiberium research.</reportString>
 		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
 	</JobDef>
@@ -11,13 +11,13 @@
 	<!---->
 	<JobDef>
 		<defName>FormAmalgamation</defName>
-		<driverClass>TiberiumRim.JobDriver_FormAmalgamation</driverClass>
+		<driverClass>TR.JobDriver_FormAmalgamation</driverClass>
 		<reportString>forming Amalgamation.</reportString>
 	</JobDef>
 	
 	<JobDef>
 		<defName>TiberiumBath</defName>
-		<driverClass>TiberiumRim.JobDriver_SatisfyTiberiumNeed</driverClass>
+		<driverClass>TR.JobDriver_SatisfyTiberiumNeed</driverClass>
 	</JobDef>
 	
 	<!---->

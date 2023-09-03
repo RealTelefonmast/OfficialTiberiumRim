@@ -4,7 +4,7 @@ using System.Xml;
 using RimWorld;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
 
     public class HediffFloat

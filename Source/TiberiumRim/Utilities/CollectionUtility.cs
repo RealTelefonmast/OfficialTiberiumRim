@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TiberiumRim.Utilities
+namespace TR.Utilities
 {
     public static class CollectionUtility
     {

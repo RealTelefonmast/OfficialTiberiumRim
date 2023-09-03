@@ -2,7 +2,7 @@
 using RimWorld;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     //The base incidentworker for the mod, it will take care of new features such as event handling, position gathering, etc..
     public class IncidentWorker_TR : IncidentWorker

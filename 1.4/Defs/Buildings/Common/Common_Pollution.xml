@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TR.TRThingDef ParentName="StationBase_TR">
 		<defName>PollutionFilter</defName>
 		<label>pollution filter</label>
 		<description>.</description>
@@ -33,7 +33,7 @@
 		</requisites>
 		<comps>
 			<li Class="TeleCore.CompProperties_Network">
-				<compClass>TiberiumRim.Comp_ANS_TiberiumFilter</compClass>
+				<compClass>TR.Comp_ANS_TiberiumFilter</compClass>
 				<networks>
 					<li>
 						<networkDef>AtmosphericNetwork</networkDef>
@@ -44,9 +44,6 @@
 						</roles>
 						<volumeConfig>
 							<capacity>750</capacity>
-							<area>1</area>
-							<elevation>0</elevation>
-							<height>1</height>
 							<values>
 								<allowedValues>
 									<li>Atmospheric_TibPollution</li>
@@ -62,9 +59,6 @@
 						</roles>
 						<volumeConfig>
 							<capacity>1250</capacity>
-							<area>1</area>
-							<elevation>0</elevation>
-							<height>1</height>
 							<values>
 								<allowedValues>
 									<li>TibSludge</li>
@@ -112,10 +106,10 @@
 				<category>Pollution</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 <!--
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TR.TRThingDef ParentName="StationBase_TR">
 		<defName>AtmosphericPumpTwo</defName>
 		<label>Atmospheric Pump 2</label>
 		<description>.</description>
@@ -156,9 +150,6 @@
 						</roles>
 						<volumeConfig>
 							<capacity>1000</capacity>
-							<area>1</area>
-							<elevation>0</elevation>
-							<height>1</height>
 							<values>
 								<allowedValues>
 									<li>Atmospheric_TibPollution</li>
@@ -212,9 +203,9 @@
 				<category>Misc</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TR.TRThingDef ParentName="StationBase_TR">
 		<defName>AtmosphericVentInTwo</defName>
 		<label>pollution vent (intake)</label>
 		<description>.</description>
@@ -257,9 +248,6 @@
 						</roles>
 						<volumeConfig>
 							<capacity>100</capacity>
-							<area>1</area>
-							<elevation>0</elevation>
-							<height>1</height>
 							<values>
 								<allowedValues>
 									<li>Atmospheric_TibPollution</li>
@@ -318,9 +306,9 @@
 				<category>Pollution</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TR.TRThingDef ParentName="StationBase_TR">
 		<defName>AtmosphericVentOutTwo</defName>
 		<label>pollution vent (out)</label>
 		<description>.</description>
@@ -362,9 +350,6 @@
 						</roles>
 						<volumeConfig>
 							<capacity>100</capacity>
-							<area>1</area>
-							<elevation>0</elevation>
-							<height>1</height>
 							<values>
 								<allowedValues>
 									<li>Atmospheric_TibPollution</li>
@@ -396,9 +381,9 @@
 				<category>Pollution</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="DoorBase_TR">
+	<TR.TRThingDef ParentName="DoorBase_TR">
 		<defName>Atmospheric_AirLockDoor</defName>
 		<label>air-lock door</label>
 		<thingClass>TAE.Building_AirLock</thingClass>
@@ -442,7 +427,7 @@
 				<category>Pollution</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	-->
 	
 </Defs>

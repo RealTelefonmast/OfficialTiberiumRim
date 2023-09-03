@@ -6,7 +6,7 @@ using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TiberiumRim.Research.Window;
+namespace TR.Research.Window;
 
 public class SubWindow_Projects
 {

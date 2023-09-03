@@ -10,7 +10,7 @@
 	<ThingDef ParentName="EtherealThingBase_TR">
 		<defName>IonCannonStrike</defName>
 		<label>ion cannon strike</label>
-		<thingClass>TiberiumRim.IonCannon_Strike</thingClass>
+		<thingClass>TR.IonCannon_Strike</thingClass>
 		<tickerType>Normal</tickerType>
 		<drawerType>RealtimeOnly</drawerType>
 		<drawOffscreen>true</drawOffscreen>
@@ -30,7 +30,7 @@
 	<ThingDef ParentName="EtherealThingBase_TR">
 		<defName>IonBeam</defName>
 		<label>ion beam</label>
-		<thingClass>TiberiumRim.IonBeam</thingClass>
+		<thingClass>TR.IonBeam</thingClass>
 		<tickerType>Normal</tickerType>
 		<drawerType>RealtimeOnly</drawerType>
 		<drawOffscreen>true</drawOffscreen>

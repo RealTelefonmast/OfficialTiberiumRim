@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace TiberiumRim
+namespace TR
 {
     public struct SpriteImage
     {

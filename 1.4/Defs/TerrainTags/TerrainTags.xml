@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TerrainTagDef>
+	<TR.TerrainTagDef>
 		<defName>Tiberium</defName>
 		<tags>		
 			<li>Tiberium</li>
 		</tags>
-	</TiberiumRim.TerrainTagDef>
+	</TR.TerrainTagDef>
 
-	<TiberiumRim.TerrainTagDef>
+	<TR.TerrainTagDef>
 		<defName>Soils</defName>
 		<tags>		
 			<li>soil</li>
 			<li>gravel</li>		
 		</tags>
-	</TiberiumRim.TerrainTagDef>
+	</TR.TerrainTagDef>
 
-	<TiberiumRim.TerrainTagDef>
+	<TR.TerrainTagDef>
 		<defName>Mosses</defName>
 		<tags>
 			<li>moss</li>
 			<li>marshy</li>
 			<li>mud</li>
 		</tags>
-	</TiberiumRim.TerrainTagDef>
+	</TR.TerrainTagDef>
 
-	<TiberiumRim.TerrainTagDef>
+	<TR.TerrainTagDef>
 		<defName>Sands</defName>
 		<tags>
 			<li>sand</li>
@@ -33,9 +33,9 @@
 		<ignoreTags>
 			<li>stone</li>
 		</ignoreTags>
-	</TiberiumRim.TerrainTagDef>
+	</TR.TerrainTagDef>
 	
-	<TiberiumRim.TerrainTagDef>
+	<TR.TerrainTagDef>
 		<defName>Stones</defName>
 		<tags>
 			<li>stone</li>
@@ -72,16 +72,16 @@
 			<li>sovite</li>
 			<li>thometzekite</li>
 		</tags>
-	</TiberiumRim.TerrainTagDef>
+	</TR.TerrainTagDef>
 	
-	<TiberiumRim.TerrainTagDef>
+	<TR.TerrainTagDef>
 		<defName>Concretes</defName>
 		<tags>
 			<li>concrete</li>
 		</tags>
-	</TiberiumRim.TerrainTagDef>
+	</TR.TerrainTagDef>
 	
-	<TiberiumRim.TerrainTagDef>
+	<TR.TerrainTagDef>
 		<defName>Water</defName>
 		<tags>
 			<li>water</li>
@@ -90,9 +90,9 @@
 			<li>moving</li>
 			<li>deep</li>
 		</ignoreTags>
-	</TiberiumRim.TerrainTagDef>
+	</TR.TerrainTagDef>
 	
-	<TiberiumRim.TerrainTagDef>
+	<TR.TerrainTagDef>
 		<defName>WaterMoving</defName>
 		<tags>
 			<li>water</li>
@@ -100,9 +100,9 @@
 		<extraTags>
 			<li>moving</li>
 		</extraTags>
-	</TiberiumRim.TerrainTagDef>
+	</TR.TerrainTagDef>
 
-	<TiberiumRim.TerrainTagDef>
+	<TR.TerrainTagDef>
 		<defName>WaterDeep</defName>
 		<tags>
 			<li>water</li>
@@ -113,6 +113,6 @@
 		<ignoreTags>
 			<li>moving</li>
 		</ignoreTags>
-	</TiberiumRim.TerrainTagDef>
+	</TR.TerrainTagDef>
 
 </Defs>

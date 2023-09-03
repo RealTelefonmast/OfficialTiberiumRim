@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef Name="Nod_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
+	<TR.TRThingDef Name="Nod_Gun" ParentName="BaseGunWithQuality_TR" Abstract="True">
 		<soundInteract>Interact_Rifle</soundInteract>
 		<recipeMaker>
 			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
@@ -22,9 +22,9 @@
 		<weaponClasses>
 			<li>Ranged</li>
 		</weaponClasses>
-	</TiberiumRim.TRThingDef>	
+	</TR.TRThingDef>	
 
-	<TiberiumRim.TRThingDef ParentName="Nod_Gun"> <!--balance standard - assault rifle + -->
+	<TR.TRThingDef ParentName="Nod_Gun"> <!--balance standard - assault rifle + -->
 		<defName>Nod_StandardRifle</defName>
 		<label>Nod rifle</label>
 		<description>A general-purpose military weapon for field or urban combat. Made specifically for urban combat by Nod.\n\nUpgradable to the laser rifle.</description>
@@ -106,9 +106,9 @@
 				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
+	<TR.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_TwinTiberiumFlechetteGun</defName>
 		<label>Nod twin flechette gun</label>
 		<description>The Tiberium Flechette gun fires Tiberium shards rapidly at enemies.</description>
@@ -195,9 +195,9 @@
 				<li>NodExperimental1</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
+	<TR.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_LaserRifleSmall</defName>
 		<label>Nod laser rifle</label>
 		<description>A rifle using Nod's specialized laser technology.\n\nUpgradable to the advanced laser rifle.</description>
@@ -347,9 +347,9 @@
 				<li>NodExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
+	<TR.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_LaserRifleLarge</defName>
 		<label>Nod advanced laser rifle</label>
 		<description>A rifle using Nod's advanced specialized laser technology.</description>
@@ -459,9 +459,9 @@
 				<li>NodExperimental3</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
+	<TR.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_Flamethrower</defName>
 		<label>Nod flamethrower</label>
 		<description>A Blackhand flamethrower, cleanse the your opponents! Made to be used in conjunction with the black hand armor.\n\nUpgradable to the chemicalspray.</description>
@@ -550,9 +550,9 @@
 				<li>NodExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
+	<TR.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_Chemicalthrower</defName>
 		<label>Nod chemicalspray</label>
 		<description>An advcanced and highly toxic weapon using Nod's liquid Tiberium technology. Made to be used in conjunction with the black hand armor.</description>
@@ -646,9 +646,9 @@
 				<li>NodExperimental3</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
+	<TR.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_RocketLauncher</defName>
 		<label>Nod rocket launcher</label>
 		<description>A heavy rocket launcher developed by ancient engineers. It is highly lethal.</description>
@@ -718,10 +718,10 @@
 				<li>NodExperimental2</li>
 			</tiberiumResearch>
 		</requisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 <!--
-	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
+	<TR.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_Grenade</defName>
 		<label>Nod grenade</label>
 		<description>Nod's special grenades, just as lethal as ordinary ones.</description>
@@ -782,10 +782,10 @@
 		<recipeMaker>
 			<researchPrerequisite>NodResearch_Production</researchPrerequisite>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 
-	<TiberiumRim.TRThingDef ParentName="Nod_Gun">
+	<TR.TRThingDef ParentName="Nod_Gun">
 		<defName>Nod_Sbomb</defName>
 		<label>Nod suicide bomb</label>
 		<description>Take your pawn on a suicide mission. Beware of the blast radius.</description>
@@ -843,6 +843,6 @@
 		<equippedStatOffsets>
 			<MoveSpeed>0.75</MoveSpeed>
 		</equippedStatOffsets>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 -->
 </Defs>

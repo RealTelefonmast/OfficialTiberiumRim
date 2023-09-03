@@ -4,7 +4,7 @@
 	<StatDef Abstract="True" Name="TiberiumStatBase">
 		<neverDisabled>true</neverDisabled>
 		<parts>
-			<li Class="TiberiumRim.StatPart_IsMechanoid">
+			<li Class="TR.StatPart_IsMechanoid">
 				<mode>Offset</mode>
 			</li>
 		</parts>
@@ -14,7 +14,7 @@
 		<defName>TiberiumCorrosionResistance</defName>
 		<label>corrosion resistance</label>
 		<description>Resistance from direct-contact Tiberium corrosion.</description>
-		<workerClass>TiberiumRim.StatWorker_TiberiumCorrosionResistance</workerClass>
+		<workerClass>TR.StatWorker_TiberiumCorrosionResistance</workerClass>
 		<category>TiberiumStats</category>
 		<defaultBaseValue>0</defaultBaseValue>
 		<minValue>0</minValue>
@@ -26,7 +26,7 @@
 		<defName>TiberiumDamageResistance</defName>
 		<label>damage resistance</label>
 		<description>Resistance from direct-contact Tiberium damage.</description>
-		<workerClass>TiberiumRim.StatWorker_TiberiumDamageResistance</workerClass>
+		<workerClass>TR.StatWorker_TiberiumDamageResistance</workerClass>
 		<category>TiberiumStats</category>
 		<defaultBaseValue>0</defaultBaseValue>
 		<minValue>0</minValue>
@@ -38,7 +38,7 @@
 		<defName>TiberiumInfectionResistance</defName>
 		<label>infection resistance</label>
 		<description>Resistance from direct-contact Tiberium infection.</description>
-		<workerClass>TiberiumRim.StatWorker_TiberiumInfResistance</workerClass>
+		<workerClass>TR.StatWorker_TiberiumInfResistance</workerClass>
 		<category>TiberiumStats</category>
 		<defaultBaseValue>0</defaultBaseValue>
 		<minValue>0</minValue>
@@ -50,7 +50,7 @@
 		<defName>TiberiumRadiationResistance</defName>
 		<label>radiation resistance</label>
 		<description>Resistance from direct Tiberium radiation.</description>
-		<workerClass>TiberiumRim.StatWorker_TiberiumRadResistance</workerClass>
+		<workerClass>TR.StatWorker_TiberiumRadResistance</workerClass>
 		<category>TiberiumStats</category>
 		<defaultBaseValue>0</defaultBaseValue>
 		<minValue>0</minValue>
@@ -62,7 +62,7 @@
 		<defName>TiberiumGasResistance</defName>
 		<label>gas resistance</label>
 		<description>Resistance from Tiberium gas infection.</description>
-		<workerClass>TiberiumRim.StatWorker_TiberiumGasResistance</workerClass>
+		<workerClass>TR.StatWorker_TiberiumGasResistance</workerClass>
 		<category>TiberiumStats</category>
 		<defaultBaseValue>0</defaultBaseValue>
 		<minValue>0</minValue>

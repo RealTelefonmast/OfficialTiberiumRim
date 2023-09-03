@@ -4,7 +4,7 @@ using TeleCore.Data.Events;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class CompTNS_Turret : Comp_TiberiumNetworkStructure
     {

@@ -2,10 +2,10 @@
 <Defs>
 	
 	<HediffDef ParentName="InjuryBase">
-		<defName>BlastOverpressure</defName>
-		<label>overpressure injury</label>
+		<defName>TR_BlastInjury</defName>
+		<label>blast injury</label>
 		<labelNoun>a blast pressure injury</labelNoun>
-		<description>Injury caused by extreme pressure.</description>
+		<description>Injury caused by extreme blast pressure.</description>
 		<comps>
 			<li Class="HediffCompProperties_TendDuration">
 				<labelTendedWell>bandaged</labelTendedWell>
@@ -15,16 +15,13 @@
 			<li Class="HediffCompProperties_Infecter">
 				<infectionChance>0.30</infectionChance>
 			</li>
-			<li Class="HediffCompProperties_GetsPermanent">
-				<permanentLabel>burn scar</permanentLabel>
-			</li>
 		</comps>
 		<injuryProps>
 			<painPerSeverity>0.01875</painPerSeverity>
 			<averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
 			<canMerge>true</canMerge>
-			<destroyedLabel>Burned off</destroyedLabel>
-			<destroyedOutLabel>Burned out</destroyedOutLabel>
+			<destroyedLabel>Torn off</destroyedLabel>
+			<destroyedOutLabel>Torn out</destroyedOutLabel>
 		</injuryProps>
 	</HediffDef>
 

@@ -1,5 +1,5 @@
 ﻿
-namespace TiberiumRim
+namespace TR
 {
     public class TiberiumVein : TiberiumCrystal
     {

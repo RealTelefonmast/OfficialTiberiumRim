@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef Name="TibRockBase" ParentName="BuildingNaturalBase_TR" Abstract="True" >
+	<TR.TRThingDef Name="TibRockBase" ParentName="BuildingNaturalBase_TR" Abstract="True" >
 		<thingClass>Mineable</thingClass>
 		<graphicData>
 			<texPath>Buildings/Natural/TibRock_Atlas</texPath>
@@ -13,7 +13,7 @@
 			</linkFlags>
 		</graphicData>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+			<li Class="TR.CompProperties_TiberiumRadiation">
 				<radius>3.75</radius>
 				<intensity>0.75</intensity>
 			</li>
@@ -40,9 +40,9 @@
 			<canBuildNonEdificesUnder>false</canBuildNonEdificesUnder>
 			<isResourceRock>false</isResourceRock>
 		</building>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
-	<TiberiumRim.TRThingDef ParentName="TibRockBase">
+	<TR.TRThingDef ParentName="TibRockBase">
 		<defName>GreenTiberiumRock</defName>
 		<label>green tiberium rock</label>
 		<description>Rocks infested with green Tiberium.</description>
@@ -63,9 +63,9 @@
 		</building>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="TibRockBase">
+	<TR.TRThingDef ParentName="TibRockBase">
 		<defName>BlueTiberiumRock</defName>
 		<label>blue tiberium rock</label>
 		<description>Rocks infested with blue Tiberium.</description>
@@ -86,9 +86,9 @@
 		</building>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="TibRockBase">
+	<TR.TRThingDef ParentName="TibRockBase">
 		<defName>RedTiberiumRock</defName>
 		<label>red tiberium rock</label>
 		<description>Rocks infested with red Tiberium.</description>
@@ -109,9 +109,9 @@
 		</building>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>FilthTiberiumRed</filthLeaving>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="TibRockBase">
+	<TR.TRThingDef ParentName="TibRockBase">
 		<defName>VeinTiberiumRock</defName>
 		<label>veiny rock</label>
 		<description>These rocks have moving veins growing all over and inside of them.</description>
@@ -126,6 +126,6 @@
 		</building>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>Filth_Blood</filthLeaving>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 </Defs>

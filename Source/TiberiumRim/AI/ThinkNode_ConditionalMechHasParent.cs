@@ -1,7 +1,7 @@
 ﻿using Verse;
 using Verse.AI;
 
-namespace TiberiumRim
+namespace TR
 {
     public class ThinkNode_ConditionalMechHasParent : ThinkNode_Conditional
     {

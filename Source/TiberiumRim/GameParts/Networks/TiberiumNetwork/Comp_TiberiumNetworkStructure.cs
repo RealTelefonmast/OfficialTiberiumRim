@@ -7,7 +7,7 @@ using TeleCore.Network.Data;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim;
+namespace TR;
 
 public class Comp_TiberiumNetworkStructure : Comp_Network
 {

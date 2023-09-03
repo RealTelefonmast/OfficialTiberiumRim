@@ -1,6 +1,6 @@
 ﻿using RimWorld;
 
-namespace TiberiumRim
+namespace TR
 {
     public class IncidentWorker_TiberiumSighting : IncidentWorker_TR
     {

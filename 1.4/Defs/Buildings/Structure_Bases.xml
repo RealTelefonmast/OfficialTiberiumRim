@@ -15,7 +15,7 @@
 		<parentGroup>All</parentGroup>
 	</TeleCore.ThingGroupDef>
 	
-	<TiberiumRim.TRThingDef Abstract="True" Name="LampBase_TR" ParentName="BuildingBase_TR">
+	<TR.TRThingDef Abstract="True" Name="LampBase_TR" ParentName="BuildingBase_TR">
 		<category>Building</category>
 		<minifiedDef>MinifiedThing</minifiedDef>
 		<altitudeLayer>Building</altitudeLayer>
@@ -55,9 +55,9 @@
 		<researchPrerequisites>
 			<li>Electricity</li>
 		</researchPrerequisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
-	<TiberiumRim.TRThingDef Abstract="True" Name="WallLampBase" ParentName="LampBase_TR">
+	<TR.TRThingDef Abstract="True" Name="WallLampBase" ParentName="LampBase_TR">
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<passability>Standable</passability>
 		<pathCost>0</pathCost>
@@ -76,11 +76,11 @@
 			<Steel>20</Steel>
 		</costList>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_WallLight</li>
+			<li>TR.PlaceWorker_WallLight</li>
 		</placeWorkers>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef Abstract="True" Name="GlowSourceBase" ParentName="EtherealThingBase">
+	<TR.TRThingDef Abstract="True" Name="GlowSourceBase" ParentName="EtherealThingBase">
 		<label>wall light glow</label>
 		<thingClass>ThingWithComps</thingClass>
 		<graphicData>
@@ -94,9 +94,9 @@
 		<drawerType>MapMeshOnly</drawerType>
 		<drawOffscreen>true</drawOffscreen>
 		<seeThroughFog>false</seeThroughFog>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef Name="WallBase_TR" ParentName="BuildingBase_TR" Abstract="True">
+	<TR.TRThingDef Name="WallBase_TR" ParentName="BuildingBase_TR" Abstract="True">
 		<graphicData>
 			<graphicClass>Graphic_single</graphicClass>
 			<linkType>CornerFiller</linkType>
@@ -149,9 +149,9 @@
 			</li>
 		</damageMultipliers>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef Name="DoorBase_TR" ParentName="BuildingBase_TR" Abstract="True">
+	<TR.TRThingDef Name="DoorBase_TR" ParentName="BuildingBase_TR" Abstract="True">
 		<thingClass>Building_Door</thingClass>
 		<category>Building</category>
 		<altitudeLayer>DoorMoveable</altitudeLayer>
@@ -195,7 +195,7 @@
 		<placeWorkers>
 			<li>PlaceWorker_DoorLearnOpeningSpeed</li>
 		</placeWorkers>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<ThingDef ParentName="BuildingBase_TR" Name="PowerConduitBase_TR" Abstract="True">
 		<description>A bundle of electrical cables for moving power around. Can be placed under walls and other buildings.</description>

@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.ThingFilterDef>
+	<TR.ThingFilterDef>
 		<defName>ThingFilter_Chunks</defName>
 		<filter>
 			<categories>
 				<li>StoneChunks</li>
 			</categories>
 		</filter>
-	</TiberiumRim.ThingFilterDef>
+	</TR.ThingFilterDef>
 	
-	<TiberiumRim.ThingFilterDef>
+	<TR.ThingFilterDef>
 		<defName>ThingFilter_RockWall</defName>
-		<worker>TiberiumRim.ThingFilterWorker_Mineable</worker>
-	</TiberiumRim.ThingFilterDef>
+		<worker>TR.ThingFilterWorker_Mineable</worker>
+	</TR.ThingFilterDef>
 
-	<TiberiumRim.ThingFilterDef>
+	<TR.ThingFilterDef>
 		<defName>PlantFilter_Grass</defName>
 		<filter>
 			<thingDefs>
@@ -23,9 +23,9 @@
 				<li>Plant_TallGrass</li>
 			</thingDefs>
 		</filter>
-	</TiberiumRim.ThingFilterDef>
+	</TR.ThingFilterDef>
 	
-	<TiberiumRim.ThingFilterDef>
+	<TR.ThingFilterDef>
 		<defName>PlantFilter_Bush</defName>
 		<filter>
 			<thingDefs>
@@ -33,18 +33,18 @@
 				<li>Plant_Brambles</li>
 			</thingDefs>
 		</filter>
-	</TiberiumRim.ThingFilterDef>
+	</TR.ThingFilterDef>
 
-	<TiberiumRim.ThingFilterDef>
+	<TR.ThingFilterDef>
 		<defName>PlantFilter_Exotic</defName>
 		<filter>
 			<thingDefs>
 				<li>Plant_HealrootWild</li>
 			</thingDefs>
 		</filter>
-	</TiberiumRim.ThingFilterDef>
+	</TR.ThingFilterDef>
 
-	<TiberiumRim.ThingFilterDef>
+	<TR.ThingFilterDef>
 		<defName>PlantFilter_Trees</defName>
 		<filter>
 			<thingDefs>
@@ -63,9 +63,9 @@
 				<li>Plant_TreeBamboo</li>
 			</thingDefs>
 		</filter>
-	</TiberiumRim.ThingFilterDef>
+	</TR.ThingFilterDef>
 	
-	<TiberiumRim.ThingFilterDef>
+	<TR.ThingFilterDef>
 		<defName>PlantFilter_FarmPlants</defName>
 		<filter>
 			<thingDefs>
@@ -79,6 +79,6 @@
 				<li>Plant_Hops</li>
 			</thingDefs>
 		</filter>
-	</TiberiumRim.ThingFilterDef>
+	</TR.ThingFilterDef>
 
 </Defs>

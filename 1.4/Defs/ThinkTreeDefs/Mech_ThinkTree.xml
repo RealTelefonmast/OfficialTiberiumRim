@@ -26,7 +26,7 @@
 				<li Class="ThinkNode_QueuedJob" />
 
 				<!-- Wait if drafted -->
-				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+				<li Class="TR.ThinkNode_ConditionalColonistOrMech">
 					<subNodes>
 						<li Class="ThinkNode_Tagger">
 							<tagToGive>DraftedOrder</tagToGive>
@@ -55,7 +55,7 @@
 				-->
 
 				<!-- If on colonist team, do forced and emergency work -->
-				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+				<li Class="TR.ThinkNode_ConditionalColonistOrMech">
 					<subNodes>
 					<!-- Seek allowed area -->
 					<li Class="JobGiver_SeekAllowedArea" />
@@ -95,7 +95,7 @@
 				-->
 				
 				<!-- Main colonist behavior core -->
-				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+				<li Class="TR.ThinkNode_ConditionalColonistOrMech">
 					<subNodes>
 						<li Class="ThinkNode_Subtree">
 							<treeDef>MainMechBehaviour</treeDef>
@@ -112,7 +112,7 @@
 				-->
 
 				<!-- Idle colonist -->
-				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+				<li Class="TR.ThinkNode_ConditionalColonistOrMech">
 					<subNodes>
 						<li Class="ThinkNode_Tagger">
 							<tagToGive>Idle</tagToGive>
@@ -148,7 +148,7 @@
 				<li Class="ThinkNode_QueuedJob" />
 
 				<!-- Wait if drafted -->
-				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+				<li Class="TR.ThinkNode_ConditionalColonistOrMech">
 				  <subNodes>
 					<li Class="ThinkNode_Tagger">
 					  <tagToGive>DraftedOrder</tagToGive>
@@ -181,7 +181,7 @@
 				</li>
 				
 				<!-- Main Mech behavior core -->
-				<li Class="TiberiumRim.ThinkNode_ConditionalColonistOrMech">
+				<li Class="TR.ThinkNode_ConditionalColonistOrMech">
 					<subNodes>
 						<li Class="ThinkNode_Subtree">
 							<treeDef>MainMechBehaviour</treeDef>

@@ -1,6 +1,6 @@
 ﻿using TeleCore;
 
-namespace TiberiumRim
+namespace TR
 {
     public class HediffComp_ExplosiveTrigger : HediffComp_Gizmo
     {

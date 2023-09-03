@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef ParentName="GDI_Gun">
+	<TR.TRThingDef ParentName="GDI_Gun">
 		<defName>Sovjet_TeslaGun</defName>
 		<label>mobile tesla thrower</label>
 		<description>asd</description>
@@ -75,6 +75,6 @@
 				<Crafting>10</Crafting>
 			</skillRequirements>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 </Defs>

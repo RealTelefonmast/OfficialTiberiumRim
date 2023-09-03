@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<RootNamespace>TiberiumRim</RootNamespace>
+		<RootNamespace>TR</RootNamespace>
 		<AssemblyName>TiberiumRim</AssemblyName>
 		<TargetFramework>net48</TargetFramework>
 		<LangVersion>latest</LangVersion>
@@ -46,7 +46,7 @@
 
 		<PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.4" />
 
-		<PackageReference Include="TeleCore" Version="1.9.3.5" />
+		<PackageReference Include="TeleCore" Version="1.9.3.7" />
 		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.0.1" ExcludeAssets="runtime" />
 	</ItemGroup>
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef Name="TiberiumChunkBase" ParentName="ChunkBase" Abstract="True">
-		<thingClass>TiberiumRim.TiberiumChunk</thingClass>
+	<TR.TRThingDef Name="TiberiumChunkBase" ParentName="ChunkBase" Abstract="True">
+		<thingClass>TR.TiberiumChunk</thingClass>
 		<description>A Tiberium chunk, it will slowly deteriorate while emitting harmful radiation.</description>
 		<statBases>
 			<Mass>20</Mass>
@@ -44,15 +44,15 @@
 				</effecters>
 			</li>
 			-->
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+			<li Class="TR.CompProperties_TiberiumRadiation">
 				<radius>5</radius>
 				<intensity>0.65</intensity>
 			</li>
 		</comps>
 		<tickerType>Rare</tickerType>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
   
-	<TiberiumRim.TRThingDef ParentName="TiberiumChunkBase">
+	<TR.TRThingDef ParentName="TiberiumChunkBase">
 		<defName>GreenTiberiumChunk</defName>
 		<label>green tiberium chunk</label>
 		<statBases>
@@ -78,9 +78,9 @@
 		</comps>
 		-->
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="TiberiumChunkBase">
+	<TR.TRThingDef ParentName="TiberiumChunkBase">
 		<defName>BlueTiberiumChunk</defName>
 		<label>blue tiberium chunk</label>
 		<statBases>
@@ -92,9 +92,9 @@
 			<flipExtraRotation>80</flipExtraRotation>
 		</graphicData>
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="TiberiumChunkBase">
+	<TR.TRThingDef ParentName="TiberiumChunkBase">
 		<defName>RedTiberiumChunk</defName>
 		<label>red tiberium chunk</label>
 		<thingClass>ThingWithComps</thingClass>
@@ -107,11 +107,11 @@
 			<flipExtraRotation>80</flipExtraRotation>
 		</graphicData>
 		<filthLeaving>FilthTiberiumRed</filthLeaving>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="TiberiumChunkBase">
+	<TR.TRThingDef ParentName="TiberiumChunkBase">
 		<defName>VeinTiberiumChunk</defName>
-		<thingClass>TiberiumRim.TRThing</thingClass>
+		<thingClass>TR.TRThing</thingClass>
 		<label>veiny chunk</label>
 		<description>A vein infested chunk, I swear I saw it moving.</description>
 		<statBases>
@@ -122,6 +122,6 @@
 		<graphicData>
 			<texPath>Items/Misc/VeinRock</texPath>
 		</graphicData>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 </Defs>

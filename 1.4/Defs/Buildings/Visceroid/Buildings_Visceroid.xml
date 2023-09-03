@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef Abstract="True" Name="BuildingBaseVisceral_TR" ParentName="BuildingNaturalBase_TR">
+	<TR.TRThingDef Abstract="True" Name="BuildingBaseVisceral_TR" ParentName="BuildingNaturalBase_TR">
 		<modExtensions Inherit="False">
 			<li Class="TeleCore.SubMenuExtension">
 				<groupDef>Tiberium</groupDef>
@@ -9,13 +9,13 @@
 				<isDevOption>true</isDevOption>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 	<!-- Visceral Stuff -->
-	<TiberiumRim.TRThingDef ParentName="BuildingBaseVisceral_TR">
+	<TR.TRThingDef ParentName="BuildingBaseVisceral_TR">
 		<defName>VisceralPod</defName>
 		<label>visceral pod</label>
-		<thingClass>TiberiumRim.VisceralPod</thingClass>
+		<thingClass>TR.VisceralPod</thingClass>
 		<tickerType>Normal</tickerType>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -24,7 +24,7 @@
 			<drawSize>(3,3)</drawSize>
 		</graphicData>
 		<inspectorTabs>
-			<li>TiberiumRim.ITab_ContainedPawn_Health</li>
+			<li>TR.ITab_ContainedPawn_Health</li>
 		</inspectorTabs>
 		<statBases>
 			<MaxHitPoints>300</MaxHitPoints>
@@ -64,9 +64,9 @@
 		<rotatable>false</rotatable>
 		<size>(1,1)</size>
 		<blockPlants>true</blockPlants>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingBaseVisceral_TR">
+	<TR.TRThingDef ParentName="BuildingBaseVisceral_TR">
 		<defName>VisceralHive</defName>
 		<label>visceral hive</label>
 		<graphicData>
@@ -77,6 +77,6 @@
 		</graphicData>
 
 		
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 </Defs>

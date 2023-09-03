@@ -2,7 +2,7 @@
 using RimWorld.Planet;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class WorldDataInfo : WorldInfo
     {

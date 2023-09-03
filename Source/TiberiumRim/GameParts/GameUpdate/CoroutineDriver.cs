@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace TiberiumRim
+namespace TR
 {
     public class CoroutineDriver
     {

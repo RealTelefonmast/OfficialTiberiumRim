@@ -1,7 +1,7 @@
 ﻿using TeleCore;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class PlaceWorker_WallLight : PlaceWorker
     {

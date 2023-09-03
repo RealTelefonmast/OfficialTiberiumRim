@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace TiberiumRim
+namespace TR
 {
     /* Vertex Triangulation thanks to https://www.habrador.com/tutorials/math/10-triangulation/
      *

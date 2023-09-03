@@ -1,6 +1,6 @@
 ﻿using TeleCore;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Verb_TR : Verb_ProjectileExtended
     {

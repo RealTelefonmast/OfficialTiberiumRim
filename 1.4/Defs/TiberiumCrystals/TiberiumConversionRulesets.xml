@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>GreenConversion</defName>
 		<baseType>TiberiumGreen</baseType>
 		<baseTerrain>TiberiumSoilGreen</baseTerrain>
@@ -31,9 +31,9 @@
 			<li>ThingFilter_Chunks	->	GreenTiberiumChunk	,0.05</li>
 			<li>SteamGeyser			->	TiberiumGeyser		,0.1</li>
 		</thingConversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>GreenPodConversion</defName>
 		<baseType>TiberiumPod</baseType>
 		<baseTerrain>TiberiumPodSoil</baseTerrain>
@@ -47,9 +47,9 @@
 			<li>PlantFilter_Trees, 	FloraOptions_Trees	, 	TerrainOption_Flora</li>
 			<li>PlantFilter_Grass, 	FloraOptions_General, 	TerrainOption_Flora</li>
 		</floraConversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>GreenMossConversion</defName>
 		<baseType>TiberiumMossGreen</baseType>
 		<baseTerrain>TiberiumMossyTerrainGreen</baseTerrain>
@@ -62,10 +62,10 @@
 			<li>ThingFilter_Chunks->GreenTiberiumChunk,0.01</li>
 			<li>SteamGeyser->TiberiumGeyser,0.05</li>
 		</thingConversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
 	<!-- Blue -->
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>BlueConversion</defName>
 		<baseType>TiberiumBlue</baseType>
 		<baseTerrain>TiberiumSoilBlue</baseTerrain>
@@ -92,9 +92,9 @@
 			<li>ThingFilter_Chunks->BlueTiberiumChunk,0.05</li>
 			<li>SteamGeyser->TiberiumGeyser,0.1</li>
 		</thingConversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>BluePodConversion</defName>
 		<baseType>TiberiumPodBlue</baseType>
 		<baseTerrain>TiberiumPodSoilBlue</baseTerrain>
@@ -108,9 +108,9 @@
 			<li>PlantFilter_Trees, 	FloraOptions_Trees, 	TerrainOption_Flora</li>
 			<li>PlantFilter_Grass, 	FloraOptions_General, 	TerrainOption_Flora</li>
 		</floraConversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>BlueMossConversion</defName>
 		<baseType>TiberiumMossBlue</baseType>
 		<baseTerrain>TiberiumMossyTerrainBlue</baseTerrain>
@@ -123,10 +123,10 @@
 			<li>ThingFilter_Chunks	->BlueTiberiumChunk	,0.01</li>
 			<li>SteamGeyser			->TiberiumGeyser	,0.05</li>
 		</thingConversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
 	<!-- Red -->
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>RedConversion</defName>
 		<baseType>TiberiumRed</baseType>
 		<baseTerrain>TiberiumSoilRed</baseTerrain>
@@ -150,10 +150,10 @@
 			<li>ThingFilter_Chunks	->RedTiberiumChunk	,0.05</li>
 			<li>SteamGeyser			->TiberiumGeyser	,0.1</li>
 		</thingConversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
 	<!-- Misc -->
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>GlacierConversion</defName>
 		<baseType>TiberiumGlacier</baseType>
 		<conversions>
@@ -164,9 +164,9 @@
 		<thingConversions>
 			<li>ThingFilter_RockWall->GreenTiberiumRock,0.01</li>
 		</thingConversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>AboreusConversion</defName>
 		<baseType>TiberiumAboreus</baseType>
 		<baseTerrain>TiberiumSoilAboreus</baseTerrain>
@@ -182,9 +182,9 @@
 			<li>ThingFilter_Chunks	->GreenTiberiumChunk,0.05</li>
 			<li>SteamGeyser			->TiberiumGeyser	,0.1</li>
 		</thingConversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>VeinConversion</defName>
 		<baseType>TiberiumVein</baseType>
 		<baseTerrain>TiberiumSoilVein</baseTerrain>
@@ -197,10 +197,10 @@
 			<li>ThingFilter_RockWall->VeinTiberiumRock,0.05</li>
 			<li>ThingFilter_Chunks->VeinTiberiumChunk,0.05</li>
 		</thingConversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
 	<!--
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>BlueConversion</defName>
 		<baseType>TiberiumBlue</baseType>
 		<conversions>
@@ -214,18 +214,18 @@
 			<li>TerrainFilter_WaterShallow, TiberiumShallowWater,		  TiberiumGlacier</li>
 			<li>TerrainFilter_WaterMoving,  TiberiumWaterMovingChestDeep, TiberiumGlacier</li>
 		</conversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>RedConversion</defName>
 		<baseType>TiberiumRed</baseType>
 		<conversions>
 			<li>Soil,	  			TiberiumSoilRed, TiberiumRed</li>
 			<li>TerrainFilter_Sand,	TiberiumSandRed, TiberiumShardsRed</li>
 		</conversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>GreenPodConversion</defName>
 		<baseType>TiberiumPod</baseType>
 		<conversions>
@@ -233,9 +233,9 @@
 			<li>SoilRich, 			TiberiumPodSoil, 			TiberiumPod</li>
 			<li>TerrainFilter_Moss, TiberiumMossyTerrainGreen,	TiberiumPod</li>
 		</conversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>BluePodConversion</defName>
 		<baseType>TiberiumPodBlue</baseType>
 		<conversions>
@@ -243,35 +243,35 @@
 			<li>SoilRich, 			TiberiumPodSoilBlue, 		TiberiumPodBlue</li>
 			<li>TerrainFilter_Moss, TiberiumMossyTerrainBlue,	TiberiumPodBlue</li>
 		</conversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>GreenMossConversion</defName>
 		<baseType>TiberiumMossGreen</baseType>
 		<conversions>
 			<li>TerrainFilter_Moss, TiberiumMossyTerrainGreen,	TiberiumMossGreen</li>
 			<li>TerrainFilter_Stone, TiberiumStoneGreen, 		TiberiumMossGreen</li>
 		</conversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>BlueMossConversion</defName>
 		<baseType>TiberiumMossBlue</baseType>
 		<conversions>
 			<li>TerrainFilter_Moss, TiberiumMossyTerrainBlue,	TiberiumMossBlue</li>
 			<li>TerrainFilter_Stone, TiberiumStoneBlue, 		TiberiumMossBlue</li>
 		</conversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>AboreusConversion</defName>
 		<baseType>TiberiumAboreus</baseType>
 		<conversions>
 			<li>TerrainFilter_Soil,	TiberiumSoilAboreus, TiberiumAboreus</li>
 		</conversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>VeinConversion</defName>
 		<baseType>TiberiumVein</baseType>
 		<conversions>
@@ -280,9 +280,9 @@
 			<li>TerrainFilter_Sand,	 TiberiumSandRed, 		TiberiumVein</li>
 			<li>TerrainFilter_Stone, TiberiumSoilVeinFlesh, TiberiumVein</li>
 		</conversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	
-	<TiberiumRim.TiberiumConversionRulesetDef>
+	<TR.TiberiumConversionRulesetDef>
 		<defName>GlacierConversion</defName>
 		<baseType>TiberiumGlacier</baseType>
 		<conversions>
@@ -290,6 +290,6 @@
 			<li>TerrainFilter_WaterShallow, TiberiumShallowWater,		  TiberiumGlacier</li>
 			<li>TerrainFilter_WaterMoving,  TiberiumWaterMovingChestDeep, TiberiumGlacier</li>
 		</conversions>
-	</TiberiumRim.TiberiumConversionRulesetDef>
+	</TR.TiberiumConversionRulesetDef>
 	-->
 </Defs>

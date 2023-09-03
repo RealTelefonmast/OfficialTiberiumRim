@@ -4,7 +4,7 @@ using TeleCore;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class RadiationInfectionGrid : IExposable
     {

@@ -220,7 +220,7 @@
 			<Steel>15</Steel>
 		</products>
 		<recipeUsers>
-			<li>TiberiumCrafter</li>
+			<li>TR_AtomicSynthesizer</li>
 		</recipeUsers>
 		<workSkill>Crafting</workSkill>
 	</TeleCore.RecipeDef_Network>	
@@ -516,7 +516,7 @@
 	-->
 	<!--
 
-	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
+	<RecipeDef Class="TR.RecipeDef_Tiberium">
 		<defName>MakeBookRiparius</defName>
 		<label>Write about green Tiberium.</label>
 		<description>writing about green Tiberium.</description>
@@ -547,7 +547,7 @@
 		<workSkill>Crafting</workSkill>
 	</RecipeDef>
 	
-	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
+	<RecipeDef Class="TR.RecipeDef_Tiberium">
 		<defName>MakeBookVinifera</defName>
 		<label>Write about blue Tiberium.</label>
 		<description>writing about blue Tiberium.</description>
@@ -578,7 +578,7 @@
 		<workSkill>Crafting</workSkill>
 	</RecipeDef>
 	
-	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
+	<RecipeDef Class="TR.RecipeDef_Tiberium">
 		<defName>MakeBookRutila</defName>
 		<label>Write about red Tiberium.</label>
 		<description>writing about red Tiberium.</description>

@@ -2,9 +2,9 @@
 <Defs>
 	
 	<!-- Intact Meteor-->
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+	<TR.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>TiberiumMeteoriteChunk</defName>
-		<thingClass>TiberiumRim.TiberiumMeteorite</thingClass>
+		<thingClass>TR.TiberiumMeteorite</thingClass>
 		<description>A metoerite of unknown origin. Data suggests this meteorite carries an extremely agressive self-replicating mineral called "Tiberium".</description>
 		<label>tiberium meteorite chunk</label>
 		<size>(3,3)</size>
@@ -26,8 +26,8 @@
 		<rotatable>false</rotatable>
 		<blockPlants>true</blockPlants>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
-				<compClass>TiberiumRim.Comp_RadiationLeak</compClass>
+			<li Class="TR.CompProperties_TiberiumRadiation">
+				<compClass>TR.Comp_RadiationLeak</compClass>
 				<leakDamageThreshold>0.6</leakDamageThreshold>
 				<radius>5.5</radius>
 				<intensity>1</intensity>
@@ -52,10 +52,10 @@
 				</discovery>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<!--Natural formations-->
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+	<TR.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>GenesisPit</defName>
 		<label>genesis pit</label>
 		<description>Let there be glow.</description>
@@ -73,9 +73,9 @@
 		<altitudeLayer>Floor</altitudeLayer>
 		<size>(8,8)</size>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+	<TR.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>TiberiumTower</defName>
 		<description>A massive crystalline tower, created via multiple Tiberium crystals merging into one bigger crystal. However, this structure does not seem to spread more Tiberium.</description>
 		<label>tiberium tower</label>
@@ -95,7 +95,7 @@
 		<rotatable>false</rotatable>
 		<blockPlants>true</blockPlants>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+			<li Class="TR.CompProperties_TiberiumRadiation">
 				<radius>8</radius>
 				<intensity>1.5</intensity>
 			</li>
@@ -105,14 +105,14 @@
 			</li>
 		</comps>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<!-- Tiberium Geyser -->
-	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+	<TR.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>TiberiumGeyser</defName>
 		<label>tiberium geyser</label>
 		<description>This tiberium infested geyser has a massive tiberium gas deposit beneath it, however, the surrounding ground has been destabilized and will occasionally create toxic gas clouds.\nIt may be useful for a Tiberium Spike!</description>
-		<thingClass>TiberiumRim.Building_TiberiumGeyser</thingClass>
+		<thingClass>TR.Building_TiberiumGeyser</thingClass>
 		<graphicData>
 			<texPath>Buildings/Natural/TibGeyser/TibGeyser</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -141,12 +141,12 @@
 			<claimable>false</claimable>
 			<deconstructible>false</deconstructible>
 		</building>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="EtherealThingBase_TR">
+	<TR.TRThingDef ParentName="EtherealThingBase_TR">
 		<defName>TiberiumGeyserCrack</defName>
 		<label>geyser crack</label>
-		<thingClass>TiberiumRim.TiberiumGeyserCrack</thingClass>
+		<thingClass>TR.TiberiumGeyserCrack</thingClass>
 		<tickerType>Never</tickerType>
 		<altitudeLayer>Floor</altitudeLayer>
 		<drawerType>MapMeshOnly</drawerType>
@@ -165,6 +165,6 @@
 			<claimable>false</claimable>
 			<deconstructible>false</deconstructible>
 		</building>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 </Defs>

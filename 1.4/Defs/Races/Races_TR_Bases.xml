@@ -55,7 +55,7 @@
   
 
 	<ThingDef Name="AnimalBase_TR" ParentName="BasePawn_TR" Abstract="True" >
-		<thingClass>TiberiumRim.TiberiumPawn</thingClass>
+		<thingClass>TR.TiberiumPawn</thingClass>
 		<statBases>
 			<Flammability>0.5</Flammability>
 			<ToxicResistance>1</ToxicResistance>
@@ -152,16 +152,16 @@
 		</race>
 	</ThingDef>
 	
-  	<TiberiumRim.TiberiumKindDef Name="VisceralKindBase" Abstract="True">
+  	<TR.TiberiumKindDef Name="VisceralKindBase" Abstract="True">
 		<ecoSystemWeight>0</ecoSystemWeight>
 		<canArriveManhunter>false</canArriveManhunter>
 		<wildGroupSize>1~1</wildGroupSize>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
 	
-	<TiberiumRim.TiberiumKindDef Name="AnimalKindBase_TR" Abstract="True">
+	<TR.TiberiumKindDef Name="AnimalKindBase_TR" Abstract="True">
 		<ecoSystemWeight>0</ecoSystemWeight>
 		<canArriveManhunter>false</canArriveManhunter>
 		<wildGroupSize>1~1</wildGroupSize>
-	</TiberiumRim.TiberiumKindDef>
+	</TR.TiberiumKindDef>
   
 </Defs>

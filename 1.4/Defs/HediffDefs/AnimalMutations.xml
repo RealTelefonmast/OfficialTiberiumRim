@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.AnimalMutationDef>
+	<TR.AnimalMutationDef>
 		<defName>TiberiumFiendMutations</defName>
 		<conversions>
 			<li>
@@ -63,9 +63,9 @@
 				</fromPawn>
 			</li>
 		</conversions>
-	</TiberiumRim.AnimalMutationDef>
+	</TR.AnimalMutationDef>
 
-	<!--TiberiumRim.AnimalMutationDef>
+	<!--TR.AnimalMutationDef>
 		<defName>TiberiumFiendMutations</defName>
 		<conversions>
 			<li>
@@ -127,6 +127,6 @@
 				</fromPawn>
 			</li>
 		</conversions>
-	</TiberiumRim.AnimalMutationDef-->
+	</TR.AnimalMutationDef-->
 	
 </Defs>

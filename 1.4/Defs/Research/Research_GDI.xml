@@ -2,7 +2,7 @@
 <Defs>
 
 <!--
-	<TiberiumRim.TResearchGroupDef>
+	<TR.TResearchGroupDef>
 		<defName>GDIGroup</defName>
 		<label>GDI (Not Working Yet)</label>	
 		<priority>1</priority>
@@ -10,10 +10,10 @@
 			<li>RelationBond</li>
 			<li>BasicArsenal</li>
 		</researchProjects>
-	</TiberiumRim.TResearchGroupDef>
+	</TR.TResearchGroupDef>
 	
 	
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>RelationBond</defName>
 		<label>Establishing Relations</label>	
 		<researchType>communication</researchType>
@@ -23,9 +23,9 @@
 		<tasks>
 			<li>RelationTask</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>RelationTask</defName>
 		<label>Gain Reputation</label>		
 		<descriptionShort>Remain in contact with GDI.</descriptionShort>
@@ -39,10 +39,10 @@
 		</taskTarget>
 		<workType>Research</workType>
 		<workAmount>500</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
 
-	<TiberiumRim.TResearchDef>
+	<TR.TResearchDef>
 		<defName>BasicArsenal</defName>
 		<label>Basic Arsenal</label>	
 		<researchType>tinkering</researchType>
@@ -53,9 +53,9 @@
 			<li>BasicArsenal_T1</li>
 			<li>BasicArsenal_T2</li>
 		</tasks>
-	</TiberiumRim.TResearchDef>
+	</TR.TResearchDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>BasicArsenal_T1</defName>
 		<label>Evaluate Blueprints</label>		
 		<descriptionShort>.</descriptionShort>
@@ -64,14 +64,14 @@
 		</skillRequirements>
 		<taskTarget>
 			<targetDefs>
-				<li>TiberiumWorkbench</li>
+				<li>TR_TibWorkbench</li>
 			</targetDefs>
 		</taskTarget>
 		<workType>Research</workType>
 		<workAmount>500</workAmount>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 	
-	<TiberiumRim.TResearchTaskDef>
+	<TR.TResearchTaskDef>
 		<defName>BasicArsenal_T2</defName>
 		<label>Craft Prototype</label>		
 		<descriptionShort>.</descriptionShort>
@@ -80,7 +80,7 @@
 				<GDI_StandardRifle>1</GDI_StandardRifle>
 			</thingsToCreate>
 		</creationTasks>
-	</TiberiumRim.TResearchTaskDef>
+	</TR.TResearchTaskDef>
 -->
 	
 </Defs>

@@ -7,7 +7,7 @@ using TeleCore.Data.Events;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public enum VisceralStage
     {

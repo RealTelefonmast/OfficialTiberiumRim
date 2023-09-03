@@ -10,7 +10,7 @@ using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace TiberiumRim
+namespace TR
 {
     public enum HarvestMode
     {
@@ -287,6 +287,7 @@ namespace TiberiumRim
 
         private void ResolveNewRefinery(CompTNS_Refinery lastParent = null)
         {
+            if (Dead || !Spawned) return;
             var Refineries = NetworkInfo[TiberiumDefOf.TiberiumNetwork].TotalPartSet[NetworkRole.Producer];
             if (Refineries.Count <= 0) return;
 

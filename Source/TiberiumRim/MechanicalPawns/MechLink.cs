@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     // A list of linked mechs for a mech station
     public class MechLink : IExposable

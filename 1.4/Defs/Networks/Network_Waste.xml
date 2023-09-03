@@ -6,7 +6,7 @@
 		<label>Waste Network</label>
 		<labelShort>Waste</labelShort>
 		<containerLabel>Waste Storage</containerLabel>
-		<controllerDef>TiberiumNetworkController</controllerDef>
+		<controllerDef>TR_TiberiumNetworkController</controllerDef>
 		<transmitterDef>TiberiumPipe</transmitterDef>
 		<transmitterGraphic>
 			<texPath>Buildings/Common/Network/Pipe_Tib</texPath>

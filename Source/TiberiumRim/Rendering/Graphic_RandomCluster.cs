@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Graphic_RandomCluster : Graphic_Collection
     {

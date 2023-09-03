@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     //This will spawn additional tiberium meteorites
     public class IncidentWorker_TiberiumArrival : IncidentWorker_TR

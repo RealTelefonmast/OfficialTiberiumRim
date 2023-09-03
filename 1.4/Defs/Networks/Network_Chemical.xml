@@ -6,7 +6,7 @@
 		<label>Chemical Network</label>
 		<labelShort>Chemical</labelShort>
 		<containerLabel>Chemical Storage</containerLabel>
-		<controllerDef>TiberiumExtractor</controllerDef>
+		<controllerDef>TR_TiberiumExtractor</controllerDef>
 		<transmitterDef>ChemicalPipe</transmitterDef>
 		<transmitterGraphic>
 			<texPath>Buildings/Common/Pollution/Pipe_Air</texPath>
@@ -21,7 +21,7 @@
 		</overlayGraphic>
 	</TeleCore.NetworkDef>
 	
-	<TiberiumRim.TRThingDef ParentName="NetworkPipeBase">
+	<TR.TRThingDef ParentName="NetworkPipeBase">
 		<defName>ChemicalPipe</defName>
 		<label>chemical pipe</label>
 		<description>This structure connects Chemical processing structures on the Chemical Network.</description>
@@ -48,11 +48,17 @@
 						<roles>
 							<li>Transmitter</li>
 						</roles>
+						<volumeConfig>
+							<capacity>400</capacity>
+							<values>
+								<fromCollection>ChemicalNetwork</fromCollection>
+							</values>
+						</volumeConfig>
 					</li>
 				</networks>
 			</li>
 		</comps>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<!-- Metals -->
 	<TeleCore.NetworkValueDef>

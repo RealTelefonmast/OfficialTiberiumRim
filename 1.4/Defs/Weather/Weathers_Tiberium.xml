@@ -23,7 +23,7 @@
 		<eventMakers>
 			<li>
 				<averageInterval>90</averageInterval>
-				<eventClass>TiberiumRim.WeatherEvent_IonStrike</eventClass>
+				<eventClass>TR.WeatherEvent_IonStrike</eventClass>
 			</li>
 		</eventMakers>
 		

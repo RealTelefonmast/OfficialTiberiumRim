@@ -7,7 +7,7 @@ using TeleCore.Data.Events;
 using Verse;
 using Verse.Sound;
 
-namespace TiberiumRim
+namespace TR
 {
     ///TODO: Implement with underground resource layer
     public class Building_TiberiumGeyser : TRBuilding

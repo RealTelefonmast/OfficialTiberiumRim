@@ -21,12 +21,12 @@
 		<rotatable>false</rotatable>
 	</ThingDef>
 
-	<TiberiumRim.ParticleDef Name="SporeBase" Abstract="True">
+	<TR.ParticleDef Name="SporeBase" Abstract="True">
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<shouldBeSaved>true</shouldBeSaved>
-		<particleClass>TiberiumRim.TiberiumSpore</particleClass>
+		<particleClass>TR.TiberiumSpore</particleClass>
 		<graphicData>
-			<graphicClass>TiberiumRim.Graphic_Particle</graphicClass>
+			<graphicClass>TR.Graphic_Particle</graphicClass>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<solidTime>300</solidTime>
@@ -36,7 +36,7 @@
 		<sizeRange>0.1~0.3</sizeRange>
 		<wiggleRange>-0.018~0.018</wiggleRange>
 		<speedRange>0.4~0.85</speedRange>
-	</TiberiumRim.ParticleDef>
+	</TR.ParticleDef>
 	
 	<!-- BLOSSOM -->
 	<ThingDef ParentName="MoteBase_TR">
@@ -131,32 +131,32 @@
 	
 	
 	<!-- PARTICLE -->
-	<TiberiumRim.ParticleDef ParentName="SporeBase">
+	<TR.ParticleDef ParentName="SporeBase">
 		<defName>TiberiumSpore</defName>
 		<graphicData>
 			<texPath>VisualFX/Spore2</texPath>
 		</graphicData>
-	</TiberiumRim.ParticleDef>
+	</TR.ParticleDef>
 	
-	<TiberiumRim.ParticleDef ParentName="SporeBase">
+	<TR.ParticleDef ParentName="SporeBase">
 		<defName>TiberiumDustSpore</defName>
 		<graphicData>
 			<texPath>VisualFX/DustParticle</texPath>
 		</graphicData>
-	</TiberiumRim.ParticleDef>
+	</TR.ParticleDef>
 
-	<TiberiumRim.ParticleDef ParentName="SporeBase">
+	<TR.ParticleDef ParentName="SporeBase">
 		<defName>BlossomSpore</defName>
-		<particleClass>TiberiumRim.BlossomSpore</particleClass>
+		<particleClass>TR.BlossomSpore</particleClass>
 		<graphicData>
 			<texPath>VisualFX/Spore2</texPath>
 		</graphicData>
-	</TiberiumRim.ParticleDef>
+	</TR.ParticleDef>
 	
-	<TiberiumRim.ParticleDef>
+	<TR.ParticleDef>
 		<defName>TiberiumParticle</defName>
 		<graphicData>
-			<graphicClass>TiberiumRim.Graphic_Particle</graphicClass>
+			<graphicClass>TR.Graphic_Particle</graphicClass>
 			<texPath>VisualFX/DustParticle</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
@@ -170,7 +170,7 @@
 		<wiggleRange>-0.018~0.018</wiggleRange>
 		<speedRange>0.5~0</speedRange>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
-	</TiberiumRim.ParticleDef>
+	</TR.ParticleDef>
 	
 	<!-- TEST -->
 	

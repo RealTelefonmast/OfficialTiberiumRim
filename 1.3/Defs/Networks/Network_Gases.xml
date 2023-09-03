@@ -5,7 +5,7 @@
 		<defName>AtmosphericNetwork</defName>
 		<containerLabel>Gas Storage</containerLabel>
 		<transmitterDef>AtmosphericPipe</transmitterDef>
-		<controllerDef>AtmosphericPump</controllerDef>
+		<controllerDef>AtmosphericController</controllerDef>
 		<transmitterGraphic>
 			<texPath>Buildings/Common/Pollution/Pipe_Air</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

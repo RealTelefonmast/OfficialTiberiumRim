@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Comp_RadiationLeak : ThingComp_TiberiumRadiation, IRadiationSource
     {

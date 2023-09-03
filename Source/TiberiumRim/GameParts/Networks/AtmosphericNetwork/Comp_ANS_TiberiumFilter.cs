@@ -5,7 +5,7 @@ using TeleCore.Network.Data;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Comp_ANS_TiberiumFilter : Comp_AtmosphericNetworkStructure
     {

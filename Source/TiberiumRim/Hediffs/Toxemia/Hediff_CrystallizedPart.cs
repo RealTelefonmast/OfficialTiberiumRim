@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class Hediff_CrystallizedPart : Hediff_MissingPart
     {

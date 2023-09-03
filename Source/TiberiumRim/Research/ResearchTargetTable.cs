@@ -4,7 +4,7 @@ using RimWorld;
 using TeleCore;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class ResearchTargetTable : IExposable
     {

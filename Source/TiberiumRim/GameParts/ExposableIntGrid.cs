@@ -1,7 +1,7 @@
 ﻿using System;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class ExposableIntGrid : IExposable
     {

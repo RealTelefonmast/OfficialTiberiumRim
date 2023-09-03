@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<Def Class="TiberiumRim.TiberiumControlDef">
+	<Def Class="TR.TiberiumControlDef">
 		<defName>Main</defName>
 		<VeinHitDamage>6</VeinHitDamage>
 		<TiberiumLeakScale>1</TiberiumLeakScale>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>Nod_Shrine</defName>
 		<label>shrine</label>
 		<description>Nod's advanced research facility. The shrine of the brotherhood.</description>
@@ -69,6 +69,6 @@
 				<category>Research</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 </Defs>

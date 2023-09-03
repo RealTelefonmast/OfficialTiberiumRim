@@ -2,7 +2,7 @@
 using System.Linq;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class ThingOptionsDef : Def
     {

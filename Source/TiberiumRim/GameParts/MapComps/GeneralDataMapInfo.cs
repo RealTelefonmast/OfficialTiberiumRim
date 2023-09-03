@@ -1,7 +1,7 @@
 ﻿using TeleCore;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     /// <summary>
     /// Implementation of a storage structure for all kinds of data used by the mod.

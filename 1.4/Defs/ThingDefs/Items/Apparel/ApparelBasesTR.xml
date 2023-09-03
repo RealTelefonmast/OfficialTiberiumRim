@@ -45,7 +45,7 @@
 			<effectWorking>Tailor</effectWorking>
 			<soundWorking>Recipe_Tailor</soundWorking>
 			<recipeUsers>
-				<li>TiberiumWorkbench</li>
+				<li>TR_TibWorkbench</li>
 			</recipeUsers>
 			<unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
 			<defaultIngredientFilter>
@@ -70,7 +70,7 @@
 			<effectWorking>Smith</effectWorking>
 			<soundWorking>Recipe_Smith</soundWorking>
 			<recipeUsers>
-				<li>TiberiumWorkbench</li>
+				<li>TR_TibWorkbench</li>
 			</recipeUsers>
 			<unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
 			<defaultIngredientFilter>
@@ -95,7 +95,7 @@
 			<effectWorking>Smith</effectWorking>
 			<soundWorking>Recipe_Machining</soundWorking>
 			<recipeUsers>
-				<li>TiberiumWorkbench</li>
+				<li>TR_TibWorkbench</li>
 			</recipeUsers>
 			<unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
 			<defaultIngredientFilter>

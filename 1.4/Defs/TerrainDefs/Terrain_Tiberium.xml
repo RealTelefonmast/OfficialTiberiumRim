@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TiberiumTerrainDef Abstract="True" Name="TiberiumSoilTerrain">
+	<TR.TiberiumTerrainDef Abstract="True" Name="TiberiumSoilTerrain">
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>340</renderPrecedence>
 		<pathCost>30</pathCost>
@@ -51,9 +51,9 @@
 			<li>SmallBlossom,0</li>
 			-->
 		</plantSupport>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef Abstract="True" Name="TiberiumStoneTerrain">
+	<TR.TiberiumTerrainDef Abstract="True" Name="TiberiumStoneTerrain">
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>220</renderPrecedence>
 		<pathCost>30</pathCost>
@@ -85,9 +85,9 @@
 			<li>TiberiumShroom_Blue,0.1</li>
 			<li>TiberiumShroom_Purple,0.1</li>
 		</plantSupport>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef Abstract="True" Name="TiberiumSandTerrain" ParentName="TiberiumSoilTerrain">
+	<TR.TiberiumTerrainDef Abstract="True" Name="TiberiumSandTerrain" ParentName="TiberiumSoilTerrain">
 		<affordances Inherit="False">
 			<li>Light</li>
 			<li>Medium</li>
@@ -97,9 +97,9 @@
 			<li>TiberiumGrass,0.50</li>
 			<li>TiberiumBush,0.35</li>
 		</plantSupport>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
 		<defName>TiberiumSoilGreen</defName>
 		<label>green tiberium soil</label>
 		<texturePath>Terrain/Natural/TiberiumSoilGreen</texturePath>
@@ -112,9 +112,9 @@
 			<Cleanliness>-1</Cleanliness>
 		</statBases>
 		<mainType>TiberiumGreen</mainType>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
 		<defName>TiberiumSoilBlue</defName>
 		<label>blue tiberium soil</label>
 		<texturePath>Terrain/Natural/TiberiumSoilBlue</texturePath>
@@ -132,9 +132,9 @@
 			<li>TiberiumGrass_Blue,0.4</li>
 		</plantSupport>
 		<mainType>TiberiumBlue</mainType>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
 		<defName>TiberiumSoilRed</defName>
 		<label>red tiberium soil</label>
 		<texturePath>Terrain/Natural/TiberiumSoilRed</texturePath>
@@ -147,9 +147,9 @@
 			<Cleanliness>-1</Cleanliness>
 		</statBases>
 		<mainType>TiberiumRed</mainType>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumStoneTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumStoneTerrain">
 		<defName>TiberiumStoneGreen</defName>
 		<label>green tiberium stone</label>
 		<texturePath>Terrain/Natural/TiberiumRockGreen</texturePath>
@@ -163,9 +163,9 @@
 		</statBases>
 		<plantChanceFactor>0</plantChanceFactor>
 		<mainType>TiberiumMossGreen</mainType>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumStoneTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumStoneTerrain">
 		<defName>TiberiumStoneBlue</defName>
 		<label>blue tiberium stone</label>
 		<texturePath>Terrain/Natural/TiberiumRockBlue</texturePath>
@@ -179,9 +179,9 @@
 		</statBases>
 		<plantChanceFactor>0</plantChanceFactor>
 		<mainType>TiberiumMossBlue</mainType>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
 		<defName>TiberiumMossyTerrainGreen</defName>
 		<label>green Tiberium moss covered ground</label>
 		<texturePath>Terrain/Natural/TiberiumMossGreen</texturePath>
@@ -194,9 +194,9 @@
 			<Cleanliness>-5</Cleanliness>
 		</statBases>
 		<mainType>TiberiumMossGreen</mainType>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
 		<defName>TiberiumMossyTerrainBlue</defName>
 		<label>blue Tiberium moss covered ground</label>
 		<texturePath>Terrain/Natural/TiberiumMossBlue</texturePath>
@@ -212,9 +212,9 @@
 			<li>TiberiumShroom_Purple,0.1</li>
 		</plantSupport>
 		<mainType>TiberiumMossBlue</mainType>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSandTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumSandTerrain">
 		<defName>TiberiumSandGreen</defName>
 		<label>green tiberium sand</label>
 		<texturePath>Terrain/Natural/TiberiumSoilDesertGreen</texturePath>
@@ -231,9 +231,9 @@
 		<generatedFilth>Filth_Sand</generatedFilth>
 		<plantChanceFactor>0.1</plantChanceFactor>
 		<mainType>TiberiumShardsGreen</mainType>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSandTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumSandTerrain">
 		<defName>TiberiumSandBlue</defName>
 		<label>blue tiberium sand</label>
 		<texturePath>Terrain/Natural/TiberiumSoilDesertBlue</texturePath>
@@ -250,9 +250,9 @@
 		<generatedFilth>Filth_Sand</generatedFilth>
 		<plantChanceFactor>0.05</plantChanceFactor>
 		<mainType>TiberiumShardsBlue</mainType>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSandTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumSandTerrain">
 		<defName>TiberiumSandRed</defName>
 		<label>red tiberium sand</label>
 		<texturePath>Terrain/Natural/TiberiumSoilDesertRed</texturePath>
@@ -269,9 +269,9 @@
 		<generatedFilth>Filth_Sand</generatedFilth>
 		<plantChanceFactor>0.01</plantChanceFactor>
 		<mainType>TiberiumShardsRed</mainType>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
 		<defName>TiberiumPodSoil</defName>
 		<label>enriched tiberium soil</label>
 		<texturePath>Terrain/Natural/TiberiumPodSoil</texturePath>
@@ -289,9 +289,9 @@
 			<li>GrowSoil</li>
 		</affordances>
 		<mainType>TiberiumPod</mainType>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
 		<defName>TiberiumPodSoilBlue</defName>
 		<label>enriched blue tiberium soil</label>
 		<texturePath>Terrain/Natural/TiberiumPodSoilBlue</texturePath>
@@ -313,9 +313,9 @@
 			<li>TiberiumGrass_Blue,0.4</li>
 		</plantSupport>
 		<mainType>TiberiumPodBlue</mainType>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
 		<defName>TiberiumSoilAboreus</defName>
 		<label>aboreus soil</label>
 		<texturePath>Terrain/Natural/AboreusSoil</texturePath>
@@ -328,9 +328,9 @@
 			<Cleanliness>-1</Cleanliness>
 		</statBases>
 		<mainType>TiberiumAboreus</mainType>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
 		<defName>TiberiumSoilVein</defName>
 		<label>veiny soil</label>
 		<texturePath>Terrain/Natural/VeinSoilRed</texturePath>
@@ -349,9 +349,9 @@
 		</affordances>
 		<plantChanceFactor>0</plantChanceFactor>
 		<mainType>TiberiumVein</mainType>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
 		<defName>TiberiumSoilVeinFlesh</defName>
 		<label>veiny flesh</label>
 		<texturePath>Terrain/Natural/VeinSoilFlesh</texturePath>
@@ -364,9 +364,9 @@
 			<Cleanliness>-100</Cleanliness>
 		</statBases>
 		<plantChanceFactor>0</plantChanceFactor>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumSoilTerrain">
 		<defName>TiberiumSoilVeinDead</defName>
 		<label>dead veiny soil</label>
 		<texturePath>Terrain/Natural/VeinSoilDead</texturePath>
@@ -384,7 +384,7 @@
 			<li>Light</li>
 			<li>Medium</li>
 		</affordances>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
 	<TerrainDef Name="FloorBase_TR" Abstract="True">
 		<layerable>true</layerable>
@@ -428,7 +428,7 @@
 	
 	<!-- Shallow -->
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="WaterBase">
+	<TR.TiberiumTerrainDef ParentName="WaterBase">
 		<defName>TiberiumShallowWater</defName>
 		<label>shallow tiberium contaminated water</label>
 		<texturePath>Terrain/Natural/ShallowTib</texturePath>
@@ -451,9 +451,9 @@
 		<changeable>true</changeable>
 		<driesTo>TiberiumSoilGreen</driesTo>
 		<renderPrecedence>395</renderPrecedence>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 
-	<TiberiumRim.TiberiumTerrainDef ParentName="WaterBase">
+	<TR.TiberiumTerrainDef ParentName="WaterBase">
 		<defName>BlueTiberiumWater</defName>
 		<label>ionized water</label>
 		<texturePath>Terrain/Natural/ShallowBlueTib</texturePath>
@@ -475,9 +475,9 @@
 		<changeable>true</changeable>
 		<driesTo>TiberiumSoilBlue</driesTo>
 		<renderPrecedence>395</renderPrecedence>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="WaterBase">
+	<TR.TiberiumTerrainDef ParentName="WaterBase">
 		<defName>TiberiumShallowMovingWater</defName>
 		<label>shallow tiberium contaminated moving water</label>
 		<texturePath>Terrain/Natural/ShallowTib</texturePath>
@@ -499,11 +499,11 @@
 		<waterDepthShaderParameters>
 			<_UseWaterOffset>1</_UseWaterOffset>
 		</waterDepthShaderParameters>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
 	<!-- Chest Deep -->
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="WaterBase"> 
+	<TR.TiberiumTerrainDef ParentName="WaterBase"> 
 		<defName>TiberiumWaterMovingChestDeep</defName>
 		<label>chest-deep tiberium contaminated moving water</label>
 		<texturePath>Terrain/Natural/ChestDeepTib</texturePath>
@@ -525,11 +525,11 @@
 		<waterDepthShaderParameters>
 			<_UseWaterOffset>1</_UseWaterOffset>
 		</waterDepthShaderParameters>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
 	<!-- Deep -->
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="WaterDeepBase">
+	<TR.TiberiumTerrainDef ParentName="WaterDeepBase">
 		<defName>TiberiumDeepWater</defName>
 		<label>deep tiberium contaminated water</label>
 		<texturePath>Terrain/Natural/DeepTib</texturePath>
@@ -547,7 +547,7 @@
 		</statBases>
 		<changeable>false</changeable>
 		<renderPrecedence>395</renderPrecedence>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
 	<TerrainDef>
 		<defName>DecrystallizedSoil</defName>
@@ -601,7 +601,7 @@
 		<takeFootprints>True</takeFootprints>
 	</TerrainDef>
 	
-	<TiberiumRim.TiberiumTerrainDef ParentName="TiberiumStoneTerrain">
+	<TR.TiberiumTerrainDef ParentName="TiberiumStoneTerrain">
 		<defName>TiberiumIce</defName>
 		<label>crystalline ice</label>
 		<texturePath>Terrain/Natural/TiberiumIce</texturePath>
@@ -618,6 +618,6 @@
 			<li>Light</li>
 			<li>Medium</li>
 		</affordances>
-	</TiberiumRim.TiberiumTerrainDef>
+	</TR.TiberiumTerrainDef>
 	
 </Defs>

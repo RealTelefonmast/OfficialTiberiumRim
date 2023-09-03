@@ -1,6 +1,6 @@
 ﻿using Verse.AI.Group;
 
-namespace TiberiumRim
+namespace TR
 {
     public class VisceralHive
     {

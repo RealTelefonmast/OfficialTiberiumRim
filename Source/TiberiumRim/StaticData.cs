@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     [StaticConstructorOnStartup]
     public static class StaticData

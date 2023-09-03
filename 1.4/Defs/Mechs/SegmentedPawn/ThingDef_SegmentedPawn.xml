@@ -2,11 +2,11 @@
 <Defs>
 	
 	<!--
-	<TiberiumRim.TRThingDef ParentName="BaseMechanoidTR">
+	<TR.TRThingDef ParentName="BaseMechanoidTR">
 		<defName>SegmentedPawn</defName>
 		<label>Segmented Pawn</label>	
 		<description></description>
-		<thingClass>TiberiumRim.SegmentedPawn</thingClass>
+		<thingClass>TR.SegmentedPawn</thingClass>
 		<statBases>
 			<MoveSpeed>2</MoveSpeed>
 			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
@@ -27,7 +27,7 @@
 				<chanceFactor>0.2</chanceFactor>
 			</li>
 		</tools>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	-->
 	<!--
   <PawnKindDef ParentName="BasePlayerPawnKind">
@@ -56,7 +56,7 @@
     <defName>SegmentedHuman</defName>
     <label>human</label>
     <description>A baseline human, mostly unmodified by gene engineering and mostly unchanged by evolutionary pressures on non-Earth planets.</description>
-	<thingClass>TiberiumRim.SegmentedPawn</thingClass>
+	<thingClass>TR.SegmentedPawn</thingClass>
 	<statBases>
       <MarketValue>1750</MarketValue>
       <MoveSpeed>4.6</MoveSpeed>
@@ -216,7 +216,7 @@
 	<ThingDef>
 		<defName>BasicPawnSegment</defName>
 		<label>Pawn Segment</label>
-		<thingClass>TiberiumRim.PawnSegment</thingClass>
+		<thingClass>TR.PawnSegment</thingClass>
 		<category>Attachment</category>
 		<tickerType>Normal</tickerType>
 		<altitudeLayer>Pawn</altitudeLayer>

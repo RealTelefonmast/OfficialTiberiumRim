@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
-  	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+  	<TR.TRThingDef ParentName="StationBase_TR">
 		<defName>TiberiumResearchCrane</defName>
 		<label>tiberium research crane</label>
 		<description>This research crane can be placed on any Tiberium source and will allow you to learn more about the alien substance. It is immune to Tiberium itself and will inhibit the producer from spawning more Tiberium.\n\nOnly one research crane can be placed on a map.</description>
@@ -69,8 +69,8 @@
 			</tiberiumResearchTasks>
 		</requisites>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_ResearchCrane</li>
-			<li>TiberiumRim.PlaceWorker_Once</li>
+			<li>TR.PlaceWorker_ResearchCrane</li>
+			<li>TR.PlaceWorker_Once</li>
 		</placeWorkers>
 		<modExtensions>
 			<li Class="TeleCore.SubMenuExtension">
@@ -78,9 +78,9 @@
 				<category>Research</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BenchBase_TR">
+	<TR.TRThingDef ParentName="BenchBase_TR">
 		<defName>TiberiumResearchStation</defName>
 		<label>research station</label>
 		<description>...</description>
@@ -150,9 +150,9 @@
 				<category>Research</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BenchBase_TR">
+	<TR.TRThingDef ParentName="BenchBase_TR">
 		<defName>TiberiumResearchAdapter</defName>
 		<label>tiberium research adapter</label>
 		<description>.</description>
@@ -235,6 +235,6 @@
 				<isDevOption>true</isDevOption>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 </Defs>

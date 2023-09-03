@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TR.TRThingDef ParentName="StationBase_TR">
 		<defName>GDI_Factory</defName>
 		<label>GDI Factory</label>
 		<description>The GDI factory allows you to construct many different items, weapons and units if available.</description>
@@ -47,7 +47,7 @@
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>300</basePowerConsumption>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TNS">
+			<li Class="TR.CompProperties_TNS">
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
@@ -98,10 +98,10 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<!--
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TR.TRThingDef ParentName="StationBase_TR">
 		<defName>GDI_Hangar</defName>
 		<label>GDI hangar</label>
 		<description>This hangar is used for mechanical unit construction.</description>
@@ -135,7 +135,7 @@
 			<ComponentIndustrial>15</ComponentIndustrial>
 		</costList>
 		<inspectorTabs>
-			<li>TiberiumRim.ITab_MechConstruction</li>
+			<li>TR.ITab_MechConstruction</li>
 		</inspectorTabs>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
@@ -184,11 +184,11 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	-->
 	
 	<!--
-	<TiberiumRim.TRThingDef ParentName="RefineryBase_TR">
+	<TR.TRThingDef ParentName="RefineryBase_TR">
 		<defName>GDI_TiberiumRefinery</defName>
 		<label>tiberium refinery (GDI)</label>
 		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
@@ -216,12 +216,12 @@
 			<ComponentIndustrial>100</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNSRefinery">
+			<li Class="TR.CompProperties_TNSRefinery">
 				<harvester>Harvester_GDI</harvester>
 				<baseCapacity>4000</baseCapacity>
 				<tnwbMode>Producer</tnwbMode>
 			</li>
-			<li Class="TiberiumRim.CompProperties_MechStation">
+			<li Class="TR.CompProperties_MechStation">
 				<mechRecipes>
 					<li>MakeHarvesterCommon</li>
 				</mechRecipes>
@@ -263,10 +263,10 @@
 			</li>
 		</comps>
 		<inspectorTabs>
-			<li>TiberiumRim.ITab_MechConstruction</li>
+			<li>TR.ITab_MechConstruction</li>
 		</inspectorTabs>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_Gap</li>
+			<li>TR.PlaceWorker_Gap</li>
 		</placeWorkers>
 		<hasInteractionCell>true</hasInteractionCell>
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
@@ -277,9 +277,9 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TR.TRThingDef ParentName="StationBase_TR">
 		<defName>GDIPowerPlant</defName>
 		<thingClass>Building</thingClass>
 		<label>GDI power plant</label>
@@ -366,7 +366,7 @@
 				</moteData>
 			</li>
 			<li Class="TeleCore.CompProperties_NetworkPowerPlant">
-				<compClass>TiberiumRim.Comp_NetworkStructurePowerPlant</compClass>
+				<compClass>TR.Comp_NetworkStructurePowerPlant</compClass>
 				<fromNetwork>TiberiumNetwork</fromNetwork>
 				<baseCapacity>2000</baseCapacity>
 				<supportedTypes>
@@ -385,7 +385,7 @@
 				<heatPerSecond>12</heatPerSecond>
 			</li>
 			<li Class="CompProperties_Power">
-				<compClass>TiberiumRim.CompPower_Tiberium</compClass>
+				<compClass>TR.CompPower_Tiberium</compClass>
 				<basePowerConsumption>-4000</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
 			</li>
@@ -399,6 +399,6 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	-->
 </Defs>

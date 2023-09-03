@@ -1,4 +1,4 @@
-﻿namespace TiberiumRim;
+﻿namespace TR;
 
 internal static class TerrainPatches
 {

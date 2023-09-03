@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     [StaticConstructorOnStartup]
     public static class GenTiberiumPatterns

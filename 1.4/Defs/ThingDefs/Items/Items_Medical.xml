@@ -90,7 +90,7 @@
 		<ingestible>
 			<drugCategory>Medical</drugCategory>
 			<outcomeDoers>
-				<li Class="TiberiumRim.IngestionOutcomeDoer_GiveHediffWithSideEffect">
+				<li Class="TR.IngestionOutcomeDoer_GiveHediffWithSideEffect">
 					<hediffDef>TiberAddHediff</hediffDef>
 					<severity>1.0</severity>
 					<requiredNeeds>
@@ -136,7 +136,7 @@
 		<ingestible>
 			<drugCategory>Medical</drugCategory>
 			<outcomeDoers>
-				<li Class="TiberiumRim.IngestionOutcomeDoer_GiveHediffWithSideEffect">
+				<li Class="TR.IngestionOutcomeDoer_GiveHediffWithSideEffect">
 					<hediffDef>TiberBlockHediff</hediffDef>
 					<severity>1.0</severity>
 					<chance>0</chance>

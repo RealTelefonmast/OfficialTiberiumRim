@@ -2,7 +2,7 @@
 <Defs>
   
 	<!--
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>TiberiumCannon</defName>
 		<label>tib cannon</label>
 		<description>ree</description>
@@ -36,8 +36,8 @@
 		</statBases>
 		<tickerType>Normal</tickerType>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNW">
-				<compClass>TiberiumRim.CompTNW_Turret</compClass>
+			<li Class="TR.CompProperties_TNW">
+				<compClass>TR.CompTNW_Turret</compClass>
 				<baseCapacity>150</baseCapacity>
 				<supportedTypes>
 					<li>Sludge</li>
@@ -111,7 +111,7 @@
 				<hidden>true</hidden>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	-->
 	
 	<ThingDef ParentName="BaseBullet">
@@ -200,7 +200,7 @@
 		</verbs>
 	</ThingDef>
 	
-	<TiberiumRim.TRThingDef Abstract="True" Name="DronePlatform" ParentName="StationBase_TR">
+	<TR.TRThingDef Abstract="True" Name="DronePlatform" ParentName="StationBase_TR">
 		<description>.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -229,8 +229,8 @@
 		</statBases>
 		<size>(4,4)</size>
 		<inspectorTabs>
-			<li>TiberiumRim.ITab_MechConstruction</li>
-			<li>TiberiumRim.ITab_MechUpgrade</li>
+			<li>TR.ITab_MechConstruction</li>
+			<li>TR.ITab_MechUpgrade</li>
 		</inspectorTabs>
 		<comps>
 			<li Class="CompProperties_Power">
@@ -249,9 +249,9 @@
 				<category>Misc</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="DronePlatform">
+	<TR.TRThingDef ParentName="DronePlatform">
 		<defName>RepairDronePlatform</defName>
 		<label>repair drone platform</label>
 		<graphicData>
@@ -271,7 +271,7 @@
 			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_DroneStation">
+			<li Class="TR.CompProperties_DroneStation">
 				<mechRecipes>
 					<li>MakeRepairDroneCommon</li>
 				</mechRecipes>
@@ -309,9 +309,9 @@
 				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
 			</li>
 		</comps>
-	</TiberiumRim.TRThingDef>	
+	</TR.TRThingDef>	
 	
-	<TiberiumRim.TRThingDef ParentName="DronePlatform">
+	<TR.TRThingDef ParentName="DronePlatform">
 		<defName>RepairDronePlatformSmall</defName>
 		<label>repair drone platform (small)</label>
 		<graphicData>
@@ -331,7 +331,7 @@
 			<ComponentIndustrial>4</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_DroneStation">
+			<li Class="TR.CompProperties_DroneStation">
 				<mechRecipes>
 					<li>MakeRepairDroneCommon</li>
 				</mechRecipes>
@@ -342,6 +342,6 @@
 				<radius>4</radius>
 			</li>
 		</comps>
-	</TiberiumRim.TRThingDef>	
+	</TR.TRThingDef>	
 	
 </Defs>

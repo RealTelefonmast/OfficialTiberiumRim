@@ -39,7 +39,7 @@
 		<defName>EnhancedPart</defName>
 		<ignoreIllegalLabelCharacterConfigError>true</ignoreIllegalLabelCharacterConfigError>
 		<label>enhanced {0}</label>
-		<hediffClass>TiberiumRim.Hediff_LabelledPart</hediffClass>
+		<hediffClass>TR.Hediff_LabelledPart</hediffClass>
 		<stages>
 			<li>
 				<partEfficiencyOffset>0.3</partEfficiencyOffset>
@@ -52,7 +52,7 @@
 		<defaultLabelColor>(130, 220, 135)</defaultLabelColor>
 	</HediffDef>
 	
-	<TiberiumRim.TRHediffDef Abstract="True" Name="EnhancedPart" ParentName="AddedPart_TR">
+	<TR.TRHediffDef Abstract="True" Name="EnhancedPart" ParentName="AddedPart_TR">
 		<defaultLabelColor>(130, 220, 135)</defaultLabelColor>
 		<isNaturalInsertion>true</isNaturalInsertion>
 		<addedPartProps>
@@ -60,9 +60,9 @@
 			<isGoodWeapon>true</isGoodWeapon>
 			<partEfficiency>1.25</partEfficiency>
 		</addedPartProps>
-	</TiberiumRim.TRHediffDef>
+	</TR.TRHediffDef>
 
-	<TiberiumRim.TRHediffDef ParentName="EnhancedPart">
+	<TR.TRHediffDef ParentName="EnhancedPart">
 		<defName>TiberiumEnhancedArm</defName>
 		<label>tiberium enhanced arm</label>
 		<labelNoun>a tiberium enhanced arm</labelNoun>
@@ -91,9 +91,9 @@
 			</li>
 		</comps>
 		<!--spawnThingOnRemoved>TiberiumEnhancedArm</spawnThingOnRemoved-->
-	</TiberiumRim.TRHediffDef>
+	</TR.TRHediffDef>
   
-	<TiberiumRim.TRHediffDef ParentName="EnhancedPart">
+	<TR.TRHediffDef ParentName="EnhancedPart">
 		<defName>TiberiumEnhancedLeg</defName>
 		<label>tiberium enhanced leg</label>
 		<labelNoun>a tiberium enhanced leg</labelNoun>
@@ -117,12 +117,12 @@
 			<solid>false</solid>
 			<partEfficiency>1.4</partEfficiency>
 		</addedPartProps>
-	</TiberiumRim.TRHediffDef>
+	</TR.TRHediffDef>
 	
 	<HediffDef ParentName="EnhancedImplant">
 		<defName>TiberiumSkinSample</defName>
 		<label>implanted tiberium tissue</label>
-		<hediffClass>TiberiumRim.Hediff_TiberiumPart</hediffClass>
+		<hediffClass>TR.Hediff_TiberiumPart</hediffClass>
 		<labelNoun>a tiberium tissue implant</labelNoun>
 		<addedPartProps>
 			<solid>false</solid>

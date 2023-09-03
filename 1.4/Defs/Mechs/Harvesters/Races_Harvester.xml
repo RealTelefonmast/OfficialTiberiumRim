@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	
-	<TiberiumRim.TRThingDef ParentName="HarvesterBase">
+	<TR.TRThingDef ParentName="HarvesterBase">
 		<defName>Harvester_Common</defName>
 		<label>Harvester</label>	
 		<description>A simple tiberium harvester made out of rough components, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
@@ -44,9 +44,9 @@
 				<chanceFactor>0.2</chanceFactor>
 			</li>
 		</tools>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="HarvesterBase">
+	<TR.TRThingDef ParentName="HarvesterBase">
 		<defName>Harvester_GDI</defName>
 		<label>GDI harvester</label>	
 		<description>An armored tiberium harvester designed by GDI, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
@@ -85,9 +85,9 @@
 				<chanceFactor>0.2</chanceFactor>
 			</li>
 		</tools>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="HarvesterBase">
+	<TR.TRThingDef ParentName="HarvesterBase">
 		<defName>Harvester_Nod</defName>
 		<label>Nod harvester</label>	
 		<description>A advanced tiberium harvester developed by Nod, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
@@ -139,9 +139,9 @@
 				<chanceFactor>0.2</chanceFactor>
 			</li>
 		</tools>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>HarvesterHusk_Common</defName>
 		<label>Harvester husk</label>
 		<description>The remains of a destroyed harvester.</description>
@@ -176,9 +176,9 @@
 			<claimable>false</claimable>
 			<deconstructible>true</deconstructible>
 		</building>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>HarvesterHusk_GDI</defName>
 		<label>Harvester husk</label>
 		<description>The remains of a destroyed harvester.</description>
@@ -213,9 +213,9 @@
 			<claimable>false</claimable>
 			<deconstructible>true</deconstructible>
 		</building>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>HarvesterHusk_Nod</defName>
 		<label>Harvester husk</label>
 		<description>The remains of a destroyed harvester.</description>
@@ -250,6 +250,6 @@
 			<claimable>false</claimable>
 			<deconstructible>true</deconstructible>
 		</building>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 </Defs>

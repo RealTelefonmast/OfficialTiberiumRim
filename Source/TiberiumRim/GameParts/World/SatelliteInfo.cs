@@ -1,4 +1,4 @@
-﻿namespace TiberiumRim
+﻿namespace TR
 {
     public class SatelliteInfo : WorldInfo
     {

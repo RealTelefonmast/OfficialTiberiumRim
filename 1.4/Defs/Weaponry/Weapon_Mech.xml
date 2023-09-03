@@ -13,7 +13,7 @@
 		<tickerType>Normal</tickerType>
 	</ThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
+	<TR.TRThingDef ParentName="MechFactionGun">
 		<defName>Nod_AvatarLaser</defName>
 		<label>Avatar Laser</label>
 		<graphicData>
@@ -86,10 +86,10 @@
 		<weaponTags>
 			<li>NodAvatarSetA</li>
 		</weaponTags>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<!-- Nod Purifier weapons -->	
-	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
+	<TR.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_AvatarFlamethrower</defName>
 		<label>flame</label>
 		<graphicData>
@@ -98,7 +98,7 @@
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>1.1</drawSize>
 		</graphicData>
-		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
 		<projectile>
 			<ai_IsIncendiary>true</ai_IsIncendiary>
 			<damageDef>Flame</damageDef>
@@ -119,9 +119,9 @@
 				</projectile>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
+	<TR.TRThingDef ParentName="MechFactionGun">
 		<defName>Nod_AvatarFlamethrower</defName>
 		<label>Purifier Flamethrower</label>
 		<graphicData>
@@ -161,13 +161,13 @@
 		<weaponTags>
 			<li>NodAvatarSetB</li>
 		</weaponTags>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<!-- Nod Flametank weapons -->	
-	<TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
+	<TR.TRThingDef ParentName="BaseBullet_TR">
 		<defName>Bullet_TwinFlamethrower</defName>
 		<label>flame</label>
-		<thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/FlameSmall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -194,9 +194,9 @@
 				</projectile>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
+	<TR.TRThingDef ParentName="MechFactionGun">
 		<defName>Nod_TwinFlamethrower</defName>
 		<label>TwinFlamethrower</label>
 		<graphicData>
@@ -238,7 +238,7 @@
 		<weaponTags>
 			<li>FlameTankSet</li>
 		</weaponTags>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 	<!-- Gun weapons -->	
 	<ThingDef ParentName="BaseBullet_TR">
@@ -255,7 +255,7 @@
 		</projectile>
 	</ThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
+	<TR.TRThingDef ParentName="MechFactionGun">
 		<defName>Nod_BuggyGun</defName>
 		<label>Chaingun</label>
 		<graphicData>
@@ -299,7 +299,7 @@
 		<weaponTags>
 			<li>NodBuggySet</li>
 		</weaponTags>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 	<!-- GDI Wolverine weapons -->	
 	
@@ -317,7 +317,7 @@
 		</projectile>
 	</ThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
+	<TR.TRThingDef ParentName="MechFactionGun">
 		<defName>GDI_WolverineGun</defName>
 		<label>Chaingun</label>
 		<graphicData>
@@ -361,11 +361,11 @@
 		<weaponTags>
 			<li>GDIWolverineSet</li>
 		</weaponTags>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<!-- GDI Mommoth weapons -->	
 	
-	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
+	<TR.TRThingDef ParentName="MechFactionGun">
 		<defName>GDI_MomRailgun</defName>
 		<label>Twin Railgun</label>
 		<graphicData>
@@ -432,9 +432,9 @@
 		<weaponTags>
 			<li>MomTankSet</li>
 		</weaponTags>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
+	<TR.TRThingDef ParentName="MechFactionGun">
 		<defName>GDI_DisruptorCannon</defName>
 		<label>Disruption beam emitter</label>
 		<graphicData>
@@ -524,7 +524,7 @@
 		<weaponTags>
 			<li>DisruptorSet</li>
 		</weaponTags>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<!-- Forgotten Ironback weapons -->	
 	<ThingDef ParentName="BaseBullet_TR">
@@ -546,7 +546,7 @@
 		</projectile>
 	</ThingDef>
 
-	<TiberiumRim.TRThingDef ParentName="MechFactionGun">
+	<TR.TRThingDef ParentName="MechFactionGun">
 		<defName>Forg_Bash</defName>
 		<label>Big Arm</label>
 		<description>The big arm.</description>
@@ -592,6 +592,6 @@
 				</targetParams>
 			</li>
 		</verbs>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 					
 </Defs>

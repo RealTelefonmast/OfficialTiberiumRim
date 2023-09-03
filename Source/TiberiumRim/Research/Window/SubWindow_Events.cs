@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TiberiumRim.Research.Window;
+namespace TR.Research.Window;
 
 public class SubWindow_Events
 {

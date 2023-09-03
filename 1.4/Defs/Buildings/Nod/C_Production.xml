@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TR.TRThingDef ParentName="StationBase_TR">
 		<defName>Nod_Factory</defName>
 		<label>Nod Assembler</label>
 		<description>The Nod Assembler is used to create high-tier materials and items.</description>
@@ -50,7 +50,7 @@
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>300</basePowerConsumption>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TNS">
+			<li Class="TR.CompProperties_TNS">
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>				
@@ -97,9 +97,9 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TR.TRThingDef ParentName="StationBase_TR">
 		<defName>Nod_Hangar</defName>
 		<label>Nod hangar</label>
 		<description>This hangar is used for mechanical unit construction.</description>
@@ -139,7 +139,7 @@
 			<ComponentIndustrial>15</ComponentIndustrial>
 		</costList>
 		<inspectorTabs>
-			<li>TiberiumRim.ITab_MechConstruction</li>
+			<li>TR.ITab_MechConstruction</li>
 		</inspectorTabs>
 		<comps>
 			<li Class="TeleCore.CompProperties_FX"> 
@@ -182,10 +182,10 @@
 				<category>Processing</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<!--
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>Nod_Crane</defName>
 		<label>Crane</label>
 		<description>.</description>
@@ -256,12 +256,12 @@
 		</comps>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_Once</li>
+			<li>TR.PlaceWorker_Once</li>
 		</placeWorkers>
-	</TiberiumRim.TRThingDef>-->
+	</TR.TRThingDef>-->
 	
 	<!--
-	<TiberiumRim.TRThingDef ParentName="RefineryBase_TR">
+	<TR.TRThingDef ParentName="RefineryBase_TR">
 		<defName>Nod_TiberiumRefinery</defName>
 		<label>tiberium refinery (Nod)</label>
 		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
@@ -289,12 +289,12 @@
 			<ComponentIndustrial>100</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNSRefinery">
+			<li Class="TR.CompProperties_TNSRefinery">
 				<harvester>Harvester_Nod</harvester>
 				<baseCapacity>5000</baseCapacity>
 				<tnwbMode>Producer</tnwbMode>
 			</li>
-			<li Class="TiberiumRim.CompProperties_MechStation">
+			<li Class="TR.CompProperties_MechStation">
 				<mechRecipes>
 					<li>MakeHarvesterCommon</li>
 				</mechRecipes>
@@ -329,17 +329,17 @@
 			</li>
 		</comps>
 		<inspectorTabs>
-			<li>TiberiumRim.ITab_MechConstruction</li>
+			<li>TR.ITab_MechConstruction</li>
 		</inspectorTabs>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_Gap</li>
+			<li>TR.PlaceWorker_Gap</li>
 		</placeWorkers>
 		<hasInteractionCell>true</hasInteractionCell>
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<interactionCellIcon>RefineryCell</interactionCellIcon>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
+	<TR.TRThingDef ParentName="StationBase_TR">
 		<defName>NodPowerPlant</defName>
 		<thingClass>Building</thingClass>
 		<label>Nod power plant</label>
@@ -410,7 +410,7 @@
 				</fxLayers>
 			</li>
 			<li Class="TeleCore.CompProperties_NetworkPowerPlant">
-				<compClass>TiberiumRim.Comp_NetworkStructurePowerPlant</compClass>
+				<compClass>TR.Comp_NetworkStructurePowerPlant</compClass>
 				<fromNetwork>TiberiumNetwork</fromNetwork>
 				<baseCapacity>3000</baseCapacity>
 				<supportedTypes>
@@ -429,7 +429,7 @@
 				<heatPerSecond>12</heatPerSecond>
 			</li>
 			<li Class="CompProperties_Power">
-				<compClass>TiberiumRim.CompPower_Tiberium</compClass>
+				<compClass>TR.CompPower_Tiberium</compClass>
 				<basePowerConsumption>-3500</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
 			</li>
@@ -437,6 +437,6 @@
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	-->
 </Defs>

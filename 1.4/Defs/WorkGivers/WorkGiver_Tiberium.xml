@@ -5,7 +5,7 @@
 	<WorkGiverDef>
 		<defName>DoTiberiumResearch</defName>
 		<label>do tiberium research</label>
-		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<giverClass>TR.WorkGiver_TResearch</giverClass>
 		<workType>Research</workType>
 		<priorityInType>90</priorityInType>
 		<verb>(TR)research</verb>
@@ -25,7 +25,7 @@
 		<verb>(TR)do bill</verb>
 		<gerund>(TR)doing bill at</gerund>
 		<fixedBillGiverDefs>
-			<li>TiberiumCrafter</li>
+			<li>TR_AtomicSynthesizer</li>
 		</fixedBillGiverDefs>
 		<requiredCapacities>
 			<li>Manipulation</li>
@@ -36,7 +36,7 @@
 	<WorkGiverDef>
 		<defName>DoTiberiumResearchCrafting</defName>
 		<label>do tiberium research</label>
-		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<giverClass>TR.WorkGiver_TResearch</giverClass>
 		<workType>Crafting</workType>
 		<priorityInType>99</priorityInType>
 		<verb>(Tiberium Research)craft</verb>
@@ -49,7 +49,7 @@
 	<WorkGiverDef>
 		<defName>DoTiberiumResearchConstruction</defName>
 		<label>do tiberium research</label>
-		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<giverClass>TR.WorkGiver_TResearch</giverClass>
 		<workType>Construction</workType>
 		<priorityInType>99</priorityInType>
 		<verb>(Tiberium Research)construct</verb>
@@ -69,7 +69,7 @@
 		<workType>Crafting</workType>
 		<priorityInType>100</priorityInType>
 		<fixedBillGiverDefs>
-			<li>TiberiumWorkbench</li>
+			<li>TR_TibWorkbench</li>
 		</fixedBillGiverDefs>
 		<verb>craft</verb>
 		<gerund>crafting at</gerund>
@@ -87,7 +87,7 @@
 		<workType>Crafting</workType>
 		<priorityInType>100</priorityInType>
 		<fixedBillGiverDefs>
-			<li>TiberiumCrafter</li>
+			<li>TR_AtomicSynthesizer</li>
 		</fixedBillGiverDefs>
 		<verb>refine Tiberium</verb>
 		<gerund>refining Tiberium at</gerund>

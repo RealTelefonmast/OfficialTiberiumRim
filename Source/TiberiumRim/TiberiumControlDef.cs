@@ -3,7 +3,7 @@ using Verse;
 using RimWorld;
 using UnityEngine;
 
-namespace TiberiumRim
+namespace TR
 {
     public class TiberiumControlDef : Def
     {

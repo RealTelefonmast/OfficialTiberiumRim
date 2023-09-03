@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
+	<TR.TiberiumProducerDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumCraterGreen</defName>
 		<label>green tiberium crater</label>
 		<description>The asteroid left a glowing crater full of green crystals, it's radiating a dangerous amount of warmth if you come close. It seems like there are new crystals growing at the edge?</description>
-		<thingClass>TiberiumRim.TiberiumCrater</thingClass>
+		<thingClass>TR.TiberiumCrater</thingClass>
 		<statBases>
 			<MaxHitPoints>5000</MaxHitPoints>
 			<Beauty>175</Beauty>
@@ -69,7 +69,7 @@
 				<glowRadius>10</glowRadius>
 				<glowColor>(120,255,120)</glowColor>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+			<li Class="TR.CompProperties_TiberiumRadiation">
 				<radius>4.5</radius>
 				<intensity>1</intensity>
 			</li>
@@ -176,13 +176,13 @@
 				</discovery>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TiberiumProducerDef>
+	</TR.TiberiumProducerDef>
 	
-	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
+	<TR.TiberiumProducerDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumCraterBlue</defName>
 		<label>blue tiberium crater</label>
 		<description>The asteroid left this glowing crater full of blue crystals, the blue glow is nice to look at. It seems like there are new crystals growing at the edges?</description>
-		<thingClass>TiberiumRim.TiberiumCrater</thingClass>
+		<thingClass>TR.TiberiumCrater</thingClass>
 		<statBases>
 			<MaxHitPoints>5000</MaxHitPoints>
 			<Beauty>175</Beauty>
@@ -242,11 +242,11 @@
 				<glowRadius>10</glowRadius>
 				<glowColor>(120,150,255)</glowColor>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+			<li Class="TR.CompProperties_TiberiumRadiation">
 				<radius>6</radius>
 				<intensity>1</intensity>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumExplosive">
+			<li Class="TR.CompProperties_TiberiumExplosive">
 				<explosionChance>0.32</explosionChance>
 				<explosionRadius>12.5</explosionRadius>
 				<sporeAmount>90</sporeAmount>
@@ -365,13 +365,13 @@
 				</discovery>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TiberiumProducerDef>
+	</TR.TiberiumProducerDef>
 	
-	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
+	<TR.TiberiumProducerDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumCraterHybrid</defName>
 		<label>hybrid tiberium crater</label>
 		<description>The asteroid left a strange crater full of green and blue crystals, observing it shows that that over time both types slowly spread at the edge.</description>
-		<thingClass>TiberiumRim.TiberiumCrater</thingClass>
+		<thingClass>TR.TiberiumCrater</thingClass>
 		<statBases>
 			<MaxHitPoints>7500</MaxHitPoints>
 			<Beauty>200</Beauty>
@@ -455,11 +455,11 @@
 				<glowRadius>10</glowRadius>
 				<glowColor>(120,255,120)</glowColor>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+			<li Class="TR.CompProperties_TiberiumRadiation">
 				<radius>4.5</radius>
 				<intensity>1.2</intensity>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumExplosive">
+			<li Class="TR.CompProperties_TiberiumExplosive">
 				<explosionChance>0.05</explosionChance>
 				<explosionRadius>9</explosionRadius>
 				<sporeAmount>75</sporeAmount>
@@ -567,13 +567,13 @@
 				</discovery>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TiberiumProducerDef>
+	</TR.TiberiumProducerDef>
 	
-	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
+	<TR.TiberiumProducerDef ParentName="TiberiumProducerBase">
 		<defName>RedTiberiumShard</defName>
 		<label>red tiberium spire</label>
 		<description>This massive red spire is of extraterrestrial origin. It has a very uneasy feeling to it and should be met with caution. The ground around it seems to very slowly grow red crystals similar to the shard.</description>
-		<thingClass>TiberiumRim.TiberiumCrater</thingClass>
+		<thingClass>TR.TiberiumCrater</thingClass>
 		<statBases>
 			<MaxHitPoints>4500</MaxHitPoints>
 			<Beauty>150</Beauty>
@@ -654,7 +654,7 @@
 				<glowRadius>3</glowRadius>
 				<glowColor>(230,75,75,255)</glowColor>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+			<li Class="TR.CompProperties_TiberiumRadiation">
 				<radius>9.5</radius>
 				<intensity>2</intensity>
 			</li>
@@ -719,9 +719,9 @@
 				</discovery>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TiberiumProducerDef>
+	</TR.TiberiumProducerDef>
 	
-	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
+	<TR.TiberiumProducerDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumCruentus</defName>
 		<label>tiberium cruentus</label>
 		<description>This massive crystalline tower will slowly mature over the period of 7 days and detonate into an explosion of tiberium spores, easily covering the landscape with tiberium.</description>
@@ -793,7 +793,7 @@
 				<glowRadius>3</glowRadius>
 				<glowColor>(120,150,255)</glowColor>
 			</li>
-			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+			<li Class="TR.CompProperties_TiberiumRadiation">
 				<radius>4</radius>
 				<intensity>1</intensity>
 			</li>
@@ -849,12 +849,12 @@
 				</discovery>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TiberiumProducerDef>
+	</TR.TiberiumProducerDef>
 	
 	<!-- Misc -->
-	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
+	<TR.TiberiumProducerDef ParentName="TiberiumProducerBase">
 		<defName>Veinhole</defName>
-		<thingClass>TiberiumRim.Veinhole</thingClass>
+		<thingClass>TR.Veinhole</thingClass>
 		<label>veinhole</label>
 		<description>The Veinhole is a type for itself, it is the producer of Tiberium Veins, spawns Veinmonsters and also creates Vein Hubs which are structures that will attack any living being inside their area of effect with veiny tentacles coming out of the ground.\n\nKilling the Veinhole kills all connected Veins and spawned Vein Hubs. The Veinhole has a chance to eat any pawn that comes too close.\n\nComing too close to the center might cause infection by poisonous gases.</description>
 		<statBases>
@@ -969,9 +969,9 @@
 				</discovery>
 			</li>
 		</modExtensions>	
-	</TiberiumRim.TiberiumProducerDef>
+	</TR.TiberiumProducerDef>
 	
-	<TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
+	<TR.TiberiumProducerDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumMonolith</defName>
 		<label>blue tiberium monolith</label>
 		<description>A blue monolith. These monoliths form from patches of blue Tiberium, and usually spread via tiny tiberium particles created by an explosion.</description>
@@ -1062,6 +1062,6 @@
 				</discovery>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TiberiumProducerDef>
+	</TR.TiberiumProducerDef>
 	
 </Defs>

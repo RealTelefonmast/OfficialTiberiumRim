@@ -4,33 +4,33 @@
 	<ThingDef Name="Common_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
 		<recipeMaker>
 			<recipeUsers Inherit="False">
-				<li>TiberiumWorkbench</li>
+				<li>TR_TibWorkbench</li>
 			</recipeUsers>
 		</recipeMaker>
 	</ThingDef>
 
-	<TiberiumRim.TRThingDef Name="Forgotten_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
+	<TR.TRThingDef Name="Forgotten_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
 		<recipeMaker>
 			<recipeUsers Inherit="False">
-				<li>TiberiumWorkbench</li>
+				<li>TR_TibWorkbench</li>
 			</recipeUsers>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef Name="GDI_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
+	<TR.TRThingDef Name="GDI_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
 		<recipeMaker>
 			<recipeUsers Inherit="False">
 				<li>GDI_Factory</li>
 			</recipeUsers>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef Name="Nod_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
+	<TR.TRThingDef Name="Nod_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
 		<recipeMaker>
 			<recipeUsers Inherit="False">
 				<li>Nod_Factory</li>
 			</recipeUsers>
 		</recipeMaker>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 </Defs>

@@ -19,7 +19,7 @@
 
 	<ThingDef Name="PlantBase_TR" Abstract="True">
 		<category>Plant</category>
-		<thingClass>TiberiumRim.TiberiumPlant</thingClass>
+		<thingClass>TR.TiberiumPlant</thingClass>
 		<altitudeLayer>LowPlant</altitudeLayer>
 		<useHitPoints>True</useHitPoints>
 		<statBases>
@@ -66,8 +66,8 @@
 		</modExtensions>
 	</ThingDef>
 	
-	<TiberiumRim.TiberiumCrystalDef Name="TiberiumCrystalBase" Abstract="True">
-		<thingClass>TiberiumRim.TiberiumCrystal</thingClass>
+	<TR.TiberiumCrystalDef Name="TiberiumCrystalBase" Abstract="True">
+		<thingClass>TR.TiberiumCrystal</thingClass>
 		<devObject>true</devObject>
 		<category>Building</category>
 		<tickerType>Long</tickerType>
@@ -120,10 +120,10 @@
 				<category>Crystals</category>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TiberiumCrystalDef>
+	</TR.TiberiumCrystalDef>
 	
-	<TiberiumRim.TiberiumCrystalDef Name="TiberiumForWater" ParentName="TiberiumCrystalBase" Abstract="True">
+	<TR.TiberiumCrystalDef Name="TiberiumForWater" ParentName="TiberiumCrystalBase" Abstract="True">
 		<conversions>GlacierConversion</conversions>
-	</TiberiumRim.TiberiumCrystalDef>
+	</TR.TiberiumCrystalDef>
 
 </Defs>

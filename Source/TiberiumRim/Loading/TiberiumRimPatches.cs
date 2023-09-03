@@ -7,13 +7,13 @@ using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
 using TeleCore;
-using TiberiumRim.Research.Window;
+using TR.Research.Window;
 using UnityEngine;
 using Verse;
 using Verse.AI;
 using MapInterface = RimWorld.MapInterface;
 
-namespace TiberiumRim
+namespace TR
 {
 
     [StaticConstructorOnStartup]

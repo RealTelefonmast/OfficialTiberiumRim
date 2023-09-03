@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     [StaticConstructorOnStartup]
     public class TiberiumMapRenderer

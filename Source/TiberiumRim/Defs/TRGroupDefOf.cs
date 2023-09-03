@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using TeleCore;
 
-namespace TiberiumRim
+namespace TR
 {
     [DefOf]
     public static class TRThingGroupDefOf

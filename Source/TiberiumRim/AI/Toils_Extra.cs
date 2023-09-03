@@ -4,7 +4,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace TiberiumRim.AI
+namespace TR.AI
 {
     public static class Toils_Extra
     {

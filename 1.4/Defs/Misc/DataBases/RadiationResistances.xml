@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<Def Class="TiberiumRim.RadiationFallOffDef">
+	<Def Class="TR.RadiationFallOffDef">
 		<defName>RadiationResistances</defName>
 		<materialFactors>
 			<li>WoodLog, 	0.1</li>

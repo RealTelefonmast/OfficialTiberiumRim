@@ -80,7 +80,7 @@
 
 	<!-- replaces a part completely -->
 	<HediffDef Name="AddedPart_TR" ParentName="HediffImplant_TR" Abstract="True">
-		<hediffClass>TiberiumRim.Hediff_TRAddedPart</hediffClass>
+		<hediffClass>TR.Hediff_TRAddedPart</hediffClass>
 		<priceImpact>true</priceImpact>
 	</HediffDef>
 

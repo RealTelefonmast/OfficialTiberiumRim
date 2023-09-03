@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TiberiumRim.Data.Enums;
+using TR.Data.Enums;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     public class VeinHub : TRBuilding
     {

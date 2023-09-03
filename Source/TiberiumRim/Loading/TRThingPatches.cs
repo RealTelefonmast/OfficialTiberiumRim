@@ -3,7 +3,7 @@ using HarmonyLib;
 using RimWorld;
 using Verse;
 
-namespace TiberiumRim
+namespace TR
 {
     internal static class TRThingPatches
     {

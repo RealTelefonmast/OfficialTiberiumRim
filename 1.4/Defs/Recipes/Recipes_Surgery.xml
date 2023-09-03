@@ -123,7 +123,7 @@
 		<defName>RemoveTiberiumSample</defName>
 		<label>remove tiberium skin sample</label>
 		<description>Remove a tiberium skin sample.</description>
-		<workerClass>TiberiumRim.Recipe_RemoveTiberiumSample</workerClass>
+		<workerClass>TR.Recipe_RemoveTiberiumSample</workerClass>
 		<jobString>Removing a tiberium skin sample.</jobString>
 		<workAmount>5000</workAmount>
 		<skillRequirements>

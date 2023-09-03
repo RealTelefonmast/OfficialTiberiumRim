@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	
-	<TiberiumRim.TerrainFilterDef>
+	<TR.TerrainFilterDef>
 		<defName>TerrainFilter_AllSoil</defName>
 		<acceptedFilters>
 			<li>TerrainFilter_Soil</li>
 			<li>TerrainFilter_RichSoil</li>
 		</acceptedFilters>
-	</TiberiumRim.TerrainFilterDef>
+	</TR.TerrainFilterDef>
 	
-	<TiberiumRim.TerrainFilterDef>
+	<TR.TerrainFilterDef>
 		<defName>TerrainFilter_Soil</defName>
 		<acceptedTerrain>
 			<li>Soil</li>
@@ -22,9 +22,9 @@
 		<ignoreTags>
 			<li>rich</li>
 		</ignoreTags>
-	</TiberiumRim.TerrainFilterDef>
+	</TR.TerrainFilterDef>
 	
-	<TiberiumRim.TerrainFilterDef>
+	<TR.TerrainFilterDef>
 		<defName>TerrainFilter_RichSoil</defName>
 		<acceptedTerrain>
 			<li>SoilRich</li>
@@ -32,9 +32,9 @@
 		<acceptedTags>
 			<li>soilrich</li>
 		</acceptedTags>
-	</TiberiumRim.TerrainFilterDef>
+	</TR.TerrainFilterDef>
 	
-	<TiberiumRim.TerrainFilterDef>
+	<TR.TerrainFilterDef>
 		<defName>TerrainFilter_TibSoil</defName>
 		<acceptedFilters>
 			<li>TerrainFilter_AllSoil</li>
@@ -42,10 +42,10 @@
 		<neededTags>
 			<li>tiberium</li>
 		</neededTags>
-	</TiberiumRim.TerrainFilterDef>
+	</TR.TerrainFilterDef>
 	
 	<!---->
-	<TiberiumRim.TerrainFilterDef>
+	<TR.TerrainFilterDef>
 		<defName>TerrainFilter_AllSand</defName>
 		<neededTags>
 			<li>sand</li>
@@ -53,9 +53,9 @@
 		<ignoreTags>
 			<li>stone</li>
 		</ignoreTags>
-	</TiberiumRim.TerrainFilterDef>
+	</TR.TerrainFilterDef>
 
-	<TiberiumRim.TerrainFilterDef>
+	<TR.TerrainFilterDef>
 		<defName>TerrainFilter_Sand</defName>
 		<acceptedFilters>
 			<li>TerrainFilter_AllSand</li>
@@ -63,10 +63,10 @@
 		<ignoreTags>
 			<li>soft</li>
 		</ignoreTags>
-	</TiberiumRim.TerrainFilterDef>
+	</TR.TerrainFilterDef>
 
 	<!---->
-	<TiberiumRim.TerrainFilterDef>
+	<TR.TerrainFilterDef>
 		<defName>TerrainFilter_Moss</defName>
 		<acceptedTerrain>
 			<li>MossyTerrain</li>
@@ -75,42 +75,42 @@
 		<acceptedTags>
 			<li>moss</li>
 		</acceptedTags>
-	</TiberiumRim.TerrainFilterDef>
+	</TR.TerrainFilterDef>
 
 	<!---->
-	<TiberiumRim.TerrainFilterDef>
+	<TR.TerrainFilterDef>
 		<defName>TerrainFilter_WaterDeep</defName>
 		<acceptedTerrain>
 			<li>WaterDeep</li>
 			<li>WaterOceanDeep</li>
 		</acceptedTerrain>
-	</TiberiumRim.TerrainFilterDef>
+	</TR.TerrainFilterDef>
 	
-	<TiberiumRim.TerrainFilterDef>
+	<TR.TerrainFilterDef>
 		<defName>TerrainFilter_WaterShallow</defName>
 		<acceptedTerrain>
 			<li>WaterShallow</li>
 			<li>WaterOceanShallow</li>
 			<li>Marsh</li>
 		</acceptedTerrain>
-	</TiberiumRim.TerrainFilterDef>
+	</TR.TerrainFilterDef>
 	
-	<TiberiumRim.TerrainFilterDef>
+	<TR.TerrainFilterDef>
 		<defName>TerrainFilter_WaterMoving</defName>
 		<acceptedTerrain>
 			<li>WaterMovingChestDeep</li>
 			<li>WaterMovingShallow</li>
 		</acceptedTerrain>
-	</TiberiumRim.TerrainFilterDef>
+	</TR.TerrainFilterDef>
 
-	<TiberiumRim.TerrainFilterDef>
+	<TR.TerrainFilterDef>
 		<defName>TerrainFilter_Concrete</defName>
 		<acceptedTerrain>
 			<li>Concrete</li>
 		</acceptedTerrain>
-	</TiberiumRim.TerrainFilterDef>
+	</TR.TerrainFilterDef>
 
-	<TiberiumRim.TerrainFilterDef>
+	<TR.TerrainFilterDef>
 		<defName>TerrainFilter_Stone</defName>
 		<acceptedTags>
 			<li>stone</li>
@@ -148,6 +148,6 @@
 			<li>sovite</li>
 			<li>thometzekite</li>
 		</acceptedTags>
-	</TiberiumRim.TerrainFilterDef>
+	</TR.TerrainFilterDef>
 	
 </Defs>

@@ -4,56 +4,54 @@ using TeleCore.Static;
 using UnityEngine;
 using Verse;
 
-namespace TiberiumRim
+namespace TR;
+
+public class Alert_TiberiumExposure : Alert_Critical
 {
-    public class Alert_TiberiumExposure : Alert_Critical
+    //public override
+    public override Color BGColor => Color.green;
+
+    public override string GetLabel() => "TR.Alert.Exposure".Translate();
+
+    public override void AlertActiveUpdate()
     {
-        //public override
-        public override Color BGColor => Color.green;
-
-        public override string GetLabel() => "TR.Alert.Exposure".Translate();
-
-        public override void AlertActiveUpdate()
+        base.AlertActiveUpdate();
+    }
+    
+    private static List<Pawn> SickPawns
+    {
+        get
         {
-            base.AlertActiveUpdate();
-        }
-
-        //
-        private List<Pawn> SickPawns
-        {
-            get
+            var total = StaticListHolder<Pawn>.RequestList("TR_SickPawnsTempList");
+            total.Clear();
+            foreach (var map in Find.Maps)
             {
-                List<Pawn> total = StaticListHolder<Pawn>.RequestList("TR_SickPawnsTempList");
-                total.Clear();
-                foreach (var map in Find.Maps)
-                {
-                    total.AddRange(map.Tiberium().MapPawnInfo.TotalSickColonists);
-                }
-                return total;
+                total.AddRange(map.Tiberium().MapPawnInfo.TotalSickColonists);
             }
+            return total;
         }
+    }
 
-        /*
-        private IEnumerable<Pawn> SickPawns
+    /*
+    private IEnumerable<Pawn> SickPawns
+    {
+        get
         {
-            get
-            {
-                return PawnsFinder
-                    .AllMapsCaravansAndTravelingTransportPods_Alive_FreeColonistsAndPrisoners_NoCryptosleep.Where(p =>
-                        Enumerable.Any(p.health.hediffSet.hediffs,
-                            diff => diff is Hediff_Crystallizing || diff.props == TRHediffDefOf.TiberiumExposure));
-            }
+            return PawnsFinder
+                .AllMapsCaravansAndTravelingTransportPods_Alive_FreeColonistsAndPrisoners_NoCryptosleep.Where(p =>
+                    Enumerable.Any(p.health.hediffSet.hediffs,
+                        diff => diff is Hediff_Crystallizing || diff.props == TRHediffDefOf.TiberiumExposure));
         }
-        */
+    }
+    */
         
-        public override AlertReport GetReport()
-        {
-            return AlertReport.CulpritsAre(SickPawns);
-        }
+    public override AlertReport GetReport()
+    {
+        return AlertReport.CulpritsAre(SickPawns);
+    }
         
-        public override TaggedString GetExplanation()
-        {
-            return base.GetExplanation();
-        }
+    public override TaggedString GetExplanation()
+    {
+        return base.GetExplanation();
     }
 }

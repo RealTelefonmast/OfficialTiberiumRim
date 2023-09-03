@@ -3,33 +3,33 @@
 
 	<JobDef>
 		<defName>RepairMechanicalPawn</defName>
-		<driverClass>TiberiumRim.JobDriver_RepairDroneRepair</driverClass>
+		<driverClass>TR.JobDriver_RepairDroneRepair</driverClass>
 	</JobDef>
 	
 	<JobDef>
 		<defName>ReturnFromRepair</defName>
-		<driverClass>TiberiumRim.JobDriver_RepairDroneReturn</driverClass>
+		<driverClass>TR.JobDriver_RepairDroneReturn</driverClass>
 	</JobDef>
 	
 	<JobDef>
 		<defName>WanderAtParent</defName>
-		<driverClass>TiberiumRim.JobDriver_WanderAtParent</driverClass>
+		<driverClass>TR.JobDriver_WanderAtParent</driverClass>
 	</JobDef>
 
 	<JobDef>
 		<defName>HarvestTiberium</defName>
-		<driverClass>TiberiumRim.JobDriver_HarvestTiberium</driverClass>
+		<driverClass>TR.JobDriver_HarvestTiberium</driverClass>
 	</JobDef>
 
 	<JobDef>
 		<defName>UnloadAtRefinery</defName>
-		<driverClass>TiberiumRim.JobDriver_UnloadAtRefinery</driverClass>
+		<driverClass>TR.JobDriver_UnloadAtRefinery</driverClass>
 		<reportString>unloading Tiberium.</reportString>
 	</JobDef>
 
 	<JobDef>
 		<defName>IdleAtRefinery</defName>
-		<driverClass>TiberiumRim.JobDriver_IdleAtRefinery</driverClass>
+		<driverClass>TR.JobDriver_IdleAtRefinery</driverClass>
 		<reportString>idling.</reportString>
 	</JobDef>
 

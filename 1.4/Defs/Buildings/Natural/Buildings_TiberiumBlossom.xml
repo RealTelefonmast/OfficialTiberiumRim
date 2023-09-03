@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	
-	<TiberiumRim.TiberiumProducerDef Name="BlossomTreeBase" ParentName="TiberiumProducerBase" Abstract="True">
+	<TR.TiberiumProducerDef Name="BlossomTreeBase" ParentName="TiberiumProducerBase" Abstract="True">
 		<statBases>
 			<MaxHitPoints>750</MaxHitPoints>
 			<Beauty>-75</Beauty>
@@ -79,9 +79,9 @@
 				<alignToBottom>true</alignToBottom>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TiberiumProducerDef>
+	</TR.TiberiumProducerDef>
 	
-	<TiberiumRim.TiberiumProducerDef ParentName="BlossomTreeBase">
+	<TR.TiberiumProducerDef ParentName="BlossomTreeBase">
 		<defName>BlossomTree</defName>
 		<label>blossom tree</label>
 		<description>This biological Tiberium producer is the result of tiberium exposure to plant-life.</description>
@@ -195,9 +195,9 @@
 				<li>AlocasiaBlossom,0.75</li>
 			</blossoms>
 		</spore>
-	</TiberiumRim.TiberiumProducerDef>
+	</TR.TiberiumProducerDef>
 	
-	<TiberiumRim.TiberiumProducerDef ParentName="BlossomTreeBase">
+	<TR.TiberiumProducerDef ParentName="BlossomTreeBase">
 		<defName>BlueBlossomTree</defName>
 		<label>blue blossom tree</label>
 		<description>This biological Tiberium producer is the result of tiberium exposure to plant-life.</description>
@@ -310,10 +310,10 @@
 				<li>AlocasiaBlossom,0.85</li>
 			</blossoms>
 		</spore>
-	</TiberiumRim.TiberiumProducerDef>
+	</TR.TiberiumProducerDef>
 	
-	<TiberiumRim.TiberiumProducerDef Name="SmallBlossomBase" ParentName="BlossomTreeBase" Abstract="True">
-		<thingClass>TiberiumRim.TiberiumBlossom</thingClass>
+	<TR.TiberiumProducerDef Name="SmallBlossomBase" ParentName="BlossomTreeBase" Abstract="True">
+		<thingClass>TR.TiberiumBlossom</thingClass>
 		<statBases>
 			<MaxHitPoints>400</MaxHitPoints>
 		</statBases>
@@ -337,9 +337,9 @@
 				<alignToBottom>true</alignToBottom>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TiberiumProducerDef>
+	</TR.TiberiumProducerDef>
 		
-	<TiberiumRim.TiberiumProducerDef ParentName="SmallBlossomBase">
+	<TR.TiberiumProducerDef ParentName="SmallBlossomBase">
 		<defName>AlocasiaBlossom</defName>
 		<label>alocasia candentis</label>
 		<description>This small mutated plant is part of Tiberium's terraforming abilities, acting as a biological Tiberium producer, spreading toxic spores through the air.\n While extremely toxic, the wide leafs and dark blue colors make it quite a sight to find.</description>
@@ -430,9 +430,9 @@
 				<alignToBottom>false</alignToBottom>
 			</li>
 		</modExtensions>		
-	</TiberiumRim.TiberiumProducerDef>
+	</TR.TiberiumProducerDef>
 	
-	<TiberiumRim.TiberiumProducerDef ParentName="SmallBlossomBase">
+	<TR.TiberiumProducerDef ParentName="SmallBlossomBase">
 		<defName>SmallBlossom</defName>
 		<label>blossom</label>
 		<description>A smaller version of the blossom tree, this tiberium blossom acts as a catalyst to quickly cover a wide range of the map with tiberium life.</description>
@@ -500,6 +500,6 @@
 				<alignToBottom>true</alignToBottom>
 			</li>
 		</modExtensions>
-	</TiberiumRim.TiberiumProducerDef>
+	</TR.TiberiumProducerDef>
 	
 </Defs>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.HarvesterKindDef>
+	<TR.HarvesterKindDef>
 		<defName>Harvester_Common</defName>
 		<label>harvester</label>
 		<combatPower>125</combatPower>
@@ -33,9 +33,9 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.HarvesterKindDef>
+	</TR.HarvesterKindDef>
 
-	<TiberiumRim.HarvesterKindDef>
+	<TR.HarvesterKindDef>
 		<defName>Harvester_GDI</defName>
 		<label>GDI harvester</label>
 		<combatPower>125</combatPower>
@@ -67,9 +67,9 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.HarvesterKindDef>
+	</TR.HarvesterKindDef>
 
-	<TiberiumRim.HarvesterKindDef>
+	<TR.HarvesterKindDef>
 		<defName>Harvester_Nod</defName>
 		<label>Nod harvester</label>
 		<combatPower>125</combatPower>
@@ -101,7 +101,7 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.HarvesterKindDef>
+	</TR.HarvesterKindDef>
 
 
 </Defs>

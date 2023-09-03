@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef ParentName="PlantBase_TR">
+	<TR.TRThingDef ParentName="PlantBase_TR">
 		<defName>TiberiumGrass</defName>
 		<label>tiberium grass</label>
 		<description>A strange type of grass-like flora, don't get entangled in the tentacles!</description>
@@ -26,9 +26,9 @@
 			<harvestYield>6</harvestYield>
 			<growDays>2.5</growDays>
 		</plant>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="PlantBase_TR">
+	<TR.TRThingDef ParentName="PlantBase_TR">
 		<defName>TiberiumGrass_Blue</defName>
 		<label>blue tiberium grass</label>
 		<description>A strange type of grass-like flora, don't get entangled in the tentacles!</description>
@@ -53,9 +53,9 @@
 			<harvestYield>6</harvestYield>
 			<growDays>2.5</growDays>
 		</plant>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="PlantBase_TR">
+	<TR.TRThingDef ParentName="PlantBase_TR">
 		<defName>TiberiumBush</defName>
 		<label>tiberium bush</label>
 		<description>A bunch of Tiberium flora forming a bush.</description>
@@ -83,9 +83,9 @@
 			<growDays>3</growDays>
 			<wildClusterRadius>4</wildClusterRadius>
 		</plant>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
   
-	<TiberiumRim.TRThingDef Abstract="True" Name="ShroomBase" ParentName="PlantBase_TR">
+	<TR.TRThingDef Abstract="True" Name="ShroomBase" ParentName="PlantBase_TR">
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Beauty>-10</Beauty>
@@ -101,9 +101,9 @@
 			</visualSizeRange>
 			<wildClusterRadius>4</wildClusterRadius>
 		</plant>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
   
-	<TiberiumRim.TRThingDef ParentName="ShroomBase">
+	<TR.TRThingDef ParentName="ShroomBase">
 		<defName>TiberiumShroom_Yellow</defName>
 		<label>yellow tiberium mushroom</label>
 		<description>This glowy plant resembles a mushroom, strange what Tiberium radiation can create.</description>
@@ -124,9 +124,9 @@
 				<glowColor>(70,110,0,0)</glowColor>
 			</li>
 		</comps>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
-	<TiberiumRim.TRThingDef ParentName="ShroomBase">
+	<TR.TRThingDef ParentName="ShroomBase">
 		<defName>TiberiumShroom_Blue</defName>
 		<label>blue tiberium mushroom</label>
 		<description>This glowy plant resembles a mushroom, strange what Tiberium radiation can create.</description>
@@ -147,9 +147,9 @@
 			<glowColor>(0,70,110,0)</glowColor>
 		  </li>
 		</comps>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef ParentName="ShroomBase">
+	<TR.TRThingDef ParentName="ShroomBase">
 		<defName>TiberiumShroom_Purple</defName>
 		<label>purple tiberium mushroom</label>
 		<description>This glowy plant resembles a mushroom, strange what Tiberium radiation can create.</description>
@@ -170,15 +170,15 @@
 			<glowColor>(110,0,110,0)</glowColor>
 		  </li>
 		</comps>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<!-- Expeller, does the expelling -->
 	
-	<TiberiumRim.TRThingDef ParentName="PlantBase_TR">
+	<TR.TRThingDef ParentName="PlantBase_TR">
 		<defName>TiberiumExpeller</defName>
 		<label>tiberian vent</label>
 		<description>!</description>
-		<thingClass>TiberiumRim.TiberiumPlant_Expeller</thingClass>
+		<thingClass>TR.TiberiumPlant_Expeller</thingClass>
 		<statBases>
 			<MaxHitPoints>130</MaxHitPoints>
 			<Beauty>-18</Beauty>
@@ -191,10 +191,10 @@
 		<plant>
 			<growDays>3</growDays>
 		</plant>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	
-	<TiberiumRim.TRThingDef ParentName="PlantBase_TR">
+	<TR.TRThingDef ParentName="PlantBase_TR">
 		<defName>TiberiumTree</defName>
 		<label>tiberium tree</label>
 		<description>A Tiberium infested tree, seems to be mostly harmless.</description>
@@ -230,10 +230,10 @@
 			</visualSizeRange>
 			<maxMeshCount>1</maxMeshCount>
 		</plant>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	
-	<TiberiumRim.TRThingDef ParentName="PlantBase_TR">
+	<TR.TRThingDef ParentName="PlantBase_TR">
 		<defName>DeadTiberiumTree</defName>
 		<label>dead tree</label>
 		<description>.</description>
@@ -262,6 +262,6 @@
 			</visualSizeRange>
 			<maxMeshCount>1</maxMeshCount>
 		</plant>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
 </Defs>
