@@ -509,12 +509,12 @@
 				<harvester>Harvester_Common</harvester>
 				<generalIOConfig>
 					<pattern>
-					#####|
-					O+#+O|
-					O+#+O|
-					O+++O|
-					##+##|
-					##O##|
+					##O##
+					##+##
+					O+++O
+					O+#+O
+					#####
+					#####
 					</pattern>
 					<!--
 					UUUUU
@@ -755,12 +755,12 @@
 				</networks>
 				<generalIOConfig>
 					<pattern>
-					XXXXXX|
+					#XXXX#|
 					X####X|
 					X####X|
 					X####X|
 					X####X|
-					XXXXXX|
+					#XXXX#|
 					</pattern>
 				</generalIOConfig>
 			</li>
@@ -960,7 +960,16 @@
 					</li>
 				</networks>
 				<generalIOConfig>
-					<pattern>XXXXXXXX|X######X|X######X|X######X | X######X|X######X|X######X|XXXXXXXX</pattern>
+					<pattern>
+					#XXXXXX#
+					X######X
+					X######X
+					X######X
+					X######X
+					X######X
+					X######X
+					#XXXXXX#
+					</pattern>
 				</generalIOConfig>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
@@ -1149,7 +1158,12 @@
 					</li>
 				</networks>
 				<generalIOConfig>
-					<pattern>##X##|XXXXX|XXXXX|XXXXX</pattern>
+					<pattern>
+					##X##
+					X###X
+					#####
+					#####
+					</pattern>
 				</generalIOConfig>
 			</li>
 			<li Class="TeleCore.CompProperties_FX"> 
