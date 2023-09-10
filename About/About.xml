@@ -9,7 +9,7 @@
 	</supportedVersions>
 	<loadAfter>
 		<li>Telefonmast.TeleCore</li>
-		<li>Telefonmast.AtmosphereExtended</li>
+		<li>Telefonmast.TrueAtmospheres</li>
 	</loadAfter>
 	<modDependencies>
 		<li>

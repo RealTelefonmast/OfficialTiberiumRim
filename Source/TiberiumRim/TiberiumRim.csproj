@@ -44,7 +44,7 @@
 		<PackageReference Include="Lib.Harmony" Version="2.2.2" ExcludeAssets="runtime" />
 		<PackageReference Include="RimWorld.MultiplayerAPI" Version="0.4.0" />
 
-		<PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.4" />
+		<PackageReference Include="Microsoft.NETCore.Platforms" Version="8.0.0-preview.7.23375.6" />
 
 		<PackageReference Include="TeleCore" Version="1.9.3.7" />
 		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.0.1" ExcludeAssets="runtime" />
@@ -82,40 +82,13 @@
 	    <HintPath>..\AtmosphereExtended.dll</HintPath>
 	    <CopyLocal>False</CopyLocal>
 	  </Reference>
+	  <Reference Include="TrueAtmospheres">
+	    <HintPath>..\..\..\TrueAtmospheres\Assemblies\TrueAtmospheres.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<ItemGroup>
 		<Publicize Include="Assembly-CSharp" />
 	</ItemGroup>
 	
-	<!--
-	<Target Name="MyCode" BeforeTargets="UpdateReferences">
-		<PropertyGroup>
-			<AssemblyCSharp>$(PkgKrafs_Rimworld_Ref)\ref\net472\Assembly-CSharp.dll</AssemblyCSharp>
-			<PubliciseOutputPath>$(PkgKrafs_Rimworld_Ref)\ref\net472\</PubliciseOutputPath>
-			<AssemblyCSharp_Publicised>$(PubliciseOutputPath)Assembly-CSharp_publicised.dll</AssemblyCSharp_Publicised>
-		</PropertyGroup>
-		
-		<Message Importance="High" Text="Publicising Rimworld Assembly ..." />
-		<Publicise TargetAssemblyPath="$(AssemblyCSharp)" OutputPath="$(PubliciseOutputPath)" Condition="Exists('$(AssemblyCSharp)')" />
-		<Message Importance="High" Text="Replacing reference to un-publicised assemblies with publicised equivalents ..." />
-
-		<ItemGroup>
-			<Reference Include="$(AssemblyCSharp_Publicised)">
-				<SpecificVersion>false</SpecificVersion>
-				<HintPath>$(AssemblyCSharp_Publicised)</HintPath>
-				<Implicit>true</Implicit>
-				<Private>false</Private>
-			</Reference>
-		</ItemGroup>
-	</Target>
-
-	<Target Name="UpdateReferences" AfterTargets="ResolveLockFileReferences">
-		<Message Importance="High" Text="Remove References ..." />
-
-		<ItemGroup>
-			<Reference Remove="$(PkgKrafs_Rimworld_Ref)\ref\net472\Assembly-CSharp.dll" />
-		</ItemGroup>
-	</Target>
--->
 </Project>
