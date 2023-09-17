@@ -46,7 +46,7 @@
 
 		<PackageReference Include="Microsoft.NETCore.Platforms" Version="8.0.0-preview.7.23375.6" />
 
-		<PackageReference Include="TeleCore" Version="1.9.3.7" />
+		<PackageReference Include="TeleCore" Version="1.9.4.4" />
 		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.0.1" ExcludeAssets="runtime" />
 	</ItemGroup>
 
@@ -78,10 +78,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="AtmosphereExtended">
-	    <HintPath>..\AtmosphereExtended.dll</HintPath>
-	    <CopyLocal>False</CopyLocal>
-	  </Reference>
 	  <Reference Include="TrueAtmospheres">
 	    <HintPath>..\..\..\TrueAtmospheres\Assemblies\TrueAtmospheres.dll</HintPath>
 	  </Reference>

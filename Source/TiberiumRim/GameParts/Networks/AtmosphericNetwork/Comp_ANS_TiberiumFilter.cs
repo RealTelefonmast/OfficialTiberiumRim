@@ -1,6 +1,7 @@
 ﻿using TAE;
 using TeleCore;
 using TeleCore.Data.Events;
+using TeleCore.Network;
 using TeleCore.Network.Data;
 using UnityEngine;
 using Verse;
@@ -77,7 +78,7 @@ namespace TR
             return !AtmosphericComp.Volume.Full;
         }
 
-        public override void NetworkPostTick(NetworkPart networkSubPart, bool isPowered)
+        public override void NetworkPostTick(INetworkPart networkSubPart, bool isPowered)
         {
             if (!ShouldProcess) return;
             if (AtmosphericComp.Volume.TryRemove(TiberiumDefOf.Atmospheric_TibPollution, 10, out var result))

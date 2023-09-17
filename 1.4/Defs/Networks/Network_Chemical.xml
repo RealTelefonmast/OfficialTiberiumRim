@@ -6,7 +6,7 @@
 		<label>Chemical Network</label>
 		<labelShort>Chemical</labelShort>
 		<containerLabel>Chemical Storage</containerLabel>
-		<controllerDef>TR_TiberiumExtractor</controllerDef>
+		<!--controllerDef>TR_TiberiumExtractor</controllerDef-->
 		<transmitterDef>ChemicalPipe</transmitterDef>
 		<transmitterGraphic>
 			<texPath>Buildings/Common/Pollution/Pipe_Air</texPath>

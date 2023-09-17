@@ -2,6 +2,7 @@
 using System.Text;
 using TeleCore;
 using TeleCore.Data.Events;
+using TeleCore.Network;
 using TeleCore.Network.Data;
 using UnityEngine;
 using Verse;

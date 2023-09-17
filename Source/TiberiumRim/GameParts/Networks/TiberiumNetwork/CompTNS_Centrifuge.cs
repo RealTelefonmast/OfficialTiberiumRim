@@ -5,6 +5,7 @@ using System.Text;
 using RimWorld;
 using TeleCore;
 using TeleCore.Data.Events;
+using TeleCore.Network;
 using TeleCore.Network.Data;
 using TeleCore.Primitive;
 using UnityEngine;
@@ -231,8 +232,8 @@ namespace TR
             //CompFX.FXLayers[3].PropertyBlock.SetFloat("_BlendValue", BlendValue);
             //CompFX.FXLayers[4].PropertyBlock.SetFloat("_BlendValue", BlendValue);
         }
-        
-        public override void NetworkPostTick(NetworkPart networkSubPart, bool isPowered)
+
+        public override void NetworkPostTick(INetworkPart networkSubPart, bool isPowered)
         {
             StartOrSustainCentrifuge(isPowered);
             if (!isPowered) return;
