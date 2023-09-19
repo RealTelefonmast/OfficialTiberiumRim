@@ -12,8 +12,8 @@ namespace TR
     public class ResearchCreationTable : IExposable
     {
         //public static Dictionary<TResearchTaskDef, List<ThingDef>> taskCreationThingDefs = new Dictionary<TResearchTaskDef, List<ThingDef>>();
-        public Dictionary<TResearchTaskDef, CreationGroupTracker> taskCreations = new Dictionary<TResearchTaskDef, CreationGroupTracker>();
-        private readonly Dictionary<ThingDef, List<TResearchTaskDef>> tasksForThings = new Dictionary<ThingDef, List<TResearchTaskDef>>();
+        public Dictionary<TResearchTaskDef, CreationGroupTracker> taskCreations = new ();
+        private readonly Dictionary<ThingDef, List<TResearchTaskDef>> tasksForThings = new ();
 
         public ResearchCreationTable()
         {
@@ -70,15 +70,15 @@ namespace TR
         }
     }
 
-    /*  Each Task has a creation group tracker, to track the groups of things it should create
-     *
+    /*
+     * Each Task has a creation group tracker, to track the groups of things it should create
      */
 
     public class CreationGroupTracker : IExposable
     {
         private TResearchTaskDef taskDef;
-        private readonly Dictionary<ThingDef, List<CreationOptionProperties>> creationOptionMap = new Dictionary<ThingDef, List<CreationOptionProperties>>();
-        private readonly Dictionary<CreationOptionProperties, int> thingsToCreate = new Dictionary<CreationOptionProperties, int>();
+        private readonly Dictionary<ThingDef, List<CreationOptionProperties>> creationOptionMap = new ();
+        private readonly Dictionary<CreationOptionProperties, int> thingsToCreate = new ();
 
         private List<int> intValues;
 

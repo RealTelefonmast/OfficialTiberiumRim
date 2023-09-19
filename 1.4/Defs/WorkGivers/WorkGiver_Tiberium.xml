@@ -7,7 +7,7 @@
 		<label>do tiberium research</label>
 		<giverClass>TR.WorkGiver_TResearch</giverClass>
 		<workType>Research</workType>
-		<priorityInType>90</priorityInType>
+		<priorityInType>120</priorityInType>
 		<verb>(TR)research</verb>
 		<gerund>(TR)researching at</gerund>
 		<requiredCapacities>

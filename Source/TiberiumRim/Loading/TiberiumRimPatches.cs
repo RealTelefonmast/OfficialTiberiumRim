@@ -240,7 +240,7 @@ namespace TR
 
         //Pawn Patches
         [HarmonyPatch(typeof(Pawn))]
-        [HarmonyPatch("TryGetAttackVerb")]
+        [HarmonyPatch(nameof(Pawn.TryGetAttackVerb))]
         public static class Pawn_TryGetAttackVerbPatch
         {
             public static void Postfix(ref Verb __result, Pawn __instance)
@@ -671,6 +671,7 @@ namespace TR
         }
 
         //Core Parent Addons
+        /*
         [HarmonyPatch(typeof(Frame))]
         [HarmonyPatch("CompleteConstruction")]
         static class CompleteConstructionPatch
@@ -684,7 +685,7 @@ namespace TR
                     TRUtils.ResearchCreationTable().TryTrackConstructedOrClaimedBuilding((ThingDef)__instance.def.entityDefToBuild);
                 }
             }
-        }
+        }*/
         
         [HarmonyPatch(typeof(AutoHomeAreaMaker))]
         [HarmonyPatch(nameof(AutoHomeAreaMaker.Notify_BuildingClaimed))]

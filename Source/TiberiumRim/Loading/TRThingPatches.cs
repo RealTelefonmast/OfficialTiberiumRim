@@ -54,6 +54,11 @@ namespace TR
                             tib?.Destroy();
                         }
                     }
+
+                    if (building.Faction?.IsPlayer ?? false)
+                    {
+                        TRUtils.ResearchCreationTable().TryTrackConstructedOrClaimedBuilding(building.def);
+                    }
                 }
 
                 //Research
