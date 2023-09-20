@@ -33,11 +33,13 @@
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<building>
 			<blueprintGraphicData>
-				<texPath>Buildings/Common/Research/ResearchCrane</texPath>
+				<texPath>Buildings/Common/Research/ResearchCrane_BP</texPath>
 				<graphicClass>Graphic_Single</graphicClass>
 				<drawSize>(8,8)</drawSize>
 			</blueprintGraphicData>
 			<isEdifice>true</isEdifice>
+			<expandHomeArea>false</expandHomeArea>
+			<ai_combatDangerous>true</ai_combatDangerous>
 		</building>
 		<statBases>
 			<MaxHitPoints>350</MaxHitPoints>
