@@ -55,6 +55,11 @@
 			</defaultOutfitTags>
 			<useDeflectMetalEffect>true</useDeflectMetalEffect>
 		</apparel>
+		<requisites>
+			<tiberiumResearch>
+				<li>ForgottenExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TR.TRThingDef>
 
 	<TR.TRThingDef ParentName="Forgotten_Armor"> <!--balance standard - recon armor -20%-->
@@ -109,6 +114,11 @@
 			</defaultOutfitTags>
 			<useDeflectMetalEffect>true</useDeflectMetalEffect>
 		</apparel>
+		<requisites>
+			<tiberiumResearch>
+				<li>ForgottenExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TR.TRThingDef>
 		
 	<TR.TRThingDef ParentName="Forgotten_Armor"> <!--balance standard - recon helmet -20% -->
@@ -161,6 +171,11 @@
 		<thingCategories>
 			<li>TRHelmetsETC</li>
 		</thingCategories>
+		<requisites>
+			<tiberiumResearch>
+				<li>ForgottenExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
 	</TR.TRThingDef>
 
 </Defs>
