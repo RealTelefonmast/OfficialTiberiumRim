@@ -47,39 +47,59 @@ public class Comp_DroneStation : Comp_MechStation
     public void TryReleaseDrone()
     {
         if (!FuelComp.HasFuel) return;
-        var mechs = MechsAvailableForRepair().ToList();
-        if (!mechs.Any()) return;
-        for (var i = MainMechLink.Count - 1; i >= 0; i--)
+        if(MainMechLink.Count == 0) return;
+        if (!AnyMechAvailableForRepair) return;
+        foreach (var brokeyMech in MechsAvailableForRepair)
         {
-            var drone = (RepairDrone)MainMechLink[i];
-            foreach (var damagedMech in MechsAvailableForRepair())
+            for (var i = MainMechLink.Count - 1; i >= 0; i--)
             {
-                if (Reservations.IsReserved(damagedMech)) continue;
-                var closestPos = GenAdjFast.AdjacentCells8Way(parent).MinBy(c => c.DistanceTo(damagedMech.Position));
+                var drone = (RepairDrone)MainMechLink[i];
+                if (Reservations.IsReserved(brokeyMech)) continue;
+                
+                var closestPos = GenAdjFast.AdjacentCells8Way(parent).MinBy(c => c.DistanceTo(brokeyMech.Position));
                 if (drone.Spawned && Reservations.FirstReservationFor(drone) != null) continue;
                 if (!drone.Spawned && !MainGarage.TryPullFromGarage(drone, out Thing mech, closestPos, parent.Map, ThingPlaceMode.Direct)) continue;
-
-                var job = new JobWithExtras(DefDatabase<JobDef>.GetNamed("RepairMechanicalPawn"), damagedMech)
+                var job = new JobWithExtras(DefDatabase<JobDef>.GetNamed("RepairMechanicalPawn"), brokeyMech)
                 {
                     loadID = Find.UniqueIDsManager.GetNextJobID(),
-                    hediffs = damagedMech.Damage().ToList()
+                    hediffs = brokeyMech.Damage().ToList()
                 };
-                Reservations.Reserve(drone, job, damagedMech);
+                Reservations.Reserve(drone, job, brokeyMech);
                 drone.jobs.StartJob(job);
                 parent.Map.mapDrawer.MapMeshDirty(parent.Position, MapMeshFlag.Things);
+
             }
         }
     }
 
-    public IEnumerable<MechanicalPawn> MechsAvailableForRepair()
+    public bool AnyMechAvailableForRepair
     {
-        for (int i = 0; i < radialCells; i++)
+        get
         {
-            var pos = this.parent.Position + GenRadial.RadialPattern[i];
-            if (!pos.InBounds(parent.Map)) continue;
-            Pawn pawn = pos.GetFirstPawn(parent.Map);
-            if (pawn == null || !(pawn is MechanicalPawn mech) || !mech.IsDamaged()) continue;
-            yield return (MechanicalPawn)pawn;
+            for (int i = 0; i < radialCells; i++)
+            {
+                var pos = this.parent.Position + GenRadial.RadialPattern[i];
+                if (!pos.InBounds(parent.Map)) continue;
+                var pawn = pos.GetFirstPawn(parent.Map);
+                if (pawn is not MechanicalPawn mech || !mech.IsDamaged()) continue;
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public IEnumerable<MechanicalPawn> MechsAvailableForRepair
+    {
+        get
+        {
+            for (int i = 0; i < radialCells; i++)
+            {
+                var pos = this.parent.Position + GenRadial.RadialPattern[i];
+                if (!pos.InBounds(parent.Map)) continue;
+                var pawn = pos.GetFirstPawn(parent.Map);
+                if (pawn is not MechanicalPawn mech || !mech.IsDamaged()) continue;
+                yield return (MechanicalPawn)pawn;
+            }
         }
     }
 

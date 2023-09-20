@@ -968,6 +968,14 @@
 					<unknownDescription>We have not yet figured out what this is.</unknownDescription>
 				</discovery>
 			</li>
+			<li Class="TeleCore.GraphicOverrideExtensions">
+				<ghostGraphic>
+					<texPath>Buildings/Natural/Veinhole/Veinhole/Base</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<shaderType>EdgeDetect</shaderType>
+					<drawSize>(8,8)</drawSize>
+				</ghostGraphic>
+			</li>
 		</modExtensions>	
 	</TR.TiberiumProducerDef>
 	

@@ -15,7 +15,7 @@
 			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<drawerType>MapMeshAndRealTime</drawerType>
-		<uiIconPath>Buildings/Common/Research/ResearchCrane</uiIconPath>
+		<uiIconPath>Buildings/Common/Research/ResearchCrane/Original</uiIconPath>
 		<graphicData>
 			<texPath>Blank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -33,7 +33,7 @@
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<building>
 			<blueprintGraphicData>
-				<texPath>Buildings/Common/Research/ResearchCrane_BP</texPath>
+				<texPath>Buildings/Common/Research/ResearchCrane/Blueprint</texPath>
 				<graphicClass>Graphic_Single</graphicClass>
 				<drawSize>(8,8)</drawSize>
 			</blueprintGraphicData>
@@ -78,6 +78,13 @@
 			<li Class="TeleCore.SubMenuExtension">
 				<groupDef>Common</groupDef>
 				<category>Research</category>
+			</li>
+			<li Class="TeleCore.GraphicOverrideExtensions">
+				<ghostGraphic>
+					<texPath>Buildings/Common/Research/ResearchCrane/Blueprint</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<drawSize>(8,8)</drawSize>
+				</ghostGraphic>
 			</li>
 		</modExtensions>
 	</TR.TRThingDef>

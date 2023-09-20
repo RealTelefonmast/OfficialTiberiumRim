@@ -11,7 +11,7 @@ namespace TR
         {
             var drone = pawn as RepairDrone;
             var comp = drone.parentComp;
-            if (!comp.MechsAvailableForRepair().Any()) return false;
+            if (!comp.AnyMechAvailableForRepair) return false;
             return pawn.CurJobDef != DefDatabase<JobDef>.GetNamed("RepairMechanicalPawn");
         }
     }
