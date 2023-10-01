@@ -341,6 +341,27 @@
 				<renderSize>1</renderSize>
 				<radius>4</radius>
 			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Resource Pool</fuelLabel>
+				<fuelGizmoLabel>Resource Pool</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>25</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.25</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>10</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot use drones.</outOfFuelMessage>
+				<!--TODO: Make icon for missing building-resources-->
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
 		</comps>
 	</TR.TRThingDef>	
 	
