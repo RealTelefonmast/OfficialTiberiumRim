@@ -21,7 +21,7 @@
 			<rotationSpeed>5</rotationSpeed>
 		</gas>
 		<modExtensions>
-			<li Class="TAE.GasPropertyExtension">
+			<li Class="TAC.GasPropertyExtension">
 				<maxSaturation>1000</maxSaturation>
 				<minSpreadSaturation>100</minSpreadSaturation>
 				<!--<dissipationSaturation>200</dissipationSaturation>-->

@@ -35,6 +35,15 @@
 				<networks>
 					<li>
 						<networkDef>TiberiumNetwork</networkDef>
+						<volumeConfig>
+							<capacity>2500</capacity>
+							<!--<dropContents>true</dropContents>-->
+							<leaveContainer>true</leaveContainer>
+							<storeEvenly>true</storeEvenly>	
+							<values>
+								<fromCollection>TiberiumNetwork</fromCollection>
+							</values>
+						</volumeConfig>
 						<roles>
 							<li>Transmitter</li>
 							<li>Controller</li>
@@ -42,6 +51,15 @@
 					</li>
 					<li>
 						<networkDef>WasteNetwork</networkDef>
+						<volumeConfig>
+							<capacity>2500</capacity>
+							<!--<dropContents>true</dropContents>-->
+							<leaveContainer>true</leaveContainer>
+							<storeEvenly>true</storeEvenly>	
+							<values>
+								<fromCollection>WasteNetwork</fromCollection>
+							</values>
+						</volumeConfig>
 						<roles>
 							<li>Transmitter</li>
 							<li>Controller</li>

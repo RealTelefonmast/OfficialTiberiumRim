@@ -4,9 +4,9 @@
 	<ThingDef>
 		<defName>Gas_ChemicalInterface</defName>
 		<label>n/a</label>
-		<thingClass>TAE.GasInterfaceThing</thingClass>
+		<thingClass>TAC.GasInterfaceThing</thingClass>
 		<modExtensions>
-			<li Class="TAE.GasInterface">
+			<li Class="TAC.GasInterface">
 				<gasType>Gas_Chemical</gasType>
 				<startingValue>100</startingValue>
 			</li>
@@ -16,9 +16,9 @@
 	<ThingDef>
 		<defName>TiberiumGas</defName>
 		<label>n/a</label>
-		<thingClass>TAE.GasInterfaceThing</thingClass>
+		<thingClass>TAC.GasInterfaceThing</thingClass>
 		<modExtensions>
-			<li Class="TAE.GasInterface">
+			<li Class="TAC.GasInterface">
 				<gasType>TiberiumGas</gasType>
 				<startingValue>100</startingValue>
 			</li>
@@ -28,9 +28,9 @@
 	<ThingDef>
 		<defName>TiberiumPollution</defName>
 		<label>n/a</label>
-		<thingClass>TAE.GasInterfaceThing</thingClass>
+		<thingClass>TAC.GasInterfaceThing</thingClass>
 		<modExtensions>
-			<li Class="TAE.GasInterface">
+			<li Class="TAC.GasInterface">
 				<gasType>TiberiumPollution</gasType>
 				<startingValue>100</startingValue>
 			</li>
@@ -38,7 +38,7 @@
 	</ThingDef>
 	
 	<!--
-	<TAE.SpreadingGasTypeDef>
+	<TAC.SpreadingGasTypeDef>
 		<defName>Gas_Shockwave</defName>
 		<label>afterchock</label>
 		
@@ -53,6 +53,6 @@
 		<accuracyPenalty>0.5</accuracyPenalty>
 		<colorMin>(0,0,0)</colorMin>
 		<colorMax>(1,1,1,1)</colorMax>
-	</TAE.SpreadingGasTypeDef>
+	</TAC.SpreadingGasTypeDef>
 	-->
 </Defs>

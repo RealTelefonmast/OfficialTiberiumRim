@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<name>TiberiumRim</name>
+	<packageId>telefonmast.tiberiumrim</packageId>
 	<author>Telefonmast, Nephlite</author>
 	<supportedVersions>
 		<li>1.2</li>
@@ -8,8 +9,8 @@
 		<li>1.4</li>
 	</supportedVersions>
 	<loadAfter>
-		<li>Telefonmast.TeleCore</li>
-		<li>Telefonmast.TrueAtmospheres</li>
+		<li>telefonmast.core</li>
+		<li>telefonmast.realism.atmoscore</li>
 	</loadAfter>
 	<modDependencies>
 		<li>
@@ -19,17 +20,16 @@
 			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
 		</li>
 		<li>
-			<packageId>Telefonmast.TeleCore</packageId>
+			<packageId>telefonmast.core</packageId>
 			<displayName>TeleCore</displayName>
 			<steamWorkshopUrl>steam://url/CommunityFilePage/2810454935</steamWorkshopUrl>
 		</li>
 		<li>
-			<packageId>Telefonmast.TrueAtmospheres</packageId>
-			<displayName>TrueAtmospheres</displayName>
+			<packageId>telefonmast.realism.atmoscore</packageId>
+			<displayName>Tele's Gases and Liquids</displayName>
 			<downloadUrl>https://github.com/RealTelefonmast/AtmospheresExtended/archive/refs/heads/main.zip</downloadUrl>
 		</li>
 	</modDependencies>
-	<packageId>telefonmast.tiberiumrim</packageId>
 	<description>	-----Transmission Begin-----
 
 Welcome back Commander.

@@ -127,7 +127,7 @@
 		<neverOverlapFloors>true</neverOverlapFloors>
 		<blockPlants>true</blockPlants>
 		<comps>
-			<li Class="TAE.CompProperties_AtmosphericSource">
+			<li Class="TAC.CompProperties_AtmosphericSource">
 				<pushAmount>100</pushAmount>
 				<pushInterval>750</pushInterval>
 				<atmosphericDef>TibPollution</atmosphericDef>

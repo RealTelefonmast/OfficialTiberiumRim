@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TAE.SpreadingGasTypeDef>
+	<TAC.SpreadingGasTypeDef>
 		<defName>TiberiumGas</defName>
 		<label>tiberium gas</label>
 		
@@ -12,9 +12,9 @@
 		<rotationSpeeds>10~20</rotationSpeeds>
 		<blockTurretTracking>true</blockTurretTracking>
 		<accuracyPenalty>0.6</accuracyPenalty>
-	</TAE.SpreadingGasTypeDef>
+	</TAC.SpreadingGasTypeDef>
 	
-	<TAE.SpreadingGasTypeDef>
+	<TAC.SpreadingGasTypeDef>
 		<defName>TiberiumPollution</defName>
 		<label>tiberium pollution</label>
 		<colorMin>(0.25,0.5,0)</colorMin>
@@ -27,9 +27,9 @@
 		<rotationSpeeds>5~10</rotationSpeeds>
 		<blockTurretTracking>true</blockTurretTracking>
 		<accuracyPenalty>0.8</accuracyPenalty>
-	</TAE.SpreadingGasTypeDef>
+	</TAC.SpreadingGasTypeDef>
 	
-	<TAE.SpreadingGasTypeDef>
+	<TAC.SpreadingGasTypeDef>
 		<defName>Gas_Chemical</defName>
 		<label>chemical gas</label>
 		
@@ -40,6 +40,6 @@
 		<rotationSpeeds>10~20</rotationSpeeds>
 		<blockTurretTracking>true</blockTurretTracking>
 		<accuracyPenalty>0.3</accuracyPenalty>
-	</TAE.SpreadingGasTypeDef>
+	</TAC.SpreadingGasTypeDef>
 
 </Defs>

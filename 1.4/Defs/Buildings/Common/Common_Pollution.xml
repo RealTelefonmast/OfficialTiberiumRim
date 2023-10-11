@@ -233,7 +233,7 @@
 			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TAE.CompProperties_ANS_AirVent">
+			<li Class="TAC.CompProperties_ANS_AirVent">
 				<filter>
 					<acceptedAtmospheres>	
 						<li>Atmosphere_TibPollution</li>					
@@ -333,7 +333,7 @@
 			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<comps>
-			<li Class="TAE.CompProperties_ANS_AirVent">
+			<li Class="TAC.CompProperties_ANS_AirVent">
 				<ventMode>Output</ventMode>
 				<gasThroughPut>10</gasThroughPut>
 				<filter>
@@ -386,7 +386,7 @@
 	<TR.TRThingDef ParentName="DoorBase_TR">
 		<defName>Atmospheric_AirLockDoor</defName>
 		<label>air-lock door</label>
-		<thingClass>TAE.Building_AirLock</thingClass>
+		<thingClass>TAC.Building_AirLock</thingClass>
 		<description>Defines an air-lock room, when powered and active, pawns will automatically use the airlock inbetween their work routines.</description>
 		<passability>PassThroughOnly</passability>
 		<graphicData>

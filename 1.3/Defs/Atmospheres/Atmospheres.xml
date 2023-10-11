@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	<!--
-	<TAE.AtmosphericDef>
+	<TAC.AtmosphericDef>
 		<defName>TiberiumGas</defName>
 		<atmosphericTag>TiberiumPollutant</atmosphericTag>
 		<labelShort>Tib</labelShort>
 		<valueColor>(75,255,75)</valueColor>
-	</TAE.AtmosphericDef>
+	</TAC.AtmosphericDef>
 	-->
 	
-	<TAE.AtmosphericDef>
+	<TAC.AtmosphericDef>
 		<defName>TibPollution</defName>
 		<label>pollution</label>
 		<labelShort>tib</labelShort>
 		<viscosity>0.5</viscosity>
 		<networkValue>TibPollution</networkValue>
 		<valueColor>(38,127,4)</valueColor>
-	</TAE.AtmosphericDef>
+	</TAC.AtmosphericDef>
 	
 </Defs>
