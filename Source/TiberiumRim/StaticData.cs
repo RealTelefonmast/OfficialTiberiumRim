@@ -28,7 +28,6 @@ namespace TR
 
         public static void Notify_Reload()
         {
-            TRLog.Debug("Clearing StaticData!");
             CanvasBySize = new Dictionary<int, Color[]>();
 
             TiberiumMapComp = new Dictionary<int, MapComponent_Tiberium>();

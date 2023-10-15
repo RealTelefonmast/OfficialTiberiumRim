@@ -34,7 +34,6 @@ namespace TR
 
         public override void FinalizeInit()
         {
-            TRLog.Debug("GameComp TR FinalizeInit");
             base.FinalizeInit();
         }
 

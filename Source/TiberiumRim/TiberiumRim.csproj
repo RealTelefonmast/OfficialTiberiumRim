@@ -78,13 +78,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="TrueAtmospheres">
-	    <HintPath>..\..\..\TrueAtmospheres\Assemblies\TrueAtmospheres.dll</HintPath>
-	  </Reference>
+		<Publicize Include="Assembly-CSharp" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Publicize Include="Assembly-CSharp" />
+	  <Reference Include="AtmosCore">
+	    <HintPath>..\..\..\TR_GasesAndLiquids\Assemblies\AtmosCore.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 	
 </Project>

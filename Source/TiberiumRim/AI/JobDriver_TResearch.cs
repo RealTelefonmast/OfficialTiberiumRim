@@ -32,7 +32,9 @@ namespace TR
                 var workType = Project.CurrentTask.WorkType;
                 if (workType.Equals(WorkTypeDefOf.Crafting))
                     return EffecterDefOf.ConstructMetal;
-                return EffecterDefOf.Research;
+                if(PathEndMode == PathEndMode.InteractionCell)
+                    return EffecterDefOf.Research;
+                return null;
             }
         }
 

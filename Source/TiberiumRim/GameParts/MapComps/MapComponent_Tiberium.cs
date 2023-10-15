@@ -38,7 +38,7 @@ namespace TR
 
         public MapComponent_Tiberium(Map map) : base(map)
         {
-            TRLog.Debug($"Making new Tiberium MapComp for [{map.uniqueID}]");
+            //TRLog.Debug($"Making new Tiberium MapComp for [{map.uniqueID}]");
             StaticData.Notify_NewTibMapComp(this);
         }
 

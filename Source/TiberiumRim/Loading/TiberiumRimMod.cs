@@ -76,7 +76,6 @@ switch (pid)
 
         public override void WriteSettings()
         {
-            TRLog.Debug("Writing settings?");
             base.WriteSettings();
         }
 

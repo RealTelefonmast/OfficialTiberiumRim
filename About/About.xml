@@ -25,7 +25,7 @@
 			<steamWorkshopUrl>steam://url/CommunityFilePage/2810454935</steamWorkshopUrl>
 		</li>
 		<li>
-			<packageId>telefonmast.realism.atmoscore</packageId>
+			<packageId>telefonmast.realism.core.atmos</packageId>
 			<displayName>Tele's Gases and Liquids</displayName>
 			<downloadUrl>https://github.com/RealTelefonmast/AtmospheresExtended/archive/refs/heads/main.zip</downloadUrl>
 		</li>
