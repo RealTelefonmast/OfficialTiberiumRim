@@ -486,62 +486,66 @@ namespace TR
                 var singleArr = new []{RelevantTargetStat != null
                     ? "TR_TaskBenches".Translate(RelevantTargetStat.LabelCap.RawText.ColorizeFix("#FFE164")).RawText
                     : "TR_TaskTargets".Translate().RawText};
-                cachedTaskInfo.Add("TargetProps_Label", singleArr);
+                CachedInfo.Add("TargetProps_Label", singleArr);
 
-
-                if (!TargetProperties.groupLabel.NullOrEmpty())
-                    cachedTaskInfo.Add("TargetProps_GroupLabel", new []{TargetProperties.groupLabel});
-
-                if (showTargetList)
+                if (TargetProperties != null)
                 {
-                    var targetArr = new string[PossibleMainTargets.Count];
-                    for (var i = 0; i < PossibleMainTargets.Count; i++)
-                    {
-                        var target = PossibleMainTargets[i];
-                        var targetText = "  -" + target.LabelCap.RawText;
-                        if (RelevantTargetStat != null)
-                            targetText += "  (" + (target.GetStatValueAbstract(RelevantTargetStat) + "x").ColorizeFix("#FFE164") + ")";
+                    if (!TargetProperties.groupLabel.NullOrEmpty())
+                        CachedInfo.Add("TargetProps_GroupLabel", new[] { TargetProperties.groupLabel });
 
-                        targetArr[i] = targetText;
+                    if (showTargetList)
+                    {
+                        var targetArr = new string[PossibleMainTargets.Count];
+                        for (var i = 0; i < PossibleMainTargets.Count; i++)
+                        {
+                            var target = PossibleMainTargets[i];
+                            var targetText = $"  -{target.LabelCap.RawText}";
+                            if (RelevantTargetStat != null)
+                                targetText += $"  ({(target.GetStatValueAbstract(RelevantTargetStat) + "x").ColorizeFix(
+                                    "#FFE164")})";
+
+                            targetArr[i] = targetText;
+                        }
+
+                        CachedInfo.Add("TargetProps_Targets", targetArr);
                     }
-                    cachedTaskInfo.Add("TargetProps_Targets", targetArr);
                 }
             }
 
             //Crafting & Construction
             if (creationTasks != null)
             {
-                cachedTaskInfo.Add("CreationTasks_Label", new []{creationTasks.TargetLabel()});
+                CachedInfo.Add("CreationTasks_Label", new []{creationTasks.TargetLabel()});
                 var taskArr = new string[creationTasks.thingsToCreate.Count];
                 for (var i = 0; i < creationTasks.thingsToCreate.Count; i++)
                 {
                     var option = creationTasks.thingsToCreate[i];
                     var targetText = "    -";
                     if (option.amount > 1)
-                        targetText += option.amount + "x ";
+                        targetText += $"{option.amount}x ";
                     targetText += option.def.LabelCap.RawText;
                     if (option.stuffDef != null)
-                        targetText += "(" + option.stuffDef.LabelAsStuff + ")";
+                        targetText += $"({option.stuffDef.LabelAsStuff})";
 
                     taskArr[i] = targetText;
                 }
-                cachedTaskInfo.Add("CreationTasks_Targets", taskArr);
+                CachedInfo.Add("CreationTasks_Targets", taskArr);
             }
 
             //WorkType
-            cachedTaskInfo.Add("WorkType_Label", new []{"TR_TaskWorkType".Translate(WorkType.labelShort.ColorizeFix("#00C8CC")).RawText});
+            CachedInfo.Add("WorkType_Label", new []{"TR_TaskWorkType".Translate(WorkType.labelShort.ColorizeFix("#00C8CC")).RawText});
 
             //Skills
             if (!SkillRequirements.NullOrEmpty())
             {
-                cachedTaskInfo.Add("SkillReq_Label", new []{"TR_TaskSkillReq".Translate().RawText});
+                CachedInfo.Add("SkillReq_Label", new []{"TR_TaskSkillReq".Translate().RawText});
                 var skillArr = new string[SkillRequirements.Count];
                 for (var i = 0; i < SkillRequirements.Count; i++)
                 {
                     var skill = SkillRequirements[i];
                     skillArr[i] = "    -" + skill.skill.LabelCap.RawText + " (" + skill.minLevel + ")";
                 }
-                cachedTaskInfo.Add("SkillReq_Skills", skillArr);
+                CachedInfo.Add("SkillReq_Skills", skillArr);
             }
         }
 
