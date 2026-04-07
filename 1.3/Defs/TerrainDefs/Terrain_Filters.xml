@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_AllSoil</defName>
+		<acceptedFilters>
+			<li>TerrainFilter_Soil</li>
+			<li>TerrainFilter_RichSoil</li>
+		</acceptedFilters>
+	</TiberiumRim.TerrainFilterDef>
+	
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_Soil</defName>
+		<acceptedTerrain>
+			<li>Soil</li>
+			<li>MarshyTerrain</li>
+			<li>Gravel</li>
+		</acceptedTerrain>
+		<acceptedTags>
+			<li>soil</li>
+		</acceptedTags>
+		<ignoreTags>
+			<li>rich</li>
+		</ignoreTags>
+	</TiberiumRim.TerrainFilterDef>
+	
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_RichSoil</defName>
+		<acceptedTerrain>
+			<li>SoilRich</li>
+		</acceptedTerrain>
+		<acceptedTags>
+			<li>soilrich</li>
+		</acceptedTags>
+	</TiberiumRim.TerrainFilterDef>
+	
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_TibSoil</defName>
+		<acceptedFilters>
+			<li>TerrainFilter_AllSoil</li>
+		</acceptedFilters>
+		<neededTags>
+			<li>tiberium</li>
+		</neededTags>
+	</TiberiumRim.TerrainFilterDef>
+	
+	<!---->
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_AllSand</defName>
+		<neededTags>
+			<li>sand</li>
+		</neededTags>
+		<ignoreTags>
+			<li>stone</li>
+		</ignoreTags>
+	</TiberiumRim.TerrainFilterDef>
+
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_Sand</defName>
+		<acceptedFilters>
+			<li>TerrainFilter_AllSand</li>
+		</acceptedFilters>
+		<ignoreTags>
+			<li>soft</li>
+		</ignoreTags>
+	</TiberiumRim.TerrainFilterDef>
+
+	<!---->
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_Moss</defName>
+		<acceptedTerrain>
+			<li>MossyTerrain</li>
+			<li>Mud</li>
+		</acceptedTerrain>
+		<acceptedTags>
+			<li>moss</li>
+		</acceptedTags>
+	</TiberiumRim.TerrainFilterDef>
+
+	<!---->
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_WaterDeep</defName>
+		<acceptedTerrain>
+			<li>WaterDeep</li>
+			<li>WaterOceanDeep</li>
+		</acceptedTerrain>
+	</TiberiumRim.TerrainFilterDef>
+	
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_WaterShallow</defName>
+		<acceptedTerrain>
+			<li>WaterShallow</li>
+			<li>WaterOceanShallow</li>
+			<li>Marsh</li>
+		</acceptedTerrain>
+	</TiberiumRim.TerrainFilterDef>
+	
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_WaterMoving</defName>
+		<acceptedTerrain>
+			<li>WaterMovingChestDeep</li>
+			<li>WaterMovingShallow</li>
+		</acceptedTerrain>
+	</TiberiumRim.TerrainFilterDef>
+
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_Concrete</defName>
+		<acceptedTerrain>
+			<li>Concrete</li>
+		</acceptedTerrain>
+	</TiberiumRim.TerrainFilterDef>
+
+	<TiberiumRim.TerrainFilterDef>
+		<defName>TerrainFilter_Stone</defName>
+		<acceptedTags>
+			<li>stone</li>
+			<li>rock</li>
+			<li>slate</li>
+			<li>marble</li>
+			<li>granite</li>
+			<li>sandstone</li>
+			<li>limestone</li>
+			<!--Modded Stones-->
+			<li>andesite</li>
+			<li>anorthosite</li>
+			<li>basalt</li>
+			<li>blueschist</li>
+			<li>chalk</li>
+			<li>charnockite</li>
+			<li>creolemarble</li>
+			<li>dacite</li>
+			<li>dunite</li>
+			<li>emperadordark</li>
+			<li>etowahmarble</li>
+			<li>gabbro</li>
+			<li>greenschist</li>
+			<li>jaspillite</li>
+			<li>lepidolite</li>
+			<li>lherzolite</li>
+			<li>lignite</li>
+			<li>migmatite</li>
+			<li>monzonite</li>
+			<li>obsidian</li>
+			<li>rhyolite</li>
+			<li>scoria</li>
+			<li>serpentinite</li>
+			<li>siltstone</li>
+			<li>sovite</li>
+			<li>thometzekite</li>
+		</acceptedTags>
+	</TiberiumRim.TerrainFilterDef>
+	
+</Defs>

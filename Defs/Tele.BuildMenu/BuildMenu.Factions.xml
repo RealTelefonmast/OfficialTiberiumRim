@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TeleCore.SubMenuGroupDef ParentName="TR_SubThingGroupBase">
+		<defName>Forgotten</defName>
+		<groupIconPath>UI/Icons/Factions/Forgotten</groupIconPath>
+		<isDevGroup>true</isDevGroup>
+	</TeleCore.SubMenuGroupDef>
+	
+	<TeleCore.SubMenuGroupDef ParentName="TR_SubThingGroupBase">
+		<defName>GDI</defName>
+		<groupIconPath>UI/Icons/Factions/GDI</groupIconPath>
+		<subPackPath>UI/Menu/Faction/GDI</subPackPath>
+		<subCategories Inherit="True">
+			<li>Floors</li>
+		</subCategories>
+	</TeleCore.SubMenuGroupDef>
+	
+	<TeleCore.SubMenuGroupDef ParentName="TR_SubThingGroupBase">
+		<defName>Nod</defName>
+		<groupIconPath>UI/Icons/Factions/Nod</groupIconPath>
+		<subPackPath>UI/Menu/Faction/Nod</subPackPath>
+		<subCategories Inherit="True">
+			<li>Floors</li>
+		</subCategories>
+	</TeleCore.SubMenuGroupDef>
+
+	<TeleCore.SubMenuGroupDef ParentName="TR_SubThingGroupBase">
+		<defName>Scrin</defName>
+		<isDevGroup>true</isDevGroup>
+		<groupIconPath>UI/Icons/Factions/Scrin</groupIconPath>
+		<subPackPath>UI/Menu/Faction/Scrin</subPackPath>
+	</TeleCore.SubMenuGroupDef>
+
+	
+	<TeleCore.SubMenuCategoryDef>
+		<defName>Floors</defName>
+		<label>Floors</label>
+	</TeleCore.SubMenuCategoryDef> 
+	
+</Defs>

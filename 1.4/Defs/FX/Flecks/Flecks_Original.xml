@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!--
+  <DamageDef Name="Flame">
+    <defName>Flame</defName>
+    <workerClass>DamageWorker_Flame</workerClass>
+    <label>flame</label>
+    <hasForcefulImpact>false</hasForcefulImpact>
+    <makesBlood>false</makesBlood>
+    <canInterruptJobs>false</canInterruptJobs>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has burned to death.</deathMessage>
+    <hediff>Burn</hediff>
+    <armorCategory>Heat</armorCategory>
+    <minDamageToFragment>15</minDamageToFragment>
+    <defaultDamage>10</defaultDamage>
+    <defaultArmorPenetration>0</defaultArmorPenetration>
+    <explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+    <explosionCellFleck>Fleck_AdvFlame</explosionCellFleck>
+	<explosionInteriorFleck>SubFleck_AdvParticle2</explosionInteriorFleck>
+		<explosionColorCenter>(1, 1, 0.1, 0.5)</explosionColorCenter>
+		<explosionColorEdge>(0.9, 0.1, 0.1, 0.0)</explosionColorEdge>
+    <soundExplosion>Explosion_Flame</soundExplosion>
+    <combatLogRules>Damage_Flame</combatLogRules>
+    <canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
+  </DamageDef>
+
+  <DamageDef Name="Bomb">
+    <defName>Bomb</defName>
+    <label>bomb</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has died in an explosion.</deathMessage>
+    <hediff>Shredded</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+    <minDamageToFragment>15</minDamageToFragment>
+    <defaultDamage>50</defaultDamage>
+    <defaultStoppingPower>0.5</defaultStoppingPower>
+    <defaultArmorPenetration>0.10</defaultArmorPenetration>
+    <buildingDamageFactorImpassable>4</buildingDamageFactorImpassable>
+    <buildingDamageFactorPassable>2</buildingDamageFactorPassable>
+    <plantDamageFactor>4</plantDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>5</explosionHeatEnergyPerCell>
+    <explosionCellFleck>Fleck_AdvExplosion1</explosionCellFleck>
+	<explosionInteriorFleck>SubFleck_AdvParticle</explosionInteriorFleck>
+	<explosionColorCenter>(1, 1, 0.9, 0.8)</explosionColorCenter>
+	<explosionColorEdge>(1, 0.8, 0.3, 0)</explosionColorEdge>
+    <soundExplosion>Explosion_Bomb</soundExplosion>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+  </DamageDef>
+
+  <DamageDef ParentName="Bomb">
+    <defName>BombSuper</defName>
+    <defaultDamage>550</defaultDamage>
+    <defaultStoppingPower>2.0</defaultStoppingPower>
+    <defaultArmorPenetration>1.30</defaultArmorPenetration>
+    <explosionCellFleck>Fleck_AdvExplosion2</explosionCellFleck>
+	<explosionInteriorFleck></explosionInteriorFleck>
+	<explosionColorCenter>(1, 1, 0.9, 1)</explosionColorCenter>
+	<explosionColorEdge>(1, 0.8, 0.3, 0)</explosionColorEdge>
+  </DamageDef>
+  
+  <DamageDef>
+    <defName>Extinguish</defName>
+    <label>extinguish</label>
+    <workerClass>DamageWorker_Extinguish</workerClass>
+    <canInterruptJobs>false</canInterruptJobs>
+    <makesBlood>false</makesBlood>
+    <defaultDamage>999999</defaultDamage>
+    <explosionCellFleck>Fleck_AdvExplosion2</explosionCellFleck>
+	<explosionColorCenter>(0.9, 0.9, 1, 0.5)</explosionColorCenter>
+    <explosionColorEdge>(0.8, 0.8, 0.9, 0)</explosionColorEdge>
+    <soundExplosion>Explosion_Stun</soundExplosion>
+    <harmsHealth>false</harmsHealth>
+    <combatLogRules>Damage_Extinguish</combatLogRules>
+  </DamageDef>
+  
+  <DamageDef>
+    <defName>Smoke</defName>
+    <label>smoke</label>
+    <canInterruptJobs>false</canInterruptJobs>
+    <makesBlood>false</makesBlood>
+    <defaultDamage>0</defaultDamage>
+    <explosionCellFleck>Fleck_AdvExplosion2</explosionCellFleck>
+	<explosionColorCenter>(0.9, 0.9, 1, 0.2)</explosionColorCenter>
+    <explosionColorEdge>(0.8, 0.8, 0.9, 0)</explosionColorEdge>
+    <harmsHealth>false</harmsHealth>
+    <soundExplosion>Explosion_Smoke</soundExplosion>
+    <combatLogRules>Damage_Smoke</combatLogRules>
+  </DamageDef>
+  
+  <DamageDef ParentName="StunBase">
+    <defName>Stun</defName>
+    <label>stun</label>
+    <workerClass>DamageWorker_Stun</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been stunned to death.</deathMessage>
+    <defaultDamage>20</defaultDamage>
+    <explosionCellFleck>Fleck_AdvParticle</explosionCellFleck>
+	<explosionInteriorFleck>SubFleck_AdvParticle3</explosionInteriorFleck>
+	<explosionColorCenter>(0.9, 0.9, 1, 0.5)</explosionColorCenter>
+    <explosionColorEdge>(0.8, 0.8, 0.9, 0.1)</explosionColorEdge>
+    <soundExplosion>Explosion_Stun</soundExplosion>
+    <combatLogRules>Damage_Stun</combatLogRules>
+  </DamageDef>
+  
+  <DamageDef ParentName="StunBase">
+    <defName>EMP</defName>
+    <label>EMP</label>
+    <externalViolenceForMechanoids>true</externalViolenceForMechanoids>
+    <deathMessage>{0} has been EMPed to death.</deathMessage>
+    <harmsHealth>false</harmsHealth>
+    <impactSoundType>Electric</impactSoundType>
+    <defaultDamage>50</defaultDamage>
+    <explosionSnowMeltAmount>0</explosionSnowMeltAmount>
+    <explosionCellFleck>Fleck_AdvParticle</explosionCellFleck>
+	<explosionInteriorFleck>SubFleck_AdvSpark</explosionInteriorFleck>
+    <explosionColorCenter>(0.8, 0.8, 1, 1)</explosionColorCenter>
+    <explosionColorEdge>(0.6, 0.6, 1, 0.1)</explosionColorEdge>
+    <soundExplosion>Explosion_EMP</soundExplosion>
+    <combatLogRules>Damage_EMP</combatLogRules>
+  </DamageDef>
+-->  
+	
+	<!-- Flecks for original damagetypes-->
+
+
+	
+	<!-- TODO: Custom texture
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>Fleck_BeamSparking</defName>
+		<fadeInTime>0.03</fadeInTime>
+		<solidTime>0.1</solidTime>
+		<fadeOutTime>0.5</fadeOutTime>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<graphicData>
+		<texPath>Things/Mote/SparkThrownBlue</texPath>
+		<shaderType>MoteGlow</shaderType>
+		<drawSize>0.08</drawSize>
+		<color>(0.7, 0.9, 1.0, 1.0)</color>
+		</graphicData>
+		<acceleration>(0, 0, 0.5)</acceleration>
+		<speedPerTime>0.2~0.5</speedPerTime>
+	</FleckDef>
+-->	
+</Defs>

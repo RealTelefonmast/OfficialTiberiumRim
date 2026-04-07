@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Useful bits:
+  randomizeRotationOnSpawn
+  damageMultipliers
+  leaveResourcesWhenKilled
+  filthLeaving
+  startingHpRange
+  drawOffscreen
+  drawDamagedOverlay
+  drawPlaceWorkersWhileSelected
+
+  Plants:
+  harvestedThingDef
+  harvestYield
+  harvestWork
+  -->
+
+	<ThingDef Name="PlantBase_TR" Abstract="True">
+		<category>Plant</category>
+		<thingClass>TR.TiberiumPlant</thingClass>
+		<altitudeLayer>LowPlant</altitudeLayer>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<TiberiumDamageResistance>1</TiberiumDamageResistance>
+			<Flammability>0.2</Flammability>
+		</statBases>
+	    <pathCost>36</pathCost>
+		<fillPercent>0.30</fillPercent>
+		<tickerType>Long</tickerType>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<drawerType>MapMeshOnly</drawerType>
+		<pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+		<graphicData>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>CutoutPlant</shaderType>
+		</graphicData>
+		<plant>
+			<fertilityMin>0</fertilityMin>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<growMinGlow>0</growMinGlow>
+			<lifespanDaysPerGrowDays>999</lifespanDaysPerGrowDays>
+			<harvestMinGrowth>0.85</harvestMinGrowth>
+			<wildClusterRadius>8</wildClusterRadius>
+			<blockAdjacentSow>true</blockAdjacentSow>
+			<neverBlightable>true</neverBlightable>
+			<harvestFailable>false</harvestFailable>
+		    <harvestTag>Standard</harvestTag>
+			<soundHarvesting>Harvest_Standard</soundHarvesting>
+			<soundHarvestFinish>Harvest_Standard_Finish</soundHarvestFinish>
+			<harvestWork>800</harvestWork>
+			<maxMeshCount>4</maxMeshCount>
+			<visualSizeRange>
+				<min>1</min>
+				<max>2</max>
+			</visualSizeRange>
+			<topWindExposure>0.1</topWindExposure>
+		</plant>
+		<modExtensions Inherit="False">
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Tiberium</groupDef>
+				<category>Plants</category>
+			</li>
+		</modExtensions>
+	</ThingDef>
+	
+	<TR.TiberiumCrystalDef Name="TiberiumCrystalBase" Abstract="True">
+		<thingClass>TR.TiberiumCrystal</thingClass>
+		<devObject>true</devObject>
+		<category>Building</category>
+		<tickerType>Long</tickerType>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<rotatable>false</rotatable>	
+		<drawerType>MapMeshOnly</drawerType>		
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+		<blockPlants>true</blockPlants>
+		<altitudeLayer>LowPlant</altitudeLayer>
+		<drawDamagedOverlay>false</drawDamagedOverlay>
+		<passability>Standable</passability>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<fillPercent>0.5</fillPercent>
+		<coversFloor>true</coversFloor>
+		<holdsRoof>false</holdsRoof>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<blockLight>false</blockLight>
+		<mineable>false</mineable>
+		<graphicData>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<tiberium>
+			<sizeRange>
+				<min>0.75</min>
+				<max>2</max>
+			</sizeRange>
+		</tiberium>
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<building>
+			<isEdifice>false</isEdifice>
+			<deconstructible>false</deconstructible>
+			<claimable>false</claimable>
+			<ai_chillDestination>false</ai_chillDestination>
+			<allowAutoroof>false</allowAutoroof>
+		</building>
+		<damageMultipliers>
+			<li>
+				<damageDef>TRSonic</damageDef>
+				<multiplier>7.5</multiplier>
+			</li>
+		</damageMultipliers>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Tiberium</groupDef>
+				<category>Crystals</category>
+			</li>
+		</modExtensions>
+	</TR.TiberiumCrystalDef>
+	
+	<TR.TiberiumCrystalDef Name="TiberiumForWater" ParentName="TiberiumCrystalBase" Abstract="True">
+		<conversions>GlacierConversion</conversions>
+	</TR.TiberiumCrystalDef>
+
+</Defs>

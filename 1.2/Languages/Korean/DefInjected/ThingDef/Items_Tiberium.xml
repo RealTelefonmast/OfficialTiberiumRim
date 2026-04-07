@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <BookRiparius.label>녹색 타이베리움 취급서</BookRiparius.label>
+  <BookRiparius.description>타이베리움 리파리우스.\n\n타이베리움의 가장 흔한 형태이며, 녹색을 띤다.\n\n타이베리움은 이전까지는 알려지지 않았던 유형의 원소로, 모든 물질의 원자핵을 침식하여 자신을 복제하고 결정질을 구성하는 위험한 성질을 가졌다.\n\n이것은 먼 옛날 지구에서 처음 발견된 이래 인류를 멸망 직전까지 위협했으며, 지금도 대응력이 부족한 변경의 행성들을 통해 계속 퍼져나가고 있다.\n\n그중에서도 리파리우스 결정은 가장  빠르게 성장하여, 단시간만 방치해도 광대한 영역으로 퍼져나간다.\n\n매우 유독하므로, 적절한 보호장비 없이는 절대로 만지거나 가까이 가선 안 된다!</BookRiparius.description>
+
+  <BookVinifera.label>청색 타이베리움 취급서</BookVinifera.label>
+  <BookVinifera.description>타이베리움 비니팰라.\n\n푸른색을 띠며, 녹색 타이베리움이 한단계 진화한 형태이다.\n\n녹색 타이베리움에 비하면 희귀하게 발견되며, 주변을 침식하는 속도도 느리다.\n\n하지만 독성은 여전하며, 강한 충격을 받으면 폭발하면서 치명적인 작은 파편을 흩날린다.\n\n비니펠라종은 타이베리움이 생명체의 일종이라는 이론에 부합한다.\n\n이들은 생명체를 단순히 침식하는데 그치지 않고, 높은 확률로 타이베리움 환경에 적합한 돌연변이를 일으킨다.\n\n변이한 동물은 타이베리움이나 같은 변이체들을 먹고 살아가며, 변이한 식물은 생장하면서 타이베리움을 포자처럼 퍼뜨린다.\n\n변이한 생물종이 얼마나 다양한지에 대해서는 아직 알려진 바 없다.\n\n추가 조사가 필요하다.</BookVinifera.description>
+
+  <BookRutila.label>적색 타이베리움 취급서</BookRutila.label>
+  <BookRutila.description>타이베리움 루틸라.\n\n붉은 색을 띠는 타이베리움이며, 매우 희귀하게 발견된다.\n\n이것에는 다른 타입들보다 더 가치있는 자원이 포함되어 있다.\n\n첫번째 관찰에서, 이 종의 확장 속도는 매우 느리게 진행되는 것으로 밝혀졌다.\n\n붉은 타이베리움이 충분히 성숙하게 되면 - - -[DATA LOST]- - -/- - -\n\n§)§$%?!%%##$%- - -</BookRutila.description>
+
+  <TiberiumPlantTree.label>채취된 포자기둥</TiberiumPlantTree.label>
+  <TiberiumPlantTree.description>굵고 길지만 물러터져서 자재로 사용하기는 어려워 보입니다.\n\n타이베리움 치료약의 재료로 사용됩니다.</TiberiumPlantTree.description>
+
+  <TiberiumPlantGrass.label>채취된 포자덩굴</TiberiumPlantGrass.label>
+  <TiberiumPlantGrass.description>이 외계 식물은... 살아있는 것처럼 꿈틀거립니다.\n\n타이베리움 치료약의 재료로 사용됩니다.</TiberiumPlantGrass.description>
+
+  <TiberiumPlantShroom.label>채취된 포자버섯</TiberiumPlantShroom.label>
+  <TiberiumPlantShroom.description>녹색 들판에서 흔히 볼 수 있는 빛나는 버섯입니다.\n\n타이베리움 치료약의 재료로 사용됩니다.</TiberiumPlantShroom.description>
+
+  <TiberiumPlantBerry.label>채취된 포자과육</TiberiumPlantBerry.label>
+  <TiberiumPlantBerry.description>덩어리진 외계 식물입니다.\n\n타이베리움 치료약의 재료로 사용됩니다.</TiberiumPlantBerry.description>
+
+
+</LanguageData>

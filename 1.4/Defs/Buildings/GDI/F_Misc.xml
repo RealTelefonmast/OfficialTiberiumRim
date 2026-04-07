@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<TR.TRThingDef ParentName="BuildingBase_TR">
+		<defName>GDI_Grave</defName>
+		<label>honorable grave</label>
+		<description>This honorable grave is for those who fought in the most stressful situations. Our soldiers shall not be forgotten!</description>
+		<thingClass>Building_Grave</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Buildings/GDI/Misc/Grave/CemeteryOpen</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1.5,1.5)</drawSize>
+		</graphicData>
+		<statBases>
+			<WorkToBuild>1150</WorkToBuild>
+			<Beauty>25</Beauty>
+		</statBases>
+		<costList>
+			<GDI_ReinforcedPlate>2</GDI_ReinforcedPlate>
+		</costList>
+		<uiIconPath>Buildings/GDI/Misc/Grave/Cemetery_north</uiIconPath>
+		<constructEffect>ConstructDirt</constructEffect>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Rare</tickerType>
+		<canOverlapZones>false</canOverlapZones>
+		<passability>PassThroughOnly</passability>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<preventDeteriorationInside>true</preventDeteriorationInside>
+			<fullGraveGraphicData>
+				<texPath>Buildings/GDI/Misc/Grave/Cemetery</texPath>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<drawSize>(1.5,1.5)</drawSize>
+			</fullGraveGraphicData>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>CorpsesHumanlike</li>
+					</categories>
+				</filter>
+			</fixedStorageSettings>
+			<defaultStorageSettings>
+				<filter>
+					<categories>
+						<li>CorpsesHumanlike</li>
+					</categories>
+				</filter>
+			</defaultStorageSettings>
+		</building>
+		<inspectorTabs>
+			<li>ITab_Storage</li>
+		</inspectorTabs>
+		<placeWorkers>
+			<li>TR.PlaceWorker_Gap</li>
+		</placeWorkers>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Misc</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+
+ 
+	<TR.TRThingDef ParentName="WallLampBase">
+		<defName>GDIWallLight</defName>
+		<label>wall light</label>
+		<description>An electrical wall lamp that lights an area. People need light to move and work at full speed.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Misc/Light/Wall/light</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1.5, 1.5)</drawSize>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+		<comps>
+			<li Class="TR.CompProperties_GlowerOffset">
+				<glowerDef>GlowSource_GDI_IonBlue</glowerDef>
+			</li>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Misc/Light/Wall/overlay</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(1.5, 1.5)</drawSize>
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+				</fxLayers>
+			</li>	
+		</comps>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Misc</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="GlowSourceBase">
+		<defName>GlowSource_GDI_IonBlue</defName>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+		</comps>
+	</TR.TRThingDef>
+
+	<!--not cool and no special-->
+	<!--
+	<TR.TRThingDef ParentName="PowerConduitBase_TR">
+		<defName>GDI_PowerConduit</defName>
+		<label>gdi power conduit</label>
+		<description>A set of electrical cables for moving power around. Can be placed under walls and other buildings. GDI's ion control makes it very durable.</description>
+		<graphicData>
+			<texPath>Buildings/GDI/Misc/IonPC</texPath>
+		</graphicData>
+		<uiIconPath>Buildings/GDI/Misc/IonPC_Icon</uiIconPath>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+		<statBases>
+			<MaxHitPoints>175</MaxHitPoints>
+			<WorkToBuild>100</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Beauty>4</Beauty>
+		</statBases>
+		<costList>
+			<Steel>3</Steel>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+		</comps>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Buildings/GDI/Misc/IonPC_Blueprint</texPath>
+			</blueprintGraphicData>
+		</building>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="LampBase_TR">
+		<defName>Light_GDI</defName>
+		<label>Ion Lamp</label>
+		<description>GDI uses the ionizing feature of Tiberium to power this lamp.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Misc/Light/Floor/Light</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+		<statBases>
+			<Beauty>5</Beauty>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToMake>330</WorkToMake>
+			<Mass>20</Mass>
+			<Flammability>0.05</Flammability>
+		</statBases>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Misc/Light/Floor/Light_Overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(1, 1)</drawSize>
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+				</fxLayers>
+			</li>	
+			<li Class="CompProperties_Glower">
+				<glowRadius>15</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+		</comps>
+		<costList>
+			<Steel>15</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+	</TR.TRThingDef>-->
+
+</Defs>

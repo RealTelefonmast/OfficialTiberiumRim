@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<!-- Intact Meteor-->
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>TiberiumMeteoriteChunk</defName>
+		<thingClass>TiberiumRim.TiberiumMeteorite</thingClass>
+		<description>A metoerite of unknown origin. Data suggests this meteorite carries an extremely agressive self-replicating mineral called "Tiberium".</description>
+		<label>tiberium meteorite chunk</label>
+		<TRCategory>Producers</TRCategory>
+		<discovery>
+			<discoveryDef>TiberiumProducerCrater</discoveryDef>
+			<unknownLabel>strange meteorite</unknownLabel>
+			<unknownDescription>We have not yet figured out what this is. Approach with caution.</unknownDescription>
+		</discovery>
+		<size>(3,3)</size>
+		<altitudeLayer>Building</altitudeLayer>
+		<tickerType>Rare</tickerType>
+		<graphicData>
+			<texPath>Buildings/Natural/TiberiumMeteor/Meteor</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(4.5,4.5)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>1500</MaxHitPoints>
+			<Beauty>360</Beauty>
+		</statBases>
+		<building>
+			<isEdifice>false</isEdifice>
+		</building>
+		<rotatable>false</rotatable>
+		<blockPlants>true</blockPlants>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+				<compClass>TiberiumRim.Comp_RadiationLeak</compClass>
+				<leakDamageThreshold>0.6</leakDamageThreshold>
+				<radius>5.5</radius>
+				<intensity>1</intensity>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>4</glowRadius>
+				<glowColor>(80,175,90,0)</glowColor>
+			</li>
+		</comps>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
+	</TiberiumRim.TRThingDef>
+	
+	<!--Natural formations-->
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>GenesisPit</defName>
+		<label>genesis pit</label>
+		<description>Let there be glow.</description>
+		<statBases>
+			<MaxHitPoints>20000</MaxHitPoints>
+			<Beauty>999</Beauty>
+		</statBases>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawRotated>false</drawRotated>
+			<shaderType>Transparent</shaderType>
+			<texPath>Buildings/Natural/GenesisPit</texPath>
+			<drawSize>(12,12)</drawSize>
+		</graphicData>
+		<altitudeLayer>Floor</altitudeLayer>
+		<size>(8,8)</size>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>TiberiumTower</defName>
+		<description>A massive crystalline tower, created via multiple Tiberium crystals merging into one bigger crystal. However, this structure does not seem to spread more Tiberium.</description>
+		<label>tiberium tower</label>
+		<size>(1,1)</size>
+		<altitudeLayer>Building</altitudeLayer>
+		<tickerType>Rare</tickerType>
+		<graphicData>
+			<texPath>Buildings/Natural/TiberiumTower</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(2,6)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>1500</MaxHitPoints>
+			<Beauty>360</Beauty>
+		</statBases>
+		<rotatable>false</rotatable>
+		<blockPlants>true</blockPlants>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+				<radius>8</radius>
+				<intensity>1.5</intensity>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>6</glowRadius>
+				<glowColor>(80,175,90,0)</glowColor>
+			</li>
+		</comps>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
+	</TiberiumRim.TRThingDef>
+	
+	<!-- Tiberium Geyser -->
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>TiberiumGeyser</defName>
+		<label>tiberium geyser</label>
+		<thingClass>TiberiumRim.TiberiumGeyser</thingClass>
+		<graphicData>
+			<texPath>Buildings/Natural/TibGeyser/TibGeyser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<!--
+		<extraGraphicData>
+			<texPath>Buildings/Natural/TibGeyser/Crack</texPath>
+			<graphicClass>TiberiumRim.Graphic_RandomSelection</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(2,2)</drawSize>
+		</extraGraphicData>
+		-->
+		<altitudeLayer>Floor</altitudeLayer>
+		<rotatable>false</rotatable>
+		<destroyable>false</destroyable>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Normal</tickerType>
+		<selectable>true</selectable>
+		<description>This tiberium infested geyser has a massive tiberium gas deposit beneath it, however, the surrounding ground has been destabilized and will occasionally create toxic gas clouds.\nIt may be useful for a Tiberium Spike!</description>
+		<size>(2,2)</size>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<building>
+			<isEdifice>false</isEdifice>
+		</building>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="EtherealThingBase_TR">
+		<defName>TiberiumGeyserCrack</defName>
+		<label>geyser crack</label>
+		<thingClass>TiberiumRim.TiberiumGeyserCrack</thingClass>
+		<tickerType>Never</tickerType>
+		<altitudeLayer>Floor</altitudeLayer>
+		<drawerType>MapMeshOnly</drawerType>
+		<size>(2,2)</size>
+		<blockPlants>true</blockPlants>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<selectable>false</selectable>
+		<graphicData>
+			<texPath>Buildings/Natural/TibGeyser/Crack</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>	
+		<building>
+			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>false</deconstructible>
+		</building>
+	</TiberiumRim.TRThingDef>
+	
+</Defs>

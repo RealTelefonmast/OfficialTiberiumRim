@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<!--
+	<TiberiumRim.TRecipeDef>
+		<defName>ExtractSteel</defName>
+		<label>Get Steel</label>
+		<description>Extract steel from the stored Tiberium.\n\nYou will get 5 steel for 30 Tiberium credits.</description>
+		<jobString>extracting steel</jobString>
+		<workAmount>250</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<tiberiumCost>
+			<costs>
+				<li>Green</li>
+				<li>Blue</li>
+				<li>Red</li>
+			</costs>
+			<cost>30</cost>
+		</tiberiumCost>
+		<products>
+			<Steel>15</Steel>
+		</products>
+		<workSkill>Crafting</workSkill>
+	</TiberiumRim.TRecipeDef>	
+	
+	<RecipeDef Class="TiberiumRim.TRecipeDef">
+		<defName>ExtractPlasteel</defName>
+		<label>Get Plasteel</label>
+		<description>Extract plasteel from the stored Tiberium.\n\nYou will get 5 plasteel for 210 Tiberium credits.</description>
+		<jobString>extracting plasteel</jobString>
+		<workAmount>750</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<tiberiumCost>
+			<costs>
+				<li>Green</li>
+				<li>Blue</li>
+				<li>Red</li>
+			</costs>
+			<cost>210</cost>
+		</tiberiumCost>
+		<products>
+			<Plasteel>5</Plasteel>
+		</products>
+		<workSkill>Crafting</workSkill>
+	</RecipeDef>
+
+	<RecipeDef Class="TiberiumRim.TRecipeDef">
+		<defName>ExtractGold</defName>
+		<label>Get Gold</label>
+		<description>Extract gold from the stored Tiberium.\n\nYou will get 5 gold for 150 Tiberium credits.</description>
+		<jobString>extracting gold</jobString>
+		<workAmount>500</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<tiberiumCost>
+			<costs>
+				<li>Green</li>
+				<li>Blue</li>
+				<li>Red</li>
+			</costs>
+			<cost>150</cost>
+		</tiberiumCost>
+		<products>
+			<Gold>5</Gold>
+		</products>
+		<workSkill>Crafting</workSkill>
+	</RecipeDef>
+	
+	<RecipeDef Class="TiberiumRim.TRecipeDef">
+		<defName>ExtractUranium</defName>
+		<label>Get Uranium</label>
+		<description>Extract uranium from the stored Tiberium.\n\nYou will get 5 uranium for 90 Tiberium credits.</description>
+		<jobString>extracting uranium</jobString>
+		<workAmount>450</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<tiberiumCost>
+			<costs>
+				<li>Green</li>
+				<li>Blue</li>
+				<Red>50</Red>
+			</costs>			
+			<cost>150</cost>
+		</tiberiumCost>
+		<products>
+			<Uranium>5</Uranium>
+		</products>
+		<workSkill>Crafting</workSkill>
+	</RecipeDef>
+	
+	<RecipeDef Class="TiberiumRim.TRecipeDef">
+		<defName>BurnSludge</defName>
+		<label>Burn Sludge</label>
+		<description>Get rid of the useless sludge.</description>
+		<jobString>burning sludge.</jobString>
+		<workAmount>150</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<tiberiumCost>
+			<costs>
+				<Sludge>100</Sludge>
+			</costs>
+		</tiberiumCost>
+		<workSkill>Crafting</workSkill>
+	</RecipeDef>
+	-->
+	<!--
+
+	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
+		<defName>MakeBookRiparius</defName>
+		<label>Write about green Tiberium.</label>
+		<description>writing about green Tiberium.</description>
+		<jobString>writing about green Tiberium.</jobString>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workAmount>500</workAmount>
+		<drainType>Green</drainType>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>WoodLog</li>
+			  </thingDefs>
+			</filter>
+			<count>5</count>
+		  </li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+		  <BookRiparius>1</BookRiparius>
+		</products>
+		<workSkill>Crafting</workSkill>
+	</RecipeDef>
+	
+	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
+		<defName>MakeBookVinifera</defName>
+		<label>Write about blue Tiberium.</label>
+		<description>writing about blue Tiberium.</description>
+		<jobString>writing about blue Tiberium.</jobString>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workAmount>500</workAmount>
+		<drainType>Blue</drainType>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>WoodLog</li>
+			  </thingDefs>
+			</filter>
+			<count>5</count>
+		  </li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+		  <BookVinifera>1</BookVinifera>
+		</products>
+		<workSkill>Crafting</workSkill>
+	</RecipeDef>
+	
+	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
+		<defName>MakeBookRutila</defName>
+		<label>Write about red Tiberium.</label>
+		<description>writing about red Tiberium.</description>
+		<jobString>writing about red Tiberium.</jobString>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workAmount>500</workAmount>
+		<drainType>Red</drainType>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>WoodLog</li>
+			  </thingDefs>
+			</filter>
+			<count>5</count>
+		  </li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+		  <BookRutila>1</BookRutila>
+		</products>
+		<workSkill>Crafting</workSkill>
+	</RecipeDef>
+	
+	-->
+	
+</Defs>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Nod_CarbonPlate.label>탄소합금</Nod_CarbonPlate.label>
+  <Nod_CarbonPlate.description>노드 기술자들은 총격에 버틸 수 있는 강한 소재를 찾기 위해 수 세기 동안 계속 노력했습니다. 그중 가장 성공적인 물질은 탄소합금이었습니다.</Nod_CarbonPlate.description>
+
+  <Nod_LQTiberiumCore.label>액체 타이베리움 축전핵</Nod_LQTiberiumCore.label>
+  <Nod_LQTiberiumCore.description>변경의 기술력으로는 액체 타이베리움의 잠재력을 온전히 끌어내기 어렵습니다. 오직 축전핵만이 그것을 가능케 합니다.</Nod_LQTiberiumCore.description>
+
+
+</LanguageData>

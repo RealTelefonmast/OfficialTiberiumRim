@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ResearchTabDef>
+		<defName>Tiberium</defName>
+		<label>Tiberium</label>
+	</ResearchTabDef>
+	
+	<ResearchProjectDef>
+		<defName>TiberiumResearch</defName>
+		<label>tiberium base research</label>
+		<description>Allows the research of Tiberium technologies:\n\n -Construction of the Tiberium Research Building</description>
+		<baseCost>750</baseCost>
+		<techLevel>Industrial</techLevel>
+		<tab>Tiberium</tab>
+		<prerequisites>
+			<li>MicroelectronicsBasics</li>
+		</prerequisites>
+		<requiredResearchBuilding>TiberiumResearchBench</requiredResearchBuilding>
+		<researchViewX>0.25</researchViewX>
+		<researchViewY>0.25</researchViewY>
+	</ResearchProjectDef>
+	
+	
+	<ResearchProjectDef>
+		<defName>TiberiumKnowledge</defName>
+		<label>tiberium knowledge</label>
+		<description>Allows the understanding of Tiberium:\n\n -Construction of the Tiberium Research Crafting Adapter(TRCA) \n\n -Craft Tiberium (lore) books at the TRCA\n\n -Craft Tiberium Protection Suits at the TRCA</description>
+		<baseCost>500</baseCost>
+		<techLevel>Industrial</techLevel>
+		<tab>Tiberium</tab>
+		<prerequisites>
+			<li>TiberiumResearch</li>
+		</prerequisites>
+		<requiredResearchBuilding>TiberiumResearchBench</requiredResearchBuilding>
+		<researchViewX>1.25</researchViewX>
+		<researchViewY>0.75</researchViewY>
+	</ResearchProjectDef>
+	
+	
+	<ResearchProjectDef>
+		<defName>TiberiumResearchRefining</defName>
+		<label>tiberium Refining</label>
+		<description>Allows Tiberium to be refined.\n\n -Construction of the Tiberium refinery</description>
+		<baseCost>750</baseCost>
+		<techLevel>Industrial</techLevel>
+		<tab>Tiberium</tab>
+		<prerequisites>
+			<li>TiberiumKnowledge</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>TiberiumResearchCraftingBench</li>
+		</requiredResearchFacilities>
+		<requiredResearchBuilding>TiberiumResearchBench</requiredResearchBuilding>
+		<researchViewX>1.25</researchViewX>
+		<researchViewY>1.75</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TiberiumPower</defName>
+		<label>tiberium Power</label>
+		<description>Allows the construction of the Tiberium power plant and the refining of Tiberium Fuel.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Industrial</techLevel>
+		<tab>Tiberium</tab>
+		<prerequisites>
+			<li>TiberiumResearchRefining</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+			<li>TiberiumResearchCraftingBench</li>
+		</requiredResearchFacilities>
+		<requiredResearchBuilding>TiberiumResearchBench</requiredResearchBuilding>
+		<researchViewX>1.25</researchViewX>
+		<researchViewY>2.75</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TiberiumInhibition</defName>
+		<label>Tiberium Inhibition</label>
+		<description>Exploit the nature of Tiberium and stop it from spreading further:\n\n -Construction of deep ground freezer</description>
+		<baseCost>750</baseCost>
+		<techLevel>Industrial</techLevel>
+		<tab>Tiberium</tab>
+		<prerequisites>
+			<li>TiberiumResearch</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+			<li>TiberiumResearchCraftingBench</li>
+		</requiredResearchFacilities>
+		<requiredResearchBuilding>TiberiumResearchBench</requiredResearchBuilding>
+		<researchViewX>1.25</researchViewX>
+		<researchViewY>3.75</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TiberiumInhibitionTribal</defName>
+		<label>Tiberium Growth Block</label>
+		<description>Your tribe found a clever idea on how to reduce Tiberium threat. An ice box so cold it freezes the ground in a small radius around itself.</description>
+		<baseCost>750</baseCost>
+		<techLevel>Medieval</techLevel>
+		<tab>Tiberium</tab>
+		<prerequisites>
+			<li>PassiveCooler</li>
+		</prerequisites>
+		<researchViewX>1.25</researchViewX>
+		<researchViewY>4.75</researchViewY>
+	</ResearchProjectDef>
+	
+</Defs>

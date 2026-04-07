@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<BodyPartDef Abstract= "True" Name="BodyPartBase_TR">
+		<frostbiteVulnerability>0.5</frostbiteVulnerability>
+		<permanentInjuryChanceFactor>0.2</permanentInjuryChanceFactor>
+		<skinCovered>true</skinCovered>
+		<bleedRate>1</bleedRate>
+		<solid>false</solid>
+		<alive>true</alive>	
+	</BodyPartDef>
+
+	<!-- Visceroid Parts -->
+	<BodyPartDef ParentName="BodyPartBase_TR">
+		<defName>VisceroidBody</defName>
+		<label>visceroid body</label>
+		<hitPoints>300</hitPoints>
+		<tags>
+			<li>ManipulationLimbSegment</li>
+			<li>MovingLimbSegment</li>
+			<li>ConsciousnessSource</li>
+			<li>SightSource</li>
+		</tags>
+	</BodyPartDef>
+  
+  	<BodyPartDef ParentName="BodyPartBase_TR">
+		<defName>VisceroidGulper</defName>
+		<label>gulper</label>
+		<hitPoints>30</hitPoints>
+		<tags>
+			<li>BreathingSource</li>
+			<li>EatingSource</li>		
+		</tags>
+	</BodyPartDef>
+  
+	<BodyPartDef ParentName="BodyPartBase_TR">
+		<defName>Tentacle_Leg</defName>
+		<label>tentacle leg</label>
+		<hitPoints>50</hitPoints>
+		<tags>
+			<li>MovingLimbCore</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="BodyPartBase_TR">
+		<defName>Tentacle_Arm</defName>
+		<label>tentacle arm</label>
+		<hitPoints>50</hitPoints>
+		<tags>
+			<li>ManipulationLimbCore</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="BodyPartBase_TR">
+		<defName>VeinNet</defName>
+		<label>vein net</label>
+		<hitPoints>30</hitPoints>
+		<bleedRate>3</bleedRate>
+		<tags>
+			<li>BloodFiltrationLiver</li>
+			<li>BloodFiltrationKidney</li>
+			<li>BloodPumpingSource</li>
+			<li>BloodFiltrationSource</li>		
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="BodyPartBase_TR">
+		<defName>DigestionChamber</defName>
+		<label>digestion chamber</label>
+		<hitPoints>30</hitPoints>
+		<tags>
+			<li>MetabolismSource</li>
+		</tags>
+	</BodyPartDef>
+  
+	<!-- Veinmonster Parts --> 
+  	<BodyPartDef ParentName="BodyPartBase_TR">
+		<defName>VeinmonsterBody</defName>
+		<label>veinmonster body</label>
+		<hitPoints>50</hitPoints>
+		<frostbiteVulnerability>0.6</frostbiteVulnerability>
+		<tags>
+			<li>MetabolismSource</li>
+			<li>ManipulationLimbSegment</li>
+			<li>MovingLimbSegment</li>
+			<li>ConsciousnessSource</li>
+		</tags>
+	</BodyPartDef>
+  
+	<BodyPartDef ParentName="BodyPartBase_TR">
+		<defName>TentacleMass</defName>
+		<label>thriving tentacles</label>
+		<hitPoints>50</hitPoints>
+		<tags>
+			<li>MovingLimbSegment</li>
+			<li>ManipulationLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+  
+	<BodyPartDef ParentName="BodyPartBase_TR">
+		<defName>VeinmonsterEye</defName>
+		<label>eye</label>
+		<hitPoints>8</hitPoints>
+		<tags>
+			<li>SightSource</li>
+		</tags>
+	</BodyPartDef>
+  
+  	<BodyPartDef ParentName="BodyPartBase_TR">
+		<defName>VeinmonsterMouth</defName>
+		<label>mouth</label>
+		<hitPoints>15</hitPoints>
+		<tags>
+			<li>BreathingPathway</li>
+			<li>EatingSource</li>
+		</tags>
+	</BodyPartDef>
+	
+	<!-- VeinRock Parts -->	
+	<BodyPartDef ParentName="BodyPartBase_TR">
+		<defName>VeinRockBody</defName>
+		<label>vein rock</label>
+		<hitPoints>550</hitPoints>
+		<frostbiteVulnerability>0</frostbiteVulnerability>
+		<skinCovered>false</skinCovered>
+		<bleedRate>0</bleedRate>
+		<solid>true</solid>
+		<tags>
+			<li>MovingLimbCore</li>
+			<li>ConsciousnessSource</li>
+			<li>HearingSource</li>
+			<li>BreathingSource</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="BodyPartBase_TR">
+		<defName>VeinRockMover</defName>
+		<label>tube feet</label>
+		<hitPoints>50</hitPoints>
+		<tags>
+			<li>MovingLimbCore</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="BodyPartBase_TR">
+		<defName>VeinRockFoot</defName>
+		<label>tube foot</label>
+		<hitPoints>5</hitPoints>
+		<tags>
+			<li>MovingLimbDigit</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="BodyPartBase_TR">
+		<defName>VeinRockMouth</defName>
+		<label>mouth</label>
+		<hitPoints>25</hitPoints>
+		<tags>
+			<li>BreathingPathway</li>
+			<li>EatingSource</li>
+		</tags>
+	</BodyPartDef>
+	
+</Defs>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<TR.TRThingDef ParentName="TrapIEDBase">
+		<defName>IED_Nuke</defName>
+		<label>IED nuke mine</label>
+		<description>A mine equipped with a nuclear warhead. Creates a huge explosion and starts fires around itself when disturbed.</description>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Temple/IED_Nuke</texPath>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<size>(1,1)</size>
+		<uiIconPath>Buildings/Nod/Defense/Temple/IED_Nuke</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<uiIconOffset>(0,0)</uiIconOffset>
+		<thingCategories />
+		<costList>
+			<TempleShell_Explosive>1</TempleShell_Explosive>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MarketValue>10000</MarketValue>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>25</Mass>
+			<Flammability>0</Flammability>
+			<SellPriceFactor>0.2</SellPriceFactor>
+			<TrapSpringChance>1.0</TrapSpringChance>
+		</statBases>
+		<altitudeLayer>Building</altitudeLayer>
+		<tradeability>Sellable</tradeability>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>11.9</explosiveRadius>
+				<damageAmountBase>650</damageAmountBase>
+				<explosiveDamageType>TRNuke</explosiveDamageType>
+				<postExplosionSpawnThingDef MayRequire="telefonmast.tiberiumrim.main">Gas_ChemicalInterface</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
+				<explosionEffect>GiantExplosion</explosionEffect>
+				<wickTicks>
+					<min>100</min>
+					<max>200</max>
+				</wickTicks>
+				<startWickOnDamageTaken>
+					<li>Bullet</li>
+					<li>Arrow</li>
+					<li>ArrowHighVelocity</li>
+				</startWickOnDamageTaken>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+		</comps>
+		<specialDisplayRadius>11.9</specialDisplayRadius>
+		<building>
+			<isTrap>true</isTrap>
+			<trapPeacefulWildAnimalsSpringChanceFactor>0</trapPeacefulWildAnimalsSpringChanceFactor>
+			<expandHomeArea>false</expandHomeArea>
+			<ai_chillDestination>false</ai_chillDestination>
+		</building>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Nod</groupDef>
+				<category>Superweapon</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+  
+  	<TR.TRThingDef ParentName="BuildingBase_TR">
+		<defName>TemplePrime</defName>
+		<label>Nod temple</label>
+		<description>A big structure that is the center of all faiths, also a facility capable of launching huge ballistic missiles.</description>
+		<thingClass>TR.Building_Temple</thingClass>
+		<size>(7,7)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Temple/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(7,8)</drawSize>
+			<drawOffset>(0,0,0.5)</drawOffset>
+		</graphicData>
+		<costList>
+			<Nod_CarbonPlate>250</Nod_CarbonPlate>
+			<Nod_LQTiberiumCore>5</Nod_LQTiberiumCore>
+		</costList>
+		<superWeapon>
+			<designator>TR.Designator_NodNukeTargeter</designator>
+		</superWeapon>
+		<uiIconScale>0.90</uiIconScale>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MaxHitPoints>1000</MaxHitPoints>
+			<Flammability>0.25</Flammability>
+			<WorkToBuild>50000</WorkToBuild>
+			<Mass>1000</Mass>
+			<Beauty>250</Beauty>
+		</statBases>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Temple/Main</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(7,8)</drawSize>
+						</graphicData>
+						<altitude>BuildingOnTop</altitude>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Temple/Entrance</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,8)</drawSize>
+						</graphicData>
+						<altitude>Item</altitude>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Temple/PowerLights</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,8)</drawSize>
+						</graphicData>
+						<altitude>Item</altitude>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Temple/Blades</texPath>
+							<graphicClass>TR.Graphic_NumberedCollection</graphicClass>
+							<shaderType>Transparent</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</graphicData>
+						<altitude>Building</altitude>
+						<fxMode>Dynamic</fxMode>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Temple/Nuke/NukeBase</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>Transparent</shaderType>
+							<drawSize>(2,6)</drawSize>
+						</graphicData>
+						<altitude>MapDataOverlay</altitude>
+						<fxMode>Dynamic</fxMode>
+					</li>
+				</fxLayers>
+			</li>		
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>3600</basePowerConsumption>
+				<transmitsPower>false</transmitsPower>
+			</li>
+		</comps>
+		<drawOffscreen>false</drawOffscreen>
+		<passability>Impassable</passability>
+		<fillPercent>0.5</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<specialDisplayRadius>39.9</specialDisplayRadius>
+		<constructionSkillPrerequisite>15</constructionSkillPrerequisite>
+		<placeWorkers>
+			<li>TeleCore.PlaceWorker_OnlyOutside</li>
+			<li>TeleCore.PlaceWorker_Once</li>
+		</placeWorkers>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Nod</groupDef>
+				<category>Superweapon</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+<!--	<TR.TRThingDef ParentName="BuildingBase_TR">
+		<defName>TemplePrimeTemplate</defName>
+		<label>Temple Prime Template</label>
+		<description>poggers</description>
+		<thingClass>Building</thingClass>
+		<size>(7,7)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Temple/Dev/Temple_Full</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(7,8)</drawSize>
+			<drawOffset>(0,0,0.5)</drawOffset>
+		</graphicData>
+		<uiIconPath>Buildings/Nod/Defense/Temple/Icon</uiIconPath>
+		<costList>
+			<ComponentIndustrial>12</ComponentIndustrial>
+		</costList>
+		<uiIconScale>0.90</uiIconScale>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MaxHitPoints>1000</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>100000</WorkToBuild>
+			<Mass>1000</Mass>
+			<Beauty>100</Beauty>
+		</statBases>
+		<drawOffscreen>false</drawOffscreen>
+		<passability>Impassable</passability>
+		<fillPercent>0.5</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<specialDisplayRadius>39.9</specialDisplayRadius>
+		<constructionSkillPrerequisite>15</constructionSkillPrerequisite>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Nod</groupDef>
+				<category>Defense</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>-->
+
+
+
+	
+</Defs>

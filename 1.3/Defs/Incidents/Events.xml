@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TiberiumRim.EventDef>
+		<defName>TiberiumMeteorSighting</defName>
+		<label>Meteor Sighting</label>
+		<description>A strange meteor has been sighted in the skies, we estimate</description>
+		<activeDays>0</activeDays>
+	</TiberiumRim.EventDef>
+
+	<TiberiumRim.EventDef>
+		<defName>TimedEvent</defName>
+		<label>Timed Event</label>
+		<description>N/A</description>
+		<activeDays>7</activeDays>
+	</TiberiumRim.EventDef>
+
+	<TiberiumRim.EventDef>
+		<defName>TiberiumMeteorCrash</defName>
+		<label>Meteor Crash</label>
+		<eventClass>TiberiumRim.Event_TiberiumArrival</eventClass>
+		<letter>
+			<letterLabel>Meteor crashed!</letterLabel>
+			<letterText>The strange object has crashed directly onto our map, we might want to investigate it closer...</letterText>
+			<letterDef>NegativeEvent</letterDef>
+		</letter>
+		<description>Oh no it crashed</description>
+	</TiberiumRim.EventDef>
+	
+	<TiberiumRim.EventDef>
+		<defName>TiberiumRadiationLeak</defName>
+		<label>Meteorite</label>
+		<description>.</description>
+		<eventClass>TiberiumRim.Event_TiberiumArrival</eventClass>
+		<letter>
+			<letterLabel>Meteor crashed!</letterLabel>
+			<letterText>The strange object has crashed directly onto our map, we might want to investigate it closer...</letterText>
+			<letterDef>NegativeEvent</letterDef>
+		</letter>
+	</TiberiumRim.EventDef>
+	
+	<TiberiumRim.EventDef>
+		<defName>TiberiumFloraDiscovery</defName>
+		<label>Alien Flora</label>
+		<description>Alien flora seems to be growing around the area of impact.</description>
+	</TiberiumRim.EventDef>
+	
+	<TiberiumRim.EventDef>
+		<defName>SupercriticalState</defName>
+		<label></label>
+		<description>The meteor has gone supercritical and should be avoided.</description>
+		<activeDays>0</activeDays>
+	</TiberiumRim.EventDef>
+	
+	<TiberiumRim.EventDef>
+		<defName>TiberiumToxemiaDiscovery</defName>
+		<label>Tiberium Toxemia</label>
+		<description>{0} was wandering close to the crystals, and discovered that they are more than just growing minerals. They got affected by {1} and should be treated to recover.</description>
+		<triggerProps>
+			<hediffs>
+				<li>TiberiumToxemia</li>
+			</hediffs>
+		</triggerProps>
+		<discoveries>
+			<thingsToDiscover>
+				<li>TiberiumToxemiaDiscovery</li>
+			</thingsToDiscover>
+		</discoveries>
+	</TiberiumRim.EventDef>
+	
+	<TiberiumRim.EventDef>
+		<defName>TiberiumGeyserDiscovery</defName>
+		<label>Tiberium Geyser Discovery</label>
+		<description>A tiberium geyser.</description>
+		<triggerProps>
+			<targets>
+				<targetDefs>
+					<li>TiberiumGeyser</li>
+				</targetDefs>
+			</targets>
+		</triggerProps>
+		<discoveries>
+			<thingsToDiscover>
+				<li>TiberiumGeyserDiscovery</li>
+			</thingsToDiscover>
+		</discoveries>
+	</TiberiumRim.EventDef>
+	
+</Defs>

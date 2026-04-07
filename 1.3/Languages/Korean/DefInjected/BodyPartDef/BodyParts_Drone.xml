@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <ScrinDrone_Spine.label>드론 척추</ScrinDrone_Spine.label>
+  <ScrinDrone_Exoskeleton.label>외골격</ScrinDrone_Exoskeleton.label>
+  <ScrinDrone_Scale.label>비늘판</ScrinDrone_Scale.label>
+
+
+  <!-- Manipulator Arm -->
+
+  <ScrinDrone_ManiArm.label>조작 촉수</ScrinDrone_ManiArm.label>
+  <ScrinDrone_ManiSupport.label>보조 촉수</ScrinDrone_ManiSupport.label>
+  <ScrinDrone_ManiTool.label>감지 촉수</ScrinDrone_ManiTool.label>
+  <ScrinDrone_HoverArray.label>부양 기관</ScrinDrone_HoverArray.label>
+  <ScrinDrone_HoverArm.label>부양 촉수</ScrinDrone_HoverArm.label>
+
+
+</LanguageData>

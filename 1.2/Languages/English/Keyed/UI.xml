@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<!-- Research -->
+	<TR_StartResearch>Start Project</TR_StartResearch>
+	<TR_StopResearch>Stop Project</TR_StopResearch>
+	
+	<!-- -->
+	
+	<!-- Task -->
+	<TR_CurTask>Current Task: {0}</TR_CurTask>
+	<TR_TaskTargets>Main Targets:</TR_TaskTargets>
+	<TR_TaskBenches>Allowed Workbenches  ({0}):</TR_TaskBenches>
+	<TR_TaskSillReq>Required Skill: {0} - {1}</TR_TaskSillReq>
+	
+	<TR_StartedProject>Started new research project: {0}</TR_StartedProject>
+	
+	<TR_TaskCreationsCraft>Craft Items:</TR_TaskCreationsCraft>
+	<TR_TaskCreationsBuild>Construct Buildings:</TR_TaskCreationsBuild>
+	<TR_TaskCreationsBoth>Construct and Craft:</TR_TaskCreationsBoth>
+	
+	<TR_TaskWorkType>Required Work Type: {0}</TR_TaskWorkType>
+	<TR_TaskSkillReq>Required Skills:</TR_TaskSkillReq>
+	
+	<TR_OpenTab>Open Tiberium Tab</TR_OpenTab>
+	
+	<TR_MainTabResearch>Research</TR_MainTabResearch>
+	<TR_MainTabEvents>Events</TR_MainTabEvents>
+	
+	<TR_EventResearchUnlocks>New Research Projects:\n{0}</TR_EventResearchUnlocks>
+	
+	<TR_ResearchInactiveWorkType>Missing work type: {0}</TR_ResearchInactiveWorkType>
+	<TR_ResearchMissingSkill>Missing skill:\n{0}</TR_ResearchMissingSkill>
+	
+	<TR_ResearchTaskDone>Research task done: {0}</TR_ResearchTaskDone>
+	<TR_ResearchProjectDone>Research project done: {0}</TR_ResearchProjectDone>
+	
+	<TR_NoTaskAvailable>// All Tasks Finished //</TR_NoTaskAvailable>
+	
+	<!-- TR Menu -->
+	<TR_MissingRequisite>Missing following requisites:\n</TR_MissingRequisite>
+	<TR_RequisitesMissingVanillaResearch>Missing Research:{0}</TR_RequisitesMissingVanillaResearch>
+	<TR_RequisitesMissingTiberiumResearch>Missing Tiberium Projects:{0}</TR_RequisitesMissingTiberiumResearch>
+	<TR_RequisitesMissingTiberiumTask>Missing Tiberium Tasks:{0}</TR_RequisitesMissingTiberiumTask>
+	<TR_RequisitesMissingEvents>Unlocked By Events:{0}</TR_RequisitesMissingEvents>
+	
+	<TR_LockedReason>Locked due to missing requisites.\n</TR_LockedReason>
+	<TR_LockedDueMinTech>- Need min tech level: {0}</TR_LockedDueMinTech>
+	<TR_LockedDueMaxTech>- Need max tech level: {0}</TR_LockedDueMaxTech>
+	<TR_LockedDueMissingResearch>- Missing research:\n{0}</TR_LockedDueMissingResearch>
+	
+	<TR_ResearchUnlocks>Unlocks:</TR_ResearchUnlocks>
+	<TR_Capable>Capable:</TR_Capable>
+	
+</LanguageData>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThinkTreeDef>
+		<defName>RepairDrone</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<!-- Do Job (Repair) -->
+				<li Class="ThinkNode_QueuedJob" />
+				
+				<!-- 
+				<li Class="TR.JobGiver_RepairDroneRepair" />
+				-->
+
+				<li Class="TR.ThinkNode_ConditionalNoStation">
+					<subNodes>
+						<li Class="ThinkNode_Tagger">
+							<tagToGive>Idle</tagToGive>
+							<subNodes>
+								<li Class="JobGiver_Idle"/>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+
+				<!-- Return -->
+				<li Class="ThinkNode_Tagger">
+					<tagToGive>Idle</tagToGive>
+					<subNodes>
+						<li Class="TR.JobGiver_RepairDroneReturn"/>
+					</subNodes>
+				</li>		
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+	
+</Defs>

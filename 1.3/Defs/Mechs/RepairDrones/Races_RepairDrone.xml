@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<ThingDef ParentName="RepairDroneBase">
+		<defName>RepairDrone_Common</defName>
+		<label>repair drone</label>	
+		<description>A simple repair drone, it will repair any damaged mech in reach as long as it has resources.</description>
+		<statBases>
+			<MoveSpeed>1.5</MoveSpeed>
+			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+		</statBases>
+	</ThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="MechPackageBase">
+		<defName>RepairDronePackage_Common</defName>
+		<label>repair drone (packaged)</label>	
+		<description>A simple repair drone.</description>
+		<graphicData>
+			<texPath>Pawns/Mechanical/Common/RepairDrone/RepairDrone_south</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</TiberiumRim.TRThingDef>
+
+</Defs>

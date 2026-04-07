@@ -1,0 +1,22 @@
+﻿using Verse;
+using Verse.Sound;
+
+namespace TR.Animation;
+
+public class SoundPart
+{
+    public SoundDef def;
+    public SoundInfo info;
+
+    public SoundPart(SoundDef def, SoundInfo info)
+    {
+        this.def = def;
+        this.info = info;
+    }
+
+    public void PlaySound(int tick)
+    {
+        if (Find.SoundRoot.oneShotManager.CanAddPlayingOneShot(def, info))
+            def.PlayOneShot(info);
+    }
+}

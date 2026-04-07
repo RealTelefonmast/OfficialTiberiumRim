@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GreenTiberiumRock_TBI.label>녹색 결정질 암석</GreenTiberiumRock_TBI.label>
+  <GreenTiberiumRock_TBI.description>결정화된 암석입니다.</GreenTiberiumRock_TBI.description>
+
+  <BlueTiberiumRock_TBI.label>청색 결정질 암석</BlueTiberiumRock_TBI.label>
+  <BlueTiberiumRock_TBI.description>결정화된 암석입니다.</BlueTiberiumRock_TBI.description>
+
+  <RedTiberiumRock_TBI.label>적색 결정질 암석</RedTiberiumRock_TBI.label>
+  <RedTiberiumRock_TBI.description>결정화된 암석입니다.</RedTiberiumRock_TBI.description>
+
+  <VeinTiberiumRock_TBI.label>침식된 암석</VeinTiberiumRock_TBI.label>
+  <VeinTiberiumRock_TBI.description>덩굴에 침식된 암석입니다.</VeinTiberiumRock_TBI.description>
+
+
+  <!-- Natural formations -->
+
+  <GenesisPit.label>창조의 구덩이</GenesisPit.label>
+  <GenesisPit.description>빛이 있으라.</GenesisPit.description>
+
+  <TiberiumTower_TBI.description>지하에서 솟구친 커다란 타이베리움 결정입니다. 의외로 더 이상은 성장하지 않는 것처럼 보입니다.</TiberiumTower_TBI.description>
+  <TiberiumTower_TBI.label>녹색 결정기둥</TiberiumTower_TBI.label>
+
+
+  <!-- Tiberium Geyser -->
+
+  <TiberiumGeyser.label>오염된 간헐천</TiberiumGeyser.label>
+  <TiberiumGeyser.description>이 간헐천은 타이베리움에 오염되었습니다. 매우 불안정하기 때문에 주변에서 걷는 것만으로도 유독한 가스를 뿜어낼 것입니다. 타이베리움 고정기를 설치하여 지반을 안정시킬 수 있습니다.</TiberiumGeyser.description>
+
+  <TiberiumGeyserCrack.label>간헐천 균열</TiberiumGeyserCrack.label>
+
+
+  <!-- Visceral Stuff -->
+
+  <VisceralPod.label>변이체 변데기</VisceralPod.label>
+  <VeinHub.label>침식 주둥이</VeinHub.label>
+
+
+</LanguageData>

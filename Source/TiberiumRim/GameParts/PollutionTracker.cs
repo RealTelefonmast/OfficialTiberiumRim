@@ -1,0 +1,561 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using RimWorld;
+using TR.Info;
+using TR.Rendering.TextureContent;
+using UnityEngine;
+using Verse;
+
+namespace TR.GameParts;
+
+public class PollutionTracker
+{
+    private readonly HashSet<IntVec3> borderCells = new();
+    private readonly Dictionary<PollutionTracker, List<PollutionPasser>> ConnectedTrackers = new();
+    private readonly Map map;
+    private float diagonal = 0;
+    private int height = 0;
+
+    private int markedDirty;
+    private int pollutionInt;
+    private RoomGroup roomGroup;
+    private int width = 0;
+
+    public PollutionTracker(Map map, RoomGroup group, int value)
+    {
+        this.map = map;
+        roomGroup = group;
+        pollutionInt = value;
+    }
+
+    public RoomGroup Group => roomGroup;
+
+    private TiberiumPollutionMapInfo PollutionInfo => roomGroup.Map.Tiberium().PollutionInfo;
+
+    public int Pollution
+    {
+        get => PolluteOutDoors ? PollutionInfo.OutsidePollution : pollutionInt;
+        set
+        {
+            if (PolluteOutDoors)
+            {
+                PollutionInfo.OutsidePollution = value;
+                return;
+            }
+
+            pollutionInt = value;
+            //roomGroup.Rooms[0].Notify_RoomShapeOrContainedBedsChanged();
+        }
+    }
+
+    public float Saturation => Pollution / (roomGroup.CellCount * 100f);
+    public bool PolluteOutDoors => roomGroup.UsesOutdoorTemperature;
+    public bool IsDirty => markedDirty > 0;
+
+    public HashSet<IntVec3> BorderCellsWithoutCorners => borderCells ?? RegenerateBorderCells();
+
+    public void Pollute(int value)
+    {
+        Pollution += value;
+    }
+
+    public int PushAmountToOther(PollutionTracker other, int throughPutCap)
+    {
+        return Mathf.RoundToInt(throughPutCap * (Saturation - other.Saturation));
+    }
+
+    public int ThroughPut(float pressureA, float pressureB, int viscosity = 1, float length = 1, int crossSection = 100)
+    {
+        return Mathf.RoundToInt(10000f * (pressureA - pressureB) / (8f * (float)Math.PI * length));
+    }
+
+    public bool ShouldPushToOther(PollutionTracker other)
+    {
+        return Saturation - other.Saturation >= 0.01f;
+    }
+
+    public void TryPushToOther(PollutionTracker other, int value)
+    {
+        var actualValue = value;
+        if (value > Pollution)
+            actualValue = Pollution;
+        Pollution -= actualValue;
+        other.Pollution += actualValue;
+    }
+
+    public void MarkDirty()
+    {
+        markedDirty++;
+    }
+
+    private Room OppositeRoomFrom(IntVec3 cell)
+    {
+        for (var i = 0; i < 4; i++)
+        {
+            var room = (cell + GenAdj.CardinalDirections[i]).GetRoom(map);
+            if (room == null || room.Group == Group) continue;
+            return room;
+        }
+
+        return null;
+    }
+
+    private HashSet<IntVec3> RegenerateBorderCells()
+    {
+        borderCells.Clear();
+        foreach (IntVec3 c in Group.Cells)
+            for (var i = 0; i < 4; i++)
+            {
+                var intVec = c + GenAdj.CardinalDirections[i];
+                var region = intVec.GetRegion(roomGroup.Map);
+                if (region == null || region.Room.Group != Group) borderCells.Add(intVec);
+            }
+
+        return borderCells;
+    }
+
+    public void RegenerateData(bool ignoreTracker = false)
+    {
+        if (!IsDirty) return;
+        ConnectedTrackers.Clear();
+        RegenerateBorderCells();
+
+        //int minX = roomGroup.Cells.MinBy(t => t.x).x;
+        //int maxX = roomGroup.Cells.MaxBy(t => t.x).x;
+        //int minZ = roomGroup.Cells.MinBy(t => t.z).z;
+        //int maxZ = roomGroup.Cells.MaxBy(t => t.z).z;
+        //this.width = maxX - minX;
+        //this.height = maxZ - minZ;
+        //this.diagonal = Mathf.Sqrt(Mathf.Pow(width, 2) + Mathf.Pow(height, 2));
+        foreach (var cell in BorderCellsWithoutCorners)
+        {
+            if (!cell.InBounds(map)) continue;
+            var building = cell.GetFirstBuilding(roomGroup.Map);
+            if (building == null) continue;
+            if (!(building is Building_Door || building is Building_Vent || building is Building_Cooler)) continue;
+            var actualRoom = OppositeRoomFrom(building.Position);
+            if (actualRoom == null) continue;
+            var tracker = PollutionInfo.TrackerFor(actualRoom);
+            if (tracker == null) continue;
+
+            if (!ignoreTracker)
+            {
+                tracker.MarkDirty();
+                tracker.RegenerateData(true);
+            }
+
+            if (!ConnectedTrackers.ContainsKey(tracker)) ConnectedTrackers.Add(tracker, new List<PollutionPasser>());
+            ConnectedTrackers[tracker].Add(new PollutionPasser(building));
+        }
+
+        markedDirty--;
+    }
+
+    public void Equalize()
+    {
+        foreach (var tracker in ConnectedTrackers)
+        foreach (var passer in tracker.Value)
+        {
+            if (!passer.CanPass) continue;
+            if (!ShouldPushToOther(tracker.Key)) continue;
+            TryPushToOther(tracker.Key, PushAmountToOther(tracker.Key, 100));
+        }
+    }
+
+    public void OnGUI()
+    {
+        if (Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest)
+        {
+            IntVec3 first = Group.Cells.First();
+            Vector3 v = GenMapUI.LabelDrawPosFor(first);
+            GenMapUI.DrawThingLabel(v, Group.ID.ToString() + "[" + Pollution + "]", Color.red);
+        }
+    }
+
+    public void DrawData()
+    {
+        if (Group.Cells.Contains(UI.MouseCell()))
+        {
+            GenDraw.DrawFieldEdges(BorderCellsWithoutCorners.ToList(), Color.cyan);
+            GenDraw.DrawFieldEdges(ConnectedTrackers.SelectMany(t => t.Value.Select(t => t.Building.Position)).ToList(),
+                Color.green);
+            GenDraw.DrawFieldEdges(ConnectedTrackers.SelectMany(t => t.Key.Group.Cells).Distinct().ToList(), Color.red);
+        }
+
+        var vec = roomGroup.Cells.First().ToVector3();
+        GenDraw.FillableBarRequest r = default;
+        r.center = vec + new Vector3(0f, 0, 0.5f);
+        r.size = new Vector2(1f, 0.5f);
+        r.rotation = Rot4.East;
+        r.fillPercent = Saturation;
+        r.filledMat = TiberiumContent.GreenMaterial;
+        r.unfilledMat = TiberiumContent.ClearMaterial;
+        r.margin = 0.12f;
+        GenDraw.DrawFillableBar(r);
+    }
+}
+/* OLD REF
+namespace TR
+{
+    /*
+    public class PollutionTracker
+    {
+        private static int CELL_CAPACITY = 100;
+
+        private Map map;
+        private RoomGroup roomGroup;
+        public FlowRenderer renderer;
+        private int atmosphericInt;
+        private int totalCapacity;
+
+        private Vector3 actualCenter;
+
+        private int markedDirty = 0;
+
+        private bool hasDoor = false;
+        private int width = 0;
+        private int height = 0;
+        //private float diagonal = 0;
+
+        private readonly HashSet<IntVec3> borderCells = new HashSet<IntVec3>();
+        private readonly HashSet<IntVec3> thinRoofCells = new HashSet<IntVec3>();
+        private readonly Dictionary<PollutionTracker, List<AtmosphericConnector>> ConnectedTrackers = new Dictionary<PollutionTracker, List<AtmosphericConnector>>();
+        public readonly HashSet<AtmosphericConnector> AllPassers = new HashSet<AtmosphericConnector>();
+
+        private PollutionTracker[] ConnectingRooms;
+
+        public RoomGroup Group => roomGroup;
+
+        private AtmosphericMapInfo AtmosphericInfo => Group.Map.Tiberium().AtmosphericInfo;
+        private OutsidePollutionData Outside => AtmosphericInfo.OutsideData;
+
+        public int Atmospheric
+        {
+            get => IsOutdoors ? Outside.Atmospheric : ActualPollution;
+            set
+            {
+                if (FullySaturated) return;
+                if (IsOutdoors)
+                {
+                    Outside.Atmospheric = value;
+                    return;
+                }
+                ActualPollution = value;
+            }
+        }
+
+        public int ActualPollution
+        {
+            get => atmosphericInt;
+            set => atmosphericInt = value;
+        }
+
+        public int OpenRoofCount => Group.OpenRoofCount;
+        public int Capacity => totalCapacity;
+
+        public float ActualSaturation => (float)ActualPollution / Capacity;
+        public float Saturation => IsDoorWay ? MixSaturation : (IsOutdoors ? Outside.Saturation : ActualSaturation);
+        private float MixSaturation => ((ConnectingRooms[0]?.Saturation ?? 0) + (ConnectingRooms[1]?.Saturation ?? 0) / 2);
+
+        public bool FullySaturated => IsOutdoors ? Outside.FullySaturated : Saturation >= CriticalPressure;
+        public bool IsOutdoors => roomGroup.UsesOutdoorTemperature;
+        public bool IsDoorWay => hasDoor;
+        public bool IsDirty => markedDirty > 0;
+
+        private float CriticalPressure => 1.5f;
+
+        public Vector3 ActualCenter => actualCenter;
+        public Vector3 Size => new Vector3(width, 0, height);
+
+        public HashSet<IntVec3> BorderCellsWithoutCorners => borderCells;
+
+        public PollutionTracker(Map map, RoomGroup group, int value)
+        {
+            this.map = map;
+            roomGroup = group;
+            atmosphericInt = value;
+            renderer = new FlowRenderer(this);
+        }
+
+        public bool TryPollute(int value)
+        {
+            if (FullySaturated) return false;
+            Atmospheric += value;
+            return true;
+        }
+
+        public void EqualizeWith()
+        {
+            //Check Pressure
+            //if (Saturation > CriticalPressure)
+
+            //EqualizeWith
+            if (OpenRoofCount > 0 && ActualPollution > 0)
+            {
+                if (!Outside.FullySaturated)
+                {
+                    if (ShouldPushToOther(ActualSaturation, Outside.Saturation))
+                    {
+
+                        int from = ActualPollution, to = Outside.Atmospheric;
+                        TryPushToOther(ref from, ref to, PushAmountToOther(ActualSaturation, Outside.Saturation, CELL_CAPACITY * OpenRoofCount));
+                        ActualPollution = from;
+                        Outside.Atmospheric = to;
+                        return;
+                    }
+                }
+            }
+
+            foreach (var tracker in ConnectedTrackers)
+            {
+                if (tracker.Key.FullySaturated) continue;
+                foreach (var passer in tracker.Value)
+                {
+                    if (!passer.CanPass) continue;
+                    if (!ShouldPushToOther(Saturation, tracker.Key.Saturation)) continue;
+                    int from = Atmospheric,
+                        to = tracker.Key.Atmospheric;
+                    TryPushToOther(ref from, ref to, PushAmountToOther(Saturation, tracker.Key.Saturation, CELL_CAPACITY, 1f - passer.Building.props.fillPercent));
+                    Atmospheric = from;
+                    tracker.Key.Atmospheric = to;
+                }
+            }
+        }
+
+        private void TryOverpressure()
+        {
+            //Prefer Thin Roof
+            if (thinRoofCells.Any())
+            {
+                map.roofGrid.SetRoof(thinRoofCells.RandomElement(), null);
+                return;
+            }
+            //Choose Passers
+            var passers = ConnectedTrackers.Values.SelectMany(t => t).ToList();
+            if (passers.Any())
+            {
+                var randomPasser = passers.RandomElement();
+                IntVec3 pos = randomPasser.Building.Position;
+                randomPasser.Building.Destroy();
+
+            }
+            //Resolve to Walls?
+
+            //Keep increasing pressure..
+        }
+
+        private void DoPressureEvacuation(IntVec3 puller, PollutionTracker otherRoom)
+        {
+        }
+
+        public int PushAmountToOther(float saturation, float otherSaturation, int throughPutCap, float factor = 1)
+        {
+            return Mathf.RoundToInt((throughPutCap * (saturation - otherSaturation)) * factor);
+        }
+
+        public int ThroughPut(float pressureA, float pressureB, int viscosity = 1, float length = 1, int crossSection = 100)
+        {
+            return Mathf.RoundToInt((10000f * (pressureA - pressureB)) / (8f * (float)Math.PI * length));
+        }
+
+        public bool ShouldPushToOther(float saturation, float otherSaturation)
+        {
+            return (saturation - otherSaturation) >= 0.01f;
+        }
+
+        public void TryPushToOther(ref int from, ref int to, int value)
+        {
+            int actualValue = value;
+            if (value > from)
+                actualValue = from;
+            from -= actualValue;
+            to += actualValue;
+        }
+
+        public void MarkDirty()
+        {
+            markedDirty++;
+        }
+
+        private Room OppositeRoomFrom(IntVec3 cell)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                Room room = (cell + GenAdj.CardinalDirections[i]).GetRoom(map);
+                if(room == null || room.Group == Group) continue;
+                return room;
+            }
+            return null;
+        }
+
+        private void RegenerateCellInformation()
+        {
+            borderCells.Clear();
+            foreach (IntVec3 c in Group.Cells)
+            {
+                if (!map.roofGrid.RoofAt(c)?.isThickRoof ?? false)
+                    thinRoofCells.Add(c);
+
+                for (int i = 0; i < 4; i++)
+                {
+                    IntVec3 cardinal = c + GenAdj.CardinalDirections[i];
+                    //IntVec3 diagonal = c + GenAdj.DiagonalDirections[i];
+
+                    //bool isBorder = !Group.Regions.Contains(cardinal.GetRegion(map, RegionType.Set_All));
+                    Region region = (cardinal).GetRegion(map);
+                    if (region == null || region.Room != Group.Rooms[0])
+                    {
+                        borderCells.Add(cardinal);
+                    }
+                }
+            }
+        }
+
+        public void SetNewPasser(PollutionTracker toTracker, Building passerBuilding)
+        {
+            if (!ConnectedTrackers.ContainsKey(toTracker))
+            {
+                ConnectedTrackers.Add(toTracker, new List<AtmosphericConnector>());
+            }
+            var newPasser = new AtmosphericConnector(passerBuilding, this, toTracker);
+            AllPassers.Add(newPasser);
+            if (passerBuilding is Building_Door)
+                ConnectedDoors.Add(newPasser);
+            ConnectedTrackers[toTracker].Add(newPasser);
+        }
+
+        public void RegenerateData(bool ignoreTracker = false)
+        {
+            if (!IsDirty) return;
+            //Generic Data For All
+            ConnectedTrackers.Clear();
+            AllPassers.Clear();
+
+            totalCapacity = Group.CellCount * CELL_CAPACITY;
+            hasDoor = Group.Rooms[0].IsDoorway;
+
+            renderer.CachedTiling = Group.CellCount / 100f;
+
+            if (hasDoor)
+            {
+                ConnectingRooms = new PollutionTracker[2];
+                int k = 0;
+                for (int i = 0; i < 4; i++)
+                {
+                    Room room = (Group.Cells.First() + GenAdj.CardinalDirections[i]).GetRoom(map);
+                    if (room == null || room.Group == Group) continue;
+                    ConnectingRooms[k] = AtmosphericInfo.PollutionFor(room);
+                    if (k >= 1) break;
+                    k++;
+                }
+                ConnectingRooms[0].SetNewPasser(ConnectingRooms[1], this.Group.Rooms[0].Regions[0].door);
+                if(ConnectingRooms[1] != ConnectingRooms[0])
+                    ConnectingRooms[1].SetNewPasser(ConnectingRooms[0], this.Group.Rooms[0].Regions[0].door);
+                Log.Message("Made Door Connector For |" + ConnectingRooms[0]?.Group.ID + " - " + ConnectingRooms[1]?.Group.ID + "|");
+            }
+
+            if (IsOutdoors)
+            {
+                Log.Message("Updating outdoors - existing passers: " + Outside.);
+                //Update Passers
+                foreach (var passer in ConnectedDoors)
+                {
+                    AtmosphericInfo.PollutionFor(passer.Building.GetRoom()).RegenerateData(true);
+                }
+                markedDirty--;
+                return;
+            }
+
+            //Special Data for INDOOR rooms only!
+            RegenerateCellInformation();
+            foreach (var cell in BorderCellsWithoutCorners)
+            {
+                if (!cell.InBounds(map)) continue;
+                var building = cell.GetFirstBuilding(roomGroup.Map);
+                if (building == null) continue;
+                if (!(building is Building_Door || building is Building_Vent || building is Building_Cooler || building.props.Fillage != FillCategory.Full)) continue;
+                var actualRoom = OppositeRoomFrom(building.Position);
+                if (actualRoom == null) continue;
+                var tracker = AtmosphericInfo.PollutionFor(actualRoom);
+                if (tracker == null) continue;
+
+                SetNewPasser(tracker, building);
+
+                if (!ignoreTracker)
+                {
+                    if (tracker.IsOutdoors)
+                    {
+                        tracker.SetNewPasser(this, building);
+                    }
+                    else
+                    {
+                        tracker.MarkDirty();
+                        tracker.RegenerateData(true);
+                    }
+                    if (building is Building_Door door)
+                    {
+                        var tracker2 = AtmosphericInfo.PollutionFor(door.GetRoomGroup());
+                        tracker2.MarkDirty();
+                        tracker2.RegenerateData(true);
+                    }
+                }
+            }
+            markedDirty--;
+        }
+
+        public void OnGUI()
+        {
+            if (Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest)
+            {
+                IntVec3 first = Group.Cells.First();
+                Vector3 v = (GenMapUI.LabelDrawPosFor(first)) + new Vector2(0,-0.75f);
+                GenMapUI.DrawThingLabel(v, Group.ID + "[" + Atmospheric + "][" + ActualPollution + "]" + (IsDoorWay ? "[Door]" : ""), Color.red);
+            }
+        }
+
+        public void DrawData()
+        {
+            if (!IsOutdoors)
+                renderer.Draw();
+
+            if (!TRUtils.Tiberium().GameSettings.RadiationOverlay) return;
+            if (Group.Cells.Contains(UI.MouseCell()))
+            {
+                GenDraw.DrawFieldEdges(BorderCellsWithoutCorners.ToList(), Color.cyan);
+                GenDraw.DrawFieldEdges(ConnectedTrackers.SelectMany(t => t.Value.Select(t => t.Building.Position)).ToList(), Color.green);
+                GenDraw.DrawFieldEdges(ConnectedTrackers.SelectMany(t => t.Key.Group.Cells).Distinct().ToList(), Color.red);
+                if(IsDoorWay)
+                    GenDraw.DrawFieldEdges(ConnectingRooms.SelectMany(t => t.Group.Cells).ToList(), Color.red);
+            }
+
+            var vec = roomGroup.Cells.First().ToVector3();
+            GenDraw.FillableBarRequest r = default;
+            r.center = vec + new Vector3(0f, 0, 0.5f);
+            r.size = new Vector2(1f, 0.5f);
+            r.rotation = Rot4.East;
+            r.fillPercent = Saturation;
+            r.filledMat = TiberiumContent.GreenMaterial;
+            r.unfilledMat = TiberiumContent.ClearMaterial;
+            r.margin = 0.125f;
+            GenDraw.DrawFillableBar(r);
+
+            if (ActualPollution > 0)
+            {
+                GenDraw.FillableBarRequest r2 = default;
+                r2.center = vec + new Vector3(0.5f, 0, 0.5f);
+                r2.size = new Vector2(1f, 0.5f);
+                r2.rotation = Rot4.East;
+                r2.fillPercent = ActualSaturation;
+                r2.filledMat = TiberiumContent.RedMaterial;
+                r2.unfilledMat = TiberiumContent.ClearMaterial;
+                r2.margin = 0.125f;
+                GenDraw.DrawFillableBar(r2);
+            }
+        }
+    }
+    * /
+}
+
+
+*/

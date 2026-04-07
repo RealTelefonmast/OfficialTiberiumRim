@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>	
+
+	<ThingDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumGreen</defName>
+		<label>Green Tiberium</label>
+		<description>A glowy green crystal. Looks strangely appealing. Interaction might be dangerous.\n\nGreen Tiberium is the most common, spreads the fastest and corrupts everything, can be refined into steel.</description>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Beauty>50</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/Green</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>45</pathCost>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>0.4</reproduceMtbDays>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>GreenTiberiumRaw</harvestedThingDef>
+			<harvestYield>1</harvestYield>
+			<reproduceRadius>3</reproduceRadius>
+			<maxMeshCount>4</maxMeshCount>
+			<growDays>3</growDays>
+			<visualSizeRange>
+				<min>1.0</min>
+				<max>2.0</max>
+			</visualSizeRange>
+		</plant>
+		<corruptsInto>TiberiumSoilGreen</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumBush</li>
+			<li>TiberiumTree</li>
+			<li>TiberiumGrass</li>
+			<li>TiberiumShroom</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<Monolith>TiberiumTower_TBNS</Monolith>
+		<EntityDamage>5</EntityDamage>
+		<BuildingDamage>7</BuildingDamage>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumPod</defName>
+		<label>Green Tiberium pod</label>
+		<description>A glowy green crystal, growing from a pod connected to the ground. Looks strangely appealing. Interaction might be dangerous.\n\nTiberium Pods, the "original" more plant like Tiberium form, spreads a bit slower than blue Tiberium and can only grow on dirt type terrain, it gives the same as Green Tiberium.
+It only harms items but is still toxic to living beings.</description>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<Beauty>40</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/Proto</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>65</pathCost>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>0.4</reproduceMtbDays>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>GreenTiberiumRaw</harvestedThingDef>
+			<harvestYield>1</harvestYield>
+			<reproduceRadius>3</reproduceRadius>
+			<maxMeshCount>4</maxMeshCount>
+			<growDays>3.5</growDays>
+			<visualSizeRange>
+				<min>1.0</min>
+				<max>2.0</max>
+			</visualSizeRange>
+		</plant>
+		<corruptsInto>TiberiumSoilPod</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumBush</li>
+			<li>TiberiumTree</li>
+			<li>TiberiumGrass</li>
+			<li>TiberiumShroom</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<Monolith>TiberiumTower_TBNS</Monolith>
+		<EntityDamage>6</EntityDamage>
+		<BuildingDamage>0</BuildingDamage>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumBlue</defName>
+		<label>Blue Tiberium</label>
+		<description>A glowy blue crystal. Beautiful to the eye but of unknown properties.\n\nBlue Tiberium is as dangerous as green, it spreads a bit slower though and is also explosive, it can be refined into plasteel.</description>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Beauty>75</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/Blue</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>50</pathCost>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>0.4</reproduceMtbDays>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>BlueTiberiumRaw</harvestedThingDef>
+			<harvestYield>1</harvestYield>
+			<reproduceRadius>3</reproduceRadius>
+			<maxMeshCount>4</maxMeshCount>
+			<growDays>4.5</growDays>
+			<visualSizeRange>
+				<min>1.0</min>
+				<max>2.0</max>
+			</visualSizeRange>
+		</plant>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_PlantExplode">
+				<explosiveRadius>2.5</explosiveRadius>
+				<damageAmountBase>50</damageAmountBase>
+				<chanceNeverExplodeFromDamage>0.35</chanceNeverExplodeFromDamage>
+			</li>
+		</comps>
+		<corruptsInto>TiberiumSoilBlue</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumBush</li>
+			<li>TiberiumTree</li>
+			<li>TiberiumGrass</li>
+			<li>TiberiumShroom</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<Monolith>TiberiumMonolith_TBNS</Monolith>
+		<EntityDamage>7</EntityDamage>
+		<BuildingDamage>10</BuildingDamage>
+	</ThingDef>
+
+	<ThingDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumRed</defName>
+		<label>red Tiberium</label>
+		<description>A glowy red crystal. Beautiful to the eye but of unknown properties. Unusual.\n\nRed Tiberium is very rare, and grows extremely slow and can be refined to gold uranium.</description>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<Beauty>75</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/Red</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>50</pathCost>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>0.2</reproduceMtbDays>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>RedTiberiumRaw</harvestedThingDef>
+			<harvestYield>1</harvestYield>
+			<reproduceRadius>3</reproduceRadius>
+			<maxMeshCount>4</maxMeshCount>
+			<growDays>16</growDays>
+			<visualSizeRange>
+				<min>1.0</min>
+				<max>2.0</max>
+			</visualSizeRange>
+		</plant>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_PlantExplode">
+				<explosiveRadius>4</explosiveRadius>
+				<damageAmountBase>75</damageAmountBase>
+				<chanceNeverExplodeFromDamage>0.90</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(255,120,120,0)</glowColor>
+			</li>
+		</comps>
+		<corruptsInto>TiberiumSoilRed</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumBush</li>
+			<li>TiberiumTree</li>
+			<li>TiberiumGrass</li>
+			<li>TiberiumShroom</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<EntityDamage>10</EntityDamage>
+		<BuildingDamage>25</BuildingDamage>
+	</ThingDef>	
+	
+	<ThingDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumDesertGreen</defName>
+		<label>Green Tiberium shards</label>
+		<description>Green shards growing out of the sand, they seem to be instable.\n\nTiberium Shards are the desert Tiberium types, they can only spawn by their bigger brothers when they are near Sand, and can only spread on Sand.
+They grow slower, have a bit less health but still are as toxic and give Tiberium when harvested.
+They do not spread anything else but themselves.
+</description>
+		<statBases>
+			<MaxHitPoints>15</MaxHitPoints>
+			<Beauty>15</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/SandGreen</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>40</pathCost>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>0.3</reproduceMtbDays>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>GreenTiberiumRaw</harvestedThingDef>
+			<harvestYield>1</harvestYield>
+			<reproduceRadius>3</reproduceRadius>
+			<maxMeshCount>4</maxMeshCount>
+			<growDays>4.5</growDays>
+			<visualSizeRange>
+				<min>1.0</min>
+				<max>2.0</max>
+			</visualSizeRange>
+		</plant>
+		<corruptsInto>TiberiumSandGreen</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumBush</li>
+			<li>TiberiumTree</li>
+			<li>TiberiumGrass</li>
+			<li>TiberiumShroom</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<Monolith>TiberiumTower_TBNS</Monolith>
+		<EntityDamage>2</EntityDamage>
+		<BuildingDamage>5</BuildingDamage>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumDesertBlue</defName>
+		<label>Blue Tiberium shards</label>
+		<description>Blue shards growing out of the sand, they seem to be instable.\n\nTiberium Shards are the desert Tiberium types, they can only spawn by their bigger brothers when they are near Sand, and can only spread on Sand. They grow slower, have a bit less health but still are as toxic and give Tiberium when harvested. They do not spread anything else but themselves.</description>
+		<statBases>
+			<MaxHitPoints>20</MaxHitPoints>
+			<Beauty>15</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/SandBlue</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>40</pathCost>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>0.4</reproduceMtbDays>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>BlueTiberiumRaw</harvestedThingDef>
+			<harvestYield>1</harvestYield>
+			<reproduceRadius>3</reproduceRadius>
+			<maxMeshCount>4</maxMeshCount>
+			<growDays>4.5</growDays>
+			<visualSizeRange>
+				<min>1.0</min>
+				<max>2.0</max>
+			</visualSizeRange>
+		</plant>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_PlantExplode">
+				<explosiveRadius>1.5</explosiveRadius>
+				<damageAmountBase>12</damageAmountBase>
+				<chanceNeverExplodeFromDamage>0.25</chanceNeverExplodeFromDamage>
+			</li>
+		</comps>
+		<corruptsInto>TiberiumSandBlue</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumBush</li>
+			<li>TiberiumTree</li>
+			<li>TiberiumGrass</li>
+			<li>TiberiumShroom</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<Monolith>TiberiumMonolith_TBNS</Monolith>
+		<EntityDamage>3</EntityDamage>
+		<BuildingDamage>5</BuildingDamage>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumDesertRed</defName>
+		<label>Red Tiberium shards</label>
+		<description>Red shards growing out of the sand, they seem to be instable.\n\nTiberium Shards are the desert Tiberium types, they can only spawn by their bigger brothers when they are near Sand, and can only spread on Sand. They grow slower, have a bit less health but still are as toxic and give Tiberium when harvested. They do not spread anything else but themselves.</description>
+		<statBases>
+			<MaxHitPoints>25</MaxHitPoints>
+			<Beauty>15</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/SandRed</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>40</pathCost>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>0.2</reproduceMtbDays>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>RedTiberiumRaw</harvestedThingDef>
+			<harvestYield>1</harvestYield>
+			<reproduceRadius>3</reproduceRadius>
+			<maxMeshCount>4</maxMeshCount>
+			<growDays>20</growDays>
+			<visualSizeRange>
+				<min>1.0</min>
+				<max>2.0</max>
+			</visualSizeRange>
+		</plant>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_PlantExplode">
+				<explosiveRadius>2</explosiveRadius>
+				<damageAmountBase>18</damageAmountBase>
+				<chanceNeverExplodeFromDamage>0.25</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1</glowRadius>
+				<glowColor>(255,120,120,0)</glowColor>
+			</li>
+		</comps>
+		<corruptsInto>TiberiumSandRed</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumBush</li>
+			<li>TiberiumTree</li>
+			<li>TiberiumGrass</li>
+			<li>TiberiumShroom</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<EntityDamage>4</EntityDamage>
+		<BuildingDamage>5</BuildingDamage>
+	</ThingDef>
+	
+	<!-- Tiberium Moss-->
+	
+	<ThingDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumMossGreen</defName>
+		<label>Green Tiberium moss</label>
+		<description>A mossy mass is covering this tile. It seems to be highly toxic.\n\nTiberium Moss is toxic, corruptive and useless, it cannot be harvested and only grows on stone type terrain or mossy dirt. It does not spread normal crystals or on other terrain types like Sand, Water or Soil.</description>
+		<statBases>
+			<MaxHitPoints>35</MaxHitPoints>
+			<Beauty>-20</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/MossGreen</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>40</pathCost>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>0.3</reproduceMtbDays>
+			<reproduceRadius>3</reproduceRadius>
+			<maxMeshCount>4</maxMeshCount>
+			<growDays>1</growDays>
+			<visualSizeRange>
+				<min>1.0</min>
+				<max>2.0</max>
+			</visualSizeRange>
+		</plant>
+		<corruptsInto>TiberiumRockGreen</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumBush</li>
+			<li>TiberiumTree</li>
+			<li>TiberiumGrass</li>
+			<li>TiberiumShroom</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<EntityDamage>5</EntityDamage>
+		<BuildingDamage>7</BuildingDamage>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumMossBlue</defName>
+		<label>Blue Tiberium moss</label>
+		<description>A mossy mass is covering this tile. It seems to be highly toxic.\n\nTiberium Moss is toxic, corruptive and useless, it cannot be harvested and only grows on stone type terrain or mossy dirt. It does not spread normal crystals or on other terrain types like Sand, Water or Soil.</description>
+		<statBases>
+			<MaxHitPoints>40</MaxHitPoints>
+			<Beauty>-20</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/MossBlue</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>40</pathCost>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>0.2</reproduceMtbDays>
+			<reproduceRadius>3</reproduceRadius>
+			<maxMeshCount>4</maxMeshCount>
+			<growDays>1</growDays>
+			<visualSizeRange>
+				<min>1.0</min>
+				<max>2.0</max>
+			</visualSizeRange>
+		</plant>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_PlantExplode">
+				<explosiveRadius>2</explosiveRadius>
+				<damageAmountBase>38</damageAmountBase>
+				<chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+			</li>
+		</comps>
+		<corruptsInto>TiberiumRockBlue</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumBush</li>
+			<li>TiberiumTree</li>
+			<li>TiberiumGrass</li>
+			<li>TiberiumShroom</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<EntityDamage>7</EntityDamage>
+		<BuildingDamage>9</BuildingDamage>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumGlacier</defName>
+		<label>Tiberium Glacier</label>
+		<description>Huge formations of crystalized water.\n\nTiberium Glaciers only grow on water and are created once certain types of Tiberium are next to water terrain. They are tough, not harvestable, and useless. They do not spread further Tiberium once they reach free terrain.</description>
+		<statBases>
+			<MaxHitPoints>750</MaxHitPoints>
+			<Beauty>30</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/Glaciers</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>200</pathCost>
+		<passability>PassThroughOnly</passability>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<harvestWork>10000</harvestWork>
+			<reproduceMtbDays>0.5</reproduceMtbDays>
+			<reproduceRadius>3</reproduceRadius>
+			<growDays>5</growDays>
+			<visualSizeRange>
+				<min>1</min>
+				<max>2</max>
+			</visualSizeRange>
+			<maxMeshCount>4</maxMeshCount>
+			<topWindExposure>0.1</topWindExposure>	
+		</plant>
+		<corruptsInto>TiberiumWater</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumBush</li>
+			<li>TiberiumTree</li>
+			<li>TiberiumGrass</li>
+			<li>TiberiumShroom</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<EntityDamage>10</EntityDamage>
+		<BuildingDamage>25</BuildingDamage>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumVein</defName>
+		<label>Vein</label>
+		<description>A stringy, throbbing brown-reddish vein. It grows out of a veinhole.\n\nTiberium Veins are only created by the Veinhole, they did physical damage to living beings but that has been removed for the time being.</description>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<Beauty>-75</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/Vein</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>75</pathCost>
+		<plant>
+			<reproduces>true</reproduces>
+			<dieIfLeafless>false</dieIfLeafless>
+			<harvestWork>800</harvestWork>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>VeinTiberiumRaw</harvestedThingDef>
+			<harvestYield>1</harvestYield>
+			<growDays>0.7</growDays>
+			<reproduceMtbDays>0.3</reproduceMtbDays>
+			<reproduceRadius>1</reproduceRadius>
+			<visualSizeRange>
+				<min>0.5</min>
+				<max>1.0</max>
+			</visualSizeRange>
+			<maxMeshCount>4</maxMeshCount>
+			<topWindExposure>0.1</topWindExposure>
+		</plant>
+		<corruptsInto>VeinSoilRed</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumBush</li>
+			<li>TiberiumTree</li>
+			<li>TiberiumGrass</li>
+			<li>TiberiumShroom</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+			<!--Some trees should not be affected by Veins-->
+			<li>PlantTreeTeak</li>
+			<li>PlantTreePine</li>
+		</friendlyTo>
+		<EntityDamage>4</EntityDamage>
+		<BuildingDamage>6</BuildingDamage>
+		<isFlesh>True</isFlesh>
+	</ThingDef>
+	
+	<!-- Decorative -->
+	
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantGreenTiberium</defName>
+		<label>Tiberium</label>
+		<description>A beautiful green crystal, it feels warm when you hold your face close to it.</description>
+		<statBases>
+			<MaxHitPoints>125</MaxHitPoints>
+			<Beauty>75</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/Pot/Green</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<ingestible>
+				<nutrition>0.01</nutrition>
+		</ingestible>
+		<altitudeLayer>Item</altitudeLayer>
+		<selectable>true</selectable>
+		<plant>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduces>false</reproduces>
+			<harvestTag>Standard</harvestTag>
+			<sowWork>750</sowWork>			
+			<sowTags>
+				<li>Tiberium</li>
+			</sowTags>
+			<growMinGlow>0</growMinGlow>
+			<topWindExposure>0</topWindExposure>
+			<growDays>3</growDays>
+			<lifespanFraction>10000</lifespanFraction>
+			<visualSizeRange>
+				<min>2</min>
+				<max>2</max>
+			</visualSizeRange>
+		</plant>
+	</ThingDef>
+	
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantBlueTiberium</defName>
+		<label>Blue Tiberium</label>
+		<description>A beautiful blue crystal, it feels warm when you hold your face close to it.</description>
+		<statBases>
+			<MaxHitPoints>125</MaxHitPoints>
+			<Beauty>75</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/Pot/Blue</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<ingestible>
+				<nutrition>0.01</nutrition>
+		</ingestible>
+		<altitudeLayer>Item</altitudeLayer>
+		<selectable>true</selectable>
+		<plant>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduces>false</reproduces>
+			<harvestTag>Standard</harvestTag>
+			<sowWork>750</sowWork>
+			<sowTags>
+				<li>Tiberium</li>
+			</sowTags>
+			<growMinGlow>0</growMinGlow>
+			<topWindExposure>0</topWindExposure>
+			<growDays>3</growDays>
+			<lifespanFraction>10000</lifespanFraction>
+			<visualSizeRange>
+				<min>2</min>
+				<max>2</max>
+			</visualSizeRange>
+		</plant>
+	</ThingDef>
+	
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantRedTiberium</defName>
+		<label>Red Tiberium</label>
+		<description>A beautiful red crystal, it feels warm when you hold your face close to it.</description>
+		<statBases>
+			<MaxHitPoints>125</MaxHitPoints>
+			<Beauty>75</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/Pot/Red</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<ingestible>
+				<nutrition>0.01</nutrition>
+		</ingestible>
+		<altitudeLayer>Item</altitudeLayer>
+		<selectable>true</selectable>
+		<plant>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduces>false</reproduces>
+			<harvestTag>Standard</harvestTag>
+			<sowWork>750</sowWork>
+			<sowTags>
+				<li>Tiberium</li>
+			</sowTags>
+			<growMinGlow>0</growMinGlow>
+			<topWindExposure>0</topWindExposure>
+			<growDays>3</growDays>
+			<lifespanFraction>10000</lifespanFraction>
+			<visualSizeRange>
+				<min>2</min>
+				<max>2</max>
+			</visualSizeRange>
+		</plant>
+	</ThingDef>
+  
+</Defs>

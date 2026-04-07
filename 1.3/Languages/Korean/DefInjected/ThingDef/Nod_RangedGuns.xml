@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Nod_StandardRifle.label>표준 노드 소총</Nod_StandardRifle.label>
+  <Nod_StandardRifle.description>무수히 많은 노드 민병들을 무장시키기 위해 대량 생산된 싸구려 소총입니다. 20세기 수준의 무기체계지만 여전히 유용합니다.\n\n소형 레이저 소총으로 업그레이드할 수 있습니다.\n\n화염방사기로 업그레이드할 수 있습니다.</Nod_StandardRifle.description>
+  <Nod_StandardRifle.tools.0.label>개머리판</Nod_StandardRifle.tools.0.label>
+  <Nod_StandardRifle.tools.1.label>총열</Nod_StandardRifle.tools.1.label>
+
+  <Nod_TwinTiberiumFlechetteGun.label>산탄 쌍권총</Nod_TwinTiberiumFlechetteGun.label>
+  <Nod_TwinTiberiumFlechetteGun.description>날카로운 타이베리움 결정을 고속 분사하는 무기입니다. 근접전에서도 꽤 유용합니다.</Nod_TwinTiberiumFlechetteGun.description>
+  <Nod_TwinTiberiumFlechetteGun.tools.0.label>손잡이</Nod_TwinTiberiumFlechetteGun.tools.0.label>
+  <Nod_TwinTiberiumFlechetteGun.tools.1.label>총열</Nod_TwinTiberiumFlechetteGun.tools.1.label>
+
+  <Nod_LaserRifleSmall.label>소형 레이저 돌격소총</Nod_LaserRifleSmall.label>
+  <Nod_LaserRifleSmall.description>노드 특유의 레이저 기술이 사용된 특제 돌격소총입니다.\n\n대형 레이저 소총으로 업그레이드할 수 있습니다.</Nod_LaserRifleSmall.description>
+  <Nod_LaserRifleSmall.tools.0.label>개머리판</Nod_LaserRifleSmall.tools.0.label>
+  <Nod_LaserRifleSmall.tools.1.label>총열</Nod_LaserRifleSmall.tools.1.label>
+
+  <Nod_LaserRifleLarge.label>대형 레이저 소총</Nod_LaserRifleLarge.label>
+  <Nod_LaserRifleLarge.description>노드 표준 무장의 정점입니다. 무난하고 파괴적입니다.</Nod_LaserRifleLarge.description>
+  <Nod_LaserRifleLarge.tools.0.label>개머리판</Nod_LaserRifleLarge.tools.0.label>
+  <Nod_LaserRifleLarge.tools.1.label>총열</Nod_LaserRifleLarge.tools.1.label>
+
+  <Nod_Flamethrower.label>화염방사기</Nod_Flamethrower.label>
+  <Nod_Flamethrower.description>블랙핸드 무기고의 표준 화염방사기입니다. 이교도를 마음껏 정화하십시오!\n\n화학방사기로 업그레이드할 수 있습니다.</Nod_Flamethrower.description>
+  <Nod_Flamethrower.tools.0.label>개머리판</Nod_Flamethrower.tools.0.label>
+  <Nod_Flamethrower.tools.1.label>총열</Nod_Flamethrower.tools.1.label>
+
+  <Nod_Chemicalthrower.label>화학방사기</Nod_Chemicalthrower.label>
+  <Nod_Chemicalthrower.description>액체 타이베리움 기술이 적용된 고급 독성 무기입니다.</Nod_Chemicalthrower.description>
+  <Nod_Chemicalthrower.tools.0.label>개머리판</Nod_Chemicalthrower.tools.0.label>
+  <Nod_Chemicalthrower.tools.1.label>총열</Nod_Chemicalthrower.tools.1.label>
+
+  <Nod_RocketLauncher.label>로켓발사관</Nod_RocketLauncher.label>
+  <Nod_RocketLauncher.description>케인의 요술봉이라고도 불리는 노드의 보급형 로켓 병기입니다.</Nod_RocketLauncher.description>
+
+  <Nod_Grenade.label>수류탄</Nod_Grenade.label>
+  <Nod_Grenade.description>평범하지만 치명적인 수류탄입니다.</Nod_Grenade.description>
+
+  <Nod_Sbomb.label>자살폭탄</Nod_Sbomb.label>
+  <Nod_Sbomb.description>자살 임무용 폭탄입니다. 당신의 못난이 정착민을 활용하십시오. 운 좋으면 살아남을 지도 모르지요.</Nod_Sbomb.description>
+
+
+</LanguageData>

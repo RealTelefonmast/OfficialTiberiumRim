@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Thrumbo -->
+
+  <Thrimbo.label>오염보</Thrimbo.label>
+  <Thrimbo.description>신체의 여러 부분이 타이베리움에 오염된 트럼보입니다. 대면할 때는 주의하십시오. 고통에 휩싸인 생물은 쉽게 사나워지는 법입니다.</Thrimbo.description>
+  <Thrimbo.tools.0.label>뿔</Thrimbo.tools.0.label>
+  <Thrimbo.tools.2.label>왼쪽 앞발</Thrimbo.tools.2.label>
+  <Thrimbo.tools.3.label>오른쪽 앞발</Thrimbo.tools.3.label>
+  <Thrimbo.tools.4.label>머리</Thrimbo.tools.4.label>
+  <Thrimbo_Leather.label>오염보 모피</Thrimbo_Leather.label>
+  <Thrimbo_Leather.description>오염보 모피</Thrimbo_Leather.description>
+  <Thrimbo_Leather.stuffProps.stuffAdjective>오염보 모피</Thrimbo_Leather.stuffProps.stuffAdjective>
+  <Thrimbo_Meat.label>오염보 고기</Thrimbo_Meat.label>
+  <Thrimbo_Meat.description>오염보 고기</Thrimbo_Meat.description>
+  <Thrimbo_Corpse.label>오염보 시체</Thrimbo_Corpse.label>
+  <Thrimbo_Corpse.description>오염보의 시체.</Thrimbo_Corpse.description>
+
+
+  <!-- Bears -->
+
+  <BigTiberiumFiend.label>타이베리움 곰</BigTiberiumFiend.label>
+  <BigTiberiumFiend.description>타이베리움 환경에 적응한 대형 잡식성 포유류입니다. 단독으로 움직이지만 매우 강인하며, 모피와 발톱은 대부분 결정화되어 있습니다.\n\n평소에는 얌전한 먹이를 선호하지만, 굶주리게 되면 적극적으로 사냥에 나설 것입니다.</BigTiberiumFiend.description>
+  <BigTiberiumFiend.tools.0.label>왼쪽 발톱</BigTiberiumFiend.tools.0.label>
+  <BigTiberiumFiend.tools.1.label>오른쪽 발톱</BigTiberiumFiend.tools.1.label>
+  <BigTiberiumFiend.tools.3.label>머리</BigTiberiumFiend.tools.3.label>
+  <BigTiberiumFiend_Leather.label>타이베리움 곰 가죽</BigTiberiumFiend_Leather.label>
+  <BigTiberiumFiend_Leather.description>타이베리움 곰 가죽</BigTiberiumFiend_Leather.description>
+  <BigTiberiumFiend_Leather.stuffProps.stuffAdjective>타이베리움 곰 가죽</BigTiberiumFiend_Leather.stuffProps.stuffAdjective>
+  <BigTiberiumFiend_Meat.label>타이베리움 곰 고기</BigTiberiumFiend_Meat.label>
+  <BigTiberiumFiend_Meat.description>타이베리움 곰 고기</BigTiberiumFiend_Meat.description>
+  <BigTiberiumFiend_Corpse.label>타이베리움 곰 시체</BigTiberiumFiend_Corpse.label>
+  <BigTiberiumFiend_Corpse.description>타이베리움 곰의 시체.</BigTiberiumFiend_Corpse.description>
+
+
+  <!-- Muffalo -->
+
+  <Tiffalo.label>티팔로</Tiffalo.label>
+  <Tiffalo.description>이 생물은 결정질 모피 때문에 푹신함을 잃어버렸습니다. 그리고 약간 사납습니다.</Tiffalo.description>
+  <Tiffalo.tools.0.label>머리</Tiffalo.tools.0.label>
+  <Tiffalo.tools.1.label>왼쪽 발굽</Tiffalo.tools.1.label>
+  <Tiffalo.tools.2.label>오른쪽 발굽</Tiffalo.tools.2.label>
+  <Tiffalo_Leather.label>티팔로 모피</Tiffalo_Leather.label>
+  <Tiffalo_Leather.description>티팔로 모피</Tiffalo_Leather.description>
+  <Tiffalo_Leather.stuffProps.stuffAdjective>티팔로 모피</Tiffalo_Leather.stuffProps.stuffAdjective>
+  <Tiffalo_Meat.label>티팔로 고기</Tiffalo_Meat.label>
+  <Tiffalo_Meat.description>티팔로 고기</Tiffalo_Meat.description>
+  <Tiffalo_Corpse.label>티팔로 시체</Tiffalo_Corpse.label>
+  <Tiffalo_Corpse.description>티팔로의 시체.</Tiffalo_Corpse.description>
+
+
+</LanguageData>

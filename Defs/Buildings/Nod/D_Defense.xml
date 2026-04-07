@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  	<TR.TRThingDef Abstract="True" Name="NODTurret" ParentName="TurretBase_TR">
+
+	</TR.TRThingDef>
+  
+	<!-- Obelisk Of Light -->
+	<TR.TRThingDef ParentName="BuildingBase_TR">
+		<defName>ObeliskOfLight</defName>
+		<label>obelisk of light</label>
+		<description>pew pew</description>
+		<thingClass>TR.Building_Obelisk</thingClass>
+		<size>(3,3)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Obelisk/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(6,6)</drawSize>
+			<drawOffset>(0,0,0)</drawOffset>
+		</graphicData>
+		<costList>
+			<Nod_CarbonPlate>150</Nod_CarbonPlate>
+			<ComponentIndustrial>50</ComponentIndustrial>
+		</costList>
+		<uiIconPath>Buildings/Nod/Defense/Obelisk/Icon</uiIconPath>
+		<uiIconScale>0.90</uiIconScale>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MarketValue>30000</MarketValue>
+			<MaxHitPoints>460</MaxHitPoints>
+			<Flammability>0.40</Flammability>
+			<WorkToBuild>15000</WorkToBuild>
+			<Mass>1000</Mass>
+			<Beauty>5</Beauty>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Obelisk/PowerOn</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(6,6)</drawSize>
+						</graphicData>
+						<layerTag>FXObelisk</layerTag>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Obelisk/Charge</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(6,6)</drawSize>
+						</graphicData>
+						<layerTag>FXObelisk</layerTag>
+						<fxMode>Dynamic</fxMode>
+					</li>
+				</fxLayers>
+			</li>		
+			<li Class="CompProperties_Explosive">
+			<explosiveRadius>3.9</explosiveRadius>
+			<explosiveDamageType>Bomb</explosiveDamageType>
+			<chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<drawOffscreen>true</drawOffscreen>
+		<passability>Impassable</passability>
+		<fillPercent>0.4</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<specialDisplayRadius>39.9</specialDisplayRadius>
+		<constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+		</building>
+		<placeWorkers>
+			<li>TR.PlaceWorker_OnlyOutside</li>
+		</placeWorkers>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Nod</groupDef>
+				<category>Defense</category>
+			</li>
+			<li Class="TeleCore.FXDefExtension">
+				<rotateDrawSize>true</rotateDrawSize>
+				<alignToBottom>true</alignToBottom>
+			</li>
+			<li Class="TeleCore.TurretDefExtension">
+				<turrets>
+					<li>
+						<canForceTarget>true</canForceTarget>
+						<turretGunDef>Gun_NodObelisk</turretGunDef>
+						<turretOffset>(0,0,4.5)</turretOffset>
+						<turretBurstWarmupTime>2.85</turretBurstWarmupTime>
+						<turretBurstCooldownTime>5</turretBurstCooldownTime>	
+					</li>
+				</turrets>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+
+	<TR.TRThingDef ParentName="NODTurret">
+		<defName>Nod_TurretHub</defName>
+		<label>turret hub</label>
+		<description>Allows you to construct multiple connected turrets.</description>
+		<thingClass>TeleCore.Building_TurretHubCore</thingClass>
+		<size>(2,2)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Turrets/Hub_Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.25, 2.25)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>5000</WorkToBuild>
+			<Mass>500</Mass>
+			<Beauty>-10</Beauty>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Turrets/Hub_Glow</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,2.25)</drawSize>						
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+				</fxLayers>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>150</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Shells capacity</fuelLabel>
+				<fuelGizmoLabel>Shells capacity</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>Nod_CarbonPlate</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>600</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.25</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>10</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot shoot: Needs shells charge</outOfFuelMessage>
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>100</pathCost>
+		<fillPercent>0.3</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<costList>
+			<Nod_CarbonPlate>50</Nod_CarbonPlate>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+		</building>
+		<filthLeaving>Filth_Ash</filthLeaving>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Nod</groupDef>
+				<category>Defense</category>
+			</li>
+			<li Class="TeleCore.FXDefExtension">
+				<rotateDrawSize>true</rotateDrawSize>
+				<alignToBottom>true</alignToBottom>
+			</li>
+			<li Class="TeleCore.TurretDefExtension">
+				<hub>
+					<isHub>true</isHub>
+					<hubDef>Nod_TurretHub</hubDef>
+					<cableTexturePath>Buildings/Nod/Defense/Turrets/TurretCable</cableTexturePath>
+					<maxTurrets>4</maxTurrets>
+				</hub>
+				<turrets>
+					<li>
+						<canForceTarget>true</canForceTarget>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/Nod/Defense/Turrets/Shredder_BaseNoBarrels</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(2.5,2.5)</drawSize>
+							</topGraphic>
+							<barrels>
+								<li>
+									<graphic>
+										<texPath>Buildings/Nod/Defense/Turrets/Shredder_BarrelLeft</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(2.5,2.5)</drawSize>
+									</graphic>
+									<barrelOffset>(0,0,-0.05)</barrelOffset>
+									<recoilOffset>(0,0,-0.25)</recoilOffset>
+								</li>
+								<li>
+									<graphic>
+										<texPath>Buildings/Nod/Defense/Turrets/Shredder_BarrelRight</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(2.5,2.5)</drawSize>
+									</graphic>
+									<altitudeOffset>-0.1</altitudeOffset>
+									<barrelOffset>(0,0,-0.05)</barrelOffset>
+									<recoilOffset>(0,0,-0.25)</recoilOffset>
+								</li>
+							</barrels>
+							<aimSpeed>200</aimSpeed>
+							<resetSpeed>100</resetSpeed>
+							<recoilSpeed>200</recoilSpeed>
+						</turretTop>
+						<turretGunDef>Gun_ShredderTurret</turretGunDef>
+						<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
+						<turretBurstCooldownTime>1.5</turretBurstCooldownTime>
+					</li>
+				</turrets>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+
+	<TR.TRThingDef Name="NodHubTurret" ParentName="NODTurret" Abstract="True">
+		<thingClass>TeleCore.Building_HubTurret</thingClass>
+		<size>(2,2)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.25,2.25)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MarketValue>5000</MarketValue>
+			<MaxHitPoints>350</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>5000</WorkToBuild>
+			<Mass>500</Mass>
+			<Beauty>-25</Beauty>
+			<ShootingAccuracyTurret>0.93</ShootingAccuracyTurret>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>1.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<chanceNeverExplodeFromDamage>0.35</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<fillPercent>0.3</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<costList>
+			<Nod_CarbonPlate>50</Nod_CarbonPlate>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<specialDisplayRadius>17.9</specialDisplayRadius>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+		</building>
+		<filthLeaving>Filth_Ash</filthLeaving>
+		<placeWorkers>
+			<li>TeleCore.PlaceWorker_TurretGunTop</li>
+		</placeWorkers>
+		<damageMultipliers>
+			<li>
+				<damageDef>TRRailgun</damageDef>
+				<multiplier>1.5</multiplier>
+			</li>
+		</damageMultipliers>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Nod</groupDef>
+				<category>Defense</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+
+	<!-- Shredder Turret -->
+	<TR.TRThingDef ParentName="NodHubTurret">
+		<defName>Nod_ShredderTurret</defName>
+		<label>shredder turret</label>
+		<thingClass>TR.Building_NodHubTurret</thingClass>
+		<description>Nod's shredder turret, extremely effective towards unarmored infantry.</description>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Turrets/Base</texPath>
+		</graphicData>
+		<uiIconPath>Buildings/Nod/Defense/Turrets/Shredder</uiIconPath>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Turrets/Lights</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,2.25)</drawSize>							
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<skip>true</skip>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Turrets/Shredder_GlowNoBarrel</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.5,2.5)</drawSize>							
+						</graphicData>
+						<altitude>Item</altitude>
+						<fxMode>Dynamic</fxMode>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Turrets/Shredder_GlowLeft</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.5,2.5)</drawSize>							
+						</graphicData>
+						<altitude>Item</altitude>
+						<fxMode>Dynamic</fxMode>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Turrets/Shredder_GlowRight</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.5,2.5)</drawSize>						
+						</graphicData>
+						<altitude>Item</altitude>
+						<fxMode>Dynamic</fxMode>
+						<needsPower>true</needsPower>
+					</li>
+				</fxLayers>
+			</li>	
+		</comps>
+		<placeWorkers>
+			<li>TeleCore.PlaceWorker_AtTurretHub</li>
+		</placeWorkers>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Nod</groupDef>
+				<category>Defense</category>
+			</li>
+			<li Class="TeleCore.FXDefExtension">
+				<rotateDrawSize>true</rotateDrawSize>
+				<alignToBottom>false</alignToBottom>
+			</li>
+			<li Class="TeleCore.TurretDefExtension">
+				<hub>
+					<isHub>false</isHub>
+					<hubDef>Nod_TurretHub</hubDef>
+					<maxTurrets>4</maxTurrets>
+				</hub>
+				<turrets>
+					<li>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/Nod/Defense/Turrets/Shredder_BaseNoBarrels</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(2.5,2.5)</drawSize>
+							</topGraphic>
+							<barrels>
+								<li>
+									<graphic>
+										<texPath>Buildings/Nod/Defense/Turrets/Shredder_BarrelLeft</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(2.5,2.5)</drawSize>
+									</graphic>
+									<barrelOffset>(0,0,-0.05)</barrelOffset>
+									<recoilOffset>(0,0,-0.25)</recoilOffset>
+								</li>
+								<li>
+									<graphic>
+										<texPath>Buildings/Nod/Defense/Turrets/Shredder_BarrelRight</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(2.5,2.5)</drawSize>
+									</graphic>
+									<altitudeOffset>-0.1</altitudeOffset>
+									<barrelOffset>(0,0,-0.05)</barrelOffset>
+									<recoilOffset>(0,0,-0.25)</recoilOffset>
+								</li>
+							</barrels>
+							<aimSpeed>200</aimSpeed>
+							<resetSpeed>100</resetSpeed>
+							<recoilSpeed>200</recoilSpeed>
+						</turretTop>
+						<turretGunDef>Gun_ShredderTurret</turretGunDef>
+						<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
+						<turretBurstCooldownTime>1.5</turretBurstCooldownTime>
+						<canForceTarget>true</canForceTarget>
+					</li>
+				</turrets>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<!-- Flame Turret -->
+	<TR.TRThingDef ParentName="NodHubTurret">
+		<defName>Nod_FlameTurret</defName>
+		<label>flame turret</label>
+		<description>Nod's flame turret.</description>
+		<thingClass>TR.Building_FlameTurret</thingClass>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Turrets/Base</texPath>
+		</graphicData>
+		<uiIconPath>Buildings/Nod/Defense/Turrets/Flamer</uiIconPath>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Turrets/Lights</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2,2)</drawSize>							
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<skip>true</skip>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Turrets/Flame_Glow</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2,2)</drawSize>							
+						</graphicData>
+						<altitude>Item</altitude>
+						<fxMode>Dynamic</fxMode>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Defense/Turrets/Flame_Flash</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2,2)</drawSize>							
+						</graphicData>
+						<altitude>Item</altitude>
+						<fxMode>Dynamic</fxMode>
+					</li>
+				</fxLayers>
+			</li>	
+		</comps>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Nod</groupDef>
+				<category>Defense</category>
+				<isDevOption>true</isDevOption>
+			</li>
+			<li Class="TeleCore.FXDefExtension">
+				<rotateDrawSize>true</rotateDrawSize>
+				<alignToBottom>true</alignToBottom>
+			</li>
+			<li Class="TeleCore.TurretDefExtension">
+				<hub>
+					<isHub>false</isHub>
+					<hubDef>Nod_TurretHub</hubDef>
+					<maxTurrets>4</maxTurrets>
+				</hub>
+				<turrets>
+					<li>
+						<canForceTarget>true</canForceTarget>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/Nod/Defense/Turrets/Flame_Base</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(2,2)</drawSize>
+							</topGraphic>
+							<aimSpeed>200</aimSpeed>
+						</turretTop>
+						<turretGunDef>Gun_FlameTurret</turretGunDef>
+						<turretBurstWarmupTime>0</turretBurstWarmupTime>
+						<turretBurstCooldownTime>0</turretBurstCooldownTime>
+						<continuous>true</continuous>
+					</li>
+				</turrets>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	
+	<TR.TRThingDef ParentName="BuildingBase_TR">
+		<defName>Nod_LaserFence</defName>
+		<label>laser fence</label>
+		<description>Use this to protect yourself from enemies!</description>
+		<thingClass>TR.Building_BeamHub</thingClass>
+		<category>Building</category>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<tickerType>Never</tickerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Structure/LaserFence/Hub</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.25, 1.25)</drawSize>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<passability>Impassable</passability>
+		<blockLight>false</blockLight>
+		<blockWind>false</blockWind>
+		<coversFloor>false</coversFloor>
+		<holdsRoof>false</holdsRoof>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<fillPercent>0.6</fillPercent>
+		<canOverlapZones>false</canOverlapZones>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<Beauty>5</Beauty>
+			<WorkToBuild>350</WorkToBuild>
+			<Flammability>0</Flammability>
+		</statBases>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+		</building>
+		<costList>
+			<Nod_CarbonPlate>5</Nod_CarbonPlate>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>100</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+				<transmitsPower>false</transmitsPower>
+			</li>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Structure/LaserFence/Hub_Glow</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(1.25, 1.25)</drawSize>							
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+				</fxLayers>
+			</li>	
+		</comps>
+		<beamHub>
+			<segmentDef>LaserFenceSegment</segmentDef>
+			<beamDef>LaserFenceWall</beamDef>
+			<toggleGraphic>
+				<texPath>Buildings/Nod/Structure/LaserFence/Toggle/Toggle</texPath>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<drawSize>(1, 1)</drawSize>
+			</toggleGraphic>
+		</beamHub>
+		<placeWorkers>
+			<li>TR.PlaceWorker_BeamHub</li>
+		</placeWorkers>
+		<filthLeaving>Filth_Ash</filthLeaving>
+		<rotatable>false</rotatable>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<clearBuildingArea>false</clearBuildingArea>
+		<constructEffect>ConstructDirt</constructEffect>
+		<repairEffect>ConstructDirt</repairEffect>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Nod</groupDef>
+				<category>Defense</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<ThingDef ParentName="BuildingBase_TR">
+		<defName>LaserFenceSegment</defName>
+		<label>laser fence segment</label>
+		<description>A laser fence segment.</description>
+		<thingClass>TR.Building_BeamHubSegmentPart</thingClass>
+		<category>Building</category> 
+		<drawerType>MapMeshOnly</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Structure/LaserFence/Fence_Base</texPath>
+			<graphicClass>TeleCore.Graphic_LinkedWithSame</graphicClass>
+			<linkType>Basic</linkType>
+			<linkFlags>
+				<li>Custom8</li>
+			</linkFlags>
+		</graphicData>
+		<size>(1,1)</size>
+		<fillPercent>0.0</fillPercent>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<altitudeLayer>SmallWire</altitudeLayer>
+		<passability>Standable</passability>
+		<tickerType>Normal</tickerType>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<useHitPoints>false</useHitPoints>
+		<destroyable>false</destroyable>
+		<holdsRoof>false</holdsRoof>
+		<statBases>
+			<Flammability>0.0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTransmitter</compClass>
+				<transmitsPower>true</transmitsPower>
+			</li>
+		</comps>
+		<building>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+			<deconstructible>false</deconstructible>
+			<claimable>false</claimable>
+			<allowAutoroof>false</allowAutoroof>
+		</building>
+	</ThingDef>
+	
+	<ThingDef ParentName="EtherealThingBase">
+		<defName>LaserFenceWall</defName>
+		<label>lasers</label>
+		<thingClass>ThingWithComps</thingClass>
+		<drawerType>MapMeshOnly</drawerType>
+		<altitudeLayer>Item</altitudeLayer>
+		<graphicData>
+			<texPath>Buildings/Nod/Structure/LaserFence/Laser_Atlas</texPath>
+			<graphicClass>TeleCore.Graphic_LinkedWithSame</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+			<linkType>Basic</linkType>
+			<linkFlags>
+				<li>Custom9</li>
+			</linkFlags>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+		</comps>
+		<useHitPoints>false</useHitPoints>
+		<destroyable>false</destroyable>
+		<tickerType>Never</tickerType>
+		<passability>Impassable</passability>
+	</ThingDef>
+	
+	<!--
+	<TR.TRThingDef ParentName="TrapIEDBase">
+		<defName>IED_Nuke</defName>
+		<label>IED nuke mine</label>
+		<description>A mine equipped with a nuclear warhead. Creates a huge explosion and starts fires around itself when disturbed.</description>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Temple/IED_Nuke</texPath>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<size>(1,1)</size>
+		<uiIconPath>Buildings/Nod/Defense/Temple/IED_Nuke</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<uiIconOffset>(0,0)</uiIconOffset>
+		<designationHotKey>Misc5</designationHotKey>
+		<costList>
+			<TempleShell_Explosive>1</TempleShell_Explosive>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MarketValue>10000</MarketValue>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>25</Mass>
+			<Flammability>0</Flammability>
+			<SellPriceFactor>0.2</SellPriceFactor>
+			<TrapSpringChance>1.0</TrapSpringChance>
+		</statBases>
+		<altitudeLayer>Building</altitudeLayer>
+		<tradeability>Sellable</tradeability>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>11.9</explosiveRadius>
+				<damageAmountBase>650</damageAmountBase>
+				<explosiveDamageType>TRNuke</explosiveDamageType>
+				<postExplosionSpawnThingDef>Gas_ChemicalInterface</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
+				<explosionEffect>GiantExplosion</explosionEffect>
+				<wickTicks>
+					<min>100</min>
+					<max>200</max>
+				</wickTicks>
+				<startWickOnDamageTaken>
+					<li>Bullet</li>
+					<li>Arrow</li>
+					<li>ArrowHighVelocity</li>
+				</startWickOnDamageTaken>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+		</comps>
+		<specialDisplayRadius>11.9</specialDisplayRadius>
+		<building>
+			<isTrap>true</isTrap>
+			<trapPeacefulWildAnimalsSpringChanceFactor>0</trapPeacefulWildAnimalsSpringChanceFactor>
+			<expandHomeArea>false</expandHomeArea>
+			<ai_chillDestination>false</ai_chillDestination>
+		</building>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>-->
+	
+</Defs>

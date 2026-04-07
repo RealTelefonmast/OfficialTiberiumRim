@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>TeleCore.Loader</RootNamespace>
+        <AssemblyName>TeleCore.Loader</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TeleCore.Lib\TeleCore.Lib.csproj" />
+    </ItemGroup>
+    
+</Project>

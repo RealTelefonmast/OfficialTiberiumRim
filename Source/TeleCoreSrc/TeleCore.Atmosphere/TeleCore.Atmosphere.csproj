@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>TeleCore.Atmosphere</RootNamespace>
+        <AssemblyName>TeleCore.Atmosphere</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\TeleCore\TeleCore.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="OldRef/**/*.cs" />
+    </ItemGroup>
+
+</Project>

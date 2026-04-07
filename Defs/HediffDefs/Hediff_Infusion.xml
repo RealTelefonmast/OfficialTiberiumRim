@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<HediffDef ParentName="ImplantHediffBase" MayRequire="telefonmast.tiberiumrim.main">
+    <defName>InfusionImplant</defName>
+    <label>tiberium infusion</label>
+    <labelNoun>a tiberium infusion</labelNoun>
+    <description>A special tiberium infusion for the nod soldiers. It changes the organs to almost fit the Tiberium environment. But users become sensitive to mental break, and cannot be removed.</description>
+    <descriptionHyperlinks><ThingDef>InfusionImplant</ThingDef></descriptionHyperlinks>
+    <spawnThingOnRemoved>InfusionImplant</spawnThingOnRemoved>
+		<stages>
+			<li>
+				<minSeverity>0</minSeverity>
+				<statOffsets>
+					<TiberiumInfectionResistance MayRequire="telefonmast.tiberiumrim.main">0.8</TiberiumInfectionResistance>
+					<TiberiumRadiationResistance MayRequire="telefonmast.tiberiumrim.main">0.8</TiberiumRadiationResistance>
+					<TiberiumGasResistance MayRequire="telefonmast.tiberiumrim.main">0.8</TiberiumGasResistance>
+					<MentalBreakThreshold>0.05</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+		</stages>
+    <tags><li>InfusionImplant</li></tags>
+  </HediffDef>
+
+
+  <TR.TRThingDef ParentName="BodyPartBionicBase" MayRequire="telefonmast.tiberiumrim.main">
+    <defName>InfusionImplant</defName>
+    <label>tiberium infusion</label>
+    <description>A special tiberium infusion for the nod soldiers. It changes the organs to almost fit the Tiberium environment. but users become sensitive to anger, and cannot be removed.</description>
+    <descriptionHyperlinks><RecipeDef>InstallInfusionImplant</RecipeDef></descriptionHyperlinks>
+	<graphicData>
+		<texPath>Items/Consumable/TibInfusion</texPath>
+		<graphicClass>Graphic_StackCount</graphicClass>
+		<drawSize>1</drawSize>
+	</graphicData>
+	<drawGUIOverlay>true</drawGUIOverlay>
+    <costList>
+		<MedicineUltratech>1</MedicineUltratech>
+		<Penoxycyline>5</Penoxycyline>
+		<Flake>5</Flake>
+    </costList>
+    <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+    <statBases>
+      <Mass>1</Mass>
+    </statBases>
+	<stackLimit>10</stackLimit>
+    <recipeMaker>
+		<recipeUsers>
+			<li MayRequire="tele.trf.buildings">Nod_Factory</li>
+		</recipeUsers>
+		<skillRequirements>
+			<Medicine>8</Medicine>
+		</skillRequirements>
+      <researchPrerequisite></researchPrerequisite>
+    </recipeMaker>
+	<techHediffsTags>
+		<li>InfusionImplant</li>
+	</techHediffsTags>
+	<requisites>
+		<tiberiumResearch>
+			<li>NodExperimental1</li>
+		</tiberiumResearch>
+	</requisites>
+  </TR.TRThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase" MayRequire="telefonmast.tiberiumrim.main">
+    <defName>InstallInfusionImplant</defName>
+    <label>install tiberium infusion</label>
+    <description>Install a tiberium infusion.</description>
+    <descriptionHyperlinks>
+      <ThingDef>InfusionImplant</ThingDef>
+      <HediffDef>InfusionImplant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tiberium infusion.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>InfusionImplant</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>InfusionImplant</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>InfusionImplant</addsHediff>
+  </RecipeDef>
+  
+  
+</Defs>

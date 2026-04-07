@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<Def Class="TiberiumRim.RadiationFallOffDef">
+		<defName>RadiationResistances</defName>
+		<materialFactors>
+			<li>WoodLog, 	0.1</li>
+			<li>Silver, 	0.25</li>
+			<li>Jade, 		0.3</li>
+			<li>Steel, 		0.5</li>
+			<li>Gold, 		0.7</li>
+			<li>Plasteel, 	0.8</li>
+			<li>Uranium, 	1</li>
+		</materialFactors>
+	</Def>
+  
+</Defs>

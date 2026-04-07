@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TRThingDef Name="MechPackageBase" Abstract="True">
+		<thingClass>TiberiumRim.TRThing</thingClass>
+		<category>Item</category>
+		<selectable>true</selectable>
+		<tickerType>Never</tickerType>
+		<altitudeLayer>Item</altitudeLayer>
+		<useHitPoints>true</useHitPoints>
+		<hasTooltip>false</hasTooltip>
+		<alwaysHaulable>true</alwaysHaulable>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<soundImpactDefault>MetalHitImportant</soundImpactDefault>
+		<repairEffect>Repair</repairEffect>
+		<stackLimit>1</stackLimit>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Mass>25</Mass>
+			<Flammability>0.45</Flammability>
+			<DeteriorationRate>1</DeteriorationRate>
+			<Beauty>-4</Beauty>
+		</statBases>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</TiberiumRim.TRThingDef>
+	
+</Defs>

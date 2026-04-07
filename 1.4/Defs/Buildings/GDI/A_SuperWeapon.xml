@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<TR.TRThingDef ParentName="BuildingBase_TR">
+		<defName>IonCannonCenter</defName>
+		<label>Ion Cannon Uplink</label>
+		<description>owo</description>
+		<thingClass>TR.Building_IonCannon</thingClass>
+		<size>(6,6)</size>
+		<drawOffscreen>false</drawOffscreen>
+		<passability>Impassable</passability>
+		<fillPercent>0.8</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<constructionSkillPrerequisite>15</constructionSkillPrerequisite>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<tickerType>Normal</tickerType>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/IonCannon/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(7,7)</drawSize>
+		</graphicData>
+		<costList>			
+			<ComponentIndustrial>12</ComponentIndustrial>
+		</costList>
+		<superWeapon>
+			<designator>TR.Designator_IonCannonTargeter</designator>
+		</superWeapon>
+		<statBases>
+			<MaxHitPoints>460</MaxHitPoints>
+			<Flammability>0.40</Flammability>
+			<WorkToBuild>12000</WorkToBuild>
+			<Mass>1000</Mass>
+			<Beauty>5</Beauty>
+		</statBases>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Defense/IonCannon/Lights</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,7)</drawSize>
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Defense/IonCannon/CenterLight</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,7)</drawSize>
+						</graphicData>
+						<needsPower>false</needsPower>
+					</li>
+				</fxLayers>
+			</li>		
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>TR.PlaceWorker_OnlyOutside</li>
+			<li>TR.PlaceWorker_Once</li>
+		</placeWorkers>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Defense</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="BuildingBase_TR">
+		<defName>FirestormCenter</defName>
+		<label>Firestorm Operations Center</label>
+		<description>This specialized facility registers all Firestorm-Segments placed by this Faction. When enough power is available the Firestorm-System can be activated anytime and will last for a day, completely cutting off any intruders.\n\nOnly one can be built.</description>
+		<hidden>true</hidden>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Firestorm/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(6,6)</drawSize>
+			<shadowData>
+				<volume>(1.4, 0.5, 1.4)</volume>
+				<offset>(0,0,-0.1)</offset>
+			</shadowData>
+		</graphicData>
+		<costList>
+			<GDI_ReinforcedPlate>200</GDI_ReinforcedPlate>
+			<ComponentIndustrial>50</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Defense/Firestorm/Light</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(6,6)</drawSize>
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Defense/Firestorm/Glow</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(6,6)</drawSize>
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+				</fxLayers>
+			</li>	
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(200,200,255,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>5000</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+				<transmitsPower>false</transmitsPower>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Flickable"/>				
+		</comps>
+		<passability>Impassable</passability>
+		<altitudeLayer>Building</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<statBases>
+			<MarketValue>10000</MarketValue>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>100000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>0</Beauty>
+		</statBases>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<fillPercent>0.40</fillPercent>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<pathCost>25</pathCost>
+		<rotatable>false</rotatable>
+		<canOverlapZones>false</canOverlapZones>
+		<size>(5,5)</size>
+		<placeWorkers>
+			<li>TR.PlaceWorker_Once</li>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+		<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Defense</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="BuildingBase_TR">
+		<defName>FirestormWall</defName>
+		<label>firestorm wall segment</label>
+		<category>Building</category>
+		<description>A segment of the Firestorm system.</description>
+		<hidden>true</hidden>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Firestorm/Wall/Base</texPath>
+			<graphicClass>Graphic_single</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Custom5</li>
+			</linkFlags>
+		</graphicData>
+		<costList>
+			<GDI_ReinforcedPlate>5</GDI_ReinforcedPlate>
+		</costList>
+		<uiIconPath>Buildings/GDI/Defense/Firestorm/Wall/Icon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>1000</WorkToBuild>
+			<Flammability>0.0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>15</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+				<transmitsPower>true</transmitsPower>
+			</li>
+		</comps>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<altitudeLayer>Floor</altitudeLayer>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<passability>Standable</passability>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<fillPercent>0.5</fillPercent>
+		<coversFloor>false</coversFloor>
+		<tickerType>Never</tickerType>
+		<rotatable>false</rotatable>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<holdsRoof>false</holdsRoof>
+		<staticSunShadowHeight>0.0</staticSunShadowHeight>
+		<blockLight>false</blockLight>
+		<canOverlapZones>false</canOverlapZones>
+		<clearBuildingArea>true</clearBuildingArea>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<building>
+			<isInert>true</isInert>
+			<ai_chillDestination>false</ai_chillDestination>
+			<blueprintGraphicData>
+				<texPath>Buildings/GDI/Defense/Firestorm/Wall/Base</texPath>
+			</blueprintGraphicData>
+		</building>
+		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Defense</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+</Defs>

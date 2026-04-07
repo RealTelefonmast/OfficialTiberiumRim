@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumBurn.label>타이베리움 접촉상</TiberiumBurn.label>
+  <TiberiumBurn.description>An injury.</TiberiumBurn.description>
+  <TiberiumBurn.injuryProps.destroyedLabel>파괴됨</TiberiumBurn.injuryProps.destroyedLabel>
+  <TiberiumBurn.injuryProps.destroyedOutLabel>불탐</TiberiumBurn.injuryProps.destroyedOutLabel>
+  <TiberiumBurn.labelNoun>타이베리움 접촉상</TiberiumBurn.labelNoun>
+
+  <TiberiumToxemia.label>tiberium toxemia</TiberiumToxemia.label>
+  <TiberiumToxemia.description>This pawn has come in contact with, or been exposed to, Tiberium. Depending on the severity of this effect the pawn may experience crystallizing body parts and arbitrary mutations.</TiberiumToxemia.description>
+
+  <TiberiumExposure.label>타이베리움 노출증</TiberiumExposure.label>
+  <TiberiumExposure.description>Tiberium exposure, while not lethal on its own, can cause severe mutations depending on severity and concentration of the effect.</TiberiumExposure.description>
+  <TiberiumExposure.stages.0.label>잠복기</TiberiumExposure.stages.0.label>
+  <TiberiumExposure.stages.1.label>사소함</TiberiumExposure.stages.1.label>
+  <TiberiumExposure.stages.2.label>불편함</TiberiumExposure.stages.2.label>
+  <TiberiumExposure.stages.3.label>진전됨</TiberiumExposure.stages.3.label>
+  <TiberiumExposure.stages.4.label>심각함</TiberiumExposure.stages.4.label>
+  <TiberiumExposure.stages.5.label>치명적</TiberiumExposure.stages.5.label>
+
+  <TiberiumCrystallization.label>신체 결정화</TiberiumCrystallization.label>
+  <TiberiumCrystallization.description>Tiberium crystallization, the most lethal effect of Tiberium. The affected body part will slowly crystallize until it becomes unusable. After full crystallization, neighbouring parts get affected as well, slowly growing over the whole body, until the pawn either dies due to losing a vital body part (Torso) or mutation kicks in.</TiberiumCrystallization.description>
+  <TiberiumCrystallization.stages.0.label>사소함</TiberiumCrystallization.stages.0.label>
+  <TiberiumCrystallization.stages.1.label>불편함</TiberiumCrystallization.stages.1.label>
+  <TiberiumCrystallization.stages.2.label>진전됨</TiberiumCrystallization.stages.2.label>
+  <TiberiumCrystallization.stages.3.label>심각함</TiberiumCrystallization.stages.3.label>
+  <TiberiumCrystallization.stages.4.label>치명적</TiberiumCrystallization.stages.4.label>
+  <TiberiumCrystallization.stages.5.label>결정화됨</TiberiumCrystallization.stages.5.label>
+
+  <CrystallizedPart.label>결정화된 신체</CrystallizedPart.label>
+  <CrystallizedPart.description>A crystallized body part.</CrystallizedPart.description>
+  <CrystallizedPart.labelNoun>결정화된 신체</CrystallizedPart.labelNoun>
+
+
+</LanguageData>

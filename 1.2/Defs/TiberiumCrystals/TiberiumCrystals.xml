@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- Template
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+		<defName></defName>
+		<label> tiberium</label>
+		<description></description>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<Beauty>50</Beauty>	
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<pathCost></pathCost>
+		<filthLeaving></filthLeaving>
+		<tiberium>
+			<entityDamage>
+				<min>0</min>
+				<max>8</max>
+			</entityDamage>
+			<buildingDamage>
+				<min>0</min>
+				<max>12</max>
+			</buildingDamage>
+			<harvestValue>12</harvestValue>
+			<harvestTime>6</harvestTime>
+			<growDays>3</growDays>
+			<spreadRadius>3</spreadRadius>
+			<reproduceDays>0.35</reproduceDays>
+			<MeshCount>4</MeshCount>
+		</tiberium>
+		<corruptedRock>GreenTiberiumRock_TBI</corruptedRock>
+		<corruptedWall></corruptedWall>
+		<corruptedChunk>GreenTiberiumChunk</corruptedChunk>
+		<monolith>TiberiumTower_TBI</monolith>
+		 Terrain 
+		<defaultTerrain>TiberiumSoilGreen</defaultTerrain>
+		<deadTerrain></deadTerrain>
+		<shallowWater></shallowWater>
+		<deepWater></deepWater>
+		<stoneTerrain></stoneTerrain>
+		<marshyTerrain></marshyTerrain>
+		<mossyTerrain></mossyTerrain>
+		<dryTerrain></dryTerrain>
+		<iceTerrain></iceTerrain>
+		 Types 
+		<waterType></waterType>
+		<dryType></dryType>
+		<stoneType></stoneType>
+	</TiberiumRim.TiberiumCrystalDef>
+	Color green
+	(0.35,0.9,0.37)
+	Color blue
+	(0.35,0.41,0.9)
+	Color red
+
+	(0.9,0.29,0.29)
+	-->
+	
+	<!-- Green -->
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumGreen</defName>
+		<label>green tiberium crystal</label>
+		<description>A glowy green crystal. Looks strangely appealing.</description>
+		<discovery>
+			<discoveryDef>TiberiumCrystalLattice</discoveryDef>
+			<unknownLabel>strange green crystal</unknownLabel>
+			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+		</discovery>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<Beauty>50</Beauty>	
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/Green</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<pathCost>75</pathCost>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1.33</glowRadius>
+				<glowColor>(90,230,95,50)</glowColor>
+			</li>
+		</comps>
+		<tiberium>
+			<type>Green</type>
+			<consistence>Lattice</consistence>
+			<deteriorationDamage>
+				<min>0</min>
+				<max>8</max>
+			</deteriorationDamage>
+			<plantMutationChance>0.5</plantMutationChance>
+			<harvestValue>12</harvestValue>
+			<growDays>1.25</growDays>
+			<spreadRadius>1</spreadRadius>
+			<reproduceDays>0.35</reproduceDays>
+			<MeshCount>4</MeshCount>
+		</tiberium>
+		<conversions>GreenConversion</conversions>
+	</TiberiumRim.TiberiumCrystalDef>
+	
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumPod</defName>
+		<label>tiberium pod</label>
+		<description>A glowy green crystal, growing from a plant-like pod connected to the ground. Looks strangely appealing.</description>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Beauty>28</Beauty>	
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/Proto/Green</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<pathCost>80</pathCost>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1.33</glowRadius>
+				<glowColor>(90,230,95,100)</glowColor>
+			</li>
+		</comps>
+		<tiberium>
+			<type>Green</type>
+			<consistence>Plantlike</consistence>
+			<infects>true</infects>
+			<radiates>false</radiates>
+			<rootNodeChance>0.1</rootNodeChance>
+			<plantMutationChance>0.7</plantMutationChance>
+			<harvestValue>8</harvestValue>
+			<growDays>2</growDays>
+			<spreadRadius>1</spreadRadius>
+			<reproduceDays>0.4</reproduceDays>
+			<MeshCount>4</MeshCount>
+		</tiberium>
+		<conversions>GreenPodConversion</conversions>
+	</TiberiumRim.TiberiumCrystalDef>	
+	
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumShardsGreen</defName>
+		<label>green tiberium shards</label>
+		<description>Green shards growing out of the sand, they seem to be unstable.</description>
+		<statBases>
+			<MaxHitPoints>15</MaxHitPoints>
+			<Beauty>10</Beauty>	
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/SandGreen</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<pathCost>45</pathCost>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1.33</glowRadius>
+				<glowColor>(90,230,95,100)</glowColor>
+			</li>
+		</comps>
+		<tiberium>
+			<type>Green</type>
+			<consistence>Lattice</consistence>
+			<deteriorationDamage>
+				<min>0</min>
+				<max>4</max>
+			</deteriorationDamage>
+			<rootNodeChance>0.1</rootNodeChance>
+			<plantMutationChance>0.25</plantMutationChance>
+			<harvestValue>6</harvestValue>
+			<growDays>3</growDays>
+			<spreadRadius>1</spreadRadius>
+			<reproduceDays>0.6</reproduceDays>
+			<MeshCount>4</MeshCount>
+		</tiberium>
+		<conversions>GreenConversion</conversions>
+	</TiberiumRim.TiberiumCrystalDef>
+	
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumMossGreen</defName>
+		<label>green tiberium moss</label>
+		<description>A mossy mass is covering this tile. It seems to be highly toxic.</description>
+		<statBases>
+			<MaxHitPoints>35</MaxHitPoints>
+			<Beauty>-20</Beauty>	
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/MossGreen</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<pathCost>20</pathCost>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1.33</glowRadius>
+				<glowColor>(90,230,95,235)</glowColor>
+			</li>
+		</comps>
+		<tiberium>
+			<type>Sludge</type>
+			<consistence>Plantlike</consistence>
+			<infects>false</infects>
+			<deteriorationDamage>
+				<min>2</min>
+				<max>5</max>
+			</deteriorationDamage>
+			<rootNodeChance>0.6</rootNodeChance>
+			<plantMutationChance>0.4</plantMutationChance>
+			<harvestValue>8</harvestValue>
+			<growDays>3</growDays>
+			<spreadRadius>1</spreadRadius>
+			<reproduceDays>0.6</reproduceDays>
+			<MeshCount>4</MeshCount>
+		</tiberium>
+		<conversions>GreenMossConversion</conversions>
+	</TiberiumRim.TiberiumCrystalDef>
+	
+	<!-- Blue -->
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumBlue</defName>
+		<label>blue tiberium</label>
+		<description>A glowy blue crystal. Beautiful to the eye but of unknown properties.</description>
+		<discovery>
+			<discoveryDef>TiberiumCrystalLattice</discoveryDef>
+			<unknownLabel>strange blue crystal</unknownLabel>
+			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+		</discovery>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<Beauty>60</Beauty>	
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/Blue</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<pathCost>75</pathCost>
+		<tiberium>
+			<type>Blue</type>
+			<consistence>Lattice</consistence>
+			<deteriorationDamage>
+				<min>4</min>
+				<max>10</max>
+			</deteriorationDamage>
+			<rootNodeChance>0.1</rootNodeChance>
+			<plantMutationChance>0.6</plantMutationChance>
+			<harvestValue>18</harvestValue>
+			<growDays>2</growDays>
+			<spreadRadius>1</spreadRadius>
+			<reproduceDays>0.35</reproduceDays>
+			<MeshCount>4</MeshCount>
+		</tiberium>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_PlantExplode">
+				<explosiveRadius>1.49</explosiveRadius>
+				<damageAmountBase>8</damageAmountBase>
+				<chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+				<explosionChance>0.02</explosionChance>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1.33</glowRadius>
+				<glowColor>(90,105,230,50)</glowColor>
+			</li>
+		</comps>
+		<conversions>BlueConversion</conversions>
+	</TiberiumRim.TiberiumCrystalDef>
+	
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumPodBlue</defName>
+		<label>blue tiberium pod</label>
+		<description>A glowy blue crystal, growing from a plant-like pod connected to the ground. Looks strangely appealing.</description>
+		<statBases>
+			<MaxHitPoints>60</MaxHitPoints>
+			<Beauty>22</Beauty>	
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/Proto/Blue</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<pathCost>80</pathCost>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1.33</glowRadius>
+				<glowColor>(90,105,230,100)</glowColor>
+			</li>
+			<li Class="TiberiumRim.CompProperties_PlantExplode">
+				<explosiveRadius>0.95</explosiveRadius>
+				<damageAmountBase>5</damageAmountBase>
+				<chanceNeverExplodeFromDamage>0.66</chanceNeverExplodeFromDamage>
+				<explosionChance>0.01</explosionChance>
+			</li>
+		</comps>
+		<tiberium>
+			<type>Blue</type>
+			<consistence>Plantlike</consistence>
+			<radiates>false</radiates>
+			<rootNodeChance>0.1</rootNodeChance>
+			<plantMutationChance>0.8</plantMutationChance>
+			<harvestValue>8</harvestValue>
+			<growDays>2.5</growDays>
+			<spreadRadius>1</spreadRadius>
+			<reproduceDays>0.4</reproduceDays>
+			<MeshCount>4</MeshCount>
+		</tiberium>
+		<conversions>BluePodConversion</conversions>
+	</TiberiumRim.TiberiumCrystalDef>
+	
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumShardsBlue</defName>
+		<label>blue tiberium shards</label>
+		<description>Blue shards growing out of the sand, they seem to be unstable.</description>
+		<statBases>
+			<MaxHitPoints>20</MaxHitPoints>
+			<Beauty>10</Beauty>	
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/SandBlue</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<pathCost>45</pathCost>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_PlantExplode">
+				<explosiveRadius>0.49</explosiveRadius>
+				<damageAmountBase>4</damageAmountBase>
+				<chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+				<explosionChance>0.005</explosionChance>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1.33</glowRadius>
+				<glowColor>(90,105,230,100)</glowColor>
+			</li>
+		</comps>
+		<tiberium>
+			<type>Blue</type>
+			<consistence>Lattice</consistence>
+			<deteriorationDamage>
+				<min>0</min>
+				<max>5</max>
+			</deteriorationDamage>
+			<rootNodeChance>0.1</rootNodeChance>
+			<plantMutationChance>0.3</plantMutationChance>
+			<harvestValue>10</harvestValue>
+			<growDays>5</growDays>
+			<spreadRadius>1</spreadRadius>
+			<reproduceDays>0.6</reproduceDays>
+			<MeshCount>4</MeshCount>
+		</tiberium>
+		<conversions>BlueConversion</conversions>
+	</TiberiumRim.TiberiumCrystalDef>
+	
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumMossBlue</defName>
+		<label>blue tiberium moss</label>
+		<description>A mossy mass is covering this tile. It seems to be highly toxic.</description>
+		<statBases>
+			<MaxHitPoints>40</MaxHitPoints>
+			<Beauty>-20</Beauty>	
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/MossBlue</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<pathCost>20</pathCost>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1.33</glowRadius>
+				<glowColor>(90,105,230,235)</glowColor>
+			</li>
+		</comps>
+		<tiberium>
+			<type>Sludge</type>
+			<consistence>Plantlike</consistence>
+			<infects>false</infects>
+			<deteriorationDamage>
+				<min>3</min>
+				<max>8</max>
+			</deteriorationDamage>
+			<rootNodeChance>0.6</rootNodeChance>
+			<plantMutationChance>0.5</plantMutationChance>
+			<harvestValue>12</harvestValue>
+			<growDays>3.5</growDays>
+			<spreadRadius>1</spreadRadius>
+			<reproduceDays>0.6</reproduceDays>
+			<MeshCount>4</MeshCount>
+		</tiberium>
+		<conversions>BlueMossConversion</conversions>
+	</TiberiumRim.TiberiumCrystalDef>
+	
+	<!-- Red -->
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumRed</defName>
+		<label>red tiberium</label>
+		<description>A glowy red crystal. Beautiful to the eye but of unknown properties. It seems strange.</description>
+		<discovery>
+			<discoveryDef>TiberiumCrystalLattice</discoveryDef>
+			<unknownLabel>strange red crystal</unknownLabel>
+			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
+		</discovery>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Beauty>75</Beauty>	
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/Red</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<pathCost>75</pathCost>
+		<tiberium>
+			<type>Red</type>
+			<consistence>Lattice</consistence>
+			<deteriorationDamage>
+				<min>8</min>
+				<max>12</max>
+			</deteriorationDamage>
+			<rootNodeChance>0.15</rootNodeChance>
+			<plantMutationChance>0.8</plantMutationChance>
+			<harvestValue>80</harvestValue>
+			<growDays>12</growDays>
+			<spreadRadius>1</spreadRadius>
+			<reproduceDays>0.75</reproduceDays>
+			<MeshCount>4</MeshCount>
+		</tiberium>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_PlantExplode">
+				<explosiveRadius>2</explosiveRadius>
+				<damageAmountBase>20</damageAmountBase>
+				<chanceNeverExplodeFromDamage>0.56</chanceNeverExplodeFromDamage>
+				<explosionChance>0.025</explosionChance>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1.33</glowRadius>
+				<glowColor>(230,75,75,50)</glowColor>
+			</li>
+		</comps>
+		<conversions>RedConversion</conversions>
+	</TiberiumRim.TiberiumCrystalDef>
+	
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumShardsRed</defName>
+		<label>red tiberium shards</label>
+		<description>Red shards growing out of the sand, they seem to be unstable.</description>
+		<statBases>
+			<MaxHitPoints>20</MaxHitPoints>
+			<Beauty>10</Beauty>	
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/SandRed</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<pathCost>45</pathCost>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_PlantExplode">
+				<explosiveRadius>1.5</explosiveRadius>
+				<damageAmountBase>10</damageAmountBase>
+				<chanceNeverExplodeFromDamage>0.09</chanceNeverExplodeFromDamage>
+				<explosionChance>0.065</explosionChance>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1.33</glowRadius>
+				<glowColor>(230,75,75,150)</glowColor>
+			</li>
+		</comps>
+		<tiberium>
+			<type>Red</type>
+			<consistence>Lattice</consistence>
+			<deteriorationDamage>
+				<min>2</min>
+				<max>8</max>
+			</deteriorationDamage>
+			<rootNodeChance>0.2</rootNodeChance>
+			<plantMutationChance>0.4</plantMutationChance>
+			<harvestValue>15</harvestValue>
+			<growDays>15</growDays>
+			<spreadRadius>1</spreadRadius>
+			<reproduceDays>1</reproduceDays>
+			<MeshCount>4</MeshCount>
+		</tiberium>
+		<conversions>RedConversion</conversions>
+	</TiberiumRim.TiberiumCrystalDef>
+	
+	<!-- Misc -->
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumForWater">
+		<defName>TiberiumGlacier</defName>
+		<label>tiberium glacier</label>
+		<description>A huge formation of crystalline water.</description>
+		<statBases>
+			<MaxHitPoints>750</MaxHitPoints>
+			<Beauty>30</Beauty>	
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/Glaciers</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<pathCost>200</pathCost>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1</glowRadius>
+				<glowColor>(90,230,95,240)</glowColor>
+			</li>
+		</comps>
+		<tiberium>
+			<type>Unharvestable</type>
+			<consistence>Lattice</consistence>
+			<deteriorationDamage>
+				<min>2</min>
+				<max>4</max>
+			</deteriorationDamage>
+			<needsParent>false</needsParent>
+			<rootNodeChance>1</rootNodeChance>
+			<plantMutationChance>0</plantMutationChance>
+			<growDays>4</growDays>
+			<spreadRadius>1</spreadRadius>
+			<reproduceDays>0.5</reproduceDays>
+			<MeshCount>4</MeshCount>
+		</tiberium>
+	</TiberiumRim.TiberiumCrystalDef>
+	
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumAboreus</defName>
+		<label>tiberium aboreus</label>
+		<description>A glowy dark green crystal. Looks different to the usual.</description>
+		<statBases>
+			<MaxHitPoints>90</MaxHitPoints>
+			<Beauty>65</Beauty>	
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/Aboreus</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<pathCost>80</pathCost>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_PlantExplode">
+				<explosiveRadius>1.65</explosiveRadius>
+				<damageAmountBase>9</damageAmountBase>
+				<chanceNeverExplodeFromDamage>0.55</chanceNeverExplodeFromDamage>
+				<explosionChance>0.095</explosionChance>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1.33</glowRadius>
+				<glowColor>(90,230,95,50)</glowColor>
+			</li>
+		</comps>
+		<tiberium>
+			<type>Green</type>
+			<consistence>Lattice</consistence>
+			<deteriorationDamage>
+				<min>0</min>
+				<max>15</max>
+			</deteriorationDamage>
+			<plantMutationChance>0.5</plantMutationChance>
+			<harvestValue>25</harvestValue>
+			<growDays>4</growDays>
+			<spreadRadius>1</spreadRadius>
+			<reproduceDays>0.35</reproduceDays>
+			<MeshCount>4</MeshCount>
+		</tiberium>
+		<!--<monolith>TiberiumCruentus</monolith>-->
+		<conversions>AboreusConversion</conversions>
+	</TiberiumRim.TiberiumCrystalDef>	
+	
+	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
+		<defName>TiberiumVein</defName>
+		<label>vein tentacle</label>
+		<description>A stringy, throbbing brown-reddish vein. It grows out of a Veinhole.</description>
+		<thingClass>TiberiumRim.TiberiumVein</thingClass>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<Beauty>-75</Beauty>	
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/Vein</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>(0.6,0.6)</drawSize>
+		</graphicData>
+		<pathCost>75</pathCost>
+		<tiberium>
+			<type>Gas</type>
+			<consistence>Fleshy</consistence>
+			<infects>false</infects>
+			<radiates>false</radiates>
+			<deteriorationDamage>
+				<min>3</min>
+				<max>12</max>
+			</deteriorationDamage>
+			<rootNodeChance>0.25</rootNodeChance>
+			<plantMutationChance>0</plantMutationChance>
+			<dependsOnProducer>true</dependsOnProducer>
+			<harvestValue>12</harvestValue>
+			<growDays>2</growDays>
+			<spreadRadius>1</spreadRadius>
+			<reproduceDays>0.35</reproduceDays>
+			<MeshCount>4</MeshCount>
+		</tiberium>
+		<dead>TiberiumSoilVeinDead</dead>
+		<conversions>VeinConversion</conversions>
+	</TiberiumRim.TiberiumCrystalDef>
+	
+</Defs>

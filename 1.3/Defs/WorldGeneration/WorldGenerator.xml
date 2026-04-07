@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<WorldGenStepDef>
+		<defName>TiberiumWorldLayer</defName>
+		<order>9999</order>
+		<worldGenStep Class="TiberiumRim.WorldGenStep_TiberiumWorldLayer"/>
+	</WorldGenStepDef>
+
+</Defs>

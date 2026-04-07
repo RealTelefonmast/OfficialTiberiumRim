@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <GameConditionDef>
+    <defName>IonStorm</defName>
+    <label>Ion storm</label>
+    <description>An Ion Storm has been triggered on your map! Be careful, the power shortage might bring unwanted complications.</description>
+    <endMessage>The Ion Storm is ending.</endMessage>
+    <canBePermanent>true</canBePermanent>
+  </GameConditionDef>
+  
+</Defs>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+		<defName>SuppressionTower</defName>
+		<label>suppression tower</label>
+		<description>The suppression tower will inhibit Tiberium growth. Any Tiberium within the area of effect will stop growing while the suppression tower is powered, but Tiberium will not be damaged or destroyed.</description>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Defense</TRCategory>
+		<size>(1,1)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Defense/Suppressor/s</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3,7.5)</drawSize>
+		</graphicData>
+		<extraData>
+			<rotateDrawSize>false</rotateDrawSize>
+			<alignToBottom>false</alignToBottom>
+		</extraData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>0.75</Flammability>
+			<Beauty>-15</Beauty>
+		</statBases>
+		<drawPlaceWorkersWhileSelected>false</drawPlaceWorkersWhileSelected>
+		<fillPercent>0.5</fillPercent>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumSuppressionBasic_T2</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_Suppression">
+				<angle>79</angle>
+				<radius>16</radius>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_Suppression</li>
+			<li>TiberiumRim.PlaceWorker_Gap</li>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+		<tickerType>Never</tickerType>
+		<rotatable>true</rotatable>
+	</TiberiumRim.TRThingDef>
+	
+</Defs>

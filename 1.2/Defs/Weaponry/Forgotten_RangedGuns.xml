@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BaseMakeableGun_TR">
+		<defName>Forg_ShardgunGreen</defName>
+		<label>shard gun</label>
+		<description>A simple shotgun made from scrap and other components. Launches crushed tiberium crystals towards the target, may accidentally seed the ground with green tiberium.</description>
+		<graphicData>
+			<texPath>Items/Weapons/Forgotten/TibShardgun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<statBases>
+			<Mass>2</Mass>
+			<AccuracyTouch>0.40</AccuracyTouch>
+			<AccuracyShort>0.35</AccuracyShort>
+			<AccuracyMedium>0.30</AccuracyMedium>
+			<AccuracyLong>0.25</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>75</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+			<Uranium>1</Uranium>
+		</costList>
+		<techLevel>Industrial</techLevel>
+		<weaponTags>
+			<li>Shardgun</li>
+		</weaponTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Shard</defaultProjectile>
+				<warmupTime>2</warmupTime>
+				<range>14.9</range>
+				<forcedMissRadius>0.1</forcedMissRadius>
+				<burstShotCount>3</burstShotCount>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<soundCast>Shot_Nod_Shredder</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>14</muzzleFlashScale>
+			</li>
+		</verbs>
+		<tools>
+		  <li>
+			<label>stock</label>
+			<capacities>
+			  <li>Blunt</li>
+			</capacities>
+			<power>7</power>
+			<cooldownTime>1.8</cooldownTime>
+		  </li>
+		  <li>
+			<label>barrel</label>
+			<capacities>
+			  <li>Blunt</li>
+			  <li>Poke</li>
+			</capacities>
+			<power>7.7</power>
+			<cooldownTime>1.9</cooldownTime>
+		  </li>
+		</tools>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseMakeableGun_TR">
+		<defName>Forg_ShardgunBlue</defName>
+		<label>explosive shard launcher</label>
+		<description>A heavy scrap metal shotgun. Launches crushed tiberium crystals towards the target, may accidentally seed the ground with blue tiberium. Blue tiberium tends to explode.</description>
+		<graphicData>
+			<texPath>Items/Weapons/Forgotten/TibShardgun_B</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<statBases>
+			<Mass>2</Mass>
+			<AccuracyTouch>0.40</AccuracyTouch>
+			<AccuracyShort>0.35</AccuracyShort>
+			<AccuracyMedium>0.30</AccuracyMedium>
+			<AccuracyLong>0.25</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+			<li>ShardgunB</li>
+		</weaponTags>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+			<Uranium>1</Uranium>
+		</costList>
+		<techLevel>Industrial</techLevel>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_ShardB</defaultProjectile>
+				<warmupTime>2</warmupTime>
+				<range>14.9</range>
+				<forcedMissRadius>0.1</forcedMissRadius>
+				<burstShotCount>2</burstShotCount>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<soundCast>Shot_Nod_Shredder</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>14</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+		<tools>
+		  <li>
+			<label>stock</label>
+			<capacities>
+			  <li>Blunt</li>
+			</capacities>
+			<power>7</power>
+			<cooldownTime>1.8</cooldownTime>
+		  </li>
+		  <li>
+			<label>barrel</label>
+			<capacities>
+			  <li>Blunt</li>
+			  <li>Poke</li>
+			</capacities>
+			<power>7.7</power>
+			<cooldownTime>1.9</cooldownTime>
+		  </li>
+		</tools>
+	</ThingDef>
+
+</Defs>

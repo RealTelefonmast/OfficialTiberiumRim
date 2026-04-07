@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumCraterGreen.label>녹색 타이베리움 구덩이</TiberiumCraterGreen.label>
+  <TiberiumCraterGreen.description>타이베리움 운석이 낙하한 지점입니다. 내부로부터 광채와 뜨거운 증기를 방출하고 있으며, 천천히 성장하는 것처럼 보입니다.</TiberiumCraterGreen.description>
+
+  <TiberiumCraterHybrid.label>복합질 타이베리움 구덩이</TiberiumCraterHybrid.label>
+  <TiberiumCraterHybrid.description>타이베리움 운석이 낙하한 지점입니다. 내부로부터 광채와 뜨거운 증기를 방출하고 있으며, 천천히 성장하는 것처럼 보입니다.</TiberiumCraterHybrid.description>
+
+  <TiberiumCraterBlue.label>청색 타이베리움 구덩이</TiberiumCraterBlue.label>
+  <TiberiumCraterBlue.description>타이베리움 운석이 낙하한 지점입니다. 내부로부터 광채와 뜨거운 증기를 방출하고 있으며, 천천히 성장하는 것처럼 보입니다.</TiberiumCraterBlue.description>
+
+  <TiberiumCruentus.label>크루엔투스</TiberiumCruentus.label>
+  <TiberiumCruentus.description>일반적인 타이베리움과 달리 어두운 색을 띤 결정 기둥입니다. 성장성이 낮지만, 주기적으로 대폭발을 일으켜 광범위한 지역을 오염시킵니다.</TiberiumCruentus.description>
+
+  <TiberiumMonolith.label>모놀리스</TiberiumMonolith.label>
+  <TiberiumMonolith.description>청색 타이베리움의 고도 성장체입니다. 주기적으로 작게 폭발하며 주변에 미세한 청색 타이베리움 파편을 퍼뜨립니다.</TiberiumMonolith.description>
+
+  <RedTiberiumShard.label>샤드</RedTiberiumShard.label>
+  <RedTiberiumShard.description>아주 드물게 관찰되는 외계 기원의 결정 기둥입니다. 진귀한 적색 타이베리움을 천천히 퍼뜨립니다.</RedTiberiumShard.description>
+
+  <Veinhole.label>침식 구덩이</Veinhole.label>
+  <Veinhole.description>침식 구덩이는 타이베리움에 극도로 오염된 지역에서만 발견되는 최대 규모의 돌연변이 포식자로, 구덩이처럼 보이는 것은 사실 본체와 연결된 거대한 아가리입니다. 이들은 움직일 수 없지만 다양한 방법으로 포식하고 스스로를 보호합니다. 가장 주요한 수단은 날카로운 덩굴입니다. 이것은 엄청난 범위로 퍼져나가며, 닿는 모든 유기물을 휘감아 흡수합니다. 작지만 포악한 공생체인 덩굴귀는 더욱 적극적인 활동을 통해 침식 구덩이를 보호하고 영양을 공급합니다. 촉수나 덩굴귀로도 감당할 수 없는 적이 나타난다면, 침식 구덩이는 마지막 수단으로 주변의 모든 생명체를 죽이고 기계장치를 망가뜨릴 수 있는 부식성 가스를 뿜어낼 것입니다.</Veinhole.description>
+
+
+</LanguageData>

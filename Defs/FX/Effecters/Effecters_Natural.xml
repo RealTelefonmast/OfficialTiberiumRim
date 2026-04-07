@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<EffecterDef>
+		<defName>TibProducerCloudsGreen</defName>
+		<children>
+			<li Class="TeleCore.SubEffecterExtendedDef">
+				<subEffecterClass>TeleCore.SubEffecter_FX</subEffecterClass>
+				<fleckDef>Fleck_TibFogG</fleckDef>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+				<affectedByWind>false</affectedByWind>
+				<positionRadius>1.49</positionRadius>
+				<scale>3~4.5</scale>					
+				<angle>0~360</angle>
+				<speed>0.2~0.35</speed>
+				<rotation>0~90</rotation>
+				<rotationRate>1</rotationRate>
+				<burstCount>1~2</burstCount>
+				<throwInterval>120</throwInterval>
+				<spawnLocType>RandomCellOnTarget</spawnLocType>
+				<effectMode>Burst</effectMode>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+				<fleckDef>Fleck_IonLighting</fleckDef>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+				<chancePerTick>0.001</chancePerTick>
+				<positionRadius>1.19</positionRadius>
+				<scale>1.25~4</scale>					
+				<angle>0~360</angle>
+				<speed>0</speed>
+				<burstCount>1~2</burstCount>
+				<spawnLocType>RandomCellOnTarget</spawnLocType>
+				<!--effectMode>ChancePerTick</effectMode-->
+			</li>
+		</children>
+	</EffecterDef>
+	
+	<!--
+	<TR.EffecterDefTR>
+		<defName>TiberiumClouds_Green2</defName>
+		<tickInterval>2000</tickInterval>
+		<children>
+			<li>
+				<subEffecterClass>TR.SubEffecter_MoteMaker</subEffecterClass>
+				<scale>
+					<min>1.5</min>
+					<max>2.5</max>
+				</scale>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+				<chancePerTick>0.75</chancePerTick>
+				<positionLerpFactor>0.01</positionLerpFactor>
+				<positionRadius>0.5</positionRadius>
+				<fleckDef>Fleck_TiberiumFog_Green</fleckDef>
+				<spawnLocType>RandomCellOnTarget</spawnLocType>
+				<speed>0.01~0.1</speed>
+			</li>
+			<li>
+				<subEffecterClass>TR.SubEffecter_MoteMaker</subEffecterClass>
+				<scale>
+					<min>1.5</min>
+					<max>2.5</max>
+				</scale>
+				<burstCount>0~1</burstCount>
+				<chancePerTick>0.01</chancePerTick>
+				<positionLerpFactor>0.35</positionLerpFactor>
+				<positionRadius>0.2</positionRadius>
+				<fleckDef>Fleck_TiberiumCloudLightning</fleckDef>
+				<spawnLocType>RandomCellOnTarget</spawnLocType>
+			</li>
+		</children>
+	</TR.EffecterDefTR>
+	-->
+	
+	<EffecterDef>
+		<defName>VeinholePusher</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_VeinholePusher</fleckDef>
+				<burstCount>2~3</burstCount>
+				<positionRadius>0.55</positionRadius>
+				<scale>0.65~0.75</scale>
+				<spawnLocType>RandomDrawPosOnTarget</spawnLocType>
+				<!--effectMode>ChancePerTick</effectMode-->
+			</li>
+		</children>
+	</EffecterDef>
+	
+</Defs>

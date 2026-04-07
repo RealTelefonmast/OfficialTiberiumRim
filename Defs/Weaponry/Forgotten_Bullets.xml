@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TR.TRThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Shard</defName>
+		<label>green tiberium shard</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_TiberiumA</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
+		<projectile>
+			<damageDef>TRTiberiumShotGreen</damageDef>
+			<damageAmountBase>4</damageAmountBase>
+			<explosionRadius>0.025</explosionRadius>
+			<preExplosionSpawnThingDef>TiberiumGreen</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.1</preExplosionSpawnChance>
+			<postExplosionSpawnThingDef>FilthTiberiumGreen</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>0.15</postExplosionSpawnChance>
+			<speed>50</speed>
+			<soundExplode>BulletImpact_Flesh</soundExplode>
+		</projectile>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<projectile>
+					<impactEffecter>FlechetteHit</impactEffecter>
+					<impactFilth>
+						<filths>
+							<li>FilthTiberiumGreen, 0.1</li>
+						</filths>
+						<spreadRadius>0</spreadRadius>
+					</impactFilth>
+				</projectile>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_ShardB</defName>
+		<label>blue tiberium shard</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_TiberiumB</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
+		<projectile>
+			<damageDef>TRTiberiumShotBlue</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<explosionRadius>0.025</explosionRadius>
+			<preExplosionSpawnThingDef>TiberiumBlue</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.35</preExplosionSpawnChance>
+			<postExplosionSpawnThingDef>FilthTiberiumBlue</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>0.35</postExplosionSpawnChance>
+			<speed>50</speed>
+			<soundExplode>BulletImpact_Flesh</soundExplode>
+		</projectile>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<projectile>
+					<impactEffecter>FlechetteBlueHit</impactEffecter>
+					<impactFilth>
+						<filths>
+							<li>FilthTiberiumBlue, 0.01</li>
+						</filths>
+						<spreadRadius>0</spreadRadius>
+					</impactFilth>
+				</projectile>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+</Defs>

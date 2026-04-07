@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GDIWall.label>보안벽</GDIWall.label>
+  <GDIWall.description>GDI 기술자들에 의해 강화된 벽입니다.</GDIWall.description>
+
+  <GDIPillbox.label>초소벽</GDIPillbox.label>
+  <GDIPillbox.description>엄폐 가능한 낮은 벽입니다.</GDIPillbox.description>
+
+  <DoorFrame_GDI.label>보안 프레임</DoorFrame_GDI.label>
+  <DoorFrame_GDI.description>GDI 시설의 주요 통로에 설치되는 장식물입니다. 조형미가 있으며, 약간의 조명을 포함합니다</DoorFrame_GDI.description>
+
+  <GDI_Door.label>보안문</GDI_Door.label>
+  <GDI_Door.description>튼튼하게 설계된 문입니다. 열고 닫는 과정에서 약간의 시간이 소모됩니다.</GDI_Door.description>
+
+  <GDI_Autodoor.label>보안 자동문</GDI_Autodoor.label>
+  <GDI_Autodoor.description>튼튼하게 설계된 문입니다. 스스로 작동하지만 전기가 부족하면 수동으로 열어야 합니다.</GDI_Autodoor.description>
+
+
+</LanguageData>

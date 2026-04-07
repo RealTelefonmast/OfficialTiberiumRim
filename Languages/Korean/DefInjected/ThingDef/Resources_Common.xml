@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- custom tiberium spawner explosion -->
+
+  <LiquidTiberiumCell.label>불안정한 액체 타이베리움</LiquidTiberiumCell.label>
+  <LiquidTiberiumCell.description>간단한 용기에 담긴 가장 순수한 형태의 액체 타이베리움입니다.\n취급에 각별히 주의하십시오. 이 물건은 매우 불안정합니다!</LiquidTiberiumCell.description>
+
+  <TRBattleChip.label>자율전투회로</TRBattleChip.label>
+  <TRBattleChip.description>첨단 장비와 방어 포탑을 작동시키는 데에 반드시 필요한 부품입니다.</TRBattleChip.description>
+
+
+</LanguageData>

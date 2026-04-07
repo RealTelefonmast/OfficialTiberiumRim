@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <ForgottenMask.label>포가튼 고철투구</ForgottenMask.label>
+  <ForgottenMask.description>고철로 만든 완전밀폐형 투구입니다. 포가튼 돌연변이들이 주로 사용합니다.</ForgottenMask.description>
+
+  <Apparel_ForgottenSuit.label>포가튼 고철갑주</Apparel_ForgottenSuit.label>
+  <Apparel_ForgottenSuit.description>고철판으로 대강 만든 겉옷입니다. 포가튼 돌연변이들이 주로 사용합니다.</Apparel_ForgottenSuit.description>
+
+  <Apparel_ForgottenMail.label>포가튼 고철갑피</Apparel_ForgottenMail.label>
+  <Apparel_ForgottenMail.description>고철 사슬을 엮어 만든 속옷입니다. 포가튼 돌연변이들이 주로 사용합니다.</Apparel_ForgottenMail.description>
+
+
+</LanguageData>

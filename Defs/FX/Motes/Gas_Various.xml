@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_TiberiumGas</defName>
+		<graphicData>
+			<texPath>VisualFX/Natural/Gas</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.5</fadeInTime>
+			<solidTime>0.25</solidTime>
+			<fadeOutTime>0.5</fadeOutTime>
+			<growthRate>1.75</growthRate>
+		</mote>
+		<drawOffscreen>true</drawOffscreen>
+	</ThingDef>
+  
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_TiberiumSmoke</defName>
+			<graphicData>
+			<texPath>VisualFX/Natural/TiberiumGas/TiberiumGasDark</texPath>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.5</fadeInTime>
+			<solidTime>3</solidTime>
+			<fadeOutTime>6</fadeOutTime>
+			<growthRate>0.01</growthRate>
+		</mote>
+	</ThingDef>
+	-->
+
+</Defs>

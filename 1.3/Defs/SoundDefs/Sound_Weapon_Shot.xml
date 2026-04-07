@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <SoundDef>
+    <defName>Blast_Rail</defName>
+    <context>MapOnly</context>
+    <eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Races/Vehicles/Vehicles_Death</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>30</min>
+          <max>75</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.9541177</min>
+          <max>1.068824</max>
+        </pitchRange>
+        <repeatMode>NeverTwice</repeatMode>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>Shot_GDI_Juggernaut</defName>
+    <context>MapOnly</context>
+    <eventNames />
+		<maxSimultaneous>5</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/Shot_GDI_Juggernaut</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>30</min>
+          <max>60</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.9541177</min>
+          <max>1.068824</max>
+        </pitchRange>
+        <repeatMode>NeverTwice</repeatMode>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>Shot_GDI_Sonic</defName>
+    <context>MapOnly</context>
+    <eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+		<maxVoices>2</maxVoices>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipPath>Weapons/Shot_GDI_Sonic</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>30</min>
+          <max>60</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.9541177</min>
+          <max>1.068824</max>
+        </pitchRange>
+        <repeatMode>NeverTwice</repeatMode>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>Shot_GDI_Railgun</defName>
+    <context>MapOnly</context>
+    <eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/Shot_GDI_Railgun</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>30</min>
+          <max>60</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.9541177</min>
+          <max>1.068824</max>
+        </pitchRange>
+        <repeatMode>NeverTwice</repeatMode>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>Shot_GDI_RailgunHeavy</defName>
+    <context>MapOnly</context>
+    <eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/Shot_GDI_RailgunHeavy</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>30</min>
+          <max>60</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.9541177</min>
+          <max>1.068824</max>
+        </pitchRange>
+        <repeatMode>NeverTwice</repeatMode>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+</Defs>

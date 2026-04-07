@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<BodyPartDef Abstract= "True" Name="VehiclePart">
+		<hitPoints>5</hitPoints>
+		<frostbiteVulnerability>0</frostbiteVulnerability>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<bleedRate>0</bleedRate>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>	
+	</BodyPartDef>
+
+  <BodyPartDef ParentName="VehiclePart">
+    <defName>VehicleBasicCockpit</defName>
+    <label>Main Cockpit</label>
+    <hitPoints>75</hitPoints>
+    <tags>
+      <li>SightSource</li>
+      <li>HearingSource</li>
+      <li>ConsciousnessSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="VehiclePart">
+    <defName>VehicleSubCockpit</defName>
+    <label>Sub Cockpit</label>
+    <hitPoints>75</hitPoints>
+    <tags>
+      <li>SightSource</li>
+      <li>HearingSource</li>
+      <li>ConsciousnessSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="VehiclePart">
+    <defName>BasicVehiclePowerPack</defName>
+    <label>Main Power pack</label>
+    <hitPoints>75</hitPoints>
+    <tags>
+      <li>MovingLimbCore</li>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+	<BodyPartDef ParentName="VehiclePart">
+		<defName>BasicVehicleShaft</defName>
+		<label>Shaft</label>
+		<hitPoints>75</hitPoints>
+		<tags>
+			<li>MovingLimbCore</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="VehiclePart">
+		<defName>BasicVehicleLeftTrack</defName>
+		<label>Left track</label>
+		<hitPoints>50</hitPoints>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="VehiclePart">
+		<defName>BasicVehicleRightTrack</defName>
+		<label>Right track</label>
+		<hitPoints>50</hitPoints>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>	
+
+	<BodyPartDef ParentName="VehiclePart">
+		<defName>BasicVehicleLeftFrontTrack</defName>
+		<label>Left front track</label>
+		<hitPoints>50</hitPoints>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="VehiclePart">
+		<defName>BasicVehicleRightFrontTrack</defName>
+		<label>Right front track</label>
+		<hitPoints>50</hitPoints>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="VehiclePart">
+		<defName>BasicVehicleLeftHindTrack</defName>
+		<label>Left hind track</label>
+		<hitPoints>50</hitPoints>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="VehiclePart">
+		<defName>BasicVehicleRightHindTrack</defName>
+		<label>Right hind track</label>
+		<hitPoints>50</hitPoints>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+
+	<BodyPartDef ParentName="VehiclePart">
+		<defName>BasicVehicleLeftFrontTire</defName>
+		<label>Left front tire</label>
+		<hitPoints>50</hitPoints>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="VehiclePart">
+		<defName>BasicVehicleRightFrontTire</defName>
+		<label>Right front tire</label>
+		<hitPoints>50</hitPoints>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="VehiclePart">
+		<defName>BasicVehicleLeftHindTire</defName>
+		<label>Left hind tire</label>
+		<hitPoints>50</hitPoints>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="VehiclePart">
+		<defName>BasicVehicleRightHindTire</defName>
+		<label>Right hind tire</label>
+		<hitPoints>50</hitPoints>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+
+  <BodyPartDef ParentName="VehiclePart">
+    <defName>VehicleBase</defName>
+    <label>Frame</label>
+    <hitPoints>100</hitPoints>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="VehiclePart">
+    <defName>BasicVehicleArmor</defName>
+    <label>Front Armor</label>
+    <hitPoints>100</hitPoints>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="VehiclePart">
+    <defName>Dozer</defName>
+    <label>Dozer Blade</label>
+    <hitPoints>50</hitPoints>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="VehiclePart">
+    <defName>TurretRing1</defName>
+    <label>Fisrt Turret Ring</label>
+    <hitPoints>25</hitPoints>
+   <tags>
+      <li>ManipulationLimbSegment</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="VehiclePart">
+    <defName>TurretRing2</defName>
+    <label>Second Turret Ring</label>
+    <hitPoints>25</hitPoints>
+   <tags>
+      <li>ManipulationLimbSegment</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="VehiclePart">
+    <defName>BasicVehicleTurret</defName>
+    <label>Turret</label>
+    <hitPoints>100</hitPoints>
+   <tags>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  
+</Defs>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<GameConditionDef>
+		<defName>TiberiumBiome</defName>
+		<conditionClass>TiberiumRim.GameCondition_TiberiumBiome</conditionClass>
+		<label>tiberium terraformation</label>
+		<description>Tiberium has started to affect the air and soil of this land, flora and fauna of alien nature is sprouting out of seemingly nowhere and life as we know it may change forever if this continues.</description>
+		<endMessage>Tiberium has been cleansed from this place.</endMessage>
+		<letterText>Tiberium is affecting the region.\n\nContinued exposure and growth of Tiberium has started to change the ecosphere of this land.\n\nIt will continue to corrupt life as time goes on.</letterText>
+		<letterDef>NegativeEvent</letterDef>
+		<canBePermanent>true</canBePermanent>
+	</GameConditionDef>
+
+</Defs>

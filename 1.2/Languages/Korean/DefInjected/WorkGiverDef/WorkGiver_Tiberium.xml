@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <DoTiberiumResearch.label>연구하기</DoTiberiumResearch.label>
+  <DoTiberiumResearch.verb>연구</DoTiberiumResearch.verb>
+  <DoTiberiumResearch.gerund>연구하기</DoTiberiumResearch.gerund>
+
+  <DoBillsTibCrafter.label>추출하기</DoBillsTibCrafter.label>
+  <DoBillsTibCrafter.verb>추출</DoBillsTibCrafter.verb>
+  <DoBillsTibCrafter.gerund>추출하기</DoBillsTibCrafter.gerund>
+
+  <Factions_DoBillsFactory.label>작업하기</Factions_DoBillsFactory.label>
+  <Factions_DoBillsFactory.verb>작업</Factions_DoBillsFactory.verb>
+  <Factions_DoBillsFactory.gerund>작업하기</Factions_DoBillsFactory.gerund>
+
+
+</LanguageData>

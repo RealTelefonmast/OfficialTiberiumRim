@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TiberiumRim.ThingOptionsDef>
+		<defName>FloraOptions_General</defName>
+		<options>
+			<li>TiberiumGrass,			10</li>
+			<li>TiberiumGrass_Blue,		8</li>
+			<li>TiberiumBush,			5</li>
+			<li>TiberiumShroom_Yellow,	4</li>
+			<li>TiberiumShroom_Blue,	2</li>
+			<li>TiberiumShroom_Purple,	1</li>
+			<li>TiberiumExpeller,		1</li>
+			<li>TiberiumTree,			2</li>
+		</options>
+	</TiberiumRim.ThingOptionsDef>
+	
+	<TiberiumRim.ThingOptionsDef>
+		<defName>FloraOptions_Grass</defName>
+		<options>
+			<li>TiberiumGrass,			4</li>
+			<li>TiberiumGrass_Blue,		1</li>
+		</options>
+	</TiberiumRim.ThingOptionsDef>
+	
+	<TiberiumRim.ThingOptionsDef>
+		<defName>FloraOptions_Bush</defName>
+		<options>
+			<li>TiberiumBush,			4</li>
+			<li>TiberiumShroom_Yellow,	1</li>
+			<li>TiberiumShroom_Blue,	1</li>
+			<li>TiberiumShroom_Purple,	1</li>
+		</options>
+	</TiberiumRim.ThingOptionsDef>
+	
+	<TiberiumRim.ThingOptionsDef>
+		<defName>FloraOptions_Exotic</defName>
+		<options>
+			<li>TiberiumShroom_Yellow,	1</li>
+			<li>TiberiumShroom_Blue,	1</li>
+			<li>TiberiumShroom_Purple,	1</li>
+		</options>
+	</TiberiumRim.ThingOptionsDef>
+	
+	<TiberiumRim.ThingOptionsDef>
+		<defName>FloraOptions_Trees</defName>
+		<options>
+			<li>TiberiumExpeller,		1</li>
+			<li>TiberiumTree,		    10</li>
+		</options>
+	</TiberiumRim.ThingOptionsDef>
+	
+	<TiberiumRim.TerrainOptionsDef>
+		<defName>TerrainOption_Flora</defName>
+		<options>
+			<li>TiberiumPodSoil,		1</li>
+		</options>
+	</TiberiumRim.TerrainOptionsDef>
+	
+</Defs>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+		<defName>ChronoVortexPortal</defName>
+		<label>chrono vortex</label>
+		<description>Time anomaly.</description>
+		<thingClass>TiberiumRim.ChronoVortex</thingClass>
+		<tickerType>Normal</tickerType>
+		<factionDesignation>Scrin</factionDesignation>
+		<TRCategory>Structure</TRCategory>
+		<rotatable>false</rotatable>
+		<destroyable>false</destroyable>
+		<useHitPoints>false</useHitPoints>
+		<size>(3,3)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Blank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<Mass>0</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<graphicClass>Graphic_Single</graphicClass>
+							<texPath>Motes/ChronoVortex</texPath>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>8</drawSize>
+						</data>
+						<rotationSpeed>50</rotationSpeed>
+						<mode>Dynamic</mode>
+					</li>
+					<li>
+						<data>
+							<graphicClass>Graphic_Single</graphicClass>
+							<texPath>Things/Mote/Black</texPath>
+							<shaderType>MoteGlowDistortBackground</shaderType>
+							<shaderParameters>
+								<_DistortionTex>/Motes/VortexDistortionMask</_DistortionTex>
+								<_distortionIntensity>0.1</_distortionIntensity>
+								<_brightnessMultiplier>1</_brightnessMultiplier>
+							</shaderParameters>
+							<drawSize>8</drawSize>
+						</data>
+						<mode>Dynamic</mode>
+					</li>
+				</overlays>
+			</li>
+		</comps>
+	</TiberiumRim.TRThingDef>
+
+</Defs>

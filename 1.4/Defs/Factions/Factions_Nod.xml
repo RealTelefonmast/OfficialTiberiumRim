@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<FactionDef ParentName="OutlanderFactionBase" Name="NodFactionBase" Abstract="True">
+	<pawnSingular>Nod troop</pawnSingular>
+	<pawnsPlural>Nod troops</pawnsPlural>
+    <categoryTag>Spacer</categoryTag>
+	<canMakeRandomly>true</canMakeRandomly>
+	<leaderTitle>bishop</leaderTitle>
+	<leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
+    <fixedLeaderKinds>
+      <li>Nod_Bishop</li>
+    </fixedLeaderKinds>
+	<factionIconPath>UI/Icons/Factions/Nod</factionIconPath>
+	<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+    <techLevel>Spacer</techLevel>
+	<factionNameMaker>NamerFactionNod</factionNameMaker>
+	<settlementNameMaker>NamerFactionBaseNod</settlementNameMaker>
+	<allowedCultures><li>Rustican</li></allowedCultures>
+    <requiredMemes>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Structure_OriginChristian</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Supremacist</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Transhumanist</li>
+    </requiredMemes>
+    <disallowedMemes>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Cannibal</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">FleshPurity</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">MaleSupremacy</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">FemaleSupremacy</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">AnimalPersonhood</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">NaturePrimacy</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Darkness</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">TreeConnection</li>
+    </disallowedMemes>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Outlander</li>
+        </categories>
+        <commonality>0.75</commonality>
+      </li>
+      <li>
+        <categories>
+          <li>Offworld</li>
+        </categories>
+        <commonality>0.25</commonality>
+      </li>
+    </backstoryFilters>
+	<colorSpectrum>
+		<li>(1, 1, 1)</li>
+	</colorSpectrum>
+	<caravanTraderKinds>
+		<li>Caravan_Tiberium_BulkGoods</li>
+		<li>Caravan_Tiberium_CombatSupplier</li>
+		<li>Caravan_Tiberium_Exotic</li>
+	</caravanTraderKinds>
+	<visitorTraderKinds>
+		<li>Visitor_Nod_Standard</li>
+	</visitorTraderKinds>
+	<baseTraderKinds>
+		<li>Base_Faction_Standard</li>
+	</baseTraderKinds>
+    <allowedArrivalTemperatureRange>-100~200</allowedArrivalTemperatureRange>
+    <raidLootMaker>NodRaidLootMaker</raidLootMaker>
+	<maxPawnCostPerTotalPointsCurve>
+		<points>
+			<li>(0, 1000)</li>
+			<li>(50, 2500)</li>
+			<li>(500, 5000)</li>
+			<li>(1000, 10000)</li>
+			<li>(100000, 100000)</li>
+		</points>
+	</maxPawnCostPerTotalPointsCurve>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(300,  0)</li>
+        <li>(700,  1)</li>
+        <li>(1400, 1.8)</li>
+        <li>(2800, 2.2)</li>
+        <li>(4000, 2.6)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+	<autoFlee>true</autoFlee>
+	<pawnGroupMakers>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>100</commonality>
+			<disallowedStrategies>
+				<li>Siege</li>
+			</disallowedStrategies>
+			<options>
+				<Nod_Follower>15</Nod_Follower>
+				<Nod_Officer>20</Nod_Officer>
+				<Nod_Soldier>20</Nod_Soldier>
+				<Nod_Militia>20</Nod_Militia>
+				<Nod_MilitiaRocket>5</Nod_MilitiaRocket>
+				<Nod_BlackHand>10</Nod_BlackHand>
+				<!--
+				<Nod_Buggy>10</Nod_Buggy>
+				<Nod_Flametank>5</Nod_Flametank>
+				-->				
+			</options>
+		</li>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>75</commonality>
+			<options>
+				<Nod_Follower>10</Nod_Follower>
+				<Nod_Militia>30</Nod_Militia>
+				<Nod_Officer>15</Nod_Officer>
+				<Nod_Soldier>30</Nod_Soldier>
+				<Nod_MilitiaRocket>15</Nod_MilitiaRocket>
+			</options>
+		</li>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>50</commonality>
+			<options>
+				<Nod_Fanatic>40</Nod_Fanatic>
+				<Nod_Militia>30</Nod_Militia>
+				<Nod_Officer>10</Nod_Officer>
+				<Nod_Soldier>20</Nod_Soldier>
+			</options>
+		</li>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>75</commonality>
+			<options>
+				<Nod_Bishop>5</Nod_Bishop>
+				<Nod_Soldier>30</Nod_Soldier>
+				<Nod_BlackHand>50</Nod_BlackHand>
+				<!---
+				<Nod_Buggy>15</Nod_Buggy>
+				<Nod_Avatar>10</Nod_Avatar>
+				<Nod_Purifier>5</Nod_Purifier>
+				<Nod_Flametank>15</Nod_Flametank>
+				-->
+			</options>
+		</li>
+		<li>
+			<kindDef>Peaceful</kindDef>
+			<options>
+				<Nod_Follower>40</Nod_Follower>
+				<Nod_Militia>30</Nod_Militia>
+				<Nod_Soldier>20</Nod_Soldier>
+				<Nod_Officer>10</Nod_Officer>
+			</options>
+		</li>
+		<li>
+			<kindDef>Trader</kindDef>
+			<traders>
+				<Nod_Trader>1</Nod_Trader>
+			</traders>
+			<carriers>
+				<Tiffalo>10</Tiffalo>
+			</carriers>
+			<guards>
+				<Nod_Follower>40</Nod_Follower>				
+				<Nod_Militia>15</Nod_Militia>
+				<Nod_Soldier>15</Nod_Soldier>
+				<Nod_Officer>15</Nod_Officer>
+				<Nod_BlackHand>15</Nod_BlackHand>
+			</guards>
+		</li>
+		<li>
+			<kindDef>Settlement</kindDef>
+			<options>
+				<Nod_Bishop>100</Nod_Bishop>
+				<Nod_Follower>50</Nod_Follower>	
+				<Nod_Fanatic>15</Nod_Fanatic>
+				<Nod_Officer>15</Nod_Officer>
+				<Nod_Soldier>30</Nod_Soldier>
+				<Nod_Militia>50</Nod_Militia>
+				<Nod_MilitiaRocket>15</Nod_MilitiaRocket>
+				<Nod_BlackHand>15</Nod_BlackHand>
+				<!--
+				<Nod_Avatar>15</Nod_Avatar>
+				<Nod_Purifier>15</Nod_Purifier>
+				<Nod_Flametank>15</Nod_Flametank>
+				<Nod_Buggy>15</Nod_Buggy>
+				-->
+			</options>
+		</li>		
+	</pawnGroupMakers>
+</FactionDef>
+
+<FactionDef ParentName="NodFactionBase">
+	<defName>Nod</defName>
+	<label>Brotherhood Of Nod</label>
+	<description>The Brotherhood is a terrorist organization fighting for Tiberium and trying to spread it. Their prophet and leader Kane is convinced that Tiberium is the next step in human evolution. They do not mind using their weapons against heretics.</description>
+	<maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+	<configurationListOrderPriority>0</configurationListOrderPriority>
+</FactionDef>
+
+  <ThingSetMakerDef>
+    <defName>NodRaidLootMaker</defName>
+    <root Class="ThingSetMaker_MarketValue">
+      <fixedParams>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+            <li>MedicineIndustrial</li>
+            <li>ComponentIndustrial</li>
+            <li>MealSurvivalPack</li>
+            <li>Neutroamine</li>
+          </thingDefs>
+        </filter>
+      </fixedParams>
+    </root>
+  </ThingSetMakerDef>
+
+
+</Defs>

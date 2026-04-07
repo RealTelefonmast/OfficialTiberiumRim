@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<DesignationCategoryDef>
+		<defName>Tiberium</defName>
+		<label>tiberium</label>
+		<order>24</order>
+		<specialDesignatorClasses>
+		  <li>TiberiumRim.Designator_TRMenu</li>
+		</specialDesignatorClasses>
+	</DesignationCategoryDef>
+
+	<!--
+	<DesignationCategoryDef>
+		<defName>TargeterTest</defName>
+		<label>targeters</label>
+		<order>22</order>
+		<specialDesignatorClasses>
+		  <li>TiberiumRim.Designator_ScrinLanding</li>
+		  <li>TiberiumRim.Designator_IonCannonTargeter</li>
+		  <li>TiberiumRim.Designator_NodNukeTargeter</li>
+		</specialDesignatorClasses>
+	</DesignationCategoryDef>
+	-->
+
+	<TiberiumRim.FactionDesignationDef Abstract="True" Name="FactionDesignationBase">
+		<subCategories>
+			<li>Structure</li>
+			<li>Decoration</li>
+			<li>Processing</li>
+			<li>Defense</li>
+			<li>Research</li>
+			<li>Misc</li>
+		</subCategories>
+	</TiberiumRim.FactionDesignationDef>
+
+	<TiberiumRim.FactionDesignationDef ParentName="FactionDesignationBase">
+		<defName>Common</defName>
+		<packPath>UI/Menu/Faction/Common</packPath>
+	</TiberiumRim.FactionDesignationDef>
+
+	<TiberiumRim.FactionDesignationDef ParentName="FactionDesignationBase">
+		<defName>Forgotten</defName>
+		<packPath>UI/Menu/Faction/Common</packPath>
+	</TiberiumRim.FactionDesignationDef>
+
+	<TiberiumRim.FactionDesignationDef ParentName="FactionDesignationBase">
+		<defName>GDI</defName>
+		<packPath>UI/Menu/Faction/GDI</packPath>
+	</TiberiumRim.FactionDesignationDef>
+
+	<TiberiumRim.FactionDesignationDef ParentName="FactionDesignationBase">
+		<defName>Nod</defName>
+		<packPath>UI/Menu/Faction/Nod</packPath>
+	</TiberiumRim.FactionDesignationDef>
+
+	<TiberiumRim.FactionDesignationDef ParentName="FactionDesignationBase">
+		<defName>Scrin</defName>
+		<packPath>UI/Menu/Faction/Scrin</packPath>
+	</TiberiumRim.FactionDesignationDef>  
+
+	<TiberiumRim.FactionDesignationDef>
+		<defName>Tiberium</defName>
+		<packPath>UI/Menu/Faction/Common</packPath>
+		<subCategories>
+			<li>Producers</li>
+			<li>Crystals</li>
+			<li>Misc</li>
+		</subCategories>
+	</TiberiumRim.FactionDesignationDef>  
+  
+  
+  <!-- Categories -->
+	<TiberiumRim.TRThingCategoryDef>
+		<defName>Structure</defName>
+	</TiberiumRim.TRThingCategoryDef>  
+  
+	<TiberiumRim.TRThingCategoryDef>
+		<defName>Decoration</defName>
+	</TiberiumRim.TRThingCategoryDef>  
+	
+	<TiberiumRim.TRThingCategoryDef>
+		<defName>Processing</defName>
+	</TiberiumRim.TRThingCategoryDef> 
+	
+	<TiberiumRim.TRThingCategoryDef>
+		<defName>Defense</defName>
+	</TiberiumRim.TRThingCategoryDef>
+	
+	<TiberiumRim.TRThingCategoryDef>
+		<defName>Research</defName>
+	</TiberiumRim.TRThingCategoryDef>  
+  
+	<TiberiumRim.TRThingCategoryDef>
+		<defName>Misc</defName>
+	</TiberiumRim.TRThingCategoryDef>  
+	
+	<TiberiumRim.TRThingCategoryDef>
+		<defName>Producers</defName>
+	</TiberiumRim.TRThingCategoryDef>  
+	
+	<TiberiumRim.TRThingCategoryDef>
+		<defName>Crystals</defName>
+	</TiberiumRim.TRThingCategoryDef>  
+	
+</Defs>

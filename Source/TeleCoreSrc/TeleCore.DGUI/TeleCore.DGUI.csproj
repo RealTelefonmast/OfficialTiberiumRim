@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>TeleCore.DGUI</RootNamespace>
+        <AssemblyName>TeleCore.DGUI</AssemblyName>
+    </PropertyGroup>
+    
+</Project>

@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--===============  ==============-->
+
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRRailgun</defName>
+		<label>railgun projectile</label>
+		<isExplosive>false</isExplosive>
+		<externalViolence>true</externalViolence>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<hediff>Shredded</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<makesBlood>true</makesBlood>
+		<armorCategory>Sharp</armorCategory>
+		<defaultStoppingPower>1</defaultStoppingPower>
+		<defaultArmorPenetration>1</defaultArmorPenetration>
+		
+		<buildingDamageFactor>1</buildingDamageFactor>
+		<plantDamageFactor>2</plantDamageFactor>
+	</DamageDef>
+	
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRLaser</defName>
+		<label>laser cut</label>
+		<isExplosive>false</isExplosive>
+		<externalViolence>true</externalViolence>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<hediff>Cut</hediff>
+		<hediffSolid>Cut</hediffSolid>
+		<makesBlood>false</makesBlood>
+		<defaultDamage>100</defaultDamage>
+		<defaultStoppingPower>0.25</defaultStoppingPower>
+        <defaultArmorPenetration>1</defaultArmorPenetration>
+	
+		<buildingDamageFactor>1.5</buildingDamageFactor>
+		<plantDamageFactor>2</plantDamageFactor>
+	</DamageDef>
+	
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRSonic</defName>
+		<label>sonic wave</label>
+		<isExplosive>false</isExplosive>
+		<deathMessage>{0} has been ripped apart by a sonic blast.</deathMessage>
+		<hediff>Crush</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<armorCategory>Blunt</armorCategory>
+		<minDamageToFragment>0</minDamageToFragment>
+		<defaultDamage>0</defaultDamage>
+		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
+		<explosionCellMote>Mote_BlastSound</explosionCellMote>
+		<explosionColorCenter>(0.4, 0.4, 0.4)</explosionColorCenter>
+		<explosionColorEdge>(0.1, 0.1, 0.1)</explosionColorEdge>
+		<combatLogRules>Damage_Bomb</combatLogRules>
+		<soundExplosion>Shot_GDI_Sonic</soundExplosion>
+		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
+	</DamageDef>
+	
+  
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRNuke</defName>
+		<label>Nuke</label>
+		<externalViolence>true</externalViolence>
+		<isExplosive>true</isExplosive>
+		<deathMessage>{0} has died in a nuclear explosion.</deathMessage>
+		<workerClass>DamageWorker_Flame</workerClass>
+		<hediff>Burn</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+		<minDamageToFragment>1</minDamageToFragment>
+		<defaultDamage>25</defaultDamage>
+		<defaultArmorPenetration>1.5</defaultArmorPenetration>
+		<defaultStoppingPower>2.0</defaultStoppingPower>
+		<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+		<explosionCellMote>Mote_Nuke</explosionCellMote>
+		<explosionColorCenter>(1, 1, 0.1)</explosionColorCenter>
+		<explosionColorEdge>(0.9, 0.1, 0.1)</explosionColorEdge>
+		<explosionInteriorMote></explosionInteriorMote>
+		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
+		<combatLogRules>Damage_Bomb</combatLogRules>
+		<soundExplosion>Nod_Nuke_Explosion</soundExplosion>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+	</DamageDef>
+
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRNukePost</defName>
+		<label>Nuke</label>
+		<externalViolence>true</externalViolence>
+		<isExplosive>true</isExplosive>
+		<deathMessage>{0} has died in a nuclear explosion.</deathMessage>
+		<workerClass>DamageWorker_Flame</workerClass>
+		<hediff>Burn</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+		<minDamageToFragment>1</minDamageToFragment>
+		<defaultDamage>25</defaultDamage>
+		<defaultArmorPenetration>1.5</defaultArmorPenetration>
+		<defaultStoppingPower>2.0</defaultStoppingPower>
+		<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+		<explosionCellMote>Mote_NukePostEffect</explosionCellMote>
+		<explosionColorCenter>(0.75, 1, 0.1)</explosionColorCenter>
+		<explosionColorEdge>(0.1, 0.5, 0.1)</explosionColorEdge>
+		<explosionInteriorMote></explosionInteriorMote>
+		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
+		<combatLogRules>Damage_Bomb</combatLogRules>
+		<soundExplosion>Blast_Rail</soundExplosion>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+	</DamageDef>
+
+	<DamageDef ParentName="StunBase">
+		<defName>TRShock</defName>
+		<label>Shock</label>
+		<externalViolence>true</externalViolence>
+		<isExplosive>true</isExplosive>
+		<deathMessage>{0} has died due to electric shock.</deathMessage>
+		<hediff>Crush</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<harmsHealth>true</harmsHealth>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+		<minDamageToFragment>1</minDamageToFragment>
+		<defaultDamage>5</defaultDamage>
+		<defaultStoppingPower>2.0</defaultStoppingPower>
+		<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
+		<explosionCellMote>Mote_BlastEMP</explosionCellMote>
+		<explosionColorCenter>(1, 1, 1, 1)</explosionColorCenter>
+		<explosionColorEdge>(0.65, 0.65, 0.65, 1)</explosionColorEdge>
+		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+		<combatLogRules>Damage_Bomb</combatLogRules>
+		<soundExplosion>Shot_GDI_Sonic</soundExplosion>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+	</DamageDef>
+
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRScrin</defName>
+		<label>cutting beam</label>
+		<externalViolence>true</externalViolence>
+		<isExplosive>false</isExplosive>
+		<deathMessage>{0} has been hit by a lethal beam.</deathMessage>
+		<hediff>Cut</hediff>
+		<makesBlood>true</makesBlood>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<impactSoundType>Bullet</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+		<minDamageToFragment>0</minDamageToFragment>
+		<defaultDamage>0</defaultDamage>
+		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
+		<explosionCellMote>Mote_ScrinCut</explosionCellMote>
+		<explosionColorCenter>(0.8, 0.5, 1)</explosionColorCenter>
+		<explosionColorEdge>(0.6, 0.1, 1)</explosionColorEdge>
+		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
+		<soundExplosion>Blast_Rail</soundExplosion>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
+	</DamageDef>
+  
+	<!--only specialized siege attack-->
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRShockWave</defName>
+		<label>Seismic Wave</label>
+		<externalViolence>true</externalViolence>
+		<isExplosive>true</isExplosive>
+		<deathMessage>{0} has died in the shockwave.</deathMessage>
+		<hediff>Crush</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+		<minDamageToFragment>1</minDamageToFragment>
+		<defaultDamage>5</defaultDamage>
+		<defaultStoppingPower>2.0</defaultStoppingPower>
+		<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
+		<explosionCellMote>Mote_BlastWave</explosionCellMote>
+		<explosionColorCenter>(0.25, 0.5, 0.25)</explosionColorCenter>
+		<explosionColorEdge>(0.25, 0.25, 0.1)</explosionColorEdge>
+		<combatLogRules>Damage_Bomb</combatLogRules>
+		<soundExplosion>Shot_GDI_Sonic</soundExplosion>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+	</DamageDef>
+
+</Defs>

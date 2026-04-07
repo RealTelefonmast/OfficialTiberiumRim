@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Obelisk Of Light -->
+
+  <ObeliskOfLight.label>빛의 오벨리스크</ObeliskOfLight.label>
+  <ObeliskOfLight.description>장엄한 빛의 오벨리스크는 교단의 힘과 잔인성을 상징합니다.\n\n벽 너머를 공격할 수 있습니다.</ObeliskOfLight.description>
+
+  <Nod_TurretHub.label>포탑 허브</Nod_TurretHub.label>
+  <Nod_TurretHub.description>근처에 있는 노드 포탑을 최대 3개까지 제어할 수 있는 시설입니다. 자체적으로도 포탑을 장착할 수 있습니다.</Nod_TurretHub.description>
+
+
+  <!-- Shredder Turret -->
+
+  <Nod_ShredderTurret.label>슈레더 포탑</Nod_ShredderTurret.label>
+  <Nod_ShredderTurret.description>군중 학살에 특화된 기본적인 방어포탑입니다. 대못 뭉치를 발사합니다.</Nod_ShredderTurret.description>
+
+
+  <!-- Flame Turret -->
+
+  <Nod_FlameTurret.label>화염 포탑</Nod_FlameTurret.label>
+  <Nod_FlameTurret.description>고온의 불길로 다수의 적을 공격할 수 있는 고급 방어포탑입니다.\n\n파괴되면 큰 폭발을 일으킵니다.</Nod_FlameTurret.description>
+
+  <Nod_LaserFence.label>레이저 격벽</Nod_LaserFence.label>
+  <Nod_LaserFence.description>총알은 통과하지만 사람은 통과할 수 없는 편리한 장치입니다. 인접한 유닛에게 엄폐율을 부여합니다.</Nod_LaserFence.description>
+
+
+</LanguageData>

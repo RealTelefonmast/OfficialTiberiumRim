@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Research -->
+	<WorkGiverDef>
+		<defName>DoTiberiumResearch</defName>
+		<label>do tiberium research</label>
+		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<workType>Research</workType>
+		<priorityInType>99</priorityInType>
+		<verb>(TR)research</verb>
+		<gerund>(TR)researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	
+	<!-- Research -->
+	<WorkGiverDef>
+		<defName>DoTiberiumBills</defName>
+		<label>do tiberium bill</label>
+		<giverClass>TiberiumRim.WorkGiver_TiberiumBills</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>99</priorityInType>
+		<verb>(TR)do bill</verb>
+		<gerund>(TR)doing bill at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	
+	<!--
+	<WorkGiverDef>
+		<defName>DoTiberiumResearchCrafting</defName>
+		<label>do tiberium research</label>
+		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>99</priorityInType>
+		<verb>(Tiberium Research)craft</verb>
+		<gerund>(TR)researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	
+	<WorkGiverDef>
+		<defName>DoTiberiumResearchConstruction</defName>
+		<label>do tiberium research</label>
+		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<workType>Construction</workType>
+		<priorityInType>99</priorityInType>
+		<verb>(Tiberium Research)construct</verb>
+		<gerund>(TR)researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	-->
+	
+	<!-- Crafting -->
+
+	<WorkGiverDef>
+		<defName>DoBillsTibWorkbench</defName>
+		<label>make things at workbench</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>100</priorityInType>
+		<fixedBillGiverDefs>
+			<li>TiberiumWorkbench</li>
+		</fixedBillGiverDefs>
+		<verb>craft</verb>
+		<gerund>crafting at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+	
+	<WorkGiverDef>
+		<defName>DoBillsTibCrafter</defName>
+		<label>refine resources from tiberium</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>100</priorityInType>
+		<fixedBillGiverDefs>
+			<li>TiberiumCrafter</li>
+		</fixedBillGiverDefs>
+		<verb>refine Tiberium</verb>
+		<gerund>refining Tiberium at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+	
+	<WorkGiverDef>
+		<defName>Factions_DoBillsFactory</defName>
+		<label>make things at factory</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Smithing</workType>
+		<priorityInType>97</priorityInType>
+		<fixedBillGiverDefs>
+			<li>GDI_Factory</li>
+			<li>Nod_Factory</li>
+		</fixedBillGiverDefs>
+		<verb>work at factory</verb>
+		<gerund>working at factory</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+	
+</Defs>

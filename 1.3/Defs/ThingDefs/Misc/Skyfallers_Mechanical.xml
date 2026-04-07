@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="SkyfallerBase_TR">
+		<defName>ScrinDronePlatformIncoming</defName>
+		<label>Scrin drone platform (incoming)</label>
+		<graphicData>
+			<texPath>Buildings/Scrin/DronePlatform/platform</texPath>
+		</graphicData>
+	</ThingDef>
+
+</Defs>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- GDI -->
+
+  <MakeGDISonicCore.label>음파 공명핵 생산</MakeGDISonicCore.label>
+  <MakeGDISonicCore.description>변경의 기술력으로는 정밀한 음파 공명 기술을 완전히 제어하기 어렵습니다. 오직 공명핵만이 그것을 가능케 합니다.</MakeGDISonicCore.description>
+  <MakeGDISonicCore.jobString>음파 공명핵 생산 중.</MakeGDISonicCore.jobString>
+
+
+</LanguageData>

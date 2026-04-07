@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!---->
+  <TR_TaskSillReq>스킬 필요: {0} - {1}</TR_TaskSillReq>
+  <TR_StartResearch>프로젝트 시작</TR_StartResearch>
+  <TR_StopResearch>프로젝트 중단</TR_StopResearch>
+  <TR_StartedProject>프로젝트 시작됨: {0}</TR_StartedProject>
+  <TR_CurTask>프로젝트 {0}</TR_CurTask>
+  <TR_TaskTargets>필요한 시설:</TR_TaskTargets>
+  <TR_TaskWorkType>필요한 작업: {0}</TR_TaskWorkType>
+  <TR_TaskSkillReq>필요한 기술:</TR_TaskSkillReq>
+
+</LanguageData>

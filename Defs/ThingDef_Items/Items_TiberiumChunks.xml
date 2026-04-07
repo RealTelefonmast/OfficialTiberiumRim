@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="TiberiumChunkBase" Abstract="True">
+		<category>Item</category>
+		<thingClass>TiberiumRim.ThingDef_TiberiumChunk</thingClass>
+		<description>A Tiberium chunk, it will slowly deteriorate into Tiberium crystals.</description>
+		<altitudeLayer>Item</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.50</fillPercent>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<Beauty>-8</Beauty>
+			<Cleanliness>-12</Cleanliness>
+		</statBases>
+		<thingCategories>
+			<li>Chunks</li>	
+			<li>TiberiumMisc</li>
+		</thingCategories>
+		<tickerType>Long</tickerType>
+		<selectable>true</selectable>
+		<pathCost>55</pathCost>
+		<pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+		<drawerType>MapMeshOnly</drawerType>
+		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+		<designateHaulable>true</designateHaulable>
+		<saveCompressible>true</saveCompressible>
+		<stackLimit>1</stackLimit>
+		<tradeability>Never</tradeability>
+	</ThingDef>
+  
+	<ThingDef ParentName="TiberiumChunkBase">
+		<defName>GreenTiberiumChunk</defName>
+		<label>green tiberium chunk</label>
+		<statBases>
+		  <MaxHitPoints>600</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Item/StoneGreen</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<flipExtraRotation>80</flipExtraRotation>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>TiberiumGreen</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>60000</min>
+					<max>120000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>1</spawnMaxAdjacent>
+				<spawnForbidden>false</spawnForbidden>
+			</li>
+		</comps>
+		<killedLeavings>
+            <TiberiumGreen>1</TiberiumGreen>
+        </killedLeavings>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumChunkBase">
+		<defName>BlueTiberiumChunk</defName>
+		<label>blue tiberium chunk</label>
+		<statBases>
+		  <MaxHitPoints>900</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Item/StoneBlue</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<flipExtraRotation>80</flipExtraRotation>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>TiberiumBlue</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>60000</min>
+					<max>120000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>1</spawnMaxAdjacent>
+				<spawnForbidden>false</spawnForbidden>
+			</li>
+		</comps>
+		<killedLeavings>
+            <TiberiumBlue>1</TiberiumBlue>
+        </killedLeavings>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumChunkBase">
+		<defName>RedTiberiumChunk</defName>
+		<label>red tiberium chunk</label>
+		<statBases>
+		  <MaxHitPoints>1200</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Item/StoneRed</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<flipExtraRotation>80</flipExtraRotation>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>TiberiumRed</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>90000</min>
+					<max>120000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>1</spawnMaxAdjacent>
+				<spawnForbidden>false</spawnForbidden>
+			</li>
+		</comps>
+		<killedLeavings>
+            <TiberiumRed>1</TiberiumRed>
+        </killedLeavings>
+	</ThingDef>
+	
+</Defs>

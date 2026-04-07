@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TRThingDef Name="BuildingBase_TR" Abstract="True">
+		<category>Building</category>
+		<thingClass>TiberiumRim.TRBuilding</thingClass>
+		<soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshOnly</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
+		<altitudeLayer>Building</altitudeLayer>
+		<statBases>
+			<SellPriceFactor>0.70</SellPriceFactor>
+		</statBases>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef Name="BenchBase_TR" ParentName="StationBase_TR" Abstract="True">
+		<canOverlapZones>false</canOverlapZones>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<passability>PassThroughOnly</passability>
+		<thingCategories>
+			<li>BuildingsProduction</li>
+		</thingCategories>
+		<statBases>
+			<Mass>20</Mass>
+		</statBases>
+		<interactionCellIcon>DiningChair</interactionCellIcon>
+		<comps>
+			<li>
+				<compClass>CompReportWorkSpeed</compClass>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ReportWorkSpeedPenalties</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef Name="StationBase_TR" ParentName="BuildingBase_TR" Abstract="True">
+		<factionDesignation>Common</factionDesignation>		
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<surfaceType>Item</surfaceType>
+		<menuHidden>true</menuHidden>
+		<statBases>
+			<Mass>1000</Mass>
+		</statBases>
+		<filthLeaving>Filth_RubbleBuilding</filthLeaving>		
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef Name="RefineryBase_TR" ParentName="StationBase_TR" Abstract="True" Class="TiberiumRim.RefineryDef">
+		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
+		<altitudeLayer>DoorMoveable</altitudeLayer>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>2500</WorkToBuild>
+			<Flammability>0.85</Flammability>
+		</statBases>
+		<size>(5,5)</size>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>250</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<tickerType>Normal</tickerType>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>		
+		<graphicData>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(5.15,5.15)</drawSize>
+		</graphicData>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<hasInteractionCell>false</hasInteractionCell>	
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef Abstract="True" Name="TurretBase_TR" ParentName="BuildingBase_TR">
+		<TRCategory>Defense</TRCategory>
+		<menuHidden>true</menuHidden>
+	</TiberiumRim.TRThingDef>
+	
+	<!-- Natural -->
+	<TiberiumRim.TRThingDef Abstract="True" Name="BuildingNaturalBase_TR" ParentName="BuildingBase_TR">
+		<passability>Impassable</passability>
+		<factionDesignation>Tiberium</factionDesignation>
+		<TRCategory>Misc</TRCategory>
+		<devObject>true</devObject>
+		<isNatural>true</isNatural>
+		<menuHidden>true</menuHidden>
+		<building>
+			<claimable>false</claimable>
+			<deconstructible>false</deconstructible>
+			<allowAutoroof>false</allowAutoroof>
+		</building>
+		<statBases>
+			<TiberiumDamageResistance>1</TiberiumDamageResistance>
+		</statBases>
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TiberiumProducerDef Abstract="True" Name="TiberiumProducerBase" ParentName="BuildingNaturalBase_TR">
+		<thingClass>TiberiumRim.TiberiumProducer</thingClass>
+		<TRCategory>Producers</TRCategory>
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawRotated>false</drawRotated>
+			<shaderType>Transparent</shaderType>
+		</graphicData>
+		<building>
+			<isEdifice>false</isEdifice>
+		</building>
+		<forResearch>true</forResearch>
+		<tickerType>Normal</tickerType>
+		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<blockPlants>true</blockPlants>	
+		<drawDamagedOverlay>false</drawDamagedOverlay>
+	</TiberiumRim.TiberiumProducerDef>
+	
+</Defs>

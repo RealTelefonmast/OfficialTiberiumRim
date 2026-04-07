@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!--
+	<TAE.AtmosphericDef>
+		<defName>TiberiumGas</defName>
+		<atmosphericTag>TiberiumPollutant</atmosphericTag>
+		<labelShort>Tib</labelShort>
+		<valueColor>(75,255,75)</valueColor>
+	</TAE.AtmosphericDef>
+	-->
+	
+	<TAE.AtmosphericValueDef>
+		<defName>Atmosphere_TibPollution</defName>
+		<label>pollution</label>
+		<labelShort>tib</labelShort>
+		<atmosphericTag>Air</atmosphericTag>
+		<collectionDef>Atmosphere_Air</collectionDef>
+		<networkValue>Atmospheric_TibPollution</networkValue>
+		<viscosity>8</viscosity>
+		<capacityFactor>2</capacityFactor>
+		<valueColor>(38,127,4)</valueColor>
+	</TAE.AtmosphericValueDef>
+	
+</Defs>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TerrainTagDef>
+		<defName>Tiberium</defName>
+		<tags>		
+			<li>Tiberium</li>
+		</tags>
+	</TiberiumRim.TerrainTagDef>
+
+	<TiberiumRim.TerrainTagDef>
+		<defName>Soils</defName>
+		<tags>		
+			<li>soil</li>
+			<li>gravel</li>		
+		</tags>
+	</TiberiumRim.TerrainTagDef>
+
+	<TiberiumRim.TerrainTagDef>
+		<defName>Mosses</defName>
+		<tags>
+			<li>moss</li>
+			<li>marshy</li>
+			<li>mud</li>
+		</tags>
+	</TiberiumRim.TerrainTagDef>
+
+	<TiberiumRim.TerrainTagDef>
+		<defName>Sands</defName>
+		<tags>
+			<li>sand</li>
+		</tags>
+		<ignoreTags>
+			<li>stone</li>
+		</ignoreTags>
+	</TiberiumRim.TerrainTagDef>
+	
+	<TiberiumRim.TerrainTagDef>
+		<defName>Stones</defName>
+		<tags>
+			<li>stone</li>
+			<li>rock</li>
+			<li>slate</li>
+			<li>marble</li>
+			<li>granite</li>
+			<li>sandstone</li>
+			<li>limestone</li>
+			<li>andesite</li>
+			<li>anorthosite</li>
+			<li>basalt</li>
+			<li>blueschist</li>
+			<li>chalk</li>
+			<li>charnockite</li>
+			<li>creolemarble</li>
+			<li>dacite</li>
+			<li>dunite</li>
+			<li>emperadordark</li>
+			<li>etowahmarble</li>
+			<li>gabbro</li>
+			<li>greenschist</li>
+			<li>jaspillite</li>
+			<li>lepidolite</li>
+			<li>lherzolite</li>
+			<li>lignite</li>
+			<li>migmatite</li>
+			<li>monzonite</li>
+			<li>obsidian</li>
+			<li>rhyolite</li>
+			<li>scoria</li>
+			<li>serpentinite</li>
+			<li>siltstone</li>
+			<li>sovite</li>
+			<li>thometzekite</li>
+		</tags>
+	</TiberiumRim.TerrainTagDef>
+	
+	<TiberiumRim.TerrainTagDef>
+		<defName>Concretes</defName>
+		<tags>
+			<li>concrete</li>
+		</tags>
+	</TiberiumRim.TerrainTagDef>
+	
+	<TiberiumRim.TerrainTagDef>
+		<defName>Water</defName>
+		<tags>
+			<li>water</li>
+		</tags>
+		<ignoreTags>
+			<li>moving</li>
+			<li>deep</li>
+		</ignoreTags>
+	</TiberiumRim.TerrainTagDef>
+	
+	<TiberiumRim.TerrainTagDef>
+		<defName>WaterMoving</defName>
+		<tags>
+			<li>water</li>
+		</tags>
+		<extraTags>
+			<li>moving</li>
+		</extraTags>
+	</TiberiumRim.TerrainTagDef>
+
+	<TiberiumRim.TerrainTagDef>
+		<defName>WaterDeep</defName>
+		<tags>
+			<li>water</li>
+		</tags>
+		<extraTags>
+			<li>deep</li>
+		</extraTags>
+		<ignoreTags>
+			<li>moving</li>
+		</ignoreTags>
+	</TiberiumRim.TerrainTagDef>
+
+</Defs>

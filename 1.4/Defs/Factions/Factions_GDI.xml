@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<FactionDef ParentName="OutlanderFactionBase" Name="GDIFactionBase" Abstract="True">
+	<pawnSingular>GDI troop</pawnSingular>
+	<pawnsPlural>GDI troops</pawnsPlural>
+    <categoryTag>Spacer</categoryTag>
+	<canMakeRandomly>true</canMakeRandomly>
+	<leaderTitle>general</leaderTitle>
+	<leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
+    <fixedLeaderKinds>
+      <li>GDI_General</li>
+    </fixedLeaderKinds>
+	<factionIconPath>UI/Icons/Factions/GDI</factionIconPath>
+	<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+    <techLevel>Spacer</techLevel>
+	<factionNameMaker>NamerFactionGDI</factionNameMaker>
+	<settlementNameMaker>NamerFactionBaseGDI</settlementNameMaker>
+	<allowedCultures><li>Rustican</li></allowedCultures>
+    <requiredMemes>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Individualist</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">HumanPrimacy</li>
+    </requiredMemes>
+    <disallowedMemes>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">MaleSupremacy</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">FemaleSupremacy</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">AnimalPersonhood</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">NaturePrimacy</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">Darkness</li>
+	  <li MayRequire="Ludeon.RimWorld.Ideology">TreeConnection</li>
+    </disallowedMemes>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Outlander</li>
+        </categories>
+        <commonality>0.5</commonality>
+      </li>
+      <li>
+        <categories>
+          <li>Offworld</li>
+        </categories>
+        <commonality>0.5</commonality>
+      </li>
+    </backstoryFilters>
+	<colorSpectrum>
+		<li>(1, 1, 1)</li>
+	</colorSpectrum>
+	<caravanTraderKinds>
+		<li>Caravan_Tiberium_BulkGoods</li>
+		<li>Caravan_Tiberium_CombatSupplier</li>
+		<li>Caravan_Tiberium_Exotic</li>
+	</caravanTraderKinds>
+	<visitorTraderKinds>
+		<li>Visitor_GDI_Standard</li>
+	</visitorTraderKinds>
+	<baseTraderKinds>
+		<li>Base_Faction_Standard</li>
+	</baseTraderKinds>
+    <allowedArrivalTemperatureRange>-100~200</allowedArrivalTemperatureRange>
+    <raidLootMaker>GDIRaidLootMaker</raidLootMaker>
+	<maxPawnCostPerTotalPointsCurve>
+		<points>
+			<li>(0, 1000)</li>
+			<li>(50, 2500)</li>
+			<li>(500, 5000)</li>
+			<li>(1000, 10000)</li>
+			<li>(100000, 100000)</li>
+		</points>
+	</maxPawnCostPerTotalPointsCurve>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(300,  0)</li>
+        <li>(700,  1)</li>
+        <li>(1400, 1.8)</li>
+        <li>(2800, 2.2)</li>
+        <li>(4000, 2.6)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+	<autoFlee>true</autoFlee>
+	<pawnGroupMakers>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>100</commonality>
+			<options>
+				<GDI_Citizen>15</GDI_Citizen>
+				<GDI_Soldier>30</GDI_Soldier>
+				<GDI_Officer>30</GDI_Officer>
+				<GDI_ZoneTrooper>10</GDI_ZoneTrooper>
+				<!--
+				<GDI_Wolverine>10</GDI_Wolverine>
+				<GDI_Disruptor>5</GDI_Disruptor>
+				<GDI_SiegeTrooper>5</GDI_SiegeTrooper>
+				-->
+			</options>
+		</li>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>75</commonality>
+			<options>
+				<GDI_Citizen>35</GDI_Citizen>
+				<GDI_Soldier>35</GDI_Soldier>
+				<GDI_Officer>15</GDI_Officer>
+				<GDI_SiegeTrooper>15</GDI_SiegeTrooper>
+			</options>
+		</li>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>75</commonality>
+			<options>
+				<GDI_General>5</GDI_General>
+				<GDI_ZoneTrooper>50</GDI_ZoneTrooper>
+				<!--
+				<GDI_Wolverine>20</GDI_Wolverine>
+				<GDI_Momtank>10</GDI_Momtank>
+				<GDI_Disruptor>15</GDI_Disruptor>
+				-->				
+			</options>
+		</li>
+		<li>
+			<kindDef>Peaceful</kindDef>
+			<options>
+				<GDI_Citizen>50</GDI_Citizen>
+				<GDI_Soldier>35</GDI_Soldier>
+				<GDI_Officer>15</GDI_Officer>
+			</options>
+		</li>
+		<li>
+			<kindDef>Trader</kindDef>
+			<traders>
+				<GDI_Trader>1</GDI_Trader>
+			</traders>
+			<carriers>
+				<Tiffalo>10</Tiffalo>
+			</carriers>
+			<guards>
+				<GDI_Citizen>30</GDI_Citizen>
+				<GDI_Soldier>30</GDI_Soldier>
+				<GDI_Officer>20</GDI_Officer>
+				<GDI_ZoneTrooper>20</GDI_ZoneTrooper>
+			</guards>
+		</li>
+		<li>
+			<kindDef>Settlement</kindDef>
+			<options>
+				<GDI_General>100</GDI_General>
+				<GDI_Citizen>50</GDI_Citizen>
+				<GDI_Soldier>50</GDI_Soldier>
+				<GDI_Officer>15</GDI_Officer>
+				<GDI_SiegeTrooper>15</GDI_SiegeTrooper>
+				<GDI_ZoneTrooper>15</GDI_ZoneTrooper>
+				<!--
+				<GDI_Wolverine>15</GDI_Wolverine>
+				<GDI_Momtank>15</GDI_Momtank>
+				-->
+			</options>
+		</li>
+	</pawnGroupMakers>
+    
+</FactionDef>
+
+<FactionDef ParentName="GDIFactionBase">
+	<defName>GDI</defName>
+	<label>Galactic Defense Initiative</label>
+	<description>The Galactic Defense Initiative, formerly known as Global Defense Initiative on planet Earth, is the current government of this planet. Their purpose is to keep up world peace and free it from terrorism, especially from the Brotherhood of Nod. After winning the battle at the Tiber river the GDI was reformed and started colonizing space, with the mission of cleansing the Universe from the Scrin. Unfortunately the Brotherhood of Nod followed their plan with the opposite idea.</description>
+	<maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+	<configurationListOrderPriority>0</configurationListOrderPriority>
+</FactionDef>
+
+  <ThingSetMakerDef>
+    <defName>GDIRaidLootMaker</defName>
+    <root Class="ThingSetMaker_MarketValue">
+      <fixedParams>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+            <li>MedicineIndustrial</li>
+            <li>ComponentIndustrial</li>
+            <li>MealSurvivalPack</li>
+            <li>Neutroamine</li>
+          </thingDefs>
+        </filter>
+      </fixedParams>
+    </root>
+  </ThingSetMakerDef>
+
+</Defs>

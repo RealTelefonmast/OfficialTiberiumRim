@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <NodConcreteTile.label>노드 콘크리트 타일</NodConcreteTile.label>
+  <NodConcreteTile.description>노드 콘크리트 타일입니다.</NodConcreteTile.description>
+
+  <NodConcreteFloor.label>노드 콘크리트 바닥</NodConcreteFloor.label>
+  <NodConcreteFloor.description>노드 콘크리트 바닥입니다.</NodConcreteFloor.description>
+
+  <NodDangerTile.label>노드 경고패턴</NodDangerTile.label>
+  <NodDangerTile.description>노드 특유의 경고패턴입니다. 채색에 돈이 많이 들어갑니다.</NodDangerTile.description>
+
+  <NodCarbonTile.label>노드 탄소합금 발판</NodCarbonTile.label>
+  <NodCarbonTile.description>노드 탄소합금 발판입니다. 가장 부유한 노드 거점만이 이 비싼 발판을 사용할 수 있습니다.</NodCarbonTile.description>
+
+
+  <!-- GDI -->
+
+  <GDIConcreteTile.label>GDI 콘크리트 타일</GDIConcreteTile.label>
+  <GDIConcreteTile.description>GDI 콘크리트 타일입니다.</GDIConcreteTile.description>
+
+  <GDIConcreteFloor.label>GDI 콘크리트 바닥</GDIConcreteFloor.label>
+  <GDIConcreteFloor.description>GDI 콘크리트 바닥입니다.</GDIConcreteFloor.description>
+
+  <GDIDangerTile.label>GDI 경고패턴</GDIDangerTile.label>
+  <GDIDangerTile.description>GDI 특유의 경고패턴입니다. 채색에 돈이 많이 들어갑니다.</GDIDangerTile.description>
+
+  <GDIReinforcedTile.label>GDI 강화합금 발판</GDIReinforcedTile.label>
+  <GDIReinforcedTile.description>GDI 강화합금 발판입니다. 가장 부유한 GDI 기지만이 이 비싼 발판을 사용할 수 있습니다.</GDIReinforcedTile.description>
+
+  <ScrinFloor.label>스크린 테라폼</ScrinFloor.label>
+  <ScrinFloor.description>스크린 구조물 주변에서만 발견되는 특수한 지형입니다.</ScrinFloor.description>
+
+
+</LanguageData>

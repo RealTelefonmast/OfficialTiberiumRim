@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Turrets -->
+
+  <Gun_NodObelisk.label>오벨리스크 빔</Gun_NodObelisk.label>
+  <Gun_NodObelisk.description>오벨리스크 빔</Gun_NodObelisk.description>
+
+  <Gun_ShredderTurret.label>슈레더 대못 발사기</Gun_ShredderTurret.label>
+  <Gun_FlameTurret.label>화염포탑</Gun_FlameTurret.label>
+
+</LanguageData>

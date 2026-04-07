@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumSoilGreen.label>결정화된 녹색 토양</TiberiumSoilGreen.label>
+  <TiberiumSoilGreen.tools.0.label>독성 가루</TiberiumSoilGreen.tools.0.label>
+
+  <TiberiumSoilBlue.label>결정화된 청색 토양</TiberiumSoilBlue.label>
+  <TiberiumSoilBlue.tools.0.label>독성 가루</TiberiumSoilBlue.tools.0.label>
+
+  <TiberiumSoilRed.label>결정화된 적색 토양</TiberiumSoilRed.label>
+  <TiberiumSoilRed.tools.0.label>독성 가루</TiberiumSoilRed.tools.0.label>
+
+  <TiberiumStoneGreen.label>결정화된 녹색 암반</TiberiumStoneGreen.label>
+  <TiberiumStoneBlue.label>결정화된 청색 암반</TiberiumStoneBlue.label>
+
+  <TiberiumMossyTerrainGreen.label>습한 녹색 토양</TiberiumMossyTerrainGreen.label>
+  <TiberiumMossyTerrainGreen.tools.0.label>독성 가루</TiberiumMossyTerrainGreen.tools.0.label>
+
+  <TiberiumMossyTerrainBlue.label>습한 청색 토양</TiberiumMossyTerrainBlue.label>
+  <TiberiumMossyTerrainBlue.tools.0.label>독성 가루</TiberiumMossyTerrainBlue.tools.0.label>
+
+  <TiberiumSandGreen.label>결정화된 녹색 모래</TiberiumSandGreen.label>
+  <TiberiumSandGreen.tools.0.label>독성 가루</TiberiumSandGreen.tools.0.label>
+
+  <TiberiumSandBlue.label>결정화된 청색 모래</TiberiumSandBlue.label>
+  <TiberiumSandBlue.tools.0.label>독성 가루</TiberiumSandBlue.tools.0.label>
+
+  <TiberiumSandRed.label>결정화된 적색 모래</TiberiumSandRed.label>
+  <TiberiumSandRed.tools.0.label>독성 가루</TiberiumSandRed.tools.0.label>
+
+  <TiberiumPodSoil.label>결정화된 녹색 습지 토양</TiberiumPodSoil.label>
+  <TiberiumPodSoil.tools.0.label>독성 가루</TiberiumPodSoil.tools.0.label>
+
+  <TiberiumPodSoilBlue.label>결정화된 청색 습지 토양</TiberiumPodSoilBlue.label>
+  <TiberiumPodSoilBlue.tools.0.label>독성 가루</TiberiumPodSoilBlue.tools.0.label>
+
+  <TiberiumSoilAboreus.label>아보레우스 토양</TiberiumSoilAboreus.label>
+  <TiberiumSoilAboreus.tools.0.label>독성 가루</TiberiumSoilAboreus.tools.0.label>
+
+  <TiberiumSoilVein.label>침식된 토양</TiberiumSoilVein.label>
+  <TiberiumSoilVein.tools.0.label>독성 가루</TiberiumSoilVein.tools.0.label>
+
+  <TiberiumSoilVeinFlesh.label>생체 조직</TiberiumSoilVeinFlesh.label>
+  <TiberiumSoilVeinFlesh.tools.0.label>독성 가루</TiberiumSoilVeinFlesh.tools.0.label>
+
+  <TiberiumSoilVeinDead.label>죽은 토양</TiberiumSoilVeinDead.label>
+  <TiberiumSoilVeinDead.tools.0.label>독성 가루</TiberiumSoilVeinDead.tools.0.label>
+
+
+  <!-- Shallow -->
+
+  <TiberiumShallowWater.label>결정화된 오염수 (얕음)</TiberiumShallowWater.label>
+  <BlueTiberiumWater.label>이온화된 오염수</BlueTiberiumWater.label>
+  <TiberiumShallowMovingWater.label>결정화된 오염수 (얕음)</TiberiumShallowMovingWater.label>
+
+
+  <!-- Chest Deep -->
+
+  <TiberiumWaterMovingChestDeep.label>결정화된 오염수 (깊음)</TiberiumWaterMovingChestDeep.label>
+
+
+  <!-- Deep -->
+
+  <TiberiumDeepWater.label>결정화된 오염수 (깊음)</TiberiumDeepWater.label>
+  <TiberiumIce.label>결정화된 얼음</TiberiumIce.label>
+
+
+</LanguageData>

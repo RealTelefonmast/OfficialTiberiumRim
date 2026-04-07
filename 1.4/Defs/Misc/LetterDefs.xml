@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<LetterDef>
+		<defName>EventLetter</defName>
+		<letterClass>TR.EventLetter</letterClass>
+		<color>(150,255,150)</color>
+		<flashColor>(150,255,150)</flashColor>
+		<flashInterval>90</flashInterval>
+	</LetterDef>
+
+	<LetterDef>
+		<defName>TiberiumLetter</defName>
+		<letterClass>StandardLetter</letterClass>
+		<color>(150,255,150)</color>
+		<flashColor>(150,255,150)</flashColor>
+		<flashInterval>90</flashInterval>
+	</LetterDef>
+
+</Defs>

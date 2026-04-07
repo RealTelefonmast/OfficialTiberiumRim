@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="Common_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
+		<recipeMaker>
+			<recipeUsers Inherit="False">
+				<li>TR_TibWorkbench</li>
+			</recipeUsers>
+		</recipeMaker>
+	</ThingDef>
+
+	<TR.TRThingDef Name="Forgotten_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
+		<recipeMaker>
+			<recipeUsers Inherit="False">
+				<li>TR_TibWorkbench</li>
+			</recipeUsers>
+		</recipeMaker>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef Name="GDI_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
+		<recipeMaker>
+			<recipeUsers Inherit="False">
+				<li>GDI_Factory</li>
+			</recipeUsers>
+		</recipeMaker>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef Name="Nod_Armor" ParentName="ArmorUniqueMachineableBase_TR" Abstract="True">
+		<recipeMaker>
+			<recipeUsers Inherit="False">
+				<li>Nod_Factory</li>
+			</recipeUsers>
+		</recipeMaker>
+	</TR.TRThingDef>
+
+</Defs>

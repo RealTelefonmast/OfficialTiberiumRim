@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Nod_AvatarLaser.label>아바타 레이저</Nod_AvatarLaser.label>
+
+
+  <!-- Nod Purifier weapons -->
+
+  <Bullet_AvatarFlamethrower.label>화염</Bullet_AvatarFlamethrower.label>
+  <Nod_AvatarFlamethrower.label>퓨리파이어 화염방사기</Nod_AvatarFlamethrower.label>
+
+
+  <!-- Nod Flametank weapons -->
+
+  <Bullet_TwinFlamethrower.label>화염</Bullet_TwinFlamethrower.label>
+  <Nod_TwinFlamethrower.label>2연장 화염방사기</Nod_TwinFlamethrower.label>
+
+
+  <!-- Gun weapons -->
+
+  <Bullet_Buggy.label>탄환</Bullet_Buggy.label>
+  <Nod_BuggyGun.label>기관포</Nod_BuggyGun.label>
+
+
+  <!-- GDI Wolverine weapons -->
+
+  <Bullet_Wolverine.label>탄환</Bullet_Wolverine.label>
+  <GDI_WolverineGun.label>기관포</GDI_WolverineGun.label>
+
+
+  <!-- GDI Mommoth weapons -->
+
+  <GDI_MomRailgun.label>2연장 레일건</GDI_MomRailgun.label>
+  <GDI_DisruptorCannon.label>붕괴파 발생기</GDI_DisruptorCannon.label>
+
+
+  <!-- Forgotten Ironback weapons -->
+
+  <Bullet_Bash.label>기계팔</Bullet_Bash.label>
+
+  <Forg_Bash.label>기계팔</Forg_Bash.label>
+  <Forg_Bash.description>두껍고 커다란 기계팔입니다.</Forg_Bash.description>
+
+
+</LanguageData>

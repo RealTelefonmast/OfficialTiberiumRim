@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Turrets -->
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Shredder</defName>
+		<label>shredder burst</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Shredder</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.75</drawSize>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>11</damageAmountBase>
+			<stoppingPower>0.9</stoppingPower>
+			<speed>45</speed>
+		</projectile>
+	</ThingDef>
+	
+	<!-- Personal -->
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_NodStandard</defName>
+		<label>bullet</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Base_Nod</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>9</damageAmountBase>
+			<stoppingPower>0.3</stoppingPower>
+			<armorPenetrationBase>0.1</armorPenetrationBase>
+			<speed>70</speed>			
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_NodAP</defName>
+		<label>bullet</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_AP_Nod</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>7</damageAmountBase>
+			<speed>90</speed>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+	
+	<TR.TRThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Nod_TwinFlechetteGun</defName>
+		<label>tiberium flechette</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/NodTib</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>3</damageAmountBase>
+			<speed>35</speed>
+			<soundExplode>BulletImpact_Flesh</soundExplode>
+		</projectile>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<projectile>
+					<impactEffecter>FlechetteHit</impactEffecter>
+					<impactFilth>
+						<filths>
+							<li>FilthTiberiumGreen, 0.1</li>
+						</filths>
+						<spreadRadius>0</spreadRadius>
+					</impactFilth>
+				</projectile>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+
+	<TR.TRThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_FlamethrowerTower</defName>
+		<label>flame</label>
+		<thingClass>TR.Projectile_ThrownFlame</thingClass>
+		<graphicData>
+			<texPath>Sprites\FlameMatrix</texPath>
+			<graphicClass>TR.Graphic_Sprite</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<projectile>
+			<ai_IsIncendiary>true</ai_IsIncendiary>
+			<damageDef>Flame</damageDef>
+			<damageAmountBase>3</damageAmountBase>
+			<explosionRadius>0.025</explosionRadius>
+			<arcHeightFactor>1.25</arcHeightFactor>
+			<speed>12</speed>
+			<soundExplode>Shot_Nod_FlameTail</soundExplode>
+		</projectile>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Flamethrower</defName>
+		<label>flame</label>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/FlameSmall</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<projectile>
+			<ai_IsIncendiary>true</ai_IsIncendiary>
+			<damageDef>Flame</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<armorPenetrationBase>0.2</armorPenetrationBase>
+			<!--<explosionRadius>0.05</explosionRadius>-->
+			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.35</preExplosionSpawnChance>
+			<arcHeightFactor>1.25</arcHeightFactor>
+			<speed>15</speed>
+			<soundExplode>Shot_Nod_FlameTail</soundExplode>
+			<shadowSize>1.8</shadowSize>			
+		</projectile>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<projectile>
+					<impactEffecter>FlameHit</impactEffecter>
+				</projectile>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_TiberiumGas</defName>
+		<label>chemical gas cloud</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Gas</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
+		<projectile>
+			<damageDef>TiberiumExplosionGas</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
+			<arcHeightFactor>1.25</arcHeightFactor>
+			<speed>15</speed>
+			<shadowSize>1.8</shadowSize>
+			<soundExplode>Shot_Nod_FlameTail</soundExplode>
+			<postExplosionSpawnThingDef>Gas_ChemicalInterface</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>0.15</postExplosionSpawnChance>
+			<!--<explosionRadius>0.05</explosionRadius>
+			<preExplosionSpawnThingDef>FilthTibLiquidGreen</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>-->
+		</projectile>
+		<modExtensions>
+			<li Class="TeleCore.TeleDefExtension">
+				<projectile>
+					<impactEffecter>ChemicalHit</impactEffecter>
+					<impactFilth>
+						<filths>
+							<li>FilthTibLiquidGreen, 0.5</li>
+						</filths>
+						<spreadRadius>1</spreadRadius>
+					</impactFilth>
+				</projectile>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_NodRocket</defName>
+		<label>rocket</label>
+		<description>rocket</description>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Nod_Rocket</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<arcHeightFactor>1.25</arcHeightFactor>
+			<damageAmountBase>20</damageAmountBase>
+			<explosionRadius>2.5</explosionRadius>
+			<speed>25</speed>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+			<shadowSize>0.5</shadowSize>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Nod_Grenade</defName>
+		<label>grenade</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Nod_Grenade_static</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>TR.ProjectileTR_Explosive</thingClass>
+		<projectile>
+			<damageDef>TiberiumExplosionFrag</damageDef>
+			<damageAmountBase>45</damageAmountBase>
+			<explosionRadius>3.9</explosionRadius>
+			<explosionDelay>65</explosionDelay>
+			<speed>15</speed>
+			<arcHeightFactor>1.5</arcHeightFactor>
+			<preExplosionSpawnThingDef>Gas_ChemicalInterface</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>
+			<soundExplode>Nod_ChemBomb</soundExplode>
+			<shadowSize>0.5</shadowSize>
+		</projectile>
+	</ThingDef>
+
+	<!--
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_Sbomb</defName>
+		<label>Suicide bomb</label>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Nod_Sbomb</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>TiberiumExplosionGas</damageDef>
+			<damageAmountBase>75</damageAmountBase>
+			<explosionRadius>5.9</explosionRadius>
+			<speed>15</speed>
+			<arcHeightFactor>1.5</arcHeightFactor>
+			<explosionDelay>150</explosionDelay>
+			<preExplosionSpawnThingDef>Gas_ChemicalInterface</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>
+			<soundExplode>Nod_ChemBomb</soundExplode>
+			<explosionEffect>GiantExplosion</explosionEffect>
+			<shadowSize>0.6</shadowSize>
+		</projectile>
+	</ThingDef>
+	-->
+
+</Defs>

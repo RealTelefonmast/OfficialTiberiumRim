@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<WorldObjectDef>
+		<defName>ASat_Ion</defName>
+		<label>Ion Cannon Attack Satellite</label>
+		<description>.</description>
+		<worldObjectClass>TR.AttackSatellite_Ion</worldObjectClass>
+		<texture>Buildings/GDI/Defense/IonCannon/ASat</texture>
+		<useDynamicDrawer>true</useDynamicDrawer>
+		<expandingIcon>true</expandingIcon>
+		<expandingIconTexture>Buildings/GDI/Defense/IonCannon/ASat_Expanding</expandingIconTexture>
+		<expandingIconPriority>10</expandingIconPriority>
+	</WorldObjectDef>
+	
+</Defs>

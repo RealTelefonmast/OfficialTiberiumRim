@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+    <defName>Telescope_TR</defName>
+    <label>telescope</label>
+    <description>A telescope for doing amateur astronomy. It's a relaxing hobby for a certain kind of person. Can only be used outdoors.</description>
+	<factionDesignation>Common</factionDesignation>
+	<TRCategory>Misc</TRCategory>
+    <graphicData>
+      <texPath>Buildings/Common/Research/TRtelescope</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawRotated>false</drawRotated>
+      <shadowData>
+        <volume>(0.3, 0.7, 0.3)</volume>
+		<offset>(-0.03,0,-0.35)</offset>
+      </shadowData>
+    </graphicData>
+	<requisites>
+		<tiberiumResearchTasks>
+			<li>GreenSky_T1</li>
+		</tiberiumResearchTasks>
+	</requisites>
+    <fillPercent>0.15</fillPercent>
+    <altitudeLayer>Building</altitudeLayer>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <socialPropernessMatters>true</socialPropernessMatters>
+	<thingCategories>
+		<li>BuildingsJoy</li>
+	</thingCategories>
+	<building>
+		<joyKind>Telescope</joyKind>
+	</building>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <MarketValue>450</MarketValue>
+      <Mass>9</Mass>
+      <JoyGainFactor>1.6</JoyGainFactor>
+    </statBases>
+  </TiberiumRim.TRThingDef>
+	
+</Defs>

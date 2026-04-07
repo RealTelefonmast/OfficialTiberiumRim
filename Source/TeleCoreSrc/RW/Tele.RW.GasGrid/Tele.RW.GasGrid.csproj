@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Build">
+
+    <PropertyGroup>
+        <RootNamespace>TeleCore.RimWorld.GasGrid</RootNamespace>
+        <AssemblyName>TeleCore.RimWorld.GasGrid</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Tele.RW.Loader\Tele.RW.Loader.csproj" />
+      <ProjectReference Include="..\Tele.RW\Tele.RW.csproj" />
+    </ItemGroup>
+
+</Project>

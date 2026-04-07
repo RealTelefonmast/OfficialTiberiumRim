@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- TODO: Can be replaced by gamestart dialgue class -->
+	<ScenPartDef>
+		<defName>ScrinStartDialgue</defName>
+		<label>scrin start dialogue</label>
+		<category>Misc</category>
+		<scenPartClass>TR.ScenPart_ScrinArrival</scenPartClass>
+		<maxUses>1</maxUses>
+	</ScenPartDef>
+
+	<ScenarioDef>
+		<defName>ScrinStart</defName>
+		<label>Scrin</label>
+		<description>Your mission is simple. Eradicate any life, and harvest Tiberium. Commence the operations, foreman.</description>
+		<scenario>
+			<name>[WIP] Scrin Harvesting Operation</name>
+			<summary>A harvesting operation mission, this planet should yield a fortune.</summary>
+			<playerFaction>
+				<def>PlayerFaction</def>
+				<factionDef>PlayerColony</factionDef>
+			</playerFaction>
+			<parts>
+				
+				<!--Config pages 
+				<li Class="TR.ScenPart_ConfigPage_ScrinInvasion">
+					<def>ConfigPage_ConfigureScrinStart</def>
+				</li>
+				-->
+				<!--Player starting stuff spawn method-->
+				<li Class="ScenPart_PlayerPawnsArriveMethod">
+					<def>PlayerPawnsArriveMethod</def>
+					<method>DropPods</method>
+					<visible>false</visible>
+				</li>
+
+				<!--Scatter some things near player start
+				Scatter some things anywhere -->
+				<li Class="ScenPart_ScatterThingsAnywhere">
+					<def>ScatterThingsAnywhere</def>
+					<thingDef>ShipChunk</thingDef>
+					<count>6</count>
+				</li>
+				<li Class="ScenPart_ScatterThingsAnywhere">
+					<def>ScatterThingsAnywhere</def>
+					<thingDef>Steel</thingDef>
+					<count>720</count>
+				</li>
+
+				<!--Game start dialog-->
+				<li Class="TR.ScenPart_ScrinArrival">
+					<def>ScrinStartDialgue</def>
+				</li>
+	
+			</parts>
+		</scenario>
+	</ScenarioDef>
+	
+</Defs>

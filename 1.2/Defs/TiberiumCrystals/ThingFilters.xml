@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.ThingFilterDef>
+		<defName>ThingFilter_Chunks</defName>
+		<filter>
+			<categories>
+				<li>StoneChunks</li>
+			</categories>
+		</filter>
+	</TiberiumRim.ThingFilterDef>
+	
+	<TiberiumRim.ThingFilterDef>
+		<defName>ThingFilter_RockWall</defName>
+		<worker>TiberiumRim.ThingFilterWorker_Mineable</worker>
+	</TiberiumRim.ThingFilterDef>
+
+	<TiberiumRim.ThingFilterDef>
+		<defName>PlantFilter_Grass</defName>
+		<filter>
+			<thingDefs>
+				<li>Plant_Grass</li>
+				<li>Plant_TallGrass</li>
+			</thingDefs>
+		</filter>
+	</TiberiumRim.ThingFilterDef>
+	
+	<TiberiumRim.ThingFilterDef>
+		<defName>PlantFilter_Bush</defName>
+		<filter>
+			<thingDefs>
+				<li>Plant_Bush</li>
+				<li>Plant_Brambles</li>
+			</thingDefs>
+		</filter>
+	</TiberiumRim.ThingFilterDef>
+
+	<TiberiumRim.ThingFilterDef>
+		<defName>PlantFilter_Exotic</defName>
+		<filter>
+			<thingDefs>
+				<li>Plant_HealrootWild</li>
+			</thingDefs>
+		</filter>
+	</TiberiumRim.ThingFilterDef>
+
+	<TiberiumRim.ThingFilterDef>
+		<defName>PlantFilter_Trees</defName>
+		<filter>
+			<thingDefs>
+				<li>Plant_TreeCocoa</li>
+				<li>Plant_TreeDrago</li>
+				<li>Plant_TreeWillow</li>
+				<li>Plant_TreeCypress</li>
+				<li>Plant_TreeMaple</li>
+				<li>Plant_TreeOak</li>
+				<li>Plant_TreePoplar</li>
+				<li>Plant_TreePine</li>
+				<li>Plant_TreeBirch</li>
+				<li>Plant_TreeTeak</li>
+				<li>Plant_TreeCecropia</li>
+				<li>Plant_TreePalm</li>
+				<li>Plant_TreeBamboo</li>
+			</thingDefs>
+		</filter>
+	</TiberiumRim.ThingFilterDef>
+	
+	<TiberiumRim.ThingFilterDef>
+		<defName>PlantFilter_FarmPlants</defName>
+		<filter>
+			<thingDefs>
+				<li>Plant_Rice</li>
+				<li>Plant_Potato</li>
+				<li>Plant_Corn</li>
+				<li>Plant_Strawberry</li>
+				<li>Plant_Haygrass</li>
+				<li>Plant_Cotton</li>
+				<li>Plant_Devilstrand</li>
+				<li>Plant_Hops</li>
+			</thingDefs>
+		</filter>
+	</TiberiumRim.ThingFilterDef>
+
+</Defs>

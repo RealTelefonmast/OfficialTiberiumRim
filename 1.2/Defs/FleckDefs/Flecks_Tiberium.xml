@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--=============== BASES ==============-->
+
+	<FleckDef Name="FleckBase_TR" Abstract="True">
+		<fleckSystemClass>FleckSystemStatic</fleckSystemClass>
+		<label>Fleck</label>
+		<graphicData>
+		  <graphicClass>Graphic_Fleck</graphicClass>
+		  <shaderType>Mote</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<realTime>false</realTime>
+	</FleckDef>
+	
+	<FleckDef Name="FleckBaseThrown_TR" ParentName="FleckBase" Abstract="True">
+		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBaseThrown_TR">
+		<defName>TiberiumAirPuff</defName>
+		<graphicData>
+			<texPath>Things/Mote/AirPuff</texPath>
+			<color>(90,230,95,100)</color>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.05</fadeInTime>
+		<solidTime>0.25</solidTime>
+		<fadeOutTime>2</fadeOutTime>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBaseThrown_TR">
+		<defName>TiberiumSmoke</defName>
+		<graphicData>
+			<texPath>VisualFX/Natural/TiberiumGas/TiberiumGasDark</texPath>
+			<drawSize>(0.4,0.4)</drawSize>
+			<color>(1,1,1,0.6)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.5</fadeInTime>
+		<solidTime>3</solidTime>
+		<fadeOutTime>6</fadeOutTime>
+		<growthRate>0.45</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBaseThrown_TR">
+		<defName>Fleck_TiberiumFog_Green</defName>
+		<graphicData>
+			<texPath>VisualFX/Natural/Gas</texPath>
+			<color>(15,255,55,55)</color>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<collide>true</collide>
+		<fadeInTime>5</fadeInTime>
+		<solidTime>30</solidTime>
+		<fadeOutTime>5</fadeOutTime>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_TiberiumCloudLightning</defName>
+		<graphicData>
+			<texPath>VisualFX/IonLighting/ion</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.05</fadeInTime>
+		<solidTime>0.05</solidTime>
+		<fadeOutTime>2</fadeOutTime>
+	</FleckDef>
+	
+
+	<!-- EXPLOSIONS -->
+	
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>Mote_Smokeblack</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Smoke</texPath>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>1</fadeInTime>
+		<solidTime>1.5</solidTime>
+		<fadeOutTime>6.5</fadeOutTime>
+		<growthRate>0.4</growthRate>
+	</FleckDef>
+  
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>Mote_SmokeTR</defName>
+		<graphicData>
+			<texPath>VisualFX/Original/Smoke</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>1</fadeInTime>
+		<solidTime>1.5</solidTime>
+		<fadeOutTime>6.5</fadeOutTime>
+		<growthRate>0.4</growthRate>
+	</FleckDef>
+	
+  <FleckDef ParentName="FleckBase">
+		<defName>Mote_AdvFlame2</defName>
+		<graphicData>
+			<texPath>VisualFX/Flame2</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.1</fadeInTime>
+		<solidTime>0.2</solidTime>
+		<fadeOutTime>0.6</fadeOutTime>
+		<growthRate>4</growthRate>
+	</FleckDef>
+  
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_BlastSound</defName>
+		<graphicData>
+			<texPath>VisualFX/SoundMote</texPath> 
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.1</solidTime>
+		<fadeOutTime>0.65</fadeOutTime>
+		<growthRate>2</growthRate>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_BlastWave</defName>
+		<graphicData>
+			<texPath>VisualFX/SoundVortex</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.25</fadeInTime>
+		<solidTime>0</solidTime>
+		<fadeOutTime>2</fadeOutTime>
+		<growthRate>3</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_Nuke</defName>
+		<graphicData>
+			<texPath>VisualFX/Natural/Gas</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>4</fadeInTime>
+		<solidTime>0</solidTime>
+		<fadeOutTime>8</fadeOutTime>
+		<growthRate>0.8</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_NukePostEffect</defName>
+		<graphicData>
+			<texPath>VisualFX/Natural/Gas</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>4</fadeInTime>
+		<solidTime>0</solidTime>
+		<fadeOutTime>10</fadeOutTime>
+		<growthRate>0.6</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_ScrinCut</defName>
+		<graphicData>
+			<texPath>VisualFX/ScrinCut</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.05</fadeInTime>
+		<solidTime>0.3</solidTime>
+		<fadeOutTime>0.8</fadeOutTime>
+		<growthRate>0.12</growthRate>
+	</FleckDef>
+	
+	<!--
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_ScrinBomb</defName>
+		<graphicData>
+			<texPath>VisualFX/ScrinBomb</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.15</fadeInTime>
+		<solidTime>0.75</solidTime>
+		<fadeOutTime>1.5</fadeOutTime>
+		<growthRate>0.75</growthRate>
+	</FleckDef>
+	-->
+	
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>SubMote_TibGasParticle</defName>
+		<graphicData>
+			<texPath>VisualFX/Natural/TiberiumGas/TiberiumGasLight</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>0.5</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.25</fadeInTime>
+		<solidTime>0</solidTime>
+		<fadeOutTime>1</fadeOutTime>
+		<growthRate>3.5</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>SubMote_TibGasParticle_Shadow</defName>
+		<graphicData>
+			<texPath>VisualFX/Natural/Gas</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>0.5</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.25</fadeInTime>
+		<solidTime>0</solidTime>
+		<fadeOutTime>1</fadeOutTime>
+		<growthRate>3.5</growthRate>
+	</FleckDef>
+	
+	<!-- beamtargets -->
+  <FleckDef ParentName="FleckBase">
+		<defName>Mote_BeamtargetRS</defName>
+		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
+		<graphicData>
+			<texPath>VisualFX/targetRail</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.4</solidTime>
+		<fadeOutTime>0.5</fadeOutTime>
+		<growthRate>2</growthRate>
+	</FleckDef>
+	
+  <FleckDef ParentName="FleckBase">
+		<defName>Mote_BeamtargetLS</defName>
+		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
+		<graphicData>
+			<texPath>VisualFX/TargetBeam</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0</fadeInTime>
+		<solidTime>0.3</solidTime>
+		<fadeOutTime>0.25</fadeOutTime>
+		<growthRate>3</growthRate>
+	</FleckDef>
+	
+  <FleckDef ParentName="FleckBase">
+		<defName>Mote_BeamtargetLB</defName>
+		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
+		<graphicData>
+			<texPath>VisualFX/TargetBeam</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+			<fadeInTime>0</fadeInTime>
+			<solidTime>0.75</solidTime>
+			<fadeOutTime>0.75</fadeOutTime>
+		<growthRate>1.4</growthRate>
+	</FleckDef>
+
+	
+	<!--
+	<TiberiumRim.ParticleDef Name="SporeBase" Abstract="True">
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<shouldBeSaved>true</shouldBeSaved>
+		<particleClass>TiberiumRim.TiberiumSpore</particleClass>
+		<graphicData>
+			<graphicClass>TiberiumRim.Graphic_Particle</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<solidTime>300</solidTime>
+		<fadeOutTime>0</fadeOutTime>
+		<fadeInTime>0</fadeInTime>
+		<frequency>0.001</frequency>
+		<sizeRange>0.1~0.3</sizeRange>
+		<wiggleRange>-0.018~0.018</wiggleRange>
+		<speedRange>0.4~0.85</speedRange>
+	</TiberiumRim.ParticleDef>
+	
+	<ThingDef Abstract="True" Name="TiberiumFog" ParentName="MoteBase_TR">
+		<graphicData>
+			<texPath>VisualFX/Gas</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<collide>true</collide>
+			<fadeInTime>2</fadeInTime>
+			<solidTime>1</solidTime>
+			<fadeOutTime>2</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>IonLighting</defName>
+		<graphicData>
+			<texPath>VisualFX/IonLighting/ion</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<color>(255,255,255,200)</color>
+		</graphicData>
+		<altitudeLayer>Gas</altitudeLayer>
+		<mote>
+			<fadeInTime>0.05</fadeInTime>
+			<solidTime>0.05</solidTime>
+			<fadeOutTime>2</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumFog">
+		<defName>TiberiumFogG</defName>
+		<graphicData>
+			<color>(15,255,55,125)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumFog">
+		<defName>TiberiumFogB</defName>
+		<graphicData>
+			<color>(15,125,255,125)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumFog">
+		<defName>TiberiumFogR</defName>
+		<graphicData>
+			<color>(255,15,115,125)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="TiberiumFog">
+		<defName>TiberiumFieldFogG</defName>
+		<graphicData>
+			<color>(15,255,55,50)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>15</fadeInTime>
+			<solidTime>30</solidTime>
+			<fadeOutTime>15</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumFog">
+		<defName>TiberiumFieldFogB</defName>
+		<graphicData>
+			<color>(15,125,255,50)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>15</fadeInTime>
+			<solidTime>30</solidTime>
+			<fadeOutTime>15</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="MoteBase">
+		<defName>Mote_TiberiumGlow</defName>
+		<graphicData>
+			<texPath>VisualFX/TiberiumGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>2.6</fadeInTime>
+			<solidTime>1.5</solidTime>
+			<fadeOutTime>3.3</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase">
+		<defName>Mote_TiberiumGlowBig</defName>
+		<graphicData>
+			<texPath>VisualFX/TiberiumGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>0.25</solidTime>
+			<fadeOutTime>5.75</fadeOutTime>
+			<growthRate>0.4</growthRate>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumFog">
+		<defName>IonCloud</defName>
+		<graphicData>
+			<shaderType>MetaOverlay</shaderType>
+			<color>(75,75,75,75)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>BlossomSmoke</defName>
+		<graphicData>
+			<texPath>VisualFX/Fog/BlossomSmoke</texPath>
+			<color>(1,1,1,0.6)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.25</fadeInTime>
+			<solidTime>4</solidTime>
+			<fadeOutTime>5</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>VeinholeSmoke</defName>
+		<graphicData>
+			<texPath>VisualFX/TiberiumGasDark</texPath>
+			<drawSize>(1,1)</drawSize>
+			<color>(1,1,1,0.6)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>3</fadeInTime>
+			<solidTime>3</solidTime>
+			<fadeOutTime>5</fadeOutTime>
+			<growthRate>0.25</growthRate>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>TiberiumSmokeMote</defName>
+		<graphicData>
+			<texPath>VisualFX/TiberiumGasDark</texPath>
+			<drawSize>(0.4,0.4)</drawSize>
+			<color>(1,1,1,0.6)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.5</fadeInTime>
+			<solidTime>3</solidTime>
+			<fadeOutTime>6</fadeOutTime>
+			<growthRate>0.45</growthRate>
+		</mote>
+	</ThingDef>
+
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_GlowerParticle</defName>
+		<graphicData>
+			<texPath>VisualFX/DustParticle</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<drawSize>(0.25,0.25)</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.5</fadeInTime>
+			<solidTime>2.5</solidTime>
+			<fadeOutTime>1</fadeOutTime>
+		</mote>
+	</ThingDef>	
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_TiberiumGeyser</defName>
+		<graphicData>
+			<texPath>Things/Mote/AirPuff</texPath>
+			<color>(90,230,95,100)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.05</fadeInTime>
+			<solidTime>0.05</solidTime>
+			<fadeOutTime>2</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_TiberiumLeak</defName>
+		<graphicData>
+			<texPath>Things/Mote/AirPuff</texPath>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.05</fadeInTime>
+			<solidTime>0.1</solidTime>
+			<fadeOutTime>0.75</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	
+
+	<TiberiumRim.ParticleDef ParentName="SporeBase">
+		<defName>TiberiumSpore</defName>
+		<graphicData>
+			<texPath>VisualFX/Spore2</texPath>
+		</graphicData>
+	</TiberiumRim.ParticleDef>
+	
+	<TiberiumRim.ParticleDef ParentName="SporeBase">
+		<defName>TiberiumDustSpore</defName>
+		<graphicData>
+			<texPath>VisualFX/DustParticle</texPath>
+		</graphicData>
+	</TiberiumRim.ParticleDef>
+
+	<TiberiumRim.ParticleDef ParentName="SporeBase">
+		<defName>BlossomSpore</defName>
+		<particleClass>TiberiumRim.BlossomSpore</particleClass>
+		<graphicData>
+			<texPath>VisualFX/Spore2</texPath>
+		</graphicData>
+	</TiberiumRim.ParticleDef>
+	
+	<TiberiumRim.ParticleDef>
+		<defName>TiberiumParticle</defName>
+		<graphicData>
+			<graphicClass>TiberiumRim.Graphic_Particle</graphicClass>
+			<texPath>VisualFX/DustParticle</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		
+		<solidTime>5</solidTime>
+		<fadeOutTime>5</fadeOutTime>
+		<fadeInTime>5</fadeInTime>
+		
+		<frequency>0.001</frequency>
+		<sizeRange>0.1~0.6</sizeRange>
+		<wiggleRange>-0.018~0.018</wiggleRange>
+		<speedRange>0.5~0</speedRange>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+	</TiberiumRim.ParticleDef>
+	
+
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>PortalParticle</defName>
+		<graphicData>
+			<texPath>VisualFX/Fog/BlossomSmoke</texPath>
+			<color>(0,0,0,1)</color>
+			<shaderType>MetaOverlay</shaderType>
+		</graphicData>
+		<altitudeLayer>Gas</altitudeLayer>
+		<mote>
+			<fadeInTime>0.5</fadeInTime>
+			<solidTime>0.5</solidTime>
+			<fadeOutTime>2</fadeOutTime>
+			<growthRate>-0.1</growthRate>
+		</mote>
+	</ThingDef>
+	-->
+</Defs>

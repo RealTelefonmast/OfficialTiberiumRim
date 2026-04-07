@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumEncroachment.label>녹색 유성</TiberiumEncroachment.label>
+  <TiberiumEncroachment.letterText>하늘에서 녹색으로 밝게 빛나는 유성이 관측되습니다. 어디로 향하고 있는지는 확실하지 않습니다.</TiberiumEncroachment.letterText>
+  <TiberiumEncroachment.letterLabel>유성 관측됨!</TiberiumEncroachment.letterLabel>
+
+  <TiberiumArrival.label>일어나선 안될 일</TiberiumArrival.label>
+  <TiberiumArrival.letterText>유성이 근처에 추락했습니다. 조사가 필요합니다.</TiberiumArrival.letterText>
+  <TiberiumArrival.letterLabel>유성 낙하!</TiberiumArrival.letterLabel>
+
+
+</LanguageData>

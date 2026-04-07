@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BaseGas">
+		<defName>Gas_Tiberium</defName>
+		<thingClass>TiberiumRim.Gas_Tiberium</thingClass>
+		<label>Tiberium gas</label>
+		<graphicData>
+			<texPath>Gas/Tiberium</texPath>
+			<drawSize>1.2</drawSize>
+			<color>(1.0,1.0,1.0,0.5)</color>
+		</graphicData>
+		<gas>
+			<expireSeconds>
+				<min>120</min>
+				<max>360</max>
+			</expireSeconds>
+			<blockTurretTracking>true</blockTurretTracking>
+			<accuracyPenalty>0.4</accuracyPenalty>
+			<rotationSpeed>14</rotationSpeed>
+		</gas>
+	</ThingDef>
+  
+</Defs>

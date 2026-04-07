@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.MechRecipeDef>
+		<defName>MakeHarvesterCommon</defName>
+		<label>Harvester Blueprint</label>
+		<graphicPath>Pawns/Mechanical/Common/Harvester</graphicPath>
+		<mechDef>Harvester_Common</mechDef>
+	</TiberiumRim.MechRecipeDef>	
+	
+	<TiberiumRim.MechRecipeDef>
+		<defName>MakeRepairDroneCommon</defName>
+		<label></label>
+		<graphicPath>Pawns/Mechanical/Common/RepairDrone</graphicPath>
+		<mechDef>RepairDrone_Common</mechDef>
+	</TiberiumRim.MechRecipeDef>	
+	
+</Defs>

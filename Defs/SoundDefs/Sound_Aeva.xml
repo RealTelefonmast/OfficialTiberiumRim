@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<SoundDef Abstract="True" Name="AEVA_Basic">
+		<eventNames />  
+		<maxVoices>4</maxVoices>  
+		<maxSimultaneous>1</maxSimultaneous>  
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_EstablishB</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>    
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/EstablishB</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_TiberExposDet</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>    
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/TiberExposDet</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_SilosNeeded</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/SilosNeeded</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_Count01</defName>  
+		<slot>ACount01</slot>
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>   
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/Countdown01</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_Count02</defName>  
+		<slot>ACount02</slot>
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/Countdown02</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_Count03</defName>  
+		<slot>ACount03</slot>
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/Countdown03</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_Count04</defName>
+		<slot>ACount04</slot>
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/Countdown04</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_Count05</defName>  
+		<slot>ACount05</slot>
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/Countdown05</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_Count06</defName>  
+		<slot>ACount06</slot>
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/Countdown06</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_Count07</defName>  
+		<slot>ACount07</slot>
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/Countdown07</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_Count08</defName>  
+		<slot>ACount08</slot>
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/Countdown08</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_Count09</defName>  
+		<slot>ACount09</slot>
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/Countdown09</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_Count10</defName> 
+		<slot>ACount10</slot>		
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/Countdown10</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_IonCannonReady</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/IonCannonReady</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_IonCannonActivated</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/IonCannonActivated</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_OnHold</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/OnHold</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_Canceled</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/Canceled</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_BaseUndAttack</defName>  
+		<maxSimultaneous>3</maxSimultaneous>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/BaseUndAttack</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_BuildingLost</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/BuildingLost</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_UnitUndAttack</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/UnitUndAttack</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_CantDeploHere</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/CantDeploHere</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_SelectLocation</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/SelectLocation</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_SelectDestination</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/SelectDestination</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_SelectTarget</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/SelectTarget</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_SelectUnit</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/SelectUnit</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_SelectWormhole</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/SelectWormhole</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_SelectDropzone</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/SelectDropzone</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_ReinfHavArriv</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/ReinfHavArriv</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_ReinforcReady</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/ReinforcReady</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<!-- Story -->
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_NewMissObjRec</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/NewMissObjRec</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_NewObjectReci</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/NewObjectReci</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="AEVA_Basic">
+		<defName>Aeva_ObjectiveComp</defName>  
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>      
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>EVA/Scrin/ObjectiveComp</clipPath>
+					</li>
+				</grains>      
+				<volumeRange>30</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	
+
+</Defs>

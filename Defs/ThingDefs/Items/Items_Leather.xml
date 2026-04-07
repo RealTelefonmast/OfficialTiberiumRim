@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="LeatherBase_TR">
+		<defName>Leather_BlueTib</defName>
+		<label>blue tiberian fur</label>
+		<graphicData>
+			<color>(59,155,255)</color>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<DeteriorationRate>1</DeteriorationRate>
+			<Mass>0.05</Mass>
+			<Flammability>0.5</Flammability>
+			<MarketValue>3</MarketValue>
+			<StuffPower_Armor_Sharp>1</StuffPower_Armor_Sharp>
+			<StuffPower_Armor_Blunt>0.4</StuffPower_Armor_Blunt>
+			<StuffPower_Armor_Heat>2</StuffPower_Armor_Heat>
+			<StuffPower_Insulation_Cold>24</StuffPower_Insulation_Cold>
+			<StuffPower_Insulation_Heat>24</StuffPower_Insulation_Heat>
+		</statBases>
+		<stuffProps>
+			<color>(0,125,255)</color>
+			<commonality>0.01</commonality>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="LeatherBase_TR">
+		<defName>Leather_GreenTib</defName>
+		<label>green tiberian fur</label>
+		<graphicData>
+			<color>(0,255,125)</color>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<DeteriorationRate>1.5</DeteriorationRate>
+			<Mass>0.02</Mass>
+			<Flammability>0.8</Flammability>
+			<MarketValue>2.25</MarketValue>
+			<StuffPower_Armor_Sharp>0.7</StuffPower_Armor_Sharp>
+			<StuffPower_Armor_Blunt>0.2</StuffPower_Armor_Blunt>
+			<StuffPower_Armor_Heat>1.85</StuffPower_Armor_Heat>
+			<StuffPower_Insulation_Cold>20</StuffPower_Insulation_Cold>
+			<StuffPower_Insulation_Heat>20</StuffPower_Insulation_Heat>
+		</statBases>
+		<stuffProps>
+			<color>(0,255,125)</color>
+			<commonality>0.1</commonality>
+		</stuffProps>
+	</ThingDef>
+	
+	<ThingDef ParentName="LeatherBase_TR">
+		<defName>Leather_BlackTib</defName>
+		<label>black tiberian leather</label>
+		<graphicData>
+			<color>(45,46,45)</color>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>60</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<Mass>0.03</Mass>
+			<Flammability>1</Flammability>
+			<MarketValue>2</MarketValue>
+			<StuffPower_Armor_Sharp>0.6</StuffPower_Armor_Sharp>
+			<StuffPower_Armor_Blunt>0.3</StuffPower_Armor_Blunt>
+			<StuffPower_Armor_Heat>1.5</StuffPower_Armor_Heat>
+			<StuffPower_Insulation_Cold>18</StuffPower_Insulation_Cold>
+			<StuffPower_Insulation_Heat>18</StuffPower_Insulation_Heat>
+		</statBases>
+		<stuffProps>
+			<color>(45,46,45)</color>
+			<commonality>0.1</commonality>
+		</stuffProps>
+	</ThingDef>
+	
+	<ThingDef ParentName="LeatherBase_TR">
+		<defName>Leather_Visceral</defName>
+		<label>visceral leather</label>
+		<graphicData>
+			<color>(162,110,0)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(162,110,0)</color>
+			<commonality>0.05</commonality>
+		</stuffProps>
+	</ThingDef>
+
+</Defs>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR">
+		<defName>TiberiumSuit</defName>
+		<description>With this suit you can savely traverse any Tiberium infested terrain. It shields the wearer from getting infected by Tiberium and also any possible radiation.  A suit to protect from Tiberium.\n\n Also protects from toxic fallout.</description>
+		<label>Tiberium protection suit</label>
+		<graphicData>
+			<texPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumProtection_T1</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<costList>
+			<Plasteel>10</Plasteel>
+			<Cloth>150</Cloth>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<recipeMaker>
+			<recipeUsers Inherit="false">
+				<li>TiberiumWorkbench</li>
+			</recipeUsers>
+		</recipeMaker>
+		<thingCategories>
+			<li>Apparel</li>
+		</thingCategories>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToMake>5000</WorkToMake>
+			<Mass>2.5</Mass>
+			<StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor>
+			<StuffEffectMultiplierInsulation_Cold>0.25</StuffEffectMultiplierInsulation_Cold>
+			<StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat>
+			<TiberiumInfectionResistance>0.75</TiberiumInfectionResistance>
+		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.2</MoveSpeed>
+			<ToxicSensitivity>-0.25</ToxicSensitivity>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.75</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+				<li>Hands</li>
+				<li>Feet</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/TiberiumProtectionSuit/TiberiumSuit</wornGraphicPath>
+			<layers>
+			    <li>Middle</li>
+				<li>Shell</li>
+			</layers>
+			<defaultOutfitTags>
+				<li>TiberiumProtection</li>
+				<li>Worker</li>
+			</defaultOutfitTags>
+		</apparel>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="ApparelUniqueMakeableBase_TR">
+		<defName>Jumpsuit</defName>
+		<description>A simple jumpsuit to improve comfort while wearing heavy armor.</description>
+		<label>jumpsuit</label>
+		<graphicData>
+			<texPath>Items/Apparel/Common_Jumpsuit/JS</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumProtection_T1</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<costList>
+			<Cloth>100</Cloth>
+			<!-- Industrial components dont really fit in a simple jumpsuit 
+			<Steel>75</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+			-->
+		</costList>
+		<recipeMaker>
+			<recipeUsers Inherit="false">
+				<li>TiberiumWorkbench</li>
+			</recipeUsers>
+		</recipeMaker>
+		<thingCategories>
+			<li>Apparel</li>
+		</thingCategories>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToMake>5000</WorkToMake>
+			<Mass>1</Mass>
+			<StuffEffectMultiplierArmor>0.25</StuffEffectMultiplierArmor>
+			<Insulation_Cold>15</Insulation_Cold>
+			<Insulation_Heat>15</Insulation_Heat>
+			<EquipDelay>10</EquipDelay>
+		</statBases>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/Common_Jumpsuit/JS</wornGraphicPath>
+			<layers>
+			    <li>OnSkin</li>
+			</layers>
+			<!--
+			<tags>
+				<li>FactionInnerSet</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>FactionInnerSet</li>
+			</defaultOutfitTags>
+			-->
+			<useDeflectMetalEffect>false</useDeflectMetalEffect>
+		</apparel>
+	</TiberiumRim.TRThingDef>
+    
+</Defs>

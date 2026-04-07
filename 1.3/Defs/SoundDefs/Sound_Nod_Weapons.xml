@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<SoundDef>
+		<defName>Obelisk_Chargup</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>1</maxVoices>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<onCamera>False</onCamera>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>Weapons/Shot_Nod_Obelisk/Charge</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>55</min>
+					<max>55</max>
+				</volumeRange>
+				<pitchRange>
+					<min>1</min>
+					<max>1</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>Obelisk_Shot</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>1</maxVoices>
+		<subSounds>
+			<li>
+			<grains>
+				<li Class="AudioGrain_Clip">
+					<clipPath>Weapons/Shot_Nod_Obelisk/Shot</clipPath>
+				</li>
+			</grains>
+			<volumeRange>
+			<min>55</min>
+			<max>55</max>
+			</volumeRange>
+			<pitchRange>
+			<min>1</min>
+			<max>1</max>
+			</pitchRange>
+			<repeatMode>NeverTwice</repeatMode>
+			<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+  
+	<SoundDef>
+		<defName>Nod_AvatarLaser</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>1</maxVoices>
+		<subSounds>
+			<li>
+			<grains>
+			<li Class="AudioGrain_Clip">
+			<clipPath>Weapons/Shot_Nod_AvatarLaser</clipPath>
+			</li>
+			</grains>
+			<volumeRange>
+			<min>30</min>
+			<max>60</max>
+			</volumeRange>
+			<pitchRange>
+			<min>0.9541177</min>
+			<max>1.068824</max>
+			</pitchRange>
+			<repeatMode>NeverTwice</repeatMode>
+			<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+  
+	<SoundDef>
+		<defName>Nod_ChemBomb</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+		<maxVoices>1</maxVoices>
+		<subSounds>
+			<li>
+			<grains>
+			<li Class="AudioGrain_Folder">
+			<clipFolderPath>Weapons/Shot_Nod_ChemBomb</clipFolderPath>
+			</li>
+			</grains>
+			<volumeRange>
+			<min>60</min>
+			<max>70</max>
+			</volumeRange>
+			<pitchRange>
+			<min>0.8516304</min>
+			<max>1.254348</max>
+			</pitchRange>
+			<repeatMode>NeverTwice</repeatMode>
+			<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+  
+	<SoundDef>
+		<defName>Nod_Nuke_Explosion</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+		<maxVoices>1</maxVoices>
+		<subSounds>
+			<li>
+			<grains>
+			<li Class="AudioGrain_Folder">
+			<clipFolderPath>Weapons/Shot_Nod_Nuke</clipFolderPath>
+			</li>
+			</grains>
+			<volumeRange>
+			<min>200</min>
+			<max>250</max>
+			</volumeRange>
+			<pitchRange>
+			<min>0.8516304</min>
+			<max>1.254348</max>
+			</pitchRange>
+			<repeatMode>NeverTwice</repeatMode>
+			<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+  
+	<SoundDef>
+		<defName>Nod_Nuke_Launch</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>1</maxVoices>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+			<grains>
+			<li Class="AudioGrain_Clip">
+			<clipPath>Weapons/Shot_Nod_Temple</clipPath>
+			</li>
+			</grains>
+			<volumeRange>
+			<min>50</min>
+			<max>100</max>
+			</volumeRange>
+			<pitchRange>
+			<min>0.8516304</min>
+			<max>1.254348</max>
+			</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+  
+	<SoundDef>
+		<defName>Nod_Rocket</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>5</maxSimultaneous>
+		<subSounds>
+			<li>
+			<grains>
+			<li Class="AudioGrain_Clip">
+			<clipPath>Weapons/Shot_Nod_Rocket</clipPath>
+			</li>
+			</grains>
+			<volumeRange>
+			<min>30</min>
+			<max>60</max>
+			</volumeRange>
+			<pitchRange>
+			<min>0.9541177</min>
+			<max>1.068824</max>
+			</pitchRange>
+			<repeatMode>NeverTwice</repeatMode>
+			<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+ 
+	<SoundDef>
+		<defName>Shot_Nod_LaserLarge</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>5</maxSimultaneous>
+		<subSounds>
+			<li>
+			<grains>
+			<li Class="AudioGrain_Clip">
+			<clipPath>Weapons/Shot_Nod_LaserLarge</clipPath>
+			</li>
+			</grains>
+			<volumeRange>
+			<min>30</min>
+			<max>60</max>
+			</volumeRange>
+			<pitchRange>
+			<min>0.9541177</min>
+			<max>1.068824</max>
+			</pitchRange>
+			<repeatMode>NeverTwice</repeatMode>
+			<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+  
+	<SoundDef>
+		<defName>Shot_Nod_Laser</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>5</maxSimultaneous>
+		<subSounds>
+			<li>
+			<grains>
+			<li Class="AudioGrain_Clip">
+			<clipPath>Weapons/Shot_Nod_Laser</clipPath>
+			</li>
+			</grains>
+			<volumeRange>
+			<min>30</min>
+			<max>60</max>
+			</volumeRange>
+			<pitchRange>
+			<min>0.9541177</min>
+			<max>1.068824</max>
+			</pitchRange>
+			<repeatMode>NeverTwice</repeatMode>
+			<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>Shot_Nod_Buggy</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>5</maxSimultaneous>
+		<subSounds>
+			<li>
+			<grains>
+			<li Class="AudioGrain_Clip">
+			<clipPath>Weapons/Shot_Nod_Buggy</clipPath>
+			</li>
+			</grains>
+			<volumeRange>
+			<min>30</min>
+			<max>60</max>
+			</volumeRange>
+			<pitchRange>
+			<min>0.9541177</min>
+			<max>1.068824</max>
+			</pitchRange>
+			<repeatMode>NeverTwice</repeatMode>
+			<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+  
+	<SoundDef>
+		<defName>Shot_Nod_Flame</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>15</maxSimultaneous>
+		<maxVoices>2</maxVoices>
+		<subSounds>
+			<li>
+			<grains>
+			<li Class="AudioGrain_Clip">
+			<clipPath>Weapons/Shot_Nod_Flame</clipPath>
+			</li>
+			</grains>
+			<volumeRange>
+			<min>50</min>
+			<max>75</max>
+			</volumeRange>
+			<pitchRange>
+			<min>0.9541177</min>
+			<max>1.068824</max>
+			</pitchRange>
+			<repeatMode>NeverTwice</repeatMode>
+			<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>Shot_Nod_FlameTail</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>15</maxSimultaneous>
+		<maxVoices>2</maxVoices>
+		<subSounds>
+			<li>
+			<grains>
+			<li Class="AudioGrain_Clip">
+			<clipPath>Weapons/Shot_Nod_FlameTail</clipPath>
+			</li>
+			</grains>
+			<volumeRange>
+			<min>20</min>
+			<max>45</max>
+			</volumeRange>
+			<pitchRange>
+			<min>0.9541177</min>
+			<max>1.068824</max>
+			</pitchRange>
+			<repeatMode>NeverTwice</repeatMode>
+			<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>Shot_Nod_Shredder</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+			<grains>
+			<li Class="AudioGrain_Clip">
+			<clipPath>Weapons/Shot_Nod_Shredder</clipPath>
+			</li>
+			</grains>
+			<volumeRange>
+			<min>30</min>
+			<max>60</max>
+			</volumeRange>
+			<pitchRange>
+			<min>0.9541177</min>
+			<max>1.068824</max>
+			</pitchRange>
+			<repeatMode>NeverTwice</repeatMode>
+			<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>Shot_Nod_GunTail</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxVoices>2</maxVoices>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+			<onCamera>True</onCamera>
+			<grains>
+			<li Class="AudioGrain_Folder">
+			<clipFolderPath>Weapons/Shot_Nod_GunTail</clipFolderPath>
+			</li>
+			</grains>
+			<volumeRange>
+			<min>3</min>
+			<max>6</max>
+			</volumeRange>
+			<pitchRange>
+			<min>0.9082352</min>
+			<max>1.091765</max>
+			</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+</Defs>

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>TeleCore</RootNamespace>
+        <AssemblyName>TeleCore</AssemblyName>
+        <TargetFramework>net481</TargetFramework>
+        <LangVersion>preview</LangVersion>
+        <OutputPath>..\..\..\..\Assemblies</OutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>Telefonmast (aka Maxim)</Authors>
+        <Company>Telefonmast</Company>
+        <Description>A collection of tools and functionalities for RimWorld modding.</Description>
+        <PackageTags>RimWorld;Mod;Telefonmast;Framework;Library;</PackageTags>
+        <RepositoryUrl>https://github.com/RealTelefonmast/TeleCore</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/RealTelefonmast/TeleCore</PackageProjectUrl>
+        <PackageIcon>TeleCore.jpg</PackageIcon>
+        <Version>1.2.5</Version>
+        <SignAssembly>false</SignAssembly>
+        <PackageVersion>1.9.8.5</PackageVersion>
+        <Nullable>enable</Nullable>
+        <Title>TeleCore</Title>
+        <Copyright>Copyright © 2023 Maxim Switenko</Copyright>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <DebugType>full</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DefineConstants>TRACE;DEBUG</DefineConstants>
+        <WarningLevel>4</WarningLevel>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="NodeEditorFramework\**"/>
+        <None Remove="Root\Systems\FlowCore\Containers\**" />
+        <Compile Remove="Root\Systems\FlowCore\Containers\**" />
+        <EmbeddedResource Remove="Root\Systems\FlowCore\Containers\**" />
+    </ItemGroup>
+
+    <!-- DLL References -->
+    
+    <!-- NuGet References -->
+    <ItemGroup>
+        
+       <PackageReference Include="Krafs.Publicizer" Version="2.2.1">
+         <PrivateAssets>all</PrivateAssets>
+         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+       </PackageReference>
+        
+       <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4085" GeneratePathProperty="true" ExcludeAssets="runtime">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+
+        <PackageReference Include="OneOf" Version="3.0.271">
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        
+        <PackageReference Include="Lib.Harmony" Version="2.3.3">
+            <PrivateAssets>all</PrivateAssets>
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        
+        <PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="11.0.3" ExcludeAssets="runtime">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        
+        <PackageReference Update="Krafs.Publicizer" Version="2.3.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        
+        <PackageReference Update="Lib.Harmony" Version="2.4.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="TeleCore.jpg">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Publicize Include="Assembly-CSharp" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TeleCore.Math\TeleCore.Math.csproj" />
+      <ProjectReference Include="..\TeleCore.Unsafe\TeleCore.Unsafe.csproj" />
+    </ItemGroup>
+    
+</Project>

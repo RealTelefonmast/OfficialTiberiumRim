@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TRRailgun.label>레일건 탄환</TRRailgun.label>
+  <TRRailgun.deathMessage>{0}(이)가 관통당해 죽었습니다.</TRRailgun.deathMessage>
+
+  <TRLaser.label>레이저 빔</TRLaser.label>
+  <TRLaser.deathMessage>{0}(이)가 고열에 융해되어 죽었습니다.</TRLaser.deathMessage>
+
+  <TRSonic.label>음파</TRSonic.label>
+  <TRSonic.deathMessage>{0}(이)가 음파 공명에 휘말려 죽었습니다.</TRSonic.deathMessage>
+
+  <TRNuke.label>핵</TRNuke.label>
+  <TRNuke.deathMessage>{0}(이)가 핵폭발에 휘말려 죽었습니다.</TRNuke.deathMessage>
+
+  <TRNukePost.label>핵</TRNukePost.label>
+  <TRNukePost.deathMessage>{0}(이)가 핵폭발에 휘말려 죽었습니다.</TRNukePost.deathMessage>
+
+  <TRShock.label>쇼크</TRShock.label>
+  <TRShock.deathMessage>{0}(이)가 전기 충격에 의해 죽었습니다.</TRShock.deathMessage>
+
+  <TRScrin.label>광선 절단</TRScrin.label>
+  <TRScrin.deathMessage>{0}(이)가 광선에 절단되어 죽었습니다.</TRScrin.deathMessage>
+
+
+  <!-- only specialized siege attack -->
+
+  <TRShockWave.label>지진파</TRShockWave.label>
+  <TRShockWave.deathMessage>{0}(이)가 격렬한 진동에 휘말려 죽었습니다..</TRShockWave.deathMessage>
+
+
+</LanguageData>

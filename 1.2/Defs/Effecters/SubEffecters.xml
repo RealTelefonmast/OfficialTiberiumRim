@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.EffecterDefTR>
+		<defName>TiberiumClouds_Green2</defName>
+		<children>
+			<li>
+				<subEffecterClass>TiberiumRim.SubEffecter_MoteMaker</subEffecterClass>
+				<scale>
+					<min>1.75</min>
+					<max>2.5</max>
+				</scale>
+				<chancePerTick>0.8</chancePerTick>
+				<positionLerpFactor>0.01</positionLerpFactor>
+				<positionRadius>0.5</positionRadius>
+				<moteDef>Mote_TiberiumFog_Green</moteDef>
+				<spawnLocType>RandomCellOnTarget</spawnLocType>
+				<speed>0.01~0.1</speed>
+			</li>
+			<!--
+			<li>
+				<subEffecterClass>TiberiumRim.SubEffecter_MoteMaker</subEffecterClass>
+				<scale>
+					<min>1</min>
+					<max>1.2</max>
+				</scale>
+				<burstCount>0~1</burstCount>
+				<chancePerTick>0.01</chancePerTick>
+				<positionLerpFactor>0.35</positionLerpFactor>
+				<positionRadius>0.2</positionRadius>
+				<moteDef>Mote_TiberiumCloudLightning</moteDef>
+				<spawnLocType>RandomCellOnTarget</spawnLocType>
+			</li>
+			-->
+		</children>
+	</TiberiumRim.EffecterDefTR>
+
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_TiberiumFog_Green</defName>
+		<graphicData>
+			<texPath>Motes/TiberiumFog</texPath>
+			<color>(15,255,55,45)</color>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<collide>true</collide>
+			<fadeInTime>5</fadeInTime>
+			<solidTime>30</solidTime>
+			<fadeOutTime>5</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_TiberiumCloudLightning</defName>
+		<graphicData>
+			<texPath>Motes/IonLighting/ion</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.05</fadeInTime>
+			<solidTime>0.05</solidTime>
+			<fadeOutTime>2</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+
+
+	<TiberiumRim.EffecterDefTR>
+		<defName>TiberiumClouds_Green</defName>
+		<tickInterval>3000</tickInterval>
+		<children>
+			<li>
+				<subEffecterClass>TiberiumRim.SubEffecter_MoteMaker</subEffecterClass>
+				<!-- Old scale
+				<scale>
+					<min>1.75</min>
+					<max>2.5</max>
+				</scale>
+				<chancePerTick>0.45</chancePerTick>
+				-->
+				<scale>
+					<min>3</min>
+					<max>5.5</max>
+				</scale>
+				<chancePerTick>0.075</chancePerTick>
+				<positionLerpFactor>0.01</positionLerpFactor>
+				<positionRadius>0.5</positionRadius>
+				<moteDef>TiberiumFieldFogG</moteDef>
+				<spawnLocType>RandomCellOnTarget</spawnLocType>
+				<speed>0.01~0.05</speed>
+			</li>
+		</children>
+	</TiberiumRim.EffecterDefTR>
+	
+	<TiberiumRim.EffecterDefTR>
+		<defName>TiberiumClouds_Blue</defName>
+		<tickInterval>2500</tickInterval>
+		<children>
+			<li>
+				<subEffecterClass>TiberiumRim.SubEffecter_MoteMaker</subEffecterClass>
+				<scale>
+					<min>3</min>
+					<max>5.5</max>
+				</scale>
+				<chancePerTick>0.075</chancePerTick>
+				<positionLerpFactor>0.01</positionLerpFactor>
+				<positionRadius>0.5</positionRadius>
+				<moteDef>TiberiumFieldFogB</moteDef>
+				<spawnLocType>RandomCellOnTarget</spawnLocType>
+				<speed>0.01~0.1</speed>
+			</li>
+		</children>
+	</TiberiumRim.EffecterDefTR>
+	
+	<TiberiumRim.EffecterDefTR>
+		<defName>TiberiumClouds_GB</defName>
+		<tickInterval>2500</tickInterval>
+		<children>
+			<li>
+				<subEffecterClass>TiberiumRim.SubEffecter_MoteMaker</subEffecterClass>
+				<scale>
+					<min>3</min>
+					<max>5.5</max>
+				</scale>
+				<chancePerTick>0.05</chancePerTick>
+				<positionLerpFactor>0.01</positionLerpFactor>
+				<positionRadius>0.5</positionRadius>
+				<moteDef>TiberiumFieldFogG</moteDef>
+				<spawnLocType>RandomCellOnTarget</spawnLocType>
+				<speed>0.01~0.1</speed>
+			</li>
+			<li>
+				<subEffecterClass>TiberiumRim.SubEffecter_MoteMaker</subEffecterClass>
+				<scale>
+					<min>3</min>
+					<max>5.5</max>
+				</scale>
+				<chancePerTick>0.05</chancePerTick>
+				<positionLerpFactor>0.01</positionLerpFactor>
+				<positionRadius>0.5</positionRadius>
+				<moteDef>TiberiumFieldFogB</moteDef>
+				<spawnLocType>RandomCellOnTarget</spawnLocType>
+				<speed>0.01~0.1</speed>
+			</li>
+		</children>
+	</TiberiumRim.EffecterDefTR>
+
+</Defs>

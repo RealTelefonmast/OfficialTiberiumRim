@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <ScrinDrone_Body.label>드론 외골격</ScrinDrone_Body.label>
+  <ScrinDrone_Body.corePart.parts.0.parts.0.parts.0.customLabel>좌측 첫번째 눈</ScrinDrone_Body.corePart.parts.0.parts.0.parts.0.customLabel>
+  <ScrinDrone_Body.corePart.parts.0.parts.0.parts.1.customLabel>좌측 두번째 눈</ScrinDrone_Body.corePart.parts.0.parts.0.parts.1.customLabel>
+  <ScrinDrone_Body.corePart.parts.0.parts.0.parts.2.customLabel>좌측 세번째 눈</ScrinDrone_Body.corePart.parts.0.parts.0.parts.2.customLabel>
+  <ScrinDrone_Body.corePart.parts.0.parts.0.parts.3.customLabel>우측 첫번째 눈</ScrinDrone_Body.corePart.parts.0.parts.0.parts.3.customLabel>
+  <ScrinDrone_Body.corePart.parts.0.parts.0.parts.4.customLabel>우측 두번째 눈</ScrinDrone_Body.corePart.parts.0.parts.0.parts.4.customLabel>
+  <ScrinDrone_Body.corePart.parts.0.parts.0.parts.5.customLabel>우측 세번째 눈</ScrinDrone_Body.corePart.parts.0.parts.0.parts.5.customLabel>
+  <ScrinDrone_Body.corePart.parts.1.parts.0.customLabel>촉수</ScrinDrone_Body.corePart.parts.1.parts.0.customLabel>
+  <ScrinDrone_Body.corePart.parts.1.parts.1.customLabel>촉수</ScrinDrone_Body.corePart.parts.1.parts.1.customLabel>
+  <ScrinDrone_Body.corePart.parts.1.parts.2.customLabel>촉수</ScrinDrone_Body.corePart.parts.1.parts.2.customLabel>
+  <ScrinDrone_Body.corePart.parts.1.parts.3.customLabel>촉수</ScrinDrone_Body.corePart.parts.1.parts.3.customLabel>
+
+
+</LanguageData>

@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	
+	<SoundDef Abstract="True" Name="IonCannonBase">
+		<context>MapOnly</context>
+		<eventNames />  
+		<maxVoices>1</maxVoices>
+		<maxSimultaneous>1</maxSimultaneous>
+	</SoundDef>
+	
+	<SoundDef ParentName="IonCannonBase">
+		<defName>IonCannon_StartUp</defName>
+		<subSounds>
+			<li><grains><li Class="AudioGrain_Clip">
+				<clipPath>SuperWeapons/IonCannon/0_Startup</clipPath>
+			</li></grains></li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="IonCannonBase">
+		<defName>IonCannon_InitialCharge</defName>
+		<subSounds>
+			<li><grains><li Class="AudioGrain_Clip">
+				<clipPath>SuperWeapons/IonCannon/1_InitCharge</clipPath>
+			</li></grains></li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="IonCannonBase">
+		<defName>IonCannon_ClimaxChargeUp</defName>
+		<subSounds>
+			<li><grains><li Class="AudioGrain_Clip">
+				<clipPath>SuperWeapons/IonCannon/2_PreImpactCharge</clipPath>
+			</li></grains></li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="IonCannonBase">
+		<defName>IonCannon_PreClimaxPause</defName>
+		<subSounds>
+			<li><grains><li Class="AudioGrain_Clip">
+				<clipPath>SuperWeapons/IonCannon/3_PreImpact</clipPath>
+			</li></grains></li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef ParentName="IonCannonBase">
+		<defName>IonCannon_Climax</defName>
+		<subSounds>
+			<li><grains><li Class="AudioGrain_Clip">
+				<clipPath>SuperWeapons/IonCannon/4_Impact</clipPath>
+			</li></grains></li>
+		</subSounds>
+	</SoundDef>
+
+
+	<SoundDef>
+		<defName>IonCannon_Laser1</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>SuperWeapons/IonCannon/Laser1</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>50</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>IonCannon_Laser2</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>SuperWeapons/IonCannon/Laser2</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>50</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>IonCannon_Laser3</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>SuperWeapons/IonCannon/Laser3</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>50</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>IonCannon_Laser4</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>SuperWeapons/IonCannon/Laser4</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>50</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>IonCannon_Laser5</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>SuperWeapons/IonCannon/Laser5</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>50</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>IonCannon_Laser6</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>SuperWeapons/IonCannon/Laser6</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>50</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>IonCannon_Laser7</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>SuperWeapons/IonCannon/Laser7</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>50</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>IonCannon_Laser8</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>SuperWeapons/IonCannon/Laser8</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>50</volumeRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+</Defs>

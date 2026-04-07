@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+	<ThingDef Name="BuildingBase" Abstract="True">
+		<category>Building</category>
+		<thingClass>Building</thingClass>
+		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>BuildingRubble</filthLeaving>
+	</ThingDef>
+
+	
+	<ThingDef Abstract="True" Name="TiberiumBuildingBase" ParentName="BuildingBase">
+		<category>Building</category>
+		<passability>Impassable</passability>
+		<building>
+			<claimable>false</claimable>
+			<isEdifice>false</isEdifice>
+			<deconstructible>false</deconstructible>
+			<allowAutoroof>false</allowAutoroof>
+		</building>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>false</rotatable>
+		<destroyable>true</destroyable>
+		<useHitPoints>true</useHitPoints>
+	</ThingDef>
+
+	
+	<ThingDef ParentName="TiberiumBuildingBase">
+		<defName>TiberiumCraterGreen_TBNS</defName>
+		<description>A green Tiberium field, as the name suggests it is the producer of green Tiberium.</description>
+		<label>Green Tiberium Field</label>
+		<thingClass>Building</thingClass>
+		<size>(3,3)</size>
+		<graphicData>
+			<texPath>Building/Natural/BigTiberiumCraterGreen</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<altitudeLayer>Floor</altitudeLayer>
+		<statBases>
+			<MaxHitPoints>5000</MaxHitPoints>
+			<Beauty>175</Beauty>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<selectable>true</selectable>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+				<radius>30</radius>
+				<corruptsInto>TiberiumSoilGreen</corruptsInto>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(120,255,120,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>TiberiumGreen</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>10600</min>
+					<max>20000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>8</spawnMaxAdjacent>
+				<spawnForbidden>false</spawnForbidden>
+			</li>
+		</comps>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <TiberiumGreen>9</TiberiumGreen>
+        </killedLeavings>
+	</ThingDef>
+	
+	
+	<ThingDef ParentName="TiberiumBuildingBase">
+		<defName>TiberiumCraterBlue_TBNS</defName>
+		<description>A beautiful field of blue Tiberium, as the name suggests it’s the producer of blue Tiberium.</description>
+		<label>Blue Tiberium Field</label>
+		<thingClass>Building</thingClass>
+		<size>(3,3)</size>
+		<graphicData>
+			<texPath>Building/Natural/BigTiberiumCraterBlue</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>6500</MaxHitPoints>
+			<Beauty>125</Beauty>
+		</statBases>
+		<altitudeLayer>Floor</altitudeLayer>
+		<tickerType>Rare</tickerType>
+		<selectable>true</selectable>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+				<radius>20</radius>
+				<corruptsInto>TiberiumSoilBlue</corruptsInto>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>47</heatPerSecond>
+				<heatPushMaxTemperature>207</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(120,150,255,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>TiberiumBlue</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>50800</min>
+					<max>60000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>8</spawnMaxAdjacent>
+				<spawnForbidden>false</spawnForbidden>
+			</li>
+		</comps>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <TiberiumBlue>9</TiberiumBlue>
+        </killedLeavings>
+	</ThingDef>
+	
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>TiberiumMeteor_TBNS</defName>
+		<description>An extraterrestrial meteor. Contains glowing crystal of all sorts.\n\nWhile it is often mistaken for a producer, it is in fact not. It does not have an “extremely” low spawn-rate because it never spawns any crystals on its own. It can be deconstructed like crashed ship part and will give you a bit of each Tiberium type (red/green/blue). It is extremely harmless.</description>
+		<label>Tiberium Meteor</label>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Building/Natural/TiberiumMeteor</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<pathCost>35</pathCost>
+		<blockWind>true</blockWind>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.50</fillPercent>
+		<size>(2,2)</size>
+		<statBases>
+			<MaxHitPoints>3500</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<Beauty>-125</Beauty>
+			<WorkToBuild>56000</WorkToBuild>
+		</statBases>
+		<costList>
+			<RedTiberiumRaw>10</RedTiberiumRaw>
+			<BlueTiberiumRaw>20</BlueTiberiumRaw>
+			<GreenTiberiumRaw>70</GreenTiberiumRaw>
+		</costList>
+		<building>
+			<claimable>false</claimable>
+			<alwaysDeconstructible>true</alwaysDeconstructible>
+		</building>
+		<selectable>true</selectable>
+		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+		<drawerType>MapMeshOnly</drawerType>
+		<repairEffect>ConstructMetal</repairEffect>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>6</glowRadius>
+				<glowColor>(51,255,51,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>4</glowRadius>
+				<glowColor>(0,128,255,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(255,0,0,0)</glowColor>
+			</li>
+		</comps>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <TiberiumGreen>50</TiberiumGreen>
+			<TiberiumBlue>25</TiberiumBlue>
+			<TiberiumRed>5</TiberiumRed>
+        </killedLeavings>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="TiberiumBuildingBase">
+		<defName>TiberiumMonolith_TBNS</defName>
+		<description>A blue monolith growing out of the ground, acts as a blue Tiberium producer.</description>
+		<label>blue Tiberium monolith</label>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Building/Natural/TiberiumMonolith</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(2,6)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>6000</MaxHitPoints>
+			<Beauty>240</Beauty>
+		</statBases>
+		<rotatable>false</rotatable>
+		<tickerType>Rare</tickerType>
+		<selectable>true</selectable>
+		<blockPlants>true</blockPlants>
+		<building>
+			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>false</deconstructible>
+		</building>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+				<radius>8</radius>
+				<corruptsInto>TiberiumSoilBlue</corruptsInto>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>20</heatPerSecond>
+				<heatPushMaxTemperature>207</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(120,150,255,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>TiberiumBlue</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>50600</min>
+					<max>60000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>8</spawnMaxAdjacent>
+				<spawnForbidden>false</spawnForbidden>
+			</li>
+		</comps>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <TiberiumBlue>9</TiberiumBlue>
+		</killedLeavings>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumBuildingBase">
+		<defName>BlossomTree_TBNS</defName>
+		<description>A strange tree with alien properties. It is the only producer of Tiberium Pods.</description>
+		<label>blossom tree</label>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Building/Natural/BlossomTree</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(2,6)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>2500</MaxHitPoints>
+			<Beauty>-75</Beauty>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<selectable>true</selectable>
+		<blockPlants>true</blockPlants>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+				<radius>20</radius>
+				<corruptsInto>TiberiumSoilPod</corruptsInto>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>7</glowRadius>
+				<glowColor>(120,255,120,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>TiberiumPod</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>50600</min>
+					<max>60000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>8</spawnMaxAdjacent>
+				<spawnForbidden>false</spawnForbidden>
+			</li>
+		</comps>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <TiberiumPod>9</TiberiumPod>
+        </killedLeavings>
+    </ThingDef>
+	
+	<ThingDef ParentName="TiberiumBuildingBase">
+		<defName>TiberiumShard_TBNS</defName>
+		<description>An extraterrestrial shard and rare phenomenon, it’s the producer of red Tiberium.</description>
+		<label>tiberium shard</label>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Building/Natural/RedTiberiumShard</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(2,6)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>10000</MaxHitPoints>
+			<Beauty>380</Beauty>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<selectable>true</selectable>
+		<blockPlants>true</blockPlants>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+				<radius>8</radius>
+				<corruptsInto>TiberiumSoilRed</corruptsInto>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>8</glowRadius>
+				<glowColor>(255,120,120,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>TiberiumRed</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>50600</min>
+					<max>60000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>8</spawnMaxAdjacent>
+				<spawnForbidden>false</spawnForbidden>
+			</li>
+		</comps>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <TiberiumRed>3</TiberiumRed>
+        </killedLeavings>
+    </ThingDef>
+	
+	<ThingDef ParentName="TiberiumBuildingBase">
+		<defName>Veinhole_TBNS</defName>
+		<description>The Veinhole is a type for itself, it is the producer of Tiberium Veins, spawns Veinmonsters from itself and also creates Vein Hubs which are structures that will attack any living being inside their area of effect with veiny tentacles coming out of the ground. Killing the Veinhole kills all adjacent Veins and spawned Vein Hubs. The Veinhole has a chance to eat a pawn that comes too close. This basically removes a colonist from your colony.\n\nAlso be aware of blunt damage. Coming too close to the center might cause infection by poisonous gases.</description>
+		<label>Veinhole</label>
+		<thingClass>TiberiumRim.Building_Veinhole</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Building/Natural/Veinhole/Veinhole</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>4500</MaxHitPoints>
+			<Beauty>-260</Beauty>
+		</statBases>
+		<altitudeLayer>Floor</altitudeLayer>
+		<tickerType>Rare</tickerType>
+		<selectable>true</selectable>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+				<radius>12</radius>
+				<corruptsInto>VeinSoilRed</corruptsInto>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>47</heatPerSecond>
+				<heatPushMaxTemperature>207</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>TiberiumVein</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>50600</min>
+					<max>60000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>8</spawnMaxAdjacent>
+				<spawnForbidden>false</spawnForbidden>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumBuildingBase">
+		<defName>TiberiumTower_TBNS</defName>
+		<description>A green tower rising from the ground. These structures normally take years to form.\n\nIt is similar to the monolith but for green Tiberium except it does not spawn any Tiberium on its own, basically a decorative structure.</description>
+		<label>green Tiberium tower</label>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Building/Natural/TiberiumTower</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(2,6)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>1500</MaxHitPoints>
+			<Beauty>360</Beauty>
+		</statBases>
+		<rotatable>false</rotatable>
+		<tickerType>Rare</tickerType>
+		<selectable>true</selectable>
+		<blockPlants>true</blockPlants>
+		<building>
+			<claimable>false</claimable>
+			<deconstructible>true</deconstructible>
+		</building>
+		<comps>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>20</heatPerSecond>
+				<heatPushMaxTemperature>207</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>4</glowRadius>
+				<glowColor>(120,255,120,0)</glowColor>
+			</li>
+		</comps>
+        <killedLeavings>
+			<GreenTiberiumRaw>75</GreenTiberiumRaw>
+            <TiberiumGreen>8</TiberiumGreen>
+        </killedLeavings>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingNaturalBase">
+		<defName>TiberiumGeyser</defName>
+		<thingClass>TiberiumRim.Building_TibGeyser</thingClass>
+		<label>Tiberium Geyser</label>
+		<graphicData>
+			<texPath>Building/Natural/TibGeyser/TibGeyser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<altitudeLayer>Floor</altitudeLayer>
+		<rotatable>false</rotatable>
+		<destroyable>false</destroyable>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Long</tickerType>
+		<selectable>true</selectable>
+		<description>This geyser has been infected with Tiberium. The ground around it has been destabilized and walking in might cause cracks leaking Tiberium gas. It could serve useful for a Tiberium Spike.</description>
+		<size>(2,2)</size>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<building>
+			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>false</deconstructible>
+		</building>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingNaturalBase">
+		<defName>TiberiumCrack</defName>
+		<thingClass>TiberiumRim.Building_GasCrack</thingClass>
+		<label>Tiberium Crack</label>
+		<graphicData>
+			<texPath>Building/Natural/TibGeyser/Crack</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>		
+		<altitudeLayer>Floor</altitudeLayer>
+		<rotatable>false</rotatable>
+		<destroyable>false</destroyable>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Rare</tickerType>
+		<selectable>false</selectable>
+		<size>(1,1)</size>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<building>
+			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>false</deconstructible>
+		</building>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumBuildingBase">
+		<defName>VeinholeHub_TBNS</defName>
+		<description>This part of a nearby veinhole will attack any living being in its' area of effect visiualized by the veiny terrain circle around it.</description>
+		<label>Veinhole hub</label>
+		<thingClass>TiberiumRim.Building_Veinhub</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Building/Natural/Veinhole/Veinexit</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>450</MaxHitPoints>
+			<Beauty>-125</Beauty>
+		</statBases>
+		<altitudeLayer>Floor</altitudeLayer>
+		<tickerType>Rare</tickerType>
+		<selectable>true</selectable>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+			<corruptsInto>VeinSoilRed</corruptsInto>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingNaturalBase">
+		<defName>VeinTentacle</defName>
+		<thingClass>TiberiumRim.Building_VeinTentacle</thingClass>
+		<label>Vein tentacle</label>
+		<graphicData>
+			<texPath>Building/Natural/Veinhole/Tentacle</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<altitudeLayer>LowPlant</altitudeLayer>
+		<rotatable>false</rotatable>
+		<destroyable>false</destroyable>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Normal</tickerType>
+		<selectable>false</selectable>
+		<size>(1,1)</size>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<building>
+			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>false</deconstructible>
+		</building>
+	</ThingDef>
+	
+</Defs>

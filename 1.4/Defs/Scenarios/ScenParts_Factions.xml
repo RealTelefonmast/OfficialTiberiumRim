@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!--
+  <ScenPartDef>
+    <defName>ConfigPage_ConfigureScrinStart</defName>
+    <label>invasion setup</label>
+    <category>Fixed</category>
+    <scenPartClass>TR.ScenPart_ConfigPage_ScrinInvasion</scenPartClass>
+    <pageClass>TR.Page_ConfigureScrinInvasion</pageClass>
+    <summaryPriority>500</summaryPriority>
+  </ScenPartDef>
+  -->
+</Defs>

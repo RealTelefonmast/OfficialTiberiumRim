@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!--
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+		<defName>TiberiumPipeDynamic</defName>
+		<label>dynamic tiberium pipe</label>
+		<description>This structure connects Tiberium processing structures on the Tiberium Network.</description>
+		<thingClass>TiberiumRim.TNW_PipeDynamic</thingClass>
+		
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Processing</TRCategory>
+		<hidden>false</hidden>
+		
+		<costList>
+			<Steel>5</Steel>
+		</costList>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Network/TNW_PipeAtlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>Basic</linkType>
+		    <linkFlags>
+				<li>Custom7</li>
+		    </linkFlags>
+		</graphicData>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+			<blueprintGraphicData>
+				<texPath>Buildings/Common/Network/TNW_PipeBluePrintAtlas</texPath>
+			</blueprintGraphicData>
+		</building>
+		
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TNW">
+				<compClass>TiberiumRim.CompTNW_Pipe</compClass>
+			</li>
+		</comps>
+		
+		<drawGUIOverlay>True</drawGUIOverlay>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<uiIconPath>Buildings/Icons/Connector_Icon</uiIconPath>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<passability>Standable</passability>
+		<pathCost>0</pathCost>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>100</WorkToBuild>
+			<Flammability>0.2</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<neverMultiSelect>true</neverMultiSelect>
+		<constructEffect>ConstructMetal</constructEffect>
+		<rotatable>false</rotatable>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<surfaceType>Item</surfaceType>
+		<clearBuildingArea>false</clearBuildingArea>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_Pipe</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
+	-->
+	
+	<!--
+	<ThingDef ParentName="BuildingBase">
+		<defName>AngleTester</defName>
+		<label>Angle Tester</label>
+		<description>AAAAAAAAA</description>
+		<thingClass>TiberiumRim.Building_ANGLETEST</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Misc/MoisturePump</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shadowData>
+			<volume>(0.58, 0.35, 0.25)</volume>
+			<offset>(0,0,-0.1)</offset>
+			</shadowData>
+			<damageData>
+			<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<comps>
+		<li Class="CompProperties_Forbiddable"/>
+		<li Class="CompProperties_Power">
+		<compClass>CompPowerTrader</compClass>
+		<basePowerConsumption>150</basePowerConsumption>
+		</li>
+		<li Class="CompProperties_TerrainPumpDry">
+		<radius>6.9</radius>
+		<daysToRadius>60</daysToRadius>
+		</li>
+		</comps>
+		<tickerType>Never</tickerType>
+		<altitudeLayer>Building</altitudeLayer>
+		<statBases>
+		<MaxHitPoints>50</MaxHitPoints>
+		<WorkToBuild>1500</WorkToBuild>
+		<Flammability>1.0</Flammability>
+		<Beauty>-8</Beauty>
+		</statBases>
+		<fillPercent>0.15</fillPercent>
+		<building>
+		<ai_chillDestination>false</ai_chillDestination>
+		</building>
+		<costList>
+		<Steel>75</Steel>
+		<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<specialDisplayRadius>6.9</specialDisplayRadius>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<pathCost>25</pathCost>
+		<designationCategory>Misc</designationCategory>
+	</ThingDef>
+	-->
+	
+</Defs>

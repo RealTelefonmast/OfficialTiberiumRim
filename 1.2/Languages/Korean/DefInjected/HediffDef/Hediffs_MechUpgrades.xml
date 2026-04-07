@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TODO: Implant application for upgrades needing a mech station -->
+
+  <MechUpgrade_GeneralArmor.label>general armor module</MechUpgrade_GeneralArmor.label>
+  <MechUpgrade_GeneralArmor.description>A mech upgrade.</MechUpgrade_GeneralArmor.description>
+  <MechUpgrade_GeneralArmor.stages.0.label>Broken</MechUpgrade_GeneralArmor.stages.0.label>
+  <MechUpgrade_GeneralArmor.stages.1.label>Mk1</MechUpgrade_GeneralArmor.stages.1.label>
+  <MechUpgrade_GeneralArmor.stages.2.label>Mk2</MechUpgrade_GeneralArmor.stages.2.label>
+  <MechUpgrade_GeneralArmor.stages.3.label>Mk3</MechUpgrade_GeneralArmor.stages.3.label>
+  <MechUpgrade_GeneralArmor.stages.4.label>Mk4</MechUpgrade_GeneralArmor.stages.4.label>
+
+  <MechUpgrade_PartEfficiency.label>efficiency module</MechUpgrade_PartEfficiency.label>
+  <MechUpgrade_PartEfficiency.description>A mech upgrade.</MechUpgrade_PartEfficiency.description>
+  <MechUpgrade_PartEfficiency.stages.0.label>Broken</MechUpgrade_PartEfficiency.stages.0.label>
+  <MechUpgrade_PartEfficiency.stages.1.label>Mk1</MechUpgrade_PartEfficiency.stages.1.label>
+  <MechUpgrade_PartEfficiency.stages.2.label>Mk2</MechUpgrade_PartEfficiency.stages.2.label>
+  <MechUpgrade_PartEfficiency.stages.3.label>Mk3</MechUpgrade_PartEfficiency.stages.3.label>
+  <MechUpgrade_PartEfficiency.stages.4.label>Mk4</MechUpgrade_PartEfficiency.stages.4.label>
+
+
+</LanguageData>

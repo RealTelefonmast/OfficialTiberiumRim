@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!--
+  <ThingDef ParentName="BasePawn" Name="BaseTRMechanical" Abstract="True">
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <statBases>
+      <PsychicSensitivity>0</PsychicSensitivity>
+      <ToxicResistance>1</ToxicResistance>
+      <Flammability>0</Flammability>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>250</ComfyTemperatureMax>
+	  <MeatAmount>0</MeatAmount>
+    </statBases>
+    <race>
+      <fleshType>Mechanoid</fleshType>
+      <needsRest>false</needsRest>
+      <hasGenders>false</hasGenders>
+      <foodType>None</foodType>
+	  <lifeExpectancy>100</lifeExpectancy>
+      <useMeatFrom>Mech_Centipede</useMeatFrom>
+      <bloodDef>Filth_Ash</bloodDef>
+	</race>
+  </ThingDef>
+	-->
+	
+  <ThingDef ParentName="BaseMechanoidTR">
+    <defName>Avatar</defName>
+    <label>Avatar</label>
+    <description>Nod's Ultimate Mech.</description>
+    <statBases>
+      <MoveSpeed>2.25</MoveSpeed>
+      <ArmorRating_Blunt>0.5</ArmorRating_Blunt>
+      <ArmorRating_Sharp>1</ArmorRating_Sharp>
+	  <ArmorRating_Heat>1</ArmorRating_Heat>
+    </statBases>
+    <tools>
+      <li>
+        <label>left arm</label>
+        <capacities>
+          <li>Poke</li>
+        </capacities>
+        <power>25</power>
+        <cooldownTime>2.5</cooldownTime>
+        <linkedBodyPartsGroup>LeftArm</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+    <race>
+      <intelligence>ToolUser</intelligence>
+      <thinkTreeMain>Mechanoid</thinkTreeMain>
+      <body>AvatarBody</body>
+      <baseBodySize>2.5</baseBodySize>
+      <baseHealthScale>1.5</baseHealthScale>
+      <makesFootprints>true</makesFootprints>
+	  <!--
+      <lifeStageAges>
+        <li>
+          <def>MechFormed</def>
+          <minAge>0</minAge>
+          <soundWounded>Pawn_Mech_Scyther_Wounded</soundWounded>
+          <soundDeath>Pawn_Mech_Scyther_Death</soundDeath>
+          <soundCall>Pawn_Mech_Scyther_Call</soundCall>
+        </li>
+      </lifeStageAges>
+	  -->
+      <soundCallIntervalRange>
+        <min>1000</min>
+        <max>2000</max>
+      </soundCallIntervalRange>
+	  <soundMeleeHitPawn>Pawn_Melee_MechanoidSlash_HitPawn</soundMeleeHitPawn>
+	  <soundMeleeHitBuilding>Pawn_Melee_MechanoidSlash_HitBuilding</soundMeleeHitBuilding>
+	  <soundMeleeMiss>Pawn_Melee_MechanoidSlash_Miss</soundMeleeMiss>
+    </race>
+    <butcherProducts>
+      <Steel>150</Steel>
+      <ComponentIndustrial>10</ComponentIndustrial>
+      <TRBattleChip>2</TRBattleChip>
+    </butcherProducts>
+  </ThingDef>
+
+  <TR.TRThingDef ParentName="HarvesterBase">
+		<defName>Harvester_Nod</defName>
+		<label>Nod harvester</label>	
+		<description>A advanced tiberium harvester developed by Nod, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 		
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Pawns/Mechanical/Nod/Harvester/FX/HN</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Pawns/Mechanical/Nod/Harvester/FX/HNE</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<drawRotated>false</drawRotated>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
+					    <fade>
+							<opacityRange>0.6~1</opacityRange>
+						</fade>
+					</li>
+				</fxLayers>			
+			</li>
+		</comps>
+		<statBases>
+			<MoveSpeed>3.5</MoveSpeed>
+			<ArmorRating_Blunt>0.35</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
+		</statBases>
+		<race>
+			<body>HarvesterBody_Nod</body>
+		</race>
+		<tools>
+			<li>
+				<label>dozer</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>12</power>
+				<cooldownTime>3.5</cooldownTime>
+				<linkedBodyPartsGroup>Dozer</linkedBodyPartsGroup>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+		</tools>
+	</TR.TRThingDef>
+
+</Defs>

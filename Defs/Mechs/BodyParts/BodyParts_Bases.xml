@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<BodyPartDef Abstract= "True" Name="PartBase">
+		<hitPoints>15</hitPoints>
+		<frostbiteVulnerability>2</frostbiteVulnerability>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<bleedRate>0</bleedRate>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>	
+	</BodyPartDef>
+
+	<BodyPartDef Abstract= "True" Name="MechPart">
+		<hitPoints>5</hitPoints>
+		<frostbiteVulnerability>0</frostbiteVulnerability>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<bleedRate>0</bleedRate>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>	
+	</BodyPartDef>
+  
+</Defs>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- GDI -->
+
+  <MakeReinforcedPlate.label>강화합금 주조</MakeReinforcedPlate.label>
+  <MakeReinforcedPlate.description>강화합금 10덩이를 주조합니다.</MakeReinforcedPlate.description>
+  <MakeReinforcedPlate.jobString>강화합금 주조</MakeReinforcedPlate.jobString>
+
+
+  <!--<MakeGDISonicCore.label>음파 공명핵 생산</MakeGDISonicCore.label>-->
+  <!--<MakeGDISonicCore.description>음파 공명핵은 가장 진보한 GDI 장치에 사용되는 핵심 부품입니다.</MakeGDISonicCore.description>-->
+  <!--<MakeGDISonicCore.jobString>음파 공명핵 생산</MakeGDISonicCore.jobString>-->
+
+</LanguageData>

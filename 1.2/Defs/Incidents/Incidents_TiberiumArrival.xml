@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<!-- Meteor Sighting-->
+	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
+		<defName>TiberiumSighting</defName>
+		<label>Tiberium Arrival (Initial)</label>
+		<workerClass>TiberiumRim.IncidentWorker_TR</workerClass>
+		<category>Misc</category>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<baseChance>0.75</baseChance>
+		<earliestDay>7</earliestDay>
+		<minRefireDays>0</minRefireDays>
+		<!--<tale>TiberiumArrival</tale>-->
+		<letterLabel>Meteor Sighting</letterLabel>
+		<letterText>A meteor has been sighted in the skies, we are not sure where it's heading.</letterText>
+		<letterDef>EventLetter</letterDef>
+		<eventsToTrigger>
+			<li>TiberiumMeteorSighting</li>
+		</eventsToTrigger>
+	</IncidentDef>
+	
+	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
+		<defName>TiberiumMeteorite</defName>
+		<label>...</label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>TiberiumRim.IncidentWorker_TiberiumArrival</workerClass>
+		<baseChance>0</baseChance>
+		
+		<letterLabel>Meteor crashed!</letterLabel>
+		<letterText>The strange object has crashed directly onto our map, we might want to investigate it closer...</letterText>
+		<letterDef>NegativeEvent</letterDef>
+		
+		<minRefireDays>70</minRefireDays>
+		<category>ThreatBig</category>
+		<skyfallers>
+			<GreenTiberiumMeteorIncoming>TiberiumMeteoriteChunk,1,1</GreenTiberiumMeteorIncoming>
+			<!--<GreenTiberiumMeteorIncoming>TiberiumCraterHybrid,1,0.33</GreenTiberiumMeteorIncoming>-->
+		</skyfallers>
+	</IncidentDef>
+	
+	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
+		<defName>RedTiberiumShard</defName>
+		<label>red tiberium shard</label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>TiberiumRim.IncidentWorker_TiberiumArrival</workerClass>
+		<baseChance>0.025</baseChance>
+		
+		<letterLabel>Tiberium shard!</letterLabel>
+		<letterText>A red glowing shard crashed onto our Map.</letterText>
+		<letterDef>NegativeEvent</letterDef>
+		<minRefireDays>130</minRefireDays>
+		<category>ThreatSmall</category>
+		<skyfallers>
+			<RedTiberiumShardIncoming>RedTiberiumShard,1,1</RedTiberiumShardIncoming>
+		</skyfallers>
+	</IncidentDef>
+	
+		<!--
+	<IncidentDef>
+		<defName>VolkovArrival</defName>
+		<label>volkov is here</label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>TiberiumRim.IncidentWorker_ChronoAnomaly</workerClass>
+		<baseChance>0</baseChance>
+		
+		<letterLabel>Time Anomaly!</letterLabel>
+		<letterText>Volkov</letterText>
+		<letterDef>NegativeEvent</letterDef>
+		
+		<minRefireDays>175</minRefireDays>
+		<category>ThreatBig</category>
+	</IncidentDef>
+	-->
+	
+</Defs>

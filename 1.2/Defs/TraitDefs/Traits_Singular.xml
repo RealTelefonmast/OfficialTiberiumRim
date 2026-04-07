@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TraitDef>
+		<defName>TiberiumTrait</defName>
+		<commonality>0.025</commonality>
+		<degreeDatas>
+			<li>
+				<label>tiberium mutant</label>
+				<description>[PAWN_nameDef] has survived a Tiberium infection and adapted the substance into [PAWN_possessive] body, living in a sort of symbiosis with the mineral. However, it makes life harder for [PAWN_nameDef] as they must avoid most physical contact to others.</description>
+			</li>
+		</degreeDatas>
+	</TraitDef>
+  
+    <!--
+	<TraitDef>
+		<defName>VisceralDeformity</defName>
+		<commonality>0</commonality>
+		<degreeDatas>
+			<li>
+				<label>viscerally deformed</label>
+				<description>[PAWN_nameDef] survived inside a Visceral Pod, however the time they were inside left them horribly deformed and made them permanently unattractive.</description>
+			</li>
+		</degreeDatas>
+	</TraitDef>
+	-->
+</Defs>

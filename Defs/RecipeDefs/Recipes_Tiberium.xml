@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<RecipeDef>
+		<defName>ExtractResourcesFromGreenTiberium</defName>
+		<label>get resources from green Tiberium</label>
+		<description>This refinery uses complex reactions to break down green Tiberium into steel.</description>
+		<jobString>Refining green Tiberium.</jobString>
+		<workAmount>1500</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+					<li>GreenTiberiumRaw</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<products>
+			<Steel>35</Steel>
+		</products>
+		<workSkill>Crafting</workSkill>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>GreenTiberiumRaw</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+  
+  	<RecipeDef>
+		<defName>ExtractResourcesFromBlueTiberium</defName>
+		<label>get resources from blue Tiberium</label>
+		<description>This refinery uses complex reactions to break down blue Tiberium into plasteel.</description>
+		<jobString>Refining blue Tiberium.</jobString>
+		<workAmount>1750</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>BlueTiberiumRaw</li>
+			  </thingDefs>
+			</filter>
+			<count>10</count>
+		  </li>
+		</ingredients>
+		<products>
+			<Plasteel>15</Plasteel>
+		</products>
+		<workSkill>Crafting</workSkill>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>BlueTiberiumRaw</li>
+				</thingDefs>
+			</fixedIngredientFilter>
+	  </RecipeDef>
+  
+	<RecipeDef>
+		<defName>ExtractResourcesFromRedTiberium</defName>
+		<label>get resources from red Tiberium</label>
+		<description>This refinery uses complex reactions to break down red Tiberium into gold and Uranium.</description>
+		<jobString>Refining red Tiberium.</jobString>
+		<workAmount>2000</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>RedTiberiumRaw</li>
+			  </thingDefs>
+			</filter>
+			<count>5</count>
+		  </li>
+		</ingredients>
+		<products>
+		  <Gold>4</Gold>
+		  <Uranium>2</Uranium>
+		</products>
+		<workSkill>Crafting</workSkill>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>RedTiberiumRaw</li>
+				</thingDefs>
+			</fixedIngredientFilter>
+	</RecipeDef>
+	
+	<RecipeDef>
+		<defName>ExtractResourcesFromVeinTiberium</defName>
+		<label>get resources from Tiberium veins</label>
+		<description>This refinery uses complex reactions to break down Tiberium veins into Uranium and green Tiberium.</description>
+		<jobString>Refining Tiberium veins.</jobString>
+		<workAmount>2200</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>VeinTiberiumRaw</li>
+			  </thingDefs>
+			</filter>
+			<count>5</count>
+		  </li>
+		</ingredients>
+		<products>
+		  <Uranium>5</Uranium>
+		  <GreenTiberiumRaw>5</GreenTiberiumRaw>
+		</products>
+		<workSkill>Crafting</workSkill>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>VeinTiberiumRaw</li>
+				</thingDefs>
+			</fixedIngredientFilter>
+	</RecipeDef>
+	
+	<RecipeDef>
+		<defName>MakeTiberiumFuel</defName>
+		<label>Make Tiberium fuel</label>
+		<description>This refinery uses complex reactions to refine Tiberium.</description>
+		<jobString>Making Tiberium fuel.</jobString>
+		<workAmount>2000</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>GreenTiberiumRaw</li>
+			  </thingDefs>
+			</filter>
+			<count>25</count>
+		  </li>
+		  <li>
+			<filter>
+				<thingDefs>
+					<li>Chemfuel</li>
+				</thingDefs>
+			</filter>
+			<count>5</count>
+		  </li>
+		</ingredients>
+		<products>
+		  <TiberiumFuel>5</TiberiumFuel>
+		</products>
+		<workSkill>Crafting</workSkill>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>Chemfuel</li>
+					<li>GreenTiberiumRaw</li>
+				</thingDefs>
+			</fixedIngredientFilter>
+		<researchPrerequisite>
+			<li>TiberiumPower</li>
+		</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>MakeBookRiparius</defName>
+		<label>Write about green Tiberium.</label>
+		<jobString>Writing about green Tiberium.</jobString>
+		<workAmount>300</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>GreenTiberiumRaw</li>
+			  </thingDefs>
+			</filter>
+			<count>3</count>
+		  </li>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>WoodLog</li>
+			  </thingDefs>
+			</filter>
+			<count>5</count>
+		  </li>
+		</ingredients>
+		<products>
+		  <BookRiparius>1</BookRiparius>
+		</products>
+		<workSkill>Crafting</workSkill>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>GreenTiberiumRaw</li>
+					<li>WoodLog</li>
+				</thingDefs>
+			</fixedIngredientFilter>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>MakeBookVinifera</defName>
+		<label>Write about blue Tiberium.</label>
+		<jobString>Writing about blue Tiberium.</jobString>
+		<workAmount>400</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>BlueTiberiumRaw</li>
+			  </thingDefs>
+			</filter>
+			<count>2</count>
+		  </li>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>WoodLog</li>
+			  </thingDefs>
+			</filter>
+			<count>5</count>
+		  </li>
+		</ingredients>
+		<products>
+		  <BookVinifera>1</BookVinifera>
+		</products>
+		<workSkill>Crafting</workSkill>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>BlueTiberiumRaw</li>
+					<li>WoodLog</li>
+				</thingDefs>
+			</fixedIngredientFilter>
+	</RecipeDef>
+	
+	<RecipeDef>
+		<defName>MakeBookRutila</defName>
+		<label>Write about red Tiberium.</label>
+		<jobString>Writing about red Tiberium.</jobString>
+		<workAmount>600</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>RedTiberiumRaw</li>
+			  </thingDefs>
+			</filter>
+			<count>1</count>
+		  </li>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>WoodLog</li>
+			  </thingDefs>
+			</filter>
+			<count>5</count>
+		  </li>
+		</ingredients>
+		<products>
+		  <BookRutila>1</BookRutila>
+		</products>
+		<workSkill>Crafting</workSkill>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>RedTiberiumRaw</li>
+					<li>WoodLog</li>
+				</thingDefs>
+			</fixedIngredientFilter>
+	</RecipeDef>
+	
+	
+</Defs>

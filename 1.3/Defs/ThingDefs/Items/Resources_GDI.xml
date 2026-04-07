@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TR.TRThingDef ParentName="ResourceBase_TR">
+		<defName>GDI_ReinforcedPlate</defName>
+		<label>Reinforced Plate</label>
+		<description>GDI's engineers have focused on resistance and endurance, this alloy is quite heavy...</description>
+		<graphicData>
+			<texPath>Items/Resource/ReinforcedPlate</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<techLevel>Industrial</techLevel>
+		<stackLimit>75</stackLimit>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<MarketValue>50</MarketValue>
+			<Mass>2</Mass>
+			<Flammability>0</Flammability>
+			<DeteriorationRate>0</DeteriorationRate>
+		</statBases>
+		<smeltable>false</smeltable>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+
+	<TR.TRThingDef ParentName="ResourceBase_TR">
+		<defName>GDI_SonicCore</defName>
+		<label>Sonic Energy Core</label>
+		<description>Sonic technology is extremly experimental and needs special measures to be handled. This component serves as a core part in most sonic weaponry.</description>
+		<graphicData>
+			<texPath>Items/Resource/Core_Sonic</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>25</stackLimit>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<MarketValue>1200</MarketValue>
+			<Mass>5</Mass>
+			<Flammability>1</Flammability>
+			<DeteriorationRate>0.5</DeteriorationRate>
+		</statBases>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3</explosiveRadius>
+				<explosiveDamageType>TRSonic</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.1</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.1</startWickHitPointsPercent>
+				<wickTicks>
+					<min>5</min>
+					<max>5</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+
+<!--
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>IonCannonBeacon</defName>
+		<label>GS-2 beacon</label>
+		<description>The GS-2 Godsend is used to designate an Ion Cannon-strike target, it will be placed and starts a timer, allowing your pawns to reach a safe distance.</description>
+		<graphicData>
+			<texPath>Items/Weapons/IonCannon_Beacon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<techLevel>Industrial</techLevel>
+		<stackLimit>5</stackLimit>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>750</MarketValue>
+			<Mass>5</Mass>
+			<Flammability>0</Flammability>
+			<DeteriorationRate>0.25</DeteriorationRate>
+		</statBases>
+		<smeltable>false</smeltable>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>-->
+	
+	<!--
+	<ThingDef ParentName="BuildingBase_TR">
+		<defName>IonCannonBeacon_Placed</defName>
+		<label>GS-2 beacon (placed)</label>
+		<description>An active GS-2 beacon!</description>
+		<graphicData>
+			<texPath>Items/Weapons/IonCannon_Beacon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>0</MarketValue>
+			<Mass>5</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<selectable>true</selectable>
+		<drawerType>MapMeshOnly</drawerType>
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+	</ThingDef>-->
+
+	
+</Defs>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Leather_BlueTib.label>청색 결정질 모피</Leather_BlueTib.label>
+  <Leather_BlueTib.description>무두질된 결정질 모피. 뭔가를 만드는 재료로 사용할 수 있을 겁니다.</Leather_BlueTib.description>
+  <Leather_BlueTib.stuffProps.stuffAdjective>청색 결정질 모피</Leather_BlueTib.stuffProps.stuffAdjective>
+
+  <Leather_GreenTib.label>녹색 결정질 모피</Leather_GreenTib.label>
+  <Leather_GreenTib.description>무두질된 결정질 모피. 뭔가를 만드는 재료로 사용할 수 있을 겁니다.</Leather_GreenTib.description>
+  <Leather_GreenTib.stuffProps.stuffAdjective>녹색 결정질 모피</Leather_GreenTib.stuffProps.stuffAdjective>
+
+  <Leather_BlackTib.label>흑색 결정질 모피</Leather_BlackTib.label>
+  <Leather_BlackTib.description>무두질된 결정질 모피. 뭔가를 만드는 재료로 사용할 수 있을 겁니다.</Leather_BlackTib.description>
+  <Leather_BlackTib.stuffProps.stuffAdjective>흑색 결정질 모피</Leather_BlackTib.stuffProps.stuffAdjective>
+
+  <Leather_Visceral.label>변이한 가죽</Leather_Visceral.label>
+  <Leather_Visceral.description>어떻게든 벗겨낸 끔찍한 살덩이. 단지 보는 것만으로도 역겨운 기분이 듭니다.</Leather_Visceral.description>
+  <Leather_Visceral.stuffProps.stuffAdjective>변이한 가죽</Leather_Visceral.stuffProps.stuffAdjective>
+
+
+</LanguageData>

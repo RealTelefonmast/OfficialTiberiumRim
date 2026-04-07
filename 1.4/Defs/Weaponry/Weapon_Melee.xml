@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<TR.TRThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+		<defName>GDI_Wrench</defName>
+		<label>Engineering Wrench</label>
+		<description>An engineer's good wrench, improves work speed.</description>
+		<graphicData>
+			<texPath>Items/Weapons/GDI/Wrench</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>7500</WorkToMake>
+			<Mass>1.5</Mass>
+		</statBases>
+		<costList>
+			<GDI_ReinforcedPlate>5</GDI_ReinforcedPlate>
+			<Steel>75</Steel>
+		</costList>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<recipeMaker>
+			<recipeUsers>
+				<li>GDI_Factory</li>
+			</recipeUsers>
+		</recipeMaker>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>5</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Demolish</li>
+				</capacities>
+				<power>10</power>
+				<cooldownTime>1.5</cooldownTime>
+			</li>
+		</tools>
+		<equippedStatOffsets>
+			<WorkSpeedGlobal>0.5</WorkSpeedGlobal>
+		</equippedStatOffsets>
+		<weaponTags>
+			<li>EngiWrench</li>
+		</weaponTags>
+		<weaponClasses>
+			<li>Melee</li>
+			<li>MeleeBlunt</li>
+		</weaponClasses>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+
+</Defs>

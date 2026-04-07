@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Turrets -->
+
+  <Bullet_Shredder.label>대못 발사기</Bullet_Shredder.label>
+
+
+  <!-- Pesonal -->
+
+  <Bullet_NodStandard.label>탄환</Bullet_NodStandard.label>
+  <Bullet_Nod_TwinFlechetteGun.label>파편</Bullet_Nod_TwinFlechetteGun.label>
+  <Bullet_Flamethrower.label>화염</Bullet_Flamethrower.label>
+  <Bullet_TiberiumGas.label>가스</Bullet_TiberiumGas.label>
+
+  <Bullet_NodRocket.label>로켓</Bullet_NodRocket.label>
+  <Bullet_NodRocket.description>로켓</Bullet_NodRocket.description>
+
+  <Bullet_Nod_Grenade.label>수류탄</Bullet_Nod_Grenade.label>
+  <Bullet_Sbomb.label>자살폭탄</Bullet_Sbomb.label>
+
+
+</LanguageData>

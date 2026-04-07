@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TRThingDef ParentName="PlantBase_TR">
+		<defName>TiberiumGrass</defName>
+		<label>tiberium grass</label>
+		<description>A strange type of grass-like flora, don't get entangled in the tentacles!</description>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Beauty>-12</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/Flora/Grass/Green/Base</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<graphicData2>
+			<texPath>Tiberium/Flora/Grass/Green/FX</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData2>
+		<plant>
+			<harvestedThingDef>TiberiumPlantGrass</harvestedThingDef>
+			<harvestYield>6</harvestYield>
+			<growDays>2.5</growDays>
+		</plant>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="PlantBase_TR">
+		<defName>TiberiumGrass_Blue</defName>
+		<label>blue tiberium grass</label>
+		<description>A strange type of grass-like flora, don't get entangled in the tentacles!</description>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Beauty>-12</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/Flora/Grass/Blue/Base</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<graphicData2>
+			<texPath>Tiberium/Flora/Grass/Blue/FX</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData2>
+		<plant>
+			<harvestedThingDef>TiberiumPlantGrass</harvestedThingDef>
+			<harvestYield>6</harvestYield>
+			<growDays>2.5</growDays>
+		</plant>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="PlantBase_TR">
+		<defName>TiberiumBush</defName>
+		<label>tiberium bush</label>
+		<description>A bunch of Tiberium flora forming a bush.</description>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<Beauty>-16</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/Flora/Bush</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shadowData>
+				<volume>(0.55, 0.2, 0.2)</volume>
+			</shadowData>
+		</graphicData>
+		<graphicData2>
+			<texPath>Tiberium/Flora/Bush/FX</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData2>
+		<plant>
+			<harvestedThingDef>TiberiumPlantBerry</harvestedThingDef>
+			<harvestYield>6</harvestYield>
+			<growDays>3</growDays>
+			<wildClusterRadius>4</wildClusterRadius>
+		</plant>
+	</TiberiumRim.TRThingDef>
+  
+	<TiberiumRim.TRThingDef Abstract="True" Name="ShroomBase" ParentName="PlantBase_TR">
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Beauty>-10</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<plant>
+			<harvestedThingDef>TiberiumPlantShroom</harvestedThingDef>
+			<harvestYield>6</harvestYield>
+			<growDays>2.5</growDays>
+			<visualSizeRange>
+				<min>0.8</min>
+				<max>1.8</max>
+			</visualSizeRange>
+			<wildClusterRadius>4</wildClusterRadius>
+		</plant>
+	</TiberiumRim.TRThingDef>
+  
+	<TiberiumRim.TRThingDef ParentName="ShroomBase">
+		<defName>TiberiumShroom_Yellow</defName>
+		<label>yellow tiberium mushroom</label>
+		<description>This glowy plant resembles a mushroom, strange what Tiberium radiation can create.</description>
+		<graphicData>
+			<texPath>Tiberium/Flora/Shroom/yello</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<graphicData2>
+			<texPath>Tiberium/Flora/Shroom/yello/FX</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData2>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(70,110,0,0)</glowColor>
+			</li>
+		</comps>
+	</TiberiumRim.TRThingDef>
+
+	<TiberiumRim.TRThingDef ParentName="ShroomBase">
+		<defName>TiberiumShroom_Blue</defName>
+		<label>blue tiberium mushroom</label>
+		<description>This glowy plant resembles a mushroom, strange what Tiberium radiation can create.</description>
+		<graphicData>
+			<texPath>Tiberium/Flora/Shroom/blu</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<graphicData2>
+			<texPath>Tiberium/Flora/Shroom/blu/FX</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData2>
+		<comps>
+		  <li Class="CompProperties_Glower">
+			<glowRadius>3</glowRadius>
+			<glowColor>(0,70,110,0)</glowColor>
+		  </li>
+		</comps>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="ShroomBase">
+		<defName>TiberiumShroom_Purple</defName>
+		<label>purple tiberium mushroom</label>
+		<description>This glowy plant resembles a mushroom, strange what Tiberium radiation can create.</description>
+		<graphicData>
+			<texPath>Tiberium/Flora/Shroom/purp</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<graphicData2>
+			<texPath>Tiberium/Flora/Shroom/purp/FX</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData2>
+		<comps>
+		  <li Class="CompProperties_Glower">
+			<glowRadius>3</glowRadius>
+			<glowColor>(110,0,110,0)</glowColor>
+		  </li>
+		</comps>
+	</TiberiumRim.TRThingDef>
+	
+	<!-- Expeller, does the expelling -->
+	
+	<TiberiumRim.TRThingDef ParentName="PlantBase_TR">
+		<defName>TiberiumExpeller</defName>
+		<label>tiberian vent</label>
+		<description>!</description>
+		<statBases>
+			<MaxHitPoints>130</MaxHitPoints>
+			<Beauty>-18</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>Tiberium/Flora/Expeller</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<plant>
+			<growDays>3</growDays>
+		</plant>
+	</TiberiumRim.TRThingDef>
+	
+	
+	<TiberiumRim.TRThingDef ParentName="PlantBase_TR">
+		<defName>TiberiumTree</defName>
+		<label>tiberium tree</label>
+		<description>A Tiberium infested tree, seems to be mostly harmless.</description>
+		<altitudeLayer>Building</altitudeLayer>
+		<graphicData>
+			<texPath>Tiberium/Flora/Tree/Base</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shadowData>
+				<volume>(0.24, 0.4, 0.13)</volume>
+				<offset>(-0.03,0,-0.44)</offset>
+			</shadowData>
+		</graphicData>
+		<graphicData2>
+			<texPath>Tiberium/Flora/Tree/FX</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData2>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<Beauty>-16</Beauty>
+		</statBases>
+		<plant>
+			<soundHarvesting>Harvest_Tree</soundHarvesting>
+			<soundHarvestFinish>Harvest_Tree_Finish</soundHarvestFinish>
+			<harvestedThingDef>TiberiumPlantTree</harvestedThingDef>
+			<harvestYield>5</harvestYield>
+			<growDays>12</growDays>
+			<visualSizeRange>
+				<min>1.5</min>
+				<max>2.5</max>
+			</visualSizeRange>
+			<maxMeshCount>1</maxMeshCount>
+		</plant>
+	</TiberiumRim.TRThingDef>
+	
+	
+	<TiberiumRim.TRThingDef ParentName="PlantBase_TR">
+		<defName>DeadTiberiumTree</defName>
+		<label>dead tree</label>
+		<description>.</description>
+		<altitudeLayer>Building</altitudeLayer>
+		<graphicData>
+			<texPath>Tiberium/Flora/Tree/Base</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shadowData>
+				<volume>(0.24, 0.4, 0.13)</volume>
+				<offset>(-0.03,0,-0.44)</offset>
+			</shadowData>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<Beauty>-16</Beauty>
+		</statBases>
+		<plant>
+			<soundHarvesting>Harvest_Tree</soundHarvesting>
+			<soundHarvestFinish>Harvest_Tree_Finish</soundHarvestFinish>
+			<harvestedThingDef>TiberiumPlantTree</harvestedThingDef>
+			<harvestYield>5</harvestYield>
+			<growDays>12</growDays>
+			<visualSizeRange>
+				<min>1.5</min>
+				<max>2.5</max>
+			</visualSizeRange>
+			<maxMeshCount>1</maxMeshCount>
+		</plant>
+	</TiberiumRim.TRThingDef>
+
+</Defs>

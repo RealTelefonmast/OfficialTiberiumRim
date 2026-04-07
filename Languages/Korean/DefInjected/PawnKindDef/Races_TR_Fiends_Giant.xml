@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Thrumbo -->
+
+  <Thrimbo.label>오염보</Thrimbo.label>
+  <Thrimbo.labelPlural>오염보</Thrimbo.labelPlural>
+  <Thrimbo.lifeStages.0.label>어린 오염보</Thrimbo.lifeStages.0.label>
+  <Thrimbo.lifeStages.0.labelPlural>어린 오염보</Thrimbo.lifeStages.0.labelPlural>
+  <Thrimbo.lifeStages.0.labelMale>어린 오염보</Thrimbo.lifeStages.0.labelMale>
+  <Thrimbo.lifeStages.0.labelMalePlural>어린 오염보</Thrimbo.lifeStages.0.labelMalePlural>
+  <Thrimbo.lifeStages.0.labelFemale>어린 오염보</Thrimbo.lifeStages.0.labelFemale>
+  <Thrimbo.lifeStages.0.labelFemalePlural>어린 오염보</Thrimbo.lifeStages.0.labelFemalePlural>
+  <Thrimbo.lifeStages.1.label>성장기 오염보</Thrimbo.lifeStages.1.label>
+  <Thrimbo.lifeStages.1.labelPlural>성장기 오염보</Thrimbo.lifeStages.1.labelPlural>
+  <Thrimbo.lifeStages.1.labelMale>성장기 오염보</Thrimbo.lifeStages.1.labelMale>
+  <Thrimbo.lifeStages.1.labelMalePlural>성장기 오염보</Thrimbo.lifeStages.1.labelMalePlural>
+  <Thrimbo.lifeStages.1.labelFemale>성장기 오염보</Thrimbo.lifeStages.1.labelFemale>
+  <Thrimbo.lifeStages.1.labelFemalePlural>성장기 오염보</Thrimbo.lifeStages.1.labelFemalePlural>
+  <Thrimbo.lifeStages.2.label>오염보</Thrimbo.lifeStages.2.label>
+  <Thrimbo.lifeStages.2.labelPlural>오염보</Thrimbo.lifeStages.2.labelPlural>
+  <Thrimbo.lifeStages.2.labelMale>오염보</Thrimbo.lifeStages.2.labelMale>
+  <Thrimbo.lifeStages.2.labelMalePlural>오염보</Thrimbo.lifeStages.2.labelMalePlural>
+  <Thrimbo.lifeStages.2.labelFemale>오염보</Thrimbo.lifeStages.2.labelFemale>
+  <Thrimbo.lifeStages.2.labelFemalePlural>오염보</Thrimbo.lifeStages.2.labelFemalePlural>
+  <Thrimbo.labelMale>수컷 오염보</Thrimbo.labelMale>
+  <Thrimbo.labelMalePlural>수컷 오염보</Thrimbo.labelMalePlural>
+  <Thrimbo.labelFemale>암컷 오염보</Thrimbo.labelFemale>
+  <Thrimbo.labelFemalePlural>암컷 오염보</Thrimbo.labelFemalePlural>
+
+
+  <!-- Bears -->
+
+  <BigTiberiumFiend.label>타이베리움 곰</BigTiberiumFiend.label>
+  <BigTiberiumFiend.labelPlural>타이베리움 곰</BigTiberiumFiend.labelPlural>
+  <BigTiberiumFiend.lifeStages.0.label>어린 타이베리움 곰</BigTiberiumFiend.lifeStages.0.label>
+  <BigTiberiumFiend.lifeStages.0.labelPlural>어린 타이베리움 곰</BigTiberiumFiend.lifeStages.0.labelPlural>
+  <BigTiberiumFiend.lifeStages.0.labelMale>어린 타이베리움 곰</BigTiberiumFiend.lifeStages.0.labelMale>
+  <BigTiberiumFiend.lifeStages.0.labelMalePlural>어린 타이베리움 곰</BigTiberiumFiend.lifeStages.0.labelMalePlural>
+  <BigTiberiumFiend.lifeStages.0.labelFemale>어린 타이베리움 곰</BigTiberiumFiend.lifeStages.0.labelFemale>
+  <BigTiberiumFiend.lifeStages.0.labelFemalePlural>어린 타이베리움 곰</BigTiberiumFiend.lifeStages.0.labelFemalePlural>
+  <BigTiberiumFiend.lifeStages.1.label>성장기 타이베리움 곰</BigTiberiumFiend.lifeStages.1.label>
+  <BigTiberiumFiend.lifeStages.1.labelPlural>성장기 타이베리움 곰</BigTiberiumFiend.lifeStages.1.labelPlural>
+  <BigTiberiumFiend.lifeStages.1.labelMale>성장기 타이베리움 곰</BigTiberiumFiend.lifeStages.1.labelMale>
+  <BigTiberiumFiend.lifeStages.1.labelMalePlural>성장기 타이베리움 곰</BigTiberiumFiend.lifeStages.1.labelMalePlural>
+  <BigTiberiumFiend.lifeStages.1.labelFemale>성장기 타이베리움 곰</BigTiberiumFiend.lifeStages.1.labelFemale>
+  <BigTiberiumFiend.lifeStages.1.labelFemalePlural>성장기 타이베리움 곰</BigTiberiumFiend.lifeStages.1.labelFemalePlural>
+  <BigTiberiumFiend.lifeStages.2.label>타이베리움 곰</BigTiberiumFiend.lifeStages.2.label>
+  <BigTiberiumFiend.lifeStages.2.labelPlural>타이베리움 곰</BigTiberiumFiend.lifeStages.2.labelPlural>
+  <BigTiberiumFiend.lifeStages.2.labelMale>타이베리움 곰</BigTiberiumFiend.lifeStages.2.labelMale>
+  <BigTiberiumFiend.lifeStages.2.labelMalePlural>타이베리움 곰</BigTiberiumFiend.lifeStages.2.labelMalePlural>
+  <BigTiberiumFiend.lifeStages.2.labelFemale>타이베리움 곰</BigTiberiumFiend.lifeStages.2.labelFemale>
+  <BigTiberiumFiend.lifeStages.2.labelFemalePlural>타이베리움 곰</BigTiberiumFiend.lifeStages.2.labelFemalePlural>
+  <BigTiberiumFiend.labelMale>타이베리움 곰</BigTiberiumFiend.labelMale>
+  <BigTiberiumFiend.labelMalePlural>타이베리움 곰</BigTiberiumFiend.labelMalePlural>
+  <BigTiberiumFiend.labelFemale>타이베리움 곰</BigTiberiumFiend.labelFemale>
+  <BigTiberiumFiend.labelFemalePlural>타이베리움 곰</BigTiberiumFiend.labelFemalePlural>
+
+
+  <!-- Muffalo -->
+
+  <Tiffalo.label>티팔로</Tiffalo.label>
+  <Tiffalo.labelPlural>티팔로</Tiffalo.labelPlural>
+  <Tiffalo.lifeStages.0.label>어린 티팔로</Tiffalo.lifeStages.0.label>
+  <Tiffalo.lifeStages.0.labelPlural>어린 티팔로</Tiffalo.lifeStages.0.labelPlural>
+  <Tiffalo.lifeStages.0.labelMale>어린 티팔로</Tiffalo.lifeStages.0.labelMale>
+  <Tiffalo.lifeStages.0.labelMalePlural>어린 티팔로</Tiffalo.lifeStages.0.labelMalePlural>
+  <Tiffalo.lifeStages.0.labelFemale>어린 티팔로</Tiffalo.lifeStages.0.labelFemale>
+  <Tiffalo.lifeStages.0.labelFemalePlural>어린 티팔로</Tiffalo.lifeStages.0.labelFemalePlural>
+  <Tiffalo.lifeStages.1.label>성장기 티팔로</Tiffalo.lifeStages.1.label>
+  <Tiffalo.lifeStages.1.labelPlural>성장기 티팔로</Tiffalo.lifeStages.1.labelPlural>
+  <Tiffalo.lifeStages.1.labelMale>성장기 티팔로</Tiffalo.lifeStages.1.labelMale>
+  <Tiffalo.lifeStages.1.labelMalePlural>성장기 티팔로</Tiffalo.lifeStages.1.labelMalePlural>
+  <Tiffalo.lifeStages.1.labelFemale>성장기 티팔로</Tiffalo.lifeStages.1.labelFemale>
+  <Tiffalo.lifeStages.1.labelFemalePlural>성장기 티팔로</Tiffalo.lifeStages.1.labelFemalePlural>
+  <Tiffalo.lifeStages.2.label>티팔로</Tiffalo.lifeStages.2.label>
+  <Tiffalo.lifeStages.2.labelPlural>티팔로</Tiffalo.lifeStages.2.labelPlural>
+  <Tiffalo.lifeStages.2.labelMale>티팔로</Tiffalo.lifeStages.2.labelMale>
+  <Tiffalo.lifeStages.2.labelMalePlural>티팔로</Tiffalo.lifeStages.2.labelMalePlural>
+  <Tiffalo.lifeStages.2.labelFemale>티팔로</Tiffalo.lifeStages.2.labelFemale>
+  <Tiffalo.lifeStages.2.labelFemalePlural>티팔로</Tiffalo.lifeStages.2.labelFemalePlural>
+  <Tiffalo.labelMale>수컷 티팔로</Tiffalo.labelMale>
+  <Tiffalo.labelMalePlural>수컷 티팔로</Tiffalo.labelMalePlural>
+  <Tiffalo.labelFemale>암컷 티팔로</Tiffalo.labelFemale>
+  <Tiffalo.labelFemalePlural>암컷 티팔로</Tiffalo.labelFemalePlural>
+
+
+</LanguageData>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TR.TRThingDef ParentName="StationBase_TR">
+		<defName>GDI_Factory</defName>
+		<label>GDI fabricator</label>
+		<description>The GDI factory allows you to construct many different items, weapons and units if available.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<size>(3,2)</size>
+		<minifiedDef />
+		<thingCategories Inherit="false" />
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Production/Factory_GDI</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>7500</WorkToBuild>
+			<Flammability>1</Flammability>
+		</statBases>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+			<ComponentSpacer>3</ComponentSpacer>
+		</costList>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<recipes>
+			<li>MakeReinforcedPlate</li>
+			<li>MakeGDISonicCore</li>
+		</recipes>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>300</basePowerConsumption>
+			</li>
+			<!--
+			<li Class="TR.CompProperties_TNS">
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<volumeConfig>
+							<capacity>1000</capacity>
+							<area>1</area>
+							<elevation>0</elevation>
+							<height>1</height>
+							<dropContents>true</dropContents>
+							<leaveContainer>true</leaveContainer>
+							<storeEvenly>false</storeEvenly>
+							<values>
+								<allowedValues>
+									<li>TibGreen</li>	
+									<li>TibBlue</li>	
+									<li>TibRed</li>	
+									<li>TibSludge</li>	
+								</allowedValues>
+							</values>
+						</volumeConfig>
+						<roles>
+							<li>Transmitter</li>
+							<li>Requester</li>
+						</roles>
+					</li>
+				</networks>
+			</li>
+			-->
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Processing</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="StationBase_TR">
+		<defName>GDI_Hangar</defName>
+		<label>GDI vehicle factory</label>
+		<thingClass>TR.Building_Hangar</thingClass>
+		<description>This hangar is used for mechanical unit construction.</description>
+		<size>(5,5)</size>
+		<minifiedDef />
+		<thingCategories Inherit="false" />
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Production/Hangar/Base</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>7,7</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+		<statBases>
+			<MaxHitPoints>750</MaxHitPoints>
+			<WorkToBuild>15000</WorkToBuild>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<costList>
+			<Steel>500</Steel>
+			<ComponentIndustrial>15</ComponentIndustrial>
+			<ComponentSpacer>10</ComponentSpacer>
+		</costList>
+		<inspectorTabs>
+			<li>TR.ITab_MechConstruction</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Production/Hangar/BaseLight</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,7)</drawSize>
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Production/Hangar/Cover</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<drawSize>(7,7)</drawSize>
+						</graphicData>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Production/Hangar/CoverLight</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,7)</drawSize>
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+				</fxLayers>
+			</li>
+			<li Class="TR.CompProperties_MechStation">
+				<mechRecipes>
+					<li>MakeRepairDroneCommon</li>
+					<!--<li>MakeGDIMammoth</li>-->
+				</mechRecipes>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+			</li>
+		</comps>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<fillPercent>1</fillPercent>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Processing</category>
+			</li>
+			<li Class="TeleCore.TeleDefExtension">
+				<thingGroups>
+					<groups>
+						<li>MechHangars</li>
+					</groups>
+				</thingGroups>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+
+</Defs>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TR.TRThingDef ParentName="ResourceBase_TR">
+		<defName>Nod_CarbonPlate</defName>
+		<label>Carbon Plate</label>
+		<description>Nod's engineers have been trying to figure out a material that is strong enough to sustain any direct attack but light enough to allow quick construction. After years of development this new carbon based material was born.</description>
+		<graphicData>
+			<texPath>Items/Resource/CarbonPlate</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<techLevel>Industrial</techLevel>
+		<stackLimit>75</stackLimit>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>50</MarketValue>
+			<Mass>0.5</Mass>
+			<Flammability>0.5</Flammability>
+			<DeteriorationRate>0</DeteriorationRate>
+		</statBases>
+		<smeltable>false</smeltable>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="ResourceBase_TR">
+		<defName>Nod_LQTiberiumCore</defName>
+		<label>Liquid Tiberium Core</label>
+		<description>A stabilized liquid Tiberium container, making sure the liquid may be handled without much risk.</description>
+		<graphicData>
+			<texPath>Items/Resource/LiquidTiberiumCore</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>25</stackLimit>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<MarketValue>1200</MarketValue>
+			<Mass>5</Mass>
+			<Flammability>1</Flammability>
+			<DeteriorationRate>0.5</DeteriorationRate>
+		</statBases>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>4</explosiveRadius>
+				<explosiveDamageType>TiberiumExplosionLQ</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.2</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+				<wickTicks>
+					<min>5</min>
+					<max>5</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+		<!-- custom tiberium spawner explosion 
+	<ThingDef ParentName="MakeableDrugPillBase">
+		<defName>TiberiumInfusion</defName>
+		<label>Tiberium Infusion</label>
+		<description>This infusion will cure most Tiberium sickness and add a permanent Tiberium Immunity to the consumer.</description>
+		<graphicData>
+			<texPath>Items/Tibinfusion</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>750</WorkToMake>
+			<MarketValue>2500</MarketValue>
+			<Mass>0.25</Mass>
+		</statBases>
+		<techLevel>Industrial</techLevel>
+		<ingestible>
+			<drugCategory>Medical</drugCategory>
+			<outcomeDoers>
+			<li Class="IngestionOutcomeDoer_GiveHediff">
+			  <hediffDef>TiberiumInfusionImmunity</hediffDef>
+			  <severity>1.0</severity>
+			</li>
+		  </outcomeDoers>
+		</ingestible>
+		<recipeMaker>
+			<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+			<workSkill>Intellectual</workSkill>
+			<recipeUsers>
+				<li>Nod_Factory</li>
+			</recipeUsers>
+			<researchPrerequisite>NodResearch_TiberiumDrugs</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<costList>
+			<Neutroamine>10</Neutroamine>
+			<MedicineIndustrial>1</MedicineIndustrial>
+			<TiberiumPlantTree>10</TiberiumPlantTree>
+			<TiberiumPlantBerry>10</TiberiumPlantBerry>
+			<TiberiumPlantGrass>10</TiberiumPlantGrass>
+			<TiberiumPlantShroom>10</TiberiumPlantShroom>
+		</costList>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>
+	-->
+	
+	<!-- 
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>TempleShell_Explosive</defName>
+		<label>tactical nuclear shell</label>
+		<description>A tactical nuclear missile to be fired by a Nod temple, these shells will big chain explode on contact.</description>
+		<graphicData>
+			<texPath>Items/Temple_Shell</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>1</stackLimit>
+		<tickerType>Normal</tickerType>
+		<techLevel>Industrial</techLevel>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>6</explosiveRadius>
+				<damageAmountBase>500</damageAmountBase>
+				<explosiveDamageType>TRNuke</explosiveDamageType>
+				<postExplosionSpawnThingDef>Gas_Tiberium</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
+				<explosionEffect>GiantExplosion</explosionEffect>
+				<wickTicks>
+					<min>10</min>
+					<max>30</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<statBases>
+			<MarketValue>15000</MarketValue>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Mass>25</Mass>
+			<Beauty>-50</Beauty>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<projectileWhenLoaded>Bullet_TempleBomb</projectileWhenLoaded>
+		<recipeMaker> 
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<workAmount>30000</workAmount>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>Nod_Factory</li>
+			</recipeUsers>
+			<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+			<researchPrerequisite>NodResearch_Temple</researchPrerequisite>
+		</recipeMaker>
+		<costList>
+			<Shell_HighExplosive>5</Shell_HighExplosive>
+			<Nod_LQTiberiumCore>3</Nod_LQTiberiumCore>
+			<Uranium>5</Uranium>
+		</costList>
+		<thingCategories>
+			<li>TempleShells</li>
+		</thingCategories>		
+	</ThingDef>
+	
+	-->
+	
+</Defs>

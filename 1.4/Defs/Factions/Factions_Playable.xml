@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!--
+	<FactionDef ParentName="FactionBase">
+		<defName>ScrinFactionPlayer</defName>
+		<label>Scrin Mining Force</label>
+		<description>A Scrin base, recently arrived for harvesting operations.</description>
+		<isPlayer>true</isPlayer>
+		<basicMemberKind>Colonist</basicMemberKind>
+		<pawnSingular>scrin unit</pawnSingular>
+		<pawnsPlural>scrin units</pawnsPlural>
+		<techLevel>Ultra</techLevel>
+		<colorSpectrum>
+		  <li>(164, 28, 255)</li>
+		</colorSpectrum>
+		<backstoryFilters>
+			<li>
+				<categories>
+				  <li>Offworld</li>
+				</categories>
+			</li>
+		</backstoryFilters>
+		<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+		<factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>
+		<playerInitialSettlementNameMaker>NamerInitialSettlementColony</playerInitialSettlementNameMaker>
+		<factionNameMaker>NamerFactionOutlander</factionNameMaker>
+		<settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+		<geneticVariance>1</geneticVariance>
+		<startingResearchTags>
+			<li>ClassicStart</li>
+		</startingResearchTags>
+		<startingTechprintsResearchTags>
+			<li>ClassicStart</li>
+			<li>ClassicStartTechprints</li>
+		</startingTechprintsResearchTags>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Synthread</li>
+			</thingDefs>
+		</apparelStuffFilter>
+	</FactionDef>
+  -->
+</Defs>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>TeleCore.TeleUI</RootNamespace>
+        <AssemblyName>TeleCore.UI</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TeleCore.AssetLoader\TeleCore.AssetLoader.csproj" />
+    </ItemGroup>
+    
+</Project>

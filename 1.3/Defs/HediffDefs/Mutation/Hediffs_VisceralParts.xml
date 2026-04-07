@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<HediffDef Abstract="True" Name="VisceralPart" ParentName="HediffBase_TR">
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(155, 160, 75)</defaultLabelColor>
+		<makesAlert>false</makesAlert>
+		<tendable>false</tendable>
+		<isBad>true</isBad>
+		<everCurableByItem>true</everCurableByItem>
+		<cureAllAtOnceIfCuredByItem>false</cureAllAtOnceIfCuredByItem>
+		<makesSickThought>true</makesSickThought>
+	</HediffDef>
+
+	<!-- Organs -->
+	<HediffDef ParentName="VisceralPart">
+		<defName>ViscousPart</defName>
+		<label>viscous tumor</label>
+		<stages>
+			<li>
+				<painFactor>1.05</painFactor>
+				<partEfficiencyOffset>-0.15</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<HediffDef ParentName="VisceralPart">
+		<defName>ViscousBloat</defName>
+		<label>bloated gland</label>
+		<description>This part has a large viscous growth on it. If the pawn dies it may cause an explosion.</description>
+		<comps>
+			<li Class="TiberiumRim.HediffCompProperties_ExplodeOnPartDestroyed">
+				<explosionProps>
+					<explosionRadius>1.5</explosionRadius>
+					<damageOverride>5</damageOverride>
+					<damageDef>TiberiumExplosionFrag</damageDef>
+					<postSpawnDef>Gas_Chemical</postSpawnDef>
+					<postSpawnChance>0.5</postSpawnChance>
+				</explosionProps>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<painFactor>1.2</painFactor>
+				<partEfficiencyOffset>-0.2</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<!-- Bone -->
+	<HediffDef ParentName="VisceralPart">
+		<defName>VisceralBone</defName>
+		<label>viscous bone marrow</label>
+		<stages>
+			<li>
+				<painFactor>1.05</painFactor>
+				<partEfficiencyOffset>-0.45</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<!-- Outside -->
+	<HediffDef ParentName="VisceralPart">
+		<defName>VisceralBlister</defName>
+		<label>visceral blister</label>
+		<tendable>true</tendable>
+		<minSeverity>0</minSeverity>
+		<maxSeverity>0.5</maxSeverity>
+		<initialSeverity>0.25</initialSeverity>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<baseTendDurationHours>12</baseTendDurationHours>
+				<severityPerDayTended>-0.5</severityPerDayTended>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<painFactor>1.14</painFactor>
+				<partEfficiencyOffset>-0.07</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<!---->
+	<TiberiumRim.TRHediffDef Abstract="True" Name="VisceralLimb" ParentName="AddedPart_TR">
+		<defaultLabelColor>(155, 160, 75)</defaultLabelColor>
+		<isNaturalInsertion>true</isNaturalInsertion>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>visceral tentacle</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Stab</li>
+						</capacities>
+						<power>20</power>
+						<cooldownTime>2.5</cooldownTime>
+						<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+					</li>
+				</tools>
+			</li>
+		</comps>
+		<addedPartProps>
+			<solid>false</solid>
+			<isGoodWeapon>true</isGoodWeapon>
+			<partEfficiency>0.5</partEfficiency>
+		</addedPartProps>
+	</TiberiumRim.TRHediffDef>
+	
+	<TiberiumRim.TRHediffDef ParentName="VisceralLimb">
+		<defName>VisceralArm</defName>
+		<label>visceral tentacle arm</label>
+	</TiberiumRim.TRHediffDef>
+	
+	<TiberiumRim.TRHediffDef ParentName="VisceralLimb">
+		<defName>VisceralLeg</defName>
+		<label>visceral tentacle leg</label>
+	</TiberiumRim.TRHediffDef>
+	
+</Defs>

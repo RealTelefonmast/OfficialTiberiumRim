@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef Abstract="True" Name="EggBase" ParentName="OrganicProductBase" >
+    <graphicData>
+      <texPath>Things/Item/Resource/AnimalProductRaw/EggBirdSmall</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <ingestible>
+      <foodType>AnimalProduct</foodType>
+      <nutrition>0.25</nutrition>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>RawMeat_Eat</ingestSound>
+      <tasteThought>AteRawFood</tasteThought>
+    </ingestible>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <statBases>
+      <Mass>0.15</Mass>
+			<MaxHitPoints>20</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+
+  <ThingDef Abstract="True" Name="EggUnfertBase" ParentName="EggBase" >
+    <ingestible>
+      <preferability>RawBad</preferability>
+    </ingestible>
+    <thingCategories>
+      <li>EggsUnfertilized</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>15</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+			<li Class="CompProperties_FoodPoisoningChance">
+				<humanlikeOnly>true</humanlikeOnly>
+			</li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef Abstract="True" Name="EggFertBase" ParentName="EggBase" >
+    <tickerType>Normal</tickerType>
+    <ingestible>
+      <preferability>DesperateOnly</preferability>
+    </ingestible>
+    <thingCategories>
+      <li>EggsFertilized</li>
+    </thingCategories>
+		<comps>
+			<li Class="CompProperties_FoodPoisoningChance">
+				<humanlikeOnly>true</humanlikeOnly>
+			</li>
+			<li Class="CompProperties_TemperatureRuinable">
+				<minSafeTemperature>0</minSafeTemperature>
+				<maxSafeTemperature>50</maxSafeTemperature>
+				<progressPerDegreePerTick>0.00003</progressPerDegreePerTick>
+			</li>
+		</comps>
+  </ThingDef>
+  
+    <!-- Crawler Egg-->
+	
+	<ThingDef ParentName="EggUnfertBase">
+		<defName>EggCrawelerUnfertilized</defName>
+		<label>crawler egg (unfert.)</label>
+		<description>Unfertilized crawler egg. It can be eaten raw, but it's much, much better cooked.</description>
+		<graphicData>
+			<color>(0,0,0)</color>
+		</graphicData>
+		<statBases>
+			<MarketValue>140.0</MarketValue>
+		</statBases>
+	</ThingDef>
+	
+	<ThingDef ParentName="EggFertBase">
+		<defName>EggCrawlerFertilized</defName>
+		<label>crawler egg (fert.)</label>
+		<description>Fertilized crawler egg. If all goes well, it should hatch into a baby crawler. It can be eaten raw, but it's much better cooked.</description>
+		<graphicData>
+			<texPath>Things/Item/Resource/AnimalProductRaw/EggOval</texPath>
+			<color>(0,0,0)</color>
+		</graphicData>
+		<statBases>
+			<MarketValue>180.0</MarketValue>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Hatcher">
+				<hatcherDaystoHatch>28</hatcherDaystoHatch>
+				<hatcherPawn>Crawler_TBI</hatcherPawn>
+			</li>
+		</comps>
+	</ThingDef>
+
+</Defs>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>ChronoVortexDistortion</defName>
+		<altitudeLayer>MoteOverheadLow</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>4.5</solidTime>
+			<fadeOutTime>0.5</fadeOutTime>
+			<growthRate>0</growthRate>
+		</mote>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderType>MoteGlowDistortBackground</shaderType>
+			<shaderParameters>
+				<_DistortionTex>/Motes/VortexDistortionMask</_DistortionTex>
+				<_distortionIntensity>0.1</_distortionIntensity>
+				<_brightnessMultiplier>1</_brightnessMultiplier>
+			</shaderParameters>
+			<drawSize>4</drawSize>
+		</graphicData>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_ChronoVortex</defName>
+		<graphicData>
+			<texPath>Motes/ChronoVortex</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<drawSize>4</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>4.5</solidTime>
+			<fadeOutTime>0.5</fadeOutTime>
+			<growthRate>0</growthRate>
+		</mote>
+	</ThingDef>
+
+	<EffecterDef>
+		<defName>ChronoVortex</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<moteDef>ChronoVortexDistortion</moteDef>
+				<burstCount>1~1</burstCount>
+				<scale>2~2</scale>
+				<rotation>0~0</rotation>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<moteDef>Mote_ChronoVortex</moteDef>
+				<burstCount>1~1</burstCount>
+				<scale>2~2</scale>
+				<rotation>0~0</rotation>
+				<rotationRate>45~65</rotationRate>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+		</children>
+	</EffecterDef>
+
+</Defs>

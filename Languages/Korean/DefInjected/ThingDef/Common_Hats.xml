@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumSuitMask.label>타이베리움 방독면</TiberiumSuitMask.label>
+  <TiberiumSuitMask.description>방독면은 타이베리움 오염 지역을 지나기 위한 필수품입니다. 외부 환경을 완전히 차단하며, 독성 가스와 미세 분진을 여과하여 착용자의 호흡기를 지켜줍니다.</TiberiumSuitMask.description>
+
+  <RavensMask.label>까마귀 방독면</RavensMask.label>
+  <RavensMask.description>이 방독면은 오래전 썩어버린 시체에서 발견되었습니다. 어디 출신인지는 알 수 없지만, 생존하기 위해 최선을 다했던 흔적이 남아있습니다.</RavensMask.description>
+
+
+</LanguageData>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<!-- GDI -->
+  	<RecipeDef>
+		<defName>MakeReinforcedPlate</defName>
+		<label>produce Reinforced Plate</label>
+		<description>produces 10 Reinforced Plate.</description>
+		<jobString>producing reinforced plate.</jobString>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workAmount>1500</workAmount>
+		<workSpeedStat>SmeltingSpeed</workSpeedStat>
+		<ingredients>
+			<li>
+				<filter>
+				<thingDefs>
+					<li>Steel</li>
+				</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+					<li>Plasteel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Plasteel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<GDI_ReinforcedPlate>10</GDI_ReinforcedPlate>
+		</products>
+		<workSkill>Crafting</workSkill>	
+		<skillRequirements>
+			<Crafting>5</Crafting>
+		</skillRequirements>
+	</RecipeDef>
+	
+	<TiberiumRim.TRecipeDef>
+		<defName>MakeGDISonicCore</defName>
+		<label>make a Sonic Core</label>
+		<description>This core is a necessary component in most GDI sonic technology.</description>
+		<jobString>making a sonic core.</jobString>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workAmount>5500</workAmount>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+		<tiberiumCost>
+			<specificTypes>
+				<Blue>60</Blue>
+			</specificTypes>
+		</tiberiumCost>
+		<ingredients>
+			<li>
+				<filter>
+				<thingDefs>
+					<li>ComponentIndustrial</li>
+				</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>Gold</li>
+			  </thingDefs>
+			</filter>
+			<count>1</count>
+		  </li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+		  <GDI_SonicCore>1</GDI_SonicCore>
+		</products>
+		<skillRequirements>
+			<Crafting>10</Crafting>
+		</skillRequirements>
+		<workSkill>Crafting</workSkill>
+	</TiberiumRim.TRecipeDef>
+	
+	<!-- Nod -->
+	<RecipeDef>
+		<defName>MakeCarbonPlate</defName>
+		<label>produce carbon plate</label>
+		<description>produces 10 carbon plates.</description>
+		<jobString>making carbon plates.</jobString>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workAmount>1500</workAmount>
+		<workSpeedStat>SmeltingSpeed</workSpeedStat>
+		<ingredients>
+			<li>
+				<filter>
+				<thingDefs>
+					<li>Steel</li>
+				</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+					<li>Plasteel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Plasteel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Nod_CarbonPlate>10</Nod_CarbonPlate>
+		</products>
+		<workSkill>Crafting</workSkill>	
+		<skillRequirements>
+			<Crafting>5</Crafting>
+		</skillRequirements>
+	</RecipeDef>
+	
+</Defs>

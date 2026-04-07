@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TR.TRThingDef ParentName="ScrinBuildings">
+		<defName>ChronoVortexPortal</defName>
+		<label>chrono vortex</label>
+		<description>Time anomaly.</description>
+		<thingClass>TR.ChronoVortex</thingClass>
+		<tickerType>Normal</tickerType>
+		<rotatable>false</rotatable>
+		<destroyable>false</destroyable>
+		<useHitPoints>false</useHitPoints>
+		<size>(3,3)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Blank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<Mass>0</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<graphicClass>Graphic_Single</graphicClass>
+							<texPath>VisualFX/ChronoVortex</texPath>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>8</drawSize>
+						</graphicData>
+						<rotate>
+							<rotationSpeed>50</rotationSpeed>
+						</rotate>
+						<fxMode>Dynamic</fxMode>
+					</li>
+					<li>
+						<graphicData>
+							<graphicClass>Graphic_Single</graphicClass>
+							<texPath>Things/Mote/Black</texPath>
+							<shaderType>MoteGlowDistortBackground</shaderType>
+							<shaderParameters>
+								<_DistortionTex>/VisualFX/VortexDistortionMask</_DistortionTex>
+								<_distortionIntensity>0.1</_distortionIntensity>
+								<_brightnessMultiplier>1</_brightnessMultiplier>
+							</shaderParameters>
+							<drawSize>8</drawSize>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
+					</li>
+				</fxLayers>
+			</li>
+		</comps>
+	</TR.TRThingDef>
+
+</Defs>

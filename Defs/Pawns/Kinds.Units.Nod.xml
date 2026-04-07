@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <PawnKindDef ParentName="MercenaryBase" Name="NodBase" Abstract="True">
+        <defaultFactionType>Nod</defaultFactionType>
+        <chemicalAddictionChance>0.1</chemicalAddictionChance>
+        <backstoryCryptosleepCommonality>0.08</backstoryCryptosleepCommonality>
+        <combatEnhancingDrugsChance>0.25</combatEnhancingDrugsChance>
+        <gearHealthRange>0.4~1.2</gearHealthRange>
+        <initialWillRange>1~3</initialWillRange>
+        <initialResistanceRange>15~24</initialResistanceRange>
+        <invFoodDef>MealSurvivalPack</invFoodDef>
+        <inventoryOptions>
+            <skipChance>0.6</skipChance>
+            <subOptionsChooseOne>
+            <li>
+                <choiceChance>70</choiceChance>
+                <thingDef>Silver</thingDef>
+                <countRange>10~25</countRange>
+            </li>
+            <li>
+                <choiceChance>20</choiceChance>
+                <thingDef>Gold</thingDef>
+                <countRange>10~25</countRange>
+            </li>
+            <li>
+                <choiceChance>10</choiceChance>
+                <thingDef>TRBattleChip</thingDef>
+                <countRange>1~3</countRange>
+            </li>
+            </subOptionsChooseOne>
+        </inventoryOptions>
+        <apparelAllowHeadgearChance>1</apparelAllowHeadgearChance>
+        <aiAvoidCover>false</aiAvoidCover>
+        <itemQuality>Normal</itemQuality>
+        <combatPower>40</combatPower>
+        <skills>
+            <li>
+            <skill>Shooting</skill>
+            <range>5~15</range>
+            </li>
+        </skills>
+        <biocodeWeaponChance>0.15</biocodeWeaponChance>
+        <disallowedTraits>
+            <li>BodyPurist</li>
+        </disallowedTraits>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="NodBase">
+        <defName>Nod_Follower</defName>
+        <label>follower</label>
+        <combatPower>50</combatPower>
+        <apparelRequired>
+            <li>Jumpsuit</li>
+        </apparelRequired>
+        <itemQuality>Poor</itemQuality>
+        <weaponMoney>400~750</weaponMoney>
+        <apparelMoney>1000~1200</apparelMoney>
+        <apparelTags>
+            <li>Outlander</li>
+            <li>TiberiumProtection</li>
+        </apparelTags>
+        <weaponTags>
+            <li>Gun</li>
+            <li>NeolithicMeleeDecent</li>
+        </weaponTags>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="NodBase">
+        <defName>Nod_Bishop</defName>
+        <label>bishop</label>
+        <combatPower>200</combatPower>
+        <weaponMoney>20000~20000</weaponMoney>
+        <apparelMoney>50000~50000</apparelMoney>
+        <apparelRequired>
+            <li>Apparel_NodBlackHandHelmet</li>
+            <li>Apparel_NodBlackHand</li>
+            <li>Jumpsuit</li>
+        </apparelRequired>
+        <apparelTags>
+            <li>NodBlackHand</li>
+            <li>BeltDefensePop</li>
+            <li>FactionInnerSet</li>
+        </apparelTags>
+        <weaponTags>
+            <li>NodLaserRifle</li>
+            <li>ScrinArtifactWeapon</li>
+        </weaponTags>
+        <factionLeader>true</factionLeader>
+        <minGenerationAge>40</minGenerationAge>
+        <maxGenerationAge>60</maxGenerationAge>
+        <itemQuality>Excellent</itemQuality>
+        <initialWillRange>16~19</initialWillRange>
+        <initialResistanceRange>38~58</initialResistanceRange>
+    </PawnKindDef>
+    
+    <PawnKindDef ParentName="NodBase">
+        <defName>Nod_Trader</defName>
+        <label>trader priest</label>
+        <combatPower>100</combatPower>
+        <weaponMoney>20000~20000</weaponMoney>
+        <apparelMoney>50000~50000</apparelMoney>
+        <apparelRequired>
+            <li>Apparel_NodOfficerHelmet</li>
+            <li>Apparel_NodOfficerSuit</li>
+            <li>Jumpsuit</li>
+        </apparelRequired>
+        <apparelTags>
+            <li>NodOfficer</li>
+            <li>BeltDefensePop</li>
+            <li>FactionInnerSet</li>
+        </apparelTags>
+        <weaponTags>
+            <li>NodLaserRifle</li>
+        </weaponTags>
+        <trader>true</trader>
+        <techHediffsChance>1</techHediffsChance>
+        <techHediffsMoney>1000~1500</techHediffsMoney>
+        <techHediffsRequired>
+            <li>DeathAcidifier</li>
+        </techHediffsRequired>
+        <biocodeWeaponChance>1</biocodeWeaponChance>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="NodBase">
+        <defName>Nod_Fanatic</defName>
+        <label>fanatic</label>
+        <canBeSapper>true</canBeSapper>
+        <aiAvoidCover>true</aiAvoidCover>
+        <combatPower>50</combatPower>
+        <weaponTags>
+            <li>NonNeolithicOnlyMelee</li>
+        </weaponTags>
+        <apparelTags>
+            <li>Outlander</li>
+            <li>IndustrialBasic</li>
+            <li>IndustrialAdvanced</li>
+        </apparelTags>
+        <weaponMoney>300~750</weaponMoney>
+        <apparelMoney>1200~2000</apparelMoney>
+        <techHediffsMoney>5000~5000</techHediffsMoney>
+        <techHediffsChance>1</techHediffsChance>
+        <techHediffsRequired>
+            <li>ChemicalBombImplant</li>
+        </techHediffsRequired>
+        <chemicalAddictionChance>0.75</chemicalAddictionChance>
+        <apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+    </PawnKindDef>
+    
+    <PawnKindDef ParentName="NodBase">
+        <defName>Nod_BlackHand</defName>
+        <label>black hand</label>
+        <combatPower>150</combatPower>
+        <aiAvoidCover>true</aiAvoidCover>
+        <apparelRequired>
+            <li>Apparel_NodBlackHandHelmet</li>
+            <li>Apparel_NodBlackHand</li>
+            <li>Jumpsuit</li>
+        </apparelRequired>
+        <apparelTags>
+            <li>NodBlackHand</li>
+            <li>FactionInnerSet</li>
+        </apparelTags>
+        <weaponMoney>6000~6000</weaponMoney>
+        <apparelMoney>15000~15000</apparelMoney>
+        <weaponTags>
+            <li>NodLaserRifle</li>
+            <li>NodFlamethrower</li>
+            <li>NodChemicalSpray</li>
+        </weaponTags>
+        <inventoryOptions>
+            <skipChance>0.6</skipChance>
+            <subOptionsChooseOne>
+            <li>
+                <choiceChance>50</choiceChance>
+                <thingDef>Silver</thingDef>
+                <countRange>10~25</countRange>
+            </li>
+            <li>
+                <choiceChance>30</choiceChance>
+                <thingDef>Gold</thingDef>
+                <countRange>10~25</countRange>
+            </li>
+            <li>
+                <choiceChance>20</choiceChance>
+                <thingDef>TRBattleChip</thingDef>
+                <countRange>1~3</countRange>
+            </li>
+            </subOptionsChooseOne>
+        </inventoryOptions>
+        <techHediffsChance>0.5</techHediffsChance>
+        <techHediffsMoney>1000~1500</techHediffsMoney>
+        <techHediffsRequired>
+            <li>DeathAcidifier</li>
+        </techHediffsRequired>
+        <biocodeWeaponChance>0.8</biocodeWeaponChance>
+    </PawnKindDef>
+    
+    <PawnKindDef ParentName="NodBase">
+        <defName>Nod_Officer</defName>
+        <label>Officer</label>
+        <combatPower>75</combatPower>
+        <apparelRequired>
+            <li>Apparel_NodOfficerHelmet</li>
+            <li>Apparel_NodOfficerSuit</li>
+            <li>Jumpsuit</li>
+        </apparelRequired>
+        <apparelTags>
+            <li>NodOfficer</li>
+            <li>BeltDefensePop</li>
+            <li>FactionInnerSet</li>
+        </apparelTags>
+        <weaponMoney>3500~3500</weaponMoney>
+        <apparelMoney>7500~7500</apparelMoney>
+        <weaponTags>
+            <li>NodRifle</li>
+            <li>SniperRifle</li>
+            <li>NodLaserRifle</li>
+        </weaponTags>
+    </PawnKindDef>
+    
+    <PawnKindDef ParentName="NodBase">
+        <defName>Nod_Soldier</defName>
+        <label>Soldier</label>
+        <combatPower>80</combatPower>
+        <apparelRequired>
+            <li>Apparel_NodSoldierHelmet</li>
+            <li>Apparel_NodSoldierSuit</li>
+            <li>Jumpsuit</li>
+        </apparelRequired>
+        <apparelTags>
+            <li>NodSoldier</li>
+            <li>FactionInnerSet</li>
+            <li>BeltDefensePop</li>
+        </apparelTags>
+        <weaponMoney>1750~3000</weaponMoney>
+        <apparelMoney>7500~7500</apparelMoney>
+        <weaponTags>
+            <li>NodRifle</li>
+        </weaponTags>
+    </PawnKindDef>
+    
+    <PawnKindDef ParentName="NodBase">
+        <defName>Nod_Militia</defName>
+        <label>Militia</label>
+        <combatPower>70</combatPower>
+        <canBeSapper>true</canBeSapper>
+        <apparelRequired>
+            <li>Apparel_NodMilitiaMask</li>
+            <li>Apparel_NodMilitiaSuit</li>
+            <li>Jumpsuit</li>
+        </apparelRequired>
+        <apparelTags>
+            <li>NodMilitia</li>
+            <li>FactionInnerSet</li>
+        </apparelTags>
+        <weaponMoney>1500~2500</weaponMoney>
+        <apparelMoney>7500~7500</apparelMoney>
+        <weaponTags>
+            <li>Gun</li>
+            <li>TwinFlechetteGun</li>
+        </weaponTags>
+    </PawnKindDef>
+    
+    <PawnKindDef ParentName="NodBase">
+        <defName>Nod_MilitiaRocket</defName>
+        <label>Militia Rocketroop</label>
+        <combatPower>150</combatPower>
+        <isGoodBreacher>true</isGoodBreacher>
+        <apparelRequired>
+            <li>Apparel_NodMilitiaMask</li>
+            <li>Apparel_NodMilitiaSuit</li>
+            <li>Jumpsuit</li>
+        </apparelRequired>
+        <apparelTags>
+            <li>NodMilitia</li>
+            <li>BeltDefensePop</li>
+            <li>FactionInnerSet</li>
+        </apparelTags>
+        <weaponMoney>7500~7500</weaponMoney>
+        <apparelMoney>7500~7500</apparelMoney>
+        <weaponTags>
+            <li>MilitiaRocketLauncher</li>
+        </weaponTags>
+    </PawnKindDef>
+
+</Defs>

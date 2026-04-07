@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TibScarab.label>수정벌레</TibScarab.label>
+  <TibScarab.description>메카노이드 침입에 대항하기 위해 설계된 인조 곤충들의 노동계급은 혹독한 타이베리움 환경조차도 극복하고 살아남았습니다. 상위 계급의 곤충들은 자취를 감췄지만, 이들의 덩치와 날카로운 껍질은 여전히 위협적입니다.</TibScarab.description>
+  <TibScarab.tools.0.label>가시턱</TibScarab.tools.0.label>
+  <TibScarab.tools.1.label>머리</TibScarab.tools.1.label>
+  <!-- Leather Amount: 0 -->
+  <!-- Use Meat From: Megaspider -->
+  <TibScarab_Corpse.label>수정벌레 시체</TibScarab_Corpse.label>
+  <TibScarab_Corpse.description>수정벌레의 시체.</TibScarab_Corpse.description>
+
+  <Crawler.label>크롤러</Crawler.label>
+  <Crawler.description>타이베리움 환경에 적응한 커다란 뱀입니다. 2060년대에 사용된 무기들과는 아무런 관련도 없습니다.</Crawler.description>
+  <Crawler.tools.0.label>독니</Crawler.tools.0.label>
+  <Crawler.tools.1.label>머리</Crawler.tools.1.label>
+  <Crawler_Leather.label>크롤러 가죽</Crawler_Leather.label>
+  <Crawler_Leather.description>크롤러 가죽</Crawler_Leather.description>
+  <Crawler_Leather.stuffProps.stuffAdjective>크롤러 가죽</Crawler_Leather.stuffProps.stuffAdjective>
+  <Crawler_Meat.label>크롤러 고기</Crawler_Meat.label>
+  <Crawler_Meat.description>크롤러 고기</Crawler_Meat.description>
+  <Crawler_Corpse.label>크롤러 시체</Crawler_Corpse.label>
+  <Crawler_Corpse.description>크롤러의 시체.</Crawler_Corpse.description>
+
+  <BoomFiend.label>폭탄마</BoomFiend.label>
+  <BoomFiend.description>폭탄마는 타이베리움 환경에 적합한 유전자를 가진 폭탄쥐의 변종입니다.</BoomFiend.description>
+  <BoomFiend.tools.0.label>왼쪽 발톱</BoomFiend.tools.0.label>
+  <BoomFiend.tools.1.label>오른쪽 발톱</BoomFiend.tools.1.label>
+  <BoomFiend.tools.3.label>머리</BoomFiend.tools.3.label>
+  <BoomFiend_Leather.label>폭탄마 가죽</BoomFiend_Leather.label>
+  <BoomFiend_Leather.description>폭탄마 가죽</BoomFiend_Leather.description>
+  <BoomFiend_Leather.stuffProps.stuffAdjective>폭탄마 가죽</BoomFiend_Leather.stuffProps.stuffAdjective>
+  <BoomFiend_Meat.label>폭탄마 고기</BoomFiend_Meat.label>
+  <BoomFiend_Meat.description>폭탄마 고기</BoomFiend_Meat.description>
+  <BoomFiend_Corpse.label>폭탄마 시체</BoomFiend_Corpse.label>
+  <BoomFiend_Corpse.description>폭탄마의 시체.</BoomFiend_Corpse.description>
+
+
+</LanguageData>

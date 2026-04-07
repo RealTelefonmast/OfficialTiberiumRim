@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <ExtractPlasteel.label>플라스틸 추출</ExtractPlasteel.label>
+  <ExtractPlasteel.description>채취한 타이베리움을 이용하여 플라스틸 5덩이를 추출합니다.</ExtractPlasteel.description>
+  <ExtractPlasteel.jobString>플라스틸 추출 중.</ExtractPlasteel.jobString>
+
+  <ExtractGold.label>금 추출</ExtractGold.label>
+  <ExtractGold.description>채취한 타이베리움을 이용하여 금 5덩이를 추출합니다.</ExtractGold.description>
+  <ExtractGold.jobString>금 추출 중.</ExtractGold.jobString>
+
+  <ExtractUranium.label>우라늄 추출</ExtractUranium.label>
+  <ExtractUranium.description>채취한 타이베리움을 이용하여 우라늄 5덩이를 추출합니다.</ExtractUranium.description>
+  <ExtractUranium.jobString>우라늄 추출 중.</ExtractUranium.jobString>
+
+  <BurnSludge.label>슬러지 소각</BurnSludge.label>
+  <BurnSludge.description>저장된 슬러지를 소각합니다.</BurnSludge.description>
+  <BurnSludge.jobString>슬러지 소각 중.</BurnSludge.jobString>
+
+
+</LanguageData>

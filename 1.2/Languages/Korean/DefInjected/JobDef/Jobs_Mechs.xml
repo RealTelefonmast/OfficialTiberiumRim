@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RepairMechanicalPawn.reportString>수리 중.</RepairMechanicalPawn.reportString>
+  <ReturnFromRepair.reportString>귀환 중.</ReturnFromRepair.reportString>
+  <WanderAtParent.reportString>수리 대기 중.</WanderAtParent.reportString>
+  <HarvestTiberium.reportString>수확 중.</HarvestTiberium.reportString>
+  <UnloadAtRefinery.reportString>하역 중.</UnloadAtRefinery.reportString>
+  <IdleAtRefinery.reportString>대기 중.</IdleAtRefinery.reportString>
+
+
+</LanguageData>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <InstallTiberiumArm.label>타이베리움 강화다리 이식</InstallTiberiumArm.label>
+  <InstallTiberiumArm.description>타이베리움 강화팔을 이식합니다.</InstallTiberiumArm.description>
+  <InstallTiberiumArm.jobString>타이베리움 강화다리 이식</InstallTiberiumArm.jobString>
+
+  <InstallTiberiumLeg.label>타이베리움 강화다리 이식</InstallTiberiumLeg.label>
+  <InstallTiberiumLeg.description>타이베리움 강화다리를 이식합니다.</InstallTiberiumLeg.description>
+  <InstallTiberiumLeg.jobString>타이베리움 강화다리 이식</InstallTiberiumLeg.jobString>
+
+  <RemoveTiberiumSample.label>타이베리움 피부 제거</RemoveTiberiumSample.label>
+  <RemoveTiberiumSample.description>타이베리움 피부를 제거합니다.</RemoveTiberiumSample.description>
+  <RemoveTiberiumSample.jobString>타이베리움 피부 제거</RemoveTiberiumSample.jobString>
+
+  <AddTiberiumSkin.label>타이베리움 피부 이식</AddTiberiumSkin.label>
+  <AddTiberiumSkin.description>타이베리움 피부를 이식합니다.</AddTiberiumSkin.description>
+  <AddTiberiumSkin.jobString>타이베리움 피부 이식</AddTiberiumSkin.jobString>
+
+
+</LanguageData>

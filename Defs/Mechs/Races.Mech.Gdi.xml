@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <ThingDef ParentName="BaseMechanoidTR">
+    <defName>Wolverine</defName>
+    <label>Wolverine</label>
+    <description>GDI Common Mech</description>
+    <statBases>
+      <MoveSpeed>6</MoveSpeed>
+      <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.4</ArmorRating_Sharp>
+	  <ArmorRating_Heat>0.4</ArmorRating_Heat>
+    </statBases>
+    <tools>
+      <li>
+        <label>left arm</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>15</power>
+        <cooldownTime>3</cooldownTime>
+        <linkedBodyPartsGroup>RightArm</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+      <li>
+        <label>right arm</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>15</power>
+        <cooldownTime>3</cooldownTime>
+        <linkedBodyPartsGroup>RightArm</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+    <race>
+      <intelligence>ToolUser</intelligence>
+      <thinkTreeMain>Mechanoid</thinkTreeMain>
+      <body>WolverineBody</body>
+      <baseBodySize>2</baseBodySize>
+      <baseHealthScale>1.1</baseHealthScale>
+      <makesFootprints>true</makesFootprints>
+	  <!--
+      <lifeStageAges>
+        <li>
+          <def>MechFormed</def>
+          <minAge>0</minAge>
+          <soundWounded>Pawn_Mech_Centipede_Wounded</soundWounded>
+          <soundDeath>Pawn_Mech_Centipede_Death</soundDeath>
+          <soundCall>Pawn_Mech_Centipede_Call</soundCall>
+        </li>
+      </lifeStageAges>
+	  -->
+      <soundCallIntervalRange>
+        <min>1000</min>
+        <max>2000</max>
+      </soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Melee_MechanoidBash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_MechanoidBash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_MechanoidBash_Miss</soundMeleeMiss>
+    </race>
+    <butcherProducts>
+      <Steel>50</Steel>
+    </butcherProducts>
+  </ThingDef>
+
+  <TR.TRThingDef ParentName="HarvesterBase">
+		<defName>Harvester_GDI</defName>
+		<label>GDI harvester</label>	
+		<description>An armored tiberium harvester designed by GDI, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 		
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Pawns/Mechanical/GDI/Harvester/FX/HG</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
+					</li>
+				</fxLayers>			
+			</li>
+		</comps>
+		<statBases>
+			<MoveSpeed>2.5</MoveSpeed>
+			<ArmorRating_Blunt>0.4</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+		</statBases>
+		<race>
+			<body>HarvesterBody_GDI</body>
+		</race>
+		<tools>
+			<li>
+				<label>dozer</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>3.5</cooldownTime>
+				<linkedBodyPartsGroup>Dozer</linkedBodyPartsGroup>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+		</tools>
+	</TR.TRThingDef>
+
+</Defs>

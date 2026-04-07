@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!--TR Categories-->
+  <TRCat_Structure>건축</TRCat_Structure>
+  <TRCat_Decoration>장식</TRCat_Decoration>
+  <TRCat_Processing>정제</TRCat_Processing>
+  <TRCat_Defense>방어</TRCat_Defense>
+  <TRCat_Research>연구</TRCat_Research>
+  <TRCat_Misc>기타</TRCat_Misc>
+  <TRCat_Producers>생산체</TRCat_Producers>
+  <TRCat_Crystals>결정체</TRCat_Crystals>
+
+  <Risk>위험률</Risk>
+  <Halted>정지됨.</Halted>
+  <Decryst>정화되는 중.</Decryst>
+  <Status>상태</Status>
+  <Dead>Dead</Dead>
+  <Dying>녹는 중.</Dying>
+  <Transmuting>변이 중.</Transmuting>
+  <Burnt>타버림.</Burnt>
+  <Rotten>녹아버림.</Rotten>
+  <IsOpen>부화함.</IsOpen>
+  <PawnNameKind>{1}, {0}의 변이체.</PawnNameKind>
+
+  <!-- Pawn  Messages-->
+  <MessageTiberiumSuitLeak>낡은 보호복에서 누출이 발생하고 있습니다! 장비를 신속히 교체하십시오.</MessageTiberiumSuitLeak>
+  <TiberiumNeed>타이베리움 갈망</TiberiumNeed>
+  <CannotReachTiberium>변이된 정착민이 타이베리움을 필요로 합니다!</CannotReachTiberium>
+
+  <UsedToBeName>{1}, {0}의 변이체.</UsedToBeName>
+  <UsedToBeNoName>{0}의 변이체.</UsedToBeNoName>
+  <PawnConverted>{0}의 몸이 괴물체로 변이합니다!</PawnConverted>
+
+  <!-- Tiberium Producer -->
+  <VeinHubSpawned>침식 구덩이가 주둥이 하나를 뻗어냈습니다.</VeinHubSpawned>
+  <MessagePawnEaten>침식 구덩이가 정착민을 집어삼켰습니다!</MessagePawnEaten>
+  <ProducerWokenIn>성장까지</ProducerWokenIn>
+  <ProducerWoken>완전히 성장함.</ProducerWoken>
+  <ResearchBound>격리됨.</ResearchBound>
+  <EggHatch>{0} 부화 중.</EggHatch>
+
+  <!-- PlaceWorkers -->
+  <MustPlaceOnTiberiumGeyser>이 건물은 오염된 간헐천 위에만 건설할 수 있습니다.</MustPlaceOnTiberiumGeyser>
+  <ThingAlreadyExists>이 건물은 정착지에 하나만 건설할 수 있습니다.</ThingAlreadyExists>
+
+  <!-- Tiberium Network -->
+  <MissingNetwork>타이베리움 시설망에 연결되지 않음.</MissingNetwork>
+  <StoredTib>저장된 타이베리움 크레디트</StoredTib>
+  <TotalStoredTib>사용 가능한 타이베리움 크레디트</TotalStoredTib>
+  <Consumes>하루에 {0} 타이베리움 크레디트를 소모함</Consumes>
+  <DaysRemaining>{0}일 남음.</DaysRemaining>
+
+  <NewRefinerySet>{0}를 위한 새로운 정제소 설정.</NewRefinerySet>
+  <RefineryLost>정제소 파괴됨.</RefineryLost>
+
+  <StorageMode>타이베리움 저장</StorageMode>
+  <SludgeMode>폐기물 저장</SludgeMode>
+  <IsSludged>이 건물은 오직 폐기물만 저장합니다.</IsSludged>
+
+  <ConnectorDesc>녹색 영역으로 표시된 타이베리움 네트워크 구조 옆에 커넥터를 배치하십시오. 건물 당 하나의 커넥터만 배치할 수 있습니다.</ConnectorDesc>
+  <TCredits>타이베리움 크레디트</TCredits>
+
+  <!-- World -->
+  <InfestationPct>오염도 {0}</InfestationPct>
+  <InfestationPctExp>이곳은 타이베리움에 의해 오염되고 있습니다.\n\n{0}</InfestationPctExp>
+
+  <!-- SETTINGS -->
+  <UseProducerCapLabel>타이베리움 모체 수량 제한</UseProducerCapLabel>
+  <UseProducerCapDesc>맵에 존재할 수 있는 타이베리움 모체의 최대 수량을 제한합니다.</UseProducerCapDesc>
+  <TiberiumProducersAmtLabel>타이베리움 모체 수량 한도</TiberiumProducersAmtLabel>
+  <TiberiumProducersAmtDesc>맵에 존재할 수 있는 타이베리움 모체의 최대 수량을 설정합니다.</TiberiumProducersAmtDesc>
+  <UseSpreadRadiusLabel>타이베리움 성장범위 제한</UseSpreadRadiusLabel>
+  <UseSpreadRadiusDesc>타이베리움이 모체로부터 너무 멀리 떨어지면 성장하지 않도록 합니다.</UseSpreadRadiusDesc>
+  <UseCustomBackgroundLabel>전용 배경화면 사용</UseCustomBackgroundLabel>
+  <UseCustomBackgroundDesc>타이베리움 림 전용 배경화면을 사용합니다.</UseCustomBackgroundDesc>
+  <PawnDamage>정착민 감염</PawnDamage>
+  <PawnDamageDesc>타이베리움에 접근한 정착민이 독소에 감염됩니다.</PawnDamageDesc>
+  <UseSpecificProducersLabel>타이베리움 모체 선택적 허용</UseSpecificProducersLabel>
+  <BuildingDamage>타이베리움에 의한 구조물 침식</BuildingDamage>
+  <BuildingDamageDesc>타이베리움이 주변 구조물을 침식하여 파괴합니다.</BuildingDamageDesc>
+  <EntityDamage>타이베리움에 의한 아이템 침식</EntityDamage>
+  <EntityDamageDesc>타이베리움이 주변 아이템을 침식하여 파괴합니다.</EntityDamageDesc>
+  <ExposureRate>타이베리움 독소 감염 확률</ExposureRate>
+  <BuildingDmgMltp>구조물 침식 속도</BuildingDmgMltp>
+  <ItemDmgMltp>아이템 침식 속도</ItemDmgMltp>
+  <TibGrowthRate>타이베리움 성장 속도</TibGrowthRate>
+  <SettingsGeneral>기본 설정</SettingsGeneral>
+  <SettingsSpecial>세부 설정</SettingsSpecial>
+  <WorldSpread>지구적 오염</WorldSpread>
+  <WorldSpreadDesc>타이베리움 오염이 정착지에 국한되지 않고 전 세계로 퍼져나가도록 합니다.</WorldSpreadDesc>
+  <SpreadMltp>지구적 오염 확대 속도</SpreadMltp>
+
+  <Easy>민병대장</Easy>
+  <EasySetting>타이베리움이나 커맨드 앤 컨커 게임에 대해 전혀 들어보지 못했습니까? 그렇더라도 걱정 마십시오. 이 설정은 타이베리움의 위협을 최저한으로 줄여, 초심자들도 부담 없이 이 새로운 물질을 접할 수 있도록 도울 것입니다.</EasySetting>
+  <Standard>사령관</Standard>
+  <StandardSetting>타이베리움을 어떻게 다뤄야 하는지 잘 알고 있다면 이 설정을 추천합니다. 이제 타이베리움은 주변에 치명적인 영향을 미치며 계속 퍼져나갈 것입니다. 하지만 괜찮습니다. 우리에게는 믿음직스런 수확기가 있으니까요.</StandardSetting>
+  <Hard>장군</Hard>
+  <HardSetting>이제 웬만한 것들은 전부 시시하고 지겹게 느껴지십니까? 물론 그런 분들을 위한 설정도 준비되어 있습니다. 이 세팅은 타이베리움의 치명적인 특성들을 더욱 강화하여 매 순간 신중한 플레이를 강제합니다.</HardSetting>
+  <SettingNotice>참고 : 해당 세팅은 모드 설정 창에서 언제든 다시 변경할 수 있습니다.</SettingNotice>
+  <ConfirmSettings>{0} 설정을 사용하시겠습니까?</ConfirmSettings>
+
+  <!-- Harvester -->
+  <ReturnToRefineryIdling>대기 중.</ReturnToRefineryIdling>
+  <ReturnToRefineryHarvesting>수확 중.</ReturnToRefineryHarvesting>
+
+  <SelectRefineryLabel>새 정제소 지정</SelectRefineryLabel>
+  <SelectRefineryDesc>수확기가 이용할 정제소를 등록하십시오.</SelectRefineryDesc>
+  <SelectRefinerySame>이미 등록된 정제소입니다.</SelectRefinerySame>
+  <SelectRefineryWrong>등록할 수 없는 건물입니다.</SelectRefineryWrong>
+
+  <SetTiberiumLabel>선호하는 타이베리움 선택</SetTiberiumLabel>
+  <SetTiberiumDesc>선택한 타입의 타이베리움이 모두 고갈될 때까지 채취합니다. 고갈되면 다른 타입의 타이베리움을 채취합니다.</SetTiberiumDesc>
+  <ResetTiberium>재설정</ResetTiberium>
+  <CurPrefType>현재 선호되는 유형</CurPrefType>
+
+  <HarvesterModeNearest>가까운 타이베리움 채취</HarvesterModeNearest>
+  <HarvesterModeValue>가장 비싼 타이베리움 채취</HarvesterModeValue>
+  <HarvesterModeDesc>수확기가 가장 가깝거나 가장 비싼 타이베리움을 채취하도록 합니다.</HarvesterModeDesc>
+  <NA>사용 불가능</NA>
+
+  <HarvestingReport>{0} 수확 중.</HarvestingReport>
+
+  <ErMossInActive>폐기물 제거</ErMossInActive>
+  <ErMossActive>폐기물 제거 중.</ErMossActive>
+
+  <!-- Tiberium -->
+  <HarvestValue>가치</HarvestValue>
+  <DyingToInhibition>억제기에 의해 분해되는 중.</DyingToInhibition>
+
+  <TiberiumHomeAlert>주거지역 오염</TiberiumHomeAlert>
+  <TiberiumHomeAlertExp>타이베리움이 주거지역을 오염시키고 있습니다!</TiberiumHomeAlertExp>
+
+  <TiberiumArrivalTitle>뜻밖의 조우</TiberiumArrivalTitle>
+  <TiberiumArrivalDesc>설명하기 어려울 정도로 괴상하게 생긴 정체불명의 물체가 정착지에 나타났습니다. 접촉에 주의하십시오.</TiberiumArrivalDesc>
+
+
+</LanguageData>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!--this is not a fleck-->
+
+	<ThingDef ParentName="BaseGas">
+		<defName>Gas_Chemical</defName>
+		<label>tiberium gas</label>
+		<graphicData>
+			<texPath>VisualFX/Natural/TiberiumGas/TiberiumGas</texPath>
+			<drawSize>4</drawSize>
+			<color>(1,1,1,1)</color>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<gas>
+			<expireSeconds>30~60</expireSeconds>
+			<blockTurretTracking>true</blockTurretTracking>
+			<accuracyPenalty>0.3</accuracyPenalty>
+			<rotationSpeed>15</rotationSpeed>
+		</gas>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseGas">
+		<defName>Gas_Shockwave</defName>
+		<label>afterchock</label>
+		<graphicData>
+			<texPath>VisualFX/SoundVortex</texPath>
+			<drawSize>4</drawSize>
+			<color>(1,1,1,0.05)</color>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<gas>
+			<expireSeconds>10~20</expireSeconds>
+			<blockTurretTracking>true</blockTurretTracking>
+			<accuracyPenalty>0.5</accuracyPenalty>
+			<rotationSpeed>150</rotationSpeed>
+		</gas>
+	</ThingDef>
+</Defs>

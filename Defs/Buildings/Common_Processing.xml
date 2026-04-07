@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<!--TR_TibWorkbench-->
+	<TR.TRThingDef ParentName="BenchBase_TR">
+		<defName>TR_TibWorkbench</defName>
+		<label>tiberium workbench</label>
+		<description>This structure can be used to craft Tiberium specific items.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<minifiedDef />
+		<thingCategories Inherit="false" />
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>2500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<size>(3,2)</size>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Network/Workbench/Bench</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>3.3</drawSize>
+			<shadowData>
+				<volume>(1.5,1,1.5)</volume>
+			</shadowData>
+			<damageData>
+				<rect>(0.3,0.1,2.4,1.8)</rect>
+			</damageData>
+		</graphicData>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+			<li MayRequire="telefonmast.tiberiumrim.main">TeleCore.ITab_NetworkDebug</li>
+		</inspectorTabs>
+		<recipes>
+			<li>MakeDronePackage_Common</li>
+		</recipes>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<surfaceType>Item</surfaceType>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li MayRequire="telefonmast.tiberiumrim.main">MineralAnalysis_T4</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>125</basePowerConsumption>
+			</li>
+			<li MayRequire="telefonmast.tiberiumrim.main" Class="TR.CompProperties_TNS">
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>		
+						<volumeConfig>
+							<capacity>1000</capacity>
+							<area>1</area>
+							<elevation>0</elevation>
+							<height>1</height>
+							<leaveContainer>true</leaveContainer>
+							<storeEvenly>false</storeEvenly>
+							<values>
+								<allowedValues>
+									<li>TibGreen</li>	
+									<li>TibBlue</li>	
+									<li>TibRed</li>	
+									<li>TibSludge</li>	
+								</allowedValues>
+							</values>
+						</volumeConfig>
+						<roles>
+							<li>Transmitter</li>
+							<li>Requester</li>
+						</roles>
+					</li>
+				</networks>
+				<generalIOConfig>
+					<pattern>
+					##X##
+					X###X
+					#####
+					#####
+					</pattern>
+				</generalIOConfig>
+			</li>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Common/Network/Workbench/Overlay</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>3.3</drawSize>
+							<color>(0, 204, 102)</color>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Common/Network/Workbench/Connection</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<drawSize>3.3</drawSize>	
+						</graphicData>
+					</li>
+				</fxLayers>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Common</groupDef>
+				<category>Processing</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+</Defs>

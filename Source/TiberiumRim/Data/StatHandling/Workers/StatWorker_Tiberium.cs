@@ -1,0 +1,66 @@
+﻿using RimWorld;
+using TR.Hediffs;
+using TR.ThingData.Pawns.MechanicalPawns;
+using UnityEngine;
+using Verse;
+
+namespace TR.Data;
+
+public class StatWorker_Tiberium : StatWorker
+{
+    public override bool IsDisabledFor(Thing thing)
+    {
+        if (thing is MechanicalPawn) return false;
+        return base.IsDisabledFor(thing);
+    }
+
+    public override bool ShouldShowFor(StatRequest req)
+    {
+        return req.HasThing && req.Thing.def.category == ThingCategory.Pawn;
+    }
+
+    public override void FinalizeValue(StatRequest req, ref float val, bool applyPostProcess)
+    {
+        base.FinalizeValue(req, ref val, applyPostProcess);
+    }
+
+    private static float InfectionChance(Pawn pawn, bool isGas)
+    {
+        var num = 1f;
+        if (isGas)
+        {
+            var infFactor = 1f;
+            infFactor *= 1 - pawn.GetStatValue(Defs.TiberiumDefOf.TiberiumGasResistance);
+
+            if (!pawn.CanBeInfected(true, out var gasFac)) return 0;
+
+            num = gasFac;
+            num *= pawn.health.capacities.GetLevel(PawnCapacityDefOf.Breathing);
+            num *= pawn.health.capacities.GetLevel(PawnCapacityDefOf.Consciousness) / 2f;
+        }
+        else
+        {
+            var infFactor = 1f;
+            infFactor *= 1 - pawn.GetStatValue(Defs.TiberiumDefOf.TiberiumInfectionResistance);
+
+            if (!pawn.CanBeInfected(false, out var infFact)) return 0;
+
+            num = infFact;
+            if (pawn.apparel != null)
+            {
+                float tox = 0, sharp = 0;
+                foreach (var apparel in pawn.apparel.WornApparel)
+                {
+                    tox += Mathf.Clamp01(apparel.GetStatValue(StatDefOf.ToxicResistance));
+                    sharp += Mathf.Clamp01(apparel.GetStatValue(StatDefOf.ArmorRating_Sharp));
+                }
+
+                num *= tox;
+                num *= 1 - Mathf.Clamp01(sharp);
+                //Log.Message("Infection Chance Apparel: Tox: " + tox + " | Sharp: " + sharp);
+            }
+        }
+
+        return num;
+    }
+}

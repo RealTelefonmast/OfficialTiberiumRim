@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Flame Turret -->
+
+  <LaserFenceSegment.label>레이저 가이드라인</LaserFenceSegment.label>
+  <LaserFenceSegment.description>함부로 지나다니면 안전사고의 원인이 됩니다.</LaserFenceSegment.description>
+
+  <LaserFenceWall.label>레이저</LaserFenceWall.label>
+
+
+  <!-- Shredder Turret -->
+
+</LanguageData>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	
+	<TiberiumRim.DevToolDef>
+		<defName>ModuleVisualizerDef</defName>
+		<label>Module Visualizer</label>
+		<windowClass>TiberiumRim.Window_ModuleVisualizer</windowClass>
+	</TiberiumRim.DevToolDef>
+	
+	<TiberiumRim.DevToolDef>
+		<defName>AnimatorDef</defName>
+		<label>Animator</label>
+		<windowClass>TiberiumRim.Window_Animator</windowClass>
+	</TiberiumRim.DevToolDef>
+	
+	<TiberiumRim.DevToolDef>
+		<defName>UIMaker</defName>
+		<label>UI Maker</label>
+		<windowClass>TiberiumRim.Window_UIMaker</windowClass>
+	</TiberiumRim.DevToolDef>
+	
+	<!--
+	<MainButtonDef>
+		<defName>TiberiumTab</defName>
+		<label>Tiberium Rim</label>
+		<description>Check out Tiberium research.</description>
+		<tabWindowClass>TiberiumRim.MainTabWindow_TibResearch</tabWindowClass>
+		<order>79</order>
+		<validWithoutMap>true</validWithoutMap>
+		<minimized>True</minimized>
+		<iconPath>UI/Icons/TiberiumButton</iconPath>
+	</MainButtonDef>
+	-->	
+</Defs>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TiberiumResourceCostDef>
+		<defName>SteelCost</defName>
+		<resource>Steel</resource>
+	</TiberiumRim.TiberiumResourceCostDef>
+  
+</Defs>

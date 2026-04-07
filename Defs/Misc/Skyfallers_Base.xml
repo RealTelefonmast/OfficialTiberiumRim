@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="SkyfallerBase_TR" ParentName="EtherealThingBase" Abstract="True">
+		<thingClass>Skyfaller</thingClass>
+		<useHitPoints>false</useHitPoints>
+		<drawOffscreen>true</drawOffscreen>
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>Skyfaller</altitudeLayer>
+		<drawerType>RealtimeOnly</drawerType>
+		<size>(2, 2)</size>
+		<graphicData>
+			<texPath>Things/Skyfaller/Meteorite</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(8, 8)</drawSize>
+		</graphicData>
+		<skyfaller>
+			<ticksToImpactRange>
+				<min>120</min>
+				<max>400</max>
+			</ticksToImpactRange>
+			<shrapnelDistanceFactor>3</shrapnelDistanceFactor>
+			<shadowSize>(4, 4)</shadowSize>
+			<explosionRadius>1</explosionRadius>
+			<explosionDamage>Bomb</explosionDamage>
+			<movementType>Accelerate</movementType>
+			<rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+			<speed>1.35</speed>
+			<cameraShake>0.78</cameraShake>
+		</skyfaller>
+	</ThingDef>
+
+</Defs>

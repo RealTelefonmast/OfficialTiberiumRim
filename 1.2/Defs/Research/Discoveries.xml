@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.DiscoveryDef>
+		<defName>TiberiumProducerCrater</defName>
+		<label>Tiberium Spreader</label>
+		<description>Tiberium seems to spread from the impact crater we have found. Observations have shown increased radiation and rapid mutation of flora and fauna close to these craters. It is advised to keep an eye on these craters and keep any unprotected pawns away from stepping too close.</description>
+	</TiberiumRim.DiscoveryDef>
+	
+	<TiberiumRim.DiscoveryDef>
+		<defName>TiberiumCrystalLattice</defName>
+		<label>Tiberium Crystal</label>
+		<description>These strange crystals are known as "Tiberium", an extra-terrestrial mineral known throughout the galaxy to be extremely agressive towards any matter. Although crystalline in structure, it has been observed to show biological properties, almost 'evolving' as it grows and spreads around the planet. Any contact with the substance should be avoided without appropriate gear, as it will fuze with the victim's body and slowly crystallize cell by cell in a process known as Tiberium Toxemia, usually ending in the victim's death. However, sometimes the victim may survive and become a mutant, living with the Tiberium infection, often showing improved strengths and abilities.</description>
+	</TiberiumRim.DiscoveryDef>
+
+	<TiberiumRim.DiscoveryDef>
+		<defName>VeinholeEncounter</defName>
+		<label>Veinhole</label>
+		<description>This strange creature is the result of long term Tiberium mutation and effects on the natural environment. A monstrous creature covering was landmasses in its tentacle-like tendrils syphoning resources from the ground just like Tiberium crystals do. However, these tendrils are not radioactive or directly infectious, though they will attack anything that disturbs the creature. Besides blunt attacks via the tentacles, some tentacles have the ability to release toxic Tiberium gas near any victims, which will result in rapid Tiberium Toxemia without any respiratory protection.</description>
+	</TiberiumRim.DiscoveryDef>
+	
+	<TiberiumRim.DiscoveryDef>
+		<defName>TiberiumToxemiaDiscovery</defName>
+		<label>Tiberium Toxemia</label>
+		<description>Tiberium toxicity... WIP</description>
+	</TiberiumRim.DiscoveryDef>
+	
+	<TiberiumRim.DiscoveryDef>
+		<defName>TiberiumGeyserDiscovery</defName>
+		<label>Exotic Gas</label>
+		<description>Tiberium Geysers... WIP</description>
+	</TiberiumRim.DiscoveryDef>
+	
+</Defs>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RimThemes>
+  <customFontTinyDefault>Nasalization</customFontTinyDefault>	<!-- [2019R3 min] Set the default font used for tiny text-->
+  <customFontSmallDefault>Nasalization</customFontSmallDefault>	<!-- [2019R3 min] Set the default font used for small text-->
+  <customFontMediumDefault>Nasalization</customFontMediumDefault><!-- [2019R3 min] Set the default font used for medium text-->
+  <customFontSizeTinyDefault>12</customFontSizeTinyDefault>			<!-- [2019R3 min] Set the default font size of tiny text -->
+  <customFontSizeSmallDefault>14</customFontSizeSmallDefault>		<!-- [2019R3 min] Set the default font size of small text -->
+  <customFontSizeMediumDefault>18</customFontSizeMediumDefault> 
+  
+  <particleMode>mono</particleMode>
+  <menuAlignment>right</menuAlignment>
+  <buttonNoBg>false</buttonNoBg>
+  <windowAnim>clip</windowAnim>
+  <description>Walk the path to ascension.</description>
+  <category>technology</category>
+  <dialogStacking>false</dialogStacking>
+	<windowsShadow>false</windowsShadow>
+
+
+  <tapestryScaleMode>ScaleAndCrop</tapestryScaleMode>
+
+  <GenUI.MouseoverColor>(120,60,60)</GenUI.MouseoverColor>
+  <Widgets.WindowBGFillColor>(20,10,10,225)</Widgets.WindowBGFillColor> 
+  <Widgets.WindowBGBorderColor>(120,15,15)</Widgets.WindowBGBorderColor>
+
+  <Widgets.TutorWindowBGFillColor>(20,10,10,225)</Widgets.TutorWindowBGFillColor>
+  <Widgets.TutorWindowBGBorderColor>(20,10,10,225)</Widgets.TutorWindowBGBorderColor>
+
+  <Widgets.SeparatorLineColor>(246, 246, 246,225)</Widgets.SeparatorLineColor>
+  <Widgets.SeparatorLabelColor>(250, 250, 250,225)</Widgets.SeparatorLabelColor>
+
+  <Widgets.MenuSectionBGFillColor>(20,10,10,225)</Widgets.MenuSectionBGFillColor>
+  <Widgets.MenuSectionBGBorderColor>(20,10,10)</Widgets.MenuSectionBGBorderColor>
+  <Widgets.OptionUnselectedBGFillColor>(20,10,10,225)</Widgets.OptionUnselectedBGFillColor>
+  <Widgets.OptionSelectedBGFillColor>(100,50,50,225)</Widgets.OptionSelectedBGFillColor>
+  <Widgets.optionTextActiveColor>(255,255,255)</Widgets.optionTextActiveColor>
+  <Widgets.OptionUnselectedBGBorderColor>(10,0,0,225)</Widgets.OptionUnselectedBGBorderColor>
+  <Widgets.OptionSelectedBGBorderColor>(10,0,0,225)</Widgets.OptionSelectedBGBorderColor>
+
+  <FloatMenuOption.ColorTextDisabled>(229,229,229)</FloatMenuOption.ColorTextDisabled>
+  <FloatMenuOption.ColorBGDisabled>(160,79,79,225)</FloatMenuOption.ColorBGDisabled>
+  <FloatMenuOption.ColorBGActiveMouseover>(100,50,50)</FloatMenuOption.ColorBGActiveMouseover>
+  <FloatMenuOption.ColorBGActive>(20,10,10,225)</FloatMenuOption.ColorBGActive>
+  
+</RimThemes>

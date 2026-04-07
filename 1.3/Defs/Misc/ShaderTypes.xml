@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TR.TRShaderTypeDef> 
+		<defName>TextureBlend</defName>
+		<shaderPath>TextureBlend</shaderPath>
+	</TR.TRShaderTypeDef>
+	
+	<TR.TRShaderTypeDef> 
+		<defName>MaskedFlowMap</defName>
+		<shaderPath>MaskedFlowMap</shaderPath>
+	</TR.TRShaderTypeDef>
+	
+	<TR.TRShaderTypeDef> 
+		<defName>SimpleBlend</defName>
+		<shaderPath>SimpleBlend</shaderPath>
+	</TR.TRShaderTypeDef>
+	
+	<TR.TRShaderTypeDef> 
+		<defName>MultiStepBlend</defName>
+		<shaderPath>MultiStepBlend</shaderPath>
+	</TR.TRShaderTypeDef>
+  
+  	<TR.TRShaderTypeDef> 
+		<defName>RadialBlur</defName>
+		<shaderPath>RadialBlur</shaderPath>
+	</TR.TRShaderTypeDef>
+  
+</Defs>

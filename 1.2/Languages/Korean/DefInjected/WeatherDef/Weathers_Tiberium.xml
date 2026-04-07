@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <IonStormWeather.label>이온 폭풍</IonStormWeather.label>
+  <IonStormWeather.description>강렬한 이온 폭풍이 몰아치고 있습니다.</IonStormWeather.description>
+
+  <TiberiumClear.label>녹색 하늘</TiberiumClear.label>
+  <TiberiumClear.description>타이베리움에 오염된 지역의 평범한 기후입니다.</TiberiumClear.description>
+
+
+</LanguageData>

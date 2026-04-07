@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TeleCore.NetworkDef>
+		<defName>TiberiumNetwork</defName>
+		<containerLabel>Tiberium Storage</containerLabel>
+		<controllerDef>TiberiumNetworkController</controllerDef>
+		<transmitterDef>TiberiumPipe</transmitterDef>
+		<transmitterGraphic>
+			<texPath>Buildings/Common/Network/Pipe_Tib</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</transmitterGraphic>
+		<overlayGraphic>
+			<texPath>Buildings/Common/Network/Pipe_Tib_SelOverlay</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MetaOverlay</shaderType>
+			<color>(155, 255, 0)</color>
+		</overlayGraphic>
+	</TeleCore.NetworkDef>
+	
+	<TiberiumRim.TRThingDef ParentName="NetworkPipeBase">
+		<defName>TiberiumPipe</defName>
+		<label>tiberium pipe</label>
+		<description>This structure connects Tiberium processing structures on the Tiberium Network.</description>
+		<building>
+			<blueprintGraphicData Inherit="False">
+				<texPath>Buildings/Common/Network/Pipe_Tib_blueprint</texPath>
+				<graphicClass>TeleCore.Graphic_LinkedWithSame</graphicClass>
+			</blueprintGraphicData>
+		</building>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>100</WorkToBuild>
+			<Flammability>0.2</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<costList>
+			<Steel>5</Steel>
+		</costList>
+		<comps>
+			<li Class="TeleCore.CompProperties_NetworkStructure">
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<networkRoles>
+							<li>Transmitter</li>
+						</networkRoles>
+					</li>
+				</networks>
+				<generalIOPattern>+</generalIOPattern>
+			</li>
+		</comps>
+	</TiberiumRim.TRThingDef>
+	
+	<TeleCore.NetworkValueDef>
+		<defName>TibGreen</defName>
+		<networkDef>TiberiumNetwork</networkDef>
+		<label>green</label>
+		<valueColor>(111,200,4)</valueColor>
+	</TeleCore.NetworkValueDef>
+
+	<TeleCore.NetworkValueDef>
+		<defName>TibBlue</defName>
+		<networkDef>TiberiumNetwork</networkDef>
+		<label>blue</label>
+		<valueColor>(8,142,208)</valueColor>
+	</TeleCore.NetworkValueDef>
+
+	<TeleCore.NetworkValueDef>
+		<defName>TibRed</defName>
+		<networkDef>TiberiumNetwork</networkDef>
+		<label>red</label>
+		<valueColor>(208,8,42)</valueColor>
+	</TeleCore.NetworkValueDef>
+
+	<TeleCore.NetworkValueDef>
+		<defName>TibSludge</defName>
+		<networkDef>TiberiumNetwork</networkDef>
+		<label>sludge</label>
+		<valueColor>(160,255,0)</valueColor>
+	</TeleCore.NetworkValueDef>
+
+	<TeleCore.NetworkValueDef>
+		<defName>TibGas</defName>
+		<networkDef>TiberiumNetwork</networkDef>
+		<label>gas</label>
+		<valueColor>(215,255,165)</valueColor>
+	</TeleCore.NetworkValueDef>
+
+</Defs>

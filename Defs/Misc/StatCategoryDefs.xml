@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <StatCategoryDef>
+    <defName>ConditionalEquippedStatOffsets</defName>
+    <label>Offsets when equipped</label>
+    <displayOrder>70</displayOrder>
+  </StatCategoryDef>
+
+  <StatCategoryDef>
+    <defName>WeaponSecondary</defName>
+    <label>weapon (secondary projectile)</label>
+    <displayOrder>70</displayOrder>
+  </StatCategoryDef>
+
+
+</Defs>

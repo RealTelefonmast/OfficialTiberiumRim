@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>	
+
+	<!-- ====================================== Militia =========================================== -->
+	<TR.TRThingDef ParentName="Nod_Armor"> <!--balance standard - AdvancedHelmet-->
+		<defName>Apparel_NodMilitiaMask</defName>
+		<label>Nod militia mask</label>
+		<description>The mask of the Nod militia.\n\nNod militia set has little protection against tiberium.</description>
+		<graphicData>
+			<texPath>Items/Apparel/Nod_Militia/MilitiaSuitMask</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+		</graphicData>
+		<costList>
+			<Cloth>15</Cloth>
+			<Nod_CarbonPlate>3</Nod_CarbonPlate>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<WorkToMake>7500</WorkToMake>
+			<MaxHitPoints>120</MaxHitPoints>
+			<Mass>1</Mass>
+			<ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.15</ArmorRating_Heat>
+			<Insulation_Cold>5</Insulation_Cold>
+			<EquipDelay>2</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<ToxicResistance>0.6</ToxicResistance>
+			<TiberiumGasResistance>0.6</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>2</scoreOffset>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+				<wornGraphicPath>Items/Apparel/Nod_Militia/MilitiaSuitMask</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<tags>
+				<li>NodMilitia</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>NodMilitiaSoldier</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+		<thingCategories>
+			<li>TRHelmetsNod</li>
+		</thingCategories>
+		<recipeMaker>
+			<!--<researchPrerequisite>NodResearch_Production</researchPrerequisite>-->
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="Nod_Armor"> <!--balance standard - flak jacket-->
+		<defName>Apparel_NodMilitiaSuit</defName>
+		<label>Nod militia robe</label>
+		<description>Robe of the Nod militia.\n\nNod militia set has little protection against tiberium.</description>
+		<graphicData>
+			<texPath>Items/Apparel/Nod_Militia/MilitiaSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<Cloth>75</Cloth>
+			<Nod_CarbonPlate>10</Nod_CarbonPlate>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<thingCategories>
+			<li>TRApparelsNod</li>
+		</thingCategories>
+		<statBases>
+			<WorkToMake>12500</WorkToMake>
+			<MaxHitPoints>180</MaxHitPoints>
+			<Mass>5</Mass>
+			<ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.15</ArmorRating_Heat>
+			<Insulation_Cold>15</Insulation_Cold>
+			<Insulation_Heat>5</Insulation_Heat>
+			<EquipDelay>10</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<ToxicResistance>0.1</ToxicResistance>
+			<TiberiumGasResistance>0.1</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.4</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.4</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>3</scoreOffset>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/Nod_Militia/MilitiaSuit</wornGraphicPath>
+			<layers>
+				<li>Shell</li>
+			</layers>
+			<tags>
+				<li>NodMilitia</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>NodMilitiaSoldier</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+		<recipeMaker>
+			<!--<researchPrerequisite>NodResearch_Production</researchPrerequisite>-->
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="Nod_Armor">
+		<defName>Apparel_NodSoldierHelmet</defName>  <!--balance standard - recon helmet -->
+		<label>Nod soldier helmet</label>
+		<description>This helmet has an integrated Tiberium filter, might also repell some bullets if you're lucky.\n\nNod soldier set has some protection against tiberium, but not perfect.</description>
+		<graphicData>
+			<texPath>Items/Apparel/Nod_Soldier/NodHelmet</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<ComponentSpacer>1</ComponentSpacer>
+			<Nod_CarbonPlate>15</Nod_CarbonPlate>
+		</costList>
+		<statBases>
+			<WorkToMake>15500</WorkToMake>
+			<MaxHitPoints>160</MaxHitPoints>
+			<Mass>1</Mass>
+			<Flammability>0.5</Flammability>
+			<ArmorRating_Sharp>1</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.6</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.6</ArmorRating_Heat>
+			<Insulation_Cold>5</Insulation_Cold>
+			<Insulation_Heat>0</Insulation_Heat>
+			<EquipDelay>2</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<ToxicResistance>0.6</ToxicResistance>
+			<TiberiumGasResistance>0.6</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>4</scoreOffset>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/Nod_Soldier/NodHelmet</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<tags>
+				<li>GDISoldier</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>GDISoldier</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+		<thingCategories>
+			<li>TRHelmetsNod</li>
+		</thingCategories>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="Nod_Armor">
+		<defName>Apparel_NodSoldierSuit</defName>  <!--balance standard - recon armor -->
+		<label>Nod soldier suit</label>
+		<description>This suit is optimized to resist most attacks.\n\nNod soldier set has some protection against tiberium, but not perfect.</description>
+		<graphicData>
+			<texPath>Items/Apparel/Nod_Soldier/NodSolderSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<ComponentSpacer>3</ComponentSpacer>
+			<ComponentIndustrial>1</ComponentIndustrial>
+			<Nod_CarbonPlate>50</Nod_CarbonPlate>
+		</costList>
+		<thingCategories>
+			<li>TRApparelsNod</li>
+		</thingCategories>
+		<statBases>
+			<WorkToMake>45000</WorkToMake>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Mass>8</Mass>
+			<Flammability>0.5</Flammability>
+			<ArmorRating_Sharp>1</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.6</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.6</ArmorRating_Heat>
+			<Insulation_Cold>30</Insulation_Cold>
+			<Insulation_Heat>10</Insulation_Heat>
+			<EquipDelay>10</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<Flammability>-0.2</Flammability>
+			<ToxicResistance>0.1</ToxicResistance>
+			<TiberiumGasResistance>0.1</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.6</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.6</TiberiumRadiationResistance>
+			<SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>4</scoreOffset>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/Nod_Soldier/NodSolderSuit</wornGraphicPath>
+			<layers>
+				<li>Shell</li>
+			</layers>
+			<tags>
+				<li>GDISoldier</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>GDISoldier</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+	<!-- ====================================== Officer =========================================== -->
+
+	<TR.TRThingDef ParentName="Nod_Armor">
+		<defName>Apparel_NodOfficerHelmet</defName> <!--balance standard - AdvancedHelmet-->
+		<label>Nod officer hat</label>
+		<description>A cool helmet, perfect for every Nod officer!\n\nNod officer set has little protection against tiberium.</description>
+		<graphicData>
+			<texPath>Items/Apparel/Nod_Classic/ClassicSuitMask</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<Cloth>10</Cloth>
+			<Nod_CarbonPlate>5</Nod_CarbonPlate>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<WorkToMake>9000</WorkToMake>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>1.2</Mass>
+			<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.12</ArmorRating_Heat>
+			<Insulation_Cold>5</Insulation_Cold>
+			<EquipDelay>2</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<SocialImpact>0.1</SocialImpact>
+			<ToxicResistance>0.6</ToxicResistance>
+			<TiberiumGasResistance>0.6</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>3</scoreOffset>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/Nod_Classic/ClassicSuitMask</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<tags>
+				<li>NodOfficer</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">Royal</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">RoyalTier2</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>NodOfficerSoldier</li>
+			</defaultOutfitTags>
+		</apparel>
+		<thingCategories>
+			<li>TRHelmetsNod</li>
+		</thingCategories>
+		<recipeMaker>
+			<!--<researchPrerequisite>NodResearch_Production</researchPrerequisite>-->
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="Nod_Armor"> <!--balance standard - flak jacket-->
+		<defName>Apparel_NodOfficerSuit</defName>
+		<label>Nod officer suit</label>
+		<description>A nice looking suit, perfect for a Nod Officer.\n\nNod officer set has little protection against tiberium.</description>
+		<graphicData>
+			<texPath>Items/Apparel/Nod_Classic/ClassicSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<Cloth>50</Cloth>
+			<Nod_CarbonPlate>15</Nod_CarbonPlate>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<thingCategories>
+			<li>TRApparelsNod</li>
+		</thingCategories>
+		<statBases>
+			<WorkToMake>16500</WorkToMake>
+			<MaxHitPoints>225</MaxHitPoints>
+			<Mass>5</Mass>
+			<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.12</ArmorRating_Heat>
+			<Insulation_Cold>15</Insulation_Cold>
+			<Insulation_Heat>5</Insulation_Heat>
+			<EquipDelay>10</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<SocialImpact>0.15</SocialImpact>
+			<ToxicResistance>0.1</ToxicResistance>
+			<TiberiumGasResistance>0.1</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.4</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.4</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>3</scoreOffset>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/Nod_Classic/ClassicSuit</wornGraphicPath>
+			<layers>
+				<li>Shell</li>
+			</layers>
+			<tags>
+				<li>NodOfficer</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">Royal</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">RoyalTier2</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>NodOfficerSoldier</li>
+			</defaultOutfitTags>
+		</apparel>
+		<recipeMaker>
+			<!--<researchPrerequisite>NodResearch_Production</researchPrerequisite>-->
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+		<!-- ====================================== Blackhand =========================================== -->
+		
+	<TR.TRThingDef ParentName="Nod_Armor">
+		<defName>Apparel_NodBlackHandHelmet</defName> <!--balance standard - cataphract helmet + -->
+		<label>Nod black hand helmet</label>
+		<description>This special helmet is used to protect the soldier from their fiery actions.\n\nNod black hand set has strong protection against tiberium, but not perfect.</description>
+		<techLevel>Spacer</techLevel>
+		<graphicData>
+			<texPath>Items/Apparel/Nod_Blackhand/BHSuitHelmet</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<Nod_CarbonPlate>40</Nod_CarbonPlate>
+			<ComponentSpacer>1</ComponentSpacer>
+		</costList>
+		<statBases>
+			<WorkToMake>28000</WorkToMake>
+			<MaxHitPoints>200</MaxHitPoints>   
+			<Mass>2</Mass>
+			<Flammability>0.2</Flammability>
+			<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+			<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+			<ArmorRating_Heat>1.5</ArmorRating_Heat>
+			<Insulation_Cold>5</Insulation_Cold>
+			<Insulation_Heat>5</Insulation_Heat>
+			<EquipDelay>2</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<ShootingAccuracyPawn>0.1</ShootingAccuracyPawn>
+			<ToxicResistance>0.75</ToxicResistance>
+			<TiberiumGasResistance>0.75</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>4</scoreOffset>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/Nod_Blackhand/BHSuitHelmet</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<tags>
+				<li>NodBlackHand</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">PrestigeCombatGear</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>NodBlackHandSoldier</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+		<thingCategories>
+			<li>TRHelmetsNod</li>
+		</thingCategories>
+		<recipeMaker>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<!--<researchPrerequisite>NodResearch_AdvancedProduction</researchPrerequisite>-->
+			<skillRequirements>
+				<Crafting>12</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<comps>
+			<li Class="CompProperties_Styleable" />
+		</comps>
+		<randomStyleChance>0.35</randomStyleChance>
+        <randomStyle>
+            <li>
+                <styleDef>Apparel_NodBlackHandHelmet2</styleDef>
+            </li>
+        </randomStyle>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+    </TR.TRThingDef>
+	
+	<ThingStyleDef>
+		<defName>Apparel_NodBlackHandHelmet2</defName>
+		<overrideLabel>Nod confessor helmet</overrideLabel>
+		<wornGraphicPath>Items/Apparel/Nod_Blackhand/BHSuitHelmet2</wornGraphicPath>
+		<graphicData>
+			<texPath>Items/Apparel/Nod_Blackhand/BHSuitHelmet2</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+	</ThingStyleDef>
+	
+	<TR.TRThingDef ParentName="Nod_Armor">
+		<defName>Apparel_NodBlackHand</defName> <!--balance standard - cataphract armor + -->
+		<label>Nod black hand suit</label>
+		<description>The Black hand's own powered armor, meant for elite personnel in extreme, and fiery environments.\n\nNod black hand set has strong protection against tiberium, but not perfect.</description>
+		<techLevel>Spacer</techLevel>
+		<graphicData>
+			<texPath>Items/Apparel/Nod_Blackhand/BHSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingCategories>
+			<li>TRApparelsNod</li>
+		</thingCategories>
+		<costList>
+			<Nod_CarbonPlate>125</Nod_CarbonPlate>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<WorkToMake>80000</WorkToMake>
+			<MaxHitPoints>450</MaxHitPoints>
+			<Mass>25</Mass>
+			<Flammability>0.2</Flammability>
+			<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+			<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+			<ArmorRating_Heat>1.5</ArmorRating_Heat>
+			<Insulation_Cold>25</Insulation_Cold>
+			<Insulation_Heat>250</Insulation_Heat>
+			<EquipDelay>15</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<ExtraCarryWeight>75</ExtraCarryWeight>
+			<Flammability>-0.9</Flammability>
+			<ToxicResistance>0.1</ToxicResistance>
+			<TiberiumGasResistance>0.1</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.75</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.75</TiberiumRadiationResistance>
+			<SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.5</SlaveSuppressionOffset>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>4</scoreOffset>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/Nod_Blackhand/BHSuit</wornGraphicPath>
+			<layers>
+				<li>Shell</li>
+			</layers>
+			<tags>
+				<li>NodBlackHand</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">PrestigeCombatGear</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>NodBlackHandSoldier</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+		<recipeMaker>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<!--<researchPrerequisite>NodResearch_AdvancedProduction</researchPrerequisite>-->
+			<skillRequirements>
+				<Crafting>12</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<comps>
+			<!--TODO: ADD CUSTOM FUEL / MAKE TIBERIUM GAS OBJECT CLASS-->
+			<li Class="CompProperties_Reloadable">
+				<maxCharges>2</maxCharges>
+				<ammoDef>Chemfuel</ammoDef>
+				<ammoCountPerCharge>50</ammoCountPerCharge>
+				<baseReloadTicks>60</baseReloadTicks>
+				<soundReload>Standard_Reload</soundReload>
+				<hotKey>Misc4</hotKey>
+				<chargeNoun>incendiary</chargeNoun>
+				<displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+			</li>
+		</comps>
+		<verbs>
+			<li>
+				<label>chemical grenade</label>
+				<verbClass>Verb_LaunchProjectileStatic</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<onlyManualCast>True</onlyManualCast>
+				<range>9.9</range>
+				<forcedMissRadius>0.9</forcedMissRadius>
+				<warmupTime>1.5</warmupTime>
+				<noiseRadius>4</noiseRadius>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				<soundCast>ThrowGrenade</soundCast>
+				<muzzleFlashScale>0</muzzleFlashScale>
+				<drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<defaultProjectile>Bullet_Nod_Grenade</defaultProjectile>
+				<rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+				<ai_AvoidFriendlyFireRadius>5</ai_AvoidFriendlyFireRadius>
+			</li>
+		</verbs>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+          
+</Defs>

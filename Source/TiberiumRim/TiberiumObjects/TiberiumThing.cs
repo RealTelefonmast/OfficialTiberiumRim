@@ -1,0 +1,30 @@
+﻿using TeleCore.RWExtended.ThingClasses;
+using TR.Components;
+using TR.Defs;
+using TR.World;
+using Verse;
+using WorldComponent_TR = TR.World.WorldComponent_TR;
+
+namespace TR.TiberiumObjects;
+
+public class TiberiumThing : FXThing
+{
+    public new TRThingDef def;
+
+    public WorldComponent_TR TiberiumRimComp = Find.World.GetComponent<WorldComponent_TR>();
+    public WorldComponent_Tiberium TiberiumWorldComp => Find.World.GetComponent<WorldComponent_Tiberium>();
+    public MapComponent_Tiberium TiberiumMapComp => Map.GetComponent<MapComponent_Tiberium>();
+
+    public override void SpawnSetup(Map map, bool respawningAfterLoad)
+    {
+        base.SpawnSetup(map, respawningAfterLoad);
+        def = (TRThingDef)base.def;
+        TiberiumMapComp.RegisterTiberiumThing(this);
+    }
+
+    public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
+    {
+        TiberiumMapComp.DeregisterTiberiumThing(this);
+        base.DeSpawn(mode);
+    }
+}

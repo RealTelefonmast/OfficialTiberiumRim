@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<HediffDef Name="HediffBase_TR" Abstract="True">
+		<hediffClass>HediffWithComps</hediffClass>
+		<description>A health effect.</description>
+		<minSeverity>0</minSeverity>
+		<maxSeverity>1</maxSeverity>
+		<initialSeverity>0.5</initialSeverity>
+		<lethalSeverity>-1</lethalSeverity>
+		<tendable>false</tendable>
+		<isBad>false</isBad>
+		<makesAlert>false</makesAlert>
+		<makesSickThought>false</makesSickThought>
+		<everCurableByItem>false</everCurableByItem>
+		<defaultLabelColor>(165,240,130)</defaultLabelColor>
+	</HediffDef>
+	
+	<HediffDef Name="BadHediffBase_TR" ParentName="HediffBase_TR" Abstract="True">
+		<makesAlert>true</makesAlert>
+		<tendable>true</tendable>
+		<isBad>true</isBad>
+		<everCurableByItem>true</everCurableByItem>
+		<minSeverity>0</minSeverity>
+		<maxSeverity>1</maxSeverity>
+	</HediffDef>
+	
+	<HediffDef Name="HediffMedical" Abstract="True">
+		<hediffClass>HediffWithComps</hediffClass>
+		<description>A medication effect.</description>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<maxSeverity>1.0</maxSeverity>
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-0.18</severityPerDay>
+			</li>
+		</comps>
+		<!-- Example For Immunities
+		<stages>
+			<li>
+				<makeImmuneTo>
+					<li>Malaria</li>
+					<li>SleepingSickness</li>
+					<li>Plague</li>
+				</makeImmuneTo>
+			</li>
+		</stages>
+		-->
+	</HediffDef>
+	
+	<HediffDef Name="HediffInjury_TR" Abstract="True">
+		<hediffClass>Hediff_Injury</hediffClass>
+		<description>An injury.</description>
+		<defaultLabelColor>(90,240,80)</defaultLabelColor>
+		<makesAlert>false</makesAlert>
+		<tendable>true</tendable>
+		<makesSickThought>false</makesSickThought>
+		<everCurableByItem>true</everCurableByItem>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<baseTendDurationHours>6</baseTendDurationHours>
+				<tendOverlapHours>2</tendOverlapHours>
+				<tendAllAtOnce>false</tendAllAtOnce>
+				<disappearsAtTotalTendQuality>1</disappearsAtTotalTendQuality>
+				<severityPerDayTended>-0.1</severityPerDayTended>
+			</li>
+		</comps>
+	</HediffDef>
+	
+	  <!-- Goes inside a part, does not replace it -->
+	<HediffDef Name="HediffImplant_TR" Abstract="True">
+		<hediffClass>Hediff_Implant</hediffClass>
+		<description>A body implant.</description>
+		<isBad>false</isBad>
+		<priceImpact>true</priceImpact>
+		<countsAsAddedPartOrImplant>true</countsAsAddedPartOrImplant>
+	</HediffDef>
+
+	<!-- replaces a part completely -->
+	<HediffDef Name="AddedPart_TR" ParentName="HediffImplant_TR" Abstract="True">
+		<hediffClass>TiberiumRim.Hediff_TRAddedPart</hediffClass>
+		<priceImpact>true</priceImpact>
+	</HediffDef>
+
+</Defs>

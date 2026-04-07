@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <ExtractSteel.label>강철 추출</ExtractSteel.label>
+  <ExtractSteel.description>채취한 타이베리움을 이용하여 강철 5덩이를 추출합니다.</ExtractSteel.description>
+  <ExtractSteel.jobString>강철 추출 중.</ExtractSteel.jobString>
+
+
+</LanguageData>

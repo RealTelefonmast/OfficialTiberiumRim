@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <HarvesterMainFrame.label>차축</HarvesterMainFrame.label>
+  <HarvesterBrain.label>자동제어회로</HarvesterBrain.label>
+  <HarvesterCockpit.label>조종석</HarvesterCockpit.label>
+  <HarvesterArmorPlate.label>장갑판</HarvesterArmorPlate.label>
+  <HarvesterEye.label>시각센서</HarvesterEye.label>
+  <HarvesterContainer.label>저장고</HarvesterContainer.label>
+  <HarvesterNozzle.label>배관</HarvesterNozzle.label>
+  <HarvesterMixer.label>혼합기</HarvesterMixer.label>
+  <HarvesterGrinder.label>파쇄기</HarvesterGrinder.label>
+  <HarvesterMelter.label>융해기</HarvesterMelter.label>
+  <HarvesterPowerPack.label>파워팩</HarvesterPowerPack.label>
+  <Harvester_Collector.label>수확기</Harvester_Collector.label>
+  <Harvester_CollectorArm.label>수확팔</Harvester_CollectorArm.label>
+  <Harvester_Track.label>궤도</Harvester_Track.label>
+  <Harvester_CarbonWheel.label>바퀴</Harvester_CarbonWheel.label>
+  <Harvester_ReinforcedWheel.label>바퀴</Harvester_ReinforcedWheel.label>
+
+
+</LanguageData>

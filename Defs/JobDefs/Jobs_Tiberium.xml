@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Meditative -->
+
+  <JobDef>
+    <defName>TiberiumBath</defName>
+    <driverClass>TiberiumRim.JobDriver_TiberiumBath</driverClass>
+    <reportString>resting in Tiberium.</reportString>
+    <joyDuration>6000</joyDuration>
+    <joyGainRate>1</joyGainRate>
+    <joyKind>Meditative</joyKind>
+  </JobDef>
+  
+</Defs>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<BodyPartGroupDef>
+		<defName>VeinRockBody</defName>
+		<label>rock body</label>
+	</BodyPartGroupDef>
+
+	<BodyPartGroupDef>
+		<defName>Harvester_Collectors</defName>
+		<label>collectors</label>
+	</BodyPartGroupDef>
+
+	<BodyPartGroupDef>
+		<defName>Harvester_Tracks</defName>
+		<label>tracks</label>
+	</BodyPartGroupDef>
+
+</Defs>

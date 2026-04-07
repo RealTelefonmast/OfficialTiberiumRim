@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	
+	<TR_NotDiscovered>This object can be discoverd.</TR_NotDiscovered>
+	
+	<!-- Tiberium Crystal -->
+	<TR_TibDormant>Currently dormant, will not spread.</TR_TibDormant>
+	<TR_TibSuppressed>Suppressed, will not grow.</TR_TibSuppressed>
+	<TR_TibHarvestValue>Current Value:{0}</TR_TibHarvestValue>
+	
+	
+	<TR_StatPartIsMechanoid>Is Mechanoid</TR_StatPartIsMechanoid>
+	
+	<!-- Tiberium Producer-->
+	
+	
+	
+  <Risk>Risk</Risk>
+  <Halted>Halted at</Halted>
+  <Decryst>De-crystallizing</Decryst>
+  <Status>Status</Status>
+  <Dead>Dead</Dead>
+  <Dying>Dissolving</Dying>
+  <Transmuting>Transmuting</Transmuting>
+  <Burnt>burnt</Burnt>
+  <Rotten>dissolved</Rotten>
+  <IsOpen>Has hatched.</IsOpen>
+  <PawnNameKind>{0}, the {1}.</PawnNameKind>
+  
+  <TR_SideEffectLabel>side effects</TR_SideEffectLabel>
+  <TR_SideEffectDesc>This medication is used to treat certain needs and health effects, consuming this item may cause some side effects if none of the required afflictions are present.\nBeware the following rules to avoid negative effects.</TR_SideEffectDesc>
+  <TR_SideEffectListing>Possible side effects include:</TR_SideEffectListing>
+  <TR_SideEffectWarning>The following afflictions will cause side effects:</TR_SideEffectWarning>
+  <TR_SideEffectCulpritNeeds>Needs:</TR_SideEffectCulpritNeeds>
+  <TR_SideEffectCulpritHediffs>Health Effects:</TR_SideEffectCulpritHediffs>
+  
+  <TR_SideEffectRequiredNeeds>Following needs are required:</TR_SideEffectRequiredNeeds>
+  <TR_SideEffectRequiredHediffs>Following health effects are required:</TR_SideEffectRequiredHediffs>
+  <TR_SideEffectChance>Consuming this may cause side effects {0} of the time.</TR_SideEffectChance>
+  
+  <!-- Pawn  Messages-->
+  <MessageTiberiumSuitLeak>A Tiberium protection suit is leaking!</MessageTiberiumSuitLeak>
+  <TiberiumNeed>Pawn Needs Tiberium!</TiberiumNeed>
+  <CannotReachTiberium>A Tiberium addicted pawn cannot find Tiberium or TiberAdd!</CannotReachTiberium>
+  
+  <UsedToBeName>Used to be {0}, the {1}.</UsedToBeName>
+  <UsedToBeNoName>Used to be a {0}.</UsedToBeNoName>
+  <PawnConverted>{0} has been turned into a Visceroid!</PawnConverted>
+  
+  <!-- Tiberium Producer -->
+  <VeinHubSpawned>A veinhub has been spawned by a Veinhole!</VeinHubSpawned>
+  <MessagePawnEaten>A Veinhole Monster consumed a pawn!</MessagePawnEaten>
+  <ProducerWokenIn>Fully formed in</ProducerWokenIn>
+  <ProducerWoken>Fully formed.</ProducerWoken>  
+  <ResearchBound>Bound to crane.</ResearchBound>
+  <EggHatch>Hatches in {0}.</EggHatch>
+  
+  <!-- PlaceWorkers -->
+  <MustPlaceOnTiberiumGeyser>This must be placed on a Tiberium geyser.</MustPlaceOnTiberiumGeyser>
+  <ThingAlreadyExists>A {0} already exists on your map.</ThingAlreadyExists>
+  
+  <!-- Tiberium Network -->
+  <MissingNetwork>Not connected to any Tiberium Network Controller.</MissingNetwork>
+  <StoredTib>Currently stored Tiberium</StoredTib>
+  <TotalStoredTib>Total stored Tiberium</TotalStoredTib>
+  <Consumes>Consumes {0} Tiberium Credits per day.</Consumes>
+  <DaysRemaining>{0} days remaining.</DaysRemaining>
+  
+  <NewRefinerySet>New Tiberium refinery set for {0}.</NewRefinerySet>
+  <RefineryLost>Refinery Lost.</RefineryLost>
+  
+  <StorageMode>Storing RGB</StorageMode>
+  <SludgeMode>Storing Sludge</SludgeMode>
+  <IsSludged>This silo will only store sludge.</IsSludged>
+  
+  <ConnectorDesc>Place a Connector next to any Tiberium network compatible structure, indicated by a green area. Only one Connector can be placed next to any network structure.</ConnectorDesc>
+  <TCredits>Tiberium Credits</TCredits>
+  
+  <!-- World -->
+  <InfestationPct>Tiberium Infestation at: {0}</InfestationPct>
+  <InfestationPctExp>One or more maps contain Tiberium!\n\n{0}</InfestationPctExp>   
+  
+  <!-- SETTINGS -->
+  <UseProducerCapLabel>Tiberium Producer-Cap</UseProducerCapLabel>
+  <UseProducerCapDesc>Limit the amount of Tiberium Producers that can spawn by incident.</UseProducerCapDesc>
+  <TiberiumProducersAmtLabel>Tiberium Producer Amount</TiberiumProducersAmtLabel>
+  <TiberiumProducersAmtDesc>Set the amount of allowed Tiberium Producers.</TiberiumProducersAmtDesc>
+  <UseSpreadRadiusLabel>Use Spread Radius</UseSpreadRadiusLabel>
+  <UseSpreadRadiusDesc>This makes Tiberium only spread in a certain radius around producers.</UseSpreadRadiusDesc>
+  <UseCustomBackgroundLabel>Custom Background</UseCustomBackgroundLabel>
+  <UseCustomBackgroundDesc>Displays the custom TiberiumRim background instead of the the vanilla one.</UseCustomBackgroundDesc>
+  <PawnDamage>Pawn Infection</PawnDamage>
+  <PawnDamageDesc>All pawns next to Tiberium will get affected by it.</PawnDamageDesc>
+  <UseSpecificProducersLabel>Specify Producers</UseSpecificProducersLabel>
+  <BuildingDamage>Structure Damage</BuildingDamage>
+  <BuildingDamageDesc>Activate this to let Tiberium damage any structure.</BuildingDamageDesc>
+  <EntityDamage>Item Damage</EntityDamage>
+  <EntityDamageDesc>Activate this to let Tiberium damage any item or object.</EntityDamageDesc>
+  <ExposureRate>Infection Rate</ExposureRate>
+  <BuildingDmgMltp>Tiberium Building Damage Multiplier</BuildingDmgMltp>
+  <ItemDmgMltp>Tiberium Item Damage Multiplier</ItemDmgMltp>
+  <TibGrowthRate>Tiberium Growth Multiplier</TibGrowthRate>
+  <SettingsGeneral>General Settings</SettingsGeneral>
+  <SettingsSpecial>Specialized Settings</SettingsSpecial>
+  <WorldSpread>World Infestation</WorldSpread>
+  <WorldSpreadDesc>This option allows Tiberium to spread on world tiles.</WorldSpreadDesc>
+  <SpreadMltp>World Spread Multiplier</SpreadMltp>
+  
+  <Easy>What is Tiberium?</Easy>
+  <EasySetting>You probably never heard of Tiberium, nor the Command and Conquer games, but that is fine, you don't need to know about that. If you worry you might get overwhelmed by what this mod offers, this is the option for you. It will reduce the threat of Tiberium and make this experience as newcomer friendly as possible.</EasySetting>
+  <Standard>The way it should be.</Standard>
+  <StandardSetting>You either already played TiberiumRim in an earlier stage or know enough about the Tiberium universe to at least guess what threats await you. All settings will be standard and Tiberium will behave the way it should be. This can be quite hard for any new players and also be a challange for some experienced RimWorld players, though it is not impossible nor hard.</StandardSetting>
+  <Hard>Gimme the glowy stuff!</Hard>
+  <HardSetting>You probably have quite a bit of experience with Tiberium, and might be bored the way it is, this setting will make the mod harder, but not impossible. It increases growth speed, infection amount and damage amount of Tiberium. Have fun!</HardSetting>
+  <SettingNotice>NOTICE: You can still customize your settings in the mod options afterwards!</SettingNotice>
+  <ConfirmSettings>Are you sure you want to use "{0}" as a preset?</ConfirmSettings>
+  
+  <!-- Harvester -->
+  <ReturnToRefineryIdling>Idling.</ReturnToRefineryIdling>
+  <ReturnToRefineryHarvesting>Harvesting.</ReturnToRefineryHarvesting>
+  
+  <SelectRefineryLabel>Set Refinery</SelectRefineryLabel>
+  <SelectRefineryDesc>Select a new main refinery for this harvester.</SelectRefineryDesc>
+  <SelectRefinerySame>This cannot be set as the new main refinery as it already is the main refinery.</SelectRefinerySame>
+  <SelectRefineryWrong>This cannot be set as a new main refinery.</SelectRefineryWrong>
+  
+  <SetTiberiumLabel>Set Preferred Type</SetTiberiumLabel>
+  <SetTiberiumDesc>Set a preferred Tiberium type, it will then be seeked for as long as it exists, otherwise the harvester continues to harvest any other type.</SetTiberiumDesc>
+  <ResetTiberium>Reset Preferred Type</ResetTiberium>
+  <CurPrefType>Currently preferred type</CurPrefType>
+  
+  <HarvesterModeNearest>Closest Tiberium</HarvesterModeNearest>
+  <HarvesterModeValue>Most Valuable Tib.</HarvesterModeValue>
+  <HarvesterModeDesc>Determine whether the harvester seeks for the closest or the most valuable Tiberium on the map.</HarvesterModeDesc>
+  <NA>Not Available</NA>
+  
+  <HarvestingReport>Harvesting {0}.</HarvestingReport>
+  
+  <ErMossInActive>Eradicate Moss</ErMossInActive>
+  <ErMossActive>/Eradicating/</ErMossActive>
+  
+  <!-- Tiberium -->
+  <HarvestValue>Current value</HarvestValue>
+  <DyingToInhibition>Dying due to sonic waves.</DyingToInhibition>
+  
+  <TiberiumHomeAlert>Tiberium in home area!</TiberiumHomeAlert>
+  <TiberiumHomeAlertExp>Tiberium has spread to your home area, it might cause damage soon!</TiberiumHomeAlertExp>
+  
+  <TiberiumArrivalTitle>Strange Encounter</TiberiumArrivalTitle>
+  <TiberiumArrivalDesc>An unidentifiable object is approaching our map, it's origin is unknown and the compositions seems to be highly exotic - in ways we cannot describe. Approach with caution.</TiberiumArrivalDesc>
+</LanguageData>

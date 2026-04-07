@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_ShockDisc</defName>
+		<label>shock disc</label>
+		<description>shock disc</description>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Disc</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>TRScrinBomb</damageDef>
+			<explosionRadius>0.025</explosionRadius>
+			<arcHeightFactor>1.5</arcHeightFactor>
+			<damageAmountBase>10</damageAmountBase>
+			<speed>30</speed>
+			
+		</projectile>
+	</ThingDef>
+	
+</Defs>

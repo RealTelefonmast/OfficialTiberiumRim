@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <MakeHarvesterCommon.label></MakeHarvesterCommon.label>
+  <MakeHarvesterCommon.parts.0.label>조종석</MakeHarvesterCommon.parts.0.label>
+  <MakeHarvesterCommon.parts.1.label>저장고</MakeHarvesterCommon.parts.1.label>
+  <MakeHarvesterCommon.parts.2.label>수확팔</MakeHarvesterCommon.parts.2.label>
+  <MakeHarvesterCommon.parts.3.label>궤도</MakeHarvesterCommon.parts.3.label>
+
+  <MakeRepairDroneCommon.label></MakeRepairDroneCommon.label>
+  <MakeRepairDroneCommon.parts.0.label>회로</MakeRepairDroneCommon.parts.0.label>
+  <MakeRepairDroneCommon.parts.1.label>본체</MakeRepairDroneCommon.parts.1.label>
+  <MakeRepairDroneCommon.parts.2.label>작업팔</MakeRepairDroneCommon.parts.2.label>
+  <MakeRepairDroneCommon.parts.3.label>추진기</MakeRepairDroneCommon.parts.3.label>
+
+
+</LanguageData>

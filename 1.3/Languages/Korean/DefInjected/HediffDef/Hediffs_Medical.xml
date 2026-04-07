@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberAddHediff.label>타이백신 효과</TiberAddHediff.label>
+  <TiberAddHediff.description>TiberAdd makes sure that your pawn has a steady supply of Tiberium need, without risking to wander the deadly fields of green.</TiberAddHediff.description>
+
+  <TiberAddSide.label>티버애드 부작용</TiberAddSide.label>
+  <TiberAddSide.description>n/a</TiberAddSide.description>
+
+  <TiberBlockHediff.label>타이블록 효과</TiberBlockHediff.label>
+  <TiberBlockHediff.description>TiberBlock makes sure to immunize your pawn from any Tiberium effects temporarily. It will help recover from crystallization, as long as the part isnt fully crystallized.</TiberBlockHediff.description>
+
+  <TiberBlockSide.label>타이블록 부작용</TiberBlockSide.label>
+  <TiberBlockSide.description>n/a</TiberBlockSide.description>
+
+
+</LanguageData>

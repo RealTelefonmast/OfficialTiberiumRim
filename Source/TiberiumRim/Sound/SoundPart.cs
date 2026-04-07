@@ -1,0 +1,25 @@
+﻿using Verse;
+using Verse.Sound;
+
+namespace TR.Sound
+{
+    public class SoundPart
+    {
+        public SoundDef def;
+        public SoundInfo info;
+
+        public SoundPart(SoundDef def, SoundInfo info)
+        {
+            this.def = def;
+            this.info = info;
+        }
+
+        public void PlaySound(int tick)
+        {
+            Log.Message("Playing Sound: " + def.defName + " at tick " + tick + " with info " + info.Maker);
+            Log.Message("Current playing oneshots: " + Find.SoundRoot.oneShotManager.PlayingOneShots.ToStringSafeEnumerable());
+            if(Find.SoundRoot.oneShotManager.CanAddPlayingOneShot(def, info))
+                def.PlayOneShot(info);
+        }
+    }
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.HediffMutationGroup>
+		<defName>Crystallized</defName>
+		<Skin>CrystalRash</Skin>
+		<Bone>CrystalBone</Bone>
+	</TiberiumRim.HediffMutationGroup>
+
+	<TiberiumRim.HediffMutationGroup>
+		<defName>Visceral</defName>
+		<!--Generic></Generic-->
+		<Skin>VisceralBlister</Skin>
+		<Arm>VisceralArm</Arm>
+		<Leg>VisceralLeg</Leg>
+		<!--
+		<Hand></Hand>
+		<Foot></Foot>
+		<Torso></Torso>
+		<Spine></Spine>
+		-->
+		<Organ>
+			<li>ViscousBloat,0.05</li>
+			<li>ViscousPart,0.85</li>
+		</Organ>
+		<Bone>VisceralBone</Bone>
+	</TiberiumRim.HediffMutationGroup>
+
+	<TiberiumRim.HediffMutationGroup>
+		<defName>Symbiotic</defName>
+		<Generic>EnhancedPart</Generic>
+		<Skin>SymbioticNode</Skin>
+		<!--
+		<Arm>VisceralArm</Arm>
+		<Leg>VisceralLeg</Leg>
+		<Hand></Hand>
+		<Foot></Foot>
+		<Torso></Torso>
+		<Spine></Spine>
+		-->
+		<Organ>
+			<li>SymbioticNode,0.85</li>
+		</Organ>
+		<Bone>SymbioticBone</Bone>
+	</TiberiumRim.HediffMutationGroup>
+	
+	<!--
+	TODO: IDEAS: Multiple tentacle arms
+	Volatile tiberium organs: make pawn explode on death
+	-->
+	
+</Defs>

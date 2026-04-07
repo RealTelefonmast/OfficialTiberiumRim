@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.RepairDroneKindDef>
+		<defName>RepairDrone_Common</defName>
+		<label>repair drone</label>
+		<combatPower>25</combatPower>
+		<defaultFactionType>PlayerColony</defaultFactionType>
+		<isFighter>false</isFighter>
+		<aiAvoidCover>false</aiAvoidCover>
+		<race>RepairDrone_Common</race>
+		<healFloat>0.01</healFloat>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawns/Mechanical/Common/RepairDrone/RepairDrone</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>1.5</drawSize>
+					<shadowData>
+						<volume>(0.4, 0.8, 0.4)</volume>
+					</shadowData>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</TiberiumRim.RepairDroneKindDef>
+
+</Defs>

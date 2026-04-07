@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GreenTiberiumChunk.label>녹색 타이배리움 덩어리</GreenTiberiumChunk.label>
+  <GreenTiberiumChunk.description>커다란 타이베리움 덩어리입니다. 천천히 분해되면서 작은 타이베리움 결정을 내뿜습니다.</GreenTiberiumChunk.description>
+
+  <BlueTiberiumChunk.label>청색 타이베리움 덩어리</BlueTiberiumChunk.label>
+  <BlueTiberiumChunk.description>커다란 타이베리움 덩어리입니다. 천천히 분해되면서 작은 타이베리움 결정을 내뿜습니다.</BlueTiberiumChunk.description>
+
+  <RedTiberiumChunk.label>적색 타이베리움 덩어리</RedTiberiumChunk.label>
+  <RedTiberiumChunk.description>커다란 타이베리움 덩어리입니다. 천천히 분해되면서 작은 타이베리움 결정을 내뿜습니다.</RedTiberiumChunk.description>
+
+  <VeinTiberiumChunk.label>덩굴바위</VeinTiberiumChunk.label>
+  <VeinTiberiumChunk.description>덩굴에 휘감긴 암석 덩어리입니다. 가끔씩 움직이는 것처럼 보입니다.</VeinTiberiumChunk.description>
+
+
+</LanguageData>

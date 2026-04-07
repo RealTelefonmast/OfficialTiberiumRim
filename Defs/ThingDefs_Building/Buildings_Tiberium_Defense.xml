@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>GroundFreezer</defName>
+		<label>Deep ground freezer</label>
+		<description>This device freezes the ground from inside out. The frost and snow inhibit the growth of crystals. But beware of high temperatures!</description>
+		<thingClass>Building</thingClass>
+		<category>Building</category>
+		<designationCategory>Tiberium</designationCategory>
+		<graphicData>
+			<texPath>Building/Defense/GroundFreezer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,3)</drawSize>
+			<shadowData>
+				<volume>(0.5,0.5,0.5)</volume>
+				<offset>(0,0,0)</offset>
+			</shadowData>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>2500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-13</Beauty>
+		</statBases>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<fillPercent>0.65</fillPercent>
+		<costList>
+			<Steel>175</Steel>
+			<Component>10</Component>
+		</costList>
+		<specialDisplayRadius>10.5</specialDisplayRadius>
+		<comps>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>-200</heatPerSecond>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(200,200,255,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>350</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="TiberiumRim.CompProperties_GroundFreezer">
+				<compClass>TiberiumRim.Comp_GroundFreezer</compClass>
+				<radius>10.5</radius>
+				<daysToRadius>3.5</daysToRadius>
+				<requiresElectricity>true</requiresElectricity>
+			</li>
+		</comps>
+		<tickerType>Rare</tickerType>
+		<rotatable>false</rotatable>
+		<researchPrerequisites>
+			<li>TiberiumInhibition</li>
+		</researchPrerequisites>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>GroundFreezerTribal</defName>
+		<label>Ground freezing box</label>
+		<description>This advanced version of a passive cooler is strong enough to freeze the ground. Good protection against Tiberium.</description>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Building/Defense/AIDCooler</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawRotated>false</drawRotated>
+			<allowFlip>false</allowFlip>
+			<damageData>
+				<rect>(0.2,0,0.6,0.1)</rect>
+			</damageData>
+		</graphicData>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<constructEffect>ConstructDirt</constructEffect>
+		<tickerType>Rare</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
+		<fillPercent>0.40</fillPercent>
+		<statBases>
+			<MaxHitPoints>160</MaxHitPoints>
+			<WorkToBuild>200</WorkToBuild>
+			<Flammability>0</Flammability>
+		</statBases>
+		<selectable>true</selectable>
+		<costList>
+			<Steel>75</Steel>
+		</costList>
+		<soundImpactDefault>BulletImpactGround</soundImpactDefault>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+		<placeWorkers>
+			<li>PlaceWorker_CoolerSimple</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<specialDisplayRadius>4.5</specialDisplayRadius>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_GroundFreezer">
+				<compClass>TiberiumRim.Comp_GroundFreezer</compClass>
+				<radius>4.5</radius>
+				<daysToRadius>1.5</daysToRadius>
+				<requiresElectricity>false</requiresElectricity>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>-25</heatPerSecond>
+			</li>
+			<li Class="CompProperties_Lifespan">
+				<lifespanTicks>900000</lifespanTicks>
+			</li>
+		</comps>	
+		<designationCategory>Tiberium</designationCategory>
+		<researchPrerequisites>
+			<li>TiberiumInhibitionTribal</li>
+		</researchPrerequisites>
+	</ThingDef>
+	
+
+</Defs>

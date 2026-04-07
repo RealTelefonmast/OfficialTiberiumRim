@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<WorldObjectDef>
+		<defName>ASat_Ion</defName>
+		<label>Ion Cannon Attack Satellite</label>
+		<description>.</description>
+		<worldObjectClass>TiberiumRim.AttackSatellite_Ion</worldObjectClass>
+		<texture>Buildings/GDI/Defense/IonCannon/ASat</texture>
+		<useDynamicDrawer>true</useDynamicDrawer>
+		<expandingIcon>true</expandingIcon>
+		<expandingIconTexture>Buildings/GDI/Defense/IonCannon/ASat</expandingIconTexture>
+		<expandingIconPriority>10</expandingIconPriority>
+	</WorldObjectDef>
+	<!--
+	<WorldObjectDef>
+		<defName>ASat_Spy</defName>
+		<label>Spy Satellite</label>
+		<description>.</description>
+		<worldObjectClass>TiberiumRim.AttackSatellite_Spy</worldObjectClass>
+		<texture>Buildings/GDI/Defense/IonCannon/ASat</texture>
+		<useDynamicDrawer>true</useDynamicDrawer>
+		<expandingIcon>true</expandingIcon>
+		<expandingIconTexture>Buildings/GDI/Defense/IonCannon/ASat</expandingIconTexture>
+		<expandingIconPriority>10</expandingIconPriority>
+	</WorldObjectDef>
+	-->
+	<WorldObjectDef>
+		<defName>TiberiumTile</defName>
+		<label>Tiberium Infestation</label>
+		<description>.</description>
+		<worldObjectClass>TiberiumRim.TiberiumTile</worldObjectClass>
+		<canHaveFaction>false</canHaveFaction>
+		<selectable>false</selectable>
+		<!--mapGenerator></mapGenerator Add Tib Generation -->
+		<expandingIcon>false</expandingIcon>
+	</WorldObjectDef>
+</Defs>

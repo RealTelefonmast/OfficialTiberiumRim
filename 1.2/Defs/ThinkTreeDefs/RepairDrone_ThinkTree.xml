@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThinkTreeDef>
+		<defName>RepairDrone</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<!-- Do Job (Repair) -->
+				<li Class="ThinkNode_QueuedJob" />
+				
+				<!-- 
+				<li Class="TiberiumRim.JobGiver_RepairDroneRepair" />
+				-->
+				<!-- Return -->
+				<li Class="ThinkNode_Tagger">
+					<tagToGive>Idle</tagToGive>
+					<subNodes>
+						<li Class="TiberiumRim.JobGiver_RepairDroneReturn"/>
+					</subNodes>
+				</li>		
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+	
+</Defs>

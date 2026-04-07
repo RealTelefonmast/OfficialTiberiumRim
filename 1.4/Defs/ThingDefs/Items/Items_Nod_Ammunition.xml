@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>NuclearShells</defName>
+		<label>nuclear shells</label>
+		<parent>Manufactured</parent>
+		<iconPath>UI/Icons/ThingCategories/MortarShells</iconPath>
+	</ThingCategoryDef>
+	
+	<TR.TRThingDef ParentName="TR_ShellBase">
+		<defName>TempleShell_Explosive</defName>
+		<label>nuclear warhead</label>
+		<description>This warhead is specifically designed to decimate entire areas within moments. After installation on a ICBM within the temple of Nod, a long range attack to any target within the missile's range will be allowed.</description>
+		<graphicData>
+			<texPath>Items/Ammunition/Temple_Shell</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>1</stackLimit>
+		<tickerType>Normal</tickerType>
+		<techLevel>Industrial</techLevel>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>5.9</explosiveRadius>
+				<damageAmountBase>500</damageAmountBase>
+				<explosiveDamageType>TRNuke</explosiveDamageType>
+				<postExplosionSpawnThingDef>TiberiumGas</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
+				<explosionEffect>GiantExplosion</explosionEffect>
+				<wickTicks>
+					<min>10</min>
+					<max>30</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<statBases>
+			<MarketValue>3500</MarketValue>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Mass>20</Mass>
+			<Beauty>-50</Beauty>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<recipeMaker> 
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<workAmount>30000</workAmount>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>Nod_Factory</li>
+			</recipeUsers>
+			<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<costList>
+			<Shell_HighExplosive>5</Shell_HighExplosive>
+			<Nod_LQTiberiumCore>3</Nod_LQTiberiumCore>
+		</costList>
+		<thingCategories>
+			<li>NuclearShells</li>
+		</thingCategories>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+</Defs>

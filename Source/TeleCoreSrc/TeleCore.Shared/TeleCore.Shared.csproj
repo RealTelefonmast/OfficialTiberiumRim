@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>TeleCore.Shared</RootNamespace>
+        <AssemblyName>TeleCore.Shared</AssemblyName>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <Compile Remove="ImmArray\Full\**" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <EmbeddedResource Remove="ImmArray\Full\**" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <None Remove="ImmArray\Full\**" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <ProjectReference Include="..\TeleCore.Loader\TeleCore.Loader.csproj" />
+    </ItemGroup>
+    
+</Project>

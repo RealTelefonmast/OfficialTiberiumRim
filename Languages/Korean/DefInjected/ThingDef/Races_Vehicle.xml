@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!--<FlameTank_TBI.label>플레임 탱크</FlameTank_TBI.label>-->
+  <!--<FlameTank_TBI.description>플레임 탱크는 적의 단단한 방어선을 무력화하기 위해 설계된 전쟁 기계입니다. 아주 정밀하지는 않지만, 목표 주변을 불바다로 만들기에는 부족함이 없습니다.</FlameTank_TBI.description>-->
+  <!--<FlameTank_TBI.tools.0.label>도저</FlameTank_TBI.tools.0.label>-->
+  <!-- Flesh Type: Mechanoid -->
+  <!--<FlameTank_TBI_Corpse.label>플레임 탱크 잔해</FlameTank_TBI_Corpse.label>-->
+  <!--<FlameTank_TBI_Corpse.description>플레임 탱크 잔해. 기계 작업대에서 분해하여 자원으로 사용할 수 있습니다.</FlameTank_TBI_Corpse.description>-->
+
+  <!--<MomTank_TBI.label>매머드 탱크</MomTank_TBI.label>-->
+  <!--<MomTank_TBI.description>매머드 탱크는 GDI 기갑 부대의 중핵입니다. 정면 대결에서 매머드 탱크를 이길 수 있는 병기는 존재하지 않습니다. 그러나 다수 소형 유닛들과의 교전에서는 상대적으로 취약한 모습을 보이곤 합니다.</MomTank_TBI.description>-->
+  <!--<MomTank_TBI.tools.0.label>도저</MomTank_TBI.tools.0.label>-->
+  <!-- Flesh Type: Mechanoid -->
+  <!--<MomTank_TBI_Corpse.label>매머드 탱크 잔해</MomTank_TBI_Corpse.label>-->
+  <!--<MomTank_TBI_Corpse.description>매머드 탱크 잔해. 기계 작업대에서 분해하여 자원으로 사용할 수 있습니다.</MomTank_TBI_Corpse.description>-->
+
+  <!--<Disruptor_TBI.label>디스럽터</Disruptor_TBI.label>-->
+  <!--<Disruptor_TBI.description>디스럽터 시스템은 공진을 일으켜 대상을 내부로부터 붕괴시키는 무시무시한 무기입니다. 다만 조준이 느린 것이 단점입니다.</Disruptor_TBI.description>-->
+  <!--<Disruptor_TBI.tools.0.label>도저</Disruptor_TBI.tools.0.label>-->
+  <!-- Flesh Type: Mechanoid -->
+  <!--<Disruptor_TBI_Corpse.label>디스럽터 잔해</Disruptor_TBI_Corpse.label>-->
+  <!--<Disruptor_TBI_Corpse.description>디스럽터 잔해. 기계 작업대에서 분해하여 자원으로 사용할 수 있습니다.</Disruptor_TBI_Corpse.description>-->
+
+  <!--<Buggy_TBI.label>레이더 버기</Buggy_TBI.label>-->
+  <!--<Buggy_TBI.description>노드에서 즐겨 쓰는 4륜구동차입니다. 빠르고 보병 사냥에 능하지만 중장비 상대로는 거의 위력을 발휘하지 못합니다.</Buggy_TBI.description>-->
+  <!--<Buggy_TBI.tools.0.label>도저</Buggy_TBI.tools.0.label>-->
+  <!-- Flesh Type: Mechanoid -->
+  <!--<Buggy_TBI_Corpse.label>레이더 버기 잔해</Buggy_TBI_Corpse.label>-->
+  <!--<Buggy_TBI_Corpse.description>레이더 버기 잔해. 기계 작업대에서 분해하여 자원으로 사용할 수 있습니다.</Buggy_TBI_Corpse.description>-->
+
+
+  <!-- No Leather: Butcher Products -->
+  <!-- Meat Amount: 0 -->
+
+</LanguageData>

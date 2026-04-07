@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<TR.TRThingDef Abstract="True" Name="GDITurret" ParentName="TurretBase_TR">
+
+	</TR.TRThingDef>
+  
+	<!--Juggernaut -->
+	<!-- TODO: Missing filter for different shells -->	
+	<TR.TRThingDef ParentName="GDITurret">
+		<defName>GDI_Juggernaut</defName>
+		<label>juggernaut artillery</label>
+		<description>This advanced GDI defensive structure fires a 3 shot burst of shells. The juggernaut has been known as one of the most devastating walkers in the early Tiberium wars, destroying base after base with ease. This version is less mobile but just as devastating.\n\nOnly one can be built./n/n(currently only shoots one shell, which has increased damage and explosion radius)</description>
+		<thingClass>TeleCore.Building_TeleTurret</thingClass>
+		<size>(3,3)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Juggernaut/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<damageData>
+				<rect>(0.38,0.2,0.56375,0.8)</rect>
+				<cornerTL>Damage/Corner</cornerTL>
+			</damageData>
+		</graphicData>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconPath>Buildings/GDI/Defense/Juggernaut/Turret</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>true</rotatable>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>15000</WorkToBuild>
+			<Mass>300</Mass>
+			<Beauty>-25</Beauty>
+			<ShootingAccuracyTurret>1</ShootingAccuracyTurret>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>4.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<explosionEffect>GiantExplosion</explosionEffect>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Mannable">
+				<manWorkType>Violent</manWorkType>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>150</heatPerSecond>
+				<heatPushMaxTemperature>1000</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Shells capacity</fuelLabel>
+				<fuelGizmoLabel>Shells capacity</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>JuggernautShell_Explosive</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>6</fuelCapacity>
+				<initialFuelPercent>0</initialFuelPercent>
+				<autoRefuelPercent>0.1</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>1</fuelMultiplier>
+				<factorByDifficulty>false</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot shoot: Needs shells charge</outOfFuelMessage>
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<fillPercent>0.4</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<costList>
+			<GDI_ReinforcedPlate>150</GDI_ReinforcedPlate>
+			<ComponentIndustrial>25</ComponentIndustrial>
+		</costList>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<specialDisplayRadius>14.9</specialDisplayRadius>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+		</building>
+		<placeWorkers>
+			<li>TeleCore.PlaceWorker_TurretGunTop</li>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Defense</category>
+			</li>
+			<li Class="TeleCore.TurretDefExtension">
+				<turrets>
+					<li>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/GDI/Defense/Juggernaut/Turret_Base</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(4,4)</drawSize>
+							</topGraphic>
+							<barrels>
+								<li>
+									<graphic>
+										<texPath>Buildings/GDI/Defense/Juggernaut/Barrel_b1</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(4,4)</drawSize>
+									</graphic>
+									<altitudeOffset>0.5</altitudeOffset>
+									<recoilOffset>(0,0,-0.6)</recoilOffset>
+								</li>
+								<li>
+									<graphic>
+										<texPath>Buildings/GDI/Defense/Juggernaut/Barrel_b2</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(4,4)</drawSize>
+									</graphic>
+									<altitudeOffset>0.5</altitudeOffset>
+									<recoilOffset>(0,0,-0.6)</recoilOffset>
+								</li>
+								<li>
+									<graphic>
+										<texPath>Buildings/GDI/Defense/Juggernaut/Barrel_b3</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(4,4)</drawSize>
+									</graphic>
+									<altitudeOffset>0.5</altitudeOffset>
+									<recoilOffset>(0,0,-0.6)</recoilOffset>
+								</li>
+							</barrels>
+							<aimSpeed>65</aimSpeed>
+						</turretTop>
+						<canForceTarget>true</canForceTarget>
+						<turretGunDef>Gun_Juggernaut</turretGunDef>
+						<turretBurstWarmupTime>5</turretBurstWarmupTime>
+						<turretBurstCooldownTime>25</turretBurstCooldownTime>
+					</li>
+				</turrets>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<!---->
+	<!-- Watch Tower -->
+	<TR.TRThingDef ParentName="GDITurret">
+		<defName>GDI_WatchTower</defName>
+		<label>watch tower</label>
+		<description>A GDI watch tower, fires automatically upon enemies.\n\nVulnerable to flame damage.</description>
+		<thingClass>TeleCore.Building_TeleTurret</thingClass>
+		<size>(2,2)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Turrets/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.5,2.5)</drawSize>
+		</graphicData>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconPath>Buildings/GDI/Defense/Turrets/WatchTower</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>7500</WorkToBuild>
+			<Mass>5000</Mass>
+			<Beauty>-25</Beauty>
+			<ShootingAccuracyTurret>0.95</ShootingAccuracyTurret>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>1.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<chanceNeverExplodeFromDamage>0.35</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>150</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Shells capacity</fuelLabel>
+				<fuelGizmoLabel>Shells capacity</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>GDI_ReinforcedPlate</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>100</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.25</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>10</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot shoot: Needs shells charge</outOfFuelMessage>
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<fillPercent>0.3</fillPercent>
+		<hasTooltip>true</hasTooltip>
+		<costList>
+			<GDI_ReinforcedPlate>100</GDI_ReinforcedPlate>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<specialDisplayRadius>24.9</specialDisplayRadius>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+		</building>
+		<placeWorkers>
+			<li>TeleCore.PlaceWorker_TurretGunTop</li>
+		</placeWorkers>
+		<damageMultipliers>
+			<li>
+				<damageDef>Flame</damageDef>
+				<multiplier>2</multiplier>
+			</li>
+		</damageMultipliers>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Defense</category>
+			</li>
+			<li Class="TeleCore.TurretDefExtension">
+				<turrets>
+					<li>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/GDI/Defense/Turrets/WatchTower_Base</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(3,3)</drawSize>
+							</topGraphic>
+							<barrels>
+								<li>
+									<graphic>
+										<texPath>Buildings/GDI/Defense/Turrets/WatchTower_Barrel1</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(3,3)</drawSize>
+									</graphic>
+									<altitudeOffset>-0.1</altitudeOffset>
+									<recoilOffset>(0,0,-0.25)</recoilOffset>
+								</li>
+								<li>
+									<graphic>
+										<texPath>Buildings/GDI/Defense/Turrets/WatchTower_Barrel2</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(3,3)</drawSize>
+									</graphic>
+									<altitudeOffset>-0.1</altitudeOffset>
+									<recoilOffset>(0,0,-0.25)</recoilOffset>
+								</li>
+							</barrels>
+							<aimSpeed>80</aimSpeed>
+							<resetSpeed>100</resetSpeed>
+							<recoilSpeed>200</recoilSpeed>
+						</turretTop>
+						<turretGunDef>Gun_WatchTower</turretGunDef>
+						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+						<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+					</li>
+				</turrets>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+
+	<!-- Guardian turret -->
+	<TR.TRThingDef ParentName="GDITurret">
+		<defName>GDI_Guardian</defName>
+		<label>guardian cannon</label>
+		<description>A GDI guardian cannon, fires automatically upon enemies.\n\nVulnerable to flame damage.</description>
+		<thingClass>TeleCore.Building_TeleTurret</thingClass>
+		<size>(2,2)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Turrets/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.5,2.5)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconPath>Buildings/GDI/Defense/Turrets/Guardian</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>15000</WorkToBuild>
+			<Mass>5000</Mass>
+			<Beauty>-25</Beauty>
+			<ShootingAccuracyTurret>0.97</ShootingAccuracyTurret>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>1.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<chanceNeverExplodeFromDamage>0.35</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>300</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Shells capacity</fuelLabel>
+				<fuelGizmoLabel>Shells capacity</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>GDI_ReinforcedPlate</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>100</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.25</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>5</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot shoot: Needs shells charge</outOfFuelMessage>
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<fillPercent>0.3</fillPercent>
+		<costList>
+			<GDI_ReinforcedPlate>150</GDI_ReinforcedPlate>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<specialDisplayRadius>29.9</specialDisplayRadius>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+		</building>
+		<placeWorkers>
+			<li>TeleCore.PlaceWorker_TurretGunTop</li>
+		</placeWorkers>
+		<damageMultipliers>
+			<li>
+				<damageDef>Flame</damageDef>
+				<multiplier>2</multiplier>
+			</li>
+		</damageMultipliers>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Defense</category>
+			</li>
+			<li Class="TeleCore.TurretDefExtension">
+				<turrets>
+					<li>
+						<canForceTarget>true</canForceTarget>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(3.5,3.5)</drawSize>
+							</topGraphic>
+							<barrels>
+								<li>
+									<graphic>
+										<texPath>Buildings/GDI/Defense/Turrets/Guardian_Standard</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(3.5,3.5)</drawSize>
+									</graphic>
+									<altitudeOffset>-0.1</altitudeOffset>
+									<recoilOffset>(0,0,-0.25)</recoilOffset>
+								</li>
+							</barrels>
+							<aimSpeed>60</aimSpeed>
+						</turretTop>
+						<turretGunDef>Gun_Guardian</turretGunDef>
+						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+						<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+					</li>
+				</turrets>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<!-- Sonic Emitter -->
+	<TR.TRThingDef ParentName="GDITurret">
+		<defName>GDI_SonicEmitter</defName>
+		<label>Sonic Emitter</label>
+		<description>The sonic emitter, this heavy weapon clears anything in it's path.\n\nVulnerable by flame attack.</description>
+		<thingClass>TR.Building_SonicEmitter</thingClass>
+		<size>(3,3)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/SonicEmitter/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconPath>Buildings/GDI/Defense/SonicEmitter/Turret</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MarketValue>30000</MarketValue>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>15000</WorkToBuild>
+			<Mass>250</Mass>
+			<Beauty>-25</Beauty>
+			<ShootingAccuracyTurret>1</ShootingAccuracyTurret>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<specialDisplayRadius>40</specialDisplayRadius>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Defense/SonicEmitter/Glow</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(3,3)</drawSize>							
+						</graphicData>
+						<altitude>Item</altitude>
+						<fxMode>Dynamic</fxMode>
+						<needsPower>true</needsPower>
+					</li>
+				</fxLayers>
+			</li>	
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>4.9</explosiveRadius>
+				<explosiveDamageType>TRSonic</explosiveDamageType>
+				<chanceNeverExplodeFromDamage>0.35</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1000</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>sonic core charge left</fuelLabel>
+				<fuelGizmoLabel>sonic core charge</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>GDI_SonicCore</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>500</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.05</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>500</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot shoot: Needs new sonic core</outOfFuelMessage>
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<fillPercent>0.3</fillPercent>
+		<costList>
+			<GDI_ReinforcedPlate>150</GDI_ReinforcedPlate>
+			<ComponentIndustrial>50</ComponentIndustrial>
+			<GDI_SonicCore>1</GDI_SonicCore>
+		</costList>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+			<ai_chillDestination>false</ai_chillDestination>
+			<!--
+			<turretGunDef>Gun_SonicEmitter</turretGunDef>
+			<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+			<turretBurstCooldownTime>5</turretBurstCooldownTime>
+			<turretTopGraphicPath>Buildings/GDI/Defense/SonicEmitter/Turret</turretTopGraphicPath>
+			<turretTopDrawSize>3</turretTopDrawSize>
+			<turretTopOffset>(0, 0.1)</turretTopOffset>
+			-->
+		</building>
+		<damageMultipliers>
+			<li>
+				<damageDef>TRSonic</damageDef>
+				<multiplier>0</multiplier>
+			</li>
+		</damageMultipliers>
+		<placeWorkers>
+			<li>TeleCore.PlaceWorker_TurretGunTop</li>
+		</placeWorkers>
+		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Defense</category>
+			</li>
+			<li Class="TeleCore.TurretDefExtension">
+				<turrets>
+					<li>
+						<canForceTarget>true</canForceTarget>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/GDI/Defense/SonicEmitter/Turret</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(3,3)</drawSize>
+							</topGraphic>
+							<aimSpeed>40</aimSpeed>
+						</turretTop>
+						<turretGunDef>Gun_SonicEmitter</turretGunDef>
+						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+						<turretBurstCooldownTime>5</turretBurstCooldownTime>
+					</li>
+				</turrets>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef >
+	
+	<!-- Rig Station -->	
+	<TR.TRThingDef ParentName="GDITurret">
+		<defName>GDI_BattleBase</defName>
+		<label>battle base</label>
+		<description>.</description>
+		<thingClass>TeleCore.Building_TeleTurret</thingClass>
+		<size>(8,4)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Turrets/RigBase</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(10,5)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconPath>Buildings/GDI/Defense/Turrets/RigBase</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MarketValue>15000</MarketValue>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<WorkToBuild>15000</WorkToBuild>
+			<Mass>5000</Mass>
+			<Beauty>-25</Beauty>
+			<ShootingAccuracyTurret>0.97</ShootingAccuracyTurret>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Shells capacity</fuelLabel>
+				<fuelGizmoLabel>Shells capacity</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>GDI_ReinforcedPlate</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>100</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.25</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>5</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot shoot: Needs shells charge</outOfFuelMessage>
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<fillPercent>0.3</fillPercent>
+		<costList>
+			<GDI_ReinforcedPlate>75</GDI_ReinforcedPlate>
+			<ComponentIndustrial>10</ComponentIndustrial>
+			<TRBattleChip>2</TRBattleChip>
+		</costList>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<specialDisplayRadius>29.9</specialDisplayRadius>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+		</building>
+		<placeWorkers>
+			<li>TeleCore.PlaceWorker_TurretGunTop</li>
+		</placeWorkers>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Defense</category>
+			</li>
+			<li Class="TeleCore.TurretDefExtension">
+				<turrets>
+					<li>
+						<canForceTarget>false</canForceTarget>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(2.5,2.5)</drawSize>
+							</topGraphic>
+							<barrels>
+								<li>
+									<graphic>
+										<texPath>Buildings/GDI/Defense/Turrets/Guardian_Railgun</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(2.5,2.5)</drawSize>
+									</graphic>
+									<altitudeOffset>-0.1</altitudeOffset>
+									<recoilOffset>(0,0,-0.5)</recoilOffset>
+								</li>
+							</barrels>
+							<aimSpeed>60</aimSpeed>
+						</turretTop>
+						<turretOffset>(0,0,0)</turretOffset>
+						<turretGunDef>Gun_MissilePod</turretGunDef>
+						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+						<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+					</li>
+					<li>
+						<canForceTarget>true</canForceTarget>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(5,5)</drawSize>
+							</topGraphic>
+							<barrels>
+								<li>
+									<graphic>
+										<texPath>Buildings/GDI/Defense/Turrets/Guardian_Railgun</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(5,5)</drawSize>
+									</graphic>
+									<altitudeOffset>-0.1</altitudeOffset>
+									<recoilOffset>(0,0,-0.5)</recoilOffset>
+								</li>
+							</barrels>
+							<aimSpeed>60</aimSpeed>
+						</turretTop>
+						<turretOffset>(-2.75,0,0)</turretOffset>
+						<turretGunDef>Gun_Guardian_Railgun</turretGunDef>
+						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+						<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+					</li>
+					<li>
+						<canForceTarget>true</canForceTarget>
+						<turretTop>
+							<topGraphic>
+								<texPath>Buildings/GDI/Defense/Turrets/Guardian_Base</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>(5,5)</drawSize>
+							</topGraphic>
+							<barrels>
+								<li>
+									<graphic>
+										<texPath>Buildings/GDI/Defense/Turrets/Guardian_Standard</texPath>
+										<graphicClass>Graphic_Single</graphicClass>
+										<drawSize>(5,5)</drawSize>
+									</graphic>
+									<altitudeOffset>-0.1</altitudeOffset>
+									<recoilOffset>(0,0,-0.5)</recoilOffset>
+								</li>
+							</barrels>
+							<aimSpeed>60</aimSpeed>
+						</turretTop>
+						<turretOffset>(2.5,0,0)</turretOffset>
+						<turretGunDef>Gun_Guardian</turretGunDef>
+						<turretBurstWarmupTime>2.5</turretBurstWarmupTime>
+						<turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+					</li>
+				</turrets>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+
+	<!--Test Stuff-->
+	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>Gun_MissilePod</defName>
+		<label>missilepod launcher</label>
+		<description>pew pew</description>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Turrets/WatchTower</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_MicroMissile</defaultProjectile>
+				<warmupTime>2.5</warmupTime>
+				<range>60</range>
+				<burstShotCount>12</burstShotCount>
+				<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+				<soundCast>Nod_Rocket</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>10</muzzleFlashScale>
+				<consumeFuelPerShot>0.25</consumeFuelPerShot>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_MicroMissile</defName>
+		<label>micro missile</label>
+		<description>rocket</description>
+		<thingClass>TR.Projectile_Homing</thingClass>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Nod_Rocket</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>(1.75,1.75)</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<arcHeightFactor>1.25</arcHeightFactor>
+			<damageAmountBase>20</damageAmountBase>
+			<explosionRadius>1.5</explosionRadius>
+			<speed>12</speed>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+		</projectile>
+	</ThingDef>
+	
+</Defs>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TR.TRThingDef ParentName="GDI_Gun">
+		<defName>Sovjet_TeslaGun</defName>
+		<label>mobile tesla thrower</label>
+		<description>asd</description>
+		<graphicData>
+			<texPath>Items/Weapons/Sovjet/MobileTesla</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>70000</WorkToMake>
+			<Mass>10.0</Mass>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<ComponentIndustrial>10</ComponentIndustrial>
+			<TRBattleChip>2</TRBattleChip>
+		</costList>
+		<verbs>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
+				<originOffsetPerShot>	
+					<li>(0.25, 0 , 0.25)</li>
+				</originOffsetPerShot>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Projectile_TeslaArc</defaultProjectile>
+				<requireLineOfSight>true</requireLineOfSight>
+				<warmupTime>4</warmupTime>
+				<range>25</range>
+				<minRange>2</minRange>
+				<burstShotCount>1</burstShotCount>
+				<soundCast>ElectricArc</soundCast>
+				<!--soundCastTail>Shot_GDI_GunTail</soundCastTail-->
+				<targetParams>
+					<canTargetLocations>false</canTargetLocations>
+				</targetParams>
+				<muzzleFlashScale>10</muzzleFlashScale>
+				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+		<tools>
+		  <li>
+			<label>stock</label>
+			<capacities>
+			  <li>Blunt</li>
+			</capacities>
+			<power>7</power>
+			<cooldownTime>1.8</cooldownTime>
+		  </li>
+		  <li>
+			<label>barrel</label>
+			<capacities>
+			  <li>Blunt</li>
+			  <li>Poke</li>
+			</capacities>
+			<power>7.7</power>
+			<cooldownTime>1.9</cooldownTime>
+		  </li>
+		</tools>
+		<weaponTags Inherit="False">
+			<li>VolkovArsenal</li>
+			<li>SovjetTesla</li>
+		</weaponTags>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+	</TR.TRThingDef>
+
+</Defs>

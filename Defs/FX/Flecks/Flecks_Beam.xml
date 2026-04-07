@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Fleck_BeamSparking</defName>
+    <fadeInTime>0.025</fadeInTime>
+    <solidTime>0.2</solidTime>
+    <fadeOutTime>0.4</fadeOutTime>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <graphicData>
+      <texPath>VisualFX/Beams/BeamSpark</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>0.02</drawSize>
+    </graphicData>
+    <acceleration>(0, 0, 0.5)</acceleration>
+    <speedPerTime>0.2~0.5</speedPerTime>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
+    <defName>Fleck_BeamScorchMark</defName>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <fadeInTime>0.2</fadeInTime>
+    <fadeOutTime>2.5</fadeOutTime>
+    <solidTime>10</solidTime>
+    <randomGraphics>
+      <li>
+        <graphicClass>Graphic_Fleck</graphicClass>
+        <texPath>VisualFX/Beams/BeamBurnA</texPath>
+        <shaderType>Transparent</shaderType>
+        <drawSize>0.45</drawSize>
+      </li>
+      <li>
+        <graphicClass>Graphic_Fleck</graphicClass>
+        <texPath>VisualFX/Beams/BeamBurnA</texPath>
+        <shaderType>Transparent</shaderType>
+        <drawSize>0.45</drawSize>
+      </li>
+    </randomGraphics>
+  </FleckDef>
+
+</Defs>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net481</TargetFramework>
+        <LangVersion>preview</LangVersion>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>Telefonmast (aka Maxim)</Authors>
+        <Company>Telefonmast</Company>
+        <Description>A collection of tools and functionalities for RimWorld modding.</Description>
+        <RootNamespace>TeleCore.RimWorld</RootNamespace>
+        <AssemblyName>TeleCore.RimWorld</AssemblyName>
+        <PackageTags>RimWorld;Mod;Telefonmast;Framework;Library;</PackageTags>
+        <RepositoryUrl>https://github.com/RealTelefonmast/TeleCore</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/RealTelefonmast/TeleCore</PackageProjectUrl>
+        <Version>1.2.5</Version>
+        <SignAssembly>false</SignAssembly>
+        <PackageVersion>1.9.8.5</PackageVersion>
+        <Nullable>enable</Nullable>
+        <Title>TeleCore</Title>
+        <Copyright>Copyright © 2023 Maxim Switenko</Copyright>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <DebugType>full</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DefineConstants>TRACE;DEBUG</DefineConstants>
+        <WarningLevel>4</WarningLevel>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    </PropertyGroup>
+
+    <!-- DLL References -->
+
+    <!-- NuGet References -->
+    <ItemGroup>
+        <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.*" GeneratePathProperty="true" />
+        <PackageReference Include="Lib.Harmony" Version="2.3.6" ExcludeAssets="runtime" />
+        <PackageReference Include="Krafs.Publicizer" Version="2.*" />
+        <Publicize Include="Assembly-CSharp" IncludeVirtualMembers="false" IncludeCompilerGeneratedMembers="false" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="TeleCore.jpg">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
+
+</Project>

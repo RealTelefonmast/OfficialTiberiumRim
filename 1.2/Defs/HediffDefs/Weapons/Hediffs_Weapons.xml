@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<HediffDef ParentName="HediffBase_TR">
+		<defName>TiberiumBackGrowth</defName>
+		<hediffClass>HediffWithComps</hediffClass>
+		<label>tiberian back growth</label>
+		<defaultLabelColor>(175, 255, 0)</defaultLabelColor>
+		<initialSeverity>1</initialSeverity>
+		<chanceToCauseNoPain>1</chanceToCauseNoPain>
+		<makesSickThought>false</makesSickThought>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<cureAllAtOnceIfCuredByItem>false</cureAllAtOnceIfCuredByItem>
+		<everCurableByItem>false</everCurableByItem>
+		<!--<causesNeed></causesNeed>-->
+		<stages>
+			<li>
+				<painFactor>1.5</painFactor>
+			</li>
+		</stages>
+		<comps>
+			<li Class="TiberiumRim.HediffCompProperties_RangedVerb">
+				<verbs>
+					<li Class="TiberiumRim.VerbProperties_TR">
+						<verbClass>TiberiumRim.Verb_TR</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>Bullet_Shard</defaultProjectile>
+						<warmupTime>1.5</warmupTime>
+						<range>36.9</range>
+						<burstShotCount>4</burstShotCount>
+						<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+						<soundCast>TiberiumFiend_RangedAttack</soundCast>
+						<soundCastTail>GunTail_Light</soundCastTail>
+						<muzzleFlashScale>0</muzzleFlashScale>
+					</li>
+				</verbs>
+			</li>
+		</comps>
+	</HediffDef>
+	
+
+</Defs>

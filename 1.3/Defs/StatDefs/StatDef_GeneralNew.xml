@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<StatDef>
+		<defName>ExtraCarryWeight</defName>
+		<label>extra carrying weight</label>
+		<description>The amount of additional stuff this creature can carry.</description>
+		<category>BasicsPawn</category>
+		<defaultBaseValue>0</defaultBaseValue>
+		<minValue>0</minValue>
+		<toStringStyle>Integer</toStringStyle>
+		<capacityFactors>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>1.0</weight>
+			</li>
+		</capacityFactors>
+		<displayPriorityInCategory>2205</displayPriorityInCategory>
+	</StatDef>
+
+</Defs>

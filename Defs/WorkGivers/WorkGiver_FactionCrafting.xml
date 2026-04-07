@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<WorkGiverDef>
+		<defName>Factions_DoBillsFactory</defName>
+		<label>make things at factory</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Smithing</workType>
+		<priorityInType>97</priorityInType>
+		<fixedBillGiverDefs>
+			<li>GDI_Factory</li>
+			<li>Nod_Factory</li>
+		</fixedBillGiverDefs>
+		<verb>work at factory</verb>
+		<gerund>working at factory</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+	
+</Defs>

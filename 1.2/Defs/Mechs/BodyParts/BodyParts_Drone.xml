@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<BodyPartDef Abstract= "True" Name="ScrinDronePart">
+		<hitPoints>5</hitPoints>
+		<frostbiteVulnerability>2</frostbiteVulnerability>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<bleedRate>0</bleedRate>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>	
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="ScrinDronePart">
+		<defName>ScrinDrone_Spine</defName>
+		<label>drone spine</label>
+		<hitPoints>50</hitPoints>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="ScrinDronePart">
+		<defName>ScrinDrone_Exoskeleton</defName>
+		<label>exoskeleton</label>
+		<hitPoints>75</hitPoints>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="ScrinDronePart">
+		<defName>ScrinDrone_Scale</defName>
+		<label>scale armor</label>
+		<hitPoints>25</hitPoints>
+	</BodyPartDef>
+
+	<!-- Manipulator Arm-->
+
+	<BodyPartDef ParentName="ScrinDronePart">
+		<defName>ScrinDrone_ManiArm</defName>
+		<label>manipulator arm</label>
+		<hitPoints>10</hitPoints>
+		<tags>
+			<li>ManipulationLimbCore</li>
+		</tags>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="ScrinDronePart">
+		<defName>ScrinDrone_ManiSupport</defName>
+		<label>manipulator support</label>
+		<hitPoints>10</hitPoints>
+		<tags>
+			<li>ManipulationLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef ParentName="ScrinDronePart">
+		<defName>ScrinDrone_ManiTool</defName>
+		<label>manipulator tool</label>
+		<hitPoints>5</hitPoints>
+		<tags>
+			<li>ManipulationLimbDigit</li>
+		</tags>
+	</BodyPartDef>
+
+
+	<BodyPartDef ParentName="ScrinDronePart">
+		<defName>ScrinDrone_HoverArray</defName>
+		<label>hover array</label>
+		<hitPoints>30</hitPoints>
+		<tags>
+			<li>MovingLimbCore</li>
+		</tags>
+	</BodyPartDef>
+
+	<BodyPartDef ParentName="ScrinDronePart">
+		<defName>ScrinDrone_HoverArm</defName>
+		<label>hover arm</label>
+		<hitPoints>5</hitPoints>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+
+</Defs>

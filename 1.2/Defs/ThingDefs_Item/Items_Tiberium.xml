@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>BookRiparius</defName>
+		<label>riparius book</label>
+		<description>Tiberium Riparius:\n\nThe green kind of Tiberium which can be found the most, it exists in various forms with the most common one being Riparius.\nIt came to planet Earth a long time ago, long before this rim world has been infected, where it crashed near the Tiber river, giving it it's name.\nWhile being the most common type it is also the least valuable out of all known ones, though it varies inbetween the different green forms.\n\nIt is recommended to avoid it at all costs and limit exposure to critical research only.\nThe substance, no matter the kind, will infect any carbon based lifeform and crystalize it sooner or later depending on the gravity of exposure. Death may occur within hours or within years depending on your luck.\nThis feature of Tiberium is not merely toxic, it affects any other mineral surrounding it which is converted into more Tiberium, consuming any landscape.</description>
+		<graphicData>
+			<texPath>Items/Resource/BookRiparius</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>50</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>25</stackLimit>
+    </ThingDef>
+	
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>BookVinifera</defName>
+		<label>vinifera book</label>
+		<description>Tiberium Vinifera:\n\nThe blue kind of Tiberium which can be seen as the 'mature' form of Riparius.\nIt is rather rare compared to the green Tiberium types. This is partially due to the slow growth in comparision.\n\nThis type explains the theory that Tiberium is more of a living being.\nThis kind remains toxic and affects living beings just like any other kind, turning them into various lifeforms.\nThese Tiberium lifeforms are not necessarily hostile though very dangerous compared to any known terrestrial creature, mutated plants however seem to bear valuable resources.\nThis kind opens the question whether Tiberium 'lives' or not, it seems like this won't be the last of it.</description>
+		<graphicData>
+			<texPath>Items/Resource/BookVinifera</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>125</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>25</stackLimit>
+    </ThingDef>
+	
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>BookRutila</defName>
+		<label>rutila book</label>
+		<description>Tiberium Rutila:\n\nThe red kind of Tiberium, which seems to be very rare.\nIt appears only in the form of red Tiberium shards which fall from the sky, huge pillars of glowing red crystal, radiating warmth and inducing an uneasy feeling.\nSightings on Earth revealed that red Tiberium doesn't spread, however it seems to have evolved the ability to do so, although, very slowly.\n\nThis kind and types associated with it bear many mysteries we cannot understand. Only time will tell what the purpose and origin of these crystals might be. It could be a natural alien rock, or a alien weapon.</description>
+		<graphicData>
+			<texPath>Items/Resource/BookRutila</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>225</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>25</stackLimit>
+    </ThingDef>
+	
+	
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>TiberiumPlantTree</defName>
+		<label>tiberium wood</label>
+		<description>This wood-like matter is unfortunately not usable like regular wood, except you want to breathe toxic spores all day. However it might be useful for medical application.</description>
+		<graphicData>
+			<texPath>Items/Resource/TiberiumWood</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>25</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>0.65</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>75</stackLimit>
+    </ThingDef>
+	
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>TiberiumPlantGrass</defName>
+		<label>tiberium grass</label>
+		<description>This alien grass seems.. alive? You should most likely avoid traversing it.</description>
+		<graphicData>
+			<texPath>Items/Resource/TiberiumGrass</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<statBases>
+			<MaxHitPoints>25</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>5</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>0.85</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>125</stackLimit>
+    </ThingDef>
+	
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>TiberiumPlantShroom</defName>
+		<label>tiberium shroom</label>
+		<description>These plants seem to be a sort of fungi, heavily mutated or even evolved in these death driven fields. Just like the wood and grass that can be found nearby, it might be useful for medical application.</description>
+		<graphicData>
+			<texPath>Items/Resource/TiberiumShroom</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<statBases>
+			<MaxHitPoints>40</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>10</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>0.25</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>100</stackLimit>
+    </ThingDef>
+	
+	<ThingDef ParentName="ResourceBase_TR">
+		<defName>TiberiumPlantBerry</defName>
+		<label>tiberium berries</label>
+		<description>A bunch of strange fruit from various Tiberium flora, while not consumable, it could prove useful.</description>
+		<graphicData>
+			<texPath>Items/Resource/TiberiumBerry</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<statBases>
+			<MaxHitPoints>30</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>15</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>0.50</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>225</stackLimit>
+    </ThingDef>
+	
+	
+	<!-- TO DO: 
+	<ThingDef ParentName="MakeableDrugPillBase">
+		<defName>TiberAdd</defName>
+		<label>Tiberadd</label>
+		<description>This drug helps pawns who depend on Tiberium exposure. After ingesting it will fill up their need slowly.</description>
+		<graphicData>
+			<texPath>Items/Consumable/TiberAdd</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>1000</WorkToMake>
+			<MarketValue>250</MarketValue>
+			<Mass>0.01</Mass>
+		</statBases>
+		<techLevel>Industrial</techLevel>
+		<ingestible>
+			<drugCategory>Medical</drugCategory>
+			<outcomeDoers>
+			<li Class="IngestionOutcomeDoer_GiveHediff">
+			  <hediffDef>TiberAddHediff</hediffDef>
+			  <severity>1.0</severity>
+			</li>
+		  </outcomeDoers>
+		</ingestible>
+		<costList>
+			<TiberiumPlantGrass>3</TiberiumPlantGrass>
+			<TiberiumPlantShroom>1</TiberiumPlantShroom>
+			<Neutroamine>5</Neutroamine>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Drug">
+			<listOrder>1074</listOrder>
+				<overdoseSeverityOffset>
+					<min>0.08</min>
+					<max>0.14</max>
+				</overdoseSeverityOffset>
+			</li>
+		</comps>
+	</ThingDef>
+	-->
+</Defs>

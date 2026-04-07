@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<!-- UI -->
+	<TR_Credits>Tiberium Credits</TR_Credits>
+	<TR_CreditsTotal>Total: {0}</TR_CreditsTotal>
+	
+	<TR_PowerLeft>{0} of power left.</TR_PowerLeft>
+	
+	<TR_ContainerContent>Tiberium Storage</TR_ContainerContent>
+	<TR_MissingConnection>Missing connection to</TR_MissingConnection>
+	<TR_ConsumerLack>A silo or refinery</TR_ConsumerLack>
+	<TR_ProducerLack>A silo or production facility</TR_ProducerLack>
+
+	<!-- ITAB -->
+	<TR_TibResourceRefiner>Resources</TR_TibResourceRefiner>
+	
+
+	<!--Harvesters-->
+	<TR_HarvesterInside>Harvester and Refinery need to be outside to work.</TR_HarvesterInside>
+	<TR_HarvesterMode>Harvest Mode</TR_HarvesterMode>
+	<TR_HarvesterModeDesc>Set the behaviour of the harvester.</TR_HarvesterModeDesc>
+	<TRHMode_Nearest>Harvest the closest possible Tiberium.</TRHMode_Nearest>
+	<TRHMode_Valuable>Harvest the closest most valuable Tiberium.</TRHMode_Valuable>
+	<TRHMode_Moss>Eradicate moss and collect sludge.</TRHMode_Moss>
+	
+	<TR_MissingNetworkController>No Network Controller Connected!</TR_MissingNetworkController>
+	
+	<!--Refinery-->
+	<TR_RefineryLost>Refinery lost.</TR_RefineryLost>
+	<TR_RefineryReturn>Recall Harvesters</TR_RefineryReturn>
+	<TR_RefineryAllow>Resume Work</TR_RefineryAllow>
+	<TR_RefineryReturnDesc>Recall all harvesters, which have this refinery set as their main one.</TR_RefineryReturnDesc>
+	
+	<!-- Harvester -->
+	<TR_HarvestingReport>Harvesting {0}.</TR_HarvestingReport>
+	<TR_HarvesterIdlePos>Idling at last safe place.</TR_HarvesterIdlePos>
+	<TR_HarvesterIdleRefinery>Idling at refinery.</TR_HarvesterIdleRefinery>
+	
+	<TR_HarvesterHarvest>Harvest</TR_HarvesterHarvest>
+	<TR_HarvesterReturn>Return to Refinery</TR_HarvesterReturn>
+	
+	<TR_HarvesterRefinery>Set Main Refinery</TR_HarvesterRefinery>
+	<TR_HarvesterRefineryDesc>Select the refinery that the harvester should prioritize.</TR_HarvesterRefineryDesc>
+	<TR_HarvesterNewRefinery>New refinery set!</TR_HarvesterNewRefinery>
+	
+</LanguageData>

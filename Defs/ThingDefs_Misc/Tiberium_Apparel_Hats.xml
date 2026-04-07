@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="HatBase" ParentName="ApparelBase" Abstract="True">
+		<thingCategories>
+		<li>Headgear</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Name="HatMakeableBase" ParentName="ApparelMakeableBase" Abstract="True">
+		<thingCategories>
+		<li>Headgear</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Name="ArmorHelmetMakeableBase" ParentName="ArmorMakeableBase" Abstract="True">
+		<thingCategories>
+		<li>Headgear</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="HatMakeableBase">
+		<defName>TiberiumSuitMask_TBP</defName>
+		<label>Tiberium protection mask</label>
+		<description>A mask to protect your head from Tiberium radiation.\n\n Also protects from toxic fallout.</description>
+		<recipeMaker>
+			<researchPrerequisite>TiberiumKnowledge</researchPrerequisite>
+		</recipeMaker>
+		<graphicData>
+			<texPath>Pawn/Humanlike/Apparel/TiberiumSuitParts/TiberiumSuitMask</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+		</graphicData>
+		<costList>
+			<Steel>30</Steel>
+			<Cloth>60</Cloth>
+		</costList>
+		<statBases>
+			<MarketValue>950</MarketValue>
+			<MaxHitPoints>35</MaxHitPoints>
+			<WorkToMake>5000</WorkToMake>
+			<Mass>0.3</Mass>
+			<ArmorRating_Blunt>0.03</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.03</ArmorRating_Sharp>
+			<Insulation_Heat>12</Insulation_Heat>
+		</statBases>
+		<equippedStatOffsets>
+			<SocialImpact>-0.15</SocialImpact>
+			<ToxicSensitivity>-1</ToxicSensitivity>
+		</equippedStatOffsets>
+		<apparel>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+				<wornGraphicPath>Pawn/Humanlike/Apparel/TiberiumSuitParts/TiberiumSuitMask</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<defaultOutfitTags>
+				<li>Worker</li>
+			</defaultOutfitTags>
+		</apparel>
+	</ThingDef>
+  
+</Defs>

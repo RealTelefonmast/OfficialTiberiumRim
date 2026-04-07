@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TR.TRThingDef ParentName="StationBase_TR">
+		<defName>PollutionFilter</defName>
+		<label>pollution filter</label>
+		<description>.</description>
+		<thingCategories Inherit="false" />
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+			<texPath>Buildings/Common/Pollution/Filter</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.25,2.25)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-10</Beauty>
+		</statBases>
+		<size>(2,2)</size>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T5</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<comps>
+			<li Class="TeleCore.CompProperties_Network">
+				<compClass>TR.Comp_ANS_TiberiumFilter</compClass>
+				<networks>
+					<li>
+						<networkDef>AtmosphericNetwork</networkDef>
+						<roles>
+							<li>Transmitter</li>
+							<li>Requester</li>
+							<li>Storage</li>
+						</roles>
+						<volumeConfig>
+							<capacity>750</capacity>
+							<values>
+								<allowedValues>
+									<li>Atmospheric_TibPollution</li>
+								</allowedValues>
+							</values>
+						</volumeConfig>
+					</li>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<roles>
+							<li>Transmitter</li>
+							<li>Producer</li>
+						</roles>
+						<volumeConfig>
+							<capacity>1250</capacity>
+							<values>
+								<allowedValues>
+									<li>TibSludge</li>
+								</allowedValues>
+							</values>
+						</volumeConfig>
+					</li>
+				</networks>
+				<generalIOConfig>
+					<pattern>#XX#|X++X|X++X|#XX#</pattern>
+				</generalIOConfig>
+			</li>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Common/Pollution/Filter_Overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,2.25)</drawSize>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
+						<needsPower>true</needsPower>
+					</li>
+				</fxLayers>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(255,155,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>255</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>	
+		<fillPercent>1</fillPercent>
+		<rotatable>false</rotatable>			
+		<surfaceType>Item</surfaceType>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Common</groupDef>
+				<category>Pollution</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+<!--
+	<TR.TRThingDef ParentName="StationBase_TR">
+		<defName>AtmosphericPumpTwo</defName>
+		<label>Atmospheric Pump 2</label>
+		<description>.</description>
+		<thingCategories Inherit="false" />
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Network/Node/Node</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.25,4.5)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToBuild>1000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-5</Beauty>
+		</statBases>
+		<size>(2,4)</size>
+		<costList>
+			<Steel>100</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T2</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<comps>
+			<li Class="TeleCore.CompProperties_Network">
+				<networks>
+					<li>
+						<networkDef>AtmosphericNetwork</networkDef>
+						<roles>
+							<li>Transmitter</li>
+							<li>Controller</li>
+							<li>Storage</li>
+						</roles>
+						<volumeConfig>
+							<capacity>1000</capacity>
+							<values>
+								<allowedValues>
+									<li>Atmospheric_TibPollution</li>
+								</allowedValues>
+							</values>
+						</volumeConfig>
+					</li>
+				</networks>
+				<generalIOConfig>
+					<pattern>#XX#|X++X|X++X|#XX#</pattern>
+				</generalIOConfig>
+			</li>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Common/Network/Node/Overlay1</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,4.5)</drawSize>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
+						<needsPower>false</needsPower>
+					</li>
+					<li><skip>true</skip></li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Common/Network/Node/Overlay2</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,4.5)</drawSize>
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+				</fxLayers>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1000</basePowerConsumption>
+			</li>
+		</comps>
+		<rotatable>true</rotatable>
+		<tickerType>Never</tickerType>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>	
+		<fillPercent>1</fillPercent>			
+		<surfaceType>Item</surfaceType>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Common</groupDef>
+				<category>Misc</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="StationBase_TR">
+		<defName>AtmosphericVentInTwo</defName>
+		<label>pollution vent (intake)</label>
+		<description>.</description>
+		<thingCategories Inherit="false" />
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<tickerType>Normal</tickerType>
+		<uiIconPath>Buildings/Common/Pollution/Intake/icon</uiIconPath>
+		<graphicData>
+			<texPath>Buildings/Common/Pollution/Intake/base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.25,1.25)</drawSize>
+			<drawOffset>(0,0,0.1)</drawOffset>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>1500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-10</Beauty>
+		</statBases>
+		<size>(1,1)</size>
+		<costList>
+			<Steel>50</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TAE.CompProperties_ANS_AirVent">
+				<filter>
+					<acceptedAtmospheres>	
+						<li>Atmosphere_TibPollution</li>					
+					</acceptedAtmospheres>
+				</filter>
+				<networks>
+					<li>
+						<networkDef>AtmosphericNetwork</networkDef>
+						<roles>
+							<li>Transmitter</li>
+							<li>Producer</li>
+						</roles>
+						<volumeConfig>
+							<capacity>100</capacity>
+							<values>
+								<allowedValues>
+									<li>Atmospheric_TibPollution</li>
+								</allowedValues>
+							</values>
+						</volumeConfig>
+					</li>
+				</networks>
+			</li>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li><skip>true</skip></li>
+					<li><skip>true</skip></li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Common/Pollution/Intake/fan</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(1.25,1.25)</drawSize>
+							<drawOffset>(0,0,0.1)</drawOffset>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
+						<rotate>
+							<rotationSpeed>75</rotationSpeed>
+						</rotate>
+						<needsPower>false</needsPower>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Common/Pollution/Intake/top</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(1.25,1.25)</drawSize>
+							<drawOffset>(0,0,0.1)</drawOffset>
+						</graphicData>
+						<needsPower>false</needsPower>
+					</li>
+				</fxLayers>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>45</basePowerConsumption>
+			</li>
+		</comps>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T5</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>	
+		<fillPercent>1</fillPercent>
+		<rotatable>true</rotatable>			
+		<surfaceType>Item</surfaceType>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Common</groupDef>
+				<category>Pollution</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="StationBase_TR">
+		<defName>AtmosphericVentOutTwo</defName>
+		<label>pollution vent (out)</label>
+		<description>.</description>
+		<thingCategories Inherit="false" />
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<drawerType>MapMeshOnly</drawerType>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Buildings/Common/Pollution/Vent_Out</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>1500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-10</Beauty>
+		</statBases>
+		<costList>
+			<Steel>50</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TAE.CompProperties_ANS_AirVent">
+				<ventMode>Output</ventMode>
+				<gasThroughPut>10</gasThroughPut>
+				<filter>
+					<acceptedAtmospheres>	
+						<li>Atmosphere_TibPollution</li>					
+					</acceptedAtmospheres>
+				</filter>
+				<networks>
+					<li>
+						<networkDef>AtmosphericNetwork</networkDef>
+						<roles>
+							<li>Transmitter</li>
+							<li>Requester</li>
+						</roles>
+						<volumeConfig>
+							<capacity>100</capacity>
+							<values>
+								<allowedValues>
+									<li>Atmospheric_TibPollution</li>
+								</allowedValues>
+							</values>
+						</volumeConfig>
+					</li>
+				</networks>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>45</basePowerConsumption>
+			</li>
+		</comps>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T5</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<tickerType>Normal</tickerType>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>	
+		<fillPercent>1</fillPercent>
+		<rotatable>true</rotatable>			
+		<surfaceType>Item</surfaceType>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Common</groupDef>
+				<category>Pollution</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="DoorBase_TR">
+		<defName>Atmospheric_AirLockDoor</defName>
+		<label>air-lock door</label>
+		<thingClass>TAE.Building_AirLock</thingClass>
+		<description>Defines an air-lock room, when powered and active, pawns will automatically use the airlock inbetween their work routines.</description>
+		<passability>PassThroughOnly</passability>
+		<graphicData>
+			<texPath>Buildings/Common/Pollution/Door_Airlock</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<enabled>false</enabled>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Buildings/Common/Pollution/Door_Airlock_icon</uiIconPath>
+		<costList>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<stuffCategories Inherit="False"/>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>Autodoors</li>
+		</researchPrerequisites>
+		<statBases>
+			<WorkToBuild>2000</WorkToBuild>
+			<MaxHitPoints>400</MaxHitPoints>
+			<Flammability>0.0</Flammability>
+		</statBases>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearchTasks>
+				<li>TiberiumRefining_T5</li>
+			</tiberiumResearchTasks>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Common</groupDef>
+				<category>Pollution</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	-->
+	
+</Defs>
