@@ -254,7 +254,7 @@ public class AnimationPartValue
             var texture = (TextureElement) uiElements[index];
             InternalFrames.Add(texture, new Dictionary<int, KeyFrame>());
             if (!keyFrameCollection.NullOrEmpty())
-                foreach (var frame in keyFrameCollection.savedList)
+                foreach (var frame in keyFrameCollection)
                     InternalFrames[texture].Add(frame.Frame, frame);
             index++;
         }

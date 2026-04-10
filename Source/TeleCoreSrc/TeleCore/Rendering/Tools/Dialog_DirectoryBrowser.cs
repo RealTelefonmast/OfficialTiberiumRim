@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using TeleCore.Logging;
-using TeleCore.Static;
+using TeleCore.Shared;
 using TeleCore.Utils;
 using UnityEngine;
 using Verse;
@@ -17,7 +17,7 @@ public class Dialog_DirectoryBrowser : Window
 
     public Dialog_DirectoryBrowser()
     {
-        titleString = StringCache.DirectoryBrowserTitle;
+        titleString = RWStringCache.DirectoryBrowserTitle;
         forcePause = true;
         doCloseX = true;
         doCloseButton = false;
@@ -29,7 +29,7 @@ public class Dialog_DirectoryBrowser : Window
     public Dialog_DirectoryBrowser(Action<DirectoryInfo> selAction, string title = null, string rootLimit = null)
     {
         //
-        titleString = title ?? StringCache.DirectoryBrowserTitle;
+        titleString = title ?? RWStringCache.DirectoryBrowserTitle;
         forcePause = true;
         doCloseX = true;
         doCloseButton = false;
@@ -44,7 +44,7 @@ public class Dialog_DirectoryBrowser : Window
     public Dialog_DirectoryBrowser(Action<DirectoryInfo> selAction, string title = null, DirectoryInfo rootLimit = null)
     {
         //
-        titleString = title ?? StringCache.DirectoryBrowserTitle;
+        titleString = title ?? RWStringCache.DirectoryBrowserTitle;
         forcePause = true;
         doCloseX = true;
         doCloseButton = false;

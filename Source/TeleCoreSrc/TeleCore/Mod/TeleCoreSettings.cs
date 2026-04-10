@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TeleCore.Static;
+using TeleCore.Shared;
 using Verse;
 
 namespace TeleCore.Mod;
@@ -57,7 +57,7 @@ public class TeleCoreSettings : ModSettings
 
     internal void ResetAnimationDefLocation()
     {
-        SetAnimationDefLocation(StringCache.DefaultAnimationDefLocation);
+        SetAnimationDefLocation(RWStringCache.DefaultAnimationDefLocation);
     }
 
     public override void ExposeData()
@@ -68,7 +68,7 @@ public class TeleCoreSettings : ModSettings
         //Scribe_Collections.Look(ref DataBrowserSettings, "DataBrowserSettings", LookMode.Value, LookMode.Deep);
 
         if (userDefinedAnimationDefLocation == null)
-            SetAnimationDefLocation(StringCache.DefaultAnimationDefLocation, false);
+            SetAnimationDefLocation(RWStringCache.DefaultAnimationDefLocation, false);
 
         /*
         if (DataBrowserSettings == null)

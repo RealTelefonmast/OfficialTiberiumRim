@@ -6,7 +6,7 @@ using RimWorld;
 using TeleCore.Network.Flow;
 using TeleCore.Network.Flow.Values;
 using TeleCore.RWExtended.UI.Commands;
-using TeleCore.Static;
+using TeleCore.Shared;
 using TeleCore.Utils;
 using UnityEngine;
 using Verse;
@@ -285,7 +285,7 @@ public class NetworkInfoView
                     Widgets.EndScrollView();
 
                     //TODO: Add filter for flowbox
-                    /*var filterClipboardID = StringCache.NetworkFilterClipBoard + $"_{Container.ParentThing.ThingID}";
+                    /*var filterClipboardID = RWStringCache.NetworkFilterClipBoard + $"_{Container.ParentThing.ThingID}";
                     //Copy
                     if (Widgets.ButtonImageFitted(clipboardRect, TeleContent.Copy, Color.white))
                     {

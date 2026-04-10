@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Multiplayer.API;
 using RimWorld;
-using TeleCore.Static;
+using TeleCore.Shared;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -453,12 +453,12 @@ namespace TeleCore
                     //Copy
                     if (Widgets.ButtonImageFitted(clipboardRect, TeleContent.Copy, Color.white))
                     {
-                        ClipBoardUtility.TrySetClipBoard(StringCache.NetworkFilterClipBoard, Container.Filter.Copy());
+                        ClipBoardUtility.TrySetClipBoard(RWStringCache.NetworkFilterClipBoard, Container.Filter.Copy());
                         SoundDefOf.Tick_High.PlayOneShotOnCamera(null);
                     }
 
                     //Paste Option
-                    var clipBoard = ClipBoardUtility.TryGetClipBoard<Dictionary<NetworkValueDef, bool>>(StringCache.NetworkFilterClipBoard);
+                    var clipBoard = ClipBoardUtility.TryGetClipBoard<Dictionary<NetworkValueDef, bool>>(RWStringCache.NetworkFilterClipBoard);
                     bool clipBoardInsertActive = clipBoard != null && clipBoard.All(t => Container.AcceptedTypes.Contains(t.Key));
                     GUI.color = clipBoardInsertActive ? Color.white : Color.gray;
                     if (clipBoardInsertActive)

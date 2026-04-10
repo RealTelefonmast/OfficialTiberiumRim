@@ -2,7 +2,6 @@
 using System.Text.RegularExpressions;
 using System.Xml;
 using TeleCore.Primitive;
-using TeleCore.TMath;
 using Verse;
 
 namespace TeleCore.GameData.Defs.Values;

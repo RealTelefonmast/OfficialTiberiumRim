@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using TeleCore.TMath;
 using TeleCore.Primitive;
 using UnityEngine;
 

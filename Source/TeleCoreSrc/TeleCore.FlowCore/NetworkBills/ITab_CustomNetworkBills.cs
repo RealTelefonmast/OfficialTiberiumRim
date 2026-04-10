@@ -29,7 +29,7 @@ namespace TeleCore
 
         public List<CustomRecipeRatioDef> Ratios => CrafterComp.Props.UsedRatioDefs;
         public List<CustomRecipePresetDef> Presets => CrafterComp.Props.UsedPresetDefs;
-        public CustomNetworkBill ClipBoard => ClipBoardUtility.TryGetClipBoard<CustomNetworkBill>(StringCache.NetworkBillClipBoard);
+        public CustomNetworkBill ClipBoard => ClipBoardUtility.TryGetClipBoard<CustomNetworkBill>(RWStringCache.NetworkBillClipBoard);
 
         private CustomBillTab SelTab { get; set; }
 
@@ -63,7 +63,7 @@ namespace TeleCore
         public override void Notify_ClearingAllMapsMemory()
         {
             base.Notify_ClearingAllMapsMemory();
-            ClipBoardUtility.TrySetClipBoard<CustomNetworkBill>(StringCache.NetworkBillClipBoard, null);
+            ClipBoardUtility.TrySetClipBoard<CustomNetworkBill>(RWStringCache.NetworkBillClipBoard, null);
         }
 
         //Drawing

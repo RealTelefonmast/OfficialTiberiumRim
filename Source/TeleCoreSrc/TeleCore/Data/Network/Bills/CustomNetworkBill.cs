@@ -6,7 +6,7 @@ using TeleCore.GameData.Defs;
 using TeleCore.Logging;
 using TeleCore.Network.Flow.Values;
 using TeleCore.Primitive;
-using TeleCore.Static;
+using TeleCore.Shared;
 using TeleCore.Utils;
 using UnityEngine;
 using Verse;
@@ -280,7 +280,7 @@ public partial class CustomNetworkBill
             }
             if (Widgets.ButtonImageFitted(copyRect, TeleContent.Copy, Color.white))
             {
-                ClipBoardUtility.TrySetClipBoard(StringCache.NetworkBillClipBoard, Clone());
+                ClipBoardUtility.TrySetClipBoard(RWStringCache.NetworkBillClipBoard, Clone());
                 SoundDefOf.Tick_High.PlayOneShotOnCamera();
             }
 
@@ -622,7 +622,7 @@ using RimWorld;
 using TeleCore.Network.Data;
 using TeleCore.Network.Utility;
 using TeleCore.Primitive;
-using TeleCore.Static;
+using TeleCore.Shared;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -939,7 +939,7 @@ public class CustomNetworkBill : IExposable
                     Color.white * GenUI.SubtleMouseoverColor)) billStack.Delete(this);
             if (Widgets.ButtonImageFitted(copyRect, TeleContent.Copy, Color.white))
             {
-                ClipBoardUtility.TrySetClipBoard(StringCache.NetworkBillClipBoard, Clone());
+                ClipBoardUtility.TrySetClipBoard(RWStringCache.NetworkBillClipBoard, Clone());
                 SoundDefOf.Tick_High.PlayOneShotOnCamera();
             }
 

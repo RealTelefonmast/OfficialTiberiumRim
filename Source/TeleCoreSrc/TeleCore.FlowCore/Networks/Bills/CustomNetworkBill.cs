@@ -4,7 +4,7 @@ using RimWorld;
 using TeleCore.FlowCore.Utility;
 using TeleCore.Loader;
 using TeleCore.Shared;
-using TeleCore.Static;
+using TeleCore.Shared;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -270,7 +270,7 @@ public partial class CustomNetworkBill
             }
             if (Widgets.ButtonImageFitted(copyRect, TeleContent.Copy, Color.white))
             {
-                ClipBoardUtility.TrySetClipBoard(StringCache.NetworkBillClipBoard, Clone());
+                ClipBoardUtility.TrySetClipBoard(RWStringCache.NetworkBillClipBoard, Clone());
                 SoundDefOf.Tick_High.PlayOneShotOnCamera();
             }
 

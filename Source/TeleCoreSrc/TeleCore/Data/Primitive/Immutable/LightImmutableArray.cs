@@ -470,4 +470,11 @@ public partial struct LightImmutableArray<T> : IImmutableArray<T>, ICollection<T
         IStructuralEquatable? ours = Array;
         return ours != null ? ours.GetHashCode(comparer) : GetHashCode();
     }
+
+    public override int GetHashCode()
+    {
+        // This case should not happen a lot anyway
+        // ReSharper disable once HeapView.BoxingAllocation
+        return base.GetHashCode();
+    }
 }

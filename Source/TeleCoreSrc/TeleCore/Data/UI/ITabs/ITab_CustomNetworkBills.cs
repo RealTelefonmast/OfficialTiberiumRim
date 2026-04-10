@@ -6,7 +6,7 @@ using TeleCore.GameData.Defs;
 using TeleCore.Network.Bills;
 using TeleCore.Network.Flow.Values;
 using TeleCore.Primitive;
-using TeleCore.Static;
+using TeleCore.Shared;
 using TeleCore.ThingComps;
 using TeleCore.UI;
 using TeleCore.Utils;
@@ -37,7 +37,7 @@ public class ITab_CustomNetworkBills : ITab
     public List<CustomRecipePresetDef> Presets => CrafterComp.Props.UsedPresetDefs;
 
     public CustomNetworkBill ClipBoard =>
-        ClipBoardUtility.TryGetClipBoard<CustomNetworkBill>(StringCache.NetworkBillClipBoard);
+        ClipBoardUtility.TryGetClipBoard<CustomNetworkBill>(RWStringCache.NetworkBillClipBoard);
 
     private CustomBillTab SelTab { get; set; }
 
@@ -71,7 +71,7 @@ public class ITab_CustomNetworkBills : ITab
     public override void Notify_ClearingAllMapsMemory()
     {
         base.Notify_ClearingAllMapsMemory();
-        ClipBoardUtility.TrySetClipBoard<CustomNetworkBill>(StringCache.NetworkBillClipBoard, null);
+        ClipBoardUtility.TrySetClipBoard<CustomNetworkBill>(RWStringCache.NetworkBillClipBoard, null);
     }
 
     //Drawing

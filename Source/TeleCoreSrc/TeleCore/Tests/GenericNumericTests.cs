@@ -1,5 +1,4 @@
 ﻿using TeleCore.Primitive;
-using TeleCore.TMath;
 using UnityEngine.Assertions;
 
 namespace TeleCore.Tests;

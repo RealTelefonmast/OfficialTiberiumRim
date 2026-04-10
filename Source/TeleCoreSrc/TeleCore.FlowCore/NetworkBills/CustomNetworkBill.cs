@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RimWorld;
-using TeleCore.Static;
+using TeleCore.Shared;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -333,7 +333,7 @@ namespace TeleCore
                 }
                 if (Widgets.ButtonImageFitted(copyRect, TeleContent.Copy, Color.white))
                 {
-                    ClipBoardUtility.TrySetClipBoard(StringCache.NetworkBillClipBoard, Clone());
+                    ClipBoardUtility.TrySetClipBoard(RWStringCache.NetworkBillClipBoard, Clone());
                     SoundDefOf.Tick_High.PlayOneShotOnCamera(null);
                 }
 
