@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Tiberium</defName>
+		<label>Tiberium</label>
+		<parent>Root</parent>
+		<resourceReadoutRoot>true</resourceReadoutRoot>
+		<iconPath>UI/Icons/ThingCategories/TiberiumCategory</iconPath>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>TiberiumItems</defName>
+		<label>Tiberium Items</label>
+		<parent>Tiberium</parent>
+		<resourceReadoutRoot>true</resourceReadoutRoot>
+		<iconPath>UI/Icons/ThingCategories/TiberiumCategory</iconPath>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>TiberiumMisc</defName>
+		<label>Tiberium Misc</label>
+		<parent>Tiberium</parent>
+		<resourceReadoutRoot>true</resourceReadoutRoot>
+		<iconPath>UI/Icons/ThingCategories/TiberiumCategory</iconPath>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>BodyPartsTiberium</defName>
+		<label>tiberium parts</label>
+		<parent>BodyParts</parent>
+	</ThingCategoryDef>
+
+</Defs>

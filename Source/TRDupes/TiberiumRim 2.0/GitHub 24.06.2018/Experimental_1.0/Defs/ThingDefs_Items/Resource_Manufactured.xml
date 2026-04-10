@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>GDI_ReinforcedPlate</defName>
+		<label>Reinforced Plate</label>
+		<description>This material is used in many GDI constructions. This alloy is resistant to most influences.</description>
+		<graphicData>
+			<texPath>Items/ReinforcedPlate</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<techLevel>Industrial</techLevel>
+		<stackLimit>100</stackLimit>
+		<statBases>
+			<MaxHitPoints>70</MaxHitPoints>
+			<MarketValue>15</MarketValue>
+			<Mass>0.75</Mass>
+			<Flammability>0.25</Flammability>
+			<DeteriorationRate>0.75</DeteriorationRate>
+		</statBases>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>Nod_CarbonPlate</defName>
+		<label>Carbon Plate</label>
+		<description>Nod's engineers have been trying to figure out a material that is strong enough to sustain any direct attack. After years of development this new carbon based material was born.</description>
+		<graphicData>
+			<texPath>Items/CarbonPlate</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<techLevel>Industrial</techLevel>
+		<stackLimit>100</stackLimit>
+		<statBases>
+			<MaxHitPoints>70</MaxHitPoints>
+			<MarketValue>15</MarketValue>
+			<Mass>0.4</Mass>
+			<Flammability>0.75</Flammability>
+			<DeteriorationRate>0.75</DeteriorationRate>
+		</statBases>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>
+	
+	<!--
+	<ThingDef ParentName="ResourceBase">
+		<defName>Nod_LiquidTiberium</defName>
+		<label>Liquid Tiberium (explosive)</label>
+		<description>Liquid Tiberium in its purest form. WARNING - Beware of deterioration, this item is very unstable!</description>
+		<graphicData>
+			<texPath>Items/Resource_TiberiumLQ</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>5</stackLimit>
+		<statBases>
+			<MaxHitPoints>10</MaxHitPoints>
+			<MarketValue>175</MarketValue>
+			<Mass>1</Mass>
+			<Flammability>1</Flammability>
+			<DeteriorationRate>2</DeteriorationRate>
+		</statBases>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3</explosiveRadius>
+				<explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.5</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+				<wickTicks>
+					<min>5</min>
+					<max>5</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<tickerType>Normal</tickerType>
+		<killedLeavings>
+            <TiberiumGreen>6</TiberiumGreen>
+			<TiberiumRed>3</TiberiumRed>
+        </killedLeavings>
+		<researchPrerequisite>NodResearch_LiquidTechnology</researchPrerequisite>
+	</ThingDef>
+	-->
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>Nod_LQTiberiumCore</defName>
+		<label>Liquid Tiberium Core (explosive)</label>
+		<description>Due to it's unstable nature, liquid Tiberium cannot be handled directly and needs to be stabilized. This component manages to do so.</description>
+		<graphicData>
+			<texPath>Items/Core_TiberiumLQ</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>25</stackLimit>
+		<statBases>
+			<MaxHitPoints>175</MaxHitPoints>
+			<MarketValue>2500</MarketValue>
+			<Mass>5</Mass>
+			<Flammability>1</Flammability>
+			<DeteriorationRate>0.90</DeteriorationRate>
+		</statBases>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>2</explosiveRadius>
+				<explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.2</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.1</startWickHitPointsPercent>
+				<wickTicks>
+					<min>5</min>
+					<max>5</max>
+				</wickTicks>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>GDI_SonicCore</defName>
+		<label>Sonic Energy Core (explosive)</label>
+		<description>Sonic technology is extremly experimental and needs special measures to be handled. This component serves as a core part in most sonic weaponry.</description>
+		<graphicData>
+			<texPath>Items/Core_Sonic</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>25</stackLimit>
+		<statBases>
+			<MaxHitPoints>175</MaxHitPoints>
+			<MarketValue>2500</MarketValue>
+			<Mass>0.4</Mass>
+			<Flammability>0.75</Flammability>
+			<DeteriorationRate>0.90</DeteriorationRate>
+		</statBases>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>2</explosiveRadius>
+				<explosiveDamageType>TRSound</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.1</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.05</startWickHitPointsPercent>
+				<wickTicks>
+					<min>5</min>
+					<max>5</max>
+				</wickTicks>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<!--
+	<ThingDef ParentName="MakeableDrugPillBase">
+		<defName>Tiberblock</defName>
+		<label>Tiberblock</label>
+		<description>A drug that can cure Tiberium infections./n/nWARNING: This drug only cures Tiberium Poisoning, Tiberium Assmilation or Tiberum Infection!</description>
+		<graphicData>
+			<texPath>Items/Tiberblock</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>750</WorkToMake>
+			<MarketValue>500</MarketValue>
+			<Mass>0.01</Mass>
+		</statBases>
+		<techLevel>Industrial</techLevel>
+		<ingestible>
+			<drugCategory>Social</drugCategory>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>TiberBlockHediff</hediffDef>
+					<severity>1.0</severity>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>TiberiumInfusionImmunityNPC</hediffDef>
+					<severity>1.0</severity>
+				</li>
+			</outcomeDoers>
+		</ingestible>
+		<recipeMaker>
+			<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+			<workSkill>Intellectual</workSkill>
+			<recipeUsers>
+				<li>GDI_Factory</li>
+			</recipeUsers>
+			<researchPrerequisite>GDIResearch_TiberiumDrugs</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<costList>
+			<Neutroamine>2</Neutroamine>
+			<MedicineIndustrial>1</MedicineIndustrial>
+			<TiberiumPlantTree>2</TiberiumPlantTree>
+			<TiberiumPlantBerry>2</TiberiumPlantBerry>
+			<TiberiumPlantGrass>2</TiberiumPlantGrass>
+			<TiberiumPlantShroom>2</TiberiumPlantShroom>
+		</costList>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>
+	
+	<ThingDef ParentName="MakeableDrugPillBase">
+		<defName>TiberiumInfusion</defName>
+		<label>Tiberium Infusion</label>
+		<description>This infusion will cure most Tiberium sickness and add a permanent Tiberium Immunity to the consumer.</description>
+		<graphicData>
+			<texPath>Items/Tibinfusion</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>750</WorkToMake>
+			<MarketValue>2500</MarketValue>
+			<Mass>0.25</Mass>
+		</statBases>
+		<techLevel>Industrial</techLevel>
+		<ingestible>
+			<drugCategory>Medical</drugCategory>
+			<outcomeDoers>
+			<li Class="IngestionOutcomeDoer_GiveHediff">
+			  <hediffDef>TiberiumInfusionImmunity</hediffDef>
+			  <severity>1.0</severity>
+			</li>
+		  </outcomeDoers>
+		</ingestible>
+		<recipeMaker>
+			<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+			<workSkill>Intellectual</workSkill>
+			<recipeUsers>
+				<li>Nod_Factory</li>
+			</recipeUsers>
+			<researchPrerequisite>NodResearch_TiberiumDrugs</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<costList>
+			<Neutroamine>10</Neutroamine>
+			<MedicineIndustrial>1</MedicineIndustrial>
+			<TiberiumPlantTree>10</TiberiumPlantTree>
+			<TiberiumPlantBerry>10</TiberiumPlantBerry>
+			<TiberiumPlantGrass>10</TiberiumPlantGrass>
+			<TiberiumPlantShroom>10</TiberiumPlantShroom>
+		</costList>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>
+	-->
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>TRBattleChip</defName>
+		<label>Automation Core</label>
+		<description>This material is can use to be build the advanced Mechanoids or defense turrets.\n\nOnly can be get through battle.</description>
+		<graphicData>
+			<texPath>Items/BattleChip</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>25</stackLimit>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<MarketValue>250</MarketValue>
+			<Mass>0.75</Mass>
+			<Flammability>0.05</Flammability>
+			<DeteriorationRate>0.75</DeteriorationRate>
+		</statBases>
+		<tradeability>Sellable</tradeability>
+		<tradeTags>
+			<li>Exotic</li>
+		</tradeTags>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>JuggernautShell_Explosive</defName>
+		<label>Juggernaut shells (explosive)</label>
+		<description>A pack of shells to be fired by a Juggernaut Turret, these three shells will explode on contact.</description>
+		<graphicData>
+		<texPath>Items/Juggernaut_Shell</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>30</stackLimit>
+		<tickerType>Normal</tickerType>
+		<techLevel>Industrial</techLevel>
+		<statBases>
+			<MarketValue>2000</MarketValue>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Mass>5</Mass>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>4.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.3</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+				<explosionEffect>GiantExplosion</explosionEffect>
+				<explosionSound>Explosion_GiantBomb</explosionSound>
+				<wickTicks>
+					<min>10</min>
+					<max>30</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<projectileWhenLoaded>Bullet_JuggernautBomb</projectileWhenLoaded>
+		<recipeMaker>
+			<workSpeedStat>SmithingSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<workAmount>800</workAmount>
+			<targetCountAdjustment>5</targetCountAdjustment>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>GDI_Factory</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+			<researchPrerequisite>GDIResearch_AdvancedSecurity</researchPrerequisite>
+		</recipeMaker>
+		<costList>
+			<Shell_HighExplosive>1</Shell_HighExplosive>
+			<GDI_ReinforcedPlate>5</GDI_ReinforcedPlate>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<thingCategories>
+			<li>JuggernautShells</li>
+		</thingCategories>		
+	</ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>TempleShell_Explosive</defName>
+		<label>tactical nuclear shell</label>
+		<description>A tactical nuclear missile to be fired by a Nod temple, these shells will big chain explode on contact.</description>
+		<graphicData>
+			<texPath>Items/Temple_Shell</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>1</stackLimit>
+		<tickerType>Normal</tickerType>
+		<techLevel>Industrial</techLevel>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>6</explosiveRadius>
+				<damageAmountBase>500</damageAmountBase>
+				<explosiveDamageType>TRNuke</explosiveDamageType>
+				<postExplosionSpawnThingDef>Gas_Tiberium</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>0.25</postExplosionSpawnChance>
+				<explosionEffect>GiantExplosion</explosionEffect>
+				<wickTicks>
+					<min>10</min>
+					<max>30</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<statBases>
+			<MarketValue>15000</MarketValue>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Mass>25</Mass>
+			<Beauty>-50</Beauty>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<projectileWhenLoaded>Bullet_TempleBomb</projectileWhenLoaded>
+		<recipeMaker> 
+			<workSpeedStat>SmithingSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<workAmount>30000</workAmount>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>Nod_Factory</li>
+			</recipeUsers>
+			<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+			<researchPrerequisite>NodResearch_Temple</researchPrerequisite>
+		</recipeMaker>
+		<costList>
+			<Shell_HighExplosive>5</Shell_HighExplosive>
+			<Nod_LQTiberiumCore>3</Nod_LQTiberiumCore>
+			<Uranium>5</Uranium>
+		</costList>
+		<thingCategories>
+			<li>TempleShells</li>
+		</thingCategories>		
+	</ThingDef>
+	
+	<ThingCategoryDef>
+		<defName>TempleShells</defName>
+		<label>nuclear shells</label>
+		<parent>Manufactured</parent>
+		<iconPath>UI/Icons/ThingCategories/MortarShells</iconPath>
+	</ThingCategoryDef>
+	
+	<ThingCategoryDef>
+		<defName>JuggernautShells</defName>
+		<label>juggernaut shells</label>
+		<parent>Manufactured</parent>
+		<iconPath>UI/Icons/ThingCategories/MortarShells</iconPath>
+	</ThingCategoryDef>
+	
+</Defs>

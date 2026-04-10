@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumCraterGreen_TBNS.label>녹색 타이베리움 운석구</TiberiumCraterGreen_TBNS.label>
+  <TiberiumCraterGreen_TBNS.description>타이베리움 운석이 낙하한 지점입니다. 아름다운 녹색으로 빛납니다.</TiberiumCraterGreen_TBNS.description>
+
+  <TiberiumCraterBlue_TBNS.label>청색 타이베리움 운석구</TiberiumCraterBlue_TBNS.label>
+  <TiberiumCraterBlue_TBNS.description>타이베리움 운석이 낙하한 지점입니다. 아름다운 청색으로 빛납니다.</TiberiumCraterBlue_TBNS.description>
+
+  <TiberiumMeteor_TBNS.label>비활성 타이베리움 운석</TiberiumMeteor_TBNS.label>
+  <TiberiumMeteor_TBNS.description>정체모를 작은 운석입니다. 여러 종류의 발광 결정들을 소량 함유하고 있습니다.</TiberiumMeteor_TBNS.description>
+
+  <TiberiumMonolith_TBNS.label>청색 결정 기둥</TiberiumMonolith_TBNS.label>
+  <TiberiumMonolith_TBNS.description>지하에서 솟구친 커다란 결정입니다. 눈부신 푸른 빛을 발산합니다.</TiberiumMonolith_TBNS.description>
+
+  <BlossomTree_TBNS.label>포자 식물</BlossomTree_TBNS.label>
+  <BlossomTree_TBNS.description>괴상하게 생긴 식물입니다. 때때로 원시적인 녹색 결정을 퍼뜨리는 것 같습니다.</BlossomTree_TBNS.description>
+
+  <TiberiumShard_TBNS.label>적색 결정 기둥</TiberiumShard_TBNS.label>
+  <TiberiumShard_TBNS.description>지하에서 솟구친 커다란 결정입니다. 은은한 붉은 빛을 발산합니다.</TiberiumShard_TBNS.description>
+
+  <Veinhole_TBNS.label>침식 구덩이</Veinhole_TBNS.label>
+  <Veinhole_TBNS.description>침식 구덩이는 타이베리움에 의해 변이한 거대한 생명체입니다. 수확하여 정제할 수 있는 침식 덩굴과, 주변의 모든 것을 공격하는 침식 주둥이를 생성합니다.</Veinhole_TBNS.description>
+
+  <TiberiumTower_TBNS.label>녹색 결정 기둥</TiberiumTower_TBNS.label>
+  <TiberiumTower_TBNS.description>지하에서 솟구친 커다란 결정입니다. 이러한 구조가 형성되려면 수년의 세월이 필요합니다.</TiberiumTower_TBNS.description>
+
+  <TiberiumGeyser.label>오염된 간헐천</TiberiumGeyser.label>
+  <TiberiumGeyser.description>이 간헐천은 타이베리움에 오염되었습니다. 매우 불안정하기 때문에 주변에서 걷는 것만으로도 유독성 가스를 뿜어낼 것입니다. 타이베리움 고정기를 건설하여 지반을 안정시킬 수 있습니다.</TiberiumGeyser.description>
+
+  <TiberiumCrack.label>균열</TiberiumCrack.label>
+
+  <VeinholeHub_TBNS.label>침식 주둥이</VeinholeHub_TBNS.label>
+  <VeinholeHub_TBNS.description>침식 구덩이의 미숙한 형태입니다. 날카로운 촉수를 이용하여 주변의 모든 것들을 사냥합니다.</VeinholeHub_TBNS.description>
+
+  <VeinTentacle.label>침식 촉수</VeinTentacle.label>
+
+
+</LanguageData>

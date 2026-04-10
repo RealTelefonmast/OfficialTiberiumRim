@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef Abstract="True" Name="SkyfallerBaseTiberium" ParentName="SkyfallerBase">
+    <size>(2, 2)</size>
+    <graphicData>
+      <texPath>Things/Skyfaller/Meteorite</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(8, 8)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <shadowSize>(4, 4)</shadowSize>
+      <explosionRadius>4</explosionRadius>
+      <explosionDamage>Bomb</explosionDamage>
+      <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+      <speed>1.2</speed>
+    </skyfaller>
+  </ThingDef>
+  
+	<ThingDef ParentName="SkyfallerBaseTiberium">
+		<defName>GreenTiberiumMeteorIncoming</defName>
+		<label>Green Tiberium Meteor (incoming)</label>
+		<graphicData>
+			<texPath>Skyfaller/GreenMeteor</texPath>
+		</graphicData>
+	</ThingDef>
+  
+	<ThingDef ParentName="SkyfallerBaseTiberium">
+		<defName>BlueTiberiumMeteorIncoming</defName>
+		<label>Blue Tiberium Meteor (incoming)</label>
+		<graphicData>
+			<texPath>Skyfaller/BlueMeteor</texPath>
+		</graphicData>
+	</ThingDef>
+	
+	<ThingDef ParentName="SkyfallerBaseTiberium">
+		<defName>RedTiberiumShardIncoming</defName>
+		<label>Red Tiberium Shard (incoming)</label>		
+		<graphicData>		
+			<texPath>Skyfaller/RedShard</texPath>
+			<drawSize>(5, 10)</drawSize>
+		</graphicData>
+		<skyfaller>
+			<shadowSize>(2, 6)</shadowSize>
+		</skyfaller>
+	</ThingDef>
+	
+	<ThingDef ParentName="SkyfallerBaseTiberium">
+		<defName>TiberiumMeteorIncoming</defName>
+		<label>Tiberium Meteor (incoming)</label>
+		<graphicData>
+			<texPath>Things/Skyfaller/Meteorite</texPath>
+		</graphicData>
+	</ThingDef>
+
+</Defs>

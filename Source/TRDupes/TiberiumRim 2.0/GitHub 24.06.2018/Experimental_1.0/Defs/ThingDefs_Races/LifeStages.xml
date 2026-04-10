@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <LifeStageDef>
+    <defName>ScrinFormed</defName>
+    <label>Scrin</label>
+    <visible>false</visible>
+  </LifeStageDef>
+  
+  <LifeStageDef>
+    <defName>VehicleFormed</defName>
+    <label>Vehicle</label>
+    <visible>false</visible>
+  </LifeStageDef>
+
+  <LifeStageDef>
+    <defName>MechFormed</defName>
+    <label>Mech</label>
+    <visible>false</visible>
+  </LifeStageDef>
+
+</Defs>

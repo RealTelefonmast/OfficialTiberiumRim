@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumPlant.label>타이베리움 식물</TiberiumPlant.label>
+  <TiberiumPlant.description>타이베리움 환경에서만 발견되는 식물입니다. 끊임없이 유전적 변이를 일으키기 때문에 분류하기 매우 어렵습니다.</TiberiumPlant.description>
+
+  <TiberiumGrass.label>포자덩굴</TiberiumGrass.label>
+  <TiberiumGrass.description>이 외계 식물은... 살아있는 것처럼 꿈틀거립니다.\n\n타이베리움 치료약의 재료로 사용됩니다.</TiberiumGrass.description>
+
+  <TiberiumBush.label>포자과육</TiberiumBush.label>
+  <TiberiumBush.description>덩어리진 외계 식물입니다.\n\n타이베리움 치료약의 재료로 사용됩니다.</TiberiumBush.description>
+
+  <TiberiumShroom.label>포자버섯</TiberiumShroom.label>
+  <TiberiumShroom.description>녹색 들판에서 흔히 볼 수 있는 빛나는 버섯입니다.\n\n타이베리움 치료약의 재료로 사용됩니다.</TiberiumShroom.description>
+
+  <TiberiumTree.label>포자기둥</TiberiumTree.label>
+  <TiberiumTree.description>굵고 길지만 물러터져서 자재로 사용하기는 어려워 보입니다.\n\n타이베리움 치료약의 재료로 사용됩니다.</TiberiumTree.description>
+
+
+</LanguageData>

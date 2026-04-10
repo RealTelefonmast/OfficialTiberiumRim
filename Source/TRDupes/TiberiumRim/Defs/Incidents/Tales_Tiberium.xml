@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TaleDef>
+		<defName>TiberiumArrival</defName>
+		<type>PermanentHistorical</type>
+		<taleClass>Tale</taleClass>
+		<historyGraphColor>(0,255,75)</historyGraphColor>
+	</TaleDef>
+	
+</Defs>

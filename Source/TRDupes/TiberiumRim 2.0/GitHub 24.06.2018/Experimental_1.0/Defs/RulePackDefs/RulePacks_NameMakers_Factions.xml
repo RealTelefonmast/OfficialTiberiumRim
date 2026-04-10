@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RulePackDef>
+    <defName>NamerFactionGDI</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>name->Galactic Defense Initiative</li>
+		<li>name->Steel Talons</li>
+		<li>name->Zocom</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <RulePackDef>
+    <defName>NamerFactionBaseGDI</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>name->GDI's [terrainfeature]</li>
+        <li>name->GDI's [community]</li>
+        <li>wordname->[syl][syl]</li>
+        <li>wordname->[syl][townend]</li>
+        <li>wordname->[syl][syl][townend]</li>
+        <li>wordname->[terrainfeature][townend]</li>
+      </rulesStrings>
+      <rulesRaw>
+        <li Class="Rule_File">
+          <keyword>positiveconcept</keyword>
+          <path>Words/Nouns/Concepts_Positive</path>
+        </li>
+        <li Class="Rule_File">
+          <keyword>community</keyword>
+          <path>Words/Nouns/Communities</path>
+        </li>
+        <li Class="Rule_File">
+          <keyword>terrainfeature</keyword>
+          <path>Words/Nouns/TerrainFeatures</path>
+        </li>
+        <li Class="Rule_File">
+          <keyword>syl</keyword>
+          <path>WordParts/Syllables_English</path>
+        </li>
+      </rulesRaw>
+    </rulePack>
+  </RulePackDef>
+
+	<RulePackDef>
+		<defName>NamerFactionNod</defName>
+		<rulePack>
+		  <rulesStrings>
+			<li>name->Brotherhood Of Nod</li>
+			<li>name->Marked Of Kane</li>
+			<li>name->Black Hand</li>
+		  </rulesStrings>
+		</rulePack>
+	</RulePackDef>
+	
+  <RulePackDef>
+    <defName>NamerFactionBaseNod</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>name->[badassanimal] [geography]</li>
+        <li>name->[badassconcept] [geography]</li>
+        <li>name->[badassanimal]'s [geography]</li>
+        <li>name->[badassperson]'s [geography]</li>
+		<li>name->[badassadjective] Brotherhood</li>
+		<li>name->Brotherhood of [badassconcept]</li>
+        <li>geography->[terrainfeature]</li>
+        <li>geography->[community]</li>
+      </rulesStrings>
+      <rulesRaw>
+        <li Class="Rule_File">
+          <keyword>community</keyword>
+          <path>Words/Nouns/Communities</path>
+        </li>
+        <li Class="Rule_File">
+          <keyword>badassanimal</keyword>
+          <path>Words/Nouns/Animals_Badass</path>
+        </li>
+        <li Class="Rule_File">
+          <keyword>badassadjective</keyword>
+          <path>Words/Adjectives/Badass</path>
+        </li>
+        <li Class="Rule_File">
+          <keyword>badassperson</keyword>
+          <path>Words/Nouns/People_Badass</path>
+        </li>
+        <li Class="Rule_File">
+          <keyword>badassconcept</keyword>
+          <path>Words/Nouns/Concepts_Badass</path>
+        </li>
+        <li Class="Rule_File">
+          <keyword>groupname</keyword>
+          <path>Words/Nouns/GroupNames</path>
+        </li>
+        <li Class="Rule_File">
+          <keyword>terrainfeature</keyword>
+          <path>Words/Nouns/TerrainFeatures</path>
+        </li>
+        <li Class="Rule_File">
+          <keyword>badasscolor</keyword>
+          <path>Words/Nouns/Colors_Badass</path>
+        </li>
+      </rulesRaw>
+    </rulePack>
+  </RulePackDef>
+
+</Defs>

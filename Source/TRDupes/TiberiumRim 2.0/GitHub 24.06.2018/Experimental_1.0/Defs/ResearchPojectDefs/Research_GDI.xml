@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!--tier0-->
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>GDIResearch</defName>
+		<label>GDI</label>		
+		<description>Join the Global Defense Initiative. And become the enemy of the Brotherhood.</description>
+		<baseCost>500</baseCost>		
+		<prerequisites>
+			<li>CommandandConquer</li>
+		</prerequisites>		
+		<researchViewX>4</researchViewX>
+		<researchViewY>0.75</researchViewY>
+	</ResearchProjectDef>
+
+<!--tier1-->
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>GDIResearch_Buildings</defName>
+		<label>GDI Structures</label>
+		<description>Get access to GDI structures. Unlocks basic structures and production facilities.</description>
+		<baseCost>1500</baseCost>		
+		<prerequisites>
+			<li>GDIResearch_Technology</li>
+		</prerequisites>		
+		<researchViewX>5</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>GDIResearch_Technology</defName>
+		<label>GDI Intel</label>
+		<description>Get access to information only known by GDI commanders. Necessary for basic technologies.</description>
+		<baseCost>2000</baseCost>
+		<prerequisites>
+			<li>GDIResearch</li>
+		</prerequisites>
+		<researchViewX>5</researchViewX>
+		<researchViewY>0.75</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>GDIResearch_Production</defName>
+		<label>GDI Armory I</label>
+		<description>Get access to GDI's Armory and protect the world. Unlocks small firearms and armor suits.</description>
+		<baseCost>1500</baseCost>
+		<prerequisites>
+			<li>GDIResearch_Technology</li>
+		</prerequisites>
+		<researchViewX>5</researchViewX>
+		<researchViewY>1.5</researchViewY>
+	</ResearchProjectDef>
+	
+<!--tier2-->
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>GDIResearch_Security</defName>
+		<label>Defensive Structures</label>
+		<description>Get access to basic GDI security structures. Unlocks the guardian turret.</description>
+		<baseCost>2500</baseCost>
+		<prerequisites>
+			<li>GDIResearch_Buildings</li>
+			<li>GunTurrets</li>
+		</prerequisites>
+		<researchViewX>6</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>GDIResearch_AdvancedTechnology</defName>
+		<label>Classified Information</label>
+		<description>Get access to classified information only known by high ranking personell. Necessary for advanced technologies.</description>
+		<baseCost>3000</baseCost>
+		<prerequisites>
+			<li>GDIResearch_Technology</li>
+		</prerequisites>		
+		<researchViewX>6</researchViewX>
+		<researchViewY>0.75</researchViewY>
+	</ResearchProjectDef>
+	<!--
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>GDIResearch_TiberiumDrugs</defName>
+		<label>Tiberblock Drug</label>
+		<description>GDI has developed a way to cure Tiberium. The Tiberblock is an instant cure once Tiberium Assimilation or worse has been reached.</description>
+		<baseCost>2500</baseCost>
+		<prerequisites>
+			<li>GDIResearch_Production</li>
+		</prerequisites>
+		<researchViewX>6</researchViewX>
+		<researchViewY>1.5</researchViewY>
+	</ResearchProjectDef>
+	-->
+
+<!--tier3-->
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>GDIResearch_AdvancedSecurity</defName>
+		<label>Advanced GDI Security</label>
+		<description>Get access to advanced GDI security structures. Unlocks sonic weaponry.</description>
+		<baseCost>3500</baseCost>
+		<prerequisites>
+			<li>GDIResearch_Security</li>
+			<li>GDIResearch_AdvancedTechnology</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>GDI_Armory</li>
+		</requiredResearchFacilities>
+		<researchViewX>7</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>GDIResearch_SonicTechnology</defName>
+		<label>Sonic Breakthrough</label>
+		<description>GDI has developed new means in fighting Tiberium. These new weaponized sonic technologies can be used in warfare aswell. Unlocks the advanced sonic inhibitor, mobile sonic shatterer weapon and sonic emitter security stucture.</description>
+		<baseCost>4000</baseCost>
+		<prerequisites>
+			<li>GDIResearch_AdvancedTechnology</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>GDI_Armory</li>
+		</requiredResearchFacilities>		
+		<researchViewX>7</researchViewX>
+		<researchViewY>0.75</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>GDIResearch_AdvancedProduction</defName>
+		<label>GDI Armory II</label>
+		<description>Get access to GDI's advanced and experimental weapons. Unlocks the Zone Trooper armor and railgun.</description>
+		<baseCost>3500</baseCost>
+		<prerequisites>
+			<!--<li>GDIResearch_TiberiumDrugs</li>-->
+			<li>GDIResearch_AdvancedTechnology</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>GDI_Armory</li>
+		</requiredResearchFacilities>		
+		<researchViewX>7</researchViewX>
+		<researchViewY>1.5</researchViewY>
+	</ResearchProjectDef>
+	
+<!--tier4
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>GDIResearch_FirestormTechnology</defName>
+		<label>Firestorm Defense</label>
+		<description>Unlock the ultimate defensive mechanism. The Firestorm system will protect you from any attack for a certain amount of time.</description>
+		<baseCost>5000</baseCost>
+		<prerequisites>
+			<li>GDIResearch_AdvancedSecurity</li>
+			<li>GDIResearch_SonicTechnology</li>
+			<li>GDIResearch_AdvancedProduction</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>GDI_Armory</li>
+		</requiredResearchFacilities>
+		<researchViewX>8</researchViewX>
+		<researchViewY>0.75</researchViewY>
+	</ResearchProjectDef>
+	-->
+	
+</Defs>

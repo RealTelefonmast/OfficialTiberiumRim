@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+  <FleshTypeDef> 
+    <defName>Tiberium</defName>
+	<ateDirect>AteTiberiumMeatDirect</ateDirect>
+	<ateAsIngredient>AteTiberiumMeatAsIngredient</ateAsIngredient>
+    <corpseCategory>CorpsesAnimal</corpseCategory>
+	<wounds>
+      <li>
+        <texture>Pawn/WoundTibFlesh/WoundTibFleshA</texture>
+      </li>
+      <li>
+        <texture>Pawn/WoundTibFlesh/WoundTibFleshB</texture>
+      </li>
+      <li>
+        <texture>Pawn/WoundTibFlesh/WoundTibFleshC</texture>
+      </li>
+    </wounds>
+  </FleshTypeDef>
+  
+  <FleshTypeDef> 
+    <defName>Mutated</defName>
+	<ateDirect>AteMutatedMeatDirect</ateDirect>
+	<ateAsIngredient>AteMutatedMeatAsIngredient</ateAsIngredient>
+    <corpseCategory>CorpsesAnimal</corpseCategory>
+	<wounds>
+      <li>
+        <texture>Pawn/WoundTibFlesh/WoundTibFleshA</texture>
+      </li>
+      <li>
+        <texture>Pawn/WoundTibFlesh/WoundTibFleshB</texture>
+      </li>
+      <li>
+        <texture>Pawn/WoundTibFlesh/WoundTibFleshC</texture>
+      </li>
+    </wounds>
+  </FleshTypeDef>
+  
+  <FleshTypeDef>
+    <defName>Mechanical</defName>
+    <corpseCategory>CorpsesMechanoid</corpseCategory>
+    <requiresBedForSurgery>false</requiresBedForSurgery>
+    <wounds>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundMechA</texture>
+      </li>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundMechB</texture>
+      </li>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundMechC</texture>
+      </li>
+    </wounds>
+  </FleshTypeDef>
+  
+</Defs>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<ThingDef ParentName="HarvesterBase">
+		<defName>Harvester_TBI</defName>
+		<label>Harvester</label>	
+		<description>A standart Tiberium harvester, it will seek out the closest most valuable Tiberium of any type unless told otherwise.</description>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_GraphicExtra">
+				<filledOverlayGraphicPath>Pawn/Mechanical/Harvester/Common/HarvesterCommonOL</filledOverlayGraphicPath>
+			</li>
+		</comps>
+		<statBases>
+			<MoveSpeed>1.33</MoveSpeed>
+			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
+		</statBases>
+	</ThingDef>
+	
+	<ThingDef ParentName="RepairDroneBase">
+		<defName>RepairDrone_Common_TBI</defName>
+		<label>repair drone</label>	
+		<description>N/A</description>
+		<statBases>
+			<MoveSpeed>1.33</MoveSpeed>
+			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.7</ArmorRating_Sharp>
+		</statBases>
+	</ThingDef>
+  
+  <ThingDef ParentName="BuildingBase">
+		<defName>HarvesterHusk_Common</defName>
+		<label>Harvester husk</label>
+		<description>The remains of a destroyed harvester.</description>
+		<altitudeLayer>Building</altitudeLayer>
+		<graphicData>
+			<texPath>Pawn/Mechanical/Harvester/Common/HarvesterCommon_Destroyed</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.5,2.5)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<Beauty>-26</Beauty>
+		</statBases>
+		<costList>
+			<Steel>75</Steel>
+			<Component>2</Component>
+		</costList>
+		<rotatable>false</rotatable>
+		<destroyable>true</destroyable>
+		<useHitPoints>true</useHitPoints>
+		<tickerType>Normal</tickerType>
+		<selectable>true</selectable>
+		<size>(2,2)</size>
+		<neverOverlapFloors>false</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<building>
+			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>true</deconstructible>
+		</building>		
+	</ThingDef>
+
+</Defs>

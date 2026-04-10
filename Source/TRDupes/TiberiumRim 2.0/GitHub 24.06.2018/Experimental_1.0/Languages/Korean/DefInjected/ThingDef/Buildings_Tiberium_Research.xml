@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumResearchBench.label>연구 벤치</TiberiumResearchBench.label>
+  <TiberiumResearchBench.description>연구 벤치에서는 다른 진영들의 발달된 고유 기술을 습득할 수 있습니다.</TiberiumResearchBench.description>
+  <TiberiumResearchBench_Blueprint.label>연구 벤치 (청사진)</TiberiumResearchBench_Blueprint.label>
+  <TiberiumResearchBench_Blueprint_Install.label>연구 벤치 (청사진)</TiberiumResearchBench_Blueprint_Install.label>
+  <TiberiumResearchBench_Frame.label>타이베리움 연구 벤치 (건설 중)</TiberiumResearchBench_Frame.label>
+  <TiberiumResearchBench_Frame.description>주요 세력으로부터 제공받은 기술을 연구하는 시설입니다.\n\n복합 분석기에 의해 연구속도가 증가합니다.</TiberiumResearchBench_Frame.description>
+
+  <TiberiumResearchCrane_TBNS.label>타이베리움 연구 크레인</TiberiumResearchCrane_TBNS.label>
+  <TiberiumResearchCrane_TBNS.description>이 연구 시설은 타이베리움 연구에 필수적이며, 타이베리움 모체 위에만 건설 가능합니다.\n\n지도상에 단 하나만 건설할 수 있습니다.</TiberiumResearchCrane_TBNS.description>
+  <TiberiumResearchCrane_TBNS_Blueprint.label>타이베리움 연구 크레인 (청사진)</TiberiumResearchCrane_TBNS_Blueprint.label>
+  <TiberiumResearchCrane_TBNS_Blueprint_Install.label>타이베리움 연구 크레인 (청사진)</TiberiumResearchCrane_TBNS_Blueprint_Install.label>
+  <TiberiumResearchCrane_TBNS_Frame.label>타이베리움 연구 크레인 (건설 중)</TiberiumResearchCrane_TBNS_Frame.label>
+  <TiberiumResearchCrane_TBNS_Frame.description>이 연구 시설은 타이베리움 모체 위에 건설 가능하며, 타이베리움 연구에 필수적인 건물입니다.\n\n지도상에 단 하나만 건설할 수 있습니다.</TiberiumResearchCrane_TBNS_Frame.description>
+
+  <TiberiumResearchCraftingBench.label>타이베리움 실험제작대</TiberiumResearchCraftingBench.label>
+  <TiberiumResearchCraftingBench.description>정밀한 실험에 필요한 장비입니다. 또한 각종 설비 건설에 필요한 취급서를 제작합니다.\n\n반드시 연구 벤치 옆에 건설해야 합니다.</TiberiumResearchCraftingBench.description>
+  <TiberiumResearchCraftingBench_Blueprint.label>타이베리움 실험제작대 (청사진)</TiberiumResearchCraftingBench_Blueprint.label>
+  <TiberiumResearchCraftingBench_Blueprint_Install.label>타이베리움 실험제작대 (청사진)</TiberiumResearchCraftingBench_Blueprint_Install.label>
+  <TiberiumResearchCraftingBench_Frame.label>타이베리움 실험제작대 (건설 중)</TiberiumResearchCraftingBench_Frame.label>
+  <TiberiumResearchCraftingBench_Frame.description>정밀한 실험에 필요한 장비입니다. 또한 각종 설비 건설에 필요한 취급서를 제작합니다.\n\n반드시 연구 벤치 옆에 건설해야 합니다.</TiberiumResearchCraftingBench_Frame.description>
+
+
+</LanguageData>

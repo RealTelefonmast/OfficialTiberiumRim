@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Visceroid_TBI.label>비세로이드</Visceroid_TBI.label>
+  <Visceroid_TBI.labelPlural>비세로이드 무리</Visceroid_TBI.labelPlural>
+  <Visceroid_TBI.labelMale>비세로이드</Visceroid_TBI.labelMale>
+  <Visceroid_TBI.labelMalePlural>비세로이드 무리</Visceroid_TBI.labelMalePlural>
+  <Visceroid_TBI.labelFemale>비세로이드</Visceroid_TBI.labelFemale>
+  <Visceroid_TBI.labelFemalePlural>비세로이드 무리</Visceroid_TBI.labelFemalePlural>
+
+  <Veinmonster_TBI.label>덩굴귀</Veinmonster_TBI.label>
+  <Veinmonster_TBI.labelPlural>덩굴귀 무리</Veinmonster_TBI.labelPlural>
+  <Veinmonster_TBI.labelMale>덩굴귀</Veinmonster_TBI.labelMale>
+  <Veinmonster_TBI.labelMalePlural>덩굴귀 무리</Veinmonster_TBI.labelMalePlural>
+  <Veinmonster_TBI.labelFemale>덩굴귀</Veinmonster_TBI.labelFemale>
+  <Veinmonster_TBI.labelFemalePlural>덩굴귀 무리</Veinmonster_TBI.labelFemalePlural>
+
+  <Amalgamation_TBI.label>융합체</Amalgamation_TBI.label>
+  <Amalgamation_TBI.labelPlural>융합체 무리</Amalgamation_TBI.labelPlural>
+  <Amalgamation_TBI.labelMale>융합체</Amalgamation_TBI.labelMale>
+  <Amalgamation_TBI.labelMalePlural>융합체 무리</Amalgamation_TBI.labelMalePlural>
+  <Amalgamation_TBI.labelFemale>융합체</Amalgamation_TBI.labelFemale>
+  <Amalgamation_TBI.labelFemalePlural>융합체 무리</Amalgamation_TBI.labelFemalePlural>
+
+
+</LanguageData>

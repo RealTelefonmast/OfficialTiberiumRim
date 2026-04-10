@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<!-- Visceroid -->
+	<ThinkTreeDef>
+		<defName>Visceroid_Constant</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="ThinkNode_ConditionalCanDoConstantThinkTreeJobNow">
+					<subNodes>
+						<li Class="JobGiver_FleePotentialExplosion" />
+									
+						<!-- Do That Weird Thing 
+						<li Class="TiberiumRim.JobGiver_Amalgamation"/>
+						-->
+						<li Class="JobGiver_AnimalFlee" />
+
+						<li Class="ThinkNode_Subtree">
+							<treeDef>LordDutyConstant</treeDef>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+  
+	<!-- Veinmonster -->
+	<ThinkTreeDef>
+		<defName>Veinmonster</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<!-- Keep lying down if we have to -->
+				<li Class="ThinkNode_ConditionalMustKeepLyingDown">
+					<subNodes>
+						<!-- Do a queued job if possible -->
+						<li Class="ThinkNode_QueuedJob">
+							<inBedOnly>true</inBedOnly>
+						</li>
+
+						<!-- Keep lying down -->
+						<li Class="JobGiver_KeepLyingDown" />
+					</subNodes>
+				</li>
+
+				<li Class="ThinkNode_Subtree">
+					<treeDef>Downed</treeDef>
+				</li>
+				<li Class="ThinkNode_Subtree">
+					<treeDef>BurningResponse</treeDef>
+				</li>
+				<li Class="ThinkNode_Subtree">
+					<treeDef>MentalStateCritical</treeDef>
+				</li>
+
+				<!-- React to close melee threat -->
+				<li Class="JobGiver_ReactToCloseMeleeThreat" />
+
+				<!-- Do a queued job -->
+				<li Class="ThinkNode_QueuedJob" />
+				
+				<!-- Lord directives -->
+				<li Class="ThinkNode_Subtree">
+					<treeDef>LordDuty</treeDef>
+				</li>
+				
+				<!-- Satisfy basic needs -->
+				<li Class="ThinkNode_Subtree">
+					<treeDef>SatisfyBasicNeeds</treeDef>
+				</li>
+		
+				<!-- Wander -->
+				<li Class="ThinkNode_Tagger">
+					<tagToGive>Idle</tagToGive>
+					<subNodes>
+						<li Class="TiberiumRim.JobGiver_WanderInField">
+							<maxDanger>Deadly</maxDanger>
+							<ticksBetweenWandersRange>
+								<min>300</min>
+								<max>345</max>
+							</ticksBetweenWandersRange>    
+						</li>
+					</subNodes>
+				</li>
+
+				<li Class="JobGiver_IdleError"/>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+	
+	<ThinkTreeDef>
+		<defName>Veinmonster_Constant</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<!-- Flee enemies, tornados, meteorites, etc. -->
+				<li Class="JobGiver_AnimalFlee" />
+
+				<!-- Join auto joinable caravan -->
+				<li Class="ThinkNode_Subtree">
+					<treeDef>JoinAutoJoinableCaravan</treeDef>
+				</li>
+
+				<!-- Lord directives -->
+				<li Class="ThinkNode_Subtree">
+					<treeDef>LordDutyConstant</treeDef>
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+  
+	<!-- VeinRock -->
+  	<ThinkTreeDef>
+		<defName>VeinRock</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<!-- Keep lying down if we have to -->
+				<li Class="ThinkNode_ConditionalMustKeepLyingDown">
+					<subNodes>
+						<!-- Do a queued job if possible -->
+						<li Class="ThinkNode_QueuedJob">
+							<inBedOnly>true</inBedOnly>
+						</li>
+
+						<!-- Keep lying down -->
+						<li Class="JobGiver_KeepLyingDown" />
+					</subNodes>
+				</li>
+
+				<li Class="ThinkNode_Subtree">
+					<treeDef>Downed</treeDef>
+				</li>
+				<li Class="ThinkNode_Subtree">
+					<treeDef>BurningResponse</treeDef>
+				</li>
+				<li Class="ThinkNode_Subtree">
+					<treeDef>MentalStateCritical</treeDef>
+				</li>
+
+				<!-- React to close melee threat -->
+				<li Class="JobGiver_ReactToCloseMeleeThreat" />
+
+				<!-- Do a queued job -->
+				<li Class="ThinkNode_QueuedJob" />
+				
+				<!-- Lord directives -->
+				<li Class="ThinkNode_Subtree">
+					<treeDef>LordDuty</treeDef>
+				</li>
+				
+				<!-- Satisfy basic needs -->
+				<li Class="ThinkNode_Subtree">
+					<treeDef>SatisfyBasicNeeds</treeDef>
+				</li>
+		
+				<!-- Wander -->
+				<li Class="ThinkNode_Tagger">
+					<tagToGive>Idle</tagToGive>
+					<subNodes>
+						<li Class="TiberiumRim.JobGiver_WanderInField">
+							<maxDanger>Deadly</maxDanger>
+							<wanderRadius>1</wanderRadius>
+							<ticksBetweenWandersRange>
+								<min>25000</min>
+								<max>60000</max>
+							</ticksBetweenWandersRange>    
+						</li>
+					</subNodes>
+				</li>
+
+				<li Class="JobGiver_IdleError"/>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+  
+</Defs>

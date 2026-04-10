@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest>
+    <identifier>TiberiumRim</identifier>
+    <version>2.0.0.0</version>
+    <dependencies>
+        <li>StoryFramework</li>
+    </dependencies>
+    <loadAfter>
+        <li>StoryFramework</li>
+    </loadAfter>
+    <manifestUri></manifestUri>
+    <downloadUri></downloadUri>
+</Manifest>

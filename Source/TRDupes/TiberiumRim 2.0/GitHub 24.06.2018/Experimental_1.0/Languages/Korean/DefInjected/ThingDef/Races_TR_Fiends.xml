@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Thrimbo_TBI.label>오염보</Thrimbo_TBI.label>
+  <Thrimbo_TBI.description>신체의 여러 부분이 타이베리움에 오염된 트럼보입니다. 대면할 때는 주의하십시오. 고통에 휩싸인 생물은 쉽게 사나워지는 법입니다.</Thrimbo_TBI.description>
+  <Thrimbo_TBI.tools.0.label>horn</Thrimbo_TBI.tools.0.label>
+  <Thrimbo_TBI.tools.1.label>mouth</Thrimbo_TBI.tools.1.label>
+  <Thrimbo_TBI.tools.2.label>left foot</Thrimbo_TBI.tools.2.label>
+  <Thrimbo_TBI.tools.3.label>right foot</Thrimbo_TBI.tools.3.label>
+  <Thrimbo_TBI.tools.4.label>머리</Thrimbo_TBI.tools.4.label>
+
+  <TiberiumTerror_TBI.label>타이베리움 괴수</TiberiumTerror_TBI.label>
+  <TiberiumTerror_TBI.description>트럼보와 비슷하지만 검은색과 파란색으로 이뤄진 이 거대한 동물은 한눈에 봐도 매우 위험해 보입니다.</TiberiumTerror_TBI.description>
+  <TiberiumTerror_TBI.tools.0.label>뿔</TiberiumTerror_TBI.tools.0.label>
+  <TiberiumTerror_TBI.tools.1.label>입</TiberiumTerror_TBI.tools.1.label>
+  <TiberiumTerror_TBI.tools.2.label>왼발</TiberiumTerror_TBI.tools.2.label>
+  <TiberiumTerror_TBI.tools.3.label>오른발</TiberiumTerror_TBI.tools.3.label>
+  <TiberiumTerror_TBI.tools.4.label>머리</TiberiumTerror_TBI.tools.4.label>
+
+  <TiberiumFiend_TBI.label>타이베리움 야수</TiberiumFiend_TBI.label>
+  <TiberiumFiend_TBI.description>타이베리움 환경에 적응한 포유류 중 가장 표준적인 형태입니다. 무리를 짓는 경우가 많고 지능적이며, 모피와 발톱은 대부분 결정화되어 있습니다.</TiberiumFiend_TBI.description>
+  <TiberiumFiend_TBI.tools.0.label>왼발톱</TiberiumFiend_TBI.tools.0.label>
+  <TiberiumFiend_TBI.tools.1.label>오른발톱</TiberiumFiend_TBI.tools.1.label>
+  <TiberiumFiend_TBI.tools.3.label>머리</TiberiumFiend_TBI.tools.3.label>
+
+  <BigTiberiumFiend_TBI.label>타이베리움 야수</BigTiberiumFiend_TBI.label>
+  <BigTiberiumFiend_TBI.description>타이베리움 환경에 적응한 대형 잡식성 포유류입니다. 단독으로 움직이지만 매우 강인하며, 모피와 발톱은 대부분 결정화되어 있습니다.\n\n평소에는 얌전한 먹이를 선호하지만, 굶주리게 되면 적극적으로 사냥에 나설 것입니다.</BigTiberiumFiend_TBI.description>
+  <BigTiberiumFiend_TBI.tools.0.label>왼발톱</BigTiberiumFiend_TBI.tools.0.label>
+  <BigTiberiumFiend_TBI.tools.1.label>오른발톱</BigTiberiumFiend_TBI.tools.1.label>
+  <BigTiberiumFiend_TBI.tools.3.label>머리</BigTiberiumFiend_TBI.tools.3.label>
+
+  <SmallTiberiumFiend_TBI.label>타이베리움 야수</SmallTiberiumFiend_TBI.label>
+  <SmallTiberiumFiend_TBI.description>타이베리움 환경에 적응한 육식성 포유류입니다. 덩치는 작지만 아주 사납습니다.</SmallTiberiumFiend_TBI.description>
+  <SmallTiberiumFiend_TBI.tools.0.label>왼발톱</SmallTiberiumFiend_TBI.tools.0.label>
+  <SmallTiberiumFiend_TBI.tools.1.label>오른발톱</SmallTiberiumFiend_TBI.tools.1.label>
+  <SmallTiberiumFiend_TBI.tools.3.label>머리</SmallTiberiumFiend_TBI.tools.3.label>
+
+  <Crawler_TBI.label>크롤러</Crawler_TBI.label>
+  <Crawler_TBI.description>타이베리움 환경에 적응한 커다란 뱀입니다. 2060년대에 사용된 무기들과는 아무런 관련도 없습니다.</Crawler_TBI.description>
+  <Crawler_TBI.tools.1.label>입</Crawler_TBI.tools.1.label>
+
+  <Tibscarab_TBI.label>티브스캐럽</Tibscarab_TBI.label>
+  <Tibscarab_TBI.description>메카노이드 침입에 대항하기 위해 설계된 인조 곤충들의 노동계급은 혹독한 타이베리움 환경조차도 극복하고 살아남았습니다. 상위 계급의 곤충들은 자취를 감췄지만, 이들의 덩치와 날카로운 껍질은 여전히 위협적입니다.</Tibscarab_TBI.description>
+  <Tibscarab_TBI.tools.1.label>머리</Tibscarab_TBI.tools.1.label>
+  <!-- Leather Amount: 0 -->
+  <!-- Use Meat From: Megaspider -->
+  <Tibscarab_TBI_Corpse.label>티브스캐럽 시체</Tibscarab_TBI_Corpse.label>
+  <Tibscarab_TBI_Corpse.description>티브스캐럽 시체</Tibscarab_TBI_Corpse.description>
+
+  <Boomfiend_TBI.label>폭탄마</Boomfiend_TBI.label>
+  <Boomfiend_TBI.description>폭탄마는 타이베리움 환경에 적합한 유전자를 가진 폭탄쥐의 변종입니다.</Boomfiend_TBI.description>
+  <Boomfiend_TBI.tools.0.label>왼발톱</Boomfiend_TBI.tools.0.label>
+  <Boomfiend_TBI.tools.1.label>오른발톱</Boomfiend_TBI.tools.1.label>
+  <Boomfiend_TBI.tools.3.label>머리</Boomfiend_TBI.tools.3.label>
+
+  <Spiner_TBI.label>스피너</Spiner_TBI.label>
+  <Spiner_TBI.description>돼지처럼 생긴 사나운 돌연변이 생물입니다. 척추 전체가 타이베리움으로 강화되어 있습니다.</Spiner_TBI.description>
+  <Spiner_TBI.tools.1.label>머리</Spiner_TBI.tools.1.label>
+
+  <Tiffalo_TBI.label>티팔로</Tiffalo_TBI.label>
+  <Tiffalo_TBI.description>이 생물은 결정질 모피 때문에 푹신함을 잃어버렸습니다. 그리고 약간 사납습니다.</Tiffalo_TBI.description>
+  <Tiffalo_TBI.tools.0.label>머리</Tiffalo_TBI.tools.0.label>
+
+
+</LanguageData>

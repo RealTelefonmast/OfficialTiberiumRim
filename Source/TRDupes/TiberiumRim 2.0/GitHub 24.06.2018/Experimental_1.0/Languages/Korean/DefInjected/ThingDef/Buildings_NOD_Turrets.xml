@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Shredder Turret -->
+
+  <NodSecurity_ShredderTurret.label>슈레더 포탑</NodSecurity_ShredderTurret.label>
+  <NodSecurity_ShredderTurret.description>군중 학살에 특화된 기본적인 방어포탑입니다. 대못 뭉치를 발사합니다.\n\n레일건 공격에 취약합니다.</NodSecurity_ShredderTurret.description>
+  <NodSecurity_ShredderTurret_Blueprint.label>슈레더 포탑 (청사진)</NodSecurity_ShredderTurret_Blueprint.label>
+  <NodSecurity_ShredderTurret_Frame.label>슈레더 포탑 (설치 중)</NodSecurity_ShredderTurret_Frame.label>
+  <NodSecurity_ShredderTurret_Frame.description>군중 학살에 특화된 기본적인 방어포탑입니다. 대못 뭉치를 발사합니다.\n\n레일건 공격에 취약합니다.</NodSecurity_ShredderTurret_Frame.description>
+
+  <Gun_ShredderTurret.label>대못 발사기</Gun_ShredderTurret.label>
+  <Gun_ShredderTurret.description>대못 발사기</Gun_ShredderTurret.description>
+
+  <Bullet_Shredder.label>대못</Bullet_Shredder.label>
+
+
+  <!-- Flame Turret -->
+
+  <NodSecurity_FlameTurret.label>화염 포탑</NodSecurity_FlameTurret.label>
+  <NodSecurity_FlameTurret.description>고온의 불길로 다수의 적을 공격할 수 있는 고급 방어포탑입니다.\n\n파괴되면 큰 폭발을 일으킵니다.\n\n레일건 공격에 취약합니다.</NodSecurity_FlameTurret.description>
+  <NodSecurity_FlameTurret_Blueprint.label>화염 포탑 (청사진)</NodSecurity_FlameTurret_Blueprint.label>
+  <NodSecurity_FlameTurret_Frame.label>화염 포탑 (설치 중)</NodSecurity_FlameTurret_Frame.label>
+  <NodSecurity_FlameTurret_Frame.description>고온의 불길로 다수의 적을 공격할 수 있는 고급 방어포탑입니다.\n\n파괴되면 큰 폭발을 일으킵니다.\n\n레일건 공격에 취약합니다.</NodSecurity_FlameTurret_Frame.description>
+
+  <Gun_FlameTurret.label>화염 방사기</Gun_FlameTurret.label>
+  <Gun_FlameTurret.description>화염 방사기</Gun_FlameTurret.description>
+
+  <Bullet_FlameTurret.label>화염</Bullet_FlameTurret.label>
+
+
+  <!-- Obelisk -->
+
+  <NodSecurity_Obelisk.label>빛의 오벨리스크</NodSecurity_Obelisk.label>
+  <NodSecurity_Obelisk.description>장엄한 빛의 오벨리스크는 교단의 힘과 잔인성을 상징합니다.\n\n벽 너머를 공격할 수 있습니다.\n\n레일건 공격에 취약합니다.</NodSecurity_Obelisk.description>
+  <NodSecurity_Obelisk_Blueprint.label>빛의 오벨리스크 (청사진)</NodSecurity_Obelisk_Blueprint.label>
+  <NodSecurity_Obelisk_Frame.label>빛의 오벨리스크(설치 중)</NodSecurity_Obelisk_Frame.label>
+  <NodSecurity_Obelisk_Frame.description>장엄한 빛의 오벨리스크는 교단의 힘과 잔인성을 상징합니다.\n\n벽 너머를 공격할 수 있습니다.\n\n레일건 공격에 취약합니다.</NodSecurity_Obelisk_Frame.description>
+
+  <Gun_NodObelisk.label>레이저 방출기</Gun_NodObelisk.label>
+  <Gun_NodObelisk.description>레이저 방출기</Gun_NodObelisk.description>
+
+  <Bullet_ObeliskGun.label>오벨리스크 빔</Bullet_ObeliskGun.label>
+
+
+  <!-- Temple -->
+
+  <NodSecurity_Temple.label>노드 사원</NodSecurity_Temple.label>
+  <NodSecurity_Temple.description>전갈을 닮은 형상에, 빨간색과 검은 색이 섞인 스테인드글래스로 장식된 장엄한 금속 건축물입니다. 노드 신앙의 구심점인 동시에 모든 노드 군사 활동의 중추이며, 첨단 시스템과 핵미사일 발사대를 탑재하고 있습니다.\n\n정착지 당 하나만 건설할 수 있습니다.</NodSecurity_Temple.description>
+  <NodSecurity_Temple_Blueprint.label>노드 사원 (청사진)</NodSecurity_Temple_Blueprint.label>
+  <NodSecurity_Temple_Frame.label>노드 사원 (건설 중)</NodSecurity_Temple_Frame.label>
+  <NodSecurity_Temple_Frame.description>전갈을 닮은 형상에, 빨간색과 검은 색이 섞인 스테인드글래스로 장식된 장엄한 금속 건축물입니다. 노드 신앙의 구심점인 동시에 모든 노드 군사 활동의 중추이며, 첨단 시스템과 핵미사일 발사대를 탑재하고 있습니다.\n\n정착지 당 하나만 건설할 수 있습니다.</NodSecurity_Temple_Frame.description>
+
+  <Gun_Temple.label>탄도미사일</Gun_Temple.label>
+  <Gun_Temple.description>벽을 넘을 수 있고 매우 사거리가 긴 미사일입니다.</Gun_Temple.description>
+
+  <Bullet_TempleBomb.label>전술 핵탄두</Bullet_TempleBomb.label>
+
+  <IED_Nuke_TBNS.label>핵지뢰</IED_Nuke_TBNS.label>
+  <IED_Nuke_TBNS.description>전술 핵탄두가 탑재된 지뢰입니다. 다소 위력이 경감되지만, 간편합니다.\n\n타이베리움 지대 위에도 설치할 수 있습니다.</IED_Nuke_TBNS.description>
+  <IED_Nuke_TBNS_Blueprint.label>핵지뢰 (청사진)</IED_Nuke_TBNS_Blueprint.label>
+  <IED_Nuke_TBNS_Blueprint_Install.label>nuke mine (blueprint)</IED_Nuke_TBNS_Blueprint_Install.label>
+  <IED_Nuke_TBNS_Frame.label>핵지뢰 (건설 중)</IED_Nuke_TBNS_Frame.label>
+  <IED_Nuke_TBNS_Frame.description>전술 핵탄두가 탑재된 지뢰입니다. 다소 위력이 경감되지만, 간편하게 설치할 수 있습니다.</IED_Nuke_TBNS_Frame.description>
+
+</LanguageData>

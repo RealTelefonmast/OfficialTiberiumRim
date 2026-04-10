@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<BodyPartDef>
+		<defName>DroneGrid</defName>
+		<label>drone grid</label>
+		<hitPoints>75</hitPoints>
+		<oldInjuryBaseChance>0</oldInjuryBaseChance>
+		<skinCovered>false</skinCovered>
+		<isSolid>true</isSolid>
+		<isAlive>false</isAlive>
+	</BodyPartDef>
+
+  <BodyPartDef>
+    <defName>DroneCircuit</defName>
+    <label>circuit</label>
+    <hitPoints>25</hitPoints>
+    <oldInjuryBaseChance>0</oldInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <isSolid>true</isSolid>
+    <isAlive>false</isAlive>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>DroneTools</defName>
+    <label>tool set</label>
+    <hitPoints>10</hitPoints>
+    <oldInjuryBaseChance>0</oldInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <isSolid>true</isSolid>
+    <isAlive>false</isAlive>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="PartBase">
+    <defName>DroneWelder</defName>
+    <label>welder</label>
+    <hitPoints>5</hitPoints>
+	<tags>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="PartBase">
+    <defName>DroneCutter</defName>
+    <label>cutter</label>
+    <hitPoints>5</hitPoints>
+	<tags>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="PartBase">
+	<defName>Drone_LeftTurbine</defName>
+	<label>left turbine</label>
+	<hitPoints>25</hitPoints>
+	<tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+   <BodyPartDef ParentName="PartBase">
+	<defName>Drone_RightTurbine</defName>
+	<label>right turbine</label>
+	<hitPoints>25</hitPoints>
+	<tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+</Defs>

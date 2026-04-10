@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<!-- Meteor Sighting-->
+	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
+		<defName>TiberiumEncroachment</defName>
+		<label>Tiberium Arrival (Initial)</label>
+		<workerClass>TiberiumRim.IncidentWorker_CauseEvents</workerClass>
+		<category>ThreatSmall</category>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<baseChance>0.75</baseChance>
+		<earliestDay>20</earliestDay>
+		<minPopulation>3</minPopulation>
+		<minRefireDays>0</minRefireDays>
+		<!--<tale>TiberiumArrival</tale>-->
+		<letterLabel>Meteor Sighting</letterLabel>
+		<letterText>A meteor has been sighted in the skies, we are not sure where it's heading.</letterText>
+		<letterDef>EventLetter</letterDef>
+		<eventsToTrigger>
+			<li>TiberiumMeteorSighting</li>
+		</eventsToTrigger>
+	</IncidentDef>
+
+	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
+		<defName>TiberiumArrival</defName>
+		<label>should never happen on its own</label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>TiberiumRim.IncidentWorker_TiberiumArrival</workerClass>
+		<baseChance>0</baseChance>
+		
+		<letterLabel>Meteor crashed!</letterLabel>
+		<letterText>The strange object has crashed directly onto our map, we might want to investigate it closer...</letterText>
+		<letterDef>NegativeEvent</letterDef>
+		
+		<minRefireDays>175</minRefireDays>
+		<category>ThreatBig</category>
+		<skyfallers>
+			<GreenTiberiumMeteorIncoming>TiberiumCraterGreen,1,0.66</GreenTiberiumMeteorIncoming>
+			<GreenTiberiumMeteorIncoming>TiberiumCraterHybrid,1,0.33</GreenTiberiumMeteorIncoming>
+			<RedTiberiumShardIncoming>RedTiberiumShard,1,0.01</RedTiberiumShardIncoming>
+		</skyfallers>
+	</IncidentDef>
+	
+</Defs>

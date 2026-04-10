@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<TR_Deterioration>tiberium exposure</TR_Deterioration>
+	
+	<!-- Infection -->
+	
+	<TR_HediffFusing>Fusing</TR_HediffFusing>
+	<TR_HediffCrystallizing>Crystallizing</TR_HediffCrystallizing>
+	<TR_HediffCrystallized>Crystallized</TR_HediffCrystallized>
+	<TR_HediffReverse>Decrystallizing</TR_HediffReverse>
+	<TR_HediffHalted>Halted</TR_HediffHalted>
+	<TR_HediffMutation>Mutation Chance</TR_HediffMutation>
+	<TR_Visceral>Visceral</TR_Visceral>
+	<TR_Symbiotic>Symbiotic</TR_Symbiotic>
+	
+	<!-- Visceral Memory -->
+	<TR_VisceralMemoryName>Used to be {0}.</TR_VisceralMemoryName>
+	<TR_VisceralMemoryKind>Used to be a {0}.</TR_VisceralMemoryKind>
+	<TR_VisceralMemoryKindName>Used to be {0}, a {1}.</TR_VisceralMemoryKindName>
+	<TR_VisceralConversion>{0} has converted into a visceral horror.</TR_VisceralConversion>
+	
+	<!-- Natural Structures -->
+	<TR_GasDeposit>Current deposit value</TR_GasDeposit>
+	
+</LanguageData>

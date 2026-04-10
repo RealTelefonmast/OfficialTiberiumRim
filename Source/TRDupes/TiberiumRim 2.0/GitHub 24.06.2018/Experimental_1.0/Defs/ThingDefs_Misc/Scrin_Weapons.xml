@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_ShockDisc</defName>
+		<label>shock disc</label>
+		<description>shock disc</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Projectile/Bullet_Disc</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>3</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Crush</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<speed>30</speed>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseGun">
+		<defName>Gun_ShockDiscLauncher</defName>
+		<label>shock disc launcher</label>
+		<description>shock disc launcher</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Gun_Blank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<Mass>5</Mass>
+			<AccuracyTouch>0.35</AccuracyTouch>
+			<AccuracyShort>0.50</AccuracyShort>
+			<AccuracyMedium>0.60</AccuracyMedium>
+			<AccuracyLong>0.55</AccuracyLong>
+			<RangedWeapon_Cooldown>2.75</RangedWeapon_Cooldown>
+		</statBases>
+		<tradeability>None</tradeability>
+		<techLevel>Spacer</techLevel>
+		<destroyOnDrop>True</destroyOnDrop>
+		<menuHidden>True</menuHidden>
+		<weaponTags>
+			<li>ShocktrooperGun</li>
+		</weaponTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_ShockDisc</defaultProjectile>
+				<warmupTime>2.25</warmupTime>
+				<range>18</range>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<burstShotCount>4</burstShotCount>
+				<soundCast>Shot_Scrin_Disc</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>14</muzzleFlashScale>
+			</li>
+		</verbs>
+		<comps>
+		  <li>
+		    <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		  </li>
+		</comps>
+	</ThingDef>	
+
+	<ThingDef Class="JecsTools.ThingDef_LaserProjectile" ParentName="BaseBullet">
+		<defName>Bullet_Disintegrate</defName>
+		<label>disintegrate beam</label>
+		<description>disintegrate beam.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Projectile/Bullet_BeamScrin</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>TRScrin</damageDef>
+			<damageAmountBase>5</damageAmountBase>
+			<speed>45</speed>
+		</projectile>
+		<graphicSettings>
+		  <li>
+		    <offset>(0,-1,0.15)</offset>
+		  </li>
+		</graphicSettings>
+			<thingClass>JecsTools.Projectile_Laser</thingClass>
+			<cycleThroughFiringPositions>false</cycleThroughFiringPositions>
+			<preFiringInitialIntensity>0</preFiringInitialIntensity>
+			<preFiringFinalIntensity>2</preFiringFinalIntensity>
+			<postFiringInitialIntensity>2</postFiringInitialIntensity>
+			<postFiringFinalIntensity>0</postFiringFinalIntensity>
+			<preFiringDuration>2</preFiringDuration>
+			<postFiringDuration>30</postFiringDuration>
+			<StartFireChance>0</StartFireChance>	
+			<createsExplosion>false</createsExplosion>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseGun">
+		<defName>Gun_Disintegrator</defName>
+		<label>disintegrator head</label>
+		<description>disintegrator head</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Turret_Scrin_Disintegrator</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>2.5</drawSize>
+		</graphicData>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<Mass>5</Mass>
+			<AccuracyTouch>0.35</AccuracyTouch>
+			<AccuracyShort>0.35</AccuracyShort>
+			<AccuracyMedium>0.35</AccuracyMedium>
+			<AccuracyLong>0.35</AccuracyLong>
+			<RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+		</statBases>
+		<tradeability>None</tradeability>
+		<techLevel>Spacer</techLevel>
+		<destroyOnDrop>True</destroyOnDrop>
+		<menuHidden>True</menuHidden>
+		<weaponTags>
+			<li>DisintegratorGun</li>
+		</weaponTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Disintegrate</defaultProjectile>
+				<warmupTime>0.5</warmupTime>
+				<range>5</range>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<burstShotCount>5</burstShotCount>
+				<soundCast>Shot_Scrin_BeamSml</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>10</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+		<comps>
+		  <li>
+		    <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		  </li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef Class="JecsTools.ThingDef_LaserProjectile" ParentName="BaseBullet">
+		<defName>Bullet_ShockLance</defName>
+		<label>charge beam</label>
+		<description>charge beam</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Projectile/Bullet_BeamScrinBig</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>TRScrin</damageDef>
+			<damageAmountBase>100</damageAmountBase>
+			<stoppingPower>2.5</stoppingPower>
+			<speed>200</speed>
+			<explosionRadius>0.025</explosionRadius>
+		</projectile>
+		<graphicSettings>
+		  <li>
+		    <offset>(0,-1,0.15)</offset>
+		  </li>
+		</graphicSettings>
+			<thingClass>JecsTools.Projectile_Laser</thingClass>
+			<cycleThroughFiringPositions>false</cycleThroughFiringPositions>
+			<preFiringInitialIntensity>0</preFiringInitialIntensity>
+			<preFiringFinalIntensity>2</preFiringFinalIntensity>
+			<postFiringInitialIntensity>2</postFiringInitialIntensity>
+			<postFiringFinalIntensity>0</postFiringFinalIntensity>
+			<preFiringDuration>2</preFiringDuration>
+			<postFiringDuration>60</postFiringDuration>
+			<StartFireChance>0</StartFireChance>	
+			<createsExplosion>true</createsExplosion>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseGun">
+		<defName>Gun_ShockLanceLauncher</defName>
+		<label>scrin charge cannon</label>
+		<description>Almost fragmented alien weapon. But performance is extremmly excellent.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Scrin_ChargeCannon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<statBases>
+			<MarketValue>15000</MarketValue>
+			<MaxHitPoints>10</MaxHitPoints>
+			<Mass>5</Mass>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.8</AccuracyShort>
+			<AccuracyMedium>0.9</AccuracyMedium>
+			<AccuracyLong>1.0</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<Weapon_Bulk>2.0</Weapon_Bulk>
+		</statBases>
+		<tradeability>None</tradeability>
+		<techLevel>Spacer</techLevel>
+		<menuHidden>True</menuHidden>
+		<weaponTags>
+			<li>ScrinChargeGun</li>
+		</weaponTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_ShockLance</defaultProjectile>
+				<warmupTime>3</warmupTime>
+				<range>45</range>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<burstShotCount>1</burstShotCount>
+				<soundCast>Shot_Scrin_BeamMid</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>30</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+		<comps>
+		  <li>
+		    <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		  </li>
+		</comps>
+		<tools>
+			<li>
+				<label>spine</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+	
+	<ThingDef Class="JecsTools.ThingDef_LaserProjectile" ParentName="BaseBullet">
+		<defName>Bullet_MechapedeLance</defName>
+		<label>charge beam</label>
+		<description>charge beam</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Projectile/Bullet_BeamScrinMiddle</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>TRScrin</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<speed>200</speed>
+			<explosionRadius>0.025</explosionRadius>
+		</projectile>
+		<graphicSettings>
+		  <li>
+		    <offset>(0.45,-1,-0.1)</offset>
+		  </li>
+		  <li>
+		    <offset>(-0.5,-1,-0.6)</offset>
+		  </li>
+		  <li>
+		    <offset>(0.45,-1,-1.1)</offset>
+		  </li>
+		  <li>
+		    <offset>(-0.45,-1,-0.1)</offset>
+		  </li>
+		  <li>
+		    <offset>(0.5,-1,-0.6)</offset>
+		  </li>
+		  <li>
+		    <offset>(-0.45,-1,-1.1)</offset>
+		  </li>
+		</graphicSettings>
+			<thingClass>JecsTools.Projectile_Laser</thingClass>
+			<cycleThroughFiringPositions>true</cycleThroughFiringPositions>
+			<preFiringInitialIntensity>0</preFiringInitialIntensity>
+			<preFiringFinalIntensity>2</preFiringFinalIntensity>
+			<postFiringInitialIntensity>2</postFiringInitialIntensity>
+			<postFiringFinalIntensity>0</postFiringFinalIntensity>
+			<preFiringDuration>10</preFiringDuration>
+			<postFiringDuration>40</postFiringDuration>
+			<StartFireChance>0</StartFireChance>	
+			<createsExplosion>true</createsExplosion>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseGun">
+		<defName>Gun_MechapedeLance</defName>
+		<label>swarm charge cannon</label>
+		<description>A huge alien laser weapon.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Turret_Scrin_Mechapede</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>3</drawSize>
+		</graphicData>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<MaxHitPoints>250</MaxHitPoints>
+			<Mass>50</Mass>
+			<AccuracyTouch>0.15</AccuracyTouch>
+			<AccuracyShort>0.55</AccuracyShort>
+			<AccuracyMedium>0.65</AccuracyMedium>
+			<AccuracyLong>0.75</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<Weapon_Bulk>1</Weapon_Bulk>
+		</statBases>
+		<tradeability>None</tradeability>
+		<techLevel>Spacer</techLevel>
+		<menuHidden>True</menuHidden>
+		<destroyOnDrop>True</destroyOnDrop>
+		<weaponTags>
+			<li>MechapedeGun</li>
+		</weaponTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_MechapedeLance</defaultProjectile>
+				<warmupTime>2.5</warmupTime>
+				<range>20</range>
+				<ticksBetweenBurstShots>25</ticksBetweenBurstShots>
+				<burstShotCount>6</burstShotCount>
+				<soundCast>Shot_Scrin_Devourer</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>10</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+		<comps>
+		  <li>
+		    <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		  </li>
+		</comps>
+	</ThingDef>
+	
+</Defs>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Nod_Door_TBNW.label>사원문</Nod_Door_TBNW.label>
+  <Nod_Door_TBNW.description>튼튼하게 설계된 문입니다. 열고 닫는 과정에서 약간의 시간이 소모됩니다.</Nod_Door_TBNW.description>
+  <Nod_Door_TBNW_Blueprint.label>사원문 (청사진)</Nod_Door_TBNW_Blueprint.label>
+  <Nod_Door_TBNW_Frame.label>사원문 (설치 중)</Nod_Door_TBNW_Frame.label>
+  <Nod_Door_TBNW_Frame.description>튼튼하게 설계된 문입니다. 열고 닫는 과정에서 약간의 시간이 소모됩니다.</Nod_Door_TBNW_Frame.description>
+
+  <Nod_Autodoor_TBNW.label>사원 자동문</Nod_Autodoor_TBNW.label>
+  <Nod_Autodoor_TBNW.description>튼튼하게 설계된 문입니다. 스스로 작동하지만 전기가 부족하면 수동으로 열어야 합니다.</Nod_Autodoor_TBNW.description>
+  <Nod_Autodoor_TBNW_Blueprint.label>사원 자동문 (청사진)</Nod_Autodoor_TBNW_Blueprint.label>
+  <Nod_Autodoor_TBNW_Frame.label>사원 자동문 (설치 중)</Nod_Autodoor_TBNW_Frame.label>
+  <Nod_Autodoor_TBNW_Frame.description>튼튼하게 설계된 문입니다. 스스로 작동하지만 전기가 부족하면 수동으로 열어야 합니다.</Nod_Autodoor_TBNW_Frame.description>
+
+  <Nod_Laserdoor.label>레이저 격문</Nod_Laserdoor.label>
+  <Nod_Laserdoor.description>열고 닫을수 있게 개조된 레이저 격벽입니다. 총알은 통과하지만 사람은 통과할 수 없는 편리한 장치입니다. 인접한 정착민에게 엄폐율을 부여합니다.</Nod_Laserdoor.description>
+  <Nod_Laserdoor_Blueprint.label>레이저 격문 (청사진)</Nod_Laserdoor_Blueprint.label>
+  <Nod_Laserdoor_Frame.label>레이저 격문 (설치 중)</Nod_Laserdoor_Frame.label>
+  <Nod_Laserdoor_Frame.description>열고 닫을수 있게 개조된 레이저 격벽입니다. 총알은 통과하지만 사람은 통과할 수 없는 편리한 장치입니다. 인접한 정착민에게 엄폐율을 부여합니다.</Nod_Laserdoor_Frame.description>
+
+  <NodWall_TBNW.label>사원벽</NodWall_TBNW.label>
+  <NodWall_TBNW.description>사원벽은 사라예보 성지의 유서 깊은 디자인을 모방하여 설계되었습니다.</NodWall_TBNW.description>
+  <NodWall_TBNW_Blueprint.label>사원벽 (청사진)</NodWall_TBNW_Blueprint.label>
+  <NodWall_TBNW_Frame.label>사원벽 (건설 중)</NodWall_TBNW_Frame.label>
+  <NodWall_TBNW_Frame.description>사원벽은 사라예보 성지의 유서 깊은 디자인을 모방하여 설계되었습니다.</NodWall_TBNW_Frame.description>
+
+  <Nod_LaserFence.label>레이저 격벽</Nod_LaserFence.label>
+  <Nod_LaserFence.description>총알은 통과하지만 사람은 통과할 수 없는 편리한 장치입니다. 인접한 정착민에게 엄폐율을 부여합니다.</Nod_LaserFence.description>
+  <Nod_LaserFence_Blueprint.label>레이저 격벽 (청사진)</Nod_LaserFence_Blueprint.label>
+  <Nod_LaserFence_Frame.label>레이저 격벽 (건설 중)</Nod_LaserFence_Frame.label>
+  <Nod_LaserFence_Frame.description>총알은 통과하지만 사람은 통과할 수 없는 편리한 장치입니다. 인접한 정착민에게 엄폐율을 부여합니다.</Nod_LaserFence_Frame.description>
+
+
+  <!-- Nod Tiberium Suppressor -->
+  <!--<Nod_TiberiumSuppressor.label>타이베리움 성장억제기</Nod_TiberiumSuppressor.label>-->
+  <!--<Nod_TiberiumSuppressor.description>이 거대한 장치는 단말에 연결된 모든 사원벽, 사원문에 타이베리움 성장을 억제하는 전자기 파장을 공급합니다. 엄청난 양의 전기를 소모합니다.</Nod_TiberiumSuppressor.description>-->
+  <!--<Nod_TiberiumSuppressor_Blueprint.label>타이베리움 성장억제기 (청사진)</Nod_TiberiumSuppressor_Blueprint.label>-->
+  <!--<Nod_TiberiumSuppressor_Frame.label>타이베리움 성장억제기 (건설 중)</Nod_TiberiumSuppressor_Frame.label>-->
+  <!--<Nod_TiberiumSuppressor_Frame.description>이 거대한 장치는 단말에 인접한 모든 사원벽, 사원문에 타이베리움 성장을 억제하는 전자기 파장을 공급합니다. 엄청난 양의 전기를 소모합니다.</Nod_TiberiumSuppressor_Frame.description>-->
+
+</LanguageData>

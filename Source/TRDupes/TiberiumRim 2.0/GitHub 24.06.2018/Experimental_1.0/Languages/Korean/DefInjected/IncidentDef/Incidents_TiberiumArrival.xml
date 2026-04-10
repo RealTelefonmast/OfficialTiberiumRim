@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+
+  <AsteroidGreen.label>결정질 운석 낙하</AsteroidGreen.label>
+  <AsteroidGreen.letterText>낯선 결정질 운석이 근처에 추락하여 분화구를 만들었습니다.\n\n운석은 산산이 부서져 분화구 아래를 가득 메웠습니다.\n\n오염물질 확산에 주의하십시오.</AsteroidGreen.letterText>
+  <AsteroidGreen.letterLabel>운석 낙하</AsteroidGreen.letterLabel>
+
+  <AsteroidBlue.label>결정질 운석 낙하</AsteroidBlue.label>
+  <AsteroidBlue.letterText>낯선 결정질 운석이 근처에 추락하여 분화구를 만들었습니다.\n\n운석은 산산이 부서져 분화구 아래를 가득 메웠습니다.\n\n오염물질 확산에 주의하십시오.</AsteroidBlue.letterText>
+  <AsteroidBlue.letterLabel>운석 낙하</AsteroidBlue.letterLabel>
+
+  <AsteroidMeteor.label>비활성 타이베리움 운석 낙하</AsteroidMeteor.label>
+  <AsteroidMeteor.letterText>낯선 운석이 근처에 추락했습니다.\n\n운석 표면에는 약간의 결정질 광물들이 솟아있습니다.\n\n위험해 보이지는 않습니다.</AsteroidMeteor.letterText>
+  <AsteroidMeteor.letterLabel>운석 낙하</AsteroidMeteor.letterLabel>
+
+  <TiberiumShard.label>결정 기둥 발견</TiberiumShard.label>
+  <TiberiumShard.letterText>붉게 빛나는 결정 기둥이 근처에 솟아났습니다.\n\n오염물질 확산에 주의하십시오.</TiberiumShard.letterText>
+  <TiberiumShard.letterLabel>결정 기둥</TiberiumShard.letterLabel>
+
+  <BlossomTree.label>가스 분출 관측</BlossomTree.label>
+  <BlossomTree.letterText>가스 구름에 노출된 나무가 괴상한 모습으로 변이했습니다.\n\n오염물질 확산에 주의하십시오.</BlossomTree.letterText>
+  <BlossomTree.letterLabel>포자 식물</BlossomTree.letterLabel>
+
+  <VeinholeArrival.label>침식 구덩이 발견</VeinholeArrival.label>
+  <VeinholeArrival.letterText>지표면이 무너지면서 거대한 침식 구덩이가 모습을 드러냈습니다.</VeinholeArrival.letterText>
+  <VeinholeArrival.letterLabel>침식 구덩이</VeinholeArrival.letterLabel>
+
+  <IonStormIncident.label>이온 폭풍</IonStormIncident.label>
+  <IonStormIncident.letterText>이온 폭풍이 시작되었습니다.\n\n강렬한 방사선이 모든 전자장비에 장애를 일으킬 것입니다.\n\n오염물질 확산에 주의하십시오.</IonStormIncident.letterText>
+  <IonStormIncident.letterLabel>이온 폭풍</IonStormIncident.letterLabel>
+
+  <BlossomTreeFiends.label>이주하는 타이베리움 야수들</BlossomTreeFiends.label>
+  <BlossomTreeFiends.letterText>한 무리의 타이베리움 야수들이 거주지 근처에 나타났습니다.\n\n포자식물 근처에서 배를 불리고 휴식을 취할 것입니다.</BlossomTreeFiends.letterText>
+  <BlossomTreeFiends.letterLabel>야수 출현</BlossomTreeFiends.letterLabel>
+
+
+</LanguageData>

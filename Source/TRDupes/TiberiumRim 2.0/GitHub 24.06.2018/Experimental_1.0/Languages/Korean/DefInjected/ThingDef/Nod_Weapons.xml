@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Nod Rifle -->
+
+  <Bullet_NodRifle.label>총알</Bullet_NodRifle.label>
+  <Bullet_NodRifle.description>총알</Bullet_NodRifle.description>
+
+  <Gun_NodRifle.label>노드 표준 소총</Gun_NodRifle.label>
+  <Gun_NodRifle.description>무수히 많은 노드 민병들을 무장시키기 위해 대량 생산된 싸구려 소총입니다. 20세기 수준의 무기체계이지만 여전히 유용합니다.\n\n노드 레이저 돌격소총으로 업그레이드할 수 있습니다.\n\n노드 화염방사기로 업그레이드할 수 있습니다.</Gun_NodRifle.description>
+
+
+  <!-- Twin Tiberium Flechette Gun -->
+
+  <Bullet_Nod_TwinFlechetteGun.label>타이베리움 산탄</Bullet_Nod_TwinFlechetteGun.label>
+  <Bullet_Nod_TwinFlechetteGun.description>타이베리움 산탄</Bullet_Nod_TwinFlechetteGun.description>
+
+  <Gun_Nod_TwinTiberiumFlechetteGun.label>노드 산탄 쌍권총</Gun_Nod_TwinTiberiumFlechetteGun.label>
+  <Gun_Nod_TwinTiberiumFlechetteGun.description>적에게 날카로운 타이베리움 결정을 분사하는 무기입니다.</Gun_Nod_TwinTiberiumFlechetteGun.description>
+
+
+  <!-- Nod Laser Rifle -->
+
+  <Bullet_LaserRifle.label>레이저</Bullet_LaserRifle.label>
+  <Bullet_LaserRifle.description>레이저</Bullet_LaserRifle.description>
+
+  <Gun_NodLaserRifleSmall.label>노드 레이저 돌격소총</Gun_NodLaserRifleSmall.label>
+  <Gun_NodLaserRifleSmall.description>레이저 기술이 사용된 노드 특제 돌격소총입니다.\n\n노드 레이저 소총으로 업그레이드할 수 있습니다.</Gun_NodLaserRifleSmall.description>
+
+  <Gun_NodLaserRifleSmall_Faction.label>노드 레이저 돌격소총</Gun_NodLaserRifleSmall_Faction.label>
+  <Gun_NodLaserRifleSmall_Faction.description>노드 레이저 돌격소총</Gun_NodLaserRifleSmall_Faction.description>
+
+  <Gun_NodLaserRifleLarge.label>노드 레이저 소총</Gun_NodLaserRifleLarge.label>
+  <Gun_NodLaserRifleLarge.description>노드 표준 무장의 정점입니다.</Gun_NodLaserRifleLarge.description>
+
+  <Gun_NodLaserRifleLarge_Faction.label>노드 레이저 소총</Gun_NodLaserRifleLarge_Faction.label>
+  <Gun_NodLaserRifleLarge_Faction.description>노드 레이저 소총</Gun_NodLaserRifleLarge_Faction.description>
+
+
+  <!-- Flamethrower -->
+
+  <Bullet_Flamethrower.label>화염</Bullet_Flamethrower.label>
+  <Bullet_Flamethrower.description>화염</Bullet_Flamethrower.description>
+
+  <Gun_NodFlamethrower.label>노드 화염방사기</Gun_NodFlamethrower.label>
+  <Gun_NodFlamethrower.description>블랙핸드 무기고의 표준 화염방사기입니다. 이교도를 마음껏 정화하십시오!\n\n노드 화학방사기로 업그레이드할 수 있습니다.</Gun_NodFlamethrower.description>
+
+  <Gun_NodFlamethrower_Faction.label>노드 화염 방사기</Gun_NodFlamethrower_Faction.label>
+  <Gun_NodFlamethrower_Faction.description>블랙핸드 무기고의 표준 화염방사기입니다. 이교도를 마음껏 정화하십시오!\n\n노드 화학방사기로 업그레이드할 수 있습니다.</Gun_NodFlamethrower_Faction.description>
+
+
+  <!-- Chemicalthrower -->
+
+  <Bullet_Gas.label>타이베리움 가스</Bullet_Gas.label>
+  <Bullet_Gas.description>타이베리움 가스</Bullet_Gas.description>
+
+  <Gun_NodChemicalthrower.label>노드 화학 방사기</Gun_NodChemicalthrower.label>
+  <Gun_NodChemicalthrower.description>화학방사기는 액체 타이베리움 기술이 적용된 고급 독성 무기입니다.</Gun_NodChemicalthrower.description>
+
+  <Gun_NodChemicalthrower_Faction.label>노드 화학 방사기</Gun_NodChemicalthrower_Faction.label>
+  <Gun_NodChemicalthrower_Faction.description>화학방사기는 액체 타이베리움 기술이 적용된 고급 독성 무기입니다.</Gun_NodChemicalthrower_Faction.description>
+
+
+  <!-- Nod RocketLauncher -->
+
+  <Bullet_NodRocket.label>로켓</Bullet_NodRocket.label>
+  <Bullet_NodRocket.description>로켓</Bullet_NodRocket.description>
+
+  <Gun_NodRocketLauncher.label>노드 로켓 발사기</Gun_NodRocketLauncher.label>
+  <Gun_NodRocketLauncher.description>케인의 요술봉이라고도 불리는 노드의 보급형 로켓 병기입니다.</Gun_NodRocketLauncher.description>
+
+  <Gun_NodRocketLauncher_Faction.label>노드 로켓 발사기</Gun_NodRocketLauncher_Faction.label>
+  <Gun_NodRocketLauncher_Faction.description>케인의 요술봉이라고도 불리는 노드의 보급형 로켓 병기입니다.</Gun_NodRocketLauncher_Faction.description>
+
+
+  <!-- Nod Grenade -->
+
+  <Bullet_Nod_Grenade.label>수류탄</Bullet_Nod_Grenade.label>
+  <Bullet_Nod_Grenade.description>수류탄</Bullet_Nod_Grenade.description>
+
+  <Nod_Grenade.label>노드 수류탄</Nod_Grenade.label>
+  <Nod_Grenade.description>평범하지만 치명적인 수류탄입니다.</Nod_Grenade.description>
+
+
+  <!-- Nod Suicide bomb -->
+
+  <Bullet_Sbomb.label>자살폭탄</Bullet_Sbomb.label>
+  <Bullet_Sbomb.description>자살폭탄</Bullet_Sbomb.description>
+
+  <Nod_Sbomb.label>노드 자살폭탄</Nod_Sbomb.label>
+  <Nod_Sbomb.description>당신의 못난이 정착민을 자살 임무에 투입하십시오. 운 좋으면 살아남을 지도 모르지요.</Nod_Sbomb.description>
+
+  <Nod_Sbomb_Faction.label>노드 자살폭탄</Nod_Sbomb_Faction.label>
+  <Nod_Sbomb_Faction.description>당신의 못난이 정착민을 자살 임무에 투입하십시오. 운 좋으면 살아남을 지도 모르지요.</Nod_Sbomb_Faction.description>
+
+
+</LanguageData>

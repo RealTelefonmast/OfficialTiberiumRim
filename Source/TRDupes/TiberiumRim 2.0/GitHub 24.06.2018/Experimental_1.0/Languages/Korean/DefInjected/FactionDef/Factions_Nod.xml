@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Nod.label>노드</Nod.label>
+  <Nod.description>노드 교단, 혹은 형제단은 타이베리움을 신성시하는 과격 종교 단체입니다. 영생불멸의 선지자이자 지도자인 케인은 타이베리움이 인간 진화의 열쇠라고 확신하며, 승천이라 불리는 과정을 통해 전 우주로 교세를 확장했습니다. 교단원들은 목표를 이루기 위해 이단자에게 총구를 향하는 데에 망설이지 않을 것입니다.</Nod.description>
+  <Nod.pawnsPlural>공격대</Nod.pawnsPlural>
+  <Nod.leaderTitle>주교</Nod.leaderTitle>
+
+
+</LanguageData>

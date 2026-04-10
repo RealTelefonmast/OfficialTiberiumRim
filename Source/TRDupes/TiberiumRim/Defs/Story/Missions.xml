@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!--
+	<StoryFramework.MissionDef>
+		<defName>TiberiumArrival</defName>
+		<label>Green Amongst The Blue</label>
+		<description>One of your colonists spotted something in the skies.</description>
+		<chronological>true</chronological>
+		<objectives>
+			<li>M1_Research</li>
+			<li>M1_Construct</li>
+			<li>M1_ObserveMeteor</li>
+		</objectives>
+	</StoryFramework.MissionDef>
+
+	<StoryFramework.MissionDef>
+		<defName>TiberiumArrival_Miss</defName>
+		<label>What was that?</label>
+		<description>[Alternate Path]\nWe didn't manage to figure out what the meteor was in time, it seems to have crashed somewhere on the planet.</description>
+		<requisites>
+			<failedMissions>true</failedMissions>
+			<missions>
+				<li>TiberiumArrival</li>
+			</missions>
+		</requisites>
+	</StoryFramework.MissionDef>
+
+	<StoryFramework.MissionDef>
+		<defName>TiberiumKnowledge</defName>
+		<label>Tiber... what?</label>
+		<description>In an unexpected turn of events the meteor crashed directly onto our map, we now can investigate it even further, however we have a bad feeling about this... none of our colonists have ever seen anything like that.</description>
+		<requisites>
+			<anyMission>true</anyMission>
+			<missions>
+				<li>TiberiumArrival</li>
+				<li>TiberiumArrival_Miss</li>
+			</missions>
+		</requisites>
+		<chronological>true</chronological>
+		<objectives>
+			<li>M2_ObserveCrater</li>
+			<li>M2_CheckDataBase</li>
+			<li>M2_ConstructCrater</li>
+			<li>M2_KnowledgeResearch</li>
+		</objectives>
+	</StoryFramework.MissionDef>
+	
+	<StoryFramework.MissionDef>
+		<defName>TiberiumProcessing</defName>
+		<label>Tiberium Refining</label>
+		<description>We have learned that Tiberium may be refined into resources.</description>
+		<requisites>
+			<missions>
+				<li>TiberiumKnowledge</li>
+			</missions>
+		</requisites>
+		<objectives>
+			<li>M3_TiberiumNetwork</li>
+			<li>M3_TiberiumPower</li>
+		</objectives>
+	</StoryFramework.MissionDef>
+	
+	<StoryFramework.MissionDef>
+		<defName>TiberiumDefense</defName>
+		<label>Tiberium Defense</label>
+		<description>...</description>
+		<requisites>
+			<objectives>
+				<li>M3_TiberiumNetwork</li>
+			</objectives>
+		</requisites>
+		<objectives>
+			<li>M4_TiberiumSuppression</li>
+		</objectives>
+	</StoryFramework.MissionDef>
+	
+	<StoryFramework.MissionDef>
+		<defName>TiberiumGasProcessing</defName>
+		<label>Tiberium Gas Extraction</label>
+		<description>Tiberium gas usually forms around crystals in the air, but dissapates too quickly to be collected or used, instead merely posing a lethal threat. However, underground deposits may contain large amounts of concentrated Tiberium gas.</description>
+		<requisites>
+			<missions>
+				<li>TiberiumKnowledge</li>
+			</missions>
+		</requisites>
+		<objectives>
+			<li>GeyserInspection</li>
+		</objectives>
+	</StoryFramework.MissionDef>
+  -->
+</Defs>

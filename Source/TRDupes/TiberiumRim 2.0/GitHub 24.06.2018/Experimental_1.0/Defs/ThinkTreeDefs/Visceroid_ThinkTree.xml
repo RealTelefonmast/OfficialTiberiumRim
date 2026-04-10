@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThinkTreeDef>
+		<defName>Visceroid_Constant</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="ThinkNode_ConditionalCanDoConstantThinkTreeJobNow">
+					<subNodes>
+					    <!-- Flee explosion -->
+						<li Class="JobGiver_FleePotentialExplosion" />
+									
+						<!-- Do That Weird Thing -->
+						<li Class="TiberiumRim.JobGiver_Amalgamation"/>
+						
+						<!-- Wild animals flee tornados, meteorites, etc. -->
+						<li Class="ThinkNode_ConditionalHasFaction">
+							<invert>true</invert>
+							<subNodes>
+								<li Class="JobGiver_FleeImmediateDanger" />
+							</subNodes>
+						</li>
+
+						<!-- Lord directives -->
+						<li Class="ThinkNode_Subtree">
+							<treeDef>LordDutyConstant</treeDef>
+						</li>
+						</subNodes>
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+
+</Defs>

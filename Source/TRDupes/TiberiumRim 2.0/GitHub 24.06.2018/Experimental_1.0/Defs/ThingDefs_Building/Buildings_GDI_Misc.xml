@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+  <ThingDef ParentName="BuildingBase">
+    <defName>GDI_PowerConduit</defName>
+    <label>gdi power conduit</label>
+    <description>A set of electrical cables for moving power around. Can be placed under walls and other buildings. GDI's ion control makes it very durable.</description>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Building/GDI/Misc/IonPC</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>Transmitter</linkType>
+      <linkFlags>
+        <li>PowerConduit</li>
+      </linkFlags>
+      <damageData>
+        <rect>(0,0.35,1,0.3)</rect>
+      </damageData>
+    </graphicData>
+    <uiIconPath>Building/GDI/Misc/IonPC_Icon</uiIconPath>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <passability>Standable</passability>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <statBases>
+      <MaxHitPoints>175</MaxHitPoints>
+      <WorkToBuild>100</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>4</Beauty>
+    </statBases>
+    <placingDraggableDimensions>1</placingDraggableDimensions>
+    <costList>
+      <Steel>3</Steel>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTransmitter</compClass>
+        <transmitsPower>true</transmitsPower>
+      </li>
+	  <li Class="CompProperties_Glower">
+			<glowRadius>1</glowRadius>
+			<glowColor>(200,200,255)</glowColor>
+	  </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_Conduit</li>
+    </placeWorkers>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Power</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <clearBuildingArea>false</clearBuildingArea>
+	<building>
+		<ai_chillDestination>false</ai_chillDestination>
+		<isInert>true</isInert>
+		<isEdifice>false</isEdifice>
+		<blueprintGraphicData>
+			<texPath>Building/GDI/Misc/IonPC_Blueprint</texPath>
+		</blueprintGraphicData>
+	</building>
+    <researchPrerequisites><li>GDIResearch_Technology</li></researchPrerequisites>
+	<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+  </ThingDef>
+  
+  <ThingDef ParentName="LampBase">
+    <defName>Light_GDI</defName>
+    <label>Ion Lamp</label>
+    <description>GDI uses the ionizing feature of Tiberium to power this lamp.</description>
+    <graphicData>
+      <texPath>Building/GDI/Misc/Light_GDI</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+	  <Beauty>5</Beauty>
+	  <MaxHitPoints>75</MaxHitPoints>
+	  <WorkToMake>330</WorkToMake>
+	  <Mass>20</Mass>
+	  <Flammability>0.05</Flammability>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>15</glowRadius>
+        <glowColor>(200,200,255)</glowColor>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>50</basePowerConsumption>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
+    </comps>
+    <costList>
+      <Steel>15</Steel>
+	  <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+	<designationCategory>Furniture</designationCategory>
+	<researchPrerequisites><li>GDIResearch_Technology</li></researchPrerequisites>
+	<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+  </ThingDef>
+  
+    <ThingDef ParentName="BuildingBase">
+    <defName>GDI_Grave</defName>
+    <label>Honorable Grave</label>
+    <thingClass>Building_Grave</thingClass>
+    <graphicData>
+      <texPath>Building/GDI/Misc/Grave/CemeteryOpen</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1.5,1.5)</drawSize>
+    </graphicData>
+    <uiIconPath>Building/GDI/Misc/Grave/Icon_Cemetery</uiIconPath>
+    <constructEffect>ConstructDirt</constructEffect>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <useHitPoints>false</useHitPoints>
+    <description>This honorable grave is for those who fought in the most stressful situations. Our soldiers shall not be forgotten!</description>
+    <size>(2,2)</size>
+    <tickerType>Rare</tickerType>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <WorkToBuild>1150</WorkToBuild>
+	  <Beauty>25</Beauty>
+    </statBases>
+    <passability>PassThroughOnly</passability>
+    <building>
+		<ai_chillDestination>false</ai_chillDestination>
+      <isInert>true</isInert>
+      <preventDeteriorationInside>true</preventDeteriorationInside>
+      <fullGraveGraphicData>
+				<texPath>Building/GDI/Misc/Grave/Cemetery</texPath>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<drawSize>(1.5,1.5)</drawSize>
+			</fullGraveGraphicData>
+      <fixedStorageSettings>
+        <filter>
+          <categories>
+            <li>CorpsesHumanlike</li>
+          </categories>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <filter>
+          <categories>
+            <li>CorpsesHumanlike</li>
+          </categories>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+	<costList>
+		<GDI_ReinforcedPlate>1</GDI_ReinforcedPlate>
+	</costList>
+    <inspectorTabs>
+      <li>ITab_Storage</li>
+    </inspectorTabs>
+    <designationCategory>Misc</designationCategory>
+	<researchPrerequisites><li>GDIResearch_Buildings</li></researchPrerequisites>
+	<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+  </ThingDef>
+  
+
+  <ThingDef ParentName="LampBase">
+    <defName>GDIWallLight</defName>
+    <label>Wall Ion Lamp</label>
+	<description>GDI uses the ionizing feature of Tiberium to power this lamp.</description>
+    <graphicData>
+      <texPath>Building/GDI/Misc/WallLightGDI</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>1.5,1.5</drawSize>
+    </graphicData>
+    <altitudeLayer>Blueprint</altitudeLayer>
+    <passability>Standable</passability>
+	<statBases>
+	  <Beauty>20</Beauty>
+	  <MaxHitPoints>75</MaxHitPoints>
+	  <WorkToMake>330</WorkToMake>
+	  <Mass>15</Mass>
+	  <Flammability>0.0</Flammability>
+    </statBases>
+    <size>(1,1)</size>
+    <costList>
+      <Steel>10</Steel>
+	  <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <uiIconPath>Building/GDI/Misc/Icon_WallLightGDI</uiIconPath>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(200,200,255)</glowColor>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>50</basePowerConsumption>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
+    </comps>
+    <building>
+      <isEdifice>false</isEdifice>
+    </building>
+    <rotatable>true</rotatable>
+    <clearBuildingArea>false</clearBuildingArea>
+	<designationCategory>Furniture</designationCategory>
+	<researchPrerequisites><li>GDIResearch_Technology</li></researchPrerequisites>
+	<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+  </ThingDef>
+		
+</Defs>

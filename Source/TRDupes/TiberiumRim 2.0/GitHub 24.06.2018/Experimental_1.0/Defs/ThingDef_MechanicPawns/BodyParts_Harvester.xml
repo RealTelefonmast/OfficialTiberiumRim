@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<BodyPartDef Abstract= "True" Name="PartBase">
+		<hitPoints>15</hitPoints>
+		<frostbiteVulnerability>2</frostbiteVulnerability>
+		<oldInjuryBaseChance>0</oldInjuryBaseChance>
+		<skinCovered>false</skinCovered>
+		<isSolid>true</isSolid>
+		<isAlive>false</isAlive>	
+	</BodyPartDef>
+
+	<BodyPartDef>
+		<defName>HarvesterContainer</defName>
+		<label>Container</label>
+		<hitPoints>175</hitPoints>
+		<oldInjuryBaseChance>0</oldInjuryBaseChance>
+		<skinCovered>false</skinCovered>
+		<isSolid>true</isSolid>
+		<isAlive>false</isAlive>
+	</BodyPartDef>
+
+  <BodyPartDef>
+    <defName>HarvesterCockpit</defName>
+    <label>cockpit</label>
+    <hitPoints>50</hitPoints>
+    <oldInjuryBaseChance>0</oldInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <isSolid>true</isSolid>
+    <isAlive>false</isAlive>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>Harvester_Collector</defName>
+    <label>collector base</label>
+    <hitPoints>10</hitPoints>
+    <oldInjuryBaseChance>0</oldInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <isSolid>true</isSolid>
+    <isAlive>false</isAlive>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="PartBase">
+    <defName>Harvester_CollectorLeftArm</defName>
+    <label>left collector arm</label>
+    <hitPoints>5</hitPoints>
+	<tags>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="PartBase">
+    <defName>Harvester_CollectorRightArm</defName>
+    <label>right collector arm</label>
+    <hitPoints>5</hitPoints>
+	<tags>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="PartBase">
+	<defName>Harvester_LeftTrack</defName>
+	<label>left track</label>
+	<hitPoints>25</hitPoints>
+	<tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+   <BodyPartDef ParentName="PartBase">
+	<defName>Harvester_RightTrack</defName>
+	<label>right track</label>
+	<hitPoints>25</hitPoints>
+	<tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+	<BodyPartDef Abstract= "True" Name="WheelBase" ParentName="PartBase">
+		<hitPoints>5</hitPoints>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+  
+  <BodyPartDef ParentName="WheelBase">
+	<defName>Harvester_FirstLeftWheel</defName>
+    <label>first left track segment</label>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="WheelBase">
+	<defName>Harvester_SecondLeftWheel</defName>
+    <label>second left track segment</label>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="WheelBase">
+	<defName>Harvester_ThirdLeftWheel</defName>
+    <label>third left track segment</label>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="WheelBase">
+	<defName>Harvester_FourthLeftWheel</defName>
+    <label>fourth left track segment</label>
+  </BodyPartDef>
+  
+  
+  <BodyPartDef ParentName="WheelBase">
+	<defName>Harvester_FirstRightWheel</defName>
+    <label>first right track segment</label>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="WheelBase">
+	<defName>Harvester_SecondRightWheel</defName>
+    <label>second right track segment</label>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="WheelBase">
+	<defName>Harvester_ThirdRightWheel</defName>
+    <label>third right track segment</label>
+  </BodyPartDef>
+  
+  <BodyPartDef ParentName="WheelBase">
+	<defName>Harvester_FourthRightWheel</defName>
+    <label>fourth right track segment</label>
+  </BodyPartDef>
+  
+</Defs>

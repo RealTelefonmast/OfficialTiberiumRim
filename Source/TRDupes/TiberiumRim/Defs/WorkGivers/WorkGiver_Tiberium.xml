@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Research -->
+	<WorkGiverDef>
+		<defName>DoTiberiumResearch</defName>
+		<label>do tiberium research</label>
+		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<workType>Research</workType>
+		<priorityInType>99</priorityInType>
+		<verb>(TR)research</verb>
+		<gerund>(TR)researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	
+	<!--
+	<WorkGiverDef>
+		<defName>DoTiberiumResearchCrafting</defName>
+		<label>do tiberium research</label>
+		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>99</priorityInType>
+		<verb>(Tiberium Research)craft</verb>
+		<gerund>(TR)researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	
+	<WorkGiverDef>
+		<defName>DoTiberiumResearchConstruction</defName>
+		<label>do tiberium research</label>
+		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<workType>Construction</workType>
+		<priorityInType>99</priorityInType>
+		<verb>(Tiberium Research)construct</verb>
+		<gerund>(TR)researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	-->
+	
+	<WorkGiverDef>
+		<defName>DoBillsTibCrafter</defName>
+		<label>work at Tiberium refinery</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>100</priorityInType>
+		<fixedBillGiverDefs>
+			<li>TiberiumCrafter</li>
+		</fixedBillGiverDefs>
+		<verb>refine Tiberium</verb>
+		<gerund>refining Tiberium</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+	
+	<WorkGiverDef>
+		<defName>Factions_DoBillsFactory</defName>
+		<label>work at factory</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Smithing</workType>
+		<priorityInType>97</priorityInType>
+		<fixedBillGiverDefs>
+			<li>GDI_Factory</li>
+			<li>Nod_Factory</li>
+		</fixedBillGiverDefs>
+		<verb>work at factory</verb>
+		<gerund>working at factory</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+	
+</Defs>

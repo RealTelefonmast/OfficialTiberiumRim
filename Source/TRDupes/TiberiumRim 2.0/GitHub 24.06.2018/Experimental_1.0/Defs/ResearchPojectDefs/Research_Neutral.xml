@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ResearchTabDef>
+		<defName>TRFaction</defName>
+		<label>Tiberium Rim</label>
+	</ResearchTabDef>
+
+	<ResearchProjectDef Name="TRProject" Abstract="True">
+		<techLevel>Industrial</techLevel>
+		<tab>TRFaction</tab>
+		<requiredResearchBuilding>TiberiumResearchBench</requiredResearchBuilding><!--HiTechResearchBench-->
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>CommandandConquer</defName>
+		<label>Command and Conquer</label>
+		<description>Start commanding and conquering.</description>
+		<baseCost>250</baseCost>
+		<researchViewX>3</researchViewX>
+		<researchViewY>2.5</researchViewY>
+	</ResearchProjectDef>
+	
+</Defs>

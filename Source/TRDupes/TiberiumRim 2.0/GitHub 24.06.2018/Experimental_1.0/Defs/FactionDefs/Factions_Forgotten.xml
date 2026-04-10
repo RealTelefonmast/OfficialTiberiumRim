@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<FactionDef Name="ForgottenFactionBase" Abstract="True">
+	<pawnsPlural>Forgotten</pawnsPlural>
+	<listOrderPriority>100</listOrderPriority>
+	<settlementGenerationWeight>0.5</settlementGenerationWeight>
+	<requiredCountAtGameStart>1</requiredCountAtGameStart>
+	<canMakeRandomly>true</canMakeRandomly>
+	<canSiege>false</canSiege>
+	<canStageAttacks>true</canStageAttacks>
+	<leaderTitle>Khan</leaderTitle>
+	<expandingIconTexture>UI/Icon_Forgotten</expandingIconTexture>
+	<homeIconPath>UI/Icon_Forgotten</homeIconPath>
+	<colorSpectrum>
+		<li>(255, 255, 255)</li>
+		<li>(255, 255, 255)</li>
+	</colorSpectrum>
+	<permanentEnemy>true</permanentEnemy>
+		<factionNameMaker>NamerFactionPirate</factionNameMaker>
+		<settlementNameMaker>NamerSettlementPirate</settlementNameMaker>
+		<techLevel>Industrial</techLevel>
+		<backstoryCategory>Raider</backstoryCategory>
+		<geneticVariance>0.8</geneticVariance>
+		<hairTags>
+			<li>Tribal</li>
+		</hairTags>
+	<allowedArrivalTemperatureRange>
+		<min>-60</min>
+		<max>60</max>
+	</allowedArrivalTemperatureRange>
+	<maxPawnCostPerTotalPointsCurve>
+		<points>
+			<li>(0, 1000)</li>
+			<li>(50, 2500)</li>
+			<li>(500, 5000)</li>
+			<li>(1000, 10000)</li>
+			<li>(100000, 100000)</li>
+		</points>
+	</maxPawnCostPerTotalPointsCurve>
+	<raidCommonalityFromPointsCurve>
+		<points>
+			<li>(0, 0)</li>
+			<li>(500, 0.5)</li>
+			<li>(1000, 1)</li>
+			<li>(2500, 3)</li>
+			<li>(10000000, 4)</li>
+		</points>
+	</raidCommonalityFromPointsCurve>
+	<earliestRaidDays>10</earliestRaidDays>
+	<autoFlee>true</autoFlee>
+    <pawnGroupMakers>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>100</commonality>
+			<disallowedStrategies>
+				<li>Siege</li>
+			</disallowedStrategies>
+			<options>
+				<Forgotten_HeadChief>5</Forgotten_HeadChief>
+				<Forgotten_GoodMutant>15</Forgotten_GoodMutant>
+				<Forgotten_BadMutant>55</Forgotten_BadMutant>
+				<Forgotten_Warrior>10</Forgotten_Warrior>
+				<Forgotten_Heavygunner>12</Forgotten_Heavygunner>
+				<Forgotten_Ironback_TBI>3</Forgotten_Ironback_TBI>
+			</options>
+		</li>
+		<li>
+			<kindDef>Combat</kindDef>
+			<commonality>100</commonality>
+			<disallowedStrategies>
+				<li>ImmediateAttackSappers</li>
+				<li>Siege</li>
+			</disallowedStrategies>
+			<options>
+				<Forgotten_BadMutant>70</Forgotten_BadMutant>
+				<!--
+				<TiberiumTerror_TBI>3</TiberiumTerror_TBI>
+				<BigTiberiumFiend_TBI>7</BigTiberiumFiend_TBI>
+				<TiberiumFiend_TBI>10</TiberiumFiend_TBI>
+				<Boomfiend_TBI>10</Boomfiend_TBI>
+				-->
+			</options>
+		</li>
+		<li>
+			<kindDef>Peaceful</kindDef>
+			<options>
+				<Forgotten_BadMutant>40</Forgotten_BadMutant>
+				<Forgotten_GoodMutant>10</Forgotten_GoodMutant>
+			</options>
+		</li>
+		<li>
+			<kindDef>FactionBase</kindDef>
+			<options>
+				<Forgotten_HeadChief>100</Forgotten_HeadChief>
+				<Forgotten_GoodMutant>50</Forgotten_GoodMutant>
+				<Forgotten_BadMutant>50</Forgotten_BadMutant>
+				<Forgotten_Warrior>15</Forgotten_Warrior>
+				<Forgotten_Heavygunner>15</Forgotten_Heavygunner>
+				<Forgotten_Ironback_TBI>15</Forgotten_Ironback_TBI>
+				<!--
+				<TiberiumTerror_TBI>15</TiberiumTerror_TBI>
+				<BigTiberiumFiend_TBI>15</BigTiberiumFiend_TBI>
+				<TiberiumFiend_TBI>15</TiberiumFiend_TBI>
+				-->
+				</options>
+		</li>
+    </pawnGroupMakers>
+</FactionDef>
+
+<FactionDef ParentName="ForgottenFactionBase">
+	<defName>Forgotten</defName>
+	<label>Forgotten Mutants</label>
+	<description>A gang of mutants.\n\nMutants don't sow, they don't build, and they rarely trade. They enrich themselves mostly by raiding and robbing the more productive groups in the area.\n\nTheir technology level depends mostly on who they've managed to steal from recently. Mostly they carry gunpowder weapons, though the luckier ones may have advanced energy weapons, and some may just like to stab people at close range.</description>
+</FactionDef>
+</Defs>
