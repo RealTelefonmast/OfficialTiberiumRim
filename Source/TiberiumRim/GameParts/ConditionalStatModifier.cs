@@ -3,7 +3,7 @@ using System.Linq;
 using RimWorld;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class ConditionalStatModifier
 {

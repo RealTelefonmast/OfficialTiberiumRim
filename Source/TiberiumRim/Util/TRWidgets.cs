@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using TR.TiberiumObjects;
 using UnityEngine;
 using Verse;
 
-namespace TR.Util;
+namespace TR;
 
 public static class TRWidgets
 {

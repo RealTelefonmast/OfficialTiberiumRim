@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Atmosphere.Defs;
 using TeleCore.Atmosphere.Rooms;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using TR.GameParts;
-using TR.Util;
+using TeleCore.GameData.Defs;
+using TeleCore.Hediffs;
 using Verse;
 
-namespace TR.Hediffs;
+namespace TR;
 
 public class HediffDiscoverable : HediffWithGizmos, IDiscoverable
 {

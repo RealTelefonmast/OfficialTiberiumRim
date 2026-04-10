@@ -1,6 +1,6 @@
-﻿using TeleCore.RWExtended.Verbs.Other;
+﻿using TeleCore.Verbs.Other;
 
-namespace TR.Weaponry.Verbs;
+namespace TR.Verbs;
 
 public class Verb_TR : Verb_ProjectileExtended
 {
@@ -12,7 +12,6 @@ public class Verb_TR : Verb_ProjectileExtended
             return;
         }
 
-        if (Projectile == Props.secondaryProjectile) 
-            SetProjectile(Props.defaultProjectile);
+        if (Projectile == Props.secondaryProjectile) SetProjectile(Props.defaultProjectile);
     }
 }

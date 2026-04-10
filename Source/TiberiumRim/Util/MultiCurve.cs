@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace TR.Util;
+namespace TR;
 
 public struct MultiCurvePoint
 {

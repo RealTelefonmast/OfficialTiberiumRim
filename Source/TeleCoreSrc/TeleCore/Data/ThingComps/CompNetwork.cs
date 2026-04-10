@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using RimWorld;
-using TeleCore.Defs;
 using TeleCore.Events;
+using TeleCore.Events.Args;
+using TeleCore.GameData.Defs;
 using TeleCore.Logging;
 using TeleCore.Network;
 using TeleCore.Network.Flow.Values;
@@ -147,7 +148,7 @@ public class CompNetwork : FXThingComp, INetworkStructure
         //
         if (!respawningAfterLoad)
         {
-            _allNetParts = new List<NetworkPart>(Math.Max(1, Props.networks.Count));
+            _allNetParts = new List<NetworkPart>(TMath.Max(1, Props.networks.Count));
         }
         
         for (var i = 0; i < Props.networks.Count; i++)

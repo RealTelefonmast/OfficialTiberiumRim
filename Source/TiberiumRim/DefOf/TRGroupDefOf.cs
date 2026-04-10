@@ -1,6 +1,6 @@
-﻿using TeleCore.Defs;
+﻿using TeleCore.GameData.Defs;
 
-namespace TR.DefOf;
+namespace TR;
 
 [RimWorld.DefOf]
 public static class TRThingGroupDefOf

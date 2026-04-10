@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace TR.Rendering;
+namespace TR;
 
 public abstract class PawnVeinOverlayDrawer : PawnOverlayDrawer
 {

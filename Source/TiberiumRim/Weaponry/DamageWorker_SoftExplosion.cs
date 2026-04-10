@@ -2,7 +2,7 @@
 using RimWorld;
 using Verse;
 
-namespace TR.Weaponry;
+namespace TR;
 
 public class DamageWorker_SoftExplosion : DamageWorker
 {

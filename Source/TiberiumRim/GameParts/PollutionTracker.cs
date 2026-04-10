@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using TR.Info;
-using TR.Rendering.TextureContent;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class PollutionTracker
 {

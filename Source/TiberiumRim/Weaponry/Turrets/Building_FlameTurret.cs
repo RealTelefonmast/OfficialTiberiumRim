@@ -2,13 +2,12 @@
 using System.Linq;
 using LudeonTK;
 using RimWorld;
-using TeleCore.Events;
-using TeleCore.Utility;
+using TeleCore.Events.Args;
+using TeleCore.Utils;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Verse;
 
-namespace TR.Weaponry.Turrets;
+namespace TR.Turrets;
 
 public class Building_FlameTurret : Building_HubTurret
 {
@@ -129,7 +128,7 @@ public class Building_FlameTurret : Building_HubTurret
         base.Draw();
         if (settingFireWall)
             GenDraw.DrawFieldEdges(CellGen.SectorCells(Position, Map, Range, 90f,
-                (DrawPos.AngleToFlat(UI.MouseMapPosition()) + 90).AngleWrapped(), false).ToList());
+                TMath.AngleWrapped((DrawPos.AngleToFlat(UI.MouseMapPosition()) + 90)), false).ToList());
 
         if (Find.Selector.IsSelected(this))
         {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public class TiberiumInfectionInfo
 {

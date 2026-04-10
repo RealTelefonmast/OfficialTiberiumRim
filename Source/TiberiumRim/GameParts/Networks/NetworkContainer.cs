@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.Networks
+namespace TR.Networks
 {
     public class NetworkContainer<T> : IExposable where T : Enum
     {

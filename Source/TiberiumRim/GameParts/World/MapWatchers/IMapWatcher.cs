@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.GameParts.MapWatchers;
+namespace TR.MapWatchers;
 
 public interface IMapWatcher
 {

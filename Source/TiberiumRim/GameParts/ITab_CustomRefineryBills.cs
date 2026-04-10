@@ -1,14 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TR.GameParts.Networks.TiberiumNetwork;
-using TR.Rendering.TextureContent;
-using TR.TiberiumProcessing;
-using TR.Util;
+using TR.Networks.TiberiumNetwork;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class ITab_CustomRefineryBills : ITab
 {
@@ -46,7 +44,7 @@ public class ITab_CustomRefineryBills : ITab
         base.TabUpdate();
     }
 
-    protected override void CloseTab()
+    public override void CloseTab()
     {
         base.CloseTab();
     }
@@ -57,7 +55,7 @@ public class ITab_CustomRefineryBills : ITab
         TiberiumBillUtility.Clipboard = null;
     }
 
-    protected override void FillTab()
+    public override void FillTab()
     {
         Text.Font = GameFont.Small;
         var mainRect = new Rect(0, 24, WinSize.x, WinSize.y - 24).ContractedBy(10);

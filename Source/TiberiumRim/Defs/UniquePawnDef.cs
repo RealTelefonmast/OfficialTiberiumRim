@@ -3,7 +3,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace TR.Defs;
+namespace TR;
 
 public class UniquePawnDef : Def
 {

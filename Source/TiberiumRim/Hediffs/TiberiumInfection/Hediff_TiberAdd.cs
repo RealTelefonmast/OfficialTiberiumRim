@@ -1,7 +1,6 @@
-﻿using TR.DefOf;
-using Verse;
+﻿using Verse;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public class Hediff_Tiberadd : HediffWithComps
 {

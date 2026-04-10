@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 [StaticConstructorOnStartup]
 public class Dialog_DifficultyPreset : Window

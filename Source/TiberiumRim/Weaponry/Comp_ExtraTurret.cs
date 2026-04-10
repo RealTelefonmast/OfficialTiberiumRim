@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace TR.Weaponry;
+namespace TR;
 
 public class Comp_ExtraTurret : ThingComp, ITurretHolder
 {

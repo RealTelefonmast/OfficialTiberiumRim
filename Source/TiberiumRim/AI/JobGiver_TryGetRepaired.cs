@@ -2,7 +2,7 @@
 using Verse;
 using Verse.AI;
 
-namespace TR.AI;
+namespace TR;
 
 public class JobGiver_TryGetRepaired : ThinkNode_JobGiver
 {

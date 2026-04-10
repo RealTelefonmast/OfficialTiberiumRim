@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.VeinholeSystem;
+namespace TR;
 
 public class VeinholeFood : ThingWithComps, IThingHolder, IThoughtGiver, IStrippable, IBillGiver
 {

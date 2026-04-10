@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using RimWorld;
-using TeleCore.Utility;
+using TeleCore.Utils;
+using TeleCore.Visual.VFX.Effecters;
+using TeleCore.Visual.VFX.Particles.Motes;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -35,7 +37,7 @@ public class Verb_Beam : Verb_Tele
     protected override float ExplosionOnTargetSize => BeamProps.impactExplosion?.explosionRadius ?? 0;
 
     //Beam Moving Mechanic
-    private float ShotProgress => ticksToNextLocation / (float) verbProps.ticksBetweenBurstShots;
+    private float ShotProgress => ticksToNextLocation / (float)verbProps.ticksBetweenBurstShots;
 
     private Vector3 InterpolatedPosition
     {
@@ -72,7 +74,7 @@ public class Verb_Beam : Verb_Tele
             if (state != VerbState.Bursting)
                 aimAnglDamper = Mathf.SmoothDampAngle(aimAnglDamper, DesiredAimAngle, ref rotationSpeed, 0.01f, 8,
                     0.01666f);
-            if (Math.Abs(aimAnglDamper - DesiredAimAngle) < 0.015625f) currentAimOverrideTarget = null;
+            if (TMath.Abs(aimAnglDamper - DesiredAimAngle) < 0.015625f) currentAimOverrideTarget = null;
         }
     }
 
@@ -344,7 +346,7 @@ public class Verb_Beam : Verb_Tele
         var finalPos = rangePos.IsValid ? rangePos : desiredRange;
 
         //
-        if (IsStatic) 
+        if (IsStatic)
             StaticTargetEffects(CurrentStartPos, finalPos.ToVector3Shifted(), finalPos);
 
         HitCell(finalPos);

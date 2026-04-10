@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
-using TeleCore.Defs.Values;
+using TeleCore.GameData.Defs.Values;
 using TeleCore.Logging;
-using TeleCore.Math;
+using TeleCore.TMath;
 using TeleCore.Utils;
 using Verse;
 

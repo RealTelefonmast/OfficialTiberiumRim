@@ -1,4 +1,4 @@
-﻿namespace TR.GameParts;
+﻿namespace TR;
 /*
 public class PollutionRoomUpdater
 {

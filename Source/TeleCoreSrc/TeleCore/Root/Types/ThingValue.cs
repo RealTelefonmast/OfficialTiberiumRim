@@ -4,7 +4,7 @@ using System.Xml;
 using RimWorld;
 using Verse;
 
-namespace TeleCore.HelperClasses;
+namespace TeleCore.Types;
 
 /// <summary>
 ///     Define a Def with various values for dynamic and versatile uses.

@@ -2,7 +2,7 @@
 using System.Xml;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class SkyfallerValue
 {

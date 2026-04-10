@@ -2,7 +2,7 @@
 using RimWorld;
 using Verse;
 
-namespace TR.Factions.GDI;
+namespace TR.GDI;
 
 public class IonCannonCore : ThingWithComps
 {

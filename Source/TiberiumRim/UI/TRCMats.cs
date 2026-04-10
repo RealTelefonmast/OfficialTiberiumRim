@@ -1,8 +1,7 @@
-﻿using TR.Util;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
-namespace TR.UI;
+namespace TR;
 
 [StaticConstructorOnStartup]
 public class TRCMats

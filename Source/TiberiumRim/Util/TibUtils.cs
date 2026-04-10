@@ -1,14 +1,11 @@
 ﻿using System;
 using TeleCore.Network.Flow.Values;
-using TR.DefOf;
-using TR.Defs;
-using TR.GameParts.Networks.AtmosphericNetwork;
-using TR.Rendering.TextureContent;
-using TR.TiberiumObjects;
+using TR.Networks.AtmosphericNetwork;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.Util;
+namespace TR;
 
 public static class TibUtils
 {

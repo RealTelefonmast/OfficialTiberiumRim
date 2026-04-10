@@ -1,10 +1,9 @@
 ﻿using System.Linq;
 using RimWorld;
 using TR.Components;
-using TR.Util;
 using Verse;
 
-namespace TR.Research;
+namespace TR;
 
 public class IncidentWorker_TiberiumArrival : IncidentWorker
 {

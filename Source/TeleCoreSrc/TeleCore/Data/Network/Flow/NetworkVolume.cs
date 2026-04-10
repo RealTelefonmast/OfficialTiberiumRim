@@ -30,7 +30,7 @@ public class NetworkVolume : FlowVolume<NetworkValueDef>
     protected override double ExcessFor(NetworkValueDef def, double amount)
     {
         if (_config.shareCapacity)
-            return Math.Max(StoredValueOf(def) + amount - CapacityOf(def), 0.0);
+            return TMath.Max(StoredValueOf(def) + amount - CapacityOf(def), 0.0);
         return base.ExcessFor(def, amount);
     }
 

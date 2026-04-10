@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using TR.GameParts.Networks.TiberiumNetwork;
-using TR.TiberiumProcessing;
+using TR.Networks.TiberiumNetwork;
 using Verse;
 using Verse.AI;
 
-namespace TR.AI;
+namespace TR;
 
 public class JobDriver_DoTiberiumBill : JobDriver
 {

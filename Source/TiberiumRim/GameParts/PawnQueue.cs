@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using TR.Util;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class PawnQueue
 {

@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.GameParts.Designators;
+namespace TR.Designators;
 
 public class DesignationExtension : DefModExtension
 {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry
+namespace TR
 {
     public class Projectile_Homing  : Projectile
     {

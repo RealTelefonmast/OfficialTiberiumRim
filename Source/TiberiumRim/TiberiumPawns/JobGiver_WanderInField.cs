@@ -1,7 +1,7 @@
 ﻿using Verse;
 using Verse.AI;
 
-namespace TR.TiberiumPawns;
+namespace TR;
 
 public class JobGiver_WanderInField : JobGiver_Wander
 {

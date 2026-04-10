@@ -6,7 +6,7 @@ namespace TeleCore;
 
 public class TRMainButtonDef : MainButtonDef
 {
-    [Unsaved(false)] private Texture2D specialIcon;
+    [Unsaved()] private Texture2D specialIcon;
     public string specialIconPath;
 
     public Texture2D SpecialIcon

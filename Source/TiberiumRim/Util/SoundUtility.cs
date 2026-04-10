@@ -1,4 +1,4 @@
-﻿namespace TR.Util;
+﻿namespace TR;
 
 public class SoundUtility
 {

@@ -1,4 +1,4 @@
-﻿namespace TR.GameParts.EVA;
+﻿namespace TR.EVA;
 
 public enum EVAType
 {

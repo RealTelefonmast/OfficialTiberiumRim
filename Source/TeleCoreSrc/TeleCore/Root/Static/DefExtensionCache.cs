@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TeleCore.Defs.Extensions;
+using TeleCore.GameData.Defs.Extensions;
 using Verse;
 
 namespace TeleCore.Static;

@@ -5,13 +5,11 @@ using RimWorld;
 using TeleCore.Research;
 using TeleCore.RWExtended.ThingClasses;
 using TeleCore.Types;
-using TR.GameParts;
-using TR.Util;
-using TR.Weaponry;
+using TR.SuperWeapon;
 using UnityEngine;
 using Verse;
 
-namespace TR.Defs;
+namespace TR;
 
 public class TRThingDef : FXThingDef
 {

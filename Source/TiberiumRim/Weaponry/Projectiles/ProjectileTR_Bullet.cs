@@ -1,10 +1,9 @@
 ﻿using RimWorld;
 using TeleCore.Interfaces;
-using TR.Defs;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry.Projectiles;
+namespace TR.Projectiles;
 
 public class ProjectileTR_Bullet : Bullet, IPatchedProjectile
 {

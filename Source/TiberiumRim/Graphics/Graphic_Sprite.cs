@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.Graphics;
+namespace TR;
 
 public class Graphic_Sprite : Graphic
 {

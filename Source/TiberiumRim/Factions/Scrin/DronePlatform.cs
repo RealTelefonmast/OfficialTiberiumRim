@@ -1,8 +1,7 @@
 ﻿using System;
-using TR.GameParts;
 using Verse;
 
-namespace TR.Factions.Scrin;
+namespace TR.Scrin;
 
 public class DronePlatform : TRBuilding
 {

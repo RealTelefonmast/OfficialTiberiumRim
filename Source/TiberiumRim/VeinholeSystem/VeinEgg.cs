@@ -1,14 +1,12 @@
 ﻿using RimWorld;
-using TR.GameParts;
-using TR.Util;
 using Verse;
 
-namespace TR.VeinholeSystem;
+namespace TR;
 
 public class VeinEgg : TRBuilding
 {
     public Veinhole parent;
-    private int ticksToHatch = TRUtils.Range(GenDate.TicksPerDay, GenDate.TicksPerDay * 3);
+    private int ticksToHatch = TRandom.Range(GenDate.TicksPerDay, GenDate.TicksPerDay * 3);
 
     public override void ExposeData()
     {
@@ -37,11 +35,11 @@ public class VeinEgg : TRBuilding
 
     public void Hatch(bool premature = false)
     {
-        var num = TRUtils.Range(1, 4);
+        var num = TRandom.Range(1, 4);
         for (var i = 0; i < num; i++)
         {
             var Veinmonster = PawnKindDef.Named("Veinmonster");
-            var veiny = TRUtils.NewBorn(Veinmonster) as VeinMonster;
+            var veiny = TRUtils.NewBorn(Veinmonster) as VeinRoamer;
             veiny.boundProducer = parent;
             GenSpawn.Spawn(veiny, this.RandomAdjacentCell8Way(), Map);
             if (parent.DestroyedOrNull() || premature) veiny.Kill(new DamageInfo(DamageDefOf.Deterioration, 100));

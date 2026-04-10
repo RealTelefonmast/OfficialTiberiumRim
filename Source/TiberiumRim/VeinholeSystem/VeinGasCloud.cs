@@ -1,7 +1,7 @@
-﻿using TR.Hediffs;
+﻿using TeleCore.Utils;
 using Verse;
 
-namespace TR.VeinholeSystem;
+namespace TR;
 
 public class VeinGasCloud : HomingThing, IPathFindCostProvider
 {

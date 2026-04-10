@@ -2,7 +2,7 @@ using System.Runtime.InteropServices;
 using LudeonTK;
 using TeleCore.Atmosphere.Static;
 using TeleCore.Logging;
-using TeleCore.Patches;
+using TeleCore.Utils;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;

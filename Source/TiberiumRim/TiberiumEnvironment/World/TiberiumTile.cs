@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using RimWorld.Planet;
-using TR.DefOf;
-using TR.Util;
 using Verse;
 
-namespace TR.TiberiumEnvironment.World;
+namespace TR.World;
 
 public class TiberiumTile : WorldObject
 {

@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using TR.GameParts;
-using TR.TiberiumObjects;
 using Verse;
 
 namespace TR.Info;

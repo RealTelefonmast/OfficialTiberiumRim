@@ -1,11 +1,8 @@
-﻿using TR.DefOf;
-using TR.Defs;
-using TR.Util;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UIElements;
 using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumSpore : Particle
 {

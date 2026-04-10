@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace TR.Rendering.TextureContent;
+namespace TR.TextureContent;
 
 public static class FlowMapCache
 {

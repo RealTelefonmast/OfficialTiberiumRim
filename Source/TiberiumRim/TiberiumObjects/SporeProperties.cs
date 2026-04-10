@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using TR.GameParts;
 using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class SporeProperties
 {

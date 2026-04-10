@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using TR.Comps;
-using TR.Rendering.TextureContent;
-using TR.ThingData.Pawns.MechanicalPawns;
-using TR.TiberiumProcessing;
+using TR.TextureContent;
 using Verse;
 
-namespace TR.GameParts.Networks.TiberiumNetwork;
+namespace TR.Networks.TiberiumNetwork;
 
 public class CompTNS_Refinery : Comp_TiberiumNetworkStructure
 {

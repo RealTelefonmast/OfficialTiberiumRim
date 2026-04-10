@@ -1,8 +1,6 @@
-﻿using TR.Defs;
-using TR.Util;
-using Verse;
+﻿using Verse;
 
-namespace TR.TiberiumEnvironment;
+namespace TR;
 
 [StaticConstructorOnStartup]
 public class TiberiumMapRenderer

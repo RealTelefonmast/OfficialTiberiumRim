@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
 using TeleCore.Network.Bills;
+using TeleCore.TeleTurrets.Properties;
+using TeleCore.Types;
+using TeleCore.Visual.VFX.Effecters;
+using TeleCore.Visual.VFX.Particles.Motes;
 using UnityEngine;
 using Verse;
 

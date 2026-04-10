@@ -2,11 +2,7 @@ using System;
 using System.Collections.Generic;
 using RimWorld;
 using RimWorld.Planet;
-using TR.DefOf;
-using TR.GameParts;
-using TR.GameParts.WorldInfos;
-using TR.ThingData;
-using TR.Util;
+using TR.WorldInfos;
 using Verse;
 
 namespace TR.World;

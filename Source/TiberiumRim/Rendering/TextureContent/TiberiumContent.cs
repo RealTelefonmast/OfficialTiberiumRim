@@ -4,7 +4,7 @@ using TeleCore.Static;
 using UnityEngine;
 using Verse;
 
-namespace TR.Rendering.TextureContent;
+namespace TR.TextureContent;
 
 [StaticConstructorOnStartup]
 public class TiberiumContent

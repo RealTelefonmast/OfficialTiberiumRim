@@ -1,8 +1,8 @@
 using System;
-using TR.TiberiumEnvironment.ThingSelectors;
+using TR.ThingSelectors;
 using Verse;
 
-namespace TR.Defs;
+namespace TR;
 
 public class ThingFilterDef : Def
 {

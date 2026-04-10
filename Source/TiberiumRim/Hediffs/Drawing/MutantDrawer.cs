@@ -1,4 +1,4 @@
-﻿namespace TR.Hediffs.Drawing;
+﻿namespace TR.Drawing;
 
 public class MutantDrawer
 {

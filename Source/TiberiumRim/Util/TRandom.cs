@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Verse;
 
-namespace TR.Util;
+namespace TR;
 
 public static class TRandom
 {

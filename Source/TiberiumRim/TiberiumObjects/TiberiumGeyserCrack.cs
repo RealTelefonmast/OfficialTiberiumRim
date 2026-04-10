@@ -1,8 +1,6 @@
-﻿using TR.DefOf;
-using TR.GameParts;
-using Verse;
+﻿using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumGeyserCrack : TRBuilding
 {

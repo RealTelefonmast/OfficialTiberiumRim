@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace TR.Rendering;
+namespace TR;
 
 public class SectionLayer_TerrainOverlay : SectionLayer
 {

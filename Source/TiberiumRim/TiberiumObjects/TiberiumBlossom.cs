@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
-using TR.DefOf;
-using TR.Factions.RARelics;
-using TR.Util;
 using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumBlossom : TiberiumProducer
 {
@@ -49,16 +46,6 @@ public class TiberiumBlossom : TiberiumProducer
                 foreach (var pos in GenRadial.RadialCellsAround(Position, 14.9f, false))
                     if (!GenTiberium.TryMutatePlant(pos.GetPlant(Map), TiberiumDefOf.TiberiumGreen))
                         Map.terrainGrid.SetTerrain(pos, TiberiumDefOf.TiberiumGreen.conversions.baseTerrain);
-            }
-        };
-
-        yield return new Command_Action
-        {
-            defaultLabel = "Spawn Volkov",
-            action = delegate
-            {
-                var randPos = Position + GenRadial.RadialPattern[Rand.Range(0, GenRadial.NumCellsInRadius(8))];
-                GenSpawn.Spawn(VolkovGenerator.GenerateVolkov(Map), randPos, Map);
             }
         };
     }

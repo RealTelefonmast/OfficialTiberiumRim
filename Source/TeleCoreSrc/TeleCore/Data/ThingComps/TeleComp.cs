@@ -1,7 +1,7 @@
-﻿using TeleCore.Defs.Extensions;
-using TeleCore.Events;
+﻿using TeleCore.Events;
+using TeleCore.GameData.Defs.Extensions;
 using TeleCore.Static;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using Verse;
 
 namespace TeleCore.ThingComps;

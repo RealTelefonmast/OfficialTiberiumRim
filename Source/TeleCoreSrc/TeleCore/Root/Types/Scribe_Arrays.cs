@@ -5,10 +5,9 @@ using System.Xml;
 using RimWorld.Planet;
 using TeleCore.Logging;
 using TeleCore.Primitive.Immutable;
-using TeleCore.Utils;
 using Verse;
 
-namespace TeleCore.HelperClasses;
+namespace TeleCore.Types;
 
 public class Scribe_Arrays
 {

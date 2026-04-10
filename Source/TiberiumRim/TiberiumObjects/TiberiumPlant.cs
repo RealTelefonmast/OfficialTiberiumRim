@@ -1,13 +1,11 @@
 using System.Linq;
 using RimWorld;
 using TR.Components;
-using TR.Defs;
-using TR.TiberiumEnvironment;
 using UnityEngine;
 using Verse;
 using WorldComponent_TR = TR.World.WorldComponent_TR;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumPlant : Plant
 {

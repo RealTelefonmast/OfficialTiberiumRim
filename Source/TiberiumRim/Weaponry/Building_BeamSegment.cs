@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TR.Defs;
-using TR.GameParts;
-using TR.Weaponry.BeamHub;
+using TR.BeamHub;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry
+namespace TR
 {
     public class BeamSegment
     {

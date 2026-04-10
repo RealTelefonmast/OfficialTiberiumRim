@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using TR.Defs;
 using TerrainDef = Verse.TerrainDef;
 
-namespace TR.TiberiumEnvironment.Conversions;
+namespace TR.Conversions;
 
 public class TerrainFilter
 {

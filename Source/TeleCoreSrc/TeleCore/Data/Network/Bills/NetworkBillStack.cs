@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TeleCore.Defs;
+using TeleCore.GameData.Defs;
 using TeleCore.Network.Flow.Values;
-using TeleCore.Network.Utility;
 using TeleCore.Primitive;
 using TeleCore.Static;
 using TeleCore.ThingComps;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 

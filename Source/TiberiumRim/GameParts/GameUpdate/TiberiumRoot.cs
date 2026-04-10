@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.GameUpdate;
+namespace TR.GameUpdate;
 
 /// <summary>
 ///     Experimental Updating of custom tiberium related parts

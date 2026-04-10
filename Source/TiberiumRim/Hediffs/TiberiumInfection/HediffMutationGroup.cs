@@ -2,9 +2,10 @@
 using System.Text.RegularExpressions;
 using System.Xml;
 using RimWorld;
+using TeleCore.Utils;
 using Verse;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public class HediffFloat
 {

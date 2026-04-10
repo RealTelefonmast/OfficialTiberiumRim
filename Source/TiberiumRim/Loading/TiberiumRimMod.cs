@@ -1,41 +1,59 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using HarmonyLib;
 using RimWorld;
+using TeleCore.Logging;
 using TeleCore.ThingComps.Props;
-using TeleCore.VFX.FX.Layer.Properties;
-using TR.Defs;
-using TR.GameParts;
-using TR.Hediffs.TiberiumInfection;
-using TR.Rendering.TextureContent;
-using TR.Util;
+using TeleCore.Visual.VFX.FX.Layer.Properties;
+using TR.TextureContent;
+using TR.TiberiumInfection;
 using UnityEngine;
 using Verse;
 
-namespace TR.Loading;
+namespace TR;
 
-public class TiberiumRimMod : Mod
+public class TiberiumRimMod : Mod, ILoggerProvider
 {
-    //Static Data
     public static TiberiumRimMod mod;
     public static AssetBundle assetBundle;
     private static Harmony tiberium;
-
-    //
+    public static bool isDebug = true;
     public TiberiumSettings settings;
 
     public TiberiumRimMod(ModContentPack content) : base(content)
     {
-        Log.Message("[TiberiumRim] - Init");
-        settings = GetSettings<TiberiumSettings>();
-
-        Tiberium.PatchAll(Assembly.GetExecutingAssembly());
         mod = this;
+        TRLog.Logger.DebugEnabled = () => isDebug;
+        var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        TRLog.Message($"[TiberiumRim][{version}] - Init", Color.cyan);
+        settings = GetSettings<TiberiumSettings>();
+        Tiberium.PatchAll(Assembly.GetExecutingAssembly());
     }
 
-    public static Harmony Tiberium => tiberium ??= new Harmony("com.tiberiumrim.rimworld.mod");
+    public static ModLogger Log => TRLog.Logger;
+    public static Harmony Tiberium => tiberium ??= new Harmony("telefonmast.tiberiumrim.core");
+    public static TiberiumSettings CoreSettings => (TiberiumSettings)mod.modSettings;
+
+    ModLogger ILoggerProvider.Log => TRLog.Logger;
+
+    public AssetBundle MainBundle
+    {
+        get
+        {
+            var pathPart = "";
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                pathPart = "StandaloneOSX";
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                pathPart = "StandaloneWindows";
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                pathPart = "StandaloneLinux64";
+
+            var mainBundlePath = Path.Combine(Content.RootDir, $@"Materials\Bundles\{pathPart}\tiberiumrimbundle");
+            return AssetBundle.LoadFromFile(mainBundlePath);
+        }
+    }
 
     public override void WriteSettings()
     {
@@ -60,7 +78,7 @@ public class TiberiumRimMod : Mod
             if (def.comps == null)
                 def.comps = new List<CompProperties>();
             def.comps.Add(new CompProperties_TiberiumCheck());
-            def.comps.Add(new CompProperties_PawnExtraDrawer());
+            def.comps.Add(new TeleCore.Rendering.CompProperties_PawnExtraDrawer());
         }
     }
 

@@ -1,4 +1,4 @@
-﻿namespace TR.TiberiumEnvironment.World;
+﻿namespace TR.World;
 
 internal class WorldZone
 {

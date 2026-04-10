@@ -1,10 +1,8 @@
 ﻿using HarmonyLib;
 using RimWorld.Planet;
-using TeleCore;
-using TR.GameParts.WorldInfos;
-using TR.Util;
+using TR.WorldInfos;
 
-namespace TR.Patches;
+namespace TR;
 
 public class MapWorldPatches
 {

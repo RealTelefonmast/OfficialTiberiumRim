@@ -1,8 +1,7 @@
-﻿using TR.Defs;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
-namespace TR.Rendering;
+namespace TR;
 
 public static class TiberiumMats
 {

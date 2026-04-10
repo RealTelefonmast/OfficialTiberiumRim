@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TR.Weaponry.SuperWeapon;
+namespace TR.SuperWeapon;
 
 public class ASATNetwork : IExposable
 {

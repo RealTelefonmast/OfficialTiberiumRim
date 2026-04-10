@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace TR.Util;
+namespace TR;
 
 public static class Geometry
 {

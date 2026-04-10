@@ -1,9 +1,9 @@
 ﻿using RimWorld;
-using TR.GameParts.PlaceWorkers;
+using TeleCore.PlaceWorkers;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry;
+namespace TR;
 
 public class Building_HubTurret : Building_TRTurret
 {

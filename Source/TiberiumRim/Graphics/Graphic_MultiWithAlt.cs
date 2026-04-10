@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TR.Graphics;
+namespace TR;
 
 public class Graphic_MultiWithAlt : Graphic_Multi
 {

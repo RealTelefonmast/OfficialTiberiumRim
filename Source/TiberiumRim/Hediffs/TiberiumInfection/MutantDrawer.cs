@@ -1,4 +1,4 @@
-﻿namespace TR.Hediffs.TiberiumInfection;
+﻿namespace TR.TiberiumInfection;
 
 public class MutantDrawer
 {

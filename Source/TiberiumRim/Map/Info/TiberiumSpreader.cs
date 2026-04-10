@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using TR.TiberiumEnvironment;
-using TR.TiberiumObjects;
 using Verse;
 
 namespace TR.Info;

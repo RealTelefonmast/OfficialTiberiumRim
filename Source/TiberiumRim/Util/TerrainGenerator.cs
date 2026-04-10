@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Verse;
 
-namespace TR.Util;
+namespace TR;
 
 //This utility class is used to generate various terrain shapes in real time
 public static class TerrainGenerator

@@ -1,8 +1,7 @@
-﻿using TR.Util;
-using Verse;
+﻿using Verse;
 using Verse.AI;
 
-namespace TR.AI;
+namespace TR;
 
 public class ThinkNode_ConditionalColonistOrMech : ThinkNode_Conditional
 {

@@ -1,4 +1,6 @@
-﻿namespace TR.GameParts;
+﻿using TeleCore.GameData.Defs;
+
+namespace TR;
 
 public interface IDiscoverable
 {

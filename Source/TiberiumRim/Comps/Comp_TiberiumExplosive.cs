@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using TR.TiberiumObjects;
-using TR.Util;
 using Verse;
 
-namespace TR.Comps;
+namespace TR;
 
 public class ThingComp_TiberiumExplosive : ThingComp
 {

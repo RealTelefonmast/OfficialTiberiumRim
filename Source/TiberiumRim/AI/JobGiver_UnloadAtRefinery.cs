@@ -1,15 +1,11 @@
 using System.Collections.Generic;
 using RimWorld;
 using TeleCore.Network.Flow.Values;
-using TR.Defs;
-using TR.GameParts.Networks.TiberiumNetwork;
-using TR.TiberiumObjects;
-using TR.TiberiumProcessing;
-using TR.Util;
+using TR.Networks.TiberiumNetwork;
 using Verse;
 using Verse.AI;
 
-namespace TR.AI;
+namespace TR;
 
 public class JobGiver_UnloadAtRefinery : ThinkNode_JobGiver
 {

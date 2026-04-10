@@ -5,30 +5,25 @@ using HarmonyLib;
 using LudeonTK;
 using RimWorld;
 using RimWorld.Planet;
+using TeleCore.Hediffs;
 using TeleCore.Rendering.Particles;
 using TeleCore.RWExtended.ThingClasses;
-using TR.DefOf;
-using TR.Defs;
-using TR.GameParts.EVA;
-using TR.Hediffs;
-using TR.Hediffs.HediffVerb;
-using TR.Hediffs.TiberiumInfection;
-using TR.Hediffs.Toxemia;
-using TR.Rendering.TextureContent;
-using TR.ThingData;
-using TR.ThingData.Pawns.MechanicalPawns;
-using TR.TiberiumObjects;
-using TR.TiberiumProcessing;
-using TR.Util;
-using TR.Weaponry;
-using TR.Weaponry.SuperWeapon;
+using TR.Designators;
+using TR.EVA;
+using TR.HediffVerb;
+using TR.SuperWeapon;
+using TR.TextureContent;
+using TR.TiberiumInfection;
+using TR.Toxemia;
 using UnityEngine;
 using Verse;
 using Verse.AI;
+using HediffComp_Gizmo = TR.HediffVerb.HediffComp_Gizmo;
+using HediffUtils = TeleCore.Utils.HediffUtils;
 using MapInterface = RimWorld.MapInterface;
 using WidgetRow = Verse.WidgetRow;
 
-namespace TR.Loading;
+namespace TR;
 
 [StaticConstructorOnStartup]
 public static class TiberiumRimPatches
@@ -229,7 +224,7 @@ public static class TiberiumRimPatches
         {
             foreach (var command in values) yield return command;
             foreach (var verb in __instance.AllVerbs)
-                if (verb is Weaponry.Verb_TR verbTR)
+                if (verb is Verb_TR verbTR)
                     if (verbTR.Props.secondaryProjectile != null)
                         yield return new Command_Action
                         {
@@ -352,7 +347,7 @@ public static class TiberiumRimPatches
     {
         public static void Postfix(Hediff_Implant __instance)
         {
-            __instance?.pawn.HealthComp().UpdateParts();
+            HediffUtils.HealthComp(__instance?.pawn).UpdateParts();
         }
     }
 
@@ -362,7 +357,7 @@ public static class TiberiumRimPatches
     {
         public static void Postfix(Hediff_Implant __instance)
         {
-            __instance?.pawn.HealthComp().UpdateParts();
+            HediffUtils.HealthComp(__instance?.pawn).UpdateParts();
         }
     }
 
@@ -726,7 +721,7 @@ public static class TiberiumRimPatches
     {
         public static bool Prefix(DesignatorManager __instance)
         {
-            if (__instance.SelectedDesignator is GameParts.Designators.Designator_Extended d && d.MustStaySelected)
+            if (__instance.SelectedDesignator is Designator_Extended d && d.MustStaySelected)
                 return false;
             return true;
         }
@@ -739,7 +734,7 @@ public static class TiberiumRimPatches
     {
         public static bool Prefix(Pawn pawn)
         {
-            return !(pawn.ParentHolder is VisceralPod);
+            return !(pawn.ParentHolder is TiberiumInfection.VisceralPod);
         }
     }
 
@@ -1003,7 +998,7 @@ public static class TiberiumRimPatches
         }
     }
 
-    [HarmonyPatch(typeof(PlaySettings))]
+    [HarmonyPatch(typeof(RimWorld.PlaySettings))]
     [HarmonyPatch("DoPlaySettingsGlobalControls")]
     public static class PlaySettingsPatch
     {

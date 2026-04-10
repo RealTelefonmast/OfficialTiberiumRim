@@ -1,12 +1,11 @@
 using System.Linq;
 using RimWorld;
 using TeleCore.ActionCompositions;
-using TR.Defs;
-using TR.Rendering.TextureContent;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.Util.Effects;
+namespace TR.Effects;
 
 public static class TiberiumFX
 {

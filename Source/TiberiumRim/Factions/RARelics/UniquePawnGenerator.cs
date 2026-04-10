@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.Factions.RARelics;
+namespace TR.RARelics;
 
 public static class UniquePawnGenerator
 {

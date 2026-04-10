@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class GroundZero
 {

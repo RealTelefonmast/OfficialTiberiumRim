@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using RimWorld.Planet;
 using TeleCore.Events;
+using TeleCore.Events.Args;
 using Verse;
 
 namespace TeleCore.Research.Events;

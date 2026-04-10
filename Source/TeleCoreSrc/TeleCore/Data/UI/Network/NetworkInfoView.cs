@@ -5,10 +5,9 @@ using System.Linq;
 using RimWorld;
 using TeleCore.Network.Flow;
 using TeleCore.Network.Flow.Values;
-using TeleCore.Network.Utility;
 using TeleCore.RWExtended.UI.Commands;
 using TeleCore.Static;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 

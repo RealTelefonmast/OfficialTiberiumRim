@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using TR.GameParts.Networks;
+using TR.Networks;
 using Verse;
 
 namespace TR.Info;

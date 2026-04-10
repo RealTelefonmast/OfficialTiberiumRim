@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using RimWorld;
-using TeleCore.Defs.Extensions;
 using TeleCore.Events;
+using TeleCore.Events.Args;
+using TeleCore.GameData.Defs.Extensions;
 using TeleCore.Interfaces;
 using TeleCore.Static;
 using TeleCore.ThingComps.Props;
 using TeleCore.Types;
-using TeleCore.VFX.FX.Layer;
-using TeleCore.VFX.FX.Layer.Properties;
+using TeleCore.Visual.VFX.FX.Layer;
+using TeleCore.Visual.VFX.FX.Layer.Properties;
 using UnityEngine;
 using Verse;
 

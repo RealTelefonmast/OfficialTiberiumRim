@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TR.Hediffs.Toxemia;
+namespace TR.Toxemia;
 
 public class Hediff_TiberiumMutationPart : Hediff
 {

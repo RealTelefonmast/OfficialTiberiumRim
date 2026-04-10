@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using TeleCore.Defs;
-using TeleCore.Defs.Extensions;
+using TeleCore.GameData.Defs;
+using TeleCore.GameData.Defs.Extensions;
 using TeleCore.Hediffs;
 using TeleCore.Interfaces;
 using TeleCore.Static;

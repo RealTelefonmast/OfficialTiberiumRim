@@ -1,5 +1,5 @@
 ﻿using RimWorld;
-using TeleCore.Defs.Extensions;
+using TeleCore.GameData.Defs.Extensions;
 using TeleCore.Logging;
 using TeleCore.Static;
 using Verse;

@@ -1,16 +1,11 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
 using TR.Components;
-using TR.Data.ThingClasses.TibCrystals;
-using TR.Defs;
-using TR.TiberiumEnvironment;
-using TR.TiberiumObjects;
-using TR.Util;
 using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 
-namespace TR.TiberiumProcessing
+namespace TR
 {
     public class WorkGiver_HarvestTiberium : WorkGiver_Scanner
     {

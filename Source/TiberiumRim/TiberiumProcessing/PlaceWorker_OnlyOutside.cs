@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.TiberiumProcessing
+namespace TR
 {
     public class PlaceWorker_OnlyOutside : PlaceWorker
     {

@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TR.Util;
 using Verse;
 using TerrainDef = Verse.TerrainDef;
 using ThingDef = Verse.ThingDef;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class PositionFilter
 {

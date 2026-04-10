@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TR.Data.DamageHandling;
+namespace TR.DamageHandling;
 
 public class DamageWorker_Pressure : DamageWorker_AddInjury
 {

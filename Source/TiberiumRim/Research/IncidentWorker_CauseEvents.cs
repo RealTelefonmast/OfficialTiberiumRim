@@ -1,9 +1,9 @@
-﻿using RimWorld;
+﻿using System.Linq;
+using RimWorld;
 using TeleCore.Research.Events;
-using TR.Util;
 using Verse;
 
-namespace TR.Research;
+namespace TR;
 
 public class IncidentWorker_CauseEvents : IncidentWorker
 {

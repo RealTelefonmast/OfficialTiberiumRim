@@ -1,9 +1,8 @@
 ﻿using System.Runtime.InteropServices;
-using TeleCore.Absorbed.Loader.Identification;
 using TeleCore.Logging;
-using TeleCore.Math;
+using TeleCore.Mod.Loader.Identification;
+using TeleCore.TMath;
 using TeleCore.Static;
-using TeleCore.Utility;
 using TeleCore.Utils;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;

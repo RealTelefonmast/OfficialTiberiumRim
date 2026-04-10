@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TR.TiberiumEnvironment.Conversions;
+namespace TR.Conversions;
 
 public class TerrainConversion
 {
     public TerrainFilter filter;
-    public List<WeightedTerrain> toTerrain;
+    public List<DefValue<TerrainDef>> toTerrain;
 
     public bool Supports(TerrainDef def)
     {
@@ -15,6 +15,6 @@ public class TerrainConversion
 
     public TerrainDef RandomOutcome()
     {
-        return toTerrain.RandomElementByWeight(w => w.weight).terrainDef;
+        return toTerrain.RandomElementByWeight(w => w.Value).Def;
     }
 }

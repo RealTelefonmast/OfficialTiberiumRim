@@ -1,8 +1,6 @@
-﻿using TR.Defs;
-using TR.GameParts;
-using Verse;
+﻿using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumProducerDef : TRThingDef
 {

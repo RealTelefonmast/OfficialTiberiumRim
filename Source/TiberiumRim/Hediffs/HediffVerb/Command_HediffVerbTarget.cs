@@ -4,7 +4,7 @@ using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TR.Hediffs.HediffVerb;
+namespace TR.HediffVerb;
 
 public class Command_HediffVerbTarget : Command
 {

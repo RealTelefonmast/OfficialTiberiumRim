@@ -1,6 +1,6 @@
 ﻿using RimWorld;
 
-namespace TR.Research;
+namespace TR;
 
 public class IncidentWorker_TiberiumSighting : IncidentWorker_CauseEvents
 {

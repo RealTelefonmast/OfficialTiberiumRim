@@ -2,11 +2,10 @@
 using System.Linq;
 using RimWorld;
 using TR.Info;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.Comps;
+namespace TR;
 
 public class Comp_Suppression : ThingComp
 {

@@ -1,16 +1,13 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
 using TeleCore.Logging;
-using TeleCore.Network.Bills;
-using TeleCore.Utils;
-using TR.GameParts.Networks.TiberiumNetwork;
-using TR.Rendering.TextureContent;
-using TR.Util;
+using TR.Networks.TiberiumNetwork;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TR.TiberiumProcessing;
+namespace TR;
 
 public class CustomTiberiumBill : IExposable
 {

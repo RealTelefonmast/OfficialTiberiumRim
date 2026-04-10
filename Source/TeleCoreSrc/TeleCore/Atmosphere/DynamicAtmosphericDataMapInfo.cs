@@ -1,8 +1,8 @@
-using TeleCore.Atmosphere.Utils;
 using TeleCore.Events;
-using TeleCore.MapInfo;
+using TeleCore.Events.Args;
+using TeleCore.GameData;
 using TeleCore.Types;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 

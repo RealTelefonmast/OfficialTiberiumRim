@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TR.Graphics;
+namespace TR;
 
 [StaticConstructorOnStartup]
 public class Graphic_Particle : Graphic

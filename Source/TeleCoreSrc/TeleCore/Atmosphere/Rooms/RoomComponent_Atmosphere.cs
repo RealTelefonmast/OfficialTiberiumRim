@@ -2,10 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Atmosphere.Comps;
 using TeleCore.Atmosphere.Rendering;
-using TeleCore.Atmosphere.Utils;
 using TeleCore.Logging;
 using TeleCore.Systems.RoomTracking;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 

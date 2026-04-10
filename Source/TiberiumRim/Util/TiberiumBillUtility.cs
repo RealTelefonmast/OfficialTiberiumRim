@@ -1,6 +1,4 @@
-﻿using TR.TiberiumProcessing;
-
-namespace TR.Util;
+﻿namespace TR;
 
 public static class TiberiumBillUtility
 {

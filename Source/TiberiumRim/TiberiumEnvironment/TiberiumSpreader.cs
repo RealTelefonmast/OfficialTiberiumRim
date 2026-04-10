@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TR.TiberiumEnvironment;
+namespace TR;
 
 public class TiberiumSpreader
 {

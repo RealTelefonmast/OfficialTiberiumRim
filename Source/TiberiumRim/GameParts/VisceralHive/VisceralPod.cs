@@ -1,17 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using RimWorld;
-using TeleCore.Events;
-using TR.DefOf;
-using TR.Hediffs;
-using TR.TiberiumObjects;
-using TR.TiberiumPawns;
-using TR.Util;
+using TeleCore.Events.Args;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public enum VisceralStage
 {

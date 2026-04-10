@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace TR.Defs;
+namespace TR;
 
 public class TiberiumControlDef : Def
 {

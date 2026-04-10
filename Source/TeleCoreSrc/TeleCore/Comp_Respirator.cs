@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using TeleCore.Atmosphere.Health;
 using Verse;
 
 namespace TeleCore;

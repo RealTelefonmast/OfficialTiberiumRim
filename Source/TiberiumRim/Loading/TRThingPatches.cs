@@ -1,14 +1,10 @@
 ﻿using System.Collections.Generic;
 using HarmonyLib;
 using RimWorld;
-using TR.Comps;
-using TR.Defs;
-using TR.GameParts.Interfaces;
-using TR.TiberiumEnvironment;
-using TR.Util;
+using TR.Interfaces;
 using Verse;
 
-namespace TR.Loading;
+namespace TR;
 
 internal static class TRThingPatches
 {

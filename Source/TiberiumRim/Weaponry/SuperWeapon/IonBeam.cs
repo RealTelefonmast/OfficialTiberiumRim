@@ -1,9 +1,8 @@
 ﻿using RimWorld;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry.SuperWeapon;
+namespace TR.SuperWeapon;
 
 [StaticConstructorOnStartup]
 public class IonBeam : ThingWithComps

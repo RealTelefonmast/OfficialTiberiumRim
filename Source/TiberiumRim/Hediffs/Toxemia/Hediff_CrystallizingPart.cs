@@ -1,10 +1,9 @@
 ﻿using RimWorld;
-using TR.DefOf;
-using TR.Util;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TR.Hediffs.Toxemia;
+namespace TR.Toxemia;
 
 public class Hediff_CrystallizingPart : Hediff_CauseToxemia
 {

@@ -1,7 +1,7 @@
-﻿using TR.Util;
+﻿using TeleCore.Utils;
 using Verse;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public class Hediff_TiberiumPart : Hediff_TRAddedPart
 {

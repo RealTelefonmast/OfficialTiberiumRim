@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TR.GameParts.Networks
+namespace TR.Networks
 {
     public class NetworkContainerSet<T> where T : Enum
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TR.Util;
+namespace TR;
 
 public static class CollectionUtility
 {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TR.Defs;
+using RimWorld;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public static class TRThingDefList
 {

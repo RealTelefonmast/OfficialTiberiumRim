@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Verse;
 
-namespace TeleCore.HelperClasses;
+namespace TeleCore.Types;
 
 internal class ScribeDictionary<T, D> : IDictionary<T, D>, IExposable
 {

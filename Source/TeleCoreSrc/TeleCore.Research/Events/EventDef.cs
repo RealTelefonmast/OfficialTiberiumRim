@@ -3,10 +3,9 @@
 using System;
 using System.Collections.Generic;
 using RimWorld;
-using TeleCore.Defs;
 using TeleCore.Events;
+using TeleCore.GameData.Defs;
 using TeleCore.Research.Defs;
-using TR.Utilities;
 using Verse;
 
 namespace TeleCore.Research.Events;

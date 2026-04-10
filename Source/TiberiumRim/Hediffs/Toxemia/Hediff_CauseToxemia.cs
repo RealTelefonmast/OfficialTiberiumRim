@@ -1,7 +1,6 @@
-﻿using TR.DefOf;
-using Verse;
+﻿using Verse;
 
-namespace TR.Hediffs.Toxemia;
+namespace TR.Toxemia;
 
 public class Hediff_CauseToxemia : HediffWithComps
 {

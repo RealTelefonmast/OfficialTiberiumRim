@@ -6,7 +6,6 @@ using System.Text;
 using RimWorld;
 using RimWorld.Planet;
 using TeleCore.Research.Defs;
-using TR;
 using UnityEngine;
 using Verse;
 //using Multiplayer.API;

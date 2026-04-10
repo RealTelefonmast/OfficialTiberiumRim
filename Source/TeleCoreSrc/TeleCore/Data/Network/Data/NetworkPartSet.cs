@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
-using TeleCore.Defs;
+using TeleCore.GameData.Defs;
 using TeleCore.Logging;
 using TeleCore.Network.IO;
-using TeleCore.Utility;
 using TeleCore.Utils;
 using Verse;
 

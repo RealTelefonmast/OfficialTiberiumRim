@@ -10,42 +10,22 @@ using TeleCore.Rendering;
 using TeleCore.Research;
 using TeleCore.Research.Events;
 using TeleCore.RWExtended.ThingClasses;
-using TR.DefOf;
-using TR.Defs;
-using TR.GameParts;
-using TR.GameParts.Networks.AtmosphericNetwork;
-using TR.GameParts.WorldInfos;
-using TR.Loading;
-using TR.ThingData.Pawns.MechanicalPawns;
-using TR.TiberiumObjects;
-using TR.VeinholeSystem;
+using TR.Networks.AtmosphericNetwork;
 using TR.World;
+using TR.WorldInfos;
 using UnityEngine;
 using Verse;
 using static System.String;
-using ConditionalStatModifier = TR.ThingData.ConditionalStatModifier;
-using TRMats = TR.Rendering.TextureContent.TRMats;
+using TRMats = TR.TextureContent.TRMats;
 using WorldComponent_TR = TR.World.WorldComponent_TR;
 
-namespace TR.Util;
+namespace TR;
 
 public static class TRUtils
 {
     public static readonly NetworkValueDef[] MainValueTypes =
         [TiberiumDefOf.TibGreen, TiberiumDefOf.TibBlue, TiberiumDefOf.TibRed];
-
-    // --- Merged from old ref ---
-
-    public static float RandValue
-    {
-        get
-        {
-            Rand.PushState();
-            var value = Rand.Value;
-            Rand.PopState();
-            return value;
-        }
-    }
+    
 
     public static GameComponent_CameraPanAndLock CameraPanNLock()
     {
@@ -610,23 +590,6 @@ public static class TRUtils
 
         if (d.thingCategories == null) d.thingCategories = new List<ThingCategoryDef>();
         return d;
-    }
-
-    public static T RandomWeightedElement<T>(this IEnumerable<T> elements, Func<T, float> weightSelector)
-    {
-        var totalWeight = elements.Sum(weightSelector);
-        var randWeight = RandValue * totalWeight;
-        var curWeight = 0f;
-        foreach (var e in elements)
-        {
-            var weight = weightSelector(e);
-            if (weight <= 0) continue;
-            curWeight += weight;
-            if (curWeight >= randWeight)
-                return e;
-        }
-
-        return default;
     }
 
     public static Dictionary<T, T2> Copy<T, T2>(this Dictionary<T, T2> old)

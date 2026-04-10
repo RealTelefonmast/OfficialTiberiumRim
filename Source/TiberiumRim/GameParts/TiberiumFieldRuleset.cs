@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TR.Defs;
-using TR.TiberiumEnvironment.Conversions;
-using TR.TiberiumEnvironment.ThingSelectors;
-using TR.TiberiumObjects;
+using TR.Conversions;
+using TR.ThingSelectors;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class TiberiumFieldRuleset
 {
@@ -74,7 +72,7 @@ public class TiberiumFieldRuleset
             lerpedChance; //Mathf.Lerp(distanceChance, 1f, Mathf.InverseLerp(0f, MaxFloraWeight, thing?.weight  ?? 0));
     }
 
-    public List<WeightedTerrain> TerrainOutcomes(TerrainDef terrain)
+    public List<DefValue<TerrainDef>> TerrainOutcomes(TerrainDef terrain)
     {
         return terrainRules.Find(t => t.Supports(terrain)).toTerrain;
     }

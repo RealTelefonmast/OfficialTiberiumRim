@@ -3,9 +3,6 @@ using System.Linq;
 using RimWorld;
 using TR.Components;
 using TR.Grids;
-using TR.TiberiumObjects;
-using TR.TiberiumProcessing;
-using TR.Util;
 using Verse;
 using Verse.AI;
 

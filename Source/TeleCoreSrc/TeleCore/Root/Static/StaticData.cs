@@ -4,10 +4,10 @@ using System.Runtime.CompilerServices;
 using TeleCore.ActionCompositions;
 using TeleCore.Events;
 using TeleCore.FlowCore;
+using TeleCore.GameData;
 using TeleCore.Logging;
-using TeleCore.Rendering.UI.SpecialSubMenu;
+using TeleCore.UI.SpecialSubMenu;
 using TeleCore.Utils;
-using TeleCore.World;
 using Verse;
 
 namespace TeleCore.Static;

@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumEnvironment;
+namespace TR;
 
 [StaticConstructorOnStartup]
 public class TiberiumFieldFogLayer

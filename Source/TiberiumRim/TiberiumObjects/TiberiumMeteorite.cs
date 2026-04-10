@@ -2,13 +2,10 @@
 using System.Linq;
 using System.Text;
 using RimWorld;
-using TR.DefOf;
-using TR.GameParts;
-using TR.GameParts.Interfaces;
-using TR.Util;
+using TR.Interfaces;
 using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumMeteorite : TRBuilding, IRadiationLeaker, IResearchCraneTarget
 {
@@ -47,9 +44,8 @@ public class TiberiumMeteorite : TRBuilding, IRadiationLeaker, IResearchCraneTar
                 new(TiberiumDefOf.TiberiumCraterGreen, 0.66f),
                 new(TiberiumDefOf.TiberiumCraterBlue, 0.33f),
                 new(TiberiumDefOf.TiberiumCraterHybrid, 0.22f)
-                //new DefFloat<TiberiumProducerDef>(TiberiumDefOf.RedTiberiumShard,0.01f)
             }.RandomElementByWeight(s => s.value).def;
-            ticksLeft = (int)(TRUtils.Range(1f, 2f) * GenDate.TicksPerDay);
+            ticksLeft = (int)(TRandom.Range(1f, 2f) * GenDate.TicksPerDay);
             DoMeteoriteImpact();
         }
     }
@@ -60,6 +56,7 @@ public class TiberiumMeteorite : TRBuilding, IRadiationLeaker, IResearchCraneTar
         CrackOpen();
     }
 
+    //TODO:[SyncMethod()]
     private void CrackOpen()
     {
         if (ResearchBound) ResearchCrane.Destroy(DestroyMode.KillFinalize);
@@ -76,6 +73,7 @@ public class TiberiumMeteorite : TRBuilding, IRadiationLeaker, IResearchCraneTar
         //if (!ResearchBound) return;
         if (!InitialResearchDone) return;
         if (ticksLeft <= 0) CrackOpen();
+
         if (ticksLeft >= 0)
             ticksLeft -= 250;
     }
@@ -94,7 +92,8 @@ public class TiberiumMeteorite : TRBuilding, IRadiationLeaker, IResearchCraneTar
 
         void Action(IntVec3 c)
         {
-            var crystalDef = (TiberiumCrystalDef)craterDef.tiberiumFieldRules.crystalOptions.RandomElement().def;
+            var crystalDef =
+                (TiberiumCrystalDef)craterDef.tiberiumFieldRules.crystalOptions.RandomElement().def;
             GenTiberium.SetTerrain(c, Map, crystalDef);
 
             if (!GenAdj.CellsAdjacent8Way(this).Contains(c) && Rand.Chance(0.20f))

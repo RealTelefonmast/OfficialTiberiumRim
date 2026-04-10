@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.GameParts.WorldInfos;
+namespace TR.WorldInfos;
 
 public class TRGameSettingsInfo : WorldInformation
 {

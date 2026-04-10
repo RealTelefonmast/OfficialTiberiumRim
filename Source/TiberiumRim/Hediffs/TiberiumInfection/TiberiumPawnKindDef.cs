@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public class TiberiumKindDef : PawnKindDef
 {

@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TR.DefOf;
-using TR.Util;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TR.VeinholeSystem;
+namespace TR;
 
 public class VeinholeTunnel : ThingWithComps
 {

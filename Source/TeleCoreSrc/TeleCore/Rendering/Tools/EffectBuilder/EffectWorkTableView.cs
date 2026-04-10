@@ -1,5 +1,5 @@
-﻿using TeleCore.Rendering.UI.DynaUI;
-using TeleCore.Rendering.UI.DynaUI.Editing;
+﻿using TeleCore.UI.DynaUI;
+using TeleCore.UI.DynaUI.Editing;
 using UnityEngine;
 using Verse;
 

@@ -1,4 +1,4 @@
-﻿namespace TR.GameParts.Interfaces;
+﻿namespace TR.Interfaces;
 
 public interface IContainerLeaker
 {

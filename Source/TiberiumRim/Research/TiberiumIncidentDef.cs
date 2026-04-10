@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using TR.ThingData;
 
-namespace TR.Research;
+namespace TR;
 
 public class TiberiumIncidentDef : IncidentDef
 {

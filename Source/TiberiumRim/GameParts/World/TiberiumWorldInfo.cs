@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using RimWorld.Planet;
-using TR.GameParts.WorldInfos;
-using TR.TiberiumEnvironment.World;
-using TR.Util;
+using TR.World;
+using TR.WorldInfos;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class TiberiumWorldInfo : WorldInformation
 {

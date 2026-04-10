@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
-using TeleCore.Defs;
-using TeleCore.Defs.Extensions;
 using TeleCore.Events;
+using TeleCore.GameData.Defs;
+using TeleCore.GameData.Defs.Extensions;
 using TeleCore.Interfaces;
 using TeleCore.Static;
 using TeleCore.ThingComps;
 using TeleCore.Types;
+using TeleCore.Visual.VFX.FX.Implementations;
 using Verse;
 
 namespace TeleCore.RWExtended.ThingClasses;

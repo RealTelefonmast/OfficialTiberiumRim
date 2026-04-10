@@ -1,9 +1,8 @@
 ﻿using TeleCore.Interfaces;
-using TR.Defs;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry.Projectiles;
+namespace TR.Projectiles;
 
 public class ProjectileTR : Projectile, IPatchedProjectile
 {
@@ -19,9 +18,9 @@ public class ProjectileTR : Projectile, IPatchedProjectile
         base.Impact(hitThing, blockedByShield);
     }
 
-    public override void Draw()
+    public override void DrawAt(Vector3 drawLoc, bool flip = false)
     {
-        base.Draw();
+        base.DrawAt(drawLoc, flip);
     }
 
     #region PATCH BEHAVIOUR

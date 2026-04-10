@@ -1,7 +1,7 @@
 ﻿using System;
 using Verse;
 
-namespace TR.Rendering;
+namespace TR;
 
 public class IntermittenFleckSprayer
 {

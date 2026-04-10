@@ -1,6 +1,6 @@
-﻿using TR.GameParts.WorldInfos;
+﻿using TR.WorldInfos;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class SatelliteInfo : WorldInformation
 {

@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using RimWorld;
-using TR.Defs;
-using TR.GameParts;
 using Verse;
 
-namespace TR.Weaponry.BeamHub;
+namespace TR.BeamHub;
 
 public class Building_BeamHubSegmentPart : Building
 {

@@ -1,4 +1,4 @@
-﻿namespace TR.TiberiumEnvironment;
+﻿namespace TR;
 
 public enum TiberiumConsistence
 {

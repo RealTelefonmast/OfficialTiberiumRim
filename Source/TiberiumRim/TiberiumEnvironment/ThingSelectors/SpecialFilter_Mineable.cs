@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.TiberiumEnvironment.ThingSelectors;
+namespace TR.ThingSelectors;
 
 public class SpecialFilter_Mineable : SpecialThingFilterWorker
 {

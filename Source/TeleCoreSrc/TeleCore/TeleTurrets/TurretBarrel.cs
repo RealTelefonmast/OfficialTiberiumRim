@@ -1,5 +1,5 @@
 ﻿using LudeonTK;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 

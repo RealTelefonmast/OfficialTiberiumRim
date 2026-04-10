@@ -1,11 +1,8 @@
 using RimWorld.Planet;
-using TR.GameParts;
-using TR.ThingData;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry.SuperWeapon;
+namespace TR.SuperWeapon;
 
 [StaticConstructorOnStartup]
 public class AttackSatellite : TRWorldObject

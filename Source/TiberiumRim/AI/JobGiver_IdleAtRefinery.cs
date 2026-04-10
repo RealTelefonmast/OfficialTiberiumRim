@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using TR.Defs;
-using TR.TiberiumProcessing;
 using Verse;
 using Verse.AI;
 
-namespace TR.AI;
+namespace TR;
 
 public class JobGiver_IdleAtRefinery : ThinkNode_JobGiver
 {

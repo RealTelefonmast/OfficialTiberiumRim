@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.Weaponry;
+namespace TR;
 
 public class ProjectileProperties_Extended
 {

@@ -1,7 +1,6 @@
-﻿using TR.TiberiumPawns;
-using Verse;
+﻿using Verse;
 
-namespace TR.VeinholeSystem;
+namespace TR;
 
 public class VeinChunk : TiberiumPawn
 {

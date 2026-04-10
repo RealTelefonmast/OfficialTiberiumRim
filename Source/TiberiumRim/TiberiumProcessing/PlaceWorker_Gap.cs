@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Verse;
 
-namespace TR.TiberiumProcessing
+namespace TR
 {
     public class PlaceWorker_Gap : PlaceWorker
     {

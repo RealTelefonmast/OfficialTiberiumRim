@@ -1,7 +1,5 @@
 using System;
 using System.Linq;
-using TR.DefOf;
-using TR.TiberiumObjects;
 using UnityEngine;
 using Verse;
 

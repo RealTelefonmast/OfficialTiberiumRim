@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.Weaponry.BeamHub;
+namespace TR.BeamHub;
 
 public class Building_BeamHubBeam : Building
 {

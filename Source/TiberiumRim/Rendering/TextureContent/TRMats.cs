@@ -1,9 +1,7 @@
-﻿using TR.Defs;
-using TR.Util;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
-namespace TR.Rendering.TextureContent;
+namespace TR.TextureContent;
 
 [StaticConstructorOnStartup]
 public class TRMats

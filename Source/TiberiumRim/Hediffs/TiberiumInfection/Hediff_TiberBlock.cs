@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public class Hediff_TiberBlock : HediffWithComps
 {

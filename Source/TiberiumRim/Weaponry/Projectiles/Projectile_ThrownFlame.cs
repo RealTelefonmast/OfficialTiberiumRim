@@ -1,8 +1,7 @@
-﻿using TR.Graphics;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry.Projectiles;
+namespace TR.Projectiles;
 
 public class Projectile_ThrownFlame : Projectile
 {
@@ -25,6 +24,7 @@ public class Projectile_ThrownFlame : Projectile
         {
             Log.Message("Interval" + fadeOutBegin);
             if (PositionPct > fadeOutBegin) return AdjustedInterval;
+
             return BaseInterval * 4;
         }
     }
@@ -35,7 +35,8 @@ public class Projectile_ThrownFlame : Projectile
     private float PositionPct => ExactPosition.ToIntVec3().DistanceTo(intendedTarget.Cell) /
                                  Launcher.Position.DistanceTo(intendedTarget.Cell);
 
-    private float RangePct => intendedTarget.Cell.DistanceTo(Launcher.Position) / FlameTurret.MainGun.props.range;
+    private float RangePct =>
+        intendedTarget.Cell.DistanceTo(Launcher.Position) / FlameTurret.MainGun.VerbProps.range;
 
 
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
@@ -61,27 +62,16 @@ public class Projectile_ThrownFlame : Projectile
 
         //Opacity
         if (timeVal > fadeOutBegin)
-            opacity = Mathf.Lerp(1f, 0f, 1f - ((1f - timeVal) / (1f - fadeOutBegin)));
+            opacity = Mathf.Lerp(1f, 0f, 1f - (1f - timeVal) / (1f - fadeOutBegin));
     }
 
-    public float opacity = 1f;
-    public Vector3 exactScale = Vector3.one;
-
-    public int Interval
+    //
+    public override void Impact(Thing hitThing, bool blockedByShield = false)
     {
-        get
-        {
-            Log.Message("Interval" + fadeOutBegin);
-            if (PositionPct > fadeOutBegin)
-            {
-                return AdjustedInterval;
-            }
-
-            return BaseInterval * 4;
-        }
+        base.Impact(hitThing, blockedByShield);
     }
 
-    public override void DrawAt(Vector3 drawLoc, bool flip = false)
+    public override void Draw()
     {
         var color = Color.white;
         color.a *= opacity;
@@ -92,15 +82,15 @@ public class Projectile_ThrownFlame : Projectile
         exactScale2.z *= Graphic.data.drawSize.y;
         matrix.SetTRS(DrawPos, ExactRotation, exactScale2);
         var matSingle = GraphicSprite.CurrentGraphic(this).MatSingle;
-        //Graphics.DrawMesh(MeshPool.plane10, matrix, matSingle, 0, null, 0);
+        //Overlays.DrawMesh(MeshPool.plane10, matrix, matSingle, 0, null, 0);
 
         propertyBlock.SetColor(ShaderPropertyIDs.Color, color);
-        UnityEngine.Graphics.DrawMesh(MeshPool.plane10, matrix, matSingle, 0, null, 0, propertyBlock);
+        Graphics.DrawMesh(MeshPool.plane10, matrix, matSingle, 0, null, 0, propertyBlock);
 
         //Mesh mesh = MeshPool.GridPlane(GraphicSprite.data.drawSize);
         //GraphicSprite.DrawWorker(DrawPos, );
 
-        //Graphics.DrawMesh(mesh, DrawPos, ExactRotation, GraphicSprite.CurrentGraphic(this).MatSingle, 0);
+        //Overlays.DrawMesh(mesh, DrawPos, ExactRotation, GraphicSprite.CurrentGraphic(this).MatSingle, 0);
         //Comps_PostDraw();
     }
 }

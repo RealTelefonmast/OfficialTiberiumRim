@@ -2,14 +2,13 @@
 using RimWorld;
 using RimWorld.Planet;
 using TeleCore.ActionCompositions;
-using TR.Defs;
-using TR.GameParts.EVA;
-using TR.GameParts.MapWatchers;
-using TR.Util.Effects;
+using TR.Effects;
+using TR.EVA;
+using TR.MapWatchers;
 using Verse;
 using Verse.Sound;
 
-namespace TR.Weaponry.SuperWeapon;
+namespace TR.SuperWeapon;
 
 public class AttackSatellite_Ion : AttackSatellite, IMapWatcher
 {

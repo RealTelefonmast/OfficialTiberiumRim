@@ -1,4 +1,4 @@
-﻿namespace TR.Loading;
+﻿namespace TR;
 
 internal static class TerrainPatches
 {

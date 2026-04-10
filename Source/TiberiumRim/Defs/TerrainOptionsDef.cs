@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using TR.Util;
 using Verse;
 
-namespace TR.Defs;
+namespace TR;
 
 public class TerrainOptionsDef : Def
 {

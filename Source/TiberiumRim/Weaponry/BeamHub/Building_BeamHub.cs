@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using RimWorld;
-using TeleCore.HelperClasses;
-using TeleCore.Scribing;
-using TR.GameParts;
+using TeleCore.Types;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry.BeamHub;
+namespace TR.BeamHub;
 
 public class Building_BeamHub : TRBuilding
 {

@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RimWorld;
-using TR.Defs;
-using TR.GameParts;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry;
+namespace TR;
 
 public interface ITurretHolder
 {
@@ -48,7 +46,7 @@ public class Building_TRTurret : Building_Turret, ITurretHolder
     public TurretGun MainGun => Enumerable.Any(turrets) ? turrets.First() : null;
 
     private bool MannedByNonColonist => MannableComp != null && MannableComp.ManningPawn != null &&
-                                        MannableComp.ManningPawn.Faction != global::TR.Faction.OfPlayer;
+                                        MannableComp.ManningPawn.Faction != Faction.OfPlayer;
 
     public ThingWithComps Caster => this;
     public Thing Parent => this;
@@ -81,10 +79,10 @@ public class Building_TRTurret : Building_Turret, ITurretHolder
     {
     }
 
-    public bool MannedByColonist => MannableComp != null && MannableComp.ManningPawn != null &&
-                                    MannableComp.ManningPawn.Faction == global::TR.Faction.OfPlayer;
+    public bool MannedByColonist => MannableComp is { ManningPawn: not null } &&
+                                    MannableComp.ManningPawn.Faction == Faction.OfPlayer;
 
-    public bool PlayerControlled => (global::TR.Faction == global::TR.Faction.OfPlayer || MannedByColonist) && !MannedByNonColonist;
+    public bool PlayerControlled => Faction == Faction.OfPlayer || MannedByColonist && !MannedByNonColonist;
 
     public virtual bool IsReady => Spawned && (PowerComp == null || PowerComp.PowerOn) &&
                                    (MannableComp == null || MannableComp.MannedNow);

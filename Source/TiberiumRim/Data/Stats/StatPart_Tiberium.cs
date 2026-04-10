@@ -2,7 +2,7 @@
 using RimWorld;
 using Verse;
 
-namespace TR.Data.Stats;
+namespace TR.Stats;
 
 public abstract class StatPart_Tiberium : StatPart
 {

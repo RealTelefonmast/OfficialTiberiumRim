@@ -1,8 +1,7 @@
-﻿using TR.GameParts.Interfaces;
-using TR.Util;
+﻿using TR.Interfaces;
 using Verse;
 
-namespace TR.Comps;
+namespace TR;
 
 public class Comp_PollutionSource : ThingComp, IPollutionSource
 {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TR.AI;
+namespace TR;
 
 public interface IPawnWithParent
 {

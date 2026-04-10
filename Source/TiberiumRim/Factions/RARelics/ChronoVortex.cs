@@ -1,11 +1,9 @@
-﻿using TR.Defs;
-using TR.Rendering.TextureContent;
-using TR.Util;
+﻿using TR.TextureContent;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TR.Factions.RARelics;
+namespace TR.RARelics;
 
 public class ChronoVortex : PortalSpawner
 {

@@ -1,9 +1,8 @@
 ﻿using System;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumTraitProperties : IExposable
 {

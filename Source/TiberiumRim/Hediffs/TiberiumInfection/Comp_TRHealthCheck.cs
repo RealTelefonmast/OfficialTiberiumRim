@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TR.DefOf;
-using TR.GameParts.EVA;
+using TeleCore.Utils;
+using TR.EVA;
 using TR.Grids;
-using TR.Util;
-using TR.VeinholeSystem;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public class Comp_TRHealthCheck : ThingComp
 {

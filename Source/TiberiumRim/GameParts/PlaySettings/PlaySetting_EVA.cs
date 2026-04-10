@@ -1,8 +1,7 @@
-﻿using TR.Rendering.TextureContent;
-using TR.Util;
+﻿using TR.TextureContent;
 using UnityEngine;
 
-namespace TR.GameParts.PlaySettings;
+namespace TR.PlaySettings;
 
 //row.ToggleableIcon(ref TRUtils.GameSettings().EVASystem, TiberiumContent.Icon_EVA, "Enable or disable the EVA", SoundDefOf.Mouseover_ButtonToggle);
 //row.ToggleableIcon(ref TRUtils.GameSettings().RadiationOverlay, TiberiumContent.Icon_Radiation, "Toggle the Tiberium Radiation overlay.", SoundDefOf.Mouseover_ButtonToggle);

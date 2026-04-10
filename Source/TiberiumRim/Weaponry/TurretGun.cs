@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using LudeonTK;
 using RimWorld;
-using TR.Rendering.TextureContent;
-using TR.Util;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 using Verse.AI;
 using Verse.Sound;
 
-namespace TR.Weaponry;
+namespace TR;
 
 public class TurretGun : IAttackTarget, IAttackTargetSearcher
 {
@@ -202,7 +201,7 @@ public class TurretGun : IAttackTarget, IAttackTargetSearcher
         var faction = attackTargetSearcher.Thing.Faction;
         var range = AttackVerb.verbProps.range;
         Building t;
-        if (TRUtils.RandValue < 0.5f && NeedsRoof && faction.HostileTo(Faction.OfPlayer) && Parent.Map.listerBuildings
+        if (TRandom.RandValue < 0.5f && NeedsRoof && faction.HostileTo(Faction.OfPlayer) && Parent.Map.listerBuildings
                 .allBuildingsColonist.Where(delegate(Building x)
                 {
                     var num = AttackVerb.verbProps.EffectiveMinRange(x, Parent);
@@ -516,28 +515,13 @@ public class TurretBarrel
         }
     }
 
-        [TweakValue("TurretGunTop_BarrelOffset", -5f, 5f)]
-        private static float barrelOffset = 0f;
+    public Graphic Graphic => props.graphic.Graphic;
 
-        public Graphic Graphic => props.graphic.Graphic;
 
-        public Vector3 DrawPos
-        {
-            get
-            {
-                var drawPos = parent.DrawPos;
-                var offset = props.barrelOffset + new Vector3(0,0, barrelOffset) + (props.recoilOffset * currentRecoil);
-                drawPos += Quaternion.Euler(0, parent.CurRotation, 0) * offset;
-                drawPos.y = AltitudeLayer.BuildingOnTop.AltitudeFor() + props.altitudeOffset;
-                return drawPos;
-            }
-        }
-
-        public void Draw()
-        {
-            //var mesh = graphic.MeshAt(Rot4.North);
-            TRUtils.Draw(Graphic, DrawPos, Rot4.North, parent.CurRotation, null);
-            //Graphics.DrawMesh(mesh, DrawPos, parent.CurRotation.ToQuat(), graphic.MatSingle, 0);
-        }
+    public void Draw()
+    {
+        //var mesh = graphic.MeshAt(Rot4.North);
+        TRUtils.Draw(Graphic, DrawPos, Rot4.North, parent.CurRotation, null);
+        //Graphics.DrawMesh(mesh, DrawPos, parent.CurRotation.ToQuat(), graphic.MatSingle, 0);
     }
 }

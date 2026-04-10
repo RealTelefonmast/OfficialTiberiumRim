@@ -32,7 +32,7 @@ public class HediffComp_RangedVerb : HediffComp_Gizmo, IVerbOwner
     public ImplementOwnerTypeDef ImplementOwnerTypeDef => ImplementOwnerTypeDefOf.Hediff;
     public List<VerbProperties> VerbProperties => Props.VerbsBase.ToList();
     public List<Tool> Tools => null;
-    public Thing ConstantCaster => Verse.Pawn;
+    public Thing ConstantCaster => Pawn;
 
     public string UniqueVerbOwnerID()
     {
@@ -99,7 +99,7 @@ public class HediffComp_RangedVerb : HediffComp_Gizmo, IVerbOwner
         foreach (var gizmo in base.GetGizmos())
             if (gizmo != null)
                 yield return gizmo;
-        if (Verse.Pawn.drafter?.Drafted ?? false)
+        if (Pawn.drafter?.Drafted ?? false)
             yield return new Command_Toggle
             {
                 hotKey = KeyBindingDefOf.Misc6,

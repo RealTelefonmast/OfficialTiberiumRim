@@ -1,12 +1,7 @@
 using LudeonTK;
-using TR.GameParts;
-using TR.GameParts.Interfaces;
 using TR.Info;
-using TR.TiberiumEnvironment;
-using TR.TiberiumObjects;
+using TR.Interfaces;
 using Verse;
-using TiberiumAffecter = TR.Info.TiberiumAffecter;
-using TiberiumSpreader = TR.Info.TiberiumSpreader;
 
 namespace TR.Components;
 /* Tiberium Map Component
@@ -39,12 +34,12 @@ public class MapComponent_Tiberium : MapComponentWithDraw
     public TiberiumTerrainInfo TerrainInfo;
 
     //Active Components
-    public TiberiumAffecter TiberiumAffecter;
+    public Info.TiberiumAffecter TiberiumAffecter;
 
     //Map Information - This encloses all the different areas of a map which can be affected by tiberium, and ensures correct and dynamic effects
     // Natural
     public TiberiumMapInfo TiberiumInfo; // Tiberium Crystals, Pods, etc, all variations
-    public TiberiumSpreader TiberiumSpreader;
+    public Info.TiberiumSpreader TiberiumSpreader;
 
     public MapComponent_Tiberium(Map map) : base(map)
     {
@@ -58,8 +53,8 @@ public class MapComponent_Tiberium : MapComponentWithDraw
         SuppressionInfo = new SuppressionMapInfo(map);
         HarvesterInfo = new HarvesterMapInfo(map);
 
-        TiberiumAffecter = new TiberiumAffecter(map);
-        TiberiumSpreader = new TiberiumSpreader(map);
+        TiberiumAffecter = new Info.TiberiumAffecter(map);
+        TiberiumSpreader = new Info.TiberiumSpreader(map);
     }
 
 

@@ -1,15 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using RimWorld;
-using TR.DefOf;
-using TR.TiberiumObjects;
-using TR.TiberiumPawns;
-using TR.Util;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public enum VisceralStage
 {

@@ -2,13 +2,11 @@
 using System.Text;
 using RimWorld;
 using RimWorld.Planet;
-using TeleCore.Events;
-using TR.GameParts;
-using TR.Util;
-using TR.Weaponry.SuperWeapon;
+using TeleCore.Events.Args;
+using TR.SuperWeapon;
 using Verse;
 
-namespace TR.Buildings;
+namespace TR;
 
 public class Building_IonCannon : Building_SuperWeapon
 {

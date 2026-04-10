@@ -1,8 +1,7 @@
-﻿using TR.GameParts;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry.SuperWeapon;
+namespace TR.SuperWeapon;
 
 public class Rocket : ThingWithComps
 {

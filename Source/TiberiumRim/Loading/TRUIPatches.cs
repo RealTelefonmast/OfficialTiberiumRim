@@ -7,16 +7,12 @@ using HarmonyLib;
 using RimWorld;
 using TeleCore.Network;
 using TeleCore.Network.Flow.Values;
-using TeleCore.Network.Utility;
-using TeleCore.Utility;
-using TR.Defs;
-using TR.Rendering.TextureContent;
-using TR.Util;
+using TeleCore.Utils;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
-using TRWidgets = TR.UI.TRWidgets;
 
-namespace TR.Loading;
+namespace TR;
 
 internal static class TRUIPatches
 {

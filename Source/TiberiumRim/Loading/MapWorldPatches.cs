@@ -1,12 +1,11 @@
 ﻿using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
-using TR.Util;
-using TR.Weaponry.SuperWeapon;
+using TR.SuperWeapon;
 using UnityEngine;
 using Verse;
 
-namespace TR.Loading;
+namespace TR;
 
 public static class MapWorldPatches
 {

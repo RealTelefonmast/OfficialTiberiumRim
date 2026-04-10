@@ -1,12 +1,11 @@
 ﻿using System;
 using RimWorld;
-using TeleCore.Utility;
-using TR.Util;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TR.UI;
+namespace TR;
 
 public static class TRWidgets
 {

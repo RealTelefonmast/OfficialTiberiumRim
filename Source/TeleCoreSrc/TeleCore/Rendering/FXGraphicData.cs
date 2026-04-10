@@ -1,4 +1,4 @@
-﻿using TeleCore.VFX.FX.Layer.Properties;
+﻿using TeleCore.Visual.VFX.FX.Layer.Properties;
 using UnityEngine;
 using Verse;
 

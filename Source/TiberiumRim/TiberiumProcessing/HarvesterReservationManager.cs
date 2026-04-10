@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TR.Components;
-using TR.TiberiumEnvironment;
-using TR.TiberiumObjects;
-using TR.Util;
 using UnityEngine;
 using Verse;
 using Verse.AI;
-namespace TR.TiberiumProcessing;
+
+namespace TR;
 
 public class HarvesterReservationManager
 {

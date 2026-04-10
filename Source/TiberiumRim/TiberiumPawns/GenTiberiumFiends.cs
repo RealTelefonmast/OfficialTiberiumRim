@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using TR.TiberiumObjects;
 
-namespace TR.TiberiumPawns;
+namespace TR;
 
 public static class GenTiberiumFiends
 {

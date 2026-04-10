@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace TR.GameParts.GameUpdate;
+namespace TR.GameUpdate;
 
 public class CoroutineDriver
 {

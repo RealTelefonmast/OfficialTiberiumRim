@@ -1,8 +1,7 @@
 ﻿using System.Xml;
-using TR.Defs;
 using Verse;
 
-namespace TR.TiberiumEnvironment.ThingSelectors;
+namespace TR.ThingSelectors;
 
 public class FilterOption
 {

@@ -1,8 +1,7 @@
 ﻿using RimWorld;
-using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry.Projectiles;
+namespace TR.Projectiles;
 
 public class Projectile_Instant : Projectile
 {

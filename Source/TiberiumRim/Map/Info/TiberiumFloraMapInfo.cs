@@ -1,8 +1,5 @@
 using System.Collections.Generic;
 using TR.Grids;
-using TR.TiberiumEnvironment;
-using TR.TiberiumObjects;
-using TR.Util;
 using Verse;
 
 namespace TR.Info;

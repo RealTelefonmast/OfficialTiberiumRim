@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TeleCore.VFX.FX.Effecter;
-using TeleCore.VFX.FX.Layer;
-using TeleCore.VFX.FX.Layer.Properties;
+using TeleCore.Visual.VFX.FX.Effecter;
+using TeleCore.Visual.VFX.FX.Layer;
+using TeleCore.Visual.VFX.FX.Layer.Properties;
 using Verse;
 
 namespace TeleCore.ThingComps.Props;

@@ -1,7 +1,7 @@
 ﻿using System.Xml.Serialization;
 using UnityEngine;
 
-namespace TR.Graphics;
+namespace TR;
 
 [XmlRoot("MetaData")]
 public class TextureMeta

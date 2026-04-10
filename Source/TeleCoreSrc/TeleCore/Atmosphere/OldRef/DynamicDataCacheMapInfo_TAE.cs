@@ -1,8 +1,8 @@
 // Preserved from TeleCore/SpreadingGas/DynamicDataCacheMapInfo.cs (No TAC counterpart — GPU compute grid cache)
 
 using TeleCore.Events;
-using TeleCore.MapInfo;
-using TeleCore.RWExtended.Map.Infos;
+using TeleCore.Events.Args;
+using TeleCore.GameData;
 using TeleCore.Static;
 using TeleCore.Types;
 using UnityEngine;

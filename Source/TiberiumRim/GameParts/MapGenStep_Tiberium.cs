@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
-using TR.DefOf;
-using TR.Util;
 using UnityEngine;
 using Verse;
 using Verse.Noise;
 using WorldComponent_TR = TR.World.WorldComponent_TR;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class MapDefInjector : DefInjectBase
 {

@@ -1,4 +1,4 @@
-﻿namespace TR.GameParts.Networks
+﻿namespace TR.Networks
 {
     public struct NetworkValue
     {

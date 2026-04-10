@@ -1,8 +1,8 @@
-﻿using TeleCore.Events;
+﻿using TeleCore.Events.Args;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.Networks.TiberiumNetwork;
+namespace TR.Networks.TiberiumNetwork;
 
 public class CompTNS_TiberiumSpike : Comp_TiberiumNetworkStructure
 {

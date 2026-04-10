@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using TR.GameParts;
-using TR.Util;
 using Verse;
 
-namespace TR.Defs;
+namespace TR;
 
 public class ThingOptionsDef : Def
 {

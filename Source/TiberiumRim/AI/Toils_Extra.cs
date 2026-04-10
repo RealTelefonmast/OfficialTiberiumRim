@@ -4,7 +4,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace TR.AI;
+namespace TR;
 
 public static class Toils_Extra
 {

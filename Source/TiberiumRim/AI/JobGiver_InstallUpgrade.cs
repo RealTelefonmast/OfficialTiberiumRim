@@ -1,4 +1,4 @@
-﻿namespace TR.AI;
+﻿namespace TR;
 
 internal class JobGiver_InstallUpgrade
 {

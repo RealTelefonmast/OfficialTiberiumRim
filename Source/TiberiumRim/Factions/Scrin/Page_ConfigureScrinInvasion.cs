@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TR.Factions.Scrin;
+namespace TR.Scrin;
 
 public class Page_ConfigureScrinInvasion : Page
 {

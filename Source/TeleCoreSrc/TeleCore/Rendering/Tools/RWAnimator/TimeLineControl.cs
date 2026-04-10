@@ -2,9 +2,9 @@
 using System.Linq;
 using RimWorld;
 using TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure;
-using TeleCore.Rendering.UI.DynaUI;
 using TeleCore.Static;
-using TeleCore.Utility;
+using TeleCore.UI.DynaUI;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -650,7 +650,7 @@ internal class TimeLineControl : UIElement
         }
 
         row.Gap(8);
-        row.Label($"[{CurrentFrame}][{Math.Round(CurrentFrame.TicksToSeconds(), 2)}s]");
+        row.Label($"[{CurrentFrame}][{TMath.Round(CurrentFrame.TicksToSeconds(), 2)}s]");
 
 
         row.Init(0, Rect.height - 16, UIDirection.LeftThenUp);

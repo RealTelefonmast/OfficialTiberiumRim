@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.Comps;
+namespace TR;
 
 public class Comp_WaterContaminator : ThingComp
 {

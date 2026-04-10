@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TR.DefOf;
-using TR.Hediffs.TiberiumInfection;
-using TR.Util;
+using TeleCore.Utils;
+using TR.TiberiumInfection;
 using UnityEngine;
 using Verse;
 
-namespace TR.Hediffs.Toxemia;
+namespace TR.Toxemia;
 
 public class Hediff_TiberiumMutation : HediffWithComps
 {

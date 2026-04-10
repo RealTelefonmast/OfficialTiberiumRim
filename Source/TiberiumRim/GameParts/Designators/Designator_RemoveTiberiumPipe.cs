@@ -1,8 +1,7 @@
 ﻿using RimWorld;
-using TR.TiberiumProcessing;
 using Verse;
 
-namespace TR.GameParts.Designators;
+namespace TR.Designators;
 
 public class Designator_RemoveTiberiumPipe : Designator
 {

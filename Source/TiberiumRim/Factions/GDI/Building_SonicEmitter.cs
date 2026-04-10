@@ -1,6 +1,7 @@
-﻿using TeleCore.Events;
+﻿using TeleCore.Events.Args;
+using TeleCore.TeleTurrets;
 
-namespace TR.Factions.GDI;
+namespace TR.GDI;
 
 public class Building_SonicEmitter : Building_TeleTurret
 {

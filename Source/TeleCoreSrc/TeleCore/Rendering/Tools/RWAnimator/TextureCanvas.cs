@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure;
-using TeleCore.Rendering.UI.DynaUI;
-using TeleCore.Rendering.UI.DynaUI.Editing;
 using TeleCore.Static;
-using TeleCore.Utility;
+using TeleCore.UI.DynaUI;
+using TeleCore.UI.DynaUI.Editing;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
-using TText = TeleCore.Utility.TText;
-using TWidgets = TeleCore.Utility.TWidgets;
+using TText = TeleCore.Utils.TText;
+using TWidgets = TeleCore.Utils.TWidgets;
 
 namespace TeleCore.Rendering.Tools.RWAnimator;
 

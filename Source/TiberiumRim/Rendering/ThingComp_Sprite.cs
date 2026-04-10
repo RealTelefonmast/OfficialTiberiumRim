@@ -1,7 +1,6 @@
-﻿using TR.Graphics;
-using Verse;
+﻿using Verse;
 
-namespace TR.Rendering;
+namespace TR;
 
 public class ThingComp_Sprite : ThingComp
 {

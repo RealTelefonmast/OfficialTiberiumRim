@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.Hediffs.Toxemia;
+namespace TR.Toxemia;
 
 public class Hediff_CrystallizedPart : Hediff_MissingPart
 {

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TeleCore.Events;
 using TeleCore.Logging;
-using TeleCore.Utility;
 using TeleCore.Utils;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;

@@ -1,7 +1,7 @@
 ﻿using TeleCore.Logging;
 using UnityEngine;
 
-namespace TR.Util;
+namespace TR;
 
 public static class TRLog
 {

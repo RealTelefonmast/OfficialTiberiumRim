@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using RimWorld;
-using TeleCore.Defs;
+using TeleCore.GameData.Defs;
 using TeleCore.Generics.Container;
 using TeleCore.Network;
 using TeleCore.Network.Flow.Values;
+using TeleCore.Types;
 using UnityEngine;
 using Verse;
 

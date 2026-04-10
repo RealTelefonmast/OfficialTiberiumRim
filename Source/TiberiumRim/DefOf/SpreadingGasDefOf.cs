@@ -1,6 +1,6 @@
 ﻿using TeleCore.Atmosphere.Grid;
 
-namespace TR.DefOf;
+namespace TR;
 
 [RimWorld.DefOf]
 public class SpreadingGasDefOf

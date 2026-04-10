@@ -1,6 +1,6 @@
 using Verse;
 
-namespace TR.DefOf;
+namespace TR;
 
 [RimWorld.DefOf]
 public static class EffectsDefOf

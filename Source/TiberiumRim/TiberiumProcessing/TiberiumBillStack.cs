@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TR.GameParts;
-using TR.GameParts.Networks.TiberiumNetwork;
-using TR.Util;
+using TR.Networks.TiberiumNetwork;
 using Verse;
 
-namespace TR.TiberiumProcessing;
+namespace TR;
 
 public class TiberiumBillStack : IExposable
 {

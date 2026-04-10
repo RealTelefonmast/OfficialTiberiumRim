@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TeleCore.Utility;
-using TR.TiberiumEnvironment;
-using TR.TiberiumObjects;
+using TeleCore.Utils;
 using Verse;
 
 namespace TR.Grids;

@@ -1,10 +1,8 @@
 ﻿using System;
-using TR.GameParts.Networks.AtmosphericNetwork;
-using TR.TiberiumObjects;
-using TR.Util;
+using TR.Networks.AtmosphericNetwork;
 using UnityEngine;
 
-namespace TR.Rendering;
+namespace TR;
 
 public static class TRTibWidgets
 {

@@ -1,10 +1,9 @@
 ﻿using RimWorld;
 using TeleCore.Rendering;
-using TR.Defs;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry;
+namespace TR;
 
 public class Verb_Beam : Verb_TR
 {

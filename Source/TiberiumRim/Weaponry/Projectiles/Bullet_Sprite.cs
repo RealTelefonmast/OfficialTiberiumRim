@@ -1,9 +1,8 @@
 ﻿using RimWorld;
-using TR.Graphics;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry.Projectiles;
+namespace TR.Projectiles;
 
 public class Bullet_Sprite : Bullet
 {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class CellArea : IExposable
 {

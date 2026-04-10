@@ -1,9 +1,8 @@
 using RimWorld;
-using TR.Hediffs.TiberiumInfection;
-using TR.TiberiumPawns;
+using TR.TiberiumInfection;
 using Verse;
 
-namespace TR.DefOf;
+namespace TR;
 
 [RimWorld.DefOf]
 public static class TRHediffDefOf

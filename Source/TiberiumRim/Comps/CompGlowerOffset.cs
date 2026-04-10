@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace TR.Comps;
+namespace TR;
 
 public class CompGlowerOffset : ThingComp
 {

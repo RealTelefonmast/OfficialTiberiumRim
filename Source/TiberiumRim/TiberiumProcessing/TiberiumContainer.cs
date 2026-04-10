@@ -1,14 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TR.Data.ThingClasses.TibCrystals;
-using TR.GameParts.Interfaces;
-using TR.Rendering.TextureContent;
-using TR.TiberiumObjects;
-using TR.Util;
+using TR.Interfaces;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumProcessing;
+namespace TR;
 
 public class TiberiumContainer : IExposable
 {

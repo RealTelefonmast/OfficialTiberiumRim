@@ -2,14 +2,10 @@
 using System.Linq;
 using RimWorld;
 using TR.Components;
-using TR.TiberiumEnvironment;
-using TR.TiberiumObjects;
-using TR.TiberiumProcessing;
-using TR.Util;
 using Verse;
 using Verse.AI;
 
-namespace TR.AI
+namespace TR
 {
     public class WorkGiver_HarvestTiberium : WorkGiver_Scanner
     {

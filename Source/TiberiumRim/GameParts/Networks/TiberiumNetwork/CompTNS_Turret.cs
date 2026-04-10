@@ -1,11 +1,10 @@
 ﻿using RimWorld;
-using TeleCore.Events;
+using TeleCore.Events.Args;
 using TeleCore.ThingComps.Props;
-using TR.Weaponry;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.Networks.TiberiumNetwork;
+namespace TR.Networks.TiberiumNetwork;
 
 public class CompTNS_Turret : Comp_TiberiumNetworkStructure
 {

@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using TR.Loading;
 using UnityEngine;
 using Verse;
 
-namespace TR.Rendering.TextureContent;
+namespace TR.TextureContent;
 
 [StaticConstructorOnStartup]
 public static class TRContentDatabase

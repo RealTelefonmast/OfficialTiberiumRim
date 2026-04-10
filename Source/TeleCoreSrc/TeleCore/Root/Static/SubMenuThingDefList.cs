@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TeleCore.Defs.Extensions;
+using TeleCore.GameData.Defs.Extensions;
 using TeleCore.Logging;
-using TeleCore.Rendering.UI.SpecialSubMenu;
+using TeleCore.UI.SpecialSubMenu;
 using TeleCore.Utils;
 using Verse;
 

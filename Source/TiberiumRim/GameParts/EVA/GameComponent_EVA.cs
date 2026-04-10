@@ -2,11 +2,10 @@ using System;
 using System.Collections.Generic;
 using RimWorld.Planet;
 using TeleCore.ActionCompositions;
-using TR.Util;
 using Verse;
 using Verse.Sound;
 
-namespace TR.GameParts.EVA;
+namespace TR.EVA;
 
 [StaticConstructorOnStartup]
 public class GameComponent_EVA : GameComponent

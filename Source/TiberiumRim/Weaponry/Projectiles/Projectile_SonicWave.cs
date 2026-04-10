@@ -1,4 +1,4 @@
-﻿namespace TR.Weaponry.Projectiles;
+﻿namespace TR.Projectiles;
 
 internal class Projectile_SonicWave
 {

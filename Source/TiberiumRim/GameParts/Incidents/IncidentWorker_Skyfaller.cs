@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace TR.GameParts.Incidents;
+namespace TR.Incidents;
 
 public class IncidentWorker_Skyfaller : IncidentWorker_TR
 {

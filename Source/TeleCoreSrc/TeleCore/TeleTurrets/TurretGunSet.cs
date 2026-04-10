@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RimWorld;
-using TeleCore.Defs.Extensions;
+using TeleCore.GameData.Defs.Extensions;
 using TeleCore.Logging;
 using TeleCore.Utils;
 using UnityEngine;

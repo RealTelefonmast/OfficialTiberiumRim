@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TR.Research;
+namespace TR;
 
 public class TRMainButtonDef : MainButtonDef
 {

@@ -4,10 +4,9 @@ using RimWorld;
 using TeleCore.Events;
 using TeleCore.Network;
 using TeleCore.Network.Flow.Values;
-using TeleCore.Network.Utility;
 using TeleCore.Static;
 using TeleCore.ThingComps;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 
@@ -185,7 +184,7 @@ public class Gizmo_NetworkOverview : Gizmo, IDisposable
     {
         if (!SelectedView.HasExtensions) return;
 
-        var yMax = Math.Max(15, currentExtendedY) + 10;
+        var yMax = TMath.Max(15, currentExtendedY) + 10;
         var extendTriggerArea = new Rect(mainRect.x, mainRect.y - (yMax - 5), mainRect.width, yMax);
         var extendedButton = new Rect(mainRect.x, mainRect.y - (currentExtendedY + 1), mainRect.width,
             currentExtendedY + 1);
@@ -198,7 +197,7 @@ public class Gizmo_NetworkOverview : Gizmo, IDisposable
         {
             if (curY > extendedButton.yMax) continue;
             var labelRect = new Rect(extendedButton.x, curY, extendedButton.width,
-                Math.Min(extendedButton.height, selSettingHeight));
+                TMath.Min(extendedButton.height, selSettingHeight));
             Widgets.Label(labelRect, setting.Key);
             Widgets.DrawHighlightIfMouseover(labelRect);
             if (Widgets.ButtonInvisible(labelRect)) SelectedView.SetExtendoTab(setting.Key);
@@ -253,14 +252,14 @@ public class Gizmo_NetworkOverview : Gizmo, IDisposable
     private void Tick()
     {
         if (!Visible) return;
-        if (Math.Abs(currentExtendedY - desiredExtendedY) > 0.01)
+        if (TMath.Abs(currentExtendedY - desiredExtendedY) > 0.01)
         {
             var val = desiredExtendedY > currentExtendedY ? 1.5f : -1.5f;
             currentExtendedY = Mathf.Clamp(currentExtendedY + val * SelectedView.Tabs.Count,
                 SelectedView.ExtendableRange.TrueMin, SelectedView.ExtendableRange.TrueMax);
         }
 
-        if (Math.Abs(curExtendedPartX - desiredExtendedPartX) > 0.01)
+        if (TMath.Abs(curExtendedPartX - desiredExtendedPartX) > 0.01)
         {
             var val = desiredExtendedPartX > curExtendedPartX ? 3f : -3f;
             curExtendedPartX = Mathf.Clamp(curExtendedPartX + val * (partSelRange.TrueMax / partSelectionSize.x),

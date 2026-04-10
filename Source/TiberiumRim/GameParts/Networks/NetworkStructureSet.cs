@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TR.GameParts.Networks
+namespace TR.Networks
 {
     public class NetworkStructureSet
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TR.Hediffs.Drawing;
+namespace TR.Drawing;
 
 public class HediffComp_Icon : HediffComp
 {

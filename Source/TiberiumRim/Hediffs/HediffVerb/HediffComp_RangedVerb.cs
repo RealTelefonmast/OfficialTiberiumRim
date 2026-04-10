@@ -1,14 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TR.Rendering.TextureContent;
-using TR.Weaponry;
+using TR.TextureContent;
 using Verse;
-using Command_VerbTarget = TR.Weaponry.Command_VerbTarget;
 using IVerbOwner = Verse.IVerbOwner;
 using Verb = Verse.Verb;
 
-namespace TR.Hediffs.HediffVerb;
+namespace TR.HediffVerb;
 
 public class HediffComp_RangedVerb : HediffComp_Gizmo, IVerbOwner
 {

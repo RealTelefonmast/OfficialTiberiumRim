@@ -1,4 +1,4 @@
-﻿namespace TR.TiberiumObjects;
+﻿namespace TR;
 
 public class TiberiumProducerStage
 {

@@ -1,13 +1,12 @@
-﻿using TeleCore.Atmosphere;
-using TeleCore.Atmosphere.Static;
+﻿using TeleCore.Atmosphere.Static;
 using TeleCore.Atmosphere.Vents;
-using TeleCore.Events;
+using TeleCore.Events.Args;
 using TeleCore.Network;
 using TeleCore.Network.Flow.Values;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.Networks.AtmosphericNetwork;
+namespace TR.Networks.AtmosphericNetwork;
 
 public class Comp_ANS_TiberiumFilter : Comp_AtmosphericNetworkStructure
 {

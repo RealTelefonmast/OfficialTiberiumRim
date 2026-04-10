@@ -1,6 +1,7 @@
-﻿using Verse;
+﻿using RimWorld;
+using Verse;
 
-namespace TR.Factions.Scrin;
+namespace TR.Scrin;
 
 public enum PortalType
 {

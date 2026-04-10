@@ -3,7 +3,7 @@ using System.Linq;
 using RimWorld;
 using TeleCore.Rendering.Widgets;
 using TeleCore.Static;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 using GridLayout = Verse.GridLayout;
@@ -231,7 +231,7 @@ public class DebugBuilding : Building
         {
             var mouse = UI.MouseCell();
             if (!mouse.InBounds(Map)) return;
-            var room = mouse.GetRoomFast(Find.CurrentMap);
+            var room = GenData.GetRoomFast(mouse, Find.CurrentMap);
             var tracker = room?.RoomTracker();
             var comp = room?.GetRoomComp<RoomComponent_Atmospheric>();
             
@@ -250,7 +250,7 @@ public class DebugBuilding : Building
     {
         if (ShowAtmosComps)
         {
-            var room = UI.MouseCell().GetRoomFast(Map);
+            var room = GenData.GetRoomFast(UI.MouseCell(), Map);
             if (room != null)
                 GenDraw.DrawFieldEdges(room.Cells.ToList());
         }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
-using TeleCore.Rendering.UI.DynaUI;
+using TeleCore.UI.DynaUI;
 using UnityEngine;
 using Verse;
 

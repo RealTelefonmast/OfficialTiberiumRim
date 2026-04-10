@@ -1,8 +1,7 @@
 ﻿using RimWorld;
-using TR.DefOf;
 using Verse;
 
-namespace TR.Util;
+namespace TR;
 
 public static class CellUtils
 {

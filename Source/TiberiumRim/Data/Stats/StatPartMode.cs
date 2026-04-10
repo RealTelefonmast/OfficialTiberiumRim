@@ -1,4 +1,4 @@
-﻿namespace TR.Data.Stats;
+﻿namespace TR.Stats;
 
 public enum StatPartMode
 {

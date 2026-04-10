@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using LudeonTK;
-using TeleCore.Absorbed.Loader.Update;
-using TeleCore.Utility;
+using TeleCore.Atmosphere.Grid;
+using TeleCore.Mod.Loader.Update;
 using UnityEngine;
 using Verse;
 

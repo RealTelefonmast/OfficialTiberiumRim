@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using RimWorld;
-using TR.TiberiumObjects;
-using TR.TiberiumProcessing;
-using TR.Util;
 using Verse;
 using Verse.AI;
 
-namespace TR.AI;
+namespace TR;
 
 public class JobGiver_HarvestTiberium : ThinkNode_JobGiver
 {
@@ -21,7 +18,7 @@ public class JobGiver_HarvestTiberium : ThinkNode_JobGiver
         var crystal = pawn.Map.Tiberium().HarvesterInfo.FindClosestTiberiumFor(harvester);
         if (crystal == null) return null;
 
-        var job = JobMaker.MakeJob(Defs.TiberiumDefOf.HarvestTiberium, crystal);
+        var job = JobMaker.MakeJob(TiberiumDefOf.HarvestTiberium, crystal);
 
         // job.targetQueueA = new List<LocalTargetInfo>();
         // foreach (var t in queue)
@@ -43,7 +40,7 @@ public class JobDriver_HarvestTiberium : JobDriver
 
     private Harvester Harvester => pawn as Harvester;
 
-    private bool FailOn => TiberiumProcessing.Harvester.PlayerInterrupt || !TiberiumProcessing.Harvester.CanHarvestTiberium(TiberiumObjects.TiberiumCrystal.def);
+    private bool FailOn => Harvester.PlayerInterrupt || !Harvester.CanHarvestTiberium(TiberiumCrystal.def);
 
     public override void ExposeData()
     {
@@ -54,16 +51,10 @@ public class JobDriver_HarvestTiberium : JobDriver
         Scribe_Values.Look(ref ticksPassed, "ticksPassed");
     }
 
-        private TiberiumCrystal TiberiumCrystal => TargetA.Thing as TiberiumCrystal;
-
-        private Harvester Harvester => pawn as Harvester;
-
-        private bool FailOn => TiberiumProcessing.Harvester.PlayerInterrupt || !TiberiumProcessing.Harvester.CanHarvestTiberium(TiberiumObjects.TiberiumCrystal.def);
-
-        public override string GetReport()
-        {
-            return "TR_HarvestingReport".Translate(this.TargetA.Thing.def.LabelCap);
-        }
+    public override string GetReport()
+    {
+        return "TR_HarvestingReport".Translate(TargetA.Thing.def.LabelCap);
+    }
 
     public override bool TryMakePreToilReservations(bool errorOnFailed)
     {
@@ -89,16 +80,16 @@ public class JobDriver_HarvestTiberium : JobDriver
             initAction = delegate
             {
                 //Time based on each weight per Tick 
-                ticksToHarvest = (int)Math.Round(TiberiumObjects.TiberiumCrystal.HarvestValue / TiberiumProcessing.Harvester.kindDef.harvestValue,
+                ticksToHarvest = (int)Math.Round(TiberiumCrystal.HarvestValue / Harvester.kindDef.harvestValue,
                     MidpointRounding.AwayFromZero);
                 //Ticks Needed to get 1 single weight stored
-                ticksPerValue = (int)(ticksToHarvest / TiberiumObjects.TiberiumCrystal.HarvestValue);
+                ticksPerValue = (int)(ticksToHarvest / TiberiumCrystal.HarvestValue);
                 //Growth removed whenever weight is added
-                growthPerValue = TiberiumObjects.TiberiumCrystal.Growth / ticksToHarvest * ticksPerValue;
+                growthPerValue = TiberiumCrystal.Growth / ticksToHarvest * ticksPerValue;
             },
             tickAction = delegate
             {
-                if (TiberiumProcessing.Harvester.Container.CapacityFull)
+                if (Harvester.Container.CapacityFull)
                 {
                     EndJobWith(JobCondition.InterruptForced);
                     return;
@@ -106,29 +97,32 @@ public class JobDriver_HarvestTiberium : JobDriver
 
                 if (ticksPassed > ticksToHarvest)
                 {
-                    if (TiberiumObjects.TiberiumCrystal.Spawned && !TiberiumProcessing.Harvester.Container.CapacityFull) TiberiumObjects.TiberiumCrystal.DeSpawn();
+                    if (TiberiumCrystal.Spawned && !Harvester.Container.CapacityFull)
+                        TiberiumCrystal.DeSpawn();
                     ticksPassed = 0;
                     ReadyForNextToil();
                     return;
                 }
 
-                    if (ticksPassed % ticksPerValue == 0)
-                    {
-                        TiberiumProcessing.Harvester.Animator.Start("Harvest", true);
-                        TiberiumObjects.TiberiumCrystal.Harvest(Harvester, growthPerValue);
-                    }
-                    ticksPassed++;
+                if (ticksPassed % ticksPerValue == 0)
+                {
+                    Harvester.Animator.Start("Harvest", true);
+                    TiberiumCrystal.Harvest(Harvester, growthPerValue);
                 }
-            };
-            //harvest.AddFinishAction(() => Harvester.TNWManager.ReservationManager.Dequeue(TiberiumCrystal, Harvester));
-            harvest.FailOnDespawnedNullOrForbidden(TargetIndex.A);
-            harvest.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
-            harvest.FailOn(() => FailOn);
-            harvest.WithEffect(EffecterDefOf.Harvest, TargetIndex.A);
-            harvest.defaultCompleteMode = ToilCompleteMode.Never;
-            harvest.AddFinishAction(TiberiumProcessing.Harvester.Animator.Stop);
-            yield return harvest;
-            yield return Toils_Jump.Jump(extractTarget);
-        }
+
+                ticksPassed++;
+            }
+        };
+        //harvest.AddFinishAction(() => Harvester.TNWManager.ReservationManager.Dequeue(TiberiumCrystal, Harvester));
+        harvest.FailOnDespawnedNullOrForbidden(TargetIndex.A);
+        harvest.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
+        harvest.FailOn(() => FailOn);
+        harvest.WithEffect(EffecterDefOf.Harvest, TargetIndex.A);
+        harvest.defaultCompleteMode = ToilCompleteMode.Never;
+        harvest.AddFinishAction(Harvester.Animator.Stop);
+        yield return harvest;
+        yield return Toils_Jump.Jump(extractTarget);
     }
+}
+
 }

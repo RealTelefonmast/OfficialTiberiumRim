@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace TR.Story;
+namespace TR;
 
 public class ScenPart_ScrinArrival : ScenPart
 {

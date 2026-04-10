@@ -1,10 +1,9 @@
-﻿using TeleCore.AI.Pathing;
-using TR.Util;
+﻿using TeleCore.GameData.AI.Pathing;
 using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace TR.VeinholeSystem;
+namespace TR;
 
 public class WrappedCorpse : Corpse
 {

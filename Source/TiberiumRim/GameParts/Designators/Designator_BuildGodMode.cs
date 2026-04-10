@@ -1,4 +1,4 @@
-﻿namespace TR.GameParts.Designators;
+﻿namespace TR.Designators;
 /*
 public class Designator_BuildFixed : Designator_Build
 {

@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-using TeleCore.VFX.FX.Implementations;
-using TR.AI;
-using TR.Hediffs.TiberiumInfection;
-using TR.TiberiumObjects;
+using TeleCore.Visual.VFX.FX.Implementations;
+using TR.TiberiumInfection;
 using Verse;
 
-namespace TR.TiberiumPawns;
+namespace TR;
 
 public class TiberiumPawn : FXPawn, IPawnWithParent
 {

@@ -2,7 +2,7 @@
 using System.Linq;
 using TeleCore.RWExtended.ThingClasses;
 using TeleCore.ThingComps;
-using TeleCore.VFX.FX.Layer.Properties;
+using TeleCore.Visual.VFX.FX.Layer.Properties;
 using UnityEngine;
 using Verse;
 

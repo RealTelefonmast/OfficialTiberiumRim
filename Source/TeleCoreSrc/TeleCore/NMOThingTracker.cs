@@ -1,7 +1,10 @@
 ﻿using JetBrains.Annotations;
 using RimWorld;
+using TeleCore.Atmosphere.Oxygen.MapData;
 using TeleCore.Events;
-using TeleCore.RWExtended.Map.Infos;
+using TeleCore.Events.Args;
+using TeleCore.GameData;
+using TeleCore.Utils;
 using Verse;
 
 namespace TeleCore;
@@ -16,11 +19,9 @@ public class NMOThingTracker : ThingTrackerComp
     {
         switch (args.Thing)
         {
-            case ThingWithComps twc:
-            {
-                if (OxygenUtility.IsBurner(twc)) twc.Map.GetMapInfo<AirMapInfo>().RegisterBurner(twc);
+            case ThingWithComps twc when OxygenUtility.IsBurner(twc):
+                twc.Map.GetMapInfo<AirMapInfo>().RegisterBurner(twc);
                 break;
-            }
             case Fire fire:
                 fire.Map.GetMapInfo<AirMapInfo>().RegisterFire(fire);
                 break;
@@ -31,11 +32,9 @@ public class NMOThingTracker : ThingTrackerComp
     {
         switch (args.Thing)
         {
-            case ThingWithComps twc:
-            {
-                if (OxygenUtility.IsBurner(twc)) twc.Map.GetMapInfo<AirMapInfo>().Deregister(twc);
+            case ThingWithComps twc when OxygenUtility.IsBurner(twc):
+                twc.Map.GetMapInfo<AirMapInfo>().Deregister(twc);
                 break;
-            }
             case Fire fire:
                 fire.Map.GetMapInfo<AirMapInfo>().Deregister(fire);
                 break;

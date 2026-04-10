@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
-using TeleCore.Defs;
 using TeleCore.FlowCore;
+using TeleCore.GameData.Defs;
 using TeleCore.Logging;
 using TeleCore.Network.Flow.Values;
 using TeleCore.Network.IO;

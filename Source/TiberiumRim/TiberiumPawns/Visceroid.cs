@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TR.TiberiumPawns;
+namespace TR;
 
 public class Visceroid : Pawn_Visceral
 {

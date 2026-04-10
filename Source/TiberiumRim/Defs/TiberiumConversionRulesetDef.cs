@@ -1,18 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TR.DefOf;
-using TR.TiberiumEnvironment.Conversions;
-using TR.TiberiumObjects;
-using TR.Util;
+using TR.Conversions;
 using Verse;
 
-namespace TR.Defs;
+namespace TR;
 
 public class TiberiumConversionRulesetDef : Def
 {
     public TiberiumTerrainDef baseTerrain;
     public TiberiumCrystalDef baseType;
-    public List<TiberiumConversion> conversions;
+    public List<Conversions.TiberiumConversion> conversions;
     public List<PlantConversion> floraConversions;
     public List<ThingConversion> thingConversions;
 
@@ -34,28 +31,28 @@ public class TiberiumConversionRulesetDef : Def
         return conversion != null;
     }
 
-    public bool HasOutcomeFor(TerrainDef thing, out TiberiumConversion conversion)
+    public bool HasOutcomeFor(TerrainDef thing, out Conversions.TiberiumConversion conversion)
     {
         conversion = ConversionFor(thing);
         return conversion != null;
     }
 
-    public TiberiumConversion ConversionForStone()
+    public Conversions.TiberiumConversion ConversionForStone()
     {
         return conversions?.First(t => t.FromTerrainGroup == TiberiumDefOf.TerrainFilter_Stone);
     }
 
-    public TiberiumConversion ConversionForSoil()
+    public Conversions.TiberiumConversion ConversionForSoil()
     {
         return conversions?.First(t => t.FromTerrainGroup == TiberiumDefOf.TerrainFilter_Soil);
     }
 
-    public TiberiumConversion ConversionForSand()
+    public Conversions.TiberiumConversion ConversionForSand()
     {
         return conversions?.First(t => t.FromTerrainGroup == TiberiumDefOf.TerrainFilter_Sand);
     }
 
-    public TiberiumConversion ConversionFor(TerrainDef def)
+    public Conversions.TiberiumConversion ConversionFor(TerrainDef def)
     {
         return conversions?.Find(t => t?.HasOutcomesFor(def) ?? false);
     }

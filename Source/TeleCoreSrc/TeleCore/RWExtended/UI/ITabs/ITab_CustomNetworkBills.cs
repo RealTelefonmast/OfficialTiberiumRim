@@ -2,15 +2,14 @@
 using System.Linq;
 using System.Text;
 using RimWorld;
-using TeleCore.Defs;
+using TeleCore.GameData.Defs;
 using TeleCore.Network.Bills;
 using TeleCore.Network.Flow.Values;
-using TeleCore.Network.Utility;
 using TeleCore.Primitive;
-using TeleCore.Rendering.UI;
 using TeleCore.Static;
 using TeleCore.ThingComps;
-using TeleCore.Utility;
+using TeleCore.UI;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 

@@ -4,7 +4,7 @@ using System.Xml;
 using RimWorld;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public sealed class ThingValue : Editable, IExposable
 {
@@ -17,7 +17,7 @@ public sealed class ThingValue : Editable, IExposable
      */
 
     //TODO: Organize ThingValue - Peer Review 
-    public QualityCategory QualityCategory = this.QualityCategory.Awful;
+    public QualityCategory QualityCategory = QualityCategory.Awful;
     private ThingDef stuffDef;
     private ThingDef thingDef;
     public int value = 1;
@@ -26,7 +26,7 @@ public sealed class ThingValue : Editable, IExposable
     {
     }
 
-    public ThingValue(ThingDef thingDef, ThingDef stuffDef = null, QualityCategory quality = this.QualityCategory.Awful)
+    public ThingValue(ThingDef thingDef, ThingDef stuffDef = null, QualityCategory quality = QualityCategory.Awful)
     {
         this.thingDef = thingDef;
         this.stuffDef = stuffDef;

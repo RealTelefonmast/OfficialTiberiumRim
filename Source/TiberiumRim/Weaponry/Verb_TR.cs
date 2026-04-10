@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
 using TeleCore.Network.Bills;
-using TR.GameParts.Networks.TiberiumNetwork;
+using TR.Networks.TiberiumNetwork;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry;
+namespace TR;
 
 public class Verb_TR : Verb
 {
@@ -42,7 +42,7 @@ public class Verb_TR : Verb
 
     public bool IsBeam => Props.beamProps != null;
 
-    protected override int ShotsPerBurst => verbProps.burstShotCount;
+    public override int ShotsPerBurst => verbProps.burstShotCount;
 
 
     protected float GunRotation
@@ -132,14 +132,14 @@ public class Verb_TR : Verb
         if (CasterIsPawn && currentTarget.HasThing)
         {
             var pawn = currentTarget.Thing as Pawn;
-            if (pawn != null && pawn.IsColonistPlayerControlled)
+            if (pawn is { IsColonistPlayerControlled: true })
                 CasterPawn.records.AccumulateStoryEvent(StoryEventDefOf.AttackedPlayer);
         }
 
         Props.tiberiumCostPerBurst?.DoPayWith(TiberiumComp);
     }
 
-    protected override bool TryCastShot()
+    public override bool TryCastShot()
     {
         var flag = IsBeam ? TryCastBeam() : TryCastProjectile();
 

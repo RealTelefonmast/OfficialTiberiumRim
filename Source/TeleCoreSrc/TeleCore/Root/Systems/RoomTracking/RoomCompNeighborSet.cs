@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Generics;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 

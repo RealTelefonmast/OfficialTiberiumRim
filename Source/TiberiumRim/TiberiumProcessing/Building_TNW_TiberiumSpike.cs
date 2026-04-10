@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using TR.Defs;
-using TR.GameParts.Networks.TiberiumNetwork;
-using TR.TiberiumObjects;
+using TeleCore.Visual.VFX.FX.Implementations;
+using TR.Networks.TiberiumNetwork;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Verse;
 
-namespace TR.TiberiumProcessing;
+namespace TR;
 
 public class TNW_TiberiumSpike : FXBuilding
 {

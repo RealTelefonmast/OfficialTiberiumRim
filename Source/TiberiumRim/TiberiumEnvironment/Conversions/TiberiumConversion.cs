@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Xml;
-using TR.Defs;
-using TR.GameParts;
-using TR.TiberiumObjects;
 using Verse;
 
-namespace TR.TiberiumEnvironment.Conversions;
+namespace TR.Conversions;
 
 public class TiberiumConversion
 {

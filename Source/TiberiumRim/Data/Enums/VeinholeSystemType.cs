@@ -1,4 +1,4 @@
-﻿namespace TR.Data.Enums;
+﻿namespace TR.Enums;
 
 public enum VeinholeSystemType
 {

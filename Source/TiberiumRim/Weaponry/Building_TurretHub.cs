@@ -2,13 +2,11 @@
 using System.Linq;
 using System.Text;
 using RimWorld;
-using TR.Defs;
-using TR.GameParts;
-using TR.GameParts.Designators;
+using TR.Designators;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry;
+namespace TR;
 
 public class Building_TurretHub : Building_TRTurret
 {

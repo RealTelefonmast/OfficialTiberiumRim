@@ -1,8 +1,7 @@
-﻿using TeleCore.Rendering.UI.SpecialSubMenu;
-using TR.Defs;
+﻿using TeleCore.UI.SpecialSubMenu;
 using Verse;
 
-namespace TR.Research;
+namespace TR;
 
 public class SubMenuVisibilityWorkerTR : SubMenuVisibilityWorker
 {

@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
-using TR.Buildings;
-using TR.Defs;
-using TR.ThingData.Pawns.MechanicalPawns;
 using Verse;
 
-namespace TR.Comps;
+namespace TR;
 
 public class Comp_MechStation : Comp_Upgradable, IMechGarage<MechanicalPawn>
 {

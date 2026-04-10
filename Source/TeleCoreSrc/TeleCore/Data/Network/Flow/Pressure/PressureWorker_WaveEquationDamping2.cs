@@ -18,10 +18,10 @@ public class PressureWorker_WaveEquationDamping2 : PressureWorker
         NetworkVolume to = iface.To;
         
         var dp = PressureFunction(from) - PressureFunction(to);
-        var counterFlow = Math.Sign(f) != Math.Sign(dp);
+        var counterFlow = TMath.Sign(f) != TMath.Sign(dp);
         f += dp * CSquared;
         f *= 1 - Friction;
-        if (counterFlow) f *= 1 - Math.Min(0.9, DampFriction * Math.Abs(dp) * 0.01);
+        if (counterFlow) f *= 1 - TMath.Min(0.9, DampFriction * TMath.Abs(dp) * 0.01);
         return f;
     }
 

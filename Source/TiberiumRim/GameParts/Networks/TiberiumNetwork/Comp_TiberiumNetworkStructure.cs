@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using TeleCore.Events;
+using TeleCore.Events.Args;
 using TeleCore.FlowCore;
 using TeleCore.Network;
 using TeleCore.Network.Flow.Values;
@@ -9,7 +9,7 @@ using TeleCore.ThingComps.Props;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.Networks.TiberiumNetwork;
+namespace TR.Networks.TiberiumNetwork;
 
 public class Comp_TiberiumNetworkStructure : Comp_Network
 {

@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using TeleCore.Atmosphere.Grid;
 using TeleCore.Atmosphere.Static;
 using TeleCore.FlowCore;
 using TeleCore.Network.Flow.Values;
@@ -8,44 +6,6 @@ using TeleCore.Rendering;
 using Verse;
 
 namespace TeleCore.Atmosphere.Defs;
-
-public enum AtmosphericRealm
-{
-    AnyBiome,
-    SpecificBiome
-}
-
-public enum AtmosphericType
-{
-    Gas,
-    Fluid
-}
-
-[Flags]
-public enum DissipationMode
-{
-    None,
-    IntoAir,
-    IntoGround
-}
-
-public class RealmConfig : Editable
-{
-    public AtmosphericRealm realmType;
-    public List<AtmosphericValueDef> requiresAtmospheres;
-}
-
-/// <summary>
-///     Defines properties of any gas or fluid that can dissipate into air or ground.
-/// </summary>
-public class DissipationConfig : Editable
-{
-    public DissipationMode mode;
-
-    //TODO: Add terrainfilter from TR
-    public List<string> terrainFilter;
-    public SpreadingGasTypeDef toGas;
-}
 
 public class AtmosphericValueDef : FlowValueDef
 {

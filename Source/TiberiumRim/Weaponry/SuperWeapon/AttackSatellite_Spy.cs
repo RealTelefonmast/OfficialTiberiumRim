@@ -1,4 +1,4 @@
-﻿namespace TR.Weaponry.SuperWeapon;
+﻿namespace TR.SuperWeapon;
 
 public class AttackSatellite_Spy : AttackSatellite
 {

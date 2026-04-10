@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using TeleCore.Defs;
+using TeleCore.GameData.Defs;
 using TeleCore.Network.Flow;
 using TeleCore.Network.Graph;
-using TeleCore.Network.Utility;
+using TeleCore.Utils;
 using Verse;
-using DebugTools = TeleCore.Utility.DebugTools;
+using DebugTools = TeleCore.Utils.DebugTools;
 
 namespace TeleCore.Network;
 

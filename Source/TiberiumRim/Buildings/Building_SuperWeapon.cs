@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
-using TR.ThingData;
 using Verse;
 
-namespace TR.Buildings;
+namespace TR;
 
 public class Building_SuperWeapon : TRBuildingPrototype
 {
-    private SuperWeapon _superWeapon;
+    private SuperWeapon.SuperWeapon _superWeapon;
 
-    internal void RegisterSWep(SuperWeapon wepWorker)
+    internal void RegisterSWep(SuperWeapon.SuperWeapon wepWorker)
     {
         _superWeapon = wepWorker;
     }

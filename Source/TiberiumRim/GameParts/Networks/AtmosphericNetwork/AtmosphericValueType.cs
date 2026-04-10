@@ -1,4 +1,4 @@
-﻿namespace TR.GameParts.Networks.AtmosphericNetwork;
+﻿namespace TR.Networks.AtmosphericNetwork;
 
 public enum AtmosphericValueType
 {

@@ -1,10 +1,9 @@
-﻿using RimWorld;
+﻿using System.Linq;
+using RimWorld;
 using TeleCore.Research.Events;
-using TR.Research;
-using TR.Util;
 using Verse;
 
-namespace TR.GameParts.Incidents;
+namespace TR.Incidents;
 
 //The base incidentworker for the mod, it will take care of new features such as event handling, position gathering, etc..
 public class IncidentWorker_TR : IncidentWorker

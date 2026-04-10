@@ -1,9 +1,7 @@
 ﻿using RimWorld;
-using TeleCore.ActionCompositions;
-using TR.Defs;
 using Verse;
 
-namespace TR.Incidents;
+namespace TR;
 
 public class IncidentWorker_ChronoAnomaly : IncidentWorker
 {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using TR.Hediffs.TiberiumInfection;
-using TR.TiberiumEnvironment.Conversions;
+using TR.Conversions;
+using TR.TiberiumInfection;
 using Verse;
 
-namespace TR.TiberiumPawns;
+namespace TR;
 
 public class AnimalMutationDef : Def
 {

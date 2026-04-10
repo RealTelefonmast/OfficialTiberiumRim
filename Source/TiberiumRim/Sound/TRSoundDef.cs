@@ -2,7 +2,7 @@
 using Verse;
 using Verse.Sound;
 
-namespace TR.Sound
+namespace TR
 {
     public class TRSoundDef : SoundDef
     {

@@ -1,4 +1,4 @@
-﻿namespace TR.Buildings;
+﻿namespace TR;
 
 public class PlaceWorker_BeamHub
 {

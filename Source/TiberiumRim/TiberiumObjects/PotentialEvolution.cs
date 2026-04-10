@@ -2,7 +2,7 @@
 using System.Xml;
 using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class PotentialEvolution
 {

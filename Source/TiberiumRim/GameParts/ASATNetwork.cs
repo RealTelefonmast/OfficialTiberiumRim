@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using TR.Weaponry.SuperWeapon;
+using TR.SuperWeapon;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class ASATNetwork : IExposable
 {

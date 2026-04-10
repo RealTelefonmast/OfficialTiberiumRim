@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using TeleCore.RWExtended.Map.Infos;
+using TeleCore.GameData;
 using TeleCore.Systems.RoomTracking;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 using GridLayout = Verse.GridLayout;

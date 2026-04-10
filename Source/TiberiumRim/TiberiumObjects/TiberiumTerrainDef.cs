@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Xml;
-using TR.Defs;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumTerrainDef : TerrainDef
 {

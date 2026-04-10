@@ -1,6 +1,6 @@
 ﻿using System;
 using RimWorld;
-using TeleCore.Defs;
+using TeleCore.GameData.Defs;
 using TeleCore.Network.Flow;
 using TeleCore.RWExtended.ThingClasses;
 using Verse;

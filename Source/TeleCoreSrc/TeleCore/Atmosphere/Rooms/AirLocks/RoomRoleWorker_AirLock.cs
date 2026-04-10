@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using TeleCore.Utility;
+using TeleCore.Things;
+using TeleCore.Utils;
 using Verse;
 
 namespace TeleCore.Atmosphere.Rooms.AirLocks;

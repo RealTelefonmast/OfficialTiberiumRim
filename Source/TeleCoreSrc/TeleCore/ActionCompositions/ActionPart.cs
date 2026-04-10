@@ -1,7 +1,7 @@
 ﻿using System;
 using TeleCore.Logging;
-using TeleCore.Serializing;
 using TeleCore.Utils;
+using TeleCore.Utils.Serialization;
 using Verse;
 using Verse.Sound;
 

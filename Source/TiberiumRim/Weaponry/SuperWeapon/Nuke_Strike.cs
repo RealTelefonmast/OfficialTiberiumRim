@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.Weaponry.SuperWeapon;
+namespace TR.SuperWeapon;
 
 public class Nuke_Strike : ThingWithComps
 {

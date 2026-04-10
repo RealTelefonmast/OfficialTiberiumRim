@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TR.GameParts;
-using TR.TiberiumObjects;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumEnvironment;
+namespace TR;
 
 public class TiberiumField : IExposable
 {

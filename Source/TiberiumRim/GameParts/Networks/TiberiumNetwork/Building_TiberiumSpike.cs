@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using TeleCore.Events;
+using TeleCore.Events.Args;
 using TeleCore.Network;
 using TeleCore.ThingComps;
-using TR.Buildings;
-using TR.Data.ThingClasses;
+using TeleCore.Visual.VFX.FX.Implementations;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.Networks.TiberiumNetwork;
+namespace TR.Networks.TiberiumNetwork;
 
 public class Building_TiberiumSpike : FXBuilding
 {

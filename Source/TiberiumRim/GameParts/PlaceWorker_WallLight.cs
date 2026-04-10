@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class PlaceWorker_WallLight : PlaceWorker
 {

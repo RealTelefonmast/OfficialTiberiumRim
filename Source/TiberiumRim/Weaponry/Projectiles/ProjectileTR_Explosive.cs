@@ -1,11 +1,10 @@
-﻿using TeleCore.Defs.Extensions;
+﻿using TeleCore.GameData.Defs.Extensions;
 using TeleCore.Interfaces;
 using TeleCore.Static;
-using TR.Defs;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry.Projectiles;
+namespace TR.Projectiles;
 
 public class ProjectileTR_Explosive : Projectile_Explosive, IPatchedProjectile
 {

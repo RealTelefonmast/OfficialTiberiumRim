@@ -159,7 +159,7 @@ public static class TGUI
 
         public static void Gap(float width)
         {
-            if (Math.Abs(_rowInt.curX - _rowInt.startX) > 0) IncrementPosition(width);
+            if (TMath.Abs(_rowInt.curX - _rowInt.startX) > 0) IncrementPosition(width);
         }
 
         public static Rect Label(string text, float width = -1f, string tooltip = null, float height = -1f)

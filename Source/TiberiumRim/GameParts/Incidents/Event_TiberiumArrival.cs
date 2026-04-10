@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
 using TeleCore.Research.Events;
-using TR.DefOf;
-using TR.Util;
 using Verse;
 
-namespace TR.GameParts.Incidents;
+namespace TR.Incidents;
 
 public class Event_TiberiumArrival : BaseEvent
 {

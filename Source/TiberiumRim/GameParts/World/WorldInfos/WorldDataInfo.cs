@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using RimWorld.Planet;
-using TR.GameParts.MapWatchers;
+using TR.MapWatchers;
 using Verse;
 
-namespace TR.GameParts.WorldInfos;
+namespace TR.WorldInfos;
 
 public class WorldDataInfo : WorldInformation
 {

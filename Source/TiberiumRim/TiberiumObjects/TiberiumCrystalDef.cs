@@ -2,13 +2,9 @@ using System;
 using System.Collections.Generic;
 using RimWorld;
 using TeleCore.Network.Flow.Values;
-using TR.DefOf;
-using TR.Defs;
-using TR.TiberiumEnvironment;
 using Verse;
-using TiberiumConversionRulesetDef = TR.Defs.TiberiumConversionRulesetDef;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumCrystalDef : TRThingDef
 {

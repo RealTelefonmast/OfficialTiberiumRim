@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using TR.Defs;
-using TR.GameParts;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry;
+namespace TR;
 
 public class TurretProperties
 {

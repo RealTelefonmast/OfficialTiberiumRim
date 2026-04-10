@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Linq;
-using TR.Comps;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.PlaceWorkers;
+namespace TR.PlaceWorkers;
 
 public class PlaceWorker_Suppression : PlaceWorker
 {

@@ -55,19 +55,19 @@ internal static class TeleCoreStaticStartup
             }
         }*/
     }
-    
+
     public static List<(string TypeName, Assembly Assembly)> FindDuplicateTypes()
     {
-        var types = GenTypes.AllTypes;;
+        var types = GenTypes.AllTypes; ;
         var duplicates = new List<(string TypeName, Assembly Assembly)>();
-        
+
         foreach (var type in types)
         {
             // Get type details
             var typeName = type.FullName;
             var assembly = type.Assembly;
 
-            duplicates.Add((typeName, assembly));           
+            duplicates.Add((typeName, assembly));
         }
 
         var duplicateTypes = duplicates.GroupBy(x => x)

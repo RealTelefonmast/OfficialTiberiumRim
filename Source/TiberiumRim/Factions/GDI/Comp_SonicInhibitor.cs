@@ -1,9 +1,7 @@
 ﻿using RimWorld;
-using TR.DefOf;
-using TR.Util;
 using Verse;
 
-namespace TR.Factions.GDI;
+namespace TR.GDI;
 
 public class Comp_SonicInhibitor : ThingComp
 {
@@ -11,8 +9,8 @@ public class Comp_SonicInhibitor : ThingComp
 
     public override void CompTickRare()
     {
-        MoteMaker.MakeStaticMote(parent.Position, parent.Map, ThingDefOf.Mote_PsycastAreaEffect, Props.radius * 0.35f);
-        MoteMaker.MakeStaticMote(parent.Position, parent.Map, ThingDefOf.Mote_PsycastAreaEffect, Props.radius);
+        FleckMaker.Static(parent.Position, parent.Map, FleckDefOf.PsycastAreaEffect, Props.radius);
+        FleckMaker.Static(parent.Position, parent.Map, FleckDefOf.PsycastAreaEffect, Props.radius * 0.35f);
         foreach (var intVec3 in GenRadial.RadialCellsAround(parent.Position, Props.radius, true))
         {
             var tib = intVec3.GetTiberium(parent.Map);

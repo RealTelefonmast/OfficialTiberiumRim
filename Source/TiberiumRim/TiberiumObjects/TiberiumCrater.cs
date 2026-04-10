@@ -1,18 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using RimWorld;
-using TeleCore.Rendering.Particles;
-using TR.DefOf;
-using TR.GameParts.Interfaces;
+using TR.Interfaces;
 using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumCrater : TiberiumProducer, IResearchCraneTarget, IGroundZero
 {
     private Building researchCrane;
-
-    private CustomParticleSystem system;
     public override string LabelCap => IsGroundZero ? base.LabelCap + " (GZ)" : base.LabelCap;
 
     public override bool ShouldSpawnTiberium => InitialResearchDone && base.ShouldSpawnTiberium;
@@ -66,8 +62,8 @@ public class TiberiumCrater : TiberiumProducer, IResearchCraneTarget, IGroundZer
         if (!ShouldSpawnSpore) return false;
         //if (!TiberiumComp.BlossomInfo.TryGetNewBlossom(out IntVec3 dest)) return false;
         //TODO: Blossom Tree Spore
-        //var spore = GenTiberium.SpawnBlossomSpore(Position, dest, Map, def.spore.Blossom(), this);
-        //GenSpawn.Spawn(def.spore.Blossom(), dest, Map);
+        //var spore = GenTiberium.SpawnBlossomSpore(Position, dest, Map, props.spore.Blossom(), this);
+        //GenSpawn.Spawn(props.spore.Blossom(), dest, Map);
         Messages.Message("A blossom spore has appeared, and will fly to this position.", MessageTypeDefOf.NeutralEvent,
             false);
         //var let = LetterMaker.MakeLetter("Blossom Spore", "A blossom spore has appeared, and will fly to this position.", LetterDefOf.NeutralEvent, new LookTargets(dest, Map));

@@ -25,8 +25,8 @@ public class ClampWorker_ConnectionCountLimit : ClampWorker
 
     public override double ClampFunction(FlowInterface<NetworkPart, NetworkVolume, NetworkValueDef> iface, double f, ClampType type)
     {
-        var d0 = 1d / Math.Max(1, _parentFlowSystem.Connections[iface.From].Count);
-        var d1 = 1d / Math.Max(1, _parentFlowSystem.Connections[iface.To].Count);
+        var d0 = 1d / TMath.Max(1, _parentFlowSystem.Connections[iface.From].Count);
+        var d1 = 1d / TMath.Max(1, _parentFlowSystem.Connections[iface.To].Count);
         double c, r;
         if (EnforceMinPipe)
         {

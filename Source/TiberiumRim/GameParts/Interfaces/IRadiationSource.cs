@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TR.GameParts.Interfaces;
+namespace TR.Interfaces;
 
 public interface IRadiationSource
 {

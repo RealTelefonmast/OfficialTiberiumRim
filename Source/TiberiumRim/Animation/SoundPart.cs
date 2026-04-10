@@ -1,7 +1,7 @@
 ﻿using Verse;
 using Verse.Sound;
 
-namespace TR.Animation;
+namespace TR;
 
 public class SoundPart
 {

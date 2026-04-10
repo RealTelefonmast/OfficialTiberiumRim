@@ -3,7 +3,7 @@ using TeleCore.Atmosphere.Static;
 using TeleCore.Network;
 using TeleCore.ThingComps;
 using TeleCore.ThingComps.Props;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using Verse;
 
 namespace TeleCore.Atmosphere.Vents;

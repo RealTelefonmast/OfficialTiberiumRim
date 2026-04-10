@@ -1,16 +1,15 @@
 ﻿using RimWorld.Planet;
 using TeleCore.Static;
-using TeleCore.World.WorldInfo;
 using Verse;
 
-namespace TeleCore.World;
+namespace TeleCore;
 
 public class WorldComp_TeleCore : WorldComponent
 {
     //Discovery
     internal DiscoveryTable discoveries;
 
-    public WorldComp_TeleCore(global::RimWorld.Planet.World world) : base(world)
+    public WorldComp_TeleCore(World world) : base(world)
     {
         GenerateInfos();
         StaticData.Notify_NewTeleWorldComp(this);

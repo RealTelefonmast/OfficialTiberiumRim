@@ -1,8 +1,7 @@
 ﻿using RimWorld;
-using TR.Util;
 using Verse;
 
-namespace TR.GameParts.Incidents;
+namespace TR.Incidents;
 
 //This will spawn additional tiberium meteorites
 public class IncidentWorker_TiberiumArrival : IncidentWorker_TR

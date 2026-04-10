@@ -4,7 +4,7 @@ using RimWorld;
 using TeleCore.Static;
 using TeleCore.Static.DefOfs;
 using TeleCore.ThingComps;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using Verse;
 using Verse.AI;
 using TeleDefOf = TeleCore.Static.TeleDefOf;

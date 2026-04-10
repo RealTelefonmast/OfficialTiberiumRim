@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TR.Defs;
+namespace TR;
 
 public class HediffRelativeDef : HediffDef
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using TeleCore.Defs;
 using TeleCore.FlowCore;
+using TeleCore.GameData.Defs;
 using Verse;
 
 namespace TeleCore.Network.Flow.Values;

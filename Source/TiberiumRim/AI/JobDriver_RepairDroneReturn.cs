@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
-using TR.Comps;
-using TR.Defs;
-using TR.ThingData.Pawns.MechanicalPawns;
 using Verse;
 using Verse.AI;
 
-namespace TR.AI;
+namespace TR;
 
 public class ThinkNode_ConditionalRepair : ThinkNode_Conditional
 {

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using TeleCore.Events;
-using TeleCore.HelperClasses;
 using TeleCore.Logging;
 using TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure;
-using TeleCore.Rendering.UI.DynaUI.Editing;
 using TeleCore.Scribing;
-using TeleCore.Utility;
+using TeleCore.Types;
+using TeleCore.UI.DynaUI.Editing;
 using TeleCore.Utils;
 using UnityEngine;
 using Verse;

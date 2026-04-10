@@ -7,7 +7,7 @@ public class Verb_BurstToTarget : Verb_LaunchProjectile
     public override bool TryCastShot()
     {
         return base.TryCastShot();
-        
+
         //TODO: Better burst with a line from center to target, getting offsets along the line, each new shot going closer to the target
         /*if (!currentTarget.IsValid) return false;
         var from = Caster.Position;

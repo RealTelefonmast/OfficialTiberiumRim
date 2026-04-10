@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.Data.DamageHandling;
+namespace TR.DamageHandling;
 
 public class DamageWorker_ExplosionBlast : DamageWorker
 {

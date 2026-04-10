@@ -2,15 +2,16 @@
 
 using System;
 using RimWorld;
-using TeleCore.Defs.Extensions;
 using TeleCore.Events;
+using TeleCore.Events.Args;
+using TeleCore.GameData.Defs.Extensions;
 using TeleCore.Interfaces;
 using TeleCore.Static;
 using TeleCore.ThingComps;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.RWExtended.ThingClasses;
+namespace TeleCore.Visual.VFX.FX.Implementations;
 
 /// <summary>
 ///     A basic implementation of the <see cref="IFXLayerProvider" /> interface, uses <see cref="Building" /> as a base

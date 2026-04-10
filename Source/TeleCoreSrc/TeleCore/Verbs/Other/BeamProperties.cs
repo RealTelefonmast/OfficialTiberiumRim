@@ -1,4 +1,4 @@
-﻿using TeleCore.Defs.Extensions;
+﻿using TeleCore.GameData.Defs.Extensions;
 using Verse;
 
 namespace TeleCore.Verbs.Other;
@@ -11,7 +11,7 @@ public class BeamProperties
     //
     public DamageDef damageDef;
     public FloatRange visWidth = FloatRange.One;
-    
+
     //
     public EffecterDef impactEffecter;
     public ExplosionProperties impactExplosion;

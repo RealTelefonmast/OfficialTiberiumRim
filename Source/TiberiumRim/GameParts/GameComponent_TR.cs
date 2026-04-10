@@ -1,24 +1,27 @@
-﻿using TR.Sound;
-using Verse;
+﻿using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class GameComponent_TR : GameComponent
 {
-    public SampleManager soundManager = new();
+    //Discovery
+    public ResearchDiscoveryTable ResearchDiscoveryTable;
 
     public GameComponent_TR(Game game)
     {
+        GenerateInfos();
     }
 
-    public static GameComponent_TR TRComp()
+    private void GenerateInfos()
     {
-        return Current.Game.GetComponent<GameComponent_TR>();
+        ResearchDiscoveryTable ??= new ResearchDiscoveryTable();
     }
 
-    public override void GameComponentUpdate()
+    public override void ExposeData()
     {
-        base.GameComponentUpdate();
-        soundManager.Update();
+        base.ExposeData();
+        Scribe_Deep.Look(ref ResearchDiscoveryTable, "ResearchDiscoveryTable");
+
+        if (Scribe.mode == LoadSaveMode.PostLoadInit) GenerateInfos();
     }
 }

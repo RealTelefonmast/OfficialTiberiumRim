@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using TR.Rendering.TextureContent;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry.Projectiles;
+namespace TR.Projectiles;
 
 public enum TeslaArcType
 {
@@ -90,8 +90,8 @@ public class Projectile_TeslaArc : Projectile
         var position = Position;
 
         base.Impact(hitThing);
-        var battleLogEntry_RangedImpact = new BattleLogEntry_RangedImpact(launcher, hitThing, intendedTarget.Thing,
-            equipmentDef, def, targetCoverDef);
+        var battleLogEntry_RangedImpact = new BattleLogEntry_RangedImpact(launcher,
+            hitThing, intendedTarget.Thing, equipmentDef, def, targetCoverDef);
         Find.BattleLog.Add(battleLogEntry_RangedImpact);
         if (hitThing == null) return;
 
@@ -104,17 +104,17 @@ public class Projectile_TeslaArc : Projectile
         if (pawn != null && pawn.stances != null && pawn.BodySize <= def.projectile.StoppingPower + 0.001f)
         {
             if (pawn.RaceProps.IsMechanoid)
-                pawn.stances.stunner.StunFor_NewTmp(50, Launcher, false, true);
+                pawn.stances.stunner.StunFor(50, Launcher, false);
             pawn.stances.StaggerFor(95);
         }
 
         //Arc To Other Things
         if (ArcType == TeslaArcType.Spark) return;
-        float arcRadius = 0;
         if (hitThing is Pawn || (hitThing.Stuff != null && hitThing.Stuff.IsMetal))
         {
             var cells = GenRadial.RadialCellsAround(hitThing.Position, 7, false);
-            var options = from x in cells
+            var options =
+                from x in cells
                 where x.GetThingList(hitThing.Map).Any(t => t is Pawn || t.IsMetallic())
                 select x.GetFirstThing<Thing>(hitThing.Map);
 
@@ -124,18 +124,19 @@ public class Projectile_TeslaArc : Projectile
             {
                 if (thing == hitThing) continue;
                 if (thing == null) continue;
-                var newArc = (Projectile_TeslaArc)GenSpawn.Spawn(def, hitThing.Position, hitThing.Map);
+                var newArc =
+                    (Projectile_TeslaArc)GenSpawn.Spawn(def, hitThing.Position, hitThing.Map);
                 newArc.ArcType = ArcType + 1;
                 var equipment =
                     (launcher as Pawn).equipment.AllEquipmentListForReading.Find(t => t.def == equipmentDef);
-                newArc.Launch(launcher, thing, thing, ProjectileHitFlags.All, equipment);
+                newArc.Launch(launcher, thing, thing, ProjectileHitFlags.All, false, equipment);
             }
         }
     }
 
     public override void DrawAt(Vector3 drawLoc, bool flip = false)
     {
-        //base.DrawAt(drawLoc, flip);
+        //base.Draw();
         DrawArc(origin.ToIntVec3(), destination.ToIntVec3());
     }
 
@@ -144,13 +145,15 @@ public class Projectile_TeslaArc : Projectile
         var start = from.ToVector3Shifted();
         var end = to.ToVector3Shifted();
         var diff = start - end;
-        var alpha = Mathf.InverseLerp(end.magnitude, start.magnitude,
-            ExactPosition.magnitude); //(ExactPosition - end).magnitude;
+        var alpha =
+            Mathf.InverseLerp(end.magnitude, start.magnitude,
+                ExactPosition.magnitude); //(ExactPosition - end).magnitude;
         var color = Color.white;
         color.a *= alpha;
         if (color != RandomMaterial.color)
             RandomMaterial =
                 MaterialPool.MatFrom((Texture2D)RandomMaterial.mainTexture, ShaderDatabase.MoteGlow, color);
+
         var z = diff.MagnitudeHorizontal();
         var x = diff.MagnitudeHorizontal();
         var pos = (start + end) / 2f;
@@ -159,6 +162,6 @@ public class Projectile_TeslaArc : Projectile
         var quat = Quaternion.LookRotation(diff);
         Matrix4x4 matrix = default;
         matrix.SetTRS(pos, quat, scale);
-        UnityEngine.Graphics.DrawMesh(MeshPool.plane10, matrix, RandomMaterial, 0);
+        Graphics.DrawMesh(MeshPool.plane10, matrix, RandomMaterial, 0);
     }
 }

@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using TeleCore.Events;
-using TeleCore.HelperClasses;
+using TeleCore.Events.Args;
 using TeleCore.Research.Defs;
 using TeleCore.Scribing;
-using TeleCore.Utility;
+using TeleCore.Types;
+using TeleCore.Utils;
 using TR.Utilities;
 using Verse;
 

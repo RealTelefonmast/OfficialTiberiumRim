@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    
+    <PropertyGroup>
+        <PackageId>TeleCore.TMath</PackageId>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <PackageReference Update="Lib.Harmony" Version="2.4.2" />
+      <PackageReference Update="Krafs.Publicizer" Version="2.3.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="MergeDump\" />
+    </ItemGroup>
+
+</Project>

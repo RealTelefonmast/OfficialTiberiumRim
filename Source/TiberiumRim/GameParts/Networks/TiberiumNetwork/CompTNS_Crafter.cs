@@ -1,10 +1,9 @@
 using RimWorld;
-using TeleCore.Events;
-using TR.TiberiumProcessing;
+using TeleCore.Events.Args;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.Networks.TiberiumNetwork;
+namespace TR.Networks.TiberiumNetwork;
 
 public class CompTNS_Crafter : Comp_TiberiumNetworkStructure
 {

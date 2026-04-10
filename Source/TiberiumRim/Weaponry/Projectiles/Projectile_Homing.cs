@@ -1,74 +1,26 @@
 ﻿using LudeonTK;
 using TeleCore.Interfaces;
-using TeleCore.Utility;
-using TR.Rendering.TextureContent;
-using TR.Util;
+using TeleCore.Utils;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry.Projectiles;
+namespace TR.Projectiles;
 
 public class Projectile_Homing : ProjectileTR, IPatchedProjectile
 {
-    private float speed = 1f;
-    private Vector3? exactPos;
-
-    private LocalTargetInfo offsetTarget, actualTarget;
-
-
     [TweakValue("HOMING_OSC", 0f, 2f)] public static float WiggleValue = 0.5f;
 
     [TweakValue("HOMING_OSC_TIME", 1)] public static int OSC_TICKS = 25;
 
+    private Vector3? exactPos;
+
     private Vector3? initVector;
+
+    private LocalTargetInfo offsetTarget, actualTarget;
+    private float speed = 1f;
     private int startTick;
     private int tickOffset;
-
-    public override void SpawnSetup(Map map, bool respawningAfterLoad)
-    {
-        base.SpawnSetup(map, respawningAfterLoad);
-        speed = def.projectile.speed;
-        tickOffset = Rand.Range(0, 100);
-    }
-
-    public override void PostMake()
-    {
-        base.PostMake();
-    }
-
-    public override void ExposeData()
-    {
-        Scribe_Values.Look(ref exactPos, "exactPos");
-        base.ExposeData();
-    }
-
-    public override void Tick()
-    {
-        startTick++;
-
-        //Get initial directional speed vector
-        initVector ??= PushVelocity;
-        exactPos ??= origin;
-
-        exactPos += (PullVelocity + PushVelocity) * (0.0166666675f * 1);
-
-        if (ActualPosition.DistanceTo(actualTarget.Cell) <= 0.5f)
-            ImpactSomething();
-    }
-
-    public override void Draw()
-    {
-        base.Draw();
-        Matrix4x4 matrix = default;
-        matrix.SetTRS(ExactPosition - new Vector3(1, 0, 0), PullVelocity.AngleFlat().ToQuat(),
-            Vector3.one * PullStrength);
-        UnityEngine.Graphics.DrawMesh(MeshPool.plane10, matrix, TiberiumContent.ArrowMat, 0);
-
-        Matrix4x4 matrix2 = default;
-        matrix2.SetTRS(ExactPosition + new Vector3(1, 0, 0), PushVelocity.AngleFlat().ToQuat(),
-            Vector3.one * PushStrength);
-        UnityEngine.Graphics.DrawMesh(MeshPool.plane10, matrix2, TiberiumContent.ArrowMat, 0);
-    }
 
     //Velocities
     //Push Away
@@ -124,5 +76,51 @@ public class Projectile_Homing : ProjectileTR, IPatchedProjectile
 
     public override void PostImpact()
     {
+    }
+
+    public override void SpawnSetup(Map map, bool respawningAfterLoad)
+    {
+        base.SpawnSetup(map, respawningAfterLoad);
+        speed = def.projectile.speed;
+        tickOffset = Rand.Range(0, 100);
+    }
+
+    public override void PostMake()
+    {
+        base.PostMake();
+    }
+
+    public override void ExposeData()
+    {
+        Scribe_Values.Look(ref exactPos, "exactPos");
+        base.ExposeData();
+    }
+
+    public override void Tick()
+    {
+        startTick++;
+
+        //Get initial directional speed vector
+        initVector ??= PushVelocity;
+        exactPos ??= origin;
+
+        exactPos += (PullVelocity + PushVelocity) * (0.0166666675f * 1);
+
+        if (ActualPosition.DistanceTo(actualTarget.Cell) <= 0.5f)
+            ImpactSomething();
+    }
+
+    public override void DrawAt(Vector3 drawLoc, bool flip = false)
+    {
+        base.DrawAt(drawLoc, flip);
+        Matrix4x4 matrix = default;
+        matrix.SetTRS(ExactPosition - new Vector3(1, 0, 0), PullVelocity.AngleFlat().ToQuat(),
+            Vector3.one * PullStrength);
+        Graphics.DrawMesh(MeshPool.plane10, matrix, TiberiumContent.ArrowMat, 0);
+
+        Matrix4x4 matrix2 = default;
+        matrix2.SetTRS(ExactPosition + new Vector3(1, 0, 0), PushVelocity.AngleFlat().ToQuat(),
+            Vector3.one * PushStrength);
+        Graphics.DrawMesh(MeshPool.plane10, matrix2, TiberiumContent.ArrowMat, 0);
     }
 }

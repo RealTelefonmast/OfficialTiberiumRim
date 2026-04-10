@@ -1,7 +1,6 @@
-﻿using TR.AI;
-using Verse;
+﻿using Verse;
 
-namespace TR.Comps;
+namespace TR;
 
 public class Comp_WanderProps : ThingComp
 {

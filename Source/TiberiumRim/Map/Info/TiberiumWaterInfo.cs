@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using LudeonTK;
-using TR.TiberiumObjects;
 using UnityEngine;
 using Verse;
 using ICellBoolGiver = Verse.ICellBoolGiver;

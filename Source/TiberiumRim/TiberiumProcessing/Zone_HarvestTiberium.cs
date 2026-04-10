@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using TR.GameParts.Networks.TiberiumNetwork;
+using TR.Networks.TiberiumNetwork;
 using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumProcessing;
+namespace TR;
 
 public class Zone_HarvestTiberium : Zone
 {

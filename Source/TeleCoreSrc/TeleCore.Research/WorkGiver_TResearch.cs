@@ -3,8 +3,7 @@
 using System.Collections.Generic;
 using RimWorld;
 using TeleCore.Research.Defs;
-using TeleCore.Utility;
-using TR;
+using TeleCore.Utils;
 using Verse;
 using Verse.AI;
 

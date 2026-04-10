@@ -2,12 +2,10 @@
 using System.Linq;
 using LudeonTK;
 using RimWorld;
-using TR.Util;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Verse;
 
-namespace TR.Weaponry;
+namespace TR;
 
 public class Building_FlameTurret : Building_HubTurret
 {

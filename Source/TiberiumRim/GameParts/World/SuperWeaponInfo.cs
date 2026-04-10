@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using TR.Buildings;
-using TR.GameParts.WorldInfos;
-using TR.ThingData;
-using TR.Util;
+using TR.WorldInfos;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class SuperWeaponInfo : WorldInformation
 {
-    private Dictionary<Building, SuperWeapon> _superWeapons = new();
+    private Dictionary<Building, SuperWeapon.SuperWeapon> _superWeapons = new();
 
     public SuperWeaponInfo(World world) : base(world)
     {
     }
 
-    public IReadOnlyCollection<SuperWeapon> SuperWeapons => _superWeapons.Values;
+    public IReadOnlyCollection<SuperWeapon.SuperWeapon> SuperWeapons => _superWeapons.Values;
 
     public override void ExposeData()
     {
@@ -40,7 +37,7 @@ public class SuperWeaponInfo : WorldInformation
             return;
         }
 
-        var wepWorker = (SuperWeapon)Activator.CreateInstance(superWep.worker, building);
+        var wepWorker = (SuperWeapon.SuperWeapon)Activator.CreateInstance(superWep.worker, building);
         _superWeapons.Add(swepBuilding, wepWorker);
         swepBuilding.RegisterSWep(wepWorker);
     }

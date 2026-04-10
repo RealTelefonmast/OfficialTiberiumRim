@@ -1,11 +1,10 @@
 ﻿using TeleCore.RWExtended.ThingClasses;
 using TR.Components;
-using TR.Defs;
 using TR.World;
 using Verse;
 using WorldComponent_TR = TR.World.WorldComponent_TR;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumThing : FXThing
 {

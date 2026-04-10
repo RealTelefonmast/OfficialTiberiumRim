@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumProcessing
+namespace TR
 {
     public class TiberiumLeak : Filth
     {

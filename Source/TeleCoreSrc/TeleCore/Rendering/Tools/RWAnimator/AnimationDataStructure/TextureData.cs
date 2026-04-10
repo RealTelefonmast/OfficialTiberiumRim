@@ -1,5 +1,5 @@
 ﻿using TeleCore.Scribing;
-using TeleCore.Utility.Serialization;
+using TeleCore.Utils.Serialization;
 using UnityEngine;
 using Verse;
 

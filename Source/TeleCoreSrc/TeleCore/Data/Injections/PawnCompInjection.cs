@@ -1,4 +1,5 @@
-﻿using TeleCore.Comps;
+﻿using TeleCore.Atmosphere.Comps;
+using TeleCore.GameData.Things.ThingComps;
 using TeleCore.PlaySettings;
 using Verse;
 

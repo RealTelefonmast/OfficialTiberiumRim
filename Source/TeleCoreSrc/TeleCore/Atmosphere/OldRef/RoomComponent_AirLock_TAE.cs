@@ -7,7 +7,8 @@ using RimWorld;
 using TeleCore.Atmosphere.Rooms;
 using TeleCore.Atmosphere.Vents;
 using TeleCore.Systems.RoomTracking;
-using TeleCore.Utility;
+using TeleCore.Things;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 

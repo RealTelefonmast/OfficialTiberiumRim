@@ -1,10 +1,9 @@
 ﻿using System;
-using TR.Rendering.TextureContent;
-using TR.Util;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumProcessing;
+namespace TR;
 
 public abstract class Gizmo_TiberiumStorage : Gizmo
 {

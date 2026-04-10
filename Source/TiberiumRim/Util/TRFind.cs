@@ -1,7 +1,7 @@
-﻿using TR.GameParts.GameUpdate;
-using TR.TiberiumEnvironment.World;
+﻿using TR.GameUpdate;
+using TR.World;
 
-namespace TR.Util;
+namespace TR;
 
 public static class TRFind
 {

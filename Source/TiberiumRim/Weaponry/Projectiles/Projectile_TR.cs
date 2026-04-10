@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.Weaponry.Projectiles;
+namespace TR.Projectiles;
 
 public class Projectile_TR : Projectile
 {

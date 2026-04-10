@@ -4,7 +4,7 @@ using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TR.GameParts.EVA;
+namespace TR.EVA;
 
 public class EVAMessageSoundDef : SoundDef
 {

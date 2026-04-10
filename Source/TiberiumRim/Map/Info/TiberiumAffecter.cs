@@ -1,11 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using TR.DefOf;
 using TR.Grids;
-using TR.Hediffs;
-using TR.TiberiumObjects;
-using TR.Util;
 using Verse;
+using HediffUtils = TeleCore.Utils.HediffUtils;
 
 namespace TR.Info;
 
@@ -67,7 +64,7 @@ public class TiberiumAffecter : MapInformation
         for (var i = thingList.Count - 1; i >= 0; i--)
         {
             var thing = thingList[i];
-            if (!thing.CanBeDamagedByTib(out var damageFactor)) continue;
+            if (!HediffUtils.CanBeDamagedByTib(thing, out var damageFactor)) continue;
             if (thing.def.useHitPoints)
                 thing.TakeDamage(new DamageInfo(TRDamageDefOf.TiberiumDeterioration,
                     damageFactor * TRUtils.Range(affecter.def.tiberium.deteriorationDamage), 1));

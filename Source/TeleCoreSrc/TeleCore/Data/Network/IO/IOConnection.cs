@@ -1,7 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Diagnostics;
-using TeleCore.Network.Utility;
 using TeleCore.Primitive;
+using TeleCore.Utils;
 using Verse;
 
 namespace TeleCore.Network.IO;

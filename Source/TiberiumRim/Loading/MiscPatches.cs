@@ -1,12 +1,11 @@
 ﻿using HarmonyLib;
 using RimWorld;
-using TR.Rendering;
-using TR.Rendering.TextureContent;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 using Verse.Profile;
 
-namespace TR.Loading;
+namespace TR;
 
 public static class MiscPatches
 {

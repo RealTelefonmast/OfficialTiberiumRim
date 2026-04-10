@@ -2,17 +2,13 @@
 using System.Linq;
 using HarmonyLib;
 using RimWorld;
-using TeleCore;
-using TR.Defs;
-using TR.GameParts.EVA;
-using TR.Rendering.TextureContent;
-using TR.ThingData.Pawns.MechanicalPawns;
-using TR.Util;
+using TR.Designators;
+using TR.EVA;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
-using TRMainButtonDef = TR.Research.TRMainButtonDef;
 
-namespace TR.Patches;
+namespace TR;
 
 [StaticConstructorOnStartup]
 internal static class TRPatches

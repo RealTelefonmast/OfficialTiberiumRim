@@ -1,8 +1,8 @@
-﻿using TR.Rendering.TextureContent;
+﻿using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class Dialog_TiberiumRimSettings : Window
 {

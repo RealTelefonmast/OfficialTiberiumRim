@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
+using TeleCore.Hediffs;
 using UnityEngine;
 using Verse;
 using Verse.Sound;

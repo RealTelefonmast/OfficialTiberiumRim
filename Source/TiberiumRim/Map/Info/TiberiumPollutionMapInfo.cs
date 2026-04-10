@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using LudeonTK;
 using RimWorld;
-using TR.GameParts;
-using TR.GameParts.Interfaces;
-using TR.Util;
+using TR.Interfaces;
 using UnityEngine;
 using Verse;
 using Enumerable = System.Linq.Enumerable;

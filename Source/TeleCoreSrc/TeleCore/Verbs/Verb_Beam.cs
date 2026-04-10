@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using RimWorld;
 using TeleCore.Logging;
-using TeleCore.Utility;
 using TeleCore.Utils;
+using TeleCore.Visual.VFX.Effecters;
+using TeleCore.Visual.VFX.Particles.Motes;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -74,7 +75,7 @@ public class Verb_Beam : Verb_Tele
             if (state != VerbState.Bursting)
                 aimAnglDamper = Mathf.SmoothDampAngle(aimAnglDamper, DesiredAimAngle, ref rotationSpeed, 0.01f, 8,
                     0.01666f);
-            if (Math.Abs(aimAnglDamper - DesiredAimAngle) < 0.015625f) currentAimOverrideTarget = null;
+            if (TMath.Abs(aimAnglDamper - DesiredAimAngle) < 0.015625f) currentAimOverrideTarget = null;
         }
     }
 

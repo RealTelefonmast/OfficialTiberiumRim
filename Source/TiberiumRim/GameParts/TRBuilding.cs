@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
-using TeleCore.RWExtended.ThingClasses;
+using TeleCore.GameData.Defs;
+using TeleCore.Visual.VFX.FX.Implementations;
 using TR.Components;
-using TR.Defs;
-using TR.GameParts.Designators;
-using TR.Util;
+using TR.Designators;
 using Verse;
 using WorldComponent_TR = TR.World.WorldComponent_TR;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class TRBuilding : FXBuilding, IDiscoverable
 {

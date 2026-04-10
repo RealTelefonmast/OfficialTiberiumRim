@@ -1,4 +1,4 @@
-﻿using TeleCore.AI.Pathing;
+﻿using TeleCore.GameData.AI.Pathing;
 using Verse;
 
 namespace TeleCore.Vehicles;

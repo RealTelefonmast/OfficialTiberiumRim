@@ -1,8 +1,9 @@
-﻿using TR.Components;
+﻿using TeleCore.Visual.VFX.FX.Implementations;
+using TR.Components;
 using TR.World;
 using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumStructure : FXBuilding
 {

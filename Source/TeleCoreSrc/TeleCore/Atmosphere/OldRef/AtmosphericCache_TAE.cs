@@ -1,5 +1,6 @@
 // Preserved from TeleCore/Caching/AtmosphericCache.cs (old stub)
 
+using TeleCore.Utils;
 using Verse;
 
 namespace TeleCore.Atmosphere.OldRef;
@@ -19,7 +20,7 @@ public class AtmosphericCache_TAE : IExposable
         scriber = new AtmosphericScriber_TAE(map);
     }
 
-    public TAE.AtmosphericMapInfo AtmosphericMapInfo => map.GetMapInfo<TAE.AtmosphericMapInfo>();
+    public AtmosphericMapInfo AtmosphericMapInfo => map.GetMapInfo<AtmosphericMapInfo>();
 
     public void ExposeData()
     {

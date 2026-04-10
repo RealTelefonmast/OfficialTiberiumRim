@@ -5,7 +5,7 @@ using Verse;
 
 // ReSharper disable HeapView.BoxingAllocation
 
-namespace TeleCore.HelperClasses;
+namespace TeleCore.Types;
 
 /// <summary>
 ///     A wrapper to expose generic lists as values. I.e: A <see cref="List{T}" /> of <see cref="ScribeList{T}" />

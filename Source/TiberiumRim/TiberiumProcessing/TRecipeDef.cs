@@ -1,7 +1,7 @@
 using TeleCore.Network.Bills;
 using Verse;
 
-namespace TR.TiberiumProcessing;
+namespace TR;
 
 public class TRecipeDef : RecipeDef
 {

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TeleCore.Atmosphere.Defs;
 using TeleCore.Atmosphere.Rooms;
 using TeleCore.Logging;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using Verse;
 
 namespace TeleCore.Atmosphere.Comps;

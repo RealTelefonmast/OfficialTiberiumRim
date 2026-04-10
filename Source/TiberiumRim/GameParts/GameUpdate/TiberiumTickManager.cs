@@ -3,7 +3,7 @@ using System.Diagnostics;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.GameUpdate;
+namespace TR.GameUpdate;
 
 public class TiberiumTickManager
 {

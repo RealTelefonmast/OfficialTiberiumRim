@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Xml;
-using TR.TiberiumEnvironment.ThingSelectors;
+using TR.ThingSelectors;
 using Verse;
 using ThingOption = Verse.ThingOption;
 
-namespace TR.TiberiumEnvironment.Conversions;
+namespace TR.Conversions;
 
 public class ThingConversion
 {

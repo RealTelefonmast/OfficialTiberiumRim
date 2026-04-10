@@ -5,14 +5,10 @@ using System.Linq;
 using RimWorld;
 using TeleCore.Research.Defs;
 using TeleCore.Static;
-using TeleCore.Utility;
-using TR;
-using TR.UI;
-using TR.Utilities;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
-using TRWidgets = TR.Utilities.TRWidgets;
 
 namespace TeleCore.Research.Window;
 

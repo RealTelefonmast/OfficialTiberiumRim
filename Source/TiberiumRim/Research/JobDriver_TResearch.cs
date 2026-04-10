@@ -2,12 +2,11 @@
 using RimWorld;
 using TeleCore.Research;
 using TeleCore.Research.Defs;
-using TR.Util;
 using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace TR.Research;
+namespace TR;
 
 public class JobDriver_TResearch : JobDriver
 {

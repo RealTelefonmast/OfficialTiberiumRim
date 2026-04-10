@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using TeleCore.Research.Events;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 

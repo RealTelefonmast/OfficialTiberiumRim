@@ -1,10 +1,8 @@
 ﻿using System.Text.RegularExpressions;
 using System.Xml;
-using TR.Defs;
-using TR.TiberiumObjects;
 using Verse;
 
-namespace TR.TiberiumEnvironment;
+namespace TR;
 
 public class TiberiumConversion
 {

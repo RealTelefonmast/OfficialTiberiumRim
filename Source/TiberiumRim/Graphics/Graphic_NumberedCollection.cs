@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.Graphics;
+namespace TR;
 
 public class Graphic_NumberedCollection : Graphic_Collection
 {

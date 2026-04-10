@@ -1,10 +1,9 @@
-﻿using TR.DefOf;
-using TR.Rendering.TextureContent;
-using TR.Util;
+﻿using TeleCore.Utils;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public class Hediff_Mutation : HediffWithComps
 {

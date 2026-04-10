@@ -2,18 +2,14 @@
 using System.Text;
 using RimWorld;
 using TeleCore.Atmosphere;
-using TeleCore.Events;
-using TeleCore.Utility;
-using TR.DefOf;
-using TR.GameParts;
-using TR.GameParts.Networks.TiberiumNetwork;
-using TR.Rendering;
-using TR.Util;
-using TR.Util.Effects;
+using TeleCore.Events.Args;
+using TeleCore.Utils;
+using TR.Effects;
+using TR.Networks.TiberiumNetwork;
 using Verse;
 using Verse.Sound;
 
-namespace TR.Buildings;
+namespace TR;
 
 ///TODO: Implement with underground resource layer
 public class Building_TiberiumGeyser : TRBuilding

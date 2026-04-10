@@ -1,4 +1,4 @@
-﻿namespace TR.Factions.Scrin;
+﻿namespace TR.Scrin;
 
 public class ScrinGameData
 {

@@ -1,13 +1,9 @@
 ﻿using System.Collections.Generic;
-using TR.Data.ThingClasses.TibCrystals;
-using TR.Rendering.TextureContent;
-using TR.TiberiumObjects;
-using TR.TiberiumProcessing;
-using TR.Util;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.Networks
+namespace TR.Networks
 {
     public class TiberiumContainer : NetworkContainer<TiberiumValueType>
     {

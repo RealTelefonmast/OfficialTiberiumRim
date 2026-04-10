@@ -1,5 +1,5 @@
 ﻿using RimWorld;
-using TeleCore.VFX.Particles.Motes;
+using TeleCore.Visual.VFX.Particles.Motes;
 using Verse;
 
 namespace TeleCore.Verbs.Other;
@@ -129,7 +129,7 @@ public class Verb_ProjectileExtended : Verb_Tele
         LocalTargetInfo intendedTarget, ProjectileHitFlags flags, bool avoidFriendly, Thing equipmentSource,
         ThingDef targetCoverDef)
     {
-        var projectile = (Projectile)GenSpawn.Spawn(Projectile, origin, caster.Map);
+        var projectile = (Projectile) GenSpawn.Spawn(Projectile, origin, caster.Map);
         projectile.Launch(caster, drawPos, usedTarget, intendedTarget, flags, avoidFriendly, equipmentSource,
             targetCoverDef);
         DoMuzzleFlash(drawPos, intendedTarget);
@@ -140,7 +140,7 @@ public class Verb_ProjectileExtended : Verb_Tele
     {
         var flash = Props.muzzleFlash;
         if (flash == null) return;
-        var flashMote = (Mote_MuzzleFlash)ThingMaker.MakeThing(TeleDefOf.Mote_MuzzleFlash);
+        var flashMote = (Mote_MuzzleFlash) ThingMaker.MakeThing(TeleDefOf.Mote_MuzzleFlash);
         flashMote.Scale = flash.scale;
         flashMote.solidTimeOverride = flash.solidTime;
         flashMote.fadeInTimeOverride = flash.fadeInTime;

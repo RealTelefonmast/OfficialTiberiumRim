@@ -1,9 +1,9 @@
 ﻿using System;
-using TR.Rendering.TextureContent;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.Loading;
+namespace TR;
 
 public class Dialog_Difficulty : Window
 {

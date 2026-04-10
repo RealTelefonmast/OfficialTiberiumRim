@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Verse;
 
-namespace TR.GameParts.GameUpdate
+namespace TR.GameUpdate
 {
     /// <summary>
     /// Offloaded management of Tiberium-Related content

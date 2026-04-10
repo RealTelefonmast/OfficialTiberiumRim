@@ -1,5 +1,5 @@
 using TeleCore.Atmosphere.Defs;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using Verse;
 
 namespace TeleCore.Atmosphere.Comps;
@@ -26,9 +26,9 @@ public class Comp_AtmosphericSource : ThingComp
         // Thing.Map.GetMapInfo<AtmosphericMapInfo>().Notify_AddSource(this);
     }
 
-    public override void PostDeSpawn(Map map)
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
     {
+        base.PostDeSpawn(map, mode);
         // map.GetMapInfo<AtmosphericMapInfo>().Notify_RemoveSource(this);
-        base.PostDeSpawn(map);
     }
 }

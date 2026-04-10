@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using RimWorld;
 using RimWorld.Planet;
 using TeleCore.ActionCompositions;
-using TR.Util.Effects;
+using TR.Effects;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TR.Weaponry.SuperWeapon;
+namespace TR.SuperWeapon;
 
 public class IonCannon_Strike : ThingWithComps
 {

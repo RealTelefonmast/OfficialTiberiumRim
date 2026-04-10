@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using LudeonTK;
-using TeleCore.Events;
+using TeleCore.Events.Args;
 using TeleCore.Network;
 using TeleCore.Network.Flow.Values;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.Networks.TiberiumNetwork;
+namespace TR.Networks.TiberiumNetwork;
 
 public class SpeedController
 {

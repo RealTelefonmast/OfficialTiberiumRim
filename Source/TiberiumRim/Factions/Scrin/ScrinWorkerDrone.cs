@@ -1,8 +1,7 @@
 ﻿using RimWorld;
-using TR.ThingData.Pawns.MechanicalPawns;
 using Verse;
 
-namespace TR.Factions.Scrin;
+namespace TR.Scrin;
 
 public class ScrinWorkerDrone : MechanicalPawn
 {

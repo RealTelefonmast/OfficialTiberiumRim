@@ -1,4 +1,4 @@
-using TeleCore.Defs;
+using TeleCore.GameData.Defs;
 
 namespace TeleCore.Interfaces;
 

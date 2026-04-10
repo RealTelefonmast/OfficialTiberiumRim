@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Verse;
 
-namespace TR.Defs;
+namespace TR;
 
 public class TerrainFilterDef : Def
 {

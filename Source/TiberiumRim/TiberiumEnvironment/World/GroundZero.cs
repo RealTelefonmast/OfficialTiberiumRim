@@ -1,9 +1,8 @@
 ﻿using RimWorld.Planet;
-using TR.GameParts.Interfaces;
-using TR.TiberiumObjects;
+using TR.Interfaces;
 using Verse;
 
-namespace TR.TiberiumEnvironment.World;
+namespace TR.World;
 
 public class GroundZero : TiberiumTile, IGroundZero
 {

@@ -1,7 +1,6 @@
-﻿using TR.DefOf;
-using Verse;
+﻿using Verse;
 
-namespace TR.Hediffs;
+namespace TR;
 
 public class Hediff_RegenerativeNanites : HediffWithComps
 {

@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using TR.TiberiumObjects;
-using TR.Util;
 using UnityEngine;
 using Verse;
 

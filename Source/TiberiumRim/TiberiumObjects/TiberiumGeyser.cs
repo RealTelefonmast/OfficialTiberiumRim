@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TR.DefOf;
-using TR.GameParts;
-using TR.TiberiumProcessing;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumGeyser : TRBuilding
 {

@@ -1,6 +1,6 @@
 ﻿using Verse.AI.Group;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class VisceralHive
 {

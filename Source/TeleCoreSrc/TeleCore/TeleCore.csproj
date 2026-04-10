@@ -100,8 +100,15 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TeleCore.Math\TeleCore.Math.csproj" />
+      <ProjectReference Include="..\TeleCore.TMath\TeleCore.TMath.csproj" />
       <ProjectReference Include="..\TeleCore.Unsafe\TeleCore.Unsafe.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="GameData\AI\" />
+      <Folder Include="GameData\Things\Buildings\" />
+      <Folder Include="UI\" />
+      <Folder Include="Visual\" />
     </ItemGroup>
     
 </Project>

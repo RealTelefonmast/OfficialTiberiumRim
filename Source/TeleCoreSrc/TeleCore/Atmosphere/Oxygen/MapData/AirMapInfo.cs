@@ -4,9 +4,9 @@ using JetBrains.Annotations;
 using RimWorld;
 using TeleCore.Atmosphere.Defs;
 using TeleCore.Atmosphere.Rooms;
-using TeleCore.MapInfo;
+using TeleCore.GameData;
 using TeleCore.Primitive;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using TeleCore.Static;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 

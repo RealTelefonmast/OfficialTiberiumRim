@@ -1,7 +1,7 @@
 ﻿using TeleCore.Types;
 using Verse;
 
-namespace TR.Hediffs;
+namespace TR;
 
 public class TRHediffDef : HediffDef
 {

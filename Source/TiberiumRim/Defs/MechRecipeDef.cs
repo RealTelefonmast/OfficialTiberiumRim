@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using TR.ThingData.Pawns.MechanicalPawns;
 using Verse;
 
-namespace TR.Defs;
+namespace TR;
 
 public class MechRecipeDef : Def
 {

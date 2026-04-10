@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TR.Defs;
-using TR.Rendering.TextureContent;
-using TR.Util;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.Designators;
+namespace TR.Designators;
 
 public class Designator_TRMenu : Designator
 {

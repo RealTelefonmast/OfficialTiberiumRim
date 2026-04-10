@@ -1,9 +1,8 @@
 ﻿using System;
-using TR.Rendering;
 using UnityEngine;
 using Verse;
 
-namespace TR.Graphics;
+namespace TR;
 
 //Unusable until further notice
 [Obsolete]

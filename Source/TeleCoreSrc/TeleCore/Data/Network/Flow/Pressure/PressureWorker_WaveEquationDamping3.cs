@@ -31,7 +31,7 @@ public class PressureWorker_WaveEquationDamping3 : PressureWorker
             var src = fT > 0 ? from : to;
             var srcPart = fT > 0 ? iface.FromPart : iface.ToPart;
 
-            var contentDiff = Math.Abs((src.PrevStack.TotalValue - src.TotalValue).Value / src.MaxCapacity);
+            var contentDiff = TMath.Abs((src.PrevStack.TotalValue - src.TotalValue).Value / src.MaxCapacity);
             if(from.Config.shareCapacity || to.Config.shareCapacity) 
                 dp = PressureFunction(from, valueDef) - PressureFunction(to, valueDef);
 

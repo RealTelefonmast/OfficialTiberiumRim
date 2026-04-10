@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public class Hediff_ReplacedPart : Hediff_AddedPart
 {

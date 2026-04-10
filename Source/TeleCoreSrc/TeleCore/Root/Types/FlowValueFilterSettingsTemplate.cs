@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using TeleCore.FlowCore;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using Verse;
 
 namespace TeleCore.Types;

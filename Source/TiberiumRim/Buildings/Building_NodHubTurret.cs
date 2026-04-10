@@ -1,7 +1,7 @@
-﻿using TeleCore.Events;
+﻿using TeleCore.Events.Args;
 using UnityEngine;
 
-namespace TR.Buildings;
+namespace TR;
 
 public class Building_NodHubTurret : Building_HubTurret
 {

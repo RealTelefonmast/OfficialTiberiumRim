@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using TeleCore.Defs;
+using TeleCore.GameData.Defs;
 using TeleCore.Network;
 using TeleCore.Rendering.Widgets;
 using TeleCore.ThingComps;

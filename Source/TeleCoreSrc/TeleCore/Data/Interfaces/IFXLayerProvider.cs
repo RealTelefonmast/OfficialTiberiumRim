@@ -2,6 +2,7 @@ using System;
 using HarmonyLib;
 using RimWorld;
 using TeleCore.Events;
+using TeleCore.Events.Args;
 using TeleCore.ThingComps;
 using UnityEngine;
 using Verse;

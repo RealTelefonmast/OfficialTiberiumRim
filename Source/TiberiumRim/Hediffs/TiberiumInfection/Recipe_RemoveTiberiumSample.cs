@@ -3,7 +3,7 @@ using RimWorld;
 using UnityEngine.Pool;
 using Verse;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public class Recipe_RemoveTiberiumSample : Recipe_Surgery
 {

@@ -1,9 +1,9 @@
 ﻿using System;
 using Verse;
 
-namespace TR.GameParts.Designators;
+namespace TR.Designators;
 
-public class Designator_Extended : Designator
+public abstract class Designator_Extended : Designator
 {
     protected bool mustBeUsed = false;
 

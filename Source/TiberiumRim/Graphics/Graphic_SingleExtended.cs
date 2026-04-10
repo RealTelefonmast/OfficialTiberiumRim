@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TR.Graphics;
+namespace TR;
 
 public class Graphic_SingleExtended : Graphic_Single
 {

@@ -1,36 +1,42 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using TR.GameParts;
-using TR.Util;
+using TR.Enums;
 using UnityEngine;
 using Verse;
 
-namespace TR.VeinholeSystem;
+namespace TR;
 
 public class VeinHub : TRBuilding
 {
+    public CellArea affectedArea;
     public List<IntVec3> AffectedCells = new();
-    public Veinhole parent;
     public float radius = 12.59f;
+    private Environment.Veinholes.VeinholeSystem system;
 
-    private bool Dying => parent.DestroyedOrNull();
+    private bool Alive => system.IsAlive;
+
+    public void Setup(Veinhole parent)
+    {
+        system = parent.System;
+    }
 
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
         base.SpawnSetup(map, respawningAfterLoad);
+        affectedArea = new CellArea();
         AffectedCells = GenRadial.RadialCellsAround(Position, radius, false).ToList();
+    }
+
+    public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+    {
+        system.RemovePart(this, VeinholeSystemType.Hub);
+        base.Destroy(mode);
     }
 
     public override void ExposeData()
     {
         base.ExposeData();
-        Scribe_References.Look(ref parent, "veinParent");
-    }
-
-    public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
-    {
-        parent.RemoveHub(this);
-        base.Destroy(mode);
     }
 
     public override void TickRare()
@@ -45,13 +51,12 @@ public class VeinHub : TRBuilding
         foreach (var cell in AffectedCells)
         {
             var pawn = cell.GetFirstPawn(Map);
-            if (pawn != null && TRUtils.Chance(0.86f)) LaunchGas(pawn);
+            if (pawn != null && TRandom.Chance(0.86f)) LaunchGas(pawn);
         }
     }
 
-    public override void Draw()
+    public override void DrawAt(Vector3 drawLoc, bool flip = false)
     {
-        base.Draw();
         GenDraw.DrawFieldEdges(AffectedCells, Color.green);
     }
 

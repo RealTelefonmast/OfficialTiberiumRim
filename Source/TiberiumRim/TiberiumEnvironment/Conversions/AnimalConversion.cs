@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using TR.Hediffs.TiberiumInfection;
+using TR.TiberiumInfection;
 using Verse;
 
-namespace TR.TiberiumEnvironment.Conversions;
+namespace TR.Conversions;
 
 public class AnimalConversion
 {

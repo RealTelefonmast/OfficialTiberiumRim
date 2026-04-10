@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TeleCore.Utility;
-using TR.TiberiumObjects;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumProcessing
+namespace TR
 {
     public class PlaceWorker_OnProducer : PlaceWorker
     {

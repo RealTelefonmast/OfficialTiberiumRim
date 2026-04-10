@@ -1,10 +1,10 @@
 ﻿using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
-using TR.Weaponry.SuperWeapon;
+using TR.SuperWeapon;
 using UnityEngine;
 
-namespace TR.Patches;
+namespace TR;
 
 public static class AsatPatches
 {

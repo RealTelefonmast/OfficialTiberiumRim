@@ -1,6 +1,6 @@
 ﻿using RimWorld;
 
-namespace TR.Hediffs.Recipe;
+namespace TR.Recipe;
 
 public class Recipe_RemoveHediff : Recipe_Surgery
 {

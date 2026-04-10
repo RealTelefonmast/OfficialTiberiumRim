@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.Designators;
+namespace TR.Designators;
 
 public class Designator_PlaceThing : Designator_Build
 {

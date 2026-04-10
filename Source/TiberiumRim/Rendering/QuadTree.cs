@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using Verse;
 
-namespace TR.Rendering;
+namespace TR;
 
 public class QuadTree
 {

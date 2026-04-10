@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using TeleCore.HelperClasses;
 using TeleCore.Scribing;
+using TeleCore.Types;
 using Verse;
 
 namespace TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure;

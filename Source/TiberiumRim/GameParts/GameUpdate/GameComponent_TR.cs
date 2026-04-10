@@ -1,7 +1,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.GameUpdate;
+namespace TR.GameUpdate;
 
 public class GameComponent_TR : GameComponent
 {

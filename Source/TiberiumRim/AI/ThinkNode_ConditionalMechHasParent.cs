@@ -1,8 +1,7 @@
-﻿using TR.ThingData.Pawns.MechanicalPawns;
-using Verse;
+﻿using Verse;
 using Verse.AI;
 
-namespace TR.AI;
+namespace TR;
 
 public class ThinkNode_ConditionalMechHasParent : ThinkNode_Conditional
 {

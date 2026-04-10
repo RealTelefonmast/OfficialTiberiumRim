@@ -1,7 +1,7 @@
-﻿using TR.GameParts.Interfaces;
+﻿using TR.Interfaces;
 using Verse;
 
-namespace TR.Comps;
+namespace TR;
 
 public class Comp_RadiationLeak : ThingComp_TiberiumRadiation, IRadiationSource
 {

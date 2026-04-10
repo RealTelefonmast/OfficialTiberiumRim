@@ -1,10 +1,9 @@
 using System.Runtime.CompilerServices;
 using TeleCore.Atmosphere.Rooms;
-using TeleCore.Atmosphere.Utils;
+using TeleCore.GameData;
 using TeleCore.Logging;
-using TeleCore.MapInfo;
 using TeleCore.Types;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;

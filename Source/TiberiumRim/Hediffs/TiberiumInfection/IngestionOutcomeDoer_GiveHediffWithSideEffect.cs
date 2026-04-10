@@ -2,7 +2,7 @@
 using RimWorld;
 using Verse;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public class IngestionOutcomeDoer_GiveHediffWithSideEffect : IngestionOutcomeDoer_GiveHediff
 {

@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using TR.DefOf;
-using TR.Util;
 using Verse;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public class Need_Tiberium : Need
 {

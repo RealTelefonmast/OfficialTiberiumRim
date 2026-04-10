@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using RimWorld;
-using TeleCore.Defs.Values;
+using TeleCore.GameData.Defs.Values;
 using Verse;
 
 namespace TeleCore.Atmosphere.Defs;

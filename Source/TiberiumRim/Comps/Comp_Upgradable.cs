@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TR.Comps;
+namespace TR;
 
 //TODO: Intention used to be to allow upgrades for structures, like making a turret shoot different ammo
 public interface IUpgradable

@@ -2,7 +2,7 @@
 using RimWorld;
 using Verse;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public class Hediff_TRAddedPart : Hediff_AddedPart
 {
@@ -15,7 +15,7 @@ public class Hediff_TRAddedPart : Hediff_AddedPart
             var stringBuilder = new StringBuilder();
             stringBuilder.Append(base.TipStringExtra);
             stringBuilder.AppendLine("Efficiency".Translate() + ": " +
-                                     def.addedPartProps.partEfficiency.ToStringPercent());
+                                     GenText.ToStringPercent(def.addedPartProps.partEfficiency));
             return stringBuilder.ToString();
         }
     }

@@ -1,7 +1,8 @@
 ﻿using System;
 using RimWorld;
-using TeleCore.Defs.Extensions;
 using TeleCore.Events;
+using TeleCore.Events.Args;
+using TeleCore.GameData.Defs.Extensions;
 using TeleCore.Interfaces;
 using TeleCore.Static;
 using TeleCore.ThingComps;

@@ -1,8 +1,7 @@
-﻿using TR.Util;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
-namespace TR.Factions.Scrin;
+namespace TR.Scrin;
 
 public class ScrinPortal : PortalSpawner
 {

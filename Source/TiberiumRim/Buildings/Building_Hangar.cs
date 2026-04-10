@@ -1,10 +1,7 @@
 ﻿using RimWorld;
-using TR.Data;
-using TR.Defs;
-using TR.ThingData;
 using Verse;
 
-namespace TR.Buildings;
+namespace TR;
 
 public class Building_Hangar : TRBuildingPrototype
 {

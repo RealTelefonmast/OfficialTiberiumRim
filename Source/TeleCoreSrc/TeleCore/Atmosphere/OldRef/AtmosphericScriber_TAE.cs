@@ -1,5 +1,6 @@
 // Preserved from TeleCore/Caching/AtmosphericScriber.cs (old version)
 
+using TeleCore.Atmosphere.Defs;
 using Verse;
 
 namespace TeleCore.Atmosphere.OldRef;
@@ -7,9 +8,9 @@ namespace TeleCore.Atmosphere.OldRef;
 internal class AtmosphericScriber_TAE
 {
     private readonly Map map;
-    private DefValueStack<TAE.AtmosphericDef>[] atmosphericGrid;
+    private DefValueStack<AtmosphericValueDef>[] atmosphericGrid;
 
-    private DefValueStack<TAE.AtmosphericDef>[] temporaryGrid;
+    private DefValueStack<AtmosphericValueDef>[] temporaryGrid;
 
     internal AtmosphericScriber_TAE(Map map)
     {

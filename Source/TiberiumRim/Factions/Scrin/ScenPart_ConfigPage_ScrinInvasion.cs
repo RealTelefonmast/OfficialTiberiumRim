@@ -1,6 +1,6 @@
 ﻿using RimWorld;
 
-namespace TR.Factions.Scrin;
+namespace TR.Scrin;
 
 public class ScenPart_ConfigPage_ScrinInvasion : ScenPart_ConfigPage
 {

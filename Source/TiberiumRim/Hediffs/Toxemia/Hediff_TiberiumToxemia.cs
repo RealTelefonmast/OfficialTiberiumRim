@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TR.DefOf;
-using TR.Util;
+using TeleCore.Utils;
 using UnityEngine;
 using UnityEngine.Pool;
 using Verse;
 
-namespace TR.Hediffs.Toxemia;
+namespace TR.Toxemia;
 
 public class Hediff_TiberiumToxemia : HediffWithComps
 {

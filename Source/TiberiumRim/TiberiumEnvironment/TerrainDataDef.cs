@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TR.TiberiumEnvironment;
+namespace TR;
 
 public class TerrainDataDef : Def
 {

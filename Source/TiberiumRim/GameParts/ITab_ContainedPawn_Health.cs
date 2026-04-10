@@ -3,7 +3,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class ITab_ContainedPawn_Health : ITab
 {
@@ -27,7 +27,7 @@ public class ITab_ContainedPawn_Health : ITab
         }
     }
 
-    protected override void FillTab()
+    public override void FillTab()
     {
         var pawnForHealth = PawnForHealth;
         if (pawnForHealth == null) return;

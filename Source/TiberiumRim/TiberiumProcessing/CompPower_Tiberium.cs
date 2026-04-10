@@ -1,9 +1,9 @@
 using System.Text;
 using RimWorld;
-using TR.GameParts.Networks.TiberiumNetwork;
+using TR.Networks.TiberiumNetwork;
 using Verse;
 
-namespace TR.TiberiumProcessing;
+namespace TR;
 
 public class CompPower_Tiberium : CompPowerPlant
 {

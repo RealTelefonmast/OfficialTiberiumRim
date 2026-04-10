@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using System.Linq;
 
-namespace TeleCore.HelperClasses;
+namespace TeleCore.Types;
 
 public class OrderedDictionary<TKey, TValue> : OrderedDictionary
 {

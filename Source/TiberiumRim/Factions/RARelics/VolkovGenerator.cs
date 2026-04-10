@@ -1,10 +1,8 @@
 ﻿using System.Linq;
 using RimWorld;
-using TR.Defs;
-using TR.Util;
 using Verse;
 
-namespace TR.Factions.RARelics;
+namespace TR.RARelics;
 
 public static class VolkovGenerator
 {

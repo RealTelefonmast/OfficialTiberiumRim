@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using RimWorld;
 using TR.Components;
-using TR.DefOf;
-using TR.GameParts;
-using TR.GameParts.WorldInfos;
-using TR.TR;
-using TR.VeinholeSystem;
+using TR.WorldInfos;
 using Verse;
 using WorldComponent_TR = TR.World.WorldComponent_TR;
 
-namespace TR.Util;
+namespace TR;
 
 public static class TRTibUtils
 {

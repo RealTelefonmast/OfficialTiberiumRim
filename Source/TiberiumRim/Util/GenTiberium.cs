@@ -2,14 +2,9 @@
 using System.Linq;
 using RimWorld;
 using TeleCore.Rendering.Particles;
-using TR.DefOf;
-using TR.Defs;
-using TR.TiberiumEnvironment;
-using TR.TiberiumObjects;
-using TR.TiberiumProcessing;
 using Verse;
 
-namespace TR.Util;
+namespace TR;
 
 public static class GenTiberium
 {

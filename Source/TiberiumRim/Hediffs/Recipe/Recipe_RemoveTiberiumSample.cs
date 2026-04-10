@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using TR.Defs;
-using TR.Hediffs.Toxemia;
-using TR.Util;
+using TeleCore.Utils;
+using TR.Toxemia;
 using Verse;
 
-namespace TR.Hediffs.Recipe;
+namespace TR.Recipe;
 
 public class Recipe_RemoveTiberiumSample : Recipe_Surgery
 {

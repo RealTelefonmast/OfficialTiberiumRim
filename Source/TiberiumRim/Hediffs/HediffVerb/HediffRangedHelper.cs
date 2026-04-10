@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 using RimWorld;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using Verse;
 using Verse.AI;
 
-namespace TR.Hediffs.HediffVerb;
+namespace TR.HediffVerb;
 
 public static class HediffRangedHelper
 {

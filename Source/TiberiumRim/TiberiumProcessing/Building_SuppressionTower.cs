@@ -1,7 +1,6 @@
 ﻿using TeleCore.RWExtended.ThingClasses;
-using TR.Comps;
 
-namespace TR.TiberiumProcessing
+namespace TR
 {
     public class SuppressionTower : FXThing
     {

@@ -1,8 +1,8 @@
-﻿using TR.GameParts.Interfaces;
-using TR.GameParts.WorldInfos;
+﻿using TR.Interfaces;
+using TR.WorldInfos;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class GroundZeroInfo : WorldInformation
 {

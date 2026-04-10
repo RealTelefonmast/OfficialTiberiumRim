@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using TeleCore.Events;
+using TeleCore.Events.Args;
 using TeleCore.Network;
 using TeleCore.Network.IO;
 using TeleCore.Static;
 using TeleCore.ThingComps.Props;
 using TeleCore.Types;
-using TeleCore.VFX.FX.Layer;
+using TeleCore.Visual.VFX.FX.Layer;
 using UnityEngine;
 using Verse;
 

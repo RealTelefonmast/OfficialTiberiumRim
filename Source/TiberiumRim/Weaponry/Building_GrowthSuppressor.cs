@@ -1,39 +1,40 @@
 ﻿using System.Collections.Generic;
-using TeleCore.Events;
+using TeleCore.Events.Args;
+using TeleCore.Visual.VFX.FX.Implementations;
 using Verse;
 
-namespace TR.Weaponry
+namespace TR;
+
+public class Building_GrowthSuppressor : FXBuilding
 {
-    public class Building_GrowthSuppressor : FXBuilding
+    public int tick;
+
+    public bool[] bools = new bool[3];
+
+    //FX
+    public override float? FX_GetOpacity(FXLayerArgs args)
     {
-        public int tick = 0; 
-
-        public bool[] bools = new bool[3];
-
-        //FX
-        public override float? FX_GetOpacity(FXLayerArgs args)
+        return args.index switch
         {
-            return args.index switch
-            {
-                0 => 1f,
-                1 => 1f,
-                2 => 1f,
-                3 => 1f,
-                _ => base.FX_GetOpacity(args)
-            };
-        }
+            0 => 1f,
+            1 => 1f,
+            2 => 1f,
+            3 => 1f,
+            _ => base.FX_GetOpacity(args)
+        };
+    }
 
-        public override bool? FX_ShouldDraw(FXLayerArgs args)
+    public override bool? FX_ShouldDraw(FXLayerArgs args)
+    {
+        return args.index switch
         {
-            return args.index switch
-            {
-                0 => true,
-                1 => bools[0],
-                2 => bools[1],
-                3 => true,
-                _ => base.FX_ShouldDraw(args)
-            };
-        }
+            0 => true,
+            1 => bools[0],
+            2 => bools[1],
+            3 => true,
+            _ => base.FX_ShouldDraw(args)
+        };
+    }
 
     public override void Tick()
     {

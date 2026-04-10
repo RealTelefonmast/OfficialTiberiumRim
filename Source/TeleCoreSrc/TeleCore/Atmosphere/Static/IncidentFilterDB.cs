@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using RimWorld;
 using TeleCore.Atmosphere.Defs;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using Verse;
 
 namespace TeleCore.Atmosphere.Static;

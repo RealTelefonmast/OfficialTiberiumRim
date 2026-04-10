@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TR.Hediffs.HediffVerb;
+namespace TR.HediffVerb;
 
 public class HediffComp_Gizmo : HediffComp
 {

@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
 using TeleCore.Network.Bills;
+using TeleCore.TeleTurrets.Properties;
+using TeleCore.Types;
+using TeleCore.Visual.VFX.Effecters;
+using TeleCore.Visual.VFX.Particles.Motes;
 using UnityEngine;
 using Verse;
 
@@ -39,7 +43,7 @@ public class VerbProperties_Extended : VerbProperties
     public float shootHeightOffset = 0;
     public int shotIntervalTicks = 10;
     public Vector3 shotStartOffset = Vector3.zero;
-    
+
     public void PostLoad()
     {
         beamProps?.SetParent(this);

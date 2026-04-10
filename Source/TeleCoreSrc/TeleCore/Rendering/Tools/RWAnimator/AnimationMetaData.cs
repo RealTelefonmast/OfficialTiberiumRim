@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TeleCore.HelperClasses;
 using TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure;
-using TeleCore.Rendering.UI.DynaUI;
 using TeleCore.Scribing;
-using TeleCore.Utility;
+using TeleCore.Types;
+using TeleCore.UI.DynaUI;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 using AnimationPart = Verse.AnimationPart;

@@ -1,4 +1,4 @@
-﻿namespace TR.Rendering;
+﻿namespace TR;
 
 public class MoverProperties
 {

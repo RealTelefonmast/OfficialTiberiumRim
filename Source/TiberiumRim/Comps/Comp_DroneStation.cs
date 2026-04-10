@@ -2,13 +2,10 @@
 using System.Linq;
 using System.Text;
 using RimWorld;
-using TR.DefOf;
-using TR.ThingData.Jobs;
-using TR.ThingData.Pawns.MechanicalPawns;
 using UnityEngine;
 using Verse;
 
-namespace TR.Comps;
+namespace TR;
 
 public class Comp_DroneStation : Comp_MechStation
 {
@@ -28,12 +25,6 @@ public class Comp_DroneStation : Comp_MechStation
             return comp?.PowerOn ?? true;
         }
     }
-
-    public new CompProperties_DroneStation Props => props as CompProperties_DroneStation;
-    public ThingOwner DroneGarage => MainGarage.Container;
-    public CompRefuelable FuelComp => parent.GetComp<CompRefuelable>();
-
-    private PhysicalInteractionReservationManager Reservations => parent.Map.physicalInteractionReservationManager;
 
     //TODO: A property getter with a for loop? This should be a state..
     public bool AnyMechAvailableForRepair
@@ -65,15 +56,6 @@ public class Comp_DroneStation : Comp_MechStation
                 if (pawn is not MechanicalPawn mech || !mech.IsDamaged()) continue;
                 yield return (MechanicalPawn)pawn;
             }
-        }
-    }
-
-    public bool IsPowered
-    {
-        get
-        {
-            var comp = parent.TryGetComp<CompPowerTrader>();
-            return comp?.PowerOn ?? true;
         }
     }
 

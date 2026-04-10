@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using TeleCore.Rendering.UI.DynaUI;
 using TeleCore.Static;
-using TeleCore.Utility;
+using TeleCore.UI.DynaUI;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 
@@ -184,10 +184,10 @@ public class SpriteSheetEditor : UIElement, IDragAndDropReceiver
 
     private Rect RectClipped(Rect rectToClip, Rect clippingRect)
     {
-        var newX = Math.Min(clippingRect.x, rectToClip.x);
-        var newY = Math.Min(clippingRect.y, rectToClip.y);
-        var newXMax = Math.Min(clippingRect.xMax, rectToClip.xMax);
-        var newYMax = Math.Min(clippingRect.yMax, rectToClip.yMax);
+        var newX = Utils.TMath.Min(clippingRect.x, rectToClip.x);
+        var newY = TMath.Min(clippingRect.y, rectToClip.y);
+        var newXMax = TMath.Min(clippingRect.xMax, rectToClip.xMax);
+        var newYMax = TMath.Min(clippingRect.yMax, rectToClip.yMax);
 
         return new Rect(newX, newY, newXMax - newX, newYMax - newY).Rounded();
     }
@@ -326,7 +326,7 @@ public class SpriteSheetEditor : UIElement, IDragAndDropReceiver
 
         var width = rect.width;
         float size = 32;
-        var height = (float) Math.Round(Tiles.Count / 4f, 0, MidpointRounding.AwayFromZero) * size;
+        var height = (float) TMath.Round(Tiles.Count / 4f, 0, MidpointRounding.AwayFromZero) * size;
 
         Verse.Widgets.BeginGroup(TileOutPutRect);
         var XY = Vector2.zero;

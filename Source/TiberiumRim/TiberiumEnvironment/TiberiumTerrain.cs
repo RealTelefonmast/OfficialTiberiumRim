@@ -1,6 +1,4 @@
-﻿using TR.TiberiumObjects;
-
-namespace TR.TiberiumEnvironment;
+﻿namespace TR;
 
 public struct TiberiumTerrain
 {

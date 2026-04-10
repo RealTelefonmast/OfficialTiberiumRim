@@ -1,7 +1,7 @@
 ﻿using TeleCore.FlowCore;
 using Verse;
 
-namespace TeleCore.HelperClasses;
+namespace TeleCore.Types;
 
 public static class Scribe_FlowCore
 {

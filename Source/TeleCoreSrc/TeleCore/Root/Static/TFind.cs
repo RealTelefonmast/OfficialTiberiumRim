@@ -1,7 +1,6 @@
-﻿using TeleCore.Absorbed.Loader.Update;
-using TeleCore.Logging;
+﻿using TeleCore.Logging;
+using TeleCore.Mod.Loader.Update;
 using TeleCore.Utils;
-using TeleCore.World.WorldInfo;
 using UnityEngine;
 using Verse;
 

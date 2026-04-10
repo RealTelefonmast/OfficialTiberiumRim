@@ -2,7 +2,7 @@
 using TeleCore.Research.Defs;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class ResearchDiscoveryTable : IExposable
 {

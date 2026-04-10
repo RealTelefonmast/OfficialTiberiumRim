@@ -1,6 +1,4 @@
-﻿using TR.TiberiumObjects;
-
-namespace TR.VeinholeSystem;
+﻿namespace TR;
 
 public class TiberiumVein : TiberiumCrystal
 {

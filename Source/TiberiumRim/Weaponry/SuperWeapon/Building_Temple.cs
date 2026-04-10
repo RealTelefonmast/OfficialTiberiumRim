@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using LudeonTK;
 using TeleCore.Rendering;
-using TR.GameParts;
-using TR.Graphics;
 using UnityEngine;
 using Verse;
 
-namespace TR.Weaponry.SuperWeapon;
+namespace TR.SuperWeapon;
 
 public class Building_Temple : TRBuilding, IRocketSilo
 {

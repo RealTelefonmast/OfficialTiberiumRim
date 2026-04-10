@@ -1,7 +1,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TR.Rendering;
+namespace TR;
 
 // Crystal head overlay for humanlike pawns — uses head mesh set.
 // Texture path: Pawns/TiberiumMutant/Heads/Mutant_head

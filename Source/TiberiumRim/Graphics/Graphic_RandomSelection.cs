@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TR.Graphics;
+namespace TR;
 
 public class Graphic_RandomSelection : Graphic_Collection
 {
@@ -17,7 +17,7 @@ public class Graphic_RandomSelection : Graphic_Collection
     public override Graphic GetColoredVersion(Shader newShader, Color newColor, Color newColorTwo)
     {
         if (newColorTwo != Color.white)
-            Log.ErrorOnce("Cannot use Graphic_Random.GetColoredVersion with a non-white colorTwo.", 9910251, false);
+            Log.ErrorOnce("Cannot use Graphic_Random.GetColoredVersion with a non-white colorTwo.", 9910251);
         return GraphicDatabase.Get<Graphic_Random>(path, newShader, drawSize, newColor, Color.white, data);
     }
 }

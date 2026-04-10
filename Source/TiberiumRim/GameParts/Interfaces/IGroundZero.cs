@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.GameParts.Interfaces;
+namespace TR.Interfaces;
 
 public interface IGroundZero
 {

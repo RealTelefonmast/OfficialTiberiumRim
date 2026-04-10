@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using TeleCore.Defs;
 using TeleCore.FlowCore;
+using TeleCore.GameData.Defs;
 using TeleCore.Network;
 using TeleCore.Network.Flow.Values;
 using TeleCore.Network.IO;

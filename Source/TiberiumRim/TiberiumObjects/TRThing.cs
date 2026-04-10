@@ -1,13 +1,11 @@
 using System.Collections.Generic;
+using TeleCore.GameData.Defs;
 using TeleCore.RWExtended.ThingClasses;
 using TR.Components;
-using TR.Defs;
-using TR.GameParts;
-using TR.Util;
 using Verse;
 using WorldComponent_TR = TR.World.WorldComponent_TR;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TRThing : TeleThing
 {

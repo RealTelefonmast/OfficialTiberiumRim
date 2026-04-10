@@ -1,9 +1,9 @@
 // Preserved from TeleCore/SpreadingGas/SpreadingGasGrid.cs
 
 using System.Runtime.CompilerServices;
+using TeleCore.GameData;
 using TeleCore.Logging;
-using TeleCore.MapInfo;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using Unity.Collections;
 using UnityEngine;
 using Verse;
@@ -165,13 +165,13 @@ public unsafe class SpreadingGasGrid_TAE : MapInformation
                 var roomComp = room.GetRoomComp<TAE.RoomComponent_Atmospheric>();
                 if (room is { ProperRoom: true } &&
                     roomComp.Notify_SpradingGasDissipating(def, def.dissipationAmount, out var actual))
-                    SetDensity_Direct(index, defID, (ushort)Math.Max(cellValue.value - actual.ActualAmount, 0));
+                    SetDensity_Direct(index, defID, (ushort)TMath.Max(cellValue.value - actual.ActualAmount, 0));
             }
 
             return;
         }
 
-        cellValue.value = (ushort)Math.Max(cellValue.value - def.dissipationAmount, 0);
+        cellValue.value = (ushort)TMath.Max(cellValue.value - def.dissipationAmount, 0);
         SetDensity_Direct(index, defID, cellValue.value);
     }
 

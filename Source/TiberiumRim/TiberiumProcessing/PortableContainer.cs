@@ -4,7 +4,7 @@ using TeleCore.RWExtended.ThingClasses;
 using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumProcessing;
+namespace TR;
 
 public class PortableContainer : FXThing
 {

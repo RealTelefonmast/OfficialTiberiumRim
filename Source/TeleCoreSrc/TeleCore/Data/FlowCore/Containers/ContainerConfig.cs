@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using TeleCore.Defs.Extensions;
+using TeleCore.GameData.Defs.Extensions;
 using Verse;
 
 namespace TeleCore.FlowCore.Containers;

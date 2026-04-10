@@ -1,9 +1,8 @@
 ﻿using RimWorld;
-using TR.Defs;
 using UnityEngine;
 using Verse;
 
-namespace TR.Util.Effects;
+namespace TR.Effects;
 
 public static class TRFleckMaker
 {

@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TR.Defs;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.PlaceWorkers;
+namespace TR.PlaceWorkers;
 
 public class PlaceWorker_ResearchCrane : PlaceWorker
 {

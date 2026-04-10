@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using RimWorld;
-using TeleCore.Rendering.UI.DynaUI;
-using TeleCore.Rendering.UI.DynaUI.Editing;
 using TeleCore.Static;
-using TeleCore.Utility;
+using TeleCore.UI.DynaUI;
+using TeleCore.UI.DynaUI.Editing;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 

@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TR.Rendering;
+namespace TR;
 
 //This comp allows easy manipulation/addition of pawn elements that should be drawn
 //TODO: Define fixed offsets of specific things, eye pos, head pos, torso etc..
@@ -12,7 +12,7 @@ public class CompProperties_PawnExtraDrawer : CompProperties
 {
     public CompProperties_PawnExtraDrawer()
     {
-        compClass = typeof(Comp_PawnExtraDrawer);
+        compClass = typeof(TeleCore.Rendering.Comp_PawnExtraDrawer);
     }
 }
 

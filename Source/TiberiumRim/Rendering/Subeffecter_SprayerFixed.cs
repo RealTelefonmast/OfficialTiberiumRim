@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TR.Rendering
+namespace TR
 {
     public class Subeffecter_SprayerFixed : SubEffecter
     {

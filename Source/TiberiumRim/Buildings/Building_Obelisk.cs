@@ -1,11 +1,12 @@
 ﻿using System;
 using RimWorld;
-using TeleCore.Events;
-using TR.Rendering.TextureContent;
+using TeleCore.Events.Args;
+using TeleCore.TeleTurrets;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.Buildings;
+namespace TR;
 
 public class Building_Obelisk : Building_TeleTurret
 {

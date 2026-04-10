@@ -1,11 +1,9 @@
 ﻿using RimWorld.Planet;
-using TR.Loading;
-using TR.Util;
 using TR.World;
 using Verse;
 using Verse.Noise;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class WorldGenStep_TiberiumWorldLayer : WorldGenStep
 {

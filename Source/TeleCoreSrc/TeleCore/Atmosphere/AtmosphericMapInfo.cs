@@ -7,10 +7,15 @@ using TeleCore.Atmosphere.Rendering;
 using TeleCore.Atmosphere.Rooms;
 using TeleCore.Atmosphere.Rooms.Converters;
 using TeleCore.Events;
+using TeleCore.Events.Args;
+using TeleCore.GameData;
 using TeleCore.Logging;
-using TeleCore.MapInfo;
+using TeleCore.Mod.Loader.Update;
 using TeleCore.Primitive;
-using TeleCore.Utility;
+using TeleCore.Systems.RoomTracking;
+using TeleCore.Update;
+using TeleCore.Utils;
+using UnityEngine;
 using Verse;
 
 namespace TeleCore.Atmosphere;
@@ -18,9 +23,6 @@ namespace TeleCore.Atmosphere;
 public class AtmosphericMapInfo : MapInformation
 {
     private readonly Dictionary<Room, RoomComponent_Atmosphere> _compLookUp;
-
-    //System for room-nased atmospheric flow
-
     //Scribing
     private AtmosphericScriber _scriber;
 

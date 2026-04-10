@@ -2,7 +2,7 @@
 using System.Xml;
 using Verse;
 
-namespace TR.TiberiumEnvironment.ThingSelectors;
+namespace TR.ThingSelectors;
 
 public class TerrainOption : WeightedTerrain
 {

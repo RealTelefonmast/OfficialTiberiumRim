@@ -1,7 +1,6 @@
-﻿using TR.TiberiumEnvironment;
-using Verse;
+﻿using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumCrystalProperties
 {

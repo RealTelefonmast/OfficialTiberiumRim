@@ -1,9 +1,8 @@
 ﻿using RimWorld;
 using RimWorld.Planet;
-using TR.ThingData;
 using Verse;
 
-namespace TR.GameParts.WorldInfos;
+namespace TR.WorldInfos;
 
 public abstract class WorldInformation : IExposable
 {

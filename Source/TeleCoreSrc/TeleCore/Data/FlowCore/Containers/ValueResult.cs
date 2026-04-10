@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 
 namespace TeleCore.FlowCore.Containers;
@@ -103,7 +103,7 @@ public struct ValueResult<TValue>
 
     public ValueResult<TValue> Resolve()
     {
-        if (Math.Abs(ActualAmount - DesiredAmount) < Mathf.Epsilon)
+        if (TMath.Abs(ActualAmount - DesiredAmount) < Mathf.Epsilon)
             State = ValueState.Completed;
         if (ActualAmount > DesiredAmount)
             State = ValueState.CompletedWithExcess;

@@ -1,7 +1,6 @@
 ﻿using RimWorld.Planet;
-using TR.Util;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class TRWorldObject : WorldObject
 {

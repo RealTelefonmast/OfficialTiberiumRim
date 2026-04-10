@@ -1,16 +1,13 @@
 ﻿using RimWorld;
 using TeleCore.Atmosphere.Grid;
-using TeleCore.Defs;
+using TeleCore.GameData.Defs;
 using TeleCore.Network.Flow.Values;
-using TeleCore.Rendering.UI.SpecialSubMenu;
 using TeleCore.Research.Defs;
-using TR.Defs;
-using TR.Hediffs.TiberiumInfection;
-using TR.Research;
-using TR.TiberiumObjects;
+using TeleCore.UI.SpecialSubMenu;
+using TR.TiberiumInfection;
 using Verse;
 
-namespace TR.DefOf;
+namespace TR;
 
 [RimWorld.DefOf]
 public static class TiberiumDefOf

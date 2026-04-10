@@ -1,6 +1,4 @@
-﻿using TR.TiberiumPawns;
-
-namespace TR.VeinholeSystem;
+﻿namespace TR;
 
 public class VeinRoamer : TiberiumPawn
 {

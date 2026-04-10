@@ -2,12 +2,10 @@
 using System.Linq;
 using System.Text;
 using RimWorld;
-using TR.AI;
-using TR.ThingData.Pawns.MechanicalPawns;
 using UnityEngine;
 using Verse;
 
-namespace TR.Comps;
+namespace TR;
 
 public class Comp_RepairDrone : Comp_MechStation
 {
@@ -15,7 +13,7 @@ public class Comp_RepairDrone : Comp_MechStation
 
     public new CompProperties_RepairDrone Props => props as CompProperties_RepairDrone;
 
-    public ThingOwner DroneContainer => base.GetDirectlyHeldThings();
+    public ThingOwner DroneContainer => GetDirectlyHeldThings();
 
     public bool IsPowered
     {

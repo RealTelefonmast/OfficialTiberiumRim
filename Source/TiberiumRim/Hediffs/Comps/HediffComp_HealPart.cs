@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.Hediffs.Comps;
+namespace TR.Comps;
 
 public class HediffComp_HealPart : HediffComp
 {

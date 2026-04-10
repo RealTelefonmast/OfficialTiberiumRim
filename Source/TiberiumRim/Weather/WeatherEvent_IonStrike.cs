@@ -1,11 +1,10 @@
 ﻿using RimWorld;
-using TR.Rendering.TextureContent;
-using TR.Util;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TR.Weather;
+namespace TR;
 
 public class WeatherEvent_IonStrike : WeatherEvent
 {

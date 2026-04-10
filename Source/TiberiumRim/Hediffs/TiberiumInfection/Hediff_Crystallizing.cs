@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TR.DefOf;
-using TR.Util;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TR.Hediffs.TiberiumInfection;
+namespace TR.TiberiumInfection;
 
 public class Hediff_Crystallizing : HediffWithComps
 {

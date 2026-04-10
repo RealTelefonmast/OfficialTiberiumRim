@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using TeleCore.Defs;
+using TeleCore.GameData.Defs;
 using TeleCore.Logging;
 using TeleCore.Network.Flow;
 using TeleCore.Network.Graph;
 using TeleCore.Network.IO;
-using TeleCore.Network.Utility;
 using TeleCore.Static;
 using TeleCore.Utils;
 using UnityEngine;

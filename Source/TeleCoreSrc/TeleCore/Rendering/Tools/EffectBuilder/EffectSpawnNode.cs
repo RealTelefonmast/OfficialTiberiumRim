@@ -1,4 +1,4 @@
-﻿using TeleCore.Rendering.UI.DynaUI;
+﻿using TeleCore.UI.DynaUI;
 using UnityEngine;
 
 namespace TeleCore.Rendering.Tools.EffectBuilder;

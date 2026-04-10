@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using RimWorld;
-using TR.GameParts.Networks;
+using TR.Networks;
 using UnityEngine;
 using Verse;
 

@@ -1,5 +1,5 @@
-﻿using TeleCore.Absorbed.Loader.Update;
-using TeleCore.ActionCompositions;
+﻿using TeleCore.ActionCompositions;
+using TeleCore.Mod.Loader.Update;
 using TeleCore.Static;
 using Verse;
 

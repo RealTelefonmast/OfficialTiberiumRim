@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TR.GameParts;
-using TR.TiberiumEnvironment;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class AreaMutator : IExposable
 {

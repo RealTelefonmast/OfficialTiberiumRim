@@ -2,7 +2,7 @@
 using RimWorld;
 using Verse;
 
-namespace TR.Patches;
+namespace TR;
 
 public static class MiscPatches
 {
@@ -15,7 +15,7 @@ public static class MiscPatches
         {
             if (value != null)
             {
-                TiberiumCoreSettings.Settings.UseCustomBackground = false;
+                TiberiumRimMod.CoreSettings.UseCustomBackground = false;
             }
         }
     }

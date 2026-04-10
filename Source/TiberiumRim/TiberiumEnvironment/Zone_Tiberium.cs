@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumEnvironment;
+namespace TR;
 
 public class Zone_Tiberium : Zone
 {

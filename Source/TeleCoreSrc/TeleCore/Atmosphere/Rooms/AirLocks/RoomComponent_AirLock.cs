@@ -5,7 +5,8 @@ using RimWorld;
 using TeleCore.Atmosphere.Static;
 using TeleCore.Atmosphere.Vents;
 using TeleCore.Systems.RoomTracking;
-using TeleCore.Utility;
+using TeleCore.Things;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 

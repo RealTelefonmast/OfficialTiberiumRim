@@ -1,9 +1,8 @@
 ﻿using System.Runtime.InteropServices;
 using TeleCore.Logging;
-using TeleCore.Math;
+using TeleCore.TMath;
 using TeleCore.Radiation;
 using TeleCore.Static;
-using TeleCore.Utility;
 using TeleCore.Utils;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;

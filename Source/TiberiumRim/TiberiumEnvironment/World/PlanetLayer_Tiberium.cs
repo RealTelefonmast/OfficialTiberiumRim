@@ -1,6 +1,6 @@
 ﻿using RimWorld.Planet;
 
-namespace TR.TiberiumEnvironment.World;
+namespace TR.World;
 
 public class PlanetLayer_Tiberium : PlanetLayer
 {

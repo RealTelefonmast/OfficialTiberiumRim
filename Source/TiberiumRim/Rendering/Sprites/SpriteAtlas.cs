@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace TR.Rendering.Sprites;
+namespace TR.Sprites;
 
 public struct SpriteImage
 {

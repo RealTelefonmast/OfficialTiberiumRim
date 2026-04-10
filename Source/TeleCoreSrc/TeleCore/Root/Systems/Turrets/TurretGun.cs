@@ -141,7 +141,7 @@ public class TurretGun : IAttackTargetSearcher
                             if (_progressBar == null) _progressBar = EffecterDefOf.ProgressBar.Spawn();
                             _progressBar.EffectTick(ParentThing, TargetInfo.Invalid);
                             var mote = ((SubEffecter_ProgressBar)_progressBar.children[0]).mote;
-                            mote.progress = 1f - Math.Max(_burstCooldownTicksLeft, 0) / (float)BurstCooldownTime.SecondsToTicks();
+                            mote.progress = 1f - TMath.Max(_burstCooldownTicksLeft, 0) / (float)BurstCooldownTime.SecondsToTicks();
                             mote.offsetZ = -0.8f;
                         }
                     }
@@ -289,7 +289,7 @@ public class TurretGun : IAttackTargetSearcher
             if (AttackVerb.Props.originOffsets != null)
                 max2 = AttackVerb.Props.originOffsets.Count;
             */
-            maxShotRotations = Math.Max(max1, max2);
+            maxShotRotations = TMath.Max(max1, max2);
         }
     }
 

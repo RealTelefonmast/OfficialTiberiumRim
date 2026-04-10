@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.GameParts.SegmentedPawn;
+namespace TR.SegmentedPawn;
 
 public class PawnSegmentAttacher
 {

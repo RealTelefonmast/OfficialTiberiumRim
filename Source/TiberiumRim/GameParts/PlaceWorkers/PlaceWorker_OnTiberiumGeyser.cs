@@ -1,7 +1,6 @@
-﻿using TR.Defs;
-using Verse;
+﻿using Verse;
 
-namespace TR.GameParts.PlaceWorkers;
+namespace TR.PlaceWorkers;
 
 public class PlaceWorker_OnTiberiumGeyser : PlaceWorker
 {

@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using TeleCore.Generics.Container;
 using TeleCore.Logging;
-using TeleCore.Math;
+using TeleCore.TMath;
 using TeleCore.Network;
 using TeleCore.Primitive;
 using TeleCore.Utils;

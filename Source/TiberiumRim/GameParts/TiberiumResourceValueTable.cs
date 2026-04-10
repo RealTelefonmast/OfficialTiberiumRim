@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using TR.TiberiumObjects;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class ResourceValue
 {
     public ThingDef resource;
-    public TiberiumTypeCost2 specificCost;
+    public DefValue<TiberiumCrystalDef> specificCost;
 }
 
 public static class TiberiumResourceValueTable

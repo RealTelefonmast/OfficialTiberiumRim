@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using HarmonyLib;
 using TeleCore.Logging;
 using TeleCore.Mod;
 using UnityEngine;
@@ -7,9 +8,9 @@ using Verse;
 
 namespace TR;
 
-public class TeleCoreMod : TeleCore.Mod
+public class TeleCoreMod : Mod
 {
-    private static TeleCore.Harmony? _harmony;
+    private static Harmony? _harmony;
 
     public TeleCoreMod(ModContentPack content) : base(content)
     {
@@ -35,12 +36,12 @@ public class TeleCoreMod : TeleCore.Mod
 
     public static TeleCoreSettings Settings => (TeleCoreSettings)Mod.modSettings;
 
-    public static TeleCore.Harmony HarmonyInt
+    public static Harmony HarmonyInt
     {
         get
         {
-            TeleCore.Harmony.DEBUG = false;
-            return _harmony ??= new TeleCore.Harmony("telefonmast.telecore");
+            Harmony.DEBUG = false;
+            return _harmony ??= new Harmony("telefonmast.telecore");
         }
     }
 

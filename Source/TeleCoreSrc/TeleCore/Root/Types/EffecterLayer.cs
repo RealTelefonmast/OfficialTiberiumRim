@@ -1,7 +1,8 @@
 ﻿using TeleCore.Events;
+using TeleCore.Events.Args;
 using TeleCore.ThingComps;
-using TeleCore.VFX.Effecters;
-using TeleCore.VFX.FX.Effecter;
+using TeleCore.Visual.VFX.Effecters;
+using TeleCore.Visual.VFX.FX.Effecter;
 using Verse;
 
 namespace TeleCore.Types;

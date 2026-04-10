@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.Loading;
+namespace TR;
 
 public class GraphicsSettings : IExposable
 {

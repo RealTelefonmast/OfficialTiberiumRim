@@ -1,10 +1,10 @@
 using RimWorld;
-using TeleCore.Defs;
-using TeleCore.Rendering.UI.SpecialSubMenu;
+using TeleCore.GameData.Defs;
+using TeleCore.UI.SpecialSubMenu;
 using Verse;
-using TRMainButtonDef = TR.Research.TRMainButtonDef;
+using TRMainButtonDef = TR.TRMainButtonDef;
 
-namespace TR.DefOf;
+namespace TR;
 
 [RimWorld.DefOf]
 public class TRCDefOf

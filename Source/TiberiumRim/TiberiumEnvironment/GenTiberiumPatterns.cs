@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TR.TiberiumEnvironment;
+namespace TR;
 
 [StaticConstructorOnStartup]
 public static class GenTiberiumPatterns

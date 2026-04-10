@@ -1,6 +1,6 @@
 ﻿using TeleCore.Network;
 
-namespace TR.GameParts.Networks.TiberiumNetwork;
+namespace TR.Networks.TiberiumNetwork;
 
 public class TiberiumNetworkSubPart : NetworkPart
 {

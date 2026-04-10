@@ -18,7 +18,7 @@ public class PressureWorker_WaveEquationDamping : PressureWorker
         NetworkVolume to = iface.To;
         
         var dp = PressureFunction(from) - PressureFunction(to);
-        var c = Math.Sign(f) == Math.Sign(dp) ? CSquared : CSquaredDamper;
+        var c = TMath.Sign(f) == TMath.Sign(dp) ? CSquared : CSquaredDamper;
         f += dp * c;
         f *= 1 - Friction;
         return f;

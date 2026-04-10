@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TR.GameParts.Networks
+namespace TR.Networks
 {
     public interface INetworkStructure
     {

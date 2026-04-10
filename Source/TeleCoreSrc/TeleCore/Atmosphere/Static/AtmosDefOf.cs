@@ -1,5 +1,5 @@
 using RimWorld;
-using TeleCore.Defs;
+using TeleCore.GameData.Defs;
 using Verse;
 
 namespace TeleCore.Atmosphere.Static;

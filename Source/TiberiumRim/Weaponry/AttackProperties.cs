@@ -1,4 +1,4 @@
-﻿namespace TR.Weaponry;
+﻿namespace TR;
 
 public class AttackProperties
 {

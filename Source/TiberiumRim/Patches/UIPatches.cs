@@ -4,23 +4,23 @@ using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
 using RimWorld;
-using TR.Rendering.TextureContent;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.Patches;
+namespace TR;
 
 [StaticConstructorOnStartup]
 public static class UIPatches
 {
     static UIPatches()
     {
-        TiberiumCoreMod.Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod(nameof(UI_BackgroundMain.BackgroundOnGUI)), new HarmonyMethod(typeof(UIPatches), nameof(UIPatches.BackgroundOnGUIPatch)));
+        TiberiumRimMod.Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod(nameof(UI_BackgroundMain.BackgroundOnGUI)), new HarmonyMethod(typeof(UIPatches), nameof(UIPatches.BackgroundOnGUIPatch)));
     }
 
     internal static bool BackgroundOnGUIPatch()
     {
-        if (!TiberiumCoreSettings.Settings.UseCustomBackground) return true;
+        if (!TiberiumRimMod.CoreSettings.UseCustomBackground) return true;
         bool flag = !((float) UI.screenWidth > (float) UI.screenHeight * (2048f / 1280f));
         Rect position;
         if (flag)
@@ -83,12 +83,12 @@ public static class UIPatches
         private static void SetTiberiumBG()
         {
             ((UI_BackgroundMain)UIMenuBackgroundManager.background).overrideBGImage = TiberiumContent.BGPlanet;
-            TiberiumCoreSettings.Settings.UseCustomBackground = true;
+            TiberiumRimMod.CoreSettings.UseCustomBackground = true;
         }
 
         public static TaggedString ChangeButtonLabel(TaggedString label)
         {
-            if (TiberiumCoreSettings.Settings.UseCustomBackground)
+            if (TiberiumRimMod.CoreSettings.UseCustomBackground)
             {
                 return "TiberiumRim";
             }

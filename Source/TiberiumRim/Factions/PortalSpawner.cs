@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using TR.GameParts;
 using Verse;
 
-namespace TR.Factions;
+namespace TR;
 
 public class PortalSpawner : TRBuilding, IThingHolder
 {

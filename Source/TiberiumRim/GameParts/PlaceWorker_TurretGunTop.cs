@@ -1,9 +1,8 @@
 ﻿using RimWorld;
-using TR.Defs;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class PlaceWorker_TurretGunTop : PlaceWorker
 {

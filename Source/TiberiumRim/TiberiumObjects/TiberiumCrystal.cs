@@ -4,18 +4,11 @@ using System.Linq;
 using System.Text;
 using LudeonTK;
 using RimWorld;
-using TeleCore.Utility;
-using TR.DefOf;
-using TR.Hediffs;
-using TR.Loading;
-using TR.Rendering;
-using TR.TiberiumEnvironment;
-using TR.TiberiumProcessing;
-using TR.Util;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public enum TiberiumLifeStage
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Verse.AI;
 
-namespace TR.AI;
+namespace TR;
 
 public class JobDriver_SatisfyTiberiumNeed : JobDriver
 {

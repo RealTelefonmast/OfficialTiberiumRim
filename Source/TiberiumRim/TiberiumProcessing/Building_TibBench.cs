@@ -1,6 +1,6 @@
 ﻿using RimWorld;
 
-namespace TR.TiberiumProcessing;
+namespace TR;
 
 public class Building_TibBench : Building_WorkTable
 {

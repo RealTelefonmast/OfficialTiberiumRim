@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace TR.GameParts.EVA;
+namespace TR.EVA;
 
 public class EVATime
 {

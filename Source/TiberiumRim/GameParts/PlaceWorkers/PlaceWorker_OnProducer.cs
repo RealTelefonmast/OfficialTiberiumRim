@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TR.TiberiumObjects;
-using TR.Util;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts.PlaceWorkers;
+namespace TR.PlaceWorkers;
 
 public class PlaceWorker_OnProducer : PlaceWorker
 {

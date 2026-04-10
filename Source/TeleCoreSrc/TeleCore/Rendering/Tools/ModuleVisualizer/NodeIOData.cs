@@ -15,7 +15,7 @@ public class NodeIOData
         if (outputCount > 0)
             OutputPanel = new NodeAnchorPanel(parent, outputCount, false);
 
-        Height = Math.Max(inputCount, outputCount) * Window_ModuleVisualizer.AnchorHeight;
+        Height = TMath.Max(inputCount, outputCount) * Window_ModuleVisualizer.AnchorHeight;
     }
 
     //I/O

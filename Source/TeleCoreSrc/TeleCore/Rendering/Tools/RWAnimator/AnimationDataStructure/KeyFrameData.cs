@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using TeleCore.Scribing;
-using TeleCore.Utility;
-using TeleCore.Utility.Serialization;
+using TeleCore.Utils;
+using TeleCore.Utils.Serialization;
 using UnityEngine;
 using Verse;
 

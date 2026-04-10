@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using TeleCore.Defs;
-using TeleCore.MapInfo;
+using TeleCore.GameData;
+using TeleCore.GameData.Defs;
 using TeleCore.Static;
 using TeleCore.ThingComps;
 using Verse;

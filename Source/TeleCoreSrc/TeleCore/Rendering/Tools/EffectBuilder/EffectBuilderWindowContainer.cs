@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TeleCore.Rendering.Tools.RWAnimator;
-using TeleCore.Rendering.UI.DynaUI;
 using TeleCore.Static;
+using TeleCore.UI.DynaUI;
 using UnityEngine;
 using Verse;
 

@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using RimWorld.Planet;
-using TR.Rendering.TextureContent;
-using TR.Util;
+using TR.TextureContent;
 using UnityEngine;
 using Verse;
 
-namespace TR.TiberiumEnvironment.World;
+namespace TR.World;
 
 public class WorldDrawLayer_Tiberium : WorldDrawLayer
 {

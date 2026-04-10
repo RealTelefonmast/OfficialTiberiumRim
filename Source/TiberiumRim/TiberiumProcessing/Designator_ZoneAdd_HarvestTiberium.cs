@@ -1,9 +1,9 @@
 ﻿using RimWorld;
-using TR.GameParts.Networks.TiberiumNetwork;
-using TR.Rendering.TextureContent;
+using TR.Networks.TiberiumNetwork;
+using TR.TextureContent;
 using Verse;
 
-namespace TR.TiberiumProcessing;
+namespace TR;
 
 public class Designator_ZoneAdd_HarvestTiberium : Designator_ZoneAdd
 {

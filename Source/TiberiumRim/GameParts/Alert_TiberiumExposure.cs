@@ -4,7 +4,7 @@ using TR.Components;
 using UnityEngine;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class Alert_TiberiumExposure : Alert_Critical
 {

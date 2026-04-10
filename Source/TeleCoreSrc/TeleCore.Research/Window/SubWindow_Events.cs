@@ -1,7 +1,6 @@
 // TODO: Decouple from TiberiumRim-specific types (TRUtils, TRLog, TRContent, TRCDefOf, TRThingDef)
 
 using TeleCore.Research.Events;
-using TR.Utilities;
 using UnityEngine;
 using Verse;
 

@@ -1,9 +1,6 @@
-using TeleCore.Events;
-using TeleCore.ThingComps.Props;
-using TR.TiberiumProcessing;
-using Verse;
+using TeleCore.Events.Args;
 
-namespace TR.GameParts.Networks.TiberiumNetwork;
+namespace TR.Networks.TiberiumNetwork;
 
 public class CompTNS_Power : Comp_TiberiumNetworkStructure
 {

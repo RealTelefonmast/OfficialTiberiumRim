@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using TR.DefOf;
-using TR.GameParts.Interfaces;
+using TeleCore.Visual.VFX.FX.Implementations;
+using TR.Interfaces;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class TiberiumProducerResidue : FXBuilding, IResearchCraneTarget
 {

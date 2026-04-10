@@ -1,10 +1,9 @@
 ﻿using System.Text.RegularExpressions;
 using System.Xml;
-using TR.Defs;
-using TR.TiberiumEnvironment.ThingSelectors;
+using TR.ThingSelectors;
 using Verse;
 
-namespace TR.TiberiumEnvironment.Conversions;
+namespace TR.Conversions;
 
 public class PlantConversion
 {

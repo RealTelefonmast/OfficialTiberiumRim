@@ -1,7 +1,6 @@
 ﻿using RimWorld;
-using TR.Util;
 
-namespace TR.GameParts.Incidents;
+namespace TR.Incidents;
 
 public class IncidentWorker_TiberiumSighting : IncidentWorker_TR
 {

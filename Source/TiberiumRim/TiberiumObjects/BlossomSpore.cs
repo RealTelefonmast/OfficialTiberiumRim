@@ -1,8 +1,7 @@
 ﻿using TeleCore.Rendering.Particles;
-using TR.Util;
 using Verse;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 
 public class BlossomSpore : Particle
 {

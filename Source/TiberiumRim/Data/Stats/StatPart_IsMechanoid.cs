@@ -1,9 +1,8 @@
 ﻿using RimWorld;
-using TR.Hediffs;
-using TR.Util;
+using TeleCore.Utils;
 using Verse;
 
-namespace TR.Data.Stats;
+namespace TR.Stats;
 
 public class StatPart_IsMechanoid : StatPart_Tiberium
 {

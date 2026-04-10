@@ -3,7 +3,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace TR.Factions.RARelics;
+namespace TR.RARelics;
 
 public class UniquePawnDef : Def
 {

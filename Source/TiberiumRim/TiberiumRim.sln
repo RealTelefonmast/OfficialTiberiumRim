@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleCore", "..\TeleCoreSrc\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleCore.Research", "..\TeleCoreSrc\TeleCore.Research\TeleCore.Research.csproj", "{0AD0FAB2-AB44-4B5C-A480-EA68E870D462}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleCore.Math", "..\TeleCoreSrc\TeleCore.Math\TeleCore.Math.csproj", "{0DFF16EB-546A-44C0-8631-DD763981F1B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleCore.TMath", "..\TeleCoreSrc\TeleCore.TMath\TeleCore.TMath.csproj", "{0DFF16EB-546A-44C0-8631-DD763981F1B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleCore.BuildMenu", "..\TeleCoreSrc\TeleCore.BuildMenu\TeleCore.BuildMenu.csproj", "{CFEC6B51-D828-495C-A748-EE1054196108}"
 EndProject

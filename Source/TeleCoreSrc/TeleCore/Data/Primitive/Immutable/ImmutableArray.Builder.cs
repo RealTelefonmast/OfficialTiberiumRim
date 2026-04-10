@@ -705,7 +705,7 @@ public partial struct ImmutableArray<T>
         {
             if (_elements.Length < capacity)
             {
-                int newCapacity = Math.Max(_elements.Length * 2, capacity);
+                int newCapacity = TMath.Max(_elements.Length * 2, capacity);
                 Array.Resize(ref _elements, newCapacity);
             }
         }

@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using TR.TiberiumObjects;
-using TR.Util;
 using Verse;
 
-namespace TR.GameParts;
+namespace TR;
 
 public class DiscoverableThing : TiberiumThing, IDiscoverable
 {

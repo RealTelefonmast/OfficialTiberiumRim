@@ -1,4 +1,4 @@
-﻿namespace TR.GameParts.GameUpdate;
+﻿namespace TR.GameUpdate;
 
 public class OutsourceWorker
 {

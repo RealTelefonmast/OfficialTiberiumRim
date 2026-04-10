@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using TR.Comps;
 using Verse;
 using Verse.AI;
 
-namespace TR.AI;
+namespace TR;
 
 public class JobGiver_WanderAtParent : ThinkNode_JobGiver
 {

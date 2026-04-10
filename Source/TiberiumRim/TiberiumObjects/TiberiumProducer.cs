@@ -2,14 +2,11 @@
 using System.Linq;
 using System.Text;
 using RimWorld;
-using TR.GameParts;
-using TR.TiberiumEnvironment;
-using TR.Util;
 using UnityEngine;
 using Verse;
 using IntVec3 = Verse.IntVec3;
 
-namespace TR.TiberiumObjects;
+namespace TR;
 /* TIBERIUM PRODUCER
  * The Tiberium MainProducer is the main source of Tiberium
  * Functionality:

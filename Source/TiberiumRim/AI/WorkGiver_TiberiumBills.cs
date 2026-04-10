@@ -1,13 +1,10 @@
 using System.Collections.Generic;
 using RimWorld;
 using TeleCore.ThingComps;
-using TR.Defs;
-using TR.TiberiumProcessing;
-using TR.Util;
 using Verse;
 using Verse.AI;
 
-namespace TR.AI;
+namespace TR;
 
 public class WorkGiver_TiberiumBills : WorkGiver_Scanner
 {

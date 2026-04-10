@@ -1,21 +1,20 @@
 ﻿using System.Collections.Generic;
-using TeleCore.HelperClasses;
+using TeleCore.Types;
 
-namespace TeleCore.Events
+namespace TeleCore.Events;
+
+public enum SpawnMode
 {
-    public enum SpawnMode
-    {
-        Stockpile,
-        Target,
-        DropPod,
-        Scatter
-    }
+    Stockpile,
+    Target,
+    DropPod,
+    Scatter
+}
 
-    public class SpawnSettings
-    {
-        public SpawnMode mode = SpawnMode.Stockpile;
-        public bool singleChance = false;
-        public List<ThingValue> spawnList = new List<ThingValue>();
-        public List<SkyfallerValue> skyfallers = new List<SkyfallerValue>();
-    }
+public class SpawnSettings
+{
+    public SpawnMode mode = SpawnMode.Stockpile;
+    public bool singleChance = false;
+    public List<ThingValue> spawnList = new();
+    public List<SkyfallerValue> skyfallers = new();
 }

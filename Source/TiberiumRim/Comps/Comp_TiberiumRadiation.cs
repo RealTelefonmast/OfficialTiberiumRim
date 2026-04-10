@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TR.DefOf;
-using TR.GameParts.Interfaces;
-using TR.Util;
-using TR.Util.Effects;
+using TR.Effects;
+using TR.Interfaces;
 using Verse;
 
-namespace TR.Comps;
+namespace TR;
 
 public class ThingComp_TiberiumRadiation : ThingComp, IRadiationSource
 {

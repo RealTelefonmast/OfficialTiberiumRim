@@ -1,19 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using RimWorld;
-using TR.AI;
-using TR.GameParts.Interfaces;
-using TR.GameParts.Networks.TiberiumNetwork;
-using TR.Rendering.TextureContent;
-using TR.ThingData.Pawns.MechanicalPawns;
-using TR.TiberiumObjects;
-using TR.Util;
+using TR.Interfaces;
+using TR.Networks.TiberiumNetwork;
+using TR.TextureContent;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Verse;
 using Verse.AI;
 
-namespace TR.TiberiumProcessing;
+namespace TR;
 
 public enum HarvestMode
 {

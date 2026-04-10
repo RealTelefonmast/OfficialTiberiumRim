@@ -1,11 +1,9 @@
 ﻿using RimWorld;
 using TeleCore.ActionCompositions;
-using TR.DefOf;
-using TR.Factions.RARelics;
-using TR.Util;
+using TR.RARelics;
 using Verse;
 
-namespace TR.GameParts.Incidents;
+namespace TR.Incidents;
 
 public class IncidentWorker_ChronoAnomaly : IncidentWorker
 {
