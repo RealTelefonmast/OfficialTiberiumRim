@@ -8,9 +8,10 @@ namespace TeleCore.Atmosphere.Rooms.AirLocks;
 /// </summary>
 public class AirLockSystem
 {
+    private readonly List<Building_Airlock> _airLocks;
+
     //Data
     private RoomComponent_AirLock _roomComp;
-    private List<Building_Airlock> _airLocks;
 
     //Settings
 

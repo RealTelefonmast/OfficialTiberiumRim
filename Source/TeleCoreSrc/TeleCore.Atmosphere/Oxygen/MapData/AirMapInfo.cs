@@ -2,12 +2,11 @@ using System.Collections.Generic;
 using System.Xml;
 using JetBrains.Annotations;
 using RimWorld;
-using TeleCore;
 using TeleCore.Atmosphere.Defs;
 using TeleCore.Atmosphere.Rooms;
-using TeleCore.MapInfo;
+using TeleCore.GameData;
 using TeleCore.Primitive;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using UnityEngine;
 using Verse;
 
@@ -37,24 +36,22 @@ public class AirSource
 
 public abstract class AtmosphereConverter
 {
-    private RoomComponent_Atmosphere _cachedComp;
     protected readonly Thing _sourceThing;
+    private RoomComponent_Atmosphere _cachedComp;
+
+    public AtmosphereConverter(Thing thing)
+    {
+        _sourceThing = thing;
+    }
 
     protected RoomComponent_Atmosphere Atmosphere
     {
         get
         {
             if (_cachedComp == null || _cachedComp.Disbanded)
-            {
                 _cachedComp = _sourceThing?.GetRoom()?.GetRoomComp<RoomComponent_Atmosphere>();
-            }
             return _cachedComp;
         }
-    }
-
-    public AtmosphereConverter(Thing thing)
-    {
-        _sourceThing = thing;
     }
 
     public abstract void Tick();
@@ -81,17 +78,14 @@ public class OxygenBurner : AtmosphereConverter
         }
         else
         {
-            if (_sourceThing.TryGetComp<CompBreakdownable>(out var comp))
-            {
-                comp.DoBreakdown();
-            }
+            if (_sourceThing.TryGetComp<CompBreakdownable>(out var comp)) comp.DoBreakdown();
         }
     }
 }
 
 public class OxygenBurnerFire : AtmosphereConverter
 {
-    private Fire _sourceFire;
+    private readonly Fire _sourceFire;
 
     public OxygenBurnerFire(Fire fire) : base(fire)
     {
@@ -103,10 +97,8 @@ public class OxygenBurnerFire : AtmosphereConverter
         if (GenTicks.TicksAbs % 2 != 0) return;
         var saturation = Atmosphere.Volume.StoredPercentOf(NMODefOf.Atmosphere_Oxygen);
         var result = Atmosphere.Volume.TryRemove(NMODefOf.Atmosphere_Oxygen, 1d);
-        if(result.Actual[NMODefOf.Atmosphere_Oxygen] > 0)
-        {
+        if (result.Actual[NMODefOf.Atmosphere_Oxygen] > 0)
             Atmosphere.Volume.TryAdd(NMODefOf.Atmosphere_CarbonMonoxide, 0.25f);
-        }
 
         _sourceFire.fireSize = Mathf.Clamp(_sourceFire.fireSize, 0, Fire.MaxFireSize * saturation);
         // else
@@ -118,11 +110,9 @@ public class OxygenBurnerFire : AtmosphereConverter
 
 public class AirMapInfo : MapInformation
 {
-    private List<AtmosphereConverter> _convs;
-    private readonly Dictionary<Thing, AtmosphereConverter> _converters;
     private static List<AtmosConversionRule> _rules;
-
-    public IReadOnlyCollection<AtmosphereConverter> Converters => _converters.Values;
+    private readonly Dictionary<Thing, AtmosphereConverter> _converters;
+    private readonly List<AtmosphereConverter> _convs;
 
     static AirMapInfo()
     {
@@ -133,6 +123,8 @@ public class AirMapInfo : MapInformation
         _convs = new List<AtmosphereConverter>();
         _converters = new Dictionary<Thing, AtmosphereConverter>();
     }
+
+    public IReadOnlyCollection<AtmosphereConverter> Converters => _converters.Values;
 
     public AtmosphereConverter ConverterFor(Thing thing)
     {
@@ -152,7 +144,7 @@ public class AirMapInfo : MapInformation
     {
         var converter = new OxygenBurnerFire(fire);
         _convs.Add(converter);
-        _converters.Add(fire,converter);
+        _converters.Add(fire, converter);
     }
 
     public void Deregister(Thing thing)

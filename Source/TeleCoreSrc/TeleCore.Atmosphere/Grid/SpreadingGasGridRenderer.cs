@@ -3,6 +3,7 @@ using LudeonTK;
 using TeleCore.Absorbed.RWLib.Patches;
 using TeleCore.Atmosphere.Static;
 using TeleCore.Logging;
+using TeleCore.Loader;
 using TeleCore.Utils;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;

@@ -5,8 +5,8 @@ namespace TR.SuperWeapon;
 
 public class ASATNetwork : IExposable
 {
-    public List<AttackSatellite> AttackSatellites = new List<AttackSatellite>();
-    public List<AttackSatellite_Ion> ASatsIon = new List<AttackSatellite_Ion>();
+    public List<AttackSatellite> AttackSatellites = new();
+    public List<AttackSatellite_Ion> ASatsIon = new();
 
     public void ExposeData()
     {
