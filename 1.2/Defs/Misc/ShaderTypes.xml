@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Defs>
-
-	<ShaderTypeDef> 
-		<defName>AlphaShader</defName>
-		<shaderPath>Shaders/AlphaHideShader</shaderPath>
-	</ShaderTypeDef>
-  
-</Defs>

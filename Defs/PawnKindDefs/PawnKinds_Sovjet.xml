@@ -17,7 +17,6 @@
 	<PawnKindDef ParentName="SovjetBase">
 		<defName>Volkov</defName>
 		<combatPower>200</combatPower>
-		<!-- Volkov should not have negative health/mental traits -->
 		<disallowedTraits>
 			<li>Nudist</li>
 		</disallowedTraits>

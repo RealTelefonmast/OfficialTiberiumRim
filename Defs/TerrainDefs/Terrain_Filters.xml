@@ -2,6 +2,16 @@
 <Defs>
 	
 	<TR.TerrainFilterDef>
+		<defName>TerrainFilter_TibSoil</defName>
+		<acceptedFilters>
+			<li>TerrainFilter_AllSoil</li>
+		</acceptedFilters>
+		<neededTags>
+			<li>tiberium</li>
+		</neededTags>
+	</TR.TerrainFilterDef>
+	
+	<TR.TerrainFilterDef>
 		<defName>TerrainFilter_AllSoil</defName>
 		<acceptedFilters>
 			<li>TerrainFilter_Soil</li>

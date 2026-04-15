@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   
-	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+	<!--
+	<TR.TRThingDef ParentName="BuildingBase_TR">
 		<defName>TiberiumCannon</defName>
 		<label>tib cannon</label>
 		<description>ree</description>
 		<thingClass>Building_TurretGun</thingClass>
-		<factionDesignation>Common</factionDesignation>
-		<TRCategory>Defense</TRCategory>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/Common/Defense/TibCannon/Base</texPath>
@@ -37,44 +36,44 @@
 		</statBases>
 		<tickerType>Normal</tickerType>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TNW">
-				<compClass>TiberiumRim.CompTNW_Turret</compClass>
-				<maxStorage>150</maxStorage>
+			<li Class="TR.CompProperties_TNW">
+				<compClass>TR.CompTNW_Turret</compClass>
+				<baseCapacity>150</baseCapacity>
 				<supportedTypes>
 					<li>Sludge</li>
 				</supportedTypes>
 				<tnwbMode>Consumer</tnwbMode>
 			</li>
-			<li Class="TiberiumRim.CompProperties_FX"> 
-				<overlays>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Defense/TibCannon/Overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.25,2.25)</drawSize>							
-						</data>
-						<mode>Dynamic</mode>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Defense/TibCannon/Connection2</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawSize>(2.5,2.5)</drawSize>
-						</data>
+						</graphicData>
 						<altitude>Floor</altitude>
 					</li>
 					<li>
-						<data>
+						<graphicData>
 							<texPath>Buildings/Common/Defense/TibCannon/ConnectionOverlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>(2.5,2.5)</drawSize>							
-						</data>
+						</graphicData>
 						<altitude>FloorEmplacement</altitude>
-						<mode>Dynamic</mode>
+						<fxMode>Dynamic</fxMode>
 					</li>
-				</overlays>
+				</fxLayers>
 			</li>		
 			<li Class="CompProperties_Explosive">
 				<explosiveRadius>3.9</explosiveRadius>
@@ -105,14 +104,22 @@
 		<placeWorkers>
 			<li>PlaceWorker_TurretTop</li>
 		</placeWorkers>
-	</TiberiumRim.TRThingDef>
-
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Common</groupDef>
+				<category>Defense</category>
+				<hidden>true</hidden>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	-->
+	
 	<ThingDef ParentName="BaseBullet">
 		<defName>Bullet_Sludge</defName>
 		<label>sludge blob</label>
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Gas</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
+			<graphicClass>Graphic_random</graphicClass>
 		</graphicData>
 		<projectile>
 			<damageDef>TiberiumBurn</damageDef>
@@ -192,7 +199,7 @@
 			-->
 		</verbs>
 	</ThingDef>
-
+	
 	<TR.TRThingDef Abstract="True" Name="DronePlatform" ParentName="StationBase_TR">
 		<description>.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
@@ -243,7 +250,7 @@
 			</li>
 		</modExtensions>
 	</TR.TRThingDef>
-
+	
 	<TR.TRThingDef ParentName="DronePlatform">
 		<defName>RepairDronePlatform</defName>
 		<label>repair drone platform</label>
@@ -302,8 +309,8 @@
 				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
 			</li>
 		</comps>
-	</TR.TRThingDef>
-
+	</TR.TRThingDef>	
+	
 	<TR.TRThingDef ParentName="DronePlatform">
 		<defName>RepairDronePlatformSmall</defName>
 		<label>repair drone platform (small)</label>
@@ -356,6 +363,6 @@
 				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
 			</li>
 		</comps>
-	</TR.TRThingDef>
-
+	</TR.TRThingDef>	
+	
 </Defs>
