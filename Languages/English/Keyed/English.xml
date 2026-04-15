@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	
+
+  <!-- Missions -->
+  <NewMission>New mission available!</NewMission>
+  <NewMissionDesc>You have a new mission available, check it out in the missions tab!</NewMissionDesc>
+  <StationNeeded>Required</StationNeeded>
+  
 	<TR_NotDiscovered>This object can be discoverd.</TR_NotDiscovered>
 	
 	<!--TR Categories-->
@@ -86,6 +91,12 @@
   <ConnectorDesc>Place a Connector next to any Tiberium network compatible structure, indicated by a green area. Only one Connector can be placed next to any network structure.</ConnectorDesc>
   <TCredits>Tiberium Credits</TCredits>
   
+  <MissionTimer>Timer active!</MissionTimer>
+  <MissionTimerDesc>A timer is active! Don't forget to finish the objective on time.</MissionTimerDesc>
+  <ObjectiveSkills>This objective requires pawns with certain skills:\n\n{0}\n{1}</ObjectiveSkills>
+  <ObjectivePawns>The following pawns are capable of the job:\n\n{0}</ObjectivePawns>
+  <PotentialStations>{0} is the best option for this job, however, the following objects can be used as well:\n\n{1}</PotentialStations>
+  
   <!-- World -->
   <InfestationPct>Tiberium Infestation at: {0}</InfestationPct>
   <InfestationPctExp>One or more maps contain Tiberium!\n\n{0}</InfestationPctExp>   
@@ -151,6 +162,7 @@
   
   <!-- Tiberium -->
   <HarvestValue>Current value</HarvestValue>
+  <HarvestReady>Ready for harvest.</HarvestReady>
   <DyingToInhibition>Dying due to sonic waves.</DyingToInhibition>
   
   <TiberiumHomeAlert>Tiberium in home area!</TiberiumHomeAlert>

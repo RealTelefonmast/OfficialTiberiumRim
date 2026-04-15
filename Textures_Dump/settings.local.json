@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find \"C:\\\\Program Files \\(x86\\)\\\\Steam\\\\steamapps\\\\common\\\\RimWorld\\\\Mods\\\\OfficialTiberiumRim\\\\Source\\\\TiberiumRim\" -maxdepth 1 -type f -name \"*.cs\" -exec sh -c 'wc -l \"$1\" | awk \"{print \\\\$1, \\\\$2}\"' _ {} \\\\;)",
+      "Bash(find . -type f -name \"*.cs\" -exec sh -c 'echo \"$\\(wc -l < \"$1\"\\) $1\"' _ {} \\\\;)",
+      "Bash(dotnet build:*)",
+      "Bash(\"/c/Program Files/dotnet/dotnet.exe\" build -v minimal)",
+      "Bash(\"/c/Program Files/dotnet/dotnet.exe\" --version)",
+      "Bash(\"/c/Program Files/dotnet/dotnet.exe\" --list-sdks)",
+      "Bash(cmd.exe /c \"dotnet --version\")",
+      "Bash(cmd.exe /c \"dotnet --version 2>&1\")",
+      "Bash(cmd /c dotnet --version)",
+      "Bash(powershell -Command \"dotnet --version\")",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Program Files \\(x86\\)/**)",
+      "Bash(\"C:/Program Files \\(x86\\)/Steam/steamapps/common/RimWorld/Mods/OfficialTiberiumRim/Tools/bin/trtool.exe\" --stats)",
+      "Bash(\"C:/Program Files \\(x86\\)/Steam/steamapps/common/RimWorld/Mods/OfficialTiberiumRim/Tools/bin/trtool.exe\" --no-tree --no-identical --ext cs --sample 10)"
+    ]
+  }
+}

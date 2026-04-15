@@ -1,0 +1,174 @@
+{
+  "main": {
+    "id": "65aedc381a7f1b3c",
+    "type": "split",
+    "children": [
+      {
+        "id": "c8af4403cbed3dd8",
+        "type": "tabs",
+        "dimension": 59.64467005076142,
+        "children": [
+          {
+            "id": "bd00431ab3eb9343",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Mech Construction/Flow.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "04c784a8d4e28a36",
+        "type": "tabs",
+        "dimension": 40.35532994923858,
+        "children": [
+          {
+            "id": "21bcf08ee3dd337d",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6fc7adf212cbda5d",
+    "type": "split",
+    "children": [
+      {
+        "id": "ea3439de76fb3575",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8dcae19b8810bd96",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "eeccdbab8e2371c1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#constructionstack",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "26e507334d16d9e3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "ec7958bdb54205e6",
+    "type": "split",
+    "children": [
+      {
+        "id": "94b8eeaed069ad65",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cd24740c93602497",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Mech Construction/Flow.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5f5bff09b4cf5847",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Mech Construction/Flow.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "062c02265ff22a45",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "d86c599bd346e895",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Mech Construction/Flow.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "bd00431ab3eb9343",
+  "lastOpenFiles": [
+    "Mech Construction/ConstructionStack.md",
+    "Mech Construction/Flow.md",
+    "Mech Construction/Untitled.canvas",
+    "Mech Construction/Building_Hangar.md",
+    "Welcome.md",
+    "Mech Construction"
+  ]
+}
