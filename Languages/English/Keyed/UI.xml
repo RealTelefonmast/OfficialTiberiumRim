@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-	<!-- Research -->
+	<!---->
+	<TR_TaskSillReq>Required Skill: {0} - {1}</TR_TaskSillReq>
 	<TR_StartResearch>Start Project</TR_StartResearch>
 	<TR_StopResearch>Stop Project</TR_StopResearch>
 	

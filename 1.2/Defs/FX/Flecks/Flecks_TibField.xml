@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<!--Bases-->
+	<FleckDef Abstract="True" Name="FleckBase_TibFog" ParentName="FleckBaseThrown_TR">
+		<graphicData>
+			<texPath>VisualFX/Natural/Gas</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<collide>true</collide>
+		<fadeInTime>2</fadeInTime>
+		<solidTime>3</solidTime>
+		<fadeOutTime>5</fadeOutTime>
+	</FleckDef>
+	
+	<!---->
+	<FleckDef ParentName="FleckBaseThrown_TR">
+		<defName>Fleck_IonLighting</defName>
+		<graphicData>
+			<texPath>VisualFX/IonLighting/ion</texPath>
+			<color>(255,255,255,200)</color>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.05</fadeInTime>
+		<solidTime>0.05</solidTime>
+		<fadeOutTime>2</fadeOutTime>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase_TibFog">
+		<defName>Fleck_TibFogG</defName>
+		<graphicData>
+			<color>(15,255,55,125)</color>
+		</graphicData>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase_TibFog">
+		<defName>Fleck_TibFogB</defName>
+		<graphicData>
+			<color>(15,125,255,125)</color>
+		</graphicData>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase_TibFog">
+		<defName>Fleck_TibFogR</defName>
+		<graphicData>
+			<color>(255,15,115,125)</color>
+		</graphicData>
+	</FleckDef>
+	
+	<!--
+	<FleckDef ParentName="FleckBase_TibFog">
+		<defName>TiberiumFieldFogG</defName>
+		<graphicData>
+			<color>(15,255,55,50)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>15</fadeInTime>
+		<solidTime>30</solidTime>
+		<fadeOutTime>15</fadeOutTime>
+	</FleckDef>
+	
+	<ThingDef ParentName="TiberiumFog">
+		<defName>TiberiumFieldFogB</defName>
+		<graphicData>
+			<color>(15,125,255,50)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>15</fadeInTime>
+		<solidTime>30</solidTime>
+		<fadeOutTime>15</fadeOutTime>
+	</ThingDef>
+	-->
+	
+	<!--Blossom-->
+	
+	<!--Radiation Glow-->
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_TibRadiationGlow</defName>
+		<graphicData>
+			<texPath>VisualFX/TiberiumGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>2.6</fadeInTime>
+		<solidTime>1.5</solidTime>
+		<fadeOutTime>3.3</fadeOutTime>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_TR">
+		<defName>Fleck_TibRadiationGlowBig</defName>
+		<graphicData>
+			<texPath>VisualFX/TiberiumGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>1.0</fadeInTime>
+		<solidTime>0.25</solidTime>
+		<fadeOutTime>5.75</fadeOutTime>
+		<growthRate>0.4</growthRate>
+	</FleckDef>
+	
+</Defs>

@@ -12,7 +12,9 @@
       "Bash(cmd /c dotnet --version)",
       "Bash(powershell -Command \"dotnet --version\")",
       "Read(//c/Program Files/**)",
-      "Read(//c/Program Files \\(x86\\)/**)"
+      "Read(//c/Program Files \\(x86\\)/**)",
+      "Bash(\"C:/Program Files \\(x86\\)/Steam/steamapps/common/RimWorld/Mods/OfficialTiberiumRim/Tools/bin/trtool.exe\" --stats)",
+      "Bash(\"C:/Program Files \\(x86\\)/Steam/steamapps/common/RimWorld/Mods/OfficialTiberiumRim/Tools/bin/trtool.exe\" --no-tree --no-identical --ext cs --sample 10)"
     ]
   }
 }

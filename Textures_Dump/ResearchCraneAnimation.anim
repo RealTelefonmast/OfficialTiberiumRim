@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AnimationMetaData>
+	<animation>
+		<defName>ResearchCraneAnimation</defName>
+		<initialized>True</initialized>
+		<internalDef>
+			<defName>ResearchCraneAnimation</defName>
+			<animationSets>
+				<li>
+					<textureParts>
+						<li>
+							<materialData>
+								<texPath>Buildings/Common/Research/ResearchCrane/ResearchCrane_Base</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>0</rotation>
+								<position>(0.0, 0.0)</position>
+								<texCoords>(0,0,1,1)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(0.0, 0.0)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0,0,1,1)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Common/Research/ResearchCrane/ResearchCrane_ClawBase</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>0</rotation>
+								<position>(-8.0, 0.0)</position>
+								<texCoords>(0,0,1,1)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(0.0, 0.0)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0,0,1,1)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Common/Research/ResearchCrane/ResearchCrane_CableVertical</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>0</rotation>
+								<position>(-8.0, 0.0)</position>
+								<texCoords>(0,0.2,1,0)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(0.0, 0.0)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0,0,1,1)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Common/Research/ResearchCrane/ResearchCrane_Cable</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>0</rotation>
+								<position>(0.0, 0.0)</position>
+								<texCoords>(0,0,1,1)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(0.0, 0.0)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0,0,1,1)</texCoords>
+						</li>
+						<li>
+							<materialData>
+								<texPath>Buildings/Common/Research/ResearchCrane/ResearchCrane_Claw</texPath>
+								<color>RGBA(1.000, 1.000, 1.000, 1.000)</color>
+								<shaderPath>Map/CutoutComplex</shaderPath>
+							</materialData>
+							<localData>
+								<rotation>0</rotation>
+								<position>(-8.0, 12.0)</position>
+								<texCoords>(0,0,1,1)</texCoords>
+								<size>(1.0, 1.0)</size>
+								<pivotPoint>(0.0, 0.0)</pivotPoint>
+								<layerPos>0</layerPos>
+							</localData>
+							<texCoords>(0,0,1,1)</texCoords>
+						</li>
+					</textureParts>
+					<animations>
+						<li>
+							<tag>Idle</tag>
+							<frames>60</frames>
+							<bounds>0~60</bounds>
+							<keyFrames>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.0, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.0, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList />
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.0, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.0, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+							</keyFrames>
+						</li>
+						<li>
+							<tag>Research</tag>
+							<frames>360</frames>
+							<bounds>0~360</bounds>
+							<keyFrames>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.0, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>59</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.0, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.0, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-8.0, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>59</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-7.9, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.0, 0.0)</position>
+												<texCoords>(0,0,1,0)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>59</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.0, 0.0)</position>
+												<texCoords>(0,0,1,0)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-8.0, 0.0)</position>
+												<texCoords>(0,0.2,1,0)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>90</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-8.0, 0.0)</position>
+												<texCoords>(0,0.2,1,0.5)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.0, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>59</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.0, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+								<li>
+									<lookMode>Deep</lookMode>
+									<savedList>
+										<li>
+											<frameTick>0</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(0.0, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>60</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-8.0, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>90</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-8.0, 12.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+										<li>
+											<frameTick>59</frameTick>
+											<frameData>
+												<rotation>0</rotation>
+												<position>(-7.9, 0.0)</position>
+												<texCoords>(0,0,1,1)</texCoords>
+												<size>(1.0, 1.0)</size>
+												<pivotPoint>(0.0, 0.0)</pivotPoint>
+												<layerPos>0</layerPos>
+											</frameData>
+										</li>
+									</savedList>
+								</li>
+							</keyFrames>
+						</li>
+					</animations>
+				</li>
+				<li>
+					<textureParts IsNull="True" />
+					<animations IsNull="True" />
+				</li>
+				<li>
+					<textureParts IsNull="True" />
+					<animations IsNull="True" />
+				</li>
+				<li>
+					<textureParts IsNull="True" />
+					<animations IsNull="True" />
+				</li>
+			</animationSets>
+		</internalDef>
+		<lastSelectedElementIndex>
+			<li>2</li>
+			<li>-1</li>
+			<li>-1</li>
+			<li>-1</li>
+		</lastSelectedElementIndex>
+		<lastSelectedAnimationIndex>
+			<li>1</li>
+			<li>-1</li>
+			<li>-1</li>
+			<li>-1</li>
+		</lastSelectedAnimationIndex>
+	</animation>
+</AnimationMetaData>

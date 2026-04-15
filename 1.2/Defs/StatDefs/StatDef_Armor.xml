@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <StatDef>
+    <defName>StuffPower_Armor_Blast</defName>
+    <label>Armor - Blast</label>
+    <labelForFullStatList>Armor - Blast (material factor)</labelForFullStatList>
+    <description>Armor against blast damage from explosions.</description>
+    <category>StuffStatFactors</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <showIfUndefined>false</showIfUndefined>
+    <displayPriorityInCategory>4509</displayPriorityInCategory>
+  </StatDef>
+
+  <StatDef ParentName="ArmorRatingBase">
+    <defName>ArmorRating_Blast</defName>
+    <label>Armor - Blast</label>
+    <labelForFullStatList>Armor - Blast (armor stat)</labelForFullStatList>
+    <description>The protection given against high-pressure shock wave damage caused by explosions, such as blast injuries that can lead to torn organs and other severe conditions.
+
+Upon taking damage, this armor rating is initially reduced by the blast's armor penetration value.
+
+The remaining armor rating is then measured against a random number from 0 to 100.
+
+    - If the random number is under half the armor rating, the shock wave is deflected harmlessly, reducing injury severity.
+    - If the random number is over half the armor rating, but not higher than the armor rating, the blast's impact is reduced by half, mitigating risk of severe organ damage.
+    - If the random number is greater than the armor rating, the armor provides no protection against the blast's shock wave.
+
+For example, at 90% armor rating against a blast with 10% armor penetration, there is a 40% chance of deflecting the shock wave harmlessly, and a 40% chance of reducing its impact.
+
+Each layer of armor is calculated separately, from the outside in, enhancing overall protection.</description>
+    <displayPriorityInCategory>99</displayPriorityInCategory>
+    <parts>
+      <li Class="StatPart_Stuff">
+        <priority>100</priority>
+        <stuffPowerStat>StuffPower_Armor_Blast</stuffPowerStat>
+        <multiplierStat>StuffEffectMultiplierArmor</multiplierStat>
+      </li>
+    </parts>
+  </StatDef>
+
+</Defs>

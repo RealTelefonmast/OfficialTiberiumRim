@@ -205,6 +205,7 @@ dotnet run -- --file <name>        # find all copies of filename and diff them, 
 
 dotnet run -- --depth <n>          # limit tree depth
 dotnet run -- --ext <ext>          # filter duplicate scan by extension, e.g. --ext cs
+dotnet run -- --skip-file <names>  # exclude filename(s) from dupe scan (comma-separated, e.g. AssemblyInfo.cs,GlobalUsings.cs)
 dotnet run -- --no-tree            # skip directory tree
 dotnet run -- --no-diff            # skip diffs (list duplicates only)
 dotnet run -- --no-identical       # skip duplicate pairs that are byte-for-byte identical
