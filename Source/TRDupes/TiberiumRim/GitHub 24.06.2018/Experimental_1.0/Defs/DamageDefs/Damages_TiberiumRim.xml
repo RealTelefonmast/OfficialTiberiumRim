@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <DamageDef Name="LocalInjuryBase" Abstract="True">
+    <workerClass>DamageWorker_AddInjury</workerClass>
+  </DamageDef>
+  
+  <DamageDef ParentName="LocalInjuryBase">
+    <defName>TRRailgun</defName>
+    <label>Railgun Bullet</label>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has been shot to death.</deathMessage>
+    <hediff>Shredded</hediff>
+    <makesBlood>true</makesBlood>
+    <harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+	<minDamageToFragment>1</minDamageToFragment>
+    <defaultDamage>1</defaultDamage>
+    <explosionBuildingDamageFactor>1</explosionBuildingDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_TiberiumGas</explosionCellMote>
+    <explosionColorCenter>(0.75, 0.75, 0.75)</explosionColorCenter>
+    <explosionColorEdge>(0.25, 0.25, 0.25)</explosionColorEdge>
+    <soundExplosion>Blast_Rail</soundExplosion>
+  </DamageDef>
+  
+  <DamageDef ParentName="LocalInjuryBase">
+    <defName>TRLaser</defName>
+    <label>Laser beam</label>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has been shot to death.</deathMessage>
+    <hediff>Burn</hediff>
+    <makesBlood>true</makesBlood>
+    <harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Heat</armorCategory>
+	<minDamageToFragment>1</minDamageToFragment>
+    <defaultDamage>1</defaultDamage>
+    <explosionBuildingDamageFactor>1</explosionBuildingDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_TiberiumGas</explosionCellMote>
+    <explosionColorCenter>(1, 0.25, 0.25)</explosionColorCenter>
+    <explosionColorEdge>(0.75, 0.1, 0.1)</explosionColorEdge>
+	<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
+    <soundExplosion>Blast_Rail</soundExplosion>
+  </DamageDef>
+  
+  <DamageDef ParentName="LocalInjuryBase">
+    <defName>TRSound</defName>
+    <label>Sound Explosion</label>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has been soundwave crush to death.</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+	<minDamageToFragment>1</minDamageToFragment>
+    <defaultDamage>5</defaultDamage>
+    <explosionBuildingDamageFactor>1.5</explosionBuildingDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_BlastSound</explosionCellMote>
+    <explosionColorCenter>(0.4, 0.4, 0.4)</explosionColorCenter>
+    <explosionColorEdge>(0.1, 0.1, 0.1)</explosionColorEdge>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+    <soundExplosion>Shot_GDI_Sonic</soundExplosion>
+  </DamageDef>
+  
+  <DamageDef ParentName="LocalInjuryBase">
+    <defName>TRTiberiumBomb</defName>
+    <label>Tiberium Bomb</label>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has died in the tiberium gas.</deathMessage>
+    <workerClass>DamageWorker_Flame</workerClass>
+    <hediff>Burn</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+	<minDamageToFragment>1</minDamageToFragment>
+    <defaultDamage>10</defaultDamage>
+    <explosionBuildingDamageFactor>1</explosionBuildingDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_Nuke</explosionCellMote>
+    <explosionColorCenter>(0.25, 1, 0.25)</explosionColorCenter>
+    <explosionColorEdge>(0.1, 0.5, 0.1)</explosionColorEdge>
+	<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+    <soundExplosion>Shot_Nod_ChemBomb</soundExplosion>
+  </DamageDef>
+  
+  <DamageDef ParentName="LocalInjuryBase">
+    <defName>TRTiberiumshotGreen</defName>
+    <label>Tiberium Bomb</label>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has died in the tiberium gas.</deathMessage>
+    <workerClass>DamageWorker_Flame</workerClass>
+    <hediff>Burn</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+	<minDamageToFragment>1</minDamageToFragment>
+    <defaultDamage>5</defaultDamage>
+    <explosionBuildingDamageFactor>2</explosionBuildingDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_TiberiumGas</explosionCellMote>
+    <explosionColorCenter>(0.1, 0.25, 0.1)</explosionColorCenter>
+    <explosionColorEdge>(0, 0.15, 0.05)</explosionColorEdge>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+    <soundExplosion>Shot_Nod_ChemBomb</soundExplosion>
+  </DamageDef>
+  
+  <DamageDef ParentName="LocalInjuryBase">
+    <defName>TRTiberiumShotBlue</defName>
+    <label>Tiberium Bomb</label>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has died in the tiberium gas.</deathMessage>
+    <workerClass>DamageWorker_Flame</workerClass>
+    <hediff>Burn</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+	<minDamageToFragment>1</minDamageToFragment>
+    <defaultDamage>5</defaultDamage>
+    <explosionBuildingDamageFactor>2</explosionBuildingDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_TiberiumGas</explosionCellMote>
+    <explosionColorCenter>(0.1, 0.1, 0.5)</explosionColorCenter>
+    <explosionColorEdge>(0, 0.25, 0.25)</explosionColorEdge>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+    <soundExplosion>Shot_Nod_ChemBomb</soundExplosion>
+  </DamageDef>
+  
+  <DamageDef ParentName="LocalInjuryBase">
+    <defName>TRNuke</defName>
+    <label>Nuke</label>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has died in the nuclear explosion.</deathMessage>
+    <workerClass>DamageWorker_Flame</workerClass>
+    <hediff>Burn</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+	<minDamageToFragment>1</minDamageToFragment>
+    <defaultDamage>25</defaultDamage>
+    <explosionBuildingDamageFactor>25</explosionBuildingDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_Nuke</explosionCellMote>
+    <explosionColorCenter>(1, 1, 0.1)</explosionColorCenter>
+    <explosionColorEdge>(0.9, 0.1, 0.1)</explosionColorEdge>
+	<explosionInteriorMote></explosionInteriorMote>
+	<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+    <soundExplosion>Shot_Nod_Nuke</soundExplosion>
+  </DamageDef>
+  
+	<DamageDef ParentName="StunBase">
+    <defName>TRShock</defName>
+    <label>Shock</label>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has died in the electric shock.</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSolid>Crack</hediffSolid>
+	<harmsHealth>true</harmsHealth>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+	<minDamageToFragment>1</minDamageToFragment>
+    <defaultDamage>5</defaultDamage>
+    <explosionBuildingDamageFactor>1.5</explosionBuildingDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
+ 	<explosionCellMote>Mote_BlastEMP</explosionCellMote>
+    <explosionColorCenter>(1, 1, 1, 1)</explosionColorCenter>
+	<explosionColorEdge>(0.65, 0.65, 0.65, 1)</explosionColorEdge>
+	<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+    <soundExplosion>Shot_GDI_Sonic</soundExplosion>
+  </DamageDef>
+  
+  <!--only specialized siege attack-->
+  <DamageDef ParentName="LocalInjuryBase">
+    <defName>TRSiege</defName>
+    <label>Seismic Wave</label>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has died in the shockwave.</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+	<minDamageToFragment>1</minDamageToFragment>
+    <defaultDamage>5</defaultDamage>
+    <explosionBuildingDamageFactor>25</explosionBuildingDamageFactor>
+	<explosionPlantDamageFactor>25</explosionPlantDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_BlastWave</explosionCellMote>
+    <explosionColorCenter>(0.25, 0.5, 0.25)</explosionColorCenter>
+    <explosionColorEdge>(0.25, 0.25, 0.1)</explosionColorEdge>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+    <soundExplosion>Shot_GDI_Sonic</soundExplosion>
+  </DamageDef>
+  
+  <DamageDef ParentName="LocalInjuryBase">
+    <defName>TRScrin</defName>
+    <label>cutting beam</label>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has been beam cut to death.</deathMessage>
+    <hediff>Cut</hediff>
+    <makesBlood>true</makesBlood>
+    <harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+	<minDamageToFragment>1</minDamageToFragment>
+    <defaultDamage>1</defaultDamage>
+    <explosionBuildingDamageFactor>1</explosionBuildingDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_ScrinCut</explosionCellMote>
+    <explosionColorCenter>(0.8, 0.5, 1)</explosionColorCenter>
+    <explosionColorEdge>(0.6, 0.1, 1)</explosionColorEdge>
+	<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
+    <soundExplosion>Blast_Rail</soundExplosion>
+  </DamageDef>
+
+</Defs>

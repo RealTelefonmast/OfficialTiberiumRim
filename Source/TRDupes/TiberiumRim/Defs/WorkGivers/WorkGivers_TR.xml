@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Research -->
+	<WorkGiverDef>
+		<defName>DoTiberiumResearch</defName>
+		<label>do tiberium research</label>
+		<giverClass>TR.WorkGiver_TResearch</giverClass>
+		<workType>Research</workType>
+		<workTags>AllWork</workTags>
+		<priorityInType>120</priorityInType>
+		<verb>(TR)research</verb>
+		<gerund>(TR)researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	
+	<WorkGiverDef>
+		<defName>DoBillsTibWorkbench</defName>
+		<label>make things at workbench</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>100</priorityInType>
+		<fixedBillGiverDefs>
+			<li>TR_TibWorkbench</li>
+		</fixedBillGiverDefs>
+		<verb>craft</verb>
+		<gerund>crafting at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+	
+	<WorkGiverDef>
+		<defName>DoMechConstruction</defName>
+		<label>begin mech construction</label>
+		<giverClass>TR.WorkGiver_DoMechConstructionBill</giverClass>
+		<workType>Hauling</workType>
+		<priorityInType>100</priorityInType>
+		<verb>begin construction</verb>
+		<gerund>beginning construction</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+</Defs>

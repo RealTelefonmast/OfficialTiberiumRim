@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="BuildingNaturalBase" Abstract="True">
+		<category>Building</category>
+		<selectable>true</selectable>
+		<drawerType>MapMeshOnly</drawerType>
+		<filthLeaving>RockRubble</filthLeaving>
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+	</ThingDef>
+
+	<ThingDef Name="TibRockBase" ParentName="BuildingNaturalBase" Abstract="True" >
+		<thingClass>Mineable</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Linked/Rock_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Rock</li>
+				<li>MapEdge</li>
+			</linkFlags>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Impassable</passability>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>1</fillPercent>
+		<coversFloor>true</coversFloor>
+		<neverMultiSelect>true</neverMultiSelect>
+		<rotatable>false</rotatable>
+		<saveCompressible>true</saveCompressible>
+		<holdsRoof>true</holdsRoof>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<blockLight>true</blockLight>
+		<mineable>true</mineable>
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<building>
+			<allowAutoroof>false</allowAutoroof>
+			<isInert>true</isInert>
+			<isNaturalRock>true</isNaturalRock>
+			<canBuildNonEdificesUnder>false</canBuildNonEdificesUnder>
+			<deconstructible>false</deconstructible>
+		</building>
+	</ThingDef>
+  
+	<ThingDef ParentName="TibRockBase">
+		<defName>GreenTiberiumRock_TBNS</defName>
+		<label>Green Tiberium rock</label>
+		<graphicData>
+			<texPath>Building/Natural/GreenRock</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>CornerFiller</linkType>
+				<linkFlags>
+					<li>Rock</li>
+					<li>MapEdge</li>
+				</linkFlags>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+		</statBases>
+		<description>Rocks infested with green Tiberium.</description>
+		<rotatable>true</rotatable>
+		<building>
+			<isNaturalRock>false</isNaturalRock>
+			<claimable>false</claimable>
+			<isResourceRock>true</isResourceRock>
+			<mineableThing>GreenTiberiumRaw</mineableThing>
+			<mineableYield>7</mineableYield>
+		</building>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(120,255,120,0)</glowColor>
+			</li>
+		</comps>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <TiberiumGreen>3</TiberiumGreen>
+        </killedLeavings>
+	</ThingDef>
+	
+	<ThingDef ParentName="TibRockBase">
+		<defName>BlueTiberiumRock_TBNS</defName>
+		<label>Blue Tiberium rock</label>
+		<graphicData>
+			<texPath>Building/Natural/BlueRock</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>CornerFiller</linkType>
+				<linkFlags>
+					<li>Rock</li>
+					<li>MapEdge</li>
+				</linkFlags>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+		</statBases>
+		<description>Rocks infested with blue Tiberium.</description>
+		<rotatable>true</rotatable>
+		<building>
+			<isNaturalRock>false</isNaturalRock>
+			<claimable>false</claimable>
+			<isResourceRock>true</isResourceRock>
+			<mineableThing>BlueTiberiumRaw</mineableThing>
+			<mineableYield>5</mineableYield>
+		</building>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(120,150,255,0)</glowColor>
+			</li>
+		</comps>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <TiberiumBlue>2</TiberiumBlue>
+        </killedLeavings>
+	</ThingDef>
+	
+	<ThingDef ParentName="TibRockBase">
+		<defName>RedTiberiumRock_TBNS</defName>
+		<label>Red Tiberium rock</label>
+		<graphicData>
+			<texPath>Building/Natural/RedRock</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>CornerFiller</linkType>
+				<linkFlags>
+					<li>Rock</li>
+					<li>MapEdge</li>
+				</linkFlags>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>400</MaxHitPoints>
+		</statBases>
+		<description>Rocks infested with red Tiberium.</description>
+		<rotatable>true</rotatable>
+		<building>
+			<isNaturalRock>false</isNaturalRock>
+			<claimable>false</claimable>
+			<isResourceRock>true</isResourceRock>
+			<mineableThing>RedTiberiumRaw</mineableThing>
+			<mineableYield>3</mineableYield>
+		</building>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(255,120,120,0)</glowColor>
+			</li>
+		</comps>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <TiberiumRed>1</TiberiumRed>
+        </killedLeavings>
+	</ThingDef>
+	
+	<ThingDef ParentName="TibRockBase">
+		<defName>VeinTiberiumRock_TBNS</defName>
+		<label>Vein rock</label>
+		<graphicData>
+			<texPath>Building/Natural/VeinRock</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>CornerFiller</linkType>
+				<linkFlags>
+					<li>Rock</li>
+					<li>MapEdge</li>
+				</linkFlags>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+		</statBases>
+		<description>Rocks infested with Tiberium veins.</description>
+		<rotatable>true</rotatable>
+		<building>
+			<isNaturalRock>false</isNaturalRock>
+			<claimable>false</claimable>
+			<isResourceRock>true</isResourceRock>
+			<mineableThing>VeinTiberiumRaw</mineableThing>
+			<mineableYield>6</mineableYield>
+		</building>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <TiberiumVein>1</TiberiumVein>
+        </killedLeavings>
+	</ThingDef>
+	
+</Defs>

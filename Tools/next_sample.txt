@@ -1,0 +1,702 @@
+﻿
+=== Duplicate Filenames (.cs) ===
+
+5 (sampled) duplicate filename(s):
+
+[1/5] Command_HediffVerbTarget.cs
+  A: Source\TiberiumRim\Hediffs\HediffVerb\Command_HediffVerbTarget.cs
+  B: Source\TeleCoreSrc\TeleCore\RWExtended\UI\Commands\Command_HediffVerbTarget.cs
+
+--- Source\TiberiumRim\Hediffs\HediffVerb\Command_HediffVerbTarget.cs
++++ Source\TeleCoreSrc\TeleCore\RWExtended\UI\Commands\Command_HediffVerbTarget.cs
+@@ -1,10 +1,11 @@
+ using System.Collections.Generic;
+ using RimWorld;
++using TeleCore.Hediffs;
+ using UnityEngine;
+ using Verse;
+ using Verse.Sound;
+ 
+-namespace TR.HediffVerb;
++namespace TeleCore.RWExtended.UI.Commands;
+ 
+ public class Command_HediffVerbTarget : Command
+ {
+@@ -18,7 +19,8 @@
+     {
+         get
+         {
+-            foreach (var verb in RangedHediff.AllVerbs) yield return new FloatMenuOption("place link", null);
++            foreach (var verb in RangedHediff.AllVerbs)
++                yield return new FloatMenuOption("place link", null);
+         }
+     }
+ 
+@@ -35,9 +37,11 @@
+         base.MergeWith(other);
+         var command = other as Command_HediffVerbTarget;
+         if (command == null) return;
+-        if (groupedVerbs == null) groupedVerbs = new List<Verb>();
++        if (groupedVerbs == null)
++            groupedVerbs = new List<Verb>();
+         groupedVerbs.Add(command.verb);
+-        if (command.groupedVerbs != null) groupedVerbs.AddRange(command.groupedVerbs);
++        if (command.groupedVerbs != null)
++            groupedVerbs.AddRange(command.groupedVerbs);
+     }
+ 
+     public override void ProcessInput(Event ev)
+
+[2/5] CompGlowerOffset.cs
+  A: Source\TiberiumRim\Comps\CompGlowerOffset.cs
+  B: Source\TeleCoreSrc\TeleCore\Data\ThingComps\CompGlowerOffset.cs
+  C: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Comps\CompGlowerOffset.cs
+
+  Diff A vs B:
+
+--- Source\TiberiumRim\Comps\CompGlowerOffset.cs
++++ Source\TeleCoreSrc\TeleCore\Data\ThingComps\CompGlowerOffset.cs
+@@ -1,20 +1,33 @@
+ using RimWorld;
++using TeleCore.Logging;
++using TeleCore.ThingComps.Props;
+ using Verse;
+ 
+-namespace TR;
++namespace TeleCore.ThingComps;
+ 
+ public class CompGlowerOffset : ThingComp
+ {
++    public ThingWithComps glower;
++
+     private CompFlickable Flickable;
+-    public ThingWithComps glower;
+ 
+-    public CompProperties_GlowerOffset Props => (CompProperties_GlowerOffset)props;
++    public CompProperties_GlowerOffset Props => (CompProperties_GlowerOffset)base.props;
+ 
+     public override void PostExposeData()
+     {
+         base.PostExposeData();
+         Scribe_References.Look(ref glower, "glowerThing");
+-        if (Scribe.mode == LoadSaveMode.PostLoadInit) Flickable ??= glower.GetComp<CompFlickable>();
++        if (Scribe.mode == LoadSaveMode.PostLoadInit)
++        {
++            if (glower == null || !glower.Spawned)
++            {
++                TLog.Warning("Glower was not spawned after respawn!");
++                var existing = parent.Position.GetFirstThing(parent.Map, Props.glowerDef);
++                existing?.DeSpawn();
++                glower = (ThingWithComps)GenSpawn.Spawn(Props.glowerDef, parent.Position + parent.Rotation.FacingCell, parent.Map);
++            }
++            Flickable ??= glower.GetComp<CompFlickable>();
++        }
+     }
+ 
+     public override void PostSpawnSetup(bool respawningAfterLoad)
+@@ -22,14 +35,13 @@
+         base.PostSpawnSetup(respawningAfterLoad);
+         if (!respawningAfterLoad)
+         {
+-            glower = (ThingWithComps)GenSpawn.Spawn(Props.glowerDef, parent.Position + parent.Rotation.FacingCell,
++            glower = (ThingWithComps)GenSpawn.Spawn(Props.glowerDef, parent.Position + parent.Rotation.FacingCell, parent.Map);
+-                parent.Map);
+             Flickable = glower.GetComp<CompFlickable>();
+             ToggleLight(false, true);
+         }
+     }
+ 
+-    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
++    public override void PostDeSpawn(Verse.Map map)
+     {
+         base.PostDeSpawn(map);
+         glower.DeSpawn();
+@@ -46,20 +58,8 @@
+ 
+     public override void ReceiveCompSignal(string signal)
+     {
+-        var turnOn = signal == "PowerTurnedOn" || signal == "FlickedOn" || signal == "Refueled" ||
+-                     signal == "ScheduledOn";
++        bool turnOn = signal == "PowerTurnedOn" || signal == "FlickedOn" || signal == "Refueled" || signal == "ScheduledOn";
++        bool turnOff = signal == "PowerTurnedOff" || signal == "FlickedOff" || signal == "RanOutOfFuel" || signal == "ScheduledOff";
+-        var turnOff = signal == "PowerTurnedOff" || signal == "FlickedOff" || signal == "RanOutOfFuel" ||
+-                      signal == "ScheduledOff";
+         ToggleLight(turnOn, turnOff);
+-    }
+-}
+-
+-public class CompProperties_GlowerOffset : CompProperties
+-{
+-    public ThingDef glowerDef;
+-
+-    public CompProperties_GlowerOffset()
+-    {
+-        compClass = typeof(CompGlowerOffset);
+     }
+ }
+
+  Diff A vs C:
+
+--- Source\TiberiumRim\Comps\CompGlowerOffset.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Comps\CompGlowerOffset.cs
+@@ -1,65 +1,70 @@
++using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using HarmonyLib;
+ using RimWorld;
+ using Verse;
++
++namespace TiberiumRim
++{
++    public class GlowerSource : ThingWithComps
++    {
++        private CompGlower glower;
+ 
+-namespace TR;
++        public void InitGlower(CompProperties props)
++        {
++            if (glower != null) return;
++            glower = (CompGlower) Activator.CreateInstance(typeof(CompGlower));
++            glower.parent = this;
++            Traverse.Create(this).Field("comps").GetValue<List<ThingComp>>().Add(glower);
++            glower.Initialize(props);
++        }
+ 
+-public class CompGlowerOffset : ThingComp
+-{
++        public void UpdateGlower(CompProperties newProps)
++        {
+-    private CompFlickable Flickable;
+-    public ThingWithComps glower;
+ 
+-    public CompProperties_GlowerOffset Props => (CompProperties_GlowerOffset)props;
++        }
++    } 
+ 
+-    public override void PostExposeData()
++    public class CompGlowerOffset : ThingComp
+     {
+-        base.PostExposeData();
+-        Scribe_References.Look(ref glower, "glowerThing");
+-        if (Scribe.mode == LoadSaveMode.PostLoadInit) Flickable ??= glower.GetComp<CompFlickable>();
+-    }
++        public GlowerSource glower;
++        public CompProperties_GlowerOffset Props => (CompProperties_GlowerOffset) base.props;
++
++        public override void PostExposeData()
++        {
++            base.PostExposeData();
++        }
++
++        public override void PostSpawnSetup(bool respawningAfterLoad)
++        {
++            base.PostSpawnSetup(respawningAfterLoad);
++            GlowerSource source = (GlowerSource)GenSpawn.Spawn(ThingDef.Named("GlowerSource"), parent.Position + parent.Rotation.FacingCell, parent.Map);
++            source.InitGlower(Props.glower);
++        }
+ 
+-    public override void PostSpawnSetup(bool respawningAfterLoad)
++        public override void PostDeSpawn(Map map)
+-    {
+-        base.PostSpawnSetup(respawningAfterLoad);
+-        if (!respawningAfterLoad)
+         {
+-            glower = (ThingWithComps)GenSpawn.Spawn(Props.glowerDef, parent.Position + parent.Rotation.FacingCell,
+-                parent.Map);
++            base.PostDeSpawn(map);
++
+-            Flickable = glower.GetComp<CompFlickable>();
+-            ToggleLight(false, true);
+         }
+-    }
+ 
+-    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
+-    {
+-        base.PostDeSpawn(map);
+-        glower.DeSpawn();
++        public override void ReceiveCompSignal(string signal)
++        {
++            glower.BroadcastCompSignal(signal);
++        }
+     }
+ 
+-    private void ToggleLight(bool turnOn, bool turnOff)
++    public class CompProperties_GlowerOffset : CompProperties
+     {
+-        if (Flickable == null) return;
+-        if (Flickable.SwitchIsOn && turnOff)
++        public IntVec3 offset = IntVec3.Zero;
++        public CompProperties_Glower glower;
+-            Flickable.DoFlick();
+-        if (!Flickable.SwitchIsOn && turnOn)
+-            Flickable.DoFlick();
+-    }
+ 
+-    public override void ReceiveCompSignal(string signal)
+-    {
+-        var turnOn = signal == "PowerTurnedOn" || signal == "FlickedOn" || signal == "Refueled" ||
+-                     signal == "ScheduledOn";
++        public CompProperties_GlowerOffset()
++        {
++            compClass = typeof(CompGlowerOffset);
++        }
+-        var turnOff = signal == "PowerTurnedOff" || signal == "FlickedOff" || signal == "RanOutOfFuel" ||
+-                      signal == "ScheduledOff";
+-        ToggleLight(turnOn, turnOff);
+     }
+ }
+ 
+-public class CompProperties_GlowerOffset : CompProperties
+-{
+-    public ThingDef glowerDef;
+-
+-    public CompProperties_GlowerOffset()
+-    {
+-        compClass = typeof(CompGlowerOffset);
+-    }
+-}
+
+  Diff B vs C:
+
+--- Source\TeleCoreSrc\TeleCore\Data\ThingComps\CompGlowerOffset.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Comps\CompGlowerOffset.cs
+@@ -1,65 +1,70 @@
++using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using HarmonyLib;
+ using RimWorld;
+-using TeleCore.Logging;
+-using TeleCore.ThingComps.Props;
+ using Verse;
+ 
+-namespace TeleCore.ThingComps;
++namespace TiberiumRim
+-
+-public class CompGlowerOffset : ThingComp
+ {
+-    public ThingWithComps glower;
++    public class GlowerSource : ThingWithComps
++    {
++        private CompGlower glower;
+ 
+-    private CompFlickable Flickable;
++        public void InitGlower(CompProperties props)
++        {
++            if (glower != null) return;
++            glower = (CompGlower) Activator.CreateInstance(typeof(CompGlower));
++            glower.parent = this;
++            Traverse.Create(this).Field("comps").GetValue<List<ThingComp>>().Add(glower);
++            glower.Initialize(props);
++        }
++
++        public void UpdateGlower(CompProperties newProps)
++        {
+ 
+-    public CompProperties_GlowerOffset Props => (CompProperties_GlowerOffset)base.props;
++        }
++    } 
+ 
+-    public override void PostExposeData()
++    public class CompGlowerOffset : ThingComp
+     {
+-        base.PostExposeData();
+-        Scribe_References.Look(ref glower, "glowerThing");
+-        if (Scribe.mode == LoadSaveMode.PostLoadInit)
++        public GlowerSource glower;
++        public CompProperties_GlowerOffset Props => (CompProperties_GlowerOffset) base.props;
++
++        public override void PostExposeData()
++        {
++            base.PostExposeData();
++        }
++
++        public override void PostSpawnSetup(bool respawningAfterLoad)
+         {
+-            if (glower == null || !glower.Spawned)
+-            {
+-                TLog.Warning("Glower was not spawned after respawn!");
++            base.PostSpawnSetup(respawningAfterLoad);
++            GlowerSource source = (GlowerSource)GenSpawn.Spawn(ThingDef.Named("GlowerSource"), parent.Position + parent.Rotation.FacingCell, parent.Map);
++            source.InitGlower(Props.glower);
+-                var existing = parent.Position.GetFirstThing(parent.Map, Props.glowerDef);
+-                existing?.DeSpawn();
+-                glower = (ThingWithComps)GenSpawn.Spawn(Props.glowerDef, parent.Position + parent.Rotation.FacingCell, parent.Map);
+-            }
+-            Flickable ??= glower.GetComp<CompFlickable>();
+         }
+-    }
+ 
+-    public override void PostSpawnSetup(bool respawningAfterLoad)
++        public override void PostDeSpawn(Map map)
+-    {
+-        base.PostSpawnSetup(respawningAfterLoad);
+-        if (!respawningAfterLoad)
+         {
+-            glower = (ThingWithComps)GenSpawn.Spawn(Props.glowerDef, parent.Position + parent.Rotation.FacingCell, parent.Map);
+-            Flickable = glower.GetComp<CompFlickable>();
++            base.PostDeSpawn(map);
++
+-            ToggleLight(false, true);
+         }
+-    }
+ 
+-    public override void PostDeSpawn(Verse.Map map)
+-    {
+-        base.PostDeSpawn(map);
+-        glower.DeSpawn();
++        public override void ReceiveCompSignal(string signal)
++        {
++            glower.BroadcastCompSignal(signal);
++        }
+     }
+ 
+-    private void ToggleLight(bool turnOn, bool turnOff)
++    public class CompProperties_GlowerOffset : CompProperties
+     {
+-        if (Flickable == null) return;
+-        if (Flickable.SwitchIsOn && turnOff)
++        public IntVec3 offset = IntVec3.Zero;
++        public CompProperties_Glower glower;
+-            Flickable.DoFlick();
+-        if (!Flickable.SwitchIsOn && turnOn)
+-            Flickable.DoFlick();
+-    }
+ 
+-    public override void ReceiveCompSignal(string signal)
+-    {
+-        bool turnOn = signal == "PowerTurnedOn" || signal == "FlickedOn" || signal == "Refueled" || signal == "ScheduledOn";
+-        bool turnOff = signal == "PowerTurnedOff" || signal == "FlickedOff" || signal == "RanOutOfFuel" || signal == "ScheduledOff";
++        public CompProperties_GlowerOffset()
++        {
++            compClass = typeof(CompGlowerOffset);
++        }
+-        ToggleLight(turnOn, turnOff);
+     }
+ }
++
+
+[3/5] CompNetwork.cs
+  A: Source\TeleCoreSrc\TeleCore.FlowCore\Networks\CompNetwork.cs
+  B: Source\TeleCoreSrc\TeleCore\Data\ThingComps\CompNetwork.cs
+
+--- Source\TeleCoreSrc\TeleCore.FlowCore\Networks\CompNetwork.cs
++++ Source\TeleCoreSrc\TeleCore\Data\ThingComps\CompNetwork.cs
+@@ -2,19 +2,32 @@
+ using System.Collections.Generic;
+ using System.Text;
+ using RimWorld;
+-using TeleCore.FlowCore.IO;
+-using TeleCore.Loader;
++using TeleCore.Events;
++using TeleCore.Events.Args;
++using TeleCore.GameData.Defs;
++using TeleCore.Logging;
++using TeleCore.Network;
++using TeleCore.Network.Flow.Values;
++using TeleCore.Network.IO;
++using TeleCore.RWExtended.ThingClasses;
++using TeleCore.RWExtended.UI.Commands;
++using TeleCore.Static;
++using TeleCore.ThingComps.Props;
++using TeleCore.Utils;
++using UnityEngine;
+ using Verse;
+ 
+-namespace TeleCore.FlowCore;
++namespace TeleCore.ThingComps;
+ 
++//TODO: Add leaking functionality, broken transmitters losing values
++//TODO: Cleanup / Revise
+ public class CompNetwork : FXThingComp, INetworkStructure
+ {
+     //Debug
+     protected static bool DebugConnectionCells;
+ 
+     #region Fields
+-
++    
+     private PipeNetworkMapInfo _mapInfo;
+     private List<NetworkPart> _allNetParts;
+     private Dictionary<NetworkDef, INetworkPart> _netPartByDef;
+@@ -27,7 +40,7 @@
+     public INetworkPart this[NetworkDef def] => _netPartByDef.TryGetValue(def, out var value) ? value : null;
+ 
+     //
+-    public CompProperties_Network Props => (CompProperties_Network)props;
++    public CompProperties_Network Props => (CompProperties_Network) props;
+     public CompPowerTrader CompPower { get; private set; }
+     public CompFlickable CompFlick { get; private set; }
+     public CompFX CompFX { get; private set; }
+@@ -41,7 +54,7 @@
+     public Thing Thing => parent;
+     public List<NetworkPart> NetworkParts => _allNetParts;
+     public NetworkPart SelectedPart => NetworkGizmo.SelectedPart;
+-
++    
+     public bool IsPowered => CompPower?.PowerOn ?? true;
+     public bool IsWorking => IsWorkingOverride;
+ 
+@@ -91,7 +104,7 @@
+     {
+         base.PostExposeData();
+         Scribe_Collections.Look(ref _allNetParts, "networkParts", LookMode.Deep, this);
+-
++        
+         if (Scribe.mode == LoadSaveMode.PostLoadInit)
+         {
+             if (_allNetParts.NullOrEmpty())
+@@ -113,10 +126,10 @@
+     public override void PostSpawnSetup(bool respawningAfterLoad)
+     {
+         base.PostSpawnSetup(respawningAfterLoad);
+-
++        
+         //Init Fields
+         _netPartByDef = new Dictionary<NetworkDef, INetworkPart>(Props.networks.Count);
+-
++        
+         //Get Comps and other Infos
+         _mapInfo = parent.Map.TeleCore().NetworkInfo;
+         CompPower = parent.TryGetComp<CompPowerTrader>();
+@@ -135,38 +148,38 @@
+         //
+         if (!respawningAfterLoad)
+         {
+-            _allNetParts = new List<NetworkPart>(Math.Max(1, Props.networks.Count));
++            _allNetParts = new List<NetworkPart>(TMath.Max(1, Props.networks.Count));
+         }
+-
++        
+         for (var i = 0; i < Props.networks.Count; i++)
+         {
+             var partConfig = Props.networks[i];
+             NetworkPart? part = null;
+-
++            
+             //Create part if it doesnt exist
+             var exists = _allNetParts.Exists(p => p is { Config: not null } && p.Config.networkDef == partConfig.networkDef);
+             if (!exists)
+             {
+-                part = (NetworkPart)Activator.CreateInstance(partConfig.workerType, this, partConfig);
++                part = (NetworkPart) Activator.CreateInstance(partConfig.workerType, this, partConfig);
+                 _allNetParts.Add(part);
+             }
+-
++            
+             part ??= _allNetParts[i];
+             _netPartByDef.Add(partConfig.networkDef, part);
+             part.PartSetup(respawningAfterLoad);
+         }
+-
++        
+         //Ensure that new nearby junctions add themselves to the network
+         foreach (var part in _allNetParts)
+         {
+             part.CheckNeighborJunctions();
+         }
+-
++        
+         _mapInfo.Notify_NewNetworkStructureSpawned(this);
+     }
+ 
+     //Deconstruction
+-    public override void PostDestroy(DestroyMode mode, Map previousMap)
++    public override void PostDestroy(DestroyMode mode, Verse.Map previousMap)
+     {
+         base.PostDestroy(mode, previousMap);
+         _mapInfo.Notify_NetworkStructureDespawned(this);
+@@ -244,7 +257,7 @@
+                 yield return partGizmo;
+         }
+ 
+-        foreach (var g in base.CompGetGizmosExtra())
++        foreach (var g in base.CompGetGizmosExtra()) 
+             yield return g;
+ 
+         if (!DebugSettings.godMode) yield break;
+
+[4/5] CompPowerPlant_Network.cs
+  A: Source\TeleCoreSrc\TeleCore.FlowCore\Networks\CompPowerPlant_Network.cs
+  B: Source\TeleCoreSrc\TeleCore\Data\ThingComps\CompPowerPlant_Network.cs
+  C: Source\TeleCoreSrc\TeleCore.FlowCore\RimWorld\ThingComps\CompPowerPlant_Network.cs
+
+  Diff A vs B:
+
+--- Source\TeleCoreSrc\TeleCore.FlowCore\Networks\CompPowerPlant_Network.cs
++++ Source\TeleCoreSrc\TeleCore\Data\ThingComps\CompPowerPlant_Network.cs
+@@ -1,13 +1,15 @@
+ using System.Collections.Generic;
+ using System.Text;
+ using RimWorld;
++using TeleCore.GameData.Defs;
+ using TeleCore.Generics.Container;
+ using TeleCore.Network;
++using TeleCore.Network.Flow.Values;
+ using TeleCore.Types;
+ using UnityEngine;
+ using Verse;
+ 
+-namespace TeleCore;
++namespace TeleCore.ThingComps;
+ 
+ public class CompPowerPlant_Network : CompPowerPlant
+ {
+
+  Diff A vs C:
+
+--- Source\TeleCoreSrc\TeleCore.FlowCore\Networks\CompPowerPlant_Network.cs
++++ Source\TeleCoreSrc\TeleCore.FlowCore\RimWorld\ThingComps\CompPowerPlant_Network.cs
+@@ -1,13 +1,12 @@
+ using System.Collections.Generic;
+ using System.Text;
+ using RimWorld;
+-using TeleCore.Generics.Container;
++using TeleCore.FlowCore;
+-using TeleCore.Network;
+ using TeleCore.Types;
+ using UnityEngine;
+ using Verse;
+ 
+-namespace TeleCore;
++namespace TeleCore.RimWorld.ThingComps;
+ 
+ public class CompPowerPlant_Network : CompPowerPlant
+ {
+
+  Diff B vs C:
+
+--- Source\TeleCoreSrc\TeleCore\Data\ThingComps\CompPowerPlant_Network.cs
++++ Source\TeleCoreSrc\TeleCore.FlowCore\RimWorld\ThingComps\CompPowerPlant_Network.cs
+@@ -1,15 +1,12 @@
+ using System.Collections.Generic;
+ using System.Text;
+ using RimWorld;
+-using TeleCore.GameData.Defs;
++using TeleCore.FlowCore;
+-using TeleCore.Generics.Container;
+-using TeleCore.Network;
+-using TeleCore.Network.Flow.Values;
+ using TeleCore.Types;
+ using UnityEngine;
+ using Verse;
+ 
+-namespace TeleCore.ThingComps;
++namespace TeleCore.RimWorld.ThingComps;
+ 
+ public class CompPowerPlant_Network : CompPowerPlant
+ {
+
+[5/5] CompPower_Tiberium.cs
+  A: Source\TiberiumRim\TiberiumProcessing\CompPower_Tiberium.cs
+  B: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\TiberiumProcessing\CompPower_Tiberium.cs
+
+--- Source\TiberiumRim\TiberiumProcessing\CompPower_Tiberium.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\TiberiumProcessing\CompPower_Tiberium.cs
+@@ -1,59 +1,65 @@
++using System;
++using System.Collections.Generic;
++using System.Linq;
+ using System.Text;
+ using RimWorld;
+-using TR.Networks.TiberiumNetwork;
+ using Verse;
+ 
+-namespace TR;
++namespace TiberiumRim
+-
+-public class CompPower_Tiberium : CompPowerPlant
+ {
+-    private CompTNS_Power _powerNetComp;
+-    private int powerProductionTicks;
++    public class CompPower_Tiberium : CompPowerPlant
++    {
++        private CompTNW CompTNW;
++        private int powerProductionTicks = 0;
+ 
+-    private CompProperties_TNSPower TNSProps => (CompProperties_TNSPower)_powerNetComp.props;
+-    public bool GeneratesPowerNow => powerProductionTicks > 0;
++        public PowerProperties TNWProps => (PowerProperties)CompTNW.Props;
++        public bool GeneratesPowerNow => powerProductionTicks > 0;
+ 
+-    protected override float DesiredPowerOutput => GeneratesPowerNow ? base.DesiredPowerOutput : 0f;
++        protected override float DesiredPowerOutput => GeneratesPowerNow ? base.DesiredPowerOutput : 0f;
+ 
+-    public override void PostExposeData()
+-    {
+-        base.PostExposeData();
+-        Scribe_Values.Look(ref powerProductionTicks, "powerTicks");
+-    }
++
++        public override void PostExposeData()
++        {
++            base.PostExposeData();
++            Scribe_Values.Look(ref powerProductionTicks, "powerTicks");
++        }
+ 
+-    public override void PostSpawnSetup(bool respawningAfterLoad)
+-    {
+-        base.PostSpawnSetup(respawningAfterLoad);
+-        _powerNetComp = parent.GetComp<CompTNS_Power>();
+-    }
++        public override void PostSpawnSetup(bool respawningAfterLoad)
++        {
++            base.PostSpawnSetup(respawningAfterLoad);
++            CompTNW = parent.GetComp<CompTNW>();
++        }
+ 
+-    public override void CompTick()
+-    {
+-        base.CompTick();
+-        PowerTick();
+-    }
++        public override void CompTick()
++        {
++            base.CompTick();
++            PowerTick();
++        }
+ 
+-    private void PowerTick()
++        private void PowerTick()
+-    {
+-        if (powerProductionTicks <= 0)
+         {
+-            var container = _powerNetComp?.Container;
+-            if (container != null && container.TryConsumeOrFail(container.MainValueDef, TNSProps.consumeAmt))
+-                powerProductionTicks = (int)(GenDate.TicksPerDay * TNSProps.daysPerLoad);
++            if (powerProductionTicks <= 0)
++            {
++                if (CompTNW.Container.TryConsume(TNWProps.consumeAmt))
++                    powerProductionTicks = (int)(GenDate.TicksPerDay * TNWProps.daysPerLoad);
++            }
++            else
++                powerProductionTicks--;
+         }
+-        else
++
++        public override string CompInspectStringExtra()
+         {
+-            powerProductionTicks--;
++            StringBuilder sb = new StringBuilder();
++            sb.AppendLine(base.CompInspectStringExtra());
++            sb.AppendLine("Power left for: " +  GenDate.ToStringTicksToPeriod(powerProductionTicks));
++            return sb.ToString().TrimEndNewlines();
+         }
+     }
+ 
+-    public override string CompInspectStringExtra()
++    public class PowerProperties : CompProperties_TNW
+     {
+-        var sb = new StringBuilder();
+-        sb.AppendLine(base.CompInspectStringExtra());
++        public int consumeAmt = 0;
++        public float daysPerLoad = 1;
+-        if (GeneratesPowerNow)
+-            sb.AppendLine("TR_PowerLeft".Translate(powerProductionTicks.ToStringTicksToPeriod()));
+-        return sb.ToString().TrimEndNewlines();
+     }
+ }
+ 

@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="DoorBase">
+		<defName>GDI_Door</defName>
+		<label>GDI door</label>
+		<description>Divides rooms. Must be manually opened and closed, which slows people down.</description>
+		<graphicData>
+			<texPath>Building/GDI/Defense/Door_GDI</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<enabled>false</enabled>
+			</damageData>
+		</graphicData>
+		<costList>
+			<GDI_ReinforcedPlate>4</GDI_ReinforcedPlate>
+		</costList>
+		<uiIconPath>Building/GDI/Defense/Door_GDI_icon</uiIconPath>
+		<designationCategory>Structure</designationCategory>
+		<researchPrerequisites><li>GDIResearch_Buildings</li></researchPrerequisites>
+		<statBases>
+			<WorkToBuild>750</WorkToBuild>
+			<MaxHitPoints>750</MaxHitPoints>
+			<Flammability>0.0</Flammability>
+		</statBases>
+		<damageMultipliers>
+		<li>
+			<damageDef>TRSound</damageDef>
+			<multiplier>0.5</multiplier>
+		</li>
+		</damageMultipliers>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</ThingDef>
+
+	<ThingDef ParentName="DoorBase">
+		<defName>GDI_Autodoor</defName>
+		<label>GDI autodoor</label>
+		<description>Divides rooms. Powered operation allows people to move through the door without slowing down.</description>
+		<graphicData>
+		<texPath>Building/GDI/Defense/AutoDoor_GDI</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<damageData>
+			<enabled>false</enabled>
+		</damageData>
+		</graphicData>
+		<uiIconPath>Building/GDI/Defense/AutoDoor_GDI_icon</uiIconPath>
+		<costList>
+			<GDI_ReinforcedPlate>4</GDI_ReinforcedPlate>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+				<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+		</comps>
+		<designationCategory>Structure</designationCategory>
+		<researchPrerequisites>
+			<li>Autodoors</li>
+			<li>GDIResearch_Buildings</li>
+		</researchPrerequisites>
+		<statBases>
+			<WorkToBuild>1000</WorkToBuild>
+			<MaxHitPoints>750</MaxHitPoints>
+			<Flammability>0.0</Flammability>
+		</statBases>
+		<damageMultipliers>
+		<li>
+			<damageDef>TRSound</damageDef>
+			<multiplier>0.5</multiplier>
+		</li>
+		</damageMultipliers>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</ThingDef>	
+
+	<ThingDef ParentName="BuildingBase" Name="GDIWall">
+		<defName>GDIWall</defName>
+		<label>GDI wall</label>
+		<thingClass>Building</thingClass>
+		<category>Building</category>
+		<description>An impassable wall, reinforced by GDI engineers.</description>
+		<graphicData>
+			<texPath>Building/GDI/Defense/Wall_GDI</texPath>
+			<graphicClass>Graphic_single</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Wall</li>
+				<li>Rock</li>
+			</linkFlags>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
+		</graphicData>
+		<costList>
+			<GDI_ReinforcedPlate>3</GDI_ReinforcedPlate>
+		</costList>
+		<uiIconPath>Building/GDI/Defense/Wall_GDI_Icon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>1000</MaxHitPoints>
+			<WorkToBuild>1000</WorkToBuild>
+			<Flammability>0.0</Flammability>
+		</statBases>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Impassable</passability>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>1</fillPercent>
+		<coversFloor>true</coversFloor>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<tickerType>Never</tickerType>
+		<rotatable>false</rotatable>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<holdsRoof>true</holdsRoof>
+		<designationCategory>Structure</designationCategory>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<blockLight>true</blockLight>
+		<canOverlapZones>false</canOverlapZones>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<blueprintGraphicData>
+				<texPath>Building/GDI/Defense/Wall_GDI</texPath>
+			</blueprintGraphicData>
+		</building>
+		<damageMultipliers>
+		<li>
+			<damageDef>Bomb</damageDef>
+			<multiplier>2</multiplier>
+		</li>
+		<li>
+			<damageDef>TRSound</damageDef>
+			<multiplier>0</multiplier>
+		</li>
+		</damageMultipliers>
+		<researchPrerequisites><li>GDIResearch_Buildings</li></researchPrerequisites>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>GDIPillbox</defName>
+		<label>Pillbox</label>
+		<description>Cover from gunfire.</description>
+		<thingClass>Building</thingClass>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Building/GDI/Defense/Pillbox_GDI</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>Basic</linkType>
+			<linkFlags>
+				<li>Custom10</li>
+			</linkFlags>
+		</graphicData>
+		<uiIconPath>Building/GDI/Defense/Pillbox_GDI_icon</uiIconPath>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Impassable</passability>
+		<blockLight>false</blockLight>
+		<blockWind>false</blockWind>
+		<coversFloor>false</coversFloor>
+		<holdsRoof>false</holdsRoof>
+		<castEdgeShadows>false</castEdgeShadows>
+		<fillPercent>0.6</fillPercent>
+		<canOverlapZones>false</canOverlapZones>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<Beauty>0</Beauty>
+			<WorkToBuild>350</WorkToBuild>
+			<Flammability>0</Flammability>
+		</statBases>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<blueprintGraphicData>
+				<texPath>Building/GDI/Defense/Pillbox_GDI</texPath>
+			</blueprintGraphicData>
+		</building>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<costList>
+			<GDI_ReinforcedPlate>5</GDI_ReinforcedPlate>
+		</costList>
+		<rotatable>false</rotatable>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<designationCategory>Security</designationCategory>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<constructEffect>ConstructDirt</constructEffect>
+		<repairEffect>ConstructDirt</repairEffect>
+		<researchPrerequisites><li>GDIResearch_Buildings</li></researchPrerequisites>
+		<damageMultipliers>
+			<li>
+				<damageDef>Bomb</damageDef>
+				<multiplier>2</multiplier>
+			</li>
+			<li>
+				<damageDef>TRSound</damageDef>
+				<multiplier>0.5</multiplier>
+			</li>
+		</damageMultipliers>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</ThingDef>	
+		
+	<!-- Inhibition -->
+	<!--
+	<ThingDef ParentName="BuildingBase">
+		<defName>SonicFence</defName>
+		<label>Sonic Inhibitor Fence</label>
+		<thingClass>Building</thingClass>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Building/GDI/Defense/SonicInhibition/Fence_Sonic</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>Basic</linkType>
+			<linkFlags>
+				<li>Custom9</li>
+			</linkFlags>
+		</graphicData>
+		<building>
+			<isEdifice>true</isEdifice>
+			<ai_chillDestination>false</ai_chillDestination>
+			<blueprintGraphicData>
+				<texPath>Building/GDI/Defense/SonicInhibition/Fence_Sonic</texPath>
+			</blueprintGraphicData>
+		</building>
+		<uiIconPath>Building/GDI/Defense/SonicInhibition/SonicFenceIcon</uiIconPath>
+		<altitudeLayer>Building</altitudeLayer>
+		<pathCost>999</pathCost>
+		<pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+		<passability>PassThroughOnly</passability>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>0.65</fillPercent>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToBuild>750</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<description>This fence allows you to cut off Tiberium spread. Requires power.</description>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<costList>
+			<GDI_ReinforcedPlate>3</GDI_ReinforcedPlate>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>7</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+				<transmitsPower>true</transmitsPower>
+			</li>
+
+			<li Class="TiberiumRimFactions.CompProperties_SonicInhibition">
+				<compClass>TiberiumRimFactions.ThingComp_SonicInhibition</compClass>
+				<radius>1</radius>
+				<damageShutdownPercent>0.8</damageShutdownPercent>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1</glowRadius>
+				<glowColor>(200,200,255)</glowColor>
+			</li>
+		</comps>
+		<tickerType>Rare</tickerType>
+		<placeWorkers>
+			<li>TiberiumRimFactions.PlaceWorker_TiberiumInhibitorAll</li>
+		</placeWorkers>
+		<rotatable>false</rotatable>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<designationCategory>Tiberium</designationCategory>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<constructEffect>ConstructDirt</constructEffect>
+		<clearBuildingArea>true</clearBuildingArea>
+		<repairEffect>ConstructDirt</repairEffect>
+		<researchPrerequisites><li>GDIResearch_SonicTechnology</li></researchPrerequisites>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>SonicInhibitorSmall</defName>
+		<label>Sonic Inhibitor(s)</label>
+		<description>A device designed to destroy Tiberium and prevent further growth. Due to the experimental nature of the device, it requires direct line of sight to the Tiberium to function. This small version has a smaller radius.</description>
+		<thingClass>Building</thingClass>
+		<category>Building</category>
+		<designationCategory>Tiberium</designationCategory>
+		<graphicData>
+			<texPath>Building/GDI/Defense/SonicInhibition/Inhibitor_small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,3)</drawSize>
+			<shadowData>
+				<volume>(0.5,0.5,0.5)</volume>
+				<offset>(0,0,0)</offset>
+			</shadowData>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<statBases>
+			<MarketValue>2500</MarketValue>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>2500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-13</Beauty>
+		</statBases>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<fillPercent>0.65</fillPercent>
+		<costList>
+			<GDI_ReinforcedPlate>10</GDI_ReinforcedPlate>
+			<GDI_SonicCore>1</GDI_SonicCore>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(200,200,255,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>450</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="TiberiumRimFactions.CompProperties_SonicInhibition">
+				<compClass>TiberiumRimFactions.ThingComp_SonicInhibition</compClass>
+				<radius>6</radius>
+				<damageShutdownPercent>0.6</damageShutdownPercent>
+			</li>
+		</comps>
+		<tickerType>Rare</tickerType>
+		<placeWorkers>
+			<li>TiberiumRimFactions.PlaceWorker_TiberiumInhibitorAll</li>
+		</placeWorkers>
+		<rotatable>false</rotatable>
+		<researchPrerequisites><li>GDIResearch_SonicTechnology</li></researchPrerequisites>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>SonicInhibitorTall</defName>
+		<label>Sonic Inhibitor(t)</label>
+		<description>A device designed to destroy Tiberium and prevent further growth. Due to the experimental nature of the device, it requires direct line of sight to the Tiberium to function. This tall version has a bigger radius.</description>
+		<thingClass>Building</thingClass>
+		<category>Building</category>
+		<designationCategory>Tiberium</designationCategory>
+		<graphicData>
+			<texPath>Building/GDI/Defense/SonicInhibition/Inhibitor_tall</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,3)</drawSize>
+			<shadowData>
+				<volume>(0.5,0.5,0.5)</volume>
+				<offset>(0,0,0)</offset>
+			</shadowData>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<statBases>
+			<MarketValue>5000</MarketValue>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-13</Beauty>
+		</statBases>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<fillPercent>0.65</fillPercent>
+		<costList>
+			<GDI_ReinforcedPlate>25</GDI_ReinforcedPlate>
+			<GDI_SonicCore>2</GDI_SonicCore>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(200,200,255,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>950</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="TiberiumRimFactions.CompProperties_SonicInhibition">
+				<compClass>TiberiumRimFactions.ThingComp_SonicInhibition</compClass>
+				<radius>12</radius>
+				<damageShutdownPercent>0.6</damageShutdownPercent>
+			</li>
+		</comps>
+		<tickerType>Rare</tickerType>
+		<placeWorkers>
+			<li>TiberiumRimFactions.PlaceWorker_TiberiumInhibitorAll</li>
+		</placeWorkers>
+		<rotatable>false</rotatable>
+		<researchPrerequisites><li>GDIResearch_SonicTechnology</li></researchPrerequisites>
+		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>Decrystallizer</defName>
+		<label>Tiberium Soil Decrystallizer</label>
+		<description>Very slowly removes Tiberium from infected ground, converting any Tiberium ground into decrystallized soil that can be used again. Does not affect contaminated water. Requires power.</description>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Building/GDI/Defense/SonicInhibition/Decrystallizer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,3)</drawSize>
+			<shadowData>
+				<volume>(0.25, 0.5, 0.25)</volume>
+				<offset>(0,0,-0.1)</offset>
+			</shadowData>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(200,200,255,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="TiberiumRimFactions.CompProperties_Decrystallizer">
+				<radius>15</radius>
+				<daysToRadius>4.5</daysToRadius>
+			</li>
+		</comps>
+		<tickerType>Rare</tickerType>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-12</Beauty>
+		</statBases>
+		<fillPercent>0.15</fillPercent>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+		</building>
+		<costList>
+			<GDI_ReinforcedPlate>20</GDI_ReinforcedPlate>
+			<GDI_SonicCore>1</GDI_SonicCore>
+		</costList>
+		<specialDisplayRadius>14.9</specialDisplayRadius>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<pathCost>30</pathCost>
+		<designationCategory>Tiberium</designationCategory>
+		<rotatable>false</rotatable>
+		<researchPrerequisites><li>GDIResearch_SonicTechnology</li></researchPrerequisites>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</ThingDef>
+	-->
+	
+	<!-- Firestorm -->
+	<!--
+	<ThingDef ParentName="BuildingBase" Name="GDIFirestormWall">
+		<defName>GDI_FirestormWall_FSW</defName>
+		<label>Firestorm Wall Segment</label>
+		<thingClass>Building</thingClass>
+		<category>Building</category>
+		<description>A segment of the Firestorm system.</description>
+		<graphicData>
+			<texPath>Building/GDI/Defense/Firestorm/Wall_Firestorm_off</texPath>
+			<graphicClass>Graphic_single</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Custom5</li>
+			</linkFlags>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
+		</graphicData>
+		<costList>
+			<GDI_ReinforcedPlate>5</GDI_ReinforcedPlate>
+		</costList>
+		<uiIconPath>Building/GDI/Defense/Firestorm/FirestormWallIcon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>1000</WorkToBuild>
+			<Flammability>0.0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="TiberiumRimFactions.CompProperties_FirestormWall"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>15</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+				<transmitsPower>true</transmitsPower>
+			</li>
+		</comps>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<altitudeLayer>Floor</altitudeLayer>
+		<passability>Standable</passability>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<fillPercent>0.5</fillPercent>
+		<coversFloor>false</coversFloor>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<tickerType>Normal</tickerType>
+		<rotatable>false</rotatable>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<holdsRoof>false</holdsRoof>
+		<designationCategory>Security</designationCategory>
+		<staticSunShadowHeight>0.0</staticSunShadowHeight>
+		<blockLight>false</blockLight>
+		<canOverlapZones>false</canOverlapZones>
+		<clearBuildingArea>true</clearBuildingArea>
+		<building>
+			<isInert>true</isInert>
+			<ai_chillDestination>false</ai_chillDestination>
+			<blueprintGraphicData>
+				<texPath>Building/GDI/Defense/Firestorm/Wall_Firestorm_off</texPath>
+			</blueprintGraphicData>
+		</building>
+		<researchPrerequisites><li>GDIResearch_FirestormTechnology</li></researchPrerequisites>
+		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>GDI_FirestormDummy_FSW</defName>
+		<thingClass>Building</thingClass>
+		<label>Firestorm Segment</label>
+		<graphicData>
+			<texPath>Building/GDI/Defense/Firestorm/Wall_Firestorm_on</texPath>
+			<graphicClass>Graphic_single</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Custom8</li>
+			</linkFlags>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
+		</graphicData>
+		<comps>
+			<li Class="TiberiumRimFactions.CompProperties_FirestormWall"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>5</glowRadius>
+				<glowColor>(200,200,255,0)</glowColor>
+			</li>
+		</comps>
+		<altitudeLayer>Floor</altitudeLayer>
+		<rotatable>false</rotatable>
+		<destroyable>false</destroyable>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Normal</tickerType>
+		<selectable>true</selectable>
+		<description>Powered Firestorm Segment, it is recommended that absolutely nothing steps on it.</description>
+		<neverMultiSelect>true</neverMultiSelect>
+		<neverOverlapFloors>true</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<building>
+			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>false</deconstructible>
+		</building>
+	</ThingDef>
+	
+	<ThingDef Class="TiberiumRimFactions.ThingDef_FirestormTextures" ParentName="BuildingBase">
+		<defName>GDI_FirestormCenter</defName>
+		<label>Firestorm Operations Center</label>
+		<thingClass>TiberiumRimFactions.Building_FirestormTexture</thingClass>
+		<description>This specialized facility registers all Firestorm-Segments placed by this Faction. When enough power is available the Firestorm-System can be activated anytime and will last for a day, completely cutting off any intruders.\n\nOnly one can be built.</description>
+		<graphicData>
+			<texPath>Building/GDI/Defense/Firestorm/Firestorm_off</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(6,6)</drawSize>
+			<shadowData>
+				<volume>(1.4, 0.5, 1.4)</volume>
+				<offset>(0,0,-0.1)</offset>
+			</shadowData>
+		</graphicData>
+		<secondaryGraphicPath>Building/GDI/Defense/Firestorm/Firestorm_on</secondaryGraphicPath>
+		<costList>
+			<GDI_ReinforcedPlate>200</GDI_ReinforcedPlate>
+			<ComponentIndustrial>50</ComponentIndustrial>
+			<GDI_SonicCore>5</GDI_SonicCore>
+			<TRBattleChip>10</TRBattleChip>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>5</explosiveRadius>
+				<explosiveDamageType>TRSound</explosiveDamageType>
+			</li>
+			<li Class="TiberiumRimFactions.CompProperties_FirestormCenter"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(200,200,255,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>5000</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+				<transmitsPower>false</transmitsPower>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Flickable"/>				
+		</comps>
+		<passability>Impassable</passability>
+		<altitudeLayer>Building</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<statBases>
+			<MarketValue>100000</MarketValue>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>100000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>0</Beauty>
+		</statBases>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<fillPercent>0.40</fillPercent>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<pathCost>25</pathCost>
+		<designationCategory>Security</designationCategory>
+		<rotatable>false</rotatable>
+		<canOverlapZones>false</canOverlapZones>
+		<size>(5,5)</size>
+		<placeWorkers>
+			<li>TiberiumRimFactions.PlaceWorker_FireStormWalls</li>
+			<li>TiberiumRimFactions.PlaceWorker_AlreadyExists</li>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+		<researchPrerequisites><li>GDIResearch_FirestormTechnology</researchPrerequisites>
+		<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+	</ThingDef>
+	-->
+	
+</Defs>

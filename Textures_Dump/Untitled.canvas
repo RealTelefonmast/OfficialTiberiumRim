@@ -1,0 +1,7 @@
+{
+	"nodes":[
+		{"id":"1423c9d1150b6b29","x":-120,"y":-135,"width":250,"height":60,"type":"text","text":"Building_Hangar"},
+		{"id":"780da19a0b91d468","x":-220,"y":-260,"width":250,"height":60,"type":"text","text":"Pawn"}
+	],
+	"edges":[]
+}

@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<BodyPartDef>
+		<defName>TetraPodLeftFrontLeg</defName>
+		<label>Left front leg</label>
+		<hitPoints>50</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>ManipulationLimbSegment</li>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef>
+		<defName>TetraPodRightFrontLeg</defName>
+		<label>Right front leg</label>
+		<hitPoints>50</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>ManipulationLimbSegment</li>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef>
+		<defName>TetraPodLeftHindLeg</defName>
+		<label>Left hind leg</label>
+		<hitPoints>50</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef>
+		<defName>TetraPodRightHindLeg</defName>
+		<label>Right hind leg</label>
+		<hitPoints>50</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+
+  <BodyPartDef>
+    <defName>ScrinBase</defName>
+    <label>Exoskeleton Armor</label>
+    <hitPoints>100</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>true</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>ScrinHead</defName>
+    <label>Head</label>
+    <hitPoints>100</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>true</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>CenterScrinEye</defName>
+    <label>center eye</label>
+    <hitPoints>15</hitPoints>
+    <frostbiteVulnerability>2</frostbiteVulnerability>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+    <tags>
+      <li>SightSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>LeftScrinEye</defName>
+    <label>left eye</label>
+    <hitPoints>15</hitPoints>
+    <frostbiteVulnerability>2</frostbiteVulnerability>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+    <tags>
+      <li>SightSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>RightScrinEye</defName>
+    <label>right eye</label>
+    <hitPoints>15</hitPoints>
+    <frostbiteVulnerability>2</frostbiteVulnerability>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+    <tags>
+      <li>SightSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>HearingOrgan</defName>
+    <label>hearing organ</label>
+    <hitPoints>15</hitPoints>
+    <frostbiteVulnerability>2</frostbiteVulnerability>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+    <tags>
+      <li>HearingSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>TetraPodCore</defName>
+    <label>Energy Core</label>
+    <hitPoints>50</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+    <tags>
+      <li>MovingLimbCore</li>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+
+  <BodyPartDef>
+    <defName>ScrinBrain</defName>
+    <label>Scrin Brain</label>
+    <hitPoints>30</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+    <tags>
+      <li>ConsciousnessSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>GunOrgan</defName>
+    <label>Energy Emitter</label>
+    <hitPoints>50</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+    <tags>
+	  <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>ScrinPelvis</defName>
+    <label>Pelvis</label>
+    <hitPoints>50</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+    <tags>
+	  <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+	<BodyPartDef>
+		<defName>OuterSwarm</defName>
+		<label>Outer Swarm</label>
+		<hitPoints>20</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+	</BodyPartDef>
+
+	<BodyPartDef>
+    <defName>NeuralSwarm</defName>
+    <label>Neural Swarm</label>
+    <hitPoints>15</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+    <tags>
+      <li>ConsciousnessSource</li>
+	  <li>HearingSource</li>
+	  <li>SightSource</li>
+    </tags>
+	</BodyPartDef>
+  
+	<BodyPartDef>
+		<defName>LiftSwarm</defName>
+		<label>Lift Swarm</label>
+		<hitPoints>10</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbCore</li>
+		</tags>
+	</BodyPartDef>
+
+  <BodyPartDef>
+    <defName>RazorSwarm</defName>
+    <label>Razor Swarm</label>
+    <hitPoints>10</hitPoints>
+    <frostbiteVulnerability>2</frostbiteVulnerability>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+	<tags>
+		<li>ManipulationLimbCore</li>
+	</tags>
+  </BodyPartDef>
+  
+  
+</Defs>

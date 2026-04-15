@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TerrainDef Name="FloorBaseTR" Abstract="True">
+		<layerable>true</layerable>
+			<affordances>
+			<li>Light</li>
+			<li>Medium</li>
+			<li>Heavy</li>
+		</affordances>
+		<tags>
+			<li>Floor</li>
+		</tags>
+		<designationCategory>Floors</designationCategory>
+		<fertility>0</fertility>
+		<constructEffect>ConstructDirt</constructEffect>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<pollutionShaderType MayRequire="Ludeon.RimWorld.Biotech">TerrainFadeRoughLinearBurn</pollutionShaderType>
+		<pollutionOverlayTexturePath MayRequire="Ludeon.RimWorld.Biotech">Terrain/Surfaces/PollutionFloorSmooth</pollutionOverlayTexturePath>
+		<pollutionColor MayRequire="Ludeon.RimWorld.Biotech">(1, 1, 1, 0.8)</pollutionColor>
+		<pollutionOverlayScale MayRequire="Ludeon.RimWorld.Biotech">(0.75, 0.75)</pollutionOverlayScale>
+	</TerrainDef>
+	
+</Defs>

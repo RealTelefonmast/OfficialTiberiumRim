@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TetraPodLeftFrontLeg.label>왼쪽 앞다리</TetraPodLeftFrontLeg.label>
+  <TetraPodRightFrontLeg.label>오른쪽 앞다리</TetraPodRightFrontLeg.label>
+  <TetraPodLeftHindLeg.label>왼쪽 뒷다리</TetraPodLeftHindLeg.label>
+  <TetraPodRightHindLeg.label>오른쪽 뒷다리</TetraPodRightHindLeg.label>
+  <ScrinBase.label>몸통</ScrinBase.label>
+  <ScrinHead.label>외골격 장갑</ScrinHead.label>
+  <CenterScrinEye.label>1번 집광기</CenterScrinEye.label>
+  <LeftScrinEye.label>2번 집광기</LeftScrinEye.label>
+  <RightScrinEye.label>3번 집광기</RightScrinEye.label>
+  <HearingOrgan.label>청각 기관</HearingOrgan.label>
+  <TetraPodCore.label>축전핵</TetraPodCore.label>
+  <ScrinBrain.label>뇌</ScrinBrain.label>
+  <GunOrgan.label>방출기</GunOrgan.label>
+  <ScrinPelvis.label>골반</ScrinPelvis.label>
+  <OuterSwarm.label>방어 군체</OuterSwarm.label>
+  <NeuralSwarm.label>신경 군체</NeuralSwarm.label>
+  <LiftSwarm.label>반중력 군체</LiftSwarm.label>
+  <RazorSwarm.label>쐐기 군체</RazorSwarm.label>
+
+
+</LanguageData>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BenchBase">
+		<defName>TiberiumResearchBench</defName>
+		<label>tiberium research station</label>
+		<description>A specialized research bench for Tiberium technologies.\n\nResearch is sped up by the high-tech tools.\n\nRequires power.</description>
+		<thingClass>Building_ResearchBench</thingClass>
+		<size>(7,4)</size>
+		<costList>
+			<Uranium>10</Uranium>
+			<Steel>350</Steel>
+			<Component>10</Component>
+			<GreenTiberiumRaw>50</GreenTiberiumRaw>
+		</costList>
+		<graphicData>
+			<texPath>Building/Tiberium/TiberiumLAB</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(8,4)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<statBases>
+			<MaxHitPoints>750</MaxHitPoints>
+			<WorkToBuild>8000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<ResearchSpeedFactor>1.0</ResearchSpeedFactor>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>475</basePowerConsumption>
+				<startElectricalFires>false</startElectricalFires>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>MultiAnalyzer</li>
+					<li>TiberiumResearchCraftingBench</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,3)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<designationCategory>Tiberium</designationCategory>
+		<surfaceType>Item</surfaceType>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>MicroelectronicsBasics</li>
+		</researchPrerequisites>
+	</ThingDef>
+	
+	
+	<ThingDef ParentName="BenchBase">
+		<defName>TiberiumResearchCraftingBench</defName>
+		<label>Tiberium research crafting adapter</label>
+		<description>This building allows the crafting of Tiberium items.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<size>(3,4)</size>
+		<costList>
+			<Gold>5</Gold>
+			<Steel>75</Steel>
+			<Component>2</Component>
+		</costList>
+		<recipes>
+			<li>MakeBookRiparius</li>
+			<li>MakeBookVinifera</li>
+			<li>MakeBookRutila</li>
+		</recipes>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<graphicData>
+			<texPath>Building/Tiberium/TibResearchCrafter</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4.5,4.5)</drawSize>
+			<shadowData>
+				<volume>(1.5,1,1.5)</volume>
+			</shadowData>
+			<damageData>
+				<rect>(0.3,0.1,2.4,1.8)</rect>
+			</damageData>
+		</graphicData>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,3)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<designationCategory>Tiberium</designationCategory>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>TiberiumKnowledge</li>
+		</researchPrerequisites>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<startElectricalFires>true</startElectricalFires>
+				<basePowerConsumption>125</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Facility">
+				<statOffsets>
+					<ResearchSpeedFactor>0</ResearchSpeedFactor>
+				</statOffsets>
+				<maxSimultaneous>1</maxSimultaneous>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+	</ThingDef>
+    
+</Defs>

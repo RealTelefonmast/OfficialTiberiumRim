@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78109E3C-6332-4BF3-8875-CDA9CBCE70DE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TiberiumRim</RootNamespace>
+    <AssemblyName>TiberiumRim</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>obj\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>References\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>F:\Steam\steamapps\common\RimWorld\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>F:\Steam\steamapps\common\RimWorld\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Alert_MissionTimer.cs" />
+    <Compile Include="Alert_NewMission.cs" />
+    <Compile Include="Alert_TiberiumInfestation.cs" />
+    <Compile Include="Alert_TiberiumInHomeArea.cs" />
+    <Compile Include="Alert_TiberiumNeed.cs" />
+    <Compile Include="BiomeWorker_TiberiumRedZone.cs" />
+    <Compile Include="Building_Connector.cs" />
+    <Compile Include="Building_Monolith.cs" />
+    <Compile Include="Building_TiberiumPowerPlant.cs" />
+    <Compile Include="Building_TiberiumResearchBench.cs" />
+    <Compile Include="Building_TiberiumSpike.cs" />
+    <Compile Include="Building_GraphicSwitchable.cs" />
+    <Compile Include="Building_TiberiumTurret.cs" />
+    <Compile Include="CompFX.cs" />
+    <Compile Include="CompTiberiumPowerPlant.cs" />
+    <Compile Include="Comp_GraphicExtra.cs" />
+    <Compile Include="Comp_GroundFreezer.cs" />
+    <Compile Include="Comp_Upgrade.cs" />
+    <Compile Include="Designator_BuildWithParent.cs" />
+    <Compile Include="Building_GasCrack.cs" />
+    <Compile Include="Building_MechSpawner.cs" />
+    <Compile Include="Building_Refinery.cs" />
+    <Compile Include="Building_TiberiumCrafter.cs" />
+    <Compile Include="Building_TiberiumGeyser.cs" />
+    <Compile Include="Building_TiberiumProducer.cs" />
+    <Compile Include="Building_TNC.cs" />
+    <Compile Include="Building_Veinhole.cs" />
+    <Compile Include="Building_VeinHub.cs" />
+    <Compile Include="Building_VeinTentacle.cs" />
+    <Compile Include="Command_SetTiberiumToPrefer.cs" />
+    <Compile Include="Comp_PlantExplode.cs" />
+    <Compile Include="Comp_RepairDrone.cs" />
+    <Compile Include="Comp_TNW.cs" />
+    <Compile Include="DeathActionWorker_TiberiumExplosion.cs" />
+    <Compile Include="Dialog_Difficulty.cs" />
+    <Compile Include="Gas_Tiberium.cs" />
+    <Compile Include="GenTiberium.cs" />
+    <Compile Include="GenTiberiumReproduction.cs" />
+    <Compile Include="Harvester.cs" />
+    <Compile Include="HediffComp_Mutation.cs" />
+    <Compile Include="HediffComp_TiberAdd.cs" />
+    <Compile Include="HediffComp_Tiberium.cs" />
+    <Compile Include="HediffComp_TiberiumAddiction.cs" />
+    <Compile Include="HediffComp_TiberiumInfusionImmunity.cs" />
+    <Compile Include="HediffComp_TiberiumReverseMutation.cs" />
+    <Compile Include="IHarvestPreferenceSettable.cs" />
+    <Compile Include="IncidentProperties.cs" />
+    <Compile Include="IncidentWorker_MissionStart.cs" />
+    <Compile Include="IncidentWorker_ProducerSpawn.cs" />
+    <Compile Include="IncidentWorker_FiendsArrive.cs" />
+    <Compile Include="IncidentWorker_IonStorm.cs" />
+    <Compile Include="ITab_TiberiumResearch.cs" />
+    <Compile Include="JobDriver_DoMissionObjective.cs" />
+    <Compile Include="JobDriver_ObserveTiberium.cs" />
+    <Compile Include="JobDriver_TiberiumBath.cs" />
+    <Compile Include="JobDriver_WanderAtParent.cs" />
+    <Compile Include="JobGiver_Amalgamation.cs" />
+    <Compile Include="JobInfo.cs" />
+    <Compile Include="JobWithObjects.cs" />
+    <Compile Include="MainButtonWorker_ToggleMissionTab.cs" />
+    <Compile Include="MainTabWindow_MissionObjectives.cs" />
+    <Compile Include="MapComponent_EVA.cs" />
+    <Compile Include="MapComponent_WaterHandler.cs" />
+    <Compile Include="Mechanical_Pawn.cs" />
+    <Compile Include="Mission.cs" />
+    <Compile Include="MissionIncidentDef.cs" />
+    <Compile Include="PlaceWorker_Once.cs" />
+    <Compile Include="SkillRequirement.cs" />
+    <Compile Include="TibBill.cs" />
+    <Compile Include="JobDriver_RapairAnyMechWithinRange.cs" />
+    <Compile Include="JobDriver_ReturnToRefineryToIdle.cs" />
+    <Compile Include="JobDriver_ReturnToRefineryToUnload.cs" />
+    <Compile Include="JobDriver_SearchAndHarvestTiberium.cs" />
+    <Compile Include="MapComponent_TiberiumHandler.cs" />
+    <Compile Include="Need_Tiberium.cs" />
+    <Compile Include="PlaceWorker_OnTiberiumProducer.cs" />
+    <Compile Include="PlaceWorker_TNW.cs" />
+    <Compile Include="RecipeDef_Tiberium.cs" />
+    <Compile Include="RepairDrone.cs" />
+    <Compile Include="StringWrapper.cs" />
+    <Compile Include="TiberiumChunk.cs" />
+    <Compile Include="TiberiumContainer.cs" />
+    <Compile Include="TiberiumControlDef.cs" />
+    <Compile Include="TiberiumCrystal.cs" />
+    <Compile Include="TiberiumCrystalDef.cs" />
+    <Compile Include="TiberiumDefOf.cs" />
+    <Compile Include="TiberiumHediffDefOf.cs" />
+    <Compile Include="TiberiumIncidentDef.cs" />
+    <Compile Include="TiberiumKindDef.cs" />
+    <Compile Include="TiberiumLifeStage.cs" />
+    <Compile Include="TRMats.cs" />
+    <Compile Include="MissionObjectiveDef.cs" />
+    <Compile Include="TiberiumPosIndices.cs" />
+    <Compile Include="TiberiumProperties.cs" />
+    <Compile Include="MissionDef.cs" />
+    <Compile Include="TiberiumRim.cs" />
+    <Compile Include="TiberiumRimPatches.cs" />
+    <Compile Include="TiberiumTargetingParams.cs" />
+    <Compile Include="TiberiumTerrain.cs" />
+    <Compile Include="TiberiumType.cs" />
+    <Compile Include="TRUtils.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TRThingDef.cs" />
+    <Compile Include="Visceroid.cs" />
+    <Compile Include="WorldComponent_TiberiumMissions.cs" />
+    <Compile Include="WorldComponent_TiberiumSpread.cs" />
+    <Compile Include="WorldLayer_Tiberium.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

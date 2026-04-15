@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TR.TRThingDef Abstract="True" Name="DronePlatform" ParentName="StationBase_TR">
+		<description>.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>100</pathCost>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<fillPercent>0.25</fillPercent>
+		<tickerType>Normal</tickerType>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>800</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-5</Beauty>
+		</statBases>
+		<size>(4,4)</size>
+		<inspectorTabs>
+			<li>TR.ITab_MechConstruction</li>
+			<li>TR.ITab_MechUpgrade</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>150</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<constructEffect>ConstructMetal</constructEffect>
+		<canOverlapZones>false</canOverlapZones>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Common</groupDef>
+				<category>Misc</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+<!-- Unnecessary building
+	<TR.TRThingDef ParentName="DronePlatform">
+		<defName>RepairDronePlatformL</defName>
+		<label>repair drone platform (Large)</label>
+		<graphicData>
+			<texPath>Buildings/Common/Misc/DronePlatform</texPath>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<size>(4,4)</size>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>800</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TR.CompProperties_DroneStation">
+				<mechRecipes>
+					<li>MakeRepairDroneCommon</li>
+				</mechRecipes>
+				<mechKindDef>RepairDrone_Common</mechKindDef>
+				<mechCapacity>4</mechCapacity>
+				<garageCapacity>4</garageCapacity>
+				<radius>12</radius>
+				<renderSize>1.3</renderSize>
+				<renderOffsets>
+					<li>(0,0,1)</li>
+					<li>(1.1,0,0)</li>
+					<li>(0,0,-1)</li>
+					<li>(-1.1,0,0)</li>
+				</renderOffsets>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Resource Pool</fuelLabel>
+				<fuelGizmoLabel>Resource Pool</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>100</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.25</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>10</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot use drones.</outOfFuelMessage>
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+	</TR.TRThingDef>
+-->	
+	
+	<TR.TRThingDef ParentName="DronePlatform">
+		<defName>RepairDronePlatformS</defName>
+		<label>repair drone platform</label>
+		<graphicData>
+			<texPath>Buildings/Common/Misc/DronePlatform_Small</texPath>
+			<drawSize>(1.75,1.75)</drawSize>
+		</graphicData>
+		<size>(1,1)</size>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>2000</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-5</Beauty>
+		</statBases>
+		<costList>
+			<Steel>75</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TR.CompProperties_DroneStation">
+				<mechRecipes>
+					<li>MakeRepairDroneCommon</li>
+				</mechRecipes>
+				<mechKindDef>RepairDrone_Common</mechKindDef>
+				<mechCapacity>1</mechCapacity>
+				<garageCapacity>1</garageCapacity>
+				<renderSize>1</renderSize>
+				<radius>10</radius>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Resource Pool</fuelLabel>
+				<fuelGizmoLabel>Resource Pool</fuelGizmoLabel>
+				<fuelFilter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>25</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.25</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<atomicFueling>true</atomicFueling>
+				<fuelMultiplier>10</fuelMultiplier>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<outOfFuelMessage>Cannot use drones.</outOfFuelMessage>
+				<!--TODO: Make icon for missing building-resources-->
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
+	</TR.TRThingDef>	
+	
+</Defs>

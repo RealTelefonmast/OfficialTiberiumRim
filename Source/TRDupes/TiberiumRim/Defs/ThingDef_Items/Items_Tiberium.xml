@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="ResourceBase" Abstract="True">
+		<thingClass>ThingWithComps</thingClass>
+		<category>Item</category>
+		<resourceReadoutPriority>Middle</resourceReadoutPriority>
+		<useHitPoints>true</useHitPoints>
+		<selectable>true</selectable>
+		<altitudeLayer>Item</altitudeLayer>
+		<stackLimit>75</stackLimit>
+			<statBases>
+				<Beauty>-7</Beauty>
+			</statBases>
+			<comps>
+				<li Class="CompProperties_Forbiddable"/>
+			</comps>
+			<alwaysHaulable>true</alwaysHaulable>
+			<drawGUIOverlay>true</drawGUIOverlay>
+			<rotatable>false</rotatable>
+			<pathCost>15</pathCost>			
+	</ThingDef>
+
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>GreenTiberiumRaw</defName>
+		<label>raw green Tiberium crystal</label>
+		<description>The raw form of Tiberium. Be careful how you handle it! It can be refined.</description>
+		<graphicData>
+			<texPath>Item/Resource_TiberiumGreen</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Silver_Drop</soundInteract>
+		<soundDrop>Silver_Drop</soundDrop>
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<MarketValue>15</MarketValue>
+			<Mass>0.1</Mass>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>150</stackLimit>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <TiberiumGreen>6</TiberiumGreen>
+        </killedLeavings>
+    </ThingDef>
+	  
+	  
+	<ThingDef ParentName="ResourceBase">
+		<defName>BlueTiberiumRaw</defName>
+		<label>raw blue Tiberium crystal</label>
+		<description>The raw form of Tiberium. Be careful how you handle it! It can be refined.</description>
+		<graphicData>
+			<texPath>Item/Resource_TiberiumBlue</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Silver_Drop</soundInteract>
+		<soundDrop>Silver_Drop</soundDrop>
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<MarketValue>30</MarketValue>
+			<Mass>0.2</Mass>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>150</stackLimit>
+		 <killedLeavings>
+            <TiberiumBlue>5</TiberiumBlue>
+        </killedLeavings>
+    </ThingDef>
+	    
+	<ThingDef ParentName="ResourceBase">
+		<defName>RedTiberiumRaw</defName>
+		<label>raw red Tiberium crystal</label>
+		<description>The raw form of Tiberium. Be careful how you handle it! It can be refined.</description>
+		<graphicData>
+			<texPath>Item/Resource_TiberiumRed</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Silver_Drop</soundInteract>
+		<soundDrop>Silver_Drop</soundDrop>
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<MarketValue>100</MarketValue>
+			<Mass>0.5</Mass>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>150</stackLimit>
+		<killedLeavings>
+            <TiberiumRed>2</TiberiumRed>
+        </killedLeavings>
+    </ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>VeinTiberiumRaw</defName>
+		<label>raw vein</label>
+		<description>A harvested vein. It is unknown how this creature works, and why the veins act similar to crystals.</description>
+		<graphicData>
+			<texPath>Item/Resource_TiberiumVein</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>0.6</Mass>
+			<MarketValue>75</MarketValue>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>150</stackLimit>
+		<killedLeavings>
+            <TiberiumVein>4</TiberiumVein>
+        </killedLeavings>
+    </ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>TiberiumFuel</defName>
+		<label>Tiberium Fuel</label>
+		<description>A refined form of Tiberium. Useful as fuel.</description>
+		<graphicData>
+			<texPath>Item/Resource_TiberiumFuel</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Silver_Drop</soundInteract>
+		<soundDrop>Silver_Drop</soundDrop>
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<MarketValue>300</MarketValue>
+			<Mass>0.1</Mass>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>175</stackLimit>
+		<killedLeavings>
+            <TiberiumGreen>9</TiberiumGreen>
+        </killedLeavings>
+    </ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>BookRiparius</defName>
+		<label>riparius book</label>
+		<description>Tiberium Riparius.\n\nThe green kind of Tiberium is the most common one.\n\nIt came to planet Earth a long time ago, long before this rim world has been infected.\n\nThis kind spreads the quickest, infecting big areas within days.\n\nSo be careful if you encounter any!\n\nAvoid touching it no matter the cost.\n\nThe substance, no matter the kind, will infect any carbon based lifeform and crystalize it.\n\nThis ability makes it highly toxic.\n\nTiberium is an unkown type of mineral that converts anything and everything that is carbon-based around itself into Tiberium.\n\nThis happens due to reactions between Tiberium nuclei and the other material's nuclei.</description>
+		<graphicData>
+			<texPath>Item/BookRiparius</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>50</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>25</stackLimit>
+    </ThingDef>
+	
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>BookVinifera</defName>
+		<label>vinifera book</label>
+		<description>Tiberium Vinifera.\n\nThe blue kind of Tiberium, it is the "mature" form of green Tiberium as it evolved.\n\nIt is rare compared to the green Tiberium.\n\nThis kind spreads more slowly in comparision.\n\nBe careful if you encounter any as it is still toxic!\n\nThis type explains the theory that Tiberium is more of a living being.\n\nTiberium in general mutates any life if it did not kill it at first.\n\nThese Tiberium lifeforms feed on Tiberium if they are animals, or spread it, if they are plants.\n\nIt is still unproven how much of living being Tiberium is.\n\nFurther investigation is needed.</description>
+		<graphicData>
+			<texPath>Item/BookVinifera</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>125</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>25</stackLimit>
+    </ThingDef>
+	
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>BookRutila</defName>
+		<label>rutila book</label>
+		<description>Tiberium Rutila.\n\nThe red kind of Tiberium, it is very rare.\n\nJust like the blue type, it has even more valuable resources contained.\n\nAlthough the first sightings showed that it doesn't spread, it seems to have evolved the ability to do so, however, very slowly.\n\nIt is speculated that red Tiberium matures into ---[DATA LOST]---/---\n\n§)§$%?!%%##$%---</description>
+		<graphicData>
+			<texPath>Item/BookRutila</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>225</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>25</stackLimit>
+    </ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>TiberiumPlantTree</defName>
+		<label>tiberium wood</label>
+		<description>This wood-like matter is not usable as regular wood, it is beneficial as a medical ingredient thiugh.</description>
+		<graphicData>
+			<texPath>Item/TiberiumWood</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>25</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>0.65</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>75</stackLimit>
+    </ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>TiberiumPlantGrass</defName>
+		<label>tiberium grass</label>
+		<description>This alien grass seems.. alive? Well don't let its movement fool you, as much as it might want to strangle your pawns, it's as harmless as regular grass - just don't eat it, like regular grass.</description>
+		<graphicData>
+			<texPath>Item/TiberiumGrass</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MaxHitPoints>25</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>5</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>0.85</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>125</stackLimit>
+    </ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>TiberiumPlantShroom</defName>
+		<label>tiberium shroom</label>
+		<description>The fruit of the weird mushrooms that grow in the fields of green. They should be useful for Tiberium drugs.</description>
+		<graphicData>
+			<texPath>Item/TiberiumShroom</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MaxHitPoints>40</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>10</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>0.25</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>100</stackLimit>
+    </ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>TiberiumPlantBerry</defName>
+		<label>tiberium berries</label>
+		<description>A bunch of strange 'fruit' from various Tiberium flora, while not consumable, it should prove useful.</description>
+		<graphicData>
+			<texPath>Item/TiberiumBerry</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>	
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MaxHitPoints>30</MaxHitPoints>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>15</MarketValue>
+			<Mass>0.1</Mass>
+			<Flammability>0.50</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>TiberiumItems</li>
+		</thingCategories>
+		<stackLimit>225</stackLimit>
+    </ThingDef>
+	
+	<ThingDef ParentName="MakeableDrugPillBase">
+		<defName>TiberAdd</defName>
+		<label>Tiberadd</label>
+		<description>This drug helps pawns dependant on Tiberium radiation. After ingesting it will fill up their need.</description>
+		<graphicData>
+			<texPath>Item/TiberAdd</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>725</WorkToMake>
+			<MarketValue>250</MarketValue>
+			<Mass>0.01</Mass>
+		</statBases>
+		<techLevel>Industrial</techLevel>
+		<ingestible>
+			<drugCategory>Medical</drugCategory>
+			<outcomeDoers>
+			<li Class="IngestionOutcomeDoer_GiveHediff">
+			  <hediffDef>TiberAddHediff</hediffDef>
+			  <severity>1.0</severity>
+			</li>
+		  </outcomeDoers>
+		</ingestible>
+		<recipeMaker>
+			<researchPrerequisite>TiberiumKnowledge</researchPrerequisite>
+			<recipeUsers>
+				<li>TiberiumResearchCraftingBench</li>
+			</recipeUsers>
+		</recipeMaker>
+		<costList>
+			<TiberiumPlantGrass>3</TiberiumPlantGrass>
+			<TiberiumPlantShroom>1</TiberiumPlantShroom>
+			<Neutroamine>5</Neutroamine>
+		</costList>
+				<comps>
+			<li Class="CompProperties_Drug">
+			<listOrder>1074</listOrder>
+				<overdoseSeverityOffset>
+					<min>0.08</min>
+					<max>0.14</max>
+				</overdoseSeverityOffset>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>TiberiumKnowledge</li>
+		</researchPrerequisites>
+	</ThingDef>
+	
+</Defs>

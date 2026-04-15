@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TiberiumRim.TRThingDef Abstract="True" ParentName="BuildingBase_TR" Name="GDIBuildings">
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Structure</category>
+			</li>
+		</modExtensions>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef Abstract="True" ParentName="BuildingBase_TR" Name="NodBuildings">
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Nod</groupDef>
+				<category>Structure</category>
+			</li>
+		</modExtensions>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef Abstract="True" ParentName="BuildingBase_TR" Name="ScrinBuildings">
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Scrin</groupDef>
+				<category>Structure</category>
+			</li>
+		</modExtensions>
+	</TiberiumRim.TRThingDef>
+	
+</Defs>

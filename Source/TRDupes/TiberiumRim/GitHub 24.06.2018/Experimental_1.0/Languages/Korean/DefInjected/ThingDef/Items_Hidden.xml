@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumInfuse.label>타이베리움 항체</TiberiumInfuse.label>
+  <TiberiumInfuse.description>노드 교도들이 혹독한 타이베리움 환경에 적응하기 위해 사용하는 약품입니다. 케인의 선물이라는 별명으로도 불립니다.</TiberiumInfuse.description>
+
+  <MutantGoodInfuse.label>Infusion (hidden)</MutantGoodInfuse.label>
+  <MutantGoodInfuse.description>...</MutantGoodInfuse.description>
+
+  <MutantBadInfuse.label>Infusion (hidden)</MutantBadInfuse.label>
+  <MutantBadInfuse.description>...</MutantBadInfuse.description>
+
+  <FeelNoPainMechNPCInfuse.label>Infusion (hidden)</FeelNoPainMechNPCInfuse.label>
+  <FeelNoPainMechNPCInfuse.description>...</FeelNoPainMechNPCInfuse.description>
+
+
+</LanguageData>

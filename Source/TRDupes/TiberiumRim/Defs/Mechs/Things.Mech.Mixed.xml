@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TR.TRThingDef ParentName="BuildingBase_TR">
+		<defName>HarvesterHusk_GDI</defName>
+		<label>Harvester husk</label>
+		<description>The remains of a destroyed harvester.</description>
+		<altitudeLayer>Building</altitudeLayer>
+		<graphicData>
+			<texPath>Pawns/Mechanical/GDI/Harvester/Harvester_GDI_D</texPath>
+			<drawRotated>false</drawRotated>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<Beauty>-25</Beauty>
+			<TiberiumDamageResistance>0.9</TiberiumDamageResistance>
+		</statBases>
+		<costList>
+			<GDI_ReinforcedPlate>10</GDI_ReinforcedPlate>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<uiIconScale>0.3</uiIconScale>
+		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+		<rotatable>true</rotatable>
+		<destroyable>true</destroyable>
+		<useHitPoints>true</useHitPoints>
+		<tickerType>Never</tickerType>
+		<selectable>true</selectable>
+		<size>(1,1)</size>
+		<neverOverlapFloors>false</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<building>
+			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>true</deconstructible>
+		</building>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="BuildingBase_TR">
+		<defName>HarvesterHusk_Nod</defName>
+		<label>Harvester husk</label>
+		<description>The remains of a destroyed harvester.</description>
+		<altitudeLayer>Building</altitudeLayer>
+		<graphicData>
+			<texPath>Pawns/Mechanical/Nod/Harvester/Harvester_Nod_D</texPath>
+			<drawRotated>false</drawRotated>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Beauty>-25</Beauty>
+			<TiberiumDamageResistance>0.9</TiberiumDamageResistance>
+		</statBases>
+		<costList>
+			<Nod_CarbonPlate>10</Nod_CarbonPlate>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<uiIconScale>0.3</uiIconScale>
+		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+		<rotatable>true</rotatable>
+		<destroyable>true</destroyable>
+		<useHitPoints>true</useHitPoints>
+		<tickerType>Never</tickerType>
+		<selectable>true</selectable>
+		<size>(1,1)</size>
+		<neverOverlapFloors>false</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<building>
+			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>true</deconstructible>
+		</building>
+	</TR.TRThingDef>
+
+</Defs>

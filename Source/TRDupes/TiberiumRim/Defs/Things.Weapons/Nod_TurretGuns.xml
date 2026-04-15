@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- Turrets -->
+	
+	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>Gun_NodObelisk</defName>
+		<label>obelisk gun</label>
+		<description>pew pew</description>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Obelisk/ObeliskGun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_ShootBeam</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<warmupTime>1.0</warmupTime>
+				<range>24.9</range>
+				<minRange>3.9</minRange>
+				<beamFullWidthRange>6.9</beamFullWidthRange>
+				<burstShotCount>5</burstShotCount>
+				<showBurstShotStats>false</showBurstShotStats>
+				<beamWidth>6</beamWidth>
+				<ticksBetweenBurstShots>22</ticksBetweenBurstShots>
+				<beamDamageDef>Beam</beamDamageDef>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<soundCastBeam>Obelisk_Shot</soundCastBeam>
+				<beamGroundFleckDef>Fleck_BeamScorchMark</beamGroundFleckDef>
+				<beamFleckChancePerTick>0.32</beamFleckChancePerTick>
+				<beamMaxDeviation>1.5</beamMaxDeviation>
+				<beamCurvature>0.6</beamCurvature>
+				<beamMoteDef>Mote_ObeliskBeamAttached</beamMoteDef>
+				<beamEndEffecterDef>AnyBeam_End</beamEndEffecterDef>
+				<beamChanceToStartFire>0.85</beamChanceToStartFire>
+				<beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+				<beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+				<beamLineFleckDef>Fleck_BeamSparking</beamLineFleckDef>
+				<beamStartOffset>0.8</beamStartOffset>
+				<beamLineFleckChanceCurve>
+					<points>
+						<li>(0, 0)</li>
+						<li>(0.65, 0.4)</li>
+						<li>(1, 0.75)</li>
+					</points>
+				</beamLineFleckChanceCurve>
+			</li>
+			<!--
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>Verb_ShootBeam</verbClass>
+				<beamProps>
+					<damageDef>TRObeliskBlast</damageDef>
+					<isStatic>false</isStatic>
+					<damageBaseOverride>80</damageBaseOverride>
+					<stoppingPowerOverride>1</stoppingPowerOverride>
+					<armorPenetrationOverride>1</armorPenetrationOverride>
+					<visWidth>0.9~1</visWidth>
+					<impactEffecter>StrongBeamHit</impactEffecter>
+					<impactExplosion>
+						<damageOverride>50</damageOverride>
+						<damageDef>TRObeliskBlast</damageDef>
+						<explosionRadius>0.25</explosionRadius>
+  						<fireChance>1</fireChance>
+					</impactExplosion>
+					<impactFilth IsNull="True"/>
+				</beamProps>
+				<originEffecter>ObeliskOriginGlow</originEffecter>
+				<shootHeightOffset>4.5</shootHeightOffset>
+				<minHitHeight>1</minHitHeight>
+				
+				<originOffsetPerShot>
+					<li>(0,0,0)</li>
+				</originOffsetPerShot>
+				
+				<hasStandardCommand>true</hasStandardCommand>
+				<requireLineOfSight>false</requireLineOfSight>
+				<warmupTime>3.5</warmupTime>
+				<minRange>3.9</minRange>
+				<range>39.9</range>
+				<chargeSound>Obelisk_Chargup</chargeSound>
+				<soundCast IsNull="True"/>
+
+				
+				<beamFullWidthRange>8</beamFullWidthRange>
+				<beamWidth>8</beamWidth>
+				<burstShotCount>8</burstShotCount>
+				<ticksBetweenBurstShots>20</ticksBetweenBurstShots>	
+				<beamGroundFleckDef>Fleck_BeamScorchMark</beamGroundFleckDef>
+				<beamLineFleckDef>Fleck_BeamSparking</beamLineFleckDef>
+				<beamFleckChancePerTick>0.32</beamFleckChancePerTick>
+				<beamMaxDeviation>0.25</beamMaxDeviation>
+				<beamCurvature>0.6</beamCurvature>
+				<beamMoteDef>Mote_ObeliskBeamAttached</beamMoteDef>
+				
+				<beamEndEffecterDef>AnyBeam_End</beamEndEffecterDef>
+				<beamChanceToStartFire>1</beamChanceToStartFire>
+				<beamChanceToAttachFire>1</beamChanceToAttachFire>
+				<beamFireSizeRange>0.45~0.5</beamFireSizeRange>
+				<beamStartOffset>0.15</beamStartOffset>
+				<beamLineFleckChanceCurve>
+					<points>
+						<li>(0, 1)</li>
+						<li>(1, 1)</li>
+					</points>
+				</beamLineFleckChanceCurve>
+				<consumeFuelPerShot>2</consumeFuelPerShot>
+			</li>
+			-->
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>Gun_ShredderTurret</defName>
+		<label>shredder turret gun</label>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Turrets/Shredder_Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
+				<originOffsetPerShot>	
+					<li>(0.25,0,0.85)</li>
+					<li>(-0.25,0,0.85)</li>
+				</originOffsetPerShot>
+				<shotStartOffset>(0,0,0.75)</shotStartOffset>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Shredder</defaultProjectile>
+				<warmupTime>1.5</warmupTime>
+				<range>17.9</range>
+				<burstShotCount>2</burstShotCount>
+				<ticksBetweenBurstShots>25</ticksBetweenBurstShots>
+				<soundCast>Shot_Nod_Shredder</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>2</muzzleFlashScale>
+				<consumeFuelPerShot>0</consumeFuelPerShot>
+			</li>
+		</verbs>
+	</ThingDef>
+	
+	<!--
+	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>Gun_FlameTurret</defName>
+		<label>flame turret gun</label>
+		<graphicData>
+			<texPath>Buildings/Nod/Defense/Turrets/Flame/Flamer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
+				<originOffsetPerShot>	
+					<li>(0,0,1.15)</li>
+				</originOffsetPerShot>
+				<shotIntervalTicks>5</shotIntervalTicks>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_FlamethrowerTower</defaultProjectile>
+				<warmupTime>0</warmupTime>
+				<range>12.9</range>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<forcedMissRadius>0.1</forcedMissRadius>
+				<soundCast>Shot_Nod_Flame</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>0</muzzleFlashScale>
+				<consumeFuelPerShot>0</consumeFuelPerShot>
+			</li>
+		</verbs>
+	</ThingDef>
+	-->
+</Defs>

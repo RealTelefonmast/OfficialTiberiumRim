@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<PawnKindDef>
+		<defName>Forgotten_Ironback</defName>
+		<label>Ironback</label>
+		<race>Ironback</race>
+		<combatPower>275</combatPower>
+		<defaultFactionType>Forgotten</defaultFactionType>
+		<aiAvoidCover>true</aiAvoidCover>
+		<destroyGearOnDrop>false</destroyGearOnDrop>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+				<texPath>Pawns/Mechanical/Forgotten/Ironback</texPath>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<drawSize>2.5</drawSize>
+				<shadowData>
+				<volume>(1, 1, 1)</volume>
+				</shadowData>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+		<weaponMoney>
+			<min>3000</min>
+			<max>5000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>BigArm</li>
+		</weaponTags>
+		<techHediffsMoney>
+			<min>2000</min>
+			<max>2000</max>
+		</techHediffsMoney>
+		<techHediffsTags>
+			<li>MechInfuse</li>
+		</techHediffsTags>
+		<techHediffsChance>1</techHediffsChance>
+		<inventoryOptions>
+			<skipChance>0.75</skipChance>
+			<thingDef>TRBattleChip</thingDef>
+			<countRange>
+			<min>1</min>
+			<max>5</max>
+			</countRange>
+		</inventoryOptions>
+	</PawnKindDef>	
+	
+
+</Defs>

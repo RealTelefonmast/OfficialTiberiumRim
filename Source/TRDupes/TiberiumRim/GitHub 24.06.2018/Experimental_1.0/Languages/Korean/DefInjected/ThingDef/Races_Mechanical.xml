@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Harvester_TBI.label>하베스터</Harvester_TBI.label>
+  <Harvester_TBI.description>표준형 하베스터입니다. 입력한 명령에 따라 타이베리움을 자동 수확합니다.</Harvester_TBI.description>
+  <Harvester_TBI.tools.0.label>조종석</Harvester_TBI.tools.0.label>
+  <Harvester_TBI.tools.1.label>왼쪽 수확팔</Harvester_TBI.tools.1.label>
+  <Harvester_TBI.tools.2.label>오른쪽 수확팔</Harvester_TBI.tools.2.label>
+  <!-- Flesh Type: Mechanoid -->
+  <Harvester_TBI_Corpse.label>하베스터 잔해</Harvester_TBI_Corpse.label>
+  <Harvester_TBI_Corpse.description>파괴된 하베스터의 잔해입니다.</Harvester_TBI_Corpse.description>
+
+  <RepairDrone_Common_TBI.label>수리 드론</RepairDrone_Common_TBI.label>
+  <RepairDrone_Common_TBI.description>손상된 기계 유닛을 수리하기 위해 설계된 작은 드론입니다.</RepairDrone_Common_TBI.description>
+  <RepairDrone_Common_TBI.tools.0.label>드릴</RepairDrone_Common_TBI.tools.0.label>
+  <RepairDrone_Common_TBI.tools.1.label>절단기</RepairDrone_Common_TBI.tools.1.label>
+  <RepairDrone_Common_TBI.tools.2.label>방탄판</RepairDrone_Common_TBI.tools.2.label>
+  <!-- Flesh Type: Mechanoid -->
+  <RepairDrone_Common_TBI_Corpse.label>수리 드론 잔해</RepairDrone_Common_TBI_Corpse.label>
+  <RepairDrone_Common_TBI_Corpse.description>파괴된 수리 드론의 잔해입니다.</RepairDrone_Common_TBI_Corpse.description>
+
+  <HarvesterHusk_Common.label>하베스터 잔해</HarvesterHusk_Common.label>
+  <HarvesterHusk_Common.description>파괴된 하베스터의 잔해입니다.</HarvesterHusk_Common.description>
+
+
+</LanguageData>

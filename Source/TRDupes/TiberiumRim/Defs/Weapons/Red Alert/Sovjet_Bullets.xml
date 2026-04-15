@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Turrets -->
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Projectile_TeslaArc</defName>
+		<label>tesla arc</label>
+		<thingClass>TR.Projectile_TeslaArc</thingClass>
+		<graphicData>
+			<texPath>Items/Weapons/Gun_Blank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.1</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>13</damageAmountBase>
+			<stoppingPower>0.75</stoppingPower>
+			<speed>100</speed>
+			<armorPenetrationBase>0.45</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseBullet_TR">
+		<defName>Bullet_ArmCannonSniper</defName>
+		<label>bullet</label>
+		<description>bullet</description>
+		<graphicData>
+			<texPath>Items/Weapons/Projectile/Bullet_Base_Nod</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.7</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>18</damageAmountBase>
+			<stoppingPower>0.75</stoppingPower>
+			<speed>220</speed>
+			<armorPenetrationBase>1</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+	
+</Defs>

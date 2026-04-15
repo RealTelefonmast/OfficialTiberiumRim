@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TR.TRThingDef ParentName="StationBase_TR">
+		<defName>Nod_Factory</defName>
+		<label>Nod assembler</label>
+		<description>The Nod Assembler is used to create high-tier materials and items.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<size>(3,2)</size>
+		<minifiedDef />
+		<thingCategories Inherit="false" />
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Production/Factory/Base</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>7500</WorkToBuild>
+			<Flammability>1</Flammability>
+		</statBases>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+			<ComponentSpacer>3</ComponentSpacer>
+		</costList>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<recipes>
+			<li>MakeCarbonPlate</li>
+			<li>MakeLQTiberiumCore</li>
+		</recipes>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>300</basePowerConsumption>
+			</li>
+<!--			<li Class="TR.CompProperties_TNS">
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>				
+						<volumeConfig>
+							<capacity>1000</capacity>
+							<leaveContainer>true</leaveContainer>
+							<values>
+								<allowedValues>
+									<li>TibGreen</li>	
+									<li>TibBlue</li>	
+									<li>TibRed</li>	
+									<li>TibSludge</li>	
+								</allowedValues>
+							</values>
+						</volumeConfig>
+						<roles>
+							<li>Transmitter</li>
+							<li>Requester</li>
+						</roles>
+					</li>
+				</networks>
+			</li>-->
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Nod</groupDef>
+				<category>Processing</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	
+	<TR.TRThingDef ParentName="StationBase_TR">
+		<defName>Nod_Hangar</defName>
+		<label>Nod vehicle hangar</label>
+		<description>This hangar is used for mechanical unit construction.</description>
+		<thingClass>TR.Building_Hangar</thingClass>
+		<tickerType>Normal</tickerType>
+		<size>(5,5)</size>
+		<minifiedDef />
+		<thingCategories Inherit="false" />
+		<castEdgeShadows>true</castEdgeShadows>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<fillPercent>1</fillPercent>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
+		<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Production/Hangar/Base</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>7,7</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+		<statBases>
+			<MaxHitPoints>750</MaxHitPoints>
+			<WorkToBuild>15000</WorkToBuild>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<costList>
+			<Steel>500</Steel>
+			<ComponentIndustrial>15</ComponentIndustrial>
+			<ComponentSpacer>10</ComponentSpacer>
+		</costList>
+		<inspectorTabs>
+			<li>TR.ITab_MechConstruction</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Production/Hangar/BaseLight</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,7)</drawSize>
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Production/Hangar/Cover</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<drawSize>(7,7)</drawSize>
+						</graphicData>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Production/Hangar/CoverLight</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(7,7)</drawSize>
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+				</fxLayers>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+			</li>
+		</comps>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Nod</groupDef>
+				<category>Processing</category>
+			</li>
+			<li Class="TeleCore.TeleDefExtension">
+				<thingGroups>
+					<groups>
+						<li>MechHangars</li>
+					</groups>
+				</thingGroups>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<!--
+	<TR.TRThingDef ParentName="BuildingBase_TR">
+		<defName>Nod_Crane</defName>
+		<label>Crane</label>
+		<description>.</description>
+		<thingClass>Building</thingClass>
+		<altitudeLayer>Building</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.75</fillPercent>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<rotatable>false</rotatable>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<size>(2,2)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Nod/Production/Crane/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,4)</drawSize>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<costList>
+			<Steel>275</Steel>
+			<Nod_CarbonPlate>10</Nod_CarbonPlate>
+			<ComponentIndustrial>15</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/Nod/Production/Crane/Light</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2,4)</drawSize>
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+				</fxLayers>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>750</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+			<li Class="TiberiumRimFactions.CompProperties_NodCrane">
+				<statList>
+					<MoveSpeed>1.1</MoveSpeed>
+					<MiningSpeed>1.25</MiningSpeed>
+					<WorkSpeedGlobal>1.25</WorkSpeedGlobal>			
+					<ConstructionSpeed>1.5</ConstructionSpeed>
+					<ConstructSuccessChance>1.25</ConstructSuccessChance>
+				</statList>
+			</li>
+			
+		</comps>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<placeWorkers>
+			<li>TeleCore.PlaceWorker_Once</li>
+		</placeWorkers>
+	</TR.TRThingDef>-->
+
+</Defs>

@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!--
+	<ThingDef ParentName="BuildingBase">
+		<defName>InactiveScrinShip_TBNS</defName>
+		<label>Inactive ship</label>
+		<description>This alien ship seems to be inactive, maybe it might be useful for research?</description>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Building/Scrin/CrashedShip/Scrin_Ship2</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(9,9)</drawSize>
+			<damageData>
+				<rect>(0.1,0.1,1.8,1.8)</rect>
+			</damageData>
+			<shadowData>
+				<volume>(4, 4, 2.5)</volume>
+			</shadowData>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<pathCost>35</pathCost>
+		<blockWind>true</blockWind>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.50</fillPercent>
+		<size>(5,5)</size>
+		<tickerType>Rare</tickerType>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<Beauty>-75</Beauty>
+			<WorkToBuild>12000</WorkToBuild>
+		</statBases>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<killedLeavings>
+			<ChunkSlagSteel>8</ChunkSlagSteel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+			<TRBattleChip>3</TRBattleChip>
+		</killedLeavings>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>8</glowRadius>
+				<glowColor>(76,0,153)</glowColor>
+			</li>
+			<li Class="CompProperties_TemperatureDamaged">
+				<safeTemperatureRange>
+				<min>9000</min>
+				<max>9500</max>
+				</safeTemperatureRange>
+				<damagePerTickRare>1</damagePerTickRare>
+			</li>
+		</comps>
+		<building>
+			<claimable>false</claimable>
+			<alwaysDeconstructible>false</alwaysDeconstructible>
+		</building>
+		<selectable>true</selectable>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<drawerType>MapMeshOnly</drawerType>
+		<repairEffect>ConstructMetal</repairEffect>
+		<filthLeaving>FilthTiberiumBlue</filthLeaving>
+	</ThingDef>
+  
+	<ThingDef ParentName="BuildingBase">
+		<defName>ActiveScrinShip_TBNS</defName>
+		<label>Active ship</label>
+		<description>This alien ship seems to be active, you should be careful.</description>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Building/Scrin/CrashedShip/Scrin_Ship1</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(9,9)</drawSize>
+			<damageData>
+				<rect>(0.1,0.1,1.8,1.8)</rect>
+			</damageData>
+			<shadowData>
+				<volume>(4, 4, 2.5)</volume>
+			</shadowData>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<pathCost>35</pathCost>
+		<blockWind>true</blockWind>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.50</fillPercent>
+		<size>(5,5)</size>
+		<tickerType>Rare</tickerType>
+		<statBases>
+			<MaxHitPoints>2500</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<Beauty>-50</Beauty>
+			<WorkToBuild>12000</WorkToBuild>
+		</statBases>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<killedLeavings>
+			<ChunkSlagSteel>8</ChunkSlagSteel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+			<TRBattleChip>3</TRBattleChip>
+			<ScrinPortal_TBNS>2</ScrinPortal_TBNS>
+		</killedLeavings>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerPlant</compClass>
+				<basePowerConsumption>-6000</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>8</glowRadius>
+				<glowColor>(125,125,255)</glowColor>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>100</heatPerSecond>
+			</li>
+			<li Class="CompProperties_TemperatureDamaged">
+				<safeTemperatureRange>
+				<min>9000</min>
+				<max>9500</max>
+				</safeTemperatureRange>
+				<damagePerTickRare>1</damagePerTickRare>
+			</li>
+		</comps>
+		<building>
+			<claimable>false</claimable>
+			<alwaysDeconstructible>false</alwaysDeconstructible>
+		</building>
+		<selectable>true</selectable>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<drawerType>MapMeshOnly</drawerType>
+		<repairEffect>ConstructMetal</repairEffect>
+		<filthLeaving>FilthTiberiumBlue</filthLeaving>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>DronePlatform_TBNS</defName>
+		<label>Scrin Drone Platform</label>
+		<description>A hive platform of Scrins. Will spawn additional Scrin units over time.</description>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Building/Scrin/DronePlatform</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(4,8)</drawSize>
+			<shadowData>
+				<volume>(2.5, 2.5, 2.5)</volume>
+			</shadowData>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<pathCost>50</pathCost>
+		<blockWind>true</blockWind>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.50</fillPercent>
+		<size>(3,3)</size>
+		<tickerType>Rare</tickerType>
+		<statBases>
+			<MaxHitPoints>5000</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<Beauty>-250</Beauty>
+		</statBases>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<killedLeavings>
+			<ComponentIndustrial>10</ComponentIndustrial>
+			<TRBattleChip>5</TRBattleChip>
+			<Gun_ShockLanceLauncher>1</Gun_ShockLanceLauncher>
+		</killedLeavings>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+				<corruptsInto>ScrinFloor</corruptsInto>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>4</glowRadius>
+				<glowColor>(200,200,250)</glowColor>
+			</li>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>ScrinNode_TBNS</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>25000</min>
+					<max>50000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>5</spawnMaxAdjacent>
+			</li>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>ScrinPortal_TBNS</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>15000</min>
+					<max>30000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>2</spawnMaxAdjacent>
+			</li>
+		</comps>
+		<building>
+			<claimable>false</claimable>
+			<alwaysDeconstructible>false</alwaysDeconstructible>
+		</building>
+		<selectable>true</selectable>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<drawerType>MapMeshOnly</drawerType>
+		<repairEffect>ConstructMetal</repairEffect>
+		<filthLeaving>FilthTiberiumBlue</filthLeaving>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>ScrinNode_TBNS</defName>
+		<label>Invasion Node</label>
+		<description>A sub node for the drone platform. Will spawn additional Scrin units over time.</description>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Building/Scrin/Subnode</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>(2,4)</drawSize>
+			<shadowData>
+				<volume>(1, 1, 1)</volume>
+			</shadowData>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<pathCost>50</pathCost>
+		<blockWind>true</blockWind>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.50</fillPercent>
+		<size>(1,1)</size>
+		<tickerType>Rare</tickerType>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<Beauty>-50</Beauty>
+		</statBases>
+		<costList>
+			<Steel>15</Steel>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+				<corruptsInto>ScrinFloor</corruptsInto>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(200,200,250)</glowColor>
+			</li>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>ScrinPortal_TBNS</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>25000</min>
+					<max>50000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>2</spawnMaxAdjacent>
+			</li>
+		</comps>
+		<building>
+			<claimable>false</claimable>
+			<alwaysDeconstructible>false</alwaysDeconstructible>
+		</building>
+		<selectable>true</selectable>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<drawerType>MapMeshOnly</drawerType>
+		<repairEffect>ConstructMetal</repairEffect>
+		<filthLeaving>FilthTiberiumBlue</filthLeaving>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>ScrinPortal_TBNS</defName>
+		<label>Scrin portal</label>
+		<description>The Portal beams Scrin in from space. It is a large blue sphere, suspended in the air beneath a structure that resembles a giant, warped football goal. </description>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Building/Scrin/ScrinPortal</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0.1,0.1,0.1,0.5)</rect>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<pathCost>35</pathCost>
+		<blockWind>true</blockWind>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.50</fillPercent>
+		<size>(1,1)</size>
+		<tickerType>Rare</tickerType>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<Beauty>50</Beauty>
+		</statBases>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+				<corruptsInto>ScrinFloor</corruptsInto>
+			</li>
+			<li Class="CompProperties_TemperatureDamaged">
+				<safeTemperatureRange>
+				<min>9000</min>
+				<max>9500</max>
+				</safeTemperatureRange>
+				<damagePerTickRare>25</damagePerTickRare>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(255,255,255)</glowColor>
+			</li>
+			<li Class="TiberiumRimFactions.CompProperties_ScrinShip"/>
+		</comps>
+		<building>
+			<claimable>false</claimable>
+			<alwaysDeconstructible>false</alwaysDeconstructible>
+		</building>
+		<selectable>true</selectable>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<drawerType>MapMeshOnly</drawerType>
+		<repairEffect>ConstructMetal</repairEffect>
+		<filthLeaving>FilthTiberiumBlue</filthLeaving>
+	</ThingDef>
+	
+  <ThingDef ParentName="ShipPartBase">
+    <defName>CrashedPsychicEmanatorShipPart</defName>
+    <label>ancient ship part (psychic)</label>
+    <description>A mysterious crashed piece of a spaceship. It may contain exotic materials and computers. This one seems to be emanating psychic waves.</description>
+    <graphicData>
+      <texPath>Things/Building/Exotic/CrashedShipPart</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(6,3)</drawSize>
+    </graphicData>
+    <killedLeavings>
+      <Steel>280</Steel>
+      <Silver>140</Silver>
+      <ChunkSlagSteel>2</ChunkSlagSteel>
+    </killedLeavings>
+    <comps>
+      <li Class="CompProperties_PsychicDrone" />
+      <li Class="CompProperties_AnimalInsanityPulser" />
+    </comps>
+  </ThingDef>
+-->
+</Defs>

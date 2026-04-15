@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<!-- GDI -->
+  	<TeleCore.RecipeDef_Network>
+		<defName>MakeReinforcedPlate</defName>
+		<label>produce reinforced plate</label>
+		<description>produces 10 Reinforced Plate.</description>
+		<jobString>producing reinforced plate.</jobString>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workAmount>1500</workAmount>
+		<workSpeedStat>SmeltingSpeed</workSpeedStat>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+					<li>Plasteel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Plasteel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<GDI_ReinforcedPlate>10</GDI_ReinforcedPlate>
+		</products>
+		<workSkill>Crafting</workSkill>	
+		<skillRequirements>
+			<Crafting>6</Crafting>
+		</skillRequirements>
+	</TeleCore.RecipeDef_Network>
+	
+	<TeleCore.RecipeDef_Network>
+		<defName>MakeGDISonicCore</defName>
+		<label>make a sonic core</label>
+		<description>This core is a necessary component in most GDI sonic technology.</description>
+		<jobString>making a sonic core.</jobString>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workAmount>10000</workAmount>
+		<workSpeedStat>SmeltingSpeed</workSpeedStat>
+		<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+		<networkCost>
+			<costSet>
+				<specificCosts>
+					<TibBlue MayRequire="telefonmast.tiberiumrim.main">60</TibBlue>
+				</specificCosts>
+			</costSet>
+		</networkCost>
+		<ingredients>
+			<li>
+				<filter>
+				<thingDefs>
+					<li>ComponentSpacer</li>
+				</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>Gold</li>
+			  </thingDefs>
+			</filter>
+			<count>1</count>
+		  </li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ComponentSpacer</li>
+				<li>Gold</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+		  <GDI_SonicCore>1</GDI_SonicCore>
+		</products>
+		<workSkill>Crafting</workSkill>
+		<skillRequirements>
+			<Crafting>12</Crafting>
+		</skillRequirements>
+	</TeleCore.RecipeDef_Network>
+
+	
+	<!-- Nod -->
+	<TeleCore.RecipeDef_Network>
+		<defName>MakeCarbonPlate</defName>
+		<label>produce carbon plate</label>
+		<description>produces 10 carbon plates.</description>
+		<jobString>making carbon plates.</jobString>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workAmount>1500</workAmount>
+		<workSpeedStat>SmeltingSpeed</workSpeedStat>
+		<ingredients>
+			<li>
+				<filter>
+				<thingDefs>
+					<li>Steel</li>
+				</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+					<li>Plasteel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Plasteel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Nod_CarbonPlate>10</Nod_CarbonPlate>
+		</products>
+		<workSkill>Crafting</workSkill>	
+		<skillRequirements>
+			<Crafting>6</Crafting>
+		</skillRequirements>
+	</TeleCore.RecipeDef_Network>
+	
+	<TeleCore.RecipeDef_Network>
+		<defName>MakeLQTiberiumCore</defName>
+		<label>make a liquid tiberium Core</label>
+		<description>This core is a necessary component in most Nod chemical technology.</description>
+		<jobString>making a liquid tiberium core.</jobString>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workAmount>10000</workAmount>
+		<workSpeedStat>SmeltingSpeed</workSpeedStat>
+		<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+		<networkCost>
+			<costSet>
+				<specificCosts>
+					<TibBlue MayRequire="telefonmast.tiberiumrim.main">60</TibBlue>
+				</specificCosts>
+			</costSet>
+		</networkCost>
+		<ingredients>
+			<li>
+				<filter>
+				<thingDefs>
+					<li>ComponentSpacer</li>
+				</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>Uranium</li>
+			  </thingDefs>
+			</filter>
+			<count>10</count>
+		  </li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ComponentSpacer</li>
+				<li>Uranium</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+		  <Nod_LQTiberiumCore>1</Nod_LQTiberiumCore>
+		</products>
+		<workSkill>Crafting</workSkill>
+		<skillRequirements>
+			<Crafting>12</Crafting>
+		</skillRequirements>
+	</TeleCore.RecipeDef_Network>
+	
+</Defs>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<JobDef>
+		<defName>RepairMechanicalPawn</defName>
+		<driverClass>TR.JobDriver_RepairDroneRepair</driverClass>
+	</JobDef>
+	
+	<JobDef>
+		<defName>ReturnFromRepair</defName>
+		<driverClass>TR.JobDriver_RepairDroneReturn</driverClass>
+	</JobDef>
+
+</Defs>

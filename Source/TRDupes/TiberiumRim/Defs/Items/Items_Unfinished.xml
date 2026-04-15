@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--
+	<ThingDef Name="UnfinishedBase" Abstract="True">
+		<thingClass>UnfinishedUniqueThing</thingClass>
+		<category>Item</category>
+		<label>unfinished thing</label>
+		<graphicData>
+			<texPath>Things/Item/Unfinished/UnfinishedSculpture</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<altitudeLayer>Item</altitudeLayer>
+		<useHitPoints>true</useHitPoints>
+		<isUnfinishedThing>true</isUnfinishedThing>
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+		<selectable>true</selectable>
+		<tradeability>None</tradeability>
+		<drawerType>RealtimeOnly</drawerType>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<DeteriorationRate>2.0</DeteriorationRate>
+			<Beauty>-8</Beauty>
+			<Mass>1</Mass>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+		</comps>
+		<alwaysHaulable>true</alwaysHaulable>
+		<rotatable>false</rotatable>
+		<pathCost>14</pathCost>
+		<thingCategories>
+			<li>Unfinished</li>
+		</thingCategories>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+	</ThingDef>
+	-->
+	
+	<ThingDef ParentName="UnfinishedBase">
+		<defName>UnfinishedUniqueApparel</defName>
+		<label>unfinished unique apparel</label>
+		<description>An unfinished piece of an apparel.</description>
+		<graphicData>
+			<texPath>Things/Item/Unfinished/UnfinishedApparel</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<Flammability>0.4</Flammability>
+		</statBases>
+		<stuffCategories Inherit="false" />
+	</ThingDef>
+
+	<ThingDef ParentName="UnfinishedBase">
+		<defName>UnfinishedUniqueArmor</defName>
+		<label>unfinished simple unique armor</label>
+		<description>An unfinished piece of simple armor.</description>
+		<graphicData>
+			<texPath>Things/Item/Unfinished/UnfinishedWeapon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<stuffCategories Inherit="false" />
+	</ThingDef>
+
+
+</Defs>

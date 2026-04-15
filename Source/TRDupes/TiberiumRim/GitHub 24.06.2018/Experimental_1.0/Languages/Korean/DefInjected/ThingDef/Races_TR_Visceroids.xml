@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Visceroid_TBI.label>비세로이드</Visceroid_TBI.label>
+  <Visceroid_TBI.description>불안정하고 흉측한 생명체입니다. 타이베리움에 심하게 오염된 동물의 신체로부터 흔히 나타납니다. 인간도 예외는 아닙니다.</Visceroid_TBI.description>
+  <Visceroid_TBI.tools.0.label>촉수</Visceroid_TBI.tools.0.label>
+  <Visceroid_TBI.tools.1.label>아가리</Visceroid_TBI.tools.1.label>
+
+  <Veinmonster_TBI.label>덩굴귀</Veinmonster_TBI.label>
+  <Veinmonster_TBI.description>비세로이드와 유사한 생명체인 덩굴귀는 침식 덩굴로부터 자라납니다. 작고 약하지만 무리를 지으면 사나워집니다.</Veinmonster_TBI.description>
+
+  <Amalgamation_TBI.label>융합체</Amalgamation_TBI.label>
+  <Amalgamation_TBI.description>여러 개체의 신체가 융합되어 거대화된 비세로이드입니다.</Amalgamation_TBI.description>
+
+
+</LanguageData>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>ChemicalBombImplant</defName>
+    <label>bomb heart</label>
+    <labelNoun>a suicide bomb implant</labelNoun>
+    <description>An installed bionic implant, connected to the strong chemical bomb. It replaces the heart, explodes when the user die. Also improves body response.</description>
+    <descriptionHyperlinks><ThingDef>ChemicalBombImplant</ThingDef></descriptionHyperlinks>
+    <spawnThingOnRemoved>ChemicalBombImplant</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>1.25</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+	<comps>
+		<li Class="TeleCore.HediffCompProperties_ExplodeOnPartDestroyed">
+			<explosionProps>
+				<explosionRadius>6.9</explosionRadius>
+				<damageDef>TiberiumExplosionFrag</damageDef>
+				<damageOverride>100</damageOverride>
+				<preSpawnDef MayRequire="tele.tr.tiberium">Gas_ChemicalInterface</preSpawnDef>
+				<preSpawnChance>0.25</preSpawnChance>
+				<postSpawnDef>FilthTiberiumGreen</postSpawnDef>
+				<postSpawnChance>0.15</postSpawnChance>
+			</explosionProps>
+			<labelWhenExploded>X</labelWhenExploded>
+		</li>
+		<li Class="HediffCompProperties_ReactOnDamage">
+			<damageDefIncoming>EMP</damageDefIncoming>
+			<createHediff>BrainShock</createHediff>
+		</li>
+	</comps>
+    <tags><li>ChemicalBombImplant</li></tags>
+  </HediffDef>
+
+
+  <TR.TRThingDef ParentName="BodyPartBionicBase">
+    <defName>ChemicalBombImplant</defName>
+    <label>suicide bomb implant</label>
+    <description>A strong chemical suicide bomb. It replaces the heart, explodes when the user die. Also improves body response. Take your pawn on a suicide mission.</description>
+    <descriptionHyperlinks><RecipeDef>InstallChemicalBombImplant</RecipeDef></descriptionHyperlinks>
+	<graphicData>
+		<texPath>Items/Weapons/Nod/SuicideBomb</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>1</drawSize>
+	</graphicData>
+    <costList>
+      <Uranium>30</Uranium>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+    <statBases>
+      <Mass>2</Mass>
+    </statBases>
+    <recipeMaker>
+		<recipeUsers>
+			<li MayRequire="tele.trf.buildings">Nod_Factory</li>
+		</recipeUsers>
+		<skillRequirements>
+			<Crafting>8</Crafting>
+		</skillRequirements>
+    </recipeMaker>
+	<techHediffsTags>
+		<li>ChemicalBombImplant</li>
+	</techHediffsTags>
+		<requisites>
+			<tiberiumResearch>
+				<li>NodExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+  </TR.TRThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>InstallChemicalBombImplant</defName>
+    <label>install suicide bomb implant</label>
+    <description>Install a suicide bomb implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ChemicalBombImplant</ThingDef>
+      <HediffDef>ChemicalBombImplant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing suicide bomb implant.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ChemicalBombImplant</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ChemicalBombImplant</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Heart</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>ChemicalBombImplant</addsHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveChemicalBombImplant</defName>
+    <label>remove suicide bomb implant</label>
+    <description>Remove suicide bomb implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ChemicalBombImplant</ThingDef>
+      <HediffDef>ChemicalBombImplant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing suicide bomb implant.</jobString>
+    <removesHediff>ChemicalBombImplant</removesHediff>
+  </RecipeDef>
+  
+</Defs>

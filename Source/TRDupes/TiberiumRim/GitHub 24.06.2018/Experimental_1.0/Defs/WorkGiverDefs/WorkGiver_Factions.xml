@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!--
+	<WorkGiverDef>
+		<defName>Factions_DoBillsTibRefinery</defName>
+		<label>works at Tiberium refinery</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Smithing</workType>
+		<priorityInType>97</priorityInType>
+		<fixedBillGiverDefs>
+			<li>GDI_TiberiumRefinery</li>
+			<li>Nod_TiberiumRefinery</li>
+		</fixedBillGiverDefs>
+		<verb>refine Tiberium</verb>
+		<gerund>refining Tiberium at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+-->
+	
+	
+	<WorkGiverDef>
+		<defName>Factions_DoBillsFactory</defName>
+		<label>works at factory</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Smithing</workType>
+		<priorityInType>97</priorityInType>
+		<fixedBillGiverDefs>
+			<li>GDI_Factory</li>
+			<li>Nod_Factory</li>
+		</fixedBillGiverDefs>
+		<verb>make faction item at</verb>
+		<gerund>making faction item at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+	
+</Defs>

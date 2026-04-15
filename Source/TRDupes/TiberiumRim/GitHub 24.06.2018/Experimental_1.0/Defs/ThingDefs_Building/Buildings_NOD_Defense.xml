@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="DoorBase">
+		<defName>Nod_Door_TBNW</defName>
+		<label>Nod door</label>
+		<description>Divides rooms. Must be manually opened and closed, which slows people down.</description>
+		<graphicData>
+			<texPath>Building/Nod/Structure/Door_Nod</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<enabled>false</enabled>
+			</damageData>
+		</graphicData>
+		<costList>
+			<Nod_CarbonPlate>4</Nod_CarbonPlate>
+		</costList>
+		<!--
+		<comps>
+			<li Class="TiberiumRimFactions.CompProperties_SuppressionWall">
+				<radius>3</radius>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>TiberiumRimFactions.PlaceWorker_NodSuppressionWall</li>
+		</placeWorkers>
+		-->
+		<filthLeaving>Filth_Ash</filthLeaving>
+		<uiIconPath>Building/Nod/Structure/Door_Nod_icon</uiIconPath>
+		<designationCategory>Structure</designationCategory>
+		<researchPrerequisites><li>NodResearch_Buildings</li></researchPrerequisites>
+		<statBases>
+			<WorkToBuild>750</WorkToBuild>
+			<MaxHitPoints>750</MaxHitPoints>
+			<Flammability>0</Flammability>
+		</statBases>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</ThingDef>
+
+	<ThingDef ParentName="DoorBase">
+		<defName>Nod_Autodoor_TBNW</defName>
+		<label>Nod autodoor</label>
+		<description>Divides rooms. Powered operation allows people to move through the door without slowing down.</description>
+		<graphicData>
+			<texPath>Building/Nod/Structure/AutoDoor_Nod</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<enabled>false</enabled>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Building/Nod/Structure/AutoDoor_Nod_icon</uiIconPath>
+		<costList>
+			<Nod_CarbonPlate>4</Nod_CarbonPlate>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<comps>
+		<!--
+			<li Class="TiberiumRimFactions.CompProperties_SuppressionWall">
+				<radius>3</radius>
+			</li>
+		-->
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+		</comps>
+		<!--
+		<placeWorkers>
+			<li>TiberiumRimFactions.PlaceWorker_NodSuppressionWall</li>
+		</placeWorkers>
+		-->
+		<filthLeaving>Filth_Ash</filthLeaving>
+		<designationCategory>Structure</designationCategory>
+		<researchPrerequisites>
+			<li>Autodoors</li>
+			<li>NodResearch_Buildings</li>
+		</researchPrerequisites>
+		<statBases>
+			<WorkToBuild>1000</WorkToBuild>
+			<MaxHitPoints>750</MaxHitPoints>
+			<Flammability>0</Flammability>
+		</statBases>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</ThingDef>
+	
+	<ThingDef ParentName="DoorBase">
+		<defName>Nod_Laserdoor</defName>
+		<label>Nod Laserdoor</label>
+		<description>Divides rooms. Powered operation allows people to move through the door without slowing down.</description>
+		<graphicData>
+		<texPath>Building/Nod/Structure/LaserDoor_Nod</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<damageData>
+			<enabled>false</enabled>
+		</damageData>
+			<linkFlags>
+				<li>Custom8</li>
+			</linkFlags>
+		</graphicData>
+		<uiIconPath>Building/Nod/Structure/LaserDoor_Nod_icon</uiIconPath>
+		<costList>
+		<Nod_CarbonPlate>4</Nod_CarbonPlate>
+		<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<blockLight>false</blockLight>
+		<blockWind>false</blockWind>
+		<coversFloor>false</coversFloor>
+		<holdsRoof>false</holdsRoof>
+		<castEdgeShadows>false</castEdgeShadows>
+		<canOverlapZones>false</canOverlapZones>
+		<fillPercent>0.75</fillPercent>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>75</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+				<transmitsPower>true</transmitsPower>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+			<!--
+			<li Class="TiberiumRimFactions.CompProperties_SuppressionWall">
+				<radius>3</radius>
+			</li>
+			-->
+		</comps>
+		<!--
+		<placeWorkers>
+			<li>TiberiumRimFactions.PlaceWorker_NodSuppressionWall</li>
+		</placeWorkers>
+		-->
+		<filthLeaving>Filth_Ash</filthLeaving>
+		<designationCategory>Security</designationCategory>
+		<clearBuildingArea>true</clearBuildingArea>
+		<researchPrerequisites><li>NodResearch_Security</li></researchPrerequisites>
+		<statBases>
+			<WorkToBuild>2000</WorkToBuild>
+			<Beauty>-10</Beauty>
+			<MaxHitPoints>750</MaxHitPoints>
+			<Flammability>0</Flammability>
+		</statBases>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</ThingDef>	
+
+	<ThingDef ParentName="BuildingBase" Name="NodWall">
+		<defName>NodWall_TBNW</defName>
+		<label>Nod wall</label>
+		<thingClass>Building</thingClass>
+		<category>Building</category>
+		<description>An impassable wall, especially designed for the Brotherhood.</description>
+		<graphicData>
+			<texPath>Building/Nod/Structure/Wall_Nod</texPath>
+			<graphicClass>Graphic_single</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Wall</li>
+				<li>Rock</li>
+			</linkFlags>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
+		</graphicData>
+		<costList>
+			<Nod_CarbonPlate>3</Nod_CarbonPlate>
+		</costList>
+		<uiIconPath>Building/Nod/Structure/Wall_Nod_Icon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>1000</MaxHitPoints>
+			<WorkToBuild>1000</WorkToBuild>
+			<Flammability>0.0</Flammability>
+		</statBases>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Impassable</passability>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>1</fillPercent>
+		<coversFloor>true</coversFloor>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<tickerType>Rare</tickerType>
+		<rotatable>false</rotatable>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<holdsRoof>true</holdsRoof>
+		<designationCategory>Structure</designationCategory>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<blockLight>true</blockLight>
+		<canOverlapZones>false</canOverlapZones>
+		<!--
+		<comps>
+			<li Class="TiberiumRimFactions.CompProperties_SuppressionWall">
+				<radius>3</radius>
+			</li>
+		</comps>
+		-->
+		<!--
+		<placeWorkers>
+			<li>TiberiumRimFactions.PlaceWorker_NodSuppressionWall</li>
+		</placeWorkers>
+		-->
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<filthLeaving>Filth_Ash</filthLeaving>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<blueprintGraphicData>
+				<texPath>Building/Nod/Structure/Wall_Nod</texPath>
+			</blueprintGraphicData>
+		</building>
+		<damageMultipliers>
+		<li>
+			<damageDef>Bomb</damageDef>
+			<multiplier>2</multiplier>
+		</li>
+		</damageMultipliers>
+		<researchPrerequisites><li>NodResearch_Buildings</li></researchPrerequisites>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>Nod_LaserFence</defName>
+		<label>Laser fence</label>
+		<thingClass>Building</thingClass>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Building/Nod/Structure/Fence_Laser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>Basic</linkType>
+			<linkFlags>
+				<li>Custom8</li>
+			</linkFlags>
+		</graphicData>
+		<uiIconPath>Building/Nod/Structure/Fence_Laser_icon</uiIconPath>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Impassable</passability>
+		<blockLight>false</blockLight>
+		<blockWind>false</blockWind>
+		<coversFloor>false</coversFloor>
+		<holdsRoof>false</holdsRoof>
+		<castEdgeShadows>false</castEdgeShadows>
+		<fillPercent>0.6</fillPercent>
+		<canOverlapZones>false</canOverlapZones>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<Beauty>5</Beauty>
+			<WorkToBuild>350</WorkToBuild>
+			<Flammability>0</Flammability>
+		</statBases>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<blueprintGraphicData>
+				<texPath>Building/Nod/Structure/Fence_Laser</texPath>
+			</blueprintGraphicData>
+		</building>
+		<description>Use this to protect yourself from enemies!</description>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<costList>
+			<Nod_CarbonPlate>5</Nod_CarbonPlate>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>15</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+				<transmitsPower>true</transmitsPower>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+			<!--
+			<li Class="TiberiumRimFactions.CompProperties_SuppressionWall">
+				<radius>3</radius>
+			</li>
+			-->
+		</comps>
+		<!--
+		<placeWorkers>
+			<li>TiberiumRimFactions.PlaceWorker_NodSuppressionWall</li>
+		</placeWorkers>
+		-->
+		<filthLeaving>Filth_Ash</filthLeaving>
+		<rotatable>false</rotatable>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<designationCategory>Security</designationCategory>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<clearBuildingArea>true</clearBuildingArea>
+		<constructEffect>ConstructDirt</constructEffect>
+		<repairEffect>ConstructDirt</repairEffect>
+		<researchPrerequisites><li>NodResearch_Security</li></researchPrerequisites>
+		<damageMultipliers>
+		<li>
+			<damageDef>Bomb</damageDef>
+			<multiplier>2</multiplier>
+		</li>
+		<li>
+			<damageDef>TRLaser</damageDef>
+			<multiplier>0.5</multiplier>
+		</li>
+		</damageMultipliers>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</ThingDef>
+	
+	<!-- Nod Tiberium Suppressor -->
+	<!--
+	<ThingDef ParentName="BuildingBase">
+		<defName>Nod_TiberiumSuppressor</defName>
+		<label>Tiberium-Growth Suppressor</label>
+		<description>This specialized facility connects to a nearby Brotherhood of Nod Wall or Laser Fence (needs to be touching) and spreads a suppressing liquid through those. This way Tiberium will be suppressed from further growth near the walls. Requires a huge amount of electricity.</description>
+		<graphicData>
+			<texPath>Building/Nod/Defense/Suppressor</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5,5)</drawSize>
+			<shadowData>
+				<volume>(1.4, 0.5, 1.4)</volume>
+				<offset>(0,0,-0.1)</offset>
+			</shadowData>
+		</graphicData>
+		<costList>
+			<Nod_CarbonPlate>30</Nod_CarbonPlate>
+			<Nod_LQTiberiumCore>3</Nod_LQTiberiumCore>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
+			<li Class="TiberiumRimFactions.CompProperties_NodSuppressor">
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>2500</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+				<transmitsPower>false</transmitsPower>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Flickable"/>				
+		</comps>
+		<passability>Impassable</passability>
+		<altitudeLayer>Building</altitudeLayer>
+		<tickerType>Rare</tickerType>
+		<statBases>
+			<MarketValue>10000</MarketValue>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>10000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>25</Beauty>
+		</statBases>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<placeWorkers>
+			<li>TiberiumRimFactions.PlaceWorker_NodSuppressor</li>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+		<fillPercent>0.40</fillPercent>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<pathCost>75</pathCost>
+		<designationCategory>Tiberium</designationCategory>
+		<rotatable>false</rotatable>
+		<canOverlapZones>false</canOverlapZones>
+		<size>(5,5)</size>
+		<researchPrerequisites><li>NodResearch_LiquidTechnology</li></researchPrerequisites>
+		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+	</ThingDef>
+	-->
+	
+</Defs>

@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- ============== Soldier ============================= -->
+	<TR.TRThingDef ParentName="GDI_Armor">
+		<defName>Apparel_GDISoldierHelmet</defName>  <!--balance standard - recon helmet -->
+		<label>GDI soldier helmet</label>
+		<description>This helmet has an integrated Tiberium filter, might also repell some bullets if you're lucky.\n\nGDI soldier set has some protection against tiberium, but not perfect.</description>
+		<graphicData>
+			<texPath>Items/Apparel/GDI_Soldier/Helmet</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<ComponentSpacer>1</ComponentSpacer>
+			<GDI_ReinforcedPlate>15</GDI_ReinforcedPlate>
+		</costList>
+		<statBases>
+			<WorkToMake>16500</WorkToMake>
+			<MaxHitPoints>160</MaxHitPoints>
+			<Mass>1.2</Mass>
+			<Flammability>0.5</Flammability>
+			<ArmorRating_Sharp>1.1</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.5</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.5</ArmorRating_Heat>
+			<Insulation_Cold>5</Insulation_Cold>
+			<Insulation_Heat>0</Insulation_Heat>
+			<EquipDelay>2</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<ToxicResistance>0.6</ToxicResistance>
+			<TiberiumGasResistance>0.6</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>4</scoreOffset>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/GDI_Soldier/Helmet</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<tags>
+				<li>GDISoldier</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>GDISoldier</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+		<thingCategories>
+			<li>TRHelmetsGDI</li>
+		</thingCategories>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<comps>
+			<li Class="CompProperties_Styleable" />
+		</comps>
+		<randomStyleChance>0.35</randomStyleChance>
+        <randomStyle>
+            <li>
+                <styleDef>GDISoldierHelmet2</styleDef>
+            </li>
+        </randomStyle>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+    </TR.TRThingDef>
+
+	<ThingStyleDef>
+		<defName>GDISoldierHelmet2</defName>
+		<overrideLabel>GDI spartan helmet</overrideLabel>
+		<wornGraphicPath>Items/Apparel/GDI_Soldier/Helmet2</wornGraphicPath>
+		<graphicData>
+			<texPath>Items/Apparel/GDI_Soldier/Helmet2</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+	</ThingStyleDef>
+	
+	<TR.TRThingDef ParentName="GDI_Armor">
+		<defName>Apparel_GDISoldierSuit</defName>  <!--balance standard - recon armor -->
+		<label>GDI soldier suit</label>
+		<description>This suit is optimized to resist most attacks.\n\nGDI soldier set has some protection against tiberium, but not perfect.</description>
+		<graphicData>
+			<texPath>Items/Apparel/GDI_Soldier/SolderSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<ComponentSpacer>3</ComponentSpacer>
+			<ComponentIndustrial>1</ComponentIndustrial>
+			<GDI_ReinforcedPlate>50</GDI_ReinforcedPlate>
+		</costList>
+		<thingCategories>
+			<li>TRApparelsGDI</li>
+		</thingCategories>
+		<statBases>
+			<WorkToMake>45000</WorkToMake>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Mass>8</Mass>
+			<Flammability>0.5</Flammability>
+			<ArmorRating_Sharp>1.1</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.5</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.5</ArmorRating_Heat>
+			<Insulation_Cold>30</Insulation_Cold>
+			<Insulation_Heat>10</Insulation_Heat>
+			<EquipDelay>10</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<Flammability>-0.2</Flammability>
+			<ToxicResistance>0.1</ToxicResistance>
+			<TiberiumGasResistance>0.1</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.6</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.6</TiberiumRadiationResistance>
+			<SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>4</scoreOffset>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/GDI_Soldier/SolderSuit</wornGraphicPath>
+			<layers>
+				<li>Shell</li>
+			</layers>
+			<tags>
+				<li>GDISoldier</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>GDISoldier</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>	
+	
+	<!-- ==================== Officer ===================== -->
+	
+	<TR.TRThingDef ParentName="GDI_Armor"> <!--balance standard - AdvancedHelmet-->
+		<defName>Apparel_GDIOfficerHelmet</defName>
+		<label>GDI officer hat</label>
+		<description>A shique cap, perfect for every GDI officer!\n\nGDI officer set has little protection against tiberium.</description>
+		<graphicData>
+			<texPath>Items/Apparel/GDI_Officer/Helmet</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<Cloth>10</Cloth>
+			<GDI_ReinforcedPlate>5</GDI_ReinforcedPlate>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<WorkToMake>9000</WorkToMake>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>1.2</Mass>
+			<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.12</ArmorRating_Heat>
+			<Insulation_Cold>5</Insulation_Cold>
+			<EquipDelay>2</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<SocialImpact>0.1</SocialImpact>
+			<ToxicResistance>0.6</ToxicResistance>
+			<TiberiumGasResistance>0.6</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>3</scoreOffset>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/GDI_Officer/Helmet</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<tags>
+				<li>GDIOfficer</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">Royal</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">RoyalTier2</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>GDIOfficerSoldier</li>
+			</defaultOutfitTags>
+		</apparel>
+		<thingCategories>
+			<li>TRHelmetsGDI</li>
+		</thingCategories>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="GDI_Armor"> <!--balance standard - flak jacket-->
+		<defName>Apparel_GDIOfficerSuit</defName>
+		<label>GDI officer suit</label>
+		<description>A nice looking suit, perfect for a GDI Officer.\n\nGDI officer set has little protection against tiberium.</description>
+		<graphicData>
+			<texPath>Items/Apparel/GDI_Officer/OfficerSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<Cloth>50</Cloth>
+			<GDI_ReinforcedPlate>15</GDI_ReinforcedPlate>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<thingCategories>
+			<li>TRApparelsGDI</li>
+		</thingCategories>
+		<statBases>
+			<WorkToMake>16500</WorkToMake>
+			<MaxHitPoints>225</MaxHitPoints>
+			<Mass>5</Mass>
+			<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.12</ArmorRating_Heat>
+			<Insulation_Cold>15</Insulation_Cold>
+			<Insulation_Heat>5</Insulation_Heat>
+			<EquipDelay>10</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<SocialImpact>0.15</SocialImpact>
+			<ToxicResistance>0.1</ToxicResistance>
+			<TiberiumGasResistance>0.1</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.4</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.4</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>3</scoreOffset>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/GDI_Officer/OfficerSuit</wornGraphicPath>
+			<layers>
+				<li>Shell</li>
+			</layers>
+			<tags>
+				<li>GDIOfficer</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">Royal</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">RoyalTier2</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>GDIOfficerSoldier</li>
+			</defaultOutfitTags>
+		</apparel>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+	<!-- Engineer -->
+	
+	<TR.TRThingDef ParentName="GDI_Armor"> <!--balance standard - PowerArmorHelmet but low armor rating-->
+		<defName>Apparel_GDIEngineerMask</defName>
+		<label>GDI Engineer Mask</label>
+		<description>This is the mask of a true engineer. Improves work skills!\n\nGDI Engineer set has little protection against tiberium.</description>
+		<graphicData>
+			<texPath>Items/Apparel/GDI_Engineer/EngineerMask</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<Cloth>15</Cloth>
+			<ComponentSpacer>1</ComponentSpacer>
+			<Plasteel>50</Plasteel>
+		</costList>
+		<statBases>
+			<WorkToMake>20000</WorkToMake>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>1.5</Mass>
+			<ArmorRating_Sharp>0.6</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.25</ArmorRating_Heat>
+			<Insulation_Cold>4</Insulation_Cold>
+			<Insulation_Heat>1</Insulation_Heat>
+			<EquipDelay>2</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<ShootingAccuracyPawn>-0.5</ShootingAccuracyPawn>
+			<GlobalLearningFactor>0.5</GlobalLearningFactor>
+			<ResearchSpeed>0.25</ResearchSpeed>
+			<ToxicResistance>0.6</ToxicResistance>
+			<TiberiumGasResistance>0.6</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>3</scoreOffset>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/GDI_Engineer/EngineerMask</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<tags>
+				<li>GDIEngineer</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>GDIEngineer</li>
+			</defaultOutfitTags>
+		</apparel>
+		<thingCategories>
+			<li>TRHelmetsGDI</li>
+		</thingCategories>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="GDI_Armor">
+		<defName>Apparel_GDIEngineerSuit</defName> <!--balance standard - PowerArmor but low armor rating-->
+		<label>GDI Engineer suit</label>
+		<description>This suit is optimized for any type of work. Improves work abilities.\n\nGDI Engineer set has little protection against tiberium.</description>
+		<graphicData>
+			<texPath>Items/Apparel/GDI_Engineer/Engineer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<Cloth>25</Cloth>
+			<ComponentSpacer>4</ComponentSpacer>
+			<Plasteel>75</Plasteel>
+			<GDI_ReinforcedPlate>25</GDI_ReinforcedPlate>
+		</costList>
+		<thingCategories>
+			<li>TRApparelsGDI</li>
+		</thingCategories>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<WorkToMake>55000</WorkToMake>
+			<Mass>10.0</Mass>
+			<ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.25</ArmorRating_Heat>
+			<Insulation_Cold>20</Insulation_Cold>
+			<Insulation_Heat>5</Insulation_Heat>
+			<EquipDelay>10</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<ShootingAccuracyPawn>-0.25</ShootingAccuracyPawn>
+			<WorkSpeedGlobal>1</WorkSpeedGlobal>
+			<ConstructionSpeed>1</ConstructionSpeed>
+			<ToxicResistance>0.1</ToxicResistance>
+			<TiberiumGasResistance>0.1</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.4</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.4</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>3</scoreOffset>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/GDI_Engineer/Engineer</wornGraphicPath>
+			<layers>
+				<li>Shell</li>
+			</layers>
+			<tags>
+				<li>GDIEngineer</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>GDIEngineer</li>
+			</defaultOutfitTags>
+		</apparel>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<comps>
+			<li Class="CompProperties_Reloadable">
+				<maxCharges>3</maxCharges>
+				<ammoDef>Chemfuel</ammoDef>
+				<ammoCountPerCharge>15</ammoCountPerCharge>
+				<baseReloadTicks>60</baseReloadTicks>
+				<soundReload>Standard_Reload</soundReload>
+				<hotKey>Misc4</hotKey>
+				<chargeNoun>incendiary</chargeNoun>
+				<displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+			</li>
+		</comps>
+		<verbs>
+			<li>
+				<label>emergency fire extinguish</label>
+				<verbClass>Verb_LaunchProjectileStatic</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<onlyManualCast>True</onlyManualCast>
+				<range>9.9</range>
+				<forcedMissRadius>0.9</forcedMissRadius>
+				<warmupTime>1.5</warmupTime>
+				<noiseRadius>4</noiseRadius>
+				<ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
+				<soundCast>ThrowGrenade</soundCast>
+				<muzzleFlashScale>0</muzzleFlashScale>
+				<drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<defaultProjectile>Bullet_Extbomb</defaultProjectile>
+				<rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+				<ai_AvoidFriendlyFireRadius>1</ai_AvoidFriendlyFireRadius>
+			</li>
+		</verbs>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+
+	
+	<!-- ====================================== GDI Zone Trooper =========================================== -->
+
+	<TR.TRThingDef ParentName="GDI_Armor">
+		<defName>Apparel_GDIZoneHelmet</defName> <!--balance standard - cataphract helmet ++ -->
+		<label>GDI zone helmet</label>
+		<description>A head part of the GDI Zone Trooper armor.\n\nGDI zone set has perfect protection against tiberium.</description>
+		<techLevel>Spacer</techLevel>
+		<graphicData>
+			<texPath>Items/Apparel/GDI_Zone/ZoneSuitMask</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<GDI_ReinforcedPlate>50</GDI_ReinforcedPlate>
+			<ComponentSpacer>1</ComponentSpacer>
+		</costList>
+		<statBases>
+			<WorkToMake>30000</WorkToMake>
+			<MaxHitPoints>250</MaxHitPoints>   
+			<Mass>5</Mass>
+			<Flammability>0.4</Flammability>
+			<ArmorRating_Sharp>1.5</ArmorRating_Sharp>
+			<ArmorRating_Blunt>1</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.75</ArmorRating_Heat>
+			<Insulation_Cold>10</Insulation_Cold>
+			<Insulation_Heat>10</Insulation_Heat>
+			<EquipDelay>5</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<ShootingAccuracyPawn>0.1</ShootingAccuracyPawn>
+			<ToxicResistance>0.9</ToxicResistance>
+			<TiberiumGasResistance>0.9</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.1</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.1</TiberiumRadiationResistance>
+		</equippedStatOffsets>
+		<apparel>
+			<scoreOffset>4</scoreOffset>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/GDI_Zone/ZoneSuitMask</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<tags>
+				<li>GDIZone</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">PrestigeCombatGear</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>GDIZoneSoldier</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+		<thingCategories>
+			<li>TRHelmetsGDI</li>
+		</thingCategories>
+		<recipeMaker>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>12</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="GDI_Armor">
+		<defName>Apparel_GDIZoneSuit</defName> <!--balance standard - cataphract armor ++ -->
+		<label>GDI zone suit</label>
+		<description>A GDI Zone Trooper suit.\n\nGDI zone set has perfect protection against tiberium.</description>
+		<techLevel>Spacer</techLevel>
+		<graphicData>
+			<texPath>Items/Apparel/GDI_Zone/ZoneSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<GDI_ReinforcedPlate>150</GDI_ReinforcedPlate>
+			<ComponentSpacer>10</ComponentSpacer>
+		</costList>
+		<statBases>
+			<WorkToMake>100000</WorkToMake>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Mass>50</Mass>
+			<Flammability>0.4</Flammability>
+			<ArmorRating_Sharp>1.5</ArmorRating_Sharp>
+			<ArmorRating_Blunt>1</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.75</ArmorRating_Heat>
+			<Insulation_Cold>50</Insulation_Cold>
+			<Insulation_Heat>100</Insulation_Heat>
+			<EquipDelay>20</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<Flammability>-0.6</Flammability>
+			<ExtraCarryWeight>150</ExtraCarryWeight>
+			<ToxicResistance>0.1</ToxicResistance>
+			<TiberiumGasResistance>0.1</TiberiumGasResistance>
+			<TiberiumInfectionResistance>0.9</TiberiumInfectionResistance>
+			<TiberiumRadiationResistance>0.9</TiberiumRadiationResistance>
+			<SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.5</SlaveSuppressionOffset>
+		</equippedStatOffsets>
+		<thingCategories>
+			<li>TRApparelsGDI</li>
+		</thingCategories>
+		<apparel>
+			<scoreOffset>4</scoreOffset>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Items/Apparel/GDI_Zone/ZoneSuit</wornGraphicPath>
+			<layers>
+				<li>Shell</li>
+			</layers>
+			<tags>
+				<li>GDIZone</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">PrestigeCombatGear</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>GDIZoneSoldier</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+		<recipeMaker>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>12</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<comps>
+			<li MayRequire="Ludeon.RimWorld.Royalty" Class="CompProperties_Reloadable">
+				<maxCharges>3</maxCharges>
+				<ammoDef>Chemfuel</ammoDef>
+				<ammoCountPerCharge>50</ammoCountPerCharge>
+				<baseReloadTicks>60</baseReloadTicks>
+				<soundReload>Standard_Reload</soundReload>
+				<hotKey>Misc4</hotKey>
+				<chargeNoun>jump</chargeNoun>
+				<displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+			</li>
+		</comps>
+		<verbs>
+			<li MayRequire="Ludeon.RimWorld.Royalty">
+				<verbClass>Verb_Jump</verbClass>
+				<label>power jump</label>
+				<commandIcon>Things/Pawn/Humanlike/Apparel/JumpPack/JumpPack</commandIcon>
+				<violent>false</violent>
+				<hasStandardCommand>true</hasStandardCommand>
+				<onlyManualCast>True</onlyManualCast>
+				<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+				<warmupTime>0.5</warmupTime>
+				<warmupEffecter>JumpWarmupEffect</warmupEffecter>
+				<requireLineOfSight>false</requireLineOfSight>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+					<canTargetPawns>false</canTargetPawns>
+					<canTargetBuildings>false</canTargetBuildings>
+				</targetParams>
+			</li>
+		</verbs>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+</Defs>

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- GDI Structures -->
+
+  <GDI_Factory.label>GDI 생산설비</GDI_Factory.label>
+  <GDI_Factory.description>다양한 무기와 방어구, 아이템을 생산할 수 있는 장치입니다.</GDI_Factory.description>
+  <GDI_Factory_Blueprint.label>GDI 생산설비 (청사진)</GDI_Factory_Blueprint.label>
+  <GDI_Factory_Frame.label>GDI 생산설비 (건설 중)</GDI_Factory_Frame.label>
+  <GDI_Factory_Frame.description>다양한 무기와 방어구, 아이템을 생산할 수 있는 장치입니다.</GDI_Factory_Frame.description>
+
+
+  <!-- <ThingDef ParentName="BenchBase">
+		<defName>GDI_TiberiumRefinery</defName>
+		<label>Advanced tiberium refinery</label>
+		<description>An advanced chemical refining plant. Used to refine lethal Tiberium into useful resources.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>3500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<size>(5,5)</size>
+		<costList>
+			<GDI_ReinforcedPlate>15</GDI_ReinforcedPlate>
+			<Plasteel>15</Plasteel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3</explosiveRadius>
+				<explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
+				<preExplosionSpawnThingDef>Gas_Tiberium</preExplosionSpawnThingDef>
+				<preExplosionSpawnChance>0.25</preExplosionSpawnChance>
+				<postExplosionSpawnThingDef>TiberiumGreen</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>0.5</postExplosionSpawnChance>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(120,255,150,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>400</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<recipes>
+			<li>ExtractResourcesFromGreenTiberium</li>
+			<li>ExtractResourcesFromBlueTiberium</li>
+			<li>ExtractResourcesFromRedTiberium</li>
+			<li>ExtractResourcesFromVeinTiberium</li>
+			<li>MakeTiberiumFuel</li>
+		</recipes>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<graphicData>
+			<texPath>Building/GDI/Primary/Refinery_GDI</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(5,5)</drawSize>
+			<shadowData>
+				<volume>(1.5,1,1.5)</volume>
+			</shadowData>
+			<damageData>
+				<rect>(0.3,0.1,2.4,1.8)</rect>
+			</damageData>
+		</graphicData>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<designationCategory>Tiberium</designationCategory>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>TiberiumResearchRefining</li>
+			<li>GDIResearch_Buildings</li>
+		</researchPrerequisites>
+		<filthLeaving>FilthTibLiquidGreen</filthLeaving>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+	</ThingDef> -->
+
+  <GDI_TiberiumPowerPlant.label>GDI 타이베리움 발전소</GDI_TiberiumPowerPlant.label>
+  <GDI_TiberiumPowerPlant.description>표준형 GDI 타이베리움 발전소입니다. 타이베리움 연료를 소모합니다.</GDI_TiberiumPowerPlant.description>
+  <GDI_TiberiumPowerPlant_Blueprint.label>GDI 타이베리움 발전소 (청사진)</GDI_TiberiumPowerPlant_Blueprint.label>
+  <GDI_TiberiumPowerPlant_Frame.label>GDI 타이베리움 발전소 (건설 중)</GDI_TiberiumPowerPlant_Frame.label>
+  <GDI_TiberiumPowerPlant_Frame.description>표준형 GDI 타이베리움 발전소입니다. 타이베리움 연료를 소모합니다.</GDI_TiberiumPowerPlant_Frame.description>
+
+
+  <!--<GDI_TiberiumRefinery.label>GDI 타이베리움 정제소</GDI_TiberiumRefinery.label>-->
+  <!--<GDI_TiberiumRefinery.description>표준형 GDI 타이베리움 정제소입니다. 치명적인 타이베리움을 유용한 자원으로 변환합니다.</GDI_TiberiumRefinery.description>-->
+  <!--<GDI_TiberiumRefinery_Blueprint.label>GDI 타이베리움 정제소 (청사진)</GDI_TiberiumRefinery_Blueprint.label>-->
+  <!--<GDI_TiberiumRefinery_Frame.label>GDI 타이베리움 정제소 (건설 중)</GDI_TiberiumRefinery_Frame.label>-->
+  <!--<GDI_TiberiumRefinery_Frame.description>표준형 GDI 타이베리움 정제소입니다. 치명적인 타이베리움을 유용한 자원으로 변환합니다.</GDI_TiberiumRefinery_Frame.description>-->
+
+</LanguageData>

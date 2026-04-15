@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!-- Base -->
+
+  <ThingDef Name="TRBasePawn" Abstract="True">
+    <category>Pawn</category>
+    <selectable>true</selectable>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Pawn</altitudeLayer>
+    <useHitPoints>false</useHitPoints>
+    <hasTooltip>true</hasTooltip>
+    <soundImpactDefault>BulletImpact_Flesh</soundImpactDefault>
+    <statBases>
+      <Mass>70</Mass>
+    </statBases>
+    <inspectorTabs>
+      <li>ITab_Pawn_Health</li>
+      <li>ITab_Pawn_Needs</li>
+      <li>ITab_Pawn_Character</li>
+      <li>ITab_Pawn_Training</li>
+      <li>ITab_Pawn_Social</li>
+      <li>ITab_Pawn_Guest</li>
+      <li>ITab_Pawn_Prisoner</li>
+      <li>ITab_Pawn_FormingCaravan</li>
+      <li>ITab_Pawn_Gear</li>
+      <li>ITab_Pawn_Log</li>
+    </inspectorTabs>
+    <comps>
+      <li>
+        <compClass>CompAttachBase</compClass>
+      </li>
+    </comps>
+    <drawGUIOverlay>true</drawGUIOverlay>
+  </ThingDef>
+  
+  <PawnKindDef Name="TRAnimalKindBase" Abstract="True">
+  </PawnKindDef>
+
+<!-- For Fiends -->
+	
+  <ThingDef Name="TRAnimalThingBase" ParentName="TRBasePawn" Abstract="True" >
+    <statBases>
+		<Flammability>0.5</Flammability>
+		<ToxicSensitivity>0</ToxicSensitivity>
+		<PainShockThreshold>1</PainShockThreshold>
+		<LeatherAmount>30</LeatherAmount>
+		<MeatAmount>50</MeatAmount>
+		<ComfyTemperatureMin>-25</ComfyTemperatureMin>
+		<ComfyTemperatureMax>75</ComfyTemperatureMax>
+		<ArmorRating_Blunt>0</ArmorRating_Blunt>
+		<ArmorRating_Sharp>0</ArmorRating_Sharp>
+		<ArmorRating_Heat>0</ArmorRating_Heat>
+    </statBases>
+    <race>
+		<herdAnimal>true</herdAnimal>
+		<packAnimal>true</packAnimal>
+		<thinkTreeMain>Animal</thinkTreeMain>
+		<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+		<hasGenders>true</hasGenders>
+		<nameGenerator>NamerAnimalGenericMale</nameGenerator>
+		<nameGeneratorFemale>NamerAnimalGenericFemale</nameGeneratorFemale>
+		<manhunterOnDamageChance>1</manhunterOnDamageChance>
+		<manhunterOnTameFailChance>0.15</manhunterOnTameFailChance>
+		<predator>true</predator>
+		<fleshType>Mutated</fleshType>
+		<bloodDef>FilthTibBloodG</bloodDef>
+		<nameOnNuzzleChance>0.5</nameOnNuzzleChance>
+		<trainability>Intermediate</trainability>
+		<hediffGiverSets>
+			<li>OrganicStandard</li>
+		</hediffGiverSets>
+    </race>
+	<tradeTags>
+		<li>BadassAnimal</li>
+	</tradeTags>
+    <recipes>
+		<li>ExciseCarcinoma</li>
+		<li>AdministerMechSerumHealer</li>
+		<li>RemoveBodyPart</li>
+		<li>Euthanize</li>
+		<li>Anesthetize</li>
+    </recipes>
+  </ThingDef>
+
+<!-- For Visceroids -->
+	
+  <ThingDef Name="TiberiumLifeform" ParentName="TRBasePawn" Abstract="True" >
+	<thingClass>Pawn</thingClass>
+    <statBases>
+		<Flammability>0.5</Flammability>
+		<ToxicSensitivity>0</ToxicSensitivity>
+		<PainShockThreshold>1</PainShockThreshold>
+		<LeatherAmount>15</LeatherAmount>
+		<MeatAmount>25</MeatAmount>
+		<ComfyTemperatureMin>-25</ComfyTemperatureMin>
+		<ComfyTemperatureMax>75</ComfyTemperatureMax>
+		<ArmorRating_Blunt>0</ArmorRating_Blunt>
+		<ArmorRating_Sharp>0</ArmorRating_Sharp>
+		<ArmorRating_Heat>0</ArmorRating_Heat>
+    </statBases>
+    <race>
+		<thinkTreeMain>Animal</thinkTreeMain>
+		<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+		<hasGenders>false</hasGenders>
+		<nameGenerator>NamerAnimalGenericMale</nameGenerator>
+		<nameGeneratorFemale>NamerAnimalGenericFemale</nameGeneratorFemale>
+		<manhunterOnDamageChance>1</manhunterOnDamageChance>
+		<manhunterOnTameFailChance>1</manhunterOnTameFailChance>
+		<nameOnNuzzleChance>0.5</nameOnNuzzleChance>
+		<wildness>1</wildness>
+		<trainability>None</trainability>
+		<herdAnimal>true</herdAnimal>
+		<predator>true</predator>
+		<packAnimal>true</packAnimal>
+		<needsRest>false</needsRest>
+		<fleshType>Tiberium</fleshType>
+		<bloodDef>FilthTibBloodG</bloodDef>
+		<meatColor>(80,80,30)</meatColor>
+		<meatLabel>tiberium matter</meatLabel>
+		<foodType>OmnivoreAnimal, AnimalProduct</foodType>
+		<leatherDef>Leather_Visceroid</leatherDef>
+		<nameOnTameChance>1</nameOnTameChance>
+		<lifeExpectancy>1</lifeExpectancy>
+		<gestationPeriodDays>25</gestationPeriodDays>
+	</race>
+	<tradeTags>
+		<li>TiberiumAnimal</li>
+	</tradeTags>
+	<hediffGiverSets>
+		<li>OrganicStandard</li>
+	</hediffGiverSets>
+	<recipes>
+		<li>ExciseCarcinoma</li>
+		<li>AdministerMechSerumHealer</li>
+		<li>RemoveBodyPart</li>
+		<li>Euthanize</li>
+		<li>Anesthetize</li>
+	</recipes>
+  </ThingDef>
+
+  
+<!-- Leathers -->
+  
+  <ThingDef ParentName="LeatherBase">
+    <defName>Leather_Visceroid</defName>
+    <label>visceroid skin</label>
+    <description>Tanned, dried, scraped skin. But most people find this material is useless.</description>
+    <graphicData>
+      <color>(200,100,0)</color>
+      <colorTwo>(200,100,0)</colorTwo>
+    </graphicData>
+    <statBases>
+      <MarketValue>1</MarketValue>
+      <StuffPower_Armor_Sharp>0.1</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>0.1</StuffPower_Armor_Blunt>
+      <StuffPower_Insulation_Cold>2</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>2</StuffPower_Insulation_Heat>
+    </statBases>
+    <stuffProps>
+      <color>(200,100,0)</color>
+      <commonality>0</commonality>
+    </stuffProps>
+	
+  <ThingDef ParentName="LeatherBase">
+    <defName>Leather_Mutants</defName>
+    <label>fiend leather</label>
+    <description>A furry pelt harvested from a mutated creature. It is difficult to pierce and insulates well against cold.</description>
+    <graphicData>
+      <color>(50,50,50)</color>
+      <colorTwo>(50,50,50)</colorTwo>
+    </graphicData>
+    <statBases>
+      <MarketValue>5</MarketValue>
+      <StuffPower_Armor_Sharp>0.4</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>0.2</StuffPower_Armor_Blunt>
+	  <StuffPower_Armor_Heat>0.2</StuffPower_Armor_Heat>
+      <StuffPower_Insulation_Cold>20</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>15</StuffPower_Insulation_Heat>
+    </statBases>
+    <stuffProps>
+      <color>(50,50,50)</color>
+      <commonality>0</commonality>
+    </stuffProps>
+	
+  <ThingDef ParentName="LeatherBase">
+    <defName>Leather_GreatMutants</defName>
+    <label>terror fur</label>
+    <description>A furry pelt harvested from a huge mutated creature. It is difficult to pierce and insulates well against cold.</description>
+    <graphicData>
+      <color>(0,125,255)</color>
+      <colorTwo>(0,125,255)</colorTwo>
+    </graphicData>
+    <statBases>
+      <MarketValue>25</MarketValue>
+      <StuffPower_Armor_Sharp>0.6</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>0.3</StuffPower_Armor_Blunt>
+	  <StuffPower_Armor_Heat>0.3</StuffPower_Armor_Heat>
+      <StuffPower_Insulation_Cold>35</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>25</StuffPower_Insulation_Heat>
+    </statBases>
+    <stuffProps>
+      <color>(0,125,255)</color>
+      <commonality>0</commonality>
+    </stuffProps>
+  </ThingDef>
+</Defs>

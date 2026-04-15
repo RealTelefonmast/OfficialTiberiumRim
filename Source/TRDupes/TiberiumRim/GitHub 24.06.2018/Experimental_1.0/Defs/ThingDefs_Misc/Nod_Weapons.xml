@@ -1,0 +1,976 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef Name="Nod_MakeableGun" ParentName="BaseGun" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>SmithingSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+				<recipeUsers>
+					<li>Nod_Factory</li>
+				</recipeUsers>
+			<unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+			<researchPrerequisite>Gunsmithing</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<graphicData>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<comps>
+		  <li>
+		    <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		  </li>
+		</comps>
+	</ThingDef>	
+	
+	<ThingDef Name="Nod_FactionGun" ParentName="BaseGun" Abstract="True">
+		<tradeability>None</tradeability>
+		<techLevel>Spacer</techLevel>
+		<destroyOnDrop>True</destroyOnDrop>
+		<menuHidden>True</menuHidden>
+		<weaponTags>
+			<li>Nod_FactionGun</li>
+		</weaponTags>
+		<graphicData>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<comps>
+		  <li>
+		    <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		  </li>
+		</comps>
+	</ThingDef>	
+	
+      <!-- Nod Rifle -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_NodRifle</defName>
+		<label>bullet</label>
+		<description>bullet</description>
+		<graphicData>
+		<texPath>Equipments/Weapons/Projectile/Bullet_Base_Nod</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<speed>75</speed>
+			<stoppingPower>0.5</stoppingPower>
+		</projectile>
+	</ThingDef>
+	  
+	<ThingDef ParentName="Nod_MakeableGun">
+		<defName>Gun_NodRifle</defName>
+		<label>Nod rifle</label>
+		<description>A general-purpose military weapon for field or urban combat. Specialized by Nod technology.\n\nUpgradable to Nod laser rifle.\n\nUpgradable to Nod flamethrower.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_Rifle</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<MarketValue>750</MarketValue>
+			<WorkToMake>30000</WorkToMake>
+			<Mass>2</Mass>
+			<AccuracyTouch>0.75</AccuracyTouch>
+			<AccuracyShort>0.65</AccuracyShort>
+			<AccuracyMedium>0.55</AccuracyMedium>
+			<AccuracyLong>0.45</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<Weapon_Bulk>1</Weapon_Bulk>
+		</statBases>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_NodRifle</defaultProjectile>
+				<warmupTime>1</warmupTime>
+				<range>25</range>
+				<burstShotCount>4</burstShotCount>
+				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+				<soundCast>Interact_AssaultRifle</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<weaponTags>
+			<li>NodRifle</li>
+		</weaponTags>
+		<recipeMaker>
+			<researchPrerequisite>NodResearch_Technology</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+		
+      <!-- Twin Tiberium Flechette Gun -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Nod_TwinFlechetteGun</defName>
+		<label>tiberium flechette</label>
+		<description>tiberium flechette</description>
+		<graphicData>
+		<texPath>Equipments/Weapons/Projectile/Bullet_Nod_Tiberium</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>3</damageAmountBase>
+			<speed>35</speed>
+			<preExplosionSpawnThingDef>FilthTiberiumGreen</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.1</preExplosionSpawnChance>
+			<soundExplode>BulletImpact_Flesh</soundExplode>
+		</projectile>
+	</ThingDef>
+	  
+	<ThingDef ParentName="Nod_MakeableGun">
+		<defName>Gun_Nod_TwinTiberiumFlechetteGun</defName>
+		<label>Nod twin flechette gun</label>
+		<description>The Tiberium Flechette gun fires Tiberium crystals rapidly at enemies.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_TwinTiberiumFlechetteGun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>45000</WorkToMake>
+			<MarketValue>1200</MarketValue>
+			<Mass>2.0</Mass>
+			<AccuracyTouch>0.70</AccuracyTouch>
+			<AccuracyShort>0.87</AccuracyShort>
+			<AccuracyMedium>0.47</AccuracyMedium>
+			<AccuracyLong>0.24</AccuracyLong>
+			<RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
+			<Weapon_Bulk>0.15</Weapon_Bulk>
+		</statBases>
+		<costList>
+			<Steel>75</Steel>
+			<Uranium>1</Uranium>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Nod_TwinFlechetteGun</defaultProjectile>
+				<warmupTime>0.5</warmupTime>
+				<range>15</range>
+				<forcedMissRadius>0.1</forcedMissRadius>
+				<burstShotCount>10</burstShotCount>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<soundCast>Interact_AssaultRifle</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<equippedStatOffsets>
+			<MoveSpeed>0.2</MoveSpeed>
+		</equippedStatOffsets>
+		<weaponTags>
+			<li>TwinFlechetteGun</li>
+		</weaponTags>
+		<recipeMaker>
+			<researchPrerequisite>NodResearch_Production</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+	
+	<!-- Nod Laser Rifle -->
+	<ThingDef Class="JecsTools.ThingDef_LaserProjectile" ParentName="BaseBullet">
+		<defName>Bullet_LaserRifle</defName>
+		<label>laser</label>
+		<description>laser</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Projectile/Bullet_Nod_LaserBeam</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>TRLaser</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<stoppingPower>1</stoppingPower>
+			<speed>80</speed>
+		</projectile>
+		<thingClass>JecsTools.Projectile_Laser</thingClass>
+		<graphicSettings>
+		  <li>
+		    <offset>(0,-1,0.1)</offset>
+		  </li>
+		</graphicSettings>
+			<cycleThroughFiringPositions>false</cycleThroughFiringPositions>
+			<preFiringInitialIntensity>0</preFiringInitialIntensity>
+			<preFiringFinalIntensity>2</preFiringFinalIntensity>
+			<postFiringInitialIntensity>2</postFiringInitialIntensity>
+			<postFiringFinalIntensity>0</postFiringFinalIntensity>
+			<preFiringDuration>2</preFiringDuration>
+			<postFiringDuration>50</postFiringDuration>
+			<StartFireChance>0.1</StartFireChance>
+			<createsExplosion>true</createsExplosion>	
+	</ThingDef>
+	
+	<ThingDef ParentName="Nod_MakeableGun">
+		<defName>Gun_NodLaserRifleSmall</defName>
+		<label>Nod laser rifle</label>
+		<description>A rifle using Nod's specialized laser technology.\n\nUpgradable to Nod advanced laser rifle.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_Rifle_Laser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>20000</WorkToMake>
+			<MarketValue>1850</MarketValue>
+			<Mass>4.0</Mass>
+			<AccuracyTouch>0.70</AccuracyTouch>
+			<AccuracyShort>0.87</AccuracyShort>
+			<AccuracyMedium>0.77</AccuracyMedium>
+			<AccuracyLong>0.64</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<Weapon_Bulk>0.25</Weapon_Bulk>
+		</statBases>
+		<costList>
+			<Gun_NodRifle>1</Gun_NodRifle>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_LaserRifle</defaultProjectile>
+				<warmupTime>1</warmupTime>
+				<range>20</range>
+				<burstShotCount>3</burstShotCount>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<soundCast>Shot_Nod_Laser</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+		<recipeMaker>
+			<researchPrerequisite>NodResearch_Production</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef ParentName="Nod_FactionGun">
+		<defName>Gun_NodLaserRifleSmall_Faction</defName>
+		<label>Nod laser rifle</label>
+		<description>A rifle using Nod's specialized laser technology.\n\nUpgradable to Nod advanced laser rifle.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_Rifle_Laser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<Mass>4.0</Mass>
+			<AccuracyTouch>0.70</AccuracyTouch>
+			<AccuracyShort>0.87</AccuracyShort>
+			<AccuracyMedium>0.77</AccuracyMedium>
+			<AccuracyLong>0.64</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<Weapon_Bulk>0.25</Weapon_Bulk>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_LaserRifle</defaultProjectile>
+				<warmupTime>1</warmupTime>
+				<range>20</range>
+				<burstShotCount>3</burstShotCount>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<soundCast>Shot_Nod_Laser</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+		<weaponTags>
+			<li>NodLaserRifle</li>
+		</weaponTags>
+	</ThingDef>
+	
+	<ThingDef ParentName="Nod_MakeableGun">
+		<defName>Gun_NodLaserRifleLarge</defName>
+		<label>Nod advanced laser rifle</label>
+		<description>A rifle using Nod's advanced specialized laser technology.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_Rifle_LaserHeavy</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>20000</WorkToMake>
+			<MarketValue>2750</MarketValue>
+			<Mass>5.0</Mass>
+			<AccuracyTouch>0.70</AccuracyTouch>
+			<AccuracyShort>0.87</AccuracyShort>
+			<AccuracyMedium>0.77</AccuracyMedium>
+			<AccuracyLong>0.64</AccuracyLong>
+			<RangedWeapon_Cooldown>1.75</RangedWeapon_Cooldown>
+			<Weapon_Bulk>1</Weapon_Bulk>
+		</statBases>
+		<costList>
+			<Gun_NodLaserRifleSmall>1</Gun_NodLaserRifleSmall>
+			<ComponentIndustrial>10</ComponentIndustrial>
+			<TRBattleChip>2</TRBattleChip>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_LaserRifle</defaultProjectile>
+				<warmupTime>1.75</warmupTime>
+				<range>30</range>
+				<burstShotCount>4</burstShotCount>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<soundCast>Shot_Nod_LaserLarge</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+		<recipeMaker>
+			<researchPrerequisite>NodResearch_AdvancedProduction</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef ParentName="Nod_FactionGun">
+		<defName>Gun_NodLaserRifleLarge_Faction</defName>
+		<label>Nod advanced laser rifle</label>
+		<description>A rifle using Nod's advanced specialized laser technology.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_Rifle_LaserHeavy</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<Mass>5.0</Mass>
+			<AccuracyTouch>0.70</AccuracyTouch>
+			<AccuracyShort>0.87</AccuracyShort>
+			<AccuracyMedium>0.77</AccuracyMedium>
+			<AccuracyLong>0.64</AccuracyLong>
+			<RangedWeapon_Cooldown>1.75</RangedWeapon_Cooldown>
+			<Weapon_Bulk>1</Weapon_Bulk>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_LaserRifle</defaultProjectile>
+				<warmupTime>1.75</warmupTime>
+				<range>30</range>
+				<burstShotCount>4</burstShotCount>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<soundCast>Shot_Nod_LaserLarge</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+		<weaponTags>
+			<li>NodLaserRifle</li>
+		</weaponTags>
+	</ThingDef>
+	
+	<!-- Flamethrower -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Flamethrower</defName>
+		<label>flame</label>
+		<description>bullet</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Projectile/FlameSmall</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<ai_IsIncendiary>true</ai_IsIncendiary>
+			<damageDef>Flame</damageDef>
+			<damageAmountBase>3</damageAmountBase>
+			<explosionRadius>0.025</explosionRadius>
+			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.35</preExplosionSpawnChance>
+			<speed>15</speed>
+			<soundExplode>Shot_Nod_FlameTail</soundExplode>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="Nod_MakeableGun">
+		<defName>Gun_NodFlamethrower</defName>
+		<label>Nod flamethrower</label>
+		<description>A Blackhand flamethrower. Cleanse the your opponents!\n\nUpgradable to Nod chemicalthrower.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_Flamethrower</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>20000</WorkToMake>
+			<MarketValue>3000</MarketValue>
+			<Mass>6.0</Mass>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.5</AccuracyShort>
+			<AccuracyMedium>0.25</AccuracyMedium>
+			<AccuracyLong>0.12</AccuracyLong>
+			<RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
+			<Weapon_Bulk>1.5</Weapon_Bulk>
+		</statBases>
+		<costList>
+			<Gun_NodRifle>1</Gun_NodRifle>
+			<ComponentIndustrial>5</ComponentIndustrial>
+			<Chemfuel>50</Chemfuel>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>				
+				<warmupTime>2</warmupTime>
+				<range>15</range>
+				<forcedMissRadius>0.5</forcedMissRadius>
+				<burstShotCount>15</burstShotCount>
+				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+				<soundCast>Shot_Nod_Flame</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>15</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+			</li>
+		</verbs>
+		<recipeMaker>
+			<researchPrerequisite>NodResearch_AdvancedProduction</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef ParentName="Nod_FactionGun">
+		<defName>Gun_NodFlamethrower_Faction</defName>
+		<label>Nod flamethrower</label>
+		<description>A Blackhand flamethrower. Cleanse the your opponents!\n\nUpgradable to Nod chemicalthrower.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_Flamethrower</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<Mass>6.0</Mass>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.5</AccuracyShort>
+			<AccuracyMedium>0.25</AccuracyMedium>
+			<AccuracyLong>0.12</AccuracyLong>
+			<RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
+			<Weapon_Bulk>1.5</Weapon_Bulk>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>				
+				<warmupTime>2</warmupTime>
+				<range>15</range>
+				<forcedMissRadius>0.5</forcedMissRadius>
+				<burstShotCount>15</burstShotCount>
+				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+				<soundCast>Shot_Nod_Flame</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>15</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+			</li>
+		</verbs>
+		<weaponTags>
+			<li>NodFlamethrower</li>
+		</weaponTags>
+	</ThingDef>
+	
+	<!-- Chemicalthrower -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Gas</defName>
+		<label>gas cloud</label>
+		<description>gas cloud</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Projectile/Gas</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>TRTiberiumshotGreen</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<explosionRadius>0.025</explosionRadius>
+			<preExplosionSpawnThingDef>Gas_Tiberium</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>
+			<postExplosionSpawnThingDef>FilthTibLiquidGreen</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>0.5</postExplosionSpawnChance>
+			<speed>15</speed>
+			<soundExplode>Shot_Nod_FlameTail</soundExplode>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="Nod_MakeableGun">
+		<defName>Gun_NodChemicalthrower</defName>
+		<label>Nod chemicalthrower</label>
+		<description>The chemical thrower is an advcanced and highly toxic weapon using Nod's liquid Tiberium technology.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_Chemicalthrower</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>20000</WorkToMake>
+			<MarketValue>4000</MarketValue>
+			<Mass>5.0</Mass>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.5</AccuracyShort>
+			<AccuracyMedium>0.25</AccuracyMedium>
+			<AccuracyLong>0.12</AccuracyLong>
+			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+			<Weapon_Bulk>1.5</Weapon_Bulk>
+		</statBases>
+		<costList>
+			<Gun_NodFlamethrower>1</Gun_NodFlamethrower>
+			<Nod_LQTiberiumCore>1</Nod_LQTiberiumCore>
+			<TRBattleChip>2</TRBattleChip>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Gas</defaultProjectile>
+				<warmupTime>1.75</warmupTime>
+				<range>15</range>
+				<forcedMissRadius>0.5</forcedMissRadius>
+				<burstShotCount>15</burstShotCount>
+				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+				<soundCast>DropPod_Open</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+			</li>
+		</verbs>
+		<recipeMaker>
+			<researchPrerequisite>NodResearch_LiquidTechnology</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef ParentName="Nod_FactionGun">
+		<defName>Gun_NodChemicalthrower_Faction</defName>
+		<label>Nod chemicalthrower</label>
+		<description>The chemical thrower is an advcanced and highly toxic weapon using Nod's liquid Tiberium technology.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_Chemicalthrower</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<Mass>5.0</Mass>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.5</AccuracyShort>
+			<AccuracyMedium>0.25</AccuracyMedium>
+			<AccuracyLong>0.12</AccuracyLong>
+			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+			<Weapon_Bulk>1.5</Weapon_Bulk>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Gas</defaultProjectile>
+				<warmupTime>1.75</warmupTime>
+				<range>15</range>
+				<forcedMissRadius>0.5</forcedMissRadius>
+				<burstShotCount>15</burstShotCount>
+				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+				<soundCast>DropPod_Open</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+			</li>
+		</verbs>
+		<weaponTags>
+			<li>NodChemicalSpray</li>
+		</weaponTags>
+	</ThingDef>
+	
+	<!-- Nod RocketLauncher -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_NodRocket</defName>
+		<label>rocket</label>
+		<description>rocket</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Projectile/Bullet_Nod_Rocket</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>20</damageAmountBase>
+			<explosionRadius>2.5</explosionRadius>
+			<speed>30</speed>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="Nod_MakeableGun">
+		<defName>Gun_NodRocketLauncher</defName>
+		<label>Nod rocket launcher</label>
+		<description>A rocket launcher developed by Nod engineers. It is highly lethal.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_Rocketlauncher</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<statBases>
+			<WorkToMake>55000</WorkToMake>
+			<MarketValue>3000</MarketValue>
+			<Mass>10</Mass>
+			<AccuracyTouch>0.2</AccuracyTouch>
+			<AccuracyShort>0.3</AccuracyShort>
+			<AccuracyMedium>0.6</AccuracyMedium>
+			<AccuracyLong>0.4</AccuracyLong>
+			<RangedWeapon_Cooldown>4</RangedWeapon_Cooldown>
+			<Weapon_Bulk>2</Weapon_Bulk>
+		</statBases>
+		<costList>
+			<Nod_CarbonPlate>25</Nod_CarbonPlate>
+			<Steel>150</Steel>
+			<ComponentIndustrial>15</ComponentIndustrial>
+		</costList>
+		<tradeTags>
+			<li>Exotic</li>
+		</tradeTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_NodRocket</defaultProjectile>
+				<forcedMissRadius>2.0</forcedMissRadius>
+				<warmupTime>4</warmupTime>
+				<range>30</range>
+				<burstShotCount>2</burstShotCount>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<soundCast>Shot_Nod_Rocket</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<onlyManualCast>true</onlyManualCast>
+				<stopBurstWithoutLos>false</stopBurstWithoutLos>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<muzzleFlashScale>14</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				<ai_AvoidFriendlyFireRadius>5</ai_AvoidFriendlyFireRadius>
+			</li>
+		</verbs>
+		<recipeMaker>
+			<researchPrerequisite>NodResearch_AdvancedProduction</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef ParentName="Nod_FactionGun">
+		<defName>Gun_NodRocketLauncher_Faction</defName>
+		<label>Nod rocket launcher</label>
+		<description>A rocket launcher developed by Nod engineers. It is highly lethal.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_Rocketlauncher</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<Mass>10</Mass>
+			<AccuracyTouch>0.2</AccuracyTouch>
+			<AccuracyShort>0.3</AccuracyShort>
+			<AccuracyMedium>0.6</AccuracyMedium>
+			<AccuracyLong>0.4</AccuracyLong>
+			<RangedWeapon_Cooldown>4</RangedWeapon_Cooldown>
+			<Weapon_Bulk>2</Weapon_Bulk>
+		</statBases>
+		<weaponTags>
+			<li>MilitiaRocketLauncher</li>
+		</weaponTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_NodRocket</defaultProjectile>
+				<forcedMissRadius>2.0</forcedMissRadius>
+				<warmupTime>4</warmupTime>
+				<range>30</range>
+				<burstShotCount>2</burstShotCount>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<soundCast>Shot_Nod_Rocket</soundCast>
+				<soundCastTail>Shot_Nod_GunTail</soundCastTail>
+				<onlyManualCast>true</onlyManualCast>
+				<stopBurstWithoutLos>false</stopBurstWithoutLos>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<muzzleFlashScale>14</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				<ai_AvoidFriendlyFireRadius>5</ai_AvoidFriendlyFireRadius>
+			</li>
+		</verbs>
+	</ThingDef>
+	
+	<!-- Nod Grenade -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Nod_Grenade</defName>
+		<label>grenade</label>
+		<description>grenade</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Projectile/Bullet_Nod_Grenade</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>35</damageAmountBase>
+			<explosionRadius>3</explosionRadius>
+			<explosionDelay>65</explosionDelay>
+			<speed>15</speed>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="Nod_MakeableGun">
+		<defName>Nod_Grenade</defName>
+		<label>Nod grenade</label>
+		<description>Nod's special grenades, just as lethal as ordinary ones.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_Grenade</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<WorkToMake>25000</WorkToMake>
+			<MarketValue>1200</MarketValue>
+			<Mass>3</Mass>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.5</AccuracyShort>
+			<AccuracyMedium>0.5</AccuracyMedium>
+			<AccuracyLong>0.5</AccuracyLong>
+			<RangedWeapon_Cooldown>7</RangedWeapon_Cooldown>
+			<Weapon_Bulk>0.5</Weapon_Bulk>
+		</statBases>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<weaponTags>
+			<li>NodGrenade</li>
+		</weaponTags>
+		<tradeTags>
+			<li>Exotic</li>
+		</tradeTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_LaunchProjectile</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Nod_Grenade</defaultProjectile>
+				<warmupTime>2</warmupTime>
+				<range>10</range>
+				<forcedMissRadius>2</forcedMissRadius>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+				<soundCast>ThrowGrenade</soundCast>
+				<noiseRadius>4</noiseRadius>
+				<stopBurstWithoutLos>false</stopBurstWithoutLos>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<muzzleFlashScale>0</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				<ai_AvoidFriendlyFireRadius>5</ai_AvoidFriendlyFireRadius>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>2</explosiveRadius>
+				<damageAmountBase>35</damageAmountBase>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+			</li>
+		</comps>
+		<tickerType>Normal</tickerType>
+		<recipeMaker>
+			<researchPrerequisite>NodResearch_Production</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+
+	
+	<!-- Nod Suicide bomb -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Sbomb</defName>
+		<label>Suicide bomb</label>
+		<description>Suicide bomb</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Projectile/Bullet_Nod_Sbomb</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>TRTiberiumBomb</damageDef>
+			<damageAmountBase>150</damageAmountBase>
+			<explosionRadius>8</explosionRadius>
+			<speed>25</speed>
+			<explosionDelay>150</explosionDelay>
+			<preExplosionSpawnThingDef>Gas_Tiberium</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.5</preExplosionSpawnChance>
+			<soundExplode>Shot_Nod_ChemBomb</soundExplode>
+			<explosionEffect>GiantExplosion</explosionEffect>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="Nod_MakeableGun">
+		<defName>Nod_Sbomb</defName>
+		<label>Nod suicide bomb</label>
+		<description>Take your pawn on a suicide mission. Beware of the blast radius.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_Suicidebomb</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>25</MaxHitPoints>
+			<WorkToMake>50000</WorkToMake>
+			<MarketValue>1500</MarketValue>
+			<Mass>15</Mass>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+			<Nod_LQTiberiumCore>1</Nod_LQTiberiumCore>
+		</costList>
+		<tradeTags>
+			<li>Exotic</li>
+		</tradeTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_ShootOneUse</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Sbomb</defaultProjectile>
+				<warmupTime>0.25</warmupTime>
+				<range>2</range>
+				<forcedMissRadius>0.1</forcedMissRadius>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+				<soundCast>ThrowGrenade</soundCast>
+				<noiseRadius>8</noiseRadius>
+				<stopBurstWithoutLos>false</stopBurstWithoutLos>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<muzzleFlashScale>0</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+		<recipeMaker>
+			<researchPrerequisite>NodResearch_LiquidTechnology</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<equippedStatOffsets>
+			<MoveSpeed>0.6</MoveSpeed>
+		</equippedStatOffsets>
+	</ThingDef>
+	
+	<ThingDef ParentName="Nod_FactionGun">
+		<defName>Nod_Sbomb_Faction</defName>
+		<label>Nod suicide bomb</label>
+		<description>Take your pawn on a suicide mission. Beware of the blast radius.</description>
+		<graphicData>
+			<texPath>Equipments/Weapons/Nod_Suicidebomb</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>25</MaxHitPoints>
+			<MarketValue>10</MarketValue>
+			<Mass>15</Mass>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+			<Nod_LQTiberiumCore>1</Nod_LQTiberiumCore>
+		</costList>
+		<weaponTags>
+			<li>Suicidebomb</li>
+		</weaponTags>
+		<tradeTags>
+			<li>Exotic</li>
+		</tradeTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_ShootOneUse</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Sbomb</defaultProjectile>
+				<warmupTime>0.25</warmupTime>
+				<range>2</range>
+				<forcedMissRadius>0.1</forcedMissRadius>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+				<soundCast>ThrowGrenade</soundCast>
+				<noiseRadius>8</noiseRadius>
+				<stopBurstWithoutLos>false</stopBurstWithoutLos>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<muzzleFlashScale>0</muzzleFlashScale>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+			</li>
+		</verbs>
+		<equippedStatOffsets>
+			<MoveSpeed>0.6</MoveSpeed>
+		</equippedStatOffsets>
+	</ThingDef>
+</Defs>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="BenchBase" ParentName="BuildingBase" Abstract="True">
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<building>
+			<workSpeedPenaltyOutdoors>true</workSpeedPenaltyOutdoors>
+			<workSpeedPenaltyTemperature>true</workSpeedPenaltyTemperature>
+		</building>
+		<comps>
+			<li>
+				<compClass>CompReportWorkSpeed</compClass>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ReportWorkSpeedPenalties</li>
+		</placeWorkers>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BenchBase">
+		<defName>TiberiumRefinery</defName>
+		<label>tiberium refinery</label>
+		<description>A specialized chemical refining plant. Used to refine lethal Tiberium into useful resources.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>3000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<size>(3,4)</size>
+		<costList>
+			<Uranium>5</Uranium>
+			<Plasteel>10</Plasteel>
+			<Gold>5</Gold>
+			<Steel>150</Steel>
+			<Component>6</Component>
+			<BookRiparius>1</BookRiparius>
+ 			<BookVinifera>1</BookVinifera>
+ 			<BookRutila>1</BookRutila>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(120,255,150,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>425</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<recipes>
+			<li>ExtractResourcesFromGreenTiberium</li>
+			<li>ExtractResourcesFromBlueTiberium</li>
+			<li>ExtractResourcesFromRedTiberium</li>
+			<li>ExtractResourcesFromVeinTiberium</li>
+			<li>MakeTiberiumFuel</li>
+		</recipes>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<graphicData>
+			<texPath>Building/Tiberium/TibRefinery</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+			<shadowData>
+				<volume>(1.5,1,1.5)</volume>
+			</shadowData>
+			<damageData>
+				<rect>(0.3,0.1,2.4,1.8)</rect>
+			</damageData>
+		</graphicData>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,3)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<designationCategory>Tiberium</designationCategory>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>TiberiumResearchRefining</li>
+		</researchPrerequisites>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <TiberiumGreen>3</TiberiumGreen>
+        </killedLeavings>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>TiberiumPowerPlant</defName>
+		<label>Tiberium power plant</label>
+		<thingClass>Building</thingClass>
+		<graphicData>
+			<texPath>Building/Tiberium/PowerPlant</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>150</pathCost>
+		<blockWind>true</blockWind>
+		<fillPercent>1.0</fillPercent>
+		<castEdgeShadows>false</castEdgeShadows>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MaxHitPoints>400</MaxHitPoints>
+			<WorkToBuild>3222</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<description>Produces power by consuming Tiberium fuel. Must be fueled by hand.</description>
+		<size>(4,4)</size>
+		<costList>
+			<Steel>250</Steel>
+			<Uranium>25</Uranium>
+			<Plasteel>15</Plasteel>
+			<Component>5</Component>
+			<TiberiumFuel>5</TiberiumFuel>
+			<BookRiparius>1</BookRiparius>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerPlant</compClass>
+				<basePowerConsumption>-2250</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Refuelable">
+			<fuelConsumptionRate>0.75</fuelConsumptionRate>
+			<fuelCapacity>24.0</fuelCapacity>
+			<fuelFilter>
+				<thingDefs>
+					<li>TiberiumFuel</li>
+				</thingDefs>
+			</fuelFilter>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>6</glowRadius>
+				<glowColor>(120,255,150,0)</glowColor>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>12</heatPerSecond>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<designationCategory>Tiberium</designationCategory>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<constructEffect>ConstructMetal</constructEffect>
+		<researchPrerequisites>
+			<li>TiberiumPower</li>
+		</researchPrerequisites>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <TiberiumGreen>2</TiberiumGreen>
+			<TiberiumRed>3</TiberiumRed>
+        </killedLeavings>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>TiberiumSpike</defName>
+		<label>Tiberium spike</label>
+		<thingClass>Building</thingClass>
+		<graphicData>
+			<texPath>Building/Tiberium/TibSpike</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,15)</drawSize>
+			<damageData>
+			<rect>(0.3,0,5.4,6)</rect>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Building/Tiberium/TibSpike_Icon</uiIconPath>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<passability>Impassable</passability>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+		<fillPercent>1</fillPercent>
+		<blockLight>true</blockLight>
+		<canOverlapZones>false</canOverlapZones>
+		<statBases>
+			<MaxHitPoints>1000</MaxHitPoints>
+			<WorkToBuild>6000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-30</Beauty>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<description>Slowly produces raw Tiberium.</description>
+		<size>(2,2)</size>
+		<costList>
+			<Steel>425</Steel>
+			<Plasteel>75</Plasteel>
+			<Component>30</Component>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>2250</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="TiberiumRim.CompProperties_TiberiumSpike"/>
+		</comps>
+		<rotatable>false</rotatable>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<designationCategory>Tiberium</designationCategory>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_OnTiberiumGeyser</li>
+		</placeWorkers>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<soundAmbient>GeothermalPlant_Ambience</soundAmbient>
+		</building>
+		<constructEffect>ConstructMetal</constructEffect>
+		<researchPrerequisites>
+			<li>TiberiumResearchRefining</li>
+			<li>TiberiumPower</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+</Defs>

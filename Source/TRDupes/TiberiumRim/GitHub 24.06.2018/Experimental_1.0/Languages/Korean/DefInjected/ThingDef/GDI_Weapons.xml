@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- GDI Rifle -->
+
+  <Bullet_GDIRifle.label>탄환</Bullet_GDIRifle.label>
+  <Bullet_GDIRifle.description>탄환</Bullet_GDIRifle.description>
+
+  <Gun_GDIRifle.label>GDI 표준 소총</Gun_GDIRifle.label>
+  <Gun_GDIRifle.description>GDI 신병들에게 기본적으로 지급되는 소총입니다. 20세기 수준의 무기체계이지만 여전히 유용합니다.\n\nGDI 레일건으로 업그레이드할 수 있습니다.</Gun_GDIRifle.description>
+
+
+  <!-- GDI Disc launcher -->
+
+  <Bullet_GDIDisc.label>섬광탄</Bullet_GDIDisc.label>
+  <Bullet_GDIDisc.description>섬광탄</Bullet_GDIDisc.description>
+
+  <Gun_GDIDisc.label>GDI 섬광탄 발사기</Gun_GDIDisc.label>
+  <Gun_GDIDisc.description>섬광탄이 장전된 점을 제외하면 아주 평범한 유탄 발사기입니다. 화력은 높지 않지만 명중당한 적을 짧은 시간 동안 무력화합니다.</Gun_GDIDisc.description>
+
+
+  <!-- GDI Advanced Rifles -->
+
+  <Bullet_Railgun.label>레일건 탄환</Bullet_Railgun.label>
+  <Bullet_Railgun.description>레일건 탄환</Bullet_Railgun.description>
+
+  <Gun_GDIRailgun.label>GDI 레일건</Gun_GDIRailgun.label>
+  <Gun_GDIRailgun.description>GDI 레일건은 막대한 운동에너지를 지닌 가속 탄환을 발사합니다. 연사는 불가능하지만 어마어마한 유효사거리를 자랑합니다.</Gun_GDIRailgun.description>
+
+  <Gun_GDIRailgun_Faction.label>GDI 레일건</Gun_GDIRailgun_Faction.label>
+  <Gun_GDIRailgun_Faction.description>GDI 레일건은 막대한 운동에너지를 지닌 가속 탄환을 발사합니다. 연사는 불가능하지만 어마어마한 유효사거리를 자랑합니다.</Gun_GDIRailgun_Faction.description>
+
+  <Bullet_Shatterer.label>음파</Bullet_Shatterer.label>
+  <Bullet_Shatterer.description>음파</Bullet_Shatterer.description>
+
+  <Gun_GDIShatterer.label>GDI 이동식 음파방사기</Gun_GDIShatterer.label>
+  <Gun_GDIShatterer.description>이 무기는 음파 기술을 활용하여 만들어졌습니다. 대단히 불안정하지만 위력적입니다.</Gun_GDIShatterer.description>
+
+  <Gun_GDIShatterer_Faction.label>GDI 이동식 음파방사기</Gun_GDIShatterer_Faction.label>
+  <Gun_GDIShatterer_Faction.description>이 무기는 음파 기술을 활용하여 만들어졌습니다. 대단히 불안정하지만 위력적입니다.</Gun_GDIShatterer_Faction.description>
+
+  <Bullet_Mortar.label>박격포탄</Bullet_Mortar.label>
+  <Bullet_Mortar.description>박격포탄</Bullet_Mortar.description>
+
+  <GDI_Mortar.label>GDI 이동식 박격포</GDI_Mortar.label>
+  <GDI_Mortar.description>장거리 화력투사를 위해 설계된 곡사 병기입니다.\n\nGDI 공성충격포로 업그레이드할 수 있습니다.</GDI_Mortar.description>
+
+  <GDI_Mortar_Faction.label>GDI 이동식 박격포</GDI_Mortar_Faction.label>
+  <GDI_Mortar_Faction.description>장거리 화력투사를 위해 설계된 곡사 병기입니다.\n\nGDI 공성충격포로 업그레이드할 수 있습니다.</GDI_Mortar_Faction.description>
+
+  <Bullet_Mine.label>충격탄</Bullet_Mine.label>
+  <Bullet_Mine.description>충격탄</Bullet_Mine.description>
+
+  <GDI_Shockweaver.label>GDI 공성충격포</GDI_Shockweaver.label>
+  <GDI_Shockweaver.description>음파 충격탄을 발사할 수 있도록 개조된 이동식 박격포입니다. 건축물에 치명적인 피해를 입히지만 생명체를 상대로는 거의 효과가 없습니다.</GDI_Shockweaver.description>
+
+  <GDI_Shockweaver_Faction.label>GDI 공성충격포</GDI_Shockweaver_Faction.label>
+  <GDI_Shockweaver_Faction.description>음파 충격탄을 발사할 수 있도록 개조된 이동식 박격포입니다. 건축물에 치명적인 피해를 입히지만 생명체를 상대로는 거의 효과가 없습니다</GDI_Shockweaver_Faction.description>
+
+  <MeleeWeapon_GDIWrench.label>GDI 렌치</MeleeWeapon_GDIWrench.label>
+  <MeleeWeapon_GDIWrench.description>GDI 기술자의 표준 무장(?)입니다. 여러 작업 보너스를 부여합니다.</MeleeWeapon_GDIWrench.description>
+  <MeleeWeapon_GDIWrench.tools.0.label>렌치 머리</MeleeWeapon_GDIWrench.tools.0.label>
+  <MeleeWeapon_GDIWrench.tools.1.label>손잡이</MeleeWeapon_GDIWrench.tools.1.label>
+
+
+</LanguageData>

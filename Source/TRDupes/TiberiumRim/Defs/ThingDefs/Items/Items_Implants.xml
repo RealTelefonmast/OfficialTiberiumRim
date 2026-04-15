@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<ThingDef Name="ImplantBase_TR" Abstract="True">
+		<thingClass>ThingWithComps</thingClass>
+		<category>Item</category>
+		<useHitPoints>true</useHitPoints>
+		<selectable>true</selectable>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Flammability>0.7</Flammability>
+			<Beauty>-4</Beauty>
+			<Mass>1</Mass>
+		</statBases>
+		<altitudeLayer>Item</altitudeLayer>
+		<tickerType>Never</tickerType>
+		<alwaysHaulable>true</alwaysHaulable>
+		<isTechHediff>true</isTechHediff>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+		</comps>
+		<pathCost>10</pathCost>
+	</ThingDef>
+	
+	<ThingDef Name="EnhancedBodyPart" ParentName="ImplantBase_TR" Abstract="True">
+		<graphicData>
+			<texPath>Items/Resource/BodyPart_Tiberium</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.80</drawSize>
+		</graphicData>
+		<thingCategories>
+			<li>BodyParts</li>
+			<li>BodyPartsTiberium</li>
+		</thingCategories>
+		<statBases>
+			<DeteriorationRate>4.0</DeteriorationRate>
+		</statBases>
+	</ThingDef>
+	
+	<ThingDef ParentName="EnhancedBodyPart">
+		<defName>TiberiumEnhancedArm</defName>
+		<label>tiberium enhanced arm</label>
+		<description>This arm was removed from a Tiberium mutant, it is kept alive by the Tiberium inside. For some reason it is not completely crystallizing. It might be possible to transplant it to someone else.</description>
+		<techLevel>Industrial</techLevel>
+		<techHediffsTags>
+			<li>TiberiumBodyPart</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<ThingDef ParentName="EnhancedBodyPart">
+		<defName>TiberiumEnhancedLeg</defName>
+		<label>tiberium enhanced leg</label>
+		<description>This leg was removed from a Tiberium mutant, it is kept alive by the Tiberium inside. For some reason it is not fully crystallizing. It might be possible to transplant it to someone else.</description>
+		<techLevel>Industrial</techLevel>
+		<techHediffsTags>
+			<li>TiberiumBodyPart</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<ThingDef ParentName="EnhancedBodyPart">
+		<defName>TiberiumSkinSample</defName>
+		<label>tiberium tissue sample</label>
+		<description>A sample of skin from a Tiberium mutant, this could be applied to any body part, though it brings a risk.</description>
+		<techLevel>Industrial</techLevel>
+		<techHediffsTags>
+			<li>TiberiumBodyPart</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+</Defs>

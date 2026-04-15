@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!--
+Class to use, Sprayer is perfect for basic spawn effect
+<subEffecterClass>Subeffecter_Sprayer</subEffecterClass>
+
+Amount of motes/flecks to spawn
+<burstCount>0~100</burstCount>
+
+Ticks between each mote/fleck spawn
+<ticksBetweenMotes>40</ticksBetweenMotes>
+
+Maximum motes to spawn, ignore if you want unlimited
+<maxMoteCount>100</maxMoteCount>
+
+Time until effecter works
+<initialDelayTicks>0</initialDelayTicks>
+
+Chance per tick to spawn a mote
+<chancePerTick>0.1</chancePerTick>
+
+Spawn mode for mote/fleck; Can be: OnSource, BetweenPositions, BetweenTouchingCells, RandomCellOnTarget, OnTarget | OnSource is good as default
+<spawnLocType>OnSource</spawnLocType>
+
+Spawn position offset
+<positionOffset>(0,0,0)</positionOffset>
+
+ Radius to spawn motes/flecks in
+<positionRadius>3</positionRadius>
+
+Self explantory
+<moteDef></moteDef>
+
+Self explantory
+<fleckDef></fleckDef>
+
+Color override, ignore to keep white as default
+<color>(255,255,255)</color>
+
+Random range for move angle on spawn
+<angle>0~360</angle>
+
+Random range for speed on spawn
+<speed>0~100</speed>
+
+Random range for rotation of the mote/fleck on spawn
+<rotation>0~360</rotation>
+
+Random range for rotation speed
+<rotationRate>0~100</rotationRate>
+
+Random range for size scale of mote/fleck
+<scale>1~2</scale>
+
+Total time of mote being "alive"
+<airTime>99999~99999</airTime>
+
+Sound effect to play on spawn
+<soundDef>SomeSoundDef</soundDef>
+
+Random time ticks between sound effect
+<intermittentSoundInterval>300~600</intermittentSoundInterval>
+
+Ticks before sound starts
+<ticksBeforeSustainerStart>100</ticksBeforeSustainerStart>
+-->
+
+	<EffecterDef>
+		<defName>ObeliskOriginGlow</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<moteDef>ObeliskGlow</moteDef>
+				<color>(1, 0.3, 0.3, 1)</color>
+				<burstCount>1~1</burstCount>
+				<scale>3~3.5</scale>
+				<speed>0</speed>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+		</children>
+	</EffecterDef>
+
+	<EffecterDef>
+		<defName>StrongBeamHit</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Mote_BeamtargetLB</fleckDef>
+				<color>(1, 0.3, 0.3, 1)</color>
+				<burstCount>1~1</burstCount>
+				<scale>1.5</scale>
+				<speed>0</speed>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_AdvFlame</fleckDef>
+				<color>(1, 0.4, 0.4, 0.35)</color>
+				<burstCount>1</burstCount>
+				<scale>0.1</scale>
+				<rotation>-45~45</rotation>
+				<speed>-0.05~0.25</speed>
+				<angle>-10~10</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>50~100</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_Smokeblack</fleckDef>
+				<color>(0.1, 0.1, 0.1, 1)</color>
+				<burstCount>3~5</burstCount>
+				<scale>2~3</scale>
+				<rotation>-30~30</rotation>
+				<speed>-0.05~0.45</speed>
+				<angle>30~40</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+		</children>
+	</EffecterDef>
+	
+	<EffecterDef>
+		<defName>BeamHit</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Mote_BeamtargetLS</fleckDef>
+				<color>(1, 0.3, 0.3, 1)</color>
+				<burstCount>1~1</burstCount>
+				<scale>0.5~0.6</scale>
+				<speed>0</speed>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_Smokeblack</fleckDef>
+				<color>(0.1, 0.1, 0.1, 1)</color>
+				<burstCount>1~2</burstCount>
+				<scale>1~2</scale>
+				<rotation>-30~30</rotation>
+				<speed>-0.05~0.45</speed>
+				<angle>30~40</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+		</children>
+	</EffecterDef>
+	
+	<EffecterDef>
+		<defName>StrongRailgunHit</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Mote_BeamtargetRS</fleckDef>
+				<color>(0.8, 0.8, 1, 1)</color>
+				<burstCount>1~1</burstCount>
+				<scale>0.75~1</scale>
+				<speed>0</speed>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_AdvFlame</fleckDef>
+				<color>(0.8, 0.8, 1, 0.35)</color>
+				<burstCount>1</burstCount>
+				<scale>0.1</scale>
+				<rotation>-45~45</rotation>
+				<speed>-0.05~0.25</speed>
+				<angle>-10~10</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>50~100</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Smoke</fleckDef>
+				<color>(1, 1, 1, 1)</color>
+				<burstCount>1~2</burstCount>
+				<scale>1~2</scale>
+				<rotation>-30~30</rotation>
+				<speed>-0.05~0.45</speed>
+				<angle>30~40</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+		</children>
+	</EffecterDef>
+
+	<EffecterDef>
+		<defName>RailgunHit</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Mote_BeamtargetRS</fleckDef>
+				<color>(0.8, 0.8, 1, 1)</color>
+				<burstCount>1~1</burstCount>
+				<scale>0.5~0.6</scale>
+				<speed>0</speed>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Smoke</fleckDef>
+				<color>(1, 1, 1, 1)</color>
+				<burstCount>1~2</burstCount>
+				<scale>1~2</scale>
+				<rotation>-30~30</rotation>
+				<speed>-0.05~0.45</speed>
+				<angle>30~40</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+		</children>
+	</EffecterDef>
+	
+	<EffecterDef>
+		<defName>StrongScrinBeamHit</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_ScrinCut</fleckDef>
+				<color>(1, 1, 1, 1)</color>
+				<burstCount>1~1</burstCount>
+				<scale>1~1.25</scale>
+				<speed>0</speed>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_AdvFlame</fleckDef>
+				<color>(0.8, 0.2, 1, 0.35)</color>
+				<burstCount>1</burstCount>
+				<scale>0.1</scale>
+				<rotation>-45~45</rotation>
+				<speed>-0.05~0.25</speed>
+				<angle>-10~10</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>50~100</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Smoke</fleckDef>
+				<color>(0.9, 0.4, 1, 0.5)</color>
+				<burstCount>1~2</burstCount>
+				<scale>1~2</scale>
+				<rotation>-30~30</rotation>
+				<speed>-0.05~0.45</speed>
+				<angle>30~40</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+		</children>
+	</EffecterDef>
+	
+	<EffecterDef>
+		<defName>ScrinBeamHit</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_ScrinCut</fleckDef>
+				<color>(1, 1, 1, 1)</color>
+				<burstCount>1~1</burstCount>
+				<scale>0.5~0.75</scale>
+				<speed>0</speed>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Smoke</fleckDef>
+				<color>(0.9, 0.4, 1, 0.5)</color>
+				<burstCount>1~2</burstCount>
+				<scale>1~2</scale>
+				<rotation>-30~30</rotation>
+				<speed>-0.05~0.45</speed>
+				<angle>30~40</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+		</children>
+	</EffecterDef>
+	
+	<EffecterDef>
+		<defName>SonicHit</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_BlastWave</fleckDef>
+				<color>(0.9, 0.9, 1, 0.12)</color>
+				<burstCount>2</burstCount>
+				<scale>0.1~0.15</scale>
+				<positionRadius>0.75</positionRadius>
+				<speed>0</speed>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>50~75</rotationRate>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Smoke</fleckDef>
+				<color>(1, 1, 1, 0.25)</color>
+				<burstCount>0~1</burstCount>
+				<scale>1~2</scale>
+				<rotation>-30~30</rotation>
+				<speed>-0.05~0.45</speed>
+				<angle>30~40</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+		</children>
+	</EffecterDef>
+	
+	<EffecterDef>
+		<defName>FlameHit</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_AdvFlame2</fleckDef>
+				<color>(1, 1, 0.8, 1)</color>
+				<burstCount>1~1</burstCount>
+				<scale>0.1~0.15</scale>
+				<positionRadius>0.75</positionRadius>
+				<rotation>-45~45</rotation>
+				<speed>-0.05~0.25</speed>
+				<angle>-10~10</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~25</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>				
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_AdvFlame</fleckDef>
+				<color>(1, 0.9, 0.1, 0.25)</color>
+				<burstCount>0~1</burstCount>
+				<scale>0.05~0.1</scale>
+				<positionRadius>0.25</positionRadius>
+				<rotation>-45~45</rotation>
+				<speed>-0.05~0.25</speed>
+				<angle>-10~10</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>50~100</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_Smokeblack</fleckDef>
+				<color>(0.1, 0.1, 0.1, 1)</color>
+				<burstCount>1~3</burstCount>
+				<ticksBetweenMotes>50</ticksBetweenMotes>
+				<scale>2~3</scale>
+				<rotation>-30~30</rotation>
+				<speed>-0.05~0.45</speed>
+				<angle>30~40</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+		</children>
+	</EffecterDef>
+	
+	<EffecterDef>
+		<defName>FlechetteHit</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>SubFleck_TibGasParticle</fleckDef>
+				<color>(1,1,1,0.8)</color>
+				<burstCount>1~1</burstCount>
+				<scale>0.25~0.5</scale>
+				<positionRadius>0.75</positionRadius>
+				<rotation>-45~45</rotation>
+				<speed>-0.05~0.25</speed>
+				<angle>-10~10</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+		</children>
+	</EffecterDef>
+	
+	<EffecterDef>
+		<defName>FlechetteBlueHit</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>SubFleck_TibGasParticle_Shadow</fleckDef>
+				<color>(0.65,0.65,1,0.5)</color>
+				<burstCount>1~1</burstCount>
+				<scale>0.25~0.5</scale>
+				<positionRadius>0.75</positionRadius>
+				<rotation>-45~45</rotation>
+				<speed>-0.05~0.25</speed>
+				<angle>-10~10</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+		</children>
+	</EffecterDef>
+
+	<EffecterDef>
+		<defName>ChemicalHit</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>SubFleck_TibGasParticle</fleckDef>
+				<color>(1,1,1,1)</color>
+				<burstCount>1~1</burstCount>
+				<scale>0.75~1.1</scale>
+				<positionRadius>1.25</positionRadius>
+				<rotation>-45~45</rotation>
+				<speed>-0.05~0.25</speed>
+				<angle>-10~10</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+				<fleckDef>Fleck_SmokeTR</fleckDef>
+				<color>(0.1, 0.6, 0.25, 0.6)</color>
+				<burstCount>1~3</burstCount>
+				<ticksBetweenMotes>50</ticksBetweenMotes>
+				<scale>2~3</scale>
+				<rotation>-30~30</rotation>
+				<speed>-0.05~0.45</speed>
+				<angle>30~40</angle>
+				<spawnLocType>OnSource</spawnLocType>
+				<rotationRate>0~50</rotationRate>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+		</children>
+	</EffecterDef>
+
+</Defs>

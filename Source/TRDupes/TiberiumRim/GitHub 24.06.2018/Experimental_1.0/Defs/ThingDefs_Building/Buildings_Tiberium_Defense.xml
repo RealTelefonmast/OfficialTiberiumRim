@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>RepairDronePlatform</defName>
+		<label>repair drone platform</label>
+		<description></description>
+		<thingClass>Building</thingClass>
+		<graphicData>
+			<texPath>Buildings/Common/Defense/DronePlatform</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<fillPercent>0.25</fillPercent>
+		<tickerType>Normal</tickerType>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>800</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<size>(3,3)</size>
+		<costList>
+			<Steel>75</Steel>
+			<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_RepairDrone">
+				<droneAmount>3</droneAmount>
+				<radius>10</radius>
+				<droneDef>RepairDrone_Common</droneDef>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>150</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<designationCategory>Tiberium</designationCategory>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<constructEffect>ConstructMetal</constructEffect>
+		<canOverlapZones>false</canOverlapZones>
+		<researchPrerequisites>
+			<li>RepairDrones</li>
+		</researchPrerequisites>
+	</ThingDef>	
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>GroundFreezer</defName>
+		<label>Deep ground freezer</label>
+		<description>This structure freezes the ground from inside out, covering the ground with snow and keeping Tiberium from spreading further.</description>
+		<thingClass>Building</thingClass>
+		<category>Building</category>
+		<designationCategory>Tiberium</designationCategory>
+		<graphicData>
+			<texPath>Buildings/Common/Defense/GroundFreezer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,3)</drawSize>
+			<shadowData>
+				<volume>(0.5,0.5,0.5)</volume>
+				<offset>(0,0,0)</offset>
+			</shadowData>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>2500</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-13</Beauty>
+		</statBases>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<fillPercent>0.65</fillPercent>
+		<costList>
+			<Steel>175</Steel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<specialDisplayRadius>10.5</specialDisplayRadius>
+		<comps>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>-200</heatPerSecond>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(200,200,255,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>350</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="TiberiumRim.CompProperties_GroundFreezer">
+				<compClass>TiberiumRim.Comp_GroundFreezer</compClass>
+				<radius>10.5</radius>
+				<daysToRadius>3.5</daysToRadius>
+				<requiresElectricity>true</requiresElectricity>
+			</li>
+		</comps>
+		<tickerType>Normal</tickerType>
+		<rotatable>false</rotatable>
+		<researchPrerequisites>
+			<li>TiberiumFreezing</li>
+		</researchPrerequisites>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>GroundFreezerTribal</defName>
+		<label>Ground freezing box</label>
+		<description>This advanced version of a passive cooler is strong enough to freeze the ground. The frost keeps Tiberium from spreading further.</description>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Buildings/Common/Defense/AIDCooler</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawRotated>false</drawRotated>
+			<allowFlip>false</allowFlip>
+			<damageData>
+				<rect>(0.2,0,0.6,0.1)</rect>
+			</damageData>
+		</graphicData>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<constructEffect>ConstructDirt</constructEffect>
+		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
+		<fillPercent>0.40</fillPercent>
+		<statBases>
+			<MaxHitPoints>160</MaxHitPoints>
+			<WorkToBuild>200</WorkToBuild>
+			<Flammability>0</Flammability>
+		</statBases>
+		<selectable>true</selectable>
+		<costList>
+			<Steel>75</Steel>
+		</costList>
+		<soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+		<placeWorkers>
+			<li>PlaceWorker_CoolerSimple</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<specialDisplayRadius>4.5</specialDisplayRadius>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_GroundFreezer">
+				<compClass>TiberiumRim.Comp_GroundFreezer</compClass>
+				<radius>4.5</radius>
+				<daysToRadius>1.5</daysToRadius>
+				<requiresElectricity>false</requiresElectricity>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>-25</heatPerSecond>
+			</li>
+			<li Class="CompProperties_Lifespan">
+				<lifespanTicks>900000</lifespanTicks>
+			</li>
+		</comps>	
+		<designationCategory>Tiberium</designationCategory>
+		<researchPrerequisites>
+			<li>TiberiumFreezingTribal</li>
+		</researchPrerequisites>
+	</ThingDef>
+	
+	  <!--=============== Sludge turret ===============-->
+  <!--
+  
+	<ThingDef ParentName="BuildingBase" Class="TiberiumRim.GraphicSwitchableDef">
+		<defName>SludgeThrower_TNW</defName>
+		<label>sludge thrower</label>
+		<description>An improvised turret that automatically fires at nearby enemies. Explodes when damaged. Its hacked-together AI brain isn't very smart, and can't be directly controlled, so beware of friendly fire.</description>
+		<thingClass>Building_TurretGun</thingClass>
+		<graphicData>
+			<texPath>Building/Common/Defense/TibCannon_Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<WorkToBuild>2500</WorkToBuild>
+			<Mass>100</Mass>
+			<Beauty>-20</Beauty>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TNW">
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+			<compClass>CompPowerTrader</compClass>
+			<basePowerConsumption>350</basePowerConsumption>
+			</li>
+			<li Class="TiberiumRim.CompProperties_GraphicExtra">
+				<overlayGraphicPath>Building/Common/TibCannonOL</overlayGraphicPath>
+			</li>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>30</pathCost>
+		<fillPercent>0.4</fillPercent>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconPath>Building/Common/Defense/TibCannon_Turret</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<hasTooltip>true</hasTooltip>
+		<costList>
+			<Steel>100</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<designationCategory>Tiberium</designationCategory>
+		<specialDisplayRadius>19.9</specialDisplayRadius>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+			<turretGunDef>Gun_SludgeThrower</turretGunDef>
+			<turretBurstCooldownTime>5.15</turretBurstCooldownTime>
+			<turretTopGraphicPath>Building/Common/Defense/TibCannon_Turret</turretTopGraphicPath>
+		</building>
+		<researchPrerequisites>
+			<li>GunTurrets</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+  <ThingDef ParentName="BaseHumanGun">
+    <defName>Gun_SludgeThrower</defName>
+    <label>sludge thrower cannon</label>
+    <graphicData>
+      <texPath>Building/Common/Defense/TibCannon_Turret</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <menuHidden>true</menuHidden>
+    <description>An improvised turret to throw toxic sludge at your enemies.</description>
+    <soundInteract>InteractRifle</soundInteract>
+    <canBeSpawningInventory>false</canBeSpawningInventory>
+	<destroyOnDrop>true</destroyOnDrop>
+	<tradeability>None</tradeability>
+	<useHitPoints>false</useHitPoints>
+    <statBases>
+      <AccuracyTouch>1</AccuracyTouch>
+      <AccuracyShort>1</AccuracyShort>
+      <AccuracyMedium>1</AccuracyMedium>
+      <AccuracyLong>1</AccuracyLong>
+      <RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+	  <Flammability>0</Flammability>
+	  <Mass>50</Mass>	  
+    </statBases>
+    <weaponTags>
+      <li>TurretGun</li>
+    </weaponTags>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_TurretImprovised</defaultProjectile>
+        <warmupTime>1.5</warmupTime>
+        <range>19.9</range>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+        <burstShotCount>3</burstShotCount>
+        <soundCast>GunShotA</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>
+	
+-->
+</Defs>

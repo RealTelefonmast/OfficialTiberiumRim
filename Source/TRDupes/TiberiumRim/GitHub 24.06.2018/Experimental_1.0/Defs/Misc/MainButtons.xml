@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <MainButtonDef>
+    <defName>MissionObjectives</defName>
+    <label>Missions</label>
+    <description>Check out your recent objectives and missions.</description>
+<!--
+    <workerClass>TiberiumRim.MainButtonWorker_ToggleMissionTab</workerClass>
+    <tabWindowClass>TiberiumRim.MainTabWindow_MissionObjectives</tabWindowClass>
+-->
+    <order>51</order>
+  </MainButtonDef>
+
+</Defs>

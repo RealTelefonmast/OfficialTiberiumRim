@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <BodyPartDef>
+    <defName>VehicleBasicCockpit</defName>
+    <label>Main Cockpit</label>
+    <hitPoints>50</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>SightSource</li>
+      <li>HearingSource</li>
+      <li>ConsciousnessSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>VehicleSubCockpit</defName>
+    <label>Sub Cockpit</label>
+    <hitPoints>50</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+    <tags>
+      <li>SightSource</li>
+      <li>HearingSource</li>
+      <li>ConsciousnessSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>BasicVehiclePowerPack</defName>
+    <label>Main Power pack</label>
+    <hitPoints>75</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+    <tags>
+      <li>MovingLimbCore</li>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+	<BodyPartDef>
+		<defName>BasicVehicleShaft</defName>
+		<label>Shaft</label>
+		<hitPoints>75</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbCore</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef>
+		<defName>BasicVehicleLeftTrack</defName>
+		<label>Left track</label>
+		<hitPoints>50</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef>
+		<defName>BasicVehicleRightTrack</defName>
+		<label>Right track</label>
+		<hitPoints>50</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>	
+
+	<BodyPartDef>
+		<defName>BasicVehicleLeftFrontTrack</defName>
+		<label>Left front track</label>
+		<hitPoints>50</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef>
+		<defName>BasicVehicleRightFrontTrack</defName>
+		<label>Right front track</label>
+		<hitPoints>50</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef>
+		<defName>BasicVehicleLeftHindTrack</defName>
+		<label>Left hind track</label>
+		<hitPoints>50</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef>
+		<defName>BasicVehicleRightHindTrack</defName>
+		<label>Right hind track</label>
+		<hitPoints>50</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+
+	<BodyPartDef>
+		<defName>BasicVehicleLeftFrontTire</defName>
+		<label>Left front tire</label>
+		<hitPoints>50</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef>
+		<defName>BasicVehicleRightFrontTire</defName>
+		<label>Right front tire</label>
+		<hitPoints>50</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef>
+		<defName>BasicVehicleLeftHindTire</defName>
+		<label>Left hind tire</label>
+		<hitPoints>50</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef>
+		<defName>BasicVehicleRightHindTire</defName>
+		<label>Right hind tire</label>
+		<hitPoints>50</hitPoints>
+		<permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+		<frostbiteVulnerability>1</frostbiteVulnerability>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<tags>
+			<li>MovingLimbSegment</li>
+		</tags>
+	</BodyPartDef>
+
+  <BodyPartDef>
+    <defName>VehicleBase</defName>
+    <label>Frame</label>
+    <hitPoints>100</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>true</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>BasicVehicleArmor</defName>
+    <label>Front Armor</label>
+    <hitPoints>100</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>true</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>Dozer</defName>
+    <label>Dozer Blade</label>
+    <hitPoints>50</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>true</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>TurretRing1</defName>
+    <label>Fisrt Turret Ring</label>
+    <hitPoints>25</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>true</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+   <tags>
+      <li>ManipulationLimbSegment</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>TurretRing2</defName>
+    <label>Second Turret Ring</label>
+    <hitPoints>25</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>true</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+   <tags>
+      <li>ManipulationLimbSegment</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>BasicVehicleTurret</defName>
+    <label>Turret</label>
+    <hitPoints>100</hitPoints>
+    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <skinCovered>true</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+	<bleedRate>0</bleedRate>
+   <tags>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  
+</Defs>

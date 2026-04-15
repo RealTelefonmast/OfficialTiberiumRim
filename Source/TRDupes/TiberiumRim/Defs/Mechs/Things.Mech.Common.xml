@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TR.TRThingDef ParentName="BuildingBase_TR">
+		<defName>RepairDroneHusk_Common</defName>
+		<label>Repair Drone Husk</label>
+		<description>The remains of a destroyed repair drone.</description>
+		<altitudeLayer>Building</altitudeLayer>
+		<graphicData>
+			<texPath>Pawns/Mechanical/Common/RepairDrone/RepairDrone_D</texPath>
+			<drawRotated>false</drawRotated>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.5,1.5)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Beauty>-10</Beauty>
+		</statBases>
+		<costList>
+			<Steel>50</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<uiIconScale>0.5</uiIconScale>
+		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+		<rotatable>true</rotatable>
+		<destroyable>true</destroyable>
+		<useHitPoints>true</useHitPoints>
+		<tickerType>Never</tickerType>
+		<selectable>true</selectable>
+		<size>(1,1)</size>
+		<neverOverlapFloors>false</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<building>
+			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>true</deconstructible>
+		</building>
+	</TR.TRThingDef>
+
+</Defs>

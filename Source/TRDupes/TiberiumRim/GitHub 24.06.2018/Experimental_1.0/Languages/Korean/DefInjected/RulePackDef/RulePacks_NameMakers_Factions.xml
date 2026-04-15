@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <NamerFactionGDI.rulePack.rulesStrings.0>name->방위사령부</NamerFactionGDI.rulePack.rulesStrings.0>
+  <NamerFactionGDI.rulePack.rulesStrings.1>name->스틸 탈론</NamerFactionGDI.rulePack.rulesStrings.1>
+  <NamerFactionGDI.rulePack.rulesStrings.2>name->지역정화부대</NamerFactionGDI.rulePack.rulesStrings.2>
+
+  <NamerFactionBaseGDI.rulePack.rulesStrings.0>name->GDI [terrainfeature]</NamerFactionBaseGDI.rulePack.rulesStrings.0>
+  <NamerFactionBaseGDI.rulePack.rulesStrings.1>name->GDI [community]</NamerFactionBaseGDI.rulePack.rulesStrings.1>
+  <NamerFactionBaseGDI.rulePack.rulesStrings.2>wordname->[syl][syl]</NamerFactionBaseGDI.rulePack.rulesStrings.2>
+  <NamerFactionBaseGDI.rulePack.rulesStrings.3>wordname->[syl][townend]</NamerFactionBaseGDI.rulePack.rulesStrings.3>
+  <NamerFactionBaseGDI.rulePack.rulesStrings.4>wordname->[syl][syl][townend]</NamerFactionBaseGDI.rulePack.rulesStrings.4>
+  <NamerFactionBaseGDI.rulePack.rulesStrings.5>wordname->[terrainfeature][townend]</NamerFactionBaseGDI.rulePack.rulesStrings.5>
+
+  <NamerFactionNod.rulePack.rulesStrings.0>name->교단 직할대</NamerFactionNod.rulePack.rulesStrings.0>
+  <NamerFactionNod.rulePack.rulesStrings.1>name->케인의 선발대</NamerFactionNod.rulePack.rulesStrings.1>
+  <NamerFactionNod.rulePack.rulesStrings.2>name->블랙 핸드</NamerFactionNod.rulePack.rulesStrings.2>
+
+  <NamerFactionBaseNod.rulePack.rulesStrings.0>name->[badassanimal] [geography]</NamerFactionBaseNod.rulePack.rulesStrings.0>
+  <NamerFactionBaseNod.rulePack.rulesStrings.1>name->[badassconcept] [geography]</NamerFactionBaseNod.rulePack.rulesStrings.1>
+  <NamerFactionBaseNod.rulePack.rulesStrings.2>name->[badassanimal]의 [geography]</NamerFactionBaseNod.rulePack.rulesStrings.2>
+  <NamerFactionBaseNod.rulePack.rulesStrings.3>name->[badassperson]의 [geography]</NamerFactionBaseNod.rulePack.rulesStrings.3>
+  <NamerFactionBaseNod.rulePack.rulesStrings.4>name->[badassadjective] 교단</NamerFactionBaseNod.rulePack.rulesStrings.4>
+  <NamerFactionBaseNod.rulePack.rulesStrings.5>name->[badassconcept] 형제단</NamerFactionBaseNod.rulePack.rulesStrings.5>
+  <NamerFactionBaseNod.rulePack.rulesStrings.6>geography->[terrainfeature]</NamerFactionBaseNod.rulePack.rulesStrings.6>
+  <NamerFactionBaseNod.rulePack.rulesStrings.7>geography->[community]</NamerFactionBaseNod.rulePack.rulesStrings.7>
+
+
+</LanguageData>

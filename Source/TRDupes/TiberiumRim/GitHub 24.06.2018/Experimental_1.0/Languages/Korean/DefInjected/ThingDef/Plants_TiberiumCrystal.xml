@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumGreen.label>녹색 타이베리움</TiberiumGreen.label>
+  <TiberiumGreen.description>녹색으로 희미하게 빛나는 결정입니다. 아름답습니다.</TiberiumGreen.description>
+
+  <TiberiumPod.label>원시 타이베리움</TiberiumPod.label>
+  <TiberiumPod.description>넓적한 덩굴 식물 위로 아름다운 광물 결정이 자라나 있습니다.</TiberiumPod.description>
+
+  <TiberiumBlue.label>청색 타이베리움</TiberiumBlue.label>
+  <TiberiumBlue.description>청색으로 희미하게 빛나는 결정입니다. 폭발성이 있습니다.</TiberiumBlue.description>
+
+  <TiberiumRed.label>적색 타이베리움</TiberiumRed.label>
+  <TiberiumRed.description>적색으로 희미하게 빛나는 결정입니다. 희귀하며, 매우 느리게 자라납니다. 폭발성이 있습니다.</TiberiumRed.description>
+
+  <TiberiumShardsGreen.label>녹색 파편질 타이베리움</TiberiumShardsGreen.label>
+  <TiberiumShardsGreen.description>모래질 환경에 적응한 녹색 타이베리움입니다. 오직 모래 위에서만 성장하며 다른 지형을 오염시키지 않습니다.</TiberiumShardsGreen.description>
+
+  <TiberiumShardsBlue.label>청색 파편질 타이베리움</TiberiumShardsBlue.label>
+  <TiberiumShardsBlue.description>모래질 환경에 적응한 청색 타이베리움입니다. 오직 모래 위에서만 성장하며 다른 지형을 오염시키지 않습니다. 폭발성이 있습니다.</TiberiumShardsBlue.description>
+
+  <TiberiumShardsRed.label>적색 파편질 타이베리움</TiberiumShardsRed.label>
+  <TiberiumShardsRed.description>모래질 환경에 적응한 적색 타이베리움입니다. 오직 모래 위에서만 성장하며 다른 지형을 오염시키지 않습니다. 폭발성이 있습니다.</TiberiumShardsRed.description>
+
+
+  <!-- Tiberium Moss -->
+
+  <TiberiumMossGreen.label>녹색 타이베리움 이끼</TiberiumMossGreen.label>
+  <TiberiumMossGreen.description>이끼 형태를 띤 녹색 타이베리움이 습지를 뒤덮고 있습니다. 매우 유독해 보입니다.</TiberiumMossGreen.description>
+
+  <TiberiumMossBlue.label>청색 타이베리움 이끼</TiberiumMossBlue.label>
+  <TiberiumMossBlue.description>이끼 형태를 띤 청색 타이베리움이 습지를 뒤덮고 있습니다. 매우 유독해 보입니다.</TiberiumMossBlue.description>
+
+  <TiberiumGlacier.label>타이베리움 빙하</TiberiumGlacier.label>
+  <TiberiumGlacier.description>물 아래에서 솟아오른 육각 기둥 모양의 타이베리움 결정입니다. 채취할 엄두가 나지 않을 정도로 거대합니다.</TiberiumGlacier.description>
+
+  <TiberiumVein.label>침식 덩굴</TiberiumVein.label>
+  <TiberiumVein.description>끈적끈적한 적갈색의 생물 조직입니다. 침식 구덩이를 중심으로 계속 자라납니다.</TiberiumVein.description>
+
+
+  <!-- Decorative -->
+
+  <PlantGreenTiberium.label>세공된 녹색 타이베리움</PlantGreenTiberium.label>
+  <PlantGreenTiberium.description>장식용으로 세공된 타이베리움입니다. 복제력이 없고 무해합니다.</PlantGreenTiberium.description>
+
+  <PlantBlueTiberium.label>세공된 청색 타이베리움</PlantBlueTiberium.label>
+  <PlantBlueTiberium.description>장식용으로 세공된 타이베리움입니다. 복제력이 없고 무해합니다.</PlantBlueTiberium.description>
+
+  <PlantRedTiberium.label>세공된 적색 타이베리움</PlantRedTiberium.label>
+  <PlantRedTiberium.description>장식용으로 세공된 타이베리움입니다. 복제력이 없고 무해합니다.</PlantRedTiberium.description>
+
+
+</LanguageData>

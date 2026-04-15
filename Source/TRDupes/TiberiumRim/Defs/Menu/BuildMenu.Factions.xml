@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TeleCore.SubMenuGroupDef ParentName="TR_SubThingGroupBase">
+		<defName>Forgotten</defName>
+		<groupIconPath>UI/Icons/Factions/Forgotten</groupIconPath>
+	</TeleCore.SubMenuGroupDef>
+	
+	<TeleCore.SubMenuGroupDef ParentName="TR_SubThingGroupBase">
+		<defName>GDI</defName>
+		<groupIconPath>UI/Icons/Factions/GDI</groupIconPath>
+		<subPackPath>UI/Menu/Faction/GDI</subPackPath>
+	</TeleCore.SubMenuGroupDef>
+	
+	<TeleCore.SubMenuGroupDef ParentName="TR_SubThingGroupBase">
+		<defName>Nod</defName>
+		<groupIconPath>UI/Icons/Factions/Nod</groupIconPath>
+		<subPackPath>UI/Menu/Faction/Nod</subPackPath>
+	</TeleCore.SubMenuGroupDef>
+
+	<TeleCore.SubMenuGroupDef ParentName="TR_SubThingGroupBase">
+		<defName>Scrin</defName>
+		<groupIconPath>UI/Icons/Factions/Scrin</groupIconPath>
+		<subPackPath>UI/Menu/Faction/Scrin</subPackPath>
+	</TeleCore.SubMenuGroupDef>
+	
+</Defs>

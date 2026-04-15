@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThinkTreeDef>
+		<defName>RepairDrone</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<!-- Downed -->
+				<li Class="ThinkNode_Subtree">
+					<treeDef>Downed</treeDef>
+				</li>
+				
+				<li Class="ThinkNode_Subtree">
+					<treeDef>BurningResponse</treeDef>
+				</li>
+				
+				<li Class="ThinkNode_QueuedJob" />
+				
+				<!-- Idle -->
+				<li Class="ThinkNode_Tagger">
+					<tagToGive>Idle</tagToGive>
+					<subNodes>
+						<li Class="TiberiumRim.JobGiver_WanderAtParent"/>
+					</subNodes>
+				</li>		
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+
+	<ThinkTreeDef>
+		<defName>RepairDroneConstant</defName>
+			<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="ThinkNode_ConditionalCanDoConstantThinkTreeJobNow">
+					<subNodes>
+						<!-- Flee From Stuff -->
+						<li Class="JobGiver_ReactToCloseMeleeThreat"/>		
+						<li Class="JobGiver_FleePotentialExplosion" />
+						<li Class="JobGiver_FleeImmediateDanger" />
+											
+						<!-- Do Work -->
+						<li Class="TiberiumRim.JobGiver_RepairAnyMechWithinRange"/>
+					</subNodes>
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+	
+
+	<ThinkTreeDef>
+		<defName>Harvester</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<!-- Downed -->
+				<li Class="ThinkNode_Subtree">
+					<treeDef>Downed</treeDef>
+				</li>
+				
+				<li Class="ThinkNode_Subtree">
+					<treeDef>BurningResponse</treeDef>
+				</li>
+				
+				<!-- Do a queued job -->
+				<li Class="ThinkNode_QueuedJob" />
+				
+				<!-- Idle -->
+				<li Class="ThinkNode_Tagger">
+					<tagToGive>Idle</tagToGive>
+					<subNodes>
+						<li Class="TiberiumRim.JobGiver_ReturnToRefineryToIdle"/>
+					</subNodes>
+				</li>		
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+	
+	<ThinkTreeDef>
+		<defName>HarvesterConstant</defName>
+			<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="ThinkNode_ConditionalCanDoConstantThinkTreeJobNow">
+					<subNodes>
+						<!-- Flee From Stuff -->
+						<li Class="JobGiver_ReactToCloseMeleeThreat"/>		
+						<li Class="JobGiver_FleePotentialExplosion" />
+						<li Class="JobGiver_FleeImmediateDanger" />
+									
+						<li Class="JobGiver_ConfigurableHostilityResponse"/>									
+						<!-- Do Work -->
+						<li Class="TiberiumRim.JobGiver_SearchAndHarvestTiberium"/>
+						<li Class="TiberiumRim.JobGiver_ReturnToRefineryToUnload"/>											
+					</subNodes>
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+  
+</Defs>

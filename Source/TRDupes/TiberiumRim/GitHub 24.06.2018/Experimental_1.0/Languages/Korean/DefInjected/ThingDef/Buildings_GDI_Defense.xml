@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GDI_Door.label>강화문</GDI_Door.label>
+  <GDI_Door.description>튼튼하게 설계된 문입니다. 열고 닫는 과정에서 약간의 시간이 소모됩니다.</GDI_Door.description>
+  <GDI_Door_Blueprint.label>강화문 (청사진)</GDI_Door_Blueprint.label>
+  <GDI_Door_Frame.label>강화문 (설치 중)</GDI_Door_Frame.label>
+  <GDI_Door_Frame.description>튼튼하게 설계된 문입니다. 열고 닫는 과정에서 약간의 시간이 소모됩니다.</GDI_Door_Frame.description>
+
+  <GDI_Autodoor.label>강화 자동문</GDI_Autodoor.label>
+  <GDI_Autodoor.description>튼튼하게 설계된 문입니다. 스스로 작동하지만 전기가 부족하면 수동으로 열어야 합니다.</GDI_Autodoor.description>
+  <GDI_Autodoor_Blueprint.label>강화 자동문 (청사진)</GDI_Autodoor_Blueprint.label>
+  <GDI_Autodoor_Frame.label>강화 자동문 (설치 중)</GDI_Autodoor_Frame.label>
+  <GDI_Autodoor_Frame.description>튼튼하게 설계된 문입니다. 스스로 작동하지만 전기가 부족하면 수동으로 열어야 합니다.</GDI_Autodoor_Frame.description>
+
+  <GDIWall.label>강화벽</GDIWall.label>
+  <GDIWall.description>GDI 기술자들에 의해 강화된 벽입니다.</GDIWall.description>
+  <GDIWall_Blueprint.label>강화벽 (청사진)</GDIWall_Blueprint.label>
+  <GDIWall_Frame.label>강화벽 (설치 중)</GDIWall_Frame.label>
+  <GDIWall_Frame.description>GDI 기술자들에 의해 강화된 벽입니다.</GDIWall_Frame.description>
+
+  <GDIPillbox.label>초소벽</GDIPillbox.label>
+  <GDIPillbox.description>엄폐 가능한 낮은 벽입니다.</GDIPillbox.description>
+  <GDIPillbox_Blueprint.label>초소벽 (청사진)</GDIPillbox_Blueprint.label>
+  <GDIPillbox_Frame.label>초소벽 (설치 중)</GDIPillbox_Frame.label>
+  <GDIPillbox_Frame.description>엄폐 가능한 낮은 벽입니다.</GDIPillbox_Frame.description>
+
+
+  <!-- Inhibition -->
+  <!--<SonicFence.label>음파 억제기 (소형)</SonicFence.label>-->
+  <!--<SonicFence.description>가장 작은 사이즈의 음파 공명 장치입니다. 매우 좁은 범위의 타이베리움 생장을 완전히 억제합니다. 울타리처럼 이어서 건설할 수도 있습니다.</SonicFence.description>-->
+  <!--<SonicFence_Blueprint.label>음파 억제기 (청사진)</SonicFence_Blueprint.label>-->
+  <!--<SonicFence_Frame.label>음파 억제기 (설치 중)</SonicFence_Frame.label>-->
+  <!--<SonicFence_Frame.description>가장 작은 사이즈의 음파 공명 장치입니다. 매우 좁은 범위의 타이베리움 생장을 완전히 억제합니다. 울타리처럼 이어서 건설할 수도 있습니다.</SonicFence_Frame.description>-->
+  <!--<SonicInhibitorSmall.label>음파 억제기 (중형)</SonicInhibitorSmall.label>-->
+  <!--<SonicInhibitorSmall.description>타이베리움만을 파괴하도록 고안된 표준 음파 공명 장치입니다. 좁은 범위의 타이베리움 생장을 완전히 억제합니다.</SonicInhibitorSmall.description>-->
+  <!--<SonicInhibitorSmall_Blueprint.label>음파 억제기 (청사진)</SonicInhibitorSmall_Blueprint.label>-->
+  <!--<SonicInhibitorSmall_Blueprint_Install.label>음파 억제기 (청사진)</SonicInhibitorSmall_Blueprint_Install.label>-->
+  <!--<SonicInhibitorSmall_Frame.label>음파 억제기 (설치 중)</SonicInhibitorSmall_Frame.label>-->
+  <!--<SonicInhibitorSmall_Frame.description>타이베리움만을 파괴하도록 고안된 표준 음파 공명 장치입니다. 좁은 범위의 타이베리움 생장을 완전히 억제합니다.</SonicInhibitorSmall_Frame.description>-->
+  <!--<SonicInhibitorTall.label>음파 억제기 (대형)</SonicInhibitorTall.label>-->
+  <!--<SonicInhibitorTall.description>타이베리움만을 파괴하도록 고안된 대형 음파 공명 장치입니다. 넓은 범위의 타이베리움 생장을 완전히 억제합니다.</SonicInhibitorTall.description>-->
+  <!--<SonicInhibitorTall_Blueprint.label>음파 억제기 (청사진)</SonicInhibitorTall_Blueprint.label>-->
+  <!--<SonicInhibitorTall_Blueprint_Install.label>음파 억제기 (청사진)</SonicInhibitorTall_Blueprint_Install.label>-->
+  <!--<SonicInhibitorTall_Frame.label>음파 억제기 (설치 중)</SonicInhibitorTall_Frame.label>-->
+  <!--<SonicInhibitorTall_Frame.description>타이베리움만을 파괴하도록 고안된 대형 음파 공명 장치입니다. 넓은 범위의 타이베리움 생장을 완전히 억제합니다.</SonicInhibitorTall_Frame.description>-->
+  <!--<Decrystallizer.label>토양 정화기</Decrystallizer.label>-->
+  <!--<Decrystallizer.description>오염된 땅에서 타이베리움 입자를 완전히 파괴하여 정화하는 장치입니다. 단, 수질 정화는 불가능합니다.</Decrystallizer.description>-->
+  <!--<Decrystallizer_Blueprint.label>토양 정화기 (청사진)</Decrystallizer_Blueprint.label>-->
+  <!--<Decrystallizer_Blueprint_Install.label>토양 정화기 (청사진)</Decrystallizer_Blueprint_Install.label>-->
+  <!--<Decrystallizer_Frame.label>토양 정화기 (설치 중)</Decrystallizer_Frame.label>-->
+  <!--<Decrystallizer_Frame.description>오염된 땅에서 타이베리움 입자를 완전히 파괴하여 정화하는 장치입니다. 단, 수질 정화는 불가능합니다.</Decrystallizer_Frame.description>-->
+  <!-- Firestorm -->
+  <!--<GDI_FirestormWall_FSW.label>파이어스톰 방어격벽</GDI_FirestormWall_FSW.label>-->
+  <!--<GDI_FirestormWall_FSW.description>파이어스톰 방어격벽입니다. 활성화되기 전에는 무해합니다.</GDI_FirestormWall_FSW.description>-->
+  <!--<GDI_FirestormWall_FSW_Blueprint.label>파이어스톰 방어격벽 (청사진)</GDI_FirestormWall_FSW_Blueprint.label>-->
+  <!--<GDI_FirestormWall_FSW_Frame.label>파이어스톰 방어격벽 (건설 중)</GDI_FirestormWall_FSW_Frame.label>-->
+  <!--<GDI_FirestormWall_FSW_Frame.description>파이어스톰 방어격벽</GDI_FirestormWall_FSW_Frame.description>-->
+  <!--<GDI_FirestormDummy_FSW.label>충전된 파이어스톰 방어격벽</GDI_FirestormDummy_FSW.label>-->
+  <!--<GDI_FirestormDummy_FSW.description>활성화된 파이어스톰 방어격벽입니다. 절대로 주변에 접근하지 마십시오.</GDI_FirestormDummy_FSW.description>-->
+  <!--<GDI_FirestormCenter.label>파이어스톰 제어소</GDI_FirestormCenter.label>-->
+  <!--<GDI_FirestormCenter.description>이 시설은 모든 파이어스톰 방어격벽을 제어합니다. 정상적으로 가동하려면 충분한 축전지가 필요합니다.\n\n정착지 당 하나만 건설할 수 있습니다.</GDI_FirestormCenter.description>-->
+  <!--<GDI_FirestormCenter_Blueprint.label>파이어스톰 제어소 (청사진)</GDI_FirestormCenter_Blueprint.label>-->
+  <!--<GDI_FirestormCenter_Frame.label>파이어스톰 제어소 (건설 중)</GDI_FirestormCenter_Frame.label>-->
+  <!--<GDI_FirestormCenter_Frame.description>이 시설은 모든 파이어스톰 방어격벽을 제어합니다. 정상적으로 가동하려면 충분한 축전지가 필요합니다.\n\n정착지 당 하나만 건설할 수 있습니다.</GDI_FirestormCenter_Frame.description>-->
+
+</LanguageData>

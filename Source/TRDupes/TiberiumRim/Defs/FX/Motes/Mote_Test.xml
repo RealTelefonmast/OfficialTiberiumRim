@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Abstract="True" Name="TestBase" ParentName="MoteBase_TR">
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<fadeOutTime>1</fadeOutTime>
+			<solidTime>5</solidTime>
+			<growthRate>1</growthRate>
+		</mote>
+		<graphicData>
+			<drawSize>10</drawSize>
+		</graphicData>
+	</ThingDef>
+
+	<!--
+	<ThingDef ParentName="TestBase">
+		<defName>TestEffectOne</defName>
+		<graphicData>
+			<texPath>Things/Mote/PsycastCast</texPath>
+			<shaderType>MoteGlowDistorted</shaderType>
+			<shaderParameters>
+				<_DistortionTex>/Other/Ripples</_DistortionTex>
+			</shaderParameters>
+		</graphicData>
+	</ThingDef>
+  
+  	<ThingDef ParentName="TestBase">
+		<defName>TestEffectTwo</defName>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderType>MoteGlowDistortBackground</shaderType>
+			<shaderParameters>
+				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
+			</shaderParameters>
+		</graphicData>
+	</ThingDef>
+	
+	<ThingDef ParentName="TestBase">
+		<defName>TestEffectThree</defName>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderType>MoteGlowDistortBackground</shaderType>
+			<shaderParameters>
+				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
+			</shaderParameters>
+		</graphicData>
+	</ThingDef>
+	-->
+</Defs>

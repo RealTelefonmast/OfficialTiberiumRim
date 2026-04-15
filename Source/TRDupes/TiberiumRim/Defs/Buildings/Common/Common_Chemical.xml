@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!--
+	<TR.TRThingDef Name="NetworkPipeBase" ParentName="BuildingBase_TR" Abstract="True">
+		<category>Building</category>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<uiIconPath>Buildings/Icons/Connector_Icon</uiIconPath>
+		<uiIconScale>1</uiIconScale>
+		<passability>Standable</passability>
+		<drawGUIOverlay>True</drawGUIOverlay>
+		<graphicData>
+			<texPath>Blank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+		</building>
+		<tickerType>Never</tickerType>
+		<rotatable>false</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<clearBuildingArea>false</clearBuildingArea>
+		<castEdgeShadows>false</castEdgeShadows>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<pathCost>0</pathCost>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		
+		<constructEffect>ConstructMetal</constructEffect>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<surfaceType>Item</surfaceType>
+		
+		<placeWorkers>
+			<li>TeleCore.PlaceWorker_Pipe</li>
+		</placeWorkers>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Common</groupDef>
+				<category>Processing</category>
+				<hidden>true</hidden>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	-->
+</Defs>

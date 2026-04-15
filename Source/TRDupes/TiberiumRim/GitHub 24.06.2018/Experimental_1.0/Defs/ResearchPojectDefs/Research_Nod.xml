@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!--tier0-->
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>NodResearch</defName>
+		<label>NOD</label>		
+		<description>Join the Brotherhood of Nod. And become the enemy of the GDI.</description>
+		<baseCost>500</baseCost>		
+		<prerequisites>
+			<li>CommandandConquer</li>
+		</prerequisites>
+		<researchViewX>4</researchViewX>
+		<researchViewY>4.25</researchViewY>
+	</ResearchProjectDef>
+
+<!--tier1-->	
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>NodResearch_Buildings</defName>
+		<label>Nod Structures</label>
+		<description>Get access to Nod structures. Unlocks the construction of basic structures and production facilities.</description>
+		<baseCost>1500</baseCost>			
+		<prerequisites>
+			<li>NodResearch_Technology</li>
+		</prerequisites>		
+		<researchViewX>5</researchViewX>
+		<researchViewY>3.5</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>NodResearch_Technology</defName>
+		<label>Brotherhood Secrets</label>
+		<description>Get access to basic Nod technology. Necessary for further research.</description>
+		<baseCost>2000</baseCost>			
+		<prerequisites>
+			<li>NodResearch</li>
+		</prerequisites>		
+		<researchViewX>5</researchViewX>
+		<researchViewY>4.25</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>NodResearch_Production</defName>
+		<label>Brotherhood Assembly I</label>
+		<description>Start conquering the world. Unlocks the production of small firearms and armor.</description>
+		<baseCost>1500</baseCost>		
+		<prerequisites>
+			<li>NodResearch_Technology</li>
+		</prerequisites>		
+		<researchViewX>5</researchViewX>
+		<researchViewY>5</researchViewY>
+	</ResearchProjectDef>
+	
+<!--tier2-->
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>NodResearch_Security</defName>
+		<label>Defensive Structures</label>
+		<description>Get access to basic Nod security structures. Unlocks the Shredder Turret.</description>
+		<baseCost>2500</baseCost>
+		<prerequisites>
+			<li>NodResearch_Buildings</li>
+			<li>GunTurrets</li>
+		</prerequisites>
+		<researchViewX>6</researchViewX>
+		<researchViewY>3.5</researchViewY>
+	</ResearchProjectDef>
+		
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>NodResearch_AdvancedTechnology</defName>
+		<label>Brotherhood's Enlightment</label>
+		<description>Get access to advanced Nod technology. Necessary for advanced research.</description>
+		<baseCost>3000</baseCost>
+		<prerequisites>
+			<li>NodResearch_Technology</li>
+		</prerequisites>		
+		<researchViewX>6</researchViewX>
+		<researchViewY>4.25</researchViewY>
+	</ResearchProjectDef>
+
+	<!--
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>NodResearch_TiberiumDrugs</defName>
+		<label>Tiberium Consumption</label>
+		<description>Tiberium is the future, it is time to use the power of the substance to enhance our troops.</description>
+		<baseCost>2500</baseCost>
+		<prerequisites>
+			<li>NodResearch_Production</li>
+		</prerequisites>		
+		<researchViewX>6</researchViewX>
+		<researchViewY>5</researchViewY>
+	</ResearchProjectDef>
+	-->
+
+<!--tier4-->
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>NodResearch_AdvancedSecurity</defName>
+		<label>Advanced Defense</label>
+		<description>Get access to advanced Nod security structures. Unlocks the Obelisk of Light.</description>
+		<baseCost>3500</baseCost>
+		<prerequisites>
+			<li>NodResearch_Security</li>
+			<li>NodResearch_AdvancedTechnology</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>Nod_Grave</li>
+		</requiredResearchFacilities>
+		
+		<researchViewX>7</researchViewX>
+		<researchViewY>3.5</researchViewY>
+	</ResearchProjectDef>	
+	
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>NodResearch_LiquidTechnology</defName>
+		<label>Liquid Ichor</label>
+		<description>Nod's efforts have proven well, it is finally possible to liquify Tiberium and harness it's true power. Use it wisely commander. Unlocks Liquid Tiberium items.</description>
+		<baseCost>4000</baseCost>
+		<prerequisites>
+			<li>NodResearch_AdvancedTechnology</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>Nod_Grave</li>
+		</requiredResearchFacilities>		
+		<researchViewX>7</researchViewX>
+		<researchViewY>4.25</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>NodResearch_AdvancedProduction</defName>
+		<label>Brotherhood Assembly II</label>
+		<description>Cleanse this world from heretics. Unlocks the Black Hand armor, Flamethrower and advanced laser rifle.</description>
+		<baseCost>3500</baseCost>
+		<prerequisites>
+			<!--<li>NodResearch_TiberiumDrugs</li>-->
+			<li>NodResearch_AdvancedTechnology</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>Nod_Grave</li>
+		</requiredResearchFacilities>		
+		<researchViewX>7</researchViewX>
+		<researchViewY>5</researchViewY>
+	</ResearchProjectDef>
+
+<!--tier5-->
+	<ResearchProjectDef ParentName="TRProject">
+		<defName>NodResearch_Temple</defName>
+		<label>Sacred Land</label>
+		<description>The Prophet has marked our land as sanctuary. Unlocks the Temple with nuclear warheads.</description>
+		<baseCost>5000</baseCost>
+		<prerequisites>
+			<li>NodResearch_AdvancedProduction</li>
+			<li>NodResearch_AdvancedSecurity</li>		
+			<li>NodResearch_LiquidTechnology</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>Nod_Grave</li>
+		</requiredResearchFacilities>		
+		<researchViewX>8</researchViewX>
+		<researchViewY>4.25</researchViewY>
+	</ResearchProjectDef>
+	
+</Defs>

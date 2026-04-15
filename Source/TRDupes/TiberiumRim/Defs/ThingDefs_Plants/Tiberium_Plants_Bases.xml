@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="PlantBase" Abstract="True">
+		<category>Plant</category>
+		<thingClass>Plant</thingClass>
+		<altitudeLayer>LowPlant</altitudeLayer>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Flammability>0.8</Flammability>
+		</statBases>
+		<tickerType>Long</tickerType>
+		<selectable>False</selectable>
+		<neverMultiSelect>True</neverMultiSelect>
+		<drawerType>MapMeshOnly</drawerType>
+		<pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+		<graphicData>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>CutoutPlant</shaderType>
+		</graphicData>
+		<ingestible>
+			<foodType>Plant</foodType>
+			<preferability>RawBad</preferability>
+		</ingestible>
+		<plant>
+			<fertilityMin>0.5</fertilityMin>
+			<fertilitySensitivity>1.0</fertilitySensitivity>
+			<soundHarvesting>Harvest_Standard</soundHarvesting>
+			<soundHarvestFinish>Harvest_Standard_Finish</soundHarvestFinish>
+			<harvestWork>190</harvestWork>
+			<sowWork>260</sowWork>
+			<topWindExposure>0.1</topWindExposure>
+			<visualSizeRange>
+				<min>0.3</min>
+				<max>1.00</max>
+			</visualSizeRange>
+		</plant>
+	</ThingDef>
+	
+	<ThingDef Abstract="True" Name="TiberiumCrystalBase" ParentName="PlantBase" Class="TiberiumRim.TiberiumCrystalDef">
+		<thingClass>TiberiumRim.TiberiumCrystal</thingClass>
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<selectable>True</selectable>
+		<ingestible>
+			<preferability>NeverForNutrition</preferability>
+		</ingestible>
+		<tickerType>Long</tickerType>
+		<plant>
+			<lifespanFraction>100</lifespanFraction>
+			<reproduces>true</reproduces>
+			<growMinGlow>0</growMinGlow>
+			<fertilityMin>0</fertilityMin>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<soundHarvesting>Harvest_Standard</soundHarvesting>
+			<soundHarvestFinish>Harvest_Standard_Finish</soundHarvestFinish>
+			<harvestWork>500</harvestWork>
+			<topWindExposure>0</topWindExposure>
+			<neverBlightable>true</neverBlightable>
+			<harvestFailable>false</harvestFailable>
+		</plant>
+	</ThingDef>	
+	
+	<ThingDef ParentName="PlantBase" Name="TiberiumFloraBase" Abstract="True">
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+		</statBases>
+		<description></description>
+		<altitudeLayer>Building</altitudeLayer>
+		<selectable>true</selectable>
+		<fillPercent>0.43</fillPercent>
+		<graphicData>
+			<shadowData>
+				<volume>(0.3, 0.3, 0.3)</volume>
+			</shadowData>
+		</graphicData>
+		<passability>PassThroughOnly</passability>
+		<pathCost>130</pathCost>
+		<blockWind>true</blockWind>
+		<ingestible>
+			<foodType>Tree</foodType>
+			<preferability>RawBad</preferability>
+			<nutrition>1.50</nutrition>
+		</ingestible>
+		<plant>
+			<lifespanFraction>499</lifespanFraction>
+			<fertilityMin>0</fertilityMin>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<reproduceRadius>30</reproduceRadius>
+			<harvestMinGrowth>0.40</harvestMinGrowth>
+			<harvestFailable>false</harvestFailable>
+			<harvestTag>Standard</harvestTag>
+			<blockAdjacentSow>true</blockAdjacentSow>
+			<visualSizeRange>
+				<min>1.3</min>
+				<max>2.5</max>
+			</visualSizeRange>
+			<topWindExposure>0.25</topWindExposure>
+			<wildClusterSizeRange>
+				<min>8</min>
+				<max>30</max>
+			</wildClusterSizeRange>
+			<wildClusterRadius>8</wildClusterRadius>
+			<neverBlightable>true</neverBlightable>
+		</plant>
+	</ThingDef>
+
+</Defs>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!--
+	<TR.TResearchGroupDef>
+		<defName>GDIGroup</defName>
+		<label>GDI (Not Working Yet)</label>	
+		<priority>1</priority>
+		<researchProjects>
+			<li>RelationBond</li>
+			<li>BasicArsenal</li>
+		</researchProjects>
+	</TR.TResearchGroupDef>
+	
+	
+	<TR.TResearchDef>
+		<defName>RelationBond</defName>
+		<label>Establishing Relations</label>	
+		<researchType>communication</researchType>
+		<description>We have contacted GDI and chose to support them. It would be smart to continue keep our communication up and improve relations, that should hopefully prove beneficial.</description>
+		<relevantPawnStat>NegotiationAbility</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<tasks>
+			<li>RelationTask</li>
+		</tasks>
+	</TR.TResearchDef>
+	
+	<TR.TResearchTaskDef>
+		<defName>RelationTask</defName>
+		<label>Gain Reputation</label>		
+		<descriptionShort>Remain in contact with GDI.</descriptionShort>
+		<skillRequirements>
+			<Intellectual>2</Intellectual>
+		</skillRequirements>
+		<taskTarget>
+			<targetDefs>
+				<li>TiberiumResearchStation</li>
+			</targetDefs>
+		</taskTarget>
+		<workType>Research</workType>
+		<workAmount>500</workAmount>
+	</TR.TResearchTaskDef>
+	
+
+	<TR.TResearchDef>
+		<defName>BasicArsenal</defName>
+		<label>Basic Arsenal</label>	
+		<researchType>tinkering</researchType>
+		<description>We have received blueprints from GDI officials for some basic weaponry, those rifles should benefit us.</description>
+		<relevantPawnStat>ResearchSpeed</relevantPawnStat>
+		<relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+		<tasks>
+			<li>BasicArsenal_T1</li>
+			<li>BasicArsenal_T2</li>
+		</tasks>
+	</TR.TResearchDef>
+	
+	<TR.TResearchTaskDef>
+		<defName>BasicArsenal_T1</defName>
+		<label>Evaluate Blueprints</label>		
+		<descriptionShort>.</descriptionShort>
+		<skillRequirements>
+			<Intellectual>2</Intellectual>
+		</skillRequirements>
+		<taskTarget>
+			<targetDefs>
+				<li>TR_TibWorkbench</li>
+			</targetDefs>
+		</taskTarget>
+		<workType>Research</workType>
+		<workAmount>500</workAmount>
+	</TR.TResearchTaskDef>
+	
+	<TR.TResearchTaskDef>
+		<defName>BasicArsenal_T2</defName>
+		<label>Craft Prototype</label>		
+		<descriptionShort>.</descriptionShort>
+		<creationTasks>
+			<thingsToCreate>
+				<GDI_StandardRifle>1</GDI_StandardRifle>
+			</thingsToCreate>
+		</creationTasks>
+	</TR.TResearchTaskDef>
+-->
+	
+</Defs>

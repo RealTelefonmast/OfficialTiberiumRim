@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>JuggernautShells</defName>
+		<label>juggernaut shells</label>
+		<parent>Manufactured</parent>
+		<iconPath>UI/Icons/ThingCategories/MortarShells</iconPath>
+	</ThingCategoryDef>
+	
+	<TR.TRThingDef ParentName="TR_ShellBase">
+		<defName>JuggernautShell_Explosive</defName>
+		<label>juggernaut shells (explosive)</label>
+		<description>A pack of shells to be fired by a Juggernaut Turret, these three shells will explode on contact.</description>
+		<graphicData>
+			<texPath>Items/Ammunition/Juggernaut_Shell</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>2000</MarketValue>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Mass>5</Mass>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>4.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.3</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+				<explosionEffect>GiantExplosion</explosionEffect>
+				<explosionSound>Explosion_GiantBomb</explosionSound>
+				<wickTicks>
+					<min>10</min>
+					<max>30</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<projectileWhenLoaded>Bullet_Juggernaut</projectileWhenLoaded>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<workAmount>800</workAmount>
+			<targetCountAdjustment>5</targetCountAdjustment>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>GDI_Factory</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<costList>
+			<Shell_HighExplosive>3</Shell_HighExplosive>
+			<GDI_ReinforcedPlate>3</GDI_ReinforcedPlate>
+		</costList>
+		<thingCategories>
+			<li>JuggernautShells</li>
+		</thingCategories>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="TR_ShellBase">
+		<defName>JuggernautShell_Incendiary</defName>
+		<label>juggernaut shells (incendiary)</label>
+		<description>A pack of shells to be fired by a Juggernaut Turret, these three shells will explode on contact.</description>
+		<graphicData>
+			<texPath>Items/Ammunition/Juggernaut_Shell_Incendiary</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>2000</MarketValue>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Mass>5</Mass>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>4.9</explosiveRadius>
+				<explosiveDamageType>Burn</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.3</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+				<explosionEffect>GiantExplosion</explosionEffect>
+				<explosionSound>Explosion_GiantBomb</explosionSound>
+				<wickTicks>
+					<min>10</min>
+					<max>30</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<projectileWhenLoaded>Bullet_JuggernautIncendiary</projectileWhenLoaded>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<workAmount>800</workAmount>
+			<targetCountAdjustment>5</targetCountAdjustment>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>GDI_Factory</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<costList>
+			<Shell_HighExplosive>3</Shell_HighExplosive>
+			<GDI_ReinforcedPlate>3</GDI_ReinforcedPlate>
+		</costList>
+		<thingCategories>
+			<li>JuggernautShells</li>
+		</thingCategories>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="TR_ShellBase">
+		<defName>JuggernautShell_Antigrain</defName>
+		<label>juggernaut shells (antigrain)</label>
+		<description>A pack of shells to be fired by a Juggernaut Turret, these three devastating shells will explode on contact.</description>
+		<graphicData>
+			<texPath>Items/Ammunition/Juggernaut_Shell_Incendiary</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>2000</MarketValue>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Mass>5</Mass>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>4.9</explosiveRadius>
+				<explosiveDamageType>Burn</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.3</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+				<explosionEffect>GiantExplosion</explosionEffect>
+				<explosionSound>Explosion_GiantBomb</explosionSound>
+				<wickTicks>
+					<min>10</min>
+					<max>30</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<projectileWhenLoaded>Bullet_JuggernautAntigrain</projectileWhenLoaded>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<workAmount>800</workAmount>
+			<targetCountAdjustment>5</targetCountAdjustment>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>GDI_Factory</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<costList>
+			<Shell_AntigrainWarhead>3</Shell_AntigrainWarhead>
+			<GDI_ReinforcedPlate>3</GDI_ReinforcedPlate>
+		</costList>
+		<thingCategories>
+			<li>JuggernautShells</li>
+		</thingCategories>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental3</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
+	
+</Defs>

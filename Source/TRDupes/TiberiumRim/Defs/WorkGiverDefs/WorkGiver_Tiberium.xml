@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<WorkGiverDef>
+		<defName>DoBillsTibRefinery</defName>
+		<label>works at Tiberium refinery</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>97</priorityInType>
+		<fixedBillGiverDefs>
+			<li>TiberiumRefinery</li>
+		</fixedBillGiverDefs>
+		<verb>refine Tiberium</verb>
+		<gerund>refining Tiberium at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+		
+	<WorkGiverDef>
+		<defName>DoBillsTibResearch</defName>
+		<label>works at Tiberium research bench</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>97</priorityInType>
+		<fixedBillGiverDefs>
+			<li>TiberiumResearchCraftingBench</li>
+		</fixedBillGiverDefs>
+		<verb>make Tiberium item at</verb>
+		<gerund>making Tiberium item at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+	
+</Defs>

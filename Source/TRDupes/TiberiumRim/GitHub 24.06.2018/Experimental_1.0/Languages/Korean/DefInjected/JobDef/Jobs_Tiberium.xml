@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <DoMissionObjective.reportString>임무 수행 중.</DoMissionObjective.reportString>
+  <RepairMechanicalPawn.reportString>수리 중.</RepairMechanicalPawn.reportString>
+  <WanderAtParent.reportString>수리 대기 중.</WanderAtParent.reportString>
+  <SearchAndHarvestTiberium.reportString>타이베리움 찾는 중.</SearchAndHarvestTiberium.reportString>
+  <ReturnToRefineryToUnload.reportString>하역 중.</ReturnToRefineryToUnload.reportString>
+  <ReturnToRefineryToIdle.reportString>대기 중.</ReturnToRefineryToIdle.reportString>
+  <FormAmalgamation.reportString>융합 중.</FormAmalgamation.reportString>
+  <TiberiumBath.reportString>타이베리움 위에서 뒹구는 중.</TiberiumBath.reportString>
+
+
+  <!-- Meditative -->
+
+</LanguageData>

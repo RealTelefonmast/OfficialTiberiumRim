@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>Need_Tiberium</defName>
+    <needClass>TiberiumRim.Need_Tiberium</needClass>
+    <label>Tiberium</label>
+    <description>This person is enhanced with Tiberium, though it might seem good at first, this person is also dependent on Tiberium radiation now.</description>
+    <listPriority>20</listPriority>
+    <fallPerDay>0.1</fallPerDay>
+  </NeedDef>
+
+</Defs>

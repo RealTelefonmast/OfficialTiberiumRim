@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Nod_Follower.label>추종자</Nod_Follower.label>
+  <Nod_Follower.labelPlural>추종집단</Nod_Follower.labelPlural>
+
+  <Nod_Bishop.label>주교</Nod_Bishop.label>
+  <Nod_Bishop.labelPlural>주교단</Nod_Bishop.labelPlural>
+
+  <Nod_Trader.label>군수사제</Nod_Trader.label>
+  <Nod_Trader.labelPlural>사제단</Nod_Trader.labelPlural>
+
+  <Nod_Fanatic.label>광신자</Nod_Fanatic.label>
+  <Nod_Fanatic.labelPlural>광신집단</Nod_Fanatic.labelPlural>
+
+  <Nod_BlackHand.label>블랙핸드</Nod_BlackHand.label>
+  <Nod_BlackHand.labelPlural>사제단</Nod_BlackHand.labelPlural>
+
+  <Nod_Officer.label>장교</Nod_Officer.label>
+  <Nod_Officer.labelPlural>지휘부</Nod_Officer.labelPlural>
+
+  <Nod_Militia.label>민병</Nod_Militia.label>
+  <Nod_Militia.labelPlural>민병대</Nod_Militia.labelPlural>
+
+  <Nod_MilitiaRocket.label>중무장 민병</Nod_MilitiaRocket.label>
+  <Nod_MilitiaRocket.labelPlural>중무장 민병대</Nod_MilitiaRocket.labelPlural>
+
+</LanguageData>

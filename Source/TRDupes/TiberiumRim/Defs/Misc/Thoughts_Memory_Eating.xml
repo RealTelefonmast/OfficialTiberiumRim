@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+  <ThoughtDef>
+    <defName>AteTiberiumMeatDirect</defName>
+		<showBubble>true</showBubble>
+		<icon>Things/Mote/ThoughtSymbol/Food</icon>
+		<durationDays>2</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>ate tiberium meat</label>
+        <description>I ate some glowing, green crunchy meat. I feel sick.</description>
+        <baseMoodEffect>-12</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+	<ThoughtDef>
+		<defName>AteTiberiumMeatAsIngredient</defName>
+		<showBubble>true</showBubble>
+		<icon>Things/Mote/ThoughtSymbol/Food</icon>
+		<durationDays>1</durationDays>
+		<stackLimit>3</stackLimit>
+		<stages>
+			<li>
+				<label>ate cooked tiberium meat</label>
+				<description>I ate a meal cooked from glowing, crunchy meat. The seasoning partly covered the taste, but there were spikey pieces and a burning sensation is covering my tongue. I think I'm dying.</description>
+				<baseMoodEffect>-8</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+  
+
+</Defs>

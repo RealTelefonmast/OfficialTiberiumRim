@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<ThingDef Name="BasePawn" Abstract="True">
+		<thingClass>Pawn</thingClass>
+		<category>Pawn</category>
+		<selectable>true</selectable>
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>Pawn</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<hasTooltip>true</hasTooltip>
+		<soundImpactDefault>BulletImpactFlesh</soundImpactDefault>
+		<statBases>
+			<Mass>86</Mass>
+		</statBases>
+		<inspectorTabs>
+			<li>ITab_Pawn_Health</li>
+			<li>ITab_Pawn_Needs</li>
+			<li>ITab_Pawn_Character</li>
+			<li>ITab_Pawn_Training</li>
+			<li>ITab_Pawn_Gear</li>
+			<li>ITab_Pawn_Guest</li>
+			<li>ITab_Pawn_Prisoner</li>
+			<li>ITab_Pawn_Social</li>
+		</inspectorTabs>
+		<comps>
+			<li>
+				<compClass>CompAttachBase</compClass>
+			</li>
+		</comps>
+		<drawGUIOverlay>true</drawGUIOverlay>
+	</ThingDef>
+
+	
+	<ThingDef ParentName="BasePawn" Name="AnimalThingBase" Abstract="True">
+		<statBases>
+			<Flammability>0.6</Flammability>
+			<LeatherAmount>25</LeatherAmount>
+		</statBases>
+		<race>
+			<thinkTreeMain>Animal</thinkTreeMain>
+			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+			<hasGenders>true</hasGenders>
+			<nameGenerator>NamerAnimalGenericMale</nameGenerator>
+			<nameGeneratorFemale>NamerAnimalGenericFemale</nameGeneratorFemale>
+			<manhunterOnDamageChance>0.0125</manhunterOnDamageChance>
+			<manhunterOnTameFailChance>0.005</manhunterOnTameFailChance>
+			<nameOnNuzzleChance>0.5</nameOnNuzzleChance>
+			<hediffGiverSets>
+				<li>OrganicStandard</li>
+			</hediffGiverSets>
+		</race>
+		<recipes>
+			<li>ExciseCarcinoma</li>
+			<li>RemoveBodyPart</li>
+			<li>Euthanize</li>
+		</recipes>
+	</ThingDef>
+
+	
+	<PawnKindDef Name="AnimalKindBase" Abstract="True">
+	</PawnKindDef>
+	
+  <ThingDef Abstract="True" ParentName="AnimalThingBase" Name="TiberiumLifeform">
+    <statBases>
+      <ToxicSensitivity>0</ToxicSensitivity>
+	  <LeatherAmount>5</LeatherAmount>
+	  <MeatAmount>6</MeatAmount>
+    </statBases>
+    <race>
+      <fleshType>Tiberium</fleshType>
+      <bloodDef>FilthBloodInsect</bloodDef>
+      <meatColor>(0,255,0)</meatColor>
+      <foodType>OmnivoreAnimal, AnimalProduct</foodType>
+      <manhunterOnDamageChance>1</manhunterOnDamageChance>
+      <manhunterOnTameFailChance>0.8</manhunterOnTameFailChance>
+    </race>
+  </ThingDef>
+
+
+	<ThingDef ParentName="TiberiumLifeform">
+		<defName>Visceroid_TBI</defName>
+		<label>Visceroid</label>
+		<description>A blob-like and disturbing lifeform. Formed after the death of a creature by Tiberium.</description>
+		<statBases>
+			<MoveSpeed>1</MoveSpeed>
+			<ComfyTemperatureMin>-50</ComfyTemperatureMin>
+			<MarketValue>732</MarketValue>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<defaultCooldownTime>8</defaultCooldownTime>
+				<meleeDamageBaseAmount>23</meleeDamageBaseAmount>
+				<!-- Keeping the ToxicBite since I don't want it to be Tiberium damage that is dealt. But still something poisonous. -->
+				<meleeDamageDef>ToxicBite</meleeDamageDef>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Stun</def>
+							<amount>17</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+		</verbs>
+    <race>
+		<hasGenders>false</hasGenders>
+		<herdAnimal>true</herdAnimal>
+		<body>Visceroid</body>
+		<predator>true</predator>
+		<maxPreyBodySize>1.0</maxPreyBodySize>
+		<baseBodySize>1.2</baseBodySize>
+		<baseHungerRate>0.4</baseHungerRate>
+		<baseHealthScale>0.5</baseHealthScale>
+		<trainableIntelligence>Simple</trainableIntelligence>
+		<leatherColor>(204,102,0)</leatherColor>
+		<leatherLabel>Visceroid Skin</leatherLabel>
+		<leatherInsulation>0.2</leatherInsulation>
+		<meatLabel>Visceroid Matter</meatLabel>
+		<wildness>0.75</wildness>
+		<gestationPeriodDays>25</gestationPeriodDays>
+		<nameOnTameChance>1</nameOnTameChance>
+		<lifeExpectancy>300</lifeExpectancy>
+		<lifeStageAges>
+				<li>
+					<def>AnimalBaby</def>
+					<minAge>0</minAge>
+				</li>
+				<li>
+					<def>AnimalJuvenile</def>
+					<minAge>0.25</minAge>
+				</li>
+				<li>
+					<def>AnimalAdult</def>
+					<minAge>1</minAge>
+					<!-- Keeping the Cobra sounds because it fits the Visceroid.-->
+					<soundWounded>Pawn_Cobra_Wounded</soundWounded>
+					<soundDeath>Pawn_Cobra_Death</soundDeath>
+					<soundCall>Pawn_Cobra_Call</soundCall>
+					<soundAngry>Pawn_Cobra_Angry</soundAngry>
+				</li>
+		</lifeStageAges>
+		<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+		<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+		<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+	</race>
+		<tradeTags>
+		  <li>BadassAnimal</li>
+		</tradeTags>
+	</ThingDef> 
+  
+  
+	<PawnKindDef ParentName="AnimalKindBase">
+		<defName>Visceroid_TBI</defName>
+		<label>Visceroid</label>
+		<race>Visceroid_TBI</race>
+		<combatPower>65</combatPower>
+		<wildSpawn_spawnWild>false</wildSpawn_spawnWild>
+		<lifeStages>
+			<li>
+				<label>baby visceroid</label>
+				<bodyGraphicData>
+					<texPath>Pawn/Animals/Visceroid/visceroid</texPath>
+					<drawSize>0.8</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Pawn/Animals/Visceroid/VisceroidDessicated</texPath>
+					<drawSize>0.8</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawn/Animals/Visceroid/visceroid</texPath>
+					<drawSize>1</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Pawn/Animals/Visceroid/VisceroidDessicated</texPath>
+					<drawSize>1</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawn/Animals/Visceroid/visceroid</texPath>
+					<drawSize>1.4</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Pawn/Animals/Visceroid/VisceroidDessicated</texPath>
+					<drawSize>1.4</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</PawnKindDef>
+	
+	
+	<ThingDef ParentName="TiberiumLifeform">
+		<defName>Veinmonster_TBI</defName>
+		<label>Veinmonster</label>
+		<description>Veinmonster, also known as Proto-Visceroids, are creatures expelled by Veins. Small and weak on it's own they can cause huge damage in masses, be sure to destroy a Veinhole asap when it gets too big!</description>
+		<statBases>
+			<MoveSpeed>3</MoveSpeed>
+			<ComfyTemperatureMin>0</ComfyTemperatureMin>
+			<MarketValue>150</MarketValue>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<defaultCooldownTime>5</defaultCooldownTime>
+				<meleeDamageBaseAmount>2</meleeDamageBaseAmount>
+				<!-- Keeping the ToxicBite since I don't want it to be Tiberium damage that is dealt. But still something poisonous. -->
+				<meleeDamageDef>ToxicBite</meleeDamageDef>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Stun</def>
+							<amount>3</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+		</verbs>
+    <race>
+		<herdAnimal>true</herdAnimal>
+		<hasGenders>false</hasGenders>
+		<body>Veinmonster</body>
+		<predator>true</predator>
+		<maxPreyBodySize>1.0</maxPreyBodySize>
+		<baseBodySize>1.0</baseBodySize>
+		<baseHungerRate>0.8</baseHungerRate>
+		<baseHealthScale>1</baseHealthScale>
+		<trainableIntelligence>Simple</trainableIntelligence>
+		<leatherColor>(204,102,0)</leatherColor>
+		<leatherLabel>Veinmonster skin</leatherLabel>
+		<leatherInsulation>0.5</leatherInsulation>
+		<meatLabel>Veinmonster flesh</meatLabel>
+		<wildness>1</wildness>
+		<gestationPeriodDays>25</gestationPeriodDays>
+		<nameOnTameChance>1</nameOnTameChance>
+		<lifeExpectancy>0.5</lifeExpectancy>
+		<lifeStageAges>
+				<li>
+					<def>AnimalBaby</def>
+					<minAge>0</minAge>
+				</li>
+				<li>
+					<def>AnimalJuvenile</def>
+					<minAge>0.25</minAge>
+				</li>
+				<li>
+					<def>AnimalAdult</def>
+					<minAge>1</minAge>
+					<!-- Keeping the Cobra sounds because it fits the Visceroid.-->
+					<soundWounded>Pawn_Cobra_Wounded</soundWounded>
+					<soundDeath>Pawn_Cobra_Death</soundDeath>
+					<soundCall>Pawn_Cobra_Call</soundCall>
+					<soundAngry>Pawn_Cobra_Angry</soundAngry>
+				</li>
+		</lifeStageAges>
+		<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+		<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+		<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+	</race>
+		<tradeTags>
+		  <li>StandardAnimal</li>
+		  <li>BadassAnimal</li>
+		</tradeTags>
+	</ThingDef> 
+  
+  
+	<PawnKindDef ParentName="AnimalKindBase">
+		<defName>Veinmonster_TBI</defName>
+		<label>Veinmonster</label>
+		<race>Veinmonster_TBI</race>
+		<combatPower>65</combatPower>
+		<wildSpawn_spawnWild>false</wildSpawn_spawnWild>
+		<lifeStages>
+			<li>
+				<label>baby Veinmonster</label>
+				<bodyGraphicData>
+					<texPath>Pawn/Animals/Veinmonster/Veinmonster</texPath>
+					<drawSize>0.4</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Pawn/Animals/Veinmonster/VeinmonsterDessicated</texPath>
+					<drawSize>0.4</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawn/Animals/Veinmonster/Veinmonster</texPath>
+					<drawSize>0.6</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Pawn/Animals/Veinmonster/VeinmonsterDessicated</texPath>
+					<drawSize>0.6</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawn/Animals/Veinmonster/Veinmonster</texPath>
+					<drawSize>0.8</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Pawn/Animals/Veinmonster/VeinmonsterDessicated</texPath>
+					<drawSize>0.8</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</PawnKindDef>
+
+</Defs>

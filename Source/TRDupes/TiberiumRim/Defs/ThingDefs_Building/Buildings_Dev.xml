@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>TibDev</defName>
+		<label>TibDev</label>
+		<description>,</description>
+		<thingClass>Building</thingClass>
+		<size>(5,2)</size>
+		<costList>
+			<Steel>1</Steel>
+		</costList>
+		<graphicData>
+			<texPath>Building/Tiberium/TiberiumLAB</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(8,4)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>100</pathCost>
+		<statBases>
+			<MaxHitPoints>1337</MaxHitPoints>
+			<WorkToBuild>99999</WorkToBuild>
+			<Flammability>0.0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumHelper"/>
+		</comps>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,3)</interactionCellOffset>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<surfaceType>Item</surfaceType>
+	</ThingDef>
+	
+</Defs>

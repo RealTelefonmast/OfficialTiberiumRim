@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>Gun_Juggernaut</defName>
+		<label>juggernaut gun</label>
+		<description>Advanced artillery. Lobs bombs over walls. Very inaccurate but long-ranged.</description>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Juggernaut/Turret</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
+				<shotStartOffset>(0,0,1)</shotStartOffset>
+				<originOffsetPerShot>	
+					<li>(-0.45,0,0)</li>
+					<li>( 0.00,0,0)</li>
+					<li>( 0.45,0,0)</li>
+				</originOffsetPerShot>
+				<defaultProjectile>Bullet_Juggernaut</defaultProjectile>
+				<warmupTime>0</warmupTime>
+				<forcedMissRadius>10</forcedMissRadius>
+				<requireLineOfSight>false</requireLineOfSight>
+				<minRange>14.9</minRange>
+				<range>250</range>
+				<burstShotCount>3</burstShotCount>
+				<ticksBetweenBurstShots>20</ticksBetweenBurstShots>
+				<onlyManualCast>true</onlyManualCast>
+				<soundCast>Shot_GDI_Juggernaut</soundCast>
+				<muzzleFlashScale>12</muzzleFlashScale>
+				<isMortar>true</isMortar>
+				<hasStandardCommand>true</hasStandardCommand>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<consumeFuelPerShot>1</consumeFuelPerShot>
+			</li>
+		</verbs>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>Gun_WatchTower</defName>
+		<label>watchtower gun</label>
+		<description>pew pew</description>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Turrets/WatchTower</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_GDITurret</defaultProjectile>
+				<shotStartOffset>(0,0,1.5)</shotStartOffset>
+				<warmupTime>2.5</warmupTime>
+				<range>24.9</range>
+				<burstShotCount>8</burstShotCount>
+				<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+				<soundCast>Shot_HeavySMG</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>10</muzzleFlashScale>
+				<consumeFuelPerShot>0.25</consumeFuelPerShot>
+			</li>
+		</verbs>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>Gun_Guardian</defName>
+		<label>guardian cannon</label>
+		<description>pew pew</description>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Turrets/Guardian</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Guardian</defaultProjectile>
+				<shotStartOffset>(0,0,1.75)</shotStartOffset>
+				<warmupTime>2.5</warmupTime>
+				<range>29.9</range>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<soundCast>Shot_GDI_RailgunHeavy</soundCast>
+				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
+				<muzzleFlashScale>15</muzzleFlashScale>
+				<consumeFuelPerShot>2</consumeFuelPerShot>
+			</li>
+		</verbs>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>Gun_Guardian_Railgun</defName>
+		<label>guardian railgun cannon</label>
+		<description>pew pew</description>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/Turrets/Guardian</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_Beam</verbClass>
+				<beamProps>
+					<damageDef>TRRailgun</damageDef>
+					<isStatic>true</isStatic>	
+					<damageBaseOverride>55</damageBaseOverride>
+					<stoppingPowerOverride>0.5</stoppingPowerOverride>
+					<armorPenetrationOverride>0.5</armorPenetrationOverride>
+					<impactEffecter>StrongRailgunHit</impactEffecter>
+				</beamProps>
+				<shotStartOffset>(0,0,1.75)</shotStartOffset>
+				<originOffsetPerShot>
+					<li>(0,0,0)</li>
+				</originOffsetPerShot>
+				<hasStandardCommand>true</hasStandardCommand>
+				<requireLineOfSight>true</requireLineOfSight>
+				<warmupTime>2.5</warmupTime>
+				<range>44.9</range>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<soundCast>Shot_GDI_RailgunHeavy</soundCast>
+				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
+				<muzzleFlashScale>12</muzzleFlashScale>
+				<consumeFuelPerShot>2</consumeFuelPerShot>
+				
+				<!--<soundCastBeam></soundCastBeam>-->
+				<beamWidth>0.5</beamWidth>
+				<beamGroundFleckDef>Fleck_BeamScorchMark</beamGroundFleckDef>
+				<beamLineFleckDef>Fleck_BeamSparking</beamLineFleckDef>
+				<beamFleckChancePerTick>1</beamFleckChancePerTick>
+				<beamMaxDeviation>0</beamMaxDeviation>
+				<beamCurvature>0</beamCurvature>
+				<beamMoteDef>Mote_RailgunBeam</beamMoteDef>
+				<beamChanceToStartFire>0.85</beamChanceToStartFire>
+				<beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+				<beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+				<beamStartOffset>0.15</beamStartOffset>
+				<beamLineFleckChanceCurve>
+					<points>
+						<li>(0, 1)</li>
+						<li>(1, 1)</li>
+					</points>
+				</beamLineFleckChanceCurve>
+			</li>
+		</verbs>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseWeapon_TR">
+		<defName>Gun_SonicEmitter</defName>
+		<label>sonic emitter gun</label>
+		<description>pew pew</description>
+		<graphicData>
+			<texPath>Buildings/GDI/Defense/SonicEmitter/Turret</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>50</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<weaponTags Inherit="false">
+			<li>TurretGun</li>
+		</weaponTags>
+		<verbs>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_BurstToTarget</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Projectile_SonicWave</defaultProjectile>
+				<requireLineOfSight>true</requireLineOfSight>
+				<warmupTime>2.25</warmupTime>
+				<range>22.9</range>
+				<minRange>2.9</minRange>
+				<burstShotCount>2</burstShotCount>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<forcedMissRadius>1</forcedMissRadius>
+				<soundCast>Shot_GDI_Sonic</soundCast>
+				<soundCastTail>Shot_GDI_GunTail</soundCastTail>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<muzzleFlashScale>15</muzzleFlashScale>
+				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+				<consumeFuelPerShot>1</consumeFuelPerShot>
+			</li>
+		</verbs>
+	</ThingDef>
+
+</Defs>
