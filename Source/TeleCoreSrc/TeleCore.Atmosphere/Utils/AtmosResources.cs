@@ -26,7 +26,7 @@ public static class AtmosResources
     {
         return new FlowVolumeConfig<AtmosphericValueDef>
         {
-            values = new FlowVolumeConfig<AtmosphericValueDef>.Values()
+            values = new FlowVolumeConfig<AtmosphericValueDef>.Values
             {
                 allowedValues = AllAtmosphericDefs,
             },

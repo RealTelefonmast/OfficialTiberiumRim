@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using TeleCore.Atmosphere.Grid;
 using TeleCore.Atmosphere.Static;
-using TeleCore.Utility;
 using UnityEngine;
 using Verse;
 
@@ -26,9 +24,9 @@ public static class AtmosphericUtility
         //FillAtmosphereRelevantCells(UI.MouseCell(), Find.CurrentMap);
 
         var cacheInfo = Find.CurrentMap.GetMapInfo<DynamicAtmosphericDataMapInfo>();
-        for (int i = 0; i < SampleNumCells; i++)
+        for (var i = 0; i < SampleNumCells; i++)
         {
-            IntVec3 intVec = root + GenRadial.RadialPattern[i];
+            var intVec = root + GenRadial.RadialPattern[i];
             if (intVec.InBounds(map) && !intVec.Fogged(map))
             {
                 var value = cacheInfo.AtmosphericPassGrid[intVec];
@@ -47,9 +45,9 @@ public static class AtmosphericUtility
         //FillAtmosphereRelevantCells(UI.MouseCell(), Find.CurrentMap);
 
         var cacheInfo = Find.CurrentMap.GetMapInfo<DynamicAtmosphericDataMapInfo>();
-        for (int i = 0; i < SampleNumCells; i++)
+        for (var i = 0; i < SampleNumCells; i++)
         {
-            IntVec3 intVec = root + GenRadial.RadialPattern[i];
+            var intVec = root + GenRadial.RadialPattern[i];
             if (intVec.InBounds(map) && !intVec.Fogged(map))
             {
                 var value = cacheInfo.AtmosphericPassGrid[intVec];
@@ -85,21 +83,14 @@ public static class AtmosphericUtility
     {
         if (!UI.MouseCell().InBounds(Find.CurrentMap)) return;
 
-        Rect rect = new Rect(Event.current.mousePosition.x, Event.current.mousePosition.y, 336f,
-            (float) CellInspectorDrawer.numLines * 24f + 24f);
+        var rect = new Rect(Event.current.mousePosition.x, Event.current.mousePosition.y, 336f,
+            CellInspectorDrawer.numLines * 24f + 24f);
         CellInspectorDrawer.numLines = 0;
 
         rect.x += 26f;
         rect.y += 26f;
-        if (rect.xMax > (float) UI.screenWidth)
-        {
-            rect.x -= rect.width + 52f;
-        }
-
-        if (rect.yMax > (float) UI.screenHeight)
-        {
-            rect.y -= rect.height + 52f;
-        }
+        if (rect.xMax > UI.screenWidth) rect.x -= rect.width + 52f;
+        if (rect.yMax > UI.screenHeight) rect.y -= rect.height + 52f;
 
         Find.WindowStack.ImmediateWindow(733348, rect, WindowLayer.Super, FillWindow);
     }
@@ -110,7 +101,7 @@ public static class AtmosphericUtility
         Text.Anchor = TextAnchor.MiddleLeft;
         Text.WordWrap = false;
 
-        IntVec3 intVec = UI.MouseCell();
+        var intVec = UI.MouseCell();
         if (!intVec.InBounds(Find.CurrentMap)) return;
         var gasGrid = Find.CurrentMap.GetMapInfo<SpreadingGasGrid>();
         var gasStack = gasGrid.CellStackAtUnsafe(intVec.Index(gasGrid.Map));
@@ -123,12 +114,12 @@ public static class AtmosphericUtility
         CellInspectorDrawer.DrawDivider();
         CellInspectorDrawer.DrawRow("Stack Types: ", gasStack.Length.ToString());
         CellInspectorDrawer.DrawRow("Any Gas In Stack: ", gasStack.HasAnyGas.ToString());
-        CellInspectorDrawer.DrawRow("Total Stack Value: ", (gasStack.totalValue).ToString());
+        CellInspectorDrawer.DrawRow("Total Stack Value: ", gasStack.totalValue.ToString());
         CellInspectorDrawer.DrawDivider();
-        for (int i = 0; i < gasStack.Length; i++)
+        for (var i = 0; i < gasStack.Length; i++)
         {
             var value = gasStack[i];
-            CellInspectorDrawer.DrawRow($"{(SpreadingGasTypeDef) value.defID}:", String.Empty);
+            CellInspectorDrawer.DrawRow($"{(SpreadingGasTypeDef)value.defID}:", string.Empty);
             CellInspectorDrawer.DrawRow($"Total Gas Count:", gasGrid.TotalSubGasCount[value.defID].ToString());
             CellInspectorDrawer.DrawRow($"Total Gas Value:", gasGrid.TotalSubGasValue[value.defID].ToString());
             CellInspectorDrawer.DrawRow($"{nameof(GasCellValue.value)}:", value.value.ToString());
@@ -140,40 +131,31 @@ public static class AtmosphericUtility
         Text.Anchor = TextAnchor.UpperLeft;
     }
 
-    private static void FillAtmosphereRelevantCells(IntVec3 root, Verse.Map map)
+    private static void FillAtmosphereRelevantCells(IntVec3 root, Map map)
     {
         relevantCells.Clear();
-        Room room = root.GetRoom(map);
-        if (room == null)
-        {
-            return;
-        }
+        var room = root.GetRoom(map);
+        if (room == null) return;
 
         visibleRooms.Clear();
         visibleRooms.Add(room);
         if (room.IsDoorway)
-        {
-            foreach (Region region in room.FirstRegion.Neighbors)
-            {
+            foreach (var region in room.FirstRegion.Neighbors)
                 if (!visibleRooms.Contains(region.Room))
-                {
                     visibleRooms.Add(region.Room);
-                }
-            }
-        }
 
-        for (int i = 0; i < SampleNumCells; i++)
+        for (var i = 0; i < SampleNumCells; i++)
         {
-            IntVec3 intVec = root + GenRadial.RadialPattern[i];
+            var intVec = root + GenRadial.RadialPattern[i];
             if (intVec.InBounds(map) && !intVec.Fogged(map))
             {
-                Room room2 = intVec.GetRoom(map);
+                var room2 = intVec.GetRoom(map);
                 if (!visibleRooms.Contains(room2))
                 {
-                    bool flag = false;
-                    for (int j = 0; j < 8; j++)
+                    var flag = false;
+                    for (var j = 0; j < 8; j++)
                     {
-                        IntVec3 loc = intVec + GenAdj.AdjacentCells[j];
+                        var loc = intVec + GenAdj.AdjacentCells[j];
                         if (visibleRooms.Contains(loc.GetRoom(map)))
                         {
                             flag = true;
@@ -181,10 +163,7 @@ public static class AtmosphericUtility
                         }
                     }
 
-                    if (!flag)
-                    {
-                        continue;
-                    }
+                    if (!flag) continue;
                 }
 
                 relevantCells.Add(intVec);
@@ -203,10 +182,10 @@ public static class AtmosphericUtility
         //TODO:Add Stat for gas permeability
         var permeability = categories.Sum(c => AtmosphericData.PassPercentByStuff.GetValueOrDefault(c, 0)) /
                            categories.Count;
-        return (float) System.Math.Round(1f - (fillage * (1f - permeability)), 4);
+        return (float)System.Math.Round(1f - fillage * (1f - permeability), 4);
     }
 
-    public static float DefaultAtmosphericPassPercentAtCell(IntVec3 pos, Verse.Map map)
+    public static float DefaultAtmosphericPassPercentAtCell(IntVec3 pos, Map map)
     {
         var thingList = pos.GetThingList(map);
         if (thingList.NullOrEmpty()) return 1f;
@@ -242,8 +221,8 @@ public static class AtmosphericUtility
 
     private static float GetFlowPct(Thing forThing)
     {
-        bool isFullFillage = forThing.def.Fillage == FillCategory.Full;
-        float fillage = forThing.def.fillPercent;
+        var isFullFillage = forThing.def.Fillage == FillCategory.Full;
+        var fillage = forThing.def.fillPercent;
         return isFullFillage ? 0f : 1f - fillage;
     }
 
@@ -278,7 +257,7 @@ public static class AtmosphericUtility
 
     #region Extensions
 
-    public static AtmosphericMapInfo Atmosphere(this Verse.Map map)
+    public static AtmosphericMapInfo Atmosphere(this Map map)
     {
         return map.GetMapInfo<AtmosphericMapInfo>();
     }

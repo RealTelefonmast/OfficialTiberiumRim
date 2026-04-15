@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using TeleCore.Atmosphere.Defs;
 using TeleCore.Atmosphere.Rooms;
 using TeleCore.Events;
+using TeleCore.Events.Args;
 using TeleCore.Primitive;
-using TeleCore.Utility;
+using TeleCore.Utils;
 using Verse;
 
 namespace TeleCore.Atmosphere.Caching;
@@ -36,29 +37,28 @@ public static class AtmosphericCacheEventNotifiers
     private static void GlobalEventHandlerOnResettingRegionStateInfo(RegionStateChangedArgs args)
     {
         if (Current.ProgramState != ProgramState.Playing) return;
-        GenData.GetMapInfo<AtmosphericMapInfo>(args.Map).Cache.ResetCachedCellInfo(args.Cell, args.Map);
+        args.Map.GetMapInfo<AtmosphericMapInfo>().Cache.ResetCachedCellInfo(args.Cell, args.Map);
     }
 
     private static void GlobalEventHandlerOnGettingRegionStateInfo(RegionStateChangedArgs args)
     {
         if (Current.ProgramState != ProgramState.Playing) return;
-        GenData.GetMapInfo<AtmosphericMapInfo>(args.Map).Cache.TryGetAndSetCachedRoomAtmosphereForRoom(args.Room, args.Map);
+        args.Map.GetMapInfo<AtmosphericMapInfo>().Cache.TryGetAndSetCachedRoomAtmosphereForRoom(args.Room, args.Map);
     }
 
     private static void GlobalEventHandlerOnCachingRegionStateInfo(RegionStateChangedArgs args)
     {
         if (Current.ProgramState != ProgramState.Playing) return;
-        GenData.GetMapInfo<AtmosphericMapInfo>(args.Map).Cache.TryCacheRegionAtmosphere(args.Cell, args.Map, args.Region);
+        args.Map.GetMapInfo<AtmosphericMapInfo>().Cache.TryCacheRegionAtmosphere(args.Cell, args.Map, args.Region);
     }
 }
 
 public class AtmosphericCache
 {
-    private CachedAtmosphere[] _tempGrid;
-
     //
-    private HashSet<int> _procRoomIDs;
-    private List<CachedAtmosphere> _relevantCacheList;
+    private readonly HashSet<int> _procRoomIDs;
+    private readonly List<CachedAtmosphere> _relevantCacheList;
+    private readonly CachedAtmosphere[] _tempGrid;
 
     public AtmosphericCache(Map map)
     {
@@ -69,12 +69,12 @@ public class AtmosphericCache
 
     public void TryCacheRegionAtmosphere(IntVec3 c, Map map, Region reg)
     {
-        Room room = reg.Room;
+        var room = reg.Room;
         if (room != null)
         {
             var volume = room.GetRoomComp<RoomComponent_Atmosphere>()?.Volume;
-            if(volume == null) return;
-            SetCachedCell(c, map,new CachedAtmosphere
+            if (volume == null) return;
+            SetCachedCell(c, map, new CachedAtmosphere
             {
                 RoomID = room.ID,
                 NumCells = room.CellCount,
@@ -116,13 +116,9 @@ public class AtmosphericCache
 
         DefValueStack<AtmosphericValueDef, double> result;
         if (r.CellCount >= num)
-        {
             result = stack;
-        }
         else
-        {
-            result = stack * System.Math.Round(r.CellCount / (double) num, 4);
-        }
+            result = stack * System.Math.Round(r.CellCount / (double)num, 4);
 
         var result2 = !_relevantCacheList.NullOrEmpty();
         _procRoomIDs.Clear();

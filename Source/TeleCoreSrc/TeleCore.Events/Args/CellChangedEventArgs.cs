@@ -25,7 +25,7 @@ public struct CellChangedEventArgs
     {
         TerrainChangedArgs = args;
         Cell = args.Position;
-        CellRect = CellRect.SingleCell(Cell);
+        CellRect = Verse.CellRect.SingleCell(Cell);
         Terrain = args.NewTerrain;
     }
 }

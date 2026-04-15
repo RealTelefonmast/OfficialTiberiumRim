@@ -5,7 +5,7 @@ namespace TeleCore.Atmosphere.Static;
 
 public static class AtmosphericReferenceCache
 {
-    private static List<AtmosphericValueDef> EmptyList = new List<AtmosphericValueDef>();
+    private static readonly List<AtmosphericValueDef> EmptyList = new();
     public static readonly Dictionary<string, List<AtmosphericValueDef>> AtmosphericGroupsByTag;
 
     static AtmosphericReferenceCache()

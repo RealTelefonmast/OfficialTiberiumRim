@@ -3,93 +3,79 @@ using System.Linq;
 using TeleCore;
 using Verse;
 
-namespace TeleCore.Atmosphere.OldRef
+namespace TeleCore.Atmosphere.OldRef;
+
+internal class AtmosphericScriber_TAE
 {
-    internal class AtmosphericScriber_TAE
+    private readonly Map map;
+    private DefValueStack<TAE.AtmosphericDef>[] atmosphericGrid;
+    private DefValueStack<TAE.AtmosphericDef>[] temporaryGrid;
+
+    private TAE.AtmosphericMapInfo AtmosphericMapInfo => map.GetMapInfo<TAE.AtmosphericMapInfo>();
+
+    internal AtmosphericScriber_TAE(Map map)
     {
-        private Map map;
+        this.map = map;
+    }
 
-        private DefValueStack<TAE.AtmosphericDef>[] temporaryGrid;
-        private DefValueStack<TAE.AtmosphericDef>[] atmosphericGrid;
+    public void ApplyLoadedDataToRegions()
+    {
+        if (atmosphericGrid == null) return;
 
-        private TAE.AtmosphericMapInfo AtmosphericMapInfo => map.GetMapInfo<TAE.AtmosphericMapInfo>();
+        var cellIndices = map.cellIndices;
+        var values = atmosphericGrid[map.cellIndices.NumGridCells];
+        if (values.IsValid) AtmosphericMapInfo.MapContainer.LoadFromStack(values);
 
-        internal AtmosphericScriber_TAE(Map map)
+        foreach (var comp in AtmosphericMapInfo.AllAtmosphericRooms)
         {
-            this.map = map;
+            var index = cellIndices.CellToIndex(comp.Parent.Room.Cells.First());
+            var valueStack = atmosphericGrid[index];
+            if (valueStack.IsValid) comp.Container.LoadFromStack(valueStack);
         }
 
-        public void ApplyLoadedDataToRegions()
+        atmosphericGrid = null;
+    }
+
+    internal void ScribeData()
+    {
+        var arraySize = map.cellIndices.NumGridCells + 1;
+        if (Scribe.mode == LoadSaveMode.Saving)
         {
-            if (atmosphericGrid == null) return;
+            temporaryGrid = new DefValueStack<TAE.AtmosphericDef>[arraySize];
+            var outsideAtmosphere = AtmosphericMapInfo.MapContainer.ValueStack;
+            temporaryGrid[arraySize - 1] = outsideAtmosphere;
 
-            CellIndices cellIndices = map.cellIndices;
-            var values = atmosphericGrid[map.cellIndices.NumGridCells];
-            if (values.IsValid)
+            foreach (var roomComp in AtmosphericMapInfo.AllAtmosphericRooms)
             {
-                AtmosphericMapInfo.MapContainer.LoadFromStack(values);
+                if (roomComp.IsOutdoors) continue;
+                var roomAtmosphereStack = roomComp.Container.ValueStack;
+                foreach (IntVec3 c2 in roomComp.Room.Cells)
+                    temporaryGrid[map.cellIndices.CellToIndex(c2)] = roomAtmosphereStack;
             }
-
-            foreach (var comp in AtmosphericMapInfo.AllAtmosphericRooms)
-            {
-                var index = cellIndices.CellToIndex(comp.Parent.Room.Cells.First());
-                var valueStack = atmosphericGrid[index];
-                if (valueStack.IsValid)
-                {
-                    comp.Container.LoadFromStack(valueStack);
-                }
-            }
-
-            atmosphericGrid = null;
         }
 
-        internal void ScribeData()
+        if (Scribe.mode == LoadSaveMode.LoadingVars)
+            atmosphericGrid = new DefValueStack<TAE.AtmosphericDef>[arraySize];
+
+        var savableTypes = DefDatabase<TAE.AtmosphericDef>.AllDefsListForReading;
+        foreach (var type in savableTypes)
         {
-            int arraySize = map.cellIndices.NumGridCells + 1;
+            byte[] dataBytes = null;
             if (Scribe.mode == LoadSaveMode.Saving)
             {
-                temporaryGrid = new DefValueStack<TAE.AtmosphericDef>[arraySize];
-                var outsideAtmosphere = AtmosphericMapInfo.MapContainer.ValueStack;
-                temporaryGrid[arraySize - 1] = outsideAtmosphere;
-
-                foreach (var roomComp in AtmosphericMapInfo.AllAtmosphericRooms)
-                {
-                    if (roomComp.IsOutdoors) continue;
-                    var roomAtmosphereStack = roomComp.Container.ValueStack;
-                    foreach (IntVec3 c2 in roomComp.Room.Cells)
-                    {
-                        temporaryGrid[map.cellIndices.CellToIndex(c2)] = roomAtmosphereStack;
-                    }
-                }
+                dataBytes = DataSerializeUtility.SerializeUshort(arraySize,
+                    idx => (ushort)(temporaryGrid[idx].Values?.FirstOrFallback(f => f.Def == type).Value ?? 0));
+                DataExposeUtility.ByteArray(ref dataBytes, $"{type.defName}.atmospheric");
             }
 
             if (Scribe.mode == LoadSaveMode.LoadingVars)
             {
-                atmosphericGrid = new DefValueStack<TAE.AtmosphericDef>[arraySize];
-            }
-
-            var savableTypes = DefDatabase<TAE.AtmosphericDef>.AllDefsListForReading;
-            foreach (var type in savableTypes)
-            {
-                byte[] dataBytes = null;
-                if (Scribe.mode == LoadSaveMode.Saving)
+                DataExposeUtility.ByteArray(ref dataBytes, $"{type.defName}.atmospheric");
+                DataSerializeUtility.LoadUshort(dataBytes, arraySize, delegate(int idx, ushort idxValue)
                 {
-                    dataBytes = DataSerializeUtility.SerializeUshort(arraySize, (int idx) => (ushort)(temporaryGrid[idx].Values?.FirstOrFallback(f => f.Def == type).Value ?? 0));
-                    DataExposeUtility.ByteArray(ref dataBytes, $"{type.defName}.atmospheric");
-                }
-
-                if (Scribe.mode == LoadSaveMode.LoadingVars)
-                {
-                    DataExposeUtility.ByteArray(ref dataBytes, $"{type.defName}.atmospheric");
-                    DataSerializeUtility.LoadUshort(dataBytes, arraySize, delegate(int idx, ushort idxValue)
-                    {
-                        var atmosStack = new DefFloat<TAE.AtmosphericDef>(type, idxValue);
-                        if (atmosStack.Value > 0)
-                        {
-                            atmosphericGrid[idx] += atmosStack;
-                        }
-                    });
-                }
+                    var atmosStack = new DefFloat<TAE.AtmosphericDef>(type, idxValue);
+                    if (atmosStack.Value > 0) atmosphericGrid[idx] += atmosStack;
+                });
             }
         }
     }

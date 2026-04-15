@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Events;
+using TeleCore.Events.Args;
 using Verse;
 
 namespace TeleCore.Atmosphere.Rooms.Converters;
@@ -29,7 +30,7 @@ public class AtmosphericMapConverters
         }
 
         //
-        foreach(var type in types)
+        foreach (var type in types)
         {
             var instance = (AtmosphericConverterFromThingRule)Activator.CreateInstance(type);
             ConverterFrom += instance.ConverterFor;
@@ -55,10 +56,7 @@ public class AtmosphericMapConverters
 
     private void Notify_ThingSpawned(ThingStateChangedEventArgs args)
     {
-        if (!_isActive)
-        {
-            return;
-        }
+        if (!_isActive) return;
 
         var thing = args.Thing;
         _converters.Add(thing, GenerateConvertersFor(thing));
@@ -67,27 +65,20 @@ public class AtmosphericMapConverters
     private void Notify_ThingDespawned(ThingStateChangedEventArgs args)
     {
         var thing = args.Thing;
-        if (_converters.ContainsKey(thing))
-        {
-            _converters.Remove(thing);
-        }
+        if (_converters.ContainsKey(thing)) _converters.Remove(thing);
     }
 
     public void Tick()
     {
         if (!_isActive) return;
         foreach (var converter in Converters)
-        {
             converter.Tick();
-        }
     }
 
     public List<AtmosphereConverterBase> ConvertersFor(Thing thing)
     {
         if (_converters.TryGetValue(thing, out var converters))
-        {
             return converters;
-        }
         return null;
     }
 
@@ -96,12 +87,7 @@ public class AtmosphericMapConverters
         if (_converters.TryGetValue(thing, out var converters))
         {
             foreach (var conv in converters)
-            {
-                if (conv is T t)
-                {
-                    return t;
-                }
-            }
+                if (conv is T t) return t;
         }
         return null;
     }

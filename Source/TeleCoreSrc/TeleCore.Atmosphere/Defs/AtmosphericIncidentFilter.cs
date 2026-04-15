@@ -1,15 +1,14 @@
 using System.Xml;
 using RimWorld;
 using TeleCore.Logging;
-using TeleCore.Utils;
 using Verse;
 
 namespace TeleCore.Atmosphere.Defs;
 
 public class AtmosphericIncidentFilter : Editable
 {
-    public IncidentDef incidentDef;
     public AtmosphericValueDef AtmosValueDef;
+    public IncidentDef incidentDef;
     public float threshold = 0;
 
     public override void PostLoad()
@@ -21,6 +20,5 @@ public class AtmosphericIncidentFilter : Editable
     // IncidentDef -> >(AtmosDef, 0.5)
     public void LoadDataFromXmlCustom(XmlNode xmlRoot)
     {
-
     }
 }

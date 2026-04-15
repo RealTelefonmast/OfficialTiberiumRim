@@ -16,8 +16,7 @@ public enum AtmosphericVentMode
 
 public class CompProperties_ANS_Vent : CompProperties_ANS
 {
-    [Unsaved()]
-    private List<AtmosphericValueDef> allowedValuesInt;
+    [Unsaved] private List<AtmosphericValueDef> allowedValuesInt;
 
     //
     public bool passive = false;
@@ -45,15 +44,11 @@ public class CompProperties_ANS_Vent : CompProperties_ANS
             {
                 var list = new List<AtmosphericValueDef>();
                 if (filter.acceptedTag != null)
-                {
                     list.AddRange(AtmosphericReferenceCache.AtmospheresOfTag(filter.acceptedTag));
-                }
-                if (!filter.acceptedAtmospheres.NullOrEmpty())
-                {
-                    list.AddRange(filter.acceptedAtmospheres);
-                }
+                if (!filter.acceptedAtmospheres.NullOrEmpty()) list.AddRange(filter.acceptedAtmospheres);
                 allowedValuesInt = list.Distinct().ToList();
             }
+
             return allowedValuesInt;
         }
     }
