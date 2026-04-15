@@ -652,6 +652,10 @@
 			</turrets>
 		</turret>
 		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>300</basePowerConsumption>
+			</li>
 			<li Class="CompProperties_Refuelable">
 				<fuelLabel>Shells capacity</fuelLabel>
 				<fuelGizmoLabel>Shells capacity</fuelGizmoLabel>

@@ -16,8 +16,8 @@
 		<label>visceroid body</label>
 		<hitPoints>300</hitPoints>
 		<tags>
-			<li>MovingLimbCore</li>
-			<li>ManipulationLimbCore</li>
+			<li>ManipulationLimbSegment</li>
+			<li>MovingLimbSegment</li>
 			<li>ConsciousnessSource</li>
 			<li>SightSource</li>
 		</tags>
@@ -38,7 +38,7 @@
 		<label>tentacle leg</label>
 		<hitPoints>50</hitPoints>
 		<tags>
-			<li>MovingLimbSegment</li>
+			<li>MovingLimbCore</li>
 		</tags>
 	</BodyPartDef>
 	
@@ -47,7 +47,7 @@
 		<label>tentacle arm</label>
 		<hitPoints>50</hitPoints>
 		<tags>
-			<li>ManipulationLimbSegment</li>
+			<li>ManipulationLimbCore</li>
 		</tags>
 	</BodyPartDef>
 	
@@ -81,8 +81,8 @@
 		<frostbiteVulnerability>0.6</frostbiteVulnerability>
 		<tags>
 			<li>MetabolismSource</li>
-			<li>MovingLimbCore</li>
-			<li>ManipulationLimbCore</li>
+			<li>ManipulationLimbSegment</li>
+			<li>MovingLimbSegment</li>
 			<li>ConsciousnessSource</li>
 		</tags>
 	</BodyPartDef>
@@ -138,7 +138,7 @@
 		<label>tube feet</label>
 		<hitPoints>50</hitPoints>
 		<tags>
-			<li>MovingLimbSegment</li>
+			<li>MovingLimbCore</li>
 		</tags>
 	</BodyPartDef>
 	

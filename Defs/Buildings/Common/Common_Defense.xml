@@ -1,12 +1,118 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+  
+	<TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+		<defName>TiberiumCannon</defName>
+		<label>tib cannon</label>
+		<description>ree</description>
+		<thingClass>Building_TurretGun</thingClass>
+		<factionDesignation>Common</factionDesignation>
+		<TRCategory>Defense</TRCategory>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/Common/Defense/TibCannon/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.5,2.5)</drawSize>
+		</graphicData>
+		<costList>
+			<Steel>100</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<uiIconPath>Buildings/Common/Defense/TibCannon/Icon</uiIconPath>
+		<uiIconScale>0.90</uiIconScale>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<altitudeLayer>Building</altitudeLayer>
+		<stealable>false</stealable>
+		<rotatable>false</rotatable>
+		<thingCategories>
+			<li>BuildingsSecurity</li>
+		</thingCategories>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<Flammability>0.7</Flammability>
+			<WorkToBuild>3500</WorkToBuild>
+			<Mass>500</Mass>
+			<Beauty>-20</Beauty>
+			<ShootingAccuracyTurret>0.9</ShootingAccuracyTurret>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TNW">
+				<compClass>TiberiumRim.CompTNW_Turret</compClass>
+				<maxStorage>150</maxStorage>
+				<supportedTypes>
+					<li>Sludge</li>
+				</supportedTypes>
+				<tnwbMode>Consumer</tnwbMode>
+			</li>
+			<li Class="TiberiumRim.CompProperties_FX"> 
+				<overlays>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Defense/TibCannon/Overlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.25,2.25)</drawSize>							
+						</data>
+						<mode>Dynamic</mode>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Defense/TibCannon/Connection2</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(2.5,2.5)</drawSize>
+						</data>
+						<altitude>Floor</altitude>
+					</li>
+					<li>
+						<data>
+							<texPath>Buildings/Common/Defense/TibCannon/ConnectionOverlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(2.5,2.5)</drawSize>							
+						</data>
+						<altitude>FloorEmplacement</altitude>
+						<mode>Dynamic</mode>
+					</li>
+				</overlays>
+			</li>		
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>80</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<fillPercent>0.4</fillPercent>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<specialDisplayRadius>12.89</specialDisplayRadius>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+			<turretGunDef>SludgeCannon</turretGunDef>
+			<turretBurstWarmupTime>1.5</turretBurstWarmupTime>
+			<turretBurstCooldownTime>0</turretBurstCooldownTime>
+			<turretTopDrawSize>2.5</turretTopDrawSize>
+		</building>
+		<placeWorkers>
+			<li>PlaceWorker_TurretTop</li>
+		</placeWorkers>
+	</TiberiumRim.TRThingDef>
 
 	<ThingDef ParentName="BaseBullet">
 		<defName>Bullet_Sludge</defName>
 		<label>sludge blob</label>
 		<graphicData>
 			<texPath>Items/Weapons/Projectile/Gas</texPath>
-			<graphicClass>Graphic_random</graphicClass>
+			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<projectile>
 			<damageDef>TiberiumBurn</damageDef>

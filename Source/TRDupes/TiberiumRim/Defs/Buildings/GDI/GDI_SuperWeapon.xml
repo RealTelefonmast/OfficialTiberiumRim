@@ -26,6 +26,11 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(7,7)</drawSize>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<costList>			
 			<ComponentIndustrial>12</ComponentIndustrial>
 		</costList>
@@ -81,6 +86,7 @@
 		<description>This specialized facility registers all Firestorm-Segments placed by this Faction. When enough power is available the Firestorm-System can be activated anytime and will last for a day, completely cutting off any intruders.\n\nOnly one can be built.</description>
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Defense</TRCategory>
+		<hidden>true</hidden>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/Firestorm/Base</texPath>
@@ -162,6 +168,7 @@
 		<description>A segment of the Firestorm system.</description>
 		<factionDesignation>GDI</factionDesignation>
 		<TRCategory>Defense</TRCategory>
+		<hidden>true</hidden>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Defense/Firestorm/Wall/Base</texPath>

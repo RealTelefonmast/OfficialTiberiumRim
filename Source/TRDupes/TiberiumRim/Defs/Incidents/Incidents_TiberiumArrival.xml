@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+
+	<IncidentDef Class="TiberiumRim.AsteroidDef">
+		<defName>AsteroidGreen</defName>
+		<label>green tiberium asteroid</label>
+		<targetTypes>
+			<li>MapPlayerHome</li>
+		</targetTypes>
+		<workerClass>TiberiumRim.IncidentWorker_AsteroidDrop</workerClass>
+		<baseChance>2.0</baseChance>
+		<letterLabel>Green Tiberium Asteroid</letterLabel>
+		<letterText>An unusual meteorite has crashed nearby and made a crater.\n\nThere seems to be some strange crystals poking out of it, and a few have broken off and scattered around the site.\n\nBe careful, the substance could be dangerous!</letterText>
+		<letterDef>NegativeEvent</letterDef>
+		<minRefireDays>175</minRefireDays>
+		<category>ThreatBig</category>
+		<asteroidType>TiberiumCraterGreen_TBNS</asteroidType>
+		<skyfallerDef>GreenTiberiumMeteorIncoming</skyfallerDef>
+		<pointsScaleable>true</pointsScaleable>
+		<minThreatPoints>500</minThreatPoints>
+	</IncidentDef>
 	
 	<!-- Meteor Sighting-->
-	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
-		<defName>TiberiumEncroachment</defName>
+	<IncidentDef Class="TR.TiberiumIncidentDef">
+		<defName>TiberiumSighting</defName>
 		<label>Tiberium Arrival (Initial)</label>
-		<workerClass>TiberiumRim.IncidentWorker_CauseEvents</workerClass>
-		<category>ThreatSmall</category>
+		<workerClass>TR.IncidentWorker_TR</workerClass>
+		<category>Misc</category>
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
 		<baseChance>0.75</baseChance>
-		<earliestDay>20</earliestDay>
-		<minPopulation>3</minPopulation>
+		<earliestDay>7</earliestDay>
 		<minRefireDays>0</minRefireDays>
 		<!--<tale>TiberiumArrival</tale>-->
 		<letterLabel>Meteor Sighting</letterLabel>
@@ -22,27 +40,91 @@
 			<li>TiberiumMeteorSighting</li>
 		</eventsToTrigger>
 	</IncidentDef>
-
-	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
-		<defName>TiberiumArrival</defName>
-		<label>should never happen on its own</label>
+	
+	<IncidentDef Class="TR.TiberiumIncidentDef">
+		<defName>TiberiumMeteorite</defName>
+		<label>...</label>
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
-		<workerClass>TiberiumRim.IncidentWorker_TiberiumArrival</workerClass>
+		<workerClass>TR.IncidentWorker_TiberiumArrival</workerClass>
 		<baseChance>0</baseChance>
 		
 		<letterLabel>Meteor crashed!</letterLabel>
 		<letterText>The strange object has crashed directly onto our map, we might want to investigate it closer...</letterText>
 		<letterDef>NegativeEvent</letterDef>
 		
-		<minRefireDays>175</minRefireDays>
+		<minRefireDays>70</minRefireDays>
 		<category>ThreatBig</category>
 		<skyfallers>
-			<GreenTiberiumMeteorIncoming>TiberiumCraterGreen,1,0.66</GreenTiberiumMeteorIncoming>
-			<GreenTiberiumMeteorIncoming>TiberiumCraterHybrid,1,0.33</GreenTiberiumMeteorIncoming>
-			<RedTiberiumShardIncoming>RedTiberiumShard,1,0.01</RedTiberiumShardIncoming>
+			<GreenTiberiumMeteorIncoming>TiberiumMeteoriteChunk,1,1</GreenTiberiumMeteorIncoming>
+			<!--<GreenTiberiumMeteorIncoming>TiberiumCraterHybrid,1,0.33</GreenTiberiumMeteorIncoming>-->
 		</skyfallers>
 	</IncidentDef>
+	
+	<IncidentDef Class="TR.TiberiumIncidentDef">
+		<defName>RedTiberiumShard</defName>
+		<label>red tiberium shard</label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>TR.IncidentWorker_TiberiumArrival</workerClass>
+		<baseChance>0.025</baseChance>
+		
+		<letterLabel>Tiberium shard!</letterLabel>
+		<letterText>A red glowing shard crashed onto our Map.</letterText>
+		<letterDef>NegativeEvent</letterDef>
+		<minRefireDays>130</minRefireDays>
+		<category>ThreatSmall</category>
+		<skyfallers>
+			<RedTiberiumShardIncoming>RedTiberiumShard,1,1</RedTiberiumShardIncoming>
+		</skyfallers>
+	</IncidentDef>
+	
+		<!--
+	<IncidentDef>
+		<defName>VolkovArrival</defName>
+		<label>volkov is here</label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>TR.IncidentWorker_ChronoAnomaly</workerClass>
+		<baseChance>0</baseChance>
+		
+		<letterLabel>Time Anomaly!</letterLabel>
+		<letterText>Volkov</letterText>
+		<letterDef>NegativeEvent</letterDef>
+		
+		<minRefireDays>175</minRefireDays>
+		<category>ThreatBig</category>
+		<minRefireDays>14</minRefireDays>
+		<durationDays>
+		  <min>0.1</min>
+		  <max>1</max>
+		</durationDays>
+		<pointsScaleable>true</pointsScaleable>
+		<minThreatPoints>500</minThreatPoints>
+	</IncidentDef>
+	
+	<IncidentDef>
+		<defName>BlossomTreeFiends</defName>
+		<label>Fiends Arrive</label>
+		<targetTypes>
+			<li>MapPlayerHome</li>
+		</targetTypes>
+		<workerClass>TiberiumRim.IncidentWorker_BlossomTree</workerClass>
+		<letterLabel>Fiends arrive!</letterLabel>
+		<letterText>A group of Tiberium fiends arrived on your map. They will rest at a nearby blossom tree.</letterText>
+		<letterDef>NegativeEvent</letterDef>
+		<baseChance>2.0</baseChance>
+		<category>ThreatSmall</category>
+		<minRefireDays>21</minRefireDays>
+		<durationDays>
+		  <min>0.1</min>
+		  <max>1</max>
+		</durationDays>
+		<minThreatPoints>400</minThreatPoints>
+	</IncidentDef>
+	-->
 	
 </Defs>

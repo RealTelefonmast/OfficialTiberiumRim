@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <TiberiumRim.TiberiumAgeProgression>
+  <TR.TiberiumAgeProgression>
     <defName>MainProgression</defName>
     <label>yes</label>
 	<progression>
@@ -9,9 +9,9 @@
 		<li>FleshStage</li>
 		<li>LatticeStage</li>
 	</progression>
-  </TiberiumRim.TiberiumAgeProgression>
+  </TR.TiberiumAgeProgression>
   
-  <TiberiumRim.TiberiumAge>
+  <TR.TiberiumAge>
     <defName>PlantStage</defName>
     <requirements>
 		<daysPassed>0</daysPassed>
@@ -20,9 +20,9 @@
 	</requirements>
 	
 	<consistence>Plantlike</consistence>
-  </TiberiumRim.TiberiumAge>
+  </TR.TiberiumAge>
 
-  <TiberiumRim.TiberiumAge>
+  <TR.TiberiumAge>
     <defName>FleshStage</defName>
     <requirements>
 		<daysPassed>60</daysPassed>
@@ -31,9 +31,9 @@
 	</requirements>
 	
 	<consistence>Flesh</consistence>
-  </TiberiumRim.TiberiumAge>
+  </TR.TiberiumAge>
 
-  <TiberiumRim.TiberiumAge>
+  <TR.TiberiumAge>
     <defName>LatticeStage</defName>
     <requirements>
 		<daysPassed>100</daysPassed>
@@ -42,6 +42,6 @@
 	</requirements>
 	
 	<consistence>Lattice</consistence>
-  </TiberiumRim.TiberiumAge>
+  </TR.TiberiumAge>
 
 </Defs>

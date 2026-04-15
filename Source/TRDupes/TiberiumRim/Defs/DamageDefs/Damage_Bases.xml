@@ -33,7 +33,6 @@
 		<defaultArmorPenetration>2</defaultArmorPenetration>
 	</DamageDef>
 	
-  
   	<DamageDef Name="ProjectileBase_TR" Abstract="True">
 		<workerClass>DamageWorker_AddInjury</workerClass>
 		<externalViolence>true</externalViolence>

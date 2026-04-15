@@ -80,6 +80,7 @@
 			</li>
 		</tools>
 		<race>
+			<herdAnimal>true</herdAnimal>
 			<body>QuadrupedAnimalWithPawsAndTail</body>
 			<maxPreyBodySize>2.3</maxPreyBodySize>
 			<petness>0.1</petness>
@@ -128,12 +129,13 @@
 		</race>
 	</ThingDef>
 
-	<PawnKindDef ParentName="AnimalKindBase_TR">
+	<TR.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>TiberiumFiend</defName>
 		<label>tiberium fiend</label>
 		<labelPlural>tiberium fiends</labelPlural>
 		<race>TiberiumFiend</race>
 		<combatPower>100</combatPower>
+		<wildGroupSize>3~7</wildGroupSize>
 		<lifeStages>
 			<li>
 				<label>fiend puppy</label>
@@ -176,7 +178,7 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</PawnKindDef>
+	</TR.TiberiumKindDef>
 	
 	<ThingDef ParentName="FiendBase">
 		<defName>Spiner</defName>
@@ -221,6 +223,7 @@
 			</li>
 		</tools>
 		<race>
+			<herdAnimal>true</herdAnimal>
 			<body>QuadrupedAnimalWithPawsAndTail</body>
 			<predator>true</predator>
 			<maxPreyBodySize>1.2</maxPreyBodySize>
@@ -268,12 +271,12 @@
 		</race>
 	</ThingDef>
   
-	<PawnKindDef ParentName="AnimalKindBase_TR">
+	<TR.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>Spiner</defName>
 		<label>spiner</label>
 		<race>Spiner</race>
 		<combatPower>160</combatPower>
-		<ecoSystemWeight>0.5</ecoSystemWeight>
+		<wildGroupSize>3~7</wildGroupSize>
 		<lifeStages>
 			<li>
 				<label>spiner puppy</label>
@@ -316,7 +319,7 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</PawnKindDef>
+	</TR.TiberiumKindDef>
 	
 	
 	<ThingDef ParentName="FiendBase">
@@ -385,6 +388,7 @@
 			</li>
 		</tools>
 		<race>
+			<herdAnimal>true</herdAnimal>
 			<body>QuadrupedAnimalWithPawsAndTail</body>
 			<predator>true</predator>
 			<maxPreyBodySize>0.80</maxPreyBodySize>
@@ -431,12 +435,13 @@
 		</race>
 	</ThingDef>
 	
-	<PawnKindDef ParentName="AnimalKindBase_TR">
+	<TR.TiberiumKindDef ParentName="AnimalKindBase_TR">
 		<defName>SmallTiberiumFiend</defName>
 		<label>tiberian fox</label>
 		<labelPlural>tiberian foxes</labelPlural>
 		<race>SmallTiberiumFiend</race>
 		<combatPower>75</combatPower>
+		<wildGroupSize>3~7</wildGroupSize>
 		<lifeStages>
 			<li>
 				<label>tiberian fox puppy</label>
@@ -475,6 +480,6 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
-	</PawnKindDef>
+	</TR.TiberiumKindDef>
 
 </Defs>

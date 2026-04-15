@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.HarvesterKindDef>
+	<TR.HarvesterKindDef>
 		<defName>Harvester_Common</defName>
 		<label>harvester</label>
 		<combatPower>125</combatPower>
@@ -9,12 +9,22 @@
 		<isFighter>false</isFighter>
 		<aiAvoidCover>false</aiAvoidCover>
 		<race>Harvester_Common</race>
-		<maxStorage>125</maxStorage>
-		<wreckDef>HarvesterHusk_Common</wreckDef>		
+		<wreckDef>HarvesterHusk_Common</wreckDef>
+		<containerConfig>
+			<capacity>125</capacity>
+			<values>
+				<allowedValues>
+					<li>TibGreen</li>
+					<li>TibBlue</li>
+					<li>TibRed</li>			
+					<li>TibSludge</li>	
+				</allowedValues>
+			</values>
+		</containerConfig>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
-					<texPath>Pawns/Common/Harvester/Harvester</texPath>
+					<texPath>Pawns/Mechanical/Common/Harvester/HarvesterBase</texPath>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>3</drawSize>
 					<shadowData>
@@ -23,9 +33,9 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.HarvesterKindDef>
+	</TR.HarvesterKindDef>
 
-	<TiberiumRim.HarvesterKindDef>
+	<TR.HarvesterKindDef>
 		<defName>Harvester_GDI</defName>
 		<label>GDI harvester</label>
 		<combatPower>125</combatPower>
@@ -33,12 +43,22 @@
 		<isFighter>false</isFighter>
 		<aiAvoidCover>false</aiAvoidCover>
 		<race>Harvester_GDI</race>
-		<maxStorage>300</maxStorage>
 		<wreckDef>HarvesterHusk_GDI</wreckDef>		
+		<containerConfig>
+			<capacity>300</capacity>
+			<values>
+				<allowedValues>
+					<li>TibGreen</li>
+					<li>TibBlue</li>
+					<li>TibRed</li>			
+					<li>TibSludge</li>	
+				</allowedValues>
+			</values>
+		</containerConfig>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
-					<texPath>Pawns/GDI/Harvester/Harvester</texPath>
+					<texPath>Pawns/Mechanical/GDI/Harvester/Harvester</texPath>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>3</drawSize>
 					<shadowData>
@@ -47,9 +67,9 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.HarvesterKindDef>
+	</TR.HarvesterKindDef>
 
-	<TiberiumRim.HarvesterKindDef>
+	<TR.HarvesterKindDef>
 		<defName>Harvester_Nod</defName>
 		<label>Nod harvester</label>
 		<combatPower>125</combatPower>
@@ -57,12 +77,22 @@
 		<isFighter>false</isFighter>
 		<aiAvoidCover>false</aiAvoidCover>
 		<race>Harvester_Nod</race>
-		<maxStorage>200</maxStorage>
 		<wreckDef>HarvesterHusk_Nod</wreckDef>
+		<containerConfig>
+			<capacity>200</capacity>
+			<values>
+				<allowedValues>
+					<li>TibGreen</li>
+					<li>TibBlue</li>
+					<li>TibRed</li>			
+					<li>TibSludge</li>	
+				</allowedValues>
+			</values>
+		</containerConfig>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
-					<texPath>Pawns/Nod/Harvester/Base</texPath>
+					<texPath>Pawns/Mechanical/Nod/Harvester/Base</texPath>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>3</drawSize>
 					<shadowData>
@@ -71,7 +101,7 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.HarvesterKindDef>
+	</TR.HarvesterKindDef>
 
 
 </Defs>

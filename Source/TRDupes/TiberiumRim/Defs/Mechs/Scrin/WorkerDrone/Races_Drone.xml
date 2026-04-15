@@ -5,7 +5,7 @@
 		<defName>ScrinDrone</defName>
 		<label>scrin worker drone</label>	
 		<description>wörk wörk</description>
-		<thingClass>TiberiumRim.ScrinWorkerDrone</thingClass>
+		<thingClass>TR.ScrinWorkerDrone</thingClass>
 		<race>
 			<thinkTreeMain>MechWorkerMain</thinkTreeMain>
 			<thinkTreeConstant>MechMainConstant</thinkTreeConstant>

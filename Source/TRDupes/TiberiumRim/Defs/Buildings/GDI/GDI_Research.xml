@@ -37,6 +37,11 @@
 			<ComponentIndustrial>5</ComponentIndustrial>
 			<Gold>25</Gold>
 		</costList>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.TRThingDef Name="BuildingBase_TR" Abstract="True">
+	<TR.TRThingDef Name="BuildingBase_TR" Abstract="True">
 		<category>Building</category>
 		<thingClass>TiberiumRim.TRBuilding</thingClass>
 		<soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
@@ -15,9 +15,9 @@
 		<statBases>
 			<SellPriceFactor>0.70</SellPriceFactor>
 		</statBases>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef Name="BenchBase_TR" ParentName="StationBase_TR" Abstract="True">
+	<TR.TRThingDef Name="BenchBase_TR" ParentName="StationBase_TR" Abstract="True">
 		<canOverlapZones>false</canOverlapZones>
 		<minifiedDef>MinifiedThing</minifiedDef>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
@@ -37,19 +37,25 @@
 		<placeWorkers>
 			<li>PlaceWorker_ReportWorkSpeedPenalties</li>
 		</placeWorkers>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef Name="StationBase_TR" ParentName="BuildingBase_TR" Abstract="True">
-		<factionDesignation>Common</factionDesignation>		
+	<TR.TRThingDef Name="StationBase_TR" ParentName="BuildingBase_TR" Abstract="True">
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<surfaceType>Item</surfaceType>
 		<statBases>
 			<Mass>1000</Mass>
 		</statBases>
-		<filthLeaving>Filth_RubbleBuilding</filthLeaving>		
-	</TiberiumRim.TRThingDef>
+		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef Name="RefineryBase_TR" ParentName="StationBase_TR" Abstract="True" Class="TiberiumRim.RefineryDef">
+	<TR.TRThingDef Name="NetworkStationBase" ParentName="StationBase_TR" Abstract="True">
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<inspectorTabs>
+			<li>TeleCore.ITab_NetworkDebug</li>
+		</inspectorTabs>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef Name="RefineryBase_TR" ParentName="NetworkStationBase" Abstract="True" Class="TR.RefineryDef">
 		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
 		<altitudeLayer>DoorMoveable</altitudeLayer>
 		<statBases>
@@ -75,33 +81,36 @@
 		<fillPercent>0.5</fillPercent>
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<hasInteractionCell>false</hasInteractionCell>	
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef Abstract="True" Name="TurretBase_TR" ParentName="BuildingBase_TR">
-		
-	</TiberiumRim.TRThingDef>
+	<TR.TRThingDef Abstract="True" Name="TurretBase_TR" ParentName="BuildingBase_TR">
+	</TR.TRThingDef>
 	
 	<!-- Natural -->
-	
-	<TiberiumRim.TRThingDef Abstract="True" Name="BuildingNaturalBase_TR" ParentName="BuildingBase_TR">
-		<passability>Impassable</passability>
-		<factionDesignation>Tiberium</factionDesignation>
-		<TRCategory>Misc</TRCategory>
+	<TR.TRThingDef Abstract="True" Name="BuildingNaturalBase_TR" ParentName="BuildingBase_TR">
+		<passability>PassThroughOnly</passability>
 		<devObject>true</devObject>
+		<isNatural>true</isNatural>
 		<building>
 			<claimable>false</claimable>
 			<deconstructible>false</deconstructible>
 			<allowAutoroof>false</allowAutoroof>
+			<artificialForMeditationPurposes>false</artificialForMeditationPurposes>
 		</building>
 		<statBases>
 			<TiberiumDamageResistance>1</TiberiumDamageResistance>
 		</statBases>
 		<scatterableOnMapGen>false</scatterableOnMapGen>
-	</TiberiumRim.TRThingDef>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Tiberium</groupDef>
+				<category>Misc</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TiberiumProducerDef Abstract="True" Name="TiberiumProducerBase" ParentName="BuildingNaturalBase_TR">
-		<thingClass>TiberiumRim.TiberiumProducer</thingClass>
-		<TRCategory>Producers</TRCategory>
+	<TR.TiberiumProducerDef Abstract="True" Name="TiberiumProducerBase" ParentName="BuildingNaturalBase_TR">
+		<thingClass>TR.TiberiumProducer</thingClass>
 		<statBases>
 			<Flammability>0</Flammability>
 		</statBases>
@@ -114,56 +123,46 @@
 		<building>
 			<isEdifice>false</isEdifice>
 		</building>
-		<comps>
-			<li Class="CompProperties_HeatPusher">
-				<heatPerSecond>30</heatPerSecond>
-				<heatPushMaxTemperature>120</heatPushMaxTemperature>
-			</li>
-		</comps>
-		<plantsByDistance>
-			<li>
-				<plants>
-					<li>TiberiumGrass,1</li>
-				</plants>
-				<chance>0</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumBush,1.5</li>
-				</plants>
-				<chance>0.25</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumShroom_Yellow,3</li>
-					<li>TiberiumShroom_Blue,3</li>
-				</plants>
-				<chance>0.45</chance>
-			</li>
-			<li>
-				<plants>
-					<li>TiberiumTree,4</li>
-				</plants>
-				<chance>0.65</chance>
-			</li>
-			<li>
-				<plants>
-					<li>SmallBlossom,10</li>
-				</plants>
-				<chance>0.7</chance>
-			</li>
-			<li>
-				<plants>
-					<li>AlocasiaBlossom,8</li>
-				</plants>
-				<chance>0.8</chance>
-			</li>
-		</plantsByDistance>
+		<forResearch>true</forResearch>
 		<tickerType>Normal</tickerType>
 		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
 		<neverOverlapFloors>true</neverOverlapFloors>
 		<blockPlants>true</blockPlants>	
 		<drawDamagedOverlay>false</drawDamagedOverlay>
-	</TiberiumRim.TiberiumProducerDef>
+		<modExtensions Inherit="False">
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Tiberium</groupDef>
+				<category>Producers</category>
+				<isDevOption>true</isDevOption>
+			</li>
+		</modExtensions>
+	</TR.TiberiumProducerDef>
 	
+	<!---->
+	<TR.TRThingDef Abstract="True" ParentName="BuildingBase_TR" Name="GDIBuildings">
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Structure</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef Abstract="True" ParentName="BuildingBase_TR" Name="NodBuildings">
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Nod</groupDef>
+				<category>Structure</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef Abstract="True" ParentName="BuildingBase_TR" Name="ScrinBuildings">
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>Scrin</groupDef>
+				<category>Structure</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
 </Defs>

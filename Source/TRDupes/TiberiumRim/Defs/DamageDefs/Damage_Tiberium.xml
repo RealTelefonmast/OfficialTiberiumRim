@@ -3,6 +3,18 @@
 
   <!--===============  ==============-->
 	<DamageDef>
+		<defName>TiberiumDeterioration</defName>
+		<label>tiberium deterioration</label>
+		<hasForcefulImpact>false</hasForcefulImpact>
+		<makesBlood>false</makesBlood>
+		<canInterruptJobs>false</canInterruptJobs>
+		<buildingDamageFactor>2</buildingDamageFactor>
+		<plantDamageFactor>1.5</plantDamageFactor>
+		
+		<!--<damageEffecter></damageEffecter>-->
+	</DamageDef>
+  
+	<DamageDef>
 		<defName>TiberiumBurn</defName>
 		<workerClass>DamageWorker_AddInjury</workerClass>
 		<label>tiberium burn</label>			
@@ -59,7 +71,7 @@
 		<label>tiberium shot</label>
 		<externalViolence>true</externalViolence>
 		<isExplosive>false</isExplosive>
-		<deathMessage>{0} has died in the tiberium gas.</deathMessage>
+		<deathMessage>{0} has died by green tiberium fragments.</deathMessage>
 		<workerClass>DamageWorker_Flame</workerClass>
 		<hediff>Burn</hediff>
 		<hediffSolid>Crack</hediffSolid>
@@ -84,7 +96,7 @@
 		<label>blue tiberium shot</label>
 		<externalViolence>true</externalViolence>
 		<isExplosive>false</isExplosive>
-		<deathMessage>{0} has died in the tiberium gas.</deathMessage>
+		<deathMessage>{0} has died by blue tiberium fragments.</deathMessage>
 		<workerClass>DamageWorker_Flame</workerClass>
 		<hediff>Burn</hediff>
 		<hediffSolid>Crack</hediffSolid>

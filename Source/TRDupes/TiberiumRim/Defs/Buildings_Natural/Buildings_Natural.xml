@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
-	<TiberiumRim.TRThingDef Name="TibRockBase" ParentName="BuildingNaturalBase_TR" Abstract="True" >
-		<thingClass>Mineable</thingClass>
+	
+	<!-- Intact Meteor-->
+	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+		<defName>TiberiumMeteoriteChunk</defName>
+		<thingClass>TiberiumRim.TiberiumMeteorite</thingClass>
+		<description>A metoerite of unknown origin. Data suggests this meteorite carries an extremely agressive self-replicating mineral called "Tiberium".</description>
+		<label>tiberium meteorite chunk</label>
+		<discovery>
+			<discoveryDef>TiberiumProducerCrater</discoveryDef>
+			<unknownLabel>strange meteorite</unknownLabel>
+			<unknownDescription>We have not yet figured out what this is. Approach with caution.</unknownDescription>
+		</discovery>
+		<size>(3,3)</size>
+		<altitudeLayer>Building</altitudeLayer>
+		<tickerType>Rare</tickerType>
 		<graphicData>
-			<texPath>Buildings/Natural/TibRock_Atlas</texPath>
+			<texPath>Buildings/Natural/TiberiumMeteor/Meteor</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<linkType>CornerFiller</linkType>
-			<linkFlags>
-				<li>Rock</li>
-				<li>MapEdge</li>
-			</linkFlags>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(4.5,4.5)</drawSize>
 		</graphicData>
 		<altitudeLayer>Building</altitudeLayer>
 		<blockWind>true</blockWind>
@@ -25,30 +34,20 @@
 		<blockLight>true</blockLight>
 		<mineable>true</mineable>
 		<statBases>
-			<Flammability>0</Flammability>
+			<MaxHitPoints>1500</MaxHitPoints>
+			<Beauty>360</Beauty>
 		</statBases>
 		<building>
-			<isInert>true</isInert>
-			<isNaturalRock>false</isNaturalRock>
-			<canBuildNonEdificesUnder>false</canBuildNonEdificesUnder>
-			<isResourceRock>false</isResourceRock>
+			<isEdifice>false</isEdifice>
 		</building>
-	</TiberiumRim.TRThingDef>
-
-	<TiberiumRim.TRThingDef ParentName="TibRockBase">
-		<defName>GreenTiberiumRock_TBI</defName>
-		<label>green tiberium rock</label>
-		<description>Rocks infested with green Tiberium.</description>
-		<graphicData>
-			<color>(90,230,95)</color>
-		</graphicData>
-		<statBases>
-			<MaxHitPoints>250</MaxHitPoints>
-		</statBases>
+		<rotatable>false</rotatable>
+		<blockPlants>true</blockPlants>
 		<comps>
-			<li Class="CompProperties_Glower">
-				<glowRadius>4</glowRadius>
-				<glowColor>(90,230,95,155)</glowColor>
+			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+				<compClass>TiberiumRim.Comp_RadiationLeak</compClass>
+				<leakDamageThreshold>0.6</leakDamageThreshold>
+				<radius>5.5</radius>
+				<intensity>1</intensity>
 			</li>
 		</comps>
 		<building>
@@ -74,7 +73,7 @@
 		<comps>
 			<li Class="CompProperties_Glower">
 				<glowRadius>4</glowRadius>
-				<glowColor>(90,105,230,155)</glowColor>
+				<glowColor>(80,175,90,0)</glowColor>
 			</li>
 		</comps>
 		<building>
@@ -102,32 +101,7 @@
 				<glowRadius>4</glowRadius>
 				<glowColor>(230,75,75,155)</glowColor>
 			</li>
-		</comps>
-		<building>
-			<leaveTerrain>TiberiumSoilRed</leaveTerrain>
-		</building>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<killedLeavings>
-			<TiberiumRed>1</TiberiumRed>
-		</killedLeavings>
-		<filthLeaving>FilthTiberiumRed</filthLeaving>
-	</TiberiumRim.TRThingDef>
-	
-	<TiberiumRim.TRThingDef ParentName="TibRockBase">
-		<defName>VeinTiberiumRock_TBI</defName>
-		<label>veiny rock</label>
-		<description>These rocks have moving veins growing all over and inside of them.</description>
-		<graphicData>
-			<texPath>Buildings/Natural/VeinRock</texPath>
-		</graphicData>
-		<statBases>
-			<MaxHitPoints>300</MaxHitPoints>
-		</statBases>
-		<building>
-			<leaveTerrain>TiberiumSoilVeinDead</leaveTerrain>
-		</building>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<filthLeaving>Filth_Blood</filthLeaving>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	<!--Natural formations-->
@@ -152,7 +126,7 @@
 	</TiberiumRim.TRThingDef>
 	
 	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
-		<defName>TiberiumTower_TBI</defName>
+		<defName>TiberiumTower</defName>
 		<description>A massive crystalline tower, created via multiple Tiberium crystals merging into one bigger crystal. However, this structure does not seem to spread more Tiberium.</description>
 		<label>tiberium tower</label>
 		<size>(1,1)</size>
@@ -173,11 +147,7 @@
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumRadiation">
 				<radius>8</radius>
-				<intensity>0.2</intensity>
-				<damage>
-					<min>0</min>
-					<max>8</max>
-				</damage>
+				<intensity>1.5</intensity>
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>6</glowRadius>
@@ -188,35 +158,38 @@
 	</TiberiumRim.TRThingDef>
 	
 	<!-- Tiberium Geyser -->
-	
 	<TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
 		<defName>TiberiumGeyser</defName>
 		<label>tiberium geyser</label>
-		<thingClass>TiberiumRim.TiberiumGeyser</thingClass>
+		<description>This tiberium infested geyser has a massive tiberium gas deposit beneath it, however, the surrounding ground has been destabilized and will occasionally create toxic gas clouds.\nIt may be useful for a Tiberium Spike!</description>
+		<thingClass>TiberiumRim.Building_TiberiumGeyser</thingClass>
 		<graphicData>
 			<texPath>Buildings/Natural/TibGeyser/TibGeyser</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>Transparent</shaderType>
 			<drawSize>(4,4)</drawSize>
 		</graphicData>
-		<extraGraphicData>
-			<texPath>Buildings/Natural/TibGeyser/Crack</texPath>
-			<graphicClass>TiberiumRim.Graphic_RandomSelection</graphicClass>
-			<shaderType>Transparent</shaderType>
-			<drawSize>(2,2)</drawSize>
-		</extraGraphicData>
+		<uiIconScale>0.5</uiIconScale>
 		<altitudeLayer>Floor</altitudeLayer>
 		<rotatable>false</rotatable>
 		<destroyable>false</destroyable>
 		<useHitPoints>false</useHitPoints>
 		<tickerType>Normal</tickerType>
 		<selectable>true</selectable>
-		<description>This tiberium infested geyser has a massive tiberium gas deposit beneath it, however, the surrounding ground has been destabilized and will occasionally create toxic gas clouds.\nIt may be useful for a Tiberium Spike!</description>
 		<size>(2,2)</size>
 		<neverOverlapFloors>true</neverOverlapFloors>
 		<blockPlants>true</blockPlants>
+		<comps>
+			<li Class="TAE.CompProperties_AtmosphericSource">
+				<pushAmount>100</pushAmount>
+				<pushInterval>750</pushInterval>
+				<atmosphericDef>TibPollution</atmosphericDef>
+			</li>
+		</comps>
 		<building>
 			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>false</deconstructible>
 		</building>
 	</TiberiumRim.TRThingDef>
 	
@@ -312,6 +285,10 @@
 							<drawSize>(3,3)</drawSize>
 						</data>
 						<mode>Pulse</mode>
+						<pulse>
+							<opacityRange>0.2~0.8</opacityRange>
+							<opacityDuration>90</opacityDuration>
+						</pulse>
 					</li>
 				</overlays>
 			</li>

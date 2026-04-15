@@ -10,7 +10,6 @@
 			<texPath>Buildings/Nod/Defense/Obelisk/ObeliskGun</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<menuHidden>true</menuHidden>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<destroyOnDrop>true</destroyOnDrop>
 		<tradeability>None</tradeability>
@@ -20,7 +19,7 @@
 			<AccuracyShort>1</AccuracyShort>
 			<AccuracyMedium>1</AccuracyMedium>
 			<AccuracyLong>1</AccuracyLong>
-			<RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
 			<DeteriorationRate>0</DeteriorationRate>
 			<Mass>50</Mass>
 			<Flammability>0</Flammability>
@@ -29,29 +28,57 @@
 			<li>TurretGun</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_Beam</verbClass>
-				<laser>
-					<beamPath>Items/Weapons/Projectile/Bullet_ObeliskBeam</beamPath>
-					<glow>
-						<glowMote>ObeliskGlow</glowMote>
-						<scale>3.5</scale>
-						<rotation>0</rotation>
-						<rotationRate>0</rotationRate>
-					</glow>
-				</laser>
-				<originOffsets>	
-					<li>(0,0,4.5)</li>
-				</originOffsets>
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_Beam</verbClass>
+				<beamProps>
+					<damageDef>TRLaser</damageDef>
+					<isStatic>false</isStatic>
+					<damageBaseOverride>100</damageBaseOverride>
+					<stoppingPowerOverride>1</stoppingPowerOverride>
+					<armorPenetrationOverride>1</armorPenetrationOverride>
+					<impactEffecter>StrongBeamHit</impactEffecter>
+					<impactFilth IsNull="True"/>
+				</beamProps>
+				<originEffecter>ObeliskOriginGlow</originEffecter>
+				<shootHeightOffset>4.5</shootHeightOffset>
+				<minHitHeight>1</minHitHeight>
+				
+				<originOffsetPerShot>
+					<li>(0,0,0.5)</li>
+				</originOffsetPerShot>
+				
 				<hasStandardCommand>true</hasStandardCommand>
 				<requireLineOfSight>false</requireLineOfSight>
 				<warmupTime>3.5</warmupTime>
 				<minRange>2.9</minRange>
-				<range>45</range>
-				<burstShotCount>1</burstShotCount>
-				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<range>44.9</range>
 				<chargeSound>Obelisk_Chargup</chargeSound>
-				<soundCast>Obelisk_Shot</soundCast>
+				<soundCast>Obelisk_Shot</soundCast>		
+				
+				<!--<soundCastBeam></soundCastBeam>-->
+				<beamFullWidthRange>0</beamFullWidthRange>
+				<beamWidth>12</beamWidth>
+				<burstShotCount>8</burstShotCount>
+				<ticksBetweenBurstShots>16</ticksBetweenBurstShots>	
+				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+				<beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
+				<beamFleckChancePerTick>0.32</beamFleckChancePerTick>
+				<beamMaxDeviation>0.25</beamMaxDeviation>
+				<beamCurvature>0.6</beamCurvature>
+				<beamMoteDef>Mote_ObeliskBeam</beamMoteDef>
+				
+				<beamEndEffecterDef>AnyBeam_End</beamEndEffecterDef>
+				<beamChanceToStartFire>0.85</beamChanceToStartFire>
+				<beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+				<beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+				<beamStartOffset>0.15</beamStartOffset>
+				<beamLineFleckChanceCurve>
+					<points>
+						<li>(0, 0)</li>
+						<li>(0.65, 0.4)</li>
+						<li>(1, 0.75)</li>
+					</points>
+				</beamLineFleckChanceCurve>
 			</li>
 		</verbs>
 	</ThingDef>
@@ -63,7 +90,6 @@
 			<texPath>Buildings/Nod/Defense/Turrets/Shredder_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<menuHidden>true</menuHidden>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<destroyOnDrop>true</destroyOnDrop>
 		<tradeability>None</tradeability>
@@ -82,12 +108,13 @@
 			<li>TurretGun</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
-				<originOffsets>	
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
+				<originOffsetPerShot>	
 					<li>(0.25,0,0.85)</li>
 					<li>(-0.25,0,0.85)</li>
-				</originOffsets>
+				</originOffsetPerShot>
+				<shotStartOffset>(0,0,0.75)</shotStartOffset>
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_Shredder</defaultProjectile>
 				<warmupTime>1.5</warmupTime>
@@ -109,7 +136,6 @@
 			<texPath>Buildings/Nod/Defense/Turrets/Flamer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<menuHidden>true</menuHidden>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<destroyOnDrop>true</destroyOnDrop>
 		<tradeability>None</tradeability>
@@ -128,14 +154,14 @@
 			<li>TurretGun</li>
 		</weaponTags>
 		<verbs>
-			<li Class="TiberiumRim.VerbProperties_TR">
-				<verbClass>TiberiumRim.Verb_TR</verbClass>
-				<originOffsets>	
+			<li Class="TeleCore.VerbProperties_Extended">
+				<verbClass>TeleCore.Verb_ProjectileExtended</verbClass>
+				<originOffsetPerShot>	
 					<li>(0,0,1.15)</li>
-				</originOffsets>
+				</originOffsetPerShot>
 				<shotIntervalTicks>5</shotIntervalTicks>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Bullet_Flamethrower</defaultProjectile>
+				<defaultProjectile>Bullet_FlamethrowerTower</defaultProjectile>
 				<warmupTime>0</warmupTime>
 				<range>17.9</range>
 				<burstShotCount>1</burstShotCount>

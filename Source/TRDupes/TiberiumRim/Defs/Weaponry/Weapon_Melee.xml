@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+	<TR.TRThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
 		<defName>GDI_Wrench</defName>
-		<label>Wrench</label>
-		<description>An Engineer's wrench, improves work speed.</description>
+		<label>Engineering Wrench</label>
+		<description>An engineer's good wrench, improves work speed.</description>
 		<graphicData>
 			<texPath>Items/Weapons/GDI/Wrench</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
-			<WorkToMake>4500</WorkToMake>
-			<Mass>0.75</Mass>
+			<WorkToMake>7500</WorkToMake>
+			<Mass>1.5</Mass>
 		</statBases>
 		<costList>
 			<GDI_ReinforcedPlate>5</GDI_ReinforcedPlate>
@@ -34,15 +34,27 @@
 			<li>
 				<label>head</label>
 				<capacities>
-					<li>Blunt</li>
+					<li>Demolish</li>
 				</capacities>
-				<power>10.7</power>
-				<cooldownTime>1.8</cooldownTime>
+				<power>10</power>
+				<cooldownTime>1.5</cooldownTime>
 			</li>
 		</tools>
 		<equippedStatOffsets>
-			<WorkSpeedGlobal>0.25</WorkSpeedGlobal>
+			<WorkSpeedGlobal>0.5</WorkSpeedGlobal>
 		</equippedStatOffsets>
-	</ThingDef>
+		<weaponTags>
+			<li>EngiWrench</li>
+		</weaponTags>
+		<weaponClasses>
+			<li>Melee</li>
+			<li>MeleeBlunt</li>
+		</weaponClasses>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental2</li>
+			</tiberiumResearch>
+		</requisites>
+	</TR.TRThingDef>
 
 </Defs>

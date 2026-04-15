@@ -24,13 +24,13 @@
 		<corpseCategory>CorpsesMechanoid</corpseCategory>
 		<wounds>
 			<li>
-				<texture>Filth/Pawn/Wounds/WoundMechA</texture>
+				<texture>Things/Pawn/Wounds/WoundMechA</texture>
 			</li>
 			<li>
-				<texture>Filth/Pawn/Wounds/WoundMechB</texture>
+				<texture>Things/Pawn/Wounds/WoundMechB</texture>
 			</li>
 			<li>
-				<texture>Filth/Pawn/Wounds/WoundMechC</texture>
+				<texture>Things/Pawn/Wounds/WoundMechC</texture>
 			</li>
 		</wounds>
 	</FleshTypeDef>

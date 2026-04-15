@@ -38,6 +38,21 @@
 		<speedRange>0.4~0.85</speedRange>
 	</TiberiumRim.ParticleDef>
 	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>IonLighting</defName>
+		<graphicData>
+			<texPath>Motes/IonLighting/ion</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<color>(255,255,255,200)</color>
+		</graphicData>
+		<altitudeLayer>Gas</altitudeLayer>
+		<mote>
+			<fadeInTime>0.05</fadeInTime>
+			<solidTime>0.05</solidTime>
+			<fadeOutTime>2</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
 	<ThingDef Abstract="True" Name="TiberiumFog" ParentName="MoteBase_TR">
 		<graphicData>
 			<texPath>VisualFX/Natural/Gas</texPath>
@@ -208,7 +223,20 @@
 			<growthRate>0.45</growthRate>
 		</mote>
 	</ThingDef>
-
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>BlossomSmoke</defName>
+		<graphicData>
+			<texPath>Motes/Fog/BlossomSmoke</texPath>
+			<color>(1,1,1,0.6)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.25</fadeInTime>
+			<solidTime>4</solidTime>
+			<fadeOutTime>5</fadeOutTime>
+		</mote>
+	</ThingDef>
 	
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_GlowerParticle</defName>

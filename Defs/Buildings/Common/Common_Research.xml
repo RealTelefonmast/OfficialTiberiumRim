@@ -8,11 +8,13 @@
 		<size>(5,5)</size>
 		<minifiedDef />
 		<thingCategories Inherit="false" />
+		<TRCategory>Research</TRCategory>
+		<destroyTiberium>true</destroyTiberium>
 		<clearTiberium>true</clearTiberium>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<costList>
-			<Steel>200</Steel>
-			<ComponentIndustrial>8</ComponentIndustrial>
+			<Steel>300</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
 		</costList>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<uiIconPath>Buildings/Common/Research/ResearchCrane/Original</uiIconPath>
@@ -64,6 +66,7 @@
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<rotatable>false</rotatable>
 		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<surfaceType>Item</surfaceType>
 		<requisites>
 			<tiberiumResearchTasks>
@@ -99,7 +102,7 @@
 		<thingCategories Inherit="false" />
 		<hidden>true</hidden>
 		<costList>
-			<Steel>400</Steel>
+			<Steel>500</Steel>
 			<Plasteel>50</Plasteel>
 			<ComponentIndustrial>10</ComponentIndustrial>
 		</costList>

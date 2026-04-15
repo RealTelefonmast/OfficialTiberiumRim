@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <!--===============  ==============-->
+  <!--=============== BASES ==============-->
 
 	<ThingDef Name="MoteBase_TR" Abstract="True">
 		<thingClass>MoteThrown</thingClass>
@@ -11,6 +11,9 @@
 			<graphicClass>Graphic_Mote</graphicClass>
 			<shaderType>Mote</shaderType>
 		</graphicData>
+		<mote>
+			<realTime>false</realTime>
+		</mote>
 		<altitudeLayer>MoteLow</altitudeLayer>
 		<tickerType>Normal</tickerType>
 		<useHitPoints>false</useHitPoints>
@@ -52,7 +55,7 @@
 	
 	<ThingDef Abstract="True" Name="TiberiumFog" ParentName="MoteBase_TR">
 		<graphicData>
-			<texPath>Motes/TiberiumFog</texPath>
+			<texPath>VisualFX/Natural/Gas</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -64,16 +67,22 @@
 		</mote>
 	</ThingDef>
 	
-	<ThingDef ParentName="TiberiumFog">
-		<defName>IonCloud</defName>
+	<!--== PRODUCER ==-->
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>IonLighting</defName>
 		<graphicData>
-			<shaderType>MetaOverlay</shaderType>
-			<color>(75,75,75,75)</color>
+			<texPath>VisualFX/IonLighting/ion</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<color>(255,255,255,200)</color>
 		</graphicData>
-		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<altitudeLayer>Gas</altitudeLayer>
+		<mote>
+			<fadeInTime>0.05</fadeInTime>
+			<solidTime>0.05</solidTime>
+			<fadeOutTime>2</fadeOutTime>
+		</mote>
 	</ThingDef>
 	
-	<!-- Tiberium Fog Center -->
 	<ThingDef ParentName="TiberiumFog">
 		<defName>TiberiumFogG</defName>
 		<graphicData>
@@ -98,7 +107,9 @@
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 	</ThingDef>
 	
-	<!-- Tiberium Field Fog-->
+	<!---->
+	
+	<!-- TIBERIUM FIELD -->
 	<ThingDef ParentName="TiberiumFog">
 		<defName>TiberiumFieldFogG</defName>
 		<graphicData>
@@ -125,10 +136,66 @@
 		</mote>
 	</ThingDef>
 	
+	<!-- TIBERIUM EFFECTS -->
+	<ThingDef ParentName="MoteBase">
+		<defName>Mote_TiberiumGlow</defName>
+		<graphicData>
+			<texPath>VisualFX/TiberiumGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>2.6</fadeInTime>
+			<solidTime>1.5</solidTime>
+			<fadeOutTime>3.3</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="MoteBase">
+		<defName>Mote_TiberiumGlowBig</defName>
+		<graphicData>
+			<texPath>VisualFX/TiberiumGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>1</fadeInTime>
+			<solidTime>0.25</solidTime>
+			<fadeOutTime>5.75</fadeOutTime>
+			<growthRate>0.4</growthRate>
+		</mote>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumFog">
+		<defName>IonCloud</defName>
+		<graphicData>
+			<shaderType>MetaOverlay</shaderType>
+			<color>(75,75,75,75)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+	</ThingDef>
+	
+	<!-- BLOSSOM -->
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>BlossomSmoke</defName>
+		<graphicData>
+			<texPath>VisualFX/Fog/BlossomSmoke</texPath>
+			<color>(1,1,1,0.6)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.25</fadeInTime>
+			<solidTime>4</solidTime>
+			<fadeOutTime>5</fadeOutTime>
+		</mote>
+	</ThingDef>
+	
+	<!-- VEINHOLE -->
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>VeinholeSmoke</defName>
 		<graphicData>
-			<texPath>Motes/TiberiumGasDark</texPath>
+			<texPath>VisualFX/Natural/TiberiumGas/TiberiumGasDark</texPath>
 			<drawSize>(1,1)</drawSize>
 			<color>(1,1,1,0.6)</color>
 		</graphicData>
@@ -144,7 +211,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>TiberiumSmokeMote</defName>
 		<graphicData>
-			<texPath>Motes/TiberiumGasDark</texPath>
+			<texPath>VisualFX/Natural/TiberiumGas/TiberiumGasDark</texPath>
 			<drawSize>(0.4,0.4)</drawSize>
 			<color>(1,1,1,0.6)</color>
 		</graphicData>
@@ -174,7 +241,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_GlowerParticle</defName>
 		<graphicData>
-			<texPath>Motes/DustParticle</texPath>
+			<texPath>VisualFX/DustParticle</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>(0.25,0.25)</drawSize>
 		</graphicData>
@@ -213,19 +280,19 @@
 		</mote>
 	</ThingDef>
 	
-	<!-- Particles -->
 	
+	<!-- PARTICLE -->
 	<TiberiumRim.ParticleDef ParentName="SporeBase">
 		<defName>TiberiumSpore</defName>
 		<graphicData>
-			<texPath>Motes/Spore2</texPath>
+			<texPath>VisualFX/Spore2</texPath>
 		</graphicData>
 	</TiberiumRim.ParticleDef>
 	
 	<TiberiumRim.ParticleDef ParentName="SporeBase">
 		<defName>TiberiumDustSpore</defName>
 		<graphicData>
-			<texPath>Motes/DustParticle</texPath>
+			<texPath>VisualFX/DustParticle</texPath>
 		</graphicData>
 	</TiberiumRim.ParticleDef>
 
@@ -233,7 +300,7 @@
 		<defName>BlossomSpore</defName>
 		<particleClass>TiberiumRim.BlossomSpore</particleClass>
 		<graphicData>
-			<texPath>Motes/Spore2</texPath>
+			<texPath>VisualFX/Spore2</texPath>
 		</graphicData>
 	</TiberiumRim.ParticleDef>
 	
@@ -241,7 +308,7 @@
 		<defName>TiberiumParticle</defName>
 		<graphicData>
 			<graphicClass>TiberiumRim.Graphic_Particle</graphicClass>
-			<texPath>Motes/DustParticle</texPath>
+			<texPath>VisualFX/DustParticle</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		
@@ -255,5 +322,23 @@
 		<speedRange>0.5~0</speedRange>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 	</TiberiumRim.ParticleDef>
+	
+	<!-- TEST -->
+	
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>PortalParticle</defName>
+		<graphicData>
+			<texPath>VisualFX/Fog/BlossomSmoke</texPath>
+			<color>(0,0,0,1)</color>
+			<shaderType>MetaOverlay</shaderType>
+		</graphicData>
+		<altitudeLayer>Gas</altitudeLayer>
+		<mote>
+			<fadeInTime>0.5</fadeInTime>
+			<solidTime>0.5</solidTime>
+			<fadeOutTime>2</fadeOutTime>
+			<growthRate>-0.1</growthRate>
+		</mote>
+	</ThingDef>
 
 </Defs>

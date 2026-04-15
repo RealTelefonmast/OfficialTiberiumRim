@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
-	<TiberiumRim.TRThingDef Abstract="True" Name="LampBase_TR" ParentName="BuildingBase_TR">
+	
+	<TeleCore.ThingGroupDef>
+		<defName>AllThingsTR</defName>
+		<label>All TR Things</label>
+		<subGroups>
+			<li>TiberiumCrafters</li>
+		</subGroups>
+	</TeleCore.ThingGroupDef>
+	
+	<TeleCore.ThingGroupDef>
+		<defName>TiberiumCrafters</defName>
+		<label>Tiberium Crafters</label>
+		<parentGroup>All</parentGroup>
+	</TeleCore.ThingGroupDef>
+	
+	<TR.TRThingDef Abstract="True" Name="LampBase_TR" ParentName="BuildingBase_TR">
 		<category>Building</category>
-		<TRCategory>Decoration</TRCategory>
 		<minifiedDef>MinifiedThing</minifiedDef>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
@@ -42,9 +55,9 @@
 		<researchPrerequisites>
 			<li>Electricity</li>
 		</researchPrerequisites>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 
-	<TiberiumRim.TRThingDef Abstract="True" Name="WallLampBase" ParentName="LampBase_TR">
+	<TR.TRThingDef Abstract="True" Name="WallLampBase" ParentName="LampBase_TR">
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<passability>Standable</passability>
 		<pathCost>0</pathCost>
@@ -63,12 +76,27 @@
 			<Steel>20</Steel>
 		</costList>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_WallLight</li>
+			<li>TR.PlaceWorker_WallLight</li>
 		</placeWorkers>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef Name="WallBase_TR" ParentName="BuildingBase_TR" Abstract="True">
-		<TRCategory>Structure</TRCategory>
+	<TR.TRThingDef Abstract="True" Name="GlowSourceBase" ParentName="EtherealThingBase">
+		<label>wall light glow</label>
+		<thingClass>ThingWithComps</thingClass>
+		<graphicData>
+			<texPath>Blank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<tickerType>Never</tickerType>
+		<drawerType>MapMeshOnly</drawerType>
+		<drawOffscreen>true</drawOffscreen>
+		<seeThroughFog>false</seeThroughFog>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef Name="WallBase_TR" ParentName="BuildingBase_TR" Abstract="True">
 		<graphicData>
 			<graphicClass>Graphic_single</graphicClass>
 			<linkType>CornerFiller</linkType>
@@ -121,12 +149,11 @@
 			</li>
 		</damageMultipliers>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
-	<TiberiumRim.TRThingDef Name="DoorBase_TR" ParentName="BuildingBase_TR" Abstract="True">
+	<TR.TRThingDef Name="DoorBase_TR" ParentName="BuildingBase_TR" Abstract="True">
 		<thingClass>Building_Door</thingClass>
 		<category>Building</category>
-		<TRCategory>Structure</TRCategory>
 		<altitudeLayer>DoorMoveable</altitudeLayer>
 		<fillPercent>1</fillPercent>
 		<useHitPoints>true</useHitPoints>
@@ -168,7 +195,7 @@
 		<placeWorkers>
 			<li>PlaceWorker_DoorLearnOpeningSpeed</li>
 		</placeWorkers>
-	</TiberiumRim.TRThingDef>
+	</TR.TRThingDef>
 	
 	<ThingDef ParentName="BuildingBase_TR" Name="PowerConduitBase_TR" Abstract="True">
 		<description>A bundle of electrical cables for moving power around. Can be placed under walls and other buildings.</description>

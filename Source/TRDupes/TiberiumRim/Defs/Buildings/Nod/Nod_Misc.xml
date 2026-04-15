@@ -10,6 +10,11 @@
 		<graphicData>
 			<texPath>Buildings/Nod/Misc/LaserPC</texPath>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<uiIconPath>Buildings/Nod/Misc/LaserPC_Icon</uiIconPath>
 		<statBases>
 			<MaxHitPoints>175</MaxHitPoints>
@@ -43,6 +48,11 @@
 			<texPath>Buildings/Nod/Misc/Light/Floor/Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<statBases>
 			<Beauty>5</Beauty>
 			<MaxHitPoints>75</MaxHitPoints>
@@ -87,13 +97,14 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(1.5, 1.5)</drawSize>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_GlowerOffset">
-				<offset>(0,0,1)</offset>
-				<glower>
-					<glowRadius>12</glowRadius>
-					<glowColor>(217,217,208,0)</glowColor>
-				</glower>
+				<glowerDef>GlowSource_Nod_Red</glowerDef>
 			</li>
 			<li Class="TiberiumRim.CompProperties_FX"> 
 				<overlays>
@@ -108,6 +119,16 @@
 					</li>
 				</overlays>
 			</li>	
+		</comps>
+	</TiberiumRim.TRThingDef>
+	
+	<TiberiumRim.TRThingDef ParentName="GlowSourceBase">
+		<defName>GlowSource_Nod_Red</defName>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(255,150,150)</glowColor>
+			</li>
 		</comps>
 	</TiberiumRim.TRThingDef>
 

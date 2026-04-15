@@ -207,7 +207,7 @@
 				</li>
 				<li>
 					<def>Tentacle_Leg</def>
-					<customLabel>back tentacle leg</customLabel>
+					<customLabel>right back tentacle leg</customLabel>
 					<coverage>0.07</coverage>
 					<height>Bottom</height>
 					<groups>

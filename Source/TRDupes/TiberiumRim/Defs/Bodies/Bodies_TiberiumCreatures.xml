@@ -2,8 +2,6 @@
 <Defs>
 
 	<!-- Visceral Horror | Humanlike -->
-	
-	
 	<BodyDef>
 		<defName>VisceralBody</defName>
 		<label>viscose human</label>
@@ -366,10 +364,10 @@
 		</corePart>
 	</BodyDef>
 	
-	<!-- // Veinmonster // -->
+	<!-- // Veinroamer // -->
 	<BodyDef>
-		<defName>Veinmonster</defName>
-		<label>Veinmonster</label>
+		<defName>Veinroamer</defName>
+		<label>Veinroamer</label>
 		<corePart>
 			<def>VeinmonsterBody</def>
 			<height>Bottom</height>

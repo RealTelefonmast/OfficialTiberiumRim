@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<TiberiumRim.RepairDroneKindDef>
+	<TR.RepairDroneKindDef>
 		<defName>RepairDrone_Common</defName>
 		<label>repair drone</label>
 		<combatPower>25</combatPower>
@@ -13,7 +13,7 @@
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
-					<texPath>Pawns/Common/RepairDrone/RepairDrone</texPath>
+					<texPath>Pawns/Mechanical/Common/RepairDrone/RepairDrone</texPath>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.5</drawSize>
 					<shadowData>
@@ -22,6 +22,6 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-	</TiberiumRim.RepairDroneKindDef>
+	</TR.RepairDroneKindDef>
 
 </Defs>

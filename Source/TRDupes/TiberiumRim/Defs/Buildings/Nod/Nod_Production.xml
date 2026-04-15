@@ -3,7 +3,7 @@
 	
 	<TiberiumRim.TRThingDef ParentName="StationBase_TR">
 		<defName>Nod_Factory</defName>
-		<label>Nodd Assembler</label>
+		<label>Nod Assembler</label>
 		<description>The Nod Assembler is used to create high-tier materials and items.</description>
 		<thingClass>Building_WorkTable</thingClass>
 		<altitudeLayer>Building</altitudeLayer>
@@ -26,6 +26,11 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToBuild>500</WorkToBuild>
@@ -38,12 +43,9 @@
 		<inspectorTabs>
 			<li>ITab_Bills</li>
 		</inspectorTabs>
-		<!--
 		<recipes>
-			<li>MakeReinforcedPlate</li>
-			<li>MakeGDISonicCore</li>
+			<li>MakeCarbonPlate</li>
 		</recipes>
-		-->
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<fillPercent>0.5</fillPercent>
@@ -94,6 +96,11 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<statBases>
 			<MaxHitPoints>1000</MaxHitPoints>
 			<WorkToBuild>5000</WorkToBuild>
@@ -157,6 +164,11 @@
 			<drawSize>(5.5,5.5)</drawSize>
 			<drawRotated>false</drawRotated>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<uiIconPath>Buildings/Nod/Production/Refinery/Icon</uiIconPath>
 		<statBases>
 			<MaxHitPoints>450</MaxHitPoints>
@@ -164,8 +176,8 @@
 			<Flammability>0.85</Flammability>
 		</statBases>
 		<costList>
-			<Nod_CarbonPlate>20</Nod_CarbonPlate>
-			<ComponentIndustrial>10</ComponentIndustrial>
+			<Nod_CarbonPlate>200</Nod_CarbonPlate>
+			<ComponentIndustrial>100</ComponentIndustrial>
 		</costList>
 		<comps>
 			<li Class="TiberiumRim.RefineryProperties">
@@ -239,6 +251,11 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,4)</drawSize>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToBuild>500</WorkToBuild>
@@ -304,6 +321,11 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(5,5)</drawSize>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>NODExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<uiIconPath>Buildings/Nod/Production/PowerPlant/Icon</uiIconPath>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
@@ -319,7 +341,7 @@
 		<tickerType>Normal</tickerType>
 		<size>(4,4)</size>
 		<costList>
-			<GDI_ReinforcedPlate>25</GDI_ReinforcedPlate>
+			<Nod_CarbonPlate>25</Nod_CarbonPlate>
 			<Plasteel>25</Plasteel>
 			<ComponentIndustrial>5</ComponentIndustrial>
 		</costList>
@@ -358,17 +380,22 @@
 					</li>
 				</overlays>
 			</li>
-			<li Class="TiberiumRim.PowerProperties">
-				<compClass>TiberiumRim.CompTNW_Power</compClass>
-				<maxStorage>3000</maxStorage>
-				<supportedTypes>
-					<li>Green</li>
-					<li>Blue</li>
-					<li>Red</li>
-				</supportedTypes>
-			    <tnwbMode>Consumer</tnwbMode>
+			<li Class="TR.CompProperties_TNSPower">
 				<consumeAmt>500</consumeAmt>
 				<daysPerLoad>5</daysPerLoad>
+				<networks>
+					<li>
+						<networkDef>TiberiumNetwork</networkDef>
+						<volumeConfig>
+							<capacity>3000</capacity>
+							<values><fromCollection>TiberiumNetwork</fromCollection></values>
+						</volumeConfig>
+						<roles>
+							<li>Transmitter</li>
+							<li>Controller</li>
+						</roles>
+					</li>
+				</networks>
 			</li>
 			<li Class="CompProperties_Flickable" />	
 			<li Class="CompProperties_Breakdownable"/>

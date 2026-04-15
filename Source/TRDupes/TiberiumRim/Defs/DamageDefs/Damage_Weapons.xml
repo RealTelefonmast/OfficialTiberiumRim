@@ -7,43 +7,39 @@
 		<defName>TRRailgun</defName>
 		<label>railgun projectile</label>
 		<isExplosive>false</isExplosive>
+		<externalViolence>true</externalViolence>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<hediff>Shredded</hediff>
+		<hediffSolid>Crack</hediffSolid>
 		<makesBlood>true</makesBlood>
-		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
-		<minDamageToFragment>0</minDamageToFragment>
-		<defaultDamage>0</defaultDamage>
-		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
-		<explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
-		<explosionCellMote>TiberiumGas</explosionCellMote>
-		<explosionColorCenter>(0.75, 0.75, 0.75)</explosionColorCenter>
-		<explosionColorEdge>(0.25, 0.25, 0.25)</explosionColorEdge>
-		<soundExplosion>Blast_Rail</soundExplosion>
-		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
-	</DamageDef>
-  
-	<DamageDef ParentName="ProjectileBase_TR">
-		<defName>TRLaser</defName>
-		<label>laser burn</label>
-		<isExplosive>false</isExplosive>
-		<hediff>Burn</hediff>
-		<makesBlood>true</makesBlood>
-		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
-		<armorCategory>Heat</armorCategory>
-		<minDamageToFragment>0</minDamageToFragment>
-		<defaultDamage>0</defaultDamage>
-		<explosionAffectOutsidePartsOnly>true</explosionAffectOutsidePartsOnly>
-		<explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
-		<explosionCellMote>TiberiumGas</explosionCellMote>
-		<explosionColorCenter>(1, 0.25, 0.25)</explosionColorCenter>
-		<explosionColorEdge>(0.75, 0.1, 0.1)</explosionColorEdge>
-		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
-		<soundExplosion>Blast_Rail</soundExplosion>
-		<canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
+		<armorCategory>Sharp</armorCategory>
+		<defaultDamage>10</defaultDamage>
+		<defaultStoppingPower>0.1</defaultStoppingPower>
+		<defaultArmorPenetration>0.1</defaultArmorPenetration>
+		<buildingDamageFactor>1</buildingDamageFactor>
+		<plantDamageFactor>1</plantDamageFactor>
 	</DamageDef>
 	
 	<DamageDef ParentName="ProjectileBase_TR">
-		<defName>TRSonic</defName>
-		<label>sonic wave</label>
+		<defName>TRLaser</defName>
+		<label>laser heat</label>
+		<isExplosive>false</isExplosive>
+		<externalViolence>true</externalViolence>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<hediff>Burn</hediff>
+		<hediffSolid>Cut</hediffSolid>
+		<makesBlood>false</makesBlood>
+		<armorCategory>Heat</armorCategory>
+		<defaultDamage>10</defaultDamage>
+		<defaultStoppingPower>0.1</defaultStoppingPower>
+        <defaultArmorPenetration>0.1</defaultArmorPenetration>
+		<buildingDamageFactor>1</buildingDamageFactor>
+		<plantDamageFactor>1</plantDamageFactor>
+	</DamageDef>
+	
+	<DamageDef ParentName="ProjectileBase_TR">
+		<defName>TRLaserC</defName>
+		<label>laser cut</label>
 		<isExplosive>false</isExplosive>
 		<deathMessage>{0} has been ripped apart by a sonic blast.</deathMessage>
 		<hediff>Crush</hediff>
@@ -119,31 +115,31 @@
 		<makesAnimalsFlee>true</makesAnimalsFlee>
 	</DamageDef>
 
-	<DamageDef ParentName="StunBase">
-		<defName>TRShock</defName>
-		<label>Shock</label>
-		<externalViolence>true</externalViolence>
-		<isExplosive>true</isExplosive>
-		<deathMessage>{0} has died due to electric shock.</deathMessage>
-		<hediff>Crush</hediff>
-		<hediffSolid>Crack</hediffSolid>
-		<harmsHealth>true</harmsHealth>
-		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
-		<impactSoundType>Blunt</impactSoundType>
-		<armorCategory>Blunt</armorCategory>
-		<minDamageToFragment>1</minDamageToFragment>
-		<defaultDamage>5</defaultDamage>
-		<defaultStoppingPower>2.0</defaultStoppingPower>
-		<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
-		<explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
-		<explosionCellMote>Mote_BlastEMP</explosionCellMote>
-		<explosionColorCenter>(1, 1, 1, 1)</explosionColorCenter>
-		<explosionColorEdge>(0.65, 0.65, 0.65, 1)</explosionColorEdge>
-		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
-		<combatLogRules>Damage_Bomb</combatLogRules>
-		<soundExplosion>Shot_GDI_Sonic</soundExplosion>
-		<makesAnimalsFlee>true</makesAnimalsFlee>
-	</DamageDef>
+<DamageDef ParentName="StunBase">
+<defName>TRShock</defName>
+<label>Shock</label>
+<externalViolence>true</externalViolence>
+<isExplosive>true</isExplosive>
+<deathMessage>{0} has died due to electric shock.</deathMessage>
+<hediff>Crush</hediff>
+<hediffSolid>Crack</hediffSolid>
+<harmsHealth>true</harmsHealth>
+<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+<impactSoundType>Blunt</impactSoundType>
+<armorCategory>Blunt</armorCategory>
+<minDamageToFragment>1</minDamageToFragment>
+<defaultDamage>5</defaultDamage>
+<defaultStoppingPower>2.0</defaultStoppingPower>
+<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+<explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
+<explosionCellMote>Mote_BlastEMP</explosionCellMote>
+<explosionColorCenter>(1, 1, 1, 1)</explosionColorCenter>
+<explosionColorEdge>(0.65, 0.65, 0.65, 1)</explosionColorEdge>
+<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+<combatLogRules>Damage_Bomb</combatLogRules>
+<soundExplosion>Shot_GDI_Sonic</soundExplosion>
+<makesAnimalsFlee>true</makesAnimalsFlee>
+</DamageDef>
 
 	<DamageDef ParentName="ProjectileBase_TR">
 		<defName>TRScrin</defName>
@@ -152,9 +148,8 @@
 		<isExplosive>false</isExplosive>
 		<deathMessage>{0} has been hit by a lethal beam.</deathMessage>
 		<hediff>Cut</hediff>
+		<hediffSolid>Cut</hediffSolid>
 		<makesBlood>true</makesBlood>
-		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
-		<impactSoundType>Bullet</impactSoundType>
 		<armorCategory>Sharp</armorCategory>
 		<minDamageToFragment>0</minDamageToFragment>
 		<defaultDamage>0</defaultDamage>

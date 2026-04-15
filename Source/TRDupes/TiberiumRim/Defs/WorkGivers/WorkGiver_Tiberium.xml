@@ -5,11 +5,28 @@
 	<WorkGiverDef>
 		<defName>DoTiberiumResearch</defName>
 		<label>do tiberium research</label>
-		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<giverClass>TR.WorkGiver_TResearch</giverClass>
 		<workType>Research</workType>
-		<priorityInType>99</priorityInType>
+		<priorityInType>120</priorityInType>
 		<verb>(TR)research</verb>
 		<gerund>(TR)researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	
+	<!-- Craft -->
+	<WorkGiverDef>
+		<defName>DoTiberiumBills</defName>
+		<label>do network bill</label>
+		<giverClass>TeleCore.WorkGiver_NetworkBills</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>85</priorityInType>
+		<verb>(TR)do bill</verb>
+		<gerund>(TR)doing bill at</gerund>
+		<fixedBillGiverDefs>
+			<li>TR_AtomicSynthesizer</li>
+		</fixedBillGiverDefs>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
@@ -19,7 +36,7 @@
 	<WorkGiverDef>
 		<defName>DoTiberiumResearchCrafting</defName>
 		<label>do tiberium research</label>
-		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<giverClass>TR.WorkGiver_TResearch</giverClass>
 		<workType>Crafting</workType>
 		<priorityInType>99</priorityInType>
 		<verb>(Tiberium Research)craft</verb>
@@ -32,7 +49,7 @@
 	<WorkGiverDef>
 		<defName>DoTiberiumResearchConstruction</defName>
 		<label>do tiberium research</label>
-		<giverClass>TiberiumRim.WorkGiver_TResearch</giverClass>
+		<giverClass>TR.WorkGiver_TResearch</giverClass>
 		<workType>Construction</workType>
 		<priorityInType>99</priorityInType>
 		<verb>(Tiberium Research)construct</verb>
@@ -43,17 +60,36 @@
 	</WorkGiverDef>
 	-->
 	
+	<!-- Crafting -->
+	
 	<WorkGiverDef>
-		<defName>DoBillsTibCrafter</defName>
-		<label>work at Tiberium refinery</label>
+		<defName>DoBillsTibWorkbench</defName>
+		<label>make things at workbench</label>
 		<giverClass>WorkGiver_DoBill</giverClass>
 		<workType>Crafting</workType>
 		<priorityInType>100</priorityInType>
 		<fixedBillGiverDefs>
-			<li>TiberiumCrafter</li>
+			<li>TR_TibWorkbench</li>
+		</fixedBillGiverDefs>
+		<verb>craft</verb>
+		<gerund>crafting at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+	
+	<WorkGiverDef>
+		<defName>DoBillsTibCrafter</defName>
+		<label>refine resources from tiberium</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>100</priorityInType>
+		<fixedBillGiverDefs>
+			<li>TR_AtomicSynthesizer</li>
 		</fixedBillGiverDefs>
 		<verb>refine Tiberium</verb>
-		<gerund>refining Tiberium</gerund>
+		<gerund>refining Tiberium at</gerund>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
@@ -62,7 +98,7 @@
 	
 	<WorkGiverDef>
 		<defName>Factions_DoBillsFactory</defName>
-		<label>work at factory</label>
+		<label>make things at factory</label>
 		<giverClass>WorkGiver_DoBill</giverClass>
 		<workType>Smithing</workType>
 		<priorityInType>97</priorityInType>

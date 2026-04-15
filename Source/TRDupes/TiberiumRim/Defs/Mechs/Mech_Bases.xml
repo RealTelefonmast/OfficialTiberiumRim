@@ -2,7 +2,7 @@
 <Defs>
 
 	<ThingDef Name="BaseMechanoidTR" Abstract="True">
-		<thingClass>TiberiumRim.MechanicalPawn</thingClass>
+		<thingClass>TR.MechanicalPawn</thingClass>
 		<category>Pawn</category>
 		<selectable>true</selectable>
 		<tickerType>Normal</tickerType>
@@ -13,8 +13,11 @@
 		<drawGUIOverlay>true</drawGUIOverlay>
 		<repairEffect>Repair</repairEffect>
 		<statBases>
-			<PsychicSensitivity>0</PsychicSensitivity>
-			<ToxicSensitivity>0</ToxicSensitivity>
+			<TiberiumInfectionResistance MayRequire="telefonmast.tiberiumrim.main">1</TiberiumInfectionResistance>
+			<TiberiumGasResistance MayRequire="telefonmast.tiberiumrim.main">1</TiberiumGasResistance>
+			<TiberiumRadiationResistance MayRequire="telefonmast.tiberiumrim.main">1</TiberiumRadiationResistance>
+            <PsychicSensitivity>0</PsychicSensitivity>
+            <ToxicSensitivity>0</ToxicSensitivity>
 			<Flammability>0.35</Flammability>
 			<ComfyTemperatureMin>-100</ComfyTemperatureMin>
 			<ComfyTemperatureMax>250</ComfyTemperatureMax>
@@ -25,11 +28,6 @@
 		<inspectorTabs>
 			<li>ITab_Pawn_Health</li>
 			<li>ITab_Pawn_Needs</li>
-			<li>ITab_Pawn_Character</li>
-			<li>ITab_Pawn_Training</li>
-			<li>ITab_Pawn_Social</li>
-			<li>ITab_Pawn_Guest</li>
-			<li>ITab_Pawn_Prisoner</li>
 			<li>ITab_Pawn_FormingCaravan</li>
 			<li>ITab_Pawn_Gear</li>
 			<li>ITab_Pawn_Log</li>
@@ -44,7 +42,7 @@
 			<thinkTreeConstant>MechMainConstant</thinkTreeConstant>
 			<needsRest>false</needsRest>
 			<hasGenders>false</hasGenders>
-			<fleshType>Mechanoid</fleshType>
+			<fleshType>Mechanical</fleshType>
 			<foodType>None</foodType>
 			<intelligence>ToolUser</intelligence>
 			<makesFootprints>false</makesFootprints>
@@ -62,6 +60,23 @@
 			<soundMeleeHitPawn>Pawn_Melee_MechanoidBash_HitPawn</soundMeleeHitPawn>
 			<soundMeleeHitBuilding>Pawn_Melee_MechanoidBash_HitBuilding</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_MechanoidBash_Miss</soundMeleeMiss>
+		</race>
+	</ThingDef>
+	
+	<ThingDef Name="HarvesterBase" ParentName="BaseMechanoidTR" Abstract="True">
+		<thingClass>TR.Harvester</thingClass>
+		<!--
+		<statBases>
+			<TiberiumInfectionResistance>1</TiberiumInfectionResistance>
+			<TiberiumGasResistance>1</TiberiumGasResistance>
+			<TiberiumRadiationResistance>1</TiberiumRadiationResistance>
+		</statBases>
+		-->
+		<race>
+			<thinkTreeMain>HarvesterMain</thinkTreeMain>
+			<thinkTreeConstant>HarvesterConstant</thinkTreeConstant>
+			<baseBodySize>4</baseBodySize>
+			<baseHealthScale>1</baseHealthScale>
 		</race>
 		<tools>
 			<li>
@@ -104,7 +119,7 @@
 	</ThingDef>
 	
 	<ThingDef Name="RepairDroneBase" ParentName="BaseMechanoidTR" Abstract="True">
-		<thingClass>TiberiumRim.RepairDrone</thingClass>
+		<thingClass>TR.RepairDrone</thingClass>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
@@ -156,8 +171,41 @@
 	</BodyPartGroupDef>
 	
 	<BodyPartGroupDef>
-		<defName>HeadButt</defName>
+		<defName>Dozer</defName>
 		<label>dozer</label>
 	</BodyPartGroupDef>
+
+	<BodyPartGroupDef>
+		<defName>RazorCloud</defName>
+		<label>razor Cloud</label>
+	</BodyPartGroupDef>
+	
+	<BodyPartGroupDef>
+		<defName>FrontLegs</defName>
+		<label>front Legs</label>
+	</BodyPartGroupDef>
+
+
+
+
+	
+  <LifeStageDef>
+    <defName>ScrinFormed</defName>
+    <label>Scrin</label>
+    <visible>false</visible>
+  </LifeStageDef>
+  
+  <LifeStageDef>
+    <defName>VehicleFormed</defName>
+    <label>Vehicle</label>
+    <visible>false</visible>
+  </LifeStageDef>
+
+  <LifeStageDef>
+    <defName>MechFormed</defName>
+    <label>Mech</label>
+    <visible>false</visible>
+  </LifeStageDef>
+
 
 </Defs>

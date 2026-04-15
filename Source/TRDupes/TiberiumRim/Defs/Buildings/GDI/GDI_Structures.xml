@@ -12,6 +12,11 @@
 		<costList>
 			<GDI_ReinforcedPlate>2</GDI_ReinforcedPlate>
 		</costList>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<uiIconPath>Buildings/GDI/Structure/Wall_GDI_Icon</uiIconPath>
 		<statBases>
 			<MaxHitPoints>1000</MaxHitPoints>
@@ -32,6 +37,11 @@
 				<li>65536</li>
 			</linkFlags>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<uiIconPath>Buildings/GDI/Structure/Pillbox_GDI_icon</uiIconPath>
 		<passability>Impassable</passability>
 		<blockLight>false</blockLight>
@@ -78,6 +88,11 @@
 			<Mass>10</Mass>
 			<Beauty>25</Beauty>
 		</statBases>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Buildings/GDI/Structure/DoorFrame/DoorFrameGDI</texPath>
@@ -129,6 +144,11 @@
 				<enabled>false</enabled>
 			</damageData>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<costList>
 			<GDI_ReinforcedPlate>2</GDI_ReinforcedPlate>
 		</costList>
@@ -154,6 +174,11 @@
 				<enabled>false</enabled>
 			</damageData>
 		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental</li>
+			</tiberiumResearch>
+		</requisites>
 		<uiIconPath>Buildings/GDI/Structure/AutoDoor_GDI_icon</uiIconPath>
 		<costList>
 			<GDI_ReinforcedPlate>2</GDI_ReinforcedPlate>
