@@ -1,863 +1,1643 @@
 ﻿
 === Duplicate Filenames (.cs) ===
 
-10 (sampled) duplicate filename(s):
+20 (sampled) duplicate filename(s):
 
-[1/10] CompProperties_AtmosphericSource.cs
-  A: Source\TeleCoreSrc\TeleCore.Atmosphere\Comps\CompProperties_AtmosphericSource.cs
-  B: Source\TeleCoreSrc\TeleCore\Atmosphere\Comps\CompProperties_AtmosphericSource.cs
+[1/20] Dialog_TiberiumRimSettings.cs
+  A: Source\TiberiumRim\GameParts\Dialog_TiberiumRimSettings.cs
+  B: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\GameParts\Dialog_TiberiumRimSettings.cs
 
---- Source\TeleCoreSrc\TeleCore.Atmosphere\Comps\CompProperties_AtmosphericSource.cs
-+++ Source\TeleCoreSrc\TeleCore\Atmosphere\Comps\CompProperties_AtmosphericSource.cs
-@@ -5,13 +5,12 @@
+--- Source\TiberiumRim\GameParts\Dialog_TiberiumRimSettings.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\GameParts\Dialog_TiberiumRimSettings.cs
+@@ -1,42 +1,60 @@
+-using TR.TextureContent;
++using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using Verse;
++using RimWorld;
+ using UnityEngine;
+-using Verse;
  
- public class CompProperties_AtmosphericSource : CompProperties
+-namespace TR;
++namespace TiberiumRim
+-
+-public class Dialog_TiberiumRimSettings : Window
  {
-+    public AtmosphericValueDef atmosphericDef;
-     public int pushAmount;
-     public int pushInterval;
--    public AtmosphericValueDef atmosphericDef;
- 
-     public CompProperties_AtmosphericSource()
+-    public Dialog_TiberiumRimSettings()
++    public class Dialog_TiberiumRimSettings : Window
      {
--        this.compClass = typeof(Comp_AtmosphericSource);
-+        compClass = typeof(Comp_AtmosphericSource);
+-        closeOnClickedOutside = true;
+-    }
++        public Dialog_TiberiumRimSettings()
++        {
++            closeOnClickedOutside = true;
++        }
+ 
+-    protected override float Margin => 0f;
++        protected override float Margin => 0f;
+ 
+-    public override Vector2 InitialSize => new(400f, 500f);
++        public override Vector2 InitialSize => new Vector2(400f, 500f);
+ 
+-    public override void DoWindowContents(Rect inRect)
+-    {
+-        Widgets.DrawTextureFitted(inRect, TiberiumContent.MainMenu, 1f);
+-        if (Widgets.CloseButtonFor(inRect)) Close();
+-        GUI.BeginGroup(inRect);
++        public override void DoWindowContents(Rect inRect)
++        {
++            Widgets.DrawTextureFitted(inRect, TiberiumContent.MainMenu, 1f);
++            if (Widgets.CloseButtonFor(inRect))
++            {
++                this.Close(true);
++            }
++            GUI.BeginGroup(inRect);
+ 
+-        float curY = 94;
+-        var yOffset = 60f;
+-        var yExtra = 20f;
++            float curY = 94;
++            float yOffset = 60f;
++            float yExtra = 20f;
+ 
+-        var difficulty = new Rect(51f, curY, 300f, yOffset);
+-        curY += yOffset + yExtra;
+-        var gameplay = new Rect(51, curY, 300f, yOffset);
+-        curY += yOffset + yExtra;
+-        var graphics = new Rect(51f, curY, 300f, yOffset);
++            Rect difficulty = new Rect(51f, curY, 300f, yOffset);
++            curY += yOffset + yExtra;
++            Rect gameplay = new Rect(51, curY, 300f, yOffset);
++            curY += yOffset + yExtra;
++            Rect graphics = new Rect(51f, curY, 300f, yOffset);
+ 
+-        if (Widgets.ButtonText(difficulty, "Difficulty")) Close();
+-        //Find.WindowStack.Add(new Dialog_DifficultySettings());
+-        if (Widgets.ButtonText(gameplay, "Gameplay")) Close();
+-        //Find.WindowStack.Add(new Dialog_GameplaySettings());
+-        if (Widgets.ButtonText(graphics, "Graphics")) Close();
+-        //Find.WindowStack.Add(new Dialog_GraphicsSettings());
+-        GUI.EndGroup();
++            if (Widgets.ButtonText(difficulty, "Difficulty"))
++            {
++                this.Close();
++                //Find.WindowStack.Add(new Dialog_DifficultySettings());
++            }
++            if (Widgets.ButtonText(gameplay, "Gameplay"))
++            {
++                this.Close();
++                //Find.WindowStack.Add(new Dialog_GameplaySettings());
++            }
++            if (Widgets.ButtonText(graphics, "Graphics"))
++            {
++                this.Close();
++                //Find.WindowStack.Add(new Dialog_GraphicsSettings());
++            }
++            GUI.EndGroup();
++        }
+     }
+ }
++
+
+[2/20] DiscoveryTable.cs
+  A: Source\TeleCoreSrc\TeleCore\Data\World\WorldInfo\DiscoveryTable.cs
+  B: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\GameParts\DiscoveryTable.cs
+
+--- Source\TeleCoreSrc\TeleCore\Data\World\WorldInfo\DiscoveryTable.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\GameParts\DiscoveryTable.cs
+@@ -1,111 +1,35 @@
++using System;
+ using System.Collections.Generic;
+-using System.Runtime.CompilerServices;
+-using TeleCore.GameData.Defs;
+-using TeleCore.Interfaces;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
+-using TeleCore.Static;
+ using Verse;
+ 
+-namespace TeleCore;
++namespace TiberiumRim
+-
+-public class DiscoveryTable : IExposable
+ {
+-    private Dictionary<TRThingDef, bool> discoveredMenuOptions = new();
++    public class DiscoveryTable : IExposable
+-    private Dictionary<TResearchDef, bool> discoveredResearch = new();
+-    private Dictionary<DiscoveryDef, bool> discoveries = new();
+-
+-    //TODO: Research For ALL!
+-    //public Dictionary<TResearchDef, bool> DiscoveredResearch = new Dictionary<TResearchDef, bool>();
+-
+-    public bool this[DiscoveryDef discovery] => IsDiscovered(discovery);
+-    public bool this[IDiscoverable discovery] => this[discovery.DiscoveryDef];
+-
+-    public Dictionary<DiscoveryDef, bool> Discoveries => discoveries;
+-    public Dictionary<TRThingDef, bool> DiscoveredMenuOptions => discoveredMenuOptions;
+-    public Dictionary<TResearchDef, bool> DiscoveredResearch => discoveredResearch;
+-
+-    public void ExposeData()
+     {
+-        Scribe_Collections.Look(ref discoveries, "discoveredDict", LookMode.Def, LookMode.Value);
++        public Dictionary<string, bool> Discovered = new Dictionary<string, bool>();
+-        Scribe_Collections.Look(ref discoveredResearch, "discoveredResearch", LookMode.Def, LookMode.Value);
+-        Scribe_Collections.Look(ref discoveredMenuOptions, "menuDiscovered", LookMode.Def, LookMode.Value);
+-    }
+ 
+-    //Build Menu
+-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+-    public bool MenuOptionHasBeenSeen(TRThingDef def)
+-    {
++        public void ExposeData()
++        {
++            Scribe_Collections.Look(ref Discovered, "discovered");
++        }
+-        return discoveredMenuOptions.TryGetValue(def, out var value) && value;
+-    }
+ 
+-    public void DiscoverInMenu(TRThingDef def)
+-    {
+-        if (MenuOptionHasBeenSeen(def)) return;
+-        discoveredMenuOptions.Add(def, true);
++        public bool IsDiscovered(string discoverTag)
++        {
++            return Discovered.TryGetValue(discoverTag, out bool value) && value;
++        }
+-    }
+ 
+-    //Parent Discovery
+-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+-    public bool IsDiscovered(DiscoveryDef discovery)
+-    {
++        public bool IsDiscovered(IDiscoverable discoverable)
++        {
++            return Discovered.TryGetValue(discoverable.DiscoverTag, out bool value) && value;
++        }
+-        return Discoveries.TryGetValue(discovery, out var value) && value;
+-    }
+ 
+-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+-    public bool IsDiscovered(IDiscoverable discoverable)
+-    {
+-        return IsDiscovered(discoverable.DiscoveryDef);
++        public void Discover(string discoverTag)
++        {
++            Discovered.Add(discoverTag, true);
++        }
+-    }
+-
+-    public void Discover(DiscoveryDef discovery)
+-    {
+-        if (IsDiscovered(discovery)) return;
+-        Discoveries.Add(discovery, true);
+-        Find.LetterStack.ReceiveLetter(Translations.Discovery.DiscoveryNew,
+-            Translations.Discovery.DiscoveryDesc(discovery.description), TeleDefOf.DiscoveryLetter);
+     }
+-
+-    //Research Discovery
+-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+-    public bool ResearchHasBeenSeen(TResearchDef research)
+-    {
+-        return discoveredResearch.TryGetValue(research, out var value) && value;
+-    }
+-
+-    public void DiscoverResearch(TResearchDef research)
+-    {
+-        if (ResearchHasBeenSeen(research)) return;
+-        discoveredResearch.Add(research, true);
+-    }
+ }
+ 
+-// OLD REF (original TiberiumRim version — public fields, no LookMode params, no inlining, no indexer):
+-// public class DiscoveryTable : IExposable
+-// {
+-//     public Dictionary<TRThingDef, bool> DiscoveredMenuOptions = new();
+-//     public Dictionary<TResearchDef, bool> DiscoveredResearch = new();
+-//     public Dictionary<DiscoveryDef, bool> Discoveries = new();
+-//
+-//     public void ExposeData()
+-//     {
+-//         Scribe_Collections.Look(ref Discoveries, "discoveredDict");
+-//         Scribe_Collections.Look(ref DiscoveredResearch, "discoveredResearch");
+-//         Scribe_Collections.Look(ref DiscoveredMenuOptions, "menuDiscovered");
+-//     }
+-//     ...
+-// }
+-//
+-// OLD REF (TeleCore version — no menu/research tracking, uses TeleDefOf/Translations):
+-// public class DiscoveryTable : IExposable
+-// {
+-//     private Dictionary<DiscoveryDef, bool> discoveries = new();
+-//     public bool this[DiscoveryDef discovery] => IsDiscovered(discovery);
+-//     public bool this[IDiscoverable discovery] => this[discovery.DiscoveryDef];
+-//     ...
+-//     public void Discover(DiscoveryDef discovery)
+-//     {
+-//         if (IsDiscovered(discovery)) return;
+-//         Discoveries.Add(discovery, true);
+-//         Find.LetterStack.ReceiveLetter(Translations.Discovery.DiscoveryNew,
+-//             Translations.Discovery.DiscoveryDesc(discovery.description), TeleDefOf.DiscoveryLetter);
+-//     }
+-// }
+
+[3/20] DronePlatform.cs
+  A: Source\TiberiumRim\Factions\Scrin\DronePlatform.cs
+  B: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Scrin\DronePlatform.cs
+
+--- Source\TiberiumRim\Factions\Scrin\DronePlatform.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Scrin\DronePlatform.cs
+@@ -1,31 +1,35 @@
+ using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
+ using Verse;
++using RimWorld;
+ 
+-namespace TR.Scrin;
+ 
+-public class DronePlatform : TRBuilding
++namespace TiberiumRim
+ {
+-    private bool spawnedPortal;
++    public class DronePlatform : TRBuilding
+-    private int ticksUntilPortal = 400;
+-
+-    public override void SpawnSetup(Map map, bool respawningAfterLoad)
+     {
+-        base.SpawnSetup(map, respawningAfterLoad);
+-    }
++        private int ticksUntilPortal = 400;
++        private bool spawnedPortal = false;
+ 
+-    public override void Tick()
++        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+-    {
+-        base.Tick();
+-        if (ticksUntilPortal <= 0 && !spawnedPortal)
+         {
+-            Predicate<IntVec3> cellCheck = x => x.Standable(Map);
++            base.SpawnSetup(map, respawningAfterLoad);
+-            CellFinder.TryFindRandomCellNear(Position, Map, 6, cellCheck, out var result);
+-            GenPortal.SpawnDronePortal(result, Map);
+-            spawnedPortal = true;
+         }
+-        else
++
++        public override void Tick()
+         {
+-            ticksUntilPortal--;
++            base.Tick();
++            if (ticksUntilPortal <= 0 && !spawnedPortal)
++            {
++                Predicate<IntVec3> cellCheck = x => x.Standable(Map);
++                CellFinder.TryFindRandomCellNear(Position, Map, 6, cellCheck, out IntVec3 result);
++                GenPortal.SpawnDronePortal(result, Map);
++                spawnedPortal = true;
++            }else
++                ticksUntilPortal--;
+         }
+     }
+ }
++
+
+[4/20] DynamicAtmosphericDataMapInfo.cs
+  A: Source\TeleCoreSrc\TeleCore.Atmosphere\DynamicAtmosphericDataMapInfo.cs
+  B: Source\TeleCoreSrc\TeleCore\Atmosphere\DynamicAtmosphericDataMapInfo.cs
+
+--- Source\TeleCoreSrc\TeleCore.Atmosphere\DynamicAtmosphericDataMapInfo.cs
++++ Source\TeleCoreSrc\TeleCore\Atmosphere\DynamicAtmosphericDataMapInfo.cs
+@@ -1,8 +1,8 @@
+-using TeleCore.Atmosphere.Utils;
+ using TeleCore.Events;
+-using TeleCore.MapInfo;
++using TeleCore.Events.Args;
++using TeleCore.GameData;
+ using TeleCore.Types;
+-using TeleCore.Utility;
++using TeleCore.Utils;
+ using UnityEngine;
+ using Verse;
+ 
+@@ -10,6 +10,13 @@
+ 
+ public class DynamicAtmosphericDataMapInfo : MapInformation
+ {
++    public DynamicAtmosphericDataMapInfo(Map map) : base(map)
++    {
++        AtmosphericPassGrid = new ComputeGrid<float>(map, _ => 1f);
++        LightPassGrid = new ComputeGrid<float>(map, _ => 1f);
++        EdificeGrid = new ComputeGrid<uint>(map);
++    }
++
+     //Grid data
+     public ComputeGrid<float> AtmosphericPassGrid { get; }
+     public ComputeGrid<float> LightPassGrid { get; }
+@@ -19,13 +26,6 @@
+     public ComputeBuffer LightPassBuffer => LightPassGrid.DataBuffer;
+     public ComputeBuffer EdificeBuffer => EdificeGrid.DataBuffer;
+ 
+-    public DynamicAtmosphericDataMapInfo(Map map) : base(map)
+-    {
+-        AtmosphericPassGrid = new ComputeGrid<float>(map, _ => 1f);
+-        LightPassGrid = new ComputeGrid<float>(map, _ => 1f);
+-        EdificeGrid = new ComputeGrid<uint>(map);
+-    }
+-
+     public override void ThreadSafeInit()
+     {
+         AtmosphericPassGrid.ThreadSafeInit();
+@@ -87,11 +87,11 @@
+         {
+             if (thing.def.AffectsRegions)
+             {
++            }
+ 
+-            }
+             if (thing is Building b)
+             {
+-                if(AtmosphericPassGrid.IsReady)
++                if (AtmosphericPassGrid.IsReady)
+                     AtmosphericPassGrid.ResetValue(pos, 1f);
+                 if (b.def.IsEdifice() && EdificeGrid.IsReady)
+                     EdificeGrid.ResetValue(pos);
+@@ -106,4 +106,3 @@
+         args.Thing.Map.GetMapInfo<AtmosphericMapInfo>().Notify_ThingSentSignal(args);
      }
  }
 -
 
-[2/10] CompProperties_Network.cs
-  A: Source\TeleCoreSrc\TeleCore.FlowCore\Networks\CompProperties_Network.cs
-  B: Source\TeleCoreSrc\TeleCore\Data\ThingComps\Props\CompProperties_Network.cs
+[5/20] DynamicAtmosphericDataTracker.cs
+  A: Source\TeleCoreSrc\TeleCore.Atmosphere\Injections\DynamicAtmosphericDataTracker.cs
+  B: Source\TeleCoreSrc\TeleCore\Atmosphere\Injections\DynamicAtmosphericDataTracker.cs
 
---- Source\TeleCoreSrc\TeleCore.FlowCore\Networks\CompProperties_Network.cs
-+++ Source\TeleCoreSrc\TeleCore\Data\ThingComps\Props\CompProperties_Network.cs
-@@ -1,8 +1,13 @@
- using System;
- using System.Collections.Generic;
-+using TeleCore.FlowCore;
-+using TeleCore.GameData.Defs;
-+using TeleCore.Network;
-+using TeleCore.Network.Flow.Values;
-+using TeleCore.Network.IO;
+--- Source\TeleCoreSrc\TeleCore.Atmosphere\Injections\DynamicAtmosphericDataTracker.cs
++++ Source\TeleCoreSrc\TeleCore\Atmosphere\Injections\DynamicAtmosphericDataTracker.cs
+@@ -1,8 +1,9 @@
+ using TeleCore.Atmosphere.Grid;
+ using TeleCore.Events;
+-using TeleCore.RWExtended.Map.Infos;
++using TeleCore.Events.Args;
++using TeleCore.GameData;
+ using TeleCore.Static;
+-using TeleCore.Utility;
++using TeleCore.Utils;
+ 
+ namespace TeleCore.Atmosphere.Injections;
+ 
+@@ -43,4 +44,3 @@
+         }
+     }
+ }
+-
+
+[6/20] DynamicDataCacheMapInfo_TAE.cs
+  A: Source\TeleCoreSrc\TeleCore.Atmosphere\OldRef\DynamicDataCacheMapInfo_TAE.cs
+  B: Source\TeleCoreSrc\TeleCore\Atmosphere\OldRef\DynamicDataCacheMapInfo_TAE.cs
+
+--- Source\TeleCoreSrc\TeleCore.Atmosphere\OldRef\DynamicDataCacheMapInfo_TAE.cs
++++ Source\TeleCoreSrc\TeleCore\Atmosphere\OldRef\DynamicDataCacheMapInfo_TAE.cs
+@@ -1,117 +1,117 @@
+ // Preserved from TeleCore/SpreadingGas/DynamicDataCacheMapInfo.cs (No TAC counterpart — GPU compute grid cache)
+-using TeleCore;
+-using TeleCore.Data.Events;
++
++using TeleCore.Events;
++using TeleCore.Events.Args;
++using TeleCore.GameData;
+ using TeleCore.Static;
++using TeleCore.Types;
+ using UnityEngine;
+ using Verse;
++
++namespace TeleCore.Atmosphere.OldRef;
+ 
+-namespace TeleCore.Atmosphere.OldRef
++public class DynamicDataCacheMapInfo_TAE : MapInformation
+ {
+-    public class DynamicDataCacheMapInfo_TAE : MapInformation
++    public DynamicDataCacheMapInfo_TAE(Map map) : base(map)
+     {
+-        //Grid data
+-        public ComputeGrid<float> AtmosphericPassGrid { get; }
+-        public ComputeGrid<float> LightPassGrid { get; }
+-        public ComputeGrid<uint> EdificeGrid { get; }
++        AtmosphericPassGrid = new ComputeGrid<float>(map, _ => 1f);
++        LightPassGrid = new ComputeGrid<float>(map, _ => 1f);
++        EdificeGrid = new ComputeGrid<uint>(map);
++    }
+ 
+-        public ComputeBuffer AtmosphericBuffer => AtmosphericPassGrid.DataBuffer;
+-        public ComputeBuffer LightPassBuffer => LightPassGrid.DataBuffer;
+-        public ComputeBuffer EdificeBuffer => EdificeGrid.DataBuffer;
++    //Grid data
++    public ComputeGrid<float> AtmosphericPassGrid { get; }
++    public ComputeGrid<float> LightPassGrid { get; }
++    public ComputeGrid<uint> EdificeGrid { get; }
+ 
+-        public DynamicDataCacheMapInfo_TAE(Map map) : base(map)
+-        {
+-            AtmosphericPassGrid = new ComputeGrid<float>(map, _ => 1f);
++    public ComputeBuffer AtmosphericBuffer => AtmosphericPassGrid.DataBuffer;
++    public ComputeBuffer LightPassBuffer => LightPassGrid.DataBuffer;
++    public ComputeBuffer EdificeBuffer => EdificeGrid.DataBuffer;
+-            LightPassGrid = new ComputeGrid<float>(map, _ => 1f);
+-            EdificeGrid = new ComputeGrid<uint>(map);
+-        }
+ 
+-        //TODO: Let data get filled directly in map load - update buffer later
+-        public override void ThreadSafeInit()
+-        {
+-            AtmosphericPassGrid.ThreadSafeInit();
+-            LightPassGrid.ThreadSafeInit();
+-            EdificeGrid.ThreadSafeInit();
++    //TODO: Let data get filled directly in map load - update buffer later
++    public override void ThreadSafeInit()
++    {
++        AtmosphericPassGrid.ThreadSafeInit();
++        LightPassGrid.ThreadSafeInit();
++        EdificeGrid.ThreadSafeInit();
+ 
+-            AtmosphericPassGrid.UpdateBuffer();
+-            LightPassGrid.UpdateBuffer();
+-            EdificeGrid.UpdateBuffer();
+-        }
++        AtmosphericPassGrid.UpdateBuffer();
++        LightPassGrid.UpdateBuffer();
++        EdificeGrid.UpdateBuffer();
++    }
+ 
+-        internal void Notify_UpdateThingState(Thing thing)
++    internal void Notify_UpdateThingState(Thing thing)
++    {
++        var isBuilding = thing is Building;
++        foreach (var pos in thing.OccupiedRect())
+         {
+-            var isBuilding = thing is Building;
++            if (!isBuilding) continue;
+-            foreach (var pos in thing.OccupiedRect())
+-            {
+-                if (!isBuilding) continue;
+ 
+-                AtmosphericPassGrid.SetValue_Array(pos, TAE.AtmosphereUtility.DefaultAtmosphericPassPercentAtCell(pos, map));
+-                if (thing.def.IsEdifice())
+-                    EdificeGrid.SetValue_Array(pos, 1);
+-                if (thing.def.blockLight)
+-                    LightPassGrid.SetValue_Array(pos, 0);
+-            }
++            AtmosphericPassGrid.SetValue_Array(pos,
++                TAE.AtmosphereUtility.DefaultAtmosphericPassPercentAtCell(pos, map));
++            if (thing.def.IsEdifice())
++                EdificeGrid.SetValue_Array(pos, 1);
++            if (thing.def.blockLight)
++                LightPassGrid.SetValue_Array(pos, 0);
+         }
++    }
+ 
+-        internal void Notify_ThingSpawned(Thing thing)
+-        {
+-            Notify_UpdateThingState(thing);
+-        }
++    internal void Notify_ThingSpawned(Thing thing)
++    {
++        Notify_UpdateThingState(thing);
++    }
+ 
+-        internal void Notify_ThingDespawned(Thing thing)
+-        {
+-            foreach (var pos in thing.OccupiedRect())
++    internal void Notify_ThingDespawned(Thing thing)
++    {
++        foreach (var pos in thing.OccupiedRect())
++            if (thing is Building b)
+             {
+-                if (thing is Building b)
+-                {
+-                    if(AtmosphericPassGrid.IsReady)
+-                        AtmosphericPassGrid.ResetValue(pos, 1f);
+-                    if (b.def.IsEdifice() && EdificeGrid.IsReady)
+-                        EdificeGrid.ResetValue(pos);
++                if (AtmosphericPassGrid.IsReady)
++                    AtmosphericPassGrid.ResetValue(pos, 1f);
++                if (b.def.IsEdifice() && EdificeGrid.IsReady)
++                    EdificeGrid.ResetValue(pos);
++                if (b.def.blockLight && LightPassGrid.IsReady)
++                    LightPassGrid.ResetValue(pos, 1f);
+-                    if (b.def.blockLight && LightPassGrid.IsReady)
+-                        LightPassGrid.ResetValue(pos, 1f);
+-                }
+             }
+-        }
+     }
++}
++
++public class DynamicDataTracker_TAE : ThingTrackerComp
++{
++    private DynamicDataCacheMapInfo_TAE cacheMapInfo;
+ 
+-    public class DynamicDataTracker_TAE : ThingTrackerComp
++    //TODO: Update to use protected parent later
++    public DynamicDataTracker_TAE(ThingTrackerMapInfo parent) : base(parent)
+     {
+-        private DynamicDataCacheMapInfo_TAE cacheMapInfo;
++    }
+ 
+-        //TODO: Update to use protected parent later
+-        public DynamicDataTracker_TAE(ThingTrackerMapInfo parent) : base(parent)
+-        {
+-        }
++    public override void Notify_ThingRegistered(ThingStateChangedEventArgs args)
++    {
++        args.Thing.Map.GetMapInfo<TAE.DynamicDataCacheMapInfo>().Notify_ThingSpawned(args.Thing);
++        args.Thing.Map.GetMapInfo<TAE.SpreadingGasGrid>().Notify_ThingSpawned(args.Thing);
++    }
+ 
+-        public override void Notify_ThingRegistered(ThingStateChangedEventArgs args)
+-        {
+-            args.Thing.Map.GetMapInfo<TAE.DynamicDataCacheMapInfo>().Notify_ThingSpawned(args.Thing);
+-            args.Thing.Map.GetMapInfo<TAE.SpreadingGasGrid>().Notify_ThingSpawned(args.Thing);
++    public override void Notify_ThingDeregistered(ThingStateChangedEventArgs args)
++    {
++        args.Thing.Map.GetMapInfo<TAE.DynamicDataCacheMapInfo>().Notify_ThingDespawned(args.Thing);
++    }
+-        }
+ 
+-        public override void Notify_ThingDeregistered(ThingStateChangedEventArgs args)
++    public override void Notify_ThingSentSignal(ThingStateChangedEventArgs args)
++    {
++        switch (args.CompSignal)
+         {
+-            args.Thing.Map.GetMapInfo<TAE.DynamicDataCacheMapInfo>().Notify_ThingDespawned(args.Thing);
+-        }
+-
+-        public override void Notify_ThingSentSignal(ThingStateChangedEventArgs args)
+-        {
+-            switch (args.CompSignal)
++            case KnownCompSignals.FlickedOn:
++            case KnownCompSignals.FlickedOff:
++            case KnownCompSignals.PowerTurnedOn:
++            case KnownCompSignals.PowerTurnedOff:
++            case KnownCompSignals.RanOutOfFuel:
++            case KnownCompSignals.Refueled:
++            case "DoorOpened":
++            case "DoorClosed":
+             {
+-                case KnownCompSignals.FlickedOn:
++                args.Thing.Map.GetMapInfo<TAE.DynamicDataCacheMapInfo>().Notify_UpdateThingState(args.Thing);
+-                case KnownCompSignals.FlickedOff:
+-                case KnownCompSignals.PowerTurnedOn:
+-                case KnownCompSignals.PowerTurnedOff:
+-                case KnownCompSignals.RanOutOfFuel:
+-                case KnownCompSignals.Refueled:
+-                case "DoorOpened":
+-                case "DoorClosed":
+-                {
+-                    args.Thing.Map.GetMapInfo<TAE.DynamicDataCacheMapInfo>().Notify_UpdateThingState(args.Thing);
+-                }
+-                    break;
+             }
++                break;
+         }
+     }
+ }
+-
+
+[7/20] DynamicTextureParameter.cs
+  A: Source\TeleCoreSrc\TeleCore\Root\Types\DynamicTextureParameter.cs
+  B: Source\TeleCoreSrc\TeleCore\Visual\VFX\DynamicTextureParameter.cs
+
+--- Source\TeleCoreSrc\TeleCore\Root\Types\DynamicTextureParameter.cs
++++ Source\TeleCoreSrc\TeleCore\Visual\VFX\DynamicTextureParameter.cs
+@@ -1,10 +1,9 @@
+ using System.Xml;
+ using TeleCore.Logging;
+-using TeleCore.Utils;
+ using UnityEngine;
  using Verse;
  
--namespace TeleCore.FlowCore;
-+namespace TeleCore.ThingComps.Props;
+-namespace TeleCore.Types;
++namespace TeleCore.Visual.VFX;
  
  /// <summary>
- /// </summary>
-@@ -10,13 +15,13 @@
- {
-     [Description("Default IO configuration for this structure. Any sub-IOConfigs will override these settings.")]
-     public NetIOConfig generalIOConfig = new NetIOConfig();
--
-+    
-     [Description("Custom individual configurations for how this structure should interact with other networks.")]
-     public List<NetworkPartConfig>? networks;
- 
-     [Description("When set, applies this config for each existing NetworkDef loaded, providing a universal network structure")]
-     public DefaultNetworkPartConfig? defaultNetworkPartConfig = null;
--
-+    
-     public CompProperties_Network()
-     {
-         compClass = typeof(CompNetwork);
-@@ -39,7 +44,7 @@
-     {
-         base.PostLoadSpecial(parent);
-         generalIOConfig.PostLoadCustom(parent);
--
-+        
-         if (defaultNetworkPartConfig != null)
-         {
-             networks.Clear();
-@@ -54,8 +59,8 @@
-                 networks.Add(networkPartConfig);
-             }
-         }
--
--        foreach (var network in networks)
-+        
-+        foreach (var network in networks) 
-             network.PostLoadSpecial(parent);
-     }
- }
+ ///     Allows you to set <see cref="Texture2D" /> parameters depending on the <see cref="Graphic" /> type for custom
 
-[3/10] CompProperties_NetworkBillsCrafter.cs
-  A: Source\TeleCoreSrc\TeleCore.FlowCore\Networks\CompProperties_NetworkBillsCrafter.cs
-  B: Source\TeleCoreSrc\TeleCore\Data\ThingComps\Props\CompProperties_NetworkBillsCrafter.cs
+[8/20] EffecterDefTR.cs
+  A: Source\TiberiumRim\Rendering\EffecterDefTR.cs
+  B: Source\TeleCoreSrc\TeleCore\Rendering\EffecterDefTR.cs
+  C: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\VisualEffects\EffecterDefTR.cs
 
---- Source\TeleCoreSrc\TeleCore.FlowCore\Networks\CompProperties_NetworkBillsCrafter.cs
-+++ Source\TeleCoreSrc\TeleCore\Data\ThingComps\Props\CompProperties_NetworkBillsCrafter.cs
-@@ -1,7 +1,9 @@
- using System.Collections.Generic;
-+using TeleCore.GameData.Defs;
-+using TeleCore.Static;
- using Verse;
- 
--namespace TeleCore.FlowCore;
-+namespace TeleCore.ThingComps.Props;
- 
- public class CompProperties_NetworkBillsCrafter : CompProperties_Network
- {
+  Diff A vs B:
 
-[4/10] CompProperties_PathFollowerExtra.cs
-  A: Source\TeleCoreSrc\TeleCore\Data\ThingComps\Properties\CompProperties_PathFollowerExtra.cs
-  B: Source\TeleCoreSrc\TeleCore\GameData\Things\ThingComps\CompProperties_PathFollowerExtra.cs
-
---- Source\TeleCoreSrc\TeleCore\Data\ThingComps\Properties\CompProperties_PathFollowerExtra.cs
-+++ Source\TeleCoreSrc\TeleCore\GameData\Things\ThingComps\CompProperties_PathFollowerExtra.cs
+--- Source\TiberiumRim\Rendering\EffecterDefTR.cs
++++ Source\TeleCoreSrc\TeleCore\Rendering\EffecterDefTR.cs
 @@ -1,6 +1,6 @@
  using Verse;
  
--namespace TeleCore.ThingComps.Properties
-+namespace TeleCore.GameData.Things.ThingComps
+-namespace TR;
++namespace TeleCore.Rendering;
+ 
+ public class EffecterDefTR : EffecterDef
  {
-     public class CompProperties_PathFollowerExtra : CompProperties
-     {
 
-[5/10] CompProperties_PawnAtmosphereTracker.cs
-  A: Source\TeleCoreSrc\TeleCore.Atmosphere\Comps\CompProperties_PawnAtmosphereTracker.cs
-  B: Source\TeleCoreSrc\TeleCore\Atmosphere\Comps\CompProperties_PawnAtmosphereTracker.cs
+  Diff A vs C:
 
---- Source\TeleCoreSrc\TeleCore.Atmosphere\Comps\CompProperties_PawnAtmosphereTracker.cs
-+++ Source\TeleCoreSrc\TeleCore\Atmosphere\Comps\CompProperties_PawnAtmosphereTracker.cs
-@@ -1,4 +1,3 @@
--using TeleCore.Atmosphere.Comps;
+--- Source\TiberiumRim\Rendering\EffecterDefTR.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\VisualEffects\EffecterDefTR.cs
+@@ -1,8 +1,14 @@
++using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
  using Verse;
  
- namespace TeleCore.Atmosphere.Comps;
-@@ -7,7 +6,6 @@
+-namespace TR;
++namespace TiberiumRim
+-
+-public class EffecterDefTR : EffecterDef
  {
-     public CompProperties_PawnAtmosphereTracker()
-     {
--        this.compClass = typeof(Comp_PawnAtmosphereTracker);
-+        compClass = typeof(Comp_PawnAtmosphereTracker);
-     }
+-    public int tickInterval = 1;
++    public class EffecterDefTR : EffecterDef
++    {
++        public int tickInterval = 1;
++    }
  }
--
++
 
-[6/10] CompTNW.cs
-  A: Source\TRDupes\TiberiumRim\Tiberium\TiberiumProcessing\CompTNW.cs
-  B: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\TiberiumProcessing\CompTNW.cs
+  Diff B vs C:
 
---- Source\TRDupes\TiberiumRim\Tiberium\TiberiumProcessing\CompTNW.cs
-+++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\TiberiumProcessing\CompTNW.cs
-@@ -10,101 +10,298 @@
- {
-     public enum TNWMode
-     {
--        GlobalStorage,
--        LocalStorage,
--        Transmitter
-+        None,
-+        Storage,
-+        Consumer,
-+        Producer
-     }
- 
--    public class CompTNW : ThingComp
-+    public class CompTNW : ThingComp, IFXObject, IContainerHolder
-     {
--        public new TiberiumNetworkBuilding parent;
--        public MapComponent_TNWManager TiberiumNet;
--        public CompPowerTrader compPower;
--        public CompFlickable compFlick;
-+        public CompPowerTrader CompPower;
-+        public CompFlickable CompFlick;
-+        public CompFX CompFX;
-+        public MapComponent_TNWManager TNWManager;
-+        public MapComponent_Tiberium TiberiumManager;
- 
-+        //
-+        public StructureSet StructureSet;
-+
-+        private TiberiumNetwork network;
-         private TiberiumContainer container;
--        private IntVec3 lastPos;
-+        public List<IntVec3> pipeExtensionCells = new List<IntVec3>();
-+        private List<IntVec3> cardinalCells = new List<IntVec3>();
-+
-+        public bool ShouldLeak => false;
-+        public bool HasConnection => StructureSet.Pipes.Any();
-+        public TNWMode NetworkMode => Props.tnwbMode;
-+        public CompProperties_TNW Props => (CompProperties_TNW)props;
-+        public TiberiumContainer Container { get => container; set => container = value; }
-+
-+        //Debug
-+        private static bool DebugConnectionCells = false;
-+
-+        //FX Set
-+        public ExtendedGraphicData ExtraData => (parent as IFXObject)?.ExtraData ?? new ExtendedGraphicData();
-+        public virtual Vector3[] DrawPositions => new Vector3[] { parent.DrawPos, parent.DrawPos, parent.DrawPos };
-+        public virtual Color[] ColorOverrides => new Color[] { Container.Color, Color.white, Color.white };
-+        public virtual float[] OpacityFloats => new float[] { Container.StoredPercent, 1f, 1f };
-+        public virtual float?[] RotationOverrides => new float?[] { null, null, null };
-+        public virtual bool[] DrawBools => new bool[] { true, HasConnection, true };
-+        public virtual Action<FXGraphic>[] Actions => null;
-+        public virtual Vector2? TextureOffset => null;
-+        public virtual Vector2? TextureScale => null;
-+        public virtual bool ShouldDoEffecters => true;
-+        public virtual CompPower ForcedPowerComp => null;
- 
-         public override void PostExposeData()
-         {
--            Scribe_Deep.Look(ref container, "container");
-+            Scribe_Deep.Look(ref container, "container", new object[] { this.parent, this });
--            Scribe_Values.Look(ref lastPos, "lastPos");
-             base.PostExposeData();
-         }
- 
-         public override void PostSpawnSetup(bool respawningAfterLoad)
-         {
-             base.PostSpawnSetup(respawningAfterLoad);
--            parent = base.parent as TiberiumNetworkBuilding;
--            TiberiumNet = parent.Map.GetComponent<MapComponent_TNWManager>();
--            compPower = this.parent.TryGetComp<CompPowerTrader>();
--            compFlick = this.parent.TryGetComp<CompFlickable>();
-             if (!respawningAfterLoad)
-             {
--                lastPos += parent.Position;
-+                Container = new TiberiumContainer(Props.maxStorage, Props.supportedTypes, this.parent, this);
--                Container = new TiberiumContainer(Props.maxStorage, Props.storeMode, this.parent);
-             }
-+            CompPower = parent.TryGetComp<CompPowerTrader>();
-+            CompFlick = parent.TryGetComp<CompFlickable>();
-+            CompFX = parent.TryGetComp<CompFX>();
-+            TNWManager = parent.Map.GetComponent<MapComponent_TNWManager>();
-+            TNWManager.MainStructureSet.AddNewStructure(this);
-+            TiberiumManager = parent.Map.GetComponent<MapComponent_Tiberium>();
-+            UpdateConnections(out TiberiumNetwork n);
-         }
- 
-         public override void PostDestroy(DestroyMode mode, Map previousMap)
-         {
-+            StructureSet.ParentDestroyed();
-+            if (Container.TotalStorage > 0f && mode != DestroyMode.Vanish)
-+            {
-+                if ((mode == DestroyMode.Deconstruct || mode == DestroyMode.Refund) && Props.dropsContents)
-+                {
-+                    PortableContainer container = (PortableContainer)ThingMaker.MakeThing(TiberiumDefOf.PortableContainer);
-+                    container.PostSetup(Container);
-+                    GenSpawn.Spawn(container, parent.Position, previousMap);
-+                }
-+                else
-+                {
-+                    int i = 0;
-+                    List<TiberiumCrystal> crystals = Container.PotentialCrystals();
-+                    Predicate<IntVec3> pred = c => c.InBounds(previousMap) && c.GetEdifice(previousMap) == null;
-+                    Action<IntVec3> action = delegate (IntVec3 c)
-+                    {
-+                        TiberiumCrystal crystal = crystals.ElementAtOrDefault(i);
-+                        if (crystal != null)
-+                        {
-+                            GenSpawn.Spawn(crystal, c, previousMap);
-+                            crystals.Remove(crystal);
-+                        }
-+                        i++;
-+                    };
-+                    TiberiumFloodInfo flood = new TiberiumFloodInfo(previousMap, pred, action);
-+                    flood.TryMakeFlood(out List<IntVec3> floodedCells, parent.OccupiedRect(), crystals.Count);
-+                }
-+            }
-             base.PostDestroy(mode, previousMap);
-+            Network.NotifyPotentialSplit(this);
-+        }
-+
-+        public virtual void StructureSetOnAdd(CompTNW tnw, IntVec3 cell)
-+        {
-+            pipeExtensionCells.AddRange(CardinalConnectionCells.Intersect(tnw.InnerConnectionCells));
-+        }
-+
-+        public virtual void StructureSetOnRemove(CompTNW tnw)
-+        {
-+            pipeExtensionCells.RemoveAll(c => tnw.InnerConnectionCells.Contains(c));
-+        }
-+
-+        public void UpdateConnections(out TiberiumNetwork network)
-+        {
-+            StructureSet = new StructureSet(this);
-+            network = Network = new TiberiumNetwork(this, TNWManager);
-+        }
-+
-+        public override void CompTick()
-+        {
-+            base.CompTick();
-+            if (!(CompPower?.PowerOn ?? true && Network.IsWorking)) return;
-+            switch (NetworkMode)
-+            {
-+                case TNWMode.Storage:
-+                    ShareTick();
-+                    break;
-+                case TNWMode.Consumer:
-+                    ConsumeTick();
-+                    break;
-+                case TNWMode.Producer:
-+                    ProduceTick();
-+                    break;
-+            }
-+        }
-+
-+        public virtual void ProduceTick()
-+        {
-+            foreach (CompTNW storage in Network.NetworkSet.Storages)
-+            {
-+                foreach (TiberiumValueType type in Container.AllStoredTypes)
-+                {
-+                    Container.TryTransferTo(storage.Container, type, 1);
-+                }
-+            }
-+        }
-+
-+        public virtual void ConsumeTick()
-+        {
-+        }
-+
-+        public virtual void ShareTick()
-+        {
-+            foreach (CompTNW storage in Network.NetworkSet.Storages)
-+            {
-+                if (Container.StoredPercent > storage.Container.StoredPercent || storage.NetworkMode == TNWMode.Consumer)
-+                {
-+                    foreach (TiberiumValueType type in Container.AllStoredTypes)
-+                    {
-+                        Container.TryTransferTo(storage.Container, type, 1);
-+                    }
-+                }
-+            }
-+        }
-+
-+        public virtual void Notify_ContainerFull()
-+        {
-+        }
-+
-+        public TiberiumNetwork Network
-+        {
-+            get => network;
-+            set
-+            {
-+                if (network != null && network != value)
-+                {
-+                    TNWManager.DeregisterNetwork(network);
-+                }
-+                network = value;
-+            }
-         }
- 
--        public CompProperties_TNW Props => base.props as CompProperties_TNW;
--        public TiberiumContainer Container { get => container; set => container = value; }
-+        public virtual IEnumerable<IntVec3> InnerConnectionCells => parent.OccupiedRect().Cells;
-+        public virtual IEnumerable<IntVec3> CardinalConnectionCells
-+        {
-+            get
-+            {
-+                if (cardinalCells.NullOrEmpty())
-+                {
-+                    foreach (IntVec3 c in GenAdj.CellsAdjacentCardinal(parent))
-+                    {
-+                        if (InnerConnectionCells.Any(v => v.AdjacentToCardinal(c)))
-+                        {
-+                            cardinalCells.Add(c);
-+                        }
-+                    }
-+                }
-+                return cardinalCells;
-+            }
-+        }
-+
-+        public bool ConnectsTo(CompTNW other)
-+        {
-+            return CardinalConnectionCells.Any(other.InnerConnectionCells.Contains) && CompatibleWith(other);
-+        }
-+
-+        private bool CompatibleWith(CompTNW other)
-+        {
-+            return /*other.Container.CanConnectTo(Container) && */ other.Network.NetworkMode == Network.NetworkMode;
-+        }
-+
-+        public void PrintForGrid(SectionLayer layer)
-+        {
-+            TiberiumContent.TiberiumNetworkPipesOverlay.Print(layer, this.parent);
-+        }
-+
-+        public override void PostDraw()
-+        {
-+            base.PostDraw();
-+            if (!Network.ValidFor(Props.tnwbMode, out string reason))
-+            {
-+                Material mat = MaterialPool.MatFrom(TiberiumContent.MissingConnection, ShaderDatabase.MetaOverlay, Color.white);
-+                float num = (Time.realtimeSinceStartup + 397f * (float)(parent.thingIDNumber % 571)) * 4f;
-+                float num2 = ((float)Math.Sin((double)num) + 1f) * 0.5f;
-+                num2 = 0.3f + num2 * 0.7f;
-+                Material material = FadedMaterialPool.FadedVersionOf(mat, num2);
-+                var c = parent.TrueCenter();
-+                Graphics.DrawMesh(MeshPool.plane08, new Vector3(c.x, AltitudeLayer.MetaOverlays.AltitudeFor(), c.z), Quaternion.identity, material, 0);
-+            }
-+            if (DebugConnectionCells && Find.Selector.IsSelected(parent))
-+            {
-+                GenDraw.DrawFieldEdges(pipeExtensionCells, Color.cyan);
-+                GenDraw.DrawFieldEdges(InnerConnectionCells.ToList(), Color.magenta);
-+                GenDraw.DrawFieldEdges(CardinalConnectionCells.ToList(), Color.green);
-+            }
-+        }
-+
-+        public override void PostPrintOnto(SectionLayer layer)
-+        {
-+            base.PostPrintOnto(layer);
-+            TiberiumContent.TiberiumNetworkPipes.Print(layer, parent);
-+        }
-+
-+        public override string CompInspectStringExtra()
-+        {
-+            StringBuilder sb = new StringBuilder();
-+            if (!Network.ValidFor(Props.tnwbMode, out string reason))
-+            {
-+                sb.AppendLine("TR_MissingConnection".Translate() + ":");
-+                if (!reason.NullOrEmpty())
-+                {
-+                    sb.AppendLine("    " + reason.Translate());
-+                }
-+            }
-+            if (DebugSettings.godMode)
-+            {
-+                sb.AppendLine("Storage Mode: " + Container.AcceptedTypes.ToStringSafeEnumerable());
-+                sb.AppendLine("NetworkID: " + Network.NetworkID + " || " + "NetworkMode: " + Network.NetworkMode);
-+                sb.AppendLine("Has Connection: " + HasConnection);
-+                sb.AppendLine("Container Pct: " + Container.StoredPercent);
-+            }
-+            return sb.ToString().TrimStart().TrimEndNewlines();
-+        }
- 
-         public override IEnumerable<Gizmo> CompGetGizmosExtra()
-         {
-             foreach (Gizmo g in base.CompGetGizmosExtra())
-+            {
-+                yield return g;
-+            }
-+            yield return new Designator_BuildFixed(parent.def);
-+
-+            foreach (Gizmo g in Container.GetGizmos())
-             {
-                 yield return g;
-             }
-+
-             if (DebugSettings.godMode)
-             {
--                if (Props.maxStorage > 0)
-+                yield return new Command_Action
-+                {
-+                    defaultLabel = "View Set",
-+                    defaultDesc = StructureSet.ToString(),
-+                    action = delegate { }
-+                };
-+
-+                yield return new Command_Action
-                 {
--                    yield return new Command_Action
--                    {
--                        defaultLabel = "DEBUG: Container Options",
--                        icon = ContentFinder<Texture2D>.Get("UI/Icons/Network/ContainMode_Storage"),
--                        action = delegate
--                        {
-+                    defaultLabel = "Draw Connections",
-+                    action = delegate
-+                     {
-+                         DebugConnectionCells = !DebugConnectionCells;
-+                     }
-+                };
--                            List<FloatMenuOption> list = new List<FloatMenuOption>();
--                            list.Add(new FloatMenuOption("Add RGB", delegate ()
--                            {
--                                container.TryAddValue(TiberiumType.Red, 500, out int ex);
--                                container.TryAddValue(TiberiumType.Blue, 500, out ex);
--                                container.TryAddValue(TiberiumType.Green, 500, out ex);
--                            }));
--                            list.Add(new FloatMenuOption("Add Gas", delegate ()
--                            {
--                                Log.Message("Adding green");
--                                container.TryAddValue(TiberiumType.Gas, 1000, out int ex);
--                            }));
--                            list.Add(new FloatMenuOption("Add Green", delegate ()
--                            {
--                                Log.Message("Adding green");
--                                container.TryAddValue(TiberiumType.Green, 500, out int ex);
--                            }));
--                            list.Add(new FloatMenuOption("Add Blue", delegate ()
--                            {
--                                container.TryAddValue(TiberiumType.Blue, 500, out int ex);
--                            }));
--                            list.Add(new FloatMenuOption("Add Red", delegate ()
--                            {
--                                container.TryAddValue(TiberiumType.Red, 500, out int ex);
--                            }));
--                            list.Add(new FloatMenuOption("Clear", delegate ()
--                            {
--                                container.Clear();
--                            }));
--                            FloatMenu menu = new FloatMenu(list);
--                            menu.vanishIfMouseDistant = true;
--                            Find.WindowStack.Add(menu);
--                        }
--                    };
--                }
-             }
-         }
-     }
-@@ -113,18 +310,9 @@
-     {
-         public int maxStorage = 0;
-         public bool dropsContents = true;
--        public bool storage = true;
--        public bool transmitter = true;
--
-+        public bool storeEvenly = false;
-+        public List<TiberiumValueType> supportedTypes = new List<TiberiumValueType>();
-+        public TNWMode tnwbMode = TNWMode.None;
--        public int consumePerDay = 0;
--        public bool global = false;
--        public StoreMode storeMode = StoreMode.RGB;
--        public TNWMode tnwMode = TNWMode.Transmitter;
--
--        public CompProperties_TNW()
--        {
--            this.compClass = typeof(CompTNW);
--        }
-     }
- }
- 
-
-[7/10] Comp_ANS_AirLockVent.cs
-  A: Source\TeleCoreSrc\TeleCore.Atmosphere\Vents\Comp_ANS_AirLockVent.cs
-  B: Source\TeleCoreSrc\TeleCore\Atmosphere\Vents\Comp_ANS_AirLockVent.cs
-
---- Source\TeleCoreSrc\TeleCore.Atmosphere\Vents\Comp_ANS_AirLockVent.cs
-+++ Source\TeleCoreSrc\TeleCore\Atmosphere\Vents\Comp_ANS_AirLockVent.cs
-@@ -11,4 +11,3 @@
-         airlockComp = roomComponentAirLock;
-     }
- }
--
-
-[8/10] Comp_ANS_AirVent.cs
-  A: Source\TeleCoreSrc\TeleCore.Atmosphere\Vents\Comp_ANS_AirVent.cs
-  B: Source\TeleCoreSrc\TeleCore\Atmosphere\Vents\Comp_ANS_AirVent.cs
-
---- Source\TeleCoreSrc\TeleCore.Atmosphere\Vents\Comp_ANS_AirVent.cs
-+++ Source\TeleCoreSrc\TeleCore\Atmosphere\Vents\Comp_ANS_AirVent.cs
-@@ -1,6 +1,7 @@
- using System.Collections.Generic;
- using System.Text;
- using TeleCore.Events;
-+using TeleCore.Events.Args;
- using TeleCore.Types;
+--- Source\TeleCoreSrc\TeleCore\Rendering\EffecterDefTR.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\VisualEffects\EffecterDefTR.cs
+@@ -1,8 +1,14 @@
++using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
  using Verse;
  
-@@ -11,17 +12,13 @@
-     private FloatControl speedControl;
- 
-     /// <summary>
--    /// Sus?
-+    ///     Sus?
-     /// </summary>
--    public bool CanVent
--    {
--        get
-+    public bool CanVent => false;
-+
-+    public override bool CanManipulateNow => speedControl.ReachedPeak;
--        {
--            return false;
--            //TODO: return this[TiberiumDefOf.AtmosphericNetwork].ContainerSet[NetworkRole.Controller].Any(c => !c.Full);
--        }
--    }
- 
-+    //TODO: return this[TiberiumDefOf.AtmosphericNetwork].ContainerSet[NetworkRole.Controller].Any(c => !c.Full);
-     public override bool FX_ProvidesForLayer(FXArgs args)
-     {
-         return args.categoryTag == "AirVent";
-@@ -41,8 +38,6 @@
-         base.PostSpawnSetup(respawningAfterLoad);
-         speedControl = new FloatControl(5, 1);
-     }
+-namespace TeleCore.Rendering;
++namespace TiberiumRim
 -
--    public override bool CanManipulateNow => speedControl.ReachedPeak;
- 
-     public override void CompTick()
-     {
-@@ -51,6 +46,7 @@
-             speedControl.Start();
-             return;
-         }
-+
-         speedControl.Stop();
- 
-         //
-@@ -69,12 +65,9 @@
- 
-     public override IEnumerable<Gizmo> CompGetGizmosExtra()
-     {
--        foreach (var gizmo in base.CompGetGizmosExtra())
-+        foreach (var gizmo in base.CompGetGizmosExtra()) yield return gizmo;
--        {
--            yield return gizmo;
--        }
- 
--        yield return new Command_Action()
-+        yield return new Command_Action
-         {
-             defaultLabel = "Toggle Overlay",
-             action = delegate
-@@ -92,4 +85,3 @@
-         compClass = typeof(Comp_ANS_AirVent);
-     }
- }
--
-
-[9/10] Comp_ANS_PassiveVent.cs
-  A: Source\TeleCoreSrc\TeleCore.Atmosphere\Vents\Comp_ANS_PassiveVent.cs
-  B: Source\TeleCoreSrc\TeleCore\Atmosphere\Vents\Comp_ANS_PassiveVent.cs
-
---- Source\TeleCoreSrc\TeleCore.Atmosphere\Vents\Comp_ANS_PassiveVent.cs
-+++ Source\TeleCoreSrc\TeleCore\Atmosphere\Vents\Comp_ANS_PassiveVent.cs
-@@ -1,9 +1,8 @@
- namespace TeleCore.Atmosphere.Vents;
- 
- /// <summary>
--/// Takes in atmospheric gasses passively, or pushes them out
-+///     Takes in atmospheric gasses passively, or pushes them out
- /// </summary>
- public class Comp_ANS_PassiveVent : Comp_ANS_VentBase
+-public class EffecterDefTR : EffecterDef
  {
+-    public int tickInterval = 1;
++    public class EffecterDefTR : EffecterDef
++    {
++        public int tickInterval = 1;
++    }
  }
--
-
-[10/10] Comp_ANS_Vent.cs
-  A: Source\TeleCoreSrc\TeleCore.Atmosphere\Vents\Comp_ANS_Vent.cs
-  B: Source\TeleCoreSrc\TeleCore\Atmosphere\Vents\Comp_ANS_Vent.cs
-
---- Source\TeleCoreSrc\TeleCore.Atmosphere\Vents\Comp_ANS_Vent.cs
-+++ Source\TeleCoreSrc\TeleCore\Atmosphere\Vents\Comp_ANS_Vent.cs
-@@ -1,10 +1,9 @@
- using RimWorld;
- using TeleCore.Atmosphere.Defs;
- using TeleCore.Atmosphere.Rooms;
--using TeleCore.Atmosphere.Utils;
- using TeleCore.Events;
-+using TeleCore.Events.Args;
- using TeleCore.FlowCore;
--using TeleCore.FlowCore.Flow;
- using TeleCore.Logging;
- using TeleCore.Network.Flow;
- using TeleCore.Network.Flow.Clamping;
-@@ -18,12 +17,12 @@
- public class Comp_ANS_Vent : Comp_AtmosphericNetworkStructure
- {
-     private CompFlickable _flickableComp;
--    private IntVec3 intakeCell;
 +
-+    public CompProperties_ANS_Vent VentProps => (CompProperties_ANS_Vent)props;
+
+[9/20] EffecterLayer.cs
+  A: Source\TeleCoreSrc\TeleCore\Root\Types\EffecterLayer.cs
+  B: Source\TeleCoreSrc\TeleCore\Visual\VFX\FX\Effecter\EffecterLayer.cs
+
+--- Source\TeleCoreSrc\TeleCore\Root\Types\EffecterLayer.cs
++++ Source\TeleCoreSrc\TeleCore\Visual\VFX\FX\Effecter\EffecterLayer.cs
+@@ -1,16 +1,14 @@
+-using TeleCore.Events;
+ using TeleCore.Events.Args;
+ using TeleCore.ThingComps;
+ using TeleCore.Visual.VFX.Effecters;
+-using TeleCore.Visual.VFX.FX.Effecter;
+ using Verse;
  
--    public CompProperties_ANS_Vent VentProps => (CompProperties_ANS_Vent)base.props;
-+    public IntVec3 IntakeCell { get; private set; }
+-namespace TeleCore.Types;
++namespace TeleCore.Visual.VFX.FX.Effecter;
  
--    public IntVec3 IntakeCell => intakeCell;
-+    public bool IntakeCellBlocked => IntakeCell.GetEdifice(parent.Map) != null;
--    public bool IntakeCellBlocked => intakeCell.GetEdifice(parent.Map) != null;
+ public class EffecterLayer
+ {
+     private FXEffecterData _data;
+-    private readonly Effecter _effecter;
++    private readonly Verse.Effecter _effecter;
+ 
+     public EffecterLayer(CompFX fxComp, FXEffecterData data, int index)
+     {
+@@ -48,7 +46,7 @@
+     }
  
      //
-     protected override Room AtmosphericSource => IntakeCell.GetRoom(parent.Map);
-@@ -43,35 +42,32 @@
-     public bool IsActive => IsPowered && _flickableComp is null or { SwitchIsOn: true };
- 
-     public virtual bool CanManipulateNow => !IntakeCellBlocked;
-+
-+    public double NextFlow { get; set; }
-+    public double PrevFlow { get; set; } = 0;
-+    public double Move { get; set; }
-+    public double FlowRate { get; set; }
-+
-+    public DefValueStack<NetworkValueDef, double> PrevStackNetwork { get; set; }
-+    public DefValueStack<AtmosphericValueDef, double> PrevStackAtmos { get; set; }
- 
-     public override bool FX_ProvidesForLayer(FXArgs args)
+-    private static Effecter GetEffecter(EffecterDef def, CompFX fxComp)
++    private static Verse.Effecter GetEffecter(EffecterDef def, CompFX fxComp)
      {
--        if (args.categoryTag == "PoweredVent")
-+        if (args.categoryTag == "PoweredVent") return true;
--        {
--            return true;
--        }
-         return base.FX_ProvidesForLayer(args);
+         return def is EffecterExtendedDef exDef ? exDef.SpawnWithFX(fxComp) : def.Spawn();
      }
+
+[10/20] Effecter_MoteMaker.cs
+  A: Source\TiberiumRim\Rendering\Effecter_MoteMaker.cs
+  B: Source\TeleCoreSrc\TeleCore\Rendering\Effecter_MoteMaker.cs
+  C: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\VisualEffects\Effecter_MoteMaker.cs
+
+  Diff A vs B:
+
+--- Source\TiberiumRim\Rendering\Effecter_MoteMaker.cs
++++ Source\TeleCoreSrc\TeleCore\Rendering\Effecter_MoteMaker.cs
+@@ -1,6 +1,6 @@
+ using Verse;
  
-     public override float? FX_GetRotationSpeedOverride(FXLayerArgs args)
-     {
--        if (args.layerTag == "Blades" && IsActive)
-+        if (args.layerTag == "Blades" && IsActive) return 90;
--        {
--            return 90;
--        }
-         return base.FX_GetRotationSpeedOverride(args);
-     }
+-namespace TR;
++namespace TeleCore.Rendering;
  
-     public override bool? FX_ShouldDraw(FXLayerArgs args)
-     {
--        if (_flickableComp is { SwitchIsOn: false })
--        {
--            return args.layerTag == "Closed";
-+        if (_flickableComp is { SwitchIsOn: false }) return args.layerTag == "Closed";
-+
-+        return args.layerTag != "Closed";
--        }
--        else
--        {
--            return args.layerTag != "Closed";
--        }
+ public class Effecter_MoteMaker : Effecter
+ {
+@@ -21,9 +21,31 @@
+     private int ticksUntilMote;
  
-         return base.FX_ShouldDraw(args);
-     }
-@@ -80,24 +76,16 @@
-     {
-         base.PostSpawnSetup(respawningAfterLoad);
-         _flickableComp = parent.GetComp<CompFlickable>();
--        intakeCell = VentProps.GetIntakePos(parent.Position, parent.Rotation);
-+        IntakeCell = VentProps.GetIntakePos(parent.Position, parent.Rotation);
-     }
--
--    public double NextFlow { get; set; } = 0;
--    public double PrevFlow { get; set; } = 0;
--    public double Move { get; set; } = 0;
--    public double FlowRate { get; set; }
--
--    public DefValueStack<NetworkValueDef, double> PrevStackNetwork { get; set; }
--    public DefValueStack<AtmosphericValueDef, double> PrevStackAtmos { get; set; }
- 
-     public override void CompTick()
-     {
-         base.CompTick();
-         if (!CanTickNow || !CanManipulateNow) return;
- 
--        var from = this.OwnedAtmosPart.Volume;
--        var to = this.AtmosRoom.Volume;
-+        var from = OwnedAtmosPart.Volume;
-+        var to = AtmosRoom.Volume;
- 
-         var flow = NextFlow;
-         flow = FlowFunc(from, to, flow);
-@@ -105,24 +93,16 @@
-         Move = flow;
- 
-         foreach (var value in Move)
--        {
-             if (value > 0)
-             {
-                 var move = System.Math.Abs(value.Value);
--                if (from.TryRemove(value.Def.networkValue, move, out var result))
-+                if (from.TryRemove(value.Def.networkValue, move, out var result)) to.TryAdd(value.Def, result.Actual);
--                {
--                    to.TryAdd(value.Def, result.Actual);
--                }
-             }
-             else if (value < 0)
-             {
-                 var move = System.Math.Abs(value.Value);
--                if (to.TryRemove(value.Def, move, out var result))
-+                if (to.TryRemove(value.Def, move, out var result)) from.TryAdd(value.Def.networkValue, result.Actual);
--                {
--                    from.TryAdd(value.Def.networkValue, result.Actual);
--                }
-             }
--        }
-     }
- 
-     private static double SubPressure<Tvalue>(FlowVolumeBase<Tvalue> volume, Tvalue value) where Tvalue : FlowValueDef
-@@ -132,37 +112,13 @@
-             TLog.Warning($"Tried to get pressure from container with {volume.CapacityPerType} capacity!");
-             return 0;
-         }
-+
-         return volume.StoredValueOf(value) / volume.CapacityPerType * 100d;
-     }
- 
--    #region Handle Network->Room
- 
--    private DefValueStack<AtmosphericValueDef, double> NextFlow;
--    private DefValueStack<AtmosphericValueDef, double> Move;
-+    private DefValueStack<AtmosphericValueDef, double> ClampFunc(NetworkVolume netVolume, AtmosphericVolume atmosVolume,
-+        DefValueStack<AtmosphericValueDef, double> previous, ClampType clampType)
--
--    private DefValueStack<AtmosphericValueDef, double> FlowFunc(NetworkVolume netVolume, AtmosphericVolume atmosVolume, DefValueStack<AtmosphericValueDef, double> previous)
--    {
--        var from = netVolume;
--        var to = atmosVolume;
--
--        foreach (var vDef in to.AllowedValues)
--        {
--            var f = previous[vDef];
--            var pressureDiff = SubPressure(from, vDef.networkValue) - SubPressure(to, vDef);
--            var src = (f > 0 ? (from.PrevStack.TotalValue,from.TotalValue,from.MaxCapacity) : (to.PrevStack.TotalValue,to.TotalValue, to.MaxCapacity));
--            var contentDiff = System.Math.Abs((src.Item1 - src.Item2).Value/src.MaxCapacity);
--            f += pressureDiff * AtmosResources.CSquared;
--            f *= 1 - AtmosResources.Friction;
--            f *= 1 - (0.5 * contentDiff); //DampFriction
--            previous[vDef] = f;
--        }
--        return previous;
--    }
--
--    #endregion
--
--
--    private DefValueStack<AtmosphericValueDef, double> ClampFunc(NetworkVolume netVolume, AtmosphericVolume atmosVolume, DefValueStack<AtmosphericValueDef, double> previous, ClampType clampType)
-     {
-         var from = netVolume;
-         var to = atmosVolume;
-@@ -173,7 +129,8 @@
-         foreach (var vDef in to.AllowedValues)
-         {
-             var f = previous[vDef];
--            var clamped = AtmosphericSystem.ClampFunc(d0, d1, from.StoredValueOf(vDef.networkValue), to.StoredValueOf(vDef), from.CapacityPerType, to.CapacityPerType, f.Value);
-+            var clamped = AtmosphericSystem.ClampFunc(d0, d1, from.StoredValueOf(vDef.networkValue),
-+                to.StoredValueOf(vDef), from.CapacityPerType, to.CapacityPerType, f.Value);
-             previous[vDef] = (f.Def, clamped);
-         }
- 
-@@ -203,7 +160,37 @@
-             return adjacencyList.Any(c =>
-                 c.Item2.Value.Parent is Comp_ANS_Vent pvent && pvent.NeedsToReceiveFrom(this));
-         }
-+
-         return false;
+     public SubEffecter_MoteMaker(SubEffecterDef def, Effecter parent) : base(def, parent)
++    {
 +    }
 +
-+    #region Handle Network->Room
-+
-+    private DefValueStack<AtmosphericValueDef, double> NextFlow;
-+    private DefValueStack<AtmosphericValueDef, double> Move;
-+
-+    private DefValueStack<AtmosphericValueDef, double> FlowFunc(NetworkVolume netVolume, AtmosphericVolume atmosVolume,
-+        DefValueStack<AtmosphericValueDef, double> previous)
++    public override void SubEffectTick(TargetInfo A, TargetInfo B)
 +    {
-+        var from = netVolume;
-+        var to = atmosVolume;
++        MakeMote(A, B);
++    }
 +
-+        foreach (var vDef in to.AllowedValues)
++    public override void SubTrigger(TargetInfo A, TargetInfo B, int overrideSpawnTick = -1, bool force = false)
++    {
++        if (Rand.Value < def.chancePerTick) MakeMote(A, B);
++    }
++
++    public void Tick(int ticks, TargetInfo A, TargetInfo B)
+     {
++        if (ticksUntilMote <= 0)
 +        {
-+            var f = previous[vDef];
-+            var pressureDiff = SubPressure(from, vDef.networkValue) - SubPressure(to, vDef);
-+            var src = f > 0
-+                ? (from.PrevStack.TotalValue, from.TotalValue, from.MaxCapacity)
-+                : (to.PrevStack.TotalValue, to.TotalValue, to.MaxCapacity);
-+            var contentDiff = System.Math.Abs((src.Item1 - src.Item2).Value / src.MaxCapacity);
-+            f += pressureDiff * AtmosResources.CSquared;
-+            f *= 1 - AtmosResources.Friction;
-+            f *= 1 - 0.5 * contentDiff; //DampFriction
-+            previous[vDef] = f;
++            if (Rand.Value < def.chancePerTick) SubEffectTick(A, B);
++            ticksUntilMote = def.ticksBetweenMotes;
 +        }
 +
-+        return previous;
++        ticksUntilMote -= ticks;
      }
+ 
++    /*
+     public void Tick(int interval, TargetInfo A, TargetInfo B)
+     {
+         if (ticksUntilMote <= 0)
+@@ -34,17 +56,7 @@
+                 SubTrigger(A, B);
+             ticksUntilMote = def.ticksBetweenMotes;
+         }
+-
+         ticksUntilMote -= interval;
+     }
+-
++    */
+-    public override void SubEffectTick(TargetInfo A, TargetInfo B)
+-    {
+-        MakeMote(A, B);
+-    }
+-
+-    public override void SubTrigger(TargetInfo A, TargetInfo B, int overrideSpawnTick = -1, bool force = false)
+-    {
+-        if (Rand.Value < def.chancePerTick) MakeMote(A, B);
+-    }
+ }
+
+  Diff A vs C:
+
+--- Source\TiberiumRim\Rendering\Effecter_MoteMaker.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\VisualEffects\Effecter_MoteMaker.cs
+@@ -1,50 +1,62 @@
++using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
+ using Verse;
+ 
+-namespace TR;
++namespace TiberiumRim
+-
+-public class Effecter_MoteMaker : Effecter
+ {
+-    public Effecter_MoteMaker(EffecterDef def) : base(def)
++    public class Effecter_MoteMaker : Effecter
+     {
+-    }
++        public new EffecterDefTR def;
+ 
+-    public EffecterDefTR def => (EffecterDefTR)base.def;
++        public Effecter_MoteMaker(EffecterDef def) : base(def)
++        {
++            this.def = (EffecterDefTR)def;
++        }
+ 
+-    public void Tick(TargetInfo A, TargetInfo B)
+-    {
+-        foreach (var t in children) (t as SubEffecter_MoteMaker).Tick(def.tickInterval, A, B);
++        public void Tick(TargetInfo A, TargetInfo B)
++        {
++            for (int i = 0; i < this.children.Count; i++)
++            {
++                (this.children[i] as SubEffecter_MoteMaker).Tick(def.tickInterval, A, B);
++            }
++        }
+     }
+-}
+ 
+-public class SubEffecter_MoteMaker : SubEffecter_Sprayer
++    public class SubEffecter_MoteMaker : SubEffecter_Sprayer
+-{
+-    private int ticksUntilMote;
+-
+-    public SubEffecter_MoteMaker(SubEffecterDef def, Effecter parent) : base(def, parent)
+     {
+-    }
++        private int ticksUntilMote = 0;
+ 
+-    public void Tick(int interval, TargetInfo A, TargetInfo B)
++        public SubEffecter_MoteMaker(SubEffecterDef def, Effecter parent) : base(def, parent)
+-    {
+-        if (ticksUntilMote <= 0)
+         {
+-            if (def.chancePerTick >= 1f)
+-                SubEffectTick(A, B);
+-            else
+-                SubTrigger(A, B);
+-            ticksUntilMote = def.ticksBetweenMotes;
+         }
+ 
+-        ticksUntilMote -= interval;
+-    }
++        public void Tick(int interval, TargetInfo A, TargetInfo B)
++        {
++            if (ticksUntilMote <= 0)
++            {
++                if (def.chancePerTick >= 1f)
++                    SubEffectTick(A, B);
++                else
++                    SubTrigger(A, B);
++                ticksUntilMote = def.ticksBetweenMotes;
++            }
++            ticksUntilMote -= interval;
++        }
+ 
+-    public override void SubEffectTick(TargetInfo A, TargetInfo B)
+-    {
+-        MakeMote(A, B);
+-    }
++        public override void SubEffectTick(TargetInfo A, TargetInfo B)
++        {
++            MakeMote(A, B);
++        }
+ 
+-    public override void SubTrigger(TargetInfo A, TargetInfo B, int overrideSpawnTick = -1, bool force = false)
+-    {
+-        if (Rand.Value < def.chancePerTick) MakeMote(A, B);
++        public override void SubTrigger(TargetInfo A, TargetInfo B)
++        {
++            if (Rand.Value < def.chancePerTick)
++            {
++                MakeMote(A, B);
++            }
++        }
+     }
+ }
 +
-+    #endregion
+
+  Diff B vs C:
+
+--- Source\TeleCoreSrc\TeleCore\Rendering\Effecter_MoteMaker.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\VisualEffects\Effecter_MoteMaker.cs
+@@ -1,62 +1,62 @@
++using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
+ using Verse;
+ 
+-namespace TeleCore.Rendering;
++namespace TiberiumRim
+-
+-public class Effecter_MoteMaker : Effecter
+ {
+-    public Effecter_MoteMaker(EffecterDef def) : base(def)
++    public class Effecter_MoteMaker : Effecter
+     {
+-    }
++        public new EffecterDefTR def;
+ 
+-    public EffecterDefTR def => (EffecterDefTR)base.def;
++        public Effecter_MoteMaker(EffecterDef def) : base(def)
++        {
++            this.def = (EffecterDefTR)def;
++        }
+ 
+-    public void Tick(TargetInfo A, TargetInfo B)
+-    {
+-        foreach (var t in children) (t as SubEffecter_MoteMaker).Tick(def.tickInterval, A, B);
++        public void Tick(TargetInfo A, TargetInfo B)
++        {
++            for (int i = 0; i < this.children.Count; i++)
++            {
++                (this.children[i] as SubEffecter_MoteMaker).Tick(def.tickInterval, A, B);
++            }
++        }
+     }
+-}
+-
+-public class SubEffecter_MoteMaker : SubEffecter_Sprayer
+-{
+-    private int ticksUntilMote;
+ 
+-    public SubEffecter_MoteMaker(SubEffecterDef def, Effecter parent) : base(def, parent)
++    public class SubEffecter_MoteMaker : SubEffecter_Sprayer
+     {
+-    }
++        private int ticksUntilMote = 0;
+ 
+-    public override void SubEffectTick(TargetInfo A, TargetInfo B)
+-    {
+-        MakeMote(A, B);
++        public SubEffecter_MoteMaker(SubEffecterDef def, Effecter parent) : base(def, parent)
++        {
++        }
+-    }
+-
+-    public override void SubTrigger(TargetInfo A, TargetInfo B, int overrideSpawnTick = -1, bool force = false)
+-    {
+-        if (Rand.Value < def.chancePerTick) MakeMote(A, B);
+-    }
+ 
+-    public void Tick(int ticks, TargetInfo A, TargetInfo B)
++        public void Tick(int interval, TargetInfo A, TargetInfo B)
+-    {
+-        if (ticksUntilMote <= 0)
+         {
+-            if (Rand.Value < def.chancePerTick) SubEffectTick(A, B);
+-            ticksUntilMote = def.ticksBetweenMotes;
++            if (ticksUntilMote <= 0)
++            {
++                if (def.chancePerTick >= 1f)
++                    SubEffectTick(A, B);
++                else
++                    SubTrigger(A, B);
++                ticksUntilMote = def.ticksBetweenMotes;
++            }
++            ticksUntilMote -= interval;
+         }
+ 
+-        ticksUntilMote -= ticks;
+-    }
++        public override void SubEffectTick(TargetInfo A, TargetInfo B)
++        {
++            MakeMote(A, B);
++        }
+ 
+-    /*
++        public override void SubTrigger(TargetInfo A, TargetInfo B)
+-    public void Tick(int interval, TargetInfo A, TargetInfo B)
+-    {
+-        if (ticksUntilMote <= 0)
+         {
+-            if (def.chancePerTick >= 1f)
+-                SubEffectTick(A, B);
+-            else
+-                SubTrigger(A, B);
++            if (Rand.Value < def.chancePerTick)
++            {
++                MakeMote(A, B);
++            }
+-            ticksUntilMote = def.ticksBetweenMotes;
+         }
+-        ticksUntilMote -= interval;
+     }
+-    */
+ }
++
+
+[11/20] EventCompositionDef.cs
+  A: Source\TeleCoreSrc\TeleCore.Research\Events\EventCompositionDef.cs
+  B: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Research\Events\EventCompositionDef.cs
+
+--- Source\TeleCoreSrc\TeleCore.Research\Events\EventCompositionDef.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Research\Events\EventCompositionDef.cs
+@@ -1,9 +1,15 @@
++using System;
+ using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
+ using Verse;
+ 
+-namespace TeleCore.Research.Events;
++namespace TiberiumRim
+-
+-public class EventCompositionDef : Def
+ {
+-    public List<EventDef> events;
++    public class EventCompositionDef : Def
++    {
++        public List<EventDef> events;
++    }
+ }
++
+
+[12/20] EventDef.cs
+  A: Source\TeleCoreSrc\TeleCore.Research\Events\EventDef.cs
+  B: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Research\Events\EventDef.cs
+
+--- Source\TeleCoreSrc\TeleCore.Research\Events\EventDef.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Research\Events\EventDef.cs
+@@ -1,78 +1,45 @@
+-// TODO: Decouple from TiberiumRim-specific types (TRUtils, TRLog, TRContent, TRCDefOf, TRThingDef)
+-
+ using System;
+ using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using Verse;
+ using RimWorld;
+-using TeleCore.Events;
+-using TeleCore.GameData.Defs;
+-using TeleCore.Research.Defs;
+-using Verse;
+-
+-namespace TeleCore.Research.Events;
+ 
+-public class DiscoveryList
++namespace TiberiumRim
+ {
+-    public List<DiscoveryDef> thingsToDiscover;
++    public class DiscoveryProperties
++    {
++        public TargetProperties targets;
++        public List<HediffDef> hediffs;
++    }
+ 
+-    public void Discover(string desc = default)
++    public class EventDef : Def
+     {
+-        thingsToDiscover.ForEach(d => d.Discover());
+-    }
+-}
++        [Unsaved]
++        public List<TResearchDef> unlocksResearch = new List<TResearchDef>();
++
++        public Type eventClass = typeof(BaseEvent);
++        public float activeDays = 0;
++        public DiscoveryProperties discoverWith;
+ 
+-public class EventTriggerProperties
+-{
++        //TODO: Implement full use of incidentproperties
++        public List<IncidentProperties> incidents;
+-    public List<HediffDef> hediffs;
+-    public TargetProperties targets;
+ 
+-    public bool TriggersEvent<T>(T obj, out LookTargets lookTargets)
+-    {
+-        lookTargets = null;
+-        if (obj is Hediff hediff)
++        public int ActiveTimeTicks => (int)(GenDate.TicksPerDay * activeDays);
++        public bool Instant => ActiveTimeTicks == 0;
++        public bool IsActive => TRUtils.EventManager().IsActive(this);
++        public bool IsFinished => TRUtils.EventManager().IsFinished(this);
+-        {
+-            if (hediffs.NullOrEmpty()) return false;
+-            lookTargets = hediff.pawn;
+-            return hediffs.Contains(hediff.def);
+-        }
+ 
+-        if (obj is Thing thing)
++        public override void ResolveReferences()
+         {
+-            if (targets == null) return false;
+-            lookTargets = thing;
+-            return targets.Accepts(thing);
++            foreach (var research in DefDatabase<TResearchDef>.AllDefs)
++            {
++                if (research.requisites?.events?.Contains(this) ?? false)
++                {
++                    unlocksResearch.Add(research);
++                }
++            }
+         }
+-
+-        return false;
+     }
  }
 -
+-public class EventDef : Def
+-{
+-    public float activeDays = 0;
+-
+-    [Unsaved] public BaseEvent cachedEvent;
+-
+-    public DiscoveryList discoveries;
+ 
+-    public Type eventClass = typeof(BaseEvent);
+-
+-    //TODO: Implement full use of incidentproperties
+-    public List<IncidentProperties> incidents;
+-    public LetterProperties letter;
+-    public EventTriggerProperties triggerProps;
+-
+-    [Unsaved] public List<TResearchDef> unlocksResearch = new();
+-
+-    public int ActiveTimeTicks => (int)(GenDate.TicksPerDay * activeDays);
+-    public bool Instant => ActiveTimeTicks == 0;
+-    public bool Activated => IsFinished || IsActive;
+-    public bool IsActive => TRUtils.EventManager().IsActive(this);
+-    public bool IsFinished => TRUtils.EventManager().IsFinished(this);
+-
+-    public override void ResolveReferences()
+-    {
+-        foreach (var research in DefDatabase<TResearchDef>.AllDefs)
+-            if (research.requisites?.events?.Contains(this) ?? false)
+-                unlocksResearch.Add(research);
+-    }
+-}
+
+[13/20] EventLetter.cs
+  A: Source\TeleCoreSrc\TeleCore.Research\Events\EventLetter.cs
+  B: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Research\Events\EventLetter.cs
+
+--- Source\TeleCoreSrc\TeleCore.Research\Events\EventLetter.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Research\Events\EventLetter.cs
+@@ -1,61 +1,47 @@
+-// TODO: Decouple from TiberiumRim-specific types (TRUtils, TRLog, TRContent, TRCDefOf, TRThingDef)
++using System;
+-
+ using System.Collections.Generic;
+ using System.Linq;
+-using TeleCore.Research.Window;
++using System.Text;
++using System.Threading.Tasks;
+ using Verse;
+ 
+-namespace TeleCore.Research.Events;
++namespace TiberiumRim
+-
+-public class EventLetter : StandardLetter
+ {
+-    private List<EventDef> events = new();
++    public class EventLetter : StandardLetter
++    {
++        private List<EventDef> events;
+ 
+-    public override IEnumerable<DiaOption> Choices
++        public void AddEvents(List<EventDef> events)
+-    {
+-        get
+         {
+-            foreach (var choice in base.Choices) yield return choice;
++            this.events = events;
++        }
+ 
+-            yield return new DiaOption("TR_OpenTab".Translate())
++        public override IEnumerable<DiaOption> Choices
++        {
++            get
+             {
+-                action = delegate
++                foreach (var choice in base.Choices)
++                {
++                    yield return choice;
++                }
++                
++                yield return new DiaOption("TR_OpenTab".Translate())
+                 {
+-                    Find.MainTabsRoot.SetCurrentTab(TRCDefOf.TiberiumTab);
+-                    var researchWindow = (MainTabWindow_TResearch)Find.MainTabsRoot.OpenTab.TabWindow;
+-                    researchWindow.SelTab = ResearchTabOption.Projects;
+-                    var proj = events.First(e => !e.unlocksResearch.NullOrEmpty()).unlocksResearch.First();
+-                    researchWindow.SetProject(proj);
++                    action = delegate
++                    {
++                        Find.MainTabsRoot.SetCurrentTab(TiberiumDefOf.TiberiumTab);
++                        MainTabWindow_TibResearch.SelTab = ResearchTabOption.Projects;
++                        var proj = events.First(e => !e.unlocksResearch.NullOrEmpty()).unlocksResearch.First();
++                        var manager = TRUtils.ResearchManager();
++                        MainTabWindow_TibResearch.SelProject = proj;
++                        if (!manager.IsOpen(proj.ParentGroup))
++                            manager.OpenClose(proj.ParentGroup);
+ 
+-                    var manager = ResearchRoot.Research;
+-                    if (!manager.IsOpen(proj.ParentGroup))
+-                        manager.OpenClose(proj.ParentGroup);
+-
++                        //TODO: Select event
++                    }
++                };
++            }
+-                    //TODO: Select event
+-                }
+-            };
+         }
+     }
+-
++}
+ 
+-    public override void ExposeData()
+-    {
+-        base.ExposeData();
+-        Scribe_Collections.Look(ref events, "events");
+-    }
+-
+-    public override void Received()
+-    {
+-        base.Received();
+-    }
+-
+-    public void AddEvents(List<EventDef> events)
+-    {
+-        this.events.AddRange(events);
+-    }
+-
+-    public void AddEvent(EventDef eventDef)
+-    {
+-        events.Add(eventDef);
+-    }
+-}
+
+[14/20] EventManager.cs
+  A: Source\TeleCoreSrc\TeleCore.Research\Events\EventManager.cs
+  B: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Research\Events\EventManager.cs
+
+--- Source\TeleCoreSrc\TeleCore.Research\Events\EventManager.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Research\Events\EventManager.cs
+@@ -1,107 +1,67 @@
+ using System;
+ using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
+ using RimWorld.Planet;
+-using TeleCore.Events;
+-using TeleCore.Events.Args;
+ using Verse;
+-
+-namespace TeleCore.Research.Events;
+ 
+-public class EventManager : WorldComponent
++namespace TiberiumRim
+ {
+-    public List<BaseEvent> allEvents = new();
++    public class EventManager : WorldComponent
+-    public Dictionary<EventDef, bool> currentEvents = new();
+-    public List<EventDef> newEvents = new();
+-
+-    public EventManager(World world) : base(world)
+     {
+-        newEvents = DefDatabase<EventDef>.AllDefsListForReading;
+-        GlobalEventHandler.ThingSpawned += CheckForEventStart;
++        public List<BaseEvent> allEvents = new List<BaseEvent>();
++        public Dictionary<EventDef, bool> currentEvents = new Dictionary<EventDef, bool>();
+-        GlobalEventHandler.PawnHediffChanged += CheckForEventStartHediff;
+-    }
+ 
+-    public override void ExposeData()
+-    {
+-        base.ExposeData();
++        public EventManager(World world) : base(world)
++        {
++        }
+-        Scribe_Collections.Look(ref newEvents, "newEvents");
+-        Scribe_Collections.Look(ref allEvents, "allEvents");
+-        Scribe_Collections.Look(ref currentEvents, "currentEvents");
+-    }
+ 
+-    public override void WorldComponentTick()
++        public override void ExposeData()
+-    {
+-        base.WorldComponentTick();
+-        for (var i = allEvents.Count - 1; i >= 0; i--)
+         {
+-            var curEvent = allEvents[i];
+-            if (!currentEvents[curEvent.def]) curEvent.EventTick();
++            base.ExposeData();
++            Scribe_Collections.Look(ref allEvents, "allEvents");
++            Scribe_Collections.Look(ref currentEvents, "currentEvents");
+         }
+-    }
+ 
+-    private void CheckForEventStartHediff(PawnHediffChangedEventArgs args)
++        public override void WorldComponentTick()
+-    {
+-        if (newEvents.NullOrEmpty()) return;
+-        for (var i = newEvents.Count - 1; i >= 0; i--)
+         {
+-            var newEvent = newEvents[i];
+-            if (newEvent.triggerProps == null) continue;
+-            if (newEvent.triggerProps.TriggersEvent(args.Hediff, out LookTargets targets))
+-                StartEvent(newEvent, targets);
++            base.WorldComponentTick();
++            for (int i = allEvents.Count - 1; i >= 0; i--)
++            {
++                var @event = allEvents[i];
++                if (!currentEvents[@event.def])
++                {
++                    @event.EventTick();
++                }
++            }
+         }
+-    }
++
++        //TODO: Implement event scanner
++        //TODO: Trigger Events when certain things spawn/happen
+ 
+-    private void CheckForEventStart(ThingStateChangedEventArgs args)
++        public void StartEvent(EventDef def)
+-    {
+-        if (newEvents.NullOrEmpty()) return;
+-        for (var i = newEvents.Count - 1; i >= 0; i--)
+         {
+-            var newEvent = newEvents[i];
+-            if (newEvent.triggerProps == null) continue;
+-            if (newEvent.triggerProps.TriggersEvent(args.Thing, out LookTargets targets)) StartEvent(newEvent, targets);
++            BaseEvent baseEvent = (BaseEvent) Activator.CreateInstance(def.eventClass);
++            baseEvent.StartEvent(def);
++            allEvents.Add(baseEvent);
++            currentEvents.Add(baseEvent.def, false);
+         }
+-    }
+ 
+-    public BaseEvent StartEvent(EventDef def, LookTargets targets = null)
++        public void Notify_EventFinished(BaseEvent baseEvent)
+-    {
+-        if (def.IsActive)
+         {
+-            Log.Warning("Trying to start event " + def.LabelCap + " which is already started!");
++            currentEvents[baseEvent.def] = true;
+-            return def.cachedEvent;
+         }
+ 
+-        var baseEvent = (BaseEvent)Activator.CreateInstance(def.eventClass);
+-        baseEvent.StartEvent(def);
+-        baseEvent.EventTargets = targets;
+-        def.cachedEvent = baseEvent;
++        public bool IsActive(EventDef def)
++        {
++            return currentEvents.TryGetValue(def, out bool value) && !value;
++        }
+-        allEvents.Add(baseEvent);
+-        currentEvents.Add(baseEvent.def, false);
+ 
+-        newEvents.Remove(def);
+-        return baseEvent;
++        public bool IsFinished(EventDef def)
++        {
++            return currentEvents.TryGetValue(def, out bool value) && value;
++        }
+     }
+-
++}
+-    public void ResetEvent(EventDef def)
+-    {
+-        //Remove from active pool
+-        allEvents.RemoveAll(e => e.def == def);
+-        currentEvents.Remove(def);
+-
+-        //Add to remaining pool
+-        newEvents.Add(def);
+-    }
+-
+-    public void Notify_EventFinished(BaseEvent baseEvent)
+-    {
+-        currentEvents[baseEvent.def] = true;
+-    }
+-
+-    public bool IsActive(EventDef def)
+-    {
+-        return currentEvents.TryGetValue(def, out var value);
+-    }
+ 
+-    public bool IsFinished(EventDef def)
+-    {
+-        return currentEvents.TryGetValue(def, out var value) && value;
+-    }
+-}
+
+[15/20] EventScannerTable.cs
+  A: Source\TeleCoreSrc\TeleCore.Research\OldRef\EventScannerTable.cs
+  B: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Research\Events\EventScannerTable.cs
+
+--- Source\TeleCoreSrc\TeleCore.Research\OldRef\EventScannerTable.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Research\Events\EventScannerTable.cs
+@@ -1,11 +1,17 @@
+-// Preserved from TiberiumRim/Research/Events/EventScannerTable.cs
++using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
+ 
+-namespace TeleCore.Research.OldRef;
++namespace TiberiumRim
+-
+-public class EventScannerTable
+ {
+-    public EventScannerTable()
++    public class EventScannerTable
+     {
++        public EventScannerTable()
++        {
++
++        }
+     }
+ }
+ 
+
+[16/20] Event_TiberiumArrival.cs
+  A: Source\TiberiumRim\GameParts\Incidents\Event_TiberiumArrival.cs
+  B: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Research\Events\Event_TiberiumArrival.cs
+
+--- Source\TiberiumRim\GameParts\Incidents\Event_TiberiumArrival.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\Research\Events\Event_TiberiumArrival.cs
+@@ -1,61 +1,65 @@
++using System;
+ using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
+ using RimWorld;
+-using TeleCore.Research.Events;
+ using Verse;
+ 
+-namespace TR.Incidents;
++namespace TiberiumRim
+-
+-public class Event_TiberiumArrival : BaseEvent
+ {
+-    private Skyfaller skyfaller;
++    public class Event_TiberiumArrival : BaseEvent
+-    private LocalTargetInfo targetInfo = LocalTargetInfo.Invalid;
+-
+-    protected override float WeightForMap(Map map)
+     {
+-        var baseVal = base.WeightForMap(map);
+-        if (map.TileInfo.Rivers != null)
+-            return baseVal * 10;
+-        return baseVal;
+-    }
++        public override void EventAction()
++        {
++            base.EventAction();
++            SkyfallerValue skyfaller = TiberiumCraterDef();
++            Map map = MapForEvent;
++            Log.Message("Should spawn Meteor Now!" + skyfaller.innerThing);
++            if (LandingSiteFor(skyfaller, map, out IntVec3 cell))
++            {
++                var faller = SkyfallerMaker.MakeSkyfaller(skyfaller.skyfallerDef, skyfaller.innerThing);
++                GenSpawn.Spawn(faller, cell, map);
++            }
++        }
+ 
+-    public override void EventSetup()
++        private SkyfallerValue TiberiumCraterDef()
+-    {
+-        if (LandingSiteFor(TiberiumDefOf.TiberiumMeteorIncoming, MapForEvent, out var cell))
+         {
+-            targetInfo = cell;
+-            EventTargets = new LookTargets(cell, MapForEvent);
+-            skyfaller = SkyfallerMaker.MakeSkyfaller(TiberiumDefOf.TiberiumMeteorIncoming,
+-                ThingMaker.MakeThing(TiberiumDefOf.TiberiumMeteoriteChunk));
++            List<SkyfallerValue> skyFallers = new List<SkyfallerValue>()
++            {
++                new SkyfallerValue(TiberiumDefOf.GreenTiberiumMeteorIncoming, TiberiumDefOf.TiberiumCraterGreen,1, 0.66f), 
++                new SkyfallerValue(TiberiumDefOf.BlueTiberiumMeteorIncoming, TiberiumDefOf.TiberiumCraterBlue,1, 0.33f), 
++                new SkyfallerValue(TiberiumDefOf.GreenTiberiumMeteorIncoming, TiberiumDefOf.TiberiumCraterHybrid,1, 0.22f),
++                new SkyfallerValue(TiberiumDefOf.RedTiberiumShardIncoming, TiberiumDefOf.RedTiberiumShard, 1, 0.01f)
++            };
++            return skyFallers.RandomElementByWeight(s => s.chance);
+         }
+-    }
++
++        private bool LandingSiteFor(SkyfallerValue skyfaller, Map map, out IntVec3 foundCell)
++        {
++            return CellFinderLoose.TryFindSkyfallerCell(skyfaller.skyfallerDef, map, out foundCell, 20, default(IntVec3), -1, true, true, false, true, false, true, delegate (IntVec3 x)
++            {
++                //if (x.GetTiberium(map) != null) return false;
++                TerrainDef terrain = x.GetTerrain(map);
++                if (terrain.driesTo != null)
++                    return false;
+ 
+-    public override bool CanDoEventAction(int curTick)
+-    {
+-        return base.CanDoEventAction(curTick);
+-    }
++                bool tryRiver = !map.TileInfo.Rivers.NullOrEmpty();
++                MapComponent_TiberiumWater river = map.GetComponent<MapComponent_TiberiumWater>();
++                if (tryRiver && river.LandableCells.Contains(x))
++                    return false;
+ 
+-    public override void EventAction()
+-    {
+-        var map = MapForEvent;
+-        if (targetInfo.IsValid) GenSpawn.Spawn(skyfaller, targetInfo.Cell, map);
+-    }
++                //Min Distance From Other Craters
++                List<Thing> things = map.listerThings.ThingsOfDef(skyfaller.innerThing);
++                float min = 99;
++                if (!things.NullOrEmpty())
++                    min = things.Min(d => d.Position.DistanceTo(x));
++                if (min < 46f) return false;
+ 
+-    private SkyfallerValue TiberiumCraterDef()
++                return true;
+-    {
+-        return new SkyfallerValue(TiberiumDefOf.TiberiumMeteorIncoming, TiberiumDefOf.TiberiumMeteoriteChunk);
+-        var skyFallers = new List<SkyfallerValue>
+-        {
+-            new(TiberiumDefOf.GreenTiberiumMeteorIncoming, TiberiumDefOf.TiberiumCraterGreen, 1, 0.66f),
+-            new(TiberiumDefOf.BlueTiberiumMeteorIncoming, TiberiumDefOf.TiberiumCraterBlue, 1, 0.33f),
+-            new(TiberiumDefOf.GreenTiberiumMeteorIncoming, TiberiumDefOf.TiberiumCraterHybrid, 1, 0.22f),
+-            new(TiberiumDefOf.RedTiberiumShardIncoming, TiberiumDefOf.RedTiberiumShard, 1, 0.01f)
+-        };
+-        return skyFallers.RandomElementByWeight(s => s.chance);
+-    }
+ 
+-    private bool LandingSiteFor(ThingDef skyfaller, Map map, out IntVec3 foundCell)
+-    {
++            });
++        }
+-        return CellFinderLoose.TryFindSkyfallerCell(skyfaller, map, out foundCell, 20, default(IntVec3), -1, true, true,
+-            false, false, false, false, x => CellUtils.AllowTiberiumMeteorite(x, map));
+     }
+ }
++
+
+[17/20] ExtendedGraphicData.cs
+  A: Source\TeleCoreSrc\TeleCore\Rendering\ExtendedGraphicData.cs
+  B: Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\VisualEffects\ExtendedGraphicData.cs
+
+--- Source\TeleCoreSrc\TeleCore\Rendering\ExtendedGraphicData.cs
++++ Source\TRDupes\TiberiumRim\Source\TiberiumRim\TiberiumRim\VisualEffects\ExtendedGraphicData.cs
+@@ -1,13 +1,20 @@
++using System;
+ using System.Collections.Generic;
++using System.Linq;
++using System.Text;
+ using UnityEngine;
++using Verse;
+ 
+-namespace TeleCore.Rendering;
++namespace TiberiumRim
+-
+-public class ExtendedGraphicData
+ {
+-    public bool alignToBottom = false;
+-    public Vector3 drawOffset = Vector3.zero;
+-    public bool? drawRotatedOverride = null;
+-    public List<string> linkStrings;
+-    public bool rotateDrawSize = true;
++    public class ExtendedGraphicData
++    {
++        public bool alignToBottom = false;
++        public bool rotateDrawSize = true;
++        public bool repeatSprite = false;
++        public int spriteTicks = 10;
++        public Vector3 drawOffset = Vector3.zero;
++        public List<string> linkStrings;
++    }
+ }
++
+
+[18/20] FadeProperties.cs
+  A: Source\TeleCoreSrc\TeleCore\Root\Types\FadeProperties.cs
+  B: Source\TeleCoreSrc\TeleCore\Visual\VFX\FX\Layer\Properties\FadeProperties.cs
+
+--- Source\TeleCoreSrc\TeleCore\Root\Types\FadeProperties.cs
++++ Source\TeleCoreSrc\TeleCore\Visual\VFX\FX\Layer\Properties\FadeProperties.cs
+@@ -1,10 +1,10 @@
+ using Verse;
+ 
+-namespace TeleCore.Types;
++namespace TeleCore.Visual.VFX.FX.Layer.Properties;
+ 
+ public class FadeProperties
+ {
+     public int initialOpacityOffset;
+-    public int duration = 60;
++    public int opacityDuration = 60;
+     public FloatRange opacityRange = FloatRange.One;
+ }
+
+[19/20] FixesConfig.cs
+  A: Source\TeleCoreSrc\RW\Tele.RW.Loader\Config\FixesConfig.cs
+  B: Source\TeleCoreSrc\TeleCore\Mod\Loader\Configs\FixesConfig.cs
+
+--- Source\TeleCoreSrc\RW\Tele.RW.Loader\Config\FixesConfig.cs
++++ Source\TeleCoreSrc\TeleCore\Mod\Loader\Configs\FixesConfig.cs
+@@ -1,6 +1,6 @@
+ using Verse;
+ 
+-namespace TeleCore.Loader.Configs;
++namespace TeleCore.Mod.Loader.Configs;
+ 
+ public class FixesConfig : IExposable
+ {
+
+[20/20] FlowBoxSet.cs
+  A: Source\TeleCoreSrc\TeleCore.FlowCore\Networks\Flow\FlowBoxSet.cs
+  B: Source\TeleCoreSrc\TeleCore\Data\Network\Flow\FlowBoxSet.cs
+
+--- Source\TeleCoreSrc\TeleCore.FlowCore\Networks\Flow\FlowBoxSet.cs
++++ Source\TeleCoreSrc\TeleCore\Data\Network\Flow\FlowBoxSet.cs
+@@ -1,4 +1,4 @@
+-namespace TeleCore.FlowCore.Flow;
++namespace TeleCore.Network.Flow;
+ 
+ public class FlowBoxSet
+ {

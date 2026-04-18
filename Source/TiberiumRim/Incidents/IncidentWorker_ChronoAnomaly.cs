@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace TR;
+namespace TR.Incidents;
 
 public class IncidentWorker_ChronoAnomaly : IncidentWorker
 {
@@ -10,10 +10,7 @@ public class IncidentWorker_ChronoAnomaly : IncidentWorker
 
     public override bool CanFireNowSub(IncidentParms parms)
     {
-        if (base.CanFireNowSub(parms))
-        {
-            return true;
-        }
+        if (base.CanFireNowSub(parms)) return true;
         return false;
     }
 

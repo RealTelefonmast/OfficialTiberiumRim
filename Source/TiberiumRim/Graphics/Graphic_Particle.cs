@@ -1,5 +1,4 @@
-﻿using TeleCore.Rendering.Particles;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
 namespace TR;
@@ -39,7 +38,7 @@ public class Graphic_Particle : Graphic
         var material = MatSingle;
 
         propertyBlock.SetColor(ShaderPropertyIDs.Color, color);
-        UnityEngine.Graphics.DrawMesh(MeshPool.plane10, matrix, MatSingle, layer, null, 0, propertyBlock);
+        Graphics.DrawMesh(MeshPool.plane10, matrix, MatSingle, layer, null, 0, propertyBlock);
     }
 
     public override void Init(GraphicRequest req)

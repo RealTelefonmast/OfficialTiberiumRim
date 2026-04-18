@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
 using TR.Networks.TiberiumNetwork;
-using Verse;
 using Verse.AI;
 
 namespace TR;

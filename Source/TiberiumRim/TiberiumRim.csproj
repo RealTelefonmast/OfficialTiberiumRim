@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
@@ -50,13 +50,6 @@
         <Reference Include="Assembly-CSharp">
             <HintPath>TeleCoreSrc\TeleCore\obj\Debug\PublicizedAssemblies\Assembly-CSharp.878BEDC6BF7C7756A8661A89C882394A\Assembly-CSharp.dll</HintPath>
         </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\TeleCoreSrc\TeleCore.Research\TeleCore.Research.csproj"/>
-        <ProjectReference Include="..\TeleCoreSrc\TeleCore\TeleCore.csproj"/>
-        <ProjectReference Include="TeleCoreSrc\TeleCore\TeleCore.csproj"/>
-        <ProjectReference Include="..\TeleCoreSrc\TeleCore.Atmosphere\TeleCore.Atmosphere.csproj"/>
     </ItemGroup>
 
 </Project>

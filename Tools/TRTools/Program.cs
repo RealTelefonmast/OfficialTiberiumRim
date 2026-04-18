@@ -23,7 +23,13 @@
 //   trtool --delete-identical --confirm   actually delete them
 //   trtool --flatten-textures         dry-run: copy all images into a flat Textures_Dump folder
 //   trtool --flatten-textures --confirm   actually perform the copy
-//   trtool --dest <name>              override dump folder name (default: Textures_Dump)
+//   trtool --dest <name>              override dump folder name (default depends on mode)
+//
+//   trtool --sort-files               dry-run: analyse .cs inheritance, copy files into SortedCodeTree/<Category>/
+//   trtool --sort-files --confirm     actually perform the copy
+//   trtool --sort-files --scope <subpath>        restrict to a subtree (e.g. Source/TiberiumRim)
+//   trtool --sort-files --exclude <paths>        comma-separated relative paths to skip (e.g. Source/TRDupes,Source/TiberiumRim)
+//   trtool --sort-files --dest <name>            override output folder name (default: SortedCodeTree)
 
 using System;
 using System.Collections.Generic;
@@ -66,6 +72,7 @@ namespace TRTools
             string skipArg    = ResolveArg(args, "--skip-file");
             string depthArg   = ResolveArg(args, "--depth");
             string sampleArg  = ResolveArg(args, "--sample");
+            string excludeArg = ResolveArg(args, "--exclude");
 
             int maxDepth = int.MaxValue;
             if (depthArg != null && int.TryParse(depthArg, out int d))
@@ -87,13 +94,15 @@ namespace TRTools
             bool treeOnly           = args.Contains("--tree-only");
             bool deleteIdentical    = args.Contains("--delete-identical");
             bool flattenTextures    = args.Contains("--flatten-textures");
+            bool sortFiles          = args.Contains("--sort-files");
             bool confirm            = args.Contains("--confirm");
             bool verbose            = args.Contains("--verbose");
-            bool noTree             = stats || dupesOnly || fileFilter != null || deleteIdentical || flattenTextures || args.Contains("--no-tree");
+            bool noTree             = stats || dupesOnly || fileFilter != null || deleteIdentical || flattenTextures || sortFiles || args.Contains("--no-tree");
             bool noDiff             = dupesOnly || args.Contains("--no-diff");
             bool noIdentical        = args.Contains("--no-identical");
             bool identicalOnly      = args.Contains("--identical-only");
-            string destName         = ResolveArg(args, "--dest") ?? "Textures_Dump";
+            string defaultDest      = sortFiles ? "SortedCodeTree" : "Textures_Dump";
+            string destName         = ResolveArg(args, "--dest") ?? defaultDest;
 
             if (outputPath != null)
                 _fileOut = new StreamWriter(outputPath, append: false, Encoding.UTF8);
@@ -130,6 +139,34 @@ namespace TRTools
             if (flattenTextures)
             {
                 RunFlattenTextures(rootPath, scanRoot, destName, sampleLimit, verbose, confirm);
+                Finish();
+                return;
+            }
+
+            // --sort-files: analyse .cs inheritance and copy into a categorised dump folder
+            if (sortFiles)
+            {
+                string destDir = Path.GetFullPath(Path.Combine(rootPath, destName));
+
+                // Build the set of absolute excluded paths
+                var excludedAbsPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+                if (excludeArg != null)
+                    foreach (string rel in excludeArg.Split(','))
+                    {
+                        string trimmed = rel.Trim();
+                        if (trimmed.Length > 0)
+                            excludedAbsPaths.Add(Path.GetFullPath(Path.Combine(rootPath, trimmed)));
+                    }
+
+                FileSorter.Run(
+                    rootPath,
+                    scanRoot,
+                    excludedAbsPaths,
+                    destDir,
+                    confirm,
+                    Colored,
+                    Write,
+                    title => PrintSection(title));
                 Finish();
                 return;
             }

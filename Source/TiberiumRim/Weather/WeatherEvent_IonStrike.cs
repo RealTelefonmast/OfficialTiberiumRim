@@ -1,5 +1,5 @@
 ﻿using RimWorld;
-using TR.TextureContent;
+using TiberiumRim;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -97,7 +97,7 @@ public class WeatherEvent_IonStrike : WeatherEvent
 
     public override void WeatherEventDraw()
     {
-        UnityEngine.Graphics.DrawMesh(boltMesh, strikeLoc.ToVector3ShiftedWithAltitude(AltitudeLayer.Weather),
+        Graphics.DrawMesh(boltMesh, strikeLoc.ToVector3ShiftedWithAltitude(AltitudeLayer.Weather),
             Quaternion.identity, FadedMaterialPool.FadedVersionOf(TiberiumContent.IonLightningMat, LightningBrightness),
             0);
     }

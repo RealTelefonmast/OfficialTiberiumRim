@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using RimWorld;
-using TeleCore.ThingComps;
-using TeleCore.ThingComps.Props;
+using TeleCore.CompProperties;
+using TeleCore.Comps;
 using UnityEngine;
 using Verse;
 

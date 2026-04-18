@@ -188,7 +188,7 @@ This structure has resistance to Nod weapons.</description>
 		<description>Allows you to construct multiple connected turrets.
 		
 This structure has resistance to Nod weapons.</description>
-		<thingClass>TeleCore.Building_TurretHubCore</thingClass>
+		<thingClass>TeleCore.TeleTurrets.Hubs.Building_TurretHubCore</thingClass>
 		<size>(2,2)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -349,7 +349,7 @@ This structure has resistance to Nod weapons.</description>
 	</TR.TRThingDef>
 
 	<TR.TRThingDef Name="NodHubTurret" ParentName="NODTurret" Abstract="True">
-		<thingClass>TeleCore.Building_HubTurret</thingClass>
+		<thingClass>TeleCore.TeleTurrets.Hubs.Building_HubTurret</thingClass>
 		<size>(2,2)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -497,7 +497,7 @@ This structure has resistance to Nod weapons.</description>
 			</li>
 		</comps>
 		<placeWorkers>
-			<li>TeleCore.PlaceWorker_AtTurretHub</li>
+			<li>TeleCore.PlaceWorkers.PlaceWorker_AtTurretHub</li>
 		</placeWorkers>
 		<modExtensions>
 			<li Class="TeleCore.SubMenuExtension">
@@ -611,7 +611,7 @@ This structure has resistance to Nod weapons.</description>
 			</li>
 		</comps>
 		<placeWorkers>
-			<li>TeleCore.PlaceWorker_AtTurretHub</li>
+			<li>TeleCore.PlaceWorkers.PlaceWorker_AtTurretHub</li>
 		</placeWorkers>
 		<modExtensions>
 			<li Class="TeleCore.SubMenuExtension">

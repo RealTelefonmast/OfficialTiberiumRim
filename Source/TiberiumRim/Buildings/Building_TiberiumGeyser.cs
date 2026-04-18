@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using RimWorld;
-using TeleCore.Atmosphere;
-using TeleCore.Events.Args;
-using TeleCore.Utils;
+using TiberiumRim;
 using TR.Effects;
 using TR.Networks.TiberiumNetwork;
 using Verse;

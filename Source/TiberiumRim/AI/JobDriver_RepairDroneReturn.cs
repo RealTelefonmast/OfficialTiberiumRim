@@ -29,11 +29,8 @@ public class JobGiver_RepairDroneReturn : ThinkNode_JobGiver
     {
         if (pawn is RepairDrone drone)
         {
-            if (drone.HasNoStation)
-            {
-                return ThinkResult.NoJob;
-            }
-            
+            if (drone.HasNoStation) return ThinkResult.NoJob;
+
             if (drone.OutsideOfStationRadius)
             {
                 var jobDef = TRCDefOf.ReturnFromRepair;
@@ -41,8 +38,8 @@ public class JobGiver_RepairDroneReturn : ThinkNode_JobGiver
                 return new ThinkResult(job, this);
             }
         }
-        
-        
+
+
         return base.TryIssueJobPackage(pawn, jobParams);
     }
 
@@ -57,7 +54,7 @@ public class JobGiver_RepairDroneReturn : ThinkNode_JobGiver
 
 public class JobDriver_RepairDroneReturn : JobDriver
 {
-    private RepairDrone Drone => this.pawn as RepairDrone;
+    private RepairDrone Drone => pawn as RepairDrone;
     private Comp_DroneStation Comp => Drone.parentComp;
 
     public override bool TryMakePreToilReservations(bool errorOnFailed)
@@ -68,11 +65,8 @@ public class JobDriver_RepairDroneReturn : JobDriver
     public override IEnumerable<Toil> MakeNewToils()
     {
         yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.OnCell);
-        Toil repair = new Toil();
-        repair.initAction = delegate
-        {
-            Comp.StoreDrone(Drone);
-        };
+        var repair = new Toil();
+        repair.initAction = delegate { Comp.StoreDrone(Drone); };
         yield return repair;
     }
 }

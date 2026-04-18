@@ -22,21 +22,21 @@ public class GameCondition_TiberiumBiome : GameCondition
     public override void GameConditionTick()
     {
         Log.Message("Ticking game con..");
-        foreach (var value in TiberiumPollutionOverlay.Values) 
+        foreach (var value in TiberiumPollutionOverlay.Values)
             value.TickOverlay(Find.CurrentMap);
     }
 
     public override void GameConditionDraw(Map map)
     {
         Log.Message("Drawing game con..");
-        foreach (var value in TiberiumPollutionOverlay.Values) 
+        foreach (var value in TiberiumPollutionOverlay.Values)
             value.DrawOverlay(Find.CurrentMap);
     }
 
     public override List<SkyOverlay> SkyOverlays(Map map)
     {
         return base.SkyOverlays(map);
-        if (!SkyOverlayData.ContainsKey(map)) 
+        if (!SkyOverlayData.ContainsKey(map))
             SkyOverlayData.Add(map, new List<SkyOverlay>());
         return SkyOverlayData[map];
     }

@@ -120,7 +120,7 @@
 		<description>Allows you to construct multiple connected turrets.</description>
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Defense</TRCategory>
-		<thingClass>TiberiumRim.Building_TurretHub</thingClass>
+		<thingClass>TeleCore.TeleTurrets.Hubs.Building_TurretHubCore</thingClass>
 		<size>(2,2)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -232,7 +232,7 @@
 	<TiberiumRim.TRThingDef Name="NodHubTurret" ParentName="NODTurret" Abstract="True">
 		<factionDesignation>Nod</factionDesignation>
 		<TRCategory>Defense</TRCategory>
-		<thingClass>TiberiumRim.Building_HubTurret</thingClass>
+		<thingClass>TeleCore.TeleTurrets.Hubs.Building_HubTurret</thingClass>
 		<size>(2,2)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -402,7 +402,7 @@
 			</li>	
 		</comps>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_AtTurretHub</li>
+			<li>TeleCore.PlaceWorkers.PlaceWorker_AtTurretHub</li>
 		</placeWorkers>
 	</TiberiumRim.TRThingDef>
 	
@@ -411,7 +411,7 @@
 		<defName>Nod_FlameTurret</defName>
 		<label>flame turret</label>
 		<description>Nod's flame turret.</description>
-		<thingClass>TiberiumRim.Building_FlameTurret</thingClass>
+		<thingClass>TR.Turrets.Building_FlameTurret</thingClass>
 		<hidden>true</hidden>
 		<graphicData>
 			<texPath>Buildings/Nod/Defense/Turrets/Base</texPath>

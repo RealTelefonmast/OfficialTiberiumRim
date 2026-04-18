@@ -1,7 +1,5 @@
 ﻿using RimWorld;
-using TeleCore.GameData.Defs.Extensions;
-using TeleCore.Logging;
-using TeleCore.Static;
+using TeleCore.Unsorted;
 using Verse;
 
 namespace TeleCore.Hediffs;
@@ -10,7 +8,7 @@ public class HediffComp_ExplodeOnPartDestroyed : HediffComp
 {
     private bool hasExploded;
 
-    public HediffCompProperties_ExplodeOnPartDestroyed Props => (HediffCompProperties_ExplodeOnPartDestroyed)props;
+    public HediffCompProperties_ExplodeOnPartDestroyed Props => (HediffCompProperties_ExplodeOnPartDestroyed) props;
 
     public override string? CompLabelInBracketsExtra => hasExploded
         ? Props.labelWhenExploded ?? Translations.Hediffs.ExplodedHediffRuptured.Translate()

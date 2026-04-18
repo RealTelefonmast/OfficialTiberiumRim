@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
 namespace TR;
 
-public class Graphic_Sprite : Graphic
+public class Graphic_Sprite : Graphic_NumberedCollection
 {
     private static readonly Dictionary<Thing, int> indices = new();
     protected Graphic[] subGraphics;
@@ -58,7 +56,21 @@ public class Graphic_Sprite : Graphic
 
     public override void DrawWorker(Vector3 loc, Rot4 rot, ThingDef thingDef, Thing thing, float extraRotation)
     {
-        CurrentGraphic(thing).DrawWorker(loc, rot, thingDef, thing, extraRotation);
+        /*
+        var extendedData = (thingDef as TRThingDef)?.extraData;
+        if (extendedData != null && extendedData.repeatSprite)
+        {
+            int tick = extendedData.spriteTicks;
+            if (thing.IsHashIntervalTick(tick))
+            {
+                index++;
+                if (index > subGraphics.Length)
+                    index = 0;
+            }
+        }
+        */
+        subGraphics[GetIndex(thing)].DrawWorker(loc, rot, thingDef, thing, extraRotation);
+        //CurrentGraphic(thing).DrawWorker(loc, rot, thingDef, thing, extraRotation);
     }
 
     public void AddIndex(Thing thing)
@@ -143,5 +155,9 @@ public class Graphic_SpritePart : Graphic
     public override Mesh MeshAt(Rot4 rot)
     {
         return base.MeshAt(rot);
+    }
+    public void Notify_Remove(Thing thing)
+    {
+        indices.Remove(thing);
     }
 }

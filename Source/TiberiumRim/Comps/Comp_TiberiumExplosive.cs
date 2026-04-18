@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
+using TiberiumRim;
+using TiberiumRim.Tiberium;
 using Verse;
 
 namespace TR;

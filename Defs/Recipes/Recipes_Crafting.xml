@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeComponentPreset</defName>
 		<label>Make Components</label>
 		<tags>
@@ -10,9 +10,9 @@
 		<desiredResources>
 			<MakeComponent>5</MakeComponent>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeSteelPreset</defName>
 		<label>Make Steel</label>
 		<tags>
@@ -21,9 +21,9 @@
 		<desiredResources>
 			<MakeElementalSteel>15</MakeElementalSteel>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeSteelBulkPreset</defName>
 		<label>Make Steel (Bulk)</label>
 		<tags>
@@ -32,9 +32,9 @@
 		<desiredResources>
 			<MakeElementalSteel>150</MakeElementalSteel>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakePlasteelPreset</defName>
 		<label>Make Plasteel</label>
 		<tags>
@@ -43,9 +43,9 @@
 		<desiredResources>
 			<MakeElementalPlasteel>5</MakeElementalPlasteel>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakePlasteelBulkPreset</defName>
 		<label>Make Plasteel (Bulk)</label>
 		<tags>
@@ -54,9 +54,9 @@
 		<desiredResources>
 			<MakeElementalPlasteel>75</MakeElementalPlasteel>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeChemfuelPreset</defName>
 		<label>Make Chemfuel</label>
 		<tags>
@@ -65,9 +65,9 @@
 		<desiredResources>
 			<MakeChemfuel>5</MakeChemfuel>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeUraniumPreset</defName>
 		<label>Make Uranium</label>
 		<tags>
@@ -76,9 +76,9 @@
 		<desiredResources>
 			<MakeElementalUranium>5</MakeElementalUranium>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeUraniumBulkPreset</defName>
 		<label>Make Uranium (Bulk)</label>
 		<tags>
@@ -87,9 +87,9 @@
 		<desiredResources>
 			<MakeElementalUranium>75</MakeElementalUranium>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeGoldPreset</defName>
 		<label>Make Gold</label>
 		<tags>
@@ -98,9 +98,9 @@
 		<desiredResources>
 			<MakeElementalGold>5</MakeElementalGold>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeGoldBulkPreset</defName>
 		<label>Make Gold (Bulk)</label>
 		<tags>
@@ -109,10 +109,10 @@
 		<desiredResources>
 			<MakeElementalGold>75</MakeElementalGold>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
 	<!---->
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeElementalSteel</defName>
 		<tags>
 			<li>TiberiumRatios</li>
@@ -122,9 +122,9 @@
 			<li>Iron,25</li>
 		</inputRatio>
 		<result>Steel</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeElementalPlasteel</defName>
 		<tags>
 			<li>TiberiumRatios</li>
@@ -135,9 +135,9 @@
 			<li>Iron,100</li>
 		</inputRatio>
 		<result>Plasteel</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeElementalUranium</defName>
 		<tags>
 			<li>TiberiumRatios</li>
@@ -146,9 +146,9 @@
 			<li>Uranium,25</li>
 		</inputRatio>
 		<result>Uranium</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeElementalGold</defName>
 		<tags>
 			<li>TiberiumRatios</li>
@@ -157,10 +157,10 @@
 			<li>Gold,20</li>
 		</inputRatio>
 		<result>Gold</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
 	<!---->
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeComponent</defName>
 		<inputRatio>
 			<li>Iron,100</li>
@@ -168,9 +168,9 @@
 			<li>Silicon,50</li>
 		</inputRatio>
 		<result>ComponentIndustrial</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeCarbonPlate</defName>
 		<inputRatio>
 			<li>Iron,25</li>
@@ -178,9 +178,9 @@
 			<li>Calcium,75</li>		
 		</inputRatio>
 		<result>Nod_CarbonPlate</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeReinforcedPlate</defName>
 		<inputRatio>
 			<li>Iron,100</li>
@@ -188,9 +188,9 @@
 			<li>Phosphorus,50</li>		
 		</inputRatio>
 		<result>GDI_ReinforcedPlate</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeChemfuel</defName>
 		<inputRatio>
 			<li>Calcium,100</li>
@@ -198,7 +198,7 @@
 			<li>Phosphorus,100</li>
 		</inputRatio>
 		<result>Chemfuel</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
 	<TeleCore.RecipeDef_Network>
 		<defName>ExtractSteel</defName>
@@ -228,7 +228,7 @@
 	
 	<!-- TEMPORARY -->
 <!--
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeChemfuel</defName>
 		<inputRatio>
 			<li>Calcium,100</li>
@@ -236,178 +236,178 @@
 			<li>Phosphorus,100</li>
 		</inputRatio>
 		<result>Chemfuel</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 -->	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeSilverFrom_Iron_Preset</defName>
 		<label>Make Silver (Iron)</label>
 		<desiredResources>
 			<MakeSilverFromIron>1</MakeSilverFromIron>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeSilverFrom_Copper_Preset</defName>
 		<label>Make Silver (Copper)</label>
 		<desiredResources>
 			<MakeSilverFromCopper>1</MakeSilverFromCopper>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeSilverFrom_Silver_Preset</defName>
 		<label>Make Silver (Silver)</label>
 		<desiredResources>
 			<MakeSilverFromSilver>1</MakeSilverFromSilver>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeSilverFrom_Gold_Preset</defName>
 		<label>Make Silver (Gold)</label>
 		<desiredResources>
 			<MakeSilverFromGold>1</MakeSilverFromGold>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeSilverFrom_Uranium_Preset</defName>
 		<label>Make Silver (Uranium)</label>
 		<desiredResources>
 			<MakeSilverFromUranium>1</MakeSilverFromUranium>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeSilverFrom_Carbon_Preset</defName>
 		<label>Make Silver (Carbon)</label>
 		<desiredResources>
 			<MakeSilverFromCarbon>1</MakeSilverFromCarbon>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeSilverFrom_Phosphorus_Preset</defName>
 		<label>Make Silver (Phosphorus)</label>
 		<desiredResources>
 			<MakeSilverFromPhosphorus>1</MakeSilverFromPhosphorus>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeSilverFrom_Calcium_Preset</defName>
 		<label>Make Silver (Calcium)</label>
 		<desiredResources>
 			<MakeSilverFromCalcium>1</MakeSilverFromCalcium>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeSilverFrom_Silicon_Preset</defName>
 		<label>Make Silver (Silicon)</label>
 		<desiredResources>
 			<MakeSilverFromSilicon>1</MakeSilverFromSilicon>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 	
-	<TeleCore.CustomRecipePresetDef>
+	<TeleCore.GameData.Defs.CustomRecipePresetDef>
 		<defName>MakeSilverFrom_Exotic_Preset</defName>
 		<label>Make Silver (Exotic)</label>
 		<desiredResources>
 			<MakeSilverFromExotic>1</MakeSilverFromExotic>
 		</desiredResources>
-	</TeleCore.CustomRecipePresetDef>
+	</TeleCore.GameData.Defs.CustomRecipePresetDef>
 
 	<!---->
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeSilverFromIron</defName>
 		<hidden>true</hidden>
 		<inputRatio>
 			<li>Iron,100</li>
 		</inputRatio>
 		<result>Silver</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeSilverFromCopper</defName>
 		<hidden>true</hidden>
 		<inputRatio>
 			<li>Copper,100</li>
 		</inputRatio>
 		<result>Silver</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeSilverFromSilver</defName>
 		<hidden>true</hidden>
 		<inputRatio>
 			<li>Silver,25</li>
 		</inputRatio>
 		<result>Silver</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeSilverFromGold</defName>
 		<hidden>true</hidden>
 		<inputRatio>
 			<li>Gold,10</li>
 		</inputRatio>
 		<result>Silver</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeSilverFromUranium</defName>
 		<hidden>true</hidden>
 		<inputRatio>
 			<li>Uranium,100</li>
 		</inputRatio>
 		<result>Silver</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeSilverFromCarbon</defName>
 		<hidden>true</hidden>
 		<inputRatio>
 			<li>Carbon,100</li>
 		</inputRatio>
 		<result>Silver</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeSilverFromPhosphorus</defName>
 		<hidden>true</hidden>
 		<inputRatio>
 			<li>Phosphorus,100</li>
 		</inputRatio>
 		<result>Silver</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeSilverFromCalcium</defName>
 		<hidden>true</hidden>
 		<inputRatio>
 			<li>Calcium,100</li>
 		</inputRatio>
 		<result>Silver</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeSilverFromSilicon</defName>
 		<hidden>true</hidden>
 		<inputRatio>
 			<li>Silicon,100</li>
 		</inputRatio>
 		<result>Silver</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 	
-	<TeleCore.CustomRecipeRatioDef>
+	<TeleCore.GameData.Defs.CustomRecipeRatioDef>
 		<defName>MakeSilverFromExotic</defName>
 		<hidden>true</hidden>
 		<inputRatio>
 			<li>Exotic,1</li>
 		</inputRatio>
 		<result>Silver</result>
-	</TeleCore.CustomRecipeRatioDef>
+	</TeleCore.GameData.Defs.CustomRecipeRatioDef>
 
 	<!--
 	<TeleCore.RecipeDef_Network>
