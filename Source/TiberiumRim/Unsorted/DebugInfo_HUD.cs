@@ -1,0 +1,19 @@
+﻿using System.Collections.Generic;
+
+namespace TR;
+
+public static class DebugInfo_HUD
+{
+    public static Dictionary<string, string> infos = new();
+
+    public static void NewEntry(string ident, string val)
+    {
+        if (!infos.ContainsKey(ident))
+        {
+            infos.Add(ident, val);
+            return;
+        }
+
+        infos[ident] = val;
+    }
+}

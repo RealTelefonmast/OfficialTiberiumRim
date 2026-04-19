@@ -1,0 +1,678 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using HarmonyLib;
+using LudeonTK;
+using RimWorld;
+using RimWorld.Planet;
+using TR;
+using TR.SuperWeapon;
+using UnityEngine;
+using Verse;
+using Verse.Sound;
+
+namespace TiberiumRim;
+
+[StaticConstructorOnStartup]
+public static class TiberiumRimPatches
+{
+    [TweakValue("Patches_MSThreshold", 0, 100)]
+    public static int MSThreshold = 25;
+
+    static TiberiumRimPatches()
+    {
+        //TiberiumRimMod.Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI"),new HarmonyMethod(typeof(TiberiumRimPatches), "BackgroundOnGUIPatch"));
+
+        /*
+        TiberiumRimMod.Tiberium.Patch(
+        typeof(SymbolResolver_RandomMechanoidGroup).GetMethods(BindingFlags.NonPublic | BindingFlags.Static)
+        .First(mi => mi.HasAttribute<CompilerGeneratedAttribute>() && mi.ReturnType == typeof(bool) &&
+                 mi.GetParameters().Count() == 1 &&
+                 mi.GetParameters()[0].ParameterType == typeof(PawnKindDef)),
+        null, new HarmonyMethod(typeof(TiberiumRimPatches),
+        nameof(TiberiumRimPatches.MechanoidsFixerAncient)));
+        */
+
+        TiberiumRimMod.mod.LoadAssetBundles();
+        TiberiumRimMod.mod.PatchPawnDefs();
+        Log.Message("[TiberiumRim] Patches Done");
+    }
+
+    public static void MechanoidsFixerAncient(ref bool __result, PawnKindDef kind)
+    {
+        if (typeof(MechanicalPawn).IsAssignableFrom(kind.race.thingClass)) __result = false;
+    }
+
+    //Render Patches
+    public static bool BackgroundOnGUIPatch()
+    {
+        if (!TiberiumRimSettings.settings.CustomBackground) return true;
+        var flag = !(UI.screenWidth > UI.screenHeight * (2048f / 1280f));
+        Rect position;
+        if (flag)
+        {
+            var height = (float)UI.screenHeight;
+            var num = UI.screenHeight * (2048f / 1280f);
+            position = new Rect(UI.screenWidth / 2 - num / 2f, 0f, num, height);
+        }
+        else
+        {
+            var width = (float)UI.screenWidth;
+            var num2 = UI.screenWidth * (1280f / 2048f);
+            position = new Rect(0f, UI.screenHeight / 2 - num2 / 2f, width, num2);
+        }
+
+        GUI.DrawTexture(position, TiberiumContent.BGPlanet, ScaleMode.ScaleToFit);
+        return false;
+    }
+
+    [HarmonyPatch(typeof(ThingWithComps))]
+    [HarmonyPatch("Print")]
+    public static class PrintPatch
+    {
+        public static bool Prefix(ThingWithComps __instance, SectionLayer layer)
+        {
+            var def = __instance.def;
+            if (__instance is Blueprint b)
+            {
+                if (b.def.entityDefToBuild is TerrainDef)
+                    return true;
+
+                def = (ThingDef)b.def.entityDefToBuild;
+            }
+
+            if (def is FXThingDef fx)
+            {
+                TRUtils.Print(layer, __instance.Graphic, __instance, fx);
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+    [HarmonyPatch(typeof(HealthCardUtility))]
+    [HarmonyPatch("DrawHediffRow")]
+    public static class HediffDrawerPatch
+    {
+        [TweakValue("Hediff_MutationHelper_Bar_contracter", -50f, 50f)]
+        private static readonly float contracted = 3f;
+
+        [HarmonyPostfix]
+        public static void Fix(Rect rect, Pawn pawn, IEnumerable<Hediff> diffs, ref float curY)
+        {
+            var worker = (Hediff_Mutation)diffs.ToList().Find(h => h is Hediff_Mutation);
+            if (worker != null)
+            {
+                var viscNum = 0.5f;
+                var symbNum = 0.5f;
+                var rev = 1f - viscNum;
+
+                var s2 = viscNum == symbNum ? " = " : viscNum > symbNum ? " > " : " < ";
+                var vec = Text.CalcSize(s2);
+                string visc = "◀ " + "TR_Visceral".Translate() + " " + viscNum.ToStringPercent();
+                var vec1 = Text.CalcSize(visc);
+                string symb = symbNum.ToStringPercent() + " " + "TR_Symbiotic".Translate() + " ▶";
+                var vec2 = Text.CalcSize(symb);
+
+                var rectSide = new Rect(rect.width / 2f - vec.x / 2f, curY, vec.x, vec.y);
+                var rect1 = new Rect(rect.width / 2f - vec1.x - rectSide.width / 2f, curY, vec1.x, vec1.y);
+                var rect2 = new Rect(rect.width / 2f + rectSide.width / 2f, curY, vec2.x, vec2.y);
+                curY += rect1.height;
+
+                var fillRectTotal = new Rect(0f, curY, rect.width, 18f).ContractedBy(contracted);
+                var visceral = fillRectTotal.LeftHalf();
+                var symbiotic = fillRectTotal.RightHalf();
+                curY += fillRectTotal.ExpandedBy(contracted).height;
+
+                GUI.color = new ColorInt(155, 160, 75).ToColor;
+                Widgets.Label(rect1, visc);
+                GUI.color = Color.white;
+                Widgets.Label(rectSide, s2);
+                GUI.color = new ColorInt(138, 229, 226).ToColor;
+                Widgets.Label(rect2, symb);
+                GUI.color = Color.white;
+                Widgets.FillableBar(visceral, rev, TRMats.grey, TRMats.mutationVisceral, false);
+                Widgets.FillableBar(symbiotic, symbNum, TRMats.mutationBlue, TRMats.grey, false);
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(PawnRenderer), "RenderPawnInternal")]
+    [HarmonyPatch(new[]
+    {
+        typeof(Vector3), typeof(float), typeof(bool), typeof(Rot4), typeof(Rot4), typeof(RotDrawMode), typeof(bool),
+        typeof(bool), typeof(bool)
+    })]
+    public static class PawnRenderPatch
+    {
+        [HarmonyPostfix]
+        public static void Fix(PawnRenderer __instance, Vector3 rootLoc, float angle, bool renderBody,
+            Rot4 bodyFacing, Rot4 headFacing, RotDrawMode bodyDrawType, bool portrait, bool headStump)
+        {
+            if (!renderBody || bodyDrawType == RotDrawMode.Dessicated)
+                return;
+
+            var pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
+            var renderComp = pawn.GetComp<Comp_CrystalDrawer>();
+            if (renderComp == null)
+            {
+                Log.ErrorOnce("Comp_CrystalDrawer Not Applied!", 87348728);
+                return;
+            }
+
+            var drawLoc = rootLoc;
+            drawLoc.y += 0.01953125f;
+            var quaternion = Quaternion.AngleAxis(angle, Vector3.up);
+            renderComp.Drawer.RenderOverlay(pawn, drawLoc, headFacing, quaternion, portrait);
+        }
+    }
+
+    [HarmonyPatch(typeof(GhostDrawer))]
+    [HarmonyPatch("DrawGhostThing")]
+    public static class DrawGhostThingPatch
+    {
+        public static bool Prefix(IntVec3 center, Rot4 rot, ThingDef thingDef, Graphic baseGraphic, Color ghostCol,
+            AltitudeLayer drawAltitude)
+        {
+            if (!(thingDef is FXThingDef fx)) return true;
+            //Log.Message("Drawing Ghost - " + thingDef);
+            if (baseGraphic == null) baseGraphic = thingDef.graphic;
+            var graphic = GhostUtility.GhostGraphicFor(baseGraphic, thingDef, ghostCol);
+            var loc = GenThing.TrueCenter(center, rot, thingDef.Size, drawAltitude.AltitudeFor());
+            TRUtils.Draw(graphic, loc, rot, null, fx);
+
+            foreach (var t in thingDef.comps) t.DrawGhost(center, rot, thingDef, ghostCol, drawAltitude);
+            if (thingDef.PlaceWorkers != null)
+                foreach (var p in thingDef.PlaceWorkers)
+                    p.DrawGhost(thingDef, center, rot, ghostCol);
+
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(PawnRenderer))]
+    [HarmonyPatch("DrawEquipmentAiming")]
+    public static class DrawEquipmentAimingPatch
+    {
+        public static bool Prefix(Thing eq, Vector3 drawLoc, float aimAngle)
+        {
+            if (eq is FXThing thing) return true;
+            return true;
+        }
+    }
+
+    [HarmonyPatch(typeof(Thing))]
+    [HarmonyPatch("Kill")]
+    private static class KillThingPatch
+    {
+        public static void Postfix(Thing __instance, DamageInfo? dinfo)
+        {
+            if (!__instance.Spawned) return;
+            if (__instance.Faction == null) return;
+            if (!__instance.Faction.IsPlayer) return;
+            if (__instance is Building)
+                GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.BuildingLost);
+            if (__instance is Pawn)
+                GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.UnitLost);
+        }
+    }
+
+    [HarmonyPatch(typeof(SampleOneShotManager))]
+    [HarmonyPatch("TryAddPlayingOneShot")]
+    private static class TryAddPlayingOneShotDebugs
+    {
+        public static bool Prefix(SampleOneShot newSample)
+        {
+            //Log.Message("Adding One Shot: " + newSample.subDef.name + " from " + newSample.subDef.parentDef.defName);
+            return true;
+        }
+    }
+
+    [HarmonyPatch(typeof(Thing))]
+    [HarmonyPatch("TakeDamage")]
+    private static class TakeDamagePatch
+    {
+        public static void Postfix(Thing __instance, DamageInfo dinfo)
+        {
+            //EVA Patch
+            if (__instance.Destroyed || !__instance.Spawned) return;
+            if (__instance.Faction == null) return;
+            if (!__instance.Faction.IsPlayer) return;
+
+            if (__instance is Building)
+                GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.BaseUnderAttack);
+            if (__instance is Pawn)
+                GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.UnitUnderAttack);
+        }
+    }
+
+    [HarmonyPatch(typeof(Command_Toggle))]
+    [HarmonyPatch("ProcessInput")]
+    private static class ToggleInputPatch
+    {
+        public static void Postfix(Command_Toggle __instance)
+        {
+            var blueprint = (Thing)Find.Selector.SelectedObjects.Find(b => b is Blueprint || b is Frame);
+            var forbid = blueprint?.TryGetComp<CompForbiddable>();
+            if (blueprint == null || forbid == null) return;
+            if (blueprint.Faction.IsPlayer && forbid.Forbidden)
+                GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.OnHold);
+        }
+    }
+
+    [HarmonyPatch(typeof(Designator))]
+    [HarmonyPatch("FinalizeDesignationSucceeded")]
+    private static class Designator_Build_FinalizeSuccPatch
+    {
+        public static void Postfix(Designator __instance)
+        {
+            if (__instance is Designator_Cancel) GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.Canceled);
+        }
+    }
+
+    [HarmonyPatch(typeof(Designator))]
+    [HarmonyPatch("FinalizeDesignationFailed")]
+    private static class Designator_Build_FinalizeFailPatch
+    {
+        public static void Postfix(Designator __instance)
+        {
+            if (__instance is Designator_Build) GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.CantDeploy);
+        }
+    }
+
+    [HarmonyPatch(typeof(DesignatorManager))]
+    [HarmonyPatch("Deselect")]
+    public static class DeselectPatch
+    {
+        public static bool Prefix(DesignatorManager __instance)
+        {
+            if (__instance.SelectedDesignator is Designator_Extended d && d.MustStaySelected)
+                return false;
+            return true;
+        }
+    }
+
+
+    [HarmonyPatch(typeof(DamageWorker_AddInjury))]
+    [HarmonyPatch("PlayWoundedVoiceSound")]
+    public static class PlayWoundedVoiceSoundPatch
+    {
+        public static bool Prefix(Pawn pawn)
+        {
+            return !(pawn.ParentHolder is VisceralPod);
+        }
+    }
+
+    [HarmonyPatch(typeof(Hediff))]
+    [HarmonyPatch("CapMods", MethodType.Getter)]
+    public static class CapModsPatch
+    {
+        public static void Postfix(ref List<PawnCapacityModifier> __result, Hediff __instance)
+        {
+            if (__instance is Hediff_Relative relative && !relative.def.relativeCapMods.NullOrEmpty())
+                __result = relative.RelativeCapMods;
+        }
+    }
+
+    [HarmonyPatch(typeof(RoofGrid))]
+    [HarmonyPatch("SetRoof")]
+    public static class SetRoofPatch
+    {
+        public static void Postfix(RoofGrid __instance, IntVec3 c)
+        {
+            //Suppression Field Logic
+            var map = Traverse.Create(__instance).Field("map").GetValue<Map>();
+            var suppression = map.GetComponent<MapComponent_Suppression>();
+            if (suppression.IsInSuppressorField(c, out List<Comp_Suppression> sups)) suppression.MarkDirty(sups);
+        }
+    }
+
+    //Core Thing Addons
+    [HarmonyPatch(typeof(Frame))]
+    [HarmonyPatch("CompleteConstruction")]
+    private static class BuildPatch
+    {
+        public static void Postfix(Frame __instance)
+        {
+            //Construction Task Logic
+            if (__instance != null && __instance.def.entityDefToBuild as TerrainDef == null)
+                TRUtils.ResearchManager().CreationTable.TryTrackCreated((ThingDef)__instance.def.entityDefToBuild);
+        }
+    }
+
+    [HarmonyPatch(typeof(Thing))]
+    [HarmonyPatch("SpawnSetup")]
+    public static class SpawnSetupPatch
+    {
+        public static void Postfix(Thing __instance)
+        {
+            //Suppressor Logic
+            if (__instance is Building b && !b.CanBeSeenOver())
+            {
+                var suppression = b.Map.GetComponent<MapComponent_Suppression>();
+                if (suppression.IsInSuppressorField(b.Position, out List<Comp_Suppression> sups))
+                    suppression.MarkDirty(sups);
+            }
+
+            //Research
+            ResearchTargetTable.RegisterNewTarget(__instance);
+        }
+    }
+
+    [HarmonyPatch(typeof(Thing))]
+    [HarmonyPatch("DeSpawn")]
+    public static class DeSpawnPatch
+    {
+        private static IntVec3 instancePos;
+        private static Map instanceMap;
+        private static bool updateSuppressionGrid;
+
+        public static bool Prefix(Thing __instance)
+        {
+            instancePos = __instance.Position;
+            instanceMap = __instance.Map;
+            updateSuppressionGrid = __instance is Building b && !b.CanBeSeenOver();
+
+            //Research
+            ResearchTargetTable.DeregisterTarget(__instance);
+            return true;
+        }
+
+        public static void Postfix()
+        {
+            if (updateSuppressionGrid)
+            {
+                var suppression = instanceMap.GetComponent<MapComponent_Suppression>();
+                if (!suppression.IsInSuppressorField(instancePos, out List<Comp_Suppression> sups)) return;
+                suppression.MarkDirty(sups);
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(GenConstruct))]
+    [HarmonyPatch("CanPlaceBlueprintOver")]
+    public static class CanPlaceBlueprintOverPatch
+    {
+        public static void Postfix(ref bool __result, BuildableDef newDef, ThingDef oldDef)
+        {
+            if (oldDef is TiberiumCrystalDef)
+            {
+                if (newDef is TRThingDef tdef) __result = tdef.destroyTiberium;
+                __result = false;
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(SteadyEnvironmentEffects))]
+    [HarmonyPatch("FinalDeteriorationRate", typeof(Thing), typeof(bool), typeof(bool), typeof(bool), typeof(TerrainDef),
+        typeof(List<string>))]
+    public static class FinalDeteriorationRatePatch
+    {
+        public static void Postfix(Thing t, bool roofed, bool roomUsesOutdoorTemperature, bool protectedByEdifice,
+            TerrainDef terrain, ref float __result, List<string> reasons)
+        {
+            if (t.def.CanEverDeteriorate && t.Position.GetTiberium(t.Map) != null)
+            {
+                reasons?.Add("TR_Deterioration".Translate());
+                __result *= 2.25f;
+            }
+        }
+    }
+
+
+    [HarmonyPatch(typeof(PawnUtility))]
+    [HarmonyPatch("ShouldSendNotificationAbout")]
+    public static class ShouldSendNotificationPatch
+    {
+        public static bool Prefix(Pawn p)
+        {
+            return !(p is MechanicalPawn);
+        }
+    }
+
+    [HarmonyPatch(typeof(Pawn))]
+    [HarmonyPatch("IsColonistPlayerControlled", MethodType.Getter)]
+    public static class IsColonistPatch
+    {
+        public static void Postfix(Pawn __instance, ref bool __result)
+        {
+            if (__instance is MechanicalPawn)
+                __result = __instance.Spawned && __instance.Faction != null && __instance.Faction.IsPlayer &&
+                           __instance.MentalStateDef == null && __instance.HostFaction == null;
+        }
+    }
+
+    [HarmonyPatch(typeof(Selector))]
+    [HarmonyPatch("HandleMapClicks")]
+    public static class HandleMapClicksPatch
+    {
+        public static void Postfix(Selector __instance)
+        {
+            if (__instance.SingleSelectedThing.IsPlayerControlledMech())
+                if (Event.current.type == EventType.MouseDown)
+                {
+                    var selected = Traverse.Create(__instance).Field("selected").GetValue<List<object>>();
+                    if (Event.current.button == 1)
+                    {
+                        //TODO: Mech needs to select what to do
+                    }
+                }
+        }
+    }
+
+    [HarmonyPatch(typeof(DynamicDrawManager))]
+    [HarmonyPatch("DrawDynamicThings")]
+    public static class DynamicDrawerPatch
+    {
+        public static void Postfix()
+        {
+            var particles = Find.CurrentMap.GetComponent<MapComponent_Particles>().SavedParticles.ToArray();
+            foreach (var p in particles) p.Draw();
+        }
+    }
+
+    //Custom Tick Injection
+    [HarmonyPatch(typeof(TickManager))]
+    [HarmonyPatch("TickManagerUpdate")]
+    public static class TickManagerUpdatePatch
+    {
+        public static bool Prefix()
+        {
+            return true;
+        }
+
+        public static void Postfix(TickManager __instance)
+        {
+            if (!__instance.Paused)
+            {
+                var particles = Find.Maps.Select(x => x.GetComponent<MapComponent_Particles>());
+                var num = 0;
+                var mltp = __instance.TickRateMultiplier;
+                foreach (var p in particles)
+                    while (num < mltp)
+                    {
+                        Find.CameraDriver.StartCoroutine(p.Ticker());
+                        num++;
+                    }
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(CompGlower))]
+    [HarmonyPatch("UpdateLit")]
+    public static class GlowPatch
+    {
+        public static bool Prefix(CompGlower __instance, Map map)
+        {
+            if (!(__instance.parent is FXThing)) return true;
+            //!GraphicsManager.Manager.CanGlow
+            if ((__instance.parent is TiberiumCrystal crystal && crystal.Parent != null &&
+                 crystal.Parent.turnOffLight) || !__instance.parent.Spawned)
+            {
+                map.mapDrawer.MapMeshDirty(__instance.parent.Position, MapMeshFlag.Things);
+                map.glowGrid.DeRegisterGlower(__instance);
+            }
+            else
+            {
+                map.mapDrawer.MapMeshDirty(__instance.parent.Position, MapMeshFlag.Things);
+                map.glowGrid.RegisterGlower(__instance);
+            }
+
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(PlaySettings))]
+    [HarmonyPatch("DoPlaySettingsGlobalControls")]
+    public static class PlaySettingsPatch
+    {
+        public static void Postfix(WidgetRow row, bool worldView)
+        {
+            if (!worldView)
+                row.ToggleableIcon(ref TiberiumRimSettings.settings.EVASystem, TiberiumContent.Icon_EVA,
+                    "Enable or disable the EVA", SoundDefOf.Mouseover_ButtonToggle);
+        }
+    }
+
+    [HarmonyPatch(typeof(BillUtility))]
+    [HarmonyPatch("MakeNewBill")]
+    public static class MakeNewBillPatch
+    {
+        public static void Postfix(ref Bill __result)
+        {
+            if (__result.recipe is RecipeDef_Tiberium)
+            {
+                var tibBill = new TiberiumBill(__result.recipe as RecipeDef_Tiberium);
+                __result = tibBill;
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(WorldSelector))]
+    [HarmonyPatch("HandleWorldClicks")]
+    public static class HandleWorldClicksPatch
+    {
+        public static bool Prefix(WorldSelector __instance)
+        {
+            if (Event.current.type == EventType.MouseDown)
+            {
+                Log.Message("1. Patching World Selector with " + __instance.NumSelectedObjects);
+                if (Event.current.button == 1 && __instance.NumSelectedObjects > 0)
+                {
+                    Log.Message("2. Button 1 down");
+                    var obj = __instance.FirstSelectedObject;
+                    if (obj is AttackSatellite asat)
+                    {
+                        asat.SetDestination(GenWorld.MouseTile());
+                        Event.current.Use();
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+    }
+
+
+    [HarmonyPatch(typeof(StatWorker))]
+    [HarmonyPatch("GetValueUnfinalized")]
+    public static class GetValueUnfinalizedPatch
+    {
+        public static void Postfix(ref float __result, StatWorker __instance, StatRequest req)
+        {
+            var pawn = req.Thing as Pawn;
+
+            //Patching Mechs
+            if (pawn is MechanicalPawn mech)
+            {
+            }
+        }
+    }
+
+    //Scenario Chooser Patch
+    [HarmonyPatch(typeof(Page_SelectScenario))]
+    [HarmonyPatch("DoScenarioListEntry")]
+    public static class DoScenarioListEntryPatch
+    {
+        //TODO: Transpiler to replace background method with custom background method
+        public static bool Prefix(Page_SelectScenario __instance, Rect rect, Scenario scen)
+        {
+            return true;
+        }
+    }
+
+
+    #region RegionPatch
+
+    /*
+    [HarmonyPatch(typeof(RegionAndRoomUpdater))]
+    [HarmonyPatch("RegenerateNewRegionsFromDirtyCells")]
+    public static class RegionPatch
+    {
+        private static List<Region> regionsBefore = new List<Region>();
+        private static List<Region> newRegions = new List<Region>();
+        public static bool Prefix(RegionAndRoomUpdater __instance)
+        {
+            regionsBefore.Clear();
+            Map map = Traverse.Create(__instance).Field("map").GetValue<Map>();
+            foreach (IntVec3 dirty in map.regionDirtyer.DirtyCells)
+            {
+                Region[] grid = Traverse.Create(map.regionGrid).Field("regionGrid").GetValue<Region[]>();
+                Region region = grid[map.cellIndices.CellToIndex(dirty)];
+                if (!regionsBefore.Contains(region))
+                {
+                    regionsBefore.Add(region);
+                }
+            }
+            return true;
+        }
+
+        public static void Postfix(RegionAndRoomUpdater __instance)
+        {
+            newRegions.Clear();
+            Map map = Traverse.Create(__instance).Field("map").GetValue<Map>();
+            var tiberium = map.GetComponent<MapComponent_Tiberium>();
+            var info = tiberium.TiberiumInfo;
+
+            List<Region> regions = Traverse.Create(__instance).Field("newRegions").GetValue<List<Region>>();
+            newRegions.AddRange(regions);
+            foreach (Region region in regionsBefore)
+            {
+                if (region != null)
+                {
+                    if (info.TiberiumByRegion.ContainsKey(region))
+                    {
+                        CellRect rect = region.Cells.ToList().ToCellRect();
+                        foreach (Region @new in newRegions)
+                        {
+                            if (@new != null)
+                            {
+
+                                List<IntVec3> potentialSplit = cells.FindAll(c => rect.Cells.Contains(c));
+
+                                if (!tiberium.CurrentRegions.TryGetValue(@new, out List<IntVec3> value))
+                                {
+                                    tiberium.CurrentRegions.Add(@new, potentialSplit);
+                                }
+                                else
+                                {
+                                    foreach (IntVec3 cell in potentialSplit)
+                                    {
+                                        if (!value.Contains(cell))
+                                        {
+                                            value.Add(cell);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    */
+
+    #endregion
+}
