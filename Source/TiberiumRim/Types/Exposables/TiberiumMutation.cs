@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Unsorted;
 using Verse;
 
 namespace TiberiumRim;
@@ -37,10 +38,10 @@ public class TiberiumMutation : IExposable
     private void CreatePotentialMutation(BodyPartRecord part)
     {
         if (TRUtils.Chance(HediffUtils.HediffCoverageFor(Pawn, part, TRHediffDefOf.TiberiumCrystallization)))
-            HediffUtils.MutatePart(Pawn, part, TRHediffDefOf.Crystallized);
+            TRHediffUtils.MutatePart(Pawn, part, TRHediffDefOf.Crystallized);
         //else if (TRUtils.Chance(HediffUtils.HediffCoverageFor(Pawn, part, TRHediffDefOf.SymbioticPart)))
-        //HediffUtils.MutatePart(Pawn, part, TRHediffDefOf.Enhanced);
+        //TRHediffUtils.MutatePart(Pawn, part, TRHediffDefOf.Enhanced);
         //else
-        //HediffUtils.MutatePart(Pawn, part, TRHediffDefOf.Visceral);
+        //TRHediffUtils.MutatePart(Pawn, part, TRHediffDefOf.Visceral);
     }
 }

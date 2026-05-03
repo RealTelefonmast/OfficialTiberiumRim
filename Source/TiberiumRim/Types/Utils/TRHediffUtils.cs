@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using TeleCore.Unsorted;
@@ -7,7 +7,7 @@ using Verse;
 
 namespace TiberiumRim;
 
-public static class HediffUtils
+public static class TRHediffUtils
 {
     // --- Pawn helpers ---
 
@@ -42,14 +42,14 @@ public static class HediffUtils
 
     public static IEnumerable<BodyPartRecord> GetWanderParts(this HediffSet set, Hediff_Mutation mutation)
     {
-        return from x in set.pawn.def.race.body.AllParts
+        return from x in set.pawn.AllParts()
             where !set.hediffs.Any(h => h.Part == x && (h.IsTiberiumHediff() || h is Hediff_MissingPart))
             select x;
     }
 
     public static IEnumerable<BodyPartRecord> GetMutatableParts(this HediffSet set)
     {
-        var allPartsList = set.pawn.def.race.body.AllParts;
+        var allPartsList = set.pawn.AllParts();
         for (var i = 0; i < allPartsList.Count; i++)
         {
             var part = allPartsList[i];
@@ -61,7 +61,7 @@ public static class HediffUtils
 
     public static IEnumerable<BodyPartRecord> GetNonCrystallizingParts(this HediffSet set)
     {
-        var allPartsList = set.pawn.def.race.body.AllParts;
+        var allPartsList = set.pawn.AllParts();
         for (var i = 0; i < allPartsList.Count; i++)
         {
             var part = allPartsList[i];
@@ -167,7 +167,7 @@ public static class HediffUtils
         if (pawn.Faction?.IsPlayer ?? false)
             GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.TiberiumExposure, pawn);
 
-        if (TouchedCrystal(pawn, selectedPart))
+        if (TRHediffUtils.TouchedCrystal(pawn, selectedPart))
             InfectPart(pawn, selectedPart, numCryst);
     }
 
@@ -194,7 +194,7 @@ public static class HediffUtils
         var possibleBodyParts = isGas ? tibCheck.PartsForGas : tibCheck.PartsForInfection;
         var selectedPart = possibleBodyParts.RandomElement();
 
-        if (TouchedCrystal(pawn, selectedPart))
+        if (TRHediffUtils.TouchedCrystal(pawn, selectedPart))
             InfectPart(pawn, selectedPart, infectionValue);
     }
 
@@ -352,15 +352,5 @@ public static class HediffUtils
         }
 
         return true;
-    }
-
-    // --- Misc ---
-
-    public static int Recurse(int n, int i)
-    {
-        if (n > 0)
-            return 0;
-        var b = Recurse(n, i);
-        return n - i;
     }
 }

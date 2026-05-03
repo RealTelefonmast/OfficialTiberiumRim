@@ -11,7 +11,7 @@ public class VeinGasCloud : HomingThing
         {
             var pawn = intVec3.GetFirstPawn(Map);
             if (pawn != null)
-                HediffUtils.TryInfectPawn(pawn, null, true, 1);
+                TRHediffUtils.TryInfectPawn(pawn, null, true, 1);
         }
     }
 }

@@ -59,10 +59,10 @@ public class Comp_TRHealthCheck : ThingComp
                 if (Pawn.Faction?.IsPlayer ?? false)
                     GameComponent_EVA.EVAComp().ReceiveSignal(EVASignal.TiberiumExposure);
 
-                if (HediffUtils.TryIrradiatePawn(Pawn, Grid.RadiationAt(Pawn.Position), 250, out var rads))
+                if (TRHediffUtils.TryIrradiatePawn(Pawn, Grid.RadiationAt(Pawn.Position), 250, out var rads))
                     if (HasGeiger && !Pawn.Dead)
                         DoRadiationClick(rads);
-                HediffUtils.TryInfectPawn(Pawn, Grid.InfectionAt(Pawn.Position), false, 250);
+                TRHediffUtils.TryInfectPawn(Pawn, Grid.InfectionAt(Pawn.Position), false, 250);
             }
 
             ticker = 250;

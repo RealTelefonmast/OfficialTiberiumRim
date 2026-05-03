@@ -1,4 +1,5 @@
-﻿using Verse;
+﻿using TeleCore.Unsorted;
+using Verse;
 
 namespace TiberiumRim;
 
@@ -53,6 +54,6 @@ public class Hediff_TiberiumPart : Hediff_ReplacedPart
         pawn.health.RemoveHediff(this);
         var part = Part.GetDirectChildParts().RandomElement();
         pawn.health.RestorePart(Part);
-        HediffUtils.InfectPart(pawn, part, 0.1f * risk);
+        TRHediffUtils.InfectPart(pawn, part, 0.1f * risk);
     }
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using RimWorld;
 using UnityEngine;
+using TeleCore.Unsorted;
 using Verse;
 
 namespace TiberiumRim;
@@ -205,7 +206,7 @@ public class Hediff_Crystallizing : HediffWithComps
             var initSeverity = Hediffs.Where(h => Part.parent.parts.Contains(h.Part)).Sum(h => Severity) /
                                Part.parent.parts.Count;
             Log.Message("Init Severity: " + initSeverity);
-            HediffUtils.InfectPart(pawn, Part.parent, initSeverity);
+            TRHediffUtils.InfectPart(pawn, Part.parent, initSeverity);
             wandered = true;
             Log.Message("Wandered from " + Part.LabelCap + " to " + Part.parent.LabelCap);
             return;
@@ -227,8 +228,8 @@ public class Hediff_Crystallizing : HediffWithComps
 
     private void AffectOrganViaBlood()
     {
-        var organ = pawn.AllVitalOrgans().Where(p => !pawn.health.hediffSet.PartIsCrystallizing(p)).RandomElement();
-        HediffUtils.InfectPart(pawn, organ, 0.01f);
+        var organ = pawn.AllVitalOrgans().Where(p => !TRHediffUtils.PartIsCrystallizing(pawn.health.hediffSet, p)).RandomElement();
+        TRHediffUtils.InfectPart(pawn, organ, 0.01f);
     }
 
     public void RemoveSample()

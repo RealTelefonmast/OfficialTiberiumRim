@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using TiberiumRim;
+using TeleCore.Unsorted;
 using UnityEngine;
 using UnityEngine.Pool;
 using Verse;
@@ -268,9 +269,9 @@ public class Hediff_TiberiumToxemia : HediffWithComps
     private void TryBloodInfection()
     {
         if (!TRUtils.Chance(BloodInfectionChance)) return;
-        var organ = pawn.AllVitalOrgans().Where(p => !pawn.health.hediffSet.PartIsCrystallizing(p)).RandomElement();
+        var organ = pawn.AllVitalOrgans().Where(p => !TRHediffUtils.PartIsCrystallizing(pawn.health.hediffSet, p)).RandomElement();
         if (organ == null) return;
-        HediffUtils.InfectPart(pawn, organ, 0.01f);
+        TRHediffUtils.InfectPart(pawn, organ, 0.01f);
     }
 
     public override bool CauseDeathNow()

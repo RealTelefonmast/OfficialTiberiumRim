@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using TiberiumRim;
+using TeleCore.Unsorted;
 using UnityEngine;
 using Verse;
 
@@ -146,11 +147,6 @@ public class Hediff_CrystallizingPart : Hediff_CauseToxemia
         return Mathf.Lerp(0.21f, 0.84f, SeverityCurve.Evaluate(curSev));
     }
 
-    public static float SeverityPerDayFunc(float curSev)
-    {
-        return Mathf.Lerp(0.21f, 0.84f, SeverityCurve.Evaluate(curSev));
-    }
-
     public override void ExposeData()
     {
         base.ExposeData();
@@ -237,7 +233,7 @@ public class Hediff_CrystallizingPart : Hediff_CauseToxemia
         var initSeverity =
             Severity * (thisChildren /
                         (float)parentChildren); //Parent.CrystallizingParts.Where(h => Part.parent.parts.Contains(h.Part)).Sum(h => Severity) / Part.parent.parts.Count;
-        HediffUtils.InfectPart(pawn, Part.parent, initSeverity);
+        TRHediffUtils.InfectPart(pawn, Part.parent, initSeverity);
         //Update 
         //Parent.RegisterOrUpdatePart(this, Part.parent);
     }
