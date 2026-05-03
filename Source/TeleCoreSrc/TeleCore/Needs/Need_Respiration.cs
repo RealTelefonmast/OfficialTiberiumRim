@@ -12,7 +12,17 @@ public class Need_Respiration : Need
     private readonly RespirationExtension _cachedProps;
 
     private int tickTracker;
+
+    private int tickTracker;
     private int tickTrackerCondition;
+    private int tickTrackerCondition;
+
+    public Need_Respiration(Pawn pawn) : base(pawn)
+    {
+        _atmosTracker = Comp_PawnAtmosphereTracker.CompFor(pawn);
+        _cachedProps = pawn.kindDef.GetModExtension<RespirationExtension>();
+        curLevelInt = 1f;
+    }
 
     public Need_Respiration(Pawn pawn) : base(pawn)
     {
@@ -35,7 +45,7 @@ public class Need_Respiration : Need
             sb.AppendLine("\nDetails:");
             var inhaled = _cachedProps.inhaledGas;
             var exhaled = _cachedProps.exhaledGas;
-            var inhaledLabel = ColoredText.Colorize((TaggedString)inhaled?.LabelCap, _cachedProps.inhaledGas.valueColor);
+            var inhaledLabel = ((TaggedString)inhaled?.LabelCap).Colorize(_cachedProps.inhaledGas.valueColor);
             if (inhaled != null)
             {
                 var h = _cachedProps.intervalTicks / (float)GenDate.TicksPerHour;
@@ -43,9 +53,10 @@ public class Need_Respiration : Need
 
                 if (exhaled != null)
                 {
-                    var exhaledLabel = ColoredText.Colorize((TaggedString)exhaled?.LabelCap, _cachedProps.exhaledGas.valueColor);
+                    var exhaledLabel = ((TaggedString)exhaled?.LabelCap).Colorize(_cachedProps.exhaledGas.valueColor);
                     var exhaledPerHour = $"{_cachedProps.unitsOutPerInterval * h}L".Colorize(exhaled.valueColor);
-                    sb.AppendLine($"This pawn will turn {inhaledLabel} into {exhaledLabel} at a rate of {inhaledPerHour} to {exhaledPerHour} per hour.");
+                    sb.AppendLine(
+                        $"This pawn will turn {inhaledLabel} into {exhaledLabel} at a rate of {inhaledPerHour} to {exhaledPerHour} per hour.");
                     return sb.ToString();
                 }
 
@@ -61,16 +72,6 @@ public class Need_Respiration : Need
         return base.GetTipString();
     }
 
-    public Need_Respiration(Pawn pawn) : base(pawn)
-    {
-        _atmosTracker = Comp_PawnAtmosphereTracker.CompFor(pawn);
-        _cachedProps = pawn.kindDef.GetModExtension<RespirationExtension>();
-        curLevelInt = 1f;
-    }
-
-    private int tickTracker = 0;
-    private int tickTrackerCondition = 0;
-
     public override void NeedInterval()
     {
         if (!pawn.Spawned || !NeedsToBreathe) return;
@@ -81,22 +82,15 @@ public class Need_Respiration : Need
         if (tickTrackerCondition > _cachedProps.conditionTicks)
         {
             //Custom Worker
-            if (_cachedProps.worker != null)
-            {
-                _cachedProps.worker.OnInterval(pawn, CurLevel, this);
-            }
+            if (_cachedProps.worker != null) _cachedProps.worker.OnInterval(pawn, CurLevel, this);
 
             //Stage Effect
             if (_cachedProps.UsesStages)
             {
                 var stage = _cachedProps.StageAt(CurLevel);
                 if (stage.hediffGivers != null)
-                {
                     foreach (var hediffGiver in stage.hediffGivers)
-                    {
                         hediffGiver.OnIntervalPassed(pawn, null);
-                    }
-                }
             }
 
             tickTrackerCondition = 0;

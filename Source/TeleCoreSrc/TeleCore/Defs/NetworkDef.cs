@@ -8,29 +8,30 @@ namespace TeleCore.Defs;
 //Defines the logical ruleset for a network
 public class NetworkDef : FlowValueCollectionDef
 {
+    [Unsaved] private Graphic_Linked_NetworkStructureOverlay cachedOverlayGraphic;
+
     //Cached Data
     [Unsaved] private Graphic_LinkedNetworkStructure cachedTransmitterGraphic;
-    [Unsaved] private Graphic_Linked_NetworkStructureOverlay cachedOverlayGraphic;
-    
+    public string containerLabel;
+
+
+    //Structure Ruleset
+    public ThingDef? controllerDef;
+    public float? frictionOverride;
+
+    public float? gasThroughPutOverride;
+
     //General Label
     public string labelShort;
-    public string containerLabel;
+    public GraphicData overlayGraphic;
 
     // Loaded from XML
     public ThingDef portableContainerDef = TeleDefOf.PortableContainer;
-
-    
-    //Structure Ruleset
-    public ThingDef? controllerDef;
     public ThingDef? transmitterDef;
     public GraphicData transmitterGraphic;
-    public GraphicData overlayGraphic;
 
-    public float? gasThroughPutOverride;
-    public float? frictionOverride;
-    
     //[field: Unsaved] public List<NetworkValueDef> NetworkValueDefs { get; } = new();
-    
+
     public bool UsesController => controllerDef != null;
 
     public Graphic_LinkedNetworkStructure TransmitterGraphic

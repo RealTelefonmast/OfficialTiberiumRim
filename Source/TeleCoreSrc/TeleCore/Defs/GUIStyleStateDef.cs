@@ -11,9 +11,12 @@ public class GUIStyleStateDef : Def
 
     public GUIStyleState State => GetState();
 
-    public GUIStyleState GetState() => new GUIStyleState
+    public GUIStyleState GetState()
     {
-        background = backgroundImagePath != null ? ContentFinder<Texture2D>.Get(backgroundImagePath) : null,
-        textColor = textColor
-    };
+        return new GUIStyleState
+        {
+            background = backgroundImagePath != null ? ContentFinder<Texture2D>.Get(backgroundImagePath) : null,
+            textColor = textColor
+        };
+    }
 }

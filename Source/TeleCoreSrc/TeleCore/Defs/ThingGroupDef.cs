@@ -5,8 +5,8 @@ namespace TeleCore.Defs;
 
 public class ThingGroupDef : Def
 {
-    public List<ThingGroupDef> subGroups;
     public ThingGroupDef parentGroup;
+    public List<ThingGroupDef> subGroups;
 
     public override void ResolveReferences()
     {

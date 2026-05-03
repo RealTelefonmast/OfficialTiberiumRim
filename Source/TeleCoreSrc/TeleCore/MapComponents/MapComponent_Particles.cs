@@ -13,7 +13,7 @@ public class MapComponent_Particles : MapComponent
     //public List<List<Particle>> ParticleGroups = new List<List<Particle>>();
     //public IEnumerator GroupEnumerator;
 
-    public MapComponent_Particles(Verse.Map map) : base(map)
+    public MapComponent_Particles(Map map) : base(map)
     {
     }
 

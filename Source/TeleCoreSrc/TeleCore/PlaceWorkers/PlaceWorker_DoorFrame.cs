@@ -15,6 +15,6 @@ public class PlaceWorker_DoorFrame : PlaceWorker
 
     public override bool ForceAllowPlaceOver(BuildableDef other)
     {
-        return ((ThingDef) other).thingClass.IsAssignableFrom(typeof(Building_Door));
+        return ((ThingDef)other).thingClass.IsAssignableFrom(typeof(Building_Door));
     }
 }

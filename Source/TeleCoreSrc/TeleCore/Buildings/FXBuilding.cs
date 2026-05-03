@@ -19,7 +19,7 @@ public class FXBuilding : Building, IFXLayerProvider, IFXEffecterProvider
     public CompFX FXComp => GetComp<CompFX>();
 
     //
-    public override void SpawnSetup(Verse.Map map, bool respawningAfterLoad)
+    public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
         base.SpawnSetup(map, respawningAfterLoad);
     }

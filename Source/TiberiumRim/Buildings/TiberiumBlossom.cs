@@ -1,20 +1,24 @@
-﻿using System.Collections.Generic;
-using TiberiumRim;
-using TiberiumRim.Tiberium;
+﻿using System.Linq;
 using Verse;
 
 namespace TR;
 
 public class TiberiumBlossom : TiberiumProducer
 {
+    public float radius = 30f;
+
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
         base.SpawnSetup(map, respawningAfterLoad);
+        if (TiberiumComp.StructureInfo.Blossoms.Any() &&
+            TiberiumComp.StructureInfo.Blossoms.Any(b => b != this && b.Position.DistanceTo(Position) <= 3))
+            DeSpawn();
         //TiberiumComp.BlossomInfo.RegisterBlossom(this);
     }
 
     public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
     {
+        //TiberiumComp.StructureInfo.Notify_BlossomGone();
         //TiberiumComp.BlossomInfo.DeregisterBlossom(this);
         base.DeSpawn(mode);
     }
@@ -26,7 +30,6 @@ public class TiberiumBlossom : TiberiumProducer
 
     public override void Tick()
     {
-        base.Tick();
     }
 
     public override void Draw()

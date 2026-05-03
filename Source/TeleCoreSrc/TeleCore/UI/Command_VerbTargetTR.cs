@@ -9,9 +9,9 @@ namespace TeleCore.UI;
 public class Command_VerbTargetTR : Command
 {
     private List<Verb> _groupedVerbs;
-    
-    public Verb verb;
     public bool drawRadius = true;
+
+    public Verb verb;
 
     public override Color IconDrawColor
     {
@@ -41,7 +41,7 @@ public class Command_VerbTargetTR : Command
             return;
         }
 
-        if (_groupedVerbs == null) 
+        if (_groupedVerbs == null)
             _groupedVerbs = new List<Verb>();
         _groupedVerbs.Add(command_VerbTarget.verb);
         if (command_VerbTarget.groupedVerbs != null) _groupedVerbs.AddRange(command_VerbTarget.groupedVerbs);

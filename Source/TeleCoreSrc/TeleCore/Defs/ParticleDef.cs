@@ -15,6 +15,7 @@ public class ParticleDef : Def
     public ParticleGraphicData graphicData;
     public ParticleMovement movement = ParticleMovement.Stationary;
     public Type particleClass = typeof(Particle);
+    public Type particleSystemClass;
     public bool realtime = true;
     public float rotationSpeed = 0f;
     public bool shouldBeSaved = false;

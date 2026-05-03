@@ -5,8 +5,8 @@ namespace TeleCore.Defs;
 
 public class HierarchicalCategoryDef : Def
 {
-    public HierarchicalCategoryDef parent;
     public HierarchicalCategoryDef categoryKind;
+    public HierarchicalCategoryDef parent;
 
     public override void PostLoad()
     {

@@ -9,7 +9,9 @@
 //   trtool --stats                    counts only: files scanned, duplicate names, identical/differing pairs
 //   trtool --tree-only                directory tree only, no duplicate scan
 //   trtool --dupes-only               duplicate names + paths only, no tree, no diffs
-//   trtool --file <name>              find all copies of filename and diff them, nothing else
+//   trtool --file <name>              find all copies of filename and diff them, including numbered
+//                                     variants (e.g. --file Harvester.cs also finds Harvester_2.cs,
+//                                     Harvester_3.cs, Harvester2.cs, etc.)
 //
 //   trtool --depth <n>                limit tree depth (default: unlimited)
 //   trtool --ext <ext>                filter duplicate scan by extension, e.g. --ext cs
@@ -30,6 +32,15 @@
 //   trtool --sort-files --scope <subpath>        restrict to a subtree (e.g. Source/TiberiumRim)
 //   trtool --sort-files --exclude <paths>        comma-separated relative paths to skip (e.g. Source/TRDupes,Source/TiberiumRim)
 //   trtool --sort-files --dest <name>            override output folder name (default: SortedCodeTree)
+//
+//   trtool --probe                    scan .cs files and report base types that block categorization,
+//                                     grouped by terminal unknown ancestor, sorted by frequency —
+//                                     tells you exactly what to add to sort-categories.json
+//   trtool --probe --scope <subpath>  restrict to a subtree
+//   trtool --probe --exclude <paths>  comma-separated relative paths to skip
+//
+//   Category roots for --sort-files / --probe are loaded from sort-categories.json (next to the
+//   exe or in CWD). Edit that file to add/change base-type → folder mappings; no recompile needed.
 
 using System;
 using System.Collections.Generic;
@@ -95,9 +106,10 @@ namespace TRTools
             bool deleteIdentical    = args.Contains("--delete-identical");
             bool flattenTextures    = args.Contains("--flatten-textures");
             bool sortFiles          = args.Contains("--sort-files");
+            bool probe              = args.Contains("--probe");
             bool confirm            = args.Contains("--confirm");
             bool verbose            = args.Contains("--verbose");
-            bool noTree             = stats || dupesOnly || fileFilter != null || deleteIdentical || flattenTextures || sortFiles || args.Contains("--no-tree");
+            bool noTree             = stats || dupesOnly || fileFilter != null || deleteIdentical || flattenTextures || sortFiles || probe || args.Contains("--no-tree");
             bool noDiff             = dupesOnly || args.Contains("--no-diff");
             bool noIdentical        = args.Contains("--no-identical");
             bool identicalOnly      = args.Contains("--identical-only");
@@ -139,6 +151,29 @@ namespace TRTools
             if (flattenTextures)
             {
                 RunFlattenTextures(rootPath, scanRoot, destName, sampleLimit, verbose, confirm);
+                Finish();
+                return;
+            }
+
+            // --probe: scan .cs files and report unresolvable inheritance roots
+            if (probe)
+            {
+                var excludedAbsPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+                if (excludeArg != null)
+                    foreach (string rel in excludeArg.Split(','))
+                    {
+                        string trimmed = rel.Trim();
+                        if (trimmed.Length > 0)
+                            excludedAbsPaths.Add(Path.GetFullPath(Path.Combine(rootPath, trimmed)));
+                    }
+
+                FileSorter.RunProbe(
+                    rootPath,
+                    scanRoot,
+                    excludedAbsPaths,
+                    Colored,
+                    Write,
+                    title => PrintSection(title));
                 Finish();
                 return;
             }
@@ -208,27 +243,26 @@ namespace TRTools
             // Normalise: strip path separators so bare names and relative paths both work
             filename = Path.GetFileName(filename);
 
-            Dictionary<string, List<string>> all = FindDuplicates(scanRoot, extFilter: null);
+            List<string> paths = FindFileVariants(scanRoot, filename);
 
-            List<string> paths;
-            if (!all.TryGetValue(filename, out paths))
+            if (paths.Count == 0)
             {
-                // Not a duplicate — check if it exists at all
-                var found = Directory.EnumerateFiles(scanRoot, filename, SearchOption.AllDirectories)
-                    .Where(f => !IsInSkippedDir(scanRoot, f))
-                    .ToList();
-
-                if (found.Count == 0)
-                    Colored(ConsoleColor.Red, "Not found: " + filename);
-                else
-                {
-                    Colored(ConsoleColor.DarkGray, "Only one copy found (no duplicate):");
-                    Write("  " + Path.GetRelativePath(rootPath, found[0]));
-                }
+                Colored(ConsoleColor.Red, "Not found: " + filename);
                 return;
             }
 
-            PrintSection("File: " + filename);
+            if (paths.Count == 1)
+            {
+                Colored(ConsoleColor.DarkGray, "Only one copy found (no duplicate):");
+                Write("  " + Path.GetRelativePath(rootPath, paths[0]));
+                return;
+            }
+
+            bool hasVariants = paths.Any(p =>
+                !string.Equals(Path.GetFileName(p), filename, StringComparison.OrdinalIgnoreCase));
+            string label = filename + (hasVariants ? " (+ variants)" : "");
+
+            PrintSection("File: " + label);
             for (int i = 0; i < paths.Count; i++)
                 Write("  " + (char)('A' + i) + ": " + Path.GetRelativePath(rootPath, paths[i]));
 
@@ -247,6 +281,56 @@ namespace TRTools
                     paths[i],
                     paths[j]);
             }
+        }
+
+        /// <summary>
+        /// Finds all files whose name matches <paramref name="filename"/> exactly, or whose name
+        /// matches the numbered-variant pattern: <c>{stem}_N{ext}</c> or <c>{stem}N{ext}</c>
+        /// where N is one or more digits. Results are sorted so the canonical file (exact name)
+        /// comes first, followed by variants in ascending numeric order (_2, _3, …).
+        /// </summary>
+        private static List<string> FindFileVariants(string root, string filename)
+        {
+            string stem = Path.GetFileNameWithoutExtension(filename);
+            string ext  = Path.GetExtension(filename);  // includes leading dot
+
+            var results = new List<(string path, int order)>();
+
+            foreach (string file in Directory.EnumerateFiles(root, "*" + ext, SearchOption.AllDirectories))
+            {
+                if (IsInSkippedDir(root, file)) continue;
+
+                string fileStem = Path.GetFileNameWithoutExtension(file);
+                string fileExt  = Path.GetExtension(file);
+
+                if (!string.Equals(fileExt, ext, StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                // Exact match — canonical, order 0
+                if (string.Equals(fileStem, stem, StringComparison.OrdinalIgnoreCase))
+                {
+                    results.Add((file, 0));
+                    continue;
+                }
+
+                // Variant: stem must be a prefix
+                if (!fileStem.StartsWith(stem, StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                string suffix = fileStem.Substring(stem.Length);
+
+                // Accept _N or bare N suffixes
+                if (suffix.StartsWith("_"))
+                    suffix = suffix.Substring(1);
+
+                if (suffix.Length > 0 && suffix.All(char.IsDigit) && int.TryParse(suffix, out int n))
+                    results.Add((file, n));
+            }
+
+            return results
+                .OrderBy(r => r.order)
+                .Select(r => r.path)
+                .ToList();
         }
 
         private static void RunStats(string rootPath, string scanRoot, string extFilter)

@@ -4,19 +4,50 @@ using RimWorld.Planet;
 using Verse;
 using Verse.Sound;
 
-namespace TR.EVA;
+namespace TR;
+
+// B — newer faction enum (replaces EVAType.Common)
+public enum EVA
+{
+    None,
+    Nod,
+    GDI,
+    Scrin
+}
+
+// B — Def-based settings replacing EVASettingsDef
+public class EVASettings : Def
+{
+    public List<EVATime> times;
+
+    public int TimeFor(EVASignal signal)
+    {
+        return times.Find(t => t.signal == signal).ticks;
+    }
+}
+
+public class EVATime
+{
+    public EVASignal signal;
+    public int ticks = 500;
+}
 
 [StaticConstructorOnStartup]
 public class GameComponent_EVA : GameComponent
 {
+    // A — def-based sound lookup (EVAType still referenced from elsewhere in codebase)
     private static readonly Dictionary<EVAType, Dictionary<EVASignal, EVAMessageSoundDef>> messagyBySignal = new();
-    private readonly Dictionary<EVASignal, int> LastPlayed = new();
-    private bool _evaActive;
 
     public GlobalTargetInfo EVATarget;
     public List<LocalTargetInfo> KnownTargets = new();
+    // B — public (not readonly) so it can be serialized / inspected
+    public Dictionary<EVASignal, int> LastPlayed = new();
 
-    private EVASettingsDef settings;
+    // A — EVAActive persistence
+    private bool _evaActive;
+
+    // B — canonical settings type
+    public EVASettings settings;
     private int tickSinceStart;
 
     static GameComponent_EVA()
@@ -35,43 +66,49 @@ public class GameComponent_EVA : GameComponent
 
     public World World => Find.World;
 
-    public EVAType SelectedEVA { get; set; } = EVAType.None;
+    // B — canonical EVA enum, default Scrin
+    public EVA SelectedEVA { get; set; } = EVA.Scrin;
 
     public string EVAPrefix
     {
         get
         {
+            var str = "";
             switch (SelectedEVA)
             {
-                case EVAType.None:
+                case EVA.None:
                     break;
-                case EVAType.Common:
-                    return "Ceva_";
-                case EVAType.Nod:
-                    return "Neva_";
-                case EVAType.GDI:
-                    return "Geva_";
-                case EVAType.Scrin:
-                    return "Aeva_";
+                case EVA.Nod:
+                    str = "Neva_";
+                    break;
+                case EVA.GDI:
+                    str = "Geva_";
+                    break;
+                case EVA.Scrin:
+                    str = "Aeva_";
+                    break;
             }
 
-            return string.Empty;
+            return str;
         }
     }
 
+    // A — activation flag with persistence
     public bool EVAActive
     {
         get => _evaActive;
         set => _evaActive = value;
     }
 
-    public bool CanPlay => SelectedEVA != EVAType.None && EVAActive;
+    // B — canonical: driven by mod settings
+    public bool CanPlay => TiberiumRimSettings.settings.EVASystem;
 
     public static GameComponent_EVA EVAComp()
     {
         return Current.Game.GetComponent<GameComponent_EVA>();
     }
 
+    // A — registers a sound def into the legacy dict-based lookup
     public static void RegisterMessageDef(EVAMessageSoundDef messageDef)
     {
         //TRLog.Debug($"Registering EVAMessage [{messageDef.EVAType}][{messageDef.EVASignal}]({messageDef})");
@@ -81,10 +118,11 @@ public class GameComponent_EVA : GameComponent
     public override void FinalizeInit()
     {
         base.FinalizeInit();
-        settings = DefDatabase<EVASettingsDef>.GetNamed("EVASettings");
+        settings = DefDatabase<EVASettings>.GetNamed("EVASettings");
         foreach (EVASignal signal in Enum.GetValues(typeof(EVASignal))) LastPlayed.Add(signal, 0);
     }
 
+    // A — cooldown guard; real logic unreachable (TODO DEBUG)
     public bool CanPlaySignal(EVASignal signal)
     {
         //TODO DEBUG
@@ -101,6 +139,7 @@ public class GameComponent_EVA : GameComponent
     {
         base.GameComponentUpdate();
         tickSinceStart++;
+        //Log.Message("TicksGame: " + Find.TickManager.TicksGame + " | " + GenTicks.TicksGame + "TicksAbs: " + Find.TickManager.TicksAbs + " | " + GenTicks.TicksAbs);
     }
 
     public void PlayCountDown(int seconds)
@@ -109,13 +148,20 @@ public class GameComponent_EVA : GameComponent
             seconds = 10;
         ActionComposition composition = new ActionComposition("EVACountDown");
         for (var i = 1; i <= seconds; i++)
-            composition.AddPart(SoundDef.Named($"{EVAPrefix}Count{i}"), SoundInfo.OnCamera(), i);
+            composition.AddPart(SoundDef.Named(EVAPrefix + "Count" + i), SoundInfo.OnCamera(), i);
         composition.Init();
     }
 
+    // A — direct LocalTargetInfo
     public void RegisterTarget(LocalTargetInfo target)
     {
         KnownTargets.Add(target);
+    }
+
+    // B — wraps Thing into LocalTargetInfo
+    public void RegisterTarget(Thing thing)
+    {
+        KnownTargets.Add(new LocalTargetInfo(thing));
     }
 
     private void UpdateTargets()
@@ -123,6 +169,7 @@ public class GameComponent_EVA : GameComponent
         KnownTargets.RemoveAll(t => !t.IsValid);
     }
 
+    // A — legacy dict-based signal dispatch with target registration
     public void ReceiveSignal(EVASignal signal, LocalTargetInfo target)
     {
         if (!CanPlay) return;
@@ -137,6 +184,132 @@ public class GameComponent_EVA : GameComponent
         }
     }
 
+    // B — canonical: inline switch building SoundDef, inline cooldown check
+    public void ReceiveSignal(EVASignal signal)
+    {
+        Log.Message("Received EVA signal: " + signal);
+        if (!CanPlay) return;
+
+        SoundDef soundToPlay = null;
+        switch (signal)
+        {
+            case EVASignal.SILOSNEEDED:
+                soundToPlay = SoundDef.Named(EVAPrefix + "SilosNeeded");
+                break;
+            case EVASignal.PowerOn:
+                soundToPlay = SoundDef.Named(EVAPrefix + "BuildingOn");
+                break;
+            case EVASignal.PowerOff:
+                soundToPlay = SoundDef.Named(EVAPrefix + "BuildingOff");
+                break;
+            case EVASignal.BuildingLost:
+                soundToPlay = SoundDef.Named(EVAPrefix + "BuildingLost");
+                break;
+            case EVASignal.LowPower:
+                soundToPlay = SoundDef.Named(EVAPrefix + "LowPower");
+                break;
+            case EVASignal.InsufficientFunds:
+                soundToPlay = SoundDef.Named(EVAPrefix + "InsufficFunds");
+                break;
+            case EVASignal.BaseUnderAttack:
+                soundToPlay = SoundDef.Named(EVAPrefix + "BaseUndAttack");
+                break;
+            case EVASignal.UnitUnderAttack:
+                soundToPlay = SoundDef.Named(EVAPrefix + "UnitUndAttack");
+                break;
+            case EVASignal.PowerRestored:
+                soundToPlay = SoundDef.Named(EVAPrefix + "PowerRestored");
+                break;
+            case EVASignal.UnitLost:
+                soundToPlay = SoundDef.Named(EVAPrefix + "UnitLost");
+                break;
+            case EVASignal.CantDeploy:
+                soundToPlay = SoundDef.Named(EVAPrefix + "CantDeploHere");
+                break;
+            case EVASignal.OnHold:
+                soundToPlay = SoundDef.Named(EVAPrefix + "OnHold");
+                break;
+            case EVASignal.Canceled:
+                soundToPlay = SoundDef.Named(EVAPrefix + "Canceled");
+                break;
+            case EVASignal.Building:
+                soundToPlay = SoundDef.Named(EVAPrefix + "Building");
+                break;
+            case EVASignal.SelectLocation:
+                soundToPlay = SoundDef.Named(EVAPrefix + "SelectLocation");
+                break;
+            case EVASignal.SelectDestination:
+                soundToPlay = SoundDef.Named(EVAPrefix + "SelectDestination");
+                break;
+            case EVASignal.SelectDropzone:
+                soundToPlay = SoundDef.Named(EVAPrefix + "SelectDropzone");
+                break;
+            case EVASignal.SelectTarget:
+                soundToPlay = SoundDef.Named(EVAPrefix + "SelectTarget");
+                break;
+            case EVASignal.SelectUnit:
+                soundToPlay = SoundDef.Named(EVAPrefix + "SelectUnit");
+                break;
+            case EVASignal.SelectWormhole:
+                soundToPlay = SoundDef.Named(EVAPrefix + "SelectWormhole");
+                break;
+            case EVASignal.IonCannonReady:
+                soundToPlay = SoundDef.Named(EVAPrefix + "IonCannonReady");
+                break;
+            case EVASignal.IonCannonActivated:
+                soundToPlay = SoundDef.Named(EVAPrefix + "IonCannonActivated");
+                break;
+            case EVASignal.NewObjective:
+                break;
+            case EVASignal.ObjectiveComplete:
+                break;
+            case EVASignal.NewMission:
+                break;
+            case EVASignal.TiberiumExposure:
+                soundToPlay = SoundDef.Named(EVAPrefix + "TiberExposDet");
+                break;
+            case EVASignal.CountD10:
+                soundToPlay = SoundDef.Named(EVAPrefix + "Count10");
+                break;
+            case EVASignal.CountD09:
+                soundToPlay = SoundDef.Named(EVAPrefix + "Count09");
+                break;
+            case EVASignal.CountD08:
+                soundToPlay = SoundDef.Named(EVAPrefix + "Count08");
+                break;
+            case EVASignal.CountD07:
+                soundToPlay = SoundDef.Named(EVAPrefix + "Count07");
+                break;
+            case EVASignal.CountD06:
+                soundToPlay = SoundDef.Named(EVAPrefix + "Count06");
+                break;
+            case EVASignal.CountD05:
+                soundToPlay = SoundDef.Named(EVAPrefix + "Count05");
+                break;
+            case EVASignal.CountD04:
+                soundToPlay = SoundDef.Named(EVAPrefix + "Count04");
+                break;
+            case EVASignal.CountD03:
+                soundToPlay = SoundDef.Named(EVAPrefix + "Count03");
+                break;
+            case EVASignal.CountD02:
+                soundToPlay = SoundDef.Named(EVAPrefix + "Count02");
+                break;
+            case EVASignal.CountD01:
+                soundToPlay = SoundDef.Named(EVAPrefix + "Count01");
+                break;
+        }
+
+        if (tickSinceStart - LastPlayed[signal] >= settings.TimeFor(signal))
+        {
+            soundToPlay?.PlayOneShotOnCamera(Map);
+            LastPlayed[signal] = tickSinceStart;
+            UpdateTargets();
+        }
+        //Log.Message("Can't be played - wait " + (settings.TimeFor(signal) - (tickSinceStart - LastPlayed[signal])) + " ticks");
+    }
+
+    // A — persists EVAActive across saves
     public override void ExposeData()
     {
         base.ExposeData();
@@ -147,10 +320,11 @@ public class GameComponent_EVA : GameComponent
 public enum EVASignal
 {
     //EVA
-    SystemsOnline,
-    SystemsOffline,
+    SystemsOnline,      // A
+    SystemsOffline,     // A
 
-    SilosNeeded,
+    SILOSNEEDED,        // B canonical
+    SilosNeeded,        // A (alternate casing — may be referenced elsewhere)
     PowerOn,
     PowerOff,
     LowPower,
@@ -160,17 +334,18 @@ public enum EVASignal
     //Base
     Building,
     OnHold,
-    Cancelled,
+    Canceled,           // B canonical
+    Cancelled,          // A (alternate spelling — may be referenced elsewhere)
     CantDeploy,
-    ConComplete,
+    ConComplete,        // A
     BaseUnderAttack,
     BuildingLost,
-    Repairing,
+    Repairing,          // A
 
     //Units
-    Training,
-    HarvUndAttack,
-    HarvesterLost,
+    Training,           // A
+    HarvUndAttack,      // A
+    HarvesterLost,      // A
     UnitUnderAttack,
     UnitLost,
 
@@ -187,17 +362,17 @@ public enum EVASignal
 
     //Warnings
     TiberiumExposure,
-    TiberiumDepleted,
+    TiberiumDepleted,   // A
 
     //Toxic Exposure
-    WarnSevereToxic,
-    WarnHighToxic,
-    WarnMildToxic,
+    WarnSevereToxic,    // A
+    WarnHighToxic,      // A
+    WarnMildToxic,      // A
 
     //Superweapons
-    LiquidTibBombLaunched,
-    NuclearMissLaunched,
-    RiftGeneratorActivated,
+    LiquidTibBombLaunched,  // A
+    NuclearMissLaunched,    // A
+    RiftGeneratorActivated, // A
 
     IonCannonReady,
     IonCannonActivated,

@@ -14,16 +14,6 @@ public class CompNetwork : FXThingComp, INetworkStructure
     //Debug
     protected static bool DebugConnectionCells;
 
-    #region Fields
-
-    private PipeNetworkMapInfo _mapInfo;
-    private List<NetworkPart> _allNetParts;
-    private Dictionary<NetworkDef, INetworkPart> _netPartByDef;
-    //private IFXLayerProvider? _fxProvider;
-    private Gizmo_NetworkOverview networkInfoGizmo;
-
-    #endregion
-
     //
     public INetworkPart this[NetworkDef def] => _netPartByDef.TryGetValue(def, out var value) ? value : null;
 
@@ -32,16 +22,16 @@ public class CompNetwork : FXThingComp, INetworkStructure
     public CompPowerTrader CompPower { get; private set; }
     public CompFlickable CompFlick { get; private set; }
     public CompFX CompFX { get; private set; }
-    public NetworkIO GeneralIO { get; private set; }
 
     //
     protected virtual bool IsWorkingOverride => true;
     public Gizmo_NetworkOverview NetworkGizmo => networkInfoGizmo ??= new Gizmo_NetworkOverview(this);
+    public NetworkPart SelectedPart => NetworkGizmo.SelectedPart;
+    public NetworkIO GeneralIO { get; private set; }
 
     //
     public Thing Thing => parent;
     public List<NetworkPart> NetworkParts => _allNetParts;
-    public NetworkPart SelectedPart => NetworkGizmo.SelectedPart;
 
     public bool IsPowered => CompPower?.PowerOn ?? true;
     public bool IsWorking => IsWorkingOverride;
@@ -96,17 +86,13 @@ public class CompNetwork : FXThingComp, INetworkStructure
         if (Scribe.mode == LoadSaveMode.PostLoadInit)
         {
             if (_allNetParts.NullOrEmpty())
-            {
                 TLog.Warning($"Could not load network parts for {parent}... Correcting.");
-            }
             else
-            {
                 for (var i = 0; i < _allNetParts.Count; i++)
                 {
                     var netPart = _allNetParts[i];
                     netPart.PostLoadInit(Props.networks[i]);
                 }
-            }
         }
     }
 
@@ -129,15 +115,10 @@ public class CompNetwork : FXThingComp, INetworkStructure
 
         //Create NetworkParts
         if (respawningAfterLoad && _allNetParts.Count != Props.networks.Count)
-        {
             TLog.Warning($"Spawning {parent} after load with missing parts... Correcting.");
-        }
 
         //
-        if (!respawningAfterLoad)
-        {
-            _allNetParts = new List<NetworkPart>(Math.Max(1, Props.networks.Count));
-        }
+        if (!respawningAfterLoad) _allNetParts = new List<NetworkPart>(Math.Max(1, Props.networks.Count));
 
         for (var i = 0; i < Props.networks.Count; i++)
         {
@@ -145,7 +126,8 @@ public class CompNetwork : FXThingComp, INetworkStructure
             NetworkPart? part = null;
 
             //Create part if it doesnt exist
-            var exists = _allNetParts.Exists(p => p is { Config: not null } && p.Config.networkDef == partConfig.networkDef);
+            var exists = _allNetParts.Exists(p =>
+                p is { Config: not null } && p.Config.networkDef == partConfig.networkDef);
             if (!exists)
             {
                 part = (NetworkPart)Activator.CreateInstance(partConfig.workerType, this, partConfig);
@@ -158,10 +140,7 @@ public class CompNetwork : FXThingComp, INetworkStructure
         }
 
         //Ensure that new nearby junctions add themselves to the network
-        foreach (var part in _allNetParts)
-        {
-            part.CheckNeighborJunctions();
-        }
+        foreach (var part in _allNetParts) part.CheckNeighborJunctions();
 
         _mapInfo.Notify_NewNetworkStructureSpawned(this);
     }
@@ -172,10 +151,7 @@ public class CompNetwork : FXThingComp, INetworkStructure
         base.PostDestroy(mode, previousMap);
         _mapInfo.Notify_NetworkStructureDespawned(this);
 
-        foreach (var networkPart in NetworkParts)
-        {
-            networkPart.PostDestroy(mode, previousMap);
-        }
+        foreach (var networkPart in NetworkParts) networkPart.PostDestroy(mode, previousMap);
     }
 
     //
@@ -200,10 +176,7 @@ public class CompNetwork : FXThingComp, INetworkStructure
     public override void PostPrintOnto(SectionLayer layer)
     {
         base.PostPrintOnto(layer);
-        foreach (var networkPart in NetworkParts)
-        {
-            networkPart.Print(layer);
-        }
+        foreach (var networkPart in NetworkParts) networkPart.Print(layer);
     }
 
     public override string CompInspectStringExtra()
@@ -240,10 +213,8 @@ public class CompNetwork : FXThingComp, INetworkStructure
         yield return NetworkGizmo;
 
         foreach (var networkPart in NetworkParts)
-        {
-            foreach (var partGizmo in networkPart.GetPartGizmos())
-                yield return partGizmo;
-        }
+        foreach (var partGizmo in networkPart.GetPartGizmos())
+            yield return partGizmo;
 
         foreach (var g in base.CompGetGizmosExtra())
             yield return g;
@@ -269,6 +240,18 @@ public class CompNetwork : FXThingComp, INetworkStructure
             action = delegate { DebugConnectionCells = !DebugConnectionCells; }
         };
     }
+
+    #region Fields
+
+    private PipeNetworkMapInfo _mapInfo;
+    private List<NetworkPart> _allNetParts;
+
+    private Dictionary<NetworkDef, INetworkPart> _netPartByDef;
+
+    //private IFXLayerProvider? _fxProvider;
+    private Gizmo_NetworkOverview networkInfoGizmo;
+
+    #endregion
 
     #region FX Implementation
 

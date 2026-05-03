@@ -6,7 +6,7 @@ using Verse;
 namespace TeleCore.Comps;
 
 /// <summary>
-/// Thing component that marks a building as a source of an atmospheric value.
+///     Thing component that marks a building as a source of an atmospheric value.
 /// </summary>
 public class Comp_AtmosphericSource : ThingComp
 {

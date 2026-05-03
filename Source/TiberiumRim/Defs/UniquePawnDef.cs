@@ -7,16 +7,16 @@ namespace TR;
 
 public class UniquePawnDef : Def
 {
-    public BackstoryDef adulthood;
-    public BeardDef beardDef;
+    public UniqueBackstoryDef adulthood;
     public int biologicalAge;
     public int birthDate;
 
     //Basic Body
     public BodyTypeDef bodyType;
 
-    public BackstoryDef childhood;
+    public UniqueBackstoryDef childhood;
     public List<UniqueApparel> clothes;
+    public CrownType crownType;
     public FactionDef faction;
     public Gender gender;
     public Color hairColor;
@@ -46,9 +46,20 @@ public class UniqueApparel
 /*
 public class UniqueBackstoryDef : Def
 {
-    private BackstoryDef def;
+    public string baseDesc;
+    public List<TraitEntry> disallowedTraits;
+    public List<TraitEntry> forcedTraits;
+    public List<string> hairTags;
     public string identifier;
+    private string nameMaker;
+    private RulePackDef nameMakerResolved;
+    public WorkTags requiredWorkTags;
+
+    public bool shuffleable = true;
+
+    public Dictionary<string, int> skillGains;
     public BackstorySlot slot;
+    public List<string> spawnCategories = new();
     public string title;
     public string titleFemale;
     public string titleShort;
@@ -69,11 +80,10 @@ public class UniqueBackstoryDef : Def
 
     public Backstory BackstoryFromThis()
     {
-        Backstory backstory = new Backstory()
+        Backstory backstory = new Backstory
         {
             identifier = identifier,
-            slot = slot,
-
+            slot = slot
         };
         backstory.PostLoad();
         backstory.ResolveReferences();

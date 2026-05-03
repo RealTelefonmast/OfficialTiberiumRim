@@ -46,7 +46,7 @@ public class EventManager : WorldComponent
         {
             var newEvent = newEvents[i];
             if (newEvent.triggerProps == null) continue;
-            if (newEvent.triggerProps.TriggersEvent(args.Hediff, out LookTargets targets))
+            if (newEvent.triggerProps.TriggersEvent(args.Hediff, out var targets))
                 StartEvent(newEvent, targets);
         }
     }
@@ -58,7 +58,7 @@ public class EventManager : WorldComponent
         {
             var newEvent = newEvents[i];
             if (newEvent.triggerProps == null) continue;
-            if (newEvent.triggerProps.TriggersEvent(args.Thing, out LookTargets targets)) StartEvent(newEvent, targets);
+            if (newEvent.triggerProps.TriggersEvent(args.Thing, out var targets)) StartEvent(newEvent, targets);
         }
     }
 
@@ -70,7 +70,7 @@ public class EventManager : WorldComponent
             return def.cachedEvent;
         }
 
-        var baseEvent = (BaseEvent)Activator.CreateInstance((Type)def.eventClass);
+        var baseEvent = (BaseEvent)Activator.CreateInstance(def.eventClass);
         baseEvent.StartEvent(def);
         baseEvent.EventTargets = targets;
         def.cachedEvent = baseEvent;

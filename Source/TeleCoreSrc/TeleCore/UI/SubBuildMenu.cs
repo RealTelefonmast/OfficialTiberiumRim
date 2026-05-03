@@ -16,32 +16,32 @@ public class SubMenuCategoryDef : Def
 
 public class SubBuildMenu : Window, IExposable
 {
-    private static readonly Vector2 Tab_Size = new(118, 30);
-    private static readonly Vector2 SeachBar_Size = new(125, 25);
     private const float TB_Margin = 10f;
     private const float LR_Margin = 3f;
     private const float Icon_Size = 30f;
+    private static readonly Vector2 Tab_Size = new(118, 30);
+    private static readonly Vector2 SeachBar_Size = new(125, 25);
 
     //
     private readonly Dictionary<SubMenuGroupDef, SubMenuCategoryDef> cachedSelection = new();
-    private bool favoriteMenuActive;
-    private List<BuildableDefScribed> favoriteOptions = new(); //Extra cache, Used to render only the favorited options
     private readonly HashSet<ThingDef> HighLightOptions = new();
 
     private readonly Dictionary<SubMenuGroupDef, Texture2D> iconByGroup = new();
-    private BuildableDef inactiveDef;
-
-    private Vector2 lastPos;
 
     //
     private SubBuildMenuDef _menuDef;
+    private SubMenuGroupDef _selectedGroup;
+    private bool favoriteMenuActive;
+    private List<BuildableDefScribed> favoriteOptions = new(); //Extra cache, Used to render only the favorited options
+    private BuildableDef inactiveDef;
+
+    private Vector2 lastPos;
     private Gizmo mouseOverGizmo;
 
     //SavedData
     private Dictionary<BuildableDefScribed, SubMenuOptionSettings> optionStates = new();
     private Vector2 scroller = Vector2.zero;
     private string searchText = "";
-    private SubMenuGroupDef _selectedGroup;
 
     public SubBuildMenu()
     {
@@ -58,7 +58,7 @@ public class SubBuildMenu : Window, IExposable
 
     public SubBuildMenu(SubBuildMenuDef menuDef)
     {
-        this._menuDef = menuDef;
+        _menuDef = menuDef;
 
         //Window Settings
         draggable = true;
@@ -90,18 +90,6 @@ public class SubBuildMenu : Window, IExposable
     public override Vector2 InitialSize => new(400, 550);
     public override float Margin => 8;
 
-    public override void Close(bool doCloseSound = true)
-    {
-        this.lastPos = this.windowRect.center; // GUI.wind.center; //window.;
-        base.Close(doCloseSound);
-    }
-
-    public override void PostOpen()
-    {
-        this.windowRect.center = this.lastPos;
-        base.PostOpen();
-    }
-
     public void ExposeData()
     {
         //
@@ -113,6 +101,18 @@ public class SubBuildMenu : Window, IExposable
 
         if (Scribe.mode == LoadSaveMode.PostLoadInit)
             Setup(_menuDef, true);
+    }
+
+    public override void Close(bool doCloseSound = true)
+    {
+        lastPos = windowRect.center; // GUI.wind.center; //window.;
+        base.Close(doCloseSound);
+    }
+
+    public override void PostOpen()
+    {
+        windowRect.center = lastPos;
+        base.PostOpen();
     }
 
     private void Setup(SubBuildMenuDef menuDef, bool afterLoad)
@@ -144,9 +144,10 @@ public class SubBuildMenu : Window, IExposable
         //
         var searchBar = new Rect(new Vector2(inRect.xMax - SeachBar_Size.x, 0f), SeachBar_Size);
         var closeButton = new Rect(inRect.x, inRect.y, SeachBar_Size.y, SeachBar_Size.y);
-        var favoritesRect = new Rect(searchBar.x - (SeachBar_Size.y + 4), searchBar.y, SeachBar_Size.y, SeachBar_Size.y).ContractedBy(2).Rounded();
+        var favoritesRect = new Rect(searchBar.x - (SeachBar_Size.y + 4), searchBar.y, SeachBar_Size.y, SeachBar_Size.y)
+            .ContractedBy(2).Rounded();
 
-        if (Verse.Widgets.CloseButtonFor(closeButton))
+        if (Widgets.CloseButtonFor(closeButton))
         {
             Close();
             return;
@@ -155,23 +156,25 @@ public class SubBuildMenu : Window, IExposable
         DoSearchBar(searchBar);
 
         //Favorited
-        if (Verse.Widgets.ButtonImage(favoritesRect, TeleContent.Favorite_Filled))
+        if (Widgets.ButtonImage(favoritesRect, TeleContent.Favorite_Filled))
             favoriteMenuActive = !favoriteMenuActive;
 
         //SetupBG
         var menuRect = new Rect(0f, SeachBar_Size.y, windowRect.width, 526f);
-        Verse.Widgets.DrawTextureRotated(menuRect, CurrentTexturePack.backGround, 0f);
+        Widgets.DrawTextureRotated(menuRect, CurrentTexturePack.backGround, 0f);
         //Reduce Content Rect
-        menuRect = new Rect(LR_Margin, menuRect.y + TB_Margin, menuRect.width - LR_Margin, menuRect.height - TB_Margin * 2);
-        Verse.Widgets.BeginGroup(menuRect);
+        menuRect = new Rect(LR_Margin, menuRect.y + TB_Margin, menuRect.width - LR_Margin,
+            menuRect.height - TB_Margin * 2);
+        Widgets.BeginGroup(menuRect);
         {
             GroupSidebar(3);
             var extraDes = new Rect(2, menuRect.height - 75, Icon_Size, Icon_Size);
             DrawDesignator(extraDes, DesignatorUtility.FindAllowedDesignator<Designator_Deconstruct>());
             extraDes.y = extraDes.yMax + 5;
             DrawDesignator(extraDes, DesignatorUtility.FindAllowedDesignator<Designator_Cancel>());
-            var DesignatorRect = new Rect(Icon_Size + LR_Margin, 0f, menuRect.width - (Icon_Size + LR_Margin), menuRect.height);
-            Verse.Widgets.BeginGroup(DesignatorRect);
+            var DesignatorRect = new Rect(Icon_Size + LR_Margin, 0f, menuRect.width - (Icon_Size + LR_Margin),
+                menuRect.height);
+            Widgets.BeginGroup(DesignatorRect);
             {
                 if (favoriteMenuActive)
                 {
@@ -183,7 +186,7 @@ public class SubBuildMenu : Window, IExposable
                     curXY.y += favoriteTabLabelRect.y;
 
                     //
-                    Verse.Widgets.Label(favoriteTabLabelRect, "Favorites");
+                    Widgets.Label(favoriteTabLabelRect, "Favorites");
                     curXY.y += TWidgets.GapLine(curXY.x, curXY.y, DesignatorRect.width, 4, 0);
 
                     //
@@ -213,9 +216,10 @@ public class SubBuildMenu : Window, IExposable
                         var tex = cat == SelectedCategoryDef || Mouse.IsOver(clickRect)
                             ? CurrentTexturePack.tabSelected
                             : CurrentTexturePack.tab;
-                        Verse.Widgets.DrawTextureFitted(tabRect, tex, 1f);
+                        Widgets.DrawTextureFitted(tabRect, tex, 1f);
                         if (HasUnDiscovered(_menuDef, SelectedGroup, cat))
-                            TWidgets.DrawTextureInCorner(tabRect, TeleContent.Undiscovered, 7, TextAnchor.UpperRight, new Vector2(-6, 3));
+                            TWidgets.DrawTextureInCorner(tabRect, TeleContent.Undiscovered, 7, TextAnchor.UpperRight,
+                                new Vector2(-6, 3));
                         //DrawUndiscovered(tabRect, new Vector2(-6, 3));
                         //Widgets.DrawTextureFitted(tabRect, TiberiumContent.Tab_Undisc, 1f);
                         Text.Anchor = TextAnchor.MiddleCenter;
@@ -224,12 +228,12 @@ public class SubBuildMenu : Window, IExposable
                         if (Text.CalcSize(catLabel).y > tabRect.width)
                             Text.Font = GameFont.Tiny;
 
-                        Verse.Widgets.Label(tabRect, catLabel);
+                        Widgets.Label(tabRect, catLabel);
                         Text.Font = GameFont.Tiny;
                         Text.Anchor = 0;
 
                         AdjustXY(ref curXY, Tab_Size.x - 10f, Tab_Size.y, Tab_Size.x * 3);
-                        if (Verse.Widgets.ButtonInvisible(clickRect))
+                        if (Widgets.ButtonInvisible(clickRect))
                         {
                             searchText = "";
                             SetSelectedCat(cat);
@@ -242,16 +246,16 @@ public class SubBuildMenu : Window, IExposable
                         SelectedGroup, SelectedCategoryDef);
                 }
             }
-            Verse.Widgets.EndGroup();
+            Widgets.EndGroup();
         }
-        Verse.Widgets.EndGroup();
+        Widgets.EndGroup();
     }
 
     private void DrawSubThingGroup(Rect main, SubMenuGroupDef groupDef, SubMenuCategoryDef categoryDef)
     {
         if (groupDef != null && categoryDef != null)
         {
-            Verse.Widgets.BeginGroup(main);
+            Widgets.BeginGroup(main);
             {
                 var size = new Vector2(80, 80);
                 var curXY = new Vector2(5f, 5f);
@@ -259,10 +263,10 @@ public class SubBuildMenu : Window, IExposable
                     ? SubMenuThingDefList.Categorized[groupDef][categoryDef]
                     : ItemsBySearch(searchText);
                 var viewRect = new Rect(0f, 0f, main.width,
-                    10 + (float) (TMath.Round((decimal) (things.Count / 4), 0, MidpointRounding.AwayFromZero) + 1) *
+                    10 + (TMath.Round((decimal)(things.Count / 4), 0, MidpointRounding.AwayFromZero) + 1) *
                     size.x);
                 var scrollerRect = new Rect(0f, 0f, main.width, main.height + 5);
-                Verse.Widgets.BeginScrollView(scrollerRect, ref scroller, viewRect, false);
+                Widgets.BeginScrollView(scrollerRect, ref scroller, viewRect, false);
                 {
                     mouseOverGizmo = null;
                     inactiveDef = null;
@@ -276,9 +280,9 @@ public class SubBuildMenu : Window, IExposable
                             InactiveDesignator(def, main, size, ref curXY);
                     }
                 }
-                Verse.Widgets.EndScrollView();
+                Widgets.EndScrollView();
             }
-            Verse.Widgets.EndGroup();
+            Widgets.EndGroup();
         }
     }
 
@@ -294,26 +298,26 @@ public class SubBuildMenu : Window, IExposable
         GUI.color = new Color(1, 1, 1, 0.80f);
         var mouseOver = Mouse.IsOver(rect);
         var tex = mouseOver ? CurrentTexturePack.designatorSelected : CurrentTexturePack.designator;
-        Verse.Widgets.DrawTextureFitted(rect, tex, 1f);
+        Widgets.DrawTextureFitted(rect, tex, 1f);
         GUI.color = mouseOver ? new Color(1, 1, 1, 0.45f) : Color.white;
         var icon = def.uiIcon != null ? def.uiIcon : BaseContent.BadTex;
         var texCoords = new Rect(0f, 0f, 1f, 1f);
-        texCoords = def is TerrainDef ? Verse.Widgets.CroppedTerrainTextureRect(icon) : texCoords;
-        Verse.Widgets.DrawTextureFitted(rect.ContractedBy(2), icon, 1, Vector2.one, texCoords);
+        texCoords = def is TerrainDef ? Widgets.CroppedTerrainTextureRect(icon) : texCoords;
+        Widgets.DrawTextureFitted(rect.ContractedBy(2), icon, 1, Vector2.one, texCoords);
         GUI.color = Color.white;
         if (def.HasSubMenuExtension(out var subMenu) && subMenu.isDevOption)
         {
             Text.Font = GameFont.Medium;
             Text.Anchor = TextAnchor.MiddleCenter;
             GUI.color = TColor.White075;
-            Verse.Widgets.Label(rect, "DEV");
+            Widgets.Label(rect, "DEV");
             GUI.color = Color.white;
             Text.Anchor = default;
             Text.Font = GameFont.Small;
         }
 
         if (HighLightOptions.Contains(def))
-            Verse.Widgets.DrawTextureFitted(rect, TeleContent.Undiscovered, 1);
+            Widgets.DrawTextureFitted(rect, TeleContent.Undiscovered, 1);
 
         var optionDiscovered = OptionIsDiscovered(def);
         if (!optionDiscovered)
@@ -341,12 +345,12 @@ public class SubBuildMenu : Window, IExposable
                 ? GenData.GetDesignatorFor<Designator_BuildGodMode>(def)
                 : GenData.GetDesignatorFor<Designator_Build>(def);
             Text.Anchor = TextAnchor.UpperCenter;
-            Verse.Widgets.Label(rect, def.LabelCap);
+            Widgets.Label(rect, def.LabelCap);
             Text.Anchor = 0;
             TooltipHandler.TipRegion(rect, def.LabelCap);
         }
 
-        if (Verse.Widgets.ButtonInvisible(rect))
+        if (Widgets.ButtonInvisible(rect))
         {
             mouseOverGizmo.ProcessInput(null);
             Event.current.Use();
@@ -368,11 +372,11 @@ public class SubBuildMenu : Window, IExposable
         if (searchText.NullOrEmpty())
         {
             GUI.color = new Color(1, 1, 1, 0.75f);
-            Verse.Widgets.Label(textArea.ContractedBy(2), "Search..");
+            Widgets.Label(textArea.ContractedBy(2), "Search..");
             GUI.color = Color.white;
         }
 
-        searchText = Verse.Widgets.TextArea(textArea, searchText);
+        searchText = Widgets.TextArea(textArea, searchText);
         Text.Anchor = 0;
     }
 
@@ -384,21 +388,21 @@ public class SubBuildMenu : Window, IExposable
             var groupDef = list[i];
             if (groupDef.isDevGroup && !DebugSettings.godMode) continue;
             var grActv = SubMenuThingDefList.IsActive(groupDef);
-            
+
             var partRect = new Rect(0f, yPos + (Icon_Size + 6) * i, Icon_Size, Icon_Size);
             var sel = Mouse.IsOver(partRect) || SelectedGroup == groupDef;
 
             var white = grActv ? Color.white : new Color(1f, 1f, 1f, 0.2f);
             var mouseOver = grActv ? new Color(1f, 1f, 1f, 0.4f) : new Color(1f, 1f, 1f, 0.2f);
-            
+
             GUI.color = sel ? white : mouseOver;
-            Verse.Widgets.DrawTextureFitted(partRect, IconForGroup(groupDef), 1f);
+            Widgets.DrawTextureFitted(partRect, IconForGroup(groupDef), 1f);
             GUI.color = white;
-            
+
             if (HasUnDiscovered(_menuDef, groupDef))
                 TWidgets.DrawTextureInCorner(partRect, TeleContent.Undiscovered, 8, TextAnchor.UpperRight);
             //DrawUndiscovered(partRect);
-            if (Verse.Widgets.ButtonInvisible(partRect) && grActv)
+            if (Widgets.ButtonInvisible(partRect) && grActv)
             {
                 searchText = "";
                 SelectedGroup = groupDef;
@@ -412,8 +416,8 @@ public class SubBuildMenu : Window, IExposable
         GUI.color = Color.grey;
         var mouseOver = Mouse.IsOver(rect);
         var tex = mouseOver ? CurrentTexturePack.designatorSelected : CurrentTexturePack.designator;
-        Verse.Widgets.DrawTextureFitted(rect, tex, 1f);
-        Verse.Widgets.DrawTextureFitted(rect.ContractedBy(2), def.uiIcon, 1);
+        Widgets.DrawTextureFitted(rect, tex, 1f);
+        Widgets.DrawTextureFitted(rect.ContractedBy(2), def.uiIcon, 1);
         GUI.color = Color.white;
         if (Mouse.IsOver(rect))
             inactiveDef = def;
@@ -424,7 +428,7 @@ public class SubBuildMenu : Window, IExposable
     //
     private void DrawDesignator(Rect rect, Designator designator)
     {
-        if (Verse.Widgets.ButtonImage(rect, designator.icon as Texture2D)) designator.ProcessInput(null);
+        if (Widgets.ButtonImage(rect, designator.icon as Texture2D)) designator.ProcessInput(null);
     }
 
     private void AdjustXY(ref Vector2 XY, float xIncrement, float yIncrement, float maxWidth, float minX = 0f)

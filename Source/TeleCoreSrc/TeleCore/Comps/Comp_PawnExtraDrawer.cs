@@ -96,7 +96,7 @@ public class Comp_PawnExtraDrawer : ThingComp
                 var mesh2 = ShouldMirror(headRot, mirrored)
                     ? MeshPool.GridPlaneFlip(new Vector2(1.5f, 1.5f))
                     //TODO: Figure out actual meshset size?
-                    : MeshPool.GetMeshSetForSize(1,1).MeshAt(headRot);
+                    : MeshPool.GetMeshSetForSize(1, 1).MeshAt(headRot);
                 GenDraw.DrawMeshNowOrLater(mesh2, a + b, rot, material, portrait);
             }
         }

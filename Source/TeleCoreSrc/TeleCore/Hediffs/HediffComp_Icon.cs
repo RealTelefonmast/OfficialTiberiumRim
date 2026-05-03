@@ -7,7 +7,7 @@ public class HediffComp_Icon : HediffComp
 {
     private TextureAndColor icon;
 
-    public HediffCompProperties_Icon Props => (HediffCompProperties_Icon) props;
+    public HediffCompProperties_Icon Props => (HediffCompProperties_Icon)props;
 
     public override TextureAndColor CompStateIcon
     {

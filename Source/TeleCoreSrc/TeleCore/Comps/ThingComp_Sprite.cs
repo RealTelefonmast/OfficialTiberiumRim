@@ -18,7 +18,7 @@ public class ThingComp_Sprite : ThingComp
         SpriteGraphic.AddIndex(parent);
     }
 
-    public override void PostDeSpawn(Verse.Map map, DestroyMode mode = DestroyMode.Vanish)
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
     {
         base.PostDeSpawn(map, mode);
         SpriteGraphic.RemoveIndex(parent);

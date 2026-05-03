@@ -12,7 +12,7 @@ public class MapComponent_TeleCore : MapComponent
     private readonly Dictionary<Type, MapInformation> mapInfoByType = new();
     private List<MapInformation> allMapInfos = new();
 
-    public MapComponent_TeleCore(Verse.Map map) : base(map)
+    public MapComponent_TeleCore(Map map) : base(map)
     {
         StaticData.Notify_NewTeleMapComp(this);
         FillMapInformations();
@@ -59,9 +59,9 @@ public class MapComponent_TeleCore : MapComponent
             mapInfoByType.Add(mapInfo.GetType(), mapInfo);
 
         //
-        NetworkInfo = (PipeNetworkMapInfo) mapInfoByType[typeof(PipeNetworkMapInfo)];
-        ThingGroupCacheInfo = (ThingGroupCacheInfo) mapInfoByType[typeof(ThingGroupCacheInfo)];
-        ThingTrackerMapInfo = (ThingTrackerMapInfo) mapInfoByType[typeof(ThingTrackerMapInfo)];
+        NetworkInfo = (PipeNetworkMapInfo)mapInfoByType[typeof(PipeNetworkMapInfo)];
+        ThingGroupCacheInfo = (ThingGroupCacheInfo)mapInfoByType[typeof(ThingGroupCacheInfo)];
+        ThingTrackerMapInfo = (ThingTrackerMapInfo)mapInfoByType[typeof(ThingTrackerMapInfo)];
     }
 
     public override void FinalizeInit()

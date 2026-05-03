@@ -16,4 +16,8 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.13.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="sort-categories.json" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
 </Project>

@@ -5,23 +5,25 @@ namespace TeleCore.GameComponents;
 
 public class GameComponent_CameraPanAndLock : GameComponent
 {
+    private int currentTick;
+    private int durationTicks = -1;
+
+    private Vector3 EndingPos;
+
     //private bool panningInt = false;
     //private bool lockInt = false;
-    private bool panning = false;
-    private int currentTick = 0;
-    private int durationTicks = -1;
+    private bool panning;
     private float sizeInt = 24;
 
     private Vector3 StartingPos;
-    private Vector3 EndingPos;
-
-    public CameraDriver CameraDriver => Find.CameraDriver;
-
-    private bool ReachedDestination => currentTick >= durationTicks;
 
     public GameComponent_CameraPanAndLock(Game game)
     {
     }
+
+    public CameraDriver CameraDriver => Find.CameraDriver;
+
+    private bool ReachedDestination => currentTick >= durationTicks;
 
     public override void GameComponentTick()
     {
@@ -32,10 +34,7 @@ public class GameComponent_CameraPanAndLock : GameComponent
 
         currentTick++;
         //Target Reached
-        if (ReachedDestination)
-        {
-            Reset();
-        }
+        if (ReachedDestination) Reset();
     }
 
     private void SetData(IntVec3 from, IntVec3 to, float duration, float size = 24)

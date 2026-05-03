@@ -24,9 +24,14 @@ public enum OxygenCategory : byte
 public class Need_Oxygen : Need
 {
     private readonly Comp_PawnAtmosphereTracker _atmosTracker;
-    private BreathingExtension _cachedProps;
 
-    public BreathingExtension BreathingProps => _cachedProps;
+    public Need_Oxygen(Pawn pawn) : base(pawn)
+    {
+        _atmosTracker = Comp_PawnAtmosphereTracker.CompFor(pawn);
+        BreathingProps = pawn.kindDef.GetModExtension<BreathingExtension>();
+    }
+
+    public BreathingExtension BreathingProps { get; }
 
     public float BreathingLevelRequired => BreathingProps?.OxygenLevelPercentageWantBreathe ?? 0.75f;
     public float PercentageThreshUrgentlyOxygenDeprived => BreathingLevelRequired * 0.4f;
@@ -85,24 +90,12 @@ public class Need_Oxygen : Need
     //TODO: Add a way to track whether room is getting filled or not
     public override int GUIChangeArrow { get; }
 
-    public Need_Oxygen(Pawn pawn) : base(pawn)
-    {
-        _atmosTracker = Comp_PawnAtmosphereTracker.CompFor(pawn);
-        _cachedProps = pawn.kindDef.GetModExtension<BreathingExtension>();
-    }
-
     public OxygenCategory CurCategory
     {
         get
         {
-            if (CurLevelPercentage <= 0f)
-            {
-                return OxygenCategory.Hypoxia;
-            }
-            if (CurLevelPercentage < PercentageThreshUrgentlyOxygenDeprived)
-            {
-                return OxygenCategory.Low;
-            }
+            if (CurLevelPercentage <= 0f) return OxygenCategory.Hypoxia;
+            if (CurLevelPercentage < PercentageThreshUrgentlyOxygenDeprived) return OxygenCategory.Low;
             return OxygenCategory.Saturated;
         }
     }
@@ -110,10 +103,8 @@ public class Need_Oxygen : Need
     public override void NeedInterval()
     {
         if (!pawn.Spawned)
-        {
             //Not Spawned...
             return;
-        }
 
         if (_atmosTracker != null)
         {
@@ -128,13 +119,13 @@ public class Need_Oxygen : Need
             var hasHypoxia = pawn.health.hediffSet.GetFirstHediff<Hediff_Hypoxia>();
             if (Suffocating)
             {
-                var hypoxia = hasHypoxia ?? (Hediff_Hypoxia) pawn.health.AddHediff(NMODefOf.Hypoxia);
+                var hypoxia = hasHypoxia ?? (Hediff_Hypoxia)pawn.health.AddHediff(NMODefOf.Hypoxia);
                 hypoxia.Severity += 0.1f;
             }
             else if (hasHypoxia != null)
             {
                 pawn.health.RemoveHediff(hasHypoxia);
-                if(!pawn.health.hediffSet.HasHediff(NMODefOf.HypoxiaSickness))
+                if (!pawn.health.hediffSet.HasHediff(NMODefOf.HypoxiaSickness))
                     pawn.health.AddHediff(NMODefOf.HypoxiaSickness);
             }
         }

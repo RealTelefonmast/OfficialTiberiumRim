@@ -15,7 +15,7 @@ public class CustomRecipePresetDef : Def
 
     [field: Unsaved] public string CostLabel { get; private set; }
 
-    public bool HasByProducts => GenCollection.Any(desiredResources, r => r.Def.byProducts != null);
+    public bool HasByProducts => desiredResources.Any(r => r.Def.byProducts != null);
 
     public override void ResolveReferences()
     {

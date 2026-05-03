@@ -14,23 +14,24 @@ namespace TeleCore.MapComponents;
 /// </summary>
 public class GasGridSystem : MapComponent
 {
+    private const int TicksPerProcess = 3; // Process every 3 ticks
+
     // Job handles for tracking completion
     private JobHandle dissipationJobHandle;
-    private JobHandle spreadingJobHandle;
+
+    // Job instances (reused each frame)
+    private GasDissipationJob[] dissipationJobs;
 
     // Native arrays for job data
     private NativeArray<ushort>[] gasDensities; // One per gas type
     private NativeArray<ushort>[] gasPending;
-    private NativeArray<bool> roofedCells;
     private NativeArray<byte> passabilityGrid;
-
-    // Job instances (reused each frame)
-    private GasDissipationJob[] dissipationJobs;
+    private NativeArray<bool> roofedCells;
+    private JobHandle spreadingJobHandle;
     private GasSpreadingJob[] spreadingJobs;
 
     // Timing
     private int tickCounter;
-    private const int TicksPerProcess = 3; // Process every 3 ticks
 
     public GasGridSystem(Map map) : base(map)
     {
@@ -47,8 +48,8 @@ public class GasGridSystem : MapComponent
             $"Initializing native arrays on map... for {map.cellIndices.NumGridCells} cells and {GasGridMemoryManager.GasTypeCount} gas types");
         try
         {
-            int cellCount = map.cellIndices.NumGridCells;
-            int gasCount = GasGridMemoryManager.GasTypeCount;
+            var cellCount = map.cellIndices.NumGridCells;
+            var gasCount = GasGridMemoryManager.GasTypeCount;
 
             // Validate parameters
             if (cellCount <= 0)
@@ -93,7 +94,7 @@ public class GasGridSystem : MapComponent
 
     private void CreateJobInstances()
     {
-        int gasCount = GasGridMemoryManager.GasTypeCount;
+        var gasCount = GasGridMemoryManager.GasTypeCount;
         dissipationJobs = new GasDissipationJob[gasCount];
         spreadingJobs = new GasSpreadingJob[gasCount];
 
@@ -125,7 +126,7 @@ public class GasGridSystem : MapComponent
         }
     }
 
-    void UpdateMapData()
+    private void UpdateMapData()
     {
         // Safety check - ensure arrays are created
         if (!roofedCells.IsCreated || !passabilityGrid.IsCreated)
@@ -133,23 +134,24 @@ public class GasGridSystem : MapComponent
             Log.Warning("UpdateMapData called but NativeArrays not initialized");
             return;
         }
-            
-        int cellCount = map.cellIndices.NumGridCells;
-            
+
+        var cellCount = map.cellIndices.NumGridCells;
+
         // Validate array sizes
         if (roofedCells.Length != cellCount || passabilityGrid.Length != cellCount)
         {
-            Log.Error($"Array size mismatch. Expected: {cellCount}, Got: roofed={roofedCells.Length}, pass={passabilityGrid.Length}");
+            Log.Error(
+                $"Array size mismatch. Expected: {cellCount}, Got: roofed={roofedCells.Length}, pass={passabilityGrid.Length}");
             return;
         }
-            
-        for (int i = 0; i < cellCount; i++)
+
+        for (var i = 0; i < cellCount; i++)
         {
             var cell = map.cellIndices.IndexToCell(i);
-                
+
             // Update roof data
             roofedCells[i] = cell.Roofed(map);
-                
+
             // Update passability (0-255 scale)
             var edifice = cell.GetEdifice(map);
             if (edifice == null)
@@ -195,7 +197,7 @@ public class GasGridSystem : MapComponent
 
     private void ScheduleJobs()
     {
-        int gasCount = GasGridMemoryManager.GasTypeCount;
+        var gasCount = GasGridMemoryManager.GasTypeCount;
         var previousHandle = new JobHandle();
 
         // Schedule dissipation jobs (can run in parallel)
@@ -217,12 +219,12 @@ public class GasGridSystem : MapComponent
         spreadingJobHandle = previousHandle;
     }
 
-    void CompleteJobs()
+    private void CompleteJobs()
     {
         // This blocks until jobs complete
         if (!spreadingJobHandle.IsCompleted)
             spreadingJobHandle.Complete();
-            
+
         // Jobs are done, data is now updated
         // You can now safely read from gasDensities arrays
     }
@@ -236,7 +238,7 @@ public class GasGridSystem : MapComponent
         // Ensure jobs are complete before modifying
         CompleteJobs();
 
-        int idx = CellIndicesUtility.CellToIndex(pos, map.Size.x);
+        var idx = CellIndicesUtility.CellToIndex(pos, map.Size.x);
         var densities = gasDensities[gasTypeId];
 
         densities[idx] = (ushort)math.min(densities[idx] + amount, ushort.MaxValue);
@@ -250,7 +252,7 @@ public class GasGridSystem : MapComponent
         // Ensure jobs are complete before reading
         CompleteJobs();
 
-        int idx = CellIndicesUtility.CellToIndex(pos, map.Size.x);
+        var idx = CellIndicesUtility.CellToIndex(pos, map.Size.x);
         return gasDensities[gasTypeId][idx];
     }
 
@@ -262,9 +264,10 @@ public class GasGridSystem : MapComponent
     public void Debug_PushRadialAdjacent(IntVec3 mouseCell, SpreadingGasDef def)
     {
         //TODO: Add correct id system later
-        TLog.Debug($"Adding gas {def.defName} with id {DefIDStack.ToID(def)} (:0) on tile {CellUtility.Index(mouseCell, map)}");
+        TLog.Debug(
+            $"Adding gas {def.defName} with id {DefIDStack.ToID(def)} (:0) on tile {CellUtility.Index(mouseCell, map)}");
         AdjacentCellFiller.FillAdjacentCellsAround(mouseCell, map, 128,
-            vec3 => { AddGas(vec3, 0, def.maxDensityPerCell); }, (vec3 => true), (vec3 => false));
+            vec3 => { AddGas(vec3, 0, def.maxDensityPerCell); }, vec3 => true, vec3 => false);
     }
 
     public bool AnyGasAt(IntVec3 intVec)

@@ -50,12 +50,10 @@ public class Comp_Network_Valve : CompNetwork
     {
         var flicked = signal is KnownCompSignals.FlickedOff or KnownCompSignals.FlickedOn;
         if (flicked)
-        {
             foreach (var part in NetworkParts)
             {
                 part.SetPassThrough(signal is KnownCompSignals.FlickedOff ? 0f : 1f);
                 part.Network.System.Notify_PassThroughChanged(part);
             }
-        }
     }
 }

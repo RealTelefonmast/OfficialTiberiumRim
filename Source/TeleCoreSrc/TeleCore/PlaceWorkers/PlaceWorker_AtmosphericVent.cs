@@ -18,7 +18,8 @@ public class PlaceWorker_AtmosphericVent : PlaceWorker
         }, TColor.BlueHighlight);
     }
 
-    public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 pos, Rot4 rot, Verse.Map map, Thing thingToIgnore = null, Thing thing = null)
+    public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 pos, Rot4 rot, Map map,
+        Thing thingToIgnore = null, Thing thing = null)
     {
         var intakeCell = pos;
         if (checkingDef is ThingDef tDef)
@@ -32,10 +33,7 @@ public class PlaceWorker_AtmosphericVent : PlaceWorker
     private static IntVec3 VentCell(ThingDef def, IntVec3 pos, Rot4 rot)
     {
         var ventComp = def.GetCompProperties<CompProperties_ANS_Vent>();
-        if (ventComp != null)
-        {
-            return ventComp.GetIntakePos(pos, rot);
-        }
+        if (ventComp != null) return ventComp.GetIntakePos(pos, rot);
         return pos;
     }
 }

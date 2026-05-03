@@ -12,18 +12,26 @@ namespace TeleCore.UI;
 
 public class ITab_CustomNetworkBills : ITab
 {
-    private static readonly Vector2 WinSize = new Vector2(800, 500);
+    private static readonly Vector2 WinSize = new(800, 500);
     private static readonly float resourceSize = 26;
 
-    private static float maxLabelWidth = 0;
+    private static float maxLabelWidth;
 
     //Scrollers
-    private Vector2 billCreationResourceScroller = new Vector2();
-    private Vector2 billReadourScroller = new Vector2();
+    private Vector2 billCreationResourceScroller;
+    private Vector2 billReadourScroller;
+    private DefValueStack<NetworkValueDef, float> cachedCustomCost;
 
     //Cachery
-    private bool inputDirty = false;
-    private DefValueStack<NetworkValueDef, float> cachedCustomCost;
+    private bool inputDirty;
+
+    private Vector2 presetScrollVec = Vector2.zero;
+
+    public ITab_CustomNetworkBills()
+    {
+        size = WinSize;
+        labelKey = Translations.NetworkStrings.NetworkBillsITab;
+    }
 
     public Comp_NetworkBillsCrafter CrafterComp => SelThing.TryGetComp<Comp_NetworkBillsCrafter>();
     public NetworkBillStack BillStack => CrafterComp.BillStack;
@@ -35,18 +43,6 @@ public class ITab_CustomNetworkBills : ITab
         ClipBoardUtility.TryGetClipBoard<CustomNetworkBill>(RWStringCache.NetworkBillClipBoard);
 
     private CustomBillTab SelTab { get; set; }
-
-    private enum CustomBillTab
-    {
-        PresetBills,
-        CustomBills
-    }
-
-    public ITab_CustomNetworkBills()
-    {
-        this.size = WinSize;
-        this.labelKey = Translations.NetworkStrings.NetworkBillsITab;
-    }
 
     public override void OnOpen()
     {
@@ -73,15 +69,15 @@ public class ITab_CustomNetworkBills : ITab
     public override void FillTab()
     {
         Text.Font = GameFont.Small;
-        Rect mainRect = new Rect(0, 24, WinSize.x, WinSize.y - 24).ContractedBy(10);
-        Rect leftPart = mainRect.LeftPart(0.6f);
-        Rect rightPart = mainRect.RightPart(0.4f);
+        var mainRect = new Rect(0, 24, WinSize.x, WinSize.y - 24).ContractedBy(10);
+        var leftPart = mainRect.LeftPart(0.6f);
+        var rightPart = mainRect.RightPart(0.4f);
 
         var leftArea = leftPart.ContractedBy(5);
-        Rect tabRect = new Rect(leftArea.x, leftArea.y, leftArea.width, 32);
-        Rect contentRect = new Rect(leftArea.x, leftArea.y, leftArea.width, leftArea.height);
+        var tabRect = new Rect(leftArea.x, leftArea.y, leftArea.width, 32);
+        var contentRect = new Rect(leftArea.x, leftArea.y, leftArea.width, leftArea.height);
 
-        Rect pasteButton = new Rect(rightPart.x, rightPart.y - 22, 22, 22);
+        var pasteButton = new Rect(rightPart.x, rightPart.y - 22, 22, 22);
 
         //Left Part
         //Draw Tabs
@@ -110,10 +106,7 @@ public class ITab_CustomNetworkBills : ITab
         var clipBoardValue = ClipBoard;
         if (clipBoardValue != null)
         {
-            if (Widgets.ButtonImage(pasteButton, TeleContent.Paste))
-            {
-                BillStack.PasteFromClipBoard(clipBoardValue);
-            }
+            if (Widgets.ButtonImage(pasteButton, TeleContent.Paste)) BillStack.PasteFromClipBoard(clipBoardValue);
         }
         else
         {
@@ -123,7 +116,7 @@ public class ITab_CustomNetworkBills : ITab
         }
 
         //Draw Details
-        Rect detailRect = new Rect(TabRect.xMax, TabRect.y, 200, WinSize.y);
+        var detailRect = new Rect(TabRect.xMax, TabRect.y, 200, WinSize.y);
         BillStack.TryDrawBillDetails(detailRect);
     }
 
@@ -132,28 +125,23 @@ public class ITab_CustomNetworkBills : ITab
         var readoutRect = inRect;
 
         Widgets.DrawMenuSection(inRect);
-        Rect viewRect = new Rect(inRect.x, inRect.y, readoutRect.width,
+        var viewRect = new Rect(inRect.x, inRect.y, readoutRect.width,
             CrafterComp.billStack.Bills.Sum(a => a.DrawHeight));
         Widgets.BeginScrollView(readoutRect, ref billReadourScroller, viewRect, false);
         {
-            float curY = inRect.y;
+            var curY = inRect.y;
             for (var index = 0; index < CrafterComp.billStack.Count; index++)
             {
                 var bill = CrafterComp.billStack[index];
                 var billRect = new Rect(inRect.x, curY, readoutRect.width, bill.DrawHeight);
                 bill.DrawBill(billRect, index);
-                if (bill == BillStack.CurrentBill)
-                {
-                    TWidgets.DrawBox(billRect, TColor.White05, 2);
-                }
+                if (bill == BillStack.CurrentBill) TWidgets.DrawBox(billRect, TColor.White05, 2);
 
                 curY += bill.DrawHeight;
             }
         }
         Widgets.EndScrollView();
     }
-
-    private Vector2 presetScrollVec = Vector2.zero;
 
     //Preset Tab
     private void BillSelection(Rect rect)
@@ -169,9 +157,9 @@ public class ITab_CustomNetworkBills : ITab
         var costLabelSize = Text.CalcSize(presetDef.CostLabel);
         uiSizes.Register(0, labelSize.y); //LabelSize
 
-        float resultListHeight = ((24 + 5) * presetDef.Results.Count);
-        float labelHeight = labelSize.y * 2;
-        uiSizes.Register(1, (labelHeight > resultListHeight ? labelHeight : resultListHeight)); //Content Size
+        float resultListHeight = (24 + 5) * presetDef.Results.Count;
+        var labelHeight = labelSize.y * 2;
+        uiSizes.Register(1, labelHeight > resultListHeight ? labelHeight : resultListHeight); //Content Size
         //uiSizes.Register(2, (5 * 2) + 30); //Padding
         uiSizes.Register(2, costLabelSize.y); // CostLabel
         return uiSizes;
@@ -191,7 +179,7 @@ public class ITab_CustomNetworkBills : ITab
         float curY = 0;
         foreach (var result in presetDef.Results)
         {
-            WidgetRow row = new WidgetRow(0, curY, UIDirection.RightThenDown);
+            var row = new WidgetRow(0, curY, UIDirection.RightThenDown);
             row.Icon(result.ThingDef.uiIcon, result.ThingDef.description);
             row.Label($"×{result.Count}");
             curY += 24 + 5;
@@ -204,38 +192,35 @@ public class ITab_CustomNetworkBills : ITab
         Widgets.Label(costLabelRect, $"Cost: {presetDef.CostLabel}");
 
         TWidgets.DrawBoxHighlightIfMouseOver(rect);
-        if (Widgets.ButtonInvisible(rect))
-        {
-            BillStack.CreateBillFromDef(presetDef);
-        }
+        if (Widgets.ButtonInvisible(rect)) BillStack.CreateBillFromDef(presetDef);
     }
 
     //Custom Tab
     private void BillCreation(Rect rect)
     {
-        Rect topPart = rect.TopPart(0.65f);
-        Rect bottomPart = rect.BottomPart(0.35f);
+        var topPart = rect.TopPart(0.65f);
+        var bottomPart = rect.BottomPart(0.35f);
 
         //TOP PART
         topPart = topPart.ContractedBy(5f);
         Widgets.BeginGroup(topPart);
 
-        string label1 = "Desired Resource";
-        string label2 = $"Elemental Ratio";
-        float label1H = Text.CalcHeight(label1, rect.width);
-        float resourceWidth = resourceSize + maxLabelWidth + 60;
-        Rect label1Rect = new Rect(0, 0, rect.width, label1H);
-        Rect label2Rect = new Rect(resourceWidth + 5, 0, rect.width - (resourceWidth + 5), label1H);
+        var label1 = "Desired Resource";
+        var label2 = "Elemental Ratio";
+        var label1H = Text.CalcHeight(label1, rect.width);
+        var resourceWidth = resourceSize + maxLabelWidth + 60;
+        var label1Rect = new Rect(0, 0, rect.width, label1H);
+        var label2Rect = new Rect(resourceWidth + 5, 0, rect.width - (resourceWidth + 5), label1H);
         Widgets.Label(label1Rect, label1);
         Widgets.Label(label2Rect, label2);
         //Wanted Resources
-        Rect resourceRect = new Rect(0, label1H + 5, rect.width, topPart.height - label1H);
-        Rect scrollRect = new Rect(0, label1H + 5, rect.width,
+        var resourceRect = new Rect(0, label1H + 5, rect.width, topPart.height - label1H);
+        var scrollRect = new Rect(0, label1H + 5, rect.width,
             BillStack.RequestedAmount.Count * (resourceSize + 4));
 
         Widgets.BeginScrollView(resourceRect, ref billCreationResourceScroller, scrollRect, false);
-        float curY = label1H + 5;
-        for (int i = 0; i < Ratios.Count; i++)
+        var curY = label1H + 5;
+        for (var i = 0; i < Ratios.Count; i++)
         {
             var recipe = Ratios[i];
             if (recipe.hidden) continue;
@@ -258,19 +243,19 @@ public class ITab_CustomNetworkBills : ITab
         rect = rect.ContractedBy(5f);
         Widgets.BeginGroup(rect);
         string nameLabel = "TR_BillName".Translate();
-        string workLabel = "Work To Do: " + BillStack.TotalWorkAmount;
-        string tiberiumCostLabel = $"Cost: {NetworkBillUtility.CostLabel(TryGetCachedCost())}";
-        Vector2 nameLabelSize = Text.CalcSize(nameLabel);
-        Vector2 workLabelSize = Text.CalcSize(workLabel);
-        Vector2 tiberiumCostLabelSize = Text.CalcSize(tiberiumCostLabel);
-        Rect nameLabelRect = new Rect(0, 0, nameLabelSize.x, nameLabelSize.y);
-        Rect nameFieldRect = new Rect(nameLabelRect.xMax, 0, (rect.width / 2) - nameLabelRect.width,
+        var workLabel = "Work To Do: " + BillStack.TotalWorkAmount;
+        var tiberiumCostLabel = $"Cost: {NetworkBillUtility.CostLabel(TryGetCachedCost())}";
+        var nameLabelSize = Text.CalcSize(nameLabel);
+        var workLabelSize = Text.CalcSize(workLabel);
+        var tiberiumCostLabelSize = Text.CalcSize(tiberiumCostLabel);
+        var nameLabelRect = new Rect(0, 0, nameLabelSize.x, nameLabelSize.y);
+        var nameFieldRect = new Rect(nameLabelRect.xMax, 0, rect.width / 2 - nameLabelRect.width,
             nameLabelRect.height);
 
-        Rect workLabelRect = new Rect(0, nameLabelRect.yMax + 5, workLabelSize.x, workLabelSize.y);
-        Rect tiberiumCostLabelRect =
+        var workLabelRect = new Rect(0, nameLabelRect.yMax + 5, workLabelSize.x, workLabelSize.y);
+        var tiberiumCostLabelRect =
             new Rect(0, workLabelRect.yMax, tiberiumCostLabelSize.x, tiberiumCostLabelSize.y);
-        Rect addButtonRect = new Rect(rect.width - 80, rect.height - 30, 80, 30);
+        var addButtonRect = new Rect(rect.width - 80, rect.height - 30, 80, 30);
 
         Widgets.Label(nameLabelRect, nameLabel);
         BillStack.billName = Widgets.TextField(nameFieldRect, BillStack.billName);
@@ -278,10 +263,7 @@ public class ITab_CustomNetworkBills : ITab
         Widgets.Label(workLabelRect, workLabel);
         Widgets.Label(tiberiumCostLabelRect, tiberiumCostLabel);
 
-        if (Widgets.ButtonText(addButtonRect, "TR_AddBill".Translate()))
-        {
-            BillStack.TryCreateNewBill();
-        }
+        if (Widgets.ButtonText(addButtonRect, "TR_AddBill".Translate())) BillStack.TryCreateNewBill();
 
         Widgets.EndGroup();
     }
@@ -289,12 +271,12 @@ public class ITab_CustomNetworkBills : ITab
     private void ResourceRow(Rect rect, CustomRecipeRatioDef recipeRatio, int index)
     {
         var resource = recipeRatio.result;
-        Rect iconRect = new Rect(rect.xMin, rect.y, resourceSize, resourceSize);
-        Vector2 labelSize = Text.CalcSize(resource.LabelCap);
+        var iconRect = new Rect(rect.xMin, rect.y, resourceSize, resourceSize);
+        var labelSize = Text.CalcSize(resource.LabelCap);
         if (labelSize.x > maxLabelWidth) maxLabelWidth = labelSize.x;
 
-        Rect labelRect = new Rect(iconRect.xMax, rect.y, labelSize.x, resourceSize);
-        Rect fieldRect = new Rect(iconRect.xMax + maxLabelWidth + 5, rect.y, 60, resourceSize);
+        var labelRect = new Rect(iconRect.xMax, rect.y, labelSize.x, resourceSize);
+        var fieldRect = new Rect(iconRect.xMax + maxLabelWidth + 5, rect.y, 60, resourceSize);
 
         Widgets.ThingIcon(iconRect, resource);
         Text.Anchor = TextAnchor.MiddleLeft;
@@ -302,14 +284,11 @@ public class ITab_CustomNetworkBills : ITab
         Text.Anchor = default;
 
         int temp, compare = temp = BillStack.RequestedAmount[recipeRatio];
-        Widgets.TextFieldNumeric<int>(fieldRect, ref temp, ref BillStack.textBuffers[index], 0,
+        Widgets.TextFieldNumeric(fieldRect, ref temp, ref BillStack.textBuffers[index], 0,
             resource.stackLimit *
             2); //(int)Widgets.HorizontalSlider(sliderRect, MetalAmount[resource], 0, 100, false, default, default, default, 1);
         BillStack.RequestedAmount[recipeRatio] = temp;
-        if (compare != temp)
-        {
-            inputDirty = true;
-        }
+        if (compare != temp) inputDirty = true;
 
         CostLabel(new Vector2(fieldRect.xMax + 5, fieldRect.y), recipeRatio);
 
@@ -351,7 +330,7 @@ public class ITab_CustomNetworkBills : ITab
     //
     private static void CostLabel(Vector2 pos, CustomRecipeRatioDef recipeRatio)
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append(" x (");
         for (var i = 0; i < recipeRatio.inputRatio.Count; i++)
         {
@@ -362,9 +341,15 @@ public class ITab_CustomNetworkBills : ITab
         }
 
         sb.Append(")");
-        string atomicTotal = sb.ToString();
-        Vector2 label0Size = Text.CalcSize(atomicTotal);
-        Rect atomicTotalRect = new Rect(pos.x, pos.y, label0Size.x, label0Size.y);
+        var atomicTotal = sb.ToString();
+        var label0Size = Text.CalcSize(atomicTotal);
+        var atomicTotalRect = new Rect(pos.x, pos.y, label0Size.x, label0Size.y);
         Widgets.Label(atomicTotalRect, atomicTotal);
+    }
+
+    private enum CustomBillTab
+    {
+        PresetBills,
+        CustomBills
     }
 }

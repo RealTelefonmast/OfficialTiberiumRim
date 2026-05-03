@@ -8,28 +8,30 @@ namespace TeleCore.Comps;
 
 public class Comp_Network_Pump : CompNetwork
 {
+    private readonly FloatRange zMoveRange = new(0, -0.6f);
+
     //TODO: Handle multi in-output
     //Multi Steps:
     //Pull all In
     // merge one
     // split among outputs --- Mergers/Splitters?
     private IOCell _input;
+
+    private FXLayer _layer;
     private IOCell _output;
 
     private Vector3 positionOff = Vector3.zero;
-    private FloatRange zMoveRange = new FloatRange(0, -0.6f);
-    private FloatRange uvMoveRange = new FloatRange(0, -0.3f);
+    private int pumpTick;
 
-    private FXLayer _layer;
+    private bool resetting;
+    private FloatRange uvMoveRange = new(0, -0.3f);
+    private bool wantsPump;
 
     private FXLayer StolenLayer
     {
         get
         {
-            if (_layer == null)
-            {
-                _layer = parent.GetComp<CompFX>().FXLayers.Find(l => l.data.layerTag == "PumpPiston");
-            }
+            if (_layer == null) _layer = parent.GetComp<CompFX>().FXLayers.Find(l => l.data.layerTag == "PumpPiston");
             return _layer;
         }
     }
@@ -39,10 +41,10 @@ public class Comp_Network_Pump : CompNetwork
         switch (args.layerTag)
         {
             case "PumpPiston" or "PumpPistonCap":
-                {
-                    StolenLayer.PropertyBlock.SetVector(TeleShaderIDs.OffsetID, positionOff / 2f);
-                    return parent.DrawPos + new Vector3(0, 0, -0.125f) + positionOff;
-                }
+            {
+                StolenLayer.PropertyBlock.SetVector(TeleShaderIDs.OffsetID, positionOff / 2f);
+                return parent.DrawPos + new Vector3(0, 0, -0.125f) + positionOff;
+            }
         }
 
         return base.FX_GetDrawPosition(args);
@@ -57,10 +59,6 @@ public class Comp_Network_Pump : CompNetwork
         _output = GeneralIO.Connections.Find(c => c.Mode == NetworkIOMode.Output);
     }
 
-    private bool resetting;
-    private bool wantsPump;
-    private int pumpTick;
-
     internal override void TeleTick()
     {
         if (wantsPump && !resetting)
@@ -73,7 +71,6 @@ public class Comp_Network_Pump : CompNetwork
                 resetting = true;
                 pumpTick = 0;
             }
-            return;
         }
         else if (resetting)
         {

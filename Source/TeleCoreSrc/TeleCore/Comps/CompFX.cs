@@ -51,9 +51,9 @@ public class CompFX : TeleComp
 
     private IFXLayerProvider[] LayerProviderByLayerIndex;
     private bool spawnedOnce;
-    
-    public CompProperties_FX Props => (CompProperties_FX) props;
-    
+
+    public CompProperties_FX Props => (CompProperties_FX)props;
+
     public CompPowerTrader ParentPowerComp { get; private set; }
     public FXDefExtension GraphicExtension { get; private set; }
     public List<FXLayer> FXLayers { get; private set; }
@@ -142,7 +142,7 @@ public class CompFX : TeleComp
 
             LayerProviderByLayerIndex[i] = allHeldFXComps.FirstOrFallback(fx =>
             {
-                return (bool) fx?.FX_ProvidesForLayer(new FXArgs
+                return (bool)fx?.FX_ProvidesForLayer(new FXArgs
                 {
                     index = i,
                     layerTag = layerData.layerTag,
@@ -219,10 +219,7 @@ public class CompFX : TeleComp
 
     internal override void TeleTick()
     {
-        if (parent.def.tickerType == TickerType.Never)
-        {
-            FXTick(1);
-        }
+        if (parent.def.tickerType == TickerType.Never) FXTick(1);
     }
 
     public override void CompTick()
@@ -314,10 +311,8 @@ public class CompFX : TeleComp
         base.PostPrintOnto(layer);
         if (!_hasFXLayers) return;
         foreach (var fxLayer in FXLayers)
-        {
             if (fxLayer.data.fxMode == FXMode.Static && CanDraw(fxLayer.Args))
                 fxLayer.Print(layer);
-        }
     }
 
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
@@ -333,6 +328,7 @@ public class CompFX : TeleComp
                     states += "  - Skipped\n";
                     continue;
                 }
+
                 states += $"  - FXMode: {layer.data.fxMode}\n";
                 var drawBool = GetDrawBool(layer.Args);
                 var power = HasPower(layer.Args);
@@ -345,14 +341,14 @@ public class CompFX : TeleComp
                 states += $"  - Draw Position: {GetDrawPositionOverride(layer.Args)}\n";
                 states += $"  - Action: {GetDrawFunction(layer.Args)?.ToString() ?? "None"}\n";
             }
+
             yield return new Command_Action
             {
                 defaultLabel = "FX States",
                 defaultDesc = states,
-                action = delegate { },
+                action = delegate { }
             };
         }
-        yield break;
     }
 
     #region Effecter Properties

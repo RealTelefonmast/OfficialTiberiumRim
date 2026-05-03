@@ -19,6 +19,5 @@ public class Need_Aerobiosis : Need
 
     public override void NeedInterval()
     {
-
     }
 }

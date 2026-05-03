@@ -11,39 +11,39 @@ public class SpreadingGasTypeDef_TAE : Def
 {
     private static ushort _masterID;
     private static readonly Dictionary<int, SpreadingGasTypeDef_TAE> _defByID = new();
+    public float accuracyPenalty;
+    public bool blockTurretTracking;
+    public Type cellEffectWorker;
 
-    [Unsaved] private AtmosphericTransferWorker workerInt;
-    [Unsaved] public ushort IDReference;
+    public int cellsToDissipatePerTick = 8;
+    public int cellsToSpreadPerTick = 8;
+    public Color colorMax;
 
     public Color colorMin;
-    public Color colorMax;
+
+    public TAE.AtmosphericDef dissipateTo;
+    public int dissipationAmount = 1;
+    [Unsaved] public ushort IDReference;
 
     public int maxDensityPerCell = 100;
     public int minDissipationDensity = 10;
     public int minSpreadDensity = 2;
-    public int dissipationAmount = 1;
+
+    //
+    public Type pawnEffectWorker;
 
     //
     public Type pawnEffectWorker;
     public bool roofBlocksDissipation = true;
+    public bool roofBlocksDissipation = true;
+
+    public FloatRange rotationSpeeds = new(-100, 100);
 
     public FloatRange rotationSpeeds = new(-100, 100);
     public float spreadViscosity = 0;
-
-    public TAE.AtmosphericDef dissipateTo;
     public Type transferWorker = typeof(TAE.AtmosphericTransferWorker);
 
-    public FloatRange rotationSpeeds = new(-100, 100);
-    public float accuracyPenalty;
-    public bool blockTurretTracking;
-    public bool roofBlocksDissipation = true;
-
-    public int cellsToDissipatePerTick = 8;
-    public int cellsToSpreadPerTick = 8;
-
-    //
-    public Type pawnEffectWorker;
-    public Type cellEffectWorker;
+    [Unsaved] private AtmosphericTransferWorker workerInt;
 
     public TAE.AtmosphericTransferWorker TransferWorker =>
         workerInt ??= (TAE.AtmosphericTransferWorker)Activator.CreateInstance(transferWorker, this);

@@ -8,10 +8,10 @@ namespace TeleCore.UI;
 
 public class Dialog_DirectoryBrowser : Window
 {
-    private DirectoryInfo currentDir;
-    private DirectoryInfo rootLimit;
     private readonly Action<DirectoryInfo> selAction;
     private readonly string titleString;
+    private DirectoryInfo currentDir;
+    private DirectoryInfo rootLimit;
 
     public Dialog_DirectoryBrowser()
     {
@@ -80,13 +80,13 @@ public class Dialog_DirectoryBrowser : Window
         var confirmButton = selRect.BottomPartPixels(30).RightPartPixels(100);
 
         Text.Font = GameFont.Medium;
-        Verse.Widgets.Label(titleRect, titleString);
+        Widgets.Label(titleRect, titleString);
         Text.Font = default;
 
         DrawDirectory(directoryRect, currentDir);
 
         //Confirm button
-        if (Verse.Widgets.ButtonText(confirmButton, "Confirm"))
+        if (Widgets.ButtonText(confirmButton, "Confirm"))
         {
             selAction?.Invoke(currentDir);
             Close();
@@ -112,29 +112,29 @@ public class Dialog_DirectoryBrowser : Window
 
         TWidgets.DrawColoredBox(curDirReadoutRect, TColor.BGDarker, TColor.MenuSectionBGBorderColor, 1);
         GUI.color = TColor.MenuSectionBGBorderColor;
-        Verse.Widgets.DrawLineVertical(navBackRect.xMax + 2, navBackRect.y, navBackRect.height);
+        Widgets.DrawLineVertical(navBackRect.xMax + 2, navBackRect.y, navBackRect.height);
         GUI.color = Color.white;
         Text.Anchor = TextAnchor.MiddleLeft;
-        Verse.Widgets.Label(extraRect, $"Root: {rootLimit.Parent?.Name}\\{rootLimit.Name}");
-        Verse.Widgets.Label(navCurRect, $"{ModDirectoryData.PathCapped(currentDir, rootLimit)}");
+        Widgets.Label(extraRect, $"Root: {rootLimit.Parent?.Name}\\{rootLimit.Name}");
+        Widgets.Label(navCurRect, $"{ModDirectoryData.PathCapped(currentDir, rootLimit)}");
         Text.Anchor = default;
         if (currentDir.Name != rootLimit.Name)
-            if (Verse.Widgets.ButtonImage(navBackRect, TeleContent.OpenMenu))
+            if (Widgets.ButtonImage(navBackRect, TeleContent.OpenMenu))
                 currentDir = directory.Parent;
 
-        Verse.Widgets.BeginGroup(selectionRect);
+        Widgets.BeginGroup(selectionRect);
         {
             var curY = 0;
             foreach (var subDir in subDirs)
             {
                 var dirSelRect = new Rect(0, curY, selectionRect.width, 20);
-                Verse.Widgets.Label(dirSelRect, $"{subDir.Name}");
+                Widgets.Label(dirSelRect, $"{subDir.Name}");
 
-                Verse.Widgets.DrawHighlightIfMouseover(dirSelRect);
-                if (Verse.Widgets.ButtonInvisible(dirSelRect, false)) currentDir = subDir;
+                Widgets.DrawHighlightIfMouseover(dirSelRect);
+                if (Widgets.ButtonInvisible(dirSelRect, false)) currentDir = subDir;
                 curY += 20;
             }
         }
-        Verse.Widgets.EndGroup();
+        Widgets.EndGroup();
     }
 }

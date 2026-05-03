@@ -24,7 +24,7 @@ public class TeleBuilding : FXBuilding, IDiscoverable
     public string DescriptionExtra => Discovery!.extraDescription;
     public bool Discovered => !IsDiscoverable || TFind.Discoveries[this];
 
-    public override void SpawnSetup(Verse.Map map, bool respawningAfterLoad)
+    public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
         base.SpawnSetup(map, respawningAfterLoad);
         if (def.HasTeleExtension(out var textension))
@@ -54,7 +54,7 @@ public class TeleBuilding : FXBuilding, IDiscoverable
     }
 
     /// <summary>
-    /// Ticks after all comps have ticked.
+    ///     Ticks after all comps have ticked.
     /// </summary>
     protected virtual void TeleTick()
     {

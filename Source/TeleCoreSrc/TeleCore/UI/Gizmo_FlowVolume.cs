@@ -10,13 +10,27 @@ using Verse;
 namespace TeleCore.UI;
 
 /// <summary>
-/// A simple overview of a <see cref="FlowVolume{T}"/>'s contents.
+///     A simple overview of a <see cref="FlowVolume{T}" />'s contents.
 /// </summary>
 public class Gizmo_FlowVolume<T> : Gizmo where T : FlowValueDef
 {
     protected readonly FlowVolume<T> _volume;
 
     public string Label { get; set; }
+
+    public sealed override IEnumerable<FloatMenuOption> RightClickFloatMenuOptions
+    {
+        get
+        {
+            var part = _volume.MaxCapacity / (float)_volume.AllowedValues.Count;
+            yield return new FloatMenuOption("Add ALL", delegate { Debug_AddAll((int)part); });
+
+            yield return new FloatMenuOption("Remove ALL", Debug_Clear);
+
+            foreach (var type in _volume.AllowedValues)
+                yield return new FloatMenuOption($"Add {type}", delegate { Debug_AddType(type, (int)part); });
+        }
+    }
 
     public sealed override float GetWidth(float maxWidth)
     {
@@ -70,30 +84,14 @@ public class Gizmo_FlowVolume<T> : Gizmo where T : FlowValueDef
             //Right Click Input
             var curEvent = Event.current;
             if (Mouse.IsOver(rect) && curEvent.type == EventType.MouseDown && curEvent.button == 1)
-            {
                 if (DebugSettings.godMode)
                 {
                     var menu = new FloatMenu(RightClickFloatMenuOptions.ToList(), "Add NetworkValue", true);
                     menu.vanishIfMouseDistant = true;
                     Find.WindowStack.Add(menu);
                 }
-            }
         });
         return new GizmoResult(GizmoState.Clear);
-    }
-
-    public sealed override IEnumerable<FloatMenuOption> RightClickFloatMenuOptions
-    {
-        get
-        {
-            var part = _volume.MaxCapacity / (float)_volume.AllowedValues.Count;
-            yield return new FloatMenuOption("Add ALL", delegate { Debug_AddAll((int)part); });
-
-            yield return new FloatMenuOption("Remove ALL", Debug_Clear);
-
-            foreach (var type in _volume.AllowedValues)
-                yield return new FloatMenuOption($"Add {type}", delegate { Debug_AddType(type, (int)part); });
-        }
     }
 
     protected virtual void Debug_AddAll(int part)

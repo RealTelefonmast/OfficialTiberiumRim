@@ -5,7 +5,6 @@ namespace TeleCore.UI;
 
 internal class Window_TextureMetaData : Window
 {
-
     public Window_TextureMetaData()
     {
         forcePause = true;
@@ -31,7 +30,7 @@ internal class Window_TextureMetaData : Window
         // texture.format;
         // texture.anisoLevel;
         // texture.wrapMode;
-        
+
         //Use MipMap
     }
 }

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
-using TiberiumRim;
 using UnityEngine;
 using Verse;
 
@@ -11,8 +9,11 @@ public class TiberiumGeyser : TRBuilding
 {
     //public List<TiberiumGeyserCrack> currentCracks = new List<TiberiumGeyserCrack>();
 
+    private List<IntVec3> area = new();
+    private IEnumerator<IntVec3> areaCells;
 
     private int burstTicksLeft = -1;
+    private int cellAmounts;
     private float depositValue;
 
     private int maxDepositValue;
@@ -31,6 +32,9 @@ public class TiberiumGeyser : TRBuilding
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
         base.SpawnSetup(map, respawningAfterLoad);
+        var cells = GenRadial.RadialCellsAround(Position, 9.9f, false).ToList();
+        cellAmounts = cells.Count;
+        areaCells = cells.GetEnumerator();
 
         if (!respawningAfterLoad)
         {
@@ -57,9 +61,11 @@ public class TiberiumGeyser : TRBuilding
 
     public override void ExposeData()
     {
+        Log.Message("Exposing");
         base.ExposeData();
         Scribe_Values.Look(ref maxDepositValue, "maxDeposit");
         Scribe_Values.Look(ref depositValue, "depositValue");
+        Log.Message("Finished saving and loading");
     }
 
     public override void Tick()
@@ -72,7 +78,8 @@ public class TiberiumGeyser : TRBuilding
             if (tiberiumSpike.CompTNW.CompPower.PowerOn)
             {
                 var result = tiberiumSpike.CompTNW.Container.TryAdd(TiberiumDefOf.TibGas, 0.25f);
-                if (result) depositValue -= result.Actual;
+                if (result) 
+                    depositValue -= result.Actual;
             }
 
             return;
@@ -81,7 +88,8 @@ public class TiberiumGeyser : TRBuilding
 
         if (!startEnum)
             startEnum = this.IsHashIntervalTick(3000);
-        if (startEnum && !Bursting) StartBursting();
+        if (startEnum && !Bursting) 
+            StartBursting();
 
         if (Bursting)
         {
@@ -90,7 +98,10 @@ public class TiberiumGeyser : TRBuilding
 
             depositValue--;
             //Map.Tiberium().PollutionInfo.GenerateGasAt(Position.RandomAdjacentCell8Way(), 0.01f);
+            GenSpawn.Spawn(TiberiumDefOf.TiberiumGas, areaCells.Current, Map);
+            if (!areaCells.MoveNext()) areaCells.Reset();
 
+            burstTicksLeft--;
             if (burstTicksLeft <= 0)
             {
                 startEnum = false;
@@ -119,11 +130,13 @@ public class TiberiumGeyser : TRBuilding
 
     private void StartBursting()
     {
-        burstTicksLeft = TRUtils.Range(300, 600);
+        burstTicksLeft = TRUtils.Range(cellAmounts / 2, cellAmounts);
     }
 
     private void ThrowTiberiumGas(Vector3 loc, Map map)
     {
+        if (!loc.ToIntVec3().ShouldSpawnMotesAt(map) || map.moteCounter.SaturatedLowPriority) return;
+
         var moteThrown = (MoteThrown)ThingMaker.MakeThing(TiberiumDefOf.Mote_TiberiumGeyser);
         moteThrown.Scale = 1.5f;
         moteThrown.rotationRate = Rand.RangeInclusive(-240, 240);
@@ -203,6 +216,4 @@ public class TiberiumGeyser : TRBuilding
             }
         };
     }
-}
-
 }

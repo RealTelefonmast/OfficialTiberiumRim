@@ -355,7 +355,7 @@ public class Comp_AnimationRenderer : ThingComp
     //
     private RuntimeAnimationRenderer renderer;
 
-    public CompProperties_AnimationRenderer Props => (CompProperties_AnimationRenderer) props;
+    public CompProperties_AnimationRenderer Props => (CompProperties_AnimationRenderer)props;
 
     //Current Animation Data
     private bool ShouldFlip => parent.Rotation == Rot4.West;

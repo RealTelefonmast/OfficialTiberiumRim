@@ -13,11 +13,9 @@ public class SubBuildMenuDef : Def
     public Type visWorker = typeof(SubMenuVisibilityWorker);
 
     //
-    [field: Unsaved]
-    public DesignationTexturePack TexturePack { get; private set; }
+    [field: Unsaved] public DesignationTexturePack TexturePack { get; private set; }
 
-    [field: Unsaved]
-    public SubMenuVisibilityWorker VisWorker { get; private set; }
+    [field: Unsaved] public SubMenuVisibilityWorker VisWorker { get; private set; }
 
     public override void ResolveReferences()
     {
@@ -27,10 +25,8 @@ public class SubBuildMenuDef : Def
             subMenus = new List<SubMenuGroupDef>();
             return;
         }
-        foreach (var subMenu in subMenus)
-        {
-            subMenu.parentDef = this;
-        }
+
+        foreach (var subMenu in subMenus) subMenu.parentDef = this;
     }
 
     public override void PostLoad()

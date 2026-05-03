@@ -7,7 +7,9 @@ namespace TeleCore.Designators;
 [StaticConstructorOnStartup]
 public abstract class Designator_Extended : Designator
 {
-    private static readonly Texture2D cooldownBarTex = SolidColorMaterials.NewSolidColorTexture(new Color32(180, 180, 180, 64));
+    private static readonly Texture2D cooldownBarTex =
+        SolidColorMaterials.NewSolidColorTexture(new Color32(180, 180, 180, 64));
+
     public ICoolDownHolder coolDown;
 
     protected bool mustBeUsed = false;
@@ -18,10 +20,11 @@ public abstract class Designator_Extended : Designator
     public sealed override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
     {
         var onCooldown = CooldownCheck();
-        var result = DrawGizmo(topLeft, maxWidth, parms, onCooldown); ;
+        var result = DrawGizmo(topLeft, maxWidth, parms, onCooldown);
+        ;
         if (onCooldown)
         {
-            Rect rect = new Rect(topLeft.x, topLeft.y, GetWidth(maxWidth), 75f);
+            var rect = new Rect(topLeft.x, topLeft.y, GetWidth(maxWidth), 75f);
             Widgets.FillableBar(rect, Mathf.Clamp01(coolDown.DisabledPct), cooldownBarTex, null, false);
 
             //
@@ -36,7 +39,7 @@ public abstract class Designator_Extended : Designator
 
     private bool CooldownCheck()
     {
-        this.disabled = coolDown is { CoolDownActive: true };
+        disabled = coolDown is { CoolDownActive: true };
         return disabled;
     }
 

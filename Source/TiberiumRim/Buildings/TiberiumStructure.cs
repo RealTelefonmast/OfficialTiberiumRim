@@ -1,7 +1,5 @@
-﻿using TiberiumRim;
-using TR.World;
+﻿using TR.World;
 using Verse;
-using MapComponent_Tiberium = TR.Components.MapComponent_Tiberium;
 
 namespace TR;
 

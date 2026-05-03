@@ -11,32 +11,35 @@ namespace TeleCore.UI;
 
 public class Window_BuildMenu : Window
 {
-     private static readonly Vector2 Tab_Size = new(118, 30);
-    private static readonly Vector2 SeachBar_Size = new(125, 25);
     private const float TB_Margin = 10f;
     private const float LR_Margin = 3f;
     private const float Icon_Size = 30f;
+    private static readonly Vector2 Tab_Size = new(118, 30);
+    private static readonly Vector2 SeachBar_Size = new(125, 25);
 
     //
     private readonly Dictionary<SubMenuGroupDef, SubMenuCategoryDef> cachedSelection = new();
-    private bool favoriteMenuActive;
-    private List<BuildableDefSerializable> favoriteOptions = new(); //Extra cache, Used to render only the favorited options
     private readonly HashSet<ThingDef> HighLightOptions = new();
 
     private readonly Dictionary<SubMenuGroupDef, Texture2D> iconByGroup = new();
-    private BuildableDef inactiveDef;
-
-    private Vector2 lastPos;
 
     //
     private SubBuildMenuDef _menuDef;
+    private SubMenuGroupDef _selectedGroup;
+    private bool favoriteMenuActive;
+
+    private List<BuildableDefSerializable>
+        favoriteOptions = new(); //Extra cache, Used to render only the favorited options
+
+    private BuildableDef inactiveDef;
+
+    private Vector2 lastPos;
     private Gizmo mouseOverGizmo;
 
     //SavedData
     private Dictionary<BuildableDefSerializable, SubMenuOptionSettings> optionStates = new();
     private Vector2 scroller = Vector2.zero;
     private string searchText = "";
-    private SubMenuGroupDef _selectedGroup;
 
     public Window_BuildMenu()
     {
@@ -53,7 +56,7 @@ public class Window_BuildMenu : Window
 
     public Window_BuildMenu(SubBuildMenuDef menuDef)
     {
-        this._menuDef = menuDef;
+        _menuDef = menuDef;
 
         //Window Settings
         draggable = true;
@@ -87,13 +90,13 @@ public class Window_BuildMenu : Window
 
     public override void Close(bool doCloseSound = true)
     {
-        this.lastPos = this.windowRect.center; // GUI.wind.center; //window.;
+        lastPos = windowRect.center; // GUI.wind.center; //window.;
         base.Close(doCloseSound);
     }
 
     public override void PostOpen()
     {
-        this.windowRect.center = this.lastPos;
+        windowRect.center = lastPos;
         base.PostOpen();
     }
 
@@ -137,7 +140,8 @@ public class Window_BuildMenu : Window
         //
         var searchBar = new Rect(new Vector2(inRect.xMax - SeachBar_Size.x, 0f), SeachBar_Size);
         var closeButton = new Rect(inRect.x, inRect.y, SeachBar_Size.y, SeachBar_Size.y);
-        var favoritesRect = new Rect(searchBar.x - (SeachBar_Size.y + 4), searchBar.y, SeachBar_Size.y, SeachBar_Size.y).ContractedBy(2).Rounded();
+        var favoritesRect = new Rect(searchBar.x - (SeachBar_Size.y + 4), searchBar.y, SeachBar_Size.y, SeachBar_Size.y)
+            .ContractedBy(2).Rounded();
 
         if (Widgets.CloseButtonFor(closeButton))
         {
@@ -155,7 +159,8 @@ public class Window_BuildMenu : Window
         var menuRect = new Rect(0f, SeachBar_Size.y, windowRect.width, 526f);
         Widgets.DrawTextureRotated(menuRect, CurrentTexturePack.backGround, 0f);
         //Reduce Content Rect
-        menuRect = new Rect(LR_Margin, menuRect.y + TB_Margin, menuRect.width - LR_Margin, menuRect.height - TB_Margin * 2);
+        menuRect = new Rect(LR_Margin, menuRect.y + TB_Margin, menuRect.width - LR_Margin,
+            menuRect.height - TB_Margin * 2);
         Widgets.BeginGroup(menuRect);
         {
             GroupSidebar(3);
@@ -163,7 +168,8 @@ public class Window_BuildMenu : Window
             DrawDesignator(extraDes, DesignatorUtility.FindAllowedDesignator<Designator_Deconstruct>());
             extraDes.y = extraDes.yMax + 5;
             DrawDesignator(extraDes, DesignatorUtility.FindAllowedDesignator<Designator_Cancel>());
-            var DesignatorRect = new Rect(Icon_Size + LR_Margin, 0f, menuRect.width - (Icon_Size + LR_Margin), menuRect.height);
+            var DesignatorRect = new Rect(Icon_Size + LR_Margin, 0f, menuRect.width - (Icon_Size + LR_Margin),
+                menuRect.height);
             Widgets.BeginGroup(DesignatorRect);
             {
                 if (favoriteMenuActive)
@@ -202,7 +208,9 @@ public class Window_BuildMenu : Window
                             ? CurrentTexturePack.tabSelected
                             : CurrentTexturePack.tab;
                         Widgets.DrawTextureFitted(tabRect, tex, 1f);
-                        if (HasUnDiscovered(_menuDef, SelectedGroup, cat)) TWidgets.DrawTextureInCorner(tabRect, BuildMenuContent.Undiscovered, 7, TextAnchor.UpperRight, new Vector2(-6, 3));
+                        if (HasUnDiscovered(_menuDef, SelectedGroup, cat))
+                            TWidgets.DrawTextureInCorner(tabRect, BuildMenuContent.Undiscovered, 7,
+                                TextAnchor.UpperRight, new Vector2(-6, 3));
                         //DrawUndiscovered(tabRect, new Vector2(-6, 3));
                         //Widgets.DrawTextureFitted(tabRect, TiberiumContent.Tab_Undisc, 1f);
                         Text.Anchor = TextAnchor.MiddleCenter;
@@ -253,10 +261,7 @@ public class Window_BuildMenu : Window
                 {
                     mouseOverGizmo = null;
                     inactiveDef = null;
-                    foreach (var def in things)
-                    {
-                        DoDesignator(def, main, size, ref curXY);
-                    }
+                    foreach (var def in things) DoDesignator(def, main, size, ref curXY);
                 }
                 Widgets.EndScrollView();
             }
@@ -309,7 +314,8 @@ public class Window_BuildMenu : Window
 
         var optionDiscovered = OptionIsDiscovered(def);
         if (!optionDiscovered)
-            TWidgets.DrawTextureInCorner(rect, BuildMenuContent.Undiscovered, 7, TextAnchor.UpperRight, new Vector2(-5, 5));
+            TWidgets.DrawTextureInCorner(rect, BuildMenuContent.Undiscovered, 7, TextAnchor.UpperRight,
+                new Vector2(-5, 5));
         //DrawUndiscovered(rect, new Vector2(-5, 5));
         //Widgets.DrawTextureFitted(rect, TiberiumContent.Des_Undisc, 1f);
         var favorited = OptionIsFavorited(def);
@@ -395,6 +401,7 @@ public class Window_BuildMenu : Window
                 searchText = "";
                 SelectedGroup = group;
             }
+
             curY += Icon_Size + 6;
         }
     }
@@ -535,13 +542,9 @@ public class Window_BuildMenu : Window
         }
 
         if (window.IsOpen)
-        {
             window.Close();
-        }
         else
-        {
             Find.WindowStack.Add(window);
-        }
     }
 
     public static void ResetMenuWindow(SubBuildMenuDef subMenuDef)

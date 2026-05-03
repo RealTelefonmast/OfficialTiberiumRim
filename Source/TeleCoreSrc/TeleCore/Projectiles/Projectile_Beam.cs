@@ -7,9 +7,12 @@ namespace TeleCore.Projectiles;
 //Sustained beams would require a custom Verb.
 public class Projectile_Beam : Projectile
 {
-    public override void Launch(Thing launcher, Vector3 origin, LocalTargetInfo usedTarget, LocalTargetInfo intendedTarget, ProjectileHitFlags hitFlags, bool preventFriendlyFire = false, Thing equipment = null, ThingDef targetCoverDef = null)
+    public override void Launch(Thing launcher, Vector3 origin, LocalTargetInfo usedTarget,
+        LocalTargetInfo intendedTarget, ProjectileHitFlags hitFlags, bool preventFriendlyFire = false,
+        Thing equipment = null, ThingDef targetCoverDef = null)
     {
-        base.Launch(launcher, origin, usedTarget, intendedTarget, hitFlags, preventFriendlyFire, equipment, targetCoverDef);
+        base.Launch(launcher, origin, usedTarget, intendedTarget, hitFlags, preventFriendlyFire, equipment,
+            targetCoverDef);
     }
 
     public override void Tick()

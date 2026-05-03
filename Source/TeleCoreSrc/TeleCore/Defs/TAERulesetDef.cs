@@ -7,10 +7,10 @@ namespace TeleCore.Defs;
 
 public class TAERulesetDef : Def
 {
-    public AtmosphericRealm realm = AtmosphericRealm.AnyBiome;
-    public List<BiomeDef> biomes;
     public List<DefValueLoadable<AtmosphericValueDef, float>> atmospheres;
-    
+    public List<BiomeDef> biomes;
+
     //IncidentRules
     public List<AtmosphericIncidentFilter> incidentFilters;
+    public AtmosphericRealm realm = AtmosphericRealm.AnyBiome;
 }

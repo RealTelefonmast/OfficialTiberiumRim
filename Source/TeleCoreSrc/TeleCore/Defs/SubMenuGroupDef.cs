@@ -8,14 +8,13 @@ public class SubMenuGroupDef : Def
 {
     public string groupIconPath;
     public bool isDevGroup = false;
-    public List<SubMenuCategoryDef> subCategories;
     public SubBuildMenuDef parentDef;
+    public List<SubMenuCategoryDef> subCategories;
 
     //Pack Def | BuildMenu | Des | Des_Sel | Tab | Tab_Sel
     public string subPackPath;
 
-    [field: Unsaved]
-    public DesignationTexturePack? TexturePack { get; private set; }
+    [field: Unsaved] public DesignationTexturePack? TexturePack { get; private set; }
 
     public override void ResolveReferences()
     {
@@ -31,6 +30,7 @@ public class SubMenuGroupDef : Def
     public override void PostLoad()
     {
         base.PostLoad();
-        LongEventHandler.ExecuteWhenFinished(delegate { TexturePack ??= new DesignationTexturePack(subPackPath, this); });
+        LongEventHandler.ExecuteWhenFinished(
+            delegate { TexturePack ??= new DesignationTexturePack(subPackPath, this); });
     }
 }

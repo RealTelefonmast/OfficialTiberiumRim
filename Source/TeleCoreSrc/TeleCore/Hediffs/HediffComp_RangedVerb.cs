@@ -21,7 +21,7 @@ public class HediffComp_RangedVerb : HediffComp_Gizmo, IVerbOwner
     }
 
     public List<Verb> AllVerbs => verbTracker.AllVerbs;
-    public HediffCompProperties_RangedVerb Props => (HediffCompProperties_RangedVerb) props;
+    public HediffCompProperties_RangedVerb Props => (HediffCompProperties_RangedVerb)props;
 
     public bool CanAttack
     {

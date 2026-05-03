@@ -5,8 +5,8 @@ namespace TeleCore.GameComponents;
 
 public class GameComponent_TeleCore : GameComponent
 {
-    private ActionCompositionHandler actionCompositionHandler;
     private readonly TeleUpdateManager updateManager;
+    private ActionCompositionHandler actionCompositionHandler;
 
     public GameComponent_TeleCore(Game game)
     {

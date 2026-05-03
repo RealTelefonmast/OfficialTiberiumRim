@@ -215,13 +215,13 @@ public class TResearchTaskDef : Def
     {
         Widgets.BeginGroup(rect);
         float curY = 0;
-        float Width = rect.width;
+        var Width = rect.width;
         //Targets
         if (CachedInfo.TryGetValue("TargetProps_Label", out var targetLabel))
         {
             //Target Label
             var labelHeight = Text.CalcHeight(targetLabel[0], Width);
-            Rect labelRect = new Rect(0, curY, Width, labelHeight);
+            var labelRect = new Rect(0, curY, Width, labelHeight);
             Widgets.Label(labelRect, targetLabel[0]);
             curY += labelHeight;
 
@@ -230,7 +230,7 @@ public class TResearchTaskDef : Def
                 for (var i = 0; i < values.Length; i++)
                 {
                     var targetHeight = Text.CalcHeight(values[i], Width);
-                    Rect targetRect = new Rect(0, curY, Width, targetHeight);
+                    var targetRect = new Rect(0, curY, Width, targetHeight);
                     if (Mouse.IsOver(targetRect))
                         Widgets.DrawHighlight(targetRect);
                     Widgets.Label(targetRect, values[i]);
@@ -248,7 +248,7 @@ public class TResearchTaskDef : Def
         if (CachedInfo.TryGetValue("CreationTasks_Label", out var taskLabel))
         {
             var labelHeight = Text.CalcHeight(taskLabel[0], Width);
-            Rect labelRect = new Rect(0, curY, Width, labelHeight);
+            var labelRect = new Rect(0, curY, Width, labelHeight);
             Widgets.Label(labelRect, taskLabel[0]);
             curY += labelHeight;
 
@@ -257,7 +257,7 @@ public class TResearchTaskDef : Def
                 for (var i = 0; i < values.Length; i++)
                 {
                     var targetHeight = Text.CalcHeight(values[i], Width);
-                    Rect targetRect = new Rect(0, curY, Width, targetHeight);
+                    var targetRect = new Rect(0, curY, Width, targetHeight);
                     if (Mouse.IsOver(targetRect))
                         Widgets.DrawHighlight(targetRect);
                     Widgets.Label(targetRect, values[i]);
@@ -276,7 +276,7 @@ public class TResearchTaskDef : Def
         {
             //Target Label
             var labelHeight = Text.CalcHeight(workTypeLabel[0], Width);
-            Rect labelRect = new Rect(0, curY, Width, labelHeight);
+            var labelRect = new Rect(0, curY, Width, labelHeight);
             Widgets.Label(labelRect, workTypeLabel[0]);
             curY += labelHeight;
 
@@ -287,7 +287,7 @@ public class TResearchTaskDef : Def
         if (CachedInfo.TryGetValue("SkillReq_Label", out var skillLabel))
         {
             var labelHeight = Text.CalcHeight(skillLabel[0], Width);
-            Rect labelRect = new Rect(0, curY, Width, labelHeight);
+            var labelRect = new Rect(0, curY, Width, labelHeight);
             Widgets.Label(labelRect, skillLabel[0]);
             curY += labelHeight;
 
@@ -296,12 +296,12 @@ public class TResearchTaskDef : Def
                 for (var i = 0; i < values.Length; i++)
                 {
                     var targetHeight = Text.CalcHeight(values[i], Width);
-                    Rect targetRect = new Rect(0, curY, Width, targetHeight);
+                    var targetRect = new Rect(0, curY, Width, targetHeight);
                     Widgets.Label(targetRect, values[i]);
                     var targetWidth = Text.CalcSize(values[i]).x;
-                    Rect capableRect = new Rect(targetWidth, curY, Width - targetWidth, targetHeight);
+                    var capableRect = new Rect(targetWidth, curY, Width - targetWidth, targetHeight);
                     var mouseOver = Mouse.IsOver(capableRect);
-                    Color textCol = mouseOver ? Color.white : new Color(0.45f, 0.45f, 0.45f);
+                    var textCol = mouseOver ? Color.white : new Color(0.45f, 0.45f, 0.45f);
                     var pawns = CapablePawnsFor(skillRequirements[i]);
                     Widgets.Label(capableRect,
                         (" | " + "TR_Capable".Translate().RawText + " " + pawns.Count).Colorize(textCol));

@@ -26,7 +26,7 @@ public abstract class TeleComp : ThingComp
         }
     }
 
-    public override void PostDeSpawn(Verse.Map map)
+    public override void PostDeSpawn(Map map)
     {
         base.PostDeSpawn(map);
         if (Extension != null)

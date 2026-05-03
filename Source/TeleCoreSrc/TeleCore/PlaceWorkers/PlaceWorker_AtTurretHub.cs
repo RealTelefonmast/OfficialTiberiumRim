@@ -7,7 +7,7 @@ namespace TeleCore.PlaceWorkers;
 
 public class PlaceWorker_AtTurretHub : PlaceWorker
 {
-    public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 loc, Rot4 rot, Verse.Map map,
+    public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 loc, Rot4 rot, Map map,
         Thing thingToIgnore = null, Thing thing = null)
     {
         if (checkingDef is ThingDef def && def.HasTurretExtension(out var extension) && extension.hub != null)
@@ -20,7 +20,7 @@ public class PlaceWorker_AtTurretHub : PlaceWorker
         return true;
     }
 
-    public override void PostPlace(Verse.Map map, BuildableDef def, IntVec3 loc, Rot4 rot)
+    public override void PostPlace(Map map, BuildableDef def, IntVec3 loc, Rot4 rot)
     {
         var hub = FindClosestTurretHub(def as ThingDef, loc, Find.CurrentMap);
         hub?.AnticipateTurretAt(loc);
@@ -49,7 +49,7 @@ public class PlaceWorker_AtTurretHub : PlaceWorker
     }
 
     //
-    public static Building_TurretHubCore FindClosestTurretHub(ThingDef turretDef, IntVec3 origin, Verse.Map map)
+    public static Building_TurretHubCore FindClosestTurretHub(ThingDef turretDef, IntVec3 origin, Map map)
     {
         _ = turretDef.HasTurretExtension(out var extension);
         var numCells = GenRadial.NumCellsInRadius(extension.hub.connectRadius);
@@ -57,7 +57,7 @@ public class PlaceWorker_AtTurretHub : PlaceWorker
         {
             var cell = GenRadial.RadialPattern[i] + origin;
             if (!cell.InBounds(map)) continue;
-            var hub = (Building_TurretHubCore) cell.GetFirstThing(map, extension.hub.hubDef);
+            var hub = (Building_TurretHubCore)cell.GetFirstThing(map, extension.hub.hubDef);
             if (hub != null && hub.AcceptsTurrets) return hub;
         }
 

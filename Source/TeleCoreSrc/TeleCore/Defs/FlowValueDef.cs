@@ -8,19 +8,19 @@ public class FlowValueDef : Def
 {
     internal static readonly Dictionary<string, List<FlowValueDef>> TaggedFlowValues = new();
 
-    public FlowValueCollectionDef? collectionDef;
-
     public float capacityFactor = 1;
+
+    public FlowValueCollectionDef? collectionDef;
+    public float friction;
     public string labelShort;
     public bool sharesCapacity;
+
+    public List<string> tags;
     public Color valueColor = Color.white;
     public string valueUnit;
 
     //The rate at which value flows between containers
     public float viscosity = 1;
-    public float friction;
-
-    public List<string> tags;
 
     //Runtime
     public float FlowRate => 1f / viscosity;
@@ -51,15 +51,10 @@ public class FlowValueDef : Def
         collectionDef?.Notify_ResolvedFlowValueDef(this);
 
         if (!tags.NullOrEmpty())
-        {
             foreach (var tag in tags)
             {
-                if (!TaggedFlowValues.ContainsKey(tag))
-                {
-                    TaggedFlowValues.Add(tag, new List<FlowValueDef>());
-                }
+                if (!TaggedFlowValues.ContainsKey(tag)) TaggedFlowValues.Add(tag, new List<FlowValueDef>());
                 TaggedFlowValues[tag].Add(this);
             }
-        }
     }
 }

@@ -18,23 +18,17 @@ public class CompProperties_ANS_Vent : CompProperties_ANS
 {
     [Unsaved] private List<AtmosphericValueDef> allowedValuesInt;
 
-    //
-    public bool passive = false;
-    public IntVec3 intakeOffset;
-    public AtmosphericVentMode ventMode = AtmosphericVentMode.Intake;
-    public int gasThroughPut = 1;
-
     //Filter
     private AtmosphericVentFilter filter;
+    public int gasThroughPut = 1;
+    public IntVec3 intakeOffset;
+
+    //
+    public bool passive = false;
 
     //
     public List<DefValue<AtmosphericValueDef, float>> upkeepLevels;
-
-    private class AtmosphericVentFilter
-    {
-        public string acceptedTag;
-        public List<AtmosphericValueDef> acceptedAtmospheres;
-    }
+    public AtmosphericVentMode ventMode = AtmosphericVentMode.Intake;
 
     public List<AtmosphericValueDef> AllowedValues
     {
@@ -58,4 +52,9 @@ public class CompProperties_ANS_Vent : CompProperties_ANS
         return basePos + intakeOffset.RotatedBy(rotation);
     }
 
+    private class AtmosphericVentFilter
+    {
+        public List<AtmosphericValueDef> acceptedAtmospheres;
+        public string acceptedTag;
+    }
 }

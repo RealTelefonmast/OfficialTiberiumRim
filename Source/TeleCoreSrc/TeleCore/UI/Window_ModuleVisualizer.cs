@@ -90,7 +90,7 @@ public class Window_ModuleVisualizer : Window
 
         foreach (var node in allNodes) node.Draw(nodeGraphScale);
 
-        if (FinalOutput is {FinalBase: not null})
+        if (FinalOutput is { FinalBase: not null })
         {
             var renderRect = new Rect(inRect.width - (renderResultSize + 1), 0, renderResultSize + 1,
                 renderResultSize + 1);
@@ -125,7 +125,7 @@ public class Window_ModuleVisualizer : Window
             */
             foreach (var type in ModuleTypes)
                 list.Add(new FloatMenuOption(type.ToString().Split('.').Last(),
-                    delegate { allNodes.Add((ModuleNode) Activator.CreateInstance(type, currentPos)); }));
+                    delegate { allNodes.Add((ModuleNode)Activator.CreateInstance(type, currentPos)); }));
             Find.WindowStack.Add(new FloatMenu(list));
         }
 
@@ -153,7 +153,7 @@ public class Window_ModuleVisualizer : Window
 
     public void RenderModuleResult(Rect inRect, ModuleBase result)
     {
-        Verse.Widgets.DrawMenuSection(inRect);
+        Widgets.DrawMenuSection(inRect);
         inRect = inRect.ContractedBy(1);
         switch (CurrentMode)
         {
@@ -175,18 +175,18 @@ public class Window_ModuleVisualizer : Window
         TWidgets.DrawBox(switch3DRect, TColor.White075, 1);
 
         Text.Font = GameFont.Tiny;
-        Verse.Widgets.Label(switch2DRect, "2D");
-        Verse.Widgets.Label(switch3DRect, "3D");
+        Widgets.Label(switch2DRect, "2D");
+        Widgets.Label(switch3DRect, "3D");
         Text.Font = default;
 
-        if (Verse.Widgets.ButtonInvisible(switch2DRect)) CurrentMode = ModuleVisualizerMode.Flat;
+        if (Widgets.ButtonInvisible(switch2DRect)) CurrentMode = ModuleVisualizerMode.Flat;
 
-        if (Verse.Widgets.ButtonInvisible(switch3DRect)) CurrentMode = ModuleVisualizerMode.World;
+        if (Widgets.ButtonInvisible(switch3DRect)) CurrentMode = ModuleVisualizerMode.World;
     }
 
     private void RenderFlatView(Rect inRect, ModuleBase result)
     {
-        Verse.Widgets.DrawTextureFitted(inRect, GetTextureFrom(result), 1);
+        Widgets.DrawTextureFitted(inRect, GetTextureFrom(result), 1);
     }
 
     private void RenderWorldView(Rect inRect, ModuleBase result)
@@ -208,7 +208,7 @@ public class Window_ModuleVisualizer : Window
         for (var x = 0; x < renderResultSize; x++)
         for (var y = 0; y < renderResultSize; y++)
         {
-            var val = (float) module.GetValue(x, 0, y);
+            var val = (float)module.GetValue(x, 0, y);
             CachedRenderTex.SetPixel(x, y, new Color(val, val, val));
         }
 

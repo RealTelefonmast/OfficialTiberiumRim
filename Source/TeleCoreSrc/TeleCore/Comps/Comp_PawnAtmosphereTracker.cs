@@ -29,6 +29,7 @@ public class Comp_PawnAtmosphereTracker : ThingComp
                         return false;
                     }
                 }
+
                 var room = Pawn.Position.GetRoom(Pawn.Map);
                 _curAtmosphere = room.GetRoomComp<RoomComponent_Atmosphere>();
                 if (_curAtmosphere == null)
@@ -37,6 +38,7 @@ public class Comp_PawnAtmosphereTracker : ThingComp
                     return false;
                 }
             }
+
             return _curAtmosphere.IsOutdoors;
         }
     }

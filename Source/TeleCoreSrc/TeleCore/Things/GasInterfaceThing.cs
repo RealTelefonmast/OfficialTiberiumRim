@@ -17,9 +17,7 @@ public class GasInterfaceThing : Thing
     {
         base.SpawnSetup(map, respawningAfterLoad);
         if (Interface != null)
-        {
             Map.GetMapInfo<AtmosphericMapInfo>().TrySpawnGasAt(Position, Interface.gasType, Interface.startingValue);
-        }
         DeSpawn();
     }
 }

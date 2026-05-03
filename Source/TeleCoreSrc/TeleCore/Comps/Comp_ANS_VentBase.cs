@@ -29,7 +29,6 @@ public class Comp_ANS_VentBase : Comp_AtmosphericNetworkStructure
         {
             if (!IsPowered) return false;
             foreach (var def in VentProps.AllowedValues)
-            {
                 switch (VentProps.ventMode)
                 {
                     case AtmosphericVentMode.Intake:
@@ -43,7 +42,7 @@ public class Comp_ANS_VentBase : Comp_AtmosphericNetworkStructure
                     case AtmosphericVentMode.TwoWay:
                         break;
                 }
-            }
+
             return true;
         }
     }
@@ -113,7 +112,6 @@ public class Comp_ANS_VentBase : Comp_AtmosphericNetworkStructure
     {
         var totalThroughput = VentProps.gasThroughPut * tick;
         foreach (var def in VentProps.AllowedValues)
-        {
             switch (VentProps.ventMode)
             {
                 //Pull atmosphere into the container
@@ -137,14 +135,16 @@ public class Comp_ANS_VentBase : Comp_AtmosphericNetworkStructure
                         {
                             result = AtmosRoom.Container.TryAddValue(def, totalThroughput);
                         }
+
                         return result;
                     }
+
                     break;
                 case AtmosphericVentMode.TwoWay:
                     TryEqualize(def, tick);
                     break;
             }
-        }
+
         return false;
     }
 

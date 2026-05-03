@@ -4,7 +4,7 @@ using Verse;
 namespace TeleCore.Projectiles;
 
 /// <summary>
-/// A special projectile type that causes damaging effects as it moves towards a target
+///     A special projectile type that causes damaging effects as it moves towards a target
 /// </summary>
 public class Projectile_Wanderer : Projectile
 {

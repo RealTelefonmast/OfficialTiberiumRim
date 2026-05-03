@@ -32,44 +32,47 @@ public class RealmConfig : Editable
 }
 
 /// <summary>
-/// Defines properties of any gas or fluid that can dissipate into air or ground.
+///     Defines properties of any gas or fluid that can dissipate into air or ground.
 /// </summary>
 public class DissipationConfig : Editable
 {
-    public SpreadingGasTypeDef toGas;
     public DissipationMode mode;
 
     //TODO: Add terrainfilter from TR
     public List<string> terrainFilter;
+    public SpreadingGasTypeDef toGas;
 }
 
 public class AtmosphericValueDef : FlowValueDef
 {
-    //The corresponding network value (if available)
-    public NetworkValueDef networkValue;
-    public DissipationConfig dissipation;
-
     /// <summary>
-    /// The tag group this atmospheric def belongs to.
+    ///     The tag group this atmospheric def belongs to.
     /// </summary>
     public string atmosphericTag;
 
     /// <summary>
-    /// The atmospheric group tags that will be displaced by this atmospheric def.
+    ///     The atmospheric group tags that will be displaced by this atmospheric def.
     /// </summary>
     public List<string> displaceTags;
 
+    public DissipationConfig dissipation;
+
     /// <summary>
-    /// Sets the physical elevation range of the gas within a cell. 0 being floor and 1 being ceiling.
-    /// This can be used whether or not a gas affects a Pawn.
+    ///     Sets the physical elevation range of the gas within a cell. 0 being floor and 1 being ceiling.
+    ///     This can be used whether or not a gas affects a Pawn.
     /// </summary>
     public FloatRange fillRange = new(0, 1);
 
+    public double friction;
+
     //Rendering
     public NaturalOverlayProperties naturalOverlay;
+
+    //The corresponding network value (if available)
+    public NetworkValueDef networkValue;
     public RoomOverlayProperties roomOverlay;
     public bool useRenderLayer = false;
-    public double friction;
+
     public override void PostLoad()
     {
         //

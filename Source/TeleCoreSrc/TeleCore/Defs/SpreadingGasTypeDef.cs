@@ -9,9 +9,19 @@ public class SpreadingGasTypeDef : Def
 {
     private static ushort _masterID;
     private static readonly Dictionary<int, SpreadingGasTypeDef> _defByID = new();
-    
-    public Color colorMin;
+
+    public float accuracyPenalty;
+    public bool blockTurretTracking;
+    public Type cellEffectWorker;
+
+    public int cellsToDissipatePerTick = 8;
+    public int cellsToSpreadPerTick = 8;
     public Color colorMax;
+
+    public Color colorMin;
+
+    public AtmosphericValueDef dissipateTo;
+    public int dissipationAmount = 1;
 
     //public string texPath;
     //public ShaderTypeDef shaderType;
@@ -21,20 +31,10 @@ public class SpreadingGasTypeDef : Def
     public int maxDensityPerCell = 100;
     public int minDissipationDensity = 10;
     public int minSpreadDensity = 2;
-    public int dissipationAmount = 1;
-
-    public AtmosphericValueDef dissipateTo;
-    
-    public float accuracyPenalty;
-    public bool blockTurretTracking;
-    public bool roofBlocksDissipation = true;
-
-    public int cellsToDissipatePerTick = 8;
-    public int cellsToSpreadPerTick = 8;
 
     //
     public Type pawnEffectWorker;
-    public Type cellEffectWorker;
+    public bool roofBlocksDissipation = true;
 
     public FloatRange rotationSpeeds = new(-100, 100);
     public float spreadViscosity = 0.35f;
@@ -53,7 +53,7 @@ public class SpreadingGasTypeDef : Def
 
     public override IEnumerable<string> ConfigErrors()
     {
-        foreach (var error in base.ConfigErrors()) 
+        foreach (var error in base.ConfigErrors())
             yield return error;
 
         if (maxDensityPerCell > ushort.MaxValue)

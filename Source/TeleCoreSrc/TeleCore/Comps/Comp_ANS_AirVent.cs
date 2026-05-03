@@ -11,9 +11,11 @@ public class Comp_ANS_AirVent : Comp_ANS_Vent
     private FloatControl speedControl;
 
     /// <summary>
-    /// Sus?
+    ///     Sus?
     /// </summary>
     public bool CanVent => false;
+
+    public override bool CanManipulateNow => speedControl.ReachedPeak;
 
     //TODO: return this[TiberiumDefOf.AtmosphericNetwork].ContainerSet[NetworkRole.Controller].Any(c => !c.Full);
 
@@ -37,8 +39,6 @@ public class Comp_ANS_AirVent : Comp_ANS_Vent
         speedControl = new FloatControl(5, 1);
     }
 
-    public override bool CanManipulateNow => speedControl.ReachedPeak;
-
     public override void CompTick()
     {
         if (CanTickNow)
@@ -46,6 +46,7 @@ public class Comp_ANS_AirVent : Comp_ANS_Vent
             speedControl.Start();
             return;
         }
+
         speedControl.Stop();
 
         //

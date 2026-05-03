@@ -1,3 +1,4 @@
+using System;
 using RimWorld;
 using TeleCore.CompProperties;
 using TeleCore.Defs;
@@ -9,12 +10,12 @@ namespace TeleCore.Comps;
 public class Comp_ANS_Vent : Comp_AtmosphericNetworkStructure
 {
     private CompFlickable _flickableComp;
-    private IntVec3 intakeCell;
 
-    public CompProperties_ANS_Vent VentProps => (CompProperties_ANS_Vent)base.props;
+    public CompProperties_ANS_Vent VentProps => (CompProperties_ANS_Vent)props;
 
-    public IntVec3 IntakeCell => intakeCell;
-    public bool IntakeCellBlocked => intakeCell.GetEdifice(parent.Map) != null;
+    public IntVec3 IntakeCell { get; private set; }
+
+    public bool IntakeCellBlocked => IntakeCell.GetEdifice(parent.Map) != null;
 
     //
     protected override Room AtmosphericSource => IntakeCell.GetRoom(parent.Map);
@@ -34,6 +35,14 @@ public class Comp_ANS_Vent : Comp_AtmosphericNetworkStructure
     public bool IsActive => IsPowered && _flickableComp is null or { SwitchIsOn: true };
 
     public virtual bool CanManipulateNow => !IntakeCellBlocked;
+
+    public double NextFlow { get; set; } = 0;
+    public double PrevFlow { get; set; } = 0;
+    public double Move { get; set; } = 0;
+    public double FlowRate { get; set; }
+
+    public DefValueStack<NetworkValueDef, double> PrevStackNetwork { get; set; }
+    public DefValueStack<AtmosphericValueDef, double> PrevStackAtmos { get; set; }
 
     public override bool FX_ProvidesForLayer(FXArgs args)
     {
@@ -57,16 +66,8 @@ public class Comp_ANS_Vent : Comp_AtmosphericNetworkStructure
     {
         base.PostSpawnSetup(respawningAfterLoad);
         _flickableComp = parent.GetComp<CompFlickable>();
-        intakeCell = VentProps.GetIntakePos(parent.Position, parent.Rotation);
+        IntakeCell = VentProps.GetIntakePos(parent.Position, parent.Rotation);
     }
-
-    public double NextFlow { get; set; } = 0;
-    public double PrevFlow { get; set; } = 0;
-    public double Move { get; set; } = 0;
-    public double FlowRate { get; set; }
-
-    public DefValueStack<NetworkValueDef, double> PrevStackNetwork { get; set; }
-    public DefValueStack<AtmosphericValueDef, double> PrevStackAtmos { get; set; }
 
     public override void CompTick()
     {
@@ -80,24 +81,16 @@ public class Comp_ANS_Vent : Comp_AtmosphericNetworkStructure
         _atmosMove = _atmosFlow;
 
         foreach (var value in _atmosMove)
-        {
             if (value > 0)
             {
-                var move = System.Math.Abs(value.Value);
-                if (from.TryRemove(value.Def.networkValue, move, out var result))
-                {
-                    to.TryAdd(value.Def, result.Actual);
-                }
+                var move = Math.Abs(value.Value);
+                if (from.TryRemove(value.Def.networkValue, move, out var result)) to.TryAdd(value.Def, result.Actual);
             }
             else if (value < 0)
             {
-                var move = System.Math.Abs(value.Value);
-                if (to.TryRemove(value.Def, move, out var result))
-                {
-                    from.TryAdd(value.Def.networkValue, result.Actual);
-                }
+                var move = Math.Abs(value.Value);
+                if (to.TryRemove(value.Def, move, out var result)) from.TryAdd(value.Def.networkValue, result.Actual);
             }
-        }
     }
 
     private static double SubPressure<Tvalue>(FlowVolumeBase<Tvalue> volume, Tvalue value) where Tvalue : FlowValueDef
@@ -107,37 +100,13 @@ public class Comp_ANS_Vent : Comp_AtmosphericNetworkStructure
             TLog.Warning($"Tried to get pressure from container with {volume.CapacityPerType} capacity!");
             return 0;
         }
+
         return volume.StoredValueOf(value) / volume.CapacityPerType * 100d;
     }
 
-    #region Handle Network->Room
 
-    private DefValueStack<AtmosphericValueDef, double> _atmosFlow;
-    private DefValueStack<AtmosphericValueDef, double> _atmosMove;
-
-    private DefValueStack<AtmosphericValueDef, double> FlowFunc(NetworkVolume netVolume, AtmosphericVolume atmosVolume, DefValueStack<AtmosphericValueDef, double> previous)
-    {
-        var from = netVolume;
-        var to = atmosVolume;
-
-        foreach (var vDef in to.AllowedValues)
-        {
-            var f = previous[vDef];
-            var pressureDiff = SubPressure(from, vDef.networkValue) - SubPressure(to, vDef);
-            var src = (f > 0 ? (from.PrevStack.TotalValue,from.TotalValue,from.MaxCapacity) : (to.PrevStack.TotalValue,to.TotalValue, to.MaxCapacity));
-            var contentDiff = System.Math.Abs((src.Item1 - src.Item2).Value/src.MaxCapacity);
-            f += pressureDiff * AtmosResources.CSquared;
-            f *= 1 - AtmosResources.Friction;
-            f *= 1 - (0.5 * contentDiff); //DampFriction
-            previous[vDef] = f;
-        }
-        return previous;
-    }
-
-    #endregion
-
-
-    private DefValueStack<AtmosphericValueDef, double> ClampFunc(NetworkVolume netVolume, AtmosphericVolume atmosVolume, DefValueStack<AtmosphericValueDef, double> previous, ClampType clampType)
+    private DefValueStack<AtmosphericValueDef, double> ClampFunc(NetworkVolume netVolume, AtmosphericVolume atmosVolume,
+        DefValueStack<AtmosphericValueDef, double> previous, ClampType clampType)
     {
         var from = netVolume;
         var to = atmosVolume;
@@ -148,7 +117,8 @@ public class Comp_ANS_Vent : Comp_AtmosphericNetworkStructure
         foreach (var vDef in to.AllowedValues)
         {
             var f = previous[vDef];
-            var clamped = AtmosphericSystem.ClampFunc(d0, d1, from.StoredValueOf(vDef.networkValue), to.StoredValueOf(vDef), from.CapacityPerType, to.CapacityPerType, f.Value);
+            var clamped = AtmosphericSystem.ClampFunc(d0, d1, from.StoredValueOf(vDef.networkValue),
+                to.StoredValueOf(vDef), from.CapacityPerType, to.CapacityPerType, f.Value);
             previous[vDef] = (f.Def, clamped);
         }
 
@@ -178,6 +148,37 @@ public class Comp_ANS_Vent : Comp_AtmosphericNetworkStructure
             return adjacencyList.Any(c =>
                 c.Item2.Value.Parent is Comp_ANS_Vent pvent && pvent.NeedsToReceiveFrom(this));
         }
+
         return false;
     }
+
+    #region Handle Network->Room
+
+    private DefValueStack<AtmosphericValueDef, double> _atmosFlow;
+    private DefValueStack<AtmosphericValueDef, double> _atmosMove;
+
+    private DefValueStack<AtmosphericValueDef, double> FlowFunc(NetworkVolume netVolume, AtmosphericVolume atmosVolume,
+        DefValueStack<AtmosphericValueDef, double> previous)
+    {
+        var from = netVolume;
+        var to = atmosVolume;
+
+        foreach (var vDef in to.AllowedValues)
+        {
+            var f = previous[vDef];
+            var pressureDiff = SubPressure(from, vDef.networkValue) - SubPressure(to, vDef);
+            var src = f > 0
+                ? (from.PrevStack.TotalValue, from.TotalValue, from.MaxCapacity)
+                : (to.PrevStack.TotalValue, to.TotalValue, to.MaxCapacity);
+            var contentDiff = Math.Abs((src.Item1 - src.Item2).Value / src.MaxCapacity);
+            f += pressureDiff * AtmosResources.CSquared;
+            f *= 1 - AtmosResources.Friction;
+            f *= 1 - 0.5 * contentDiff; //DampFriction
+            previous[vDef] = f;
+        }
+
+        return previous;
+    }
+
+    #endregion
 }

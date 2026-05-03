@@ -5,9 +5,9 @@ namespace TeleCore.CompProperties;
 
 public class CompProperties_AtmosphericSource : Verse.CompProperties
 {
+    public AtmosphericValueDef atmosphericDef;
     public int pushAmount;
     public int pushInterval;
-    public AtmosphericValueDef atmosphericDef;
 
     public CompProperties_AtmosphericSource()
     {

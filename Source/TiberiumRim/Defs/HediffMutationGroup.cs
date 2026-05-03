@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Xml;
-using RimWorld;
-using TiberiumRim;
-using Verse;
+﻿using Verse;
 
 namespace TR.TiberiumInfection;
 

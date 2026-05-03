@@ -73,7 +73,7 @@ public class TResearchDef : Def
     public void TriggerEvents()
     {
         if (events.NullOrEmpty()) return;
-        foreach (var @event in events) 
+        foreach (var @event in events)
             TRUtils.EventManager().StartEvent(@event);
     }
 

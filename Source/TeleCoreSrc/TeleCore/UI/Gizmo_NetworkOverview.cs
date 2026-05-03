@@ -15,8 +15,8 @@ public class Gizmo_NetworkOverview : Gizmo, IDisposable
     private const float mainWidth = 200f;
     private const int gizmoPadding = 5;
     internal const int selSettingHeight = 22;
-    private readonly Dictionary<NetworkPart, NetworkInfoView> _viewByPart;
     private readonly CompNetwork _compNetwork;
+    private readonly Dictionary<NetworkPart, NetworkInfoView> _viewByPart;
 
     //Part Extendo Consts
     private readonly Vector2 partSelectionSize;
@@ -27,10 +27,6 @@ public class Gizmo_NetworkOverview : Gizmo, IDisposable
     private float desiredExtendedPartX;
     private float desiredExtendedY;
     private FloatRange partSelRange;
-
-    //
-    public NetworkPart SelectedPart { get; private set; }
-    public NetworkInfoView SelectedView => _viewByPart[SelectedPart];
 
     public Gizmo_NetworkOverview(CompNetwork compParent)
     {
@@ -57,14 +53,18 @@ public class Gizmo_NetworkOverview : Gizmo, IDisposable
         GlobalUpdateEventHandler.UITick += Tick;
     }
 
-    ~Gizmo_NetworkOverview()
-    {
-        Dispose();
-    }
+    //
+    public NetworkPart SelectedPart { get; private set; }
+    public NetworkInfoView SelectedView => _viewByPart[SelectedPart];
 
     public void Dispose()
     {
         GlobalUpdateEventHandler.UITick -= Tick;
+    }
+
+    ~Gizmo_NetworkOverview()
+    {
+        Dispose();
     }
 
     public override float GetWidth(float maxWidth)
