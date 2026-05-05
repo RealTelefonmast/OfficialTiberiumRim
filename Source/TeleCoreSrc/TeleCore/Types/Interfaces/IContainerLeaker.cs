@@ -1,4 +1,6 @@
-﻿namespace TeleCore.Unsorted;
+﻿using System.ComponentModel;
+
+namespace TeleCore.Unsorted;
 
 public interface IContainerLeaker
 {

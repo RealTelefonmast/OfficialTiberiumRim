@@ -1,6 +1,7 @@
-﻿using Verse;
+﻿using TeleCore.Unsorted;
+using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Defs;
 
 public class RecipeDef_Network : RecipeDef
 {

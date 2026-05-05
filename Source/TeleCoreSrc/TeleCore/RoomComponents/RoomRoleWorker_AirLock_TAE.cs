@@ -1,6 +1,7 @@
 // Preserved from TeleCore/Airlock/RoomRoleWorker_AirLock.cs
 
 using System.Collections.Generic;
+using TeleCore.Buildings;
 using Verse;
 
 namespace TeleCore.Unsorted;

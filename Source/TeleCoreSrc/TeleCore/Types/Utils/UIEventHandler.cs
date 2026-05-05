@@ -18,21 +18,21 @@ public static class UIEventHandler
     private static int CurrentLayer;
     public static Vector2 MouseOnScreen { get; private set; }
     public static IFocusable FocusedElement { get; private set; }
-    public static UIElement[] Layers { get; } = new UIElement[255];
+    public static Rendering.UI.DynaUI.UIElement[] Layers { get; } = new Rendering.UI.DynaUI.UIElement[255];
 
     public static bool IsFocused(IFocusable element)
     {
         return element.Equals(FocusedElement);
     }
 
-    public static void RegisterLayer(UIElement element)
+    public static void RegisterLayer(Rendering.UI.DynaUI.UIElement element)
     {
         element.RenderLayer = CurrentLayer;
         Layers[CurrentLayer] = element;
         CurrentLayer++;
     }
 
-    public static int GetLayerOf(UIElement element)
+    public static int GetLayerOf(Rendering.UI.DynaUI.UIElement element)
     {
         return -1;
     }

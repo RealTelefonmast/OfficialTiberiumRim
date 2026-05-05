@@ -17,7 +17,7 @@ public interface IDragAndDropReceiver
 
 public static class UIDragNDropper
 {
-    private static UIElement sourceElement;
+    private static Rendering.UI.DynaUI.UIElement sourceElement;
     private static object draggedObject;
 
     private static readonly List<IDragAndDropReceiver> knownAcceptors = new();
@@ -29,14 +29,14 @@ public static class UIDragNDropper
         knownAcceptors.Add(receiver);
     }
 
-    public static void Notify_DraggingData(UIElement source, object data, Event ev)
+    public static void Notify_DraggingData(Rendering.UI.DynaUI.UIElement source, object data, Event ev)
     {
         StartCarrying(source, data);
 
         if (ev.type == EventType.MouseUp) StopCarrying(source, ev);
     }
 
-    private static void StartCarrying(UIElement source, object data)
+    private static void StartCarrying(Rendering.UI.DynaUI.UIElement source, object data)
     {
         if (sourceElement != null) return;
         TLog.Message($"Starting to carry from {source.Label} of {data}");
@@ -44,7 +44,7 @@ public static class UIDragNDropper
         draggedObject = data;
     }
 
-    private static void StopCarrying(UIElement element, Event ev)
+    private static void StopCarrying(Rendering.UI.DynaUI.UIElement element, Event ev)
     {
         foreach (var acceptor in ReadyAcceptors)
         {
@@ -138,7 +138,7 @@ public static class UIDragNDropper
         GUI.color = Color.white;
     }
 
-    public static bool IsSource(UIElement source)
+    public static bool IsSource(Rendering.UI.DynaUI.UIElement source)
     {
         return source.Equals(sourceElement);
     }

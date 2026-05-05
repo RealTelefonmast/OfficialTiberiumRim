@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
+using TeleCore.Rendering.UI.DynaUI;
 using UnityEngine;
 using Verse;
 
 namespace TeleCore.Unsorted;
 
-public class EffectCanvas : UIElement, IDragAndDropReceiver
+public class EffectCanvas : Rendering.UI.DynaUI.UIElement, IDragAndDropReceiver
 {
     private ThingDef _currentHolder;
 

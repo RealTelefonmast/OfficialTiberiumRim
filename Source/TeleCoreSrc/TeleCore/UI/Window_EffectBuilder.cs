@@ -1,6 +1,9 @@
-﻿using TeleCore.Unsorted;
+﻿using TeleCore.Rendering.UI.DynaUI;
+using TeleCore.Unsorted;
 using UnityEngine;
 using Verse;
+using UIDragNDropper = TeleCore.Unsorted.UIDragNDropper;
+using UIEventHandler = TeleCore.Unsorted.UIEventHandler;
 
 namespace TeleCore.UI;
 

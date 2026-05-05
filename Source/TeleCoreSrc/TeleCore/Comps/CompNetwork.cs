@@ -4,6 +4,8 @@ using System.Text;
 using RimWorld;
 using TeleCore.CompProperties;
 using TeleCore.Defs;
+using TeleCore.Rendering;
+using TeleCore.UI;
 using TeleCore.Unsorted;
 using Verse;
 

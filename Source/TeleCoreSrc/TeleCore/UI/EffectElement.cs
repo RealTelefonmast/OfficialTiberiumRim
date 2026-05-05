@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using TeleCore.Rendering.UI.DynaUI;
+using UnityEngine;
 using UnityEngine.UIElements;
 using Verse;
 
 namespace TeleCore.Unsorted;
 
-public class EffectElement : UIElement
+public class EffectElement : Rendering.UI.DynaUI.UIElement
 {
     private readonly Def def;
 

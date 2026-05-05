@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
+using TeleCore.Rendering.UI.DynaUI;
 using UnityEngine;
 using Verse;
 
 namespace TeleCore.Unsorted;
 
-public class ToolBar : UIElement
+public class ToolBar : Rendering.UI.DynaUI.UIElement
 {
     public ToolBar(UIElementMode mode) : base(mode)
     {
@@ -22,7 +23,7 @@ public class ToolBar : UIElement
     protected override void NotifyCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
     {
         base.NotifyCollectionChanged(sender, e);
-        if (e.NewItems.Count > 0 && e.NewItems[0] is UIElement element) element.ToggleOpen();
+        if (e.NewItems.Count > 0 && e.NewItems[0] is Rendering.UI.DynaUI.UIElement element) element.ToggleOpen();
     }
 
     protected override void DrawContentsBeforeRelations(Rect inRect)

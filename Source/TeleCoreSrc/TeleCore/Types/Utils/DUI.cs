@@ -4,7 +4,7 @@ namespace TeleCore.Unsorted;
 
 public static class DUI
 {
-    public static UIElement New(Rect rect)
+    public static Rendering.UI.DynaUI.UIElement New(Rect rect)
     {
         var el = UIState.Register(rect);
         return el;

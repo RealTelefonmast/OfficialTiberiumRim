@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Hediffs;
+using TeleCore.Unsorted;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.CompProperties;
 
 public class HediffCompProperties_RangedVerb : HediffCompProperties
 {

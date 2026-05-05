@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
-namespace TR;
+namespace TeleCore.Graphics;
 
 public class Graphic_Sprite : Graphic_NumberedCollection
 {

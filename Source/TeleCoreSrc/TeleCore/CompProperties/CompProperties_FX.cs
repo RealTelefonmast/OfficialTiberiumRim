@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Comps;
+using TeleCore.Rendering;
 using TeleCore.Unsorted;
 using Verse;
+using FXMode = TeleCore.Unsorted.FXMode;
 
 namespace TeleCore.CompProperties;
 

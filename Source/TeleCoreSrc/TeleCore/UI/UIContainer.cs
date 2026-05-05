@@ -2,9 +2,9 @@
 
 namespace TeleCore.Unsorted;
 
-public class UIContainer : UIElement
+public class UIContainer : Rendering.UI.DynaUI.UIElement
 {
-    private List<UIElement> _elements;
+    private List<Rendering.UI.DynaUI.UIElement> _elements;
 
     public sealed override void Draw()
     {

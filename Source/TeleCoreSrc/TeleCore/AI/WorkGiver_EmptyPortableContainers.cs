@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
+using TeleCore.Unsorted;
 using Verse;
 using Verse.AI;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.AI;
 
 public class WorkGiver_EmptyPortableContainers : WorkGiver_Scanner
 {

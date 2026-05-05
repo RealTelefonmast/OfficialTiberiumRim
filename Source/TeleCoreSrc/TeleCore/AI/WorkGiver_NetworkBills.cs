@@ -2,10 +2,11 @@
 using System.Linq;
 using RimWorld;
 using TeleCore.Comps;
+using TeleCore.Unsorted;
 using Verse;
 using Verse.AI;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.AI;
 
 public class WorkGiver_NetworkBills : WorkGiver_Scanner
 {

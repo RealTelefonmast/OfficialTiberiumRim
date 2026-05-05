@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Unsorted;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Defs;
 
 public class TurretDefExtension : DefModExtension
 {

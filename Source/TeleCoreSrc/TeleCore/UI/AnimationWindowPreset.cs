@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TeleCore.Unsorted;
 
-public class AnimationWindowPreset : UIElement
+public class AnimationWindowPreset : Rendering.UI.DynaUI.UIElement
 {
     public AnimationWindowPreset(Rect rect) : base(rect)
     {

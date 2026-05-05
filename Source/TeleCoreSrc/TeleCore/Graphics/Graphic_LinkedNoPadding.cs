@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TR;
+namespace TeleCore.Graphics;
 
 //Unusable until further notice
 [Obsolete]

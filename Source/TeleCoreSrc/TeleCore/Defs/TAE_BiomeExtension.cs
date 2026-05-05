@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using TeleCore.Defs;
+using TeleCore.Unsorted;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Defs;
 
 /// <summary>
 ///     Allows you to set biome-wide atmospheres.

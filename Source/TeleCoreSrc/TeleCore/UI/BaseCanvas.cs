@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
+using TeleCore.Rendering.UI.DynaUI;
+using TeleCore.Unsorted;
 using UnityEngine;
 using Verse;
-using Color = UnityEngine.Color;
+using IDragAndDropReceiver = TeleCore.Unsorted.IDragAndDropReceiver;
+using UIDragNDropper = TeleCore.Unsorted.UIDragNDropper;
+using UIElement = TeleCore.Rendering.UI.DynaUI.UIElement;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class BaseCanvas : UIElement, IDragAndDropReceiver
 {
@@ -114,7 +117,7 @@ public class BaseCanvas : UIElement, IDragAndDropReceiver
     //DRAWING
     private void DrawCanvasGrid(Rect inRect)
     {
-        Widgets.BeginGroup(inRect);
+        Verse.Widgets.BeginGroup(inRect);
         {
             //Limit rect
             var dimension = 5;
@@ -128,18 +131,18 @@ public class BaseCanvas : UIElement, IDragAndDropReceiver
             var curY = canvasRect.y;
             for (var x = 0; x < dimension; x++)
             {
-                Widgets.DrawLineVertical(curX, canvasRect.y, canvasRect.height);
-                Widgets.DrawLineHorizontal(canvasRect.x, curY, canvasRect.width);
+                Verse.Widgets.DrawLineVertical(curX, canvasRect.y, canvasRect.height);
+                Verse.Widgets.DrawLineHorizontal(canvasRect.x, curY, canvasRect.width);
                 curY += tileSize;
                 curX += tileSize;
             }
 
             GUI.color = TColor.White05;
-            Widgets.DrawLineHorizontal(Origin.x - limitSize.x / 2, Origin.y, limitSize.x);
-            Widgets.DrawLineVertical(Origin.x, Origin.y - limitSize.y / 2, limitSize.y);
+            Verse.Widgets.DrawLineHorizontal(Origin.x - limitSize.x / 2, Origin.y, limitSize.x);
+            Verse.Widgets.DrawLineVertical(Origin.x, Origin.y - limitSize.y / 2, limitSize.y);
             GUI.color = Color.white;
         }
-        Widgets.EndGroup();
+        Verse.Widgets.EndGroup();
     }
 
     //Drawing

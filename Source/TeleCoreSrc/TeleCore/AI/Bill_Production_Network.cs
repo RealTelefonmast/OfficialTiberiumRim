@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
 using TeleCore.Comps;
+using TeleCore.Defs;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.AI;
 
 public class Bill_Production_Network : Bill_Production
 {

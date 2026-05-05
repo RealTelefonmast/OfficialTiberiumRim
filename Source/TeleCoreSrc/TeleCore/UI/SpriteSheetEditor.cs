@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using TeleCore.Rendering.UI.DynaUI;
 using UnityEngine;
 using Verse;
 
 namespace TeleCore.Unsorted;
 
-public class SpriteSheetEditor : UIElement, IDragAndDropReceiver
+public class SpriteSheetEditor : Rendering.UI.DynaUI.UIElement, IDragAndDropReceiver
 {
     //
     private const int _MinGridSize = 8;

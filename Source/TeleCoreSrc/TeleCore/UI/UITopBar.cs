@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TeleCore.Rendering.UI.DynaUI;
 using UnityEngine;
 using Verse;
 
@@ -138,7 +139,7 @@ public class TopBarButtonMenu
     }
 }
 
-public class UITopBar : UIElement
+public class UITopBar : Rendering.UI.DynaUI.UIElement
 {
     //
     private readonly List<TopBarButtonMenu> buttons;

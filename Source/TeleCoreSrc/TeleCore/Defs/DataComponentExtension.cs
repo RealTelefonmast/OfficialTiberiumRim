@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Defs;
 
 public class DataComponentExtension : DefModExtension
 {

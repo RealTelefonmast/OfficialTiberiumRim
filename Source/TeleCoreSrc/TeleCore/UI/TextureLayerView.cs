@@ -1,13 +1,14 @@
-﻿using UnityEngine;
+﻿using TeleCore.Rendering.UI.DynaUI;
+using UnityEngine;
 
 namespace TeleCore.Unsorted;
 
-internal class TextureLayerView : UIElement
+internal class TextureLayerView : Rendering.UI.DynaUI.UIElement
 {
     private readonly ElementScroller internalScroller;
-    private UIElement parentContainer;
+    private Rendering.UI.DynaUI.UIElement parentContainer;
 
-    public TextureLayerView(UIElement parentContainer) : base(UIElementMode.Static)
+    public TextureLayerView(Rendering.UI.DynaUI.UIElement parentContainer) : base(UIElementMode.Static)
     {
         this.parentContainer = parentContainer;
         internalScroller = new ElementScroller(parentContainer, UIElementMode.Static);

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Drawing;
 using System.Linq;
+using TeleCore.Rendering.Tools.RWAnimator;
+using TeleCore.Rendering.UI.DynaUI;
+using TeleCore.Rendering.UI.DynaUI.Editing;
+using TeleCore.UI;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Verse;
@@ -43,7 +47,7 @@ internal class TextureCanvas : BaseCanvas
 
     //
     public override bool CanDoRightClickMenu => CanWork;
-    public override List<UIElement> ChildElements => AnimationData.CurrentElementList;
+    public override List<Rendering.UI.DynaUI.UIElement> ChildElements => AnimationData.CurrentElementList;
 
     public TextureElement ActiveTexture => layerView.ActiveElement;
     public AnimationPartValue CurrentAnimationPart => AnimationData.SelectedAnimationPart;
@@ -63,7 +67,7 @@ internal class TextureCanvas : BaseCanvas
         layerView = new TextureLayerView(this);
     }
 
-    public void Notify_LoadedElement(UIElement loadedElement)
+    public void Notify_LoadedElement(Rendering.UI.DynaUI.UIElement loadedElement)
     {
         loadedElement.SetProperties(this);
         NotifyCollectionChanged(this,
@@ -89,12 +93,12 @@ internal class TextureCanvas : BaseCanvas
         }
     }
 
-    public override void Notify_ElementSelected(UIElement element, int index)
+    public override void Notify_ElementSelected(Rendering.UI.DynaUI.UIElement element, int index)
     {
         AnimationData.SetElementIndex(index);
     }
 
-    protected override void Notify_ChildElementChanged(UIElement element)
+    protected override void Notify_ChildElementChanged(Rendering.UI.DynaUI.UIElement element)
     {
         base.Notify_ChildElementChanged(element);
     }
@@ -198,7 +202,7 @@ internal class TextureCanvas : BaseCanvas
         layerView.DrawElement(TextureLayerViewRect);
 
         //
-        var element = UIEventHandler.FocusedElement as UIElement;
+        var element = UIEventHandler.FocusedElement as Rendering.UI.DynaUI.UIElement;
         var texElement = element as TextureElement;
         TWidgets.DoTinyLabel(inRect,
             $"Focused: {element}[{element?.RenderLayer}]\n{Event.current.mousePosition}\n{MouseOnCanvas}\n{element?.CurrentDragDiff}" +

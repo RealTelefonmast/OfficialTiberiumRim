@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using TeleCore.Rendering.UI.DynaUI;
+using UnityEngine;
 using Verse;
 
 namespace TeleCore.Unsorted;
 
-public class EffectWorkTableView : UIElement
+public class EffectWorkTableView : Rendering.UI.DynaUI.UIElement
 {
     private readonly DefBrowser _browser;
     private readonly ElementScroller _elementView;

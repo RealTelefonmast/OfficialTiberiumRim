@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure;
 
 public struct AnimationActionEventFlag
 {

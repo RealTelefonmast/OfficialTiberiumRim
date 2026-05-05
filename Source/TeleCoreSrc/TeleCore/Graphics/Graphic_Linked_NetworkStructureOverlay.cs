@@ -1,9 +1,10 @@
 ﻿using TeleCore.Comps;
 using TeleCore.Defs;
+using TeleCore.Unsorted;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Graphics;
 
 public class Graphic_Linked_NetworkStructureOverlay : Graphic_LinkedNetworkStructure
 {
@@ -23,12 +24,12 @@ public class Graphic_Linked_NetworkStructureOverlay : Graphic_LinkedNetworkStruc
 
     public override void DrawWorker(Vector3 loc, Rot4 rot, ThingDef thingDef, Thing parent, float extraRotation)
     {
-        Graphics.DrawMesh(MeshAt(rot), loc, Quaternion.identity, LinkedDrawMatFrom(parent, loc.ToIntVec3()), 0);
+        UnityEngine.Graphics.DrawMesh(MeshAt(rot), loc, Quaternion.identity, LinkedDrawMatFrom(parent, loc.ToIntVec3()), 0);
         for (var i = 0; i < 4; i++)
         {
             var cell = parent.Position + GenAdj.CardinalDirections[i];
             if (cell.InBounds(parent.Map) && ShouldLinkWith(cell, parent))
-                Graphics.DrawMesh(MeshAt(rot), cell.ToVector3Shifted(), Quaternion.identity,
+                UnityEngine.Graphics.DrawMesh(MeshAt(rot), cell.ToVector3Shifted(), Quaternion.identity,
                     LinkedDrawMatFrom(parent, cell), 0);
         }
     }

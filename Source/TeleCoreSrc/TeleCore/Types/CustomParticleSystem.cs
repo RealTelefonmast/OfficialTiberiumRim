@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering.Particles;
 
 public class CustomParticleSystem
 {

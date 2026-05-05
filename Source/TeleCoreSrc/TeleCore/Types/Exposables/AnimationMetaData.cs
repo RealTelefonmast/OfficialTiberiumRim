@@ -1,10 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Defs;
+using TeleCore.HelperClasses;
+using TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure;
+using TeleCore.Unsorted;
+using TeleCore.Utility;
 using UnityEngine;
 using Verse;
+using AnimationPart = Verse.AnimationPart;
+using KeyFrame = TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure.KeyFrame;
+using TextureData = TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure.TextureData;
+using UIElement = TeleCore.Rendering.UI.DynaUI.UIElement;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering.Tools.RWAnimator;
 
 internal class AnimationMetaData : IExposable
 {
@@ -12,25 +20,25 @@ internal class AnimationMetaData : IExposable
     internal const int BufferSize = 2 + 2 + 2 + 4 + 1;
 
     private readonly List<AnimationPartValue>[] animationsByRotation;
-    private readonly List<UIElement>[] elementsByRotation;
-
-    //Reference Data
-    private readonly TextureCanvas parentCanvas;
 
     //Animation
     internal string defName;
+    private readonly List<UIElement>[] elementsByRotation;
 
     private AnimationDataDef internalDef;
     private Rot4 internalRot = Rot4.North;
     private List<int> lastSelectedAnimationIndex;
     private List<int> lastSelectedElementIndex;
+
+    //Reference Data
+    private readonly TextureCanvas parentCanvas;
     internal Dictionary<KeyFrame, string[]> StringBuffers = new();
 
     public AnimationMetaData(TextureCanvas parentCanvas)
     {
         this.parentCanvas = parentCanvas;
-        lastSelectedElementIndex = new List<int> { -1, -1, -1, -1 };
-        lastSelectedAnimationIndex = new List<int> { -1, -1, -1, -1 };
+        lastSelectedElementIndex = new List<int> {-1, -1, -1, -1};
+        lastSelectedAnimationIndex = new List<int> {-1, -1, -1, -1};
         //
         elementsByRotation = new List<UIElement>[4]
         {
@@ -79,7 +87,7 @@ internal class AnimationMetaData : IExposable
 
         if (!animationsByRotation[rot].NullOrEmpty())
         {
-            animationSet.animations = new List<Verse.AnimationPart>(animationsByRotation[rot].Count);
+            animationSet.animations = new List<AnimationPart>(animationsByRotation[rot].Count);
             foreach (var partValue in animationsByRotation[rot])
                 animationSet.animations.Add(partValue.ToAnimationPart(animationSet.textureParts));
         }
@@ -232,7 +240,7 @@ public class AnimationPartValue
         InternalEventFlags = new Dictionary<int, AnimationActionEventFlag>();
     }
 
-    public AnimationPartValue(List<UIElement> uiElements, Verse.AnimationPart animationPart)
+    public AnimationPartValue(List<UIElement> uiElements, AnimationPart animationPart)
     {
         tag = animationPart.tag;
         frames = animationPart.frames;
@@ -246,10 +254,10 @@ public class AnimationPartValue
         var index = 0;
         foreach (var keyFrameCollection in animationPart.keyFrames)
         {
-            var texture = (TextureElement)uiElements[index];
+            var texture = (TextureElement) uiElements[index];
             InternalFrames.Add(texture, new Dictionary<int, KeyFrame>());
             if (!keyFrameCollection.NullOrEmpty())
-                foreach (var frame in keyFrameCollection)
+                foreach (var frame in keyFrameCollection.savedList)
                     InternalFrames[texture].Add(frame.Frame, frame);
             index++;
         }
@@ -287,9 +295,9 @@ public class AnimationPartValue
             .ToList();
     }
 
-    public Verse.AnimationPart ToAnimationPart(List<TextureData> orderBy)
+    public AnimationPart ToAnimationPart(List<TextureData> orderBy)
     {
-        return new Verse.AnimationPart
+        return new AnimationPart
         {
             tag = tag,
             frames = frames,

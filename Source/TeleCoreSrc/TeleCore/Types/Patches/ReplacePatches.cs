@@ -1,5 +1,7 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using TeleCore.AI;
+using TeleCore.Defs;
 
 namespace TeleCore.Unsorted;
 

@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿using TeleCore.Rendering.UI.DynaUI;
+using UnityEngine;
 using Verse;
 
 namespace TeleCore.Unsorted;
 
 //TODO: Assign docks and manage size/pos of docked elements during docking
-public class UIElementDocker : UIElement
+public class UIElementDocker : Rendering.UI.DynaUI.UIElement
 {
-    private readonly UIElement[] _dockedElements = new UIElement[4];
+    private readonly Rendering.UI.DynaUI.UIElement[] _dockedElements = new Rendering.UI.DynaUI.UIElement[4];
 
     public UIElementDocker(UIElementMode mode) : base(mode)
     {
@@ -20,7 +21,7 @@ public class UIElementDocker : UIElement
     {
     }
 
-    public void DockElement(UIElement element, Rot4 dockPos)
+    public void DockElement(Rendering.UI.DynaUI.UIElement element, Rot4 dockPos)
     {
         _dockedElements[dockPos.AsInt] = element;
     }

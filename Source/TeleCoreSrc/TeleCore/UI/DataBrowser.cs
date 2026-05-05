@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using TeleCore.Unsorted;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering.UI.DynaUI.Editing;
 
 public class DataBrowser<T> : UIElement
 {
@@ -68,19 +69,19 @@ public class DataBrowser<T> : UIElement
     protected override void DrawTopBarExtras(Rect topRect)
     {
         var filterButton = topRect.RightPartPixels(topRect.height).ContractedBy(2);
-        if (Widgets.ButtonImage(filterButton, TeleContent.BurgerMenu))
+        if (Verse.Widgets.ButtonImage(filterButton, TeleContent.BurgerMenu))
         {
             openFilter = !openFilter;
 
             //Reload
-            if (!openFilter)
+            if (openFilter == false)
                 GenerateItemsFromSearch(SearchWidget.filter, true);
         }
     }
 
     protected void DrawElementOption(Rect optionRect, T element, int index)
     {
-        var row = new WidgetRow(Rect.x, optionRect.y, gap: 4f);
+        var row = new Verse.WidgetRow(Rect.x, optionRect.y, gap: 4f);
         row.Label($"[{index + 1}]");
         row.Icon(IconFor(element));
         row.Label(LabelFor(element));
@@ -95,7 +96,7 @@ public class DataBrowser<T> : UIElement
             ? optionRect.x - (pathLabelSize.x - optionRect.width)
             : optionRect.x;
         var pathLabelRect =
-            new Rect(pathLabelX, optionRect.y + WidgetRow.IconSize, pathLabelSize.x, optionRect.height);
+            new Rect(pathLabelX, optionRect.y + Verse.WidgetRow.IconSize, pathLabelSize.x, optionRect.height);
         GUI.color = TColor.White075;
         TWidgets.DoTinyLabel(pathLabelRect, pathLabelMarked);
         GUI.color = Color.white;
@@ -107,19 +108,19 @@ public class DataBrowser<T> : UIElement
         SearchWidget.OnGUI(SearchWidgetRect, DoSearchOnGUI);
 
         GUI.color = TColor.MenuSectionBGBorderColor;
-        Widgets.DrawLineHorizontal(SearchWidgetRect.x, SearchWidgetRect.yMax + 4, SearchWidgetRect.width);
+        Verse.Widgets.DrawLineHorizontal(SearchWidgetRect.x, SearchWidgetRect.yMax + 4, SearchWidgetRect.width);
         GUI.color = Color.white;
 
         if (openFilter)
         {
             var filterTop = SearchAreaRect.TopPartPixels(35).Rounded();
             var selectionRect = SearchAreaRect.BottomPartPixels(SearchAreaRect.height - filterTop.height).Rounded();
-            Widgets.DrawBoxSolid(SearchAreaRect, TColor.WindowBGFillColor);
+            Verse.Widgets.DrawBoxSolid(SearchAreaRect, TColor.WindowBGFillColor);
 
             Text.Anchor = TextAnchor.MiddleCenter;
             Text.Font = GameFont.Medium;
             GUI.color = TColor.White075;
-            Widgets.Label(filterTop, "Select Mods To Browse From");
+            Verse.Widgets.Label(filterTop, "Select Mods To Browse From");
             GUI.color = Color.white;
             Text.Font = default;
             Text.Anchor = default;
@@ -149,10 +150,10 @@ public class DataBrowser<T> : UIElement
         //
 
         float curY = 0;
-        Widgets.BeginScrollView(ScrollRect, ref scrollPos, ScrollRectInner, false);
+        Verse.Widgets.BeginScrollView(ScrollRect, ref scrollPos, ScrollRectInner, false);
         {
-            startIndex = (int)(scrollPos.y / _OptionSize);
-            indexRange = TMath.Min((int)(ScrollRect.height / _OptionSize) + 1, dataList.Count);
+            startIndex = (int) (scrollPos.y / _OptionSize);
+            indexRange = Math.Min((int) (ScrollRect.height / _OptionSize) + 1, dataList.Count);
             endIndex = startIndex + indexRange;
             if (startIndex >= 0 && endIndex <= dataList.Count)
                 for (var i = startIndex; i < endIndex; i++)
@@ -165,15 +166,15 @@ public class DataBrowser<T> : UIElement
                     if (Mouse.IsOver(optionRect))
                     {
                         DragAndDropData = dataList[i];
-                        Widgets.DrawHighlight(optionRect);
+                        Verse.Widgets.DrawHighlight(optionRect);
                     }
                 }
         }
-        Widgets.EndScrollView();
+        Verse.Widgets.EndScrollView();
 
         Text.Font = GameFont.Tiny;
         Text.Anchor = TextAnchor.LowerRight;
-        Widgets.Label(InfoRect, $"[Showing {indexRange} of {dataList.Count} Items]");
+        Verse.Widgets.Label(InfoRect, $"[Showing {indexRange} of {dataList.Count} Items]");
         Text.Anchor = default;
         Text.Font = GameFont.Small;
     }

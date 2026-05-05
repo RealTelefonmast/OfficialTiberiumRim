@@ -1,7 +1,7 @@
 ﻿using TeleCore.Defs;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.FlowCore;
 
 /// <summary>
 ///     Container Implementation extension which allows you to expose a <see cref="Thing" /> reference

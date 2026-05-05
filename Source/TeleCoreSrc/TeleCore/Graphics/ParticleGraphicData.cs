@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using TeleCore.Unsorted;
+using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Graphics;
 
 public class ParticleGraphicData : GraphicData
 {

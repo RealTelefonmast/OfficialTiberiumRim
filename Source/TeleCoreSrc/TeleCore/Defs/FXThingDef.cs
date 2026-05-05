@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using TeleCore.CompProperties;
+using TeleCore.Unsorted;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Defs;
 
 public class FXThingDef : ThingDef
 {

@@ -1,9 +1,10 @@
 ﻿using RimWorld;
 using TeleCore.Comps;
 using TeleCore.PlaceWorkers;
+using TeleCore.Unsorted;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Buildings;
 
 public class Building_HubTurret : Building_TeleTurret
 {

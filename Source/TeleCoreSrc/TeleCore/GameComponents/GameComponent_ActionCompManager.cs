@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Unsorted;
 using Verse;
 
-namespace TiberiumRim;
+namespace TeleCore.GameComponents;
 
 public class GameComponent_ActionCompManager : GameComponent
 {

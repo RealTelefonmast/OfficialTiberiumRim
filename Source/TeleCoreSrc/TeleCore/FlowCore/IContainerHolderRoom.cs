@@ -1,7 +1,8 @@
 ﻿using TeleCore.Defs;
+using TeleCore.Unsorted;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.FlowCore;
 
 /// <summary>
 ///     Implements a container for a <see cref="Room" />

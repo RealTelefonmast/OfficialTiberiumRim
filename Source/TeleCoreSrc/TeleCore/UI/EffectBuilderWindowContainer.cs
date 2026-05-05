@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Rendering.UI.DynaUI;
 using UnityEngine;
 using Verse;
 
 namespace TeleCore.Unsorted;
 
-internal class EffectBuilderWindowContainer : UIElement
+internal class EffectBuilderWindowContainer : Rendering.UI.DynaUI.UIElement
 {
     private readonly Window parentWindow;
     private readonly UITopBar topBar;

@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using TeleCore.Rendering.UI.DynaUI;
+using UnityEngine;
 
 namespace TeleCore.Unsorted;
 
-internal class EffectSpawnNode : UIElement
+internal class EffectSpawnNode : Rendering.UI.DynaUI.UIElement
 {
     public EffectSpawnNode(UIElementMode mode) : base(mode)
     {

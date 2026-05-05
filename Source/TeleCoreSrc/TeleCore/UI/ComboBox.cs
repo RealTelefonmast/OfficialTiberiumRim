@@ -2,7 +2,7 @@
 
 namespace TeleCore.Unsorted;
 
-public class ComboBox : UIElement
+public class ComboBox : Rendering.UI.DynaUI.UIElement
 {
     public ComboBox(Rect rect) : base(rect)
     {

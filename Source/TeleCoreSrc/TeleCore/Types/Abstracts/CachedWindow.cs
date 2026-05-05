@@ -1,27 +1,30 @@
 ﻿using UnityEngine;
 
-namespace TeleCore.Unsorted;
-
-public abstract class CachedWindow
+namespace TeleCore.Rendering
 {
-    //Strings should always be cached and recalled
-    public string[] stringCache;
-
-    protected CachedWindow()
+    public abstract class CachedWindow
     {
-        Setup();
-    }
 
-    private void Setup()
-    {
-        CacheStrings();
-    }
+        //Strings should always be cached and recalled
+        public string[] stringCache;
 
-    public virtual void CacheStrings()
-    {
-    }
+        protected CachedWindow()
+        {
+            Setup();
+        }
 
-    public virtual void DrawParts(Rect innerRect)
-    {
+        private void Setup()
+        {
+            CacheStrings();
+
+        }
+
+        public virtual void CacheStrings()
+        { }
+
+        public virtual void DrawParts(Rect innerRect)
+        {
+
+        }
     }
 }

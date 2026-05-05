@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using TeleCore.UI;
+using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering.UI.DynaUI.Editing;
 
 public class CanvasElement : UIElement
 {

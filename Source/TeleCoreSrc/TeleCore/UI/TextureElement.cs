@@ -1,4 +1,8 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Rendering.Tools.RWAnimator;
+using TeleCore.Rendering.UI.DynaUI;
+using TeleCore.Rendering.UI.DynaUI.Editing;
+using TeleCore.UI;
 using UnityEngine;
 using Verse;
 
@@ -32,7 +36,7 @@ public enum TexCoordAnchor
     BottomRight
 }
 
-internal class TextureElement : UIElement, IKeyFramedElement, IReorderableElement
+internal class TextureElement : Rendering.UI.DynaUI.UIElement, IKeyFramedElement, IReorderableElement
 {
     //
     private readonly string[] tempBuffer = new string[AnimationMetaData.BufferSize];
@@ -283,14 +287,14 @@ internal class TextureElement : UIElement, IKeyFramedElement, IReorderableElemen
     public Material Material => texture.Material;
     public Texture Texture => Material.mainTexture;
     public TextureData Data => texture;
-    public UIElement Owner => this;
+    public Rendering.UI.DynaUI.UIElement Owner => this;
 
     //Texture Data
     //public KeyFrameData EditData => internalFrameData;
     public KeyFrameData CurrentData => ParentCanvas.TimeLine.GetDataFor(this);
 
     //UIElement
-    public UIElement Element => this;
+    public Rendering.UI.DynaUI.UIElement Element => this;
 
     public void DrawElementInScroller(Rect inRect)
     {
@@ -394,7 +398,7 @@ internal class TextureElement : UIElement, IKeyFramedElement, IReorderableElemen
         }
     }
 
-    protected override void Notify_RemovedFromParent(UIElement parent)
+    protected override void Notify_RemovedFromParent(Rendering.UI.DynaUI.UIElement parent)
     {
         UnlinkFromParent();
         if (!subParts.NullOrEmpty())

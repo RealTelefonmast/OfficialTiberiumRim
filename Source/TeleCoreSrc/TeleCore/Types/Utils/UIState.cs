@@ -14,21 +14,21 @@ public static class UIState
 {
     private static int _uiDepth;
     private static readonly HashSet<int> _knownIDs = new();
-    private static Dictionary<int, UIElement> _elements = new();
+    private static Dictionary<int, Rendering.UI.DynaUI.UIElement> _elements = new();
 
     internal static void Begin()
     {
         _uiDepth = 0;
     }
 
-    public static UIElement Register(Rect rect)
+    public static Rendering.UI.DynaUI.UIElement Register(Rect rect)
     {
         var id = GetID(rect);
         var identifier = new ElementIdentifier(id, _uiDepth);
         _uiDepth++;
 
         //TODO:
-        return new UIElement();
+        return new Rendering.UI.DynaUI.UIElement();
     }
 
     private static int GetUniqueID(Rect rect)

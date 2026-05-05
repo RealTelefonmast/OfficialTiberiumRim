@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using TeleCore.Defs;
 using TeleCore.Designators;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Defs;
 
 public class SubMenuDesignationCategoryDef : DesignationCategoryDef
 {

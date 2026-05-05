@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Hediffs;
 
 public class Hediff_LabeledPart : HediffWithComps
 {

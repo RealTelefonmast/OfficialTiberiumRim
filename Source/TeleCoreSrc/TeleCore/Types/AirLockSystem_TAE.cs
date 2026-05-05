@@ -1,6 +1,7 @@
 // Preserved from TeleCore/Airlock/AirLockSystem.cs
 
 using System.Collections.Generic;
+using TeleCore.Buildings;
 
 namespace TeleCore.Unsorted;
 

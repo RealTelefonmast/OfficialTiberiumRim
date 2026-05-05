@@ -2,6 +2,7 @@ using System;
 using HarmonyLib;
 using RimWorld;
 using TeleCore.Comps;
+using TeleCore.Rendering;
 using UnityEngine;
 using Verse;
 

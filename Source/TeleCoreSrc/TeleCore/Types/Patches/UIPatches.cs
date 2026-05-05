@@ -6,6 +6,7 @@ using System.Reflection.Emit;
 using System.Text;
 using HarmonyLib;
 using RimWorld;
+using TeleCore.AI;
 using TeleCore.Defs;
 using TeleCore.Designators;
 using TeleCore.UI;

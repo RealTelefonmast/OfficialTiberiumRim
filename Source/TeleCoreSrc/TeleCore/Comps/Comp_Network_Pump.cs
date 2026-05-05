@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using TeleCore.CompProperties;
+using TeleCore.Rendering;
 using TeleCore.Unsorted;
 using UnityEngine;
 using Verse;

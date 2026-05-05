@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Rendering.UI.DynaUI;
 using TeleCore.UI;
+using TeleCore.Unsorted;
 using UnityEngine;
 using Verse;
+using UIElement = TeleCore.Rendering.UI.DynaUI.UIElement;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering.Tools.RWAnimator;
 
 //TODO: Data Layer Seperation From Views
 //TODO: Animations re-structure:
@@ -29,7 +32,6 @@ internal class AnimationWindowContainer : UIElement
 
     //
     private readonly Dialog_AnimationFileList dialogFileSaveLoading;
-    private readonly Window parentWindow;
     private readonly SpriteSheetEditor spriteSheetEditor;
 
     private readonly TimeLineControl timeLine;
@@ -38,6 +40,7 @@ internal class AnimationWindowContainer : UIElement
     private readonly UITopBar topBar;
 
     private bool keepProject;
+    private readonly Window parentWindow;
 
     public AnimationWindowContainer(Window parent, Rect rect, UIElementMode mode) : base(rect, mode)
     {

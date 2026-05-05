@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
 using TeleCore.Comps;
+using TeleCore.Rendering;
 using UnityEngine;
 using Verse;
+using FXThingDef = TeleCore.Defs.FXThingDef;
 
 namespace TeleCore.Unsorted;
 

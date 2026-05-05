@@ -3,11 +3,12 @@
 using System.Collections.Generic;
 using RimWorld;
 using TeleCore.Defs;
+using TeleCore.Unsorted;
 using TeleCore.WorldComponents;
 using Verse;
 using Verse.AI;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.AI;
 
 public class WorkGiver_TResearch : WorkGiver_Scanner
 {

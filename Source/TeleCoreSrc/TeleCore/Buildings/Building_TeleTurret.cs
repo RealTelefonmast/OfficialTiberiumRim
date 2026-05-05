@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using TeleCore.Comps;
+using TeleCore.Defs;
 using TeleCore.UI;
+using TeleCore.Unsorted;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -12,7 +14,7 @@ using Verse.Sound;
 
 //using Multiplayer.API;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Buildings;
 
 /// <summary>
 /// </summary>

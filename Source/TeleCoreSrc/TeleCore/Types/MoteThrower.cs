@@ -133,7 +133,7 @@ public class MoteThrower
                 var angle = TRUtils.Range(Info.angle);
                 if (Info.affectedByWind)
                 {
-                    var windSpeed = Room.PsychologicallyOutdoors ? map.windManager.WindSpeed : 0f;
+                    var windSpeed = Verse.Room.PsychologicallyOutdoors ? map.windManager.WindSpeed : 0f;
                     var windPct = Mathf.InverseLerp(0f, 2f, windSpeed);
                     speed *= Mathf.Lerp(0.1f, 1, windPct);
                     angle = (int)Mathf.Lerp(Info.angle.min, Info.angle.max, windPct);

@@ -2,7 +2,7 @@
 
 namespace TeleCore.Unsorted;
 
-public class ListView<T> : UIElement
+public class ListView<T> : Rendering.UI.DynaUI.UIElement
 {
     private List<T> _items;
 

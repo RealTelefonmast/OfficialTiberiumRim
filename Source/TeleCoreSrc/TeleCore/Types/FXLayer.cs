@@ -1,5 +1,8 @@
 ﻿using System;
 using TeleCore.Comps;
+using TeleCore.Defs;
+using TeleCore.Graphics;
+using TeleCore.Rendering;
 using UnityEngine;
 using Verse;
 

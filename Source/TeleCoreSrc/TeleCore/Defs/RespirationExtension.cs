@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using RimWorld;
-using TeleCore.Defs;
+using TeleCore.Unsorted;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Defs;
 
 public class RespirationExtension : DefModExtension
 {

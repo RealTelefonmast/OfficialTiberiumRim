@@ -1,10 +1,11 @@
 ﻿using System.Linq;
 using System.Text;
 using RimWorld;
+using TeleCore.Unsorted;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Buildings;
 
 public class Building_Airlock : Building_Door
 {

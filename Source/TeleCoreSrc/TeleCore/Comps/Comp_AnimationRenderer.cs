@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using TeleCore.Defs;
+using TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure;
+using TeleCore.Rendering.UI.DynaUI.Editing;
+using TeleCore.UI;
 using TeleCore.Unsorted;
 using UnityEngine;
 using Verse;
 using AnimationPart = Verse.AnimationPart;
+using KeyFrame = TeleCore.Unsorted.KeyFrame;
+using KeyFrameData = TeleCore.Unsorted.KeyFrameData;
+using TextureData = TeleCore.Unsorted.TextureData;
 
 namespace TeleCore.Comps;
 

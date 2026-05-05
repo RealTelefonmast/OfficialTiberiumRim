@@ -4,10 +4,10 @@ namespace TeleCore.Unsorted;
 
 public partial class UIElement
 {
-    public UIElement Parent => DGUI_References.ParentOf(this);
-    public IReadOnlyCollection<UIElement> Children => DGUI_References.ChildrenOf(this);
+    public Rendering.UI.DynaUI.UIElement Parent => DGUI_References.ParentOf(this);
+    public IReadOnlyCollection<Rendering.UI.DynaUI.UIElement> Children => DGUI_References.ChildrenOf(this);
 
-    public void AddChild(UIElement element)
+    public void AddChild(Rendering.UI.DynaUI.UIElement element)
     {
         DGUI_References.Reference(this, element);
     }

@@ -1,4 +1,5 @@
-﻿using Verse;
+﻿using TeleCore.Graphics;
+using Verse;
 
 namespace TeleCore.Comps;
 

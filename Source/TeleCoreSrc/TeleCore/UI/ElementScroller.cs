@@ -1,25 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
+using TeleCore.Rendering.UI.DynaUI;
 using UnityEngine;
 using Verse;
 
 namespace TeleCore.Unsorted;
 
-public class ElementScroller : UIElement
+public class ElementScroller : Rendering.UI.DynaUI.UIElement
 {
-    private readonly List<UIElement> copyList = new();
+    private readonly List<Rendering.UI.DynaUI.UIElement> copyList = new();
 
-    private readonly UIElement parentContainer;
+    private readonly Rendering.UI.DynaUI.UIElement parentContainer;
 
     //
-    private UIElement _selElement;
-    private UIElement hoveredElement, draggedElement;
+    private Rendering.UI.DynaUI.UIElement _selElement;
+    private Rendering.UI.DynaUI.UIElement hoveredElement, draggedElement;
 
     //Internal Dragging
     private Vector2 scrollVec = Vector2.one;
 
     //
-    public ElementScroller(UIElement parentContainer, UIElementMode mode) : base(mode)
+    public ElementScroller(Rendering.UI.DynaUI.UIElement parentContainer, UIElementMode mode) : base(mode)
     {
         this.parentContainer = parentContainer;
         hasTopBar = false;
@@ -29,12 +30,12 @@ public class ElementScroller : UIElement
     }
 
     //private List<IReorderableElement> elementList = new();
-    public List<UIElement> ElementList => parentContainer.ChildElements;
+    public List<Rendering.UI.DynaUI.UIElement> ElementList => parentContainer.ChildElements;
 
     private Vector2 MousePos { get; set; }
     private int CurrentDropIndex => Mathf.FloorToInt((scrollVec.y + MousePos.y) / Rect.width);
 
-    public UIElement SelectedElement
+    public Rendering.UI.DynaUI.UIElement SelectedElement
     {
         get => _selElement;
         private set
@@ -55,7 +56,7 @@ public class ElementScroller : UIElement
         switch (e.Action)
         {
             case NotifyCollectionChangedAction.Add:
-                SelectedElement = e.NewItems[0] as UIElement;
+                SelectedElement = e.NewItems[0] as Rendering.UI.DynaUI.UIElement;
                 break;
             case NotifyCollectionChangedAction.Remove:
                 if (SelectedElement == e.OldItems[0])
@@ -88,7 +89,7 @@ public class ElementScroller : UIElement
             }
     }
 
-    private void MoveInList(List<UIElement> list)
+    private void MoveInList(List<Rendering.UI.DynaUI.UIElement> list)
     {
         var oldIndex = list.IndexOf(draggedElement);
         var newIndex = CurrentDropIndex;

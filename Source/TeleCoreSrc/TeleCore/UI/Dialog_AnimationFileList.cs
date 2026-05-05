@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using RimWorld;
+using TeleCore.Rendering.Tools.RWAnimator;
 using TeleCore.UI;
 using UnityEngine;
 using Verse;

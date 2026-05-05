@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TiberiumRim;
+namespace TeleCore.Graphics;
 
 public class Graphic_LinkedWithSame : Graphic_Linked
 {

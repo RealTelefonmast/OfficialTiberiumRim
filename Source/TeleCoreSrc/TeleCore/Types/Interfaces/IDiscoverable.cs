@@ -1,3 +1,5 @@
+using TeleCore.Defs;
+
 namespace TeleCore;
 
 public interface IDiscoverable

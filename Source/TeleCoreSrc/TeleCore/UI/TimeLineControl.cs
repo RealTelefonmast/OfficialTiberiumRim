@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using TeleCore.Rendering.Tools.RWAnimator;
+using TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure;
+using TeleCore.Rendering.UI.DynaUI;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -11,10 +14,10 @@ public interface IKeyFramedElement
 {
     //public KeyFrameData EditData { get; }
     public KeyFrameData CurrentData { get; }
-    public UIElement Owner { get; }
+    public Rendering.UI.DynaUI.UIElement Owner { get; }
 }
 
-internal class TimeLineControl : UIElement
+internal class TimeLineControl : Rendering.UI.DynaUI.UIElement
 {
     //
     private const int _PixelsPerTick = 4;
@@ -70,7 +73,7 @@ internal class TimeLineControl : UIElement
     public Dictionary<IKeyFramedElement, Dictionary<int, KeyFrame>> AnimationPartFrames => CurrentPart.InternalFrames;
 
     //Canvas Elements
-    public List<UIElement> Elements => Canvas.ChildElements;
+    public List<Rendering.UI.DynaUI.UIElement> Elements => Canvas.ChildElements;
     public IEnumerable<IKeyFramedElement> KeyFramedElements => Canvas.ChildElements.Select(t => (IKeyFramedElement)t);
 
     private Rect LeftRect => InRect.LeftPartPixels(_LeftSize);

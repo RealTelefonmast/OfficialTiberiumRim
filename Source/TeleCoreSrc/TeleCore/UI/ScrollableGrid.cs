@@ -2,7 +2,7 @@
 
 namespace TeleCore.Unsorted;
 
-public class ScrollableGrid : UIElement
+public class ScrollableGrid : Rendering.UI.DynaUI.UIElement
 {
     private Vector2 _gridPos;
     private float _zoom;

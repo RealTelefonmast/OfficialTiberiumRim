@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using TeleCore.Rendering.UI.DynaUI;
+using TeleCore.Rendering.UI.DynaUI.Editing;
 using UnityEngine;
 using Verse;
 

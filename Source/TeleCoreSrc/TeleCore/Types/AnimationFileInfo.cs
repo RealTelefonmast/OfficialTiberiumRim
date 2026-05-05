@@ -1,14 +1,15 @@
 ﻿using System;
 using System.IO;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering.Tools.RWAnimator.FileIO;
 
 internal class AnimationFileInfo
 {
-    private readonly object lockObject = new();
     private string fileName;
     private DateTime lastWriteTime;
     private bool loaded;
+
+    private readonly object lockObject = new();
 
     public AnimationFileInfo(FileInfo fileInfo)
     {

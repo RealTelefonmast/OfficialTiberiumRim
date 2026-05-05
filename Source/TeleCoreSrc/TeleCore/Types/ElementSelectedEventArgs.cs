@@ -4,14 +4,14 @@ namespace TeleCore.Unsorted;
 
 public class ElementSelectedEventArgs : EventArgs
 {
-    public ElementSelectedEventArgs(UIElement element, int index)
+    public ElementSelectedEventArgs(Rendering.UI.DynaUI.UIElement element, int index)
     {
         Element = element;
         Index = index;
     }
 
 
-    public UIElement Element { get; }
+    public Rendering.UI.DynaUI.UIElement Element { get; }
 
     public int Index { get; }
 }

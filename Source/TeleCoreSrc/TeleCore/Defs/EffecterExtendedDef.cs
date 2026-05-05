@@ -1,7 +1,8 @@
 ﻿using TeleCore.Comps;
+using TeleCore.Unsorted;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Defs;
 
 public class EffecterExtendedDef : EffecterDef
 {

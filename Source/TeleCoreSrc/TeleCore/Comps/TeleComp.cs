@@ -1,4 +1,5 @@
-﻿using TeleCore.Unsorted;
+﻿using TeleCore.Defs;
+using TeleCore.Unsorted;
 using Verse;
 
 namespace TeleCore.Comps;

@@ -1,8 +1,9 @@
 ﻿using TeleCore.Comps;
+using TeleCore.Unsorted;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Graphics;
 
 public class Graphic_LinkedNetworkStructure : Graphic_Linked
 {

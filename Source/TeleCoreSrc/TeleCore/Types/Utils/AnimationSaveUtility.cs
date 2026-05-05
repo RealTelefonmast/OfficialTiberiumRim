@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
+using TeleCore.Mod;
+using TeleCore.Unsorted;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering.Tools.RWAnimator.FileIO;
 
 //TODO: Generalize into generic saveUtility
 internal static class AnimationSaveUtility

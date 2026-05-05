@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
 using RimWorld;
+using TeleCore.Buildings;
 using TeleCore.Comps;
 using UnityEngine;
 using Verse;

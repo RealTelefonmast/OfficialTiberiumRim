@@ -8,6 +8,7 @@ using RimWorld;
 using TeleCore.Buildings;
 using TeleCore.Comps;
 using TeleCore.Defs;
+using TeleCore.Graphics;
 using UnityEngine;
 using Verse;
 

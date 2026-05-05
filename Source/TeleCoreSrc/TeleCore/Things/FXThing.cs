@@ -1,6 +1,8 @@
 ﻿using System;
 using RimWorld;
 using TeleCore.Comps;
+using TeleCore.Defs;
+using TeleCore.Rendering;
 using UnityEngine;
 using Verse;
 
