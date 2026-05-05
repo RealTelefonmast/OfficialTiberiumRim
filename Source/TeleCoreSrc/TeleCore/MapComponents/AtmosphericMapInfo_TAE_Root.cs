@@ -78,7 +78,7 @@ public class AtmosphericMapInfo : MapInformation, IContainerHolderRoom<Atmospher
     //
     public RoomComponent_Atmospheric ComponentAt(IntVec3 pos)
     {
-        var room = pos.GetRoomFast(Verse.Map);
+        var room = pos.GetRoomFast(Map);
         return ComponentAt(room);
     }
 
@@ -113,7 +113,7 @@ public class AtmosphericMapInfo : MapInformation, IContainerHolderRoom<Atmospher
     {
         TLog.Message("Regenerating map info...");
         var totalCells =
-            Verse.Map.cellIndices.NumGridCells; //AllComps.Where(c => c.IsOutdoors).Sum(c => c.Room.CellCount)
+            Map.cellIndices.NumGridCells; //AllComps.Where(c => c.IsOutdoors).Sum(c => c.Room.CellCount)
         MapContainer.Notify_RoomChanged(null, totalCells);
     }
 
@@ -271,7 +271,7 @@ public class AtmosphericMapInfo : MapInformation, IContainerHolderRoom<Atmospher
     //
     public bool TrySpawnGasAt(IntVec3 cell, SpreadingGasTypeDef gasType, float value)
     {
-        Verse.Map.GetMapInfo<SpreadingGasGrid>().Notify_SpawnGasAt(cell, gasType, value);
+        Map.GetMapInfo<SpreadingGasGrid>().Notify_SpawnGasAt(cell, gasType, value);
         return false;
     }
 

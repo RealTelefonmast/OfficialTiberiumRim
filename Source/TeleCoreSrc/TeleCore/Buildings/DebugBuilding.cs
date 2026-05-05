@@ -242,11 +242,11 @@ public class DebugBuilding : Building
         }
     }
 
-    public override void Draw()
+    protected override void DrawAt(Vector3 drawLoc, bool flip = false)
     {
         if (ShowAtmosComps)
         {
-            var room = GenData.GetRoomFast(UI.MouseCell(), Map);
+            var room = Verse.UI.MouseCell().GetRoomFast(Map);
             if (room != null)
                 GenDraw.DrawFieldEdges(room.Cells.ToList());
         }

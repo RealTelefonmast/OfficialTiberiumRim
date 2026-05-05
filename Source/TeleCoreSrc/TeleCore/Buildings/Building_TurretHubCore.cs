@@ -27,7 +27,7 @@ public class Building_TurretHubCore : Building_TeleTurret
             for (var i = anticipatingPositions.Count - 1; i >= 0; i--)
             {
                 var position = anticipatingPositions[i];
-                var thing = position.GetThingList(Verse.Map).Find(t =>
+                var thing = position.GetThingList(Map).Find(t =>
                     (t is Blueprint_Build b && b.def.entityDefToBuild.HasTurretExtension(out var extension) &&
                      extension.hub.hubDef == def)
                     || (t is Frame f && f.def.entityDefToBuild.HasTurretExtension(out var extension2) &&

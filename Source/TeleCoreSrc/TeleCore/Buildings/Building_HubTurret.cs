@@ -41,20 +41,20 @@ public class Building_HubTurret : Building_TeleTurret
     {
         base.SpawnSetup(map, respawningAfterLoad);
         ConnectToParent();
-        Verse.Map.mapDrawer.MapMeshDirty(Position, MapMeshFlagDefOf.Buildings | MapMeshFlagDefOf.Terrain);
-        Verse.Map.mapDrawer.MapMeshDirty(parentHub.Position, MapMeshFlagDefOf.Buildings | MapMeshFlagDefOf.Terrain);
+        Map.mapDrawer.MapMeshDirty(Position, MapMeshFlagDefOf.Buildings | MapMeshFlagDefOf.Terrain);
+        Map.mapDrawer.MapMeshDirty(parentHub.Position, MapMeshFlagDefOf.Buildings | MapMeshFlagDefOf.Terrain);
     }
 
     public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
     {
         parentHub.RemoveHubTurret(this);
-        Verse.Map.mapDrawer.MapMeshDirty(parentHub.Position, MapMeshFlagDefOf.Buildings);
+        Map.mapDrawer.MapMeshDirty(parentHub.Position, MapMeshFlagDefOf.Buildings);
         base.DeSpawn(mode);
     }
 
     public void ConnectToParent()
     {
-        var hub = PlaceWorker_AtTurretHub.FindClosestTurretHub(def, Position, Verse.Map);
+        var hub = PlaceWorker_AtTurretHub.FindClosestTurretHub(def, Position, Map);
         if (hub == null)
         {
             TLog.Error($"{this} failed to find a parent hub! Destroying...");

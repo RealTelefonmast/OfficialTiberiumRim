@@ -46,7 +46,7 @@ public class JobDriver_EmptyPortableContainer : JobDriver
         return JobCondition.None;
     }
 
-    public override IEnumerable<Toil> MakeNewToils()
+    protected override IEnumerable<Toil> MakeNewToils()
     {
         this.FailOnDestroyedOrNull(TargetIndex.A);
         this.FailOnDestroyedOrNull(TargetIndex.B);

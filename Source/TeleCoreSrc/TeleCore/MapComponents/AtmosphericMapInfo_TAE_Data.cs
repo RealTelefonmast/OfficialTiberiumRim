@@ -53,7 +53,7 @@ public class AtmosphericMapInfo_TAE_Data : MapInformation
     //
     public RoomComponent_Atmosphere ComponentAt(IntVec3 pos)
     {
-        var room = pos.GetRoomFast(Verse.Map);
+        var room = pos.GetRoomFast(Map);
         return ComponentAt(room);
     }
 
@@ -87,7 +87,7 @@ public class AtmosphericMapInfo_TAE_Data : MapInformation
     public void RegenerateMapInfo()
     {
         TLog.Message("Regenerating map info...");
-        System.Notify_Regenerate(Verse.Map.cellIndices
+        System.Notify_Regenerate(Map.cellIndices
             .NumGridCells); //AllComps.Where(c => c.IsOutdoors).Sum(c => c.Room.CellCount)
     }
 
@@ -136,8 +136,8 @@ public class AtmosphericMapInfo_TAE_Data : MapInformation
                 var rot = args.Thing.Rotation;
                 var positionA = args.Thing.Position + rot.FacingCell;
                 var positionB = args.Thing.Position + rot.Opposite.FacingCell;
-                var roomA = positionA.GetRoomFast(Verse.Map);
-                var roomB = positionB.GetRoomFast(Verse.Map);
+                var roomA = positionA.GetRoomFast(Map);
+                var roomB = positionB.GetRoomFast(Map);
 
                 var infront = _compLookUp.TryGetValue(roomA);
                 var behind = _compLookUp.TryGetValue(roomB);
@@ -163,7 +163,7 @@ public class AtmosphericMapInfo_TAE_Data : MapInformation
 
     public void TrySpawnGasAt(IntVec3 cell, SpreadingGasTypeDef gasType, float value)
     {
-        Verse.Map.GetMapInfo<SpreadingGasGrid>().Notify_SpawnGasAt(cell, gasType, value);
+        Map.GetMapInfo<SpreadingGasGrid>().Notify_SpawnGasAt(cell, gasType, value);
     }
 
     #endregion

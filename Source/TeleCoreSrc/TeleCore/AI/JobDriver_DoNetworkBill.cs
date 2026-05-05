@@ -20,7 +20,7 @@ public class JobDriver_DoNetworkBill : JobDriver
         return true;
     }
 
-    public override IEnumerable<Toil> MakeNewToils()
+    protected override IEnumerable<Toil> MakeNewToils()
     {
         yield return Toils_Goto.Goto(TargetIndex.A, PathEndMode.InteractionCell);
         var billToil = new Toil();

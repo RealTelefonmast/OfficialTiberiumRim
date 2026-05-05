@@ -12,7 +12,7 @@ public class Building_Airlock : Building_Door
     private Rot4? actualInt;
 
     //Main Data
-    public Rot4 ActualRotation => actualInt ??= DoorRotationAt(Position, Map);
+    public Rot4 ActualRotation => actualInt ??= this.Rotation;
     public bool ConnectsToOutside => Rooms[0].UsesOutdoorTemperature || Rooms[1].UsesOutdoorTemperature;
 
     private Room RoomOuter => (Position + ActualRotation.FacingCell).GetRoom(Map);
