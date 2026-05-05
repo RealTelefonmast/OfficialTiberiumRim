@@ -30,7 +30,7 @@ public static class TRTibUtils
             return null;
         }
 
-        return StaticData.TiberiumMapComp[map.uniqueID];
+        return TRStaticData.TiberiumMapComp[map.uniqueID];
     }
 
     public static WorldComponent_TR Tiberium()

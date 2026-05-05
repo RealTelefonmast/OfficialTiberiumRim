@@ -8,7 +8,7 @@ using MapComponent_Tiberium = TR.Components.MapComponent_Tiberium;
 namespace TR;
 
 [StaticConstructorOnStartup]
-public static class StaticData
+public static class TRStaticData
 {
     public static Dictionary<int, MapComponent_Tiberium> TiberiumMapComp;
     public static Dictionary<int, RenderTexture> FlowMapsByMap;

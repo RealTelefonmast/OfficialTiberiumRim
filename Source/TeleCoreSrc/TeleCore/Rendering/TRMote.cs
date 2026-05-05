@@ -7,6 +7,7 @@ public class TRMote : MoteThrown
 {
     public float? fadeInTimeOverride;
     public float? fadeOutTimeOverride;
+    protected MaterialPropertyBlock materialProps;
 
     private float LifeSpan => FadeInTime + SolidTime + FadeOutTime;
     public override bool EndOfLife => AgeSecs >= LifeSpan;
@@ -14,6 +15,8 @@ public class TRMote : MoteThrown
     private float FadeInTime => fadeInTimeOverride ?? def.mote.fadeInTime;
 
     private float FadeOutTime => fadeOutTimeOverride ?? def.mote.fadeOutTime;
+
+    public Material AttachedMat { get; private set; }
 
     public override float Alpha
     {
@@ -30,5 +33,17 @@ public class TRMote : MoteThrown
             if (FadeOutTime > 0f) return 1f - Mathf.InverseLerp(FadeInTime + SolidTime, LifeSpan, ageSecs);
             return 1f;
         }
+    }
+
+    public void SetTimeOverrides(float? fadeIn, float? fadeOut)
+    {
+        fadeInTimeOverride = fadeIn;
+        fadeOutTimeOverride = fadeOut;
+    }
+
+    public void AttachMaterial(Material newMat, Color color)
+    {
+        AttachedMat = newMat;
+        instanceColor = color;
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -11,71 +10,36 @@ using Verse;
 
 namespace TR;
 
-internal static class TRUIPatches
+[StaticConstructorOnStartup]
+public static class UIPatches
 {
-    public static bool BackgroundOnGUIPatch()
+    static UIPatches()
     {
-        if (!TiberiumSettings.Settings.UseCustomBackground) return true;
-        var flag = !(UI.screenWidth > UI.screenHeight * (2048f / 1280f));
+        TiberiumRimMod.Tiberium.Patch(typeof(UI_BackgroundMain).GetMethod(nameof(UI_BackgroundMain.BackgroundOnGUI)),
+            new HarmonyMethod(typeof(UIPatches), nameof(BackgroundOnGUIPatch)));
+    }
+
+    internal static bool BackgroundOnGUIPatch()
+    {
+        if (!TiberiumRimMod.CoreSettings.UseCustomBackground) return true;
+        var flag = !((float)UI.screenWidth > (float)UI.screenHeight * (2048f / 1280f));
         Rect position;
         if (flag)
         {
             var height = (float)UI.screenHeight;
-            var num = UI.screenHeight * (2048f / 1280f);
+            var num = (float)UI.screenHeight * (2048f / 1280f);
             position = new Rect(UI.screenWidth / 2 - num / 2f, 0f, num, height);
         }
         else
         {
             var width = (float)UI.screenWidth;
-            var num2 = UI.screenWidth * (1280f / 2048f);
+            var num2 = (float)UI.screenWidth * (1280f / 2048f);
             position = new Rect(0f, UI.screenHeight / 2 - num2 / 2f, width, num2);
         }
 
         GUI.DrawTexture(position, TiberiumContent.BGPlanet, ScaleMode.ScaleToFit);
         return false;
     }
-
-    //Tiberium World Coverage Option
-    [HarmonyPatch(typeof(Page_CreateWorldParams))]
-    [HarmonyPatch(nameof(Page_CreateWorldParams.DoWindowContents))]
-    public static class WindowContentsPatch
-    {
-        private static readonly MethodInfo changeMethod =
-            AccessTools.Method(typeof(WindowContentsPatch), nameof(ChangeTiberiumCoverage));
-
-        private static readonly MethodInfo callOperand = AccessTools.Method(typeof(Widgets), nameof(Widgets.EndGroup));
-
-        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-        {
-            foreach (var code in instructions)
-            {
-                if (code.opcode == OpCodes.Call && code.Calls(callOperand))
-                {
-                    //"TR.World.CoverageSlider"
-                    TRLog.Message($"Patching Opcodes! Next: {code.opcode} | {code.operand}");
-                    yield return new CodeInstruction(OpCodes.Ldloc_S, 7);
-                    yield return new CodeInstruction(OpCodes.Ldloc_S, 8);
-                    yield return new CodeInstruction(OpCodes.Call, changeMethod);
-                }
-
-                yield return code;
-            }
-        }
-
-        public static void ChangeTiberiumCoverage(float curY, float width)
-        {
-            curY += 40;
-            var fullWidth = 200 + width;
-            var imageRect = new Rect(0, curY - 8f, fullWidth, 40);
-            Widgets.DrawShadowAround(imageRect);
-            GenUI.DrawTextureWithMaterial(imageRect, TiberiumContent.TibOptionBG_Cut, null, new Rect(0, 0, 1, 1));
-            Widgets.Label(new Rect(0f, curY, 200f, 30f), "TR.World.CoverageSlider".Translate());
-            var newRect = new Rect(200, curY, width, 30f);
-            TiberiumSettings.Settings.tiberiumCoverage = Widgets.HorizontalSlider_NewTemp(newRect,
-                (float)TiberiumSettings.Settings.tiberiumCoverage, 0f, 1, true, "Medium", "None", "Full", 0.05f);
-        }
-    }
-
 
     //Tiberium Background Selection
     [HarmonyPatch(typeof(Dialog_Options))]
@@ -124,109 +88,18 @@ internal static class TRUIPatches
         private static void SetTiberiumBG()
         {
             ((UI_BackgroundMain)UIMenuBackgroundManager.background).overrideBGImage = TiberiumContent.BGPlanet;
-            TiberiumSettings.Settings.UseCustomBackground = true;
+            TiberiumRimMod.CoreSettings.UseCustomBackground = true;
         }
 
         public static TaggedString ChangeButtonLabel(TaggedString label)
         {
-            if (TiberiumSettings.Settings.UseCustomBackground) return "TiberiumRim";
+            if (TiberiumRimMod.CoreSettings.UseCustomBackground) return "TiberiumRim";
             return label;
         }
 
         private static void AddTiberiumBGOption(List<FloatMenuOption> options)
         {
             options.Add(new FloatMenuOption("TiberiumRim", SetTiberiumBG, TiberiumContent.ForgottenIcon, Color.white));
-        }
-    }
-
-    //Readout
-    [HarmonyPatch(typeof(ResourceReadout))]
-    [HarmonyPatch(nameof(ResourceReadout.ResourceReadoutOnGUI))]
-    public static class ResourceReadoutOnGUIPatch
-    {
-        private static float? TotalHeight = 120;
-        private static float? ResourceReadoutHeight = 60f;
-
-        private static bool ShouldFix => GetTiberiumCredits(Find.CurrentMap) > 0;
-
-        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-        {
-            var helper = AccessTools.Method(typeof(ResourceReadoutOnGUIPatch), nameof(AdjustResourceReadoutDownwards));
-
-            var patched = false;
-            foreach (var code in instructions)
-            {
-                yield return code;
-                if (code.opcode == OpCodes.Stloc_0 && !patched)
-                {
-                    yield return new CodeInstruction(OpCodes.Ldloc_0); //Rect on stack  
-                    yield return new CodeInstruction(OpCodes.Call, helper); //Consumes 1 and returns Rect
-                    yield return new CodeInstruction(OpCodes.Stloc_0);
-                    patched = true;
-                }
-            }
-        }
-
-        public static void Postfix(ResourceReadout __instance)
-        {
-            if (ShouldFix)
-                DrawCredits();
-        }
-
-        private static Rect AdjustResourceReadoutDownwards(Rect rect)
-        {
-            if (!ShouldFix) return rect;
-
-            var newRect = new Rect(rect);
-            newRect.yMin += TotalHeight.Value + 10f;
-            return newRect;
-        }
-
-        private static double GetTiberiumCredits(Map map)
-        {
-            return GetNetwork(map)?.System.TotalValue ?? 0;
-        }
-
-        private static PipeNetwork GetNetwork(Map map)
-        {
-            var currentSet = map.GetMapInfo<PipeNetworkMapInfo>()[TiberiumDefOf.TiberiumNetwork]?.TotalPartSet;
-            if (currentSet == null) return null;
-            if (currentSet.FullSet.Count == 0) return null;
-            return currentSet.FullSet.First()?.Network;
-            //return map.MapInfo<NetworkMapInfo>()[TiberiumDefOf.TiberiumNetwork]?.MainNetworkPart?.Network;
-        }
-
-        private static void DrawCredits()
-        {
-            //
-            var mainRect = new Rect(5f, 10, 120f, TotalHeight.Value);
-            string creditLabel = "TR_Credits".Translate();
-            var creditLabelSize = Text.CalcSize(creditLabel);
-            var creditLabelRect = new Rect(5, mainRect.y, mainRect.width, creditLabelSize.y + 8);
-            var readoutRect = new Rect(5, creditLabelRect.yMax, mainRect.width, ResourceReadoutHeight.Value);
-
-            //Main
-            //Widgets.DrawWindowBackground(mainRect);
-            TRWidgets.DrawColoredBox(mainRect, new Color(1, 1, 1, 0.125f), Color.white, 1);
-            Text.Anchor = TextAnchor.MiddleCenter;
-            Widgets.Label(creditLabelRect, creditLabel);
-            Text.Anchor = default;
-            Widgets.DrawLine(new Vector2(5f, creditLabelRect.yMax), new Vector2(125f, creditLabelRect.yMax),
-                Color.white, 1f);
-
-            ResourceReadoutHeight =
-                FlowUI<NetworkValueDef>.DrawFlowValueStackReadout(readoutRect,
-                    GetNetwork(Find.CurrentMap).System.TotalStack);
-
-            Text.Font = GameFont.Tiny;
-            string totalLabel = "TR_CreditsTotal".Translate(Math.Round(GetTiberiumCredits(Find.CurrentMap)));
-            var totalLabelSize = Text.CalcSize(totalLabel);
-            var totalLabelRect = new Rect(10f, readoutRect.yMax, mainRect.width, totalLabelSize.y);
-            Widgets.Label(totalLabelRect, totalLabel);
-            Text.Font = default;
-
-            TotalHeight = totalLabelRect.yMax - mainRect.y;
-            //
         }
     }
 }

@@ -306,8 +306,8 @@ public class Gizmo_NetworkInfo : Gizmo
 
         //Do network build options
         TWidgets.DrawBoxHighlight(UILayout["BuildOptionsRect"]);
-        var controllDesignator = StaticData.GetDesignatorFor<Designator_Build>(parentComp.NetworkDef.controllerDef);
-        var pipeDesignator = StaticData.GetDesignatorFor<Designator_Build>(parentComp.NetworkDef.transmitterDef);
+        var controllDesignator = GenData.GetDesignatorFor<Designator_Build>(parentComp.NetworkDef.controllerDef);
+        var pipeDesignator = GenData.GetDesignatorFor<Designator_Build>(parentComp.NetworkDef.transmitterDef);
         if (Widgets.ButtonImage(UILayout["ControllerOptionRect"], controllDesignator.icon))
             controllDesignator.ProcessInput(Event.current);
 

@@ -141,7 +141,7 @@ internal static class TRThingPatches
         {
             if (buildable is TRThingDef { devObject: false } trDef)
             {
-                __result = StaticData.GetDesignatorFor<Designator_Build>(trDef);
+                __result = TRStaticData.GetDesignatorFor<Designator_Build>(trDef);
                 return false;
             }
 
