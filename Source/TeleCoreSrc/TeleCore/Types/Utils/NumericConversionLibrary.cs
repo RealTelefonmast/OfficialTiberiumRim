@@ -2,7 +2,7 @@ using System;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static unsafe class NumericConversionLibrary<TSource, TTarget>
     where TSource : unmanaged

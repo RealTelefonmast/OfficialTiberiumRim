@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using TeleCore.Types.Utils;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 /// <summary>
 ///     A generic numeric wrapper struct that provides operator overloading and utility methods

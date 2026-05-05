@@ -1,7 +1,7 @@
 ﻿using TeleCore.Defs;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering;
 
 public class Effecter_MoteMaker : Effecter
 {

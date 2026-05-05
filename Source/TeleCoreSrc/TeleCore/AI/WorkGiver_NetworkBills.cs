@@ -2,7 +2,7 @@
 using System.Linq;
 using RimWorld;
 using TeleCore.Comps;
-using TeleCore.Unsorted;
+using TeleCore.Types.Utils;
 using Verse;
 using Verse.AI;
 

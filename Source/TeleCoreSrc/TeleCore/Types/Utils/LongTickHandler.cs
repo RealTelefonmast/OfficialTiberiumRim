@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class LongTickHandler
 {

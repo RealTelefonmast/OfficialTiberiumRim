@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using TeleCore.Types.Utils;
+using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public enum MoteThrowerType
 {

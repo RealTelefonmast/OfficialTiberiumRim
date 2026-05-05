@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using LudeonTK;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 /// <summary>
 /// </summary>

@@ -1,6 +1,8 @@
+using TeleCore.RoomComponents;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Abstracts;
 
 public abstract class AtmosphereConverterBase
 {

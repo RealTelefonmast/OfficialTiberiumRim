@@ -1,9 +1,11 @@
 using LudeonTK;
+using TeleCore.Types;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering;
 
 public abstract class SkyOverlay_Atmosphere : SkyOverlay
 {

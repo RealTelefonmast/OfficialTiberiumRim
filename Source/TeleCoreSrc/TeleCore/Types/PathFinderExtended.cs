@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public struct TraverseParmsExtended
 {

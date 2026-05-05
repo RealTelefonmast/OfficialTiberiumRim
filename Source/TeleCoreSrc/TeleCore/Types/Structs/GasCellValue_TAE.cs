@@ -2,7 +2,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 [StructLayout(LayoutKind.Explicit, Size = 6)]
 public struct GasCellValue_TAE

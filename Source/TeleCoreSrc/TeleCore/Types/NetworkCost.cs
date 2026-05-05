@@ -1,7 +1,11 @@
 ﻿using System.Linq;
 using TeleCore.Comps;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Utils;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class NetworkCost
 {

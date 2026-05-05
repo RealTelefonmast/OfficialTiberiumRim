@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using Verse.AI;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 public static class AIPatches
 {

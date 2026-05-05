@@ -3,10 +3,15 @@
 using System.Collections.Generic;
 using TeleCore.Defs;
 using TeleCore.FlowCore;
+using TeleCore.Rendering;
+using TeleCore.RoomComponents;
+using TeleCore.Types;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.MapComponents;
 
 public class AtmosphericMapInfo : MapInformation, IContainerHolderRoom<AtmosphericDef>,
     IContainerImplementer<AtmosphericDef, IContainerHolderRoom<AtmosphericDef>, AtmosphericContainer>

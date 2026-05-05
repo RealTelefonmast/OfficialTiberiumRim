@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class UIContainer : Rendering.UI.DynaUI.UIElement
 {

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
 using RimWorld.Planet;
+using TeleCore.Types;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering;
 
 public class SimpleWorldCameraDriver : MonoBehaviour
 {

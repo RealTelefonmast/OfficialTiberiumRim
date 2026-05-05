@@ -1,8 +1,11 @@
 ﻿using System.Text.RegularExpressions;
+using TeleCore.Types;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public static partial class TWidgets
 {

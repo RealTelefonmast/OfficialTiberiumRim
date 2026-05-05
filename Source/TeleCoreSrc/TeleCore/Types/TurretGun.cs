@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TeleCore.Unsorted;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Utils;
+using TeleCore.Verbs;
 using UnityEngine;
 using Verse;
 using Verse.AI;
 using Verse.Sound;
 
-namespace TeleCore.Unsorted
+namespace TeleCore.Types
 {
     public class TurretGun : IAttackTargetSearcher
     {

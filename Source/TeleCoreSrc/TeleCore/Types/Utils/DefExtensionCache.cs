@@ -2,7 +2,7 @@
 using TeleCore.Defs;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 //TODO: Remove or handle generally
 public static class DefExtensionCache

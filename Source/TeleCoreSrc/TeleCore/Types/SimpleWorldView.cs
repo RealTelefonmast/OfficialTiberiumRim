@@ -1,9 +1,11 @@
 ﻿using RimWorld.Planet;
+using TeleCore.Rendering;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 using Verse.Noise;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class SimpleWorldView
 {

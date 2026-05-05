@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public interface IReadOnlyTwoWayDictionary<TKey, TValue> : IEnumerable<KeyValuePair<TKey, TValue>>
 {

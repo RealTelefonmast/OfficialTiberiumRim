@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Structs;
+using TeleCore.UI;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 /// <summary>
 /// </summary>

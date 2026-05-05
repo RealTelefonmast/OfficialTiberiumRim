@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class MainTabWindow_Discoveries : MainTabWindow
 {

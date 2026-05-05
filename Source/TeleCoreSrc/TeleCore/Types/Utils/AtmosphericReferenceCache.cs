@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using TeleCore.Defs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class AtmosphericReferenceCache
 {

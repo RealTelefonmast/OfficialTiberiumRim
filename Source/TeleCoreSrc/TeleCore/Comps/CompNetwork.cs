@@ -4,9 +4,14 @@ using System.Text;
 using RimWorld;
 using TeleCore.CompProperties;
 using TeleCore.Defs;
-using TeleCore.Rendering;
+using TeleCore.MapComponents;
+using TeleCore.Types;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using TeleCore.UI;
-using TeleCore.Unsorted;
 using Verse;
 
 namespace TeleCore.Comps;

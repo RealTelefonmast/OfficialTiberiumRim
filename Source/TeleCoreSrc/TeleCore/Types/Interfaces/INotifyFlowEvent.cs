@@ -1,4 +1,6 @@
-﻿namespace TeleCore.Unsorted;
+﻿using TeleCore.Types.Delegates;
+
+namespace TeleCore.Types.Interfaces;
 
 public interface INotifyFlowEvent
 {

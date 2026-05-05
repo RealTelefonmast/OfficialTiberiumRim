@@ -1,7 +1,7 @@
 ﻿using Verse;
 using Verse.Sound;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Sounds;
 
 public struct SoundPart
 {

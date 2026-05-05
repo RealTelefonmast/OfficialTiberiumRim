@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Types;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.RoomComponents;
 
 public abstract class RoomComponent
 {

@@ -2,10 +2,14 @@
 using HarmonyLib;
 using RimWorld;
 using TeleCore.CompProperties;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 internal static class ThingPatches
 {

@@ -1,7 +1,7 @@
 ﻿using TeleCore.Defs;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 /*  ResearchWorker is going to contain valuable data such as culprits for events
  *  ResearchWorkers can vary in their completion task

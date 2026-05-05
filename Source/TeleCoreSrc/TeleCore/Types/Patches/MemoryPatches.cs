@@ -1,8 +1,9 @@
 ﻿using HarmonyLib;
+using TeleCore.Types.Utils;
 using Verse;
 using Verse.Profile;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 internal static class MemoryPatches
 {

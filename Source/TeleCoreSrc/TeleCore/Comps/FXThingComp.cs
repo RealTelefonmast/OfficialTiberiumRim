@@ -1,6 +1,8 @@
 ﻿using System;
 using RimWorld;
-using TeleCore.Unsorted;
+using TeleCore.Types;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Structs;
 using UnityEngine;
 using Verse;
 

@@ -1,7 +1,9 @@
 ﻿using HarmonyLib;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 internal static class TerrainEvent_Patches
 {

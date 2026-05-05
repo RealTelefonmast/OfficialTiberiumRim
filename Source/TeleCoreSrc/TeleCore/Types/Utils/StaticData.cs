@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TeleCore.Defs;
 using TeleCore.MapComponents;
+using TeleCore.Types.Exposables;
 using TeleCore.UI;
 using TeleCore.WorldComponents;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class StaticData
 {

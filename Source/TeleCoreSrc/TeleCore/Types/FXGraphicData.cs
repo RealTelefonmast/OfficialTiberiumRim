@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using TeleCore.Types.Enums;
+using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class FXGraphicData
 {

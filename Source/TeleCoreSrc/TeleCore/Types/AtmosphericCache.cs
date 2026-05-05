@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using TeleCore.Defs;
+using TeleCore.RoomComponents;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public struct CachedAtmosphere
 {

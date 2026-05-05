@@ -1,8 +1,8 @@
 ﻿using TeleCore.Comps;
-using TeleCore.Rendering;
+using TeleCore.Types.Structs;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering;
 
 public class Effecter_FX : Effecter
 {

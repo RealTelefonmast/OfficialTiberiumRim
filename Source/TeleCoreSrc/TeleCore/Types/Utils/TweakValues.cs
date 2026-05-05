@@ -1,6 +1,6 @@
 ﻿using LudeonTK;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 internal static class TweakValues
 {

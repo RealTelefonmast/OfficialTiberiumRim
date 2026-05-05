@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [DebuggerDisplay("{Nodes.Count} | {Edges.Count}")]
 public class NetworkGraph : IDisposable

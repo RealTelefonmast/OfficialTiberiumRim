@@ -1,9 +1,9 @@
-﻿using TeleCore.Rendering.UI.DynaUI;
+﻿using TeleCore.Types.Utils;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class EffectElement : Rendering.UI.DynaUI.UIElement
 {

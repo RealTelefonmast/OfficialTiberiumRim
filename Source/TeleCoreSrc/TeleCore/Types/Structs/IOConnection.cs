@@ -1,6 +1,9 @@
 ﻿using System.Diagnostics;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Utils;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 [DebuggerDisplay("({From}[{FromMode}]>{To}[{ToMode}])")]
 public record struct IOConnection

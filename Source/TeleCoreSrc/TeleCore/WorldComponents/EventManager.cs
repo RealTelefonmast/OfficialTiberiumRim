@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using RimWorld.Planet;
 using TeleCore.Defs;
-using TeleCore.Unsorted;
+using TeleCore.Types;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 using World = RimWorld.Planet.World;
 

@@ -1,7 +1,8 @@
 ﻿using RimWorld;
 using TeleCore.Comps;
 using TeleCore.PlaceWorkers;
-using TeleCore.Unsorted;
+using TeleCore.Types;
+using TeleCore.Types.Utils;
 using Verse;
 
 namespace TeleCore.Buildings;

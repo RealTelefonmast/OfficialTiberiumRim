@@ -3,7 +3,7 @@ using LudeonTK;
 using RimWorld;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public static class TeleCoreDebugViewSettings
 {

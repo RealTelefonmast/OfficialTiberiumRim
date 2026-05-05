@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using TeleCore.Defs;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Structs;
+using TeleCore.UI;
 using UnityEngine;
 using Verse;
 
 //using Multiplayer.API;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class FlowUI<T> where T : FlowValueDef
 {

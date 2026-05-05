@@ -3,7 +3,7 @@ using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 /// <summary>
 ///     Burst-compiled job for parallel gas dissipation

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using LudeonTK;
 using TeleCore.Defs;
+using TeleCore.MapComponents;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 internal static class DEBUG_Tools
 {

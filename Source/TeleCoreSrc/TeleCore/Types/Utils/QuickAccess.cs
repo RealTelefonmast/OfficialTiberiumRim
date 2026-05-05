@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Types.Structs;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 //TODO: Is this needed?
 public static class QuickAccess

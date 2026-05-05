@@ -2,8 +2,9 @@
 using RimWorld;
 using TeleCore.AI;
 using TeleCore.Defs;
+using TeleCore.Types.Utils;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 internal static class ReplacePatches
 {

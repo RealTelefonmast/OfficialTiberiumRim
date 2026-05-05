@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using TeleCore.Types.Abstracts;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.MapComponents;
 
 public class MapInformation_Debug : MapInformation
 {

@@ -1,6 +1,7 @@
 ﻿using System;
+using TeleCore.Types.Interfaces;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public struct ResultState<T>
 {

@@ -9,10 +9,14 @@ using TeleCore.Buildings;
 using TeleCore.Comps;
 using TeleCore.Defs;
 using TeleCore.Graphics;
+using TeleCore.MapComponents;
+using TeleCore.RoomComponents;
+using TeleCore.Things;
+using TeleCore.Types.Interfaces;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class GenData
 {
@@ -190,7 +194,7 @@ public static class GenData
     }
 
     //Room Tracking
-    /// <returns>The main <see cref="Unsorted.RoomTracker" /> object of the <paramref name="room" />.</returns>
+    /// <returns>The main <see cref="TeleCore.Types.RoomTracker" /> object of the <paramref name="room" />.</returns>
     public static RoomTracker RoomTracker(this Room room)
     {
         return room.Map.GetMapInfo<MapInformation_Rooms>()[room];

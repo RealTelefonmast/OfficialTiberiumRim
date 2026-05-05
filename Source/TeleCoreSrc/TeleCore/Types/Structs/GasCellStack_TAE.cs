@@ -1,11 +1,10 @@
 // Preserved from TeleCore/SpreadingGas/GasCellStack.cs
 
-using System.Linq;
 using System.Runtime.InteropServices;
 using Unity.Collections;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct GasCellStack_TAE

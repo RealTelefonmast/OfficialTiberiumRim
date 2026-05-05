@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Defs;
 using TeleCore.FlowCore;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Abstracts;
 
 public abstract class ValueContainerWithHolderThing<TValue, THolder> : ValueContainerWithHolder<TValue, THolder>
     where TValue : FlowValueDef

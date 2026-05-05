@@ -1,6 +1,7 @@
-﻿using UnityEngine.Assertions;
+﻿using TeleCore.Types.Structs;
+using UnityEngine.Assertions;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [TestFixture]
 public class HashTests

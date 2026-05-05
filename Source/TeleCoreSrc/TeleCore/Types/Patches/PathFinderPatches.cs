@@ -2,10 +2,13 @@
 using System.Reflection.Emit;
 using HarmonyLib;
 using RimWorld;
+using TeleCore.MapComponents;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Utils;
 using Verse;
 using Verse.AI;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 internal static class PathFinderPatches
 {

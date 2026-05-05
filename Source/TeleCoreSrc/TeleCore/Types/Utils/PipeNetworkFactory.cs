@@ -1,8 +1,9 @@
 ﻿using TeleCore.Comps;
 using TeleCore.Defs;
+using TeleCore.Types.Interfaces;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class PipeNetworkFactory
 {

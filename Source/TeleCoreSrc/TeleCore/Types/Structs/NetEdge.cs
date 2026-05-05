@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public interface IEdge<T>
 {

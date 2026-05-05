@@ -1,7 +1,9 @@
 ﻿using System;
 using TeleCore.Defs;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class NetworkEventHandler<T> where T : FlowValueDef
 {

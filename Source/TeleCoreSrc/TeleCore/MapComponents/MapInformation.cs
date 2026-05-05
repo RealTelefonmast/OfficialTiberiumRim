@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.MapComponents;
 
 public abstract class MapInformation : IExposable
 {

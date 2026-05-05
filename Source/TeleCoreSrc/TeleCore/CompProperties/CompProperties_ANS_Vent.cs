@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Comps;
 using TeleCore.Defs;
-using TeleCore.Unsorted;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 
 namespace TeleCore.CompProperties;

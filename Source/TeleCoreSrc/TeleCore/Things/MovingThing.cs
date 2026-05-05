@@ -1,6 +1,7 @@
-﻿using Verse;
+﻿using TeleCore.Types;
+using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Things;
 
 //A simple thing which can move along a pather
 public class MovingThing : ThingWithComps

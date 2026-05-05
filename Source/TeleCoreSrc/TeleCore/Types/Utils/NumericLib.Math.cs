@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static partial class NumericLib<T>
 {

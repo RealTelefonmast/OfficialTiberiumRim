@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using TeleCore.Comps;
-using TeleCore.Unsorted;
+using TeleCore.Things;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Interfaces;
 using Verse;
 using Verse.AI;
 

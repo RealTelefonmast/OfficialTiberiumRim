@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using TeleCore.Defs;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class NetworkContainerSet
 {

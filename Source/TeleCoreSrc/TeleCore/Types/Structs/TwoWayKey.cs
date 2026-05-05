@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 /// <summary>
 ///     A key to define a two-way relationship between two objects.

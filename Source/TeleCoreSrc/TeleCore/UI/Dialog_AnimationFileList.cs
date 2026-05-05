@@ -4,12 +4,13 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using RimWorld;
-using TeleCore.Rendering.Tools.RWAnimator;
-using TeleCore.UI;
+using TeleCore.Settings;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 internal class Dialog_AnimationFileList : Dialog_FileList
 {
@@ -188,7 +189,7 @@ internal class Dialog_AnimationFileList : Dialog_FileList
             {
                 var animationData = Context;
                 var newDef = animationData.ConstructAnimationDef();
-                Scribe_Deep.Look(ref newDef, $"{nameof(TeleCore)}.{nameof(AnimationDataDef)}");
+                Scribe_Deep.Look(ref newDef, $"{nameof(Types.Utils.TeleCore)}.{nameof(AnimationDataDef)}");
             });
         }
         catch (Exception arg)

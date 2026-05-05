@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using TeleCore.Defs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct GasCellValue

@@ -1,8 +1,11 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 internal static class ThingEvent_Patches
 {

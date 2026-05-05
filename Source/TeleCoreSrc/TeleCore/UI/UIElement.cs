@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
-using TeleCore.Unsorted;
+using TeleCore.Types;
+using TeleCore.Types.Delegates;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Rendering.UI.DynaUI;
+namespace TeleCore.UI;
 
 public enum UIElementMode
 {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 /// <summary>
 ///     A cachable Rect set, allows you to set rects with a tag and access them via a string tag indexer;

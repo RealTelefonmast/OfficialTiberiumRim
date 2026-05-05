@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using TeleCore.Types.Utils;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 public unsafe class ComputeGrid<T> : IExposable, IDisposable where T : unmanaged
 {

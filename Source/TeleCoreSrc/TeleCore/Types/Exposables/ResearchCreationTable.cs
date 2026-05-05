@@ -4,7 +4,7 @@ using System.Linq;
 using TeleCore.Defs;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 /*  This Table Keeps track of Research Tasks and their "creation" goal
  *  For example creating a certain amount of a thing

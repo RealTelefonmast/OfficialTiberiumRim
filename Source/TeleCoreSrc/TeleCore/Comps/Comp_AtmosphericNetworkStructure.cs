@@ -1,5 +1,8 @@
 using TeleCore.CompProperties;
-using TeleCore.Unsorted;
+using TeleCore.RoomComponents;
+using TeleCore.Types;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Utils;
 using Verse;
 
 namespace TeleCore.Comps;

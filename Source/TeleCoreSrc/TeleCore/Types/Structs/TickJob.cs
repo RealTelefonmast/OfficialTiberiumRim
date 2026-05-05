@@ -1,6 +1,6 @@
 ﻿using Unity.Jobs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public struct TickJob : IJob
 {

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 /// <summary>
 ///     Indicates to Code Analysis that a method validates a particular parameter.

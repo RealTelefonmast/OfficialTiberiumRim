@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TeleCore.Rendering.Tools.RWAnimator;
-using TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure;
-using TeleCore.Rendering.UI.DynaUI;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public interface IKeyFramedElement
 {
@@ -76,8 +76,8 @@ internal class TimeLineControl : Rendering.UI.DynaUI.UIElement
     public List<Rendering.UI.DynaUI.UIElement> Elements => Canvas.ChildElements;
     public IEnumerable<IKeyFramedElement> KeyFramedElements => Canvas.ChildElements.Select(t => (IKeyFramedElement)t);
 
-    private Rect LeftRect => InRect.LeftPartPixels(_LeftSize);
-    private Rect RightRect => InRect.RightPartPixels(InRect.width - _LeftSize);
+    private Rect LeftRect => GenUI.LeftPartPixels(InRect, _LeftSize);
+    private Rect RightRect => GenUI.RightPartPixels(InRect, InRect.width - _LeftSize);
 
     private Rect TopLeft => LeftRect.TopPartPixels(_TopSize);
     private Rect BotLeft => LeftRect.BottomPartPixels(InRect.height - _TopSize);
@@ -285,7 +285,7 @@ internal class TimeLineControl : Rendering.UI.DynaUI.UIElement
             */
             return;
 
-        TimeControlButtons(TopRect.RightPartPixels(TopRect.width - _LeftSize));
+        TimeControlButtons(GenUI.RightPartPixels(TopRect, TopRect.width - _LeftSize));
 
         //Element List Scroller
         var elementListCount = Elements.Count;

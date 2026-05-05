@@ -1,6 +1,7 @@
 using TeleCore.Defs;
+using TeleCore.Types.Utils;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 /// <summary>
 ///     Similar to <see cref="FlowBox" /> for volumes of atmospheric values.

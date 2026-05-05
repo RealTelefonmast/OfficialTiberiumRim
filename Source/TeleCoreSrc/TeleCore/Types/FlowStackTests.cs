@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using TeleCore.Defs;
+using TeleCore.Types.Structs;
 using UnityEngine.Assertions;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [TestFixture]
 public class FlowStackTests

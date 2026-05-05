@@ -2,7 +2,7 @@ using RimWorld;
 using TeleCore.Comps;
 using TeleCore.Defs;
 using TeleCore.Hediffs;
-using TeleCore.Unsorted;
+using TeleCore.Types.Utils;
 using Verse;
 
 namespace TeleCore.Needs;

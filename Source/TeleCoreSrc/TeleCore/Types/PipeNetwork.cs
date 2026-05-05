@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using TeleCore.Defs;
+using TeleCore.Types.Abstracts;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class PipeNetwork : IDisposable
 {

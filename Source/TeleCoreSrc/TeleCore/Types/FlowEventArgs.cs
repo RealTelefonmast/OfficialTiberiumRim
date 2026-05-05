@@ -1,7 +1,8 @@
 ﻿using System;
 using TeleCore.Defs;
+using TeleCore.Types.Structs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class FlowEventArgs : EventArgs
 {

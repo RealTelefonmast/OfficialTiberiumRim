@@ -1,7 +1,7 @@
 ﻿using System;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 /// <summary>
 ///     An IntVec3 with a relative direction attached.

@@ -2,10 +2,12 @@
 using TeleCore.Defs;
 using TeleCore.Graphics;
 using TeleCore.MapComponents;
+using TeleCore.Types.Interfaces;
 using UnityEngine;
 using Verse;
+using Entity = TeleCore.Types.Structs.Entity;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Entities;
 
 public class Particle : Verse.Entity, IExposable
 {

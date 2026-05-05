@@ -1,6 +1,6 @@
 ﻿using TeleCore.Defs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 internal class Profiling
 {

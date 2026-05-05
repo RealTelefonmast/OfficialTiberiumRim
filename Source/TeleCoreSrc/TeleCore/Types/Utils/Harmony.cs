@@ -1,4 +1,4 @@
-﻿namespace TeleCore.Unsorted;
+﻿namespace TeleCore.Types.Utils;
 
 /// <summary>
 /// </summary>

@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using RimWorld.Planet;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 using Verse.Noise;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class LayerSubMeshColor : LayerSubMesh
 {

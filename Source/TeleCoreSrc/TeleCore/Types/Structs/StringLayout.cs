@@ -1,8 +1,9 @@
 ﻿using System;
+using TeleCore.Types.Utils;
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public enum StringLayoutType : byte
 {
@@ -29,7 +30,7 @@ public struct StringLayout
     public StringLayout(string[] strings, Margin margin = default)
     {
         var max = Vector2.zero;
-        var sizes = strings.Factory(Utils.TextSize, Processor);
+        var sizes = strings.Factory(Utils.Utils.TextSize, Processor);
 
         _rects = new Rect[sizes.Length];
 
@@ -57,7 +58,7 @@ public struct StringLayout
         _type = type;
         _maxColumns = columns;
 
-        var sizes = strings.Factory(Utils.TextSize);
+        var sizes = strings.Factory(Utils.Utils.TextSize);
     }
 
     private static void Grow(StringLayoutType type, Vector2 size, ref Vector2 pos, ref Vector2 totalSize)

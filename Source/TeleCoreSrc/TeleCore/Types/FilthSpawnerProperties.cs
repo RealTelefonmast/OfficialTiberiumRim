@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
+using TeleCore.Types.Exposables;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class FilthSpawnerProperties
 {

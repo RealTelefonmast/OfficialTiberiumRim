@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 /// <summary>
 ///     Dynamic Clipboard utility, allows you to save any type via a string tag, and retrieve it the same way.

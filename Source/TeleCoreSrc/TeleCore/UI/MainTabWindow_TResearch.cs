@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using TeleCore.Defs;
+using TeleCore.Types;
 using TeleCore.WorldComponents;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public enum ResearchTabOption
 {

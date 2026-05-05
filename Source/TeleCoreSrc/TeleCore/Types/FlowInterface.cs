@@ -1,7 +1,9 @@
 ﻿using TeleCore.Defs;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public enum InterfaceFlowMode
 {

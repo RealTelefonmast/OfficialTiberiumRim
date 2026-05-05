@@ -2,7 +2,7 @@
 using System.IO;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 [StaticConstructorOnStartup]
 public static class TLogger

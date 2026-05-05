@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Defs;
-using TeleCore.HelperClasses;
-using TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure;
-using TeleCore.Unsorted;
-using TeleCore.Utility;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
+using TeleCore.UI;
 using UnityEngine;
 using Verse;
 using AnimationPart = Verse.AnimationPart;
@@ -12,7 +11,7 @@ using KeyFrame = TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure.KeyF
 using TextureData = TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure.TextureData;
 using UIElement = TeleCore.Rendering.UI.DynaUI.UIElement;
 
-namespace TeleCore.Rendering.Tools.RWAnimator;
+namespace TeleCore.Types.Exposables;
 
 internal class AnimationMetaData : IExposable
 {

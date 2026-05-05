@@ -1,6 +1,7 @@
-﻿using Verse;
+﻿using TeleCore.Types.Structs;
+using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [StaticConstructorOnStartup]
 public class TeleParseHelpers

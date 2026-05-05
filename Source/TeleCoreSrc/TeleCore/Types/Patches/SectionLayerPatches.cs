@@ -1,8 +1,10 @@
 ﻿using HarmonyLib;
+using TeleCore.Rendering;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 public static class SectionLayerPatches
 {

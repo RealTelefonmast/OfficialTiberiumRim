@@ -1,8 +1,9 @@
 ﻿using RimWorld;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public struct MaterialData : IExposable
 {

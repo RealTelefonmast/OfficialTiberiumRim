@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using TeleCore.Unsorted;
+using TeleCore.Types.Exposables;
 using Verse;
 
 namespace TeleCore.Defs;

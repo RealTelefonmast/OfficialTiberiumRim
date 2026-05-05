@@ -1,7 +1,7 @@
 ﻿using System.Xml;
 using RimWorld;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public struct TickTime
 {

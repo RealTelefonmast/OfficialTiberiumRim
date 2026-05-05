@@ -3,10 +3,13 @@ using System.Text;
 using RimWorld;
 using TeleCore.Comps;
 using TeleCore.Defs;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Structs;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class CompPowerPlant_Network : CompPowerPlant
 {

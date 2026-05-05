@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Interfaces;
 
 public interface ILogger
 {

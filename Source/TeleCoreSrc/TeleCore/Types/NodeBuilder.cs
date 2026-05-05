@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class NodeBuilder
 {

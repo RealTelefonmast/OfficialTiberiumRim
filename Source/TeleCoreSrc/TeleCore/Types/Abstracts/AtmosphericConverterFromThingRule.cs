@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Abstracts;
 
 public abstract class AtmosphericConverterFromThingRule
 {

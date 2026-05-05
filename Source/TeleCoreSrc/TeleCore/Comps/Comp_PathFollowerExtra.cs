@@ -1,5 +1,7 @@
 ﻿using TeleCore.Buildings;
-using TeleCore.Unsorted;
+using TeleCore.RoomComponents;
+using TeleCore.Types;
+using TeleCore.Types.Utils;
 using Verse;
 using Verse.AI;
 

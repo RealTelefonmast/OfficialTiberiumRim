@@ -1,9 +1,8 @@
-﻿using TeleCore.Static;
-using TeleCore.Unsorted;
+﻿using TeleCore.UI;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Rendering.Tools.RWAnimator;
+namespace TeleCore.Types.Utils;
 
 internal static class CanvasCursor
 {

@@ -3,10 +3,13 @@ using System.Xml;
 using JetBrains.Annotations;
 using RimWorld;
 using TeleCore.Defs;
+using TeleCore.RoomComponents;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.MapComponents;
 
 public class AirSourceProperties
 {
@@ -73,7 +76,7 @@ public class OxygenBurner : AtmosphereConverter
         }
         else
         {
-            if (_sourceThing.TryGetComp<CompBreakdownable>(out var comp)) comp.DoBreakdown();
+            if (ThingCompUtility.TryGetComp<CompBreakdownable>(_sourceThing, out var comp)) comp.DoBreakdown();
         }
     }
 }

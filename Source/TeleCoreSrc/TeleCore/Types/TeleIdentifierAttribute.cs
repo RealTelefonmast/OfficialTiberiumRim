@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [AttributeUsage(AttributeTargets.Assembly)]
 public class TeleIdentifierAttribute : Attribute;

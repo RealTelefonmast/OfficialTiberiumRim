@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using TeleCore.Defs;
+using TeleCore.Types;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.MapComponents;
 
 /// <summary>
 ///     Handles additional pathing data, such as avoid weights, walkable/wander cells and danger

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Types.Structs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Abstracts;
 
 public abstract partial class FlowSystem<TAttach, TVolume, TValueDef>
 {

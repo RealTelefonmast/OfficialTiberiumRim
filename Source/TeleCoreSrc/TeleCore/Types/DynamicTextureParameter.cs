@@ -1,8 +1,9 @@
 ﻿using System.Xml;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 /// <summary>
 ///     Allows you to set <see cref="Texture2D" /> parameters depending on the <see cref="Graphic" /> type for custom

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class EventListener
 {

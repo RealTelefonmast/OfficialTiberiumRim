@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public partial struct ImmutableArray<T>
 {

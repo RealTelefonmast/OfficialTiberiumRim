@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Drawing;
 using System.Linq;
-using TeleCore.Rendering.Tools.RWAnimator;
-using TeleCore.Rendering.UI.DynaUI;
-using TeleCore.Rendering.UI.DynaUI.Editing;
-using TeleCore.UI;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Verse;
 using Color = UnityEngine.Color;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 internal class TextureCanvas : BaseCanvas
 {
@@ -164,7 +163,7 @@ internal class TextureCanvas : BaseCanvas
 
             if (!CanWork)
             {
-                var workingRect = TWidgets.RectOnPos(InRect.AtZero().center, new Vector2(260, 130)).Rounded();
+                var workingRect = TWidgets.RectOnPos(GenUI.AtZero(InRect).center, new Vector2(260, 130)).Rounded();
                 TWidgets.DrawColoredBox(workingRect, TColor.BGDarker, TColor.MenuSectionBGBorderColor, 1);
 
                 Text.Anchor = TextAnchor.MiddleCenter;

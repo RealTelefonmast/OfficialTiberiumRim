@@ -1,4 +1,4 @@
-﻿namespace TeleCore.Unsorted;
+﻿namespace TeleCore.Verbs;
 
 public class Verb_Sprayer : Verb_Tele
 {

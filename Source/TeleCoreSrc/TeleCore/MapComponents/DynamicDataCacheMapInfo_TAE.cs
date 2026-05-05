@@ -1,9 +1,12 @@
 // Preserved from TeleCore/SpreadingGas/DynamicDataCacheMapInfo.cs (No TAC counterpart — GPU compute grid cache)
 
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.MapComponents;
 
 public class DynamicDataCacheMapInfo_TAE : MapInformation
 {

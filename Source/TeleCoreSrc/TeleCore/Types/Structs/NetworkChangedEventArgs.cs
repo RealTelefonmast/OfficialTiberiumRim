@@ -1,4 +1,6 @@
-﻿namespace TeleCore.Unsorted;
+﻿using TeleCore.Types.Interfaces;
+
+namespace TeleCore.Types.Structs;
 
 public enum NetworkChangeType
 {

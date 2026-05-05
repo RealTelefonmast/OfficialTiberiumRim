@@ -4,7 +4,8 @@ using System.Linq;
 using RimWorld;
 using TeleCore.Defs;
 using TeleCore.Designators;
-using TeleCore.Unsorted;
+using TeleCore.Types;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 

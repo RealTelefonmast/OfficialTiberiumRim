@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using TeleCore.Defs;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
 //using Multiplayer.API;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 public class TurretGunSet : IExposable
 {

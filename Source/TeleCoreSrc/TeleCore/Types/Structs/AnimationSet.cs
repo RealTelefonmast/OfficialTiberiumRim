@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using TeleCore.Unsorted;
 using Verse;
 
-namespace TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure;
+namespace TeleCore.Types.Structs;
 
 public struct AnimationSet : IExposable
 {

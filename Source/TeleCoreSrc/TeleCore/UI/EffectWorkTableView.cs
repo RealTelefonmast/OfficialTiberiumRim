@@ -1,8 +1,7 @@
-﻿using TeleCore.Rendering.UI.DynaUI;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class EffectWorkTableView : Rendering.UI.DynaUI.UIElement
 {

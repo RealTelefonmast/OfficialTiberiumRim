@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
+using TeleCore.Types.Enums;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class FXLayerData
 {

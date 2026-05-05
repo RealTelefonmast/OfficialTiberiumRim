@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
+using TeleCore.UI;
 using UnityEngine.Assertions;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [TestFixture]
 public class IOTests

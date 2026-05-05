@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Interfaces;
 
 /// <summary>
 ///     A helper interface to ensure the method is correctly implemented.

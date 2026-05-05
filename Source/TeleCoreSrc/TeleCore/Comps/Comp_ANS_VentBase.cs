@@ -1,6 +1,8 @@
 using RimWorld;
 using TeleCore.CompProperties;
-using TeleCore.Unsorted;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 

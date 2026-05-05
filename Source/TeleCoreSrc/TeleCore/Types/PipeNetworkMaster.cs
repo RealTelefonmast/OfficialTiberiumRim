@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using TeleCore.Defs;
+using TeleCore.Types.Abstracts;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
-public class DataGraph<TNode, TEdge> : IDisposable where TEdge : IEdge<TNode>
+public class DataGraph<TNode, TEdge> : IDisposable where TEdge : Structs.IEdge<TNode>
 {
     public List<TNode> Nodes { get; private set; }
 

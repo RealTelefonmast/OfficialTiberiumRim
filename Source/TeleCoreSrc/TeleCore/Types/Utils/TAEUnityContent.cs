@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 /// <summary>
 ///     Loads custom shaders and materials from the TeleCore.Atmosphere asset bundle.

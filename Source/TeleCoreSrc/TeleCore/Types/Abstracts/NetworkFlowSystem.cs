@@ -1,9 +1,13 @@
 ﻿using System;
 using TeleCore.Defs;
 using TeleCore.FlowCore;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Abstracts;
 
 /// <summary>
 ///     The main algorithm for fluid flow.

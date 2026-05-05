@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using TeleCore.Types;
+using TeleCore.Types.Structs;
+using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering;
 
 /// <summary>
 ///     Holds and builds upon initial effect spawn data, providing necessary references down the line

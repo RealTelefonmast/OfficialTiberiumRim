@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class ListView<T> : Rendering.UI.DynaUI.UIElement
 {

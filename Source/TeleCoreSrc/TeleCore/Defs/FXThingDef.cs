@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using TeleCore.CompProperties;
-using TeleCore.Unsorted;
+using TeleCore.Types;
 using Verse;
 
 namespace TeleCore.Defs;

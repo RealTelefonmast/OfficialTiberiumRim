@@ -1,6 +1,8 @@
 ﻿using System;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public enum XmlTagType
 {

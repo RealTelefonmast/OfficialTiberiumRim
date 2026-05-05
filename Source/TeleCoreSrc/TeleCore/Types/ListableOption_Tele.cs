@@ -1,8 +1,9 @@
 ﻿using System;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class ListableOption_Tele : ListableOption
 {

@@ -1,8 +1,10 @@
 ﻿using RimWorld;
+using TeleCore.Types.Abstracts;
+using TeleCore.UI;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 [StaticConstructorOnStartup]
 internal static class DebugTools

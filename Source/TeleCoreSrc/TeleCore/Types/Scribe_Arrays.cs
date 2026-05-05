@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using RimWorld.Planet;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class Scribe_Arrays
 {

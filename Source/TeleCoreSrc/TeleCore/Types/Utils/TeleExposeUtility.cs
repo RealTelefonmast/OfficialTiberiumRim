@@ -1,7 +1,7 @@
 ﻿using System;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class TeleExposeUtility
 {

@@ -1,6 +1,7 @@
 ﻿using TeleCore.Defs;
+using TeleCore.Types.Structs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Delegates;
 
 //Things
 public delegate void ThingSpawnedEvent(ThingStateChangedEventArgs args);

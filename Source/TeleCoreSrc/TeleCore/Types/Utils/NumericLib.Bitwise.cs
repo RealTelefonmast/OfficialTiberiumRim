@@ -2,7 +2,7 @@ using System;
 using System.Linq.Expressions;
 using HarmonyLib;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static partial class NumericLib<T>
 {

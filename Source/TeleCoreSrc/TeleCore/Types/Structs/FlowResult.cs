@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using TeleCore.Defs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public enum FlowState
 {

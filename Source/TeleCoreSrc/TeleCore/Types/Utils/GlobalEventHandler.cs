@@ -1,7 +1,8 @@
 ﻿using System;
 using TeleCore.Defs;
+using TeleCore.Types.Structs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 //TODO: More events, game, map, incidents
 // NOTE: The Rooms, ProjectileLaunched, and ClearData portions live here in TeleCore

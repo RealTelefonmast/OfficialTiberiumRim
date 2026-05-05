@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using TeleCore.Defs;
+using TeleCore.Types.Structs;
 using Unity.Collections;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class RadiationLayer
 {

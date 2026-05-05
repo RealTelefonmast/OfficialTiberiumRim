@@ -4,10 +4,14 @@ using RimWorld;
 using TeleCore.CompProperties;
 using TeleCore.Comps;
 using TeleCore.Defs;
+using TeleCore.Settings;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Utils;
+using TeleCore.UI;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 internal static class RenderPatches
 {

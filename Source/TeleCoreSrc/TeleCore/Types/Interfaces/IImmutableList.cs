@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Interfaces;
 
 /// <summary>
 ///     A list of elements that can only be modified by creating a new instance of the list.

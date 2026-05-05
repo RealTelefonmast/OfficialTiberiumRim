@@ -2,7 +2,7 @@
 
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 internal class AtmosphericScriber_TAE
 {

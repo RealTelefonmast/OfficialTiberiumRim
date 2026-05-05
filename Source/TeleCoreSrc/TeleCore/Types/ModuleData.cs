@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
+using TeleCore.Types.Abstracts;
 using UnityEngine;
 using Verse;
 using Verse.Noise;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class ModuleData
 {

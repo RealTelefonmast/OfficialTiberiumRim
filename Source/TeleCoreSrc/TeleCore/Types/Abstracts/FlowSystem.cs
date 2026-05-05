@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using TeleCore.Defs;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Abstracts;
 
 public abstract class FlowSystem<TAttach, TVolume, TValueDef> : IDisposable
     where TValueDef : FlowValueDef

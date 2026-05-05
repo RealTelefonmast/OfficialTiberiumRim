@@ -5,7 +5,7 @@ using TeleCore.Hediffs;
 using Verse;
 using Verse.AI;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class HediffRangedUtility
 {

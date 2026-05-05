@@ -2,7 +2,7 @@
 
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 /// <summary>
 ///     Wraps the scribed Atmospheric data into an object for data encapsulation in XML.

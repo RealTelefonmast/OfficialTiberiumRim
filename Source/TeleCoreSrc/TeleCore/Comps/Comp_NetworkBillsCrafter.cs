@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using TeleCore.CompProperties;
-using TeleCore.Unsorted;
+using TeleCore.Types;
+using TeleCore.Types.Exposables;
 using UnityEngine;
 using Verse;
 

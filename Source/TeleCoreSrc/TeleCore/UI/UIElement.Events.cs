@@ -1,4 +1,4 @@
-﻿namespace TeleCore.Unsorted;
+﻿namespace TeleCore.UI;
 
 public partial class UIElement
 {

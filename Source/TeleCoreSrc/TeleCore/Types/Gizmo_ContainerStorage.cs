@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Defs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
+using Object = System.Object;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class Gizmo_ContainerStorage : Gizmo_ContainerStorage<FlowValueDef, ValueContainerBase<FlowValueDef>>
 {
@@ -89,7 +91,7 @@ public class Gizmo_ContainerStorage<TValue, TContainer> : Gizmo
     public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
     {
         var MainRect = new Rect(topLeft.x, topLeft.y, GetWidth(maxWidth), 75f);
-        Find.WindowStack.ImmediateWindow(container.GetHashCode(), MainRect, WindowLayer.GameUI, delegate
+        Find.WindowStack.ImmediateWindow(((Object)container).GetHashCode(), MainRect, WindowLayer.GameUI, delegate
         {
             var rect = MainRect.AtZero().ContractedBy(5f);
             var optionRect = new Rect(rect.xMax - 15, rect.y, 15, 15);
@@ -103,7 +105,7 @@ public class Gizmo_ContainerStorage<TValue, TContainer> : Gizmo
             */
             Text.Font = GameFont.Tiny;
             Text.Anchor = TextAnchor.UpperCenter;
-            Widgets.Label(rect, container.Label);
+            Widgets.Label(rect, (string)container.Label);
             Text.Anchor = TextAnchor.MiddleCenter;
             Text.Font = GameFont.Small;
             Widgets.Label(rect, $"{container.TotalStored}/{container.Capacity}");

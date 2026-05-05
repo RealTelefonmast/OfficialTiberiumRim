@@ -3,10 +3,13 @@
 using System.Collections.Generic;
 using TeleCore.Comps;
 using TeleCore.FlowCore;
+using TeleCore.Types;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.RoomComponents;
 
 [StaticConstructorOnStartup]
 public class RoomComponent_Atmospheric_Old : RoomComponent, IContainerHolderRoom<TAE.AtmosphericDef>,

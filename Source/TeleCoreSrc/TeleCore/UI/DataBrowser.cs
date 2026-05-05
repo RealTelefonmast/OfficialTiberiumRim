@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TeleCore.Unsorted;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Rendering.UI.DynaUI.Editing;
+namespace TeleCore.UI;
 
 public class DataBrowser<T> : UIElement
 {

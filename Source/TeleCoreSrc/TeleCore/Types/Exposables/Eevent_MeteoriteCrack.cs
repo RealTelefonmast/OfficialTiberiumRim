@@ -1,4 +1,4 @@
-﻿namespace TeleCore.Unsorted;
+﻿namespace TeleCore.Types.Exposables;
 
 public class Eevent_MeteoriteCrack : BaseEvent
 {

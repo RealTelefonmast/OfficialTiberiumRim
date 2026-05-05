@@ -1,9 +1,10 @@
-﻿using TeleCore.UI;
+﻿using TeleCore.Types.Abstracts;
+using TeleCore.UI;
 using UnityEngine;
 using Verse;
 using Verse.Noise;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class OutputNode : ModuleNode
 {

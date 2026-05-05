@@ -3,7 +3,7 @@ using TeleCore.Comps;
 using Verse;
 using Verse.AI;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 internal static class AtmosAIPatches
 {

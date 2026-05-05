@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using TeleCore.Types;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 [DataContract]
 public partial class DataNode : BaseNode

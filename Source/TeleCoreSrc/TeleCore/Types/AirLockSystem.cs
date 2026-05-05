@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using TeleCore.Buildings;
+using TeleCore.RoomComponents;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 /// <summary>
 ///     A singular system for an airlock room.

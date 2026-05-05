@@ -1,9 +1,10 @@
 ﻿using System;
 using RimWorld;
 using TeleCore.Defs;
+using TeleCore.Types.Exposables;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Things;
 
 public class PortableNetworkContainer : FXThing
 {

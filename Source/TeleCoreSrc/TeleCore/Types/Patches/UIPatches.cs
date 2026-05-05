@@ -9,6 +9,9 @@ using RimWorld;
 using TeleCore.AI;
 using TeleCore.Defs;
 using TeleCore.Designators;
+using TeleCore.MapComponents;
+using TeleCore.Settings;
+using TeleCore.Types.Utils;
 using TeleCore.UI;
 using UnityEngine;
 using Verse;
@@ -17,7 +20,7 @@ using Verse.Sound;
 //TODO: Resolve TiberiumRim namespace references after consolidation
 //using TiberiumRim;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 public class ListableOption_Tele : ListableOption
 {

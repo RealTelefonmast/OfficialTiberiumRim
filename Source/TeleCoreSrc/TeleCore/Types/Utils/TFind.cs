@@ -1,8 +1,10 @@
 ﻿using TeleCore.GameComponents;
+using TeleCore.Rendering;
+using TeleCore.Types.Exposables;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 [StaticConstructorOnStartup]
 public static class TFind

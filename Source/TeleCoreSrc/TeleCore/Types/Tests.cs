@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using TeleCore.Types.Utils;
+using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [TestFixture]
 public class Tests

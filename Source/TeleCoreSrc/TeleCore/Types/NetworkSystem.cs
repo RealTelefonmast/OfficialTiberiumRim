@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using TeleCore.Defs;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Interfaces;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 internal enum DelayedNetworkActionType
 {

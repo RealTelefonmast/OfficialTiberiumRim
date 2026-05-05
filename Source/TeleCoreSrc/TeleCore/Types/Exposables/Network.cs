@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Defs;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Interfaces;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 public class Network : IExposable
 {

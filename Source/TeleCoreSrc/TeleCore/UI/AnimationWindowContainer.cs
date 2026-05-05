@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
-using TeleCore.Rendering.UI.DynaUI;
-using TeleCore.UI;
-using TeleCore.Unsorted;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
-using UIElement = TeleCore.Rendering.UI.DynaUI.UIElement;
 
-namespace TeleCore.Rendering.Tools.RWAnimator;
+namespace TeleCore.UI;
 
 //TODO: Data Layer Seperation From Views
 //TODO: Animations re-structure:

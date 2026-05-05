@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Types.Interfaces;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public struct ComponentKind
 {

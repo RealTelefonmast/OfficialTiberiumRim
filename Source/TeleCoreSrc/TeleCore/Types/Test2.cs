@@ -1,7 +1,7 @@
 ﻿using UnityEngine.Assertions;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [TestFixture]
 public class Test2

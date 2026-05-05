@@ -1,4 +1,4 @@
-﻿namespace TeleCore.Unsorted;
+﻿namespace TeleCore.Things;
 
 public class FlyingThing : MovingThing
 {

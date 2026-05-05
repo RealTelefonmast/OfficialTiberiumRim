@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using TeleCore.Types.Interfaces;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class TaskResultMethodBuilder<T> : IAsyncMethodBuilder<TaskResult<T>, T>
 {

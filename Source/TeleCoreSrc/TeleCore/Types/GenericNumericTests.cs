@@ -1,7 +1,9 @@
 ﻿using System;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine.Assertions;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [TestFixture]
 public class GenericNumericTests

@@ -1,8 +1,11 @@
 ﻿using JetBrains.Annotations;
 using RimWorld;
+using TeleCore.MapComponents;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class NMOThingTracker : ThingTrackerComp
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public interface INodeEdgeDictionary<TNode, TEdge> : IDictionary<TNode, IList<TEdge>> where TEdge : IDataEdge<TNode>
 {

@@ -1,7 +1,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 /// <summary>
 ///     Provides type conversion functionality between numeric types using expression compilation.

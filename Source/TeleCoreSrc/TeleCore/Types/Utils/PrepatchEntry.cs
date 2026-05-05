@@ -4,9 +4,10 @@ using System.IO;
 using JetBrains.Annotations;
 using Mono.Cecil;
 using Prepatcher;
+using TeleCore.Types.Patches;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 /// <summary>
 ///     I blame Bradson (use his mods they are awesome)

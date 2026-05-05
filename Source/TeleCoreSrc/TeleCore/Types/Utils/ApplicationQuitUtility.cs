@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 /// <summary>
 ///     Provides extensions to register custom events whenever the application closes.

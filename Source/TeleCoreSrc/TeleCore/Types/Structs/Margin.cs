@@ -1,4 +1,4 @@
-﻿namespace TeleCore.Unsorted;
+﻿namespace TeleCore.Types.Structs;
 
 public readonly struct Padding(float left, float right, float top, float bottom)
 {

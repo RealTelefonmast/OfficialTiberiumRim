@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
 using TeleCore.Comps;
+using TeleCore.Types;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Verbs;
 
 public abstract class Verb_Tele : Verb
 {

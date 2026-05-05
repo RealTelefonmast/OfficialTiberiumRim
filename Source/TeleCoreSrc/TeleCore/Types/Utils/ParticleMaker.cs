@@ -1,10 +1,11 @@
 ﻿using System;
 using TeleCore.Defs;
 using TeleCore.Particles;
+using TeleCore.Types.Entities;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class ParticleMaker
 {

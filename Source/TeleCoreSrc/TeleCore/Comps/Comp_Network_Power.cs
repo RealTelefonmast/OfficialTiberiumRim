@@ -1,4 +1,5 @@
-﻿using TeleCore.Unsorted;
+﻿using TeleCore.Types;
+using TeleCore.Types.Enums;
 
 namespace TeleCore.Comps;
 

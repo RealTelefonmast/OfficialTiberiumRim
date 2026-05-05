@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 public class ScribedDef<T> : IExposable where T : Def, new()
 {

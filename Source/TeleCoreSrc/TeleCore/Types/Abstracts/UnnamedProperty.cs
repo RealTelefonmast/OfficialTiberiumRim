@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Abstracts;
 
 [XmlParent("DataList:StringList")]
 public class StringProperty : UnnamedProperty<string>

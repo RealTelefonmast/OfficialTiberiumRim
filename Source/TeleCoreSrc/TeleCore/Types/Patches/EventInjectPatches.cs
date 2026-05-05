@@ -1,7 +1,8 @@
 ﻿using HarmonyLib;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 public static class EventInjectPatches
 {

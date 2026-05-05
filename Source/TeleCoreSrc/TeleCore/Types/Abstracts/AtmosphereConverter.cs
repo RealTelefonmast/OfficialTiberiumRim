@@ -1,6 +1,8 @@
+using TeleCore.RoomComponents;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Abstracts;
 
 //TODO: Move to TAE
 public abstract class AtmosphereConverter

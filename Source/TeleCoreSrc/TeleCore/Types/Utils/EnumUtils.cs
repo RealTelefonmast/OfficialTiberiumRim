@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using TeleCore.Types.Structs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class EnumUtils
 {

@@ -1,6 +1,7 @@
+using TeleCore.Types.Abstracts;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class OxygenDefInjection : DefInjectBase
 {

@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using TeleCore.Comps;
 using TeleCore.Defs;
-using TeleCore.Unsorted;
+using TeleCore.Types;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.UI;
 using Verse;
 
 namespace TeleCore.CompProperties;

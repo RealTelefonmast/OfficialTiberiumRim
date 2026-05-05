@@ -5,7 +5,7 @@ using RimWorld;
 using TeleCore.Defs;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 public class BaseEvent : IExposable
 {

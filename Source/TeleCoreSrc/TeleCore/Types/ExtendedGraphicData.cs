@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class ExtendedGraphicData
 {

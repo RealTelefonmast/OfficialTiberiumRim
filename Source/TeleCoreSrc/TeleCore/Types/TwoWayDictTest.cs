@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Assertions;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 //[TestFixture]
 public class TwoWayDictTest

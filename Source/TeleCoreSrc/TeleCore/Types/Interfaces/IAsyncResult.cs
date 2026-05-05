@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Interfaces;
 
 public interface ITask<TResultSet, TResultGet>
 {

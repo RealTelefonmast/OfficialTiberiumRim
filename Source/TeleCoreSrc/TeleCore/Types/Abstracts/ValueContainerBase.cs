@@ -4,10 +4,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using TeleCore.Defs;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Abstracts;
 
 //Base Container Template for Values
 public abstract class ValueContainerBase<TDef, TValue> : IExposable

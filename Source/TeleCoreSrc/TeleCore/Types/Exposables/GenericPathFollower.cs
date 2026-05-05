@@ -1,9 +1,13 @@
 ﻿using RimWorld;
+using TeleCore.Types.Delegates;
+using TeleCore.Types.Patches;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 public class GenericPathFollower : IExposable
 {

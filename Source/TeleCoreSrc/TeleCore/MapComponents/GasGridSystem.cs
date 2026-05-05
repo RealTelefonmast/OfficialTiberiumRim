@@ -1,7 +1,8 @@
 ﻿using System;
 using RimWorld;
 using TeleCore.Defs;
-using TeleCore.Unsorted;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;

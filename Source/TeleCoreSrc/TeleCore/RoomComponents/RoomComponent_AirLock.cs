@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.RoomComponents;
 
 public class RoomComponent_AirLock : RoomComponent
 {

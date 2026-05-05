@@ -1,4 +1,6 @@
-﻿namespace TeleCore.Unsorted;
+﻿using TeleCore.Types.Structs;
+
+namespace TeleCore.Types.Interfaces;
 
 /// <summary>
 ///     An internal non-generic interface implemented by <see cref="ImmutableArray{T}" />

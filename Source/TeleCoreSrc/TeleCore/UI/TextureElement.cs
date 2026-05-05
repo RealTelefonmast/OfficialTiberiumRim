@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using TeleCore.Rendering.Tools.RWAnimator;
-using TeleCore.Rendering.UI.DynaUI;
-using TeleCore.Rendering.UI.DynaUI.Editing;
-using TeleCore.UI;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public enum ManipulationMode
 {

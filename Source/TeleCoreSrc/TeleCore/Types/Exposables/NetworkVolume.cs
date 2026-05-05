@@ -1,6 +1,7 @@
 ﻿using TeleCore.Defs;
+using TeleCore.Types.Utils;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 /// <summary>
 ///     The logical handler for fluid flow.

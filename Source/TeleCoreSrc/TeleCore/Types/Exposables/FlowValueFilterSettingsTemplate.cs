@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using TeleCore.Defs;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 public class FlowValueFilterSettingsTemplate<TValue> : IExposable where TValue : FlowValueDef
 {

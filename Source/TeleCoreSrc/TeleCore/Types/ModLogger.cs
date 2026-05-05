@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
 using Verse;
+using ILogger = TeleCore.Types.Interfaces.ILogger;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public sealed class ModLogger : ILogger
 {

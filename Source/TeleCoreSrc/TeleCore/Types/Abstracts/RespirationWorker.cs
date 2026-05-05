@@ -1,7 +1,7 @@
 ﻿using TeleCore.Needs;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Abstracts;
 
 public abstract class RespirationWorker
 {

@@ -1,7 +1,8 @@
 ﻿using System;
+using TeleCore.Types.Exposables;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class ContainerProperties : Editable, IExposable
 {

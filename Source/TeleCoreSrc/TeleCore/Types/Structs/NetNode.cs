@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
+using TeleCore.Types.Exposables;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 [DebuggerDisplay("{Value}")]
 public struct NetNode

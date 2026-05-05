@@ -2,11 +2,12 @@
 using TeleCore.Comps;
 using TeleCore.Defs;
 using TeleCore.Graphics;
-using TeleCore.Rendering;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class FXLayer
 {

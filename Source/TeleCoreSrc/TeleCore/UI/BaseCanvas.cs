@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using TeleCore.Rendering.UI.DynaUI;
-using TeleCore.Unsorted;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
-using IDragAndDropReceiver = TeleCore.Unsorted.IDragAndDropReceiver;
-using UIDragNDropper = TeleCore.Unsorted.UIDragNDropper;
+using IDragAndDropReceiver = TeleCore.Types.Utils.IDragAndDropReceiver;
+using IDragAndDropReceiver = TeleCore.Types.Utils.IDragAndDropReceiver;
+using UIDragNDropper = TeleCore.Types.Utils.UIDragNDropper;
 using UIElement = TeleCore.Rendering.UI.DynaUI.UIElement;
 
 namespace TeleCore.UI;

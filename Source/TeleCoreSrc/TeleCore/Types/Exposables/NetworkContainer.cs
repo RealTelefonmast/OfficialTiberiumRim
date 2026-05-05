@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Defs;
+using TeleCore.Things;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using TeleCore.UI;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 public class NetworkContainer : IExposable
 {

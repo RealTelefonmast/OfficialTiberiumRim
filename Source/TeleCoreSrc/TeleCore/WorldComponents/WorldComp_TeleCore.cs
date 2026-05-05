@@ -1,5 +1,6 @@
 ﻿using RimWorld.Planet;
-using TeleCore.Unsorted;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Utils;
 using Verse;
 using World = RimWorld.Planet.World;
 

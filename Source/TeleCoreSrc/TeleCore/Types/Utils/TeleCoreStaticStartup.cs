@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using TeleCore.Types.Abstracts;
 using Verse;
 
 //using Multiplayer.API;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 [StaticConstructorOnStartup]
 internal static class TeleCoreStaticStartup

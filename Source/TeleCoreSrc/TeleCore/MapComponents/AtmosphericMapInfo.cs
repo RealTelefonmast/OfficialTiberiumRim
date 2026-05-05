@@ -1,9 +1,14 @@
 using System.Collections.Generic;
 using RimWorld;
 using TeleCore.Defs;
+using TeleCore.RoomComponents;
+using TeleCore.Types;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.MapComponents;
 
 public class AtmosphericMapInfo : MapInformation
 {

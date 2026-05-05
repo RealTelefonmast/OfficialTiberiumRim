@@ -1,6 +1,6 @@
 using System;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class TeleCoreStartupClassAttribute : Attribute

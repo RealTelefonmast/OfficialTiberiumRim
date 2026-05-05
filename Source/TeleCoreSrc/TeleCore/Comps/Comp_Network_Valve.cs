@@ -1,5 +1,6 @@
 ﻿using RimWorld;
-using TeleCore.Unsorted;
+using TeleCore.Types;
+using TeleCore.Types.Utils;
 using UnityEngine;
 
 namespace TeleCore.Comps;

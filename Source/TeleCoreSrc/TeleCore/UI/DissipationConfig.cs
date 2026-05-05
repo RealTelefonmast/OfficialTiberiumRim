@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using TeleCore.Defs;
 using Verse;
+using DissipationMode = TeleCore.Types.Enums.DissipationMode;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 /// <summary>
 ///     Defines properties of any gas or fluid that can dissipate into air or ground.

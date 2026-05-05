@@ -2,7 +2,7 @@
 using System.Xml;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class DefCountChance
 {

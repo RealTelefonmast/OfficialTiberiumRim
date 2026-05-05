@@ -1,7 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Runtime.Serialization;
+using TeleCore.Types.Utils;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [DebuggerDisplay("{Name}:'{Value}'")]
 [DataContract]

@@ -6,7 +6,7 @@ using System.Text;
 using RimWorld;
 using RimWorld.Planet;
 using TeleCore.Defs;
-using TeleCore.Unsorted;
+using TeleCore.Types.Exposables;
 using UnityEngine;
 using Verse;
 using World = RimWorld.Planet.World;

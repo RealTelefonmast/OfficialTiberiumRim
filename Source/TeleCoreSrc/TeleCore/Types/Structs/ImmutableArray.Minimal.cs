@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Utils;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
 public partial struct ImmutableArray<T> : IEquatable<ImmutableArray<T>>, IImmutableArray

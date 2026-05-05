@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using TeleCore.Unsorted;
+using TeleCore.Things;
+using TeleCore.Types.Utils;
 using Verse;
 using Verse.AI;
 

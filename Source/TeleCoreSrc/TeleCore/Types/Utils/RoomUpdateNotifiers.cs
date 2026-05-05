@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using TeleCore.MapComponents;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 internal static class RoomUpdateNotifiers
 {

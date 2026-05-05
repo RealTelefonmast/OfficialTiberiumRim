@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld.Planet;
+using TeleCore.Types.Utils;
 using Verse;
 using Verse.Sound;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 public class ActionComposition : IExposable, ILoadReferenceable
 {

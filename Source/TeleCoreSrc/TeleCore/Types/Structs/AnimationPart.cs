@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using TeleCore.HelperClasses;
-using TeleCore.Unsorted;
+using TeleCore.Types.Exposables;
 using Verse;
 
-namespace TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure;
+namespace TeleCore.Types.Structs;
 
 public struct AnimationPart : IExposable
 {

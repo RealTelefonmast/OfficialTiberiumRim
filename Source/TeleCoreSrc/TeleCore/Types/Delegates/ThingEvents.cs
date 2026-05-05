@@ -1,4 +1,6 @@
-﻿namespace TeleCore.Unsorted;
+﻿using TeleCore.Types.Structs;
+
+namespace TeleCore.Types.Delegates;
 
 //Things
 public delegate void ThingSpawnedEvent(ThingStateChangedEventArgs args);

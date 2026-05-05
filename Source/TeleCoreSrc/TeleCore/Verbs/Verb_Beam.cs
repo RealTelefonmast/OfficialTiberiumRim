@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
+using TeleCore.Rendering;
+using TeleCore.Types;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Verbs;
 
 public class Verb_Beam : Verb_Tele
 {

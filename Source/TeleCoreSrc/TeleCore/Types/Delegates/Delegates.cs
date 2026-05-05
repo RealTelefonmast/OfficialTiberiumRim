@@ -1,6 +1,7 @@
 ﻿using TeleCore.Defs;
+using TeleCore.Types.Structs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Delegates;
 
 public delegate void NetworkVolumeStateChangedEvent<T>(VolumeChangedEventArgs<T> args) where T : FlowValueDef;
 

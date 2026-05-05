@@ -1,6 +1,7 @@
-﻿using Verse;
+﻿using TeleCore.Types.Utils;
+using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public readonly struct DefID<TDef> where TDef : Def
 {

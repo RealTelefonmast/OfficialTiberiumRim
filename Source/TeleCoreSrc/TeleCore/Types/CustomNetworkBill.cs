@@ -2,11 +2,17 @@ using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using TeleCore.Defs;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
+using TeleCore.UI;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 /// <summary>
 ///     Payment part

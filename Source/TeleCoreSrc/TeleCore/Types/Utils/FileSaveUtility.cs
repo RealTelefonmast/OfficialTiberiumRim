@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class FileSaveUtility
 {

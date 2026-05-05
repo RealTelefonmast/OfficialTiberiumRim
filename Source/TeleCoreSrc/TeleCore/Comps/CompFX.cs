@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TeleCore.Rendering;
-using TeleCore.Unsorted;
+using TeleCore.Types;
 using UnityEngine;
 using Verse;
 

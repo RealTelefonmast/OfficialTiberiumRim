@@ -1,4 +1,4 @@
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Interfaces;
 
 public interface IEdge<out TVertex> where TVertex : IVertex
 {

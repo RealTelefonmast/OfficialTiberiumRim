@@ -1,6 +1,7 @@
-﻿using Verse;
+﻿using TeleCore.UI;
+using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class BeamProperties
 {

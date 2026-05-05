@@ -2,7 +2,7 @@
 using RimWorld.Planet;
 using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class SimpleWorldGrid
 {

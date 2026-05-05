@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using TeleCore.MapComponents;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class TeleTickManager
 {

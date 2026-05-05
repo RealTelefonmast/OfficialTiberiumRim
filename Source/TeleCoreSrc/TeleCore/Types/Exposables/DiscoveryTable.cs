@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TeleCore.Defs;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 public class DiscoveryTable : IExposable
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Interfaces;
 
 /// <summary>
 ///     An <see cref="IEnumerator{T}" />-like interface that does not derive from <see cref="IDisposable" />.

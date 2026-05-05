@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using TeleCore.Defs;
+using TeleCore.Types.Delegates;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
+using FlowFailureReason = TeleCore.Types.Structs.FlowFailureReason;
+using FlowOperation = TeleCore.Types.Structs.FlowOperation;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 public abstract class FlowVolumeBase<TValue> : IExposable, INotifyFlowEvent where TValue : FlowValueDef
 {

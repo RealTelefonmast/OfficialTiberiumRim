@@ -1,10 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
 using TeleCore.Defs;
+using TeleCore.Types.Structs;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 /// <summary>
 ///     Manages static gas metadata and memory allocation for the gas grid system.

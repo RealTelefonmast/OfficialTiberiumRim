@@ -1,7 +1,6 @@
-﻿using TeleCore.Rendering.UI.DynaUI;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 internal class TextureLayerView : Rendering.UI.DynaUI.UIElement
 {

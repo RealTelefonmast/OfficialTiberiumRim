@@ -1,8 +1,7 @@
-﻿using TeleCore.UI;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class DebugPlaySetting_RoomDialog : PlaySettingsWorker
 {

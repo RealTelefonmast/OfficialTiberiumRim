@@ -1,8 +1,9 @@
 ﻿using RimWorld;
+using TeleCore.UI;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class TeleVerbUtilities
 {

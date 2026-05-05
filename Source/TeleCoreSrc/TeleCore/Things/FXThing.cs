@@ -2,11 +2,14 @@
 using RimWorld;
 using TeleCore.Comps;
 using TeleCore.Defs;
-using TeleCore.Rendering;
+using TeleCore.Types;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Things;
 
 /// <summary>
 ///     A basic implementation of the <see cref="IFXLayerProvider" /> interface, uses <see cref="ThingWithComps" /> as a

@@ -1,6 +1,6 @@
 using TeleCore.Defs;
 
-namespace TeleCore;
+namespace TeleCore.Types.Interfaces;
 
 public interface IDiscoverable
 {

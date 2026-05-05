@@ -1,6 +1,6 @@
 // Preserved from TeleCore/RoomComponents/FlowResult.cs (commented-out struct, not atmosphere-specific)
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 /*
 public struct FlowResult
 {

@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using TeleCore.Defs;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Utils;
+using TeleCore.UI;
 using TeleCore.WorldComponents;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class SubWindow_Projects
 {

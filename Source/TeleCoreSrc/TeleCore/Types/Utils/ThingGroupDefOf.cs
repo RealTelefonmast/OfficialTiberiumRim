@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using TeleCore.Defs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 [DefOf]
 public static class ThingGroupDefOf

@@ -1,11 +1,12 @@
 using System.Linq;
 using System.Runtime.InteropServices;
 using TeleCore.Defs;
+using TeleCore.MapComponents;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct GasCellStack

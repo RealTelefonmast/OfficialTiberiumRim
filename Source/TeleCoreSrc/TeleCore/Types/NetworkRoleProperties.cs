@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Xml;
 using TeleCore.Defs;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class NetworkRoleProperties
 {

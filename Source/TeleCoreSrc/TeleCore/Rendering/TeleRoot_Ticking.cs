@@ -1,8 +1,9 @@
 ﻿using System.Diagnostics;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering;
 
 public class TeleRoot_Ticking : MonoBehaviour
 {

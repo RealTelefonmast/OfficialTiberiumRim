@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 /// <summary>
 ///     The config for the IO cells around a network structure.

@@ -1,9 +1,10 @@
 using System.Xml;
 using RimWorld;
 using TeleCore.Defs;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class AtmosphericIncidentFilter : Editable
 {

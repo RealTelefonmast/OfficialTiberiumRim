@@ -3,7 +3,7 @@ using RimWorld;
 using Verse;
 using Verse.AI.Group;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public enum RaidMode
 {

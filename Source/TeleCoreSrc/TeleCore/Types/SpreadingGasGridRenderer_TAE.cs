@@ -2,12 +2,13 @@
 
 using System.Runtime.InteropServices;
 using LudeonTK;
+using TeleCore.Types.Utils;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [StructLayout(LayoutKind.Sequential)]
 internal struct GasMeshProperties_TAE

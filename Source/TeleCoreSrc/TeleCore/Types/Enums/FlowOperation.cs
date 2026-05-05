@@ -1,4 +1,4 @@
-﻿namespace TeleCore.Unsorted;
+﻿namespace TeleCore.Types.Enums;
 
 public enum FlowOperation
 {

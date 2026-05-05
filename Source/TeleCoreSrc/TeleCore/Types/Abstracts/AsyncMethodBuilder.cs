@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using TeleCore.Types.Interfaces;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Abstracts;
 
 public abstract class AsyncMethodBuilder<TTask, TResult, TResultGet> : IAsyncMethodBuilder<TTask, TResult>
     where TTask : ITask<TResult, TResultGet>

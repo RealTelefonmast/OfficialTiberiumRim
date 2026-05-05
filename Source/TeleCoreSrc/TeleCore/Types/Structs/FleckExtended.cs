@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 //TODO: Make new fleck based on thrown which has speed falloff and flight curves
 public struct FleckExtended : IFleck

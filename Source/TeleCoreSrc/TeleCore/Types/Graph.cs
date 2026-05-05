@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using DelaunatorSharp;
+using TeleCore.Types.Interfaces;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class Node : INode
 {

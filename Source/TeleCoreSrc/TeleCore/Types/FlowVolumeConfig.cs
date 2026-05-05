@@ -3,7 +3,7 @@ using System.Linq;
 using TeleCore.Defs;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class FlowVolumeConfig<T> where T : FlowValueDef
 {

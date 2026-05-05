@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 //TODO: Fill out for tiberium cell filling
 public static class AdjacentCellFiller

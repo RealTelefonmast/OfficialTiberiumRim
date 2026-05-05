@@ -1,7 +1,7 @@
 ﻿using TeleCore.Defs;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class DiscoveryProperties : Editable
 {

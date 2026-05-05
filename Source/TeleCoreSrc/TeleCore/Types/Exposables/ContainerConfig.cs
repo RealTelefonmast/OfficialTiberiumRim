@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using TeleCore.Defs;
+using TeleCore.Types.Abstracts;
+using TeleCore.Types.Structs;
+using TeleCore.UI;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 public class ContainerConfig<TDef> : IExposable
     where TDef : FlowValueDef

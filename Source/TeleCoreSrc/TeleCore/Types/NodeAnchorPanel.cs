@@ -1,9 +1,11 @@
 ﻿using System.Linq;
+using TeleCore.Types.Abstracts;
+using TeleCore.Types.Utils;
 using TeleCore.UI;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class NodeAnchorPanel
 {

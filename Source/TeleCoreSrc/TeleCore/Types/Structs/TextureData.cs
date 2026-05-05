@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using TeleCore.Types.Utils;
+using TeleCore.UI;
+using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public struct TextureData : IExposable
 {

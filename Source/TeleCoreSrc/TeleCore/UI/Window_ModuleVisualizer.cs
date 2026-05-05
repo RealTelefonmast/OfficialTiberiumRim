@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TeleCore.Unsorted;
+using TeleCore.Types;
+using TeleCore.Types.Abstracts;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 using Verse.Noise;

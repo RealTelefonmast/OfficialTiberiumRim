@@ -2,7 +2,6 @@
 using System.Linq;
 using RimWorld;
 using TeleCore.CompProperties;
-using TeleCore.Unsorted;
 using Verse;
 
 namespace TeleCore.Hediffs;

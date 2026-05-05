@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TeleCore.Rendering
+namespace TeleCore.Types.Abstracts
 {
     public abstract class CachedWindow
     {

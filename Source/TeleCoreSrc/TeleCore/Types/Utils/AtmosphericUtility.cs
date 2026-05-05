@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using TeleCore.Defs;
+using TeleCore.MapComponents;
+using TeleCore.Types.Structs;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class AtmosphericUtility
 {

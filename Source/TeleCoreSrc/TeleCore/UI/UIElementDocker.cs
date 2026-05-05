@@ -1,8 +1,7 @@
-﻿using TeleCore.Rendering.UI.DynaUI;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 //TODO: Assign docks and manage size/pos of docked elements during docking
 public class UIElementDocker : Rendering.UI.DynaUI.UIElement

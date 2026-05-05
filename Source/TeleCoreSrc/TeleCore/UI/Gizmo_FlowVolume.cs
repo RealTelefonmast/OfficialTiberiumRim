@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Defs;
-using TeleCore.Unsorted;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 

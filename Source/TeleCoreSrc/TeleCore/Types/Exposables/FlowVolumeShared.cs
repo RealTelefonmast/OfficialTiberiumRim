@@ -1,7 +1,7 @@
 ﻿using TeleCore.Defs;
 using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 public class FlowVolumeShared<T> : FlowVolumeBase<T> where T : FlowValueDef
 {

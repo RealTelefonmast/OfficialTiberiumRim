@@ -1,7 +1,7 @@
 ﻿using System.Xml.Serialization;
 using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [XmlRoot("MetaData")]
 public class TextureMeta

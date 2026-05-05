@@ -1,8 +1,9 @@
 ﻿using System.Reflection;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Settings;
 
 public class TeleCoreMod : Mod
 {

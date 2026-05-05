@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Defs;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.UI;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class NetworkComponentProperties
 {

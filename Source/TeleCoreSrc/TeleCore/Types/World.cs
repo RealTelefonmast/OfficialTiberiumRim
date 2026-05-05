@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using TeleCore.Types.Utils;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public unsafe class World
 {

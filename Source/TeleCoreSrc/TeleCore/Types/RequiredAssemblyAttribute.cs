@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = true)]
 public class RequiredAssemblyAttribute(AssemblyName name) : Attribute

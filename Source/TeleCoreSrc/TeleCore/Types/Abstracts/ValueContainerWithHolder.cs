@@ -1,7 +1,9 @@
 ﻿using TeleCore.Defs;
 using TeleCore.FlowCore;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Structs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Abstracts;
 
 //Container Template implementing IContainerHolder
 public abstract class ValueContainerWithHolder<TValue, THolder> : ValueContainerBase<TValue>

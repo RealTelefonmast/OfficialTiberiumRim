@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TeleCore.Unsorted;
+using TeleCore.Types.Entities;
+using TeleCore.Types.Utils;
 using Verse;
 
 namespace TeleCore.MapComponents;

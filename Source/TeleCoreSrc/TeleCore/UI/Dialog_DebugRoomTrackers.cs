@@ -1,5 +1,8 @@
 ﻿using System.Linq;
-using TeleCore.Unsorted;
+using TeleCore.MapComponents;
+using TeleCore.RoomComponents;
+using TeleCore.Types;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 using GridLayout = Verse.GridLayout;

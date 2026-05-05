@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Hediffs;
-using TeleCore.Unsorted;
+using TeleCore.Types;
 using Verse;
 
 namespace TeleCore.CompProperties;

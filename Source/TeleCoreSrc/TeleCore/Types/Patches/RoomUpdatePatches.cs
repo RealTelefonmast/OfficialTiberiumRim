@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using HarmonyLib;
+using TeleCore.MapComponents;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 /// <summary>
 ///     Main handling of changes in regions and rooms of RimWorld

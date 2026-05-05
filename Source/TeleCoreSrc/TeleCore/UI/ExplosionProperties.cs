@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class ExplosionProperties : Editable
 {

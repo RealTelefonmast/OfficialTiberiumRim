@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Interfaces;
 
 public interface IGraph<TVertex, TEdge>
     where TEdge : IEdge<TVertex>

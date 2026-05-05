@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public unsafe class Vertex
 {

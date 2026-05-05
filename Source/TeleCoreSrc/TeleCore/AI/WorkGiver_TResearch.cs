@@ -3,7 +3,8 @@
 using System.Collections.Generic;
 using RimWorld;
 using TeleCore.Defs;
-using TeleCore.Unsorted;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Utils;
 using TeleCore.WorldComponents;
 using Verse;
 using Verse.AI;

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using TeleCore.Rendering.Tools.RWAnimator.AnimationDataStructure;
-using TeleCore.Unsorted;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 
 namespace TeleCore.Defs;

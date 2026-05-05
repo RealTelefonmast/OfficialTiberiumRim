@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public static partial class TWidgets
 {

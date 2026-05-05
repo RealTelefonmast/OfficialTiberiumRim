@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class TProfiler
 {

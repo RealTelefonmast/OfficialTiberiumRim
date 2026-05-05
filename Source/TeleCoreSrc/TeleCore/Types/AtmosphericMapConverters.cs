@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TeleCore.Types.Abstracts;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 internal delegate void AtmosphereConverterEventInternal(Thing thing, List<AtmosphereConverterBase> results);
 

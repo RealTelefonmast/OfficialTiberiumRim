@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Verbs;
 
 public class Verb_BurstToTarget : Verb_ProjectileExtended
 {

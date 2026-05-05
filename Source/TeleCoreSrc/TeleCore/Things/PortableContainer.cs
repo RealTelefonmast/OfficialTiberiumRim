@@ -3,10 +3,14 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using TeleCore.Defs;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Utils;
+using TeleCore.UI;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Things;
 
 /// <summary>
 ///     Temporary <see cref="NetworkContainer" /> holder spawned upon deconstruction of a <see cref="Verse.Building" />

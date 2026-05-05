@@ -1,6 +1,6 @@
 // Preserved from TiberiumRim/Research/Events/EventScannerTable.cs
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class EventScannerTable
 {

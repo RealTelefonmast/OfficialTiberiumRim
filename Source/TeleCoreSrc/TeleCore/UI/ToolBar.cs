@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
-using TeleCore.Rendering.UI.DynaUI;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class ToolBar : Rendering.UI.DynaUI.UIElement
 {

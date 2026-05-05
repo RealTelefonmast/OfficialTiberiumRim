@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class XmlSerializer : IDisposable
 {

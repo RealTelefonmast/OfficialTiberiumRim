@@ -1,4 +1,8 @@
-namespace TeleCore.Unsorted;
+using TeleCore.MapComponents;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
+
+namespace TeleCore.Types;
 
 public class DynamicAtmosphericDataTracker : ThingTrackerComp
 {

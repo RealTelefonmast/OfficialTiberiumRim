@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
-using TeleCore.Rendering.UI.DynaUI;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class ElementScroller : Rendering.UI.DynaUI.UIElement
 {

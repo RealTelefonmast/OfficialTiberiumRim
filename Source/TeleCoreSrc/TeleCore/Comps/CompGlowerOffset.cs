@@ -1,6 +1,6 @@
 ﻿using RimWorld;
 using TeleCore.CompProperties;
-using TeleCore.Unsorted;
+using TeleCore.Types.Utils;
 using Verse;
 
 namespace TeleCore.Comps;

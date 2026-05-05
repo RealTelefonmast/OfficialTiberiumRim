@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using RimWorld;
+using TeleCore.UI;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 internal static class IncidentFilterDB
 {

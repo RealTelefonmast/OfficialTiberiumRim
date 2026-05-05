@@ -3,7 +3,7 @@ using HarmonyLib;
 using RimWorld;
 using TeleCore.Defs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 internal static class FactionPatches
 {

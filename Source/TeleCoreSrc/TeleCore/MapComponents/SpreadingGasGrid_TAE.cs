@@ -1,11 +1,12 @@
 // Preserved from TeleCore/SpreadingGas/SpreadingGasGrid.cs
 
 using System.Runtime.CompilerServices;
+using TeleCore.Types.Utils;
 using Unity.Collections;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.MapComponents;
 
 //TODO: Make rule based sprading and dissipation: ie: if a gas cell is surrounded by gas of the same type, it spreads less than a cell with free neighbours => viscosity simulation
 public unsafe class SpreadingGasGrid_TAE : MapInformation

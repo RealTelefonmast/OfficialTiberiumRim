@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using TeleCore.Types.Exposables;
+using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class GPUTools
 {

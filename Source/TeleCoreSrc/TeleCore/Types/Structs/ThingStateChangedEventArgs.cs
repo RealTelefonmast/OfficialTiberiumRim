@@ -1,6 +1,7 @@
-﻿using Verse;
+﻿using TeleCore.Types.Enums;
+using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public struct ThingStateChangedEventArgs
 {

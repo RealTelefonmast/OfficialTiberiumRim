@@ -5,13 +5,14 @@ using HarmonyLib;
 using RimWorld;
 using RimWorld.IO;
 using TeleCore.Hediffs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
 //TODO: Resolve TiberiumRim namespace references after consolidation
 //using TiberiumRim;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 internal static class InjectPatches
 {

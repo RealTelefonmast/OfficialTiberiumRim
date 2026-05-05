@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public struct DisposableAction : IDisposable
 {

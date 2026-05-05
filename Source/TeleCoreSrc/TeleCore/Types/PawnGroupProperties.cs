@@ -1,6 +1,6 @@
 ﻿using RimWorld;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class PawnGroupProperties
 {

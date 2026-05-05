@@ -1,6 +1,6 @@
 // Preserved from TeleCore/Caching/CachedAtmosData.cs (DefValueStack<AtmosphericDef> — no TAC counterpart)
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public struct CachedAtmosData_TAE
 {

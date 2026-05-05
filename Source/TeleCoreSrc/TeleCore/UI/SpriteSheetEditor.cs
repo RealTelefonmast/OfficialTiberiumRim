@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using TeleCore.Rendering.UI.DynaUI;
+using TeleCore.Types;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class SpriteSheetEditor : Rendering.UI.DynaUI.UIElement, IDragAndDropReceiver
 {
@@ -51,8 +53,8 @@ public class SpriteSheetEditor : Rendering.UI.DynaUI.UIElement, IDragAndDropRece
     public Texture Texture => texture.Texture;
     public List<SpriteTile> Tiles { get; }
 
-    private Rect TopPartRect => InRect.TopPartPixels(_GridPixels + 20);
-    private Rect BottomRect => InRect.BottomPartPixels(InRect.height - (_GridPixels + 20));
+    private Rect TopPartRect => GenUI.TopPartPixels(InRect, _GridPixels + 20);
+    private Rect BottomRect => GenUI.BottomPartPixels(InRect, InRect.height - (_GridPixels + 20));
 
     //Work Area
     private int TileSize => GridSizes[currentScaleIndex] * _MinTileSize;
@@ -140,7 +142,7 @@ public class SpriteSheetEditor : Rendering.UI.DynaUI.UIElement, IDragAndDropRece
         if (Input.GetKeyUp(KeyCode.LeftShift)) Shifting = false;
 
         //
-        if (CanvasRect.Contains(StartDragPos) && CanvasRect.Contains(EndDragPos))
+        if (CanvasRect.Contains((Vector2)StartDragPos) && CanvasRect.Contains((Vector2)EndDragPos))
         {
             var startDragSnapped = MousePosSnapped(StartDragPos - CanvasRect.position);
             var dragDiffFromSnapped = EndDragPos - CanvasRect.position - startDragSnapped;

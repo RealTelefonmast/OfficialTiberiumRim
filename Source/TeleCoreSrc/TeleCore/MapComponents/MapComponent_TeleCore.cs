@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using TeleCore.Unsorted;
+using TeleCore.Types.Utils;
 using Verse;
 
 //TODO: Resolve TiberiumRim namespace references after consolidation

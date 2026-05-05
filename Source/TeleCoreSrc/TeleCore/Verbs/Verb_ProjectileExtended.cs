@@ -1,7 +1,9 @@
 ﻿using RimWorld;
+using TeleCore.Rendering;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Verbs;
 
 public class Verb_ProjectileExtended : Verb_Tele
 {

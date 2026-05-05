@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 /// <summary>
 ///     A simple view of the immutable collection that the debugger can show to the developer.

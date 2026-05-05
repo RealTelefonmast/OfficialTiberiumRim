@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Utils;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public readonly partial struct ImmutableArray<T> : IList<T>, IList, IStructuralComparable, IStructuralEquatable,
     IImmutableList<T>

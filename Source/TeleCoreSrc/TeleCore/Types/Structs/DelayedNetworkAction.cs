@@ -1,6 +1,7 @@
-﻿using Verse;
+﻿using TeleCore.Types.Interfaces;
+using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 internal enum DelayedNetworkActionType
 {

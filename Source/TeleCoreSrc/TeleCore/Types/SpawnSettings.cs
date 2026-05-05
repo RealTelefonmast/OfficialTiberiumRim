@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using TeleCore.UI;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public enum SpawnMode
 {

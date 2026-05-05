@@ -1,9 +1,10 @@
 // TODO: Decouple from TiberiumRim-specific types (TRUtils, TRLog, TRContent, TRCDefOf, TRThingDef)
 
+using TeleCore.Types.Exposables;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class SubWindow_Events
 {

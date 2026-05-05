@@ -1,7 +1,8 @@
 ﻿using System.Xml;
+using TeleCore.Types.Interfaces;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 /// <summary>
 ///     Allows loading a simple <see cref="OneOf" /> for int and float.

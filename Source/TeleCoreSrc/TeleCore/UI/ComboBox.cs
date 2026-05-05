@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class ComboBox : Rendering.UI.DynaUI.UIElement
 {

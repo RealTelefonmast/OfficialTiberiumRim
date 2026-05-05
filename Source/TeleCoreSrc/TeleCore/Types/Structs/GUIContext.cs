@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public struct GUIContext
 {

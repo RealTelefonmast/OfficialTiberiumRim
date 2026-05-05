@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using TeleCore.Rendering.UI.DynaUI;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class EffectCanvas : Rendering.UI.DynaUI.UIElement, IDragAndDropReceiver
 {

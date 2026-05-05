@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TeleCore.Comps;
 using TeleCore.Defs;
-using TeleCore.Unsorted;
+using TeleCore.Types.Utils;
 using Verse;
 
 namespace TeleCore.CompProperties;

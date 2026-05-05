@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using RimWorld;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 /// <summary>
 ///     A data container attached to vanilla verbs as an outside data component!

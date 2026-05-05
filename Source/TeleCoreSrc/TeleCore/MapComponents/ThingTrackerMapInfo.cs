@@ -1,7 +1,9 @@
 ﻿using System;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.MapComponents;
 
 /// <summary>
 /// </summary>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using TeleCore.Unsorted;
+using TeleCore.Types;
+using TeleCore.Types.Utils;
+using TeleCore.UI;
 using Verse;
 
 namespace TeleCore.Defs;

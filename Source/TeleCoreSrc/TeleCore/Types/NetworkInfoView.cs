@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using RimWorld;
 using TeleCore.Defs;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Utils;
 using TeleCore.UI;
 using UnityEngine;
 using Verse;
 
 //using Multiplayer.API;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class NetworkInfoView
 {

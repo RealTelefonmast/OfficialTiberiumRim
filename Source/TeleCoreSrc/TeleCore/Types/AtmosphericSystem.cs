@@ -1,9 +1,16 @@
 using System;
 using System.Collections.Generic;
 using TeleCore.Defs;
+using TeleCore.Rendering;
+using TeleCore.RoomComponents;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
+using AtmosphericRealm = TeleCore.Types.Enums.AtmosphericRealm;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 //TODO: Add a visual readout of a graph between all roomcomps via interfaces
 

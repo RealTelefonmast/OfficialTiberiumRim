@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using TeleCore.CompProperties;
 using TeleCore.Graphics;
-using TeleCore.Unsorted;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Utils;
+using TeleCore.UI;
 using Verse;
 
 namespace TeleCore.Defs;

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TeleCore.Defs;
+using TeleCore.Types.Exposables;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [TestFixture]
 public class FlowVolumeTests

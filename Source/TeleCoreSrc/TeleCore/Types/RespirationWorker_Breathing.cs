@@ -1,8 +1,9 @@
 ﻿using TeleCore.Needs;
+using TeleCore.Types.Abstracts;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class RespirationWorker_Breathing : RespirationWorker
 {

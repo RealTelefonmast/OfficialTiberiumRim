@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using TeleCore.Defs;
 using Verse;
+using AtmosphericRealm = TeleCore.Types.Enums.AtmosphericRealm;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.UI;
 
 public class RealmConfig : Editable
 {

@@ -3,10 +3,13 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
+using TeleCore.Verbs;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 internal static class VerbPatches
 {

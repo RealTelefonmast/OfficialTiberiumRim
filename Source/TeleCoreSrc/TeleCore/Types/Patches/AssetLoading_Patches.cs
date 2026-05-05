@@ -1,8 +1,9 @@
 ﻿using HarmonyLib;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Patches;
 
 internal static class AssetLoading_Patches
 {

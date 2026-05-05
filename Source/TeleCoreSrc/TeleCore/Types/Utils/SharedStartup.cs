@@ -1,4 +1,4 @@
-﻿namespace TeleCore.Unsorted;
+﻿namespace TeleCore.Types.Utils;
 
 [TeleCoreStartupClass]
 public static class SharedStartup

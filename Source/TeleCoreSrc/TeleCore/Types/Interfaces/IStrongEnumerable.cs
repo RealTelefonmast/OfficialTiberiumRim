@@ -1,4 +1,4 @@
-﻿namespace TeleCore.Unsorted;
+﻿namespace TeleCore.Types.Interfaces;
 
 /// <summary>
 ///     An interface that must be implemented by collections that want to avoid

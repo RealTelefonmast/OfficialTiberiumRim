@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
 using TeleCore.CompProperties;
-using TeleCore.Rendering;
-using TeleCore.Unsorted;
+using TeleCore.Types;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 

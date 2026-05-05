@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Interfaces;
 
 /// <summary>
 ///     Describes an ordered collection of elements.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Pool;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public struct HediffIterator<THediff>() : IDisposable
     where THediff : Hediff

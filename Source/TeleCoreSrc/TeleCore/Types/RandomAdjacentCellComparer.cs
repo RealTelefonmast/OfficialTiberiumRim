@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Verse;
 using Verse.Noise;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class RandomAdjacentCellComparer : IComparer<IntVec3>
 {

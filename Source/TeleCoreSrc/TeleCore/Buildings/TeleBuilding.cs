@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using TeleCore.Comps;
 using TeleCore.Defs;
-using TeleCore.Unsorted;
+using TeleCore.Types.Interfaces;
+using TeleCore.Types.Utils;
+using TeleCore.UI;
 using Verse;
 
 namespace TeleCore.Buildings;

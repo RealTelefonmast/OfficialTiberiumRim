@@ -3,7 +3,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 [Flags]
 public enum BorderType : byte

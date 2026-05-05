@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using TeleCore.Defs;
+using TeleCore.Types.Enums;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class NetworkValueFilter : FlowValueFilter<NetworkValueDef>
 {

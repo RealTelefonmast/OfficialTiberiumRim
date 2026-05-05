@@ -2,9 +2,10 @@
 using System.Linq;
 using System.Text;
 using TeleCore.Defs;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public struct NetworkValueStack
 {

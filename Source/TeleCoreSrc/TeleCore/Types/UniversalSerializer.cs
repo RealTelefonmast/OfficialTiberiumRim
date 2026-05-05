@@ -2,7 +2,7 @@
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class UniversalSerializer
 {

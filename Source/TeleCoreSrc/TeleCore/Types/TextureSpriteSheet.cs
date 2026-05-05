@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Types.Structs;
 using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class TextureSpriteSheet
 {

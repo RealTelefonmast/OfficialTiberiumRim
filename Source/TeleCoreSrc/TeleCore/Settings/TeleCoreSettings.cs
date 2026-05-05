@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Settings;
 
 public class TeleCoreSettings : ModSettings
 {

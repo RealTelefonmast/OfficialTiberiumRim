@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using TeleCore.Types.Interfaces;
+using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 public static class UIDragger
 {

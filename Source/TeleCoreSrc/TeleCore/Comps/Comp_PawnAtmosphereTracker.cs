@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TeleCore.Defs;
-using TeleCore.Unsorted;
+using TeleCore.RoomComponents;
+using TeleCore.Types.Utils;
 using Verse;
 
 namespace TeleCore.Comps;

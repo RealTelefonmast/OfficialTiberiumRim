@@ -1,7 +1,8 @@
 ﻿using System;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [StaticConstructorOnStartup]
 public class StaticEventHandler

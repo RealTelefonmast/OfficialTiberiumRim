@@ -1,9 +1,10 @@
 ﻿using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Xml;
+using TeleCore.Types.Structs;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Exposables;
 
 public class DefValueLoadable<TDef, TValue> : IExposable
     where TDef : Def

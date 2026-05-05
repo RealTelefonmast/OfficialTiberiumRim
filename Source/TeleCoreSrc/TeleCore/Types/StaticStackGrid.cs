@@ -1,9 +1,11 @@
 ﻿using System.Runtime.InteropServices;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct StaticValue<TDef, TValue>

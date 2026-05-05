@@ -1,7 +1,8 @@
 ﻿using System;
+using TeleCore.Types.Enums;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 /// <summary>
 ///     Meant to be set and created in XML

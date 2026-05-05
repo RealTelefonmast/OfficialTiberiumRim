@@ -1,6 +1,6 @@
 ﻿using Verse.AI;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 public struct PawnPathResult
 {

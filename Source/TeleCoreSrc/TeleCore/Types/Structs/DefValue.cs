@@ -1,6 +1,8 @@
-﻿using Verse;
+﻿using TeleCore.Types.Exposables;
+using TeleCore.Types.Utils;
+using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 /// <summary>
 ///     Wraps any <see cref="Def" /> Type into a struct, attaching a numeric value

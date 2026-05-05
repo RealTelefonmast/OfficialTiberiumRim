@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TeleCore.Defs;
+using TeleCore.Types.Enums;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class NetworkComponentSet : IStringCache
 {

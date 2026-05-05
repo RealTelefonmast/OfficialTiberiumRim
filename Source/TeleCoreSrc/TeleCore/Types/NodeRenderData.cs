@@ -1,8 +1,9 @@
-﻿using TeleCore.UI;
+﻿using TeleCore.Types.Abstracts;
+using TeleCore.UI;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class NodeRenderData
 {

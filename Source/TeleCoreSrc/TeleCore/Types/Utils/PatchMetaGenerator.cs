@@ -2,7 +2,7 @@
 using System.Reflection;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 [TeleCoreStartupClass]
 public static class PatchFileGenerator

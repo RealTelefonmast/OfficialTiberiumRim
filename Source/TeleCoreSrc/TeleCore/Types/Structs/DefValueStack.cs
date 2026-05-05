@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 [StructLayout(LayoutKind.Explicit)]
 public struct UnsafeDefValue<TDef, TValue>

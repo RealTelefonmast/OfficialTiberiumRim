@@ -1,7 +1,9 @@
 ﻿using System;
+using TeleCore.Types;
+using TeleCore.Types.Utils;
 using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Rendering;
 
 /// <summary>
 ///     Experimental Updating of custom core related parts

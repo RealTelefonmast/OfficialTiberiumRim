@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Types.Abstracts;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class PawnInfoData
 {

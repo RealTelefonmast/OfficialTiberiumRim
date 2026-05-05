@@ -1,4 +1,4 @@
-using TeleCore.Unsorted;
+using TeleCore.RoomComponents;
 
 namespace TeleCore.Comps;
 

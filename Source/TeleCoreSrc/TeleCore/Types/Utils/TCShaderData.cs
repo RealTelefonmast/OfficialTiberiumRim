@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using TeleCore.Types.Structs;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Utils;
 
 internal static class TCShaderData
 {

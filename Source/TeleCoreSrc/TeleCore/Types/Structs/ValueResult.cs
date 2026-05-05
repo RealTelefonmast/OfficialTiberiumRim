@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using TeleCore.Defs;
+using TeleCore.Types.Utils;
 using UnityEngine;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types.Structs;
 
 /// <summary>
 ///     The result of a <see cref="ValueContainerBase{TValue}" /> Value-Change operation.

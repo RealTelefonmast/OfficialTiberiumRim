@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using RimWorld;
-using TeleCore.Unsorted;
+using TeleCore.Types.Exposables;
+using TeleCore.UI;
 using Verse;
 
 namespace TeleCore.Defs;

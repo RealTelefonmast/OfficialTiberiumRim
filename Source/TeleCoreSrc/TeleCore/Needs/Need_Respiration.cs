@@ -2,7 +2,7 @@ using System.Text;
 using RimWorld;
 using TeleCore.Comps;
 using TeleCore.Defs;
-using TeleCore.Unsorted;
+using TeleCore.Types.Exposables;
 using Verse;
 
 namespace TeleCore.Needs;

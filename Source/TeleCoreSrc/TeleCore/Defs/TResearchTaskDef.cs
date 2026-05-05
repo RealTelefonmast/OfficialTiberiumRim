@@ -4,7 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using TeleCore.Unsorted;
+using TeleCore.Types;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Exposables;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 

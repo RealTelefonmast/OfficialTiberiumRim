@@ -4,7 +4,7 @@ using TeleCore.Defs;
 using TeleCore.MapComponents;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class Debug_Tools_GasGrid
 {

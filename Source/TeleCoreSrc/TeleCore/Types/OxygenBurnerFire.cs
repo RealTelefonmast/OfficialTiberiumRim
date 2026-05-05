@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using RimWorld;
+using TeleCore.RoomComponents;
+using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Unsorted;
+namespace TeleCore.Types;
 
 public class OxygenBurnerFire : AtmosphereConverter
 {
