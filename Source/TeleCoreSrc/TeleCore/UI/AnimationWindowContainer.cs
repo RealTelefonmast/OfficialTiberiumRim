@@ -21,7 +21,7 @@ namespace TeleCore.UI;
 //              [Texture.2]
 //      [Rot.2]
 //          [Animation.0]
-internal class AnimationWindowContainer : UIElement
+internal class AnimationWindowContainer : Types.Structs.UIElement
 {
     private readonly TextureBrowser browser;
 

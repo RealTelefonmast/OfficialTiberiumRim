@@ -2,7 +2,7 @@
 
 namespace TeleCore.UI;
 
-public class CanvasElement : UIElement
+public class CanvasElement : Types.Structs.UIElement
 {
     private BaseCanvas _parentCanvas;
 
@@ -20,7 +20,7 @@ public class CanvasElement : UIElement
 
     //TODO use TRS of base class to set element TRS directly as required by canvas => No extra canvas layer simulation
 
-    protected override void Notify_AddedToParent(UIElement parent)
+    protected override void Notify_AddedToParent(Types.Structs.UIElement parent)
     {
         base.Notify_AddedToParent(parent);
         if (parent is BaseCanvas canvas) _parentCanvas = canvas;

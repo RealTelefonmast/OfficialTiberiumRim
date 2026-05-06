@@ -400,3 +400,6 @@ FodyWeavers.xsd
 # Claude Code — local config (contains sensitive local paths)
 .claude/settings.local.json
 /Source/TiberiumRim/.junie/AGENTS.md
+
+# Obsidian
+Source/Obsidian/

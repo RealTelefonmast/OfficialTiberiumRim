@@ -1,4 +1,5 @@
 ﻿using TeleCore.Defs;
+using TeleCore.Types.Abstracts;
 
 namespace TeleCore.Types.Structs;
 

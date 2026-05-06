@@ -1,5 +1,6 @@
 // Preserved from TeleCore/SpreadingGas/GasCellStack.cs
 
+using System.Linq;
 using System.Runtime.InteropServices;
 using Unity.Collections;
 using Verse;

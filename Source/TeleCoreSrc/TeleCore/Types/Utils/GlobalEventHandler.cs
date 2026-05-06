@@ -1,5 +1,6 @@
 ﻿using System;
 using TeleCore.Defs;
+using TeleCore.Types.Abstracts;
 using TeleCore.Types.Structs;
 
 namespace TeleCore.Types.Utils;

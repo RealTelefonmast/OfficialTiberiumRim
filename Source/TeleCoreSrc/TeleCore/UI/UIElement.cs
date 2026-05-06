@@ -27,10 +27,10 @@ public enum UIElementState
 
 public abstract class UIElement : IDraggable, IFocusable
 {
-    protected readonly List<UIElement> _children = new();
+    protected readonly List<Types.Structs.UIElement> _children = new();
 
     //Relation Holding
-    protected UIElement _parent;
+    protected Types.Structs.UIElement _parent;
 
     //Local Data
     protected Color bgColor = TColor.MenuSectionBGFillColor;
@@ -97,13 +97,13 @@ public abstract class UIElement : IDraggable, IFocusable
     public object DragAndDropData { get; protected set; }
 
     //Relations
-    public UIElement Parent
+    public Types.Structs.UIElement Parent
     {
         get => _parent;
         set => _parent = value;
     }
 
-    public virtual List<UIElement> ChildElements => _children;
+    public virtual List<Types.Structs.UIElement> ChildElements => _children;
 
     public virtual UIContainerMode ContainerMode => UIContainerMode.InOrder;
 
@@ -171,7 +171,7 @@ public abstract class UIElement : IDraggable, IFocusable
     public event NotifyCollectionChangedEventHandler CollectionChanged;
     public event ElementSelectedEventHandler ElementSelected;
 
-    private void SetParent(UIElement parent)
+    private void SetParent(Types.Structs.UIElement parent)
     {
         _parent = parent;
     }
@@ -186,7 +186,7 @@ public abstract class UIElement : IDraggable, IFocusable
         Size = size;
     }
 
-    public void SetProperties(UIElement parent = null, Vector2? pos = null, Vector2? size = null)
+    public void SetProperties(Types.Structs.UIElement parent = null, Vector2? pos = null, Vector2? size = null)
     {
         if (parent != null)
             SetParent(parent);
@@ -209,13 +209,13 @@ public abstract class UIElement : IDraggable, IFocusable
     }
 
     //Relation Functions
-    public T GetChildElement<T>() where T : UIElement
+    public T GetChildElement<T>() where T : Types.Structs.UIElement
     {
         return (T) ChildElements.First(t => t is T);
     }
 
     //Relation Changes
-    public void AddElement(UIElement newElement, Vector2? pos = null)
+    public void AddElement(Types.Structs.UIElement newElement, Vector2? pos = null)
     {
         switch (ContainerMode)
         {
@@ -239,7 +239,7 @@ public abstract class UIElement : IDraggable, IFocusable
         newElement.Notify_AddedToParent(this);
     }
 
-    public void RemoveElement(UIElement element)
+    public void RemoveElement(Types.Structs.UIElement element)
     {
         ChildElements.Remove(element);
         element.SetParent(null);
@@ -254,11 +254,11 @@ public abstract class UIElement : IDraggable, IFocusable
     //protected virtual void Notify_AddedElement(UIElement newElement) { }
     //protected virtual void Notify_RemovedElement(UIElement newElement) { }
 
-    protected virtual void Notify_AddedToParent(UIElement parent)
+    protected virtual void Notify_AddedToParent(Types.Structs.UIElement parent)
     {
     }
 
-    protected virtual void Notify_RemovedFromParent(UIElement parent)
+    protected virtual void Notify_RemovedFromParent(Types.Structs.UIElement parent)
     {
     }
 
@@ -286,11 +286,11 @@ public abstract class UIElement : IDraggable, IFocusable
     {
     }
 
-    protected virtual void Notify_ChildElementChanged(UIElement element)
+    protected virtual void Notify_ChildElementChanged(Types.Structs.UIElement element)
     {
     }
 
-    public virtual void Notify_ElementSelected(UIElement element, int index)
+    public virtual void Notify_ElementSelected(Types.Structs.UIElement element, int index)
     {
     }
 

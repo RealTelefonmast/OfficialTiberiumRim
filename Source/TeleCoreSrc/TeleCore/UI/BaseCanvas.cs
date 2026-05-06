@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
+using Color = UnityEngine.Color;
 using IDragAndDropReceiver = TeleCore.Types.Utils.IDragAndDropReceiver;
 using IDragAndDropReceiver = TeleCore.Types.Utils.IDragAndDropReceiver;
 using UIDragNDropper = TeleCore.Types.Utils.UIDragNDropper;

@@ -1,4 +1,5 @@
 ﻿using System;
+using TeleCore.Defs;
 using TeleCore.Types;
 using TeleCore.Types.Enums;
 using TeleCore.Types.Exposables;
@@ -35,9 +36,9 @@ public abstract class ClampWorker
     /// </summary>
     public abstract float MaxDivider { get; }
 
-    public virtual DefValueStack<FlowVolumeConfig<>.Values.NetworkValueDef, float> ClampFunction(
-        FlowInterface<NetworkPart, NetworkVolume, FlowVolumeConfig<>.Values.NetworkValueDef> iface,
-        DefValueStack<FlowVolumeConfig<>.Values.NetworkValueDef, float> f,
+    public virtual DefValueStack<NetworkValueDef, float> ClampFunction(
+        FlowInterface<NetworkPart, NetworkVolume, NetworkValueDef> iface,
+        DefValueStack<NetworkValueDef, float> f,
         ClampType type)
     {
         throw new NotImplementedException();

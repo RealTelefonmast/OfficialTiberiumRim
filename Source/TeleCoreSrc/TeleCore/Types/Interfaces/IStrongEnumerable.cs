@@ -1,4 +1,6 @@
-﻿namespace TeleCore.Types.Interfaces;
+﻿using TeleCore.Types.Utils;
+
+namespace TeleCore.Types.Interfaces;
 
 /// <summary>
 ///     An interface that must be implemented by collections that want to avoid
