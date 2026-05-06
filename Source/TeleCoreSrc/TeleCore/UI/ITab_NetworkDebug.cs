@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using TeleCore.Comps;
 using TeleCore.Defs;
 using TeleCore.Types.Interfaces;
 using TeleCore.Types.Utils;

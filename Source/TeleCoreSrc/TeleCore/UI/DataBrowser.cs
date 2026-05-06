@@ -9,7 +9,7 @@ using Verse;
 
 namespace TeleCore.UI;
 
-public class DataBrowser<T> : UIElement
+public class DataBrowser<T> : Types.Structs.UIElement
 {
     private const float _OptionSize = 40;
 

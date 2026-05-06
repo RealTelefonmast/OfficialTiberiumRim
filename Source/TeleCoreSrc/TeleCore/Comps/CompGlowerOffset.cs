@@ -1,16 +1,16 @@
 ﻿using RimWorld;
-using TeleCore.CompProperties;
 using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 public class CompGlowerOffset : ThingComp
 {
-    private CompFlickable Flickable;
     public ThingWithComps glower;
 
-    public CompProperties_GlowerOffset Props => (CompProperties_GlowerOffset)props;
+    private CompFlickable Flickable;
+
+    public CompProperties_GlowerOffset Props => (CompProperties_GlowerOffset)base.props;
 
     public override void PostExposeData()
     {
@@ -23,10 +23,8 @@ public class CompGlowerOffset : ThingComp
                 TLog.Warning("Glower was not spawned after respawn!");
                 var existing = parent.Position.GetFirstThing(parent.Map, Props.glowerDef);
                 existing?.DeSpawn();
-                glower = (ThingWithComps)GenSpawn.Spawn(Props.glowerDef, parent.Position + parent.Rotation.FacingCell,
-                    parent.Map);
+                glower = (ThingWithComps)GenSpawn.Spawn(Props.glowerDef, parent.Position + parent.Rotation.FacingCell, parent.Map);
             }
-
             Flickable ??= glower.GetComp<CompFlickable>();
         }
     }
@@ -36,14 +34,13 @@ public class CompGlowerOffset : ThingComp
         base.PostSpawnSetup(respawningAfterLoad);
         if (!respawningAfterLoad)
         {
-            glower = (ThingWithComps)GenSpawn.Spawn(Props.glowerDef, parent.Position + parent.Rotation.FacingCell,
-                parent.Map);
+            glower = (ThingWithComps)GenSpawn.Spawn(Props.glowerDef, parent.Position + parent.Rotation.FacingCell, parent.Map);
             Flickable = glower.GetComp<CompFlickable>();
             ToggleLight(false, true);
         }
     }
 
-    public override void PostDeSpawn(Map map)
+    public override void PostDeSpawn(Verse.Map map)
     {
         base.PostDeSpawn(map);
         glower.DeSpawn();
@@ -60,10 +57,8 @@ public class CompGlowerOffset : ThingComp
 
     public override void ReceiveCompSignal(string signal)
     {
-        var turnOn = signal == "PowerTurnedOn" || signal == "FlickedOn" || signal == "Refueled" ||
-                     signal == "ScheduledOn";
-        var turnOff = signal == "PowerTurnedOff" || signal == "FlickedOff" || signal == "RanOutOfFuel" ||
-                      signal == "ScheduledOff";
+        bool turnOn = signal == "PowerTurnedOn" || signal == "FlickedOn" || signal == "Refueled" || signal == "ScheduledOn";
+        bool turnOff = signal == "PowerTurnedOff" || signal == "FlickedOff" || signal == "RanOutOfFuel" || signal == "ScheduledOff";
         ToggleLight(turnOn, turnOff);
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using RimWorld;
-using TeleCore.Comps;
 using TeleCore.Defs;
 using TeleCore.Types.Enums;
 using TeleCore.Types.Interfaces;
@@ -9,7 +8,7 @@ using TeleCore.Types.Structs;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Types;
+namespace TeleCore;
 
 public class CompPowerPlant_Network : CompPowerPlant
 {

@@ -1,5 +1,4 @@
 using RimWorld;
-using TeleCore.Comps;
 using TeleCore.Defs;
 using TeleCore.Hediffs;
 using TeleCore.Types.Utils;

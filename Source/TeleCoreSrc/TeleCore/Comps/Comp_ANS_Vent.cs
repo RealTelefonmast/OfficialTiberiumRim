@@ -1,15 +1,14 @@
 using System;
 using RimWorld;
-using TeleCore.CompProperties;
 using TeleCore.Defs;
-using TeleCore.Types;
 using TeleCore.Types.Enums;
 using TeleCore.Types.Exposables;
 using TeleCore.Types.Structs;
 using TeleCore.Types.Utils;
+using TeleCore.Visual.VFX.FX.Layer;
 using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 public class Comp_ANS_Vent : Comp_AtmosphericNetworkStructure
 {

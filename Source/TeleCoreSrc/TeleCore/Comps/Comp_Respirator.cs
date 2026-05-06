@@ -2,7 +2,7 @@
 using TeleCore.Needs;
 using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 /// <summary>
 ///     Used to provide breathable gas via equipment - should usually be applied on an apparel.

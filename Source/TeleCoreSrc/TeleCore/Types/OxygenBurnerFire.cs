@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using RimWorld;
+using TeleCore.MapComponents;
 using TeleCore.RoomComponents;
 using TeleCore.Types.Utils;
 using UnityEngine;

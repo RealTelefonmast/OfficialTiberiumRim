@@ -5,7 +5,6 @@ using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using TeleCore.Buildings;
-using TeleCore.Comps;
 using TeleCore.Types;
 using TeleCore.Types.Utils;
 using UnityEngine;

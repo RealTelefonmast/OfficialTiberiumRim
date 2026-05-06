@@ -8,11 +8,8 @@ using TeleCore.UI;
 using UnityEngine;
 using Verse;
 using AnimationPart = Verse.AnimationPart;
-using KeyFrame = TeleCore.Types.Structs.KeyFrame;
-using KeyFrameData = TeleCore.Types.Structs.KeyFrameData;
-using TextureData = TeleCore.Types.Structs.TextureData;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 public struct RuntimeAnimationPart
 {
@@ -29,7 +26,7 @@ public struct RuntimeAnimationPart
     public bool Invalid => tag == null;
     public static RuntimeAnimationPart Empty => new();
 
-    public static RuntimeAnimationPart Create(AnimationSet set, AnimationPart part, Rot4 side)
+    public static RuntimeAnimationPart Create(AnimationSet set, TeleCore.Types.Structs.AnimationPart part, Rot4 side)
     {
         var animation = new RuntimeAnimationPart
         {
@@ -46,7 +43,7 @@ public struct RuntimeAnimationPart
         return animation;
     }
 
-    private void PopulateSubChains(AnimationPart part)
+    private void PopulateSubChains(TeleCore.Types.Structs.AnimationPart part)
     {
         foreach (var partFrames in part.keyFrames)
             //Create chain for texture of animation
@@ -361,7 +358,7 @@ public class Comp_AnimationRenderer : ThingComp
     //
     private RuntimeAnimationRenderer renderer;
 
-    public CompProperties_AnimationRenderer Props => (CompProperties_AnimationRenderer)props;
+    public CompProperties_AnimationRenderer Props => (CompProperties_AnimationRenderer) props;
 
     //Current Animation Data
     private bool ShouldFlip => parent.Rotation == Rot4.West;
@@ -432,7 +429,7 @@ public class Comp_AnimationRenderer : ThingComp
     }
 }
 
-public class CompProperties_AnimationRenderer : Verse.CompProperties
+public class CompProperties_AnimationRenderer : CompProperties
 {
     public AnimationDataDef animationDef;
     public string defaultAnimationTag;

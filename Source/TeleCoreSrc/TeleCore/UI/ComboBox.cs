@@ -2,7 +2,7 @@
 
 namespace TeleCore.UI;
 
-public class ComboBox : UIElement
+public class ComboBox : Types.Structs.UIElement
 {
     public ComboBox(Rect rect) : base(rect)
     {

@@ -1,5 +1,4 @@
-﻿using TeleCore.CompProperties;
-using TeleCore.Types.Abstracts;
+﻿using TeleCore.Types.Abstracts;
 using Verse;
 
 namespace TeleCore.Types;

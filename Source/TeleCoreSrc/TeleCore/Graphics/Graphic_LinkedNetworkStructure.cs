@@ -1,10 +1,9 @@
-﻿using TeleCore.Comps;
-using TeleCore.Types.Interfaces;
+﻿using TeleCore.Types.Interfaces;
 using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Graphics;
+namespace TeleCore;
 
 public class Graphic_LinkedNetworkStructure : Graphic_Linked
 {

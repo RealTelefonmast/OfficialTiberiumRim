@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
-using TeleCore.CompProperties;
-using TeleCore.Types;
 using TeleCore.Types.Enums;
 using TeleCore.Types.Exposables;
 using TeleCore.Types.Interfaces;
 using TeleCore.Types.Structs;
 using TeleCore.Types.Utils;
+using TeleCore.Visual.VFX.FX.Layer;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 public class Comp_Network_Pump : CompNetwork
 {

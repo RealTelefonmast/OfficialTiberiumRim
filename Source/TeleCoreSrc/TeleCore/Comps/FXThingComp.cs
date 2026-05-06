@@ -1,12 +1,12 @@
 ﻿using System;
 using RimWorld;
-using TeleCore.Types;
-using TeleCore.Types.Interfaces;
+using TeleCore.Interfaces;
 using TeleCore.Types.Structs;
+using TeleCore.Visual.VFX.FX.Layer;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 public class FXThingComp : TeleComp, IFXLayerProvider, IFXEffecterProvider
 {

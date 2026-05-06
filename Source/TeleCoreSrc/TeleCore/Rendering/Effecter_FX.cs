@@ -1,5 +1,4 @@
-﻿using TeleCore.Comps;
-using TeleCore.Types.Structs;
+﻿using TeleCore.Types.Structs;
 using Verse;
 
 namespace TeleCore.Rendering;

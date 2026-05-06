@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using HarmonyLib;
 using RimWorld;
-using TeleCore.CompProperties;
 using TeleCore.Types.Enums;
 using TeleCore.Types.Interfaces;
 using TeleCore.Types.Structs;

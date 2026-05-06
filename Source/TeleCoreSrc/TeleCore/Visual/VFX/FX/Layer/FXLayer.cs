@@ -1,13 +1,11 @@
 ﻿using System;
-using TeleCore.Comps;
 using TeleCore.Defs;
-using TeleCore.Graphics;
 using TeleCore.Types.Structs;
 using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Types;
+namespace TeleCore.Visual.VFX.FX.Layer;
 
 public class FXLayer
 {
@@ -170,7 +168,7 @@ public class FXLayer
         if (data.fade == null) return;
         var fade = data.fade;
         if (fade.opacityRange.Average <= 0) return;
-        var opaVal = TMath.OscillateBetween(fade.opacityRange.min, fade.opacityRange.max, fade.duration,
+        var opaVal = TMath.OscillateBetween(fade.opacityRange.min, fade.opacityRange.max, fade.opacityDuration,
             tick + parentInfo.TickOffset + fade.initialOpacityOffset);
         drawColor.a = opaVal;
         TLog.Debug($"[{parentInfo.ParentThing}, {Index}]Opacity: {opaVal}");

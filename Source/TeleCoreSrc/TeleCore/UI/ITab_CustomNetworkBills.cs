@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Text;
 using RimWorld;
-using TeleCore.Comps;
 using TeleCore.Defs;
 using TeleCore.Types;
 using TeleCore.Types.Exposables;

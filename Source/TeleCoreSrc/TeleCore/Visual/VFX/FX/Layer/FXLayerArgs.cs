@@ -1,6 +1,7 @@
 ﻿using System;
+using TeleCore.Visual.VFX.FX.Effecter;
 
-namespace TeleCore.Types;
+namespace TeleCore.Visual.VFX.FX.Layer;
 
 public class FXArgs : EventArgs
 {

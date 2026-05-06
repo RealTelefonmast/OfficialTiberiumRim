@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using TeleCore.Comps;
 using TeleCore.Defs;
 using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.CompProperties;
+namespace TeleCore;
 
 public class CompProperties_NetworkBillsCrafter : CompProperties_Network
 {

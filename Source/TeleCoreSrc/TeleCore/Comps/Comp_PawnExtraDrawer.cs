@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 //This comp allows easy manipulation/addition of pawn elements that should be drawn
 //TODO: Define fixed offsets of specific things, eye pos, head pos, torso etc..

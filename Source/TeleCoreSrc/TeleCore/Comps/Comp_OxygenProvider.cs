@@ -1,9 +1,7 @@
-using TeleCore.Defs;
 using TeleCore.Types;
-using TeleCore.Types.Exposables;
 using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 public class Comp_OxygenProvider : ThingComp
 {

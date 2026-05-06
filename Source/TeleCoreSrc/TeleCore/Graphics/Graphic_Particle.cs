@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TeleCore.Graphics;
+namespace TeleCore;
 
 [StaticConstructorOnStartup]
 public class Graphic_Particle : Graphic

@@ -1,4 +1,4 @@
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 /// <summary>
 ///     Takes in atmospheric gasses passively, or pushes them out

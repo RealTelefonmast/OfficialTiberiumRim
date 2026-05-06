@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TeleCore.Comps;
-using TeleCore.Types;
+using TeleCore.Types.Enums;
+using TeleCore.Visual.VFX.FX.Effecter;
+using TeleCore.Visual.VFX.FX.Layer;
 using Verse;
-using FXMode = TeleCore.Types.Enums.FXMode;
 
-namespace TeleCore.CompProperties;
+namespace TeleCore;
 
-public class CompProperties_FX : Verse.CompProperties
+public class CompProperties_FX : CompProperties
 {
     public List<FXEffecterData> effectLayers = new();
 

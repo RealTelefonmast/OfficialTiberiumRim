@@ -1,8 +1,8 @@
 ﻿using RimWorld;
-using TeleCore.Comps;
 using TeleCore.PlaceWorkers;
 using TeleCore.Types;
 using TeleCore.Types.Utils;
+using TeleCore.Visual.VFX.FX.Layer;
 using Verse;
 
 namespace TeleCore.Buildings;

@@ -1,12 +1,12 @@
 using System;
 using HarmonyLib;
 using RimWorld;
-using TeleCore.Comps;
 using TeleCore.Types.Structs;
+using TeleCore.Visual.VFX.FX.Layer;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Types.Interfaces;
+namespace TeleCore.Interfaces;
 
 /// <summary>
 ///     <para>

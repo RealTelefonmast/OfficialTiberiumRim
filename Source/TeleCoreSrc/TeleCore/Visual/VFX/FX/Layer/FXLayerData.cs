@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
+using TeleCore.Types;
 using TeleCore.Types.Enums;
+using TeleCore.Visual.VFX.FX.Layer.Properties;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Types;
+namespace TeleCore.Visual.VFX.FX.Layer;
 
 public class FXLayerData
 {

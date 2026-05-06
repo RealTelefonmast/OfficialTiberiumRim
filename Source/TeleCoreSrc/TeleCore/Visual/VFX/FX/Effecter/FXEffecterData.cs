@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TeleCore.Types;
+namespace TeleCore.Visual.VFX.FX.Effecter;
 
 public class FXEffecterData
 {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using RimWorld;
-using TeleCore.Comps;
 using TeleCore.Defs;
 using TeleCore.Types;
 using TeleCore.Types.Exposables;

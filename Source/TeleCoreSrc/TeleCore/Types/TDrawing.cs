@@ -1,4 +1,5 @@
 ﻿using TeleCore.Defs;
+using TeleCore.Visual.VFX.FX.Layer;
 using UnityEngine;
 using Verse;
 

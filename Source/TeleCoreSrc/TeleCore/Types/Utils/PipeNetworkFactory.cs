@@ -1,5 +1,4 @@
-﻿using TeleCore.Comps;
-using TeleCore.Defs;
+﻿using TeleCore.Defs;
 using TeleCore.Types.Interfaces;
 using Verse;
 

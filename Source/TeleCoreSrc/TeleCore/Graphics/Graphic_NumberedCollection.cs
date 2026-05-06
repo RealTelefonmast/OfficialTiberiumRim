@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace TeleCore.Graphics;
+namespace TeleCore;
 
 public class Graphic_NumberedCollection : Graphic_Collection
 {

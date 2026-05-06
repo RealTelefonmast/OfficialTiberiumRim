@@ -1,12 +1,11 @@
 using RimWorld;
-using TeleCore.CompProperties;
 using TeleCore.Types.Enums;
 using TeleCore.Types.Structs;
 using TeleCore.Types.Utils;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 public class Comp_ANS_VentBase : Comp_AtmosphericNetworkStructure
 {

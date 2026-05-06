@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TeleCore.CompProperties;
 using TeleCore.Types;
 using Verse;
 

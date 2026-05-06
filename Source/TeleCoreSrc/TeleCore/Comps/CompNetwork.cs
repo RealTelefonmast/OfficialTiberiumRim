@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using RimWorld;
-using TeleCore.CompProperties;
 using TeleCore.Defs;
 using TeleCore.MapComponents;
 using TeleCore.Types;
@@ -12,9 +11,10 @@ using TeleCore.Types.Interfaces;
 using TeleCore.Types.Structs;
 using TeleCore.Types.Utils;
 using TeleCore.UI;
+using TeleCore.Visual.VFX.FX.Layer;
 using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 public class CompNetwork : FXThingComp, INetworkStructure
 {

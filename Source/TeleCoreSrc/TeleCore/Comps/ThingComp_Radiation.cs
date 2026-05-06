@@ -1,5 +1,6 @@
-﻿namespace TeleCore.Types;
+﻿namespace TeleCore;
 
 public class ThingComp_Radiation
 {
+
 }

@@ -4,7 +4,7 @@ using TeleCore.Hediffs;
 using TeleCore.Types;
 using Verse;
 
-namespace TeleCore.CompProperties;
+namespace TeleCore;
 
 public class HediffCompProperties_RangedVerb : HediffCompProperties
 {

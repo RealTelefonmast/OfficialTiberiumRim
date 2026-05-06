@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using TeleCore.Comps;
 using TeleCore.Defs;
 using TeleCore.Types;
 using TeleCore.Types.Enums;
@@ -8,21 +7,20 @@ using TeleCore.Types.Exposables;
 using TeleCore.UI;
 using Verse;
 
-namespace TeleCore.CompProperties;
+namespace TeleCore;
 
 /// <summary>
 /// </summary>
-public class CompProperties_Network : Verse.CompProperties
+public class CompProperties_Network : CompProperties
 {
-    [Description(
-        "When set, applies this config for each existing NetworkDef loaded, providing a universal network structure")]
-    public DefaultNetworkPartConfig? defaultNetworkPartConfig = null;
-
     [Description("Default IO configuration for this structure. Any sub-IOConfigs will override these settings.")]
-    public NetIOConfig generalIOConfig = new();
+    public NetIOConfig generalIOConfig = new NetIOConfig();
 
     [Description("Custom individual configurations for how this structure should interact with other networks.")]
     public List<NetworkPartConfig>? networks;
+
+    [Description("When set, applies this config for each existing NetworkDef loaded, providing a universal network structure")]
+    public DefaultNetworkPartConfig? defaultNetworkPartConfig = null;
 
     public CompProperties_Network()
     {
@@ -31,11 +29,15 @@ public class CompProperties_Network : Verse.CompProperties
 
     public override IEnumerable<string> ConfigErrors(ThingDef parentDef)
     {
-        foreach (var error in base.ConfigErrors(parentDef)) yield return error;
+        foreach (var error in base.ConfigErrors(parentDef))
+        {
+            yield return error;
+        }
 
         if (networks is { Count: > 0 } && defaultNetworkPartConfig != null)
-            yield return
-                $"Networks defined in {parentDef}.comps[{nameof(CompProperties_Network)}]{nameof(networks)} will not be applied and instead overriden by {nameof(defaultNetworkPartConfig)}!";
+        {
+            yield return $"Networks defined in {parentDef}.comps[{nameof(CompProperties_Network)}]{nameof(networks)} will not be applied and instead overriden by {nameof(defaultNetworkPartConfig)}!";
+        }
     }
 
     public override void PostLoadSpecial(ThingDef parent)
@@ -66,7 +68,7 @@ public class CompProperties_Network : Verse.CompProperties
 public class DefaultNetworkPartConfig
 {
     public Type defaultWorker = typeof(NetworkPart);
-    public NetIOConfig? netIOConfig;
     public NetworkRole roles = NetworkRole.Transmitter;
+    public NetIOConfig? netIOConfig;
     public FlowVolumeConfig<NetworkValueDef> volumeConfig;
 }

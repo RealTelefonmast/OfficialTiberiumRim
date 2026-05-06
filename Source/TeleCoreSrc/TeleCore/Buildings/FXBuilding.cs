@@ -2,10 +2,10 @@
 
 using System;
 using RimWorld;
-using TeleCore.Comps;
 using TeleCore.Defs;
-using TeleCore.Types;
-using TeleCore.Types.Interfaces;
+using TeleCore.Interfaces;
+using TeleCore.Visual.VFX.FX.Effecter;
+using TeleCore.Visual.VFX.FX.Layer;
 using TeleCore.Types.Structs;
 using TeleCore.Types.Utils;
 using UnityEngine;

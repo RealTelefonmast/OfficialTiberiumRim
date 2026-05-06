@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Text;
-using TeleCore.CompProperties;
 using TeleCore.Types;
+using TeleCore.Visual.VFX.FX.Layer;
 using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 public class Comp_ANS_AirVent : Comp_ANS_Vent
 {
@@ -53,7 +53,7 @@ public class Comp_ANS_AirVent : Comp_ANS_Vent
         speedControl.Tick();
         base.CompTick();
     }
-
+    
     public override string CompInspectStringExtra()
     {
         var sb = new StringBuilder(base.CompInspectStringExtra());

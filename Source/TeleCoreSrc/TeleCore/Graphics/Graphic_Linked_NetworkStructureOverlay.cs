@@ -1,10 +1,9 @@
-﻿using TeleCore.Comps;
-using TeleCore.Defs;
+﻿using TeleCore.Defs;
 using TeleCore.Rendering;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Graphics;
+namespace TeleCore;
 
 public class Graphic_Linked_NetworkStructureOverlay : Graphic_LinkedNetworkStructure
 {

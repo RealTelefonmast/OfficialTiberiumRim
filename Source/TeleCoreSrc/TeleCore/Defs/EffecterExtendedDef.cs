@@ -1,5 +1,4 @@
-﻿using TeleCore.Comps;
-using TeleCore.Rendering;
+﻿using TeleCore.Rendering;
 using Verse;
 
 namespace TeleCore.Defs;

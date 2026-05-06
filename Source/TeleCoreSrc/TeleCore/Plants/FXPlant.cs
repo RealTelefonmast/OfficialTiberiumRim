@@ -1,7 +1,8 @@
 ﻿using System;
 using RimWorld;
-using TeleCore.Types;
-using TeleCore.Types.Interfaces;
+using TeleCore.Interfaces;
+using TeleCore.Visual.VFX.FX.Effecter;
+using TeleCore.Visual.VFX.FX.Layer;
 using TeleCore.Types.Structs;
 using UnityEngine;
 using Verse;

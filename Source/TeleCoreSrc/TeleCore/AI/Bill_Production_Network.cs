@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using TeleCore.Comps;
 using TeleCore.Defs;
 using UnityEngine;
 using Verse;

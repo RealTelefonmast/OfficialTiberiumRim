@@ -1,9 +1,9 @@
 ﻿using RimWorld;
-using TeleCore.Types;
 using TeleCore.Types.Utils;
+using TeleCore.Visual.VFX.FX.Layer;
 using UnityEngine;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 public class Comp_Network_Valve : CompNetwork
 {

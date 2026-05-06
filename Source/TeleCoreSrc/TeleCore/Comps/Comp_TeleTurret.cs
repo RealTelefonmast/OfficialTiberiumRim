@@ -1,4 +1,4 @@
-﻿namespace TeleCore.Types;
+﻿namespace TeleCore;
 
 //TODO: Adjust to new Verse.CompTurretGun
 /*public class Comp_TeleTurret : ThingComp, ITurretHolder, IAttackTarget, IAttackTargetSearcher
@@ -28,7 +28,7 @@
             return this.stunner != null && this.stunner.Stunned;
         }
     }#1#
-
+    
     //
     public Thing Thing => parent;
     public LocalTargetInfo TargetCurrentlyAimingAt { get; }

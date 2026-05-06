@@ -1,6 +1,5 @@
 using System.Text;
 using RimWorld;
-using TeleCore.Comps;
 using TeleCore.Defs;
 using TeleCore.Types.Exposables;
 using Verse;

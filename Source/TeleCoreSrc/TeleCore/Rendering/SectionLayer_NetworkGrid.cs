@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using HarmonyLib;
 using RimWorld;
-using TeleCore.CompProperties;
-using TeleCore.Comps;
 using TeleCore.Defs;
 using UnityEngine;
 using Verse;

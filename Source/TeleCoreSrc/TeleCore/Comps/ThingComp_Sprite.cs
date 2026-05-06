@@ -1,7 +1,6 @@
-﻿using TeleCore.Graphics;
-using Verse;
+﻿using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 public class ThingComp_Sprite : ThingComp
 {

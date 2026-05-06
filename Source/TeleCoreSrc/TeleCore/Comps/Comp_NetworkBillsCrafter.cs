@@ -1,11 +1,10 @@
 ﻿using RimWorld;
-using TeleCore.CompProperties;
-using TeleCore.Types;
 using TeleCore.Types.Exposables;
+using TeleCore.Visual.VFX.FX.Layer;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 public class Comp_NetworkBillsCrafter : CompNetwork
 {

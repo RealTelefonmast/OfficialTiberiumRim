@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TeleCore.Graphics;
+namespace TeleCore;
 
 public class Graphic_RandomSelection : Graphic_Collection
 {

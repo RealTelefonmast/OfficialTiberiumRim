@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using TeleCore.CompProperties;
-using TeleCore.Graphics;
 using TeleCore.Types.Enums;
 using TeleCore.Types.Utils;
 using TeleCore.UI;

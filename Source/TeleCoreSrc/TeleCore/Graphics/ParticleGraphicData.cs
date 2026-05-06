@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Graphics;
+namespace TeleCore;
 
 public class ParticleGraphicData : GraphicData
 {

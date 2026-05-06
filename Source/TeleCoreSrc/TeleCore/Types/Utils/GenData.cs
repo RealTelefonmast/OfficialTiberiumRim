@@ -6,13 +6,12 @@ using System.Runtime.CompilerServices;
 using System.Xml;
 using RimWorld;
 using TeleCore.Buildings;
-using TeleCore.Comps;
 using TeleCore.Defs;
-using TeleCore.Graphics;
 using TeleCore.MapComponents;
 using TeleCore.RoomComponents;
 using TeleCore.Things;
 using TeleCore.Types.Interfaces;
+using TeleCore.Visual.VFX.FX.Layer;
 using UnityEngine;
 using Verse;
 

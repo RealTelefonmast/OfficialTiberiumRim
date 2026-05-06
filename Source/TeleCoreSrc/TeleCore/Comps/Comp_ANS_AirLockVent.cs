@@ -1,6 +1,6 @@
 using TeleCore.RoomComponents;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 public class Comp_ANS_AirLockVent : Comp_ANS_AirVent
 {

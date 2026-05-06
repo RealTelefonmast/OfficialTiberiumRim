@@ -1,5 +1,4 @@
 ﻿using RimWorld;
-using TeleCore.Comps;
 using Verse;
 using Verse.AI;
 

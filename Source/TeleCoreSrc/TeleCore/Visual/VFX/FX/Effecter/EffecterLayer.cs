@@ -1,8 +1,8 @@
-﻿using TeleCore.Comps;
-using TeleCore.Defs;
+﻿using TeleCore.Defs;
+using TeleCore.Visual.VFX.FX.Layer;
 using Verse;
 
-namespace TeleCore.Types;
+namespace TeleCore.Visual.VFX.FX.Effecter;
 
 public class EffecterLayer
 {

@@ -1,306 +1,442 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using RimWorld;
-using TeleCore.Types;
+using TeleCore.Defs;
+using TeleCore.Interfaces;
+using TeleCore.Types.Delegates;
+using TeleCore.Types.Enums;
+using TeleCore.Types.Structs;
+using TeleCore.Types.Utils;
+using TeleCore.Visual.VFX.FX.Effecter;
+using TeleCore.Visual.VFX.FX.Layer;
 using UnityEngine;
 using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
-public enum FXMode
+public struct FXParentInfo
 {
-    Static,
-    Dynamic,
-    Mover,
-    Blink,
-    Pulse,
-    Rotate
+    public int TickOffset { get; }
+    public int SpawnTick { get; }
+    public FXDefExtension Extension { get; }
+    public Thing ParentThing { get; }
+
+    //
+    public ThingDef Def => ParentThing.def;
+
+    public FXParentInfo(int tickOffset, int spawnTick, FXDefExtension extension, Thing parentThing)
+    {
+        TickOffset = tickOffset;
+        SpawnTick = spawnTick;
+        Extension = extension;
+        ParentThing = parentThing;
+    }
 }
 
-public class CompFX : ThingComp
+public class CompFX : TeleComp
 {
-    //Data for graphics
-    public Color[] GraphicColors;
-    public List<FXGraphic> Graphics = new();
-    private IFXObject iParent;
-    private MoteThrower MainThrower;
-    private List<Vector3> motePositions = new();
-    public List<MoteThrower> moteThrowers = new();
-    private int moteTicker = -1;
+    private bool _hasEffecters;
+    private bool _hasFXLayers;
+    private List<IFXLayerProvider> allHeldFXComps;
+    private IFXEffecterProvider[] EffecterProviderByLayerIndex;
+
+    //Events
+    /*
+    private FXGetPowerProviderEvent GetPowerProvider;
+    private FXGetShouldDrawEvent GetShouldDraw;
+    private FXGetRotationEvent GetRotation;
+    private FXGetAnimationSpeedEvent GetAnimationSpeed;
+    private FXGetDrawPositionEvent GetDrawPosition;
+    private FXGetColorEvent GetColor;
+    private FXGetOpacityEvent GetOpacity;
+    private FXGeActionEvent GetAction;
+    private FXShouldThrowEffectsEvent GetShouldThrowEffects;
+    */
+
+    private OnEffectSpawnedEvent EffectSpawned;
+
+    private IFXLayerProvider[] LayerProviderByLayerIndex;
     private bool spawnedOnce;
-    public int startTick;
-
-    public int tickOffset;
-
-    private List<Vector3> MoteOrigins
-    {
-        get
-        {
-            if (motePositions.NullOrEmpty() && Props.moteData != null)
-            {
-                var positions = new List<Vector3>();
-                var center = parent.TrueCenter();
-                Vector3 newVec;
-                var rotation = parent.Rotation;
-                if (rotation == Rot4.North || (rotation == Rot4.South && Props.moteData.southVec.NullOrEmpty()))
-                    for (var i = 0; i < Props.moteData.northVec.Count; i++)
-                    {
-                        var v2 = center + Props.moteData.northVec[i];
-                        newVec = new Vector3(v2.x, AltitudeLayer.MoteOverhead.AltitudeFor(), v2.z);
-                        positions.Add(newVec);
-                    }
-
-                if (rotation == Rot4.East || (rotation == Rot4.West && Props.moteData.westVec.NullOrEmpty()))
-                    for (var i = 0; i < Props.moteData.eastVec.Count; i++)
-                    {
-                        var v2 = center + Props.moteData.eastVec[i];
-                        newVec = new Vector3(v2.x, AltitudeLayer.MoteOverhead.AltitudeFor(), v2.z);
-                        positions.Add(newVec);
-                    }
-
-                if (rotation == Rot4.South)
-                    for (var i = 0; i < Props.moteData.southVec.Count; i++)
-                    {
-                        var v2 = center + Props.moteData.southVec[i];
-                        newVec = new Vector3(v2.x, AltitudeLayer.MoteOverhead.AltitudeFor(), v2.z);
-                        positions.Add(newVec);
-                    }
-
-                if (rotation == Rot4.West)
-                    for (var i = 0; i < Props.moteData.westVec.Count; i++)
-                    {
-                        var v2 = center + Props.moteData.westVec[i];
-                        newVec = new Vector3(v2.x, AltitudeLayer.MoteOverhead.AltitudeFor(), v2.z);
-                        positions.Add(newVec);
-                    }
-
-                motePositions = positions;
-            }
-
-            return motePositions;
-        }
-    }
-
-    public CompProperties_FX Props => props as CompProperties_FX;
-
-    public CompPowerTrader CompPower => IParent == null ? parent.TryGetComp<CompPowerTrader>() :
-        IParent.ForcedPowerComp == null ? parent.TryGetComp<CompPowerTrader>() :
-        (CompPowerTrader)IParent.ForcedPowerComp;
-
-    public CompPowerPlant CompPowerPlant => parent.TryGetComp<CompPowerPlant>();
-
-    public IFXObject IParent
-    {
-        get
-        {
-            if (iParent != null) return iParent;
-            if (!Props.useParentClass && parent.AllComps.Any(c => c is IFXObject))
-            {
-                iParent = parent.AllComps.First(x => x is IFXObject) as IFXObject;
-                return iParent;
-            }
-
-            return parent as IFXObject;
-        }
-    }
-
-    public Vector2 TextureOffset => (bool)IParent?.TextureOffset.HasValue ? IParent.TextureOffset.Value : Vector2.zero;
-
-    public Vector2 TextureScale =>
-        (bool)IParent?.TextureScale.HasValue ? IParent.TextureScale.Value : new Vector2(1, 1);
-
-    public bool ShouldDoEffecters => IParent == null || IParent.ShouldDoEffecters;
-
-    public override void PostExposeData()
-    {
-        base.PostExposeData();
-        Scribe_Values.Look(ref startTick, "startTick");
-        Scribe_Values.Look(ref tickOffset, "tickOffset");
-    }
+    
+    public CompProperties_FX Props => (CompProperties_FX) props;
+    
+    public CompPowerTrader ParentPowerComp { get; private set; }
+    public FXDefExtension GraphicExtension { get; private set; }
+    public List<FXLayer> FXLayers { get; private set; }
+    public List<EffecterLayer> EffectLayers { get; private set; }
 
     public override void PostSpawnSetup(bool respawningAfterLoad)
     {
         base.PostSpawnSetup(respawningAfterLoad);
+        GraphicExtension = parent.def.FXExtension();
 
-        if (spawnedOnce) return;
-        if (Props.moteData?.thrower != null) MainThrower = new MoteThrower(Props.moteData.thrower, parent);
-        if (!Props.effecters.NullOrEmpty())
-            foreach (var info in Props.effecters)
-                moteThrowers.Add(new MoteThrower(info, parent));
+        ParentPowerComp = parent.TryGetComp<CompPowerTrader>();
 
-        if (!Props.overlays.NullOrEmpty())
-            for (var i = 0; i < Props.overlays.Count; i++)
-                Graphics.Add(new FXGraphic(this, Props.overlays[i], i));
+        //Resolve FX Parents
+        ResolveFXLayerProviders();
+        ResolveFXEffecterProviders();
 
-        InitializeData();
-        spawnedOnce = true;
-        if (!respawningAfterLoad)
+        //Setup Layers
+        //Init Data On First Spawn
+        if (!spawnedOnce || respawningAfterLoad)
         {
-            startTick = Find.TickManager.TicksGame;
-            tickOffset = TRUtils.Range(Props.tickOffset);
+            //Generate FXLayers
+            if (!Props.fxLayers.NullOrEmpty())
+            {
+                FXLayers = new List<FXLayer>();
+                var spawnTick = Find.TickManager.TicksGame;
+                var tickOffset = Props.tickOffset.RandomInRange;
+
+                for (var i = 0; i < Props.fxLayers.Count; i++)
+                    FXLayers.Add(new FXLayer(this, Props.fxLayers[i],
+                        new FXParentInfo(tickOffset, spawnTick, GraphicExtension, parent), i));
+
+                //Resolve priority
+                FXLayers.Sort((a, b) => a.RenderPriority < b.RenderPriority ? 1 : 0);
+                _hasFXLayers = FXLayers?.Count > 0;
+            }
+
+            //Generate FXEffecters
+            if (!Props.effectLayers.NullOrEmpty())
+            {
+                EffectLayers = new List<EffecterLayer>();
+                for (var i = 0; i < Props.effectLayers.Count; i++)
+                    EffectLayers.Add(new EffecterLayer(this, Props.effectLayers[i], i));
+
+                //
+                _hasEffecters = EffectLayers?.Count > 0;
+            }
+
+            spawnedOnce = true;
         }
     }
 
-    private void InitializeData()
+    public override void PostExposeData()
     {
-        GraphicColors = new Color[Graphics.Count];
-        for (var i = 0; i < Graphics.Count; i++) GraphicColors[0] = Color.white;
+        base.PostExposeData();
+    }
+
+    private void ResolveFXLayerProviders()
+    {
+        allHeldFXComps ??= new List<IFXLayerProvider>();
+
+        //Add parent if it implements the FX interface
+        if (parent is IFXLayerProvider parentFX)
+        {
+            allHeldFXComps.Add(parentFX);
+            PopulateEvents(parentFX);
+        }
+
+        //Populate Events
+        foreach (var comp in parent.AllComps)
+            if (comp is IFXLayerProvider compFX)
+            {
+                allHeldFXComps.Add(compFX);
+                PopulateEvents(compFX);
+            }
+
+        //Resolve
+        LayerProviderByLayerIndex = new IFXLayerProvider[Props.fxLayers.Count];
+        for (var i = 0; i < Props.fxLayers.Count; i++)
+        {
+            var layerData = Props.fxLayers[i];
+            if (allHeldFXComps.NullOrEmpty())
+            {
+                LayerProviderByLayerIndex[i] = null!;
+                continue;
+            }
+
+            LayerProviderByLayerIndex[i] = allHeldFXComps.FirstOrFallback(fx =>
+            {
+                return (bool) fx?.FX_ProvidesForLayer(new FXArgs
+                {
+                    index = i,
+                    layerTag = layerData.layerTag,
+                    categoryTag = layerData.categoryTag
+                });
+            })!;
+        }
+    }
+
+    private void ResolveFXEffecterProviders()
+    {
+        var effectProviders = new List<IFXEffecterProvider>();
+
+        //Add parent if it implements the FX interface
+        if (parent is IFXEffecterProvider parentFX)
+        {
+            effectProviders.Add(parentFX);
+            PopulateEvents(parentFX);
+        }
+
+        //Populate Events
+        foreach (var comp in parent.AllComps)
+            if (comp is IFXEffecterProvider compFX)
+            {
+                effectProviders.Add(compFX);
+                PopulateEvents(compFX);
+            }
+
+        //Resolve
+        EffecterProviderByLayerIndex = new IFXEffecterProvider[Props.fxLayers.Count];
+        for (var i = 0; i < Props.effectLayers.Count; i++)
+        {
+            var effectData = Props.effectLayers[i];
+            if (allHeldFXComps.NullOrEmpty())
+            {
+                LayerProviderByLayerIndex[i] = null!;
+                continue;
+            }
+
+            LayerProviderByLayerIndex[i] = allHeldFXComps.FirstOrFallback(fx => (bool)fx?.FX_ProvidesForLayer(
+                new FXEffecterArgs
+                {
+                    index = i,
+                    layerTag = effectData.layerTag
+                }))!;
+        }
+    }
+
+    private void PopulateEvents(IFXBase fxProvider)
+    {
+        // GetPowerProvider += fxHolder.FX_PowerProviderFor;
+        // GetShouldDraw += fxHolder.FX_ShouldDraw;
+        // GetOpacity += fxHolder.FX_GetOpacity;
+        // GetRotation += fxHolder.FX_GetRotation;
+        // GetAnimationSpeed += fxHolder.FX_GetAnimationSpeedFactor;
+        // GetColor += fxHolder.FX_GetColor;
+        // GetDrawPosition += fxHolder.FX_GetDrawPosition;
+        // GetAction += fxHolder.FX_GetAction;
+        //
+        // GetShouldThrowEffects += fxHolder.FX_ShouldThrowEffects;
+
+        if (fxProvider is IFXEffecterProvider effectProvider)
+            EffectSpawned += effectProvider.FX_OnEffectSpawned;
+    }
+
+    //Notification
+    public override void ReceiveCompSignal(string signal)
+    {
+        if (!parent.Spawned) return;
+        if (signal is "PowerTurnedOn" or "PowerTurnedOff" or "FlickedOn" or "FlickedOff" or "Refueled" or "RanOutOfFuel"
+            or "ScheduledOn" or "ScheduledOff")
+            parent.Map.mapDrawer.MapMeshDirty(parent.Position, MapMeshFlagDefOf.Things);
+    }
+
+    internal override void TeleTick()
+    {
+        if (parent.def.tickerType == TickerType.Never)
+        {
+            FXTick(1);
+        }
     }
 
     public override void CompTick()
     {
-        Tick();
+        FXTick(1);
     }
 
     public override void CompTickRare()
     {
-        for (var i = 0; i < 750; i++) Tick();
+        for (var i = 0; i < GenTicks.TickRareInterval; i++)
+            FXTick(GenTicks.TickRareInterval);
     }
 
-    private void Tick()
+    private void FXTick(int tickInterval)
     {
-        TargetInfo A = parent;
-        if (ShouldDoEffecters)
+        if (_hasFXLayers)
+            foreach (var g in FXLayers)
+                g.TickLayer(tickInterval);
+
+        if (_hasEffecters)
+            foreach (var effectLayer in EffectLayers)
+                effectLayer.Tick();
+    }
+
+    //Drawing
+    private bool CanDraw(FXLayerArgs args)
+    {
+        if (args.data.skip) return false;
+        if (!GetDrawBool(args)) return false;
+        if (GetOpacityFloat(args) <= 0) return false;
+        if (!HasPower(args)) return false;
+        return true;
+    }
+
+    public bool HasPower(FXArgs args)
+    {
+        if (!args.needsPower) return true;
+
+        var provider = GetPowerProvider(args);
+
+        if (provider is CompPowerPlant powerPlant)
         {
-            if (Props.moteData != null)
+            _ = powerPlant.PowerOn;
+            return powerPlant.PowerOutput > 0;
+        }
+
+        if (provider is { PowerOn: true }) return true;
+
+        return ParentPowerComp is { PowerOn: true };
+    }
+
+    #region Base Properties
+
+    //
+    public CompPowerTrader GetPowerProvider(FXArgs args)
+    {
+        return LayerProviderByLayerIndex[args.index]?.FX_PowerProviderFor(args) ?? ParentPowerComp;
+    }
+
+    #endregion
+
+    //
+    public void DrawCarried(Vector3 loc)
+    {
+        foreach (var layer in FXLayers)
+            if (layer.data.fxMode != FXMode.Static && CanDraw(layer.Args))
             {
-                if (moteTicker <= 0)
-                {
-                    MoteThrowTick();
-                    moteTicker = TRUtils.Range(Props.moteData.tickRange);
-                }
-
-                moteTicker--;
+                var drawPos = GetDrawPositionOverride(layer.Args);
+                var diff = drawPos - parent.DrawPos;
+                layer.Draw(loc + diff);
             }
-
-            foreach (var t in moteThrowers) t.ThrowerTick(parent.DrawPos, parent.Map);
-        }
-
-        foreach (var g in Graphics) g.Tick();
     }
 
-    private void MoteThrowTick()
-    {
-        foreach (var v in MoteOrigins) MainThrower.ThrowerTick(v, parent.Map);
-    }
-
-    public override void ReceiveCompSignal(string signal)
-    {
-        if (!parent.Spawned) return;
-        if (signal == "PowerTurnedOn" || signal == "PowerTurnedOff" || signal == "FlickedOn" ||
-            signal == "FlickedOff" || signal == "Refueled" || signal == "RanOutOfFuel" || signal == "ScheduledOn" ||
-            signal == "ScheduledOff") parent.Map.mapDrawer.MapMeshDirty(parent.Position, MapMeshFlagDefOf.Things);
-    }
-
-    private bool CanDraw(int index)
-    {
-        if (!DrawBool(index) || OpacityFloat(index) <= 0)
-            return false;
-        if (Graphics[index].data.skip)
-            return false;
-        if (!HasPower(index))
-            return false;
-        return true;
-    }
-
-    private bool HasPower(int index)
-    {
-        if (Graphics[index].data.needsPower)
-        {
-            if (CompPowerPlant != null)
-                return CompPowerPlant.PowerOutput > 0;
-            if (CompPower != null)
-                return CompPower.PowerOn;
-        }
-
-        return true;
-    }
-
-    public bool DrawBool(int index)
-    {
-        if (IParent == null || IParent.DrawBools.Count() < index + 1) return true;
-        return IParent.DrawBools[index];
-    }
-
-    public float OpacityFloat(int index)
-    {
-        if (IParent == null || IParent.OpacityFloats.Count() < index + 1) return 1f;
-        return IParent.OpacityFloats[index];
-    }
-
-    public float? RotationOverride(int index)
-    {
-        if (IParent == null || IParent.RotationOverrides.Count() < index + 1) return null;
-        return IParent.RotationOverrides[index];
-    }
-
-    public ref Color ColorOverride(int index)
-    {
-        if (IParent == null || IParent.ColorOverrides.Count() < index + 1)
-            GraphicColors[index] = Color.white;
-        else
-            GraphicColors[index] = IParent.ColorOverrides[index];
-        return ref GraphicColors[index];
-    }
-
-    public Vector3 DrawPosition(int index)
-    {
-        if (IParent == null || IParent.DrawPositions.Count() < index + 1) return parent.DrawPos;
-        return IParent.DrawPositions[index];
-    }
-
-    public Action<FXGraphic> Action(int index)
-    {
-        if (IParent?.Actions == null || IParent.Actions.Count() < index + 1) return null;
-        return IParent.Actions[index];
-    }
-
-    //TODO: Replace motes finally - Add advanced way of rendering effects instead of using "Parent Motes" which need to be spawned
     public override void PostDraw()
     {
         base.PostDraw();
-        for (var i = 0; i < Graphics.Count; i++)
-            if (Graphics[i].data.mode != FXMode.Static && CanDraw(i))
-                Graphics[i].Draw(DrawPosition(i), parent.Rotation, RotationOverride(i), Action(i), i);
+        if (!_hasFXLayers) return;
+
+        foreach (var layer in FXLayers)
+        {
+            var canDraw = CanDraw(layer.Args);
+            if (layer.data.fxMode != FXMode.Static && canDraw)
+                layer.Draw();
+        }
     }
 
     public override void PostPrintOnto(SectionLayer layer)
     {
         base.PostPrintOnto(layer);
-        for (var i = 0; i < Graphics.Count; i++)
-            if (Graphics[i].data.mode == FXMode.Static && CanDraw(i))
-                Graphics[i].Print(layer, DrawPosition(i), parent.Rotation, RotationOverride(i), parent);
+        if (!_hasFXLayers) return;
+        foreach (var fxLayer in FXLayers)
+        {
+            if (fxLayer.data.fxMode == FXMode.Static && CanDraw(fxLayer.Args))
+                fxLayer.Print(layer);
+        }
     }
-}
 
-public class CompProperties_FX : CompProperties
-{
-    public List<MoteThrowerInfo> effecters;
-    public FXMode mode = FXMode.Static;
-    public MoteThrowerData moteData;
-    public List<FXGraphicData> overlays = new();
-    public IntRange tickOffset = new(0, 333);
-    public bool useParentClass = false;
-
-    public CompProperties_FX()
+    public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
-        compClass = typeof(CompFX);
+        if (DebugSettings.godMode)
+        {
+            var states = "";
+            foreach (var layer in FXLayers)
+            {
+                states += $"Layer {layer.Args.index} '{layer.Args.categoryTag}:{layer.Args.layerTag}':\n";
+                if (layer.data.skip)
+                {
+                    states += "  - Skipped\n";
+                    continue;
+                }
+                states += $"  - FXMode: {layer.data.fxMode}\n";
+                var drawBool = GetDrawBool(layer.Args);
+                var power = HasPower(layer.Args);
+                var opacity = GetOpacityFloat(layer.Args);
+                states += $"  - Draw: {drawBool} && {power} && {opacity > 0}\n";
+                states += $"  - Opacity: {opacity}\n";
+                states += $"  - Rotation: {GetExtraRotation(layer.Args)}\n";
+                states += $"  - Animation Speed: {GetAnimationSpeedFactor(layer.Args)}\n";
+                states += $"  - Color: {GetColorOverride(layer.Args)?.ToString() ?? "Default"}\n";
+                states += $"  - Draw Position: {GetDrawPositionOverride(layer.Args)}\n";
+                states += $"  - Action: {GetDrawFunction(layer.Args)?.ToString() ?? "None"}\n";
+            }
+            yield return new Command_Action
+            {
+                defaultLabel = "FX States",
+                defaultDesc = states,
+                action = delegate { },
+            };
+        }
+        yield break;
     }
-}
 
-public enum MoteMakerType
-{
-    TiberiumSmoke,
-    TiberiumFog
-}
+    #region Effecter Properties
 
-public class MoteThrowerData
-{
-    public List<Vector3> eastVec;
-    public List<Vector3> northVec;
-    public List<Vector3> southVec;
-    public MoteThrowerInfo thrower;
-    public IntRange tickRange = new(1, 1);
-    public List<Vector3> westVec;
+    //
+    public TargetInfo TargetAOverride(FXEffecterArgs args)
+    {
+        return EffecterProviderByLayerIndex[args.index]?.FX_Effecter_TargetAOverride(args) ?? parent;
+    }
+
+    //
+    public TargetInfo TargetBOverride(FXEffecterArgs args)
+    {
+        return EffecterProviderByLayerIndex[args.index]?.FX_Effecter_TargetBOverride(args) ?? parent;
+    }
+
+    public bool ShouldThrowEffects(FXEffecterArgs args)
+    {
+        return EffecterProviderByLayerIndex[args.index]?.FX_ShouldThrowEffects(args) ?? true;
+    }
+
+    //
+    public void OnEffectSpawned(FXEffecterSpawnedEventArgs spawnedEventArgs)
+    {
+        EffectSpawned.Invoke(spawnedEventArgs);
+    }
+
+    #endregion
+
+    #region Layer Properties
+
+    public bool GetDrawBool(FXLayerArgs args)
+    {
+        return LayerProviderByLayerIndex[args.index]?.FX_ShouldDraw(args) ?? true;
+        //return GetShouldDraw.Invoke(args);
+    }
+
+    public float GetOpacityFloat(FXLayerArgs args)
+    {
+        return LayerProviderByLayerIndex[args.index]?.FX_GetOpacity(args) ?? 1f;
+    }
+
+    public float? GetRotationSpeedOverride(FXLayerArgs args)
+    {
+        return LayerProviderByLayerIndex[args.index]?.FX_GetRotationSpeedOverride(args);
+    }
+
+    public float GetExtraRotation(FXLayerArgs args)
+    {
+        return LayerProviderByLayerIndex[args.index]?.FX_GetRotation(args) ?? 0;
+    }
+
+    public float GetAnimationSpeedFactor(FXLayerArgs args)
+    {
+        return LayerProviderByLayerIndex[args.index]?.FX_GetAnimationSpeedFactor(args) ?? 1;
+    }
+
+    public int GetSelectedIndex(FXLayerArgs args)
+    {
+        return LayerProviderByLayerIndex[args.index]?.FX_SelectedGraphicIndex(args) ?? 0;
+    }
+
+    public Color? GetColorOverride(FXLayerArgs args)
+    {
+        return LayerProviderByLayerIndex[args.index]?.FX_GetColor(args) ?? null;
+    }
+
+    public Vector3? GetDrawPositionOverride(FXLayerArgs args)
+    {
+        return LayerProviderByLayerIndex[args.index]?.FX_GetDrawPosition(args) ?? null;
+        //return GetDrawPosition.Invoke(args);
+    }
+
+    public Func<RoutedDrawArgs, bool> GetDrawFunction(FXLayerArgs args)
+    {
+        return LayerProviderByLayerIndex[args.index]?.FX_GetDrawFunc(args) ?? null!;
+        //return GetAction.Invoke(args);
+    }
+
+    #endregion
 }

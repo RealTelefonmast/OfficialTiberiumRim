@@ -1,8 +1,7 @@
-﻿using TeleCore.Types;
-using TeleCore.Types.Enums;
+﻿using TeleCore.Types.Enums;
 using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 public class Comp_Network_Power : CompNetwork
 {

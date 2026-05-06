@@ -11,7 +11,7 @@ using UIElement = TeleCore.Rendering.UI.DynaUI.UIElement;
 
 namespace TeleCore.UI;
 
-public class BaseCanvas : UIElement, IDragAndDropReceiver
+public class BaseCanvas : Types.Structs.UIElement, IDragAndDropReceiver
 {
     //
     internal const int _TileSize = 100;

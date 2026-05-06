@@ -2,7 +2,7 @@
 using TeleCore.Types.Utils;
 using Verse;
 
-namespace TeleCore.Comps;
+namespace TeleCore;
 
 /// <summary>
 ///     Base class for TeleCore ThingComps.
@@ -27,7 +27,7 @@ public abstract class TeleComp : ThingComp
         }
     }
 
-    public override void PostDeSpawn(Map map)
+    public override void PostDeSpawn(Verse.Map map)
     {
         base.PostDeSpawn(map);
         if (Extension != null)
