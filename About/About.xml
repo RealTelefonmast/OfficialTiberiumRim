@@ -3,8 +3,7 @@
    <name>TiberiumRim</name>
    <author>Telefonmast, Nephlite</author>
    <supportedVersions>
-      <li>1.1</li>
-	  <li>1.2</li>
+	  <li>1.6</li>
    </supportedVersions>
    <packageId>telefonmast.tiberiumrim</packageId>
    <description>

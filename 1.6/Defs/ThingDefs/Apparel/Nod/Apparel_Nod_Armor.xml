@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- ====================================== Militia =========================================== -->
+
+	<ThingDef ParentName="ArmorMachineableBase">
+		<defName>Apparel_NodMilitiaMask</defName>
+		<label>Nod militia mask</label>
+		<description>A cheap Brotherhood militia mask with a simple respirator, tinted lenses and a light armored face shell. It is not a sealed combat helmet, but it keeps dust and battlefield toxins out long enough for Nod's irregulars to fight in contaminated ruins and crystal fields.</description>
+		<techLevel>Industrial</techLevel>
+		<graphicData>
+			<texPath>Things/Apparel/Nod/Militia/MilitiaSuitMask</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<uiIconPath>Things/Apparel/Nod/Militia/MilitiaSuitMask</uiIconPath>
+		<statBases>
+			<WorkToMake>4500</WorkToMake>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>0.9</Mass>
+			<Flammability>0.7</Flammability>
+			<ArmorRating_Sharp>0.28</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.10</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.12</ArmorRating_Heat>
+			<Insulation_Cold>3</Insulation_Cold>
+			<Insulation_Heat>1</Insulation_Heat>
+			<EquipDelay>1.5</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<ToxicEnvironmentResistance>0.35</ToxicEnvironmentResistance>
+		</equippedStatOffsets>
+		<costList>
+			<Cloth>15</Cloth>
+			<Steel>25</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<thingCategories>
+			<li>ArmorHeadgear</li>
+		</thingCategories>
+		<tradeTags>
+			<li>Armor</li>
+		</tradeTags>
+		<recipeMaker>
+			<researchPrerequisite>FlakArmor</researchPrerequisite>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>4</Crafting>
+			</skillRequirements>
+			<displayPriority>300</displayPriority>
+		</recipeMaker>
+		<apparel>
+			<countsAsClothingForNudity>false</countsAsClothingForNudity>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Things/Apparel/Nod/Militia/MilitiaSuitMask</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<tags>
+				<li>NodMilitia</li>
+				<li>IndustrialMilitaryBasic</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>Soldier</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorMachineableBase">
+		<defName>Apparel_NodMilitiaSuit</defName>
+		<label>Nod militia robe</label>
+		<description>A mass-produced Nod field robe reinforced with hidden plates and rugged synthetic cloth. It gives broad coverage to lightly trained cell fighters while staying cheap enough to issue in numbers.</description>
+		<techLevel>Industrial</techLevel>
+		<graphicData>
+			<texPath>Things/Apparel/Nod/Militia/MilitiaSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>10000</WorkToMake>
+			<MaxHitPoints>180</MaxHitPoints>
+			<Mass>5</Mass>
+			<Flammability>0.65</Flammability>
+			<ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.12</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.12</ArmorRating_Heat>
+			<Insulation_Cold>12</Insulation_Cold>
+			<Insulation_Heat>5</Insulation_Heat>
+			<EquipDelay>3</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.08</MoveSpeed>
+		</equippedStatOffsets>
+		<costList>
+			<Cloth>60</Cloth>
+			<Steel>60</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<thingCategories>
+			<li>ApparelArmor</li>
+		</thingCategories>
+		<tradeTags>
+			<li>Clothing</li>
+			<li>Armor</li>
+		</tradeTags>
+		<recipeMaker>
+			<researchPrerequisite>FlakArmor</researchPrerequisite>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>4</Crafting>
+			</skillRequirements>
+			<displayPriority>305</displayPriority>
+		</recipeMaker>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Things/Apparel/Nod/Militia/MilitiaSuit</wornGraphicPath>
+			<layers>
+				<li>Middle</li>
+				<li>Shell</li>
+			</layers>
+			<tags>
+				<li>NodMilitia</li>
+				<li>IndustrialMilitaryBasic</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>Soldier</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+	</ThingDef>
+
+	<!-- ====================================== Soldier =========================================== -->
+
+	<ThingDef ParentName="ArmorMachineableBase">
+		<defName>Apparel_NodSoldierHelmet</defName>
+		<label>Nod soldier helmet</label>
+		<description>A standard Brotherhood infantry helmet with a sealed filter module, impact liner and composite armor shell. It is light and aggressive, made for fast Nod strike teams fighting around chemical weapons, smoke and Tiberium dust.</description>
+		<techLevel>Spacer</techLevel>
+		<graphicData>
+			<texPath>Things/Apparel/Nod/Soldier/NodHelmet</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<uiIconPath>Things/Apparel/Nod/Soldier/NodHelmet</uiIconPath>
+		<statBases>
+			<WorkToMake>15750</WorkToMake>
+			<MaxHitPoints>120</MaxHitPoints>
+			<Mass>1</Mass>
+			<Flammability>0.4</Flammability>
+			<ArmorRating_Sharp>0.92</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.4</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.46</ArmorRating_Heat>
+			<Insulation_Cold>4</Insulation_Cold>
+			<Insulation_Heat>2</Insulation_Heat>
+			<EquipDelay>2</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<ToxicEnvironmentResistance>0.5</ToxicEnvironmentResistance>
+			<SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+		</equippedStatOffsets>
+		<costList>
+			<Plasteel>30</Plasteel>
+			<ComponentSpacer>1</ComponentSpacer>
+		</costList>
+		<thingCategories>
+			<li>ArmorHeadgear</li>
+		</thingCategories>
+		<tradeTags>
+			<li>HiTechArmor</li>
+			<li>Armor</li>
+		</tradeTags>
+		<recipeMaker>
+			<researchPrerequisite>ReconArmor</researchPrerequisite>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>6</Crafting>
+			</skillRequirements>
+			<displayPriority>310</displayPriority>
+		</recipeMaker>
+		<apparel>
+			<countsAsClothingForNudity>false</countsAsClothingForNudity>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Things/Apparel/Nod/Soldier/NodHelmet</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<tags>
+				<li>NodSoldier</li>
+				<li>SpacerMilitary</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>Soldier</li>
+				<li>Spacefarer</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorMachineableBase">
+		<defName>Apparel_NodSoldierSuit</defName>
+		<label>Nod soldier suit</label>
+		<description>A light powered combat suit issued to professional Nod infantry. Its composite plates and sealed underlayer provide recon-armor-grade protection while preserving the mobility needed for raids, ambushes and withdrawals before GDI can answer with heavier firepower.</description>
+		<techLevel>Spacer</techLevel>
+		<graphicData>
+			<texPath>Things/Apparel/Nod/Soldier/NodSoldierSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>45000</WorkToMake>
+			<MaxHitPoints>280</MaxHitPoints>
+			<Mass>9</Mass>
+			<Flammability>0.4</Flammability>
+			<ArmorRating_Sharp>0.92</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.4</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.46</ArmorRating_Heat>
+			<Insulation_Cold>64</Insulation_Cold>
+			<Insulation_Heat>9</Insulation_Heat>
+			<EquipDelay>11</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.10</MoveSpeed>
+			<ToxicEnvironmentResistance>0.3</ToxicEnvironmentResistance>
+			<SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+		</equippedStatOffsets>
+		<costList>
+			<Plasteel>80</Plasteel>
+			<Uranium>10</Uranium>
+			<ComponentSpacer>3</ComponentSpacer>
+		</costList>
+		<thingCategories>
+			<li>ApparelArmor</li>
+		</thingCategories>
+		<tradeTags>
+			<li>HiTechArmor</li>
+			<li>Armor</li>
+		</tradeTags>
+		<recipeMaker>
+			<researchPrerequisite>ReconArmor</researchPrerequisite>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>6</Crafting>
+			</skillRequirements>
+			<displayPriority>315</displayPriority>
+		</recipeMaker>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Things/Apparel/Nod/Soldier/NodSoldierSuit</wornGraphicPath>
+			<layers>
+				<li>Middle</li>
+				<li>Shell</li>
+			</layers>
+			<tags>
+				<li>NodSoldier</li>
+				<li>SpacerMilitary</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>Soldier</li>
+				<li>Spacefarer</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+			<soundWear>Wear_PowerArmor</soundWear>
+			<soundRemove>Remove_PowerArmor</soundRemove>
+		</apparel>
+	</ThingDef>
+
+	<!-- ====================================== Officer =========================================== -->
+
+	<ThingDef ParentName="ArmorMachineableBase">
+		<defName>Apparel_NodOfficerHelmet</defName>
+		<label>Nod officer mask</label>
+		<description>A command mask worn by Brotherhood officers. It is as much an icon as protection: polished black armor, red optics and a respirator that lets the officer keep issuing orders while the air fills with dust, smoke and fear.</description>
+		<techLevel>Industrial</techLevel>
+		<graphicData>
+			<texPath>Things/Apparel/Nod/Officer/ClassicSuitMask</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<uiIconPath>Things/Apparel/Nod/Officer/ClassicSuitMask</uiIconPath>
+		<statBases>
+			<WorkToMake>8000</WorkToMake>
+			<MaxHitPoints>120</MaxHitPoints>
+			<Mass>1.2</Mass>
+			<Flammability>0.6</Flammability>
+			<ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.18</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.12</ArmorRating_Heat>
+			<Insulation_Cold>4</Insulation_Cold>
+			<Insulation_Heat>1</Insulation_Heat>
+			<EquipDelay>1.5</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<SocialImpact>0.1</SocialImpact>
+			<ToxicEnvironmentResistance>0.35</ToxicEnvironmentResistance>
+			<SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.05</SlaveSuppressionOffset>
+		</equippedStatOffsets>
+		<costList>
+			<Cloth>10</Cloth>
+			<Steel>20</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<thingCategories>
+			<li>ArmorHeadgear</li>
+		</thingCategories>
+		<tradeTags>
+			<li>Clothing</li>
+			<li>Armor</li>
+		</tradeTags>
+		<recipeMaker>
+			<researchPrerequisite>FlakArmor</researchPrerequisite>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+			<displayPriority>320</displayPriority>
+		</recipeMaker>
+		<apparel>
+			<countsAsClothingForNudity>false</countsAsClothingForNudity>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Things/Apparel/Nod/Officer/ClassicSuitMask</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<tags>
+				<li>NodOfficer</li>
+				<li>IndustrialMilitaryAdvanced</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">Royal</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">RoyalTier2</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>Soldier</li>
+			</defaultOutfitTags>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorMachineableBase">
+		<defName>Apparel_NodOfficerSuit</defName>
+		<label>Nod officer suit</label>
+		<description>A black Brotherhood officer uniform with concealed armor plates and a severe ceremonial cut. It is lighter than true combat armor, but it gives Nod commanders enough protection to stand near the front and be seen.</description>
+		<techLevel>Industrial</techLevel>
+		<graphicData>
+			<texPath>Things/Apparel/Nod/Officer/ClassicSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>14000</WorkToMake>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Mass>5</Mass>
+			<Flammability>0.6</Flammability>
+			<ArmorRating_Sharp>0.50</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.14</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.12</ArmorRating_Heat>
+			<Insulation_Cold>12</Insulation_Cold>
+			<Insulation_Heat>4</Insulation_Heat>
+			<EquipDelay>3</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<SocialImpact>0.15</SocialImpact>
+			<MoveSpeed>-0.06</MoveSpeed>
+			<SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+		</equippedStatOffsets>
+		<costList>
+			<Cloth>50</Cloth>
+			<Steel>70</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<thingCategories>
+			<li>ApparelArmor</li>
+		</thingCategories>
+		<tradeTags>
+			<li>Clothing</li>
+			<li>Armor</li>
+		</tradeTags>
+		<recipeMaker>
+			<researchPrerequisite>FlakArmor</researchPrerequisite>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+			<displayPriority>325</displayPriority>
+		</recipeMaker>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Things/Apparel/Nod/Officer/ClassicSuit</wornGraphicPath>
+			<layers>
+				<li>Shell</li>
+			</layers>
+			<tags>
+				<li>NodOfficer</li>
+				<li>IndustrialMilitaryAdvanced</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">Royal</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">RoyalTier2</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>Soldier</li>
+			</defaultOutfitTags>
+		</apparel>
+	</ThingDef>
+
+	<!-- ====================================== Black Hand =========================================== -->
+
+	<ThingDef ParentName="ArmorMachineableBase">
+		<defName>Apparel_NodBlackHandHelmet</defName>
+		<label>Nod Black Hand helmet</label>
+		<description>A sealed assault helmet worn by the Black Hand, Nod's feared elite. It is built for flame weapons, smoke-filled interiors and ritual shock assaults, with a heavy mask that makes the wearer look less like a soldier and more like a sentence.</description>
+		<techLevel>Spacer</techLevel>
+		<graphicData>
+			<texPath>Things/Apparel/Nod/Blackhand/BHSuitHelmet</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<uiIconPath>Things/Apparel/Nod/Blackhand/BHSuitHelmet</uiIconPath>
+		<statBases>
+			<WorkToMake>21000</WorkToMake>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>1.5</Mass>
+			<Flammability>0.25</Flammability>
+			<ArmorRating_Sharp>1.06</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.80</ArmorRating_Heat>
+			<Insulation_Cold>4</Insulation_Cold>
+			<Insulation_Heat>6</Insulation_Heat>
+			<EquipDelay>4</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<ToxicEnvironmentResistance>0.65</ToxicEnvironmentResistance>
+			<SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+		</equippedStatOffsets>
+		<costList>
+			<Plasteel>40</Plasteel>
+			<ComponentSpacer>1</ComponentSpacer>
+		</costList>
+		<thingCategories>
+			<li>ArmorHeadgear</li>
+		</thingCategories>
+		<tradeTags>
+			<li>HiTechArmor</li>
+			<li>Armor</li>
+		</tradeTags>
+		<recipeMaker>
+			<researchPrerequisite>PoweredArmor</researchPrerequisite>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>7</Crafting>
+			</skillRequirements>
+			<displayPriority>330</displayPriority>
+		</recipeMaker>
+		<randomStyleChance>0.35</randomStyleChance>
+		<randomStyle>
+			<li>
+				<styleDef>Apparel_NodBlackHandHelmet2</styleDef>
+			</li>
+		</randomStyle>
+		<apparel>
+			<countsAsClothingForNudity>false</countsAsClothingForNudity>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Things/Apparel/Nod/Blackhand/BHSuitHelmet</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<tags>
+				<li>NodBlackHand</li>
+				<li>SpacerMilitary</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">PrestigeCombatGear</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>Soldier</li>
+				<li>Spacefarer</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+	</ThingDef>
+
+	<ThingStyleDef>
+		<defName>Apparel_NodBlackHandHelmet2</defName>
+		<overrideLabel>Nod Confessor helmet</overrideLabel>
+		<wornGraphicPath>Things/Apparel/Nod/Blackhand/BHSuitHelmet2</wornGraphicPath>
+		<graphicData>
+			<texPath>Things/Apparel/Nod/Blackhand/BHSuitHelmet2</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+	</ThingStyleDef>
+
+	<ThingDef ParentName="ArmorMachineableBase">
+		<defName>Apparel_NodBlackHand</defName>
+		<label>Nod Black Hand suit</label>
+		<description>Heavy powered armor for Black Hand confessors and flame troops. Its thermal shielding, thick composite plates and sealed body glove let the wearer advance through burning streets, chemical haze and return fire while preaching Kane's will at weapon range.</description>
+		<techLevel>Spacer</techLevel>
+		<graphicData>
+			<texPath>Things/Apparel/Nod/Blackhand/BHSuit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>60000</WorkToMake>
+			<MaxHitPoints>340</MaxHitPoints>
+			<Mass>12</Mass>
+			<Flammability>0.25</Flammability>
+			<ArmorRating_Sharp>1.06</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.80</ArmorRating_Heat>
+			<Insulation_Cold>68</Insulation_Cold>
+			<Insulation_Heat>120</Insulation_Heat>
+			<EquipDelay>14</EquipDelay>
+			<Ability_EffectRadius>1.9</Ability_EffectRadius>
+		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.25</MoveSpeed>
+			<SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+		</equippedStatOffsets>
+		<costList>
+			<Plasteel>100</Plasteel>
+			<Uranium>20</Uranium>
+			<ComponentSpacer>4</ComponentSpacer>
+		</costList>
+		<thingCategories>
+			<li>ApparelArmor</li>
+		</thingCategories>
+		<tradeTags>
+			<li>HiTechArmor</li>
+			<li>Armor</li>
+		</tradeTags>
+		<recipeMaker>
+			<researchPrerequisite>PoweredArmor</researchPrerequisite>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>7</Crafting>
+			</skillRequirements>
+			<displayPriority>335</displayPriority>
+		</recipeMaker>
+		<comps>
+			<li Class="CompProperties_ApparelReloadable">
+				<maxCharges>3</maxCharges>
+				<ammoDef>Chemfuel</ammoDef>
+				<ammoCountToRefill>10</ammoCountToRefill>
+				<baseReloadTicks>60</baseReloadTicks>
+				<soundReload>Standard_Reload</soundReload>
+				<hotKey>Misc4</hotKey>
+				<chargeNoun>smokepop</chargeNoun>
+				<displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+			</li>
+		</comps>
+		<verbs>
+			<li>
+				<verbClass>Verb_Smokepop</verbClass>
+				<label>personal smoke</label>
+				<violent>false</violent>
+				<hasStandardCommand>true</hasStandardCommand>
+				<targetable>false</targetable>
+				<nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+				<onlyManualCast>true</onlyManualCast>
+			</li>
+		</verbs>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Things/Apparel/Nod/Blackhand/BHSuit</wornGraphicPath>
+			<layers>
+				<li>Middle</li>
+				<li>Shell</li>
+			</layers>
+			<tags>
+				<li>NodBlackHand</li>
+				<li>SpacerMilitary</li>
+				<li MayRequire="Ludeon.RimWorld.Royalty">PrestigeCombatGear</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>Soldier</li>
+				<li>Spacefarer</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+			<soundWear>Wear_PowerArmor</soundWear>
+			<soundRemove>Remove_PowerArmor</soundRemove>
+		</apparel>
+	</ThingDef>
+
+</Defs>

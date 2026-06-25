@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<RulePackDef>
+		<defName>NamerFactionNod</defName>
+		<rulePack>
+			<rulesStrings>
+				<li>r_name(p=6)->Brotherhood of Nod</li>
+				<li>r_name(p=3)->The [nodSect] of Nod</li>
+				<li>r_name(p=3)->[nodTemple] Cell</li>
+				<li>r_name(p=2)->The [nodAdjective] Brotherhood</li>
+				<li>r_name->[nodTemple] Covenant</li>
+				<li>nodSect->Black Hand</li>
+				<li>nodSect->Inner Circle</li>
+				<li>nodSect->Red Temple</li>
+				<li>nodSect->Tiberium Dawn</li>
+				<li>nodTemple->Temple Prime</li>
+				<li>nodTemple->Red Zone</li>
+				<li>nodTemple->Obelisk</li>
+				<li>nodTemple->Ascension</li>
+				<li>nodTemple->Kane's Reach</li>
+				<li>nodAdjective->Crimson</li>
+				<li>nodAdjective->Silent</li>
+				<li>nodAdjective->Hidden</li>
+				<li>nodAdjective->Faithful</li>
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+
+	<RulePackDef>
+		<defName>NamerSettlementNod</defName>
+		<rulePack>
+			<rulesStrings>
+				<li>r_name(p=4)->[nodSite]</li>
+				<li>r_name(p=3)->[nodSite] [nodOutpost]</li>
+				<li>r_name(p=2)->[nodAdjective] [nodOutpost]</li>
+				<li>r_name->[nodOutpost] of [nodSite]</li>
+				<li>nodSite->Temple Prime</li>
+				<li>nodSite->Kane's Reach</li>
+				<li>nodSite->Red Mesa</li>
+				<li>nodSite->Black Spire</li>
+				<li>nodSite->Obelisk Point</li>
+				<li>nodSite->Ascension Field</li>
+				<li>nodOutpost->Chapel</li>
+				<li>nodOutpost->Temple</li>
+				<li>nodOutpost->Cell</li>
+				<li>nodOutpost->Sanctum</li>
+				<li>nodOutpost->Listening Post</li>
+				<li>nodAdjective->Crimson</li>
+				<li>nodAdjective->Black</li>
+				<li>nodAdjective->Hidden</li>
+				<li>nodAdjective->Burning</li>
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+
+</Defs>
