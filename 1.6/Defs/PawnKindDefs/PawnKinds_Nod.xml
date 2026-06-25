@@ -47,6 +47,7 @@
 			<li>IndustrialMilitaryBasic</li>
 		</apparelTags>
 		<weaponTags>
+			<li>NodRifle</li>
 			<li>Gun</li>
 			<li>SimpleGun</li>
 			<li>MedievalMeleeBasic</li>
@@ -69,7 +70,7 @@
 			<li>IndustrialMilitaryBasic</li>
 		</apparelTags>
 		<weaponTags>
-			<li>Gun</li>
+			<li>NodRifle</li>
 			<li>SimpleGun</li>
 		</weaponTags>
 	</PawnKindDef>
@@ -87,7 +88,8 @@
 			<li>BeltDefensePop</li>
 		</apparelTags>
 		<weaponTags>
-			<li>Gun</li>
+			<li>NodRifle</li>
+			<li>NodFlechetteGun</li>
 			<li>IndustrialGunAdvanced</li>
 		</weaponTags>
 	</PawnKindDef>
@@ -110,9 +112,8 @@
 			<li>BeltDefensePop</li>
 		</apparelTags>
 		<weaponTags>
-			<li>RangedHeavy</li>
+			<li>NodRocketLauncher</li>
 			<li>GunHeavy</li>
-			<li>GunSingleUse</li>
 		</weaponTags>
 	</PawnKindDef>
 
@@ -132,6 +133,7 @@
 			<li>IndustrialMilitaryBasic</li>
 		</apparelTags>
 		<weaponTags>
+			<li>NodSuicideBomb</li>
 			<li>MedievalMeleeDecent</li>
 		</weaponTags>
 	</PawnKindDef>
@@ -152,6 +154,8 @@
 			<li>BeltDefensePop</li>
 		</apparelTags>
 		<weaponTags>
+			<li>NodLaserRifle</li>
+			<li>NodRifle</li>
 			<li>IndustrialGunAdvanced</li>
 			<li>SpacerGun</li>
 		</weaponTags>
@@ -180,6 +184,8 @@
 			<li>BeltDefensePop</li>
 		</apparelTags>
 		<weaponTags>
+			<li>NodHeavyLaserRifle</li>
+			<li>NodLaserRifle</li>
 			<li>IndustrialGunAdvanced</li>
 			<li>SniperRifle</li>
 		</weaponTags>
@@ -214,6 +220,8 @@
 			<li>SpacerMilitary</li>
 		</apparelTags>
 		<weaponTags>
+			<li>NodFlamethrower</li>
+			<li>NodHeavyLaserRifle</li>
 			<li>SpacerGun</li>
 			<li>GunHeavy</li>
 			<li>Flamethrower</li>
@@ -245,7 +253,7 @@
 			<li>BeltDefensePop</li>
 		</apparelTags>
 		<weaponTags>
-			<li>Gun</li>
+			<li>NodRifle</li>
 			<li>IndustrialGunAdvanced</li>
 		</weaponTags>
 		<techHediffsChance>0.2</techHediffsChance>
@@ -274,6 +282,8 @@
 			<li>BeltDefensePop</li>
 		</apparelTags>
 		<weaponTags>
+			<li>NodHeavyLaserRifle</li>
+			<li>NodLaserRifle</li>
 			<li>SpacerGun</li>
 			<li>SniperRifle</li>
 		</weaponTags>

@@ -79,10 +79,6 @@
 			</disallowedThingDefs>
 		</apparelStuffFilter>
 		<allowedArrivalTemperatureRange>-40~55</allowedArrivalTemperatureRange>
-		<colorSpectrum>
-			<li>(0.52, 0.03, 0.03)</li>
-			<li>(0.08, 0.08, 0.08)</li>
-		</colorSpectrum>
 		<naturalEnemy>true</naturalEnemy>
 		<caravanTraderKinds>
 			<li>Caravan_Nod_Supply</li>
@@ -229,6 +225,10 @@
 						<li>MealSurvivalPack</li>
 						<li>Neutroamine</li>
 						<li>Chemfuel</li>
+						<li>Gun_NodRifle</li>
+						<li>Gun_NodTwinTiberiumFlechetteGun</li>
+						<li>Gun_NodRocketLauncher</li>
+						<li>Weapon_NodGrenade</li>
 					</thingDefs>
 				</filter>
 			</fixedParams>
