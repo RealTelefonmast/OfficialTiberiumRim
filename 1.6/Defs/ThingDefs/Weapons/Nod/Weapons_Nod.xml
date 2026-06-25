@@ -509,6 +509,7 @@
 		<defName>Gun_NodRocketLauncher</defName>
 		<label>Nod rocket launcher</label>
 		<description>A heavy twin-shot rocket launcher known among Nod militia as Kane's wand. It is unwieldy, destructive, and useful against buildings or clustered defenders.</description>
+		<tickerType>Normal</tickerType>
 		<graphicData>
 			<texPath>Things/Weapons/Nod/Launcher_Rocket</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
