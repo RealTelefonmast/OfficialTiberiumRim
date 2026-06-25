@@ -93,7 +93,7 @@
 		<defName>Bullet_NodRifle</defName>
 		<label>Nod rifle bullet</label>
 		<graphicData>
-			<texPath>FX/Projectiles/Nod/Bullet_Base_Nod</texPath>
+			<texPath>FX/Projectiles/Nod/Bullet_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
@@ -186,8 +186,8 @@
 		<defName>Bullet_NodFlechette</defName>
 		<label>Tiberium flechette</label>
 		<graphicData>
-			<texPath>Things/Projectile/Charge_Small</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>FX/Projectiles/Nod/TiberiumFlechette</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
 			<color>(0.2, 1, 0.35)</color>
 		</graphicData>
 		<projectile>
@@ -285,7 +285,7 @@
 		<defName>Bullet_NodLaserRifle</defName>
 		<label>Nod laser pulse</label>
 		<graphicData>
-			<texPath>Things/Projectile/ChargeLanceShot</texPath>
+			<texPath>FX/Projectiles/Nod/Bullet_Laser</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>1.5</drawSize>
@@ -387,7 +387,9 @@
 		<defName>Bullet_NodHeavyLaserRifle</defName>
 		<label>heavy Nod laser pulse</label>
 		<graphicData>
-			<texPath>Things/Projectile/Charge_Small</texPath>
+			<texPath>FX/Projectiles/Nod/Bullet_LaserBeam_Heavy</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1.5</drawSize>
 			<graphicClass>Graphic_Single</graphicClass>
 			<color>(1, 0.05, 0.05)</color>
 		</graphicData>
@@ -583,7 +585,7 @@
 		<defName>Bullet_NodRocket</defName>
 		<label>Nod rocket</label>
 		<graphicData>
-			<texPath>Things/Projectile/Rocket_Big</texPath>
+			<texPath>FX/Projectiles/Nod/Bullet_Rocket</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
@@ -661,6 +663,11 @@
 	<ThingDef ParentName="BaseFragGrenadeProjectile">
 		<defName>Proj_NodGrenade</defName>
 		<label>Nod grenade</label>
+		<graphicData>
+			<texPath>FX/Projectiles/Nod/Grenade_Static</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
 		<projectile>
 			<explosionRadius>2.2</explosionRadius>
 			<damageAmountBase>35</damageAmountBase>
@@ -763,7 +770,7 @@
 		<defName>Bullet_NodSuicideBomb</defName>
 		<label>suicide charge</label>
 		<graphicData>
-			<texPath>Things/Projectile/Rocket_Big</texPath>
+			<texPath>FX/Projectiles/Nod/SuicideBomb</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
