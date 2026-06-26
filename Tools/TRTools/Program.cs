@@ -25,6 +25,8 @@
 //   trtool --delete-identical --confirm   actually delete them
 //   trtool --flatten-textures         dry-run: copy all images into a flat Textures_Dump folder
 //   trtool --flatten-textures --confirm   actually perform the copy
+//   trtool --duplicate-images --scope <folder>         dry-run: find duplicate image content in a folder
+//   trtool --duplicate-images --scope <folder> --confirm   move duplicate images to <folder>_duplicates
 //   trtool --dest <name>              override dump folder name (default depends on mode)
 //
 //   trtool --sort-files               dry-run: analyse .cs inheritance, copy files into SortedCodeTree/<Category>/
@@ -46,6 +48,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using DiffPlex.DiffBuilder;
 using DiffPlex.DiffBuilder.Model;
@@ -105,11 +108,12 @@ namespace TRTools
             bool treeOnly           = args.Contains("--tree-only");
             bool deleteIdentical    = args.Contains("--delete-identical");
             bool flattenTextures    = args.Contains("--flatten-textures");
+            bool duplicateImages    = args.Contains("--duplicate-images");
             bool sortFiles          = args.Contains("--sort-files");
             bool probe              = args.Contains("--probe");
             bool confirm            = args.Contains("--confirm");
             bool verbose            = args.Contains("--verbose");
-            bool noTree             = stats || dupesOnly || fileFilter != null || deleteIdentical || flattenTextures || sortFiles || probe || args.Contains("--no-tree");
+            bool noTree             = stats || dupesOnly || fileFilter != null || deleteIdentical || flattenTextures || duplicateImages || sortFiles || probe || args.Contains("--no-tree");
             bool noDiff             = dupesOnly || args.Contains("--no-diff");
             bool noIdentical        = args.Contains("--no-identical");
             bool identicalOnly      = args.Contains("--identical-only");
@@ -151,6 +155,19 @@ namespace TRTools
             if (flattenTextures)
             {
                 RunFlattenTextures(rootPath, scanRoot, destName, sampleLimit, verbose, confirm);
+                Finish();
+                return;
+            }
+
+            // --duplicate-images: find identical image content and move duplicate copies aside
+            if (duplicateImages)
+            {
+                string explicitDest = ResolveArg(args, "--dest");
+                string destDir = explicitDest != null
+                    ? Path.GetFullPath(Path.Combine(rootPath, explicitDest))
+                    : scanRoot.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar) + "_duplicates";
+
+                RunDuplicateImages(rootPath, scanRoot, destDir, sampleLimit, verbose, confirm);
                 Finish();
                 return;
             }
@@ -465,6 +482,11 @@ namespace TRTools
             ".xml", ".cs", ".csproj", ".sln", ".props", ".targets", ".config"
         };
 
+        private static readonly HashSet<string> ImageExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            ".png", ".jpg", ".jpeg", ".bmp", ".gif", ".tga", ".dds", ".psd"
+        };
+
         private static void RunFlattenTextures(string rootPath, string scanRoot, string destName, int sampleLimit, bool verbose, bool confirm)
         {
             string destDir = Path.Combine(rootPath, destName);
@@ -564,6 +586,131 @@ namespace TRTools
             {
                 Write("");
                 Write("Done. Copied " + plan.Count + " file(s) to " + destDir);
+            }
+        }
+
+        private static void RunDuplicateImages(string rootPath, string scanRoot, string destDir, int sampleLimit, bool verbose, bool confirm)
+        {
+            var files = new List<string>();
+            foreach (string file in Directory.EnumerateFiles(scanRoot, "*", SearchOption.AllDirectories))
+            {
+                if (IsInSkippedDir(scanRoot, file)) continue;
+                if (IsUnderPath(destDir, file)) continue;
+                if (ImageExtensions.Contains(Path.GetExtension(file)))
+                    files.Add(file);
+            }
+
+            var byLength = files.GroupBy(f => new FileInfo(f).Length).Where(g => g.Count() > 1);
+            var byHash = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
+
+            foreach (var lengthGroup in byLength)
+            {
+                foreach (string file in lengthGroup)
+                {
+                    string hash;
+                    try
+                    {
+                        hash = ComputeSha256(file);
+                    }
+                    catch (Exception ex)
+                    {
+                        Colored(ConsoleColor.Red, "  HASH FAILED " + Path.GetRelativePath(rootPath, file) + " — " + ex.Message);
+                        continue;
+                    }
+
+                    if (!byHash.TryGetValue(hash, out List<string> hashFiles))
+                    {
+                        hashFiles = new List<string>();
+                        byHash[hash] = hashFiles;
+                    }
+                    hashFiles.Add(file);
+                }
+            }
+
+            var duplicateGroups = byHash.Values
+                .Where(g => g.Count > 1)
+                .Select(g => g.OrderBy(f => f, StringComparer.OrdinalIgnoreCase).ToList())
+                .OrderBy(g => Path.GetFileName(g[0]), StringComparer.OrdinalIgnoreCase)
+                .ToList();
+
+            int duplicateCount = duplicateGroups.Sum(g => g.Count - 1);
+
+            PrintSection("Duplicate Images" + (confirm ? "" : " [DRY RUN]"));
+            Write("Source:       " + scanRoot);
+            Write("Dest:         " + destDir);
+            Write("Images found: " + files.Count);
+            Write("Groups:       " + duplicateGroups.Count);
+            Write("To move:      " + duplicateCount);
+
+            if (!confirm)
+            {
+                Write("");
+                Colored(ConsoleColor.DarkGray, "Dry run — add --confirm to move duplicate images. Use --verbose to list kept files.");
+            }
+
+            if (duplicateGroups.Count == 0)
+                return;
+
+            if (confirm)
+                Directory.CreateDirectory(destDir);
+
+            var usedDestNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            if (Directory.Exists(destDir))
+            {
+                foreach (string existing in Directory.EnumerateFiles(destDir, "*", SearchOption.AllDirectories))
+                    usedDestNames.Add(Path.GetFileName(existing));
+            }
+
+            bool truncated = false;
+            int shown = 0;
+
+            for (int groupIndex = 0; groupIndex < duplicateGroups.Count; groupIndex++)
+            {
+                List<string> group = duplicateGroups[groupIndex];
+                string keep = group[0];
+
+                if (shown >= sampleLimit) { truncated = true; continue; }
+                shown++;
+
+                Write("");
+                Colored(ConsoleColor.Yellow, "[" + (groupIndex + 1) + "/" + duplicateGroups.Count + "] " + group.Count + " identical images");
+                if (verbose)
+                    Colored(ConsoleColor.Green, "  KEEP " + Path.GetRelativePath(rootPath, keep));
+
+                for (int i = 1; i < group.Count; i++)
+                {
+                    string duplicate = group[i];
+                    string destFile = ReserveMoveName(destDir, duplicate, usedDestNames);
+
+                    if (confirm)
+                    {
+                        try
+                        {
+                            File.Move(duplicate, destFile);
+                            Colored(ConsoleColor.Red, "  MOVE " + Path.GetRelativePath(rootPath, duplicate) + " -> " + Path.GetRelativePath(rootPath, destFile));
+                        }
+                        catch (Exception ex)
+                        {
+                            Colored(ConsoleColor.Red, "  FAILED " + Path.GetRelativePath(rootPath, duplicate) + " — " + ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        Colored(ConsoleColor.DarkGray, "  MOVE " + Path.GetRelativePath(rootPath, duplicate) + " -> " + Path.GetRelativePath(rootPath, destFile));
+                    }
+                }
+            }
+
+            if (truncated)
+            {
+                Write("");
+                Colored(ConsoleColor.DarkGray, "... output truncated (--sample " + sampleLimit + ")");
+            }
+
+            if (confirm)
+            {
+                Write("");
+                Write("Done. Moved " + duplicateCount + " duplicate image file(s).");
             }
         }
 
@@ -738,6 +885,37 @@ namespace TRTools
             {
                 return false;
             }
+        }
+
+        private static bool IsUnderPath(string root, string path)
+        {
+            string fullRoot = Path.GetFullPath(root).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar) + Path.DirectorySeparatorChar;
+            string fullPath = Path.GetFullPath(path);
+            return fullPath.StartsWith(fullRoot, StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static string ComputeSha256(string path)
+        {
+            using SHA256 sha = SHA256.Create();
+            using FileStream stream = File.OpenRead(path);
+            return Convert.ToHexString(sha.ComputeHash(stream));
+        }
+
+        private static string ReserveMoveName(string destDir, string sourceFile, HashSet<string> usedDestNames)
+        {
+            string baseName = Path.GetFileNameWithoutExtension(sourceFile);
+            string ext = Path.GetExtension(sourceFile);
+            string candidate = baseName + ext;
+            int copy = 1;
+
+            while (usedDestNames.Contains(candidate) || File.Exists(Path.Combine(destDir, candidate)))
+            {
+                candidate = baseName + "_Duplicate" + copy + ext;
+                copy++;
+            }
+
+            usedDestNames.Add(candidate);
+            return Path.Combine(destDir, candidate);
         }
 
         // ── Directory tree ──────────────────────────────────────────────────
