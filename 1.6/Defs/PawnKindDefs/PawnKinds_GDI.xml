@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<PawnKindDef ParentName="OutlanderBase" Name="GDIPawnBase" Abstract="True">
+		<defaultFactionDef>GDI</defaultFactionDef>
+		<backstoryCryptosleepCommonality>0.08</backstoryCryptosleepCommonality>
+		<combatEnhancingDrugsChance>0.1</combatEnhancingDrugsChance>
+		<gearHealthRange>0.55~1.35</gearHealthRange>
+		<initialWillRange>1~3</initialWillRange>
+		<initialResistanceRange>15~24</initialResistanceRange>
+		<invNutrition>2.55</invNutrition>
+		<apparelAllowHeadgearChance>1</apparelAllowHeadgearChance>
+		<itemQuality>Normal</itemQuality>
+		<biocodeWeaponChance>0.2</biocodeWeaponChance>
+		<disallowedTraits><li>BodyPurist</li></disallowedTraits>
+		<skills><li><skill>Shooting</skill><range>6~14</range></li></skills>
+		<inventoryOptions><skipChance>0.85</skipChance><subOptionsChooseOne><li><thingDef>MedicineIndustrial</thingDef><countRange>1</countRange></li></subOptionsChooseOne></inventoryOptions>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="GDIPawnBase">
+		<defName>GDI_Citizen</defName>
+		<label>citizen reservist</label>
+		<combatPower>50</combatPower>
+		<itemQuality>Poor</itemQuality>
+		<weaponMoney>400~750</weaponMoney>
+		<apparelMoney>1000~1600</apparelMoney>
+		<apparelTags><li>Outlander</li><li>IndustrialBasic</li><li>IndustrialMilitaryBasic</li></apparelTags>
+		<weaponTags><li>GDIRifle</li><li>Gun</li><li>SimpleGun</li><li>NonNeolithicOnlyMelee</li></weaponTags>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="GDIPawnBase">
+		<defName>GDI_Engineer</defName>
+		<label>engineer</label>
+		<combatPower>70</combatPower>
+		<weaponMoney>350~750</weaponMoney>
+		<apparelMoney>7000~9500</apparelMoney>
+		<apparelRequired><li>Apparel_GDIEngineerMask</li><li>Apparel_GDIEngineerSuit</li></apparelRequired>
+		<apparelTags><li>GDIEngineer</li><li>BeltDefensePop</li></apparelTags>
+		<weaponTags><li>GDIRifle</li><li>SimpleGun</li></weaponTags>
+		<skills Inherit="False"><li><skill>Shooting</skill><range>5~12</range></li><li><skill>Construction</skill><range>7~16</range></li><li><skill>Intellectual</skill><range>6~14</range></li></skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="GDIPawnBase">
+		<defName>GDI_Soldier</defName>
+		<label>soldier</label>
+		<combatPower>90</combatPower>
+		<weaponMoney>1000~1700</weaponMoney>
+		<apparelMoney>6500~8500</apparelMoney>
+		<apparelRequired><li>Apparel_GDISoldierHelmet</li><li>Apparel_GDISoldierSuit</li></apparelRequired>
+		<apparelTags><li>GDISoldier</li><li>SpacerMilitary</li><li>BeltDefensePop</li></apparelTags>
+		<weaponTags><li>GDIRifle</li><li>IndustrialGunAdvanced</li></weaponTags>
+		<skills Inherit="False"><li><skill>Shooting</skill><range>8~15</range></li></skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="GDIPawnBase">
+		<defName>GDI_Officer</defName>
+		<label>officer</label>
+		<combatPower>105</combatPower>
+		<weaponMoney>1500~2600</weaponMoney>
+		<apparelMoney>7500~10000</apparelMoney>
+		<itemQuality>Good</itemQuality>
+		<apparelRequired><li>Apparel_GDIOfficerHelmet</li><li>Apparel_GDIOfficerSuit</li></apparelRequired>
+		<apparelTags><li>GDIOfficer</li><li>IndustrialMilitaryAdvanced</li><li>BeltDefensePop</li></apparelTags>
+		<weaponTags><li>GDIRifle</li><li>GDIRailgun</li><li>SniperRifle</li></weaponTags>
+		<skills Inherit="False"><li><skill>Shooting</skill><range>9~16</range></li><li><skill>Social</skill><range>7~15</range></li></skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="GDIPawnBase">
+		<defName>GDI_SiegeTrooper</defName>
+		<label>siege trooper</label>
+		<combatPower>145</combatPower>
+		<canBeSapper>true</canBeSapper>
+		<isGoodBreacher>true</isGoodBreacher>
+		<weaponMoney>1800~3200</weaponMoney>
+		<apparelMoney>7500~10500</apparelMoney>
+		<apparelRequired><li>Apparel_GDISoldierHelmet</li><li>Apparel_GDISoldierSuit</li></apparelRequired>
+		<apparelTags><li>GDISoldier</li><li>BeltDefensePop</li></apparelTags>
+		<weaponTags><li>GDIGrenadeLauncher</li><li>GDIMobileMortar</li><li>GunHeavy</li></weaponTags>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="GDIPawnBase">
+		<defName>GDI_ZoneTrooper</defName>
+		<label>zone trooper</label>
+		<combatPower>180</combatPower>
+		<aiAvoidCover>true</aiAvoidCover>
+		<weaponMoney>2500~4500</weaponMoney>
+		<apparelMoney>11000~15000</apparelMoney>
+		<itemQuality>Excellent</itemQuality>
+		<apparelRequired><li>Apparel_GDIZoneHelmet</li><li>Apparel_GDIZoneSuit</li></apparelRequired>
+		<apparelTags><li>GDIZone</li><li>SpacerMilitary</li></apparelTags>
+		<weaponTags><li>GDIRailgun</li><li>GDIShatterer</li><li>SpacerGun</li></weaponTags>
+		<techHediffsChance>0.4</techHediffsChance>
+		<techHediffsMoney>900~1400</techHediffsMoney>
+		<techHediffsRequired><li>DeathAcidifier</li></techHediffsRequired>
+		<biocodeWeaponChance>0.75</biocodeWeaponChance>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="GDIPawnBase">
+		<defName>GDI_Trader</defName>
+		<label>trade director</label>
+		<trader>true</trader>
+		<isFighter>false</isFighter>
+		<combatPower>90</combatPower>
+		<weaponMoney>900~1600</weaponMoney>
+		<apparelMoney>7000~11000</apparelMoney>
+		<itemQuality>Good</itemQuality>
+		<apparelRequired><li>Apparel_GDIOfficerHelmet</li><li>Apparel_GDIOfficerSuit</li></apparelRequired>
+		<apparelTags><li>GDIOfficer</li><li>BeltDefensePop</li></apparelTags>
+		<weaponTags><li>GDIRifle</li><li>IndustrialGunAdvanced</li></weaponTags>
+		<skills Inherit="False"><li><skill>Shooting</skill><range>7~14</range></li><li><skill>Social</skill><range>8~16</range></li></skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="GDIPawnBase">
+		<defName>GDI_General</defName>
+		<label>general</label>
+		<combatPower>230</combatPower>
+		<factionLeader>true</factionLeader>
+		<minGenerationAge>40</minGenerationAge>
+		<maxGenerationAge>65</maxGenerationAge>
+		<weaponMoney>3000~5000</weaponMoney>
+		<apparelMoney>13000~17000</apparelMoney>
+		<itemQuality>Excellent</itemQuality>
+		<apparelRequired><li>Apparel_GDIZoneHelmet</li><li>Apparel_GDIZoneSuit</li></apparelRequired>
+		<apparelTags><li>GDIZone</li><li>SpacerMilitary</li><li>BeltDefensePop</li></apparelTags>
+		<weaponTags><li>GDIRailgun</li><li>GDIShatterer</li><li>SpacerGun</li></weaponTags>
+		<techHediffsChance>0.65</techHediffsChance>
+		<techHediffsMoney>1200~2000</techHediffsMoney>
+		<techHediffsRequired><li>DeathAcidifier</li></techHediffsRequired>
+		<initialWillRange>16~19</initialWillRange>
+		<initialResistanceRange>38~58</initialResistanceRange>
+		<skills Inherit="False"><li><skill>Shooting</skill><range>11~17</range></li><li><skill>Social</skill><range>10~18</range></li></skills>
+	</PawnKindDef>
+
+</Defs>

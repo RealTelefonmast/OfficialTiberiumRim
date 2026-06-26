@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="ArmorMachineableBase" Name="Apparel_GDIHelmetBase" Abstract="True">
+		<techLevel>Spacer</techLevel>
+		<thingCategories>
+			<li>ArmorHeadgear</li>
+		</thingCategories>
+		<tradeTags>
+			<li>Armor</li>
+		</tradeTags>
+		<recipeMaker>
+			<researchPrerequisite>ReconArmor</researchPrerequisite>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>6</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<apparel>
+			<countsAsClothingForNudity>false</countsAsClothingForNudity>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<defaultOutfitTags>
+				<li>Soldier</li>
+				<li>Spacefarer</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorMachineableBase" Name="Apparel_GDISuitBase" Abstract="True">
+		<techLevel>Spacer</techLevel>
+		<thingCategories>
+			<li>ApparelArmor</li>
+		</thingCategories>
+		<tradeTags>
+			<li>HiTechArmor</li>
+			<li>Armor</li>
+		</tradeTags>
+		<recipeMaker>
+			<researchPrerequisite>ReconArmor</researchPrerequisite>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>6</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Middle</li>
+				<li>Shell</li>
+			</layers>
+			<defaultOutfitTags>
+				<li>Soldier</li>
+				<li>Spacefarer</li>
+			</defaultOutfitTags>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+			<soundWear>Wear_PowerArmor</soundWear>
+			<soundRemove>Remove_PowerArmor</soundRemove>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="Apparel_GDIHelmetBase">
+		<defName>Apparel_GDISoldierHelmet</defName>
+		<label>GDI soldier helmet</label>
+		<description>A sealed GDI infantry helmet with composite plating, combat optics, and a reliable filter pack for contaminated battlefields.</description>
+		<graphicData><texPath>Things/Apparel/GDI/Soldier/Helmets/SoldierSuitHelmet</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+		<uiIconPath>Things/Apparel/GDI/Soldier/Helmets/SoldierSuitHelmet</uiIconPath>
+		<statBases><WorkToMake>15750</WorkToMake><MaxHitPoints>140</MaxHitPoints><Mass>1.1</Mass><Flammability>0.4</Flammability><ArmorRating_Sharp>0.92</ArmorRating_Sharp><ArmorRating_Blunt>0.4</ArmorRating_Blunt><ArmorRating_Heat>0.46</ArmorRating_Heat><Insulation_Cold>4</Insulation_Cold><Insulation_Heat>2</Insulation_Heat><EquipDelay>2</EquipDelay></statBases>
+		<equippedStatOffsets><ToxicEnvironmentResistance>0.5</ToxicEnvironmentResistance></equippedStatOffsets>
+		<costList><Plasteel>30</Plasteel><ComponentSpacer>1</ComponentSpacer></costList>
+		<apparel><wornGraphicPath>Things/Apparel/GDI/Soldier/Helmets/SoldierSuitHelmet</wornGraphicPath><tags><li>GDISoldier</li><li>SpacerMilitary</li></tags></apparel>
+		<randomStyleChance>0.35</randomStyleChance>
+		<randomStyle><li><styleDef>Apparel_GDISoldierHelmet2</styleDef></li></randomStyle>
+	</ThingDef>
+
+	<ThingStyleDef>
+		<defName>Apparel_GDISoldierHelmet2</defName>
+		<overrideLabel>GDI spartan helmet</overrideLabel>
+		<wornGraphicPath>Things/Apparel/GDI/Soldier/Helmets/Helmet2</wornGraphicPath>
+		<graphicData><texPath>Things/Apparel/GDI/Soldier/Helmets/Helmet2</texPath><graphicClass>Graphic_Single</graphicClass><shaderType>CutoutComplex</shaderType></graphicData>
+	</ThingStyleDef>
+
+	<ThingDef ParentName="Apparel_GDISuitBase">
+		<defName>Apparel_GDISoldierSuit</defName>
+		<label>GDI soldier suit</label>
+		<description>A GDI infantry combat suit with sealed fabric, reinforced ceramic plates, and broad environmental protection.</description>
+		<graphicData><texPath>Things/Apparel/GDI/Soldier/SoldierSuit</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+		<statBases><WorkToMake>45000</WorkToMake><MaxHitPoints>300</MaxHitPoints><Mass>8</Mass><Flammability>0.4</Flammability><ArmorRating_Sharp>0.92</ArmorRating_Sharp><ArmorRating_Blunt>0.4</ArmorRating_Blunt><ArmorRating_Heat>0.46</ArmorRating_Heat><Insulation_Cold>64</Insulation_Cold><Insulation_Heat>9</Insulation_Heat><EquipDelay>11</EquipDelay></statBases>
+		<equippedStatOffsets><MoveSpeed>-0.1</MoveSpeed><ToxicEnvironmentResistance>0.3</ToxicEnvironmentResistance></equippedStatOffsets>
+		<costList><Plasteel>80</Plasteel><Uranium>10</Uranium><ComponentSpacer>3</ComponentSpacer></costList>
+		<apparel><wornGraphicPath>Things/Apparel/GDI/Soldier/SoldierSuit</wornGraphicPath><tags><li>GDISoldier</li><li>SpacerMilitary</li></tags></apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="Apparel_GDIHelmetBase">
+		<defName>Apparel_GDIOfficerHelmet</defName>
+		<label>GDI officer helmet</label>
+		<description>A polished GDI command helmet with battlefield comms, status display, and enough armor to keep officers near the line.</description>
+		<graphicData><texPath>Things/Apparel/GDI/Officer/OfficerSuitHelmet</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+		<uiIconPath>Things/Apparel/GDI/Officer/OfficerSuitHelmet</uiIconPath>
+		<statBases><WorkToMake>12000</WorkToMake><MaxHitPoints>130</MaxHitPoints><Mass>1.1</Mass><Flammability>0.45</Flammability><ArmorRating_Sharp>0.65</ArmorRating_Sharp><ArmorRating_Blunt>0.25</ArmorRating_Blunt><ArmorRating_Heat>0.25</ArmorRating_Heat><Insulation_Cold>4</Insulation_Cold><EquipDelay>2</EquipDelay></statBases>
+		<equippedStatOffsets><SocialImpact>0.1</SocialImpact><ToxicEnvironmentResistance>0.35</ToxicEnvironmentResistance></equippedStatOffsets>
+		<costList><Cloth>10</Cloth><Plasteel>20</Plasteel><ComponentIndustrial>2</ComponentIndustrial></costList>
+		<apparel><wornGraphicPath>Things/Apparel/GDI/Officer/OfficerSuitHelmet</wornGraphicPath><tags><li>GDIOfficer</li><li>IndustrialMilitaryAdvanced</li><li MayRequire="Ludeon.RimWorld.Royalty">Royal</li><li MayRequire="Ludeon.RimWorld.Royalty">RoyalTier2</li></tags></apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="Apparel_GDISuitBase">
+		<defName>Apparel_GDIOfficerSuit</defName>
+		<label>GDI officer suit</label>
+		<description>A formal GDI armored uniform, clean enough for command staff and reinforced enough for forward deployment.</description>
+		<graphicData><texPath>Things/Apparel/GDI/Officer/OfficerSuit</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+		<statBases><WorkToMake>16500</WorkToMake><MaxHitPoints>225</MaxHitPoints><Mass>5</Mass><Flammability>0.5</Flammability><ArmorRating_Sharp>0.5</ArmorRating_Sharp><ArmorRating_Blunt>0.2</ArmorRating_Blunt><ArmorRating_Heat>0.18</ArmorRating_Heat><Insulation_Cold>15</Insulation_Cold><Insulation_Heat>5</Insulation_Heat><EquipDelay>4</EquipDelay></statBases>
+		<equippedStatOffsets><SocialImpact>0.15</SocialImpact><MoveSpeed>-0.06</MoveSpeed></equippedStatOffsets>
+		<costList><Cloth>50</Cloth><Plasteel>25</Plasteel><ComponentIndustrial>3</ComponentIndustrial></costList>
+		<apparel><wornGraphicPath>Things/Apparel/GDI/Officer/OfficerSuit</wornGraphicPath><tags><li>GDIOfficer</li><li>IndustrialMilitaryAdvanced</li><li MayRequire="Ludeon.RimWorld.Royalty">Royal</li><li MayRequire="Ludeon.RimWorld.Royalty">RoyalTier2</li></tags></apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="Apparel_GDIHelmetBase">
+		<defName>Apparel_GDIEngineerMask</defName>
+		<label>GDI engineer mask</label>
+		<description>A sealed engineer mask with precision optics, integrated diagnostics, and enough plating to survive emergency repair work under fire.</description>
+		<graphicData><texPath>Things/Apparel/GDI/Engineer/EngineerMask</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+		<uiIconPath>Things/Apparel/GDI/Engineer/EngineerMask</uiIconPath>
+		<statBases><WorkToMake>20000</WorkToMake><MaxHitPoints>150</MaxHitPoints><Mass>1.5</Mass><ArmorRating_Sharp>0.6</ArmorRating_Sharp><ArmorRating_Blunt>0.45</ArmorRating_Blunt><ArmorRating_Heat>0.25</ArmorRating_Heat><Insulation_Cold>4</Insulation_Cold><Insulation_Heat>1</Insulation_Heat><EquipDelay>2</EquipDelay></statBases>
+		<equippedStatOffsets><ShootingAccuracyPawn>-0.05</ShootingAccuracyPawn><GlobalLearningFactor>0.08</GlobalLearningFactor><ResearchSpeed>0.08</ResearchSpeed><ToxicEnvironmentResistance>0.45</ToxicEnvironmentResistance></equippedStatOffsets>
+		<costList><Cloth>15</Cloth><Plasteel>35</Plasteel><ComponentSpacer>1</ComponentSpacer></costList>
+		<recipeMaker><skillRequirements><Crafting>8</Crafting></skillRequirements></recipeMaker>
+		<apparel><wornGraphicPath>Things/Apparel/GDI/Engineer/EngineerMask</wornGraphicPath><tags><li>GDIEngineer</li></tags></apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="Apparel_GDISuitBase">
+		<defName>Apparel_GDIEngineerSuit</defName>
+		<label>GDI engineer suit</label>
+		<description>A powered utility suit for GDI combat engineers, built for salvage, fortification work, and field repairs in hostile zones.</description>
+		<graphicData><texPath>Things/Apparel/GDI/Engineer/Engineer</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+		<statBases><MaxHitPoints>300</MaxHitPoints><WorkToMake>55000</WorkToMake><Mass>10</Mass><ArmorRating_Sharp>0.45</ArmorRating_Sharp><ArmorRating_Blunt>0.45</ArmorRating_Blunt><ArmorRating_Heat>0.25</ArmorRating_Heat><Insulation_Cold>20</Insulation_Cold><Insulation_Heat>5</Insulation_Heat><EquipDelay>10</EquipDelay></statBases>
+		<equippedStatOffsets><ShootingAccuracyPawn>-0.08</ShootingAccuracyPawn><WorkSpeedGlobal>0.08</WorkSpeedGlobal><ConstructionSpeed>0.15</ConstructionSpeed><ToxicEnvironmentResistance>0.25</ToxicEnvironmentResistance></equippedStatOffsets>
+		<costList><Cloth>25</Cloth><Plasteel>75</Plasteel><ComponentSpacer>4</ComponentSpacer></costList>
+		<recipeMaker><skillRequirements><Crafting>8</Crafting></skillRequirements></recipeMaker>
+		<apparel><wornGraphicPath>Things/Apparel/GDI/Engineer/Engineer</wornGraphicPath><tags><li>GDIEngineer</li></tags></apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="Apparel_GDIHelmetBase">
+		<defName>Apparel_GDIZoneHelmet</defName>
+		<label>GDI zone trooper helmet</label>
+		<description>A sealed heavy assault helmet for Zone Troopers, tuned for Tiberium fields, orbital deployments, and close fire support.</description>
+		<graphicData><texPath>Things/Apparel/GDI/Zone/ZoneSuitMask</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+		<uiIconPath>Things/Apparel/GDI/Zone/ZoneSuitMask</uiIconPath>
+		<statBases><WorkToMake>22000</WorkToMake><MaxHitPoints>160</MaxHitPoints><Mass>1.5</Mass><Flammability>0.25</Flammability><ArmorRating_Sharp>1.06</ArmorRating_Sharp><ArmorRating_Blunt>0.45</ArmorRating_Blunt><ArmorRating_Heat>0.8</ArmorRating_Heat><Insulation_Cold>4</Insulation_Cold><Insulation_Heat>6</Insulation_Heat><EquipDelay>4</EquipDelay></statBases>
+		<equippedStatOffsets><ToxicEnvironmentResistance>0.7</ToxicEnvironmentResistance></equippedStatOffsets>
+		<costList><Plasteel>45</Plasteel><ComponentSpacer>1</ComponentSpacer></costList>
+		<recipeMaker><researchPrerequisite>PoweredArmor</researchPrerequisite><skillRequirements><Crafting>7</Crafting></skillRequirements></recipeMaker>
+		<apparel><wornGraphicPath>Things/Apparel/GDI/Zone/ZoneSuitMask</wornGraphicPath><tags><li>GDIZone</li><li>SpacerMilitary</li><li MayRequire="Ludeon.RimWorld.Royalty">PrestigeCombatGear</li></tags></apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="Apparel_GDISuitBase">
+		<defName>Apparel_GDIZoneSuit</defName>
+		<label>GDI zone trooper suit</label>
+		<description>Heavy powered armor for GDI Zone Troopers, combining environmental sealing, heavy armor, and support systems for advanced weapons.</description>
+		<graphicData><texPath>Things/Apparel/GDI/Zone/ZoneSuit</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+		<statBases><WorkToMake>65000</WorkToMake><MaxHitPoints>360</MaxHitPoints><Mass>13</Mass><Flammability>0.25</Flammability><ArmorRating_Sharp>1.06</ArmorRating_Sharp><ArmorRating_Blunt>0.45</ArmorRating_Blunt><ArmorRating_Heat>0.8</ArmorRating_Heat><Insulation_Cold>80</Insulation_Cold><Insulation_Heat>15</Insulation_Heat><EquipDelay>13</EquipDelay></statBases>
+		<equippedStatOffsets><MoveSpeed>-0.16</MoveSpeed><ToxicEnvironmentResistance>0.45</ToxicEnvironmentResistance></equippedStatOffsets>
+		<costList><Plasteel>110</Plasteel><Uranium>15</Uranium><ComponentSpacer>4</ComponentSpacer></costList>
+		<recipeMaker><researchPrerequisite>PoweredArmor</researchPrerequisite><skillRequirements><Crafting>7</Crafting></skillRequirements></recipeMaker>
+		<apparel><wornGraphicPath>Things/Apparel/GDI/Zone/ZoneSuit</wornGraphicPath><tags><li>GDIZone</li><li>SpacerMilitary</li><li MayRequire="Ludeon.RimWorld.Royalty">PrestigeCombatGear</li></tags></apparel>
+	</ThingDef>
+
+</Defs>

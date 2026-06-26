@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<RulePackDef><defName>NamerFactionGDI</defName><rulePack><rulesStrings><li>r_name->Global Defense Initiative</li><li>r_name->GDI Expeditionary Command</li><li>r_name->GDI Civil Defense Command</li><li>r_name->GDI Forward Operations</li></rulesStrings></rulePack></RulePackDef>
+	<RulePackDef><defName>NamerSettlementGDI</defName><rulePack><rulesStrings><li>r_name->Blue Zone Outpost</li><li>r_name->Forward Command</li><li>r_name->Kodiak Station</li><li>r_name->Hammerhead Base</li><li>r_name->Ionwatch</li><li>r_name->Guardian Post</li></rulesStrings></rulePack></RulePackDef>
+
+</Defs>
