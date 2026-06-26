@@ -22,21 +22,21 @@
 		<label>citizen reservist</label>
 		<combatPower>50</combatPower>
 		<itemQuality>Poor</itemQuality>
-		<weaponMoney>400~750</weaponMoney>
+		<weaponMoney>530~750</weaponMoney>
 		<apparelMoney>1000~1600</apparelMoney>
 		<apparelTags><li>Outlander</li><li>IndustrialBasic</li><li>IndustrialMilitaryBasic</li></apparelTags>
-		<weaponTags><li>GDIRifle</li><li>Gun</li><li>SimpleGun</li><li>NonNeolithicOnlyMelee</li></weaponTags>
+		<weaponTags><li>GDIRifle</li><li>NonNeolithicOnlyMelee</li></weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="GDIPawnBase">
 		<defName>GDI_Engineer</defName>
 		<label>engineer</label>
 		<combatPower>70</combatPower>
-		<weaponMoney>350~750</weaponMoney>
+		<weaponMoney>530~750</weaponMoney>
 		<apparelMoney>7000~9500</apparelMoney>
 		<apparelRequired><li>Apparel_GDIEngineerMask</li><li>Apparel_GDIEngineerSuit</li></apparelRequired>
 		<apparelTags><li>GDIEngineer</li><li>BeltDefensePop</li></apparelTags>
-		<weaponTags><li>GDIRifle</li><li>SimpleGun</li></weaponTags>
+		<weaponTags><li>GDIRifle</li></weaponTags>
 		<skills Inherit="False"><li><skill>Shooting</skill><range>5~12</range></li><li><skill>Construction</skill><range>7~16</range></li><li><skill>Intellectual</skill><range>6~14</range></li></skills>
 	</PawnKindDef>
 
@@ -48,7 +48,7 @@
 		<apparelMoney>6500~8500</apparelMoney>
 		<apparelRequired><li>Apparel_GDISoldierHelmet</li><li>Apparel_GDISoldierSuit</li></apparelRequired>
 		<apparelTags><li>GDISoldier</li><li>SpacerMilitary</li><li>BeltDefensePop</li></apparelTags>
-		<weaponTags><li>GDIRifle</li><li>IndustrialGunAdvanced</li></weaponTags>
+		<weaponTags><li>GDIRifle</li></weaponTags>
 		<skills Inherit="False"><li><skill>Shooting</skill><range>8~15</range></li></skills>
 	</PawnKindDef>
 
@@ -61,7 +61,7 @@
 		<itemQuality>Good</itemQuality>
 		<apparelRequired><li>Apparel_GDIOfficerHelmet</li><li>Apparel_GDIOfficerSuit</li></apparelRequired>
 		<apparelTags><li>GDIOfficer</li><li>IndustrialMilitaryAdvanced</li><li>BeltDefensePop</li></apparelTags>
-		<weaponTags><li>GDIRifle</li><li>GDIRailgun</li><li>SniperRifle</li></weaponTags>
+		<weaponTags><li>GDIRifle</li><li>GDIRailgun</li></weaponTags>
 		<skills Inherit="False"><li><skill>Shooting</skill><range>9~16</range></li><li><skill>Social</skill><range>7~15</range></li></skills>
 	</PawnKindDef>
 
@@ -75,7 +75,7 @@
 		<apparelMoney>7500~10500</apparelMoney>
 		<apparelRequired><li>Apparel_GDISoldierHelmet</li><li>Apparel_GDISoldierSuit</li></apparelRequired>
 		<apparelTags><li>GDISoldier</li><li>BeltDefensePop</li></apparelTags>
-		<weaponTags><li>GDIGrenadeLauncher</li><li>GDIMobileMortar</li><li>GunHeavy</li></weaponTags>
+		<weaponTags><li>GDIGrenadeLauncher</li><li>GDIMobileMortar</li></weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="GDIPawnBase">
@@ -88,7 +88,7 @@
 		<itemQuality>Excellent</itemQuality>
 		<apparelRequired><li>Apparel_GDIZoneHelmet</li><li>Apparel_GDIZoneSuit</li></apparelRequired>
 		<apparelTags><li>GDIZone</li><li>SpacerMilitary</li></apparelTags>
-		<weaponTags><li>GDIRailgun</li><li>GDIShatterer</li><li>SpacerGun</li></weaponTags>
+		<weaponTags><li>GDIRailgun</li><li>GDIShatterer</li></weaponTags>
 		<techHediffsChance>0.4</techHediffsChance>
 		<techHediffsMoney>900~1400</techHediffsMoney>
 		<techHediffsRequired><li>DeathAcidifier</li></techHediffsRequired>
@@ -106,7 +106,7 @@
 		<itemQuality>Good</itemQuality>
 		<apparelRequired><li>Apparel_GDIOfficerHelmet</li><li>Apparel_GDIOfficerSuit</li></apparelRequired>
 		<apparelTags><li>GDIOfficer</li><li>BeltDefensePop</li></apparelTags>
-		<weaponTags><li>GDIRifle</li><li>IndustrialGunAdvanced</li></weaponTags>
+		<weaponTags><li>GDIRifle</li></weaponTags>
 		<skills Inherit="False"><li><skill>Shooting</skill><range>7~14</range></li><li><skill>Social</skill><range>8~16</range></li></skills>
 	</PawnKindDef>
 
@@ -122,7 +122,7 @@
 		<itemQuality>Excellent</itemQuality>
 		<apparelRequired><li>Apparel_GDIZoneHelmet</li><li>Apparel_GDIZoneSuit</li></apparelRequired>
 		<apparelTags><li>GDIZone</li><li>SpacerMilitary</li><li>BeltDefensePop</li></apparelTags>
-		<weaponTags><li>GDIRailgun</li><li>GDIShatterer</li><li>SpacerGun</li></weaponTags>
+		<weaponTags><li>GDIRailgun</li><li>GDIShatterer</li></weaponTags>
 		<techHediffsChance>0.65</techHediffsChance>
 		<techHediffsMoney>1200~2000</techHediffsMoney>
 		<techHediffsRequired><li>DeathAcidifier</li></techHediffsRequired>

@@ -23,11 +23,17 @@
 		<settlementNameMaker>NamerSettlementGDI</settlementNameMaker>
 		<allowedCultures><li>Astropolitan</li><li>Rustican</li></allowedCultures>
 		<backstoryFilters><li><categories><li>Outlander</li></categories><commonality>0.55</commonality></li><li><categories><li>Offworld</li></categories><commonality>0.45</commonality></li></backstoryFilters>
-		<allowedMemes><li MayRequire="Ludeon.RimWorld.Ideology">Individualist</li><li MayRequire="Ludeon.RimWorld.Ideology">HumanPrimacy</li><li MayRequire="Ludeon.RimWorld.Ideology">Loyalist</li><li MayRequire="Ludeon.RimWorld.Ideology">Transhumanist</li></allowedMemes>
-		<disallowedMemes><li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li><li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li><li MayRequire="Ludeon.RimWorld.Ideology">Darkness</li><li MayRequire="Ludeon.RimWorld.Ideology">TreeConnection</li></disallowedMemes>
+		<allowedMemes>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Individualist</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">HumanPrimacy</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Loyalist</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Transhumanist</li>
+		</allowedMemes>
+		<structureMemeWeights>
+			<Structure_Ideological MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Ideological>
+		</structureMemeWeights>
 		<apparelStuffFilter><stuffCategoriesToAllow><li>Metallic</li><li>Fabric</li></stuffCategoriesToAllow><disallowedThingDefs><li>Jade</li><li>Gold</li></disallowedThingDefs></apparelStuffFilter>
 		<allowedArrivalTemperatureRange>-60~60</allowedArrivalTemperatureRange>
-		<colorSpectrum><li>(0.1, 0.35, 0.75)</li><li>(0.85, 0.85, 0.7)</li></colorSpectrum>
 		<caravanTraderKinds><li>Caravan_GDI_Supply</li><li>Caravan_GDI_CombatSupplier</li></caravanTraderKinds>
 		<visitorTraderKinds><li>Visitor_GDI_Standard</li></visitorTraderKinds>
 		<baseTraderKinds><li>Base_GDI_Standard</li></baseTraderKinds>

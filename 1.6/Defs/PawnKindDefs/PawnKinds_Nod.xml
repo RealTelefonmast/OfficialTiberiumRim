@@ -48,8 +48,6 @@
 		</apparelTags>
 		<weaponTags>
 			<li>NodRifle</li>
-			<li>Gun</li>
-			<li>SimpleGun</li>
 			<li>MedievalMeleeBasic</li>
 		</weaponTags>
 	</PawnKindDef>
@@ -59,7 +57,7 @@
 		<label>militia</label>
 		<combatPower>65</combatPower>
 		<canBeSapper>true</canBeSapper>
-		<weaponMoney>400~800</weaponMoney>
+		<weaponMoney>500~800</weaponMoney>
 		<apparelMoney>900~1300</apparelMoney>
 		<apparelRequired>
 			<li>Apparel_NodMilitiaMask</li>
@@ -71,7 +69,6 @@
 		</apparelTags>
 		<weaponTags>
 			<li>NodRifle</li>
-			<li>SimpleGun</li>
 		</weaponTags>
 	</PawnKindDef>
 
@@ -90,7 +87,6 @@
 		<weaponTags>
 			<li>NodRifle</li>
 			<li>NodFlechetteGun</li>
-			<li>IndustrialGunAdvanced</li>
 		</weaponTags>
 	</PawnKindDef>
 
@@ -113,7 +109,6 @@
 		</apparelTags>
 		<weaponTags>
 			<li>NodRocketLauncher</li>
-			<li>GunHeavy</li>
 		</weaponTags>
 	</PawnKindDef>
 
@@ -156,8 +151,6 @@
 		<weaponTags>
 			<li>NodLaserRifle</li>
 			<li>NodRifle</li>
-			<li>IndustrialGunAdvanced</li>
-			<li>SpacerGun</li>
 		</weaponTags>
 		<skills Inherit="False">
 			<li>
@@ -171,7 +164,7 @@
 		<defName>Nod_Officer</defName>
 		<label>officer</label>
 		<combatPower>95</combatPower>
-		<weaponMoney>900~1800</weaponMoney>
+		<weaponMoney>1035~1800</weaponMoney>
 		<apparelMoney>2500~4000</apparelMoney>
 		<itemQuality>Good</itemQuality>
 		<apparelRequired>
@@ -186,8 +179,6 @@
 		<weaponTags>
 			<li>NodHeavyLaserRifle</li>
 			<li>NodLaserRifle</li>
-			<li>IndustrialGunAdvanced</li>
-			<li>SniperRifle</li>
 		</weaponTags>
 		<skills Inherit="False">
 			<li>
@@ -222,9 +213,6 @@
 		<weaponTags>
 			<li>NodFlamethrower</li>
 			<li>NodHeavyLaserRifle</li>
-			<li>SpacerGun</li>
-			<li>GunHeavy</li>
-			<li>Flamethrower</li>
 		</weaponTags>
 		<techHediffsChance>0.35</techHediffsChance>
 		<techHediffsMoney>800~1300</techHediffsMoney>
@@ -254,7 +242,6 @@
 		</apparelTags>
 		<weaponTags>
 			<li>NodRifle</li>
-			<li>IndustrialGunAdvanced</li>
 		</weaponTags>
 		<techHediffsChance>0.2</techHediffsChance>
 		<techHediffsMoney>600~1200</techHediffsMoney>
@@ -284,8 +271,6 @@
 		<weaponTags>
 			<li>NodHeavyLaserRifle</li>
 			<li>NodLaserRifle</li>
-			<li>SpacerGun</li>
-			<li>SniperRifle</li>
 		</weaponTags>
 		<techHediffsChance>0.65</techHediffsChance>
 		<techHediffsMoney>1200~2000</techHediffsMoney>
