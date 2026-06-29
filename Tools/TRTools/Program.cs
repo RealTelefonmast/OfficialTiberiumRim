@@ -27,6 +27,10 @@
 //   trtool --flatten-textures --confirm   actually perform the copy
 //   trtool --duplicate-images --scope <folder>         dry-run: find duplicate image content in a folder
 //   trtool --duplicate-images --scope <folder> --confirm   move duplicate images to <folder>_duplicates
+//   trtool --filter-existing-images --scope <folderA> --against <folderB>
+//                                     dry-run: find images in A that already exist by content anywhere in B
+//   trtool --filter-existing-images --scope <folderA> --against <folderB> --confirm
+//                                     move matching A images to <folderA>_filtered or --dest
 //   trtool --dest <name>              override dump folder name (default depends on mode)
 //
 //   trtool --sort-files               dry-run: analyse .cs inheritance, copy files into SortedCodeTree/<Category>/
@@ -87,6 +91,7 @@ namespace TRTools
             string depthArg   = ResolveArg(args, "--depth");
             string sampleArg  = ResolveArg(args, "--sample");
             string excludeArg = ResolveArg(args, "--exclude");
+            string againstArg = ResolveArg(args, "--against");
 
             int maxDepth = int.MaxValue;
             if (depthArg != null && int.TryParse(depthArg, out int d))
@@ -109,11 +114,12 @@ namespace TRTools
             bool deleteIdentical    = args.Contains("--delete-identical");
             bool flattenTextures    = args.Contains("--flatten-textures");
             bool duplicateImages    = args.Contains("--duplicate-images");
+            bool filterExistingImages = args.Contains("--filter-existing-images");
             bool sortFiles          = args.Contains("--sort-files");
             bool probe              = args.Contains("--probe");
             bool confirm            = args.Contains("--confirm");
             bool verbose            = args.Contains("--verbose");
-            bool noTree             = stats || dupesOnly || fileFilter != null || deleteIdentical || flattenTextures || duplicateImages || sortFiles || probe || args.Contains("--no-tree");
+            bool noTree             = stats || dupesOnly || fileFilter != null || deleteIdentical || flattenTextures || duplicateImages || filterExistingImages || sortFiles || probe || args.Contains("--no-tree");
             bool noDiff             = dupesOnly || args.Contains("--no-diff");
             bool noIdentical        = args.Contains("--no-identical");
             bool identicalOnly      = args.Contains("--identical-only");
@@ -168,6 +174,27 @@ namespace TRTools
                     : scanRoot.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar) + "_duplicates";
 
                 RunDuplicateImages(rootPath, scanRoot, destDir, sampleLimit, verbose, confirm);
+                Finish();
+                return;
+            }
+
+            // --filter-existing-images: move A images that already exist by content anywhere in B
+            if (filterExistingImages)
+            {
+                if (againstArg == null)
+                {
+                    Colored(ConsoleColor.Red, "Missing required --against <folderB> for --filter-existing-images.");
+                    Finish();
+                    return;
+                }
+
+                string againstRoot = Path.GetFullPath(Path.Combine(rootPath, againstArg));
+                string explicitDest = ResolveArg(args, "--dest");
+                string destDir = explicitDest != null
+                    ? Path.GetFullPath(Path.Combine(rootPath, explicitDest))
+                    : scanRoot.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar) + "_filtered";
+
+                RunFilterExistingImages(rootPath, scanRoot, againstRoot, destDir, sampleLimit, verbose, confirm);
                 Finish();
                 return;
             }
@@ -711,6 +738,173 @@ namespace TRTools
             {
                 Write("");
                 Write("Done. Moved " + duplicateCount + " duplicate image file(s).");
+            }
+        }
+
+        private static void RunFilterExistingImages(string rootPath, string sourceRoot, string againstRoot, string destDir, int sampleLimit, bool verbose, bool confirm)
+        {
+            if (!Directory.Exists(sourceRoot))
+            {
+                Colored(ConsoleColor.Red, "Source folder does not exist: " + sourceRoot);
+                return;
+            }
+
+            if (!Directory.Exists(againstRoot))
+            {
+                Colored(ConsoleColor.Red, "Against folder does not exist: " + againstRoot);
+                return;
+            }
+
+            var againstByLength = new Dictionary<long, List<string>>();
+            foreach (string file in Directory.EnumerateFiles(againstRoot, "*", SearchOption.AllDirectories))
+            {
+                if (IsInSkippedDir(againstRoot, file)) continue;
+                if (IsUnderPath(destDir, file)) continue;
+                if (!ImageExtensions.Contains(Path.GetExtension(file))) continue;
+
+                long length = new FileInfo(file).Length;
+                if (!againstByLength.TryGetValue(length, out List<string> files))
+                {
+                    files = new List<string>();
+                    againstByLength[length] = files;
+                }
+
+                files.Add(file);
+            }
+
+            var againstHashes = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
+            foreach (List<string> files in againstByLength.Values)
+            {
+                foreach (string file in files)
+                {
+                    string hash;
+                    try
+                    {
+                        hash = ComputeSha256(file);
+                    }
+                    catch (Exception ex)
+                    {
+                        Colored(ConsoleColor.Red, "  HASH FAILED " + Path.GetRelativePath(rootPath, file) + " — " + ex.Message);
+                        continue;
+                    }
+
+                    if (!againstHashes.TryGetValue(hash, out List<string> matches))
+                    {
+                        matches = new List<string>();
+                        againstHashes[hash] = matches;
+                    }
+
+                    matches.Add(file);
+                }
+            }
+
+            var sourceFiles = new List<string>();
+            foreach (string file in Directory.EnumerateFiles(sourceRoot, "*", SearchOption.AllDirectories))
+            {
+                if (IsInSkippedDir(sourceRoot, file)) continue;
+                if (IsUnderPath(destDir, file)) continue;
+                if (IsUnderPath(againstRoot, file)) continue;
+                if (ImageExtensions.Contains(Path.GetExtension(file)))
+                    sourceFiles.Add(file);
+            }
+
+            var matchesToMove = new List<(string source, List<string> matches)>();
+            foreach (string file in sourceFiles.OrderBy(f => f, StringComparer.OrdinalIgnoreCase))
+            {
+                long length = new FileInfo(file).Length;
+                if (!againstByLength.ContainsKey(length)) continue;
+
+                string hash;
+                try
+                {
+                    hash = ComputeSha256(file);
+                }
+                catch (Exception ex)
+                {
+                    Colored(ConsoleColor.Red, "  HASH FAILED " + Path.GetRelativePath(rootPath, file) + " — " + ex.Message);
+                    continue;
+                }
+
+                if (againstHashes.TryGetValue(hash, out List<string> matches))
+                    matchesToMove.Add((file, matches.OrderBy(m => m, StringComparer.OrdinalIgnoreCase).ToList()));
+            }
+
+            PrintSection("Filter Existing Images" + (confirm ? "" : " [DRY RUN]"));
+            Write("Source A:       " + sourceRoot);
+            Write("Against B:      " + againstRoot);
+            Write("Dest:           " + destDir);
+            Write("A images found: " + sourceFiles.Count);
+            Write("B images found: " + againstByLength.Values.Sum(l => l.Count));
+            Write("To move from A: " + matchesToMove.Count);
+
+            if (!confirm)
+            {
+                Write("");
+                Colored(ConsoleColor.DarkGray, "Dry run — add --confirm to move matching A images. Use --verbose to list B matches.");
+            }
+
+            if (matchesToMove.Count == 0)
+                return;
+
+            if (confirm)
+                Directory.CreateDirectory(destDir);
+
+            var usedDestNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            if (Directory.Exists(destDir))
+            {
+                foreach (string existing in Directory.EnumerateFiles(destDir, "*", SearchOption.AllDirectories))
+                    usedDestNames.Add(Path.GetFileName(existing));
+            }
+
+            bool truncated = false;
+            int shown = 0;
+            int moved = 0;
+
+            foreach (var (source, matches) in matchesToMove)
+            {
+                string destFile = ReserveMoveName(destDir, source, usedDestNames);
+
+                if (shown >= sampleLimit)
+                {
+                    truncated = true;
+                }
+                else
+                {
+                    shown++;
+                    string srcRel = Path.GetRelativePath(rootPath, source);
+                    string dstRel = Path.GetRelativePath(rootPath, destFile);
+                    Colored(confirm ? ConsoleColor.Red : ConsoleColor.DarkGray, "  MOVE " + srcRel + " -> " + dstRel);
+
+                    if (verbose)
+                    {
+                        foreach (string match in matches)
+                            Colored(ConsoleColor.Green, "    MATCH " + Path.GetRelativePath(rootPath, match));
+                    }
+                }
+
+                if (!confirm) continue;
+
+                try
+                {
+                    File.Move(source, destFile);
+                    moved++;
+                }
+                catch (Exception ex)
+                {
+                    Colored(ConsoleColor.Red, "  FAILED " + Path.GetRelativePath(rootPath, source) + " — " + ex.Message);
+                }
+            }
+
+            if (truncated)
+            {
+                Write("");
+                Colored(ConsoleColor.DarkGray, "... output truncated (--sample " + sampleLimit + ")");
+            }
+
+            if (confirm)
+            {
+                Write("");
+                Write("Done. Moved " + moved + " image file(s) from A to " + destDir);
             }
         }
 
