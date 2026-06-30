@@ -10,101 +10,660 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed778e9a-92ff-4ae0-b653-4dd34e4f44f2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_Filter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_FilterFan_Blades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_FilterFan_Icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_Filter_Overlay.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="ed778e9a-92ff-4ae0-b653-4dd34e4f44f2" name="Changes" comment="file sorting">
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/BeamBurnA.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/BeamBurnB.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Nuke/Light1_Copy1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Nuke/Light2_Copy2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Nuke/Light3_Copy2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Nuke/Lights_Copy1 (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Nuke/Nod_Temple_Rocket_Base.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Nuke/Nuke0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Nuke/Nuke1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Nuke/Nuke2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Nuke/NukeBase.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Nuke/NukeBaseDebug.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Nuke/NukeSilo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Projectiles/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Projectiles/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Projectiles/6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Projectiles/7_Copy5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Projectiles/BeamSpark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Projectiles/Beam_EndGlow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Projectiles/ChronoVortex.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Projectiles/ScrinCut_Copy7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Projectiles/SoundMote.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Projectiles/SoundVortex.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Projectiles/Spark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Projectiles/TargetBeam.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/FX/Projectiles/targetRail.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Map/Targeter/Target_IonCannon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Map/Targeter/Target_Nuke.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Terrain/Floors/Scrin/ScrinFloor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Terrain/Natural/ShallowTib.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Terrain/Natural/TiberiumIce.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Terrain/Natural/TiberiumMossBlue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Terrain/Natural/VeinSoilDead.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Terrain/Natural/VeinSoilFlesh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Terrain/Natural/VeinSoilRed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Defense/SuppressorTower/SuppressorTower_back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Defense/SuppressorTower/SuppressorTower_front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Defense/SuppressorTower/SuppressorTower_side.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Defense/TibCannon/Common_Turret_TibCannon_Gun_Overlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Defense/TibCannon/Connection2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Defense/TibCannon/ConnectionOverlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Misc/DronePlatform_Small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/Door_Airlock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/Door_Airlock_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/Filter/Common_Filter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/Filter/Common_Filter_Overlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/Intake/Common_FilterFan_Blades.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/Intake/Common_FilterFan_Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/Intake/base_Copy50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/Intake/top_Copy2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/Node/Node.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/Node/Overlay1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/Node/Overlay2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/TCNnode (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/Vent_Out.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/Vent_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Network/Vent_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/GasSilo/Common_GasSilo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/GasSilo/Common_GasSilo_Connector.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/GasSilo/Common_GasSilo_Overlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Powerplant/Common_Refinery_Overlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/Base_Copy49.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/Base_east_Copy7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/Base_north_Copy10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/Base_south_Copy10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/Common_Refinery_Base_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/Common_Refinery_Base_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/Common_Refinery_Base_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowBlend1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowBlend1_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowBlend1_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowBlend1_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowBlend2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowBlend2_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowBlend2_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowBlend2_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowMap.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowMap_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowMap_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowMap_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowMask.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowMask_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowMask_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/FlowMask_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/Refinery/TibRefineryFilledOL_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/TibSpike/TibSpikeTop.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/TibSpike/TibSpike_Copy1 (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/TibSpike/TibSpike_Copy5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Production/TibSpike/TibSpike_Icon_Copy5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Research/TRCoverlay_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Research/TRCoverlay_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Research/TRCoverlay_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Research/TRCoverlay_west.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Research/TRSoverlay_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Research/TRSoverlay_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Research/TRSoverlay_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Research/TRSoverlay_west.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Research/Telescope/Telescope_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Research/Telescope/Telescope_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Common/Research/Telescope/Telescope_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Defense/Firestorm/FX.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Defense/Juggernaut/Turret_Base.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Defense/SonicEmitter/GDI_SonicEmitter_Base.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Defense/SonicEmitter/GDI_SonicEmitter_Turret_Base.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Defense/SonicEmitter/GDI_Turret_SonicEmitter_Glow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Defense/SonicInhibitor/Inhibitor_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Defense/SonicInhibitor/Inhibitor_tall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Defense/WatchTower/Reference/WatchTower.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Defense/WatchTower/WatchTower_Barrel1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Defense/WatchTower/WatchTower_Barrel2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Production/Refinery/ContainerOverlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Production/Refinery/GDI_Refinery_Base.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Production/Refinery/GDI_Refinery_Base_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Production/Refinery/GDI_Refinery_Base_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Production/Refinery/GDI_Refinery_Base_west.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Production/Refinery/GDI_Refinery_Connector.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Production/Refinery/GDI_Refinery_Connector_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Production/Refinery/GDI_Refinery_Connector_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Production/Refinery/GDI_Refinery_Connector_west.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Production/Refinery/Grid.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Production/Refinery/Grid_Copy1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Structural/Door/AutoDoor_GDI.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Structural/Door/AutoDoor_GDI_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Structural/Door/DoorFrameGDI_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Structural/Door/DoorFrameGDI_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Structural/Door/DoorFrameGDI_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Structural/Door/Door_GDI.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Structural/Door/Door_GDI_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Structural/Light_Overlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Structural/Pillbox_GDI.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Structural/Pillbox_GDI_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Structural/Wall_GDI.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/GDI/Structural/Wall_GDI_Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Network/Pipe_Tib.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Network/Pipe_Tib_SelOverlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Network/Pipe_Tib_blueprint.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Network/Pipe_Tib_overlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Network/TNC.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Network/TNC_Displays.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Network/TNC_Overlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Network/TNW_PipeAtlas.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Network/TNW_PipeBluePrintAtlas.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Network/TNW_PipeOverlayAtlas.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Network/Valve/Valve_Base.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Network/Valve/Valve_Handle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Network/Valve/Valve_Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Defense/Obelisk/Charge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Defense/Obelisk/PowerOn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Defense/Turrets/FlameTurret/Flame_Base.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Defense/Turrets/FlameTurret/Flame_Flash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Defense/Turrets/FlameTurret/Flame_Glow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Defense/Turrets/FlameTurret/Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Defense/Turrets/Hub_Base.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Defense/Turrets/Shredder/Nod_Shredder_Gun_Reference.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Production/Crane/Crane.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Production/Refinery/Connector_north_Copy1 (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Production/Refinery/Connector_south_Copy1 (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Production/Refinery/Connector_west_Copy1 (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Production/Refinery/Nod_Refinery_Base_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Production/Refinery/Nod_Refinery_Base_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Production/Refinery/Nod_Refinery_Base_west.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Production/Refinery/Nod_Refinery_Connector.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Research/NodShrine.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Research/Nod_Shrine_Base (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Research/Nod_Shrine_Reference.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Structural/Door/AutoDoor_Nod.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Structural/Door/AutoDoor_Nod_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Structural/Door/DoorFrameNod_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Structural/Door/DoorFrameNod_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Structural/Door/DoorFrameNod_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Suppressor/LightCenter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Suppressor/Suppressor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Base_Copy15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Blades/Blade_00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Blades/Blade_01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Blades/Blade_02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Blades/Blade_03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Blades/Blade_04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Blades/Blade_05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Blades/Blade_06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Blades/Blade_07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Blades/Blade_08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Blades/Blade_09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Blades/Blade_10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Blades/Blade_11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Blades/Blade_12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Blades/Blade_13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Main.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/NodTemple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/PowerLights.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/TempleLayers.pdn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Temple_Bin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple/Temple_Full.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Scrin/DroneShip/original (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Scrin/DroneShip/overlay_Copy10 (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Buildings/Scrin/DroneShip/platform.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Items/GDI/ReinforcedPlate.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Items/Resources/BodyPart_Tiberium.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Items/Resources/BookRiparius.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Items/Resources/BookRutila.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Items/Resources/BookVinifera.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Items/Resources/TiberiumGrass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Base/HarvesterBase_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Base/HarvesterBase_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Destroyed/HarvesterCommon_Destroyed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Destroyed/Harvester_D.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/HarvesterBase_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/HarvesterCommon_back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/HarvesterCommon_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/HarvesterCommon_front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/HarvesterCommon_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/HarvesterCommon_side.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/HarvesterCommon_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Harvester_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Harvester_east_Copy3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Harvester_east_Copy5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Harvester_east_arms.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Harvester_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Harvester_north_Copy3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Harvester_north_Copy5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Harvester_north_arms.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Harvester_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Harvester_south_Copy3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Common/Harvester/Harvester_south_Copy5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Disruptor/Disruptor_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Disruptor/Disruptor_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Disruptor/Disruptor_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Disruptor/Turret_GDI_Disruptor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/Destroyed/Harvester_GDI_D.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/GDI_Harvester_Overlay_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/GDI_Harvester_Overlay_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/GDI_Harvester_Overlay_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/HarvesterArms_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/Harvester_east_Copy1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/Harvester_east_Copy4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/Harvester_east_Copy6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/Harvester_north_Copy1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/Harvester_north_Copy4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/Harvester_north_Copy6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/Harvester_south_Copy1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/Harvester_south_Copy4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/Harvester_south_Copy6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/Head.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Harvester/Head_Copy2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Ironback/Ironback_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Ironback/Ironback_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Ironback/Ironback_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Mammoth/MammothTank_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Mammoth/MammothTank_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/Mammoth/MammothTank_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/MammothTank/MammothTank_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/MammothTank/MammothTank_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/MammothTank/MammothTank_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/GDI/MammothTank/Turret_GDI_MomTank.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/FlameTank/FlameTank_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/FlameTank/FlameTank_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/FlameTank/FlameTank_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Harvester/Base_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Harvester/Base_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Harvester/Base_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Harvester/Destroyed/Harvester_Nod_D.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Harvester/HNE_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Harvester/HNE_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Harvester/HN_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Harvester/HN_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Harvester/HN_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Harvester/Reference/HarvesterPDN.pdn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Harvester/Reference/Harvester_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Harvester/Reference/Harvester_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Harvester/Reference/Harvester_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Purifier/Purifier_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Purifier/Purifier_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Purifier/Purifier_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/Mechanical/Nod/Purifier/Purifier_west.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/TiberiumCreatures/Creatures/TibFiend/Icon_Copy1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/TiberiumCreatures/Creatures/TibFiend/TiberiumFiend_back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/TiberiumCreatures/Creatures/TibFiend/TiberiumFiend_front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/TiberiumCreatures/Creatures/Veinmonster/Egg/VeinEgg_east.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/TiberiumCreatures/Creatures/Veinmonster/Egg/VeinEgg_north.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/TiberiumCreatures/Creatures/Veinmonster/Egg/VeinEgg_south.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Natural/TibGeyser.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Natural/crack1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Natural/crack2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Natural/crack3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Craters/Crater_Hybrid.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Craters/Meteor2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Craters/top_overlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Monoliths/Red/RedTiberiumShard1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Monoliths/Red/RedTiberiumShard2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/534e76eb-b671-4fda-a5a0-9c8d61fb581a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Overlay_Copy14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Overlay_Copy15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/VeinConnection.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veinhole.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veinhole_Base_NoTeeth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veinhole_Teeth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veinhub2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veinhub3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veinhub_Overlay2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veins/Vein1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veins/Vein10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veins/Vein2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veins/Vein3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veins/Vein4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veins/Vein5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veins/Vein6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veins/Vein7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veins/Vein8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/Veins/Vein9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Producers/Veinhole/c494b4be-6f32-475f-86ae-c837503f4ce6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Rocks/BlueRock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Rocks/GreenRock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Rocks/RedRock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Rocks/TibRock_Atlas.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Rocks/VeinRock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Skyfallers/Meteors/RedShard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Visceral/Hive_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Visceral/Overlay_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Visceral/Overlay_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Visceral/Pod_1_Copy1 (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Visceral/Pod_2 (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/Tiberium/Visceral/Pod_2_Copy1 (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Banner.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/FactionIcons/BlackMarket.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/FactionIcons/Common.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Icons/ConnectionMissing_Copy2 (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Icons/Connector_Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Icons/ContainMode_Sludge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Icons/ContainMode_Storage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Icons/Launch_IonCannon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Icons/Launch_Nuke.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Icons/Marked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Icons/Moss.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Icons/RadiationOverlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Icons/RecheckWalls.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Icons/Weapon_SwitchAmmo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/LockedBanner.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/MainMenu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/MenuWindow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/ResearchBG.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/ResearchBG3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Tab_Undiscovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/Tapestry (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/TibOptionBG.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/TibOptionBG_Cut.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/TibOptionBG_CutFade.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/TopBar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/WorkBanner - Kopie (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/UI/WorkBanner.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/World/Satellite/TargetTile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/World/Satellite/TargetTile_Unsel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/World/Tiberium/Tib1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/World/Tiberium/Tib2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/World/Tiberium/Tib3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/World/Tiberium/Tib4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/World/Tiberium/Tib5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/World/Tiberium/Tib6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/World/Tiberium/Tib7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Textures/World/Tiberium/Tib8.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Org" beforeDir="false" afterPath="$PROJECT_DIR$/Org" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/01_Copy1 (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/02_Copy1 (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/03_Copy1 (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/04_Copy1 (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/05_Copy1 (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/06_Copy1 (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/AutoDoor_GDI.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/AutoDoor_GDI_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Base_Copy10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/BodyPart_Tiberium.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/BookRiparius.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/BookRutila.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/BookVinifera.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Connector_north (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Connector_south (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Connector_west (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Filter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Filter_Overlay.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlameMatrix.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Flame_Base.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Flame_Flash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Flame_Glow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/GDI_Refinery_Base_north.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/GDI_Refinery_Base_south.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/GDI_Refinery_Base_west.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/GDI_Refinery_Connector.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/GasTank.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/GasTankOL.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Gastank_overlay.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Grid.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Grid_Copy1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/HybridCrater.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/LightCenter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Light_Overlay.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nod_Refinery_Base_north.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nod_Refinery_Base_south.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nod_Refinery_Base_west.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nod_Refinery_Connector.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nuke0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nuke1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nuke2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/NukeBase.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/NukeBaseDebug.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/NukeSilo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/RedRock.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/SonicEmitter_base (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TargetTile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TargetTile_Unsel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Target_IonCannon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Target_Nuke.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TiberiumGrass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TiberiumMeteor2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Turret_Base.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Turret_Copy1 (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Turret_Copy2 (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein10_Copy4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein1_Copy4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein2_Copy4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein3_Copy4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein4_Copy4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein5_Copy4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein6_Copy4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein7_Copy4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein8_Copy4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein9_Copy4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinConnection.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinEgg_east.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinEgg_north.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinEgg_south.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinRock.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinSoilDead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinSoilFlesh.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinSoilRed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Veinhole.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Veinhole_Base.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Veinhole_Teeth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Veinhub2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Veinhub3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Veinhub_Overlay2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/WatchTower.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/WatchTower_Barrel1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/WatchTower_Barrel2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/fan.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/icon_Copy28.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/thepink.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/7_Copy5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Arrow_Copy1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Banner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Base_Copy15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Base_Copy49.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Base_east_Copy7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Base_north_Copy10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Base_south_Copy10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/BeamBurnA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/BeamBurnB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/BeamSpark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Beam_EndGlow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/BlackMarket.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Blade_00.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Blade_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Blade_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Blade_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Blade_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Blade_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Blade_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Blade_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Blade_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Blade_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Blade_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Blade_11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Blade_12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Blade_13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Charge.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/ChronoVortex.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_Filter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_FilterFan_Blades.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_FilterFan_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_Filter_Overlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_Refinery_Base_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_Refinery_Base_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_Refinery_Base_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_Refinery_Overlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_Turret_TibCannon_Gun_Overlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Connection2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/ConnectionMissing (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/ConnectionMissing_Copy2 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/ConnectionOverlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Connector_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Connector_north_Copy1 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Connector_south_Copy1 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Connector_west_Copy1 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/ContainMode_Sludge.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/ContainMode_Storage (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/ContainMode_Storage_Copy2 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/ContainerOverlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Crane.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Decrystallizer_Copy1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/DoorFrameGDI_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/DoorFrameGDI_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/DoorFrameGDI_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/DoorFrameNod_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/DoorFrameNod_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/DoorFrameNod_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Door_Airlock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Door_Airlock_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Door_GDI.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Door_GDI_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/DronePlatform_Copy2 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/DronePlatform_Small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FX.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowBlend1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowBlend1_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowBlend1_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowBlend1_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowBlend2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowBlend2_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowBlend2_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowBlend2_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowMap_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowMap_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowMap_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowMask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowMask_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowMask_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlowMask_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/GDI_Turret_SonicEmitter_Glow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Hive_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Hub_Base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Icon_Copy1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Inhibitor_small (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Inhibitor_tall (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Launch_IonCannon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Launch_Nuke.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Lights_Copy1 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/LockedBanner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Main.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/MainMenu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Marked.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/MenuWindow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Moss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/NodShrine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nod_Shredder_Gun_Reference.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nod_Shrine_Base (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nod_Shrine_Reference.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Node.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Overlay1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Overlay2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Overlay_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Overlay_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Overlay_Copy14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Overlay_Copy15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Particles2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Particles3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Particles4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Particles_Copy5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Pillbox_GDI.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Pillbox_GDI_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Pipe_Tib.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Pipe_Tib_SelOverlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Pipe_Tib_blueprint.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Pipe_Tib_overlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Pod_1_Copy1 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Pod_2 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Pod_2_Copy1 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/PowerLights.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/PowerOn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/RadiationOverlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/RecheckWalls.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/RedShard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/RedTiberiumShard1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/RedTiberiumShard2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Red_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Red_Copy5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/ReinforcedPlate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/ResearchBG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/ResearchBG3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/ScrinCut_Copy7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/ScrinFloor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/ShallowTib.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/SoundMote.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/SoundVortex.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Spark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Suppressor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TCNnode (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TNC.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TNC_Displays.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TNC_Overlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TNW_PipeAtlas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TNW_PipeBluePrintAtlas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TNW_PipeOverlayAtlas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TRCoverlay_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TRCoverlay_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TRCoverlay_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TRCoverlay_west.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TRSoverlay_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TRSoverlay_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TRSoverlay_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TRSoverlay_west.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TRtelescope_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TRtelescope_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TRtelescope_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Tab_Undiscovered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Tapestry (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TargetBeam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Tib1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Tib2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Tib3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Tib4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Tib5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Tib6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Tib7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Tib8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TibGeyser.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TibOptionBG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TibOptionBG_Cut.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TibOptionBG_CutFade.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TibRefineryFilledOL_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TibRock_Atlas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TibSpikeTop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TibSpike_Copy1 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TibSpike_Copy5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TibSpike_Icon_Copy5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Tiberblock_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Tiberblock_b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TiberiumFiend_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TiberiumFiend_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TiberiumGlacier_Dummy1_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TiberiumIce.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TiberiumMossBlue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TopBar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Underlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Valve_Base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Valve_Handle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Valve_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vent_Out.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vent_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vent_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Wall_GDI.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Wall_GDI_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Weapon_SwitchAmmo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/WorkBanner - Kopie (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/WorkBanner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/base_Copy50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/crack1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/crack2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/crack3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/original (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/overlay_Copy10 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/platform.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/targetRail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/top_Copy2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/top_overlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Structural/AutoDoor/AutoDoor_Nod.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/Structural/AutoDoor/AutoDoor_Nod_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/NodTemple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Nod_Temple_Rocket_Base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/TempleLayers.pdn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple_Bin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Buildings/Nod/SuperWeapons/Temple_Full.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Pawns/FactionUnits/Nod/FlameTank/FlameTank_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Pawns/FactionUnits/Nod/FlameTank/FlameTank_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Pawns/FactionUnits/Nod/FlameTank/FlameTank_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Pawns/TiberiumCreatures/Creatures/TibTerror/TiberiumTerror_south.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Textures/Things/Pawns/TiberiumCreatures/Creatures/TibTerror/TiberiumTerror_south.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Base/HarvesterBase_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Base/HarvesterBase_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Destroyed/HarvesterCommon_Destroyed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Destroyed/Harvester_D.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/HarvesterBase_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/HarvesterCommon_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/HarvesterCommon_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/HarvesterCommon_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/HarvesterCommon_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/HarvesterCommon_side.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/HarvesterCommon_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Harvester_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Harvester_east_Copy3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Harvester_east_Copy5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Harvester_east_arms.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Harvester_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Harvester_north_Copy3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Harvester_north_Copy5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Harvester_north_arms.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Harvester_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Harvester_south_Copy3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Common/Harvester/Harvester_south_Copy5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Disruptor/Disruptor_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Disruptor/Disruptor_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Disruptor/Disruptor_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Disruptor/Turret_GDI_Disruptor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/Destroyed/Harvester_GDI_D.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/GDI_Harvester_Overlay_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/GDI_Harvester_Overlay_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/GDI_Harvester_Overlay_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/HarvesterArms_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/Harvester_east_Copy1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/Harvester_east_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/Harvester_east_Copy6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/Harvester_north_Copy1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/Harvester_north_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/Harvester_north_Copy6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/Harvester_south_Copy1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/Harvester_south_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/Harvester_south_Copy6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/Head.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Harvester/Head_Copy2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Ironback/Ironback_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Ironback/Ironback_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Ironback/Ironback_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Mammoth/MammothTank_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Mammoth/MammothTank_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/Mammoth/MammothTank_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/MammothTank/MammothTank_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/MammothTank/MammothTank_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/MammothTank/MammothTank_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/GDI/MammothTank/Turret_GDI_MomTank.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Harvester/Base_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Harvester/Base_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Harvester/Base_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Harvester/Destroyed/Harvester_Nod_D.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Harvester/HNE_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Harvester/HNE_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Harvester/HN_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Harvester/HN_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Harvester/HN_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Harvester/Reference/HarvesterPDN.pdn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Harvester/Reference/Harvester_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Harvester/Reference/Harvester_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Harvester/Reference/Harvester_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Purifier/Purifier_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Purifier/Purifier_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Purifier/Purifier_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textures/Things/Vehicles/Nod/Purifier/Purifier_west.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +676,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="master" />
+      </list>
+    </option>
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -144,6 +711,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "Dev",
+    "git.auto.fetch.suggestion.counter": "1",
     "junie.onboarding.icon.badge.shown": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -161,7 +729,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1782845855868</updated>
-      <workItem from="1782845857000" duration="1826000" />
+      <workItem from="1782845857000" duration="3216000" />
     </task>
     <task id="LOCAL-00001" summary="File reorg">
       <option name="closed" value="true" />
@@ -171,7 +739,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782845881803</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="file sorting">
+      <option name="closed" value="true" />
+      <created>1782851908719</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1782851908719</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +757,7 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <MESSAGE value="File reorg" />
-    <option name="LAST_COMMIT_MESSAGE" value="File reorg" />
+    <MESSAGE value="file sorting" />
+    <option name="LAST_COMMIT_MESSAGE" value="file sorting" />
   </component>
 </project>
