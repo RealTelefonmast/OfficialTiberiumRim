@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ed778e9a-92ff-4ae0-b653-4dd34e4f44f2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_Filter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_FilterFan_Blades.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_FilterFan_Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Common_Filter_Overlay.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org" beforeDir="false" afterPath="$PROJECT_DIR$/Org" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/01_Copy1 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/02_Copy1 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/03_Copy1 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/04_Copy1 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/05_Copy1 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/06_Copy1 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/AutoDoor_GDI.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/AutoDoor_GDI_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Base_Copy10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/BodyPart_Tiberium.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/BookRiparius.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/BookRutila.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/BookVinifera.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Connector_north (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Connector_south (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Connector_west (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Filter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Filter_Overlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/FlameMatrix.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Flame_Base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Flame_Flash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Flame_Glow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/GDI_Refinery_Base_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/GDI_Refinery_Base_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/GDI_Refinery_Base_west.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/GDI_Refinery_Connector.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/GasTank.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/GasTankOL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Gastank_overlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Grid.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Grid_Copy1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/HybridCrater.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/LightCenter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Light_Overlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nod_Refinery_Base_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nod_Refinery_Base_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nod_Refinery_Base_west.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nod_Refinery_Connector.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nuke0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nuke1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Nuke2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/NukeBase.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/NukeBaseDebug.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/NukeSilo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/RedRock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/SonicEmitter_base (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TargetTile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TargetTile_Unsel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Target_IonCannon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Target_Nuke.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TiberiumGrass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/TiberiumMeteor2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Turret_Base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Turret_Copy1 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Turret_Copy2 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein10_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein1_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein2_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein3_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein4_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein5_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein6_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein7_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein8_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Vein9_Copy4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinConnection.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinEgg_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinEgg_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinEgg_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinRock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinSoilDead.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinSoilFlesh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/VeinSoilRed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Veinhole.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Veinhole_Base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Veinhole_Teeth.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Veinhub2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Veinhub3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/Veinhub_Overlay2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/WatchTower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/WatchTower_Barrel1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/WatchTower_Barrel2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/fan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/icon_Copy28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Org/Assets/Textures_Dump/thepink.png" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="3832" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3FrvA2sskWIsL9H6Q9huwCuFZwC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "Dev",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ed778e9a-92ff-4ae0-b653-4dd34e4f44f2" name="Changes" comment="" />
+      <created>1782845855868</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1782845855868</updated>
+      <workItem from="1782845857000" duration="1826000" />
+    </task>
+    <task id="LOCAL-00001" summary="File reorg">
+      <option name="closed" value="true" />
+      <created>1782845881803</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1782845881803</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="File reorg" />
+    <option name="LAST_COMMIT_MESSAGE" value="File reorg" />
+  </component>
+</project>
