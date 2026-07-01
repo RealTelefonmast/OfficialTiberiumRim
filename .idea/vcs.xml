@@ -3,5 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Source/Org" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Source/Org/Unsorted_TR/TR_Other/TR_Main_Core" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Source/Org/Unsorted_TR/TR_Other/TiberiumRim" vcs="Git" />
   </component>
 </project>
