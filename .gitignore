@@ -401,5 +401,11 @@ FodyWeavers.xsd
 .claude/settings.local.json
 /Source/TiberiumRim/.junie/AGENTS.md
 
+# Local AI assistant configuration and instructions
+/.opencode/
+/opencode.json
+/opencode.jsonc
+/AGENTS.md
+
 # Obsidian
 Source/Obsidian/

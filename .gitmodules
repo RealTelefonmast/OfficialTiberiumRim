@@ -1,3 +1,6 @@
 [submodule "Source/Org"]
 	path = Source/Org
 	url = https://github.com/RealTelefonmast/TiberiumRim-Admin.git
+[submodule "Source/TiberiumRim-src"]
+	path = Source/TiberiumRim-src
+	url = https://github.com/RealTelefonmast/TiberiumRim-src.git
