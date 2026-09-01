@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <TeleCore.RW.Atmospheres.Sim.Defs.Gas.SpreadingGasTypeDef>
+    <defName>TiberiumGas</defName>
+    <label>tiberium gas</label>
+    <colorMin>(0,0,0)</colorMin>
+    <colorMax>(15,255,55,90)</colorMax>
+    <maxDensityPerCell>256</maxDensityPerCell>
+    <rotationSpeeds>10~20</rotationSpeeds>
+    <blockTurretTracking>true</blockTurretTracking>
+    <accuracyPenalty>0.6</accuracyPenalty>
+  </TeleCore.RW.Atmospheres.Sim.Defs.Gas.SpreadingGasTypeDef>
+  <TeleCore.RW.Atmospheres.Sim.Defs.Gas.SpreadingGasTypeDef>
+    <defName>Gas_Chemical</defName>
+    <label>chemical gas</label>
+    <colorMin>(0,0,0)</colorMin>
+    <colorMax>(1,1,1,1)</colorMax>
+    <maxDensityPerCell>100</maxDensityPerCell>
+    <rotationSpeeds>10~20</rotationSpeeds>
+    <blockTurretTracking>true</blockTurretTracking>
+    <accuracyPenalty>0.3</accuracyPenalty>
+  </TeleCore.RW.Atmospheres.Sim.Defs.Gas.SpreadingGasTypeDef>
+</Defs>

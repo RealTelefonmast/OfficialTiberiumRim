@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef Name="MoteBase_TR" Abstract="True">
+    <thingClass>MoteThrown</thingClass><label>Mote</label><category>Mote</category>
+    <graphicData><graphicClass>Graphic_Mote</graphicClass><shaderType>Mote</shaderType></graphicData>
+    <mote><realTime>false</realTime></mote><altitudeLayer>MoteLow</altitudeLayer><tickerType>Normal</tickerType>
+    <useHitPoints>false</useHitPoints><isSaveable>false</isSaveable><rotatable>false</rotatable>
+  </ThingDef>
+</Defs>

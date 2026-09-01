@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!-- Thing/Terrain options -->
+  <TeleCore.RW.ThingOptionsDef>
+    <defName>FloraOptions_Trees</defName>
+  </TeleCore.RW.ThingOptionsDef>
+  <TeleCore.RW.ThingOptionsDef>
+    <defName>FloraOptions_General</defName>
+  </TeleCore.RW.ThingOptionsDef>
+  <TeleCore.RW.ThingOptionsDef>
+    <defName>FloraOptions_Exotic</defName>
+  </TeleCore.RW.ThingOptionsDef>
+  <TeleCore.RW.ThingOptionsDef>
+    <defName>FloraOptions_Bush</defName>
+  </TeleCore.RW.ThingOptionsDef>
+  <TeleCore.RW.ThingOptionsDef>
+    <defName>FloraOptions_Grass</defName>
+  </TeleCore.RW.ThingOptionsDef>
+  <TeleCore.RW.TerrainOptionsDef>
+    <defName>TerrainOption_Flora</defName>
+  </TeleCore.RW.TerrainOptionsDef>
+
+  <!-- Terrains -->
+
+  <!-- Flecks / Motes -->
+  <ThingDef>
+    <defName>Mote_BlastDry</defName>
+    <label>blast dry mote</label>
+    <category>Projectile</category>
+    <thingClass>Mote</thingClass>
+    <description>Dry blast mote.</description>
+  </ThingDef>
+
+</Defs>

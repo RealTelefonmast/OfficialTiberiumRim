@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <DesignationCategoryDef>
+    <defName>Atmospheric</defName>
+    <label>atmospheric</label>
+  </DesignationCategoryDef>
+  <HediffDef>
+    <defName>VisceralMutation</defName>
+    <label>visceral mutation</label>
+    <description>Recovered stub for visceral mutation.</description>
+  </HediffDef>
+  <ThingDef>
+    <defName>LaserBeam</defName>
+    <label>laser beam</label>
+    <category>Projectile</category>
+    <thingClass>Projectile</thingClass>
+    <description>Laser beam projectile.</description>
+  </ThingDef>
+  <SoundDef>
+    <defName>IonCannon_StartUp</defName>
+  </SoundDef>
+</Defs>

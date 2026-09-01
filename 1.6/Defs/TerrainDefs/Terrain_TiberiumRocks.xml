@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <TerrainDef>
+    <defName>TiberiumRockBlue</defName>
+    <label>blue tiberium rock</label>
+    <texturePath>Terrain/Natural/TiberiumRockBlue</texturePath>
+    <edgeType>FadeRough</edgeType>
+    <renderPrecedence>220</renderPrecedence>
+    <pathCost>30</pathCost>
+    <statBases>
+      <Beauty>-9</Beauty>
+      <Cleanliness>-3</Cleanliness>
+    </statBases>
+    <affordances>
+      <li>Light</li>
+      <li>Medium</li>
+      <li>Heavy</li>
+    </affordances>
+    <tags>
+      <li>Tiberium</li>
+      <li>Stone</li>
+    </tags>
+    <scatterType>Rocky</scatterType>
+    <fertility>0</fertility>
+    <takeFootprints>False</takeFootprints>
+    <avoidWander>True</avoidWander>
+    <extinguishesFire>True</extinguishesFire>
+  </TerrainDef>
+
+  <TerrainDef>
+    <defName>TiberiumRockGreen</defName>
+    <label>green tiberium rock</label>
+    <texturePath>Terrain/Natural/TiberiumRockGreen</texturePath>
+    <edgeType>FadeRough</edgeType>
+    <renderPrecedence>220</renderPrecedence>
+    <pathCost>30</pathCost>
+    <statBases>
+      <Beauty>-9</Beauty>
+      <Cleanliness>-3</Cleanliness>
+    </statBases>
+    <affordances>
+      <li>Light</li>
+      <li>Medium</li>
+      <li>Heavy</li>
+    </affordances>
+    <tags>
+      <li>Tiberium</li>
+      <li>Stone</li>
+    </tags>
+    <scatterType>Rocky</scatterType>
+    <fertility>0</fertility>
+    <takeFootprints>False</takeFootprints>
+    <avoidWander>True</avoidWander>
+    <extinguishesFire>True</extinguishesFire>
+  </TerrainDef>
+
+  <TerrainDef>
+    <defName>TiberiumSoilPod</defName>
+    <label>enriched tiberium soil</label>
+    <texturePath>Terrain/Natural/TiberiumSoilPod</texturePath>
+    <edgeType>FadeRough</edgeType>
+    <renderPrecedence>340</renderPrecedence>
+    <pathCost>9</pathCost>
+    <fertility>1.7</fertility>
+    <tags>
+      <li>TiberiumSoil</li>
+    </tags>
+    <statBases>
+      <Beauty>-2</Beauty>
+      <Cleanliness>-1</Cleanliness>
+    </statBases>
+    <affordances>
+      <li>Light</li>
+      <li>Medium</li>
+      <li>Heavy</li>
+      <li>Diggable</li>
+      <li>GrowSoil</li>
+    </affordances>
+    <takeFootprints>True</takeFootprints>
+  </TerrainDef>
+
+</Defs>

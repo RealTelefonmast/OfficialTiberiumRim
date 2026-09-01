@@ -394,18 +394,64 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
-# JetBrains Rider
-*.sln.iml
+# JetBrains IDEs
+.idea/
+.fleet/
+*.iml
 
-# Claude Code — local config (contains sensitive local paths)
-.claude/settings.local.json
-/Source/TiberiumRim/.junie/AGENTS.md
+# AI assistants and agent-local metadata
+AGENTS.md
+AGENTS.override.md
+CLAUDE.md
+CLAUDE.local.md
+GEMINI.md
+GEMINI.local.md
+.mcp.json
+.claude/
+.codex/
+.cursor/
+.continue/
+.windsurf/
+.junie/
+.opencode/
+.aider*
+opencode.json
+opencode.jsonc
+.github/copilot-instructions.md
+.github/instructions/*.instructions.md
 
-# Local AI assistant configuration and instructions
-/.opencode/
-/opencode.json
-/opencode.jsonc
-/AGENTS.md
+# Local environment and credential material
+.env
+.env.*
+!.env.example
+credentials*
+secrets*
+*.pem
+*.key
+*.pfx
+*.p12
 
-# Obsidian
+# Operating-system metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100/
+.Trashes/
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor swap files, patches, and scratch output
+*.bak
+*.orig
+*.rej
+*.swp
+*.swo
+*.stackdump
+[Tt]emp/
+[Tt]mp/
+
+# Local documentation workspace
 Source/Obsidian/

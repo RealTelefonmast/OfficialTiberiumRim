@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>VeinEgg_TBNS</defName>
+    <label>vein egg</label>
+    <description>A pulsating vein egg.</description>
+    <category>Building</category>
+    <thingClass>Building</thingClass>
+    <tickerType>Rare</tickerType>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Tiberium/Visceral/Pod_1</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>170</MaxHitPoints>
+      <Beauty>-130</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <altitudeLayer>Building</altitudeLayer>
+    <rotatable>false</rotatable>
+    <size>(1,1)</size>
+    <passability>PassThroughOnly</passability>
+    <pathCost>14</pathCost>
+    <building>
+      <isEdifice>false</isEdifice>
+    </building>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>VeinholeHub_TBNS</defName>
+    <label>Veinhole hub</label>
+    <description>This part of a nearby veinhole will attack any living being in its area.</description>
+    <category>Building</category>
+    <thingClass>Building</thingClass>
+    <size>(1,1)</size>
+    <graphicData>
+      <texPath>Tiberium/Producers/Veinhole/Veinhole_Hub_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>450</MaxHitPoints>
+      <Beauty>-125</Beauty>
+    </statBases>
+    <altitudeLayer>Building</altitudeLayer>
+    <tickerType>Rare</tickerType>
+    <selectable>true</selectable>
+    <passability>PassThroughOnly</passability>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>VisceralPod_TBNS</defName>
+    <label>visceral pod</label>
+    <description>A fleshy visceral pod.</description>
+    <category>Building</category>
+    <thingClass>Building</thingClass>
+    <tickerType>Normal</tickerType>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Tiberium/Visceral/Pod_1</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.5,1.5)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Beauty>-130</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <altitudeLayer>Building</altitudeLayer>
+    <rotatable>false</rotatable>
+    <size>(1,1)</size>
+    <passability>PassThroughOnly</passability>
+  </ThingDef>
+
+</Defs>

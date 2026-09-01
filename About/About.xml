@@ -6,6 +6,40 @@
 	  <li>1.6</li>
    </supportedVersions>
    <packageId>telefonmast.tiberiumrim</packageId>
+   <modDependencies>
+      <li>
+         <packageId>brrainz.harmony</packageId>
+         <displayName>Harmony</displayName>
+         <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+         <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+      </li>
+      <li>
+         <packageId>telefonmast.core</packageId>
+         <displayName>TeleCore</displayName>
+         <steamWorkshopUrl>steam://url/CommunityFilePage/2810454935</steamWorkshopUrl>
+      </li>
+      <li>
+         <packageId>telefonmast.networks</packageId>
+         <displayName>TeleCore - Networks</displayName>
+         <downloadUrl>https://github.com/Telefonmast/TeleCore</downloadUrl>
+      </li>
+      <li>
+         <packageId>telefonmast.animation</packageId>
+         <displayName>TeleCore - Animation</displayName>
+         <downloadUrl>https://github.com/Telefonmast/TeleCore</downloadUrl>
+      </li>
+      <li>
+         <packageId>telefonmast.atmospheres</packageId>
+         <displayName>TeleCore - Atmospheres</displayName>
+         <downloadUrl>https://github.com/Telefonmast/TeleCore</downloadUrl>
+      </li>
+   </modDependencies>
+   <loadAfter>
+      <li>telefonmast.core</li>
+      <li>telefonmast.networks</li>
+      <li>telefonmast.animation</li>
+      <li>telefonmast.atmospheres</li>
+   </loadAfter>
    <description>
 		[DEVELOPMENT BUILD]
 

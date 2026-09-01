@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef>
+    <defName>Gas_ChemicalInterface</defName>
+    <label>n/a</label>
+    <thingClass>TeleCore.RW.Atmospheres.GasInterfaceThing</thingClass>
+    <modExtensions>
+      <li Class="TeleCore.RW.Atmospheres.Sim.Defs.Extensions.GasInterface">
+        <gasType>Gas_Chemical</gasType>
+        <startingValue>100</startingValue>
+      </li>
+    </modExtensions>
+  </ThingDef>
+</Defs>

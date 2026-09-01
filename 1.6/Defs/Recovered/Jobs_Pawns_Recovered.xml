@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<JobDef>
+		<defName>TiberiumResearch</defName>
+		<driverClass>TeleCore.RW.Research.Jobs.JobDriver_TResearch</driverClass>
+		<reportString>doing tiberium research.</reportString>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+	
+</Defs>
+
+
+

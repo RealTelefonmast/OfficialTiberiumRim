@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--=============== BASES ==============-->
+	<FleckDef Name="FleckBase_TR" Abstract="True">
+		<fleckSystemClass>FleckSystemStatic</fleckSystemClass>
+		<label>Fleck</label>
+		<graphicData>
+		  <graphicClass>Graphic_Fleck</graphicClass>
+		  <shaderType>Mote</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<realTime>false</realTime>
+	</FleckDef>
+	
+	<FleckDef Name="FleckBaseThrown_TR" ParentName="FleckBase" Abstract="True">
+		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
+	</FleckDef>
+	
+	<FleckDef Abstract = "True" Name="FleckBase_DistortionShockwave" ParentName="FleckBaseThrown_TR">
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<fadeInTime>0.05</fadeInTime>
+		<fadeOutTime>1</fadeOutTime>
+		<solidTime>0.5</solidTime>
+		<growthRate>2</growthRate>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderType>MoteGlowDistortBackground</shaderType>
+			<shaderParameters>
+				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
+				<_distortionIntensity>0.05</_distortionIntensity>
+				<_brightnessMultiplier>1.15</_brightnessMultiplier>
+			</shaderParameters>
+			<drawSize>2</drawSize>
+		</graphicData>
+	</FleckDef>
+	
+</Defs>

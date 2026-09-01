@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TeleCore.RW.ThingGroupDef>
+		<defName>MechHangars</defName>
+		<label>mech construction hangars</label>
+		<parentGroup>All</parentGroup>
+	</TeleCore.RW.ThingGroupDef>
+	
+</Defs>
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <LetterDef>
+    <defName>TeleEventLetter</defName>
+    <label>tele event</label>
+    <letterClass>StandardLetter</letterClass>
+  </LetterDef>
+
+  <JobDef>
+    <defName>TeleResearchJob</defName>
+    <driverClass>JobDriver_Wait</driverClass>
+  </JobDef>
+
+  <!--
+    TeleCore research code uses this DefOf target for programmatic navigation.
+    Keep it registered but hidden: TiberiumTab is the player-facing button.
+  -->
+  <MainButtonDef>
+    <defName>TeleResearchTab</defName>
+    <label>research</label>
+    <description>Internal TeleCore research navigation target.</description>
+    <tabWindowClass>TeleCore.RW.Research.UI.MainTabWindow_TResearch</tabWindowClass>
+    <buttonVisible>false</buttonVisible>
+    <validWithoutMap>true</validWithoutMap>
+    <order>100</order>
+  </MainButtonDef>
+</Defs>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="PlantBase">
+    <defName>TiberiumDesertGreen</defName>
+    <label>Green Tiberium shards</label>
+    <description>Green shards growing out of the sand, they seem to be unstable.</description>
+    <ingestible>
+      <foodType>Plant</foodType>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
+    <statBases>
+      <MaxHitPoints>15</MaxHitPoints>
+      <Beauty>15</Beauty>
+    </statBases>
+    <graphicData>
+      <texPath>Tiberium/Crystals/Green/Desert</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>40</pathCost>
+    <plant>
+      <maxMeshCount>4</maxMeshCount>
+      <visualSizeRange Inherit="False">
+        <min>1.0</min>
+        <max>2.0</max>
+      </visualSizeRange>
+      <growDays>4.5</growDays>
+    </plant>
+  </ThingDef>
+
+  <ThingDef ParentName="PlantBase">
+    <defName>TiberiumDesertBlue</defName>
+    <label>Blue Tiberium shards</label>
+    <description>Blue shards growing out of the sand, they seem to be unstable.</description>
+    <ingestible>
+      <foodType>Plant</foodType>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
+    <statBases>
+      <MaxHitPoints>20</MaxHitPoints>
+      <Beauty>15</Beauty>
+    </statBases>
+    <graphicData>
+      <texPath>Tiberium/Crystals/Green/Desert</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>40</pathCost>
+    <plant>
+      <maxMeshCount>4</maxMeshCount>
+      <visualSizeRange Inherit="False">
+        <min>1.0</min>
+        <max>2.0</max>
+      </visualSizeRange>
+      <growDays>4.5</growDays>
+    </plant>
+  </ThingDef>
+
+  <ThingDef ParentName="PlantBase">
+    <defName>TiberiumDesertRed</defName>
+    <label>Red Tiberium shards</label>
+    <description>Red shards growing out of the sand, they seem to be unstable.</description>
+    <ingestible>
+      <foodType>Plant</foodType>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
+    <statBases>
+      <MaxHitPoints>25</MaxHitPoints>
+      <Beauty>15</Beauty>
+    </statBases>
+    <graphicData>
+      <texPath>Tiberium/Crystals/Red/Desert</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>40</pathCost>
+    <plant>
+      <maxMeshCount>4</maxMeshCount>
+      <visualSizeRange Inherit="False">
+        <min>1.0</min>
+        <max>2.0</max>
+      </visualSizeRange>
+      <growDays>20</growDays>
+    </plant>
+  </ThingDef>
+
+</Defs>

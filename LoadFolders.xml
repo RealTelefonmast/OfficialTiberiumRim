@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<loadFolders>
+  <v1.6>
+    <!-- Shared textures and sounds live at the mod root. -->
+    <li>/</li>
+    <!-- Assemblies, Defs and patches are version-specific. -->
+    <li>1.6</li>
+  </v1.6>
+</loadFolders>

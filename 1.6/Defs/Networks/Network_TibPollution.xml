@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <TeleCore.RW.Networks.NetworkValueDef>
+    <defName>Atmospheric_TibPollution</defName>
+    <label>pollution</label>
+    <collectionDef>AtmosphericNetwork</collectionDef>
+    <networkDef>AtmosphericNetwork</networkDef>
+    <valueColor>(38,127,4)</valueColor>
+  </TeleCore.RW.Networks.NetworkValueDef>
+</Defs>

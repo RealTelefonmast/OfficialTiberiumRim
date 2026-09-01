@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThoughtDef>
+    <defName>UneasyTiberiumThought</defName>
+    <label>uneasy tiberium</label>
+    <description>Stub thought for tiberium unease.</description>
+    <stages>
+      <li>
+        <label>uneasy</label>
+        <description>Feeling uneasy near tiberium.</description>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>TiberiumWaterBath</defName>
+    <label>tiberium water bath</label>
+    <description>Stub thought for tiberium water bath.</description>
+    <stages>
+      <li>
+        <label>bathing</label>
+        <description>Exposed to tiberium water.</description>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <HediffDef>
+    <defName>TibInEyes</defName>
+    <label>tib in eyes</label>
+    <description>Tiberium crystals irritating the eyes.</description>
+  </HediffDef>
+  <SoundDef>
+    <defName>TiberiumFiend_RangedAttack</defName>
+    <label>tiberium fiend attack</label>
+  </SoundDef>
+
+  <!-- Terrain stubs for conversions if not found (should already exist in Terrain_Tiberium.xml, but stub to ensure) -->
+</Defs>

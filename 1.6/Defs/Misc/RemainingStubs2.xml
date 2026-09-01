@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <TiberiumRim.HediffMutationGroup>
+    <defName>Animal</defName>
+    <label>animal</label>
+  </TiberiumRim.HediffMutationGroup>
+  <TiberiumRim.HediffMutationGroup>
+    <defName>Enhanced</defName>
+    <label>enhanced</label>
+  </TiberiumRim.HediffMutationGroup>
+  <TiberiumRim.TiberiumControlDef>
+    <defName>MainTiberiumControlDef</defName>
+    <label>main control stub</label>
+  </TiberiumRim.TiberiumControlDef>
+  <TiberiumRim.FactionDesignationDef>
+    <defName>None</defName>
+    <label>none</label>
+  </TiberiumRim.FactionDesignationDef>
+  <HediffDef>
+    <defName>SymbioticCore</defName>
+    <label>symbiotic core</label>
+    <description>Recovered stub for symbiotic core mutation.</description>
+  </HediffDef>
+  <HediffDef>
+    <defName>SymbioticMutation</defName>
+    <label>symbiotic mutation</label>
+    <description>Recovered stub for symbiotic mutation.</description>
+  </HediffDef>
+  <HediffDef>
+    <defName>TiberiumCrystallization</defName>
+    <label>tiberium crystallization</label>
+    <description>Recovered stub for tiberium crystallization.</description>
+  </HediffDef>
+  <HediffDef>
+    <defName>TiberiumMutationHelper</defName>
+    <label>helper</label>
+    <description>Recovered helper hediff.</description>
+  </HediffDef>
+  <HediffDef>
+    <defName>TiberiumMutationWorker</defName>
+    <label>worker</label>
+    <description>Recovered worker hediff.</description>
+  </HediffDef>
+  <PawnKindDef>
+    <defName>Chitzkoi</defName>
+    <label>chitzkoi</label>
+    <race>Human</race>
+    <combatPower>50</combatPower>
+    <initialWillRange>
+      <min>35</min>
+      <max>65</max>
+    </initialWillRange>
+    <initialResistanceRange>
+      <min>30</min>
+      <max>60</max>
+    </initialResistanceRange>
+  </PawnKindDef>
+  <JobDef>
+    <defName>DoMechConstructionBill</defName>
+    <driverClass>JobDriver_DoBill</driverClass>
+  </JobDef>
+  <SoundDef>
+    <defName>IonCannon_ClimaxChargeUp</defName>
+  </SoundDef>
+  <SoundDef>
+    <defName>IonCannon_PreClimaxPause</defName>
+  </SoundDef>
+</Defs>
