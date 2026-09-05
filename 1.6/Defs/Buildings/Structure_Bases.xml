@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	
 	<TeleCore.RW.ThingGroupDef>
@@ -76,10 +76,10 @@
 			<Steel>20</Steel>
 		</costList>
 		<placeWorkers>
-			<li>TiberiumRim.PlaceWorker_WallLight</li>
+			<li>TeleCore.RW.PlaceWorker_WallLight</li>
 		</placeWorkers>
 	</TiberiumRim.TRThingDef>
-	
+
 	<TiberiumRim.TRThingDef Abstract="True" Name="GlowSourceBase" ParentName="EtherealThingBase">
 		<label>wall light glow</label>
 		<thingClass>ThingWithComps</thingClass>
@@ -122,6 +122,7 @@
 		</statBases>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<passability>Impassable</passability>
+		<drawStyleCategory>Walls</drawStyleCategory>
 		<blockWind>true</blockWind>
 		<castEdgeShadows>true</castEdgeShadows>
 		<fillPercent>1</fillPercent>
@@ -136,10 +137,7 @@
 		<canOverlapZones>false</canOverlapZones>
 		<building>
 			<ai_chillDestination>false</ai_chillDestination>
-			<isInert>true</isInert>
-			<blueprintGraphicData>
-				<texPath>Things/Building/Linked/Wall_Blueprint_Atlas</texPath>
-			</blueprintGraphicData>
+<isInert>true</isInert>
 		</building>
 		<damageMultipliers>
 			<li>
@@ -182,10 +180,7 @@
 			<soundDoorClosePowered>Door_ClosePowered</soundDoorClosePowered>
 			<soundDoorOpenManual>Door_OpenManual</soundDoorOpenManual>
 			<soundDoorCloseManual>Door_CloseManual</soundDoorCloseManual>
-			<blueprintClass>Blueprint_Door</blueprintClass>
-			<blueprintGraphicData>
-				<texPath>Things/Building/Door/Door_Blueprint</texPath>
-			</blueprintGraphicData>
+<blueprintClass>Blueprint_Door</blueprintClass>
 			<ai_chillDestination>false</ai_chillDestination>
 		</building>
 		<comps>
@@ -213,10 +208,7 @@
 		<building>
 			<ai_chillDestination>false</ai_chillDestination>
 			<isInert>true</isInert>
-			<isEdifice>false</isEdifice>
-			<blueprintGraphicData>
-				<texPath>Things/Building/Linked/PowerConduit_Blueprint_Atlas</texPath>
-			</blueprintGraphicData>
+<isEdifice>false</isEdifice>
 		</building>
 		<altitudeLayer>FloorEmplacement</altitudeLayer>
 		<passability>Standable</passability>

@@ -4,7 +4,7 @@
 	<FleckDef ParentName="FleckBaseThrown_TR">
 		<defName>TiberiumAirPuff</defName>
 		<graphicData>
-			<texPath>Things/Mote/AirPuff</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<color>(90,230,95,100)</color>
 			<renderInstanced>true</renderInstanced>
 		</graphicData>
@@ -17,7 +17,7 @@
 	<FleckDef ParentName="FleckBaseThrown_TR">
 		<defName>TiberiumSmoke</defName>
 		<graphicData>
-			<texPath>VisualFX/Natural/TiberiumGas/TiberiumGasDark</texPath>
+			<texPath>FX/Gas/TiberiumGasDark</texPath>
 			<drawSize>(0.4,0.4)</drawSize>
 			<color>(1,1,1,0.6)</color>
 		</graphicData>
@@ -31,8 +31,36 @@
 	<FleckDef ParentName="FleckBaseThrown_TR">
 		<defName>Fleck_TiberiumFog_Green</defName>
 		<graphicData>
-			<texPath>VisualFX/Natural/Gas</texPath>
+			<texPath>FX/Gas/GasMote</texPath>
 			<color>(15,255,55,55)</color>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<collide>true</collide>
+		<fadeInTime>5</fadeInTime>
+		<solidTime>30</solidTime>
+		<fadeOutTime>5</fadeOutTime>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBaseThrown_TR">
+		<defName>Fleck_TiberiumFog_Blue</defName>
+		<graphicData>
+			<texPath>FX/Gas/GasMote</texPath>
+			<color>(15,125,255,55)</color>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<collide>true</collide>
+		<fadeInTime>5</fadeInTime>
+		<solidTime>30</solidTime>
+		<fadeOutTime>5</fadeOutTime>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBaseThrown_TR">
+		<defName>Fleck_TiberiumFog_Red</defName>
+		<graphicData>
+			<texPath>FX/Gas/GasMote</texPath>
+			<color>(255,15,115,55)</color>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -45,7 +73,7 @@
 	<FleckDef ParentName="FleckBase_TR">
 		<defName>Fleck_TiberiumCloudLightning</defName>
 		<graphicData>
-			<texPath>VisualFX/IonLighting/ion</texPath>
+			<texPath>FX/Spark</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -60,7 +88,7 @@
 	<FleckDef ParentName="FleckBase_Thrown">
 		<defName>Mote_Smokeblack</defName>
 		<graphicData>
-			<texPath>VisualFX/Original/Smoke</texPath>
+			<texPath>FX/Smoke/Smoke</texPath>
 			<renderInstanced>true</renderInstanced>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -73,7 +101,7 @@
 	<FleckDef ParentName="FleckBase_Thrown">
 		<defName>Mote_SmokeTR</defName>
 		<graphicData>
-			<texPath>VisualFX/Original/Smoke</texPath>
+			<texPath>FX/Smoke/Smoke</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 		</graphicData>
@@ -87,7 +115,7 @@
   <FleckDef ParentName="FleckBase">
 		<defName>Mote_AdvFlame2</defName>
 		<graphicData>
-			<texPath>VisualFX/Flame2</texPath>
+			<texPath>FX/Flame2</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 		</graphicData>
@@ -101,7 +129,7 @@
 	<FleckDef ParentName="FleckBase_TR">
 		<defName>Fleck_BlastSound</defName>
 		<graphicData>
-			<texPath>VisualFX/SoundMote</texPath> 
+			<texPath>FX/SoundBlast</texPath> 
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -114,7 +142,7 @@
 	<FleckDef ParentName="FleckBase_TR">
 		<defName>Fleck_BlastWave</defName>
 		<graphicData>
-			<texPath>VisualFX/SoundVortex</texPath>
+			<texPath>FX/SoundVortex</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>1</drawSize>
 		</graphicData>
@@ -128,7 +156,7 @@
 	<FleckDef ParentName="FleckBase_TR">
 		<defName>Fleck_Nuke</defName>
 		<graphicData>
-			<texPath>VisualFX/Natural/Gas</texPath>
+			<texPath>FX/Gas/GasMote</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -141,7 +169,7 @@
 	<FleckDef ParentName="FleckBase_TR">
 		<defName>Fleck_NukePostEffect</defName>
 		<graphicData>
-			<texPath>VisualFX/Natural/Gas</texPath>
+			<texPath>FX/Gas/GasMote</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -154,7 +182,7 @@
 	<FleckDef ParentName="FleckBase_TR">
 		<defName>Fleck_ScrinCut</defName>
 		<graphicData>
-			<texPath>VisualFX/ScrinCut</texPath>
+			<texPath>Map/Things/Projectiles/ScrinCut</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -168,7 +196,7 @@
 	<FleckDef ParentName="FleckBase_TR">
 		<defName>Fleck_ScrinBomb</defName>
 		<graphicData>
-			<texPath>VisualFX/ScrinBomb</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -182,7 +210,7 @@
 	<FleckDef ParentName="FleckBase_Thrown">
 		<defName>SubMote_TibGasParticle</defName>
 		<graphicData>
-			<texPath>VisualFX/Natural/TiberiumGas/TiberiumGasLight</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>0.5</drawSize>
 		</graphicData>
@@ -196,7 +224,7 @@
 	<FleckDef ParentName="FleckBase_Thrown">
 		<defName>SubMote_TibGasParticle_Shadow</defName>
 		<graphicData>
-			<texPath>VisualFX/Natural/Gas</texPath>
+			<texPath>FX/Gas/GasMote</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>0.5</drawSize>
 		</graphicData>
@@ -212,7 +240,7 @@
 		<defName>Mote_BeamtargetRS</defName>
 		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
 		<graphicData>
-			<texPath>VisualFX/targetRail</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 		</graphicData>
@@ -227,7 +255,7 @@
 		<defName>Mote_BeamtargetLS</defName>
 		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
 		<graphicData>
-			<texPath>VisualFX/TargetBeam</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 		</graphicData>
@@ -242,7 +270,7 @@
 		<defName>Mote_BeamtargetLB</defName>
 		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
 		<graphicData>
-			<texPath>VisualFX/TargetBeam</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<renderInstanced>true</renderInstanced>
 		</graphicData>
@@ -274,7 +302,7 @@
 	
 	<ThingDef Abstract="True" Name="TiberiumFog" ParentName="MoteBase_TR">
 		<graphicData>
-			<texPath>VisualFX/Gas</texPath>
+			<texPath>FX/Gas/GasMote</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -290,7 +318,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>IonLighting</defName>
 		<graphicData>
-			<texPath>VisualFX/IonLighting/ion</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<color>(255,255,255,200)</color>
 		</graphicData>
@@ -357,7 +385,7 @@
 	<ThingDef ParentName="MoteBase">
 		<defName>Mote_TiberiumGlow</defName>
 		<graphicData>
-			<texPath>FX/Tiberium/TiberiumGlow_Transparent</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -371,7 +399,7 @@
 	<ThingDef ParentName="MoteBase">
 		<defName>Mote_TiberiumGlowBig</defName>
 		<graphicData>
-			<texPath>FX/Tiberium/TiberiumGlow_Transparent</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>
@@ -397,7 +425,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>BlossomSmoke</defName>
 		<graphicData>
-			<texPath>VisualFX/Fog/BlossomSmoke</texPath>
+			<texPath>FX/Smoke/BlossomSmoke</texPath>
 			<color>(1,1,1,0.6)</color>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -412,7 +440,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>VeinholeSmoke</defName>
 		<graphicData>
-			<texPath>VisualFX/TiberiumGasDark</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<drawSize>(1,1)</drawSize>
 			<color>(1,1,1,0.6)</color>
 		</graphicData>
@@ -428,7 +456,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>TiberiumSmokeMote</defName>
 		<graphicData>
-			<texPath>VisualFX/TiberiumGasDark</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<drawSize>(0.4,0.4)</drawSize>
 			<color>(1,1,1,0.6)</color>
 		</graphicData>
@@ -445,7 +473,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_GlowerParticle</defName>
 		<graphicData>
-			<texPath>VisualFX/DustParticle</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>(0.25,0.25)</drawSize>
 		</graphicData>
@@ -460,7 +488,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_TiberiumGeyser</defName>
 		<graphicData>
-			<texPath>Things/Mote/AirPuff</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<color>(90,230,95,100)</color>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -474,7 +502,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_TiberiumLeak</defName>
 		<graphicData>
-			<texPath>Things/Mote/AirPuff</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<mote>
@@ -489,14 +517,14 @@
 	<TiberiumRim.ParticleDef ParentName="SporeBase">
 		<defName>TiberiumSpore</defName>
 		<graphicData>
-			<texPath>VisualFX/Spore2</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 		</graphicData>
 	</TiberiumRim.ParticleDef>
 	
 	<TiberiumRim.ParticleDef ParentName="SporeBase">
 		<defName>TiberiumDustSpore</defName>
 		<graphicData>
-			<texPath>VisualFX/DustParticle</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 		</graphicData>
 	</TiberiumRim.ParticleDef>
 
@@ -504,7 +532,7 @@
 		<defName>BlossomSpore</defName>
 		<particleClass>TiberiumRim.BlossomSpore</particleClass>
 		<graphicData>
-			<texPath>VisualFX/Spore2</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 		</graphicData>
 	</TiberiumRim.ParticleDef>
 	
@@ -512,7 +540,7 @@
 		<defName>TiberiumParticle</defName>
 		<graphicData>
 			<graphicClass>TeleCore.RW.Graphic_Particle</graphicClass>
-			<texPath>VisualFX/DustParticle</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		
@@ -531,7 +559,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>PortalParticle</defName>
 		<graphicData>
-			<texPath>VisualFX/Fog/BlossomSmoke</texPath>
+			<texPath>FX/Smoke/BlossomSmoke</texPath>
 			<color>(0,0,0,1)</color>
 			<shaderType>MetaOverlay</shaderType>
 		</graphicData>

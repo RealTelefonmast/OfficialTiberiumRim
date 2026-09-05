@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Ported from TiberiumRim-1.3 /Defs/Mechs/Harvesters/Races_Harvester.xml
+       and /Defs/Mechs/RepairDrones/Races_RepairDrone.xml.
+       FX comps adapted to the current TeleCore.RW.CompProperties_FX fxLayers format.
+       GDI/Nod harvesters are defined for completeness; their PawnKindDefs and husks
+       stay unported until the GDI_ReinforcedPlate / Nod_CarbonPlate resource defs exist. -->
+
+  <ThingDef ParentName="RepairDroneBase">
+    <defName>RepairDrone_Common</defName>
+    <label>repair drone</label>
+    <description>A simple repair drone, it will repair any damaged mech in reach as long as it has resources.</description>
+    <statBases>
+      <MoveSpeed>1.5</MoveSpeed>
+      <ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+    </statBases>
+  </ThingDef>
+
+  <TiberiumRim.TRThingDef ParentName="HarvesterBase">
+    <defName>Harvester_GDI</defName>
+    <label>GDI harvester</label>
+    <description>An armored tiberium harvester designed by GDI, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
+    <comps>
+      <li Class="TeleCore.RW.CompProperties_FX">
+        <fxLayers>
+          <li>
+            <graphicData>
+              <texPath>Map/Things/Pawns/Mechanical/GDI/Harvester/GDI_Harvester_Overlay_Crystals</texPath>
+              <graphicClass>Graphic_Multi</graphicClass>
+              <shaderType>MoteGlow</shaderType>
+              <drawSize>(3,3)</drawSize>
+            </graphicData>
+            <fxMode>Dynamic</fxMode>
+          </li>
+        </fxLayers>
+      </li>
+    </comps>
+    <statBases>
+      <MoveSpeed>2.5</MoveSpeed>
+      <ArmorRating_Blunt>0.4</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+    </statBases>
+    <race>
+      <body>HarvesterBody_GDI</body>
+    </race>
+    <tools>
+      <li>
+        <label>dozer</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>20</power>
+        <cooldownTime>3.5</cooldownTime>
+        <linkedBodyPartsGroup>Dozer</linkedBodyPartsGroup>
+        <chanceFactor>0.2</chanceFactor>
+      </li>
+    </tools>
+  </TiberiumRim.TRThingDef>
+
+  <TiberiumRim.TRThingDef ParentName="HarvesterBase">
+    <defName>Harvester_Nod</defName>
+    <label>Nod harvester</label>
+    <description>An advanced tiberium harvester developed by Nod, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
+    <comps>
+      <li Class="TeleCore.RW.CompProperties_FX">
+        <fxLayers>
+          <li>
+            <graphicData>
+              <texPath>Map/Things/Pawns/Mechanical/Nod/Harvester/Nod_Harvester_Overlay_Container</texPath>
+              <graphicClass>Graphic_Multi</graphicClass>
+              <shaderType>MoteGlow</shaderType>
+              <drawSize>(3,3)</drawSize>
+            </graphicData>
+            <fxMode>Dynamic</fxMode>
+          </li>
+          <li>
+            <graphicData>
+              <texPath>Map/Things/Pawns/Mechanical/Nod/Harvester/Nod_Harvester_Overlay_Eye</texPath>
+              <graphicClass>Graphic_Multi</graphicClass>
+              <drawRotated>false</drawRotated>
+              <shaderType>MoteGlow</shaderType>
+              <drawSize>(3,3)</drawSize>
+            </graphicData>
+            <fxMode>Dynamic</fxMode>
+            <fade>
+              <opacityRange>0.6~1</opacityRange>
+            </fade>
+          </li>
+        </fxLayers>
+      </li>
+    </comps>
+    <statBases>
+      <MoveSpeed>3.5</MoveSpeed>
+      <ArmorRating_Blunt>0.35</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.7</ArmorRating_Sharp>
+    </statBases>
+    <race>
+      <body>HarvesterBody_Nod</body>
+    </race>
+    <tools>
+      <li>
+        <label>dozer</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>3.5</cooldownTime>
+        <linkedBodyPartsGroup>Dozer</linkedBodyPartsGroup>
+        <chanceFactor>0.2</chanceFactor>
+      </li>
+    </tools>
+  </TiberiumRim.TRThingDef>
+
+</Defs>

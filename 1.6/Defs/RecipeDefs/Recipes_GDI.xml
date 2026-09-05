@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Stub recipes referenced by the GDI factory and refinery; product chains
+       are authored when the GDI crafting recipes are ported. -->
+
+  <RecipeDef>
+    <defName>MakeReinforcedPlate</defName>
+    <label>make reinforced plate</label>
+  </RecipeDef>
+
+  <RecipeDef>
+    <defName>MakeGDISonicCore</defName>
+    <label>make sonic energy core</label>
+  </RecipeDef>
+
+  <TiberiumRim.MechRecipeDef>
+    <defName>MakeHarvester_GDI</defName>
+    <label>craft GDI harvester</label>
+    <workCost>5000</workCost>
+  </TiberiumRim.MechRecipeDef>
+
+</Defs>

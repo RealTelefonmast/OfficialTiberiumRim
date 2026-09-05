@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TeleCore.RW.TeleEffecterDef>
+    <defName>TiberiumClouds_Green</defName>
+    <tickInterval>3000</tickInterval>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <fleckDef>Fleck_TiberiumFog_Green</fleckDef>
+        <scale>3~5.5</scale>
+        <chancePerTick>0.075</chancePerTick>
+        <positionLerpFactor>0.01</positionLerpFactor>
+        <positionRadius>0.5</positionRadius>
+        <spawnLocType>RandomCellOnTarget</spawnLocType>
+        <speed>0.01~0.05</speed>
+      </li>
+    </children>
+  </TeleCore.RW.TeleEffecterDef>
+
+  <TeleCore.RW.TeleEffecterDef>
+    <defName>TiberiumClouds_Blue</defName>
+    <tickInterval>2500</tickInterval>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <fleckDef>Fleck_TiberiumFog_Blue</fleckDef>
+        <scale>3~5.5</scale>
+        <chancePerTick>0.075</chancePerTick>
+        <positionLerpFactor>0.01</positionLerpFactor>
+        <positionRadius>0.5</positionRadius>
+        <spawnLocType>RandomCellOnTarget</spawnLocType>
+        <speed>0.01~0.1</speed>
+      </li>
+    </children>
+  </TeleCore.RW.TeleEffecterDef>
+
+  <TeleCore.RW.TeleEffecterDef>
+    <defName>TiberiumClouds_Red</defName>
+    <tickInterval>2500</tickInterval>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <fleckDef>Fleck_TiberiumFog_Red</fleckDef>
+        <scale>3~5.5</scale>
+        <chancePerTick>0.075</chancePerTick>
+        <positionLerpFactor>0.01</positionLerpFactor>
+        <positionRadius>0.5</positionRadius>
+        <spawnLocType>RandomCellOnTarget</spawnLocType>
+        <speed>0.01~0.1</speed>
+      </li>
+    </children>
+  </TeleCore.RW.TeleEffecterDef>
+</Defs>

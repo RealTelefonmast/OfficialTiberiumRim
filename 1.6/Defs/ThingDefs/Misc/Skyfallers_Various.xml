@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
 	<ThingDef Name="SkyfallerBase_TR" ParentName="EtherealThingBase" Abstract="True">
@@ -10,7 +10,7 @@
 		<drawerType>RealtimeOnly</drawerType>
 		<size>(2, 2)</size>
 		<graphicData>
-			<texPath>Things/Skyfaller/Meteorite</texPath>
+			<texPath>Map/Things/Tiberium/Producers/Meteorite/Meteor</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>Transparent</shaderType>
 			<drawSize>(8, 8)</drawSize>
@@ -35,7 +35,7 @@
 		<defName>GreenTiberiumMeteorIncoming</defName>
 		<label>Green Tiberium Meteor (incoming)</label>
 		<graphicData>
-			<texPath>Tiberium/Skyfallers/Meteors/GreenMeteor</texPath>
+			<texPath>Map/Things/Skyfallers/Meteors/GreenMeteor</texPath>
 		</graphicData>
 	</ThingDef>
   
@@ -43,7 +43,7 @@
 		<defName>BlueTiberiumMeteorIncoming</defName>
 		<label>Blue Tiberium Meteor (incoming)</label>
 		<graphicData>
-			<texPath>Tiberium/Skyfallers/Meteors/BlueMeteor</texPath>
+			<texPath>Map/Things/Skyfallers/Meteors/BlueMeteor</texPath>
 		</graphicData>
 	</ThingDef>
 	
@@ -51,7 +51,7 @@
 		<defName>RedTiberiumShardIncoming</defName>
 		<label>Red Tiberium Shard (incoming)</label>		
 		<graphicData>		
-			<texPath>Tiberium/Skyfallers/Meteors/RedShard</texPath>
+			<texPath>Map/Things/Skyfallers/Meteors/RedShard_Falling</texPath>
 			<drawSize>(5, 10)</drawSize>
 		</graphicData>
 		<skyfaller>
@@ -63,7 +63,7 @@
 		<defName>TiberiumMeteorIncoming</defName>
 		<label>Tiberium Meteor (incoming)</label>
 		<graphicData>
-			<texPath>Tiberium/Skyfallers/Meteors/GreenMeteor</texPath>
+			<texPath>Map/Things/Tiberium/Producers/Meteorite/Meteor</texPath>
 		</graphicData>
 	</ThingDef>
 

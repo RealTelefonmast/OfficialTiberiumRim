@@ -57,7 +57,7 @@
 		<defaultStoppingPower>2.0</defaultStoppingPower>
 		<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
 		<explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
-		<explosionCellMote>Mote_Nuke</explosionCellMote>
+		<explosionCellFleck>Fleck_Nuke</explosionCellFleck>
 		<explosionColorCenter>(0.25, 1, 0.25)</explosionColorCenter>
 		<explosionColorEdge>(0.1, 0.5, 0.1)</explosionColorEdge>
 		<explosionSnowMeltAmount>100</explosionSnowMeltAmount>

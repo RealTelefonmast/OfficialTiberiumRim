@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
 	<TiberiumRim.TRThingDef ParentName="ScrinBuildings">
@@ -26,7 +26,7 @@
 					<li>
 						<graphicData>
 							<graphicClass>Graphic_Single</graphicClass>
-							<texPath>FX/Projectiles/ChronoVortex</texPath>
+							<texPath>FX/Beams/Beam_EndGlow</texPath>
 							<shaderType>MoteGlow</shaderType>
 							<drawSize>8</drawSize>
 						</graphicData>

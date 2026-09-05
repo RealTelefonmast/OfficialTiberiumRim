@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThinkTreeDef Name="Visceroid_Constant">
+    <defName>Visceroid_Constant</defName>
+    <thinkRoot Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="ThinkNode_ConditionalCanDoConstantThinkTreeJobNow">
+          <subNodes>
+            <li Class="JobGiver_FleePotentialExplosion" />
+            <!-- Do That Weird Thing 
+						<li Class="TiberiumRim.JobGiver_Amalgamation"/>
+						-->
+            <li Class="JobGiver_AnimalFlee" />
+            <li Class="ThinkNode_Subtree">
+              <treeDef>LordDutyConstant</treeDef>
+            </li>
+          </subNodes>
+        </li>
+      </subNodes>
+    </thinkRoot>
+  </ThinkTreeDef>
+  <ThinkTreeDef ParentName="Visceroid_Constant">
+    <defName>Veinroamer_Constant</defName>
+  </ThinkTreeDef>
+</Defs>

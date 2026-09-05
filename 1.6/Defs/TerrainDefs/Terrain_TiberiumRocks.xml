@@ -4,7 +4,7 @@
   <TerrainDef>
     <defName>TiberiumRockBlue</defName>
     <label>blue tiberium rock</label>
-    <texturePath>Terrain/Natural/TiberiumRockBlue</texturePath>
+    <texturePath>Map/Terrain/Tiberium/TiberiumRockBlue</texturePath>
     <edgeType>FadeRough</edgeType>
     <renderPrecedence>220</renderPrecedence>
     <pathCost>30</pathCost>
@@ -31,7 +31,7 @@
   <TerrainDef>
     <defName>TiberiumRockGreen</defName>
     <label>green tiberium rock</label>
-    <texturePath>Terrain/Natural/TiberiumRockGreen</texturePath>
+    <texturePath>Map/Terrain/Tiberium/TiberiumRockGreen</texturePath>
     <edgeType>FadeRough</edgeType>
     <renderPrecedence>220</renderPrecedence>
     <pathCost>30</pathCost>
@@ -58,7 +58,7 @@
   <TerrainDef>
     <defName>TiberiumSoilPod</defName>
     <label>enriched tiberium soil</label>
-    <texturePath>Terrain/Natural/TiberiumSoilPod</texturePath>
+    <texturePath>Map/Terrain/Tiberium/TiberiumSoilPod</texturePath>
     <edgeType>FadeRough</edgeType>
     <renderPrecedence>340</renderPrecedence>
     <pathCost>9</pathCost>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   <ThingDef ParentName="PlantBase">
     <defName>TiberiumGrass</defName>
@@ -12,7 +12,7 @@
       <MaxHitPoints>100</MaxHitPoints>
     </statBases>
     <graphicData>
-      <texPath>Tiberium/Flora/Grass</texPath>
+      <texPath>Map/Things/Tiberium/Flora/Grass/Green/Base</texPath>
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <hideAtSnowOrSandDepth>0.5</hideAtSnowOrSandDepth>
@@ -39,7 +39,7 @@
       <MaxHitPoints>120</MaxHitPoints>
     </statBases>
     <graphicData>
-      <texPath>Tiberium/Flora/Bush</texPath>
+      <texPath>Map/Things/Tiberium/Flora/Bush</texPath>
       <graphicClass>Graphic_Random</graphicClass>
        <shadowData>
          <volume>(0.55, 0.2, 0.2)</volume>
@@ -72,7 +72,7 @@
       <Beauty>-8</Beauty>
     </statBases>
     <graphicData>
-      <texPath>Tiberium/Flora/Shroom</texPath>
+      <texPath>Map/Things/Tiberium/Flora/Shrooms</texPath>
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <hideAtSnowOrSandDepth>0.5</hideAtSnowOrSandDepth>
@@ -96,7 +96,7 @@
       <preferability>NeverForNutrition</preferability>
     </ingestible>
     <graphicData>
-      <texPath>Tiberium/Flora/Tree</texPath>
+      <texPath>Map/Things/Tiberium/Flora/Tree</texPath>
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <statBases>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+    <defName>DeadGreenCrater</defName>
+    <label>green Tiberium crater residue</label>
+    <description>The remnants of a green Tiberium crater, it does not create any more crystals.</description>
+    <thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <useHitPoints>false</useHitPoints>
+    <destroyable>false</destroyable>
+    <altitudeLayer>Floor</altitudeLayer>
+    <size>(3,3)</size>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Map/Things/Tiberium/Producers/GreenCrater/GreenCrater_Broken</texPath>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(5,5)</drawSize>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(120,255,120)</glowColor>
+      </li>
+      <li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+        <radius>8</radius>
+        <intensity>1.25</intensity>
+      </li>
+    </comps>
+    <tickerType>Rare</tickerType>
+  </TiberiumRim.TRThingDef>
+  <TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+    <defName>DeadBlueCrater</defName>
+    <label>blue Tiberium crater residue</label>
+    <description>The remnants of a blue Tiberium crater, it does not create any more crystals.</description>
+    <thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <useHitPoints>false</useHitPoints>
+    <destroyable>false</destroyable>
+    <altitudeLayer>Floor</altitudeLayer>
+    <size>(3,3)</size>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Map/Things/Tiberium/Producers/BlueCrater/BlueCrater_Broken</texPath>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(5,5)</drawSize>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(120,255,120)</glowColor>
+      </li>
+      <li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+        <radius>9</radius>
+        <intensity>1.35</intensity>
+      </li>
+    </comps>
+    <tickerType>Rare</tickerType>
+  </TiberiumRim.TRThingDef>
+  <TiberiumRim.TRThingDef ParentName="BuildingNaturalBase_TR">
+    <defName>DeadVeinhole</defName>
+    <label>dead veinhole</label>
+    <description>A dead veinhole.</description>
+    <thingClass>TiberiumRim.TiberiumProducerResidue</thingClass>
+    <useHitPoints>false</useHitPoints>
+    <destroyable>false</destroyable>
+    <size>(3,3)</size>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Map/Things/Tiberium/Producers/Veinhole/Broken</texPath>
+      <drawSize>(4,4)</drawSize>
+    </graphicData>
+    <altitudeLayer>Floor</altitudeLayer>
+  </TiberiumRim.TRThingDef>
+</Defs>

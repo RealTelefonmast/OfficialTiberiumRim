@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Ported from TiberiumRim-1.3 /Defs/ThingDefs_Item/Resources_GDI.xml.
+       Textures (Items/Resource/...) are not in the current art tree yet;
+       they will warn until the item art is added. -->
+  <TiberiumRim.TRThingDef ParentName="ResourceBase_TR">
+    <defName>GDI_ReinforcedPlate</defName>
+    <label>Reinforced Plate</label>
+    <description>GDI's engineers have focused on resistance and endurance, this alloy is quite heavy...</description>
+    <graphicData>
+      <texPath>Map/Things/Items/Resources/GDI_ReinforcedPlate</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <techLevel>Industrial</techLevel>
+    <stackLimit>75</stackLimit>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <MarketValue>50</MarketValue>
+      <Mass>2</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+    <!-- 1.6 config rule: smeltable requires smelting products; none defined. -->
+    <smeltable>false</smeltable>
+    <intricate>true</intricate>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+    <requisites>
+      <tiberiumResearch>
+        <li>GDIExperimental1</li>
+      </tiberiumResearch>
+    </requisites>
+  </TiberiumRim.TRThingDef>
+  <TiberiumRim.TRThingDef ParentName="ResourceBase_TR">
+    <defName>GDI_SonicCore</defName>
+    <label>Sonic Energy Core</label>
+    <description>Sonic technology is extremly experimental and needs special measures to be handled. This component serves as a core part in most sonic weaponry.</description>
+    <graphicData>
+      <texPath>Map/Things/Items/Resources/GDI_SonicCore</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <stackLimit>25</stackLimit>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <MarketValue>1200</MarketValue>
+      <Mass>5</Mass>
+      <Flammability>1</Flammability>
+      <DeteriorationRate>0.5</DeteriorationRate>
+    </statBases>
+    <intricate>true</intricate>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>3</explosiveRadius>
+        <explosiveDamageType>TRSonic</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.1</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.1</startWickHitPointsPercent>
+        <wickTicks>
+          <min>5</min>
+          <max>5</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <requisites>
+      <tiberiumResearch>
+        <li>GDIExperimental3</li>
+      </tiberiumResearch>
+    </requisites>
+  </TiberiumRim.TRThingDef>
+</Defs>

@@ -400,7 +400,6 @@ FodyWeavers.xsd
 *.iml
 
 # AI assistants and agent-local metadata
-AGENTS.md
 AGENTS.override.md
 CLAUDE.md
 CLAUDE.local.md

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
 	<TeleCore.RW.Networks.NetworkDef>
@@ -9,12 +9,12 @@
 		<!--controllerDef>TR_TiberiumExtractor</controllerDef-->
 		<transmitterDef>ChemicalPipe</transmitterDef>
 		<transmitterGraphic>
-			<texPath>Things/Buildings/Network/Pipes/Pipe_Air</texPath>
+			<texPath>Map/Things/Buildings/Common/Network/ChemicalPipe/ChemicalPipe_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<color>(1,0.75,0)</color>
 		</transmitterGraphic>
 		<overlayGraphic>
-			<texPath>Things/Buildings/Network/Pipes/Pipe_Air_overlay</texPath>
+			<texPath>Map/Things/Buildings/Common/Network/ChemicalPipe/ChemicalPipe_Overlay</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>MetaOverlay</shaderType>
 			<color>(0, 255, 155)</color>
@@ -27,7 +27,7 @@
 		<description>This structure connects Chemical processing structures on the Chemical Network.</description>
 		<building>
 			<blueprintGraphicData>
-				<texPath>Things/Buildings/Network/Pipes/Pipe_Air_blueprint</texPath>
+				<texPath>Map/Things/Buildings/Common/Network/ChemicalPipe/ChemicalPipe_Blueprint</texPath>
 				<graphicClass>TeleCore.RW.Graphic_LinkedWithSame</graphicClass>
 			</blueprintGraphicData>
 		</building>

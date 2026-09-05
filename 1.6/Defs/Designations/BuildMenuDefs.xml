@@ -1,27 +1,122 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+
+  <TeleCore.BuildMenu.SubBuildMenuDef>
+    <defName>TiberiumMenu</defName>
+    <subMenus>
+      <li>Common</li>
+      <li>Forgotten</li>
+      <li>GDI</li>
+      <li>Nod</li>
+      <li>Scrin</li>
+      <li>Tiberium</li>
+    </subMenus>
+    <visWorker>TiberiumRim.BuildMenuVisibilityWorkerTR</visWorker>
+  </TeleCore.BuildMenu.SubBuildMenuDef>
+  <TeleCore.SubMenuDesignationCategoryDef>
+    <defName>TiberiumBuildings</defName>
+    <label>TiberiumRim</label>
+    <order>1</order>
+    <menuDef>TiberiumMenu</menuDef>
+  </TeleCore.SubMenuDesignationCategoryDef>
+  <!-- TiberiumMenuDesignator duplicated TiberiumBuildings and produced a
+       second identical Tiberium architect category; the old declaration is
+       preserved in the archived reference source. -->
+
   <TeleCore.BuildMenu.SubMenuGroupDef Abstract="True" Name="SubThingGroupBase">
-    <subCategories><li>Structure</li><li>Decoration</li><li>Processing</li><li>Defense</li><li>Research</li><li>Misc</li></subCategories>
+    <subCategories>
+      <li>Structure</li>
+      <li>Decoration</li>
+      <li>Processing</li>
+      <li>Defense</li>
+      <li>Research</li>
+      <li>Misc</li>
+    </subCategories>
   </TeleCore.BuildMenu.SubMenuGroupDef>
-  <TeleCore.BuildMenu.SubMenuGroupDef ParentName="SubThingGroupBase"><defName>Common</defName><label>Common</label><subCategories Inherit="True"><li>Pollution</li></subCategories><groupIconPath>UI/FactionIcons/Common</groupIconPath></TeleCore.BuildMenu.SubMenuGroupDef>
-  <TeleCore.BuildMenu.SubMenuGroupDef ParentName="SubThingGroupBase"><defName>Forgotten</defName><label>Forgotten</label><groupIconPath>UI/FactionIcons/Forgotten</groupIconPath></TeleCore.BuildMenu.SubMenuGroupDef>
-  <TeleCore.BuildMenu.SubMenuGroupDef ParentName="SubThingGroupBase"><defName>GDI</defName><label>GDI</label><groupIconPath>UI/FactionIcons/GDI</groupIconPath></TeleCore.BuildMenu.SubMenuGroupDef>
-  <TeleCore.BuildMenu.SubMenuGroupDef ParentName="SubThingGroupBase"><defName>Nod</defName><label>Nod</label><groupIconPath>UI/FactionIcons/Nod</groupIconPath></TeleCore.BuildMenu.SubMenuGroupDef>
-  <TeleCore.BuildMenu.SubMenuGroupDef ParentName="SubThingGroupBase"><defName>Scrin</defName><label>Scrin</label><groupIconPath>UI/FactionIcons/Scrin</groupIconPath></TeleCore.BuildMenu.SubMenuGroupDef>
   <TeleCore.BuildMenu.SubMenuGroupDef ParentName="SubThingGroupBase">
-    <defName>Tiberium</defName><label>Tiberium</label><groupIconPath>UI/Icons/RadiationOverlay</groupIconPath>
-    <subCategories Inherit="False"><li>Producers</li><li>Crystals</li><li>Plants</li><li>Misc</li><li>Visceral</li></subCategories>
+    <defName>Common</defName>
+    <label>Common</label>
+    <subCategories Inherit="True">
+      <li>Pollution</li>
+    </subCategories>
+    <groupIconPath>UI/Icons/Factions/Common</groupIconPath>
+  </TeleCore.BuildMenu.SubMenuGroupDef>
+  <TeleCore.BuildMenu.SubMenuGroupDef ParentName="SubThingGroupBase">
+    <defName>Forgotten</defName>
+    <label>Forgotten</label>
+    <groupIconPath>UI/Icons/Factions/Forgotten</groupIconPath>
+  </TeleCore.BuildMenu.SubMenuGroupDef>
+  <TeleCore.BuildMenu.SubMenuGroupDef ParentName="SubThingGroupBase">
+    <defName>GDI</defName>
+    <label>GDI</label>
+    <groupIconPath>UI/Icons/Factions/GDI</groupIconPath>
+  </TeleCore.BuildMenu.SubMenuGroupDef>
+  <TeleCore.BuildMenu.SubMenuGroupDef ParentName="SubThingGroupBase">
+    <defName>Nod</defName>
+    <label>Nod</label>
+    <groupIconPath>UI/Icons/Factions/Nod</groupIconPath>
+  </TeleCore.BuildMenu.SubMenuGroupDef>
+  <TeleCore.BuildMenu.SubMenuGroupDef ParentName="SubThingGroupBase">
+    <defName>Scrin</defName>
+    <label>Scrin</label>
+    <groupIconPath>UI/Icons/Factions/Scrin</groupIconPath>
+  </TeleCore.BuildMenu.SubMenuGroupDef>
+  <TeleCore.BuildMenu.SubMenuGroupDef ParentName="SubThingGroupBase">
+    <defName>Tiberium</defName>
+    <label>Tiberium</label>
+    <isDevGroup>true</isDevGroup>
+    <groupIconPath>UI/Icons/Hediffs/Radiation</groupIconPath>
+    <subCategories Inherit="False">
+      <li>Producers</li>
+      <li>Crystals</li>
+      <li>Plants</li>
+      <li>Misc</li>
+      <li>Visceral</li>
+    </subCategories>
   </TeleCore.BuildMenu.SubMenuGroupDef>
 
-  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef><defName>Structure</defName><label>Structure</label></TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
-  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef><defName>Decoration</defName><label>Decoration</label></TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
-  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef><defName>Processing</defName><label>Processing</label></TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
-  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef><defName>Pollution</defName><label>Pollution</label></TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
-  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef><defName>Defense</defName><label>Defense</label></TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
-  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef><defName>Research</defName><label>Research</label></TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
-  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef><defName>Misc</defName><label>Misc</label></TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
-  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef><defName>Producers</defName><label>Producers</label></TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
-  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef><defName>Crystals</defName><label>Crystals</label></TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
-  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef><defName>Plants</defName><label>Plants</label></TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
-  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef><defName>Visceral</defName><label>Visceral</label></TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+    <defName>Structure</defName>
+    <label>Structure</label>
+  </TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+    <defName>Decoration</defName>
+    <label>Decoration</label>
+  </TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+    <defName>Processing</defName>
+    <label>Processing</label>
+  </TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+    <defName>Pollution</defName>
+    <label>Pollution</label>
+  </TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+    <defName>Defense</defName>
+    <label>Defense</label>
+  </TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+    <defName>Research</defName>
+    <label>Research</label>
+  </TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+    <defName>Misc</defName>
+    <label>Misc</label>
+  </TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+    <defName>Producers</defName>
+    <label>Producers</label>
+  </TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+    <defName>Crystals</defName>
+    <label>Crystals</label>
+  </TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+    <defName>Plants</defName>
+    <label>Plants</label>
+  </TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+  <TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
+    <defName>Visceral</defName>
+    <label>Visceral</label>
+  </TeleCore.RW.UI.SpecialSubMenu.SubMenuCategoryDef>
 </Defs>

@@ -1,10 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
 	<!--
 	Legacy architect category retained for source traceability. Its
-	Designator_TRMenu consumes TRThingDefList, which currently contains zero
-	build entries. TiberiumBuildings/TiberiumMenu is the canonical active menu.
+	Designator_TRMenu consumed TRThingDefList, which contained zero build
+	entries. TiberiumBuildings/TiberiumMenu is the canonical active menu.
+	Removed 2026-09-05 together with TRThingDef.ConstructionOptionDiscovered
+	and TRThingDefList; the generic TeleCore.RW.BuildMenu (SubBuildMenuDef +
+	TeleCore.SubMenuExtension + Window_BuildMenu) supersedes it. Unported
+	TRMenu features for future reference: the locked-reason readout drawn with
+	TRContent.LockedBanner, and the public MarkForHighlight hook. The stub file
+	UI/Designators/Designator_TRMenu.cs can be deleted.
 	<DesignationCategoryDef>
 		<defName>Tiberium</defName>
 		<label>tiberium</label>
@@ -41,32 +47,32 @@
 
 	<TiberiumRim.FactionDesignationDef ParentName="FactionDesignationBase">
 		<defName>Common</defName>
-		<packPath>UI/Menu/Faction/Common</packPath>
+		<packPath>UI/Icons/Factions/Common</packPath>
 	</TiberiumRim.FactionDesignationDef>
 
 	<TiberiumRim.FactionDesignationDef ParentName="FactionDesignationBase">
 		<defName>Forgotten</defName>
-		<packPath>UI/Menu/Faction/Common</packPath>
+		<packPath>UI/Icons/Factions/Common</packPath>
 	</TiberiumRim.FactionDesignationDef>
 
 	<TiberiumRim.FactionDesignationDef ParentName="FactionDesignationBase">
 		<defName>GDI</defName>
-		<packPath>UI/Menu/Faction/GDI</packPath>
+		<packPath>UI/Icons/Factions/GDI</packPath>
 	</TiberiumRim.FactionDesignationDef>
 
 	<TiberiumRim.FactionDesignationDef ParentName="FactionDesignationBase">
 		<defName>Nod</defName>
-		<packPath>UI/Menu/Faction/Nod</packPath>
+		<packPath>UI/Icons/Factions/Nod</packPath>
 	</TiberiumRim.FactionDesignationDef>
 
 	<TiberiumRim.FactionDesignationDef ParentName="FactionDesignationBase">
 		<defName>Scrin</defName>
-		<packPath>UI/Menu/Faction/Scrin</packPath>
+		<packPath>UI/Icons/Factions/Scrin</packPath>
 	</TiberiumRim.FactionDesignationDef>  
 
 	<TiberiumRim.FactionDesignationDef>
 		<defName>Tiberium</defName>
-		<packPath>UI/Menu/Faction/Common</packPath>
+		<packPath>UI/Icons/Factions/Common</packPath>
 		<subCategories>
 			<li>Producers</li>
 			<li>Crystals</li>

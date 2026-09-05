@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RecipeDef>
+    <defName>MakeDronePackage_Common</defName>
+    <label>craft common drone package</label>
+  </RecipeDef>
+  <TiberiumRim.MechRecipeDef>
+    <defName>MakeHarvesterCommon</defName>
+    <label>craft common harvester</label>
+    <workCost>5000</workCost>
+  </TiberiumRim.MechRecipeDef>
+</Defs>

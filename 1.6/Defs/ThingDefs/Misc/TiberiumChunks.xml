@@ -59,7 +59,7 @@
 		  <MaxHitPoints>600</MaxHitPoints>
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Stones/Green/StoneGreen1</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Green/Crystal</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<flipExtraRotation>80</flipExtraRotation>
 		</graphicData>
@@ -87,7 +87,7 @@
 		  <MaxHitPoints>900</MaxHitPoints>
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Stones/Blue/StoneBlue1</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Green/Crystal</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<flipExtraRotation>80</flipExtraRotation>
 		</graphicData>
@@ -102,7 +102,7 @@
 		  <MaxHitPoints>1200</MaxHitPoints>
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Stones/Red/StoneRed1</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Green/Crystal</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<flipExtraRotation>80</flipExtraRotation>
 		</graphicData>
@@ -120,7 +120,7 @@
 		<comps Inherit="False">
 		</comps>
 		<graphicData>
-			<texPath>Tiberium/Rocks/VeinRock</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Green/Crystal</texPath>
 		</graphicData>
 	</TiberiumRim.TRThingDef>
 	

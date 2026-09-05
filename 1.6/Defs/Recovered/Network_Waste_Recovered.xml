@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Defs>
-<TeleCore.RW.Networks.NetworkDef><defName>WasteNetwork</defName><label>Waste Network</label><labelShort>Waste</labelShort><containerLabel>Waste Storage</containerLabel><controllerDef>TR_TiberiumNetworkController</controllerDef><transmitterDef>TiberiumPipe</transmitterDef><transmitterGraphic><texPath>Things/Buildings/Network/Pipe_Tib</texPath><graphicClass>Graphic_Single</graphicClass></transmitterGraphic><overlayGraphic><texPath>Things/Buildings/Network/Pipe_Tib_SelOverlay</texPath><graphicClass>Graphic_Single</graphicClass><shaderType>MetaOverlay</shaderType><color>(155, 255, 0)</color></overlayGraphic></TeleCore.RW.Networks.NetworkDef>
-</Defs>
-
-
-

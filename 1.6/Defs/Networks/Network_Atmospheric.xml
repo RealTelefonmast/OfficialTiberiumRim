@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TeleCore.RW.Networks.NetworkDef>
+    <defName>AtmosphericNetwork</defName>
+    <label>atmospheric network</label>
+    <labelShort>Air</labelShort>
+  </TeleCore.RW.Networks.NetworkDef>
+</Defs>

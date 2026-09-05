@@ -14,7 +14,7 @@
 		<everCurableByItem>false</everCurableByItem>
 		<comps>
 			<li Class="TeleCore.RW.HediffCompProperties_Icon">
-				<iconPath>UI/Icons/Tiberium/Tiberium_Base</iconPath>
+				<iconPath>UI/Icons/Hediffs/Crystallizing</iconPath>
 				<color>(255,155,65)</color>
 			</li>
 		</comps>

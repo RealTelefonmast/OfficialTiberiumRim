@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Minimal Nod research project stubs. The ported Nod structures gate their
+       requisites on these TResearchDefs; the full Nod research chains can be
+       authored here later without touching the building defs. -->
+
+  <TeleCore.RW.Research.Defs.TResearchDef>
+    <defName>NodExperimental1</defName>
+    <label>Nod Experimental Engineering I</label>
+    <researchType>tech research</researchType>
+    <description>Stub for the first tier of Nod experimental engineering.</description>
+  </TeleCore.RW.Research.Defs.TResearchDef>
+
+  <TeleCore.RW.Research.Defs.TResearchDef>
+    <defName>NodExperimental2</defName>
+    <label>Nod Experimental Engineering II</label>
+    <researchType>tech research</researchType>
+    <description>Stub for the second tier of Nod experimental engineering.</description>
+  </TeleCore.RW.Research.Defs.TResearchDef>
+
+  <TeleCore.RW.Research.Defs.TResearchDef>
+    <defName>NodExperimental3</defName>
+    <label>Nod Experimental Engineering III</label>
+    <researchType>tech research</researchType>
+    <description>Stub for the third tier of Nod experimental engineering.</description>
+  </TeleCore.RW.Research.Defs.TResearchDef>
+
+</Defs>

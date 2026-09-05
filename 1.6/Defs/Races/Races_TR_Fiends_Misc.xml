@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
 	<ThingDef ParentName="VisceralPawnBase">
@@ -76,27 +76,27 @@
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawns/TiberiumCreatures/Creatures/TibScarab/TibScarab</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Fiends/TibScarab/TibScarab</texPath>
 					<drawSize>0.75</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Megascarab/Dessicated_Megascarab</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>0.75</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawns/TiberiumCreatures/Creatures/TibScarab/TibScarab</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Fiends/TibScarab/TibScarab</texPath>
 					<drawSize>1</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Megascarab/Dessicated_Megascarab</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>1</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawns/TiberiumCreatures/Creatures/TibScarab/TibScarab</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Fiends/TibScarab/TibScarab</texPath>
 					<drawSize>1.5</drawSize>
 					<shadowData>
 						<volume>(0.2, 0.3, 0.2)</volume>
@@ -104,7 +104,7 @@
 					</shadowData>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Megascarab/Dessicated_Megascarab</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>1.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
@@ -211,31 +211,31 @@
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
-				<texPath>Things/Pawns/TiberiumCreatures/Creatures/Crawler/Crawler</texPath>
+				<texPath>Map/Things/Pawns/Mutants/Fiends/Crawler/Crawler</texPath>
 				<drawSize>1</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-				<texPath>Things/Pawn/Animal/Cobra/Dessicated_Cobra</texPath>
+				<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 				<drawSize>1</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
-				<texPath>Things/Pawns/TiberiumCreatures/Creatures/Crawler/Crawler</texPath>
+				<texPath>Map/Things/Pawns/Mutants/Fiends/Crawler/Crawler</texPath>
 				<drawSize>1.5</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-				<texPath>Things/Pawn/Animal/Cobra/Dessicated_Cobra</texPath>
+				<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 				<drawSize>1.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
-				<texPath>Things/Pawns/TiberiumCreatures/Creatures/Crawler/Crawler</texPath>
+				<texPath>Map/Things/Pawns/Mutants/Fiends/Crawler/Crawler</texPath>
 				<drawSize>2</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-				<texPath>Things/Pawn/Animal/Cobra/Dessicated_Cobra</texPath>
+				<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 				<drawSize>2</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
@@ -347,29 +347,29 @@
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawn/Animal/Boomrat/Boomrat</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>0.75</drawSize>
 					<shaderType>CutoutComplex</shaderType>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Boomrat/Dessicated_Boomrat</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>0.75</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawn/Animal/Boomrat/Boomrat</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>1.0</drawSize>
 					<shaderType>CutoutComplex</shaderType>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Boomrat/Dessicated_Boomrat</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>1.0</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawn/Animal/Boomrat/Boomrat</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>1.25</drawSize>
 					<shaderType>CutoutComplex</shaderType>
 					<shadowData>
@@ -378,7 +378,7 @@
 					</shadowData>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Boomrat/Dessicated_Boomrat</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>1.25</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>

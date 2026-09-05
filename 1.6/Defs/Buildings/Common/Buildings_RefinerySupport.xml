@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef>
+    <defName>RefineryCell</defName>
+    <label>refinery cell</label>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+  </ThingDef>
+</Defs>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	<!-- Template
 	<TiberiumRim.TiberiumCrystalDef ParentName="TiberiumCrystalBase">
@@ -10,7 +10,7 @@
 			<Beauty>50</Beauty>	
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<pathCost></pathCost>
@@ -64,17 +64,12 @@
 		<defName>TiberiumGreen</defName>
 		<label>green tiberium crystal</label>
 		<description>A glowy green crystal. Looks strangely appealing.</description>
-		<discovery>
-			<discoveryDef>TiberiumCrystalLattice</discoveryDef>
-			<unknownLabel>strange green crystal</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		</discovery>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>
 			<Beauty>50</Beauty>	
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Crystals/Green/Crystal</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Green/Crystal</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<pathCost>75</pathCost>
@@ -119,7 +114,7 @@
 			<Beauty>28</Beauty>	
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Crystals/Green/Pod</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Blue/Pod</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<shaderParameters>
 				<_TeleFakeParamRandChance>0.41</_TeleFakeParamRandChance>
@@ -157,7 +152,7 @@
 			<Beauty>10</Beauty>	
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Crystals/Green/Desert</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Green/Desert</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<pathCost>45</pathCost>
@@ -194,7 +189,7 @@
 			<Beauty>-20</Beauty>	
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Flora/Moss/Green</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Green/Moss</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<altitudeLayer>FloorEmplacement</altitudeLayer>
@@ -229,17 +224,12 @@
 		<defName>TiberiumBlue</defName>
 		<label>blue tiberium</label>
 		<description>A glowy blue crystal. Beautiful to the eye but of unknown properties.</description>
-		<discovery>
-			<discoveryDef>TiberiumCrystalLattice</discoveryDef>
-			<unknownLabel>strange blue crystal</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		</discovery>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>
 			<Beauty>60</Beauty>	
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Crystals/Blue/Crystal</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Blue/Crystal</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<pathCost>75</pathCost>
@@ -291,7 +281,7 @@
 			<Beauty>22</Beauty>	
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Crystals/Blue/Pod</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Blue/Pod</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<shaderParameters>
 				<_TeleFakeParamRandChance>0.41</_TeleFakeParamRandChance>
@@ -334,7 +324,7 @@
 			<Beauty>10</Beauty>	
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Crystals/Blue/Desert</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Blue/Desert</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<pathCost>45</pathCost>
@@ -377,7 +367,7 @@
 			<Beauty>-20</Beauty>	
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Flora/Moss/Blue</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Blue/Moss</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<altitudeLayer>FloorEmplacement</altitudeLayer>
@@ -412,17 +402,12 @@
 		<defName>TiberiumRed</defName>
 		<label>red tiberium</label>
 		<description>A glowy red crystal. Beautiful to the eye but of unknown properties. It seems strange.</description>
-		<discovery>
-			<discoveryDef>TiberiumCrystalLattice</discoveryDef>
-			<unknownLabel>strange red crystal</unknownLabel>
-			<unknownDescription>We have not yet figured out what this is.</unknownDescription>
-		</discovery>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Beauty>75</Beauty>	
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Crystals/Red/Crystal</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Red/Crystal</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<pathCost>75</pathCost>
@@ -474,7 +459,7 @@
 			<Beauty>10</Beauty>	
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Crystals/Red/Desert</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Red/Desert</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<pathCost>45</pathCost>
@@ -518,7 +503,7 @@
 			<Beauty>30</Beauty>	
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Crystals/Glaciers</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Glaciers</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<pathCost>200</pathCost>
@@ -554,7 +539,7 @@
 			<Beauty>65</Beauty>	
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Crystals/Aboreus</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Aboreus</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<pathCost>80</pathCost>
@@ -598,7 +583,7 @@
 			<Beauty>-75</Beauty>	
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Producers/Veinhole/Veins</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Veins</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<drawSize>(0.6,0.6)</drawSize>
 		</graphicData>
@@ -636,7 +621,7 @@
 			<Beauty>75</Beauty>
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Pot/Green</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Green/Crystal/TiberiumGreen_01</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<altitudeLayer>Item</altitudeLayer>
@@ -670,7 +655,7 @@
 			<Beauty>75</Beauty>
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Pot/Blue</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Blue/Crystal/TiberiumBlue_01</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<altitudeLayer>Item</altitudeLayer>
@@ -709,7 +694,7 @@
 			<Beauty>75</Beauty>
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Pot/Red</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Red/Crystal/TiberiumRed_01</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<altitudeLayer>Item</altitudeLayer>

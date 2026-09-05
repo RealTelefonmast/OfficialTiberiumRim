@@ -16,8 +16,8 @@
 		<leaderTitle>general</leaderTitle>
 		<leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
 		<fixedLeaderKinds><li>GDI_General</li></fixedLeaderKinds>
-		<factionIconPath>UI/FactionIcons/GDI</factionIconPath>
-		<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+		<factionIconPath>UI/Icons/Factions/GDI</factionIconPath>
+		<settlementTexturePath>World/Satellites/ASATIon/ASat</settlementTexturePath>
 		<techLevel>Spacer</techLevel>
 		<factionNameMaker>NamerFactionGDI</factionNameMaker>
 		<settlementNameMaker>NamerSettlementGDI</settlementNameMaker>

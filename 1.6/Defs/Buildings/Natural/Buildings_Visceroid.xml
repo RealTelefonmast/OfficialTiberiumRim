@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TiberiumRim.TRThingDef Abstract="True" Name="BuildingBaseVisceral_TR" ParentName="BuildingNaturalBase_TR">
+    <modExtensions Inherit="False">
+      <li Class="TeleCore.BuildMenu.BuildMenuExtension">
+        <groupDef>Tiberium</groupDef>
+        <category>Visceral</category>
+      </li>
+    </modExtensions>
+  </TiberiumRim.TRThingDef>
+  <!-- Visceral Stuff -->
+  <TiberiumRim.TRThingDef ParentName="BuildingBaseVisceral_TR">
+    <defName>VisceralPod</defName>
+    <label>visceral pod</label>
+    <thingClass>TiberiumRim.VisceralPod</thingClass>
+    <tickerType>Normal</tickerType>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Map/Things/Tiberium/VisceralPod/VisceralPod_1</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <inspectorTabs>
+      <li>TeleCore.RW.ITab_ContainedPawn_Health</li>
+    </inspectorTabs>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Beauty>-130</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <comps>
+      <li Class="TeleCore.RW.CompProperties_FX">
+        <fxLayers>
+          <li>
+            <categoryTag>Visceral</categoryTag>
+            <graphicData>
+              <texPath>Map/Things/Tiberium/VisceralPod/VisceralPod_Overlay_1</texPath>
+              <graphicClass>Graphic_Single</graphicClass>
+              <shaderType>Transparent</shaderType>
+              <drawSize>(3,3)</drawSize>
+            </graphicData>
+          </li>
+          <li>
+            <categoryTag>Visceral</categoryTag>
+            <graphicData>
+              <texPath>FX/Particles/Particle</texPath>
+              <graphicClass>Graphic_Single</graphicClass>
+              <shaderType>MoteGlow</shaderType>
+              <drawSize>(3,3)</drawSize>
+            </graphicData>
+            <fxMode>Dynamic</fxMode>
+            <fade>
+              <opacityRange>0.4~0.9</opacityRange>
+              <opacityDuration>90</opacityDuration>
+            </fade>
+          </li>
+        </fxLayers>
+      </li>
+    </comps>
+    <altitudeLayer>Building</altitudeLayer>
+    <rotatable>false</rotatable>
+    <size>(1,1)</size>
+    <blockPlants>true</blockPlants>
+  </TiberiumRim.TRThingDef>
+  <TiberiumRim.TRThingDef ParentName="BuildingBaseVisceral_TR">
+    <defName>VisceralHive</defName>
+    <label>visceral hive</label>
+    <graphicData>
+      <texPath>Map/Things/Tiberium/VisceralPod/VisceralPod_2</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <color>(1,0.75,1)</color>
+    </graphicData>
+  </TiberiumRim.TRThingDef>
+</Defs>
+

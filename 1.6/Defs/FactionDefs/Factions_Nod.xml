@@ -18,8 +18,8 @@
 		<fixedLeaderKinds>
 			<li>Nod_Bishop</li>
 		</fixedLeaderKinds>
-		<factionIconPath>UI/FactionIcons/Nod</factionIconPath>
-		<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+		<factionIconPath>UI/Icons/Factions/Nod</factionIconPath>
+		<settlementTexturePath>World/Satellites/ASATIon/ASat</settlementTexturePath>
 		<techLevel>Spacer</techLevel>
 		<factionNameMaker>NamerFactionNod</factionNameMaker>
 		<settlementNameMaker>NamerSettlementNod</settlementNameMaker>

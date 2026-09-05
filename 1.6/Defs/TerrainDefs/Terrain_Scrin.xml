@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TerrainDef>
+    <defName>ScrinFloor</defName>
+    <label>scrin landed site</label>
+    <renderPrecedence>240</renderPrecedence>
+    <description>---</description>
+    <texturePath>Map/Terrain/Tiberium/TiberiumSoilGreen</texturePath>
+    <edgeType>FadeRough</edgeType>
+    <pathCost>2</pathCost>
+    <statBases>
+      <Beauty>-5</Beauty>
+      <Cleanliness>-5</Cleanliness>
+    </statBases>
+    <scatterType>Rocky</scatterType>
+    <fertility>0</fertility>
+    <takeFootprints>False</takeFootprints>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+  </TerrainDef>
+</Defs>

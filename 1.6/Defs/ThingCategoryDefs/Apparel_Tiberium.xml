@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingCategoryDef>
+    <defName>TRApparelsETC</defName>
+    <label>Tiberium apparel</label>
+    <parent>Apparel</parent>
+  </ThingCategoryDef>
+  <ThingCategoryDef>
+    <defName>TRHelmetsETC</defName>
+    <label>Tiberium helmets</label>
+    <parent>Headgear</parent>
+  </ThingCategoryDef>
+</Defs>

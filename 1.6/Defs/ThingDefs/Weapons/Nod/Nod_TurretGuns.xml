@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Ported from TiberiumRim-1.3 /Defs/Weapons/Nod_TurretGuns.xml.
+       Verb_Beam beamProps adapted to the current BeamProperties/ExplosionProperties
+       fields; missing TR sounds/effecters replaced with vanilla stand-ins
+       (Obelisk_Chargup/Obelisk_Shot, Shot_Nod_Shredder, Shot_Nod_Flame,
+       StrongBeamHit, ObeliskOriginGlow, AnyBeam_End remain unported). -->
+
+  <ThingDef Abstract="True" Name="NodTurretGunBase" ParentName="BaseWeapon">
+    <soundInteract>Interact_Rifle</soundInteract>
+    <destroyOnDrop>true</destroyOnDrop>
+    <tradeability>None</tradeability>
+    <useHitPoints>false</useHitPoints>
+    <statBases>
+      <AccuracyTouch>1</AccuracyTouch>
+      <AccuracyShort>1</AccuracyShort>
+      <AccuracyMedium>1</AccuracyMedium>
+      <AccuracyLong>1</AccuracyLong>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>50</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <weaponTags Inherit="false">
+      <li>TurretGun</li>
+    </weaponTags>
+  </ThingDef>
+
+  <ThingDef ParentName="NodTurretGunBase">
+    <defName>Gun_NodObelisk</defName>
+    <label>obelisk gun</label>
+    <graphicData>
+      <texPath>Map/Things/Buildings/Nod/Defense/Obelisk/Nod_Obelisk_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>1</AccuracyTouch>
+      <AccuracyShort>1</AccuracyShort>
+      <AccuracyMedium>1</AccuracyMedium>
+      <AccuracyLong>1</AccuracyLong>
+      <RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+      <Mass>50</Mass>
+    </statBases>
+    <verbs>
+      <li Class="TeleCore.RW.VerbProperties_Extended">
+        <verbClass>TeleCore.RW.Verb_Beam</verbClass>
+        <beamProps>
+          <damageDef>TRLaser</damageDef>
+          <isStatic>false</isStatic>
+          <damageBaseOverride>100</damageBaseOverride>
+          <stoppingPowerOverride>1</stoppingPowerOverride>
+          <armorPenetrationOverride>1</armorPenetrationOverride>
+          <visWidth>0.9~1</visWidth>
+          <impactExplosion>
+            <damageOverride>50</damageOverride>
+            <damageDef>TRObeliskBlast</damageDef>
+            <explosionRadius>0.25</explosionRadius>
+            <fireChance>1</fireChance>
+          </impactExplosion>
+        </beamProps>
+        <shootHeightOffset>4.5</shootHeightOffset>
+        <minHitHeight>1</minHitHeight>
+        <originOffsetPerShot>
+          <li>(0,0,0.5)</li>
+        </originOffsetPerShot>
+        <hasStandardCommand>true</hasStandardCommand>
+        <requireLineOfSight>false</requireLineOfSight>
+        <warmupTime>3.5</warmupTime>
+        <minRange>2.9</minRange>
+        <range>44.9</range>
+        <soundCast>Shot_ChargeBlaster</soundCast>
+        <beamFullWidthRange>0</beamFullWidthRange>
+        <beamWidth>12</beamWidth>
+        <burstShotCount>8</burstShotCount>
+        <ticksBetweenBurstShots>16</ticksBetweenBurstShots>
+        <beamGroundFleckDef>Fleck_BeamScorchMark</beamGroundFleckDef>
+        <beamLineFleckDef>Fleck_BeamSparking</beamLineFleckDef>
+        <beamFleckChancePerTick>0.32</beamFleckChancePerTick>
+        <beamMaxDeviation>0.25</beamMaxDeviation>
+        <beamCurvature>0.6</beamCurvature>
+        <beamMoteDef>Mote_ObeliskBeam</beamMoteDef>
+        <beamChanceToStartFire>0.85</beamChanceToStartFire>
+        <beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+        <beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+        <beamStartOffset>0.15</beamStartOffset>
+        <beamLineFleckChanceCurve>
+          <points>
+            <li>(0, 0)</li>
+            <li>(0.65, 0.4)</li>
+            <li>(1, 0.75)</li>
+          </points>
+        </beamLineFleckChanceCurve>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="NodTurretGunBase">
+    <defName>Gun_ShredderTurret</defName>
+    <label>shredder turret gun</label>
+    <graphicData>
+      <texPath>Map/Things/Buildings/Nod/Defense/HubTurrets/Shredder/Shredder_Turret</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>1</AccuracyTouch>
+      <AccuracyShort>1</AccuracyShort>
+      <AccuracyMedium>1</AccuracyMedium>
+      <AccuracyLong>1</AccuracyLong>
+      <RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+      <Mass>50</Mass>
+    </statBases>
+    <verbs>
+      <li Class="TeleCore.RW.VerbProperties_Extended">
+        <verbClass>TeleCore.RW.Verb_ProjectileExtended</verbClass>
+        <originOffsetPerShot>
+          <li>(0.25,0,0.85)</li>
+          <li>(-0.25,0,0.85)</li>
+        </originOffsetPerShot>
+        <shotStartOffset>(0,0,0.75)</shotStartOffset>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Shredder</defaultProjectile>
+        <warmupTime>1.5</warmupTime>
+        <range>17.9</range>
+        <burstShotCount>2</burstShotCount>
+        <ticksBetweenBurstShots>15</ticksBetweenBurstShots>
+        <soundCast>Shot_HeavySMG</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <consumeFuelPerShot>0.5</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Shredder</defName>
+    <label>shredder round</label>
+    <graphicData>
+      <texPath>Map/Things/Projectiles/Nod/Projectile_Base_Nod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <stoppingPower>0.5</stoppingPower>
+      <armorPenetrationBase>0.15</armorPenetrationBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="NodTurretGunBase">
+    <defName>Gun_FlameTurret</defName>
+    <label>flame turret gun</label>
+    <graphicData>
+      <texPath>Map/Things/Buildings/Nod/Defense/HubTurrets/Flame/FlameTurret</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>1</AccuracyTouch>
+      <AccuracyShort>1</AccuracyShort>
+      <AccuracyMedium>1</AccuracyMedium>
+      <AccuracyLong>1</AccuracyLong>
+      <RangedWeapon_Cooldown>0</RangedWeapon_Cooldown>
+      <Mass>50</Mass>
+    </statBases>
+    <verbs>
+      <li Class="TeleCore.RW.VerbProperties_Extended">
+        <verbClass>TeleCore.RW.Verb_ProjectileExtended</verbClass>
+        <originOffsetPerShot>
+          <li>(0,0,1.15)</li>
+        </originOffsetPerShot>
+        <shotIntervalTicks>5</shotIntervalTicks>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_FlamethrowerTower</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <range>17.9</range>
+        <burstShotCount>1</burstShotCount>
+        <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>0</muzzleFlashScale>
+        <consumeFuelPerShot>0.2</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_FlamethrowerTower</defName>
+    <label>tower flame jet</label>
+    <graphicData>
+      <texPath>FX/Flame2</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <projectile>
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>8</damageAmountBase>
+      <speed>12</speed>
+      <stoppingPower>0.5</stoppingPower>
+      <armorPenetrationBase>0.1</armorPenetrationBase>
+    </projectile>
+  </ThingDef>
+
+</Defs>

@@ -9,10 +9,10 @@
 		<description>A cheap Brotherhood militia mask with a simple respirator, tinted lenses and a light armored face shell. It is not a sealed combat helmet, but it keeps dust and battlefield toxins out long enough for Nod's irregulars to fight in contaminated ruins and crystal fields.</description>
 		<techLevel>Industrial</techLevel>
 		<graphicData>
-			<texPath>Things/Apparel/Nod/Militia/MilitiaSuitMask</texPath>
+			<texPath>Map/Things/Items/Apparel/Nod/Militia/MilitiaSuitMask</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<uiIconPath>Things/Apparel/Nod/Militia/MilitiaSuitMask</uiIconPath>
+		<uiIconPath>Map/Things/Items/Apparel/Nod/Militia/MilitiaSuitMask</uiIconPath>
 		<statBases>
 			<WorkToMake>4500</WorkToMake>
 			<MaxHitPoints>100</MaxHitPoints>
@@ -52,7 +52,7 @@
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
-			<wornGraphicPath>Things/Apparel/Nod/Militia/MilitiaSuitMask</wornGraphicPath>
+			<wornGraphicPath>Map/Things/Items/Apparel/Nod/Militia/MilitiaSuitMask</wornGraphicPath>
 			<layers>
 				<li>Overhead</li>
 			</layers>
@@ -73,7 +73,7 @@
 		<description>A mass-produced Nod field robe reinforced with hidden plates and rugged synthetic cloth. It gives broad coverage to lightly trained cell fighters while staying cheap enough to issue in numbers.</description>
 		<techLevel>Industrial</techLevel>
 		<graphicData>
-			<texPath>Things/Apparel/Nod/Militia/MilitiaSuit</texPath>
+			<texPath>Map/Things/Items/Apparel/Nod/Militia/MilitiaSuit</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
@@ -119,7 +119,7 @@
 				<li>Arms</li>
 				<li>Legs</li>
 			</bodyPartGroups>
-			<wornGraphicPath>Things/Apparel/Nod/Militia/MilitiaSuit</wornGraphicPath>
+			<wornGraphicPath>Map/Things/Items/Apparel/Nod/Militia/MilitiaSuit</wornGraphicPath>
 			<layers>
 				<li>Middle</li>
 				<li>Shell</li>
@@ -143,10 +143,10 @@
 		<description>A standard Brotherhood infantry helmet with a sealed filter module, impact liner and composite armor shell. It is light and aggressive, made for fast Nod strike teams fighting around chemical weapons, smoke and Tiberium dust.</description>
 		<techLevel>Spacer</techLevel>
 		<graphicData>
-			<texPath>Things/Apparel/Nod/Soldier/NodHelmet</texPath>
+			<texPath>Map/Things/Items/Apparel/Nod/Soldier/NodHelmet</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<uiIconPath>Things/Apparel/Nod/Soldier/NodHelmet</uiIconPath>
+		<uiIconPath>Map/Things/Items/Apparel/Nod/Soldier/NodHelmet</uiIconPath>
 		<statBases>
 			<WorkToMake>15750</WorkToMake>
 			<MaxHitPoints>120</MaxHitPoints>
@@ -187,7 +187,7 @@
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
-			<wornGraphicPath>Things/Apparel/Nod/Soldier/NodHelmet</wornGraphicPath>
+			<wornGraphicPath>Map/Things/Items/Apparel/Nod/Soldier/NodHelmet</wornGraphicPath>
 			<layers>
 				<li>Overhead</li>
 			</layers>
@@ -209,7 +209,7 @@
 		<description>A light powered combat suit issued to professional Nod infantry. Its composite plates and sealed underlayer provide recon-armor-grade protection while preserving the mobility needed for raids, ambushes and withdrawals before GDI can answer with heavier firepower.</description>
 		<techLevel>Spacer</techLevel>
 		<graphicData>
-			<texPath>Things/Apparel/Nod/Soldier/NodSoldierSuit</texPath>
+			<texPath>Map/Things/Items/Apparel/Nod/Soldier/NodSoldierSuit</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
@@ -257,7 +257,7 @@
 				<li>Arms</li>
 				<li>Legs</li>
 			</bodyPartGroups>
-			<wornGraphicPath>Things/Apparel/Nod/Soldier/NodSoldierSuit</wornGraphicPath>
+			<wornGraphicPath>Map/Things/Items/Apparel/Nod/Soldier/NodSoldierSuit</wornGraphicPath>
 			<layers>
 				<li>Middle</li>
 				<li>Shell</li>
@@ -284,10 +284,10 @@
 		<description>A command mask worn by Brotherhood officers. It is as much an icon as protection: polished black armor, red optics and a respirator that lets the officer keep issuing orders while the air fills with dust, smoke and fear.</description>
 		<techLevel>Industrial</techLevel>
 		<graphicData>
-			<texPath>Things/Apparel/Nod/Officer/ClassicSuitMask</texPath>
+			<texPath>Map/Things/Items/Apparel/Nod/Officer/ClassicSuitMask</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<uiIconPath>Things/Apparel/Nod/Officer/ClassicSuitMask</uiIconPath>
+		<uiIconPath>Map/Things/Items/Apparel/Nod/Officer/ClassicSuitMask</uiIconPath>
 		<statBases>
 			<WorkToMake>8000</WorkToMake>
 			<MaxHitPoints>120</MaxHitPoints>
@@ -330,7 +330,7 @@
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
-			<wornGraphicPath>Things/Apparel/Nod/Officer/ClassicSuitMask</wornGraphicPath>
+			<wornGraphicPath>Map/Things/Items/Apparel/Nod/Officer/ClassicSuitMask</wornGraphicPath>
 			<layers>
 				<li>Overhead</li>
 			</layers>
@@ -352,7 +352,7 @@
 		<description>A black Brotherhood officer uniform with concealed armor plates and a severe ceremonial cut. It is lighter than true combat armor, but it gives Nod commanders enough protection to stand near the front and be seen.</description>
 		<techLevel>Industrial</techLevel>
 		<graphicData>
-			<texPath>Things/Apparel/Nod/Officer/ClassicSuit</texPath>
+			<texPath>Map/Things/Items/Apparel/Nod/Officer/ClassicSuit</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
@@ -399,7 +399,7 @@
 				<li>Shoulders</li>
 				<li>Arms</li>
 			</bodyPartGroups>
-			<wornGraphicPath>Things/Apparel/Nod/Officer/ClassicSuit</wornGraphicPath>
+			<wornGraphicPath>Map/Things/Items/Apparel/Nod/Officer/ClassicSuit</wornGraphicPath>
 			<layers>
 				<li>Shell</li>
 			</layers>
@@ -423,10 +423,10 @@
 		<description>A sealed assault helmet worn by the Black Hand, Nod's feared elite. It is built for flame weapons, smoke-filled interiors and ritual shock assaults, with a heavy mask that makes the wearer look less like a soldier and more like a sentence.</description>
 		<techLevel>Spacer</techLevel>
 		<graphicData>
-			<texPath>Things/Apparel/Nod/Blackhand/BHSuitHelmet</texPath>
+			<texPath>Map/Things/Items/Apparel/Nod/BlackHand/BHSuitHelmet</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<uiIconPath>Things/Apparel/Nod/Blackhand/BHSuitHelmet</uiIconPath>
+		<uiIconPath>Map/Things/Items/Apparel/Nod/BlackHand/BHSuitHelmet</uiIconPath>
 		<statBases>
 			<WorkToMake>21000</WorkToMake>
 			<MaxHitPoints>150</MaxHitPoints>
@@ -473,7 +473,7 @@
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
-			<wornGraphicPath>Things/Apparel/Nod/Blackhand/BHSuitHelmet</wornGraphicPath>
+			<wornGraphicPath>Map/Things/Items/Apparel/Nod/BlackHand/BHSuitHelmet</wornGraphicPath>
 			<layers>
 				<li>Overhead</li>
 			</layers>
@@ -493,9 +493,9 @@
 	<ThingStyleDef>
 		<defName>Apparel_NodBlackHandHelmet2</defName>
 		<overrideLabel>Nod Confessor helmet</overrideLabel>
-		<wornGraphicPath>Things/Apparel/Nod/Blackhand/BHSuitHelmet2</wornGraphicPath>
+		<wornGraphicPath>Map/Things/Items/Apparel/Nod/BlackHand/BHSuitHelmet2</wornGraphicPath>
 		<graphicData>
-			<texPath>Things/Apparel/Nod/Blackhand/BHSuitHelmet2</texPath>
+			<texPath>Map/Things/Items/Apparel/Nod/BlackHand/BHSuitHelmet2</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
 		</graphicData>
@@ -507,7 +507,7 @@
 		<description>Heavy powered armor for Black Hand confessors and flame troops. Its thermal shielding, thick composite plates and sealed body glove let the wearer advance through burning streets, chemical haze and return fire while preaching Kane's will at weapon range.</description>
 		<techLevel>Spacer</techLevel>
 		<graphicData>
-			<texPath>Things/Apparel/Nod/Blackhand/BHSuit</texPath>
+			<texPath>Map/Things/Items/Apparel/Nod/BlackHand/BHSuit</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
@@ -578,7 +578,7 @@
 				<li>Arms</li>
 				<li>Legs</li>
 			</bodyPartGroups>
-			<wornGraphicPath>Things/Apparel/Nod/Blackhand/BHSuit</wornGraphicPath>
+			<wornGraphicPath>Map/Things/Items/Apparel/Nod/BlackHand/BHSuit</wornGraphicPath>
 			<layers>
 				<li>Middle</li>
 				<li>Shell</li>

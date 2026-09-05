@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
 	<!--=============== BASES ==============-->
@@ -24,7 +24,7 @@
 		<solidTime>0.5</solidTime>
 		<growthRate>2</growthRate>
 		<graphicData>
-			<texPath>Things/Mote/Black</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlowDistortBackground</shaderType>
 			<shaderParameters>
 				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>

@@ -38,8 +38,9 @@
   </HediffDef>
   <HediffDef>
     <defName>TiberiumMutationWorker</defName>
-    <label>worker</label>
-    <description>Recovered worker hediff.</description>
+    <label>tiberium mutation</label>
+    <description>Internal worker hediff that slowly mutates a tiberium-crystallized body part.</description>
+    <hediffClass>TiberiumRim.Hediff_MutationWorker</hediffClass>
   </HediffDef>
   <PawnKindDef>
     <defName>Chitzkoi</defName>

@@ -6,7 +6,7 @@
 		<defName>Mote_Beam</defName>
 		<thingClass>TiberiumRim.Mote_Beam</thingClass>
 		<graphicData>
-			<texPath>Things/Mote/PowerBeam</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -17,11 +17,30 @@
 			<fadeOutTime>0.85</fadeOutTime>
 		</mote>
 	</ThingDef>
+
+	<!-- Beam mote for the Obelisk of Light; must use TeleCore.RW.MoteBeam,
+	     which is what Verb_Beam/TMoteMaker.MakeBeamEffect cast to. -->
+	<ThingDef ParentName="MoteBase_TR">
+		<defName>Mote_ObeliskBeam</defName>
+		<thingClass>TeleCore.RW.MoteBeam</thingClass>
+		<graphicData>
+			<texPath>FX/IonCannonBeam</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawOffscreen>true</drawOffscreen>
+		<mote>
+			<fadeInTime>0.25</fadeInTime>
+			<solidTime>0.25</solidTime>
+			<fadeOutTime>0.85</fadeOutTime>
+		</mote>
+	</ThingDef>
+
 	
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>ObeliskGlow</defName>
 		<graphicData>
-			<texPath>VisualFX/Fog/ObeliskGlow</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -37,7 +56,7 @@
 		<defName>Mote_Arc</defName>
 		<thingClass>TiberiumRim.TRMote</thingClass>
 		<graphicData>
-			<texPath>Things/Mote/Black</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -53,7 +72,7 @@
 			<growthRate>2</growthRate>
 		</mote>
 		<graphicData>
-			<texPath>Things/Mote/Black</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlowDistortBackground</shaderType>
 			<shaderParameters>
 				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
@@ -67,7 +86,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>SonicEmitterWave</defName>
 		<graphicData>
-			<texPath>Things/Mote/PowerBeam</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -85,7 +104,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_BlastSound</defName>
 		<graphicData>
-			<texPath>FX/Projectiles/SoundMote</texPath> 
+			<texPath>FX/Beams/Beam_EndGlow</texPath> 
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -101,7 +120,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_BlastWave</defName>
 		<graphicData>
-			<texPath>FX/Projectiles/SoundMote</texPath> 
+			<texPath>FX/Beams/Beam_EndGlow</texPath> 
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -114,10 +133,15 @@
 		<drawOffscreen>true</drawOffscreen>
 	</ThingDef>
 	
+	<!--
+	Legacy pre-Fleck definitions retained for archaeology only. RimWorld 1.3
+	migrated these effects to Fleck_Nuke and Fleck_NukePostEffect; active 1.6
+	DamageDefs now reference those FleckDefs.
+
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_Nuke</defName>
 		<graphicData>
-			<texPath>Tiberium/Gas/Gas_Small</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Green/Crystal</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -129,11 +153,11 @@
 		</mote>
 		<drawOffscreen>true</drawOffscreen>
 	</ThingDef>
-	
+
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_NukePostEffect</defName>
 		<graphicData>
-			<texPath>Tiberium/Gas/Gas_Small</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Green/Crystal</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -145,13 +169,14 @@
 		</mote>
 		<drawOffscreen>true</drawOffscreen>
 	</ThingDef>
+	-->
 	
 	
 	<!-- ION CANNON -->
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>IonBeamBurn</defName>
 		<graphicData>
-			<texPath>Things/Mote/PowerBeam</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -168,7 +193,7 @@
 		<defName>IonParticle</defName>
 		<thingClass>TiberiumRim.TRMote</thingClass>
 		<graphicData>
-			<texPath>FX/IonCannon/IonParticle</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>(1,1)</drawSize>
 		</graphicData>
@@ -186,7 +211,7 @@
 		<defName>IonAscensionCloud</defName>
 		<thingClass>TiberiumRim.TRMote</thingClass>
 		<graphicData>
-			<texPath>FX/IonCannon/particleCloud1</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>(1,1)</drawSize>
 		</graphicData>
@@ -210,7 +235,7 @@
 			<growthRate>0</growthRate>
 		</mote>
 		<graphicData>
-			<texPath>Things/Mote/Black</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlowDistortBackground</shaderType>
 			<shaderParameters>
 				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
@@ -231,7 +256,7 @@
 			<growthRate>0</growthRate>
 		</mote>
 		<graphicData>
-			<texPath>Things/Mote/Black</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlowDistortBackground</shaderType>
 			<shaderParameters>
 				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
@@ -246,7 +271,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>IonBubble</defName>
 		<graphicData>
-			<texPath>Things/Mote/PowerBeam</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>6</drawSize>
 		</graphicData>
@@ -281,7 +306,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>IonBurnMark</defName>
 		<graphicData>
-			<texPath>Things/Mote/PowerBeam</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<color>(255,240,200.200)</color>
 			<drawSize>1</drawSize>
@@ -300,7 +325,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_TiberiumGas</defName>
 		<graphicData>
-			<texPath>Tiberium/Gas/Gas_Small</texPath>
+			<texPath>FX/Gas/TiberiumGas</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -316,7 +341,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_TiberiumSmoke</defName>
 			<graphicData>
-			<texPath>FX/Tiberium/TiberiumGasDark</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<mote>
@@ -330,7 +355,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>Mote_ScrinCut</defName>
 		<graphicData>
-			<texPath>FX/Projectiles/ScrinCut</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>

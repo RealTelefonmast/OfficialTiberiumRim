@@ -4,7 +4,7 @@
 	<FleckDef ParentName="FleckBaseThrown_TR">
 		<defName>IonBeamBurn</defName>
 		<graphicData>
-			<texPath>Things/Mote/PowerBeam</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -18,7 +18,7 @@
 	<FleckDef ParentName="FleckBaseThrown_TR">
 		<defName>IonParticle</defName>
 		<graphicData>
-			<texPath>FX/IonCannon/IonParticle</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>(1,1)</drawSize>
 		</graphicData>
@@ -32,7 +32,7 @@
 	<FleckDef ParentName="FleckBaseThrown_TR">
 		<defName>IonAscensionCloud</defName>
 		<graphicData>
-			<texPath>FX/IonCannon/particleCloud1</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>(1,1)</drawSize>
 		</graphicData>
@@ -52,7 +52,7 @@
 		<fadeOutTime>0.25</fadeOutTime>
 		<growthRate>0</growthRate>
 		<graphicData>
-			<texPath>Things/Mote/Black</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlowDistortBackground</shaderType>
 			<shaderParameters>
 				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
@@ -71,7 +71,7 @@
 		<fadeOutTime>0.25</fadeOutTime>
 		<growthRate>0</growthRate>
 		<graphicData>
-			<texPath>Things/Mote/Black</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlowDistortBackground</shaderType>
 			<shaderParameters>
 				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
@@ -85,7 +85,7 @@
 	<FleckDef ParentName="FleckBaseThrown_TR">
 		<defName>IonBubble</defName>
 		<graphicData>
-			<texPath>Things/Mote/PowerBeam</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>6</drawSize>
 		</graphicData>
@@ -116,7 +116,7 @@
 	<FleckDef ParentName="FleckBaseThrown_TR">
 		<defName>IonBurnMark</defName>
 		<graphicData>
-			<texPath>Things/Mote/PowerBeam</texPath>
+			<texPath>UI/Elements/Designator/CommandBackground</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<color>(255,240,200.200)</color>
 			<drawSize>1</drawSize>

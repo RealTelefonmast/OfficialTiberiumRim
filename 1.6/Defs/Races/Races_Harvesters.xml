@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Ported from TiberiumRim-1.3 /Defs/Mechs/Harvesters/Races_Harvester.xml.
+       Replaces the interim AnimalBase_TR placeholder with the proper mech chain:
+       BaseMechanoidTR -> HarvesterBase -> Harvester_Common. -->
+
+  <TiberiumRim.TRThingDef ParentName="HarvesterBase">
+    <defName>Harvester_Common</defName>
+    <label>harvester</label>
+    <description>A simple tiberium harvester made out of rough components, it will seek out the closest most valuable Tiberium of any type unless told to do otherwise.</description>
+    <statBases>
+      <MoveSpeed>2</MoveSpeed>
+      <ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.6</ArmorRating_Sharp>
+    </statBases>
+    <race>
+      <body>HarvesterBody_Common</body>
+    </race>
+    <tools>
+      <li>
+        <label>dozer</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>3.5</cooldownTime>
+        <linkedBodyPartsGroup>Dozer</linkedBodyPartsGroup>
+        <chanceFactor>0.2</chanceFactor>
+      </li>
+    </tools>
+  </TiberiumRim.TRThingDef>
+
+  <TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+    <defName>HarvesterHusk_Common</defName>
+    <label>harvester husk</label>
+    <description>The remains of a destroyed harvester.</description>
+    <altitudeLayer>Building</altitudeLayer>
+    <graphicData>
+      <texPath>Map/Things/Pawns/Mechanical/Common/Harvester/Harvester_D</texPath>
+      <drawRotated>false</drawRotated>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Beauty>-25</Beauty>
+      <TiberiumDamageResistance>0.8</TiberiumDamageResistance>
+    </statBases>
+    <costList>
+      <Steel>75</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <uiIconScale>0.3</uiIconScale>
+    <randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+    <rotatable>true</rotatable>
+    <destroyable>true</destroyable>
+    <useHitPoints>true</useHitPoints>
+    <tickerType>Never</tickerType>
+    <selectable>true</selectable>
+    <size>(1,1)</size>
+    <neverOverlapFloors>false</neverOverlapFloors>
+    <blockPlants>true</blockPlants>
+    <building>
+      <isEdifice>false</isEdifice>
+      <claimable>false</claimable>
+      <deconstructible>true</deconstructible>
+    </building>
+  </TiberiumRim.TRThingDef>
+  <TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+    <defName>HarvesterHusk_GDI</defName>
+    <label>harvester husk</label>
+    <description>The remains of a destroyed harvester.</description>
+    <altitudeLayer>Building</altitudeLayer>
+    <graphicData>
+      <texPath>Map/Things/Pawns/Mechanical/GDI/Harvester/GDI_Harvester_Destroyed</texPath>
+      <drawRotated>false</drawRotated>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Beauty>-25</Beauty>
+      <TiberiumDamageResistance>0.9</TiberiumDamageResistance>
+    </statBases>
+    <costList>
+      <GDI_ReinforcedPlate>10</GDI_ReinforcedPlate>
+      <ComponentIndustrial>5</ComponentIndustrial>
+    </costList>
+    <uiIconScale>0.3</uiIconScale>
+    <randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+    <rotatable>true</rotatable>
+    <destroyable>true</destroyable>
+    <useHitPoints>true</useHitPoints>
+    <tickerType>Never</tickerType>
+    <selectable>true</selectable>
+    <size>(1,1)</size>
+    <neverOverlapFloors>false</neverOverlapFloors>
+    <blockPlants>true</blockPlants>
+    <building>
+      <isEdifice>false</isEdifice>
+      <claimable>false</claimable>
+      <deconstructible>true</deconstructible>
+    </building>
+  </TiberiumRim.TRThingDef>
+
+  <TiberiumRim.TRThingDef ParentName="BuildingBase_TR">
+    <defName>HarvesterHusk_Nod</defName>
+    <label>harvester husk</label>
+    <description>The remains of a destroyed harvester.</description>
+    <altitudeLayer>Building</altitudeLayer>
+    <graphicData>
+      <texPath>Map/Things/Pawns/Mechanical/Nod/Harvester/Nod_Harvester_Destroyed</texPath>
+      <drawRotated>false</drawRotated>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Beauty>-25</Beauty>
+      <TiberiumDamageResistance>0.9</TiberiumDamageResistance>
+    </statBases>
+    <costList>
+      <Nod_CarbonPlate>10</Nod_CarbonPlate>
+      <ComponentIndustrial>5</ComponentIndustrial>
+    </costList>
+    <uiIconScale>0.3</uiIconScale>
+    <randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+    <rotatable>true</rotatable>
+    <destroyable>true</destroyable>
+    <useHitPoints>true</useHitPoints>
+    <tickerType>Never</tickerType>
+    <selectable>true</selectable>
+    <size>(1,1)</size>
+    <neverOverlapFloors>false</neverOverlapFloors>
+    <blockPlants>true</blockPlants>
+    <building>
+      <isEdifice>false</isEdifice>
+      <claimable>false</claimable>
+      <deconstructible>true</deconstructible>
+    </building>
+  </TiberiumRim.TRThingDef>
+
+</Defs>

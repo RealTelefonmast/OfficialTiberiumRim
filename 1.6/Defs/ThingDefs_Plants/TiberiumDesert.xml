@@ -14,7 +14,7 @@
       <Beauty>15</Beauty>
     </statBases>
     <graphicData>
-      <texPath>Tiberium/Crystals/Green/Desert</texPath>
+      <texPath>Map/Things/Tiberium/Crystals/Green/Desert</texPath>
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <selectable>true</selectable>
@@ -42,7 +42,7 @@
       <Beauty>15</Beauty>
     </statBases>
     <graphicData>
-      <texPath>Tiberium/Crystals/Green/Desert</texPath>
+      <texPath>Map/Things/Tiberium/Crystals/Green/Desert</texPath>
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <selectable>true</selectable>
@@ -70,7 +70,7 @@
       <Beauty>15</Beauty>
     </statBases>
     <graphicData>
-      <texPath>Tiberium/Crystals/Red/Desert</texPath>
+      <texPath>Map/Things/Tiberium/Crystals/Red/Desert</texPath>
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <selectable>true</selectable>

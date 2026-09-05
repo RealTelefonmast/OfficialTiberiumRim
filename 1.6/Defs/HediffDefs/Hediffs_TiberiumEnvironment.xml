@@ -169,7 +169,7 @@
 				<severityPerDayNotImmune>-0.15</severityPerDayNotImmune>
 			</li>
 			<li Class="TeleCore.RW.HediffCompProperties_Icon">
-				<iconPath>UI/Icons/Tiberium/Tiberium_Base</iconPath>
+				<iconPath>UI/Icons/Hediffs/Crystallizing</iconPath>
 				<color>(118,255,65)</color>
 			</li>
 		</comps>

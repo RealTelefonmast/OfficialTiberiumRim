@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Minimal GDI research project stubs. The ported GDI structures gate their
+       requisites on these TResearchDefs; the full GDI research chains can be
+       authored here later without touching the building defs. -->
+
+  <TeleCore.RW.Research.Defs.TResearchDef>
+    <defName>GDIExperimental1</defName>
+    <label>GDI Experimental Engineering I</label>
+    <researchType>tech research</researchType>
+    <description>Stub for the first tier of GDI experimental engineering.</description>
+  </TeleCore.RW.Research.Defs.TResearchDef>
+
+  <TeleCore.RW.Research.Defs.TResearchDef>
+    <defName>GDIExperimental2</defName>
+    <label>GDI Experimental Engineering II</label>
+    <researchType>tech research</researchType>
+    <description>Stub for the second tier of GDI experimental engineering.</description>
+  </TeleCore.RW.Research.Defs.TResearchDef>
+
+  <TeleCore.RW.Research.Defs.TResearchDef>
+    <defName>GDIExperimental3</defName>
+    <label>GDI Experimental Engineering III</label>
+    <researchType>tech research</researchType>
+    <description>Stub for the third tier of GDI experimental engineering.</description>
+  </TeleCore.RW.Research.Defs.TResearchDef>
+
+</Defs>

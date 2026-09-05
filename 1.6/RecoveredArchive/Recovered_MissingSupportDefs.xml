@@ -1,0 +1,41 @@
+<Defs>
+  <!-- Recovered support defs referenced by active Tiberium creatures, apparel, and processing buildings. -->
+  <ThingCategoryDef><defName>TRApparelsETC</defName><label>Tiberium apparel</label><parent>Apparel</parent></ThingCategoryDef>
+  <ThingCategoryDef><defName>TRHelmetsETC</defName><label>Tiberium helmets</label><parent>Headgear</parent></ThingCategoryDef>
+
+  <BodyPartDef><defName>VisceroidBody</defName><label>visceroid body</label></BodyPartDef>
+  <BodyPartDef><defName>VisceroidVeins</defName><label>visceroid veins</label></BodyPartDef>
+  <BodyPartDef><defName>VisceroidDigester</defName><label>visceroid digester</label></BodyPartDef>
+  <BodyPartDef><defName>VisceroidBreather</defName><label>visceroid breather</label></BodyPartDef>
+  <BodyPartDef><defName>VisceroidOrifice</defName><label>visceroid orifice</label></BodyPartDef>
+  <BodyPartDef><defName>TentacleMass</defName><label>tentacle mass</label><frostbiteVulnerability>5</frostbiteVulnerability></BodyPartDef>
+  <BodyPartDef><defName>Tentacle_Arm</defName><label>tentacle arm</label><frostbiteVulnerability>1.5</frostbiteVulnerability></BodyPartDef>
+  <BodyPartDef><defName>Tentacle_Leg</defName><label>tentacle leg</label></BodyPartDef>
+  <BodyPartDef><defName>LeftTentacle</defName><label>left tentacle</label><frostbiteVulnerability>1.5</frostbiteVulnerability></BodyPartDef>
+  <BodyPartDef><defName>RightTentacle</defName><label>right tentacle</label><frostbiteVulnerability>1.5</frostbiteVulnerability></BodyPartDef>
+  <BodyPartDef><defName>MiddleTentacle</defName><label>middle tentacle</label><frostbiteVulnerability>1.5</frostbiteVulnerability></BodyPartDef>
+  <BodyPartDef><defName>VeinmonsterMouth</defName><label>veinmonster mouth</label></BodyPartDef>
+  <BodyPartDef><defName>VeinmonsterEye</defName><label>veinmonster eye</label></BodyPartDef>
+  <BodyPartDef><defName>VeinmonsterBody</defName><label>veinmonster body</label></BodyPartDef>
+  <BodyPartDef><defName>VeinRockBody</defName><label>vein rock body</label></BodyPartDef>
+  <BodyPartDef><defName>VeinRockMover</defName><label>vein rock mover</label></BodyPartDef>
+  <BodyPartDef><defName>VeinRockFoot</defName><label>vein rock foot</label><frostbiteVulnerability>6</frostbiteVulnerability></BodyPartDef>
+
+  <ThingStyleDef><defName>RavensMask</defName><label>raven mask</label></ThingStyleDef>
+  <TeleCore.RW.FlowCore.FlowValueCollectionDef><defName>Atmosphere_Air</defName><label>atmospheric air</label></TeleCore.RW.FlowCore.FlowValueCollectionDef>
+  <EffecterDef><defName>PowerPlantCommonSmoke</defName><children /></EffecterDef>
+  <RecipeDef><defName>MakeDronePackage_Common</defName><label>craft common drone package</label></RecipeDef>
+  <TiberiumRim.MechRecipeDef><defName>MakeHarvesterCommon</defName><label>craft common harvester</label><workCost>5000</workCost></TiberiumRim.MechRecipeDef>
+  <TiberiumRim.TRThingDef ParentName="AnimalBase_TR" Name="HarvesterBasePlaceholder" Abstract="True"><statBases><Flammability>0.5</Flammability></statBases><race><body>QuadrupedAnimalWithPaws</body><renderTree>Animal</renderTree><baseBodySize>2</baseBodySize><baseHealthScale>2</baseHealthScale><baseHungerRate>0.5</baseHungerRate><foodType>OmnivoreAnimal</foodType><lifeExpectancy>20</lifeExpectancy><lifeStageAges><li><def>AnimalAdult</def><minAge>0</minAge></li></lifeStageAges></race></TiberiumRim.TRThingDef>
+  <TiberiumRim.TRThingDef ParentName="HarvesterBasePlaceholder"><defName>Harvester_Common</defName><label>common harvester</label><description>Recovered harvester placeholder.</description><thingClass>TiberiumRim.TiberiumPawn</thingClass><statBases><MoveSpeed>2</MoveSpeed></statBases><tools><li><label>dozer</label><capacities><li>Blunt</li></capacities><power>12</power><cooldownTime>3.5</cooldownTime><linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup></li></tools><race><body>QuadrupedAnimalWithPaws</body></race></TiberiumRim.TRThingDef>
+  <TiberiumRim.MechanicalPawnKindDef><defName>Harvester_Common</defName><label>common harvester</label><race>Harvester_Common</race><combatPower>125</combatPower><lifeStages><li><bodyGraphicData><texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>3</drawSize></bodyGraphicData></li></lifeStages></TiberiumRim.MechanicalPawnKindDef>
+  <TeleCore.RW.Networks.NetworkDef><defName>AtmosphericNetwork</defName><label>atmospheric network</label><labelShort>Air</labelShort></TeleCore.RW.Networks.NetworkDef>
+  <FleckDef ParentName="FleckBase_Thrown"><defName>SubFleck_TibGasParticle</defName><graphicData><texPath>FX/Beams/Beam_EndGlow</texPath><shaderType>TransparentPostLight</shaderType><drawSize>0.5</drawSize></graphicData><altitudeLayer>MoteOverhead</altitudeLayer><solidTime>0</solidTime><fadeOutTime>1</fadeOutTime></FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown"><defName>SubFleck_TibGasParticle_Shadow</defName><graphicData><texPath>FX/Gas/GasMote</texPath><shaderType>TransparentPostLight</shaderType><drawSize>0.5</drawSize></graphicData><altitudeLayer>MoteOverhead</altitudeLayer><solidTime>0</solidTime><fadeOutTime>1</fadeOutTime></FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown"><defName>Mote_TiberiumGlow</defName><graphicData><texPath>FX/Beams/Beam_EndGlow</texPath><shaderType>MoteGlow</shaderType></graphicData><altitudeLayer>MoteOverhead</altitudeLayer><solidTime>1.5</solidTime><fadeOutTime>3.3</fadeOutTime></FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown"><defName>RadiationGlow</defName><graphicData><texPath>FX/Beams/Beam_EndGlow</texPath><shaderType>MoteGlow</shaderType></graphicData><altitudeLayer>MoteOverhead</altitudeLayer><solidTime>1.5</solidTime><fadeOutTime>3.3</fadeOutTime></FleckDef>
+  <ThingDef><defName>RefineryCell</defName><label>refinery cell</label><thingClass>Building</thingClass><category>Building</category></ThingDef>
+  <!-- Lightweight AI roots keep recovered races loadable while their archived behavior trees remain reference material. -->
+  <ThinkTreeDef><defName>Veinroamer</defName><thinkRoot Class="ThinkNode_Priority"><subNodes><li Class="JobGiver_IdleError" /></subNodes></thinkRoot></ThinkTreeDef>
+  <ThinkTreeDef><defName>VeinRock</defName><thinkRoot Class="ThinkNode_Priority"><subNodes><li Class="JobGiver_IdleError" /></subNodes></thinkRoot></ThinkTreeDef>
+</Defs>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Ported from TiberiumRim-1.3 /Defs/DamageDefs (Nod weapon damage).
+       TRLaser: continuous laser damage used by the Obelisk of Light beam.
+       TRObeliskBlast: small secondary explosion applied at the beam impact point. -->
+
+  <DamageDef ParentName="TRExplosionBase">
+    <defName>TRLaser</defName>
+    <label>laser</label>
+    <deathMessage>{0} was cut down by a laser.</deathMessage>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <isExplosive>false</isExplosive>
+    <armorCategory>Sharp</armorCategory>
+    <minDamageToFragment>15</minDamageToFragment>
+    <defaultDamage>20</defaultDamage>
+    <defaultStoppingPower>1</defaultStoppingPower>
+    <defaultArmorPenetration>0.5</defaultArmorPenetration>
+    <buildingDamageFactor>2</buildingDamageFactor>
+    <plantDamageFactor>2</plantDamageFactor>
+    <canUseDeflectMetalEffect>true</canUseDeflectMetalEffect>
+  </DamageDef>
+
+  <DamageDef ParentName="TRExplosionBase">
+    <defName>TRObeliskBlast</defName>
+    <label>obelisk blast</label>
+    <deathMessage>{0} was vaporized by an obelisk blast.</deathMessage>
+    <workerClass>DamageWorker_Flame</workerClass>
+    <hediff>Burn</hediff>
+    <armorCategory>Blunt</armorCategory>
+    <minDamageToFragment>5</minDamageToFragment>
+    <defaultDamage>15</defaultDamage>
+    <defaultArmorPenetration>0.5</defaultArmorPenetration>
+    <defaultStoppingPower>1</defaultStoppingPower>
+    <buildingDamageFactor>2</buildingDamageFactor>
+    <plantDamageFactor>2</plantDamageFactor>
+    <explosionHeatEnergyPerCell>8</explosionHeatEnergyPerCell>
+    <explosionColorCenter>(1, 0.9, 0.4, 1)</explosionColorCenter>
+    <explosionColorEdge>(0.9, 0.3, 0.1, 0)</explosionColorEdge>
+    <soundExplosion>Explosion_Bomb</soundExplosion>
+  </DamageDef>
+
+</Defs>

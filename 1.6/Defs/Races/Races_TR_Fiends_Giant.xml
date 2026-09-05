@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
 	<!-- Thrumbo -->
@@ -117,7 +117,7 @@
 				<label>thrimbo calf</label>
 				<labelPlural>thrimbo calves</labelPlural>
 				<bodyGraphicData>
-					<texPath>Things/Pawns/TiberiumCreatures/Creatures/Thrimbo/Thrimbo</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Fiends/Thrimbo/Thrimbo</texPath>
 					<drawSize>2.5</drawSize>
 					<shadowData>
 						<volume>(0.4, 0.3, 0.3)</volume>
@@ -125,13 +125,13 @@
 					</shadowData>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>1.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
-					<texPath>Pawn/Animals/Thrimbo/Thrimbo</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Fiends/Thrimbo/Thrimbo</texPath>
 					<drawSize>4.0</drawSize>
 					<shadowData>
 						<volume>(0.7, 0.6, 0.4)</volume>
@@ -139,13 +139,13 @@
 					</shadowData>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>1.75</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawns/TiberiumCreatures/Creatures/Thrimbo/Thrimbo</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Fiends/Thrimbo/Thrimbo</texPath>
 					<drawSize>5</drawSize>
 					<shadowData>
 						<volume>(1, 0.8, 0.5)</volume>
@@ -153,7 +153,7 @@
 					</shadowData>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>2</drawSize>
 				</dessicatedBodyGraphicData>
 				<butcherBodyPart>
@@ -294,7 +294,7 @@
 				<label>Fiend puppy</label>
 				<labelPlural>Fiend puppies</labelPlural>
 				<bodyGraphicData>
-					<texPath>Things/Pawns/TiberiumCreatures/Creatures/BigTibFiend/BigTiberiumFiend</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Fiends/BigTiberiumFiend/BigTiberiumFiend</texPath>
 					<drawSize>1.5</drawSize>
 					<shadowData>
 						<volume>(0.4, 0.3, 0.3)</volume>
@@ -302,13 +302,13 @@
 					</shadowData>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Bear/Dessicated_Bear</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>1.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawns/TiberiumCreatures/Creatures/BigTibFiend/BigTiberiumFiend</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Fiends/BigTiberiumFiend/BigTiberiumFiend</texPath>
 					<drawSize>2</drawSize>
 					<shadowData>
 						<volume>(0.6, 0.45, 0.45)</volume>
@@ -316,13 +316,13 @@
 					</shadowData>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Bear/Dessicated_Bear</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>2</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawns/TiberiumCreatures/Creatures/BigTibFiend/BigTiberiumFiend</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Fiends/BigTiberiumFiend/BigTiberiumFiend</texPath>
 					<drawSize>3</drawSize>
 					<shadowData>
 						<volume>(0.8, 0.6, 0.6)</volume>
@@ -330,7 +330,7 @@
 					</shadowData>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Bear/Dessicated_Bear</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>3</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
@@ -442,7 +442,7 @@
 				<label>tiffalo calf</label>
 				<labelPlural>tiffalo calves</labelPlural>
 				<bodyGraphicData>
-					<texPath>Things/Pawns/TiberiumCreatures/Creatures/Tiffalo/TiffaloPack</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>1.5</drawSize>
 					<shadowData>
 						<volume>(0.4, 0.3, 0.3)</volume>
@@ -450,13 +450,13 @@
 					</shadowData>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Muffalo/Dessicated_Muffalo</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>1.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawns/TiberiumCreatures/Creatures/Tiffalo/TiffaloPack</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>2.25</drawSize>
 					<shadowData>
 						<volume>(0.6, 0.45, 0.45)</volume>
@@ -464,13 +464,13 @@
 					</shadowData>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Muffalo/Dessicated_Muffalo</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>2.25</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawns/TiberiumCreatures/Creatures/Tiffalo/TiffaloPack</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>3</drawSize>
 					<shadowData>
 						<volume>(0.8, 0.6, 0.6)</volume>
@@ -478,7 +478,7 @@
 					</shadowData>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Muffalo/Dessicated_Muffalo</texPath>
+					<texPath>Map/Things/Pawns/Mutants/Visceroids/Bob/Bob_east</texPath>
 					<drawSize>3</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>

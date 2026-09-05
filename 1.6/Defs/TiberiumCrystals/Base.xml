@@ -63,7 +63,7 @@
 			<topWindExposure>0.1</topWindExposure>
 		</plant>
 		<modExtensions Inherit="False">
-			<li Class="TeleCore.SubMenuExtension">
+			<li Class="TeleCore.BuildMenu.BuildMenuExtension">
 				<groupDef>Tiberium</groupDef>
 				<category>Plants</category>
 			</li>
@@ -119,7 +119,7 @@
 			</li>
 		</damageMultipliers>
 		<modExtensions>
-			<li Class="TeleCore.SubMenuExtension">
+			<li Class="TeleCore.BuildMenu.BuildMenuExtension">
 				<groupDef>Tiberium</groupDef>
 				<category>Crystals</category>
 			</li>

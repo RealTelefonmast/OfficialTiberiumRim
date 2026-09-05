@@ -86,7 +86,7 @@
 		<label>blossom tree</label>
 		<description>This biological Tiberium producer is the result of tiberium exposure to plant-life.</description>
 		<graphicData>
-			<texPath>Tiberium/Producers/BlossomTrees/BlossomTree</texPath>
+			<texPath>Map/Things/Tiberium/Producers/BlossomTree/BlossomTree</texPath>
 		</graphicData>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 		<!--
@@ -95,7 +95,7 @@
 				<fxLayers>
 					<li>
 						<graphicData>
-							<texPath>Tiberium/Producers/BlossomTrees/BlossomTree_overlay</texPath>
+							<texPath>Map/Things/Tiberium/Producers/BlossomTree/BlossomTree_Overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawRotated>false</drawRotated>
 							<shaderType>MoteGlow</shaderType>
@@ -202,7 +202,7 @@
 		<label>blue blossom tree</label>
 		<description>This biological Tiberium producer is the result of tiberium exposure to plant-life.</description>
 		<graphicData>
-			<texPath>Tiberium/Producers/BlossomTrees/BlossomTreeBlue</texPath>
+			<texPath>Map/Things/Tiberium/Producers/BlossomTree/BlossomTreeBlue</texPath>
 		</graphicData>
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 		<!--
@@ -211,7 +211,7 @@
 				<fxLayers>
 					<li>
 						<graphicData>
-							<texPath>Tiberium/Producers/BlossomTrees/BlossomTreeBlue_overlay</texPath>
+							<texPath>Map/Things/Tiberium/Producers/BlossomTree/BlossomTreeBlue_Overlay</texPath>
 							<graphicClass>Graphic_Single</graphicClass>
 							<drawRotated>false</drawRotated>
 							<shaderType>MoteGlow</shaderType>
@@ -347,7 +347,7 @@
 			<MaxHitPoints>360</MaxHitPoints>
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Producers/BlossomTrees/Alocasia</texPath>
+			<texPath>Map/Things/Tiberium/Flora/Blossoms/Alocasia</texPath>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>
 		<comps Inherit="False">
@@ -440,7 +440,7 @@
 			<MaxHitPoints>450</MaxHitPoints>
 		</statBases>
 		<graphicData>
-			<texPath>Tiberium/Producers/BlossomTrees/Blossoms</texPath>
+			<texPath>Map/Things/Tiberium/Flora/Blossoms</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<drawSize>(2.5,2.5)</drawSize>
 			<drawRotated>false</drawRotated>

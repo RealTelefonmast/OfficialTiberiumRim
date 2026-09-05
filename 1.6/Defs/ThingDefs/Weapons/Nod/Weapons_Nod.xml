@@ -22,7 +22,7 @@
 		<label>Nod rifle</label>
 		<description>A rugged general-purpose military rifle used by Brotherhood of Nod cells. Cheap, reliable, and suited to field or urban combat.</description>
 		<graphicData>
-			<texPath>Things/Weapons/Nod/Rifle_Ballistic</texPath>
+			<texPath>Map/Things/Projectiles/Projectile_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.2</drawSize>
 		</graphicData>
@@ -93,7 +93,7 @@
 		<defName>Bullet_NodRifle</defName>
 		<label>Nod rifle bullet</label>
 		<graphicData>
-			<texPath>FX/Projectiles/Nod/Bullet_Base</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
@@ -111,7 +111,7 @@
 		<label>Nod twin flechette gun</label>
 		<description>A compact twin-barreled flechette gun built around Nod's experimental Tiberium shard doctrine. It throws many light projectiles at close range.</description>
 		<graphicData>
-			<texPath>Things/Weapons/Nod/Gun_TiberiumFlechetteTwin</texPath>
+			<texPath>Map/Things/Projectiles/Projectile_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.2</drawSize>
 		</graphicData>
@@ -186,7 +186,7 @@
 		<defName>Bullet_NodFlechette</defName>
 		<label>Tiberium flechette</label>
 		<graphicData>
-			<texPath>FX/Projectiles/TiberiumFlechette/1</texPath>
+			<texPath>FX/Projectiles/TiberiumFlechette</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<color>(0.2, 1, 0.35)</color>
 		</graphicData>
@@ -204,7 +204,7 @@
 		<description>A rifle using Nod's specialized laser technology. Its compact emitter fires unstable red energy pulses with good range and armor penetration.</description>
 		<techLevel>Spacer</techLevel>
 		<graphicData>
-			<texPath>Things/Weapons/Nod/Rifle_Laser</texPath>
+			<texPath>Map/Things/Projectiles/Projectile_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.25</drawSize>
 		</graphicData>
@@ -285,7 +285,7 @@
 		<defName>Bullet_NodLaserRifle</defName>
 		<label>Nod laser pulse</label>
 		<graphicData>
-			<texPath>FX/Projectiles/Bullet_Laser</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>1.5</drawSize>
@@ -306,7 +306,7 @@
 		<description>A heavier Nod laser rifle with stronger emitters and better armor penetration. It trades handling for long-range destructive power.</description>
 		<techLevel>Spacer</techLevel>
 		<graphicData>
-			<texPath>Things/Weapons/Nod/Rifle_LaserHeavy</texPath>
+			<texPath>Map/Things/Projectiles/Projectile_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.25</drawSize>
 		</graphicData>
@@ -387,7 +387,7 @@
 		<defName>Bullet_NodHeavyLaserRifle</defName>
 		<label>heavy Nod laser pulse</label>
 		<graphicData>
-			<texPath>FX/Projectiles/Bullet_LaserBeam_Heavy</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>1.5</drawSize>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -407,7 +407,7 @@
 		<label>Nod flamethrower</label>
 		<description>A Black Hand flamethrower for bunker clearing and terror assaults. It is short-ranged, heavy, and devastating against cover and clustered targets.</description>
 		<graphicData>
-			<texPath>Things/Weapons/Nod/Flamethrower</texPath>
+			<texPath>Map/Things/Projectiles/Projectile_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.25</drawSize>
 		</graphicData>
@@ -487,7 +487,7 @@
 		<defName>Bullet_NodFlame</defName>
 		<label>flame</label>
 		<graphicData>
-			<texPath>Things/Projectile/LauncherShot</texPath>
+			<texPath>Map/Things/Projectiles/Projectile_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 			<color>(254, 95, 35)</color>
@@ -513,7 +513,7 @@
 		<description>A heavy twin-shot rocket launcher known among Nod militia as Kane's wand. It is unwieldy, destructive, and useful against buildings or clustered defenders.</description>
 		<tickerType>Normal</tickerType>
 		<graphicData>
-			<texPath>Things/Weapons/Nod/Launcher_Rocket</texPath>
+			<texPath>Map/Things/Projectiles/Projectile_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.5</drawSize>
 		</graphicData>
@@ -585,7 +585,7 @@
 		<defName>Bullet_NodRocket</defName>
 		<label>Nod rocket</label>
 		<graphicData>
-			<texPath>FX/Projectiles/Bullet_Rocket</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
@@ -610,7 +610,7 @@
 		</recipeMaker>
 		<tickerType>Normal</tickerType>
 		<graphicData>
-			<texPath>Things/Weapons/Nod/Grenade</texPath>
+			<texPath>Map/Things/Projectiles/Projectile_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<uiIconScale>1.3</uiIconScale>
@@ -664,7 +664,7 @@
 		<defName>Proj_NodGrenade</defName>
 		<label>Nod grenade</label>
 		<graphicData>
-			<texPath>FX/Projectiles/Grenade_Static</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
@@ -684,7 +684,7 @@
 		<smeltable>false</smeltable>
 		<relicChance>0</relicChance>
 		<graphicData>
-			<texPath>Things/Weapons/Nod/Bomb_Suicide</texPath>
+			<texPath>Map/Things/Projectiles/Projectile_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.25</drawSize>
 		</graphicData>
@@ -770,7 +770,7 @@
 		<defName>Bullet_NodSuicideBomb</defName>
 		<label>suicide charge</label>
 		<graphicData>
-			<texPath>FX/Projectiles/SuicideBomb</texPath>
+			<texPath>FX/Beams/Beam_EndGlow</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>

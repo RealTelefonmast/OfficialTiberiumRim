@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <BodyPartDef>
+    <defName>VisceroidBody</defName>
+    <label>visceroid body</label>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>VisceroidVeins</defName>
+    <label>visceroid veins</label>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>VisceroidDigester</defName>
+    <label>visceroid digester</label>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>VisceroidBreather</defName>
+    <label>visceroid breather</label>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>VisceroidOrifice</defName>
+    <label>visceroid orifice</label>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>TentacleMass</defName>
+    <label>tentacle mass</label>
+    <frostbiteVulnerability>5</frostbiteVulnerability>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>Tentacle_Arm</defName>
+    <label>tentacle arm</label>
+    <frostbiteVulnerability>1.5</frostbiteVulnerability>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>Tentacle_Leg</defName>
+    <label>tentacle leg</label>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>LeftTentacle</defName>
+    <label>left tentacle</label>
+    <frostbiteVulnerability>1.5</frostbiteVulnerability>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>RightTentacle</defName>
+    <label>right tentacle</label>
+    <frostbiteVulnerability>1.5</frostbiteVulnerability>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>MiddleTentacle</defName>
+    <label>middle tentacle</label>
+    <frostbiteVulnerability>1.5</frostbiteVulnerability>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>VeinmonsterMouth</defName>
+    <label>veinmonster mouth</label>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>VeinmonsterEye</defName>
+    <label>veinmonster eye</label>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>VeinmonsterBody</defName>
+    <label>veinmonster body</label>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>VeinRockBody</defName>
+    <label>vein rock body</label>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>VeinRockMover</defName>
+    <label>vein rock mover</label>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>VeinRockFoot</defName>
+    <label>vein rock foot</label>
+    <frostbiteVulnerability>6</frostbiteVulnerability>
+  </BodyPartDef>
+</Defs>

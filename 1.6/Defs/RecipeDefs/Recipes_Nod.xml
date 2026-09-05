@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Stub recipes referenced by the Nod assembler; product chains
+       are authored when the Nod crafting recipes are ported. -->
+
+  <RecipeDef>
+    <defName>MakeCarbonPlate</defName>
+    <label>make carbon plate</label>
+  </RecipeDef>
+
+  <RecipeDef>
+    <defName>MakeLQTiberiumCore</defName>
+    <label>make liquid tiberium core</label>
+  </RecipeDef>
+
+  <TiberiumRim.MechRecipeDef>
+    <defName>MakeHarvester_Nod</defName>
+    <label>craft Nod harvester</label>
+    <workCost>5000</workCost>
+  </TiberiumRim.MechRecipeDef>
+
+</Defs>

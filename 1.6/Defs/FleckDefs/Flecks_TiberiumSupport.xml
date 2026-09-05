@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>SubFleck_TibGasParticle</defName>
+    <graphicData>
+      <texPath>FX/Gas/TiberiumGasLight</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>0.5</drawSize>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0</solidTime>
+    <fadeOutTime>1</fadeOutTime>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>SubFleck_TibGasParticle_Shadow</defName>
+    <graphicData>
+      <texPath>FX/Gas/GasMote</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>0.5</drawSize>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0</solidTime>
+    <fadeOutTime>1</fadeOutTime>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>TiberiumGlow</defName>
+    <graphicData>
+      <texPath>FX/TiberiumGlow</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>1.5</solidTime>
+    <fadeOutTime>3.3</fadeOutTime>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>RadiationGlow</defName>
+    <graphicData>
+      <texPath>FX/TiberiumGlowInt</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>1.5</solidTime>
+    <fadeOutTime>3.3</fadeOutTime>
+  </FleckDef>
+</Defs>

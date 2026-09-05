@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Ported from TiberiumRim-1.3 /Defs/ThingDefs_Item/Resources_Nod.xml.
+       Textures exist in the current art tree (Items/Resources). -->
+
+  <TiberiumRim.TRThingDef ParentName="ResourceBase_TR">
+    <defName>Nod_CarbonPlate</defName>
+    <label>carbon plate</label>
+    <description>Nod's engineers focused on lightweight, heat-resistant materials. This carbon compound is used in most Brotherhood structures.</description>
+    <graphicData>
+      <texPath>Map/Things/Items/Resources/Nod_CarbonPlate</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <techLevel>Industrial</techLevel>
+    <stackLimit>75</stackLimit>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <MarketValue>45</MarketValue>
+      <Mass>1.5</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+    <!-- 1.6 config rule: smeltable requires smelting products; none defined. -->
+    <smeltable>false</smeltable>
+    <intricate>true</intricate>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+    <requisites>
+      <tiberiumResearch>
+        <li>NodExperimental1</li>
+      </tiberiumResearch>
+    </requisites>
+  </TiberiumRim.TRThingDef>
+
+  <TiberiumRim.TRThingDef ParentName="ResourceBase_TR">
+    <defName>Nod_LQTiberiumCore</defName>
+    <label>liquid tiberium core</label>
+    <description>A stabilized container of liquid Tiberium. Extremely volatile, but a vital core part of Nod's superweapons.</description>
+    <graphicData>
+      <texPath>Map/Things/Items/Resources/Nod_TiberiumLQ</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <stackLimit>25</stackLimit>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <MarketValue>1400</MarketValue>
+      <Mass>5</Mass>
+      <Flammability>1</Flammability>
+      <DeteriorationRate>0.5</DeteriorationRate>
+    </statBases>
+    <intricate>true</intricate>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>4</explosiveRadius>
+        <explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.1</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.1</startWickHitPointsPercent>
+        <wickTicks>
+          <min>5</min>
+          <max>5</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <requisites>
+      <tiberiumResearch>
+        <li>NodExperimental3</li>
+      </tiberiumResearch>
+    </requisites>
+  </TiberiumRim.TRThingDef>
+
+</Defs>

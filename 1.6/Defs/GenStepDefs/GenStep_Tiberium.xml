@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Restored map-generation step required by MapDefInjector. The original
+       reference definition used the obsolete TR namespace; the implementation
+       now lives in TiberiumRim. -->
+  <GenStepDef>
+    <defName>TiberiumGenStep</defName>
+    <order>610</order>
+    <genStep Class="TiberiumRim.MapGenStep_Tiberium" />
+  </GenStepDef>
+</Defs>

@@ -10,7 +10,7 @@
     <tickerType>Rare</tickerType>
     <drawerType>MapMeshAndRealTime</drawerType>
     <graphicData>
-      <texPath>Tiberium/Visceral/Pod_1</texPath>
+      <texPath>Map/Things/Tiberium/Producers/Veinhole/VeinEgg</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(1,1)</drawSize>
     </graphicData>
@@ -37,7 +37,7 @@
     <thingClass>Building</thingClass>
     <size>(1,1)</size>
     <graphicData>
-      <texPath>Tiberium/Producers/Veinhole/Veinhole_Hub_Base</texPath>
+      <texPath>Map/Things/Tiberium/Producers/Veinhole/Veinhole_Hub</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(2,2)</drawSize>
     </graphicData>
@@ -60,7 +60,7 @@
     <tickerType>Normal</tickerType>
     <drawerType>MapMeshAndRealTime</drawerType>
     <graphicData>
-      <texPath>Tiberium/Visceral/Pod_1</texPath>
+      <texPath>Map/Things/Tiberium/VisceralPod/VisceralPod_1</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1.5,1.5)</drawSize>
     </graphicData>
