@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Dependency-minimal worker-drone body graph recovered from the 1.3 donor. -->
+  <BodyPartDef Abstract="True" Name="ScrinPart"><hitPoints>5</hitPoints><frostbiteVulnerability>0</frostbiteVulnerability><permanentInjuryChanceFactor>0</permanentInjuryChanceFactor><bleedRate>0</bleedRate><skinCovered>false</skinCovered><solid>true</solid><alive>false</alive></BodyPartDef>
+  <BodyPartDef ParentName="ScrinPart"><defName>Scrin_Brain</defName><label>biomechanical brain</label><hitPoints>16</hitPoints><tags><li>ConsciousnessSource</li></tags></BodyPartDef>
+  <BodyPartDef ParentName="ScrinPart"><defName>Scrin_Eye</defName><label>eye</label><hitPoints>6</hitPoints><socketed>true</socketed><tags><li>SightSource</li></tags></BodyPartDef>
+  <BodyPartDef ParentName="ScrinPart"><defName>Scrin_SensorArray</defName><label>sensor array</label><hitPoints>25</hitPoints><tags><li>HearingSource</li></tags></BodyPartDef>
+  <BodyPartDef Abstract="True" Name="ScrinDronePart"><hitPoints>5</hitPoints><frostbiteVulnerability>2</frostbiteVulnerability><permanentInjuryChanceFactor>0</permanentInjuryChanceFactor><bleedRate>0</bleedRate><skinCovered>false</skinCovered><solid>true</solid><alive>false</alive></BodyPartDef>
+  <BodyPartDef ParentName="ScrinDronePart"><defName>ScrinDrone_Spine</defName><label>drone spine</label><hitPoints>50</hitPoints></BodyPartDef>
+  <BodyPartDef ParentName="ScrinDronePart"><defName>ScrinDrone_Exoskeleton</defName><label>exoskeleton</label><hitPoints>75</hitPoints></BodyPartDef>
+  <BodyPartDef ParentName="ScrinDronePart"><defName>ScrinDrone_ManiArm</defName><label>manipulator arm</label><hitPoints>10</hitPoints><tags><li>ManipulationLimbCore</li></tags></BodyPartDef>
+  <BodyPartDef ParentName="ScrinDronePart"><defName>ScrinDrone_ManiSupport</defName><label>manipulator support</label><hitPoints>10</hitPoints><tags><li>ManipulationLimbSegment</li></tags></BodyPartDef>
+  <BodyPartDef ParentName="ScrinDronePart"><defName>ScrinDrone_ManiTool</defName><label>manipulator tool</label><hitPoints>5</hitPoints><tags><li>ManipulationLimbDigit</li></tags></BodyPartDef>
+  <BodyPartDef ParentName="ScrinDronePart"><defName>ScrinDrone_HoverArray</defName><label>hover array</label><hitPoints>30</hitPoints><tags><li>MovingLimbCore</li></tags></BodyPartDef>
+  <BodyPartDef ParentName="ScrinDronePart"><defName>ScrinDrone_HoverArm</defName><label>hover arm</label><hitPoints>5</hitPoints><tags><li>MovingLimbSegment</li></tags></BodyPartDef>
+</Defs>

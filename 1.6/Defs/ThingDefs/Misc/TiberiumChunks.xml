@@ -87,7 +87,7 @@
 		  <MaxHitPoints>900</MaxHitPoints>
 		</statBases>
 		<graphicData>
-			<texPath>Map/Things/Tiberium/Crystals/Green/Crystal</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Blue/Crystal</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<flipExtraRotation>80</flipExtraRotation>
 		</graphicData>
@@ -102,7 +102,7 @@
 		  <MaxHitPoints>1200</MaxHitPoints>
 		</statBases>
 		<graphicData>
-			<texPath>Map/Things/Tiberium/Crystals/Green/Crystal</texPath>
+			<texPath>Map/Things/Tiberium/Crystals/Red/Crystal</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<flipExtraRotation>80</flipExtraRotation>
 		</graphicData>

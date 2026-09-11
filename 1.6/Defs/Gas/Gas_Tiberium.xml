@@ -6,6 +6,10 @@
     <colorMin>(0,0,0)</colorMin>
     <colorMax>(15,255,55,90)</colorMax>
     <maxDensityPerCell>256</maxDensityPerCell>
+    <!-- The cell gas is converted into the room-level pollution value by the generic gas grid. -->
+    <dissipateTo>Atmosphere_TibPollution</dissipateTo>
+    <dissipationAmount>1</dissipationAmount>
+    <spreadViscosity>0.35</spreadViscosity>
     <rotationSpeeds>10~20</rotationSpeeds>
     <blockTurretTracking>true</blockTurretTracking>
     <accuracyPenalty>0.6</accuracyPenalty>

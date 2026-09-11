@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <TeleCore.RW.Research.Defs.TResearchDef>
+    <defName>ForgottenExperimental1</defName>
+    <label>Join the Forgotten</label>
+    <researchType>experimental content</researchType>
+    <description>Unlock the Forgotten technology and their scrap-built weapons and apparel.</description>
+    <relevantPawnStat>ResearchSpeed</relevantPawnStat>
+    <relevantTargetStat>ResearchSpeedFactor</relevantTargetStat>
+    <requisites>
+      <tiberiumResearch>
+        <li>GreenSky</li>
+      </tiberiumResearch>
+    </requisites>
+    <tasks>
+      <li>ForgottenUnlock1</li>
+    </tasks>
+  </TeleCore.RW.Research.Defs.TResearchDef>
+
+  <TeleCore.RW.Research.Defs.TResearchTaskDef>
+    <defName>ForgottenUnlock1</defName>
+    <label>Join the Forgotten</label>
+    <descriptionShort>Study the Forgotten mutants and their improvised technology.</descriptionShort>
+    <skillRequirements>
+      <Social>3</Social>
+      <Intellectual>3</Intellectual>
+    </skillRequirements>
+    <taskTarget>
+      <targetType>Building_CommsConsole</targetType>
+    </taskTarget>
+    <images>
+      <li>UI/Research/Projects/FactionEmblem/F_Forg</li>
+    </images>
+    <workType>Research</workType>
+    <workAmount>1000</workAmount>
+  </TeleCore.RW.Research.Defs.TResearchTaskDef>
+
+</Defs>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TR.Refinery.BillsTab>Tiberium bills</TR.Refinery.BillsTab>
+  <TR.Refinery.Bills.MarketValue>{0}'s market value.</TR.Refinery.Bills.MarketValue>
+  <TR.Refinery.Bills.CostFactor>Tiberium cost factor</TR.Refinery.Bills.CostFactor>
+  <TR.Refinery.Bills.Name>Bill name: </TR.Refinery.Bills.Name>
+  <TR.Refinery.Bills.Work>Work to do: {0}</TR.Refinery.Bills.Work>
+  <TR.Refinery.Bills.Cost>Cost: {0}</TR.Refinery.Bills.Cost>
+  <TR.Network.Credits>Tiberium Credits</TR.Network.Credits>
+  <TR.Network.Credits.Total>Total: {0}</TR.Network.Credits.Total>
+  <TR.Refinery.HarvestZone.Label>Harvest Zone</TR.Refinery.HarvestZone.Label>
+  <TR.Refinery.HarvestZone.Description>Creates a zone boundary for this refinery's harvesters.</TR.Refinery.HarvestZone.Description>
+  <TR.Refinery.HarvestZone.Create>Zone on Source</TR.Refinery.HarvestZone.Create>
+  <TR.Refinery.HarvestZone.Create.Description>Creates a harvest zone boundary from the selected Tiberium field for this refinery's harvesters.</TR.Refinery.HarvestZone.Create.Description>
+  <TR.Refinery.HarvestZone.Remove>Remove Zone</TR.Refinery.HarvestZone.Remove>
+  <TR.Refinery.HarvestZone.Remove.Description>Deletes the current harvest zone boundary, allowing the harvesters to roam for Tiberium freely.</TR.Refinery.HarvestZone.Remove.Description>
+  <TR.Refinery.ResumeWork>Resume Work</TR.Refinery.ResumeWork>
+  <TR.Refinery.RecallHarvesters>Recall Harvesters</TR.Refinery.RecallHarvesters>
+  <TR.Refinery.RecallHarvesters.Description>Recall all harvesters assigned to this refinery.</TR.Refinery.RecallHarvesters.Description>
+  <TR.Refinery.Lost>Refinery lost.</TR.Refinery.Lost>
+  <TR.Harvesters.Mode.Label>Harvest Mode</TR.Harvesters.Mode.Label>
+  <TR.Harvesters.Mode.Description>Set the behaviour of the harvester.</TR.Harvesters.Mode.Description>
+  <TR.Harvesters.Mode.Nearest>Nearest</TR.Harvesters.Mode.Nearest>
+  <TR.Harvesters.Mode.MostValuable>Most Valuable</TR.Harvesters.Mode.MostValuable>
+  <TR.Harvesters.Mode.Moss>Moss</TR.Harvesters.Mode.Moss>
+  <TR.Harvesters.Actions.Harvest>Harvest</TR.Harvesters.Actions.Harvest>
+  <TR.Harvesters.Actions.Return>Return to Refinery</TR.Harvesters.Actions.Return>
+  <TR.Harvesters.Actions.Return.Description>Recall the harvester to its refinery.</TR.Harvesters.Actions.Return.Description>
+  <TR.Harvesters.MainRefinery.Label>Set Main Refinery</TR.Harvesters.MainRefinery.Label>
+  <TR.Harvesters.MainRefinery.Description>Select the refinery that the harvester should prioritize.</TR.Harvesters.MainRefinery.Description>
+  <TR.Harvesters.MainRefinery.Set>New refinery set!</TR.Harvesters.MainRefinery.Set>
+  <TR.Harvesters.Status.IdleLastSafePlace>Idling at last safe place.</TR.Harvesters.Status.IdleLastSafePlace>
+  <TR.Harvesters.Status.IdleAtRefinery>Idling at refinery.</TR.Harvesters.Status.IdleAtRefinery>
+  <TR.Harvesters.Status.Harvesting>Harvesting {0}.</TR.Harvesters.Status.Harvesting>
+  <TR.Harvesters.Moss.Eradicate>Eradicate Moss</TR.Harvesters.Moss.Eradicate>
+</LanguageData>

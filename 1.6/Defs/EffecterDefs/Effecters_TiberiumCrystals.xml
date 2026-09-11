@@ -5,7 +5,8 @@
     <tickInterval>3000</tickInterval>
     <children>
       <li>
-        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
         <fleckDef>Fleck_TiberiumFog_Green</fleckDef>
         <scale>3~5.5</scale>
         <chancePerTick>0.075</chancePerTick>
@@ -22,7 +23,8 @@
     <tickInterval>2500</tickInterval>
     <children>
       <li>
-        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
         <fleckDef>Fleck_TiberiumFog_Blue</fleckDef>
         <scale>3~5.5</scale>
         <chancePerTick>0.075</chancePerTick>
@@ -39,7 +41,8 @@
     <tickInterval>2500</tickInterval>
     <children>
       <li>
-        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
         <fleckDef>Fleck_TiberiumFog_Red</fleckDef>
         <scale>3~5.5</scale>
         <chancePerTick>0.075</chancePerTick>
@@ -47,6 +50,36 @@
         <positionRadius>0.5</positionRadius>
         <spawnLocType>RandomCellOnTarget</spawnLocType>
         <speed>0.01~0.1</speed>
+      </li>
+    </children>
+  </TeleCore.RW.TeleEffecterDef>
+
+  <TeleCore.RW.TeleEffecterDef>
+    <defName>TiberiumClouds_Cruentus</defName>
+    <tickInterval>2000</tickInterval>
+    <children>
+      <li Class="TeleCore.RW.SubEffecterExtendedDef">
+        <subEffecterClass>TeleCore.RW.SubEffecter_FX</subEffecterClass>
+        <fleckDef>Fleck_IonCloud</fleckDef>
+        <effectMode>Burst</effectMode>
+        <throwInterval>45~90</throwInterval>
+        <positionOffset>(0,0,2.55)</positionOffset>
+        <positionRadius>0.99</positionRadius>
+        <scale>2.5~3.5</scale>
+        <angle>0~360</angle>
+        <speed>0.1~0.15</speed>
+        <spawnLocType>RandomCellOnTarget</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckDef>Fleck_TiberiumCloudLightning</fleckDef>
+        <burstCount>1~3</burstCount>
+        <chancePerTick>0.003</chancePerTick>
+        <positionOffset>(0,0,2.5)</positionOffset>
+        <positionRadius>1.19</positionRadius>
+        <scale>1.5~3.5</scale>
+        <angle>0~360</angle>
+        <speed>0</speed>
       </li>
     </children>
   </TeleCore.RW.TeleEffecterDef>

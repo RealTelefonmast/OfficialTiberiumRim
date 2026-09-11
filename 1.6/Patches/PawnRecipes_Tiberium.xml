@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Recovered from TiberiumRim-1.3 PawnPatches.xml. Keep the recipe defs
+       separate so the Human surgery surface is easy to audit. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName="Human"]/recipes</xpath>
+    <value>
+      <li>AddTiberiumSkin</li>
+      <li>RemoveTiberiumSample</li>
+    </value>
+  </Operation>
+</Patch>

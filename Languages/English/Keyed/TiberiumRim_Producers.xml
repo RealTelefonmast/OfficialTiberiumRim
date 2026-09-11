@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TR.Producers.Debug.Tab>Tiberium producer (debug)</TR.Producers.Debug.Tab>
+  <TR.Producers.Residue.Remove>Remove residue</TR.Producers.Residue.Remove>
+  <TR.Network.Containers.Debug.Options>Container options (debug)</TR.Network.Containers.Debug.Options>
+  <TR.Network.Containers.Debug.AddRgb>Add RGB</TR.Network.Containers.Debug.AddRgb>
+  <TR.Network.Containers.Debug.AddGas>Add gas</TR.Network.Containers.Debug.AddGas>
+  <TR.Network.Containers.Debug.AddGreen>Add green</TR.Network.Containers.Debug.AddGreen>
+  <TR.Network.Containers.Debug.AddBlue>Add blue</TR.Network.Containers.Debug.AddBlue>
+  <TR.Network.Containers.Debug.AddRed>Add red</TR.Network.Containers.Debug.AddRed>
+  <TR.Network.Containers.Debug.AddSludge>Add sludge</TR.Network.Containers.Debug.AddSludge>
+  <TR.Network.Containers.Debug.Clear>Clear container</TR.Network.Containers.Debug.Clear>
+  <TR.Producers.Debug.State.Header>State</TR.Producers.Debug.State.Header>
+  <TR.Producers.Debug.State.Location>Position: {0} | Ground zero: {1}</TR.Producers.Debug.State.Location>
+  <TR.Producers.Debug.State.Maturity>Mature: {0} | Woken: {1}</TR.Producers.Debug.State.Maturity>
+  <TR.Producers.Debug.State.FieldCells>Field cells: {0}</TR.Producers.Debug.State.FieldCells>
+  <TR.Producers.Debug.State.BoundCrystals>Bound crystals: {0}</TR.Producers.Debug.State.BoundCrystals>
+  <TR.Producers.Debug.State.GrowingCrystals>Growing crystals: {0}</TR.Producers.Debug.State.GrowingCrystals>
+  <TR.Producers.Debug.State.Paths>Paths: {0}</TR.Producers.Debug.State.Paths>
+  <TR.Producers.Debug.State.TicksToMature>Ticks to mature: {0}</TR.Producers.Debug.State.TicksToMature>
+  <TR.Producers.Debug.State.TicksUntilSpawn>Ticks until spawn: {0}</TR.Producers.Debug.State.TicksUntilSpawn>
+  <TR.Producers.Debug.State.TicksUntilSpore>Ticks until spore: {0}</TR.Producers.Debug.State.TicksUntilSpore>
+  <TR.Producers.Debug.State.Evolution>Evolution: {0}</TR.Producers.Debug.State.Evolution>
+  <TR.Producers.Debug.Actions.Header>Actions</TR.Producers.Debug.Actions.Header>
+  <TR.Producers.Debug.Actions.SpawnNearby>Spawn nearby Tiberium</TR.Producers.Debug.Actions.SpawnNearby>
+  <TR.Producers.Debug.Actions.SpawnConfigured>Spawn configured Tiberium</TR.Producers.Debug.Actions.SpawnConfigured>
+  <TR.Producers.Debug.Actions.SpawnBlossomSpore>Spawn blossom spore</TR.Producers.Debug.Actions.SpawnBlossomSpore>
+  <TR.Producers.Debug.Actions.SpawnSpores>Spawn 120 spores</TR.Producers.Debug.Actions.SpawnSpores>
+  <TR.Producers.Debug.Actions.KillBound>Kill bound Tiberium</TR.Producers.Debug.Actions.KillBound>
+  <TR.Producers.Debug.Actions.MakeMature>Make mature</TR.Producers.Debug.Actions.MakeMature>
+  <TR.Producers.Debug.Actions.MatureHalfDay>Mature by half a day</TR.Producers.Debug.Actions.MatureHalfDay>
+  <TR.Producers.Debug.Actions.GrowAndSpreadOnce>Run one growth and spread pass</TR.Producers.Debug.Actions.GrowAndSpreadOnce>
+  <TR.Producers.Debug.Actions.ToggleGlow>Toggle glow</TR.Producers.Debug.Actions.ToggleGlow>
+  <TR.Producers.Debug.Actions.TrySpread>Try spread</TR.Producers.Debug.Actions.TrySpread>
+  <TR.Producers.Debug.Actions.Grow>Grow</TR.Producers.Debug.Actions.Grow>
+  <TR.Producers.Debug.Actions.StartGasBurst>Start gas burst</TR.Producers.Debug.Actions.StartGasBurst>
+  <TR.Producers.Debug.Actions.MutateArea>Mutate area</TR.Producers.Debug.Actions.MutateArea>
+  <TR.Producers.Debug.Actions.GrowBlossomTree>Grow blossom tree</TR.Producers.Debug.Actions.GrowBlossomTree>
+  <TR.Producers.Debug.Actions.SendSpore>Send blossom spore</TR.Producers.Debug.Actions.SendSpore>
+  <TR.Producers.Spore.Letter.Label>Blossom spore</TR.Producers.Spore.Letter.Label>
+  <TR.Producers.Spore.Letter.Text>A blossom spore has appeared and will fly to a nearby destination.</TR.Producers.Spore.Letter.Text>
+  <TR.Producers.Debug.Simulation.Header>Simulation toggles</TR.Producers.Debug.Simulation.Header>
+  <TR.Producers.Debug.Simulation.StopGrowth>Stop growth</TR.Producers.Debug.Simulation.StopGrowth>
+  <TR.Producers.Debug.Simulation.FastGrowthForce>Fast growth (force grow)</TR.Producers.Debug.Simulation.FastGrowthForce>
+  <TR.Producers.Debug.Simulation.FastGrowthSpreader>Fast growth (spreader)</TR.Producers.Debug.Simulation.FastGrowthSpreader>
+  <TR.Producers.Debug.Simulation.TurnOffGlow>Turn off glow</TR.Producers.Debug.Simulation.TurnOffGlow>
+  <TR.Producers.Debug.Legacy.NoGrowth>No growth (legacy control)</TR.Producers.Debug.Legacy.NoGrowth>
+  <TR.Producers.Debug.Legacy.NoSpread>No spread (legacy control)</TR.Producers.Debug.Legacy.NoSpread>
+  <TR.Producers.Debug.Legacy.NoTerrain>No terrain changes (legacy control)</TR.Producers.Debug.Legacy.NoTerrain>
+  <TR.Producers.Debug.Legacy.NoReprint>No field reprint (legacy control)</TR.Producers.Debug.Legacy.NoReprint>
+  <TR.Producers.Debug.Overlays.Header>Overlays</TR.Producers.Debug.Overlays.Header>
+  <TR.Producers.Debug.Overlays.TiberiumGrid>Tiberium grid</TR.Producers.Debug.Overlays.TiberiumGrid>
+  <TR.Producers.Debug.Overlays.ForceGrowCells>Force-grow cells</TR.Producers.Debug.Overlays.ForceGrowCells>
+  <TR.Producers.Debug.Overlays.GrowFromCells>Grow-from cells</TR.Producers.Debug.Overlays.GrowFromCells>
+  <TR.Producers.Debug.Overlays.GrowToCells>Grow-to cells</TR.Producers.Debug.Overlays.GrowToCells>
+  <TR.Producers.Debug.Overlays.AffectedCells>Affected cells</TR.Producers.Debug.Overlays.AffectedCells>
+  <TR.Producers.Debug.Overlays.FieldCells>Field cells (legacy control)</TR.Producers.Debug.Overlays.FieldCells>
+  <TR.Producers.Debug.Overlays.AffectedTiles>Affected tiles (legacy control)</TR.Producers.Debug.Overlays.AffectedTiles>
+  <TR.Producers.Debug.Overlays.ProtectedTiles>Show protected tiles</TR.Producers.Debug.Overlays.ProtectedTiles>
+  <TR.Producers.Debug.Overlays.AllowedTiles>Show allowed tiles</TR.Producers.Debug.Overlays.AllowedTiles>
+  <TR.Producers.Debug.Overlays.SuppressedTiles>Show suppressed tiles</TR.Producers.Debug.Overlays.SuppressedTiles>
+  <TR.Producers.Debug.Overlays.TileIterator>Tile iterator (legacy control)</TR.Producers.Debug.Overlays.TileIterator>
+  <TR.Producers.Debug.Overlays.PotentialField>Potential field (legacy control)</TR.Producers.Debug.Overlays.PotentialField>
+  <TR.Producers.Debug.Overlays.ShowRemainingCells>Show remaining cells</TR.Producers.Debug.Overlays.ShowRemainingCells>
+  <TR.Producers.Debug.Overlays.ShowField>Show field</TR.Producers.Debug.Overlays.ShowField>
+  <TR.Producers.Debug.Inspect.Field>Tiberium field:</TR.Producers.Debug.Inspect.Field>
+  <TR.Producers.Debug.Inspect.FieldSize>Field size: {0}</TR.Producers.Debug.Inspect.FieldSize>
+  <TR.Producers.Debug.Inspect.Crystals>Tiberium crystals: {0}</TR.Producers.Debug.Inspect.Crystals>
+  <TR.Producers.Debug.Inspect.GrowingCrystals>Growing crystals: {0}</TR.Producers.Debug.Inspect.GrowingCrystals>
+  <TR.Producers.Debug.Inspect.TotalValue>Total field value: {0}</TR.Producers.Debug.Inspect.TotalValue>
+  <TR.Producers.Debug.Inspect.FastGrowth>Fast growth enabled: {0}</TR.Producers.Debug.Inspect.FastGrowth>
+  <TR.Producers.Debug.Inspect.IterationTick>Iteration tick: {0}</TR.Producers.Debug.Inspect.IterationTick>
+  <TR.Producers.Debug.Inspect.ShouldSpawnSpore>Should spawn spore: {0}</TR.Producers.Debug.Inspect.ShouldSpawnSpore>
+  <TR.Crystals.HarvestValue>Current value</TR.Crystals.HarvestValue>
+  <TR.Crystals.DyingToInhibition>Dying due to sonic waves.</TR.Crystals.DyingToInhibition>
+  <TR.Veins.Egg.Hatch>Hatches in {0}.</TR.Veins.Egg.Hatch>
+</LanguageData>

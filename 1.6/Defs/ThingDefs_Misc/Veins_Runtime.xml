@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Recovered runtime support for the active VeinholeSystem. -->
+  <TeleCore.RW.HomingThingDef>
+    <defName>VeinGasCloud</defName>
+    <thingClass>TiberiumRim.VeinGasCloud</thingClass>
+    <label>gas cloud</label>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>FX/Clouds/GasCloudSoft</texPath>
+    </graphicData>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <speed>0.2~0.5</speed>
+    <destroyOnArrival>false</destroyOnArrival>
+    <liveTime>25</liveTime>
+  </TeleCore.RW.HomingThingDef>
+
+  <ThingDef ParentName="EtherealThingBase_TR">
+    <defName>VeinTentacle</defName>
+    <thingClass>Building</thingClass>
+    <label>vein tentacle</label>
+    <graphicData>
+      <texPath>Map/Things/Tiberium/Producers/Veinhole/Tentacle</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <altitudeLayer>LowPlant</altitudeLayer>
+    <rotatable>false</rotatable>
+    <destroyable>false</destroyable>
+    <selectable>false</selectable>
+    <size>(1,1)</size>
+    <neverOverlapFloors>true</neverOverlapFloors>
+    <blockPlants>true</blockPlants>
+    <building>
+      <isEdifice>false</isEdifice>
+      <claimable>false</claimable>
+      <deconstructible>false</deconstructible>
+    </building>
+  </ThingDef>
+</Defs>

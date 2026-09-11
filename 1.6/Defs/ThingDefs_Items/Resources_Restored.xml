@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Restored from the 1.3/master reference. The donor used the old
+       Items/Resource path; the active texture tree uses the normalized
+       Map/Things/Items/Resources layout. -->
+  <ThingDef ParentName="ResourceBase_TR">
+    <defName>TRBattleChip</defName>
+    <label>battle control circuit</label>
+    <description>Our advanced weaponry, including mechanical units and high-tech turrets, require this circuit to operate.</description>
+    <graphicData>
+      <texPath>Map/Things/Items/Resources/BattleChip</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <stackLimit>25</stackLimit>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>250</MarketValue>
+      <Mass>0.25</Mass>
+      <Flammability>1</Flammability>
+      <DeteriorationRate>1.25</DeteriorationRate>
+    </statBases>
+    <tradeability>Sellable</tradeability>
+    <tradeTags>
+      <li>Exotic</li>
+    </tradeTags>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+  </ThingDef>
+
+</Defs>

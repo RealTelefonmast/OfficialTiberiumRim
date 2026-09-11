@@ -5,10 +5,10 @@
     <label>Ion Cannon Attack Satellite</label>
     <description>.</description>
     <worldObjectClass>TiberiumRim.AttackSatellite_Ion</worldObjectClass>
-    <texture>Buildings/GDI/Defense/IonCannon/ASat</texture>
+    <texture>World/Satellites/ASATIon/ASat</texture>
     <useDynamicDrawer>true</useDynamicDrawer>
     <expandingIcon>true</expandingIcon>
-    <expandingIconTexture>Buildings/GDI/Defense/IonCannon/ASat</expandingIconTexture>
+    <expandingIconTexture>World/Satellites/ASATIon/ASat</expandingIconTexture>
     <expandingIconPriority>10</expandingIconPriority>
   </WorldObjectDef>
   <!--

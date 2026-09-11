@@ -66,4 +66,40 @@
     <statBases><MaxHitPoints>30</MaxHitPoints><DeteriorationRate>2</DeteriorationRate><MarketValue>15</MarketValue><Mass>0.1</Mass><Flammability>0.50</Flammability></statBases>
     <thingCategories><li>TiberiumItems</li></thingCategories><stackLimit>75</stackLimit>
   </ThingDef>
+  <ThingDef ParentName="ResourceBase_TR">
+    <defName>GreenTiberiumRaw</defName><label>raw green Tiberium crystal</label>
+    <description>A raw green Tiberium crystal. It is highly toxic and should be handled with care.</description>
+    <graphicData><texPath>Map/Things/Items/Resources/Resource_TiberiumGreen</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <resourceReadoutPriority>First</resourceReadoutPriority><soundInteract>Silver_Drop</soundInteract><soundDrop>Silver_Drop</soundDrop>
+    <statBases><MaxHitPoints>75</MaxHitPoints><MarketValue>15</MarketValue><Mass>0.1</Mass></statBases>
+    <thingCategories><li>TiberiumItems</li></thingCategories><stackLimit>150</stackLimit><leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <killedLeavings><TiberiumGreen>6</TiberiumGreen></killedLeavings>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase_TR">
+    <defName>BlueTiberiumRaw</defName><label>raw blue Tiberium crystal</label>
+    <description>A raw blue Tiberium crystal. It is highly toxic and should be handled with care.</description>
+    <graphicData><texPath>Map/Things/Items/Resources/Resource_TiberiumBlue</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <resourceReadoutPriority>First</resourceReadoutPriority><soundInteract>Silver_Drop</soundInteract><soundDrop>Silver_Drop</soundDrop>
+    <statBases><MaxHitPoints>75</MaxHitPoints><MarketValue>30</MarketValue><Mass>0.2</Mass></statBases>
+    <thingCategories><li>TiberiumItems</li></thingCategories><stackLimit>150</stackLimit><leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <killedLeavings><TiberiumBlue>5</TiberiumBlue></killedLeavings>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase_TR">
+    <defName>RedTiberiumRaw</defName><label>raw red Tiberium crystal</label>
+    <description>A raw red Tiberium crystal. It is highly toxic and should be handled with care.</description>
+    <graphicData><texPath>Map/Things/Items/Resources/Resource_TiberiumRed</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <resourceReadoutPriority>First</resourceReadoutPriority><soundInteract>Silver_Drop</soundInteract><soundDrop>Silver_Drop</soundDrop>
+    <statBases><MaxHitPoints>75</MaxHitPoints><MarketValue>100</MarketValue><Mass>0.5</Mass></statBases>
+    <thingCategories><li>TiberiumItems</li></thingCategories><stackLimit>150</stackLimit><leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <killedLeavings><TiberiumRed>2</TiberiumRed></killedLeavings>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase_TR">
+    <defName>VeinTiberiumRaw</defName><label>raw vein</label>
+    <description>A harvested vein. It is unknown how this creature works, and why the veins act similar to crystals.</description>
+    <graphicData><texPath>Map/Things/Items/Resources/Resource_TiberiumVein</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <resourceReadoutPriority>First</resourceReadoutPriority><soundInteract>Wood_Drop</soundInteract><soundDrop>Wood_Drop</soundDrop>
+    <statBases><MaxHitPoints>100</MaxHitPoints><Mass>0.6</Mass><MarketValue>75</MarketValue></statBases>
+    <thingCategories><li>TiberiumItems</li></thingCategories><stackLimit>150</stackLimit><leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <killedLeavings><TiberiumVein>4</TiberiumVein></killedLeavings>
+  </ThingDef>
 </Defs>

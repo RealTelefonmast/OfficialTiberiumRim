@@ -82,6 +82,65 @@
 		<fadeOutTime>2</fadeOutTime>
 	</FleckDef>
 	
+	<FleckDef ParentName="FleckBaseThrown_TR">
+		<defName>Fleck_IonCloud</defName>
+		<graphicData>
+			<texPath>FX/Gas/GasMote</texPath>
+			<shaderType>MetaOverlay</shaderType>
+			<color>(75,75,75,110)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<collide>true</collide>
+		<fadeInTime>2</fadeInTime>
+		<solidTime>2</solidTime>
+		<fadeOutTime>2</fadeOutTime>
+	</FleckDef>
+	
+	<!-- Short-lived producer fog puffs (old FleckBase_TibFog values), used by the
+	     TibProducerClouds* interval effecters. The Fleck_TiberiumFog_* variants above
+	     are field fog (40s lifetime) and would over-accumulate on producers. -->
+	<FleckDef ParentName="FleckBaseThrown_TR">
+		<defName>Fleck_ProducerFog_Green</defName>
+		<graphicData>
+			<texPath>FX/Gas/GasMote</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<color>(15,255,55,125)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<collide>true</collide>
+		<fadeInTime>2</fadeInTime>
+		<solidTime>3</solidTime>
+		<fadeOutTime>5</fadeOutTime>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBaseThrown_TR">
+		<defName>Fleck_ProducerFog_Blue</defName>
+		<graphicData>
+			<texPath>FX/Gas/GasMote</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<color>(15,125,255,125)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<collide>true</collide>
+		<fadeInTime>2</fadeInTime>
+		<solidTime>3</solidTime>
+		<fadeOutTime>5</fadeOutTime>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBaseThrown_TR">
+		<defName>Fleck_ProducerFog_Red</defName>
+		<graphicData>
+			<texPath>FX/Gas/GasMote</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<color>(255,15,115,125)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<collide>true</collide>
+		<fadeInTime>2</fadeInTime>
+		<solidTime>3</solidTime>
+		<fadeOutTime>5</fadeOutTime>
+	</FleckDef>
+	
 
 	<!-- EXPLOSIONS -->
 	
@@ -572,4 +631,17 @@
 		</mote>
 	</ThingDef>
 	-->
+  <FleckDef ParentName="FleckBase_TR">
+    <defName>Fleck_VeinholePusher</defName>
+    <graphicData>
+      <texPath>Map/Things/Tiberium/Crystals/Veins/Vein5</texPath>
+      <renderInstanced>true</renderInstanced>
+      <graphicClass>Graphic_Fleck</graphicClass>
+    </graphicData>
+    <altitudeLayer>Item</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>2</solidTime>
+    <fadeOutTime>0</fadeOutTime>
+    <growthRate>-0.35</growthRate>
+  </FleckDef>
 </Defs>

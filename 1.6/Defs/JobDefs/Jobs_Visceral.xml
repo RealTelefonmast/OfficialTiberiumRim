@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>FormAmalgamation</defName>
+    <driverClass>TiberiumRim.AI.Jobs.JobDriver_FormAmalgamation</driverClass>
+    <reportString>TR.Visceral.Jobs.FormAmalgamation</reportString>
+  </JobDef>
+</Defs>

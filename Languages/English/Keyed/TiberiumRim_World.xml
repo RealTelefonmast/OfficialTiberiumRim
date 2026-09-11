@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TR.World.CoverageSlider>Starting Tiberium coverage</TR.World.CoverageSlider>
+  <TR.IonCannon.Order>Order Ion Cannon strike</TR.IonCannon.Order>
+  <TR.IonCannon.OrderDesc>Designate a target for the Ion Cannon.</TR.IonCannon.OrderDesc>
+  <TR.Producers.GroundZero>Ground Zero</TR.Producers.GroundZero>
+  <TR.Environment.Deterioration>tiberium exposure</TR.Environment.Deterioration>
+  <TR.World.InfestationLevel>Tiberium Infestation: {0}</TR.World.InfestationLevel>
+  <TR.Discovery.NotDiscovered>This object can be discovered.</TR.Discovery.NotDiscovered>
+  <TR.Discovery.Discover>Discover</TR.Discovery.Discover>
+  <TR.Veins.Debug.SpawnHub>Debug: spawn hub</TR.Veins.Debug.SpawnHub>
+  <TR.Veins.Debug.SpawnEgg>Debug: spawn egg</TR.Veins.Debug.SpawnEgg>
+  <TR.Meteorite.Debug.FinishResearch>Finish research (debug)</TR.Meteorite.Debug.FinishResearch>
+  <TR.Meteorite.Debug.CrackOpen>Crack open (debug)</TR.Meteorite.Debug.CrackOpen>
+  <TR.SuperWeapons.ResetCooldown>Reset cooldown</TR.SuperWeapons.ResetCooldown>
+  <TR.SuperWeapons.Temple.OriginAnimation>Play origin animation</TR.SuperWeapons.Temple.OriginAnimation>
+  <TR.SuperWeapons.Temple.RemoveOverlays>Toggle overlays</TR.SuperWeapons.Temple.RemoveOverlays>
+  <TR.SegmentedPawn.AddSegment>Add segment</TR.SegmentedPawn.AddSegment>
+  <TR.Weapons.SwitchProjectile>Switch projectile</TR.Weapons.SwitchProjectile>
+  <TR.Weapons.CurrentProjectile>Current projectile: {0}</TR.Weapons.CurrentProjectile>
+  <TR.Debug.BigCopyTest>Big copy test</TR.Debug.BigCopyTest>
+  <TR.Stats.IsMechanoid>Is Mechanoid</TR.Stats.IsMechanoid>
+  <TR.Network.PowerLeft>{0} of power left.</TR.Network.PowerLeft>
+  <TR.RepairDrones.Count>Repair drones: {0}</TR.RepairDrones.Count>
+  <TR.Meteorite.ResearchBound>Bound to crane.</TR.Meteorite.ResearchBound>
+  <TR.Meteorite.TimeLeft>{0} until breakdown.</TR.Meteorite.TimeLeft>
+  <TR.Scrin.Arrival.StartDialogue>An unknown Scrin presence has arrived. Prepare for contact.</TR.Scrin.Arrival.StartDialogue>
+  <TR.Scrin.Designator.Landing.Label>Scrin landing</TR.Scrin.Designator.Landing.Label>
+  <TR.Scrin.Designator.Landing.Description>Designate a landing site for Scrin forces.</TR.Scrin.Designator.Landing.Description>
+  <TR.Nod.Designator.Nuke.Label>Nod nuke</TR.Nod.Designator.Nuke.Label>
+  <TR.Nod.Designator.Nuke.Description>Designate a target for a Nod nuclear strike.</TR.Nod.Designator.Nuke.Description>
+  <TR.World.AttackSatellite.SetTarget>Set target</TR.World.AttackSatellite.SetTarget>
+  <TR.World.AttackSatellite.Spy>Spy</TR.World.AttackSatellite.Spy>
+  <TR.RepairDrones.AddDrone>Add drone</TR.RepairDrones.AddDrone>
+  <TR.RepairDrones.Garage>Garage: {0}</TR.RepairDrones.Garage>
+  <TR.RepairDrones.Linked>Linked: {0}</TR.RepairDrones.Linked>
+  <TR.World.Tile.Coverage>Coverage: {0}</TR.World.Tile.Coverage>
+</LanguageData>

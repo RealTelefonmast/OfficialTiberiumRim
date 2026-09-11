@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-  <DesignationCategoryDef>
-    <defName>Atmospheric</defName>
-    <label>atmospheric</label>
-  </DesignationCategoryDef>
   <HediffDef>
     <defName>VisceralMutation</defName>
     <label>visceral mutation</label>

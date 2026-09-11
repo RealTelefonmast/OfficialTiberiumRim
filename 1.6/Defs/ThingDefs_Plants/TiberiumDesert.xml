@@ -42,7 +42,7 @@
       <Beauty>15</Beauty>
     </statBases>
     <graphicData>
-      <texPath>Map/Things/Tiberium/Crystals/Green/Desert</texPath>
+      <texPath>Map/Things/Tiberium/Crystals/Blue/Desert</texPath>
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <selectable>true</selectable>

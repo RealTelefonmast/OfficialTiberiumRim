@@ -400,6 +400,8 @@ FodyWeavers.xsd
 *.iml
 
 # AI assistants and agent-local metadata
+.agents/
+AGENTS.md
 AGENTS.override.md
 CLAUDE.md
 CLAUDE.local.md
@@ -454,3 +456,6 @@ $RECYCLE.BIN/
 
 # Local documentation workspace
 Source/Obsidian/
+
+# Private migration and audit manifests are stored in the Source/Org submodule
+Source/MigrationManifests/

@@ -176,7 +176,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>IonBeamBurn</defName>
 		<graphicData>
-			<texPath>UI/Elements/Designator/CommandBackground</texPath>
+			<texPath>Things/Mote/PowerBeam</texPath>
 			<shaderType>MoteGlow</shaderType>
 		</graphicData>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
@@ -193,7 +193,7 @@
 		<defName>IonParticle</defName>
 		<thingClass>TiberiumRim.TRMote</thingClass>
 		<graphicData>
-			<texPath>FX/Beams/Beam_EndGlow</texPath>
+			<texPath>FX/Particles/IonParticle</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>(1,1)</drawSize>
 		</graphicData>
@@ -211,7 +211,7 @@
 		<defName>IonAscensionCloud</defName>
 		<thingClass>TiberiumRim.TRMote</thingClass>
 		<graphicData>
-			<texPath>FX/Beams/Beam_EndGlow</texPath>
+			<texPath>FX/Clouds/ParticleCloud_01</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>(1,1)</drawSize>
 		</graphicData>
@@ -235,7 +235,7 @@
 			<growthRate>0</growthRate>
 		</mote>
 		<graphicData>
-			<texPath>UI/Elements/Designator/CommandBackground</texPath>
+			<texPath>Things/Mote/Black</texPath>
 			<shaderType>MoteGlowDistortBackground</shaderType>
 			<shaderParameters>
 				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
@@ -256,7 +256,7 @@
 			<growthRate>0</growthRate>
 		</mote>
 		<graphicData>
-			<texPath>UI/Elements/Designator/CommandBackground</texPath>
+			<texPath>Things/Mote/Black</texPath>
 			<shaderType>MoteGlowDistortBackground</shaderType>
 			<shaderParameters>
 				<_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
@@ -271,7 +271,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>IonBubble</defName>
 		<graphicData>
-			<texPath>UI/Elements/Designator/CommandBackground</texPath>
+			<texPath>Things/Mote/PowerBeam</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<drawSize>6</drawSize>
 		</graphicData>
@@ -306,7 +306,7 @@
 	<ThingDef ParentName="MoteBase_TR">
 		<defName>IonBurnMark</defName>
 		<graphicData>
-			<texPath>UI/Elements/Designator/CommandBackground</texPath>
+			<texPath>Things/Mote/PowerBeam</texPath>
 			<shaderType>MoteGlow</shaderType>
 			<color>(255,240,200.200)</color>
 			<drawSize>1</drawSize>

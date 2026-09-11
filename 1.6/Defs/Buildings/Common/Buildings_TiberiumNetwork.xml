@@ -374,6 +374,7 @@
         <category>Processing</category>
       </li>
     </modExtensions>
+    <uiIconPath>Map/Things/Buildings/Common/Production/Refinery/Common_Refinery_Base_north</uiIconPath>
   </TiberiumRim.TRThingDef>
   <TiberiumRim.TRThingDef ParentName="NetworkStationBase">
     <defName>TR_TiberiumSpike</defName>
@@ -526,7 +527,7 @@
       </tiberiumResearchTasks>
     </requisites>
     <comps>
-      <li Class="TeleCore.RW.Networks.Comps.Properties.CompProperties_Network">
+      <li Class="TiberiumRim.CompProperties_TNS">
         <networks>
           <li>
             <networkDef>TiberiumNetwork</networkDef>
@@ -591,12 +592,29 @@
         <fxLayers>
           <li>
             <graphicData>
-              <texPath>Map/Things/Buildings/Common/Production/PowerPlant/Common_PowerPlant_Overlay_Fluid</texPath>
+              <texPath>Map/Things/Buildings/Common/Production/PowerPlant/Common_PowerPlant_Overlay_Base</texPath>
               <graphicClass>Graphic_Single</graphicClass>
-              <shaderType>MoteGlow</shaderType>
+              <shaderType>MaskedFlowMap</shaderType>
               <drawSize>(5,5)</drawSize>
+              <shaderParameters>
+                <_FlowSpeed>0.375</_FlowSpeed>
+                <_BlendOpacity>0.5</_BlendOpacity>
+                <!-- SrcAlpha/One: weights the additive contribution by _Color.a, which the FX
+                    layer drives with the network fill percent (FX_GetOpacity). -->
+                <MySrcMode>5</MySrcMode>
+                <MyDstMode>1</MyDstMode>
+              </shaderParameters>
             </graphicData>
+            <textureParams>
+              <_BaseTex>Map/Things/Buildings/Common/Production/PowerPlant/Common_PowerPlant_Overlay_Base</_BaseTex>
+              <_BlendTex1>Map/Things/Buildings/Common/Production/PowerPlant/Common_PowerPlant_Overlay_Flow1</_BlendTex1>
+              <_BlendTex2>Map/Things/Buildings/Common/Production/PowerPlant/Common_PowerPlant_Overlay_Flow2</_BlendTex2>
+              <_FlowMap>Map/Things/Buildings/Common/Production/PowerPlant/Common_PowerPlant_Overlay_FlowMap</_FlowMap>
+              <_MaskTex>Map/Things/Buildings/Common/Production/PowerPlant/Common_PowerPlant_Overlay_Mask</_MaskTex>
+            </textureParams>
             <fxMode>Dynamic</fxMode>
+            <categoryTag>FXNetwork</categoryTag>
+            <layerTag>Container</layerTag>
           </li>
           <li>
             <graphicData>
@@ -604,6 +622,8 @@
               <graphicClass>Graphic_Single</graphicClass>
               <drawSize>(5,5)</drawSize>
             </graphicData>
+            <categoryTag>FXNetwork</categoryTag>
+            <layerTag>Connection</layerTag>
           </li>
         </fxLayers>
         <effectLayers>

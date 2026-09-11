@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TR.Difficulty.Easy>Easy</TR.Difficulty.Easy>
+  <TR.Difficulty.Easy.Description>Lower environmental pressure and gentler Tiberium progression.</TR.Difficulty.Easy.Description>
+  <TR.Difficulty.Standard>Standard</TR.Difficulty.Standard>
+  <TR.Difficulty.Standard.Description>Standard Tiberium progression and environmental pressure.</TR.Difficulty.Standard.Description>
+  <TR.Difficulty.Hard>Hard</TR.Difficulty.Hard>
+  <TR.Difficulty.Hard.Description>Higher environmental pressure and more dangerous Tiberium progression.</TR.Difficulty.Hard.Description>
+  <TR.Difficulty.SettingsNotice>NOTICE: You can still customize your settings in the mod options afterwards!</TR.Difficulty.SettingsNotice>
+  <TR.Difficulty.ConfirmSettings>Are you sure you want to use "{0}" as a preset?</TR.Difficulty.ConfirmSettings>
+</LanguageData>

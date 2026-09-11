@@ -55,5 +55,6 @@
         <alignToBottom>false</alignToBottom>
       </li>
     </modExtensions>
+    <uiIconPath>Map/Things/Buildings/Common/Defense/SuppressorTower/Common_SuppressorTower_Icon</uiIconPath>
   </TiberiumRim.TRThingDef>
 </Defs>

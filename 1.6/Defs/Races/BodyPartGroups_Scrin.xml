@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Reconstructed from DefMapper BodyPartGroupDef evidence. The historical
+       source varies only in label capitalization ("Front Legs"/"front Legs"
+       and "Razor Cloud"/"razor Cloud"); current package labels are lowercase. -->
+  <BodyPartGroupDef>
+    <defName>FrontLegs</defName>
+    <label>front legs</label>
+  </BodyPartGroupDef>
+
+  <BodyPartGroupDef>
+    <defName>RazorCloud</defName>
+    <label>razor cloud</label>
+  </BodyPartGroupDef>
+
+</Defs>

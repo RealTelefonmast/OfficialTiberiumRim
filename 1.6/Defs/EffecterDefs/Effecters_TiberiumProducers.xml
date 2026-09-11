@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Restored producer ion-cloud effecters, modeled on the pre-1.6 TibProducerCloudsGreen:
+       fog puffs thrown on a fixed interval via the custom TeleCore SubEffecter_FX
+       (effectMode Burst + throwInterval -> even, consistent spawning), plus rare ion
+       lightning via vanilla SubEffecter_SprayerChance. Driven through
+       CompProperties_FX <effectLayers> (EffectTick path, one roll/throw per tick). -->
+
+  <TeleCore.RW.TeleEffecterDef>
+    <defName>TibProducerCloudsGreen</defName>
+    <children>
+      <li Class="TeleCore.RW.SubEffecterExtendedDef">
+        <subEffecterClass>TeleCore.RW.SubEffecter_FX</subEffecterClass>
+        <fleckDef>Fleck_ProducerFog_Green</fleckDef>
+        <effectMode>Burst</effectMode>
+        <throwInterval>120</throwInterval>
+        <burstCount>1~2</burstCount>
+        <positionRadius>1.49</positionRadius>
+        <scale>3~4.5</scale>
+        <angle>0~360</angle>
+        <speed>0.2~0.35</speed>
+        <rotation>0~90</rotation>
+        <rotationRate>1</rotationRate>
+        <spawnLocType>RandomCellOnTarget</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+        <fleckDef>Fleck_TiberiumCloudLightning</fleckDef>
+        <burstCount>1~2</burstCount>
+        <chancePerTick>0.001</chancePerTick>
+        <positionRadius>1.19</positionRadius>
+        <scale>1.25~4</scale>
+        <angle>0~360</angle>
+        <speed>0</speed>
+        <spawnLocType>RandomCellOnTarget</spawnLocType>
+      </li>
+    </children>
+  </TeleCore.RW.TeleEffecterDef>
+
+  <TeleCore.RW.TeleEffecterDef>
+    <defName>TibProducerCloudsBlue</defName>
+    <children>
+      <li Class="TeleCore.RW.SubEffecterExtendedDef">
+        <subEffecterClass>TeleCore.RW.SubEffecter_FX</subEffecterClass>
+        <fleckDef>Fleck_ProducerFog_Blue</fleckDef>
+        <effectMode>Burst</effectMode>
+        <throwInterval>120</throwInterval>
+        <burstCount>2~3</burstCount>
+        <positionRadius>1.49</positionRadius>
+        <scale>3~4.5</scale>
+        <angle>0~360</angle>
+        <speed>0.2~0.35</speed>
+        <rotation>0~90</rotation>
+        <rotationRate>1</rotationRate>
+        <spawnLocType>RandomCellOnTarget</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+        <fleckDef>Fleck_TiberiumCloudLightning</fleckDef>
+        <burstCount>1~2</burstCount>
+        <chancePerTick>0.001</chancePerTick>
+        <positionRadius>1.19</positionRadius>
+        <scale>1.25~4</scale>
+        <angle>0~360</angle>
+        <speed>0</speed>
+        <spawnLocType>RandomCellOnTarget</spawnLocType>
+      </li>
+    </children>
+  </TeleCore.RW.TeleEffecterDef>
+
+  <TeleCore.RW.TeleEffecterDef>
+    <defName>TibProducerCloudsHybrid</defName>
+    <children>
+      <li Class="TeleCore.RW.SubEffecterExtendedDef">
+        <subEffecterClass>TeleCore.RW.SubEffecter_FX</subEffecterClass>
+        <fleckDef>Fleck_ProducerFog_Green</fleckDef>
+        <effectMode>Burst</effectMode>
+        <throwInterval>120</throwInterval>
+        <burstCount>1~2</burstCount>
+        <positionRadius>1.49</positionRadius>
+        <scale>3~4.5</scale>
+        <angle>0~360</angle>
+        <speed>0.2~0.35</speed>
+        <rotation>0~90</rotation>
+        <rotationRate>1</rotationRate>
+        <spawnLocType>RandomCellOnTarget</spawnLocType>
+      </li>
+      <li Class="TeleCore.RW.SubEffecterExtendedDef">
+        <subEffecterClass>TeleCore.RW.SubEffecter_FX</subEffecterClass>
+        <fleckDef>Fleck_ProducerFog_Blue</fleckDef>
+        <effectMode>Burst</effectMode>
+        <throwInterval>120</throwInterval>
+        <burstCount>1~2</burstCount>
+        <positionRadius>1.49</positionRadius>
+        <scale>3~4.5</scale>
+        <angle>0~360</angle>
+        <speed>0.2~0.35</speed>
+        <rotation>0~90</rotation>
+        <rotationRate>1</rotationRate>
+        <spawnLocType>RandomCellOnTarget</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+        <fleckDef>Fleck_TiberiumCloudLightning</fleckDef>
+        <burstCount>1~2</burstCount>
+        <chancePerTick>0.001</chancePerTick>
+        <positionRadius>1.19</positionRadius>
+        <scale>1.25~4</scale>
+        <angle>0~360</angle>
+        <speed>0</speed>
+        <spawnLocType>RandomCellOnTarget</spawnLocType>
+      </li>
+    </children>
+  </TeleCore.RW.TeleEffecterDef>
+
+  <TeleCore.RW.TeleEffecterDef>
+    <defName>TibProducerCloudsRed</defName>
+    <children>
+      <li Class="TeleCore.RW.SubEffecterExtendedDef">
+        <subEffecterClass>TeleCore.RW.SubEffecter_FX</subEffecterClass>
+        <fleckDef>Fleck_ProducerFog_Red</fleckDef>
+        <effectMode>Burst</effectMode>
+        <throwInterval>120</throwInterval>
+        <burstCount>2~3</burstCount>
+        <positionRadius>1.49</positionRadius>
+        <scale>3~4.5</scale>
+        <angle>0~360</angle>
+        <speed>0.2~0.35</speed>
+        <rotation>0~90</rotation>
+        <rotationRate>1</rotationRate>
+        <spawnLocType>RandomCellOnTarget</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+        <fleckDef>Fleck_TiberiumCloudLightning</fleckDef>
+        <burstCount>1~2</burstCount>
+        <chancePerTick>0.001</chancePerTick>
+        <positionRadius>1.19</positionRadius>
+        <scale>1.25~4</scale>
+        <angle>0~360</angle>
+        <speed>0</speed>
+        <spawnLocType>RandomCellOnTarget</spawnLocType>
+      </li>
+    </children>
+  </TeleCore.RW.TeleEffecterDef>
+</Defs>

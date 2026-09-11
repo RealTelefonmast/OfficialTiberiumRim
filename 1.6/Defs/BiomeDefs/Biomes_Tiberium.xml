@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--
+    Recovered as a dependency-minimal 1.6 port. WorldComponent_TiberiumSpread
+    assigns these biomes directly; the larger donor wildPlants/wildAnimals
+    tables are intentionally not promoted until their complete creature and
+    texture dependency surface is inventoried.
+  -->
+  <BiomeDef>
+    <defName>TiberiumGlacierSea</defName>
+    <label>Tiberium Glacier Sea</label>
+    <description>This ocean has been converted almost completely into Tiberium.</description>
+    <workerClass>BiomeWorker_Ocean</workerClass>
+    <canBuildBase>false</canBuildBase>
+    <allowRoads>false</allowRoads>
+    <allowRivers>false</allowRivers>
+    <hasVirtualPlants>false</hasVirtualPlants>
+    <impassable>true</impassable>
+  </BiomeDef>
+
+  <BiomeDef>
+    <defName>TiberiumRedZone</defName>
+    <label>Tiberium Red Zone</label>
+    <description>This biome has been under such terraforming influence that Tiberium covers most of its surface.</description>
+    <workerClass>TiberiumRim.BiomeWorker_TiberiumRedZone</workerClass>
+    <animalDensity>0.75</animalDensity>
+    <plantDensity>0.5</plantDensity>
+  </BiomeDef>
+</Defs>

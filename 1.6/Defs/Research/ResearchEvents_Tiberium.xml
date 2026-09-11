@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <TeleCore.RW.Research.Events.EventDef>
+    <defName>TiberiumMeteorSighting</defName>
+    <label>Meteor sighting</label>
+    <description>A strange meteor has been sighted in the skies.</description>
+    <activeDays>0</activeDays>
+  </TeleCore.RW.Research.Events.EventDef>
+
+  <TeleCore.RW.Research.Events.EventDef>
     <defName>TiberiumMeteorCrash</defName>
     <label>Meteor Crash</label>
     <eventClass>TiberiumRim.Event_TiberiumArrival</eventClass>

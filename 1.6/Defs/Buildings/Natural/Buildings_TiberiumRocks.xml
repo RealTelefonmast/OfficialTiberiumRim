@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Recovered from the 1.3/master natural-rock family.  The active 1.6
+       conversion rules and wall-corruption code use these unsuffixed names. -->
+  <TiberiumRim.TRThingDef Abstract="True" Name="TibRockBase" ParentName="BuildingNaturalBase_TR">
+    <thingClass>Mineable</thingClass>
+    <graphicData>
+      <texPath>Map/Things/Tiberium/Geology/TibRock_Atlas</texPath>
+      <graphicClass>TeleCore.RW.Graphic_LinkedWithSame</graphicClass>
+      <linkType>CornerFiller</linkType>
+      <linkFlags>
+        <li>Rock</li>
+        <li>MapEdge</li>
+      </linkFlags>
+    </graphicData>
+    <comps>
+      <li Class="TiberiumRim.CompProperties_TiberiumRadiation">
+        <radius>3.75</radius>
+        <intensity>0.75</intensity>
+      </li>
+    </comps>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <coversFloor>true</coversFloor>
+    <neverMultiSelect>true</neverMultiSelect>
+    <rotatable>false</rotatable>
+    <saveCompressible>true</saveCompressible>
+    <holdsRoof>true</holdsRoof>
+    <staticSunShadowHeight>1.0</staticSunShadowHeight>
+    <blockLight>true</blockLight>
+    <mineable>true</mineable>
+    <statBases>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <isInert>true</isInert>
+      <isNaturalRock>false</isNaturalRock>
+      <canBuildNonEdificesUnder>false</canBuildNonEdificesUnder>
+      <isResourceRock>false</isResourceRock>
+    </building>
+  </TiberiumRim.TRThingDef>
+
+  <TiberiumRim.TRThingDef ParentName="TibRockBase">
+    <defName>GreenTiberiumRock</defName>
+    <label>green tiberium rock</label>
+    <description>Rocks infested with green Tiberium.</description>
+    <graphicData Inherit="False">
+      <texPath>Map/Things/Tiberium/Geology/Rocks/GreenRock</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(90,230,95)</color>
+    </graphicData>
+    <statBases><MaxHitPoints>250</MaxHitPoints></statBases>
+    <comps>
+      <li Class="CompProperties_Glower"><glowRadius>4</glowRadius><glowColor>(90,230,95,155)</glowColor></li>
+    </comps>
+    <building><leaveTerrain>TiberiumStoneGreen</leaveTerrain></building>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <filthLeaving>FilthTiberiumGreen</filthLeaving>
+  </TiberiumRim.TRThingDef>
+
+  <TiberiumRim.TRThingDef ParentName="TibRockBase">
+    <defName>BlueTiberiumRock</defName>
+    <label>blue tiberium rock</label>
+    <description>Rocks infested with blue Tiberium.</description>
+    <graphicData Inherit="False">
+      <texPath>Map/Things/Tiberium/Geology/Rocks/BlueRock</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(90,105,230)</color>
+    </graphicData>
+    <statBases><MaxHitPoints>450</MaxHitPoints></statBases>
+    <comps>
+      <li Class="CompProperties_Glower"><glowRadius>4</glowRadius><glowColor>(90,105,230,155)</glowColor></li>
+    </comps>
+    <building><leaveTerrain>TiberiumStoneBlue</leaveTerrain></building>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <filthLeaving>FilthTiberiumBlue</filthLeaving>
+  </TiberiumRim.TRThingDef>
+
+  <TiberiumRim.TRThingDef ParentName="TibRockBase">
+    <defName>RedTiberiumRock</defName>
+    <label>red tiberium rock</label>
+    <description>Rocks infested with red Tiberium.</description>
+    <graphicData Inherit="False">
+      <texPath>Map/Things/Tiberium/Geology/Rocks/RedRock</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(230,75,75)</color>
+    </graphicData>
+    <statBases><MaxHitPoints>600</MaxHitPoints></statBases>
+    <comps>
+      <li Class="CompProperties_Glower"><glowRadius>4</glowRadius><glowColor>(230,75,75,155)</glowColor></li>
+    </comps>
+    <building><leaveTerrain>TiberiumSoilRed</leaveTerrain></building>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <filthLeaving>FilthTiberiumRed</filthLeaving>
+  </TiberiumRim.TRThingDef>
+
+  <TiberiumRim.TRThingDef ParentName="TibRockBase">
+    <defName>VeinTiberiumRock</defName>
+    <label>veiny rock</label>
+    <description>These rocks have moving veins growing all over and inside of them.</description>
+    <graphicData Inherit="False">
+      <texPath>Map/Things/Tiberium/Geology/Rocks/VeinRock</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases><MaxHitPoints>300</MaxHitPoints></statBases>
+    <building><leaveTerrain>TiberiumSoilVeinDead</leaveTerrain></building>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <filthLeaving>Filth_Blood</filthLeaving>
+  </TiberiumRim.TRThingDef>
+</Defs>

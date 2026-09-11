@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Vanilla's Surface PlanetLayerDef owns the ordered world-gen and draw
+       layer lists. Add TR's entries there instead of defining a disconnected
+       custom PlanetLayer that the active world never instantiates. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PlanetLayerDef[defName="Surface"]/worldGenSteps</xpath>
+    <value>
+      <li>TiberiumWorldLayer</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PlanetLayerDef[defName="Surface"]/worldDrawLayers</xpath>
+    <value>
+      <!-- PlanetLayerDef.worldDrawLayers is a List<Type>, not a Def list. -->
+      <li>TiberiumRim.WorldDrawLayer_Tiberium</li>
+    </value>
+  </Operation>
+</Patch>

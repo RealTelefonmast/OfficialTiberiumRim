@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TR.Visceral.Debug.AddRandomPawn>Debug: add random pawn</TR.Visceral.Debug.AddRandomPawn>
+  <TR.Visceral.Debug.Kill>Debug: kill</TR.Visceral.Debug.Kill>
+  <TR.Visceral.Debug.AddProgress>Add progress</TR.Visceral.Debug.AddProgress>
+  <TR.Visceral.Debug.Open>Debug: open</TR.Visceral.Debug.Open>
+  <TR.Visceral.Pod.Contains>Contains</TR.Visceral.Pod.Contains>
+  <TR.Visceral.Pod.Progress>Progress</TR.Visceral.Pod.Progress>
+  <TR.Visceral.Pod.ConversionMessage>{0} has been encased inside a visceral mass and must be rescued.</TR.Visceral.Pod.ConversionMessage>
+  <TR.Visceral.Memory.UsedToBeName>Used to be {0}, the {1}.</TR.Visceral.Memory.UsedToBeName>
+  <TR.Visceral.Memory.UsedToBeNoName>Used to be a {0}.</TR.Visceral.Memory.UsedToBeNoName>
+  <TR.Visceral.Jobs.FormAmalgamation>forming an amalgamation.</TR.Visceral.Jobs.FormAmalgamation>
+</LanguageData>

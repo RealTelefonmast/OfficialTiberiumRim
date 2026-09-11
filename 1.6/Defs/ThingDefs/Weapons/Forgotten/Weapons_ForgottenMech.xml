@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Ported from TiberiumRim-1.3 /Defs/Weaponry/Weapon_Mech.xml. -->
+  <ThingDef Name="MechFactionGun" ParentName="BaseWeapon" Abstract="True">
+    <tradeability>None</tradeability>
+    <techLevel>Spacer</techLevel>
+    <destroyOnDrop>true</destroyOnDrop>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <MarketValue>10</MarketValue>
+      <Mass>500</Mass>
+    </statBases>
+    <tickerType>Normal</tickerType>
+  </ThingDef>
+
+  <TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
+    <defName>Bullet_Bash</defName>
+    <label>big arm projectile</label>
+    <graphicData>
+      <texPath>Map/Things/Projectiles/Projectile_Bash</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
+    <projectile>
+      <damageDef>TRShockArm</damageDef>
+      <damageAmountBase>20</damageAmountBase>
+      <explosionRadius>1.25</explosionRadius>
+      <speed>50</speed>
+      <soundExplode>Shot_Autocannon</soundExplode>
+      <explosionDelay>15</explosionDelay>
+    </projectile>
+  </TiberiumRim.TRThingDef>
+
+  <TiberiumRim.TRThingDef ParentName="MechFactionGun">
+    <defName>Forg_Bash</defName>
+    <label>big arm</label>
+    <description>The Ironback's heavy mounted arm.</description>
+    <graphicData>
+      <!-- The donor used Gun_Blank; Blank is the active 1.6 placeholder. -->
+      <texPath>Blank</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>10</MarketValue>
+      <Mass>100</Mass>
+      <AccuracyTouch>1</AccuracyTouch>
+      <AccuracyShort>1</AccuracyShort>
+      <AccuracyMedium>1</AccuracyMedium>
+      <AccuracyLong>1</AccuracyLong>
+      <RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
+    </statBases>
+    <tradeability>None</tradeability>
+    <destroyOnDrop>true</destroyOnDrop>
+    <techLevel>Industrial</techLevel>
+    <weaponTags><li>BigArm</li></weaponTags>
+    <verbs>
+      <li Class="TiberiumRim.VerbProperties_TR">
+        <verbClass>TiberiumRim.Verb_TR</verbClass>
+        <originOffsets>
+          <li>(0.5, 0, 0.75)</li>
+          <li>(-0.5, 0, 0.75)</li>
+        </originOffsets>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Bash</defaultProjectile>
+        <warmupTime>1</warmupTime>
+        <range>2.25</range>
+        <forcedMissRadius>0.1</forcedMissRadius>
+        <burstShotCount>2</burstShotCount>
+        <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+        <soundCast>Shot_Autocannon</soundCast>
+        <muzzleFlashScale>5</muzzleFlashScale>
+        <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+        <targetParams>
+          <canTargetBuildings>true</canTargetBuildings>
+          <canTargetPawns>false</canTargetPawns>
+        </targetParams>
+      </li>
+    </verbs>
+  </TiberiumRim.TRThingDef>
+
+</Defs>

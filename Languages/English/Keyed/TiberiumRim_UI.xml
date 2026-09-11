@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TR.Defense.FlameTurret.CancelFirewall>Cancel firewall</TR.Defense.FlameTurret.CancelFirewall>
+  <TR.Defense.FlameTurret.Firewall>Firewall</TR.Defense.FlameTurret.Firewall>
+  <TR.TabMechs>Mech construction</TR.TabMechs>
+  <TR.Settings.Difficulty>Difficulty</TR.Settings.Difficulty>
+  <TR.Settings.Gameplay>Gameplay</TR.Settings.Gameplay>
+  <TR.Settings.Graphics>Graphics</TR.Settings.Graphics>
+  <TR.Settings.Difficulty.Title>Difficulty and risk</TR.Settings.Difficulty.Title>
+  <TR.Settings.Difficulty.BuildingDamage>Structures can be damaged by Tiberium</TR.Settings.Difficulty.BuildingDamage>
+  <TR.Settings.Difficulty.EntityDamage>Entities can be damaged by Tiberium</TR.Settings.Difficulty.EntityDamage>
+  <TR.Settings.Difficulty.PawnDamage>Pawns can be damaged by Tiberium</TR.Settings.Difficulty.PawnDamage>
+  <TR.Settings.Difficulty.WorldSpread>Tiberium spreads across world tiles</TR.Settings.Difficulty.WorldSpread>
+  <TR.Settings.Difficulty.ProducerCap>Limit incident-created producers</TR.Settings.Difficulty.ProducerCap>
+  <TR.Settings.Difficulty.Multipliers>Rate multipliers</TR.Settings.Difficulty.Multipliers>
+  <TR.Settings.Difficulty.GrowthRate>Crystal growth</TR.Settings.Difficulty.GrowthRate>
+  <TR.Settings.Difficulty.SpreadRate>Crystal spread</TR.Settings.Difficulty.SpreadRate>
+  <TR.Settings.Difficulty.InfectionRate>Infection severity</TR.Settings.Difficulty.InfectionRate>
+  <TR.Settings.Difficulty.BuildingDamageRate>Building damage</TR.Settings.Difficulty.BuildingDamageRate>
+  <TR.Settings.Difficulty.ItemDamageRate>Item damage</TR.Settings.Difficulty.ItemDamageRate>
+  <TR.Settings.Difficulty.InfectionTouch>Contact infection chance</TR.Settings.Difficulty.InfectionTouch>
+  <TR.Settings.Gameplay.Title>Gameplay and world generation</TR.Settings.Gameplay.Title>
+  <TR.Settings.Gameplay.SpreadRadius>Use spread-radius rules</TR.Settings.Gameplay.SpreadRadius>
+  <TR.Settings.Gameplay.SpecificProducers>Use specific producer selection</TR.Settings.Gameplay.SpecificProducers>
+  <TR.Settings.Gameplay.EVASystem>Enable EVA system</TR.Settings.Gameplay.EVASystem>
+  <TR.Settings.Gameplay.CustomBackground>Use the custom menu background</TR.Settings.Gameplay.CustomBackground>
+  <TR.Settings.Gameplay.WorldCoverage>Fresh-world Tiberium coverage</TR.Settings.Gameplay.WorldCoverage>
+  <TR.Settings.Gameplay.Coverage.Min>None</TR.Settings.Gameplay.Coverage.Min>
+  <TR.Settings.Gameplay.Coverage.Mid>Medium</TR.Settings.Gameplay.Coverage.Mid>
+  <TR.Settings.Gameplay.Coverage.Max>Full</TR.Settings.Gameplay.Coverage.Max>
+  <TR.Settings.Gameplay.ProducerAmount>Incident producer amount</TR.Settings.Gameplay.ProducerAmount>
+  <TR.Settings.Graphics.Title>Graphics and diagnostics</TR.Settings.Graphics.Title>
+  <TR.Settings.Graphics.Fog>Tiberium fog</TR.Settings.Graphics.Fog>
+  <TR.Settings.Graphics.Glow>Tiberium glow</TR.Settings.Graphics.Glow>
+  <TR.Settings.Graphics.Multi>Multi-layer Tiberium rendering</TR.Settings.Graphics.Multi>
+  <TR.Settings.Graphics.NetworkValues>Show network values</TR.Settings.Graphics.NetworkValues>
+  <TR.Freezer.TimePassed>Time passed</TR.Freezer.TimePassed>
+  <TR.Freezer.CurrentRadius>Current radius</TR.Freezer.CurrentRadius>
+  <TR.Freezer.RadiusExpandsIn>Radius expands in</TR.Freezer.RadiusExpandsIn>
+  <TR.Veins.Corpse.Label>Vein-captured {0}</TR.Veins.Corpse.Label>
+  <TR.Veins.Corpse.Description>The remains of a {0}, wrapped and dragged toward a veinhole.</TR.Veins.Corpse.Description>
+</LanguageData>

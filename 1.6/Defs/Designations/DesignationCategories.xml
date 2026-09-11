@@ -2,23 +2,14 @@
 <Defs>
 
 	<!--
-	Legacy architect category retained for source traceability. Its
-	Designator_TRMenu consumed TRThingDefList, which contained zero build
-	entries. TiberiumBuildings/TiberiumMenu is the canonical active menu.
-	Removed 2026-09-05 together with TRThingDef.ConstructionOptionDiscovered
-	and TRThingDefList; the generic TeleCore.RW.BuildMenu (SubBuildMenuDef +
-	TeleCore.SubMenuExtension + Window_BuildMenu) supersedes it. Unported
-	TRMenu features for future reference: the locked-reason readout drawn with
-	TRContent.LockedBanner, and the public MarkForHighlight hook. The stub file
-	UI/Designators/Designator_TRMenu.cs can be deleted.
-	<DesignationCategoryDef>
-		<defName>Tiberium</defName>
-		<label>tiberium</label>
-		<order>24</order>
-		<specialDesignatorClasses>
-		  <li>TiberiumRim.Designator_TRMenu</li>
-		</specialDesignatorClasses>
-	</DesignationCategoryDef>
+	BuildMenu ownership note: TiberiumBuildings/TiberiumMenu is the canonical
+	active architect entry. TiberiumRim retains only the visibility policy in
+	BuildMenuVisibilityWorkerTR; generic menu rendering, grouping, discovery
+	badges, favorites, and designator creation belong to TeleCore.RW.BuildMenu.
+	The former menu had two Tiberium-specific affordances that were not ported:
+	the inactive lock-reason banner and a public forced-highlight hook. Faction
+	icons and developer gating are now data-driven by SubMenuGroupDef and
+	BuildMenuExtension instead.
 	-->
 
 	<!--

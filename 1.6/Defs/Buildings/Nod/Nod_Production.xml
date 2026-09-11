@@ -279,6 +279,8 @@
               <drawRotated>false</drawRotated>
             </graphicData>
             <fxMode>Dynamic</fxMode>
+            <categoryTag>FXNetwork</categoryTag>
+            <layerTag>Container</layerTag>
           </li>
           <li>
             <graphicData>
@@ -293,6 +295,8 @@
               <graphicClass>Graphic_Single</graphicClass>
               <drawSize>(5.5,5.5)</drawSize>
             </graphicData>
+            <categoryTag>FXNetwork</categoryTag>
+            <layerTag>Connection</layerTag>
           </li>
         </fxLayers>
       </li>
@@ -319,9 +323,9 @@
     <label>Nod power plant</label>
     <description>A Nod power plant consuming Tiberium from the network to sustain its output.</description>
     <drawerType>MapMeshAndRealTime</drawerType>
-    <uiIconPath>Map/Things/Buildings/Nod/Production/PowerPlant/Nod_PowerPlant_Base</uiIconPath>
+    <uiIconPath>Map/Things/Buildings/Nod/Production/Powerplant/Nod_PowerPlant_Base</uiIconPath>
     <graphicData>
-      <texPath>Map/Things/Buildings/Nod/Production/PowerPlant/Nod_PowerPlant_Base</texPath>
+      <texPath>Map/Things/Buildings/Nod/Production/Powerplant/Nod_PowerPlant_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(5,5)</drawSize>
     </graphicData>
@@ -349,7 +353,7 @@
       <ComponentIndustrial>5</ComponentIndustrial>
     </costList>
     <comps>
-      <li Class="TeleCore.RW.Networks.Comps.Properties.CompProperties_Network">
+      <li Class="TiberiumRim.CompProperties_TNS">
         <networks>
           <li>
             <networkDef>TiberiumNetwork</networkDef>
@@ -399,16 +403,18 @@
         <fxLayers>
           <li>
             <graphicData>
-              <texPath>Map/Things/Buildings/Nod/Production/PowerPlant/Nod_PowerPlant_Overlay_Container</texPath>
+              <texPath>Map/Things/Buildings/Nod/Production/Powerplant/Nod_PowerPlant_Overlay_Container</texPath>
               <graphicClass>Graphic_Single</graphicClass>
               <shaderType>MoteGlow</shaderType>
               <drawSize>(5,5)</drawSize>
             </graphicData>
             <fxMode>Dynamic</fxMode>
+            <categoryTag>FXNetwork</categoryTag>
+            <layerTag>Container</layerTag>
           </li>
           <li>
             <graphicData>
-              <texPath>Map/Things/Buildings/Nod/Production/PowerPlant/Nod_PowerPlant_Overlay_Lights</texPath>
+              <texPath>Map/Things/Buildings/Nod/Production/Powerplant/Nod_PowerPlant_Overlay_Lights</texPath>
               <graphicClass>Graphic_Single</graphicClass>
               <shaderType>MoteGlow</shaderType>
               <drawSize>(5,5)</drawSize>
@@ -417,7 +423,7 @@
           </li>
           <li>
             <graphicData>
-              <texPath>Map/Things/Buildings/Nod/Production/PowerPlant/Nod_PowerPlant_Overlay_Lights_Display</texPath>
+              <texPath>Map/Things/Buildings/Nod/Production/Powerplant/Nod_PowerPlant_Overlay_Lights_Display</texPath>
               <graphicClass>Graphic_Single</graphicClass>
               <shaderType>MoteGlow</shaderType>
               <drawSize>(5,5)</drawSize>

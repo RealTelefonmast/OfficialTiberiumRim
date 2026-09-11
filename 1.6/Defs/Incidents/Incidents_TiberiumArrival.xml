@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--
+    Recovered from the 1.3/master arrival family after dependency audit.
+    These registrations intentionally use the already-active 1.6 workers,
+    skyfallers, inner things, letter defs, and EventDef surface.
+  -->
+  <TiberiumRim.TiberiumIncidentDef>
+    <defName>TiberiumSighting</defName>
+    <label>Tiberium arrival (initial)</label>
+    <workerClass>TiberiumRim.IncidentWorker_TR</workerClass>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <baseChance>0.75</baseChance>
+    <earliestDay>7</earliestDay>
+    <minRefireDays>0</minRefireDays>
+    <letterLabel>Meteor sighting</letterLabel>
+    <letterText>A meteor has been sighted in the skies; we are not sure where it is heading.</letterText>
+    <letterDef>EventLetter</letterDef>
+    <eventsToTrigger>
+      <li>TiberiumMeteorSighting</li>
+    </eventsToTrigger>
+  </TiberiumRim.TiberiumIncidentDef>
+
+  <TiberiumRim.TiberiumIncidentDef>
+    <defName>TiberiumMeteorite</defName>
+    <label>Tiberium meteorite</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>TiberiumRim.IncidentWorker_TiberiumArrival</workerClass>
+    <baseChance>0</baseChance>
+    <letterLabel>Meteor crashed!</letterLabel>
+    <letterText>The strange object has crashed directly onto our map. We should investigate it closely.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+    <minRefireDays>70</minRefireDays>
+    <category>ThreatBig</category>
+    <skyfallers>
+      <TiberiumMeteorIncoming>TiberiumMeteoriteChunk,1,1</TiberiumMeteorIncoming>
+    </skyfallers>
+  </TiberiumRim.TiberiumIncidentDef>
+
+  <TiberiumRim.TiberiumIncidentDef>
+    <defName>RedTiberiumShard</defName>
+    <label>red Tiberium shard</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>TiberiumRim.IncidentWorker_TiberiumArrival</workerClass>
+    <baseChance>0.025</baseChance>
+    <letterLabel>Tiberium shard!</letterLabel>
+    <letterText>A red glowing shard has crashed onto our map.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+    <minRefireDays>130</minRefireDays>
+    <category>ThreatSmall</category>
+    <skyfallers>
+      <RedTiberiumShardIncoming>RedTiberiumShard,1,1</RedTiberiumShardIncoming>
+    </skyfallers>
+  </TiberiumRim.TiberiumIncidentDef>
+</Defs>

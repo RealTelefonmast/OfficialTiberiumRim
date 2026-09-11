@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Canonical dotted replacements for live legacy TR_* call sites. -->
+  <TR.UI.MechParking.Zone>mech parking zone</TR.UI.MechParking.Zone>
+  <TR.UI.MechParking.Zone.Description>Designate a parking area for the selected mech type.</TR.UI.MechParking.Zone.Description>
+  <TR.UI.MechParking.Zone.Full>This mech parking zone is full.</TR.UI.MechParking.Zone.Full>
+  <TR.UI.MechParking.Slots>Parking slots</TR.UI.MechParking.Slots>
+  <TR.UI.Scrin.SetupInvasion>Configure Scrin invasion</TR.UI.Scrin.SetupInvasion>
+  <TR.Events.ResearchUnlocks>New research projects:\n{0}</TR.Events.ResearchUnlocks>
+  <TR.Hediffs.Toxemia.Recovering>Recovering</TR.Hediffs.Toxemia.Recovering>
+  <TR.Hediffs.Toxemia.InfusionBracket>Fully crystallized in {0}</TR.Hediffs.Toxemia.InfusionBracket>
+  <TR.Hediffs.Crystallizing.Fusing>Fusing</TR.Hediffs.Crystallizing.Fusing>
+  <TR.Hediffs.Crystallizing.Active>Crystallizing</TR.Hediffs.Crystallizing.Active>
+  <TR.Hediffs.Crystallizing.Crystallized>Crystallized</TR.Hediffs.Crystallizing.Crystallized>
+  <TR.Hediffs.Crystallizing.Reversing>Decrystallizing</TR.Hediffs.Crystallizing.Reversing>
+  <TR.Hediffs.Crystallizing.Halted>Halted</TR.Hediffs.Crystallizing.Halted>
+  <TR.Mutation.Visceral>Visceral</TR.Mutation.Visceral>
+  <TR.Mutation.Symbiotic>Symbiotic</TR.Mutation.Symbiotic>
+  <TR.Mutation.Description>Tiberium Mutation is a constant battle between beneficial and fatal effects on the body.</TR.Mutation.Description>
+  <TR.Hediffs.Mutation.Risk>Risk</TR.Hediffs.Mutation.Risk>
+  <TR.Producers.Residue.Deterioration>Tiberium residue deterioration</TR.Producers.Residue.Deterioration>
+  <TR.Discovery.LockedReason>Locked due to missing requisites.\n</TR.Discovery.LockedReason>
+  <TR.Discovery.LockedMinTech>- Need minimum tech level: {0}</TR.Discovery.LockedMinTech>
+  <TR.Discovery.LockedMaxTech>- Need maximum tech level: {0}</TR.Discovery.LockedMaxTech>
+  <TR.Discovery.LockedMissingResearch>- Missing research:\n{0}</TR.Discovery.LockedMissingResearch>
+  <TR.Visceral.PodLetter>Visceral encasement!</TR.Visceral.PodLetter>
+  <TR.Visceral.PodLetter.Description>{0} has been encased inside a visceral mass. They must be rescued quickly or may suffer severe wounds or death.</TR.Visceral.PodLetter.Description>
+  <TR.Visceral.Memory.Name>Used to be {0}.</TR.Visceral.Memory.Name>
+  <TR.Visceral.Memory.Kind>Used to be a {0}.</TR.Visceral.Memory.Kind>
+  <TR.Visceral.Memory.KindName>Used to be {0}, a {1}.</TR.Visceral.Memory.KindName>
+  <TR.Environment.GasDeposit>Current deposit value</TR.Environment.GasDeposit>
+  <TR.Meteorite.Supercritical>Supercritical!</TR.Meteorite.Supercritical>
+  <TR.Producers.GeyserContent>Geyser content</TR.Producers.GeyserContent>
+</LanguageData>

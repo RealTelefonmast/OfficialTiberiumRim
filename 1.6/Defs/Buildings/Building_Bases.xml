@@ -55,7 +55,10 @@
 		</inspectorTabs>
 	</TiberiumRim.TRThingDef>
 	
-	<TiberiumRim.TRThingDef Name="RefineryBase_TR" ParentName="NetworkStationBase" Abstract="True" Class="TiberiumRim.RefineryDef">
+	<!-- The historical RefineryDef override has no source or deployed type in
+	     the current 1.6 assembly. Keep the active TRThingDef type selected by
+	     the element and retain refinery behavior in its CompProperties. -->
+	<TiberiumRim.TRThingDef Name="RefineryBase_TR" ParentName="NetworkStationBase" Abstract="True">
 		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
 		<altitudeLayer>DoorMoveable</altitudeLayer>
 		<statBases>

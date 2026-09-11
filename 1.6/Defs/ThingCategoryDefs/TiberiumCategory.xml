@@ -3,4 +3,6 @@
   <ThingCategoryDef><defName>Tiberium</defName><label>Tiberium</label><parent>Root</parent><resourceReadoutRoot>true</resourceReadoutRoot></ThingCategoryDef>
   <ThingCategoryDef><defName>TiberiumItems</defName><label>Tiberium Items</label><parent>Tiberium</parent><resourceReadoutRoot>true</resourceReadoutRoot></ThingCategoryDef>
   <ThingCategoryDef><defName>TiberiumMisc</defName><label>Tiberium Misc</label><parent>Tiberium</parent><resourceReadoutRoot>true</resourceReadoutRoot></ThingCategoryDef>
+  <!-- Recovered parent category for the implant/body-part item family. -->
+  <ThingCategoryDef><defName>BodyPartsTiberium</defName><label>tiberium parts</label><parent>BodyParts</parent></ThingCategoryDef>
 </Defs>

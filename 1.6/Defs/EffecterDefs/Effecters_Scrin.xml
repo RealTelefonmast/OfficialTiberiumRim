@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Exact one-variant ScrinBeamHit evidence, with active Fleck names. -->
+  <EffecterDef>
+    <defName>ScrinBeamHit</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <fleckDef>Fleck_ScrinCut</fleckDef>
+        <color>(1, 1, 1, 1)</color>
+        <burstCount>1~1</burstCount>
+        <scale>0.5~0.75</scale>
+        <speed>0</speed>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <fleckDef>Smoke</fleckDef>
+        <color>(0.9, 0.4, 1, 0.5)</color>
+        <burstCount>1~2</burstCount>
+        <scale>1~2</scale>
+        <rotation>-30~30</rotation>
+        <speed>-0.05~0.45</speed>
+        <angle>30~40</angle>
+        <spawnLocType>OnSource</spawnLocType>
+        <rotationRate>0~50</rotationRate>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+      </li>
+    </children>
+  </EffecterDef>
+
+  <!-- Exact one-variant StrongScrinBeamHit evidence. Fleck_AdvFlame and
+       Mote_AdvFlame are already active support defs in this package. -->
+  <EffecterDef>
+    <defName>StrongScrinBeamHit</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <fleckDef>Fleck_ScrinCut</fleckDef>
+        <color>(1, 1, 1, 1)</color>
+        <burstCount>1~1</burstCount>
+        <scale>1~1.25</scale>
+        <speed>0</speed>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <fleckDef>Fleck_AdvFlame</fleckDef>
+        <color>(0.8, 0.2, 1, 0.35)</color>
+        <burstCount>1</burstCount>
+        <scale>0.1</scale>
+        <rotation>-45~45</rotation>
+        <speed>-0.05~0.25</speed>
+        <angle>-10~10</angle>
+        <spawnLocType>OnSource</spawnLocType>
+        <rotationRate>50~100</rotationRate>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <fleckDef>Smoke</fleckDef>
+        <color>(0.9, 0.4, 1, 0.5)</color>
+        <burstCount>1~2</burstCount>
+        <scale>1~2</scale>
+        <rotation>-30~30</rotation>
+        <speed>-0.05~0.45</speed>
+        <angle>30~40</angle>
+        <spawnLocType>OnSource</spawnLocType>
+        <rotationRate>0~50</rotationRate>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+      </li>
+    </children>
+  </EffecterDef>
+
+</Defs>

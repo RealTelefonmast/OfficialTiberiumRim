@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TR.PlaceWorkers.OnProducer.Invalid>This must be placed on a compatible Tiberium producer.</TR.PlaceWorkers.OnProducer.Invalid>
+  <TR.PlaceWorkers.OnGeyser.Invalid>This must be placed on a Tiberium geyser.</TR.PlaceWorkers.OnGeyser.Invalid>
+  <TR.PlaceWorkers.ResearchCrane.Invalid>This must overlap a compatible Tiberium producer.</TR.PlaceWorkers.ResearchCrane.Invalid>
+</LanguageData>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Ported from TiberiumRim-1.3 /Defs/Mechs/BodyParts/BodyParts_Mechs.xml.
+       These shared parts are required by the Forgotten Ironback body below. -->
+  <BodyPartDef Abstract="True" Name="MechPart">
+    <hitPoints>5</hitPoints>
+    <frostbiteVulnerability>0</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>MechBase</defName>
+    <label>frame</label>
+    <hitPoints>100</hitPoints>
+    <tags><li>MovingLimbCore</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>MechHead</defName>
+    <label>front armor</label>
+    <hitPoints>150</hitPoints>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>MechPelvis</defName>
+    <label>pelvis</label>
+    <hitPoints>75</hitPoints>
+    <tags><li>MovingLimbCore</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>MechMonoEye</defName>
+    <label>mono eye</label>
+    <hitPoints>25</hitPoints>
+    <tags><li>SightSource</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>MechCockpit</defName>
+    <label>cockpit</label>
+    <hitPoints>75</hitPoints>
+    <tags>
+      <li>SightSource</li>
+      <li>HearingSource</li>
+      <li>ConsciousnessSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>HearingDevice</defName>
+    <label>hearing device</label>
+    <hitPoints>25</hitPoints>
+    <tags><li>HearingSource</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>MechCPU</defName>
+    <label>CPU</label>
+    <hitPoints>75</hitPoints>
+    <tags><li>ConsciousnessSource</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>PowerCore1</defName>
+    <label>main power core</label>
+    <hitPoints>75</hitPoints>
+    <tags>
+      <li>MovingLimbCore</li>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>PowerCore2</defName>
+    <label>sub power core</label>
+    <hitPoints>75</hitPoints>
+    <tags>
+      <li>MovingLimbCore</li>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>RightMechShoulder</defName>
+    <label>right shoulder</label>
+    <hitPoints>50</hitPoints>
+    <tags><li>ManipulationLimbSegment</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>RightMechArm</defName>
+    <label>right arm</label>
+    <hitPoints>50</hitPoints>
+    <tags><li>ManipulationLimbCore</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>RightMechHand</defName>
+    <label>right hand</label>
+    <hitPoints>25</hitPoints>
+    <tags><li>ManipulationLimbSegment</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>RightMechFinger1</defName>
+    <label>right first finger</label>
+    <hitPoints>10</hitPoints>
+    <tags><li>ManipulationLimbDigit</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>RightMechFinger2</defName>
+    <label>right second finger</label>
+    <hitPoints>10</hitPoints>
+    <tags><li>ManipulationLimbDigit</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>RightMechFinger3</defName>
+    <label>right third finger</label>
+    <hitPoints>10</hitPoints>
+    <tags><li>ManipulationLimbDigit</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>LeftMechShoulder</defName>
+    <label>left shoulder</label>
+    <hitPoints>50</hitPoints>
+    <tags><li>ManipulationLimbSegment</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>LeftMechArm</defName>
+    <label>left arm</label>
+    <hitPoints>50</hitPoints>
+    <tags><li>ManipulationLimbCore</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>LeftMechHand</defName>
+    <label>left hand</label>
+    <hitPoints>30</hitPoints>
+    <tags><li>ManipulationLimbSegment</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>LeftMechFinger1</defName>
+    <label>left first finger</label>
+    <hitPoints>10</hitPoints>
+    <tags><li>ManipulationLimbDigit</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>LeftMechFinger2</defName>
+    <label>left second finger</label>
+    <hitPoints>10</hitPoints>
+    <tags><li>ManipulationLimbDigit</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>LeftMechFinger3</defName>
+    <label>left third finger</label>
+    <hitPoints>10</hitPoints>
+    <tags><li>ManipulationLimbDigit</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>MechLeftLeg</defName>
+    <label>left leg</label>
+    <hitPoints>50</hitPoints>
+    <frostbiteVulnerability>1</frostbiteVulnerability>
+    <tags><li>MovingLimbCore</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MechPart">
+    <defName>MechRightLeg</defName>
+    <label>right leg</label>
+    <hitPoints>50</hitPoints>
+    <frostbiteVulnerability>1</frostbiteVulnerability>
+    <tags><li>MovingLimbCore</li></tags>
+  </BodyPartDef>
+
+</Defs>

@@ -25,6 +25,7 @@
 		<defName>ChemicalPipe</defName>
 		<label>chemical pipe</label>
 		<description>This structure connects Chemical processing structures on the Chemical Network.</description>
+		<designationCategory Inherit="False" />
 		<building>
 			<blueprintGraphicData>
 				<texPath>Map/Things/Buildings/Common/Network/ChemicalPipe/ChemicalPipe_Blueprint</texPath>
@@ -58,6 +59,12 @@
 				</networks>
 			</li>
 		</comps>
+		<modExtensions>
+			<li Class="TeleCore.BuildMenu.BuildMenuExtension">
+				<groupDef>Common</groupDef>
+				<category>Processing</category>
+			</li>
+		</modExtensions>
 	</TiberiumRim.TRThingDef>
 	
 	<!-- Metals -->

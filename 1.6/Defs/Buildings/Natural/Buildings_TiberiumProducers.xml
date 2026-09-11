@@ -33,9 +33,14 @@
             </fade>
           </li>
         </fxLayers>
-        <!-- Archived placeholder: ProducerClouds had no EffecterDef and the original
-				     mote-based effecters below do not map directly to RimWorld 1.6 effecters.
-				     Keep the working graphic overlay active until this effect is reimplemented. -->
+        <effectLayers>
+          <li>
+            <effecterDef>TibProducerCloudsGreen</effecterDef>
+            <layerTag>ProducerCloudsGreen</layerTag>
+          </li>
+        </effectLayers>
+        <!-- Restored 1.6: TibProducerCloudsGreen now provides the fleck-based producer clouds.
+             The original mote-based <effecters> below remain as parked reference. -->
         <!--
 				<effecters>
 					<li>
@@ -231,6 +236,12 @@
 					</li>
 				</effecters>
 				-->
+        <effectLayers>
+          <li>
+            <effecterDef>TibProducerCloudsBlue</effecterDef>
+            <layerTag>ProducerCloudsBlue</layerTag>
+          </li>
+        </effectLayers>
       </li>
       <li Class="CompProperties_Glower">
         <glowRadius>10</glowRadius>
@@ -406,6 +417,12 @@
             </fade>
           </li>
         </fxLayers>
+        <effectLayers>
+          <li>
+            <effecterDef>TibProducerCloudsHybrid</effecterDef>
+            <layerTag>ProducerCloudsHybrid</layerTag>
+          </li>
+        </effectLayers>
         <!--
 				<effecters>
 					<li>
@@ -641,6 +658,12 @@
             </fade>
           </li>
         </fxLayers>
+        <effectLayers>
+          <li>
+            <effecterDef>TibProducerCloudsRed</effecterDef>
+            <layerTag>ProducerCloudsRed</layerTag>
+          </li>
+        </effectLayers>
       </li>
       <li Class="CompProperties_Glower">
         <glowRadius>3</glowRadius>
@@ -711,6 +734,7 @@
         </discovery>
       </li>
     </modExtensions>
+    <uiIconPath>Map/Things/Tiberium/Producers/RedSpire/RedSpire_Reference</uiIconPath>
   </TiberiumRim.TiberiumProducerDef>
   <TiberiumRim.TiberiumProducerDef ParentName="TiberiumProducerBase">
     <defName>TiberiumCruentus</defName>
@@ -755,30 +779,12 @@
             </fade>
           </li>
         </fxLayers>
-        <!--
-				<effecters>
-					<li>
-						<burstCount>1~3</burstCount>
-						<chancePerTick>0.0030</chancePerTick>
-						<positionOffset>(0,0,2.55)</positionOffset>
-						<moteDef>IonCloud</moteDef>
-						<positionRadius>0.99</positionRadius>
-						<scale>1.75~2.25</scale>					
-						<angle>0~360</angle>
-						<speed>0.1~0.15</speed>
-					</li>
-					<li>
-						<burstCount>1~3</burstCount>
-						<chancePerTick>0.002</chancePerTick>
-						<positionOffset>(0,0,2.5)</positionOffset>
-						<moteDef>IonLighting</moteDef>
-						<positionRadius>1.19</positionRadius>
-						<scale>1.25~2.5</scale>					
-						<angle>0~360</angle>
-						<speed>0</speed>
-					</li>
-				</effecters>
-				-->
+        <effectLayers>
+          <li>
+            <effecterDef>TiberiumClouds_Cruentus</effecterDef>
+            <layerTag>EffecterTiberiumCruentusClouds</layerTag>
+          </li>
+        </effectLayers>
       </li>
       <li Class="CompProperties_Glower">
         <glowRadius>3</glowRadius>
@@ -792,7 +798,7 @@
     <daysToMature>0</daysToMature>
     <leaveTiberium>false</leaveTiberium>
     <spawner>
-      <spawnMode>SporeExplosion</spawnMode>
+      <spawnMode>SporeBurst</spawnMode>
       <explosionRange>10~25</explosionRange>
       <sporeExplosionRadius>65</sporeExplosionRadius>
       <growRadius>0</growRadius>

@@ -10,5 +10,14 @@
     <viscosity>8</viscosity>
     <capacityFactor>2</capacityFactor>
     <valueColor>(38,127,4)</valueColor>
+    <!-- Room-local presentation is owned by TeleCore.Atmospheres. Without these
+         fields this value remains simulation-only and RoomOverlay_Atmospheric
+         never registers a material for it. -->
+    <useRenderLayer>true</useRenderLayer>
+    <roomOverlay>
+      <overlayTex1>RoomOverlay/Atmospheric/Nebula1</overlayTex1>
+      <overlayTex2>RoomOverlay/Atmospheric/Nebula2</overlayTex2>
+      <color>(38,127,4)</color>
+    </roomOverlay>
   </TeleCore.RW.Atmospheres.Sim.Defs.AtmosphericValueDef>
 </Defs>

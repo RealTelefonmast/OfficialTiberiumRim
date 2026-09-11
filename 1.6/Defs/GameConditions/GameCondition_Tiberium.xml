@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Recovered donor dependency for IncidentWorker_IonStorm. -->
+  <GameConditionDef>
+    <defName>IonStorm</defName>
+    <label>Ion storm</label>
+    <description>An ion storm has been triggered on your map. The power shortage might bring unwanted complications.</description>
+    <endMessage>The ion storm is ending.</endMessage>
+    <canBePermanent>true</canBePermanent>
+  </GameConditionDef>
+</Defs>

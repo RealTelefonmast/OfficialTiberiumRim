@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--
+    TBI Scrin weapon evidence adapted to current TeleCore.RW verb classes.
+    Scrin_MechapedeLance is promoted with the Mechapede body after closing its
+    StrongScrinBeamHit, mote, sound, and vanilla centipede-body dependencies.
+  -->
+
+  <TiberiumRim.TRThingDef ParentName="BaseGun">
+    <defName>Scrin_ShockDiscLauncher</defName>
+    <label>shock disc launcher</label>
+    <description>A Scrin launcher that fires compact explosive shock discs.</description>
+    <graphicData>
+      <texPath>Blank</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>10</MarketValue>
+      <Mass>5</Mass>
+      <AccuracyTouch>0.35</AccuracyTouch>
+      <AccuracyShort>0.5</AccuracyShort>
+      <AccuracyMedium>0.6</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>2.75</RangedWeapon_Cooldown>
+    </statBases>
+    <tradeability>None</tradeability>
+    <techLevel>Spacer</techLevel>
+    <destroyOnDrop>true</destroyOnDrop>
+    <weaponTags><li>ShocktrooperGun</li></weaponTags>
+    <verbs>
+      <li Class="TeleCore.RW.VerbProperties_Extended">
+        <verbClass>TeleCore.RW.Verb_ProjectileExtended</verbClass>
+        <originOffsetPerShot><li>(0, 0, 1)</li></originOffsetPerShot>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_ShockDisc</defaultProjectile>
+        <warmupTime>2.25</warmupTime>
+        <range>17.9</range>
+        <forcedMissRadius>0.2</forcedMissRadius>
+        <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+        <burstShotCount>4</burstShotCount>
+        <soundCast>Shot_Scrin_Disc</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+      </li>
+    </verbs>
+  </TiberiumRim.TRThingDef>
+
+  <TiberiumRim.TRThingDef ParentName="BaseGun">
+    <defName>Scrin_Disint</defName>
+    <label>disintegrator head</label>
+    <description>The Disintegrator's head-mounted cutting beam.</description>
+    <graphicData>
+      <texPath>Map/Things/Items/Weapons/Scrin/Turret_Scrin_Disintegrator</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>2.5</drawSize>
+    </graphicData>
+    <statBases>
+      <MarketValue>10</MarketValue>
+      <Mass>5</Mass>
+      <AccuracyTouch>0.35</AccuracyTouch>
+      <AccuracyShort>0.35</AccuracyShort>
+      <AccuracyMedium>0.35</AccuracyMedium>
+      <AccuracyLong>0.35</AccuracyLong>
+      <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+    </statBases>
+    <tradeability>None</tradeability>
+    <techLevel>Spacer</techLevel>
+    <destroyOnDrop>true</destroyOnDrop>
+    <weaponTags><li>DisintegratorGun</li></weaponTags>
+    <verbs>
+      <li Class="TeleCore.RW.VerbProperties_Extended">
+        <verbClass>TeleCore.RW.Verb_Beam</verbClass>
+        <beamProps>
+          <!-- TRLaserC has contradictory historical variants; TRLaser is the active 1.6 beam damage contract. -->
+          <damageDef>TRLaser</damageDef>
+          <isStatic>true</isStatic>
+          <damageBaseOverride>12</damageBaseOverride>
+          <stoppingPowerOverride>0.1</stoppingPowerOverride>
+          <armorPenetrationOverride>0.1</armorPenetrationOverride>
+          <impactEffecter>ScrinBeamHit</impactEffecter>
+        </beamProps>
+        <originOffsetPerShot><li>(0, 0, -0.5)</li></originOffsetPerShot>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>0.5</warmupTime>
+        <range>5.9</range>
+        <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+        <burstShotCount>5</burstShotCount>
+        <soundCast>Shot_Scrin_BeamSml</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>3</muzzleFlashScale>
+        <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+        <beamWidth>0.5</beamWidth>
+        <beamGroundFleckDef>Fleck_BeamScorchMark</beamGroundFleckDef>
+        <beamLineFleckDef>Fleck_BeamSparking</beamLineFleckDef>
+        <beamFleckChancePerTick>1</beamFleckChancePerTick>
+        <beamMaxDeviation>0</beamMaxDeviation>
+        <beamCurvature>0</beamCurvature>
+        <beamMoteDef>Mote_ScrinGunBeam</beamMoteDef>
+        <beamChanceToStartFire>0.85</beamChanceToStartFire>
+        <beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+        <beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+        <beamStartOffset>0.15</beamStartOffset>
+        <beamLineFleckChanceCurve>
+          <points><li>(0, 1)</li><li>(1, 1)</li></points>
+        </beamLineFleckChanceCurve>
+      </li>
+    </verbs>
+  </TiberiumRim.TRThingDef>
+
+  <TiberiumRim.TRThingDef ParentName="BaseGun">
+    <defName>Scrin_MechapedeLance</defName>
+    <label>swarm charge cannon</label>
+    <description>A huge alien laser weapon mounted to the Mechapede swarm.</description>
+    <graphicData>
+      <texPath>Map/Things/Items/Weapons/Scrin/Turret_Scrin_Mechapede</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>3</drawSize>
+    </graphicData>
+    <statBases>
+      <MarketValue>10</MarketValue>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Mass>50</Mass>
+      <AccuracyTouch>0.25</AccuracyTouch>
+      <AccuracyShort>0.55</AccuracyShort>
+      <AccuracyMedium>0.65</AccuracyMedium>
+      <AccuracyLong>0.75</AccuracyLong>
+      <RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+    </statBases>
+    <tradeability>None</tradeability>
+    <techLevel>Spacer</techLevel>
+    <destroyOnDrop>false</destroyOnDrop>
+    <smeltable>false</smeltable>
+    <weaponTags><li>MechapedeGun</li></weaponTags>
+    <verbs>
+      <li Class="TeleCore.RW.VerbProperties_Extended">
+        <verbClass>TeleCore.RW.Verb_Beam</verbClass>
+        <beamProps>
+          <!-- TRLaserC is collision-heavy historical evidence; use active TRLaser. -->
+          <damageDef>TRLaser</damageDef>
+          <isStatic>true</isStatic>
+          <damageBaseOverride>18</damageBaseOverride>
+          <stoppingPowerOverride>0.2</stoppingPowerOverride>
+          <armorPenetrationOverride>0.2</armorPenetrationOverride>
+          <impactEffecter>StrongScrinBeamHit</impactEffecter>
+        </beamProps>
+        <originOffsetPerShot>
+          <li>(0.45, -1, -0.1)</li>
+          <li>(-0.5, -1, -0.6)</li>
+          <li>(0.45, -1, -1.1)</li>
+          <li>(-0.45, -1, -0.1)</li>
+          <li>(0.5, -1, -0.6)</li>
+          <li>(-0.45, -1, -1.1)</li>
+        </originOffsetPerShot>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>2.5</warmupTime>
+        <range>19.9</range>
+        <ticksBetweenBurstShots>20</ticksBetweenBurstShots>
+        <burstShotCount>6</burstShotCount>
+        <soundCast>Shot_Scrin_Devourer</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>10</muzzleFlashScale>
+        <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+        <beamWidth>0.5</beamWidth>
+        <beamGroundFleckDef>Fleck_BeamScorchMark</beamGroundFleckDef>
+        <beamLineFleckDef>Fleck_BeamSparking</beamLineFleckDef>
+        <beamFleckChancePerTick>1</beamFleckChancePerTick>
+        <beamMaxDeviation>0</beamMaxDeviation>
+        <beamCurvature>0</beamCurvature>
+        <beamMoteDef>Mote_ScrinGunStrongBeam</beamMoteDef>
+        <beamChanceToStartFire>0.85</beamChanceToStartFire>
+        <beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+        <beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+        <beamStartOffset>0.15</beamStartOffset>
+        <beamLineFleckChanceCurve><points><li>(0, 1)</li><li>(1, 1)</li></points></beamLineFleckChanceCurve>
+      </li>
+    </verbs>
+  </TiberiumRim.TRThingDef>
+
+  <!-- Separate Scrin artifact weapon recovered from the same evidence set. -->
+  <TiberiumRim.TRThingDef ParentName="BaseGunWithQuality">
+    <defName>Scrin_ShockLance</defName>
+    <label>Scrin charge cannon</label>
+    <description>Almost fragmented alien weapon. But performance is extremmly excellent.
+This weapon has an onboard persona that can bond to only a single person. The wielder and intelligent weapon can synchronize their reflexes and attack with frightening speed, accuracy, and creativity. Once bonded to a wielder, the weapon's persona will refuse to be wielded by anyone else.</description>
+    <graphicData>
+      <texPath>Map/Things/Items/Weapons/Scrin/Scrin_ChargeCannon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.25</drawSize>
+    </graphicData>
+    <statBases>
+      <MarketValue>5000</MarketValue>
+      <MaxHitPoints>25</MaxHitPoints>
+      <Mass>5</Mass>
+      <AccuracyTouch>0.5</AccuracyTouch>
+      <AccuracyShort>0.8</AccuracyShort>
+      <AccuracyMedium>0.9</AccuracyMedium>
+      <AccuracyLong>1</AccuracyLong>
+      <RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+    </statBases>
+    <tradeability>None</tradeability>
+    <techLevel>Ultra</techLevel>
+    <!-- Historical variants declare menuHidden=True, but TRThingDef in the
+         active 1.6 schema rejects that ThingDef field. -->
+    <smeltable>false</smeltable>
+    <verbs>
+      <li Class="TeleCore.RW.VerbProperties_Extended">
+        <verbClass>TeleCore.RW.Verb_Beam</verbClass>
+        <beamProps>
+          <damageDef>TRLaser</damageDef>
+          <isStatic>true</isStatic>
+          <damageBaseOverride>45</damageBaseOverride>
+          <stoppingPowerOverride>0.5</stoppingPowerOverride>
+          <armorPenetrationOverride>0.5</armorPenetrationOverride>
+          <impactEffecter>StrongScrinBeamHit</impactEffecter>
+        </beamProps>
+        <originOffsetPerShot><li>(0, 0, -0.1)</li></originOffsetPerShot>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>3</warmupTime>
+        <range>49.9</range>
+        <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_Scrin_BeamMid</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>10</muzzleFlashScale>
+        <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+        <beamWidth>0.5</beamWidth>
+        <beamGroundFleckDef>Fleck_BeamScorchMark</beamGroundFleckDef>
+        <beamLineFleckDef>Fleck_BeamSparking</beamLineFleckDef>
+        <beamFleckChancePerTick>1</beamFleckChancePerTick>
+        <beamMaxDeviation>0</beamMaxDeviation>
+        <beamCurvature>0</beamCurvature>
+        <beamMoteDef>Mote_ScrinLanceBeam</beamMoteDef>
+        <beamChanceToStartFire>0.85</beamChanceToStartFire>
+        <beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+        <beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+        <beamStartOffset>0.15</beamStartOffset>
+        <beamLineFleckChanceCurve><points><li>(0, 1)</li><li>(1, 1)</li></points></beamLineFleckChanceCurve>
+      </li>
+    </verbs>
+    <comps>
+      <li MayRequire="Ludeon.RimWorld.Royalty" Class="CompProperties_BladelinkWeapon"><biocodeOnEquip>true</biocodeOnEquip></li>
+      <li MayRequire="Ludeon.RimWorld.Royalty" Class="CompProperties_GeneratedName"><nameMaker>NamerWeaponBladelink</nameMaker></li>
+    </comps>
+    <soundInteract MayRequire="Ludeon.RimWorld.Royalty">Interact_BladelinkMonoSword</soundInteract>
+    <meleeHitSound MayRequire="Ludeon.RimWorld.Royalty">MeleeHit_BladelinkMonoSword</meleeHitSound>
+    <tools><li><label>spine</label><capacities><li>Poke</li></capacities><power>20</power><cooldownTime>2</cooldownTime></li></tools>
+    <weaponTags><li>ScrinArtifactWeapon</li></weaponTags>
+    <weaponClasses><li>Ranged</li><li>RangedHeavy</li><li>LongShots</li><li>Ultratech</li></weaponClasses>
+  </TiberiumRim.TRThingDef>
+
+</Defs>

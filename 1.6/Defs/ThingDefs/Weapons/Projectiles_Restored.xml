@@ -21,7 +21,7 @@
   <TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
     <defName>Bullet_Shard</defName>
     <label>green tiberium shard</label>
-    <graphicData><texPath>FX/Beams/Beam_EndGlow</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <graphicData><texPath>Map/Things/Projectiles/Tiberium/Projectile_Tiberium_Green</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
     <thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
     <projectile><damageDef>TRTiberiumShotGreen</damageDef><damageAmountBase>7</damageAmountBase><armorPenetrationBase>0.1</armorPenetrationBase><speed>45</speed><arcHeightFactor>0.1</arcHeightFactor><soundExplode>BulletImpact_Flesh</soundExplode></projectile>
     <modExtensions><li Class="TeleCore.RW.TeleDefExtension"><projectile><impactEffecter>FlechetteHit</impactEffecter><impactFilth><filths><li>FilthTiberiumGreen, 0.1</li></filths><spreadRadius>0</spreadRadius></impactFilth></projectile></li></modExtensions>
@@ -30,7 +30,7 @@
   <TiberiumRim.TRThingDef ParentName="BaseBullet_TR">
     <defName>Bullet_ShardB</defName>
     <label>blue tiberium shard</label>
-    <graphicData><texPath>FX/Beams/Beam_EndGlow</texPath><graphicClass>Graphic_Single</graphicClass><shaderType>TransparentPostLight</shaderType></graphicData>
+    <graphicData><texPath>Map/Things/Projectiles/Tiberium/Projectile_Tiberium_Blue</texPath><graphicClass>Graphic_Single</graphicClass><shaderType>TransparentPostLight</shaderType></graphicData>
     <thingClass>TiberiumRim.ProjectileTR_Explosive</thingClass>
     <projectile><damageDef>TRTiberiumShotBlue</damageDef><damageAmountBase>7</damageAmountBase><armorPenetrationBase>0.05</armorPenetrationBase><speed>45</speed><arcHeightFactor>0.1</arcHeightFactor><soundExplode>BulletImpact_Flesh</soundExplode></projectile>
     <modExtensions><li Class="TeleCore.RW.TeleDefExtension"><projectile><impactEffecter>FlechetteBlueHit</impactEffecter><impactFilth><filths><li>FilthTiberiumBlue, 0.01</li></filths><spreadRadius>0</spreadRadius></impactFilth></projectile></li></modExtensions>

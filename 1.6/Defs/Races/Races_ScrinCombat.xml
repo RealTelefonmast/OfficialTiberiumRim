@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--
+    TBI race evidence promoted onto the active 1.6 BaseMechanoidTR contract.
+    The donor's BaseTRArmored and Mechanoid references are absent from the
+    active package; they are mapped to BaseMechanoidTR and MechMain.
+  -->
+
+  <ThingDef ParentName="BaseMechanoidTR">
+    <defName>Scrin_Mechapede_TBI</defName>
+    <label>mechapede</label>
+    <description>A Scrin walker unit from the Third Tiberium War, described as an advanced customizable biotank.</description>
+    <statBases>
+      <MoveSpeed>2</MoveSpeed>
+      <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.65</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.65</ArmorRating_Heat>
+      <Mass>500</Mass>
+      <MeatAmount>0</MeatAmount>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_MeleeAttack</verbClass>
+        <defaultCooldownTime>2.5</defaultCooldownTime>
+        <meleeDamageBaseAmount>5</meleeDamageBaseAmount>
+        <meleeDamageDef>Blunt</meleeDamageDef>
+        <linkedBodyPartsGroup>FrontLegs</linkedBodyPartsGroup>
+      </li>
+    </verbs>
+    <race>
+      <thinkTreeMain>MechMain</thinkTreeMain>
+      <body>ScrinMechapedeBody</body>
+      <baseBodySize>4</baseBodySize>
+      <baseHealthScale>3.5</baseHealthScale>
+      <makesFootprints>true</makesFootprints>
+      <lifeStageAges Inherit="False">
+        <li>
+          <def>ScrinFormed</def>
+          <minAge>0</minAge>
+          <soundWounded>Pawn_Scrin_Shocktrooper_Wounded</soundWounded>
+          <soundDeath>Pawn_Scrin_Shocktrooper_Death</soundDeath>
+          <soundCall>Pawn_Scrin_Shocktrooper_Call</soundCall>
+        </li>
+      </lifeStageAges>
+      <soundCallIntervalRange><min>1000</min><max>2000</max></soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Scrin_ShockTrooper_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Scrin_ShockTrooper_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Scrin_ShockTrooper_Miss</soundMeleeMiss>
+    </race>
+    <butcherProducts><Steel>50</Steel><Plasteel>25</Plasteel><TRBattleChip>1</TRBattleChip></butcherProducts>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseMechanoidTR">
+    <defName>Scrin_Shocktrooper_TBI</defName>
+    <label>shock trooper</label>
+    <description>Large, rounded, insect-like Scrin techno-organic constructs tailored for combat.</description>
+    <statBases>
+      <MoveSpeed>2.5</MoveSpeed>
+      <ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.3</ArmorRating_Heat>
+      <Mass>100</Mass>
+      <MeatAmount>0</MeatAmount>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_MeleeAttack</verbClass>
+        <defaultCooldownTime>1.2</defaultCooldownTime>
+        <meleeDamageBaseAmount>5</meleeDamageBaseAmount>
+        <meleeDamageDef>Blunt</meleeDamageDef>
+        <linkedBodyPartsGroup>FrontLegs</linkedBodyPartsGroup>
+      </li>
+    </verbs>
+    <race>
+      <thinkTreeMain>MechMain</thinkTreeMain>
+      <body>ScrinTetraPodBody</body>
+      <baseBodySize>2</baseBodySize>
+      <baseHealthScale>1.5</baseHealthScale>
+      <makesFootprints>true</makesFootprints>
+      <lifeStageAges Inherit="False">
+        <li>
+          <def>ScrinFormed</def>
+          <minAge>0</minAge>
+          <soundWounded>Pawn_Scrin_Shocktrooper_Wounded</soundWounded>
+          <soundDeath>Pawn_Scrin_Shocktrooper_Death</soundDeath>
+          <soundCall>Pawn_Scrin_Shocktrooper_Call</soundCall>
+        </li>
+      </lifeStageAges>
+      <soundCallIntervalRange><min>1000</min><max>2000</max></soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Scrin_ShockTrooper_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Scrin_ShockTrooper_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Scrin_ShockTrooper_Miss</soundMeleeMiss>
+    </race>
+    <!-- ShutDownMechanoid is present in the donor but not in the active def set; keep this unresolved rather than inventing a replacement. -->
+    <butcherProducts><Steel>25</Steel><Plasteel>5</Plasteel></butcherProducts>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseMechanoidTR">
+    <defName>Scrin_Disintegrator_TBI</defName>
+    <label>disintegrator</label>
+    <description>Insectoid Scrin biomechanical constructs designed for anti-armor work. Their cutting beam is backed by a volatile self-destruct response.</description>
+    <statBases>
+      <MoveSpeed>4</MoveSpeed>
+      <ArmorRating_Blunt>0</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.15</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.15</ArmorRating_Heat>
+      <Mass>100</Mass>
+      <MeatAmount>0</MeatAmount>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_MeleeAttack</verbClass>
+        <defaultCooldownTime>1.2</defaultCooldownTime>
+        <meleeDamageBaseAmount>5</meleeDamageBaseAmount>
+        <meleeDamageDef>Cut</meleeDamageDef>
+        <linkedBodyPartsGroup>FrontLegs</linkedBodyPartsGroup>
+        <ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
+        <targetParams><canTargetBuildings>false</canTargetBuildings><canTargetPawns>true</canTargetPawns></targetParams>
+      </li>
+    </verbs>
+    <race>
+      <thinkTreeMain>MechMain</thinkTreeMain>
+      <body>ScrinTetraPodBody</body>
+      <baseBodySize>1</baseBodySize>
+      <baseHealthScale>1</baseHealthScale>
+      <makesFootprints>true</makesFootprints>
+      <deathAction>
+        <workerClass>DeathActionWorker_SmallExplosion</workerClass>
+      </deathAction>
+      <lifeStageAges Inherit="False">
+        <li>
+          <def>ScrinFormed</def>
+          <minAge>0</minAge>
+          <soundWounded>Pawn_Scrin_Shocktrooper_Wounded</soundWounded>
+          <soundDeath>Pawn_Scrin_Shocktrooper_Death</soundDeath>
+          <soundCall>Pawn_Scrin_Shocktrooper_Call</soundCall>
+        </li>
+      </lifeStageAges>
+      <soundCallIntervalRange><min>1000</min><max>2000</max></soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Scrin_ShockTrooper_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Scrin_ShockTrooper_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Scrin_ShockTrooper_Miss</soundMeleeMiss>
+    </race>
+    <butcherProducts><Steel>15</Steel></butcherProducts>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseMechanoidTR">
+    <defName>Scrin_Buzzer_TBI</defName>
+    <label>buzzer</label>
+    <description>Clouds of razor-sharp buzzing Scrin biomechanical organisms.</description>
+    <statBases>
+      <MoveSpeed>2</MoveSpeed>
+      <ArmorRating_Blunt>0</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.25</ArmorRating_Heat>
+      <Mass>5</Mass>
+      <MeatAmount>0</MeatAmount>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_MeleeAttack</verbClass>
+        <defaultCooldownTime>0.2</defaultCooldownTime>
+        <meleeDamageBaseAmount>10</meleeDamageBaseAmount>
+        <meleeDamageDef>Cut</meleeDamageDef>
+        <linkedBodyPartsGroup>RazorCloud</linkedBodyPartsGroup>
+        <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+        <targetParams><canTargetBuildings>true</canTargetBuildings><canTargetPawns>true</canTargetPawns></targetParams>
+      </li>
+    </verbs>
+    <race>
+      <thinkTreeMain>MechMain</thinkTreeMain>
+      <body>BuzzerBody</body>
+      <baseBodySize>1</baseBodySize>
+      <baseHealthScale>1</baseHealthScale>
+      <lifeStageAges Inherit="False">
+        <li>
+          <def>ScrinFormed</def>
+          <minAge>0</minAge>
+          <soundWounded>Pawn_Scrin_Buzzer_Wounded</soundWounded>
+          <soundDeath>Pawn_Scrin_Buzzer_Death</soundDeath>
+          <soundCall>Pawn_Scrin_Buzzer_Call</soundCall>
+        </li>
+      </lifeStageAges>
+      <soundCallIntervalRange><min>1000</min><max>2000</max></soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Scrin_Buzzer_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Scrin_Buzzer_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Scrin_Buzzer_Miss</soundMeleeMiss>
+    </race>
+    <butcherProducts><Steel>15</Steel></butcherProducts>
+  </ThingDef>
+
+</Defs>

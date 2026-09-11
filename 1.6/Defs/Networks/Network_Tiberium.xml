@@ -22,6 +22,7 @@
     <defName>TiberiumPipe</defName>
     <label>tiberium pipe</label>
     <description>This structure connects Tiberium processing structures on the Tiberium Network.</description>
+    <designationCategory Inherit="False" />
     <building>
       <blueprintGraphicData Inherit="False">
         <texPath>Map/Things/Buildings/Common/Network/TiberiumPipe/TiberiumPipe_Blueprint</texPath>
@@ -67,6 +68,12 @@
         </networks>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="TeleCore.BuildMenu.BuildMenuExtension">
+        <groupDef>Common</groupDef>
+        <category>Processing</category>
+      </li>
+    </modExtensions>
   </TiberiumRim.TRThingDef>
   <TeleCore.RW.Networks.NetworkValueDef>
     <defName>TibGreen</defName>

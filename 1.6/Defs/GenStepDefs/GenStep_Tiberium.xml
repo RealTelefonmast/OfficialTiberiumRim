@@ -8,4 +8,13 @@
     <order>610</order>
     <genStep Class="TiberiumRim.MapGenStep_Tiberium" />
   </GenStepDef>
+
+  <!-- The world coverage generator is a separate world-generation step. Keep
+       it distinct from the map infestation step above so the saved setting is
+       applied while the Surface planet layer is created. -->
+  <WorldGenStepDef>
+    <defName>TiberiumWorldLayer</defName>
+    <order>9999</order>
+    <worldGenStep Class="TiberiumRim.WorldGenStep_TiberiumWorldLayer" />
+  </WorldGenStepDef>
 </Defs>

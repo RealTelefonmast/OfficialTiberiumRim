@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Ported from TiberiumRim-1.3 /Defs/Mechs/Mech/Races_Mech.xml. -->
+  <ThingDef ParentName="BaseMechanoidTR">
+    <defName>Ironback</defName>
+    <label>Ironback</label>
+    <description>Forgotten melee mech.</description>
+    <statBases>
+      <MoveSpeed>4</MoveSpeed>
+      <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.8</ArmorRating_Heat>
+    </statBases>
+    <tools>
+      <li>
+        <label>left arm</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>20</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>LeftArm</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+      <li>
+        <label>right arm</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>20</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>RightArm</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+    <race>
+      <intelligence>ToolUser</intelligence>
+      <!-- 1.3 used the retired Mechanoid think-tree name; 1.6 TR mechs use MechMain. -->
+      <thinkTreeMain>MechMain</thinkTreeMain>
+      <body>IronbackBody</body>
+      <baseBodySize>2</baseBodySize>
+      <baseHealthScale>1.25</baseHealthScale>
+      <makesFootprints>true</makesFootprints>
+      <soundCallIntervalRange><min>1000</min><max>2000</max></soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Melee_MechanoidBash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_MechanoidBash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_MechanoidBash_Miss</soundMeleeMiss>
+    </race>
+    <butcherProducts>
+      <Steel>120</Steel>
+      <ComponentIndustrial>5</ComponentIndustrial>
+    </butcherProducts>
+  </ThingDef>
+
+</Defs>
